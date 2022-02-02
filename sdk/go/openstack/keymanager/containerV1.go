@@ -346,7 +346,7 @@ type ContainerV1Input interface {
 }
 
 func (*ContainerV1) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerV1)(nil))
+	return reflect.TypeOf((**ContainerV1)(nil)).Elem()
 }
 
 func (i *ContainerV1) ToContainerV1Output() ContainerV1Output {
@@ -355,35 +355,6 @@ func (i *ContainerV1) ToContainerV1Output() ContainerV1Output {
 
 func (i *ContainerV1) ToContainerV1OutputWithContext(ctx context.Context) ContainerV1Output {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1Output)
-}
-
-func (i *ContainerV1) ToContainerV1PtrOutput() ContainerV1PtrOutput {
-	return i.ToContainerV1PtrOutputWithContext(context.Background())
-}
-
-func (i *ContainerV1) ToContainerV1PtrOutputWithContext(ctx context.Context) ContainerV1PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1PtrOutput)
-}
-
-type ContainerV1PtrInput interface {
-	pulumi.Input
-
-	ToContainerV1PtrOutput() ContainerV1PtrOutput
-	ToContainerV1PtrOutputWithContext(ctx context.Context) ContainerV1PtrOutput
-}
-
-type containerV1PtrType ContainerV1Args
-
-func (*containerV1PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ContainerV1)(nil))
-}
-
-func (i *containerV1PtrType) ToContainerV1PtrOutput() ContainerV1PtrOutput {
-	return i.ToContainerV1PtrOutputWithContext(context.Background())
-}
-
-func (i *containerV1PtrType) ToContainerV1PtrOutputWithContext(ctx context.Context) ContainerV1PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1PtrOutput)
 }
 
 // ContainerV1ArrayInput is an input type that accepts ContainerV1Array and ContainerV1ArrayOutput values.
@@ -439,7 +410,7 @@ func (i ContainerV1Map) ToContainerV1MapOutputWithContext(ctx context.Context) C
 type ContainerV1Output struct{ *pulumi.OutputState }
 
 func (ContainerV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerV1)(nil))
+	return reflect.TypeOf((**ContainerV1)(nil)).Elem()
 }
 
 func (o ContainerV1Output) ToContainerV1Output() ContainerV1Output {
@@ -450,44 +421,10 @@ func (o ContainerV1Output) ToContainerV1OutputWithContext(ctx context.Context) C
 	return o
 }
 
-func (o ContainerV1Output) ToContainerV1PtrOutput() ContainerV1PtrOutput {
-	return o.ToContainerV1PtrOutputWithContext(context.Background())
-}
-
-func (o ContainerV1Output) ToContainerV1PtrOutputWithContext(ctx context.Context) ContainerV1PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerV1) *ContainerV1 {
-		return &v
-	}).(ContainerV1PtrOutput)
-}
-
-type ContainerV1PtrOutput struct{ *pulumi.OutputState }
-
-func (ContainerV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ContainerV1)(nil))
-}
-
-func (o ContainerV1PtrOutput) ToContainerV1PtrOutput() ContainerV1PtrOutput {
-	return o
-}
-
-func (o ContainerV1PtrOutput) ToContainerV1PtrOutputWithContext(ctx context.Context) ContainerV1PtrOutput {
-	return o
-}
-
-func (o ContainerV1PtrOutput) Elem() ContainerV1Output {
-	return o.ApplyT(func(v *ContainerV1) ContainerV1 {
-		if v != nil {
-			return *v
-		}
-		var ret ContainerV1
-		return ret
-	}).(ContainerV1Output)
-}
-
 type ContainerV1ArrayOutput struct{ *pulumi.OutputState }
 
 func (ContainerV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ContainerV1)(nil))
+	return reflect.TypeOf((*[]*ContainerV1)(nil)).Elem()
 }
 
 func (o ContainerV1ArrayOutput) ToContainerV1ArrayOutput() ContainerV1ArrayOutput {
@@ -499,15 +436,15 @@ func (o ContainerV1ArrayOutput) ToContainerV1ArrayOutputWithContext(ctx context.
 }
 
 func (o ContainerV1ArrayOutput) Index(i pulumi.IntInput) ContainerV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerV1 {
-		return vs[0].([]ContainerV1)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ContainerV1 {
+		return vs[0].([]*ContainerV1)[vs[1].(int)]
 	}).(ContainerV1Output)
 }
 
 type ContainerV1MapOutput struct{ *pulumi.OutputState }
 
 func (ContainerV1MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ContainerV1)(nil))
+	return reflect.TypeOf((*map[string]*ContainerV1)(nil)).Elem()
 }
 
 func (o ContainerV1MapOutput) ToContainerV1MapOutput() ContainerV1MapOutput {
@@ -519,18 +456,16 @@ func (o ContainerV1MapOutput) ToContainerV1MapOutputWithContext(ctx context.Cont
 }
 
 func (o ContainerV1MapOutput) MapIndex(k pulumi.StringInput) ContainerV1Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ContainerV1 {
-		return vs[0].(map[string]ContainerV1)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ContainerV1 {
+		return vs[0].(map[string]*ContainerV1)[vs[1].(string)]
 	}).(ContainerV1Output)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerV1Input)(nil)).Elem(), &ContainerV1{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ContainerV1PtrInput)(nil)).Elem(), &ContainerV1{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerV1ArrayInput)(nil)).Elem(), ContainerV1Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerV1MapInput)(nil)).Elem(), ContainerV1Map{})
 	pulumi.RegisterOutputType(ContainerV1Output{})
-	pulumi.RegisterOutputType(ContainerV1PtrOutput{})
 	pulumi.RegisterOutputType(ContainerV1ArrayOutput{})
 	pulumi.RegisterOutputType(ContainerV1MapOutput{})
 }

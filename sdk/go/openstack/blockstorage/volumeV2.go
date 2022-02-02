@@ -317,7 +317,7 @@ type VolumeV2Input interface {
 }
 
 func (*VolumeV2) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeV2)(nil))
+	return reflect.TypeOf((**VolumeV2)(nil)).Elem()
 }
 
 func (i *VolumeV2) ToVolumeV2Output() VolumeV2Output {
@@ -326,35 +326,6 @@ func (i *VolumeV2) ToVolumeV2Output() VolumeV2Output {
 
 func (i *VolumeV2) ToVolumeV2OutputWithContext(ctx context.Context) VolumeV2Output {
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeV2Output)
-}
-
-func (i *VolumeV2) ToVolumeV2PtrOutput() VolumeV2PtrOutput {
-	return i.ToVolumeV2PtrOutputWithContext(context.Background())
-}
-
-func (i *VolumeV2) ToVolumeV2PtrOutputWithContext(ctx context.Context) VolumeV2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VolumeV2PtrOutput)
-}
-
-type VolumeV2PtrInput interface {
-	pulumi.Input
-
-	ToVolumeV2PtrOutput() VolumeV2PtrOutput
-	ToVolumeV2PtrOutputWithContext(ctx context.Context) VolumeV2PtrOutput
-}
-
-type volumeV2PtrType VolumeV2Args
-
-func (*volumeV2PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VolumeV2)(nil))
-}
-
-func (i *volumeV2PtrType) ToVolumeV2PtrOutput() VolumeV2PtrOutput {
-	return i.ToVolumeV2PtrOutputWithContext(context.Background())
-}
-
-func (i *volumeV2PtrType) ToVolumeV2PtrOutputWithContext(ctx context.Context) VolumeV2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VolumeV2PtrOutput)
 }
 
 // VolumeV2ArrayInput is an input type that accepts VolumeV2Array and VolumeV2ArrayOutput values.
@@ -410,7 +381,7 @@ func (i VolumeV2Map) ToVolumeV2MapOutputWithContext(ctx context.Context) VolumeV
 type VolumeV2Output struct{ *pulumi.OutputState }
 
 func (VolumeV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeV2)(nil))
+	return reflect.TypeOf((**VolumeV2)(nil)).Elem()
 }
 
 func (o VolumeV2Output) ToVolumeV2Output() VolumeV2Output {
@@ -421,44 +392,10 @@ func (o VolumeV2Output) ToVolumeV2OutputWithContext(ctx context.Context) VolumeV
 	return o
 }
 
-func (o VolumeV2Output) ToVolumeV2PtrOutput() VolumeV2PtrOutput {
-	return o.ToVolumeV2PtrOutputWithContext(context.Background())
-}
-
-func (o VolumeV2Output) ToVolumeV2PtrOutputWithContext(ctx context.Context) VolumeV2PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeV2) *VolumeV2 {
-		return &v
-	}).(VolumeV2PtrOutput)
-}
-
-type VolumeV2PtrOutput struct{ *pulumi.OutputState }
-
-func (VolumeV2PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VolumeV2)(nil))
-}
-
-func (o VolumeV2PtrOutput) ToVolumeV2PtrOutput() VolumeV2PtrOutput {
-	return o
-}
-
-func (o VolumeV2PtrOutput) ToVolumeV2PtrOutputWithContext(ctx context.Context) VolumeV2PtrOutput {
-	return o
-}
-
-func (o VolumeV2PtrOutput) Elem() VolumeV2Output {
-	return o.ApplyT(func(v *VolumeV2) VolumeV2 {
-		if v != nil {
-			return *v
-		}
-		var ret VolumeV2
-		return ret
-	}).(VolumeV2Output)
-}
-
 type VolumeV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (VolumeV2ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VolumeV2)(nil))
+	return reflect.TypeOf((*[]*VolumeV2)(nil)).Elem()
 }
 
 func (o VolumeV2ArrayOutput) ToVolumeV2ArrayOutput() VolumeV2ArrayOutput {
@@ -470,15 +407,15 @@ func (o VolumeV2ArrayOutput) ToVolumeV2ArrayOutputWithContext(ctx context.Contex
 }
 
 func (o VolumeV2ArrayOutput) Index(i pulumi.IntInput) VolumeV2Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeV2 {
-		return vs[0].([]VolumeV2)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VolumeV2 {
+		return vs[0].([]*VolumeV2)[vs[1].(int)]
 	}).(VolumeV2Output)
 }
 
 type VolumeV2MapOutput struct{ *pulumi.OutputState }
 
 func (VolumeV2MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]VolumeV2)(nil))
+	return reflect.TypeOf((*map[string]*VolumeV2)(nil)).Elem()
 }
 
 func (o VolumeV2MapOutput) ToVolumeV2MapOutput() VolumeV2MapOutput {
@@ -490,18 +427,16 @@ func (o VolumeV2MapOutput) ToVolumeV2MapOutputWithContext(ctx context.Context) V
 }
 
 func (o VolumeV2MapOutput) MapIndex(k pulumi.StringInput) VolumeV2Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VolumeV2 {
-		return vs[0].(map[string]VolumeV2)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *VolumeV2 {
+		return vs[0].(map[string]*VolumeV2)[vs[1].(string)]
 	}).(VolumeV2Output)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeV2Input)(nil)).Elem(), &VolumeV2{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VolumeV2PtrInput)(nil)).Elem(), &VolumeV2{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeV2ArrayInput)(nil)).Elem(), VolumeV2Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeV2MapInput)(nil)).Elem(), VolumeV2Map{})
 	pulumi.RegisterOutputType(VolumeV2Output{})
-	pulumi.RegisterOutputType(VolumeV2PtrOutput{})
 	pulumi.RegisterOutputType(VolumeV2ArrayOutput{})
 	pulumi.RegisterOutputType(VolumeV2MapOutput{})
 }

@@ -23,9 +23,7 @@ export function getQosBandwidthLimitRule(args: GetQosBandwidthLimitRuleArgs, opt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", {
         "maxBurstKbps": args.maxBurstKbps,
         "maxKbps": args.maxKbps,

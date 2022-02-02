@@ -111,27 +111,25 @@ export class AddressScope extends pulumi.CustomResource {
      */
     constructor(name: string, args?: AddressScopeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AddressScopeArgs | AddressScopeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AddressScopeState | undefined;
-            inputs["ipVersion"] = state ? state.ipVersion : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["shared"] = state ? state.shared : undefined;
+            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["shared"] = state ? state.shared : undefined;
         } else {
             const args = argsOrState as AddressScopeArgs | undefined;
-            inputs["ipVersion"] = args ? args.ipVersion : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["shared"] = args ? args.shared : undefined;
+            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["shared"] = args ? args.shared : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AddressScope.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AddressScope.__pulumiType, name, resourceInputs, opts);
     }
 }
 

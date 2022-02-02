@@ -95,30 +95,28 @@ export class FloatingIp extends pulumi.CustomResource {
      */
     constructor(name: string, args: FloatingIpArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FloatingIpArgs | FloatingIpState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FloatingIpState | undefined;
-            inputs["address"] = state ? state.address : undefined;
-            inputs["fixedIp"] = state ? state.fixedIp : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["pool"] = state ? state.pool : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["fixedIp"] = state ? state.fixedIp : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["pool"] = state ? state.pool : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as FloatingIpArgs | undefined;
             if ((!args || args.pool === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pool'");
             }
-            inputs["pool"] = args ? args.pool : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["address"] = undefined /*out*/;
-            inputs["fixedIp"] = undefined /*out*/;
-            inputs["instanceId"] = undefined /*out*/;
+            resourceInputs["pool"] = args ? args.pool : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["address"] = undefined /*out*/;
+            resourceInputs["fixedIp"] = undefined /*out*/;
+            resourceInputs["instanceId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FloatingIp.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FloatingIp.__pulumiType, name, resourceInputs, opts);
     }
 }
 

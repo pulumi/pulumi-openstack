@@ -106,18 +106,18 @@ export class EndpointV3 extends pulumi.CustomResource {
      */
     constructor(name: string, args: EndpointV3Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EndpointV3Args | EndpointV3State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointV3State | undefined;
-            inputs["endpointRegion"] = state ? state.endpointRegion : undefined;
-            inputs["interface"] = state ? state.interface : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["serviceId"] = state ? state.serviceId : undefined;
-            inputs["serviceName"] = state ? state.serviceName : undefined;
-            inputs["serviceType"] = state ? state.serviceType : undefined;
-            inputs["url"] = state ? state.url : undefined;
+            resourceInputs["endpointRegion"] = state ? state.endpointRegion : undefined;
+            resourceInputs["interface"] = state ? state.interface : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["serviceType"] = state ? state.serviceType : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as EndpointV3Args | undefined;
             if ((!args || args.endpointRegion === undefined) && !opts.urn) {
@@ -129,19 +129,17 @@ export class EndpointV3 extends pulumi.CustomResource {
             if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            inputs["endpointRegion"] = args ? args.endpointRegion : undefined;
-            inputs["interface"] = args ? args.interface : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["serviceId"] = args ? args.serviceId : undefined;
-            inputs["url"] = args ? args.url : undefined;
-            inputs["serviceName"] = undefined /*out*/;
-            inputs["serviceType"] = undefined /*out*/;
+            resourceInputs["endpointRegion"] = args ? args.endpointRegion : undefined;
+            resourceInputs["interface"] = args ? args.interface : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["serviceName"] = undefined /*out*/;
+            resourceInputs["serviceType"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EndpointV3.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EndpointV3.__pulumiType, name, resourceInputs, opts);
     }
 }
 

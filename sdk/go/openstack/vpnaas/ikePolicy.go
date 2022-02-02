@@ -267,7 +267,7 @@ type IkePolicyInput interface {
 }
 
 func (*IkePolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*IkePolicy)(nil))
+	return reflect.TypeOf((**IkePolicy)(nil)).Elem()
 }
 
 func (i *IkePolicy) ToIkePolicyOutput() IkePolicyOutput {
@@ -276,35 +276,6 @@ func (i *IkePolicy) ToIkePolicyOutput() IkePolicyOutput {
 
 func (i *IkePolicy) ToIkePolicyOutputWithContext(ctx context.Context) IkePolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IkePolicyOutput)
-}
-
-func (i *IkePolicy) ToIkePolicyPtrOutput() IkePolicyPtrOutput {
-	return i.ToIkePolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *IkePolicy) ToIkePolicyPtrOutputWithContext(ctx context.Context) IkePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IkePolicyPtrOutput)
-}
-
-type IkePolicyPtrInput interface {
-	pulumi.Input
-
-	ToIkePolicyPtrOutput() IkePolicyPtrOutput
-	ToIkePolicyPtrOutputWithContext(ctx context.Context) IkePolicyPtrOutput
-}
-
-type ikePolicyPtrType IkePolicyArgs
-
-func (*ikePolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IkePolicy)(nil))
-}
-
-func (i *ikePolicyPtrType) ToIkePolicyPtrOutput() IkePolicyPtrOutput {
-	return i.ToIkePolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *ikePolicyPtrType) ToIkePolicyPtrOutputWithContext(ctx context.Context) IkePolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IkePolicyPtrOutput)
 }
 
 // IkePolicyArrayInput is an input type that accepts IkePolicyArray and IkePolicyArrayOutput values.
@@ -360,7 +331,7 @@ func (i IkePolicyMap) ToIkePolicyMapOutputWithContext(ctx context.Context) IkePo
 type IkePolicyOutput struct{ *pulumi.OutputState }
 
 func (IkePolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IkePolicy)(nil))
+	return reflect.TypeOf((**IkePolicy)(nil)).Elem()
 }
 
 func (o IkePolicyOutput) ToIkePolicyOutput() IkePolicyOutput {
@@ -371,44 +342,10 @@ func (o IkePolicyOutput) ToIkePolicyOutputWithContext(ctx context.Context) IkePo
 	return o
 }
 
-func (o IkePolicyOutput) ToIkePolicyPtrOutput() IkePolicyPtrOutput {
-	return o.ToIkePolicyPtrOutputWithContext(context.Background())
-}
-
-func (o IkePolicyOutput) ToIkePolicyPtrOutputWithContext(ctx context.Context) IkePolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IkePolicy) *IkePolicy {
-		return &v
-	}).(IkePolicyPtrOutput)
-}
-
-type IkePolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (IkePolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IkePolicy)(nil))
-}
-
-func (o IkePolicyPtrOutput) ToIkePolicyPtrOutput() IkePolicyPtrOutput {
-	return o
-}
-
-func (o IkePolicyPtrOutput) ToIkePolicyPtrOutputWithContext(ctx context.Context) IkePolicyPtrOutput {
-	return o
-}
-
-func (o IkePolicyPtrOutput) Elem() IkePolicyOutput {
-	return o.ApplyT(func(v *IkePolicy) IkePolicy {
-		if v != nil {
-			return *v
-		}
-		var ret IkePolicy
-		return ret
-	}).(IkePolicyOutput)
-}
-
 type IkePolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (IkePolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IkePolicy)(nil))
+	return reflect.TypeOf((*[]*IkePolicy)(nil)).Elem()
 }
 
 func (o IkePolicyArrayOutput) ToIkePolicyArrayOutput() IkePolicyArrayOutput {
@@ -420,15 +357,15 @@ func (o IkePolicyArrayOutput) ToIkePolicyArrayOutputWithContext(ctx context.Cont
 }
 
 func (o IkePolicyArrayOutput) Index(i pulumi.IntInput) IkePolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IkePolicy {
-		return vs[0].([]IkePolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IkePolicy {
+		return vs[0].([]*IkePolicy)[vs[1].(int)]
 	}).(IkePolicyOutput)
 }
 
 type IkePolicyMapOutput struct{ *pulumi.OutputState }
 
 func (IkePolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]IkePolicy)(nil))
+	return reflect.TypeOf((*map[string]*IkePolicy)(nil)).Elem()
 }
 
 func (o IkePolicyMapOutput) ToIkePolicyMapOutput() IkePolicyMapOutput {
@@ -440,18 +377,16 @@ func (o IkePolicyMapOutput) ToIkePolicyMapOutputWithContext(ctx context.Context)
 }
 
 func (o IkePolicyMapOutput) MapIndex(k pulumi.StringInput) IkePolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IkePolicy {
-		return vs[0].(map[string]IkePolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IkePolicy {
+		return vs[0].(map[string]*IkePolicy)[vs[1].(string)]
 	}).(IkePolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IkePolicyInput)(nil)).Elem(), &IkePolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IkePolicyPtrInput)(nil)).Elem(), &IkePolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IkePolicyArrayInput)(nil)).Elem(), IkePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IkePolicyMapInput)(nil)).Elem(), IkePolicyMap{})
 	pulumi.RegisterOutputType(IkePolicyOutput{})
-	pulumi.RegisterOutputType(IkePolicyPtrOutput{})
 	pulumi.RegisterOutputType(IkePolicyArrayOutput{})
 	pulumi.RegisterOutputType(IkePolicyMapOutput{})
 }

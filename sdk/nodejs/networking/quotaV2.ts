@@ -138,42 +138,40 @@ export class QuotaV2 extends pulumi.CustomResource {
      */
     constructor(name: string, args: QuotaV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QuotaV2Args | QuotaV2State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QuotaV2State | undefined;
-            inputs["floatingip"] = state ? state.floatingip : undefined;
-            inputs["network"] = state ? state.network : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["rbacPolicy"] = state ? state.rbacPolicy : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["router"] = state ? state.router : undefined;
-            inputs["securityGroup"] = state ? state.securityGroup : undefined;
-            inputs["securityGroupRule"] = state ? state.securityGroupRule : undefined;
-            inputs["subnet"] = state ? state.subnet : undefined;
-            inputs["subnetpool"] = state ? state.subnetpool : undefined;
+            resourceInputs["floatingip"] = state ? state.floatingip : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["rbacPolicy"] = state ? state.rbacPolicy : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["router"] = state ? state.router : undefined;
+            resourceInputs["securityGroup"] = state ? state.securityGroup : undefined;
+            resourceInputs["securityGroupRule"] = state ? state.securityGroupRule : undefined;
+            resourceInputs["subnet"] = state ? state.subnet : undefined;
+            resourceInputs["subnetpool"] = state ? state.subnetpool : undefined;
         } else {
             const args = argsOrState as QuotaV2Args | undefined;
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            inputs["floatingip"] = args ? args.floatingip : undefined;
-            inputs["network"] = args ? args.network : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["rbacPolicy"] = args ? args.rbacPolicy : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["router"] = args ? args.router : undefined;
-            inputs["securityGroup"] = args ? args.securityGroup : undefined;
-            inputs["securityGroupRule"] = args ? args.securityGroupRule : undefined;
-            inputs["subnet"] = args ? args.subnet : undefined;
-            inputs["subnetpool"] = args ? args.subnetpool : undefined;
+            resourceInputs["floatingip"] = args ? args.floatingip : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["rbacPolicy"] = args ? args.rbacPolicy : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["router"] = args ? args.router : undefined;
+            resourceInputs["securityGroup"] = args ? args.securityGroup : undefined;
+            resourceInputs["securityGroupRule"] = args ? args.securityGroupRule : undefined;
+            resourceInputs["subnet"] = args ? args.subnet : undefined;
+            resourceInputs["subnetpool"] = args ? args.subnetpool : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(QuotaV2.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(QuotaV2.__pulumiType, name, resourceInputs, opts);
     }
 }
 

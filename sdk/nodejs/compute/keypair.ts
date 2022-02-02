@@ -83,29 +83,27 @@ export class Keypair extends pulumi.CustomResource {
      */
     constructor(name: string, args?: KeypairArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KeypairArgs | KeypairState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeypairState | undefined;
-            inputs["fingerprint"] = state ? state.fingerprint : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["privateKey"] = state ? state.privateKey : undefined;
-            inputs["publicKey"] = state ? state.publicKey : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
+            resourceInputs["publicKey"] = state ? state.publicKey : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as KeypairArgs | undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["publicKey"] = args ? args.publicKey : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
-            inputs["fingerprint"] = undefined /*out*/;
-            inputs["privateKey"] = undefined /*out*/;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["publicKey"] = args ? args.publicKey : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["privateKey"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Keypair.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Keypair.__pulumiType, name, resourceInputs, opts);
     }
 }
 

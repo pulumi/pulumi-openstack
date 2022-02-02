@@ -91,7 +91,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewInstance(ctx, "test_server", &compute.InstanceArgs{
+// 		_, err := compute.NewInstance(ctx, "test-server", &compute.InstanceArgs{
 // 			FlavorId: pulumi.String("3"),
 // 			ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
 // 			KeyPair:  pulumi.String("my_key_pair_name"),
@@ -259,7 +259,7 @@ type SecGroupInput interface {
 }
 
 func (*SecGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecGroup)(nil))
+	return reflect.TypeOf((**SecGroup)(nil)).Elem()
 }
 
 func (i *SecGroup) ToSecGroupOutput() SecGroupOutput {
@@ -268,35 +268,6 @@ func (i *SecGroup) ToSecGroupOutput() SecGroupOutput {
 
 func (i *SecGroup) ToSecGroupOutputWithContext(ctx context.Context) SecGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecGroupOutput)
-}
-
-func (i *SecGroup) ToSecGroupPtrOutput() SecGroupPtrOutput {
-	return i.ToSecGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *SecGroup) ToSecGroupPtrOutputWithContext(ctx context.Context) SecGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecGroupPtrOutput)
-}
-
-type SecGroupPtrInput interface {
-	pulumi.Input
-
-	ToSecGroupPtrOutput() SecGroupPtrOutput
-	ToSecGroupPtrOutputWithContext(ctx context.Context) SecGroupPtrOutput
-}
-
-type secGroupPtrType SecGroupArgs
-
-func (*secGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecGroup)(nil))
-}
-
-func (i *secGroupPtrType) ToSecGroupPtrOutput() SecGroupPtrOutput {
-	return i.ToSecGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *secGroupPtrType) ToSecGroupPtrOutputWithContext(ctx context.Context) SecGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecGroupPtrOutput)
 }
 
 // SecGroupArrayInput is an input type that accepts SecGroupArray and SecGroupArrayOutput values.
@@ -352,7 +323,7 @@ func (i SecGroupMap) ToSecGroupMapOutputWithContext(ctx context.Context) SecGrou
 type SecGroupOutput struct{ *pulumi.OutputState }
 
 func (SecGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecGroup)(nil))
+	return reflect.TypeOf((**SecGroup)(nil)).Elem()
 }
 
 func (o SecGroupOutput) ToSecGroupOutput() SecGroupOutput {
@@ -363,44 +334,10 @@ func (o SecGroupOutput) ToSecGroupOutputWithContext(ctx context.Context) SecGrou
 	return o
 }
 
-func (o SecGroupOutput) ToSecGroupPtrOutput() SecGroupPtrOutput {
-	return o.ToSecGroupPtrOutputWithContext(context.Background())
-}
-
-func (o SecGroupOutput) ToSecGroupPtrOutputWithContext(ctx context.Context) SecGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecGroup) *SecGroup {
-		return &v
-	}).(SecGroupPtrOutput)
-}
-
-type SecGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (SecGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecGroup)(nil))
-}
-
-func (o SecGroupPtrOutput) ToSecGroupPtrOutput() SecGroupPtrOutput {
-	return o
-}
-
-func (o SecGroupPtrOutput) ToSecGroupPtrOutputWithContext(ctx context.Context) SecGroupPtrOutput {
-	return o
-}
-
-func (o SecGroupPtrOutput) Elem() SecGroupOutput {
-	return o.ApplyT(func(v *SecGroup) SecGroup {
-		if v != nil {
-			return *v
-		}
-		var ret SecGroup
-		return ret
-	}).(SecGroupOutput)
-}
-
 type SecGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (SecGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecGroup)(nil))
+	return reflect.TypeOf((*[]*SecGroup)(nil)).Elem()
 }
 
 func (o SecGroupArrayOutput) ToSecGroupArrayOutput() SecGroupArrayOutput {
@@ -412,15 +349,15 @@ func (o SecGroupArrayOutput) ToSecGroupArrayOutputWithContext(ctx context.Contex
 }
 
 func (o SecGroupArrayOutput) Index(i pulumi.IntInput) SecGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecGroup {
-		return vs[0].([]SecGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecGroup {
+		return vs[0].([]*SecGroup)[vs[1].(int)]
 	}).(SecGroupOutput)
 }
 
 type SecGroupMapOutput struct{ *pulumi.OutputState }
 
 func (SecGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SecGroup)(nil))
+	return reflect.TypeOf((*map[string]*SecGroup)(nil)).Elem()
 }
 
 func (o SecGroupMapOutput) ToSecGroupMapOutput() SecGroupMapOutput {
@@ -432,18 +369,16 @@ func (o SecGroupMapOutput) ToSecGroupMapOutputWithContext(ctx context.Context) S
 }
 
 func (o SecGroupMapOutput) MapIndex(k pulumi.StringInput) SecGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SecGroup {
-		return vs[0].(map[string]SecGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SecGroup {
+		return vs[0].(map[string]*SecGroup)[vs[1].(string)]
 	}).(SecGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupInput)(nil)).Elem(), &SecGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupPtrInput)(nil)).Elem(), &SecGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupArrayInput)(nil)).Elem(), SecGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupMapInput)(nil)).Elem(), SecGroupMap{})
 	pulumi.RegisterOutputType(SecGroupOutput{})
-	pulumi.RegisterOutputType(SecGroupPtrOutput{})
 	pulumi.RegisterOutputType(SecGroupArrayOutput{})
 	pulumi.RegisterOutputType(SecGroupMapOutput{})
 }

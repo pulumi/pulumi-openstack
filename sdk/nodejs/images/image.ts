@@ -196,39 +196,39 @@ export class Image extends pulumi.CustomResource {
      */
     constructor(name: string, args: ImageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ImageArgs | ImageState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageState | undefined;
-            inputs["checksum"] = state ? state.checksum : undefined;
-            inputs["containerFormat"] = state ? state.containerFormat : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["diskFormat"] = state ? state.diskFormat : undefined;
-            inputs["file"] = state ? state.file : undefined;
-            inputs["hidden"] = state ? state.hidden : undefined;
-            inputs["imageCachePath"] = state ? state.imageCachePath : undefined;
-            inputs["imageId"] = state ? state.imageId : undefined;
-            inputs["imageSourcePassword"] = state ? state.imageSourcePassword : undefined;
-            inputs["imageSourceUrl"] = state ? state.imageSourceUrl : undefined;
-            inputs["imageSourceUsername"] = state ? state.imageSourceUsername : undefined;
-            inputs["localFilePath"] = state ? state.localFilePath : undefined;
-            inputs["metadata"] = state ? state.metadata : undefined;
-            inputs["minDiskGb"] = state ? state.minDiskGb : undefined;
-            inputs["minRamMb"] = state ? state.minRamMb : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["owner"] = state ? state.owner : undefined;
-            inputs["properties"] = state ? state.properties : undefined;
-            inputs["protected"] = state ? state.protected : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["schema"] = state ? state.schema : undefined;
-            inputs["sizeBytes"] = state ? state.sizeBytes : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["updateAt"] = state ? state.updateAt : undefined;
-            inputs["updatedAt"] = state ? state.updatedAt : undefined;
-            inputs["verifyChecksum"] = state ? state.verifyChecksum : undefined;
-            inputs["visibility"] = state ? state.visibility : undefined;
-            inputs["webDownload"] = state ? state.webDownload : undefined;
+            resourceInputs["checksum"] = state ? state.checksum : undefined;
+            resourceInputs["containerFormat"] = state ? state.containerFormat : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["diskFormat"] = state ? state.diskFormat : undefined;
+            resourceInputs["file"] = state ? state.file : undefined;
+            resourceInputs["hidden"] = state ? state.hidden : undefined;
+            resourceInputs["imageCachePath"] = state ? state.imageCachePath : undefined;
+            resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["imageSourcePassword"] = state ? state.imageSourcePassword : undefined;
+            resourceInputs["imageSourceUrl"] = state ? state.imageSourceUrl : undefined;
+            resourceInputs["imageSourceUsername"] = state ? state.imageSourceUsername : undefined;
+            resourceInputs["localFilePath"] = state ? state.localFilePath : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["minDiskGb"] = state ? state.minDiskGb : undefined;
+            resourceInputs["minRamMb"] = state ? state.minRamMb : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["owner"] = state ? state.owner : undefined;
+            resourceInputs["properties"] = state ? state.properties : undefined;
+            resourceInputs["protected"] = state ? state.protected : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["schema"] = state ? state.schema : undefined;
+            resourceInputs["sizeBytes"] = state ? state.sizeBytes : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updateAt"] = state ? state.updateAt : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["verifyChecksum"] = state ? state.verifyChecksum : undefined;
+            resourceInputs["visibility"] = state ? state.visibility : undefined;
+            resourceInputs["webDownload"] = state ? state.webDownload : undefined;
         } else {
             const args = argsOrState as ImageArgs | undefined;
             if ((!args || args.containerFormat === undefined) && !opts.urn) {
@@ -237,40 +237,38 @@ export class Image extends pulumi.CustomResource {
             if ((!args || args.diskFormat === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'diskFormat'");
             }
-            inputs["containerFormat"] = args ? args.containerFormat : undefined;
-            inputs["diskFormat"] = args ? args.diskFormat : undefined;
-            inputs["hidden"] = args ? args.hidden : undefined;
-            inputs["imageCachePath"] = args ? args.imageCachePath : undefined;
-            inputs["imageId"] = args ? args.imageId : undefined;
-            inputs["imageSourcePassword"] = args ? args.imageSourcePassword : undefined;
-            inputs["imageSourceUrl"] = args ? args.imageSourceUrl : undefined;
-            inputs["imageSourceUsername"] = args ? args.imageSourceUsername : undefined;
-            inputs["localFilePath"] = args ? args.localFilePath : undefined;
-            inputs["minDiskGb"] = args ? args.minDiskGb : undefined;
-            inputs["minRamMb"] = args ? args.minRamMb : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["properties"] = args ? args.properties : undefined;
-            inputs["protected"] = args ? args.protected : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["verifyChecksum"] = args ? args.verifyChecksum : undefined;
-            inputs["visibility"] = args ? args.visibility : undefined;
-            inputs["webDownload"] = args ? args.webDownload : undefined;
-            inputs["checksum"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["file"] = undefined /*out*/;
-            inputs["metadata"] = undefined /*out*/;
-            inputs["owner"] = undefined /*out*/;
-            inputs["schema"] = undefined /*out*/;
-            inputs["sizeBytes"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["updateAt"] = undefined /*out*/;
-            inputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["containerFormat"] = args ? args.containerFormat : undefined;
+            resourceInputs["diskFormat"] = args ? args.diskFormat : undefined;
+            resourceInputs["hidden"] = args ? args.hidden : undefined;
+            resourceInputs["imageCachePath"] = args ? args.imageCachePath : undefined;
+            resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["imageSourcePassword"] = args ? args.imageSourcePassword : undefined;
+            resourceInputs["imageSourceUrl"] = args ? args.imageSourceUrl : undefined;
+            resourceInputs["imageSourceUsername"] = args ? args.imageSourceUsername : undefined;
+            resourceInputs["localFilePath"] = args ? args.localFilePath : undefined;
+            resourceInputs["minDiskGb"] = args ? args.minDiskGb : undefined;
+            resourceInputs["minRamMb"] = args ? args.minRamMb : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["properties"] = args ? args.properties : undefined;
+            resourceInputs["protected"] = args ? args.protected : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["verifyChecksum"] = args ? args.verifyChecksum : undefined;
+            resourceInputs["visibility"] = args ? args.visibility : undefined;
+            resourceInputs["webDownload"] = args ? args.webDownload : undefined;
+            resourceInputs["checksum"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["file"] = undefined /*out*/;
+            resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["owner"] = undefined /*out*/;
+            resourceInputs["schema"] = undefined /*out*/;
+            resourceInputs["sizeBytes"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["updateAt"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Image.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Image.__pulumiType, name, resourceInputs, opts);
     }
 }
 

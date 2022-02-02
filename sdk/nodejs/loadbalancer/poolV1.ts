@@ -204,19 +204,19 @@ export class PoolV1 extends pulumi.CustomResource {
      */
     constructor(name: string, args: PoolV1Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PoolV1Args | PoolV1State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PoolV1State | undefined;
-            inputs["lbMethod"] = state ? state.lbMethod : undefined;
-            inputs["lbProvider"] = state ? state.lbProvider : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["monitorIds"] = state ? state.monitorIds : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["subnetId"] = state ? state.subnetId : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["lbMethod"] = state ? state.lbMethod : undefined;
+            resourceInputs["lbProvider"] = state ? state.lbProvider : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["monitorIds"] = state ? state.monitorIds : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as PoolV1Args | undefined;
             if ((!args || args.lbMethod === undefined) && !opts.urn) {
@@ -228,20 +228,18 @@ export class PoolV1 extends pulumi.CustomResource {
             if ((!args || args.subnetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            inputs["lbMethod"] = args ? args.lbMethod : undefined;
-            inputs["lbProvider"] = args ? args.lbProvider : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["monitorIds"] = args ? args.monitorIds : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["subnetId"] = args ? args.subnetId : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["lbMethod"] = args ? args.lbMethod : undefined;
+            resourceInputs["lbProvider"] = args ? args.lbProvider : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["monitorIds"] = args ? args.monitorIds : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(PoolV1.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(PoolV1.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -143,24 +143,24 @@ export class Vip extends pulumi.CustomResource {
      */
     constructor(name: string, args: VipArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VipArgs | VipState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VipState | undefined;
-            inputs["address"] = state ? state.address : undefined;
-            inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            inputs["connLimit"] = state ? state.connLimit : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["floatingIp"] = state ? state.floatingIp : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["persistence"] = state ? state.persistence : undefined;
-            inputs["poolId"] = state ? state.poolId : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["portId"] = state ? state.portId : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["subnetId"] = state ? state.subnetId : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            resourceInputs["connLimit"] = state ? state.connLimit : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["floatingIp"] = state ? state.floatingIp : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["persistence"] = state ? state.persistence : undefined;
+            resourceInputs["poolId"] = state ? state.poolId : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["portId"] = state ? state.portId : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as VipArgs | undefined;
             if ((!args || args.poolId === undefined) && !opts.urn) {
@@ -175,25 +175,23 @@ export class Vip extends pulumi.CustomResource {
             if ((!args || args.subnetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            inputs["address"] = args ? args.address : undefined;
-            inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            inputs["connLimit"] = args ? args.connLimit : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["floatingIp"] = args ? args.floatingIp : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["persistence"] = args ? args.persistence : undefined;
-            inputs["poolId"] = args ? args.poolId : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["subnetId"] = args ? args.subnetId : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["portId"] = undefined /*out*/;
+            resourceInputs["address"] = args ? args.address : undefined;
+            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            resourceInputs["connLimit"] = args ? args.connLimit : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["floatingIp"] = args ? args.floatingIp : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["persistence"] = args ? args.persistence : undefined;
+            resourceInputs["poolId"] = args ? args.poolId : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["portId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Vip.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Vip.__pulumiType, name, resourceInputs, opts);
     }
 }
 

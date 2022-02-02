@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Networking
 {
@@ -39,7 +38,7 @@ namespace Pulumi.OpenStack.Networking
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetQuotaV2Result> InvokeAsync(GetQuotaV2Args args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQuotaV2Result>("openstack:networking/getQuotaV2:getQuotaV2", args ?? new GetQuotaV2Args(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetQuotaV2Result>("openstack:networking/getQuotaV2:getQuotaV2", args ?? new GetQuotaV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the networking quota of an OpenStack project.
@@ -68,7 +67,7 @@ namespace Pulumi.OpenStack.Networking
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetQuotaV2Result> Invoke(GetQuotaV2InvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetQuotaV2Result>("openstack:networking/getQuotaV2:getQuotaV2", args ?? new GetQuotaV2InvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetQuotaV2Result>("openstack:networking/getQuotaV2:getQuotaV2", args ?? new GetQuotaV2InvokeArgs(), options.WithDefaults());
     }
 
 

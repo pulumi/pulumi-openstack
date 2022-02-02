@@ -380,7 +380,7 @@ type StackV1Input interface {
 }
 
 func (*StackV1) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackV1)(nil))
+	return reflect.TypeOf((**StackV1)(nil)).Elem()
 }
 
 func (i *StackV1) ToStackV1Output() StackV1Output {
@@ -389,35 +389,6 @@ func (i *StackV1) ToStackV1Output() StackV1Output {
 
 func (i *StackV1) ToStackV1OutputWithContext(ctx context.Context) StackV1Output {
 	return pulumi.ToOutputWithContext(ctx, i).(StackV1Output)
-}
-
-func (i *StackV1) ToStackV1PtrOutput() StackV1PtrOutput {
-	return i.ToStackV1PtrOutputWithContext(context.Background())
-}
-
-func (i *StackV1) ToStackV1PtrOutputWithContext(ctx context.Context) StackV1PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StackV1PtrOutput)
-}
-
-type StackV1PtrInput interface {
-	pulumi.Input
-
-	ToStackV1PtrOutput() StackV1PtrOutput
-	ToStackV1PtrOutputWithContext(ctx context.Context) StackV1PtrOutput
-}
-
-type stackV1PtrType StackV1Args
-
-func (*stackV1PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StackV1)(nil))
-}
-
-func (i *stackV1PtrType) ToStackV1PtrOutput() StackV1PtrOutput {
-	return i.ToStackV1PtrOutputWithContext(context.Background())
-}
-
-func (i *stackV1PtrType) ToStackV1PtrOutputWithContext(ctx context.Context) StackV1PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StackV1PtrOutput)
 }
 
 // StackV1ArrayInput is an input type that accepts StackV1Array and StackV1ArrayOutput values.
@@ -473,7 +444,7 @@ func (i StackV1Map) ToStackV1MapOutputWithContext(ctx context.Context) StackV1Ma
 type StackV1Output struct{ *pulumi.OutputState }
 
 func (StackV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*StackV1)(nil))
+	return reflect.TypeOf((**StackV1)(nil)).Elem()
 }
 
 func (o StackV1Output) ToStackV1Output() StackV1Output {
@@ -484,44 +455,10 @@ func (o StackV1Output) ToStackV1OutputWithContext(ctx context.Context) StackV1Ou
 	return o
 }
 
-func (o StackV1Output) ToStackV1PtrOutput() StackV1PtrOutput {
-	return o.ToStackV1PtrOutputWithContext(context.Background())
-}
-
-func (o StackV1Output) ToStackV1PtrOutputWithContext(ctx context.Context) StackV1PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StackV1) *StackV1 {
-		return &v
-	}).(StackV1PtrOutput)
-}
-
-type StackV1PtrOutput struct{ *pulumi.OutputState }
-
-func (StackV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StackV1)(nil))
-}
-
-func (o StackV1PtrOutput) ToStackV1PtrOutput() StackV1PtrOutput {
-	return o
-}
-
-func (o StackV1PtrOutput) ToStackV1PtrOutputWithContext(ctx context.Context) StackV1PtrOutput {
-	return o
-}
-
-func (o StackV1PtrOutput) Elem() StackV1Output {
-	return o.ApplyT(func(v *StackV1) StackV1 {
-		if v != nil {
-			return *v
-		}
-		var ret StackV1
-		return ret
-	}).(StackV1Output)
-}
-
 type StackV1ArrayOutput struct{ *pulumi.OutputState }
 
 func (StackV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StackV1)(nil))
+	return reflect.TypeOf((*[]*StackV1)(nil)).Elem()
 }
 
 func (o StackV1ArrayOutput) ToStackV1ArrayOutput() StackV1ArrayOutput {
@@ -533,15 +470,15 @@ func (o StackV1ArrayOutput) ToStackV1ArrayOutputWithContext(ctx context.Context)
 }
 
 func (o StackV1ArrayOutput) Index(i pulumi.IntInput) StackV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StackV1 {
-		return vs[0].([]StackV1)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StackV1 {
+		return vs[0].([]*StackV1)[vs[1].(int)]
 	}).(StackV1Output)
 }
 
 type StackV1MapOutput struct{ *pulumi.OutputState }
 
 func (StackV1MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]StackV1)(nil))
+	return reflect.TypeOf((*map[string]*StackV1)(nil)).Elem()
 }
 
 func (o StackV1MapOutput) ToStackV1MapOutput() StackV1MapOutput {
@@ -553,18 +490,16 @@ func (o StackV1MapOutput) ToStackV1MapOutputWithContext(ctx context.Context) Sta
 }
 
 func (o StackV1MapOutput) MapIndex(k pulumi.StringInput) StackV1Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StackV1 {
-		return vs[0].(map[string]StackV1)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *StackV1 {
+		return vs[0].(map[string]*StackV1)[vs[1].(string)]
 	}).(StackV1Output)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StackV1Input)(nil)).Elem(), &StackV1{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StackV1PtrInput)(nil)).Elem(), &StackV1{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackV1ArrayInput)(nil)).Elem(), StackV1Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackV1MapInput)(nil)).Elem(), StackV1Map{})
 	pulumi.RegisterOutputType(StackV1Output{})
-	pulumi.RegisterOutputType(StackV1PtrOutput{})
 	pulumi.RegisterOutputType(StackV1ArrayOutput{})
 	pulumi.RegisterOutputType(StackV1MapOutput{})
 }

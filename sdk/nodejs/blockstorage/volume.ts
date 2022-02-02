@@ -147,52 +147,50 @@ export class Volume extends pulumi.CustomResource {
      */
     constructor(name: string, args: VolumeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VolumeArgs | VolumeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeState | undefined;
-            inputs["attachments"] = state ? state.attachments : undefined;
-            inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            inputs["consistencyGroupId"] = state ? state.consistencyGroupId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enableOnlineResize"] = state ? state.enableOnlineResize : undefined;
-            inputs["imageId"] = state ? state.imageId : undefined;
-            inputs["metadata"] = state ? state.metadata : undefined;
-            inputs["multiattach"] = state ? state.multiattach : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["schedulerHints"] = state ? state.schedulerHints : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["snapshotId"] = state ? state.snapshotId : undefined;
-            inputs["sourceReplica"] = state ? state.sourceReplica : undefined;
-            inputs["sourceVolId"] = state ? state.sourceVolId : undefined;
-            inputs["volumeType"] = state ? state.volumeType : undefined;
+            resourceInputs["attachments"] = state ? state.attachments : undefined;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            resourceInputs["consistencyGroupId"] = state ? state.consistencyGroupId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableOnlineResize"] = state ? state.enableOnlineResize : undefined;
+            resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["multiattach"] = state ? state.multiattach : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["schedulerHints"] = state ? state.schedulerHints : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
+            resourceInputs["sourceReplica"] = state ? state.sourceReplica : undefined;
+            resourceInputs["sourceVolId"] = state ? state.sourceVolId : undefined;
+            resourceInputs["volumeType"] = state ? state.volumeType : undefined;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
             if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            inputs["consistencyGroupId"] = args ? args.consistencyGroupId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enableOnlineResize"] = args ? args.enableOnlineResize : undefined;
-            inputs["imageId"] = args ? args.imageId : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["multiattach"] = args ? args.multiattach : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["schedulerHints"] = args ? args.schedulerHints : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["snapshotId"] = args ? args.snapshotId : undefined;
-            inputs["sourceReplica"] = args ? args.sourceReplica : undefined;
-            inputs["sourceVolId"] = args ? args.sourceVolId : undefined;
-            inputs["volumeType"] = args ? args.volumeType : undefined;
-            inputs["attachments"] = undefined /*out*/;
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["consistencyGroupId"] = args ? args.consistencyGroupId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableOnlineResize"] = args ? args.enableOnlineResize : undefined;
+            resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["multiattach"] = args ? args.multiattach : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["schedulerHints"] = args ? args.schedulerHints : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
+            resourceInputs["sourceReplica"] = args ? args.sourceReplica : undefined;
+            resourceInputs["sourceVolId"] = args ? args.sourceVolId : undefined;
+            resourceInputs["volumeType"] = args ? args.volumeType : undefined;
+            resourceInputs["attachments"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Volume.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Volume.__pulumiType, name, resourceInputs, opts);
     }
 }
 

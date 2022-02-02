@@ -170,7 +170,7 @@ type QosV3Input interface {
 }
 
 func (*QosV3) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosV3)(nil))
+	return reflect.TypeOf((**QosV3)(nil)).Elem()
 }
 
 func (i *QosV3) ToQosV3Output() QosV3Output {
@@ -179,35 +179,6 @@ func (i *QosV3) ToQosV3Output() QosV3Output {
 
 func (i *QosV3) ToQosV3OutputWithContext(ctx context.Context) QosV3Output {
 	return pulumi.ToOutputWithContext(ctx, i).(QosV3Output)
-}
-
-func (i *QosV3) ToQosV3PtrOutput() QosV3PtrOutput {
-	return i.ToQosV3PtrOutputWithContext(context.Background())
-}
-
-func (i *QosV3) ToQosV3PtrOutputWithContext(ctx context.Context) QosV3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QosV3PtrOutput)
-}
-
-type QosV3PtrInput interface {
-	pulumi.Input
-
-	ToQosV3PtrOutput() QosV3PtrOutput
-	ToQosV3PtrOutputWithContext(ctx context.Context) QosV3PtrOutput
-}
-
-type qosV3PtrType QosV3Args
-
-func (*qosV3PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**QosV3)(nil))
-}
-
-func (i *qosV3PtrType) ToQosV3PtrOutput() QosV3PtrOutput {
-	return i.ToQosV3PtrOutputWithContext(context.Background())
-}
-
-func (i *qosV3PtrType) ToQosV3PtrOutputWithContext(ctx context.Context) QosV3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QosV3PtrOutput)
 }
 
 // QosV3ArrayInput is an input type that accepts QosV3Array and QosV3ArrayOutput values.
@@ -263,7 +234,7 @@ func (i QosV3Map) ToQosV3MapOutputWithContext(ctx context.Context) QosV3MapOutpu
 type QosV3Output struct{ *pulumi.OutputState }
 
 func (QosV3Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosV3)(nil))
+	return reflect.TypeOf((**QosV3)(nil)).Elem()
 }
 
 func (o QosV3Output) ToQosV3Output() QosV3Output {
@@ -274,44 +245,10 @@ func (o QosV3Output) ToQosV3OutputWithContext(ctx context.Context) QosV3Output {
 	return o
 }
 
-func (o QosV3Output) ToQosV3PtrOutput() QosV3PtrOutput {
-	return o.ToQosV3PtrOutputWithContext(context.Background())
-}
-
-func (o QosV3Output) ToQosV3PtrOutputWithContext(ctx context.Context) QosV3PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v QosV3) *QosV3 {
-		return &v
-	}).(QosV3PtrOutput)
-}
-
-type QosV3PtrOutput struct{ *pulumi.OutputState }
-
-func (QosV3PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**QosV3)(nil))
-}
-
-func (o QosV3PtrOutput) ToQosV3PtrOutput() QosV3PtrOutput {
-	return o
-}
-
-func (o QosV3PtrOutput) ToQosV3PtrOutputWithContext(ctx context.Context) QosV3PtrOutput {
-	return o
-}
-
-func (o QosV3PtrOutput) Elem() QosV3Output {
-	return o.ApplyT(func(v *QosV3) QosV3 {
-		if v != nil {
-			return *v
-		}
-		var ret QosV3
-		return ret
-	}).(QosV3Output)
-}
-
 type QosV3ArrayOutput struct{ *pulumi.OutputState }
 
 func (QosV3ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]QosV3)(nil))
+	return reflect.TypeOf((*[]*QosV3)(nil)).Elem()
 }
 
 func (o QosV3ArrayOutput) ToQosV3ArrayOutput() QosV3ArrayOutput {
@@ -323,15 +260,15 @@ func (o QosV3ArrayOutput) ToQosV3ArrayOutputWithContext(ctx context.Context) Qos
 }
 
 func (o QosV3ArrayOutput) Index(i pulumi.IntInput) QosV3Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QosV3 {
-		return vs[0].([]QosV3)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QosV3 {
+		return vs[0].([]*QosV3)[vs[1].(int)]
 	}).(QosV3Output)
 }
 
 type QosV3MapOutput struct{ *pulumi.OutputState }
 
 func (QosV3MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]QosV3)(nil))
+	return reflect.TypeOf((*map[string]*QosV3)(nil)).Elem()
 }
 
 func (o QosV3MapOutput) ToQosV3MapOutput() QosV3MapOutput {
@@ -343,18 +280,16 @@ func (o QosV3MapOutput) ToQosV3MapOutputWithContext(ctx context.Context) QosV3Ma
 }
 
 func (o QosV3MapOutput) MapIndex(k pulumi.StringInput) QosV3Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) QosV3 {
-		return vs[0].(map[string]QosV3)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *QosV3 {
+		return vs[0].(map[string]*QosV3)[vs[1].(string)]
 	}).(QosV3Output)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*QosV3Input)(nil)).Elem(), &QosV3{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QosV3PtrInput)(nil)).Elem(), &QosV3{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QosV3ArrayInput)(nil)).Elem(), QosV3Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QosV3MapInput)(nil)).Elem(), QosV3Map{})
 	pulumi.RegisterOutputType(QosV3Output{})
-	pulumi.RegisterOutputType(QosV3PtrOutput{})
 	pulumi.RegisterOutputType(QosV3ArrayOutput{})
 	pulumi.RegisterOutputType(QosV3MapOutput{})
 }

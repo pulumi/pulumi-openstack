@@ -25,9 +25,7 @@ export function getContainer(args?: GetContainerArgs, opts?: pulumi.InvokeOption
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:keymanager/getContainer:getContainer", {
         "name": args.name,
         "region": args.region,

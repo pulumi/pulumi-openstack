@@ -135,17 +135,17 @@ export class ImageAccess extends pulumi.CustomResource {
      */
     constructor(name: string, args: ImageAccessArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ImageAccessArgs | ImageAccessState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ImageAccessState | undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["imageId"] = state ? state.imageId : undefined;
-            inputs["memberId"] = state ? state.memberId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["schema"] = state ? state.schema : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["memberId"] = state ? state.memberId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["schema"] = state ? state.schema : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ImageAccessArgs | undefined;
             if ((!args || args.imageId === undefined) && !opts.urn) {
@@ -154,18 +154,16 @@ export class ImageAccess extends pulumi.CustomResource {
             if ((!args || args.memberId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'memberId'");
             }
-            inputs["imageId"] = args ? args.imageId : undefined;
-            inputs["memberId"] = args ? args.memberId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["schema"] = undefined /*out*/;
-            inputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["memberId"] = args ? args.memberId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["schema"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ImageAccess.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ImageAccess.__pulumiType, name, resourceInputs, opts);
     }
 }
 

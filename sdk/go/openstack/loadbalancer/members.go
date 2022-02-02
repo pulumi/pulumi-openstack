@@ -180,7 +180,7 @@ type MembersInput interface {
 }
 
 func (*Members) ElementType() reflect.Type {
-	return reflect.TypeOf((*Members)(nil))
+	return reflect.TypeOf((**Members)(nil)).Elem()
 }
 
 func (i *Members) ToMembersOutput() MembersOutput {
@@ -189,35 +189,6 @@ func (i *Members) ToMembersOutput() MembersOutput {
 
 func (i *Members) ToMembersOutputWithContext(ctx context.Context) MembersOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MembersOutput)
-}
-
-func (i *Members) ToMembersPtrOutput() MembersPtrOutput {
-	return i.ToMembersPtrOutputWithContext(context.Background())
-}
-
-func (i *Members) ToMembersPtrOutputWithContext(ctx context.Context) MembersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MembersPtrOutput)
-}
-
-type MembersPtrInput interface {
-	pulumi.Input
-
-	ToMembersPtrOutput() MembersPtrOutput
-	ToMembersPtrOutputWithContext(ctx context.Context) MembersPtrOutput
-}
-
-type membersPtrType MembersArgs
-
-func (*membersPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Members)(nil))
-}
-
-func (i *membersPtrType) ToMembersPtrOutput() MembersPtrOutput {
-	return i.ToMembersPtrOutputWithContext(context.Background())
-}
-
-func (i *membersPtrType) ToMembersPtrOutputWithContext(ctx context.Context) MembersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MembersPtrOutput)
 }
 
 // MembersArrayInput is an input type that accepts MembersArray and MembersArrayOutput values.
@@ -273,7 +244,7 @@ func (i MembersMap) ToMembersMapOutputWithContext(ctx context.Context) MembersMa
 type MembersOutput struct{ *pulumi.OutputState }
 
 func (MembersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Members)(nil))
+	return reflect.TypeOf((**Members)(nil)).Elem()
 }
 
 func (o MembersOutput) ToMembersOutput() MembersOutput {
@@ -284,44 +255,10 @@ func (o MembersOutput) ToMembersOutputWithContext(ctx context.Context) MembersOu
 	return o
 }
 
-func (o MembersOutput) ToMembersPtrOutput() MembersPtrOutput {
-	return o.ToMembersPtrOutputWithContext(context.Background())
-}
-
-func (o MembersOutput) ToMembersPtrOutputWithContext(ctx context.Context) MembersPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Members) *Members {
-		return &v
-	}).(MembersPtrOutput)
-}
-
-type MembersPtrOutput struct{ *pulumi.OutputState }
-
-func (MembersPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Members)(nil))
-}
-
-func (o MembersPtrOutput) ToMembersPtrOutput() MembersPtrOutput {
-	return o
-}
-
-func (o MembersPtrOutput) ToMembersPtrOutputWithContext(ctx context.Context) MembersPtrOutput {
-	return o
-}
-
-func (o MembersPtrOutput) Elem() MembersOutput {
-	return o.ApplyT(func(v *Members) Members {
-		if v != nil {
-			return *v
-		}
-		var ret Members
-		return ret
-	}).(MembersOutput)
-}
-
 type MembersArrayOutput struct{ *pulumi.OutputState }
 
 func (MembersArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Members)(nil))
+	return reflect.TypeOf((*[]*Members)(nil)).Elem()
 }
 
 func (o MembersArrayOutput) ToMembersArrayOutput() MembersArrayOutput {
@@ -333,15 +270,15 @@ func (o MembersArrayOutput) ToMembersArrayOutputWithContext(ctx context.Context)
 }
 
 func (o MembersArrayOutput) Index(i pulumi.IntInput) MembersOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Members {
-		return vs[0].([]Members)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Members {
+		return vs[0].([]*Members)[vs[1].(int)]
 	}).(MembersOutput)
 }
 
 type MembersMapOutput struct{ *pulumi.OutputState }
 
 func (MembersMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Members)(nil))
+	return reflect.TypeOf((*map[string]*Members)(nil)).Elem()
 }
 
 func (o MembersMapOutput) ToMembersMapOutput() MembersMapOutput {
@@ -353,18 +290,16 @@ func (o MembersMapOutput) ToMembersMapOutputWithContext(ctx context.Context) Mem
 }
 
 func (o MembersMapOutput) MapIndex(k pulumi.StringInput) MembersOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Members {
-		return vs[0].(map[string]Members)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Members {
+		return vs[0].(map[string]*Members)[vs[1].(string)]
 	}).(MembersOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MembersInput)(nil)).Elem(), &Members{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MembersPtrInput)(nil)).Elem(), &Members{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembersArrayInput)(nil)).Elem(), MembersArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembersMapInput)(nil)).Elem(), MembersMap{})
 	pulumi.RegisterOutputType(MembersOutput{})
-	pulumi.RegisterOutputType(MembersPtrOutput{})
 	pulumi.RegisterOutputType(MembersArrayOutput{})
 	pulumi.RegisterOutputType(MembersMapOutput{})
 }

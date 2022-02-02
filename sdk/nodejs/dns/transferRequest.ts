@@ -104,34 +104,32 @@ export class TransferRequest extends pulumi.CustomResource {
      */
     constructor(name: string, args: TransferRequestArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TransferRequestArgs | TransferRequestState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransferRequestState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["disableStatusCheck"] = state ? state.disableStatusCheck : undefined;
-            inputs["key"] = state ? state.key : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["targetProjectId"] = state ? state.targetProjectId : undefined;
-            inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disableStatusCheck"] = state ? state.disableStatusCheck : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["targetProjectId"] = state ? state.targetProjectId : undefined;
+            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as TransferRequestArgs | undefined;
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disableStatusCheck"] = args ? args.disableStatusCheck : undefined;
-            inputs["key"] = args ? args.key : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["targetProjectId"] = args ? args.targetProjectId : undefined;
-            inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disableStatusCheck"] = args ? args.disableStatusCheck : undefined;
+            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["targetProjectId"] = args ? args.targetProjectId : undefined;
+            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TransferRequest.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TransferRequest.__pulumiType, name, resourceInputs, opts);
     }
 }
 

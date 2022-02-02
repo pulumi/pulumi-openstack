@@ -23,9 +23,7 @@ export function getQosMinimumBandwidthRule(args: GetQosMinimumBandwidthRuleArgs,
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", {
         "direction": args.direction,
         "minKbps": args.minKbps,

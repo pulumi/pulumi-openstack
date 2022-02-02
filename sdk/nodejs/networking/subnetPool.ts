@@ -190,58 +190,56 @@ export class SubnetPool extends pulumi.CustomResource {
      */
     constructor(name: string, args: SubnetPoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubnetPoolArgs | SubnetPoolState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubnetPoolState | undefined;
-            inputs["addressScopeId"] = state ? state.addressScopeId : undefined;
-            inputs["allTags"] = state ? state.allTags : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["defaultPrefixlen"] = state ? state.defaultPrefixlen : undefined;
-            inputs["defaultQuota"] = state ? state.defaultQuota : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["ipVersion"] = state ? state.ipVersion : undefined;
-            inputs["isDefault"] = state ? state.isDefault : undefined;
-            inputs["maxPrefixlen"] = state ? state.maxPrefixlen : undefined;
-            inputs["minPrefixlen"] = state ? state.minPrefixlen : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["prefixes"] = state ? state.prefixes : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["revisionNumber"] = state ? state.revisionNumber : undefined;
-            inputs["shared"] = state ? state.shared : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["updatedAt"] = state ? state.updatedAt : undefined;
-            inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["addressScopeId"] = state ? state.addressScopeId : undefined;
+            resourceInputs["allTags"] = state ? state.allTags : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["defaultPrefixlen"] = state ? state.defaultPrefixlen : undefined;
+            resourceInputs["defaultQuota"] = state ? state.defaultQuota : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
+            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
+            resourceInputs["maxPrefixlen"] = state ? state.maxPrefixlen : undefined;
+            resourceInputs["minPrefixlen"] = state ? state.minPrefixlen : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["prefixes"] = state ? state.prefixes : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["revisionNumber"] = state ? state.revisionNumber : undefined;
+            resourceInputs["shared"] = state ? state.shared : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as SubnetPoolArgs | undefined;
             if ((!args || args.prefixes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'prefixes'");
             }
-            inputs["addressScopeId"] = args ? args.addressScopeId : undefined;
-            inputs["defaultPrefixlen"] = args ? args.defaultPrefixlen : undefined;
-            inputs["defaultQuota"] = args ? args.defaultQuota : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["ipVersion"] = args ? args.ipVersion : undefined;
-            inputs["isDefault"] = args ? args.isDefault : undefined;
-            inputs["maxPrefixlen"] = args ? args.maxPrefixlen : undefined;
-            inputs["minPrefixlen"] = args ? args.minPrefixlen : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["prefixes"] = args ? args.prefixes : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["shared"] = args ? args.shared : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
-            inputs["allTags"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["revisionNumber"] = undefined /*out*/;
-            inputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["addressScopeId"] = args ? args.addressScopeId : undefined;
+            resourceInputs["defaultPrefixlen"] = args ? args.defaultPrefixlen : undefined;
+            resourceInputs["defaultQuota"] = args ? args.defaultQuota : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
+            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
+            resourceInputs["maxPrefixlen"] = args ? args.maxPrefixlen : undefined;
+            resourceInputs["minPrefixlen"] = args ? args.minPrefixlen : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["prefixes"] = args ? args.prefixes : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["shared"] = args ? args.shared : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["allTags"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["revisionNumber"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SubnetPool.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SubnetPool.__pulumiType, name, resourceInputs, opts);
     }
 }
 

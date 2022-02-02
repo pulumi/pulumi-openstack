@@ -26,9 +26,7 @@ export function getAddressScope(args?: GetAddressScopeArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:networking/getAddressScope:getAddressScope", {
         "ipVersion": args.ipVersion,
         "name": args.name,

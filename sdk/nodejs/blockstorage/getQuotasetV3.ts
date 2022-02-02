@@ -23,9 +23,7 @@ export function getQuotasetV3(args: GetQuotasetV3Args, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:blockstorage/getQuotasetV3:getQuotasetV3", {
         "projectId": args.projectId,
         "region": args.region,

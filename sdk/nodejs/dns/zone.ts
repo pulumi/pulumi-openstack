@@ -128,39 +128,37 @@ export class Zone extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ZoneArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ZoneArgs | ZoneState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneState | undefined;
-            inputs["attributes"] = state ? state.attributes : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["disableStatusCheck"] = state ? state.disableStatusCheck : undefined;
-            inputs["email"] = state ? state.email : undefined;
-            inputs["masters"] = state ? state.masters : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["ttl"] = state ? state.ttl : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["attributes"] = state ? state.attributes : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disableStatusCheck"] = state ? state.disableStatusCheck : undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["masters"] = state ? state.masters : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as ZoneArgs | undefined;
-            inputs["attributes"] = args ? args.attributes : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disableStatusCheck"] = args ? args.disableStatusCheck : undefined;
-            inputs["email"] = args ? args.email : undefined;
-            inputs["masters"] = args ? args.masters : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["attributes"] = args ? args.attributes : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disableStatusCheck"] = args ? args.disableStatusCheck : undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["masters"] = args ? args.masters : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Zone.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Zone.__pulumiType, name, resourceInputs, opts);
     }
 }
 

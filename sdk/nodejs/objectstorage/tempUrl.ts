@@ -107,18 +107,18 @@ export class TempUrl extends pulumi.CustomResource {
      */
     constructor(name: string, args: TempUrlArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TempUrlArgs | TempUrlState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TempUrlState | undefined;
-            inputs["container"] = state ? state.container : undefined;
-            inputs["method"] = state ? state.method : undefined;
-            inputs["object"] = state ? state.object : undefined;
-            inputs["regenerate"] = state ? state.regenerate : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["split"] = state ? state.split : undefined;
-            inputs["ttl"] = state ? state.ttl : undefined;
-            inputs["url"] = state ? state.url : undefined;
+            resourceInputs["container"] = state ? state.container : undefined;
+            resourceInputs["method"] = state ? state.method : undefined;
+            resourceInputs["object"] = state ? state.object : undefined;
+            resourceInputs["regenerate"] = state ? state.regenerate : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["split"] = state ? state.split : undefined;
+            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as TempUrlArgs | undefined;
             if ((!args || args.container === undefined) && !opts.urn) {
@@ -130,19 +130,17 @@ export class TempUrl extends pulumi.CustomResource {
             if ((!args || args.ttl === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ttl'");
             }
-            inputs["container"] = args ? args.container : undefined;
-            inputs["method"] = args ? args.method : undefined;
-            inputs["object"] = args ? args.object : undefined;
-            inputs["regenerate"] = args ? args.regenerate : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["split"] = args ? args.split : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
-            inputs["url"] = undefined /*out*/;
+            resourceInputs["container"] = args ? args.container : undefined;
+            resourceInputs["method"] = args ? args.method : undefined;
+            resourceInputs["object"] = args ? args.object : undefined;
+            resourceInputs["regenerate"] = args ? args.regenerate : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["split"] = args ? args.split : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["url"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TempUrl.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TempUrl.__pulumiType, name, resourceInputs, opts);
     }
 }
 

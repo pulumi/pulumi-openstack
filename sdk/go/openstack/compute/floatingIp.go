@@ -177,7 +177,7 @@ type FloatingIpInput interface {
 }
 
 func (*FloatingIp) ElementType() reflect.Type {
-	return reflect.TypeOf((*FloatingIp)(nil))
+	return reflect.TypeOf((**FloatingIp)(nil)).Elem()
 }
 
 func (i *FloatingIp) ToFloatingIpOutput() FloatingIpOutput {
@@ -186,35 +186,6 @@ func (i *FloatingIp) ToFloatingIpOutput() FloatingIpOutput {
 
 func (i *FloatingIp) ToFloatingIpOutputWithContext(ctx context.Context) FloatingIpOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpOutput)
-}
-
-func (i *FloatingIp) ToFloatingIpPtrOutput() FloatingIpPtrOutput {
-	return i.ToFloatingIpPtrOutputWithContext(context.Background())
-}
-
-func (i *FloatingIp) ToFloatingIpPtrOutputWithContext(ctx context.Context) FloatingIpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpPtrOutput)
-}
-
-type FloatingIpPtrInput interface {
-	pulumi.Input
-
-	ToFloatingIpPtrOutput() FloatingIpPtrOutput
-	ToFloatingIpPtrOutputWithContext(ctx context.Context) FloatingIpPtrOutput
-}
-
-type floatingIpPtrType FloatingIpArgs
-
-func (*floatingIpPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FloatingIp)(nil))
-}
-
-func (i *floatingIpPtrType) ToFloatingIpPtrOutput() FloatingIpPtrOutput {
-	return i.ToFloatingIpPtrOutputWithContext(context.Background())
-}
-
-func (i *floatingIpPtrType) ToFloatingIpPtrOutputWithContext(ctx context.Context) FloatingIpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpPtrOutput)
 }
 
 // FloatingIpArrayInput is an input type that accepts FloatingIpArray and FloatingIpArrayOutput values.
@@ -270,7 +241,7 @@ func (i FloatingIpMap) ToFloatingIpMapOutputWithContext(ctx context.Context) Flo
 type FloatingIpOutput struct{ *pulumi.OutputState }
 
 func (FloatingIpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FloatingIp)(nil))
+	return reflect.TypeOf((**FloatingIp)(nil)).Elem()
 }
 
 func (o FloatingIpOutput) ToFloatingIpOutput() FloatingIpOutput {
@@ -281,44 +252,10 @@ func (o FloatingIpOutput) ToFloatingIpOutputWithContext(ctx context.Context) Flo
 	return o
 }
 
-func (o FloatingIpOutput) ToFloatingIpPtrOutput() FloatingIpPtrOutput {
-	return o.ToFloatingIpPtrOutputWithContext(context.Background())
-}
-
-func (o FloatingIpOutput) ToFloatingIpPtrOutputWithContext(ctx context.Context) FloatingIpPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FloatingIp) *FloatingIp {
-		return &v
-	}).(FloatingIpPtrOutput)
-}
-
-type FloatingIpPtrOutput struct{ *pulumi.OutputState }
-
-func (FloatingIpPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FloatingIp)(nil))
-}
-
-func (o FloatingIpPtrOutput) ToFloatingIpPtrOutput() FloatingIpPtrOutput {
-	return o
-}
-
-func (o FloatingIpPtrOutput) ToFloatingIpPtrOutputWithContext(ctx context.Context) FloatingIpPtrOutput {
-	return o
-}
-
-func (o FloatingIpPtrOutput) Elem() FloatingIpOutput {
-	return o.ApplyT(func(v *FloatingIp) FloatingIp {
-		if v != nil {
-			return *v
-		}
-		var ret FloatingIp
-		return ret
-	}).(FloatingIpOutput)
-}
-
 type FloatingIpArrayOutput struct{ *pulumi.OutputState }
 
 func (FloatingIpArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FloatingIp)(nil))
+	return reflect.TypeOf((*[]*FloatingIp)(nil)).Elem()
 }
 
 func (o FloatingIpArrayOutput) ToFloatingIpArrayOutput() FloatingIpArrayOutput {
@@ -330,15 +267,15 @@ func (o FloatingIpArrayOutput) ToFloatingIpArrayOutputWithContext(ctx context.Co
 }
 
 func (o FloatingIpArrayOutput) Index(i pulumi.IntInput) FloatingIpOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FloatingIp {
-		return vs[0].([]FloatingIp)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FloatingIp {
+		return vs[0].([]*FloatingIp)[vs[1].(int)]
 	}).(FloatingIpOutput)
 }
 
 type FloatingIpMapOutput struct{ *pulumi.OutputState }
 
 func (FloatingIpMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]FloatingIp)(nil))
+	return reflect.TypeOf((*map[string]*FloatingIp)(nil)).Elem()
 }
 
 func (o FloatingIpMapOutput) ToFloatingIpMapOutput() FloatingIpMapOutput {
@@ -350,18 +287,16 @@ func (o FloatingIpMapOutput) ToFloatingIpMapOutputWithContext(ctx context.Contex
 }
 
 func (o FloatingIpMapOutput) MapIndex(k pulumi.StringInput) FloatingIpOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FloatingIp {
-		return vs[0].(map[string]FloatingIp)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *FloatingIp {
+		return vs[0].(map[string]*FloatingIp)[vs[1].(string)]
 	}).(FloatingIpOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FloatingIpInput)(nil)).Elem(), &FloatingIp{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FloatingIpPtrInput)(nil)).Elem(), &FloatingIp{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FloatingIpArrayInput)(nil)).Elem(), FloatingIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FloatingIpMapInput)(nil)).Elem(), FloatingIpMap{})
 	pulumi.RegisterOutputType(FloatingIpOutput{})
-	pulumi.RegisterOutputType(FloatingIpPtrOutput{})
 	pulumi.RegisterOutputType(FloatingIpArrayOutput{})
 	pulumi.RegisterOutputType(FloatingIpMapOutput{})
 }

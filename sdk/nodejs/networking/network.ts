@@ -190,51 +190,49 @@ export class Network extends pulumi.CustomResource {
      */
     constructor(name: string, args?: NetworkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkArgs | NetworkState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkState | undefined;
-            inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            inputs["allTags"] = state ? state.allTags : undefined;
-            inputs["availabilityZoneHints"] = state ? state.availabilityZoneHints : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["dnsDomain"] = state ? state.dnsDomain : undefined;
-            inputs["external"] = state ? state.external : undefined;
-            inputs["mtu"] = state ? state.mtu : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["portSecurityEnabled"] = state ? state.portSecurityEnabled : undefined;
-            inputs["qosPolicyId"] = state ? state.qosPolicyId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["segments"] = state ? state.segments : undefined;
-            inputs["shared"] = state ? state.shared : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
-            inputs["transparentVlan"] = state ? state.transparentVlan : undefined;
-            inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            resourceInputs["allTags"] = state ? state.allTags : undefined;
+            resourceInputs["availabilityZoneHints"] = state ? state.availabilityZoneHints : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dnsDomain"] = state ? state.dnsDomain : undefined;
+            resourceInputs["external"] = state ? state.external : undefined;
+            resourceInputs["mtu"] = state ? state.mtu : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["portSecurityEnabled"] = state ? state.portSecurityEnabled : undefined;
+            resourceInputs["qosPolicyId"] = state ? state.qosPolicyId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["segments"] = state ? state.segments : undefined;
+            resourceInputs["shared"] = state ? state.shared : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["transparentVlan"] = state ? state.transparentVlan : undefined;
+            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
-            inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            inputs["availabilityZoneHints"] = args ? args.availabilityZoneHints : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["dnsDomain"] = args ? args.dnsDomain : undefined;
-            inputs["external"] = args ? args.external : undefined;
-            inputs["mtu"] = args ? args.mtu : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["portSecurityEnabled"] = args ? args.portSecurityEnabled : undefined;
-            inputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["segments"] = args ? args.segments : undefined;
-            inputs["shared"] = args ? args.shared : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["transparentVlan"] = args ? args.transparentVlan : undefined;
-            inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
-            inputs["allTags"] = undefined /*out*/;
+            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            resourceInputs["availabilityZoneHints"] = args ? args.availabilityZoneHints : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dnsDomain"] = args ? args.dnsDomain : undefined;
+            resourceInputs["external"] = args ? args.external : undefined;
+            resourceInputs["mtu"] = args ? args.mtu : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["portSecurityEnabled"] = args ? args.portSecurityEnabled : undefined;
+            resourceInputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["segments"] = args ? args.segments : undefined;
+            resourceInputs["shared"] = args ? args.shared : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["transparentVlan"] = args ? args.transparentVlan : undefined;
+            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["allTags"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Network.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Network.__pulumiType, name, resourceInputs, opts);
     }
 }
 

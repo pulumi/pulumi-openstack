@@ -147,20 +147,20 @@ export class L7RuleV2 extends pulumi.CustomResource {
      */
     constructor(name: string, args: L7RuleV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: L7RuleV2Args | L7RuleV2State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as L7RuleV2State | undefined;
-            inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            inputs["compareType"] = state ? state.compareType : undefined;
-            inputs["invert"] = state ? state.invert : undefined;
-            inputs["key"] = state ? state.key : undefined;
-            inputs["l7policyId"] = state ? state.l7policyId : undefined;
-            inputs["listenerId"] = state ? state.listenerId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["value"] = state ? state.value : undefined;
+            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            resourceInputs["compareType"] = state ? state.compareType : undefined;
+            resourceInputs["invert"] = state ? state.invert : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["l7policyId"] = state ? state.l7policyId : undefined;
+            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as L7RuleV2Args | undefined;
             if ((!args || args.compareType === undefined) && !opts.urn) {
@@ -175,21 +175,19 @@ export class L7RuleV2 extends pulumi.CustomResource {
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            inputs["compareType"] = args ? args.compareType : undefined;
-            inputs["invert"] = args ? args.invert : undefined;
-            inputs["key"] = args ? args.key : undefined;
-            inputs["l7policyId"] = args ? args.l7policyId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["value"] = args ? args.value : undefined;
-            inputs["listenerId"] = undefined /*out*/;
+            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            resourceInputs["compareType"] = args ? args.compareType : undefined;
+            resourceInputs["invert"] = args ? args.invert : undefined;
+            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["l7policyId"] = args ? args.l7policyId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["listenerId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(L7RuleV2.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(L7RuleV2.__pulumiType, name, resourceInputs, opts);
     }
 }
 

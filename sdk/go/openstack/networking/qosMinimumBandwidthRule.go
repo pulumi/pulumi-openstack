@@ -179,7 +179,7 @@ type QosMinimumBandwidthRuleInput interface {
 }
 
 func (*QosMinimumBandwidthRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosMinimumBandwidthRule)(nil))
+	return reflect.TypeOf((**QosMinimumBandwidthRule)(nil)).Elem()
 }
 
 func (i *QosMinimumBandwidthRule) ToQosMinimumBandwidthRuleOutput() QosMinimumBandwidthRuleOutput {
@@ -188,35 +188,6 @@ func (i *QosMinimumBandwidthRule) ToQosMinimumBandwidthRuleOutput() QosMinimumBa
 
 func (i *QosMinimumBandwidthRule) ToQosMinimumBandwidthRuleOutputWithContext(ctx context.Context) QosMinimumBandwidthRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosMinimumBandwidthRuleOutput)
-}
-
-func (i *QosMinimumBandwidthRule) ToQosMinimumBandwidthRulePtrOutput() QosMinimumBandwidthRulePtrOutput {
-	return i.ToQosMinimumBandwidthRulePtrOutputWithContext(context.Background())
-}
-
-func (i *QosMinimumBandwidthRule) ToQosMinimumBandwidthRulePtrOutputWithContext(ctx context.Context) QosMinimumBandwidthRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QosMinimumBandwidthRulePtrOutput)
-}
-
-type QosMinimumBandwidthRulePtrInput interface {
-	pulumi.Input
-
-	ToQosMinimumBandwidthRulePtrOutput() QosMinimumBandwidthRulePtrOutput
-	ToQosMinimumBandwidthRulePtrOutputWithContext(ctx context.Context) QosMinimumBandwidthRulePtrOutput
-}
-
-type qosMinimumBandwidthRulePtrType QosMinimumBandwidthRuleArgs
-
-func (*qosMinimumBandwidthRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**QosMinimumBandwidthRule)(nil))
-}
-
-func (i *qosMinimumBandwidthRulePtrType) ToQosMinimumBandwidthRulePtrOutput() QosMinimumBandwidthRulePtrOutput {
-	return i.ToQosMinimumBandwidthRulePtrOutputWithContext(context.Background())
-}
-
-func (i *qosMinimumBandwidthRulePtrType) ToQosMinimumBandwidthRulePtrOutputWithContext(ctx context.Context) QosMinimumBandwidthRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QosMinimumBandwidthRulePtrOutput)
 }
 
 // QosMinimumBandwidthRuleArrayInput is an input type that accepts QosMinimumBandwidthRuleArray and QosMinimumBandwidthRuleArrayOutput values.
@@ -272,7 +243,7 @@ func (i QosMinimumBandwidthRuleMap) ToQosMinimumBandwidthRuleMapOutputWithContex
 type QosMinimumBandwidthRuleOutput struct{ *pulumi.OutputState }
 
 func (QosMinimumBandwidthRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosMinimumBandwidthRule)(nil))
+	return reflect.TypeOf((**QosMinimumBandwidthRule)(nil)).Elem()
 }
 
 func (o QosMinimumBandwidthRuleOutput) ToQosMinimumBandwidthRuleOutput() QosMinimumBandwidthRuleOutput {
@@ -283,44 +254,10 @@ func (o QosMinimumBandwidthRuleOutput) ToQosMinimumBandwidthRuleOutputWithContex
 	return o
 }
 
-func (o QosMinimumBandwidthRuleOutput) ToQosMinimumBandwidthRulePtrOutput() QosMinimumBandwidthRulePtrOutput {
-	return o.ToQosMinimumBandwidthRulePtrOutputWithContext(context.Background())
-}
-
-func (o QosMinimumBandwidthRuleOutput) ToQosMinimumBandwidthRulePtrOutputWithContext(ctx context.Context) QosMinimumBandwidthRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v QosMinimumBandwidthRule) *QosMinimumBandwidthRule {
-		return &v
-	}).(QosMinimumBandwidthRulePtrOutput)
-}
-
-type QosMinimumBandwidthRulePtrOutput struct{ *pulumi.OutputState }
-
-func (QosMinimumBandwidthRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**QosMinimumBandwidthRule)(nil))
-}
-
-func (o QosMinimumBandwidthRulePtrOutput) ToQosMinimumBandwidthRulePtrOutput() QosMinimumBandwidthRulePtrOutput {
-	return o
-}
-
-func (o QosMinimumBandwidthRulePtrOutput) ToQosMinimumBandwidthRulePtrOutputWithContext(ctx context.Context) QosMinimumBandwidthRulePtrOutput {
-	return o
-}
-
-func (o QosMinimumBandwidthRulePtrOutput) Elem() QosMinimumBandwidthRuleOutput {
-	return o.ApplyT(func(v *QosMinimumBandwidthRule) QosMinimumBandwidthRule {
-		if v != nil {
-			return *v
-		}
-		var ret QosMinimumBandwidthRule
-		return ret
-	}).(QosMinimumBandwidthRuleOutput)
-}
-
 type QosMinimumBandwidthRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (QosMinimumBandwidthRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]QosMinimumBandwidthRule)(nil))
+	return reflect.TypeOf((*[]*QosMinimumBandwidthRule)(nil)).Elem()
 }
 
 func (o QosMinimumBandwidthRuleArrayOutput) ToQosMinimumBandwidthRuleArrayOutput() QosMinimumBandwidthRuleArrayOutput {
@@ -332,15 +269,15 @@ func (o QosMinimumBandwidthRuleArrayOutput) ToQosMinimumBandwidthRuleArrayOutput
 }
 
 func (o QosMinimumBandwidthRuleArrayOutput) Index(i pulumi.IntInput) QosMinimumBandwidthRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QosMinimumBandwidthRule {
-		return vs[0].([]QosMinimumBandwidthRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QosMinimumBandwidthRule {
+		return vs[0].([]*QosMinimumBandwidthRule)[vs[1].(int)]
 	}).(QosMinimumBandwidthRuleOutput)
 }
 
 type QosMinimumBandwidthRuleMapOutput struct{ *pulumi.OutputState }
 
 func (QosMinimumBandwidthRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]QosMinimumBandwidthRule)(nil))
+	return reflect.TypeOf((*map[string]*QosMinimumBandwidthRule)(nil)).Elem()
 }
 
 func (o QosMinimumBandwidthRuleMapOutput) ToQosMinimumBandwidthRuleMapOutput() QosMinimumBandwidthRuleMapOutput {
@@ -352,18 +289,16 @@ func (o QosMinimumBandwidthRuleMapOutput) ToQosMinimumBandwidthRuleMapOutputWith
 }
 
 func (o QosMinimumBandwidthRuleMapOutput) MapIndex(k pulumi.StringInput) QosMinimumBandwidthRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) QosMinimumBandwidthRule {
-		return vs[0].(map[string]QosMinimumBandwidthRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *QosMinimumBandwidthRule {
+		return vs[0].(map[string]*QosMinimumBandwidthRule)[vs[1].(string)]
 	}).(QosMinimumBandwidthRuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*QosMinimumBandwidthRuleInput)(nil)).Elem(), &QosMinimumBandwidthRule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QosMinimumBandwidthRulePtrInput)(nil)).Elem(), &QosMinimumBandwidthRule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QosMinimumBandwidthRuleArrayInput)(nil)).Elem(), QosMinimumBandwidthRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QosMinimumBandwidthRuleMapInput)(nil)).Elem(), QosMinimumBandwidthRuleMap{})
 	pulumi.RegisterOutputType(QosMinimumBandwidthRuleOutput{})
-	pulumi.RegisterOutputType(QosMinimumBandwidthRulePtrOutput{})
 	pulumi.RegisterOutputType(QosMinimumBandwidthRuleArrayOutput{})
 	pulumi.RegisterOutputType(QosMinimumBandwidthRuleMapOutput{})
 }

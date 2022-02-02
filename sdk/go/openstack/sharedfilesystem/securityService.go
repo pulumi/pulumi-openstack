@@ -277,7 +277,7 @@ type SecurityServiceInput interface {
 }
 
 func (*SecurityService) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityService)(nil))
+	return reflect.TypeOf((**SecurityService)(nil)).Elem()
 }
 
 func (i *SecurityService) ToSecurityServiceOutput() SecurityServiceOutput {
@@ -286,35 +286,6 @@ func (i *SecurityService) ToSecurityServiceOutput() SecurityServiceOutput {
 
 func (i *SecurityService) ToSecurityServiceOutputWithContext(ctx context.Context) SecurityServiceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityServiceOutput)
-}
-
-func (i *SecurityService) ToSecurityServicePtrOutput() SecurityServicePtrOutput {
-	return i.ToSecurityServicePtrOutputWithContext(context.Background())
-}
-
-func (i *SecurityService) ToSecurityServicePtrOutputWithContext(ctx context.Context) SecurityServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityServicePtrOutput)
-}
-
-type SecurityServicePtrInput interface {
-	pulumi.Input
-
-	ToSecurityServicePtrOutput() SecurityServicePtrOutput
-	ToSecurityServicePtrOutputWithContext(ctx context.Context) SecurityServicePtrOutput
-}
-
-type securityServicePtrType SecurityServiceArgs
-
-func (*securityServicePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityService)(nil))
-}
-
-func (i *securityServicePtrType) ToSecurityServicePtrOutput() SecurityServicePtrOutput {
-	return i.ToSecurityServicePtrOutputWithContext(context.Background())
-}
-
-func (i *securityServicePtrType) ToSecurityServicePtrOutputWithContext(ctx context.Context) SecurityServicePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SecurityServicePtrOutput)
 }
 
 // SecurityServiceArrayInput is an input type that accepts SecurityServiceArray and SecurityServiceArrayOutput values.
@@ -370,7 +341,7 @@ func (i SecurityServiceMap) ToSecurityServiceMapOutputWithContext(ctx context.Co
 type SecurityServiceOutput struct{ *pulumi.OutputState }
 
 func (SecurityServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityService)(nil))
+	return reflect.TypeOf((**SecurityService)(nil)).Elem()
 }
 
 func (o SecurityServiceOutput) ToSecurityServiceOutput() SecurityServiceOutput {
@@ -381,44 +352,10 @@ func (o SecurityServiceOutput) ToSecurityServiceOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o SecurityServiceOutput) ToSecurityServicePtrOutput() SecurityServicePtrOutput {
-	return o.ToSecurityServicePtrOutputWithContext(context.Background())
-}
-
-func (o SecurityServiceOutput) ToSecurityServicePtrOutputWithContext(ctx context.Context) SecurityServicePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityService) *SecurityService {
-		return &v
-	}).(SecurityServicePtrOutput)
-}
-
-type SecurityServicePtrOutput struct{ *pulumi.OutputState }
-
-func (SecurityServicePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SecurityService)(nil))
-}
-
-func (o SecurityServicePtrOutput) ToSecurityServicePtrOutput() SecurityServicePtrOutput {
-	return o
-}
-
-func (o SecurityServicePtrOutput) ToSecurityServicePtrOutputWithContext(ctx context.Context) SecurityServicePtrOutput {
-	return o
-}
-
-func (o SecurityServicePtrOutput) Elem() SecurityServiceOutput {
-	return o.ApplyT(func(v *SecurityService) SecurityService {
-		if v != nil {
-			return *v
-		}
-		var ret SecurityService
-		return ret
-	}).(SecurityServiceOutput)
-}
-
 type SecurityServiceArrayOutput struct{ *pulumi.OutputState }
 
 func (SecurityServiceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityService)(nil))
+	return reflect.TypeOf((*[]*SecurityService)(nil)).Elem()
 }
 
 func (o SecurityServiceArrayOutput) ToSecurityServiceArrayOutput() SecurityServiceArrayOutput {
@@ -430,15 +367,15 @@ func (o SecurityServiceArrayOutput) ToSecurityServiceArrayOutputWithContext(ctx 
 }
 
 func (o SecurityServiceArrayOutput) Index(i pulumi.IntInput) SecurityServiceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityService {
-		return vs[0].([]SecurityService)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecurityService {
+		return vs[0].([]*SecurityService)[vs[1].(int)]
 	}).(SecurityServiceOutput)
 }
 
 type SecurityServiceMapOutput struct{ *pulumi.OutputState }
 
 func (SecurityServiceMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SecurityService)(nil))
+	return reflect.TypeOf((*map[string]*SecurityService)(nil)).Elem()
 }
 
 func (o SecurityServiceMapOutput) ToSecurityServiceMapOutput() SecurityServiceMapOutput {
@@ -450,18 +387,16 @@ func (o SecurityServiceMapOutput) ToSecurityServiceMapOutputWithContext(ctx cont
 }
 
 func (o SecurityServiceMapOutput) MapIndex(k pulumi.StringInput) SecurityServiceOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SecurityService {
-		return vs[0].(map[string]SecurityService)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SecurityService {
+		return vs[0].(map[string]*SecurityService)[vs[1].(string)]
 	}).(SecurityServiceOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityServiceInput)(nil)).Elem(), &SecurityService{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SecurityServicePtrInput)(nil)).Elem(), &SecurityService{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityServiceArrayInput)(nil)).Elem(), SecurityServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityServiceMapInput)(nil)).Elem(), SecurityServiceMap{})
 	pulumi.RegisterOutputType(SecurityServiceOutput{})
-	pulumi.RegisterOutputType(SecurityServicePtrOutput{})
 	pulumi.RegisterOutputType(SecurityServiceArrayOutput{})
 	pulumi.RegisterOutputType(SecurityServiceMapOutput{})
 }

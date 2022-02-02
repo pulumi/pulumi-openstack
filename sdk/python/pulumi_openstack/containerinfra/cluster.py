@@ -31,6 +31,42 @@ class ClusterArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+        :param pulumi.Input[str] cluster_template_id: The UUID of the V1 Container Infra cluster
+               template. Changing this creates a new cluster.
+        :param pulumi.Input[int] create_timeout: The timeout (in minutes) for creating the
+               cluster. Changing this creates a new cluster.
+        :param pulumi.Input[str] discovery_url: The URL used for cluster node discovery.
+               Changing this creates a new cluster.
+        :param pulumi.Input[int] docker_volume_size: The size (in GB) of the Docker volume.
+               Changing this creates a new cluster.
+        :param pulumi.Input[str] fixed_network: The fixed network that will be attached to the
+               cluster. Changing this creates a new cluster.
+        :param pulumi.Input[str] fixed_subnet: The fixed subnet that will be attached to the
+               cluster. Changing this creates a new cluster.
+        :param pulumi.Input[str] flavor: The flavor for the nodes of the cluster. Can be set via
+               the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+               cluster.
+        :param pulumi.Input[bool] floating_ip_enabled: Indicates whether floating IP should be
+               created for every cluster node. Changing this creates a new cluster.
+        :param pulumi.Input[str] keypair: The name of the Compute service SSH keypair. Changing
+               this creates a new cluster.
+        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+               properties of the cluster. Changing this creates a new cluster.
+        :param pulumi.Input[int] master_count: The number of master nodes for the cluster.
+               Changing this creates a new cluster.
+        :param pulumi.Input[str] master_flavor: The flavor for the master nodes. Can be set via
+               the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
+               new cluster.
+        :param pulumi.Input[bool] merge_labels: Indicates whether the provided labels should be
+               merged with cluster template labels. Changing this creates a new cluster.
+        :param pulumi.Input[str] name: The name of the cluster. Changing this updates the name
+               of the existing cluster template.
+        :param pulumi.Input[int] node_count: The number of nodes for the cluster. Changing this
+               creates a new cluster.
+        :param pulumi.Input[str] region: The region in which to obtain the V1 Container Infra
+               client. A Container Infra client is needed to create a cluster. If omitted,
+               the `region` argument of the provider is used. Changing this creates a new
+               cluster.
         """
         pulumi.set(__self__, "cluster_template_id", cluster_template_id)
         if create_timeout is not None:
@@ -67,6 +103,10 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="clusterTemplateId")
     def cluster_template_id(self) -> pulumi.Input[str]:
+        """
+        The UUID of the V1 Container Infra cluster
+        template. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "cluster_template_id")
 
     @cluster_template_id.setter
@@ -76,6 +116,10 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="createTimeout")
     def create_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timeout (in minutes) for creating the
+        cluster. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "create_timeout")
 
     @create_timeout.setter
@@ -85,6 +129,10 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="discoveryUrl")
     def discovery_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL used for cluster node discovery.
+        Changing this creates a new cluster.
+        """
         return pulumi.get(self, "discovery_url")
 
     @discovery_url.setter
@@ -94,6 +142,10 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="dockerVolumeSize")
     def docker_volume_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size (in GB) of the Docker volume.
+        Changing this creates a new cluster.
+        """
         return pulumi.get(self, "docker_volume_size")
 
     @docker_volume_size.setter
@@ -103,6 +155,10 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="fixedNetwork")
     def fixed_network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fixed network that will be attached to the
+        cluster. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "fixed_network")
 
     @fixed_network.setter
@@ -112,6 +168,10 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="fixedSubnet")
     def fixed_subnet(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fixed subnet that will be attached to the
+        cluster. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "fixed_subnet")
 
     @fixed_subnet.setter
@@ -121,6 +181,11 @@ class ClusterArgs:
     @property
     @pulumi.getter
     def flavor(self) -> Optional[pulumi.Input[str]]:
+        """
+        The flavor for the nodes of the cluster. Can be set via
+        the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+        cluster.
+        """
         return pulumi.get(self, "flavor")
 
     @flavor.setter
@@ -130,6 +195,10 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="floatingIpEnabled")
     def floating_ip_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether floating IP should be
+        created for every cluster node. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "floating_ip_enabled")
 
     @floating_ip_enabled.setter
@@ -139,6 +208,10 @@ class ClusterArgs:
     @property
     @pulumi.getter
     def keypair(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Compute service SSH keypair. Changing
+        this creates a new cluster.
+        """
         return pulumi.get(self, "keypair")
 
     @keypair.setter
@@ -148,6 +221,10 @@ class ClusterArgs:
     @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The list of key value pairs representing additional
+        properties of the cluster. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -157,6 +234,10 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="masterCount")
     def master_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of master nodes for the cluster.
+        Changing this creates a new cluster.
+        """
         return pulumi.get(self, "master_count")
 
     @master_count.setter
@@ -166,6 +247,11 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="masterFlavor")
     def master_flavor(self) -> Optional[pulumi.Input[str]]:
+        """
+        The flavor for the master nodes. Can be set via
+        the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
+        new cluster.
+        """
         return pulumi.get(self, "master_flavor")
 
     @master_flavor.setter
@@ -175,6 +261,10 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="mergeLabels")
     def merge_labels(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the provided labels should be
+        merged with cluster template labels. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "merge_labels")
 
     @merge_labels.setter
@@ -184,6 +274,10 @@ class ClusterArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the cluster. Changing this updates the name
+        of the existing cluster template.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -193,6 +287,10 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of nodes for the cluster. Changing this
+        creates a new cluster.
+        """
         return pulumi.get(self, "node_count")
 
     @node_count.setter
@@ -202,6 +300,12 @@ class ClusterArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V1 Container Infra
+        client. A Container Infra client is needed to create a cluster. If omitted,
+        the `region` argument of the provider is used. Changing this creates a new
+        cluster.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -241,6 +345,48 @@ class _ClusterState:
                  user_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+        :param pulumi.Input[str] cluster_template_id: The UUID of the V1 Container Infra cluster
+               template. Changing this creates a new cluster.
+        :param pulumi.Input[int] create_timeout: The timeout (in minutes) for creating the
+               cluster. Changing this creates a new cluster.
+        :param pulumi.Input[str] discovery_url: The URL used for cluster node discovery.
+               Changing this creates a new cluster.
+        :param pulumi.Input[int] docker_volume_size: The size (in GB) of the Docker volume.
+               Changing this creates a new cluster.
+        :param pulumi.Input[str] fixed_network: The fixed network that will be attached to the
+               cluster. Changing this creates a new cluster.
+        :param pulumi.Input[str] fixed_subnet: The fixed subnet that will be attached to the
+               cluster. Changing this creates a new cluster.
+        :param pulumi.Input[str] flavor: The flavor for the nodes of the cluster. Can be set via
+               the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+               cluster.
+        :param pulumi.Input[bool] floating_ip_enabled: Indicates whether floating IP should be
+               created for every cluster node. Changing this creates a new cluster.
+        :param pulumi.Input[str] keypair: The name of the Compute service SSH keypair. Changing
+               this creates a new cluster.
+        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+               properties of the cluster. Changing this creates a new cluster.
+        :param pulumi.Input[int] master_count: The number of master nodes for the cluster.
+               Changing this creates a new cluster.
+        :param pulumi.Input[str] master_flavor: The flavor for the master nodes. Can be set via
+               the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
+               new cluster.
+        :param pulumi.Input[bool] merge_labels: Indicates whether the provided labels should be
+               merged with cluster template labels. Changing this creates a new cluster.
+        :param pulumi.Input[str] name: The name of the cluster. Changing this updates the name
+               of the existing cluster template.
+        :param pulumi.Input[int] node_count: The number of nodes for the cluster. Changing this
+               creates a new cluster.
+        :param pulumi.Input[str] project_id: The project of the cluster. Required if admin wants
+               to create a cluster in another project. Changing this creates a new
+               cluster.
+        :param pulumi.Input[str] region: The region in which to obtain the V1 Container Infra
+               client. A Container Infra client is needed to create a cluster. If omitted,
+               the `region` argument of the provider is used. Changing this creates a new
+               cluster.
+        :param pulumi.Input[str] user_id: The user of the cluster. Required if admin wants to
+               create a cluster template for another user. Changing this creates a new
+               cluster.
         """
         if api_address is not None:
             pulumi.set(__self__, "api_address", api_address)
@@ -309,6 +455,10 @@ class _ClusterState:
     @property
     @pulumi.getter(name="clusterTemplateId")
     def cluster_template_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The UUID of the V1 Container Infra cluster
+        template. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "cluster_template_id")
 
     @cluster_template_id.setter
@@ -336,6 +486,10 @@ class _ClusterState:
     @property
     @pulumi.getter(name="createTimeout")
     def create_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timeout (in minutes) for creating the
+        cluster. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "create_timeout")
 
     @create_timeout.setter
@@ -354,6 +508,10 @@ class _ClusterState:
     @property
     @pulumi.getter(name="discoveryUrl")
     def discovery_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL used for cluster node discovery.
+        Changing this creates a new cluster.
+        """
         return pulumi.get(self, "discovery_url")
 
     @discovery_url.setter
@@ -363,6 +521,10 @@ class _ClusterState:
     @property
     @pulumi.getter(name="dockerVolumeSize")
     def docker_volume_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size (in GB) of the Docker volume.
+        Changing this creates a new cluster.
+        """
         return pulumi.get(self, "docker_volume_size")
 
     @docker_volume_size.setter
@@ -372,6 +534,10 @@ class _ClusterState:
     @property
     @pulumi.getter(name="fixedNetwork")
     def fixed_network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fixed network that will be attached to the
+        cluster. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "fixed_network")
 
     @fixed_network.setter
@@ -381,6 +547,10 @@ class _ClusterState:
     @property
     @pulumi.getter(name="fixedSubnet")
     def fixed_subnet(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fixed subnet that will be attached to the
+        cluster. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "fixed_subnet")
 
     @fixed_subnet.setter
@@ -390,6 +560,11 @@ class _ClusterState:
     @property
     @pulumi.getter
     def flavor(self) -> Optional[pulumi.Input[str]]:
+        """
+        The flavor for the nodes of the cluster. Can be set via
+        the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+        cluster.
+        """
         return pulumi.get(self, "flavor")
 
     @flavor.setter
@@ -399,6 +574,10 @@ class _ClusterState:
     @property
     @pulumi.getter(name="floatingIpEnabled")
     def floating_ip_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether floating IP should be
+        created for every cluster node. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "floating_ip_enabled")
 
     @floating_ip_enabled.setter
@@ -408,6 +587,10 @@ class _ClusterState:
     @property
     @pulumi.getter
     def keypair(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Compute service SSH keypair. Changing
+        this creates a new cluster.
+        """
         return pulumi.get(self, "keypair")
 
     @keypair.setter
@@ -426,6 +609,10 @@ class _ClusterState:
     @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The list of key value pairs representing additional
+        properties of the cluster. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -444,6 +631,10 @@ class _ClusterState:
     @property
     @pulumi.getter(name="masterCount")
     def master_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of master nodes for the cluster.
+        Changing this creates a new cluster.
+        """
         return pulumi.get(self, "master_count")
 
     @master_count.setter
@@ -453,6 +644,11 @@ class _ClusterState:
     @property
     @pulumi.getter(name="masterFlavor")
     def master_flavor(self) -> Optional[pulumi.Input[str]]:
+        """
+        The flavor for the master nodes. Can be set via
+        the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
+        new cluster.
+        """
         return pulumi.get(self, "master_flavor")
 
     @master_flavor.setter
@@ -462,6 +658,10 @@ class _ClusterState:
     @property
     @pulumi.getter(name="mergeLabels")
     def merge_labels(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the provided labels should be
+        merged with cluster template labels. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "merge_labels")
 
     @merge_labels.setter
@@ -471,6 +671,10 @@ class _ClusterState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the cluster. Changing this updates the name
+        of the existing cluster template.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -489,6 +693,10 @@ class _ClusterState:
     @property
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of nodes for the cluster. Changing this
+        creates a new cluster.
+        """
         return pulumi.get(self, "node_count")
 
     @node_count.setter
@@ -498,6 +706,11 @@ class _ClusterState:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project of the cluster. Required if admin wants
+        to create a cluster in another project. Changing this creates a new
+        cluster.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -507,6 +720,12 @@ class _ClusterState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V1 Container Infra
+        client. A Container Infra client is needed to create a cluster. If omitted,
+        the `region` argument of the provider is used. Changing this creates a new
+        cluster.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -534,6 +753,11 @@ class _ClusterState:
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user of the cluster. Required if admin wants to
+        create a cluster template for another user. Changing this creates a new
+        cluster.
+        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -574,6 +798,42 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] cluster_template_id: The UUID of the V1 Container Infra cluster
+               template. Changing this creates a new cluster.
+        :param pulumi.Input[int] create_timeout: The timeout (in minutes) for creating the
+               cluster. Changing this creates a new cluster.
+        :param pulumi.Input[str] discovery_url: The URL used for cluster node discovery.
+               Changing this creates a new cluster.
+        :param pulumi.Input[int] docker_volume_size: The size (in GB) of the Docker volume.
+               Changing this creates a new cluster.
+        :param pulumi.Input[str] fixed_network: The fixed network that will be attached to the
+               cluster. Changing this creates a new cluster.
+        :param pulumi.Input[str] fixed_subnet: The fixed subnet that will be attached to the
+               cluster. Changing this creates a new cluster.
+        :param pulumi.Input[str] flavor: The flavor for the nodes of the cluster. Can be set via
+               the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+               cluster.
+        :param pulumi.Input[bool] floating_ip_enabled: Indicates whether floating IP should be
+               created for every cluster node. Changing this creates a new cluster.
+        :param pulumi.Input[str] keypair: The name of the Compute service SSH keypair. Changing
+               this creates a new cluster.
+        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+               properties of the cluster. Changing this creates a new cluster.
+        :param pulumi.Input[int] master_count: The number of master nodes for the cluster.
+               Changing this creates a new cluster.
+        :param pulumi.Input[str] master_flavor: The flavor for the master nodes. Can be set via
+               the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
+               new cluster.
+        :param pulumi.Input[bool] merge_labels: Indicates whether the provided labels should be
+               merged with cluster template labels. Changing this creates a new cluster.
+        :param pulumi.Input[str] name: The name of the cluster. Changing this updates the name
+               of the existing cluster template.
+        :param pulumi.Input[int] node_count: The number of nodes for the cluster. Changing this
+               creates a new cluster.
+        :param pulumi.Input[str] region: The region in which to obtain the V1 Container Infra
+               client. A Container Infra client is needed to create a cluster. If omitted,
+               the `region` argument of the provider is used. Changing this creates a new
+               cluster.
         """
         ...
     @overload
@@ -706,6 +966,48 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] cluster_template_id: The UUID of the V1 Container Infra cluster
+               template. Changing this creates a new cluster.
+        :param pulumi.Input[int] create_timeout: The timeout (in minutes) for creating the
+               cluster. Changing this creates a new cluster.
+        :param pulumi.Input[str] discovery_url: The URL used for cluster node discovery.
+               Changing this creates a new cluster.
+        :param pulumi.Input[int] docker_volume_size: The size (in GB) of the Docker volume.
+               Changing this creates a new cluster.
+        :param pulumi.Input[str] fixed_network: The fixed network that will be attached to the
+               cluster. Changing this creates a new cluster.
+        :param pulumi.Input[str] fixed_subnet: The fixed subnet that will be attached to the
+               cluster. Changing this creates a new cluster.
+        :param pulumi.Input[str] flavor: The flavor for the nodes of the cluster. Can be set via
+               the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+               cluster.
+        :param pulumi.Input[bool] floating_ip_enabled: Indicates whether floating IP should be
+               created for every cluster node. Changing this creates a new cluster.
+        :param pulumi.Input[str] keypair: The name of the Compute service SSH keypair. Changing
+               this creates a new cluster.
+        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+               properties of the cluster. Changing this creates a new cluster.
+        :param pulumi.Input[int] master_count: The number of master nodes for the cluster.
+               Changing this creates a new cluster.
+        :param pulumi.Input[str] master_flavor: The flavor for the master nodes. Can be set via
+               the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
+               new cluster.
+        :param pulumi.Input[bool] merge_labels: Indicates whether the provided labels should be
+               merged with cluster template labels. Changing this creates a new cluster.
+        :param pulumi.Input[str] name: The name of the cluster. Changing this updates the name
+               of the existing cluster template.
+        :param pulumi.Input[int] node_count: The number of nodes for the cluster. Changing this
+               creates a new cluster.
+        :param pulumi.Input[str] project_id: The project of the cluster. Required if admin wants
+               to create a cluster in another project. Changing this creates a new
+               cluster.
+        :param pulumi.Input[str] region: The region in which to obtain the V1 Container Infra
+               client. A Container Infra client is needed to create a cluster. If omitted,
+               the `region` argument of the provider is used. Changing this creates a new
+               cluster.
+        :param pulumi.Input[str] user_id: The user of the cluster. Required if admin wants to
+               create a cluster template for another user. Changing this creates a new
+               cluster.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -748,6 +1050,10 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="clusterTemplateId")
     def cluster_template_id(self) -> pulumi.Output[str]:
+        """
+        The UUID of the V1 Container Infra cluster
+        template. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "cluster_template_id")
 
     @property
@@ -763,6 +1069,10 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="createTimeout")
     def create_timeout(self) -> pulumi.Output[int]:
+        """
+        The timeout (in minutes) for creating the
+        cluster. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "create_timeout")
 
     @property
@@ -773,36 +1083,65 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="discoveryUrl")
     def discovery_url(self) -> pulumi.Output[str]:
+        """
+        The URL used for cluster node discovery.
+        Changing this creates a new cluster.
+        """
         return pulumi.get(self, "discovery_url")
 
     @property
     @pulumi.getter(name="dockerVolumeSize")
     def docker_volume_size(self) -> pulumi.Output[int]:
+        """
+        The size (in GB) of the Docker volume.
+        Changing this creates a new cluster.
+        """
         return pulumi.get(self, "docker_volume_size")
 
     @property
     @pulumi.getter(name="fixedNetwork")
     def fixed_network(self) -> pulumi.Output[str]:
+        """
+        The fixed network that will be attached to the
+        cluster. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "fixed_network")
 
     @property
     @pulumi.getter(name="fixedSubnet")
     def fixed_subnet(self) -> pulumi.Output[str]:
+        """
+        The fixed subnet that will be attached to the
+        cluster. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "fixed_subnet")
 
     @property
     @pulumi.getter
     def flavor(self) -> pulumi.Output[str]:
+        """
+        The flavor for the nodes of the cluster. Can be set via
+        the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+        cluster.
+        """
         return pulumi.get(self, "flavor")
 
     @property
     @pulumi.getter(name="floatingIpEnabled")
     def floating_ip_enabled(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether floating IP should be
+        created for every cluster node. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "floating_ip_enabled")
 
     @property
     @pulumi.getter
     def keypair(self) -> pulumi.Output[str]:
+        """
+        The name of the Compute service SSH keypair. Changing
+        this creates a new cluster.
+        """
         return pulumi.get(self, "keypair")
 
     @property
@@ -813,6 +1152,10 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        The list of key value pairs representing additional
+        properties of the cluster. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "labels")
 
     @property
@@ -823,21 +1166,38 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="masterCount")
     def master_count(self) -> pulumi.Output[int]:
+        """
+        The number of master nodes for the cluster.
+        Changing this creates a new cluster.
+        """
         return pulumi.get(self, "master_count")
 
     @property
     @pulumi.getter(name="masterFlavor")
     def master_flavor(self) -> pulumi.Output[str]:
+        """
+        The flavor for the master nodes. Can be set via
+        the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
+        new cluster.
+        """
         return pulumi.get(self, "master_flavor")
 
     @property
     @pulumi.getter(name="mergeLabels")
     def merge_labels(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether the provided labels should be
+        merged with cluster template labels. Changing this creates a new cluster.
+        """
         return pulumi.get(self, "merge_labels")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the cluster. Changing this updates the name
+        of the existing cluster template.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -848,16 +1208,31 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> pulumi.Output[int]:
+        """
+        The number of nodes for the cluster. Changing this
+        creates a new cluster.
+        """
         return pulumi.get(self, "node_count")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
+        """
+        The project of the cluster. Required if admin wants
+        to create a cluster in another project. Changing this creates a new
+        cluster.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to obtain the V1 Container Infra
+        client. A Container Infra client is needed to create a cluster. If omitted,
+        the `region` argument of the provider is used. Changing this creates a new
+        cluster.
+        """
         return pulumi.get(self, "region")
 
     @property
@@ -873,5 +1248,10 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[str]:
+        """
+        The user of the cluster. Required if admin wants to
+        create a cluster template for another user. Changing this creates a new
+        cluster.
+        """
         return pulumi.get(self, "user_id")
 

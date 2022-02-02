@@ -24,9 +24,7 @@ export function getPolicy(args?: GetPolicyArgs, opts?: pulumi.InvokeOptions): Pr
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:firewall/getPolicy:getPolicy", {
         "name": args.name,
         "policyId": args.policyId,

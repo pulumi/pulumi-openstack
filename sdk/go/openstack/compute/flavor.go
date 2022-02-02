@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewFlavor(ctx, "test_flavor", &compute.FlavorArgs{
+// 		_, err := compute.NewFlavor(ctx, "test-flavor", &compute.FlavorArgs{
 // 			Disk: pulumi.Int(20),
 // 			ExtraSpecs: pulumi.AnyMap{
 // 				"hw:cpu_policy":        pulumi.Any("CPU-POLICY"),
@@ -290,7 +290,7 @@ type FlavorInput interface {
 }
 
 func (*Flavor) ElementType() reflect.Type {
-	return reflect.TypeOf((*Flavor)(nil))
+	return reflect.TypeOf((**Flavor)(nil)).Elem()
 }
 
 func (i *Flavor) ToFlavorOutput() FlavorOutput {
@@ -299,35 +299,6 @@ func (i *Flavor) ToFlavorOutput() FlavorOutput {
 
 func (i *Flavor) ToFlavorOutputWithContext(ctx context.Context) FlavorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlavorOutput)
-}
-
-func (i *Flavor) ToFlavorPtrOutput() FlavorPtrOutput {
-	return i.ToFlavorPtrOutputWithContext(context.Background())
-}
-
-func (i *Flavor) ToFlavorPtrOutputWithContext(ctx context.Context) FlavorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FlavorPtrOutput)
-}
-
-type FlavorPtrInput interface {
-	pulumi.Input
-
-	ToFlavorPtrOutput() FlavorPtrOutput
-	ToFlavorPtrOutputWithContext(ctx context.Context) FlavorPtrOutput
-}
-
-type flavorPtrType FlavorArgs
-
-func (*flavorPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Flavor)(nil))
-}
-
-func (i *flavorPtrType) ToFlavorPtrOutput() FlavorPtrOutput {
-	return i.ToFlavorPtrOutputWithContext(context.Background())
-}
-
-func (i *flavorPtrType) ToFlavorPtrOutputWithContext(ctx context.Context) FlavorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FlavorPtrOutput)
 }
 
 // FlavorArrayInput is an input type that accepts FlavorArray and FlavorArrayOutput values.
@@ -383,7 +354,7 @@ func (i FlavorMap) ToFlavorMapOutputWithContext(ctx context.Context) FlavorMapOu
 type FlavorOutput struct{ *pulumi.OutputState }
 
 func (FlavorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Flavor)(nil))
+	return reflect.TypeOf((**Flavor)(nil)).Elem()
 }
 
 func (o FlavorOutput) ToFlavorOutput() FlavorOutput {
@@ -394,44 +365,10 @@ func (o FlavorOutput) ToFlavorOutputWithContext(ctx context.Context) FlavorOutpu
 	return o
 }
 
-func (o FlavorOutput) ToFlavorPtrOutput() FlavorPtrOutput {
-	return o.ToFlavorPtrOutputWithContext(context.Background())
-}
-
-func (o FlavorOutput) ToFlavorPtrOutputWithContext(ctx context.Context) FlavorPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Flavor) *Flavor {
-		return &v
-	}).(FlavorPtrOutput)
-}
-
-type FlavorPtrOutput struct{ *pulumi.OutputState }
-
-func (FlavorPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Flavor)(nil))
-}
-
-func (o FlavorPtrOutput) ToFlavorPtrOutput() FlavorPtrOutput {
-	return o
-}
-
-func (o FlavorPtrOutput) ToFlavorPtrOutputWithContext(ctx context.Context) FlavorPtrOutput {
-	return o
-}
-
-func (o FlavorPtrOutput) Elem() FlavorOutput {
-	return o.ApplyT(func(v *Flavor) Flavor {
-		if v != nil {
-			return *v
-		}
-		var ret Flavor
-		return ret
-	}).(FlavorOutput)
-}
-
 type FlavorArrayOutput struct{ *pulumi.OutputState }
 
 func (FlavorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Flavor)(nil))
+	return reflect.TypeOf((*[]*Flavor)(nil)).Elem()
 }
 
 func (o FlavorArrayOutput) ToFlavorArrayOutput() FlavorArrayOutput {
@@ -443,15 +380,15 @@ func (o FlavorArrayOutput) ToFlavorArrayOutputWithContext(ctx context.Context) F
 }
 
 func (o FlavorArrayOutput) Index(i pulumi.IntInput) FlavorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Flavor {
-		return vs[0].([]Flavor)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Flavor {
+		return vs[0].([]*Flavor)[vs[1].(int)]
 	}).(FlavorOutput)
 }
 
 type FlavorMapOutput struct{ *pulumi.OutputState }
 
 func (FlavorMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Flavor)(nil))
+	return reflect.TypeOf((*map[string]*Flavor)(nil)).Elem()
 }
 
 func (o FlavorMapOutput) ToFlavorMapOutput() FlavorMapOutput {
@@ -463,18 +400,16 @@ func (o FlavorMapOutput) ToFlavorMapOutputWithContext(ctx context.Context) Flavo
 }
 
 func (o FlavorMapOutput) MapIndex(k pulumi.StringInput) FlavorOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Flavor {
-		return vs[0].(map[string]Flavor)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Flavor {
+		return vs[0].(map[string]*Flavor)[vs[1].(string)]
 	}).(FlavorOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FlavorInput)(nil)).Elem(), &Flavor{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FlavorPtrInput)(nil)).Elem(), &Flavor{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlavorArrayInput)(nil)).Elem(), FlavorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlavorMapInput)(nil)).Elem(), FlavorMap{})
 	pulumi.RegisterOutputType(FlavorOutput{})
-	pulumi.RegisterOutputType(FlavorPtrOutput{})
 	pulumi.RegisterOutputType(FlavorArrayOutput{})
 	pulumi.RegisterOutputType(FlavorMapOutput{})
 }

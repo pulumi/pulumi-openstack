@@ -89,14 +89,14 @@ export class QosMinimumBandwidthRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: QosMinimumBandwidthRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QosMinimumBandwidthRuleArgs | QosMinimumBandwidthRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QosMinimumBandwidthRuleState | undefined;
-            inputs["direction"] = state ? state.direction : undefined;
-            inputs["minKbps"] = state ? state.minKbps : undefined;
-            inputs["qosPolicyId"] = state ? state.qosPolicyId : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["direction"] = state ? state.direction : undefined;
+            resourceInputs["minKbps"] = state ? state.minKbps : undefined;
+            resourceInputs["qosPolicyId"] = state ? state.qosPolicyId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as QosMinimumBandwidthRuleArgs | undefined;
             if ((!args || args.minKbps === undefined) && !opts.urn) {
@@ -105,15 +105,13 @@ export class QosMinimumBandwidthRule extends pulumi.CustomResource {
             if ((!args || args.qosPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'qosPolicyId'");
             }
-            inputs["direction"] = args ? args.direction : undefined;
-            inputs["minKbps"] = args ? args.minKbps : undefined;
-            inputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
-            inputs["region"] = args ? args.region : undefined;
+            resourceInputs["direction"] = args ? args.direction : undefined;
+            resourceInputs["minKbps"] = args ? args.minKbps : undefined;
+            resourceInputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(QosMinimumBandwidthRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(QosMinimumBandwidthRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

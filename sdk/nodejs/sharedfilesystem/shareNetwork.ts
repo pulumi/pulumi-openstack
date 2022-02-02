@@ -163,21 +163,21 @@ export class ShareNetwork extends pulumi.CustomResource {
      */
     constructor(name: string, args: ShareNetworkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ShareNetworkArgs | ShareNetworkState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ShareNetworkState | undefined;
-            inputs["cidr"] = state ? state.cidr : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["ipVersion"] = state ? state.ipVersion : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkType"] = state ? state.networkType : undefined;
-            inputs["neutronNetId"] = state ? state.neutronNetId : undefined;
-            inputs["neutronSubnetId"] = state ? state.neutronSubnetId : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["securityServiceIds"] = state ? state.securityServiceIds : undefined;
-            inputs["segmentationId"] = state ? state.segmentationId : undefined;
+            resourceInputs["cidr"] = state ? state.cidr : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkType"] = state ? state.networkType : undefined;
+            resourceInputs["neutronNetId"] = state ? state.neutronNetId : undefined;
+            resourceInputs["neutronSubnetId"] = state ? state.neutronSubnetId : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["securityServiceIds"] = state ? state.securityServiceIds : undefined;
+            resourceInputs["segmentationId"] = state ? state.segmentationId : undefined;
         } else {
             const args = argsOrState as ShareNetworkArgs | undefined;
             if ((!args || args.neutronNetId === undefined) && !opts.urn) {
@@ -186,22 +186,20 @@ export class ShareNetwork extends pulumi.CustomResource {
             if ((!args || args.neutronSubnetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'neutronSubnetId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["neutronNetId"] = args ? args.neutronNetId : undefined;
-            inputs["neutronSubnetId"] = args ? args.neutronSubnetId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["securityServiceIds"] = args ? args.securityServiceIds : undefined;
-            inputs["cidr"] = undefined /*out*/;
-            inputs["ipVersion"] = undefined /*out*/;
-            inputs["networkType"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
-            inputs["segmentationId"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["neutronNetId"] = args ? args.neutronNetId : undefined;
+            resourceInputs["neutronSubnetId"] = args ? args.neutronSubnetId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["securityServiceIds"] = args ? args.securityServiceIds : undefined;
+            resourceInputs["cidr"] = undefined /*out*/;
+            resourceInputs["ipVersion"] = undefined /*out*/;
+            resourceInputs["networkType"] = undefined /*out*/;
+            resourceInputs["projectId"] = undefined /*out*/;
+            resourceInputs["segmentationId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ShareNetwork.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ShareNetwork.__pulumiType, name, resourceInputs, opts);
     }
 }
 

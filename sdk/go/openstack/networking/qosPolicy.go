@@ -262,7 +262,7 @@ type QosPolicyInput interface {
 }
 
 func (*QosPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosPolicy)(nil))
+	return reflect.TypeOf((**QosPolicy)(nil)).Elem()
 }
 
 func (i *QosPolicy) ToQosPolicyOutput() QosPolicyOutput {
@@ -271,35 +271,6 @@ func (i *QosPolicy) ToQosPolicyOutput() QosPolicyOutput {
 
 func (i *QosPolicy) ToQosPolicyOutputWithContext(ctx context.Context) QosPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosPolicyOutput)
-}
-
-func (i *QosPolicy) ToQosPolicyPtrOutput() QosPolicyPtrOutput {
-	return i.ToQosPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *QosPolicy) ToQosPolicyPtrOutputWithContext(ctx context.Context) QosPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QosPolicyPtrOutput)
-}
-
-type QosPolicyPtrInput interface {
-	pulumi.Input
-
-	ToQosPolicyPtrOutput() QosPolicyPtrOutput
-	ToQosPolicyPtrOutputWithContext(ctx context.Context) QosPolicyPtrOutput
-}
-
-type qosPolicyPtrType QosPolicyArgs
-
-func (*qosPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**QosPolicy)(nil))
-}
-
-func (i *qosPolicyPtrType) ToQosPolicyPtrOutput() QosPolicyPtrOutput {
-	return i.ToQosPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *qosPolicyPtrType) ToQosPolicyPtrOutputWithContext(ctx context.Context) QosPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QosPolicyPtrOutput)
 }
 
 // QosPolicyArrayInput is an input type that accepts QosPolicyArray and QosPolicyArrayOutput values.
@@ -355,7 +326,7 @@ func (i QosPolicyMap) ToQosPolicyMapOutputWithContext(ctx context.Context) QosPo
 type QosPolicyOutput struct{ *pulumi.OutputState }
 
 func (QosPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosPolicy)(nil))
+	return reflect.TypeOf((**QosPolicy)(nil)).Elem()
 }
 
 func (o QosPolicyOutput) ToQosPolicyOutput() QosPolicyOutput {
@@ -366,44 +337,10 @@ func (o QosPolicyOutput) ToQosPolicyOutputWithContext(ctx context.Context) QosPo
 	return o
 }
 
-func (o QosPolicyOutput) ToQosPolicyPtrOutput() QosPolicyPtrOutput {
-	return o.ToQosPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o QosPolicyOutput) ToQosPolicyPtrOutputWithContext(ctx context.Context) QosPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v QosPolicy) *QosPolicy {
-		return &v
-	}).(QosPolicyPtrOutput)
-}
-
-type QosPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (QosPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**QosPolicy)(nil))
-}
-
-func (o QosPolicyPtrOutput) ToQosPolicyPtrOutput() QosPolicyPtrOutput {
-	return o
-}
-
-func (o QosPolicyPtrOutput) ToQosPolicyPtrOutputWithContext(ctx context.Context) QosPolicyPtrOutput {
-	return o
-}
-
-func (o QosPolicyPtrOutput) Elem() QosPolicyOutput {
-	return o.ApplyT(func(v *QosPolicy) QosPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret QosPolicy
-		return ret
-	}).(QosPolicyOutput)
-}
-
 type QosPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (QosPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]QosPolicy)(nil))
+	return reflect.TypeOf((*[]*QosPolicy)(nil)).Elem()
 }
 
 func (o QosPolicyArrayOutput) ToQosPolicyArrayOutput() QosPolicyArrayOutput {
@@ -415,15 +352,15 @@ func (o QosPolicyArrayOutput) ToQosPolicyArrayOutputWithContext(ctx context.Cont
 }
 
 func (o QosPolicyArrayOutput) Index(i pulumi.IntInput) QosPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QosPolicy {
-		return vs[0].([]QosPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QosPolicy {
+		return vs[0].([]*QosPolicy)[vs[1].(int)]
 	}).(QosPolicyOutput)
 }
 
 type QosPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (QosPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]QosPolicy)(nil))
+	return reflect.TypeOf((*map[string]*QosPolicy)(nil)).Elem()
 }
 
 func (o QosPolicyMapOutput) ToQosPolicyMapOutput() QosPolicyMapOutput {
@@ -435,18 +372,16 @@ func (o QosPolicyMapOutput) ToQosPolicyMapOutputWithContext(ctx context.Context)
 }
 
 func (o QosPolicyMapOutput) MapIndex(k pulumi.StringInput) QosPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) QosPolicy {
-		return vs[0].(map[string]QosPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *QosPolicy {
+		return vs[0].(map[string]*QosPolicy)[vs[1].(string)]
 	}).(QosPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*QosPolicyInput)(nil)).Elem(), &QosPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QosPolicyPtrInput)(nil)).Elem(), &QosPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QosPolicyArrayInput)(nil)).Elem(), QosPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QosPolicyMapInput)(nil)).Elem(), QosPolicyMap{})
 	pulumi.RegisterOutputType(QosPolicyOutput{})
-	pulumi.RegisterOutputType(QosPolicyPtrOutput{})
 	pulumi.RegisterOutputType(QosPolicyArrayOutput{})
 	pulumi.RegisterOutputType(QosPolicyMapOutput{})
 }

@@ -24,9 +24,7 @@ export function getDnsZone(args?: GetDnsZoneArgs, opts?: pulumi.InvokeOptions): 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:dns/getDnsZone:getDnsZone", {
         "allProjects": args.allProjects,
         "attributes": args.attributes,

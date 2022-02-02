@@ -24,6 +24,10 @@ namespace Pulumi.OpenStack.ContainerInfra
         [Output("apiAddress")]
         public Output<string> ApiAddress { get; private set; } = null!;
 
+        /// <summary>
+        /// The UUID of the V1 Container Infra cluster
+        /// template. Changing this creates a new cluster.
+        /// </summary>
         [Output("clusterTemplateId")]
         public Output<string> ClusterTemplateId { get; private set; } = null!;
 
@@ -33,63 +37,132 @@ namespace Pulumi.OpenStack.ContainerInfra
         [Output("containerVersion")]
         public Output<string> ContainerVersion { get; private set; } = null!;
 
+        /// <summary>
+        /// The timeout (in minutes) for creating the
+        /// cluster. Changing this creates a new cluster.
+        /// </summary>
         [Output("createTimeout")]
         public Output<int> CreateTimeout { get; private set; } = null!;
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// The URL used for cluster node discovery.
+        /// Changing this creates a new cluster.
+        /// </summary>
         [Output("discoveryUrl")]
         public Output<string> DiscoveryUrl { get; private set; } = null!;
 
+        /// <summary>
+        /// The size (in GB) of the Docker volume.
+        /// Changing this creates a new cluster.
+        /// </summary>
         [Output("dockerVolumeSize")]
         public Output<int> DockerVolumeSize { get; private set; } = null!;
 
+        /// <summary>
+        /// The fixed network that will be attached to the
+        /// cluster. Changing this creates a new cluster.
+        /// </summary>
         [Output("fixedNetwork")]
         public Output<string> FixedNetwork { get; private set; } = null!;
 
+        /// <summary>
+        /// The fixed subnet that will be attached to the
+        /// cluster. Changing this creates a new cluster.
+        /// </summary>
         [Output("fixedSubnet")]
         public Output<string> FixedSubnet { get; private set; } = null!;
 
+        /// <summary>
+        /// The flavor for the nodes of the cluster. Can be set via
+        /// the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+        /// cluster.
+        /// </summary>
         [Output("flavor")]
         public Output<string> Flavor { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates whether floating IP should be
+        /// created for every cluster node. Changing this creates a new cluster.
+        /// </summary>
         [Output("floatingIpEnabled")]
         public Output<bool> FloatingIpEnabled { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the Compute service SSH keypair. Changing
+        /// this creates a new cluster.
+        /// </summary>
         [Output("keypair")]
         public Output<string> Keypair { get; private set; } = null!;
 
         [Output("kubeconfig")]
         public Output<ImmutableDictionary<string, string>> Kubeconfig { get; private set; } = null!;
 
+        /// <summary>
+        /// The list of key value pairs representing additional
+        /// properties of the cluster. Changing this creates a new cluster.
+        /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         [Output("masterAddresses")]
         public Output<ImmutableArray<string>> MasterAddresses { get; private set; } = null!;
 
+        /// <summary>
+        /// The number of master nodes for the cluster.
+        /// Changing this creates a new cluster.
+        /// </summary>
         [Output("masterCount")]
         public Output<int> MasterCount { get; private set; } = null!;
 
+        /// <summary>
+        /// The flavor for the master nodes. Can be set via
+        /// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
+        /// new cluster.
+        /// </summary>
         [Output("masterFlavor")]
         public Output<string> MasterFlavor { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates whether the provided labels should be
+        /// merged with cluster template labels. Changing this creates a new cluster.
+        /// </summary>
         [Output("mergeLabels")]
         public Output<bool?> MergeLabels { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the cluster. Changing this updates the name
+        /// of the existing cluster template.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         [Output("nodeAddresses")]
         public Output<ImmutableArray<string>> NodeAddresses { get; private set; } = null!;
 
+        /// <summary>
+        /// The number of nodes for the cluster. Changing this
+        /// creates a new cluster.
+        /// </summary>
         [Output("nodeCount")]
         public Output<int> NodeCount { get; private set; } = null!;
 
+        /// <summary>
+        /// The project of the cluster. Required if admin wants
+        /// to create a cluster in another project. Changing this creates a new
+        /// cluster.
+        /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
+        /// <summary>
+        /// The region in which to obtain the V1 Container Infra
+        /// client. A Container Infra client is needed to create a cluster. If omitted,
+        /// the `region` argument of the provider is used. Changing this creates a new
+        /// cluster.
+        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
@@ -99,6 +172,11 @@ namespace Pulumi.OpenStack.ContainerInfra
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// The user of the cluster. Required if admin wants to
+        /// create a cluster template for another user. Changing this creates a new
+        /// cluster.
+        /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
 
@@ -148,56 +226,125 @@ namespace Pulumi.OpenStack.ContainerInfra
 
     public sealed class ClusterArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The UUID of the V1 Container Infra cluster
+        /// template. Changing this creates a new cluster.
+        /// </summary>
         [Input("clusterTemplateId", required: true)]
         public Input<string> ClusterTemplateId { get; set; } = null!;
 
+        /// <summary>
+        /// The timeout (in minutes) for creating the
+        /// cluster. Changing this creates a new cluster.
+        /// </summary>
         [Input("createTimeout")]
         public Input<int>? CreateTimeout { get; set; }
 
+        /// <summary>
+        /// The URL used for cluster node discovery.
+        /// Changing this creates a new cluster.
+        /// </summary>
         [Input("discoveryUrl")]
         public Input<string>? DiscoveryUrl { get; set; }
 
+        /// <summary>
+        /// The size (in GB) of the Docker volume.
+        /// Changing this creates a new cluster.
+        /// </summary>
         [Input("dockerVolumeSize")]
         public Input<int>? DockerVolumeSize { get; set; }
 
+        /// <summary>
+        /// The fixed network that will be attached to the
+        /// cluster. Changing this creates a new cluster.
+        /// </summary>
         [Input("fixedNetwork")]
         public Input<string>? FixedNetwork { get; set; }
 
+        /// <summary>
+        /// The fixed subnet that will be attached to the
+        /// cluster. Changing this creates a new cluster.
+        /// </summary>
         [Input("fixedSubnet")]
         public Input<string>? FixedSubnet { get; set; }
 
+        /// <summary>
+        /// The flavor for the nodes of the cluster. Can be set via
+        /// the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+        /// cluster.
+        /// </summary>
         [Input("flavor")]
         public Input<string>? Flavor { get; set; }
 
+        /// <summary>
+        /// Indicates whether floating IP should be
+        /// created for every cluster node. Changing this creates a new cluster.
+        /// </summary>
         [Input("floatingIpEnabled")]
         public Input<bool>? FloatingIpEnabled { get; set; }
 
+        /// <summary>
+        /// The name of the Compute service SSH keypair. Changing
+        /// this creates a new cluster.
+        /// </summary>
         [Input("keypair")]
         public Input<string>? Keypair { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;
+
+        /// <summary>
+        /// The list of key value pairs representing additional
+        /// properties of the cluster. Changing this creates a new cluster.
+        /// </summary>
         public InputMap<object> Labels
         {
             get => _labels ?? (_labels = new InputMap<object>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The number of master nodes for the cluster.
+        /// Changing this creates a new cluster.
+        /// </summary>
         [Input("masterCount")]
         public Input<int>? MasterCount { get; set; }
 
+        /// <summary>
+        /// The flavor for the master nodes. Can be set via
+        /// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
+        /// new cluster.
+        /// </summary>
         [Input("masterFlavor")]
         public Input<string>? MasterFlavor { get; set; }
 
+        /// <summary>
+        /// Indicates whether the provided labels should be
+        /// merged with cluster template labels. Changing this creates a new cluster.
+        /// </summary>
         [Input("mergeLabels")]
         public Input<bool>? MergeLabels { get; set; }
 
+        /// <summary>
+        /// The name of the cluster. Changing this updates the name
+        /// of the existing cluster template.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The number of nodes for the cluster. Changing this
+        /// creates a new cluster.
+        /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
 
+        /// <summary>
+        /// The region in which to obtain the V1 Container Infra
+        /// client. A Container Infra client is needed to create a cluster. If omitted,
+        /// the `region` argument of the provider is used. Changing this creates a new
+        /// cluster.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -211,6 +358,10 @@ namespace Pulumi.OpenStack.ContainerInfra
         [Input("apiAddress")]
         public Input<string>? ApiAddress { get; set; }
 
+        /// <summary>
+        /// The UUID of the V1 Container Infra cluster
+        /// template. Changing this creates a new cluster.
+        /// </summary>
         [Input("clusterTemplateId")]
         public Input<string>? ClusterTemplateId { get; set; }
 
@@ -220,30 +371,63 @@ namespace Pulumi.OpenStack.ContainerInfra
         [Input("containerVersion")]
         public Input<string>? ContainerVersion { get; set; }
 
+        /// <summary>
+        /// The timeout (in minutes) for creating the
+        /// cluster. Changing this creates a new cluster.
+        /// </summary>
         [Input("createTimeout")]
         public Input<int>? CreateTimeout { get; set; }
 
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// The URL used for cluster node discovery.
+        /// Changing this creates a new cluster.
+        /// </summary>
         [Input("discoveryUrl")]
         public Input<string>? DiscoveryUrl { get; set; }
 
+        /// <summary>
+        /// The size (in GB) of the Docker volume.
+        /// Changing this creates a new cluster.
+        /// </summary>
         [Input("dockerVolumeSize")]
         public Input<int>? DockerVolumeSize { get; set; }
 
+        /// <summary>
+        /// The fixed network that will be attached to the
+        /// cluster. Changing this creates a new cluster.
+        /// </summary>
         [Input("fixedNetwork")]
         public Input<string>? FixedNetwork { get; set; }
 
+        /// <summary>
+        /// The fixed subnet that will be attached to the
+        /// cluster. Changing this creates a new cluster.
+        /// </summary>
         [Input("fixedSubnet")]
         public Input<string>? FixedSubnet { get; set; }
 
+        /// <summary>
+        /// The flavor for the nodes of the cluster. Can be set via
+        /// the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+        /// cluster.
+        /// </summary>
         [Input("flavor")]
         public Input<string>? Flavor { get; set; }
 
+        /// <summary>
+        /// Indicates whether floating IP should be
+        /// created for every cluster node. Changing this creates a new cluster.
+        /// </summary>
         [Input("floatingIpEnabled")]
         public Input<bool>? FloatingIpEnabled { get; set; }
 
+        /// <summary>
+        /// The name of the Compute service SSH keypair. Changing
+        /// this creates a new cluster.
+        /// </summary>
         [Input("keypair")]
         public Input<string>? Keypair { get; set; }
 
@@ -257,6 +441,11 @@ namespace Pulumi.OpenStack.ContainerInfra
 
         [Input("labels")]
         private InputMap<object>? _labels;
+
+        /// <summary>
+        /// The list of key value pairs representing additional
+        /// properties of the cluster. Changing this creates a new cluster.
+        /// </summary>
         public InputMap<object> Labels
         {
             get => _labels ?? (_labels = new InputMap<object>());
@@ -271,15 +460,32 @@ namespace Pulumi.OpenStack.ContainerInfra
             set => _masterAddresses = value;
         }
 
+        /// <summary>
+        /// The number of master nodes for the cluster.
+        /// Changing this creates a new cluster.
+        /// </summary>
         [Input("masterCount")]
         public Input<int>? MasterCount { get; set; }
 
+        /// <summary>
+        /// The flavor for the master nodes. Can be set via
+        /// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
+        /// new cluster.
+        /// </summary>
         [Input("masterFlavor")]
         public Input<string>? MasterFlavor { get; set; }
 
+        /// <summary>
+        /// Indicates whether the provided labels should be
+        /// merged with cluster template labels. Changing this creates a new cluster.
+        /// </summary>
         [Input("mergeLabels")]
         public Input<bool>? MergeLabels { get; set; }
 
+        /// <summary>
+        /// The name of the cluster. Changing this updates the name
+        /// of the existing cluster template.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -291,12 +497,27 @@ namespace Pulumi.OpenStack.ContainerInfra
             set => _nodeAddresses = value;
         }
 
+        /// <summary>
+        /// The number of nodes for the cluster. Changing this
+        /// creates a new cluster.
+        /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
 
+        /// <summary>
+        /// The project of the cluster. Required if admin wants
+        /// to create a cluster in another project. Changing this creates a new
+        /// cluster.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// The region in which to obtain the V1 Container Infra
+        /// client. A Container Infra client is needed to create a cluster. If omitted,
+        /// the `region` argument of the provider is used. Changing this creates a new
+        /// cluster.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
@@ -306,6 +527,11 @@ namespace Pulumi.OpenStack.ContainerInfra
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// The user of the cluster. Required if admin wants to
+        /// create a cluster template for another user. Changing this creates a new
+        /// cluster.
+        /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
 

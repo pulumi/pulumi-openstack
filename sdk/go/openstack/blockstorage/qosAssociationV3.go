@@ -177,7 +177,7 @@ type QosAssociationV3Input interface {
 }
 
 func (*QosAssociationV3) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosAssociationV3)(nil))
+	return reflect.TypeOf((**QosAssociationV3)(nil)).Elem()
 }
 
 func (i *QosAssociationV3) ToQosAssociationV3Output() QosAssociationV3Output {
@@ -186,35 +186,6 @@ func (i *QosAssociationV3) ToQosAssociationV3Output() QosAssociationV3Output {
 
 func (i *QosAssociationV3) ToQosAssociationV3OutputWithContext(ctx context.Context) QosAssociationV3Output {
 	return pulumi.ToOutputWithContext(ctx, i).(QosAssociationV3Output)
-}
-
-func (i *QosAssociationV3) ToQosAssociationV3PtrOutput() QosAssociationV3PtrOutput {
-	return i.ToQosAssociationV3PtrOutputWithContext(context.Background())
-}
-
-func (i *QosAssociationV3) ToQosAssociationV3PtrOutputWithContext(ctx context.Context) QosAssociationV3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QosAssociationV3PtrOutput)
-}
-
-type QosAssociationV3PtrInput interface {
-	pulumi.Input
-
-	ToQosAssociationV3PtrOutput() QosAssociationV3PtrOutput
-	ToQosAssociationV3PtrOutputWithContext(ctx context.Context) QosAssociationV3PtrOutput
-}
-
-type qosAssociationV3PtrType QosAssociationV3Args
-
-func (*qosAssociationV3PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**QosAssociationV3)(nil))
-}
-
-func (i *qosAssociationV3PtrType) ToQosAssociationV3PtrOutput() QosAssociationV3PtrOutput {
-	return i.ToQosAssociationV3PtrOutputWithContext(context.Background())
-}
-
-func (i *qosAssociationV3PtrType) ToQosAssociationV3PtrOutputWithContext(ctx context.Context) QosAssociationV3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QosAssociationV3PtrOutput)
 }
 
 // QosAssociationV3ArrayInput is an input type that accepts QosAssociationV3Array and QosAssociationV3ArrayOutput values.
@@ -270,7 +241,7 @@ func (i QosAssociationV3Map) ToQosAssociationV3MapOutputWithContext(ctx context.
 type QosAssociationV3Output struct{ *pulumi.OutputState }
 
 func (QosAssociationV3Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosAssociationV3)(nil))
+	return reflect.TypeOf((**QosAssociationV3)(nil)).Elem()
 }
 
 func (o QosAssociationV3Output) ToQosAssociationV3Output() QosAssociationV3Output {
@@ -281,44 +252,10 @@ func (o QosAssociationV3Output) ToQosAssociationV3OutputWithContext(ctx context.
 	return o
 }
 
-func (o QosAssociationV3Output) ToQosAssociationV3PtrOutput() QosAssociationV3PtrOutput {
-	return o.ToQosAssociationV3PtrOutputWithContext(context.Background())
-}
-
-func (o QosAssociationV3Output) ToQosAssociationV3PtrOutputWithContext(ctx context.Context) QosAssociationV3PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v QosAssociationV3) *QosAssociationV3 {
-		return &v
-	}).(QosAssociationV3PtrOutput)
-}
-
-type QosAssociationV3PtrOutput struct{ *pulumi.OutputState }
-
-func (QosAssociationV3PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**QosAssociationV3)(nil))
-}
-
-func (o QosAssociationV3PtrOutput) ToQosAssociationV3PtrOutput() QosAssociationV3PtrOutput {
-	return o
-}
-
-func (o QosAssociationV3PtrOutput) ToQosAssociationV3PtrOutputWithContext(ctx context.Context) QosAssociationV3PtrOutput {
-	return o
-}
-
-func (o QosAssociationV3PtrOutput) Elem() QosAssociationV3Output {
-	return o.ApplyT(func(v *QosAssociationV3) QosAssociationV3 {
-		if v != nil {
-			return *v
-		}
-		var ret QosAssociationV3
-		return ret
-	}).(QosAssociationV3Output)
-}
-
 type QosAssociationV3ArrayOutput struct{ *pulumi.OutputState }
 
 func (QosAssociationV3ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]QosAssociationV3)(nil))
+	return reflect.TypeOf((*[]*QosAssociationV3)(nil)).Elem()
 }
 
 func (o QosAssociationV3ArrayOutput) ToQosAssociationV3ArrayOutput() QosAssociationV3ArrayOutput {
@@ -330,15 +267,15 @@ func (o QosAssociationV3ArrayOutput) ToQosAssociationV3ArrayOutputWithContext(ct
 }
 
 func (o QosAssociationV3ArrayOutput) Index(i pulumi.IntInput) QosAssociationV3Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QosAssociationV3 {
-		return vs[0].([]QosAssociationV3)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QosAssociationV3 {
+		return vs[0].([]*QosAssociationV3)[vs[1].(int)]
 	}).(QosAssociationV3Output)
 }
 
 type QosAssociationV3MapOutput struct{ *pulumi.OutputState }
 
 func (QosAssociationV3MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]QosAssociationV3)(nil))
+	return reflect.TypeOf((*map[string]*QosAssociationV3)(nil)).Elem()
 }
 
 func (o QosAssociationV3MapOutput) ToQosAssociationV3MapOutput() QosAssociationV3MapOutput {
@@ -350,18 +287,16 @@ func (o QosAssociationV3MapOutput) ToQosAssociationV3MapOutputWithContext(ctx co
 }
 
 func (o QosAssociationV3MapOutput) MapIndex(k pulumi.StringInput) QosAssociationV3Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) QosAssociationV3 {
-		return vs[0].(map[string]QosAssociationV3)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *QosAssociationV3 {
+		return vs[0].(map[string]*QosAssociationV3)[vs[1].(string)]
 	}).(QosAssociationV3Output)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*QosAssociationV3Input)(nil)).Elem(), &QosAssociationV3{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QosAssociationV3PtrInput)(nil)).Elem(), &QosAssociationV3{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QosAssociationV3ArrayInput)(nil)).Elem(), QosAssociationV3Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QosAssociationV3MapInput)(nil)).Elem(), QosAssociationV3Map{})
 	pulumi.RegisterOutputType(QosAssociationV3Output{})
-	pulumi.RegisterOutputType(QosAssociationV3PtrOutput{})
 	pulumi.RegisterOutputType(QosAssociationV3ArrayOutput{})
 	pulumi.RegisterOutputType(QosAssociationV3MapOutput{})
 }

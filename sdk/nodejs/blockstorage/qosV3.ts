@@ -90,25 +90,23 @@ export class QosV3 extends pulumi.CustomResource {
      */
     constructor(name: string, args?: QosV3Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QosV3Args | QosV3State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QosV3State | undefined;
-            inputs["consumer"] = state ? state.consumer : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["specs"] = state ? state.specs : undefined;
+            resourceInputs["consumer"] = state ? state.consumer : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["specs"] = state ? state.specs : undefined;
         } else {
             const args = argsOrState as QosV3Args | undefined;
-            inputs["consumer"] = args ? args.consumer : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["specs"] = args ? args.specs : undefined;
+            resourceInputs["consumer"] = args ? args.consumer : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["specs"] = args ? args.specs : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(QosV3.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(QosV3.__pulumiType, name, resourceInputs, opts);
     }
 }
 

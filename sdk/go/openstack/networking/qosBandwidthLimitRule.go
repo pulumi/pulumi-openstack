@@ -196,7 +196,7 @@ type QosBandwidthLimitRuleInput interface {
 }
 
 func (*QosBandwidthLimitRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosBandwidthLimitRule)(nil))
+	return reflect.TypeOf((**QosBandwidthLimitRule)(nil)).Elem()
 }
 
 func (i *QosBandwidthLimitRule) ToQosBandwidthLimitRuleOutput() QosBandwidthLimitRuleOutput {
@@ -205,35 +205,6 @@ func (i *QosBandwidthLimitRule) ToQosBandwidthLimitRuleOutput() QosBandwidthLimi
 
 func (i *QosBandwidthLimitRule) ToQosBandwidthLimitRuleOutputWithContext(ctx context.Context) QosBandwidthLimitRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosBandwidthLimitRuleOutput)
-}
-
-func (i *QosBandwidthLimitRule) ToQosBandwidthLimitRulePtrOutput() QosBandwidthLimitRulePtrOutput {
-	return i.ToQosBandwidthLimitRulePtrOutputWithContext(context.Background())
-}
-
-func (i *QosBandwidthLimitRule) ToQosBandwidthLimitRulePtrOutputWithContext(ctx context.Context) QosBandwidthLimitRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QosBandwidthLimitRulePtrOutput)
-}
-
-type QosBandwidthLimitRulePtrInput interface {
-	pulumi.Input
-
-	ToQosBandwidthLimitRulePtrOutput() QosBandwidthLimitRulePtrOutput
-	ToQosBandwidthLimitRulePtrOutputWithContext(ctx context.Context) QosBandwidthLimitRulePtrOutput
-}
-
-type qosBandwidthLimitRulePtrType QosBandwidthLimitRuleArgs
-
-func (*qosBandwidthLimitRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**QosBandwidthLimitRule)(nil))
-}
-
-func (i *qosBandwidthLimitRulePtrType) ToQosBandwidthLimitRulePtrOutput() QosBandwidthLimitRulePtrOutput {
-	return i.ToQosBandwidthLimitRulePtrOutputWithContext(context.Background())
-}
-
-func (i *qosBandwidthLimitRulePtrType) ToQosBandwidthLimitRulePtrOutputWithContext(ctx context.Context) QosBandwidthLimitRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QosBandwidthLimitRulePtrOutput)
 }
 
 // QosBandwidthLimitRuleArrayInput is an input type that accepts QosBandwidthLimitRuleArray and QosBandwidthLimitRuleArrayOutput values.
@@ -289,7 +260,7 @@ func (i QosBandwidthLimitRuleMap) ToQosBandwidthLimitRuleMapOutputWithContext(ct
 type QosBandwidthLimitRuleOutput struct{ *pulumi.OutputState }
 
 func (QosBandwidthLimitRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QosBandwidthLimitRule)(nil))
+	return reflect.TypeOf((**QosBandwidthLimitRule)(nil)).Elem()
 }
 
 func (o QosBandwidthLimitRuleOutput) ToQosBandwidthLimitRuleOutput() QosBandwidthLimitRuleOutput {
@@ -300,44 +271,10 @@ func (o QosBandwidthLimitRuleOutput) ToQosBandwidthLimitRuleOutputWithContext(ct
 	return o
 }
 
-func (o QosBandwidthLimitRuleOutput) ToQosBandwidthLimitRulePtrOutput() QosBandwidthLimitRulePtrOutput {
-	return o.ToQosBandwidthLimitRulePtrOutputWithContext(context.Background())
-}
-
-func (o QosBandwidthLimitRuleOutput) ToQosBandwidthLimitRulePtrOutputWithContext(ctx context.Context) QosBandwidthLimitRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v QosBandwidthLimitRule) *QosBandwidthLimitRule {
-		return &v
-	}).(QosBandwidthLimitRulePtrOutput)
-}
-
-type QosBandwidthLimitRulePtrOutput struct{ *pulumi.OutputState }
-
-func (QosBandwidthLimitRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**QosBandwidthLimitRule)(nil))
-}
-
-func (o QosBandwidthLimitRulePtrOutput) ToQosBandwidthLimitRulePtrOutput() QosBandwidthLimitRulePtrOutput {
-	return o
-}
-
-func (o QosBandwidthLimitRulePtrOutput) ToQosBandwidthLimitRulePtrOutputWithContext(ctx context.Context) QosBandwidthLimitRulePtrOutput {
-	return o
-}
-
-func (o QosBandwidthLimitRulePtrOutput) Elem() QosBandwidthLimitRuleOutput {
-	return o.ApplyT(func(v *QosBandwidthLimitRule) QosBandwidthLimitRule {
-		if v != nil {
-			return *v
-		}
-		var ret QosBandwidthLimitRule
-		return ret
-	}).(QosBandwidthLimitRuleOutput)
-}
-
 type QosBandwidthLimitRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (QosBandwidthLimitRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]QosBandwidthLimitRule)(nil))
+	return reflect.TypeOf((*[]*QosBandwidthLimitRule)(nil)).Elem()
 }
 
 func (o QosBandwidthLimitRuleArrayOutput) ToQosBandwidthLimitRuleArrayOutput() QosBandwidthLimitRuleArrayOutput {
@@ -349,15 +286,15 @@ func (o QosBandwidthLimitRuleArrayOutput) ToQosBandwidthLimitRuleArrayOutputWith
 }
 
 func (o QosBandwidthLimitRuleArrayOutput) Index(i pulumi.IntInput) QosBandwidthLimitRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QosBandwidthLimitRule {
-		return vs[0].([]QosBandwidthLimitRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QosBandwidthLimitRule {
+		return vs[0].([]*QosBandwidthLimitRule)[vs[1].(int)]
 	}).(QosBandwidthLimitRuleOutput)
 }
 
 type QosBandwidthLimitRuleMapOutput struct{ *pulumi.OutputState }
 
 func (QosBandwidthLimitRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]QosBandwidthLimitRule)(nil))
+	return reflect.TypeOf((*map[string]*QosBandwidthLimitRule)(nil)).Elem()
 }
 
 func (o QosBandwidthLimitRuleMapOutput) ToQosBandwidthLimitRuleMapOutput() QosBandwidthLimitRuleMapOutput {
@@ -369,18 +306,16 @@ func (o QosBandwidthLimitRuleMapOutput) ToQosBandwidthLimitRuleMapOutputWithCont
 }
 
 func (o QosBandwidthLimitRuleMapOutput) MapIndex(k pulumi.StringInput) QosBandwidthLimitRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) QosBandwidthLimitRule {
-		return vs[0].(map[string]QosBandwidthLimitRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *QosBandwidthLimitRule {
+		return vs[0].(map[string]*QosBandwidthLimitRule)[vs[1].(string)]
 	}).(QosBandwidthLimitRuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*QosBandwidthLimitRuleInput)(nil)).Elem(), &QosBandwidthLimitRule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*QosBandwidthLimitRulePtrInput)(nil)).Elem(), &QosBandwidthLimitRule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QosBandwidthLimitRuleArrayInput)(nil)).Elem(), QosBandwidthLimitRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QosBandwidthLimitRuleMapInput)(nil)).Elem(), QosBandwidthLimitRuleMap{})
 	pulumi.RegisterOutputType(QosBandwidthLimitRuleOutput{})
-	pulumi.RegisterOutputType(QosBandwidthLimitRulePtrOutput{})
 	pulumi.RegisterOutputType(QosBandwidthLimitRuleArrayOutput{})
 	pulumi.RegisterOutputType(QosBandwidthLimitRuleMapOutput{})
 }

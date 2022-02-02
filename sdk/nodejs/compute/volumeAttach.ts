@@ -194,16 +194,16 @@ export class VolumeAttach extends pulumi.CustomResource {
      */
     constructor(name: string, args: VolumeAttachArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VolumeAttachArgs | VolumeAttachState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeAttachState | undefined;
-            inputs["device"] = state ? state.device : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["multiattach"] = state ? state.multiattach : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["vendorOptions"] = state ? state.vendorOptions : undefined;
-            inputs["volumeId"] = state ? state.volumeId : undefined;
+            resourceInputs["device"] = state ? state.device : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["multiattach"] = state ? state.multiattach : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["vendorOptions"] = state ? state.vendorOptions : undefined;
+            resourceInputs["volumeId"] = state ? state.volumeId : undefined;
         } else {
             const args = argsOrState as VolumeAttachArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
@@ -212,17 +212,15 @@ export class VolumeAttach extends pulumi.CustomResource {
             if ((!args || args.volumeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'volumeId'");
             }
-            inputs["device"] = args ? args.device : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["multiattach"] = args ? args.multiattach : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["vendorOptions"] = args ? args.vendorOptions : undefined;
-            inputs["volumeId"] = args ? args.volumeId : undefined;
+            resourceInputs["device"] = args ? args.device : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["multiattach"] = args ? args.multiattach : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["vendorOptions"] = args ? args.vendorOptions : undefined;
+            resourceInputs["volumeId"] = args ? args.volumeId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(VolumeAttach.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(VolumeAttach.__pulumiType, name, resourceInputs, opts);
     }
 }
 

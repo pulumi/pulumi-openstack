@@ -404,7 +404,7 @@ type SiteConnectionInput interface {
 }
 
 func (*SiteConnection) ElementType() reflect.Type {
-	return reflect.TypeOf((*SiteConnection)(nil))
+	return reflect.TypeOf((**SiteConnection)(nil)).Elem()
 }
 
 func (i *SiteConnection) ToSiteConnectionOutput() SiteConnectionOutput {
@@ -413,35 +413,6 @@ func (i *SiteConnection) ToSiteConnectionOutput() SiteConnectionOutput {
 
 func (i *SiteConnection) ToSiteConnectionOutputWithContext(ctx context.Context) SiteConnectionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SiteConnectionOutput)
-}
-
-func (i *SiteConnection) ToSiteConnectionPtrOutput() SiteConnectionPtrOutput {
-	return i.ToSiteConnectionPtrOutputWithContext(context.Background())
-}
-
-func (i *SiteConnection) ToSiteConnectionPtrOutputWithContext(ctx context.Context) SiteConnectionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SiteConnectionPtrOutput)
-}
-
-type SiteConnectionPtrInput interface {
-	pulumi.Input
-
-	ToSiteConnectionPtrOutput() SiteConnectionPtrOutput
-	ToSiteConnectionPtrOutputWithContext(ctx context.Context) SiteConnectionPtrOutput
-}
-
-type siteConnectionPtrType SiteConnectionArgs
-
-func (*siteConnectionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SiteConnection)(nil))
-}
-
-func (i *siteConnectionPtrType) ToSiteConnectionPtrOutput() SiteConnectionPtrOutput {
-	return i.ToSiteConnectionPtrOutputWithContext(context.Background())
-}
-
-func (i *siteConnectionPtrType) ToSiteConnectionPtrOutputWithContext(ctx context.Context) SiteConnectionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SiteConnectionPtrOutput)
 }
 
 // SiteConnectionArrayInput is an input type that accepts SiteConnectionArray and SiteConnectionArrayOutput values.
@@ -497,7 +468,7 @@ func (i SiteConnectionMap) ToSiteConnectionMapOutputWithContext(ctx context.Cont
 type SiteConnectionOutput struct{ *pulumi.OutputState }
 
 func (SiteConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SiteConnection)(nil))
+	return reflect.TypeOf((**SiteConnection)(nil)).Elem()
 }
 
 func (o SiteConnectionOutput) ToSiteConnectionOutput() SiteConnectionOutput {
@@ -508,44 +479,10 @@ func (o SiteConnectionOutput) ToSiteConnectionOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o SiteConnectionOutput) ToSiteConnectionPtrOutput() SiteConnectionPtrOutput {
-	return o.ToSiteConnectionPtrOutputWithContext(context.Background())
-}
-
-func (o SiteConnectionOutput) ToSiteConnectionPtrOutputWithContext(ctx context.Context) SiteConnectionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteConnection) *SiteConnection {
-		return &v
-	}).(SiteConnectionPtrOutput)
-}
-
-type SiteConnectionPtrOutput struct{ *pulumi.OutputState }
-
-func (SiteConnectionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SiteConnection)(nil))
-}
-
-func (o SiteConnectionPtrOutput) ToSiteConnectionPtrOutput() SiteConnectionPtrOutput {
-	return o
-}
-
-func (o SiteConnectionPtrOutput) ToSiteConnectionPtrOutputWithContext(ctx context.Context) SiteConnectionPtrOutput {
-	return o
-}
-
-func (o SiteConnectionPtrOutput) Elem() SiteConnectionOutput {
-	return o.ApplyT(func(v *SiteConnection) SiteConnection {
-		if v != nil {
-			return *v
-		}
-		var ret SiteConnection
-		return ret
-	}).(SiteConnectionOutput)
-}
-
 type SiteConnectionArrayOutput struct{ *pulumi.OutputState }
 
 func (SiteConnectionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SiteConnection)(nil))
+	return reflect.TypeOf((*[]*SiteConnection)(nil)).Elem()
 }
 
 func (o SiteConnectionArrayOutput) ToSiteConnectionArrayOutput() SiteConnectionArrayOutput {
@@ -557,15 +494,15 @@ func (o SiteConnectionArrayOutput) ToSiteConnectionArrayOutputWithContext(ctx co
 }
 
 func (o SiteConnectionArrayOutput) Index(i pulumi.IntInput) SiteConnectionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SiteConnection {
-		return vs[0].([]SiteConnection)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SiteConnection {
+		return vs[0].([]*SiteConnection)[vs[1].(int)]
 	}).(SiteConnectionOutput)
 }
 
 type SiteConnectionMapOutput struct{ *pulumi.OutputState }
 
 func (SiteConnectionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SiteConnection)(nil))
+	return reflect.TypeOf((*map[string]*SiteConnection)(nil)).Elem()
 }
 
 func (o SiteConnectionMapOutput) ToSiteConnectionMapOutput() SiteConnectionMapOutput {
@@ -577,18 +514,16 @@ func (o SiteConnectionMapOutput) ToSiteConnectionMapOutputWithContext(ctx contex
 }
 
 func (o SiteConnectionMapOutput) MapIndex(k pulumi.StringInput) SiteConnectionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SiteConnection {
-		return vs[0].(map[string]SiteConnection)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SiteConnection {
+		return vs[0].(map[string]*SiteConnection)[vs[1].(string)]
 	}).(SiteConnectionOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteConnectionInput)(nil)).Elem(), &SiteConnection{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SiteConnectionPtrInput)(nil)).Elem(), &SiteConnection{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteConnectionArrayInput)(nil)).Elem(), SiteConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SiteConnectionMapInput)(nil)).Elem(), SiteConnectionMap{})
 	pulumi.RegisterOutputType(SiteConnectionOutput{})
-	pulumi.RegisterOutputType(SiteConnectionPtrOutput{})
 	pulumi.RegisterOutputType(SiteConnectionArrayOutput{})
 	pulumi.RegisterOutputType(SiteConnectionMapOutput{})
 }

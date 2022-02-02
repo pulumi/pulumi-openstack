@@ -135,42 +135,40 @@ export class SecurityService extends pulumi.CustomResource {
      */
     constructor(name: string, args: SecurityServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecurityServiceArgs | SecurityServiceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityServiceState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["dnsIp"] = state ? state.dnsIp : undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["ou"] = state ? state.ou : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["server"] = state ? state.server : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["user"] = state ? state.user : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dnsIp"] = state ? state.dnsIp : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["ou"] = state ? state.ou : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["server"] = state ? state.server : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as SecurityServiceArgs | undefined;
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["dnsIp"] = args ? args.dnsIp : undefined;
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["ou"] = args ? args.ou : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["server"] = args ? args.server : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["user"] = args ? args.user : undefined;
-            inputs["projectId"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dnsIp"] = args ? args.dnsIp : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["ou"] = args ? args.ou : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["server"] = args ? args.server : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["user"] = args ? args.user : undefined;
+            resourceInputs["projectId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SecurityService.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SecurityService.__pulumiType, name, resourceInputs, opts);
     }
 }
 

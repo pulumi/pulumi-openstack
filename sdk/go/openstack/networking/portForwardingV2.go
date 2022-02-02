@@ -245,7 +245,7 @@ type PortForwardingV2Input interface {
 }
 
 func (*PortForwardingV2) ElementType() reflect.Type {
-	return reflect.TypeOf((*PortForwardingV2)(nil))
+	return reflect.TypeOf((**PortForwardingV2)(nil)).Elem()
 }
 
 func (i *PortForwardingV2) ToPortForwardingV2Output() PortForwardingV2Output {
@@ -254,35 +254,6 @@ func (i *PortForwardingV2) ToPortForwardingV2Output() PortForwardingV2Output {
 
 func (i *PortForwardingV2) ToPortForwardingV2OutputWithContext(ctx context.Context) PortForwardingV2Output {
 	return pulumi.ToOutputWithContext(ctx, i).(PortForwardingV2Output)
-}
-
-func (i *PortForwardingV2) ToPortForwardingV2PtrOutput() PortForwardingV2PtrOutput {
-	return i.ToPortForwardingV2PtrOutputWithContext(context.Background())
-}
-
-func (i *PortForwardingV2) ToPortForwardingV2PtrOutputWithContext(ctx context.Context) PortForwardingV2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PortForwardingV2PtrOutput)
-}
-
-type PortForwardingV2PtrInput interface {
-	pulumi.Input
-
-	ToPortForwardingV2PtrOutput() PortForwardingV2PtrOutput
-	ToPortForwardingV2PtrOutputWithContext(ctx context.Context) PortForwardingV2PtrOutput
-}
-
-type portForwardingV2PtrType PortForwardingV2Args
-
-func (*portForwardingV2PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PortForwardingV2)(nil))
-}
-
-func (i *portForwardingV2PtrType) ToPortForwardingV2PtrOutput() PortForwardingV2PtrOutput {
-	return i.ToPortForwardingV2PtrOutputWithContext(context.Background())
-}
-
-func (i *portForwardingV2PtrType) ToPortForwardingV2PtrOutputWithContext(ctx context.Context) PortForwardingV2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PortForwardingV2PtrOutput)
 }
 
 // PortForwardingV2ArrayInput is an input type that accepts PortForwardingV2Array and PortForwardingV2ArrayOutput values.
@@ -338,7 +309,7 @@ func (i PortForwardingV2Map) ToPortForwardingV2MapOutputWithContext(ctx context.
 type PortForwardingV2Output struct{ *pulumi.OutputState }
 
 func (PortForwardingV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*PortForwardingV2)(nil))
+	return reflect.TypeOf((**PortForwardingV2)(nil)).Elem()
 }
 
 func (o PortForwardingV2Output) ToPortForwardingV2Output() PortForwardingV2Output {
@@ -349,44 +320,10 @@ func (o PortForwardingV2Output) ToPortForwardingV2OutputWithContext(ctx context.
 	return o
 }
 
-func (o PortForwardingV2Output) ToPortForwardingV2PtrOutput() PortForwardingV2PtrOutput {
-	return o.ToPortForwardingV2PtrOutputWithContext(context.Background())
-}
-
-func (o PortForwardingV2Output) ToPortForwardingV2PtrOutputWithContext(ctx context.Context) PortForwardingV2PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortForwardingV2) *PortForwardingV2 {
-		return &v
-	}).(PortForwardingV2PtrOutput)
-}
-
-type PortForwardingV2PtrOutput struct{ *pulumi.OutputState }
-
-func (PortForwardingV2PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PortForwardingV2)(nil))
-}
-
-func (o PortForwardingV2PtrOutput) ToPortForwardingV2PtrOutput() PortForwardingV2PtrOutput {
-	return o
-}
-
-func (o PortForwardingV2PtrOutput) ToPortForwardingV2PtrOutputWithContext(ctx context.Context) PortForwardingV2PtrOutput {
-	return o
-}
-
-func (o PortForwardingV2PtrOutput) Elem() PortForwardingV2Output {
-	return o.ApplyT(func(v *PortForwardingV2) PortForwardingV2 {
-		if v != nil {
-			return *v
-		}
-		var ret PortForwardingV2
-		return ret
-	}).(PortForwardingV2Output)
-}
-
 type PortForwardingV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (PortForwardingV2ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PortForwardingV2)(nil))
+	return reflect.TypeOf((*[]*PortForwardingV2)(nil)).Elem()
 }
 
 func (o PortForwardingV2ArrayOutput) ToPortForwardingV2ArrayOutput() PortForwardingV2ArrayOutput {
@@ -398,15 +335,15 @@ func (o PortForwardingV2ArrayOutput) ToPortForwardingV2ArrayOutputWithContext(ct
 }
 
 func (o PortForwardingV2ArrayOutput) Index(i pulumi.IntInput) PortForwardingV2Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PortForwardingV2 {
-		return vs[0].([]PortForwardingV2)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PortForwardingV2 {
+		return vs[0].([]*PortForwardingV2)[vs[1].(int)]
 	}).(PortForwardingV2Output)
 }
 
 type PortForwardingV2MapOutput struct{ *pulumi.OutputState }
 
 func (PortForwardingV2MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]PortForwardingV2)(nil))
+	return reflect.TypeOf((*map[string]*PortForwardingV2)(nil)).Elem()
 }
 
 func (o PortForwardingV2MapOutput) ToPortForwardingV2MapOutput() PortForwardingV2MapOutput {
@@ -418,18 +355,16 @@ func (o PortForwardingV2MapOutput) ToPortForwardingV2MapOutputWithContext(ctx co
 }
 
 func (o PortForwardingV2MapOutput) MapIndex(k pulumi.StringInput) PortForwardingV2Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PortForwardingV2 {
-		return vs[0].(map[string]PortForwardingV2)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *PortForwardingV2 {
+		return vs[0].(map[string]*PortForwardingV2)[vs[1].(string)]
 	}).(PortForwardingV2Output)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PortForwardingV2Input)(nil)).Elem(), &PortForwardingV2{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PortForwardingV2PtrInput)(nil)).Elem(), &PortForwardingV2{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PortForwardingV2ArrayInput)(nil)).Elem(), PortForwardingV2Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PortForwardingV2MapInput)(nil)).Elem(), PortForwardingV2Map{})
 	pulumi.RegisterOutputType(PortForwardingV2Output{})
-	pulumi.RegisterOutputType(PortForwardingV2PtrOutput{})
 	pulumi.RegisterOutputType(PortForwardingV2ArrayOutput{})
 	pulumi.RegisterOutputType(PortForwardingV2MapOutput{})
 }

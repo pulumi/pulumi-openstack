@@ -100,17 +100,17 @@ export class MemberV1 extends pulumi.CustomResource {
      */
     constructor(name: string, args: MemberV1Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MemberV1Args | MemberV1State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MemberV1State | undefined;
-            inputs["address"] = state ? state.address : undefined;
-            inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            inputs["poolId"] = state ? state.poolId : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
-            inputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            resourceInputs["poolId"] = state ? state.poolId : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as MemberV1Args | undefined;
             if ((!args || args.address === undefined) && !opts.urn) {
@@ -122,18 +122,16 @@ export class MemberV1 extends pulumi.CustomResource {
             if ((!args || args.port === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            inputs["address"] = args ? args.address : undefined;
-            inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            inputs["poolId"] = args ? args.poolId : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["address"] = args ? args.address : undefined;
+            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            resourceInputs["poolId"] = args ? args.poolId : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["weight"] = args ? args.weight : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(MemberV1.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(MemberV1.__pulumiType, name, resourceInputs, opts);
     }
 }
 

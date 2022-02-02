@@ -24,9 +24,7 @@ export function getAggregateV2(args: GetAggregateV2Args, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:compute/getAggregateV2:getAggregateV2", {
         "hosts": args.hosts,
         "metadata": args.metadata,

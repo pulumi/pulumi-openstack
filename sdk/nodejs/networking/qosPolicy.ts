@@ -124,41 +124,39 @@ export class QosPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args?: QosPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QosPolicyArgs | QosPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QosPolicyState | undefined;
-            inputs["allTags"] = state ? state.allTags : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["isDefault"] = state ? state.isDefault : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["revisionNumber"] = state ? state.revisionNumber : undefined;
-            inputs["shared"] = state ? state.shared : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["updatedAt"] = state ? state.updatedAt : undefined;
-            inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["allTags"] = state ? state.allTags : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["revisionNumber"] = state ? state.revisionNumber : undefined;
+            resourceInputs["shared"] = state ? state.shared : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as QosPolicyArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["isDefault"] = args ? args.isDefault : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["shared"] = args ? args.shared : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
-            inputs["allTags"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["revisionNumber"] = undefined /*out*/;
-            inputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["shared"] = args ? args.shared : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["allTags"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["revisionNumber"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(QosPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(QosPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

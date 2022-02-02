@@ -110,27 +110,25 @@ export class AggregateV2 extends pulumi.CustomResource {
      */
     constructor(name: string, args?: AggregateV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AggregateV2Args | AggregateV2State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AggregateV2State | undefined;
-            inputs["hosts"] = state ? state.hosts : undefined;
-            inputs["metadata"] = state ? state.metadata : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["hosts"] = state ? state.hosts : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as AggregateV2Args | undefined;
-            inputs["hosts"] = args ? args.hosts : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["hosts"] = args ? args.hosts : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AggregateV2.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AggregateV2.__pulumiType, name, resourceInputs, opts);
     }
 }
 

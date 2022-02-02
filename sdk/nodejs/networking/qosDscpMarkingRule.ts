@@ -84,13 +84,13 @@ export class QosDscpMarkingRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: QosDscpMarkingRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QosDscpMarkingRuleArgs | QosDscpMarkingRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QosDscpMarkingRuleState | undefined;
-            inputs["dscpMark"] = state ? state.dscpMark : undefined;
-            inputs["qosPolicyId"] = state ? state.qosPolicyId : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["dscpMark"] = state ? state.dscpMark : undefined;
+            resourceInputs["qosPolicyId"] = state ? state.qosPolicyId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as QosDscpMarkingRuleArgs | undefined;
             if ((!args || args.dscpMark === undefined) && !opts.urn) {
@@ -99,14 +99,12 @@ export class QosDscpMarkingRule extends pulumi.CustomResource {
             if ((!args || args.qosPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'qosPolicyId'");
             }
-            inputs["dscpMark"] = args ? args.dscpMark : undefined;
-            inputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
-            inputs["region"] = args ? args.region : undefined;
+            resourceInputs["dscpMark"] = args ? args.dscpMark : undefined;
+            resourceInputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(QosDscpMarkingRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(QosDscpMarkingRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

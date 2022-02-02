@@ -102,18 +102,18 @@ export class PortForwardingV2 extends pulumi.CustomResource {
      */
     constructor(name: string, args: PortForwardingV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PortForwardingV2Args | PortForwardingV2State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PortForwardingV2State | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["externalPort"] = state ? state.externalPort : undefined;
-            inputs["floatingipId"] = state ? state.floatingipId : undefined;
-            inputs["internalIpAddress"] = state ? state.internalIpAddress : undefined;
-            inputs["internalPort"] = state ? state.internalPort : undefined;
-            inputs["internalPortId"] = state ? state.internalPortId : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["externalPort"] = state ? state.externalPort : undefined;
+            resourceInputs["floatingipId"] = state ? state.floatingipId : undefined;
+            resourceInputs["internalIpAddress"] = state ? state.internalIpAddress : undefined;
+            resourceInputs["internalPort"] = state ? state.internalPort : undefined;
+            resourceInputs["internalPortId"] = state ? state.internalPortId : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as PortForwardingV2Args | undefined;
             if ((!args || args.externalPort === undefined) && !opts.urn) {
@@ -134,19 +134,17 @@ export class PortForwardingV2 extends pulumi.CustomResource {
             if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["externalPort"] = args ? args.externalPort : undefined;
-            inputs["floatingipId"] = args ? args.floatingipId : undefined;
-            inputs["internalIpAddress"] = args ? args.internalIpAddress : undefined;
-            inputs["internalPort"] = args ? args.internalPort : undefined;
-            inputs["internalPortId"] = args ? args.internalPortId : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["region"] = args ? args.region : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["externalPort"] = args ? args.externalPort : undefined;
+            resourceInputs["floatingipId"] = args ? args.floatingipId : undefined;
+            resourceInputs["internalIpAddress"] = args ? args.internalIpAddress : undefined;
+            resourceInputs["internalPort"] = args ? args.internalPort : undefined;
+            resourceInputs["internalPortId"] = args ? args.internalPortId : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(PortForwardingV2.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(PortForwardingV2.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -172,54 +172,52 @@ export class StackV1 extends pulumi.CustomResource {
      */
     constructor(name: string, args: StackV1Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StackV1Args | StackV1State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StackV1State | undefined;
-            inputs["StackOutputs"] = state ? state.StackOutputs : undefined;
-            inputs["capabilities"] = state ? state.capabilities : undefined;
-            inputs["creationTime"] = state ? state.creationTime : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["disableRollback"] = state ? state.disableRollback : undefined;
-            inputs["environmentOpts"] = state ? state.environmentOpts : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["notificationTopics"] = state ? state.notificationTopics : undefined;
-            inputs["parameters"] = state ? state.parameters : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["statusReason"] = state ? state.statusReason : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["templateDescription"] = state ? state.templateDescription : undefined;
-            inputs["templateOpts"] = state ? state.templateOpts : undefined;
-            inputs["timeout"] = state ? state.timeout : undefined;
-            inputs["updatedTime"] = state ? state.updatedTime : undefined;
+            resourceInputs["StackOutputs"] = state ? state.StackOutputs : undefined;
+            resourceInputs["capabilities"] = state ? state.capabilities : undefined;
+            resourceInputs["creationTime"] = state ? state.creationTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disableRollback"] = state ? state.disableRollback : undefined;
+            resourceInputs["environmentOpts"] = state ? state.environmentOpts : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notificationTopics"] = state ? state.notificationTopics : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["statusReason"] = state ? state.statusReason : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["templateDescription"] = state ? state.templateDescription : undefined;
+            resourceInputs["templateOpts"] = state ? state.templateOpts : undefined;
+            resourceInputs["timeout"] = state ? state.timeout : undefined;
+            resourceInputs["updatedTime"] = state ? state.updatedTime : undefined;
         } else {
             const args = argsOrState as StackV1Args | undefined;
             if ((!args || args.templateOpts === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateOpts'");
             }
-            inputs["StackOutputs"] = args ? args.StackOutputs : undefined;
-            inputs["capabilities"] = args ? args.capabilities : undefined;
-            inputs["creationTime"] = args ? args.creationTime : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disableRollback"] = args ? args.disableRollback : undefined;
-            inputs["environmentOpts"] = args ? args.environmentOpts : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["notificationTopics"] = args ? args.notificationTopics : undefined;
-            inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["statusReason"] = args ? args.statusReason : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["templateDescription"] = args ? args.templateDescription : undefined;
-            inputs["templateOpts"] = args ? args.templateOpts : undefined;
-            inputs["timeout"] = args ? args.timeout : undefined;
-            inputs["updatedTime"] = args ? args.updatedTime : undefined;
+            resourceInputs["StackOutputs"] = args ? args.StackOutputs : undefined;
+            resourceInputs["capabilities"] = args ? args.capabilities : undefined;
+            resourceInputs["creationTime"] = args ? args.creationTime : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disableRollback"] = args ? args.disableRollback : undefined;
+            resourceInputs["environmentOpts"] = args ? args.environmentOpts : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notificationTopics"] = args ? args.notificationTopics : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["statusReason"] = args ? args.statusReason : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["templateDescription"] = args ? args.templateDescription : undefined;
+            resourceInputs["templateOpts"] = args ? args.templateOpts : undefined;
+            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["updatedTime"] = args ? args.updatedTime : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(StackV1.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(StackV1.__pulumiType, name, resourceInputs, opts);
     }
 }
 

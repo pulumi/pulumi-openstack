@@ -23,9 +23,7 @@ export function getQosDscpMarkingRule(args: GetQosDscpMarkingRuleArgs, opts?: pu
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", {
         "dscpMark": args.dscpMark,
         "qosPolicyId": args.qosPolicyId,

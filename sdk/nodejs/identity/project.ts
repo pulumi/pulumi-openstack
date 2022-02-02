@@ -106,33 +106,31 @@ export class Project extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectArgs | ProjectState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["domainId"] = state ? state.domainId : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["isDomain"] = state ? state.isDomain : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["parentId"] = state ? state.parentId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["domainId"] = state ? state.domainId : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["isDomain"] = state ? state.isDomain : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parentId"] = state ? state.parentId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["domainId"] = args ? args.domainId : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["isDomain"] = args ? args.isDomain : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["parentId"] = args ? args.parentId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["domainId"] = args ? args.domainId : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["isDomain"] = args ? args.isDomain : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parentId"] = args ? args.parentId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Project.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Project.__pulumiType, name, resourceInputs, opts);
     }
 }
 

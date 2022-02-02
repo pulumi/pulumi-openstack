@@ -87,32 +87,30 @@ export class RoleAssignment extends pulumi.CustomResource {
      */
     constructor(name: string, args: RoleAssignmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RoleAssignmentArgs | RoleAssignmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleAssignmentState | undefined;
-            inputs["domainId"] = state ? state.domainId : undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["roleId"] = state ? state.roleId : undefined;
-            inputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["domainId"] = state ? state.domainId : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["roleId"] = state ? state.roleId : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as RoleAssignmentArgs | undefined;
             if ((!args || args.roleId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            inputs["domainId"] = args ? args.domainId : undefined;
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["roleId"] = args ? args.roleId : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["domainId"] = args ? args.domainId : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["roleId"] = args ? args.roleId : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RoleAssignment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RoleAssignment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

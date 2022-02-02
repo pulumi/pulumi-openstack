@@ -138,22 +138,22 @@ export class OrderV1 extends pulumi.CustomResource {
      */
     constructor(name: string, args: OrderV1Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrderV1Args | OrderV1State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrderV1State | undefined;
-            inputs["containerRef"] = state ? state.containerRef : undefined;
-            inputs["created"] = state ? state.created : undefined;
-            inputs["creatorId"] = state ? state.creatorId : undefined;
-            inputs["meta"] = state ? state.meta : undefined;
-            inputs["orderRef"] = state ? state.orderRef : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["secretRef"] = state ? state.secretRef : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["subStatus"] = state ? state.subStatus : undefined;
-            inputs["subStatusMessage"] = state ? state.subStatusMessage : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["containerRef"] = state ? state.containerRef : undefined;
+            resourceInputs["created"] = state ? state.created : undefined;
+            resourceInputs["creatorId"] = state ? state.creatorId : undefined;
+            resourceInputs["meta"] = state ? state.meta : undefined;
+            resourceInputs["orderRef"] = state ? state.orderRef : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["secretRef"] = state ? state.secretRef : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["subStatus"] = state ? state.subStatus : undefined;
+            resourceInputs["subStatusMessage"] = state ? state.subStatusMessage : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["updated"] = state ? state.updated : undefined;
         } else {
             const args = argsOrState as OrderV1Args | undefined;
             if ((!args || args.meta === undefined) && !opts.urn) {
@@ -162,23 +162,21 @@ export class OrderV1 extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["meta"] = args ? args.meta : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["containerRef"] = undefined /*out*/;
-            inputs["created"] = undefined /*out*/;
-            inputs["creatorId"] = undefined /*out*/;
-            inputs["orderRef"] = undefined /*out*/;
-            inputs["secretRef"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["subStatus"] = undefined /*out*/;
-            inputs["subStatusMessage"] = undefined /*out*/;
-            inputs["updated"] = undefined /*out*/;
+            resourceInputs["meta"] = args ? args.meta : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["containerRef"] = undefined /*out*/;
+            resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["creatorId"] = undefined /*out*/;
+            resourceInputs["orderRef"] = undefined /*out*/;
+            resourceInputs["secretRef"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["subStatus"] = undefined /*out*/;
+            resourceInputs["subStatusMessage"] = undefined /*out*/;
+            resourceInputs["updated"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(OrderV1.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(OrderV1.__pulumiType, name, resourceInputs, opts);
     }
 }
 

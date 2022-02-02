@@ -327,7 +327,7 @@ type ShareNetworkInput interface {
 }
 
 func (*ShareNetwork) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShareNetwork)(nil))
+	return reflect.TypeOf((**ShareNetwork)(nil)).Elem()
 }
 
 func (i *ShareNetwork) ToShareNetworkOutput() ShareNetworkOutput {
@@ -336,35 +336,6 @@ func (i *ShareNetwork) ToShareNetworkOutput() ShareNetworkOutput {
 
 func (i *ShareNetwork) ToShareNetworkOutputWithContext(ctx context.Context) ShareNetworkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShareNetworkOutput)
-}
-
-func (i *ShareNetwork) ToShareNetworkPtrOutput() ShareNetworkPtrOutput {
-	return i.ToShareNetworkPtrOutputWithContext(context.Background())
-}
-
-func (i *ShareNetwork) ToShareNetworkPtrOutputWithContext(ctx context.Context) ShareNetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ShareNetworkPtrOutput)
-}
-
-type ShareNetworkPtrInput interface {
-	pulumi.Input
-
-	ToShareNetworkPtrOutput() ShareNetworkPtrOutput
-	ToShareNetworkPtrOutputWithContext(ctx context.Context) ShareNetworkPtrOutput
-}
-
-type shareNetworkPtrType ShareNetworkArgs
-
-func (*shareNetworkPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ShareNetwork)(nil))
-}
-
-func (i *shareNetworkPtrType) ToShareNetworkPtrOutput() ShareNetworkPtrOutput {
-	return i.ToShareNetworkPtrOutputWithContext(context.Background())
-}
-
-func (i *shareNetworkPtrType) ToShareNetworkPtrOutputWithContext(ctx context.Context) ShareNetworkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ShareNetworkPtrOutput)
 }
 
 // ShareNetworkArrayInput is an input type that accepts ShareNetworkArray and ShareNetworkArrayOutput values.
@@ -420,7 +391,7 @@ func (i ShareNetworkMap) ToShareNetworkMapOutputWithContext(ctx context.Context)
 type ShareNetworkOutput struct{ *pulumi.OutputState }
 
 func (ShareNetworkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShareNetwork)(nil))
+	return reflect.TypeOf((**ShareNetwork)(nil)).Elem()
 }
 
 func (o ShareNetworkOutput) ToShareNetworkOutput() ShareNetworkOutput {
@@ -431,44 +402,10 @@ func (o ShareNetworkOutput) ToShareNetworkOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ShareNetworkOutput) ToShareNetworkPtrOutput() ShareNetworkPtrOutput {
-	return o.ToShareNetworkPtrOutputWithContext(context.Background())
-}
-
-func (o ShareNetworkOutput) ToShareNetworkPtrOutputWithContext(ctx context.Context) ShareNetworkPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShareNetwork) *ShareNetwork {
-		return &v
-	}).(ShareNetworkPtrOutput)
-}
-
-type ShareNetworkPtrOutput struct{ *pulumi.OutputState }
-
-func (ShareNetworkPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ShareNetwork)(nil))
-}
-
-func (o ShareNetworkPtrOutput) ToShareNetworkPtrOutput() ShareNetworkPtrOutput {
-	return o
-}
-
-func (o ShareNetworkPtrOutput) ToShareNetworkPtrOutputWithContext(ctx context.Context) ShareNetworkPtrOutput {
-	return o
-}
-
-func (o ShareNetworkPtrOutput) Elem() ShareNetworkOutput {
-	return o.ApplyT(func(v *ShareNetwork) ShareNetwork {
-		if v != nil {
-			return *v
-		}
-		var ret ShareNetwork
-		return ret
-	}).(ShareNetworkOutput)
-}
-
 type ShareNetworkArrayOutput struct{ *pulumi.OutputState }
 
 func (ShareNetworkArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ShareNetwork)(nil))
+	return reflect.TypeOf((*[]*ShareNetwork)(nil)).Elem()
 }
 
 func (o ShareNetworkArrayOutput) ToShareNetworkArrayOutput() ShareNetworkArrayOutput {
@@ -480,15 +417,15 @@ func (o ShareNetworkArrayOutput) ToShareNetworkArrayOutputWithContext(ctx contex
 }
 
 func (o ShareNetworkArrayOutput) Index(i pulumi.IntInput) ShareNetworkOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShareNetwork {
-		return vs[0].([]ShareNetwork)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ShareNetwork {
+		return vs[0].([]*ShareNetwork)[vs[1].(int)]
 	}).(ShareNetworkOutput)
 }
 
 type ShareNetworkMapOutput struct{ *pulumi.OutputState }
 
 func (ShareNetworkMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ShareNetwork)(nil))
+	return reflect.TypeOf((*map[string]*ShareNetwork)(nil)).Elem()
 }
 
 func (o ShareNetworkMapOutput) ToShareNetworkMapOutput() ShareNetworkMapOutput {
@@ -500,18 +437,16 @@ func (o ShareNetworkMapOutput) ToShareNetworkMapOutputWithContext(ctx context.Co
 }
 
 func (o ShareNetworkMapOutput) MapIndex(k pulumi.StringInput) ShareNetworkOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ShareNetwork {
-		return vs[0].(map[string]ShareNetwork)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ShareNetwork {
+		return vs[0].(map[string]*ShareNetwork)[vs[1].(string)]
 	}).(ShareNetworkOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareNetworkInput)(nil)).Elem(), &ShareNetwork{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ShareNetworkPtrInput)(nil)).Elem(), &ShareNetwork{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareNetworkArrayInput)(nil)).Elem(), ShareNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareNetworkMapInput)(nil)).Elem(), ShareNetworkMap{})
 	pulumi.RegisterOutputType(ShareNetworkOutput{})
-	pulumi.RegisterOutputType(ShareNetworkPtrOutput{})
 	pulumi.RegisterOutputType(ShareNetworkArrayOutput{})
 	pulumi.RegisterOutputType(ShareNetworkMapOutput{})
 }

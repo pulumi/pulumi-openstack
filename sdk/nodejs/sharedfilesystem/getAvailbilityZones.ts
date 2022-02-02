@@ -23,9 +23,7 @@ export function getAvailbilityZones(args?: GetAvailbilityZonesArgs, opts?: pulum
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", {
         "region": args.region,
     }, opts);

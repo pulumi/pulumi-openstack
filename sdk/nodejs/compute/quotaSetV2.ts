@@ -160,52 +160,50 @@ export class QuotaSetV2 extends pulumi.CustomResource {
      */
     constructor(name: string, args: QuotaSetV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QuotaSetV2Args | QuotaSetV2State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QuotaSetV2State | undefined;
-            inputs["cores"] = state ? state.cores : undefined;
-            inputs["fixedIps"] = state ? state.fixedIps : undefined;
-            inputs["floatingIps"] = state ? state.floatingIps : undefined;
-            inputs["injectedFileContentBytes"] = state ? state.injectedFileContentBytes : undefined;
-            inputs["injectedFilePathBytes"] = state ? state.injectedFilePathBytes : undefined;
-            inputs["injectedFiles"] = state ? state.injectedFiles : undefined;
-            inputs["instances"] = state ? state.instances : undefined;
-            inputs["keyPairs"] = state ? state.keyPairs : undefined;
-            inputs["metadataItems"] = state ? state.metadataItems : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["ram"] = state ? state.ram : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["securityGroupRules"] = state ? state.securityGroupRules : undefined;
-            inputs["securityGroups"] = state ? state.securityGroups : undefined;
-            inputs["serverGroupMembers"] = state ? state.serverGroupMembers : undefined;
-            inputs["serverGroups"] = state ? state.serverGroups : undefined;
+            resourceInputs["cores"] = state ? state.cores : undefined;
+            resourceInputs["fixedIps"] = state ? state.fixedIps : undefined;
+            resourceInputs["floatingIps"] = state ? state.floatingIps : undefined;
+            resourceInputs["injectedFileContentBytes"] = state ? state.injectedFileContentBytes : undefined;
+            resourceInputs["injectedFilePathBytes"] = state ? state.injectedFilePathBytes : undefined;
+            resourceInputs["injectedFiles"] = state ? state.injectedFiles : undefined;
+            resourceInputs["instances"] = state ? state.instances : undefined;
+            resourceInputs["keyPairs"] = state ? state.keyPairs : undefined;
+            resourceInputs["metadataItems"] = state ? state.metadataItems : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["ram"] = state ? state.ram : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["securityGroupRules"] = state ? state.securityGroupRules : undefined;
+            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
+            resourceInputs["serverGroupMembers"] = state ? state.serverGroupMembers : undefined;
+            resourceInputs["serverGroups"] = state ? state.serverGroups : undefined;
         } else {
             const args = argsOrState as QuotaSetV2Args | undefined;
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            inputs["cores"] = args ? args.cores : undefined;
-            inputs["fixedIps"] = args ? args.fixedIps : undefined;
-            inputs["floatingIps"] = args ? args.floatingIps : undefined;
-            inputs["injectedFileContentBytes"] = args ? args.injectedFileContentBytes : undefined;
-            inputs["injectedFilePathBytes"] = args ? args.injectedFilePathBytes : undefined;
-            inputs["injectedFiles"] = args ? args.injectedFiles : undefined;
-            inputs["instances"] = args ? args.instances : undefined;
-            inputs["keyPairs"] = args ? args.keyPairs : undefined;
-            inputs["metadataItems"] = args ? args.metadataItems : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["ram"] = args ? args.ram : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["securityGroupRules"] = args ? args.securityGroupRules : undefined;
-            inputs["securityGroups"] = args ? args.securityGroups : undefined;
-            inputs["serverGroupMembers"] = args ? args.serverGroupMembers : undefined;
-            inputs["serverGroups"] = args ? args.serverGroups : undefined;
+            resourceInputs["cores"] = args ? args.cores : undefined;
+            resourceInputs["fixedIps"] = args ? args.fixedIps : undefined;
+            resourceInputs["floatingIps"] = args ? args.floatingIps : undefined;
+            resourceInputs["injectedFileContentBytes"] = args ? args.injectedFileContentBytes : undefined;
+            resourceInputs["injectedFilePathBytes"] = args ? args.injectedFilePathBytes : undefined;
+            resourceInputs["injectedFiles"] = args ? args.injectedFiles : undefined;
+            resourceInputs["instances"] = args ? args.instances : undefined;
+            resourceInputs["keyPairs"] = args ? args.keyPairs : undefined;
+            resourceInputs["metadataItems"] = args ? args.metadataItems : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["ram"] = args ? args.ram : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["securityGroupRules"] = args ? args.securityGroupRules : undefined;
+            resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
+            resourceInputs["serverGroupMembers"] = args ? args.serverGroupMembers : undefined;
+            resourceInputs["serverGroups"] = args ? args.serverGroups : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(QuotaSetV2.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(QuotaSetV2.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -24,9 +24,7 @@ export function getVolumeV3(args?: GetVolumeV3Args, opts?: pulumi.InvokeOptions)
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:blockstorage/getVolumeV3:getVolumeV3", {
         "bootable": args.bootable,
         "metadata": args.metadata,

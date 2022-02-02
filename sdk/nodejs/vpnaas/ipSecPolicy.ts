@@ -118,39 +118,37 @@ export class IpSecPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args?: IpSecPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IpSecPolicyArgs | IpSecPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IpSecPolicyState | undefined;
-            inputs["authAlgorithm"] = state ? state.authAlgorithm : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["encapsulationMode"] = state ? state.encapsulationMode : undefined;
-            inputs["encryptionAlgorithm"] = state ? state.encryptionAlgorithm : undefined;
-            inputs["lifetimes"] = state ? state.lifetimes : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["pfs"] = state ? state.pfs : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
-            inputs["transformProtocol"] = state ? state.transformProtocol : undefined;
-            inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["authAlgorithm"] = state ? state.authAlgorithm : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["encapsulationMode"] = state ? state.encapsulationMode : undefined;
+            resourceInputs["encryptionAlgorithm"] = state ? state.encryptionAlgorithm : undefined;
+            resourceInputs["lifetimes"] = state ? state.lifetimes : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["pfs"] = state ? state.pfs : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["transformProtocol"] = state ? state.transformProtocol : undefined;
+            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as IpSecPolicyArgs | undefined;
-            inputs["authAlgorithm"] = args ? args.authAlgorithm : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["encapsulationMode"] = args ? args.encapsulationMode : undefined;
-            inputs["encryptionAlgorithm"] = args ? args.encryptionAlgorithm : undefined;
-            inputs["lifetimes"] = args ? args.lifetimes : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["pfs"] = args ? args.pfs : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["transformProtocol"] = args ? args.transformProtocol : undefined;
-            inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["authAlgorithm"] = args ? args.authAlgorithm : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["encapsulationMode"] = args ? args.encapsulationMode : undefined;
+            resourceInputs["encryptionAlgorithm"] = args ? args.encryptionAlgorithm : undefined;
+            resourceInputs["lifetimes"] = args ? args.lifetimes : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["pfs"] = args ? args.pfs : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["transformProtocol"] = args ? args.transformProtocol : undefined;
+            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(IpSecPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(IpSecPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

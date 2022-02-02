@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Compute
 {
@@ -39,7 +38,7 @@ namespace Pulumi.OpenStack.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetQuotaSetV2Result> InvokeAsync(GetQuotaSetV2Args args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQuotaSetV2Result>("openstack:compute/getQuotaSetV2:getQuotaSetV2", args ?? new GetQuotaSetV2Args(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetQuotaSetV2Result>("openstack:compute/getQuotaSetV2:getQuotaSetV2", args ?? new GetQuotaSetV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the compute quotaset of an OpenStack project.
@@ -68,7 +67,7 @@ namespace Pulumi.OpenStack.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetQuotaSetV2Result> Invoke(GetQuotaSetV2InvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetQuotaSetV2Result>("openstack:compute/getQuotaSetV2:getQuotaSetV2", args ?? new GetQuotaSetV2InvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetQuotaSetV2Result>("openstack:compute/getQuotaSetV2:getQuotaSetV2", args ?? new GetQuotaSetV2InvokeArgs(), options.WithDefaults());
     }
 
 

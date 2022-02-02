@@ -195,42 +195,40 @@ export class ContainerV1 extends pulumi.CustomResource {
      */
     constructor(name: string, args: ContainerV1Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContainerV1Args | ContainerV1State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContainerV1State | undefined;
-            inputs["acl"] = state ? state.acl : undefined;
-            inputs["consumers"] = state ? state.consumers : undefined;
-            inputs["containerRef"] = state ? state.containerRef : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["creatorId"] = state ? state.creatorId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["secretRefs"] = state ? state.secretRefs : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["acl"] = state ? state.acl : undefined;
+            resourceInputs["consumers"] = state ? state.consumers : undefined;
+            resourceInputs["containerRef"] = state ? state.containerRef : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["creatorId"] = state ? state.creatorId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["secretRefs"] = state ? state.secretRefs : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ContainerV1Args | undefined;
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["acl"] = args ? args.acl : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["secretRefs"] = args ? args.secretRefs : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["consumers"] = undefined /*out*/;
-            inputs["containerRef"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["creatorId"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["acl"] = args ? args.acl : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["secretRefs"] = args ? args.secretRefs : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["consumers"] = undefined /*out*/;
+            resourceInputs["containerRef"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["creatorId"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ContainerV1.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ContainerV1.__pulumiType, name, resourceInputs, opts);
     }
 }
 

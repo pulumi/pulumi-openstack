@@ -24,9 +24,7 @@ export function getSubnetPool(args?: GetSubnetPoolArgs, opts?: pulumi.InvokeOpti
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:networking/getSubnetPool:getSubnetPool", {
         "addressScopeId": args.addressScopeId,
         "defaultPrefixlen": args.defaultPrefixlen,

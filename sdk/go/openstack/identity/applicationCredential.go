@@ -256,7 +256,7 @@ type ApplicationCredentialInput interface {
 }
 
 func (*ApplicationCredential) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationCredential)(nil))
+	return reflect.TypeOf((**ApplicationCredential)(nil)).Elem()
 }
 
 func (i *ApplicationCredential) ToApplicationCredentialOutput() ApplicationCredentialOutput {
@@ -265,35 +265,6 @@ func (i *ApplicationCredential) ToApplicationCredentialOutput() ApplicationCrede
 
 func (i *ApplicationCredential) ToApplicationCredentialOutputWithContext(ctx context.Context) ApplicationCredentialOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCredentialOutput)
-}
-
-func (i *ApplicationCredential) ToApplicationCredentialPtrOutput() ApplicationCredentialPtrOutput {
-	return i.ToApplicationCredentialPtrOutputWithContext(context.Background())
-}
-
-func (i *ApplicationCredential) ToApplicationCredentialPtrOutputWithContext(ctx context.Context) ApplicationCredentialPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCredentialPtrOutput)
-}
-
-type ApplicationCredentialPtrInput interface {
-	pulumi.Input
-
-	ToApplicationCredentialPtrOutput() ApplicationCredentialPtrOutput
-	ToApplicationCredentialPtrOutputWithContext(ctx context.Context) ApplicationCredentialPtrOutput
-}
-
-type applicationCredentialPtrType ApplicationCredentialArgs
-
-func (*applicationCredentialPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApplicationCredential)(nil))
-}
-
-func (i *applicationCredentialPtrType) ToApplicationCredentialPtrOutput() ApplicationCredentialPtrOutput {
-	return i.ToApplicationCredentialPtrOutputWithContext(context.Background())
-}
-
-func (i *applicationCredentialPtrType) ToApplicationCredentialPtrOutputWithContext(ctx context.Context) ApplicationCredentialPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCredentialPtrOutput)
 }
 
 // ApplicationCredentialArrayInput is an input type that accepts ApplicationCredentialArray and ApplicationCredentialArrayOutput values.
@@ -349,7 +320,7 @@ func (i ApplicationCredentialMap) ToApplicationCredentialMapOutputWithContext(ct
 type ApplicationCredentialOutput struct{ *pulumi.OutputState }
 
 func (ApplicationCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationCredential)(nil))
+	return reflect.TypeOf((**ApplicationCredential)(nil)).Elem()
 }
 
 func (o ApplicationCredentialOutput) ToApplicationCredentialOutput() ApplicationCredentialOutput {
@@ -360,44 +331,10 @@ func (o ApplicationCredentialOutput) ToApplicationCredentialOutputWithContext(ct
 	return o
 }
 
-func (o ApplicationCredentialOutput) ToApplicationCredentialPtrOutput() ApplicationCredentialPtrOutput {
-	return o.ToApplicationCredentialPtrOutputWithContext(context.Background())
-}
-
-func (o ApplicationCredentialOutput) ToApplicationCredentialPtrOutputWithContext(ctx context.Context) ApplicationCredentialPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationCredential) *ApplicationCredential {
-		return &v
-	}).(ApplicationCredentialPtrOutput)
-}
-
-type ApplicationCredentialPtrOutput struct{ *pulumi.OutputState }
-
-func (ApplicationCredentialPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApplicationCredential)(nil))
-}
-
-func (o ApplicationCredentialPtrOutput) ToApplicationCredentialPtrOutput() ApplicationCredentialPtrOutput {
-	return o
-}
-
-func (o ApplicationCredentialPtrOutput) ToApplicationCredentialPtrOutputWithContext(ctx context.Context) ApplicationCredentialPtrOutput {
-	return o
-}
-
-func (o ApplicationCredentialPtrOutput) Elem() ApplicationCredentialOutput {
-	return o.ApplyT(func(v *ApplicationCredential) ApplicationCredential {
-		if v != nil {
-			return *v
-		}
-		var ret ApplicationCredential
-		return ret
-	}).(ApplicationCredentialOutput)
-}
-
 type ApplicationCredentialArrayOutput struct{ *pulumi.OutputState }
 
 func (ApplicationCredentialArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationCredential)(nil))
+	return reflect.TypeOf((*[]*ApplicationCredential)(nil)).Elem()
 }
 
 func (o ApplicationCredentialArrayOutput) ToApplicationCredentialArrayOutput() ApplicationCredentialArrayOutput {
@@ -409,15 +346,15 @@ func (o ApplicationCredentialArrayOutput) ToApplicationCredentialArrayOutputWith
 }
 
 func (o ApplicationCredentialArrayOutput) Index(i pulumi.IntInput) ApplicationCredentialOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationCredential {
-		return vs[0].([]ApplicationCredential)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationCredential {
+		return vs[0].([]*ApplicationCredential)[vs[1].(int)]
 	}).(ApplicationCredentialOutput)
 }
 
 type ApplicationCredentialMapOutput struct{ *pulumi.OutputState }
 
 func (ApplicationCredentialMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ApplicationCredential)(nil))
+	return reflect.TypeOf((*map[string]*ApplicationCredential)(nil)).Elem()
 }
 
 func (o ApplicationCredentialMapOutput) ToApplicationCredentialMapOutput() ApplicationCredentialMapOutput {
@@ -429,18 +366,16 @@ func (o ApplicationCredentialMapOutput) ToApplicationCredentialMapOutputWithCont
 }
 
 func (o ApplicationCredentialMapOutput) MapIndex(k pulumi.StringInput) ApplicationCredentialOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ApplicationCredential {
-		return vs[0].(map[string]ApplicationCredential)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ApplicationCredential {
+		return vs[0].(map[string]*ApplicationCredential)[vs[1].(string)]
 	}).(ApplicationCredentialOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationCredentialInput)(nil)).Elem(), &ApplicationCredential{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationCredentialPtrInput)(nil)).Elem(), &ApplicationCredential{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationCredentialArrayInput)(nil)).Elem(), ApplicationCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationCredentialMapInput)(nil)).Elem(), ApplicationCredentialMap{})
 	pulumi.RegisterOutputType(ApplicationCredentialOutput{})
-	pulumi.RegisterOutputType(ApplicationCredentialPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationCredentialArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationCredentialMapOutput{})
 }

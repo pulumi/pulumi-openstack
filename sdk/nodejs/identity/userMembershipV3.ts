@@ -98,13 +98,13 @@ export class UserMembershipV3 extends pulumi.CustomResource {
      */
     constructor(name: string, args: UserMembershipV3Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserMembershipV3Args | UserMembershipV3State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserMembershipV3State | undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as UserMembershipV3Args | undefined;
             if ((!args || args.groupId === undefined) && !opts.urn) {
@@ -113,14 +113,12 @@ export class UserMembershipV3 extends pulumi.CustomResource {
             if ((!args || args.userId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(UserMembershipV3.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(UserMembershipV3.__pulumiType, name, resourceInputs, opts);
     }
 }
 

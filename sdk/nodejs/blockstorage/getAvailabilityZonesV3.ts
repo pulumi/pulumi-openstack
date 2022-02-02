@@ -22,9 +22,7 @@ export function getAvailabilityZonesV3(args?: GetAvailabilityZonesV3Args, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3", {
         "region": args.region,
         "state": args.state,

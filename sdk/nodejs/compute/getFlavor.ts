@@ -25,9 +25,7 @@ export function getFlavor(args?: GetFlavorArgs, opts?: pulumi.InvokeOptions): Pr
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:compute/getFlavor:getFlavor", {
         "disk": args.disk,
         "flavorId": args.flavorId,

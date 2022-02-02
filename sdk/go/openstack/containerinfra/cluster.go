@@ -21,33 +21,75 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	ApiAddress        pulumi.StringOutput      `pulumi:"apiAddress"`
-	ClusterTemplateId pulumi.StringOutput      `pulumi:"clusterTemplateId"`
-	CoeVersion        pulumi.StringOutput      `pulumi:"coeVersion"`
-	ContainerVersion  pulumi.StringOutput      `pulumi:"containerVersion"`
-	CreateTimeout     pulumi.IntOutput         `pulumi:"createTimeout"`
-	CreatedAt         pulumi.StringOutput      `pulumi:"createdAt"`
-	DiscoveryUrl      pulumi.StringOutput      `pulumi:"discoveryUrl"`
-	DockerVolumeSize  pulumi.IntOutput         `pulumi:"dockerVolumeSize"`
-	FixedNetwork      pulumi.StringOutput      `pulumi:"fixedNetwork"`
-	FixedSubnet       pulumi.StringOutput      `pulumi:"fixedSubnet"`
-	Flavor            pulumi.StringOutput      `pulumi:"flavor"`
-	FloatingIpEnabled pulumi.BoolOutput        `pulumi:"floatingIpEnabled"`
-	Keypair           pulumi.StringOutput      `pulumi:"keypair"`
-	Kubeconfig        pulumi.StringMapOutput   `pulumi:"kubeconfig"`
-	Labels            pulumi.MapOutput         `pulumi:"labels"`
-	MasterAddresses   pulumi.StringArrayOutput `pulumi:"masterAddresses"`
-	MasterCount       pulumi.IntOutput         `pulumi:"masterCount"`
-	MasterFlavor      pulumi.StringOutput      `pulumi:"masterFlavor"`
-	MergeLabels       pulumi.BoolPtrOutput     `pulumi:"mergeLabels"`
-	Name              pulumi.StringOutput      `pulumi:"name"`
-	NodeAddresses     pulumi.StringArrayOutput `pulumi:"nodeAddresses"`
-	NodeCount         pulumi.IntOutput         `pulumi:"nodeCount"`
-	ProjectId         pulumi.StringOutput      `pulumi:"projectId"`
-	Region            pulumi.StringOutput      `pulumi:"region"`
-	StackId           pulumi.StringOutput      `pulumi:"stackId"`
-	UpdatedAt         pulumi.StringOutput      `pulumi:"updatedAt"`
-	UserId            pulumi.StringOutput      `pulumi:"userId"`
+	ApiAddress pulumi.StringOutput `pulumi:"apiAddress"`
+	// The UUID of the V1 Container Infra cluster
+	// template. Changing this creates a new cluster.
+	ClusterTemplateId pulumi.StringOutput `pulumi:"clusterTemplateId"`
+	CoeVersion        pulumi.StringOutput `pulumi:"coeVersion"`
+	ContainerVersion  pulumi.StringOutput `pulumi:"containerVersion"`
+	// The timeout (in minutes) for creating the
+	// cluster. Changing this creates a new cluster.
+	CreateTimeout pulumi.IntOutput    `pulumi:"createTimeout"`
+	CreatedAt     pulumi.StringOutput `pulumi:"createdAt"`
+	// The URL used for cluster node discovery.
+	// Changing this creates a new cluster.
+	DiscoveryUrl pulumi.StringOutput `pulumi:"discoveryUrl"`
+	// The size (in GB) of the Docker volume.
+	// Changing this creates a new cluster.
+	DockerVolumeSize pulumi.IntOutput `pulumi:"dockerVolumeSize"`
+	// The fixed network that will be attached to the
+	// cluster. Changing this creates a new cluster.
+	FixedNetwork pulumi.StringOutput `pulumi:"fixedNetwork"`
+	// The fixed subnet that will be attached to the
+	// cluster. Changing this creates a new cluster.
+	FixedSubnet pulumi.StringOutput `pulumi:"fixedSubnet"`
+	// The flavor for the nodes of the cluster. Can be set via
+	// the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+	// cluster.
+	Flavor pulumi.StringOutput `pulumi:"flavor"`
+	// Indicates whether floating IP should be
+	// created for every cluster node. Changing this creates a new cluster.
+	FloatingIpEnabled pulumi.BoolOutput `pulumi:"floatingIpEnabled"`
+	// The name of the Compute service SSH keypair. Changing
+	// this creates a new cluster.
+	Keypair    pulumi.StringOutput    `pulumi:"keypair"`
+	Kubeconfig pulumi.StringMapOutput `pulumi:"kubeconfig"`
+	// The list of key value pairs representing additional
+	// properties of the cluster. Changing this creates a new cluster.
+	Labels          pulumi.MapOutput         `pulumi:"labels"`
+	MasterAddresses pulumi.StringArrayOutput `pulumi:"masterAddresses"`
+	// The number of master nodes for the cluster.
+	// Changing this creates a new cluster.
+	MasterCount pulumi.IntOutput `pulumi:"masterCount"`
+	// The flavor for the master nodes. Can be set via
+	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
+	// new cluster.
+	MasterFlavor pulumi.StringOutput `pulumi:"masterFlavor"`
+	// Indicates whether the provided labels should be
+	// merged with cluster template labels. Changing this creates a new cluster.
+	MergeLabels pulumi.BoolPtrOutput `pulumi:"mergeLabels"`
+	// The name of the cluster. Changing this updates the name
+	// of the existing cluster template.
+	Name          pulumi.StringOutput      `pulumi:"name"`
+	NodeAddresses pulumi.StringArrayOutput `pulumi:"nodeAddresses"`
+	// The number of nodes for the cluster. Changing this
+	// creates a new cluster.
+	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
+	// The project of the cluster. Required if admin wants
+	// to create a cluster in another project. Changing this creates a new
+	// cluster.
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The region in which to obtain the V1 Container Infra
+	// client. A Container Infra client is needed to create a cluster. If omitted,
+	// the `region` argument of the provider is used. Changing this creates a new
+	// cluster.
+	Region    pulumi.StringOutput `pulumi:"region"`
+	StackId   pulumi.StringOutput `pulumi:"stackId"`
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	// The user of the cluster. Required if admin wants to
+	// create a cluster template for another user. Changing this creates a new
+	// cluster.
+	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -82,63 +124,147 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	ApiAddress        *string                `pulumi:"apiAddress"`
-	ClusterTemplateId *string                `pulumi:"clusterTemplateId"`
-	CoeVersion        *string                `pulumi:"coeVersion"`
-	ContainerVersion  *string                `pulumi:"containerVersion"`
-	CreateTimeout     *int                   `pulumi:"createTimeout"`
-	CreatedAt         *string                `pulumi:"createdAt"`
-	DiscoveryUrl      *string                `pulumi:"discoveryUrl"`
-	DockerVolumeSize  *int                   `pulumi:"dockerVolumeSize"`
-	FixedNetwork      *string                `pulumi:"fixedNetwork"`
-	FixedSubnet       *string                `pulumi:"fixedSubnet"`
-	Flavor            *string                `pulumi:"flavor"`
-	FloatingIpEnabled *bool                  `pulumi:"floatingIpEnabled"`
-	Keypair           *string                `pulumi:"keypair"`
-	Kubeconfig        map[string]string      `pulumi:"kubeconfig"`
-	Labels            map[string]interface{} `pulumi:"labels"`
-	MasterAddresses   []string               `pulumi:"masterAddresses"`
-	MasterCount       *int                   `pulumi:"masterCount"`
-	MasterFlavor      *string                `pulumi:"masterFlavor"`
-	MergeLabels       *bool                  `pulumi:"mergeLabels"`
-	Name              *string                `pulumi:"name"`
-	NodeAddresses     []string               `pulumi:"nodeAddresses"`
-	NodeCount         *int                   `pulumi:"nodeCount"`
-	ProjectId         *string                `pulumi:"projectId"`
-	Region            *string                `pulumi:"region"`
-	StackId           *string                `pulumi:"stackId"`
-	UpdatedAt         *string                `pulumi:"updatedAt"`
-	UserId            *string                `pulumi:"userId"`
+	ApiAddress *string `pulumi:"apiAddress"`
+	// The UUID of the V1 Container Infra cluster
+	// template. Changing this creates a new cluster.
+	ClusterTemplateId *string `pulumi:"clusterTemplateId"`
+	CoeVersion        *string `pulumi:"coeVersion"`
+	ContainerVersion  *string `pulumi:"containerVersion"`
+	// The timeout (in minutes) for creating the
+	// cluster. Changing this creates a new cluster.
+	CreateTimeout *int    `pulumi:"createTimeout"`
+	CreatedAt     *string `pulumi:"createdAt"`
+	// The URL used for cluster node discovery.
+	// Changing this creates a new cluster.
+	DiscoveryUrl *string `pulumi:"discoveryUrl"`
+	// The size (in GB) of the Docker volume.
+	// Changing this creates a new cluster.
+	DockerVolumeSize *int `pulumi:"dockerVolumeSize"`
+	// The fixed network that will be attached to the
+	// cluster. Changing this creates a new cluster.
+	FixedNetwork *string `pulumi:"fixedNetwork"`
+	// The fixed subnet that will be attached to the
+	// cluster. Changing this creates a new cluster.
+	FixedSubnet *string `pulumi:"fixedSubnet"`
+	// The flavor for the nodes of the cluster. Can be set via
+	// the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+	// cluster.
+	Flavor *string `pulumi:"flavor"`
+	// Indicates whether floating IP should be
+	// created for every cluster node. Changing this creates a new cluster.
+	FloatingIpEnabled *bool `pulumi:"floatingIpEnabled"`
+	// The name of the Compute service SSH keypair. Changing
+	// this creates a new cluster.
+	Keypair    *string           `pulumi:"keypair"`
+	Kubeconfig map[string]string `pulumi:"kubeconfig"`
+	// The list of key value pairs representing additional
+	// properties of the cluster. Changing this creates a new cluster.
+	Labels          map[string]interface{} `pulumi:"labels"`
+	MasterAddresses []string               `pulumi:"masterAddresses"`
+	// The number of master nodes for the cluster.
+	// Changing this creates a new cluster.
+	MasterCount *int `pulumi:"masterCount"`
+	// The flavor for the master nodes. Can be set via
+	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
+	// new cluster.
+	MasterFlavor *string `pulumi:"masterFlavor"`
+	// Indicates whether the provided labels should be
+	// merged with cluster template labels. Changing this creates a new cluster.
+	MergeLabels *bool `pulumi:"mergeLabels"`
+	// The name of the cluster. Changing this updates the name
+	// of the existing cluster template.
+	Name          *string  `pulumi:"name"`
+	NodeAddresses []string `pulumi:"nodeAddresses"`
+	// The number of nodes for the cluster. Changing this
+	// creates a new cluster.
+	NodeCount *int `pulumi:"nodeCount"`
+	// The project of the cluster. Required if admin wants
+	// to create a cluster in another project. Changing this creates a new
+	// cluster.
+	ProjectId *string `pulumi:"projectId"`
+	// The region in which to obtain the V1 Container Infra
+	// client. A Container Infra client is needed to create a cluster. If omitted,
+	// the `region` argument of the provider is used. Changing this creates a new
+	// cluster.
+	Region    *string `pulumi:"region"`
+	StackId   *string `pulumi:"stackId"`
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// The user of the cluster. Required if admin wants to
+	// create a cluster template for another user. Changing this creates a new
+	// cluster.
+	UserId *string `pulumi:"userId"`
 }
 
 type ClusterState struct {
-	ApiAddress        pulumi.StringPtrInput
+	ApiAddress pulumi.StringPtrInput
+	// The UUID of the V1 Container Infra cluster
+	// template. Changing this creates a new cluster.
 	ClusterTemplateId pulumi.StringPtrInput
 	CoeVersion        pulumi.StringPtrInput
 	ContainerVersion  pulumi.StringPtrInput
-	CreateTimeout     pulumi.IntPtrInput
-	CreatedAt         pulumi.StringPtrInput
-	DiscoveryUrl      pulumi.StringPtrInput
-	DockerVolumeSize  pulumi.IntPtrInput
-	FixedNetwork      pulumi.StringPtrInput
-	FixedSubnet       pulumi.StringPtrInput
-	Flavor            pulumi.StringPtrInput
+	// The timeout (in minutes) for creating the
+	// cluster. Changing this creates a new cluster.
+	CreateTimeout pulumi.IntPtrInput
+	CreatedAt     pulumi.StringPtrInput
+	// The URL used for cluster node discovery.
+	// Changing this creates a new cluster.
+	DiscoveryUrl pulumi.StringPtrInput
+	// The size (in GB) of the Docker volume.
+	// Changing this creates a new cluster.
+	DockerVolumeSize pulumi.IntPtrInput
+	// The fixed network that will be attached to the
+	// cluster. Changing this creates a new cluster.
+	FixedNetwork pulumi.StringPtrInput
+	// The fixed subnet that will be attached to the
+	// cluster. Changing this creates a new cluster.
+	FixedSubnet pulumi.StringPtrInput
+	// The flavor for the nodes of the cluster. Can be set via
+	// the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+	// cluster.
+	Flavor pulumi.StringPtrInput
+	// Indicates whether floating IP should be
+	// created for every cluster node. Changing this creates a new cluster.
 	FloatingIpEnabled pulumi.BoolPtrInput
-	Keypair           pulumi.StringPtrInput
-	Kubeconfig        pulumi.StringMapInput
-	Labels            pulumi.MapInput
-	MasterAddresses   pulumi.StringArrayInput
-	MasterCount       pulumi.IntPtrInput
-	MasterFlavor      pulumi.StringPtrInput
-	MergeLabels       pulumi.BoolPtrInput
-	Name              pulumi.StringPtrInput
-	NodeAddresses     pulumi.StringArrayInput
-	NodeCount         pulumi.IntPtrInput
-	ProjectId         pulumi.StringPtrInput
-	Region            pulumi.StringPtrInput
-	StackId           pulumi.StringPtrInput
-	UpdatedAt         pulumi.StringPtrInput
-	UserId            pulumi.StringPtrInput
+	// The name of the Compute service SSH keypair. Changing
+	// this creates a new cluster.
+	Keypair    pulumi.StringPtrInput
+	Kubeconfig pulumi.StringMapInput
+	// The list of key value pairs representing additional
+	// properties of the cluster. Changing this creates a new cluster.
+	Labels          pulumi.MapInput
+	MasterAddresses pulumi.StringArrayInput
+	// The number of master nodes for the cluster.
+	// Changing this creates a new cluster.
+	MasterCount pulumi.IntPtrInput
+	// The flavor for the master nodes. Can be set via
+	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
+	// new cluster.
+	MasterFlavor pulumi.StringPtrInput
+	// Indicates whether the provided labels should be
+	// merged with cluster template labels. Changing this creates a new cluster.
+	MergeLabels pulumi.BoolPtrInput
+	// The name of the cluster. Changing this updates the name
+	// of the existing cluster template.
+	Name          pulumi.StringPtrInput
+	NodeAddresses pulumi.StringArrayInput
+	// The number of nodes for the cluster. Changing this
+	// creates a new cluster.
+	NodeCount pulumi.IntPtrInput
+	// The project of the cluster. Required if admin wants
+	// to create a cluster in another project. Changing this creates a new
+	// cluster.
+	ProjectId pulumi.StringPtrInput
+	// The region in which to obtain the V1 Container Infra
+	// client. A Container Infra client is needed to create a cluster. If omitted,
+	// the `region` argument of the provider is used. Changing this creates a new
+	// cluster.
+	Region    pulumi.StringPtrInput
+	StackId   pulumi.StringPtrInput
+	UpdatedAt pulumi.StringPtrInput
+	// The user of the cluster. Required if admin wants to
+	// create a cluster template for another user. Changing this creates a new
+	// cluster.
+	UserId pulumi.StringPtrInput
 }
 
 func (ClusterState) ElementType() reflect.Type {
@@ -146,42 +272,114 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	ClusterTemplateId string                 `pulumi:"clusterTemplateId"`
-	CreateTimeout     *int                   `pulumi:"createTimeout"`
-	DiscoveryUrl      *string                `pulumi:"discoveryUrl"`
-	DockerVolumeSize  *int                   `pulumi:"dockerVolumeSize"`
-	FixedNetwork      *string                `pulumi:"fixedNetwork"`
-	FixedSubnet       *string                `pulumi:"fixedSubnet"`
-	Flavor            *string                `pulumi:"flavor"`
-	FloatingIpEnabled *bool                  `pulumi:"floatingIpEnabled"`
-	Keypair           *string                `pulumi:"keypair"`
-	Labels            map[string]interface{} `pulumi:"labels"`
-	MasterCount       *int                   `pulumi:"masterCount"`
-	MasterFlavor      *string                `pulumi:"masterFlavor"`
-	MergeLabels       *bool                  `pulumi:"mergeLabels"`
-	Name              *string                `pulumi:"name"`
-	NodeCount         *int                   `pulumi:"nodeCount"`
-	Region            *string                `pulumi:"region"`
+	// The UUID of the V1 Container Infra cluster
+	// template. Changing this creates a new cluster.
+	ClusterTemplateId string `pulumi:"clusterTemplateId"`
+	// The timeout (in minutes) for creating the
+	// cluster. Changing this creates a new cluster.
+	CreateTimeout *int `pulumi:"createTimeout"`
+	// The URL used for cluster node discovery.
+	// Changing this creates a new cluster.
+	DiscoveryUrl *string `pulumi:"discoveryUrl"`
+	// The size (in GB) of the Docker volume.
+	// Changing this creates a new cluster.
+	DockerVolumeSize *int `pulumi:"dockerVolumeSize"`
+	// The fixed network that will be attached to the
+	// cluster. Changing this creates a new cluster.
+	FixedNetwork *string `pulumi:"fixedNetwork"`
+	// The fixed subnet that will be attached to the
+	// cluster. Changing this creates a new cluster.
+	FixedSubnet *string `pulumi:"fixedSubnet"`
+	// The flavor for the nodes of the cluster. Can be set via
+	// the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+	// cluster.
+	Flavor *string `pulumi:"flavor"`
+	// Indicates whether floating IP should be
+	// created for every cluster node. Changing this creates a new cluster.
+	FloatingIpEnabled *bool `pulumi:"floatingIpEnabled"`
+	// The name of the Compute service SSH keypair. Changing
+	// this creates a new cluster.
+	Keypair *string `pulumi:"keypair"`
+	// The list of key value pairs representing additional
+	// properties of the cluster. Changing this creates a new cluster.
+	Labels map[string]interface{} `pulumi:"labels"`
+	// The number of master nodes for the cluster.
+	// Changing this creates a new cluster.
+	MasterCount *int `pulumi:"masterCount"`
+	// The flavor for the master nodes. Can be set via
+	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
+	// new cluster.
+	MasterFlavor *string `pulumi:"masterFlavor"`
+	// Indicates whether the provided labels should be
+	// merged with cluster template labels. Changing this creates a new cluster.
+	MergeLabels *bool `pulumi:"mergeLabels"`
+	// The name of the cluster. Changing this updates the name
+	// of the existing cluster template.
+	Name *string `pulumi:"name"`
+	// The number of nodes for the cluster. Changing this
+	// creates a new cluster.
+	NodeCount *int `pulumi:"nodeCount"`
+	// The region in which to obtain the V1 Container Infra
+	// client. A Container Infra client is needed to create a cluster. If omitted,
+	// the `region` argument of the provider is used. Changing this creates a new
+	// cluster.
+	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
+	// The UUID of the V1 Container Infra cluster
+	// template. Changing this creates a new cluster.
 	ClusterTemplateId pulumi.StringInput
-	CreateTimeout     pulumi.IntPtrInput
-	DiscoveryUrl      pulumi.StringPtrInput
-	DockerVolumeSize  pulumi.IntPtrInput
-	FixedNetwork      pulumi.StringPtrInput
-	FixedSubnet       pulumi.StringPtrInput
-	Flavor            pulumi.StringPtrInput
+	// The timeout (in minutes) for creating the
+	// cluster. Changing this creates a new cluster.
+	CreateTimeout pulumi.IntPtrInput
+	// The URL used for cluster node discovery.
+	// Changing this creates a new cluster.
+	DiscoveryUrl pulumi.StringPtrInput
+	// The size (in GB) of the Docker volume.
+	// Changing this creates a new cluster.
+	DockerVolumeSize pulumi.IntPtrInput
+	// The fixed network that will be attached to the
+	// cluster. Changing this creates a new cluster.
+	FixedNetwork pulumi.StringPtrInput
+	// The fixed subnet that will be attached to the
+	// cluster. Changing this creates a new cluster.
+	FixedSubnet pulumi.StringPtrInput
+	// The flavor for the nodes of the cluster. Can be set via
+	// the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+	// cluster.
+	Flavor pulumi.StringPtrInput
+	// Indicates whether floating IP should be
+	// created for every cluster node. Changing this creates a new cluster.
 	FloatingIpEnabled pulumi.BoolPtrInput
-	Keypair           pulumi.StringPtrInput
-	Labels            pulumi.MapInput
-	MasterCount       pulumi.IntPtrInput
-	MasterFlavor      pulumi.StringPtrInput
-	MergeLabels       pulumi.BoolPtrInput
-	Name              pulumi.StringPtrInput
-	NodeCount         pulumi.IntPtrInput
-	Region            pulumi.StringPtrInput
+	// The name of the Compute service SSH keypair. Changing
+	// this creates a new cluster.
+	Keypair pulumi.StringPtrInput
+	// The list of key value pairs representing additional
+	// properties of the cluster. Changing this creates a new cluster.
+	Labels pulumi.MapInput
+	// The number of master nodes for the cluster.
+	// Changing this creates a new cluster.
+	MasterCount pulumi.IntPtrInput
+	// The flavor for the master nodes. Can be set via
+	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
+	// new cluster.
+	MasterFlavor pulumi.StringPtrInput
+	// Indicates whether the provided labels should be
+	// merged with cluster template labels. Changing this creates a new cluster.
+	MergeLabels pulumi.BoolPtrInput
+	// The name of the cluster. Changing this updates the name
+	// of the existing cluster template.
+	Name pulumi.StringPtrInput
+	// The number of nodes for the cluster. Changing this
+	// creates a new cluster.
+	NodeCount pulumi.IntPtrInput
+	// The region in which to obtain the V1 Container Infra
+	// client. A Container Infra client is needed to create a cluster. If omitted,
+	// the `region` argument of the provider is used. Changing this creates a new
+	// cluster.
+	Region pulumi.StringPtrInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {
@@ -196,7 +394,7 @@ type ClusterInput interface {
 }
 
 func (*Cluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*Cluster)(nil))
+	return reflect.TypeOf((**Cluster)(nil)).Elem()
 }
 
 func (i *Cluster) ToClusterOutput() ClusterOutput {
@@ -205,35 +403,6 @@ func (i *Cluster) ToClusterOutput() ClusterOutput {
 
 func (i *Cluster) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterOutput)
-}
-
-func (i *Cluster) ToClusterPtrOutput() ClusterPtrOutput {
-	return i.ToClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *Cluster) ToClusterPtrOutputWithContext(ctx context.Context) ClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterPtrOutput)
-}
-
-type ClusterPtrInput interface {
-	pulumi.Input
-
-	ToClusterPtrOutput() ClusterPtrOutput
-	ToClusterPtrOutputWithContext(ctx context.Context) ClusterPtrOutput
-}
-
-type clusterPtrType ClusterArgs
-
-func (*clusterPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Cluster)(nil))
-}
-
-func (i *clusterPtrType) ToClusterPtrOutput() ClusterPtrOutput {
-	return i.ToClusterPtrOutputWithContext(context.Background())
-}
-
-func (i *clusterPtrType) ToClusterPtrOutputWithContext(ctx context.Context) ClusterPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterPtrOutput)
 }
 
 // ClusterArrayInput is an input type that accepts ClusterArray and ClusterArrayOutput values.
@@ -289,7 +458,7 @@ func (i ClusterMap) ToClusterMapOutputWithContext(ctx context.Context) ClusterMa
 type ClusterOutput struct{ *pulumi.OutputState }
 
 func (ClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Cluster)(nil))
+	return reflect.TypeOf((**Cluster)(nil)).Elem()
 }
 
 func (o ClusterOutput) ToClusterOutput() ClusterOutput {
@@ -300,44 +469,10 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
-func (o ClusterOutput) ToClusterPtrOutput() ClusterPtrOutput {
-	return o.ToClusterPtrOutputWithContext(context.Background())
-}
-
-func (o ClusterOutput) ToClusterPtrOutputWithContext(ctx context.Context) ClusterPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Cluster) *Cluster {
-		return &v
-	}).(ClusterPtrOutput)
-}
-
-type ClusterPtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Cluster)(nil))
-}
-
-func (o ClusterPtrOutput) ToClusterPtrOutput() ClusterPtrOutput {
-	return o
-}
-
-func (o ClusterPtrOutput) ToClusterPtrOutputWithContext(ctx context.Context) ClusterPtrOutput {
-	return o
-}
-
-func (o ClusterPtrOutput) Elem() ClusterOutput {
-	return o.ApplyT(func(v *Cluster) Cluster {
-		if v != nil {
-			return *v
-		}
-		var ret Cluster
-		return ret
-	}).(ClusterOutput)
-}
-
 type ClusterArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Cluster)(nil))
+	return reflect.TypeOf((*[]*Cluster)(nil)).Elem()
 }
 
 func (o ClusterArrayOutput) ToClusterArrayOutput() ClusterArrayOutput {
@@ -349,15 +484,15 @@ func (o ClusterArrayOutput) ToClusterArrayOutputWithContext(ctx context.Context)
 }
 
 func (o ClusterArrayOutput) Index(i pulumi.IntInput) ClusterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Cluster {
-		return vs[0].([]Cluster)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Cluster {
+		return vs[0].([]*Cluster)[vs[1].(int)]
 	}).(ClusterOutput)
 }
 
 type ClusterMapOutput struct{ *pulumi.OutputState }
 
 func (ClusterMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Cluster)(nil))
+	return reflect.TypeOf((*map[string]*Cluster)(nil)).Elem()
 }
 
 func (o ClusterMapOutput) ToClusterMapOutput() ClusterMapOutput {
@@ -369,18 +504,16 @@ func (o ClusterMapOutput) ToClusterMapOutputWithContext(ctx context.Context) Clu
 }
 
 func (o ClusterMapOutput) MapIndex(k pulumi.StringInput) ClusterOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Cluster {
-		return vs[0].(map[string]Cluster)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Cluster {
+		return vs[0].(map[string]*Cluster)[vs[1].(string)]
 	}).(ClusterOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterInput)(nil)).Elem(), &Cluster{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPtrInput)(nil)).Elem(), &Cluster{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterArrayInput)(nil)).Elem(), ClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMapInput)(nil)).Elem(), ClusterMap{})
 	pulumi.RegisterOutputType(ClusterOutput{})
-	pulumi.RegisterOutputType(ClusterPtrOutput{})
 	pulumi.RegisterOutputType(ClusterArrayOutput{})
 	pulumi.RegisterOutputType(ClusterMapOutput{})
 }

@@ -131,48 +131,46 @@ export class FloatingIp extends pulumi.CustomResource {
      */
     constructor(name: string, args: FloatingIpArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FloatingIpArgs | FloatingIpState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FloatingIpState | undefined;
-            inputs["address"] = state ? state.address : undefined;
-            inputs["allTags"] = state ? state.allTags : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["dnsDomain"] = state ? state.dnsDomain : undefined;
-            inputs["dnsName"] = state ? state.dnsName : undefined;
-            inputs["fixedIp"] = state ? state.fixedIp : undefined;
-            inputs["pool"] = state ? state.pool : undefined;
-            inputs["portId"] = state ? state.portId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["subnetId"] = state ? state.subnetId : undefined;
-            inputs["subnetIds"] = state ? state.subnetIds : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
-            inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["allTags"] = state ? state.allTags : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dnsDomain"] = state ? state.dnsDomain : undefined;
+            resourceInputs["dnsName"] = state ? state.dnsName : undefined;
+            resourceInputs["fixedIp"] = state ? state.fixedIp : undefined;
+            resourceInputs["pool"] = state ? state.pool : undefined;
+            resourceInputs["portId"] = state ? state.portId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["subnetIds"] = state ? state.subnetIds : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as FloatingIpArgs | undefined;
             if ((!args || args.pool === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pool'");
             }
-            inputs["address"] = args ? args.address : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["dnsDomain"] = args ? args.dnsDomain : undefined;
-            inputs["dnsName"] = args ? args.dnsName : undefined;
-            inputs["fixedIp"] = args ? args.fixedIp : undefined;
-            inputs["pool"] = args ? args.pool : undefined;
-            inputs["portId"] = args ? args.portId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["subnetId"] = args ? args.subnetId : undefined;
-            inputs["subnetIds"] = args ? args.subnetIds : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
-            inputs["allTags"] = undefined /*out*/;
+            resourceInputs["address"] = args ? args.address : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dnsDomain"] = args ? args.dnsDomain : undefined;
+            resourceInputs["dnsName"] = args ? args.dnsName : undefined;
+            resourceInputs["fixedIp"] = args ? args.fixedIp : undefined;
+            resourceInputs["pool"] = args ? args.pool : undefined;
+            resourceInputs["portId"] = args ? args.portId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["subnetIds"] = args ? args.subnetIds : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["allTags"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FloatingIp.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FloatingIp.__pulumiType, name, resourceInputs, opts);
     }
 }
 

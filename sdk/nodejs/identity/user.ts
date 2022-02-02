@@ -114,43 +114,41 @@ export class User extends pulumi.CustomResource {
      */
     constructor(name: string, args?: UserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            inputs["defaultProjectId"] = state ? state.defaultProjectId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["domainId"] = state ? state.domainId : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["extra"] = state ? state.extra : undefined;
-            inputs["ignoreChangePasswordUponFirstUse"] = state ? state.ignoreChangePasswordUponFirstUse : undefined;
-            inputs["ignoreLockoutFailureAttempts"] = state ? state.ignoreLockoutFailureAttempts : undefined;
-            inputs["ignorePasswordExpiry"] = state ? state.ignorePasswordExpiry : undefined;
-            inputs["multiFactorAuthEnabled"] = state ? state.multiFactorAuthEnabled : undefined;
-            inputs["multiFactorAuthRules"] = state ? state.multiFactorAuthRules : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["defaultProjectId"] = state ? state.defaultProjectId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["domainId"] = state ? state.domainId : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["extra"] = state ? state.extra : undefined;
+            resourceInputs["ignoreChangePasswordUponFirstUse"] = state ? state.ignoreChangePasswordUponFirstUse : undefined;
+            resourceInputs["ignoreLockoutFailureAttempts"] = state ? state.ignoreLockoutFailureAttempts : undefined;
+            resourceInputs["ignorePasswordExpiry"] = state ? state.ignorePasswordExpiry : undefined;
+            resourceInputs["multiFactorAuthEnabled"] = state ? state.multiFactorAuthEnabled : undefined;
+            resourceInputs["multiFactorAuthRules"] = state ? state.multiFactorAuthRules : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            inputs["defaultProjectId"] = args ? args.defaultProjectId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["domainId"] = args ? args.domainId : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["extra"] = args ? args.extra : undefined;
-            inputs["ignoreChangePasswordUponFirstUse"] = args ? args.ignoreChangePasswordUponFirstUse : undefined;
-            inputs["ignoreLockoutFailureAttempts"] = args ? args.ignoreLockoutFailureAttempts : undefined;
-            inputs["ignorePasswordExpiry"] = args ? args.ignorePasswordExpiry : undefined;
-            inputs["multiFactorAuthEnabled"] = args ? args.multiFactorAuthEnabled : undefined;
-            inputs["multiFactorAuthRules"] = args ? args.multiFactorAuthRules : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["region"] = args ? args.region : undefined;
+            resourceInputs["defaultProjectId"] = args ? args.defaultProjectId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["domainId"] = args ? args.domainId : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["extra"] = args ? args.extra : undefined;
+            resourceInputs["ignoreChangePasswordUponFirstUse"] = args ? args.ignoreChangePasswordUponFirstUse : undefined;
+            resourceInputs["ignoreLockoutFailureAttempts"] = args ? args.ignoreLockoutFailureAttempts : undefined;
+            resourceInputs["ignorePasswordExpiry"] = args ? args.ignorePasswordExpiry : undefined;
+            resourceInputs["multiFactorAuthEnabled"] = args ? args.multiFactorAuthEnabled : undefined;
+            resourceInputs["multiFactorAuthRules"] = args ? args.multiFactorAuthRules : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(User.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(User.__pulumiType, name, resourceInputs, opts);
     }
 }
 
