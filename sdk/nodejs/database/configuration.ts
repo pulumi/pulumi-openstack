@@ -88,15 +88,15 @@ export class Configuration extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConfigurationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConfigurationArgs | ConfigurationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigurationState | undefined;
-            inputs["configurations"] = state ? state.configurations : undefined;
-            inputs["datastore"] = state ? state.datastore : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["configurations"] = state ? state.configurations : undefined;
+            resourceInputs["datastore"] = state ? state.datastore : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as ConfigurationArgs | undefined;
             if ((!args || args.datastore === undefined) && !opts.urn) {
@@ -105,16 +105,14 @@ export class Configuration extends pulumi.CustomResource {
             if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            inputs["configurations"] = args ? args.configurations : undefined;
-            inputs["datastore"] = args ? args.datastore : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
+            resourceInputs["configurations"] = args ? args.configurations : undefined;
+            resourceInputs["datastore"] = args ? args.datastore : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Configuration.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Configuration.__pulumiType, name, resourceInputs, opts);
     }
 }
 

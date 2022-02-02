@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Networking
 {
@@ -39,7 +38,7 @@ namespace Pulumi.OpenStack.Networking
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPortResult> InvokeAsync(GetPortArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPortResult>("openstack:networking/getPort:getPort", args ?? new GetPortArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetPortResult>("openstack:networking/getPort:getPort", args ?? new GetPortArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack port.
@@ -68,7 +67,7 @@ namespace Pulumi.OpenStack.Networking
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPortResult> Invoke(GetPortInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPortResult>("openstack:networking/getPort:getPort", args ?? new GetPortInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetPortResult>("openstack:networking/getPort:getPort", args ?? new GetPortInvokeArgs(), options.WithDefaults());
     }
 
 

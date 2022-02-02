@@ -25,9 +25,7 @@ export function getPortIds(args?: GetPortIdsArgs, opts?: pulumi.InvokeOptions): 
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:networking/getPortIds:getPortIds", {
         "adminStateUp": args.adminStateUp,
         "description": args.description,

@@ -24,9 +24,7 @@ export function getHypervisorV2(args: GetHypervisorV2Args, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:compute/getHypervisorV2:getHypervisorV2", {
         "hostname": args.hostname,
     }, opts);

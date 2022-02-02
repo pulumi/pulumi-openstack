@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.SharedFileSystem
 {
@@ -39,7 +38,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetShareResult> InvokeAsync(GetShareArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetShareResult>("openstack:sharedfilesystem/getShare:getShare", args ?? new GetShareArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetShareResult>("openstack:sharedfilesystem/getShare:getShare", args ?? new GetShareArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available Shared File System share.
@@ -68,7 +67,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetShareResult> Invoke(GetShareInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetShareResult>("openstack:sharedfilesystem/getShare:getShare", args ?? new GetShareInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetShareResult>("openstack:sharedfilesystem/getShare:getShare", args ?? new GetShareInvokeArgs(), options.WithDefaults());
     }
 
 

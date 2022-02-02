@@ -162,37 +162,35 @@ export class Container extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ContainerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContainerArgs | ContainerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContainerState | undefined;
-            inputs["containerRead"] = state ? state.containerRead : undefined;
-            inputs["containerSyncKey"] = state ? state.containerSyncKey : undefined;
-            inputs["containerSyncTo"] = state ? state.containerSyncTo : undefined;
-            inputs["containerWrite"] = state ? state.containerWrite : undefined;
-            inputs["contentType"] = state ? state.contentType : undefined;
-            inputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            inputs["metadata"] = state ? state.metadata : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["versioning"] = state ? state.versioning : undefined;
+            resourceInputs["containerRead"] = state ? state.containerRead : undefined;
+            resourceInputs["containerSyncKey"] = state ? state.containerSyncKey : undefined;
+            resourceInputs["containerSyncTo"] = state ? state.containerSyncTo : undefined;
+            resourceInputs["containerWrite"] = state ? state.containerWrite : undefined;
+            resourceInputs["contentType"] = state ? state.contentType : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["versioning"] = state ? state.versioning : undefined;
         } else {
             const args = argsOrState as ContainerArgs | undefined;
-            inputs["containerRead"] = args ? args.containerRead : undefined;
-            inputs["containerSyncKey"] = args ? args.containerSyncKey : undefined;
-            inputs["containerSyncTo"] = args ? args.containerSyncTo : undefined;
-            inputs["containerWrite"] = args ? args.containerWrite : undefined;
-            inputs["contentType"] = args ? args.contentType : undefined;
-            inputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["versioning"] = args ? args.versioning : undefined;
+            resourceInputs["containerRead"] = args ? args.containerRead : undefined;
+            resourceInputs["containerSyncKey"] = args ? args.containerSyncKey : undefined;
+            resourceInputs["containerSyncTo"] = args ? args.containerSyncTo : undefined;
+            resourceInputs["containerWrite"] = args ? args.containerWrite : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["versioning"] = args ? args.versioning : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Container.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Container.__pulumiType, name, resourceInputs, opts);
     }
 }
 

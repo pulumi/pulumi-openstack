@@ -25,9 +25,7 @@ export function getInstanceV2(args: GetInstanceV2Args, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:compute/getInstanceV2:getInstanceV2", {
         "id": args.id,
         "networks": args.networks,

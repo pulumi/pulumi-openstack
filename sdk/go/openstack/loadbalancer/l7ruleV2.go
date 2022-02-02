@@ -323,7 +323,7 @@ type L7RuleV2Input interface {
 }
 
 func (*L7RuleV2) ElementType() reflect.Type {
-	return reflect.TypeOf((*L7RuleV2)(nil))
+	return reflect.TypeOf((**L7RuleV2)(nil)).Elem()
 }
 
 func (i *L7RuleV2) ToL7RuleV2Output() L7RuleV2Output {
@@ -332,35 +332,6 @@ func (i *L7RuleV2) ToL7RuleV2Output() L7RuleV2Output {
 
 func (i *L7RuleV2) ToL7RuleV2OutputWithContext(ctx context.Context) L7RuleV2Output {
 	return pulumi.ToOutputWithContext(ctx, i).(L7RuleV2Output)
-}
-
-func (i *L7RuleV2) ToL7RuleV2PtrOutput() L7RuleV2PtrOutput {
-	return i.ToL7RuleV2PtrOutputWithContext(context.Background())
-}
-
-func (i *L7RuleV2) ToL7RuleV2PtrOutputWithContext(ctx context.Context) L7RuleV2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(L7RuleV2PtrOutput)
-}
-
-type L7RuleV2PtrInput interface {
-	pulumi.Input
-
-	ToL7RuleV2PtrOutput() L7RuleV2PtrOutput
-	ToL7RuleV2PtrOutputWithContext(ctx context.Context) L7RuleV2PtrOutput
-}
-
-type l7ruleV2PtrType L7RuleV2Args
-
-func (*l7ruleV2PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**L7RuleV2)(nil))
-}
-
-func (i *l7ruleV2PtrType) ToL7RuleV2PtrOutput() L7RuleV2PtrOutput {
-	return i.ToL7RuleV2PtrOutputWithContext(context.Background())
-}
-
-func (i *l7ruleV2PtrType) ToL7RuleV2PtrOutputWithContext(ctx context.Context) L7RuleV2PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(L7RuleV2PtrOutput)
 }
 
 // L7RuleV2ArrayInput is an input type that accepts L7RuleV2Array and L7RuleV2ArrayOutput values.
@@ -416,7 +387,7 @@ func (i L7RuleV2Map) ToL7RuleV2MapOutputWithContext(ctx context.Context) L7RuleV
 type L7RuleV2Output struct{ *pulumi.OutputState }
 
 func (L7RuleV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*L7RuleV2)(nil))
+	return reflect.TypeOf((**L7RuleV2)(nil)).Elem()
 }
 
 func (o L7RuleV2Output) ToL7RuleV2Output() L7RuleV2Output {
@@ -427,44 +398,10 @@ func (o L7RuleV2Output) ToL7RuleV2OutputWithContext(ctx context.Context) L7RuleV
 	return o
 }
 
-func (o L7RuleV2Output) ToL7RuleV2PtrOutput() L7RuleV2PtrOutput {
-	return o.ToL7RuleV2PtrOutputWithContext(context.Background())
-}
-
-func (o L7RuleV2Output) ToL7RuleV2PtrOutputWithContext(ctx context.Context) L7RuleV2PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v L7RuleV2) *L7RuleV2 {
-		return &v
-	}).(L7RuleV2PtrOutput)
-}
-
-type L7RuleV2PtrOutput struct{ *pulumi.OutputState }
-
-func (L7RuleV2PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**L7RuleV2)(nil))
-}
-
-func (o L7RuleV2PtrOutput) ToL7RuleV2PtrOutput() L7RuleV2PtrOutput {
-	return o
-}
-
-func (o L7RuleV2PtrOutput) ToL7RuleV2PtrOutputWithContext(ctx context.Context) L7RuleV2PtrOutput {
-	return o
-}
-
-func (o L7RuleV2PtrOutput) Elem() L7RuleV2Output {
-	return o.ApplyT(func(v *L7RuleV2) L7RuleV2 {
-		if v != nil {
-			return *v
-		}
-		var ret L7RuleV2
-		return ret
-	}).(L7RuleV2Output)
-}
-
 type L7RuleV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (L7RuleV2ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]L7RuleV2)(nil))
+	return reflect.TypeOf((*[]*L7RuleV2)(nil)).Elem()
 }
 
 func (o L7RuleV2ArrayOutput) ToL7RuleV2ArrayOutput() L7RuleV2ArrayOutput {
@@ -476,15 +413,15 @@ func (o L7RuleV2ArrayOutput) ToL7RuleV2ArrayOutputWithContext(ctx context.Contex
 }
 
 func (o L7RuleV2ArrayOutput) Index(i pulumi.IntInput) L7RuleV2Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) L7RuleV2 {
-		return vs[0].([]L7RuleV2)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *L7RuleV2 {
+		return vs[0].([]*L7RuleV2)[vs[1].(int)]
 	}).(L7RuleV2Output)
 }
 
 type L7RuleV2MapOutput struct{ *pulumi.OutputState }
 
 func (L7RuleV2MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]L7RuleV2)(nil))
+	return reflect.TypeOf((*map[string]*L7RuleV2)(nil)).Elem()
 }
 
 func (o L7RuleV2MapOutput) ToL7RuleV2MapOutput() L7RuleV2MapOutput {
@@ -496,18 +433,16 @@ func (o L7RuleV2MapOutput) ToL7RuleV2MapOutputWithContext(ctx context.Context) L
 }
 
 func (o L7RuleV2MapOutput) MapIndex(k pulumi.StringInput) L7RuleV2Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) L7RuleV2 {
-		return vs[0].(map[string]L7RuleV2)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *L7RuleV2 {
+		return vs[0].(map[string]*L7RuleV2)[vs[1].(string)]
 	}).(L7RuleV2Output)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*L7RuleV2Input)(nil)).Elem(), &L7RuleV2{})
-	pulumi.RegisterInputType(reflect.TypeOf((*L7RuleV2PtrInput)(nil)).Elem(), &L7RuleV2{})
 	pulumi.RegisterInputType(reflect.TypeOf((*L7RuleV2ArrayInput)(nil)).Elem(), L7RuleV2Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*L7RuleV2MapInput)(nil)).Elem(), L7RuleV2Map{})
 	pulumi.RegisterOutputType(L7RuleV2Output{})
-	pulumi.RegisterOutputType(L7RuleV2PtrOutput{})
 	pulumi.RegisterOutputType(L7RuleV2ArrayOutput{})
 	pulumi.RegisterOutputType(L7RuleV2MapOutput{})
 }

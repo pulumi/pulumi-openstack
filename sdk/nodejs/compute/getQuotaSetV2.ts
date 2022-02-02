@@ -23,9 +23,7 @@ export function getQuotaSetV2(args: GetQuotaSetV2Args, opts?: pulumi.InvokeOptio
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:compute/getQuotaSetV2:getQuotaSetV2", {
         "projectId": args.projectId,
         "region": args.region,

@@ -95,27 +95,25 @@ export class VolumeTypeV3 extends pulumi.CustomResource {
      */
     constructor(name: string, args?: VolumeTypeV3Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VolumeTypeV3Args | VolumeTypeV3State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeTypeV3State | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["extraSpecs"] = state ? state.extraSpecs : undefined;
-            inputs["isPublic"] = state ? state.isPublic : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["extraSpecs"] = state ? state.extraSpecs : undefined;
+            resourceInputs["isPublic"] = state ? state.isPublic : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as VolumeTypeV3Args | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["extraSpecs"] = args ? args.extraSpecs : undefined;
-            inputs["isPublic"] = args ? args.isPublic : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["extraSpecs"] = args ? args.extraSpecs : undefined;
+            resourceInputs["isPublic"] = args ? args.isPublic : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(VolumeTypeV3.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(VolumeTypeV3.__pulumiType, name, resourceInputs, opts);
     }
 }
 

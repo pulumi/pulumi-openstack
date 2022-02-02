@@ -26,9 +26,7 @@ export function getSubnetIdsV2(args?: GetSubnetIdsV2Args, opts?: pulumi.InvokeOp
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", {
         "cidr": args.cidr,
         "description": args.description,

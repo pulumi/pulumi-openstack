@@ -142,23 +142,23 @@ export class Rule extends pulumi.CustomResource {
      */
     constructor(name: string, args: RuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RuleArgs | RuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RuleState | undefined;
-            inputs["action"] = state ? state.action : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["destinationIpAddress"] = state ? state.destinationIpAddress : undefined;
-            inputs["destinationPort"] = state ? state.destinationPort : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["ipVersion"] = state ? state.ipVersion : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["sourceIpAddress"] = state ? state.sourceIpAddress : undefined;
-            inputs["sourcePort"] = state ? state.sourcePort : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
-            inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["destinationIpAddress"] = state ? state.destinationIpAddress : undefined;
+            resourceInputs["destinationPort"] = state ? state.destinationPort : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["sourceIpAddress"] = state ? state.sourceIpAddress : undefined;
+            resourceInputs["sourcePort"] = state ? state.sourcePort : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as RuleArgs | undefined;
             if ((!args || args.action === undefined) && !opts.urn) {
@@ -167,24 +167,22 @@ export class Rule extends pulumi.CustomResource {
             if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            inputs["action"] = args ? args.action : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["destinationIpAddress"] = args ? args.destinationIpAddress : undefined;
-            inputs["destinationPort"] = args ? args.destinationPort : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["ipVersion"] = args ? args.ipVersion : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["sourceIpAddress"] = args ? args.sourceIpAddress : undefined;
-            inputs["sourcePort"] = args ? args.sourcePort : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["destinationIpAddress"] = args ? args.destinationIpAddress : undefined;
+            resourceInputs["destinationPort"] = args ? args.destinationPort : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["sourceIpAddress"] = args ? args.sourceIpAddress : undefined;
+            resourceInputs["sourcePort"] = args ? args.sourcePort : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Rule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Rule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

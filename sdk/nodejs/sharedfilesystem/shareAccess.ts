@@ -80,16 +80,16 @@ export class ShareAccess extends pulumi.CustomResource {
      */
     constructor(name: string, args: ShareAccessArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ShareAccessArgs | ShareAccessState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ShareAccessState | undefined;
-            inputs["accessKey"] = state ? state.accessKey : undefined;
-            inputs["accessLevel"] = state ? state.accessLevel : undefined;
-            inputs["accessTo"] = state ? state.accessTo : undefined;
-            inputs["accessType"] = state ? state.accessType : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["shareId"] = state ? state.shareId : undefined;
+            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
+            resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
+            resourceInputs["accessTo"] = state ? state.accessTo : undefined;
+            resourceInputs["accessType"] = state ? state.accessType : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["shareId"] = state ? state.shareId : undefined;
         } else {
             const args = argsOrState as ShareAccessArgs | undefined;
             if ((!args || args.accessLevel === undefined) && !opts.urn) {
@@ -104,17 +104,15 @@ export class ShareAccess extends pulumi.CustomResource {
             if ((!args || args.shareId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'shareId'");
             }
-            inputs["accessLevel"] = args ? args.accessLevel : undefined;
-            inputs["accessTo"] = args ? args.accessTo : undefined;
-            inputs["accessType"] = args ? args.accessType : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["shareId"] = args ? args.shareId : undefined;
-            inputs["accessKey"] = undefined /*out*/;
+            resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
+            resourceInputs["accessTo"] = args ? args.accessTo : undefined;
+            resourceInputs["accessType"] = args ? args.accessType : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["shareId"] = args ? args.shareId : undefined;
+            resourceInputs["accessKey"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ShareAccess.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ShareAccess.__pulumiType, name, resourceInputs, opts);
     }
 }
 

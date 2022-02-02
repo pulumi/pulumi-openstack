@@ -24,9 +24,7 @@ export function getShareNetwork(args?: GetShareNetworkArgs, opts?: pulumi.Invoke
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", {
         "description": args.description,
         "ipVersion": args.ipVersion,

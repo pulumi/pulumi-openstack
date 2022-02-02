@@ -107,35 +107,33 @@ export class ApplicationCredential extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ApplicationCredentialArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationCredentialArgs | ApplicationCredentialState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationCredentialState | undefined;
-            inputs["accessRules"] = state ? state.accessRules : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["expiresAt"] = state ? state.expiresAt : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["roles"] = state ? state.roles : undefined;
-            inputs["secret"] = state ? state.secret : undefined;
-            inputs["unrestricted"] = state ? state.unrestricted : undefined;
+            resourceInputs["accessRules"] = state ? state.accessRules : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["roles"] = state ? state.roles : undefined;
+            resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["unrestricted"] = state ? state.unrestricted : undefined;
         } else {
             const args = argsOrState as ApplicationCredentialArgs | undefined;
-            inputs["accessRules"] = args ? args.accessRules : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["expiresAt"] = args ? args.expiresAt : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["roles"] = args ? args.roles : undefined;
-            inputs["secret"] = args ? args.secret : undefined;
-            inputs["unrestricted"] = args ? args.unrestricted : undefined;
-            inputs["projectId"] = undefined /*out*/;
+            resourceInputs["accessRules"] = args ? args.accessRules : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["expiresAt"] = args ? args.expiresAt : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["roles"] = args ? args.roles : undefined;
+            resourceInputs["secret"] = args ? args.secret : undefined;
+            resourceInputs["unrestricted"] = args ? args.unrestricted : undefined;
+            resourceInputs["projectId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ApplicationCredential.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ApplicationCredential.__pulumiType, name, resourceInputs, opts);
     }
 }
 

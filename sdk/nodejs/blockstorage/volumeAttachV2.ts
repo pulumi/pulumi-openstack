@@ -121,26 +121,26 @@ export class VolumeAttachV2 extends pulumi.CustomResource {
      */
     constructor(name: string, args: VolumeAttachV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VolumeAttachV2Args | VolumeAttachV2State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeAttachV2State | undefined;
-            inputs["attachMode"] = state ? state.attachMode : undefined;
-            inputs["data"] = state ? state.data : undefined;
-            inputs["device"] = state ? state.device : undefined;
-            inputs["driverVolumeType"] = state ? state.driverVolumeType : undefined;
-            inputs["hostName"] = state ? state.hostName : undefined;
-            inputs["initiator"] = state ? state.initiator : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["ipAddress"] = state ? state.ipAddress : undefined;
-            inputs["mountPointBase"] = state ? state.mountPointBase : undefined;
-            inputs["multipath"] = state ? state.multipath : undefined;
-            inputs["osType"] = state ? state.osType : undefined;
-            inputs["platform"] = state ? state.platform : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["volumeId"] = state ? state.volumeId : undefined;
-            inputs["wwnn"] = state ? state.wwnn : undefined;
-            inputs["wwpns"] = state ? state.wwpns : undefined;
+            resourceInputs["attachMode"] = state ? state.attachMode : undefined;
+            resourceInputs["data"] = state ? state.data : undefined;
+            resourceInputs["device"] = state ? state.device : undefined;
+            resourceInputs["driverVolumeType"] = state ? state.driverVolumeType : undefined;
+            resourceInputs["hostName"] = state ? state.hostName : undefined;
+            resourceInputs["initiator"] = state ? state.initiator : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["mountPointBase"] = state ? state.mountPointBase : undefined;
+            resourceInputs["multipath"] = state ? state.multipath : undefined;
+            resourceInputs["osType"] = state ? state.osType : undefined;
+            resourceInputs["platform"] = state ? state.platform : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["volumeId"] = state ? state.volumeId : undefined;
+            resourceInputs["wwnn"] = state ? state.wwnn : undefined;
+            resourceInputs["wwpns"] = state ? state.wwpns : undefined;
         } else {
             const args = argsOrState as VolumeAttachV2Args | undefined;
             if ((!args || args.hostName === undefined) && !opts.urn) {
@@ -149,27 +149,25 @@ export class VolumeAttachV2 extends pulumi.CustomResource {
             if ((!args || args.volumeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'volumeId'");
             }
-            inputs["attachMode"] = args ? args.attachMode : undefined;
-            inputs["device"] = args ? args.device : undefined;
-            inputs["hostName"] = args ? args.hostName : undefined;
-            inputs["initiator"] = args ? args.initiator : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["ipAddress"] = args ? args.ipAddress : undefined;
-            inputs["multipath"] = args ? args.multipath : undefined;
-            inputs["osType"] = args ? args.osType : undefined;
-            inputs["platform"] = args ? args.platform : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["volumeId"] = args ? args.volumeId : undefined;
-            inputs["wwnn"] = args ? args.wwnn : undefined;
-            inputs["wwpns"] = args ? args.wwpns : undefined;
-            inputs["data"] = undefined /*out*/;
-            inputs["driverVolumeType"] = undefined /*out*/;
-            inputs["mountPointBase"] = undefined /*out*/;
+            resourceInputs["attachMode"] = args ? args.attachMode : undefined;
+            resourceInputs["device"] = args ? args.device : undefined;
+            resourceInputs["hostName"] = args ? args.hostName : undefined;
+            resourceInputs["initiator"] = args ? args.initiator : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
+            resourceInputs["multipath"] = args ? args.multipath : undefined;
+            resourceInputs["osType"] = args ? args.osType : undefined;
+            resourceInputs["platform"] = args ? args.platform : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["volumeId"] = args ? args.volumeId : undefined;
+            resourceInputs["wwnn"] = args ? args.wwnn : undefined;
+            resourceInputs["wwpns"] = args ? args.wwpns : undefined;
+            resourceInputs["data"] = undefined /*out*/;
+            resourceInputs["driverVolumeType"] = undefined /*out*/;
+            resourceInputs["mountPointBase"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(VolumeAttachV2.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(VolumeAttachV2.__pulumiType, name, resourceInputs, opts);
     }
 }
 

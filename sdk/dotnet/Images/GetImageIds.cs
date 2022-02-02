@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Images
 {
@@ -45,7 +44,7 @@ namespace Pulumi.OpenStack.Images
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetImageIdsResult> InvokeAsync(GetImageIdsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageIdsResult>("openstack:images/getImageIds:getImageIds", args ?? new GetImageIdsArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetImageIdsResult>("openstack:images/getImageIds:getImageIds", args ?? new GetImageIdsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get a list of Openstack Image IDs matching the
@@ -80,7 +79,7 @@ namespace Pulumi.OpenStack.Images
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetImageIdsResult> Invoke(GetImageIdsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetImageIdsResult>("openstack:images/getImageIds:getImageIds", args ?? new GetImageIdsInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetImageIdsResult>("openstack:images/getImageIds:getImageIds", args ?? new GetImageIdsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -25,9 +25,7 @@ export function getRouter(args?: GetRouterArgs, opts?: pulumi.InvokeOptions): Pr
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:networking/getRouter:getRouter", {
         "adminStateUp": args.adminStateUp,
         "description": args.description,

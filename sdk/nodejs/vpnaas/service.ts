@@ -116,42 +116,40 @@ export class Service extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceArgs | ServiceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
-            inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["externalV4Ip"] = state ? state.externalV4Ip : undefined;
-            inputs["externalV6Ip"] = state ? state.externalV6Ip : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["routerId"] = state ? state.routerId : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["subnetId"] = state ? state.subnetId : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
-            inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["externalV4Ip"] = state ? state.externalV4Ip : undefined;
+            resourceInputs["externalV6Ip"] = state ? state.externalV6Ip : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["routerId"] = state ? state.routerId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
             if ((!args || args.routerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routerId'");
             }
-            inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["routerId"] = args ? args.routerId : undefined;
-            inputs["subnetId"] = args ? args.subnetId : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
-            inputs["externalV4Ip"] = undefined /*out*/;
-            inputs["externalV6Ip"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["routerId"] = args ? args.routerId : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["externalV4Ip"] = undefined /*out*/;
+            resourceInputs["externalV6Ip"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Service.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Service.__pulumiType, name, resourceInputs, opts);
     }
 }
 

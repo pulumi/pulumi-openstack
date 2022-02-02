@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.KeyManager
 {
@@ -39,7 +38,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetContainerResult> InvokeAsync(GetContainerArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetContainerResult>("openstack:keymanager/getContainer:getContainer", args ?? new GetContainerArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetContainerResult>("openstack:keymanager/getContainer:getContainer", args ?? new GetContainerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available Barbican container.
@@ -68,7 +67,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetContainerResult> Invoke(GetContainerInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetContainerResult>("openstack:keymanager/getContainer:getContainer", args ?? new GetContainerInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetContainerResult>("openstack:keymanager/getContainer:getContainer", args ?? new GetContainerInvokeArgs(), options.WithDefaults());
     }
 
 

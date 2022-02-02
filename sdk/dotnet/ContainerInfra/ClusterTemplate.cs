@@ -49,126 +49,6 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// 
     /// }
     /// ```
-    /// ## Argument reference
-    /// 
-    /// The following arguments are supported:
-    /// 
-    /// * `region` - (Optional) The region in which to obtain the V1 Container Infra
-    ///   client. A Container Infra client is needed to create a cluster template. If
-    ///   omitted,the `region` argument of the provider is used. Changing this
-    ///   creates a new cluster template.
-    /// 
-    /// * `name` - (Required) The name of the cluster template. Changing this updates
-    ///   the name of the existing cluster template.
-    /// 
-    /// * `project_id` - (Optional) The project of the cluster template. Required if
-    ///   admin wants to create a cluster template in another project. Changing this
-    ///   creates a new cluster template.
-    /// 
-    /// * `user_id` - (Optional) The user of the cluster template. Required if admin
-    ///   wants to create a cluster template for another user. Changing this creates
-    ///   a new cluster template.
-    /// 
-    /// * `apiserver_port` - (Optional) The API server port for the Container
-    ///   Orchestration Engine for this cluster template. Changing this updates the
-    ///   API server port of the existing cluster template.
-    /// 
-    /// * `coe` - (Required) The Container Orchestration Engine for this cluster
-    ///   template. Changing this updates the engine of the existing cluster
-    ///   template.
-    /// 
-    /// * `cluster_distro` - (Optional) The distro for the cluster (fedora-atomic,
-    ///   coreos, etc.). Changing this updates the cluster distro of the existing
-    ///   cluster template.
-    /// 
-    /// * `dns_nameserver` - (Optional) Address of the DNS nameserver that is used in
-    ///   nodes of the cluster. Changing this updates the DNS nameserver of the
-    ///   existing cluster template.
-    /// 
-    /// * `docker_storage_driver` - (Optional) Docker storage driver. Changing this
-    ///   updates the Docker storage driver of the existing cluster template.
-    /// 
-    /// * `docker_volume_size` - (Optional) The size (in GB) of the Docker volume.
-    ///   Changing this updates the Docker volume size of the existing cluster
-    ///   template.
-    /// 
-    /// * `external_network_id` - (Optional) The ID of the external network that will
-    ///   be used for the cluster. Changing this updates the external network ID of
-    ///   the existing cluster template.
-    /// 
-    /// * `fixed_network` - (Optional) The fixed network that will be attached to the
-    ///   cluster. Changing this updates the fixed network of the existing cluster
-    ///   template.
-    /// 
-    /// * `fixed_subnet` - (Optional) The fixed subnet that will be attached to the
-    ///   cluster. Changing this updates the fixed subnet of the existing cluster
-    ///   template.
-    /// 
-    /// * `flavor` - (Optional) The flavor for the nodes of the cluster. Can be set via
-    ///   the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
-    ///   flavor of the existing cluster template.
-    /// 
-    /// * `master_flavor` - (Optional) The flavor for the master nodes. Can be set via
-    ///   the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
-    ///   the master flavor of the existing cluster template.
-    /// 
-    /// * `floating_ip_enabled` - (Optional) Indicates whether created cluster should
-    ///   create floating IP for every node or not. Changing this updates the
-    ///   floating IP enabled attribute of the existing cluster template.
-    /// 
-    /// * `http_proxy` - (Optional) The address of a proxy for receiving all HTTP
-    ///   requests and relay them. Changing this updates the HTTP proxy address of
-    ///   the existing cluster template.
-    /// 
-    /// * `https_proxy` - (Optional) The address of a proxy for receiving all HTTPS
-    ///   requests and relay them. Changing this updates the HTTPS proxy address of
-    ///   the existing cluster template.
-    /// 
-    /// * `image` - (Required) The reference to an image that is used for nodes of the
-    ///   cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
-    ///   Changing this updates the image attribute of the existing cluster template.
-    /// 
-    /// * `insecure_registry` - (Optional) The insecure registry URL for the cluster
-    ///   template. Changing this updates the insecure registry attribute of the
-    ///   existing cluster template.
-    /// 
-    /// * `keypair_id` - (Optional) The name of the Compute service SSH keypair.
-    ///   Changing this updates the keypair of the existing cluster template.
-    /// 
-    /// * `labels` - (Optional) The list of key value pairs representing additional
-    ///   properties of the cluster template. Changing this updates the labels of the
-    ///   existing cluster template.
-    /// 
-    /// * `master_lb_enabled` - (Optional) Indicates whether created cluster should
-    ///   has a loadbalancer for master nodes or not. Changing this updates the
-    ///   attribute of the existing cluster template.
-    /// 
-    /// * `network_driver` - (Optional) The name of the driver for the container
-    ///   network. Changing this updates the network driver of the existing cluster
-    ///   template.
-    /// 
-    /// * `no_proxy` - (Optional) A comma-separated list of IP addresses that shouldn't
-    ///   be used in the cluster. Changing this updates the no proxy list of the
-    ///   existing cluster template.
-    /// 
-    /// * `public` - (Optional) Indicates whether cluster template should be public.
-    ///   Changing this updates the public attribute of the existing cluster
-    ///   template.
-    /// 
-    /// * `registry_enabled` - (Optional) Indicates whether Docker registry is enabled
-    ///   in the cluster. Changing this updates the registry enabled attribute of the
-    ///   existing cluster template.
-    /// 
-    /// * `server_type` - (Optional) The server type for the cluster template. Changing
-    ///   this updates the server type of the existing cluster template.
-    /// 
-    /// * `tls_disabled` - (Optional) Indicates whether the TLS should be disabled in
-    ///   the cluster. Changing this updates the attribute of the existing cluster.
-    /// 
-    /// * `volume_driver` - (Optional) The name of the driver that is used for the
-    ///   volumes of the cluster nodes. Changing this updates the volume driver of
-    ///   the existing cluster template.
-    /// 
     /// ## Attributes reference
     /// 
     /// The following attributes are exported:
@@ -217,99 +97,245 @@ namespace Pulumi.OpenStack.ContainerInfra
     [OpenStackResourceType("openstack:containerinfra/clusterTemplate:ClusterTemplate")]
     public partial class ClusterTemplate : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The API server port for the Container
+        /// Orchestration Engine for this cluster template. Changing this updates the
+        /// API server port of the existing cluster template.
+        /// </summary>
         [Output("apiserverPort")]
         public Output<int?> ApiserverPort { get; private set; } = null!;
 
+        /// <summary>
+        /// The distro for the cluster (fedora-atomic,
+        /// coreos, etc.). Changing this updates the cluster distro of the existing
+        /// cluster template.
+        /// </summary>
         [Output("clusterDistro")]
         public Output<string> ClusterDistro { get; private set; } = null!;
 
+        /// <summary>
+        /// The Container Orchestration Engine for this cluster
+        /// template. Changing this updates the engine of the existing cluster
+        /// template.
+        /// </summary>
         [Output("coe")]
         public Output<string> Coe { get; private set; } = null!;
 
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// Address of the DNS nameserver that is used in
+        /// nodes of the cluster. Changing this updates the DNS nameserver of the
+        /// existing cluster template.
+        /// </summary>
         [Output("dnsNameserver")]
         public Output<string?> DnsNameserver { get; private set; } = null!;
 
+        /// <summary>
+        /// Docker storage driver. Changing this
+        /// updates the Docker storage driver of the existing cluster template.
+        /// </summary>
         [Output("dockerStorageDriver")]
         public Output<string?> DockerStorageDriver { get; private set; } = null!;
 
+        /// <summary>
+        /// The size (in GB) of the Docker volume.
+        /// Changing this updates the Docker volume size of the existing cluster
+        /// template.
+        /// </summary>
         [Output("dockerVolumeSize")]
         public Output<int?> DockerVolumeSize { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the external network that will
+        /// be used for the cluster. Changing this updates the external network ID of
+        /// the existing cluster template.
+        /// </summary>
         [Output("externalNetworkId")]
         public Output<string?> ExternalNetworkId { get; private set; } = null!;
 
+        /// <summary>
+        /// The fixed network that will be attached to the
+        /// cluster. Changing this updates the fixed network of the existing cluster
+        /// template.
+        /// </summary>
         [Output("fixedNetwork")]
         public Output<string?> FixedNetwork { get; private set; } = null!;
 
+        /// <summary>
+        /// The fixed subnet that will be attached to the
+        /// cluster. Changing this updates the fixed subnet of the existing cluster
+        /// template.
+        /// </summary>
         [Output("fixedSubnet")]
         public Output<string?> FixedSubnet { get; private set; } = null!;
 
+        /// <summary>
+        /// The flavor for the nodes of the cluster. Can be set via
+        /// the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
+        /// flavor of the existing cluster template.
+        /// </summary>
         [Output("flavor")]
         public Output<string?> Flavor { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates whether created cluster should
+        /// create floating IP for every node or not. Changing this updates the
+        /// floating IP enabled attribute of the existing cluster template.
+        /// </summary>
         [Output("floatingIpEnabled")]
         public Output<bool?> FloatingIpEnabled { get; private set; } = null!;
 
+        /// <summary>
+        /// The address of a proxy for receiving all HTTP
+        /// requests and relay them. Changing this updates the HTTP proxy address of
+        /// the existing cluster template.
+        /// </summary>
         [Output("httpProxy")]
         public Output<string?> HttpProxy { get; private set; } = null!;
 
+        /// <summary>
+        /// The address of a proxy for receiving all HTTPS
+        /// requests and relay them. Changing this updates the HTTPS proxy address of
+        /// the existing cluster template.
+        /// </summary>
         [Output("httpsProxy")]
         public Output<string?> HttpsProxy { get; private set; } = null!;
 
+        /// <summary>
+        /// The reference to an image that is used for nodes of the
+        /// cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+        /// Changing this updates the image attribute of the existing cluster template.
+        /// </summary>
         [Output("image")]
         public Output<string> Image { get; private set; } = null!;
 
+        /// <summary>
+        /// The insecure registry URL for the cluster
+        /// template. Changing this updates the insecure registry attribute of the
+        /// existing cluster template.
+        /// </summary>
         [Output("insecureRegistry")]
         public Output<string?> InsecureRegistry { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the Compute service SSH keypair.
+        /// Changing this updates the keypair of the existing cluster template.
+        /// </summary>
         [Output("keypairId")]
         public Output<string?> KeypairId { get; private set; } = null!;
 
+        /// <summary>
+        /// The list of key value pairs representing additional
+        /// properties of the cluster template. Changing this updates the labels of the
+        /// existing cluster template.
+        /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, object>?> Labels { get; private set; } = null!;
 
+        /// <summary>
+        /// The flavor for the master nodes. Can be set via
+        /// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
+        /// the master flavor of the existing cluster template.
+        /// </summary>
         [Output("masterFlavor")]
         public Output<string?> MasterFlavor { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates whether created cluster should
+        /// has a loadbalancer for master nodes or not. Changing this updates the
+        /// attribute of the existing cluster template.
+        /// </summary>
         [Output("masterLbEnabled")]
         public Output<bool?> MasterLbEnabled { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the cluster template. Changing this updates
+        /// the name of the existing cluster template.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the driver for the container
+        /// network. Changing this updates the network driver of the existing cluster
+        /// template.
+        /// </summary>
         [Output("networkDriver")]
         public Output<string> NetworkDriver { get; private set; } = null!;
 
+        /// <summary>
+        /// A comma-separated list of IP addresses that shouldn't
+        /// be used in the cluster. Changing this updates the no proxy list of the
+        /// existing cluster template.
+        /// </summary>
         [Output("noProxy")]
         public Output<string?> NoProxy { get; private set; } = null!;
 
+        /// <summary>
+        /// The project of the cluster template. Required if
+        /// admin wants to create a cluster template in another project. Changing this
+        /// creates a new cluster template.
+        /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates whether cluster template should be public.
+        /// Changing this updates the public attribute of the existing cluster
+        /// template.
+        /// </summary>
         [Output("public")]
         public Output<bool?> Public { get; private set; } = null!;
 
+        /// <summary>
+        /// The region in which to obtain the V1 Container Infra
+        /// client. A Container Infra client is needed to create a cluster template. If
+        /// omitted,the `region` argument of the provider is used. Changing this
+        /// creates a new cluster template.
+        /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates whether Docker registry is enabled
+        /// in the cluster. Changing this updates the registry enabled attribute of the
+        /// existing cluster template.
+        /// </summary>
         [Output("registryEnabled")]
         public Output<bool?> RegistryEnabled { get; private set; } = null!;
 
+        /// <summary>
+        /// The server type for the cluster template. Changing
+        /// this updates the server type of the existing cluster template.
+        /// </summary>
         [Output("serverType")]
         public Output<string> ServerType { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates whether the TLS should be disabled in
+        /// the cluster. Changing this updates the attribute of the existing cluster.
+        /// </summary>
         [Output("tlsDisabled")]
         public Output<bool?> TlsDisabled { get; private set; } = null!;
 
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
 
+        /// <summary>
+        /// The user of the cluster template. Required if admin
+        /// wants to create a cluster template for another user. Changing this creates
+        /// a new cluster template.
+        /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the driver that is used for the
+        /// volumes of the cluster nodes. Changing this updates the volume driver of
+        /// the existing cluster template.
+        /// </summary>
         [Output("volumeDriver")]
         public Output<string?> VolumeDriver { get; private set; } = null!;
 
@@ -359,92 +385,229 @@ namespace Pulumi.OpenStack.ContainerInfra
 
     public sealed class ClusterTemplateArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The API server port for the Container
+        /// Orchestration Engine for this cluster template. Changing this updates the
+        /// API server port of the existing cluster template.
+        /// </summary>
         [Input("apiserverPort")]
         public Input<int>? ApiserverPort { get; set; }
 
+        /// <summary>
+        /// The distro for the cluster (fedora-atomic,
+        /// coreos, etc.). Changing this updates the cluster distro of the existing
+        /// cluster template.
+        /// </summary>
         [Input("clusterDistro")]
         public Input<string>? ClusterDistro { get; set; }
 
+        /// <summary>
+        /// The Container Orchestration Engine for this cluster
+        /// template. Changing this updates the engine of the existing cluster
+        /// template.
+        /// </summary>
         [Input("coe", required: true)]
         public Input<string> Coe { get; set; } = null!;
 
+        /// <summary>
+        /// Address of the DNS nameserver that is used in
+        /// nodes of the cluster. Changing this updates the DNS nameserver of the
+        /// existing cluster template.
+        /// </summary>
         [Input("dnsNameserver")]
         public Input<string>? DnsNameserver { get; set; }
 
+        /// <summary>
+        /// Docker storage driver. Changing this
+        /// updates the Docker storage driver of the existing cluster template.
+        /// </summary>
         [Input("dockerStorageDriver")]
         public Input<string>? DockerStorageDriver { get; set; }
 
+        /// <summary>
+        /// The size (in GB) of the Docker volume.
+        /// Changing this updates the Docker volume size of the existing cluster
+        /// template.
+        /// </summary>
         [Input("dockerVolumeSize")]
         public Input<int>? DockerVolumeSize { get; set; }
 
+        /// <summary>
+        /// The ID of the external network that will
+        /// be used for the cluster. Changing this updates the external network ID of
+        /// the existing cluster template.
+        /// </summary>
         [Input("externalNetworkId")]
         public Input<string>? ExternalNetworkId { get; set; }
 
+        /// <summary>
+        /// The fixed network that will be attached to the
+        /// cluster. Changing this updates the fixed network of the existing cluster
+        /// template.
+        /// </summary>
         [Input("fixedNetwork")]
         public Input<string>? FixedNetwork { get; set; }
 
+        /// <summary>
+        /// The fixed subnet that will be attached to the
+        /// cluster. Changing this updates the fixed subnet of the existing cluster
+        /// template.
+        /// </summary>
         [Input("fixedSubnet")]
         public Input<string>? FixedSubnet { get; set; }
 
+        /// <summary>
+        /// The flavor for the nodes of the cluster. Can be set via
+        /// the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
+        /// flavor of the existing cluster template.
+        /// </summary>
         [Input("flavor")]
         public Input<string>? Flavor { get; set; }
 
+        /// <summary>
+        /// Indicates whether created cluster should
+        /// create floating IP for every node or not. Changing this updates the
+        /// floating IP enabled attribute of the existing cluster template.
+        /// </summary>
         [Input("floatingIpEnabled")]
         public Input<bool>? FloatingIpEnabled { get; set; }
 
+        /// <summary>
+        /// The address of a proxy for receiving all HTTP
+        /// requests and relay them. Changing this updates the HTTP proxy address of
+        /// the existing cluster template.
+        /// </summary>
         [Input("httpProxy")]
         public Input<string>? HttpProxy { get; set; }
 
+        /// <summary>
+        /// The address of a proxy for receiving all HTTPS
+        /// requests and relay them. Changing this updates the HTTPS proxy address of
+        /// the existing cluster template.
+        /// </summary>
         [Input("httpsProxy")]
         public Input<string>? HttpsProxy { get; set; }
 
+        /// <summary>
+        /// The reference to an image that is used for nodes of the
+        /// cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+        /// Changing this updates the image attribute of the existing cluster template.
+        /// </summary>
         [Input("image", required: true)]
         public Input<string> Image { get; set; } = null!;
 
+        /// <summary>
+        /// The insecure registry URL for the cluster
+        /// template. Changing this updates the insecure registry attribute of the
+        /// existing cluster template.
+        /// </summary>
         [Input("insecureRegistry")]
         public Input<string>? InsecureRegistry { get; set; }
 
+        /// <summary>
+        /// The name of the Compute service SSH keypair.
+        /// Changing this updates the keypair of the existing cluster template.
+        /// </summary>
         [Input("keypairId")]
         public Input<string>? KeypairId { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;
+
+        /// <summary>
+        /// The list of key value pairs representing additional
+        /// properties of the cluster template. Changing this updates the labels of the
+        /// existing cluster template.
+        /// </summary>
         public InputMap<object> Labels
         {
             get => _labels ?? (_labels = new InputMap<object>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The flavor for the master nodes. Can be set via
+        /// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
+        /// the master flavor of the existing cluster template.
+        /// </summary>
         [Input("masterFlavor")]
         public Input<string>? MasterFlavor { get; set; }
 
+        /// <summary>
+        /// Indicates whether created cluster should
+        /// has a loadbalancer for master nodes or not. Changing this updates the
+        /// attribute of the existing cluster template.
+        /// </summary>
         [Input("masterLbEnabled")]
         public Input<bool>? MasterLbEnabled { get; set; }
 
+        /// <summary>
+        /// The name of the cluster template. Changing this updates
+        /// the name of the existing cluster template.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The name of the driver for the container
+        /// network. Changing this updates the network driver of the existing cluster
+        /// template.
+        /// </summary>
         [Input("networkDriver")]
         public Input<string>? NetworkDriver { get; set; }
 
+        /// <summary>
+        /// A comma-separated list of IP addresses that shouldn't
+        /// be used in the cluster. Changing this updates the no proxy list of the
+        /// existing cluster template.
+        /// </summary>
         [Input("noProxy")]
         public Input<string>? NoProxy { get; set; }
 
+        /// <summary>
+        /// Indicates whether cluster template should be public.
+        /// Changing this updates the public attribute of the existing cluster
+        /// template.
+        /// </summary>
         [Input("public")]
         public Input<bool>? Public { get; set; }
 
+        /// <summary>
+        /// The region in which to obtain the V1 Container Infra
+        /// client. A Container Infra client is needed to create a cluster template. If
+        /// omitted,the `region` argument of the provider is used. Changing this
+        /// creates a new cluster template.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// Indicates whether Docker registry is enabled
+        /// in the cluster. Changing this updates the registry enabled attribute of the
+        /// existing cluster template.
+        /// </summary>
         [Input("registryEnabled")]
         public Input<bool>? RegistryEnabled { get; set; }
 
+        /// <summary>
+        /// The server type for the cluster template. Changing
+        /// this updates the server type of the existing cluster template.
+        /// </summary>
         [Input("serverType")]
         public Input<string>? ServerType { get; set; }
 
+        /// <summary>
+        /// Indicates whether the TLS should be disabled in
+        /// the cluster. Changing this updates the attribute of the existing cluster.
+        /// </summary>
         [Input("tlsDisabled")]
         public Input<bool>? TlsDisabled { get; set; }
 
+        /// <summary>
+        /// The name of the driver that is used for the
+        /// volumes of the cluster nodes. Changing this updates the volume driver of
+        /// the existing cluster template.
+        /// </summary>
         [Input("volumeDriver")]
         public Input<string>? VolumeDriver { get; set; }
 
@@ -455,104 +618,251 @@ namespace Pulumi.OpenStack.ContainerInfra
 
     public sealed class ClusterTemplateState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The API server port for the Container
+        /// Orchestration Engine for this cluster template. Changing this updates the
+        /// API server port of the existing cluster template.
+        /// </summary>
         [Input("apiserverPort")]
         public Input<int>? ApiserverPort { get; set; }
 
+        /// <summary>
+        /// The distro for the cluster (fedora-atomic,
+        /// coreos, etc.). Changing this updates the cluster distro of the existing
+        /// cluster template.
+        /// </summary>
         [Input("clusterDistro")]
         public Input<string>? ClusterDistro { get; set; }
 
+        /// <summary>
+        /// The Container Orchestration Engine for this cluster
+        /// template. Changing this updates the engine of the existing cluster
+        /// template.
+        /// </summary>
         [Input("coe")]
         public Input<string>? Coe { get; set; }
 
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        /// <summary>
+        /// Address of the DNS nameserver that is used in
+        /// nodes of the cluster. Changing this updates the DNS nameserver of the
+        /// existing cluster template.
+        /// </summary>
         [Input("dnsNameserver")]
         public Input<string>? DnsNameserver { get; set; }
 
+        /// <summary>
+        /// Docker storage driver. Changing this
+        /// updates the Docker storage driver of the existing cluster template.
+        /// </summary>
         [Input("dockerStorageDriver")]
         public Input<string>? DockerStorageDriver { get; set; }
 
+        /// <summary>
+        /// The size (in GB) of the Docker volume.
+        /// Changing this updates the Docker volume size of the existing cluster
+        /// template.
+        /// </summary>
         [Input("dockerVolumeSize")]
         public Input<int>? DockerVolumeSize { get; set; }
 
+        /// <summary>
+        /// The ID of the external network that will
+        /// be used for the cluster. Changing this updates the external network ID of
+        /// the existing cluster template.
+        /// </summary>
         [Input("externalNetworkId")]
         public Input<string>? ExternalNetworkId { get; set; }
 
+        /// <summary>
+        /// The fixed network that will be attached to the
+        /// cluster. Changing this updates the fixed network of the existing cluster
+        /// template.
+        /// </summary>
         [Input("fixedNetwork")]
         public Input<string>? FixedNetwork { get; set; }
 
+        /// <summary>
+        /// The fixed subnet that will be attached to the
+        /// cluster. Changing this updates the fixed subnet of the existing cluster
+        /// template.
+        /// </summary>
         [Input("fixedSubnet")]
         public Input<string>? FixedSubnet { get; set; }
 
+        /// <summary>
+        /// The flavor for the nodes of the cluster. Can be set via
+        /// the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
+        /// flavor of the existing cluster template.
+        /// </summary>
         [Input("flavor")]
         public Input<string>? Flavor { get; set; }
 
+        /// <summary>
+        /// Indicates whether created cluster should
+        /// create floating IP for every node or not. Changing this updates the
+        /// floating IP enabled attribute of the existing cluster template.
+        /// </summary>
         [Input("floatingIpEnabled")]
         public Input<bool>? FloatingIpEnabled { get; set; }
 
+        /// <summary>
+        /// The address of a proxy for receiving all HTTP
+        /// requests and relay them. Changing this updates the HTTP proxy address of
+        /// the existing cluster template.
+        /// </summary>
         [Input("httpProxy")]
         public Input<string>? HttpProxy { get; set; }
 
+        /// <summary>
+        /// The address of a proxy for receiving all HTTPS
+        /// requests and relay them. Changing this updates the HTTPS proxy address of
+        /// the existing cluster template.
+        /// </summary>
         [Input("httpsProxy")]
         public Input<string>? HttpsProxy { get; set; }
 
+        /// <summary>
+        /// The reference to an image that is used for nodes of the
+        /// cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+        /// Changing this updates the image attribute of the existing cluster template.
+        /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
 
+        /// <summary>
+        /// The insecure registry URL for the cluster
+        /// template. Changing this updates the insecure registry attribute of the
+        /// existing cluster template.
+        /// </summary>
         [Input("insecureRegistry")]
         public Input<string>? InsecureRegistry { get; set; }
 
+        /// <summary>
+        /// The name of the Compute service SSH keypair.
+        /// Changing this updates the keypair of the existing cluster template.
+        /// </summary>
         [Input("keypairId")]
         public Input<string>? KeypairId { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;
+
+        /// <summary>
+        /// The list of key value pairs representing additional
+        /// properties of the cluster template. Changing this updates the labels of the
+        /// existing cluster template.
+        /// </summary>
         public InputMap<object> Labels
         {
             get => _labels ?? (_labels = new InputMap<object>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// The flavor for the master nodes. Can be set via
+        /// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
+        /// the master flavor of the existing cluster template.
+        /// </summary>
         [Input("masterFlavor")]
         public Input<string>? MasterFlavor { get; set; }
 
+        /// <summary>
+        /// Indicates whether created cluster should
+        /// has a loadbalancer for master nodes or not. Changing this updates the
+        /// attribute of the existing cluster template.
+        /// </summary>
         [Input("masterLbEnabled")]
         public Input<bool>? MasterLbEnabled { get; set; }
 
+        /// <summary>
+        /// The name of the cluster template. Changing this updates
+        /// the name of the existing cluster template.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The name of the driver for the container
+        /// network. Changing this updates the network driver of the existing cluster
+        /// template.
+        /// </summary>
         [Input("networkDriver")]
         public Input<string>? NetworkDriver { get; set; }
 
+        /// <summary>
+        /// A comma-separated list of IP addresses that shouldn't
+        /// be used in the cluster. Changing this updates the no proxy list of the
+        /// existing cluster template.
+        /// </summary>
         [Input("noProxy")]
         public Input<string>? NoProxy { get; set; }
 
+        /// <summary>
+        /// The project of the cluster template. Required if
+        /// admin wants to create a cluster template in another project. Changing this
+        /// creates a new cluster template.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// Indicates whether cluster template should be public.
+        /// Changing this updates the public attribute of the existing cluster
+        /// template.
+        /// </summary>
         [Input("public")]
         public Input<bool>? Public { get; set; }
 
+        /// <summary>
+        /// The region in which to obtain the V1 Container Infra
+        /// client. A Container Infra client is needed to create a cluster template. If
+        /// omitted,the `region` argument of the provider is used. Changing this
+        /// creates a new cluster template.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// Indicates whether Docker registry is enabled
+        /// in the cluster. Changing this updates the registry enabled attribute of the
+        /// existing cluster template.
+        /// </summary>
         [Input("registryEnabled")]
         public Input<bool>? RegistryEnabled { get; set; }
 
+        /// <summary>
+        /// The server type for the cluster template. Changing
+        /// this updates the server type of the existing cluster template.
+        /// </summary>
         [Input("serverType")]
         public Input<string>? ServerType { get; set; }
 
+        /// <summary>
+        /// Indicates whether the TLS should be disabled in
+        /// the cluster. Changing this updates the attribute of the existing cluster.
+        /// </summary>
         [Input("tlsDisabled")]
         public Input<bool>? TlsDisabled { get; set; }
 
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
+        /// <summary>
+        /// The user of the cluster template. Required if admin
+        /// wants to create a cluster template for another user. Changing this creates
+        /// a new cluster template.
+        /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
 
+        /// <summary>
+        /// The name of the driver that is used for the
+        /// volumes of the cluster nodes. Changing this updates the volume driver of
+        /// the existing cluster template.
+        /// </summary>
         [Input("volumeDriver")]
         public Input<string>? VolumeDriver { get; set; }
 

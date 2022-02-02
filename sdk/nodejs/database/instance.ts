@@ -92,20 +92,20 @@ export class Instance extends pulumi.CustomResource {
      */
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            inputs["addresses"] = state ? state.addresses : undefined;
-            inputs["configurationId"] = state ? state.configurationId : undefined;
-            inputs["databases"] = state ? state.databases : undefined;
-            inputs["datastore"] = state ? state.datastore : undefined;
-            inputs["flavorId"] = state ? state.flavorId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networks"] = state ? state.networks : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["users"] = state ? state.users : undefined;
+            resourceInputs["addresses"] = state ? state.addresses : undefined;
+            resourceInputs["configurationId"] = state ? state.configurationId : undefined;
+            resourceInputs["databases"] = state ? state.databases : undefined;
+            resourceInputs["datastore"] = state ? state.datastore : undefined;
+            resourceInputs["flavorId"] = state ? state.flavorId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networks"] = state ? state.networks : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["users"] = state ? state.users : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.datastore === undefined) && !opts.urn) {
@@ -114,21 +114,19 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            inputs["configurationId"] = args ? args.configurationId : undefined;
-            inputs["databases"] = args ? args.databases : undefined;
-            inputs["datastore"] = args ? args.datastore : undefined;
-            inputs["flavorId"] = args ? args.flavorId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networks"] = args ? args.networks : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["users"] = args ? args.users : undefined;
-            inputs["addresses"] = undefined /*out*/;
+            resourceInputs["configurationId"] = args ? args.configurationId : undefined;
+            resourceInputs["databases"] = args ? args.databases : undefined;
+            resourceInputs["datastore"] = args ? args.datastore : undefined;
+            resourceInputs["flavorId"] = args ? args.flavorId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networks"] = args ? args.networks : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["users"] = args ? args.users : undefined;
+            resourceInputs["addresses"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Instance.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -135,55 +135,53 @@ export class SecretV1 extends pulumi.CustomResource {
      */
     constructor(name: string, args?: SecretV1Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecretV1Args | SecretV1State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretV1State | undefined;
-            inputs["acl"] = state ? state.acl : undefined;
-            inputs["algorithm"] = state ? state.algorithm : undefined;
-            inputs["allMetadata"] = state ? state.allMetadata : undefined;
-            inputs["bitLength"] = state ? state.bitLength : undefined;
-            inputs["contentTypes"] = state ? state.contentTypes : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["creatorId"] = state ? state.creatorId : undefined;
-            inputs["expiration"] = state ? state.expiration : undefined;
-            inputs["metadata"] = state ? state.metadata : undefined;
-            inputs["mode"] = state ? state.mode : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["payload"] = state ? state.payload : undefined;
-            inputs["payloadContentEncoding"] = state ? state.payloadContentEncoding : undefined;
-            inputs["payloadContentType"] = state ? state.payloadContentType : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["secretRef"] = state ? state.secretRef : undefined;
-            inputs["secretType"] = state ? state.secretType : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["acl"] = state ? state.acl : undefined;
+            resourceInputs["algorithm"] = state ? state.algorithm : undefined;
+            resourceInputs["allMetadata"] = state ? state.allMetadata : undefined;
+            resourceInputs["bitLength"] = state ? state.bitLength : undefined;
+            resourceInputs["contentTypes"] = state ? state.contentTypes : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["creatorId"] = state ? state.creatorId : undefined;
+            resourceInputs["expiration"] = state ? state.expiration : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["payload"] = state ? state.payload : undefined;
+            resourceInputs["payloadContentEncoding"] = state ? state.payloadContentEncoding : undefined;
+            resourceInputs["payloadContentType"] = state ? state.payloadContentType : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["secretRef"] = state ? state.secretRef : undefined;
+            resourceInputs["secretType"] = state ? state.secretType : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as SecretV1Args | undefined;
-            inputs["acl"] = args ? args.acl : undefined;
-            inputs["algorithm"] = args ? args.algorithm : undefined;
-            inputs["bitLength"] = args ? args.bitLength : undefined;
-            inputs["expiration"] = args ? args.expiration : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["mode"] = args ? args.mode : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["payload"] = args ? args.payload : undefined;
-            inputs["payloadContentEncoding"] = args ? args.payloadContentEncoding : undefined;
-            inputs["payloadContentType"] = args ? args.payloadContentType : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["secretType"] = args ? args.secretType : undefined;
-            inputs["allMetadata"] = undefined /*out*/;
-            inputs["contentTypes"] = undefined /*out*/;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["creatorId"] = undefined /*out*/;
-            inputs["secretRef"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["updatedAt"] = undefined /*out*/;
+            resourceInputs["acl"] = args ? args.acl : undefined;
+            resourceInputs["algorithm"] = args ? args.algorithm : undefined;
+            resourceInputs["bitLength"] = args ? args.bitLength : undefined;
+            resourceInputs["expiration"] = args ? args.expiration : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["payload"] = args ? args.payload : undefined;
+            resourceInputs["payloadContentEncoding"] = args ? args.payloadContentEncoding : undefined;
+            resourceInputs["payloadContentType"] = args ? args.payloadContentType : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["secretType"] = args ? args.secretType : undefined;
+            resourceInputs["allMetadata"] = undefined /*out*/;
+            resourceInputs["contentTypes"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["creatorId"] = undefined /*out*/;
+            resourceInputs["secretRef"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SecretV1.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SecretV1.__pulumiType, name, resourceInputs, opts);
     }
 }
 

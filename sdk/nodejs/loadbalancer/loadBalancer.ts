@@ -147,45 +147,43 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     constructor(name: string, args?: LoadBalancerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LoadBalancerArgs | LoadBalancerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
-            inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["flavorId"] = state ? state.flavorId : undefined;
-            inputs["loadbalancerProvider"] = state ? state.loadbalancerProvider : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
-            inputs["vipAddress"] = state ? state.vipAddress : undefined;
-            inputs["vipNetworkId"] = state ? state.vipNetworkId : undefined;
-            inputs["vipPortId"] = state ? state.vipPortId : undefined;
-            inputs["vipSubnetId"] = state ? state.vipSubnetId : undefined;
+            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["flavorId"] = state ? state.flavorId : undefined;
+            resourceInputs["loadbalancerProvider"] = state ? state.loadbalancerProvider : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["vipAddress"] = state ? state.vipAddress : undefined;
+            resourceInputs["vipNetworkId"] = state ? state.vipNetworkId : undefined;
+            resourceInputs["vipPortId"] = state ? state.vipPortId : undefined;
+            resourceInputs["vipSubnetId"] = state ? state.vipSubnetId : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["flavorId"] = args ? args.flavorId : undefined;
-            inputs["loadbalancerProvider"] = args ? args.loadbalancerProvider : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["vipAddress"] = args ? args.vipAddress : undefined;
-            inputs["vipNetworkId"] = args ? args.vipNetworkId : undefined;
-            inputs["vipPortId"] = args ? args.vipPortId : undefined;
-            inputs["vipSubnetId"] = args ? args.vipSubnetId : undefined;
+            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["flavorId"] = args ? args.flavorId : undefined;
+            resourceInputs["loadbalancerProvider"] = args ? args.loadbalancerProvider : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["vipAddress"] = args ? args.vipAddress : undefined;
+            resourceInputs["vipNetworkId"] = args ? args.vipNetworkId : undefined;
+            resourceInputs["vipPortId"] = args ? args.vipPortId : undefined;
+            resourceInputs["vipSubnetId"] = args ? args.vipSubnetId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(LoadBalancer.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(LoadBalancer.__pulumiType, name, resourceInputs, opts);
     }
 }
 

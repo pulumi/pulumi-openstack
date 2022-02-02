@@ -147,7 +147,7 @@ type Ec2CredentialV3Input interface {
 }
 
 func (*Ec2CredentialV3) ElementType() reflect.Type {
-	return reflect.TypeOf((*Ec2CredentialV3)(nil))
+	return reflect.TypeOf((**Ec2CredentialV3)(nil)).Elem()
 }
 
 func (i *Ec2CredentialV3) ToEc2CredentialV3Output() Ec2CredentialV3Output {
@@ -156,35 +156,6 @@ func (i *Ec2CredentialV3) ToEc2CredentialV3Output() Ec2CredentialV3Output {
 
 func (i *Ec2CredentialV3) ToEc2CredentialV3OutputWithContext(ctx context.Context) Ec2CredentialV3Output {
 	return pulumi.ToOutputWithContext(ctx, i).(Ec2CredentialV3Output)
-}
-
-func (i *Ec2CredentialV3) ToEc2CredentialV3PtrOutput() Ec2CredentialV3PtrOutput {
-	return i.ToEc2CredentialV3PtrOutputWithContext(context.Background())
-}
-
-func (i *Ec2CredentialV3) ToEc2CredentialV3PtrOutputWithContext(ctx context.Context) Ec2CredentialV3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Ec2CredentialV3PtrOutput)
-}
-
-type Ec2CredentialV3PtrInput interface {
-	pulumi.Input
-
-	ToEc2CredentialV3PtrOutput() Ec2CredentialV3PtrOutput
-	ToEc2CredentialV3PtrOutputWithContext(ctx context.Context) Ec2CredentialV3PtrOutput
-}
-
-type ec2CredentialV3PtrType Ec2CredentialV3Args
-
-func (*ec2CredentialV3PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Ec2CredentialV3)(nil))
-}
-
-func (i *ec2CredentialV3PtrType) ToEc2CredentialV3PtrOutput() Ec2CredentialV3PtrOutput {
-	return i.ToEc2CredentialV3PtrOutputWithContext(context.Background())
-}
-
-func (i *ec2CredentialV3PtrType) ToEc2CredentialV3PtrOutputWithContext(ctx context.Context) Ec2CredentialV3PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(Ec2CredentialV3PtrOutput)
 }
 
 // Ec2CredentialV3ArrayInput is an input type that accepts Ec2CredentialV3Array and Ec2CredentialV3ArrayOutput values.
@@ -240,7 +211,7 @@ func (i Ec2CredentialV3Map) ToEc2CredentialV3MapOutputWithContext(ctx context.Co
 type Ec2CredentialV3Output struct{ *pulumi.OutputState }
 
 func (Ec2CredentialV3Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*Ec2CredentialV3)(nil))
+	return reflect.TypeOf((**Ec2CredentialV3)(nil)).Elem()
 }
 
 func (o Ec2CredentialV3Output) ToEc2CredentialV3Output() Ec2CredentialV3Output {
@@ -251,44 +222,10 @@ func (o Ec2CredentialV3Output) ToEc2CredentialV3OutputWithContext(ctx context.Co
 	return o
 }
 
-func (o Ec2CredentialV3Output) ToEc2CredentialV3PtrOutput() Ec2CredentialV3PtrOutput {
-	return o.ToEc2CredentialV3PtrOutputWithContext(context.Background())
-}
-
-func (o Ec2CredentialV3Output) ToEc2CredentialV3PtrOutputWithContext(ctx context.Context) Ec2CredentialV3PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Ec2CredentialV3) *Ec2CredentialV3 {
-		return &v
-	}).(Ec2CredentialV3PtrOutput)
-}
-
-type Ec2CredentialV3PtrOutput struct{ *pulumi.OutputState }
-
-func (Ec2CredentialV3PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Ec2CredentialV3)(nil))
-}
-
-func (o Ec2CredentialV3PtrOutput) ToEc2CredentialV3PtrOutput() Ec2CredentialV3PtrOutput {
-	return o
-}
-
-func (o Ec2CredentialV3PtrOutput) ToEc2CredentialV3PtrOutputWithContext(ctx context.Context) Ec2CredentialV3PtrOutput {
-	return o
-}
-
-func (o Ec2CredentialV3PtrOutput) Elem() Ec2CredentialV3Output {
-	return o.ApplyT(func(v *Ec2CredentialV3) Ec2CredentialV3 {
-		if v != nil {
-			return *v
-		}
-		var ret Ec2CredentialV3
-		return ret
-	}).(Ec2CredentialV3Output)
-}
-
 type Ec2CredentialV3ArrayOutput struct{ *pulumi.OutputState }
 
 func (Ec2CredentialV3ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Ec2CredentialV3)(nil))
+	return reflect.TypeOf((*[]*Ec2CredentialV3)(nil)).Elem()
 }
 
 func (o Ec2CredentialV3ArrayOutput) ToEc2CredentialV3ArrayOutput() Ec2CredentialV3ArrayOutput {
@@ -300,15 +237,15 @@ func (o Ec2CredentialV3ArrayOutput) ToEc2CredentialV3ArrayOutputWithContext(ctx 
 }
 
 func (o Ec2CredentialV3ArrayOutput) Index(i pulumi.IntInput) Ec2CredentialV3Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Ec2CredentialV3 {
-		return vs[0].([]Ec2CredentialV3)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Ec2CredentialV3 {
+		return vs[0].([]*Ec2CredentialV3)[vs[1].(int)]
 	}).(Ec2CredentialV3Output)
 }
 
 type Ec2CredentialV3MapOutput struct{ *pulumi.OutputState }
 
 func (Ec2CredentialV3MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Ec2CredentialV3)(nil))
+	return reflect.TypeOf((*map[string]*Ec2CredentialV3)(nil)).Elem()
 }
 
 func (o Ec2CredentialV3MapOutput) ToEc2CredentialV3MapOutput() Ec2CredentialV3MapOutput {
@@ -320,18 +257,16 @@ func (o Ec2CredentialV3MapOutput) ToEc2CredentialV3MapOutputWithContext(ctx cont
 }
 
 func (o Ec2CredentialV3MapOutput) MapIndex(k pulumi.StringInput) Ec2CredentialV3Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Ec2CredentialV3 {
-		return vs[0].(map[string]Ec2CredentialV3)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Ec2CredentialV3 {
+		return vs[0].(map[string]*Ec2CredentialV3)[vs[1].(string)]
 	}).(Ec2CredentialV3Output)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*Ec2CredentialV3Input)(nil)).Elem(), &Ec2CredentialV3{})
-	pulumi.RegisterInputType(reflect.TypeOf((*Ec2CredentialV3PtrInput)(nil)).Elem(), &Ec2CredentialV3{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Ec2CredentialV3ArrayInput)(nil)).Elem(), Ec2CredentialV3Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Ec2CredentialV3MapInput)(nil)).Elem(), Ec2CredentialV3Map{})
 	pulumi.RegisterOutputType(Ec2CredentialV3Output{})
-	pulumi.RegisterOutputType(Ec2CredentialV3PtrOutput{})
 	pulumi.RegisterOutputType(Ec2CredentialV3ArrayOutput{})
 	pulumi.RegisterOutputType(Ec2CredentialV3MapOutput{})
 }

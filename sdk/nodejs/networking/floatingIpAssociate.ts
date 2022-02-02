@@ -88,14 +88,14 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
      */
     constructor(name: string, args: FloatingIpAssociateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FloatingIpAssociateArgs | FloatingIpAssociateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FloatingIpAssociateState | undefined;
-            inputs["fixedIp"] = state ? state.fixedIp : undefined;
-            inputs["floatingIp"] = state ? state.floatingIp : undefined;
-            inputs["portId"] = state ? state.portId : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["fixedIp"] = state ? state.fixedIp : undefined;
+            resourceInputs["floatingIp"] = state ? state.floatingIp : undefined;
+            resourceInputs["portId"] = state ? state.portId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as FloatingIpAssociateArgs | undefined;
             if ((!args || args.floatingIp === undefined) && !opts.urn) {
@@ -104,15 +104,13 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
             if ((!args || args.portId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'portId'");
             }
-            inputs["fixedIp"] = args ? args.fixedIp : undefined;
-            inputs["floatingIp"] = args ? args.floatingIp : undefined;
-            inputs["portId"] = args ? args.portId : undefined;
-            inputs["region"] = args ? args.region : undefined;
+            resourceInputs["fixedIp"] = args ? args.fixedIp : undefined;
+            resourceInputs["floatingIp"] = args ? args.floatingIp : undefined;
+            resourceInputs["portId"] = args ? args.portId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FloatingIpAssociate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FloatingIpAssociate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

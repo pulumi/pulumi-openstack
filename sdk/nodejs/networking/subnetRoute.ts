@@ -99,14 +99,14 @@ export class SubnetRoute extends pulumi.CustomResource {
      */
     constructor(name: string, args: SubnetRouteArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubnetRouteArgs | SubnetRouteState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubnetRouteState | undefined;
-            inputs["destinationCidr"] = state ? state.destinationCidr : undefined;
-            inputs["nextHop"] = state ? state.nextHop : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["destinationCidr"] = state ? state.destinationCidr : undefined;
+            resourceInputs["nextHop"] = state ? state.nextHop : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
         } else {
             const args = argsOrState as SubnetRouteArgs | undefined;
             if ((!args || args.destinationCidr === undefined) && !opts.urn) {
@@ -118,15 +118,13 @@ export class SubnetRoute extends pulumi.CustomResource {
             if ((!args || args.subnetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            inputs["destinationCidr"] = args ? args.destinationCidr : undefined;
-            inputs["nextHop"] = args ? args.nextHop : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["destinationCidr"] = args ? args.destinationCidr : undefined;
+            resourceInputs["nextHop"] = args ? args.nextHop : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SubnetRoute.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SubnetRoute.__pulumiType, name, resourceInputs, opts);
     }
 }
 

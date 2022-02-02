@@ -69,15 +69,15 @@ export class PortSecGroupAssociate extends pulumi.CustomResource {
      */
     constructor(name: string, args: PortSecGroupAssociateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PortSecGroupAssociateArgs | PortSecGroupAssociateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PortSecGroupAssociateState | undefined;
-            inputs["allSecurityGroupIds"] = state ? state.allSecurityGroupIds : undefined;
-            inputs["enforce"] = state ? state.enforce : undefined;
-            inputs["portId"] = state ? state.portId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["allSecurityGroupIds"] = state ? state.allSecurityGroupIds : undefined;
+            resourceInputs["enforce"] = state ? state.enforce : undefined;
+            resourceInputs["portId"] = state ? state.portId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
         } else {
             const args = argsOrState as PortSecGroupAssociateArgs | undefined;
             if ((!args || args.portId === undefined) && !opts.urn) {
@@ -86,16 +86,14 @@ export class PortSecGroupAssociate extends pulumi.CustomResource {
             if ((!args || args.securityGroupIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupIds'");
             }
-            inputs["enforce"] = args ? args.enforce : undefined;
-            inputs["portId"] = args ? args.portId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            inputs["allSecurityGroupIds"] = undefined /*out*/;
+            resourceInputs["enforce"] = args ? args.enforce : undefined;
+            resourceInputs["portId"] = args ? args.portId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["allSecurityGroupIds"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(PortSecGroupAssociate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(PortSecGroupAssociate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

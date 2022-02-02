@@ -127,40 +127,38 @@ export class RecordSet extends pulumi.CustomResource {
      */
     constructor(name: string, args: RecordSetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RecordSetArgs | RecordSetState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RecordSetState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["disableStatusCheck"] = state ? state.disableStatusCheck : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["records"] = state ? state.records : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["ttl"] = state ? state.ttl : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disableStatusCheck"] = state ? state.disableStatusCheck : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["records"] = state ? state.records : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as RecordSetArgs | undefined;
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disableStatusCheck"] = args ? args.disableStatusCheck : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["records"] = args ? args.records : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disableStatusCheck"] = args ? args.disableStatusCheck : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["records"] = args ? args.records : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RecordSet.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RecordSet.__pulumiType, name, resourceInputs, opts);
     }
 }
 

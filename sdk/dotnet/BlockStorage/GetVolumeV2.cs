@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.BlockStorage
 {
@@ -39,7 +38,7 @@ namespace Pulumi.OpenStack.BlockStorage
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVolumeV2Result> InvokeAsync(GetVolumeV2Args? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeV2Result>("openstack:blockstorage/getVolumeV2:getVolumeV2", args ?? new GetVolumeV2Args(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeV2Result>("openstack:blockstorage/getVolumeV2:getVolumeV2", args ?? new GetVolumeV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about an existing volume.
@@ -68,7 +67,7 @@ namespace Pulumi.OpenStack.BlockStorage
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVolumeV2Result> Invoke(GetVolumeV2InvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVolumeV2Result>("openstack:blockstorage/getVolumeV2:getVolumeV2", args ?? new GetVolumeV2InvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetVolumeV2Result>("openstack:blockstorage/getVolumeV2:getVolumeV2", args ?? new GetVolumeV2InvokeArgs(), options.WithDefaults());
     }
 
 

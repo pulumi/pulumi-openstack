@@ -156,21 +156,21 @@ export class SecGroupRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: SecGroupRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecGroupRuleArgs | SecGroupRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecGroupRuleState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["direction"] = state ? state.direction : undefined;
-            inputs["ethertype"] = state ? state.ethertype : undefined;
-            inputs["portRangeMax"] = state ? state.portRangeMax : undefined;
-            inputs["portRangeMin"] = state ? state.portRangeMin : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["remoteGroupId"] = state ? state.remoteGroupId : undefined;
-            inputs["remoteIpPrefix"] = state ? state.remoteIpPrefix : undefined;
-            inputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["direction"] = state ? state.direction : undefined;
+            resourceInputs["ethertype"] = state ? state.ethertype : undefined;
+            resourceInputs["portRangeMax"] = state ? state.portRangeMax : undefined;
+            resourceInputs["portRangeMin"] = state ? state.portRangeMin : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["remoteGroupId"] = state ? state.remoteGroupId : undefined;
+            resourceInputs["remoteIpPrefix"] = state ? state.remoteIpPrefix : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as SecGroupRuleArgs | undefined;
             if ((!args || args.direction === undefined) && !opts.urn) {
@@ -182,22 +182,20 @@ export class SecGroupRule extends pulumi.CustomResource {
             if ((!args || args.securityGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["direction"] = args ? args.direction : undefined;
-            inputs["ethertype"] = args ? args.ethertype : undefined;
-            inputs["portRangeMax"] = args ? args.portRangeMax : undefined;
-            inputs["portRangeMin"] = args ? args.portRangeMin : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["remoteGroupId"] = args ? args.remoteGroupId : undefined;
-            inputs["remoteIpPrefix"] = args ? args.remoteIpPrefix : undefined;
-            inputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["direction"] = args ? args.direction : undefined;
+            resourceInputs["ethertype"] = args ? args.ethertype : undefined;
+            resourceInputs["portRangeMax"] = args ? args.portRangeMax : undefined;
+            resourceInputs["portRangeMin"] = args ? args.portRangeMin : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["remoteGroupId"] = args ? args.remoteGroupId : undefined;
+            resourceInputs["remoteIpPrefix"] = args ? args.remoteIpPrefix : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SecGroupRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SecGroupRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

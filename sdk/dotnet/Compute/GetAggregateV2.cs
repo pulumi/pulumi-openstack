@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.Compute
 {
@@ -40,7 +39,7 @@ namespace Pulumi.OpenStack.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAggregateV2Result> InvokeAsync(GetAggregateV2Args args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAggregateV2Result>("openstack:compute/getAggregateV2:getAggregateV2", args ?? new GetAggregateV2Args(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAggregateV2Result>("openstack:compute/getAggregateV2:getAggregateV2", args ?? new GetAggregateV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about host aggregates
@@ -70,7 +69,7 @@ namespace Pulumi.OpenStack.Compute
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAggregateV2Result> Invoke(GetAggregateV2InvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAggregateV2Result>("openstack:compute/getAggregateV2:getAggregateV2", args ?? new GetAggregateV2InvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAggregateV2Result>("openstack:compute/getAggregateV2:getAggregateV2", args ?? new GetAggregateV2InvokeArgs(), options.WithDefaults());
     }
 
 

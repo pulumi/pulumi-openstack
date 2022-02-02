@@ -90,13 +90,13 @@ export class QosAssociationV3 extends pulumi.CustomResource {
      */
     constructor(name: string, args: QosAssociationV3Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QosAssociationV3Args | QosAssociationV3State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QosAssociationV3State | undefined;
-            inputs["qosId"] = state ? state.qosId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["volumeTypeId"] = state ? state.volumeTypeId : undefined;
+            resourceInputs["qosId"] = state ? state.qosId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["volumeTypeId"] = state ? state.volumeTypeId : undefined;
         } else {
             const args = argsOrState as QosAssociationV3Args | undefined;
             if ((!args || args.qosId === undefined) && !opts.urn) {
@@ -105,14 +105,12 @@ export class QosAssociationV3 extends pulumi.CustomResource {
             if ((!args || args.volumeTypeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'volumeTypeId'");
             }
-            inputs["qosId"] = args ? args.qosId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["volumeTypeId"] = args ? args.volumeTypeId : undefined;
+            resourceInputs["qosId"] = args ? args.qosId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["volumeTypeId"] = args ? args.volumeTypeId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(QosAssociationV3.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(QosAssociationV3.__pulumiType, name, resourceInputs, opts);
     }
 }
 

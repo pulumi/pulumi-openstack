@@ -226,7 +226,7 @@ type MemberV1Input interface {
 }
 
 func (*MemberV1) ElementType() reflect.Type {
-	return reflect.TypeOf((*MemberV1)(nil))
+	return reflect.TypeOf((**MemberV1)(nil)).Elem()
 }
 
 func (i *MemberV1) ToMemberV1Output() MemberV1Output {
@@ -235,35 +235,6 @@ func (i *MemberV1) ToMemberV1Output() MemberV1Output {
 
 func (i *MemberV1) ToMemberV1OutputWithContext(ctx context.Context) MemberV1Output {
 	return pulumi.ToOutputWithContext(ctx, i).(MemberV1Output)
-}
-
-func (i *MemberV1) ToMemberV1PtrOutput() MemberV1PtrOutput {
-	return i.ToMemberV1PtrOutputWithContext(context.Background())
-}
-
-func (i *MemberV1) ToMemberV1PtrOutputWithContext(ctx context.Context) MemberV1PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MemberV1PtrOutput)
-}
-
-type MemberV1PtrInput interface {
-	pulumi.Input
-
-	ToMemberV1PtrOutput() MemberV1PtrOutput
-	ToMemberV1PtrOutputWithContext(ctx context.Context) MemberV1PtrOutput
-}
-
-type memberV1PtrType MemberV1Args
-
-func (*memberV1PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MemberV1)(nil))
-}
-
-func (i *memberV1PtrType) ToMemberV1PtrOutput() MemberV1PtrOutput {
-	return i.ToMemberV1PtrOutputWithContext(context.Background())
-}
-
-func (i *memberV1PtrType) ToMemberV1PtrOutputWithContext(ctx context.Context) MemberV1PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MemberV1PtrOutput)
 }
 
 // MemberV1ArrayInput is an input type that accepts MemberV1Array and MemberV1ArrayOutput values.
@@ -319,7 +290,7 @@ func (i MemberV1Map) ToMemberV1MapOutputWithContext(ctx context.Context) MemberV
 type MemberV1Output struct{ *pulumi.OutputState }
 
 func (MemberV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*MemberV1)(nil))
+	return reflect.TypeOf((**MemberV1)(nil)).Elem()
 }
 
 func (o MemberV1Output) ToMemberV1Output() MemberV1Output {
@@ -330,44 +301,10 @@ func (o MemberV1Output) ToMemberV1OutputWithContext(ctx context.Context) MemberV
 	return o
 }
 
-func (o MemberV1Output) ToMemberV1PtrOutput() MemberV1PtrOutput {
-	return o.ToMemberV1PtrOutputWithContext(context.Background())
-}
-
-func (o MemberV1Output) ToMemberV1PtrOutputWithContext(ctx context.Context) MemberV1PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MemberV1) *MemberV1 {
-		return &v
-	}).(MemberV1PtrOutput)
-}
-
-type MemberV1PtrOutput struct{ *pulumi.OutputState }
-
-func (MemberV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MemberV1)(nil))
-}
-
-func (o MemberV1PtrOutput) ToMemberV1PtrOutput() MemberV1PtrOutput {
-	return o
-}
-
-func (o MemberV1PtrOutput) ToMemberV1PtrOutputWithContext(ctx context.Context) MemberV1PtrOutput {
-	return o
-}
-
-func (o MemberV1PtrOutput) Elem() MemberV1Output {
-	return o.ApplyT(func(v *MemberV1) MemberV1 {
-		if v != nil {
-			return *v
-		}
-		var ret MemberV1
-		return ret
-	}).(MemberV1Output)
-}
-
 type MemberV1ArrayOutput struct{ *pulumi.OutputState }
 
 func (MemberV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MemberV1)(nil))
+	return reflect.TypeOf((*[]*MemberV1)(nil)).Elem()
 }
 
 func (o MemberV1ArrayOutput) ToMemberV1ArrayOutput() MemberV1ArrayOutput {
@@ -379,15 +316,15 @@ func (o MemberV1ArrayOutput) ToMemberV1ArrayOutputWithContext(ctx context.Contex
 }
 
 func (o MemberV1ArrayOutput) Index(i pulumi.IntInput) MemberV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MemberV1 {
-		return vs[0].([]MemberV1)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MemberV1 {
+		return vs[0].([]*MemberV1)[vs[1].(int)]
 	}).(MemberV1Output)
 }
 
 type MemberV1MapOutput struct{ *pulumi.OutputState }
 
 func (MemberV1MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MemberV1)(nil))
+	return reflect.TypeOf((*map[string]*MemberV1)(nil)).Elem()
 }
 
 func (o MemberV1MapOutput) ToMemberV1MapOutput() MemberV1MapOutput {
@@ -399,18 +336,16 @@ func (o MemberV1MapOutput) ToMemberV1MapOutputWithContext(ctx context.Context) M
 }
 
 func (o MemberV1MapOutput) MapIndex(k pulumi.StringInput) MemberV1Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MemberV1 {
-		return vs[0].(map[string]MemberV1)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *MemberV1 {
+		return vs[0].(map[string]*MemberV1)[vs[1].(string)]
 	}).(MemberV1Output)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MemberV1Input)(nil)).Elem(), &MemberV1{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MemberV1PtrInput)(nil)).Elem(), &MemberV1{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MemberV1ArrayInput)(nil)).Elem(), MemberV1Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MemberV1MapInput)(nil)).Elem(), MemberV1Map{})
 	pulumi.RegisterOutputType(MemberV1Output{})
-	pulumi.RegisterOutputType(MemberV1PtrOutput{})
 	pulumi.RegisterOutputType(MemberV1ArrayOutput{})
 	pulumi.RegisterOutputType(MemberV1MapOutput{})
 }

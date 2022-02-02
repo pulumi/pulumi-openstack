@@ -24,9 +24,7 @@ export function getQosPolicy(args?: GetQosPolicyArgs, opts?: pulumi.InvokeOption
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:networking/getQosPolicy:getQosPolicy", {
         "description": args.description,
         "isDefault": args.isDefault,

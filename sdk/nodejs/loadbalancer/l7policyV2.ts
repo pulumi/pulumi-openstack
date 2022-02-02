@@ -140,20 +140,20 @@ export class L7PolicyV2 extends pulumi.CustomResource {
      */
     constructor(name: string, args: L7PolicyV2Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: L7PolicyV2Args | L7PolicyV2State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as L7PolicyV2State | undefined;
-            inputs["action"] = state ? state.action : undefined;
-            inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["listenerId"] = state ? state.listenerId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["position"] = state ? state.position : undefined;
-            inputs["redirectPoolId"] = state ? state.redirectPoolId : undefined;
-            inputs["redirectUrl"] = state ? state.redirectUrl : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
+            resourceInputs["redirectPoolId"] = state ? state.redirectPoolId : undefined;
+            resourceInputs["redirectUrl"] = state ? state.redirectUrl : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as L7PolicyV2Args | undefined;
             if ((!args || args.action === undefined) && !opts.urn) {
@@ -162,21 +162,19 @@ export class L7PolicyV2 extends pulumi.CustomResource {
             if ((!args || args.listenerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            inputs["action"] = args ? args.action : undefined;
-            inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["listenerId"] = args ? args.listenerId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["position"] = args ? args.position : undefined;
-            inputs["redirectPoolId"] = args ? args.redirectPoolId : undefined;
-            inputs["redirectUrl"] = args ? args.redirectUrl : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["position"] = args ? args.position : undefined;
+            resourceInputs["redirectPoolId"] = args ? args.redirectPoolId : undefined;
+            resourceInputs["redirectUrl"] = args ? args.redirectUrl : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(L7PolicyV2.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(L7PolicyV2.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -164,29 +164,29 @@ export class SiteConnection extends pulumi.CustomResource {
      */
     constructor(name: string, args: SiteConnectionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SiteConnectionArgs | SiteConnectionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SiteConnectionState | undefined;
-            inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["dpds"] = state ? state.dpds : undefined;
-            inputs["ikepolicyId"] = state ? state.ikepolicyId : undefined;
-            inputs["initiator"] = state ? state.initiator : undefined;
-            inputs["ipsecpolicyId"] = state ? state.ipsecpolicyId : undefined;
-            inputs["localEpGroupId"] = state ? state.localEpGroupId : undefined;
-            inputs["localId"] = state ? state.localId : undefined;
-            inputs["mtu"] = state ? state.mtu : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["peerAddress"] = state ? state.peerAddress : undefined;
-            inputs["peerCidrs"] = state ? state.peerCidrs : undefined;
-            inputs["peerEpGroupId"] = state ? state.peerEpGroupId : undefined;
-            inputs["peerId"] = state ? state.peerId : undefined;
-            inputs["psk"] = state ? state.psk : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
-            inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
-            inputs["vpnserviceId"] = state ? state.vpnserviceId : undefined;
+            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dpds"] = state ? state.dpds : undefined;
+            resourceInputs["ikepolicyId"] = state ? state.ikepolicyId : undefined;
+            resourceInputs["initiator"] = state ? state.initiator : undefined;
+            resourceInputs["ipsecpolicyId"] = state ? state.ipsecpolicyId : undefined;
+            resourceInputs["localEpGroupId"] = state ? state.localEpGroupId : undefined;
+            resourceInputs["localId"] = state ? state.localId : undefined;
+            resourceInputs["mtu"] = state ? state.mtu : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["peerAddress"] = state ? state.peerAddress : undefined;
+            resourceInputs["peerCidrs"] = state ? state.peerCidrs : undefined;
+            resourceInputs["peerEpGroupId"] = state ? state.peerEpGroupId : undefined;
+            resourceInputs["peerId"] = state ? state.peerId : undefined;
+            resourceInputs["psk"] = state ? state.psk : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["vpnserviceId"] = state ? state.vpnserviceId : undefined;
         } else {
             const args = argsOrState as SiteConnectionArgs | undefined;
             if ((!args || args.ikepolicyId === undefined) && !opts.urn) {
@@ -207,30 +207,28 @@ export class SiteConnection extends pulumi.CustomResource {
             if ((!args || args.vpnserviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpnserviceId'");
             }
-            inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["dpds"] = args ? args.dpds : undefined;
-            inputs["ikepolicyId"] = args ? args.ikepolicyId : undefined;
-            inputs["initiator"] = args ? args.initiator : undefined;
-            inputs["ipsecpolicyId"] = args ? args.ipsecpolicyId : undefined;
-            inputs["localEpGroupId"] = args ? args.localEpGroupId : undefined;
-            inputs["localId"] = args ? args.localId : undefined;
-            inputs["mtu"] = args ? args.mtu : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["peerAddress"] = args ? args.peerAddress : undefined;
-            inputs["peerCidrs"] = args ? args.peerCidrs : undefined;
-            inputs["peerEpGroupId"] = args ? args.peerEpGroupId : undefined;
-            inputs["peerId"] = args ? args.peerId : undefined;
-            inputs["psk"] = args ? args.psk : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
-            inputs["vpnserviceId"] = args ? args.vpnserviceId : undefined;
+            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dpds"] = args ? args.dpds : undefined;
+            resourceInputs["ikepolicyId"] = args ? args.ikepolicyId : undefined;
+            resourceInputs["initiator"] = args ? args.initiator : undefined;
+            resourceInputs["ipsecpolicyId"] = args ? args.ipsecpolicyId : undefined;
+            resourceInputs["localEpGroupId"] = args ? args.localEpGroupId : undefined;
+            resourceInputs["localId"] = args ? args.localId : undefined;
+            resourceInputs["mtu"] = args ? args.mtu : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["peerAddress"] = args ? args.peerAddress : undefined;
+            resourceInputs["peerCidrs"] = args ? args.peerCidrs : undefined;
+            resourceInputs["peerEpGroupId"] = args ? args.peerEpGroupId : undefined;
+            resourceInputs["peerId"] = args ? args.peerId : undefined;
+            resourceInputs["psk"] = args ? args.psk : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["vpnserviceId"] = args ? args.vpnserviceId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SiteConnection.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SiteConnection.__pulumiType, name, resourceInputs, opts);
     }
 }
 

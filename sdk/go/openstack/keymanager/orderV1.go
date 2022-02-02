@@ -244,7 +244,7 @@ type OrderV1Input interface {
 }
 
 func (*OrderV1) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrderV1)(nil))
+	return reflect.TypeOf((**OrderV1)(nil)).Elem()
 }
 
 func (i *OrderV1) ToOrderV1Output() OrderV1Output {
@@ -253,35 +253,6 @@ func (i *OrderV1) ToOrderV1Output() OrderV1Output {
 
 func (i *OrderV1) ToOrderV1OutputWithContext(ctx context.Context) OrderV1Output {
 	return pulumi.ToOutputWithContext(ctx, i).(OrderV1Output)
-}
-
-func (i *OrderV1) ToOrderV1PtrOutput() OrderV1PtrOutput {
-	return i.ToOrderV1PtrOutputWithContext(context.Background())
-}
-
-func (i *OrderV1) ToOrderV1PtrOutputWithContext(ctx context.Context) OrderV1PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OrderV1PtrOutput)
-}
-
-type OrderV1PtrInput interface {
-	pulumi.Input
-
-	ToOrderV1PtrOutput() OrderV1PtrOutput
-	ToOrderV1PtrOutputWithContext(ctx context.Context) OrderV1PtrOutput
-}
-
-type orderV1PtrType OrderV1Args
-
-func (*orderV1PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OrderV1)(nil))
-}
-
-func (i *orderV1PtrType) ToOrderV1PtrOutput() OrderV1PtrOutput {
-	return i.ToOrderV1PtrOutputWithContext(context.Background())
-}
-
-func (i *orderV1PtrType) ToOrderV1PtrOutputWithContext(ctx context.Context) OrderV1PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OrderV1PtrOutput)
 }
 
 // OrderV1ArrayInput is an input type that accepts OrderV1Array and OrderV1ArrayOutput values.
@@ -337,7 +308,7 @@ func (i OrderV1Map) ToOrderV1MapOutputWithContext(ctx context.Context) OrderV1Ma
 type OrderV1Output struct{ *pulumi.OutputState }
 
 func (OrderV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrderV1)(nil))
+	return reflect.TypeOf((**OrderV1)(nil)).Elem()
 }
 
 func (o OrderV1Output) ToOrderV1Output() OrderV1Output {
@@ -348,44 +319,10 @@ func (o OrderV1Output) ToOrderV1OutputWithContext(ctx context.Context) OrderV1Ou
 	return o
 }
 
-func (o OrderV1Output) ToOrderV1PtrOutput() OrderV1PtrOutput {
-	return o.ToOrderV1PtrOutputWithContext(context.Background())
-}
-
-func (o OrderV1Output) ToOrderV1PtrOutputWithContext(ctx context.Context) OrderV1PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrderV1) *OrderV1 {
-		return &v
-	}).(OrderV1PtrOutput)
-}
-
-type OrderV1PtrOutput struct{ *pulumi.OutputState }
-
-func (OrderV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OrderV1)(nil))
-}
-
-func (o OrderV1PtrOutput) ToOrderV1PtrOutput() OrderV1PtrOutput {
-	return o
-}
-
-func (o OrderV1PtrOutput) ToOrderV1PtrOutputWithContext(ctx context.Context) OrderV1PtrOutput {
-	return o
-}
-
-func (o OrderV1PtrOutput) Elem() OrderV1Output {
-	return o.ApplyT(func(v *OrderV1) OrderV1 {
-		if v != nil {
-			return *v
-		}
-		var ret OrderV1
-		return ret
-	}).(OrderV1Output)
-}
-
 type OrderV1ArrayOutput struct{ *pulumi.OutputState }
 
 func (OrderV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OrderV1)(nil))
+	return reflect.TypeOf((*[]*OrderV1)(nil)).Elem()
 }
 
 func (o OrderV1ArrayOutput) ToOrderV1ArrayOutput() OrderV1ArrayOutput {
@@ -397,15 +334,15 @@ func (o OrderV1ArrayOutput) ToOrderV1ArrayOutputWithContext(ctx context.Context)
 }
 
 func (o OrderV1ArrayOutput) Index(i pulumi.IntInput) OrderV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrderV1 {
-		return vs[0].([]OrderV1)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrderV1 {
+		return vs[0].([]*OrderV1)[vs[1].(int)]
 	}).(OrderV1Output)
 }
 
 type OrderV1MapOutput struct{ *pulumi.OutputState }
 
 func (OrderV1MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]OrderV1)(nil))
+	return reflect.TypeOf((*map[string]*OrderV1)(nil)).Elem()
 }
 
 func (o OrderV1MapOutput) ToOrderV1MapOutput() OrderV1MapOutput {
@@ -417,18 +354,16 @@ func (o OrderV1MapOutput) ToOrderV1MapOutputWithContext(ctx context.Context) Ord
 }
 
 func (o OrderV1MapOutput) MapIndex(k pulumi.StringInput) OrderV1Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) OrderV1 {
-		return vs[0].(map[string]OrderV1)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *OrderV1 {
+		return vs[0].(map[string]*OrderV1)[vs[1].(string)]
 	}).(OrderV1Output)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrderV1Input)(nil)).Elem(), &OrderV1{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OrderV1PtrInput)(nil)).Elem(), &OrderV1{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrderV1ArrayInput)(nil)).Elem(), OrderV1Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrderV1MapInput)(nil)).Elem(), OrderV1Map{})
 	pulumi.RegisterOutputType(OrderV1Output{})
-	pulumi.RegisterOutputType(OrderV1PtrOutput{})
 	pulumi.RegisterOutputType(OrderV1ArrayOutput{})
 	pulumi.RegisterOutputType(OrderV1MapOutput{})
 }

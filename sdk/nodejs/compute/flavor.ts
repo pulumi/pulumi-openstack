@@ -126,21 +126,21 @@ export class Flavor extends pulumi.CustomResource {
      */
     constructor(name: string, args: FlavorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FlavorArgs | FlavorState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlavorState | undefined;
-            inputs["disk"] = state ? state.disk : undefined;
-            inputs["ephemeral"] = state ? state.ephemeral : undefined;
-            inputs["extraSpecs"] = state ? state.extraSpecs : undefined;
-            inputs["flavorId"] = state ? state.flavorId : undefined;
-            inputs["isPublic"] = state ? state.isPublic : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["ram"] = state ? state.ram : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["rxTxFactor"] = state ? state.rxTxFactor : undefined;
-            inputs["swap"] = state ? state.swap : undefined;
-            inputs["vcpus"] = state ? state.vcpus : undefined;
+            resourceInputs["disk"] = state ? state.disk : undefined;
+            resourceInputs["ephemeral"] = state ? state.ephemeral : undefined;
+            resourceInputs["extraSpecs"] = state ? state.extraSpecs : undefined;
+            resourceInputs["flavorId"] = state ? state.flavorId : undefined;
+            resourceInputs["isPublic"] = state ? state.isPublic : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["ram"] = state ? state.ram : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["rxTxFactor"] = state ? state.rxTxFactor : undefined;
+            resourceInputs["swap"] = state ? state.swap : undefined;
+            resourceInputs["vcpus"] = state ? state.vcpus : undefined;
         } else {
             const args = argsOrState as FlavorArgs | undefined;
             if ((!args || args.disk === undefined) && !opts.urn) {
@@ -152,22 +152,20 @@ export class Flavor extends pulumi.CustomResource {
             if ((!args || args.vcpus === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vcpus'");
             }
-            inputs["disk"] = args ? args.disk : undefined;
-            inputs["ephemeral"] = args ? args.ephemeral : undefined;
-            inputs["extraSpecs"] = args ? args.extraSpecs : undefined;
-            inputs["flavorId"] = args ? args.flavorId : undefined;
-            inputs["isPublic"] = args ? args.isPublic : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["ram"] = args ? args.ram : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["rxTxFactor"] = args ? args.rxTxFactor : undefined;
-            inputs["swap"] = args ? args.swap : undefined;
-            inputs["vcpus"] = args ? args.vcpus : undefined;
+            resourceInputs["disk"] = args ? args.disk : undefined;
+            resourceInputs["ephemeral"] = args ? args.ephemeral : undefined;
+            resourceInputs["extraSpecs"] = args ? args.extraSpecs : undefined;
+            resourceInputs["flavorId"] = args ? args.flavorId : undefined;
+            resourceInputs["isPublic"] = args ? args.isPublic : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["ram"] = args ? args.ram : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["rxTxFactor"] = args ? args.rxTxFactor : undefined;
+            resourceInputs["swap"] = args ? args.swap : undefined;
+            resourceInputs["vcpus"] = args ? args.vcpus : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Flavor.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Flavor.__pulumiType, name, resourceInputs, opts);
     }
 }
 

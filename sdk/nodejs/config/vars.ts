@@ -14,7 +14,7 @@ const __config = new pulumi.Config("openstack");
 export declare const allowReauth: boolean | undefined;
 Object.defineProperty(exports, "allowReauth", {
     get() {
-        return __config.getObject<boolean>("allowReauth") ?? <any>utilities.getEnvBoolean("OS_ALLOW_REAUTH");
+        return __config.getObject<boolean>("allowReauth") ?? utilities.getEnvBoolean("OS_ALLOW_REAUTH");
     },
     enumerable: true,
 });
@@ -114,7 +114,7 @@ Object.defineProperty(exports, "defaultDomain", {
 export declare const delayedAuth: boolean | undefined;
 Object.defineProperty(exports, "delayedAuth", {
     get() {
-        return __config.getObject<boolean>("delayedAuth") ?? <any>utilities.getEnvBoolean("OS_DELAYED_AUTH");
+        return __config.getObject<boolean>("delayedAuth") ?? utilities.getEnvBoolean("OS_DELAYED_AUTH");
     },
     enumerable: true,
 });
@@ -177,7 +177,7 @@ Object.defineProperty(exports, "endpointType", {
 export declare const insecure: boolean | undefined;
 Object.defineProperty(exports, "insecure", {
     get() {
-        return __config.getObject<boolean>("insecure") ?? <any>utilities.getEnvBoolean("OS_INSECURE");
+        return __config.getObject<boolean>("insecure") ?? utilities.getEnvBoolean("OS_INSECURE");
     },
     enumerable: true,
 });
@@ -254,7 +254,7 @@ Object.defineProperty(exports, "region", {
 export declare const swauth: boolean | undefined;
 Object.defineProperty(exports, "swauth", {
     get() {
-        return __config.getObject<boolean>("swauth") ?? <any>utilities.getEnvBoolean("OS_SWAUTH");
+        return __config.getObject<boolean>("swauth") ?? utilities.getEnvBoolean("OS_SWAUTH");
     },
     enumerable: true,
 });
@@ -298,7 +298,7 @@ Object.defineProperty(exports, "token", {
 export declare const useOctavia: boolean | undefined;
 Object.defineProperty(exports, "useOctavia", {
     get() {
-        return __config.getObject<boolean>("useOctavia") ?? <any>utilities.getEnvBoolean("OS_USE_OCTAVIA");
+        return __config.getObject<boolean>("useOctavia") ?? utilities.getEnvBoolean("OS_USE_OCTAVIA");
     },
     enumerable: true,
 });

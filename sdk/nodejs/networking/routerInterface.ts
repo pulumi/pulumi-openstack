@@ -98,28 +98,26 @@ export class RouterInterface extends pulumi.CustomResource {
      */
     constructor(name: string, args: RouterInterfaceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouterInterfaceArgs | RouterInterfaceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterInterfaceState | undefined;
-            inputs["portId"] = state ? state.portId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["routerId"] = state ? state.routerId : undefined;
-            inputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["portId"] = state ? state.portId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["routerId"] = state ? state.routerId : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
         } else {
             const args = argsOrState as RouterInterfaceArgs | undefined;
             if ((!args || args.routerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routerId'");
             }
-            inputs["portId"] = args ? args.portId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["routerId"] = args ? args.routerId : undefined;
-            inputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["portId"] = args ? args.portId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["routerId"] = args ? args.routerId : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RouterInterface.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RouterInterface.__pulumiType, name, resourceInputs, opts);
     }
 }
 

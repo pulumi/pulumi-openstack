@@ -169,28 +169,28 @@ export class Share extends pulumi.CustomResource {
      */
     constructor(name: string, args: ShareArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ShareArgs | ShareState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ShareState | undefined;
-            inputs["allMetadata"] = state ? state.allMetadata : undefined;
-            inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["exportLocations"] = state ? state.exportLocations : undefined;
-            inputs["hasReplicas"] = state ? state.hasReplicas : undefined;
-            inputs["host"] = state ? state.host : undefined;
-            inputs["isPublic"] = state ? state.isPublic : undefined;
-            inputs["metadata"] = state ? state.metadata : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["replicationType"] = state ? state.replicationType : undefined;
-            inputs["shareNetworkId"] = state ? state.shareNetworkId : undefined;
-            inputs["shareProto"] = state ? state.shareProto : undefined;
-            inputs["shareServerId"] = state ? state.shareServerId : undefined;
-            inputs["shareType"] = state ? state.shareType : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["snapshotId"] = state ? state.snapshotId : undefined;
+            resourceInputs["allMetadata"] = state ? state.allMetadata : undefined;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["exportLocations"] = state ? state.exportLocations : undefined;
+            resourceInputs["hasReplicas"] = state ? state.hasReplicas : undefined;
+            resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["isPublic"] = state ? state.isPublic : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["replicationType"] = state ? state.replicationType : undefined;
+            resourceInputs["shareNetworkId"] = state ? state.shareNetworkId : undefined;
+            resourceInputs["shareProto"] = state ? state.shareProto : undefined;
+            resourceInputs["shareServerId"] = state ? state.shareServerId : undefined;
+            resourceInputs["shareType"] = state ? state.shareType : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
         } else {
             const args = argsOrState as ShareArgs | undefined;
             if ((!args || args.shareProto === undefined) && !opts.urn) {
@@ -199,29 +199,27 @@ export class Share extends pulumi.CustomResource {
             if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["isPublic"] = args ? args.isPublic : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["shareNetworkId"] = args ? args.shareNetworkId : undefined;
-            inputs["shareProto"] = args ? args.shareProto : undefined;
-            inputs["shareType"] = args ? args.shareType : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["snapshotId"] = args ? args.snapshotId : undefined;
-            inputs["allMetadata"] = undefined /*out*/;
-            inputs["exportLocations"] = undefined /*out*/;
-            inputs["hasReplicas"] = undefined /*out*/;
-            inputs["host"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
-            inputs["replicationType"] = undefined /*out*/;
-            inputs["shareServerId"] = undefined /*out*/;
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["isPublic"] = args ? args.isPublic : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["shareNetworkId"] = args ? args.shareNetworkId : undefined;
+            resourceInputs["shareProto"] = args ? args.shareProto : undefined;
+            resourceInputs["shareType"] = args ? args.shareType : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
+            resourceInputs["allMetadata"] = undefined /*out*/;
+            resourceInputs["exportLocations"] = undefined /*out*/;
+            resourceInputs["hasReplicas"] = undefined /*out*/;
+            resourceInputs["host"] = undefined /*out*/;
+            resourceInputs["projectId"] = undefined /*out*/;
+            resourceInputs["replicationType"] = undefined /*out*/;
+            resourceInputs["shareServerId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Share.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Share.__pulumiType, name, resourceInputs, opts);
     }
 }
 

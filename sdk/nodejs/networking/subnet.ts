@@ -192,62 +192,60 @@ export class Subnet extends pulumi.CustomResource {
      */
     constructor(name: string, args: SubnetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubnetArgs | SubnetState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubnetState | undefined;
-            inputs["allTags"] = state ? state.allTags : undefined;
-            inputs["allocationPools"] = state ? state.allocationPools : undefined;
-            inputs["allocationPoolsCollection"] = state ? state.allocationPoolsCollection : undefined;
-            inputs["cidr"] = state ? state.cidr : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["dnsNameservers"] = state ? state.dnsNameservers : undefined;
-            inputs["enableDhcp"] = state ? state.enableDhcp : undefined;
-            inputs["gatewayIp"] = state ? state.gatewayIp : undefined;
-            inputs["hostRoutes"] = state ? state.hostRoutes : undefined;
-            inputs["ipVersion"] = state ? state.ipVersion : undefined;
-            inputs["ipv6AddressMode"] = state ? state.ipv6AddressMode : undefined;
-            inputs["ipv6RaMode"] = state ? state.ipv6RaMode : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkId"] = state ? state.networkId : undefined;
-            inputs["noGateway"] = state ? state.noGateway : undefined;
-            inputs["prefixLength"] = state ? state.prefixLength : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["subnetpoolId"] = state ? state.subnetpoolId : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
-            inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["allTags"] = state ? state.allTags : undefined;
+            resourceInputs["allocationPools"] = state ? state.allocationPools : undefined;
+            resourceInputs["allocationPoolsCollection"] = state ? state.allocationPoolsCollection : undefined;
+            resourceInputs["cidr"] = state ? state.cidr : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dnsNameservers"] = state ? state.dnsNameservers : undefined;
+            resourceInputs["enableDhcp"] = state ? state.enableDhcp : undefined;
+            resourceInputs["gatewayIp"] = state ? state.gatewayIp : undefined;
+            resourceInputs["hostRoutes"] = state ? state.hostRoutes : undefined;
+            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
+            resourceInputs["ipv6AddressMode"] = state ? state.ipv6AddressMode : undefined;
+            resourceInputs["ipv6RaMode"] = state ? state.ipv6RaMode : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
+            resourceInputs["noGateway"] = state ? state.noGateway : undefined;
+            resourceInputs["prefixLength"] = state ? state.prefixLength : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["subnetpoolId"] = state ? state.subnetpoolId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as SubnetArgs | undefined;
             if ((!args || args.networkId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
-            inputs["allocationPools"] = args ? args.allocationPools : undefined;
-            inputs["allocationPoolsCollection"] = args ? args.allocationPoolsCollection : undefined;
-            inputs["cidr"] = args ? args.cidr : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["dnsNameservers"] = args ? args.dnsNameservers : undefined;
-            inputs["enableDhcp"] = args ? args.enableDhcp : undefined;
-            inputs["gatewayIp"] = args ? args.gatewayIp : undefined;
-            inputs["hostRoutes"] = args ? args.hostRoutes : undefined;
-            inputs["ipVersion"] = args ? args.ipVersion : undefined;
-            inputs["ipv6AddressMode"] = args ? args.ipv6AddressMode : undefined;
-            inputs["ipv6RaMode"] = args ? args.ipv6RaMode : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkId"] = args ? args.networkId : undefined;
-            inputs["noGateway"] = args ? args.noGateway : undefined;
-            inputs["prefixLength"] = args ? args.prefixLength : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["subnetpoolId"] = args ? args.subnetpoolId : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
-            inputs["allTags"] = undefined /*out*/;
+            resourceInputs["allocationPools"] = args ? args.allocationPools : undefined;
+            resourceInputs["allocationPoolsCollection"] = args ? args.allocationPoolsCollection : undefined;
+            resourceInputs["cidr"] = args ? args.cidr : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dnsNameservers"] = args ? args.dnsNameservers : undefined;
+            resourceInputs["enableDhcp"] = args ? args.enableDhcp : undefined;
+            resourceInputs["gatewayIp"] = args ? args.gatewayIp : undefined;
+            resourceInputs["hostRoutes"] = args ? args.hostRoutes : undefined;
+            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
+            resourceInputs["ipv6AddressMode"] = args ? args.ipv6AddressMode : undefined;
+            resourceInputs["ipv6RaMode"] = args ? args.ipv6RaMode : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["noGateway"] = args ? args.noGateway : undefined;
+            resourceInputs["prefixLength"] = args ? args.prefixLength : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["subnetpoolId"] = args ? args.subnetpoolId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["allTags"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Subnet.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Subnet.__pulumiType, name, resourceInputs, opts);
     }
 }
 

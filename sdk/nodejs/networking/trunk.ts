@@ -133,38 +133,36 @@ export class Trunk extends pulumi.CustomResource {
      */
     constructor(name: string, args: TrunkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TrunkArgs | TrunkState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TrunkState | undefined;
-            inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            inputs["allTags"] = state ? state.allTags : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["portId"] = state ? state.portId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["subPorts"] = state ? state.subPorts : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            resourceInputs["allTags"] = state ? state.allTags : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["portId"] = state ? state.portId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["subPorts"] = state ? state.subPorts : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as TrunkArgs | undefined;
             if ((!args || args.portId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'portId'");
             }
-            inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["portId"] = args ? args.portId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["subPorts"] = args ? args.subPorts : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["allTags"] = undefined /*out*/;
+            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["portId"] = args ? args.portId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["subPorts"] = args ? args.subPorts : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["allTags"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Trunk.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Trunk.__pulumiType, name, resourceInputs, opts);
     }
 }
 

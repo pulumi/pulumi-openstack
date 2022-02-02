@@ -173,7 +173,7 @@ type ShareAccessInput interface {
 }
 
 func (*ShareAccess) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShareAccess)(nil))
+	return reflect.TypeOf((**ShareAccess)(nil)).Elem()
 }
 
 func (i *ShareAccess) ToShareAccessOutput() ShareAccessOutput {
@@ -182,35 +182,6 @@ func (i *ShareAccess) ToShareAccessOutput() ShareAccessOutput {
 
 func (i *ShareAccess) ToShareAccessOutputWithContext(ctx context.Context) ShareAccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShareAccessOutput)
-}
-
-func (i *ShareAccess) ToShareAccessPtrOutput() ShareAccessPtrOutput {
-	return i.ToShareAccessPtrOutputWithContext(context.Background())
-}
-
-func (i *ShareAccess) ToShareAccessPtrOutputWithContext(ctx context.Context) ShareAccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ShareAccessPtrOutput)
-}
-
-type ShareAccessPtrInput interface {
-	pulumi.Input
-
-	ToShareAccessPtrOutput() ShareAccessPtrOutput
-	ToShareAccessPtrOutputWithContext(ctx context.Context) ShareAccessPtrOutput
-}
-
-type shareAccessPtrType ShareAccessArgs
-
-func (*shareAccessPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ShareAccess)(nil))
-}
-
-func (i *shareAccessPtrType) ToShareAccessPtrOutput() ShareAccessPtrOutput {
-	return i.ToShareAccessPtrOutputWithContext(context.Background())
-}
-
-func (i *shareAccessPtrType) ToShareAccessPtrOutputWithContext(ctx context.Context) ShareAccessPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ShareAccessPtrOutput)
 }
 
 // ShareAccessArrayInput is an input type that accepts ShareAccessArray and ShareAccessArrayOutput values.
@@ -266,7 +237,7 @@ func (i ShareAccessMap) ToShareAccessMapOutputWithContext(ctx context.Context) S
 type ShareAccessOutput struct{ *pulumi.OutputState }
 
 func (ShareAccessOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ShareAccess)(nil))
+	return reflect.TypeOf((**ShareAccess)(nil)).Elem()
 }
 
 func (o ShareAccessOutput) ToShareAccessOutput() ShareAccessOutput {
@@ -277,44 +248,10 @@ func (o ShareAccessOutput) ToShareAccessOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o ShareAccessOutput) ToShareAccessPtrOutput() ShareAccessPtrOutput {
-	return o.ToShareAccessPtrOutputWithContext(context.Background())
-}
-
-func (o ShareAccessOutput) ToShareAccessPtrOutputWithContext(ctx context.Context) ShareAccessPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShareAccess) *ShareAccess {
-		return &v
-	}).(ShareAccessPtrOutput)
-}
-
-type ShareAccessPtrOutput struct{ *pulumi.OutputState }
-
-func (ShareAccessPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ShareAccess)(nil))
-}
-
-func (o ShareAccessPtrOutput) ToShareAccessPtrOutput() ShareAccessPtrOutput {
-	return o
-}
-
-func (o ShareAccessPtrOutput) ToShareAccessPtrOutputWithContext(ctx context.Context) ShareAccessPtrOutput {
-	return o
-}
-
-func (o ShareAccessPtrOutput) Elem() ShareAccessOutput {
-	return o.ApplyT(func(v *ShareAccess) ShareAccess {
-		if v != nil {
-			return *v
-		}
-		var ret ShareAccess
-		return ret
-	}).(ShareAccessOutput)
-}
-
 type ShareAccessArrayOutput struct{ *pulumi.OutputState }
 
 func (ShareAccessArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ShareAccess)(nil))
+	return reflect.TypeOf((*[]*ShareAccess)(nil)).Elem()
 }
 
 func (o ShareAccessArrayOutput) ToShareAccessArrayOutput() ShareAccessArrayOutput {
@@ -326,15 +263,15 @@ func (o ShareAccessArrayOutput) ToShareAccessArrayOutputWithContext(ctx context.
 }
 
 func (o ShareAccessArrayOutput) Index(i pulumi.IntInput) ShareAccessOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ShareAccess {
-		return vs[0].([]ShareAccess)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ShareAccess {
+		return vs[0].([]*ShareAccess)[vs[1].(int)]
 	}).(ShareAccessOutput)
 }
 
 type ShareAccessMapOutput struct{ *pulumi.OutputState }
 
 func (ShareAccessMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ShareAccess)(nil))
+	return reflect.TypeOf((*map[string]*ShareAccess)(nil)).Elem()
 }
 
 func (o ShareAccessMapOutput) ToShareAccessMapOutput() ShareAccessMapOutput {
@@ -346,18 +283,16 @@ func (o ShareAccessMapOutput) ToShareAccessMapOutputWithContext(ctx context.Cont
 }
 
 func (o ShareAccessMapOutput) MapIndex(k pulumi.StringInput) ShareAccessOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ShareAccess {
-		return vs[0].(map[string]ShareAccess)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ShareAccess {
+		return vs[0].(map[string]*ShareAccess)[vs[1].(string)]
 	}).(ShareAccessOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareAccessInput)(nil)).Elem(), &ShareAccess{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ShareAccessPtrInput)(nil)).Elem(), &ShareAccess{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareAccessArrayInput)(nil)).Elem(), ShareAccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShareAccessMapInput)(nil)).Elem(), ShareAccessMap{})
 	pulumi.RegisterOutputType(ShareAccessOutput{})
-	pulumi.RegisterOutputType(ShareAccessPtrOutput{})
 	pulumi.RegisterOutputType(ShareAccessArrayOutput{})
 	pulumi.RegisterOutputType(ShareAccessMapOutput{})
 }

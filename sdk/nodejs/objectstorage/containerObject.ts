@@ -203,58 +203,56 @@ export class ContainerObject extends pulumi.CustomResource {
      */
     constructor(name: string, args: ContainerObjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ContainerObjectArgs | ContainerObjectState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContainerObjectState | undefined;
-            inputs["containerName"] = state ? state.containerName : undefined;
-            inputs["content"] = state ? state.content : undefined;
-            inputs["contentDisposition"] = state ? state.contentDisposition : undefined;
-            inputs["contentEncoding"] = state ? state.contentEncoding : undefined;
-            inputs["contentLength"] = state ? state.contentLength : undefined;
-            inputs["contentType"] = state ? state.contentType : undefined;
-            inputs["copyFrom"] = state ? state.copyFrom : undefined;
-            inputs["date"] = state ? state.date : undefined;
-            inputs["deleteAfter"] = state ? state.deleteAfter : undefined;
-            inputs["deleteAt"] = state ? state.deleteAt : undefined;
-            inputs["detectContentType"] = state ? state.detectContentType : undefined;
-            inputs["etag"] = state ? state.etag : undefined;
-            inputs["lastModified"] = state ? state.lastModified : undefined;
-            inputs["metadata"] = state ? state.metadata : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["objectManifest"] = state ? state.objectManifest : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["source"] = state ? state.source : undefined;
-            inputs["transId"] = state ? state.transId : undefined;
+            resourceInputs["containerName"] = state ? state.containerName : undefined;
+            resourceInputs["content"] = state ? state.content : undefined;
+            resourceInputs["contentDisposition"] = state ? state.contentDisposition : undefined;
+            resourceInputs["contentEncoding"] = state ? state.contentEncoding : undefined;
+            resourceInputs["contentLength"] = state ? state.contentLength : undefined;
+            resourceInputs["contentType"] = state ? state.contentType : undefined;
+            resourceInputs["copyFrom"] = state ? state.copyFrom : undefined;
+            resourceInputs["date"] = state ? state.date : undefined;
+            resourceInputs["deleteAfter"] = state ? state.deleteAfter : undefined;
+            resourceInputs["deleteAt"] = state ? state.deleteAt : undefined;
+            resourceInputs["detectContentType"] = state ? state.detectContentType : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["lastModified"] = state ? state.lastModified : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["objectManifest"] = state ? state.objectManifest : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["transId"] = state ? state.transId : undefined;
         } else {
             const args = argsOrState as ContainerObjectArgs | undefined;
             if ((!args || args.containerName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'containerName'");
             }
-            inputs["containerName"] = args ? args.containerName : undefined;
-            inputs["content"] = args ? args.content : undefined;
-            inputs["contentDisposition"] = args ? args.contentDisposition : undefined;
-            inputs["contentEncoding"] = args ? args.contentEncoding : undefined;
-            inputs["contentType"] = args ? args.contentType : undefined;
-            inputs["copyFrom"] = args ? args.copyFrom : undefined;
-            inputs["deleteAfter"] = args ? args.deleteAfter : undefined;
-            inputs["deleteAt"] = args ? args.deleteAt : undefined;
-            inputs["detectContentType"] = args ? args.detectContentType : undefined;
-            inputs["etag"] = args ? args.etag : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["objectManifest"] = args ? args.objectManifest : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["source"] = args ? args.source : undefined;
-            inputs["contentLength"] = undefined /*out*/;
-            inputs["date"] = undefined /*out*/;
-            inputs["lastModified"] = undefined /*out*/;
-            inputs["transId"] = undefined /*out*/;
+            resourceInputs["containerName"] = args ? args.containerName : undefined;
+            resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["contentDisposition"] = args ? args.contentDisposition : undefined;
+            resourceInputs["contentEncoding"] = args ? args.contentEncoding : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["copyFrom"] = args ? args.copyFrom : undefined;
+            resourceInputs["deleteAfter"] = args ? args.deleteAfter : undefined;
+            resourceInputs["deleteAt"] = args ? args.deleteAt : undefined;
+            resourceInputs["detectContentType"] = args ? args.detectContentType : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["objectManifest"] = args ? args.objectManifest : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["contentLength"] = undefined /*out*/;
+            resourceInputs["date"] = undefined /*out*/;
+            resourceInputs["lastModified"] = undefined /*out*/;
+            resourceInputs["transId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ContainerObject.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ContainerObject.__pulumiType, name, resourceInputs, opts);
     }
 }
 

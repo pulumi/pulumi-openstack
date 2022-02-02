@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.SharedFileSystem
 {
@@ -37,7 +36,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAvailbilityZonesResult> InvokeAsync(GetAvailbilityZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAvailbilityZonesResult>("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", args ?? new GetAvailbilityZonesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAvailbilityZonesResult>("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", args ?? new GetAvailbilityZonesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get a list of Shared File System availability zones
@@ -64,7 +63,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAvailbilityZonesResult> Invoke(GetAvailbilityZonesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAvailbilityZonesResult>("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", args ?? new GetAvailbilityZonesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAvailbilityZonesResult>("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", args ?? new GetAvailbilityZonesInvokeArgs(), options.WithDefaults());
     }
 
 

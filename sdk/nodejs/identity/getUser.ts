@@ -24,9 +24,7 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:identity/getUser:getUser", {
         "domainId": args.domainId,
         "enabled": args.enabled,

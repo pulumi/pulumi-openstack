@@ -85,25 +85,23 @@ export class GroupV3 extends pulumi.CustomResource {
      */
     constructor(name: string, args?: GroupV3Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupV3Args | GroupV3State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupV3State | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["domainId"] = state ? state.domainId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["domainId"] = state ? state.domainId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as GroupV3Args | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["domainId"] = args ? args.domainId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["domainId"] = args ? args.domainId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(GroupV3.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(GroupV3.__pulumiType, name, resourceInputs, opts);
     }
 }
 

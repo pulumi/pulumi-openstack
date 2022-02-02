@@ -220,7 +220,7 @@ type RouterRouteInput interface {
 }
 
 func (*RouterRoute) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouterRoute)(nil))
+	return reflect.TypeOf((**RouterRoute)(nil)).Elem()
 }
 
 func (i *RouterRoute) ToRouterRouteOutput() RouterRouteOutput {
@@ -229,35 +229,6 @@ func (i *RouterRoute) ToRouterRouteOutput() RouterRouteOutput {
 
 func (i *RouterRoute) ToRouterRouteOutputWithContext(ctx context.Context) RouterRouteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouterRouteOutput)
-}
-
-func (i *RouterRoute) ToRouterRoutePtrOutput() RouterRoutePtrOutput {
-	return i.ToRouterRoutePtrOutputWithContext(context.Background())
-}
-
-func (i *RouterRoute) ToRouterRoutePtrOutputWithContext(ctx context.Context) RouterRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouterRoutePtrOutput)
-}
-
-type RouterRoutePtrInput interface {
-	pulumi.Input
-
-	ToRouterRoutePtrOutput() RouterRoutePtrOutput
-	ToRouterRoutePtrOutputWithContext(ctx context.Context) RouterRoutePtrOutput
-}
-
-type routerRoutePtrType RouterRouteArgs
-
-func (*routerRoutePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RouterRoute)(nil))
-}
-
-func (i *routerRoutePtrType) ToRouterRoutePtrOutput() RouterRoutePtrOutput {
-	return i.ToRouterRoutePtrOutputWithContext(context.Background())
-}
-
-func (i *routerRoutePtrType) ToRouterRoutePtrOutputWithContext(ctx context.Context) RouterRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouterRoutePtrOutput)
 }
 
 // RouterRouteArrayInput is an input type that accepts RouterRouteArray and RouterRouteArrayOutput values.
@@ -313,7 +284,7 @@ func (i RouterRouteMap) ToRouterRouteMapOutputWithContext(ctx context.Context) R
 type RouterRouteOutput struct{ *pulumi.OutputState }
 
 func (RouterRouteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouterRoute)(nil))
+	return reflect.TypeOf((**RouterRoute)(nil)).Elem()
 }
 
 func (o RouterRouteOutput) ToRouterRouteOutput() RouterRouteOutput {
@@ -324,44 +295,10 @@ func (o RouterRouteOutput) ToRouterRouteOutputWithContext(ctx context.Context) R
 	return o
 }
 
-func (o RouterRouteOutput) ToRouterRoutePtrOutput() RouterRoutePtrOutput {
-	return o.ToRouterRoutePtrOutputWithContext(context.Background())
-}
-
-func (o RouterRouteOutput) ToRouterRoutePtrOutputWithContext(ctx context.Context) RouterRoutePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouterRoute) *RouterRoute {
-		return &v
-	}).(RouterRoutePtrOutput)
-}
-
-type RouterRoutePtrOutput struct{ *pulumi.OutputState }
-
-func (RouterRoutePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RouterRoute)(nil))
-}
-
-func (o RouterRoutePtrOutput) ToRouterRoutePtrOutput() RouterRoutePtrOutput {
-	return o
-}
-
-func (o RouterRoutePtrOutput) ToRouterRoutePtrOutputWithContext(ctx context.Context) RouterRoutePtrOutput {
-	return o
-}
-
-func (o RouterRoutePtrOutput) Elem() RouterRouteOutput {
-	return o.ApplyT(func(v *RouterRoute) RouterRoute {
-		if v != nil {
-			return *v
-		}
-		var ret RouterRoute
-		return ret
-	}).(RouterRouteOutput)
-}
-
 type RouterRouteArrayOutput struct{ *pulumi.OutputState }
 
 func (RouterRouteArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RouterRoute)(nil))
+	return reflect.TypeOf((*[]*RouterRoute)(nil)).Elem()
 }
 
 func (o RouterRouteArrayOutput) ToRouterRouteArrayOutput() RouterRouteArrayOutput {
@@ -373,15 +310,15 @@ func (o RouterRouteArrayOutput) ToRouterRouteArrayOutputWithContext(ctx context.
 }
 
 func (o RouterRouteArrayOutput) Index(i pulumi.IntInput) RouterRouteOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterRoute {
-		return vs[0].([]RouterRoute)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RouterRoute {
+		return vs[0].([]*RouterRoute)[vs[1].(int)]
 	}).(RouterRouteOutput)
 }
 
 type RouterRouteMapOutput struct{ *pulumi.OutputState }
 
 func (RouterRouteMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]RouterRoute)(nil))
+	return reflect.TypeOf((*map[string]*RouterRoute)(nil)).Elem()
 }
 
 func (o RouterRouteMapOutput) ToRouterRouteMapOutput() RouterRouteMapOutput {
@@ -393,18 +330,16 @@ func (o RouterRouteMapOutput) ToRouterRouteMapOutputWithContext(ctx context.Cont
 }
 
 func (o RouterRouteMapOutput) MapIndex(k pulumi.StringInput) RouterRouteOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RouterRoute {
-		return vs[0].(map[string]RouterRoute)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *RouterRoute {
+		return vs[0].(map[string]*RouterRoute)[vs[1].(string)]
 	}).(RouterRouteOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterRouteInput)(nil)).Elem(), &RouterRoute{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RouterRoutePtrInput)(nil)).Elem(), &RouterRoute{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterRouteArrayInput)(nil)).Elem(), RouterRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterRouteMapInput)(nil)).Elem(), RouterRouteMap{})
 	pulumi.RegisterOutputType(RouterRouteOutput{})
-	pulumi.RegisterOutputType(RouterRoutePtrOutput{})
 	pulumi.RegisterOutputType(RouterRouteArrayOutput{})
 	pulumi.RegisterOutputType(RouterRouteMapOutput{})
 }

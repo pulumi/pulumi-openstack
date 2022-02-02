@@ -198,30 +198,28 @@ export class InterfaceAttach extends pulumi.CustomResource {
      */
     constructor(name: string, args: InterfaceAttachArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InterfaceAttachArgs | InterfaceAttachState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InterfaceAttachState | undefined;
-            inputs["fixedIp"] = state ? state.fixedIp : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["networkId"] = state ? state.networkId : undefined;
-            inputs["portId"] = state ? state.portId : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["fixedIp"] = state ? state.fixedIp : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
+            resourceInputs["portId"] = state ? state.portId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as InterfaceAttachArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["fixedIp"] = args ? args.fixedIp : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["networkId"] = args ? args.networkId : undefined;
-            inputs["portId"] = args ? args.portId : undefined;
-            inputs["region"] = args ? args.region : undefined;
+            resourceInputs["fixedIp"] = args ? args.fixedIp : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["portId"] = args ? args.portId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(InterfaceAttach.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(InterfaceAttach.__pulumiType, name, resourceInputs, opts);
     }
 }
 

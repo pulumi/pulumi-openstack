@@ -24,9 +24,7 @@ export function getFloatingIp(args?: GetFloatingIpArgs, opts?: pulumi.InvokeOpti
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:networking/getFloatingIp:getFloatingIp", {
         "address": args.address,
         "description": args.description,

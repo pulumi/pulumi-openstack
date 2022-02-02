@@ -108,14 +108,14 @@ export class RouterRoute extends pulumi.CustomResource {
      */
     constructor(name: string, args: RouterRouteArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouterRouteArgs | RouterRouteState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterRouteState | undefined;
-            inputs["destinationCidr"] = state ? state.destinationCidr : undefined;
-            inputs["nextHop"] = state ? state.nextHop : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["routerId"] = state ? state.routerId : undefined;
+            resourceInputs["destinationCidr"] = state ? state.destinationCidr : undefined;
+            resourceInputs["nextHop"] = state ? state.nextHop : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["routerId"] = state ? state.routerId : undefined;
         } else {
             const args = argsOrState as RouterRouteArgs | undefined;
             if ((!args || args.destinationCidr === undefined) && !opts.urn) {
@@ -127,15 +127,13 @@ export class RouterRoute extends pulumi.CustomResource {
             if ((!args || args.routerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routerId'");
             }
-            inputs["destinationCidr"] = args ? args.destinationCidr : undefined;
-            inputs["nextHop"] = args ? args.nextHop : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["routerId"] = args ? args.routerId : undefined;
+            resourceInputs["destinationCidr"] = args ? args.destinationCidr : undefined;
+            resourceInputs["nextHop"] = args ? args.nextHop : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["routerId"] = args ? args.routerId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RouterRoute.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RouterRoute.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -124,42 +124,40 @@ export class VolumeV1 extends pulumi.CustomResource {
      */
     constructor(name: string, args: VolumeV1Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VolumeV1Args | VolumeV1State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeV1State | undefined;
-            inputs["attachments"] = state ? state.attachments : undefined;
-            inputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["imageId"] = state ? state.imageId : undefined;
-            inputs["metadata"] = state ? state.metadata : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["size"] = state ? state.size : undefined;
-            inputs["snapshotId"] = state ? state.snapshotId : undefined;
-            inputs["sourceVolId"] = state ? state.sourceVolId : undefined;
-            inputs["volumeType"] = state ? state.volumeType : undefined;
+            resourceInputs["attachments"] = state ? state.attachments : undefined;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
+            resourceInputs["sourceVolId"] = state ? state.sourceVolId : undefined;
+            resourceInputs["volumeType"] = state ? state.volumeType : undefined;
         } else {
             const args = argsOrState as VolumeV1Args | undefined;
             if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            inputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["imageId"] = args ? args.imageId : undefined;
-            inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["size"] = args ? args.size : undefined;
-            inputs["snapshotId"] = args ? args.snapshotId : undefined;
-            inputs["sourceVolId"] = args ? args.sourceVolId : undefined;
-            inputs["volumeType"] = args ? args.volumeType : undefined;
-            inputs["attachments"] = undefined /*out*/;
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
+            resourceInputs["sourceVolId"] = args ? args.sourceVolId : undefined;
+            resourceInputs["volumeType"] = args ? args.volumeType : undefined;
+            resourceInputs["attachments"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(VolumeV1.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(VolumeV1.__pulumiType, name, resourceInputs, opts);
     }
 }
 

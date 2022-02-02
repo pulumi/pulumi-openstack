@@ -96,15 +96,15 @@ export class QosBandwidthLimitRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: QosBandwidthLimitRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QosBandwidthLimitRuleArgs | QosBandwidthLimitRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QosBandwidthLimitRuleState | undefined;
-            inputs["direction"] = state ? state.direction : undefined;
-            inputs["maxBurstKbps"] = state ? state.maxBurstKbps : undefined;
-            inputs["maxKbps"] = state ? state.maxKbps : undefined;
-            inputs["qosPolicyId"] = state ? state.qosPolicyId : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["direction"] = state ? state.direction : undefined;
+            resourceInputs["maxBurstKbps"] = state ? state.maxBurstKbps : undefined;
+            resourceInputs["maxKbps"] = state ? state.maxKbps : undefined;
+            resourceInputs["qosPolicyId"] = state ? state.qosPolicyId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as QosBandwidthLimitRuleArgs | undefined;
             if ((!args || args.maxKbps === undefined) && !opts.urn) {
@@ -113,16 +113,14 @@ export class QosBandwidthLimitRule extends pulumi.CustomResource {
             if ((!args || args.qosPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'qosPolicyId'");
             }
-            inputs["direction"] = args ? args.direction : undefined;
-            inputs["maxBurstKbps"] = args ? args.maxBurstKbps : undefined;
-            inputs["maxKbps"] = args ? args.maxKbps : undefined;
-            inputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
-            inputs["region"] = args ? args.region : undefined;
+            resourceInputs["direction"] = args ? args.direction : undefined;
+            resourceInputs["maxBurstKbps"] = args ? args.maxBurstKbps : undefined;
+            resourceInputs["maxKbps"] = args ? args.maxKbps : undefined;
+            resourceInputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(QosBandwidthLimitRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(QosBandwidthLimitRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

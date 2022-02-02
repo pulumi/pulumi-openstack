@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.OpenStack.BlockStorage
 {
@@ -40,7 +39,7 @@ namespace Pulumi.OpenStack.BlockStorage
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSnapshotV3Result> InvokeAsync(GetSnapshotV3Args? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotV3Result>("openstack:blockstorage/getSnapshotV3:getSnapshotV3", args ?? new GetSnapshotV3Args(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotV3Result>("openstack:blockstorage/getSnapshotV3:getSnapshotV3", args ?? new GetSnapshotV3Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about an existing snapshot.
@@ -70,7 +69,7 @@ namespace Pulumi.OpenStack.BlockStorage
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSnapshotV3Result> Invoke(GetSnapshotV3InvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSnapshotV3Result>("openstack:blockstorage/getSnapshotV3:getSnapshotV3", args ?? new GetSnapshotV3InvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetSnapshotV3Result>("openstack:blockstorage/getSnapshotV3:getSnapshotV3", args ?? new GetSnapshotV3InvokeArgs(), options.WithDefaults());
     }
 
 

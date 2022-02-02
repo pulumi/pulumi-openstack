@@ -25,9 +25,7 @@ export function getSnapshotV2(args?: GetSnapshotV2Args, opts?: pulumi.InvokeOpti
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:blockstorage/getSnapshotV2:getSnapshotV2", {
         "mostRecent": args.mostRecent,
         "name": args.name,

@@ -124,15 +124,15 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
      */
     constructor(name: string, args: FloatingIpAssociateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FloatingIpAssociateArgs | FloatingIpAssociateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FloatingIpAssociateState | undefined;
-            inputs["fixedIp"] = state ? state.fixedIp : undefined;
-            inputs["floatingIp"] = state ? state.floatingIp : undefined;
-            inputs["instanceId"] = state ? state.instanceId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["waitUntilAssociated"] = state ? state.waitUntilAssociated : undefined;
+            resourceInputs["fixedIp"] = state ? state.fixedIp : undefined;
+            resourceInputs["floatingIp"] = state ? state.floatingIp : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["waitUntilAssociated"] = state ? state.waitUntilAssociated : undefined;
         } else {
             const args = argsOrState as FloatingIpAssociateArgs | undefined;
             if ((!args || args.floatingIp === undefined) && !opts.urn) {
@@ -141,16 +141,14 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            inputs["fixedIp"] = args ? args.fixedIp : undefined;
-            inputs["floatingIp"] = args ? args.floatingIp : undefined;
-            inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["waitUntilAssociated"] = args ? args.waitUntilAssociated : undefined;
+            resourceInputs["fixedIp"] = args ? args.fixedIp : undefined;
+            resourceInputs["floatingIp"] = args ? args.floatingIp : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["waitUntilAssociated"] = args ? args.waitUntilAssociated : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FloatingIpAssociate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FloatingIpAssociate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -164,49 +164,47 @@ export class Router extends pulumi.CustomResource {
      */
     constructor(name: string, args?: RouterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouterArgs | RouterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterState | undefined;
-            inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            inputs["allTags"] = state ? state.allTags : undefined;
-            inputs["availabilityZoneHints"] = state ? state.availabilityZoneHints : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["distributed"] = state ? state.distributed : undefined;
-            inputs["enableSnat"] = state ? state.enableSnat : undefined;
-            inputs["externalFixedIps"] = state ? state.externalFixedIps : undefined;
-            inputs["externalGateway"] = state ? state.externalGateway : undefined;
-            inputs["externalNetworkId"] = state ? state.externalNetworkId : undefined;
-            inputs["externalSubnetIds"] = state ? state.externalSubnetIds : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
-            inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
-            inputs["vendorOptions"] = state ? state.vendorOptions : undefined;
+            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            resourceInputs["allTags"] = state ? state.allTags : undefined;
+            resourceInputs["availabilityZoneHints"] = state ? state.availabilityZoneHints : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["distributed"] = state ? state.distributed : undefined;
+            resourceInputs["enableSnat"] = state ? state.enableSnat : undefined;
+            resourceInputs["externalFixedIps"] = state ? state.externalFixedIps : undefined;
+            resourceInputs["externalGateway"] = state ? state.externalGateway : undefined;
+            resourceInputs["externalNetworkId"] = state ? state.externalNetworkId : undefined;
+            resourceInputs["externalSubnetIds"] = state ? state.externalSubnetIds : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["vendorOptions"] = state ? state.vendorOptions : undefined;
         } else {
             const args = argsOrState as RouterArgs | undefined;
-            inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            inputs["availabilityZoneHints"] = args ? args.availabilityZoneHints : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["distributed"] = args ? args.distributed : undefined;
-            inputs["enableSnat"] = args ? args.enableSnat : undefined;
-            inputs["externalFixedIps"] = args ? args.externalFixedIps : undefined;
-            inputs["externalGateway"] = args ? args.externalGateway : undefined;
-            inputs["externalNetworkId"] = args ? args.externalNetworkId : undefined;
-            inputs["externalSubnetIds"] = args ? args.externalSubnetIds : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
-            inputs["vendorOptions"] = args ? args.vendorOptions : undefined;
-            inputs["allTags"] = undefined /*out*/;
+            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            resourceInputs["availabilityZoneHints"] = args ? args.availabilityZoneHints : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["distributed"] = args ? args.distributed : undefined;
+            resourceInputs["enableSnat"] = args ? args.enableSnat : undefined;
+            resourceInputs["externalFixedIps"] = args ? args.externalFixedIps : undefined;
+            resourceInputs["externalGateway"] = args ? args.externalGateway : undefined;
+            resourceInputs["externalNetworkId"] = args ? args.externalNetworkId : undefined;
+            resourceInputs["externalSubnetIds"] = args ? args.externalSubnetIds : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["vendorOptions"] = args ? args.vendorOptions : undefined;
+            resourceInputs["allTags"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Router.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Router.__pulumiType, name, resourceInputs, opts);
     }
 }
 

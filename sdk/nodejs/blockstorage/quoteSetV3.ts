@@ -137,40 +137,38 @@ export class QuoteSetV3 extends pulumi.CustomResource {
      */
     constructor(name: string, args: QuoteSetV3Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QuoteSetV3Args | QuoteSetV3State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QuoteSetV3State | undefined;
-            inputs["backupGigabytes"] = state ? state.backupGigabytes : undefined;
-            inputs["backups"] = state ? state.backups : undefined;
-            inputs["gigabytes"] = state ? state.gigabytes : undefined;
-            inputs["groups"] = state ? state.groups : undefined;
-            inputs["perVolumeGigabytes"] = state ? state.perVolumeGigabytes : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["snapshots"] = state ? state.snapshots : undefined;
-            inputs["volumeTypeQuota"] = state ? state.volumeTypeQuota : undefined;
-            inputs["volumes"] = state ? state.volumes : undefined;
+            resourceInputs["backupGigabytes"] = state ? state.backupGigabytes : undefined;
+            resourceInputs["backups"] = state ? state.backups : undefined;
+            resourceInputs["gigabytes"] = state ? state.gigabytes : undefined;
+            resourceInputs["groups"] = state ? state.groups : undefined;
+            resourceInputs["perVolumeGigabytes"] = state ? state.perVolumeGigabytes : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["snapshots"] = state ? state.snapshots : undefined;
+            resourceInputs["volumeTypeQuota"] = state ? state.volumeTypeQuota : undefined;
+            resourceInputs["volumes"] = state ? state.volumes : undefined;
         } else {
             const args = argsOrState as QuoteSetV3Args | undefined;
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            inputs["backupGigabytes"] = args ? args.backupGigabytes : undefined;
-            inputs["backups"] = args ? args.backups : undefined;
-            inputs["gigabytes"] = args ? args.gigabytes : undefined;
-            inputs["groups"] = args ? args.groups : undefined;
-            inputs["perVolumeGigabytes"] = args ? args.perVolumeGigabytes : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["snapshots"] = args ? args.snapshots : undefined;
-            inputs["volumeTypeQuota"] = args ? args.volumeTypeQuota : undefined;
-            inputs["volumes"] = args ? args.volumes : undefined;
+            resourceInputs["backupGigabytes"] = args ? args.backupGigabytes : undefined;
+            resourceInputs["backups"] = args ? args.backups : undefined;
+            resourceInputs["gigabytes"] = args ? args.gigabytes : undefined;
+            resourceInputs["groups"] = args ? args.groups : undefined;
+            resourceInputs["perVolumeGigabytes"] = args ? args.perVolumeGigabytes : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["snapshots"] = args ? args.snapshots : undefined;
+            resourceInputs["volumeTypeQuota"] = args ? args.volumeTypeQuota : undefined;
+            resourceInputs["volumes"] = args ? args.volumes : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(QuoteSetV3.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(QuoteSetV3.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -23,9 +23,7 @@ export function getKeypair(args: GetKeypairArgs, opts?: pulumi.InvokeOptions): P
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:compute/getKeypair:getKeypair", {
         "name": args.name,
         "region": args.region,

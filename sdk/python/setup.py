@@ -55,6 +55,7 @@ setup(name='pulumi_openstack',
       package_data={
           'pulumi_openstack': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

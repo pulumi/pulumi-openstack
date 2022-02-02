@@ -132,38 +132,36 @@ export class Quota extends pulumi.CustomResource {
      */
     constructor(name: string, args: QuotaArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QuotaArgs | QuotaState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QuotaState | undefined;
-            inputs["healthMonitor"] = state ? state.healthMonitor : undefined;
-            inputs["l7Policy"] = state ? state.l7Policy : undefined;
-            inputs["l7Rule"] = state ? state.l7Rule : undefined;
-            inputs["listener"] = state ? state.listener : undefined;
-            inputs["loadbalancer"] = state ? state.loadbalancer : undefined;
-            inputs["member"] = state ? state.member : undefined;
-            inputs["pool"] = state ? state.pool : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["healthMonitor"] = state ? state.healthMonitor : undefined;
+            resourceInputs["l7Policy"] = state ? state.l7Policy : undefined;
+            resourceInputs["l7Rule"] = state ? state.l7Rule : undefined;
+            resourceInputs["listener"] = state ? state.listener : undefined;
+            resourceInputs["loadbalancer"] = state ? state.loadbalancer : undefined;
+            resourceInputs["member"] = state ? state.member : undefined;
+            resourceInputs["pool"] = state ? state.pool : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as QuotaArgs | undefined;
             if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            inputs["healthMonitor"] = args ? args.healthMonitor : undefined;
-            inputs["l7Policy"] = args ? args.l7Policy : undefined;
-            inputs["l7Rule"] = args ? args.l7Rule : undefined;
-            inputs["listener"] = args ? args.listener : undefined;
-            inputs["loadbalancer"] = args ? args.loadbalancer : undefined;
-            inputs["member"] = args ? args.member : undefined;
-            inputs["pool"] = args ? args.pool : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["region"] = args ? args.region : undefined;
+            resourceInputs["healthMonitor"] = args ? args.healthMonitor : undefined;
+            resourceInputs["l7Policy"] = args ? args.l7Policy : undefined;
+            resourceInputs["l7Rule"] = args ? args.l7Rule : undefined;
+            resourceInputs["listener"] = args ? args.listener : undefined;
+            resourceInputs["loadbalancer"] = args ? args.loadbalancer : undefined;
+            resourceInputs["member"] = args ? args.member : undefined;
+            resourceInputs["pool"] = args ? args.pool : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Quota.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Quota.__pulumiType, name, resourceInputs, opts);
     }
 }
 

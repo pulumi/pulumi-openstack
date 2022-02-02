@@ -104,31 +104,29 @@ export class EndpointGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args?: EndpointGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EndpointGroupArgs | EndpointGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointGroupState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["endpoints"] = state ? state.endpoints : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["endpoints"] = state ? state.endpoints : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as EndpointGroupArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["endpoints"] = args ? args.endpoints : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["endpoints"] = args ? args.endpoints : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EndpointGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EndpointGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

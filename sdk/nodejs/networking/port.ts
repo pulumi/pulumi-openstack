@@ -247,70 +247,68 @@ export class Port extends pulumi.CustomResource {
      */
     constructor(name: string, args: PortArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PortArgs | PortState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PortState | undefined;
-            inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            inputs["allFixedIps"] = state ? state.allFixedIps : undefined;
-            inputs["allSecurityGroupIds"] = state ? state.allSecurityGroupIds : undefined;
-            inputs["allTags"] = state ? state.allTags : undefined;
-            inputs["allowedAddressPairs"] = state ? state.allowedAddressPairs : undefined;
-            inputs["binding"] = state ? state.binding : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["deviceId"] = state ? state.deviceId : undefined;
-            inputs["deviceOwner"] = state ? state.deviceOwner : undefined;
-            inputs["dnsAssignments"] = state ? state.dnsAssignments : undefined;
-            inputs["dnsName"] = state ? state.dnsName : undefined;
-            inputs["extraDhcpOptions"] = state ? state.extraDhcpOptions : undefined;
-            inputs["fixedIps"] = state ? state.fixedIps : undefined;
-            inputs["macAddress"] = state ? state.macAddress : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networkId"] = state ? state.networkId : undefined;
-            inputs["noFixedIp"] = state ? state.noFixedIp : undefined;
-            inputs["noSecurityGroups"] = state ? state.noSecurityGroups : undefined;
-            inputs["portSecurityEnabled"] = state ? state.portSecurityEnabled : undefined;
-            inputs["qosPolicyId"] = state ? state.qosPolicyId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
-            inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            resourceInputs["allFixedIps"] = state ? state.allFixedIps : undefined;
+            resourceInputs["allSecurityGroupIds"] = state ? state.allSecurityGroupIds : undefined;
+            resourceInputs["allTags"] = state ? state.allTags : undefined;
+            resourceInputs["allowedAddressPairs"] = state ? state.allowedAddressPairs : undefined;
+            resourceInputs["binding"] = state ? state.binding : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["deviceId"] = state ? state.deviceId : undefined;
+            resourceInputs["deviceOwner"] = state ? state.deviceOwner : undefined;
+            resourceInputs["dnsAssignments"] = state ? state.dnsAssignments : undefined;
+            resourceInputs["dnsName"] = state ? state.dnsName : undefined;
+            resourceInputs["extraDhcpOptions"] = state ? state.extraDhcpOptions : undefined;
+            resourceInputs["fixedIps"] = state ? state.fixedIps : undefined;
+            resourceInputs["macAddress"] = state ? state.macAddress : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
+            resourceInputs["noFixedIp"] = state ? state.noFixedIp : undefined;
+            resourceInputs["noSecurityGroups"] = state ? state.noSecurityGroups : undefined;
+            resourceInputs["portSecurityEnabled"] = state ? state.portSecurityEnabled : undefined;
+            resourceInputs["qosPolicyId"] = state ? state.qosPolicyId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as PortArgs | undefined;
             if ((!args || args.networkId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
-            inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            inputs["allowedAddressPairs"] = args ? args.allowedAddressPairs : undefined;
-            inputs["binding"] = args ? args.binding : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["deviceId"] = args ? args.deviceId : undefined;
-            inputs["deviceOwner"] = args ? args.deviceOwner : undefined;
-            inputs["dnsName"] = args ? args.dnsName : undefined;
-            inputs["extraDhcpOptions"] = args ? args.extraDhcpOptions : undefined;
-            inputs["fixedIps"] = args ? args.fixedIps : undefined;
-            inputs["macAddress"] = args ? args.macAddress : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networkId"] = args ? args.networkId : undefined;
-            inputs["noFixedIp"] = args ? args.noFixedIp : undefined;
-            inputs["noSecurityGroups"] = args ? args.noSecurityGroups : undefined;
-            inputs["portSecurityEnabled"] = args ? args.portSecurityEnabled : undefined;
-            inputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
-            inputs["allFixedIps"] = undefined /*out*/;
-            inputs["allSecurityGroupIds"] = undefined /*out*/;
-            inputs["allTags"] = undefined /*out*/;
-            inputs["dnsAssignments"] = undefined /*out*/;
+            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            resourceInputs["allowedAddressPairs"] = args ? args.allowedAddressPairs : undefined;
+            resourceInputs["binding"] = args ? args.binding : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["deviceId"] = args ? args.deviceId : undefined;
+            resourceInputs["deviceOwner"] = args ? args.deviceOwner : undefined;
+            resourceInputs["dnsName"] = args ? args.dnsName : undefined;
+            resourceInputs["extraDhcpOptions"] = args ? args.extraDhcpOptions : undefined;
+            resourceInputs["fixedIps"] = args ? args.fixedIps : undefined;
+            resourceInputs["macAddress"] = args ? args.macAddress : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["noFixedIp"] = args ? args.noFixedIp : undefined;
+            resourceInputs["noSecurityGroups"] = args ? args.noSecurityGroups : undefined;
+            resourceInputs["portSecurityEnabled"] = args ? args.portSecurityEnabled : undefined;
+            resourceInputs["qosPolicyId"] = args ? args.qosPolicyId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["allFixedIps"] = undefined /*out*/;
+            resourceInputs["allSecurityGroupIds"] = undefined /*out*/;
+            resourceInputs["allTags"] = undefined /*out*/;
+            resourceInputs["dnsAssignments"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Port.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Port.__pulumiType, name, resourceInputs, opts);
     }
 }
 

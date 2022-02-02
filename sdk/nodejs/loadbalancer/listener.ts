@@ -168,28 +168,28 @@ export class Listener extends pulumi.CustomResource {
      */
     constructor(name: string, args: ListenerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ListenerArgs | ListenerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListenerState | undefined;
-            inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            inputs["allowedCidrs"] = state ? state.allowedCidrs : undefined;
-            inputs["connectionLimit"] = state ? state.connectionLimit : undefined;
-            inputs["defaultPoolId"] = state ? state.defaultPoolId : undefined;
-            inputs["defaultTlsContainerRef"] = state ? state.defaultTlsContainerRef : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["insertHeaders"] = state ? state.insertHeaders : undefined;
-            inputs["loadbalancerId"] = state ? state.loadbalancerId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["protocolPort"] = state ? state.protocolPort : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["sniContainerRefs"] = state ? state.sniContainerRefs : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
-            inputs["timeoutClientData"] = state ? state.timeoutClientData : undefined;
-            inputs["timeoutMemberConnect"] = state ? state.timeoutMemberConnect : undefined;
-            inputs["timeoutMemberData"] = state ? state.timeoutMemberData : undefined;
-            inputs["timeoutTcpInspect"] = state ? state.timeoutTcpInspect : undefined;
+            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            resourceInputs["allowedCidrs"] = state ? state.allowedCidrs : undefined;
+            resourceInputs["connectionLimit"] = state ? state.connectionLimit : undefined;
+            resourceInputs["defaultPoolId"] = state ? state.defaultPoolId : undefined;
+            resourceInputs["defaultTlsContainerRef"] = state ? state.defaultTlsContainerRef : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["insertHeaders"] = state ? state.insertHeaders : undefined;
+            resourceInputs["loadbalancerId"] = state ? state.loadbalancerId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["protocolPort"] = state ? state.protocolPort : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["sniContainerRefs"] = state ? state.sniContainerRefs : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["timeoutClientData"] = state ? state.timeoutClientData : undefined;
+            resourceInputs["timeoutMemberConnect"] = state ? state.timeoutMemberConnect : undefined;
+            resourceInputs["timeoutMemberData"] = state ? state.timeoutMemberData : undefined;
+            resourceInputs["timeoutTcpInspect"] = state ? state.timeoutTcpInspect : undefined;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
             if ((!args || args.loadbalancerId === undefined) && !opts.urn) {
@@ -201,29 +201,27 @@ export class Listener extends pulumi.CustomResource {
             if ((!args || args.protocolPort === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocolPort'");
             }
-            inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            inputs["allowedCidrs"] = args ? args.allowedCidrs : undefined;
-            inputs["connectionLimit"] = args ? args.connectionLimit : undefined;
-            inputs["defaultPoolId"] = args ? args.defaultPoolId : undefined;
-            inputs["defaultTlsContainerRef"] = args ? args.defaultTlsContainerRef : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["insertHeaders"] = args ? args.insertHeaders : undefined;
-            inputs["loadbalancerId"] = args ? args.loadbalancerId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["protocolPort"] = args ? args.protocolPort : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["sniContainerRefs"] = args ? args.sniContainerRefs : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["timeoutClientData"] = args ? args.timeoutClientData : undefined;
-            inputs["timeoutMemberConnect"] = args ? args.timeoutMemberConnect : undefined;
-            inputs["timeoutMemberData"] = args ? args.timeoutMemberData : undefined;
-            inputs["timeoutTcpInspect"] = args ? args.timeoutTcpInspect : undefined;
+            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            resourceInputs["allowedCidrs"] = args ? args.allowedCidrs : undefined;
+            resourceInputs["connectionLimit"] = args ? args.connectionLimit : undefined;
+            resourceInputs["defaultPoolId"] = args ? args.defaultPoolId : undefined;
+            resourceInputs["defaultTlsContainerRef"] = args ? args.defaultTlsContainerRef : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["insertHeaders"] = args ? args.insertHeaders : undefined;
+            resourceInputs["loadbalancerId"] = args ? args.loadbalancerId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["protocolPort"] = args ? args.protocolPort : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["sniContainerRefs"] = args ? args.sniContainerRefs : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["timeoutClientData"] = args ? args.timeoutClientData : undefined;
+            resourceInputs["timeoutMemberConnect"] = args ? args.timeoutMemberConnect : undefined;
+            resourceInputs["timeoutMemberData"] = args ? args.timeoutMemberData : undefined;
+            resourceInputs["timeoutTcpInspect"] = args ? args.timeoutTcpInspect : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Listener.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Listener.__pulumiType, name, resourceInputs, opts);
     }
 }
 

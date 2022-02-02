@@ -114,19 +114,19 @@ export class Member extends pulumi.CustomResource {
      */
     constructor(name: string, args: MemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MemberArgs | MemberState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MemberState | undefined;
-            inputs["address"] = state ? state.address : undefined;
-            inputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["poolId"] = state ? state.poolId : undefined;
-            inputs["protocolPort"] = state ? state.protocolPort : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["subnetId"] = state ? state.subnetId : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
-            inputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["poolId"] = state ? state.poolId : undefined;
+            resourceInputs["protocolPort"] = state ? state.protocolPort : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as MemberArgs | undefined;
             if ((!args || args.address === undefined) && !opts.urn) {
@@ -138,20 +138,18 @@ export class Member extends pulumi.CustomResource {
             if ((!args || args.protocolPort === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocolPort'");
             }
-            inputs["address"] = args ? args.address : undefined;
-            inputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["poolId"] = args ? args.poolId : undefined;
-            inputs["protocolPort"] = args ? args.protocolPort : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["subnetId"] = args ? args.subnetId : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["address"] = args ? args.address : undefined;
+            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["poolId"] = args ? args.poolId : undefined;
+            resourceInputs["protocolPort"] = args ? args.protocolPort : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["weight"] = args ? args.weight : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Member.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Member.__pulumiType, name, resourceInputs, opts);
     }
 }
 

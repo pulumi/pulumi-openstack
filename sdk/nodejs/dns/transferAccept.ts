@@ -102,15 +102,15 @@ export class TransferAccept extends pulumi.CustomResource {
      */
     constructor(name: string, args: TransferAcceptArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TransferAcceptArgs | TransferAcceptState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TransferAcceptState | undefined;
-            inputs["disableStatusCheck"] = state ? state.disableStatusCheck : undefined;
-            inputs["key"] = state ? state.key : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["valueSpecs"] = state ? state.valueSpecs : undefined;
-            inputs["zoneTransferRequestId"] = state ? state.zoneTransferRequestId : undefined;
+            resourceInputs["disableStatusCheck"] = state ? state.disableStatusCheck : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
+            resourceInputs["zoneTransferRequestId"] = state ? state.zoneTransferRequestId : undefined;
         } else {
             const args = argsOrState as TransferAcceptArgs | undefined;
             if ((!args || args.key === undefined) && !opts.urn) {
@@ -119,16 +119,14 @@ export class TransferAccept extends pulumi.CustomResource {
             if ((!args || args.zoneTransferRequestId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneTransferRequestId'");
             }
-            inputs["disableStatusCheck"] = args ? args.disableStatusCheck : undefined;
-            inputs["key"] = args ? args.key : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["valueSpecs"] = args ? args.valueSpecs : undefined;
-            inputs["zoneTransferRequestId"] = args ? args.zoneTransferRequestId : undefined;
+            resourceInputs["disableStatusCheck"] = args ? args.disableStatusCheck : undefined;
+            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
+            resourceInputs["zoneTransferRequestId"] = args ? args.zoneTransferRequestId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TransferAccept.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TransferAccept.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -79,29 +79,27 @@ export class Ec2CredentialV3 extends pulumi.CustomResource {
      */
     constructor(name: string, args?: Ec2CredentialV3Args, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: Ec2CredentialV3Args | Ec2CredentialV3State, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Ec2CredentialV3State | undefined;
-            inputs["access"] = state ? state.access : undefined;
-            inputs["projectId"] = state ? state.projectId : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["secret"] = state ? state.secret : undefined;
-            inputs["trustId"] = state ? state.trustId : undefined;
-            inputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["access"] = state ? state.access : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["trustId"] = state ? state.trustId : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as Ec2CredentialV3Args | undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["userId"] = args ? args.userId : undefined;
-            inputs["access"] = undefined /*out*/;
-            inputs["secret"] = undefined /*out*/;
-            inputs["trustId"] = undefined /*out*/;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["access"] = undefined /*out*/;
+            resourceInputs["secret"] = undefined /*out*/;
+            resourceInputs["trustId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Ec2CredentialV3.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Ec2CredentialV3.__pulumiType, name, resourceInputs, opts);
     }
 }
 

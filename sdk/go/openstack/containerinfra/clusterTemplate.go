@@ -53,126 +53,6 @@ import (
 // 	})
 // }
 // ```
-// ## Argument reference
-//
-// The following arguments are supported:
-//
-// * `region` - (Optional) The region in which to obtain the V1 Container Infra
-//   client. A Container Infra client is needed to create a cluster template. If
-//   omitted,the `region` argument of the provider is used. Changing this
-//   creates a new cluster template.
-//
-// * `name` - (Required) The name of the cluster template. Changing this updates
-//   the name of the existing cluster template.
-//
-// * `projectId` - (Optional) The project of the cluster template. Required if
-//   admin wants to create a cluster template in another project. Changing this
-//   creates a new cluster template.
-//
-// * `userId` - (Optional) The user of the cluster template. Required if admin
-//   wants to create a cluster template for another user. Changing this creates
-//   a new cluster template.
-//
-// * `apiserverPort` - (Optional) The API server port for the Container
-//   Orchestration Engine for this cluster template. Changing this updates the
-//   API server port of the existing cluster template.
-//
-// * `coe` - (Required) The Container Orchestration Engine for this cluster
-//   template. Changing this updates the engine of the existing cluster
-//   template.
-//
-// * `clusterDistro` - (Optional) The distro for the cluster (fedora-atomic,
-//   coreos, etc.). Changing this updates the cluster distro of the existing
-//   cluster template.
-//
-// * `dnsNameserver` - (Optional) Address of the DNS nameserver that is used in
-//   nodes of the cluster. Changing this updates the DNS nameserver of the
-//   existing cluster template.
-//
-// * `dockerStorageDriver` - (Optional) Docker storage driver. Changing this
-//   updates the Docker storage driver of the existing cluster template.
-//
-// * `dockerVolumeSize` - (Optional) The size (in GB) of the Docker volume.
-//   Changing this updates the Docker volume size of the existing cluster
-//   template.
-//
-// * `externalNetworkId` - (Optional) The ID of the external network that will
-//   be used for the cluster. Changing this updates the external network ID of
-//   the existing cluster template.
-//
-// * `fixedNetwork` - (Optional) The fixed network that will be attached to the
-//   cluster. Changing this updates the fixed network of the existing cluster
-//   template.
-//
-// * `fixedSubnet` - (Optional) The fixed subnet that will be attached to the
-//   cluster. Changing this updates the fixed subnet of the existing cluster
-//   template.
-//
-// * `flavor` - (Optional) The flavor for the nodes of the cluster. Can be set via
-//   the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
-//   flavor of the existing cluster template.
-//
-// * `masterFlavor` - (Optional) The flavor for the master nodes. Can be set via
-//   the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
-//   the master flavor of the existing cluster template.
-//
-// * `floatingIpEnabled` - (Optional) Indicates whether created cluster should
-//   create floating IP for every node or not. Changing this updates the
-//   floating IP enabled attribute of the existing cluster template.
-//
-// * `httpProxy` - (Optional) The address of a proxy for receiving all HTTP
-//   requests and relay them. Changing this updates the HTTP proxy address of
-//   the existing cluster template.
-//
-// * `httpsProxy` - (Optional) The address of a proxy for receiving all HTTPS
-//   requests and relay them. Changing this updates the HTTPS proxy address of
-//   the existing cluster template.
-//
-// * `image` - (Required) The reference to an image that is used for nodes of the
-//   cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
-//   Changing this updates the image attribute of the existing cluster template.
-//
-// * `insecureRegistry` - (Optional) The insecure registry URL for the cluster
-//   template. Changing this updates the insecure registry attribute of the
-//   existing cluster template.
-//
-// * `keypairId` - (Optional) The name of the Compute service SSH keypair.
-//   Changing this updates the keypair of the existing cluster template.
-//
-// * `labels` - (Optional) The list of key value pairs representing additional
-//   properties of the cluster template. Changing this updates the labels of the
-//   existing cluster template.
-//
-// * `masterLbEnabled` - (Optional) Indicates whether created cluster should
-//   has a loadbalancer for master nodes or not. Changing this updates the
-//   attribute of the existing cluster template.
-//
-// * `networkDriver` - (Optional) The name of the driver for the container
-//   network. Changing this updates the network driver of the existing cluster
-//   template.
-//
-// * `noProxy` - (Optional) A comma-separated list of IP addresses that shouldn't
-//   be used in the cluster. Changing this updates the no proxy list of the
-//   existing cluster template.
-//
-// * `public` - (Optional) Indicates whether cluster template should be public.
-//   Changing this updates the public attribute of the existing cluster
-//   template.
-//
-// * `registryEnabled` - (Optional) Indicates whether Docker registry is enabled
-//   in the cluster. Changing this updates the registry enabled attribute of the
-//   existing cluster template.
-//
-// * `serverType` - (Optional) The server type for the cluster template. Changing
-//   this updates the server type of the existing cluster template.
-//
-// * `tlsDisabled` - (Optional) Indicates whether the TLS should be disabled in
-//   the cluster. Changing this updates the attribute of the existing cluster.
-//
-// * `volumeDriver` - (Optional) The name of the driver that is used for the
-//   volumes of the cluster nodes. Changing this updates the volume driver of
-//   the existing cluster template.
-//
 // ## Attributes reference
 //
 // The following attributes are exported:
@@ -220,38 +100,124 @@ import (
 type ClusterTemplate struct {
 	pulumi.CustomResourceState
 
-	ApiserverPort       pulumi.IntPtrOutput    `pulumi:"apiserverPort"`
-	ClusterDistro       pulumi.StringOutput    `pulumi:"clusterDistro"`
-	Coe                 pulumi.StringOutput    `pulumi:"coe"`
-	CreatedAt           pulumi.StringOutput    `pulumi:"createdAt"`
-	DnsNameserver       pulumi.StringPtrOutput `pulumi:"dnsNameserver"`
+	// The API server port for the Container
+	// Orchestration Engine for this cluster template. Changing this updates the
+	// API server port of the existing cluster template.
+	ApiserverPort pulumi.IntPtrOutput `pulumi:"apiserverPort"`
+	// The distro for the cluster (fedora-atomic,
+	// coreos, etc.). Changing this updates the cluster distro of the existing
+	// cluster template.
+	ClusterDistro pulumi.StringOutput `pulumi:"clusterDistro"`
+	// The Container Orchestration Engine for this cluster
+	// template. Changing this updates the engine of the existing cluster
+	// template.
+	Coe       pulumi.StringOutput `pulumi:"coe"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Address of the DNS nameserver that is used in
+	// nodes of the cluster. Changing this updates the DNS nameserver of the
+	// existing cluster template.
+	DnsNameserver pulumi.StringPtrOutput `pulumi:"dnsNameserver"`
+	// Docker storage driver. Changing this
+	// updates the Docker storage driver of the existing cluster template.
 	DockerStorageDriver pulumi.StringPtrOutput `pulumi:"dockerStorageDriver"`
-	DockerVolumeSize    pulumi.IntPtrOutput    `pulumi:"dockerVolumeSize"`
-	ExternalNetworkId   pulumi.StringPtrOutput `pulumi:"externalNetworkId"`
-	FixedNetwork        pulumi.StringPtrOutput `pulumi:"fixedNetwork"`
-	FixedSubnet         pulumi.StringPtrOutput `pulumi:"fixedSubnet"`
-	Flavor              pulumi.StringPtrOutput `pulumi:"flavor"`
-	FloatingIpEnabled   pulumi.BoolPtrOutput   `pulumi:"floatingIpEnabled"`
-	HttpProxy           pulumi.StringPtrOutput `pulumi:"httpProxy"`
-	HttpsProxy          pulumi.StringPtrOutput `pulumi:"httpsProxy"`
-	Image               pulumi.StringOutput    `pulumi:"image"`
-	InsecureRegistry    pulumi.StringPtrOutput `pulumi:"insecureRegistry"`
-	KeypairId           pulumi.StringPtrOutput `pulumi:"keypairId"`
-	Labels              pulumi.MapOutput       `pulumi:"labels"`
-	MasterFlavor        pulumi.StringPtrOutput `pulumi:"masterFlavor"`
-	MasterLbEnabled     pulumi.BoolPtrOutput   `pulumi:"masterLbEnabled"`
-	Name                pulumi.StringOutput    `pulumi:"name"`
-	NetworkDriver       pulumi.StringOutput    `pulumi:"networkDriver"`
-	NoProxy             pulumi.StringPtrOutput `pulumi:"noProxy"`
-	ProjectId           pulumi.StringOutput    `pulumi:"projectId"`
-	Public              pulumi.BoolPtrOutput   `pulumi:"public"`
-	Region              pulumi.StringOutput    `pulumi:"region"`
-	RegistryEnabled     pulumi.BoolPtrOutput   `pulumi:"registryEnabled"`
-	ServerType          pulumi.StringOutput    `pulumi:"serverType"`
-	TlsDisabled         pulumi.BoolPtrOutput   `pulumi:"tlsDisabled"`
-	UpdatedAt           pulumi.StringOutput    `pulumi:"updatedAt"`
-	UserId              pulumi.StringOutput    `pulumi:"userId"`
-	VolumeDriver        pulumi.StringPtrOutput `pulumi:"volumeDriver"`
+	// The size (in GB) of the Docker volume.
+	// Changing this updates the Docker volume size of the existing cluster
+	// template.
+	DockerVolumeSize pulumi.IntPtrOutput `pulumi:"dockerVolumeSize"`
+	// The ID of the external network that will
+	// be used for the cluster. Changing this updates the external network ID of
+	// the existing cluster template.
+	ExternalNetworkId pulumi.StringPtrOutput `pulumi:"externalNetworkId"`
+	// The fixed network that will be attached to the
+	// cluster. Changing this updates the fixed network of the existing cluster
+	// template.
+	FixedNetwork pulumi.StringPtrOutput `pulumi:"fixedNetwork"`
+	// The fixed subnet that will be attached to the
+	// cluster. Changing this updates the fixed subnet of the existing cluster
+	// template.
+	FixedSubnet pulumi.StringPtrOutput `pulumi:"fixedSubnet"`
+	// The flavor for the nodes of the cluster. Can be set via
+	// the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
+	// flavor of the existing cluster template.
+	Flavor pulumi.StringPtrOutput `pulumi:"flavor"`
+	// Indicates whether created cluster should
+	// create floating IP for every node or not. Changing this updates the
+	// floating IP enabled attribute of the existing cluster template.
+	FloatingIpEnabled pulumi.BoolPtrOutput `pulumi:"floatingIpEnabled"`
+	// The address of a proxy for receiving all HTTP
+	// requests and relay them. Changing this updates the HTTP proxy address of
+	// the existing cluster template.
+	HttpProxy pulumi.StringPtrOutput `pulumi:"httpProxy"`
+	// The address of a proxy for receiving all HTTPS
+	// requests and relay them. Changing this updates the HTTPS proxy address of
+	// the existing cluster template.
+	HttpsProxy pulumi.StringPtrOutput `pulumi:"httpsProxy"`
+	// The reference to an image that is used for nodes of the
+	// cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+	// Changing this updates the image attribute of the existing cluster template.
+	Image pulumi.StringOutput `pulumi:"image"`
+	// The insecure registry URL for the cluster
+	// template. Changing this updates the insecure registry attribute of the
+	// existing cluster template.
+	InsecureRegistry pulumi.StringPtrOutput `pulumi:"insecureRegistry"`
+	// The name of the Compute service SSH keypair.
+	// Changing this updates the keypair of the existing cluster template.
+	KeypairId pulumi.StringPtrOutput `pulumi:"keypairId"`
+	// The list of key value pairs representing additional
+	// properties of the cluster template. Changing this updates the labels of the
+	// existing cluster template.
+	Labels pulumi.MapOutput `pulumi:"labels"`
+	// The flavor for the master nodes. Can be set via
+	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
+	// the master flavor of the existing cluster template.
+	MasterFlavor pulumi.StringPtrOutput `pulumi:"masterFlavor"`
+	// Indicates whether created cluster should
+	// has a loadbalancer for master nodes or not. Changing this updates the
+	// attribute of the existing cluster template.
+	MasterLbEnabled pulumi.BoolPtrOutput `pulumi:"masterLbEnabled"`
+	// The name of the cluster template. Changing this updates
+	// the name of the existing cluster template.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The name of the driver for the container
+	// network. Changing this updates the network driver of the existing cluster
+	// template.
+	NetworkDriver pulumi.StringOutput `pulumi:"networkDriver"`
+	// A comma-separated list of IP addresses that shouldn't
+	// be used in the cluster. Changing this updates the no proxy list of the
+	// existing cluster template.
+	NoProxy pulumi.StringPtrOutput `pulumi:"noProxy"`
+	// The project of the cluster template. Required if
+	// admin wants to create a cluster template in another project. Changing this
+	// creates a new cluster template.
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// Indicates whether cluster template should be public.
+	// Changing this updates the public attribute of the existing cluster
+	// template.
+	Public pulumi.BoolPtrOutput `pulumi:"public"`
+	// The region in which to obtain the V1 Container Infra
+	// client. A Container Infra client is needed to create a cluster template. If
+	// omitted,the `region` argument of the provider is used. Changing this
+	// creates a new cluster template.
+	Region pulumi.StringOutput `pulumi:"region"`
+	// Indicates whether Docker registry is enabled
+	// in the cluster. Changing this updates the registry enabled attribute of the
+	// existing cluster template.
+	RegistryEnabled pulumi.BoolPtrOutput `pulumi:"registryEnabled"`
+	// The server type for the cluster template. Changing
+	// this updates the server type of the existing cluster template.
+	ServerType pulumi.StringOutput `pulumi:"serverType"`
+	// Indicates whether the TLS should be disabled in
+	// the cluster. Changing this updates the attribute of the existing cluster.
+	TlsDisabled pulumi.BoolPtrOutput `pulumi:"tlsDisabled"`
+	UpdatedAt   pulumi.StringOutput  `pulumi:"updatedAt"`
+	// The user of the cluster template. Required if admin
+	// wants to create a cluster template for another user. Changing this creates
+	// a new cluster template.
+	UserId pulumi.StringOutput `pulumi:"userId"`
+	// The name of the driver that is used for the
+	// volumes of the cluster nodes. Changing this updates the volume driver of
+	// the existing cluster template.
+	VolumeDriver pulumi.StringPtrOutput `pulumi:"volumeDriver"`
 }
 
 // NewClusterTemplate registers a new resource with the given unique name, arguments, and options.
@@ -289,73 +255,245 @@ func GetClusterTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClusterTemplate resources.
 type clusterTemplateState struct {
-	ApiserverPort       *int                   `pulumi:"apiserverPort"`
-	ClusterDistro       *string                `pulumi:"clusterDistro"`
-	Coe                 *string                `pulumi:"coe"`
-	CreatedAt           *string                `pulumi:"createdAt"`
-	DnsNameserver       *string                `pulumi:"dnsNameserver"`
-	DockerStorageDriver *string                `pulumi:"dockerStorageDriver"`
-	DockerVolumeSize    *int                   `pulumi:"dockerVolumeSize"`
-	ExternalNetworkId   *string                `pulumi:"externalNetworkId"`
-	FixedNetwork        *string                `pulumi:"fixedNetwork"`
-	FixedSubnet         *string                `pulumi:"fixedSubnet"`
-	Flavor              *string                `pulumi:"flavor"`
-	FloatingIpEnabled   *bool                  `pulumi:"floatingIpEnabled"`
-	HttpProxy           *string                `pulumi:"httpProxy"`
-	HttpsProxy          *string                `pulumi:"httpsProxy"`
-	Image               *string                `pulumi:"image"`
-	InsecureRegistry    *string                `pulumi:"insecureRegistry"`
-	KeypairId           *string                `pulumi:"keypairId"`
-	Labels              map[string]interface{} `pulumi:"labels"`
-	MasterFlavor        *string                `pulumi:"masterFlavor"`
-	MasterLbEnabled     *bool                  `pulumi:"masterLbEnabled"`
-	Name                *string                `pulumi:"name"`
-	NetworkDriver       *string                `pulumi:"networkDriver"`
-	NoProxy             *string                `pulumi:"noProxy"`
-	ProjectId           *string                `pulumi:"projectId"`
-	Public              *bool                  `pulumi:"public"`
-	Region              *string                `pulumi:"region"`
-	RegistryEnabled     *bool                  `pulumi:"registryEnabled"`
-	ServerType          *string                `pulumi:"serverType"`
-	TlsDisabled         *bool                  `pulumi:"tlsDisabled"`
-	UpdatedAt           *string                `pulumi:"updatedAt"`
-	UserId              *string                `pulumi:"userId"`
-	VolumeDriver        *string                `pulumi:"volumeDriver"`
+	// The API server port for the Container
+	// Orchestration Engine for this cluster template. Changing this updates the
+	// API server port of the existing cluster template.
+	ApiserverPort *int `pulumi:"apiserverPort"`
+	// The distro for the cluster (fedora-atomic,
+	// coreos, etc.). Changing this updates the cluster distro of the existing
+	// cluster template.
+	ClusterDistro *string `pulumi:"clusterDistro"`
+	// The Container Orchestration Engine for this cluster
+	// template. Changing this updates the engine of the existing cluster
+	// template.
+	Coe       *string `pulumi:"coe"`
+	CreatedAt *string `pulumi:"createdAt"`
+	// Address of the DNS nameserver that is used in
+	// nodes of the cluster. Changing this updates the DNS nameserver of the
+	// existing cluster template.
+	DnsNameserver *string `pulumi:"dnsNameserver"`
+	// Docker storage driver. Changing this
+	// updates the Docker storage driver of the existing cluster template.
+	DockerStorageDriver *string `pulumi:"dockerStorageDriver"`
+	// The size (in GB) of the Docker volume.
+	// Changing this updates the Docker volume size of the existing cluster
+	// template.
+	DockerVolumeSize *int `pulumi:"dockerVolumeSize"`
+	// The ID of the external network that will
+	// be used for the cluster. Changing this updates the external network ID of
+	// the existing cluster template.
+	ExternalNetworkId *string `pulumi:"externalNetworkId"`
+	// The fixed network that will be attached to the
+	// cluster. Changing this updates the fixed network of the existing cluster
+	// template.
+	FixedNetwork *string `pulumi:"fixedNetwork"`
+	// The fixed subnet that will be attached to the
+	// cluster. Changing this updates the fixed subnet of the existing cluster
+	// template.
+	FixedSubnet *string `pulumi:"fixedSubnet"`
+	// The flavor for the nodes of the cluster. Can be set via
+	// the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
+	// flavor of the existing cluster template.
+	Flavor *string `pulumi:"flavor"`
+	// Indicates whether created cluster should
+	// create floating IP for every node or not. Changing this updates the
+	// floating IP enabled attribute of the existing cluster template.
+	FloatingIpEnabled *bool `pulumi:"floatingIpEnabled"`
+	// The address of a proxy for receiving all HTTP
+	// requests and relay them. Changing this updates the HTTP proxy address of
+	// the existing cluster template.
+	HttpProxy *string `pulumi:"httpProxy"`
+	// The address of a proxy for receiving all HTTPS
+	// requests and relay them. Changing this updates the HTTPS proxy address of
+	// the existing cluster template.
+	HttpsProxy *string `pulumi:"httpsProxy"`
+	// The reference to an image that is used for nodes of the
+	// cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+	// Changing this updates the image attribute of the existing cluster template.
+	Image *string `pulumi:"image"`
+	// The insecure registry URL for the cluster
+	// template. Changing this updates the insecure registry attribute of the
+	// existing cluster template.
+	InsecureRegistry *string `pulumi:"insecureRegistry"`
+	// The name of the Compute service SSH keypair.
+	// Changing this updates the keypair of the existing cluster template.
+	KeypairId *string `pulumi:"keypairId"`
+	// The list of key value pairs representing additional
+	// properties of the cluster template. Changing this updates the labels of the
+	// existing cluster template.
+	Labels map[string]interface{} `pulumi:"labels"`
+	// The flavor for the master nodes. Can be set via
+	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
+	// the master flavor of the existing cluster template.
+	MasterFlavor *string `pulumi:"masterFlavor"`
+	// Indicates whether created cluster should
+	// has a loadbalancer for master nodes or not. Changing this updates the
+	// attribute of the existing cluster template.
+	MasterLbEnabled *bool `pulumi:"masterLbEnabled"`
+	// The name of the cluster template. Changing this updates
+	// the name of the existing cluster template.
+	Name *string `pulumi:"name"`
+	// The name of the driver for the container
+	// network. Changing this updates the network driver of the existing cluster
+	// template.
+	NetworkDriver *string `pulumi:"networkDriver"`
+	// A comma-separated list of IP addresses that shouldn't
+	// be used in the cluster. Changing this updates the no proxy list of the
+	// existing cluster template.
+	NoProxy *string `pulumi:"noProxy"`
+	// The project of the cluster template. Required if
+	// admin wants to create a cluster template in another project. Changing this
+	// creates a new cluster template.
+	ProjectId *string `pulumi:"projectId"`
+	// Indicates whether cluster template should be public.
+	// Changing this updates the public attribute of the existing cluster
+	// template.
+	Public *bool `pulumi:"public"`
+	// The region in which to obtain the V1 Container Infra
+	// client. A Container Infra client is needed to create a cluster template. If
+	// omitted,the `region` argument of the provider is used. Changing this
+	// creates a new cluster template.
+	Region *string `pulumi:"region"`
+	// Indicates whether Docker registry is enabled
+	// in the cluster. Changing this updates the registry enabled attribute of the
+	// existing cluster template.
+	RegistryEnabled *bool `pulumi:"registryEnabled"`
+	// The server type for the cluster template. Changing
+	// this updates the server type of the existing cluster template.
+	ServerType *string `pulumi:"serverType"`
+	// Indicates whether the TLS should be disabled in
+	// the cluster. Changing this updates the attribute of the existing cluster.
+	TlsDisabled *bool   `pulumi:"tlsDisabled"`
+	UpdatedAt   *string `pulumi:"updatedAt"`
+	// The user of the cluster template. Required if admin
+	// wants to create a cluster template for another user. Changing this creates
+	// a new cluster template.
+	UserId *string `pulumi:"userId"`
+	// The name of the driver that is used for the
+	// volumes of the cluster nodes. Changing this updates the volume driver of
+	// the existing cluster template.
+	VolumeDriver *string `pulumi:"volumeDriver"`
 }
 
 type ClusterTemplateState struct {
-	ApiserverPort       pulumi.IntPtrInput
-	ClusterDistro       pulumi.StringPtrInput
-	Coe                 pulumi.StringPtrInput
-	CreatedAt           pulumi.StringPtrInput
-	DnsNameserver       pulumi.StringPtrInput
+	// The API server port for the Container
+	// Orchestration Engine for this cluster template. Changing this updates the
+	// API server port of the existing cluster template.
+	ApiserverPort pulumi.IntPtrInput
+	// The distro for the cluster (fedora-atomic,
+	// coreos, etc.). Changing this updates the cluster distro of the existing
+	// cluster template.
+	ClusterDistro pulumi.StringPtrInput
+	// The Container Orchestration Engine for this cluster
+	// template. Changing this updates the engine of the existing cluster
+	// template.
+	Coe       pulumi.StringPtrInput
+	CreatedAt pulumi.StringPtrInput
+	// Address of the DNS nameserver that is used in
+	// nodes of the cluster. Changing this updates the DNS nameserver of the
+	// existing cluster template.
+	DnsNameserver pulumi.StringPtrInput
+	// Docker storage driver. Changing this
+	// updates the Docker storage driver of the existing cluster template.
 	DockerStorageDriver pulumi.StringPtrInput
-	DockerVolumeSize    pulumi.IntPtrInput
-	ExternalNetworkId   pulumi.StringPtrInput
-	FixedNetwork        pulumi.StringPtrInput
-	FixedSubnet         pulumi.StringPtrInput
-	Flavor              pulumi.StringPtrInput
-	FloatingIpEnabled   pulumi.BoolPtrInput
-	HttpProxy           pulumi.StringPtrInput
-	HttpsProxy          pulumi.StringPtrInput
-	Image               pulumi.StringPtrInput
-	InsecureRegistry    pulumi.StringPtrInput
-	KeypairId           pulumi.StringPtrInput
-	Labels              pulumi.MapInput
-	MasterFlavor        pulumi.StringPtrInput
-	MasterLbEnabled     pulumi.BoolPtrInput
-	Name                pulumi.StringPtrInput
-	NetworkDriver       pulumi.StringPtrInput
-	NoProxy             pulumi.StringPtrInput
-	ProjectId           pulumi.StringPtrInput
-	Public              pulumi.BoolPtrInput
-	Region              pulumi.StringPtrInput
-	RegistryEnabled     pulumi.BoolPtrInput
-	ServerType          pulumi.StringPtrInput
-	TlsDisabled         pulumi.BoolPtrInput
-	UpdatedAt           pulumi.StringPtrInput
-	UserId              pulumi.StringPtrInput
-	VolumeDriver        pulumi.StringPtrInput
+	// The size (in GB) of the Docker volume.
+	// Changing this updates the Docker volume size of the existing cluster
+	// template.
+	DockerVolumeSize pulumi.IntPtrInput
+	// The ID of the external network that will
+	// be used for the cluster. Changing this updates the external network ID of
+	// the existing cluster template.
+	ExternalNetworkId pulumi.StringPtrInput
+	// The fixed network that will be attached to the
+	// cluster. Changing this updates the fixed network of the existing cluster
+	// template.
+	FixedNetwork pulumi.StringPtrInput
+	// The fixed subnet that will be attached to the
+	// cluster. Changing this updates the fixed subnet of the existing cluster
+	// template.
+	FixedSubnet pulumi.StringPtrInput
+	// The flavor for the nodes of the cluster. Can be set via
+	// the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
+	// flavor of the existing cluster template.
+	Flavor pulumi.StringPtrInput
+	// Indicates whether created cluster should
+	// create floating IP for every node or not. Changing this updates the
+	// floating IP enabled attribute of the existing cluster template.
+	FloatingIpEnabled pulumi.BoolPtrInput
+	// The address of a proxy for receiving all HTTP
+	// requests and relay them. Changing this updates the HTTP proxy address of
+	// the existing cluster template.
+	HttpProxy pulumi.StringPtrInput
+	// The address of a proxy for receiving all HTTPS
+	// requests and relay them. Changing this updates the HTTPS proxy address of
+	// the existing cluster template.
+	HttpsProxy pulumi.StringPtrInput
+	// The reference to an image that is used for nodes of the
+	// cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+	// Changing this updates the image attribute of the existing cluster template.
+	Image pulumi.StringPtrInput
+	// The insecure registry URL for the cluster
+	// template. Changing this updates the insecure registry attribute of the
+	// existing cluster template.
+	InsecureRegistry pulumi.StringPtrInput
+	// The name of the Compute service SSH keypair.
+	// Changing this updates the keypair of the existing cluster template.
+	KeypairId pulumi.StringPtrInput
+	// The list of key value pairs representing additional
+	// properties of the cluster template. Changing this updates the labels of the
+	// existing cluster template.
+	Labels pulumi.MapInput
+	// The flavor for the master nodes. Can be set via
+	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
+	// the master flavor of the existing cluster template.
+	MasterFlavor pulumi.StringPtrInput
+	// Indicates whether created cluster should
+	// has a loadbalancer for master nodes or not. Changing this updates the
+	// attribute of the existing cluster template.
+	MasterLbEnabled pulumi.BoolPtrInput
+	// The name of the cluster template. Changing this updates
+	// the name of the existing cluster template.
+	Name pulumi.StringPtrInput
+	// The name of the driver for the container
+	// network. Changing this updates the network driver of the existing cluster
+	// template.
+	NetworkDriver pulumi.StringPtrInput
+	// A comma-separated list of IP addresses that shouldn't
+	// be used in the cluster. Changing this updates the no proxy list of the
+	// existing cluster template.
+	NoProxy pulumi.StringPtrInput
+	// The project of the cluster template. Required if
+	// admin wants to create a cluster template in another project. Changing this
+	// creates a new cluster template.
+	ProjectId pulumi.StringPtrInput
+	// Indicates whether cluster template should be public.
+	// Changing this updates the public attribute of the existing cluster
+	// template.
+	Public pulumi.BoolPtrInput
+	// The region in which to obtain the V1 Container Infra
+	// client. A Container Infra client is needed to create a cluster template. If
+	// omitted,the `region` argument of the provider is used. Changing this
+	// creates a new cluster template.
+	Region pulumi.StringPtrInput
+	// Indicates whether Docker registry is enabled
+	// in the cluster. Changing this updates the registry enabled attribute of the
+	// existing cluster template.
+	RegistryEnabled pulumi.BoolPtrInput
+	// The server type for the cluster template. Changing
+	// this updates the server type of the existing cluster template.
+	ServerType pulumi.StringPtrInput
+	// Indicates whether the TLS should be disabled in
+	// the cluster. Changing this updates the attribute of the existing cluster.
+	TlsDisabled pulumi.BoolPtrInput
+	UpdatedAt   pulumi.StringPtrInput
+	// The user of the cluster template. Required if admin
+	// wants to create a cluster template for another user. Changing this creates
+	// a new cluster template.
+	UserId pulumi.StringPtrInput
+	// The name of the driver that is used for the
+	// volumes of the cluster nodes. Changing this updates the volume driver of
+	// the existing cluster template.
+	VolumeDriver pulumi.StringPtrInput
 }
 
 func (ClusterTemplateState) ElementType() reflect.Type {
@@ -363,66 +501,226 @@ func (ClusterTemplateState) ElementType() reflect.Type {
 }
 
 type clusterTemplateArgs struct {
-	ApiserverPort       *int                   `pulumi:"apiserverPort"`
-	ClusterDistro       *string                `pulumi:"clusterDistro"`
-	Coe                 string                 `pulumi:"coe"`
-	DnsNameserver       *string                `pulumi:"dnsNameserver"`
-	DockerStorageDriver *string                `pulumi:"dockerStorageDriver"`
-	DockerVolumeSize    *int                   `pulumi:"dockerVolumeSize"`
-	ExternalNetworkId   *string                `pulumi:"externalNetworkId"`
-	FixedNetwork        *string                `pulumi:"fixedNetwork"`
-	FixedSubnet         *string                `pulumi:"fixedSubnet"`
-	Flavor              *string                `pulumi:"flavor"`
-	FloatingIpEnabled   *bool                  `pulumi:"floatingIpEnabled"`
-	HttpProxy           *string                `pulumi:"httpProxy"`
-	HttpsProxy          *string                `pulumi:"httpsProxy"`
-	Image               string                 `pulumi:"image"`
-	InsecureRegistry    *string                `pulumi:"insecureRegistry"`
-	KeypairId           *string                `pulumi:"keypairId"`
-	Labels              map[string]interface{} `pulumi:"labels"`
-	MasterFlavor        *string                `pulumi:"masterFlavor"`
-	MasterLbEnabled     *bool                  `pulumi:"masterLbEnabled"`
-	Name                *string                `pulumi:"name"`
-	NetworkDriver       *string                `pulumi:"networkDriver"`
-	NoProxy             *string                `pulumi:"noProxy"`
-	Public              *bool                  `pulumi:"public"`
-	Region              *string                `pulumi:"region"`
-	RegistryEnabled     *bool                  `pulumi:"registryEnabled"`
-	ServerType          *string                `pulumi:"serverType"`
-	TlsDisabled         *bool                  `pulumi:"tlsDisabled"`
-	VolumeDriver        *string                `pulumi:"volumeDriver"`
+	// The API server port for the Container
+	// Orchestration Engine for this cluster template. Changing this updates the
+	// API server port of the existing cluster template.
+	ApiserverPort *int `pulumi:"apiserverPort"`
+	// The distro for the cluster (fedora-atomic,
+	// coreos, etc.). Changing this updates the cluster distro of the existing
+	// cluster template.
+	ClusterDistro *string `pulumi:"clusterDistro"`
+	// The Container Orchestration Engine for this cluster
+	// template. Changing this updates the engine of the existing cluster
+	// template.
+	Coe string `pulumi:"coe"`
+	// Address of the DNS nameserver that is used in
+	// nodes of the cluster. Changing this updates the DNS nameserver of the
+	// existing cluster template.
+	DnsNameserver *string `pulumi:"dnsNameserver"`
+	// Docker storage driver. Changing this
+	// updates the Docker storage driver of the existing cluster template.
+	DockerStorageDriver *string `pulumi:"dockerStorageDriver"`
+	// The size (in GB) of the Docker volume.
+	// Changing this updates the Docker volume size of the existing cluster
+	// template.
+	DockerVolumeSize *int `pulumi:"dockerVolumeSize"`
+	// The ID of the external network that will
+	// be used for the cluster. Changing this updates the external network ID of
+	// the existing cluster template.
+	ExternalNetworkId *string `pulumi:"externalNetworkId"`
+	// The fixed network that will be attached to the
+	// cluster. Changing this updates the fixed network of the existing cluster
+	// template.
+	FixedNetwork *string `pulumi:"fixedNetwork"`
+	// The fixed subnet that will be attached to the
+	// cluster. Changing this updates the fixed subnet of the existing cluster
+	// template.
+	FixedSubnet *string `pulumi:"fixedSubnet"`
+	// The flavor for the nodes of the cluster. Can be set via
+	// the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
+	// flavor of the existing cluster template.
+	Flavor *string `pulumi:"flavor"`
+	// Indicates whether created cluster should
+	// create floating IP for every node or not. Changing this updates the
+	// floating IP enabled attribute of the existing cluster template.
+	FloatingIpEnabled *bool `pulumi:"floatingIpEnabled"`
+	// The address of a proxy for receiving all HTTP
+	// requests and relay them. Changing this updates the HTTP proxy address of
+	// the existing cluster template.
+	HttpProxy *string `pulumi:"httpProxy"`
+	// The address of a proxy for receiving all HTTPS
+	// requests and relay them. Changing this updates the HTTPS proxy address of
+	// the existing cluster template.
+	HttpsProxy *string `pulumi:"httpsProxy"`
+	// The reference to an image that is used for nodes of the
+	// cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+	// Changing this updates the image attribute of the existing cluster template.
+	Image string `pulumi:"image"`
+	// The insecure registry URL for the cluster
+	// template. Changing this updates the insecure registry attribute of the
+	// existing cluster template.
+	InsecureRegistry *string `pulumi:"insecureRegistry"`
+	// The name of the Compute service SSH keypair.
+	// Changing this updates the keypair of the existing cluster template.
+	KeypairId *string `pulumi:"keypairId"`
+	// The list of key value pairs representing additional
+	// properties of the cluster template. Changing this updates the labels of the
+	// existing cluster template.
+	Labels map[string]interface{} `pulumi:"labels"`
+	// The flavor for the master nodes. Can be set via
+	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
+	// the master flavor of the existing cluster template.
+	MasterFlavor *string `pulumi:"masterFlavor"`
+	// Indicates whether created cluster should
+	// has a loadbalancer for master nodes or not. Changing this updates the
+	// attribute of the existing cluster template.
+	MasterLbEnabled *bool `pulumi:"masterLbEnabled"`
+	// The name of the cluster template. Changing this updates
+	// the name of the existing cluster template.
+	Name *string `pulumi:"name"`
+	// The name of the driver for the container
+	// network. Changing this updates the network driver of the existing cluster
+	// template.
+	NetworkDriver *string `pulumi:"networkDriver"`
+	// A comma-separated list of IP addresses that shouldn't
+	// be used in the cluster. Changing this updates the no proxy list of the
+	// existing cluster template.
+	NoProxy *string `pulumi:"noProxy"`
+	// Indicates whether cluster template should be public.
+	// Changing this updates the public attribute of the existing cluster
+	// template.
+	Public *bool `pulumi:"public"`
+	// The region in which to obtain the V1 Container Infra
+	// client. A Container Infra client is needed to create a cluster template. If
+	// omitted,the `region` argument of the provider is used. Changing this
+	// creates a new cluster template.
+	Region *string `pulumi:"region"`
+	// Indicates whether Docker registry is enabled
+	// in the cluster. Changing this updates the registry enabled attribute of the
+	// existing cluster template.
+	RegistryEnabled *bool `pulumi:"registryEnabled"`
+	// The server type for the cluster template. Changing
+	// this updates the server type of the existing cluster template.
+	ServerType *string `pulumi:"serverType"`
+	// Indicates whether the TLS should be disabled in
+	// the cluster. Changing this updates the attribute of the existing cluster.
+	TlsDisabled *bool `pulumi:"tlsDisabled"`
+	// The name of the driver that is used for the
+	// volumes of the cluster nodes. Changing this updates the volume driver of
+	// the existing cluster template.
+	VolumeDriver *string `pulumi:"volumeDriver"`
 }
 
 // The set of arguments for constructing a ClusterTemplate resource.
 type ClusterTemplateArgs struct {
-	ApiserverPort       pulumi.IntPtrInput
-	ClusterDistro       pulumi.StringPtrInput
-	Coe                 pulumi.StringInput
-	DnsNameserver       pulumi.StringPtrInput
+	// The API server port for the Container
+	// Orchestration Engine for this cluster template. Changing this updates the
+	// API server port of the existing cluster template.
+	ApiserverPort pulumi.IntPtrInput
+	// The distro for the cluster (fedora-atomic,
+	// coreos, etc.). Changing this updates the cluster distro of the existing
+	// cluster template.
+	ClusterDistro pulumi.StringPtrInput
+	// The Container Orchestration Engine for this cluster
+	// template. Changing this updates the engine of the existing cluster
+	// template.
+	Coe pulumi.StringInput
+	// Address of the DNS nameserver that is used in
+	// nodes of the cluster. Changing this updates the DNS nameserver of the
+	// existing cluster template.
+	DnsNameserver pulumi.StringPtrInput
+	// Docker storage driver. Changing this
+	// updates the Docker storage driver of the existing cluster template.
 	DockerStorageDriver pulumi.StringPtrInput
-	DockerVolumeSize    pulumi.IntPtrInput
-	ExternalNetworkId   pulumi.StringPtrInput
-	FixedNetwork        pulumi.StringPtrInput
-	FixedSubnet         pulumi.StringPtrInput
-	Flavor              pulumi.StringPtrInput
-	FloatingIpEnabled   pulumi.BoolPtrInput
-	HttpProxy           pulumi.StringPtrInput
-	HttpsProxy          pulumi.StringPtrInput
-	Image               pulumi.StringInput
-	InsecureRegistry    pulumi.StringPtrInput
-	KeypairId           pulumi.StringPtrInput
-	Labels              pulumi.MapInput
-	MasterFlavor        pulumi.StringPtrInput
-	MasterLbEnabled     pulumi.BoolPtrInput
-	Name                pulumi.StringPtrInput
-	NetworkDriver       pulumi.StringPtrInput
-	NoProxy             pulumi.StringPtrInput
-	Public              pulumi.BoolPtrInput
-	Region              pulumi.StringPtrInput
-	RegistryEnabled     pulumi.BoolPtrInput
-	ServerType          pulumi.StringPtrInput
-	TlsDisabled         pulumi.BoolPtrInput
-	VolumeDriver        pulumi.StringPtrInput
+	// The size (in GB) of the Docker volume.
+	// Changing this updates the Docker volume size of the existing cluster
+	// template.
+	DockerVolumeSize pulumi.IntPtrInput
+	// The ID of the external network that will
+	// be used for the cluster. Changing this updates the external network ID of
+	// the existing cluster template.
+	ExternalNetworkId pulumi.StringPtrInput
+	// The fixed network that will be attached to the
+	// cluster. Changing this updates the fixed network of the existing cluster
+	// template.
+	FixedNetwork pulumi.StringPtrInput
+	// The fixed subnet that will be attached to the
+	// cluster. Changing this updates the fixed subnet of the existing cluster
+	// template.
+	FixedSubnet pulumi.StringPtrInput
+	// The flavor for the nodes of the cluster. Can be set via
+	// the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
+	// flavor of the existing cluster template.
+	Flavor pulumi.StringPtrInput
+	// Indicates whether created cluster should
+	// create floating IP for every node or not. Changing this updates the
+	// floating IP enabled attribute of the existing cluster template.
+	FloatingIpEnabled pulumi.BoolPtrInput
+	// The address of a proxy for receiving all HTTP
+	// requests and relay them. Changing this updates the HTTP proxy address of
+	// the existing cluster template.
+	HttpProxy pulumi.StringPtrInput
+	// The address of a proxy for receiving all HTTPS
+	// requests and relay them. Changing this updates the HTTPS proxy address of
+	// the existing cluster template.
+	HttpsProxy pulumi.StringPtrInput
+	// The reference to an image that is used for nodes of the
+	// cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+	// Changing this updates the image attribute of the existing cluster template.
+	Image pulumi.StringInput
+	// The insecure registry URL for the cluster
+	// template. Changing this updates the insecure registry attribute of the
+	// existing cluster template.
+	InsecureRegistry pulumi.StringPtrInput
+	// The name of the Compute service SSH keypair.
+	// Changing this updates the keypair of the existing cluster template.
+	KeypairId pulumi.StringPtrInput
+	// The list of key value pairs representing additional
+	// properties of the cluster template. Changing this updates the labels of the
+	// existing cluster template.
+	Labels pulumi.MapInput
+	// The flavor for the master nodes. Can be set via
+	// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
+	// the master flavor of the existing cluster template.
+	MasterFlavor pulumi.StringPtrInput
+	// Indicates whether created cluster should
+	// has a loadbalancer for master nodes or not. Changing this updates the
+	// attribute of the existing cluster template.
+	MasterLbEnabled pulumi.BoolPtrInput
+	// The name of the cluster template. Changing this updates
+	// the name of the existing cluster template.
+	Name pulumi.StringPtrInput
+	// The name of the driver for the container
+	// network. Changing this updates the network driver of the existing cluster
+	// template.
+	NetworkDriver pulumi.StringPtrInput
+	// A comma-separated list of IP addresses that shouldn't
+	// be used in the cluster. Changing this updates the no proxy list of the
+	// existing cluster template.
+	NoProxy pulumi.StringPtrInput
+	// Indicates whether cluster template should be public.
+	// Changing this updates the public attribute of the existing cluster
+	// template.
+	Public pulumi.BoolPtrInput
+	// The region in which to obtain the V1 Container Infra
+	// client. A Container Infra client is needed to create a cluster template. If
+	// omitted,the `region` argument of the provider is used. Changing this
+	// creates a new cluster template.
+	Region pulumi.StringPtrInput
+	// Indicates whether Docker registry is enabled
+	// in the cluster. Changing this updates the registry enabled attribute of the
+	// existing cluster template.
+	RegistryEnabled pulumi.BoolPtrInput
+	// The server type for the cluster template. Changing
+	// this updates the server type of the existing cluster template.
+	ServerType pulumi.StringPtrInput
+	// Indicates whether the TLS should be disabled in
+	// the cluster. Changing this updates the attribute of the existing cluster.
+	TlsDisabled pulumi.BoolPtrInput
+	// The name of the driver that is used for the
+	// volumes of the cluster nodes. Changing this updates the volume driver of
+	// the existing cluster template.
+	VolumeDriver pulumi.StringPtrInput
 }
 
 func (ClusterTemplateArgs) ElementType() reflect.Type {
@@ -437,7 +735,7 @@ type ClusterTemplateInput interface {
 }
 
 func (*ClusterTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterTemplate)(nil))
+	return reflect.TypeOf((**ClusterTemplate)(nil)).Elem()
 }
 
 func (i *ClusterTemplate) ToClusterTemplateOutput() ClusterTemplateOutput {
@@ -446,35 +744,6 @@ func (i *ClusterTemplate) ToClusterTemplateOutput() ClusterTemplateOutput {
 
 func (i *ClusterTemplate) ToClusterTemplateOutputWithContext(ctx context.Context) ClusterTemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateOutput)
-}
-
-func (i *ClusterTemplate) ToClusterTemplatePtrOutput() ClusterTemplatePtrOutput {
-	return i.ToClusterTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *ClusterTemplate) ToClusterTemplatePtrOutputWithContext(ctx context.Context) ClusterTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplatePtrOutput)
-}
-
-type ClusterTemplatePtrInput interface {
-	pulumi.Input
-
-	ToClusterTemplatePtrOutput() ClusterTemplatePtrOutput
-	ToClusterTemplatePtrOutputWithContext(ctx context.Context) ClusterTemplatePtrOutput
-}
-
-type clusterTemplatePtrType ClusterTemplateArgs
-
-func (*clusterTemplatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterTemplate)(nil))
-}
-
-func (i *clusterTemplatePtrType) ToClusterTemplatePtrOutput() ClusterTemplatePtrOutput {
-	return i.ToClusterTemplatePtrOutputWithContext(context.Background())
-}
-
-func (i *clusterTemplatePtrType) ToClusterTemplatePtrOutputWithContext(ctx context.Context) ClusterTemplatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplatePtrOutput)
 }
 
 // ClusterTemplateArrayInput is an input type that accepts ClusterTemplateArray and ClusterTemplateArrayOutput values.
@@ -530,7 +799,7 @@ func (i ClusterTemplateMap) ToClusterTemplateMapOutputWithContext(ctx context.Co
 type ClusterTemplateOutput struct{ *pulumi.OutputState }
 
 func (ClusterTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterTemplate)(nil))
+	return reflect.TypeOf((**ClusterTemplate)(nil)).Elem()
 }
 
 func (o ClusterTemplateOutput) ToClusterTemplateOutput() ClusterTemplateOutput {
@@ -541,44 +810,10 @@ func (o ClusterTemplateOutput) ToClusterTemplateOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ClusterTemplateOutput) ToClusterTemplatePtrOutput() ClusterTemplatePtrOutput {
-	return o.ToClusterTemplatePtrOutputWithContext(context.Background())
-}
-
-func (o ClusterTemplateOutput) ToClusterTemplatePtrOutputWithContext(ctx context.Context) ClusterTemplatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterTemplate) *ClusterTemplate {
-		return &v
-	}).(ClusterTemplatePtrOutput)
-}
-
-type ClusterTemplatePtrOutput struct{ *pulumi.OutputState }
-
-func (ClusterTemplatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterTemplate)(nil))
-}
-
-func (o ClusterTemplatePtrOutput) ToClusterTemplatePtrOutput() ClusterTemplatePtrOutput {
-	return o
-}
-
-func (o ClusterTemplatePtrOutput) ToClusterTemplatePtrOutputWithContext(ctx context.Context) ClusterTemplatePtrOutput {
-	return o
-}
-
-func (o ClusterTemplatePtrOutput) Elem() ClusterTemplateOutput {
-	return o.ApplyT(func(v *ClusterTemplate) ClusterTemplate {
-		if v != nil {
-			return *v
-		}
-		var ret ClusterTemplate
-		return ret
-	}).(ClusterTemplateOutput)
-}
-
 type ClusterTemplateArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterTemplateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ClusterTemplate)(nil))
+	return reflect.TypeOf((*[]*ClusterTemplate)(nil)).Elem()
 }
 
 func (o ClusterTemplateArrayOutput) ToClusterTemplateArrayOutput() ClusterTemplateArrayOutput {
@@ -590,15 +825,15 @@ func (o ClusterTemplateArrayOutput) ToClusterTemplateArrayOutputWithContext(ctx 
 }
 
 func (o ClusterTemplateArrayOutput) Index(i pulumi.IntInput) ClusterTemplateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterTemplate {
-		return vs[0].([]ClusterTemplate)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterTemplate {
+		return vs[0].([]*ClusterTemplate)[vs[1].(int)]
 	}).(ClusterTemplateOutput)
 }
 
 type ClusterTemplateMapOutput struct{ *pulumi.OutputState }
 
 func (ClusterTemplateMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ClusterTemplate)(nil))
+	return reflect.TypeOf((*map[string]*ClusterTemplate)(nil)).Elem()
 }
 
 func (o ClusterTemplateMapOutput) ToClusterTemplateMapOutput() ClusterTemplateMapOutput {
@@ -610,18 +845,16 @@ func (o ClusterTemplateMapOutput) ToClusterTemplateMapOutputWithContext(ctx cont
 }
 
 func (o ClusterTemplateMapOutput) MapIndex(k pulumi.StringInput) ClusterTemplateOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterTemplate {
-		return vs[0].(map[string]ClusterTemplate)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ClusterTemplate {
+		return vs[0].(map[string]*ClusterTemplate)[vs[1].(string)]
 	}).(ClusterTemplateOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTemplateInput)(nil)).Elem(), &ClusterTemplate{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTemplatePtrInput)(nil)).Elem(), &ClusterTemplate{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTemplateArrayInput)(nil)).Elem(), ClusterTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTemplateMapInput)(nil)).Elem(), ClusterTemplateMap{})
 	pulumi.RegisterOutputType(ClusterTemplateOutput{})
-	pulumi.RegisterOutputType(ClusterTemplatePtrOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateArrayOutput{})
 	pulumi.RegisterOutputType(ClusterTemplateMapOutput{})
 }

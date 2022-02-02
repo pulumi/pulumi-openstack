@@ -28,9 +28,7 @@ export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Prom
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:images/getImage:getImage", {
         "hidden": args.hidden,
         "memberStatus": args.memberStatus,
