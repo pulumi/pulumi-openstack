@@ -132,6 +132,8 @@ type providerArgs struct {
 	DomainId *string `pulumi:"domainId"`
 	// The name of the Domain to scope to (Identity v3).
 	DomainName *string `pulumi:"domainName"`
+	// Outputs very verbose logs with all calls made to and responses from OpenStack
+	EnableLogging *bool `pulumi:"enableLogging"`
 	// A map of services with an endpoint to override what was from the Keystone catalog
 	EndpointOverrides map[string]interface{} `pulumi:"endpointOverrides"`
 	EndpointType      *string                `pulumi:"endpointType"`
@@ -199,6 +201,8 @@ type ProviderArgs struct {
 	DomainId pulumi.StringPtrInput
 	// The name of the Domain to scope to (Identity v3).
 	DomainName pulumi.StringPtrInput
+	// Outputs very verbose logs with all calls made to and responses from OpenStack
+	EnableLogging pulumi.BoolPtrInput
 	// A map of services with an endpoint to override what was from the Keystone catalog
 	EndpointOverrides pulumi.MapInput
 	EndpointType      pulumi.StringPtrInput

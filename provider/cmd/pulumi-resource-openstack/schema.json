@@ -81,6 +81,10 @@
                 "type": "string",
                 "description": "The name of the Domain to scope to (Identity v3).\n"
             },
+            "enableLogging": {
+                "type": "boolean",
+                "description": "Outputs very verbose logs with all calls made to and responses from OpenStack\n"
+            },
             "endpointOverrides": {
                 "type": "object",
                 "additionalProperties": {
@@ -1853,7 +1857,7 @@
                 },
                 "backup": {
                     "type": "boolean",
-                    "description": "A bool that indicates whether the the member is\nbackup. **Requires octavia minor version 2.1 or later**.\n",
+                    "description": "A bool that indicates whether the member is\nbackup. **Requires octavia minor version 2.1 or later**.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2840,6 +2844,10 @@
                 "type": "string",
                 "description": "The name of the Domain to scope to (Identity v3).\n"
             },
+            "enableLogging": {
+                "type": "boolean",
+                "description": "Outputs very verbose logs with all calls made to and responses from OpenStack\n"
+            },
             "endpointOverrides": {
                 "type": "object",
                 "additionalProperties": {
@@ -2982,6 +2990,10 @@
             "domainName": {
                 "type": "string",
                 "description": "The name of the Domain to scope to (Identity v3).\n"
+            },
+            "enableLogging": {
+                "type": "boolean",
+                "description": "Outputs very verbose logs with all calls made to and responses from OpenStack\n"
             },
             "endpointOverrides": {
                 "type": "object",
@@ -18170,7 +18182,7 @@
             }
         },
         "openstack:vpnaas/siteConnection:SiteConnection": {
-            "description": "Manages a V2 Neutron IPSec site connection resource within OpenStack.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst conn1 = new openstack.vpnaas.SiteConnection(\"conn_1\", {\n    ikepolicyId: openstack_vpnaas_ike_policy_v2_policy_2.id,\n    ipsecpolicyId: openstack_vpnaas_ipsec_policy_v2_policy_1.id,\n    localEpGroupId: openstack_vpnaas_endpoint_group_v2_group_2.id,\n    peerAddress: \"192.168.10.1\",\n    peerEpGroupId: openstack_vpnaas_endpoint_group_v2_group_1.id,\n    psk: \"secret\",\n    vpnserviceId: openstack_vpnaas_service_v2_service_1.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nconn1 = openstack.vpnaas.SiteConnection(\"conn1\",\n    ikepolicy_id=openstack_vpnaas_ike_policy_v2[\"policy_2\"][\"id\"],\n    ipsecpolicy_id=openstack_vpnaas_ipsec_policy_v2[\"policy_1\"][\"id\"],\n    local_ep_group_id=openstack_vpnaas_endpoint_group_v2[\"group_2\"][\"id\"],\n    peer_address=\"192.168.10.1\",\n    peer_ep_group_id=openstack_vpnaas_endpoint_group_v2[\"group_1\"][\"id\"],\n    psk=\"secret\",\n    vpnservice_id=openstack_vpnaas_service_v2[\"service_1\"][\"id\"])\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var conn1 = new OpenStack.VPNaaS.SiteConnection(\"conn1\", new OpenStack.VPNaaS.SiteConnectionArgs\n        {\n            IkepolicyId = openstack_vpnaas_ike_policy_v2.Policy_2.Id,\n            IpsecpolicyId = openstack_vpnaas_ipsec_policy_v2.Policy_1.Id,\n            LocalEpGroupId = openstack_vpnaas_endpoint_group_v2.Group_2.Id,\n            PeerAddress = \"192.168.10.1\",\n            PeerEpGroupId = openstack_vpnaas_endpoint_group_v2.Group_1.Id,\n            Psk = \"secret\",\n            VpnserviceId = openstack_vpnaas_service_v2.Service_1.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/vpnaas\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vpnaas.NewSiteConnection(ctx, \"conn1\", \u0026vpnaas.SiteConnectionArgs{\n\t\t\tIkepolicyId:    pulumi.Any(openstack_vpnaas_ike_policy_v2.Policy_2.Id),\n\t\t\tIpsecpolicyId:  pulumi.Any(openstack_vpnaas_ipsec_policy_v2.Policy_1.Id),\n\t\t\tLocalEpGroupId: pulumi.Any(openstack_vpnaas_endpoint_group_v2.Group_2.Id),\n\t\t\tPeerAddress:    pulumi.String(\"192.168.10.1\"),\n\t\t\tPeerEpGroupId:  pulumi.Any(openstack_vpnaas_endpoint_group_v2.Group_1.Id),\n\t\t\tPsk:            pulumi.String(\"secret\"),\n\t\t\tVpnserviceId:   pulumi.Any(openstack_vpnaas_service_v2.Service_1.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nSite Connections can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import openstack:vpnaas/siteConnection:SiteConnection conn_1 832cb7f3-59fe-40cf-8f64-8350ffc03272\n```\n\n ",
+            "description": "Manages a V2 Neutron IPSec site connection resource within OpenStack.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst conn1 = new openstack.vpnaas.SiteConnection(\"conn_1\", {\n    dpds: [{\n        action: \"restart\",\n        interval: 21,\n        timeout: 42,\n    }],\n    ikepolicyId: openstack_vpnaas_ike_policy_v2_policy_2.id,\n    ipsecpolicyId: openstack_vpnaas_ipsec_policy_v2_policy_1.id,\n    localEpGroupId: openstack_vpnaas_endpoint_group_v2_group_2.id,\n    peerAddress: \"192.168.10.1\",\n    peerEpGroupId: openstack_vpnaas_endpoint_group_v2_group_1.id,\n    psk: \"secret\",\n    vpnserviceId: openstack_vpnaas_service_v2_service_1.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nconn1 = openstack.vpnaas.SiteConnection(\"conn1\",\n    dpds=[openstack.vpnaas.SiteConnectionDpdArgs(\n        action=\"restart\",\n        interval=21,\n        timeout=42,\n    )],\n    ikepolicy_id=openstack_vpnaas_ike_policy_v2[\"policy_2\"][\"id\"],\n    ipsecpolicy_id=openstack_vpnaas_ipsec_policy_v2[\"policy_1\"][\"id\"],\n    local_ep_group_id=openstack_vpnaas_endpoint_group_v2[\"group_2\"][\"id\"],\n    peer_address=\"192.168.10.1\",\n    peer_ep_group_id=openstack_vpnaas_endpoint_group_v2[\"group_1\"][\"id\"],\n    psk=\"secret\",\n    vpnservice_id=openstack_vpnaas_service_v2[\"service_1\"][\"id\"])\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var conn1 = new OpenStack.VPNaaS.SiteConnection(\"conn1\", new OpenStack.VPNaaS.SiteConnectionArgs\n        {\n            Dpds = \n            {\n                new OpenStack.VPNaaS.Inputs.SiteConnectionDpdArgs\n                {\n                    Action = \"restart\",\n                    Interval = 21,\n                    Timeout = 42,\n                },\n            },\n            IkepolicyId = openstack_vpnaas_ike_policy_v2.Policy_2.Id,\n            IpsecpolicyId = openstack_vpnaas_ipsec_policy_v2.Policy_1.Id,\n            LocalEpGroupId = openstack_vpnaas_endpoint_group_v2.Group_2.Id,\n            PeerAddress = \"192.168.10.1\",\n            PeerEpGroupId = openstack_vpnaas_endpoint_group_v2.Group_1.Id,\n            Psk = \"secret\",\n            VpnserviceId = openstack_vpnaas_service_v2.Service_1.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/vpnaas\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := vpnaas.NewSiteConnection(ctx, \"conn1\", \u0026vpnaas.SiteConnectionArgs{\n\t\t\tDpds: vpnaas.SiteConnectionDpdArray{\n\t\t\t\t\u0026vpnaas.SiteConnectionDpdArgs{\n\t\t\t\t\tAction:   pulumi.String(\"restart\"),\n\t\t\t\t\tInterval: pulumi.Int(21),\n\t\t\t\t\tTimeout:  pulumi.Int(42),\n\t\t\t\t},\n\t\t\t},\n\t\t\tIkepolicyId:    pulumi.Any(openstack_vpnaas_ike_policy_v2.Policy_2.Id),\n\t\t\tIpsecpolicyId:  pulumi.Any(openstack_vpnaas_ipsec_policy_v2.Policy_1.Id),\n\t\t\tLocalEpGroupId: pulumi.Any(openstack_vpnaas_endpoint_group_v2.Group_2.Id),\n\t\t\tPeerAddress:    pulumi.String(\"192.168.10.1\"),\n\t\t\tPeerEpGroupId:  pulumi.Any(openstack_vpnaas_endpoint_group_v2.Group_1.Id),\n\t\t\tPsk:            pulumi.String(\"secret\"),\n\t\t\tVpnserviceId:   pulumi.Any(openstack_vpnaas_service_v2.Service_1.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nSite Connections can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import openstack:vpnaas/siteConnection:SiteConnection conn_1 832cb7f3-59fe-40cf-8f64-8350ffc03272\n```\n\n ",
             "properties": {
                 "adminStateUp": {
                     "type": "boolean",
@@ -18861,6 +18873,10 @@
                         "type": "string",
                         "description": "Indicates if the volume is bootable.\n"
                     },
+                    "host": {
+                        "type": "string",
+                        "description": "The OpenStack host on which the volume is located.\n"
+                    },
                     "metadata": {
                         "type": "object",
                         "additionalProperties": {
@@ -18893,6 +18909,10 @@
                     "bootable": {
                         "type": "string",
                         "description": "Indicates if the volume is bootable.\n"
+                    },
+                    "host": {
+                        "type": "string",
+                        "description": "The OpenStack host on which the volume is located.\n"
                     },
                     "id": {
                         "type": "string",
@@ -18937,6 +18957,7 @@
                 "type": "object",
                 "required": [
                     "bootable",
+                    "host",
                     "metadata",
                     "multiattach",
                     "name",

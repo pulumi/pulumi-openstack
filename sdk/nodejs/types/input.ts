@@ -619,7 +619,7 @@ export namespace loadbalancer {
          */
         adminStateUp?: pulumi.Input<boolean>;
         /**
-         * A bool that indicates whether the the member is
+         * A bool that indicates whether the member is
          * backup. **Requires octavia minor version 2.1 or later**.
          */
         backup?: pulumi.Input<boolean>;

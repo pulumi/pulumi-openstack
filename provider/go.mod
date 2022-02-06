@@ -5,7 +5,7 @@ go 1.16
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.18.0
 	github.com/pulumi/pulumi/sdk/v3 v3.23.2
-	github.com/terraform-provider-openstack/terraform-provider-openstack v1.46.0
+	github.com/terraform-provider-openstack/terraform-provider-openstack v1.47.0
 )
 
 replace (

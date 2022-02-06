@@ -153,6 +153,17 @@ Object.defineProperty(exports, "domainName", {
 });
 
 /**
+ * Outputs very verbose logs with all calls made to and responses from OpenStack
+ */
+export declare const enableLogging: boolean | undefined;
+Object.defineProperty(exports, "enableLogging", {
+    get() {
+        return __config.getObject<boolean>("enableLogging");
+    },
+    enumerable: true,
+});
+
+/**
  * A map of services with an endpoint to override what was from the Keystone catalog
  */
 export declare const endpointOverrides: {[key: string]: any} | undefined;

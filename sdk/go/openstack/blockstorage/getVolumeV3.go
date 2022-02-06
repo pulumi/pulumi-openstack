@@ -48,6 +48,8 @@ func GetVolumeV3(ctx *pulumi.Context, args *GetVolumeV3Args, opts ...pulumi.Invo
 type GetVolumeV3Args struct {
 	// Indicates if the volume is bootable.
 	Bootable *string `pulumi:"bootable"`
+	// The OpenStack host on which the volume is located.
+	Host *string `pulumi:"host"`
 	// Metadata key/value pairs associated with the volume.
 	Metadata map[string]interface{} `pulumi:"metadata"`
 	// The name of the volume.
@@ -65,6 +67,8 @@ type GetVolumeV3Args struct {
 type GetVolumeV3Result struct {
 	// Indicates if the volume is bootable.
 	Bootable string `pulumi:"bootable"`
+	// The OpenStack host on which the volume is located.
+	Host string `pulumi:"host"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// See Argument Reference above.
@@ -98,6 +102,8 @@ func GetVolumeV3Output(ctx *pulumi.Context, args GetVolumeV3OutputArgs, opts ...
 type GetVolumeV3OutputArgs struct {
 	// Indicates if the volume is bootable.
 	Bootable pulumi.StringPtrInput `pulumi:"bootable"`
+	// The OpenStack host on which the volume is located.
+	Host pulumi.StringPtrInput `pulumi:"host"`
 	// Metadata key/value pairs associated with the volume.
 	Metadata pulumi.MapInput `pulumi:"metadata"`
 	// The name of the volume.
@@ -133,6 +139,11 @@ func (o GetVolumeV3ResultOutput) ToGetVolumeV3ResultOutputWithContext(ctx contex
 // Indicates if the volume is bootable.
 func (o GetVolumeV3ResultOutput) Bootable() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumeV3Result) string { return v.Bootable }).(pulumi.StringOutput)
+}
+
+// The OpenStack host on which the volume is located.
+func (o GetVolumeV3ResultOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumeV3Result) string { return v.Host }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

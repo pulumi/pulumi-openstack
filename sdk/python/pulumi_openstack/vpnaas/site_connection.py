@@ -733,6 +733,11 @@ class SiteConnection(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         conn1 = openstack.vpnaas.SiteConnection("conn1",
+            dpds=[openstack.vpnaas.SiteConnectionDpdArgs(
+                action="restart",
+                interval=21,
+                timeout=42,
+            )],
             ikepolicy_id=openstack_vpnaas_ike_policy_v2["policy_2"]["id"],
             ipsecpolicy_id=openstack_vpnaas_ipsec_policy_v2["policy_1"]["id"],
             local_ep_group_id=openstack_vpnaas_endpoint_group_v2["group_2"]["id"],
@@ -805,6 +810,11 @@ class SiteConnection(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         conn1 = openstack.vpnaas.SiteConnection("conn1",
+            dpds=[openstack.vpnaas.SiteConnectionDpdArgs(
+                action="restart",
+                interval=21,
+                timeout=42,
+            )],
             ikepolicy_id=openstack_vpnaas_ike_policy_v2["policy_2"]["id"],
             ipsecpolicy_id=openstack_vpnaas_ipsec_policy_v2["policy_1"]["id"],
             local_ep_group_id=openstack_vpnaas_endpoint_group_v2["group_2"]["id"],

@@ -87,6 +87,11 @@ func GetDomainName(ctx *pulumi.Context) string {
 	return config.Get(ctx, "openstack:domainName")
 }
 
+// Outputs very verbose logs with all calls made to and responses from OpenStack
+func GetEnableLogging(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "openstack:enableLogging")
+}
+
 // A map of services with an endpoint to override what was from the Keystone catalog
 func GetEndpointOverrides(ctx *pulumi.Context) string {
 	return config.Get(ctx, "openstack:endpointOverrides")
