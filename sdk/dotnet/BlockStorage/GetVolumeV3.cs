@@ -79,6 +79,12 @@ namespace Pulumi.OpenStack.BlockStorage
         [Input("bootable")]
         public string? Bootable { get; set; }
 
+        /// <summary>
+        /// The OpenStack host on which the volume is located.
+        /// </summary>
+        [Input("host")]
+        public string? Host { get; set; }
+
         [Input("metadata")]
         private Dictionary<string, object>? _metadata;
 
@@ -128,6 +134,12 @@ namespace Pulumi.OpenStack.BlockStorage
         /// </summary>
         [Input("bootable")]
         public Input<string>? Bootable { get; set; }
+
+        /// <summary>
+        /// The OpenStack host on which the volume is located.
+        /// </summary>
+        [Input("host")]
+        public Input<string>? Host { get; set; }
 
         [Input("metadata")]
         private InputMap<object>? _metadata;
@@ -180,6 +192,10 @@ namespace Pulumi.OpenStack.BlockStorage
         /// </summary>
         public readonly string Bootable;
         /// <summary>
+        /// The OpenStack host on which the volume is located.
+        /// </summary>
+        public readonly string Host;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -220,6 +236,8 @@ namespace Pulumi.OpenStack.BlockStorage
         private GetVolumeV3Result(
             string bootable,
 
+            string host,
+
             string id,
 
             ImmutableDictionary<string, object> metadata,
@@ -239,6 +257,7 @@ namespace Pulumi.OpenStack.BlockStorage
             string volumeType)
         {
             Bootable = bootable;
+            Host = host;
             Id = id;
             Metadata = metadata;
             Multiattach = multiattach;

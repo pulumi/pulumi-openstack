@@ -164,6 +164,16 @@ namespace Pulumi.OpenStack
             set => _domainName.Set(value);
         }
 
+        private static readonly __Value<bool?> _enableLogging = new __Value<bool?>(() => __config.GetBoolean("enableLogging"));
+        /// <summary>
+        /// Outputs very verbose logs with all calls made to and responses from OpenStack
+        /// </summary>
+        public static bool? EnableLogging
+        {
+            get => _enableLogging.Get();
+            set => _enableLogging.Set(value);
+        }
+
         private static readonly __Value<ImmutableDictionary<string, object>?> _endpointOverrides = new __Value<ImmutableDictionary<string, object>?>(() => __config.GetObject<ImmutableDictionary<string, object>>("endpointOverrides"));
         /// <summary>
         /// A map of services with an endpoint to override what was from the Keystone catalog

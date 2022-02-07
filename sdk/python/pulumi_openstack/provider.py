@@ -26,6 +26,7 @@ class ProviderArgs:
                  disable_no_cache_header: Optional[pulumi.Input[bool]] = None,
                  domain_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
                  endpoint_overrides: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
@@ -61,6 +62,7 @@ class ProviderArgs:
         :param pulumi.Input[bool] disable_no_cache_header: If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
         :param pulumi.Input[str] domain_id: The ID of the Domain to scope to (Identity v3).
         :param pulumi.Input[str] domain_name: The name of the Domain to scope to (Identity v3).
+        :param pulumi.Input[bool] enable_logging: Outputs very verbose logs with all calls made to and responses from OpenStack
         :param pulumi.Input[Mapping[str, Any]] endpoint_overrides: A map of services with an endpoint to override what was from the Keystone catalog
         :param pulumi.Input[bool] insecure: Trust self-signed certificates.
         :param pulumi.Input[str] key: A client private key to authenticate with.
@@ -111,6 +113,8 @@ class ProviderArgs:
             pulumi.set(__self__, "domain_id", domain_id)
         if domain_name is not None:
             pulumi.set(__self__, "domain_name", domain_name)
+        if enable_logging is not None:
+            pulumi.set(__self__, "enable_logging", enable_logging)
         if endpoint_overrides is not None:
             pulumi.set(__self__, "endpoint_overrides", endpoint_overrides)
         if endpoint_type is None:
@@ -315,6 +319,18 @@ class ProviderArgs:
     @domain_name.setter
     def domain_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Outputs very verbose logs with all calls made to and responses from OpenStack
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @enable_logging.setter
+    def enable_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_logging", value)
 
     @property
     @pulumi.getter(name="endpointOverrides")
@@ -548,6 +564,7 @@ class Provider(pulumi.ProviderResource):
                  disable_no_cache_header: Optional[pulumi.Input[bool]] = None,
                  domain_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
                  endpoint_overrides: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
@@ -590,6 +607,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[bool] disable_no_cache_header: If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
         :param pulumi.Input[str] domain_id: The ID of the Domain to scope to (Identity v3).
         :param pulumi.Input[str] domain_name: The name of the Domain to scope to (Identity v3).
+        :param pulumi.Input[bool] enable_logging: Outputs very verbose logs with all calls made to and responses from OpenStack
         :param pulumi.Input[Mapping[str, Any]] endpoint_overrides: A map of services with an endpoint to override what was from the Keystone catalog
         :param pulumi.Input[bool] insecure: Trust self-signed certificates.
         :param pulumi.Input[str] key: A client private key to authenticate with.
@@ -648,6 +666,7 @@ class Provider(pulumi.ProviderResource):
                  disable_no_cache_header: Optional[pulumi.Input[bool]] = None,
                  domain_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
                  endpoint_overrides: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  endpoint_type: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
@@ -697,6 +716,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["disable_no_cache_header"] = pulumi.Output.from_input(disable_no_cache_header).apply(pulumi.runtime.to_json) if disable_no_cache_header is not None else None
             __props__.__dict__["domain_id"] = domain_id
             __props__.__dict__["domain_name"] = domain_name
+            __props__.__dict__["enable_logging"] = pulumi.Output.from_input(enable_logging).apply(pulumi.runtime.to_json) if enable_logging is not None else None
             __props__.__dict__["endpoint_overrides"] = pulumi.Output.from_input(endpoint_overrides).apply(pulumi.runtime.to_json) if endpoint_overrides is not None else None
             if endpoint_type is None:
                 endpoint_type = _utilities.get_env('OS_ENDPOINT_TYPE')

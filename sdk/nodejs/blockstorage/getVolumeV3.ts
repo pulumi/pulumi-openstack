@@ -27,6 +27,7 @@ export function getVolumeV3(args?: GetVolumeV3Args, opts?: pulumi.InvokeOptions)
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:blockstorage/getVolumeV3:getVolumeV3", {
         "bootable": args.bootable,
+        "host": args.host,
         "metadata": args.metadata,
         "name": args.name,
         "region": args.region,
@@ -43,6 +44,10 @@ export interface GetVolumeV3Args {
      * Indicates if the volume is bootable.
      */
     bootable?: string;
+    /**
+     * The OpenStack host on which the volume is located.
+     */
+    host?: string;
     /**
      * Metadata key/value pairs associated with the volume.
      */
@@ -74,6 +79,10 @@ export interface GetVolumeV3Result {
      * Indicates if the volume is bootable.
      */
     readonly bootable: string;
+    /**
+     * The OpenStack host on which the volume is located.
+     */
+    readonly host: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -124,6 +133,10 @@ export interface GetVolumeV3OutputArgs {
      * Indicates if the volume is bootable.
      */
     bootable?: pulumi.Input<string>;
+    /**
+     * The OpenStack host on which the volume is located.
+     */
+    host?: pulumi.Input<string>;
     /**
      * Metadata key/value pairs associated with the volume.
      */

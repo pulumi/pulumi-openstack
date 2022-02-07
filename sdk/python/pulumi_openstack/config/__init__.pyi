@@ -75,6 +75,11 @@ domainName: Optional[str]
 The name of the Domain to scope to (Identity v3).
 """
 
+enableLogging: Optional[bool]
+"""
+Outputs very verbose logs with all calls made to and responses from OpenStack
+"""
+
 endpointOverrides: Optional[str]
 """
 A map of services with an endpoint to override what was from the Keystone catalog

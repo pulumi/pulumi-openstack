@@ -24,6 +24,15 @@ namespace Pulumi.OpenStack.VPNaaS
     ///     {
     ///         var conn1 = new OpenStack.VPNaaS.SiteConnection("conn1", new OpenStack.VPNaaS.SiteConnectionArgs
     ///         {
+    ///             Dpds = 
+    ///             {
+    ///                 new OpenStack.VPNaaS.Inputs.SiteConnectionDpdArgs
+    ///                 {
+    ///                     Action = "restart",
+    ///                     Interval = 21,
+    ///                     Timeout = 42,
+    ///                 },
+    ///             },
     ///             IkepolicyId = openstack_vpnaas_ike_policy_v2.Policy_2.Id,
     ///             IpsecpolicyId = openstack_vpnaas_ipsec_policy_v2.Policy_1.Id,
     ///             LocalEpGroupId = openstack_vpnaas_endpoint_group_v2.Group_2.Id,

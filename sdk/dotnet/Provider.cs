@@ -261,6 +261,12 @@ namespace Pulumi.OpenStack
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }
 
+        /// <summary>
+        /// Outputs very verbose logs with all calls made to and responses from OpenStack
+        /// </summary>
+        [Input("enableLogging", json: true)]
+        public Input<bool>? EnableLogging { get; set; }
+
         [Input("endpointOverrides", json: true)]
         private InputMap<object>? _endpointOverrides;
 

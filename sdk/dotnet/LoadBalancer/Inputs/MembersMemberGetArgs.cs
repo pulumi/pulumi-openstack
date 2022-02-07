@@ -27,7 +27,7 @@ namespace Pulumi.OpenStack.LoadBalancer.Inputs
         public Input<bool>? AdminStateUp { get; set; }
 
         /// <summary>
-        /// A bool that indicates whether the the member is
+        /// A bool that indicates whether the member is
         /// backup. **Requires octavia minor version 2.1 or later**.
         /// </summary>
         [Input("backup")]

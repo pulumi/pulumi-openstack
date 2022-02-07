@@ -20,10 +20,13 @@ class GetVolumeV3Result:
     """
     A collection of values returned by getVolumeV3.
     """
-    def __init__(__self__, bootable=None, id=None, metadata=None, multiattach=None, name=None, region=None, size=None, source_volume_id=None, status=None, volume_type=None):
+    def __init__(__self__, bootable=None, host=None, id=None, metadata=None, multiattach=None, name=None, region=None, size=None, source_volume_id=None, status=None, volume_type=None):
         if bootable and not isinstance(bootable, str):
             raise TypeError("Expected argument 'bootable' to be a str")
         pulumi.set(__self__, "bootable", bootable)
+        if host and not isinstance(host, str):
+            raise TypeError("Expected argument 'host' to be a str")
+        pulumi.set(__self__, "host", host)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -59,6 +62,14 @@ class GetVolumeV3Result:
         Indicates if the volume is bootable.
         """
         return pulumi.get(self, "bootable")
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        The OpenStack host on which the volume is located.
+        """
+        return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
@@ -140,6 +151,7 @@ class AwaitableGetVolumeV3Result(GetVolumeV3Result):
             yield self
         return GetVolumeV3Result(
             bootable=self.bootable,
+            host=self.host,
             id=self.id,
             metadata=self.metadata,
             multiattach=self.multiattach,
@@ -152,6 +164,7 @@ class AwaitableGetVolumeV3Result(GetVolumeV3Result):
 
 
 def get_volume_v3(bootable: Optional[str] = None,
+                  host: Optional[str] = None,
                   metadata: Optional[Mapping[str, Any]] = None,
                   name: Optional[str] = None,
                   region: Optional[str] = None,
@@ -172,6 +185,7 @@ def get_volume_v3(bootable: Optional[str] = None,
 
 
     :param str bootable: Indicates if the volume is bootable.
+    :param str host: The OpenStack host on which the volume is located.
     :param Mapping[str, Any] metadata: Metadata key/value pairs associated with the volume.
     :param str name: The name of the volume.
     :param str region: The region in which to obtain the V3 Block Storage
@@ -181,6 +195,7 @@ def get_volume_v3(bootable: Optional[str] = None,
     """
     __args__ = dict()
     __args__['bootable'] = bootable
+    __args__['host'] = host
     __args__['metadata'] = metadata
     __args__['name'] = name
     __args__['region'] = region
@@ -194,6 +209,7 @@ def get_volume_v3(bootable: Optional[str] = None,
 
     return AwaitableGetVolumeV3Result(
         bootable=__ret__.bootable,
+        host=__ret__.host,
         id=__ret__.id,
         metadata=__ret__.metadata,
         multiattach=__ret__.multiattach,
@@ -207,6 +223,7 @@ def get_volume_v3(bootable: Optional[str] = None,
 
 @_utilities.lift_output_func(get_volume_v3)
 def get_volume_v3_output(bootable: Optional[pulumi.Input[Optional[str]]] = None,
+                         host: Optional[pulumi.Input[Optional[str]]] = None,
                          metadata: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                          name: Optional[pulumi.Input[Optional[str]]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -227,6 +244,7 @@ def get_volume_v3_output(bootable: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str bootable: Indicates if the volume is bootable.
+    :param str host: The OpenStack host on which the volume is located.
     :param Mapping[str, Any] metadata: Metadata key/value pairs associated with the volume.
     :param str name: The name of the volume.
     :param str region: The region in which to obtain the V3 Block Storage

@@ -30,7 +30,7 @@ class MembersMemberArgs:
         :param pulumi.Input[int] protocol_port: The port on which to listen for client traffic.
         :param pulumi.Input[bool] admin_state_up: The administrative state of the member.
                A valid value is true (UP) or false (DOWN). Defaults to true.
-        :param pulumi.Input[bool] backup: A bool that indicates whether the the member is
+        :param pulumi.Input[bool] backup: A bool that indicates whether the member is
                backup. **Requires octavia minor version 2.1 or later**.
         :param pulumi.Input[str] id: The unique ID for the members.
         :param pulumi.Input[str] name: Human-readable name for the member.
@@ -97,7 +97,7 @@ class MembersMemberArgs:
     @pulumi.getter
     def backup(self) -> Optional[pulumi.Input[bool]]:
         """
-        A bool that indicates whether the the member is
+        A bool that indicates whether the member is
         backup. **Requires octavia minor version 2.1 or later**.
         """
         return pulumi.get(self, "backup")

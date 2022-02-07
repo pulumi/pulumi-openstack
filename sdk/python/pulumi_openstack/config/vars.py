@@ -108,6 +108,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('domainName')
 
     @property
+    def enable_logging(self) -> Optional[bool]:
+        """
+        Outputs very verbose logs with all calls made to and responses from OpenStack
+        """
+        return __config__.get_bool('enableLogging')
+
+    @property
     def endpoint_overrides(self) -> Optional[str]:
         """
         A map of services with an endpoint to override what was from the Keystone catalog

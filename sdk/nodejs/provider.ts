@@ -139,6 +139,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["disableNoCacheHeader"] = pulumi.output(args ? args.disableNoCacheHeader : undefined).apply(JSON.stringify);
             resourceInputs["domainId"] = args ? args.domainId : undefined;
             resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["enableLogging"] = pulumi.output(args ? args.enableLogging : undefined).apply(JSON.stringify);
             resourceInputs["endpointOverrides"] = pulumi.output(args ? args.endpointOverrides : undefined).apply(JSON.stringify);
             resourceInputs["endpointType"] = (args ? args.endpointType : undefined) ?? utilities.getEnv("OS_ENDPOINT_TYPE");
             resourceInputs["insecure"] = pulumi.output((args ? args.insecure : undefined) ?? utilities.getEnvBoolean("OS_INSECURE")).apply(JSON.stringify);
@@ -221,6 +222,10 @@ export interface ProviderArgs {
      * The name of the Domain to scope to (Identity v3).
      */
     domainName?: pulumi.Input<string>;
+    /**
+     * Outputs very verbose logs with all calls made to and responses from OpenStack
+     */
+    enableLogging?: pulumi.Input<boolean>;
     /**
      * A map of services with an endpoint to override what was from the Keystone catalog
      */

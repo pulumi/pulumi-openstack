@@ -26,6 +26,13 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := vpnaas.NewSiteConnection(ctx, "conn1", &vpnaas.SiteConnectionArgs{
+// 			Dpds: vpnaas.SiteConnectionDpdArray{
+// 				&vpnaas.SiteConnectionDpdArgs{
+// 					Action:   pulumi.String("restart"),
+// 					Interval: pulumi.Int(21),
+// 					Timeout:  pulumi.Int(42),
+// 				},
+// 			},
 // 			IkepolicyId:    pulumi.Any(openstack_vpnaas_ike_policy_v2.Policy_2.Id),
 // 			IpsecpolicyId:  pulumi.Any(openstack_vpnaas_ipsec_policy_v2.Policy_1.Id),
 // 			LocalEpGroupId: pulumi.Any(openstack_vpnaas_endpoint_group_v2.Group_2.Id),
