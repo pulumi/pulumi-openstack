@@ -10,6 +10,43 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Identity
 {
     /// <summary>
+    /// ## Example Usage
+    /// ### EC2 credential in current project scope
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var ec2Key1 = new OpenStack.Identity.Ec2CredentialV3("ec2Key1", new OpenStack.Identity.Ec2CredentialV3Args
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### EC2 credential in pre-defined project scope
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var ec2Key1 = new OpenStack.Identity.Ec2CredentialV3("ec2Key1", new OpenStack.Identity.Ec2CredentialV3Args
+    ///         {
+    ///             ProjectId = "f7ac731cc11f40efbc03a9f9e1d1d21f",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// EC2 Credentials can be imported using the `access`, e.g.

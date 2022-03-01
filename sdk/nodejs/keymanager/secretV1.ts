@@ -6,6 +6,63 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ * ### Simple secret
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const secret1 = new openstack.keymanager.SecretV1("secret_1", {
+ *     algorithm: "aes",
+ *     bitLength: 256,
+ *     metadata: {
+ *         key: "foo",
+ *     },
+ *     mode: "cbc",
+ *     payload: "foobar",
+ *     payloadContentType: "text/plain",
+ *     secretType: "passphrase",
+ * });
+ * ```
+ * ### Secret with whitespaces
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const secret1 = new openstack.keymanager.SecretV1("secret_1", {
+ *     payload: Buffer.from("password with the whitespace at the end ").toString("base64"),
+ *     payloadContentEncoding: "base64",
+ *     payloadContentType: "application/octet-stream",
+ *     secretType: "passphrase",
+ * });
+ * ```
+ * ### Secret with the ACL
+ *
+ * > **Note** Only read ACLs are supported
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const secret1 = new openstack.keymanager.SecretV1("secret_1", {
+ *     acl: {
+ *         read: {
+ *             projectAccess: false,
+ *             users: [
+ *                 "userid1",
+ *                 "userid2",
+ *             ],
+ *         },
+ *     },
+ *     payload: fs.readFileSync("certificate.pem", "utf-8"),
+ *     payloadContentType: "text/plain",
+ *     secretType: "certificate",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Secrets can be imported using the secret id (the last part of the secret reference), e.g.

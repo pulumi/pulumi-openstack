@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := 26
 // 		_, err := networking.LookupQosDscpMarkingRule(ctx, &networking.LookupQosDscpMarkingRuleArgs{
-// 			DscpMark: &opt0,
+// 			DscpMark: pulumi.IntRef(26),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

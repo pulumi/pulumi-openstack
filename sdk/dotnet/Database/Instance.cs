@@ -9,6 +9,41 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Database
 {
+    /// <summary>
+    /// ## Example Usage
+    /// ### Instance
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test = new OpenStack.Database.Instance("test", new OpenStack.Database.InstanceArgs
+    ///         {
+    ///             Datastore = new OpenStack.Database.Inputs.InstanceDatastoreArgs
+    ///             {
+    ///                 Type = "mysql",
+    ///                 Version = "mysql-5.7",
+    ///             },
+    ///             FlavorId = "31792d21-c355-4587-9290-56c1ed0ca376",
+    ///             Networks = 
+    ///             {
+    ///                 new OpenStack.Database.Inputs.InstanceNetworkArgs
+    ///                 {
+    ///                     Uuid = "c0612505-caf2-4fb0-b7cb-56a0240a2b12",
+    ///                 },
+    ///             },
+    ///             Region = "region-test",
+    ///             Size = 8,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     [OpenStackResourceType("openstack:database/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {

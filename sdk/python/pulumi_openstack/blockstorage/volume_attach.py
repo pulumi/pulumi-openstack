@@ -511,6 +511,23 @@ class VolumeAttach(pulumi.CustomResource):
                  wwpns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        volume1 = openstack.blockstorage.Volume("volume1", size=1)
+        va1 = openstack.blockstorage.VolumeAttach("va1",
+            device="auto",
+            host_name="devstack",
+            initiator="iqn.1993-08.org.debian:01:e9861fb1859",
+            ip_address="192.168.255.10",
+            os_type="linux2",
+            platform="x86_64",
+            volume_id=volume1.id)
+        ```
+
         ## Import
 
         It is not possible to import this resource.
@@ -545,6 +562,23 @@ class VolumeAttach(pulumi.CustomResource):
                  args: VolumeAttachArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        volume1 = openstack.blockstorage.Volume("volume1", size=1)
+        va1 = openstack.blockstorage.VolumeAttach("va1",
+            device="auto",
+            host_name="devstack",
+            initiator="iqn.1993-08.org.debian:01:e9861fb1859",
+            ip_address="192.168.255.10",
+            os_type="linux2",
+            platform="x86_64",
+            volume_id=volume1.id)
+        ```
+
         ## Import
 
         It is not possible to import this resource.

@@ -5,6 +5,56 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ * ### Create a Cluster
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const cluster1 = new openstack.containerinfra.Cluster("cluster_1", {
+ *     clusterTemplateId: "b9a45c5c-cd03-4958-82aa-b80bf93cb922",
+ *     keypair: "ssh_keypair",
+ *     masterCount: 3,
+ *     nodeCount: 5,
+ * });
+ * ```
+ * ## Attributes reference
+ *
+ * The following attributes are exported:
+ *
+ * * `region` - See Argument Reference above.
+ * * `name` - See Argument Reference above.
+ * * `projectId` - See Argument Reference above.
+ * * `createdAt` - The time at which cluster was created.
+ * * `updatedAt` - The time at which cluster was created.
+ * * `apiAddress` - COE API address.
+ * * `coeVersion` - COE software version.
+ * * `clusterTemplateId` - See Argument Reference above.
+ * * `containerVersion` - Container software version.
+ * * `createTimeout` - See Argument Reference above.
+ * * `discoveryUrl` - See Argument Reference above.
+ * * `dockerVolumeSize` - See Argument Reference above.
+ * * `flavor` - See Argument Reference above.
+ * * `masterFlavor` - See Argument Reference above.
+ * * `keypair` - See Argument Reference above.
+ * * `labels` - See Argument Reference above.
+ * * `mergeLabels` - See Argument Reference above.
+ * * `masterCount` - See Argument Reference above.
+ * * `nodeCount` - See Argument Reference above.
+ * * `fixedNetwork` - See Argument Reference above.
+ * * `fixedSubnet` - See Argument Reference above.
+ * * `floatingIpEnabled` - See Argument Reference above.
+ * * `masterAddresses` - IP addresses of the master node of the cluster.
+ * * `nodeAddresses` - IP addresses of the node of the cluster.
+ * * `stackId` - UUID of the Orchestration service stack.
+ * * `kubeconfig` - The Kubernetes cluster's credentials
+ *   * `rawConfig` - The raw kubeconfig file
+ *   * `host` - The cluster's API server URL
+ *   * `clusterCaCertificate` - The cluster's CA certificate
+ *   * `clientKey` - The client's RSA key
+ *   * `clientCertificate` - The client's certificate
+ *
  * ## Import
  *
  * Clusters can be imported using the `id`, e.g.

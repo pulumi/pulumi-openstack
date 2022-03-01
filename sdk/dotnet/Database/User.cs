@@ -9,6 +9,9 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Database
 {
+    /// <summary>
+    /// ## Example Usage
+    /// </summary>
     [OpenStackResourceType("openstack:database/user:User")]
     public partial class User : Pulumi.CustomResource
     {

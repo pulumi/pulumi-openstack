@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "router_1"
 // 		_, err := networking.LookupRouter(ctx, &networking.LookupRouterArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("router_1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

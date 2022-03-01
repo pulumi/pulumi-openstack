@@ -10,6 +10,62 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := keymanager.GetSecret(ctx, &keymanager.GetSecretArgs{
+// 			Mode:       pulumi.StringRef("cbc"),
+// 			SecretType: pulumi.StringRef("passphrase"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## Date Filters
+//
+// The values for the `expirationFilter`, `createdAtFilter`, and
+// `updatedAtFilter` parameters are comma-separated lists of time stamps in
+// RFC3339 format. The time stamps can be prefixed with any of these comparison
+// operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
+// (less-than), *lte:* (less-than-or-equal).
+//
+// For example, to get a passphrase a Secret with CBC moda, that will expire in
+// January of 2020:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := keymanager.GetSecret(ctx, &keymanager.GetSecretArgs{
+// 			ExpirationFilter: pulumi.StringRef("gt:2020-01-01T00:00:00Z"),
+// 			Mode:             pulumi.StringRef("cbc"),
+// 			SecretType:       pulumi.StringRef("passphrase"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetSecret(ctx *pulumi.Context, args *GetSecretArgs, opts ...pulumi.InvokeOption) (*GetSecretResult, error) {
 	var rv GetSecretResult
 	err := ctx.Invoke("openstack:keymanager/getSecret:getSecret", args, &rv, opts...)

@@ -11,6 +11,147 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+// ### NFS
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/sharedfilesystem"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+// 			AdminStateUp: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+// 			Cidr:      pulumi.String("192.168.199.0/24"),
+// 			IpVersion: pulumi.Int(4),
+// 			NetworkId: network1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		sharenetwork1, err := sharedfilesystem.NewShareNetwork(ctx, "sharenetwork1", &sharedfilesystem.ShareNetworkArgs{
+// 			Description:     pulumi.String("test share network with security services"),
+// 			NeutronNetId:    network1.ID(),
+// 			NeutronSubnetId: subnet1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		share1, err := sharedfilesystem.NewShare(ctx, "share1", &sharedfilesystem.ShareArgs{
+// 			Description:    pulumi.String("test share description"),
+// 			ShareNetworkId: sharenetwork1.ID(),
+// 			ShareProto:     pulumi.String("NFS"),
+// 			Size:           pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sharedfilesystem.NewShareAccess(ctx, "shareAccess1", &sharedfilesystem.ShareAccessArgs{
+// 			AccessLevel: pulumi.String("rw"),
+// 			AccessTo:    pulumi.String("192.168.199.10"),
+// 			AccessType:  pulumi.String("ip"),
+// 			ShareId:     share1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### CIFS
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/sharedfilesystem"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+// 			AdminStateUp: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+// 			Cidr:      pulumi.String("192.168.199.0/24"),
+// 			IpVersion: pulumi.Int(4),
+// 			NetworkId: network1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		securityservice1, err := sharedfilesystem.NewSecurityService(ctx, "securityservice1", &sharedfilesystem.SecurityServiceArgs{
+// 			Description: pulumi.String("created by terraform"),
+// 			DnsIp:       pulumi.String("192.168.199.10"),
+// 			Domain:      pulumi.String("example.com"),
+// 			Ou:          pulumi.String("CN=Computers,DC=example,DC=com"),
+// 			Password:    pulumi.String("s8cret"),
+// 			Server:      pulumi.String("192.168.199.10"),
+// 			Type:        pulumi.String("active_directory"),
+// 			User:        pulumi.String("joinDomainUser"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		sharenetwork1, err := sharedfilesystem.NewShareNetwork(ctx, "sharenetwork1", &sharedfilesystem.ShareNetworkArgs{
+// 			Description:     pulumi.String("share the secure love"),
+// 			NeutronNetId:    network1.ID(),
+// 			NeutronSubnetId: subnet1.ID(),
+// 			SecurityServiceIds: pulumi.StringArray{
+// 				securityservice1.ID(),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		share1, err := sharedfilesystem.NewShare(ctx, "share1", &sharedfilesystem.ShareArgs{
+// 			ShareNetworkId: sharenetwork1.ID(),
+// 			ShareProto:     pulumi.String("CIFS"),
+// 			Size:           pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sharedfilesystem.NewShareAccess(ctx, "shareAccess1", &sharedfilesystem.ShareAccessArgs{
+// 			AccessLevel: pulumi.String("ro"),
+// 			AccessTo:    pulumi.String("windows"),
+// 			AccessType:  pulumi.String("user"),
+// 			ShareId:     share1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sharedfilesystem.NewShareAccess(ctx, "shareAccess2", &sharedfilesystem.ShareAccessArgs{
+// 			AccessLevel: pulumi.String("rw"),
+// 			AccessTo:    pulumi.String("linux"),
+// 			AccessType:  pulumi.String("user"),
+// 			ShareId:     share1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("exportLocations", share1.ExportLocations)
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.

@@ -24,11 +24,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := true
-// 		opt1 := "Ubuntu 16.04"
 // 		_, err := images.LookupImage(ctx, &images.LookupImageArgs{
-// 			MostRecent: &opt0,
-// 			Name:       &opt1,
+// 			MostRecent: pulumi.BoolRef(true),
+// 			Name:       pulumi.StringRef("Ubuntu 16.04"),
 // 			Properties: map[string]interface{}{
 // 				"key": "value",
 // 			},

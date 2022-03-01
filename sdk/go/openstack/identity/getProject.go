@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "demo"
 // 		_, err := identity.LookupProject(ctx, &identity.LookupProjectArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("demo"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

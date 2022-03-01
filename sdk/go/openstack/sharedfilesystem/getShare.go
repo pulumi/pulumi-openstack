@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "share_1"
 // 		_, err := sharedfilesystem.LookupShare(ctx, &sharedfilesystem.LookupShareArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("share_1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

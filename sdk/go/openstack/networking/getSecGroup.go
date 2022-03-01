@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tf_test_secgroup"
 // 		_, err := networking.LookupSecGroup(ctx, &networking.LookupSecGroupArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("tf_test_secgroup"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

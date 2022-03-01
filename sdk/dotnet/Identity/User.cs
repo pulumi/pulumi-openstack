@@ -10,6 +10,54 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Identity
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project1 = new OpenStack.Identity.Project("project1", new OpenStack.Identity.ProjectArgs
+    ///         {
+    ///         });
+    ///         var user1 = new OpenStack.Identity.User("user1", new OpenStack.Identity.UserArgs
+    ///         {
+    ///             DefaultProjectId = project1.Id,
+    ///             Description = "A user",
+    ///             Extra = 
+    ///             {
+    ///                 { "email", "user_1@foobar.com" },
+    ///             },
+    ///             IgnoreChangePasswordUponFirstUse = true,
+    ///             MultiFactorAuthEnabled = true,
+    ///             MultiFactorAuthRules = 
+    ///             {
+    ///                 new OpenStack.Identity.Inputs.UserMultiFactorAuthRuleArgs
+    ///                 {
+    ///                     Rules = 
+    ///                     {
+    ///                         "password",
+    ///                         "totp",
+    ///                     },
+    ///                 },
+    ///                 new OpenStack.Identity.Inputs.UserMultiFactorAuthRuleArgs
+    ///                 {
+    ///                     Rules = 
+    ///                     {
+    ///                         "password",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Password = "password123",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Users can be imported using the `id`, e.g.

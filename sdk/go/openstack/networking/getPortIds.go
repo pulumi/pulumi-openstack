@@ -25,9 +25,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "port"
 // 		_, err := networking.GetPortIds(ctx, &networking.GetPortIdsArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("port"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

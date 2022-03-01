@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tf_test_policy"
 // 		_, err := firewall.LookupPolicy(ctx, &firewall.LookupPolicyArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("tf_test_policy"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

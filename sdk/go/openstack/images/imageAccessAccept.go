@@ -28,13 +28,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "all"
-// 		opt1 := "RancherOS"
-// 		opt2 := "shared"
 // 		rancheros, err := images.LookupImage(ctx, &images.LookupImageArgs{
-// 			MemberStatus: &opt0,
-// 			Name:         &opt1,
-// 			Visibility:   &opt2,
+// 			MemberStatus: pulumi.StringRef("all"),
+// 			Name:         pulumi.StringRef("RancherOS"),
+// 			Visibility:   pulumi.StringRef("shared"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

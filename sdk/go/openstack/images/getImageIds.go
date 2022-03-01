@@ -25,14 +25,12 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "^Ubuntu 16\\.04.*-amd64"
-// 		opt1 := "updated_at"
 // 		_, err := images.GetImageIds(ctx, &images.GetImageIdsArgs{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("^Ubuntu 16\\.04.*-amd64"),
 // 			Properties: map[string]interface{}{
 // 				"key": "value",
 // 			},
-// 			Sort: &opt1,
+// 			Sort: pulumi.StringRef("updated_at"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
