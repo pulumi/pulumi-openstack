@@ -24,13 +24,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := 4
-// 		opt1 := "public_addressscope"
-// 		opt2 := true
 // 		_, err := networking.LookupAddressScope(ctx, &networking.LookupAddressScopeArgs{
-// 			IpVersion: &opt0,
-// 			Name:      &opt1,
-// 			Shared:    &opt2,
+// 			IpVersion: pulumi.IntRef(4),
+// 			Name:      pulumi.StringRef("public_addressscope"),
+// 			Shared:    pulumi.BoolRef(true),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

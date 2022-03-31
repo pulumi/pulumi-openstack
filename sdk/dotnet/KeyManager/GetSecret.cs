@@ -11,9 +11,117 @@ namespace Pulumi.OpenStack.KeyManager
 {
     public static class GetSecret
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(OpenStack.KeyManager.GetSecret.InvokeAsync(new OpenStack.KeyManager.GetSecretArgs
+        ///         {
+        ///             Mode = "cbc",
+        ///             SecretType = "passphrase",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Date Filters
+        /// 
+        /// The values for the `expiration_filter`, `created_at_filter`, and
+        /// `updated_at_filter` parameters are comma-separated lists of time stamps in
+        /// RFC3339 format. The time stamps can be prefixed with any of these comparison
+        /// operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
+        /// (less-than), *lte:* (less-than-or-equal).
+        /// 
+        /// For example, to get a passphrase a Secret with CBC moda, that will expire in
+        /// January of 2020:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var dateFilterExample = Output.Create(OpenStack.KeyManager.GetSecret.InvokeAsync(new OpenStack.KeyManager.GetSecretArgs
+        ///         {
+        ///             ExpirationFilter = "gt:2020-01-01T00:00:00Z",
+        ///             Mode = "cbc",
+        ///             SecretType = "passphrase",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// </summary>
         public static Task<GetSecretResult> InvokeAsync(GetSecretArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("openstack:keymanager/getSecret:getSecret", args ?? new GetSecretArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(OpenStack.KeyManager.GetSecret.InvokeAsync(new OpenStack.KeyManager.GetSecretArgs
+        ///         {
+        ///             Mode = "cbc",
+        ///             SecretType = "passphrase",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// ## Date Filters
+        /// 
+        /// The values for the `expiration_filter`, `created_at_filter`, and
+        /// `updated_at_filter` parameters are comma-separated lists of time stamps in
+        /// RFC3339 format. The time stamps can be prefixed with any of these comparison
+        /// operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
+        /// (less-than), *lte:* (less-than-or-equal).
+        /// 
+        /// For example, to get a passphrase a Secret with CBC moda, that will expire in
+        /// January of 2020:
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var dateFilterExample = Output.Create(OpenStack.KeyManager.GetSecret.InvokeAsync(new OpenStack.KeyManager.GetSecretArgs
+        ///         {
+        ///             ExpirationFilter = "gt:2020-01-01T00:00:00Z",
+        ///             Mode = "cbc",
+        ///             SecretType = "passphrase",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// </summary>
         public static Output<GetSecretResult> Invoke(GetSecretInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetSecretResult>("openstack:keymanager/getSecret:getSecret", args ?? new GetSecretInvokeArgs(), options.WithDefaults());
     }

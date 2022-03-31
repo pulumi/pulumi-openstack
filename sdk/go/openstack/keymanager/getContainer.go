@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my_container"
 // 		_, err := keymanager.GetContainer(ctx, &keymanager.GetContainerArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("my_container"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

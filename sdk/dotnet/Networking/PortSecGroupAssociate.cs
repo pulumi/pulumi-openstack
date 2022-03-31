@@ -9,6 +9,94 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Networking
 {
+    /// <summary>
+    /// ## Example Usage
+    /// ### Append a security group to an existing port
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var systemPort = Output.Create(OpenStack.Networking.GetPort.InvokeAsync(new OpenStack.Networking.GetPortArgs
+    ///         {
+    ///             FixedIp = "10.0.0.10",
+    ///         }));
+    ///         var secgroup = Output.Create(OpenStack.Networking.GetSecGroup.InvokeAsync(new OpenStack.Networking.GetSecGroupArgs
+    ///         {
+    ///             Name = "secgroup",
+    ///         }));
+    ///         var port1 = new OpenStack.Networking.PortSecGroupAssociate("port1", new OpenStack.Networking.PortSecGroupAssociateArgs
+    ///         {
+    ///             PortId = systemPort.Apply(systemPort =&gt; systemPort.Id),
+    ///             SecurityGroupIds = 
+    ///             {
+    ///                 secgroup.Apply(secgroup =&gt; secgroup.Id),
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Enforce a security group to an existing port
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var systemPort = Output.Create(OpenStack.Networking.GetPort.InvokeAsync(new OpenStack.Networking.GetPortArgs
+    ///         {
+    ///             FixedIp = "10.0.0.10",
+    ///         }));
+    ///         var secgroup = Output.Create(OpenStack.Networking.GetSecGroup.InvokeAsync(new OpenStack.Networking.GetSecGroupArgs
+    ///         {
+    ///             Name = "secgroup",
+    ///         }));
+    ///         var port1 = new OpenStack.Networking.PortSecGroupAssociate("port1", new OpenStack.Networking.PortSecGroupAssociateArgs
+    ///         {
+    ///             Enforce = true,
+    ///             PortId = systemPort.Apply(systemPort =&gt; systemPort.Id),
+    ///             SecurityGroupIds = 
+    ///             {
+    ///                 secgroup.Apply(secgroup =&gt; secgroup.Id),
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Remove all security groups from an existing port
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var systemPort = Output.Create(OpenStack.Networking.GetPort.InvokeAsync(new OpenStack.Networking.GetPortArgs
+    ///         {
+    ///             FixedIp = "10.0.0.10",
+    ///         }));
+    ///         var port1 = new OpenStack.Networking.PortSecGroupAssociate("port1", new OpenStack.Networking.PortSecGroupAssociateArgs
+    ///         {
+    ///             Enforce = true,
+    ///             PortId = systemPort.Apply(systemPort =&gt; systemPort.Id),
+    ///             SecurityGroupIds = {},
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     [OpenStackResourceType("openstack:networking/portSecGroupAssociate:PortSecGroupAssociate")]
     public partial class PortSecGroupAssociate : Pulumi.CustomResource
     {

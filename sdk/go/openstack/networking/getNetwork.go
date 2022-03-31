@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "tf_test_network"
 // 		_, err := networking.LookupNetwork(ctx, &networking.LookupNetworkArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("tf_test_network"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

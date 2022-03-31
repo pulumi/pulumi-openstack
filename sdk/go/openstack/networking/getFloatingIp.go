@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "192.168.0.4"
 // 		_, err := networking.LookupFloatingIp(ctx, &networking.LookupFloatingIpArgs{
-// 			Address: &opt0,
+// 			Address: pulumi.StringRef("192.168.0.4"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

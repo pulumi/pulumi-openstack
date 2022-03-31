@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := 2000
 // 		_, err := networking.LookupQosMinimumBandwidthRule(ctx, &networking.LookupQosMinimumBandwidthRuleArgs{
-// 			MinKbps: &opt0,
+// 			MinKbps: pulumi.IntRef(2000),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

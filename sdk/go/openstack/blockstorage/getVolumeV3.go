@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "volume_1"
 // 		_, err := blockstorage.GetVolumeV3(ctx, &blockstorage.GetVolumeV3Args{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("volume_1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

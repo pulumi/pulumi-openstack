@@ -24,11 +24,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := true
-// 		opt1 := "snapshot_1"
 // 		_, err := blockstorage.GetSnapshotV3(ctx, &blockstorage.GetSnapshotV3Args{
-// 			MostRecent: &opt0,
-// 			Name:       &opt1,
+// 			MostRecent: pulumi.BoolRef(true),
+// 			Name:       pulumi.StringRef("snapshot_1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

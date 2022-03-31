@@ -11,6 +11,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+// ### Instance
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/database"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := database.NewInstance(ctx, "test", &database.InstanceArgs{
+// 			Datastore: &database.InstanceDatastoreArgs{
+// 				Type:    pulumi.String("mysql"),
+// 				Version: pulumi.String("mysql-5.7"),
+// 			},
+// 			FlavorId: pulumi.String("31792d21-c355-4587-9290-56c1ed0ca376"),
+// 			Networks: database.InstanceNetworkArray{
+// 				&database.InstanceNetworkArgs{
+// 					Uuid: pulumi.String("c0612505-caf2-4fb0-b7cb-56a0240a2b12"),
+// 				},
+// 			},
+// 			Region: pulumi.String("region-test"),
+// 			Size:   pulumi.Int(8),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Instance struct {
 	pulumi.CustomResourceState
 

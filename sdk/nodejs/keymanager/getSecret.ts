@@ -5,6 +5,40 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const example = pulumi.output(openstack.keymanager.getSecret({
+ *     mode: "cbc",
+ *     secretType: "passphrase",
+ * }));
+ * ```
+ * ## Date Filters
+ *
+ * The values for the `expirationFilter`, `createdAtFilter`, and
+ * `updatedAtFilter` parameters are comma-separated lists of time stamps in
+ * RFC3339 format. The time stamps can be prefixed with any of these comparison
+ * operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
+ * (less-than), *lte:* (less-than-or-equal).
+ *
+ * For example, to get a passphrase a Secret with CBC moda, that will expire in
+ * January of 2020:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const dateFilterExample = pulumi.output(openstack.keymanager.getSecret({
+ *     expirationFilter: "gt:2020-01-01T00:00:00Z",
+ *     mode: "cbc",
+ *     secretType: "passphrase",
+ * }));
+ * ```
+ */
 export function getSecret(args?: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> {
     args = args || {};
     if (!opts) {

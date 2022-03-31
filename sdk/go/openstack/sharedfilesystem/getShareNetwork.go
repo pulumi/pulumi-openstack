@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "sharenetwork_1"
 // 		_, err := sharedfilesystem.LookupShareNetwork(ctx, &sharedfilesystem.LookupShareNetworkArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("sharenetwork_1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

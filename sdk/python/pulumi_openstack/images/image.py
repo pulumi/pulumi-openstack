@@ -921,6 +921,36 @@ class Image(pulumi.CustomResource):
                  web_download: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rancheros = openstack.images.Image("rancheros",
+            container_format="bare",
+            disk_format="qcow2",
+            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
+            properties={
+                "key": "value",
+            })
+        ```
+        ## Notes
+
+        ### Properties
+
+        This resource supports the ability to add properties to a resource during
+        creation as well as add, update, and delete properties during an update of this
+        resource.
+
+        Newer versions of OpenStack are adding some read-only properties to each image.
+        These properties start with the prefix `os_`. If these properties are detected,
+        this resource will automatically reconcile these with the user-provided
+        properties.
+
+        In addition, the `direct_url` and `stores` properties are also automatically reconciled if the
+        Image Service set it.
+
         ## Import
 
         Images can be imported using the `id`, e.g.
@@ -981,6 +1011,36 @@ class Image(pulumi.CustomResource):
                  args: ImageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rancheros = openstack.images.Image("rancheros",
+            container_format="bare",
+            disk_format="qcow2",
+            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
+            properties={
+                "key": "value",
+            })
+        ```
+        ## Notes
+
+        ### Properties
+
+        This resource supports the ability to add properties to a resource during
+        creation as well as add, update, and delete properties during an update of this
+        resource.
+
+        Newer versions of OpenStack are adding some read-only properties to each image.
+        These properties start with the prefix `os_`. If these properties are detected,
+        this resource will automatically reconcile these with the user-provided
+        properties.
+
+        In addition, the `direct_url` and `stores` properties are also automatically reconciled if the
+        Image Service set it.
+
         ## Import
 
         Images can be imported using the `id`, e.g.

@@ -24,11 +24,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := 512
-// 		opt1 := 1
 // 		_, err := compute.LookupFlavor(ctx, &compute.LookupFlavorArgs{
-// 			Ram:   &opt0,
-// 			Vcpus: &opt1,
+// 			Ram:   pulumi.IntRef(512),
+// 			Vcpus: pulumi.IntRef(1),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

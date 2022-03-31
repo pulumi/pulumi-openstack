@@ -10,6 +10,64 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.ContainerInfra
 {
     /// <summary>
+    /// ## Example Usage
+    /// ### Create a Cluster
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var cluster1 = new OpenStack.ContainerInfra.Cluster("cluster1", new OpenStack.ContainerInfra.ClusterArgs
+    ///         {
+    ///             ClusterTemplateId = "b9a45c5c-cd03-4958-82aa-b80bf93cb922",
+    ///             Keypair = "ssh_keypair",
+    ///             MasterCount = 3,
+    ///             NodeCount = 5,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## Attributes reference
+    /// 
+    /// The following attributes are exported:
+    /// 
+    /// * `region` - See Argument Reference above.
+    /// * `name` - See Argument Reference above.
+    /// * `project_id` - See Argument Reference above.
+    /// * `created_at` - The time at which cluster was created.
+    /// * `updated_at` - The time at which cluster was created.
+    /// * `api_address` - COE API address.
+    /// * `coe_version` - COE software version.
+    /// * `cluster_template_id` - See Argument Reference above.
+    /// * `container_version` - Container software version.
+    /// * `create_timeout` - See Argument Reference above.
+    /// * `discovery_url` - See Argument Reference above.
+    /// * `docker_volume_size` - See Argument Reference above.
+    /// * `flavor` - See Argument Reference above.
+    /// * `master_flavor` - See Argument Reference above.
+    /// * `keypair` - See Argument Reference above.
+    /// * `labels` - See Argument Reference above.
+    /// * `merge_labels` - See Argument Reference above.
+    /// * `master_count` - See Argument Reference above.
+    /// * `node_count` - See Argument Reference above.
+    /// * `fixed_network` - See Argument Reference above.
+    /// * `fixed_subnet` - See Argument Reference above.
+    /// * `floating_ip_enabled` - See Argument Reference above.
+    /// * `master_addresses` - IP addresses of the master node of the cluster.
+    /// * `node_addresses` - IP addresses of the node of the cluster.
+    /// * `stack_id` - UUID of the Orchestration service stack.
+    /// * `kubeconfig` - The Kubernetes cluster's credentials
+    ///   * `raw_config` - The raw kubeconfig file
+    ///   * `host` - The cluster's API server URL
+    ///   * `cluster_ca_certificate` - The cluster's CA certificate
+    ///   * `client_key` - The client's RSA key
+    ///   * `client_certificate` - The client's certificate
+    /// 
     /// ## Import
     /// 
     /// Clusters can be imported using the `id`, e.g.

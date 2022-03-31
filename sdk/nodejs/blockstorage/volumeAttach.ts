@@ -5,6 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const volume1 = new openstack.blockstorage.Volume("volume_1", {
+ *     size: 1,
+ * });
+ * const va1 = new openstack.blockstorage.VolumeAttach("va_1", {
+ *     device: "auto",
+ *     hostName: "devstack",
+ *     initiator: "iqn.1993-08.org.debian:01:e9861fb1859",
+ *     ipAddress: "192.168.255.10",
+ *     osType: "linux2",
+ *     platform: "x86_64",
+ *     volumeId: volume1.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * It is not possible to import this resource.

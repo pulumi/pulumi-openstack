@@ -25,9 +25,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "public"
 // 		_, err := networking.GetSubnetIdsV2(ctx, &networking.GetSubnetIdsV2Args{
-// 			NameRegex: &opt0,
+// 			NameRegex: pulumi.StringRef("public"),
 // 			Tags: []string{
 // 				"public",
 // 			},

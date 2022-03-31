@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "snapshot_1"
 // 		_, err := sharedfilesystem.GetSnapshot(ctx, &sharedfilesystem.GetSnapshotArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("snapshot_1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

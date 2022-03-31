@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "qos_policy_1"
 // 		_, err := networking.LookupQosPolicy(ctx, &networking.LookupQosPolicyArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("qos_policy_1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

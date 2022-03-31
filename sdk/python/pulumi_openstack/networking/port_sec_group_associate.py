@@ -205,7 +205,45 @@ class PortSecGroupAssociate(pulumi.CustomResource):
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a PortSecGroupAssociate resource with the given unique name, props, and options.
+        ## Example Usage
+        ### Append a security group to an existing port
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
+        secgroup = openstack.networking.get_sec_group(name="secgroup")
+        port1 = openstack.networking.PortSecGroupAssociate("port1",
+            port_id=system_port.id,
+            security_group_ids=[secgroup.id])
+        ```
+        ### Enforce a security group to an existing port
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
+        secgroup = openstack.networking.get_sec_group(name="secgroup")
+        port1 = openstack.networking.PortSecGroupAssociate("port1",
+            enforce=True,
+            port_id=system_port.id,
+            security_group_ids=[secgroup.id])
+        ```
+        ### Remove all security groups from an existing port
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
+        port1 = openstack.networking.PortSecGroupAssociate("port1",
+            enforce=True,
+            port_id=system_port.id,
+            security_group_ids=[])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enforce: Whether to replace or append the list of security
@@ -226,7 +264,45 @@ class PortSecGroupAssociate(pulumi.CustomResource):
                  args: PortSecGroupAssociateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a PortSecGroupAssociate resource with the given unique name, props, and options.
+        ## Example Usage
+        ### Append a security group to an existing port
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
+        secgroup = openstack.networking.get_sec_group(name="secgroup")
+        port1 = openstack.networking.PortSecGroupAssociate("port1",
+            port_id=system_port.id,
+            security_group_ids=[secgroup.id])
+        ```
+        ### Enforce a security group to an existing port
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
+        secgroup = openstack.networking.get_sec_group(name="secgroup")
+        port1 = openstack.networking.PortSecGroupAssociate("port1",
+            enforce=True,
+            port_id=system_port.id,
+            security_group_ids=[secgroup.id])
+        ```
+        ### Remove all security groups from an existing port
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
+        port1 = openstack.networking.PortSecGroupAssociate("port1",
+            enforce=True,
+            port_id=system_port.id,
+            security_group_ids=[])
+        ```
+
         :param str resource_name: The name of the resource.
         :param PortSecGroupAssociateArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

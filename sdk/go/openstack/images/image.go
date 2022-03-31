@@ -11,6 +11,49 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/images"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := images.NewImage(ctx, "rancheros", &images.ImageArgs{
+// 			ContainerFormat: pulumi.String("bare"),
+// 			DiskFormat:      pulumi.String("qcow2"),
+// 			ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
+// 			Properties: pulumi.AnyMap{
+// 				"key": pulumi.Any("value"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## Notes
+//
+// ### Properties
+//
+// This resource supports the ability to add properties to a resource during
+// creation as well as add, update, and delete properties during an update of this
+// resource.
+//
+// Newer versions of OpenStack are adding some read-only properties to each image.
+// These properties start with the prefix `os_`. If these properties are detected,
+// this resource will automatically reconcile these with the user-provided
+// properties.
+//
+// In addition, the `directUrl` and `stores` properties are also automatically reconciled if the
+// Image Service set it.
+//
 // ## Import
 //
 // Images can be imported using the `id`, e.g.
