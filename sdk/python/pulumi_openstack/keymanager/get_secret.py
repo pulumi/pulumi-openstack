@@ -321,7 +321,35 @@ def get_secret(acl_only: Optional[bool] = None,
                updated_at_filter: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    example = openstack.keymanager.get_secret(mode="cbc",
+        secret_type="passphrase")
+    ```
+    ## Date Filters
+
+    The values for the `expiration_filter`, `created_at_filter`, and
+    `updated_at_filter` parameters are comma-separated lists of time stamps in
+    RFC3339 format. The time stamps can be prefixed with any of these comparison
+    operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
+    (less-than), *lte:* (less-than-or-equal).
+
+    For example, to get a passphrase a Secret with CBC moda, that will expire in
+    January of 2020:
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    date_filter_example = openstack.keymanager.get_secret(expiration_filter="gt:2020-01-01T00:00:00Z",
+        mode="cbc",
+        secret_type="passphrase")
+    ```
+
 
     :param bool acl_only: Select the Secret with an ACL that contains the user.
            Project scope is ignored. Defaults to `false`.
@@ -400,7 +428,35 @@ def get_secret_output(acl_only: Optional[pulumi.Input[Optional[bool]]] = None,
                       updated_at_filter: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    example = openstack.keymanager.get_secret(mode="cbc",
+        secret_type="passphrase")
+    ```
+    ## Date Filters
+
+    The values for the `expiration_filter`, `created_at_filter`, and
+    `updated_at_filter` parameters are comma-separated lists of time stamps in
+    RFC3339 format. The time stamps can be prefixed with any of these comparison
+    operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
+    (less-than), *lte:* (less-than-or-equal).
+
+    For example, to get a passphrase a Secret with CBC moda, that will expire in
+    January of 2020:
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    date_filter_example = openstack.keymanager.get_secret(expiration_filter="gt:2020-01-01T00:00:00Z",
+        mode="cbc",
+        secret_type="passphrase")
+    ```
+
 
     :param bool acl_only: Select the Secret with an ACL that contains the user.
            Project scope is ignored. Defaults to `false`.

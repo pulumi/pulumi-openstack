@@ -10,6 +10,46 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Images
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var rancheros = new OpenStack.Images.Image("rancheros", new OpenStack.Images.ImageArgs
+    ///         {
+    ///             ContainerFormat = "bare",
+    ///             DiskFormat = "qcow2",
+    ///             ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
+    ///             Properties = 
+    ///             {
+    ///                 { "key", "value" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## Notes
+    /// 
+    /// ### Properties
+    /// 
+    /// This resource supports the ability to add properties to a resource during
+    /// creation as well as add, update, and delete properties during an update of this
+    /// resource.
+    /// 
+    /// Newer versions of OpenStack are adding some read-only properties to each image.
+    /// These properties start with the prefix `os_`. If these properties are detected,
+    /// this resource will automatically reconcile these with the user-provided
+    /// properties.
+    /// 
+    /// In addition, the `direct_url` and `stores` properties are also automatically reconciled if the
+    /// Image Service set it.
+    /// 
     /// ## Import
     /// 
     /// Images can be imported using the `id`, e.g.

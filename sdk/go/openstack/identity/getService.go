@@ -26,9 +26,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "keystone"
 // 		_, err := identity.GetService(ctx, &identity.GetServiceArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("keystone"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

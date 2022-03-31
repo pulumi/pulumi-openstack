@@ -10,6 +10,70 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.KeyManager
 {
     /// <summary>
+    /// ## Example Usage
+    /// ### Simple secret
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var secret1 = new OpenStack.KeyManager.SecretV1("secret1", new OpenStack.KeyManager.SecretV1Args
+    ///         {
+    ///             Algorithm = "aes",
+    ///             BitLength = 256,
+    ///             Metadata = 
+    ///             {
+    ///                 { "key", "foo" },
+    ///             },
+    ///             Mode = "cbc",
+    ///             Payload = "foobar",
+    ///             PayloadContentType = "text/plain",
+    ///             SecretType = "passphrase",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Secret with the ACL
+    /// 
+    /// &gt; **Note** Only read ACLs are supported
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var secret1 = new OpenStack.KeyManager.SecretV1("secret1", new OpenStack.KeyManager.SecretV1Args
+    ///         {
+    ///             Acl = new OpenStack.KeyManager.Inputs.SecretV1AclArgs
+    ///             {
+    ///                 Read = new OpenStack.KeyManager.Inputs.SecretV1AclReadArgs
+    ///                 {
+    ///                     ProjectAccess = false,
+    ///                     Users = 
+    ///                     {
+    ///                         "userid1",
+    ///                         "userid2",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Payload = File.ReadAllText("certificate.pem"),
+    ///             PayloadContentType = "text/plain",
+    ///             SecretType = "certificate",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Secrets can be imported using the secret id (the last part of the secret reference), e.g.

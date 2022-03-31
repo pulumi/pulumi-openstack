@@ -10,6 +10,83 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+// ### Simple secret
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := keymanager.NewSecretV1(ctx, "secret1", &keymanager.SecretV1Args{
+// 			Algorithm: pulumi.String("aes"),
+// 			BitLength: pulumi.Int(256),
+// 			Metadata: pulumi.AnyMap{
+// 				"key": pulumi.Any("foo"),
+// 			},
+// 			Mode:               pulumi.String("cbc"),
+// 			Payload:            pulumi.String("foobar"),
+// 			PayloadContentType: pulumi.String("text/plain"),
+// 			SecretType:         pulumi.String("passphrase"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Secret with the ACL
+//
+// > **Note** Only read ACLs are supported
+//
+// ```go
+// package main
+//
+// import (
+// 	"io/ioutil"
+//
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func readFileOrPanic(path string) pulumi.StringPtrInput {
+// 	data, err := ioutil.ReadFile(path)
+// 	if err != nil {
+// 		panic(err.Error())
+// 	}
+// 	return pulumi.String(string(data))
+// }
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := keymanager.NewSecretV1(ctx, "secret1", &keymanager.SecretV1Args{
+// 			Acl: &keymanager.SecretV1AclArgs{
+// 				Read: &keymanager.SecretV1AclReadArgs{
+// 					ProjectAccess: pulumi.Bool(false),
+// 					Users: pulumi.StringArray{
+// 						pulumi.String("userid1"),
+// 						pulumi.String("userid2"),
+// 					},
+// 				},
+// 			},
+// 			Payload:            readFileOrPanic("certificate.pem"),
+// 			PayloadContentType: pulumi.String("text/plain"),
+// 			SecretType:         pulumi.String("certificate"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Secrets can be imported using the secret id (the last part of the secret reference), e.g.

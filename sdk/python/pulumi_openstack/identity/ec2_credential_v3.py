@@ -196,6 +196,24 @@ class Ec2CredentialV3(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+        ### EC2 credential in current project scope
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        ec2_key1 = openstack.identity.Ec2CredentialV3("ec2Key1")
+        ```
+        ### EC2 credential in pre-defined project scope
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        ec2_key1 = openstack.identity.Ec2CredentialV3("ec2Key1", project_id="f7ac731cc11f40efbc03a9f9e1d1d21f")
+        ```
+
         ## Import
 
         EC2 Credentials can be imported using the `access`, e.g.
@@ -221,6 +239,24 @@ class Ec2CredentialV3(pulumi.CustomResource):
                  args: Optional[Ec2CredentialV3Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+        ### EC2 credential in current project scope
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        ec2_key1 = openstack.identity.Ec2CredentialV3("ec2Key1")
+        ```
+        ### EC2 credential in pre-defined project scope
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        ec2_key1 = openstack.identity.Ec2CredentialV3("ec2Key1", project_id="f7ac731cc11f40efbc03a9f9e1d1d21f")
+        ```
+
         ## Import
 
         EC2 Credentials can be imported using the `access`, e.g.

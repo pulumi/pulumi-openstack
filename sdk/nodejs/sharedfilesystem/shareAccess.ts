@@ -5,6 +5,90 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * ## Example Usage
+ * ### NFS
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: true,
+ * });
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
+ *     cidr: "192.168.199.0/24",
+ *     ipVersion: 4,
+ *     networkId: network1.id,
+ * });
+ * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
+ *     description: "test share network with security services",
+ *     neutronNetId: network1.id,
+ *     neutronSubnetId: subnet1.id,
+ * });
+ * const share1 = new openstack.sharedfilesystem.Share("share_1", {
+ *     description: "test share description",
+ *     shareNetworkId: sharenetwork1.id,
+ *     shareProto: "NFS",
+ *     size: 1,
+ * });
+ * const shareAccess1 = new openstack.sharedfilesystem.ShareAccess("share_access_1", {
+ *     accessLevel: "rw",
+ *     accessTo: "192.168.199.10",
+ *     accessType: "ip",
+ *     shareId: share1.id,
+ * });
+ * ```
+ * ### CIFS
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     adminStateUp: true,
+ * });
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
+ *     cidr: "192.168.199.0/24",
+ *     ipVersion: 4,
+ *     networkId: network1.id,
+ * });
+ * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice_1", {
+ *     description: "created by terraform",
+ *     dnsIp: "192.168.199.10",
+ *     domain: "example.com",
+ *     ou: "CN=Computers,DC=example,DC=com",
+ *     password: "s8cret",
+ *     server: "192.168.199.10",
+ *     type: "active_directory",
+ *     user: "joinDomainUser",
+ * });
+ * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
+ *     description: "share the secure love",
+ *     neutronNetId: network1.id,
+ *     neutronSubnetId: subnet1.id,
+ *     securityServiceIds: [securityservice1.id],
+ * });
+ * const share1 = new openstack.sharedfilesystem.Share("share_1", {
+ *     shareNetworkId: sharenetwork1.id,
+ *     shareProto: "CIFS",
+ *     size: 1,
+ * });
+ * const shareAccess1 = new openstack.sharedfilesystem.ShareAccess("share_access_1", {
+ *     accessLevel: "ro",
+ *     accessTo: "windows",
+ *     accessType: "user",
+ *     shareId: share1.id,
+ * });
+ * const shareAccess2 = new openstack.sharedfilesystem.ShareAccess("share_access_2", {
+ *     accessLevel: "rw",
+ *     accessTo: "linux",
+ *     accessType: "user",
+ *     shareId: share1.id,
+ * });
+ *
+ * export const exportLocations = share1.exportLocations;
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.

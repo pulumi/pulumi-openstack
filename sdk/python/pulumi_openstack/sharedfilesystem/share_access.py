@@ -230,6 +230,75 @@ class ShareAccess(pulumi.CustomResource):
                  share_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+        ### NFS
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            ip_version=4,
+            network_id=network1.id)
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+            description="test share network with security services",
+            neutron_net_id=network1.id,
+            neutron_subnet_id=subnet1.id)
+        share1 = openstack.sharedfilesystem.Share("share1",
+            description="test share description",
+            share_network_id=sharenetwork1.id,
+            share_proto="NFS",
+            size=1)
+        share_access1 = openstack.sharedfilesystem.ShareAccess("shareAccess1",
+            access_level="rw",
+            access_to="192.168.199.10",
+            access_type="ip",
+            share_id=share1.id)
+        ```
+        ### CIFS
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            ip_version=4,
+            network_id=network1.id)
+        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
+            description="created by terraform",
+            dns_ip="192.168.199.10",
+            domain="example.com",
+            ou="CN=Computers,DC=example,DC=com",
+            password="s8cret",
+            server="192.168.199.10",
+            type="active_directory",
+            user="joinDomainUser")
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+            description="share the secure love",
+            neutron_net_id=network1.id,
+            neutron_subnet_id=subnet1.id,
+            security_service_ids=[securityservice1.id])
+        share1 = openstack.sharedfilesystem.Share("share1",
+            share_network_id=sharenetwork1.id,
+            share_proto="CIFS",
+            size=1)
+        share_access1 = openstack.sharedfilesystem.ShareAccess("shareAccess1",
+            access_level="ro",
+            access_to="windows",
+            access_type="user",
+            share_id=share1.id)
+        share_access2 = openstack.sharedfilesystem.ShareAccess("shareAccess2",
+            access_level="rw",
+            access_to="linux",
+            access_type="user",
+            share_id=share1.id)
+        pulumi.export("exportLocations", share1.export_locations)
+        ```
+
         ## Import
 
         This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.
@@ -258,6 +327,75 @@ class ShareAccess(pulumi.CustomResource):
                  args: ShareAccessArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+        ### NFS
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            ip_version=4,
+            network_id=network1.id)
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+            description="test share network with security services",
+            neutron_net_id=network1.id,
+            neutron_subnet_id=subnet1.id)
+        share1 = openstack.sharedfilesystem.Share("share1",
+            description="test share description",
+            share_network_id=sharenetwork1.id,
+            share_proto="NFS",
+            size=1)
+        share_access1 = openstack.sharedfilesystem.ShareAccess("shareAccess1",
+            access_level="rw",
+            access_to="192.168.199.10",
+            access_type="ip",
+            share_id=share1.id)
+        ```
+        ### CIFS
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            ip_version=4,
+            network_id=network1.id)
+        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
+            description="created by terraform",
+            dns_ip="192.168.199.10",
+            domain="example.com",
+            ou="CN=Computers,DC=example,DC=com",
+            password="s8cret",
+            server="192.168.199.10",
+            type="active_directory",
+            user="joinDomainUser")
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+            description="share the secure love",
+            neutron_net_id=network1.id,
+            neutron_subnet_id=subnet1.id,
+            security_service_ids=[securityservice1.id])
+        share1 = openstack.sharedfilesystem.Share("share1",
+            share_network_id=sharenetwork1.id,
+            share_proto="CIFS",
+            size=1)
+        share_access1 = openstack.sharedfilesystem.ShareAccess("shareAccess1",
+            access_level="ro",
+            access_to="windows",
+            access_type="user",
+            share_id=share1.id)
+        share_access2 = openstack.sharedfilesystem.ShareAccess("shareAccess2",
+            access_level="rw",
+            access_to="linux",
+            access_type="user",
+            share_id=share1.id)
+        pulumi.export("exportLocations", share1.export_locations)
+        ```
+
         ## Import
 
         This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.

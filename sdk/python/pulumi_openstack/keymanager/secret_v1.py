@@ -569,6 +569,47 @@ class SecretV1(pulumi.CustomResource):
                  secret_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+        ### Simple secret
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        secret1 = openstack.keymanager.SecretV1("secret1",
+            algorithm="aes",
+            bit_length=256,
+            metadata={
+                "key": "foo",
+            },
+            mode="cbc",
+            payload="foobar",
+            payload_content_type="text/plain",
+            secret_type="passphrase")
+        ```
+        ### Secret with the ACL
+
+        > **Note** Only read ACLs are supported
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        secret1 = openstack.keymanager.SecretV1("secret1",
+            acl=openstack.keymanager.SecretV1AclArgs(
+                read=openstack.keymanager.SecretV1AclReadArgs(
+                    project_access=False,
+                    users=[
+                        "userid1",
+                        "userid2",
+                    ],
+                ),
+            ),
+            payload=(lambda path: open(path).read())("certificate.pem"),
+            payload_content_type="text/plain",
+            secret_type="certificate")
+        ```
+
         ## Import
 
         Secrets can be imported using the secret id (the last part of the secret reference), e.g.
@@ -605,6 +646,47 @@ class SecretV1(pulumi.CustomResource):
                  args: Optional[SecretV1Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+        ### Simple secret
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        secret1 = openstack.keymanager.SecretV1("secret1",
+            algorithm="aes",
+            bit_length=256,
+            metadata={
+                "key": "foo",
+            },
+            mode="cbc",
+            payload="foobar",
+            payload_content_type="text/plain",
+            secret_type="passphrase")
+        ```
+        ### Secret with the ACL
+
+        > **Note** Only read ACLs are supported
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        secret1 = openstack.keymanager.SecretV1("secret1",
+            acl=openstack.keymanager.SecretV1AclArgs(
+                read=openstack.keymanager.SecretV1AclReadArgs(
+                    project_access=False,
+                    users=[
+                        "userid1",
+                        "userid2",
+                    ],
+                ),
+            ),
+            payload=(lambda path: open(path).read())("certificate.pem"),
+            payload_content_type="text/plain",
+            secret_type="certificate")
+        ```
+
         ## Import
 
         Secrets can be imported using the secret id (the last part of the secret reference), e.g.

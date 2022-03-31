@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "trunk_1"
 // 		_, err := networking.LookupTrunk(ctx, &networking.LookupTrunkArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("trunk_1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

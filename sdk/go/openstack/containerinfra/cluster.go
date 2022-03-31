@@ -11,6 +11,68 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+// ### Create a Cluster
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/containerinfra"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := containerinfra.NewCluster(ctx, "cluster1", &containerinfra.ClusterArgs{
+// 			ClusterTemplateId: pulumi.String("b9a45c5c-cd03-4958-82aa-b80bf93cb922"),
+// 			Keypair:           pulumi.String("ssh_keypair"),
+// 			MasterCount:       pulumi.Int(3),
+// 			NodeCount:         pulumi.Int(5),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## Attributes reference
+//
+// The following attributes are exported:
+//
+// * `region` - See Argument Reference above.
+// * `name` - See Argument Reference above.
+// * `projectId` - See Argument Reference above.
+// * `createdAt` - The time at which cluster was created.
+// * `updatedAt` - The time at which cluster was created.
+// * `apiAddress` - COE API address.
+// * `coeVersion` - COE software version.
+// * `clusterTemplateId` - See Argument Reference above.
+// * `containerVersion` - Container software version.
+// * `createTimeout` - See Argument Reference above.
+// * `discoveryUrl` - See Argument Reference above.
+// * `dockerVolumeSize` - See Argument Reference above.
+// * `flavor` - See Argument Reference above.
+// * `masterFlavor` - See Argument Reference above.
+// * `keypair` - See Argument Reference above.
+// * `labels` - See Argument Reference above.
+// * `mergeLabels` - See Argument Reference above.
+// * `masterCount` - See Argument Reference above.
+// * `nodeCount` - See Argument Reference above.
+// * `fixedNetwork` - See Argument Reference above.
+// * `fixedSubnet` - See Argument Reference above.
+// * `floatingIpEnabled` - See Argument Reference above.
+// * `masterAddresses` - IP addresses of the master node of the cluster.
+// * `nodeAddresses` - IP addresses of the node of the cluster.
+// * `stackId` - UUID of the Orchestration service stack.
+// * `kubeconfig` - The Kubernetes cluster's credentials
+//   * `rawConfig` - The raw kubeconfig file
+//   * `host` - The cluster's API server URL
+//   * `clusterCaCertificate` - The cluster's CA certificate
+//   * `clientKey` - The client's RSA key
+//   * `clientCertificate` - The client's certificate
+//
 // ## Import
 //
 // Clusters can be imported using the `id`, e.g.

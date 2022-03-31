@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "subnet_1"
 // 		_, err := networking.LookupSubnet(ctx, &networking.LookupSubnetArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("subnet_1"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

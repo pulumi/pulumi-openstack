@@ -84,9 +84,8 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		opt0 := "my-subnet"
 // 		subnet1, err := networking.LookupSubnet(ctx, &networking.LookupSubnetArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("my-subnet"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

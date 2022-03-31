@@ -24,9 +24,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := 300
 // 		_, err := networking.LookupQosBandwidthLimitRule(ctx, &networking.LookupQosBandwidthLimitRuleArgs{
-// 			MaxKbps: &opt0,
+// 			MaxKbps: pulumi.IntRef(300),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
