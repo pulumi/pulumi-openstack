@@ -10,8 +10,8 @@ env:
   OS_REGION_NAME: UK1
   OS_TENANT_ID: 9d596a0506974e0f8c79673edf0bbdd3
   OS_TENANT_NAME: "9616699805113213"
-  OS_USER_DOMAIN_NAME: Default
   OS_USERNAME: jrGMbHHjkUQ7
+  OS_USER_DOMAIN_NAME: Default
   PROVIDER: openstack
   PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
   PULUMI_API: https://api.pulumi-staging.io
@@ -35,8 +35,8 @@ jobs:
         reaction-token: ${{ secrets.GITHUB_TOKEN }}
         repository: pulumi/pulumi-openstack
         token: ${{ secrets.PULUMI_BOT_TOKEN }}
-    strategy: {}
-"on":
+name: command-dispatch
+on:
   issue_comment:
     types:
     - created
