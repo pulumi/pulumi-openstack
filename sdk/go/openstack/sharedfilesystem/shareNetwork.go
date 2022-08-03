@@ -402,6 +402,71 @@ func (o ShareNetworkOutput) ToShareNetworkOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The share network CIDR.
+func (o ShareNetworkOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShareNetwork) pulumi.StringOutput { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// The human-readable description for the share network.
+// Changing this updates the description of the existing share network.
+func (o ShareNetworkOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShareNetwork) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The IP version of the share network. Can either be 4 or 6.
+func (o ShareNetworkOutput) IpVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v *ShareNetwork) pulumi.IntOutput { return v.IpVersion }).(pulumi.IntOutput)
+}
+
+// The name for the share network. Changing this updates the name
+// of the existing share network.
+func (o ShareNetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShareNetwork) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The share network type. Can either be VLAN, VXLAN, GRE, or flat.
+func (o ShareNetworkOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShareNetwork) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// The UUID of a neutron network when setting up or updating
+// a share network. Changing this updates the existing share network if it's not used by
+// shares.
+func (o ShareNetworkOutput) NeutronNetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShareNetwork) pulumi.StringOutput { return v.NeutronNetId }).(pulumi.StringOutput)
+}
+
+// The UUID of the neutron subnet when setting up or
+// updating a share network. Changing this updates the existing share network if it's
+// not used by shares.
+func (o ShareNetworkOutput) NeutronSubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShareNetwork) pulumi.StringOutput { return v.NeutronSubnetId }).(pulumi.StringOutput)
+}
+
+// The owner of the Share Network.
+func (o ShareNetworkOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShareNetwork) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Shared File System client.
+// A Shared File System client is needed to create a share network. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// share network.
+func (o ShareNetworkOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShareNetwork) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The list of security service IDs to associate with
+// the share network. The security service must be specified by ID and not name.
+func (o ShareNetworkOutput) SecurityServiceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ShareNetwork) pulumi.StringArrayOutput { return v.SecurityServiceIds }).(pulumi.StringArrayOutput)
+}
+
+// The share network segmentation ID.
+func (o ShareNetworkOutput) SegmentationId() pulumi.IntOutput {
+	return o.ApplyT(func(v *ShareNetwork) pulumi.IntOutput { return v.SegmentationId }).(pulumi.IntOutput)
+}
+
 type ShareNetworkArrayOutput struct{ *pulumi.OutputState }
 
 func (ShareNetworkArrayOutput) ElementType() reflect.Type {

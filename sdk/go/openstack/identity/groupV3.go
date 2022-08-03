@@ -232,6 +232,28 @@ func (o GroupV3Output) ToGroupV3OutputWithContext(ctx context.Context) GroupV3Ou
 	return o
 }
 
+// A description of the group.
+func (o GroupV3Output) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupV3) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The domain the group belongs to.
+func (o GroupV3Output) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupV3) pulumi.StringOutput { return v.DomainId }).(pulumi.StringOutput)
+}
+
+// The name of the group.
+func (o GroupV3Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupV3) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V3 Keystone client.
+// If omitted, the `region` argument of the provider is used. Changing this
+// creates a new group.
+func (o GroupV3Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupV3) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
 type GroupV3ArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupV3ArrayOutput) ElementType() reflect.Type {

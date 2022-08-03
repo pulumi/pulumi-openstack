@@ -164,6 +164,7 @@ func Provider() tfbridge.ProviderInfo {
 			// Container Infrastructure
 			"openstack_containerinfra_cluster_v1":         {Tok: openstackResource(containerinfraMod, "Cluster")},
 			"openstack_containerinfra_clustertemplate_v1": {Tok: openstackResource(containerinfraMod, "ClusterTemplate")},
+			"openstack_containerinfra_nodegroup_v1":       {Tok: openstackResource(containerinfraMod, "NodeGroup")},
 
 			// Database
 			"openstack_db_instance_v1":      {Tok: openstackResource(databaseMod, "Instance")},
@@ -313,10 +314,12 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_compute_aggregate_v2":          {Tok: openstackDataSource(computeMod, "getAggregateV2")},
 			"openstack_compute_hypervisor_v2":         {Tok: openstackDataSource(computeMod, "getHypervisorV2")},
 			"openstack_compute_quotaset_v2":           {Tok: openstackDataSource(computeMod, "getQuotaSetV2")},
+			"openstack_compute_limits_v2":             {Tok: openstackDataSource(computeMod, "getLimitsV2")},
 
 			// Container Infrastructure
 			"openstack_containerinfra_cluster_v1":         {Tok: openstackDataSource(containerinfraMod, "getCluster")},
 			"openstack_containerinfra_clustertemplate_v1": {Tok: openstackDataSource(containerinfraMod, "getClusterTemplate")},
+			"openstack_containerinfra_nodegroup_v1":       {Tok: openstackDataSource(containerinfraMod, "getNodeGroup")},
 
 			// DNS
 			"openstack_dns_zone_v2": {Tok: openstackDataSource(dnsMod, "getDnsZone")},

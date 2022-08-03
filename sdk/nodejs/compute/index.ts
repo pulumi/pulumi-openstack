@@ -16,6 +16,7 @@ export * from "./getFlavor";
 export * from "./getHypervisorV2";
 export * from "./getInstanceV2";
 export * from "./getKeypair";
+export * from "./getLimitsV2";
 export * from "./getQuotaSetV2";
 export * from "./instance";
 export * from "./interfaceAttach";

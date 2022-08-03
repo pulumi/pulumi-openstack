@@ -9,10 +9,13 @@ export * from "./cluster";
 export * from "./clusterTemplate";
 export * from "./getCluster";
 export * from "./getClusterTemplate";
+export * from "./getNodeGroup";
+export * from "./nodeGroup";
 
 // Import resources to register:
 import { Cluster } from "./cluster";
 import { ClusterTemplate } from "./clusterTemplate";
+import { NodeGroup } from "./nodeGroup";
 
 const _module = {
     version: utilities.getVersion(),
@@ -22,6 +25,8 @@ const _module = {
                 return new Cluster(name, <any>undefined, { urn })
             case "openstack:containerinfra/clusterTemplate:ClusterTemplate":
                 return new ClusterTemplate(name, <any>undefined, { urn })
+            case "openstack:containerinfra/nodeGroup:NodeGroup":
+                return new NodeGroup(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -29,3 +34,4 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("openstack", "containerinfra/cluster", _module)
 pulumi.runtime.registerResourceModule("openstack", "containerinfra/clusterTemplate", _module)
+pulumi.runtime.registerResourceModule("openstack", "containerinfra/nodeGroup", _module)

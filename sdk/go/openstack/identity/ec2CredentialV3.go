@@ -266,6 +266,40 @@ func (o Ec2CredentialV3Output) ToEc2CredentialV3OutputWithContext(ctx context.Co
 	return o
 }
 
+// contains an EC2 credential access UUID
+func (o Ec2CredentialV3Output) Access() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ec2CredentialV3) pulumi.StringOutput { return v.Access }).(pulumi.StringOutput)
+}
+
+// The ID of the project the EC2 credential is created
+// for and that authentication requests using this EC2 credential will
+// be scoped to.
+func (o Ec2CredentialV3Output) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ec2CredentialV3) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V3 Keystone client.
+// If omitted, the `region` argument of the provider is used. Changing this
+// creates a new EC2 credential.
+func (o Ec2CredentialV3Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ec2CredentialV3) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// contains an EC2 credential secret UUID
+func (o Ec2CredentialV3Output) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ec2CredentialV3) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
+}
+
+// contains an EC2 credential trust ID scope
+func (o Ec2CredentialV3Output) TrustId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ec2CredentialV3) pulumi.StringOutput { return v.TrustId }).(pulumi.StringOutput)
+}
+
+// The ID of the user the EC2 credential is created for.
+func (o Ec2CredentialV3Output) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ec2CredentialV3) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
 type Ec2CredentialV3ArrayOutput struct{ *pulumi.OutputState }
 
 func (Ec2CredentialV3ArrayOutput) ElementType() reflect.Type {

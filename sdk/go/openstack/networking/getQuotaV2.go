@@ -47,6 +47,9 @@ func LookupQuotaV2(ctx *pulumi.Context, args *LookupQuotaV2Args, opts ...pulumi.
 type LookupQuotaV2Args struct {
 	// The id of the project to retrieve the quota.
 	ProjectId string `pulumi:"projectId"`
+	// The region in which to obtain the V2 Network client.
+	// If omitted, the `region` argument of the provider is used.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getQuotaV2.
@@ -94,6 +97,9 @@ func LookupQuotaV2Output(ctx *pulumi.Context, args LookupQuotaV2OutputArgs, opts
 type LookupQuotaV2OutputArgs struct {
 	// The id of the project to retrieve the quota.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The region in which to obtain the V2 Network client.
+	// If omitted, the `region` argument of the provider is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (LookupQuotaV2OutputArgs) ElementType() reflect.Type {

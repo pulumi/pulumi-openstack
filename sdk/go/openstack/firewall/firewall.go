@@ -372,6 +372,65 @@ func (o FirewallOutput) ToFirewallOutputWithContext(ctx context.Context) Firewal
 	return o
 }
 
+// Administrative up/down status for the firewall
+// (must be "true" or "false" if provided - defaults to "true").
+// Changing this updates the `adminStateUp` of an existing firewall.
+func (o FirewallOutput) AdminStateUp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.BoolPtrOutput { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
+}
+
+// Router(s) to associate this firewall instance
+// with. Must be a list of strings. Changing this updates the associated routers
+// of an existing firewall. Conflicts with `noRouters`.
+func (o FirewallOutput) AssociatedRouters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringArrayOutput { return v.AssociatedRouters }).(pulumi.StringArrayOutput)
+}
+
+// A description for the firewall. Changing this
+// updates the `description` of an existing firewall.
+func (o FirewallOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A name for the firewall. Changing this
+// updates the `name` of an existing firewall.
+func (o FirewallOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Should this firewall not be associated with any routers
+// (must be "true" or "false" if provide - defaults to "false").
+// Conflicts with `associatedRouters`.
+func (o FirewallOutput) NoRouters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.BoolPtrOutput { return v.NoRouters }).(pulumi.BoolPtrOutput)
+}
+
+// The policy resource id for the firewall. Changing
+// this updates the `policyId` of an existing firewall.
+func (o FirewallOutput) PolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.PolicyId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the v1 networking client.
+// A networking client is needed to create a firewall. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// firewall.
+func (o FirewallOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The owner of the floating IP. Required if admin wants
+// to create a firewall for another tenant. Changing this creates a new
+// firewall.
+func (o FirewallOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Map of additional options.
+func (o FirewallOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+}
+
 type FirewallArrayOutput struct{ *pulumi.OutputState }
 
 func (FirewallArrayOutput) ElementType() reflect.Type {

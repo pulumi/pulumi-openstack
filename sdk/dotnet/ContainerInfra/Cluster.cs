@@ -205,7 +205,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// creates a new cluster.
         /// </summary>
         [Output("nodeCount")]
-        public Output<int> NodeCount { get; private set; } = null!;
+        public Output<int?> NodeCount { get; private set; } = null!;
 
         /// <summary>
         /// The project of the cluster. Required if admin wants

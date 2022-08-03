@@ -277,6 +277,120 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+// Application Credential ID to login with.
+func (o ProviderOutput) ApplicationCredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApplicationCredentialId }).(pulumi.StringPtrOutput)
+}
+
+// Application Credential name to login with.
+func (o ProviderOutput) ApplicationCredentialName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApplicationCredentialName }).(pulumi.StringPtrOutput)
+}
+
+// Application Credential secret to login with.
+func (o ProviderOutput) ApplicationCredentialSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApplicationCredentialSecret }).(pulumi.StringPtrOutput)
+}
+
+// The Identity authentication URL.
+func (o ProviderOutput) AuthUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AuthUrl }).(pulumi.StringPtrOutput)
+}
+
+// A Custom CA certificate.
+func (o ProviderOutput) CacertFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CacertFile }).(pulumi.StringPtrOutput)
+}
+
+// A client certificate to authenticate with.
+func (o ProviderOutput) Cert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Cert }).(pulumi.StringPtrOutput)
+}
+
+// An entry in a `clouds.yaml` file to use.
+func (o ProviderOutput) Cloud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Cloud }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
+func (o ProviderOutput) DefaultDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DefaultDomain }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Domain to scope to (Identity v3).
+func (o ProviderOutput) DomainId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DomainId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Domain to scope to (Identity v3).
+func (o ProviderOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.EndpointType }).(pulumi.StringPtrOutput)
+}
+
+// A client private key to authenticate with.
+func (o ProviderOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Password to login with.
+func (o ProviderOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the domain where the proejct resides (Identity v3).
+func (o ProviderOutput) ProjectDomainId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ProjectDomainId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the domain where the project resides (Identity v3).
+func (o ProviderOutput) ProjectDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ProjectDomainName }).(pulumi.StringPtrOutput)
+}
+
+// The OpenStack region to connect to.
+func (o ProviderOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
+func (o ProviderOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
+func (o ProviderOutput) TenantName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TenantName }).(pulumi.StringPtrOutput)
+}
+
+// Authentication token to use as an alternative to username/password.
+func (o ProviderOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the domain where the user resides (Identity v3).
+func (o ProviderOutput) UserDomainId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.UserDomainId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the domain where the user resides (Identity v3).
+func (o ProviderOutput) UserDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.UserDomainName }).(pulumi.StringPtrOutput)
+}
+
+// Username to login with.
+func (o ProviderOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.UserId }).(pulumi.StringPtrOutput)
+}
+
+// Username to login with.
+func (o ProviderOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})

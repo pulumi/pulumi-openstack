@@ -352,6 +352,70 @@ func (o SecurityServiceOutput) ToSecurityServiceOutputWithContext(ctx context.Co
 	return o
 }
 
+// The human-readable description for the security service.
+// Changing this updates the description of the existing security service.
+func (o SecurityServiceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityService) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The security service DNS IP address that is used inside the
+// tenant network.
+func (o SecurityServiceOutput) DnsIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityService) pulumi.StringPtrOutput { return v.DnsIp }).(pulumi.StringPtrOutput)
+}
+
+// The security service domain.
+func (o SecurityServiceOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityService) pulumi.StringPtrOutput { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// The name of the security service. Changing this updates the name
+// of the existing security service.
+func (o SecurityServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The security service ou. An organizational unit can be added to
+// specify where the share ends up. New in Manila microversion 2.44.
+func (o SecurityServiceOutput) Ou() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityService) pulumi.StringPtrOutput { return v.Ou }).(pulumi.StringPtrOutput)
+}
+
+// The user password, if you specify a user.
+func (o SecurityServiceOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityService) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The owner of the Security Service.
+func (o SecurityServiceOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityService) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Shared File System client.
+// A Shared File System client is needed to create a security service. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// security service.
+func (o SecurityServiceOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityService) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The security service host name or IP address.
+func (o SecurityServiceOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityService) pulumi.StringPtrOutput { return v.Server }).(pulumi.StringPtrOutput)
+}
+
+// The security service type - can either be active\_directory,
+// kerberos or ldap.  Changing this updates the existing security service.
+func (o SecurityServiceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityService) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The security service user or group name that is used by the
+// tenant.
+func (o SecurityServiceOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityService) pulumi.StringPtrOutput { return v.User }).(pulumi.StringPtrOutput)
+}
+
 type SecurityServiceArrayOutput struct{ *pulumi.OutputState }
 
 func (SecurityServiceArrayOutput) ElementType() reflect.Type {

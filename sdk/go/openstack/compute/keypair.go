@@ -82,6 +82,10 @@ type Keypair struct {
 	// create one. If omitted, the `region` argument of the provider is used.
 	// Changing this creates a new keypair.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// This allows administrative users to operate key-pairs
+	// of specified user ID. For this feature your need to have openstack microversion
+	// 2.10 (Liberty) or later.
+	UserId pulumi.StringOutput `pulumi:"userId"`
 	// Map of additional options.
 	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
 }
@@ -133,6 +137,10 @@ type keypairState struct {
 	// create one. If omitted, the `region` argument of the provider is used.
 	// Changing this creates a new keypair.
 	Region *string `pulumi:"region"`
+	// This allows administrative users to operate key-pairs
+	// of specified user ID. For this feature your need to have openstack microversion
+	// 2.10 (Liberty) or later.
+	UserId *string `pulumi:"userId"`
 	// Map of additional options.
 	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
 }
@@ -156,6 +164,10 @@ type KeypairState struct {
 	// create one. If omitted, the `region` argument of the provider is used.
 	// Changing this creates a new keypair.
 	Region pulumi.StringPtrInput
+	// This allows administrative users to operate key-pairs
+	// of specified user ID. For this feature your need to have openstack microversion
+	// 2.10 (Liberty) or later.
+	UserId pulumi.StringPtrInput
 	// Map of additional options.
 	ValueSpecs pulumi.MapInput
 }
@@ -179,6 +191,10 @@ type keypairArgs struct {
 	// create one. If omitted, the `region` argument of the provider is used.
 	// Changing this creates a new keypair.
 	Region *string `pulumi:"region"`
+	// This allows administrative users to operate key-pairs
+	// of specified user ID. For this feature your need to have openstack microversion
+	// 2.10 (Liberty) or later.
+	UserId *string `pulumi:"userId"`
 	// Map of additional options.
 	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
 }
@@ -199,6 +215,10 @@ type KeypairArgs struct {
 	// create one. If omitted, the `region` argument of the provider is used.
 	// Changing this creates a new keypair.
 	Region pulumi.StringPtrInput
+	// This allows administrative users to operate key-pairs
+	// of specified user ID. For this feature your need to have openstack microversion
+	// 2.10 (Liberty) or later.
+	UserId pulumi.StringPtrInput
 	// Map of additional options.
 	ValueSpecs pulumi.MapInput
 }
@@ -288,6 +308,51 @@ func (o KeypairOutput) ToKeypairOutput() KeypairOutput {
 
 func (o KeypairOutput) ToKeypairOutputWithContext(ctx context.Context) KeypairOutput {
 	return o
+}
+
+// The fingerprint of the public key.
+func (o KeypairOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Keypair) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// A unique name for the keypair. Changing this creates a new
+// keypair.
+func (o KeypairOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Keypair) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The generated private key when no public key is specified.
+func (o KeypairOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Keypair) pulumi.StringOutput { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+// A pregenerated OpenSSH-formatted public key.
+// Changing this creates a new keypair. If a public key is not specified, then
+// a public/private key pair will be automatically generated. If a pair is
+// created, then destroying this resource means you will lose access to that
+// keypair forever.
+func (o KeypairOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Keypair) pulumi.StringOutput { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Compute client.
+// Keypairs are associated with accounts, but a Compute client is needed to
+// create one. If omitted, the `region` argument of the provider is used.
+// Changing this creates a new keypair.
+func (o KeypairOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Keypair) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// This allows administrative users to operate key-pairs
+// of specified user ID. For this feature your need to have openstack microversion
+// 2.10 (Liberty) or later.
+func (o KeypairOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Keypair) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
+// Map of additional options.
+func (o KeypairOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *Keypair) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
 }
 
 type KeypairArrayOutput struct{ *pulumi.OutputState }

@@ -287,6 +287,36 @@ func (o AggregateV2Output) ToAggregateV2OutputWithContext(ctx context.Context) A
 	return o
 }
 
+// The list of hosts contained in the Host Aggregate. The hosts must be added
+// to Openstack and visible in the web interface, or the provider will fail to add them to the host
+// aggregate.
+func (o AggregateV2Output) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AggregateV2) pulumi.StringArrayOutput { return v.Hosts }).(pulumi.StringArrayOutput)
+}
+
+// The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
+func (o AggregateV2Output) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AggregateV2) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// The name of the Host Aggregate
+func (o AggregateV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AggregateV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region in which to create the Host Aggregate. If
+// omitted, the `region` argument of the provider is used. Changing this
+// creates a new Host Aggregate.
+func (o AggregateV2Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *AggregateV2) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The name of the Availability Zone to use. If ommited, it will take the default
+// availability zone.
+func (o AggregateV2Output) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AggregateV2) pulumi.StringPtrOutput { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
 type AggregateV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (AggregateV2ArrayOutput) ElementType() reflect.Type {

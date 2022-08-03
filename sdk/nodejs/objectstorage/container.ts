@@ -149,6 +149,11 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The storage policy to be used for the container. 
+     * Changing this creates a new container.
+     */
+    public readonly storagePolicy!: pulumi.Output<string>;
+    /**
      * Enable object versioning. The structure is described below.
      */
     public readonly versioning!: pulumi.Output<outputs.objectstorage.ContainerVersioning | undefined>;
@@ -175,6 +180,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["metadata"] = state ? state.metadata : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["storagePolicy"] = state ? state.storagePolicy : undefined;
             resourceInputs["versioning"] = state ? state.versioning : undefined;
         } else {
             const args = argsOrState as ContainerArgs | undefined;
@@ -187,6 +193,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["metadata"] = args ? args.metadata : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["storagePolicy"] = args ? args.storagePolicy : undefined;
             resourceInputs["versioning"] = args ? args.versioning : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -246,6 +253,11 @@ export interface ContainerState {
      */
     region?: pulumi.Input<string>;
     /**
+     * The storage policy to be used for the container. 
+     * Changing this creates a new container.
+     */
+    storagePolicy?: pulumi.Input<string>;
+    /**
      * Enable object versioning. The structure is described below.
      */
     versioning?: pulumi.Input<inputs.objectstorage.ContainerVersioning>;
@@ -302,6 +314,11 @@ export interface ContainerArgs {
      * creates a new container.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The storage policy to be used for the container. 
+     * Changing this creates a new container.
+     */
+    storagePolicy?: pulumi.Input<string>;
     /**
      * Enable object versioning. The structure is described below.
      */

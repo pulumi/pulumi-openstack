@@ -329,6 +329,65 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// A list of IP addresses assigned to the instance.
+func (o InstanceOutput) Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.Addresses }).(pulumi.StringArrayOutput)
+}
+
+// Configuration ID to be attached to the instance. Database instance
+// will be rebooted when configuration is detached.
+func (o InstanceOutput) ConfigurationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ConfigurationId }).(pulumi.StringPtrOutput)
+}
+
+// An array of database name, charset and collate. The database
+// object structure is documented below.
+func (o InstanceOutput) Databases() InstanceDatabaseArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceDatabaseArrayOutput { return v.Databases }).(InstanceDatabaseArrayOutput)
+}
+
+// An array of database engine type and version. The datastore
+// object structure is documented below. Changing this creates a new instance.
+func (o InstanceOutput) Datastore() InstanceDatastoreOutput {
+	return o.ApplyT(func(v *Instance) InstanceDatastoreOutput { return v.Datastore }).(InstanceDatastoreOutput)
+}
+
+// The flavor ID of the desired flavor for the instance.
+// Changing this creates new instance.
+func (o InstanceOutput) FlavorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.FlavorId }).(pulumi.StringOutput)
+}
+
+// Database to be created on new instance. Changing this creates a
+// new instance.
+func (o InstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// An array of one or more networks to attach to the
+// instance. The network object structure is documented below. Changing this
+// creates a new instance.
+func (o InstanceOutput) Networks() InstanceNetworkArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceNetworkArrayOutput { return v.Networks }).(InstanceNetworkArrayOutput)
+}
+
+// The region in which to create the db instance. Changing this
+// creates a new instance.
+func (o InstanceOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Specifies the volume size in GB. Changing this creates new instance.
+func (o InstanceOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
+}
+
+// An array of username, password, host and databases. The user
+// object structure is documented below.
+func (o InstanceOutput) Users() InstanceUserArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceUserArrayOutput { return v.Users }).(InstanceUserArrayOutput)
+}
+
 type InstanceArrayOutput struct{ *pulumi.OutputState }
 
 func (InstanceArrayOutput) ElementType() reflect.Type {

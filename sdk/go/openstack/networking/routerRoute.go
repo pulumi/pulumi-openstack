@@ -295,6 +295,32 @@ func (o RouterRouteOutput) ToRouterRouteOutputWithContext(ctx context.Context) R
 	return o
 }
 
+// CIDR block to match on the packet’s destination IP. Changing
+// this creates a new routing entry.
+func (o RouterRouteOutput) DestinationCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterRoute) pulumi.StringOutput { return v.DestinationCidr }).(pulumi.StringOutput)
+}
+
+// IP address of the next hop gateway.  Changing
+// this creates a new routing entry.
+func (o RouterRouteOutput) NextHop() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterRoute) pulumi.StringOutput { return v.NextHop }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 networking client.
+// A networking client is needed to configure a routing entry on a router. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// routing entry.
+func (o RouterRouteOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterRoute) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// ID of the router this routing entry belongs to. Changing
+// this creates a new routing entry.
+func (o RouterRouteOutput) RouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterRoute) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
+}
+
 type RouterRouteArrayOutput struct{ *pulumi.OutputState }
 
 func (RouterRouteArrayOutput) ElementType() reflect.Type {

@@ -382,6 +382,67 @@ func (o L7PolicyV2Output) ToL7PolicyV2OutputWithContext(ctx context.Context) L7P
 	return o
 }
 
+// The L7 Policy action - can either be REDIRECT\_TO\_POOL,
+// REDIRECT\_TO\_URL or REJECT.
+func (o L7PolicyV2Output) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v *L7PolicyV2) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
+}
+
+// The administrative state of the L7 Policy.
+// A valid value is true (UP) or false (DOWN).
+func (o L7PolicyV2Output) AdminStateUp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *L7PolicyV2) pulumi.BoolPtrOutput { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
+}
+
+// Human-readable description for the L7 Policy.
+func (o L7PolicyV2Output) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *L7PolicyV2) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Listener on which the L7 Policy will be associated with.
+// Changing this creates a new L7 Policy.
+func (o L7PolicyV2Output) ListenerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *L7PolicyV2) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
+}
+
+// Human-readable name for the L7 Policy. Does not have
+// to be unique.
+func (o L7PolicyV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *L7PolicyV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The position of this policy on the listener. Positions start at 1.
+func (o L7PolicyV2Output) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v *L7PolicyV2) pulumi.IntOutput { return v.Position }).(pulumi.IntOutput)
+}
+
+// Requests matching this policy will be redirected to the
+// pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
+func (o L7PolicyV2Output) RedirectPoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *L7PolicyV2) pulumi.StringPtrOutput { return v.RedirectPoolId }).(pulumi.StringPtrOutput)
+}
+
+// Requests matching this policy will be redirected to this URL.
+// Only valid if action is REDIRECT\_TO\_URL.
+func (o L7PolicyV2Output) RedirectUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *L7PolicyV2) pulumi.StringPtrOutput { return v.RedirectUrl }).(pulumi.StringPtrOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create an . If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// L7 Policy.
+func (o L7PolicyV2Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *L7PolicyV2) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Required for admins. The UUID of the tenant who owns
+// the L7 Policy.  Only administrative users can specify a tenant UUID
+// other than their own. Changing this creates a new L7 Policy.
+func (o L7PolicyV2Output) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *L7PolicyV2) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
 type L7PolicyV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (L7PolicyV2ArrayOutput) ElementType() reflect.Type {

@@ -301,6 +301,49 @@ func (o MemberV1Output) ToMemberV1OutputWithContext(ctx context.Context) MemberV
 	return o
 }
 
+// The IP address of the member. Changing this creates a
+// new member.
+func (o MemberV1Output) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *MemberV1) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
+}
+
+// The administrative state of the member.
+// Acceptable values are 'true' and 'false'. Changing this value updates the
+// state of the existing member.
+func (o MemberV1Output) AdminStateUp() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MemberV1) pulumi.BoolOutput { return v.AdminStateUp }).(pulumi.BoolOutput)
+}
+
+// The ID of the LB pool. Changing this creates a new
+// member.
+func (o MemberV1Output) PoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MemberV1) pulumi.StringOutput { return v.PoolId }).(pulumi.StringOutput)
+}
+
+// An integer representing the port on which the member is
+// hosted. Changing this creates a new member.
+func (o MemberV1Output) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v *MemberV1) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create an LB member. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// LB member.
+func (o MemberV1Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *MemberV1) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The owner of the member. Required if admin wants to
+// create a member for another tenant. Changing this creates a new member.
+func (o MemberV1Output) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MemberV1) pulumi.StringPtrOutput { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+func (o MemberV1Output) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v *MemberV1) pulumi.IntOutput { return v.Weight }).(pulumi.IntOutput)
+}
+
 type MemberV1ArrayOutput struct{ *pulumi.OutputState }
 
 func (MemberV1ArrayOutput) ElementType() reflect.Type {

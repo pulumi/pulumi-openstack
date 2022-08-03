@@ -294,6 +294,47 @@ func (o TransferRequestOutput) ToTransferRequestOutputWithContext(ctx context.Co
 	return o
 }
 
+// A description of the zone tranfer request.
+func (o TransferRequestOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferRequest) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Disable wait for zone to reach ACTIVE
+// status. The check is enabled by default. If this argument is true, zone
+// will be considered as created/updated if OpenStack request returned success.
+func (o TransferRequestOutput) DisableStatusCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransferRequest) pulumi.BoolPtrOutput { return v.DisableStatusCheck }).(pulumi.BoolPtrOutput)
+}
+
+func (o TransferRequestOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferRequest) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Compute client.
+// Keypairs are associated with accounts, but a Compute client is needed to
+// create one. If omitted, the `region` argument of the provider is used.
+// Changing this creates a new DNS zone.
+func (o TransferRequestOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferRequest) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The target Project ID to transfer to.
+func (o TransferRequestOutput) TargetProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferRequest) pulumi.StringOutput { return v.TargetProjectId }).(pulumi.StringOutput)
+}
+
+// Map of additional options. Changing this creates a
+// new transfer request.
+func (o TransferRequestOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *TransferRequest) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+}
+
+// The ID of the zone for which to create the transfer
+// request.
+func (o TransferRequestOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferRequest) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type TransferRequestArrayOutput struct{ *pulumi.OutputState }
 
 func (TransferRequestArrayOutput) ElementType() reflect.Type {

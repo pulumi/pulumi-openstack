@@ -30,13 +30,25 @@ import (
 // 		_, err := orchestration.NewStackV1(ctx, "stack1", &orchestration.StackV1Args{
 // 			DisableRollback: pulumi.Bool(true),
 // 			EnvironmentOpts: pulumi.AnyMap{
-// 				"Bin": pulumi.Any(fmt.Sprintf("%v%v", "\n", "\n")),
+// 				"Bin": pulumi.Any(fmt.Sprintf("\n\n")),
 // 			},
 // 			Parameters: pulumi.AnyMap{
 // 				"length": pulumi.Any(4),
 // 			},
 // 			TemplateOpts: pulumi.AnyMap{
-// 				"Bin": pulumi.Any(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v", "heat_template_version: 2013-05-23\n", "parameters:\n", "  length:\n", "    type: number\n", "resources:\n", "  test_res:\n", "    type: OS::Heat::TestResource\n", "  random:\n", "    type: OS::Heat::RandomString\n", "    properties:\n", "      length: {get_param: length}\n", "\n")),
+// 				"Bin": pulumi.Any(fmt.Sprintf(`heat_template_version: 2013-05-23
+// parameters:
+//   length:
+//     type: number
+// resources:
+//   test_res:
+//     type: OS::Heat::TestResource
+//   random:
+//     type: OS::Heat::RandomString
+//     properties:
+//       length: {get_param: length}
+//
+// `)),
 // 			},
 // 			Timeout: pulumi.Int(30),
 // 		})
@@ -453,6 +465,109 @@ func (o StackV1Output) ToStackV1Output() StackV1Output {
 
 func (o StackV1Output) ToStackV1OutputWithContext(ctx context.Context) StackV1Output {
 	return o
+}
+
+// A list of stack outputs.
+func (o StackV1Output) StackOutputs() StackV1StackOutputArrayOutput {
+	return o.ApplyT(func(v *StackV1) StackV1StackOutputArrayOutput { return v.StackOutputs }).(StackV1StackOutputArrayOutput)
+}
+
+// List of stack capabilities for stack.
+func (o StackV1Output) Capabilities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.StringArrayOutput { return v.Capabilities }).(pulumi.StringArrayOutput)
+}
+
+// The date and time when the resource was created. The date
+// and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
+// For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
+// is the time zone as an offset from UTC.
+func (o StackV1Output) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// The description of the stack resource.
+func (o StackV1Output) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Enables or disables deletion of all stack
+// resources when a stack creation fails. Default is true, meaning all
+// resources are not deleted when stack creation fails.
+func (o StackV1Output) DisableRollback() pulumi.BoolOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.BoolOutput { return v.DisableRollback }).(pulumi.BoolOutput)
+}
+
+// Environment key/value pairs to associate with
+// the stack which contains details for the environment of the stack.
+// Allowed keys: Bin, URL, Files. Changing this updates the existing stack
+// Environment Opts.
+func (o StackV1Output) EnvironmentOpts() pulumi.MapOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.MapOutput { return v.EnvironmentOpts }).(pulumi.MapOutput)
+}
+
+// A unique name for the stack. It must start with an
+// alphabetic character. Changing this updates the stack's name.
+func (o StackV1Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of notification topics for stack.
+func (o StackV1Output) NotificationTopics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.StringArrayOutput { return v.NotificationTopics }).(pulumi.StringArrayOutput)
+}
+
+// User-defined key/value pairs as parameters to pass
+// to the template. Changing this updates the existing stack parameters.
+func (o StackV1Output) Parameters() pulumi.MapOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.MapOutput { return v.Parameters }).(pulumi.MapOutput)
+}
+
+// The region in which to create the stack. If
+// omitted, the `region` argument of the provider is used. Changing this
+// creates a new stack.
+func (o StackV1Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The status of the stack.
+func (o StackV1Output) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The reason for the current status of the stack.
+func (o StackV1Output) StatusReason() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.StringOutput { return v.StatusReason }).(pulumi.StringOutput)
+}
+
+// A list of tags to assosciate with the Stack
+func (o StackV1Output) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The description of the stack template.
+func (o StackV1Output) TemplateDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.StringOutput { return v.TemplateDescription }).(pulumi.StringOutput)
+}
+
+// Template key/value pairs to associate with the
+// stack which contains either the template file or url.
+// Allowed keys: Bin, URL, Files. Changing this updates the existing stack
+// Template Opts.
+func (o StackV1Output) TemplateOpts() pulumi.MapOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.MapOutput { return v.TemplateOpts }).(pulumi.MapOutput)
+}
+
+// The timeout for stack action in minutes.
+func (o StackV1Output) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.IntOutput { return v.Timeout }).(pulumi.IntOutput)
+}
+
+// The date and time when the resource was updated. The date
+// and time stamp format is ISO 8601: CCYY-MM-DDThh:mm:ss±hh:mm
+// For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
+// is the time zone as an offset from UTC.
+func (o StackV1Output) UpdatedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *StackV1) pulumi.StringOutput { return v.UpdatedTime }).(pulumi.StringOutput)
 }
 
 type StackV1ArrayOutput struct{ *pulumi.OutputState }

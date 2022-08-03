@@ -365,6 +365,73 @@ func (o FlavorOutput) ToFlavorOutputWithContext(ctx context.Context) FlavorOutpu
 	return o
 }
 
+// The amount of disk space in GiB to use for the root
+// (/) partition. Changing this creates a new flavor.
+func (o FlavorOutput) Disk() pulumi.IntOutput {
+	return o.ApplyT(func(v *Flavor) pulumi.IntOutput { return v.Disk }).(pulumi.IntOutput)
+}
+
+// The amount of ephemeral in GiB. If unspecified,
+// the default is 0. Changing this creates a new flavor.
+func (o FlavorOutput) Ephemeral() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Flavor) pulumi.IntPtrOutput { return v.Ephemeral }).(pulumi.IntPtrOutput)
+}
+
+// Key/Value pairs of metadata for the flavor.
+func (o FlavorOutput) ExtraSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *Flavor) pulumi.MapOutput { return v.ExtraSpecs }).(pulumi.MapOutput)
+}
+
+// Unique ID (integer or UUID) of flavor to create. Changing
+// this creates a new flavor.
+func (o FlavorOutput) FlavorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Flavor) pulumi.StringOutput { return v.FlavorId }).(pulumi.StringOutput)
+}
+
+// Whether the flavor is public. Changing this creates
+// a new flavor.
+func (o FlavorOutput) IsPublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Flavor) pulumi.BoolPtrOutput { return v.IsPublic }).(pulumi.BoolPtrOutput)
+}
+
+// A unique name for the flavor. Changing this creates a new
+// flavor.
+func (o FlavorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Flavor) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The amount of RAM to use, in megabytes. Changing this
+// creates a new flavor.
+func (o FlavorOutput) Ram() pulumi.IntOutput {
+	return o.ApplyT(func(v *Flavor) pulumi.IntOutput { return v.Ram }).(pulumi.IntOutput)
+}
+
+// The region in which to obtain the V2 Compute client.
+// Flavors are associated with accounts, but a Compute client is needed to
+// create one. If omitted, the `region` argument of the provider is used.
+// Changing this creates a new flavor.
+func (o FlavorOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Flavor) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// RX/TX bandwith factor. The default is 1. Changing
+// this creates a new flavor.
+func (o FlavorOutput) RxTxFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *Flavor) pulumi.Float64PtrOutput { return v.RxTxFactor }).(pulumi.Float64PtrOutput)
+}
+
+// The amount of disk space in megabytes to use. If
+// unspecified, the default is 0. Changing this creates a new flavor.
+func (o FlavorOutput) Swap() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Flavor) pulumi.IntPtrOutput { return v.Swap }).(pulumi.IntPtrOutput)
+}
+
+// The number of virtual CPUs to use. Changing this creates
+// a new flavor.
+func (o FlavorOutput) Vcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v *Flavor) pulumi.IntOutput { return v.Vcpus }).(pulumi.IntOutput)
+}
+
 type FlavorArrayOutput struct{ *pulumi.OutputState }
 
 func (FlavorArrayOutput) ElementType() reflect.Type {

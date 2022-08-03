@@ -320,6 +320,55 @@ func (o PortForwardingV2Output) ToPortForwardingV2OutputWithContext(ctx context.
 	return o
 }
 
+// A text describing the port forwarding. Changing this
+// updates the `description` of an existing port forwarding.
+func (o PortForwardingV2Output) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PortForwardingV2) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The TCP/UDP/other protocol port number of the port forwarding. Changing this
+// updates the `externalPort` of an existing port forwarding.
+func (o PortForwardingV2Output) ExternalPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *PortForwardingV2) pulumi.IntOutput { return v.ExternalPort }).(pulumi.IntOutput)
+}
+
+// The ID of the Neutron floating IP address. Changing this creates a new port forwarding.
+func (o PortForwardingV2Output) FloatingipId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PortForwardingV2) pulumi.StringOutput { return v.FloatingipId }).(pulumi.StringOutput)
+}
+
+// The fixed IPv4 address of the Neutron port associated with the port forwarding.
+// Changing this updates the `internalIpAddress` of an existing port forwarding.
+func (o PortForwardingV2Output) InternalIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *PortForwardingV2) pulumi.StringOutput { return v.InternalIpAddress }).(pulumi.StringOutput)
+}
+
+// The TCP/UDP/other protocol port number of the Neutron port fixed IP address associated to the
+// port forwarding. Changing this updates the `internalPort` of an existing port forwarding.
+func (o PortForwardingV2Output) InternalPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *PortForwardingV2) pulumi.IntOutput { return v.InternalPort }).(pulumi.IntOutput)
+}
+
+// The ID of the Neutron port associated with the port forwarding. Changing
+// this updates the `internalPortId` of an existing port forwarding.
+func (o PortForwardingV2Output) InternalPortId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PortForwardingV2) pulumi.StringOutput { return v.InternalPortId }).(pulumi.StringOutput)
+}
+
+// The IP protocol used in the port forwarding. Changing this updates the `protocol`
+// of an existing port forwarding.
+func (o PortForwardingV2Output) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *PortForwardingV2) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 networking client.
+// A networking client is needed to create a port forwarding. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// port forwarding.
+func (o PortForwardingV2Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *PortForwardingV2) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
 type PortForwardingV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (PortForwardingV2ArrayOutput) ElementType() reflect.Type {

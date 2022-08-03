@@ -497,6 +497,120 @@ func (o ListenerOutput) ToListenerOutputWithContext(ctx context.Context) Listene
 	return o
 }
 
+// The administrative state of the Listener.
+// A valid value is true (UP) or false (DOWN).
+func (o ListenerOutput) AdminStateUp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.BoolPtrOutput { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
+}
+
+// A list of CIDR blocks that are permitted to connect to this listener, denying
+// all other source addresses. If not present, defaults to allow all.
+func (o ListenerOutput) AllowedCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringArrayOutput { return v.AllowedCidrs }).(pulumi.StringArrayOutput)
+}
+
+// The maximum number of connections allowed
+// for the Listener.
+func (o ListenerOutput) ConnectionLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.ConnectionLimit }).(pulumi.IntOutput)
+}
+
+// The ID of the default pool with which the
+// Listener is associated.
+func (o ListenerOutput) DefaultPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.DefaultPoolId }).(pulumi.StringOutput)
+}
+
+// A reference to a Barbican Secrets
+// container which stores TLS information. This is required if the protocol
+// is `TERMINATED_HTTPS`. See
+// [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
+// for more information.
+func (o ListenerOutput) DefaultTlsContainerRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.DefaultTlsContainerRef }).(pulumi.StringPtrOutput)
+}
+
+// Human-readable description for the Listener.
+func (o ListenerOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The list of key value pairs representing headers to insert
+// into the request before it is sent to the backend members. Changing this updates the headers of the
+// existing listener.
+func (o ListenerOutput) InsertHeaders() pulumi.MapOutput {
+	return o.ApplyT(func(v *Listener) pulumi.MapOutput { return v.InsertHeaders }).(pulumi.MapOutput)
+}
+
+// The load balancer on which to provision this
+// Listener. Changing this creates a new Listener.
+func (o ListenerOutput) LoadbalancerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.LoadbalancerId }).(pulumi.StringOutput)
+}
+
+// Human-readable name for the Listener. Does not have
+// to be unique.
+func (o ListenerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The protocol - can either be TCP, HTTP, HTTPS,
+// TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
+// in **Octavia minor version >= 2.23**). Changing this creates a new Listener.
+func (o ListenerOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The port on which to listen for client traffic.
+// Changing this creates a new Listener.
+func (o ListenerOutput) ProtocolPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.ProtocolPort }).(pulumi.IntOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create an . If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// Listener.
+func (o ListenerOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// A list of references to Barbican Secrets
+// containers which store SNI information. See
+// [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
+// for more information.
+func (o ListenerOutput) SniContainerRefs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringArrayOutput { return v.SniContainerRefs }).(pulumi.StringArrayOutput)
+}
+
+// Required for admins. The UUID of the tenant who owns
+// the Listener.  Only administrative users can specify a tenant UUID
+// other than their own. Changing this creates a new Listener.
+func (o ListenerOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// The client inactivity timeout in milliseconds.
+func (o ListenerOutput) TimeoutClientData() pulumi.IntOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.TimeoutClientData }).(pulumi.IntOutput)
+}
+
+// The member connection timeout in milliseconds.
+func (o ListenerOutput) TimeoutMemberConnect() pulumi.IntOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.TimeoutMemberConnect }).(pulumi.IntOutput)
+}
+
+// The member inactivity timeout in milliseconds.
+func (o ListenerOutput) TimeoutMemberData() pulumi.IntOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.TimeoutMemberData }).(pulumi.IntOutput)
+}
+
+// The time in milliseconds, to wait for additional
+// TCP packets for content inspection.
+func (o ListenerOutput) TimeoutTcpInspect() pulumi.IntOutput {
+	return o.ApplyT(func(v *Listener) pulumi.IntOutput { return v.TimeoutTcpInspect }).(pulumi.IntOutput)
+}
+
 type ListenerArrayOutput struct{ *pulumi.OutputState }
 
 func (ListenerArrayOutput) ElementType() reflect.Type {

@@ -430,6 +430,93 @@ func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 	return o
 }
 
+// Action to be taken ( must be "allow" or "deny") when the
+// firewall rule matches. Changing this updates the `action` of an existing
+// firewall rule.
+func (o RuleOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
+}
+
+// A description for the firewall rule. Changing this
+// updates the `description` of an existing firewall rule.
+func (o RuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The destination IP address on which the
+// firewall rule operates. Changing this updates the `destinationIpAddress`
+// of an existing firewall rule.
+func (o RuleOutput) DestinationIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.DestinationIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The destination port on which the firewall
+// rule operates. Changing this updates the `destinationPort` of an existing
+// firewall rule.
+func (o RuleOutput) DestinationPort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.DestinationPort }).(pulumi.StringPtrOutput)
+}
+
+// Enabled status for the firewall rule (must be "true"
+// or "false" if provided - defaults to "true"). Changing this updates the
+// `enabled` status of an existing firewall rule.
+func (o RuleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// IP version, either 4 (default) or 6. Changing this
+// updates the `ipVersion` of an existing firewall rule.
+func (o RuleOutput) IpVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.IntPtrOutput { return v.IpVersion }).(pulumi.IntPtrOutput)
+}
+
+// A unique name for the firewall rule. Changing this
+// updates the `name` of an existing firewall rule.
+func (o RuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The protocol type on which the firewall rule operates.
+// Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
+// `protocol` of an existing firewall rule.
+func (o RuleOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the v1 Compute client.
+// A Compute client is needed to create a firewall rule. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// firewall rule.
+func (o RuleOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The source IP address on which the firewall
+// rule operates. Changing this updates the `sourceIpAddress` of an existing
+// firewall rule.
+func (o RuleOutput) SourceIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.SourceIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The source port on which the firewall
+// rule operates. Changing this updates the `sourcePort` of an existing
+// firewall rule.
+func (o RuleOutput) SourcePort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.SourcePort }).(pulumi.StringPtrOutput)
+}
+
+// The owner of the firewall rule. Required if admin
+// wants to create a firewall rule for another tenant. Changing this creates a
+// new firewall rule.
+func (o RuleOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+// Map of additional options.
+func (o RuleOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *Rule) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+}
+
 type RuleArrayOutput struct{ *pulumi.OutputState }
 
 func (RuleArrayOutput) ElementType() reflect.Type {

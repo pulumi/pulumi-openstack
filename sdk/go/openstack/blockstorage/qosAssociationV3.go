@@ -252,6 +252,25 @@ func (o QosAssociationV3Output) ToQosAssociationV3OutputWithContext(ctx context.
 	return o
 }
 
+// ID of the qos to associate. Changing this creates
+// a new qos association.
+func (o QosAssociationV3Output) QosId() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosAssociationV3) pulumi.StringOutput { return v.QosId }).(pulumi.StringOutput)
+}
+
+// The region in which to create the qos association.
+// If omitted, the `region` argument of the provider is used. Changing
+// this creates a new qos association.
+func (o QosAssociationV3Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosAssociationV3) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// ID of the volumeType to associate.
+// Changing this creates a new qos association.
+func (o QosAssociationV3Output) VolumeTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosAssociationV3) pulumi.StringOutput { return v.VolumeTypeId }).(pulumi.StringOutput)
+}
+
 type QosAssociationV3ArrayOutput struct{ *pulumi.OutputState }
 
 func (QosAssociationV3ArrayOutput) ElementType() reflect.Type {

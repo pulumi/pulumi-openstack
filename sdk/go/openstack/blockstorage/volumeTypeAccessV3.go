@@ -250,6 +250,25 @@ func (o VolumeTypeAccessV3Output) ToVolumeTypeAccessV3OutputWithContext(ctx cont
 	return o
 }
 
+// ID of the project to give access to. Changing this
+// creates a new resource.
+func (o VolumeTypeAccessV3Output) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeTypeAccessV3) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The region in which to create the volume. If
+// omitted, the `region` argument of the provider is used. Changing this
+// creates a new quotaset.
+func (o VolumeTypeAccessV3Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeTypeAccessV3) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// ID of the volume type to give access to. Changing
+// this creates a new resource.
+func (o VolumeTypeAccessV3Output) VolumeTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeTypeAccessV3) pulumi.StringOutput { return v.VolumeTypeId }).(pulumi.StringOutput)
+}
+
 type VolumeTypeAccessV3ArrayOutput struct{ *pulumi.OutputState }
 
 func (VolumeTypeAccessV3ArrayOutput) ElementType() reflect.Type {

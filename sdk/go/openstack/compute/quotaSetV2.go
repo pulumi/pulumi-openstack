@@ -447,6 +447,103 @@ func (o QuotaSetV2Output) ToQuotaSetV2OutputWithContext(ctx context.Context) Quo
 	return o
 }
 
+// Quota value for cores.
+// Changing this updates the existing quotaset.
+func (o QuotaSetV2Output) Cores() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaSetV2) pulumi.IntOutput { return v.Cores }).(pulumi.IntOutput)
+}
+
+// Quota value for fixed IPs.
+// Changing this updates the existing quotaset.
+func (o QuotaSetV2Output) FixedIps() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaSetV2) pulumi.IntOutput { return v.FixedIps }).(pulumi.IntOutput)
+}
+
+// Quota value for floating IPs.
+// Changing this updates the existing quotaset.
+func (o QuotaSetV2Output) FloatingIps() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaSetV2) pulumi.IntOutput { return v.FloatingIps }).(pulumi.IntOutput)
+}
+
+// Quota value for content bytes
+// of injected files. Changing this updates the existing quotaset.
+func (o QuotaSetV2Output) InjectedFileContentBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaSetV2) pulumi.IntOutput { return v.InjectedFileContentBytes }).(pulumi.IntOutput)
+}
+
+// Quota value for path bytes of
+// injected files. Changing this updates the existing quotaset.
+func (o QuotaSetV2Output) InjectedFilePathBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaSetV2) pulumi.IntOutput { return v.InjectedFilePathBytes }).(pulumi.IntOutput)
+}
+
+// Quota value for injected files.
+// Changing this updates the existing quotaset.
+func (o QuotaSetV2Output) InjectedFiles() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaSetV2) pulumi.IntOutput { return v.InjectedFiles }).(pulumi.IntOutput)
+}
+
+// Quota value for instances.
+// Changing this updates the existing quotaset.
+func (o QuotaSetV2Output) Instances() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaSetV2) pulumi.IntOutput { return v.Instances }).(pulumi.IntOutput)
+}
+
+// Quota value for key pairs.
+// Changing this updates the existing quotaset.
+func (o QuotaSetV2Output) KeyPairs() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaSetV2) pulumi.IntOutput { return v.KeyPairs }).(pulumi.IntOutput)
+}
+
+// Quota value for metadata items.
+// Changing this updates the existing quotaset.
+func (o QuotaSetV2Output) MetadataItems() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaSetV2) pulumi.IntOutput { return v.MetadataItems }).(pulumi.IntOutput)
+}
+
+// ID of the project to manage quotas.
+// Changing this creates a new quotaset.
+func (o QuotaSetV2Output) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaSetV2) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Quota value for RAM.
+// Changing this updates the existing quotaset.
+func (o QuotaSetV2Output) Ram() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaSetV2) pulumi.IntOutput { return v.Ram }).(pulumi.IntOutput)
+}
+
+// The region in which to create the volume. If
+// omitted, the `region` argument of the provider is used. Changing this
+// creates a new quotaset.
+func (o QuotaSetV2Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaSetV2) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Quota value for security group rules.
+// Changing this updates the existing quotaset.
+func (o QuotaSetV2Output) SecurityGroupRules() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaSetV2) pulumi.IntOutput { return v.SecurityGroupRules }).(pulumi.IntOutput)
+}
+
+// Quota value for security groups.
+// Changing this updates the existing quotaset.
+func (o QuotaSetV2Output) SecurityGroups() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaSetV2) pulumi.IntOutput { return v.SecurityGroups }).(pulumi.IntOutput)
+}
+
+// Quota value for server groups members.
+// Changing this updates the existing quotaset.
+func (o QuotaSetV2Output) ServerGroupMembers() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaSetV2) pulumi.IntOutput { return v.ServerGroupMembers }).(pulumi.IntOutput)
+}
+
+// Quota value for server groups.
+// Changing this updates the existing quotaset.
+func (o QuotaSetV2Output) ServerGroups() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaSetV2) pulumi.IntOutput { return v.ServerGroups }).(pulumi.IntOutput)
+}
+
 type QuotaSetV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (QuotaSetV2ArrayOutput) ElementType() reflect.Type {

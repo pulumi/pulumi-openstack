@@ -593,6 +593,182 @@ func (o ImageOutput) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 	return o
 }
 
+// The checksum of the data associated with the image.
+func (o ImageOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// The container format. Must be one of
+// "ami", "ari", "aki", "bare", "ovf".
+func (o ImageOutput) ContainerFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.ContainerFormat }).(pulumi.StringOutput)
+}
+
+// The date the image was created.
+func (o ImageOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The disk format. Must be one of
+// "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
+func (o ImageOutput) DiskFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.DiskFormat }).(pulumi.StringOutput)
+}
+
+// the trailing path after the glance
+// endpoint that represent the location of the image
+// or the path to retrieve it.
+func (o ImageOutput) File() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.File }).(pulumi.StringOutput)
+}
+
+// If true, image will be hidden from public list.
+// Defaults to false.
+func (o ImageOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.BoolPtrOutput { return v.Hidden }).(pulumi.BoolPtrOutput)
+}
+
+func (o ImageOutput) ImageCachePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.ImageCachePath }).(pulumi.StringPtrOutput)
+}
+
+// Unique ID (valid UUID) of image to create. Changing
+// this creates a new image.
+func (o ImageOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The password of basic auth to download `imageSourceUrl`.
+func (o ImageOutput) ImageSourcePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.ImageSourcePassword }).(pulumi.StringPtrOutput)
+}
+
+// This is the url of the raw image. If `webDownload`
+// is not used, then the image will be downloaded in the `imageCachePath` before
+// being uploaded to Glance.
+// Conflicts with `localFilePath`.
+func (o ImageOutput) ImageSourceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.ImageSourceUrl }).(pulumi.StringPtrOutput)
+}
+
+// The username of basic auth to download `imageSourceUrl`.
+func (o ImageOutput) ImageSourceUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.ImageSourceUsername }).(pulumi.StringPtrOutput)
+}
+
+// This is the filepath of the raw image file
+// that will be uploaded to Glance. Conflicts with `imageSourceUrl` and
+// `webDownload`.
+func (o ImageOutput) LocalFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.LocalFilePath }).(pulumi.StringPtrOutput)
+}
+
+// The metadata associated with the image.
+// Image metadata allow for meaningfully define the image properties
+// and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+func (o ImageOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *Image) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+}
+
+// Amount of disk space (in GB) required to boot image.
+// Defaults to 0.
+func (o ImageOutput) MinDiskGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.IntPtrOutput { return v.MinDiskGb }).(pulumi.IntPtrOutput)
+}
+
+// Amount of ram (in MB) required to boot image.
+// Defauts to 0.
+func (o ImageOutput) MinRamMb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.IntPtrOutput { return v.MinRamMb }).(pulumi.IntPtrOutput)
+}
+
+// The name of the image.
+func (o ImageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The id of the openstack user who owns the image.
+func (o ImageOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
+}
+
+// A map of key/value pairs to set freeform
+// information about an image. See the "Notes" section for further
+// information about properties.
+func (o ImageOutput) Properties() pulumi.MapOutput {
+	return o.ApplyT(func(v *Image) pulumi.MapOutput { return v.Properties }).(pulumi.MapOutput)
+}
+
+// If true, image will not be deletable.
+// Defaults to false.
+func (o ImageOutput) Protected() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.BoolPtrOutput { return v.Protected }).(pulumi.BoolPtrOutput)
+}
+
+// The region in which to obtain the V2 Glance client.
+// A Glance client is needed to create an Image that can be used with
+// a compute instance. If omitted, the `region` argument of the provider
+// is used. Changing this creates a new Image.
+func (o ImageOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The path to the JSON-schema that represent
+// the image or image
+func (o ImageOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Schema }).(pulumi.StringOutput)
+}
+
+// The size in bytes of the data associated with the image.
+func (o ImageOutput) SizeBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v *Image) pulumi.IntOutput { return v.SizeBytes }).(pulumi.IntOutput)
+}
+
+// The status of the image. It can be "queued", "active"
+// or "saving".
+func (o ImageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tags of the image. It must be a list of strings.
+// At this time, it is not possible to delete all tags of an image.
+func (o ImageOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// (**Deprecated** - use `updatedAt` instead)
+//
+// Deprecated: Use updated_at instead
+func (o ImageOutput) UpdateAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.UpdateAt }).(pulumi.StringOutput)
+}
+
+// The date the image was last updated.
+func (o ImageOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// If false, the checksum will not be verified
+// once the image is finished uploading. Conflicts with `webDownload`.
+// Defaults to true when not using `webDownload`.
+func (o ImageOutput) VerifyChecksum() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.BoolPtrOutput { return v.VerifyChecksum }).(pulumi.BoolPtrOutput)
+}
+
+// The visibility of the image. Must be one of
+// "public", "private", "community", or "shared". The ability to set the
+// visibility depends upon the configuration of the OpenStack cloud.
+func (o ImageOutput) Visibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.Visibility }).(pulumi.StringPtrOutput)
+}
+
+// If true, the "web-download" import method will
+// be used to let Openstack download the image directly from the remote source.
+// Conflicts with `localFilePath`. Defaults to false.
+func (o ImageOutput) WebDownload() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.BoolPtrOutput { return v.WebDownload }).(pulumi.BoolPtrOutput)
+}
+
 type ImageArrayOutput struct{ *pulumi.OutputState }
 
 func (ImageArrayOutput) ElementType() reflect.Type {

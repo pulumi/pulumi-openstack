@@ -104,13 +104,14 @@ export class Instance extends pulumi.CustomResource {
     /**
      * (Optional; Required if `imageName` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The image ID of
-     * the desired image for the server. Changing this creates a new server.
+     * the desired image for the server. Changing this rebuilds the existing
+     * server.
      */
     public readonly imageId!: pulumi.Output<string>;
     /**
      * (Optional; Required if `imageId` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The name of the
-     * desired image for the server. Changing this creates a new server.
+     * desired image for the server. Changing this rebuilds the existing server.
      */
     public readonly imageName!: pulumi.Output<string>;
     /**
@@ -144,7 +145,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Customize the personality of an instance by
      * defining one or more files and their contents. The personality structure
-     * is described below.
+     * is described below. Changing this rebuilds the existing server.
      */
     public readonly personalities!: pulumi.Output<outputs.compute.InstancePersonality[] | undefined>;
     /**
@@ -356,13 +357,14 @@ export interface InstanceState {
     /**
      * (Optional; Required if `imageName` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The image ID of
-     * the desired image for the server. Changing this creates a new server.
+     * the desired image for the server. Changing this rebuilds the existing
+     * server.
      */
     imageId?: pulumi.Input<string>;
     /**
      * (Optional; Required if `imageId` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The name of the
-     * desired image for the server. Changing this creates a new server.
+     * desired image for the server. Changing this rebuilds the existing server.
      */
     imageName?: pulumi.Input<string>;
     /**
@@ -396,7 +398,7 @@ export interface InstanceState {
     /**
      * Customize the personality of an instance by
      * defining one or more files and their contents. The personality structure
-     * is described below.
+     * is described below. Changing this rebuilds the existing server.
      */
     personalities?: pulumi.Input<pulumi.Input<inputs.compute.InstancePersonality>[]>;
     /**
@@ -522,13 +524,14 @@ export interface InstanceArgs {
     /**
      * (Optional; Required if `imageName` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The image ID of
-     * the desired image for the server. Changing this creates a new server.
+     * the desired image for the server. Changing this rebuilds the existing
+     * server.
      */
     imageId?: pulumi.Input<string>;
     /**
      * (Optional; Required if `imageId` is empty and not booting
      * from a volume. Do not specify if booting from a volume.) The name of the
-     * desired image for the server. Changing this creates a new server.
+     * desired image for the server. Changing this rebuilds the existing server.
      */
     imageName?: pulumi.Input<string>;
     /**
@@ -562,7 +565,7 @@ export interface InstanceArgs {
     /**
      * Customize the personality of an instance by
      * defining one or more files and their contents. The personality structure
-     * is described below.
+     * is described below. Changing this rebuilds the existing server.
      */
     personalities?: pulumi.Input<pulumi.Input<inputs.compute.InstancePersonality>[]>;
     /**

@@ -318,6 +318,33 @@ func (o FloatingIpAssociateOutput) ToFloatingIpAssociateOutputWithContext(ctx co
 	return o
 }
 
+// The specific IP address to direct traffic to.
+func (o FloatingIpAssociateOutput) FixedIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FloatingIpAssociate) pulumi.StringPtrOutput { return v.FixedIp }).(pulumi.StringPtrOutput)
+}
+
+// The floating IP to associate.
+func (o FloatingIpAssociateOutput) FloatingIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *FloatingIpAssociate) pulumi.StringOutput { return v.FloatingIp }).(pulumi.StringOutput)
+}
+
+// The instance to associte the floating IP with.
+func (o FloatingIpAssociateOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FloatingIpAssociate) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Compute client.
+// Keypairs are associated with accounts, but a Compute client is needed to
+// create one. If omitted, the `region` argument of the provider is used.
+// Changing this creates a new floatingip_associate.
+func (o FloatingIpAssociateOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *FloatingIpAssociate) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o FloatingIpAssociateOutput) WaitUntilAssociated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FloatingIpAssociate) pulumi.BoolPtrOutput { return v.WaitUntilAssociated }).(pulumi.BoolPtrOutput)
+}
+
 type FloatingIpAssociateArrayOutput struct{ *pulumi.OutputState }
 
 func (FloatingIpAssociateArrayOutput) ElementType() reflect.Type {

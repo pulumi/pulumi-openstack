@@ -255,6 +255,26 @@ func (o MembersOutput) ToMembersOutputWithContext(ctx context.Context) MembersOu
 	return o
 }
 
+// A set of dictionaries containing member parameters. The
+// structure is described below.
+func (o MembersOutput) Members() MembersMemberArrayOutput {
+	return o.ApplyT(func(v *Members) MembersMemberArrayOutput { return v.Members }).(MembersMemberArrayOutput)
+}
+
+// The id of the pool that members will be assigned to.
+// Changing this creates a new members resource.
+func (o MembersOutput) PoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Members) pulumi.StringOutput { return v.PoolId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create pool members. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// members resource.
+func (o MembersOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Members) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
 type MembersArrayOutput struct{ *pulumi.OutputState }
 
 func (MembersArrayOutput) ElementType() reflect.Type {

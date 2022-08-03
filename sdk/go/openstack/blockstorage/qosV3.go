@@ -245,6 +245,30 @@ func (o QosV3Output) ToQosV3OutputWithContext(ctx context.Context) QosV3Output {
 	return o
 }
 
+// The consumer of qos. Can be one of `front-end`,
+// `back-end` or `both`. Changing this updates the `consumer` of an
+// existing qos.
+func (o QosV3Output) Consumer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QosV3) pulumi.StringPtrOutput { return v.Consumer }).(pulumi.StringPtrOutput)
+}
+
+// Name of the qos.  Changing this creates a new qos.
+func (o QosV3Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosV3) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region in which to create the qos. If omitted,
+// the `region` argument of the provider is used. Changing this creates
+// a new qos.
+func (o QosV3Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosV3) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Key/Value pairs of specs for the qos.
+func (o QosV3Output) Specs() pulumi.MapOutput {
+	return o.ApplyT(func(v *QosV3) pulumi.MapOutput { return v.Specs }).(pulumi.MapOutput)
+}
+
 type QosV3ArrayOutput struct{ *pulumi.OutputState }
 
 func (QosV3ArrayOutput) ElementType() reflect.Type {

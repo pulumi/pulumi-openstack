@@ -307,6 +307,40 @@ func (o AddressScopeOutput) ToAddressScopeOutputWithContext(ctx context.Context)
 	return o
 }
 
+// IP version, either 4 (default) or 6. Changing this
+// creates a new address-scope.
+func (o AddressScopeOutput) IpVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AddressScope) pulumi.IntPtrOutput { return v.IpVersion }).(pulumi.IntPtrOutput)
+}
+
+// The name of the address-scope. Changing this updates the
+// name of the existing address-scope.
+func (o AddressScopeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AddressScope) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The owner of the address-scope. Required if admin
+// wants to create a address-scope for another project. Changing this creates a
+// new address-scope.
+func (o AddressScopeOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AddressScope) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create a Neutron address-scope. If omitted,
+// the `region` argument of the provider is used. Changing this creates a new
+// address-scope.
+func (o AddressScopeOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *AddressScope) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Indicates whether this address-scope is shared across
+// all projects. Changing this updates the shared status of the existing
+// address-scope.
+func (o AddressScopeOutput) Shared() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AddressScope) pulumi.BoolOutput { return v.Shared }).(pulumi.BoolOutput)
+}
+
 type AddressScopeArrayOutput struct{ *pulumi.OutputState }
 
 func (AddressScopeArrayOutput) ElementType() reflect.Type {

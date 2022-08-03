@@ -337,6 +337,77 @@ func (o QosPolicyOutput) ToQosPolicyOutputWithContext(ctx context.Context) QosPo
 	return o
 }
 
+// The collection of tags assigned on the QoS policy, which have been
+// explicitly and implicitly added.
+func (o QosPolicyOutput) AllTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringArrayOutput { return v.AllTags }).(pulumi.StringArrayOutput)
+}
+
+// The time at which QoS policy was created.
+func (o QosPolicyOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The human-readable description for the QoS policy.
+// Changing this updates the description of the existing QoS policy.
+func (o QosPolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the QoS policy is default
+// QoS policy or not. Changing this updates the default status of the existing
+// QoS policy.
+func (o QosPolicyOutput) IsDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.BoolPtrOutput { return v.IsDefault }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the QoS policy. Changing this updates the name of
+// the existing QoS policy.
+func (o QosPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The owner of the QoS policy. Required if admin wants to
+// create a QoS policy for another project. Changing this creates a new QoS policy.
+func (o QosPolicyOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create a Neutron Qos policy. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// QoS policy.
+func (o QosPolicyOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The revision number of the QoS policy.
+func (o QosPolicyOutput) RevisionNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.IntOutput { return v.RevisionNumber }).(pulumi.IntOutput)
+}
+
+// Indicates whether this QoS policy is shared across
+// all projects. Changing this updates the shared status of the existing
+// QoS policy.
+func (o QosPolicyOutput) Shared() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.BoolPtrOutput { return v.Shared }).(pulumi.BoolPtrOutput)
+}
+
+// A set of string tags for the QoS policy.
+func (o QosPolicyOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The time at which QoS policy was created.
+func (o QosPolicyOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Map of additional options.
+func (o QosPolicyOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *QosPolicy) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+}
+
 type QosPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (QosPolicyArrayOutput) ElementType() reflect.Type {

@@ -293,6 +293,49 @@ func (o EndpointGroupOutput) ToEndpointGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The human-readable description for the group.
+// Changing this updates the description of the existing group.
+func (o EndpointGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// List of endpoints of the same type, for the endpoint group. The values will depend on the type.
+// Changing this creates a new group.
+func (o EndpointGroupOutput) Endpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringArrayOutput { return v.Endpoints }).(pulumi.StringArrayOutput)
+}
+
+// The name of the group. Changing this updates the name of
+// the existing group.
+func (o EndpointGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create an endpoint group. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// group.
+func (o EndpointGroupOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The owner of the group. Required if admin wants to
+// create an endpoint group for another project. Changing this creates a new group.
+func (o EndpointGroupOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// The type of the endpoints in the group. A valid value is subnet, cidr, network, router, or vlan.
+// Changing this creates a new group.
+func (o EndpointGroupOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Map of additional options.
+func (o EndpointGroupOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *EndpointGroup) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+}
+
 type EndpointGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (EndpointGroupArrayOutput) ElementType() reflect.Type {

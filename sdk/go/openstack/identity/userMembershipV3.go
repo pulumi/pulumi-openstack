@@ -265,6 +265,24 @@ func (o UserMembershipV3Output) ToUserMembershipV3OutputWithContext(ctx context.
 	return o
 }
 
+// The UUID of group to which the user will be added.
+// Changing this creates a new user membership.
+func (o UserMembershipV3Output) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserMembershipV3) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V3 Identity client.
+// If omitted, the `region` argument of the provider is used.
+// Changing this creates a new user membership.
+func (o UserMembershipV3Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserMembershipV3) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The UUID of user to use. Changing this creates a new user membership.
+func (o UserMembershipV3Output) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserMembershipV3) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
 type UserMembershipV3ArrayOutput struct{ *pulumi.OutputState }
 
 func (UserMembershipV3ArrayOutput) ElementType() reflect.Type {

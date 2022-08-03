@@ -274,6 +274,32 @@ func (o RouterInterfaceOutput) ToRouterInterfaceOutputWithContext(ctx context.Co
 	return o
 }
 
+// ID of the port this interface connects to. Changing
+// this creates a new router interface.
+func (o RouterInterfaceOutput) PortId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.PortId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 networking client.
+// A networking client is needed to create a router. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// router interface.
+func (o RouterInterfaceOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// ID of the router this interface belongs to. Changing
+// this creates a new router interface.
+func (o RouterInterfaceOutput) RouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
+}
+
+// ID of the subnet this interface connects to. Changing
+// this creates a new router interface.
+func (o RouterInterfaceOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
+}
+
 type RouterInterfaceArrayOutput struct{ *pulumi.OutputState }
 
 func (RouterInterfaceArrayOutput) ElementType() reflect.Type {

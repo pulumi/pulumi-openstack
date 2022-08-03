@@ -380,6 +380,73 @@ func (o PoolOutput) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 	return o
 }
 
+// The administrative state of the pool.
+// A valid value is true (UP) or false (DOWN).
+func (o PoolOutput) AdminStateUp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Pool) pulumi.BoolPtrOutput { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
+}
+
+// Human-readable description for the pool.
+func (o PoolOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The load balancing algorithm to
+// distribute traffic to the pool's members. Must be one of
+// ROUND_ROBIN, LEAST_CONNECTIONS, SOURCE_IP, or SOURCE_IP_PORT (supported only
+// in Octavia).
+func (o PoolOutput) LbMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.LbMethod }).(pulumi.StringOutput)
+}
+
+// The Listener on which the members of the pool
+// will be associated with. Changing this creates a new pool.
+// Note:  One of LoadbalancerID or ListenerID must be provided.
+func (o PoolOutput) ListenerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringPtrOutput { return v.ListenerId }).(pulumi.StringPtrOutput)
+}
+
+// The load balancer on which to provision this
+// pool. Changing this creates a new pool.
+// Note:  One of LoadbalancerID or ListenerID must be provided.
+func (o PoolOutput) LoadbalancerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringPtrOutput { return v.LoadbalancerId }).(pulumi.StringPtrOutput)
+}
+
+// Human-readable name for the pool.
+func (o PoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Omit this field to prevent session persistence.  Indicates
+// whether connections in the same session will be processed by the same Pool
+// member or not. Changing this creates a new pool.
+func (o PoolOutput) Persistence() PoolPersistenceOutput {
+	return o.ApplyT(func(v *Pool) PoolPersistenceOutput { return v.Persistence }).(PoolPersistenceOutput)
+}
+
+// The protocol - can either be TCP, HTTP, HTTPS, PROXY,
+// UDP (supported only in Octavia), PROXYV2 (**Octavia minor version >= 2.22**)
+// or SCTP (**Octavia minor version >= 2.23**). Changing this creates a new pool.
+func (o PoolOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create an . If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// pool.
+func (o PoolOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Required for admins. The UUID of the tenant who owns
+// the pool.  Only administrative users can specify a tenant UUID
+// other than their own. Changing this creates a new pool.
+func (o PoolOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
 type PoolArrayOutput struct{ *pulumi.OutputState }
 
 func (PoolArrayOutput) ElementType() reflect.Type {

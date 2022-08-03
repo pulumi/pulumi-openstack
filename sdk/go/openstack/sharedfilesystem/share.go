@@ -440,6 +440,112 @@ func (o ShareOutput) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 	return o
 }
 
+// The map of metadata, assigned on the share, which has been
+// explicitly and implicitly added.
+func (o ShareOutput) AllMetadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *Share) pulumi.MapOutput { return v.AllMetadata }).(pulumi.MapOutput)
+}
+
+// The share availability zone. Changing this creates a
+// new share.
+func (o ShareOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// The human-readable description for the share.
+// Changing this updates the description of the existing share.
+func (o ShareOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A list of export locations. For example, when a share server
+// has more than one network interface, it can have multiple export locations.
+func (o ShareOutput) ExportLocations() ShareExportLocationArrayOutput {
+	return o.ApplyT(func(v *Share) ShareExportLocationArrayOutput { return v.ExportLocations }).(ShareExportLocationArrayOutput)
+}
+
+// Indicates whether a share has replicas or not.
+func (o ShareOutput) HasReplicas() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Share) pulumi.BoolOutput { return v.HasReplicas }).(pulumi.BoolOutput)
+}
+
+// The share host name.
+func (o ShareOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
+}
+
+// The level of visibility for the share. Set to true to make
+// share public. Set to false to make it private. Default value is false. Changing this
+// updates the existing share.
+func (o ShareOutput) IsPublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Share) pulumi.BoolPtrOutput { return v.IsPublic }).(pulumi.BoolPtrOutput)
+}
+
+// One or more metadata key and value pairs as a dictionary of
+// strings.
+func (o ShareOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *Share) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+}
+
+// The name of the share. Changing this updates the name
+// of the existing share.
+func (o ShareOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The owner of the Share.
+func (o ShareOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Shared File System client.
+// A Shared File System client is needed to create a share. Changing this
+// creates a new share.
+func (o ShareOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The share replication type.
+func (o ShareOutput) ReplicationType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.ReplicationType }).(pulumi.StringOutput)
+}
+
+// The UUID of a share network where the share server exists
+// or will be created. If `shareNetworkId` is not set and you provide a `snapshotId`,
+// the shareNetworkId value from the snapshot is used. Changing this creates a new share.
+func (o ShareOutput) ShareNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.ShareNetworkId }).(pulumi.StringOutput)
+}
+
+// The share protocol - can either be NFS, CIFS,
+// CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
+func (o ShareOutput) ShareProto() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.ShareProto }).(pulumi.StringOutput)
+}
+
+// The UUID of the share server.
+func (o ShareOutput) ShareServerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.ShareServerId }).(pulumi.StringOutput)
+}
+
+// The share type name. If you omit this parameter, the default
+// share type is used.
+func (o ShareOutput) ShareType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.ShareType }).(pulumi.StringOutput)
+}
+
+// The share size, in GBs. The requested share size cannot be greater
+// than the allowed GB quota. Changing this resizes the existing share.
+func (o ShareOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v *Share) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
+}
+
+// The UUID of the share's base snapshot. Changing this creates
+// a new share.
+func (o ShareOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringPtrOutput { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
 type ShareArrayOutput struct{ *pulumi.OutputState }
 
 func (ShareArrayOutput) ElementType() reflect.Type {

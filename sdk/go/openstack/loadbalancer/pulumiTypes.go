@@ -22,6 +22,12 @@ type MembersMember struct {
 	Backup *bool `pulumi:"backup"`
 	// The unique ID for the members.
 	Id *string `pulumi:"id"`
+	// An alternate IP address used for health
+	// monitoring a backend member.
+	MonitorAddress *string `pulumi:"monitorAddress"`
+	// An alternate protocol port used for health
+	// monitoring a backend member.
+	MonitorPort *int `pulumi:"monitorPort"`
 	// Human-readable name for the member.
 	Name *string `pulumi:"name"`
 	// The port on which to listen for client traffic.
@@ -58,6 +64,12 @@ type MembersMemberArgs struct {
 	Backup pulumi.BoolPtrInput `pulumi:"backup"`
 	// The unique ID for the members.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// An alternate IP address used for health
+	// monitoring a backend member.
+	MonitorAddress pulumi.StringPtrInput `pulumi:"monitorAddress"`
+	// An alternate protocol port used for health
+	// monitoring a backend member.
+	MonitorPort pulumi.IntPtrInput `pulumi:"monitorPort"`
 	// Human-readable name for the member.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The port on which to listen for client traffic.
@@ -143,6 +155,18 @@ func (o MembersMemberOutput) Backup() pulumi.BoolPtrOutput {
 // The unique ID for the members.
 func (o MembersMemberOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MembersMember) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// An alternate IP address used for health
+// monitoring a backend member.
+func (o MembersMemberOutput) MonitorAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MembersMember) *string { return v.MonitorAddress }).(pulumi.StringPtrOutput)
+}
+
+// An alternate protocol port used for health
+// monitoring a backend member.
+func (o MembersMemberOutput) MonitorPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MembersMember) *int { return v.MonitorPort }).(pulumi.IntPtrOutput)
 }
 
 // Human-readable name for the member.

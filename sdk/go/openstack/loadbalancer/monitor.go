@@ -430,6 +430,90 @@ func (o MonitorOutput) ToMonitorOutputWithContext(ctx context.Context) MonitorOu
 	return o
 }
 
+// The administrative state of the monitor.
+// A valid value is true (UP) or false (DOWN).
+func (o MonitorOutput) AdminStateUp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.BoolPtrOutput { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
+}
+
+// The time, in seconds, between sending probes to members.
+func (o MonitorOutput) Delay() pulumi.IntOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.IntOutput { return v.Delay }).(pulumi.IntOutput)
+}
+
+// Required for HTTP(S) types. Expected HTTP codes
+// for a passing HTTP(S) monitor. You can either specify a single status like
+// "200", or a range like "200-202".
+func (o MonitorOutput) ExpectedCodes() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.ExpectedCodes }).(pulumi.StringOutput)
+}
+
+// Required for HTTP(S) types. The HTTP method used
+// for requests by the monitor. If this attribute is not specified, it
+// defaults to "GET".
+func (o MonitorOutput) HttpMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.HttpMethod }).(pulumi.StringOutput)
+}
+
+// Number of permissible ping failures before
+// changing the member's status to INACTIVE. Must be a number between 1
+// and 10.
+func (o MonitorOutput) MaxRetries() pulumi.IntOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.IntOutput { return v.MaxRetries }).(pulumi.IntOutput)
+}
+
+// Number of permissible ping failures befor changing the member's
+// status to ERROR. Must be a number between 1 and 10 (supported only in Octavia).
+// Changing this updates the maxRetriesDown of the existing monitor.
+func (o MonitorOutput) MaxRetriesDown() pulumi.IntOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.IntOutput { return v.MaxRetriesDown }).(pulumi.IntOutput)
+}
+
+// The Name of the Monitor.
+func (o MonitorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The id of the pool that this monitor will be assigned to.
+func (o MonitorOutput) PoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.PoolId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create an . If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// monitor.
+func (o MonitorOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Required for admins. The UUID of the tenant who owns
+// the monitor.  Only administrative users can specify a tenant UUID
+// other than their own. Changing this creates a new monitor.
+func (o MonitorOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Maximum number of seconds for a monitor to wait for a
+// ping reply before it times out. The value must be less than the delay
+// value.
+func (o MonitorOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.IntOutput { return v.Timeout }).(pulumi.IntOutput)
+}
+
+// The type of probe, which is PING, TCP, HTTP, HTTPS,
+// TLS-HELLO or UDP-CONNECT (supported only in Octavia), that is sent by the load
+// balancer to verify the member state. Changing this creates a new monitor.
+func (o MonitorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Required for HTTP(S) types. URI path that will be
+// accessed if monitor type is HTTP or HTTPS.
+func (o MonitorOutput) UrlPath() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.UrlPath }).(pulumi.StringOutput)
+}
+
 type MonitorArrayOutput struct{ *pulumi.OutputState }
 
 func (MonitorArrayOutput) ElementType() reflect.Type {

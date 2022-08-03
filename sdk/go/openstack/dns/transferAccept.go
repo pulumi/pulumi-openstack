@@ -284,6 +284,37 @@ func (o TransferAcceptOutput) ToTransferAcceptOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Disable wait for zone to reach ACTIVE
+// status. The check is enabled by default. If this argument is true, zone
+// will be considered as created/updated if OpenStack accept returned success.
+func (o TransferAcceptOutput) DisableStatusCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransferAccept) pulumi.BoolPtrOutput { return v.DisableStatusCheck }).(pulumi.BoolPtrOutput)
+}
+
+// The transfer key.
+func (o TransferAcceptOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferAccept) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Compute client.
+// Keypairs are associated with accounts, but a Compute client is needed to
+// create one. If omitted, the `region` argument of the provider is used.
+// Changing this creates a new DNS zone.
+func (o TransferAcceptOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferAccept) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Map of additional options. Changing this creates a
+// new transfer accept.
+func (o TransferAcceptOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *TransferAccept) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+}
+
+// The ID of the zone transfer request.
+func (o TransferAcceptOutput) ZoneTransferRequestId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferAccept) pulumi.StringOutput { return v.ZoneTransferRequestId }).(pulumi.StringOutput)
+}
+
 type TransferAcceptArrayOutput struct{ *pulumi.OutputState }
 
 func (TransferAcceptArrayOutput) ElementType() reflect.Type {

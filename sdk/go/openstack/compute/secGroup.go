@@ -334,6 +334,34 @@ func (o SecGroupOutput) ToSecGroupOutputWithContext(ctx context.Context) SecGrou
 	return o
 }
 
+// A description for the security group. Changing this
+// updates the `description` of an existing security group.
+func (o SecGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecGroup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// A unique name for the security group. Changing this
+// updates the `name` of an existing security group.
+func (o SecGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Compute client.
+// A Compute client is needed to create a security group. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// security group.
+func (o SecGroupOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// A rule describing how the security group operates. The
+// rule object structure is documented below. Changing this updates the
+// security group rules. As shown in the example above, multiple rule blocks
+// may be used.
+func (o SecGroupOutput) Rules() SecGroupRuleArrayOutput {
+	return o.ApplyT(func(v *SecGroup) SecGroupRuleArrayOutput { return v.Rules }).(SecGroupRuleArrayOutput)
+}
+
 type SecGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (SecGroupArrayOutput) ElementType() reflect.Type {

@@ -358,6 +358,42 @@ func (o VolumeAttachOutput) ToVolumeAttachOutputWithContext(ctx context.Context)
 	return o
 }
 
+// See Argument Reference above. _NOTE_: The correctness of this
+// information is dependent upon the hypervisor in use. In some cases, this
+// should not be used as an authoritative piece of information.
+func (o VolumeAttachOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeAttach) pulumi.StringOutput { return v.Device }).(pulumi.StringOutput)
+}
+
+// The ID of the Instance to attach the Volume to.
+func (o VolumeAttachOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeAttach) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Enable attachment of multiattach-capable volumes.
+func (o VolumeAttachOutput) Multiattach() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VolumeAttach) pulumi.BoolPtrOutput { return v.Multiattach }).(pulumi.BoolPtrOutput)
+}
+
+// The region in which to obtain the V2 Compute client.
+// A Compute client is needed to create a volume attachment. If omitted, the
+// `region` argument of the provider is used. Changing this creates a
+// new volume attachment.
+func (o VolumeAttachOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeAttach) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Map of additional vendor-specific options.
+// Supported options are described below.
+func (o VolumeAttachOutput) VendorOptions() VolumeAttachVendorOptionsPtrOutput {
+	return o.ApplyT(func(v *VolumeAttach) VolumeAttachVendorOptionsPtrOutput { return v.VendorOptions }).(VolumeAttachVendorOptionsPtrOutput)
+}
+
+// The ID of the Volume to attach to an Instance.
+func (o VolumeAttachOutput) VolumeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeAttach) pulumi.StringOutput { return v.VolumeId }).(pulumi.StringOutput)
+}
+
 type VolumeAttachArrayOutput struct{ *pulumi.OutputState }
 
 func (VolumeAttachArrayOutput) ElementType() reflect.Type {

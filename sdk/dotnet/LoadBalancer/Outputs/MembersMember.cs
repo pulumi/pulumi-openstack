@@ -33,6 +33,16 @@ namespace Pulumi.OpenStack.LoadBalancer.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
+        /// An alternate IP address used for health 
+        /// monitoring a backend member.
+        /// </summary>
+        public readonly string? MonitorAddress;
+        /// <summary>
+        /// An alternate protocol port used for health 
+        /// monitoring a backend member.
+        /// </summary>
+        public readonly int? MonitorPort;
+        /// <summary>
         /// Human-readable name for the member.
         /// </summary>
         public readonly string? Name;
@@ -62,6 +72,10 @@ namespace Pulumi.OpenStack.LoadBalancer.Outputs
 
             string? id,
 
+            string? monitorAddress,
+
+            int? monitorPort,
+
             string? name,
 
             int protocolPort,
@@ -74,6 +88,8 @@ namespace Pulumi.OpenStack.LoadBalancer.Outputs
             AdminStateUp = adminStateUp;
             Backup = backup;
             Id = id;
+            MonitorAddress = monitorAddress;
+            MonitorPort = monitorPort;
             Name = name;
             ProtocolPort = protocolPort;
             SubnetId = subnetId;

@@ -417,6 +417,102 @@ func (o VolumeOutput) ToVolumeOutputWithContext(ctx context.Context) VolumeOutpu
 	return o
 }
 
+// If a volume is attached to an instance, this attribute will
+// display the Attachment ID, Instance ID, and the Device as the Instance
+// sees it.
+func (o VolumeOutput) Attachments() VolumeAttachmentArrayOutput {
+	return o.ApplyT(func(v *Volume) VolumeAttachmentArrayOutput { return v.Attachments }).(VolumeAttachmentArrayOutput)
+}
+
+// The availability zone for the volume.
+// Changing this creates a new volume.
+func (o VolumeOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// The consistency group to place the volume
+// in.
+func (o VolumeOutput) ConsistencyGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.ConsistencyGroupId }).(pulumi.StringPtrOutput)
+}
+
+// A description of the volume. Changing this updates
+// the volume's description.
+func (o VolumeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// When this option is set it allows extending
+// attached volumes. Note: updating size of an attached volume requires Cinder
+// support for version 3.42 and a compatible storage driver.
+func (o VolumeOutput) EnableOnlineResize() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.BoolPtrOutput { return v.EnableOnlineResize }).(pulumi.BoolPtrOutput)
+}
+
+// The image ID from which to create the volume.
+// Changing this creates a new volume.
+func (o VolumeOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// Metadata key/value pairs to associate with the volume.
+// Changing this updates the existing volume metadata.
+func (o VolumeOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *Volume) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+}
+
+// Allow the volume to be attached to more than one Compute instance.
+func (o VolumeOutput) Multiattach() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.BoolPtrOutput { return v.Multiattach }).(pulumi.BoolPtrOutput)
+}
+
+// A unique name for the volume. Changing this updates the
+// volume's name.
+func (o VolumeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region in which to create the volume. If
+// omitted, the `region` argument of the provider is used. Changing this
+// creates a new volume.
+func (o VolumeOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Provide the Cinder scheduler with hints on where
+// to instantiate a volume in the OpenStack cloud. The available hints are described below.
+func (o VolumeOutput) SchedulerHints() VolumeSchedulerHintArrayOutput {
+	return o.ApplyT(func(v *Volume) VolumeSchedulerHintArrayOutput { return v.SchedulerHints }).(VolumeSchedulerHintArrayOutput)
+}
+
+// The size of the volume to create (in gigabytes).
+func (o VolumeOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v *Volume) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
+}
+
+// The snapshot ID from which to create the volume.
+// Changing this creates a new volume.
+func (o VolumeOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+// The volume ID to replicate with.
+func (o VolumeOutput) SourceReplica() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.SourceReplica }).(pulumi.StringPtrOutput)
+}
+
+// The volume ID from which to create the volume.
+// Changing this creates a new volume.
+func (o VolumeOutput) SourceVolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.SourceVolId }).(pulumi.StringPtrOutput)
+}
+
+// The type of volume to create.
+// Changing this creates a new volume.
+func (o VolumeOutput) VolumeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.VolumeType }).(pulumi.StringOutput)
+}
+
 type VolumeArrayOutput struct{ *pulumi.OutputState }
 
 func (VolumeArrayOutput) ElementType() reflect.Type {

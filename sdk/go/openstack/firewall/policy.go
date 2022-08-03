@@ -352,6 +352,60 @@ func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutpu
 	return o
 }
 
+// Audit status of the firewall policy
+// (must be "true" or "false" if provided - defaults to "false").
+// This status is set to "false" whenever the firewall policy or any of its
+// rules are changed. Changing this updates the `audited` status of an existing
+// firewall policy.
+func (o PolicyOutput) Audited() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.BoolPtrOutput { return v.Audited }).(pulumi.BoolPtrOutput)
+}
+
+// A description for the firewall policy. Changing
+// this updates the `description` of an existing firewall policy.
+func (o PolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A name for the firewall policy. Changing this
+// updates the `name` of an existing firewall policy.
+func (o PolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the v1 networking client.
+// A networking client is needed to create a firewall policy. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// firewall policy.
+func (o PolicyOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// An array of one or more firewall rules that comprise
+// the policy. Changing this results in adding/removing rules from the
+// existing firewall policy.
+func (o PolicyOutput) Rules() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringArrayOutput { return v.Rules }).(pulumi.StringArrayOutput)
+}
+
+// Sharing status of the firewall policy (must be "true"
+// or "false" if provided). If this is "true" the policy is visible to, and
+// can be used in, firewalls in other tenants. Changing this updates the
+// `shared` status of an existing firewall policy. Only administrative users
+// can specify if the policy should be shared.
+func (o PolicyOutput) Shared() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.BoolPtrOutput { return v.Shared }).(pulumi.BoolPtrOutput)
+}
+
+func (o PolicyOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Map of additional options.
+func (o PolicyOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *Policy) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+}
+
 type PolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (PolicyArrayOutput) ElementType() reflect.Type {

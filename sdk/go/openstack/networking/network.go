@@ -535,6 +535,119 @@ func (o NetworkOutput) ToNetworkOutputWithContext(ctx context.Context) NetworkOu
 	return o
 }
 
+// The administrative state of the network.
+// Acceptable values are "true" and "false". Changing this value updates the
+// state of the existing network.
+func (o NetworkOutput) AdminStateUp() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Network) pulumi.BoolOutput { return v.AdminStateUp }).(pulumi.BoolOutput)
+}
+
+// The collection of tags assigned on the network, which have been
+// explicitly and implicitly added.
+func (o NetworkOutput) AllTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringArrayOutput { return v.AllTags }).(pulumi.StringArrayOutput)
+}
+
+// An availability zone is used to make
+// network resources highly available. Used for resources with high availability
+// so that they are scheduled on different availability zones. Changing this
+// creates a new network.
+func (o NetworkOutput) AvailabilityZoneHints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringArrayOutput { return v.AvailabilityZoneHints }).(pulumi.StringArrayOutput)
+}
+
+// Human-readable description of the network. Changing this
+// updates the name of the existing network.
+func (o NetworkOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The network DNS domain. Available, when Neutron DNS
+// extension is enabled. The `dnsDomain` of a network in conjunction with the
+// `dnsName` attribute of its ports will be published in an external DNS
+// service when Neutron is configured to integrate with such a service.
+func (o NetworkOutput) DnsDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.DnsDomain }).(pulumi.StringOutput)
+}
+
+// Specifies whether the network resource has the
+// external routing facility. Valid values are true and false. Defaults to
+// false. Changing this updates the external attribute of the existing network.
+func (o NetworkOutput) External() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Network) pulumi.BoolOutput { return v.External }).(pulumi.BoolOutput)
+}
+
+// The network MTU. Available for read-only, when Neutron
+// `net-mtu` extension is enabled. Available for the modification, when
+// Neutron `net-mtu-writable` extension is enabled.
+func (o NetworkOutput) Mtu() pulumi.IntOutput {
+	return o.ApplyT(func(v *Network) pulumi.IntOutput { return v.Mtu }).(pulumi.IntOutput)
+}
+
+// The name of the network. Changing this updates the name of
+// the existing network.
+func (o NetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether to explicitly enable or disable
+// port security on the network. Port Security is usually enabled by default, so
+// omitting this argument will usually result in a value of "true". Setting this
+// explicitly to `false` will disable port security. Valid values are `true` and
+// `false`.
+func (o NetworkOutput) PortSecurityEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Network) pulumi.BoolOutput { return v.PortSecurityEnabled }).(pulumi.BoolOutput)
+}
+
+// Reference to the associated QoS policy.
+func (o NetworkOutput) QosPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.QosPolicyId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create a Neutron network. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// network.
+func (o NetworkOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// An array of one or more provider segment objects.
+func (o NetworkOutput) Segments() NetworkSegmentArrayOutput {
+	return o.ApplyT(func(v *Network) NetworkSegmentArrayOutput { return v.Segments }).(NetworkSegmentArrayOutput)
+}
+
+// Specifies whether the network resource can be accessed
+// by any tenant or not. Changing this updates the sharing capabilities of the
+// existing network.
+func (o NetworkOutput) Shared() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Network) pulumi.BoolOutput { return v.Shared }).(pulumi.BoolOutput)
+}
+
+// A set of string tags for the network.
+func (o NetworkOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The owner of the network. Required if admin wants to
+// create a network for another tenant. Changing this creates a new network.
+func (o NetworkOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Specifies whether the network resource has the
+// VLAN transparent attribute set. Valid values are true and false. Defaults to
+// false. Changing this updates the `transparentVlan` attribute of the existing
+// network.
+func (o NetworkOutput) TransparentVlan() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Network) pulumi.BoolOutput { return v.TransparentVlan }).(pulumi.BoolOutput)
+}
+
+// Map of additional options.
+func (o NetworkOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *Network) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+}
+
 type NetworkArrayOutput struct{ *pulumi.OutputState }
 
 func (NetworkArrayOutput) ElementType() reflect.Type {

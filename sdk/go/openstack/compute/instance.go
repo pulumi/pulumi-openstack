@@ -59,11 +59,12 @@ type Instance struct {
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
 	// (Optional; Required if `imageName` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The image ID of
-	// the desired image for the server. Changing this creates a new server.
+	// the desired image for the server. Changing this rebuilds the existing
+	// server.
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// (Optional; Required if `imageId` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The name of the
-	// desired image for the server. Changing this creates a new server.
+	// desired image for the server. Changing this rebuilds the existing server.
 	ImageName pulumi.StringOutput `pulumi:"imageName"`
 	// The name of a key pair to put on the server. The key
 	// pair must already be created and associated with the tenant's account.
@@ -85,7 +86,7 @@ type Instance struct {
 	Networks InstanceNetworkArrayOutput `pulumi:"networks"`
 	// Customize the personality of an instance by
 	// defining one or more files and their contents. The personality structure
-	// is described below.
+	// is described below. Changing this rebuilds the existing server.
 	Personalities InstancePersonalityArrayOutput `pulumi:"personalities"`
 	// Provide the VM state. Only 'active' and 'shutoff'
 	// are supported values. *Note*: If the initial powerState is the shutoff
@@ -198,11 +199,12 @@ type instanceState struct {
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// (Optional; Required if `imageName` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The image ID of
-	// the desired image for the server. Changing this creates a new server.
+	// the desired image for the server. Changing this rebuilds the existing
+	// server.
 	ImageId *string `pulumi:"imageId"`
 	// (Optional; Required if `imageId` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The name of the
-	// desired image for the server. Changing this creates a new server.
+	// desired image for the server. Changing this rebuilds the existing server.
 	ImageName *string `pulumi:"imageName"`
 	// The name of a key pair to put on the server. The key
 	// pair must already be created and associated with the tenant's account.
@@ -224,7 +226,7 @@ type instanceState struct {
 	Networks []InstanceNetwork `pulumi:"networks"`
 	// Customize the personality of an instance by
 	// defining one or more files and their contents. The personality structure
-	// is described below.
+	// is described below. Changing this rebuilds the existing server.
 	Personalities []InstancePersonality `pulumi:"personalities"`
 	// Provide the VM state. Only 'active' and 'shutoff'
 	// are supported values. *Note*: If the initial powerState is the shutoff
@@ -309,11 +311,12 @@ type InstanceState struct {
 	ForceDelete pulumi.BoolPtrInput
 	// (Optional; Required if `imageName` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The image ID of
-	// the desired image for the server. Changing this creates a new server.
+	// the desired image for the server. Changing this rebuilds the existing
+	// server.
 	ImageId pulumi.StringPtrInput
 	// (Optional; Required if `imageId` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The name of the
-	// desired image for the server. Changing this creates a new server.
+	// desired image for the server. Changing this rebuilds the existing server.
 	ImageName pulumi.StringPtrInput
 	// The name of a key pair to put on the server. The key
 	// pair must already be created and associated with the tenant's account.
@@ -335,7 +338,7 @@ type InstanceState struct {
 	Networks InstanceNetworkArrayInput
 	// Customize the personality of an instance by
 	// defining one or more files and their contents. The personality structure
-	// is described below.
+	// is described below. Changing this rebuilds the existing server.
 	Personalities InstancePersonalityArrayInput
 	// Provide the VM state. Only 'active' and 'shutoff'
 	// are supported values. *Note*: If the initial powerState is the shutoff
@@ -420,11 +423,12 @@ type instanceArgs struct {
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// (Optional; Required if `imageName` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The image ID of
-	// the desired image for the server. Changing this creates a new server.
+	// the desired image for the server. Changing this rebuilds the existing
+	// server.
 	ImageId *string `pulumi:"imageId"`
 	// (Optional; Required if `imageId` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The name of the
-	// desired image for the server. Changing this creates a new server.
+	// desired image for the server. Changing this rebuilds the existing server.
 	ImageName *string `pulumi:"imageName"`
 	// The name of a key pair to put on the server. The key
 	// pair must already be created and associated with the tenant's account.
@@ -446,7 +450,7 @@ type instanceArgs struct {
 	Networks []InstanceNetwork `pulumi:"networks"`
 	// Customize the personality of an instance by
 	// defining one or more files and their contents. The personality structure
-	// is described below.
+	// is described below. Changing this rebuilds the existing server.
 	Personalities []InstancePersonality `pulumi:"personalities"`
 	// Provide the VM state. Only 'active' and 'shutoff'
 	// are supported values. *Note*: If the initial powerState is the shutoff
@@ -528,11 +532,12 @@ type InstanceArgs struct {
 	ForceDelete pulumi.BoolPtrInput
 	// (Optional; Required if `imageName` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The image ID of
-	// the desired image for the server. Changing this creates a new server.
+	// the desired image for the server. Changing this rebuilds the existing
+	// server.
 	ImageId pulumi.StringPtrInput
 	// (Optional; Required if `imageId` is empty and not booting
 	// from a volume. Do not specify if booting from a volume.) The name of the
-	// desired image for the server. Changing this creates a new server.
+	// desired image for the server. Changing this rebuilds the existing server.
 	ImageName pulumi.StringPtrInput
 	// The name of a key pair to put on the server. The key
 	// pair must already be created and associated with the tenant's account.
@@ -554,7 +559,7 @@ type InstanceArgs struct {
 	Networks InstanceNetworkArrayInput
 	// Customize the personality of an instance by
 	// defining one or more files and their contents. The personality structure
-	// is described below.
+	// is described below. Changing this rebuilds the existing server.
 	Personalities InstancePersonalityArrayInput
 	// Provide the VM state. Only 'active' and 'shutoff'
 	// are supported values. *Note*: If the initial powerState is the shutoff
@@ -677,6 +682,205 @@ func (o InstanceOutput) ToInstanceOutput() InstanceOutput {
 
 func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) InstanceOutput {
 	return o
+}
+
+// The first detected Fixed IPv4 address.
+func (o InstanceOutput) AccessIpV4() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AccessIpV4 }).(pulumi.StringOutput)
+}
+
+// The first detected Fixed IPv6 address.
+func (o InstanceOutput) AccessIpV6() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AccessIpV6 }).(pulumi.StringOutput)
+}
+
+// The administrative password to assign to the server.
+// Changing this changes the root password on the existing server.
+func (o InstanceOutput) AdminPass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.AdminPass }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceOutput) AllMetadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.AllMetadata }).(pulumi.MapOutput)
+}
+
+// The collection of tags assigned on the instance, which have
+// been explicitly and implicitly added.
+func (o InstanceOutput) AllTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.AllTags }).(pulumi.StringArrayOutput)
+}
+
+// The availability zone in which to create
+// the server. Conflicts with `availabilityZoneHints`. Changing this creates
+// a new server.
+func (o InstanceOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// The availability zone in which to
+// create the server. This argument is preferred to `availabilityZone`, when
+// scheduling the server on a
+// [particular](https://docs.openstack.org/nova/latest/admin/availability-zones.html)
+// host or node. Conflicts with `availabilityZone`. Changing this creates a
+// new server.
+func (o InstanceOutput) AvailabilityZoneHints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.AvailabilityZoneHints }).(pulumi.StringPtrOutput)
+}
+
+// Configuration of block devices. The blockDevice
+// structure is documented below. Changing this creates a new server.
+// You can specify multiple block devices which will create an instance with
+// multiple disks. This configuration is very flexible, so please see the
+// following [reference](https://docs.openstack.org/nova/latest/user/block-device-mapping.html)
+// for more information.
+func (o InstanceOutput) BlockDevices() InstanceBlockDeviceArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceBlockDeviceArrayOutput { return v.BlockDevices }).(InstanceBlockDeviceArrayOutput)
+}
+
+// Whether to use the configDrive feature to
+// configure the instance. Changing this creates a new server.
+func (o InstanceOutput) ConfigDrive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ConfigDrive }).(pulumi.BoolPtrOutput)
+}
+
+// The flavor ID of
+// the desired flavor for the server. Changing this resizes the existing server.
+func (o InstanceOutput) FlavorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.FlavorId }).(pulumi.StringOutput)
+}
+
+// The name of the
+// desired flavor for the server. Changing this resizes the existing server.
+func (o InstanceOutput) FlavorName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.FlavorName }).(pulumi.StringOutput)
+}
+
+// Deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead
+func (o InstanceOutput) FloatingIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.FloatingIp }).(pulumi.StringPtrOutput)
+}
+
+// Whether to force the OpenStack instance to be
+// forcefully deleted. This is useful for environments that have reclaim / soft
+// deletion enabled.
+func (o InstanceOutput) ForceDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
+}
+
+// (Optional; Required if `imageName` is empty and not booting
+// from a volume. Do not specify if booting from a volume.) The image ID of
+// the desired image for the server. Changing this rebuilds the existing
+// server.
+func (o InstanceOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// (Optional; Required if `imageId` is empty and not booting
+// from a volume. Do not specify if booting from a volume.) The name of the
+// desired image for the server. Changing this rebuilds the existing server.
+func (o InstanceOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ImageName }).(pulumi.StringOutput)
+}
+
+// The name of a key pair to put on the server. The key
+// pair must already be created and associated with the tenant's account.
+// Changing this creates a new server.
+func (o InstanceOutput) KeyPair() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KeyPair }).(pulumi.StringPtrOutput)
+}
+
+// Metadata key/value pairs to make available from
+// within the instance. Changing this updates the existing server metadata.
+func (o InstanceOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+}
+
+// The human-readable
+// name of the network. Changing this creates a new server.
+func (o InstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Special string for `network` option to create
+// the server. `networkMode` can be `"auto"` or `"none"`.
+// Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
+func (o InstanceOutput) NetworkMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.NetworkMode }).(pulumi.StringPtrOutput)
+}
+
+// An array of one or more networks to attach to the
+// instance. The network object structure is documented below. Changing this
+// creates a new server.
+func (o InstanceOutput) Networks() InstanceNetworkArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceNetworkArrayOutput { return v.Networks }).(InstanceNetworkArrayOutput)
+}
+
+// Customize the personality of an instance by
+// defining one or more files and their contents. The personality structure
+// is described below. Changing this rebuilds the existing server.
+func (o InstanceOutput) Personalities() InstancePersonalityArrayOutput {
+	return o.ApplyT(func(v *Instance) InstancePersonalityArrayOutput { return v.Personalities }).(InstancePersonalityArrayOutput)
+}
+
+// Provide the VM state. Only 'active' and 'shutoff'
+// are supported values. *Note*: If the initial powerState is the shutoff
+// the VM will be stopped immediately after build and the provisioners like
+// remote-exec or files are not supported.
+func (o InstanceOutput) PowerState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PowerState }).(pulumi.StringPtrOutput)
+}
+
+// The region in which to create the server instance. If
+// omitted, the `region` argument of the provider is used. Changing this
+// creates a new server.
+func (o InstanceOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Provide the Nova scheduler with hints on how
+// the instance should be launched. The available hints are described below.
+func (o InstanceOutput) SchedulerHints() InstanceSchedulerHintArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceSchedulerHintArrayOutput { return v.SchedulerHints }).(InstanceSchedulerHintArrayOutput)
+}
+
+// An array of one or more security group names
+// to associate with the server. Changing this results in adding/removing
+// security groups from the existing server. *Note*: When attaching the
+// instance to networks using Ports, place the security groups on the Port
+// and not the instance. *Note*: Names should be used and not ids, as ids
+// trigger unnecessary updates.
+func (o InstanceOutput) SecurityGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
+}
+
+// Whether to try stop instance gracefully
+// before destroying it, thus giving chance for guest OS daemons to stop correctly.
+// If instance doesn't stop within timeout, it will be destroyed anyway.
+func (o InstanceOutput) StopBeforeDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.StopBeforeDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// A set of string tags for the instance. Changing this
+// updates the existing instance tags.
+func (o InstanceOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The user data to provide when launching the instance.
+// Changing this creates a new server.
+func (o InstanceOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
+}
+
+// Map of additional vendor-specific options.
+// Supported options are described below.
+func (o InstanceOutput) VendorOptions() InstanceVendorOptionsPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceVendorOptionsPtrOutput { return v.VendorOptions }).(InstanceVendorOptionsPtrOutput)
+}
+
+// Deprecated: Use block_device or openstack_compute_volume_attach_v2 instead
+func (o InstanceOutput) Volumes() InstanceVolumeArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceVolumeArrayOutput { return v.Volumes }).(InstanceVolumeArrayOutput)
 }
 
 type InstanceArrayOutput struct{ *pulumi.OutputState }

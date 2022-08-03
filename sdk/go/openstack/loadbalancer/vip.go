@@ -431,6 +431,96 @@ func (o VipOutput) ToVipOutputWithContext(ctx context.Context) VipOutput {
 	return o
 }
 
+// The IP address of the vip. Changing this creates a new
+// vip.
+func (o VipOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vip) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
+}
+
+// The administrative state of the vip.
+// Acceptable values are "true" and "false". Changing this value updates the
+// state of the existing vip.
+func (o VipOutput) AdminStateUp() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Vip) pulumi.BoolOutput { return v.AdminStateUp }).(pulumi.BoolOutput)
+}
+
+// The maximum number of connections allowed for the
+// vip. Default is -1, meaning no limit. Changing this updates the connLimit
+// of the existing vip.
+func (o VipOutput) ConnLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *Vip) pulumi.IntOutput { return v.ConnLimit }).(pulumi.IntOutput)
+}
+
+// Human-readable description for the vip. Changing
+// this updates the description of the existing vip.
+func (o VipOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vip) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// A *Networking* Floating IP that will be associated
+// with the vip. The Floating IP must be provisioned already.
+func (o VipOutput) FloatingIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vip) pulumi.StringPtrOutput { return v.FloatingIp }).(pulumi.StringPtrOutput)
+}
+
+// The name of the vip. Changing this updates the name of
+// the existing vip.
+func (o VipOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vip) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Omit this field to prevent session persistence.
+// The persistence object structure is documented below. Changing this updates
+// the persistence of the existing vip.
+func (o VipOutput) Persistence() pulumi.MapOutput {
+	return o.ApplyT(func(v *Vip) pulumi.MapOutput { return v.Persistence }).(pulumi.MapOutput)
+}
+
+// The ID of the pool with which the vip is associated.
+// Changing this updates the poolId of the existing vip.
+func (o VipOutput) PoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vip) pulumi.StringOutput { return v.PoolId }).(pulumi.StringOutput)
+}
+
+// The port on which to listen for client traffic. Changing
+// this creates a new vip.
+func (o VipOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v *Vip) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+// Port UUID for this VIP at associated floating IP (if any).
+func (o VipOutput) PortId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vip) pulumi.StringOutput { return v.PortId }).(pulumi.StringOutput)
+}
+
+// The protocol - can be either 'TCP, 'HTTP', or
+// HTTPS'. Changing this creates a new vip.
+func (o VipOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vip) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create a VIP. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// VIP.
+func (o VipOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vip) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The network on which to allocate the vip's address. A
+// tenant can only create vips on networks authorized by policy (e.g. networks
+// that belong to them or networks that are shared). Changing this creates a
+// new vip.
+func (o VipOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vip) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// The owner of the vip. Required if admin wants to
+// create a vip member for another tenant. Changing this creates a new vip.
+func (o VipOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vip) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
 type VipArrayOutput struct{ *pulumi.OutputState }
 
 func (VipArrayOutput) ElementType() reflect.Type {

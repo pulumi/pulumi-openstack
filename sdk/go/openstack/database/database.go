@@ -214,6 +214,21 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 	return o
 }
 
+// The ID for the database instance.
+func (o DatabaseOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// A unique name for the resource.
+func (o DatabaseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Openstack region resource is created in.
+func (o DatabaseOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
 type DatabaseArrayOutput struct{ *pulumi.OutputState }
 
 func (DatabaseArrayOutput) ElementType() reflect.Type {

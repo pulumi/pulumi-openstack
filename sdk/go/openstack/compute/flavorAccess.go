@@ -251,6 +251,24 @@ func (o FlavorAccessOutput) ToFlavorAccessOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The UUID of flavor to use. Changing this creates a new flavor access.
+func (o FlavorAccessOutput) FlavorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlavorAccess) pulumi.StringOutput { return v.FlavorId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Compute client.
+// If omitted, the `region` argument of the provider is used.
+// Changing this creates a new flavor access.
+func (o FlavorAccessOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlavorAccess) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The UUID of tenant which is allowed to use the flavor.
+// Changing this creates a new flavor access.
+func (o FlavorAccessOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlavorAccess) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
 type FlavorAccessArrayOutput struct{ *pulumi.OutputState }
 
 func (FlavorAccessArrayOutput) ElementType() reflect.Type {

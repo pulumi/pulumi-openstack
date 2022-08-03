@@ -117,6 +117,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Port security group association can be imported using the `id` of the port, e.g.
+//
+// ```sh
+//  $ pulumi import openstack:networking/portSecGroupAssociate:PortSecGroupAssociate port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+// ```
 type PortSecGroupAssociate struct {
 	pulumi.CustomResourceState
 
@@ -337,6 +345,38 @@ func (o PortSecGroupAssociateOutput) ToPortSecGroupAssociateOutput() PortSecGrou
 
 func (o PortSecGroupAssociateOutput) ToPortSecGroupAssociateOutputWithContext(ctx context.Context) PortSecGroupAssociateOutput {
 	return o
+}
+
+// The collection of Security Group IDs on the port
+// which have been explicitly and implicitly added.
+func (o PortSecGroupAssociateOutput) AllSecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PortSecGroupAssociate) pulumi.StringArrayOutput { return v.AllSecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Whether to replace or append the list of security
+// groups, specified in the `securityGroupIds`. Defaults to `false`.
+func (o PortSecGroupAssociateOutput) Enforce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PortSecGroupAssociate) pulumi.BoolPtrOutput { return v.Enforce }).(pulumi.BoolPtrOutput)
+}
+
+// An UUID of the port to apply security groups to.
+func (o PortSecGroupAssociateOutput) PortId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PortSecGroupAssociate) pulumi.StringOutput { return v.PortId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 networking client.
+// A networking client is needed to manage a port. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// resource.
+func (o PortSecGroupAssociateOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *PortSecGroupAssociate) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// A list of security group IDs to apply to
+// the port. The security groups must be specified by ID and not name (as
+// opposed to how they are configured with the Compute Instance).
+func (o PortSecGroupAssociateOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PortSecGroupAssociate) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
 type PortSecGroupAssociateArrayOutput struct{ *pulumi.OutputState }

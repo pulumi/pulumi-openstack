@@ -500,6 +500,68 @@ func (o PoolV1Output) ToPoolV1OutputWithContext(ctx context.Context) PoolV1Outpu
 	return o
 }
 
+// The algorithm used to distribute load between the
+// members of the pool. The current specification supports 'ROUND_ROBIN' and
+// 'LEAST_CONNECTIONS' as valid values for this attribute.
+func (o PoolV1Output) LbMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v *PoolV1) pulumi.StringOutput { return v.LbMethod }).(pulumi.StringOutput)
+}
+
+// The backend load balancing provider. For example:
+// `haproxy`, `F5`, etc.
+func (o PoolV1Output) LbProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v *PoolV1) pulumi.StringOutput { return v.LbProvider }).(pulumi.StringOutput)
+}
+
+// An existing node to add to the pool. Changing this
+// updates the members of the pool. The member object structure is documented
+// below. Please note that the `member` block is deprecated in favor of the
+// `loadbalancer.MemberV1` resource.
+//
+// Deprecated: Use openstack_lb_member_v1 instead
+func (o PoolV1Output) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PoolV1) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// A list of IDs of monitors to associate with the
+// pool.
+func (o PoolV1Output) MonitorIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PoolV1) pulumi.StringArrayOutput { return v.MonitorIds }).(pulumi.StringArrayOutput)
+}
+
+// The name of the pool. Changing this updates the name of
+// the existing pool.
+func (o PoolV1Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *PoolV1) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The protocol used by the pool members, you can use
+// either 'TCP, 'HTTP', or 'HTTPS'. Changing this creates a new pool.
+func (o PoolV1Output) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *PoolV1) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create an LB pool. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// LB pool.
+func (o PoolV1Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *PoolV1) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The network on which the members of the pool will be
+// located. Only members that are on this network can be added to the pool.
+// Changing this creates a new pool.
+func (o PoolV1Output) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PoolV1) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// The owner of the member. Required if admin wants to
+// create a pool member for another tenant. Changing this creates a new member.
+func (o PoolV1Output) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PoolV1) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
 type PoolV1ArrayOutput struct{ *pulumi.OutputState }
 
 func (PoolV1ArrayOutput) ElementType() reflect.Type {

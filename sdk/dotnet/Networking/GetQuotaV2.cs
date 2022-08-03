@@ -79,6 +79,13 @@ namespace Pulumi.OpenStack.Networking
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// The region in which to obtain the V2 Network client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
+
         public GetQuotaV2Args()
         {
         }
@@ -91,6 +98,13 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
+
+        /// <summary>
+        /// The region in which to obtain the V2 Network client.
+        /// If omitted, the `region` argument of the provider is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public GetQuotaV2InvokeArgs()
         {

@@ -258,6 +258,49 @@ func (o SecGroupOutput) ToSecGroupOutputWithContext(ctx context.Context) SecGrou
 	return o
 }
 
+// The collection of tags assigned on the security group, which have
+// been explicitly and implicitly added.
+func (o SecGroupOutput) AllTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecGroup) pulumi.StringArrayOutput { return v.AllTags }).(pulumi.StringArrayOutput)
+}
+
+// Whether or not to delete the default
+// egress security rules. This is `false` by default. See the below note
+// for more information.
+func (o SecGroupOutput) DeleteDefaultRules() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecGroup) pulumi.BoolPtrOutput { return v.DeleteDefaultRules }).(pulumi.BoolPtrOutput)
+}
+
+// A unique name for the security group.
+func (o SecGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecGroup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// A unique name for the security group.
+func (o SecGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 networking client.
+// A networking client is needed to create a port. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// security group.
+func (o SecGroupOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// A set of string tags for the security group.
+func (o SecGroupOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecGroup) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The owner of the security group. Required if admin
+// wants to create a port for another tenant. Changing this creates a new
+// security group.
+func (o SecGroupOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecGroup) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
 type SecGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (SecGroupArrayOutput) ElementType() reflect.Type {

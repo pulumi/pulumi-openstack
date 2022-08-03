@@ -357,6 +357,73 @@ func (o ZoneOutput) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 	return o
 }
 
+// Attributes for the DNS Service scheduler.
+// Changing this creates a new zone.
+func (o ZoneOutput) Attributes() pulumi.MapOutput {
+	return o.ApplyT(func(v *Zone) pulumi.MapOutput { return v.Attributes }).(pulumi.MapOutput)
+}
+
+// A description of the zone.
+func (o ZoneOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Disable wait for zone to reach ACTIVE
+// status. The check is enabled by default. If this argument is true, zone
+// will be considered as created/updated if OpenStack request returned success.
+func (o ZoneOutput) DisableStatusCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Zone) pulumi.BoolPtrOutput { return v.DisableStatusCheck }).(pulumi.BoolPtrOutput)
+}
+
+// The email contact for the zone record.
+func (o ZoneOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// An array of master DNS servers. For when `type` is
+// `SECONDARY`.
+func (o ZoneOutput) Masters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringArrayOutput { return v.Masters }).(pulumi.StringArrayOutput)
+}
+
+// The name of the zone. Note the `.` at the end of the name.
+// Changing this creates a new DNS zone.
+func (o ZoneOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the project DNS zone is created
+// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+// user role in target project)
+func (o ZoneOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Compute client.
+// Keypairs are associated with accounts, but a Compute client is needed to
+// create one. If omitted, the `region` argument of the provider is used.
+// Changing this creates a new DNS zone.
+func (o ZoneOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The time to live (TTL) of the zone.
+func (o ZoneOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v *Zone) pulumi.IntOutput { return v.Ttl }).(pulumi.IntOutput)
+}
+
+// The type of zone. Can either be `PRIMARY` or `SECONDARY`.
+// Changing this creates a new zone.
+func (o ZoneOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Map of additional options. Changing this creates a
+// new zone.
+func (o ZoneOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *Zone) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+}
+
 type ZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (ZoneArrayOutput) ElementType() reflect.Type {

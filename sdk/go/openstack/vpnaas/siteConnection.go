@@ -486,6 +486,118 @@ func (o SiteConnectionOutput) ToSiteConnectionOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The administrative state of the resource. Can either be up(true) or down(false).
+// Changing this updates the administrative state of the existing connection.
+func (o SiteConnectionOutput) AdminStateUp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.BoolPtrOutput { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
+}
+
+// The human-readable description for the connection.
+// Changing this updates the description of the existing connection.
+func (o SiteConnectionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A dictionary with dead peer detection (DPD) protocol controls.
+func (o SiteConnectionOutput) Dpds() SiteConnectionDpdArrayOutput {
+	return o.ApplyT(func(v *SiteConnection) SiteConnectionDpdArrayOutput { return v.Dpds }).(SiteConnectionDpdArrayOutput)
+}
+
+// The ID of the IKE policy. Changing this creates a new connection.
+func (o SiteConnectionOutput) IkepolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.StringOutput { return v.IkepolicyId }).(pulumi.StringOutput)
+}
+
+// A valid value is response-only or bi-directional. Default is bi-directional.
+func (o SiteConnectionOutput) Initiator() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.StringOutput { return v.Initiator }).(pulumi.StringOutput)
+}
+
+// The ID of the IPsec policy. Changing this creates a new connection.
+func (o SiteConnectionOutput) IpsecpolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.StringOutput { return v.IpsecpolicyId }).(pulumi.StringOutput)
+}
+
+// The ID for the endpoint group that contains private subnets for the local side of the connection.
+// You must specify this parameter with the peerEpGroupId parameter unless
+// in backward- compatible mode where peerCidrs is provided with a subnetId for the VPN service.
+// Changing this updates the existing connection.
+func (o SiteConnectionOutput) LocalEpGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.StringPtrOutput { return v.LocalEpGroupId }).(pulumi.StringPtrOutput)
+}
+
+// An ID to be used instead of the external IP address for a virtual router used in traffic between instances on different networks in east-west traffic.
+// Most often, local ID would be domain name, email address, etc.
+// If this is not configured then the external IP address will be used as the ID.
+func (o SiteConnectionOutput) LocalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.StringPtrOutput { return v.LocalId }).(pulumi.StringPtrOutput)
+}
+
+// The maximum transmission unit (MTU) value to address fragmentation.
+// Minimum value is 68 for IPv4, and 1280 for IPv6.
+func (o SiteConnectionOutput) Mtu() pulumi.IntOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.IntOutput { return v.Mtu }).(pulumi.IntOutput)
+}
+
+// The name of the connection. Changing this updates the name of
+// the existing connection.
+func (o SiteConnectionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The peer gateway public IPv4 or IPv6 address or FQDN.
+func (o SiteConnectionOutput) PeerAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.StringOutput { return v.PeerAddress }).(pulumi.StringOutput)
+}
+
+// Unique list of valid peer private CIDRs in the form < netAddress > / < prefix > .
+func (o SiteConnectionOutput) PeerCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.StringArrayOutput { return v.PeerCidrs }).(pulumi.StringArrayOutput)
+}
+
+// The ID for the endpoint group that contains private CIDRs in the form < netAddress > / < prefix > for the peer side of the connection.
+// You must specify this parameter with the localEpGroupId parameter unless in backward-compatible mode
+// where peerCidrs is provided with a subnetId for the VPN service.
+func (o SiteConnectionOutput) PeerEpGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.StringPtrOutput { return v.PeerEpGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The peer router identity for authentication. A valid value is an IPv4 address, IPv6 address, e-mail address, key ID, or FQDN.
+// Typically, this value matches the peerAddress value.
+// Changing this updates the existing policy.
+func (o SiteConnectionOutput) PeerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.StringOutput { return v.PeerId }).(pulumi.StringOutput)
+}
+
+// The pre-shared key. A valid value is any string.
+func (o SiteConnectionOutput) Psk() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.StringOutput { return v.Psk }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create an IPSec site connection. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// site connection.
+func (o SiteConnectionOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The owner of the connection. Required if admin wants to
+// create a connection for another project. Changing this creates a new connection.
+func (o SiteConnectionOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Map of additional options.
+func (o SiteConnectionOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+}
+
+// The ID of the VPN service. Changing this creates a new connection.
+func (o SiteConnectionOutput) VpnserviceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SiteConnection) pulumi.StringOutput { return v.VpnserviceId }).(pulumi.StringOutput)
+}
+
 type SiteConnectionArrayOutput struct{ *pulumi.OutputState }
 
 func (SiteConnectionArrayOutput) ElementType() reflect.Type {

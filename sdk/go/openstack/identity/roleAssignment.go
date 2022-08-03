@@ -249,6 +249,35 @@ func (o RoleAssignmentOutput) ToRoleAssignmentOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The domain to assign the role in.
+func (o RoleAssignmentOutput) DomainId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoleAssignment) pulumi.StringPtrOutput { return v.DomainId }).(pulumi.StringPtrOutput)
+}
+
+// The group to assign the role to.
+func (o RoleAssignmentOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoleAssignment) pulumi.StringPtrOutput { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// The project to assign the role in.
+func (o RoleAssignmentOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoleAssignment) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+func (o RoleAssignmentOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleAssignment) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The role to assign.
+func (o RoleAssignmentOutput) RoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleAssignment) pulumi.StringOutput { return v.RoleId }).(pulumi.StringOutput)
+}
+
+// The user to assign the role to.
+func (o RoleAssignmentOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoleAssignment) pulumi.StringPtrOutput { return v.UserId }).(pulumi.StringPtrOutput)
+}
+
 type RoleAssignmentArrayOutput struct{ *pulumi.OutputState }
 
 func (RoleAssignmentArrayOutput) ElementType() reflect.Type {
