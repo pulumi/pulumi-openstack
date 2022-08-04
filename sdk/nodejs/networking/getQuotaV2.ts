@@ -26,6 +26,7 @@ export function getQuotaV2(args: GetQuotaV2Args, opts?: pulumi.InvokeOptions): P
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:networking/getQuotaV2:getQuotaV2", {
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -37,6 +38,11 @@ export interface GetQuotaV2Args {
      * The id of the project to retrieve the quota.
      */
     projectId: string;
+    /**
+     * The region in which to obtain the V2 Network client.
+     * If omitted, the `region` argument of the provider is used.
+     */
+    region?: string;
 }
 
 /**
@@ -103,4 +109,9 @@ export interface GetQuotaV2OutputArgs {
      * The id of the project to retrieve the quota.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The region in which to obtain the V2 Network client.
+     * If omitted, the `region` argument of the provider is used.
+     */
+    region?: pulumi.Input<string>;
 }

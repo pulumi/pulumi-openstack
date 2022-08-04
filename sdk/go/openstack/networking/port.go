@@ -66,8 +66,24 @@ import (
 // 		_, err = networking.NewPort(ctx, "port1", &networking.PortArgs{
 // 			AdminStateUp: pulumi.Bool(true),
 // 			Binding: &networking.PortBindingArgs{
-// 				HostId:   pulumi.String("b080b9cf-46e0-4ce8-ad47-0fd4accc872b"),
-// 				Profile:  pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"local_link_information\": [\n", "    {\n", "      \"switch_info\": \"info1\",\n", "      \"port_id\": \"Ethernet3/4\",\n", "      \"switch_id\": \"12:34:56:78:9A:BC\"\n", "    },\n", "    {\n", "      \"switch_info\": \"info2\",\n", "      \"port_id\": \"Ethernet3/4\",\n", "      \"switch_id\": \"12:34:56:78:9A:BD\"\n", "    }\n", "  ],\n", "  \"vlan_type\": \"allowed\"\n", "}\n", "\n")),
+// 				HostId: pulumi.String("b080b9cf-46e0-4ce8-ad47-0fd4accc872b"),
+// 				Profile: pulumi.String(fmt.Sprintf(`{
+//   "local_link_information": [
+//     {
+//       "switch_info": "info1",
+//       "port_id": "Ethernet3/4",
+//       "switch_id": "12:34:56:78:9A:BC"
+//     },
+//     {
+//       "switch_info": "info2",
+//       "port_id": "Ethernet3/4",
+//       "switch_id": "12:34:56:78:9A:BD"
+//     }
+//   ],
+//   "vlan_type": "allowed"
+// }
+//
+// `)),
 // 				VnicType: pulumi.String("baremetal"),
 // 			},
 // 			DeviceId:    pulumi.String("cdf70fcf-c161-4f24-9c70-96b3f5a54b71"),
@@ -632,6 +648,165 @@ func (o PortOutput) ToPortOutput() PortOutput {
 
 func (o PortOutput) ToPortOutputWithContext(ctx context.Context) PortOutput {
 	return o
+}
+
+// Administrative up/down status for the port
+// (must be `true` or `false` if provided). Changing this updates the
+// `adminStateUp` of an existing port.
+func (o PortOutput) AdminStateUp() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Port) pulumi.BoolOutput { return v.AdminStateUp }).(pulumi.BoolOutput)
+}
+
+// The collection of Fixed IP addresses on the port in the
+// order returned by the Network v2 API.
+func (o PortOutput) AllFixedIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringArrayOutput { return v.AllFixedIps }).(pulumi.StringArrayOutput)
+}
+
+// The collection of Security Group IDs on the port
+// which have been explicitly and implicitly added.
+func (o PortOutput) AllSecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringArrayOutput { return v.AllSecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The collection of tags assigned on the port, which have been
+// explicitly and implicitly added.
+func (o PortOutput) AllTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringArrayOutput { return v.AllTags }).(pulumi.StringArrayOutput)
+}
+
+// An IP/MAC Address pair of additional IP
+// addresses that can be active on this port. The structure is described
+// below.
+func (o PortOutput) AllowedAddressPairs() PortAllowedAddressPairArrayOutput {
+	return o.ApplyT(func(v *Port) PortAllowedAddressPairArrayOutput { return v.AllowedAddressPairs }).(PortAllowedAddressPairArrayOutput)
+}
+
+// The port binding allows to specify binding information
+// for the port. The structure is described below.
+func (o PortOutput) Binding() PortBindingOutput {
+	return o.ApplyT(func(v *Port) PortBindingOutput { return v.Binding }).(PortBindingOutput)
+}
+
+// Human-readable description of the port. Changing
+// this updates the `description` of an existing port.
+func (o PortOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the device attached to the port. Changing this
+// creates a new port.
+func (o PortOutput) DeviceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringOutput { return v.DeviceId }).(pulumi.StringOutput)
+}
+
+// The device owner of the port. Changing this creates
+// a new port.
+func (o PortOutput) DeviceOwner() pulumi.StringOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringOutput { return v.DeviceOwner }).(pulumi.StringOutput)
+}
+
+// The list of maps representing port DNS assignments.
+func (o PortOutput) DnsAssignments() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v *Port) pulumi.MapArrayOutput { return v.DnsAssignments }).(pulumi.MapArrayOutput)
+}
+
+// The port DNS name. Available, when Neutron DNS extension
+// is enabled.
+func (o PortOutput) DnsName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringOutput { return v.DnsName }).(pulumi.StringOutput)
+}
+
+// An extra DHCP option that needs to be configured
+// on the port. The structure is described below. Can be specified multiple
+// times.
+func (o PortOutput) ExtraDhcpOptions() PortExtraDhcpOptionArrayOutput {
+	return o.ApplyT(func(v *Port) PortExtraDhcpOptionArrayOutput { return v.ExtraDhcpOptions }).(PortExtraDhcpOptionArrayOutput)
+}
+
+// An array of desired IPs for
+// this port. The structure is described below.
+func (o PortOutput) FixedIps() PortFixedIpArrayOutput {
+	return o.ApplyT(func(v *Port) PortFixedIpArrayOutput { return v.FixedIps }).(PortFixedIpArrayOutput)
+}
+
+// The additional MAC address.
+func (o PortOutput) MacAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringOutput { return v.MacAddress }).(pulumi.StringOutput)
+}
+
+// Name of the DHCP option.
+func (o PortOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the network to attach the port to. Changing
+// this creates a new port.
+func (o PortOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// Create a port with no fixed
+// IP address. This will also remove any fixed IPs previously set on a port. `true`
+// is the only valid value for this argument.
+func (o PortOutput) NoFixedIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Port) pulumi.BoolPtrOutput { return v.NoFixedIp }).(pulumi.BoolPtrOutput)
+}
+
+// If set to
+// `true`, then no security groups are applied to the port. If set to `false` and
+// no `securityGroupIds` are specified, then the port will yield to the default
+// behavior of the Networking service, which is to usually apply the "default"
+// security group.
+func (o PortOutput) NoSecurityGroups() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Port) pulumi.BoolPtrOutput { return v.NoSecurityGroups }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to explicitly enable or disable
+// port security on the port. Port Security is usually enabled by default, so
+// omitting argument will usually result in a value of `true`. Setting this
+// explicitly to `false` will disable port security. In order to disable port
+// security, the port must not have any security groups. Valid values are `true`
+// and `false`.
+func (o PortOutput) PortSecurityEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Port) pulumi.BoolOutput { return v.PortSecurityEnabled }).(pulumi.BoolOutput)
+}
+
+// Reference to the associated QoS policy.
+func (o PortOutput) QosPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringOutput { return v.QosPolicyId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create a port. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// port.
+func (o PortOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// A list
+// of security group IDs to apply to the port. The security groups must be
+// specified by ID and not name (as opposed to how they are configured with
+// the Compute Instance).
+func (o PortOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// A set of string tags for the port.
+func (o PortOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The owner of the port. Required if admin wants
+// to create a port for another tenant. Changing this creates a new port.
+func (o PortOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Port) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Map of additional options.
+func (o PortOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *Port) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
 }
 
 type PortArrayOutput struct{ *pulumi.OutputState }

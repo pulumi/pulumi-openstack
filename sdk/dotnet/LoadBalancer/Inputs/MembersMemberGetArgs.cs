@@ -40,6 +40,20 @@ namespace Pulumi.OpenStack.LoadBalancer.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
+        /// An alternate IP address used for health 
+        /// monitoring a backend member.
+        /// </summary>
+        [Input("monitorAddress")]
+        public Input<string>? MonitorAddress { get; set; }
+
+        /// <summary>
+        /// An alternate protocol port used for health 
+        /// monitoring a backend member.
+        /// </summary>
+        [Input("monitorPort")]
+        public Input<int>? MonitorPort { get; set; }
+
+        /// <summary>
         /// Human-readable name for the member.
         /// </summary>
         [Input("name")]

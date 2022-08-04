@@ -321,6 +321,45 @@ func (o ImageAccessOutput) ToImageAccessOutputWithContext(ctx context.Context) I
 	return o
 }
 
+// The date the image access was created.
+func (o ImageAccessOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageAccess) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The image ID.
+func (o ImageAccessOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageAccess) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The member ID, e.g. the target project ID.
+func (o ImageAccessOutput) MemberId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageAccess) pulumi.StringOutput { return v.MemberId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Glance client.
+// A Glance client is needed to manage Image members. If omitted, the `region`
+// argument of the provider is used. Changing this creates a new resource.
+func (o ImageAccessOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageAccess) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The member schema.
+func (o ImageAccessOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageAccess) pulumi.StringOutput { return v.Schema }).(pulumi.StringOutput)
+}
+
+// The member proposal status. Optional if admin wants to
+// force the member proposal acceptance. Can either be `accepted`, `rejected` or
+// `pending`. Defaults to `pending`. Foridden for non-admin users.
+func (o ImageAccessOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageAccess) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The date the image access was last updated.
+func (o ImageAccessOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageAccess) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
 type ImageAccessArrayOutput struct{ *pulumi.OutputState }
 
 func (ImageAccessArrayOutput) ElementType() reflect.Type {

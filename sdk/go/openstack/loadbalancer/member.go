@@ -54,6 +54,15 @@ type Member struct {
 	// The administrative state of the member.
 	// A valid value is true (UP) or false (DOWN). Defaults to true.
 	AdminStateUp pulumi.BoolPtrOutput `pulumi:"adminStateUp"`
+	// Boolean that indicates whether that member works as a backup or not. Available
+	// only for Octavia >= 2.1.
+	Backup pulumi.BoolPtrOutput `pulumi:"backup"`
+	// An alternate IP address used for health monitoring a backend member.
+	// Available only for Octavia
+	MonitorAddress pulumi.StringPtrOutput `pulumi:"monitorAddress"`
+	// An alternate protocol port used for health monitoring a backend member.
+	// Available only for Octavia
+	MonitorPort pulumi.IntPtrOutput `pulumi:"monitorPort"`
 	// Human-readable name for the member.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The id of the pool that this member will be assigned
@@ -124,6 +133,15 @@ type memberState struct {
 	// The administrative state of the member.
 	// A valid value is true (UP) or false (DOWN). Defaults to true.
 	AdminStateUp *bool `pulumi:"adminStateUp"`
+	// Boolean that indicates whether that member works as a backup or not. Available
+	// only for Octavia >= 2.1.
+	Backup *bool `pulumi:"backup"`
+	// An alternate IP address used for health monitoring a backend member.
+	// Available only for Octavia
+	MonitorAddress *string `pulumi:"monitorAddress"`
+	// An alternate protocol port used for health monitoring a backend member.
+	// Available only for Octavia
+	MonitorPort *int `pulumi:"monitorPort"`
 	// Human-readable name for the member.
 	Name *string `pulumi:"name"`
 	// The id of the pool that this member will be assigned
@@ -157,6 +175,15 @@ type MemberState struct {
 	// The administrative state of the member.
 	// A valid value is true (UP) or false (DOWN). Defaults to true.
 	AdminStateUp pulumi.BoolPtrInput
+	// Boolean that indicates whether that member works as a backup or not. Available
+	// only for Octavia >= 2.1.
+	Backup pulumi.BoolPtrInput
+	// An alternate IP address used for health monitoring a backend member.
+	// Available only for Octavia
+	MonitorAddress pulumi.StringPtrInput
+	// An alternate protocol port used for health monitoring a backend member.
+	// Available only for Octavia
+	MonitorPort pulumi.IntPtrInput
 	// Human-readable name for the member.
 	Name pulumi.StringPtrInput
 	// The id of the pool that this member will be assigned
@@ -194,6 +221,15 @@ type memberArgs struct {
 	// The administrative state of the member.
 	// A valid value is true (UP) or false (DOWN). Defaults to true.
 	AdminStateUp *bool `pulumi:"adminStateUp"`
+	// Boolean that indicates whether that member works as a backup or not. Available
+	// only for Octavia >= 2.1.
+	Backup *bool `pulumi:"backup"`
+	// An alternate IP address used for health monitoring a backend member.
+	// Available only for Octavia
+	MonitorAddress *string `pulumi:"monitorAddress"`
+	// An alternate protocol port used for health monitoring a backend member.
+	// Available only for Octavia
+	MonitorPort *int `pulumi:"monitorPort"`
 	// Human-readable name for the member.
 	Name *string `pulumi:"name"`
 	// The id of the pool that this member will be assigned
@@ -228,6 +264,15 @@ type MemberArgs struct {
 	// The administrative state of the member.
 	// A valid value is true (UP) or false (DOWN). Defaults to true.
 	AdminStateUp pulumi.BoolPtrInput
+	// Boolean that indicates whether that member works as a backup or not. Available
+	// only for Octavia >= 2.1.
+	Backup pulumi.BoolPtrInput
+	// An alternate IP address used for health monitoring a backend member.
+	// Available only for Octavia
+	MonitorAddress pulumi.StringPtrInput
+	// An alternate protocol port used for health monitoring a backend member.
+	// Available only for Octavia
+	MonitorPort pulumi.IntPtrInput
 	// Human-readable name for the member.
 	Name pulumi.StringPtrInput
 	// The id of the pool that this member will be assigned
@@ -339,6 +384,81 @@ func (o MemberOutput) ToMemberOutput() MemberOutput {
 
 func (o MemberOutput) ToMemberOutputWithContext(ctx context.Context) MemberOutput {
 	return o
+}
+
+// The IP address of the member to receive traffic from
+// the load balancer. Changing this creates a new member.
+func (o MemberOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *Member) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
+}
+
+// The administrative state of the member.
+// A valid value is true (UP) or false (DOWN). Defaults to true.
+func (o MemberOutput) AdminStateUp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Member) pulumi.BoolPtrOutput { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean that indicates whether that member works as a backup or not. Available
+// only for Octavia >= 2.1.
+func (o MemberOutput) Backup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Member) pulumi.BoolPtrOutput { return v.Backup }).(pulumi.BoolPtrOutput)
+}
+
+// An alternate IP address used for health monitoring a backend member.
+// Available only for Octavia
+func (o MemberOutput) MonitorAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Member) pulumi.StringPtrOutput { return v.MonitorAddress }).(pulumi.StringPtrOutput)
+}
+
+// An alternate protocol port used for health monitoring a backend member.
+// Available only for Octavia
+func (o MemberOutput) MonitorPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Member) pulumi.IntPtrOutput { return v.MonitorPort }).(pulumi.IntPtrOutput)
+}
+
+// Human-readable name for the member.
+func (o MemberOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Member) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The id of the pool that this member will be assigned
+// to. Changing this creates a new member.
+func (o MemberOutput) PoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Member) pulumi.StringOutput { return v.PoolId }).(pulumi.StringOutput)
+}
+
+// The port on which to listen for client traffic.
+// Changing this creates a new member.
+func (o MemberOutput) ProtocolPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *Member) pulumi.IntOutput { return v.ProtocolPort }).(pulumi.IntOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create a member. If omitted, the `region`
+// argument of the provider is used. Changing this creates a new member.
+func (o MemberOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Member) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The subnet in which to access the member. Changing
+// this creates a new member.
+func (o MemberOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Member) pulumi.StringPtrOutput { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+// Required for admins. The UUID of the tenant who owns
+// the member.  Only administrative users can specify a tenant UUID
+// other than their own. Changing this creates a new member.
+func (o MemberOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Member) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// A positive integer value that indicates the relative
+// portion of traffic that this member should receive from the pool. For
+// example, a member with a weight of 10 receives five times as much traffic
+// as a member with a weight of 2. Defaults to 1.
+func (o MemberOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v *Member) pulumi.IntOutput { return v.Weight }).(pulumi.IntOutput)
 }
 
 type MemberArrayOutput struct{ *pulumi.OutputState }

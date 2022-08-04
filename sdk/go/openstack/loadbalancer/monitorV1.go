@@ -396,6 +396,76 @@ func (o MonitorV1Output) ToMonitorV1OutputWithContext(ctx context.Context) Monit
 	return o
 }
 
+// The administrative state of the monitor.
+// Acceptable values are "true" and "false". Changing this value updates the
+// state of the existing monitor.
+func (o MonitorV1Output) AdminStateUp() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorV1) pulumi.StringOutput { return v.AdminStateUp }).(pulumi.StringOutput)
+}
+
+// The time, in seconds, between sending probes to members.
+// Changing this creates a new monitor.
+func (o MonitorV1Output) Delay() pulumi.IntOutput {
+	return o.ApplyT(func(v *MonitorV1) pulumi.IntOutput { return v.Delay }).(pulumi.IntOutput)
+}
+
+// Required for HTTP(S) types. Expected HTTP codes
+// for a passing HTTP(S) monitor. You can either specify a single status like
+// "200", or a range like "200-202". Changing this updates the expectedCodes
+// of the existing monitor.
+func (o MonitorV1Output) ExpectedCodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorV1) pulumi.StringPtrOutput { return v.ExpectedCodes }).(pulumi.StringPtrOutput)
+}
+
+// Required for HTTP(S) types. The HTTP method used
+// for requests by the monitor. If this attribute is not specified, it defaults
+// to "GET". Changing this updates the httpMethod of the existing monitor.
+func (o MonitorV1Output) HttpMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorV1) pulumi.StringPtrOutput { return v.HttpMethod }).(pulumi.StringPtrOutput)
+}
+
+// Number of permissible ping failures before changing
+// the member's status to INACTIVE. Must be a number between 1 and 10. Changing
+// this updates the maxRetries of the existing monitor.
+func (o MonitorV1Output) MaxRetries() pulumi.IntOutput {
+	return o.ApplyT(func(v *MonitorV1) pulumi.IntOutput { return v.MaxRetries }).(pulumi.IntOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create an LB monitor. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// LB monitor.
+func (o MonitorV1Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorV1) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The owner of the monitor. Required if admin wants to
+// create a monitor for another tenant. Changing this creates a new monitor.
+func (o MonitorV1Output) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorV1) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Maximum number of seconds for a monitor to wait for a
+// ping reply before it times out. The value must be less than the delay value.
+// Changing this updates the timeout of the existing monitor.
+func (o MonitorV1Output) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v *MonitorV1) pulumi.IntOutput { return v.Timeout }).(pulumi.IntOutput)
+}
+
+// The type of probe, which is PING, TCP, HTTP, or HTTPS,
+// that is sent by the monitor to verify the member state. Changing this
+// creates a new monitor.
+func (o MonitorV1Output) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitorV1) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Required for HTTP(S) types. URI path that will be
+// accessed if monitor type is HTTP or HTTPS. Changing this updates the
+// urlPath of the existing monitor.
+func (o MonitorV1Output) UrlPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorV1) pulumi.StringPtrOutput { return v.UrlPath }).(pulumi.StringPtrOutput)
+}
+
 type MonitorV1ArrayOutput struct{ *pulumi.OutputState }
 
 func (MonitorV1ArrayOutput) ElementType() reflect.Type {

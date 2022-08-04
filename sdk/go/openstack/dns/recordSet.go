@@ -359,6 +359,68 @@ func (o RecordSetOutput) ToRecordSetOutputWithContext(ctx context.Context) Recor
 	return o
 }
 
+// A description of the  record set.
+func (o RecordSetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecordSet) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Disable wait for recordset to reach ACTIVE
+// status. This argumen is disabled by default. If it is set to true, the recordset
+// will be considered as created/updated/deleted if OpenStack request returned success.
+func (o RecordSetOutput) DisableStatusCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RecordSet) pulumi.BoolPtrOutput { return v.DisableStatusCheck }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the record set. Note the `.` at the end of the name.
+// Changing this creates a new DNS  record set.
+func (o RecordSetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *RecordSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the project DNS zone is created
+// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+// user role in target project)
+func (o RecordSetOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RecordSet) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// An array of DNS records. _Note:_ if an IPv6 address
+// contains brackets (`[ ]`), the brackets will be stripped and the modified
+// address will be recorded in the state.
+func (o RecordSetOutput) Records() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RecordSet) pulumi.StringArrayOutput { return v.Records }).(pulumi.StringArrayOutput)
+}
+
+// The region in which to obtain the V2 DNS client.
+// If omitted, the `region` argument of the provider is used.
+// Changing this creates a new DNS  record set.
+func (o RecordSetOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *RecordSet) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The time to live (TTL) of the record set.
+func (o RecordSetOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v *RecordSet) pulumi.IntOutput { return v.Ttl }).(pulumi.IntOutput)
+}
+
+// The type of record set. Examples: "A", "MX".
+// Changing this creates a new DNS  record set.
+func (o RecordSetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *RecordSet) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Map of additional options. Changing this creates a
+// new record set.
+func (o RecordSetOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *RecordSet) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+}
+
+// The ID of the zone in which to create the record set.
+// Changing this creates a new DNS  record set.
+func (o RecordSetOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RecordSet) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type RecordSetArrayOutput struct{ *pulumi.OutputState }
 
 func (RecordSetArrayOutput) ElementType() reflect.Type {

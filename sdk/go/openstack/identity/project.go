@@ -297,6 +297,53 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
+// A description of the project.
+func (o ProjectOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The domain this project belongs to.
+func (o ProjectOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.DomainId }).(pulumi.StringOutput)
+}
+
+// Whether the project is enabled or disabled. Valid
+// values are `true` and `false`. Default is `true`.
+func (o ProjectOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this project is a domain. Valid values
+// are `true` and `false`. Default is `false`. Changing this creates a new
+// project/domain.
+func (o ProjectOutput) IsDomain() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.IsDomain }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the project.
+func (o ProjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The parent of this project. Changing this creates
+// a new project.
+func (o ProjectOutput) ParentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V3 Keystone client.
+// If omitted, the `region` argument of the provider is used. Changing this
+// creates a new project.
+func (o ProjectOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Tags for the project. Changing this updates the existing
+// project.
+func (o ProjectOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
 type ProjectArrayOutput struct{ *pulumi.OutputState }
 
 func (ProjectArrayOutput) ElementType() reflect.Type {

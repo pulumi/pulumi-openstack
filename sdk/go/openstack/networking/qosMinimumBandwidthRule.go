@@ -254,6 +254,30 @@ func (o QosMinimumBandwidthRuleOutput) ToQosMinimumBandwidthRuleOutputWithContex
 	return o
 }
 
+// The direction of traffic. Defaults to "egress". Changing this updates the direction of the
+// existing QoS minimum bandwidth rule.
+func (o QosMinimumBandwidthRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QosMinimumBandwidthRule) pulumi.StringPtrOutput { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// The minimum kilobits per second. Changing this updates the min kbps value of the existing
+// QoS minimum bandwidth rule.
+func (o QosMinimumBandwidthRuleOutput) MinKbps() pulumi.IntOutput {
+	return o.ApplyT(func(v *QosMinimumBandwidthRule) pulumi.IntOutput { return v.MinKbps }).(pulumi.IntOutput)
+}
+
+// The QoS policy reference. Changing this creates a new QoS minimum bandwidth rule.
+func (o QosMinimumBandwidthRuleOutput) QosPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosMinimumBandwidthRule) pulumi.StringOutput { return v.QosPolicyId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new QoS minimum bandwidth rule.
+func (o QosMinimumBandwidthRuleOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosMinimumBandwidthRule) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
 type QosMinimumBandwidthRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (QosMinimumBandwidthRuleArrayOutput) ElementType() reflect.Type {

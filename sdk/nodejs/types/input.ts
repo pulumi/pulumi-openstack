@@ -628,6 +628,16 @@ export namespace loadbalancer {
          */
         id?: pulumi.Input<string>;
         /**
+         * An alternate IP address used for health 
+         * monitoring a backend member.
+         */
+        monitorAddress?: pulumi.Input<string>;
+        /**
+         * An alternate protocol port used for health 
+         * monitoring a backend member.
+         */
+        monitorPort?: pulumi.Input<number>;
+        /**
          * Human-readable name for the member.
          */
         name?: pulumi.Input<string>;

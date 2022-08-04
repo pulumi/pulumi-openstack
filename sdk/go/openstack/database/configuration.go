@@ -249,6 +249,33 @@ func (o ConfigurationOutput) ToConfigurationOutputWithContext(ctx context.Contex
 	return o
 }
 
+// An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
+func (o ConfigurationOutput) Configurations() ConfigurationConfigurationArrayOutput {
+	return o.ApplyT(func(v *Configuration) ConfigurationConfigurationArrayOutput { return v.Configurations }).(ConfigurationConfigurationArrayOutput)
+}
+
+// An array of database engine type and version. The datastore
+// object structure is documented below. Changing this creates resource.
+func (o ConfigurationOutput) Datastore() ConfigurationDatastoreOutput {
+	return o.ApplyT(func(v *Configuration) ConfigurationDatastoreOutput { return v.Datastore }).(ConfigurationDatastoreOutput)
+}
+
+// Description of the resource.
+func (o ConfigurationOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Configuration parameter name. Changing this creates a new resource.
+func (o ConfigurationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region in which to create the db instance. Changing this
+// creates a new instance.
+func (o ConfigurationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
 type ConfigurationArrayOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationArrayOutput) ElementType() reflect.Type {

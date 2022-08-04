@@ -317,6 +317,68 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 	return o
 }
 
+// The administrative state of the resource. Can either be up(true) or down(false).
+// Changing this updates the administrative state of the existing service.
+func (o ServiceOutput) AdminStateUp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
+}
+
+// The human-readable description for the service.
+// Changing this updates the description of the existing service.
+func (o ServiceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The read-only external (public) IPv4 address that is used for the VPN service.
+func (o ServiceOutput) ExternalV4Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ExternalV4Ip }).(pulumi.StringOutput)
+}
+
+// The read-only external (public) IPv6 address that is used for the VPN service.
+func (o ServiceOutput) ExternalV6Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ExternalV6Ip }).(pulumi.StringOutput)
+}
+
+// The name of the service. Changing this updates the name of
+// the existing service.
+func (o ServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create a VPN service. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// service.
+func (o ServiceOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The ID of the router. Changing this creates a new service.
+func (o ServiceOutput) RouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
+}
+
+// Indicates whether IPsec VPN service is currently operational. Values are ACTIVE, DOWN, BUILD, ERROR, PENDING_CREATE, PENDING_UPDATE, or PENDING_DELETE.
+func (o ServiceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// SubnetID is the ID of the subnet. Default is null.
+func (o ServiceOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+// The owner of the service. Required if admin wants to
+// create a service for another project. Changing this creates a new service.
+func (o ServiceOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Map of additional options.
+func (o ServiceOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *Service) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+}
+
 type ServiceArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceArrayOutput) ElementType() reflect.Type {

@@ -319,6 +319,69 @@ func (o OrderV1Output) ToOrderV1OutputWithContext(ctx context.Context) OrderV1Ou
 	return o
 }
 
+// The container reference / where to find the container.
+func (o OrderV1Output) ContainerRef() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrderV1) pulumi.StringOutput { return v.ContainerRef }).(pulumi.StringOutput)
+}
+
+// The date the order was created.
+func (o OrderV1Output) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrderV1) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
+// The creator of the order.
+func (o OrderV1Output) CreatorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrderV1) pulumi.StringOutput { return v.CreatorId }).(pulumi.StringOutput)
+}
+
+// Dictionary containing the order metadata used to generate the order. The structure is described below.
+func (o OrderV1Output) Meta() OrderV1MetaOutput {
+	return o.ApplyT(func(v *OrderV1) OrderV1MetaOutput { return v.Meta }).(OrderV1MetaOutput)
+}
+
+// The order reference / where to find the order.
+func (o OrderV1Output) OrderRef() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrderV1) pulumi.StringOutput { return v.OrderRef }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V1 KeyManager client.
+// A KeyManager client is needed to create a order. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// V1 order.
+func (o OrderV1Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrderV1) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The secret reference / where to find the secret.
+func (o OrderV1Output) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrderV1) pulumi.StringOutput { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+// The status of the order.
+func (o OrderV1Output) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrderV1) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The sub status of the order.
+func (o OrderV1Output) SubStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrderV1) pulumi.StringOutput { return v.SubStatus }).(pulumi.StringOutput)
+}
+
+// The sub status message of the order.
+func (o OrderV1Output) SubStatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrderV1) pulumi.StringOutput { return v.SubStatusMessage }).(pulumi.StringOutput)
+}
+
+// The type of key to be generated. Must be one of `asymmetric`, `key`.
+func (o OrderV1Output) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrderV1) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The date the order was last updated.
+func (o OrderV1Output) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrderV1) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+}
+
 type OrderV1ArrayOutput struct{ *pulumi.OutputState }
 
 func (OrderV1ArrayOutput) ElementType() reflect.Type {

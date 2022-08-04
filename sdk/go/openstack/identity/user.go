@@ -381,6 +381,81 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
+// The default project this user belongs to.
+func (o UserOutput) DefaultProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.DefaultProjectId }).(pulumi.StringOutput)
+}
+
+// A description of the user.
+func (o UserOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The domain this user belongs to.
+func (o UserOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.DomainId }).(pulumi.StringOutput)
+}
+
+// Whether the user is enabled or disabled. Valid
+// values are `true` and `false`.
+func (o UserOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Free-form key/value pairs of extra information.
+func (o UserOutput) Extra() pulumi.MapOutput {
+	return o.ApplyT(func(v *User) pulumi.MapOutput { return v.Extra }).(pulumi.MapOutput)
+}
+
+// User will not have to
+// change their password upon first use. Valid values are `true` and `false`.
+func (o UserOutput) IgnoreChangePasswordUponFirstUse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.IgnoreChangePasswordUponFirstUse }).(pulumi.BoolPtrOutput)
+}
+
+// User will not have a failure
+// lockout placed on their account. Valid values are `true` and `false`.
+func (o UserOutput) IgnoreLockoutFailureAttempts() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.IgnoreLockoutFailureAttempts }).(pulumi.BoolPtrOutput)
+}
+
+// User's password will not expire.
+// Valid values are `true` and `false`.
+func (o UserOutput) IgnorePasswordExpiry() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.IgnorePasswordExpiry }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable multi-factor
+// authentication. Valid values are `true` and `false`.
+func (o UserOutput) MultiFactorAuthEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.MultiFactorAuthEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// A multi-factor authentication rule.
+// The structure is documented below. Please see the
+// [Ocata release notes](https://docs.openstack.org/releasenotes/keystone/ocata.html)
+// for more information on how to use mulit-factor rules.
+func (o UserOutput) MultiFactorAuthRules() UserMultiFactorAuthRuleArrayOutput {
+	return o.ApplyT(func(v *User) UserMultiFactorAuthRuleArrayOutput { return v.MultiFactorAuthRules }).(UserMultiFactorAuthRuleArrayOutput)
+}
+
+// The name of the user.
+func (o UserOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The password for the user.
+func (o UserOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The region in which to obtain the V3 Keystone client.
+// If omitted, the `region` argument of the provider is used. Changing this
+// creates a new User.
+func (o UserOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
 type UserArrayOutput struct{ *pulumi.OutputState }
 
 func (UserArrayOutput) ElementType() reflect.Type {

@@ -375,6 +375,73 @@ func (o QuotaV2Output) ToQuotaV2OutputWithContext(ctx context.Context) QuotaV2Ou
 	return o
 }
 
+// Quota value for floating IPs. Changing this updates the
+// existing quota.
+func (o QuotaV2Output) Floatingip() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaV2) pulumi.IntOutput { return v.Floatingip }).(pulumi.IntOutput)
+}
+
+// Quota value for networks. Changing this updates the
+// existing quota.
+func (o QuotaV2Output) Network() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaV2) pulumi.IntOutput { return v.Network }).(pulumi.IntOutput)
+}
+
+// Quota value for ports. Changing this updates the
+// existing quota.
+func (o QuotaV2Output) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaV2) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+// ID of the project to manage quota. Changing this
+// creates new quota.
+func (o QuotaV2Output) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaV2) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Quota value for RBAC policies.
+// Changing this updates the existing quota.
+func (o QuotaV2Output) RbacPolicy() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaV2) pulumi.IntOutput { return v.RbacPolicy }).(pulumi.IntOutput)
+}
+
+// The region in which to create the quota. If
+// omitted, the `region` argument of the provider is used. Changing this
+// creates new quota.
+func (o QuotaV2Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuotaV2) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Quota value for routers. Changing this updates the
+// existing quota.
+func (o QuotaV2Output) Router() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaV2) pulumi.IntOutput { return v.Router }).(pulumi.IntOutput)
+}
+
+// Quota value for security groups. Changing
+// this updates the existing quota.
+func (o QuotaV2Output) SecurityGroup() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaV2) pulumi.IntOutput { return v.SecurityGroup }).(pulumi.IntOutput)
+}
+
+// Quota value for security group rules.
+// Changing this updates the existing quota.
+func (o QuotaV2Output) SecurityGroupRule() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaV2) pulumi.IntOutput { return v.SecurityGroupRule }).(pulumi.IntOutput)
+}
+
+// Quota value for subnets. Changing
+// this updates the existing quota.
+func (o QuotaV2Output) Subnet() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaV2) pulumi.IntOutput { return v.Subnet }).(pulumi.IntOutput)
+}
+
+// Quota value for subnetpools.
+// Changing this updates the existing quota.
+func (o QuotaV2Output) Subnetpool() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuotaV2) pulumi.IntOutput { return v.Subnetpool }).(pulumi.IntOutput)
+}
+
 type QuotaV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (QuotaV2ArrayOutput) ElementType() reflect.Type {

@@ -111,8 +111,8 @@ import (
 // 			return err
 // 		}
 // 		_, err = objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
-// 			ContainerRead:  pulumi.String(fmt.Sprintf("%v%v", ".r:-", _var.Username)),
-// 			ContainerWrite: pulumi.String(fmt.Sprintf("%v%v%v", current.ProjectId, ":", _var.Username)),
+// 			ContainerRead:  pulumi.String(fmt.Sprintf(".r:-%v", _var.Username)),
+// 			ContainerWrite: pulumi.String(fmt.Sprintf("%v:%v", current.ProjectId, _var.Username)),
 // 			Region:         pulumi.String("RegionOne"),
 // 		})
 // 		if err != nil {
@@ -162,6 +162,9 @@ type Container struct {
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new container.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The storage policy to be used for the container.
+	// Changing this creates a new container.
+	StoragePolicy pulumi.StringOutput `pulumi:"storagePolicy"`
 	// Enable object versioning. The structure is described below.
 	Versioning ContainerVersioningPtrOutput `pulumi:"versioning"`
 }
@@ -224,6 +227,9 @@ type containerState struct {
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new container.
 	Region *string `pulumi:"region"`
+	// The storage policy to be used for the container.
+	// Changing this creates a new container.
+	StoragePolicy *string `pulumi:"storagePolicy"`
 	// Enable object versioning. The structure is described below.
 	Versioning *ContainerVersioning `pulumi:"versioning"`
 }
@@ -258,6 +264,9 @@ type ContainerState struct {
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new container.
 	Region pulumi.StringPtrInput
+	// The storage policy to be used for the container.
+	// Changing this creates a new container.
+	StoragePolicy pulumi.StringPtrInput
 	// Enable object versioning. The structure is described below.
 	Versioning ContainerVersioningPtrInput
 }
@@ -296,6 +305,9 @@ type containerArgs struct {
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new container.
 	Region *string `pulumi:"region"`
+	// The storage policy to be used for the container.
+	// Changing this creates a new container.
+	StoragePolicy *string `pulumi:"storagePolicy"`
 	// Enable object versioning. The structure is described below.
 	Versioning *ContainerVersioning `pulumi:"versioning"`
 }
@@ -331,6 +343,9 @@ type ContainerArgs struct {
 	// omitted, the `region` argument of the provider is used. Changing this
 	// creates a new container.
 	Region pulumi.StringPtrInput
+	// The storage policy to be used for the container.
+	// Changing this creates a new container.
+	StoragePolicy pulumi.StringPtrInput
 	// Enable object versioning. The structure is described below.
 	Versioning ContainerVersioningPtrInput
 }
@@ -420,6 +435,73 @@ func (o ContainerOutput) ToContainerOutput() ContainerOutput {
 
 func (o ContainerOutput) ToContainerOutputWithContext(ctx context.Context) ContainerOutput {
 	return o
+}
+
+// Sets an access control list (ACL) that grants
+// read access. This header can contain a comma-delimited list of users that
+// can read the container (allows the GET method for all objects in the
+// container). Changing this updates the access control list read access.
+func (o ContainerOutput) ContainerRead() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.ContainerRead }).(pulumi.StringPtrOutput)
+}
+
+// The secret key for container synchronization.
+// Changing this updates container synchronization.
+func (o ContainerOutput) ContainerSyncKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.ContainerSyncKey }).(pulumi.StringPtrOutput)
+}
+
+// The destination for container synchronization.
+// Changing this updates container synchronization.
+func (o ContainerOutput) ContainerSyncTo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.ContainerSyncTo }).(pulumi.StringPtrOutput)
+}
+
+// Sets an ACL that grants write access.
+// Changing this updates the access control list write access.
+func (o ContainerOutput) ContainerWrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.ContainerWrite }).(pulumi.StringPtrOutput)
+}
+
+// The MIME type for the container. Changing this
+// updates the MIME type.
+func (o ContainerOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
+// A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
+func (o ContainerOutput) ForceDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// Custom key/value pairs to associate with the container.
+// Changing this updates the existing container metadata.
+func (o ContainerOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *Container) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+}
+
+// A unique name for the container. Changing this creates a
+// new container.
+func (o ContainerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Container) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region in which to create the container. If
+// omitted, the `region` argument of the provider is used. Changing this
+// creates a new container.
+func (o ContainerOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Container) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The storage policy to be used for the container.
+// Changing this creates a new container.
+func (o ContainerOutput) StoragePolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Container) pulumi.StringOutput { return v.StoragePolicy }).(pulumi.StringOutput)
+}
+
+// Enable object versioning. The structure is described below.
+func (o ContainerOutput) Versioning() ContainerVersioningPtrOutput {
+	return o.ApplyT(func(v *Container) ContainerVersioningPtrOutput { return v.Versioning }).(ContainerVersioningPtrOutput)
 }
 
 type ContainerArrayOutput struct{ *pulumi.OutputState }

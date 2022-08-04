@@ -67,6 +67,21 @@ export class Member extends pulumi.CustomResource {
      */
     public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
+     * Boolean that indicates whether that member works as a backup or not. Available 
+     * only for Octavia >= 2.1.
+     */
+    public readonly backup!: pulumi.Output<boolean | undefined>;
+    /**
+     * An alternate IP address used for health monitoring a backend member.
+     * Available only for Octavia
+     */
+    public readonly monitorAddress!: pulumi.Output<string | undefined>;
+    /**
+     * An alternate protocol port used for health monitoring a backend member.
+     * Available only for Octavia
+     */
+    public readonly monitorPort!: pulumi.Output<number | undefined>;
+    /**
      * Human-readable name for the member.
      */
     public readonly name!: pulumi.Output<string>;
@@ -120,6 +135,9 @@ export class Member extends pulumi.CustomResource {
             const state = argsOrState as MemberState | undefined;
             resourceInputs["address"] = state ? state.address : undefined;
             resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            resourceInputs["backup"] = state ? state.backup : undefined;
+            resourceInputs["monitorAddress"] = state ? state.monitorAddress : undefined;
+            resourceInputs["monitorPort"] = state ? state.monitorPort : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["poolId"] = state ? state.poolId : undefined;
             resourceInputs["protocolPort"] = state ? state.protocolPort : undefined;
@@ -140,6 +158,9 @@ export class Member extends pulumi.CustomResource {
             }
             resourceInputs["address"] = args ? args.address : undefined;
             resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            resourceInputs["backup"] = args ? args.backup : undefined;
+            resourceInputs["monitorAddress"] = args ? args.monitorAddress : undefined;
+            resourceInputs["monitorPort"] = args ? args.monitorPort : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["poolId"] = args ? args.poolId : undefined;
             resourceInputs["protocolPort"] = args ? args.protocolPort : undefined;
@@ -167,6 +188,21 @@ export interface MemberState {
      * A valid value is true (UP) or false (DOWN). Defaults to true.
      */
     adminStateUp?: pulumi.Input<boolean>;
+    /**
+     * Boolean that indicates whether that member works as a backup or not. Available 
+     * only for Octavia >= 2.1.
+     */
+    backup?: pulumi.Input<boolean>;
+    /**
+     * An alternate IP address used for health monitoring a backend member.
+     * Available only for Octavia
+     */
+    monitorAddress?: pulumi.Input<string>;
+    /**
+     * An alternate protocol port used for health monitoring a backend member.
+     * Available only for Octavia
+     */
+    monitorPort?: pulumi.Input<number>;
     /**
      * Human-readable name for the member.
      */
@@ -221,6 +257,21 @@ export interface MemberArgs {
      * A valid value is true (UP) or false (DOWN). Defaults to true.
      */
     adminStateUp?: pulumi.Input<boolean>;
+    /**
+     * Boolean that indicates whether that member works as a backup or not. Available 
+     * only for Octavia >= 2.1.
+     */
+    backup?: pulumi.Input<boolean>;
+    /**
+     * An alternate IP address used for health monitoring a backend member.
+     * Available only for Octavia
+     */
+    monitorAddress?: pulumi.Input<string>;
+    /**
+     * An alternate protocol port used for health monitoring a backend member.
+     * Available only for Octavia
+     */
+    monitorPort?: pulumi.Input<number>;
     /**
      * Human-readable name for the member.
      */

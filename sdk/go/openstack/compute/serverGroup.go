@@ -269,6 +269,36 @@ func (o ServerGroupOutput) ToServerGroupOutputWithContext(ctx context.Context) S
 	return o
 }
 
+// The instances that are part of this server group.
+func (o ServerGroupOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// A unique name for the server group. Changing this creates
+// a new server group.
+func (o ServerGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The set of policies for the server group. All policies
+// are mutually exclusive. See the Policies section for more information.
+// Changing this creates a new server group.
+func (o ServerGroupOutput) Policies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringArrayOutput { return v.Policies }).(pulumi.StringArrayOutput)
+}
+
+// The region in which to obtain the V2 Compute client.
+// If omitted, the `region` argument of the provider is used. Changing
+// this creates a new server group.
+func (o ServerGroupOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Map of additional options.
+func (o ServerGroupOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+}
+
 type ServerGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (ServerGroupArrayOutput) ElementType() reflect.Type {

@@ -59,6 +59,27 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Output<bool?> AdminStateUp { get; private set; } = null!;
 
         /// <summary>
+        /// Boolean that indicates whether that member works as a backup or not. Available 
+        /// only for Octavia &gt;= 2.1.
+        /// </summary>
+        [Output("backup")]
+        public Output<bool?> Backup { get; private set; } = null!;
+
+        /// <summary>
+        /// An alternate IP address used for health monitoring a backend member.
+        /// Available only for Octavia
+        /// </summary>
+        [Output("monitorAddress")]
+        public Output<string?> MonitorAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// An alternate protocol port used for health monitoring a backend member.
+        /// Available only for Octavia
+        /// </summary>
+        [Output("monitorPort")]
+        public Output<int?> MonitorPort { get; private set; } = null!;
+
+        /// <summary>
         /// Human-readable name for the member.
         /// </summary>
         [Output("name")]
@@ -171,6 +192,27 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<bool>? AdminStateUp { get; set; }
 
         /// <summary>
+        /// Boolean that indicates whether that member works as a backup or not. Available 
+        /// only for Octavia &gt;= 2.1.
+        /// </summary>
+        [Input("backup")]
+        public Input<bool>? Backup { get; set; }
+
+        /// <summary>
+        /// An alternate IP address used for health monitoring a backend member.
+        /// Available only for Octavia
+        /// </summary>
+        [Input("monitorAddress")]
+        public Input<string>? MonitorAddress { get; set; }
+
+        /// <summary>
+        /// An alternate protocol port used for health monitoring a backend member.
+        /// Available only for Octavia
+        /// </summary>
+        [Input("monitorPort")]
+        public Input<int>? MonitorPort { get; set; }
+
+        /// <summary>
         /// Human-readable name for the member.
         /// </summary>
         [Input("name")]
@@ -242,6 +284,27 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// </summary>
         [Input("adminStateUp")]
         public Input<bool>? AdminStateUp { get; set; }
+
+        /// <summary>
+        /// Boolean that indicates whether that member works as a backup or not. Available 
+        /// only for Octavia &gt;= 2.1.
+        /// </summary>
+        [Input("backup")]
+        public Input<bool>? Backup { get; set; }
+
+        /// <summary>
+        /// An alternate IP address used for health monitoring a backend member.
+        /// Available only for Octavia
+        /// </summary>
+        [Input("monitorAddress")]
+        public Input<string>? MonitorAddress { get; set; }
+
+        /// <summary>
+        /// An alternate protocol port used for health monitoring a backend member.
+        /// Available only for Octavia
+        /// </summary>
+        [Input("monitorPort")]
+        public Input<int>? MonitorPort { get; set; }
 
         /// <summary>
         /// Human-readable name for the member.

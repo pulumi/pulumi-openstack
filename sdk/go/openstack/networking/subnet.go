@@ -589,6 +589,150 @@ func (o SubnetOutput) ToSubnetOutputWithContext(ctx context.Context) SubnetOutpu
 	return o
 }
 
+// The collection of ags assigned on the subnet, which have been
+// explicitly and implicitly added.
+func (o SubnetOutput) AllTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringArrayOutput { return v.AllTags }).(pulumi.StringArrayOutput)
+}
+
+// A block declaring the start and end range of
+// the IP addresses available for use with DHCP in this subnet. Multiple
+// `allocationPool` blocks can be declared, providing the subnet with more
+// than one range of IP addresses to use with DHCP. However, each IP range
+// must be from the same CIDR that the subnet is part of.
+// The `allocationPool` block is documented below.
+func (o SubnetOutput) AllocationPools() SubnetAllocationPoolArrayOutput {
+	return o.ApplyT(func(v *Subnet) SubnetAllocationPoolArrayOutput { return v.AllocationPools }).(SubnetAllocationPoolArrayOutput)
+}
+
+// A block declaring the start and end range of the IP addresses available for
+// use with DHCP in this subnet.
+// The `allocationPools` block is documented below.
+//
+// Deprecated: use allocation_pool instead
+func (o SubnetOutput) AllocationPoolsCollection() SubnetAllocationPoolsCollectionArrayOutput {
+	return o.ApplyT(func(v *Subnet) SubnetAllocationPoolsCollectionArrayOutput { return v.AllocationPoolsCollection }).(SubnetAllocationPoolsCollectionArrayOutput)
+}
+
+// CIDR representing IP range for this subnet, based on IP
+// version. You can omit this option if you are creating a subnet from a
+// subnet pool.
+func (o SubnetOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// Human-readable description of the subnet. Changing this
+// updates the name of the existing subnet.
+func (o SubnetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// An array of DNS name server names used by hosts
+// in this subnet. Changing this updates the DNS name servers for the existing
+// subnet.
+func (o SubnetOutput) DnsNameservers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringArrayOutput { return v.DnsNameservers }).(pulumi.StringArrayOutput)
+}
+
+// The administrative state of the network.
+// Acceptable values are "true" and "false". Changing this value enables or
+// disables the DHCP capabilities of the existing subnet. Defaults to true.
+func (o SubnetOutput) EnableDhcp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.BoolPtrOutput { return v.EnableDhcp }).(pulumi.BoolPtrOutput)
+}
+
+// Default gateway used by devices in this subnet.
+// Leaving this blank and not setting `noGateway` will cause a default
+// gateway of `.1` to be used. Changing this updates the gateway IP of the
+// existing subnet.
+func (o SubnetOutput) GatewayIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.GatewayIp }).(pulumi.StringOutput)
+}
+
+// (**Deprecated** - use `networking.SubnetRoute`
+// instead) An array of routes that should be used by devices
+// with IPs from this subnet (not including local subnet route). The hostRoute
+// object structure is documented below. Changing this updates the host routes
+// for the existing subnet.
+//
+// Deprecated: Use openstack_networking_subnet_route_v2 instead
+func (o SubnetOutput) HostRoutes() SubnetHostRouteArrayOutput {
+	return o.ApplyT(func(v *Subnet) SubnetHostRouteArrayOutput { return v.HostRoutes }).(SubnetHostRouteArrayOutput)
+}
+
+// IP version, either 4 (default) or 6. Changing this creates a
+// new subnet.
+func (o SubnetOutput) IpVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.IntPtrOutput { return v.IpVersion }).(pulumi.IntPtrOutput)
+}
+
+// The IPv6 address mode. Valid values are
+// `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+func (o SubnetOutput) Ipv6AddressMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.Ipv6AddressMode }).(pulumi.StringOutput)
+}
+
+// The IPv6 Router Advertisement mode. Valid values
+// are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+func (o SubnetOutput) Ipv6RaMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.Ipv6RaMode }).(pulumi.StringOutput)
+}
+
+// The name of the subnet. Changing this updates the name of
+// the existing subnet.
+func (o SubnetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The UUID of the parent network. Changing this
+// creates a new subnet.
+func (o SubnetOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// Do not set a gateway IP on this subnet. Changing
+// this removes or adds a default gateway IP of the existing subnet.
+func (o SubnetOutput) NoGateway() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.BoolPtrOutput { return v.NoGateway }).(pulumi.BoolPtrOutput)
+}
+
+// The prefix length to use when creating a subnet
+// from a subnet pool. The default subnet pool prefix length that was defined
+// when creating the subnet pool will be used if not provided. Changing this
+// creates a new subnet.
+func (o SubnetOutput) PrefixLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.IntPtrOutput { return v.PrefixLength }).(pulumi.IntPtrOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create a Neutron subnet. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// subnet.
+func (o SubnetOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The ID of the subnetpool associated with the subnet.
+func (o SubnetOutput) SubnetpoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringPtrOutput { return v.SubnetpoolId }).(pulumi.StringPtrOutput)
+}
+
+// A set of string tags for the subnet.
+func (o SubnetOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The owner of the subnet. Required if admin wants to
+// create a subnet for another tenant. Changing this creates a new subnet.
+func (o SubnetOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Map of additional options.
+func (o SubnetOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+}
+
 type SubnetArrayOutput struct{ *pulumi.OutputState }
 
 func (SubnetArrayOutput) ElementType() reflect.Type {

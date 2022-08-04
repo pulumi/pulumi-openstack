@@ -9,3 +9,5 @@ from .cluster import *
 from .cluster_template import *
 from .get_cluster import *
 from .get_cluster_template import *
+from .get_node_group import *
+from .node_group import *

@@ -31,7 +31,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     ///     {
     ///         var members1 = new OpenStack.LoadBalancer.Members("members1", new OpenStack.LoadBalancer.MembersArgs
     ///         {
-    ///             Members = 
+    ///             MemberList = 
     ///             {
     ///                 new OpenStack.LoadBalancer.Inputs.MembersMemberArgs
     ///                 {

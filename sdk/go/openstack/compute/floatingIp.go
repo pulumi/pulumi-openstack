@@ -252,6 +252,36 @@ func (o FloatingIpOutput) ToFloatingIpOutputWithContext(ctx context.Context) Flo
 	return o
 }
 
+// The actual floating IP address itself.
+func (o FloatingIpOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *FloatingIp) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
+}
+
+// The fixed IP address corresponding to the floating IP.
+func (o FloatingIpOutput) FixedIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *FloatingIp) pulumi.StringOutput { return v.FixedIp }).(pulumi.StringOutput)
+}
+
+// UUID of the compute instance associated with the floating IP.
+func (o FloatingIpOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FloatingIp) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The name of the pool from which to obtain the floating
+// IP. Changing this creates a new floating IP.
+func (o FloatingIpOutput) Pool() pulumi.StringOutput {
+	return o.ApplyT(func(v *FloatingIp) pulumi.StringOutput { return v.Pool }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Compute client.
+// A Compute client is needed to create a floating IP that can be used with
+// a compute instance. If omitted, the `region` argument of the provider
+// is used. Changing this creates a new floating IP (which may or may not
+// have a different address).
+func (o FloatingIpOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *FloatingIp) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
 type FloatingIpArrayOutput struct{ *pulumi.OutputState }
 
 func (FloatingIpArrayOutput) ElementType() reflect.Type {

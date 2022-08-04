@@ -97,6 +97,14 @@ namespace Pulumi.OpenStack.Compute
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// This allows administrative users to operate key-pairs
+        /// of specified user ID. For this feature your need to have openstack microversion
+        /// 2.10 (Liberty) or later.
+        /// </summary>
+        [Output("userId")]
+        public Output<string> UserId { get; private set; } = null!;
+
+        /// <summary>
         /// Map of additional options.
         /// </summary>
         [Output("valueSpecs")]
@@ -174,6 +182,14 @@ namespace Pulumi.OpenStack.Compute
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// This allows administrative users to operate key-pairs
+        /// of specified user ID. For this feature your need to have openstack microversion
+        /// 2.10 (Liberty) or later.
+        /// </summary>
+        [Input("userId")]
+        public Input<string>? UserId { get; set; }
+
         [Input("valueSpecs")]
         private InputMap<object>? _valueSpecs;
 
@@ -230,6 +246,14 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// This allows administrative users to operate key-pairs
+        /// of specified user ID. For this feature your need to have openstack microversion
+        /// 2.10 (Liberty) or later.
+        /// </summary>
+        [Input("userId")]
+        public Input<string>? UserId { get; set; }
 
         [Input("valueSpecs")]
         private InputMap<object>? _valueSpecs;

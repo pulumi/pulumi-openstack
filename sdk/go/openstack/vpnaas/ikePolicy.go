@@ -342,6 +342,72 @@ func (o IkePolicyOutput) ToIkePolicyOutputWithContext(ctx context.Context) IkePo
 	return o
 }
 
+// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
+// Default is sha1. Changing this updates the algorithm of the existing policy.
+func (o IkePolicyOutput) AuthAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IkePolicy) pulumi.StringPtrOutput { return v.AuthAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+// The human-readable description for the policy.
+// Changing this updates the description of the existing policy.
+func (o IkePolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IkePolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+// The default value is aes-128. Changing this updates the existing policy.
+func (o IkePolicyOutput) EncryptionAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IkePolicy) pulumi.StringPtrOutput { return v.EncryptionAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+// The IKE mode. A valid value is v1 or v2. Default is v1.
+// Changing this updates the existing policy.
+func (o IkePolicyOutput) IkeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IkePolicy) pulumi.StringPtrOutput { return v.IkeVersion }).(pulumi.StringPtrOutput)
+}
+
+// The lifetime of the security association. Consists of Unit and Value.
+func (o IkePolicyOutput) Lifetimes() IkePolicyLifetimeArrayOutput {
+	return o.ApplyT(func(v *IkePolicy) IkePolicyLifetimeArrayOutput { return v.Lifetimes }).(IkePolicyLifetimeArrayOutput)
+}
+
+// The name of the policy. Changing this updates the name of
+// the existing policy.
+func (o IkePolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *IkePolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
+// Changing this updates the existing policy.
+func (o IkePolicyOutput) Pfs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IkePolicy) pulumi.StringPtrOutput { return v.Pfs }).(pulumi.StringPtrOutput)
+}
+
+// The IKE mode. A valid value is main, which is the default.
+// Changing this updates the existing policy.
+func (o IkePolicyOutput) Phase1NegotiationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IkePolicy) pulumi.StringPtrOutput { return v.Phase1NegotiationMode }).(pulumi.StringPtrOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create a VPN service. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// service.
+func (o IkePolicyOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *IkePolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The owner of the policy. Required if admin wants to
+// create a service for another policy. Changing this creates a new policy.
+func (o IkePolicyOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IkePolicy) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Map of additional options.
+func (o IkePolicyOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *IkePolicy) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+}
+
 type IkePolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (IkePolicyArrayOutput) ElementType() reflect.Type {

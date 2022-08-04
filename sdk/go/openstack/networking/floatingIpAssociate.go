@@ -255,6 +255,30 @@ func (o FloatingIpAssociateOutput) ToFloatingIpAssociateOutputWithContext(ctx co
 	return o
 }
 
+func (o FloatingIpAssociateOutput) FixedIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *FloatingIpAssociate) pulumi.StringOutput { return v.FixedIp }).(pulumi.StringOutput)
+}
+
+// IP Address of an existing floating IP.
+func (o FloatingIpAssociateOutput) FloatingIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *FloatingIpAssociate) pulumi.StringOutput { return v.FloatingIp }).(pulumi.StringOutput)
+}
+
+// ID of an existing port with at least one IP address to
+// associate with this floating IP.
+func (o FloatingIpAssociateOutput) PortId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FloatingIpAssociate) pulumi.StringOutput { return v.PortId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create a floating IP that can be used with
+// another networking resource, such as a load balancer. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// floating IP (which may or may not have a different address).
+func (o FloatingIpAssociateOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *FloatingIpAssociate) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
 type FloatingIpAssociateArrayOutput struct{ *pulumi.OutputState }
 
 func (FloatingIpAssociateArrayOutput) ElementType() reflect.Type {

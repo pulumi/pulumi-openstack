@@ -264,6 +264,14 @@ _utilities.register(
  },
  {
   "pkg": "openstack",
+  "mod": "containerinfra/nodeGroup",
+  "fqn": "pulumi_openstack.containerinfra",
+  "classes": {
+   "openstack:containerinfra/nodeGroup:NodeGroup": "NodeGroup"
+  }
+ },
+ {
+  "pkg": "openstack",
   "mod": "database/configuration",
   "fqn": "pulumi_openstack.database",
   "classes": {

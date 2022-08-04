@@ -389,6 +389,41 @@ func (o ShareAccessOutput) ToShareAccessOutputWithContext(ctx context.Context) S
 	return o
 }
 
+// The access credential of the entity granted access.
+func (o ShareAccessOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShareAccess) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+// The access level to the share. Can either be `rw` or `ro`.
+func (o ShareAccessOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShareAccess) pulumi.StringOutput { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+// The value that defines the access. Can either be an IP
+// address or a username verified by configured Security Service of the Share Network.
+func (o ShareAccessOutput) AccessTo() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShareAccess) pulumi.StringOutput { return v.AccessTo }).(pulumi.StringOutput)
+}
+
+// The access rule type. Can either be an ip, user,
+// cert, or cephx. cephx support requires an OpenStack environment that supports
+// Shared Filesystem microversion 2.13 (Mitaka) or later.
+func (o ShareAccessOutput) AccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShareAccess) pulumi.StringOutput { return v.AccessType }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Shared File System client.
+// A Shared File System client is needed to create a share access. Changing this
+// creates a new share access.
+func (o ShareAccessOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShareAccess) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The UUID of the share to which you are granted access.
+func (o ShareAccessOutput) ShareId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShareAccess) pulumi.StringOutput { return v.ShareId }).(pulumi.StringOutput)
+}
+
 type ShareAccessArrayOutput struct{ *pulumi.OutputState }
 
 func (ShareAccessArrayOutput) ElementType() reflect.Type {

@@ -286,6 +286,49 @@ func (o EndpointV3Output) ToEndpointV3OutputWithContext(ctx context.Context) End
 	return o
 }
 
+// The endpoint region. The `region` and
+// `endpointRegion` can be different.
+func (o EndpointV3Output) EndpointRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointV3) pulumi.StringOutput { return v.EndpointRegion }).(pulumi.StringOutput)
+}
+
+// The endpoint interface. Valid values are `public`,
+// `internal` and `admin`. Default value is `public`
+func (o EndpointV3Output) Interface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointV3) pulumi.StringPtrOutput { return v.Interface }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint name.
+func (o EndpointV3Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointV3) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V3 Keystone client.
+// If omitted, the `region` argument of the provider is used.
+func (o EndpointV3Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointV3) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The endpoint service ID.
+func (o EndpointV3Output) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointV3) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+// The service name of the endpoint.
+func (o EndpointV3Output) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointV3) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// The service type of the endpoint.
+func (o EndpointV3Output) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointV3) pulumi.StringOutput { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+// The endpoint url.
+func (o EndpointV3Output) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointV3) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
 type EndpointV3ArrayOutput struct{ *pulumi.OutputState }
 
 func (EndpointV3ArrayOutput) ElementType() reflect.Type {

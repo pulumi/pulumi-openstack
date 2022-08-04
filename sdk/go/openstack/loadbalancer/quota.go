@@ -353,6 +353,62 @@ func (o QuotaOutput) ToQuotaOutputWithContext(ctx context.Context) QuotaOutput {
 	return o
 }
 
+// Quota value for health_monitors. Changing
+// this updates the existing quota. Omitting it sets it to 0.
+func (o QuotaOutput) HealthMonitor() pulumi.IntOutput {
+	return o.ApplyT(func(v *Quota) pulumi.IntOutput { return v.HealthMonitor }).(pulumi.IntOutput)
+}
+
+// Quota value for l7_policies. Changing this
+// updates the existing quota. Omitting it sets it to 0. Available in
+// **Octavia minor version 2.19**.
+func (o QuotaOutput) L7Policy() pulumi.IntOutput {
+	return o.ApplyT(func(v *Quota) pulumi.IntOutput { return v.L7Policy }).(pulumi.IntOutput)
+}
+
+// Quota value for l7_rules. Changing this
+// updates the existing quota. Omitting it sets it to 0. Available in
+// **Octavia minor version 2.19**.
+func (o QuotaOutput) L7Rule() pulumi.IntOutput {
+	return o.ApplyT(func(v *Quota) pulumi.IntOutput { return v.L7Rule }).(pulumi.IntOutput)
+}
+
+// Quota value for listeners. Changing this updates
+// the existing quota. Omitting it sets it to 0.
+func (o QuotaOutput) Listener() pulumi.IntOutput {
+	return o.ApplyT(func(v *Quota) pulumi.IntOutput { return v.Listener }).(pulumi.IntOutput)
+}
+
+// Quota value for loadbalancers. Changing this
+// updates the existing quota. Omitting it sets it to 0.
+func (o QuotaOutput) Loadbalancer() pulumi.IntOutput {
+	return o.ApplyT(func(v *Quota) pulumi.IntOutput { return v.Loadbalancer }).(pulumi.IntOutput)
+}
+
+// Quota value for members. Changing this updates
+// the existing quota. Omitting it sets it to 0.
+func (o QuotaOutput) Member() pulumi.IntOutput {
+	return o.ApplyT(func(v *Quota) pulumi.IntOutput { return v.Member }).(pulumi.IntOutput)
+}
+
+// Quota value for pools. Changing this updates the
+// the existing quota. Omitting it sets it to 0.
+func (o QuotaOutput) Pool() pulumi.IntOutput {
+	return o.ApplyT(func(v *Quota) pulumi.IntOutput { return v.Pool }).(pulumi.IntOutput)
+}
+
+// ID of the project to manage quotas. Changing this
+// creates a new quota.
+func (o QuotaOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Quota) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Region in which to manage quotas. Changing this
+// creates a new quota. If ommited, the region of the credentials is used.
+func (o QuotaOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Quota) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
 type QuotaArrayOutput struct{ *pulumi.OutputState }
 
 func (QuotaArrayOutput) ElementType() reflect.Type {

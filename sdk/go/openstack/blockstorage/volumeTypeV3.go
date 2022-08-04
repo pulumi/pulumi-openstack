@@ -260,6 +260,36 @@ func (o VolumeTypeV3Output) ToVolumeTypeV3OutputWithContext(ctx context.Context)
 	return o
 }
 
+// Human-readable description of the port. Changing
+// this updates the `description` of an existing volume type.
+func (o VolumeTypeV3Output) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeTypeV3) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Key/Value pairs of metadata for the volume type.
+func (o VolumeTypeV3Output) ExtraSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *VolumeTypeV3) pulumi.MapOutput { return v.ExtraSpecs }).(pulumi.MapOutput)
+}
+
+// Whether the volume type is public. Changing
+// this updates the `isPublic` of an existing volume type.
+func (o VolumeTypeV3Output) IsPublic() pulumi.BoolOutput {
+	return o.ApplyT(func(v *VolumeTypeV3) pulumi.BoolOutput { return v.IsPublic }).(pulumi.BoolOutput)
+}
+
+// Name of the volume type.  Changing this
+// updates the `name` of an existing volume type.
+func (o VolumeTypeV3Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeTypeV3) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region in which to create the volume. If
+// omitted, the `region` argument of the provider is used. Changing this
+// creates a new quotaset.
+func (o VolumeTypeV3Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeTypeV3) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
 type VolumeTypeV3ArrayOutput struct{ *pulumi.OutputState }
 
 func (VolumeTypeV3ArrayOutput) ElementType() reflect.Type {

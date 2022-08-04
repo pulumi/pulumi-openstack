@@ -368,6 +368,68 @@ func (o QuoteSetV2Output) ToQuoteSetV2OutputWithContext(ctx context.Context) Quo
 	return o
 }
 
+// Quota value for backup gigabytes. Changing
+// this updates the existing quotaset.
+func (o QuoteSetV2Output) BackupGigabytes() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuoteSetV2) pulumi.IntOutput { return v.BackupGigabytes }).(pulumi.IntOutput)
+}
+
+// Quota value for backups. Changing this updates the
+// existing quotaset.
+func (o QuoteSetV2Output) Backups() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuoteSetV2) pulumi.IntOutput { return v.Backups }).(pulumi.IntOutput)
+}
+
+// Quota value for gigabytes. Changing this updates the
+// existing quotaset.
+func (o QuoteSetV2Output) Gigabytes() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuoteSetV2) pulumi.IntOutput { return v.Gigabytes }).(pulumi.IntOutput)
+}
+
+// Quota value for groups. Changing this updates the
+// existing quotaset.
+func (o QuoteSetV2Output) Groups() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuoteSetV2) pulumi.IntOutput { return v.Groups }).(pulumi.IntOutput)
+}
+
+// Quota value for gigabytes per volume .
+// Changing this updates the existing quotaset.
+func (o QuoteSetV2Output) PerVolumeGigabytes() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuoteSetV2) pulumi.IntOutput { return v.PerVolumeGigabytes }).(pulumi.IntOutput)
+}
+
+// ID of the project to manage quotas. Changing this
+// creates a new quotaset.
+func (o QuoteSetV2Output) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuoteSetV2) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The region in which to create the volume. If
+// omitted, the `region` argument of the provider is used. Changing this
+// creates a new quotaset.
+func (o QuoteSetV2Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *QuoteSetV2) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Quota value for snapshots. Changing this updates the
+// existing quotaset.
+func (o QuoteSetV2Output) Snapshots() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuoteSetV2) pulumi.IntOutput { return v.Snapshots }).(pulumi.IntOutput)
+}
+
+// Key/Value pairs for setting quota for
+// volumes types. Possible keys are `snapshots_<volume_type_name>`,
+// `volumes_<volume_type_name>` and `gigabytes_<volume_type_name>`.
+func (o QuoteSetV2Output) VolumeTypeQuota() pulumi.MapOutput {
+	return o.ApplyT(func(v *QuoteSetV2) pulumi.MapOutput { return v.VolumeTypeQuota }).(pulumi.MapOutput)
+}
+
+// Quota value for volumes. Changing this updates the
+// existing quotaset.
+func (o QuoteSetV2Output) Volumes() pulumi.IntOutput {
+	return o.ApplyT(func(v *QuoteSetV2) pulumi.IntOutput { return v.Volumes }).(pulumi.IntOutput)
+}
+
 type QuoteSetV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (QuoteSetV2ArrayOutput) ElementType() reflect.Type {

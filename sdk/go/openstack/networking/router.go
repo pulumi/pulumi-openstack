@@ -504,6 +504,120 @@ func (o RouterOutput) ToRouterOutputWithContext(ctx context.Context) RouterOutpu
 	return o
 }
 
+// Administrative up/down status for the router
+// (must be "true" or "false" if provided). Changing this updates the
+// `adminStateUp` of an existing router.
+func (o RouterOutput) AdminStateUp() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Router) pulumi.BoolOutput { return v.AdminStateUp }).(pulumi.BoolOutput)
+}
+
+// The collection of tags assigned on the router, which have been
+// explicitly and implicitly added.
+func (o RouterOutput) AllTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringArrayOutput { return v.AllTags }).(pulumi.StringArrayOutput)
+}
+
+// An availability zone is used to make
+// network resources highly available. Used for resources with high availability
+// so that they are scheduled on different availability zones. Changing this
+// creates a new router.
+func (o RouterOutput) AvailabilityZoneHints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringArrayOutput { return v.AvailabilityZoneHints }).(pulumi.StringArrayOutput)
+}
+
+// Human-readable description for the router.
+func (o RouterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether or not to create a
+// distributed router. The default policy setting in Neutron restricts
+// usage of this property to administrative users only.
+func (o RouterOutput) Distributed() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Router) pulumi.BoolOutput { return v.Distributed }).(pulumi.BoolOutput)
+}
+
+// Enable Source NAT for the router. Valid values are
+// "true" or "false". An `externalNetworkId` has to be set in order to
+// set this property. Changing this updates the `enableSnat` of the router.
+// Setting this value **requires** an **ext-gw-mode** extension to be enabled
+// in OpenStack Neutron.
+func (o RouterOutput) EnableSnat() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Router) pulumi.BoolOutput { return v.EnableSnat }).(pulumi.BoolOutput)
+}
+
+// An external fixed IP for the router. This
+// can be repeated. The structure is described below. An `externalNetworkId`
+// has to be set in order to set this property. Changing this updates the
+// external fixed IPs of the router.
+func (o RouterOutput) ExternalFixedIps() RouterExternalFixedIpArrayOutput {
+	return o.ApplyT(func(v *Router) RouterExternalFixedIpArrayOutput { return v.ExternalFixedIps }).(RouterExternalFixedIpArrayOutput)
+}
+
+// The
+// network UUID of an external gateway for the router. A router with an
+// external gateway is required if any compute instances or load balancers
+// will be using floating IPs. Changing this updates the external gateway
+// of an existing router.
+//
+// Deprecated: use external_network_id instead
+func (o RouterOutput) ExternalGateway() pulumi.StringOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.ExternalGateway }).(pulumi.StringOutput)
+}
+
+// The network UUID of an external gateway
+// for the router. A router with an external gateway is required if any
+// compute instances or load balancers will be using floating IPs. Changing
+// this updates the external gateway of the router.
+func (o RouterOutput) ExternalNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.ExternalNetworkId }).(pulumi.StringOutput)
+}
+
+// A list of external subnet IDs to try over
+// each to obtain a fixed IP for the router. If a subnet ID in a list has
+// exhausted floating IP pool, the next subnet ID will be tried. This argument is
+// used only during the router creation and allows to set only one external fixed
+// IP. Conflicts with an `externalFixedIp` argument.
+func (o RouterOutput) ExternalSubnetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringArrayOutput { return v.ExternalSubnetIds }).(pulumi.StringArrayOutput)
+}
+
+// A unique name for the router. Changing this
+// updates the `name` of an existing router.
+func (o RouterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 networking client.
+// A networking client is needed to create a router. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// router.
+func (o RouterOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// A set of string tags for the router.
+func (o RouterOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The owner of the floating IP. Required if admin wants
+// to create a router for another tenant. Changing this creates a new router.
+func (o RouterOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Map of additional driver-specific options.
+func (o RouterOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *Router) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+}
+
+// Map of additional vendor-specific options.
+// Supported options are described below.
+func (o RouterOutput) VendorOptions() RouterVendorOptionsPtrOutput {
+	return o.ApplyT(func(v *Router) RouterVendorOptionsPtrOutput { return v.VendorOptions }).(RouterVendorOptionsPtrOutput)
+}
+
 type RouterArrayOutput struct{ *pulumi.OutputState }
 
 func (RouterArrayOutput) ElementType() reflect.Type {

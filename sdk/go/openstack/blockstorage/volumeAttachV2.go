@@ -386,6 +386,96 @@ func (o VolumeAttachV2Output) ToVolumeAttachV2OutputWithContext(ctx context.Cont
 	return o
 }
 
+// Specify whether to attach the volume as Read-Only
+// (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.
+// If left unspecified, the Block Storage API will apply a default of `rw`.
+func (o VolumeAttachV2Output) AttachMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeAttachV2) pulumi.StringPtrOutput { return v.AttachMode }).(pulumi.StringPtrOutput)
+}
+
+// This is a map of key/value pairs that contain the connection
+// information. You will want to pass this information to a provisioner
+// script to finalize the connection. See below for more information.
+func (o VolumeAttachV2Output) Data() pulumi.MapOutput {
+	return o.ApplyT(func(v *VolumeAttachV2) pulumi.MapOutput { return v.Data }).(pulumi.MapOutput)
+}
+
+// The device to tell the Block Storage service this
+// volume will be attached as. This is purely for informational purposes.
+// You can specify `auto` or a device such as `/dev/vdc`.
+func (o VolumeAttachV2Output) Device() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeAttachV2) pulumi.StringPtrOutput { return v.Device }).(pulumi.StringPtrOutput)
+}
+
+// The storage driver that the volume is based on.
+func (o VolumeAttachV2Output) DriverVolumeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeAttachV2) pulumi.StringOutput { return v.DriverVolumeType }).(pulumi.StringOutput)
+}
+
+// The host to attach the volume to.
+func (o VolumeAttachV2Output) HostName() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeAttachV2) pulumi.StringOutput { return v.HostName }).(pulumi.StringOutput)
+}
+
+// The iSCSI initiator string to make the connection.
+func (o VolumeAttachV2Output) Initiator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeAttachV2) pulumi.StringPtrOutput { return v.Initiator }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: instance_id is no longer used in this resource
+func (o VolumeAttachV2Output) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeAttachV2) pulumi.StringPtrOutput { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The IP address of the `hostName` above.
+func (o VolumeAttachV2Output) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeAttachV2) pulumi.StringPtrOutput { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// A mount point base name for shared storage.
+func (o VolumeAttachV2Output) MountPointBase() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeAttachV2) pulumi.StringOutput { return v.MountPointBase }).(pulumi.StringOutput)
+}
+
+// Whether to connect to this volume via multipath.
+func (o VolumeAttachV2Output) Multipath() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VolumeAttachV2) pulumi.BoolPtrOutput { return v.Multipath }).(pulumi.BoolPtrOutput)
+}
+
+// The iSCSI initiator OS type.
+func (o VolumeAttachV2Output) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeAttachV2) pulumi.StringPtrOutput { return v.OsType }).(pulumi.StringPtrOutput)
+}
+
+// The iSCSI initiator platform.
+func (o VolumeAttachV2Output) Platform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeAttachV2) pulumi.StringPtrOutput { return v.Platform }).(pulumi.StringPtrOutput)
+}
+
+// The region in which to obtain the V2 Block Storage
+// client. A Block Storage client is needed to create a volume attachment.
+// If omitted, the `region` argument of the provider is used. Changing this
+// creates a new volume attachment.
+func (o VolumeAttachV2Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeAttachV2) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The ID of the Volume to attach to an Instance.
+func (o VolumeAttachV2Output) VolumeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeAttachV2) pulumi.StringOutput { return v.VolumeId }).(pulumi.StringOutput)
+}
+
+// A wwnn name. Used for Fibre Channel connections.
+func (o VolumeAttachV2Output) Wwnn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeAttachV2) pulumi.StringPtrOutput { return v.Wwnn }).(pulumi.StringPtrOutput)
+}
+
+// An array of wwpn strings. Used for Fibre Channel
+// connections.
+func (o VolumeAttachV2Output) Wwpns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VolumeAttachV2) pulumi.StringArrayOutput { return v.Wwpns }).(pulumi.StringArrayOutput)
+}
+
 type VolumeAttachV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (VolumeAttachV2ArrayOutput) ElementType() reflect.Type {

@@ -296,6 +296,49 @@ func (o TempUrlOutput) ToTempUrlOutputWithContext(ctx context.Context) TempUrlOu
 	return o
 }
 
+// The container name the object belongs to.
+func (o TempUrlOutput) Container() pulumi.StringOutput {
+	return o.ApplyT(func(v *TempUrl) pulumi.StringOutput { return v.Container }).(pulumi.StringOutput)
+}
+
+// The method allowed when accessing this URL.
+// Valid values are `GET`, and `POST`. Default is `GET`.
+func (o TempUrlOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TempUrl) pulumi.StringPtrOutput { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+// The object name the tempurl is for.
+func (o TempUrlOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v *TempUrl) pulumi.StringOutput { return v.Object }).(pulumi.StringOutput)
+}
+
+// Whether to automatically regenerate the URL when
+// it has expired. If set to true, this will create a new resource with a new
+// ID and new URL. Defaults to false.
+func (o TempUrlOutput) Regenerate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TempUrl) pulumi.BoolPtrOutput { return v.Regenerate }).(pulumi.BoolPtrOutput)
+}
+
+// The region the tempurl is located in.
+func (o TempUrlOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *TempUrl) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o TempUrlOutput) Split() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TempUrl) pulumi.StringPtrOutput { return v.Split }).(pulumi.StringPtrOutput)
+}
+
+// The TTL, in seconds, for the URL. For how long it should
+// be valid.
+func (o TempUrlOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v *TempUrl) pulumi.IntOutput { return v.Ttl }).(pulumi.IntOutput)
+}
+
+// The URL
+func (o TempUrlOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *TempUrl) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
 type TempUrlArrayOutput struct{ *pulumi.OutputState }
 
 func (TempUrlArrayOutput) ElementType() reflect.Type {

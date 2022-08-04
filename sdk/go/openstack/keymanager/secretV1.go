@@ -426,6 +426,108 @@ func (o SecretV1Output) ToSecretV1OutputWithContext(ctx context.Context) SecretV
 	return o
 }
 
+// Allows to control an access to a secret. Currently only the
+// `read` operation is supported. If not specified, the secret is accessible
+// project wide.
+func (o SecretV1Output) Acl() SecretV1AclOutput {
+	return o.ApplyT(func(v *SecretV1) SecretV1AclOutput { return v.Acl }).(SecretV1AclOutput)
+}
+
+// Metadata provided by a user or system for informational purposes.
+func (o SecretV1Output) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.StringOutput { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The map of metadata, assigned on the secret, which has been
+// explicitly and implicitly added.
+func (o SecretV1Output) AllMetadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.MapOutput { return v.AllMetadata }).(pulumi.MapOutput)
+}
+
+// Metadata provided by a user or system for informational purposes.
+func (o SecretV1Output) BitLength() pulumi.IntOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.IntOutput { return v.BitLength }).(pulumi.IntOutput)
+}
+
+// The map of the content types, assigned on the secret.
+func (o SecretV1Output) ContentTypes() pulumi.MapOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.MapOutput { return v.ContentTypes }).(pulumi.MapOutput)
+}
+
+// The date the secret ACL was created.
+func (o SecretV1Output) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The creator of the secret.
+func (o SecretV1Output) CreatorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.StringOutput { return v.CreatorId }).(pulumi.StringOutput)
+}
+
+// The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
+func (o SecretV1Output) Expiration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.StringPtrOutput { return v.Expiration }).(pulumi.StringPtrOutput)
+}
+
+// Additional Metadata for the secret.
+func (o SecretV1Output) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+}
+
+// Metadata provided by a user or system for informational purposes.
+func (o SecretV1Output) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Human-readable name for the Secret. Does not have
+// to be unique.
+func (o SecretV1Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The secret's data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
+func (o SecretV1Output) Payload() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.StringOutput { return v.Payload }).(pulumi.StringOutput)
+}
+
+// (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+func (o SecretV1Output) PayloadContentEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.StringPtrOutput { return v.PayloadContentEncoding }).(pulumi.StringPtrOutput)
+}
+
+// (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+func (o SecretV1Output) PayloadContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.StringPtrOutput { return v.PayloadContentType }).(pulumi.StringPtrOutput)
+}
+
+// The region in which to obtain the V1 KeyManager client.
+// A KeyManager client is needed to create a secret. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// V1 secret.
+func (o SecretV1Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The secret reference / where to find the secret.
+func (o SecretV1Output) SecretRef() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.StringOutput { return v.SecretRef }).(pulumi.StringOutput)
+}
+
+// Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
+func (o SecretV1Output) SecretType() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.StringOutput { return v.SecretType }).(pulumi.StringOutput)
+}
+
+// The status of the secret.
+func (o SecretV1Output) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The date the secret ACL was last updated.
+func (o SecretV1Output) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
 type SecretV1ArrayOutput struct{ *pulumi.OutputState }
 
 func (SecretV1ArrayOutput) ElementType() reflect.Type {

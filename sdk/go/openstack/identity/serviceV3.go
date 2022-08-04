@@ -240,6 +240,32 @@ func (o ServiceV3Output) ToServiceV3OutputWithContext(ctx context.Context) Servi
 	return o
 }
 
+// The service description.
+func (o ServiceV3Output) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceV3) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The service status. Defaults to `true`.
+func (o ServiceV3Output) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceV3) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The service name.
+func (o ServiceV3Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceV3) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V3 Keystone client.
+// If omitted, the `region` argument of the provider is used.
+func (o ServiceV3Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceV3) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The service type.
+func (o ServiceV3Output) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceV3) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type ServiceV3ArrayOutput struct{ *pulumi.OutputState }
 
 func (ServiceV3ArrayOutput) ElementType() reflect.Type {

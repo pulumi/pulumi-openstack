@@ -136,7 +136,7 @@ type Cluster struct {
 	NodeAddresses pulumi.StringArrayOutput `pulumi:"nodeAddresses"`
 	// The number of nodes for the cluster. Changing this
 	// creates a new cluster.
-	NodeCount pulumi.IntOutput `pulumi:"nodeCount"`
+	NodeCount pulumi.IntPtrOutput `pulumi:"nodeCount"`
 	// The project of the cluster. Required if admin wants
 	// to create a cluster in another project. Changing this creates a new
 	// cluster.
@@ -529,6 +529,156 @@ func (o ClusterOutput) ToClusterOutput() ClusterOutput {
 
 func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
 	return o
+}
+
+func (o ClusterOutput) ApiAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ApiAddress }).(pulumi.StringOutput)
+}
+
+// The UUID of the V1 Container Infra cluster
+// template. Changing this creates a new cluster.
+func (o ClusterOutput) ClusterTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterTemplateId }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) CoeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CoeVersion }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) ContainerVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ContainerVersion }).(pulumi.StringOutput)
+}
+
+// The timeout (in minutes) for creating the
+// cluster. Changing this creates a new cluster.
+func (o ClusterOutput) CreateTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.CreateTimeout }).(pulumi.IntOutput)
+}
+
+func (o ClusterOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The URL used for cluster node discovery.
+// Changing this creates a new cluster.
+func (o ClusterOutput) DiscoveryUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DiscoveryUrl }).(pulumi.StringOutput)
+}
+
+// The size (in GB) of the Docker volume.
+// Changing this creates a new cluster.
+func (o ClusterOutput) DockerVolumeSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.DockerVolumeSize }).(pulumi.IntOutput)
+}
+
+// The fixed network that will be attached to the
+// cluster. Changing this creates a new cluster.
+func (o ClusterOutput) FixedNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.FixedNetwork }).(pulumi.StringOutput)
+}
+
+// The fixed subnet that will be attached to the
+// cluster. Changing this creates a new cluster.
+func (o ClusterOutput) FixedSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.FixedSubnet }).(pulumi.StringOutput)
+}
+
+// The flavor for the nodes of the cluster. Can be set via
+// the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+// cluster.
+func (o ClusterOutput) Flavor() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Flavor }).(pulumi.StringOutput)
+}
+
+// Indicates whether floating IP should be
+// created for every cluster node. Changing this creates a new cluster.
+func (o ClusterOutput) FloatingIpEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.FloatingIpEnabled }).(pulumi.BoolOutput)
+}
+
+// The name of the Compute service SSH keypair. Changing
+// this creates a new cluster.
+func (o ClusterOutput) Keypair() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Keypair }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) Kubeconfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Kubeconfig }).(pulumi.StringMapOutput)
+}
+
+// The list of key value pairs representing additional
+// properties of the cluster. Changing this creates a new cluster.
+func (o ClusterOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o ClusterOutput) MasterAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.MasterAddresses }).(pulumi.StringArrayOutput)
+}
+
+// The number of master nodes for the cluster.
+// Changing this creates a new cluster.
+func (o ClusterOutput) MasterCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.MasterCount }).(pulumi.IntOutput)
+}
+
+// The flavor for the master nodes. Can be set via
+// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this creates a
+// new cluster.
+func (o ClusterOutput) MasterFlavor() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.MasterFlavor }).(pulumi.StringOutput)
+}
+
+// Indicates whether the provided labels should be
+// merged with cluster template labels. Changing this creates a new cluster.
+func (o ClusterOutput) MergeLabels() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.MergeLabels }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the cluster. Changing this updates the name
+// of the existing cluster template.
+func (o ClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) NodeAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.NodeAddresses }).(pulumi.StringArrayOutput)
+}
+
+// The number of nodes for the cluster. Changing this
+// creates a new cluster.
+func (o ClusterOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.NodeCount }).(pulumi.IntPtrOutput)
+}
+
+// The project of the cluster. Required if admin wants
+// to create a cluster in another project. Changing this creates a new
+// cluster.
+func (o ClusterOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V1 Container Infra
+// client. A Container Infra client is needed to create a cluster. If omitted,
+// the `region` argument of the provider is used. Changing this creates a new
+// cluster.
+func (o ClusterOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) StackId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.StackId }).(pulumi.StringOutput)
+}
+
+func (o ClusterOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// The user of the cluster. Required if admin wants to
+// create a cluster template for another user. Changing this creates a new
+// cluster.
+func (o ClusterOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }
 
 type ClusterArrayOutput struct{ *pulumi.OutputState }

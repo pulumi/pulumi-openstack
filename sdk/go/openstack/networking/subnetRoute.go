@@ -281,6 +281,32 @@ func (o SubnetRouteOutput) ToSubnetRouteOutputWithContext(ctx context.Context) S
 	return o
 }
 
+// CIDR block to match on the packet’s destination IP. Changing
+// this creates a new routing entry.
+func (o SubnetRouteOutput) DestinationCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubnetRoute) pulumi.StringOutput { return v.DestinationCidr }).(pulumi.StringOutput)
+}
+
+// IP address of the next hop gateway.  Changing
+// this creates a new routing entry.
+func (o SubnetRouteOutput) NextHop() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubnetRoute) pulumi.StringOutput { return v.NextHop }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 networking client.
+// A networking client is needed to configure a routing entry on a subnet. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// routing entry.
+func (o SubnetRouteOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubnetRoute) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// ID of the subnet this routing entry belongs to. Changing
+// this creates a new routing entry.
+func (o SubnetRouteOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubnetRoute) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
+}
+
 type SubnetRouteArrayOutput struct{ *pulumi.OutputState }
 
 func (SubnetRouteArrayOutput) ElementType() reflect.Type {

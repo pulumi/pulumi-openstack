@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Cluster{}
 	case "openstack:containerinfra/clusterTemplate:ClusterTemplate":
 		r = &ClusterTemplate{}
+	case "openstack:containerinfra/nodeGroup:NodeGroup":
+		r = &NodeGroup{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -46,6 +48,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"containerinfra/clusterTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"containerinfra/nodeGroup",
 		&module{version},
 	)
 }

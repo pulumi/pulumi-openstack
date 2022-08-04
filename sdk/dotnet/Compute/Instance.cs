@@ -106,7 +106,8 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// (Optional; Required if `image_name` is empty and not booting
         /// from a volume. Do not specify if booting from a volume.) The image ID of
-        /// the desired image for the server. Changing this creates a new server.
+        /// the desired image for the server. Changing this rebuilds the existing
+        /// server.
         /// </summary>
         [Output("imageId")]
         public Output<string> ImageId { get; private set; } = null!;
@@ -114,7 +115,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// (Optional; Required if `image_id` is empty and not booting
         /// from a volume. Do not specify if booting from a volume.) The name of the
-        /// desired image for the server. Changing this creates a new server.
+        /// desired image for the server. Changing this rebuilds the existing server.
         /// </summary>
         [Output("imageName")]
         public Output<string> ImageName { get; private set; } = null!;
@@ -160,7 +161,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// Customize the personality of an instance by
         /// defining one or more files and their contents. The personality structure
-        /// is described below.
+        /// is described below. Changing this rebuilds the existing server.
         /// </summary>
         [Output("personalities")]
         public Output<ImmutableArray<Outputs.InstancePersonality>> Personalities { get; private set; } = null!;
@@ -368,7 +369,8 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// (Optional; Required if `image_name` is empty and not booting
         /// from a volume. Do not specify if booting from a volume.) The image ID of
-        /// the desired image for the server. Changing this creates a new server.
+        /// the desired image for the server. Changing this rebuilds the existing
+        /// server.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
@@ -376,7 +378,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// (Optional; Required if `image_id` is empty and not booting
         /// from a volume. Do not specify if booting from a volume.) The name of the
-        /// desired image for the server. Changing this creates a new server.
+        /// desired image for the server. Changing this rebuilds the existing server.
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
@@ -437,7 +439,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// Customize the personality of an instance by
         /// defining one or more files and their contents. The personality structure
-        /// is described below.
+        /// is described below. Changing this rebuilds the existing server.
         /// </summary>
         public InputList<Inputs.InstancePersonalityArgs> Personalities
         {
@@ -654,7 +656,8 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// (Optional; Required if `image_name` is empty and not booting
         /// from a volume. Do not specify if booting from a volume.) The image ID of
-        /// the desired image for the server. Changing this creates a new server.
+        /// the desired image for the server. Changing this rebuilds the existing
+        /// server.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
@@ -662,7 +665,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// (Optional; Required if `image_id` is empty and not booting
         /// from a volume. Do not specify if booting from a volume.) The name of the
-        /// desired image for the server. Changing this creates a new server.
+        /// desired image for the server. Changing this rebuilds the existing server.
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
@@ -723,7 +726,7 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// Customize the personality of an instance by
         /// defining one or more files and their contents. The personality structure
-        /// is described below.
+        /// is described below. Changing this rebuilds the existing server.
         /// </summary>
         public InputList<Inputs.InstancePersonalityGetArgs> Personalities
         {

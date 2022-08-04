@@ -239,6 +239,24 @@ func (o QosDscpMarkingRuleOutput) ToQosDscpMarkingRuleOutputWithContext(ctx cont
 	return o
 }
 
+// The value of DSCP mark. Changing this updates the DSCP mark value existing
+// QoS DSCP marking rule.
+func (o QosDscpMarkingRuleOutput) DscpMark() pulumi.IntOutput {
+	return o.ApplyT(func(v *QosDscpMarkingRule) pulumi.IntOutput { return v.DscpMark }).(pulumi.IntOutput)
+}
+
+// The QoS policy reference. Changing this creates a new QoS DSCP marking rule.
+func (o QosDscpMarkingRuleOutput) QosPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosDscpMarkingRule) pulumi.StringOutput { return v.QosPolicyId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new QoS DSCP marking rule.
+func (o QosDscpMarkingRuleOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *QosDscpMarkingRule) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
 type QosDscpMarkingRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (QosDscpMarkingRuleArrayOutput) ElementType() reflect.Type {

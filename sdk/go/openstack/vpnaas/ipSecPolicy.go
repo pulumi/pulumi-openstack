@@ -342,6 +342,72 @@ func (o IpSecPolicyOutput) ToIpSecPolicyOutputWithContext(ctx context.Context) I
 	return o
 }
 
+// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
+// Default is sha1. Changing this updates the algorithm of the existing policy.
+func (o IpSecPolicyOutput) AuthAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringOutput { return v.AuthAlgorithm }).(pulumi.StringOutput)
+}
+
+// The human-readable description for the policy.
+// Changing this updates the description of the existing policy.
+func (o IpSecPolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The encapsulation mode. Valid values are tunnel and transport. Default is tunnel.
+// Changing this updates the existing policy.
+func (o IpSecPolicyOutput) EncapsulationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringOutput { return v.EncapsulationMode }).(pulumi.StringOutput)
+}
+
+// The encryption algorithm. Valid values are 3des, aes-128, aes-192 and so on.
+// The default value is aes-128. Changing this updates the existing policy.
+func (o IpSecPolicyOutput) EncryptionAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringOutput { return v.EncryptionAlgorithm }).(pulumi.StringOutput)
+}
+
+// The lifetime of the security association. Consists of Unit and Value.
+func (o IpSecPolicyOutput) Lifetimes() IpSecPolicyLifetimeArrayOutput {
+	return o.ApplyT(func(v *IpSecPolicy) IpSecPolicyLifetimeArrayOutput { return v.Lifetimes }).(IpSecPolicyLifetimeArrayOutput)
+}
+
+// The name of the policy. Changing this updates the name of
+// the existing policy.
+func (o IpSecPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
+// Changing this updates the existing policy.
+func (o IpSecPolicyOutput) Pfs() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringOutput { return v.Pfs }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create an IPSec policy. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// policy.
+func (o IpSecPolicyOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The owner of the policy. Required if admin wants to
+// create a policy for another project. Changing this creates a new policy.
+func (o IpSecPolicyOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// The transform protocol. Valid values are ESP, AH and AH-ESP.
+// Changing this updates the existing policy. Default is ESP.
+func (o IpSecPolicyOutput) TransformProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringOutput { return v.TransformProtocol }).(pulumi.StringOutput)
+}
+
+// Map of additional options.
+func (o IpSecPolicyOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *IpSecPolicy) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+}
+
 type IpSecPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (IpSecPolicyArrayOutput) ElementType() reflect.Type {

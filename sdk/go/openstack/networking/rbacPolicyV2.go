@@ -311,6 +311,44 @@ func (o RbacPolicyV2Output) ToRbacPolicyV2OutputWithContext(ctx context.Context)
 	return o
 }
 
+// Action for the RBAC policy. Can either be
+// `accessAsExternal` or `accessAsShared`.
+func (o RbacPolicyV2Output) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v *RbacPolicyV2) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
+}
+
+// The ID of the `objectType` resource. An
+// `objectType` of `network` returns a network ID and an `objectType` of
+// `qosPolicy` returns a QoS ID.
+func (o RbacPolicyV2Output) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RbacPolicyV2) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
+}
+
+// The type of the object that the RBAC policy
+// affects. Can be one of the following: `addressScope`, `addressGroup`,
+// `network`, `qosPolicy`, `securityGroup` or `subnetpool`.
+func (o RbacPolicyV2Output) ObjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RbacPolicyV2) pulumi.StringOutput { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+func (o RbacPolicyV2Output) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RbacPolicyV2) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 networking client.
+// A networking client is needed to configure a routing entry on a subnet. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// routing entry.
+func (o RbacPolicyV2Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *RbacPolicyV2) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The ID of the tenant to which the RBAC policy
+// will be enforced.
+func (o RbacPolicyV2Output) TargetTenant() pulumi.StringOutput {
+	return o.ApplyT(func(v *RbacPolicyV2) pulumi.StringOutput { return v.TargetTenant }).(pulumi.StringOutput)
+}
+
 type RbacPolicyV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (RbacPolicyV2ArrayOutput) ElementType() reflect.Type {

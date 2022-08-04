@@ -365,6 +365,61 @@ func (o TrunkOutput) ToTrunkOutputWithContext(ctx context.Context) TrunkOutput {
 	return o
 }
 
+// Administrative up/down status for the trunk
+// (must be "true" or "false" if provided). Changing this updates the
+// `adminStateUp` of an existing trunk.
+func (o TrunkOutput) AdminStateUp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Trunk) pulumi.BoolPtrOutput { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
+}
+
+// The collection of tags assigned on the trunk, which have been
+// explicitly and implicitly added.
+func (o TrunkOutput) AllTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Trunk) pulumi.StringArrayOutput { return v.AllTags }).(pulumi.StringArrayOutput)
+}
+
+// Human-readable description of the trunk. Changing this
+// updates the name of the existing trunk.
+func (o TrunkOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trunk) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A unique name for the trunk. Changing this
+// updates the `name` of an existing trunk.
+func (o TrunkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trunk) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the port to be made a subport of the trunk.
+func (o TrunkOutput) PortId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trunk) pulumi.StringOutput { return v.PortId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 networking client.
+// A networking client is needed to create a trunk. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// trunk.
+func (o TrunkOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trunk) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The set of ports that will be made subports of the trunk.
+// The structure of each subport is described below.
+func (o TrunkOutput) SubPorts() TrunkSubPortArrayOutput {
+	return o.ApplyT(func(v *Trunk) TrunkSubPortArrayOutput { return v.SubPorts }).(TrunkSubPortArrayOutput)
+}
+
+// A set of string tags for the port.
+func (o TrunkOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Trunk) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The owner of the Trunk. Required if admin wants
+// to create a trunk on behalf of another tenant. Changing this creates a new trunk.
+func (o TrunkOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trunk) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+}
+
 type TrunkArrayOutput struct{ *pulumi.OutputState }
 
 func (TrunkArrayOutput) ElementType() reflect.Type {

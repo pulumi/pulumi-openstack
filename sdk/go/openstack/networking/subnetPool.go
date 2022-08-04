@@ -533,6 +533,128 @@ func (o SubnetPoolOutput) ToSubnetPoolOutputWithContext(ctx context.Context) Sub
 	return o
 }
 
+// The Neutron address scope to assign to the
+// subnetpool. Changing this updates the address scope id of the existing
+// subnetpool.
+func (o SubnetPoolOutput) AddressScopeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.StringPtrOutput { return v.AddressScopeId }).(pulumi.StringPtrOutput)
+}
+
+// The collection of tags assigned on the subnetpool, which have been
+// explicitly and implicitly added.
+func (o SubnetPoolOutput) AllTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.StringArrayOutput { return v.AllTags }).(pulumi.StringArrayOutput)
+}
+
+// The time at which subnetpool was created.
+func (o SubnetPoolOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The size of the prefix to allocate when the cidr
+// or prefixlen attributes are omitted when you create the subnet. Defaults to the
+// MinPrefixLen. Changing this updates the default prefixlen of the existing
+// subnetpool.
+func (o SubnetPoolOutput) DefaultPrefixlen() pulumi.IntOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.IntOutput { return v.DefaultPrefixlen }).(pulumi.IntOutput)
+}
+
+// The per-project quota on the prefix space that can be
+// allocated from the subnetpool for project subnets. Changing this updates the
+// default quota of the existing subnetpool.
+func (o SubnetPoolOutput) DefaultQuota() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.IntPtrOutput { return v.DefaultQuota }).(pulumi.IntPtrOutput)
+}
+
+// The human-readable description for the subnetpool.
+// Changing this updates the description of the existing subnetpool.
+func (o SubnetPoolOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The IP protocol version.
+func (o SubnetPoolOutput) IpVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.IntOutput { return v.IpVersion }).(pulumi.IntOutput)
+}
+
+// Indicates whether the subnetpool is default
+// subnetpool or not. Changing this updates the default status of the existing
+// subnetpool.
+func (o SubnetPoolOutput) IsDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.BoolPtrOutput { return v.IsDefault }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum prefix size that can be allocated from
+// the subnetpool. For IPv4 subnetpools, default is 32. For IPv6 subnetpools,
+// default is 128. Changing this updates the max prefixlen of the existing
+// subnetpool.
+func (o SubnetPoolOutput) MaxPrefixlen() pulumi.IntOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.IntOutput { return v.MaxPrefixlen }).(pulumi.IntOutput)
+}
+
+// The smallest prefix that can be allocated from a
+// subnetpool. For IPv4 subnetpools, default is 8. For IPv6 subnetpools, default
+// is 64. Changing this updates the min prefixlen of the existing subnetpool.
+func (o SubnetPoolOutput) MinPrefixlen() pulumi.IntOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.IntOutput { return v.MinPrefixlen }).(pulumi.IntOutput)
+}
+
+// The name of the subnetpool. Changing this updates the name of
+// the existing subnetpool.
+func (o SubnetPoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of subnet prefixes to assign to the subnetpool.
+// Neutron API merges adjacent prefixes and treats them as a single prefix. Each
+// subnet prefix must be unique among all subnet prefixes in all subnetpools that
+// are associated with the address scope. Changing this updates the prefixes list
+// of the existing subnetpool.
+func (o SubnetPoolOutput) Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.StringArrayOutput { return v.Prefixes }).(pulumi.StringArrayOutput)
+}
+
+// The owner of the subnetpool. Required if admin wants to
+// create a subnetpool for another project. Changing this creates a new subnetpool.
+func (o SubnetPoolOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Networking client.
+// A Networking client is needed to create a Neutron subnetpool. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// subnetpool.
+func (o SubnetPoolOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The revision number of the subnetpool.
+func (o SubnetPoolOutput) RevisionNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.IntOutput { return v.RevisionNumber }).(pulumi.IntOutput)
+}
+
+// Indicates whether this subnetpool is shared across
+// all projects. Changing this updates the shared status of the existing
+// subnetpool.
+func (o SubnetPoolOutput) Shared() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.BoolPtrOutput { return v.Shared }).(pulumi.BoolPtrOutput)
+}
+
+// A set of string tags for the subnetpool.
+func (o SubnetPoolOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The time at which subnetpool was created.
+func (o SubnetPoolOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Map of additional options.
+func (o SubnetPoolOutput) ValueSpecs() pulumi.MapOutput {
+	return o.ApplyT(func(v *SubnetPool) pulumi.MapOutput { return v.ValueSpecs }).(pulumi.MapOutput)
+}
+
 type SubnetPoolArrayOutput struct{ *pulumi.OutputState }
 
 func (SubnetPoolArrayOutput) ElementType() reflect.Type {

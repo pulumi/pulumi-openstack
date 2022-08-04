@@ -420,6 +420,67 @@ func (o ContainerV1Output) ToContainerV1OutputWithContext(ctx context.Context) C
 	return o
 }
 
+// Allows to control an access to a container. Currently only
+// the `read` operation is supported. If not specified, the container is
+// accessible project wide. The `read` structure is described below.
+func (o ContainerV1Output) Acl() ContainerV1AclOutput {
+	return o.ApplyT(func(v *ContainerV1) ContainerV1AclOutput { return v.Acl }).(ContainerV1AclOutput)
+}
+
+// The list of the container consumers. The structure is described below.
+func (o ContainerV1Output) Consumers() ContainerV1ConsumerArrayOutput {
+	return o.ApplyT(func(v *ContainerV1) ContainerV1ConsumerArrayOutput { return v.Consumers }).(ContainerV1ConsumerArrayOutput)
+}
+
+// The container reference / where to find the container.
+func (o ContainerV1Output) ContainerRef() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerV1) pulumi.StringOutput { return v.ContainerRef }).(pulumi.StringOutput)
+}
+
+// The date the container ACL was created.
+func (o ContainerV1Output) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerV1) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The creator of the container.
+func (o ContainerV1Output) CreatorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerV1) pulumi.StringOutput { return v.CreatorId }).(pulumi.StringOutput)
+}
+
+// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+func (o ContainerV1Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerV1) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V1 KeyManager client.
+// A KeyManager client is needed to create a container. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// V1 container.
+func (o ContainerV1Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerV1) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// A set of dictionaries containing references to secrets. The structure is described
+// below.
+func (o ContainerV1Output) SecretRefs() ContainerV1SecretRefArrayOutput {
+	return o.ApplyT(func(v *ContainerV1) ContainerV1SecretRefArrayOutput { return v.SecretRefs }).(ContainerV1SecretRefArrayOutput)
+}
+
+// The status of the container.
+func (o ContainerV1Output) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerV1) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
+func (o ContainerV1Output) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerV1) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The date the container ACL was last updated.
+func (o ContainerV1Output) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerV1) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
 type ContainerV1ArrayOutput struct{ *pulumi.OutputState }
 
 func (ContainerV1ArrayOutput) ElementType() reflect.Type {

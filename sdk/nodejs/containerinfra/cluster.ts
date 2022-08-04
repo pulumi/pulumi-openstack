@@ -174,7 +174,7 @@ export class Cluster extends pulumi.CustomResource {
      * The number of nodes for the cluster. Changing this
      * creates a new cluster.
      */
-    public readonly nodeCount!: pulumi.Output<number>;
+    public readonly nodeCount!: pulumi.Output<number | undefined>;
     /**
      * The project of the cluster. Required if admin wants
      * to create a cluster in another project. Changing this creates a new

@@ -732,6 +732,16 @@ export namespace loadbalancer {
          */
         id: string;
         /**
+         * An alternate IP address used for health 
+         * monitoring a backend member.
+         */
+        monitorAddress?: string;
+        /**
+         * An alternate protocol port used for health 
+         * monitoring a backend member.
+         */
+        monitorPort?: number;
+        /**
          * Human-readable name for the member.
          */
         name?: string;

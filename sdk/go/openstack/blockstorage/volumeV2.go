@@ -392,6 +392,91 @@ func (o VolumeV2Output) ToVolumeV2OutputWithContext(ctx context.Context) VolumeV
 	return o
 }
 
+// If a volume is attached to an instance, this attribute will
+// display the Attachment ID, Instance ID, and the Device as the Instance
+// sees it.
+func (o VolumeV2Output) Attachments() VolumeV2AttachmentArrayOutput {
+	return o.ApplyT(func(v *VolumeV2) VolumeV2AttachmentArrayOutput { return v.Attachments }).(VolumeV2AttachmentArrayOutput)
+}
+
+// The availability zone for the volume.
+// Changing this creates a new volume.
+func (o VolumeV2Output) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeV2) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// The consistency group to place the volume
+// in.
+func (o VolumeV2Output) ConsistencyGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeV2) pulumi.StringPtrOutput { return v.ConsistencyGroupId }).(pulumi.StringPtrOutput)
+}
+
+// A description of the volume. Changing this updates
+// the volume's description.
+func (o VolumeV2Output) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeV2) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The image ID from which to create the volume.
+// Changing this creates a new volume.
+func (o VolumeV2Output) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeV2) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// Metadata key/value pairs to associate with the volume.
+// Changing this updates the existing volume metadata.
+func (o VolumeV2Output) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *VolumeV2) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+}
+
+// A unique name for the volume. Changing this updates the
+// volume's name.
+func (o VolumeV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region in which to create the volume. If
+// omitted, the `region` argument of the provider is used. Changing this
+// creates a new volume.
+func (o VolumeV2Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeV2) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Provide the Cinder scheduler with hints on where
+// to instantiate a volume in the OpenStack cloud. The available hints are described below.
+func (o VolumeV2Output) SchedulerHints() VolumeV2SchedulerHintArrayOutput {
+	return o.ApplyT(func(v *VolumeV2) VolumeV2SchedulerHintArrayOutput { return v.SchedulerHints }).(VolumeV2SchedulerHintArrayOutput)
+}
+
+// The size of the volume to create (in gigabytes). Changing
+// this creates a new volume.
+func (o VolumeV2Output) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v *VolumeV2) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
+}
+
+// The snapshot ID from which to create the volume.
+// Changing this creates a new volume.
+func (o VolumeV2Output) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeV2) pulumi.StringPtrOutput { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+// The volume ID to replicate with.
+func (o VolumeV2Output) SourceReplica() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeV2) pulumi.StringPtrOutput { return v.SourceReplica }).(pulumi.StringPtrOutput)
+}
+
+// The volume ID from which to create the volume.
+// Changing this creates a new volume.
+func (o VolumeV2Output) SourceVolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeV2) pulumi.StringPtrOutput { return v.SourceVolId }).(pulumi.StringPtrOutput)
+}
+
+// The type of volume to create.
+// Changing this creates a new volume.
+func (o VolumeV2Output) VolumeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeV2) pulumi.StringOutput { return v.VolumeType }).(pulumi.StringOutput)
+}
+
 type VolumeV2ArrayOutput struct{ *pulumi.OutputState }
 
 func (VolumeV2ArrayOutput) ElementType() reflect.Type {

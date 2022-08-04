@@ -181,6 +181,13 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// The storage policy to be used for the container. 
+        /// Changing this creates a new container.
+        /// </summary>
+        [Output("storagePolicy")]
+        public Output<string> StoragePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Enable object versioning. The structure is described below.
         /// </summary>
         [Output("versioning")]
@@ -304,6 +311,13 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? Region { get; set; }
 
         /// <summary>
+        /// The storage policy to be used for the container. 
+        /// Changing this creates a new container.
+        /// </summary>
+        [Input("storagePolicy")]
+        public Input<string>? StoragePolicy { get; set; }
+
+        /// <summary>
         /// Enable object versioning. The structure is described below.
         /// </summary>
         [Input("versioning")]
@@ -386,6 +400,13 @@ namespace Pulumi.OpenStack.ObjectStorage
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The storage policy to be used for the container. 
+        /// Changing this creates a new container.
+        /// </summary>
+        [Input("storagePolicy")]
+        public Input<string>? StoragePolicy { get; set; }
 
         /// <summary>
         /// Enable object versioning. The structure is described below.

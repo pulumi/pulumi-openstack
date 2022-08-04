@@ -281,6 +281,46 @@ func (o ImageAccessAcceptOutput) ToImageAccessAcceptOutputWithContext(ctx contex
 	return o
 }
 
+// The date the image membership was created.
+func (o ImageAccessAcceptOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageAccessAccept) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The proposed image ID.
+func (o ImageAccessAcceptOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageAccessAccept) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// The member ID, e.g. the target project ID. Optional
+// for admin accounts. Defaults to the current scope project ID.
+func (o ImageAccessAcceptOutput) MemberId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageAccessAccept) pulumi.StringOutput { return v.MemberId }).(pulumi.StringOutput)
+}
+
+// The region in which to obtain the V2 Glance client.
+// A Glance client is needed to manage Image memberships. If omitted, the
+// `region` argument of the provider is used. Changing this creates a new
+// membership.
+func (o ImageAccessAcceptOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageAccessAccept) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The membership schema.
+func (o ImageAccessAcceptOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageAccessAccept) pulumi.StringOutput { return v.Schema }).(pulumi.StringOutput)
+}
+
+// The membership proposal status. Can either be
+// `accepted`, `rejected` or `pending`.
+func (o ImageAccessAcceptOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageAccessAccept) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The date the image membership was last updated.
+func (o ImageAccessAcceptOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageAccessAccept) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
 type ImageAccessAcceptArrayOutput struct{ *pulumi.OutputState }
 
 func (ImageAccessAcceptArrayOutput) ElementType() reflect.Type {

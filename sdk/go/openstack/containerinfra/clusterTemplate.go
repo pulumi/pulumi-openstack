@@ -810,6 +810,220 @@ func (o ClusterTemplateOutput) ToClusterTemplateOutputWithContext(ctx context.Co
 	return o
 }
 
+// The API server port for the Container
+// Orchestration Engine for this cluster template. Changing this updates the
+// API server port of the existing cluster template.
+func (o ClusterTemplateOutput) ApiserverPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.IntPtrOutput { return v.ApiserverPort }).(pulumi.IntPtrOutput)
+}
+
+// The distro for the cluster (fedora-atomic,
+// coreos, etc.). Changing this updates the cluster distro of the existing
+// cluster template.
+func (o ClusterTemplateOutput) ClusterDistro() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringOutput { return v.ClusterDistro }).(pulumi.StringOutput)
+}
+
+// The Container Orchestration Engine for this cluster
+// template. Changing this updates the engine of the existing cluster
+// template.
+func (o ClusterTemplateOutput) Coe() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringOutput { return v.Coe }).(pulumi.StringOutput)
+}
+
+func (o ClusterTemplateOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Address of the DNS nameserver that is used in
+// nodes of the cluster. Changing this updates the DNS nameserver of the
+// existing cluster template.
+func (o ClusterTemplateOutput) DnsNameserver() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringPtrOutput { return v.DnsNameserver }).(pulumi.StringPtrOutput)
+}
+
+// Docker storage driver. Changing this
+// updates the Docker storage driver of the existing cluster template.
+func (o ClusterTemplateOutput) DockerStorageDriver() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringPtrOutput { return v.DockerStorageDriver }).(pulumi.StringPtrOutput)
+}
+
+// The size (in GB) of the Docker volume.
+// Changing this updates the Docker volume size of the existing cluster
+// template.
+func (o ClusterTemplateOutput) DockerVolumeSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.IntPtrOutput { return v.DockerVolumeSize }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the external network that will
+// be used for the cluster. Changing this updates the external network ID of
+// the existing cluster template.
+func (o ClusterTemplateOutput) ExternalNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringPtrOutput { return v.ExternalNetworkId }).(pulumi.StringPtrOutput)
+}
+
+// The fixed network that will be attached to the
+// cluster. Changing this updates the fixed network of the existing cluster
+// template.
+func (o ClusterTemplateOutput) FixedNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringPtrOutput { return v.FixedNetwork }).(pulumi.StringPtrOutput)
+}
+
+// The fixed subnet that will be attached to the
+// cluster. Changing this updates the fixed subnet of the existing cluster
+// template.
+func (o ClusterTemplateOutput) FixedSubnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringPtrOutput { return v.FixedSubnet }).(pulumi.StringPtrOutput)
+}
+
+// The flavor for the nodes of the cluster. Can be set via
+// the `OS_MAGNUM_FLAVOR` environment variable. Changing this updates the
+// flavor of the existing cluster template.
+func (o ClusterTemplateOutput) Flavor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringPtrOutput { return v.Flavor }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether created cluster should
+// create floating IP for every node or not. Changing this updates the
+// floating IP enabled attribute of the existing cluster template.
+func (o ClusterTemplateOutput) FloatingIpEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.BoolPtrOutput { return v.FloatingIpEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The address of a proxy for receiving all HTTP
+// requests and relay them. Changing this updates the HTTP proxy address of
+// the existing cluster template.
+func (o ClusterTemplateOutput) HttpProxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringPtrOutput { return v.HttpProxy }).(pulumi.StringPtrOutput)
+}
+
+// The address of a proxy for receiving all HTTPS
+// requests and relay them. Changing this updates the HTTPS proxy address of
+// the existing cluster template.
+func (o ClusterTemplateOutput) HttpsProxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringPtrOutput { return v.HttpsProxy }).(pulumi.StringPtrOutput)
+}
+
+// The reference to an image that is used for nodes of the
+// cluster. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+// Changing this updates the image attribute of the existing cluster template.
+func (o ClusterTemplateOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringOutput { return v.Image }).(pulumi.StringOutput)
+}
+
+// The insecure registry URL for the cluster
+// template. Changing this updates the insecure registry attribute of the
+// existing cluster template.
+func (o ClusterTemplateOutput) InsecureRegistry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringPtrOutput { return v.InsecureRegistry }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Compute service SSH keypair.
+// Changing this updates the keypair of the existing cluster template.
+func (o ClusterTemplateOutput) KeypairId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringPtrOutput { return v.KeypairId }).(pulumi.StringPtrOutput)
+}
+
+// The list of key value pairs representing additional
+// properties of the cluster template. Changing this updates the labels of the
+// existing cluster template.
+func (o ClusterTemplateOutput) Labels() pulumi.MapOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.MapOutput { return v.Labels }).(pulumi.MapOutput)
+}
+
+// The flavor for the master nodes. Can be set via
+// the `OS_MAGNUM_MASTER_FLAVOR` environment variable. Changing this updates
+// the master flavor of the existing cluster template.
+func (o ClusterTemplateOutput) MasterFlavor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringPtrOutput { return v.MasterFlavor }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether created cluster should
+// has a loadbalancer for master nodes or not. Changing this updates the
+// attribute of the existing cluster template.
+func (o ClusterTemplateOutput) MasterLbEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.BoolPtrOutput { return v.MasterLbEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the cluster template. Changing this updates
+// the name of the existing cluster template.
+func (o ClusterTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the driver for the container
+// network. Changing this updates the network driver of the existing cluster
+// template.
+func (o ClusterTemplateOutput) NetworkDriver() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringOutput { return v.NetworkDriver }).(pulumi.StringOutput)
+}
+
+// A comma-separated list of IP addresses that shouldn't
+// be used in the cluster. Changing this updates the no proxy list of the
+// existing cluster template.
+func (o ClusterTemplateOutput) NoProxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringPtrOutput { return v.NoProxy }).(pulumi.StringPtrOutput)
+}
+
+// The project of the cluster template. Required if
+// admin wants to create a cluster template in another project. Changing this
+// creates a new cluster template.
+func (o ClusterTemplateOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Indicates whether cluster template should be public.
+// Changing this updates the public attribute of the existing cluster
+// template.
+func (o ClusterTemplateOutput) Public() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.BoolPtrOutput { return v.Public }).(pulumi.BoolPtrOutput)
+}
+
+// The region in which to obtain the V1 Container Infra
+// client. A Container Infra client is needed to create a cluster template. If
+// omitted,the `region` argument of the provider is used. Changing this
+// creates a new cluster template.
+func (o ClusterTemplateOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Indicates whether Docker registry is enabled
+// in the cluster. Changing this updates the registry enabled attribute of the
+// existing cluster template.
+func (o ClusterTemplateOutput) RegistryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.BoolPtrOutput { return v.RegistryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The server type for the cluster template. Changing
+// this updates the server type of the existing cluster template.
+func (o ClusterTemplateOutput) ServerType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringOutput { return v.ServerType }).(pulumi.StringOutput)
+}
+
+// Indicates whether the TLS should be disabled in
+// the cluster. Changing this updates the attribute of the existing cluster.
+func (o ClusterTemplateOutput) TlsDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.BoolPtrOutput { return v.TlsDisabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o ClusterTemplateOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// The user of the cluster template. Required if admin
+// wants to create a cluster template for another user. Changing this creates
+// a new cluster template.
+func (o ClusterTemplateOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
+// The name of the driver that is used for the
+// volumes of the cluster nodes. Changing this updates the volume driver of
+// the existing cluster template.
+func (o ClusterTemplateOutput) VolumeDriver() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.StringPtrOutput { return v.VolumeDriver }).(pulumi.StringPtrOutput)
+}
+
 type ClusterTemplateArrayOutput struct{ *pulumi.OutputState }
 
 func (ClusterTemplateArrayOutput) ElementType() reflect.Type {

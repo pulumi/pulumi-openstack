@@ -90,6 +90,12 @@ export class Keypair extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * This allows administrative users to operate key-pairs
+     * of specified user ID. For this feature your need to have openstack microversion
+     * 2.10 (Liberty) or later.
+     */
+    public readonly userId!: pulumi.Output<string>;
+    /**
      * Map of additional options.
      */
     public readonly valueSpecs!: pulumi.Output<{[key: string]: any} | undefined>;
@@ -112,12 +118,14 @@ export class Keypair extends pulumi.CustomResource {
             resourceInputs["privateKey"] = state ? state.privateKey : undefined;
             resourceInputs["publicKey"] = state ? state.publicKey : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
             resourceInputs["valueSpecs"] = state ? state.valueSpecs : undefined;
         } else {
             const args = argsOrState as KeypairArgs | undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["publicKey"] = args ? args.publicKey : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
             resourceInputs["valueSpecs"] = args ? args.valueSpecs : undefined;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["privateKey"] = undefined /*out*/;
@@ -160,6 +168,12 @@ export interface KeypairState {
      */
     region?: pulumi.Input<string>;
     /**
+     * This allows administrative users to operate key-pairs
+     * of specified user ID. For this feature your need to have openstack microversion
+     * 2.10 (Liberty) or later.
+     */
+    userId?: pulumi.Input<string>;
+    /**
      * Map of additional options.
      */
     valueSpecs?: pulumi.Input<{[key: string]: any}>;
@@ -189,6 +203,12 @@ export interface KeypairArgs {
      * Changing this creates a new keypair.
      */
     region?: pulumi.Input<string>;
+    /**
+     * This allows administrative users to operate key-pairs
+     * of specified user ID. For this feature your need to have openstack microversion
+     * 2.10 (Liberty) or later.
+     */
+    userId?: pulumi.Input<string>;
     /**
      * Map of additional options.
      */
