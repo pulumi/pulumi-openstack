@@ -21,29 +21,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		service1, err := identity.NewServiceV3(ctx, "service1", &identity.ServiceV3Args{
-// 			Type: pulumi.String("my-service-type"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = identity.NewEndpointV3(ctx, "endpoint1", &identity.EndpointV3Args{
-// 			EndpointRegion: service1.Region,
-// 			ServiceId:      service1.ID(),
-// 			Url:            pulumi.String("http://my-endpoint"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			service1, err := identity.NewServiceV3(ctx, "service1", &identity.ServiceV3Args{
+//				Type: pulumi.String("my-service-type"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = identity.NewEndpointV3(ctx, "endpoint1", &identity.EndpointV3Args{
+//				EndpointRegion: service1.Region,
+//				ServiceId:      service1.ID(),
+//				Url:            pulumi.String("http://my-endpoint"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -51,7 +54,9 @@ import (
 // Endpoints can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:identity/endpointV3:EndpointV3 endpoint_1 5392472b-106a-4845-90c6-7c8445f18770
+//
+//	$ pulumi import openstack:identity/endpointV3:EndpointV3 endpoint_1 5392472b-106a-4845-90c6-7c8445f18770
+//
 // ```
 type EndpointV3 struct {
 	pulumi.CustomResourceState
@@ -225,7 +230,7 @@ func (i *EndpointV3) ToEndpointV3OutputWithContext(ctx context.Context) Endpoint
 // EndpointV3ArrayInput is an input type that accepts EndpointV3Array and EndpointV3ArrayOutput values.
 // You can construct a concrete instance of `EndpointV3ArrayInput` via:
 //
-//          EndpointV3Array{ EndpointV3Args{...} }
+//	EndpointV3Array{ EndpointV3Args{...} }
 type EndpointV3ArrayInput interface {
 	pulumi.Input
 
@@ -250,7 +255,7 @@ func (i EndpointV3Array) ToEndpointV3ArrayOutputWithContext(ctx context.Context)
 // EndpointV3MapInput is an input type that accepts EndpointV3Map and EndpointV3MapOutput values.
 // You can construct a concrete instance of `EndpointV3MapInput` via:
 //
-//          EndpointV3Map{ "key": EndpointV3Args{...} }
+//	EndpointV3Map{ "key": EndpointV3Args{...} }
 type EndpointV3MapInput interface {
 	pulumi.Input
 

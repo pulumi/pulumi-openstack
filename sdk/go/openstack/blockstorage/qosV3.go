@@ -20,25 +20,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := blockstorage.NewQosV3(ctx, "qos", &blockstorage.QosV3Args{
-// 			Consumer: pulumi.String("back-end"),
-// 			Specs: pulumi.AnyMap{
-// 				"read_iops_sec":  pulumi.Any("40000"),
-// 				"write_iops_sec": pulumi.Any("40000"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := blockstorage.NewQosV3(ctx, "qos", &blockstorage.QosV3Args{
+//				Consumer: pulumi.String("back-end"),
+//				Specs: pulumi.AnyMap{
+//					"read_iops_sec":  pulumi.Any("40000"),
+//					"write_iops_sec": pulumi.Any("40000"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -46,7 +49,9 @@ import (
 // Qos can be imported using the `qos_id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:blockstorage/qosV3:QosV3 qos 941793f0-0a34-4bc4-b72e-a6326ae58283
+//
+//	$ pulumi import openstack:blockstorage/qosV3:QosV3 qos 941793f0-0a34-4bc4-b72e-a6326ae58283
+//
 // ```
 type QosV3 struct {
 	pulumi.CustomResourceState
@@ -184,7 +189,7 @@ func (i *QosV3) ToQosV3OutputWithContext(ctx context.Context) QosV3Output {
 // QosV3ArrayInput is an input type that accepts QosV3Array and QosV3ArrayOutput values.
 // You can construct a concrete instance of `QosV3ArrayInput` via:
 //
-//          QosV3Array{ QosV3Args{...} }
+//	QosV3Array{ QosV3Args{...} }
 type QosV3ArrayInput interface {
 	pulumi.Input
 
@@ -209,7 +214,7 @@ func (i QosV3Array) ToQosV3ArrayOutputWithContext(ctx context.Context) QosV3Arra
 // QosV3MapInput is an input type that accepts QosV3Map and QosV3MapOutput values.
 // You can construct a concrete instance of `QosV3MapInput` via:
 //
-//          QosV3Map{ "key": QosV3Args{...} }
+//	QosV3Map{ "key": QosV3Args{...} }
 type QosV3MapInput interface {
 	pulumi.Input
 

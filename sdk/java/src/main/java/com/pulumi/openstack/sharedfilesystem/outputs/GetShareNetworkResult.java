@@ -17,99 +17,70 @@ public final class GetShareNetworkResult {
      * @return See Argument Reference above.
      * 
      */
-    private final String cidr;
+    private String cidr;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final Integer ipVersion;
+    private Integer ipVersion;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String networkType;
+    private String networkType;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String neutronNetId;
+    private String neutronNetId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String neutronSubnetId;
+    private String neutronSubnetId;
     /**
      * @return The owner of the Share Network.
      * 
      */
-    private final String projectId;
+    private String projectId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String securityServiceId;
+    private @Nullable String securityServiceId;
     /**
      * @return The list of security service IDs associated with
      * the share network.
      * 
      */
-    private final List<String> securityServiceIds;
+    private List<String> securityServiceIds;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final Integer segmentationId;
+    private Integer segmentationId;
 
-    @CustomType.Constructor
-    private GetShareNetworkResult(
-        @CustomType.Parameter("cidr") String cidr,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipVersion") Integer ipVersion,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("networkType") String networkType,
-        @CustomType.Parameter("neutronNetId") String neutronNetId,
-        @CustomType.Parameter("neutronSubnetId") String neutronSubnetId,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("securityServiceId") @Nullable String securityServiceId,
-        @CustomType.Parameter("securityServiceIds") List<String> securityServiceIds,
-        @CustomType.Parameter("segmentationId") Integer segmentationId) {
-        this.cidr = cidr;
-        this.description = description;
-        this.id = id;
-        this.ipVersion = ipVersion;
-        this.name = name;
-        this.networkType = networkType;
-        this.neutronNetId = neutronNetId;
-        this.neutronSubnetId = neutronSubnetId;
-        this.projectId = projectId;
-        this.region = region;
-        this.securityServiceId = securityServiceId;
-        this.securityServiceIds = securityServiceIds;
-        this.segmentationId = segmentationId;
-    }
-
+    private GetShareNetworkResult() {}
     /**
      * @return See Argument Reference above.
      * 
@@ -210,7 +181,7 @@ public final class GetShareNetworkResult {
     public static Builder builder(GetShareNetworkResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String cidr;
         private String description;
@@ -225,11 +196,7 @@ public final class GetShareNetworkResult {
         private @Nullable String securityServiceId;
         private List<String> securityServiceIds;
         private Integer segmentationId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetShareNetworkResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidr = defaults.cidr;
@@ -247,50 +214,62 @@ public final class GetShareNetworkResult {
     	      this.segmentationId = defaults.segmentationId;
         }
 
+        @CustomType.Setter
         public Builder cidr(String cidr) {
             this.cidr = Objects.requireNonNull(cidr);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipVersion(Integer ipVersion) {
             this.ipVersion = Objects.requireNonNull(ipVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder networkType(String networkType) {
             this.networkType = Objects.requireNonNull(networkType);
             return this;
         }
+        @CustomType.Setter
         public Builder neutronNetId(String neutronNetId) {
             this.neutronNetId = Objects.requireNonNull(neutronNetId);
             return this;
         }
+        @CustomType.Setter
         public Builder neutronSubnetId(String neutronSubnetId) {
             this.neutronSubnetId = Objects.requireNonNull(neutronSubnetId);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder securityServiceId(@Nullable String securityServiceId) {
             this.securityServiceId = securityServiceId;
             return this;
         }
+        @CustomType.Setter
         public Builder securityServiceIds(List<String> securityServiceIds) {
             this.securityServiceIds = Objects.requireNonNull(securityServiceIds);
             return this;
@@ -298,11 +277,27 @@ public final class GetShareNetworkResult {
         public Builder securityServiceIds(String... securityServiceIds) {
             return securityServiceIds(List.of(securityServiceIds));
         }
+        @CustomType.Setter
         public Builder segmentationId(Integer segmentationId) {
             this.segmentationId = Objects.requireNonNull(segmentationId);
             return this;
-        }        public GetShareNetworkResult build() {
-            return new GetShareNetworkResult(cidr, description, id, ipVersion, name, networkType, neutronNetId, neutronSubnetId, projectId, region, securityServiceId, securityServiceIds, segmentationId);
+        }
+        public GetShareNetworkResult build() {
+            final var o = new GetShareNetworkResult();
+            o.cidr = cidr;
+            o.description = description;
+            o.id = id;
+            o.ipVersion = ipVersion;
+            o.name = name;
+            o.networkType = networkType;
+            o.neutronNetId = neutronNetId;
+            o.neutronSubnetId = neutronSubnetId;
+            o.projectId = projectId;
+            o.region = region;
+            o.securityServiceId = securityServiceId;
+            o.securityServiceIds = securityServiceIds;
+            o.segmentationId = segmentationId;
+            return o;
         }
     }
 }

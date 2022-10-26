@@ -19,30 +19,30 @@ public final class InstanceSchedulerHint {
      * properties to pass to the scheduler.
      * 
      */
-    private final @Nullable Map<String,Object> additionalProperties;
+    private @Nullable Map<String,Object> additionalProperties;
     /**
      * @return An IP Address in CIDR form. The instance
      * will be placed on a compute node that is in the same subnet.
      * 
      */
-    private final @Nullable String buildNearHostIp;
+    private @Nullable String buildNearHostIp;
     /**
      * @return The names of cells where not to build the instance.
      * 
      */
-    private final @Nullable List<String> differentCells;
+    private @Nullable List<String> differentCells;
     /**
      * @return A list of instance UUIDs. The instance will
      * be scheduled on a different host than all other instances.
      * 
      */
-    private final @Nullable List<String> differentHosts;
+    private @Nullable List<String> differentHosts;
     /**
      * @return A UUID of a Server Group. The instance will be placed
      * into that group.
      * 
      */
-    private final @Nullable String group;
+    private @Nullable String group;
     /**
      * @return A conditional query that a compute node must pass in
      * order to host an instance. The query must use the `JsonFilter` syntax
@@ -52,39 +52,20 @@ public final class InstanceSchedulerHint {
      * `and`, `or`, or `not` are not supported. An example of a simple query is:
      * 
      */
-    private final @Nullable List<String> queries;
+    private @Nullable List<String> queries;
     /**
      * @return A list of instance UUIDs. The instance will be
      * scheduled on the same host of those specified.
      * 
      */
-    private final @Nullable List<String> sameHosts;
+    private @Nullable List<String> sameHosts;
     /**
      * @return The name of a cell to host the instance.
      * 
      */
-    private final @Nullable String targetCell;
+    private @Nullable String targetCell;
 
-    @CustomType.Constructor
-    private InstanceSchedulerHint(
-        @CustomType.Parameter("additionalProperties") @Nullable Map<String,Object> additionalProperties,
-        @CustomType.Parameter("buildNearHostIp") @Nullable String buildNearHostIp,
-        @CustomType.Parameter("differentCells") @Nullable List<String> differentCells,
-        @CustomType.Parameter("differentHosts") @Nullable List<String> differentHosts,
-        @CustomType.Parameter("group") @Nullable String group,
-        @CustomType.Parameter("queries") @Nullable List<String> queries,
-        @CustomType.Parameter("sameHosts") @Nullable List<String> sameHosts,
-        @CustomType.Parameter("targetCell") @Nullable String targetCell) {
-        this.additionalProperties = additionalProperties;
-        this.buildNearHostIp = buildNearHostIp;
-        this.differentCells = differentCells;
-        this.differentHosts = differentHosts;
-        this.group = group;
-        this.queries = queries;
-        this.sameHosts = sameHosts;
-        this.targetCell = targetCell;
-    }
-
+    private InstanceSchedulerHint() {}
     /**
      * @return Arbitrary key/value pairs of additional
      * properties to pass to the scheduler.
@@ -159,7 +140,7 @@ public final class InstanceSchedulerHint {
     public static Builder builder(InstanceSchedulerHint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,Object> additionalProperties;
         private @Nullable String buildNearHostIp;
@@ -169,11 +150,7 @@ public final class InstanceSchedulerHint {
         private @Nullable List<String> queries;
         private @Nullable List<String> sameHosts;
         private @Nullable String targetCell;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceSchedulerHint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalProperties = defaults.additionalProperties;
@@ -186,14 +163,17 @@ public final class InstanceSchedulerHint {
     	      this.targetCell = defaults.targetCell;
         }
 
+        @CustomType.Setter
         public Builder additionalProperties(@Nullable Map<String,Object> additionalProperties) {
             this.additionalProperties = additionalProperties;
             return this;
         }
+        @CustomType.Setter
         public Builder buildNearHostIp(@Nullable String buildNearHostIp) {
             this.buildNearHostIp = buildNearHostIp;
             return this;
         }
+        @CustomType.Setter
         public Builder differentCells(@Nullable List<String> differentCells) {
             this.differentCells = differentCells;
             return this;
@@ -201,6 +181,7 @@ public final class InstanceSchedulerHint {
         public Builder differentCells(String... differentCells) {
             return differentCells(List.of(differentCells));
         }
+        @CustomType.Setter
         public Builder differentHosts(@Nullable List<String> differentHosts) {
             this.differentHosts = differentHosts;
             return this;
@@ -208,10 +189,12 @@ public final class InstanceSchedulerHint {
         public Builder differentHosts(String... differentHosts) {
             return differentHosts(List.of(differentHosts));
         }
+        @CustomType.Setter
         public Builder group(@Nullable String group) {
             this.group = group;
             return this;
         }
+        @CustomType.Setter
         public Builder queries(@Nullable List<String> queries) {
             this.queries = queries;
             return this;
@@ -219,6 +202,7 @@ public final class InstanceSchedulerHint {
         public Builder queries(String... queries) {
             return queries(List.of(queries));
         }
+        @CustomType.Setter
         public Builder sameHosts(@Nullable List<String> sameHosts) {
             this.sameHosts = sameHosts;
             return this;
@@ -226,11 +210,22 @@ public final class InstanceSchedulerHint {
         public Builder sameHosts(String... sameHosts) {
             return sameHosts(List.of(sameHosts));
         }
+        @CustomType.Setter
         public Builder targetCell(@Nullable String targetCell) {
             this.targetCell = targetCell;
             return this;
-        }        public InstanceSchedulerHint build() {
-            return new InstanceSchedulerHint(additionalProperties, buildNearHostIp, differentCells, differentHosts, group, queries, sameHosts, targetCell);
+        }
+        public InstanceSchedulerHint build() {
+            final var o = new InstanceSchedulerHint();
+            o.additionalProperties = additionalProperties;
+            o.buildNearHostIp = buildNearHostIp;
+            o.differentCells = differentCells;
+            o.differentHosts = differentHosts;
+            o.group = group;
+            o.queries = queries;
+            o.sameHosts = sameHosts;
+            o.targetCell = targetCell;
+            return o;
         }
     }
 }

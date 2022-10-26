@@ -17,84 +17,59 @@ public final class GetVolumeV3Result {
      * @return Indicates if the volume is bootable.
      * 
      */
-    private final String bootable;
+    private String bootable;
     /**
      * @return The OpenStack host on which the volume is located.
      * 
      */
-    private final String host;
+    private String host;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final Map<String,Object> metadata;
+    private Map<String,Object> metadata;
     /**
      * @return Indicates if the volume can be attached to more then one server.
      * 
      */
-    private final Boolean multiattach;
+    private Boolean multiattach;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return The size of the volume in GBs.
      * 
      */
-    private final Integer size;
+    private Integer size;
     /**
      * @return The ID of the volume from which the current volume was created.
      * 
      */
-    private final String sourceVolumeId;
+    private String sourceVolumeId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The type of the volume.
      * 
      */
-    private final String volumeType;
+    private String volumeType;
 
-    @CustomType.Constructor
-    private GetVolumeV3Result(
-        @CustomType.Parameter("bootable") String bootable,
-        @CustomType.Parameter("host") String host,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("metadata") Map<String,Object> metadata,
-        @CustomType.Parameter("multiattach") Boolean multiattach,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("sourceVolumeId") String sourceVolumeId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("volumeType") String volumeType) {
-        this.bootable = bootable;
-        this.host = host;
-        this.id = id;
-        this.metadata = metadata;
-        this.multiattach = multiattach;
-        this.name = name;
-        this.region = region;
-        this.size = size;
-        this.sourceVolumeId = sourceVolumeId;
-        this.status = status;
-        this.volumeType = volumeType;
-    }
-
+    private GetVolumeV3Result() {}
     /**
      * @return Indicates if the volume is bootable.
      * 
@@ -180,7 +155,7 @@ public final class GetVolumeV3Result {
     public static Builder builder(GetVolumeV3Result defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bootable;
         private String host;
@@ -193,11 +168,7 @@ public final class GetVolumeV3Result {
         private String sourceVolumeId;
         private String status;
         private String volumeType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVolumeV3Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bootable = defaults.bootable;
@@ -213,51 +184,75 @@ public final class GetVolumeV3Result {
     	      this.volumeType = defaults.volumeType;
         }
 
+        @CustomType.Setter
         public Builder bootable(String bootable) {
             this.bootable = Objects.requireNonNull(bootable);
             return this;
         }
+        @CustomType.Setter
         public Builder host(String host) {
             this.host = Objects.requireNonNull(host);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(Map<String,Object> metadata) {
             this.metadata = Objects.requireNonNull(metadata);
             return this;
         }
+        @CustomType.Setter
         public Builder multiattach(Boolean multiattach) {
             this.multiattach = Objects.requireNonNull(multiattach);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceVolumeId(String sourceVolumeId) {
             this.sourceVolumeId = Objects.requireNonNull(sourceVolumeId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder volumeType(String volumeType) {
             this.volumeType = Objects.requireNonNull(volumeType);
             return this;
-        }        public GetVolumeV3Result build() {
-            return new GetVolumeV3Result(bootable, host, id, metadata, multiattach, name, region, size, sourceVolumeId, status, volumeType);
+        }
+        public GetVolumeV3Result build() {
+            final var o = new GetVolumeV3Result();
+            o.bootable = bootable;
+            o.host = host;
+            o.id = id;
+            o.metadata = metadata;
+            o.multiattach = multiattach;
+            o.name = name;
+            o.region = region;
+            o.size = size;
+            o.sourceVolumeId = sourceVolumeId;
+            o.status = status;
+            o.volumeType = volumeType;
+            return o;
         }
     }
 }

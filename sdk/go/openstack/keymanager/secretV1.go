@@ -17,29 +17,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := keymanager.NewSecretV1(ctx, "secret1", &keymanager.SecretV1Args{
-// 			Algorithm: pulumi.String("aes"),
-// 			BitLength: pulumi.Int(256),
-// 			Metadata: pulumi.AnyMap{
-// 				"key": pulumi.Any("foo"),
-// 			},
-// 			Mode:               pulumi.String("cbc"),
-// 			Payload:            pulumi.String("foobar"),
-// 			PayloadContentType: pulumi.String("text/plain"),
-// 			SecretType:         pulumi.String("passphrase"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := keymanager.NewSecretV1(ctx, "secret1", &keymanager.SecretV1Args{
+//				Algorithm: pulumi.String("aes"),
+//				BitLength: pulumi.Int(256),
+//				Metadata: pulumi.AnyMap{
+//					"key": pulumi.Any("foo"),
+//				},
+//				Mode:               pulumi.String("cbc"),
+//				Payload:            pulumi.String("foobar"),
+//				PayloadContentType: pulumi.String("text/plain"),
+//				SecretType:         pulumi.String("passphrase"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Secret with the ACL
 //
@@ -49,42 +52,45 @@ import (
 // package main
 //
 // import (
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := keymanager.NewSecretV1(ctx, "secret1", &keymanager.SecretV1Args{
-// 			Acl: &keymanager.SecretV1AclArgs{
-// 				Read: &keymanager.SecretV1AclReadArgs{
-// 					ProjectAccess: pulumi.Bool(false),
-// 					Users: pulumi.StringArray{
-// 						pulumi.String("userid1"),
-// 						pulumi.String("userid2"),
-// 					},
-// 				},
-// 			},
-// 			Payload:            readFileOrPanic("certificate.pem"),
-// 			PayloadContentType: pulumi.String("text/plain"),
-// 			SecretType:         pulumi.String("certificate"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := keymanager.NewSecretV1(ctx, "secret1", &keymanager.SecretV1Args{
+//				Acl: &keymanager.SecretV1AclArgs{
+//					Read: &keymanager.SecretV1AclReadArgs{
+//						ProjectAccess: pulumi.Bool(false),
+//						Users: pulumi.StringArray{
+//							pulumi.String("userid1"),
+//							pulumi.String("userid2"),
+//						},
+//					},
+//				},
+//				Payload:            readFileOrPanic("certificate.pem"),
+//				PayloadContentType: pulumi.String("text/plain"),
+//				SecretType:         pulumi.String("certificate"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -92,7 +98,9 @@ import (
 // Secrets can be imported using the secret id (the last part of the secret reference), e.g.
 //
 // ```sh
-//  $ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+//
+//	$ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+//
 // ```
 type SecretV1 struct {
 	pulumi.CustomResourceState
@@ -365,7 +373,7 @@ func (i *SecretV1) ToSecretV1OutputWithContext(ctx context.Context) SecretV1Outp
 // SecretV1ArrayInput is an input type that accepts SecretV1Array and SecretV1ArrayOutput values.
 // You can construct a concrete instance of `SecretV1ArrayInput` via:
 //
-//          SecretV1Array{ SecretV1Args{...} }
+//	SecretV1Array{ SecretV1Args{...} }
 type SecretV1ArrayInput interface {
 	pulumi.Input
 
@@ -390,7 +398,7 @@ func (i SecretV1Array) ToSecretV1ArrayOutputWithContext(ctx context.Context) Sec
 // SecretV1MapInput is an input type that accepts SecretV1Map and SecretV1MapOutput values.
 // You can construct a concrete instance of `SecretV1MapInput` via:
 //
-//          SecretV1Map{ "key": SecretV1Args{...} }
+//	SecretV1Map{ "key": SecretV1Args{...} }
 type SecretV1MapInput interface {
 	pulumi.Input
 

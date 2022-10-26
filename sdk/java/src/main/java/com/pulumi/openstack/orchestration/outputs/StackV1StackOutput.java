@@ -15,20 +15,11 @@ public final class StackV1StackOutput {
      * @return The description of the stack resource.
      * 
      */
-    private final @Nullable String description;
-    private final String outputKey;
-    private final String outputValue;
+    private @Nullable String description;
+    private String outputKey;
+    private String outputValue;
 
-    @CustomType.Constructor
-    private StackV1StackOutput(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("outputKey") String outputKey,
-        @CustomType.Parameter("outputValue") String outputValue) {
-        this.description = description;
-        this.outputKey = outputKey;
-        this.outputValue = outputValue;
-    }
-
+    private StackV1StackOutput() {}
     /**
      * @return The description of the stack resource.
      * 
@@ -50,16 +41,12 @@ public final class StackV1StackOutput {
     public static Builder builder(StackV1StackOutput defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private String outputKey;
         private String outputValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(StackV1StackOutput defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -67,19 +54,27 @@ public final class StackV1StackOutput {
     	      this.outputValue = defaults.outputValue;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder outputKey(String outputKey) {
             this.outputKey = Objects.requireNonNull(outputKey);
             return this;
         }
+        @CustomType.Setter
         public Builder outputValue(String outputValue) {
             this.outputValue = Objects.requireNonNull(outputValue);
             return this;
-        }        public StackV1StackOutput build() {
-            return new StackV1StackOutput(description, outputKey, outputValue);
+        }
+        public StackV1StackOutput build() {
+            final var o = new StackV1StackOutput();
+            o.description = description;
+            o.outputKey = outputKey;
+            o.outputValue = outputValue;
+            return o;
         }
     }
 }

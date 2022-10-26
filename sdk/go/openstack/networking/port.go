@@ -20,28 +20,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
-// 			AdminStateUp: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = networking.NewPort(ctx, "port1", &networking.PortArgs{
-// 			AdminStateUp: pulumi.Bool(true),
-// 			NetworkId:    network1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewPort(ctx, "port1", &networking.PortArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//				NetworkId:    network1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Port with physical binding information
 //
@@ -49,53 +52,57 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
-// 			AdminStateUp: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = networking.NewPort(ctx, "port1", &networking.PortArgs{
-// 			AdminStateUp: pulumi.Bool(true),
-// 			Binding: &networking.PortBindingArgs{
-// 				HostId: pulumi.String("b080b9cf-46e0-4ce8-ad47-0fd4accc872b"),
-// 				Profile: pulumi.String(fmt.Sprintf(`{
-//   "local_link_information": [
-//     {
-//       "switch_info": "info1",
-//       "port_id": "Ethernet3/4",
-//       "switch_id": "12:34:56:78:9A:BC"
-//     },
-//     {
-//       "switch_info": "info2",
-//       "port_id": "Ethernet3/4",
-//       "switch_id": "12:34:56:78:9A:BD"
-//     }
-//   ],
-//   "vlan_type": "allowed"
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewPort(ctx, "port1", &networking.PortArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//				Binding: &networking.PortBindingArgs{
+//					HostId: pulumi.String("b080b9cf-46e0-4ce8-ad47-0fd4accc872b"),
+//					Profile: pulumi.String(fmt.Sprintf(`{
+//	  "local_link_information": [
+//	    {
+//	      "switch_info": "info1",
+//	      "port_id": "Ethernet3/4",
+//	      "switch_id": "12:34:56:78:9A:BC"
+//	    },
+//	    {
+//	      "switch_info": "info2",
+//	      "port_id": "Ethernet3/4",
+//	      "switch_id": "12:34:56:78:9A:BD"
+//	    }
+//	  ],
+//	  "vlan_type": "allowed"
+//	}
 //
 // `)),
-// 				VnicType: pulumi.String("baremetal"),
-// 			},
-// 			DeviceId:    pulumi.String("cdf70fcf-c161-4f24-9c70-96b3f5a54b71"),
-// 			DeviceOwner: pulumi.String("baremetal:none"),
-// 			NetworkId:   network1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//					VnicType: pulumi.String("baremetal"),
+//				},
+//				DeviceId:    pulumi.String("cdf70fcf-c161-4f24-9c70-96b3f5a54b71"),
+//				DeviceOwner: pulumi.String("baremetal:none"),
+//				NetworkId:   network1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Notes
 //
@@ -110,7 +117,9 @@ import (
 // Ports can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+//
+//	$ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+//
 // ```
 type Port struct {
 	pulumi.CustomResourceState
@@ -589,7 +598,7 @@ func (i *Port) ToPortOutputWithContext(ctx context.Context) PortOutput {
 // PortArrayInput is an input type that accepts PortArray and PortArrayOutput values.
 // You can construct a concrete instance of `PortArrayInput` via:
 //
-//          PortArray{ PortArgs{...} }
+//	PortArray{ PortArgs{...} }
 type PortArrayInput interface {
 	pulumi.Input
 
@@ -614,7 +623,7 @@ func (i PortArray) ToPortArrayOutputWithContext(ctx context.Context) PortArrayOu
 // PortMapInput is an input type that accepts PortMap and PortMapOutput values.
 // You can construct a concrete instance of `PortMapInput` via:
 //
-//          PortMap{ "key": PortArgs{...} }
+//	PortMap{ "key": PortArgs{...} }
 type PortMapInput interface {
 	pulumi.Input
 

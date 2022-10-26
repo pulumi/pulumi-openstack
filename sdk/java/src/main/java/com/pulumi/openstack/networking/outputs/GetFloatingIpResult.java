@@ -12,68 +12,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFloatingIpResult {
-    private final @Nullable String address;
+    private @Nullable String address;
     /**
      * @return A set of string tags applied on the floating IP.
      * 
      */
-    private final List<String> allTags;
-    private final @Nullable String description;
+    private List<String> allTags;
+    private @Nullable String description;
     /**
      * @return The floating IP DNS domain. Available, when Neutron DNS
      * extension is enabled.
      * 
      */
-    private final String dnsDomain;
+    private String dnsDomain;
     /**
      * @return The floating IP DNS name. Available, when Neutron DNS extension
      * is enabled.
      * 
      */
-    private final String dnsName;
-    private final @Nullable String fixedIp;
+    private String dnsName;
+    private @Nullable String fixedIp;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String pool;
-    private final @Nullable String portId;
-    private final @Nullable String region;
-    private final @Nullable String status;
-    private final @Nullable List<String> tags;
-    private final @Nullable String tenantId;
+    private String id;
+    private @Nullable String pool;
+    private @Nullable String portId;
+    private @Nullable String region;
+    private @Nullable String status;
+    private @Nullable List<String> tags;
+    private @Nullable String tenantId;
 
-    @CustomType.Constructor
-    private GetFloatingIpResult(
-        @CustomType.Parameter("address") @Nullable String address,
-        @CustomType.Parameter("allTags") List<String> allTags,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("dnsDomain") String dnsDomain,
-        @CustomType.Parameter("dnsName") String dnsName,
-        @CustomType.Parameter("fixedIp") @Nullable String fixedIp,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("pool") @Nullable String pool,
-        @CustomType.Parameter("portId") @Nullable String portId,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("tenantId") @Nullable String tenantId) {
-        this.address = address;
-        this.allTags = allTags;
-        this.description = description;
-        this.dnsDomain = dnsDomain;
-        this.dnsName = dnsName;
-        this.fixedIp = fixedIp;
-        this.id = id;
-        this.pool = pool;
-        this.portId = portId;
-        this.region = region;
-        this.status = status;
-        this.tags = tags;
-        this.tenantId = tenantId;
-    }
-
+    private GetFloatingIpResult() {}
     public Optional<String> address() {
         return Optional.ofNullable(this.address);
     }
@@ -139,7 +110,7 @@ public final class GetFloatingIpResult {
     public static Builder builder(GetFloatingIpResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String address;
         private List<String> allTags;
@@ -154,11 +125,7 @@ public final class GetFloatingIpResult {
         private @Nullable String status;
         private @Nullable List<String> tags;
         private @Nullable String tenantId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFloatingIpResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
@@ -176,10 +143,12 @@ public final class GetFloatingIpResult {
     	      this.tenantId = defaults.tenantId;
         }
 
+        @CustomType.Setter
         public Builder address(@Nullable String address) {
             this.address = address;
             return this;
         }
+        @CustomType.Setter
         public Builder allTags(List<String> allTags) {
             this.allTags = Objects.requireNonNull(allTags);
             return this;
@@ -187,42 +156,52 @@ public final class GetFloatingIpResult {
         public Builder allTags(String... allTags) {
             return allTags(List.of(allTags));
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder dnsDomain(String dnsDomain) {
             this.dnsDomain = Objects.requireNonNull(dnsDomain);
             return this;
         }
+        @CustomType.Setter
         public Builder dnsName(String dnsName) {
             this.dnsName = Objects.requireNonNull(dnsName);
             return this;
         }
+        @CustomType.Setter
         public Builder fixedIp(@Nullable String fixedIp) {
             this.fixedIp = fixedIp;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder pool(@Nullable String pool) {
             this.pool = pool;
             return this;
         }
+        @CustomType.Setter
         public Builder portId(@Nullable String portId) {
             this.portId = portId;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -230,11 +209,27 @@ public final class GetFloatingIpResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
             this.tenantId = tenantId;
             return this;
-        }        public GetFloatingIpResult build() {
-            return new GetFloatingIpResult(address, allTags, description, dnsDomain, dnsName, fixedIp, id, pool, portId, region, status, tags, tenantId);
+        }
+        public GetFloatingIpResult build() {
+            final var o = new GetFloatingIpResult();
+            o.address = address;
+            o.allTags = allTags;
+            o.description = description;
+            o.dnsDomain = dnsDomain;
+            o.dnsName = dnsName;
+            o.fixedIp = fixedIp;
+            o.id = id;
+            o.pool = pool;
+            o.portId = portId;
+            o.region = region;
+            o.status = status;
+            o.tags = tags;
+            o.tenantId = tenantId;
+            return o;
         }
     }
 }

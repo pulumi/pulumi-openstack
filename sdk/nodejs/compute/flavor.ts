@@ -61,6 +61,11 @@ export class Flavor extends pulumi.CustomResource {
     }
 
     /**
+     * The description of the flavor. Changing this
+     * updates the description of the flavor. Requires microversion >= 2.55.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
      * The amount of disk space in GiB to use for the root
      * (/) partition. Changing this creates a new flavor.
      */
@@ -130,6 +135,7 @@ export class Flavor extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlavorState | undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disk"] = state ? state.disk : undefined;
             resourceInputs["ephemeral"] = state ? state.ephemeral : undefined;
             resourceInputs["extraSpecs"] = state ? state.extraSpecs : undefined;
@@ -152,6 +158,7 @@ export class Flavor extends pulumi.CustomResource {
             if ((!args || args.vcpus === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vcpus'");
             }
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disk"] = args ? args.disk : undefined;
             resourceInputs["ephemeral"] = args ? args.ephemeral : undefined;
             resourceInputs["extraSpecs"] = args ? args.extraSpecs : undefined;
@@ -173,6 +180,11 @@ export class Flavor extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Flavor resources.
  */
 export interface FlavorState {
+    /**
+     * The description of the flavor. Changing this
+     * updates the description of the flavor. Requires microversion >= 2.55.
+     */
+    description?: pulumi.Input<string>;
     /**
      * The amount of disk space in GiB to use for the root
      * (/) partition. Changing this creates a new flavor.
@@ -235,6 +247,11 @@ export interface FlavorState {
  * The set of arguments for constructing a Flavor resource.
  */
 export interface FlavorArgs {
+    /**
+     * The description of the flavor. Changing this
+     * updates the description of the flavor. Requires microversion >= 2.55.
+     */
+    description?: pulumi.Input<string>;
     /**
      * The amount of disk space in GiB to use for the root
      * (/) partition. Changing this creates a new flavor.

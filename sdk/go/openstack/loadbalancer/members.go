@@ -26,31 +26,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := loadbalancer.NewMembers(ctx, "members1", &loadbalancer.MembersArgs{
-// 			Members: loadbalancer.MembersMemberArray{
-// 				&loadbalancer.MembersMemberArgs{
-// 					Address:      pulumi.String("192.168.199.23"),
-// 					ProtocolPort: pulumi.Int(8080),
-// 				},
-// 				&loadbalancer.MembersMemberArgs{
-// 					Address:      pulumi.String("192.168.199.24"),
-// 					ProtocolPort: pulumi.Int(8080),
-// 				},
-// 			},
-// 			PoolId: pulumi.String("935685fb-a896-40f9-9ff4-ae531a3a00fe"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := loadbalancer.NewMembers(ctx, "members1", &loadbalancer.MembersArgs{
+//				Members: loadbalancer.MembersMemberArray{
+//					&loadbalancer.MembersMemberArgs{
+//						Address:      pulumi.String("192.168.199.23"),
+//						ProtocolPort: pulumi.Int(8080),
+//					},
+//					&loadbalancer.MembersMemberArgs{
+//						Address:      pulumi.String("192.168.199.24"),
+//						ProtocolPort: pulumi.Int(8080),
+//					},
+//				},
+//				PoolId: pulumi.String("935685fb-a896-40f9-9ff4-ae531a3a00fe"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -58,7 +61,9 @@ import (
 // Load Balancer Pool Members can be imported using the Pool ID, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:loadbalancer/members:Members members_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5
+//
+//	$ pulumi import openstack:loadbalancer/members:Members members_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5
+//
 // ```
 type Members struct {
 	pulumi.CustomResourceState
@@ -194,7 +199,7 @@ func (i *Members) ToMembersOutputWithContext(ctx context.Context) MembersOutput 
 // MembersArrayInput is an input type that accepts MembersArray and MembersArrayOutput values.
 // You can construct a concrete instance of `MembersArrayInput` via:
 //
-//          MembersArray{ MembersArgs{...} }
+//	MembersArray{ MembersArgs{...} }
 type MembersArrayInput interface {
 	pulumi.Input
 
@@ -219,7 +224,7 @@ func (i MembersArray) ToMembersArrayOutputWithContext(ctx context.Context) Membe
 // MembersMapInput is an input type that accepts MembersMap and MembersMapOutput values.
 // You can construct a concrete instance of `MembersMapInput` via:
 //
-//          MembersMap{ "key": MembersArgs{...} }
+//	MembersMap{ "key": MembersArgs{...} }
 type MembersMapInput interface {
 	pulumi.Input
 

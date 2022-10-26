@@ -20,146 +20,89 @@ public final class GetImageResult {
      * @return The checksum of the data associated with the image.
      * 
      */
-    private final String checksum;
-    private final String containerFormat;
+    private String checksum;
+    private String containerFormat;
     /**
      * @return The date the image was created.
      * * `container_format`: The format of the image&#39;s container.
      * * `disk_format`: The format of the image&#39;s disk.
      * 
      */
-    private final String createdAt;
-    private final String diskFormat;
+    private String createdAt;
+    private String diskFormat;
     /**
      * @return the trailing path after the glance endpoint that represent the
      * location of the image or the path to retrieve it.
      * 
      */
-    private final String file;
-    private final @Nullable Boolean hidden;
+    private String file;
+    private @Nullable Boolean hidden;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String memberStatus;
+    private String id;
+    private @Nullable String memberStatus;
     /**
      * @return The metadata associated with the image.
      * Image metadata allow for meaningfully define the image properties
      * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      * 
      */
-    private final Map<String,Object> metadata;
+    private Map<String,Object> metadata;
     /**
      * @return The minimum amount of disk space required to use the image.
      * 
      */
-    private final Integer minDiskGb;
+    private Integer minDiskGb;
     /**
      * @return The minimum amount of ram required to use the image.
      * 
      */
-    private final Integer minRamMb;
-    private final @Nullable Boolean mostRecent;
-    private final @Nullable String name;
-    private final @Nullable String owner;
+    private Integer minRamMb;
+    private @Nullable Boolean mostRecent;
+    private @Nullable String name;
+    private @Nullable String owner;
     /**
      * @return Freeform information about the image.
      * 
      */
-    private final @Nullable Map<String,Object> properties;
+    private @Nullable Map<String,Object> properties;
     /**
      * @return Whether or not the image is protected.
      * 
      */
-    private final Boolean protected_;
-    private final String region;
+    private Boolean protected_;
+    private String region;
     /**
      * @return The path to the JSON-schema that represent
      * the image or image
      * 
      */
-    private final String schema;
+    private String schema;
     /**
      * @return The size of the image (in bytes).
      * 
      */
-    private final Integer sizeBytes;
-    private final @Nullable Integer sizeMax;
-    private final @Nullable Integer sizeMin;
-    private final @Nullable String sortDirection;
-    private final @Nullable String sortKey;
-    private final @Nullable String tag;
+    private Integer sizeBytes;
+    private @Nullable Integer sizeMax;
+    private @Nullable Integer sizeMin;
+    private @Nullable String sortDirection;
+    private @Nullable String sortKey;
+    private @Nullable String tag;
     /**
      * @return The tags list of the image.
      * 
      */
-    private final List<String> tags;
+    private List<String> tags;
     /**
      * @return The date the image was last updated.
      * 
      */
-    private final String updatedAt;
-    private final @Nullable String visibility;
+    private String updatedAt;
+    private @Nullable String visibility;
 
-    @CustomType.Constructor
-    private GetImageResult(
-        @CustomType.Parameter("checksum") String checksum,
-        @CustomType.Parameter("containerFormat") String containerFormat,
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("diskFormat") String diskFormat,
-        @CustomType.Parameter("file") String file,
-        @CustomType.Parameter("hidden") @Nullable Boolean hidden,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("memberStatus") @Nullable String memberStatus,
-        @CustomType.Parameter("metadata") Map<String,Object> metadata,
-        @CustomType.Parameter("minDiskGb") Integer minDiskGb,
-        @CustomType.Parameter("minRamMb") Integer minRamMb,
-        @CustomType.Parameter("mostRecent") @Nullable Boolean mostRecent,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("owner") @Nullable String owner,
-        @CustomType.Parameter("properties") @Nullable Map<String,Object> properties,
-        @CustomType.Parameter("protected") Boolean protected_,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("schema") String schema,
-        @CustomType.Parameter("sizeBytes") Integer sizeBytes,
-        @CustomType.Parameter("sizeMax") @Nullable Integer sizeMax,
-        @CustomType.Parameter("sizeMin") @Nullable Integer sizeMin,
-        @CustomType.Parameter("sortDirection") @Nullable String sortDirection,
-        @CustomType.Parameter("sortKey") @Nullable String sortKey,
-        @CustomType.Parameter("tag") @Nullable String tag,
-        @CustomType.Parameter("tags") List<String> tags,
-        @CustomType.Parameter("updatedAt") String updatedAt,
-        @CustomType.Parameter("visibility") @Nullable String visibility) {
-        this.checksum = checksum;
-        this.containerFormat = containerFormat;
-        this.createdAt = createdAt;
-        this.diskFormat = diskFormat;
-        this.file = file;
-        this.hidden = hidden;
-        this.id = id;
-        this.memberStatus = memberStatus;
-        this.metadata = metadata;
-        this.minDiskGb = minDiskGb;
-        this.minRamMb = minRamMb;
-        this.mostRecent = mostRecent;
-        this.name = name;
-        this.owner = owner;
-        this.properties = properties;
-        this.protected_ = protected_;
-        this.region = region;
-        this.schema = schema;
-        this.sizeBytes = sizeBytes;
-        this.sizeMax = sizeMax;
-        this.sizeMin = sizeMin;
-        this.sortDirection = sortDirection;
-        this.sortKey = sortKey;
-        this.tag = tag;
-        this.tags = tags;
-        this.updatedAt = updatedAt;
-        this.visibility = visibility;
-    }
-
+    private GetImageResult() {}
     /**
      * @return The checksum of the data associated with the image.
      * 
@@ -307,7 +250,7 @@ public final class GetImageResult {
     public static Builder builder(GetImageResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String checksum;
         private String containerFormat;
@@ -336,11 +279,7 @@ public final class GetImageResult {
         private List<String> tags;
         private String updatedAt;
         private @Nullable String visibility;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImageResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.checksum = defaults.checksum;
@@ -372,102 +311,127 @@ public final class GetImageResult {
     	      this.visibility = defaults.visibility;
         }
 
+        @CustomType.Setter
         public Builder checksum(String checksum) {
             this.checksum = Objects.requireNonNull(checksum);
             return this;
         }
+        @CustomType.Setter
         public Builder containerFormat(String containerFormat) {
             this.containerFormat = Objects.requireNonNull(containerFormat);
             return this;
         }
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder diskFormat(String diskFormat) {
             this.diskFormat = Objects.requireNonNull(diskFormat);
             return this;
         }
+        @CustomType.Setter
         public Builder file(String file) {
             this.file = Objects.requireNonNull(file);
             return this;
         }
+        @CustomType.Setter
         public Builder hidden(@Nullable Boolean hidden) {
             this.hidden = hidden;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder memberStatus(@Nullable String memberStatus) {
             this.memberStatus = memberStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(Map<String,Object> metadata) {
             this.metadata = Objects.requireNonNull(metadata);
             return this;
         }
+        @CustomType.Setter
         public Builder minDiskGb(Integer minDiskGb) {
             this.minDiskGb = Objects.requireNonNull(minDiskGb);
             return this;
         }
+        @CustomType.Setter
         public Builder minRamMb(Integer minRamMb) {
             this.minRamMb = Objects.requireNonNull(minRamMb);
             return this;
         }
+        @CustomType.Setter
         public Builder mostRecent(@Nullable Boolean mostRecent) {
             this.mostRecent = mostRecent;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder owner(@Nullable String owner) {
             this.owner = owner;
             return this;
         }
+        @CustomType.Setter
         public Builder properties(@Nullable Map<String,Object> properties) {
             this.properties = properties;
             return this;
         }
+        @CustomType.Setter("protected")
         public Builder protected_(Boolean protected_) {
             this.protected_ = Objects.requireNonNull(protected_);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder schema(String schema) {
             this.schema = Objects.requireNonNull(schema);
             return this;
         }
+        @CustomType.Setter
         public Builder sizeBytes(Integer sizeBytes) {
             this.sizeBytes = Objects.requireNonNull(sizeBytes);
             return this;
         }
+        @CustomType.Setter
         public Builder sizeMax(@Nullable Integer sizeMax) {
             this.sizeMax = sizeMax;
             return this;
         }
+        @CustomType.Setter
         public Builder sizeMin(@Nullable Integer sizeMin) {
             this.sizeMin = sizeMin;
             return this;
         }
+        @CustomType.Setter
         public Builder sortDirection(@Nullable String sortDirection) {
             this.sortDirection = sortDirection;
             return this;
         }
+        @CustomType.Setter
         public Builder sortKey(@Nullable String sortKey) {
             this.sortKey = sortKey;
             return this;
         }
+        @CustomType.Setter
         public Builder tag(@Nullable String tag) {
             this.tag = tag;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -475,15 +439,46 @@ public final class GetImageResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
             this.updatedAt = Objects.requireNonNull(updatedAt);
             return this;
         }
+        @CustomType.Setter
         public Builder visibility(@Nullable String visibility) {
             this.visibility = visibility;
             return this;
-        }        public GetImageResult build() {
-            return new GetImageResult(checksum, containerFormat, createdAt, diskFormat, file, hidden, id, memberStatus, metadata, minDiskGb, minRamMb, mostRecent, name, owner, properties, protected_, region, schema, sizeBytes, sizeMax, sizeMin, sortDirection, sortKey, tag, tags, updatedAt, visibility);
+        }
+        public GetImageResult build() {
+            final var o = new GetImageResult();
+            o.checksum = checksum;
+            o.containerFormat = containerFormat;
+            o.createdAt = createdAt;
+            o.diskFormat = diskFormat;
+            o.file = file;
+            o.hidden = hidden;
+            o.id = id;
+            o.memberStatus = memberStatus;
+            o.metadata = metadata;
+            o.minDiskGb = minDiskGb;
+            o.minRamMb = minRamMb;
+            o.mostRecent = mostRecent;
+            o.name = name;
+            o.owner = owner;
+            o.properties = properties;
+            o.protected_ = protected_;
+            o.region = region;
+            o.schema = schema;
+            o.sizeBytes = sizeBytes;
+            o.sizeMax = sizeMax;
+            o.sizeMin = sizeMin;
+            o.sortDirection = sortDirection;
+            o.sortKey = sortKey;
+            o.tag = tag;
+            o.tags = tags;
+            o.updatedAt = updatedAt;
+            o.visibility = visibility;
+            return o;
         }
     }
 }

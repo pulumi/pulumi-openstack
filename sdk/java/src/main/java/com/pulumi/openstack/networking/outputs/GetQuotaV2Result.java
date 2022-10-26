@@ -14,88 +14,61 @@ public final class GetQuotaV2Result {
      * @return The number of allowed floating ips.
      * 
      */
-    private final Integer floatingip;
+    private Integer floatingip;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The number of allowed networks.
      * 
      */
-    private final Integer network;
+    private Integer network;
     /**
      * @return The number of allowed ports.
      * 
      */
-    private final Integer port;
+    private Integer port;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String projectId;
+    private String projectId;
     /**
      * @return The number of allowed rbac policies.
      * 
      */
-    private final Integer rbacPolicy;
+    private Integer rbacPolicy;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return The amount of allowed routers.
      * 
      */
-    private final Integer router;
+    private Integer router;
     /**
      * @return The number of allowed security groups.
      * 
      */
-    private final Integer securityGroup;
+    private Integer securityGroup;
     /**
      * @return The number of allowed security group rules.
      * 
      */
-    private final Integer securityGroupRule;
+    private Integer securityGroupRule;
     /**
      * @return The number of allowed subnets.
      * * `subnetpool-` - The number of allowed subnet pools.
      * 
      */
-    private final Integer subnet;
-    private final Integer subnetpool;
+    private Integer subnet;
+    private Integer subnetpool;
 
-    @CustomType.Constructor
-    private GetQuotaV2Result(
-        @CustomType.Parameter("floatingip") Integer floatingip,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("network") Integer network,
-        @CustomType.Parameter("port") Integer port,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("rbacPolicy") Integer rbacPolicy,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("router") Integer router,
-        @CustomType.Parameter("securityGroup") Integer securityGroup,
-        @CustomType.Parameter("securityGroupRule") Integer securityGroupRule,
-        @CustomType.Parameter("subnet") Integer subnet,
-        @CustomType.Parameter("subnetpool") Integer subnetpool) {
-        this.floatingip = floatingip;
-        this.id = id;
-        this.network = network;
-        this.port = port;
-        this.projectId = projectId;
-        this.rbacPolicy = rbacPolicy;
-        this.region = region;
-        this.router = router;
-        this.securityGroup = securityGroup;
-        this.securityGroupRule = securityGroupRule;
-        this.subnet = subnet;
-        this.subnetpool = subnetpool;
-    }
-
+    private GetQuotaV2Result() {}
     /**
      * @return The number of allowed floating ips.
      * 
@@ -185,7 +158,7 @@ public final class GetQuotaV2Result {
     public static Builder builder(GetQuotaV2Result defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer floatingip;
         private String id;
@@ -199,11 +172,7 @@ public final class GetQuotaV2Result {
         private Integer securityGroupRule;
         private Integer subnet;
         private Integer subnetpool;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetQuotaV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.floatingip = defaults.floatingip;
@@ -220,55 +189,81 @@ public final class GetQuotaV2Result {
     	      this.subnetpool = defaults.subnetpool;
         }
 
+        @CustomType.Setter
         public Builder floatingip(Integer floatingip) {
             this.floatingip = Objects.requireNonNull(floatingip);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder network(Integer network) {
             this.network = Objects.requireNonNull(network);
             return this;
         }
+        @CustomType.Setter
         public Builder port(Integer port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder rbacPolicy(Integer rbacPolicy) {
             this.rbacPolicy = Objects.requireNonNull(rbacPolicy);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder router(Integer router) {
             this.router = Objects.requireNonNull(router);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroup(Integer securityGroup) {
             this.securityGroup = Objects.requireNonNull(securityGroup);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupRule(Integer securityGroupRule) {
             this.securityGroupRule = Objects.requireNonNull(securityGroupRule);
             return this;
         }
+        @CustomType.Setter
         public Builder subnet(Integer subnet) {
             this.subnet = Objects.requireNonNull(subnet);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetpool(Integer subnetpool) {
             this.subnetpool = Objects.requireNonNull(subnetpool);
             return this;
-        }        public GetQuotaV2Result build() {
-            return new GetQuotaV2Result(floatingip, id, network, port, projectId, rbacPolicy, region, router, securityGroup, securityGroupRule, subnet, subnetpool);
+        }
+        public GetQuotaV2Result build() {
+            final var o = new GetQuotaV2Result();
+            o.floatingip = floatingip;
+            o.id = id;
+            o.network = network;
+            o.port = port;
+            o.projectId = projectId;
+            o.rbacPolicy = rbacPolicy;
+            o.region = region;
+            o.router = router;
+            o.securityGroup = securityGroup;
+            o.securityGroupRule = securityGroupRule;
+            o.subnet = subnet;
+            o.subnetpool = subnetpool;
+            return o;
         }
     }
 }

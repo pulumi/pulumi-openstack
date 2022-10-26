@@ -34,7 +34,7 @@ type ApplicationCredentialAccessRule struct {
 // ApplicationCredentialAccessRuleInput is an input type that accepts ApplicationCredentialAccessRuleArgs and ApplicationCredentialAccessRuleOutput values.
 // You can construct a concrete instance of `ApplicationCredentialAccessRuleInput` via:
 //
-//          ApplicationCredentialAccessRuleArgs{...}
+//	ApplicationCredentialAccessRuleArgs{...}
 type ApplicationCredentialAccessRuleInput interface {
 	pulumi.Input
 
@@ -78,7 +78,7 @@ func (i ApplicationCredentialAccessRuleArgs) ToApplicationCredentialAccessRuleOu
 // ApplicationCredentialAccessRuleArrayInput is an input type that accepts ApplicationCredentialAccessRuleArray and ApplicationCredentialAccessRuleArrayOutput values.
 // You can construct a concrete instance of `ApplicationCredentialAccessRuleArrayInput` via:
 //
-//          ApplicationCredentialAccessRuleArray{ ApplicationCredentialAccessRuleArgs{...} }
+//	ApplicationCredentialAccessRuleArray{ ApplicationCredentialAccessRuleArgs{...} }
 type ApplicationCredentialAccessRuleArrayInput interface {
 	pulumi.Input
 
@@ -173,7 +173,7 @@ type UserMultiFactorAuthRule struct {
 // UserMultiFactorAuthRuleInput is an input type that accepts UserMultiFactorAuthRuleArgs and UserMultiFactorAuthRuleOutput values.
 // You can construct a concrete instance of `UserMultiFactorAuthRuleInput` via:
 //
-//          UserMultiFactorAuthRuleArgs{...}
+//	UserMultiFactorAuthRuleArgs{...}
 type UserMultiFactorAuthRuleInput interface {
 	pulumi.Input
 
@@ -202,7 +202,7 @@ func (i UserMultiFactorAuthRuleArgs) ToUserMultiFactorAuthRuleOutputWithContext(
 // UserMultiFactorAuthRuleArrayInput is an input type that accepts UserMultiFactorAuthRuleArray and UserMultiFactorAuthRuleArrayOutput values.
 // You can construct a concrete instance of `UserMultiFactorAuthRuleArrayInput` via:
 //
-//          UserMultiFactorAuthRuleArray{ UserMultiFactorAuthRuleArgs{...} }
+//	UserMultiFactorAuthRuleArray{ UserMultiFactorAuthRuleArgs{...} }
 type UserMultiFactorAuthRuleArrayInput interface {
 	pulumi.Input
 
@@ -274,7 +274,7 @@ type GetAuthScopeRole struct {
 // GetAuthScopeRoleInput is an input type that accepts GetAuthScopeRoleArgs and GetAuthScopeRoleOutput values.
 // You can construct a concrete instance of `GetAuthScopeRoleInput` via:
 //
-//          GetAuthScopeRoleArgs{...}
+//	GetAuthScopeRoleArgs{...}
 type GetAuthScopeRoleInput interface {
 	pulumi.Input
 
@@ -304,7 +304,7 @@ func (i GetAuthScopeRoleArgs) ToGetAuthScopeRoleOutputWithContext(ctx context.Co
 // GetAuthScopeRoleArrayInput is an input type that accepts GetAuthScopeRoleArray and GetAuthScopeRoleArrayOutput values.
 // You can construct a concrete instance of `GetAuthScopeRoleArrayInput` via:
 //
-//          GetAuthScopeRoleArray{ GetAuthScopeRoleArgs{...} }
+//	GetAuthScopeRoleArray{ GetAuthScopeRoleArgs{...} }
 type GetAuthScopeRoleArrayInput interface {
 	pulumi.Input
 
@@ -385,7 +385,7 @@ type GetAuthScopeServiceCatalog struct {
 // GetAuthScopeServiceCatalogInput is an input type that accepts GetAuthScopeServiceCatalogArgs and GetAuthScopeServiceCatalogOutput values.
 // You can construct a concrete instance of `GetAuthScopeServiceCatalogInput` via:
 //
-//          GetAuthScopeServiceCatalogArgs{...}
+//	GetAuthScopeServiceCatalogArgs{...}
 type GetAuthScopeServiceCatalogInput interface {
 	pulumi.Input
 
@@ -420,7 +420,7 @@ func (i GetAuthScopeServiceCatalogArgs) ToGetAuthScopeServiceCatalogOutputWithCo
 // GetAuthScopeServiceCatalogArrayInput is an input type that accepts GetAuthScopeServiceCatalogArray and GetAuthScopeServiceCatalogArrayOutput values.
 // You can construct a concrete instance of `GetAuthScopeServiceCatalogArrayInput` via:
 //
-//          GetAuthScopeServiceCatalogArray{ GetAuthScopeServiceCatalogArgs{...} }
+//	GetAuthScopeServiceCatalogArray{ GetAuthScopeServiceCatalogArgs{...} }
 type GetAuthScopeServiceCatalogArrayInput interface {
 	pulumi.Input
 
@@ -515,7 +515,7 @@ type GetAuthScopeServiceCatalogEndpoint struct {
 // GetAuthScopeServiceCatalogEndpointInput is an input type that accepts GetAuthScopeServiceCatalogEndpointArgs and GetAuthScopeServiceCatalogEndpointOutput values.
 // You can construct a concrete instance of `GetAuthScopeServiceCatalogEndpointInput` via:
 //
-//          GetAuthScopeServiceCatalogEndpointArgs{...}
+//	GetAuthScopeServiceCatalogEndpointArgs{...}
 type GetAuthScopeServiceCatalogEndpointInput interface {
 	pulumi.Input
 
@@ -553,7 +553,7 @@ func (i GetAuthScopeServiceCatalogEndpointArgs) ToGetAuthScopeServiceCatalogEndp
 // GetAuthScopeServiceCatalogEndpointArrayInput is an input type that accepts GetAuthScopeServiceCatalogEndpointArray and GetAuthScopeServiceCatalogEndpointArrayOutput values.
 // You can construct a concrete instance of `GetAuthScopeServiceCatalogEndpointArrayInput` via:
 //
-//          GetAuthScopeServiceCatalogEndpointArray{ GetAuthScopeServiceCatalogEndpointArgs{...} }
+//	GetAuthScopeServiceCatalogEndpointArray{ GetAuthScopeServiceCatalogEndpointArgs{...} }
 type GetAuthScopeServiceCatalogEndpointArrayInput interface {
 	pulumi.Input
 

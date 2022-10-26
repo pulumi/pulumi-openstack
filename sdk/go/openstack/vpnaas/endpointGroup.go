@@ -18,25 +18,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/vpnaas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/vpnaas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vpnaas.NewEndpointGroup(ctx, "group1", &vpnaas.EndpointGroupArgs{
-// 			Endpoints: pulumi.StringArray{
-// 				pulumi.String("10.2.0.0/24"),
-// 				pulumi.String("10.3.0.0/24"),
-// 			},
-// 			Type: pulumi.String("cidr"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vpnaas.NewEndpointGroup(ctx, "group1", &vpnaas.EndpointGroupArgs{
+//				Endpoints: pulumi.StringArray{
+//					pulumi.String("10.2.0.0/24"),
+//					pulumi.String("10.3.0.0/24"),
+//				},
+//				Type: pulumi.String("cidr"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -44,7 +47,9 @@ import (
 // Groups can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:vpnaas/endpointGroup:EndpointGroup group_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+//
+//	$ pulumi import openstack:vpnaas/endpointGroup:EndpointGroup group_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+//
 // ```
 type EndpointGroup struct {
 	pulumi.CustomResourceState
@@ -232,7 +237,7 @@ func (i *EndpointGroup) ToEndpointGroupOutputWithContext(ctx context.Context) En
 // EndpointGroupArrayInput is an input type that accepts EndpointGroupArray and EndpointGroupArrayOutput values.
 // You can construct a concrete instance of `EndpointGroupArrayInput` via:
 //
-//          EndpointGroupArray{ EndpointGroupArgs{...} }
+//	EndpointGroupArray{ EndpointGroupArgs{...} }
 type EndpointGroupArrayInput interface {
 	pulumi.Input
 
@@ -257,7 +262,7 @@ func (i EndpointGroupArray) ToEndpointGroupArrayOutputWithContext(ctx context.Co
 // EndpointGroupMapInput is an input type that accepts EndpointGroupMap and EndpointGroupMapOutput values.
 // You can construct a concrete instance of `EndpointGroupMapInput` via:
 //
-//          EndpointGroupMap{ "key": EndpointGroupArgs{...} }
+//	EndpointGroupMap{ "key": EndpointGroupArgs{...} }
 type EndpointGroupMapInput interface {
 	pulumi.Input
 

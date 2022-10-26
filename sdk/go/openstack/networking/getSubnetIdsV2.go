@@ -19,24 +19,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := networking.GetSubnetIdsV2(ctx, &networking.GetSubnetIdsV2Args{
-// 			NameRegex: pulumi.StringRef("public"),
-// 			Tags: []string{
-// 				"public",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.GetSubnetIdsV2(ctx, &networking.GetSubnetIdsV2Args{
+//				NameRegex: pulumi.StringRef("public"),
+//				Tags: []string{
+//					"public",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSubnetIdsV2(ctx *pulumi.Context, args *GetSubnetIdsV2Args, opts ...pulumi.InvokeOption) (*GetSubnetIdsV2Result, error) {
 	var rv GetSubnetIdsV2Result

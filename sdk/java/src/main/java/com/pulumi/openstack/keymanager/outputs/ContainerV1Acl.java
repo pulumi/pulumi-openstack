@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerV1Acl {
-    private final @Nullable ContainerV1AclRead read;
+    private @Nullable ContainerV1AclRead read;
 
-    @CustomType.Constructor
-    private ContainerV1Acl(@CustomType.Parameter("read") @Nullable ContainerV1AclRead read) {
-        this.read = read;
-    }
-
+    private ContainerV1Acl() {}
     public Optional<ContainerV1AclRead> read() {
         return Optional.ofNullable(this.read);
     }
@@ -29,24 +25,24 @@ public final class ContainerV1Acl {
     public static Builder builder(ContainerV1Acl defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ContainerV1AclRead read;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ContainerV1Acl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.read = defaults.read;
         }
 
+        @CustomType.Setter
         public Builder read(@Nullable ContainerV1AclRead read) {
             this.read = read;
             return this;
-        }        public ContainerV1Acl build() {
-            return new ContainerV1Acl(read);
+        }
+        public ContainerV1Acl build() {
+            final var o = new ContainerV1Acl();
+            o.read = read;
+            return o;
         }
     }
 }

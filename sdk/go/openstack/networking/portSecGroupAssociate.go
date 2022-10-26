@@ -18,36 +18,39 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		systemPort, err := networking.LookupPort(ctx, &networking.LookupPortArgs{
-// 			FixedIp: pulumi.StringRef("10.0.0.10"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		secgroup, err := networking.LookupSecGroup(ctx, &networking.LookupSecGroupArgs{
-// 			Name: pulumi.StringRef("secgroup"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = networking.NewPortSecGroupAssociate(ctx, "port1", &networking.PortSecGroupAssociateArgs{
-// 			PortId: pulumi.String(systemPort.Id),
-// 			SecurityGroupIds: pulumi.StringArray{
-// 				pulumi.String(secgroup.Id),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			systemPort, err := networking.LookupPort(ctx, &networking.LookupPortArgs{
+//				FixedIp: pulumi.StringRef("10.0.0.10"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			secgroup, err := networking.LookupSecGroup(ctx, &networking.LookupSecGroupArgs{
+//				Name: pulumi.StringRef("secgroup"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewPortSecGroupAssociate(ctx, "port1", &networking.PortSecGroupAssociateArgs{
+//				PortId: pulumi.String(systemPort.Id),
+//				SecurityGroupIds: pulumi.StringArray{
+//					pulumi.String(secgroup.Id),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Enforce a security group to an existing port
 //
@@ -55,37 +58,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		systemPort, err := networking.LookupPort(ctx, &networking.LookupPortArgs{
-// 			FixedIp: pulumi.StringRef("10.0.0.10"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		secgroup, err := networking.LookupSecGroup(ctx, &networking.LookupSecGroupArgs{
-// 			Name: pulumi.StringRef("secgroup"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = networking.NewPortSecGroupAssociate(ctx, "port1", &networking.PortSecGroupAssociateArgs{
-// 			Enforce: pulumi.Bool(true),
-// 			PortId:  pulumi.String(systemPort.Id),
-// 			SecurityGroupIds: pulumi.StringArray{
-// 				pulumi.String(secgroup.Id),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			systemPort, err := networking.LookupPort(ctx, &networking.LookupPortArgs{
+//				FixedIp: pulumi.StringRef("10.0.0.10"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			secgroup, err := networking.LookupSecGroup(ctx, &networking.LookupSecGroupArgs{
+//				Name: pulumi.StringRef("secgroup"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewPortSecGroupAssociate(ctx, "port1", &networking.PortSecGroupAssociateArgs{
+//				Enforce: pulumi.Bool(true),
+//				PortId:  pulumi.String(systemPort.Id),
+//				SecurityGroupIds: pulumi.StringArray{
+//					pulumi.String(secgroup.Id),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Remove all security groups from an existing port
 //
@@ -93,29 +99,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		systemPort, err := networking.LookupPort(ctx, &networking.LookupPortArgs{
-// 			FixedIp: pulumi.StringRef("10.0.0.10"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = networking.NewPortSecGroupAssociate(ctx, "port1", &networking.PortSecGroupAssociateArgs{
-// 			Enforce:          pulumi.Bool(true),
-// 			PortId:           pulumi.String(systemPort.Id),
-// 			SecurityGroupIds: pulumi.StringArray{},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			systemPort, err := networking.LookupPort(ctx, &networking.LookupPortArgs{
+//				FixedIp: pulumi.StringRef("10.0.0.10"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewPortSecGroupAssociate(ctx, "port1", &networking.PortSecGroupAssociateArgs{
+//				Enforce:          pulumi.Bool(true),
+//				PortId:           pulumi.String(systemPort.Id),
+//				SecurityGroupIds: pulumi.StringArray{},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -123,7 +132,9 @@ import (
 // Port security group association can be imported using the `id` of the port, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:networking/portSecGroupAssociate:PortSecGroupAssociate port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+//
+//	$ pulumi import openstack:networking/portSecGroupAssociate:PortSecGroupAssociate port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+//
 // ```
 type PortSecGroupAssociate struct {
 	pulumi.CustomResourceState
@@ -286,7 +297,7 @@ func (i *PortSecGroupAssociate) ToPortSecGroupAssociateOutputWithContext(ctx con
 // PortSecGroupAssociateArrayInput is an input type that accepts PortSecGroupAssociateArray and PortSecGroupAssociateArrayOutput values.
 // You can construct a concrete instance of `PortSecGroupAssociateArrayInput` via:
 //
-//          PortSecGroupAssociateArray{ PortSecGroupAssociateArgs{...} }
+//	PortSecGroupAssociateArray{ PortSecGroupAssociateArgs{...} }
 type PortSecGroupAssociateArrayInput interface {
 	pulumi.Input
 
@@ -311,7 +322,7 @@ func (i PortSecGroupAssociateArray) ToPortSecGroupAssociateArrayOutputWithContex
 // PortSecGroupAssociateMapInput is an input type that accepts PortSecGroupAssociateMap and PortSecGroupAssociateMapOutput values.
 // You can construct a concrete instance of `PortSecGroupAssociateMapInput` via:
 //
-//          PortSecGroupAssociateMap{ "key": PortSecGroupAssociateArgs{...} }
+//	PortSecGroupAssociateMap{ "key": PortSecGroupAssociateArgs{...} }
 type PortSecGroupAssociateMapInput interface {
 	pulumi.Input
 

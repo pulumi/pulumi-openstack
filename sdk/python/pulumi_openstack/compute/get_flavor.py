@@ -21,7 +21,10 @@ class GetFlavorResult:
     """
     A collection of values returned by getFlavor.
     """
-    def __init__(__self__, disk=None, extra_specs=None, flavor_id=None, id=None, is_public=None, min_disk=None, min_ram=None, name=None, ram=None, region=None, rx_tx_factor=None, swap=None, vcpus=None):
+    def __init__(__self__, description=None, disk=None, extra_specs=None, flavor_id=None, id=None, is_public=None, min_disk=None, min_ram=None, name=None, ram=None, region=None, rx_tx_factor=None, swap=None, vcpus=None):
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
         if disk and not isinstance(disk, int):
             raise TypeError("Expected argument 'disk' to be a int")
         pulumi.set(__self__, "disk", disk)
@@ -61,6 +64,11 @@ class GetFlavorResult:
         if vcpus and not isinstance(vcpus, int):
             raise TypeError("Expected argument 'vcpus' to be a int")
         pulumi.set(__self__, "vcpus", vcpus)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
@@ -140,6 +148,7 @@ class AwaitableGetFlavorResult(GetFlavorResult):
         if False:
             yield self
         return GetFlavorResult(
+            description=self.description,
             disk=self.disk,
             extra_specs=self.extra_specs,
             flavor_id=self.flavor_id,
@@ -155,7 +164,8 @@ class AwaitableGetFlavorResult(GetFlavorResult):
             vcpus=self.vcpus)
 
 
-def get_flavor(disk: Optional[int] = None,
+def get_flavor(description: Optional[str] = None,
+               disk: Optional[int] = None,
                flavor_id: Optional[str] = None,
                is_public: Optional[bool] = None,
                min_disk: Optional[int] = None,
@@ -181,6 +191,7 @@ def get_flavor(disk: Optional[int] = None,
     ```
 
 
+    :param str description: The description of the flavor.
     :param int disk: The exact amount of disk (in gigabytes).
     :param str flavor_id: The ID of the flavor. Conflicts with the `name`,
            `min_ram` and `min_disk`
@@ -198,6 +209,7 @@ def get_flavor(disk: Optional[int] = None,
     :param int vcpus: The amount of VCPUs.
     """
     __args__ = dict()
+    __args__['description'] = description
     __args__['disk'] = disk
     __args__['flavorId'] = flavor_id
     __args__['isPublic'] = is_public
@@ -213,6 +225,7 @@ def get_flavor(disk: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('openstack:compute/getFlavor:getFlavor', __args__, opts=opts, typ=GetFlavorResult).value
 
     return AwaitableGetFlavorResult(
+        description=__ret__.description,
         disk=__ret__.disk,
         extra_specs=__ret__.extra_specs,
         flavor_id=__ret__.flavor_id,
@@ -229,7 +242,8 @@ def get_flavor(disk: Optional[int] = None,
 
 
 @_utilities.lift_output_func(get_flavor)
-def get_flavor_output(disk: Optional[pulumi.Input[Optional[int]]] = None,
+def get_flavor_output(description: Optional[pulumi.Input[Optional[str]]] = None,
+                      disk: Optional[pulumi.Input[Optional[int]]] = None,
                       flavor_id: Optional[pulumi.Input[Optional[str]]] = None,
                       is_public: Optional[pulumi.Input[Optional[bool]]] = None,
                       min_disk: Optional[pulumi.Input[Optional[int]]] = None,
@@ -255,6 +269,7 @@ def get_flavor_output(disk: Optional[pulumi.Input[Optional[int]]] = None,
     ```
 
 
+    :param str description: The description of the flavor.
     :param int disk: The exact amount of disk (in gigabytes).
     :param str flavor_id: The ID of the flavor. Conflicts with the `name`,
            `min_ram` and `min_disk`

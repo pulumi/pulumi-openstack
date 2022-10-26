@@ -19,7 +19,7 @@ type VolumeAttachment struct {
 // VolumeAttachmentInput is an input type that accepts VolumeAttachmentArgs and VolumeAttachmentOutput values.
 // You can construct a concrete instance of `VolumeAttachmentInput` via:
 //
-//          VolumeAttachmentArgs{...}
+//	VolumeAttachmentArgs{...}
 type VolumeAttachmentInput interface {
 	pulumi.Input
 
@@ -48,7 +48,7 @@ func (i VolumeAttachmentArgs) ToVolumeAttachmentOutputWithContext(ctx context.Co
 // VolumeAttachmentArrayInput is an input type that accepts VolumeAttachmentArray and VolumeAttachmentArrayOutput values.
 // You can construct a concrete instance of `VolumeAttachmentArrayInput` via:
 //
-//          VolumeAttachmentArray{ VolumeAttachmentArgs{...} }
+//	VolumeAttachmentArray{ VolumeAttachmentArgs{...} }
 type VolumeAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -141,7 +141,7 @@ type VolumeSchedulerHint struct {
 // VolumeSchedulerHintInput is an input type that accepts VolumeSchedulerHintArgs and VolumeSchedulerHintOutput values.
 // You can construct a concrete instance of `VolumeSchedulerHintInput` via:
 //
-//          VolumeSchedulerHintArgs{...}
+//	VolumeSchedulerHintArgs{...}
 type VolumeSchedulerHintInput interface {
 	pulumi.Input
 
@@ -186,7 +186,7 @@ func (i VolumeSchedulerHintArgs) ToVolumeSchedulerHintOutputWithContext(ctx cont
 // VolumeSchedulerHintArrayInput is an input type that accepts VolumeSchedulerHintArray and VolumeSchedulerHintArrayOutput values.
 // You can construct a concrete instance of `VolumeSchedulerHintArrayInput` via:
 //
-//          VolumeSchedulerHintArray{ VolumeSchedulerHintArgs{...} }
+//	VolumeSchedulerHintArray{ VolumeSchedulerHintArgs{...} }
 type VolumeSchedulerHintArrayInput interface {
 	pulumi.Input
 
@@ -285,7 +285,7 @@ type VolumeV1Attachment struct {
 // VolumeV1AttachmentInput is an input type that accepts VolumeV1AttachmentArgs and VolumeV1AttachmentOutput values.
 // You can construct a concrete instance of `VolumeV1AttachmentInput` via:
 //
-//          VolumeV1AttachmentArgs{...}
+//	VolumeV1AttachmentArgs{...}
 type VolumeV1AttachmentInput interface {
 	pulumi.Input
 
@@ -314,7 +314,7 @@ func (i VolumeV1AttachmentArgs) ToVolumeV1AttachmentOutputWithContext(ctx contex
 // VolumeV1AttachmentArrayInput is an input type that accepts VolumeV1AttachmentArray and VolumeV1AttachmentArrayOutput values.
 // You can construct a concrete instance of `VolumeV1AttachmentArrayInput` via:
 //
-//          VolumeV1AttachmentArray{ VolumeV1AttachmentArgs{...} }
+//	VolumeV1AttachmentArray{ VolumeV1AttachmentArgs{...} }
 type VolumeV1AttachmentArrayInput interface {
 	pulumi.Input
 
@@ -391,7 +391,7 @@ type VolumeV2Attachment struct {
 // VolumeV2AttachmentInput is an input type that accepts VolumeV2AttachmentArgs and VolumeV2AttachmentOutput values.
 // You can construct a concrete instance of `VolumeV2AttachmentInput` via:
 //
-//          VolumeV2AttachmentArgs{...}
+//	VolumeV2AttachmentArgs{...}
 type VolumeV2AttachmentInput interface {
 	pulumi.Input
 
@@ -420,7 +420,7 @@ func (i VolumeV2AttachmentArgs) ToVolumeV2AttachmentOutputWithContext(ctx contex
 // VolumeV2AttachmentArrayInput is an input type that accepts VolumeV2AttachmentArray and VolumeV2AttachmentArrayOutput values.
 // You can construct a concrete instance of `VolumeV2AttachmentArrayInput` via:
 //
-//          VolumeV2AttachmentArray{ VolumeV2AttachmentArgs{...} }
+//	VolumeV2AttachmentArray{ VolumeV2AttachmentArgs{...} }
 type VolumeV2AttachmentArrayInput interface {
 	pulumi.Input
 
@@ -513,7 +513,7 @@ type VolumeV2SchedulerHint struct {
 // VolumeV2SchedulerHintInput is an input type that accepts VolumeV2SchedulerHintArgs and VolumeV2SchedulerHintOutput values.
 // You can construct a concrete instance of `VolumeV2SchedulerHintInput` via:
 //
-//          VolumeV2SchedulerHintArgs{...}
+//	VolumeV2SchedulerHintArgs{...}
 type VolumeV2SchedulerHintInput interface {
 	pulumi.Input
 
@@ -558,7 +558,7 @@ func (i VolumeV2SchedulerHintArgs) ToVolumeV2SchedulerHintOutputWithContext(ctx 
 // VolumeV2SchedulerHintArrayInput is an input type that accepts VolumeV2SchedulerHintArray and VolumeV2SchedulerHintArrayOutput values.
 // You can construct a concrete instance of `VolumeV2SchedulerHintArrayInput` via:
 //
-//          VolumeV2SchedulerHintArray{ VolumeV2SchedulerHintArgs{...} }
+//	VolumeV2SchedulerHintArray{ VolumeV2SchedulerHintArgs{...} }
 type VolumeV2SchedulerHintArrayInput interface {
 	pulumi.Input
 

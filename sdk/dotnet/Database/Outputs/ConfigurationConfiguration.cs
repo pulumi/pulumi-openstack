@@ -18,6 +18,10 @@ namespace Pulumi.OpenStack.Database.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
+        /// </summary>
+        public readonly bool? StringType;
+        /// <summary>
         /// Configuration parameter value. Changing this creates a new resource.
         /// </summary>
         public readonly string Value;
@@ -26,9 +30,12 @@ namespace Pulumi.OpenStack.Database.Outputs
         private ConfigurationConfiguration(
             string name,
 
+            bool? stringType,
+
             string value)
         {
             Name = name;
+            StringType = stringType;
             Value = value;
         }
     }

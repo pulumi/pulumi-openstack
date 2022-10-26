@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSecretAcl {
-    private final GetSecretAclRead read;
+    private GetSecretAclRead read;
 
-    @CustomType.Constructor
-    private GetSecretAcl(@CustomType.Parameter("read") GetSecretAclRead read) {
-        this.read = read;
-    }
-
+    private GetSecretAcl() {}
     public GetSecretAclRead read() {
         return this.read;
     }
@@ -27,24 +23,24 @@ public final class GetSecretAcl {
     public static Builder builder(GetSecretAcl defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private GetSecretAclRead read;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSecretAcl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.read = defaults.read;
         }
 
+        @CustomType.Setter
         public Builder read(GetSecretAclRead read) {
             this.read = Objects.requireNonNull(read);
             return this;
-        }        public GetSecretAcl build() {
-            return new GetSecretAcl(read);
+        }
+        public GetSecretAcl build() {
+            final var o = new GetSecretAcl();
+            o.read = read;
+            return o;
         }
     }
 }

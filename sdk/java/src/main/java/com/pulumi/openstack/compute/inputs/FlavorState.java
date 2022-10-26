@@ -21,6 +21,23 @@ public final class FlavorState extends com.pulumi.resources.ResourceArgs {
     public static final FlavorState Empty = new FlavorState();
 
     /**
+     * The description of the flavor. Changing this
+     * updates the description of the flavor. Requires microversion &gt;= 2.55.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the flavor. Changing this
+     * updates the description of the flavor. Requires microversion &gt;= 2.55.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * The amount of disk space in GiB to use for the root
      * (/) partition. Changing this creates a new flavor.
      * 
@@ -212,6 +229,7 @@ public final class FlavorState extends com.pulumi.resources.ResourceArgs {
     private FlavorState() {}
 
     private FlavorState(FlavorState $) {
+        this.description = $.description;
         this.disk = $.disk;
         this.ephemeral = $.ephemeral;
         this.extraSpecs = $.extraSpecs;
@@ -241,6 +259,29 @@ public final class FlavorState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(FlavorState defaults) {
             $ = new FlavorState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param description The description of the flavor. Changing this
+         * updates the description of the flavor. Requires microversion &gt;= 2.55.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the flavor. Changing this
+         * updates the description of the flavor. Requires microversion &gt;= 2.55.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

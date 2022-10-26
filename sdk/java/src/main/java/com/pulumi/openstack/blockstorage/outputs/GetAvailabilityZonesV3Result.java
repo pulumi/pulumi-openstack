@@ -16,36 +16,25 @@ public final class GetAvailabilityZonesV3Result {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The names of the availability zones, ordered alphanumerically, that
      * match the queried `state`.
      * 
      */
-    private final List<String> names;
+    private List<String> names;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String state;
+    private @Nullable String state;
 
-    @CustomType.Constructor
-    private GetAvailabilityZonesV3Result(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("names") List<String> names,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("state") @Nullable String state) {
-        this.id = id;
-        this.names = names;
-        this.region = region;
-        this.state = state;
-    }
-
+    private GetAvailabilityZonesV3Result() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -83,17 +72,13 @@ public final class GetAvailabilityZonesV3Result {
     public static Builder builder(GetAvailabilityZonesV3Result defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> names;
         private String region;
         private @Nullable String state;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAvailabilityZonesV3Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -102,10 +87,12 @@ public final class GetAvailabilityZonesV3Result {
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder names(List<String> names) {
             this.names = Objects.requireNonNull(names);
             return this;
@@ -113,15 +100,23 @@ public final class GetAvailabilityZonesV3Result {
         public Builder names(String... names) {
             return names(List.of(names));
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder state(@Nullable String state) {
             this.state = state;
             return this;
-        }        public GetAvailabilityZonesV3Result build() {
-            return new GetAvailabilityZonesV3Result(id, names, region, state);
+        }
+        public GetAvailabilityZonesV3Result build() {
+            final var o = new GetAvailabilityZonesV3Result();
+            o.id = id;
+            o.names = names;
+            o.region = region;
+            o.state = state;
+            return o;
         }
     }
 }

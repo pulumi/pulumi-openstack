@@ -22,26 +22,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := loadbalancer.NewListener(ctx, "listener1", &loadbalancer.ListenerArgs{
-// 			InsertHeaders: pulumi.AnyMap{
-// 				"X-Forwarded-For": pulumi.Any("true"),
-// 			},
-// 			LoadbalancerId: pulumi.String("d9415786-5f1a-428b-b35f-2f1523e146d2"),
-// 			Protocol:       pulumi.String("HTTP"),
-// 			ProtocolPort:   pulumi.Int(8080),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := loadbalancer.NewListener(ctx, "listener1", &loadbalancer.ListenerArgs{
+//				InsertHeaders: pulumi.AnyMap{
+//					"X-Forwarded-For": pulumi.Any("true"),
+//				},
+//				LoadbalancerId: pulumi.String("d9415786-5f1a-428b-b35f-2f1523e146d2"),
+//				Protocol:       pulumi.String("HTTP"),
+//				ProtocolPort:   pulumi.Int(8080),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // Load Balancer Listener can be imported using the Listener ID, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:loadbalancer/listener:Listener listener_1 b67ce64e-8b26-405d-afeb-4a078901f15a
+//
+//	$ pulumi import openstack:loadbalancer/listener:Listener listener_1 b67ce64e-8b26-405d-afeb-4a078901f15a
+//
 // ```
 type Listener struct {
 	pulumi.CustomResourceState
@@ -436,7 +441,7 @@ func (i *Listener) ToListenerOutputWithContext(ctx context.Context) ListenerOutp
 // ListenerArrayInput is an input type that accepts ListenerArray and ListenerArrayOutput values.
 // You can construct a concrete instance of `ListenerArrayInput` via:
 //
-//          ListenerArray{ ListenerArgs{...} }
+//	ListenerArray{ ListenerArgs{...} }
 type ListenerArrayInput interface {
 	pulumi.Input
 
@@ -461,7 +466,7 @@ func (i ListenerArray) ToListenerArrayOutputWithContext(ctx context.Context) Lis
 // ListenerMapInput is an input type that accepts ListenerMap and ListenerMapOutput values.
 // You can construct a concrete instance of `ListenerMapInput` via:
 //
-//          ListenerMap{ "key": ListenerArgs{...} }
+//	ListenerMap{ "key": ListenerArgs{...} }
 type ListenerMapInput interface {
 	pulumi.Input
 

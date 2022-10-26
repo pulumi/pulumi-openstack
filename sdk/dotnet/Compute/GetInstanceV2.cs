@@ -156,6 +156,10 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public readonly string AvailabilityZone;
         /// <summary>
+        /// The creation time of the instance.
+        /// </summary>
+        public readonly string Created;
+        /// <summary>
         /// The flavor ID used to create the server.
         /// </summary>
         public readonly string FlavorId;
@@ -199,6 +203,10 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
+        /// The time when the instance was last updated.
+        /// </summary>
+        public readonly string Updated;
+        /// <summary>
         /// The user data added when the server was created.
         /// </summary>
         public readonly string UserData;
@@ -210,6 +218,8 @@ namespace Pulumi.OpenStack.Compute
             string accessIpV6,
 
             string availabilityZone,
+
+            string created,
 
             string flavorId,
 
@@ -237,11 +247,14 @@ namespace Pulumi.OpenStack.Compute
 
             ImmutableArray<string> tags,
 
+            string updated,
+
             string userData)
         {
             AccessIpV4 = accessIpV4;
             AccessIpV6 = accessIpV6;
             AvailabilityZone = availabilityZone;
+            Created = created;
             FlavorId = flavorId;
             FlavorName = flavorName;
             Id = id;
@@ -255,6 +268,7 @@ namespace Pulumi.OpenStack.Compute
             Region = region;
             SecurityGroups = securityGroups;
             Tags = tags;
+            Updated = updated;
             UserData = userData;
         }
     }

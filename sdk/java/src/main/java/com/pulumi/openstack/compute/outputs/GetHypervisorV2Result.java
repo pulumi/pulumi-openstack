@@ -14,70 +14,49 @@ public final class GetHypervisorV2Result {
      * @return The amount in GigaBytes of local storage the hypervisor can provide
      * 
      */
-    private final Integer disk;
+    private Integer disk;
     /**
      * @return The IP address of the Hypervisor
      * 
      */
-    private final String hostIp;
+    private String hostIp;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String hostname;
+    private String hostname;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The number in MegaBytes of memory the hypervisor can provide
      * 
      */
-    private final Integer memory;
+    private Integer memory;
     /**
      * @return The state of the hypervisor (`up` or `down`)
      * 
      */
-    private final String state;
+    private String state;
     /**
      * @return The status of the hypervisor (`enabled` or `disabled`)
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The type of the hypervisor (example: `QEMU`)
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The number of virtual CPUs the hypervisor can provide
      * 
      */
-    private final Integer vcpus;
+    private Integer vcpus;
 
-    @CustomType.Constructor
-    private GetHypervisorV2Result(
-        @CustomType.Parameter("disk") Integer disk,
-        @CustomType.Parameter("hostIp") String hostIp,
-        @CustomType.Parameter("hostname") String hostname,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("memory") Integer memory,
-        @CustomType.Parameter("state") String state,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("vcpus") Integer vcpus) {
-        this.disk = disk;
-        this.hostIp = hostIp;
-        this.hostname = hostname;
-        this.id = id;
-        this.memory = memory;
-        this.state = state;
-        this.status = status;
-        this.type = type;
-        this.vcpus = vcpus;
-    }
-
+    private GetHypervisorV2Result() {}
     /**
      * @return The amount in GigaBytes of local storage the hypervisor can provide
      * 
@@ -149,7 +128,7 @@ public final class GetHypervisorV2Result {
     public static Builder builder(GetHypervisorV2Result defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer disk;
         private String hostIp;
@@ -160,11 +139,7 @@ public final class GetHypervisorV2Result {
         private String status;
         private String type;
         private Integer vcpus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHypervisorV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.disk = defaults.disk;
@@ -178,43 +153,63 @@ public final class GetHypervisorV2Result {
     	      this.vcpus = defaults.vcpus;
         }
 
+        @CustomType.Setter
         public Builder disk(Integer disk) {
             this.disk = Objects.requireNonNull(disk);
             return this;
         }
+        @CustomType.Setter
         public Builder hostIp(String hostIp) {
             this.hostIp = Objects.requireNonNull(hostIp);
             return this;
         }
+        @CustomType.Setter
         public Builder hostname(String hostname) {
             this.hostname = Objects.requireNonNull(hostname);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder memory(Integer memory) {
             this.memory = Objects.requireNonNull(memory);
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder vcpus(Integer vcpus) {
             this.vcpus = Objects.requireNonNull(vcpus);
             return this;
-        }        public GetHypervisorV2Result build() {
-            return new GetHypervisorV2Result(disk, hostIp, hostname, id, memory, state, status, type, vcpus);
+        }
+        public GetHypervisorV2Result build() {
+            final var o = new GetHypervisorV2Result();
+            o.disk = disk;
+            o.hostIp = hostIp;
+            o.hostname = hostname;
+            o.id = id;
+            o.memory = memory;
+            o.state = state;
+            o.status = status;
+            o.type = type;
+            o.vcpus = vcpus;
+            return o;
         }
     }
 }

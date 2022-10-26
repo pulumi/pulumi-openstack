@@ -82,6 +82,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly configDrive!: pulumi.Output<boolean | undefined>;
     /**
+     * The creation time of the instance.
+     */
+    public /*out*/ readonly created!: pulumi.Output<string>;
+    /**
      * The flavor ID of
      * the desired flavor for the server. Changing this resizes the existing server.
      */
@@ -187,6 +191,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
+     * The time when the instance was last updated.
+     */
+    public /*out*/ readonly updated!: pulumi.Output<string>;
+    /**
      * The user data to provide when launching the instance.
      * Changing this creates a new server.
      */
@@ -223,6 +231,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["availabilityZoneHints"] = state ? state.availabilityZoneHints : undefined;
             resourceInputs["blockDevices"] = state ? state.blockDevices : undefined;
             resourceInputs["configDrive"] = state ? state.configDrive : undefined;
+            resourceInputs["created"] = state ? state.created : undefined;
             resourceInputs["flavorId"] = state ? state.flavorId : undefined;
             resourceInputs["flavorName"] = state ? state.flavorName : undefined;
             resourceInputs["floatingIp"] = state ? state.floatingIp : undefined;
@@ -241,6 +250,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
             resourceInputs["stopBeforeDestroy"] = state ? state.stopBeforeDestroy : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updated"] = state ? state.updated : undefined;
             resourceInputs["userData"] = state ? state.userData : undefined;
             resourceInputs["vendorOptions"] = state ? state.vendorOptions : undefined;
             resourceInputs["volumes"] = state ? state.volumes : undefined;
@@ -276,6 +286,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["volumes"] = args ? args.volumes : undefined;
             resourceInputs["allMetadata"] = undefined /*out*/;
             resourceInputs["allTags"] = undefined /*out*/;
+            resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["updated"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
@@ -334,6 +346,10 @@ export interface InstanceState {
      * configure the instance. Changing this creates a new server.
      */
     configDrive?: pulumi.Input<boolean>;
+    /**
+     * The creation time of the instance.
+     */
+    created?: pulumi.Input<string>;
     /**
      * The flavor ID of
      * the desired flavor for the server. Changing this resizes the existing server.
@@ -439,6 +455,10 @@ export interface InstanceState {
      * updates the existing instance tags.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The time when the instance was last updated.
+     */
+    updated?: pulumi.Input<string>;
     /**
      * The user data to provide when launching the instance.
      * Changing this creates a new server.

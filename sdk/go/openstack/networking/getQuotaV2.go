@@ -18,21 +18,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := networking.LookupQuotaV2(ctx, &networking.LookupQuotaV2Args{
-// 			ProjectId: "2e367a3d29f94fd988e6ec54e305ec9d",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.LookupQuotaV2(ctx, &networking.LookupQuotaV2Args{
+//				ProjectId: "2e367a3d29f94fd988e6ec54e305ec9d",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupQuotaV2(ctx *pulumi.Context, args *LookupQuotaV2Args, opts ...pulumi.InvokeOption) (*LookupQuotaV2Result, error) {
 	var rv LookupQuotaV2Result

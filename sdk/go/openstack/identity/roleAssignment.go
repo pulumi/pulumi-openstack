@@ -22,37 +22,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project1, err := identity.NewProject(ctx, "project1", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		user1, err := identity.NewUser(ctx, "user1", &identity.UserArgs{
-// 			DefaultProjectId: project1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		role1, err := identity.NewRole(ctx, "role1", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = identity.NewRoleAssignment(ctx, "roleAssignment1", &identity.RoleAssignmentArgs{
-// 			ProjectId: project1.ID(),
-// 			RoleId:    role1.ID(),
-// 			UserId:    user1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			user1, err := identity.NewUser(ctx, "user1", &identity.UserArgs{
+//				DefaultProjectId: project1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			role1, err := identity.NewRole(ctx, "role1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = identity.NewRoleAssignment(ctx, "roleAssignment1", &identity.RoleAssignmentArgs{
+//				ProjectId: project1.ID(),
+//				RoleId:    role1.ID(),
+//				UserId:    user1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type RoleAssignment struct {
 	pulumi.CustomResourceState
@@ -188,7 +191,7 @@ func (i *RoleAssignment) ToRoleAssignmentOutputWithContext(ctx context.Context) 
 // RoleAssignmentArrayInput is an input type that accepts RoleAssignmentArray and RoleAssignmentArrayOutput values.
 // You can construct a concrete instance of `RoleAssignmentArrayInput` via:
 //
-//          RoleAssignmentArray{ RoleAssignmentArgs{...} }
+//	RoleAssignmentArray{ RoleAssignmentArgs{...} }
 type RoleAssignmentArrayInput interface {
 	pulumi.Input
 
@@ -213,7 +216,7 @@ func (i RoleAssignmentArray) ToRoleAssignmentArrayOutputWithContext(ctx context.
 // RoleAssignmentMapInput is an input type that accepts RoleAssignmentMap and RoleAssignmentMapOutput values.
 // You can construct a concrete instance of `RoleAssignmentMapInput` via:
 //
-//          RoleAssignmentMap{ "key": RoleAssignmentArgs{...} }
+//	RoleAssignmentMap{ "key": RoleAssignmentArgs{...} }
 type RoleAssignmentMapInput interface {
 	pulumi.Input
 

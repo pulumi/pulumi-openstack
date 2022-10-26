@@ -13,21 +13,14 @@ public final class ContainerVersioning {
      * @return Container in which versions will be stored.
      * 
      */
-    private final String location;
+    private String location;
     /**
      * @return Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private ContainerVersioning(
-        @CustomType.Parameter("location") String location,
-        @CustomType.Parameter("type") String type) {
-        this.location = location;
-        this.type = type;
-    }
-
+    private ContainerVersioning() {}
     /**
      * @return Container in which versions will be stored.
      * 
@@ -50,30 +43,32 @@ public final class ContainerVersioning {
     public static Builder builder(ContainerVersioning defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String location;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ContainerVersioning defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.location = defaults.location;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder location(String location) {
             this.location = Objects.requireNonNull(location);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public ContainerVersioning build() {
-            return new ContainerVersioning(location, type);
+        }
+        public ContainerVersioning build() {
+            final var o = new ContainerVersioning();
+            o.location = location;
+            o.type = type;
+            return o;
         }
     }
 }

@@ -13,35 +13,24 @@ public final class GetRoleResult {
      * @return See Argument Reference above.
      * 
      */
-    private final String domainId;
+    private String domainId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
 
-    @CustomType.Constructor
-    private GetRoleResult(
-        @CustomType.Parameter("domainId") String domainId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("region") String region) {
-        this.domainId = domainId;
-        this.id = id;
-        this.name = name;
-        this.region = region;
-    }
-
+    private GetRoleResult() {}
     /**
      * @return See Argument Reference above.
      * 
@@ -78,17 +67,13 @@ public final class GetRoleResult {
     public static Builder builder(GetRoleResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String domainId;
         private String id;
         private String name;
         private String region;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRoleResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domainId = defaults.domainId;
@@ -97,23 +82,33 @@ public final class GetRoleResult {
     	      this.region = defaults.region;
         }
 
+        @CustomType.Setter
         public Builder domainId(String domainId) {
             this.domainId = Objects.requireNonNull(domainId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
-        }        public GetRoleResult build() {
-            return new GetRoleResult(domainId, id, name, region);
+        }
+        public GetRoleResult build() {
+            final var o = new GetRoleResult();
+            o.domainId = domainId;
+            o.id = id;
+            o.name = name;
+            o.region = region;
+            return o;
         }
     }
 }

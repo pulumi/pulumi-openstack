@@ -20,104 +20,64 @@ public final class GetSubnetResult {
      * @return A set of string tags applied on the subnet.
      * 
      */
-    private final List<String> allTags;
+    private List<String> allTags;
     /**
      * @return Allocation pools of the subnet.
      * 
      */
-    private final List<GetSubnetAllocationPool> allocationPools;
-    private final String cidr;
-    private final String description;
+    private List<GetSubnetAllocationPool> allocationPools;
+    private String cidr;
+    private String description;
     /**
      * @deprecated
      * use dhcp_enabled instead
      * 
      */
     @Deprecated /* use dhcp_enabled instead */
-    private final @Nullable Boolean dhcpDisabled;
-    private final @Nullable Boolean dhcpEnabled;
+    private @Nullable Boolean dhcpDisabled;
+    private @Nullable Boolean dhcpEnabled;
     /**
      * @return DNS Nameservers of the subnet.
      * 
      */
-    private final List<String> dnsNameservers;
+    private List<String> dnsNameservers;
     /**
      * @return Whether the subnet has DHCP enabled or not.
      * 
      */
-    private final Boolean enableDhcp;
-    private final String gatewayIp;
+    private Boolean enableDhcp;
+    private String gatewayIp;
     /**
      * @return Host Routes of the subnet.
      * 
      */
-    private final List<GetSubnetHostRoute> hostRoutes;
+    private List<GetSubnetHostRoute> hostRoutes;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final Integer ipVersion;
-    private final String ipv6AddressMode;
-    private final String ipv6RaMode;
-    private final String name;
-    private final String networkId;
+    private String id;
+    private Integer ipVersion;
+    private String ipv6AddressMode;
+    private String ipv6RaMode;
+    private String name;
+    private String networkId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
-    private final String subnetId;
-    private final String subnetpoolId;
-    private final @Nullable List<String> tags;
-    private final String tenantId;
+    private String region;
+    /**
+     * @return Service types of the subnet.
+     * 
+     */
+    private List<String> serviceTypes;
+    private String subnetId;
+    private String subnetpoolId;
+    private @Nullable List<String> tags;
+    private String tenantId;
 
-    @CustomType.Constructor
-    private GetSubnetResult(
-        @CustomType.Parameter("allTags") List<String> allTags,
-        @CustomType.Parameter("allocationPools") List<GetSubnetAllocationPool> allocationPools,
-        @CustomType.Parameter("cidr") String cidr,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("dhcpDisabled") @Nullable Boolean dhcpDisabled,
-        @CustomType.Parameter("dhcpEnabled") @Nullable Boolean dhcpEnabled,
-        @CustomType.Parameter("dnsNameservers") List<String> dnsNameservers,
-        @CustomType.Parameter("enableDhcp") Boolean enableDhcp,
-        @CustomType.Parameter("gatewayIp") String gatewayIp,
-        @CustomType.Parameter("hostRoutes") List<GetSubnetHostRoute> hostRoutes,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipVersion") Integer ipVersion,
-        @CustomType.Parameter("ipv6AddressMode") String ipv6AddressMode,
-        @CustomType.Parameter("ipv6RaMode") String ipv6RaMode,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("networkId") String networkId,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("subnetId") String subnetId,
-        @CustomType.Parameter("subnetpoolId") String subnetpoolId,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("tenantId") String tenantId) {
-        this.allTags = allTags;
-        this.allocationPools = allocationPools;
-        this.cidr = cidr;
-        this.description = description;
-        this.dhcpDisabled = dhcpDisabled;
-        this.dhcpEnabled = dhcpEnabled;
-        this.dnsNameservers = dnsNameservers;
-        this.enableDhcp = enableDhcp;
-        this.gatewayIp = gatewayIp;
-        this.hostRoutes = hostRoutes;
-        this.id = id;
-        this.ipVersion = ipVersion;
-        this.ipv6AddressMode = ipv6AddressMode;
-        this.ipv6RaMode = ipv6RaMode;
-        this.name = name;
-        this.networkId = networkId;
-        this.region = region;
-        this.subnetId = subnetId;
-        this.subnetpoolId = subnetpoolId;
-        this.tags = tags;
-        this.tenantId = tenantId;
-    }
-
+    private GetSubnetResult() {}
     /**
      * @return A set of string tags applied on the subnet.
      * 
@@ -203,6 +163,13 @@ public final class GetSubnetResult {
     public String region() {
         return this.region;
     }
+    /**
+     * @return Service types of the subnet.
+     * 
+     */
+    public List<String> serviceTypes() {
+        return this.serviceTypes;
+    }
     public String subnetId() {
         return this.subnetId;
     }
@@ -223,7 +190,7 @@ public final class GetSubnetResult {
     public static Builder builder(GetSubnetResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> allTags;
         private List<GetSubnetAllocationPool> allocationPools;
@@ -242,15 +209,12 @@ public final class GetSubnetResult {
         private String name;
         private String networkId;
         private String region;
+        private List<String> serviceTypes;
         private String subnetId;
         private String subnetpoolId;
         private @Nullable List<String> tags;
         private String tenantId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSubnetResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allTags = defaults.allTags;
@@ -270,12 +234,14 @@ public final class GetSubnetResult {
     	      this.name = defaults.name;
     	      this.networkId = defaults.networkId;
     	      this.region = defaults.region;
+    	      this.serviceTypes = defaults.serviceTypes;
     	      this.subnetId = defaults.subnetId;
     	      this.subnetpoolId = defaults.subnetpoolId;
     	      this.tags = defaults.tags;
     	      this.tenantId = defaults.tenantId;
         }
 
+        @CustomType.Setter
         public Builder allTags(List<String> allTags) {
             this.allTags = Objects.requireNonNull(allTags);
             return this;
@@ -283,6 +249,7 @@ public final class GetSubnetResult {
         public Builder allTags(String... allTags) {
             return allTags(List.of(allTags));
         }
+        @CustomType.Setter
         public Builder allocationPools(List<GetSubnetAllocationPool> allocationPools) {
             this.allocationPools = Objects.requireNonNull(allocationPools);
             return this;
@@ -290,22 +257,27 @@ public final class GetSubnetResult {
         public Builder allocationPools(GetSubnetAllocationPool... allocationPools) {
             return allocationPools(List.of(allocationPools));
         }
+        @CustomType.Setter
         public Builder cidr(String cidr) {
             this.cidr = Objects.requireNonNull(cidr);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder dhcpDisabled(@Nullable Boolean dhcpDisabled) {
             this.dhcpDisabled = dhcpDisabled;
             return this;
         }
+        @CustomType.Setter
         public Builder dhcpEnabled(@Nullable Boolean dhcpEnabled) {
             this.dhcpEnabled = dhcpEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder dnsNameservers(List<String> dnsNameservers) {
             this.dnsNameservers = Objects.requireNonNull(dnsNameservers);
             return this;
@@ -313,14 +285,17 @@ public final class GetSubnetResult {
         public Builder dnsNameservers(String... dnsNameservers) {
             return dnsNameservers(List.of(dnsNameservers));
         }
+        @CustomType.Setter
         public Builder enableDhcp(Boolean enableDhcp) {
             this.enableDhcp = Objects.requireNonNull(enableDhcp);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayIp(String gatewayIp) {
             this.gatewayIp = Objects.requireNonNull(gatewayIp);
             return this;
         }
+        @CustomType.Setter
         public Builder hostRoutes(List<GetSubnetHostRoute> hostRoutes) {
             this.hostRoutes = Objects.requireNonNull(hostRoutes);
             return this;
@@ -328,42 +303,60 @@ public final class GetSubnetResult {
         public Builder hostRoutes(GetSubnetHostRoute... hostRoutes) {
             return hostRoutes(List.of(hostRoutes));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipVersion(Integer ipVersion) {
             this.ipVersion = Objects.requireNonNull(ipVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv6AddressMode(String ipv6AddressMode) {
             this.ipv6AddressMode = Objects.requireNonNull(ipv6AddressMode);
             return this;
         }
+        @CustomType.Setter
         public Builder ipv6RaMode(String ipv6RaMode) {
             this.ipv6RaMode = Objects.requireNonNull(ipv6RaMode);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder networkId(String networkId) {
             this.networkId = Objects.requireNonNull(networkId);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
+        public Builder serviceTypes(List<String> serviceTypes) {
+            this.serviceTypes = Objects.requireNonNull(serviceTypes);
+            return this;
+        }
+        public Builder serviceTypes(String... serviceTypes) {
+            return serviceTypes(List.of(serviceTypes));
+        }
+        @CustomType.Setter
         public Builder subnetId(String subnetId) {
             this.subnetId = Objects.requireNonNull(subnetId);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetpoolId(String subnetpoolId) {
             this.subnetpoolId = Objects.requireNonNull(subnetpoolId);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -371,11 +364,36 @@ public final class GetSubnetResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder tenantId(String tenantId) {
             this.tenantId = Objects.requireNonNull(tenantId);
             return this;
-        }        public GetSubnetResult build() {
-            return new GetSubnetResult(allTags, allocationPools, cidr, description, dhcpDisabled, dhcpEnabled, dnsNameservers, enableDhcp, gatewayIp, hostRoutes, id, ipVersion, ipv6AddressMode, ipv6RaMode, name, networkId, region, subnetId, subnetpoolId, tags, tenantId);
+        }
+        public GetSubnetResult build() {
+            final var o = new GetSubnetResult();
+            o.allTags = allTags;
+            o.allocationPools = allocationPools;
+            o.cidr = cidr;
+            o.description = description;
+            o.dhcpDisabled = dhcpDisabled;
+            o.dhcpEnabled = dhcpEnabled;
+            o.dnsNameservers = dnsNameservers;
+            o.enableDhcp = enableDhcp;
+            o.gatewayIp = gatewayIp;
+            o.hostRoutes = hostRoutes;
+            o.id = id;
+            o.ipVersion = ipVersion;
+            o.ipv6AddressMode = ipv6AddressMode;
+            o.ipv6RaMode = ipv6RaMode;
+            o.name = name;
+            o.networkId = networkId;
+            o.region = region;
+            o.serviceTypes = serviceTypes;
+            o.subnetId = subnetId;
+            o.subnetpoolId = subnetpoolId;
+            o.tags = tags;
+            o.tenantId = tenantId;
+            return o;
         }
     }
 }

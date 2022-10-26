@@ -13,42 +13,29 @@ public final class GetKeypairResult {
      * @return The fingerprint of the OpenSSH key.
      * 
      */
-    private final String fingerprint;
+    private String fingerprint;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The OpenSSH-formatted public key of the keypair.
      * 
      */
-    private final String publicKey;
+    private String publicKey;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
 
-    @CustomType.Constructor
-    private GetKeypairResult(
-        @CustomType.Parameter("fingerprint") String fingerprint,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("publicKey") String publicKey,
-        @CustomType.Parameter("region") String region) {
-        this.fingerprint = fingerprint;
-        this.id = id;
-        this.name = name;
-        this.publicKey = publicKey;
-        this.region = region;
-    }
-
+    private GetKeypairResult() {}
     /**
      * @return The fingerprint of the OpenSSH key.
      * 
@@ -92,18 +79,14 @@ public final class GetKeypairResult {
     public static Builder builder(GetKeypairResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String fingerprint;
         private String id;
         private String name;
         private String publicKey;
         private String region;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKeypairResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fingerprint = defaults.fingerprint;
@@ -113,27 +96,39 @@ public final class GetKeypairResult {
     	      this.region = defaults.region;
         }
 
+        @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
             this.fingerprint = Objects.requireNonNull(fingerprint);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder publicKey(String publicKey) {
             this.publicKey = Objects.requireNonNull(publicKey);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
-        }        public GetKeypairResult build() {
-            return new GetKeypairResult(fingerprint, id, name, publicKey, region);
+        }
+        public GetKeypairResult build() {
+            final var o = new GetKeypairResult();
+            o.fingerprint = fingerprint;
+            o.id = id;
+            o.name = name;
+            o.publicKey = publicKey;
+            o.region = region;
+            return o;
         }
     }
 }

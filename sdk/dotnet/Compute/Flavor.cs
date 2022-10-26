@@ -50,6 +50,13 @@ namespace Pulumi.OpenStack.Compute
     public partial class Flavor : Pulumi.CustomResource
     {
         /// <summary>
+        /// The description of the flavor. Changing this
+        /// updates the description of the flavor. Requires microversion &gt;= 2.55.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
         /// The amount of disk space in GiB to use for the root
         /// (/) partition. Changing this creates a new flavor.
         /// </summary>
@@ -174,6 +181,13 @@ namespace Pulumi.OpenStack.Compute
     public sealed class FlavorArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The description of the flavor. Changing this
+        /// updates the description of the flavor. Requires microversion &gt;= 2.55.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The amount of disk space in GiB to use for the root
         /// (/) partition. Changing this creates a new flavor.
         /// </summary>
@@ -264,6 +278,13 @@ namespace Pulumi.OpenStack.Compute
 
     public sealed class FlavorState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the flavor. Changing this
+        /// updates the description of the flavor. Requires microversion &gt;= 2.55.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
         /// <summary>
         /// The amount of disk space in GiB to use for the root
         /// (/) partition. Changing this creates a new flavor.

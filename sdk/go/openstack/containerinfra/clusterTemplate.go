@@ -20,38 +20,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/containerinfra"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/containerinfra"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := containerinfra.NewClusterTemplate(ctx, "clustertemplate1", &containerinfra.ClusterTemplateArgs{
-// 			Coe:                 pulumi.String("kubernetes"),
-// 			DnsNameserver:       pulumi.String("1.1.1.1"),
-// 			DockerStorageDriver: pulumi.String("devicemapper"),
-// 			DockerVolumeSize:    pulumi.Int(10),
-// 			Flavor:              pulumi.String("m1.small"),
-// 			FloatingIpEnabled:   pulumi.Bool(false),
-// 			Image:               pulumi.String("Fedora-Atomic-27"),
-// 			Labels: pulumi.AnyMap{
-// 				"influx_grafana_dashboard_enabled": pulumi.Any("true"),
-// 				"kube_dashboard_enabled":           pulumi.Any("true"),
-// 				"kube_tag":                         pulumi.Any("1.11.1"),
-// 				"prometheus_monitoring":            pulumi.Any("true"),
-// 			},
-// 			MasterFlavor:    pulumi.String("m1.medium"),
-// 			MasterLbEnabled: pulumi.Bool(true),
-// 			NetworkDriver:   pulumi.String("flannel"),
-// 			ServerType:      pulumi.String("vm"),
-// 			VolumeDriver:    pulumi.String("cinder"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := containerinfra.NewClusterTemplate(ctx, "clustertemplate1", &containerinfra.ClusterTemplateArgs{
+//				Coe:                 pulumi.String("kubernetes"),
+//				DnsNameserver:       pulumi.String("1.1.1.1"),
+//				DockerStorageDriver: pulumi.String("devicemapper"),
+//				DockerVolumeSize:    pulumi.Int(10),
+//				Flavor:              pulumi.String("m1.small"),
+//				FloatingIpEnabled:   pulumi.Bool(false),
+//				Image:               pulumi.String("Fedora-Atomic-27"),
+//				Labels: pulumi.AnyMap{
+//					"influx_grafana_dashboard_enabled": pulumi.Any("true"),
+//					"kube_dashboard_enabled":           pulumi.Any("true"),
+//					"kube_tag":                         pulumi.Any("1.11.1"),
+//					"prometheus_monitoring":            pulumi.Any("true"),
+//				},
+//				MasterFlavor:    pulumi.String("m1.medium"),
+//				MasterLbEnabled: pulumi.Bool(true),
+//				NetworkDriver:   pulumi.String("flannel"),
+//				ServerType:      pulumi.String("vm"),
+//				VolumeDriver:    pulumi.String("cinder"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes reference
 //
@@ -95,7 +98,9 @@ import (
 // Cluster templates can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
+//
+//	$ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
+//
 // ```
 type ClusterTemplate struct {
 	pulumi.CustomResourceState
@@ -749,7 +754,7 @@ func (i *ClusterTemplate) ToClusterTemplateOutputWithContext(ctx context.Context
 // ClusterTemplateArrayInput is an input type that accepts ClusterTemplateArray and ClusterTemplateArrayOutput values.
 // You can construct a concrete instance of `ClusterTemplateArrayInput` via:
 //
-//          ClusterTemplateArray{ ClusterTemplateArgs{...} }
+//	ClusterTemplateArray{ ClusterTemplateArgs{...} }
 type ClusterTemplateArrayInput interface {
 	pulumi.Input
 
@@ -774,7 +779,7 @@ func (i ClusterTemplateArray) ToClusterTemplateArrayOutputWithContext(ctx contex
 // ClusterTemplateMapInput is an input type that accepts ClusterTemplateMap and ClusterTemplateMapOutput values.
 // You can construct a concrete instance of `ClusterTemplateMapInput` via:
 //
-//          ClusterTemplateMap{ "key": ClusterTemplateArgs{...} }
+//	ClusterTemplateMap{ "key": ClusterTemplateArgs{...} }
 type ClusterTemplateMapInput interface {
 	pulumi.Input
 

@@ -17,38 +17,27 @@ public final class InstanceUser {
      * user has access to all databases on th einstance. Changing this creates a new instance.
      * 
      */
-    private final @Nullable List<String> databases;
+    private @Nullable List<String> databases;
     /**
      * @return An ip address or % sign indicating what ip addresses can connect with
      * this user credentials. Changing this creates a new instance.
      * 
      */
-    private final @Nullable String host;
+    private @Nullable String host;
     /**
      * @return Database to be created on new instance. Changing this creates a
      * new instance.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return User&#39;s password. Changing this creates a
      * new instance.
      * 
      */
-    private final @Nullable String password;
+    private @Nullable String password;
 
-    @CustomType.Constructor
-    private InstanceUser(
-        @CustomType.Parameter("databases") @Nullable List<String> databases,
-        @CustomType.Parameter("host") @Nullable String host,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("password") @Nullable String password) {
-        this.databases = databases;
-        this.host = host;
-        this.name = name;
-        this.password = password;
-    }
-
+    private InstanceUser() {}
     /**
      * @return A list of databases that user will have access to. If not specified,
      * user has access to all databases on th einstance. Changing this creates a new instance.
@@ -89,17 +78,13 @@ public final class InstanceUser {
     public static Builder builder(InstanceUser defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> databases;
         private @Nullable String host;
         private String name;
         private @Nullable String password;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceUser defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databases = defaults.databases;
@@ -108,6 +93,7 @@ public final class InstanceUser {
     	      this.password = defaults.password;
         }
 
+        @CustomType.Setter
         public Builder databases(@Nullable List<String> databases) {
             this.databases = databases;
             return this;
@@ -115,19 +101,28 @@ public final class InstanceUser {
         public Builder databases(String... databases) {
             return databases(List.of(databases));
         }
+        @CustomType.Setter
         public Builder host(@Nullable String host) {
             this.host = host;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
             this.password = password;
             return this;
-        }        public InstanceUser build() {
-            return new InstanceUser(databases, host, name, password);
+        }
+        public InstanceUser build() {
+            final var o = new InstanceUser();
+            o.databases = databases;
+            o.host = host;
+            o.name = name;
+            o.password = password;
+            return o;
         }
     }
 }

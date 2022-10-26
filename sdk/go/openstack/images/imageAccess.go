@@ -24,34 +24,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/images"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/images"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		rancheros, err := images.NewImage(ctx, "rancheros", &images.ImageArgs{
-// 			ContainerFormat: pulumi.String("bare"),
-// 			DiskFormat:      pulumi.String("qcow2"),
-// 			ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
-// 			Properties: pulumi.AnyMap{
-// 				"key": pulumi.Any("value"),
-// 			},
-// 			Visibility: pulumi.String("shared"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = images.NewImageAccess(ctx, "rancherosMember", &images.ImageAccessArgs{
-// 			ImageId:  rancheros.ID(),
-// 			MemberId: pulumi.String("bed6b6cbb86a4e2d8dc2735c2f1000e4"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			rancheros, err := images.NewImage(ctx, "rancheros", &images.ImageArgs{
+//				ContainerFormat: pulumi.String("bare"),
+//				DiskFormat:      pulumi.String("qcow2"),
+//				ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
+//				Properties: pulumi.AnyMap{
+//					"key": pulumi.Any("value"),
+//				},
+//				Visibility: pulumi.String("shared"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = images.NewImageAccess(ctx, "rancherosMember", &images.ImageAccessArgs{
+//				ImageId:  rancheros.ID(),
+//				MemberId: pulumi.String("bed6b6cbb86a4e2d8dc2735c2f1000e4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Privileged user
 //
@@ -62,35 +65,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/images"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/images"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		rancheros, err := images.NewImage(ctx, "rancheros", &images.ImageArgs{
-// 			ContainerFormat: pulumi.String("bare"),
-// 			DiskFormat:      pulumi.String("qcow2"),
-// 			ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
-// 			Properties: pulumi.AnyMap{
-// 				"key": pulumi.Any("value"),
-// 			},
-// 			Visibility: pulumi.String("shared"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = images.NewImageAccess(ctx, "rancherosMember", &images.ImageAccessArgs{
-// 			ImageId:  rancheros.ID(),
-// 			MemberId: pulumi.String("bed6b6cbb86a4e2d8dc2735c2f1000e4"),
-// 			Status:   pulumi.String("accepted"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			rancheros, err := images.NewImage(ctx, "rancheros", &images.ImageArgs{
+//				ContainerFormat: pulumi.String("bare"),
+//				DiskFormat:      pulumi.String("qcow2"),
+//				ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
+//				Properties: pulumi.AnyMap{
+//					"key": pulumi.Any("value"),
+//				},
+//				Visibility: pulumi.String("shared"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = images.NewImageAccess(ctx, "rancherosMember", &images.ImageAccessArgs{
+//				ImageId:  rancheros.ID(),
+//				MemberId: pulumi.String("bed6b6cbb86a4e2d8dc2735c2f1000e4"),
+//				Status:   pulumi.String("accepted"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -98,7 +104,9 @@ import (
 // Image access can be imported using the `image_id` and the `member_id`, separated by a slash, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:images/imageAccess:ImageAccess openstack_images_image_access_v2 89c60255-9bd6-460c-822a-e2b959ede9d2/bed6b6cbb86a4e2d8dc2735c2f1000e4
+//
+//	$ pulumi import openstack:images/imageAccess:ImageAccess openstack_images_image_access_v2 89c60255-9bd6-460c-822a-e2b959ede9d2/bed6b6cbb86a4e2d8dc2735c2f1000e4
+//
 // ```
 type ImageAccess struct {
 	pulumi.CustomResourceState
@@ -260,7 +268,7 @@ func (i *ImageAccess) ToImageAccessOutputWithContext(ctx context.Context) ImageA
 // ImageAccessArrayInput is an input type that accepts ImageAccessArray and ImageAccessArrayOutput values.
 // You can construct a concrete instance of `ImageAccessArrayInput` via:
 //
-//          ImageAccessArray{ ImageAccessArgs{...} }
+//	ImageAccessArray{ ImageAccessArgs{...} }
 type ImageAccessArrayInput interface {
 	pulumi.Input
 
@@ -285,7 +293,7 @@ func (i ImageAccessArray) ToImageAccessArrayOutputWithContext(ctx context.Contex
 // ImageAccessMapInput is an input type that accepts ImageAccessMap and ImageAccessMapOutput values.
 // You can construct a concrete instance of `ImageAccessMapInput` via:
 //
-//          ImageAccessMap{ "key": ImageAccessArgs{...} }
+//	ImageAccessMap{ "key": ImageAccessArgs{...} }
 type ImageAccessMapInput interface {
 	pulumi.Input
 

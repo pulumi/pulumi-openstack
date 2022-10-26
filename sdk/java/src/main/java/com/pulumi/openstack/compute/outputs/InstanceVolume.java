@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceVolume {
-    private final @Nullable String device;
-    private final @Nullable String id;
-    private final String volumeId;
+    private @Nullable String device;
+    private @Nullable String id;
+    private String volumeId;
 
-    @CustomType.Constructor
-    private InstanceVolume(
-        @CustomType.Parameter("device") @Nullable String device,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("volumeId") String volumeId) {
-        this.device = device;
-        this.id = id;
-        this.volumeId = volumeId;
-    }
-
+    private InstanceVolume() {}
     public Optional<String> device() {
         return Optional.ofNullable(this.device);
     }
@@ -42,16 +33,12 @@ public final class InstanceVolume {
     public static Builder builder(InstanceVolume defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String device;
         private @Nullable String id;
         private String volumeId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.device = defaults.device;
@@ -59,19 +46,27 @@ public final class InstanceVolume {
     	      this.volumeId = defaults.volumeId;
         }
 
+        @CustomType.Setter
         public Builder device(@Nullable String device) {
             this.device = device;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder volumeId(String volumeId) {
             this.volumeId = Objects.requireNonNull(volumeId);
             return this;
-        }        public InstanceVolume build() {
-            return new InstanceVolume(device, id, volumeId);
+        }
+        public InstanceVolume build() {
+            final var o = new InstanceVolume();
+            o.device = device;
+            o.id = id;
+            o.volumeId = volumeId;
+            return o;
         }
     }
 }

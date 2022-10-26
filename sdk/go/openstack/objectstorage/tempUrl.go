@@ -25,39 +25,42 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/objectstorage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/objectstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		container1, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
-// 			Metadata: pulumi.AnyMap{
-// 				"Temp-URL-Key": pulumi.Any("testkey"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		object1, err := objectstorage.NewContainerObject(ctx, "object1", &objectstorage.ContainerObjectArgs{
-// 			ContainerName: container1.Name,
-// 			Content:       pulumi.String("Hello, world!"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = objectstorage.NewTempUrl(ctx, "objTempurl", &objectstorage.TempUrlArgs{
-// 			Container: container1.Name,
-// 			Method:    pulumi.String("post"),
-// 			Object:    object1.Name,
-// 			Ttl:       pulumi.Int(20),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			container1, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
+//				Metadata: pulumi.AnyMap{
+//					"Temp-URL-Key": pulumi.Any("testkey"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			object1, err := objectstorage.NewContainerObject(ctx, "object1", &objectstorage.ContainerObjectArgs{
+//				ContainerName: container1.Name,
+//				Content:       pulumi.String("Hello, world!"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = objectstorage.NewTempUrl(ctx, "objTempurl", &objectstorage.TempUrlArgs{
+//				Container: container1.Name,
+//				Method:    pulumi.String("post"),
+//				Object:    object1.Name,
+//				Ttl:       pulumi.Int(20),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type TempUrl struct {
 	pulumi.CustomResourceState
@@ -235,7 +238,7 @@ func (i *TempUrl) ToTempUrlOutputWithContext(ctx context.Context) TempUrlOutput 
 // TempUrlArrayInput is an input type that accepts TempUrlArray and TempUrlArrayOutput values.
 // You can construct a concrete instance of `TempUrlArrayInput` via:
 //
-//          TempUrlArray{ TempUrlArgs{...} }
+//	TempUrlArray{ TempUrlArgs{...} }
 type TempUrlArrayInput interface {
 	pulumi.Input
 
@@ -260,7 +263,7 @@ func (i TempUrlArray) ToTempUrlArrayOutputWithContext(ctx context.Context) TempU
 // TempUrlMapInput is an input type that accepts TempUrlMap and TempUrlMapOutput values.
 // You can construct a concrete instance of `TempUrlMapInput` via:
 //
-//          TempUrlMap{ "key": TempUrlArgs{...} }
+//	TempUrlMap{ "key": TempUrlArgs{...} }
 type TempUrlMapInput interface {
 	pulumi.Input
 

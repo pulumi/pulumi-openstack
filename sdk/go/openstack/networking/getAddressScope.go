@@ -18,23 +18,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := networking.LookupAddressScope(ctx, &networking.LookupAddressScopeArgs{
-// 			IpVersion: pulumi.IntRef(4),
-// 			Name:      pulumi.StringRef("public_addressscope"),
-// 			Shared:    pulumi.BoolRef(true),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.LookupAddressScope(ctx, &networking.LookupAddressScopeArgs{
+//				IpVersion: pulumi.IntRef(4),
+//				Name:      pulumi.StringRef("public_addressscope"),
+//				Shared:    pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupAddressScope(ctx *pulumi.Context, args *LookupAddressScopeArgs, opts ...pulumi.InvokeOption) (*LookupAddressScopeResult, error) {
 	var rv LookupAddressScopeResult

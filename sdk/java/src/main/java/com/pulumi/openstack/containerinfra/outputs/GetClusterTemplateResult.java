@@ -18,249 +18,180 @@ public final class GetClusterTemplateResult {
      * Engine for this cluster template.
      * 
      */
-    private final Integer apiserverPort;
+    private Integer apiserverPort;
     /**
      * @return The distro for the cluster (fedora-atomic, coreos, etc.).
      * 
      */
-    private final String clusterDistro;
+    private String clusterDistro;
     /**
      * @return The Container Orchestration Engine for this cluster template.
      * 
      */
-    private final String coe;
+    private String coe;
     /**
      * @return The time at which cluster template was created.
      * 
      */
-    private final String createdAt;
+    private String createdAt;
     /**
      * @return Address of the DNS nameserver that is used in nodes of the
      * cluster.
      * 
      */
-    private final String dnsNameserver;
+    private String dnsNameserver;
     /**
      * @return Docker storage driver. Changing this updates the
      * Docker storage driver of the existing cluster template.
      * 
      */
-    private final String dockerStorageDriver;
+    private String dockerStorageDriver;
     /**
      * @return The size (in GB) of the Docker volume.
      * 
      */
-    private final Integer dockerVolumeSize;
+    private Integer dockerVolumeSize;
     /**
      * @return The ID of the external network that will be used for
      * the cluster.
      * 
      */
-    private final String externalNetworkId;
+    private String externalNetworkId;
     /**
      * @return The fixed network that will be attached to the cluster.
      * 
      */
-    private final String fixedNetwork;
+    private String fixedNetwork;
     /**
      * @return =The fixed subnet that will be attached to the cluster.
      * 
      */
-    private final String fixedSubnet;
+    private String fixedSubnet;
     /**
      * @return The flavor for the nodes of the cluster.
      * 
      */
-    private final String flavor;
+    private String flavor;
     /**
      * @return Indicates whether created cluster should create IP
      * floating IP for every node or not.
      * 
      */
-    private final Boolean floatingIpEnabled;
+    private Boolean floatingIpEnabled;
     /**
      * @return The address of a proxy for receiving all HTTP requests and
      * relay them.
      * 
      */
-    private final String httpProxy;
+    private String httpProxy;
     /**
      * @return The address of a proxy for receiving all HTTPS requests and
      * relay them.
      * 
      */
-    private final String httpsProxy;
+    private String httpsProxy;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The reference to an image that is used for nodes of the cluster.
      * 
      */
-    private final String image;
+    private String image;
     /**
      * @return The insecure registry URL for the cluster template.
      * 
      */
-    private final String insecureRegistry;
+    private String insecureRegistry;
     /**
      * @return The name of the Compute service SSH keypair.
      * 
      */
-    private final String keypairId;
+    private String keypairId;
     /**
      * @return The list of key value pairs representing additional properties
      * of the cluster template.
      * 
      */
-    private final Map<String,Object> labels;
+    private Map<String,Object> labels;
     /**
      * @return The flavor for the master nodes.
      * 
      */
-    private final String masterFlavor;
+    private String masterFlavor;
     /**
      * @return Indicates whether created cluster should has a
      * loadbalancer for master nodes or not.
      * 
      */
-    private final Boolean masterLbEnabled;
+    private Boolean masterLbEnabled;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The name of the driver for the container network.
      * 
      */
-    private final String networkDriver;
+    private String networkDriver;
     /**
      * @return A comma-separated list of IP addresses that shouldn&#39;t be used in
      * the cluster.
      * 
      */
-    private final String noProxy;
+    private String noProxy;
     /**
      * @return The project of the cluster template.
      * 
      */
-    private final String projectId;
+    private String projectId;
     /**
      * @return Indicates whether cluster template should be public.
      * 
      */
-    private final Boolean public_;
+    private Boolean public_;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return Indicates whether Docker registry is enabled in the
      * cluster.
      * 
      */
-    private final Boolean registryEnabled;
+    private Boolean registryEnabled;
     /**
      * @return The server type for the cluster template.
      * 
      */
-    private final String serverType;
+    private String serverType;
     /**
      * @return Indicates whether the TLS should be disabled in the cluster.
      * 
      */
-    private final Boolean tlsDisabled;
+    private Boolean tlsDisabled;
     /**
      * @return The time at which cluster template was updated.
      * 
      */
-    private final String updatedAt;
+    private String updatedAt;
     /**
      * @return The user of the cluster template.
      * 
      */
-    private final String userId;
+    private String userId;
     /**
      * @return The name of the driver that is used for the volumes of the
      * cluster nodes.
      * 
      */
-    private final String volumeDriver;
+    private String volumeDriver;
 
-    @CustomType.Constructor
-    private GetClusterTemplateResult(
-        @CustomType.Parameter("apiserverPort") Integer apiserverPort,
-        @CustomType.Parameter("clusterDistro") String clusterDistro,
-        @CustomType.Parameter("coe") String coe,
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("dnsNameserver") String dnsNameserver,
-        @CustomType.Parameter("dockerStorageDriver") String dockerStorageDriver,
-        @CustomType.Parameter("dockerVolumeSize") Integer dockerVolumeSize,
-        @CustomType.Parameter("externalNetworkId") String externalNetworkId,
-        @CustomType.Parameter("fixedNetwork") String fixedNetwork,
-        @CustomType.Parameter("fixedSubnet") String fixedSubnet,
-        @CustomType.Parameter("flavor") String flavor,
-        @CustomType.Parameter("floatingIpEnabled") Boolean floatingIpEnabled,
-        @CustomType.Parameter("httpProxy") String httpProxy,
-        @CustomType.Parameter("httpsProxy") String httpsProxy,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("image") String image,
-        @CustomType.Parameter("insecureRegistry") String insecureRegistry,
-        @CustomType.Parameter("keypairId") String keypairId,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("masterFlavor") String masterFlavor,
-        @CustomType.Parameter("masterLbEnabled") Boolean masterLbEnabled,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("networkDriver") String networkDriver,
-        @CustomType.Parameter("noProxy") String noProxy,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("public") Boolean public_,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("registryEnabled") Boolean registryEnabled,
-        @CustomType.Parameter("serverType") String serverType,
-        @CustomType.Parameter("tlsDisabled") Boolean tlsDisabled,
-        @CustomType.Parameter("updatedAt") String updatedAt,
-        @CustomType.Parameter("userId") String userId,
-        @CustomType.Parameter("volumeDriver") String volumeDriver) {
-        this.apiserverPort = apiserverPort;
-        this.clusterDistro = clusterDistro;
-        this.coe = coe;
-        this.createdAt = createdAt;
-        this.dnsNameserver = dnsNameserver;
-        this.dockerStorageDriver = dockerStorageDriver;
-        this.dockerVolumeSize = dockerVolumeSize;
-        this.externalNetworkId = externalNetworkId;
-        this.fixedNetwork = fixedNetwork;
-        this.fixedSubnet = fixedSubnet;
-        this.flavor = flavor;
-        this.floatingIpEnabled = floatingIpEnabled;
-        this.httpProxy = httpProxy;
-        this.httpsProxy = httpsProxy;
-        this.id = id;
-        this.image = image;
-        this.insecureRegistry = insecureRegistry;
-        this.keypairId = keypairId;
-        this.labels = labels;
-        this.masterFlavor = masterFlavor;
-        this.masterLbEnabled = masterLbEnabled;
-        this.name = name;
-        this.networkDriver = networkDriver;
-        this.noProxy = noProxy;
-        this.projectId = projectId;
-        this.public_ = public_;
-        this.region = region;
-        this.registryEnabled = registryEnabled;
-        this.serverType = serverType;
-        this.tlsDisabled = tlsDisabled;
-        this.updatedAt = updatedAt;
-        this.userId = userId;
-        this.volumeDriver = volumeDriver;
-    }
-
+    private GetClusterTemplateResult() {}
     /**
      * @return The API server port for the Container Orchestration
      * Engine for this cluster template.
@@ -512,7 +443,7 @@ public final class GetClusterTemplateResult {
     public static Builder builder(GetClusterTemplateResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer apiserverPort;
         private String clusterDistro;
@@ -547,11 +478,7 @@ public final class GetClusterTemplateResult {
         private String updatedAt;
         private String userId;
         private String volumeDriver;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterTemplateResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiserverPort = defaults.apiserverPort;
@@ -589,139 +516,207 @@ public final class GetClusterTemplateResult {
     	      this.volumeDriver = defaults.volumeDriver;
         }
 
+        @CustomType.Setter
         public Builder apiserverPort(Integer apiserverPort) {
             this.apiserverPort = Objects.requireNonNull(apiserverPort);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterDistro(String clusterDistro) {
             this.clusterDistro = Objects.requireNonNull(clusterDistro);
             return this;
         }
+        @CustomType.Setter
         public Builder coe(String coe) {
             this.coe = Objects.requireNonNull(coe);
             return this;
         }
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder dnsNameserver(String dnsNameserver) {
             this.dnsNameserver = Objects.requireNonNull(dnsNameserver);
             return this;
         }
+        @CustomType.Setter
         public Builder dockerStorageDriver(String dockerStorageDriver) {
             this.dockerStorageDriver = Objects.requireNonNull(dockerStorageDriver);
             return this;
         }
+        @CustomType.Setter
         public Builder dockerVolumeSize(Integer dockerVolumeSize) {
             this.dockerVolumeSize = Objects.requireNonNull(dockerVolumeSize);
             return this;
         }
+        @CustomType.Setter
         public Builder externalNetworkId(String externalNetworkId) {
             this.externalNetworkId = Objects.requireNonNull(externalNetworkId);
             return this;
         }
+        @CustomType.Setter
         public Builder fixedNetwork(String fixedNetwork) {
             this.fixedNetwork = Objects.requireNonNull(fixedNetwork);
             return this;
         }
+        @CustomType.Setter
         public Builder fixedSubnet(String fixedSubnet) {
             this.fixedSubnet = Objects.requireNonNull(fixedSubnet);
             return this;
         }
+        @CustomType.Setter
         public Builder flavor(String flavor) {
             this.flavor = Objects.requireNonNull(flavor);
             return this;
         }
+        @CustomType.Setter
         public Builder floatingIpEnabled(Boolean floatingIpEnabled) {
             this.floatingIpEnabled = Objects.requireNonNull(floatingIpEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder httpProxy(String httpProxy) {
             this.httpProxy = Objects.requireNonNull(httpProxy);
             return this;
         }
+        @CustomType.Setter
         public Builder httpsProxy(String httpsProxy) {
             this.httpsProxy = Objects.requireNonNull(httpsProxy);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder image(String image) {
             this.image = Objects.requireNonNull(image);
             return this;
         }
+        @CustomType.Setter
         public Builder insecureRegistry(String insecureRegistry) {
             this.insecureRegistry = Objects.requireNonNull(insecureRegistry);
             return this;
         }
+        @CustomType.Setter
         public Builder keypairId(String keypairId) {
             this.keypairId = Objects.requireNonNull(keypairId);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder masterFlavor(String masterFlavor) {
             this.masterFlavor = Objects.requireNonNull(masterFlavor);
             return this;
         }
+        @CustomType.Setter
         public Builder masterLbEnabled(Boolean masterLbEnabled) {
             this.masterLbEnabled = Objects.requireNonNull(masterLbEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder networkDriver(String networkDriver) {
             this.networkDriver = Objects.requireNonNull(networkDriver);
             return this;
         }
+        @CustomType.Setter
         public Builder noProxy(String noProxy) {
             this.noProxy = Objects.requireNonNull(noProxy);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter("public")
         public Builder public_(Boolean public_) {
             this.public_ = Objects.requireNonNull(public_);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder registryEnabled(Boolean registryEnabled) {
             this.registryEnabled = Objects.requireNonNull(registryEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder serverType(String serverType) {
             this.serverType = Objects.requireNonNull(serverType);
             return this;
         }
+        @CustomType.Setter
         public Builder tlsDisabled(Boolean tlsDisabled) {
             this.tlsDisabled = Objects.requireNonNull(tlsDisabled);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
             this.updatedAt = Objects.requireNonNull(updatedAt);
             return this;
         }
+        @CustomType.Setter
         public Builder userId(String userId) {
             this.userId = Objects.requireNonNull(userId);
             return this;
         }
+        @CustomType.Setter
         public Builder volumeDriver(String volumeDriver) {
             this.volumeDriver = Objects.requireNonNull(volumeDriver);
             return this;
-        }        public GetClusterTemplateResult build() {
-            return new GetClusterTemplateResult(apiserverPort, clusterDistro, coe, createdAt, dnsNameserver, dockerStorageDriver, dockerVolumeSize, externalNetworkId, fixedNetwork, fixedSubnet, flavor, floatingIpEnabled, httpProxy, httpsProxy, id, image, insecureRegistry, keypairId, labels, masterFlavor, masterLbEnabled, name, networkDriver, noProxy, projectId, public_, region, registryEnabled, serverType, tlsDisabled, updatedAt, userId, volumeDriver);
+        }
+        public GetClusterTemplateResult build() {
+            final var o = new GetClusterTemplateResult();
+            o.apiserverPort = apiserverPort;
+            o.clusterDistro = clusterDistro;
+            o.coe = coe;
+            o.createdAt = createdAt;
+            o.dnsNameserver = dnsNameserver;
+            o.dockerStorageDriver = dockerStorageDriver;
+            o.dockerVolumeSize = dockerVolumeSize;
+            o.externalNetworkId = externalNetworkId;
+            o.fixedNetwork = fixedNetwork;
+            o.fixedSubnet = fixedSubnet;
+            o.flavor = flavor;
+            o.floatingIpEnabled = floatingIpEnabled;
+            o.httpProxy = httpProxy;
+            o.httpsProxy = httpsProxy;
+            o.id = id;
+            o.image = image;
+            o.insecureRegistry = insecureRegistry;
+            o.keypairId = keypairId;
+            o.labels = labels;
+            o.masterFlavor = masterFlavor;
+            o.masterLbEnabled = masterLbEnabled;
+            o.name = name;
+            o.networkDriver = networkDriver;
+            o.noProxy = noProxy;
+            o.projectId = projectId;
+            o.public_ = public_;
+            o.region = region;
+            o.registryEnabled = registryEnabled;
+            o.serverType = serverType;
+            o.tlsDisabled = tlsDisabled;
+            o.updatedAt = updatedAt;
+            o.userId = userId;
+            o.volumeDriver = volumeDriver;
+            return o;
         }
     }
 }

@@ -13,21 +13,14 @@ public final class InstancePersonality {
      * @return The contents of the file. Limited to 255 bytes.
      * 
      */
-    private final String content;
+    private String content;
     /**
      * @return The absolute path of the destination file.
      * 
      */
-    private final String file;
+    private String file;
 
-    @CustomType.Constructor
-    private InstancePersonality(
-        @CustomType.Parameter("content") String content,
-        @CustomType.Parameter("file") String file) {
-        this.content = content;
-        this.file = file;
-    }
-
+    private InstancePersonality() {}
     /**
      * @return The contents of the file. Limited to 255 bytes.
      * 
@@ -50,30 +43,32 @@ public final class InstancePersonality {
     public static Builder builder(InstancePersonality defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String content;
         private String file;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstancePersonality defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
     	      this.file = defaults.file;
         }
 
+        @CustomType.Setter
         public Builder content(String content) {
             this.content = Objects.requireNonNull(content);
             return this;
         }
+        @CustomType.Setter
         public Builder file(String file) {
             this.file = Objects.requireNonNull(file);
             return this;
-        }        public InstancePersonality build() {
-            return new InstancePersonality(content, file);
+        }
+        public InstancePersonality build() {
+            final var o = new InstancePersonality();
+            o.content = content;
+            o.file = file;
+            return o;
         }
     }
 }

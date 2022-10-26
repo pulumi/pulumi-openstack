@@ -14,49 +14,34 @@ public final class GetQosBandwidthLimitRuleResult {
      * @return See Argument Reference above.
      * 
      */
-    private final String direction;
+    private String direction;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final Integer maxBurstKbps;
+    private Integer maxBurstKbps;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final Integer maxKbps;
+    private Integer maxKbps;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String qosPolicyId;
+    private String qosPolicyId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
 
-    @CustomType.Constructor
-    private GetQosBandwidthLimitRuleResult(
-        @CustomType.Parameter("direction") String direction,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("maxBurstKbps") Integer maxBurstKbps,
-        @CustomType.Parameter("maxKbps") Integer maxKbps,
-        @CustomType.Parameter("qosPolicyId") String qosPolicyId,
-        @CustomType.Parameter("region") String region) {
-        this.direction = direction;
-        this.id = id;
-        this.maxBurstKbps = maxBurstKbps;
-        this.maxKbps = maxKbps;
-        this.qosPolicyId = qosPolicyId;
-        this.region = region;
-    }
-
+    private GetQosBandwidthLimitRuleResult() {}
     /**
      * @return See Argument Reference above.
      * 
@@ -107,7 +92,7 @@ public final class GetQosBandwidthLimitRuleResult {
     public static Builder builder(GetQosBandwidthLimitRuleResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String direction;
         private String id;
@@ -115,11 +100,7 @@ public final class GetQosBandwidthLimitRuleResult {
         private Integer maxKbps;
         private String qosPolicyId;
         private String region;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetQosBandwidthLimitRuleResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.direction = defaults.direction;
@@ -130,31 +111,45 @@ public final class GetQosBandwidthLimitRuleResult {
     	      this.region = defaults.region;
         }
 
+        @CustomType.Setter
         public Builder direction(String direction) {
             this.direction = Objects.requireNonNull(direction);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder maxBurstKbps(Integer maxBurstKbps) {
             this.maxBurstKbps = Objects.requireNonNull(maxBurstKbps);
             return this;
         }
+        @CustomType.Setter
         public Builder maxKbps(Integer maxKbps) {
             this.maxKbps = Objects.requireNonNull(maxKbps);
             return this;
         }
+        @CustomType.Setter
         public Builder qosPolicyId(String qosPolicyId) {
             this.qosPolicyId = Objects.requireNonNull(qosPolicyId);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
-        }        public GetQosBandwidthLimitRuleResult build() {
-            return new GetQosBandwidthLimitRuleResult(direction, id, maxBurstKbps, maxKbps, qosPolicyId, region);
+        }
+        public GetQosBandwidthLimitRuleResult build() {
+            final var o = new GetQosBandwidthLimitRuleResult();
+            o.direction = direction;
+            o.id = id;
+            o.maxBurstKbps = maxBurstKbps;
+            o.maxKbps = maxKbps;
+            o.qosPolicyId = qosPolicyId;
+            o.region = region;
+            return o;
         }
     }
 }

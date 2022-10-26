@@ -20,15 +20,36 @@ __all__ = [
 
 @pulumi.output_type
 class ConfigurationConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "stringType":
+            suggest = "string_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigurationConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigurationConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigurationConfiguration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
-                 value: str):
+                 value: str,
+                 string_type: Optional[bool] = None):
         """
         :param str name: Configuration parameter name. Changing this creates a new resource.
         :param str value: Configuration parameter value. Changing this creates a new resource.
+        :param bool string_type: Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
+        if string_type is not None:
+            pulumi.set(__self__, "string_type", string_type)
 
     @property
     @pulumi.getter
@@ -45,6 +66,14 @@ class ConfigurationConfiguration(dict):
         Configuration parameter value. Changing this creates a new resource.
         """
         return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="stringType")
+    def string_type(self) -> Optional[bool]:
+        """
+        Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
+        """
+        return pulumi.get(self, "string_type")
 
 
 @pulumi.output_type

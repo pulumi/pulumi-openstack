@@ -17,46 +17,33 @@ public final class PortBinding {
      * @return The ID of the host to allocate port on.
      * 
      */
-    private final @Nullable String hostId;
+    private @Nullable String hostId;
     /**
      * @return Custom data to be passed as `binding:profile`. Data
      * must be passed as JSON.
      * 
      */
-    private final @Nullable String profile;
+    private @Nullable String profile;
     /**
      * @return A map of JSON strings containing additional
      * details for this specific binding.
      * 
      */
-    private final @Nullable Map<String,Object> vifDetails;
+    private @Nullable Map<String,Object> vifDetails;
     /**
      * @return The VNIC type of the port binding.
      * 
      */
-    private final @Nullable String vifType;
+    private @Nullable String vifType;
     /**
      * @return VNIC type for the port. Can either be `direct`,
      * `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
      * Default value is `normal`.
      * 
      */
-    private final @Nullable String vnicType;
+    private @Nullable String vnicType;
 
-    @CustomType.Constructor
-    private PortBinding(
-        @CustomType.Parameter("hostId") @Nullable String hostId,
-        @CustomType.Parameter("profile") @Nullable String profile,
-        @CustomType.Parameter("vifDetails") @Nullable Map<String,Object> vifDetails,
-        @CustomType.Parameter("vifType") @Nullable String vifType,
-        @CustomType.Parameter("vnicType") @Nullable String vnicType) {
-        this.hostId = hostId;
-        this.profile = profile;
-        this.vifDetails = vifDetails;
-        this.vifType = vifType;
-        this.vnicType = vnicType;
-    }
-
+    private PortBinding() {}
     /**
      * @return The ID of the host to allocate port on.
      * 
@@ -104,18 +91,14 @@ public final class PortBinding {
     public static Builder builder(PortBinding defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String hostId;
         private @Nullable String profile;
         private @Nullable Map<String,Object> vifDetails;
         private @Nullable String vifType;
         private @Nullable String vnicType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PortBinding defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostId = defaults.hostId;
@@ -125,27 +108,39 @@ public final class PortBinding {
     	      this.vnicType = defaults.vnicType;
         }
 
+        @CustomType.Setter
         public Builder hostId(@Nullable String hostId) {
             this.hostId = hostId;
             return this;
         }
+        @CustomType.Setter
         public Builder profile(@Nullable String profile) {
             this.profile = profile;
             return this;
         }
+        @CustomType.Setter
         public Builder vifDetails(@Nullable Map<String,Object> vifDetails) {
             this.vifDetails = vifDetails;
             return this;
         }
+        @CustomType.Setter
         public Builder vifType(@Nullable String vifType) {
             this.vifType = vifType;
             return this;
         }
+        @CustomType.Setter
         public Builder vnicType(@Nullable String vnicType) {
             this.vnicType = vnicType;
             return this;
-        }        public PortBinding build() {
-            return new PortBinding(hostId, profile, vifDetails, vifType, vnicType);
+        }
+        public PortBinding build() {
+            final var o = new PortBinding();
+            o.hostId = hostId;
+            o.profile = profile;
+            o.vifDetails = vifDetails;
+            o.vifType = vifType;
+            o.vnicType = vnicType;
+            return o;
         }
     }
 }

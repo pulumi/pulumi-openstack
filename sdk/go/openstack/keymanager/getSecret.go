@@ -16,22 +16,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := keymanager.GetSecret(ctx, &keymanager.GetSecretArgs{
-// 			Mode:       pulumi.StringRef("cbc"),
-// 			SecretType: pulumi.StringRef("passphrase"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := keymanager.GetSecret(ctx, &keymanager.GetSecretArgs{
+//				Mode:       pulumi.StringRef("cbc"),
+//				SecretType: pulumi.StringRef("passphrase"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Date Filters
 //
@@ -48,23 +51,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := keymanager.GetSecret(ctx, &keymanager.GetSecretArgs{
-// 			ExpirationFilter: pulumi.StringRef("gt:2020-01-01T00:00:00Z"),
-// 			Mode:             pulumi.StringRef("cbc"),
-// 			SecretType:       pulumi.StringRef("passphrase"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := keymanager.GetSecret(ctx, &keymanager.GetSecretArgs{
+//				ExpirationFilter: pulumi.StringRef("gt:2020-01-01T00:00:00Z"),
+//				Mode:             pulumi.StringRef("cbc"),
+//				SecretType:       pulumi.StringRef("passphrase"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSecret(ctx *pulumi.Context, args *GetSecretArgs, opts ...pulumi.InvokeOption) (*GetSecretResult, error) {
 	var rv GetSecretResult

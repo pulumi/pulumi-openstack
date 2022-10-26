@@ -19,25 +19,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := loadbalancer.NewMonitor(ctx, "monitor1", &loadbalancer.MonitorArgs{
-// 			Delay:      pulumi.Int(20),
-// 			MaxRetries: pulumi.Int(5),
-// 			PoolId:     pulumi.Any(openstack_lb_pool_v2.Pool_1.Id),
-// 			Timeout:    pulumi.Int(10),
-// 			Type:       pulumi.String("PING"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := loadbalancer.NewMonitor(ctx, "monitor1", &loadbalancer.MonitorArgs{
+//				Delay:      pulumi.Int(20),
+//				MaxRetries: pulumi.Int(5),
+//				PoolId:     pulumi.Any(openstack_lb_pool_v2.Pool_1.Id),
+//				Timeout:    pulumi.Int(10),
+//				Type:       pulumi.String("PING"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -45,13 +48,17 @@ import (
 // Load Balancer Pool Monitor can be imported using the Monitor ID, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:loadbalancer/monitor:Monitor monitor_1 47c26fc3-2403-427a-8c79-1589bd0533c2
+//
+//	$ pulumi import openstack:loadbalancer/monitor:Monitor monitor_1 47c26fc3-2403-427a-8c79-1589bd0533c2
+//
 // ```
 //
-//  In case of using OpenContrail, the import may not work properly. If you face an issue, try to import the monitor providing its parent pool ID
+//	In case of using OpenContrail, the import may not work properly. If you face an issue, try to import the monitor providing its parent pool ID
 //
 // ```sh
-//  $ pulumi import openstack:loadbalancer/monitor:Monitor monitor_1 47c26fc3-2403-427a-8c79-1589bd0533c2/708bc224-0f8c-4981-ac82-97095fe051b6
+//
+//	$ pulumi import openstack:loadbalancer/monitor:Monitor monitor_1 47c26fc3-2403-427a-8c79-1589bd0533c2/708bc224-0f8c-4981-ac82-97095fe051b6
+//
 // ```
 type Monitor struct {
 	pulumi.CustomResourceState
@@ -369,7 +376,7 @@ func (i *Monitor) ToMonitorOutputWithContext(ctx context.Context) MonitorOutput 
 // MonitorArrayInput is an input type that accepts MonitorArray and MonitorArrayOutput values.
 // You can construct a concrete instance of `MonitorArrayInput` via:
 //
-//          MonitorArray{ MonitorArgs{...} }
+//	MonitorArray{ MonitorArgs{...} }
 type MonitorArrayInput interface {
 	pulumi.Input
 
@@ -394,7 +401,7 @@ func (i MonitorArray) ToMonitorArrayOutputWithContext(ctx context.Context) Monit
 // MonitorMapInput is an input type that accepts MonitorMap and MonitorMapOutput values.
 // You can construct a concrete instance of `MonitorMapInput` via:
 //
-//          MonitorMap{ "key": MonitorArgs{...} }
+//	MonitorMap{ "key": MonitorArgs{...} }
 type MonitorMapInput interface {
 	pulumi.Input
 

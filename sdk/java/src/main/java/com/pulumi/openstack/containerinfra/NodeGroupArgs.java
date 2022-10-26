@@ -53,16 +53,40 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dockerVolumeSize);
     }
 
+    /**
+     * The flavor for the nodes of the node group. Can be set
+     * via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+     * node group.
+     * 
+     */
     @Import(name="flavorId")
     private @Nullable Output<String> flavorId;
 
+    /**
+     * @return The flavor for the nodes of the node group. Can be set
+     * via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+     * node group.
+     * 
+     */
     public Optional<Output<String>> flavorId() {
         return Optional.ofNullable(this.flavorId);
     }
 
+    /**
+     * The reference to an image that is used for nodes of the
+     * node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+     * Changing this updates the image attribute of the existing node group.
+     * 
+     */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
+    /**
+     * @return The reference to an image that is used for nodes of the
+     * node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+     * Changing this updates the image attribute of the existing node group.
+     * 
+     */
     public Optional<Output<String>> imageId() {
         return Optional.ofNullable(this.imageId);
     }
@@ -190,6 +214,23 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * The role of nodes in the node group. Changing this
+     * creates a new node group.
+     * 
+     */
+    @Import(name="role")
+    private @Nullable Output<String> role;
+
+    /**
+     * @return The role of nodes in the node group. Changing this
+     * creates a new node group.
+     * 
+     */
+    public Optional<Output<String>> role() {
+        return Optional.ofNullable(this.role);
+    }
+
     private NodeGroupArgs() {}
 
     private NodeGroupArgs(NodeGroupArgs $) {
@@ -204,6 +245,7 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.nodeCount = $.nodeCount;
         this.region = $.region;
+        this.role = $.role;
     }
 
     public static Builder builder() {
@@ -270,20 +312,52 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
             return dockerVolumeSize(Output.of(dockerVolumeSize));
         }
 
+        /**
+         * @param flavorId The flavor for the nodes of the node group. Can be set
+         * via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+         * node group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder flavorId(@Nullable Output<String> flavorId) {
             $.flavorId = flavorId;
             return this;
         }
 
+        /**
+         * @param flavorId The flavor for the nodes of the node group. Can be set
+         * via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+         * node group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder flavorId(String flavorId) {
             return flavorId(Output.of(flavorId));
         }
 
+        /**
+         * @param imageId The reference to an image that is used for nodes of the
+         * node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+         * Changing this updates the image attribute of the existing node group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageId(@Nullable Output<String> imageId) {
             $.imageId = imageId;
             return this;
         }
 
+        /**
+         * @param imageId The reference to an image that is used for nodes of the
+         * node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+         * Changing this updates the image attribute of the existing node group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageId(String imageId) {
             return imageId(Output.of(imageId));
         }
@@ -451,6 +525,29 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param role The role of nodes in the node group. Changing this
+         * creates a new node group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder role(@Nullable Output<String> role) {
+            $.role = role;
+            return this;
+        }
+
+        /**
+         * @param role The role of nodes in the node group. Changing this
+         * creates a new node group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder role(String role) {
+            return role(Output.of(role));
         }
 
         public NodeGroupArgs build() {

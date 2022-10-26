@@ -17,83 +17,56 @@ public final class GetQosPolicyResult {
      * @return The set of string tags applied on the QoS policy.
      * 
      */
-    private final List<String> allTags;
+    private List<String> allTags;
     /**
      * @return The time at which QoS policy was created.
      * 
      */
-    private final String createdAt;
+    private String createdAt;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final Boolean isDefault;
+    private Boolean isDefault;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String name;
-    private final String projectId;
+    private String name;
+    private String projectId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return The revision number of the QoS policy.
      * 
      */
-    private final Integer revisionNumber;
+    private Integer revisionNumber;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final Boolean shared;
-    private final @Nullable List<String> tags;
+    private Boolean shared;
+    private @Nullable List<String> tags;
     /**
      * @return The time at which QoS policy was created.
      * 
      */
-    private final String updatedAt;
+    private String updatedAt;
 
-    @CustomType.Constructor
-    private GetQosPolicyResult(
-        @CustomType.Parameter("allTags") List<String> allTags,
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isDefault") Boolean isDefault,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("revisionNumber") Integer revisionNumber,
-        @CustomType.Parameter("shared") Boolean shared,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("updatedAt") String updatedAt) {
-        this.allTags = allTags;
-        this.createdAt = createdAt;
-        this.description = description;
-        this.id = id;
-        this.isDefault = isDefault;
-        this.name = name;
-        this.projectId = projectId;
-        this.region = region;
-        this.revisionNumber = revisionNumber;
-        this.shared = shared;
-        this.tags = tags;
-        this.updatedAt = updatedAt;
-    }
-
+    private GetQosPolicyResult() {}
     /**
      * @return The set of string tags applied on the QoS policy.
      * 
@@ -178,7 +151,7 @@ public final class GetQosPolicyResult {
     public static Builder builder(GetQosPolicyResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> allTags;
         private String createdAt;
@@ -192,11 +165,7 @@ public final class GetQosPolicyResult {
         private Boolean shared;
         private @Nullable List<String> tags;
         private String updatedAt;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetQosPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allTags = defaults.allTags;
@@ -213,6 +182,7 @@ public final class GetQosPolicyResult {
     	      this.updatedAt = defaults.updatedAt;
         }
 
+        @CustomType.Setter
         public Builder allTags(List<String> allTags) {
             this.allTags = Objects.requireNonNull(allTags);
             return this;
@@ -220,42 +190,52 @@ public final class GetQosPolicyResult {
         public Builder allTags(String... allTags) {
             return allTags(List.of(allTags));
         }
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isDefault(Boolean isDefault) {
             this.isDefault = Objects.requireNonNull(isDefault);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder revisionNumber(Integer revisionNumber) {
             this.revisionNumber = Objects.requireNonNull(revisionNumber);
             return this;
         }
+        @CustomType.Setter
         public Builder shared(Boolean shared) {
             this.shared = Objects.requireNonNull(shared);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -263,11 +243,26 @@ public final class GetQosPolicyResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
             this.updatedAt = Objects.requireNonNull(updatedAt);
             return this;
-        }        public GetQosPolicyResult build() {
-            return new GetQosPolicyResult(allTags, createdAt, description, id, isDefault, name, projectId, region, revisionNumber, shared, tags, updatedAt);
+        }
+        public GetQosPolicyResult build() {
+            final var o = new GetQosPolicyResult();
+            o.allTags = allTags;
+            o.createdAt = createdAt;
+            o.description = description;
+            o.id = id;
+            o.isDefault = isDefault;
+            o.name = name;
+            o.projectId = projectId;
+            o.region = region;
+            o.revisionNumber = revisionNumber;
+            o.shared = shared;
+            o.tags = tags;
+            o.updatedAt = updatedAt;
+            return o;
         }
     }
 }

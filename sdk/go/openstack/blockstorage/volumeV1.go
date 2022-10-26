@@ -19,23 +19,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := blockstorage.NewVolumeV1(ctx, "volume1", &blockstorage.VolumeV1Args{
-// 			Description: pulumi.String("first test volume"),
-// 			Region:      pulumi.String("RegionOne"),
-// 			Size:        pulumi.Int(3),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := blockstorage.NewVolumeV1(ctx, "volume1", &blockstorage.VolumeV1Args{
+//				Description: pulumi.String("first test volume"),
+//				Region:      pulumi.String("RegionOne"),
+//				Size:        pulumi.Int(3),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -43,7 +46,9 @@ import (
 // Volumes can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:blockstorage/volumeV1:VolumeV1 volume_1 ea257959-eeb1-4c10-8d33-26f0409a755d
+//
+//	$ pulumi import openstack:blockstorage/volumeV1:VolumeV1 volume_1 ea257959-eeb1-4c10-8d33-26f0409a755d
+//
 // ```
 type VolumeV1 struct {
 	pulumi.CustomResourceState
@@ -291,7 +296,7 @@ func (i *VolumeV1) ToVolumeV1OutputWithContext(ctx context.Context) VolumeV1Outp
 // VolumeV1ArrayInput is an input type that accepts VolumeV1Array and VolumeV1ArrayOutput values.
 // You can construct a concrete instance of `VolumeV1ArrayInput` via:
 //
-//          VolumeV1Array{ VolumeV1Args{...} }
+//	VolumeV1Array{ VolumeV1Args{...} }
 type VolumeV1ArrayInput interface {
 	pulumi.Input
 
@@ -316,7 +321,7 @@ func (i VolumeV1Array) ToVolumeV1ArrayOutputWithContext(ctx context.Context) Vol
 // VolumeV1MapInput is an input type that accepts VolumeV1Map and VolumeV1MapOutput values.
 // You can construct a concrete instance of `VolumeV1MapInput` via:
 //
-//          VolumeV1Map{ "key": VolumeV1Args{...} }
+//	VolumeV1Map{ "key": VolumeV1Args{...} }
 type VolumeV1MapInput interface {
 	pulumi.Input
 

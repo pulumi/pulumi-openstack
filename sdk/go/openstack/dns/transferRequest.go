@@ -20,39 +20,44 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleZone, err := dns.NewZone(ctx, "exampleZone", &dns.ZoneArgs{
-// 			Description: pulumi.String("An example zone"),
-// 			Email:       pulumi.String("jdoe@example.com"),
-// 			Ttl:         pulumi.Int(3000),
-// 			Type:        pulumi.String("PRIMARY"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dns.NewTransferRequest(ctx, "request1", &dns.TransferRequestArgs{
-// 			Description: pulumi.String("a transfer request"),
-// 			ZoneId:      exampleZone.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleZone, err := dns.NewZone(ctx, "exampleZone", &dns.ZoneArgs{
+//				Description: pulumi.String("An example zone"),
+//				Email:       pulumi.String("jdoe@example.com"),
+//				Ttl:         pulumi.Int(3000),
+//				Type:        pulumi.String("PRIMARY"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewTransferRequest(ctx, "request1", &dns.TransferRequestArgs{
+//				Description: pulumi.String("a transfer request"),
+//				ZoneId:      exampleZone.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// This resource can be imported by specifying the transferRequest ID
+// # This resource can be imported by specifying the transferRequest ID
 //
 // ```sh
-//  $ pulumi import openstack:dns/transferRequest:TransferRequest request_1 <request_id>
+//
+//	$ pulumi import openstack:dns/transferRequest:TransferRequest request_1 <request_id>
+//
 // ```
 type TransferRequest struct {
 	pulumi.CustomResourceState
@@ -233,7 +238,7 @@ func (i *TransferRequest) ToTransferRequestOutputWithContext(ctx context.Context
 // TransferRequestArrayInput is an input type that accepts TransferRequestArray and TransferRequestArrayOutput values.
 // You can construct a concrete instance of `TransferRequestArrayInput` via:
 //
-//          TransferRequestArray{ TransferRequestArgs{...} }
+//	TransferRequestArray{ TransferRequestArgs{...} }
 type TransferRequestArrayInput interface {
 	pulumi.Input
 
@@ -258,7 +263,7 @@ func (i TransferRequestArray) ToTransferRequestArrayOutputWithContext(ctx contex
 // TransferRequestMapInput is an input type that accepts TransferRequestMap and TransferRequestMapOutput values.
 // You can construct a concrete instance of `TransferRequestMapInput` via:
 //
-//          TransferRequestMap{ "key": TransferRequestArgs{...} }
+//	TransferRequestMap{ "key": TransferRequestArgs{...} }
 type TransferRequestMapInput interface {
 	pulumi.Input
 

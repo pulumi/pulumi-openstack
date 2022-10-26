@@ -15,13 +15,9 @@ public final class UserMultiFactorAuthRule {
      * authenticate with.
      * 
      */
-    private final List<String> rules;
+    private List<String> rules;
 
-    @CustomType.Constructor
-    private UserMultiFactorAuthRule(@CustomType.Parameter("rules") List<String> rules) {
-        this.rules = rules;
-    }
-
+    private UserMultiFactorAuthRule() {}
     /**
      * @return A list of authentication plugins that the user must
      * authenticate with.
@@ -38,27 +34,27 @@ public final class UserMultiFactorAuthRule {
     public static Builder builder(UserMultiFactorAuthRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> rules;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(UserMultiFactorAuthRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.rules = defaults.rules;
         }
 
+        @CustomType.Setter
         public Builder rules(List<String> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
         }
         public Builder rules(String... rules) {
             return rules(List.of(rules));
-        }        public UserMultiFactorAuthRule build() {
-            return new UserMultiFactorAuthRule(rules);
+        }
+        public UserMultiFactorAuthRule build() {
+            final var o = new UserMultiFactorAuthRule();
+            o.rules = rules;
+            return o;
         }
     }
 }

@@ -14,64 +14,37 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTrunkResult {
-    private final @Nullable Boolean adminStateUp;
+    private @Nullable Boolean adminStateUp;
     /**
      * @return The set of string tags applied on the trunk.
      * 
      */
-    private final List<String> allTags;
-    private final @Nullable String description;
+    private List<String> allTags;
+    private @Nullable String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String name;
+    private String id;
+    private @Nullable String name;
     /**
      * @return The ID of the trunk subport.
      * 
      */
-    private final @Nullable String portId;
-    private final String projectId;
-    private final String region;
-    private final @Nullable String status;
+    private @Nullable String portId;
+    private String projectId;
+    private String region;
+    private @Nullable String status;
     /**
      * @return The set of the trunk subports. The structure of each subport is
      * described below.
      * 
      */
-    private final List<GetTrunkSubPort> subPorts;
-    private final @Nullable List<String> tags;
-    private final @Nullable String trunkId;
+    private List<GetTrunkSubPort> subPorts;
+    private @Nullable List<String> tags;
+    private @Nullable String trunkId;
 
-    @CustomType.Constructor
-    private GetTrunkResult(
-        @CustomType.Parameter("adminStateUp") @Nullable Boolean adminStateUp,
-        @CustomType.Parameter("allTags") List<String> allTags,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("portId") @Nullable String portId,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("subPorts") List<GetTrunkSubPort> subPorts,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("trunkId") @Nullable String trunkId) {
-        this.adminStateUp = adminStateUp;
-        this.allTags = allTags;
-        this.description = description;
-        this.id = id;
-        this.name = name;
-        this.portId = portId;
-        this.projectId = projectId;
-        this.region = region;
-        this.status = status;
-        this.subPorts = subPorts;
-        this.tags = tags;
-        this.trunkId = trunkId;
-    }
-
+    private GetTrunkResult() {}
     public Optional<Boolean> adminStateUp() {
         return Optional.ofNullable(this.adminStateUp);
     }
@@ -133,7 +106,7 @@ public final class GetTrunkResult {
     public static Builder builder(GetTrunkResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean adminStateUp;
         private List<String> allTags;
@@ -147,11 +120,7 @@ public final class GetTrunkResult {
         private List<GetTrunkSubPort> subPorts;
         private @Nullable List<String> tags;
         private @Nullable String trunkId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTrunkResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adminStateUp = defaults.adminStateUp;
@@ -168,10 +137,12 @@ public final class GetTrunkResult {
     	      this.trunkId = defaults.trunkId;
         }
 
+        @CustomType.Setter
         public Builder adminStateUp(@Nullable Boolean adminStateUp) {
             this.adminStateUp = adminStateUp;
             return this;
         }
+        @CustomType.Setter
         public Builder allTags(List<String> allTags) {
             this.allTags = Objects.requireNonNull(allTags);
             return this;
@@ -179,34 +150,42 @@ public final class GetTrunkResult {
         public Builder allTags(String... allTags) {
             return allTags(List.of(allTags));
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder portId(@Nullable String portId) {
             this.portId = portId;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder subPorts(List<GetTrunkSubPort> subPorts) {
             this.subPorts = Objects.requireNonNull(subPorts);
             return this;
@@ -214,6 +193,7 @@ public final class GetTrunkResult {
         public Builder subPorts(GetTrunkSubPort... subPorts) {
             return subPorts(List.of(subPorts));
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -221,11 +201,26 @@ public final class GetTrunkResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder trunkId(@Nullable String trunkId) {
             this.trunkId = trunkId;
             return this;
-        }        public GetTrunkResult build() {
-            return new GetTrunkResult(adminStateUp, allTags, description, id, name, portId, projectId, region, status, subPorts, tags, trunkId);
+        }
+        public GetTrunkResult build() {
+            final var o = new GetTrunkResult();
+            o.adminStateUp = adminStateUp;
+            o.allTags = allTags;
+            o.description = description;
+            o.id = id;
+            o.name = name;
+            o.portId = portId;
+            o.projectId = projectId;
+            o.region = region;
+            o.status = status;
+            o.subPorts = subPorts;
+            o.tags = tags;
+            o.trunkId = trunkId;
+            return o;
         }
     }
 }

@@ -363,6 +363,23 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * An array of service types used by the subnet.
+     * Changing this updates the service types for the existing subnet.
+     * 
+     */
+    @Import(name="serviceTypes")
+    private @Nullable Output<List<String>> serviceTypes;
+
+    /**
+     * @return An array of service types used by the subnet.
+     * Changing this updates the service types for the existing subnet.
+     * 
+     */
+    public Optional<Output<List<String>>> serviceTypes() {
+        return Optional.ofNullable(this.serviceTypes);
+    }
+
+    /**
      * The ID of the subnetpool associated with the subnet.
      * 
      */
@@ -444,6 +461,7 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
         this.noGateway = $.noGateway;
         this.prefixLength = $.prefixLength;
         this.region = $.region;
+        this.serviceTypes = $.serviceTypes;
         this.subnetpoolId = $.subnetpoolId;
         this.tags = $.tags;
         this.tenantId = $.tenantId;
@@ -979,6 +997,40 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param serviceTypes An array of service types used by the subnet.
+         * Changing this updates the service types for the existing subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceTypes(@Nullable Output<List<String>> serviceTypes) {
+            $.serviceTypes = serviceTypes;
+            return this;
+        }
+
+        /**
+         * @param serviceTypes An array of service types used by the subnet.
+         * Changing this updates the service types for the existing subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceTypes(List<String> serviceTypes) {
+            return serviceTypes(Output.of(serviceTypes));
+        }
+
+        /**
+         * @param serviceTypes An array of service types used by the subnet.
+         * Changing this updates the service types for the existing subnet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceTypes(String... serviceTypes) {
+            return serviceTypes(List.of(serviceTypes));
         }
 
         /**

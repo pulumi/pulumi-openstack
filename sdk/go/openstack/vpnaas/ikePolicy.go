@@ -18,19 +18,22 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/vpnaas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/vpnaas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vpnaas.NewIkePolicy(ctx, "policy1", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vpnaas.NewIkePolicy(ctx, "policy1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -38,7 +41,9 @@ import (
 // Services can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:vpnaas/ikePolicy:IkePolicy policy_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+//
+//	$ pulumi import openstack:vpnaas/ikePolicy:IkePolicy policy_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+//
 // ```
 type IkePolicy struct {
 	pulumi.CustomResourceState
@@ -281,7 +286,7 @@ func (i *IkePolicy) ToIkePolicyOutputWithContext(ctx context.Context) IkePolicyO
 // IkePolicyArrayInput is an input type that accepts IkePolicyArray and IkePolicyArrayOutput values.
 // You can construct a concrete instance of `IkePolicyArrayInput` via:
 //
-//          IkePolicyArray{ IkePolicyArgs{...} }
+//	IkePolicyArray{ IkePolicyArgs{...} }
 type IkePolicyArrayInput interface {
 	pulumi.Input
 
@@ -306,7 +311,7 @@ func (i IkePolicyArray) ToIkePolicyArrayOutputWithContext(ctx context.Context) I
 // IkePolicyMapInput is an input type that accepts IkePolicyMap and IkePolicyMapOutput values.
 // You can construct a concrete instance of `IkePolicyMapInput` via:
 //
-//          IkePolicyMap{ "key": IkePolicyArgs{...} }
+//	IkePolicyMap{ "key": IkePolicyArgs{...} }
 type IkePolicyMapInput interface {
 	pulumi.Input
 

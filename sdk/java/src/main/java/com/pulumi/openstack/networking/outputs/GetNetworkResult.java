@@ -18,115 +18,76 @@ public final class GetNetworkResult {
      * @return The administrative state of the network.
      * 
      */
-    private final String adminStateUp;
+    private String adminStateUp;
     /**
      * @return The set of string tags applied on the network.
      * 
      */
-    private final List<String> allTags;
+    private List<String> allTags;
     /**
      * @return The availability zone candidates for the network.
      * 
      */
-    private final List<String> availabilityZoneHints;
+    private List<String> availabilityZoneHints;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return The network DNS domain. Available, when Neutron DNS extension
      * is enabled
      * 
      */
-    private final String dnsDomain;
+    private String dnsDomain;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable Boolean external;
+    private @Nullable Boolean external;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String matchingSubnetCidr;
+    private String id;
+    private @Nullable String matchingSubnetCidr;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable Integer mtu;
+    private @Nullable Integer mtu;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String name;
-    private final @Nullable String networkId;
+    private @Nullable String name;
+    private @Nullable String networkId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return Specifies whether the network resource can be accessed by any
      * tenant or not.
      * 
      */
-    private final String shared;
-    private final @Nullable String status;
+    private String shared;
+    private @Nullable String status;
     /**
      * @return A list of subnet IDs belonging to the network.
      * 
      */
-    private final List<String> subnets;
-    private final @Nullable List<String> tags;
-    private final @Nullable String tenantId;
+    private List<String> subnets;
+    private @Nullable List<String> tags;
+    private @Nullable String tenantId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable Boolean transparentVlan;
+    private @Nullable Boolean transparentVlan;
 
-    @CustomType.Constructor
-    private GetNetworkResult(
-        @CustomType.Parameter("adminStateUp") String adminStateUp,
-        @CustomType.Parameter("allTags") List<String> allTags,
-        @CustomType.Parameter("availabilityZoneHints") List<String> availabilityZoneHints,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("dnsDomain") String dnsDomain,
-        @CustomType.Parameter("external") @Nullable Boolean external,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("matchingSubnetCidr") @Nullable String matchingSubnetCidr,
-        @CustomType.Parameter("mtu") @Nullable Integer mtu,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("networkId") @Nullable String networkId,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("shared") String shared,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("subnets") List<String> subnets,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("tenantId") @Nullable String tenantId,
-        @CustomType.Parameter("transparentVlan") @Nullable Boolean transparentVlan) {
-        this.adminStateUp = adminStateUp;
-        this.allTags = allTags;
-        this.availabilityZoneHints = availabilityZoneHints;
-        this.description = description;
-        this.dnsDomain = dnsDomain;
-        this.external = external;
-        this.id = id;
-        this.matchingSubnetCidr = matchingSubnetCidr;
-        this.mtu = mtu;
-        this.name = name;
-        this.networkId = networkId;
-        this.region = region;
-        this.shared = shared;
-        this.status = status;
-        this.subnets = subnets;
-        this.tags = tags;
-        this.tenantId = tenantId;
-        this.transparentVlan = transparentVlan;
-    }
-
+    private GetNetworkResult() {}
     /**
      * @return The administrative state of the network.
      * 
@@ -243,7 +204,7 @@ public final class GetNetworkResult {
     public static Builder builder(GetNetworkResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String adminStateUp;
         private List<String> allTags;
@@ -263,11 +224,7 @@ public final class GetNetworkResult {
         private @Nullable List<String> tags;
         private @Nullable String tenantId;
         private @Nullable Boolean transparentVlan;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNetworkResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adminStateUp = defaults.adminStateUp;
@@ -290,10 +247,12 @@ public final class GetNetworkResult {
     	      this.transparentVlan = defaults.transparentVlan;
         }
 
+        @CustomType.Setter
         public Builder adminStateUp(String adminStateUp) {
             this.adminStateUp = Objects.requireNonNull(adminStateUp);
             return this;
         }
+        @CustomType.Setter
         public Builder allTags(List<String> allTags) {
             this.allTags = Objects.requireNonNull(allTags);
             return this;
@@ -301,6 +260,7 @@ public final class GetNetworkResult {
         public Builder allTags(String... allTags) {
             return allTags(List.of(allTags));
         }
+        @CustomType.Setter
         public Builder availabilityZoneHints(List<String> availabilityZoneHints) {
             this.availabilityZoneHints = Objects.requireNonNull(availabilityZoneHints);
             return this;
@@ -308,50 +268,62 @@ public final class GetNetworkResult {
         public Builder availabilityZoneHints(String... availabilityZoneHints) {
             return availabilityZoneHints(List.of(availabilityZoneHints));
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder dnsDomain(String dnsDomain) {
             this.dnsDomain = Objects.requireNonNull(dnsDomain);
             return this;
         }
+        @CustomType.Setter
         public Builder external(@Nullable Boolean external) {
             this.external = external;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder matchingSubnetCidr(@Nullable String matchingSubnetCidr) {
             this.matchingSubnetCidr = matchingSubnetCidr;
             return this;
         }
+        @CustomType.Setter
         public Builder mtu(@Nullable Integer mtu) {
             this.mtu = mtu;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder networkId(@Nullable String networkId) {
             this.networkId = networkId;
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder shared(String shared) {
             this.shared = Objects.requireNonNull(shared);
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder subnets(List<String> subnets) {
             this.subnets = Objects.requireNonNull(subnets);
             return this;
@@ -359,6 +331,7 @@ public final class GetNetworkResult {
         public Builder subnets(String... subnets) {
             return subnets(List.of(subnets));
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -366,15 +339,37 @@ public final class GetNetworkResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
             this.tenantId = tenantId;
             return this;
         }
+        @CustomType.Setter
         public Builder transparentVlan(@Nullable Boolean transparentVlan) {
             this.transparentVlan = transparentVlan;
             return this;
-        }        public GetNetworkResult build() {
-            return new GetNetworkResult(adminStateUp, allTags, availabilityZoneHints, description, dnsDomain, external, id, matchingSubnetCidr, mtu, name, networkId, region, shared, status, subnets, tags, tenantId, transparentVlan);
+        }
+        public GetNetworkResult build() {
+            final var o = new GetNetworkResult();
+            o.adminStateUp = adminStateUp;
+            o.allTags = allTags;
+            o.availabilityZoneHints = availabilityZoneHints;
+            o.description = description;
+            o.dnsDomain = dnsDomain;
+            o.external = external;
+            o.id = id;
+            o.matchingSubnetCidr = matchingSubnetCidr;
+            o.mtu = mtu;
+            o.name = name;
+            o.networkId = networkId;
+            o.region = region;
+            o.shared = shared;
+            o.status = status;
+            o.subnets = subnets;
+            o.tags = tags;
+            o.tenantId = tenantId;
+            o.transparentVlan = transparentVlan;
+            return o;
         }
     }
 }

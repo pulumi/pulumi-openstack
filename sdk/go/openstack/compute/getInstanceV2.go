@@ -18,21 +18,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.GetInstanceV2(ctx, &compute.GetInstanceV2Args{
-// 			Id: "2ba26dc6-a12d-4889-8f25-794ea5bf4453",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.GetInstanceV2(ctx, &compute.GetInstanceV2Args{
+//				Id: "2ba26dc6-a12d-4889-8f25-794ea5bf4453",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInstanceV2(ctx *pulumi.Context, args *GetInstanceV2Args, opts ...pulumi.InvokeOption) (*GetInstanceV2Result, error) {
 	var rv GetInstanceV2Result
@@ -62,6 +65,8 @@ type GetInstanceV2Result struct {
 	AccessIpV6 string `pulumi:"accessIpV6"`
 	// The availability zone of this server.
 	AvailabilityZone string `pulumi:"availabilityZone"`
+	// The creation time of the instance.
+	Created string `pulumi:"created"`
 	// The flavor ID used to create the server.
 	FlavorId string `pulumi:"flavorId"`
 	// The flavor name used to create the server.
@@ -85,6 +90,8 @@ type GetInstanceV2Result struct {
 	SecurityGroups []string `pulumi:"securityGroups"`
 	// A set of string tags assigned to this server.
 	Tags []string `pulumi:"tags"`
+	// The time when the instance was last updated.
+	Updated string `pulumi:"updated"`
 	// The user data added when the server was created.
 	UserData string `pulumi:"userData"`
 }
@@ -147,6 +154,11 @@ func (o GetInstanceV2ResultOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceV2Result) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
+// The creation time of the instance.
+func (o GetInstanceV2ResultOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceV2Result) string { return v.Created }).(pulumi.StringOutput)
+}
+
 // The flavor ID used to create the server.
 func (o GetInstanceV2ResultOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceV2Result) string { return v.FlavorId }).(pulumi.StringOutput)
@@ -207,6 +219,11 @@ func (o GetInstanceV2ResultOutput) SecurityGroups() pulumi.StringArrayOutput {
 // A set of string tags assigned to this server.
 func (o GetInstanceV2ResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstanceV2Result) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The time when the instance was last updated.
+func (o GetInstanceV2ResultOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceV2Result) string { return v.Updated }).(pulumi.StringOutput)
 }
 
 // The user data added when the server was created.

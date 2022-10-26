@@ -21,28 +21,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		port1, err := networking.NewPort(ctx, "port1", &networking.PortArgs{
-// 			NetworkId: pulumi.String("a5bbd213-e1d3-49b6-aed1-9df60ea94b9a"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = networking.NewFloatingIpAssociate(ctx, "fip1", &networking.FloatingIpAssociateArgs{
-// 			FloatingIp: pulumi.String("1.2.3.4"),
-// 			PortId:     port1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			port1, err := networking.NewPort(ctx, "port1", &networking.PortArgs{
+//				NetworkId: pulumi.String("a5bbd213-e1d3-49b6-aed1-9df60ea94b9a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewFloatingIpAssociate(ctx, "fip1", &networking.FloatingIpAssociateArgs{
+//				FloatingIp: pulumi.String("1.2.3.4"),
+//				PortId:     port1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // Floating IP associations can be imported using the `id` of the floating IP, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:networking/floatingIpAssociate:FloatingIpAssociate fip 2c7f39f3-702b-48d1-940c-b50384177ee1
+//
+//	$ pulumi import openstack:networking/floatingIpAssociate:FloatingIpAssociate fip 2c7f39f3-702b-48d1-940c-b50384177ee1
+//
 // ```
 type FloatingIpAssociate struct {
 	pulumi.CustomResourceState
@@ -194,7 +199,7 @@ func (i *FloatingIpAssociate) ToFloatingIpAssociateOutputWithContext(ctx context
 // FloatingIpAssociateArrayInput is an input type that accepts FloatingIpAssociateArray and FloatingIpAssociateArrayOutput values.
 // You can construct a concrete instance of `FloatingIpAssociateArrayInput` via:
 //
-//          FloatingIpAssociateArray{ FloatingIpAssociateArgs{...} }
+//	FloatingIpAssociateArray{ FloatingIpAssociateArgs{...} }
 type FloatingIpAssociateArrayInput interface {
 	pulumi.Input
 
@@ -219,7 +224,7 @@ func (i FloatingIpAssociateArray) ToFloatingIpAssociateArrayOutputWithContext(ct
 // FloatingIpAssociateMapInput is an input type that accepts FloatingIpAssociateMap and FloatingIpAssociateMapOutput values.
 // You can construct a concrete instance of `FloatingIpAssociateMapInput` via:
 //
-//          FloatingIpAssociateMap{ "key": FloatingIpAssociateArgs{...} }
+//	FloatingIpAssociateMap{ "key": FloatingIpAssociateArgs{...} }
 type FloatingIpAssociateMapInput interface {
 	pulumi.Input
 

@@ -15,70 +15,49 @@ public final class GetEndpointResult {
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String endpointRegion;
+    private @Nullable String endpointRegion;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String interface_;
+    private @Nullable String interface_;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String serviceId;
+    private @Nullable String serviceId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String serviceName;
+    private @Nullable String serviceName;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String serviceType;
+    private @Nullable String serviceType;
     /**
      * @return The endpoint URL.
      * 
      */
-    private final String url;
+    private String url;
 
-    @CustomType.Constructor
-    private GetEndpointResult(
-        @CustomType.Parameter("endpointRegion") @Nullable String endpointRegion,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("interface") @Nullable String interface_,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("serviceId") @Nullable String serviceId,
-        @CustomType.Parameter("serviceName") @Nullable String serviceName,
-        @CustomType.Parameter("serviceType") @Nullable String serviceType,
-        @CustomType.Parameter("url") String url) {
-        this.endpointRegion = endpointRegion;
-        this.id = id;
-        this.interface_ = interface_;
-        this.name = name;
-        this.region = region;
-        this.serviceId = serviceId;
-        this.serviceName = serviceName;
-        this.serviceType = serviceType;
-        this.url = url;
-    }
-
+    private GetEndpointResult() {}
     /**
      * @return See Argument Reference above.
      * 
@@ -150,7 +129,7 @@ public final class GetEndpointResult {
     public static Builder builder(GetEndpointResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String endpointRegion;
         private String id;
@@ -161,11 +140,7 @@ public final class GetEndpointResult {
         private @Nullable String serviceName;
         private @Nullable String serviceType;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEndpointResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpointRegion = defaults.endpointRegion;
@@ -179,43 +154,63 @@ public final class GetEndpointResult {
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder endpointRegion(@Nullable String endpointRegion) {
             this.endpointRegion = endpointRegion;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter("interface")
         public Builder interface_(@Nullable String interface_) {
             this.interface_ = interface_;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceId(@Nullable String serviceId) {
             this.serviceId = serviceId;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceName(@Nullable String serviceName) {
             this.serviceName = serviceName;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceType(@Nullable String serviceType) {
             this.serviceType = serviceType;
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public GetEndpointResult build() {
-            return new GetEndpointResult(endpointRegion, id, interface_, name, region, serviceId, serviceName, serviceType, url);
+        }
+        public GetEndpointResult build() {
+            final var o = new GetEndpointResult();
+            o.endpointRegion = endpointRegion;
+            o.id = id;
+            o.interface_ = interface_;
+            o.name = name;
+            o.region = region;
+            o.serviceId = serviceId;
+            o.serviceName = serviceName;
+            o.serviceType = serviceType;
+            o.url = url;
+            return o;
         }
     }
 }

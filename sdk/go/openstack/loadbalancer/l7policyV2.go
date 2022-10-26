@@ -19,62 +19,65 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
-// 			AdminStateUp: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
-// 			Cidr:      pulumi.String("192.168.199.0/24"),
-// 			IpVersion: pulumi.Int(4),
-// 			NetworkId: network1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		loadbalancer1, err := loadbalancer.NewLoadBalancer(ctx, "loadbalancer1", &loadbalancer.LoadBalancerArgs{
-// 			VipSubnetId: subnet1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		listener1, err := loadbalancer.NewListener(ctx, "listener1", &loadbalancer.ListenerArgs{
-// 			LoadbalancerId: loadbalancer1.ID(),
-// 			Protocol:       pulumi.String("HTTP"),
-// 			ProtocolPort:   pulumi.Int(8080),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		pool1, err := loadbalancer.NewPool(ctx, "pool1", &loadbalancer.PoolArgs{
-// 			LbMethod:       pulumi.String("ROUND_ROBIN"),
-// 			LoadbalancerId: loadbalancer1.ID(),
-// 			Protocol:       pulumi.String("HTTP"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = loadbalancer.NewL7PolicyV2(ctx, "l7policy1", &loadbalancer.L7PolicyV2Args{
-// 			Action:         pulumi.String("REDIRECT_TO_POOL"),
-// 			Description:    pulumi.String("test l7 policy"),
-// 			ListenerId:     listener1.ID(),
-// 			Position:       pulumi.Int(1),
-// 			RedirectPoolId: pool1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//				Cidr:      pulumi.String("192.168.199.0/24"),
+//				IpVersion: pulumi.Int(4),
+//				NetworkId: network1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			loadbalancer1, err := loadbalancer.NewLoadBalancer(ctx, "loadbalancer1", &loadbalancer.LoadBalancerArgs{
+//				VipSubnetId: subnet1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			listener1, err := loadbalancer.NewListener(ctx, "listener1", &loadbalancer.ListenerArgs{
+//				LoadbalancerId: loadbalancer1.ID(),
+//				Protocol:       pulumi.String("HTTP"),
+//				ProtocolPort:   pulumi.Int(8080),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pool1, err := loadbalancer.NewPool(ctx, "pool1", &loadbalancer.PoolArgs{
+//				LbMethod:       pulumi.String("ROUND_ROBIN"),
+//				LoadbalancerId: loadbalancer1.ID(),
+//				Protocol:       pulumi.String("HTTP"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = loadbalancer.NewL7PolicyV2(ctx, "l7policy1", &loadbalancer.L7PolicyV2Args{
+//				Action:         pulumi.String("REDIRECT_TO_POOL"),
+//				Description:    pulumi.String("test l7 policy"),
+//				ListenerId:     listener1.ID(),
+//				Position:       pulumi.Int(1),
+//				RedirectPoolId: pool1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -82,7 +85,9 @@ import (
 // Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+//
+//	$ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+//
 // ```
 type L7PolicyV2 struct {
 	pulumi.CustomResourceState
@@ -321,7 +326,7 @@ func (i *L7PolicyV2) ToL7PolicyV2OutputWithContext(ctx context.Context) L7Policy
 // L7PolicyV2ArrayInput is an input type that accepts L7PolicyV2Array and L7PolicyV2ArrayOutput values.
 // You can construct a concrete instance of `L7PolicyV2ArrayInput` via:
 //
-//          L7PolicyV2Array{ L7PolicyV2Args{...} }
+//	L7PolicyV2Array{ L7PolicyV2Args{...} }
 type L7PolicyV2ArrayInput interface {
 	pulumi.Input
 
@@ -346,7 +351,7 @@ func (i L7PolicyV2Array) ToL7PolicyV2ArrayOutputWithContext(ctx context.Context)
 // L7PolicyV2MapInput is an input type that accepts L7PolicyV2Map and L7PolicyV2MapOutput values.
 // You can construct a concrete instance of `L7PolicyV2MapInput` via:
 //
-//          L7PolicyV2Map{ "key": L7PolicyV2Args{...} }
+//	L7PolicyV2Map{ "key": L7PolicyV2Args{...} }
 type L7PolicyV2MapInput interface {
 	pulumi.Input
 

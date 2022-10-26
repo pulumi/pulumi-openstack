@@ -18,21 +18,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/sharedfilesystem"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/sharedfilesystem"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sharedfilesystem.LookupShareNetwork(ctx, &sharedfilesystem.LookupShareNetworkArgs{
-// 			Name: pulumi.StringRef("sharenetwork_1"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sharedfilesystem.LookupShareNetwork(ctx, &sharedfilesystem.LookupShareNetworkArgs{
+//				Name: pulumi.StringRef("sharenetwork_1"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupShareNetwork(ctx *pulumi.Context, args *LookupShareNetworkArgs, opts ...pulumi.InvokeOption) (*LookupShareNetworkResult, error) {
 	var rv LookupShareNetworkResult

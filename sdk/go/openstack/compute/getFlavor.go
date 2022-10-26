@@ -18,22 +18,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.LookupFlavor(ctx, &compute.LookupFlavorArgs{
-// 			Ram:   pulumi.IntRef(512),
-// 			Vcpus: pulumi.IntRef(1),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.LookupFlavor(ctx, &compute.LookupFlavorArgs{
+//				Ram:   pulumi.IntRef(512),
+//				Vcpus: pulumi.IntRef(1),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupFlavor(ctx *pulumi.Context, args *LookupFlavorArgs, opts ...pulumi.InvokeOption) (*LookupFlavorResult, error) {
 	var rv LookupFlavorResult
@@ -46,6 +49,8 @@ func LookupFlavor(ctx *pulumi.Context, args *LookupFlavorArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getFlavor.
 type LookupFlavorArgs struct {
+	// The description of the flavor.
+	Description *string `pulumi:"description"`
 	// The exact amount of disk (in gigabytes).
 	Disk *int `pulumi:"disk"`
 	// The ID of the flavor. Conflicts with the `name`,
@@ -76,7 +81,8 @@ type LookupFlavorArgs struct {
 
 // A collection of values returned by getFlavor.
 type LookupFlavorResult struct {
-	Disk *int `pulumi:"disk"`
+	Description *string `pulumi:"description"`
+	Disk        *int    `pulumi:"disk"`
 	// Key/Value pairs of metadata for the flavor.
 	ExtraSpecs map[string]interface{} `pulumi:"extraSpecs"`
 	FlavorId   *string                `pulumi:"flavorId"`
@@ -108,6 +114,8 @@ func LookupFlavorOutput(ctx *pulumi.Context, args LookupFlavorOutputArgs, opts .
 
 // A collection of arguments for invoking getFlavor.
 type LookupFlavorOutputArgs struct {
+	// The description of the flavor.
+	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The exact amount of disk (in gigabytes).
 	Disk pulumi.IntPtrInput `pulumi:"disk"`
 	// The ID of the flavor. Conflicts with the `name`,
@@ -153,6 +161,10 @@ func (o LookupFlavorResultOutput) ToLookupFlavorResultOutput() LookupFlavorResul
 
 func (o LookupFlavorResultOutput) ToLookupFlavorResultOutputWithContext(ctx context.Context) LookupFlavorResultOutput {
 	return o
+}
+
+func (o LookupFlavorResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupFlavorResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupFlavorResultOutput) Disk() pulumi.IntPtrOutput {

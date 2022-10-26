@@ -20,36 +20,39 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleZone, err := dns.NewZone(ctx, "exampleZone", &dns.ZoneArgs{
-// 			Description: pulumi.String("a zone"),
-// 			Email:       pulumi.String("email2@example.com"),
-// 			Ttl:         pulumi.Int(6000),
-// 			Type:        pulumi.String("PRIMARY"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dns.NewRecordSet(ctx, "rsExampleCom", &dns.RecordSetArgs{
-// 			Description: pulumi.String("An example record set"),
-// 			Records: pulumi.StringArray{
-// 				pulumi.String("10.0.0.1"),
-// 			},
-// 			Ttl:    pulumi.Int(3000),
-// 			Type:   pulumi.String("A"),
-// 			ZoneId: exampleZone.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleZone, err := dns.NewZone(ctx, "exampleZone", &dns.ZoneArgs{
+//				Description: pulumi.String("a zone"),
+//				Email:       pulumi.String("email2@example.com"),
+//				Ttl:         pulumi.Int(6000),
+//				Type:        pulumi.String("PRIMARY"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewRecordSet(ctx, "rsExampleCom", &dns.RecordSetArgs{
+//				Description: pulumi.String("An example record set"),
+//				Records: pulumi.StringArray{
+//					pulumi.String("10.0.0.1"),
+//				},
+//				Ttl:    pulumi.Int(3000),
+//				Type:   pulumi.String("A"),
+//				ZoneId: exampleZone.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -57,7 +60,9 @@ import (
 // This resource can be imported by specifying the zone ID and recordset ID, separated by a forward slash.
 //
 // ```sh
-//  $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 <zone_id>/<recordset_id>
+//
+//	$ pulumi import openstack:dns/recordSet:RecordSet recordset_1 <zone_id>/<recordset_id>
+//
 // ```
 type RecordSet struct {
 	pulumi.CustomResourceState
@@ -298,7 +303,7 @@ func (i *RecordSet) ToRecordSetOutputWithContext(ctx context.Context) RecordSetO
 // RecordSetArrayInput is an input type that accepts RecordSetArray and RecordSetArrayOutput values.
 // You can construct a concrete instance of `RecordSetArrayInput` via:
 //
-//          RecordSetArray{ RecordSetArgs{...} }
+//	RecordSetArray{ RecordSetArgs{...} }
 type RecordSetArrayInput interface {
 	pulumi.Input
 
@@ -323,7 +328,7 @@ func (i RecordSetArray) ToRecordSetArrayOutputWithContext(ctx context.Context) R
 // RecordSetMapInput is an input type that accepts RecordSetMap and RecordSetMapOutput values.
 // You can construct a concrete instance of `RecordSetMapInput` via:
 //
-//          RecordSetMap{ "key": RecordSetArgs{...} }
+//	RecordSetMap{ "key": RecordSetArgs{...} }
 type RecordSetMapInput interface {
 	pulumi.Input
 

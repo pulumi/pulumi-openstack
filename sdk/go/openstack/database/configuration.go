@@ -11,41 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a V1 DB configuration resource within OpenStack.
-//
-// ## Example Usage
-// ### Configuration
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/database"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := database.NewConfiguration(ctx, "test", &database.ConfigurationArgs{
-// 			Configurations: database.ConfigurationConfigurationArray{
-// 				&database.ConfigurationConfigurationArgs{
-// 					Name:  pulumi.String("max_connections"),
-// 					Value: pulumi.String("200"),
-// 				},
-// 			},
-// 			Datastore: &database.ConfigurationDatastoreArgs{
-// 				Type:    pulumi.String("mysql"),
-// 				Version: pulumi.String("mysql-5.7"),
-// 			},
-// 			Description: pulumi.String("description"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 type Configuration struct {
 	pulumi.CustomResourceState
 
@@ -188,7 +153,7 @@ func (i *Configuration) ToConfigurationOutputWithContext(ctx context.Context) Co
 // ConfigurationArrayInput is an input type that accepts ConfigurationArray and ConfigurationArrayOutput values.
 // You can construct a concrete instance of `ConfigurationArrayInput` via:
 //
-//          ConfigurationArray{ ConfigurationArgs{...} }
+//	ConfigurationArray{ ConfigurationArgs{...} }
 type ConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -213,7 +178,7 @@ func (i ConfigurationArray) ToConfigurationArrayOutputWithContext(ctx context.Co
 // ConfigurationMapInput is an input type that accepts ConfigurationMap and ConfigurationMapOutput values.
 // You can construct a concrete instance of `ConfigurationMapInput` via:
 //
-//          ConfigurationMap{ "key": ConfigurationArgs{...} }
+//	ConfigurationMap{ "key": ConfigurationArgs{...} }
 type ConfigurationMapInput interface {
 	pulumi.Input
 

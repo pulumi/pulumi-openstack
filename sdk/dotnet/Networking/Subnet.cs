@@ -184,6 +184,13 @@ namespace Pulumi.OpenStack.Networking
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// An array of service types used by the subnet.
+        /// Changing this updates the service types for the existing subnet.
+        /// </summary>
+        [Output("serviceTypes")]
+        public Output<ImmutableArray<string>> ServiceTypes { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the subnetpool associated with the subnet.
         /// </summary>
         [Output("subnetpoolId")]
@@ -409,6 +416,19 @@ namespace Pulumi.OpenStack.Networking
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("serviceTypes")]
+        private InputList<string>? _serviceTypes;
+
+        /// <summary>
+        /// An array of service types used by the subnet.
+        /// Changing this updates the service types for the existing subnet.
+        /// </summary>
+        public InputList<string> ServiceTypes
+        {
+            get => _serviceTypes ?? (_serviceTypes = new InputList<string>());
+            set => _serviceTypes = value;
+        }
+
         /// <summary>
         /// The ID of the subnetpool associated with the subnet.
         /// </summary>
@@ -620,6 +640,19 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("serviceTypes")]
+        private InputList<string>? _serviceTypes;
+
+        /// <summary>
+        /// An array of service types used by the subnet.
+        /// Changing this updates the service types for the existing subnet.
+        /// </summary>
+        public InputList<string> ServiceTypes
+        {
+            get => _serviceTypes ?? (_serviceTypes = new InputList<string>());
+            set => _serviceTypes = value;
+        }
 
         /// <summary>
         /// The ID of the subnetpool associated with the subnet.

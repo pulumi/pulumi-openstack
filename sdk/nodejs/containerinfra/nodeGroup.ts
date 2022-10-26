@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
  * Manages a V1 Magnum node group resource within OpenStack.
  *
  * ## Example Usage
- * ### Create a Cluster
+ * ### Create a Nodegroup
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,12 +26,12 @@ import * as utilities from "../utilities";
  * * `region` - See Argument Reference above.
  * * `name` - See Argument Reference above.
  * * `projectId` - See Argument Reference above.
- * * `createdAt` - The time at which cluster was created.
- * * `updatedAt` - The time at which cluster was created.
+ * * `createdAt` - The time at which node group was created.
+ * * `updatedAt` - The time at which node group was created.
  * * `dockerVolumeSize` - See Argument Reference above.
  * * `role` - See Argument Reference above.
- * * `image` - See Argument Reference above.
- * * `flavor` - See Argument Reference above.
+ * * `imageId` - See Argument Reference above.
+ * * `flavorId` - See Argument Reference above.
  * * `labels` - See Argument Reference above.
  * * `nodeCount` - See Argument Reference above.
  * * `minNodeCount` - See Argument Reference above.
@@ -40,10 +40,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Node groups can be imported using the `id`, e.g.
+ * Node groups can be imported using the `id` (cluster_id/nodegroup_id), e.g.
  *
  * ```sh
- *  $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
+ *  $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922/ce0f9463-dd25-474b-9fe8-94de63e5e42b
  * ```
  */
 export class NodeGroup extends pulumi.CustomResource {
@@ -85,7 +85,17 @@ export class NodeGroup extends pulumi.CustomResource {
      * Changing this creates a new node group.
      */
     public readonly dockerVolumeSize!: pulumi.Output<number>;
+    /**
+     * The flavor for the nodes of the node group. Can be set
+     * via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+     * node group.
+     */
     public readonly flavorId!: pulumi.Output<string>;
+    /**
+     * The reference to an image that is used for nodes of the
+     * node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+     * Changing this updates the image attribute of the existing node group.
+     */
     public readonly imageId!: pulumi.Output<string>;
     /**
      * The list of key value pairs representing additional
@@ -96,7 +106,7 @@ export class NodeGroup extends pulumi.CustomResource {
      * The maximum number of nodes for the node group.
      * Changing this update the maximum number of nodes of the node group.
      */
-    public readonly maxNodeCount!: pulumi.Output<number>;
+    public readonly maxNodeCount!: pulumi.Output<number | undefined>;
     /**
      * Indicates whether the provided labels should be
      * merged with cluster labels. Changing this creates a new nodegroup.
@@ -134,7 +144,7 @@ export class NodeGroup extends pulumi.CustomResource {
      * The role of nodes in the node group. Changing this
      * creates a new node group.
      */
-    public /*out*/ readonly role!: pulumi.Output<string>;
+    public readonly role!: pulumi.Output<string>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
@@ -181,9 +191,9 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["role"] = args ? args.role : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["projectId"] = undefined /*out*/;
-            resourceInputs["role"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -206,7 +216,17 @@ export interface NodeGroupState {
      * Changing this creates a new node group.
      */
     dockerVolumeSize?: pulumi.Input<number>;
+    /**
+     * The flavor for the nodes of the node group. Can be set
+     * via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+     * node group.
+     */
     flavorId?: pulumi.Input<string>;
+    /**
+     * The reference to an image that is used for nodes of the
+     * node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+     * Changing this updates the image attribute of the existing node group.
+     */
     imageId?: pulumi.Input<string>;
     /**
      * The list of key value pairs representing additional
@@ -273,7 +293,17 @@ export interface NodeGroupArgs {
      * Changing this creates a new node group.
      */
     dockerVolumeSize?: pulumi.Input<number>;
+    /**
+     * The flavor for the nodes of the node group. Can be set
+     * via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+     * node group.
+     */
     flavorId?: pulumi.Input<string>;
+    /**
+     * The reference to an image that is used for nodes of the
+     * node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+     * Changing this updates the image attribute of the existing node group.
+     */
     imageId?: pulumi.Input<string>;
     /**
      * The list of key value pairs representing additional
@@ -312,4 +342,9 @@ export interface NodeGroupArgs {
      * node group.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The role of nodes in the node group. Changing this
+     * creates a new node group.
+     */
+    role?: pulumi.Input<string>;
 }

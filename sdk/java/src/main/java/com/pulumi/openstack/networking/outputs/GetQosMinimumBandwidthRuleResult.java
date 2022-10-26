@@ -10,42 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetQosMinimumBandwidthRuleResult {
-    private final String direction;
+    private String direction;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final Integer minKbps;
+    private Integer minKbps;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String qosPolicyId;
+    private String qosPolicyId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
 
-    @CustomType.Constructor
-    private GetQosMinimumBandwidthRuleResult(
-        @CustomType.Parameter("direction") String direction,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("minKbps") Integer minKbps,
-        @CustomType.Parameter("qosPolicyId") String qosPolicyId,
-        @CustomType.Parameter("region") String region) {
-        this.direction = direction;
-        this.id = id;
-        this.minKbps = minKbps;
-        this.qosPolicyId = qosPolicyId;
-        this.region = region;
-    }
-
+    private GetQosMinimumBandwidthRuleResult() {}
     public String direction() {
         return this.direction;
     }
@@ -85,18 +72,14 @@ public final class GetQosMinimumBandwidthRuleResult {
     public static Builder builder(GetQosMinimumBandwidthRuleResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String direction;
         private String id;
         private Integer minKbps;
         private String qosPolicyId;
         private String region;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetQosMinimumBandwidthRuleResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.direction = defaults.direction;
@@ -106,27 +89,39 @@ public final class GetQosMinimumBandwidthRuleResult {
     	      this.region = defaults.region;
         }
 
+        @CustomType.Setter
         public Builder direction(String direction) {
             this.direction = Objects.requireNonNull(direction);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder minKbps(Integer minKbps) {
             this.minKbps = Objects.requireNonNull(minKbps);
             return this;
         }
+        @CustomType.Setter
         public Builder qosPolicyId(String qosPolicyId) {
             this.qosPolicyId = Objects.requireNonNull(qosPolicyId);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
-        }        public GetQosMinimumBandwidthRuleResult build() {
-            return new GetQosMinimumBandwidthRuleResult(direction, id, minKbps, qosPolicyId, region);
+        }
+        public GetQosMinimumBandwidthRuleResult build() {
+            final var o = new GetQosMinimumBandwidthRuleResult();
+            o.direction = direction;
+            o.id = id;
+            o.minKbps = minKbps;
+            o.qosPolicyId = qosPolicyId;
+            o.region = region;
+            return o;
         }
     }
 }

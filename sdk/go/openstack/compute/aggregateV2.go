@@ -19,29 +19,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewAggregateV2(ctx, "dellServers", &compute.AggregateV2Args{
-// 			Hosts: pulumi.StringArray{
-// 				pulumi.String("myhost01.example.com"),
-// 				pulumi.String("myhost02.example.com"),
-// 			},
-// 			Metadata: pulumi.StringMap{
-// 				"cpus": pulumi.String("56"),
-// 			},
-// 			Region: pulumi.String("RegionOne"),
-// 			Zone:   pulumi.String("nova"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewAggregateV2(ctx, "dellServers", &compute.AggregateV2Args{
+//				Hosts: pulumi.StringArray{
+//					pulumi.String("myhost01.example.com"),
+//					pulumi.String("myhost02.example.com"),
+//				},
+//				Metadata: pulumi.StringMap{
+//					"cpus": pulumi.String("56"),
+//				},
+//				Region: pulumi.String("RegionOne"),
+//				Zone:   pulumi.String("nova"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Minimum required example
 //
@@ -49,19 +52,22 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewAggregateV2(ctx, "test", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewAggregateV2(ctx, "test", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -69,10 +75,12 @@ import (
 // You can import an existing Host Aggregate by their ID.
 //
 // ```sh
-//  $ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24
+//
+//	$ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24
+//
 // ```
 //
-//  The ID can be obtained with an openstack command$ openstack aggregate list +----+------+-------------------+ | ID | Name | Availability Zone | +----+------+-------------------+ | 59 | test | None
+//	The ID can be obtained with an openstack command$ openstack aggregate list +----+------+-------------------+ | ID | Name | Availability Zone | +----+------+-------------------+ | 59 | test | None
 //
 // | +----+------+-------------------+
 type AggregateV2 struct {
@@ -226,7 +234,7 @@ func (i *AggregateV2) ToAggregateV2OutputWithContext(ctx context.Context) Aggreg
 // AggregateV2ArrayInput is an input type that accepts AggregateV2Array and AggregateV2ArrayOutput values.
 // You can construct a concrete instance of `AggregateV2ArrayInput` via:
 //
-//          AggregateV2Array{ AggregateV2Args{...} }
+//	AggregateV2Array{ AggregateV2Args{...} }
 type AggregateV2ArrayInput interface {
 	pulumi.Input
 
@@ -251,7 +259,7 @@ func (i AggregateV2Array) ToAggregateV2ArrayOutputWithContext(ctx context.Contex
 // AggregateV2MapInput is an input type that accepts AggregateV2Map and AggregateV2MapOutput values.
 // You can construct a concrete instance of `AggregateV2MapInput` via:
 //
-//          AggregateV2Map{ "key": AggregateV2Args{...} }
+//	AggregateV2Map{ "key": AggregateV2Args{...} }
 type AggregateV2MapInput interface {
 	pulumi.Input
 

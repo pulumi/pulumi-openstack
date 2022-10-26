@@ -19,21 +19,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := networking.NewQosPolicy(ctx, "qosPolicy1", &networking.QosPolicyArgs{
-// 			Description: pulumi.String("bw_limit"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.NewQosPolicy(ctx, "qosPolicy1", &networking.QosPolicyArgs{
+//				Description: pulumi.String("bw_limit"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -41,7 +44,9 @@ import (
 // QoS Policies can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:networking/qosPolicy:QosPolicy qos_policy_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae
+//
+//	$ pulumi import openstack:networking/qosPolicy:QosPolicy qos_policy_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae
+//
 // ```
 type QosPolicy struct {
 	pulumi.CustomResourceState
@@ -276,7 +281,7 @@ func (i *QosPolicy) ToQosPolicyOutputWithContext(ctx context.Context) QosPolicyO
 // QosPolicyArrayInput is an input type that accepts QosPolicyArray and QosPolicyArrayOutput values.
 // You can construct a concrete instance of `QosPolicyArrayInput` via:
 //
-//          QosPolicyArray{ QosPolicyArgs{...} }
+//	QosPolicyArray{ QosPolicyArgs{...} }
 type QosPolicyArrayInput interface {
 	pulumi.Input
 
@@ -301,7 +306,7 @@ func (i QosPolicyArray) ToQosPolicyArrayOutputWithContext(ctx context.Context) Q
 // QosPolicyMapInput is an input type that accepts QosPolicyMap and QosPolicyMapOutput values.
 // You can construct a concrete instance of `QosPolicyMapInput` via:
 //
-//          QosPolicyMap{ "key": QosPolicyArgs{...} }
+//	QosPolicyMap{ "key": QosPolicyArgs{...} }
 type QosPolicyMapInput interface {
 	pulumi.Input
 

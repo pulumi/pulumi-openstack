@@ -348,6 +348,10 @@ export namespace database {
          */
         name: string;
         /**
+         * Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
+         */
+        stringType?: boolean;
+        /**
          * Configuration parameter value. Changing this creates a new resource.
          */
         value: string;

@@ -17,13 +17,9 @@ public final class VolumeAttachVendorOptions {
      * to work with some OpenStack clouds which don&#39;t have the Block Storage V3 API available.
      * 
      */
-    private final @Nullable Boolean ignoreVolumeConfirmation;
+    private @Nullable Boolean ignoreVolumeConfirmation;
 
-    @CustomType.Constructor
-    private VolumeAttachVendorOptions(@CustomType.Parameter("ignoreVolumeConfirmation") @Nullable Boolean ignoreVolumeConfirmation) {
-        this.ignoreVolumeConfirmation = ignoreVolumeConfirmation;
-    }
-
+    private VolumeAttachVendorOptions() {}
     /**
      * @return Boolean to control whether
      * to ignore volume status confirmation of the attached volume. This can be helpful
@@ -41,24 +37,24 @@ public final class VolumeAttachVendorOptions {
     public static Builder builder(VolumeAttachVendorOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean ignoreVolumeConfirmation;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(VolumeAttachVendorOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ignoreVolumeConfirmation = defaults.ignoreVolumeConfirmation;
         }
 
+        @CustomType.Setter
         public Builder ignoreVolumeConfirmation(@Nullable Boolean ignoreVolumeConfirmation) {
             this.ignoreVolumeConfirmation = ignoreVolumeConfirmation;
             return this;
-        }        public VolumeAttachVendorOptions build() {
-            return new VolumeAttachVendorOptions(ignoreVolumeConfirmation);
+        }
+        public VolumeAttachVendorOptions build() {
+            final var o = new VolumeAttachVendorOptions();
+            o.ignoreVolumeConfirmation = ignoreVolumeConfirmation;
+            return o;
         }
     }
 }

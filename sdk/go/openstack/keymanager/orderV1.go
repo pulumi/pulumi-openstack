@@ -20,27 +20,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := keymanager.NewOrderV1(ctx, "order1", &keymanager.OrderV1Args{
-// 			Meta: &keymanager.OrderV1MetaArgs{
-// 				Algorithm: pulumi.String("aes"),
-// 				BitLength: pulumi.Int(256),
-// 				Mode:      pulumi.String("cbc"),
-// 				Name:      pulumi.String("mysecret"),
-// 			},
-// 			Type: pulumi.String("key"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := keymanager.NewOrderV1(ctx, "order1", &keymanager.OrderV1Args{
+//				Meta: &keymanager.OrderV1MetaArgs{
+//					Algorithm: pulumi.String("aes"),
+//					BitLength: pulumi.Int(256),
+//					Mode:      pulumi.String("cbc"),
+//					Name:      pulumi.String("mysecret"),
+//				},
+//				Type: pulumi.String("key"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Asymmetric key pair order
 //
@@ -48,26 +51,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := keymanager.NewOrderV1(ctx, "order1", &keymanager.OrderV1Args{
-// 			Meta: &keymanager.OrderV1MetaArgs{
-// 				Algorithm: pulumi.String("rsa"),
-// 				BitLength: pulumi.Int(4096),
-// 				Name:      pulumi.String("mysecret"),
-// 			},
-// 			Type: pulumi.String("asymmetric"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := keymanager.NewOrderV1(ctx, "order1", &keymanager.OrderV1Args{
+//				Meta: &keymanager.OrderV1MetaArgs{
+//					Algorithm: pulumi.String("rsa"),
+//					BitLength: pulumi.Int(4096),
+//					Name:      pulumi.String("mysecret"),
+//				},
+//				Type: pulumi.String("asymmetric"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -75,7 +81,9 @@ import (
 // Orders can be imported using the order id (the last part of the order reference), e.g.
 //
 // ```sh
-//  $ pulumi import openstack:keymanager/orderV1:OrderV1 order_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
+//
+//	$ pulumi import openstack:keymanager/orderV1:OrderV1 order_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
+//
 // ```
 type OrderV1 struct {
 	pulumi.CustomResourceState
@@ -258,7 +266,7 @@ func (i *OrderV1) ToOrderV1OutputWithContext(ctx context.Context) OrderV1Output 
 // OrderV1ArrayInput is an input type that accepts OrderV1Array and OrderV1ArrayOutput values.
 // You can construct a concrete instance of `OrderV1ArrayInput` via:
 //
-//          OrderV1Array{ OrderV1Args{...} }
+//	OrderV1Array{ OrderV1Args{...} }
 type OrderV1ArrayInput interface {
 	pulumi.Input
 
@@ -283,7 +291,7 @@ func (i OrderV1Array) ToOrderV1ArrayOutputWithContext(ctx context.Context) Order
 // OrderV1MapInput is an input type that accepts OrderV1Map and OrderV1MapOutput values.
 // You can construct a concrete instance of `OrderV1MapInput` via:
 //
-//          OrderV1Map{ "key": OrderV1Args{...} }
+//	OrderV1Map{ "key": OrderV1Args{...} }
 type OrderV1MapInput interface {
 	pulumi.Input
 

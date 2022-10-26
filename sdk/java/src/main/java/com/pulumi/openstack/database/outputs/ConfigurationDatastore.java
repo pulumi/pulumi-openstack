@@ -13,21 +13,14 @@ public final class ConfigurationDatastore {
      * @return Database engine type to be used with this configuration. Changing this creates a new resource.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return Version of database engine type to be used with this configuration. Changing this creates a new resource.
      * 
      */
-    private final String version;
+    private String version;
 
-    @CustomType.Constructor
-    private ConfigurationDatastore(
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("version") String version) {
-        this.type = type;
-        this.version = version;
-    }
-
+    private ConfigurationDatastore() {}
     /**
      * @return Database engine type to be used with this configuration. Changing this creates a new resource.
      * 
@@ -50,30 +43,32 @@ public final class ConfigurationDatastore {
     public static Builder builder(ConfigurationDatastore defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String type;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConfigurationDatastore defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.type = defaults.type;
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public ConfigurationDatastore build() {
-            return new ConfigurationDatastore(type, version);
+        }
+        public ConfigurationDatastore build() {
+            final var o = new ConfigurationDatastore();
+            o.type = type;
+            o.version = version;
+            return o;
         }
     }
 }

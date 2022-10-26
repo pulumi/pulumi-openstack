@@ -18,21 +18,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := blockstorage.GetVolumeV3(ctx, &blockstorage.GetVolumeV3Args{
-// 			Name: pulumi.StringRef("volume_1"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := blockstorage.GetVolumeV3(ctx, &blockstorage.GetVolumeV3Args{
+//				Name: pulumi.StringRef("volume_1"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetVolumeV3(ctx *pulumi.Context, args *GetVolumeV3Args, opts ...pulumi.InvokeOption) (*GetVolumeV3Result, error) {
 	var rv GetVolumeV3Result

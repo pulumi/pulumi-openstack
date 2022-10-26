@@ -14,161 +14,114 @@ public final class GetLimitsV2Result {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The number of allowed metadata items for each image. Starting from version 2.39 this field is dropped from ‘os-limits’ response, because ‘image-metadata’ proxy API was deprecated. Available until version 2.38.
      * 
      */
-    private final Integer maxImageMeta;
+    private Integer maxImageMeta;
     /**
      * @return The number of allowed injected files for the tenant. Available until version 2.56.
      * 
      */
-    private final Integer maxPersonality;
+    private Integer maxPersonality;
     /**
      * @return The number of allowed bytes of content for each injected file. Available until version 2.56.
      * 
      */
-    private final Integer maxPersonalitySize;
+    private Integer maxPersonalitySize;
     /**
      * @return The number of allowed rules for each security group. Available until version 2.35.
      * 
      */
-    private final Integer maxSecurityGroupRules;
+    private Integer maxSecurityGroupRules;
     /**
      * @return The number of allowed security groups for the tenant. Available until version 2.35.
      * 
      */
-    private final Integer maxSecurityGroups;
+    private Integer maxSecurityGroups;
     /**
      * @return The number of allowed members for each server group.
      * 
      */
-    private final Integer maxServerGroupMembers;
+    private Integer maxServerGroupMembers;
     /**
      * @return The number of allowed server groups for the tenant.
      * 
      */
-    private final Integer maxServerGroups;
+    private Integer maxServerGroups;
     /**
      * @return The number of allowed server groups for the tenant.
      * 
      */
-    private final Integer maxServerMeta;
+    private Integer maxServerMeta;
     /**
      * @return The number of allowed server cores for the tenant.
      * 
      */
-    private final Integer maxTotalCores;
+    private Integer maxTotalCores;
     /**
      * @return The number of allowed floating IP addresses for each tenant. Available until version 2.35.
      * 
      */
-    private final Integer maxTotalFloatingIps;
+    private Integer maxTotalFloatingIps;
     /**
      * @return The number of allowed servers for the tenant.
      * 
      */
-    private final Integer maxTotalInstances;
+    private Integer maxTotalInstances;
     /**
      * @return The number of allowed key pairs for the user.
      * 
      */
-    private final Integer maxTotalKeypairs;
+    private Integer maxTotalKeypairs;
     /**
      * @return The number of allowed floating IP addresses for the tenant. Available until version 2.35.
      * 
      */
-    private final Integer maxTotalRamSize;
+    private Integer maxTotalRamSize;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String projectId;
+    private String projectId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return The number of used server cores in the tenant.
      * 
      */
-    private final Integer totalCoresUsed;
+    private Integer totalCoresUsed;
     /**
      * @return The number of used floating IP addresses in the tenant.
      * 
      */
-    private final Integer totalFloatingIpsUsed;
+    private Integer totalFloatingIpsUsed;
     /**
      * @return The number of used server cores in the tenant.
      * 
      */
-    private final Integer totalInstancesUsed;
+    private Integer totalInstancesUsed;
     /**
      * @return The amount of used server RAM in the tenant.
      * 
      */
-    private final Integer totalRamUsed;
+    private Integer totalRamUsed;
     /**
      * @return The number of used security groups in the tenant. Available until version 2.35.
      * 
      */
-    private final Integer totalSecurityGroupsUsed;
+    private Integer totalSecurityGroupsUsed;
     /**
      * @return The number of used server groups in each tenant.
      * 
      */
-    private final Integer totalServerGroupsUsed;
+    private Integer totalServerGroupsUsed;
 
-    @CustomType.Constructor
-    private GetLimitsV2Result(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("maxImageMeta") Integer maxImageMeta,
-        @CustomType.Parameter("maxPersonality") Integer maxPersonality,
-        @CustomType.Parameter("maxPersonalitySize") Integer maxPersonalitySize,
-        @CustomType.Parameter("maxSecurityGroupRules") Integer maxSecurityGroupRules,
-        @CustomType.Parameter("maxSecurityGroups") Integer maxSecurityGroups,
-        @CustomType.Parameter("maxServerGroupMembers") Integer maxServerGroupMembers,
-        @CustomType.Parameter("maxServerGroups") Integer maxServerGroups,
-        @CustomType.Parameter("maxServerMeta") Integer maxServerMeta,
-        @CustomType.Parameter("maxTotalCores") Integer maxTotalCores,
-        @CustomType.Parameter("maxTotalFloatingIps") Integer maxTotalFloatingIps,
-        @CustomType.Parameter("maxTotalInstances") Integer maxTotalInstances,
-        @CustomType.Parameter("maxTotalKeypairs") Integer maxTotalKeypairs,
-        @CustomType.Parameter("maxTotalRamSize") Integer maxTotalRamSize,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("totalCoresUsed") Integer totalCoresUsed,
-        @CustomType.Parameter("totalFloatingIpsUsed") Integer totalFloatingIpsUsed,
-        @CustomType.Parameter("totalInstancesUsed") Integer totalInstancesUsed,
-        @CustomType.Parameter("totalRamUsed") Integer totalRamUsed,
-        @CustomType.Parameter("totalSecurityGroupsUsed") Integer totalSecurityGroupsUsed,
-        @CustomType.Parameter("totalServerGroupsUsed") Integer totalServerGroupsUsed) {
-        this.id = id;
-        this.maxImageMeta = maxImageMeta;
-        this.maxPersonality = maxPersonality;
-        this.maxPersonalitySize = maxPersonalitySize;
-        this.maxSecurityGroupRules = maxSecurityGroupRules;
-        this.maxSecurityGroups = maxSecurityGroups;
-        this.maxServerGroupMembers = maxServerGroupMembers;
-        this.maxServerGroups = maxServerGroups;
-        this.maxServerMeta = maxServerMeta;
-        this.maxTotalCores = maxTotalCores;
-        this.maxTotalFloatingIps = maxTotalFloatingIps;
-        this.maxTotalInstances = maxTotalInstances;
-        this.maxTotalKeypairs = maxTotalKeypairs;
-        this.maxTotalRamSize = maxTotalRamSize;
-        this.projectId = projectId;
-        this.region = region;
-        this.totalCoresUsed = totalCoresUsed;
-        this.totalFloatingIpsUsed = totalFloatingIpsUsed;
-        this.totalInstancesUsed = totalInstancesUsed;
-        this.totalRamUsed = totalRamUsed;
-        this.totalSecurityGroupsUsed = totalSecurityGroupsUsed;
-        this.totalServerGroupsUsed = totalServerGroupsUsed;
-    }
-
+    private GetLimitsV2Result() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -331,7 +284,7 @@ public final class GetLimitsV2Result {
     public static Builder builder(GetLimitsV2Result defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private Integer maxImageMeta;
@@ -355,11 +308,7 @@ public final class GetLimitsV2Result {
         private Integer totalRamUsed;
         private Integer totalSecurityGroupsUsed;
         private Integer totalServerGroupsUsed;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetLimitsV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -386,95 +335,141 @@ public final class GetLimitsV2Result {
     	      this.totalServerGroupsUsed = defaults.totalServerGroupsUsed;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder maxImageMeta(Integer maxImageMeta) {
             this.maxImageMeta = Objects.requireNonNull(maxImageMeta);
             return this;
         }
+        @CustomType.Setter
         public Builder maxPersonality(Integer maxPersonality) {
             this.maxPersonality = Objects.requireNonNull(maxPersonality);
             return this;
         }
+        @CustomType.Setter
         public Builder maxPersonalitySize(Integer maxPersonalitySize) {
             this.maxPersonalitySize = Objects.requireNonNull(maxPersonalitySize);
             return this;
         }
+        @CustomType.Setter
         public Builder maxSecurityGroupRules(Integer maxSecurityGroupRules) {
             this.maxSecurityGroupRules = Objects.requireNonNull(maxSecurityGroupRules);
             return this;
         }
+        @CustomType.Setter
         public Builder maxSecurityGroups(Integer maxSecurityGroups) {
             this.maxSecurityGroups = Objects.requireNonNull(maxSecurityGroups);
             return this;
         }
+        @CustomType.Setter
         public Builder maxServerGroupMembers(Integer maxServerGroupMembers) {
             this.maxServerGroupMembers = Objects.requireNonNull(maxServerGroupMembers);
             return this;
         }
+        @CustomType.Setter
         public Builder maxServerGroups(Integer maxServerGroups) {
             this.maxServerGroups = Objects.requireNonNull(maxServerGroups);
             return this;
         }
+        @CustomType.Setter
         public Builder maxServerMeta(Integer maxServerMeta) {
             this.maxServerMeta = Objects.requireNonNull(maxServerMeta);
             return this;
         }
+        @CustomType.Setter
         public Builder maxTotalCores(Integer maxTotalCores) {
             this.maxTotalCores = Objects.requireNonNull(maxTotalCores);
             return this;
         }
+        @CustomType.Setter
         public Builder maxTotalFloatingIps(Integer maxTotalFloatingIps) {
             this.maxTotalFloatingIps = Objects.requireNonNull(maxTotalFloatingIps);
             return this;
         }
+        @CustomType.Setter
         public Builder maxTotalInstances(Integer maxTotalInstances) {
             this.maxTotalInstances = Objects.requireNonNull(maxTotalInstances);
             return this;
         }
+        @CustomType.Setter
         public Builder maxTotalKeypairs(Integer maxTotalKeypairs) {
             this.maxTotalKeypairs = Objects.requireNonNull(maxTotalKeypairs);
             return this;
         }
+        @CustomType.Setter
         public Builder maxTotalRamSize(Integer maxTotalRamSize) {
             this.maxTotalRamSize = Objects.requireNonNull(maxTotalRamSize);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder totalCoresUsed(Integer totalCoresUsed) {
             this.totalCoresUsed = Objects.requireNonNull(totalCoresUsed);
             return this;
         }
+        @CustomType.Setter
         public Builder totalFloatingIpsUsed(Integer totalFloatingIpsUsed) {
             this.totalFloatingIpsUsed = Objects.requireNonNull(totalFloatingIpsUsed);
             return this;
         }
+        @CustomType.Setter
         public Builder totalInstancesUsed(Integer totalInstancesUsed) {
             this.totalInstancesUsed = Objects.requireNonNull(totalInstancesUsed);
             return this;
         }
+        @CustomType.Setter
         public Builder totalRamUsed(Integer totalRamUsed) {
             this.totalRamUsed = Objects.requireNonNull(totalRamUsed);
             return this;
         }
+        @CustomType.Setter
         public Builder totalSecurityGroupsUsed(Integer totalSecurityGroupsUsed) {
             this.totalSecurityGroupsUsed = Objects.requireNonNull(totalSecurityGroupsUsed);
             return this;
         }
+        @CustomType.Setter
         public Builder totalServerGroupsUsed(Integer totalServerGroupsUsed) {
             this.totalServerGroupsUsed = Objects.requireNonNull(totalServerGroupsUsed);
             return this;
-        }        public GetLimitsV2Result build() {
-            return new GetLimitsV2Result(id, maxImageMeta, maxPersonality, maxPersonalitySize, maxSecurityGroupRules, maxSecurityGroups, maxServerGroupMembers, maxServerGroups, maxServerMeta, maxTotalCores, maxTotalFloatingIps, maxTotalInstances, maxTotalKeypairs, maxTotalRamSize, projectId, region, totalCoresUsed, totalFloatingIpsUsed, totalInstancesUsed, totalRamUsed, totalSecurityGroupsUsed, totalServerGroupsUsed);
+        }
+        public GetLimitsV2Result build() {
+            final var o = new GetLimitsV2Result();
+            o.id = id;
+            o.maxImageMeta = maxImageMeta;
+            o.maxPersonality = maxPersonality;
+            o.maxPersonalitySize = maxPersonalitySize;
+            o.maxSecurityGroupRules = maxSecurityGroupRules;
+            o.maxSecurityGroups = maxSecurityGroups;
+            o.maxServerGroupMembers = maxServerGroupMembers;
+            o.maxServerGroups = maxServerGroups;
+            o.maxServerMeta = maxServerMeta;
+            o.maxTotalCores = maxTotalCores;
+            o.maxTotalFloatingIps = maxTotalFloatingIps;
+            o.maxTotalInstances = maxTotalInstances;
+            o.maxTotalKeypairs = maxTotalKeypairs;
+            o.maxTotalRamSize = maxTotalRamSize;
+            o.projectId = projectId;
+            o.region = region;
+            o.totalCoresUsed = totalCoresUsed;
+            o.totalFloatingIpsUsed = totalFloatingIpsUsed;
+            o.totalInstancesUsed = totalInstancesUsed;
+            o.totalRamUsed = totalRamUsed;
+            o.totalSecurityGroupsUsed = totalSecurityGroupsUsed;
+            o.totalServerGroupsUsed = totalServerGroupsUsed;
+            return o;
         }
     }
 }

@@ -18,21 +18,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := networking.LookupSubnetPool(ctx, &networking.LookupSubnetPoolArgs{
-// 			Name: pulumi.StringRef("subnetpool_1"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.LookupSubnetPool(ctx, &networking.LookupSubnetPoolArgs{
+//				Name: pulumi.StringRef("subnetpool_1"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupSubnetPool(ctx *pulumi.Context, args *LookupSubnetPoolArgs, opts ...pulumi.InvokeOption) (*LookupSubnetPoolResult, error) {
 	var rv LookupSubnetPoolResult

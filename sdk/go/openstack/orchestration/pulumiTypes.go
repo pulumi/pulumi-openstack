@@ -20,7 +20,7 @@ type StackV1StackOutput struct {
 // StackV1StackOutputInput is an input type that accepts StackV1StackOutputArgs and StackV1StackOutputOutput values.
 // You can construct a concrete instance of `StackV1StackOutputInput` via:
 //
-//          StackV1StackOutputArgs{...}
+//	StackV1StackOutputArgs{...}
 type StackV1StackOutputInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i StackV1StackOutputArgs) ToStackV1StackOutputOutputWithContext(ctx contex
 // StackV1StackOutputArrayInput is an input type that accepts StackV1StackOutputArray and StackV1StackOutputArrayOutput values.
 // You can construct a concrete instance of `StackV1StackOutputArrayInput` via:
 //
-//          StackV1StackOutputArray{ StackV1StackOutputArgs{...} }
+//	StackV1StackOutputArray{ StackV1StackOutputArgs{...} }
 type StackV1StackOutputArrayInput interface {
 	pulumi.Input
 

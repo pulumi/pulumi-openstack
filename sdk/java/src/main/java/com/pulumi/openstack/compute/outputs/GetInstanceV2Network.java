@@ -13,49 +13,34 @@ public final class GetInstanceV2Network {
      * @return The IPv4 address assigned to this network port.
      * 
      */
-    private final String fixedIpV4;
+    private String fixedIpV4;
     /**
      * @return The IPv6 address assigned to this network port.
      * 
      */
-    private final String fixedIpV6;
+    private String fixedIpV6;
     /**
      * @return The MAC address assigned to this network interface.
      * 
      */
-    private final String mac;
+    private String mac;
     /**
      * @return The name of the network
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The port UUID for this network
      * 
      */
-    private final String port;
+    private String port;
     /**
      * @return The UUID of the network
      * 
      */
-    private final String uuid;
+    private String uuid;
 
-    @CustomType.Constructor
-    private GetInstanceV2Network(
-        @CustomType.Parameter("fixedIpV4") String fixedIpV4,
-        @CustomType.Parameter("fixedIpV6") String fixedIpV6,
-        @CustomType.Parameter("mac") String mac,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("port") String port,
-        @CustomType.Parameter("uuid") String uuid) {
-        this.fixedIpV4 = fixedIpV4;
-        this.fixedIpV6 = fixedIpV6;
-        this.mac = mac;
-        this.name = name;
-        this.port = port;
-        this.uuid = uuid;
-    }
-
+    private GetInstanceV2Network() {}
     /**
      * @return The IPv4 address assigned to this network port.
      * 
@@ -106,7 +91,7 @@ public final class GetInstanceV2Network {
     public static Builder builder(GetInstanceV2Network defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String fixedIpV4;
         private String fixedIpV6;
@@ -114,11 +99,7 @@ public final class GetInstanceV2Network {
         private String name;
         private String port;
         private String uuid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceV2Network defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fixedIpV4 = defaults.fixedIpV4;
@@ -129,31 +110,45 @@ public final class GetInstanceV2Network {
     	      this.uuid = defaults.uuid;
         }
 
+        @CustomType.Setter
         public Builder fixedIpV4(String fixedIpV4) {
             this.fixedIpV4 = Objects.requireNonNull(fixedIpV4);
             return this;
         }
+        @CustomType.Setter
         public Builder fixedIpV6(String fixedIpV6) {
             this.fixedIpV6 = Objects.requireNonNull(fixedIpV6);
             return this;
         }
+        @CustomType.Setter
         public Builder mac(String mac) {
             this.mac = Objects.requireNonNull(mac);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder port(String port) {
             this.port = Objects.requireNonNull(port);
             return this;
         }
+        @CustomType.Setter
         public Builder uuid(String uuid) {
             this.uuid = Objects.requireNonNull(uuid);
             return this;
-        }        public GetInstanceV2Network build() {
-            return new GetInstanceV2Network(fixedIpV4, fixedIpV6, mac, name, port, uuid);
+        }
+        public GetInstanceV2Network build() {
+            final var o = new GetInstanceV2Network();
+            o.fixedIpV4 = fixedIpV4;
+            o.fixedIpV6 = fixedIpV6;
+            o.mac = mac;
+            o.name = name;
+            o.port = port;
+            o.uuid = uuid;
+            return o;
         }
     }
 }

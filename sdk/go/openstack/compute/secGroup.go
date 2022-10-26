@@ -25,35 +25,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewSecGroup(ctx, "secgroup1", &compute.SecGroupArgs{
-// 			Description: pulumi.String("my security group"),
-// 			Rules: compute.SecGroupRuleArray{
-// 				&compute.SecGroupRuleArgs{
-// 					Cidr:       pulumi.String("0.0.0.0/0"),
-// 					FromPort:   pulumi.Int(22),
-// 					IpProtocol: pulumi.String("tcp"),
-// 					ToPort:     pulumi.Int(22),
-// 				},
-// 				&compute.SecGroupRuleArgs{
-// 					Cidr:       pulumi.String("0.0.0.0/0"),
-// 					FromPort:   pulumi.Int(80),
-// 					IpProtocol: pulumi.String("tcp"),
-// 					ToPort:     pulumi.Int(80),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewSecGroup(ctx, "secgroup1", &compute.SecGroupArgs{
+//				Description: pulumi.String("my security group"),
+//				Rules: compute.SecGroupRuleArray{
+//					&compute.SecGroupRuleArgs{
+//						Cidr:       pulumi.String("0.0.0.0/0"),
+//						FromPort:   pulumi.Int(22),
+//						IpProtocol: pulumi.String("tcp"),
+//						ToPort:     pulumi.Int(22),
+//					},
+//					&compute.SecGroupRuleArgs{
+//						Cidr:       pulumi.String("0.0.0.0/0"),
+//						FromPort:   pulumi.Int(80),
+//						IpProtocol: pulumi.String("tcp"),
+//						ToPort:     pulumi.Int(80),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Notes
 //
@@ -65,14 +68,17 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // A list of ICMP types and codes can be found [here](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages).
@@ -85,26 +91,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewInstance(ctx, "test-server", &compute.InstanceArgs{
-// 			FlavorId: pulumi.String("3"),
-// 			ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
-// 			KeyPair:  pulumi.String("my_key_pair_name"),
-// 			SecurityGroups: pulumi.StringArray{
-// 				pulumi.Any(openstack_compute_secgroup_v2.Secgroup_1.Name),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewInstance(ctx, "test-server", &compute.InstanceArgs{
+//				FlavorId: pulumi.String("3"),
+//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
+//				KeyPair:  pulumi.String("my_key_pair_name"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.Any(openstack_compute_secgroup_v2.Secgroup_1.Name),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -112,7 +121,9 @@ import (
 // Security Groups can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:compute/secGroup:SecGroup my_secgroup 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
+//
+//	$ pulumi import openstack:compute/secGroup:SecGroup my_secgroup 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
+//
 // ```
 type SecGroup struct {
 	pulumi.CustomResourceState
@@ -273,7 +284,7 @@ func (i *SecGroup) ToSecGroupOutputWithContext(ctx context.Context) SecGroupOutp
 // SecGroupArrayInput is an input type that accepts SecGroupArray and SecGroupArrayOutput values.
 // You can construct a concrete instance of `SecGroupArrayInput` via:
 //
-//          SecGroupArray{ SecGroupArgs{...} }
+//	SecGroupArray{ SecGroupArgs{...} }
 type SecGroupArrayInput interface {
 	pulumi.Input
 
@@ -298,7 +309,7 @@ func (i SecGroupArray) ToSecGroupArrayOutputWithContext(ctx context.Context) Sec
 // SecGroupMapInput is an input type that accepts SecGroupMap and SecGroupMapOutput values.
 // You can construct a concrete instance of `SecGroupMapInput` via:
 //
-//          SecGroupMap{ "key": SecGroupArgs{...} }
+//	SecGroupMap{ "key": SecGroupArgs{...} }
 type SecGroupMapInput interface {
 	pulumi.Input
 

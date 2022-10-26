@@ -20,7 +20,7 @@ type IkePolicyLifetime struct {
 // IkePolicyLifetimeInput is an input type that accepts IkePolicyLifetimeArgs and IkePolicyLifetimeOutput values.
 // You can construct a concrete instance of `IkePolicyLifetimeInput` via:
 //
-//          IkePolicyLifetimeArgs{...}
+//	IkePolicyLifetimeArgs{...}
 type IkePolicyLifetimeInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i IkePolicyLifetimeArgs) ToIkePolicyLifetimeOutputWithContext(ctx context.
 // IkePolicyLifetimeArrayInput is an input type that accepts IkePolicyLifetimeArray and IkePolicyLifetimeArrayOutput values.
 // You can construct a concrete instance of `IkePolicyLifetimeArrayInput` via:
 //
-//          IkePolicyLifetimeArray{ IkePolicyLifetimeArgs{...} }
+//	IkePolicyLifetimeArray{ IkePolicyLifetimeArgs{...} }
 type IkePolicyLifetimeArrayInput interface {
 	pulumi.Input
 
@@ -126,7 +126,7 @@ type IpSecPolicyLifetime struct {
 // IpSecPolicyLifetimeInput is an input type that accepts IpSecPolicyLifetimeArgs and IpSecPolicyLifetimeOutput values.
 // You can construct a concrete instance of `IpSecPolicyLifetimeInput` via:
 //
-//          IpSecPolicyLifetimeArgs{...}
+//	IpSecPolicyLifetimeArgs{...}
 type IpSecPolicyLifetimeInput interface {
 	pulumi.Input
 
@@ -156,7 +156,7 @@ func (i IpSecPolicyLifetimeArgs) ToIpSecPolicyLifetimeOutputWithContext(ctx cont
 // IpSecPolicyLifetimeArrayInput is an input type that accepts IpSecPolicyLifetimeArray and IpSecPolicyLifetimeArrayOutput values.
 // You can construct a concrete instance of `IpSecPolicyLifetimeArrayInput` via:
 //
-//          IpSecPolicyLifetimeArray{ IpSecPolicyLifetimeArgs{...} }
+//	IpSecPolicyLifetimeArray{ IpSecPolicyLifetimeArgs{...} }
 type IpSecPolicyLifetimeArrayInput interface {
 	pulumi.Input
 
@@ -240,7 +240,7 @@ type SiteConnectionDpd struct {
 // SiteConnectionDpdInput is an input type that accepts SiteConnectionDpdArgs and SiteConnectionDpdOutput values.
 // You can construct a concrete instance of `SiteConnectionDpdInput` via:
 //
-//          SiteConnectionDpdArgs{...}
+//	SiteConnectionDpdArgs{...}
 type SiteConnectionDpdInput interface {
 	pulumi.Input
 
@@ -278,7 +278,7 @@ func (i SiteConnectionDpdArgs) ToSiteConnectionDpdOutputWithContext(ctx context.
 // SiteConnectionDpdArrayInput is an input type that accepts SiteConnectionDpdArray and SiteConnectionDpdArrayOutput values.
 // You can construct a concrete instance of `SiteConnectionDpdArrayInput` via:
 //
-//          SiteConnectionDpdArray{ SiteConnectionDpdArgs{...} }
+//	SiteConnectionDpdArray{ SiteConnectionDpdArgs{...} }
 type SiteConnectionDpdArrayInput interface {
 	pulumi.Input
 

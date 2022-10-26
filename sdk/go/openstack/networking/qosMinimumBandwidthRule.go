@@ -20,28 +20,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		qosPolicy1, err := networking.NewQosPolicy(ctx, "qosPolicy1", &networking.QosPolicyArgs{
-// 			Description: pulumi.String("min_kbps"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = networking.NewQosMinimumBandwidthRule(ctx, "minimumBandwidthRule1", &networking.QosMinimumBandwidthRuleArgs{
-// 			MinKbps:     pulumi.Int(200),
-// 			QosPolicyId: qosPolicy1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			qosPolicy1, err := networking.NewQosPolicy(ctx, "qosPolicy1", &networking.QosPolicyArgs{
+//				Description: pulumi.String("min_kbps"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewQosMinimumBandwidthRule(ctx, "minimumBandwidthRule1", &networking.QosMinimumBandwidthRuleArgs{
+//				MinKbps:     pulumi.Int(200),
+//				QosPolicyId: qosPolicy1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // QoS minimum bandwidth rules can be imported using the `qos_policy_id/minimum_bandwidth_rule_id` format, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule minimum_bandwidth_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
+//
+//	$ pulumi import openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule minimum_bandwidth_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
+//
 // ```
 type QosMinimumBandwidthRule struct {
 	pulumi.CustomResourceState
@@ -193,7 +198,7 @@ func (i *QosMinimumBandwidthRule) ToQosMinimumBandwidthRuleOutputWithContext(ctx
 // QosMinimumBandwidthRuleArrayInput is an input type that accepts QosMinimumBandwidthRuleArray and QosMinimumBandwidthRuleArrayOutput values.
 // You can construct a concrete instance of `QosMinimumBandwidthRuleArrayInput` via:
 //
-//          QosMinimumBandwidthRuleArray{ QosMinimumBandwidthRuleArgs{...} }
+//	QosMinimumBandwidthRuleArray{ QosMinimumBandwidthRuleArgs{...} }
 type QosMinimumBandwidthRuleArrayInput interface {
 	pulumi.Input
 
@@ -218,7 +223,7 @@ func (i QosMinimumBandwidthRuleArray) ToQosMinimumBandwidthRuleArrayOutputWithCo
 // QosMinimumBandwidthRuleMapInput is an input type that accepts QosMinimumBandwidthRuleMap and QosMinimumBandwidthRuleMapOutput values.
 // You can construct a concrete instance of `QosMinimumBandwidthRuleMapInput` via:
 //
-//          QosMinimumBandwidthRuleMap{ "key": QosMinimumBandwidthRuleArgs{...} }
+//	QosMinimumBandwidthRuleMap{ "key": QosMinimumBandwidthRuleArgs{...} }
 type QosMinimumBandwidthRuleMapInput interface {
 	pulumi.Input
 

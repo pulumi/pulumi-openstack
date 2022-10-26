@@ -16,14 +16,14 @@ public final class ApplicationCredentialAccessRule {
      * another application credential can be provided.
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return The request method that the application credential is
      * permitted to use for a given API endpoint. Allowed values: `POST`, `GET`,
      * `HEAD`, `PATCH`, `PUT` and `DELETE`.
      * 
      */
-    private final String method;
+    private String method;
     /**
      * @return The API path that the application credential is permitted
      * to access. May use named wildcards such as **{tag}** or the unnamed wildcard
@@ -31,7 +31,7 @@ public final class ApplicationCredentialAccessRule {
      * wildcard **\*\*** to include **{@literal /}** in the matched path.
      * 
      */
-    private final String path;
+    private String path;
     /**
      * @return The service type identifier for the service that the
      * application credential is granted to access. Must be a service type that is
@@ -40,20 +40,9 @@ public final class ApplicationCredentialAccessRule {
      * **object-store**, **sharev2**, **dns**, **key-manager**, **monitoring**, etc.
      * 
      */
-    private final String service;
+    private String service;
 
-    @CustomType.Constructor
-    private ApplicationCredentialAccessRule(
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("method") String method,
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("service") String service) {
-        this.id = id;
-        this.method = method;
-        this.path = path;
-        this.service = service;
-    }
-
+    private ApplicationCredentialAccessRule() {}
     /**
      * @return The ID of the existing access rule. The access rule ID of
      * another application credential can be provided.
@@ -100,17 +89,13 @@ public final class ApplicationCredentialAccessRule {
     public static Builder builder(ApplicationCredentialAccessRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String id;
         private String method;
         private String path;
         private String service;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationCredentialAccessRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -119,23 +104,33 @@ public final class ApplicationCredentialAccessRule {
     	      this.service = defaults.service;
         }
 
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder method(String method) {
             this.method = Objects.requireNonNull(method);
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder service(String service) {
             this.service = Objects.requireNonNull(service);
             return this;
-        }        public ApplicationCredentialAccessRule build() {
-            return new ApplicationCredentialAccessRule(id, method, path, service);
+        }
+        public ApplicationCredentialAccessRule build() {
+            final var o = new ApplicationCredentialAccessRule();
+            o.id = id;
+            o.method = method;
+            o.path = path;
+            o.service = service;
+            return o;
         }
     }
 }

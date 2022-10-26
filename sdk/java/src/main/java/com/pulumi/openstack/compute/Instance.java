@@ -175,6 +175,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.configDrive);
     }
     /**
+     * The creation time of the instance.
+     * 
+     */
+    @Export(name="created", type=String.class, parameters={})
+    private Output<String> created;
+
+    /**
+     * @return The creation time of the instance.
+     * 
+     */
+    public Output<String> created() {
+        return this.created;
+    }
+    /**
      * The flavor ID of
      * the desired flavor for the server. Changing this resizes the existing server.
      * 
@@ -489,6 +503,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * The time when the instance was last updated.
+     * 
+     */
+    @Export(name="updated", type=String.class, parameters={})
+    private Output<String> updated;
+
+    /**
+     * @return The time when the instance was last updated.
+     * 
+     */
+    public Output<String> updated() {
+        return this.updated;
     }
     /**
      * The user data to provide when launching the instance.

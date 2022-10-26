@@ -16,10 +16,12 @@ import (
 // > **Note:** This usually requires admin privileges.
 //
 // > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API
-//     in case of delete call.
+//
+//	in case of delete call.
 //
 // > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
-//     created with zero value.
+//
+//	created with zero value.
 //
 // ## Example Usage
 //
@@ -27,35 +29,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project1, err := identity.NewProject(ctx, "project1", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = networking.NewQuotaV2(ctx, "quota1", &networking.QuotaV2Args{
-// 			ProjectId:         project1.ID(),
-// 			Floatingip:        pulumi.Int(10),
-// 			Network:           pulumi.Int(4),
-// 			Port:              pulumi.Int(100),
-// 			RbacPolicy:        pulumi.Int(10),
-// 			Router:            pulumi.Int(4),
-// 			SecurityGroup:     pulumi.Int(10),
-// 			SecurityGroupRule: pulumi.Int(100),
-// 			Subnet:            pulumi.Int(8),
-// 			Subnetpool:        pulumi.Int(2),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewQuotaV2(ctx, "quota1", &networking.QuotaV2Args{
+//				ProjectId:         project1.ID(),
+//				Floatingip:        pulumi.Int(10),
+//				Network:           pulumi.Int(4),
+//				Port:              pulumi.Int(100),
+//				RbacPolicy:        pulumi.Int(10),
+//				Router:            pulumi.Int(4),
+//				SecurityGroup:     pulumi.Int(10),
+//				SecurityGroupRule: pulumi.Int(100),
+//				Subnet:            pulumi.Int(8),
+//				Subnetpool:        pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -63,7 +68,9 @@ import (
 // Quotas can be imported using the `project_id/region_name`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:networking/quotaV2:QuotaV2 quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
+//
+//	$ pulumi import openstack:networking/quotaV2:QuotaV2 quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
+//
 // ```
 type QuotaV2 struct {
 	pulumi.CustomResourceState
@@ -314,7 +321,7 @@ func (i *QuotaV2) ToQuotaV2OutputWithContext(ctx context.Context) QuotaV2Output 
 // QuotaV2ArrayInput is an input type that accepts QuotaV2Array and QuotaV2ArrayOutput values.
 // You can construct a concrete instance of `QuotaV2ArrayInput` via:
 //
-//          QuotaV2Array{ QuotaV2Args{...} }
+//	QuotaV2Array{ QuotaV2Args{...} }
 type QuotaV2ArrayInput interface {
 	pulumi.Input
 
@@ -339,7 +346,7 @@ func (i QuotaV2Array) ToQuotaV2ArrayOutputWithContext(ctx context.Context) Quota
 // QuotaV2MapInput is an input type that accepts QuotaV2Map and QuotaV2MapOutput values.
 // You can construct a concrete instance of `QuotaV2MapInput` via:
 //
-//          QuotaV2Map{ "key": QuotaV2Args{...} }
+//	QuotaV2Map{ "key": QuotaV2Args{...} }
 type QuotaV2MapInput interface {
 	pulumi.Input
 

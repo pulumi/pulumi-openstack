@@ -17,19 +17,22 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := identity.NewEc2CredentialV3(ctx, "ec2Key1", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := identity.NewEc2CredentialV3(ctx, "ec2Key1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### EC2 credential in pre-defined project scope
 //
@@ -37,21 +40,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := identity.NewEc2CredentialV3(ctx, "ec2Key1", &identity.Ec2CredentialV3Args{
-// 			ProjectId: pulumi.String("f7ac731cc11f40efbc03a9f9e1d1d21f"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := identity.NewEc2CredentialV3(ctx, "ec2Key1", &identity.Ec2CredentialV3Args{
+//				ProjectId: pulumi.String("f7ac731cc11f40efbc03a9f9e1d1d21f"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -59,7 +65,9 @@ import (
 // EC2 Credentials can be imported using the `access`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:identity/ec2CredentialV3:Ec2CredentialV3 ec2_cred_1 2d0ac4a2f81b4b0f9513ee49e780647d
+//
+//	$ pulumi import openstack:identity/ec2CredentialV3:Ec2CredentialV3 ec2_cred_1 2d0ac4a2f81b4b0f9513ee49e780647d
+//
 // ```
 type Ec2CredentialV3 struct {
 	pulumi.CustomResourceState
@@ -205,7 +213,7 @@ func (i *Ec2CredentialV3) ToEc2CredentialV3OutputWithContext(ctx context.Context
 // Ec2CredentialV3ArrayInput is an input type that accepts Ec2CredentialV3Array and Ec2CredentialV3ArrayOutput values.
 // You can construct a concrete instance of `Ec2CredentialV3ArrayInput` via:
 //
-//          Ec2CredentialV3Array{ Ec2CredentialV3Args{...} }
+//	Ec2CredentialV3Array{ Ec2CredentialV3Args{...} }
 type Ec2CredentialV3ArrayInput interface {
 	pulumi.Input
 
@@ -230,7 +238,7 @@ func (i Ec2CredentialV3Array) ToEc2CredentialV3ArrayOutputWithContext(ctx contex
 // Ec2CredentialV3MapInput is an input type that accepts Ec2CredentialV3Map and Ec2CredentialV3MapOutput values.
 // You can construct a concrete instance of `Ec2CredentialV3MapInput` via:
 //
-//          Ec2CredentialV3Map{ "key": Ec2CredentialV3Args{...} }
+//	Ec2CredentialV3Map{ "key": Ec2CredentialV3Args{...} }
 type Ec2CredentialV3MapInput interface {
 	pulumi.Input
 

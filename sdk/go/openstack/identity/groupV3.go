@@ -21,21 +21,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := identity.NewGroupV3(ctx, "group1", &identity.GroupV3Args{
-// 			Description: pulumi.String("group 1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := identity.NewGroupV3(ctx, "group1", &identity.GroupV3Args{
+//				Description: pulumi.String("group 1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -43,7 +46,9 @@ import (
 // groups can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:identity/groupV3:GroupV3 group_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+//
+//	$ pulumi import openstack:identity/groupV3:GroupV3 group_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+//
 // ```
 type GroupV3 struct {
 	pulumi.CustomResourceState
@@ -171,7 +176,7 @@ func (i *GroupV3) ToGroupV3OutputWithContext(ctx context.Context) GroupV3Output 
 // GroupV3ArrayInput is an input type that accepts GroupV3Array and GroupV3ArrayOutput values.
 // You can construct a concrete instance of `GroupV3ArrayInput` via:
 //
-//          GroupV3Array{ GroupV3Args{...} }
+//	GroupV3Array{ GroupV3Args{...} }
 type GroupV3ArrayInput interface {
 	pulumi.Input
 
@@ -196,7 +201,7 @@ func (i GroupV3Array) ToGroupV3ArrayOutputWithContext(ctx context.Context) Group
 // GroupV3MapInput is an input type that accepts GroupV3Map and GroupV3MapOutput values.
 // You can construct a concrete instance of `GroupV3MapInput` via:
 //
-//          GroupV3Map{ "key": GroupV3Args{...} }
+//	GroupV3Map{ "key": GroupV3Args{...} }
 type GroupV3MapInput interface {
 	pulumi.Input
 

@@ -17,70 +17,49 @@ public final class GetProjectResult {
      * @return The description of the project.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String domainId;
+    private String domainId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable Boolean isDomain;
+    private @Nullable Boolean isDomain;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String parentId;
+    private @Nullable String parentId;
     /**
      * @return The region the project is located in.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final List<String> tags;
+    private List<String> tags;
 
-    @CustomType.Constructor
-    private GetProjectResult(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("domainId") String domainId,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isDomain") @Nullable Boolean isDomain,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("parentId") @Nullable String parentId,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("tags") List<String> tags) {
-        this.description = description;
-        this.domainId = domainId;
-        this.enabled = enabled;
-        this.id = id;
-        this.isDomain = isDomain;
-        this.name = name;
-        this.parentId = parentId;
-        this.region = region;
-        this.tags = tags;
-    }
-
+    private GetProjectResult() {}
     /**
      * @return The description of the project.
      * 
@@ -152,7 +131,7 @@ public final class GetProjectResult {
     public static Builder builder(GetProjectResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String domainId;
@@ -163,11 +142,7 @@ public final class GetProjectResult {
         private @Nullable String parentId;
         private String region;
         private List<String> tags;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetProjectResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -181,46 +156,66 @@ public final class GetProjectResult {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder domainId(String domainId) {
             this.domainId = Objects.requireNonNull(domainId);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isDomain(@Nullable Boolean isDomain) {
             this.isDomain = isDomain;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder parentId(@Nullable String parentId) {
             this.parentId = parentId;
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
         }
         public Builder tags(String... tags) {
             return tags(List.of(tags));
-        }        public GetProjectResult build() {
-            return new GetProjectResult(description, domainId, enabled, id, isDomain, name, parentId, region, tags);
+        }
+        public GetProjectResult build() {
+            final var o = new GetProjectResult();
+            o.description = description;
+            o.domainId = domainId;
+            o.enabled = enabled;
+            o.id = id;
+            o.isDomain = isDomain;
+            o.name = name;
+            o.parentId = parentId;
+            o.region = region;
+            o.tags = tags;
+            return o;
         }
     }
 }

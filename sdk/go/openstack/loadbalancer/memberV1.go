@@ -19,23 +19,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := loadbalancer.NewMemberV1(ctx, "member1", &loadbalancer.MemberV1Args{
-// 			Address: pulumi.String("192.168.0.10"),
-// 			PoolId:  pulumi.String("d9415786-5f1a-428b-b35f-2f1523e146d2"),
-// 			Port:    pulumi.Int(80),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := loadbalancer.NewMemberV1(ctx, "member1", &loadbalancer.MemberV1Args{
+//				Address: pulumi.String("192.168.0.10"),
+//				PoolId:  pulumi.String("d9415786-5f1a-428b-b35f-2f1523e146d2"),
+//				Port:    pulumi.Int(80),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -43,7 +46,9 @@ import (
 // Load Balancer Members can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:loadbalancer/memberV1:MemberV1 member_1 a7498676-4fe4-4243-a864-2eaaf18c73df
+//
+//	$ pulumi import openstack:loadbalancer/memberV1:MemberV1 member_1 a7498676-4fe4-4243-a864-2eaaf18c73df
+//
 // ```
 type MemberV1 struct {
 	pulumi.CustomResourceState
@@ -240,7 +245,7 @@ func (i *MemberV1) ToMemberV1OutputWithContext(ctx context.Context) MemberV1Outp
 // MemberV1ArrayInput is an input type that accepts MemberV1Array and MemberV1ArrayOutput values.
 // You can construct a concrete instance of `MemberV1ArrayInput` via:
 //
-//          MemberV1Array{ MemberV1Args{...} }
+//	MemberV1Array{ MemberV1Args{...} }
 type MemberV1ArrayInput interface {
 	pulumi.Input
 
@@ -265,7 +270,7 @@ func (i MemberV1Array) ToMemberV1ArrayOutputWithContext(ctx context.Context) Mem
 // MemberV1MapInput is an input type that accepts MemberV1Map and MemberV1MapOutput values.
 // You can construct a concrete instance of `MemberV1MapInput` via:
 //
-//          MemberV1Map{ "key": MemberV1Args{...} }
+//	MemberV1Map{ "key": MemberV1Args{...} }
 type MemberV1MapInput interface {
 	pulumi.Input
 

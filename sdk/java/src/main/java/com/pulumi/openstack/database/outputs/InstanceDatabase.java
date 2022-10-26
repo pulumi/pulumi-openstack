@@ -16,29 +16,20 @@ public final class InstanceDatabase {
      * new instance.
      * 
      */
-    private final @Nullable String charset;
+    private @Nullable String charset;
     /**
      * @return Database collation. Changing this creates a new instance.
      * 
      */
-    private final @Nullable String collate;
+    private @Nullable String collate;
     /**
      * @return Database to be created on new instance. Changing this creates a
      * new instance.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private InstanceDatabase(
-        @CustomType.Parameter("charset") @Nullable String charset,
-        @CustomType.Parameter("collate") @Nullable String collate,
-        @CustomType.Parameter("name") String name) {
-        this.charset = charset;
-        this.collate = collate;
-        this.name = name;
-    }
-
+    private InstanceDatabase() {}
     /**
      * @return Database character set. Changing this creates a
      * new instance.
@@ -70,16 +61,12 @@ public final class InstanceDatabase {
     public static Builder builder(InstanceDatabase defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String charset;
         private @Nullable String collate;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceDatabase defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.charset = defaults.charset;
@@ -87,19 +74,27 @@ public final class InstanceDatabase {
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder charset(@Nullable String charset) {
             this.charset = charset;
             return this;
         }
+        @CustomType.Setter
         public Builder collate(@Nullable String collate) {
             this.collate = collate;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public InstanceDatabase build() {
-            return new InstanceDatabase(charset, collate, name);
+        }
+        public InstanceDatabase build() {
+            final var o = new InstanceDatabase();
+            o.charset = charset;
+            o.collate = collate;
+            o.name = name;
+            return o;
         }
     }
 }

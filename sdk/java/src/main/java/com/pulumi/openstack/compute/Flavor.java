@@ -70,6 +70,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="openstack:compute/flavor:Flavor")
 public class Flavor extends com.pulumi.resources.CustomResource {
     /**
+     * The description of the flavor. Changing this
+     * updates the description of the flavor. Requires microversion &gt;= 2.55.
+     * 
+     */
+    @Export(name="description", type=String.class, parameters={})
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return The description of the flavor. Changing this
+     * updates the description of the flavor. Requires microversion &gt;= 2.55.
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
+    }
+    /**
      * The amount of disk space in GiB to use for the root
      * (/) partition. Changing this creates a new flavor.
      * 

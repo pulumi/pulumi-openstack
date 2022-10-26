@@ -13,21 +13,14 @@ public final class GetAuthScopeRole {
      * @return The ID of the role.
      * 
      */
-    private final String roleId;
+    private String roleId;
     /**
      * @return The name of the role.
      * 
      */
-    private final String roleName;
+    private String roleName;
 
-    @CustomType.Constructor
-    private GetAuthScopeRole(
-        @CustomType.Parameter("roleId") String roleId,
-        @CustomType.Parameter("roleName") String roleName) {
-        this.roleId = roleId;
-        this.roleName = roleName;
-    }
-
+    private GetAuthScopeRole() {}
     /**
      * @return The ID of the role.
      * 
@@ -50,30 +43,32 @@ public final class GetAuthScopeRole {
     public static Builder builder(GetAuthScopeRole defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String roleId;
         private String roleName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthScopeRole defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.roleId = defaults.roleId;
     	      this.roleName = defaults.roleName;
         }
 
+        @CustomType.Setter
         public Builder roleId(String roleId) {
             this.roleId = Objects.requireNonNull(roleId);
             return this;
         }
+        @CustomType.Setter
         public Builder roleName(String roleName) {
             this.roleName = Objects.requireNonNull(roleName);
             return this;
-        }        public GetAuthScopeRole build() {
-            return new GetAuthScopeRole(roleId, roleName);
+        }
+        public GetAuthScopeRole build() {
+            final var o = new GetAuthScopeRole();
+            o.roleId = roleId;
+            o.roleName = roleName;
+            return o;
         }
     }
 }

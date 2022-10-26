@@ -16,28 +16,19 @@ public final class NetworkSegment {
      * @return The type of physical network.
      * 
      */
-    private final @Nullable String networkType;
+    private @Nullable String networkType;
     /**
      * @return The physical network where this network is implemented.
      * 
      */
-    private final @Nullable String physicalNetwork;
+    private @Nullable String physicalNetwork;
     /**
      * @return An isolated segment on the physical network.
      * 
      */
-    private final @Nullable Integer segmentationId;
+    private @Nullable Integer segmentationId;
 
-    @CustomType.Constructor
-    private NetworkSegment(
-        @CustomType.Parameter("networkType") @Nullable String networkType,
-        @CustomType.Parameter("physicalNetwork") @Nullable String physicalNetwork,
-        @CustomType.Parameter("segmentationId") @Nullable Integer segmentationId) {
-        this.networkType = networkType;
-        this.physicalNetwork = physicalNetwork;
-        this.segmentationId = segmentationId;
-    }
-
+    private NetworkSegment() {}
     /**
      * @return The type of physical network.
      * 
@@ -67,16 +58,12 @@ public final class NetworkSegment {
     public static Builder builder(NetworkSegment defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String networkType;
         private @Nullable String physicalNetwork;
         private @Nullable Integer segmentationId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NetworkSegment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.networkType = defaults.networkType;
@@ -84,19 +71,27 @@ public final class NetworkSegment {
     	      this.segmentationId = defaults.segmentationId;
         }
 
+        @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
             this.networkType = networkType;
             return this;
         }
+        @CustomType.Setter
         public Builder physicalNetwork(@Nullable String physicalNetwork) {
             this.physicalNetwork = physicalNetwork;
             return this;
         }
+        @CustomType.Setter
         public Builder segmentationId(@Nullable Integer segmentationId) {
             this.segmentationId = segmentationId;
             return this;
-        }        public NetworkSegment build() {
-            return new NetworkSegment(networkType, physicalNetwork, segmentationId);
+        }
+        public NetworkSegment build() {
+            final var o = new NetworkSegment();
+            o.networkType = networkType;
+            o.physicalNetwork = physicalNetwork;
+            o.segmentationId = segmentationId;
+            return o;
         }
     }
 }

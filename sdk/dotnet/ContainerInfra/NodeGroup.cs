@@ -13,7 +13,7 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// Manages a V1 Magnum node group resource within OpenStack.
     /// 
     /// ## Example Usage
-    /// ### Create a Cluster
+    /// ### Create a Nodegroup
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -39,12 +39,12 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// * `region` - See Argument Reference above.
     /// * `name` - See Argument Reference above.
     /// * `project_id` - See Argument Reference above.
-    /// * `created_at` - The time at which cluster was created.
-    /// * `updated_at` - The time at which cluster was created.
+    /// * `created_at` - The time at which node group was created.
+    /// * `updated_at` - The time at which node group was created.
     /// * `docker_volume_size` - See Argument Reference above.
     /// * `role` - See Argument Reference above.
-    /// * `image` - See Argument Reference above.
-    /// * `flavor` - See Argument Reference above.
+    /// * `image_id` - See Argument Reference above.
+    /// * `flavor_id` - See Argument Reference above.
     /// * `labels` - See Argument Reference above.
     /// * `node_count` - See Argument Reference above.
     /// * `min_node_count` - See Argument Reference above.
@@ -53,10 +53,10 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// 
     /// ## Import
     /// 
-    /// Node groups can be imported using the `id`, e.g.
+    /// Node groups can be imported using the `id` (cluster_id/nodegroup_id), e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
+    ///  $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922/ce0f9463-dd25-474b-9fe8-94de63e5e42b
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:containerinfra/nodeGroup:NodeGroup")]
@@ -79,9 +79,19 @@ namespace Pulumi.OpenStack.ContainerInfra
         [Output("dockerVolumeSize")]
         public Output<int> DockerVolumeSize { get; private set; } = null!;
 
+        /// <summary>
+        /// The flavor for the nodes of the node group. Can be set
+        /// via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+        /// node group.
+        /// </summary>
         [Output("flavorId")]
         public Output<string> FlavorId { get; private set; } = null!;
 
+        /// <summary>
+        /// The reference to an image that is used for nodes of the
+        /// node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+        /// Changing this updates the image attribute of the existing node group.
+        /// </summary>
         [Output("imageId")]
         public Output<string> ImageId { get; private set; } = null!;
 
@@ -97,7 +107,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// Changing this update the maximum number of nodes of the node group.
         /// </summary>
         [Output("maxNodeCount")]
-        public Output<int> MaxNodeCount { get; private set; } = null!;
+        public Output<int?> MaxNodeCount { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether the provided labels should be
@@ -214,9 +224,19 @@ namespace Pulumi.OpenStack.ContainerInfra
         [Input("dockerVolumeSize")]
         public Input<int>? DockerVolumeSize { get; set; }
 
+        /// <summary>
+        /// The flavor for the nodes of the node group. Can be set
+        /// via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+        /// node group.
+        /// </summary>
         [Input("flavorId")]
         public Input<string>? FlavorId { get; set; }
 
+        /// <summary>
+        /// The reference to an image that is used for nodes of the
+        /// node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+        /// Changing this updates the image attribute of the existing node group.
+        /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
@@ -277,6 +297,13 @@ namespace Pulumi.OpenStack.ContainerInfra
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// The role of nodes in the node group. Changing this
+        /// creates a new node group.
+        /// </summary>
+        [Input("role")]
+        public Input<string>? Role { get; set; }
+
         public NodeGroupArgs()
         {
         }
@@ -301,9 +328,19 @@ namespace Pulumi.OpenStack.ContainerInfra
         [Input("dockerVolumeSize")]
         public Input<int>? DockerVolumeSize { get; set; }
 
+        /// <summary>
+        /// The flavor for the nodes of the node group. Can be set
+        /// via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+        /// node group.
+        /// </summary>
         [Input("flavorId")]
         public Input<string>? FlavorId { get; set; }
 
+        /// <summary>
+        /// The reference to an image that is used for nodes of the
+        /// node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+        /// Changing this updates the image attribute of the existing node group.
+        /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 

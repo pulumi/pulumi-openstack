@@ -16,70 +16,49 @@ public final class GetVolumeV2Result {
      * @return Indicates if the volume is bootable.
      * 
      */
-    private final String bootable;
+    private String bootable;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final Map<String,Object> metadata;
+    private Map<String,Object> metadata;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return The size of the volume in GBs.
      * 
      */
-    private final Integer size;
+    private Integer size;
     /**
      * @return The ID of the volume from which the current volume was created.
      * 
      */
-    private final String sourceVolumeId;
+    private String sourceVolumeId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The type of the volume.
      * 
      */
-    private final String volumeType;
+    private String volumeType;
 
-    @CustomType.Constructor
-    private GetVolumeV2Result(
-        @CustomType.Parameter("bootable") String bootable,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("metadata") Map<String,Object> metadata,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("sourceVolumeId") String sourceVolumeId,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("volumeType") String volumeType) {
-        this.bootable = bootable;
-        this.id = id;
-        this.metadata = metadata;
-        this.name = name;
-        this.region = region;
-        this.size = size;
-        this.sourceVolumeId = sourceVolumeId;
-        this.status = status;
-        this.volumeType = volumeType;
-    }
-
+    private GetVolumeV2Result() {}
     /**
      * @return Indicates if the volume is bootable.
      * 
@@ -151,7 +130,7 @@ public final class GetVolumeV2Result {
     public static Builder builder(GetVolumeV2Result defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String bootable;
         private String id;
@@ -162,11 +141,7 @@ public final class GetVolumeV2Result {
         private String sourceVolumeId;
         private String status;
         private String volumeType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetVolumeV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bootable = defaults.bootable;
@@ -180,43 +155,63 @@ public final class GetVolumeV2Result {
     	      this.volumeType = defaults.volumeType;
         }
 
+        @CustomType.Setter
         public Builder bootable(String bootable) {
             this.bootable = Objects.requireNonNull(bootable);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(Map<String,Object> metadata) {
             this.metadata = Objects.requireNonNull(metadata);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder sourceVolumeId(String sourceVolumeId) {
             this.sourceVolumeId = Objects.requireNonNull(sourceVolumeId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder volumeType(String volumeType) {
             this.volumeType = Objects.requireNonNull(volumeType);
             return this;
-        }        public GetVolumeV2Result build() {
-            return new GetVolumeV2Result(bootable, id, metadata, name, region, size, sourceVolumeId, status, volumeType);
+        }
+        public GetVolumeV2Result build() {
+            final var o = new GetVolumeV2Result();
+            o.bootable = bootable;
+            o.id = id;
+            o.metadata = metadata;
+            o.name = name;
+            o.region = region;
+            o.size = size;
+            o.sourceVolumeId = sourceVolumeId;
+            o.status = status;
+            o.volumeType = volumeType;
+            return o;
         }
     }
 }

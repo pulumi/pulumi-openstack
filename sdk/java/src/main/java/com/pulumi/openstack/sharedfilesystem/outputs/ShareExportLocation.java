@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ShareExportLocation {
-    private final @Nullable String path;
-    private final @Nullable String preferred;
+    private @Nullable String path;
+    private @Nullable String preferred;
 
-    @CustomType.Constructor
-    private ShareExportLocation(
-        @CustomType.Parameter("path") @Nullable String path,
-        @CustomType.Parameter("preferred") @Nullable String preferred) {
-        this.path = path;
-        this.preferred = preferred;
-    }
-
+    private ShareExportLocation() {}
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }
@@ -36,30 +29,32 @@ public final class ShareExportLocation {
     public static Builder builder(ShareExportLocation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String path;
         private @Nullable String preferred;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ShareExportLocation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.path = defaults.path;
     	      this.preferred = defaults.preferred;
         }
 
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
         public Builder preferred(@Nullable String preferred) {
             this.preferred = preferred;
             return this;
-        }        public ShareExportLocation build() {
-            return new ShareExportLocation(path, preferred);
+        }
+        public ShareExportLocation build() {
+            final var o = new ShareExportLocation();
+            o.path = path;
+            o.preferred = preferred;
+            return o;
         }
     }
 }

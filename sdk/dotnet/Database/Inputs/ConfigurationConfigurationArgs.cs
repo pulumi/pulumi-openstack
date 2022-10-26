@@ -19,6 +19,12 @@ namespace Pulumi.OpenStack.Database.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
+        /// </summary>
+        [Input("stringType")]
+        public Input<bool>? StringType { get; set; }
+
+        /// <summary>
         /// Configuration parameter value. Changing this creates a new resource.
         /// </summary>
         [Input("value", required: true)]

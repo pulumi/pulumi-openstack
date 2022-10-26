@@ -20,7 +20,7 @@ type ContainerVersioning struct {
 // ContainerVersioningInput is an input type that accepts ContainerVersioningArgs and ContainerVersioningOutput values.
 // You can construct a concrete instance of `ContainerVersioningInput` via:
 //
-//          ContainerVersioningArgs{...}
+//	ContainerVersioningArgs{...}
 type ContainerVersioningInput interface {
 	pulumi.Input
 
@@ -58,11 +58,11 @@ func (i ContainerVersioningArgs) ToContainerVersioningPtrOutputWithContext(ctx c
 // ContainerVersioningPtrInput is an input type that accepts ContainerVersioningArgs, ContainerVersioningPtr and ContainerVersioningPtrOutput values.
 // You can construct a concrete instance of `ContainerVersioningPtrInput` via:
 //
-//          ContainerVersioningArgs{...}
+//	        ContainerVersioningArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ContainerVersioningPtrInput interface {
 	pulumi.Input
 

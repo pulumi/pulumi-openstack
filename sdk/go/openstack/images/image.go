@@ -17,26 +17,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/images"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/images"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := images.NewImage(ctx, "rancheros", &images.ImageArgs{
-// 			ContainerFormat: pulumi.String("bare"),
-// 			DiskFormat:      pulumi.String("qcow2"),
-// 			ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
-// 			Properties: pulumi.AnyMap{
-// 				"key": pulumi.Any("value"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := images.NewImage(ctx, "rancheros", &images.ImageArgs{
+//				ContainerFormat: pulumi.String("bare"),
+//				DiskFormat:      pulumi.String("qcow2"),
+//				ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
+//				Properties: pulumi.AnyMap{
+//					"key": pulumi.Any("value"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Notes
 //
@@ -59,7 +62,9 @@ import (
 // Images can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:images/image:Image rancheros 89c60255-9bd6-460c-822a-e2b959ede9d2
+//
+//	$ pulumi import openstack:images/image:Image rancheros 89c60255-9bd6-460c-822a-e2b959ede9d2
+//
 // ```
 type Image struct {
 	pulumi.CustomResourceState
@@ -532,7 +537,7 @@ func (i *Image) ToImageOutputWithContext(ctx context.Context) ImageOutput {
 // ImageArrayInput is an input type that accepts ImageArray and ImageArrayOutput values.
 // You can construct a concrete instance of `ImageArrayInput` via:
 //
-//          ImageArray{ ImageArgs{...} }
+//	ImageArray{ ImageArgs{...} }
 type ImageArrayInput interface {
 	pulumi.Input
 
@@ -557,7 +562,7 @@ func (i ImageArray) ToImageArrayOutputWithContext(ctx context.Context) ImageArra
 // ImageMapInput is an input type that accepts ImageMap and ImageMapOutput values.
 // You can construct a concrete instance of `ImageMapInput` via:
 //
-//          ImageMap{ "key": ImageArgs{...} }
+//	ImageMap{ "key": ImageArgs{...} }
 type ImageMapInput interface {
 	pulumi.Input
 

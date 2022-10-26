@@ -15,42 +15,29 @@ public final class GetAggregateV2Result {
      * @return List of Hypervisors contained in the Host Aggregate
      * 
      */
-    private final List<String> hosts;
+    private List<String> hosts;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Metadata of the Host Aggregate
      * 
      */
-    private final Map<String,String> metadata;
+    private Map<String,String> metadata;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Availability zone of the Host Aggregate
      * 
      */
-    private final String zone;
+    private String zone;
 
-    @CustomType.Constructor
-    private GetAggregateV2Result(
-        @CustomType.Parameter("hosts") List<String> hosts,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("metadata") Map<String,String> metadata,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("zone") String zone) {
-        this.hosts = hosts;
-        this.id = id;
-        this.metadata = metadata;
-        this.name = name;
-        this.zone = zone;
-    }
-
+    private GetAggregateV2Result() {}
     /**
      * @return List of Hypervisors contained in the Host Aggregate
      * 
@@ -94,18 +81,14 @@ public final class GetAggregateV2Result {
     public static Builder builder(GetAggregateV2Result defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> hosts;
         private String id;
         private Map<String,String> metadata;
         private String name;
         private String zone;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAggregateV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hosts = defaults.hosts;
@@ -115,6 +98,7 @@ public final class GetAggregateV2Result {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
         public Builder hosts(List<String> hosts) {
             this.hosts = Objects.requireNonNull(hosts);
             return this;
@@ -122,23 +106,34 @@ public final class GetAggregateV2Result {
         public Builder hosts(String... hosts) {
             return hosts(List.of(hosts));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(Map<String,String> metadata) {
             this.metadata = Objects.requireNonNull(metadata);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder zone(String zone) {
             this.zone = Objects.requireNonNull(zone);
             return this;
-        }        public GetAggregateV2Result build() {
-            return new GetAggregateV2Result(hosts, id, metadata, name, zone);
+        }
+        public GetAggregateV2Result build() {
+            final var o = new GetAggregateV2Result();
+            o.hosts = hosts;
+            o.id = id;
+            o.metadata = metadata;
+            o.name = name;
+            o.zone = zone;
+            return o;
         }
     }
 }

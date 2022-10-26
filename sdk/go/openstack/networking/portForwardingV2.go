@@ -20,25 +20,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := networking.NewPortForwardingV2(ctx, "pf1", &networking.PortForwardingV2Args{
-// 			ExternalPort:   pulumi.Int(7233),
-// 			FloatingipId:   pulumi.String("7a52eb59-7d47-415d-a884-046666a6fbae"),
-// 			InternalPort:   pulumi.Int(25),
-// 			InternalPortId: pulumi.String("b930d7f6-ceb7-40a0-8b81-a425dd994ccf"),
-// 			Protocol:       pulumi.String("tcp"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.NewPortForwardingV2(ctx, "pf1", &networking.PortForwardingV2Args{
+//				ExternalPort:   pulumi.Int(7233),
+//				FloatingipId:   pulumi.String("7a52eb59-7d47-415d-a884-046666a6fbae"),
+//				InternalPort:   pulumi.Int(25),
+//				InternalPortId: pulumi.String("b930d7f6-ceb7-40a0-8b81-a425dd994ccf"),
+//				Protocol:       pulumi.String("tcp"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type PortForwardingV2 struct {
 	pulumi.CustomResourceState
@@ -259,7 +262,7 @@ func (i *PortForwardingV2) ToPortForwardingV2OutputWithContext(ctx context.Conte
 // PortForwardingV2ArrayInput is an input type that accepts PortForwardingV2Array and PortForwardingV2ArrayOutput values.
 // You can construct a concrete instance of `PortForwardingV2ArrayInput` via:
 //
-//          PortForwardingV2Array{ PortForwardingV2Args{...} }
+//	PortForwardingV2Array{ PortForwardingV2Args{...} }
 type PortForwardingV2ArrayInput interface {
 	pulumi.Input
 
@@ -284,7 +287,7 @@ func (i PortForwardingV2Array) ToPortForwardingV2ArrayOutputWithContext(ctx cont
 // PortForwardingV2MapInput is an input type that accepts PortForwardingV2Map and PortForwardingV2MapOutput values.
 // You can construct a concrete instance of `PortForwardingV2MapInput` via:
 //
-//          PortForwardingV2Map{ "key": PortForwardingV2Args{...} }
+//	PortForwardingV2Map{ "key": PortForwardingV2Args{...} }
 type PortForwardingV2MapInput interface {
 	pulumi.Input
 

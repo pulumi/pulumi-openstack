@@ -14,22 +14,15 @@ public final class InstanceDatastore {
      * creates a new instance.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return Version of database engine type to be used in new instance.
      * Changing this creates a new instance.
      * 
      */
-    private final String version;
+    private String version;
 
-    @CustomType.Constructor
-    private InstanceDatastore(
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("version") String version) {
-        this.type = type;
-        this.version = version;
-    }
-
+    private InstanceDatastore() {}
     /**
      * @return Database engine type to be used in new instance. Changing this
      * creates a new instance.
@@ -54,30 +47,32 @@ public final class InstanceDatastore {
     public static Builder builder(InstanceDatastore defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String type;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceDatastore defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.type = defaults.type;
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public InstanceDatastore build() {
-            return new InstanceDatastore(type, version);
+        }
+        public InstanceDatastore build() {
+            final var o = new InstanceDatastore();
+            o.type = type;
+            o.version = version;
+            return o;
         }
     }
 }

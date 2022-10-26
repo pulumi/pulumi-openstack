@@ -19,21 +19,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := networking.NewAddressScope(ctx, "addressscope1", &networking.AddressScopeArgs{
-// 			IpVersion: pulumi.Int(6),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.NewAddressScope(ctx, "addressscope1", &networking.AddressScopeArgs{
+//				IpVersion: pulumi.Int(6),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Create a Subnet Pool from an Address-scope
 //
@@ -41,31 +44,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		addressscope1, err := networking.NewAddressScope(ctx, "addressscope1", &networking.AddressScopeArgs{
-// 			IpVersion: pulumi.Int(6),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = networking.NewSubnetPool(ctx, "subnetpool1", &networking.SubnetPoolArgs{
-// 			AddressScopeId: addressscope1.ID(),
-// 			Prefixes: pulumi.StringArray{
-// 				pulumi.String("fdf7:b13d:dead:beef::/64"),
-// 				pulumi.String("fd65:86cc:a334:39b7::/64"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			addressscope1, err := networking.NewAddressScope(ctx, "addressscope1", &networking.AddressScopeArgs{
+//				IpVersion: pulumi.Int(6),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewSubnetPool(ctx, "subnetpool1", &networking.SubnetPoolArgs{
+//				AddressScopeId: addressscope1.ID(),
+//				Prefixes: pulumi.StringArray{
+//					pulumi.String("fdf7:b13d:dead:beef::/64"),
+//					pulumi.String("fd65:86cc:a334:39b7::/64"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -73,7 +79,9 @@ import (
 // Address-scopes can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:networking/addressScope:AddressScope addressscope_1 9cc35860-522a-4d35-974d-51d4b011801e
+//
+//	$ pulumi import openstack:networking/addressScope:AddressScope addressscope_1 9cc35860-522a-4d35-974d-51d4b011801e
+//
 // ```
 type AddressScope struct {
 	pulumi.CustomResourceState
@@ -246,7 +254,7 @@ func (i *AddressScope) ToAddressScopeOutputWithContext(ctx context.Context) Addr
 // AddressScopeArrayInput is an input type that accepts AddressScopeArray and AddressScopeArrayOutput values.
 // You can construct a concrete instance of `AddressScopeArrayInput` via:
 //
-//          AddressScopeArray{ AddressScopeArgs{...} }
+//	AddressScopeArray{ AddressScopeArgs{...} }
 type AddressScopeArrayInput interface {
 	pulumi.Input
 
@@ -271,7 +279,7 @@ func (i AddressScopeArray) ToAddressScopeArrayOutputWithContext(ctx context.Cont
 // AddressScopeMapInput is an input type that accepts AddressScopeMap and AddressScopeMapOutput values.
 // You can construct a concrete instance of `AddressScopeMapInput` via:
 //
-//          AddressScopeMap{ "key": AddressScopeArgs{...} }
+//	AddressScopeMap{ "key": AddressScopeArgs{...} }
 type AddressScopeMapInput interface {
 	pulumi.Input
 

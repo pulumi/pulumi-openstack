@@ -89,33 +89,6 @@ export namespace blockstorage {
 }
 
 export namespace compute {
-    export interface GetInstanceV2NetworkArgs {
-        /**
-         * The IPv4 address assigned to this network port.
-         */
-        fixedIpV4?: pulumi.Input<string>;
-        /**
-         * The IPv6 address assigned to this network port.
-         */
-        fixedIpV6?: pulumi.Input<string>;
-        /**
-         * The MAC address assigned to this network interface.
-         */
-        mac?: pulumi.Input<string>;
-        /**
-         * The name of the network
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * The port UUID for this network
-         */
-        port?: pulumi.Input<string>;
-        /**
-         * The UUID of the network
-         */
-        uuid?: pulumi.Input<string>;
-    }
-
     export interface GetInstanceV2Network {
         /**
          * The IPv4 address assigned to this network port.
@@ -141,6 +114,33 @@ export namespace compute {
          * The UUID of the network
          */
         uuid?: string;
+    }
+
+    export interface GetInstanceV2NetworkArgs {
+        /**
+         * The IPv4 address assigned to this network port.
+         */
+        fixedIpV4?: pulumi.Input<string>;
+        /**
+         * The IPv6 address assigned to this network port.
+         */
+        fixedIpV6?: pulumi.Input<string>;
+        /**
+         * The MAC address assigned to this network interface.
+         */
+        mac?: pulumi.Input<string>;
+        /**
+         * The name of the network
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The port UUID for this network
+         */
+        port?: pulumi.Input<string>;
+        /**
+         * The UUID of the network
+         */
+        uuid?: pulumi.Input<string>;
     }
 
     export interface InstanceBlockDevice {
@@ -372,6 +372,10 @@ export namespace database {
          * Configuration parameter name. Changing this creates a new resource.
          */
         name: pulumi.Input<string>;
+        /**
+         * Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
+         */
+        stringType?: pulumi.Input<boolean>;
         /**
          * Configuration parameter value. Changing this creates a new resource.
          */

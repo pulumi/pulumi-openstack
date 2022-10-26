@@ -1053,6 +1053,16 @@
                     },
                     "willReplaceOnChanges": true
                 },
+                "stringType": {
+                    "type": "boolean",
+                    "description": "Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                },
                 "value": {
                     "type": "string",
                     "description": "Configuration parameter value. Changing this creates a new resource.\n",
@@ -5092,6 +5102,10 @@
         "openstack:compute/flavor:Flavor": {
             "description": "Manages a V2 flavor resource within OpenStack.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst test_flavor = new openstack.compute.Flavor(\"test-flavor\", {\n    disk: 20,\n    extraSpecs: {\n        \"hw:cpu_policy\": \"CPU-POLICY\",\n        \"hw:cpu_thread_policy\": \"CPU-THREAD-POLICY\",\n    },\n    ram: 8096,\n    vcpus: 2,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ntest_flavor = openstack.compute.Flavor(\"test-flavor\",\n    disk=20,\n    extra_specs={\n        \"hw:cpu_policy\": \"CPU-POLICY\",\n        \"hw:cpu_thread_policy\": \"CPU-THREAD-POLICY\",\n    },\n    ram=8096,\n    vcpus=2)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test_flavor = new OpenStack.Compute.Flavor(\"test-flavor\", new OpenStack.Compute.FlavorArgs\n        {\n            Disk = 20,\n            ExtraSpecs = \n            {\n                { \"hw:cpu_policy\", \"CPU-POLICY\" },\n                { \"hw:cpu_thread_policy\", \"CPU-THREAD-POLICY\" },\n            },\n            Ram = 8096,\n            Vcpus = 2,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.NewFlavor(ctx, \"test-flavor\", \u0026compute.FlavorArgs{\n\t\t\tDisk: pulumi.Int(20),\n\t\t\tExtraSpecs: pulumi.AnyMap{\n\t\t\t\t\"hw:cpu_policy\":        pulumi.Any(\"CPU-POLICY\"),\n\t\t\t\t\"hw:cpu_thread_policy\": pulumi.Any(\"CPU-THREAD-POLICY\"),\n\t\t\t},\n\t\t\tRam:   pulumi.Int(8096),\n\t\t\tVcpus: pulumi.Int(2),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.compute.Flavor;\nimport com.pulumi.openstack.compute.FlavorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test_flavor = new Flavor(\"test-flavor\", FlavorArgs.builder()        \n            .disk(\"20\")\n            .extraSpecs(Map.ofEntries(\n                Map.entry(\"hw:cpu_policy\", \"CPU-POLICY\"),\n                Map.entry(\"hw:cpu_thread_policy\", \"CPU-THREAD-POLICY\")\n            ))\n            .ram(\"8096\")\n            .vcpus(\"2\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test-flavor:\n    type: openstack:compute:Flavor\n    properties:\n      disk: 20\n      extraSpecs:\n        hw:cpu_policy: CPU-POLICY\n        hw:cpu_thread_policy: CPU-THREAD-POLICY\n      ram: 8096\n      vcpus: 2\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nFlavors can be imported using the `ID`, e.g.\n\n```sh\n $ pulumi import openstack:compute/flavor:Flavor my-flavor 4142e64b-1b35-44a0-9b1e-5affc7af1106\n```\n\n ",
             "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the flavor. Changing this\nupdates the description of the flavor. Requires microversion \u003e= 2.55.\n"
+                },
                 "disk": {
                     "type": "integer",
                     "description": "The amount of disk space in GiB to use for the root\n(/) partition. Changing this creates a new flavor.\n"
@@ -5150,6 +5164,10 @@
                 "vcpus"
             ],
             "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the flavor. Changing this\nupdates the description of the flavor. Requires microversion \u003e= 2.55.\n"
+                },
                 "disk": {
                     "type": "integer",
                     "description": "The amount of disk space in GiB to use for the root\n(/) partition. Changing this creates a new flavor.\n",
@@ -5216,6 +5234,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Flavor resources.\n",
                 "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the flavor. Changing this\nupdates the description of the flavor. Requires microversion \u003e= 2.55.\n"
+                    },
                     "disk": {
                         "type": "integer",
                         "description": "The amount of disk space in GiB to use for the root\n(/) partition. Changing this creates a new flavor.\n",
@@ -5551,6 +5573,10 @@
                     "type": "boolean",
                     "description": "Whether to use the config_drive feature to\nconfigure the instance. Changing this creates a new server.\n"
                 },
+                "created": {
+                    "type": "string",
+                    "description": "The creation time of the instance.\n"
+                },
                 "flavorId": {
                     "type": "string",
                     "description": "The flavor ID of\nthe desired flavor for the server. Changing this resizes the existing server.\n"
@@ -5641,6 +5667,10 @@
                     },
                     "description": "A set of string tags for the instance. Changing this\nupdates the existing instance tags.\n"
                 },
+                "updated": {
+                    "type": "string",
+                    "description": "The time when the instance was last updated.\n"
+                },
                 "userData": {
                     "type": "string",
                     "description": "The user data to provide when launching the instance.\nChanging this creates a new server.\n"
@@ -5663,6 +5693,7 @@
                 "allMetadata",
                 "allTags",
                 "availabilityZone",
+                "created",
                 "flavorId",
                 "flavorName",
                 "imageId",
@@ -5670,7 +5701,8 @@
                 "name",
                 "networks",
                 "region",
-                "securityGroups"
+                "securityGroups",
+                "updated"
             ],
             "inputProperties": {
                 "accessIpV4": {
@@ -5868,6 +5900,10 @@
                         "description": "Whether to use the config_drive feature to\nconfigure the instance. Changing this creates a new server.\n",
                         "willReplaceOnChanges": true
                     },
+                    "created": {
+                        "type": "string",
+                        "description": "The creation time of the instance.\n"
+                    },
                     "flavorId": {
                         "type": "string",
                         "description": "The flavor ID of\nthe desired flavor for the server. Changing this resizes the existing server.\n"
@@ -5961,6 +5997,10 @@
                             "type": "string"
                         },
                         "description": "A set of string tags for the instance. Changing this\nupdates the existing instance tags.\n"
+                    },
+                    "updated": {
+                        "type": "string",
+                        "description": "The time when the instance was last updated.\n"
                     },
                     "userData": {
                         "type": "string",
@@ -7485,7 +7525,7 @@
             }
         },
         "openstack:containerinfra/nodeGroup:NodeGroup": {
-            "description": "Manages a V1 Magnum node group resource within OpenStack.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Create a Cluster\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst nodegroup1 = new openstack.containerinfra.NodeGroup(\"nodegroup_1\", {\n    clusterId: \"b9a45c5c-cd03-4958-82aa-b80bf93cb922\",\n    nodeCount: 5,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nnodegroup1 = openstack.containerinfra.NodeGroup(\"nodegroup1\",\n    cluster_id=\"b9a45c5c-cd03-4958-82aa-b80bf93cb922\",\n    node_count=5)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var nodegroup1 = new OpenStack.ContainerInfra.NodeGroup(\"nodegroup1\", new OpenStack.ContainerInfra.NodeGroupArgs\n        {\n            ClusterId = \"b9a45c5c-cd03-4958-82aa-b80bf93cb922\",\n            NodeCount = 5,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/containerinfra\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := containerinfra.NewNodeGroup(ctx, \"nodegroup1\", \u0026containerinfra.NodeGroupArgs{\n\t\t\tClusterId: pulumi.String(\"b9a45c5c-cd03-4958-82aa-b80bf93cb922\"),\n\t\t\tNodeCount: pulumi.Int(5),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.containerinfra.NodeGroup;\nimport com.pulumi.openstack.containerinfra.NodeGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var nodegroup1 = new NodeGroup(\"nodegroup1\", NodeGroupArgs.builder()        \n            .clusterId(\"b9a45c5c-cd03-4958-82aa-b80bf93cb922\")\n            .nodeCount(5)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  nodegroup1:\n    type: openstack:containerinfra:NodeGroup\n    properties:\n      clusterId: b9a45c5c-cd03-4958-82aa-b80bf93cb922\n      nodeCount: 5\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes reference\n\nThe following attributes are exported:\n\n* `region` - See Argument Reference above.\n* `name` - See Argument Reference above.\n* `project_id` - See Argument Reference above.\n* `created_at` - The time at which cluster was created.\n* `updated_at` - The time at which cluster was created.\n* `docker_volume_size` - See Argument Reference above.\n* `role` - See Argument Reference above.\n* `image` - See Argument Reference above.\n* `flavor` - See Argument Reference above.\n* `labels` - See Argument Reference above.\n* `node_count` - See Argument Reference above.\n* `min_node_count` - See Argument Reference above.\n* `max_node_count` - See Argument Reference above.\n* `role` - See Argument Reference above.\n\n\n## Import\n\nNode groups can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b\n```\n\n ",
+            "description": "Manages a V1 Magnum node group resource within OpenStack.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Create a Nodegroup\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst nodegroup1 = new openstack.containerinfra.NodeGroup(\"nodegroup_1\", {\n    clusterId: \"b9a45c5c-cd03-4958-82aa-b80bf93cb922\",\n    nodeCount: 5,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nnodegroup1 = openstack.containerinfra.NodeGroup(\"nodegroup1\",\n    cluster_id=\"b9a45c5c-cd03-4958-82aa-b80bf93cb922\",\n    node_count=5)\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var nodegroup1 = new OpenStack.ContainerInfra.NodeGroup(\"nodegroup1\", new OpenStack.ContainerInfra.NodeGroupArgs\n        {\n            ClusterId = \"b9a45c5c-cd03-4958-82aa-b80bf93cb922\",\n            NodeCount = 5,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/containerinfra\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := containerinfra.NewNodeGroup(ctx, \"nodegroup1\", \u0026containerinfra.NodeGroupArgs{\n\t\t\tClusterId: pulumi.String(\"b9a45c5c-cd03-4958-82aa-b80bf93cb922\"),\n\t\t\tNodeCount: pulumi.Int(5),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.containerinfra.NodeGroup;\nimport com.pulumi.openstack.containerinfra.NodeGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var nodegroup1 = new NodeGroup(\"nodegroup1\", NodeGroupArgs.builder()        \n            .clusterId(\"b9a45c5c-cd03-4958-82aa-b80bf93cb922\")\n            .nodeCount(5)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  nodegroup1:\n    type: openstack:containerinfra:NodeGroup\n    properties:\n      clusterId: b9a45c5c-cd03-4958-82aa-b80bf93cb922\n      nodeCount: 5\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes reference\n\nThe following attributes are exported:\n\n* `region` - See Argument Reference above.\n* `name` - See Argument Reference above.\n* `project_id` - See Argument Reference above.\n* `created_at` - The time at which node group was created.\n* `updated_at` - The time at which node group was created.\n* `docker_volume_size` - See Argument Reference above.\n* `role` - See Argument Reference above.\n* `image_id` - See Argument Reference above.\n* `flavor_id` - See Argument Reference above.\n* `labels` - See Argument Reference above.\n* `node_count` - See Argument Reference above.\n* `min_node_count` - See Argument Reference above.\n* `max_node_count` - See Argument Reference above.\n* `role` - See Argument Reference above.\n\n\n## Import\n\nNode groups can be imported using the `id` (cluster_id/nodegroup_id), e.g.\n\n```sh\n $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922/ce0f9463-dd25-474b-9fe8-94de63e5e42b\n```\n\n ",
             "properties": {
                 "clusterId": {
                     "type": "string",
@@ -7499,10 +7539,12 @@
                     "description": "The size (in GB) of the Docker volume.\nChanging this creates a new node group.\n"
                 },
                 "flavorId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The flavor for the nodes of the node group. Can be set\nvia the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new\nnode group.\n"
                 },
                 "imageId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The reference to an image that is used for nodes of the\nnode group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.\nChanging this updates the image attribute of the existing node group.\n"
                 },
                 "labels": {
                     "type": "object",
@@ -7554,7 +7596,6 @@
                 "flavorId",
                 "imageId",
                 "labels",
-                "maxNodeCount",
                 "minNodeCount",
                 "name",
                 "projectId",
@@ -7574,10 +7615,12 @@
                 },
                 "flavorId": {
                     "type": "string",
+                    "description": "The flavor for the nodes of the node group. Can be set\nvia the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new\nnode group.\n",
                     "willReplaceOnChanges": true
                 },
                 "imageId": {
                     "type": "string",
+                    "description": "The reference to an image that is used for nodes of the\nnode group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.\nChanging this updates the image attribute of the existing node group.\n",
                     "willReplaceOnChanges": true
                 },
                 "labels": {
@@ -7614,6 +7657,11 @@
                     "type": "string",
                     "description": "The region in which to obtain the V1 Container Infra\nclient. A Container Infra client is needed to create a cluster. If omitted,\nthe `region` argument of the provider is used. Changing this creates a new\nnode group.\n",
                     "willReplaceOnChanges": true
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The role of nodes in the node group. Changing this\ncreates a new node group.\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -7636,10 +7684,12 @@
                     },
                     "flavorId": {
                         "type": "string",
+                        "description": "The flavor for the nodes of the node group. Can be set\nvia the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new\nnode group.\n",
                         "willReplaceOnChanges": true
                     },
                     "imageId": {
                         "type": "string",
+                        "description": "The reference to an image that is used for nodes of the\nnode group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.\nChanging this updates the image attribute of the existing node group.\n",
                         "willReplaceOnChanges": true
                     },
                     "labels": {
@@ -7695,7 +7745,6 @@
             }
         },
         "openstack:database/configuration:Configuration": {
-            "description": "Manages a V1 DB configuration resource within OpenStack.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Configuration\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst test = new openstack.database.Configuration(\"test\", {\n    configurations: [{\n        name: \"max_connections\",\n        value: \"200\",\n    }],\n    datastore: {\n        type: \"mysql\",\n        version: \"mysql-5.7\",\n    },\n    description: \"description\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ntest = openstack.database.Configuration(\"test\",\n    configurations=[openstack.database.ConfigurationConfigurationArgs(\n        name=\"max_connections\",\n        value=\"200\",\n    )],\n    datastore=openstack.database.ConfigurationDatastoreArgs(\n        type=\"mysql\",\n        version=\"mysql-5.7\",\n    ),\n    description=\"description\")\n```\n```csharp\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = new OpenStack.Database.Configuration(\"test\", new OpenStack.Database.ConfigurationArgs\n        {\n            Configurations = \n            {\n                new OpenStack.Database.Inputs.ConfigurationConfigurationArgs\n                {\n                    Name = \"max_connections\",\n                    Value = \"200\",\n                },\n            },\n            Datastore = new OpenStack.Database.Inputs.ConfigurationDatastoreArgs\n            {\n                Type = \"mysql\",\n                Version = \"mysql-5.7\",\n            },\n            Description = \"description\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/database\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := database.NewConfiguration(ctx, \"test\", \u0026database.ConfigurationArgs{\n\t\t\tConfigurations: database.ConfigurationConfigurationArray{\n\t\t\t\t\u0026database.ConfigurationConfigurationArgs{\n\t\t\t\t\tName:  pulumi.String(\"max_connections\"),\n\t\t\t\t\tValue: pulumi.String(\"200\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDatastore: \u0026database.ConfigurationDatastoreArgs{\n\t\t\t\tType:    pulumi.String(\"mysql\"),\n\t\t\t\tVersion: pulumi.String(\"mysql-5.7\"),\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"description\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.database.Configuration;\nimport com.pulumi.openstack.database.ConfigurationArgs;\nimport com.pulumi.openstack.database.inputs.ConfigurationConfigurationArgs;\nimport com.pulumi.openstack.database.inputs.ConfigurationDatastoreArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test = new Configuration(\"test\", ConfigurationArgs.builder()        \n            .configurations(ConfigurationConfigurationArgs.builder()\n                .name(\"max_connections\")\n                .value(200)\n                .build())\n            .datastore(ConfigurationDatastoreArgs.builder()\n                .type(\"mysql\")\n                .version(\"mysql-5.7\")\n                .build())\n            .description(\"description\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test:\n    type: openstack:database:Configuration\n    properties:\n      configurations:\n        - name: max_connections\n          value: 200\n      datastore:\n        type: mysql\n        version: mysql-5.7\n      description: description\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "configurations": {
                     "type": "array",
@@ -16504,6 +16553,13 @@
                     "type": "string",
                     "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create a Neutron subnet. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nsubnet.\n"
                 },
+                "serviceTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array of service types used by the subnet.\nChanging this updates the service types for the existing subnet.\n"
+                },
                 "subnetpoolId": {
                     "type": "string",
                     "description": "The ID of the subnetpool associated with the subnet.\n"
@@ -16538,6 +16594,7 @@
                 "name",
                 "networkId",
                 "region",
+                "serviceTypes",
                 "tenantId"
             ],
             "inputProperties": {
@@ -16625,6 +16682,13 @@
                     "type": "string",
                     "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create a Neutron subnet. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nsubnet.\n",
                     "willReplaceOnChanges": true
+                },
+                "serviceTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array of service types used by the subnet.\nChanging this updates the service types for the existing subnet.\n"
                 },
                 "subnetpoolId": {
                     "type": "string",
@@ -16749,6 +16813,13 @@
                         "type": "string",
                         "description": "The region in which to obtain the V2 Networking client.\nA Networking client is needed to create a Neutron subnet. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nsubnet.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "serviceTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "An array of service types used by the subnet.\nChanging this updates the service types for the existing subnet.\n"
                     },
                     "subnetpoolId": {
                         "type": "string",
@@ -20381,6 +20452,11 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getFlavor.\n",
                 "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the flavor.\n",
+                        "willReplaceOnChanges": true
+                    },
                     "disk": {
                         "type": "integer",
                         "description": "The exact amount of disk (in gigabytes).\n",
@@ -20442,6 +20518,9 @@
             "outputs": {
                 "description": "A collection of values returned by getFlavor.\n",
                 "properties": {
+                    "description": {
+                        "type": "string"
+                    },
                     "disk": {
                         "type": "integer"
                     },
@@ -20608,6 +20687,10 @@
                         "type": "string",
                         "description": "The availability zone of this server.\n"
                     },
+                    "created": {
+                        "type": "string",
+                        "description": "The creation time of the instance.\n"
+                    },
                     "flavorId": {
                         "type": "string",
                         "description": "The flavor ID used to create the server.\n"
@@ -20669,6 +20752,10 @@
                         },
                         "description": "A set of string tags assigned to this server.\n"
                     },
+                    "updated": {
+                        "type": "string",
+                        "description": "The time when the instance was last updated.\n"
+                    },
                     "userData": {
                         "type": "string",
                         "description": "The user data added when the server was created.\n"
@@ -20679,6 +20766,7 @@
                     "accessIpV4",
                     "accessIpV6",
                     "availabilityZone",
+                    "created",
                     "flavorId",
                     "flavorName",
                     "id",
@@ -20692,6 +20780,7 @@
                     "region",
                     "securityGroups",
                     "tags",
+                    "updated",
                     "userData"
                 ]
             }
@@ -24355,6 +24444,13 @@
                         "type": "string",
                         "description": "See Argument Reference above.\n"
                     },
+                    "serviceTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Service types of the subnet.\n"
+                    },
                     "subnetId": {
                         "type": "string"
                     },
@@ -24387,6 +24483,7 @@
                     "name",
                     "networkId",
                     "region",
+                    "serviceTypes",
                     "subnetId",
                     "subnetpoolId",
                     "tenantId",

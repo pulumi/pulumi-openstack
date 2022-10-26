@@ -21,19 +21,22 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := identity.NewRole(ctx, "role1", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := identity.NewRole(ctx, "role1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -41,7 +44,9 @@ import (
 // Roles can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:identity/role:Role role_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+//
+//	$ pulumi import openstack:identity/role:Role role_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+//
 // ```
 type Role struct {
 	pulumi.CustomResourceState
@@ -159,7 +164,7 @@ func (i *Role) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 // RoleArrayInput is an input type that accepts RoleArray and RoleArrayOutput values.
 // You can construct a concrete instance of `RoleArrayInput` via:
 //
-//          RoleArray{ RoleArgs{...} }
+//	RoleArray{ RoleArgs{...} }
 type RoleArrayInput interface {
 	pulumi.Input
 
@@ -184,7 +189,7 @@ func (i RoleArray) ToRoleArrayOutputWithContext(ctx context.Context) RoleArrayOu
 // RoleMapInput is an input type that accepts RoleMap and RoleMapOutput values.
 // You can construct a concrete instance of `RoleMapInput` via:
 //
-//          RoleMap{ "key": RoleArgs{...} }
+//	RoleMap{ "key": RoleArgs{...} }
 type RoleMapInput interface {
 	pulumi.Input
 

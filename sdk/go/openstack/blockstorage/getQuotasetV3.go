@@ -18,21 +18,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := blockstorage.GetQuotasetV3(ctx, &blockstorage.GetQuotasetV3Args{
-// 			ProjectId: "2e367a3d29f94fd988e6ec54e305ec9d",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := blockstorage.GetQuotasetV3(ctx, &blockstorage.GetQuotasetV3Args{
+//				ProjectId: "2e367a3d29f94fd988e6ec54e305ec9d",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetQuotasetV3(ctx *pulumi.Context, args *GetQuotasetV3Args, opts ...pulumi.InvokeOption) (*GetQuotasetV3Result, error) {
 	var rv GetQuotasetV3Result

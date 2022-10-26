@@ -21,35 +21,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		qos, err := blockstorage.NewQosV3(ctx, "qos", &blockstorage.QosV3Args{
-// 			Consumer: pulumi.String("front-end"),
-// 			Specs: pulumi.AnyMap{
-// 				"read_iops_sec": pulumi.Any("20000"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		volumeType, err := blockstorage.NewVolumeTypeV3(ctx, "volumeType", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = blockstorage.NewQosAssociationV3(ctx, "qosAssociation", &blockstorage.QosAssociationV3Args{
-// 			QosId:        qos.ID(),
-// 			VolumeTypeId: volumeType.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			qos, err := blockstorage.NewQosV3(ctx, "qos", &blockstorage.QosV3Args{
+//				Consumer: pulumi.String("front-end"),
+//				Specs: pulumi.AnyMap{
+//					"read_iops_sec": pulumi.Any("20000"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			volumeType, err := blockstorage.NewVolumeTypeV3(ctx, "volumeType", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = blockstorage.NewQosAssociationV3(ctx, "qosAssociation", &blockstorage.QosAssociationV3Args{
+//				QosId:        qos.ID(),
+//				VolumeTypeId: volumeType.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -57,7 +60,9 @@ import (
 // Qos association can be imported using the `qos_id/volume_type_id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:blockstorage/qosAssociationV3:QosAssociationV3 qos_association 941793f0-0a34-4bc4-b72e-a6326ae58283/ea257959-eeb1-4c10-8d33-26f0409a755d
+//
+//	$ pulumi import openstack:blockstorage/qosAssociationV3:QosAssociationV3 qos_association 941793f0-0a34-4bc4-b72e-a6326ae58283/ea257959-eeb1-4c10-8d33-26f0409a755d
+//
 // ```
 type QosAssociationV3 struct {
 	pulumi.CustomResourceState
@@ -191,7 +196,7 @@ func (i *QosAssociationV3) ToQosAssociationV3OutputWithContext(ctx context.Conte
 // QosAssociationV3ArrayInput is an input type that accepts QosAssociationV3Array and QosAssociationV3ArrayOutput values.
 // You can construct a concrete instance of `QosAssociationV3ArrayInput` via:
 //
-//          QosAssociationV3Array{ QosAssociationV3Args{...} }
+//	QosAssociationV3Array{ QosAssociationV3Args{...} }
 type QosAssociationV3ArrayInput interface {
 	pulumi.Input
 
@@ -216,7 +221,7 @@ func (i QosAssociationV3Array) ToQosAssociationV3ArrayOutputWithContext(ctx cont
 // QosAssociationV3MapInput is an input type that accepts QosAssociationV3Map and QosAssociationV3MapOutput values.
 // You can construct a concrete instance of `QosAssociationV3MapInput` via:
 //
-//          QosAssociationV3Map{ "key": QosAssociationV3Args{...} }
+//	QosAssociationV3Map{ "key": QosAssociationV3Args{...} }
 type QosAssociationV3MapInput interface {
 	pulumi.Input
 

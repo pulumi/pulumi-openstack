@@ -24,58 +24,63 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project1, err := identity.NewProject(ctx, "project1", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		user1, err := identity.NewUser(ctx, "user1", &identity.UserArgs{
-// 			DefaultProjectId: project1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		group1, err := identity.NewGroupV3(ctx, "group1", &identity.GroupV3Args{
-// 			Description: pulumi.String("group 1"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		role1, err := identity.NewRole(ctx, "role1", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = identity.NewUserMembershipV3(ctx, "userMembership1", &identity.UserMembershipV3Args{
-// 			GroupId: group1.ID(),
-// 			UserId:  user1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = identity.NewRoleAssignment(ctx, "roleAssignment1", &identity.RoleAssignmentArgs{
-// 			GroupId:   group1.ID(),
-// 			ProjectId: project1.ID(),
-// 			RoleId:    role1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			user1, err := identity.NewUser(ctx, "user1", &identity.UserArgs{
+//				DefaultProjectId: project1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			group1, err := identity.NewGroupV3(ctx, "group1", &identity.GroupV3Args{
+//				Description: pulumi.String("group 1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			role1, err := identity.NewRole(ctx, "role1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = identity.NewUserMembershipV3(ctx, "userMembership1", &identity.UserMembershipV3Args{
+//				GroupId: group1.ID(),
+//				UserId:  user1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = identity.NewRoleAssignment(ctx, "roleAssignment1", &identity.RoleAssignmentArgs{
+//				GroupId:   group1.ID(),
+//				ProjectId: project1.ID(),
+//				RoleId:    role1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// This resource can be imported by specifying all two arguments, separated by a forward slash
+// # This resource can be imported by specifying all two arguments, separated by a forward slash
 //
 // ```sh
-//  $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 <user_id>/<group_id>
+//
+//	$ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 <user_id>/<group_id>
+//
 // ```
 type UserMembershipV3 struct {
 	pulumi.CustomResourceState
@@ -204,7 +209,7 @@ func (i *UserMembershipV3) ToUserMembershipV3OutputWithContext(ctx context.Conte
 // UserMembershipV3ArrayInput is an input type that accepts UserMembershipV3Array and UserMembershipV3ArrayOutput values.
 // You can construct a concrete instance of `UserMembershipV3ArrayInput` via:
 //
-//          UserMembershipV3Array{ UserMembershipV3Args{...} }
+//	UserMembershipV3Array{ UserMembershipV3Args{...} }
 type UserMembershipV3ArrayInput interface {
 	pulumi.Input
 
@@ -229,7 +234,7 @@ func (i UserMembershipV3Array) ToUserMembershipV3ArrayOutputWithContext(ctx cont
 // UserMembershipV3MapInput is an input type that accepts UserMembershipV3Map and UserMembershipV3MapOutput values.
 // You can construct a concrete instance of `UserMembershipV3MapInput` via:
 //
-//          UserMembershipV3Map{ "key": UserMembershipV3Args{...} }
+//	UserMembershipV3Map{ "key": UserMembershipV3Args{...} }
 type UserMembershipV3MapInput interface {
 	pulumi.Input
 

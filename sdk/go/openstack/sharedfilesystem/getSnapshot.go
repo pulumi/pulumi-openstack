@@ -18,21 +18,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/sharedfilesystem"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/sharedfilesystem"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sharedfilesystem.GetSnapshot(ctx, &sharedfilesystem.GetSnapshotArgs{
-// 			Name: pulumi.StringRef("snapshot_1"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sharedfilesystem.GetSnapshot(ctx, &sharedfilesystem.GetSnapshotArgs{
+//				Name: pulumi.StringRef("snapshot_1"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSnapshot(ctx *pulumi.Context, args *GetSnapshotArgs, opts ...pulumi.InvokeOption) (*GetSnapshotResult, error) {
 	var rv GetSnapshotResult

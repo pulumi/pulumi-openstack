@@ -17,70 +17,49 @@ public final class GetPolicyResult {
      * @return The audit status of the firewall policy.
      * 
      */
-    private final Boolean audited;
+    private Boolean audited;
     /**
      * @return The description of the firewall policy.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String policyId;
+    private @Nullable String policyId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return The array of one or more firewall rules that comprise the policy.
      * 
      */
-    private final List<String> rules;
+    private List<String> rules;
     /**
      * @return The sharing status of the firewall policy.
      * 
      */
-    private final Boolean shared;
+    private Boolean shared;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String tenantId;
+    private String tenantId;
 
-    @CustomType.Constructor
-    private GetPolicyResult(
-        @CustomType.Parameter("audited") Boolean audited,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("policyId") @Nullable String policyId,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("rules") List<String> rules,
-        @CustomType.Parameter("shared") Boolean shared,
-        @CustomType.Parameter("tenantId") String tenantId) {
-        this.audited = audited;
-        this.description = description;
-        this.id = id;
-        this.name = name;
-        this.policyId = policyId;
-        this.region = region;
-        this.rules = rules;
-        this.shared = shared;
-        this.tenantId = tenantId;
-    }
-
+    private GetPolicyResult() {}
     /**
      * @return The audit status of the firewall policy.
      * 
@@ -152,7 +131,7 @@ public final class GetPolicyResult {
     public static Builder builder(GetPolicyResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean audited;
         private String description;
@@ -163,11 +142,7 @@ public final class GetPolicyResult {
         private List<String> rules;
         private Boolean shared;
         private String tenantId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.audited = defaults.audited;
@@ -181,30 +156,37 @@ public final class GetPolicyResult {
     	      this.tenantId = defaults.tenantId;
         }
 
+        @CustomType.Setter
         public Builder audited(Boolean audited) {
             this.audited = Objects.requireNonNull(audited);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder policyId(@Nullable String policyId) {
             this.policyId = policyId;
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder rules(List<String> rules) {
             this.rules = Objects.requireNonNull(rules);
             return this;
@@ -212,15 +194,28 @@ public final class GetPolicyResult {
         public Builder rules(String... rules) {
             return rules(List.of(rules));
         }
+        @CustomType.Setter
         public Builder shared(Boolean shared) {
             this.shared = Objects.requireNonNull(shared);
             return this;
         }
+        @CustomType.Setter
         public Builder tenantId(String tenantId) {
             this.tenantId = Objects.requireNonNull(tenantId);
             return this;
-        }        public GetPolicyResult build() {
-            return new GetPolicyResult(audited, description, id, name, policyId, region, rules, shared, tenantId);
+        }
+        public GetPolicyResult build() {
+            final var o = new GetPolicyResult();
+            o.audited = audited;
+            o.description = description;
+            o.id = id;
+            o.name = name;
+            o.policyId = policyId;
+            o.region = region;
+            o.rules = rules;
+            o.shared = shared;
+            o.tenantId = tenantId;
+            return o;
         }
     }
 }

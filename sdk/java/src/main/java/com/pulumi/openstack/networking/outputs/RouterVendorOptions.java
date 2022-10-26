@@ -16,13 +16,9 @@ public final class RouterVendorOptions {
      * the Router gateway is assigned during creation or updated after creation.
      * 
      */
-    private final @Nullable Boolean setRouterGatewayAfterCreate;
+    private @Nullable Boolean setRouterGatewayAfterCreate;
 
-    @CustomType.Constructor
-    private RouterVendorOptions(@CustomType.Parameter("setRouterGatewayAfterCreate") @Nullable Boolean setRouterGatewayAfterCreate) {
-        this.setRouterGatewayAfterCreate = setRouterGatewayAfterCreate;
-    }
-
+    private RouterVendorOptions() {}
     /**
      * @return Boolean to control whether
      * the Router gateway is assigned during creation or updated after creation.
@@ -39,24 +35,24 @@ public final class RouterVendorOptions {
     public static Builder builder(RouterVendorOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean setRouterGatewayAfterCreate;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RouterVendorOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.setRouterGatewayAfterCreate = defaults.setRouterGatewayAfterCreate;
         }
 
+        @CustomType.Setter
         public Builder setRouterGatewayAfterCreate(@Nullable Boolean setRouterGatewayAfterCreate) {
             this.setRouterGatewayAfterCreate = setRouterGatewayAfterCreate;
             return this;
-        }        public RouterVendorOptions build() {
-            return new RouterVendorOptions(setRouterGatewayAfterCreate);
+        }
+        public RouterVendorOptions build() {
+            final var o = new RouterVendorOptions();
+            o.setRouterGatewayAfterCreate = setRouterGatewayAfterCreate;
+            return o;
         }
     }
 }

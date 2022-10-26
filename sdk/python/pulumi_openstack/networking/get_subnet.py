@@ -22,7 +22,7 @@ class GetSubnetResult:
     """
     A collection of values returned by getSubnet.
     """
-    def __init__(__self__, all_tags=None, allocation_pools=None, cidr=None, description=None, dhcp_disabled=None, dhcp_enabled=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, id=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, subnet_id=None, subnetpool_id=None, tags=None, tenant_id=None):
+    def __init__(__self__, all_tags=None, allocation_pools=None, cidr=None, description=None, dhcp_disabled=None, dhcp_enabled=None, dns_nameservers=None, enable_dhcp=None, gateway_ip=None, host_routes=None, id=None, ip_version=None, ipv6_address_mode=None, ipv6_ra_mode=None, name=None, network_id=None, region=None, service_types=None, subnet_id=None, subnetpool_id=None, tags=None, tenant_id=None):
         if all_tags and not isinstance(all_tags, list):
             raise TypeError("Expected argument 'all_tags' to be a list")
         pulumi.set(__self__, "all_tags", all_tags)
@@ -78,6 +78,9 @@ class GetSubnetResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if service_types and not isinstance(service_types, list):
+            raise TypeError("Expected argument 'service_types' to be a list")
+        pulumi.set(__self__, "service_types", service_types)
         if subnet_id and not isinstance(subnet_id, str):
             raise TypeError("Expected argument 'subnet_id' to be a str")
         pulumi.set(__self__, "subnet_id", subnet_id)
@@ -198,6 +201,14 @@ class GetSubnetResult:
         return pulumi.get(self, "region")
 
     @property
+    @pulumi.getter(name="serviceTypes")
+    def service_types(self) -> Sequence[str]:
+        """
+        Service types of the subnet.
+        """
+        return pulumi.get(self, "service_types")
+
+    @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> str:
         return pulumi.get(self, "subnet_id")
@@ -241,6 +252,7 @@ class AwaitableGetSubnetResult(GetSubnetResult):
             name=self.name,
             network_id=self.network_id,
             region=self.region,
+            service_types=self.service_types,
             subnet_id=self.subnet_id,
             subnetpool_id=self.subnetpool_id,
             tags=self.tags,
@@ -332,6 +344,7 @@ def get_subnet(cidr: Optional[str] = None,
         name=__ret__.name,
         network_id=__ret__.network_id,
         region=__ret__.region,
+        service_types=__ret__.service_types,
         subnet_id=__ret__.subnet_id,
         subnetpool_id=__ret__.subnetpool_id,
         tags=__ret__.tags,

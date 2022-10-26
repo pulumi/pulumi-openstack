@@ -18,73 +18,76 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
-// 			AdminStateUp: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
-// 			Cidr:      pulumi.String("192.168.199.0/24"),
-// 			IpVersion: pulumi.Int(4),
-// 			NetworkId: network1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		secgroup1, err := compute.NewSecGroup(ctx, "secgroup1", &compute.SecGroupArgs{
-// 			Description: pulumi.String("a security group"),
-// 			Rules: compute.SecGroupRuleArray{
-// 				&compute.SecGroupRuleArgs{
-// 					Cidr:       pulumi.String("0.0.0.0/0"),
-// 					FromPort:   pulumi.Int(22),
-// 					IpProtocol: pulumi.String("tcp"),
-// 					ToPort:     pulumi.Int(22),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		port1, err := networking.NewPort(ctx, "port1", &networking.PortArgs{
-// 			AdminStateUp: pulumi.Bool(true),
-// 			FixedIps: networking.PortFixedIpArray{
-// 				&networking.PortFixedIpArgs{
-// 					IpAddress: pulumi.String("192.168.199.10"),
-// 					SubnetId:  subnet1.ID(),
-// 				},
-// 			},
-// 			NetworkId: network1.ID(),
-// 			SecurityGroupIds: pulumi.StringArray{
-// 				secgroup1.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
-// 			Networks: compute.InstanceNetworkArray{
-// 				&compute.InstanceNetworkArgs{
-// 					Port: port1.ID(),
-// 				},
-// 			},
-// 			SecurityGroups: pulumi.StringArray{
-// 				secgroup1.Name,
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//				Cidr:      pulumi.String("192.168.199.0/24"),
+//				IpVersion: pulumi.Int(4),
+//				NetworkId: network1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			secgroup1, err := compute.NewSecGroup(ctx, "secgroup1", &compute.SecGroupArgs{
+//				Description: pulumi.String("a security group"),
+//				Rules: compute.SecGroupRuleArray{
+//					&compute.SecGroupRuleArgs{
+//						Cidr:       pulumi.String("0.0.0.0/0"),
+//						FromPort:   pulumi.Int(22),
+//						IpProtocol: pulumi.String("tcp"),
+//						ToPort:     pulumi.Int(22),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			port1, err := networking.NewPort(ctx, "port1", &networking.PortArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//				FixedIps: networking.PortFixedIpArray{
+//					&networking.PortFixedIpArgs{
+//						IpAddress: pulumi.String("192.168.199.10"),
+//						SubnetId:  subnet1.ID(),
+//					},
+//				},
+//				NetworkId: network1.ID(),
+//				SecurityGroupIds: pulumi.StringArray{
+//					secgroup1.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Port: port1.ID(),
+//					},
+//				},
+//				SecurityGroups: pulumi.StringArray{
+//					secgroup1.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -92,7 +95,9 @@ import (
 // Networks can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:networking/network:Network network_1 d90ce693-5ccf-4136-a0ed-152ce412b6b9
+//
+//	$ pulumi import openstack:networking/network:Network network_1 d90ce693-5ccf-4136-a0ed-152ce412b6b9
+//
 // ```
 type Network struct {
 	pulumi.CustomResourceState
@@ -474,7 +479,7 @@ func (i *Network) ToNetworkOutputWithContext(ctx context.Context) NetworkOutput 
 // NetworkArrayInput is an input type that accepts NetworkArray and NetworkArrayOutput values.
 // You can construct a concrete instance of `NetworkArrayInput` via:
 //
-//          NetworkArray{ NetworkArgs{...} }
+//	NetworkArray{ NetworkArgs{...} }
 type NetworkArrayInput interface {
 	pulumi.Input
 
@@ -499,7 +504,7 @@ func (i NetworkArray) ToNetworkArrayOutputWithContext(ctx context.Context) Netwo
 // NetworkMapInput is an input type that accepts NetworkMap and NetworkMapOutput values.
 // You can construct a concrete instance of `NetworkMapInput` via:
 //
-//          NetworkMap{ "key": NetworkArgs{...} }
+//	NetworkMap{ "key": NetworkArgs{...} }
 type NetworkMapInput interface {
 	pulumi.Input
 

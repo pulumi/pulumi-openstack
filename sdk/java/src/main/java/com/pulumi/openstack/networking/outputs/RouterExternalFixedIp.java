@@ -15,21 +15,14 @@ public final class RouterExternalFixedIp {
      * @return The IP address to set on the router.
      * 
      */
-    private final @Nullable String ipAddress;
+    private @Nullable String ipAddress;
     /**
      * @return Subnet in which the fixed IP belongs to.
      * 
      */
-    private final @Nullable String subnetId;
+    private @Nullable String subnetId;
 
-    @CustomType.Constructor
-    private RouterExternalFixedIp(
-        @CustomType.Parameter("ipAddress") @Nullable String ipAddress,
-        @CustomType.Parameter("subnetId") @Nullable String subnetId) {
-        this.ipAddress = ipAddress;
-        this.subnetId = subnetId;
-    }
-
+    private RouterExternalFixedIp() {}
     /**
      * @return The IP address to set on the router.
      * 
@@ -52,30 +45,32 @@ public final class RouterExternalFixedIp {
     public static Builder builder(RouterExternalFixedIp defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ipAddress;
         private @Nullable String subnetId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RouterExternalFixedIp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipAddress = defaults.ipAddress;
     	      this.subnetId = defaults.subnetId;
         }
 
+        @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
             this.ipAddress = ipAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder subnetId(@Nullable String subnetId) {
             this.subnetId = subnetId;
             return this;
-        }        public RouterExternalFixedIp build() {
-            return new RouterExternalFixedIp(ipAddress, subnetId);
+        }
+        public RouterExternalFixedIp build() {
+            final var o = new RouterExternalFixedIp();
+            o.ipAddress = ipAddress;
+            o.subnetId = subnetId;
+            return o;
         }
     }
 }
