@@ -19,27 +19,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewFlavor(ctx, "test-flavor", &compute.FlavorArgs{
-// 			Disk: pulumi.Int(20),
-// 			ExtraSpecs: pulumi.AnyMap{
-// 				"hw:cpu_policy":        pulumi.Any("CPU-POLICY"),
-// 				"hw:cpu_thread_policy": pulumi.Any("CPU-THREAD-POLICY"),
-// 			},
-// 			Ram:   pulumi.Int(8096),
-// 			Vcpus: pulumi.Int(2),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewFlavor(ctx, "test-flavor", &compute.FlavorArgs{
+//				Disk: pulumi.Int(20),
+//				ExtraSpecs: pulumi.AnyMap{
+//					"hw:cpu_policy":        pulumi.Any("CPU-POLICY"),
+//					"hw:cpu_thread_policy": pulumi.Any("CPU-THREAD-POLICY"),
+//				},
+//				Ram:   pulumi.Int(8096),
+//				Vcpus: pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,11 +50,16 @@ import (
 // Flavors can be imported using the `ID`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:compute/flavor:Flavor my-flavor 4142e64b-1b35-44a0-9b1e-5affc7af1106
+//
+//	$ pulumi import openstack:compute/flavor:Flavor my-flavor 4142e64b-1b35-44a0-9b1e-5affc7af1106
+//
 // ```
 type Flavor struct {
 	pulumi.CustomResourceState
 
+	// The description of the flavor. Changing this
+	// updates the description of the flavor. Requires microversion >= 2.55.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The amount of disk space in GiB to use for the root
 	// (/) partition. Changing this creates a new flavor.
 	Disk pulumi.IntOutput `pulumi:"disk"`
@@ -126,6 +134,9 @@ func GetFlavor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Flavor resources.
 type flavorState struct {
+	// The description of the flavor. Changing this
+	// updates the description of the flavor. Requires microversion >= 2.55.
+	Description *string `pulumi:"description"`
 	// The amount of disk space in GiB to use for the root
 	// (/) partition. Changing this creates a new flavor.
 	Disk *int `pulumi:"disk"`
@@ -163,6 +174,9 @@ type flavorState struct {
 }
 
 type FlavorState struct {
+	// The description of the flavor. Changing this
+	// updates the description of the flavor. Requires microversion >= 2.55.
+	Description pulumi.StringPtrInput
 	// The amount of disk space in GiB to use for the root
 	// (/) partition. Changing this creates a new flavor.
 	Disk pulumi.IntPtrInput
@@ -204,6 +218,9 @@ func (FlavorState) ElementType() reflect.Type {
 }
 
 type flavorArgs struct {
+	// The description of the flavor. Changing this
+	// updates the description of the flavor. Requires microversion >= 2.55.
+	Description *string `pulumi:"description"`
 	// The amount of disk space in GiB to use for the root
 	// (/) partition. Changing this creates a new flavor.
 	Disk int `pulumi:"disk"`
@@ -242,6 +259,9 @@ type flavorArgs struct {
 
 // The set of arguments for constructing a Flavor resource.
 type FlavorArgs struct {
+	// The description of the flavor. Changing this
+	// updates the description of the flavor. Requires microversion >= 2.55.
+	Description pulumi.StringPtrInput
 	// The amount of disk space in GiB to use for the root
 	// (/) partition. Changing this creates a new flavor.
 	Disk pulumi.IntInput
@@ -304,7 +324,7 @@ func (i *Flavor) ToFlavorOutputWithContext(ctx context.Context) FlavorOutput {
 // FlavorArrayInput is an input type that accepts FlavorArray and FlavorArrayOutput values.
 // You can construct a concrete instance of `FlavorArrayInput` via:
 //
-//          FlavorArray{ FlavorArgs{...} }
+//	FlavorArray{ FlavorArgs{...} }
 type FlavorArrayInput interface {
 	pulumi.Input
 
@@ -329,7 +349,7 @@ func (i FlavorArray) ToFlavorArrayOutputWithContext(ctx context.Context) FlavorA
 // FlavorMapInput is an input type that accepts FlavorMap and FlavorMapOutput values.
 // You can construct a concrete instance of `FlavorMapInput` via:
 //
-//          FlavorMap{ "key": FlavorArgs{...} }
+//	FlavorMap{ "key": FlavorArgs{...} }
 type FlavorMapInput interface {
 	pulumi.Input
 
@@ -363,6 +383,12 @@ func (o FlavorOutput) ToFlavorOutput() FlavorOutput {
 
 func (o FlavorOutput) ToFlavorOutputWithContext(ctx context.Context) FlavorOutput {
 	return o
+}
+
+// The description of the flavor. Changing this
+// updates the description of the flavor. Requires microversion >= 2.55.
+func (o FlavorOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Flavor) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The amount of disk space in GiB to use for the root

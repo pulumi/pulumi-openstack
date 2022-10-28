@@ -13,21 +13,14 @@ public final class SubnetHostRoute {
      * @return The destination CIDR.
      * 
      */
-    private final String destinationCidr;
+    private String destinationCidr;
     /**
      * @return The next hop in the route.
      * 
      */
-    private final String nextHop;
+    private String nextHop;
 
-    @CustomType.Constructor
-    private SubnetHostRoute(
-        @CustomType.Parameter("destinationCidr") String destinationCidr,
-        @CustomType.Parameter("nextHop") String nextHop) {
-        this.destinationCidr = destinationCidr;
-        this.nextHop = nextHop;
-    }
-
+    private SubnetHostRoute() {}
     /**
      * @return The destination CIDR.
      * 
@@ -50,30 +43,32 @@ public final class SubnetHostRoute {
     public static Builder builder(SubnetHostRoute defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String destinationCidr;
         private String nextHop;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SubnetHostRoute defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.destinationCidr = defaults.destinationCidr;
     	      this.nextHop = defaults.nextHop;
         }
 
+        @CustomType.Setter
         public Builder destinationCidr(String destinationCidr) {
             this.destinationCidr = Objects.requireNonNull(destinationCidr);
             return this;
         }
+        @CustomType.Setter
         public Builder nextHop(String nextHop) {
             this.nextHop = Objects.requireNonNull(nextHop);
             return this;
-        }        public SubnetHostRoute build() {
-            return new SubnetHostRoute(destinationCidr, nextHop);
+        }
+        public SubnetHostRoute build() {
+            final var o = new SubnetHostRoute();
+            o.destinationCidr = destinationCidr;
+            o.nextHop = nextHop;
+            return o;
         }
     }
 }

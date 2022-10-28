@@ -12,113 +12,80 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNodeGroupResult {
-    private final String clusterId;
+    private String clusterId;
     /**
      * @return The time at which the node group was created.
      * 
      */
-    private final String createdAt;
+    private String createdAt;
     /**
      * @return The size (in GB) of the Docker volume.
      * 
      */
-    private final Integer dockerVolumeSize;
+    private Integer dockerVolumeSize;
     /**
      * @return The flavor for the nodes of the node group.
      * 
      */
-    private final String flavor;
+    private String flavor;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The reference to an image that is used for nodes of the node group.
      * 
      */
-    private final String image;
+    private String image;
     /**
      * @return The list of key value pairs representing additional properties of
      * the node group.
      * 
      */
-    private final Map<String,Object> labels;
+    private Map<String,Object> labels;
     /**
      * @return The maximum number of nodes for the node group.
      * 
      */
-    private final Integer maxNodeCount;
+    private Integer maxNodeCount;
     /**
      * @return The minimum number of nodes for the node group.
      * 
      */
-    private final Integer minNodeCount;
+    private Integer minNodeCount;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The number of nodes for the node group.
      * 
      */
-    private final Integer nodeCount;
+    private Integer nodeCount;
     /**
      * @return The project of the node group.
      * 
      */
-    private final String projectId;
+    private String projectId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return The role of the node group.
      * 
      */
-    private final String role;
+    private String role;
     /**
      * @return The time at which the node group was updated.
      * 
      */
-    private final String updatedAt;
+    private String updatedAt;
 
-    @CustomType.Constructor
-    private GetNodeGroupResult(
-        @CustomType.Parameter("clusterId") String clusterId,
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("dockerVolumeSize") Integer dockerVolumeSize,
-        @CustomType.Parameter("flavor") String flavor,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("image") String image,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("maxNodeCount") Integer maxNodeCount,
-        @CustomType.Parameter("minNodeCount") Integer minNodeCount,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nodeCount") Integer nodeCount,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("role") String role,
-        @CustomType.Parameter("updatedAt") String updatedAt) {
-        this.clusterId = clusterId;
-        this.createdAt = createdAt;
-        this.dockerVolumeSize = dockerVolumeSize;
-        this.flavor = flavor;
-        this.id = id;
-        this.image = image;
-        this.labels = labels;
-        this.maxNodeCount = maxNodeCount;
-        this.minNodeCount = minNodeCount;
-        this.name = name;
-        this.nodeCount = nodeCount;
-        this.projectId = projectId;
-        this.region = region;
-        this.role = role;
-        this.updatedAt = updatedAt;
-    }
-
+    private GetNodeGroupResult() {}
     public String clusterId() {
         return this.clusterId;
     }
@@ -229,7 +196,7 @@ public final class GetNodeGroupResult {
     public static Builder builder(GetNodeGroupResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clusterId;
         private String createdAt;
@@ -246,11 +213,7 @@ public final class GetNodeGroupResult {
         private String region;
         private String role;
         private String updatedAt;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetNodeGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterId = defaults.clusterId;
@@ -270,67 +233,99 @@ public final class GetNodeGroupResult {
     	      this.updatedAt = defaults.updatedAt;
         }
 
+        @CustomType.Setter
         public Builder clusterId(String clusterId) {
             this.clusterId = Objects.requireNonNull(clusterId);
             return this;
         }
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder dockerVolumeSize(Integer dockerVolumeSize) {
             this.dockerVolumeSize = Objects.requireNonNull(dockerVolumeSize);
             return this;
         }
+        @CustomType.Setter
         public Builder flavor(String flavor) {
             this.flavor = Objects.requireNonNull(flavor);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder image(String image) {
             this.image = Objects.requireNonNull(image);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder maxNodeCount(Integer maxNodeCount) {
             this.maxNodeCount = Objects.requireNonNull(maxNodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder minNodeCount(Integer minNodeCount) {
             this.minNodeCount = Objects.requireNonNull(minNodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeCount(Integer nodeCount) {
             this.nodeCount = Objects.requireNonNull(nodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder role(String role) {
             this.role = Objects.requireNonNull(role);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
             this.updatedAt = Objects.requireNonNull(updatedAt);
             return this;
-        }        public GetNodeGroupResult build() {
-            return new GetNodeGroupResult(clusterId, createdAt, dockerVolumeSize, flavor, id, image, labels, maxNodeCount, minNodeCount, name, nodeCount, projectId, region, role, updatedAt);
+        }
+        public GetNodeGroupResult build() {
+            final var o = new GetNodeGroupResult();
+            o.clusterId = clusterId;
+            o.createdAt = createdAt;
+            o.dockerVolumeSize = dockerVolumeSize;
+            o.flavor = flavor;
+            o.id = id;
+            o.image = image;
+            o.labels = labels;
+            o.maxNodeCount = maxNodeCount;
+            o.minNodeCount = minNodeCount;
+            o.name = name;
+            o.nodeCount = nodeCount;
+            o.projectId = projectId;
+            o.region = region;
+            o.role = role;
+            o.updatedAt = updatedAt;
+            return o;
         }
     }
 }

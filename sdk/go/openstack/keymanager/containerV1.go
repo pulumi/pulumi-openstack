@@ -22,92 +22,95 @@ import (
 // package main
 //
 // import (
-// 	"io/ioutil"
 //
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"io/ioutil"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func readFileOrPanic(path string) pulumi.StringPtrInput {
-// 	data, err := ioutil.ReadFile(path)
-// 	if err != nil {
-// 		panic(err.Error())
-// 	}
-// 	return pulumi.String(string(data))
-// }
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := ioutil.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		certificate1, err := keymanager.NewSecretV1(ctx, "certificate1", &keymanager.SecretV1Args{
-// 			Payload:            readFileOrPanic("cert.pem"),
-// 			PayloadContentType: pulumi.String("text/plain"),
-// 			SecretType:         pulumi.String("certificate"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		privateKey1, err := keymanager.NewSecretV1(ctx, "privateKey1", &keymanager.SecretV1Args{
-// 			Payload:            readFileOrPanic("cert-key.pem"),
-// 			PayloadContentType: pulumi.String("text/plain"),
-// 			SecretType:         pulumi.String("private"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		intermediate1, err := keymanager.NewSecretV1(ctx, "intermediate1", &keymanager.SecretV1Args{
-// 			Payload:            readFileOrPanic("intermediate-ca.pem"),
-// 			PayloadContentType: pulumi.String("text/plain"),
-// 			SecretType:         pulumi.String("certificate"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		tls1, err := keymanager.NewContainerV1(ctx, "tls1", &keymanager.ContainerV1Args{
-// 			SecretRefs: keymanager.ContainerV1SecretRefArray{
-// 				&keymanager.ContainerV1SecretRefArgs{
-// 					Name:      pulumi.String("certificate"),
-// 					SecretRef: certificate1.SecretRef,
-// 				},
-// 				&keymanager.ContainerV1SecretRefArgs{
-// 					Name:      pulumi.String("private_key"),
-// 					SecretRef: privateKey1.SecretRef,
-// 				},
-// 				&keymanager.ContainerV1SecretRefArgs{
-// 					Name:      pulumi.String("intermediates"),
-// 					SecretRef: intermediate1.SecretRef,
-// 				},
-// 			},
-// 			Type: pulumi.String("certificate"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		subnet1, err := networking.LookupSubnet(ctx, &networking.LookupSubnetArgs{
-// 			Name: pulumi.StringRef("my-subnet"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		lb1, err := loadbalancer.NewLoadBalancer(ctx, "lb1", &loadbalancer.LoadBalancerArgs{
-// 			VipSubnetId: pulumi.String(subnet1.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = loadbalancer.NewListener(ctx, "listener1", &loadbalancer.ListenerArgs{
-// 			DefaultTlsContainerRef: tls1.ContainerRef,
-// 			LoadbalancerId:         lb1.ID(),
-// 			Protocol:               pulumi.String("TERMINATED_HTTPS"),
-// 			ProtocolPort:           pulumi.Int(443),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			certificate1, err := keymanager.NewSecretV1(ctx, "certificate1", &keymanager.SecretV1Args{
+//				Payload:            readFileOrPanic("cert.pem"),
+//				PayloadContentType: pulumi.String("text/plain"),
+//				SecretType:         pulumi.String("certificate"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			privateKey1, err := keymanager.NewSecretV1(ctx, "privateKey1", &keymanager.SecretV1Args{
+//				Payload:            readFileOrPanic("cert-key.pem"),
+//				PayloadContentType: pulumi.String("text/plain"),
+//				SecretType:         pulumi.String("private"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			intermediate1, err := keymanager.NewSecretV1(ctx, "intermediate1", &keymanager.SecretV1Args{
+//				Payload:            readFileOrPanic("intermediate-ca.pem"),
+//				PayloadContentType: pulumi.String("text/plain"),
+//				SecretType:         pulumi.String("certificate"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tls1, err := keymanager.NewContainerV1(ctx, "tls1", &keymanager.ContainerV1Args{
+//				SecretRefs: keymanager.ContainerV1SecretRefArray{
+//					&keymanager.ContainerV1SecretRefArgs{
+//						Name:      pulumi.String("certificate"),
+//						SecretRef: certificate1.SecretRef,
+//					},
+//					&keymanager.ContainerV1SecretRefArgs{
+//						Name:      pulumi.String("private_key"),
+//						SecretRef: privateKey1.SecretRef,
+//					},
+//					&keymanager.ContainerV1SecretRefArgs{
+//						Name:      pulumi.String("intermediates"),
+//						SecretRef: intermediate1.SecretRef,
+//					},
+//				},
+//				Type: pulumi.String("certificate"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet1, err := networking.LookupSubnet(ctx, &networking.LookupSubnetArgs{
+//				Name: pulumi.StringRef("my-subnet"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			lb1, err := loadbalancer.NewLoadBalancer(ctx, "lb1", &loadbalancer.LoadBalancerArgs{
+//				VipSubnetId: pulumi.String(subnet1.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = loadbalancer.NewListener(ctx, "listener1", &loadbalancer.ListenerArgs{
+//				DefaultTlsContainerRef: tls1.ContainerRef,
+//				LoadbalancerId:         lb1.ID(),
+//				Protocol:               pulumi.String("TERMINATED_HTTPS"),
+//				ProtocolPort:           pulumi.Int(443),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Container with the ACL
 //
@@ -117,44 +120,47 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := keymanager.NewContainerV1(ctx, "tls1", &keymanager.ContainerV1Args{
-// 			Acl: &keymanager.ContainerV1AclArgs{
-// 				Read: &keymanager.ContainerV1AclReadArgs{
-// 					ProjectAccess: pulumi.Bool(false),
-// 					Users: pulumi.StringArray{
-// 						pulumi.String("userid1"),
-// 						pulumi.String("userid2"),
-// 					},
-// 				},
-// 			},
-// 			SecretRefs: keymanager.ContainerV1SecretRefArray{
-// 				&keymanager.ContainerV1SecretRefArgs{
-// 					Name:      pulumi.String("certificate"),
-// 					SecretRef: pulumi.Any(openstack_keymanager_secret_v1.Certificate_1.Secret_ref),
-// 				},
-// 				&keymanager.ContainerV1SecretRefArgs{
-// 					Name:      pulumi.String("private_key"),
-// 					SecretRef: pulumi.Any(openstack_keymanager_secret_v1.Private_key_1.Secret_ref),
-// 				},
-// 				&keymanager.ContainerV1SecretRefArgs{
-// 					Name:      pulumi.String("intermediates"),
-// 					SecretRef: pulumi.Any(openstack_keymanager_secret_v1.Intermediate_1.Secret_ref),
-// 				},
-// 			},
-// 			Type: pulumi.String("certificate"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := keymanager.NewContainerV1(ctx, "tls1", &keymanager.ContainerV1Args{
+//				Acl: &keymanager.ContainerV1AclArgs{
+//					Read: &keymanager.ContainerV1AclReadArgs{
+//						ProjectAccess: pulumi.Bool(false),
+//						Users: pulumi.StringArray{
+//							pulumi.String("userid1"),
+//							pulumi.String("userid2"),
+//						},
+//					},
+//				},
+//				SecretRefs: keymanager.ContainerV1SecretRefArray{
+//					&keymanager.ContainerV1SecretRefArgs{
+//						Name:      pulumi.String("certificate"),
+//						SecretRef: pulumi.Any(openstack_keymanager_secret_v1.Certificate_1.Secret_ref),
+//					},
+//					&keymanager.ContainerV1SecretRefArgs{
+//						Name:      pulumi.String("private_key"),
+//						SecretRef: pulumi.Any(openstack_keymanager_secret_v1.Private_key_1.Secret_ref),
+//					},
+//					&keymanager.ContainerV1SecretRefArgs{
+//						Name:      pulumi.String("intermediates"),
+//						SecretRef: pulumi.Any(openstack_keymanager_secret_v1.Intermediate_1.Secret_ref),
+//					},
+//				},
+//				Type: pulumi.String("certificate"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -162,7 +168,9 @@ import (
 // Containers can be imported using the container id (the last part of the container reference), e.g.
 //
 // ```sh
-//  $ pulumi import openstack:keymanager/containerV1:ContainerV1 container_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
+//
+//	$ pulumi import openstack:keymanager/containerV1:ContainerV1 container_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
+//
 // ```
 type ContainerV1 struct {
 	pulumi.CustomResourceState
@@ -359,7 +367,7 @@ func (i *ContainerV1) ToContainerV1OutputWithContext(ctx context.Context) Contai
 // ContainerV1ArrayInput is an input type that accepts ContainerV1Array and ContainerV1ArrayOutput values.
 // You can construct a concrete instance of `ContainerV1ArrayInput` via:
 //
-//          ContainerV1Array{ ContainerV1Args{...} }
+//	ContainerV1Array{ ContainerV1Args{...} }
 type ContainerV1ArrayInput interface {
 	pulumi.Input
 
@@ -384,7 +392,7 @@ func (i ContainerV1Array) ToContainerV1ArrayOutputWithContext(ctx context.Contex
 // ContainerV1MapInput is an input type that accepts ContainerV1Map and ContainerV1MapOutput values.
 // You can construct a concrete instance of `ContainerV1MapInput` via:
 //
-//          ContainerV1Map{ "key": ContainerV1Args{...} }
+//	ContainerV1Map{ "key": ContainerV1Args{...} }
 type ContainerV1MapInput interface {
 	pulumi.Input
 

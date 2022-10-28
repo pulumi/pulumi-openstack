@@ -17,114 +17,87 @@ public final class GetInstanceV2Result {
      * @return The first IPv4 address assigned to this server.
      * 
      */
-    private final String accessIpV4;
+    private String accessIpV4;
     /**
      * @return The first IPv6 address assigned to this server.
      * 
      */
-    private final String accessIpV6;
+    private String accessIpV6;
     /**
      * @return The availability zone of this server.
      * 
      */
-    private final String availabilityZone;
+    private String availabilityZone;
+    /**
+     * @return The creation time of the instance.
+     * 
+     */
+    private String created;
     /**
      * @return The flavor ID used to create the server.
      * 
      */
-    private final String flavorId;
+    private String flavorId;
     /**
      * @return The flavor name used to create the server.
      * 
      */
-    private final String flavorName;
-    private final String id;
+    private String flavorName;
+    private String id;
     /**
      * @return The image ID used to create the server.
      * 
      */
-    private final String imageId;
+    private String imageId;
     /**
      * @return The image name used to create the server.
      * 
      */
-    private final String imageName;
+    private String imageName;
     /**
      * @return The name of the key pair assigned to this server.
      * 
      */
-    private final String keyPair;
+    private String keyPair;
     /**
      * @return A set of key/value pairs made available to the server.
      * 
      */
-    private final Map<String,Object> metadata;
+    private Map<String,Object> metadata;
     /**
      * @return The name of the network
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return An array of maps, detailed below.
      * 
      */
-    private final List<GetInstanceV2Network> networks;
-    private final String powerState;
-    private final String region;
+    private List<GetInstanceV2Network> networks;
+    private String powerState;
+    private String region;
     /**
      * @return An array of security group names associated with this server.
      * 
      */
-    private final List<String> securityGroups;
+    private List<String> securityGroups;
     /**
      * @return A set of string tags assigned to this server.
      * 
      */
-    private final List<String> tags;
+    private List<String> tags;
+    /**
+     * @return The time when the instance was last updated.
+     * 
+     */
+    private String updated;
     /**
      * @return The user data added when the server was created.
      * 
      */
-    private final String userData;
+    private String userData;
 
-    @CustomType.Constructor
-    private GetInstanceV2Result(
-        @CustomType.Parameter("accessIpV4") String accessIpV4,
-        @CustomType.Parameter("accessIpV6") String accessIpV6,
-        @CustomType.Parameter("availabilityZone") String availabilityZone,
-        @CustomType.Parameter("flavorId") String flavorId,
-        @CustomType.Parameter("flavorName") String flavorName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("imageId") String imageId,
-        @CustomType.Parameter("imageName") String imageName,
-        @CustomType.Parameter("keyPair") String keyPair,
-        @CustomType.Parameter("metadata") Map<String,Object> metadata,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("networks") List<GetInstanceV2Network> networks,
-        @CustomType.Parameter("powerState") String powerState,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("securityGroups") List<String> securityGroups,
-        @CustomType.Parameter("tags") List<String> tags,
-        @CustomType.Parameter("userData") String userData) {
-        this.accessIpV4 = accessIpV4;
-        this.accessIpV6 = accessIpV6;
-        this.availabilityZone = availabilityZone;
-        this.flavorId = flavorId;
-        this.flavorName = flavorName;
-        this.id = id;
-        this.imageId = imageId;
-        this.imageName = imageName;
-        this.keyPair = keyPair;
-        this.metadata = metadata;
-        this.name = name;
-        this.networks = networks;
-        this.powerState = powerState;
-        this.region = region;
-        this.securityGroups = securityGroups;
-        this.tags = tags;
-        this.userData = userData;
-    }
-
+    private GetInstanceV2Result() {}
     /**
      * @return The first IPv4 address assigned to this server.
      * 
@@ -145,6 +118,13 @@ public final class GetInstanceV2Result {
      */
     public String availabilityZone() {
         return this.availabilityZone;
+    }
+    /**
+     * @return The creation time of the instance.
+     * 
+     */
+    public String created() {
+        return this.created;
     }
     /**
      * @return The flavor ID used to create the server.
@@ -226,6 +206,13 @@ public final class GetInstanceV2Result {
         return this.tags;
     }
     /**
+     * @return The time when the instance was last updated.
+     * 
+     */
+    public String updated() {
+        return this.updated;
+    }
+    /**
      * @return The user data added when the server was created.
      * 
      */
@@ -240,11 +227,12 @@ public final class GetInstanceV2Result {
     public static Builder builder(GetInstanceV2Result defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String accessIpV4;
         private String accessIpV6;
         private String availabilityZone;
+        private String created;
         private String flavorId;
         private String flavorName;
         private String id;
@@ -258,17 +246,15 @@ public final class GetInstanceV2Result {
         private String region;
         private List<String> securityGroups;
         private List<String> tags;
+        private String updated;
         private String userData;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetInstanceV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessIpV4 = defaults.accessIpV4;
     	      this.accessIpV6 = defaults.accessIpV6;
     	      this.availabilityZone = defaults.availabilityZone;
+    	      this.created = defaults.created;
     	      this.flavorId = defaults.flavorId;
     	      this.flavorName = defaults.flavorName;
     	      this.id = defaults.id;
@@ -282,53 +268,71 @@ public final class GetInstanceV2Result {
     	      this.region = defaults.region;
     	      this.securityGroups = defaults.securityGroups;
     	      this.tags = defaults.tags;
+    	      this.updated = defaults.updated;
     	      this.userData = defaults.userData;
         }
 
+        @CustomType.Setter
         public Builder accessIpV4(String accessIpV4) {
             this.accessIpV4 = Objects.requireNonNull(accessIpV4);
             return this;
         }
+        @CustomType.Setter
         public Builder accessIpV6(String accessIpV6) {
             this.accessIpV6 = Objects.requireNonNull(accessIpV6);
             return this;
         }
+        @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
             this.availabilityZone = Objects.requireNonNull(availabilityZone);
             return this;
         }
+        @CustomType.Setter
+        public Builder created(String created) {
+            this.created = Objects.requireNonNull(created);
+            return this;
+        }
+        @CustomType.Setter
         public Builder flavorId(String flavorId) {
             this.flavorId = Objects.requireNonNull(flavorId);
             return this;
         }
+        @CustomType.Setter
         public Builder flavorName(String flavorName) {
             this.flavorName = Objects.requireNonNull(flavorName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder imageId(String imageId) {
             this.imageId = Objects.requireNonNull(imageId);
             return this;
         }
+        @CustomType.Setter
         public Builder imageName(String imageName) {
             this.imageName = Objects.requireNonNull(imageName);
             return this;
         }
+        @CustomType.Setter
         public Builder keyPair(String keyPair) {
             this.keyPair = Objects.requireNonNull(keyPair);
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(Map<String,Object> metadata) {
             this.metadata = Objects.requireNonNull(metadata);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder networks(List<GetInstanceV2Network> networks) {
             this.networks = Objects.requireNonNull(networks);
             return this;
@@ -336,14 +340,17 @@ public final class GetInstanceV2Result {
         public Builder networks(GetInstanceV2Network... networks) {
             return networks(List.of(networks));
         }
+        @CustomType.Setter
         public Builder powerState(String powerState) {
             this.powerState = Objects.requireNonNull(powerState);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroups(List<String> securityGroups) {
             this.securityGroups = Objects.requireNonNull(securityGroups);
             return this;
@@ -351,6 +358,7 @@ public final class GetInstanceV2Result {
         public Builder securityGroups(String... securityGroups) {
             return securityGroups(List.of(securityGroups));
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -358,11 +366,38 @@ public final class GetInstanceV2Result {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
+        public Builder updated(String updated) {
+            this.updated = Objects.requireNonNull(updated);
+            return this;
+        }
+        @CustomType.Setter
         public Builder userData(String userData) {
             this.userData = Objects.requireNonNull(userData);
             return this;
-        }        public GetInstanceV2Result build() {
-            return new GetInstanceV2Result(accessIpV4, accessIpV6, availabilityZone, flavorId, flavorName, id, imageId, imageName, keyPair, metadata, name, networks, powerState, region, securityGroups, tags, userData);
+        }
+        public GetInstanceV2Result build() {
+            final var o = new GetInstanceV2Result();
+            o.accessIpV4 = accessIpV4;
+            o.accessIpV6 = accessIpV6;
+            o.availabilityZone = availabilityZone;
+            o.created = created;
+            o.flavorId = flavorId;
+            o.flavorName = flavorName;
+            o.id = id;
+            o.imageId = imageId;
+            o.imageName = imageName;
+            o.keyPair = keyPair;
+            o.metadata = metadata;
+            o.name = name;
+            o.networks = networks;
+            o.powerState = powerState;
+            o.region = region;
+            o.securityGroups = securityGroups;
+            o.tags = tags;
+            o.updated = updated;
+            o.userData = userData;
+            return o;
         }
     }
 }

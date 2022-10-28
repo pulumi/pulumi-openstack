@@ -23,7 +23,7 @@ class GetInstanceV2Result:
     """
     A collection of values returned by getInstanceV2.
     """
-    def __init__(__self__, access_ip_v4=None, access_ip_v6=None, availability_zone=None, flavor_id=None, flavor_name=None, id=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, power_state=None, region=None, security_groups=None, tags=None, user_data=None):
+    def __init__(__self__, access_ip_v4=None, access_ip_v6=None, availability_zone=None, created=None, flavor_id=None, flavor_name=None, id=None, image_id=None, image_name=None, key_pair=None, metadata=None, name=None, networks=None, power_state=None, region=None, security_groups=None, tags=None, updated=None, user_data=None):
         if access_ip_v4 and not isinstance(access_ip_v4, str):
             raise TypeError("Expected argument 'access_ip_v4' to be a str")
         pulumi.set(__self__, "access_ip_v4", access_ip_v4)
@@ -33,6 +33,9 @@ class GetInstanceV2Result:
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         pulumi.set(__self__, "availability_zone", availability_zone)
+        if created and not isinstance(created, str):
+            raise TypeError("Expected argument 'created' to be a str")
+        pulumi.set(__self__, "created", created)
         if flavor_id and not isinstance(flavor_id, str):
             raise TypeError("Expected argument 'flavor_id' to be a str")
         pulumi.set(__self__, "flavor_id", flavor_id)
@@ -72,6 +75,9 @@ class GetInstanceV2Result:
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
+        if updated and not isinstance(updated, str):
+            raise TypeError("Expected argument 'updated' to be a str")
+        pulumi.set(__self__, "updated", updated)
         if user_data and not isinstance(user_data, str):
             raise TypeError("Expected argument 'user_data' to be a str")
         pulumi.set(__self__, "user_data", user_data)
@@ -99,6 +105,14 @@ class GetInstanceV2Result:
         The availability zone of this server.
         """
         return pulumi.get(self, "availability_zone")
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        """
+        The creation time of the instance.
+        """
+        return pulumi.get(self, "created")
 
     @property
     @pulumi.getter(name="flavorId")
@@ -196,6 +210,14 @@ class GetInstanceV2Result:
         return pulumi.get(self, "tags")
 
     @property
+    @pulumi.getter
+    def updated(self) -> str:
+        """
+        The time when the instance was last updated.
+        """
+        return pulumi.get(self, "updated")
+
+    @property
     @pulumi.getter(name="userData")
     def user_data(self) -> str:
         """
@@ -213,6 +235,7 @@ class AwaitableGetInstanceV2Result(GetInstanceV2Result):
             access_ip_v4=self.access_ip_v4,
             access_ip_v6=self.access_ip_v6,
             availability_zone=self.availability_zone,
+            created=self.created,
             flavor_id=self.flavor_id,
             flavor_name=self.flavor_name,
             id=self.id,
@@ -226,6 +249,7 @@ class AwaitableGetInstanceV2Result(GetInstanceV2Result):
             region=self.region,
             security_groups=self.security_groups,
             tags=self.tags,
+            updated=self.updated,
             user_data=self.user_data)
 
 
@@ -263,6 +287,7 @@ def get_instance_v2(id: Optional[str] = None,
         access_ip_v4=__ret__.access_ip_v4,
         access_ip_v6=__ret__.access_ip_v6,
         availability_zone=__ret__.availability_zone,
+        created=__ret__.created,
         flavor_id=__ret__.flavor_id,
         flavor_name=__ret__.flavor_name,
         id=__ret__.id,
@@ -276,6 +301,7 @@ def get_instance_v2(id: Optional[str] = None,
         region=__ret__.region,
         security_groups=__ret__.security_groups,
         tags=__ret__.tags,
+        updated=__ret__.updated,
         user_data=__ret__.user_data)
 
 

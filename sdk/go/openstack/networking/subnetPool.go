@@ -20,25 +20,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := networking.NewSubnetPool(ctx, "subnetpool1", &networking.SubnetPoolArgs{
-// 			IpVersion: pulumi.Int(6),
-// 			Prefixes: pulumi.StringArray{
-// 				pulumi.String("fdf7:b13d:dead:beef::/64"),
-// 				pulumi.String("fd65:86cc:a334:39b7::/64"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.NewSubnetPool(ctx, "subnetpool1", &networking.SubnetPoolArgs{
+//				IpVersion: pulumi.Int(6),
+//				Prefixes: pulumi.StringArray{
+//					pulumi.String("fdf7:b13d:dead:beef::/64"),
+//					pulumi.String("fd65:86cc:a334:39b7::/64"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Create a Subnet from a Subnet Pool
 //
@@ -46,37 +49,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
-// 			AdminStateUp: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		subnetpool1, err := networking.NewSubnetPool(ctx, "subnetpool1", &networking.SubnetPoolArgs{
-// 			Prefixes: pulumi.StringArray{
-// 				pulumi.String("10.11.12.0/24"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
-// 			Cidr:         pulumi.String("10.11.12.0/25"),
-// 			NetworkId:    network1.ID(),
-// 			SubnetpoolId: subnetpool1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnetpool1, err := networking.NewSubnetPool(ctx, "subnetpool1", &networking.SubnetPoolArgs{
+//				Prefixes: pulumi.StringArray{
+//					pulumi.String("10.11.12.0/24"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//				Cidr:         pulumi.String("10.11.12.0/25"),
+//				NetworkId:    network1.ID(),
+//				SubnetpoolId: subnetpool1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -84,7 +90,9 @@ import (
 // Subnetpools can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:networking/subnetPool:SubnetPool subnetpool_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+//
+//	$ pulumi import openstack:networking/subnetPool:SubnetPool subnetpool_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+//
 // ```
 type SubnetPool struct {
 	pulumi.CustomResourceState
@@ -472,7 +480,7 @@ func (i *SubnetPool) ToSubnetPoolOutputWithContext(ctx context.Context) SubnetPo
 // SubnetPoolArrayInput is an input type that accepts SubnetPoolArray and SubnetPoolArrayOutput values.
 // You can construct a concrete instance of `SubnetPoolArrayInput` via:
 //
-//          SubnetPoolArray{ SubnetPoolArgs{...} }
+//	SubnetPoolArray{ SubnetPoolArgs{...} }
 type SubnetPoolArrayInput interface {
 	pulumi.Input
 
@@ -497,7 +505,7 @@ func (i SubnetPoolArray) ToSubnetPoolArrayOutputWithContext(ctx context.Context)
 // SubnetPoolMapInput is an input type that accepts SubnetPoolMap and SubnetPoolMapOutput values.
 // You can construct a concrete instance of `SubnetPoolMapInput` via:
 //
-//          SubnetPoolMap{ "key": SubnetPoolArgs{...} }
+//	SubnetPoolMap{ "key": SubnetPoolArgs{...} }
 type SubnetPoolMapInput interface {
 	pulumi.Input
 

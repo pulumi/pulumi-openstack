@@ -160,6 +160,10 @@ export interface GetSubnetResult {
      * See Argument Reference above.
      */
     readonly region: string;
+    /**
+     * Service types of the subnet.
+     */
+    readonly serviceTypes: string[];
     readonly subnetId: string;
     readonly subnetpoolId: string;
     readonly tags?: string[];

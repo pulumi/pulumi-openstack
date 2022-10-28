@@ -15,21 +15,14 @@ public final class GetContainerConsumer {
      * @return The Container name.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return The consumer URL.
      * 
      */
-    private final @Nullable String url;
+    private @Nullable String url;
 
-    @CustomType.Constructor
-    private GetContainerConsumer(
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("url") @Nullable String url) {
-        this.name = name;
-        this.url = url;
-    }
-
+    private GetContainerConsumer() {}
     /**
      * @return The Container name.
      * 
@@ -52,30 +45,32 @@ public final class GetContainerConsumer {
     public static Builder builder(GetContainerConsumer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetContainerConsumer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder url(@Nullable String url) {
             this.url = url;
             return this;
-        }        public GetContainerConsumer build() {
-            return new GetContainerConsumer(name, url);
+        }
+        public GetContainerConsumer build() {
+            final var o = new GetContainerConsumer();
+            o.name = name;
+            o.url = url;
+            return o;
         }
     }
 }

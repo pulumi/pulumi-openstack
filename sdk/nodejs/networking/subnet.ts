@@ -166,6 +166,11 @@ export class Subnet extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * An array of service types used by the subnet.
+     * Changing this updates the service types for the existing subnet.
+     */
+    public readonly serviceTypes!: pulumi.Output<string[]>;
+    /**
      * The ID of the subnetpool associated with the subnet.
      */
     public readonly subnetpoolId!: pulumi.Output<string | undefined>;
@@ -213,6 +218,7 @@ export class Subnet extends pulumi.CustomResource {
             resourceInputs["noGateway"] = state ? state.noGateway : undefined;
             resourceInputs["prefixLength"] = state ? state.prefixLength : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["serviceTypes"] = state ? state.serviceTypes : undefined;
             resourceInputs["subnetpoolId"] = state ? state.subnetpoolId : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tenantId"] = state ? state.tenantId : undefined;
@@ -238,6 +244,7 @@ export class Subnet extends pulumi.CustomResource {
             resourceInputs["noGateway"] = args ? args.noGateway : undefined;
             resourceInputs["prefixLength"] = args ? args.prefixLength : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["serviceTypes"] = args ? args.serviceTypes : undefined;
             resourceInputs["subnetpoolId"] = args ? args.subnetpoolId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
@@ -359,6 +366,11 @@ export interface SubnetState {
      * subnet.
      */
     region?: pulumi.Input<string>;
+    /**
+     * An array of service types used by the subnet.
+     * Changing this updates the service types for the existing subnet.
+     */
+    serviceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the subnetpool associated with the subnet.
      */
@@ -483,6 +495,11 @@ export interface SubnetArgs {
      * subnet.
      */
     region?: pulumi.Input<string>;
+    /**
+     * An array of service types used by the subnet.
+     * Changing this updates the service types for the existing subnet.
+     */
+    serviceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the subnetpool associated with the subnet.
      */

@@ -18,51 +18,51 @@ public final class MembersMember {
      * the load balancer.
      * 
      */
-    private final String address;
+    private String address;
     /**
      * @return The administrative state of the member.
      * A valid value is true (UP) or false (DOWN). Defaults to true.
      * 
      */
-    private final @Nullable Boolean adminStateUp;
+    private @Nullable Boolean adminStateUp;
     /**
      * @return A bool that indicates whether the member is
      * backup. **Requires octavia minor version 2.1 or later**.
      * 
      */
-    private final @Nullable Boolean backup;
+    private @Nullable Boolean backup;
     /**
      * @return The unique ID for the members.
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return An alternate IP address used for health
      * monitoring a backend member.
      * 
      */
-    private final @Nullable String monitorAddress;
+    private @Nullable String monitorAddress;
     /**
      * @return An alternate protocol port used for health
      * monitoring a backend member.
      * 
      */
-    private final @Nullable Integer monitorPort;
+    private @Nullable Integer monitorPort;
     /**
      * @return Human-readable name for the member.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return The port on which to listen for client traffic.
      * 
      */
-    private final Integer protocolPort;
+    private Integer protocolPort;
     /**
      * @return The subnet in which to access the member.
      * 
      */
-    private final @Nullable String subnetId;
+    private @Nullable String subnetId;
     /**
      * @return A positive integer value that indicates the relative
      * portion of traffic that this members should receive from the pool. For
@@ -70,32 +70,9 @@ public final class MembersMember {
      * as a member with a weight of 2. Defaults to 1.
      * 
      */
-    private final @Nullable Integer weight;
+    private @Nullable Integer weight;
 
-    @CustomType.Constructor
-    private MembersMember(
-        @CustomType.Parameter("address") String address,
-        @CustomType.Parameter("adminStateUp") @Nullable Boolean adminStateUp,
-        @CustomType.Parameter("backup") @Nullable Boolean backup,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("monitorAddress") @Nullable String monitorAddress,
-        @CustomType.Parameter("monitorPort") @Nullable Integer monitorPort,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("protocolPort") Integer protocolPort,
-        @CustomType.Parameter("subnetId") @Nullable String subnetId,
-        @CustomType.Parameter("weight") @Nullable Integer weight) {
-        this.address = address;
-        this.adminStateUp = adminStateUp;
-        this.backup = backup;
-        this.id = id;
-        this.monitorAddress = monitorAddress;
-        this.monitorPort = monitorPort;
-        this.name = name;
-        this.protocolPort = protocolPort;
-        this.subnetId = subnetId;
-        this.weight = weight;
-    }
-
+    private MembersMember() {}
     /**
      * @return The IP address of the members to receive traffic from
      * the load balancer.
@@ -182,7 +159,7 @@ public final class MembersMember {
     public static Builder builder(MembersMember defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String address;
         private @Nullable Boolean adminStateUp;
@@ -194,11 +171,7 @@ public final class MembersMember {
         private Integer protocolPort;
         private @Nullable String subnetId;
         private @Nullable Integer weight;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(MembersMember defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
@@ -213,47 +186,69 @@ public final class MembersMember {
     	      this.weight = defaults.weight;
         }
 
+        @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
             return this;
         }
+        @CustomType.Setter
         public Builder adminStateUp(@Nullable Boolean adminStateUp) {
             this.adminStateUp = adminStateUp;
             return this;
         }
+        @CustomType.Setter
         public Builder backup(@Nullable Boolean backup) {
             this.backup = backup;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder monitorAddress(@Nullable String monitorAddress) {
             this.monitorAddress = monitorAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder monitorPort(@Nullable Integer monitorPort) {
             this.monitorPort = monitorPort;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder protocolPort(Integer protocolPort) {
             this.protocolPort = Objects.requireNonNull(protocolPort);
             return this;
         }
+        @CustomType.Setter
         public Builder subnetId(@Nullable String subnetId) {
             this.subnetId = subnetId;
             return this;
         }
+        @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
             this.weight = weight;
             return this;
-        }        public MembersMember build() {
-            return new MembersMember(address, adminStateUp, backup, id, monitorAddress, monitorPort, name, protocolPort, subnetId, weight);
+        }
+        public MembersMember build() {
+            final var o = new MembersMember();
+            o.address = address;
+            o.adminStateUp = adminStateUp;
+            o.backup = backup;
+            o.id = id;
+            o.monitorAddress = monitorAddress;
+            o.monitorPort = monitorPort;
+            o.name = name;
+            o.protocolPort = protocolPort;
+            o.subnetId = subnetId;
+            o.weight = weight;
+            return o;
         }
     }
 }

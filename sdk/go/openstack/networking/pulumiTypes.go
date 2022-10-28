@@ -22,7 +22,7 @@ type NetworkSegment struct {
 // NetworkSegmentInput is an input type that accepts NetworkSegmentArgs and NetworkSegmentOutput values.
 // You can construct a concrete instance of `NetworkSegmentInput` via:
 //
-//          NetworkSegmentArgs{...}
+//	NetworkSegmentArgs{...}
 type NetworkSegmentInput interface {
 	pulumi.Input
 
@@ -54,7 +54,7 @@ func (i NetworkSegmentArgs) ToNetworkSegmentOutputWithContext(ctx context.Contex
 // NetworkSegmentArrayInput is an input type that accepts NetworkSegmentArray and NetworkSegmentArrayOutput values.
 // You can construct a concrete instance of `NetworkSegmentArrayInput` via:
 //
-//          NetworkSegmentArray{ NetworkSegmentArgs{...} }
+//	NetworkSegmentArray{ NetworkSegmentArgs{...} }
 type NetworkSegmentArrayInput interface {
 	pulumi.Input
 
@@ -135,7 +135,7 @@ type PortAllowedAddressPair struct {
 // PortAllowedAddressPairInput is an input type that accepts PortAllowedAddressPairArgs and PortAllowedAddressPairOutput values.
 // You can construct a concrete instance of `PortAllowedAddressPairInput` via:
 //
-//          PortAllowedAddressPairArgs{...}
+//	PortAllowedAddressPairArgs{...}
 type PortAllowedAddressPairInput interface {
 	pulumi.Input
 
@@ -165,7 +165,7 @@ func (i PortAllowedAddressPairArgs) ToPortAllowedAddressPairOutputWithContext(ct
 // PortAllowedAddressPairArrayInput is an input type that accepts PortAllowedAddressPairArray and PortAllowedAddressPairArrayOutput values.
 // You can construct a concrete instance of `PortAllowedAddressPairArrayInput` via:
 //
-//          PortAllowedAddressPairArray{ PortAllowedAddressPairArgs{...} }
+//	PortAllowedAddressPairArray{ PortAllowedAddressPairArgs{...} }
 type PortAllowedAddressPairArrayInput interface {
 	pulumi.Input
 
@@ -251,7 +251,7 @@ type PortBinding struct {
 // PortBindingInput is an input type that accepts PortBindingArgs and PortBindingOutput values.
 // You can construct a concrete instance of `PortBindingInput` via:
 //
-//          PortBindingArgs{...}
+//	PortBindingArgs{...}
 type PortBindingInput interface {
 	pulumi.Input
 
@@ -299,11 +299,11 @@ func (i PortBindingArgs) ToPortBindingPtrOutputWithContext(ctx context.Context) 
 // PortBindingPtrInput is an input type that accepts PortBindingArgs, PortBindingPtr and PortBindingPtrOutput values.
 // You can construct a concrete instance of `PortBindingPtrInput` via:
 //
-//          PortBindingArgs{...}
+//	        PortBindingArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PortBindingPtrInput interface {
 	pulumi.Input
 
@@ -472,7 +472,7 @@ type PortExtraDhcpOption struct {
 // PortExtraDhcpOptionInput is an input type that accepts PortExtraDhcpOptionArgs and PortExtraDhcpOptionOutput values.
 // You can construct a concrete instance of `PortExtraDhcpOptionInput` via:
 //
-//          PortExtraDhcpOptionArgs{...}
+//	PortExtraDhcpOptionArgs{...}
 type PortExtraDhcpOptionInput interface {
 	pulumi.Input
 
@@ -504,7 +504,7 @@ func (i PortExtraDhcpOptionArgs) ToPortExtraDhcpOptionOutputWithContext(ctx cont
 // PortExtraDhcpOptionArrayInput is an input type that accepts PortExtraDhcpOptionArray and PortExtraDhcpOptionArrayOutput values.
 // You can construct a concrete instance of `PortExtraDhcpOptionArrayInput` via:
 //
-//          PortExtraDhcpOptionArray{ PortExtraDhcpOptionArgs{...} }
+//	PortExtraDhcpOptionArray{ PortExtraDhcpOptionArgs{...} }
 type PortExtraDhcpOptionArrayInput interface {
 	pulumi.Input
 
@@ -586,7 +586,7 @@ type PortFixedIp struct {
 // PortFixedIpInput is an input type that accepts PortFixedIpArgs and PortFixedIpOutput values.
 // You can construct a concrete instance of `PortFixedIpInput` via:
 //
-//          PortFixedIpArgs{...}
+//	PortFixedIpArgs{...}
 type PortFixedIpInput interface {
 	pulumi.Input
 
@@ -617,7 +617,7 @@ func (i PortFixedIpArgs) ToPortFixedIpOutputWithContext(ctx context.Context) Por
 // PortFixedIpArrayInput is an input type that accepts PortFixedIpArray and PortFixedIpArrayOutput values.
 // You can construct a concrete instance of `PortFixedIpArrayInput` via:
 //
-//          PortFixedIpArray{ PortFixedIpArgs{...} }
+//	PortFixedIpArray{ PortFixedIpArgs{...} }
 type PortFixedIpArrayInput interface {
 	pulumi.Input
 
@@ -694,7 +694,7 @@ type RouterExternalFixedIp struct {
 // RouterExternalFixedIpInput is an input type that accepts RouterExternalFixedIpArgs and RouterExternalFixedIpOutput values.
 // You can construct a concrete instance of `RouterExternalFixedIpInput` via:
 //
-//          RouterExternalFixedIpArgs{...}
+//	RouterExternalFixedIpArgs{...}
 type RouterExternalFixedIpInput interface {
 	pulumi.Input
 
@@ -724,7 +724,7 @@ func (i RouterExternalFixedIpArgs) ToRouterExternalFixedIpOutputWithContext(ctx 
 // RouterExternalFixedIpArrayInput is an input type that accepts RouterExternalFixedIpArray and RouterExternalFixedIpArrayOutput values.
 // You can construct a concrete instance of `RouterExternalFixedIpArrayInput` via:
 //
-//          RouterExternalFixedIpArray{ RouterExternalFixedIpArgs{...} }
+//	RouterExternalFixedIpArray{ RouterExternalFixedIpArgs{...} }
 type RouterExternalFixedIpArrayInput interface {
 	pulumi.Input
 
@@ -799,7 +799,7 @@ type RouterVendorOptions struct {
 // RouterVendorOptionsInput is an input type that accepts RouterVendorOptionsArgs and RouterVendorOptionsOutput values.
 // You can construct a concrete instance of `RouterVendorOptionsInput` via:
 //
-//          RouterVendorOptionsArgs{...}
+//	RouterVendorOptionsArgs{...}
 type RouterVendorOptionsInput interface {
 	pulumi.Input
 
@@ -836,11 +836,11 @@ func (i RouterVendorOptionsArgs) ToRouterVendorOptionsPtrOutputWithContext(ctx c
 // RouterVendorOptionsPtrInput is an input type that accepts RouterVendorOptionsArgs, RouterVendorOptionsPtr and RouterVendorOptionsPtrOutput values.
 // You can construct a concrete instance of `RouterVendorOptionsPtrInput` via:
 //
-//          RouterVendorOptionsArgs{...}
+//	        RouterVendorOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RouterVendorOptionsPtrInput interface {
 	pulumi.Input
 
@@ -941,7 +941,7 @@ type SubnetAllocationPool struct {
 // SubnetAllocationPoolInput is an input type that accepts SubnetAllocationPoolArgs and SubnetAllocationPoolOutput values.
 // You can construct a concrete instance of `SubnetAllocationPoolInput` via:
 //
-//          SubnetAllocationPoolArgs{...}
+//	SubnetAllocationPoolArgs{...}
 type SubnetAllocationPoolInput interface {
 	pulumi.Input
 
@@ -971,7 +971,7 @@ func (i SubnetAllocationPoolArgs) ToSubnetAllocationPoolOutputWithContext(ctx co
 // SubnetAllocationPoolArrayInput is an input type that accepts SubnetAllocationPoolArray and SubnetAllocationPoolArrayOutput values.
 // You can construct a concrete instance of `SubnetAllocationPoolArrayInput` via:
 //
-//          SubnetAllocationPoolArray{ SubnetAllocationPoolArgs{...} }
+//	SubnetAllocationPoolArray{ SubnetAllocationPoolArgs{...} }
 type SubnetAllocationPoolArrayInput interface {
 	pulumi.Input
 
@@ -1047,7 +1047,7 @@ type SubnetAllocationPoolsCollection struct {
 // SubnetAllocationPoolsCollectionInput is an input type that accepts SubnetAllocationPoolsCollectionArgs and SubnetAllocationPoolsCollectionOutput values.
 // You can construct a concrete instance of `SubnetAllocationPoolsCollectionInput` via:
 //
-//          SubnetAllocationPoolsCollectionArgs{...}
+//	SubnetAllocationPoolsCollectionArgs{...}
 type SubnetAllocationPoolsCollectionInput interface {
 	pulumi.Input
 
@@ -1077,7 +1077,7 @@ func (i SubnetAllocationPoolsCollectionArgs) ToSubnetAllocationPoolsCollectionOu
 // SubnetAllocationPoolsCollectionArrayInput is an input type that accepts SubnetAllocationPoolsCollectionArray and SubnetAllocationPoolsCollectionArrayOutput values.
 // You can construct a concrete instance of `SubnetAllocationPoolsCollectionArrayInput` via:
 //
-//          SubnetAllocationPoolsCollectionArray{ SubnetAllocationPoolsCollectionArgs{...} }
+//	SubnetAllocationPoolsCollectionArray{ SubnetAllocationPoolsCollectionArgs{...} }
 type SubnetAllocationPoolsCollectionArrayInput interface {
 	pulumi.Input
 
@@ -1153,7 +1153,7 @@ type SubnetHostRoute struct {
 // SubnetHostRouteInput is an input type that accepts SubnetHostRouteArgs and SubnetHostRouteOutput values.
 // You can construct a concrete instance of `SubnetHostRouteInput` via:
 //
-//          SubnetHostRouteArgs{...}
+//	SubnetHostRouteArgs{...}
 type SubnetHostRouteInput interface {
 	pulumi.Input
 
@@ -1183,7 +1183,7 @@ func (i SubnetHostRouteArgs) ToSubnetHostRouteOutputWithContext(ctx context.Cont
 // SubnetHostRouteArrayInput is an input type that accepts SubnetHostRouteArray and SubnetHostRouteArrayOutput values.
 // You can construct a concrete instance of `SubnetHostRouteArrayInput` via:
 //
-//          SubnetHostRouteArray{ SubnetHostRouteArgs{...} }
+//	SubnetHostRouteArray{ SubnetHostRouteArgs{...} }
 type SubnetHostRouteArrayInput interface {
 	pulumi.Input
 
@@ -1261,7 +1261,7 @@ type TrunkSubPort struct {
 // TrunkSubPortInput is an input type that accepts TrunkSubPortArgs and TrunkSubPortOutput values.
 // You can construct a concrete instance of `TrunkSubPortInput` via:
 //
-//          TrunkSubPortArgs{...}
+//	TrunkSubPortArgs{...}
 type TrunkSubPortInput interface {
 	pulumi.Input
 
@@ -1293,7 +1293,7 @@ func (i TrunkSubPortArgs) ToTrunkSubPortOutputWithContext(ctx context.Context) T
 // TrunkSubPortArrayInput is an input type that accepts TrunkSubPortArray and TrunkSubPortArrayOutput values.
 // You can construct a concrete instance of `TrunkSubPortArrayInput` via:
 //
-//          TrunkSubPortArray{ TrunkSubPortArgs{...} }
+//	TrunkSubPortArray{ TrunkSubPortArgs{...} }
 type TrunkSubPortArrayInput interface {
 	pulumi.Input
 
@@ -1374,7 +1374,7 @@ type GetPortAllowedAddressPair struct {
 // GetPortAllowedAddressPairInput is an input type that accepts GetPortAllowedAddressPairArgs and GetPortAllowedAddressPairOutput values.
 // You can construct a concrete instance of `GetPortAllowedAddressPairInput` via:
 //
-//          GetPortAllowedAddressPairArgs{...}
+//	GetPortAllowedAddressPairArgs{...}
 type GetPortAllowedAddressPairInput interface {
 	pulumi.Input
 
@@ -1404,7 +1404,7 @@ func (i GetPortAllowedAddressPairArgs) ToGetPortAllowedAddressPairOutputWithCont
 // GetPortAllowedAddressPairArrayInput is an input type that accepts GetPortAllowedAddressPairArray and GetPortAllowedAddressPairArrayOutput values.
 // You can construct a concrete instance of `GetPortAllowedAddressPairArrayInput` via:
 //
-//          GetPortAllowedAddressPairArray{ GetPortAllowedAddressPairArgs{...} }
+//	GetPortAllowedAddressPairArray{ GetPortAllowedAddressPairArgs{...} }
 type GetPortAllowedAddressPairArrayInput interface {
 	pulumi.Input
 
@@ -1487,7 +1487,7 @@ type GetPortBinding struct {
 // GetPortBindingInput is an input type that accepts GetPortBindingArgs and GetPortBindingOutput values.
 // You can construct a concrete instance of `GetPortBindingInput` via:
 //
-//          GetPortBindingArgs{...}
+//	GetPortBindingArgs{...}
 type GetPortBindingInput interface {
 	pulumi.Input
 
@@ -1524,7 +1524,7 @@ func (i GetPortBindingArgs) ToGetPortBindingOutputWithContext(ctx context.Contex
 // GetPortBindingArrayInput is an input type that accepts GetPortBindingArray and GetPortBindingArrayOutput values.
 // You can construct a concrete instance of `GetPortBindingArrayInput` via:
 //
-//          GetPortBindingArray{ GetPortBindingArgs{...} }
+//	GetPortBindingArray{ GetPortBindingArgs{...} }
 type GetPortBindingArrayInput interface {
 	pulumi.Input
 
@@ -1618,7 +1618,7 @@ type GetPortExtraDhcpOption struct {
 // GetPortExtraDhcpOptionInput is an input type that accepts GetPortExtraDhcpOptionArgs and GetPortExtraDhcpOptionOutput values.
 // You can construct a concrete instance of `GetPortExtraDhcpOptionInput` via:
 //
-//          GetPortExtraDhcpOptionArgs{...}
+//	GetPortExtraDhcpOptionArgs{...}
 type GetPortExtraDhcpOptionInput interface {
 	pulumi.Input
 
@@ -1650,7 +1650,7 @@ func (i GetPortExtraDhcpOptionArgs) ToGetPortExtraDhcpOptionOutputWithContext(ct
 // GetPortExtraDhcpOptionArrayInput is an input type that accepts GetPortExtraDhcpOptionArray and GetPortExtraDhcpOptionArrayOutput values.
 // You can construct a concrete instance of `GetPortExtraDhcpOptionArrayInput` via:
 //
-//          GetPortExtraDhcpOptionArray{ GetPortExtraDhcpOptionArgs{...} }
+//	GetPortExtraDhcpOptionArray{ GetPortExtraDhcpOptionArgs{...} }
 type GetPortExtraDhcpOptionArrayInput interface {
 	pulumi.Input
 
@@ -1730,7 +1730,7 @@ type GetRouterExternalFixedIp struct {
 // GetRouterExternalFixedIpInput is an input type that accepts GetRouterExternalFixedIpArgs and GetRouterExternalFixedIpOutput values.
 // You can construct a concrete instance of `GetRouterExternalFixedIpInput` via:
 //
-//          GetRouterExternalFixedIpArgs{...}
+//	GetRouterExternalFixedIpArgs{...}
 type GetRouterExternalFixedIpInput interface {
 	pulumi.Input
 
@@ -1759,7 +1759,7 @@ func (i GetRouterExternalFixedIpArgs) ToGetRouterExternalFixedIpOutputWithContex
 // GetRouterExternalFixedIpArrayInput is an input type that accepts GetRouterExternalFixedIpArray and GetRouterExternalFixedIpArrayOutput values.
 // You can construct a concrete instance of `GetRouterExternalFixedIpArrayInput` via:
 //
-//          GetRouterExternalFixedIpArray{ GetRouterExternalFixedIpArgs{...} }
+//	GetRouterExternalFixedIpArray{ GetRouterExternalFixedIpArgs{...} }
 type GetRouterExternalFixedIpArrayInput interface {
 	pulumi.Input
 
@@ -1832,7 +1832,7 @@ type GetSubnetAllocationPool struct {
 // GetSubnetAllocationPoolInput is an input type that accepts GetSubnetAllocationPoolArgs and GetSubnetAllocationPoolOutput values.
 // You can construct a concrete instance of `GetSubnetAllocationPoolInput` via:
 //
-//          GetSubnetAllocationPoolArgs{...}
+//	GetSubnetAllocationPoolArgs{...}
 type GetSubnetAllocationPoolInput interface {
 	pulumi.Input
 
@@ -1860,7 +1860,7 @@ func (i GetSubnetAllocationPoolArgs) ToGetSubnetAllocationPoolOutputWithContext(
 // GetSubnetAllocationPoolArrayInput is an input type that accepts GetSubnetAllocationPoolArray and GetSubnetAllocationPoolArrayOutput values.
 // You can construct a concrete instance of `GetSubnetAllocationPoolArrayInput` via:
 //
-//          GetSubnetAllocationPoolArray{ GetSubnetAllocationPoolArgs{...} }
+//	GetSubnetAllocationPoolArray{ GetSubnetAllocationPoolArgs{...} }
 type GetSubnetAllocationPoolArrayInput interface {
 	pulumi.Input
 
@@ -1932,7 +1932,7 @@ type GetSubnetHostRoute struct {
 // GetSubnetHostRouteInput is an input type that accepts GetSubnetHostRouteArgs and GetSubnetHostRouteOutput values.
 // You can construct a concrete instance of `GetSubnetHostRouteInput` via:
 //
-//          GetSubnetHostRouteArgs{...}
+//	GetSubnetHostRouteArgs{...}
 type GetSubnetHostRouteInput interface {
 	pulumi.Input
 
@@ -1960,7 +1960,7 @@ func (i GetSubnetHostRouteArgs) ToGetSubnetHostRouteOutputWithContext(ctx contex
 // GetSubnetHostRouteArrayInput is an input type that accepts GetSubnetHostRouteArray and GetSubnetHostRouteArrayOutput values.
 // You can construct a concrete instance of `GetSubnetHostRouteArrayInput` via:
 //
-//          GetSubnetHostRouteArray{ GetSubnetHostRouteArgs{...} }
+//	GetSubnetHostRouteArray{ GetSubnetHostRouteArgs{...} }
 type GetSubnetHostRouteArrayInput interface {
 	pulumi.Input
 
@@ -2036,7 +2036,7 @@ type GetTrunkSubPort struct {
 // GetTrunkSubPortInput is an input type that accepts GetTrunkSubPortArgs and GetTrunkSubPortOutput values.
 // You can construct a concrete instance of `GetTrunkSubPortInput` via:
 //
-//          GetTrunkSubPortArgs{...}
+//	GetTrunkSubPortArgs{...}
 type GetTrunkSubPortInput interface {
 	pulumi.Input
 
@@ -2068,7 +2068,7 @@ func (i GetTrunkSubPortArgs) ToGetTrunkSubPortOutputWithContext(ctx context.Cont
 // GetTrunkSubPortArrayInput is an input type that accepts GetTrunkSubPortArray and GetTrunkSubPortArrayOutput values.
 // You can construct a concrete instance of `GetTrunkSubPortArrayInput` via:
 //
-//          GetTrunkSubPortArray{ GetTrunkSubPortArgs{...} }
+//	GetTrunkSubPortArray{ GetTrunkSubPortArgs{...} }
 type GetTrunkSubPortArrayInput interface {
 	pulumi.Input
 

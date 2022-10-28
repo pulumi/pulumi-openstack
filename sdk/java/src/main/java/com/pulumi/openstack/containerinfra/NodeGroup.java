@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * Manages a V1 Magnum node group resource within OpenStack.
  * 
  * ## Example Usage
- * ### Create a Cluster
+ * ### Create a Nodegroup
  * ```java
  * package generated_program;
  * 
@@ -59,12 +59,12 @@ import javax.annotation.Nullable;
  * * `region` - See Argument Reference above.
  * * `name` - See Argument Reference above.
  * * `project_id` - See Argument Reference above.
- * * `created_at` - The time at which cluster was created.
- * * `updated_at` - The time at which cluster was created.
+ * * `created_at` - The time at which node group was created.
+ * * `updated_at` - The time at which node group was created.
  * * `docker_volume_size` - See Argument Reference above.
  * * `role` - See Argument Reference above.
- * * `image` - See Argument Reference above.
- * * `flavor` - See Argument Reference above.
+ * * `image_id` - See Argument Reference above.
+ * * `flavor_id` - See Argument Reference above.
  * * `labels` - See Argument Reference above.
  * * `node_count` - See Argument Reference above.
  * * `min_node_count` - See Argument Reference above.
@@ -73,10 +73,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Node groups can be imported using the `id`, e.g.
+ * Node groups can be imported using the `id` (cluster_id/nodegroup_id), e.g.
  * 
  * ```sh
- *  $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
+ *  $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922/ce0f9463-dd25-474b-9fe8-94de63e5e42b
  * ```
  * 
  */
@@ -120,15 +120,39 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
     public Output<Integer> dockerVolumeSize() {
         return this.dockerVolumeSize;
     }
+    /**
+     * The flavor for the nodes of the node group. Can be set
+     * via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+     * node group.
+     * 
+     */
     @Export(name="flavorId", type=String.class, parameters={})
     private Output<String> flavorId;
 
+    /**
+     * @return The flavor for the nodes of the node group. Can be set
+     * via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+     * node group.
+     * 
+     */
     public Output<String> flavorId() {
         return this.flavorId;
     }
+    /**
+     * The reference to an image that is used for nodes of the
+     * node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+     * Changing this updates the image attribute of the existing node group.
+     * 
+     */
     @Export(name="imageId", type=String.class, parameters={})
     private Output<String> imageId;
 
+    /**
+     * @return The reference to an image that is used for nodes of the
+     * node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+     * Changing this updates the image attribute of the existing node group.
+     * 
+     */
     public Output<String> imageId() {
         return this.imageId;
     }
@@ -154,15 +178,15 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="maxNodeCount", type=Integer.class, parameters={})
-    private Output<Integer> maxNodeCount;
+    private Output</* @Nullable */ Integer> maxNodeCount;
 
     /**
      * @return The maximum number of nodes for the node group.
      * Changing this update the maximum number of nodes of the node group.
      * 
      */
-    public Output<Integer> maxNodeCount() {
-        return this.maxNodeCount;
+    public Output<Optional<Integer>> maxNodeCount() {
+        return Codegen.optional(this.maxNodeCount);
     }
     /**
      * Indicates whether the provided labels should be

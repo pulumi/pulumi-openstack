@@ -14,28 +14,19 @@ public final class GetPortExtraDhcpOption {
      * @return IP protocol version
      * 
      */
-    private final Integer ipVersion;
+    private Integer ipVersion;
     /**
      * @return The name of the port.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Value of the DHCP option.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private GetPortExtraDhcpOption(
-        @CustomType.Parameter("ipVersion") Integer ipVersion,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("value") String value) {
-        this.ipVersion = ipVersion;
-        this.name = name;
-        this.value = value;
-    }
-
+    private GetPortExtraDhcpOption() {}
     /**
      * @return IP protocol version
      * 
@@ -65,16 +56,12 @@ public final class GetPortExtraDhcpOption {
     public static Builder builder(GetPortExtraDhcpOption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer ipVersion;
         private String name;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPortExtraDhcpOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipVersion = defaults.ipVersion;
@@ -82,19 +69,27 @@ public final class GetPortExtraDhcpOption {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder ipVersion(Integer ipVersion) {
             this.ipVersion = Objects.requireNonNull(ipVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetPortExtraDhcpOption build() {
-            return new GetPortExtraDhcpOption(ipVersion, name, value);
+        }
+        public GetPortExtraDhcpOption build() {
+            final var o = new GetPortExtraDhcpOption();
+            o.ipVersion = ipVersion;
+            o.name = name;
+            o.value = value;
+            return o;
         }
     }
 }

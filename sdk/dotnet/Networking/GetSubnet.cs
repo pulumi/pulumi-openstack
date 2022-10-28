@@ -321,6 +321,10 @@ namespace Pulumi.OpenStack.Networking
         /// See Argument Reference above.
         /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// Service types of the subnet.
+        /// </summary>
+        public readonly ImmutableArray<string> ServiceTypes;
         public readonly string SubnetId;
         public readonly string SubnetpoolId;
         public readonly ImmutableArray<string> Tags;
@@ -362,6 +366,8 @@ namespace Pulumi.OpenStack.Networking
 
             string region,
 
+            ImmutableArray<string> serviceTypes,
+
             string subnetId,
 
             string subnetpoolId,
@@ -387,6 +393,7 @@ namespace Pulumi.OpenStack.Networking
             Name = name;
             NetworkId = networkId;
             Region = region;
+            ServiceTypes = serviceTypes;
             SubnetId = subnetId;
             SubnetpoolId = subnetpoolId;
             Tags = tags;

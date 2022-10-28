@@ -21,114 +21,81 @@ public final class GetShareResult {
      * @return The share availability zone.
      * 
      */
-    private final String availabilityZone;
+    private String availabilityZone;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String exportLocationPath;
+    private @Nullable String exportLocationPath;
     /**
      * @return A list of export locations. For example, when a share
      * server has more than one network interface, it can have multiple export
      * locations.
      * 
      */
-    private final List<GetShareExportLocation> exportLocations;
+    private List<GetShareExportLocation> exportLocations;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final Boolean isPublic;
+    private Boolean isPublic;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final Map<String,Object> metadata;
+    private Map<String,Object> metadata;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String projectId;
+    private String projectId;
     /**
      * @return The region in which to obtain the V2 Shared File System client.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String shareNetworkId;
+    private String shareNetworkId;
     /**
      * @return The share protocol.
      * 
      */
-    private final String shareProto;
+    private String shareProto;
     /**
      * @return The share size, in GBs.
      * 
      */
-    private final Integer size;
+    private Integer size;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String snapshotId;
+    private String snapshotId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetShareResult(
-        @CustomType.Parameter("availabilityZone") String availabilityZone,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("exportLocationPath") @Nullable String exportLocationPath,
-        @CustomType.Parameter("exportLocations") List<GetShareExportLocation> exportLocations,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isPublic") Boolean isPublic,
-        @CustomType.Parameter("metadata") Map<String,Object> metadata,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("shareNetworkId") String shareNetworkId,
-        @CustomType.Parameter("shareProto") String shareProto,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("snapshotId") String snapshotId,
-        @CustomType.Parameter("status") String status) {
-        this.availabilityZone = availabilityZone;
-        this.description = description;
-        this.exportLocationPath = exportLocationPath;
-        this.exportLocations = exportLocations;
-        this.id = id;
-        this.isPublic = isPublic;
-        this.metadata = metadata;
-        this.name = name;
-        this.projectId = projectId;
-        this.region = region;
-        this.shareNetworkId = shareNetworkId;
-        this.shareProto = shareProto;
-        this.size = size;
-        this.snapshotId = snapshotId;
-        this.status = status;
-    }
-
+    private GetShareResult() {}
     /**
      * @return The share availability zone.
      * 
@@ -244,7 +211,7 @@ public final class GetShareResult {
     public static Builder builder(GetShareResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String availabilityZone;
         private String description;
@@ -261,11 +228,7 @@ public final class GetShareResult {
         private Integer size;
         private String snapshotId;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetShareResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availabilityZone = defaults.availabilityZone;
@@ -285,18 +248,22 @@ public final class GetShareResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
             this.availabilityZone = Objects.requireNonNull(availabilityZone);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder exportLocationPath(@Nullable String exportLocationPath) {
             this.exportLocationPath = exportLocationPath;
             return this;
         }
+        @CustomType.Setter
         public Builder exportLocations(List<GetShareExportLocation> exportLocations) {
             this.exportLocations = Objects.requireNonNull(exportLocations);
             return this;
@@ -304,51 +271,79 @@ public final class GetShareResult {
         public Builder exportLocations(GetShareExportLocation... exportLocations) {
             return exportLocations(List.of(exportLocations));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isPublic(Boolean isPublic) {
             this.isPublic = Objects.requireNonNull(isPublic);
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(Map<String,Object> metadata) {
             this.metadata = Objects.requireNonNull(metadata);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder shareNetworkId(String shareNetworkId) {
             this.shareNetworkId = Objects.requireNonNull(shareNetworkId);
             return this;
         }
+        @CustomType.Setter
         public Builder shareProto(String shareProto) {
             this.shareProto = Objects.requireNonNull(shareProto);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
             this.snapshotId = Objects.requireNonNull(snapshotId);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetShareResult build() {
-            return new GetShareResult(availabilityZone, description, exportLocationPath, exportLocations, id, isPublic, metadata, name, projectId, region, shareNetworkId, shareProto, size, snapshotId, status);
+        }
+        public GetShareResult build() {
+            final var o = new GetShareResult();
+            o.availabilityZone = availabilityZone;
+            o.description = description;
+            o.exportLocationPath = exportLocationPath;
+            o.exportLocations = exportLocations;
+            o.id = id;
+            o.isPublic = isPublic;
+            o.metadata = metadata;
+            o.name = name;
+            o.projectId = projectId;
+            o.region = region;
+            o.shareNetworkId = shareNetworkId;
+            o.shareProto = shareProto;
+            o.size = size;
+            o.snapshotId = snapshotId;
+            o.status = status;
+            return o;
         }
     }
 }

@@ -19,28 +19,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
-// 			AdminStateUp: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
-// 			Cidr:      pulumi.String("192.168.199.0/24"),
-// 			NetworkId: network1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//				Cidr:      pulumi.String("192.168.199.0/24"),
+//				NetworkId: network1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -48,7 +51,9 @@ import (
 // Subnets can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:networking/subnet:Subnet subnet_1 da4faf16-5546-41e4-8330-4d0002b74048
+//
+//	$ pulumi import openstack:networking/subnet:Subnet subnet_1 da4faf16-5546-41e4-8330-4d0002b74048
+//
 // ```
 type Subnet struct {
 	pulumi.CustomResourceState
@@ -125,6 +130,9 @@ type Subnet struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// subnet.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// An array of service types used by the subnet.
+	// Changing this updates the service types for the existing subnet.
+	ServiceTypes pulumi.StringArrayOutput `pulumi:"serviceTypes"`
 	// The ID of the subnetpool associated with the subnet.
 	SubnetpoolId pulumi.StringPtrOutput `pulumi:"subnetpoolId"`
 	// A set of string tags for the subnet.
@@ -240,6 +248,9 @@ type subnetState struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// subnet.
 	Region *string `pulumi:"region"`
+	// An array of service types used by the subnet.
+	// Changing this updates the service types for the existing subnet.
+	ServiceTypes []string `pulumi:"serviceTypes"`
 	// The ID of the subnetpool associated with the subnet.
 	SubnetpoolId *string `pulumi:"subnetpoolId"`
 	// A set of string tags for the subnet.
@@ -324,6 +335,9 @@ type SubnetState struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// subnet.
 	Region pulumi.StringPtrInput
+	// An array of service types used by the subnet.
+	// Changing this updates the service types for the existing subnet.
+	ServiceTypes pulumi.StringArrayInput
 	// The ID of the subnetpool associated with the subnet.
 	SubnetpoolId pulumi.StringPtrInput
 	// A set of string tags for the subnet.
@@ -409,6 +423,9 @@ type subnetArgs struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// subnet.
 	Region *string `pulumi:"region"`
+	// An array of service types used by the subnet.
+	// Changing this updates the service types for the existing subnet.
+	ServiceTypes []string `pulumi:"serviceTypes"`
 	// The ID of the subnetpool associated with the subnet.
 	SubnetpoolId *string `pulumi:"subnetpoolId"`
 	// A set of string tags for the subnet.
@@ -491,6 +508,9 @@ type SubnetArgs struct {
 	// `region` argument of the provider is used. Changing this creates a new
 	// subnet.
 	Region pulumi.StringPtrInput
+	// An array of service types used by the subnet.
+	// Changing this updates the service types for the existing subnet.
+	ServiceTypes pulumi.StringArrayInput
 	// The ID of the subnetpool associated with the subnet.
 	SubnetpoolId pulumi.StringPtrInput
 	// A set of string tags for the subnet.
@@ -528,7 +548,7 @@ func (i *Subnet) ToSubnetOutputWithContext(ctx context.Context) SubnetOutput {
 // SubnetArrayInput is an input type that accepts SubnetArray and SubnetArrayOutput values.
 // You can construct a concrete instance of `SubnetArrayInput` via:
 //
-//          SubnetArray{ SubnetArgs{...} }
+//	SubnetArray{ SubnetArgs{...} }
 type SubnetArrayInput interface {
 	pulumi.Input
 
@@ -553,7 +573,7 @@ func (i SubnetArray) ToSubnetArrayOutputWithContext(ctx context.Context) SubnetA
 // SubnetMapInput is an input type that accepts SubnetMap and SubnetMapOutput values.
 // You can construct a concrete instance of `SubnetMapInput` via:
 //
-//          SubnetMap{ "key": SubnetArgs{...} }
+//	SubnetMap{ "key": SubnetArgs{...} }
 type SubnetMapInput interface {
 	pulumi.Input
 
@@ -710,6 +730,12 @@ func (o SubnetOutput) PrefixLength() pulumi.IntPtrOutput {
 // subnet.
 func (o SubnetOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// An array of service types used by the subnet.
+// Changing this updates the service types for the existing subnet.
+func (o SubnetOutput) ServiceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.StringArrayOutput { return v.ServiceTypes }).(pulumi.StringArrayOutput)
 }
 
 // The ID of the subnetpool associated with the subnet.

@@ -13,42 +13,29 @@ public final class GetGroupResult {
      * @return A description of the group.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String domainId;
+    private String domainId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
 
-    @CustomType.Constructor
-    private GetGroupResult(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("domainId") String domainId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("region") String region) {
-        this.description = description;
-        this.domainId = domainId;
-        this.id = id;
-        this.name = name;
-        this.region = region;
-    }
-
+    private GetGroupResult() {}
     /**
      * @return A description of the group.
      * 
@@ -92,18 +79,14 @@ public final class GetGroupResult {
     public static Builder builder(GetGroupResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String domainId;
         private String id;
         private String name;
         private String region;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -113,27 +96,39 @@ public final class GetGroupResult {
     	      this.region = defaults.region;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder domainId(String domainId) {
             this.domainId = Objects.requireNonNull(domainId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
-        }        public GetGroupResult build() {
-            return new GetGroupResult(description, domainId, id, name, region);
+        }
+        public GetGroupResult build() {
+            final var o = new GetGroupResult();
+            o.description = description;
+            o.domainId = domainId;
+            o.id = id;
+            o.name = name;
+            o.region = region;
+            return o;
         }
     }
 }

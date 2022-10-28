@@ -4,8 +4,11 @@
 package com.pulumi.openstack.database.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ConfigurationConfiguration {
@@ -13,27 +16,32 @@ public final class ConfigurationConfiguration {
      * @return Configuration parameter name. Changing this creates a new resource.
      * 
      */
-    private final String name;
+    private String name;
+    /**
+     * @return Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
+     * 
+     */
+    private @Nullable Boolean stringType;
     /**
      * @return Configuration parameter value. Changing this creates a new resource.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private ConfigurationConfiguration(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("value") String value) {
-        this.name = name;
-        this.value = value;
-    }
-
+    private ConfigurationConfiguration() {}
     /**
      * @return Configuration parameter name. Changing this creates a new resource.
      * 
      */
     public String name() {
         return this.name;
+    }
+    /**
+     * @return Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
+     * 
+     */
+    public Optional<Boolean> stringType() {
+        return Optional.ofNullable(this.stringType);
     }
     /**
      * @return Configuration parameter value. Changing this creates a new resource.
@@ -50,30 +58,40 @@ public final class ConfigurationConfiguration {
     public static Builder builder(ConfigurationConfiguration defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
+        private @Nullable Boolean stringType;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConfigurationConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
+    	      this.stringType = defaults.stringType;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
+        public Builder stringType(@Nullable Boolean stringType) {
+            this.stringType = stringType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public ConfigurationConfiguration build() {
-            return new ConfigurationConfiguration(name, value);
+        }
+        public ConfigurationConfiguration build() {
+            final var o = new ConfigurationConfiguration();
+            o.name = name;
+            o.stringType = stringType;
+            o.value = value;
+            return o;
         }
     }
 }

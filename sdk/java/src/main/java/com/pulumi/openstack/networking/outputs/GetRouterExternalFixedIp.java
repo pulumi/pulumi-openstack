@@ -15,17 +15,10 @@ public final class GetRouterExternalFixedIp {
      * @return The IP address to set on the router.
      * 
      */
-    private final @Nullable String ipAddress;
-    private final @Nullable String subnetId;
+    private @Nullable String ipAddress;
+    private @Nullable String subnetId;
 
-    @CustomType.Constructor
-    private GetRouterExternalFixedIp(
-        @CustomType.Parameter("ipAddress") @Nullable String ipAddress,
-        @CustomType.Parameter("subnetId") @Nullable String subnetId) {
-        this.ipAddress = ipAddress;
-        this.subnetId = subnetId;
-    }
-
+    private GetRouterExternalFixedIp() {}
     /**
      * @return The IP address to set on the router.
      * 
@@ -44,30 +37,32 @@ public final class GetRouterExternalFixedIp {
     public static Builder builder(GetRouterExternalFixedIp defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ipAddress;
         private @Nullable String subnetId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRouterExternalFixedIp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipAddress = defaults.ipAddress;
     	      this.subnetId = defaults.subnetId;
         }
 
+        @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
             this.ipAddress = ipAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder subnetId(@Nullable String subnetId) {
             this.subnetId = subnetId;
             return this;
-        }        public GetRouterExternalFixedIp build() {
-            return new GetRouterExternalFixedIp(ipAddress, subnetId);
+        }
+        public GetRouterExternalFixedIp build() {
+            final var o = new GetRouterExternalFixedIp();
+            o.ipAddress = ipAddress;
+            o.subnetId = subnetId;
+            return o;
         }
     }
 }

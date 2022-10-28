@@ -17,6 +17,7 @@ class FlavorArgs:
                  disk: pulumi.Input[int],
                  ram: pulumi.Input[int],
                  vcpus: pulumi.Input[int],
+                 description: Optional[pulumi.Input[str]] = None,
                  ephemeral: Optional[pulumi.Input[int]] = None,
                  extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
@@ -33,6 +34,8 @@ class FlavorArgs:
                creates a new flavor.
         :param pulumi.Input[int] vcpus: The number of virtual CPUs to use. Changing this creates
                a new flavor.
+        :param pulumi.Input[str] description: The description of the flavor. Changing this
+               updates the description of the flavor. Requires microversion >= 2.55.
         :param pulumi.Input[int] ephemeral: The amount of ephemeral in GiB. If unspecified,
                the default is 0. Changing this creates a new flavor.
         :param pulumi.Input[Mapping[str, Any]] extra_specs: Key/Value pairs of metadata for the flavor.
@@ -54,6 +57,8 @@ class FlavorArgs:
         pulumi.set(__self__, "disk", disk)
         pulumi.set(__self__, "ram", ram)
         pulumi.set(__self__, "vcpus", vcpus)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if ephemeral is not None:
             pulumi.set(__self__, "ephemeral", ephemeral)
         if extra_specs is not None:
@@ -109,6 +114,19 @@ class FlavorArgs:
     @vcpus.setter
     def vcpus(self, value: pulumi.Input[int]):
         pulumi.set(self, "vcpus", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the flavor. Changing this
+        updates the description of the flavor. Requires microversion >= 2.55.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
@@ -219,6 +237,7 @@ class FlavorArgs:
 @pulumi.input_type
 class _FlavorState:
     def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input[int]] = None,
                  ephemeral: Optional[pulumi.Input[int]] = None,
                  extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -232,6 +251,8 @@ class _FlavorState:
                  vcpus: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Flavor resources.
+        :param pulumi.Input[str] description: The description of the flavor. Changing this
+               updates the description of the flavor. Requires microversion >= 2.55.
         :param pulumi.Input[int] disk: The amount of disk space in GiB to use for the root
                (/) partition. Changing this creates a new flavor.
         :param pulumi.Input[int] ephemeral: The amount of ephemeral in GiB. If unspecified,
@@ -256,6 +277,8 @@ class _FlavorState:
         :param pulumi.Input[int] vcpus: The number of virtual CPUs to use. Changing this creates
                a new flavor.
         """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if disk is not None:
             pulumi.set(__self__, "disk", disk)
         if ephemeral is not None:
@@ -278,6 +301,19 @@ class _FlavorState:
             pulumi.set(__self__, "swap", swap)
         if vcpus is not None:
             pulumi.set(__self__, "vcpus", vcpus)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the flavor. Changing this
+        updates the description of the flavor. Requires microversion >= 2.55.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
@@ -429,6 +465,7 @@ class Flavor(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input[int]] = None,
                  ephemeral: Optional[pulumi.Input[int]] = None,
                  extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -470,6 +507,8 @@ class Flavor(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the flavor. Changing this
+               updates the description of the flavor. Requires microversion >= 2.55.
         :param pulumi.Input[int] disk: The amount of disk space in GiB to use for the root
                (/) partition. Changing this creates a new flavor.
         :param pulumi.Input[int] ephemeral: The amount of ephemeral in GiB. If unspecified,
@@ -542,6 +581,7 @@ class Flavor(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input[int]] = None,
                  ephemeral: Optional[pulumi.Input[int]] = None,
                  extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -562,6 +602,7 @@ class Flavor(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FlavorArgs.__new__(FlavorArgs)
 
+            __props__.__dict__["description"] = description
             if disk is None and not opts.urn:
                 raise TypeError("Missing required property 'disk'")
             __props__.__dict__["disk"] = disk
@@ -589,6 +630,7 @@ class Flavor(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
             disk: Optional[pulumi.Input[int]] = None,
             ephemeral: Optional[pulumi.Input[int]] = None,
             extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -607,6 +649,8 @@ class Flavor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the flavor. Changing this
+               updates the description of the flavor. Requires microversion >= 2.55.
         :param pulumi.Input[int] disk: The amount of disk space in GiB to use for the root
                (/) partition. Changing this creates a new flavor.
         :param pulumi.Input[int] ephemeral: The amount of ephemeral in GiB. If unspecified,
@@ -635,6 +679,7 @@ class Flavor(pulumi.CustomResource):
 
         __props__ = _FlavorState.__new__(_FlavorState)
 
+        __props__.__dict__["description"] = description
         __props__.__dict__["disk"] = disk
         __props__.__dict__["ephemeral"] = ephemeral
         __props__.__dict__["extra_specs"] = extra_specs
@@ -647,6 +692,15 @@ class Flavor(pulumi.CustomResource):
         __props__.__dict__["swap"] = swap
         __props__.__dict__["vcpus"] = vcpus
         return Flavor(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The description of the flavor. Changing this
+        updates the description of the flavor. Requires microversion >= 2.55.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter

@@ -22,27 +22,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := loadbalancer.NewPool(ctx, "pool1", &loadbalancer.PoolArgs{
-// 			LbMethod:   pulumi.String("ROUND_ROBIN"),
-// 			ListenerId: pulumi.String("d9415786-5f1a-428b-b35f-2f1523e146d2"),
-// 			Persistence: &loadbalancer.PoolPersistenceArgs{
-// 				CookieName: pulumi.String("testCookie"),
-// 				Type:       pulumi.String("APP_COOKIE"),
-// 			},
-// 			Protocol: pulumi.String("HTTP"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := loadbalancer.NewPool(ctx, "pool1", &loadbalancer.PoolArgs{
+//				LbMethod:   pulumi.String("ROUND_ROBIN"),
+//				ListenerId: pulumi.String("d9415786-5f1a-428b-b35f-2f1523e146d2"),
+//				Persistence: &loadbalancer.PoolPersistenceArgs{
+//					CookieName: pulumi.String("testCookie"),
+//					Type:       pulumi.String("APP_COOKIE"),
+//				},
+//				Protocol: pulumi.String("HTTP"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -50,7 +53,9 @@ import (
 // Load Balancer Pool can be imported using the Pool ID, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:loadbalancer/pool:Pool pool_1 60ad9ee4-249a-4d60-a45b-aa60e046c513
+//
+//	$ pulumi import openstack:loadbalancer/pool:Pool pool_1 60ad9ee4-249a-4d60-a45b-aa60e046c513
+//
 // ```
 type Pool struct {
 	pulumi.CustomResourceState
@@ -319,7 +324,7 @@ func (i *Pool) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 // PoolArrayInput is an input type that accepts PoolArray and PoolArrayOutput values.
 // You can construct a concrete instance of `PoolArrayInput` via:
 //
-//          PoolArray{ PoolArgs{...} }
+//	PoolArray{ PoolArgs{...} }
 type PoolArrayInput interface {
 	pulumi.Input
 
@@ -344,7 +349,7 @@ func (i PoolArray) ToPoolArrayOutputWithContext(ctx context.Context) PoolArrayOu
 // PoolMapInput is an input type that accepts PoolMap and PoolMapOutput values.
 // You can construct a concrete instance of `PoolMapInput` via:
 //
-//          PoolMap{ "key": PoolArgs{...} }
+//	PoolMap{ "key": PoolArgs{...} }
 type PoolMapInput interface {
 	pulumi.Input
 

@@ -19,45 +19,53 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/orchestration"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/orchestration"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := orchestration.NewStackV1(ctx, "stack1", &orchestration.StackV1Args{
-// 			DisableRollback: pulumi.Bool(true),
-// 			EnvironmentOpts: pulumi.AnyMap{
-// 				"Bin": pulumi.Any(fmt.Sprintf("\n\n")),
-// 			},
-// 			Parameters: pulumi.AnyMap{
-// 				"length": pulumi.Any(4),
-// 			},
-// 			TemplateOpts: pulumi.AnyMap{
-// 				"Bin": pulumi.Any(fmt.Sprintf(`heat_template_version: 2013-05-23
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := orchestration.NewStackV1(ctx, "stack1", &orchestration.StackV1Args{
+//				DisableRollback: pulumi.Bool(true),
+//				EnvironmentOpts: pulumi.AnyMap{
+//					"Bin": pulumi.Any(fmt.Sprintf("\n\n")),
+//				},
+//				Parameters: pulumi.AnyMap{
+//					"length": pulumi.Any(4),
+//				},
+//				TemplateOpts: pulumi.AnyMap{
+//					"Bin": pulumi.Any(fmt.Sprintf(`heat_template_version: 2013-05-23
+//
 // parameters:
-//   length:
-//     type: number
+//
+//	length:
+//	  type: number
+//
 // resources:
-//   test_res:
-//     type: OS::Heat::TestResource
-//   random:
-//     type: OS::Heat::RandomString
-//     properties:
-//       length: {get_param: length}
+//
+//	test_res:
+//	  type: OS::Heat::TestResource
+//	random:
+//	  type: OS::Heat::RandomString
+//	  properties:
+//	    length: {get_param: length}
 //
 // `)),
-// 			},
-// 			Timeout: pulumi.Int(30),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//
+//				},
+//				Timeout: pulumi.Int(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -65,7 +73,9 @@ import (
 // stacks can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:orchestration/stackV1:StackV1 stack_1 ea257959-eeb1-4c10-8d33-26f0409a755d
+//
+//	$ pulumi import openstack:orchestration/stackV1:StackV1 stack_1 ea257959-eeb1-4c10-8d33-26f0409a755d
+//
 // ```
 type StackV1 struct {
 	pulumi.CustomResourceState
@@ -406,7 +416,7 @@ func (i *StackV1) ToStackV1OutputWithContext(ctx context.Context) StackV1Output 
 // StackV1ArrayInput is an input type that accepts StackV1Array and StackV1ArrayOutput values.
 // You can construct a concrete instance of `StackV1ArrayInput` via:
 //
-//          StackV1Array{ StackV1Args{...} }
+//	StackV1Array{ StackV1Args{...} }
 type StackV1ArrayInput interface {
 	pulumi.Input
 
@@ -431,7 +441,7 @@ func (i StackV1Array) ToStackV1ArrayOutputWithContext(ctx context.Context) Stack
 // StackV1MapInput is an input type that accepts StackV1Map and StackV1MapOutput values.
 // You can construct a concrete instance of `StackV1MapInput` via:
 //
-//          StackV1Map{ "key": StackV1Args{...} }
+//	StackV1Map{ "key": StackV1Args{...} }
 type StackV1MapInput interface {
 	pulumi.Input
 

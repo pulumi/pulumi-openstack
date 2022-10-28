@@ -60,16 +60,40 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dockerVolumeSize);
     }
 
+    /**
+     * The flavor for the nodes of the node group. Can be set
+     * via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+     * node group.
+     * 
+     */
     @Import(name="flavorId")
     private @Nullable Output<String> flavorId;
 
+    /**
+     * @return The flavor for the nodes of the node group. Can be set
+     * via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+     * node group.
+     * 
+     */
     public Optional<Output<String>> flavorId() {
         return Optional.ofNullable(this.flavorId);
     }
 
+    /**
+     * The reference to an image that is used for nodes of the
+     * node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+     * Changing this updates the image attribute of the existing node group.
+     * 
+     */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
+    /**
+     * @return The reference to an image that is used for nodes of the
+     * node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+     * Changing this updates the image attribute of the existing node group.
+     * 
+     */
     public Optional<Output<String>> imageId() {
         return Optional.ofNullable(this.imageId);
     }
@@ -333,20 +357,52 @@ public final class NodeGroupState extends com.pulumi.resources.ResourceArgs {
             return dockerVolumeSize(Output.of(dockerVolumeSize));
         }
 
+        /**
+         * @param flavorId The flavor for the nodes of the node group. Can be set
+         * via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+         * node group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder flavorId(@Nullable Output<String> flavorId) {
             $.flavorId = flavorId;
             return this;
         }
 
+        /**
+         * @param flavorId The flavor for the nodes of the node group. Can be set
+         * via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+         * node group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder flavorId(String flavorId) {
             return flavorId(Output.of(flavorId));
         }
 
+        /**
+         * @param imageId The reference to an image that is used for nodes of the
+         * node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+         * Changing this updates the image attribute of the existing node group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageId(@Nullable Output<String> imageId) {
             $.imageId = imageId;
             return this;
         }
 
+        /**
+         * @param imageId The reference to an image that is used for nodes of the
+         * node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+         * Changing this updates the image attribute of the existing node group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageId(String imageId) {
             return imageId(Output.of(imageId));
         }

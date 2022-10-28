@@ -16,48 +16,29 @@ public final class GetSecGroupResult {
      * @return The set of string tags applied on the security group.
      * 
      */
-    private final List<String> allTags;
-    private final @Nullable String description;
+    private List<String> allTags;
+    private @Nullable String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * * `description`- See Argument Reference above.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
-    private final @Nullable String secgroupId;
-    private final @Nullable List<String> tags;
-    private final String tenantId;
+    private String region;
+    private @Nullable String secgroupId;
+    private @Nullable List<String> tags;
+    private String tenantId;
 
-    @CustomType.Constructor
-    private GetSecGroupResult(
-        @CustomType.Parameter("allTags") List<String> allTags,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("secgroupId") @Nullable String secgroupId,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("tenantId") String tenantId) {
-        this.allTags = allTags;
-        this.description = description;
-        this.id = id;
-        this.name = name;
-        this.region = region;
-        this.secgroupId = secgroupId;
-        this.tags = tags;
-        this.tenantId = tenantId;
-    }
-
+    private GetSecGroupResult() {}
     /**
      * @return The set of string tags applied on the security group.
      * 
@@ -107,7 +88,7 @@ public final class GetSecGroupResult {
     public static Builder builder(GetSecGroupResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> allTags;
         private @Nullable String description;
@@ -117,11 +98,7 @@ public final class GetSecGroupResult {
         private @Nullable String secgroupId;
         private @Nullable List<String> tags;
         private String tenantId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSecGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allTags = defaults.allTags;
@@ -134,6 +111,7 @@ public final class GetSecGroupResult {
     	      this.tenantId = defaults.tenantId;
         }
 
+        @CustomType.Setter
         public Builder allTags(List<String> allTags) {
             this.allTags = Objects.requireNonNull(allTags);
             return this;
@@ -141,26 +119,32 @@ public final class GetSecGroupResult {
         public Builder allTags(String... allTags) {
             return allTags(List.of(allTags));
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder secgroupId(@Nullable String secgroupId) {
             this.secgroupId = secgroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -168,11 +152,22 @@ public final class GetSecGroupResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder tenantId(String tenantId) {
             this.tenantId = Objects.requireNonNull(tenantId);
             return this;
-        }        public GetSecGroupResult build() {
-            return new GetSecGroupResult(allTags, description, id, name, region, secgroupId, tags, tenantId);
+        }
+        public GetSecGroupResult build() {
+            final var o = new GetSecGroupResult();
+            o.allTags = allTags;
+            o.description = description;
+            o.id = id;
+            o.name = name;
+            o.region = region;
+            o.secgroupId = secgroupId;
+            o.tags = tags;
+            o.tenantId = tenantId;
+            return o;
         }
     }
 }

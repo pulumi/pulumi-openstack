@@ -18,19 +18,22 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/vpnaas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/vpnaas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vpnaas.NewIpSecPolicy(ctx, "policy1", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vpnaas.NewIpSecPolicy(ctx, "policy1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -38,7 +41,9 @@ import (
 // Policies can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:vpnaas/ipSecPolicy:IpSecPolicy policy_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+//
+//	$ pulumi import openstack:vpnaas/ipSecPolicy:IpSecPolicy policy_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+//
 // ```
 type IpSecPolicy struct {
 	pulumi.CustomResourceState
@@ -281,7 +286,7 @@ func (i *IpSecPolicy) ToIpSecPolicyOutputWithContext(ctx context.Context) IpSecP
 // IpSecPolicyArrayInput is an input type that accepts IpSecPolicyArray and IpSecPolicyArrayOutput values.
 // You can construct a concrete instance of `IpSecPolicyArrayInput` via:
 //
-//          IpSecPolicyArray{ IpSecPolicyArgs{...} }
+//	IpSecPolicyArray{ IpSecPolicyArgs{...} }
 type IpSecPolicyArrayInput interface {
 	pulumi.Input
 
@@ -306,7 +311,7 @@ func (i IpSecPolicyArray) ToIpSecPolicyArrayOutputWithContext(ctx context.Contex
 // IpSecPolicyMapInput is an input type that accepts IpSecPolicyMap and IpSecPolicyMapOutput values.
 // You can construct a concrete instance of `IpSecPolicyMapInput` via:
 //
-//          IpSecPolicyMap{ "key": IpSecPolicyArgs{...} }
+//	IpSecPolicyMap{ "key": IpSecPolicyArgs{...} }
 type IpSecPolicyMapInput interface {
 	pulumi.Input
 

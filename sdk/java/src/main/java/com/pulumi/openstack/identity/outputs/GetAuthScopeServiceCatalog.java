@@ -15,36 +15,25 @@ public final class GetAuthScopeServiceCatalog {
      * @return A list of endpoints for the service.
      * 
      */
-    private final List<GetAuthScopeServiceCatalogEndpoint> endpoints;
+    private List<GetAuthScopeServiceCatalogEndpoint> endpoints;
     /**
      * @return The ID of the endpoint.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of the scope. This is an arbitrary name which is
      * only used as a unique identifier so an actual token isn&#39;t used as the ID.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The type of the service.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetAuthScopeServiceCatalog(
-        @CustomType.Parameter("endpoints") List<GetAuthScopeServiceCatalogEndpoint> endpoints,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("type") String type) {
-        this.endpoints = endpoints;
-        this.id = id;
-        this.name = name;
-        this.type = type;
-    }
-
+    private GetAuthScopeServiceCatalog() {}
     /**
      * @return A list of endpoints for the service.
      * 
@@ -82,17 +71,13 @@ public final class GetAuthScopeServiceCatalog {
     public static Builder builder(GetAuthScopeServiceCatalog defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetAuthScopeServiceCatalogEndpoint> endpoints;
         private String id;
         private String name;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthScopeServiceCatalog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.endpoints = defaults.endpoints;
@@ -101,6 +86,7 @@ public final class GetAuthScopeServiceCatalog {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder endpoints(List<GetAuthScopeServiceCatalogEndpoint> endpoints) {
             this.endpoints = Objects.requireNonNull(endpoints);
             return this;
@@ -108,19 +94,28 @@ public final class GetAuthScopeServiceCatalog {
         public Builder endpoints(GetAuthScopeServiceCatalogEndpoint... endpoints) {
             return endpoints(List.of(endpoints));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetAuthScopeServiceCatalog build() {
-            return new GetAuthScopeServiceCatalog(endpoints, id, name, type);
+        }
+        public GetAuthScopeServiceCatalog build() {
+            final var o = new GetAuthScopeServiceCatalog();
+            o.endpoints = endpoints;
+            o.id = id;
+            o.name = name;
+            o.type = type;
+            return o;
         }
     }
 }

@@ -22,30 +22,33 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/images"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/images"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		rancheros, err := images.LookupImage(ctx, &images.LookupImageArgs{
-// 			MemberStatus: pulumi.StringRef("all"),
-// 			Name:         pulumi.StringRef("RancherOS"),
-// 			Visibility:   pulumi.StringRef("shared"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = images.NewImageAccessAccept(ctx, "rancherosMember", &images.ImageAccessAcceptArgs{
-// 			ImageId: pulumi.String(rancheros.Id),
-// 			Status:  pulumi.String("accepted"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			rancheros, err := images.LookupImage(ctx, &images.LookupImageArgs{
+//				MemberStatus: pulumi.StringRef("all"),
+//				Name:         pulumi.StringRef("RancherOS"),
+//				Visibility:   pulumi.StringRef("shared"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = images.NewImageAccessAccept(ctx, "rancherosMember", &images.ImageAccessAcceptArgs{
+//				ImageId: pulumi.String(rancheros.Id),
+//				Status:  pulumi.String("accepted"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -53,7 +56,9 @@ import (
 // Image access acceptance status can be imported using the `image_id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:images/imageAccessAccept:ImageAccessAccept openstack_images_image_access_accept_v2 89c60255-9bd6-460c-822a-e2b959ede9d2
+//
+//	$ pulumi import openstack:images/imageAccessAccept:ImageAccessAccept openstack_images_image_access_accept_v2 89c60255-9bd6-460c-822a-e2b959ede9d2
+//
 // ```
 type ImageAccessAccept struct {
 	pulumi.CustomResourceState
@@ -220,7 +225,7 @@ func (i *ImageAccessAccept) ToImageAccessAcceptOutputWithContext(ctx context.Con
 // ImageAccessAcceptArrayInput is an input type that accepts ImageAccessAcceptArray and ImageAccessAcceptArrayOutput values.
 // You can construct a concrete instance of `ImageAccessAcceptArrayInput` via:
 //
-//          ImageAccessAcceptArray{ ImageAccessAcceptArgs{...} }
+//	ImageAccessAcceptArray{ ImageAccessAcceptArgs{...} }
 type ImageAccessAcceptArrayInput interface {
 	pulumi.Input
 
@@ -245,7 +250,7 @@ func (i ImageAccessAcceptArray) ToImageAccessAcceptArrayOutputWithContext(ctx co
 // ImageAccessAcceptMapInput is an input type that accepts ImageAccessAcceptMap and ImageAccessAcceptMapOutput values.
 // You can construct a concrete instance of `ImageAccessAcceptMapInput` via:
 //
-//          ImageAccessAcceptMap{ "key": ImageAccessAcceptArgs{...} }
+//	ImageAccessAcceptMap{ "key": ImageAccessAcceptArgs{...} }
 type ImageAccessAcceptMapInput interface {
 	pulumi.Input
 

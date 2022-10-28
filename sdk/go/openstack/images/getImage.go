@@ -18,25 +18,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/images"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/images"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := images.LookupImage(ctx, &images.LookupImageArgs{
-// 			MostRecent: pulumi.BoolRef(true),
-// 			Name:       pulumi.StringRef("Ubuntu 16.04"),
-// 			Properties: map[string]interface{}{
-// 				"key": "value",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := images.LookupImage(ctx, &images.LookupImageArgs{
+//				MostRecent: pulumi.BoolRef(true),
+//				Name:       pulumi.StringRef("Ubuntu 16.04"),
+//				Properties: map[string]interface{}{
+//					"key": "value",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.InvokeOption) (*LookupImageResult, error) {
 	var rv LookupImageResult

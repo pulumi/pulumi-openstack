@@ -19,29 +19,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/objectstorage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/objectstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
-// 			ContentType: pulumi.String("application/json"),
-// 			Metadata: pulumi.AnyMap{
-// 				"test": pulumi.Any("true"),
-// 			},
-// 			Region: pulumi.String("RegionOne"),
-// 			Versioning: &objectstorage.ContainerVersioningArgs{
-// 				Location: pulumi.String("tf-test-container-versions"),
-// 				Type:     pulumi.String("versions"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
+//				ContentType: pulumi.String("application/json"),
+//				Metadata: pulumi.AnyMap{
+//					"test": pulumi.Any("true"),
+//				},
+//				Region: pulumi.String("RegionOne"),
+//				Versioning: &objectstorage.ContainerVersioningArgs{
+//					Location: pulumi.String("tf-test-container-versions"),
+//					Type:     pulumi.String("versions"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Global Read Access
 //
@@ -49,22 +52,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/objectstorage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/objectstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
-// 			ContainerRead: pulumi.String(".r:*"),
-// 			Region:        pulumi.String("RegionOne"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
+//				ContainerRead: pulumi.String(".r:*"),
+//				Region:        pulumi.String("RegionOne"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Global Read and List Access
 //
@@ -72,22 +78,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/objectstorage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/objectstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
-// 			ContainerRead: pulumi.String(".r:*,.rlistings"),
-// 			Region:        pulumi.String("RegionOne"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
+//				ContainerRead: pulumi.String(".r:*,.rlistings"),
+//				Region:        pulumi.String("RegionOne"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Write-Only Access for a User
 //
@@ -95,32 +104,35 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/objectstorage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/objectstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		current, err := identity.GetAuthScope(ctx, &identity.GetAuthScopeArgs{
-// 			Name: "current",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
-// 			ContainerRead:  pulumi.String(fmt.Sprintf(".r:-%v", _var.Username)),
-// 			ContainerWrite: pulumi.String(fmt.Sprintf("%v:%v", current.ProjectId, _var.Username)),
-// 			Region:         pulumi.String("RegionOne"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := identity.GetAuthScope(ctx, &identity.GetAuthScopeArgs{
+//				Name: "current",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
+//				ContainerRead:  pulumi.String(fmt.Sprintf(".r:-%v", _var.Username)),
+//				ContainerWrite: pulumi.String(fmt.Sprintf("%v:%v", current.ProjectId, _var.Username)),
+//				Region:         pulumi.String("RegionOne"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -128,7 +140,9 @@ import (
 // This resource can be imported by specifying the name of the containerSome attributes can't be imported * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key` So you'll have to `terraform plan` and `terraform apply` after the import to fix those missing attributes.
 //
 // ```sh
-//  $ pulumi import openstack:objectstorage/container:Container container_1 <name>
+//
+//	$ pulumi import openstack:objectstorage/container:Container container_1 <name>
+//
 // ```
 type Container struct {
 	pulumi.CustomResourceState
@@ -376,7 +390,7 @@ func (i *Container) ToContainerOutputWithContext(ctx context.Context) ContainerO
 // ContainerArrayInput is an input type that accepts ContainerArray and ContainerArrayOutput values.
 // You can construct a concrete instance of `ContainerArrayInput` via:
 //
-//          ContainerArray{ ContainerArgs{...} }
+//	ContainerArray{ ContainerArgs{...} }
 type ContainerArrayInput interface {
 	pulumi.Input
 
@@ -401,7 +415,7 @@ func (i ContainerArray) ToContainerArrayOutputWithContext(ctx context.Context) C
 // ContainerMapInput is an input type that accepts ContainerMap and ContainerMapOutput values.
 // You can construct a concrete instance of `ContainerMapInput` via:
 //
-//          ContainerMap{ "key": ContainerArgs{...} }
+//	ContainerMap{ "key": ContainerArgs{...} }
 type ContainerMapInput interface {
 	pulumi.Input
 

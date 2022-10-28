@@ -388,6 +388,22 @@ public class Subnet extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
+     * An array of service types used by the subnet.
+     * Changing this updates the service types for the existing subnet.
+     * 
+     */
+    @Export(name="serviceTypes", type=List.class, parameters={String.class})
+    private Output<List<String>> serviceTypes;
+
+    /**
+     * @return An array of service types used by the subnet.
+     * Changing this updates the service types for the existing subnet.
+     * 
+     */
+    public Output<List<String>> serviceTypes() {
+        return this.serviceTypes;
+    }
+    /**
      * The ID of the subnetpool associated with the subnet.
      * 
      */

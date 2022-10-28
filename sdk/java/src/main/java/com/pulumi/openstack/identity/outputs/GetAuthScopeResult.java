@@ -16,112 +16,79 @@ public final class GetAuthScopeResult {
      * @return The domain ID of the scope.
      * 
      */
-    private final String domainId;
+    private String domainId;
     /**
      * @return The domain name of the scope.
      * 
      */
-    private final String domainName;
+    private String domainName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of the service.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The domain ID of the project.
      * 
      */
-    private final String projectDomainId;
+    private String projectDomainId;
     /**
      * @return The domain name of the project.
      * 
      */
-    private final String projectDomainName;
+    private String projectDomainName;
     /**
      * @return The project ID of the scope.
      * 
      */
-    private final String projectId;
+    private String projectId;
     /**
      * @return The project name of the scope.
      * 
      */
-    private final String projectName;
+    private String projectName;
     /**
      * @return The region of the endpoint.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return A list of roles in the current scope. See reference below.
      * 
      */
-    private final List<GetAuthScopeRole> roles;
+    private List<GetAuthScopeRole> roles;
     /**
      * @return A list of service catalog entries returned with the token.
      * 
      */
-    private final List<GetAuthScopeServiceCatalog> serviceCatalogs;
+    private List<GetAuthScopeServiceCatalog> serviceCatalogs;
     /**
      * @return The domain ID of the user.
      * 
      */
-    private final String userDomainId;
+    private String userDomainId;
     /**
      * @return The domain name of the user.
      * 
      */
-    private final String userDomainName;
+    private String userDomainName;
     /**
      * @return The user ID the of the scope.
      * 
      */
-    private final String userId;
+    private String userId;
     /**
      * @return The username of the scope.
      * 
      */
-    private final String userName;
+    private String userName;
 
-    @CustomType.Constructor
-    private GetAuthScopeResult(
-        @CustomType.Parameter("domainId") String domainId,
-        @CustomType.Parameter("domainName") String domainName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("projectDomainId") String projectDomainId,
-        @CustomType.Parameter("projectDomainName") String projectDomainName,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("projectName") String projectName,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("roles") List<GetAuthScopeRole> roles,
-        @CustomType.Parameter("serviceCatalogs") List<GetAuthScopeServiceCatalog> serviceCatalogs,
-        @CustomType.Parameter("userDomainId") String userDomainId,
-        @CustomType.Parameter("userDomainName") String userDomainName,
-        @CustomType.Parameter("userId") String userId,
-        @CustomType.Parameter("userName") String userName) {
-        this.domainId = domainId;
-        this.domainName = domainName;
-        this.id = id;
-        this.name = name;
-        this.projectDomainId = projectDomainId;
-        this.projectDomainName = projectDomainName;
-        this.projectId = projectId;
-        this.projectName = projectName;
-        this.region = region;
-        this.roles = roles;
-        this.serviceCatalogs = serviceCatalogs;
-        this.userDomainId = userDomainId;
-        this.userDomainName = userDomainName;
-        this.userId = userId;
-        this.userName = userName;
-    }
-
+    private GetAuthScopeResult() {}
     /**
      * @return The domain ID of the scope.
      * 
@@ -235,7 +202,7 @@ public final class GetAuthScopeResult {
     public static Builder builder(GetAuthScopeResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String domainId;
         private String domainName;
@@ -252,11 +219,7 @@ public final class GetAuthScopeResult {
         private String userDomainName;
         private String userId;
         private String userName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAuthScopeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.domainId = defaults.domainId;
@@ -276,42 +239,52 @@ public final class GetAuthScopeResult {
     	      this.userName = defaults.userName;
         }
 
+        @CustomType.Setter
         public Builder domainId(String domainId) {
             this.domainId = Objects.requireNonNull(domainId);
             return this;
         }
+        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder projectDomainId(String projectDomainId) {
             this.projectDomainId = Objects.requireNonNull(projectDomainId);
             return this;
         }
+        @CustomType.Setter
         public Builder projectDomainName(String projectDomainName) {
             this.projectDomainName = Objects.requireNonNull(projectDomainName);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder projectName(String projectName) {
             this.projectName = Objects.requireNonNull(projectName);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder roles(List<GetAuthScopeRole> roles) {
             this.roles = Objects.requireNonNull(roles);
             return this;
@@ -319,6 +292,7 @@ public final class GetAuthScopeResult {
         public Builder roles(GetAuthScopeRole... roles) {
             return roles(List.of(roles));
         }
+        @CustomType.Setter
         public Builder serviceCatalogs(List<GetAuthScopeServiceCatalog> serviceCatalogs) {
             this.serviceCatalogs = Objects.requireNonNull(serviceCatalogs);
             return this;
@@ -326,23 +300,44 @@ public final class GetAuthScopeResult {
         public Builder serviceCatalogs(GetAuthScopeServiceCatalog... serviceCatalogs) {
             return serviceCatalogs(List.of(serviceCatalogs));
         }
+        @CustomType.Setter
         public Builder userDomainId(String userDomainId) {
             this.userDomainId = Objects.requireNonNull(userDomainId);
             return this;
         }
+        @CustomType.Setter
         public Builder userDomainName(String userDomainName) {
             this.userDomainName = Objects.requireNonNull(userDomainName);
             return this;
         }
+        @CustomType.Setter
         public Builder userId(String userId) {
             this.userId = Objects.requireNonNull(userId);
             return this;
         }
+        @CustomType.Setter
         public Builder userName(String userName) {
             this.userName = Objects.requireNonNull(userName);
             return this;
-        }        public GetAuthScopeResult build() {
-            return new GetAuthScopeResult(domainId, domainName, id, name, projectDomainId, projectDomainName, projectId, projectName, region, roles, serviceCatalogs, userDomainId, userDomainName, userId, userName);
+        }
+        public GetAuthScopeResult build() {
+            final var o = new GetAuthScopeResult();
+            o.domainId = domainId;
+            o.domainName = domainName;
+            o.id = id;
+            o.name = name;
+            o.projectDomainId = projectDomainId;
+            o.projectDomainName = projectDomainName;
+            o.projectId = projectId;
+            o.projectName = projectName;
+            o.region = region;
+            o.roles = roles;
+            o.serviceCatalogs = serviceCatalogs;
+            o.userDomainId = userDomainId;
+            o.userDomainName = userDomainName;
+            o.userId = userId;
+            o.userName = userName;
+            return o;
         }
     }
 }

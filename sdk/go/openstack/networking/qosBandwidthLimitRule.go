@@ -20,30 +20,33 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		qosPolicy1, err := networking.NewQosPolicy(ctx, "qosPolicy1", &networking.QosPolicyArgs{
-// 			Description: pulumi.String("bw_limit"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = networking.NewQosBandwidthLimitRule(ctx, "bwLimitRule1", &networking.QosBandwidthLimitRuleArgs{
-// 			Direction:    pulumi.String("egress"),
-// 			MaxBurstKbps: pulumi.Int(300),
-// 			MaxKbps:      pulumi.Int(3000),
-// 			QosPolicyId:  qosPolicy1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			qosPolicy1, err := networking.NewQosPolicy(ctx, "qosPolicy1", &networking.QosPolicyArgs{
+//				Description: pulumi.String("bw_limit"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewQosBandwidthLimitRule(ctx, "bwLimitRule1", &networking.QosBandwidthLimitRuleArgs{
+//				Direction:    pulumi.String("egress"),
+//				MaxBurstKbps: pulumi.Int(300),
+//				MaxKbps:      pulumi.Int(3000),
+//				QosPolicyId:  qosPolicy1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -51,7 +54,9 @@ import (
 // QoS bandwidth limit rules can be imported using the `qos_policy_id/bandwidth_limit_rule` format, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule bw_limit_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
+//
+//	$ pulumi import openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule bw_limit_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
+//
 // ```
 type QosBandwidthLimitRule struct {
 	pulumi.CustomResourceState
@@ -210,7 +215,7 @@ func (i *QosBandwidthLimitRule) ToQosBandwidthLimitRuleOutputWithContext(ctx con
 // QosBandwidthLimitRuleArrayInput is an input type that accepts QosBandwidthLimitRuleArray and QosBandwidthLimitRuleArrayOutput values.
 // You can construct a concrete instance of `QosBandwidthLimitRuleArrayInput` via:
 //
-//          QosBandwidthLimitRuleArray{ QosBandwidthLimitRuleArgs{...} }
+//	QosBandwidthLimitRuleArray{ QosBandwidthLimitRuleArgs{...} }
 type QosBandwidthLimitRuleArrayInput interface {
 	pulumi.Input
 
@@ -235,7 +240,7 @@ func (i QosBandwidthLimitRuleArray) ToQosBandwidthLimitRuleArrayOutputWithContex
 // QosBandwidthLimitRuleMapInput is an input type that accepts QosBandwidthLimitRuleMap and QosBandwidthLimitRuleMapOutput values.
 // You can construct a concrete instance of `QosBandwidthLimitRuleMapInput` via:
 //
-//          QosBandwidthLimitRuleMap{ "key": QosBandwidthLimitRuleArgs{...} }
+//	QosBandwidthLimitRuleMap{ "key": QosBandwidthLimitRuleArgs{...} }
 type QosBandwidthLimitRuleMapInput interface {
 	pulumi.Input
 

@@ -12,22 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class IkePolicyLifetime {
-    private final @Nullable String units;
+    private @Nullable String units;
     /**
      * @return The value for the lifetime of the security association. Must be a positive integer.
      * Default is 3600.
      * 
      */
-    private final @Nullable Integer value;
+    private @Nullable Integer value;
 
-    @CustomType.Constructor
-    private IkePolicyLifetime(
-        @CustomType.Parameter("units") @Nullable String units,
-        @CustomType.Parameter("value") @Nullable Integer value) {
-        this.units = units;
-        this.value = value;
-    }
-
+    private IkePolicyLifetime() {}
     public Optional<String> units() {
         return Optional.ofNullable(this.units);
     }
@@ -47,30 +40,32 @@ public final class IkePolicyLifetime {
     public static Builder builder(IkePolicyLifetime defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String units;
         private @Nullable Integer value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(IkePolicyLifetime defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.units = defaults.units;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder units(@Nullable String units) {
             this.units = units;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable Integer value) {
             this.value = value;
             return this;
-        }        public IkePolicyLifetime build() {
-            return new IkePolicyLifetime(units, value);
+        }
+        public IkePolicyLifetime build() {
+            final var o = new IkePolicyLifetime();
+            o.units = units;
+            o.value = value;
+            return o;
         }
     }
 }

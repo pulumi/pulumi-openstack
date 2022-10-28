@@ -25,21 +25,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewFloatingIp(ctx, "floatip1", &compute.FloatingIpArgs{
-// 			Pool: pulumi.String("public"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewFloatingIp(ctx, "floatip1", &compute.FloatingIpArgs{
+//				Pool: pulumi.String("public"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -47,7 +50,9 @@ import (
 // Floating IPs can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:compute/floatingIp:FloatingIp floatip_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+//
+//	$ pulumi import openstack:compute/floatingIp:FloatingIp floatip_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+//
 // ```
 type FloatingIp struct {
 	pulumi.CustomResourceState
@@ -191,7 +196,7 @@ func (i *FloatingIp) ToFloatingIpOutputWithContext(ctx context.Context) Floating
 // FloatingIpArrayInput is an input type that accepts FloatingIpArray and FloatingIpArrayOutput values.
 // You can construct a concrete instance of `FloatingIpArrayInput` via:
 //
-//          FloatingIpArray{ FloatingIpArgs{...} }
+//	FloatingIpArray{ FloatingIpArgs{...} }
 type FloatingIpArrayInput interface {
 	pulumi.Input
 
@@ -216,7 +221,7 @@ func (i FloatingIpArray) ToFloatingIpArrayOutputWithContext(ctx context.Context)
 // FloatingIpMapInput is an input type that accepts FloatingIpMap and FloatingIpMapOutput values.
 // You can construct a concrete instance of `FloatingIpMapInput` via:
 //
-//          FloatingIpMap{ "key": FloatingIpArgs{...} }
+//	FloatingIpMap{ "key": FloatingIpArgs{...} }
 type FloatingIpMapInput interface {
 	pulumi.Input
 

@@ -14,35 +14,24 @@ public final class GetQosDscpMarkingRuleResult {
      * @return See Argument Reference above.
      * 
      */
-    private final Integer dscpMark;
+    private Integer dscpMark;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String qosPolicyId;
+    private String qosPolicyId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
 
-    @CustomType.Constructor
-    private GetQosDscpMarkingRuleResult(
-        @CustomType.Parameter("dscpMark") Integer dscpMark,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("qosPolicyId") String qosPolicyId,
-        @CustomType.Parameter("region") String region) {
-        this.dscpMark = dscpMark;
-        this.id = id;
-        this.qosPolicyId = qosPolicyId;
-        this.region = region;
-    }
-
+    private GetQosDscpMarkingRuleResult() {}
     /**
      * @return See Argument Reference above.
      * 
@@ -79,17 +68,13 @@ public final class GetQosDscpMarkingRuleResult {
     public static Builder builder(GetQosDscpMarkingRuleResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer dscpMark;
         private String id;
         private String qosPolicyId;
         private String region;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetQosDscpMarkingRuleResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dscpMark = defaults.dscpMark;
@@ -98,23 +83,33 @@ public final class GetQosDscpMarkingRuleResult {
     	      this.region = defaults.region;
         }
 
+        @CustomType.Setter
         public Builder dscpMark(Integer dscpMark) {
             this.dscpMark = Objects.requireNonNull(dscpMark);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder qosPolicyId(String qosPolicyId) {
             this.qosPolicyId = Objects.requireNonNull(qosPolicyId);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
-        }        public GetQosDscpMarkingRuleResult build() {
-            return new GetQosDscpMarkingRuleResult(dscpMark, id, qosPolicyId, region);
+        }
+        public GetQosDscpMarkingRuleResult build() {
+            final var o = new GetQosDscpMarkingRuleResult();
+            o.dscpMark = dscpMark;
+            o.id = id;
+            o.qosPolicyId = qosPolicyId;
+            o.region = region;
+            return o;
         }
     }
 }

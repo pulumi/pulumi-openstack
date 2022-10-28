@@ -16,84 +16,59 @@ public final class GetUserResult {
      * @return See Argument Reference above.
      * 
      */
-    private final String defaultProjectId;
+    private String defaultProjectId;
     /**
      * @return A description of the user.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String domainId;
+    private String domainId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String idpId;
+    private @Nullable String idpId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String passwordExpiresAt;
+    private @Nullable String passwordExpiresAt;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String protocolId;
+    private @Nullable String protocolId;
     /**
      * @return The region the user is located in.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String uniqueId;
+    private @Nullable String uniqueId;
 
-    @CustomType.Constructor
-    private GetUserResult(
-        @CustomType.Parameter("defaultProjectId") String defaultProjectId,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("domainId") String domainId,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("idpId") @Nullable String idpId,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("passwordExpiresAt") @Nullable String passwordExpiresAt,
-        @CustomType.Parameter("protocolId") @Nullable String protocolId,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("uniqueId") @Nullable String uniqueId) {
-        this.defaultProjectId = defaultProjectId;
-        this.description = description;
-        this.domainId = domainId;
-        this.enabled = enabled;
-        this.id = id;
-        this.idpId = idpId;
-        this.name = name;
-        this.passwordExpiresAt = passwordExpiresAt;
-        this.protocolId = protocolId;
-        this.region = region;
-        this.uniqueId = uniqueId;
-    }
-
+    private GetUserResult() {}
     /**
      * @return See Argument Reference above.
      * 
@@ -179,7 +154,7 @@ public final class GetUserResult {
     public static Builder builder(GetUserResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String defaultProjectId;
         private String description;
@@ -192,11 +167,7 @@ public final class GetUserResult {
         private @Nullable String protocolId;
         private String region;
         private @Nullable String uniqueId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUserResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultProjectId = defaults.defaultProjectId;
@@ -212,51 +183,75 @@ public final class GetUserResult {
     	      this.uniqueId = defaults.uniqueId;
         }
 
+        @CustomType.Setter
         public Builder defaultProjectId(String defaultProjectId) {
             this.defaultProjectId = Objects.requireNonNull(defaultProjectId);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder domainId(String domainId) {
             this.domainId = Objects.requireNonNull(domainId);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder idpId(@Nullable String idpId) {
             this.idpId = idpId;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder passwordExpiresAt(@Nullable String passwordExpiresAt) {
             this.passwordExpiresAt = passwordExpiresAt;
             return this;
         }
+        @CustomType.Setter
         public Builder protocolId(@Nullable String protocolId) {
             this.protocolId = protocolId;
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder uniqueId(@Nullable String uniqueId) {
             this.uniqueId = uniqueId;
             return this;
-        }        public GetUserResult build() {
-            return new GetUserResult(defaultProjectId, description, domainId, enabled, id, idpId, name, passwordExpiresAt, protocolId, region, uniqueId);
+        }
+        public GetUserResult build() {
+            final var o = new GetUserResult();
+            o.defaultProjectId = defaultProjectId;
+            o.description = description;
+            o.domainId = domainId;
+            o.enabled = enabled;
+            o.id = id;
+            o.idpId = idpId;
+            o.name = name;
+            o.passwordExpiresAt = passwordExpiresAt;
+            o.protocolId = protocolId;
+            o.region = region;
+            o.uniqueId = uniqueId;
+            return o;
         }
     }
 }

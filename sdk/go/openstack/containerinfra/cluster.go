@@ -18,24 +18,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/containerinfra"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/containerinfra"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := containerinfra.NewCluster(ctx, "cluster1", &containerinfra.ClusterArgs{
-// 			ClusterTemplateId: pulumi.String("b9a45c5c-cd03-4958-82aa-b80bf93cb922"),
-// 			Keypair:           pulumi.String("ssh_keypair"),
-// 			MasterCount:       pulumi.Int(3),
-// 			NodeCount:         pulumi.Int(5),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := containerinfra.NewCluster(ctx, "cluster1", &containerinfra.ClusterArgs{
+//				ClusterTemplateId: pulumi.String("b9a45c5c-cd03-4958-82aa-b80bf93cb922"),
+//				Keypair:           pulumi.String("ssh_keypair"),
+//				MasterCount:       pulumi.Int(3),
+//				NodeCount:         pulumi.Int(5),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes reference
 //
@@ -67,18 +70,20 @@ import (
 // * `nodeAddresses` - IP addresses of the node of the cluster.
 // * `stackId` - UUID of the Orchestration service stack.
 // * `kubeconfig` - The Kubernetes cluster's credentials
-//   * `rawConfig` - The raw kubeconfig file
-//   * `host` - The cluster's API server URL
-//   * `clusterCaCertificate` - The cluster's CA certificate
-//   * `clientKey` - The client's RSA key
-//   * `clientCertificate` - The client's certificate
+//   - `rawConfig` - The raw kubeconfig file
+//   - `host` - The cluster's API server URL
+//   - `clusterCaCertificate` - The cluster's CA certificate
+//   - `clientKey` - The client's RSA key
+//   - `clientCertificate` - The client's certificate
 //
 // ## Import
 //
 // Clusters can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
+//
+//	$ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
+//
 // ```
 type Cluster struct {
 	pulumi.CustomResourceState
@@ -470,7 +475,7 @@ func (i *Cluster) ToClusterOutputWithContext(ctx context.Context) ClusterOutput 
 // ClusterArrayInput is an input type that accepts ClusterArray and ClusterArrayOutput values.
 // You can construct a concrete instance of `ClusterArrayInput` via:
 //
-//          ClusterArray{ ClusterArgs{...} }
+//	ClusterArray{ ClusterArgs{...} }
 type ClusterArrayInput interface {
 	pulumi.Input
 
@@ -495,7 +500,7 @@ func (i ClusterArray) ToClusterArrayOutputWithContext(ctx context.Context) Clust
 // ClusterMapInput is an input type that accepts ClusterMap and ClusterMapOutput values.
 // You can construct a concrete instance of `ClusterMapInput` via:
 //
-//          ClusterMap{ "key": ClusterArgs{...} }
+//	ClusterMap{ "key": ClusterArgs{...} }
 type ClusterMapInput interface {
 	pulumi.Input
 

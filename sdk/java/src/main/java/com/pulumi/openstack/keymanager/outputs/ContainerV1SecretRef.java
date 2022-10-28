@@ -15,21 +15,14 @@ public final class ContainerV1SecretRef {
      * @return The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return The secret reference / where to find the secret, URL.
      * 
      */
-    private final String secretRef;
+    private String secretRef;
 
-    @CustomType.Constructor
-    private ContainerV1SecretRef(
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("secretRef") String secretRef) {
-        this.name = name;
-        this.secretRef = secretRef;
-    }
-
+    private ContainerV1SecretRef() {}
     /**
      * @return The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
      * 
@@ -52,30 +45,32 @@ public final class ContainerV1SecretRef {
     public static Builder builder(ContainerV1SecretRef defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
         private String secretRef;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ContainerV1SecretRef defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.secretRef = defaults.secretRef;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder secretRef(String secretRef) {
             this.secretRef = Objects.requireNonNull(secretRef);
             return this;
-        }        public ContainerV1SecretRef build() {
-            return new ContainerV1SecretRef(name, secretRef);
+        }
+        public ContainerV1SecretRef build() {
+            final var o = new ContainerV1SecretRef();
+            o.name = name;
+            o.secretRef = secretRef;
+            return o;
         }
     }
 }

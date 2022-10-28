@@ -14,69 +14,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSubnetIdsV2Result {
-    private final @Nullable String cidr;
-    private final @Nullable String description;
-    private final @Nullable Boolean dhcpEnabled;
-    private final @Nullable String gatewayIp;
+    private @Nullable String cidr;
+    private @Nullable String description;
+    private @Nullable Boolean dhcpEnabled;
+    private @Nullable String gatewayIp;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable Integer ipVersion;
-    private final @Nullable String ipv6AddressMode;
-    private final String ipv6RaMode;
-    private final @Nullable String name;
-    private final @Nullable String nameRegex;
-    private final @Nullable String networkId;
-    private final String region;
-    private final @Nullable String sortDirection;
-    private final @Nullable String sortKey;
-    private final @Nullable String subnetpoolId;
-    private final @Nullable List<String> tags;
-    private final @Nullable String tenantId;
+    private String id;
+    private List<String> ids;
+    private @Nullable Integer ipVersion;
+    private @Nullable String ipv6AddressMode;
+    private String ipv6RaMode;
+    private @Nullable String name;
+    private @Nullable String nameRegex;
+    private @Nullable String networkId;
+    private String region;
+    private @Nullable String sortDirection;
+    private @Nullable String sortKey;
+    private @Nullable String subnetpoolId;
+    private @Nullable List<String> tags;
+    private @Nullable String tenantId;
 
-    @CustomType.Constructor
-    private GetSubnetIdsV2Result(
-        @CustomType.Parameter("cidr") @Nullable String cidr,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("dhcpEnabled") @Nullable Boolean dhcpEnabled,
-        @CustomType.Parameter("gatewayIp") @Nullable String gatewayIp,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("ipVersion") @Nullable Integer ipVersion,
-        @CustomType.Parameter("ipv6AddressMode") @Nullable String ipv6AddressMode,
-        @CustomType.Parameter("ipv6RaMode") String ipv6RaMode,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("networkId") @Nullable String networkId,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("sortDirection") @Nullable String sortDirection,
-        @CustomType.Parameter("sortKey") @Nullable String sortKey,
-        @CustomType.Parameter("subnetpoolId") @Nullable String subnetpoolId,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("tenantId") @Nullable String tenantId) {
-        this.cidr = cidr;
-        this.description = description;
-        this.dhcpEnabled = dhcpEnabled;
-        this.gatewayIp = gatewayIp;
-        this.id = id;
-        this.ids = ids;
-        this.ipVersion = ipVersion;
-        this.ipv6AddressMode = ipv6AddressMode;
-        this.ipv6RaMode = ipv6RaMode;
-        this.name = name;
-        this.nameRegex = nameRegex;
-        this.networkId = networkId;
-        this.region = region;
-        this.sortDirection = sortDirection;
-        this.sortKey = sortKey;
-        this.subnetpoolId = subnetpoolId;
-        this.tags = tags;
-        this.tenantId = tenantId;
-    }
-
+    private GetSubnetIdsV2Result() {}
     public Optional<String> cidr() {
         return Optional.ofNullable(this.cidr);
     }
@@ -143,7 +104,7 @@ public final class GetSubnetIdsV2Result {
     public static Builder builder(GetSubnetIdsV2Result defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cidr;
         private @Nullable String description;
@@ -163,11 +124,7 @@ public final class GetSubnetIdsV2Result {
         private @Nullable String subnetpoolId;
         private @Nullable List<String> tags;
         private @Nullable String tenantId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSubnetIdsV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidr = defaults.cidr;
@@ -190,26 +147,32 @@ public final class GetSubnetIdsV2Result {
     	      this.tenantId = defaults.tenantId;
         }
 
+        @CustomType.Setter
         public Builder cidr(@Nullable String cidr) {
             this.cidr = cidr;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder dhcpEnabled(@Nullable Boolean dhcpEnabled) {
             this.dhcpEnabled = dhcpEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayIp(@Nullable String gatewayIp) {
             this.gatewayIp = gatewayIp;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -217,46 +180,57 @@ public final class GetSubnetIdsV2Result {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder ipVersion(@Nullable Integer ipVersion) {
             this.ipVersion = ipVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder ipv6AddressMode(@Nullable String ipv6AddressMode) {
             this.ipv6AddressMode = ipv6AddressMode;
             return this;
         }
+        @CustomType.Setter
         public Builder ipv6RaMode(String ipv6RaMode) {
             this.ipv6RaMode = Objects.requireNonNull(ipv6RaMode);
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder networkId(@Nullable String networkId) {
             this.networkId = networkId;
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder sortDirection(@Nullable String sortDirection) {
             this.sortDirection = sortDirection;
             return this;
         }
+        @CustomType.Setter
         public Builder sortKey(@Nullable String sortKey) {
             this.sortKey = sortKey;
             return this;
         }
+        @CustomType.Setter
         public Builder subnetpoolId(@Nullable String subnetpoolId) {
             this.subnetpoolId = subnetpoolId;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -264,11 +238,32 @@ public final class GetSubnetIdsV2Result {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
             this.tenantId = tenantId;
             return this;
-        }        public GetSubnetIdsV2Result build() {
-            return new GetSubnetIdsV2Result(cidr, description, dhcpEnabled, gatewayIp, id, ids, ipVersion, ipv6AddressMode, ipv6RaMode, name, nameRegex, networkId, region, sortDirection, sortKey, subnetpoolId, tags, tenantId);
+        }
+        public GetSubnetIdsV2Result build() {
+            final var o = new GetSubnetIdsV2Result();
+            o.cidr = cidr;
+            o.description = description;
+            o.dhcpEnabled = dhcpEnabled;
+            o.gatewayIp = gatewayIp;
+            o.id = id;
+            o.ids = ids;
+            o.ipVersion = ipVersion;
+            o.ipv6AddressMode = ipv6AddressMode;
+            o.ipv6RaMode = ipv6RaMode;
+            o.name = name;
+            o.nameRegex = nameRegex;
+            o.networkId = networkId;
+            o.region = region;
+            o.sortDirection = sortDirection;
+            o.sortKey = sortKey;
+            o.subnetpoolId = subnetpoolId;
+            o.tags = tags;
+            o.tenantId = tenantId;
+            return o;
         }
     }
 }

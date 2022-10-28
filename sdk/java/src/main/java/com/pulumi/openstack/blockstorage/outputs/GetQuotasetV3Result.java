@@ -16,84 +16,59 @@ public final class GetQuotasetV3Result {
      * @return The size (GB) of backups that are allowed.
      * 
      */
-    private final Integer backupGigabytes;
+    private Integer backupGigabytes;
     /**
      * @return The number of backups that are allowed.
      * 
      */
-    private final Integer backups;
+    private Integer backups;
     /**
      * @return The size (GB) of volumes and snapshots that are allowed.
      * 
      */
-    private final Integer gigabytes;
+    private Integer gigabytes;
     /**
      * @return The number of groups that are allowed.
      * 
      */
-    private final Integer groups;
+    private Integer groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The size (GB) of volumes that are allowed for each volume.
      * 
      */
-    private final Integer perVolumeGigabytes;
+    private Integer perVolumeGigabytes;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String projectId;
+    private String projectId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return The number of snapshots that are allowed.
      * 
      */
-    private final Integer snapshots;
+    private Integer snapshots;
     /**
      * @return Map with gigabytes_{volume_type}, snapshots_{volume_type}, volumes_{volume_type} for each volume type.
      * 
      */
-    private final Map<String,Object> volumeTypeQuota;
+    private Map<String,Object> volumeTypeQuota;
     /**
      * @return The number of volumes that are allowed.
      * 
      */
-    private final Integer volumes;
+    private Integer volumes;
 
-    @CustomType.Constructor
-    private GetQuotasetV3Result(
-        @CustomType.Parameter("backupGigabytes") Integer backupGigabytes,
-        @CustomType.Parameter("backups") Integer backups,
-        @CustomType.Parameter("gigabytes") Integer gigabytes,
-        @CustomType.Parameter("groups") Integer groups,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("perVolumeGigabytes") Integer perVolumeGigabytes,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("snapshots") Integer snapshots,
-        @CustomType.Parameter("volumeTypeQuota") Map<String,Object> volumeTypeQuota,
-        @CustomType.Parameter("volumes") Integer volumes) {
-        this.backupGigabytes = backupGigabytes;
-        this.backups = backups;
-        this.gigabytes = gigabytes;
-        this.groups = groups;
-        this.id = id;
-        this.perVolumeGigabytes = perVolumeGigabytes;
-        this.projectId = projectId;
-        this.region = region;
-        this.snapshots = snapshots;
-        this.volumeTypeQuota = volumeTypeQuota;
-        this.volumes = volumes;
-    }
-
+    private GetQuotasetV3Result() {}
     /**
      * @return The size (GB) of backups that are allowed.
      * 
@@ -179,7 +154,7 @@ public final class GetQuotasetV3Result {
     public static Builder builder(GetQuotasetV3Result defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer backupGigabytes;
         private Integer backups;
@@ -192,11 +167,7 @@ public final class GetQuotasetV3Result {
         private Integer snapshots;
         private Map<String,Object> volumeTypeQuota;
         private Integer volumes;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetQuotasetV3Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.backupGigabytes = defaults.backupGigabytes;
@@ -212,51 +183,75 @@ public final class GetQuotasetV3Result {
     	      this.volumes = defaults.volumes;
         }
 
+        @CustomType.Setter
         public Builder backupGigabytes(Integer backupGigabytes) {
             this.backupGigabytes = Objects.requireNonNull(backupGigabytes);
             return this;
         }
+        @CustomType.Setter
         public Builder backups(Integer backups) {
             this.backups = Objects.requireNonNull(backups);
             return this;
         }
+        @CustomType.Setter
         public Builder gigabytes(Integer gigabytes) {
             this.gigabytes = Objects.requireNonNull(gigabytes);
             return this;
         }
+        @CustomType.Setter
         public Builder groups(Integer groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder perVolumeGigabytes(Integer perVolumeGigabytes) {
             this.perVolumeGigabytes = Objects.requireNonNull(perVolumeGigabytes);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder snapshots(Integer snapshots) {
             this.snapshots = Objects.requireNonNull(snapshots);
             return this;
         }
+        @CustomType.Setter
         public Builder volumeTypeQuota(Map<String,Object> volumeTypeQuota) {
             this.volumeTypeQuota = Objects.requireNonNull(volumeTypeQuota);
             return this;
         }
+        @CustomType.Setter
         public Builder volumes(Integer volumes) {
             this.volumes = Objects.requireNonNull(volumes);
             return this;
-        }        public GetQuotasetV3Result build() {
-            return new GetQuotasetV3Result(backupGigabytes, backups, gigabytes, groups, id, perVolumeGigabytes, projectId, region, snapshots, volumeTypeQuota, volumes);
+        }
+        public GetQuotasetV3Result build() {
+            final var o = new GetQuotasetV3Result();
+            o.backupGigabytes = backupGigabytes;
+            o.backups = backups;
+            o.gigabytes = gigabytes;
+            o.groups = groups;
+            o.id = id;
+            o.perVolumeGigabytes = perVolumeGigabytes;
+            o.projectId = projectId;
+            o.region = region;
+            o.snapshots = snapshots;
+            o.volumeTypeQuota = volumeTypeQuota;
+            o.volumes = volumes;
+            return o;
         }
     }
 }

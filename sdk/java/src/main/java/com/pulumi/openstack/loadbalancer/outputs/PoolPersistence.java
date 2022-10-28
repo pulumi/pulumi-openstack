@@ -16,22 +16,15 @@ public final class PoolPersistence {
      * appropriately. Required if `type = APP_COOKIE`.
      * 
      */
-    private final @Nullable String cookieName;
+    private @Nullable String cookieName;
     /**
      * @return The type of persistence mode. The current specification
      * supports SOURCE_IP, HTTP_COOKIE, and APP_COOKIE.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private PoolPersistence(
-        @CustomType.Parameter("cookieName") @Nullable String cookieName,
-        @CustomType.Parameter("type") String type) {
-        this.cookieName = cookieName;
-        this.type = type;
-    }
-
+    private PoolPersistence() {}
     /**
      * @return The name of the cookie if persistence mode is set
      * appropriately. Required if `type = APP_COOKIE`.
@@ -56,30 +49,32 @@ public final class PoolPersistence {
     public static Builder builder(PoolPersistence defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cookieName;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PoolPersistence defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cookieName = defaults.cookieName;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder cookieName(@Nullable String cookieName) {
             this.cookieName = cookieName;
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public PoolPersistence build() {
-            return new PoolPersistence(cookieName, type);
+        }
+        public PoolPersistence build() {
+            final var o = new PoolPersistence();
+            o.cookieName = cookieName;
+            o.type = type;
+            return o;
         }
     }
 }

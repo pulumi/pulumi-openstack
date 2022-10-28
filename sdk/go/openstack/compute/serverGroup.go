@@ -18,48 +18,53 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewServerGroup(ctx, "test-sg", &compute.ServerGroupArgs{
-// 			Policies: pulumi.StringArray{
-// 				pulumi.String("anti-affinity"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewServerGroup(ctx, "test-sg", &compute.ServerGroupArgs{
+//				Policies: pulumi.StringArray{
+//					pulumi.String("anti-affinity"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Policies
 //
-// * `affinity` - All instances/servers launched in this group will be hosted on
-//   the same compute node.
+//   - `affinity` - All instances/servers launched in this group will be hosted on
+//     the same compute node.
 //
-// * `anti-affinity` - All instances/servers launched in this group will be
-//   hosted on different compute nodes.
+//   - `anti-affinity` - All instances/servers launched in this group will be
+//     hosted on different compute nodes.
 //
-// * `soft-affinity` - All instances/servers launched in this group will be hosted
-//   on the same compute node if possible, but if not possible they
-//   still will be scheduled instead of failure. To use this policy your
-//   OpenStack environment should support Compute service API 2.15 or above.
+//   - `soft-affinity` - All instances/servers launched in this group will be hosted
+//     on the same compute node if possible, but if not possible they
+//     still will be scheduled instead of failure. To use this policy your
+//     OpenStack environment should support Compute service API 2.15 or above.
 //
-// * `soft-anti-affinity` - All instances/servers launched in this group will be
-//   hosted on different compute nodes if possible, but if not possible they
-//   still will be scheduled instead of failure. To use this policy your
-//   OpenStack environment should support Compute service API 2.15 or above.
+//   - `soft-anti-affinity` - All instances/servers launched in this group will be
+//     hosted on different compute nodes if possible, but if not possible they
+//     still will be scheduled instead of failure. To use this policy your
+//     OpenStack environment should support Compute service API 2.15 or above.
 //
 // ## Import
 //
 // Server Groups can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
+//
+//	$ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
+//
 // ```
 type ServerGroup struct {
 	pulumi.CustomResourceState
@@ -208,7 +213,7 @@ func (i *ServerGroup) ToServerGroupOutputWithContext(ctx context.Context) Server
 // ServerGroupArrayInput is an input type that accepts ServerGroupArray and ServerGroupArrayOutput values.
 // You can construct a concrete instance of `ServerGroupArrayInput` via:
 //
-//          ServerGroupArray{ ServerGroupArgs{...} }
+//	ServerGroupArray{ ServerGroupArgs{...} }
 type ServerGroupArrayInput interface {
 	pulumi.Input
 
@@ -233,7 +238,7 @@ func (i ServerGroupArray) ToServerGroupArrayOutputWithContext(ctx context.Contex
 // ServerGroupMapInput is an input type that accepts ServerGroupMap and ServerGroupMapOutput values.
 // You can construct a concrete instance of `ServerGroupMapInput` via:
 //
-//          ServerGroupMap{ "key": ServerGroupArgs{...} }
+//	ServerGroupMap{ "key": ServerGroupArgs{...} }
 type ServerGroupMapInput interface {
 	pulumi.Input
 

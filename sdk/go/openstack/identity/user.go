@@ -16,45 +16,48 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project1, err := identity.NewProject(ctx, "project1", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = identity.NewUser(ctx, "user1", &identity.UserArgs{
-// 			DefaultProjectId: project1.ID(),
-// 			Description:      pulumi.String("A user"),
-// 			Extra: pulumi.AnyMap{
-// 				"email": pulumi.Any("user_1@foobar.com"),
-// 			},
-// 			IgnoreChangePasswordUponFirstUse: pulumi.Bool(true),
-// 			MultiFactorAuthEnabled:           pulumi.Bool(true),
-// 			MultiFactorAuthRules: identity.UserMultiFactorAuthRuleArray{
-// 				&identity.UserMultiFactorAuthRuleArgs{
-// 					Rules: pulumi.StringArray{
-// 						pulumi.String("password"),
-// 						pulumi.String("totp"),
-// 					},
-// 				},
-// 				&identity.UserMultiFactorAuthRuleArgs{
-// 					Rules: pulumi.StringArray{
-// 						pulumi.String("password"),
-// 					},
-// 				},
-// 			},
-// 			Password: pulumi.String("password123"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = identity.NewUser(ctx, "user1", &identity.UserArgs{
+//				DefaultProjectId: project1.ID(),
+//				Description:      pulumi.String("A user"),
+//				Extra: pulumi.AnyMap{
+//					"email": pulumi.Any("user_1@foobar.com"),
+//				},
+//				IgnoreChangePasswordUponFirstUse: pulumi.Bool(true),
+//				MultiFactorAuthEnabled:           pulumi.Bool(true),
+//				MultiFactorAuthRules: identity.UserMultiFactorAuthRuleArray{
+//					&identity.UserMultiFactorAuthRuleArgs{
+//						Rules: pulumi.StringArray{
+//							pulumi.String("password"),
+//							pulumi.String("totp"),
+//						},
+//					},
+//					&identity.UserMultiFactorAuthRuleArgs{
+//						Rules: pulumi.StringArray{
+//							pulumi.String("password"),
+//						},
+//					},
+//				},
+//				Password: pulumi.String("password123"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -62,7 +65,9 @@ import (
 // Users can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:identity/user:User user_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+//
+//	$ pulumi import openstack:identity/user:User user_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+//
 // ```
 type User struct {
 	pulumi.CustomResourceState
@@ -320,7 +325,7 @@ func (i *User) ToUserOutputWithContext(ctx context.Context) UserOutput {
 // UserArrayInput is an input type that accepts UserArray and UserArrayOutput values.
 // You can construct a concrete instance of `UserArrayInput` via:
 //
-//          UserArray{ UserArgs{...} }
+//	UserArray{ UserArgs{...} }
 type UserArrayInput interface {
 	pulumi.Input
 
@@ -345,7 +350,7 @@ func (i UserArray) ToUserArrayOutputWithContext(ctx context.Context) UserArrayOu
 // UserMapInput is an input type that accepts UserMap and UserMapOutput values.
 // You can construct a concrete instance of `UserMapInput` via:
 //
-//          UserMap{ "key": UserArgs{...} }
+//	UserMap{ "key": UserArgs{...} }
 type UserMapInput interface {
 	pulumi.Input
 

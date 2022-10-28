@@ -15,133 +15,94 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDnsZoneResult {
-    private final @Nullable String allProjects;
+    private @Nullable String allProjects;
     /**
      * @return Attributes of the DNS Service scheduler.
      * 
      */
-    private final Map<String,Object> attributes;
+    private Map<String,Object> attributes;
     /**
      * @return The time the zone was created.
      * 
      */
-    private final String createdAt;
+    private String createdAt;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String email;
+    private @Nullable String email;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return An array of master DNS servers. When `type` is  `SECONDARY`.
      * 
      */
-    private final List<String> masters;
+    private List<String> masters;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return The ID of the pool hosting the zone.
      * 
      */
-    private final String poolId;
+    private String poolId;
     /**
      * @return The project ID that owns the zone.
      * 
      */
-    private final String projectId;
+    private String projectId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return The serial number of the zone.
      * 
      */
-    private final Integer serial;
+    private Integer serial;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String status;
+    private @Nullable String status;
     /**
      * @return The time the zone was transferred.
      * 
      */
-    private final String transferredAt;
+    private String transferredAt;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable Integer ttl;
+    private @Nullable Integer ttl;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
     /**
      * @return The time the zone was last updated.
      * 
      */
-    private final String updatedAt;
+    private String updatedAt;
     /**
      * @return The version of the zone.
      * 
      */
-    private final Integer version;
+    private Integer version;
 
-    @CustomType.Constructor
-    private GetDnsZoneResult(
-        @CustomType.Parameter("allProjects") @Nullable String allProjects,
-        @CustomType.Parameter("attributes") Map<String,Object> attributes,
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("email") @Nullable String email,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("masters") List<String> masters,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("poolId") String poolId,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("serial") Integer serial,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("transferredAt") String transferredAt,
-        @CustomType.Parameter("ttl") @Nullable Integer ttl,
-        @CustomType.Parameter("type") @Nullable String type,
-        @CustomType.Parameter("updatedAt") String updatedAt,
-        @CustomType.Parameter("version") Integer version) {
-        this.allProjects = allProjects;
-        this.attributes = attributes;
-        this.createdAt = createdAt;
-        this.description = description;
-        this.email = email;
-        this.id = id;
-        this.masters = masters;
-        this.name = name;
-        this.poolId = poolId;
-        this.projectId = projectId;
-        this.region = region;
-        this.serial = serial;
-        this.status = status;
-        this.transferredAt = transferredAt;
-        this.ttl = ttl;
-        this.type = type;
-        this.updatedAt = updatedAt;
-        this.version = version;
-    }
-
+    private GetDnsZoneResult() {}
     public Optional<String> allProjects() {
         return Optional.ofNullable(this.allProjects);
     }
@@ -272,7 +233,7 @@ public final class GetDnsZoneResult {
     public static Builder builder(GetDnsZoneResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String allProjects;
         private Map<String,Object> attributes;
@@ -292,11 +253,7 @@ public final class GetDnsZoneResult {
         private @Nullable String type;
         private String updatedAt;
         private Integer version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDnsZoneResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allProjects = defaults.allProjects;
@@ -319,30 +276,37 @@ public final class GetDnsZoneResult {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder allProjects(@Nullable String allProjects) {
             this.allProjects = allProjects;
             return this;
         }
+        @CustomType.Setter
         public Builder attributes(Map<String,Object> attributes) {
             this.attributes = Objects.requireNonNull(attributes);
             return this;
         }
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder email(@Nullable String email) {
             this.email = email;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder masters(List<String> masters) {
             this.masters = Objects.requireNonNull(masters);
             return this;
@@ -350,51 +314,82 @@ public final class GetDnsZoneResult {
         public Builder masters(String... masters) {
             return masters(List.of(masters));
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder poolId(String poolId) {
             this.poolId = Objects.requireNonNull(poolId);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder serial(Integer serial) {
             this.serial = Objects.requireNonNull(serial);
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder transferredAt(String transferredAt) {
             this.transferredAt = Objects.requireNonNull(transferredAt);
             return this;
         }
+        @CustomType.Setter
         public Builder ttl(@Nullable Integer ttl) {
             this.ttl = ttl;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
             this.updatedAt = Objects.requireNonNull(updatedAt);
             return this;
         }
+        @CustomType.Setter
         public Builder version(Integer version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetDnsZoneResult build() {
-            return new GetDnsZoneResult(allProjects, attributes, createdAt, description, email, id, masters, name, poolId, projectId, region, serial, status, transferredAt, ttl, type, updatedAt, version);
+        }
+        public GetDnsZoneResult build() {
+            final var o = new GetDnsZoneResult();
+            o.allProjects = allProjects;
+            o.attributes = attributes;
+            o.createdAt = createdAt;
+            o.description = description;
+            o.email = email;
+            o.id = id;
+            o.masters = masters;
+            o.name = name;
+            o.poolId = poolId;
+            o.projectId = projectId;
+            o.region = region;
+            o.serial = serial;
+            o.status = status;
+            o.transferredAt = transferredAt;
+            o.ttl = ttl;
+            o.type = type;
+            o.updatedAt = updatedAt;
+            o.version = version;
+            return o;
         }
     }
 }

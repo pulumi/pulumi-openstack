@@ -19,23 +19,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := loadbalancer.NewMember(ctx, "member1", &loadbalancer.MemberArgs{
-// 			Address:      pulumi.String("192.168.199.23"),
-// 			PoolId:       pulumi.String("935685fb-a896-40f9-9ff4-ae531a3a00fe"),
-// 			ProtocolPort: pulumi.Int(8080),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := loadbalancer.NewMember(ctx, "member1", &loadbalancer.MemberArgs{
+//				Address:      pulumi.String("192.168.199.23"),
+//				PoolId:       pulumi.String("935685fb-a896-40f9-9ff4-ae531a3a00fe"),
+//				ProtocolPort: pulumi.Int(8080),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -43,7 +46,9 @@ import (
 // Load Balancer Pool Member can be imported using the Pool ID and Member ID separated by a slash, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:loadbalancer/member:Member member_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5/9563b79c-8460-47da-8a95-2711b746510f
+//
+//	$ pulumi import openstack:loadbalancer/member:Member member_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5/9563b79c-8460-47da-8a95-2711b746510f
+//
 // ```
 type Member struct {
 	pulumi.CustomResourceState
@@ -325,7 +330,7 @@ func (i *Member) ToMemberOutputWithContext(ctx context.Context) MemberOutput {
 // MemberArrayInput is an input type that accepts MemberArray and MemberArrayOutput values.
 // You can construct a concrete instance of `MemberArrayInput` via:
 //
-//          MemberArray{ MemberArgs{...} }
+//	MemberArray{ MemberArgs{...} }
 type MemberArrayInput interface {
 	pulumi.Input
 
@@ -350,7 +355,7 @@ func (i MemberArray) ToMemberArrayOutputWithContext(ctx context.Context) MemberA
 // MemberMapInput is an input type that accepts MemberMap and MemberMapOutput values.
 // You can construct a concrete instance of `MemberMapInput` via:
 //
-//          MemberMap{ "key": MemberArgs{...} }
+//	MemberMap{ "key": MemberArgs{...} }
 type MemberMapInput interface {
 	pulumi.Input
 

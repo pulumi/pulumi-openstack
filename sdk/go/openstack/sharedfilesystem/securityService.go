@@ -30,36 +30,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/sharedfilesystem"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/sharedfilesystem"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sharedfilesystem.NewSecurityService(ctx, "securityservice1", &sharedfilesystem.SecurityServiceArgs{
-// 			Description: pulumi.String("created by terraform"),
-// 			DnsIp:       pulumi.String("192.168.199.10"),
-// 			Domain:      pulumi.String("example.com"),
-// 			Ou:          pulumi.String("CN=Computers,DC=example,DC=com"),
-// 			Password:    pulumi.String("s8cret"),
-// 			Server:      pulumi.String("192.168.199.10"),
-// 			Type:        pulumi.String("active_directory"),
-// 			User:        pulumi.String("joinDomainUser"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sharedfilesystem.NewSecurityService(ctx, "securityservice1", &sharedfilesystem.SecurityServiceArgs{
+//				Description: pulumi.String("created by terraform"),
+//				DnsIp:       pulumi.String("192.168.199.10"),
+//				Domain:      pulumi.String("example.com"),
+//				Ou:          pulumi.String("CN=Computers,DC=example,DC=com"),
+//				Password:    pulumi.String("s8cret"),
+//				Server:      pulumi.String("192.168.199.10"),
+//				Type:        pulumi.String("active_directory"),
+//				User:        pulumi.String("joinDomainUser"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// This resource can be imported by specifying the ID of the security service
+// # This resource can be imported by specifying the ID of the security service
 //
 // ```sh
-//  $ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 <id>
+//
+//	$ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 <id>
+//
 // ```
 type SecurityService struct {
 	pulumi.CustomResourceState
@@ -291,7 +296,7 @@ func (i *SecurityService) ToSecurityServiceOutputWithContext(ctx context.Context
 // SecurityServiceArrayInput is an input type that accepts SecurityServiceArray and SecurityServiceArrayOutput values.
 // You can construct a concrete instance of `SecurityServiceArrayInput` via:
 //
-//          SecurityServiceArray{ SecurityServiceArgs{...} }
+//	SecurityServiceArray{ SecurityServiceArgs{...} }
 type SecurityServiceArrayInput interface {
 	pulumi.Input
 
@@ -316,7 +321,7 @@ func (i SecurityServiceArray) ToSecurityServiceArrayOutputWithContext(ctx contex
 // SecurityServiceMapInput is an input type that accepts SecurityServiceMap and SecurityServiceMapOutput values.
 // You can construct a concrete instance of `SecurityServiceMapInput` via:
 //
-//          SecurityServiceMap{ "key": SecurityServiceArgs{...} }
+//	SecurityServiceMap{ "key": SecurityServiceArgs{...} }
 type SecurityServiceMapInput interface {
 	pulumi.Input
 

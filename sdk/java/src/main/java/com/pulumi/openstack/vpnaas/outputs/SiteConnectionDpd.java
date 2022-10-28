@@ -18,32 +18,23 @@ public final class SiteConnectionDpd {
      * Default value is hold.
      * 
      */
-    private final @Nullable String action;
+    private @Nullable String action;
     /**
      * @return The dead peer detection (DPD) interval, in seconds.
      * A valid value is a positive integer.
      * Default is 30.
      * 
      */
-    private final @Nullable Integer interval;
+    private @Nullable Integer interval;
     /**
      * @return The dead peer detection (DPD) timeout in seconds.
      * A valid value is a positive integer that is greater than the DPD interval value.
      * Default is 120.
      * 
      */
-    private final @Nullable Integer timeout;
+    private @Nullable Integer timeout;
 
-    @CustomType.Constructor
-    private SiteConnectionDpd(
-        @CustomType.Parameter("action") @Nullable String action,
-        @CustomType.Parameter("interval") @Nullable Integer interval,
-        @CustomType.Parameter("timeout") @Nullable Integer timeout) {
-        this.action = action;
-        this.interval = interval;
-        this.timeout = timeout;
-    }
-
+    private SiteConnectionDpd() {}
     /**
      * @return The dead peer detection (DPD) action.
      * A valid value is clear, hold, restart, disabled, or restart-by-peer.
@@ -79,16 +70,12 @@ public final class SiteConnectionDpd {
     public static Builder builder(SiteConnectionDpd defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String action;
         private @Nullable Integer interval;
         private @Nullable Integer timeout;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SiteConnectionDpd defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
@@ -96,19 +83,27 @@ public final class SiteConnectionDpd {
     	      this.timeout = defaults.timeout;
         }
 
+        @CustomType.Setter
         public Builder action(@Nullable String action) {
             this.action = action;
             return this;
         }
+        @CustomType.Setter
         public Builder interval(@Nullable Integer interval) {
             this.interval = interval;
             return this;
         }
+        @CustomType.Setter
         public Builder timeout(@Nullable Integer timeout) {
             this.timeout = timeout;
             return this;
-        }        public SiteConnectionDpd build() {
-            return new SiteConnectionDpd(action, interval, timeout);
+        }
+        public SiteConnectionDpd build() {
+            final var o = new SiteConnectionDpd();
+            o.action = action;
+            o.interval = interval;
+            o.timeout = timeout;
+            return o;
         }
     }
 }

@@ -17,7 +17,7 @@ public final class InstanceVendorOptions {
      * after the vm destruction. This is helpful when the port is not deleted.
      * 
      */
-    private final @Nullable Boolean detachPortsBeforeDestroy;
+    private @Nullable Boolean detachPortsBeforeDestroy;
     /**
      * @return Boolean to control whether
      * to ignore manual confirmation of the instance resizing. This can be helpful
@@ -25,16 +25,9 @@ public final class InstanceVendorOptions {
      * instances after some timeout.
      * 
      */
-    private final @Nullable Boolean ignoreResizeConfirmation;
+    private @Nullable Boolean ignoreResizeConfirmation;
 
-    @CustomType.Constructor
-    private InstanceVendorOptions(
-        @CustomType.Parameter("detachPortsBeforeDestroy") @Nullable Boolean detachPortsBeforeDestroy,
-        @CustomType.Parameter("ignoreResizeConfirmation") @Nullable Boolean ignoreResizeConfirmation) {
-        this.detachPortsBeforeDestroy = detachPortsBeforeDestroy;
-        this.ignoreResizeConfirmation = ignoreResizeConfirmation;
-    }
-
+    private InstanceVendorOptions() {}
     /**
      * @return Whether to try to detach all attached
      * ports to the vm before destroying it to make sure the port state is correct
@@ -62,30 +55,32 @@ public final class InstanceVendorOptions {
     public static Builder builder(InstanceVendorOptions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean detachPortsBeforeDestroy;
         private @Nullable Boolean ignoreResizeConfirmation;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceVendorOptions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.detachPortsBeforeDestroy = defaults.detachPortsBeforeDestroy;
     	      this.ignoreResizeConfirmation = defaults.ignoreResizeConfirmation;
         }
 
+        @CustomType.Setter
         public Builder detachPortsBeforeDestroy(@Nullable Boolean detachPortsBeforeDestroy) {
             this.detachPortsBeforeDestroy = detachPortsBeforeDestroy;
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreResizeConfirmation(@Nullable Boolean ignoreResizeConfirmation) {
             this.ignoreResizeConfirmation = ignoreResizeConfirmation;
             return this;
-        }        public InstanceVendorOptions build() {
-            return new InstanceVendorOptions(detachPortsBeforeDestroy, ignoreResizeConfirmation);
+        }
+        public InstanceVendorOptions build() {
+            final var o = new InstanceVendorOptions();
+            o.detachPortsBeforeDestroy = detachPortsBeforeDestroy;
+            o.ignoreResizeConfirmation = ignoreResizeConfirmation;
+            return o;
         }
     }
 }

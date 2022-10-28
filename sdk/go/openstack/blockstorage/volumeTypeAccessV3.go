@@ -21,33 +21,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project1, err := identity.NewProject(ctx, "project1", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		volumeType1, err := blockstorage.NewVolumeTypeV3(ctx, "volumeType1", &blockstorage.VolumeTypeV3Args{
-// 			IsPublic: pulumi.Bool(false),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = blockstorage.NewVolumeTypeAccessV3(ctx, "volumeTypeAccess", &blockstorage.VolumeTypeAccessV3Args{
-// 			ProjectId:    project1.ID(),
-// 			VolumeTypeId: volumeType1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			volumeType1, err := blockstorage.NewVolumeTypeV3(ctx, "volumeType1", &blockstorage.VolumeTypeV3Args{
+//				IsPublic: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = blockstorage.NewVolumeTypeAccessV3(ctx, "volumeTypeAccess", &blockstorage.VolumeTypeAccessV3Args{
+//				ProjectId:    project1.ID(),
+//				VolumeTypeId: volumeType1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -55,7 +58,9 @@ import (
 // Volume types access can be imported using the `volume_type_id/project_id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3 volume_type_access 941793f0-0a34-4bc4-b72e-a6326ae58283/ed498e81f0cc448bae0ad4f8f21bf67f
+//
+//	$ pulumi import openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3 volume_type_access 941793f0-0a34-4bc4-b72e-a6326ae58283/ed498e81f0cc448bae0ad4f8f21bf67f
+//
 // ```
 type VolumeTypeAccessV3 struct {
 	pulumi.CustomResourceState
@@ -189,7 +194,7 @@ func (i *VolumeTypeAccessV3) ToVolumeTypeAccessV3OutputWithContext(ctx context.C
 // VolumeTypeAccessV3ArrayInput is an input type that accepts VolumeTypeAccessV3Array and VolumeTypeAccessV3ArrayOutput values.
 // You can construct a concrete instance of `VolumeTypeAccessV3ArrayInput` via:
 //
-//          VolumeTypeAccessV3Array{ VolumeTypeAccessV3Args{...} }
+//	VolumeTypeAccessV3Array{ VolumeTypeAccessV3Args{...} }
 type VolumeTypeAccessV3ArrayInput interface {
 	pulumi.Input
 
@@ -214,7 +219,7 @@ func (i VolumeTypeAccessV3Array) ToVolumeTypeAccessV3ArrayOutputWithContext(ctx 
 // VolumeTypeAccessV3MapInput is an input type that accepts VolumeTypeAccessV3Map and VolumeTypeAccessV3MapOutput values.
 // You can construct a concrete instance of `VolumeTypeAccessV3MapInput` via:
 //
-//          VolumeTypeAccessV3Map{ "key": VolumeTypeAccessV3Args{...} }
+//	VolumeTypeAccessV3Map{ "key": VolumeTypeAccessV3Args{...} }
 type VolumeTypeAccessV3MapInput interface {
 	pulumi.Input
 

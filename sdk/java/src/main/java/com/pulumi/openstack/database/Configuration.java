@@ -17,51 +17,6 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * Manages a V1 DB configuration resource within OpenStack.
- * 
- * ## Example Usage
- * ### Configuration
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.openstack.database.Configuration;
- * import com.pulumi.openstack.database.ConfigurationArgs;
- * import com.pulumi.openstack.database.inputs.ConfigurationConfigurationArgs;
- * import com.pulumi.openstack.database.inputs.ConfigurationDatastoreArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var test = new Configuration(&#34;test&#34;, ConfigurationArgs.builder()        
- *             .configurations(ConfigurationConfigurationArgs.builder()
- *                 .name(&#34;max_connections&#34;)
- *                 .value(200)
- *                 .build())
- *             .datastore(ConfigurationDatastoreArgs.builder()
- *                 .type(&#34;mysql&#34;)
- *                 .version(&#34;mysql-5.7&#34;)
- *                 .build())
- *             .description(&#34;description&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- */
 @ResourceType(type="openstack:database/configuration:Configuration")
 public class Configuration extends com.pulumi.resources.CustomResource {
     /**

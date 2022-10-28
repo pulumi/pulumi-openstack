@@ -21,37 +21,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		volume1, err := blockstorage.NewVolumeV2(ctx, "volume1", &blockstorage.VolumeV2Args{
-// 			Size: pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
-// 			SecurityGroups: pulumi.StringArray{
-// 				pulumi.String("default"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewVolumeAttach(ctx, "va1", &compute.VolumeAttachArgs{
-// 			InstanceId: instance1.ID(),
-// 			VolumeId:   volume1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			volume1, err := blockstorage.NewVolumeV2(ctx, "volume1", &blockstorage.VolumeV2Args{
+//				Size: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewVolumeAttach(ctx, "va1", &compute.VolumeAttachArgs{
+//				InstanceId: instance1.ID(),
+//				VolumeId:   volume1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Using Multiattach-enabled volumes
 //
@@ -62,57 +65,60 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := blockstorage.NewVolume(ctx, "volume1", &blockstorage.VolumeArgs{
-// 			Multiattach: pulumi.Bool(true),
-// 			Size:        pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
-// 			SecurityGroups: pulumi.StringArray{
-// 				pulumi.String("default"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		instance2, err := compute.NewInstance(ctx, "instance2", &compute.InstanceArgs{
-// 			SecurityGroups: pulumi.StringArray{
-// 				pulumi.String("default"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewVolumeAttach(ctx, "va1", &compute.VolumeAttachArgs{
-// 			InstanceId:  instance1.ID(),
-// 			Multiattach: pulumi.Bool(true),
-// 			VolumeId:    pulumi.Any(openstack_blockstorage_volume_v2.Volume_1.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewVolumeAttach(ctx, "va2", &compute.VolumeAttachArgs{
-// 			InstanceId:  instance2.ID(),
-// 			Multiattach: pulumi.Bool(true),
-// 			VolumeId:    pulumi.Any(openstack_blockstorage_volume_v2.Volume_1.Id),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			pulumi.Resource("openstack_compute_volume_attach_v2.va_1"),
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := blockstorage.NewVolume(ctx, "volume1", &blockstorage.VolumeArgs{
+//				Multiattach: pulumi.Bool(true),
+//				Size:        pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance2, err := compute.NewInstance(ctx, "instance2", &compute.InstanceArgs{
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewVolumeAttach(ctx, "va1", &compute.VolumeAttachArgs{
+//				InstanceId:  instance1.ID(),
+//				Multiattach: pulumi.Bool(true),
+//				VolumeId:    pulumi.Any(openstack_blockstorage_volume_v2.Volume_1.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewVolumeAttach(ctx, "va2", &compute.VolumeAttachArgs{
+//				InstanceId:  instance2.ID(),
+//				Multiattach: pulumi.Bool(true),
+//				VolumeId:    pulumi.Any(openstack_blockstorage_volume_v2.Volume_1.Id),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				pulumi.Resource("openstack_compute_volume_attach_v2.va_1"),
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // It is recommended to use `dependsOn` for the attach resources
@@ -123,7 +129,9 @@ import (
 // Volume Attachments can be imported using the Instance ID and Volume ID separated by a slash, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:compute/volumeAttach:VolumeAttach va_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
+//
+//	$ pulumi import openstack:compute/volumeAttach:VolumeAttach va_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
+//
 // ```
 type VolumeAttach struct {
 	pulumi.CustomResourceState
@@ -297,7 +305,7 @@ func (i *VolumeAttach) ToVolumeAttachOutputWithContext(ctx context.Context) Volu
 // VolumeAttachArrayInput is an input type that accepts VolumeAttachArray and VolumeAttachArrayOutput values.
 // You can construct a concrete instance of `VolumeAttachArrayInput` via:
 //
-//          VolumeAttachArray{ VolumeAttachArgs{...} }
+//	VolumeAttachArray{ VolumeAttachArgs{...} }
 type VolumeAttachArrayInput interface {
 	pulumi.Input
 
@@ -322,7 +330,7 @@ func (i VolumeAttachArray) ToVolumeAttachArrayOutputWithContext(ctx context.Cont
 // VolumeAttachMapInput is an input type that accepts VolumeAttachMap and VolumeAttachMapOutput values.
 // You can construct a concrete instance of `VolumeAttachMapInput` via:
 //
-//          VolumeAttachMap{ "key": VolumeAttachArgs{...} }
+//	VolumeAttachMap{ "key": VolumeAttachArgs{...} }
 type VolumeAttachMapInput interface {
 	pulumi.Input
 

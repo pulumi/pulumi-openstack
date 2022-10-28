@@ -16,7 +16,9 @@ import (
 // Floating IPs can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:networking/floatingIp:FloatingIp floatip_1 2c7f39f3-702b-48d1-940c-b50384177ee1
+//
+//	$ pulumi import openstack:networking/floatingIp:FloatingIp floatip_1 2c7f39f3-702b-48d1-940c-b50384177ee1
+//
 // ```
 type FloatingIp struct {
 	pulumi.CustomResourceState
@@ -351,7 +353,7 @@ func (i *FloatingIp) ToFloatingIpOutputWithContext(ctx context.Context) Floating
 // FloatingIpArrayInput is an input type that accepts FloatingIpArray and FloatingIpArrayOutput values.
 // You can construct a concrete instance of `FloatingIpArrayInput` via:
 //
-//          FloatingIpArray{ FloatingIpArgs{...} }
+//	FloatingIpArray{ FloatingIpArgs{...} }
 type FloatingIpArrayInput interface {
 	pulumi.Input
 
@@ -376,7 +378,7 @@ func (i FloatingIpArray) ToFloatingIpArrayOutputWithContext(ctx context.Context)
 // FloatingIpMapInput is an input type that accepts FloatingIpMap and FloatingIpMapOutput values.
 // You can construct a concrete instance of `FloatingIpMapInput` via:
 //
-//          FloatingIpMap{ "key": FloatingIpArgs{...} }
+//	FloatingIpMap{ "key": FloatingIpArgs{...} }
 type FloatingIpMapInput interface {
 	pulumi.Input
 

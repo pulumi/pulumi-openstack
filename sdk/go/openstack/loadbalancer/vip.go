@@ -19,24 +19,27 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := loadbalancer.NewVip(ctx, "vip1", &loadbalancer.VipArgs{
-// 			PoolId:   pulumi.String("67890"),
-// 			Port:     pulumi.Int(80),
-// 			Protocol: pulumi.String("HTTP"),
-// 			SubnetId: pulumi.String("12345"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := loadbalancer.NewVip(ctx, "vip1", &loadbalancer.VipArgs{
+//				PoolId:   pulumi.String("67890"),
+//				Port:     pulumi.Int(80),
+//				Protocol: pulumi.String("HTTP"),
+//				SubnetId: pulumi.String("12345"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -44,7 +47,9 @@ import (
 // Load Balancer VIPs can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:loadbalancer/vip:Vip vip_1 50e16b26-89c1-475e-a492-76167182511e
+//
+//	$ pulumi import openstack:loadbalancer/vip:Vip vip_1 50e16b26-89c1-475e-a492-76167182511e
+//
 // ```
 type Vip struct {
 	pulumi.CustomResourceState
@@ -370,7 +375,7 @@ func (i *Vip) ToVipOutputWithContext(ctx context.Context) VipOutput {
 // VipArrayInput is an input type that accepts VipArray and VipArrayOutput values.
 // You can construct a concrete instance of `VipArrayInput` via:
 //
-//          VipArray{ VipArgs{...} }
+//	VipArray{ VipArgs{...} }
 type VipArrayInput interface {
 	pulumi.Input
 
@@ -395,7 +400,7 @@ func (i VipArray) ToVipArrayOutputWithContext(ctx context.Context) VipArrayOutpu
 // VipMapInput is an input type that accepts VipMap and VipMapOutput values.
 // You can construct a concrete instance of `VipMapInput` via:
 //
-//          VipMap{ "key": VipArgs{...} }
+//	VipMap{ "key": VipArgs{...} }
 type VipMapInput interface {
 	pulumi.Input
 

@@ -207,27 +207,7 @@ class Configuration(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a V1 DB configuration resource within OpenStack.
-
-        ## Example Usage
-        ### Configuration
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test = openstack.database.Configuration("test",
-            configurations=[openstack.database.ConfigurationConfigurationArgs(
-                name="max_connections",
-                value="200",
-            )],
-            datastore=openstack.database.ConfigurationDatastoreArgs(
-                type="mysql",
-                version="mysql-5.7",
-            ),
-            description="description")
-        ```
-
+        Create a Configuration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigurationConfigurationArgs']]]] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
@@ -245,27 +225,7 @@ class Configuration(pulumi.CustomResource):
                  args: ConfigurationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V1 DB configuration resource within OpenStack.
-
-        ## Example Usage
-        ### Configuration
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test = openstack.database.Configuration("test",
-            configurations=[openstack.database.ConfigurationConfigurationArgs(
-                name="max_connections",
-                value="200",
-            )],
-            datastore=openstack.database.ConfigurationDatastoreArgs(
-                type="mysql",
-                version="mysql-5.7",
-            ),
-            description="description")
-        ```
-
+        Create a Configuration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ConfigurationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

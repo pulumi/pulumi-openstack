@@ -76,6 +76,12 @@ namespace Pulumi.OpenStack.Compute
     public sealed class GetFlavorArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The description of the flavor.
+        /// </summary>
+        [Input("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
         /// The exact amount of disk (in gigabytes).
         /// </summary>
         [Input("disk")]
@@ -152,6 +158,12 @@ namespace Pulumi.OpenStack.Compute
 
     public sealed class GetFlavorInvokeArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The description of the flavor.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
         /// <summary>
         /// The exact amount of disk (in gigabytes).
         /// </summary>
@@ -231,6 +243,7 @@ namespace Pulumi.OpenStack.Compute
     [OutputType]
     public sealed class GetFlavorResult
     {
+        public readonly string? Description;
         public readonly int? Disk;
         /// <summary>
         /// Key/Value pairs of metadata for the flavor.
@@ -253,6 +266,8 @@ namespace Pulumi.OpenStack.Compute
 
         [OutputConstructor]
         private GetFlavorResult(
+            string? description,
+
             int? disk,
 
             ImmutableDictionary<string, object> extraSpecs,
@@ -279,6 +294,7 @@ namespace Pulumi.OpenStack.Compute
 
             int? vcpus)
         {
+            Description = description;
             Disk = disk;
             ExtraSpecs = extraSpecs;
             FlavorId = flavorId;

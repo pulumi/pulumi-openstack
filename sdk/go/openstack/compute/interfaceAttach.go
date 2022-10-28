@@ -21,37 +21,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
-// 			AdminStateUp: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
-// 			SecurityGroups: pulumi.StringArray{
-// 				pulumi.String("default"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewInterfaceAttach(ctx, "ai1", &compute.InterfaceAttachArgs{
-// 			InstanceId: instance1.ID(),
-// 			NetworkId:  pulumi.Any(openstack_networking_port_v2.Network_1.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInterfaceAttach(ctx, "ai1", &compute.InterfaceAttachArgs{
+//				InstanceId: instance1.ID(),
+//				NetworkId:  pulumi.Any(openstack_networking_port_v2.Network_1.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Attachment Specifying a Fixed IP
 //
@@ -59,38 +62,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
-// 			AdminStateUp: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
-// 			SecurityGroups: pulumi.StringArray{
-// 				pulumi.String("default"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewInterfaceAttach(ctx, "ai1", &compute.InterfaceAttachArgs{
-// 			FixedIp:    pulumi.String("10.0.10.10"),
-// 			InstanceId: instance1.ID(),
-// 			NetworkId:  pulumi.Any(openstack_networking_port_v2.Network_1.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInterfaceAttach(ctx, "ai1", &compute.InterfaceAttachArgs{
+//				FixedIp:    pulumi.String("10.0.10.10"),
+//				InstanceId: instance1.ID(),
+//				NetworkId:  pulumi.Any(openstack_networking_port_v2.Network_1.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Attachment Using an Existing Port
 //
@@ -98,44 +104,47 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
-// 			AdminStateUp: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		port1, err := networking.NewPort(ctx, "port1", &networking.PortArgs{
-// 			AdminStateUp: pulumi.Bool(true),
-// 			NetworkId:    network1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
-// 			SecurityGroups: pulumi.StringArray{
-// 				pulumi.String("default"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewInterfaceAttach(ctx, "ai1", &compute.InterfaceAttachArgs{
-// 			InstanceId: instance1.ID(),
-// 			PortId:     port1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			port1, err := networking.NewPort(ctx, "port1", &networking.PortArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//				NetworkId:    network1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewInterfaceAttach(ctx, "ai1", &compute.InterfaceAttachArgs{
+//				InstanceId: instance1.ID(),
+//				PortId:     port1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -143,7 +152,9 @@ import (
 // Interface Attachments can be imported using the Instance ID and Port ID separated by a slash, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:compute/interfaceAttach:InterfaceAttach ai_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
+//
+//	$ pulumi import openstack:compute/interfaceAttach:InterfaceAttach ai_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
+//
 // ```
 type InterfaceAttach struct {
 	pulumi.CustomResourceState
@@ -299,7 +310,7 @@ func (i *InterfaceAttach) ToInterfaceAttachOutputWithContext(ctx context.Context
 // InterfaceAttachArrayInput is an input type that accepts InterfaceAttachArray and InterfaceAttachArrayOutput values.
 // You can construct a concrete instance of `InterfaceAttachArrayInput` via:
 //
-//          InterfaceAttachArray{ InterfaceAttachArgs{...} }
+//	InterfaceAttachArray{ InterfaceAttachArgs{...} }
 type InterfaceAttachArrayInput interface {
 	pulumi.Input
 
@@ -324,7 +335,7 @@ func (i InterfaceAttachArray) ToInterfaceAttachArrayOutputWithContext(ctx contex
 // InterfaceAttachMapInput is an input type that accepts InterfaceAttachMap and InterfaceAttachMapOutput values.
 // You can construct a concrete instance of `InterfaceAttachMapInput` via:
 //
-//          InterfaceAttachMap{ "key": InterfaceAttachArgs{...} }
+//	InterfaceAttachMap{ "key": InterfaceAttachArgs{...} }
 type InterfaceAttachMapInput interface {
 	pulumi.Input
 

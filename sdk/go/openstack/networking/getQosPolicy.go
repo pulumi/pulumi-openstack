@@ -18,21 +18,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := networking.LookupQosPolicy(ctx, &networking.LookupQosPolicyArgs{
-// 			Name: pulumi.StringRef("qos_policy_1"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.LookupQosPolicy(ctx, &networking.LookupQosPolicyArgs{
+//				Name: pulumi.StringRef("qos_policy_1"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupQosPolicy(ctx *pulumi.Context, args *LookupQosPolicyArgs, opts ...pulumi.InvokeOption) (*LookupQosPolicyResult, error) {
 	var rv LookupQosPolicyResult

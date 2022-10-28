@@ -24,44 +24,49 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project1, err := identity.NewProject(ctx, "project1", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		flavor1, err := compute.NewFlavor(ctx, "flavor1", &compute.FlavorArgs{
-// 			Disk:     pulumi.Int(20),
-// 			IsPublic: pulumi.Bool(false),
-// 			Ram:      pulumi.Int(8096),
-// 			Vcpus:    pulumi.Int(2),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewFlavorAccess(ctx, "access1", &compute.FlavorAccessArgs{
-// 			FlavorId: flavor1.ID(),
-// 			TenantId: project1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			flavor1, err := compute.NewFlavor(ctx, "flavor1", &compute.FlavorArgs{
+//				Disk:     pulumi.Int(20),
+//				IsPublic: pulumi.Bool(false),
+//				Ram:      pulumi.Int(8096),
+//				Vcpus:    pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewFlavorAccess(ctx, "access1", &compute.FlavorAccessArgs{
+//				FlavorId: flavor1.ID(),
+//				TenantId: project1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// This resource can be imported by specifying all two arguments, separated by a forward slash
+// # This resource can be imported by specifying all two arguments, separated by a forward slash
 //
 // ```sh
-//  $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 <flavor_id>/<tenant_id>
+//
+//	$ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 <flavor_id>/<tenant_id>
+//
 // ```
 type FlavorAccess struct {
 	pulumi.CustomResourceState
@@ -190,7 +195,7 @@ func (i *FlavorAccess) ToFlavorAccessOutputWithContext(ctx context.Context) Flav
 // FlavorAccessArrayInput is an input type that accepts FlavorAccessArray and FlavorAccessArrayOutput values.
 // You can construct a concrete instance of `FlavorAccessArrayInput` via:
 //
-//          FlavorAccessArray{ FlavorAccessArgs{...} }
+//	FlavorAccessArray{ FlavorAccessArgs{...} }
 type FlavorAccessArrayInput interface {
 	pulumi.Input
 
@@ -215,7 +220,7 @@ func (i FlavorAccessArray) ToFlavorAccessArrayOutputWithContext(ctx context.Cont
 // FlavorAccessMapInput is an input type that accepts FlavorAccessMap and FlavorAccessMapOutput values.
 // You can construct a concrete instance of `FlavorAccessMapInput` via:
 //
-//          FlavorAccessMap{ "key": FlavorAccessArgs{...} }
+//	FlavorAccessMap{ "key": FlavorAccessArgs{...} }
 type FlavorAccessMapInput interface {
 	pulumi.Input
 

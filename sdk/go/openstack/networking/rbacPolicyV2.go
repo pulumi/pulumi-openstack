@@ -31,30 +31,33 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
-// 			AdminStateUp: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = networking.NewRbacPolicyV2(ctx, "rbacPolicy1", &networking.RbacPolicyV2Args{
-// 			Action:       pulumi.String("access_as_shared"),
-// 			ObjectId:     network1.ID(),
-// 			ObjectType:   pulumi.String("network"),
-// 			TargetTenant: pulumi.String("20415a973c9e45d3917f078950644697"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewRbacPolicyV2(ctx, "rbacPolicy1", &networking.RbacPolicyV2Args{
+//				Action:       pulumi.String("access_as_shared"),
+//				ObjectId:     network1.ID(),
+//				ObjectType:   pulumi.String("network"),
+//				TargetTenant: pulumi.String("20415a973c9e45d3917f078950644697"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -62,7 +65,9 @@ import (
 // RBAC policies can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:networking/rbacPolicyV2:RbacPolicyV2 rbac_policy_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+//
+//	$ pulumi import openstack:networking/rbacPolicyV2:RbacPolicyV2 rbac_policy_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+//
 // ```
 type RbacPolicyV2 struct {
 	pulumi.CustomResourceState
@@ -250,7 +255,7 @@ func (i *RbacPolicyV2) ToRbacPolicyV2OutputWithContext(ctx context.Context) Rbac
 // RbacPolicyV2ArrayInput is an input type that accepts RbacPolicyV2Array and RbacPolicyV2ArrayOutput values.
 // You can construct a concrete instance of `RbacPolicyV2ArrayInput` via:
 //
-//          RbacPolicyV2Array{ RbacPolicyV2Args{...} }
+//	RbacPolicyV2Array{ RbacPolicyV2Args{...} }
 type RbacPolicyV2ArrayInput interface {
 	pulumi.Input
 
@@ -275,7 +280,7 @@ func (i RbacPolicyV2Array) ToRbacPolicyV2ArrayOutputWithContext(ctx context.Cont
 // RbacPolicyV2MapInput is an input type that accepts RbacPolicyV2Map and RbacPolicyV2MapOutput values.
 // You can construct a concrete instance of `RbacPolicyV2MapInput` via:
 //
-//          RbacPolicyV2Map{ "key": RbacPolicyV2Args{...} }
+//	RbacPolicyV2Map{ "key": RbacPolicyV2Args{...} }
 type RbacPolicyV2MapInput interface {
 	pulumi.Input
 

@@ -15,22 +15,15 @@ public final class PortFixedIp {
      * @return The additional IP address.
      * 
      */
-    private final @Nullable String ipAddress;
+    private @Nullable String ipAddress;
     /**
      * @return Subnet in which to allocate IP address for
      * this port.
      * 
      */
-    private final String subnetId;
+    private String subnetId;
 
-    @CustomType.Constructor
-    private PortFixedIp(
-        @CustomType.Parameter("ipAddress") @Nullable String ipAddress,
-        @CustomType.Parameter("subnetId") String subnetId) {
-        this.ipAddress = ipAddress;
-        this.subnetId = subnetId;
-    }
-
+    private PortFixedIp() {}
     /**
      * @return The additional IP address.
      * 
@@ -54,30 +47,32 @@ public final class PortFixedIp {
     public static Builder builder(PortFixedIp defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String ipAddress;
         private String subnetId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PortFixedIp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipAddress = defaults.ipAddress;
     	      this.subnetId = defaults.subnetId;
         }
 
+        @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
             this.ipAddress = ipAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder subnetId(String subnetId) {
             this.subnetId = Objects.requireNonNull(subnetId);
             return this;
-        }        public PortFixedIp build() {
-            return new PortFixedIp(ipAddress, subnetId);
+        }
+        public PortFixedIp build() {
+            final var o = new PortFixedIp();
+            o.ipAddress = ipAddress;
+            o.subnetId = subnetId;
+            return o;
         }
     }
 }

@@ -79,6 +79,12 @@ namespace Pulumi.OpenStack.Compute
         public Output<bool?> ConfigDrive { get; private set; } = null!;
 
         /// <summary>
+        /// The creation time of the instance.
+        /// </summary>
+        [Output("created")]
+        public Output<string> Created { get; private set; } = null!;
+
+        /// <summary>
         /// The flavor ID of
         /// the desired flavor for the server. Changing this resizes the existing server.
         /// </summary>
@@ -215,6 +221,12 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the instance was last updated.
+        /// </summary>
+        [Output("updated")]
+        public Output<string> Updated { get; private set; } = null!;
 
         /// <summary>
         /// The user data to provide when launching the instance.
@@ -629,6 +641,12 @@ namespace Pulumi.OpenStack.Compute
         public Input<bool>? ConfigDrive { get; set; }
 
         /// <summary>
+        /// The creation time of the instance.
+        /// </summary>
+        [Input("created")]
+        public Input<string>? Created { get; set; }
+
+        /// <summary>
         /// The flavor ID of
         /// the desired flavor for the server. Changing this resizes the existing server.
         /// </summary>
@@ -801,6 +819,12 @@ namespace Pulumi.OpenStack.Compute
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// The time when the instance was last updated.
+        /// </summary>
+        [Input("updated")]
+        public Input<string>? Updated { get; set; }
 
         /// <summary>
         /// The user data to provide when launching the instance.

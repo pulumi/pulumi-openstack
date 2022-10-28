@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetShareExportLocation {
-    private final String path;
-    private final String preferred;
+    private String path;
+    private String preferred;
 
-    @CustomType.Constructor
-    private GetShareExportLocation(
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("preferred") String preferred) {
-        this.path = path;
-        this.preferred = preferred;
-    }
-
+    private GetShareExportLocation() {}
     public String path() {
         return this.path;
     }
@@ -34,30 +27,32 @@ public final class GetShareExportLocation {
     public static Builder builder(GetShareExportLocation defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String path;
         private String preferred;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetShareExportLocation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.path = defaults.path;
     	      this.preferred = defaults.preferred;
         }
 
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder preferred(String preferred) {
             this.preferred = Objects.requireNonNull(preferred);
             return this;
-        }        public GetShareExportLocation build() {
-            return new GetShareExportLocation(path, preferred);
+        }
+        public GetShareExportLocation build() {
+            final var o = new GetShareExportLocation();
+            o.path = path;
+            o.preferred = preferred;
+            return o;
         }
     }
 }

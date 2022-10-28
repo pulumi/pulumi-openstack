@@ -18,32 +18,32 @@ public final class InstanceBlockDevice {
      * Changing this creates a new server.
      * 
      */
-    private final @Nullable Integer bootIndex;
+    private @Nullable Integer bootIndex;
     /**
      * @return Delete the volume / block device upon
      * termination of the instance. Defaults to false. Changing this creates a
      * new server.
      * 
      */
-    private final @Nullable Boolean deleteOnTermination;
+    private @Nullable Boolean deleteOnTermination;
     /**
      * @return The type that gets created. Possible values
      * are &#34;volume&#34; and &#34;local&#34;. Changing this creates a new server.
      * 
      */
-    private final @Nullable String destinationType;
+    private @Nullable String destinationType;
     /**
      * @return The low-level device type that will be used. Most
      * common thing is to leave this empty. Changing this creates a new server.
      * 
      */
-    private final @Nullable String deviceType;
+    private @Nullable String deviceType;
     /**
      * @return The low-level disk bus that will be used. Most common
      * thing is to leave this empty. Changing this creates a new server.
      * 
      */
-    private final @Nullable String diskBus;
+    private @Nullable String diskBus;
     /**
      * @return Specifies the guest server disk file system format,
      * such as `ext2`, `ext3`, `ext4`, `xfs` or `swap`. Swap block device mappings
@@ -53,20 +53,20 @@ public final class InstanceBlockDevice {
      * creates a new server.
      * 
      */
-    private final @Nullable String guestFormat;
+    private @Nullable String guestFormat;
     /**
      * @return The source type of the device. Must be one of
      * &#34;blank&#34;, &#34;image&#34;, &#34;volume&#34;, or &#34;snapshot&#34;. Changing this creates a new
      * server.
      * 
      */
-    private final String sourceType;
+    private String sourceType;
     /**
      * @return The UUID of
      * the image, volume, or snapshot. Changing this creates a new server.
      * 
      */
-    private final @Nullable String uuid;
+    private @Nullable String uuid;
     /**
      * @return The size of the volume to create (in gigabytes). Required
      * in the following combinations: source=image and destination=volume,
@@ -74,7 +74,7 @@ public final class InstanceBlockDevice {
      * Changing this creates a new server.
      * 
      */
-    private final @Nullable Integer volumeSize;
+    private @Nullable Integer volumeSize;
     /**
      * @return The volume type that will be used, for example SSD
      * or HDD storage. The available options depend on how your specific OpenStack
@@ -82,32 +82,9 @@ public final class InstanceBlockDevice {
      * creates a new server.
      * 
      */
-    private final @Nullable String volumeType;
+    private @Nullable String volumeType;
 
-    @CustomType.Constructor
-    private InstanceBlockDevice(
-        @CustomType.Parameter("bootIndex") @Nullable Integer bootIndex,
-        @CustomType.Parameter("deleteOnTermination") @Nullable Boolean deleteOnTermination,
-        @CustomType.Parameter("destinationType") @Nullable String destinationType,
-        @CustomType.Parameter("deviceType") @Nullable String deviceType,
-        @CustomType.Parameter("diskBus") @Nullable String diskBus,
-        @CustomType.Parameter("guestFormat") @Nullable String guestFormat,
-        @CustomType.Parameter("sourceType") String sourceType,
-        @CustomType.Parameter("uuid") @Nullable String uuid,
-        @CustomType.Parameter("volumeSize") @Nullable Integer volumeSize,
-        @CustomType.Parameter("volumeType") @Nullable String volumeType) {
-        this.bootIndex = bootIndex;
-        this.deleteOnTermination = deleteOnTermination;
-        this.destinationType = destinationType;
-        this.deviceType = deviceType;
-        this.diskBus = diskBus;
-        this.guestFormat = guestFormat;
-        this.sourceType = sourceType;
-        this.uuid = uuid;
-        this.volumeSize = volumeSize;
-        this.volumeType = volumeType;
-    }
-
+    private InstanceBlockDevice() {}
     /**
      * @return The boot index of the volume. It defaults to 0.
      * Changing this creates a new server.
@@ -206,7 +183,7 @@ public final class InstanceBlockDevice {
     public static Builder builder(InstanceBlockDevice defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer bootIndex;
         private @Nullable Boolean deleteOnTermination;
@@ -218,11 +195,7 @@ public final class InstanceBlockDevice {
         private @Nullable String uuid;
         private @Nullable Integer volumeSize;
         private @Nullable String volumeType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceBlockDevice defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bootIndex = defaults.bootIndex;
@@ -237,47 +210,69 @@ public final class InstanceBlockDevice {
     	      this.volumeType = defaults.volumeType;
         }
 
+        @CustomType.Setter
         public Builder bootIndex(@Nullable Integer bootIndex) {
             this.bootIndex = bootIndex;
             return this;
         }
+        @CustomType.Setter
         public Builder deleteOnTermination(@Nullable Boolean deleteOnTermination) {
             this.deleteOnTermination = deleteOnTermination;
             return this;
         }
+        @CustomType.Setter
         public Builder destinationType(@Nullable String destinationType) {
             this.destinationType = destinationType;
             return this;
         }
+        @CustomType.Setter
         public Builder deviceType(@Nullable String deviceType) {
             this.deviceType = deviceType;
             return this;
         }
+        @CustomType.Setter
         public Builder diskBus(@Nullable String diskBus) {
             this.diskBus = diskBus;
             return this;
         }
+        @CustomType.Setter
         public Builder guestFormat(@Nullable String guestFormat) {
             this.guestFormat = guestFormat;
             return this;
         }
+        @CustomType.Setter
         public Builder sourceType(String sourceType) {
             this.sourceType = Objects.requireNonNull(sourceType);
             return this;
         }
+        @CustomType.Setter
         public Builder uuid(@Nullable String uuid) {
             this.uuid = uuid;
             return this;
         }
+        @CustomType.Setter
         public Builder volumeSize(@Nullable Integer volumeSize) {
             this.volumeSize = volumeSize;
             return this;
         }
+        @CustomType.Setter
         public Builder volumeType(@Nullable String volumeType) {
             this.volumeType = volumeType;
             return this;
-        }        public InstanceBlockDevice build() {
-            return new InstanceBlockDevice(bootIndex, deleteOnTermination, destinationType, deviceType, diskBus, guestFormat, sourceType, uuid, volumeSize, volumeType);
+        }
+        public InstanceBlockDevice build() {
+            final var o = new InstanceBlockDevice();
+            o.bootIndex = bootIndex;
+            o.deleteOnTermination = deleteOnTermination;
+            o.destinationType = destinationType;
+            o.deviceType = deviceType;
+            o.diskBus = diskBus;
+            o.guestFormat = guestFormat;
+            o.sourceType = sourceType;
+            o.uuid = uuid;
+            o.volumeSize = volumeSize;
+            o.volumeType = volumeType;
+            return o;
         }
     }
 }

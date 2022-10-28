@@ -21,169 +21,120 @@ public final class GetSecretResult {
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable Boolean aclOnly;
+    private @Nullable Boolean aclOnly;
     /**
      * @return The list of ACLs assigned to a secret. The `read` structure is described below.
      * 
      */
-    private final List<GetSecretAcl> acls;
+    private List<GetSecretAcl> acls;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String algorithm;
+    private @Nullable String algorithm;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable Integer bitLength;
+    private @Nullable Integer bitLength;
     /**
      * @return The map of the content types, assigned on the secret.
      * 
      */
-    private final Map<String,Object> contentTypes;
+    private Map<String,Object> contentTypes;
     /**
      * @return The date the secret ACL was created.
      * 
      */
-    private final String createdAt;
+    private String createdAt;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String createdAtFilter;
+    private @Nullable String createdAtFilter;
     /**
      * @return The creator of the secret.
      * 
      */
-    private final String creatorId;
+    private String creatorId;
     /**
      * @return The date the secret will expire.
      * 
      */
-    private final String expiration;
+    private String expiration;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String expirationFilter;
+    private @Nullable String expirationFilter;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The map of metadata, assigned on the secret, which has been
      * explicitly and implicitly added.
      * 
      */
-    private final Map<String,Object> metadata;
+    private Map<String,Object> metadata;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String mode;
+    private @Nullable String mode;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return The secret payload.
      * 
      */
-    private final String payload;
+    private String payload;
     /**
      * @return The Secret encoding.
      * 
      */
-    private final String payloadContentEncoding;
+    private String payloadContentEncoding;
     /**
      * @return The Secret content type.
      * 
      */
-    private final String payloadContentType;
+    private String payloadContentType;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String region;
+    private @Nullable String region;
     /**
      * @return The secret reference / where to find the secret.
      * 
      */
-    private final String secretRef;
+    private String secretRef;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String secretType;
+    private @Nullable String secretType;
     /**
      * @return The status of the secret.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The date the secret ACL was last updated.
      * 
      */
-    private final String updatedAt;
+    private String updatedAt;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String updatedAtFilter;
+    private @Nullable String updatedAtFilter;
 
-    @CustomType.Constructor
-    private GetSecretResult(
-        @CustomType.Parameter("aclOnly") @Nullable Boolean aclOnly,
-        @CustomType.Parameter("acls") List<GetSecretAcl> acls,
-        @CustomType.Parameter("algorithm") @Nullable String algorithm,
-        @CustomType.Parameter("bitLength") @Nullable Integer bitLength,
-        @CustomType.Parameter("contentTypes") Map<String,Object> contentTypes,
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("createdAtFilter") @Nullable String createdAtFilter,
-        @CustomType.Parameter("creatorId") String creatorId,
-        @CustomType.Parameter("expiration") String expiration,
-        @CustomType.Parameter("expirationFilter") @Nullable String expirationFilter,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("metadata") Map<String,Object> metadata,
-        @CustomType.Parameter("mode") @Nullable String mode,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("payload") String payload,
-        @CustomType.Parameter("payloadContentEncoding") String payloadContentEncoding,
-        @CustomType.Parameter("payloadContentType") String payloadContentType,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("secretRef") String secretRef,
-        @CustomType.Parameter("secretType") @Nullable String secretType,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("updatedAt") String updatedAt,
-        @CustomType.Parameter("updatedAtFilter") @Nullable String updatedAtFilter) {
-        this.aclOnly = aclOnly;
-        this.acls = acls;
-        this.algorithm = algorithm;
-        this.bitLength = bitLength;
-        this.contentTypes = contentTypes;
-        this.createdAt = createdAt;
-        this.createdAtFilter = createdAtFilter;
-        this.creatorId = creatorId;
-        this.expiration = expiration;
-        this.expirationFilter = expirationFilter;
-        this.id = id;
-        this.metadata = metadata;
-        this.mode = mode;
-        this.name = name;
-        this.payload = payload;
-        this.payloadContentEncoding = payloadContentEncoding;
-        this.payloadContentType = payloadContentType;
-        this.region = region;
-        this.secretRef = secretRef;
-        this.secretType = secretType;
-        this.status = status;
-        this.updatedAt = updatedAt;
-        this.updatedAtFilter = updatedAtFilter;
-    }
-
+    private GetSecretResult() {}
     /**
      * @return See Argument Reference above.
      * 
@@ -354,7 +305,7 @@ public final class GetSecretResult {
     public static Builder builder(GetSecretResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean aclOnly;
         private List<GetSecretAcl> acls;
@@ -379,11 +330,7 @@ public final class GetSecretResult {
         private String status;
         private String updatedAt;
         private @Nullable String updatedAtFilter;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSecretResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aclOnly = defaults.aclOnly;
@@ -411,10 +358,12 @@ public final class GetSecretResult {
     	      this.updatedAtFilter = defaults.updatedAtFilter;
         }
 
+        @CustomType.Setter
         public Builder aclOnly(@Nullable Boolean aclOnly) {
             this.aclOnly = aclOnly;
             return this;
         }
+        @CustomType.Setter
         public Builder acls(List<GetSecretAcl> acls) {
             this.acls = Objects.requireNonNull(acls);
             return this;
@@ -422,91 +371,137 @@ public final class GetSecretResult {
         public Builder acls(GetSecretAcl... acls) {
             return acls(List.of(acls));
         }
+        @CustomType.Setter
         public Builder algorithm(@Nullable String algorithm) {
             this.algorithm = algorithm;
             return this;
         }
+        @CustomType.Setter
         public Builder bitLength(@Nullable Integer bitLength) {
             this.bitLength = bitLength;
             return this;
         }
+        @CustomType.Setter
         public Builder contentTypes(Map<String,Object> contentTypes) {
             this.contentTypes = Objects.requireNonNull(contentTypes);
             return this;
         }
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder createdAtFilter(@Nullable String createdAtFilter) {
             this.createdAtFilter = createdAtFilter;
             return this;
         }
+        @CustomType.Setter
         public Builder creatorId(String creatorId) {
             this.creatorId = Objects.requireNonNull(creatorId);
             return this;
         }
+        @CustomType.Setter
         public Builder expiration(String expiration) {
             this.expiration = Objects.requireNonNull(expiration);
             return this;
         }
+        @CustomType.Setter
         public Builder expirationFilter(@Nullable String expirationFilter) {
             this.expirationFilter = expirationFilter;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(Map<String,Object> metadata) {
             this.metadata = Objects.requireNonNull(metadata);
             return this;
         }
+        @CustomType.Setter
         public Builder mode(@Nullable String mode) {
             this.mode = mode;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder payload(String payload) {
             this.payload = Objects.requireNonNull(payload);
             return this;
         }
+        @CustomType.Setter
         public Builder payloadContentEncoding(String payloadContentEncoding) {
             this.payloadContentEncoding = Objects.requireNonNull(payloadContentEncoding);
             return this;
         }
+        @CustomType.Setter
         public Builder payloadContentType(String payloadContentType) {
             this.payloadContentType = Objects.requireNonNull(payloadContentType);
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder secretRef(String secretRef) {
             this.secretRef = Objects.requireNonNull(secretRef);
             return this;
         }
+        @CustomType.Setter
         public Builder secretType(@Nullable String secretType) {
             this.secretType = secretType;
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
             this.updatedAt = Objects.requireNonNull(updatedAt);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedAtFilter(@Nullable String updatedAtFilter) {
             this.updatedAtFilter = updatedAtFilter;
             return this;
-        }        public GetSecretResult build() {
-            return new GetSecretResult(aclOnly, acls, algorithm, bitLength, contentTypes, createdAt, createdAtFilter, creatorId, expiration, expirationFilter, id, metadata, mode, name, payload, payloadContentEncoding, payloadContentType, region, secretRef, secretType, status, updatedAt, updatedAtFilter);
+        }
+        public GetSecretResult build() {
+            final var o = new GetSecretResult();
+            o.aclOnly = aclOnly;
+            o.acls = acls;
+            o.algorithm = algorithm;
+            o.bitLength = bitLength;
+            o.contentTypes = contentTypes;
+            o.createdAt = createdAt;
+            o.createdAtFilter = createdAtFilter;
+            o.creatorId = creatorId;
+            o.expiration = expiration;
+            o.expirationFilter = expirationFilter;
+            o.id = id;
+            o.metadata = metadata;
+            o.mode = mode;
+            o.name = name;
+            o.payload = payload;
+            o.payloadContentEncoding = payloadContentEncoding;
+            o.payloadContentType = payloadContentType;
+            o.region = region;
+            o.secretRef = secretRef;
+            o.secretType = secretType;
+            o.status = status;
+            o.updatedAt = updatedAt;
+            o.updatedAtFilter = updatedAtFilter;
+            return o;
         }
     }
 }

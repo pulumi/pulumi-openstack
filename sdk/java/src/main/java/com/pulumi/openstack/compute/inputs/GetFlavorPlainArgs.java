@@ -18,6 +18,21 @@ public final class GetFlavorPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetFlavorPlainArgs Empty = new GetFlavorPlainArgs();
 
     /**
+     * The description of the flavor.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable String description;
+
+    /**
+     * @return The description of the flavor.
+     * 
+     */
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * The exact amount of disk (in gigabytes).
      * 
      */
@@ -193,6 +208,7 @@ public final class GetFlavorPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetFlavorPlainArgs() {}
 
     private GetFlavorPlainArgs(GetFlavorPlainArgs $) {
+        this.description = $.description;
         this.disk = $.disk;
         this.flavorId = $.flavorId;
         this.isPublic = $.isPublic;
@@ -222,6 +238,17 @@ public final class GetFlavorPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetFlavorPlainArgs defaults) {
             $ = new GetFlavorPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param description The description of the flavor.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable String description) {
+            $.description = description;
+            return this;
         }
 
         /**

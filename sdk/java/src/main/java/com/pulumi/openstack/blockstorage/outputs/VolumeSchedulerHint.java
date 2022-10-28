@@ -19,19 +19,19 @@ public final class VolumeSchedulerHint {
      * properties to pass to the scheduler.
      * 
      */
-    private final @Nullable Map<String,Object> additionalProperties;
+    private @Nullable Map<String,Object> additionalProperties;
     /**
      * @return The volume should be scheduled on a
      * different host from the set of volumes specified in the list provided.
      * 
      */
-    private final @Nullable List<String> differentHosts;
+    private @Nullable List<String> differentHosts;
     /**
      * @return An instance UUID. The volume should be
      * scheduled on the same host as the instance.
      * 
      */
-    private final @Nullable String localToInstance;
+    private @Nullable String localToInstance;
     /**
      * @return A conditional query that a back-end must pass in
      * order to host a volume. The query must use the `JsonFilter` syntax
@@ -41,28 +41,15 @@ public final class VolumeSchedulerHint {
      * `and`, `or`, or `not` are not supported. An example of a simple query is:
      * 
      */
-    private final @Nullable String query;
+    private @Nullable String query;
     /**
      * @return A list of volume UUIDs. The volume should be
      * scheduled on the same host as another volume specified in the list provided.
      * 
      */
-    private final @Nullable List<String> sameHosts;
+    private @Nullable List<String> sameHosts;
 
-    @CustomType.Constructor
-    private VolumeSchedulerHint(
-        @CustomType.Parameter("additionalProperties") @Nullable Map<String,Object> additionalProperties,
-        @CustomType.Parameter("differentHosts") @Nullable List<String> differentHosts,
-        @CustomType.Parameter("localToInstance") @Nullable String localToInstance,
-        @CustomType.Parameter("query") @Nullable String query,
-        @CustomType.Parameter("sameHosts") @Nullable List<String> sameHosts) {
-        this.additionalProperties = additionalProperties;
-        this.differentHosts = differentHosts;
-        this.localToInstance = localToInstance;
-        this.query = query;
-        this.sameHosts = sameHosts;
-    }
-
+    private VolumeSchedulerHint() {}
     /**
      * @return Arbitrary key/value pairs of additional
      * properties to pass to the scheduler.
@@ -115,18 +102,14 @@ public final class VolumeSchedulerHint {
     public static Builder builder(VolumeSchedulerHint defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,Object> additionalProperties;
         private @Nullable List<String> differentHosts;
         private @Nullable String localToInstance;
         private @Nullable String query;
         private @Nullable List<String> sameHosts;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(VolumeSchedulerHint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalProperties = defaults.additionalProperties;
@@ -136,10 +119,12 @@ public final class VolumeSchedulerHint {
     	      this.sameHosts = defaults.sameHosts;
         }
 
+        @CustomType.Setter
         public Builder additionalProperties(@Nullable Map<String,Object> additionalProperties) {
             this.additionalProperties = additionalProperties;
             return this;
         }
+        @CustomType.Setter
         public Builder differentHosts(@Nullable List<String> differentHosts) {
             this.differentHosts = differentHosts;
             return this;
@@ -147,22 +132,32 @@ public final class VolumeSchedulerHint {
         public Builder differentHosts(String... differentHosts) {
             return differentHosts(List.of(differentHosts));
         }
+        @CustomType.Setter
         public Builder localToInstance(@Nullable String localToInstance) {
             this.localToInstance = localToInstance;
             return this;
         }
+        @CustomType.Setter
         public Builder query(@Nullable String query) {
             this.query = query;
             return this;
         }
+        @CustomType.Setter
         public Builder sameHosts(@Nullable List<String> sameHosts) {
             this.sameHosts = sameHosts;
             return this;
         }
         public Builder sameHosts(String... sameHosts) {
             return sameHosts(List.of(sameHosts));
-        }        public VolumeSchedulerHint build() {
-            return new VolumeSchedulerHint(additionalProperties, differentHosts, localToInstance, query, sameHosts);
+        }
+        public VolumeSchedulerHint build() {
+            final var o = new VolumeSchedulerHint();
+            o.additionalProperties = additionalProperties;
+            o.differentHosts = differentHosts;
+            o.localToInstance = localToInstance;
+            o.query = query;
+            o.sameHosts = sameHosts;
+            return o;
         }
     }
 }

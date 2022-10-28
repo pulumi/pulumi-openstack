@@ -577,6 +577,7 @@ class _InstanceState:
                  availability_zone_hints: Optional[pulumi.Input[str]] = None,
                  block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]]] = None,
                  config_drive: Optional[pulumi.Input[bool]] = None,
+                 created: Optional[pulumi.Input[str]] = None,
                  flavor_id: Optional[pulumi.Input[str]] = None,
                  flavor_name: Optional[pulumi.Input[str]] = None,
                  floating_ip: Optional[pulumi.Input[str]] = None,
@@ -595,6 +596,7 @@ class _InstanceState:
                  security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  stop_before_destroy: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 updated: Optional[pulumi.Input[str]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  vendor_options: Optional[pulumi.Input['InstanceVendorOptionsArgs']] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVolumeArgs']]]] = None):
@@ -623,6 +625,7 @@ class _InstanceState:
                for more information.
         :param pulumi.Input[bool] config_drive: Whether to use the config_drive feature to
                configure the instance. Changing this creates a new server.
+        :param pulumi.Input[str] created: The creation time of the instance.
         :param pulumi.Input[str] flavor_id: The flavor ID of
                the desired flavor for the server. Changing this resizes the existing server.
         :param pulumi.Input[str] flavor_name: The name of the
@@ -673,6 +676,7 @@ class _InstanceState:
                If instance doesn't stop within timeout, it will be destroyed anyway.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the instance. Changing this
                updates the existing instance tags.
+        :param pulumi.Input[str] updated: The time when the instance was last updated.
         :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
                Changing this creates a new server.
         :param pulumi.Input['InstanceVendorOptionsArgs'] vendor_options: Map of additional vendor-specific options.
@@ -696,6 +700,8 @@ class _InstanceState:
             pulumi.set(__self__, "block_devices", block_devices)
         if config_drive is not None:
             pulumi.set(__self__, "config_drive", config_drive)
+        if created is not None:
+            pulumi.set(__self__, "created", created)
         if flavor_id is not None:
             pulumi.set(__self__, "flavor_id", flavor_id)
         if flavor_name is not None:
@@ -735,6 +741,8 @@ class _InstanceState:
             pulumi.set(__self__, "stop_before_destroy", stop_before_destroy)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if updated is not None:
+            pulumi.set(__self__, "updated", updated)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
         if vendor_options is not None:
@@ -864,6 +872,18 @@ class _InstanceState:
     @config_drive.setter
     def config_drive(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "config_drive", value)
+
+    @property
+    @pulumi.getter
+    def created(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation time of the instance.
+        """
+        return pulumi.get(self, "created")
+
+    @created.setter
+    def created(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created", value)
 
     @property
     @pulumi.getter(name="flavorId")
@@ -1112,6 +1132,18 @@ class _InstanceState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter
+    def updated(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the instance was last updated.
+        """
+        return pulumi.get(self, "updated")
+
+    @updated.setter
+    def updated(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated", value)
+
+    @property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1357,6 +1389,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["volumes"] = volumes
             __props__.__dict__["all_metadata"] = None
             __props__.__dict__["all_tags"] = None
+            __props__.__dict__["created"] = None
+            __props__.__dict__["updated"] = None
         super(Instance, __self__).__init__(
             'openstack:compute/instance:Instance',
             resource_name,
@@ -1376,6 +1410,7 @@ class Instance(pulumi.CustomResource):
             availability_zone_hints: Optional[pulumi.Input[str]] = None,
             block_devices: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceBlockDeviceArgs']]]]] = None,
             config_drive: Optional[pulumi.Input[bool]] = None,
+            created: Optional[pulumi.Input[str]] = None,
             flavor_id: Optional[pulumi.Input[str]] = None,
             flavor_name: Optional[pulumi.Input[str]] = None,
             floating_ip: Optional[pulumi.Input[str]] = None,
@@ -1394,6 +1429,7 @@ class Instance(pulumi.CustomResource):
             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             stop_before_destroy: Optional[pulumi.Input[bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            updated: Optional[pulumi.Input[str]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
             vendor_options: Optional[pulumi.Input[pulumi.InputType['InstanceVendorOptionsArgs']]] = None,
             volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceVolumeArgs']]]]] = None) -> 'Instance':
@@ -1427,6 +1463,7 @@ class Instance(pulumi.CustomResource):
                for more information.
         :param pulumi.Input[bool] config_drive: Whether to use the config_drive feature to
                configure the instance. Changing this creates a new server.
+        :param pulumi.Input[str] created: The creation time of the instance.
         :param pulumi.Input[str] flavor_id: The flavor ID of
                the desired flavor for the server. Changing this resizes the existing server.
         :param pulumi.Input[str] flavor_name: The name of the
@@ -1477,6 +1514,7 @@ class Instance(pulumi.CustomResource):
                If instance doesn't stop within timeout, it will be destroyed anyway.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the instance. Changing this
                updates the existing instance tags.
+        :param pulumi.Input[str] updated: The time when the instance was last updated.
         :param pulumi.Input[str] user_data: The user data to provide when launching the instance.
                Changing this creates a new server.
         :param pulumi.Input[pulumi.InputType['InstanceVendorOptionsArgs']] vendor_options: Map of additional vendor-specific options.
@@ -1495,6 +1533,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["availability_zone_hints"] = availability_zone_hints
         __props__.__dict__["block_devices"] = block_devices
         __props__.__dict__["config_drive"] = config_drive
+        __props__.__dict__["created"] = created
         __props__.__dict__["flavor_id"] = flavor_id
         __props__.__dict__["flavor_name"] = flavor_name
         __props__.__dict__["floating_ip"] = floating_ip
@@ -1513,6 +1552,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["security_groups"] = security_groups
         __props__.__dict__["stop_before_destroy"] = stop_before_destroy
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["updated"] = updated
         __props__.__dict__["user_data"] = user_data
         __props__.__dict__["vendor_options"] = vendor_options
         __props__.__dict__["volumes"] = volumes
@@ -1601,6 +1641,14 @@ class Instance(pulumi.CustomResource):
         configure the instance. Changing this creates a new server.
         """
         return pulumi.get(self, "config_drive")
+
+    @property
+    @pulumi.getter
+    def created(self) -> pulumi.Output[str]:
+        """
+        The creation time of the instance.
+        """
+        return pulumi.get(self, "created")
 
     @property
     @pulumi.getter(name="flavorId")
@@ -1775,6 +1823,14 @@ class Instance(pulumi.CustomResource):
         updates the existing instance tags.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> pulumi.Output[str]:
+        """
+        The time when the instance was last updated.
+        """
+        return pulumi.get(self, "updated")
 
     @property
     @pulumi.getter(name="userData")

@@ -20,59 +20,42 @@ public final class SecGroupRule {
      * be combined with `from_group_id` or `self`.
      * 
      */
-    private final @Nullable String cidr;
+    private @Nullable String cidr;
     /**
      * @return Required if `cidr` or `self` is empty. The ID of a
      * group from which to forward traffic to the parent group. Changing this creates a
      * new security group rule. Cannot be combined with `cidr` or `self`.
      * 
      */
-    private final @Nullable String fromGroupId;
+    private @Nullable String fromGroupId;
     /**
      * @return An integer representing the lower bound of the port
      * range to open. Changing this creates a new security group rule.
      * 
      */
-    private final Integer fromPort;
-    private final @Nullable String id;
+    private Integer fromPort;
+    private @Nullable String id;
     /**
      * @return The protocol type that will be allowed. Changing
      * this creates a new security group rule.
      * 
      */
-    private final String ipProtocol;
+    private String ipProtocol;
     /**
      * @return Required if `cidr` and `from_group_id` is empty. If true,
      * the security group itself will be added as a source to this ingress rule. Cannot
      * be combined with `cidr` or `from_group_id`.
      * 
      */
-    private final @Nullable Boolean self;
+    private @Nullable Boolean self;
     /**
      * @return An integer representing the upper bound of the port
      * range to open. Changing this creates a new security group rule.
      * 
      */
-    private final Integer toPort;
+    private Integer toPort;
 
-    @CustomType.Constructor
-    private SecGroupRule(
-        @CustomType.Parameter("cidr") @Nullable String cidr,
-        @CustomType.Parameter("fromGroupId") @Nullable String fromGroupId,
-        @CustomType.Parameter("fromPort") Integer fromPort,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("ipProtocol") String ipProtocol,
-        @CustomType.Parameter("self") @Nullable Boolean self,
-        @CustomType.Parameter("toPort") Integer toPort) {
-        this.cidr = cidr;
-        this.fromGroupId = fromGroupId;
-        this.fromPort = fromPort;
-        this.id = id;
-        this.ipProtocol = ipProtocol;
-        this.self = self;
-        this.toPort = toPort;
-    }
-
+    private SecGroupRule() {}
     /**
      * @return Required if `from_group_id` or `self` is empty. The IP range
      * that will be the source of network traffic to the security group. Use 0.0.0.0/0
@@ -136,7 +119,7 @@ public final class SecGroupRule {
     public static Builder builder(SecGroupRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String cidr;
         private @Nullable String fromGroupId;
@@ -145,11 +128,7 @@ public final class SecGroupRule {
         private String ipProtocol;
         private @Nullable Boolean self;
         private Integer toPort;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecGroupRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidr = defaults.cidr;
@@ -161,35 +140,51 @@ public final class SecGroupRule {
     	      this.toPort = defaults.toPort;
         }
 
+        @CustomType.Setter
         public Builder cidr(@Nullable String cidr) {
             this.cidr = cidr;
             return this;
         }
+        @CustomType.Setter
         public Builder fromGroupId(@Nullable String fromGroupId) {
             this.fromGroupId = fromGroupId;
             return this;
         }
+        @CustomType.Setter
         public Builder fromPort(Integer fromPort) {
             this.fromPort = Objects.requireNonNull(fromPort);
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder ipProtocol(String ipProtocol) {
             this.ipProtocol = Objects.requireNonNull(ipProtocol);
             return this;
         }
+        @CustomType.Setter
         public Builder self(@Nullable Boolean self) {
             this.self = self;
             return this;
         }
+        @CustomType.Setter
         public Builder toPort(Integer toPort) {
             this.toPort = Objects.requireNonNull(toPort);
             return this;
-        }        public SecGroupRule build() {
-            return new SecGroupRule(cidr, fromGroupId, fromPort, id, ipProtocol, self, toPort);
+        }
+        public SecGroupRule build() {
+            final var o = new SecGroupRule();
+            o.cidr = cidr;
+            o.fromGroupId = fromGroupId;
+            o.fromPort = fromPort;
+            o.id = id;
+            o.ipProtocol = ipProtocol;
+            o.self = self;
+            o.toPort = toPort;
+            return o;
         }
     }
 }

@@ -18,22 +18,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := networking.NewRouter(ctx, "router1", &networking.RouterArgs{
-// 			AdminStateUp:      pulumi.Bool(true),
-// 			ExternalNetworkId: pulumi.String("f67f0d72-0ddf-11e4-9d95-e1f29f417e2f"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.NewRouter(ctx, "router1", &networking.RouterArgs{
+//				AdminStateUp:      pulumi.Bool(true),
+//				ExternalNetworkId: pulumi.String("f67f0d72-0ddf-11e4-9d95-e1f29f417e2f"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -41,7 +44,9 @@ import (
 // Routers can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:networking/router:Router router_1 014395cd-89fc-4c9b-96b7-13d1ee79dad2
+//
+//	$ pulumi import openstack:networking/router:Router router_1 014395cd-89fc-4c9b-96b7-13d1ee79dad2
+//
 // ```
 type Router struct {
 	pulumi.CustomResourceState
@@ -443,7 +448,7 @@ func (i *Router) ToRouterOutputWithContext(ctx context.Context) RouterOutput {
 // RouterArrayInput is an input type that accepts RouterArray and RouterArrayOutput values.
 // You can construct a concrete instance of `RouterArrayInput` via:
 //
-//          RouterArray{ RouterArgs{...} }
+//	RouterArray{ RouterArgs{...} }
 type RouterArrayInput interface {
 	pulumi.Input
 
@@ -468,7 +473,7 @@ func (i RouterArray) ToRouterArrayOutputWithContext(ctx context.Context) RouterA
 // RouterMapInput is an input type that accepts RouterMap and RouterMapOutput values.
 // You can construct a concrete instance of `RouterMapInput` via:
 //
-//          RouterMap{ "key": RouterArgs{...} }
+//	RouterMap{ "key": RouterArgs{...} }
 type RouterMapInput interface {
 	pulumi.Input
 

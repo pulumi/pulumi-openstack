@@ -19,66 +19,45 @@ public final class GetSnapshotV2Result {
      * @return The snapshot&#39;s description.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The snapshot&#39;s metadata.
      * 
      */
-    private final Map<String,Object> metadata;
-    private final @Nullable Boolean mostRecent;
+    private Map<String,Object> metadata;
+    private @Nullable Boolean mostRecent;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return The size of the snapshot.
      * 
      */
-    private final Integer size;
+    private Integer size;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String volumeId;
+    private String volumeId;
 
-    @CustomType.Constructor
-    private GetSnapshotV2Result(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("metadata") Map<String,Object> metadata,
-        @CustomType.Parameter("mostRecent") @Nullable Boolean mostRecent,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("volumeId") String volumeId) {
-        this.description = description;
-        this.id = id;
-        this.metadata = metadata;
-        this.mostRecent = mostRecent;
-        this.name = name;
-        this.region = region;
-        this.size = size;
-        this.status = status;
-        this.volumeId = volumeId;
-    }
-
+    private GetSnapshotV2Result() {}
     /**
      * @return The snapshot&#39;s description.
      * 
@@ -146,7 +125,7 @@ public final class GetSnapshotV2Result {
     public static Builder builder(GetSnapshotV2Result defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String id;
@@ -157,11 +136,7 @@ public final class GetSnapshotV2Result {
         private Integer size;
         private String status;
         private String volumeId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSnapshotV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -175,43 +150,63 @@ public final class GetSnapshotV2Result {
     	      this.volumeId = defaults.volumeId;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder metadata(Map<String,Object> metadata) {
             this.metadata = Objects.requireNonNull(metadata);
             return this;
         }
+        @CustomType.Setter
         public Builder mostRecent(@Nullable Boolean mostRecent) {
             this.mostRecent = mostRecent;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder volumeId(String volumeId) {
             this.volumeId = Objects.requireNonNull(volumeId);
             return this;
-        }        public GetSnapshotV2Result build() {
-            return new GetSnapshotV2Result(description, id, metadata, mostRecent, name, region, size, status, volumeId);
+        }
+        public GetSnapshotV2Result build() {
+            final var o = new GetSnapshotV2Result();
+            o.description = description;
+            o.id = id;
+            o.metadata = metadata;
+            o.mostRecent = mostRecent;
+            o.name = name;
+            o.region = region;
+            o.size = size;
+            o.status = status;
+            o.volumeId = volumeId;
+            return o;
         }
     }
 }

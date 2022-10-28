@@ -22,159 +22,108 @@ public final class GetPortResult {
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable Boolean adminStateUp;
+    private @Nullable Boolean adminStateUp;
     /**
      * @return The collection of Fixed IP addresses on the port in the
      * order returned by the Network v2 API.
      * 
      */
-    private final List<String> allFixedIps;
+    private List<String> allFixedIps;
     /**
      * @return The set of security group IDs applied on the port.
      * 
      */
-    private final List<String> allSecurityGroupIds;
+    private List<String> allSecurityGroupIds;
     /**
      * @return The set of string tags applied on the port.
      * 
      */
-    private final List<String> allTags;
+    private List<String> allTags;
     /**
      * @return An IP/MAC Address pair of additional IP
      * addresses that can be active on this port. The structure is described
      * below.
      * 
      */
-    private final List<GetPortAllowedAddressPair> allowedAddressPairs;
+    private List<GetPortAllowedAddressPair> allowedAddressPairs;
     /**
      * @return The port binding information. The structure is described below.
      * 
      */
-    private final List<GetPortBinding> bindings;
+    private List<GetPortBinding> bindings;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String deviceId;
+    private @Nullable String deviceId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String deviceOwner;
+    private @Nullable String deviceOwner;
     /**
      * @return The list of maps representing port DNS assignments.
      * 
      */
-    private final List<Map<String,Object>> dnsAssignments;
+    private List<Map<String,Object>> dnsAssignments;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String dnsName;
+    private @Nullable String dnsName;
     /**
      * @return An extra DHCP option configured on the port.
      * The structure is described below.
      * 
      */
-    private final List<GetPortExtraDhcpOption> extraDhcpOptions;
-    private final @Nullable String fixedIp;
+    private List<GetPortExtraDhcpOption> extraDhcpOptions;
+    private @Nullable String fixedIp;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The additional MAC address.
      * 
      */
-    private final @Nullable String macAddress;
+    private @Nullable String macAddress;
     /**
      * @return Name of the DHCP option.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String networkId;
+    private @Nullable String networkId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String portId;
+    private @Nullable String portId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String projectId;
+    private @Nullable String projectId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String region;
-    private final @Nullable List<String> securityGroupIds;
-    private final @Nullable String status;
-    private final @Nullable List<String> tags;
-    private final @Nullable String tenantId;
+    private @Nullable String region;
+    private @Nullable List<String> securityGroupIds;
+    private @Nullable String status;
+    private @Nullable List<String> tags;
+    private @Nullable String tenantId;
 
-    @CustomType.Constructor
-    private GetPortResult(
-        @CustomType.Parameter("adminStateUp") @Nullable Boolean adminStateUp,
-        @CustomType.Parameter("allFixedIps") List<String> allFixedIps,
-        @CustomType.Parameter("allSecurityGroupIds") List<String> allSecurityGroupIds,
-        @CustomType.Parameter("allTags") List<String> allTags,
-        @CustomType.Parameter("allowedAddressPairs") List<GetPortAllowedAddressPair> allowedAddressPairs,
-        @CustomType.Parameter("bindings") List<GetPortBinding> bindings,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("deviceId") @Nullable String deviceId,
-        @CustomType.Parameter("deviceOwner") @Nullable String deviceOwner,
-        @CustomType.Parameter("dnsAssignments") List<Map<String,Object>> dnsAssignments,
-        @CustomType.Parameter("dnsName") @Nullable String dnsName,
-        @CustomType.Parameter("extraDhcpOptions") List<GetPortExtraDhcpOption> extraDhcpOptions,
-        @CustomType.Parameter("fixedIp") @Nullable String fixedIp,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("macAddress") @Nullable String macAddress,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("networkId") @Nullable String networkId,
-        @CustomType.Parameter("portId") @Nullable String portId,
-        @CustomType.Parameter("projectId") @Nullable String projectId,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("securityGroupIds") @Nullable List<String> securityGroupIds,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("tenantId") @Nullable String tenantId) {
-        this.adminStateUp = adminStateUp;
-        this.allFixedIps = allFixedIps;
-        this.allSecurityGroupIds = allSecurityGroupIds;
-        this.allTags = allTags;
-        this.allowedAddressPairs = allowedAddressPairs;
-        this.bindings = bindings;
-        this.description = description;
-        this.deviceId = deviceId;
-        this.deviceOwner = deviceOwner;
-        this.dnsAssignments = dnsAssignments;
-        this.dnsName = dnsName;
-        this.extraDhcpOptions = extraDhcpOptions;
-        this.fixedIp = fixedIp;
-        this.id = id;
-        this.macAddress = macAddress;
-        this.name = name;
-        this.networkId = networkId;
-        this.portId = portId;
-        this.projectId = projectId;
-        this.region = region;
-        this.securityGroupIds = securityGroupIds;
-        this.status = status;
-        this.tags = tags;
-        this.tenantId = tenantId;
-    }
-
+    private GetPortResult() {}
     /**
      * @return See Argument Reference above.
      * 
@@ -335,7 +284,7 @@ public final class GetPortResult {
     public static Builder builder(GetPortResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean adminStateUp;
         private List<String> allFixedIps;
@@ -361,11 +310,7 @@ public final class GetPortResult {
         private @Nullable String status;
         private @Nullable List<String> tags;
         private @Nullable String tenantId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPortResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adminStateUp = defaults.adminStateUp;
@@ -394,10 +339,12 @@ public final class GetPortResult {
     	      this.tenantId = defaults.tenantId;
         }
 
+        @CustomType.Setter
         public Builder adminStateUp(@Nullable Boolean adminStateUp) {
             this.adminStateUp = adminStateUp;
             return this;
         }
+        @CustomType.Setter
         public Builder allFixedIps(List<String> allFixedIps) {
             this.allFixedIps = Objects.requireNonNull(allFixedIps);
             return this;
@@ -405,6 +352,7 @@ public final class GetPortResult {
         public Builder allFixedIps(String... allFixedIps) {
             return allFixedIps(List.of(allFixedIps));
         }
+        @CustomType.Setter
         public Builder allSecurityGroupIds(List<String> allSecurityGroupIds) {
             this.allSecurityGroupIds = Objects.requireNonNull(allSecurityGroupIds);
             return this;
@@ -412,6 +360,7 @@ public final class GetPortResult {
         public Builder allSecurityGroupIds(String... allSecurityGroupIds) {
             return allSecurityGroupIds(List.of(allSecurityGroupIds));
         }
+        @CustomType.Setter
         public Builder allTags(List<String> allTags) {
             this.allTags = Objects.requireNonNull(allTags);
             return this;
@@ -419,6 +368,7 @@ public final class GetPortResult {
         public Builder allTags(String... allTags) {
             return allTags(List.of(allTags));
         }
+        @CustomType.Setter
         public Builder allowedAddressPairs(List<GetPortAllowedAddressPair> allowedAddressPairs) {
             this.allowedAddressPairs = Objects.requireNonNull(allowedAddressPairs);
             return this;
@@ -426,6 +376,7 @@ public final class GetPortResult {
         public Builder allowedAddressPairs(GetPortAllowedAddressPair... allowedAddressPairs) {
             return allowedAddressPairs(List.of(allowedAddressPairs));
         }
+        @CustomType.Setter
         public Builder bindings(List<GetPortBinding> bindings) {
             this.bindings = Objects.requireNonNull(bindings);
             return this;
@@ -433,26 +384,32 @@ public final class GetPortResult {
         public Builder bindings(GetPortBinding... bindings) {
             return bindings(List.of(bindings));
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder deviceId(@Nullable String deviceId) {
             this.deviceId = deviceId;
             return this;
         }
+        @CustomType.Setter
         public Builder deviceOwner(@Nullable String deviceOwner) {
             this.deviceOwner = deviceOwner;
             return this;
         }
+        @CustomType.Setter
         public Builder dnsAssignments(List<Map<String,Object>> dnsAssignments) {
             this.dnsAssignments = Objects.requireNonNull(dnsAssignments);
             return this;
         }
+        @CustomType.Setter
         public Builder dnsName(@Nullable String dnsName) {
             this.dnsName = dnsName;
             return this;
         }
+        @CustomType.Setter
         public Builder extraDhcpOptions(List<GetPortExtraDhcpOption> extraDhcpOptions) {
             this.extraDhcpOptions = Objects.requireNonNull(extraDhcpOptions);
             return this;
@@ -460,38 +417,47 @@ public final class GetPortResult {
         public Builder extraDhcpOptions(GetPortExtraDhcpOption... extraDhcpOptions) {
             return extraDhcpOptions(List.of(extraDhcpOptions));
         }
+        @CustomType.Setter
         public Builder fixedIp(@Nullable String fixedIp) {
             this.fixedIp = fixedIp;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder macAddress(@Nullable String macAddress) {
             this.macAddress = macAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder networkId(@Nullable String networkId) {
             this.networkId = networkId;
             return this;
         }
+        @CustomType.Setter
         public Builder portId(@Nullable String portId) {
             this.portId = portId;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
             this.projectId = projectId;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupIds(@Nullable List<String> securityGroupIds) {
             this.securityGroupIds = securityGroupIds;
             return this;
@@ -499,10 +465,12 @@ public final class GetPortResult {
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -510,11 +478,38 @@ public final class GetPortResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
             this.tenantId = tenantId;
             return this;
-        }        public GetPortResult build() {
-            return new GetPortResult(adminStateUp, allFixedIps, allSecurityGroupIds, allTags, allowedAddressPairs, bindings, description, deviceId, deviceOwner, dnsAssignments, dnsName, extraDhcpOptions, fixedIp, id, macAddress, name, networkId, portId, projectId, region, securityGroupIds, status, tags, tenantId);
+        }
+        public GetPortResult build() {
+            final var o = new GetPortResult();
+            o.adminStateUp = adminStateUp;
+            o.allFixedIps = allFixedIps;
+            o.allSecurityGroupIds = allSecurityGroupIds;
+            o.allTags = allTags;
+            o.allowedAddressPairs = allowedAddressPairs;
+            o.bindings = bindings;
+            o.description = description;
+            o.deviceId = deviceId;
+            o.deviceOwner = deviceOwner;
+            o.dnsAssignments = dnsAssignments;
+            o.dnsName = dnsName;
+            o.extraDhcpOptions = extraDhcpOptions;
+            o.fixedIp = fixedIp;
+            o.id = id;
+            o.macAddress = macAddress;
+            o.name = name;
+            o.networkId = networkId;
+            o.portId = portId;
+            o.projectId = projectId;
+            o.region = region;
+            o.securityGroupIds = securityGroupIds;
+            o.status = status;
+            o.tags = tags;
+            o.tenantId = tenantId;
+            return o;
         }
     }
 }

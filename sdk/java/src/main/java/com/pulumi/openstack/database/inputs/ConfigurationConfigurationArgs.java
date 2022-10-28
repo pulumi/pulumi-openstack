@@ -5,8 +5,11 @@ package com.pulumi.openstack.database.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ConfigurationConfigurationArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,6 +32,21 @@ public final class ConfigurationConfigurationArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
+     * 
+     */
+    @Import(name="stringType")
+    private @Nullable Output<Boolean> stringType;
+
+    /**
+     * @return Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
+     * 
+     */
+    public Optional<Output<Boolean>> stringType() {
+        return Optional.ofNullable(this.stringType);
+    }
+
+    /**
      * Configuration parameter value. Changing this creates a new resource.
      * 
      */
@@ -47,6 +65,7 @@ public final class ConfigurationConfigurationArgs extends com.pulumi.resources.R
 
     private ConfigurationConfigurationArgs(ConfigurationConfigurationArgs $) {
         this.name = $.name;
+        this.stringType = $.stringType;
         this.value = $.value;
     }
 
@@ -87,6 +106,27 @@ public final class ConfigurationConfigurationArgs extends com.pulumi.resources.R
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param stringType Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stringType(@Nullable Output<Boolean> stringType) {
+            $.stringType = stringType;
+            return this;
+        }
+
+        /**
+         * @param stringType Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stringType(Boolean stringType) {
+            return stringType(Output.of(stringType));
         }
 
         /**

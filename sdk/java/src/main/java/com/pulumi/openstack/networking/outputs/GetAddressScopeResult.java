@@ -17,45 +17,30 @@ public final class GetAddressScopeResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable Integer ipVersion;
+    private @Nullable Integer ipVersion;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String projectId;
-    private final @Nullable String region;
+    private @Nullable String projectId;
+    private @Nullable String region;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable Boolean shared;
+    private @Nullable Boolean shared;
 
-    @CustomType.Constructor
-    private GetAddressScopeResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ipVersion") @Nullable Integer ipVersion,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("projectId") @Nullable String projectId,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("shared") @Nullable Boolean shared) {
-        this.id = id;
-        this.ipVersion = ipVersion;
-        this.name = name;
-        this.projectId = projectId;
-        this.region = region;
-        this.shared = shared;
-    }
-
+    private GetAddressScopeResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -102,7 +87,7 @@ public final class GetAddressScopeResult {
     public static Builder builder(GetAddressScopeResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private @Nullable Integer ipVersion;
@@ -110,11 +95,7 @@ public final class GetAddressScopeResult {
         private @Nullable String projectId;
         private @Nullable String region;
         private @Nullable Boolean shared;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAddressScopeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -125,31 +106,45 @@ public final class GetAddressScopeResult {
     	      this.shared = defaults.shared;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipVersion(@Nullable Integer ipVersion) {
             this.ipVersion = ipVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
             this.projectId = projectId;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder shared(@Nullable Boolean shared) {
             this.shared = shared;
             return this;
-        }        public GetAddressScopeResult build() {
-            return new GetAddressScopeResult(id, ipVersion, name, projectId, region, shared);
+        }
+        public GetAddressScopeResult build() {
+            final var o = new GetAddressScopeResult();
+            o.id = id;
+            o.ipVersion = ipVersion;
+            o.name = name;
+            o.projectId = projectId;
+            o.region = region;
+            o.shared = shared;
+            return o;
         }
     }
 }

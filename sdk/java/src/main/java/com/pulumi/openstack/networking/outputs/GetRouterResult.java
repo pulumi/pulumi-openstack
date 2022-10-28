@@ -14,80 +14,47 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRouterResult {
-    private final @Nullable Boolean adminStateUp;
+    private @Nullable Boolean adminStateUp;
     /**
      * @return The set of string tags applied on the router.
      * 
      */
-    private final List<String> allTags;
+    private List<String> allTags;
     /**
      * @return The availability zone that is used to make router resources highly available.
      * 
      */
-    private final List<String> availabilityZoneHints;
-    private final @Nullable String description;
-    private final @Nullable Boolean distributed;
+    private List<String> availabilityZoneHints;
+    private @Nullable String description;
+    private @Nullable Boolean distributed;
     /**
      * @return The value that points out if the Source NAT is enabled on the router.
      * 
      */
-    private final Boolean enableSnat;
+    private Boolean enableSnat;
     /**
      * @return The external fixed IPs of the router.
      * 
      */
-    private final List<GetRouterExternalFixedIp> externalFixedIps;
+    private List<GetRouterExternalFixedIp> externalFixedIps;
     /**
      * @return The network UUID of an external gateway for the router.
      * 
      */
-    private final String externalNetworkId;
+    private String externalNetworkId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable String name;
-    private final @Nullable String region;
-    private final @Nullable String routerId;
-    private final @Nullable String status;
-    private final @Nullable List<String> tags;
-    private final @Nullable String tenantId;
+    private String id;
+    private @Nullable String name;
+    private @Nullable String region;
+    private @Nullable String routerId;
+    private @Nullable String status;
+    private @Nullable List<String> tags;
+    private @Nullable String tenantId;
 
-    @CustomType.Constructor
-    private GetRouterResult(
-        @CustomType.Parameter("adminStateUp") @Nullable Boolean adminStateUp,
-        @CustomType.Parameter("allTags") List<String> allTags,
-        @CustomType.Parameter("availabilityZoneHints") List<String> availabilityZoneHints,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("distributed") @Nullable Boolean distributed,
-        @CustomType.Parameter("enableSnat") Boolean enableSnat,
-        @CustomType.Parameter("externalFixedIps") List<GetRouterExternalFixedIp> externalFixedIps,
-        @CustomType.Parameter("externalNetworkId") String externalNetworkId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("routerId") @Nullable String routerId,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("tenantId") @Nullable String tenantId) {
-        this.adminStateUp = adminStateUp;
-        this.allTags = allTags;
-        this.availabilityZoneHints = availabilityZoneHints;
-        this.description = description;
-        this.distributed = distributed;
-        this.enableSnat = enableSnat;
-        this.externalFixedIps = externalFixedIps;
-        this.externalNetworkId = externalNetworkId;
-        this.id = id;
-        this.name = name;
-        this.region = region;
-        this.routerId = routerId;
-        this.status = status;
-        this.tags = tags;
-        this.tenantId = tenantId;
-    }
-
+    private GetRouterResult() {}
     public Optional<Boolean> adminStateUp() {
         return Optional.ofNullable(this.adminStateUp);
     }
@@ -165,7 +132,7 @@ public final class GetRouterResult {
     public static Builder builder(GetRouterResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean adminStateUp;
         private List<String> allTags;
@@ -182,11 +149,7 @@ public final class GetRouterResult {
         private @Nullable String status;
         private @Nullable List<String> tags;
         private @Nullable String tenantId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRouterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adminStateUp = defaults.adminStateUp;
@@ -206,10 +169,12 @@ public final class GetRouterResult {
     	      this.tenantId = defaults.tenantId;
         }
 
+        @CustomType.Setter
         public Builder adminStateUp(@Nullable Boolean adminStateUp) {
             this.adminStateUp = adminStateUp;
             return this;
         }
+        @CustomType.Setter
         public Builder allTags(List<String> allTags) {
             this.allTags = Objects.requireNonNull(allTags);
             return this;
@@ -217,6 +182,7 @@ public final class GetRouterResult {
         public Builder allTags(String... allTags) {
             return allTags(List.of(allTags));
         }
+        @CustomType.Setter
         public Builder availabilityZoneHints(List<String> availabilityZoneHints) {
             this.availabilityZoneHints = Objects.requireNonNull(availabilityZoneHints);
             return this;
@@ -224,18 +190,22 @@ public final class GetRouterResult {
         public Builder availabilityZoneHints(String... availabilityZoneHints) {
             return availabilityZoneHints(List.of(availabilityZoneHints));
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder distributed(@Nullable Boolean distributed) {
             this.distributed = distributed;
             return this;
         }
+        @CustomType.Setter
         public Builder enableSnat(Boolean enableSnat) {
             this.enableSnat = Objects.requireNonNull(enableSnat);
             return this;
         }
+        @CustomType.Setter
         public Builder externalFixedIps(List<GetRouterExternalFixedIp> externalFixedIps) {
             this.externalFixedIps = Objects.requireNonNull(externalFixedIps);
             return this;
@@ -243,30 +213,37 @@ public final class GetRouterResult {
         public Builder externalFixedIps(GetRouterExternalFixedIp... externalFixedIps) {
             return externalFixedIps(List.of(externalFixedIps));
         }
+        @CustomType.Setter
         public Builder externalNetworkId(String externalNetworkId) {
             this.externalNetworkId = Objects.requireNonNull(externalNetworkId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder routerId(@Nullable String routerId) {
             this.routerId = routerId;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -274,11 +251,29 @@ public final class GetRouterResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
             this.tenantId = tenantId;
             return this;
-        }        public GetRouterResult build() {
-            return new GetRouterResult(adminStateUp, allTags, availabilityZoneHints, description, distributed, enableSnat, externalFixedIps, externalNetworkId, id, name, region, routerId, status, tags, tenantId);
+        }
+        public GetRouterResult build() {
+            final var o = new GetRouterResult();
+            o.adminStateUp = adminStateUp;
+            o.allTags = allTags;
+            o.availabilityZoneHints = availabilityZoneHints;
+            o.description = description;
+            o.distributed = distributed;
+            o.enableSnat = enableSnat;
+            o.externalFixedIps = externalFixedIps;
+            o.externalNetworkId = externalNetworkId;
+            o.id = id;
+            o.name = name;
+            o.region = region;
+            o.routerId = routerId;
+            o.status = status;
+            o.tags = tags;
+            o.tenantId = tenantId;
+            return o;
         }
     }
 }

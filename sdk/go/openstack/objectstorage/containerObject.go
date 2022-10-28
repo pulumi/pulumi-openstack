@@ -20,39 +20,42 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/objectstorage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/objectstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		container1, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
-// 			ContentType: pulumi.String("application/json"),
-// 			Metadata: pulumi.AnyMap{
-// 				"test": pulumi.Any("true"),
-// 			},
-// 			Region: pulumi.String("RegionOne"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = objectstorage.NewContainerObject(ctx, "doc1", &objectstorage.ContainerObjectArgs{
-// 			ContainerName: container1.Name,
-// 			Content:       pulumi.String(fmt.Sprintf("               {\n                 \"foo\" : \"bar\"\n               }\n\n")),
-// 			ContentType:   pulumi.String("application/json"),
-// 			Metadata: pulumi.AnyMap{
-// 				"test": pulumi.Any("true"),
-// 			},
-// 			Region: pulumi.String("RegionOne"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			container1, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
+//				ContentType: pulumi.String("application/json"),
+//				Metadata: pulumi.AnyMap{
+//					"test": pulumi.Any("true"),
+//				},
+//				Region: pulumi.String("RegionOne"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = objectstorage.NewContainerObject(ctx, "doc1", &objectstorage.ContainerObjectArgs{
+//				ContainerName: container1.Name,
+//				Content:       pulumi.String(fmt.Sprintf("               {\n                 \"foo\" : \"bar\"\n               }\n\n")),
+//				ContentType:   pulumi.String("application/json"),
+//				Metadata: pulumi.AnyMap{
+//					"test": pulumi.Any("true"),
+//				},
+//				Region: pulumi.String("RegionOne"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Example with content from file
 //
@@ -60,37 +63,40 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/objectstorage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/objectstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		container1, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
-// 			ContentType: pulumi.String("application/json"),
-// 			Metadata: pulumi.AnyMap{
-// 				"test": pulumi.Any("true"),
-// 			},
-// 			Region: pulumi.String("RegionOne"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = objectstorage.NewContainerObject(ctx, "doc1", &objectstorage.ContainerObjectArgs{
-// 			ContainerName: container1.Name,
-// 			ContentType:   pulumi.String("application/json"),
-// 			Metadata: pulumi.AnyMap{
-// 				"test": pulumi.Any("true"),
-// 			},
-// 			Region: pulumi.String("RegionOne"),
-// 			Source: pulumi.String("./default.json"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			container1, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
+//				ContentType: pulumi.String("application/json"),
+//				Metadata: pulumi.AnyMap{
+//					"test": pulumi.Any("true"),
+//				},
+//				Region: pulumi.String("RegionOne"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = objectstorage.NewContainerObject(ctx, "doc1", &objectstorage.ContainerObjectArgs{
+//				ContainerName: container1.Name,
+//				ContentType:   pulumi.String("application/json"),
+//				Metadata: pulumi.AnyMap{
+//					"test": pulumi.Any("true"),
+//				},
+//				Region: pulumi.String("RegionOne"),
+//				Source: pulumi.String("./default.json"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type ContainerObject struct {
 	pulumi.CustomResourceState
@@ -492,7 +498,7 @@ func (i *ContainerObject) ToContainerObjectOutputWithContext(ctx context.Context
 // ContainerObjectArrayInput is an input type that accepts ContainerObjectArray and ContainerObjectArrayOutput values.
 // You can construct a concrete instance of `ContainerObjectArrayInput` via:
 //
-//          ContainerObjectArray{ ContainerObjectArgs{...} }
+//	ContainerObjectArray{ ContainerObjectArgs{...} }
 type ContainerObjectArrayInput interface {
 	pulumi.Input
 
@@ -517,7 +523,7 @@ func (i ContainerObjectArray) ToContainerObjectArrayOutputWithContext(ctx contex
 // ContainerObjectMapInput is an input type that accepts ContainerObjectMap and ContainerObjectMapOutput values.
 // You can construct a concrete instance of `ContainerObjectMapInput` via:
 //
-//          ContainerObjectMap{ "key": ContainerObjectArgs{...} }
+//	ContainerObjectMap{ "key": ContainerObjectArgs{...} }
 type ContainerObjectMapInput interface {
 	pulumi.Input
 

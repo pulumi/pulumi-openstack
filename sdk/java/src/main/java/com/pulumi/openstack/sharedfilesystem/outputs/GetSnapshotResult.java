@@ -14,73 +14,50 @@ public final class GetSnapshotResult {
      * @return See Argument Reference above.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String projectId;
-    private final String region;
+    private String projectId;
+    private String region;
     /**
      * @return The UUID of the source share that was used to create the snapshot.
      * 
      */
-    private final String shareId;
+    private String shareId;
     /**
      * @return The file system protocol of a share snapshot.
      * 
      */
-    private final String shareProto;
+    private String shareProto;
     /**
      * @return The share snapshot size, in GBs.
      * 
      */
-    private final Integer shareSize;
+    private Integer shareSize;
     /**
      * @return The snapshot size, in GBs.
      * 
      */
-    private final Integer size;
+    private Integer size;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String status;
+    private String status;
 
-    @CustomType.Constructor
-    private GetSnapshotResult(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("shareId") String shareId,
-        @CustomType.Parameter("shareProto") String shareProto,
-        @CustomType.Parameter("shareSize") Integer shareSize,
-        @CustomType.Parameter("size") Integer size,
-        @CustomType.Parameter("status") String status) {
-        this.description = description;
-        this.id = id;
-        this.name = name;
-        this.projectId = projectId;
-        this.region = region;
-        this.shareId = shareId;
-        this.shareProto = shareProto;
-        this.shareSize = shareSize;
-        this.size = size;
-        this.status = status;
-    }
-
+    private GetSnapshotResult() {}
     /**
      * @return See Argument Reference above.
      * 
@@ -155,7 +132,7 @@ public final class GetSnapshotResult {
     public static Builder builder(GetSnapshotResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String id;
@@ -167,11 +144,7 @@ public final class GetSnapshotResult {
         private Integer shareSize;
         private Integer size;
         private String status;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetSnapshotResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -186,47 +159,69 @@ public final class GetSnapshotResult {
     	      this.status = defaults.status;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder shareId(String shareId) {
             this.shareId = Objects.requireNonNull(shareId);
             return this;
         }
+        @CustomType.Setter
         public Builder shareProto(String shareProto) {
             this.shareProto = Objects.requireNonNull(shareProto);
             return this;
         }
+        @CustomType.Setter
         public Builder shareSize(Integer shareSize) {
             this.shareSize = Objects.requireNonNull(shareSize);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
-        }        public GetSnapshotResult build() {
-            return new GetSnapshotResult(description, id, name, projectId, region, shareId, shareProto, shareSize, size, status);
+        }
+        public GetSnapshotResult build() {
+            final var o = new GetSnapshotResult();
+            o.description = description;
+            o.id = id;
+            o.name = name;
+            o.projectId = projectId;
+            o.region = region;
+            o.shareId = shareId;
+            o.shareProto = shareProto;
+            o.shareSize = shareSize;
+            o.size = size;
+            o.status = status;
+            return o;
         }
     }
 }

@@ -21,33 +21,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		secgroup1, err := networking.NewSecGroup(ctx, "secgroup1", &networking.SecGroupArgs{
-// 			Description: pulumi.String("My neutron security group"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = networking.NewSecGroupRule(ctx, "secgroupRule1", &networking.SecGroupRuleArgs{
-// 			Direction:       pulumi.String("ingress"),
-// 			Ethertype:       pulumi.String("IPv4"),
-// 			PortRangeMax:    pulumi.Int(22),
-// 			PortRangeMin:    pulumi.Int(22),
-// 			Protocol:        pulumi.String("tcp"),
-// 			RemoteIpPrefix:  pulumi.String("0.0.0.0/0"),
-// 			SecurityGroupId: secgroup1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			secgroup1, err := networking.NewSecGroup(ctx, "secgroup1", &networking.SecGroupArgs{
+//				Description: pulumi.String("My neutron security group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewSecGroupRule(ctx, "secgroupRule1", &networking.SecGroupRuleArgs{
+//				Direction:       pulumi.String("ingress"),
+//				Ethertype:       pulumi.String("IPv4"),
+//				PortRangeMax:    pulumi.Int(22),
+//				PortRangeMin:    pulumi.Int(22),
+//				Protocol:        pulumi.String("tcp"),
+//				RemoteIpPrefix:  pulumi.String("0.0.0.0/0"),
+//				SecurityGroupId: secgroup1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -55,7 +58,9 @@ import (
 // Security Group Rules can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
+//
+//	$ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
+//
 // ```
 type SecGroupRule struct {
 	pulumi.CustomResourceState
@@ -437,7 +442,7 @@ func (i *SecGroupRule) ToSecGroupRuleOutputWithContext(ctx context.Context) SecG
 // SecGroupRuleArrayInput is an input type that accepts SecGroupRuleArray and SecGroupRuleArrayOutput values.
 // You can construct a concrete instance of `SecGroupRuleArrayInput` via:
 //
-//          SecGroupRuleArray{ SecGroupRuleArgs{...} }
+//	SecGroupRuleArray{ SecGroupRuleArgs{...} }
 type SecGroupRuleArrayInput interface {
 	pulumi.Input
 
@@ -462,7 +467,7 @@ func (i SecGroupRuleArray) ToSecGroupRuleArrayOutputWithContext(ctx context.Cont
 // SecGroupRuleMapInput is an input type that accepts SecGroupRuleMap and SecGroupRuleMapOutput values.
 // You can construct a concrete instance of `SecGroupRuleMapInput` via:
 //
-//          SecGroupRuleMap{ "key": SecGroupRuleArgs{...} }
+//	SecGroupRuleMap{ "key": SecGroupRuleArgs{...} }
 type SecGroupRuleMapInput interface {
 	pulumi.Input
 

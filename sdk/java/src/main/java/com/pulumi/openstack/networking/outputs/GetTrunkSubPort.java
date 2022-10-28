@@ -14,28 +14,19 @@ public final class GetTrunkSubPort {
      * @return The ID of the trunk parent port.
      * 
      */
-    private final String portId;
+    private String portId;
     /**
      * @return The numeric id of the subport segment.
      * 
      */
-    private final Integer segmentationId;
+    private Integer segmentationId;
     /**
      * @return The segmenation tecnology used, e.g., &#34;vlan&#34;.
      * 
      */
-    private final String segmentationType;
+    private String segmentationType;
 
-    @CustomType.Constructor
-    private GetTrunkSubPort(
-        @CustomType.Parameter("portId") String portId,
-        @CustomType.Parameter("segmentationId") Integer segmentationId,
-        @CustomType.Parameter("segmentationType") String segmentationType) {
-        this.portId = portId;
-        this.segmentationId = segmentationId;
-        this.segmentationType = segmentationType;
-    }
-
+    private GetTrunkSubPort() {}
     /**
      * @return The ID of the trunk parent port.
      * 
@@ -65,16 +56,12 @@ public final class GetTrunkSubPort {
     public static Builder builder(GetTrunkSubPort defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String portId;
         private Integer segmentationId;
         private String segmentationType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetTrunkSubPort defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.portId = defaults.portId;
@@ -82,19 +69,27 @@ public final class GetTrunkSubPort {
     	      this.segmentationType = defaults.segmentationType;
         }
 
+        @CustomType.Setter
         public Builder portId(String portId) {
             this.portId = Objects.requireNonNull(portId);
             return this;
         }
+        @CustomType.Setter
         public Builder segmentationId(Integer segmentationId) {
             this.segmentationId = Objects.requireNonNull(segmentationId);
             return this;
         }
+        @CustomType.Setter
         public Builder segmentationType(String segmentationType) {
             this.segmentationType = Objects.requireNonNull(segmentationType);
             return this;
-        }        public GetTrunkSubPort build() {
-            return new GetTrunkSubPort(portId, segmentationId, segmentationType);
+        }
+        public GetTrunkSubPort build() {
+            final var o = new GetTrunkSubPort();
+            o.portId = portId;
+            o.segmentationId = segmentationId;
+            o.segmentationType = segmentationType;
+            return o;
         }
     }
 }

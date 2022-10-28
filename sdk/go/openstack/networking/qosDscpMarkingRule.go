@@ -20,28 +20,31 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		qosPolicy1, err := networking.NewQosPolicy(ctx, "qosPolicy1", &networking.QosPolicyArgs{
-// 			Description: pulumi.String("dscp_mark"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = networking.NewQosDscpMarkingRule(ctx, "dscpMarkingRule1", &networking.QosDscpMarkingRuleArgs{
-// 			DscpMark:    pulumi.Int(26),
-// 			QosPolicyId: qosPolicy1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			qosPolicy1, err := networking.NewQosPolicy(ctx, "qosPolicy1", &networking.QosPolicyArgs{
+//				Description: pulumi.String("dscp_mark"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewQosDscpMarkingRule(ctx, "dscpMarkingRule1", &networking.QosDscpMarkingRuleArgs{
+//				DscpMark:    pulumi.Int(26),
+//				QosPolicyId: qosPolicy1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // QoS DSCP marking rules can be imported using the `qos_policy_id/dscp_marking_rule_id` format, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule dscp_marking_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
+//
+//	$ pulumi import openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule dscp_marking_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
+//
 // ```
 type QosDscpMarkingRule struct {
 	pulumi.CustomResourceState
@@ -178,7 +183,7 @@ func (i *QosDscpMarkingRule) ToQosDscpMarkingRuleOutputWithContext(ctx context.C
 // QosDscpMarkingRuleArrayInput is an input type that accepts QosDscpMarkingRuleArray and QosDscpMarkingRuleArrayOutput values.
 // You can construct a concrete instance of `QosDscpMarkingRuleArrayInput` via:
 //
-//          QosDscpMarkingRuleArray{ QosDscpMarkingRuleArgs{...} }
+//	QosDscpMarkingRuleArray{ QosDscpMarkingRuleArgs{...} }
 type QosDscpMarkingRuleArrayInput interface {
 	pulumi.Input
 
@@ -203,7 +208,7 @@ func (i QosDscpMarkingRuleArray) ToQosDscpMarkingRuleArrayOutputWithContext(ctx 
 // QosDscpMarkingRuleMapInput is an input type that accepts QosDscpMarkingRuleMap and QosDscpMarkingRuleMapOutput values.
 // You can construct a concrete instance of `QosDscpMarkingRuleMapInput` via:
 //
-//          QosDscpMarkingRuleMap{ "key": QosDscpMarkingRuleArgs{...} }
+//	QosDscpMarkingRuleMap{ "key": QosDscpMarkingRuleArgs{...} }
 type QosDscpMarkingRuleMapInput interface {
 	pulumi.Input
 

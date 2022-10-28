@@ -15,7 +15,9 @@ import (
 // Security Groups can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:networking/secGroup:SecGroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc
+//
+//	$ pulumi import openstack:networking/secGroup:SecGroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc
+//
 // ```
 type SecGroup struct {
 	pulumi.CustomResourceState
@@ -197,7 +199,7 @@ func (i *SecGroup) ToSecGroupOutputWithContext(ctx context.Context) SecGroupOutp
 // SecGroupArrayInput is an input type that accepts SecGroupArray and SecGroupArrayOutput values.
 // You can construct a concrete instance of `SecGroupArrayInput` via:
 //
-//          SecGroupArray{ SecGroupArgs{...} }
+//	SecGroupArray{ SecGroupArgs{...} }
 type SecGroupArrayInput interface {
 	pulumi.Input
 
@@ -222,7 +224,7 @@ func (i SecGroupArray) ToSecGroupArrayOutputWithContext(ctx context.Context) Sec
 // SecGroupMapInput is an input type that accepts SecGroupMap and SecGroupMapOutput values.
 // You can construct a concrete instance of `SecGroupMapInput` via:
 //
-//          SecGroupMap{ "key": SecGroupArgs{...} }
+//	SecGroupMap{ "key": SecGroupArgs{...} }
 type SecGroupMapInput interface {
 	pulumi.Input
 

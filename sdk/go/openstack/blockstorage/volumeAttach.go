@@ -17,33 +17,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		volume1, err := blockstorage.NewVolume(ctx, "volume1", &blockstorage.VolumeArgs{
-// 			Size: pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = blockstorage.NewVolumeAttach(ctx, "va1", &blockstorage.VolumeAttachArgs{
-// 			Device:    pulumi.String("auto"),
-// 			HostName:  pulumi.String("devstack"),
-// 			Initiator: pulumi.String("iqn.1993-08.org.debian:01:e9861fb1859"),
-// 			IpAddress: pulumi.String("192.168.255.10"),
-// 			OsType:    pulumi.String("linux2"),
-// 			Platform:  pulumi.String("x86_64"),
-// 			VolumeId:  volume1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			volume1, err := blockstorage.NewVolume(ctx, "volume1", &blockstorage.VolumeArgs{
+//				Size: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = blockstorage.NewVolumeAttach(ctx, "va1", &blockstorage.VolumeAttachArgs{
+//				Device:    pulumi.String("auto"),
+//				HostName:  pulumi.String("devstack"),
+//				Initiator: pulumi.String("iqn.1993-08.org.debian:01:e9861fb1859"),
+//				IpAddress: pulumi.String("192.168.255.10"),
+//				OsType:    pulumi.String("linux2"),
+//				Platform:  pulumi.String("x86_64"),
+//				VolumeId:  volume1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -315,7 +318,7 @@ func (i *VolumeAttach) ToVolumeAttachOutputWithContext(ctx context.Context) Volu
 // VolumeAttachArrayInput is an input type that accepts VolumeAttachArray and VolumeAttachArrayOutput values.
 // You can construct a concrete instance of `VolumeAttachArrayInput` via:
 //
-//          VolumeAttachArray{ VolumeAttachArgs{...} }
+//	VolumeAttachArray{ VolumeAttachArgs{...} }
 type VolumeAttachArrayInput interface {
 	pulumi.Input
 
@@ -340,7 +343,7 @@ func (i VolumeAttachArray) ToVolumeAttachArrayOutputWithContext(ctx context.Cont
 // VolumeAttachMapInput is an input type that accepts VolumeAttachMap and VolumeAttachMapOutput values.
 // You can construct a concrete instance of `VolumeAttachMapInput` via:
 //
-//          VolumeAttachMap{ "key": VolumeAttachArgs{...} }
+//	VolumeAttachMap{ "key": VolumeAttachArgs{...} }
 type VolumeAttachMapInput interface {
 	pulumi.Input
 

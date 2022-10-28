@@ -16,49 +16,34 @@ public final class GetServiceResult {
      * @return The service description.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private GetServiceResult(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.description = description;
-        this.enabled = enabled;
-        this.id = id;
-        this.name = name;
-        this.region = region;
-        this.type = type;
-    }
-
+    private GetServiceResult() {}
     /**
      * @return The service description.
      * 
@@ -109,7 +94,7 @@ public final class GetServiceResult {
     public static Builder builder(GetServiceResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private @Nullable Boolean enabled;
@@ -117,11 +102,7 @@ public final class GetServiceResult {
         private @Nullable String name;
         private String region;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -132,31 +113,45 @@ public final class GetServiceResult {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public GetServiceResult build() {
-            return new GetServiceResult(description, enabled, id, name, region, type);
+        }
+        public GetServiceResult build() {
+            final var o = new GetServiceResult();
+            o.description = description;
+            o.enabled = enabled;
+            o.id = id;
+            o.name = name;
+            o.region = region;
+            o.type = type;
+            return o;
         }
     }
 }

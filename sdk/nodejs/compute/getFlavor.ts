@@ -27,6 +27,7 @@ export function getFlavor(args?: GetFlavorArgs, opts?: pulumi.InvokeOptions): Pr
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("openstack:compute/getFlavor:getFlavor", {
+        "description": args.description,
         "disk": args.disk,
         "flavorId": args.flavorId,
         "isPublic": args.isPublic,
@@ -45,6 +46,10 @@ export function getFlavor(args?: GetFlavorArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getFlavor.
  */
 export interface GetFlavorArgs {
+    /**
+     * The description of the flavor.
+     */
+    description?: string;
     /**
      * The exact amount of disk (in gigabytes).
      */
@@ -99,6 +104,7 @@ export interface GetFlavorArgs {
  * A collection of values returned by getFlavor.
  */
 export interface GetFlavorResult {
+    readonly description?: string;
     readonly disk?: number;
     /**
      * Key/Value pairs of metadata for the flavor.
@@ -128,6 +134,10 @@ export function getFlavorOutput(args?: GetFlavorOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getFlavor.
  */
 export interface GetFlavorOutputArgs {
+    /**
+     * The description of the flavor.
+     */
+    description?: pulumi.Input<string>;
     /**
      * The exact amount of disk (in gigabytes).
      */

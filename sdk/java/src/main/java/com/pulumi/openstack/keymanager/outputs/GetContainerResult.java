@@ -20,93 +20,66 @@ public final class GetContainerResult {
      * described below.
      * 
      */
-    private final List<GetContainerAcl> acls;
+    private List<GetContainerAcl> acls;
     /**
      * @return The list of the container consumers. The structure is described
      * below.
      * 
      */
-    private final List<GetContainerConsumer> consumers;
+    private List<GetContainerConsumer> consumers;
     /**
      * @return The container reference / where to find the container.
      * 
      */
-    private final String containerRef;
+    private String containerRef;
     /**
      * @return The date the container ACL was created.
      * 
      */
-    private final String createdAt;
+    private String createdAt;
     /**
      * @return The creator of the container.
      * 
      */
-    private final String creatorId;
+    private String creatorId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of the consumer.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final @Nullable String region;
+    private @Nullable String region;
     /**
      * @return A set of dictionaries containing references to secrets. The
      * structure is described below.
      * 
      */
-    private final List<GetContainerSecretRef> secretRefs;
+    private List<GetContainerSecretRef> secretRefs;
     /**
      * @return The status of the container.
      * 
      */
-    private final String status;
+    private String status;
     /**
      * @return The container type.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The date the container ACL was last updated.
      * 
      */
-    private final String updatedAt;
+    private String updatedAt;
 
-    @CustomType.Constructor
-    private GetContainerResult(
-        @CustomType.Parameter("acls") List<GetContainerAcl> acls,
-        @CustomType.Parameter("consumers") List<GetContainerConsumer> consumers,
-        @CustomType.Parameter("containerRef") String containerRef,
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("creatorId") String creatorId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("secretRefs") List<GetContainerSecretRef> secretRefs,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("updatedAt") String updatedAt) {
-        this.acls = acls;
-        this.consumers = consumers;
-        this.containerRef = containerRef;
-        this.createdAt = createdAt;
-        this.creatorId = creatorId;
-        this.id = id;
-        this.name = name;
-        this.region = region;
-        this.secretRefs = secretRefs;
-        this.status = status;
-        this.type = type;
-        this.updatedAt = updatedAt;
-    }
-
+    private GetContainerResult() {}
     /**
      * @return The list of ACLs assigned to a container. The `read` structure is
      * described below.
@@ -202,7 +175,7 @@ public final class GetContainerResult {
     public static Builder builder(GetContainerResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetContainerAcl> acls;
         private List<GetContainerConsumer> consumers;
@@ -216,11 +189,7 @@ public final class GetContainerResult {
         private String status;
         private String type;
         private String updatedAt;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetContainerResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acls = defaults.acls;
@@ -237,6 +206,7 @@ public final class GetContainerResult {
     	      this.updatedAt = defaults.updatedAt;
         }
 
+        @CustomType.Setter
         public Builder acls(List<GetContainerAcl> acls) {
             this.acls = Objects.requireNonNull(acls);
             return this;
@@ -244,6 +214,7 @@ public final class GetContainerResult {
         public Builder acls(GetContainerAcl... acls) {
             return acls(List.of(acls));
         }
+        @CustomType.Setter
         public Builder consumers(List<GetContainerConsumer> consumers) {
             this.consumers = Objects.requireNonNull(consumers);
             return this;
@@ -251,30 +222,37 @@ public final class GetContainerResult {
         public Builder consumers(GetContainerConsumer... consumers) {
             return consumers(List.of(consumers));
         }
+        @CustomType.Setter
         public Builder containerRef(String containerRef) {
             this.containerRef = Objects.requireNonNull(containerRef);
             return this;
         }
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder creatorId(String creatorId) {
             this.creatorId = Objects.requireNonNull(creatorId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder secretRefs(List<GetContainerSecretRef> secretRefs) {
             this.secretRefs = Objects.requireNonNull(secretRefs);
             return this;
@@ -282,19 +260,36 @@ public final class GetContainerResult {
         public Builder secretRefs(GetContainerSecretRef... secretRefs) {
             return secretRefs(List.of(secretRefs));
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
             this.updatedAt = Objects.requireNonNull(updatedAt);
             return this;
-        }        public GetContainerResult build() {
-            return new GetContainerResult(acls, consumers, containerRef, createdAt, creatorId, id, name, region, secretRefs, status, type, updatedAt);
+        }
+        public GetContainerResult build() {
+            final var o = new GetContainerResult();
+            o.acls = acls;
+            o.consumers = consumers;
+            o.containerRef = containerRef;
+            o.createdAt = createdAt;
+            o.creatorId = creatorId;
+            o.id = id;
+            o.name = name;
+            o.region = region;
+            o.secretRefs = secretRefs;
+            o.status = status;
+            o.type = type;
+            o.updatedAt = updatedAt;
+            return o;
         }
     }
 }

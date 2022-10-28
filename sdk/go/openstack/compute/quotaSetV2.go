@@ -16,10 +16,12 @@ import (
 // > **Note:** This usually requires admin privileges.
 //
 // > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API
-//     in case of delete call.
+//
+//	in case of delete call.
 //
 // > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
-//     created with zero value.
+//
+//	created with zero value.
 //
 // ## Example Usage
 //
@@ -27,32 +29,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project1, err := identity.NewProject(ctx, "project1", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = compute.NewQuotaSetV2(ctx, "quotaset1", &compute.QuotaSetV2Args{
-// 			ProjectId:          project1.ID(),
-// 			KeyPairs:           pulumi.Int(10),
-// 			Ram:                pulumi.Int(40960),
-// 			Cores:              pulumi.Int(32),
-// 			Instances:          pulumi.Int(20),
-// 			ServerGroups:       pulumi.Int(4),
-// 			ServerGroupMembers: pulumi.Int(8),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewQuotaSetV2(ctx, "quotaset1", &compute.QuotaSetV2Args{
+//				ProjectId:          project1.ID(),
+//				KeyPairs:           pulumi.Int(10),
+//				Ram:                pulumi.Int(40960),
+//				Cores:              pulumi.Int(32),
+//				Instances:          pulumi.Int(20),
+//				ServerGroups:       pulumi.Int(4),
+//				ServerGroupMembers: pulumi.Int(8),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -60,7 +65,9 @@ import (
 // Quotasets can be imported using the `project_id/region_name`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:compute/quotaSetV2:QuotaSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
+//
+//	$ pulumi import openstack:compute/quotaSetV2:QuotaSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
+//
 // ```
 type QuotaSetV2 struct {
 	pulumi.CustomResourceState
@@ -386,7 +393,7 @@ func (i *QuotaSetV2) ToQuotaSetV2OutputWithContext(ctx context.Context) QuotaSet
 // QuotaSetV2ArrayInput is an input type that accepts QuotaSetV2Array and QuotaSetV2ArrayOutput values.
 // You can construct a concrete instance of `QuotaSetV2ArrayInput` via:
 //
-//          QuotaSetV2Array{ QuotaSetV2Args{...} }
+//	QuotaSetV2Array{ QuotaSetV2Args{...} }
 type QuotaSetV2ArrayInput interface {
 	pulumi.Input
 
@@ -411,7 +418,7 @@ func (i QuotaSetV2Array) ToQuotaSetV2ArrayOutputWithContext(ctx context.Context)
 // QuotaSetV2MapInput is an input type that accepts QuotaSetV2Map and QuotaSetV2MapOutput values.
 // You can construct a concrete instance of `QuotaSetV2MapInput` via:
 //
-//          QuotaSetV2Map{ "key": QuotaSetV2Args{...} }
+//	QuotaSetV2Map{ "key": QuotaSetV2Args{...} }
 type QuotaSetV2MapInput interface {
 	pulumi.Input
 

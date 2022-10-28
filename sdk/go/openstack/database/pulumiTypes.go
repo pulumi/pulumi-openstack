@@ -13,6 +13,8 @@ import (
 type ConfigurationConfiguration struct {
 	// Configuration parameter name. Changing this creates a new resource.
 	Name string `pulumi:"name"`
+	// Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
+	StringType *bool `pulumi:"stringType"`
 	// Configuration parameter value. Changing this creates a new resource.
 	Value string `pulumi:"value"`
 }
@@ -20,7 +22,7 @@ type ConfigurationConfiguration struct {
 // ConfigurationConfigurationInput is an input type that accepts ConfigurationConfigurationArgs and ConfigurationConfigurationOutput values.
 // You can construct a concrete instance of `ConfigurationConfigurationInput` via:
 //
-//          ConfigurationConfigurationArgs{...}
+//	ConfigurationConfigurationArgs{...}
 type ConfigurationConfigurationInput interface {
 	pulumi.Input
 
@@ -31,6 +33,8 @@ type ConfigurationConfigurationInput interface {
 type ConfigurationConfigurationArgs struct {
 	// Configuration parameter name. Changing this creates a new resource.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
+	StringType pulumi.BoolPtrInput `pulumi:"stringType"`
 	// Configuration parameter value. Changing this creates a new resource.
 	Value pulumi.StringInput `pulumi:"value"`
 }
@@ -50,7 +54,7 @@ func (i ConfigurationConfigurationArgs) ToConfigurationConfigurationOutputWithCo
 // ConfigurationConfigurationArrayInput is an input type that accepts ConfigurationConfigurationArray and ConfigurationConfigurationArrayOutput values.
 // You can construct a concrete instance of `ConfigurationConfigurationArrayInput` via:
 //
-//          ConfigurationConfigurationArray{ ConfigurationConfigurationArgs{...} }
+//	ConfigurationConfigurationArray{ ConfigurationConfigurationArgs{...} }
 type ConfigurationConfigurationArrayInput interface {
 	pulumi.Input
 
@@ -91,6 +95,11 @@ func (o ConfigurationConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigurationConfiguration) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
+func (o ConfigurationConfigurationOutput) StringType() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigurationConfiguration) *bool { return v.StringType }).(pulumi.BoolPtrOutput)
+}
+
 // Configuration parameter value. Changing this creates a new resource.
 func (o ConfigurationConfigurationOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigurationConfiguration) string { return v.Value }).(pulumi.StringOutput)
@@ -126,7 +135,7 @@ type ConfigurationDatastore struct {
 // ConfigurationDatastoreInput is an input type that accepts ConfigurationDatastoreArgs and ConfigurationDatastoreOutput values.
 // You can construct a concrete instance of `ConfigurationDatastoreInput` via:
 //
-//          ConfigurationDatastoreArgs{...}
+//	ConfigurationDatastoreArgs{...}
 type ConfigurationDatastoreInput interface {
 	pulumi.Input
 
@@ -164,11 +173,11 @@ func (i ConfigurationDatastoreArgs) ToConfigurationDatastorePtrOutputWithContext
 // ConfigurationDatastorePtrInput is an input type that accepts ConfigurationDatastoreArgs, ConfigurationDatastorePtr and ConfigurationDatastorePtrOutput values.
 // You can construct a concrete instance of `ConfigurationDatastorePtrInput` via:
 //
-//          ConfigurationDatastoreArgs{...}
+//	        ConfigurationDatastoreArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ConfigurationDatastorePtrInput interface {
 	pulumi.Input
 
@@ -286,7 +295,7 @@ type InstanceDatabase struct {
 // InstanceDatabaseInput is an input type that accepts InstanceDatabaseArgs and InstanceDatabaseOutput values.
 // You can construct a concrete instance of `InstanceDatabaseInput` via:
 //
-//          InstanceDatabaseArgs{...}
+//	InstanceDatabaseArgs{...}
 type InstanceDatabaseInput interface {
 	pulumi.Input
 
@@ -320,7 +329,7 @@ func (i InstanceDatabaseArgs) ToInstanceDatabaseOutputWithContext(ctx context.Co
 // InstanceDatabaseArrayInput is an input type that accepts InstanceDatabaseArray and InstanceDatabaseArrayOutput values.
 // You can construct a concrete instance of `InstanceDatabaseArrayInput` via:
 //
-//          InstanceDatabaseArray{ InstanceDatabaseArgs{...} }
+//	InstanceDatabaseArray{ InstanceDatabaseArgs{...} }
 type InstanceDatabaseArrayInput interface {
 	pulumi.Input
 
@@ -405,7 +414,7 @@ type InstanceDatastore struct {
 // InstanceDatastoreInput is an input type that accepts InstanceDatastoreArgs and InstanceDatastoreOutput values.
 // You can construct a concrete instance of `InstanceDatastoreInput` via:
 //
-//          InstanceDatastoreArgs{...}
+//	InstanceDatastoreArgs{...}
 type InstanceDatastoreInput interface {
 	pulumi.Input
 
@@ -445,11 +454,11 @@ func (i InstanceDatastoreArgs) ToInstanceDatastorePtrOutputWithContext(ctx conte
 // InstanceDatastorePtrInput is an input type that accepts InstanceDatastoreArgs, InstanceDatastorePtr and InstanceDatastorePtrOutput values.
 // You can construct a concrete instance of `InstanceDatastorePtrInput` via:
 //
-//          InstanceDatastoreArgs{...}
+//	        InstanceDatastoreArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InstanceDatastorePtrInput interface {
 	pulumi.Input
 
@@ -575,7 +584,7 @@ type InstanceNetwork struct {
 // InstanceNetworkInput is an input type that accepts InstanceNetworkArgs and InstanceNetworkOutput values.
 // You can construct a concrete instance of `InstanceNetworkInput` via:
 //
-//          InstanceNetworkArgs{...}
+//	InstanceNetworkArgs{...}
 type InstanceNetworkInput interface {
 	pulumi.Input
 
@@ -613,7 +622,7 @@ func (i InstanceNetworkArgs) ToInstanceNetworkOutputWithContext(ctx context.Cont
 // InstanceNetworkArrayInput is an input type that accepts InstanceNetworkArray and InstanceNetworkArrayOutput values.
 // You can construct a concrete instance of `InstanceNetworkArrayInput` via:
 //
-//          InstanceNetworkArray{ InstanceNetworkArgs{...} }
+//	InstanceNetworkArray{ InstanceNetworkArgs{...} }
 type InstanceNetworkArrayInput interface {
 	pulumi.Input
 
@@ -711,7 +720,7 @@ type InstanceUser struct {
 // InstanceUserInput is an input type that accepts InstanceUserArgs and InstanceUserOutput values.
 // You can construct a concrete instance of `InstanceUserInput` via:
 //
-//          InstanceUserArgs{...}
+//	InstanceUserArgs{...}
 type InstanceUserInput interface {
 	pulumi.Input
 
@@ -749,7 +758,7 @@ func (i InstanceUserArgs) ToInstanceUserOutputWithContext(ctx context.Context) I
 // InstanceUserArrayInput is an input type that accepts InstanceUserArray and InstanceUserArrayOutput values.
 // You can construct a concrete instance of `InstanceUserArrayInput` via:
 //
-//          InstanceUserArray{ InstanceUserArgs{...} }
+//	InstanceUserArray{ InstanceUserArgs{...} }
 type InstanceUserArrayInput interface {
 	pulumi.Input
 

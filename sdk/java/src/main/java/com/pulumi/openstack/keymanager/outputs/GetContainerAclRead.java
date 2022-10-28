@@ -17,36 +17,25 @@ public final class GetContainerAclRead {
      * @return The date the container ACL was created.
      * 
      */
-    private final String createdAt;
+    private String createdAt;
     /**
      * @return Whether the container is accessible project wide.
      * 
      */
-    private final @Nullable Boolean projectAccess;
+    private @Nullable Boolean projectAccess;
     /**
      * @return The date the container ACL was last updated.
      * 
      */
-    private final String updatedAt;
+    private String updatedAt;
     /**
      * @return The list of user IDs, which are allowed to access the container,
      * when `project_access` is set to `false`.
      * 
      */
-    private final @Nullable List<String> users;
+    private @Nullable List<String> users;
 
-    @CustomType.Constructor
-    private GetContainerAclRead(
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("projectAccess") @Nullable Boolean projectAccess,
-        @CustomType.Parameter("updatedAt") String updatedAt,
-        @CustomType.Parameter("users") @Nullable List<String> users) {
-        this.createdAt = createdAt;
-        this.projectAccess = projectAccess;
-        this.updatedAt = updatedAt;
-        this.users = users;
-    }
-
+    private GetContainerAclRead() {}
     /**
      * @return The date the container ACL was created.
      * 
@@ -84,17 +73,13 @@ public final class GetContainerAclRead {
     public static Builder builder(GetContainerAclRead defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String createdAt;
         private @Nullable Boolean projectAccess;
         private String updatedAt;
         private @Nullable List<String> users;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetContainerAclRead defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
@@ -103,26 +88,36 @@ public final class GetContainerAclRead {
     	      this.users = defaults.users;
         }
 
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder projectAccess(@Nullable Boolean projectAccess) {
             this.projectAccess = projectAccess;
             return this;
         }
+        @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
             this.updatedAt = Objects.requireNonNull(updatedAt);
             return this;
         }
+        @CustomType.Setter
         public Builder users(@Nullable List<String> users) {
             this.users = users;
             return this;
         }
         public Builder users(String... users) {
             return users(List.of(users));
-        }        public GetContainerAclRead build() {
-            return new GetContainerAclRead(createdAt, projectAccess, updatedAt, users);
+        }
+        public GetContainerAclRead build() {
+            final var o = new GetContainerAclRead();
+            o.createdAt = createdAt;
+            o.projectAccess = projectAccess;
+            o.updatedAt = updatedAt;
+            o.users = users;
+            return o;
         }
     }
 }

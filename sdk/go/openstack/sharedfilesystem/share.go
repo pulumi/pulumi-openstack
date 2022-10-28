@@ -19,55 +19,60 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/sharedfilesystem"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/sharedfilesystem"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
-// 			AdminStateUp: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
-// 			Cidr:      pulumi.String("192.168.199.0/24"),
-// 			IpVersion: pulumi.Int(4),
-// 			NetworkId: network1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		sharenetwork1, err := sharedfilesystem.NewShareNetwork(ctx, "sharenetwork1", &sharedfilesystem.ShareNetworkArgs{
-// 			Description:     pulumi.String("test share network with security services"),
-// 			NeutronNetId:    network1.ID(),
-// 			NeutronSubnetId: subnet1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = sharedfilesystem.NewShare(ctx, "share1", &sharedfilesystem.ShareArgs{
-// 			Description:    pulumi.String("test share description"),
-// 			ShareNetworkId: sharenetwork1.ID(),
-// 			ShareProto:     pulumi.String("NFS"),
-// 			Size:           pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//				Cidr:      pulumi.String("192.168.199.0/24"),
+//				IpVersion: pulumi.Int(4),
+//				NetworkId: network1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sharenetwork1, err := sharedfilesystem.NewShareNetwork(ctx, "sharenetwork1", &sharedfilesystem.ShareNetworkArgs{
+//				Description:     pulumi.String("test share network with security services"),
+//				NeutronNetId:    network1.ID(),
+//				NeutronSubnetId: subnet1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sharedfilesystem.NewShare(ctx, "share1", &sharedfilesystem.ShareArgs{
+//				Description:    pulumi.String("test share description"),
+//				ShareNetworkId: sharenetwork1.ID(),
+//				ShareProto:     pulumi.String("NFS"),
+//				Size:           pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// This resource can be imported by specifying the ID of the share
+// # This resource can be imported by specifying the ID of the share
 //
 // ```sh
-//  $ pulumi import openstack:sharedfilesystem/share:Share share_1 <id>
+//
+//	$ pulumi import openstack:sharedfilesystem/share:Share share_1 <id>
+//
 // ```
 type Share struct {
 	pulumi.CustomResourceState
@@ -379,7 +384,7 @@ func (i *Share) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 // ShareArrayInput is an input type that accepts ShareArray and ShareArrayOutput values.
 // You can construct a concrete instance of `ShareArrayInput` via:
 //
-//          ShareArray{ ShareArgs{...} }
+//	ShareArray{ ShareArgs{...} }
 type ShareArrayInput interface {
 	pulumi.Input
 
@@ -404,7 +409,7 @@ func (i ShareArray) ToShareArrayOutputWithContext(ctx context.Context) ShareArra
 // ShareMapInput is an input type that accepts ShareMap and ShareMapOutput values.
 // You can construct a concrete instance of `ShareMapInput` via:
 //
-//          ShareMap{ "key": ShareArgs{...} }
+//	ShareMap{ "key": ShareArgs{...} }
 type ShareMapInput interface {
 	pulumi.Input
 

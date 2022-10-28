@@ -16,28 +16,19 @@ public final class PortExtraDhcpOption {
      * @return IP protocol version. Defaults to 4.
      * 
      */
-    private final @Nullable Integer ipVersion;
+    private @Nullable Integer ipVersion;
     /**
      * @return Name of the DHCP option.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Value of the DHCP option.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private PortExtraDhcpOption(
-        @CustomType.Parameter("ipVersion") @Nullable Integer ipVersion,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("value") String value) {
-        this.ipVersion = ipVersion;
-        this.name = name;
-        this.value = value;
-    }
-
+    private PortExtraDhcpOption() {}
     /**
      * @return IP protocol version. Defaults to 4.
      * 
@@ -67,16 +58,12 @@ public final class PortExtraDhcpOption {
     public static Builder builder(PortExtraDhcpOption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer ipVersion;
         private String name;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(PortExtraDhcpOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipVersion = defaults.ipVersion;
@@ -84,19 +71,27 @@ public final class PortExtraDhcpOption {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder ipVersion(@Nullable Integer ipVersion) {
             this.ipVersion = ipVersion;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public PortExtraDhcpOption build() {
-            return new PortExtraDhcpOption(ipVersion, name, value);
+        }
+        public PortExtraDhcpOption build() {
+            final var o = new PortExtraDhcpOption();
+            o.ipVersion = ipVersion;
+            o.name = name;
+            o.value = value;
+            return o;
         }
     }
 }

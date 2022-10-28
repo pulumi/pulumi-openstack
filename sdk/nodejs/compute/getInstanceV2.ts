@@ -70,6 +70,10 @@ export interface GetInstanceV2Result {
      */
     readonly availabilityZone: string;
     /**
+     * The creation time of the instance.
+     */
+    readonly created: string;
+    /**
      * The flavor ID used to create the server.
      */
     readonly flavorId: string;
@@ -112,6 +116,10 @@ export interface GetInstanceV2Result {
      * A set of string tags assigned to this server.
      */
     readonly tags: string[];
+    /**
+     * The time when the instance was last updated.
+     */
+    readonly updated: string;
     /**
      * The user data added when the server was created.
      */

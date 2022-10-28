@@ -19,65 +19,70 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		router1, err := networking.NewRouter(ctx, "router1", &networking.RouterArgs{
-// 			AdminStateUp: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
-// 			AdminStateUp: pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
-// 			Cidr:      pulumi.String("192.168.199.0/24"),
-// 			IpVersion: pulumi.Int(4),
-// 			NetworkId: network1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = networking.NewRouterInterface(ctx, "int1", &networking.RouterInterfaceArgs{
-// 			RouterId: router1.ID(),
-// 			SubnetId: subnet1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = networking.NewRouterRoute(ctx, "routerRoute1", &networking.RouterRouteArgs{
-// 			DestinationCidr: pulumi.String("10.0.1.0/24"),
-// 			NextHop:         pulumi.String("192.168.199.254"),
-// 			RouterId:        router1.ID(),
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			pulumi.Resource("openstack_networking_router_interface_v2.int_1"),
-// 		}))
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			router1, err := networking.NewRouter(ctx, "router1", &networking.RouterArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//				Cidr:      pulumi.String("192.168.199.0/24"),
+//				IpVersion: pulumi.Int(4),
+//				NetworkId: network1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewRouterInterface(ctx, "int1", &networking.RouterInterfaceArgs{
+//				RouterId: router1.ID(),
+//				SubnetId: subnet1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewRouterRoute(ctx, "routerRoute1", &networking.RouterRouteArgs{
+//				DestinationCidr: pulumi.String("10.0.1.0/24"),
+//				NextHop:         pulumi.String("192.168.199.254"),
+//				RouterId:        router1.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				pulumi.Resource("openstack_networking_router_interface_v2.int_1"),
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Notes
 //
-// The `nextHop` IP address must be directly reachable from the router at the ``networking.RouterRoute``
-// resource creation time.  You can ensure that by explicitly specifying a dependency on the ``networking.RouterInterface``
+// The `nextHop` IP address must be directly reachable from the router at the “networking.RouterRoute“
+// resource creation time.  You can ensure that by explicitly specifying a dependency on the “networking.RouterInterface“
 // resource that connects the next hop to the router, as in the example above.
 //
 // ## Import
 //
-// Routing entries can be imported using a combined ID using the following format``<router_id>-route-<destination_cidr>-<next_hop>``
+// Routing entries can be imported using a combined ID using the following format“<router_id>-route-<destination_cidr>-<next_hop>“
 //
 // ```sh
-//  $ pulumi import openstack:networking/routerRoute:RouterRoute router_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
+//
+//	$ pulumi import openstack:networking/routerRoute:RouterRoute router_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
+//
 // ```
 type RouterRoute struct {
 	pulumi.CustomResourceState
@@ -234,7 +239,7 @@ func (i *RouterRoute) ToRouterRouteOutputWithContext(ctx context.Context) Router
 // RouterRouteArrayInput is an input type that accepts RouterRouteArray and RouterRouteArrayOutput values.
 // You can construct a concrete instance of `RouterRouteArrayInput` via:
 //
-//          RouterRouteArray{ RouterRouteArgs{...} }
+//	RouterRouteArray{ RouterRouteArgs{...} }
 type RouterRouteArrayInput interface {
 	pulumi.Input
 
@@ -259,7 +264,7 @@ func (i RouterRouteArray) ToRouterRouteArrayOutputWithContext(ctx context.Contex
 // RouterRouteMapInput is an input type that accepts RouterRouteMap and RouterRouteMapOutput values.
 // You can construct a concrete instance of `RouterRouteMapInput` via:
 //
-//          RouterRouteMap{ "key": RouterRouteArgs{...} }
+//	RouterRouteMap{ "key": RouterRouteArgs{...} }
 type RouterRouteMapInput interface {
 	pulumi.Input
 

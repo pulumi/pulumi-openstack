@@ -17,21 +17,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewKeypair(ctx, "test-keypair", &compute.KeypairArgs{
-// 			PublicKey: pulumi.String("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAjpC1hwiOCCmKEWxJ4qzTTsJbKzndLotBCz5PcwtUnflmU+gHJtWMZKpuEGVi29h0A/+ydKek1O18k10Ff+4tyFjiHDQAnOfgWf7+b1yK+qDip3X1C0UPMbwHlTfSGWLGZqd9LvEFx9k3h/M+VtMvwR1lJ9LUyTAImnNjWG7TaIPmui30HvM2UiFEmqkr4ijq45MyX2+fLIePLRIF61p4whjHAQYufqyno3BS48icQb4p6iVEZPo4AE2o9oIyQvj2mx4dk5Y8CgSETOZTYDOR3rU2fZTRDRgPJDH9FWvQjF5tA0p3d9CoWWd2s6GKKbfoUIi8R/Db1BSPJwkqB"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewKeypair(ctx, "test-keypair", &compute.KeypairArgs{
+//				PublicKey: pulumi.String("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAjpC1hwiOCCmKEWxJ4qzTTsJbKzndLotBCz5PcwtUnflmU+gHJtWMZKpuEGVi29h0A/+ydKek1O18k10Ff+4tyFjiHDQAnOfgWf7+b1yK+qDip3X1C0UPMbwHlTfSGWLGZqd9LvEFx9k3h/M+VtMvwR1lJ9LUyTAImnNjWG7TaIPmui30HvM2UiFEmqkr4ijq45MyX2+fLIePLRIF61p4whjHAQYufqyno3BS48icQb4p6iVEZPo4AE2o9oIyQvj2mx4dk5Y8CgSETOZTYDOR3rU2fZTRDRgPJDH9FWvQjF5tA0p3d9CoWWd2s6GKKbfoUIi8R/Db1BSPJwkqB"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Generate a Public/Private Key Pair
 //
@@ -39,19 +42,22 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewKeypair(ctx, "test-keypair", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewKeypair(ctx, "test-keypair", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -59,7 +65,9 @@ import (
 // Keypairs can be imported using the `name`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:compute/keypair:Keypair my-keypair test-keypair
+//
+//	$ pulumi import openstack:compute/keypair:Keypair my-keypair test-keypair
+//
 // ```
 type Keypair struct {
 	pulumi.CustomResourceState
@@ -249,7 +257,7 @@ func (i *Keypair) ToKeypairOutputWithContext(ctx context.Context) KeypairOutput 
 // KeypairArrayInput is an input type that accepts KeypairArray and KeypairArrayOutput values.
 // You can construct a concrete instance of `KeypairArrayInput` via:
 //
-//          KeypairArray{ KeypairArgs{...} }
+//	KeypairArray{ KeypairArgs{...} }
 type KeypairArrayInput interface {
 	pulumi.Input
 
@@ -274,7 +282,7 @@ func (i KeypairArray) ToKeypairArrayOutputWithContext(ctx context.Context) Keypa
 // KeypairMapInput is an input type that accepts KeypairMap and KeypairMapOutput values.
 // You can construct a concrete instance of `KeypairMapInput` via:
 //
-//          KeypairMap{ "key": KeypairArgs{...} }
+//	KeypairMap{ "key": KeypairArgs{...} }
 type KeypairMapInput interface {
 	pulumi.Input
 

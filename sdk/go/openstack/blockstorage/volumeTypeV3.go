@@ -20,25 +20,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := blockstorage.NewVolumeTypeV3(ctx, "volumeType1", &blockstorage.VolumeTypeV3Args{
-// 			Description: pulumi.String("Volume type 1"),
-// 			ExtraSpecs: pulumi.AnyMap{
-// 				"capabilities":        pulumi.Any("gpu"),
-// 				"volume_backend_name": pulumi.Any("ssd"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := blockstorage.NewVolumeTypeV3(ctx, "volumeType1", &blockstorage.VolumeTypeV3Args{
+//				Description: pulumi.String("Volume type 1"),
+//				ExtraSpecs: pulumi.AnyMap{
+//					"capabilities":        pulumi.Any("gpu"),
+//					"volume_backend_name": pulumi.Any("ssd"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -46,7 +49,9 @@ import (
 // Volume types can be imported using the `volume_type_id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:blockstorage/volumeTypeV3:VolumeTypeV3 volume_type_1 941793f0-0a34-4bc4-b72e-a6326ae58283
+//
+//	$ pulumi import openstack:blockstorage/volumeTypeV3:VolumeTypeV3 volume_type_1 941793f0-0a34-4bc4-b72e-a6326ae58283
+//
 // ```
 type VolumeTypeV3 struct {
 	pulumi.CustomResourceState
@@ -199,7 +204,7 @@ func (i *VolumeTypeV3) ToVolumeTypeV3OutputWithContext(ctx context.Context) Volu
 // VolumeTypeV3ArrayInput is an input type that accepts VolumeTypeV3Array and VolumeTypeV3ArrayOutput values.
 // You can construct a concrete instance of `VolumeTypeV3ArrayInput` via:
 //
-//          VolumeTypeV3Array{ VolumeTypeV3Args{...} }
+//	VolumeTypeV3Array{ VolumeTypeV3Args{...} }
 type VolumeTypeV3ArrayInput interface {
 	pulumi.Input
 
@@ -224,7 +229,7 @@ func (i VolumeTypeV3Array) ToVolumeTypeV3ArrayOutputWithContext(ctx context.Cont
 // VolumeTypeV3MapInput is an input type that accepts VolumeTypeV3Map and VolumeTypeV3MapOutput values.
 // You can construct a concrete instance of `VolumeTypeV3MapInput` via:
 //
-//          VolumeTypeV3Map{ "key": VolumeTypeV3Args{...} }
+//	VolumeTypeV3Map{ "key": VolumeTypeV3Args{...} }
 type VolumeTypeV3MapInput interface {
 	pulumi.Input
 

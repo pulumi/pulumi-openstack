@@ -16,58 +16,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFlavorResult {
-    private final @Nullable Integer disk;
+    private @Nullable String description;
+    private @Nullable Integer disk;
     /**
      * @return Key/Value pairs of metadata for the flavor.
      * 
      */
-    private final Map<String,Object> extraSpecs;
-    private final @Nullable String flavorId;
+    private Map<String,Object> extraSpecs;
+    private @Nullable String flavorId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable Boolean isPublic;
-    private final @Nullable Integer minDisk;
-    private final @Nullable Integer minRam;
-    private final @Nullable String name;
-    private final @Nullable Integer ram;
-    private final String region;
-    private final @Nullable Double rxTxFactor;
-    private final @Nullable Integer swap;
-    private final @Nullable Integer vcpus;
+    private String id;
+    private @Nullable Boolean isPublic;
+    private @Nullable Integer minDisk;
+    private @Nullable Integer minRam;
+    private @Nullable String name;
+    private @Nullable Integer ram;
+    private String region;
+    private @Nullable Double rxTxFactor;
+    private @Nullable Integer swap;
+    private @Nullable Integer vcpus;
 
-    @CustomType.Constructor
-    private GetFlavorResult(
-        @CustomType.Parameter("disk") @Nullable Integer disk,
-        @CustomType.Parameter("extraSpecs") Map<String,Object> extraSpecs,
-        @CustomType.Parameter("flavorId") @Nullable String flavorId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isPublic") @Nullable Boolean isPublic,
-        @CustomType.Parameter("minDisk") @Nullable Integer minDisk,
-        @CustomType.Parameter("minRam") @Nullable Integer minRam,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("ram") @Nullable Integer ram,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("rxTxFactor") @Nullable Double rxTxFactor,
-        @CustomType.Parameter("swap") @Nullable Integer swap,
-        @CustomType.Parameter("vcpus") @Nullable Integer vcpus) {
-        this.disk = disk;
-        this.extraSpecs = extraSpecs;
-        this.flavorId = flavorId;
-        this.id = id;
-        this.isPublic = isPublic;
-        this.minDisk = minDisk;
-        this.minRam = minRam;
-        this.name = name;
-        this.ram = ram;
-        this.region = region;
-        this.rxTxFactor = rxTxFactor;
-        this.swap = swap;
-        this.vcpus = vcpus;
+    private GetFlavorResult() {}
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
     }
-
     public Optional<Integer> disk() {
         return Optional.ofNullable(this.disk);
     }
@@ -123,8 +98,9 @@ public final class GetFlavorResult {
     public static Builder builder(GetFlavorResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
+        private @Nullable String description;
         private @Nullable Integer disk;
         private Map<String,Object> extraSpecs;
         private @Nullable String flavorId;
@@ -138,13 +114,10 @@ public final class GetFlavorResult {
         private @Nullable Double rxTxFactor;
         private @Nullable Integer swap;
         private @Nullable Integer vcpus;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFlavorResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.description = defaults.description;
     	      this.disk = defaults.disk;
     	      this.extraSpecs = defaults.extraSpecs;
     	      this.flavorId = defaults.flavorId;
@@ -160,59 +133,93 @@ public final class GetFlavorResult {
     	      this.vcpus = defaults.vcpus;
         }
 
+        @CustomType.Setter
+        public Builder description(@Nullable String description) {
+            this.description = description;
+            return this;
+        }
+        @CustomType.Setter
         public Builder disk(@Nullable Integer disk) {
             this.disk = disk;
             return this;
         }
+        @CustomType.Setter
         public Builder extraSpecs(Map<String,Object> extraSpecs) {
             this.extraSpecs = Objects.requireNonNull(extraSpecs);
             return this;
         }
+        @CustomType.Setter
         public Builder flavorId(@Nullable String flavorId) {
             this.flavorId = flavorId;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isPublic(@Nullable Boolean isPublic) {
             this.isPublic = isPublic;
             return this;
         }
+        @CustomType.Setter
         public Builder minDisk(@Nullable Integer minDisk) {
             this.minDisk = minDisk;
             return this;
         }
+        @CustomType.Setter
         public Builder minRam(@Nullable Integer minRam) {
             this.minRam = minRam;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder ram(@Nullable Integer ram) {
             this.ram = ram;
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder rxTxFactor(@Nullable Double rxTxFactor) {
             this.rxTxFactor = rxTxFactor;
             return this;
         }
+        @CustomType.Setter
         public Builder swap(@Nullable Integer swap) {
             this.swap = swap;
             return this;
         }
+        @CustomType.Setter
         public Builder vcpus(@Nullable Integer vcpus) {
             this.vcpus = vcpus;
             return this;
-        }        public GetFlavorResult build() {
-            return new GetFlavorResult(disk, extraSpecs, flavorId, id, isPublic, minDisk, minRam, name, ram, region, rxTxFactor, swap, vcpus);
+        }
+        public GetFlavorResult build() {
+            final var o = new GetFlavorResult();
+            o.description = description;
+            o.disk = disk;
+            o.extraSpecs = extraSpecs;
+            o.flavorId = flavorId;
+            o.id = id;
+            o.isPublic = isPublic;
+            o.minDisk = minDisk;
+            o.minRam = minRam;
+            o.name = name;
+            o.ram = ram;
+            o.region = region;
+            o.rxTxFactor = rxTxFactor;
+            o.swap = swap;
+            o.vcpus = vcpus;
+            return o;
         }
     }
 }

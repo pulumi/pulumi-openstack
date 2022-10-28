@@ -17,61 +17,42 @@ public final class InstanceNetwork {
      * provisioning access. Accepts true or false. Defaults to false.
      * 
      */
-    private final @Nullable Boolean accessNetwork;
+    private @Nullable Boolean accessNetwork;
     /**
      * @return Specifies a fixed IPv4 address to be used on this
      * network. Changing this creates a new server.
      * 
      */
-    private final @Nullable String fixedIpV4;
-    private final @Nullable String fixedIpV6;
+    private @Nullable String fixedIpV4;
+    private @Nullable String fixedIpV6;
     /**
      * @deprecated
      * Use the openstack_compute_floatingip_associate_v2 resource instead
      * 
      */
     @Deprecated /* Use the openstack_compute_floatingip_associate_v2 resource instead */
-    private final @Nullable String floatingIp;
-    private final @Nullable String mac;
+    private @Nullable String floatingIp;
+    private @Nullable String mac;
     /**
      * @return The human-readable
      * name of the network. Changing this creates a new server.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return The port UUID of a
      * network to attach to the server. Changing this creates a new server.
      * 
      */
-    private final @Nullable String port;
+    private @Nullable String port;
     /**
      * @return The UUID of
      * the image, volume, or snapshot. Changing this creates a new server.
      * 
      */
-    private final @Nullable String uuid;
+    private @Nullable String uuid;
 
-    @CustomType.Constructor
-    private InstanceNetwork(
-        @CustomType.Parameter("accessNetwork") @Nullable Boolean accessNetwork,
-        @CustomType.Parameter("fixedIpV4") @Nullable String fixedIpV4,
-        @CustomType.Parameter("fixedIpV6") @Nullable String fixedIpV6,
-        @CustomType.Parameter("floatingIp") @Nullable String floatingIp,
-        @CustomType.Parameter("mac") @Nullable String mac,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("port") @Nullable String port,
-        @CustomType.Parameter("uuid") @Nullable String uuid) {
-        this.accessNetwork = accessNetwork;
-        this.fixedIpV4 = fixedIpV4;
-        this.fixedIpV6 = fixedIpV6;
-        this.floatingIp = floatingIp;
-        this.mac = mac;
-        this.name = name;
-        this.port = port;
-        this.uuid = uuid;
-    }
-
+    private InstanceNetwork() {}
     /**
      * @return Specifies if this network should be used for
      * provisioning access. Accepts true or false. Defaults to false.
@@ -135,7 +116,7 @@ public final class InstanceNetwork {
     public static Builder builder(InstanceNetwork defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean accessNetwork;
         private @Nullable String fixedIpV4;
@@ -145,11 +126,7 @@ public final class InstanceNetwork {
         private @Nullable String name;
         private @Nullable String port;
         private @Nullable String uuid;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(InstanceNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessNetwork = defaults.accessNetwork;
@@ -162,39 +139,57 @@ public final class InstanceNetwork {
     	      this.uuid = defaults.uuid;
         }
 
+        @CustomType.Setter
         public Builder accessNetwork(@Nullable Boolean accessNetwork) {
             this.accessNetwork = accessNetwork;
             return this;
         }
+        @CustomType.Setter
         public Builder fixedIpV4(@Nullable String fixedIpV4) {
             this.fixedIpV4 = fixedIpV4;
             return this;
         }
+        @CustomType.Setter
         public Builder fixedIpV6(@Nullable String fixedIpV6) {
             this.fixedIpV6 = fixedIpV6;
             return this;
         }
+        @CustomType.Setter
         public Builder floatingIp(@Nullable String floatingIp) {
             this.floatingIp = floatingIp;
             return this;
         }
+        @CustomType.Setter
         public Builder mac(@Nullable String mac) {
             this.mac = mac;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder port(@Nullable String port) {
             this.port = port;
             return this;
         }
+        @CustomType.Setter
         public Builder uuid(@Nullable String uuid) {
             this.uuid = uuid;
             return this;
-        }        public InstanceNetwork build() {
-            return new InstanceNetwork(accessNetwork, fixedIpV4, fixedIpV6, floatingIp, mac, name, port, uuid);
+        }
+        public InstanceNetwork build() {
+            final var o = new InstanceNetwork();
+            o.accessNetwork = accessNetwork;
+            o.fixedIpV4 = fixedIpV4;
+            o.fixedIpV6 = fixedIpV6;
+            o.floatingIp = floatingIp;
+            o.mac = mac;
+            o.name = name;
+            o.port = port;
+            o.uuid = uuid;
+            return o;
         }
     }
 }

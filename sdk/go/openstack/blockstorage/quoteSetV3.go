@@ -16,10 +16,12 @@ import (
 // > **Note:** This usually requires admin privileges.
 //
 // > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack API
-//     in case of delete call.
+//
+//	in case of delete call.
 //
 // > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
-//     created with zero value. This excludes volume type quota.
+//
+//	created with zero value. This excludes volume type quota.
 //
 // ## Example Usage
 //
@@ -27,38 +29,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project1, err := identity.NewProject(ctx, "project1", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = blockstorage.NewQuoteSetV3(ctx, "quotaset1", &blockstorage.QuoteSetV3Args{
-// 			ProjectId:          project1.ID(),
-// 			Volumes:            pulumi.Int(10),
-// 			Snapshots:          pulumi.Int(4),
-// 			Gigabytes:          pulumi.Int(100),
-// 			PerVolumeGigabytes: pulumi.Int(10),
-// 			Backups:            pulumi.Int(4),
-// 			BackupGigabytes:    pulumi.Int(10),
-// 			Groups:             pulumi.Int(100),
-// 			VolumeTypeQuota: pulumi.AnyMap{
-// 				"volumes_ssd":   pulumi.Any(30),
-// 				"gigabytes_ssd": pulumi.Any(500),
-// 				"snapshots_ssd": pulumi.Any(10),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = blockstorage.NewQuoteSetV3(ctx, "quotaset1", &blockstorage.QuoteSetV3Args{
+//				ProjectId:          project1.ID(),
+//				Volumes:            pulumi.Int(10),
+//				Snapshots:          pulumi.Int(4),
+//				Gigabytes:          pulumi.Int(100),
+//				PerVolumeGigabytes: pulumi.Int(10),
+//				Backups:            pulumi.Int(4),
+//				BackupGigabytes:    pulumi.Int(10),
+//				Groups:             pulumi.Int(100),
+//				VolumeTypeQuota: pulumi.AnyMap{
+//					"volumes_ssd":   pulumi.Any(30),
+//					"gigabytes_ssd": pulumi.Any(500),
+//					"snapshots_ssd": pulumi.Any(10),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -66,7 +71,9 @@ import (
 // Quotasets can be imported using the `project_id/region`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:blockstorage/quoteSetV3:QuoteSetV3 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
+//
+//	$ pulumi import openstack:blockstorage/quoteSetV3:QuoteSetV3 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
+//
 // ```
 type QuoteSetV3 struct {
 	pulumi.CustomResourceState
@@ -307,7 +314,7 @@ func (i *QuoteSetV3) ToQuoteSetV3OutputWithContext(ctx context.Context) QuoteSet
 // QuoteSetV3ArrayInput is an input type that accepts QuoteSetV3Array and QuoteSetV3ArrayOutput values.
 // You can construct a concrete instance of `QuoteSetV3ArrayInput` via:
 //
-//          QuoteSetV3Array{ QuoteSetV3Args{...} }
+//	QuoteSetV3Array{ QuoteSetV3Args{...} }
 type QuoteSetV3ArrayInput interface {
 	pulumi.Input
 
@@ -332,7 +339,7 @@ func (i QuoteSetV3Array) ToQuoteSetV3ArrayOutputWithContext(ctx context.Context)
 // QuoteSetV3MapInput is an input type that accepts QuoteSetV3Map and QuoteSetV3MapOutput values.
 // You can construct a concrete instance of `QuoteSetV3MapInput` via:
 //
-//          QuoteSetV3Map{ "key": QuoteSetV3Args{...} }
+//	QuoteSetV3Map{ "key": QuoteSetV3Args{...} }
 type QuoteSetV3MapInput interface {
 	pulumi.Input
 

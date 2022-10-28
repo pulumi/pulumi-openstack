@@ -13,21 +13,14 @@ public final class SubnetAllocationPoolsCollection {
      * @return The ending address.
      * 
      */
-    private final String end;
+    private String end;
     /**
      * @return The starting address.
      * 
      */
-    private final String start;
+    private String start;
 
-    @CustomType.Constructor
-    private SubnetAllocationPoolsCollection(
-        @CustomType.Parameter("end") String end,
-        @CustomType.Parameter("start") String start) {
-        this.end = end;
-        this.start = start;
-    }
-
+    private SubnetAllocationPoolsCollection() {}
     /**
      * @return The ending address.
      * 
@@ -50,30 +43,32 @@ public final class SubnetAllocationPoolsCollection {
     public static Builder builder(SubnetAllocationPoolsCollection defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String end;
         private String start;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SubnetAllocationPoolsCollection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.end = defaults.end;
     	      this.start = defaults.start;
         }
 
+        @CustomType.Setter
         public Builder end(String end) {
             this.end = Objects.requireNonNull(end);
             return this;
         }
+        @CustomType.Setter
         public Builder start(String start) {
             this.start = Objects.requireNonNull(start);
             return this;
-        }        public SubnetAllocationPoolsCollection build() {
-            return new SubnetAllocationPoolsCollection(end, start);
+        }
+        public SubnetAllocationPoolsCollection build() {
+            final var o = new SubnetAllocationPoolsCollection();
+            o.end = end;
+            o.start = start;
+            return o;
         }
     }
 }

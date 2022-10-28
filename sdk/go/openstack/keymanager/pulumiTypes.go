@@ -17,7 +17,7 @@ type ContainerV1Acl struct {
 // ContainerV1AclInput is an input type that accepts ContainerV1AclArgs and ContainerV1AclOutput values.
 // You can construct a concrete instance of `ContainerV1AclInput` via:
 //
-//          ContainerV1AclArgs{...}
+//	ContainerV1AclArgs{...}
 type ContainerV1AclInput interface {
 	pulumi.Input
 
@@ -52,11 +52,11 @@ func (i ContainerV1AclArgs) ToContainerV1AclPtrOutputWithContext(ctx context.Con
 // ContainerV1AclPtrInput is an input type that accepts ContainerV1AclArgs, ContainerV1AclPtr and ContainerV1AclPtrOutput values.
 // You can construct a concrete instance of `ContainerV1AclPtrInput` via:
 //
-//          ContainerV1AclArgs{...}
+//	        ContainerV1AclArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ContainerV1AclPtrInput interface {
 	pulumi.Input
 
@@ -159,7 +159,7 @@ type ContainerV1AclRead struct {
 // ContainerV1AclReadInput is an input type that accepts ContainerV1AclReadArgs and ContainerV1AclReadOutput values.
 // You can construct a concrete instance of `ContainerV1AclReadInput` via:
 //
-//          ContainerV1AclReadArgs{...}
+//	ContainerV1AclReadArgs{...}
 type ContainerV1AclReadInput interface {
 	pulumi.Input
 
@@ -203,11 +203,11 @@ func (i ContainerV1AclReadArgs) ToContainerV1AclReadPtrOutputWithContext(ctx con
 // ContainerV1AclReadPtrInput is an input type that accepts ContainerV1AclReadArgs, ContainerV1AclReadPtr and ContainerV1AclReadPtrOutput values.
 // You can construct a concrete instance of `ContainerV1AclReadPtrInput` via:
 //
-//          ContainerV1AclReadArgs{...}
+//	        ContainerV1AclReadArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ContainerV1AclReadPtrInput interface {
 	pulumi.Input
 
@@ -355,7 +355,7 @@ type ContainerV1Consumer struct {
 // ContainerV1ConsumerInput is an input type that accepts ContainerV1ConsumerArgs and ContainerV1ConsumerOutput values.
 // You can construct a concrete instance of `ContainerV1ConsumerInput` via:
 //
-//          ContainerV1ConsumerArgs{...}
+//	ContainerV1ConsumerArgs{...}
 type ContainerV1ConsumerInput interface {
 	pulumi.Input
 
@@ -385,7 +385,7 @@ func (i ContainerV1ConsumerArgs) ToContainerV1ConsumerOutputWithContext(ctx cont
 // ContainerV1ConsumerArrayInput is an input type that accepts ContainerV1ConsumerArray and ContainerV1ConsumerArrayOutput values.
 // You can construct a concrete instance of `ContainerV1ConsumerArrayInput` via:
 //
-//          ContainerV1ConsumerArray{ ContainerV1ConsumerArgs{...} }
+//	ContainerV1ConsumerArray{ ContainerV1ConsumerArgs{...} }
 type ContainerV1ConsumerArrayInput interface {
 	pulumi.Input
 
@@ -461,7 +461,7 @@ type ContainerV1SecretRef struct {
 // ContainerV1SecretRefInput is an input type that accepts ContainerV1SecretRefArgs and ContainerV1SecretRefOutput values.
 // You can construct a concrete instance of `ContainerV1SecretRefInput` via:
 //
-//          ContainerV1SecretRefArgs{...}
+//	ContainerV1SecretRefArgs{...}
 type ContainerV1SecretRefInput interface {
 	pulumi.Input
 
@@ -491,7 +491,7 @@ func (i ContainerV1SecretRefArgs) ToContainerV1SecretRefOutputWithContext(ctx co
 // ContainerV1SecretRefArrayInput is an input type that accepts ContainerV1SecretRefArray and ContainerV1SecretRefArrayOutput values.
 // You can construct a concrete instance of `ContainerV1SecretRefArrayInput` via:
 //
-//          ContainerV1SecretRefArray{ ContainerV1SecretRefArgs{...} }
+//	ContainerV1SecretRefArray{ ContainerV1SecretRefArgs{...} }
 type ContainerV1SecretRefArrayInput interface {
 	pulumi.Input
 
@@ -575,7 +575,7 @@ type OrderV1Meta struct {
 // OrderV1MetaInput is an input type that accepts OrderV1MetaArgs and OrderV1MetaOutput values.
 // You can construct a concrete instance of `OrderV1MetaInput` via:
 //
-//          OrderV1MetaArgs{...}
+//	OrderV1MetaArgs{...}
 type OrderV1MetaInput interface {
 	pulumi.Input
 
@@ -621,11 +621,11 @@ func (i OrderV1MetaArgs) ToOrderV1MetaPtrOutputWithContext(ctx context.Context) 
 // OrderV1MetaPtrInput is an input type that accepts OrderV1MetaArgs, OrderV1MetaPtr and OrderV1MetaPtrOutput values.
 // You can construct a concrete instance of `OrderV1MetaPtrInput` via:
 //
-//          OrderV1MetaArgs{...}
+//	        OrderV1MetaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OrderV1MetaPtrInput interface {
 	pulumi.Input
 
@@ -796,7 +796,7 @@ type SecretV1Acl struct {
 // SecretV1AclInput is an input type that accepts SecretV1AclArgs and SecretV1AclOutput values.
 // You can construct a concrete instance of `SecretV1AclInput` via:
 //
-//          SecretV1AclArgs{...}
+//	SecretV1AclArgs{...}
 type SecretV1AclInput interface {
 	pulumi.Input
 
@@ -831,11 +831,11 @@ func (i SecretV1AclArgs) ToSecretV1AclPtrOutputWithContext(ctx context.Context) 
 // SecretV1AclPtrInput is an input type that accepts SecretV1AclArgs, SecretV1AclPtr and SecretV1AclPtrOutput values.
 // You can construct a concrete instance of `SecretV1AclPtrInput` via:
 //
-//          SecretV1AclArgs{...}
+//	        SecretV1AclArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SecretV1AclPtrInput interface {
 	pulumi.Input
 
@@ -938,7 +938,7 @@ type SecretV1AclRead struct {
 // SecretV1AclReadInput is an input type that accepts SecretV1AclReadArgs and SecretV1AclReadOutput values.
 // You can construct a concrete instance of `SecretV1AclReadInput` via:
 //
-//          SecretV1AclReadArgs{...}
+//	SecretV1AclReadArgs{...}
 type SecretV1AclReadInput interface {
 	pulumi.Input
 
@@ -982,11 +982,11 @@ func (i SecretV1AclReadArgs) ToSecretV1AclReadPtrOutputWithContext(ctx context.C
 // SecretV1AclReadPtrInput is an input type that accepts SecretV1AclReadArgs, SecretV1AclReadPtr and SecretV1AclReadPtrOutput values.
 // You can construct a concrete instance of `SecretV1AclReadPtrInput` via:
 //
-//          SecretV1AclReadArgs{...}
+//	        SecretV1AclReadArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SecretV1AclReadPtrInput interface {
 	pulumi.Input
 
@@ -1131,7 +1131,7 @@ type GetContainerAcl struct {
 // GetContainerAclInput is an input type that accepts GetContainerAclArgs and GetContainerAclOutput values.
 // You can construct a concrete instance of `GetContainerAclInput` via:
 //
-//          GetContainerAclArgs{...}
+//	GetContainerAclArgs{...}
 type GetContainerAclInput interface {
 	pulumi.Input
 
@@ -1158,7 +1158,7 @@ func (i GetContainerAclArgs) ToGetContainerAclOutputWithContext(ctx context.Cont
 // GetContainerAclArrayInput is an input type that accepts GetContainerAclArray and GetContainerAclArrayOutput values.
 // You can construct a concrete instance of `GetContainerAclArrayInput` via:
 //
-//          GetContainerAclArray{ GetContainerAclArgs{...} }
+//	GetContainerAclArray{ GetContainerAclArgs{...} }
 type GetContainerAclArrayInput interface {
 	pulumi.Input
 
@@ -1233,7 +1233,7 @@ type GetContainerAclRead struct {
 // GetContainerAclReadInput is an input type that accepts GetContainerAclReadArgs and GetContainerAclReadOutput values.
 // You can construct a concrete instance of `GetContainerAclReadInput` via:
 //
-//          GetContainerAclReadArgs{...}
+//	GetContainerAclReadArgs{...}
 type GetContainerAclReadInput interface {
 	pulumi.Input
 
@@ -1310,7 +1310,7 @@ type GetContainerConsumer struct {
 // GetContainerConsumerInput is an input type that accepts GetContainerConsumerArgs and GetContainerConsumerOutput values.
 // You can construct a concrete instance of `GetContainerConsumerInput` via:
 //
-//          GetContainerConsumerArgs{...}
+//	GetContainerConsumerArgs{...}
 type GetContainerConsumerInput interface {
 	pulumi.Input
 
@@ -1340,7 +1340,7 @@ func (i GetContainerConsumerArgs) ToGetContainerConsumerOutputWithContext(ctx co
 // GetContainerConsumerArrayInput is an input type that accepts GetContainerConsumerArray and GetContainerConsumerArrayOutput values.
 // You can construct a concrete instance of `GetContainerConsumerArrayInput` via:
 //
-//          GetContainerConsumerArray{ GetContainerConsumerArgs{...} }
+//	GetContainerConsumerArray{ GetContainerConsumerArgs{...} }
 type GetContainerConsumerArrayInput interface {
 	pulumi.Input
 
@@ -1416,7 +1416,7 @@ type GetContainerSecretRef struct {
 // GetContainerSecretRefInput is an input type that accepts GetContainerSecretRefArgs and GetContainerSecretRefOutput values.
 // You can construct a concrete instance of `GetContainerSecretRefInput` via:
 //
-//          GetContainerSecretRefArgs{...}
+//	GetContainerSecretRefArgs{...}
 type GetContainerSecretRefInput interface {
 	pulumi.Input
 
@@ -1446,7 +1446,7 @@ func (i GetContainerSecretRefArgs) ToGetContainerSecretRefOutputWithContext(ctx 
 // GetContainerSecretRefArrayInput is an input type that accepts GetContainerSecretRefArray and GetContainerSecretRefArrayOutput values.
 // You can construct a concrete instance of `GetContainerSecretRefArrayInput` via:
 //
-//          GetContainerSecretRefArray{ GetContainerSecretRefArgs{...} }
+//	GetContainerSecretRefArray{ GetContainerSecretRefArgs{...} }
 type GetContainerSecretRefArrayInput interface {
 	pulumi.Input
 
@@ -1519,7 +1519,7 @@ type GetSecretAcl struct {
 // GetSecretAclInput is an input type that accepts GetSecretAclArgs and GetSecretAclOutput values.
 // You can construct a concrete instance of `GetSecretAclInput` via:
 //
-//          GetSecretAclArgs{...}
+//	GetSecretAclArgs{...}
 type GetSecretAclInput interface {
 	pulumi.Input
 
@@ -1546,7 +1546,7 @@ func (i GetSecretAclArgs) ToGetSecretAclOutputWithContext(ctx context.Context) G
 // GetSecretAclArrayInput is an input type that accepts GetSecretAclArray and GetSecretAclArrayOutput values.
 // You can construct a concrete instance of `GetSecretAclArrayInput` via:
 //
-//          GetSecretAclArray{ GetSecretAclArgs{...} }
+//	GetSecretAclArray{ GetSecretAclArgs{...} }
 type GetSecretAclArrayInput interface {
 	pulumi.Input
 
@@ -1621,7 +1621,7 @@ type GetSecretAclRead struct {
 // GetSecretAclReadInput is an input type that accepts GetSecretAclReadArgs and GetSecretAclReadOutput values.
 // You can construct a concrete instance of `GetSecretAclReadInput` via:
 //
-//          GetSecretAclReadArgs{...}
+//	GetSecretAclReadArgs{...}
 type GetSecretAclReadInput interface {
 	pulumi.Input
 

@@ -15,21 +15,14 @@ public final class ContainerV1Consumer {
      * @return The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return The consumer URL.
      * 
      */
-    private final @Nullable String url;
+    private @Nullable String url;
 
-    @CustomType.Constructor
-    private ContainerV1Consumer(
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("url") @Nullable String url) {
-        this.name = name;
-        this.url = url;
-    }
-
+    private ContainerV1Consumer() {}
     /**
      * @return The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
      * 
@@ -52,30 +45,32 @@ public final class ContainerV1Consumer {
     public static Builder builder(ContainerV1Consumer defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ContainerV1Consumer defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder url(@Nullable String url) {
             this.url = url;
             return this;
-        }        public ContainerV1Consumer build() {
-            return new ContainerV1Consumer(name, url);
+        }
+        public ContainerV1Consumer build() {
+            final var o = new ContainerV1Consumer();
+            o.name = name;
+            o.url = url;
+            return o;
         }
     }
 }

@@ -21,21 +21,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := identity.NewServiceV3(ctx, "service1", &identity.ServiceV3Args{
-// 			Type: pulumi.String("custom"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := identity.NewServiceV3(ctx, "service1", &identity.ServiceV3Args{
+//				Type: pulumi.String("custom"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -43,7 +46,9 @@ import (
 // Services can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:identity/serviceV3:ServiceV3 service_1 6688e967-158a-496f-a224-cae3414e6b61
+//
+//	$ pulumi import openstack:identity/serviceV3:ServiceV3 service_1 6688e967-158a-496f-a224-cae3414e6b61
+//
 // ```
 type ServiceV3 struct {
 	pulumi.CustomResourceState
@@ -179,7 +184,7 @@ func (i *ServiceV3) ToServiceV3OutputWithContext(ctx context.Context) ServiceV3O
 // ServiceV3ArrayInput is an input type that accepts ServiceV3Array and ServiceV3ArrayOutput values.
 // You can construct a concrete instance of `ServiceV3ArrayInput` via:
 //
-//          ServiceV3Array{ ServiceV3Args{...} }
+//	ServiceV3Array{ ServiceV3Args{...} }
 type ServiceV3ArrayInput interface {
 	pulumi.Input
 
@@ -204,7 +209,7 @@ func (i ServiceV3Array) ToServiceV3ArrayOutputWithContext(ctx context.Context) S
 // ServiceV3MapInput is an input type that accepts ServiceV3Map and ServiceV3MapOutput values.
 // You can construct a concrete instance of `ServiceV3MapInput` via:
 //
-//          ServiceV3Map{ "key": ServiceV3Args{...} }
+//	ServiceV3Map{ "key": ServiceV3Args{...} }
 type ServiceV3MapInput interface {
 	pulumi.Input
 

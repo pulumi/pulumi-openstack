@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetContainerAcl {
-    private final GetContainerAclRead read;
+    private GetContainerAclRead read;
 
-    @CustomType.Constructor
-    private GetContainerAcl(@CustomType.Parameter("read") GetContainerAclRead read) {
-        this.read = read;
-    }
-
+    private GetContainerAcl() {}
     public GetContainerAclRead read() {
         return this.read;
     }
@@ -27,24 +23,24 @@ public final class GetContainerAcl {
     public static Builder builder(GetContainerAcl defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private GetContainerAclRead read;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetContainerAcl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.read = defaults.read;
         }
 
+        @CustomType.Setter
         public Builder read(GetContainerAclRead read) {
             this.read = Objects.requireNonNull(read);
             return this;
-        }        public GetContainerAcl build() {
-            return new GetContainerAcl(read);
+        }
+        public GetContainerAcl build() {
+            final var o = new GetContainerAcl();
+            o.read = read;
+            return o;
         }
     }
 }

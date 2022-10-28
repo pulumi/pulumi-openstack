@@ -20,46 +20,51 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/dns"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleZone, err := dns.NewZone(ctx, "exampleZone", &dns.ZoneArgs{
-// 			Description: pulumi.String("An example zone"),
-// 			Email:       pulumi.String("jdoe@example.com"),
-// 			Ttl:         pulumi.Int(3000),
-// 			Type:        pulumi.String("PRIMARY"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		request1, err := dns.NewTransferRequest(ctx, "request1", &dns.TransferRequestArgs{
-// 			Description: pulumi.String("a transfer accept"),
-// 			ZoneId:      exampleZone.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = dns.NewTransferAccept(ctx, "accept1", &dns.TransferAcceptArgs{
-// 			Key:                   request1.Key,
-// 			ZoneTransferRequestId: request1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleZone, err := dns.NewZone(ctx, "exampleZone", &dns.ZoneArgs{
+//				Description: pulumi.String("An example zone"),
+//				Email:       pulumi.String("jdoe@example.com"),
+//				Ttl:         pulumi.Int(3000),
+//				Type:        pulumi.String("PRIMARY"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			request1, err := dns.NewTransferRequest(ctx, "request1", &dns.TransferRequestArgs{
+//				Description: pulumi.String("a transfer accept"),
+//				ZoneId:      exampleZone.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewTransferAccept(ctx, "accept1", &dns.TransferAcceptArgs{
+//				Key:                   request1.Key,
+//				ZoneTransferRequestId: request1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
 //
-// This resource can be imported by specifying the transferAccept ID
+// # This resource can be imported by specifying the transferAccept ID
 //
 // ```sh
-//  $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 <accept_id>
+//
+//	$ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 <accept_id>
+//
 // ```
 type TransferAccept struct {
 	pulumi.CustomResourceState
@@ -223,7 +228,7 @@ func (i *TransferAccept) ToTransferAcceptOutputWithContext(ctx context.Context) 
 // TransferAcceptArrayInput is an input type that accepts TransferAcceptArray and TransferAcceptArrayOutput values.
 // You can construct a concrete instance of `TransferAcceptArrayInput` via:
 //
-//          TransferAcceptArray{ TransferAcceptArgs{...} }
+//	TransferAcceptArray{ TransferAcceptArgs{...} }
 type TransferAcceptArrayInput interface {
 	pulumi.Input
 
@@ -248,7 +253,7 @@ func (i TransferAcceptArray) ToTransferAcceptArrayOutputWithContext(ctx context.
 // TransferAcceptMapInput is an input type that accepts TransferAcceptMap and TransferAcceptMapOutput values.
 // You can construct a concrete instance of `TransferAcceptMapInput` via:
 //
-//          TransferAcceptMap{ "key": TransferAcceptArgs{...} }
+//	TransferAcceptMap{ "key": TransferAcceptArgs{...} }
 type TransferAcceptMapInput interface {
 	pulumi.Input
 

@@ -19,25 +19,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := loadbalancer.NewMonitorV1(ctx, "monitor1", &loadbalancer.MonitorV1Args{
-// 			AdminStateUp: pulumi.String("true"),
-// 			Delay:        pulumi.Int(30),
-// 			MaxRetries:   pulumi.Int(3),
-// 			Timeout:      pulumi.Int(5),
-// 			Type:         pulumi.String("PING"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := loadbalancer.NewMonitorV1(ctx, "monitor1", &loadbalancer.MonitorV1Args{
+//				AdminStateUp: pulumi.String("true"),
+//				Delay:        pulumi.Int(30),
+//				MaxRetries:   pulumi.Int(3),
+//				Timeout:      pulumi.Int(5),
+//				Type:         pulumi.String("PING"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -45,7 +48,9 @@ import (
 // Load Balancer Members can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:loadbalancer/monitorV1:MonitorV1 monitor_1 119d7530-72e9-449a-aa97-124a5ef1992c
+//
+//	$ pulumi import openstack:loadbalancer/monitorV1:MonitorV1 monitor_1 119d7530-72e9-449a-aa97-124a5ef1992c
+//
 // ```
 type MonitorV1 struct {
 	pulumi.CustomResourceState
@@ -335,7 +340,7 @@ func (i *MonitorV1) ToMonitorV1OutputWithContext(ctx context.Context) MonitorV1O
 // MonitorV1ArrayInput is an input type that accepts MonitorV1Array and MonitorV1ArrayOutput values.
 // You can construct a concrete instance of `MonitorV1ArrayInput` via:
 //
-//          MonitorV1Array{ MonitorV1Args{...} }
+//	MonitorV1Array{ MonitorV1Args{...} }
 type MonitorV1ArrayInput interface {
 	pulumi.Input
 
@@ -360,7 +365,7 @@ func (i MonitorV1Array) ToMonitorV1ArrayOutputWithContext(ctx context.Context) M
 // MonitorV1MapInput is an input type that accepts MonitorV1Map and MonitorV1MapOutput values.
 // You can construct a concrete instance of `MonitorV1MapInput` via:
 //
-//          MonitorV1Map{ "key": MonitorV1Args{...} }
+//	MonitorV1Map{ "key": MonitorV1Args{...} }
 type MonitorV1MapInput interface {
 	pulumi.Input
 

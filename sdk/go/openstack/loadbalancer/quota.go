@@ -18,10 +18,12 @@ import (
 // > **Note:** This resource is only available for Octavia.
 //
 // > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack
-//    API in case of delete call.
+//
+//	API in case of delete call.
 //
 // > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
-//    created with zero value.
+//
+//	created with zero value.
 //
 // > **Note:** This resource has attributes that depend on octavia minor versions.
 // Please ensure your Openstack cloud supports the required minor version.
@@ -32,33 +34,36 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		project1, err := identity.NewProject(ctx, "project1", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = loadbalancer.NewQuota(ctx, "quota1", &loadbalancer.QuotaArgs{
-// 			HealthMonitor: pulumi.Int(10),
-// 			L7Policy:      pulumi.Int(11),
-// 			L7Rule:        pulumi.Int(12),
-// 			Listener:      pulumi.Int(7),
-// 			Loadbalancer:  pulumi.Int(6),
-// 			Member:        pulumi.Int(8),
-// 			Pool:          pulumi.Int(9),
-// 			ProjectId:     project1.ID(),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = loadbalancer.NewQuota(ctx, "quota1", &loadbalancer.QuotaArgs{
+//				HealthMonitor: pulumi.Int(10),
+//				L7Policy:      pulumi.Int(11),
+//				L7Rule:        pulumi.Int(12),
+//				Listener:      pulumi.Int(7),
+//				Loadbalancer:  pulumi.Int(6),
+//				Member:        pulumi.Int(8),
+//				Pool:          pulumi.Int(9),
+//				ProjectId:     project1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -66,7 +71,9 @@ import (
 // Quotas can be imported using the `project_id/region_name`, where region_name is the one defined is the Openstack credentials that are in use. E.g.
 //
 // ```sh
-//  $ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
+//
+//	$ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
+//
 // ```
 type Quota struct {
 	pulumi.CustomResourceState
@@ -292,7 +299,7 @@ func (i *Quota) ToQuotaOutputWithContext(ctx context.Context) QuotaOutput {
 // QuotaArrayInput is an input type that accepts QuotaArray and QuotaArrayOutput values.
 // You can construct a concrete instance of `QuotaArrayInput` via:
 //
-//          QuotaArray{ QuotaArgs{...} }
+//	QuotaArray{ QuotaArgs{...} }
 type QuotaArrayInput interface {
 	pulumi.Input
 
@@ -317,7 +324,7 @@ func (i QuotaArray) ToQuotaArrayOutputWithContext(ctx context.Context) QuotaArra
 // QuotaMapInput is an input type that accepts QuotaMap and QuotaMapOutput values.
 // You can construct a concrete instance of `QuotaMapInput` via:
 //
-//          QuotaMap{ "key": QuotaArgs{...} }
+//	QuotaMap{ "key": QuotaArgs{...} }
 type QuotaMapInput interface {
 	pulumi.Input
 

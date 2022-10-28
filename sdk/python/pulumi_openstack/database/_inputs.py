@@ -22,13 +22,17 @@ __all__ = [
 class ConfigurationConfigurationArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 value: pulumi.Input[str]):
+                 value: pulumi.Input[str],
+                 string_type: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] name: Configuration parameter name. Changing this creates a new resource.
         :param pulumi.Input[str] value: Configuration parameter value. Changing this creates a new resource.
+        :param pulumi.Input[bool] string_type: Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
+        if string_type is not None:
+            pulumi.set(__self__, "string_type", string_type)
 
     @property
     @pulumi.getter
@@ -53,6 +57,18 @@ class ConfigurationConfigurationArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="stringType")
+    def string_type(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
+        """
+        return pulumi.get(self, "string_type")
+
+    @string_type.setter
+    def string_type(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "string_type", value)
 
 
 @pulumi.input_type

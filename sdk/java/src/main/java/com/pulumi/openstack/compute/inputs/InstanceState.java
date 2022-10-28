@@ -183,6 +183,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The creation time of the instance.
+     * 
+     */
+    @Import(name="created")
+    private @Nullable Output<String> created;
+
+    /**
+     * @return The creation time of the instance.
+     * 
+     */
+    public Optional<Output<String>> created() {
+        return Optional.ofNullable(this.created);
+    }
+
+    /**
      * The flavor ID of
      * the desired flavor for the server. Changing this resizes the existing server.
      * 
@@ -523,6 +538,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The time when the instance was last updated.
+     * 
+     */
+    @Import(name="updated")
+    private @Nullable Output<String> updated;
+
+    /**
+     * @return The time when the instance was last updated.
+     * 
+     */
+    public Optional<Output<String>> updated() {
+        return Optional.ofNullable(this.updated);
+    }
+
+    /**
      * The user data to provide when launching the instance.
      * Changing this creates a new server.
      * 
@@ -587,6 +617,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.availabilityZoneHints = $.availabilityZoneHints;
         this.blockDevices = $.blockDevices;
         this.configDrive = $.configDrive;
+        this.created = $.created;
         this.flavorId = $.flavorId;
         this.flavorName = $.flavorName;
         this.floatingIp = $.floatingIp;
@@ -605,6 +636,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.securityGroups = $.securityGroups;
         this.stopBeforeDestroy = $.stopBeforeDestroy;
         this.tags = $.tags;
+        this.updated = $.updated;
         this.userData = $.userData;
         this.vendorOptions = $.vendorOptions;
         this.volumes = $.volumes;
@@ -859,6 +891,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder configDrive(Boolean configDrive) {
             return configDrive(Output.of(configDrive));
+        }
+
+        /**
+         * @param created The creation time of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder created(@Nullable Output<String> created) {
+            $.created = created;
+            return this;
+        }
+
+        /**
+         * @param created The creation time of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder created(String created) {
+            return created(Output.of(created));
         }
 
         /**
@@ -1368,6 +1421,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param updated The time when the instance was last updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updated(@Nullable Output<String> updated) {
+            $.updated = updated;
+            return this;
+        }
+
+        /**
+         * @param updated The time when the instance was last updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updated(String updated) {
+            return updated(Output.of(updated));
         }
 
         /**

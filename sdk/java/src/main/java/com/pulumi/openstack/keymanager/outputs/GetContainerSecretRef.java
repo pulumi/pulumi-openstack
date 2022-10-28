@@ -15,21 +15,14 @@ public final class GetContainerSecretRef {
      * @return The Container name.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return The secret reference / where to find the secret, URL.
      * 
      */
-    private final @Nullable String secretRef;
+    private @Nullable String secretRef;
 
-    @CustomType.Constructor
-    private GetContainerSecretRef(
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("secretRef") @Nullable String secretRef) {
-        this.name = name;
-        this.secretRef = secretRef;
-    }
-
+    private GetContainerSecretRef() {}
     /**
      * @return The Container name.
      * 
@@ -52,30 +45,32 @@ public final class GetContainerSecretRef {
     public static Builder builder(GetContainerSecretRef defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
         private @Nullable String secretRef;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetContainerSecretRef defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.secretRef = defaults.secretRef;
         }
 
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder secretRef(@Nullable String secretRef) {
             this.secretRef = secretRef;
             return this;
-        }        public GetContainerSecretRef build() {
-            return new GetContainerSecretRef(name, secretRef);
+        }
+        public GetContainerSecretRef build() {
+            final var o = new GetContainerSecretRef();
+            o.name = name;
+            o.secretRef = secretRef;
+            return o;
         }
     }
 }

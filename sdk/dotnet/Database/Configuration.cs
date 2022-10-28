@@ -9,42 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.OpenStack.Database
 {
-    /// <summary>
-    /// Manages a V1 DB configuration resource within OpenStack.
-    /// 
-    /// ## Example Usage
-    /// ### Configuration
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var test = new OpenStack.Database.Configuration("test", new OpenStack.Database.ConfigurationArgs
-    ///         {
-    ///             Configurations = 
-    ///             {
-    ///                 new OpenStack.Database.Inputs.ConfigurationConfigurationArgs
-    ///                 {
-    ///                     Name = "max_connections",
-    ///                     Value = "200",
-    ///                 },
-    ///             },
-    ///             Datastore = new OpenStack.Database.Inputs.ConfigurationDatastoreArgs
-    ///             {
-    ///                 Type = "mysql",
-    ///                 Version = "mysql-5.7",
-    ///             },
-    ///             Description = "description",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// </summary>
     [OpenStackResourceType("openstack:database/configuration:Configuration")]
     public partial class Configuration : Pulumi.CustomResource
     {

@@ -11,13 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SecretV1Acl {
-    private final @Nullable SecretV1AclRead read;
+    private @Nullable SecretV1AclRead read;
 
-    @CustomType.Constructor
-    private SecretV1Acl(@CustomType.Parameter("read") @Nullable SecretV1AclRead read) {
-        this.read = read;
-    }
-
+    private SecretV1Acl() {}
     public Optional<SecretV1AclRead> read() {
         return Optional.ofNullable(this.read);
     }
@@ -29,24 +25,24 @@ public final class SecretV1Acl {
     public static Builder builder(SecretV1Acl defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable SecretV1AclRead read;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(SecretV1Acl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.read = defaults.read;
         }
 
+        @CustomType.Setter
         public Builder read(@Nullable SecretV1AclRead read) {
             this.read = read;
             return this;
-        }        public SecretV1Acl build() {
-            return new SecretV1Acl(read);
+        }
+        public SecretV1Acl build() {
+            final var o = new SecretV1Acl();
+            o.read = read;
+            return o;
         }
     }
 }

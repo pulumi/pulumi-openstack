@@ -45,6 +45,8 @@ type Instance struct {
 	// Whether to use the configDrive feature to
 	// configure the instance. Changing this creates a new server.
 	ConfigDrive pulumi.BoolPtrOutput `pulumi:"configDrive"`
+	// The creation time of the instance.
+	Created pulumi.StringOutput `pulumi:"created"`
 	// The flavor ID of
 	// the desired flavor for the server. Changing this resizes the existing server.
 	FlavorId pulumi.StringOutput `pulumi:"flavorId"`
@@ -114,6 +116,8 @@ type Instance struct {
 	// A set of string tags for the instance. Changing this
 	// updates the existing instance tags.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// The time when the instance was last updated.
+	Updated pulumi.StringOutput `pulumi:"updated"`
 	// The user data to provide when launching the instance.
 	// Changing this creates a new server.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
@@ -185,6 +189,8 @@ type instanceState struct {
 	// Whether to use the configDrive feature to
 	// configure the instance. Changing this creates a new server.
 	ConfigDrive *bool `pulumi:"configDrive"`
+	// The creation time of the instance.
+	Created *string `pulumi:"created"`
 	// The flavor ID of
 	// the desired flavor for the server. Changing this resizes the existing server.
 	FlavorId *string `pulumi:"flavorId"`
@@ -254,6 +260,8 @@ type instanceState struct {
 	// A set of string tags for the instance. Changing this
 	// updates the existing instance tags.
 	Tags []string `pulumi:"tags"`
+	// The time when the instance was last updated.
+	Updated *string `pulumi:"updated"`
 	// The user data to provide when launching the instance.
 	// Changing this creates a new server.
 	UserData *string `pulumi:"userData"`
@@ -297,6 +305,8 @@ type InstanceState struct {
 	// Whether to use the configDrive feature to
 	// configure the instance. Changing this creates a new server.
 	ConfigDrive pulumi.BoolPtrInput
+	// The creation time of the instance.
+	Created pulumi.StringPtrInput
 	// The flavor ID of
 	// the desired flavor for the server. Changing this resizes the existing server.
 	FlavorId pulumi.StringPtrInput
@@ -366,6 +376,8 @@ type InstanceState struct {
 	// A set of string tags for the instance. Changing this
 	// updates the existing instance tags.
 	Tags pulumi.StringArrayInput
+	// The time when the instance was last updated.
+	Updated pulumi.StringPtrInput
 	// The user data to provide when launching the instance.
 	// Changing this creates a new server.
 	UserData pulumi.StringPtrInput
@@ -623,7 +635,7 @@ func (i *Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutp
 // InstanceArrayInput is an input type that accepts InstanceArray and InstanceArrayOutput values.
 // You can construct a concrete instance of `InstanceArrayInput` via:
 //
-//          InstanceArray{ InstanceArgs{...} }
+//	InstanceArray{ InstanceArgs{...} }
 type InstanceArrayInput interface {
 	pulumi.Input
 
@@ -648,7 +660,7 @@ func (i InstanceArray) ToInstanceArrayOutputWithContext(ctx context.Context) Ins
 // InstanceMapInput is an input type that accepts InstanceMap and InstanceMapOutput values.
 // You can construct a concrete instance of `InstanceMapInput` via:
 //
-//          InstanceMap{ "key": InstanceArgs{...} }
+//	InstanceMap{ "key": InstanceArgs{...} }
 type InstanceMapInput interface {
 	pulumi.Input
 
@@ -741,6 +753,11 @@ func (o InstanceOutput) BlockDevices() InstanceBlockDeviceArrayOutput {
 // configure the instance. Changing this creates a new server.
 func (o InstanceOutput) ConfigDrive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ConfigDrive }).(pulumi.BoolPtrOutput)
+}
+
+// The creation time of the instance.
+func (o InstanceOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
 
 // The flavor ID of
@@ -864,6 +881,11 @@ func (o InstanceOutput) StopBeforeDestroy() pulumi.BoolPtrOutput {
 // updates the existing instance tags.
 func (o InstanceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The time when the instance was last updated.
+func (o InstanceOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
 }
 
 // The user data to provide when launching the instance.

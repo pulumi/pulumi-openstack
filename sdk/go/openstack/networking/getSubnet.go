@@ -18,21 +18,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := networking.LookupSubnet(ctx, &networking.LookupSubnetArgs{
-// 			Name: pulumi.StringRef("subnet_1"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.LookupSubnet(ctx, &networking.LookupSubnetArgs{
+//				Name: pulumi.StringRef("subnet_1"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupSubnet(ctx *pulumi.Context, args *LookupSubnetArgs, opts ...pulumi.InvokeOption) (*LookupSubnetResult, error) {
 	var rv LookupSubnetResult
@@ -107,7 +110,9 @@ type LookupSubnetResult struct {
 	Name            string `pulumi:"name"`
 	NetworkId       string `pulumi:"networkId"`
 	// See Argument Reference above.
-	Region       string   `pulumi:"region"`
+	Region string `pulumi:"region"`
+	// Service types of the subnet.
+	ServiceTypes []string `pulumi:"serviceTypes"`
 	SubnetId     string   `pulumi:"subnetId"`
 	SubnetpoolId string   `pulumi:"subnetpoolId"`
 	Tags         []string `pulumi:"tags"`
@@ -258,6 +263,11 @@ func (o LookupSubnetResultOutput) NetworkId() pulumi.StringOutput {
 // See Argument Reference above.
 func (o LookupSubnetResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Service types of the subnet.
+func (o LookupSubnetResultOutput) ServiceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSubnetResult) []string { return v.ServiceTypes }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupSubnetResultOutput) SubnetId() pulumi.StringOutput {

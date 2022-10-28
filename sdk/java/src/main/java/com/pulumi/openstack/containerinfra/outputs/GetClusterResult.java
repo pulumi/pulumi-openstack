@@ -18,182 +18,127 @@ public final class GetClusterResult {
      * @return COE API address.
      * 
      */
-    private final String apiAddress;
+    private String apiAddress;
     /**
      * @return The UUID of the V1 Container Infra cluster template.
      * 
      */
-    private final String clusterTemplateId;
+    private String clusterTemplateId;
     /**
      * @return COE software version.
      * 
      */
-    private final String coeVersion;
-    private final String containerVersion;
+    private String coeVersion;
+    private String containerVersion;
     /**
      * @return The timeout (in minutes) for creating the cluster.
      * 
      */
-    private final Integer createTimeout;
+    private Integer createTimeout;
     /**
      * @return The time at which cluster was created.
      * 
      */
-    private final String createdAt;
+    private String createdAt;
     /**
      * @return The URL used for cluster node discovery.
      * 
      */
-    private final String discoveryUrl;
+    private String discoveryUrl;
     /**
      * @return The size (in GB) of the Docker volume.
      * 
      */
-    private final Integer dockerVolumeSize;
+    private Integer dockerVolumeSize;
     /**
      * @return The fixed network that is attached to the cluster.
      * 
      */
-    private final String fixedNetwork;
+    private String fixedNetwork;
     /**
      * @return The fixed subnet that is attached to the cluster.
      * 
      */
-    private final String fixedSubnet;
+    private String fixedSubnet;
     /**
      * @return The flavor for the nodes of the cluster.
      * 
      */
-    private final String flavor;
-    private final Boolean floatingIpEnabled;
+    private String flavor;
+    private Boolean floatingIpEnabled;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The name of the Compute service SSH keypair.
      * 
      */
-    private final String keypair;
+    private String keypair;
     /**
      * @return The list of key value pairs representing additional properties of
      * the cluster.
      * 
      */
-    private final Map<String,Object> labels;
+    private Map<String,Object> labels;
     /**
      * @return IP addresses of the master node of the cluster.
      * 
      */
-    private final List<String> masterAddresses;
+    private List<String> masterAddresses;
     /**
      * @return The number of master nodes for the cluster.
      * 
      */
-    private final Integer masterCount;
+    private Integer masterCount;
     /**
      * @return The flavor for the master nodes.
      * 
      */
-    private final String masterFlavor;
+    private String masterFlavor;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return IP addresses of the node of the cluster.
      * 
      */
-    private final List<String> nodeAddresses;
+    private List<String> nodeAddresses;
     /**
      * @return The number of nodes for the cluster.
      * 
      */
-    private final Integer nodeCount;
+    private Integer nodeCount;
     /**
      * @return The project of the cluster.
      * 
      */
-    private final String projectId;
+    private String projectId;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return UUID of the Orchestration service stack.
      * 
      */
-    private final String stackId;
+    private String stackId;
     /**
      * @return The time at which cluster was updated.
      * 
      */
-    private final String updatedAt;
+    private String updatedAt;
     /**
      * @return The user of the cluster.
      * 
      */
-    private final String userId;
+    private String userId;
 
-    @CustomType.Constructor
-    private GetClusterResult(
-        @CustomType.Parameter("apiAddress") String apiAddress,
-        @CustomType.Parameter("clusterTemplateId") String clusterTemplateId,
-        @CustomType.Parameter("coeVersion") String coeVersion,
-        @CustomType.Parameter("containerVersion") String containerVersion,
-        @CustomType.Parameter("createTimeout") Integer createTimeout,
-        @CustomType.Parameter("createdAt") String createdAt,
-        @CustomType.Parameter("discoveryUrl") String discoveryUrl,
-        @CustomType.Parameter("dockerVolumeSize") Integer dockerVolumeSize,
-        @CustomType.Parameter("fixedNetwork") String fixedNetwork,
-        @CustomType.Parameter("fixedSubnet") String fixedSubnet,
-        @CustomType.Parameter("flavor") String flavor,
-        @CustomType.Parameter("floatingIpEnabled") Boolean floatingIpEnabled,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("keypair") String keypair,
-        @CustomType.Parameter("labels") Map<String,Object> labels,
-        @CustomType.Parameter("masterAddresses") List<String> masterAddresses,
-        @CustomType.Parameter("masterCount") Integer masterCount,
-        @CustomType.Parameter("masterFlavor") String masterFlavor,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("nodeAddresses") List<String> nodeAddresses,
-        @CustomType.Parameter("nodeCount") Integer nodeCount,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("stackId") String stackId,
-        @CustomType.Parameter("updatedAt") String updatedAt,
-        @CustomType.Parameter("userId") String userId) {
-        this.apiAddress = apiAddress;
-        this.clusterTemplateId = clusterTemplateId;
-        this.coeVersion = coeVersion;
-        this.containerVersion = containerVersion;
-        this.createTimeout = createTimeout;
-        this.createdAt = createdAt;
-        this.discoveryUrl = discoveryUrl;
-        this.dockerVolumeSize = dockerVolumeSize;
-        this.fixedNetwork = fixedNetwork;
-        this.fixedSubnet = fixedSubnet;
-        this.flavor = flavor;
-        this.floatingIpEnabled = floatingIpEnabled;
-        this.id = id;
-        this.keypair = keypair;
-        this.labels = labels;
-        this.masterAddresses = masterAddresses;
-        this.masterCount = masterCount;
-        this.masterFlavor = masterFlavor;
-        this.name = name;
-        this.nodeAddresses = nodeAddresses;
-        this.nodeCount = nodeCount;
-        this.projectId = projectId;
-        this.region = region;
-        this.stackId = stackId;
-        this.updatedAt = updatedAt;
-        this.userId = userId;
-    }
-
+    private GetClusterResult() {}
     /**
      * @return COE API address.
      * 
@@ -377,7 +322,7 @@ public final class GetClusterResult {
     public static Builder builder(GetClusterResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String apiAddress;
         private String clusterTemplateId;
@@ -405,11 +350,7 @@ public final class GetClusterResult {
         private String stackId;
         private String updatedAt;
         private String userId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apiAddress = defaults.apiAddress;
@@ -440,66 +381,82 @@ public final class GetClusterResult {
     	      this.userId = defaults.userId;
         }
 
+        @CustomType.Setter
         public Builder apiAddress(String apiAddress) {
             this.apiAddress = Objects.requireNonNull(apiAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder clusterTemplateId(String clusterTemplateId) {
             this.clusterTemplateId = Objects.requireNonNull(clusterTemplateId);
             return this;
         }
+        @CustomType.Setter
         public Builder coeVersion(String coeVersion) {
             this.coeVersion = Objects.requireNonNull(coeVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder containerVersion(String containerVersion) {
             this.containerVersion = Objects.requireNonNull(containerVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder createTimeout(Integer createTimeout) {
             this.createTimeout = Objects.requireNonNull(createTimeout);
             return this;
         }
+        @CustomType.Setter
         public Builder createdAt(String createdAt) {
             this.createdAt = Objects.requireNonNull(createdAt);
             return this;
         }
+        @CustomType.Setter
         public Builder discoveryUrl(String discoveryUrl) {
             this.discoveryUrl = Objects.requireNonNull(discoveryUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder dockerVolumeSize(Integer dockerVolumeSize) {
             this.dockerVolumeSize = Objects.requireNonNull(dockerVolumeSize);
             return this;
         }
+        @CustomType.Setter
         public Builder fixedNetwork(String fixedNetwork) {
             this.fixedNetwork = Objects.requireNonNull(fixedNetwork);
             return this;
         }
+        @CustomType.Setter
         public Builder fixedSubnet(String fixedSubnet) {
             this.fixedSubnet = Objects.requireNonNull(fixedSubnet);
             return this;
         }
+        @CustomType.Setter
         public Builder flavor(String flavor) {
             this.flavor = Objects.requireNonNull(flavor);
             return this;
         }
+        @CustomType.Setter
         public Builder floatingIpEnabled(Boolean floatingIpEnabled) {
             this.floatingIpEnabled = Objects.requireNonNull(floatingIpEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder keypair(String keypair) {
             this.keypair = Objects.requireNonNull(keypair);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
         }
+        @CustomType.Setter
         public Builder masterAddresses(List<String> masterAddresses) {
             this.masterAddresses = Objects.requireNonNull(masterAddresses);
             return this;
@@ -507,18 +464,22 @@ public final class GetClusterResult {
         public Builder masterAddresses(String... masterAddresses) {
             return masterAddresses(List.of(masterAddresses));
         }
+        @CustomType.Setter
         public Builder masterCount(Integer masterCount) {
             this.masterCount = Objects.requireNonNull(masterCount);
             return this;
         }
+        @CustomType.Setter
         public Builder masterFlavor(String masterFlavor) {
             this.masterFlavor = Objects.requireNonNull(masterFlavor);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder nodeAddresses(List<String> nodeAddresses) {
             this.nodeAddresses = Objects.requireNonNull(nodeAddresses);
             return this;
@@ -526,31 +487,65 @@ public final class GetClusterResult {
         public Builder nodeAddresses(String... nodeAddresses) {
             return nodeAddresses(List.of(nodeAddresses));
         }
+        @CustomType.Setter
         public Builder nodeCount(Integer nodeCount) {
             this.nodeCount = Objects.requireNonNull(nodeCount);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder stackId(String stackId) {
             this.stackId = Objects.requireNonNull(stackId);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
             this.updatedAt = Objects.requireNonNull(updatedAt);
             return this;
         }
+        @CustomType.Setter
         public Builder userId(String userId) {
             this.userId = Objects.requireNonNull(userId);
             return this;
-        }        public GetClusterResult build() {
-            return new GetClusterResult(apiAddress, clusterTemplateId, coeVersion, containerVersion, createTimeout, createdAt, discoveryUrl, dockerVolumeSize, fixedNetwork, fixedSubnet, flavor, floatingIpEnabled, id, keypair, labels, masterAddresses, masterCount, masterFlavor, name, nodeAddresses, nodeCount, projectId, region, stackId, updatedAt, userId);
+        }
+        public GetClusterResult build() {
+            final var o = new GetClusterResult();
+            o.apiAddress = apiAddress;
+            o.clusterTemplateId = clusterTemplateId;
+            o.coeVersion = coeVersion;
+            o.containerVersion = containerVersion;
+            o.createTimeout = createTimeout;
+            o.createdAt = createdAt;
+            o.discoveryUrl = discoveryUrl;
+            o.dockerVolumeSize = dockerVolumeSize;
+            o.fixedNetwork = fixedNetwork;
+            o.fixedSubnet = fixedSubnet;
+            o.flavor = flavor;
+            o.floatingIpEnabled = floatingIpEnabled;
+            o.id = id;
+            o.keypair = keypair;
+            o.labels = labels;
+            o.masterAddresses = masterAddresses;
+            o.masterCount = masterCount;
+            o.masterFlavor = masterFlavor;
+            o.name = name;
+            o.nodeAddresses = nodeAddresses;
+            o.nodeCount = nodeCount;
+            o.projectId = projectId;
+            o.region = region;
+            o.stackId = stackId;
+            o.updatedAt = updatedAt;
+            o.userId = userId;
+            return o;
         }
     }
 }

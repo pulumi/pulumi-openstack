@@ -19,68 +19,35 @@ public final class GetImageIdsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String memberStatus;
-    private final @Nullable String name;
-    private final @Nullable String nameRegex;
-    private final @Nullable String owner;
-    private final @Nullable Map<String,Object> properties;
-    private final String region;
-    private final @Nullable Integer sizeMax;
-    private final @Nullable Integer sizeMin;
-    private final @Nullable String sort;
+    private String id;
+    private List<String> ids;
+    private @Nullable String memberStatus;
+    private @Nullable String name;
+    private @Nullable String nameRegex;
+    private @Nullable String owner;
+    private @Nullable Map<String,Object> properties;
+    private String region;
+    private @Nullable Integer sizeMax;
+    private @Nullable Integer sizeMin;
+    private @Nullable String sort;
     /**
      * @deprecated
      * Use option &#39;sort&#39; instead.
      * 
      */
     @Deprecated /* Use option 'sort' instead. */
-    private final @Nullable String sortDirection;
+    private @Nullable String sortDirection;
     /**
      * @deprecated
      * Use option &#39;sort&#39; instead.
      * 
      */
     @Deprecated /* Use option 'sort' instead. */
-    private final @Nullable String sortKey;
-    private final @Nullable String tag;
-    private final @Nullable String visibility;
+    private @Nullable String sortKey;
+    private @Nullable String tag;
+    private @Nullable String visibility;
 
-    @CustomType.Constructor
-    private GetImageIdsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("memberStatus") @Nullable String memberStatus,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("nameRegex") @Nullable String nameRegex,
-        @CustomType.Parameter("owner") @Nullable String owner,
-        @CustomType.Parameter("properties") @Nullable Map<String,Object> properties,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("sizeMax") @Nullable Integer sizeMax,
-        @CustomType.Parameter("sizeMin") @Nullable Integer sizeMin,
-        @CustomType.Parameter("sort") @Nullable String sort,
-        @CustomType.Parameter("sortDirection") @Nullable String sortDirection,
-        @CustomType.Parameter("sortKey") @Nullable String sortKey,
-        @CustomType.Parameter("tag") @Nullable String tag,
-        @CustomType.Parameter("visibility") @Nullable String visibility) {
-        this.id = id;
-        this.ids = ids;
-        this.memberStatus = memberStatus;
-        this.name = name;
-        this.nameRegex = nameRegex;
-        this.owner = owner;
-        this.properties = properties;
-        this.region = region;
-        this.sizeMax = sizeMax;
-        this.sizeMin = sizeMin;
-        this.sort = sort;
-        this.sortDirection = sortDirection;
-        this.sortKey = sortKey;
-        this.tag = tag;
-        this.visibility = visibility;
-    }
-
+    private GetImageIdsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -150,7 +117,7 @@ public final class GetImageIdsResult {
     public static Builder builder(GetImageIdsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<String> ids;
@@ -167,11 +134,7 @@ public final class GetImageIdsResult {
         private @Nullable String sortKey;
         private @Nullable String tag;
         private @Nullable String visibility;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImageIdsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -191,10 +154,12 @@ public final class GetImageIdsResult {
     	      this.visibility = defaults.visibility;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -202,59 +167,89 @@ public final class GetImageIdsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder memberStatus(@Nullable String memberStatus) {
             this.memberStatus = memberStatus;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
             this.nameRegex = nameRegex;
             return this;
         }
+        @CustomType.Setter
         public Builder owner(@Nullable String owner) {
             this.owner = owner;
             return this;
         }
+        @CustomType.Setter
         public Builder properties(@Nullable Map<String,Object> properties) {
             this.properties = properties;
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder sizeMax(@Nullable Integer sizeMax) {
             this.sizeMax = sizeMax;
             return this;
         }
+        @CustomType.Setter
         public Builder sizeMin(@Nullable Integer sizeMin) {
             this.sizeMin = sizeMin;
             return this;
         }
+        @CustomType.Setter
         public Builder sort(@Nullable String sort) {
             this.sort = sort;
             return this;
         }
+        @CustomType.Setter
         public Builder sortDirection(@Nullable String sortDirection) {
             this.sortDirection = sortDirection;
             return this;
         }
+        @CustomType.Setter
         public Builder sortKey(@Nullable String sortKey) {
             this.sortKey = sortKey;
             return this;
         }
+        @CustomType.Setter
         public Builder tag(@Nullable String tag) {
             this.tag = tag;
             return this;
         }
+        @CustomType.Setter
         public Builder visibility(@Nullable String visibility) {
             this.visibility = visibility;
             return this;
-        }        public GetImageIdsResult build() {
-            return new GetImageIdsResult(id, ids, memberStatus, name, nameRegex, owner, properties, region, sizeMax, sizeMin, sort, sortDirection, sortKey, tag, visibility);
+        }
+        public GetImageIdsResult build() {
+            final var o = new GetImageIdsResult();
+            o.id = id;
+            o.ids = ids;
+            o.memberStatus = memberStatus;
+            o.name = name;
+            o.nameRegex = nameRegex;
+            o.owner = owner;
+            o.properties = properties;
+            o.region = region;
+            o.sizeMax = sizeMax;
+            o.sizeMin = sizeMin;
+            o.sort = sort;
+            o.sortDirection = sortDirection;
+            o.sortKey = sortKey;
+            o.tag = tag;
+            o.visibility = visibility;
+            return o;
         }
     }
 }

@@ -13,72 +13,31 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPortIdsResult {
-    private final @Nullable Boolean adminStateUp;
-    private final @Nullable String description;
-    private final @Nullable String deviceId;
-    private final @Nullable String deviceOwner;
-    private final @Nullable String dnsName;
-    private final @Nullable String fixedIp;
+    private @Nullable Boolean adminStateUp;
+    private @Nullable String description;
+    private @Nullable String deviceId;
+    private @Nullable String deviceOwner;
+    private @Nullable String dnsName;
+    private @Nullable String fixedIp;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<String> ids;
-    private final @Nullable String macAddress;
-    private final @Nullable String name;
-    private final @Nullable String networkId;
-    private final @Nullable String projectId;
-    private final @Nullable String region;
-    private final @Nullable List<String> securityGroupIds;
-    private final @Nullable String sortDirection;
-    private final @Nullable String sortKey;
-    private final @Nullable String status;
-    private final @Nullable List<String> tags;
-    private final @Nullable String tenantId;
+    private String id;
+    private List<String> ids;
+    private @Nullable String macAddress;
+    private @Nullable String name;
+    private @Nullable String networkId;
+    private @Nullable String projectId;
+    private @Nullable String region;
+    private @Nullable List<String> securityGroupIds;
+    private @Nullable String sortDirection;
+    private @Nullable String sortKey;
+    private @Nullable String status;
+    private @Nullable List<String> tags;
+    private @Nullable String tenantId;
 
-    @CustomType.Constructor
-    private GetPortIdsResult(
-        @CustomType.Parameter("adminStateUp") @Nullable Boolean adminStateUp,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("deviceId") @Nullable String deviceId,
-        @CustomType.Parameter("deviceOwner") @Nullable String deviceOwner,
-        @CustomType.Parameter("dnsName") @Nullable String dnsName,
-        @CustomType.Parameter("fixedIp") @Nullable String fixedIp,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ids") List<String> ids,
-        @CustomType.Parameter("macAddress") @Nullable String macAddress,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("networkId") @Nullable String networkId,
-        @CustomType.Parameter("projectId") @Nullable String projectId,
-        @CustomType.Parameter("region") @Nullable String region,
-        @CustomType.Parameter("securityGroupIds") @Nullable List<String> securityGroupIds,
-        @CustomType.Parameter("sortDirection") @Nullable String sortDirection,
-        @CustomType.Parameter("sortKey") @Nullable String sortKey,
-        @CustomType.Parameter("status") @Nullable String status,
-        @CustomType.Parameter("tags") @Nullable List<String> tags,
-        @CustomType.Parameter("tenantId") @Nullable String tenantId) {
-        this.adminStateUp = adminStateUp;
-        this.description = description;
-        this.deviceId = deviceId;
-        this.deviceOwner = deviceOwner;
-        this.dnsName = dnsName;
-        this.fixedIp = fixedIp;
-        this.id = id;
-        this.ids = ids;
-        this.macAddress = macAddress;
-        this.name = name;
-        this.networkId = networkId;
-        this.projectId = projectId;
-        this.region = region;
-        this.securityGroupIds = securityGroupIds;
-        this.sortDirection = sortDirection;
-        this.sortKey = sortKey;
-        this.status = status;
-        this.tags = tags;
-        this.tenantId = tenantId;
-    }
-
+    private GetPortIdsResult() {}
     public Optional<Boolean> adminStateUp() {
         return Optional.ofNullable(this.adminStateUp);
     }
@@ -148,7 +107,7 @@ public final class GetPortIdsResult {
     public static Builder builder(GetPortIdsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean adminStateUp;
         private @Nullable String description;
@@ -169,11 +128,7 @@ public final class GetPortIdsResult {
         private @Nullable String status;
         private @Nullable List<String> tags;
         private @Nullable String tenantId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPortIdsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adminStateUp = defaults.adminStateUp;
@@ -197,34 +152,42 @@ public final class GetPortIdsResult {
     	      this.tenantId = defaults.tenantId;
         }
 
+        @CustomType.Setter
         public Builder adminStateUp(@Nullable Boolean adminStateUp) {
             this.adminStateUp = adminStateUp;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder deviceId(@Nullable String deviceId) {
             this.deviceId = deviceId;
             return this;
         }
+        @CustomType.Setter
         public Builder deviceOwner(@Nullable String deviceOwner) {
             this.deviceOwner = deviceOwner;
             return this;
         }
+        @CustomType.Setter
         public Builder dnsName(@Nullable String dnsName) {
             this.dnsName = dnsName;
             return this;
         }
+        @CustomType.Setter
         public Builder fixedIp(@Nullable String fixedIp) {
             this.fixedIp = fixedIp;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ids(List<String> ids) {
             this.ids = Objects.requireNonNull(ids);
             return this;
@@ -232,26 +195,32 @@ public final class GetPortIdsResult {
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }
+        @CustomType.Setter
         public Builder macAddress(@Nullable String macAddress) {
             this.macAddress = macAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder networkId(@Nullable String networkId) {
             this.networkId = networkId;
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
             this.projectId = projectId;
             return this;
         }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
             this.region = region;
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupIds(@Nullable List<String> securityGroupIds) {
             this.securityGroupIds = securityGroupIds;
             return this;
@@ -259,18 +228,22 @@ public final class GetPortIdsResult {
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
         }
+        @CustomType.Setter
         public Builder sortDirection(@Nullable String sortDirection) {
             this.sortDirection = sortDirection;
             return this;
         }
+        @CustomType.Setter
         public Builder sortKey(@Nullable String sortKey) {
             this.sortKey = sortKey;
             return this;
         }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
             this.tags = tags;
             return this;
@@ -278,11 +251,33 @@ public final class GetPortIdsResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
             this.tenantId = tenantId;
             return this;
-        }        public GetPortIdsResult build() {
-            return new GetPortIdsResult(adminStateUp, description, deviceId, deviceOwner, dnsName, fixedIp, id, ids, macAddress, name, networkId, projectId, region, securityGroupIds, sortDirection, sortKey, status, tags, tenantId);
+        }
+        public GetPortIdsResult build() {
+            final var o = new GetPortIdsResult();
+            o.adminStateUp = adminStateUp;
+            o.description = description;
+            o.deviceId = deviceId;
+            o.deviceOwner = deviceOwner;
+            o.dnsName = dnsName;
+            o.fixedIp = fixedIp;
+            o.id = id;
+            o.ids = ids;
+            o.macAddress = macAddress;
+            o.name = name;
+            o.networkId = networkId;
+            o.projectId = projectId;
+            o.region = region;
+            o.securityGroupIds = securityGroupIds;
+            o.sortDirection = sortDirection;
+            o.sortKey = sortKey;
+            o.status = status;
+            o.tags = tags;
+            o.tenantId = tenantId;
+            return o;
         }
     }
 }

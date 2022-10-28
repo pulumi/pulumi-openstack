@@ -19,34 +19,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/vpnaas"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/vpnaas"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := vpnaas.NewSiteConnection(ctx, "conn1", &vpnaas.SiteConnectionArgs{
-// 			Dpds: vpnaas.SiteConnectionDpdArray{
-// 				&vpnaas.SiteConnectionDpdArgs{
-// 					Action:   pulumi.String("restart"),
-// 					Interval: pulumi.Int(21),
-// 					Timeout:  pulumi.Int(42),
-// 				},
-// 			},
-// 			IkepolicyId:    pulumi.Any(openstack_vpnaas_ike_policy_v2.Policy_2.Id),
-// 			IpsecpolicyId:  pulumi.Any(openstack_vpnaas_ipsec_policy_v2.Policy_1.Id),
-// 			LocalEpGroupId: pulumi.Any(openstack_vpnaas_endpoint_group_v2.Group_2.Id),
-// 			PeerAddress:    pulumi.String("192.168.10.1"),
-// 			PeerEpGroupId:  pulumi.Any(openstack_vpnaas_endpoint_group_v2.Group_1.Id),
-// 			Psk:            pulumi.String("secret"),
-// 			VpnserviceId:   pulumi.Any(openstack_vpnaas_service_v2.Service_1.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vpnaas.NewSiteConnection(ctx, "conn1", &vpnaas.SiteConnectionArgs{
+//				Dpds: vpnaas.SiteConnectionDpdArray{
+//					&vpnaas.SiteConnectionDpdArgs{
+//						Action:   pulumi.String("restart"),
+//						Interval: pulumi.Int(21),
+//						Timeout:  pulumi.Int(42),
+//					},
+//				},
+//				IkepolicyId:    pulumi.Any(openstack_vpnaas_ike_policy_v2.Policy_2.Id),
+//				IpsecpolicyId:  pulumi.Any(openstack_vpnaas_ipsec_policy_v2.Policy_1.Id),
+//				LocalEpGroupId: pulumi.Any(openstack_vpnaas_endpoint_group_v2.Group_2.Id),
+//				PeerAddress:    pulumi.String("192.168.10.1"),
+//				PeerEpGroupId:  pulumi.Any(openstack_vpnaas_endpoint_group_v2.Group_1.Id),
+//				Psk:            pulumi.String("secret"),
+//				VpnserviceId:   pulumi.Any(openstack_vpnaas_service_v2.Service_1.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -54,7 +57,9 @@ import (
 // Site Connections can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:vpnaas/siteConnection:SiteConnection conn_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+//
+//	$ pulumi import openstack:vpnaas/siteConnection:SiteConnection conn_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+//
 // ```
 type SiteConnection struct {
 	pulumi.CustomResourceState
@@ -425,7 +430,7 @@ func (i *SiteConnection) ToSiteConnectionOutputWithContext(ctx context.Context) 
 // SiteConnectionArrayInput is an input type that accepts SiteConnectionArray and SiteConnectionArrayOutput values.
 // You can construct a concrete instance of `SiteConnectionArrayInput` via:
 //
-//          SiteConnectionArray{ SiteConnectionArgs{...} }
+//	SiteConnectionArray{ SiteConnectionArgs{...} }
 type SiteConnectionArrayInput interface {
 	pulumi.Input
 
@@ -450,7 +455,7 @@ func (i SiteConnectionArray) ToSiteConnectionArrayOutputWithContext(ctx context.
 // SiteConnectionMapInput is an input type that accepts SiteConnectionMap and SiteConnectionMapOutput values.
 // You can construct a concrete instance of `SiteConnectionMapInput` via:
 //
-//          SiteConnectionMap{ "key": SiteConnectionArgs{...} }
+//	SiteConnectionMap{ "key": SiteConnectionArgs{...} }
 type SiteConnectionMapInput interface {
 	pulumi.Input
 

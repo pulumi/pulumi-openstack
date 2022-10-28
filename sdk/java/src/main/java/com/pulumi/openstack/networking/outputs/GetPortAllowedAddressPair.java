@@ -13,21 +13,14 @@ public final class GetPortAllowedAddressPair {
      * @return The additional IP address.
      * 
      */
-    private final String ipAddress;
+    private String ipAddress;
     /**
      * @return The MAC address of the port.
      * 
      */
-    private final String macAddress;
+    private String macAddress;
 
-    @CustomType.Constructor
-    private GetPortAllowedAddressPair(
-        @CustomType.Parameter("ipAddress") String ipAddress,
-        @CustomType.Parameter("macAddress") String macAddress) {
-        this.ipAddress = ipAddress;
-        this.macAddress = macAddress;
-    }
-
+    private GetPortAllowedAddressPair() {}
     /**
      * @return The additional IP address.
      * 
@@ -50,30 +43,32 @@ public final class GetPortAllowedAddressPair {
     public static Builder builder(GetPortAllowedAddressPair defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String ipAddress;
         private String macAddress;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPortAllowedAddressPair defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipAddress = defaults.ipAddress;
     	      this.macAddress = defaults.macAddress;
         }
 
+        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder macAddress(String macAddress) {
             this.macAddress = Objects.requireNonNull(macAddress);
             return this;
-        }        public GetPortAllowedAddressPair build() {
-            return new GetPortAllowedAddressPair(ipAddress, macAddress);
+        }
+        public GetPortAllowedAddressPair build() {
+            final var o = new GetPortAllowedAddressPair();
+            o.ipAddress = ipAddress;
+            o.macAddress = macAddress;
+            return o;
         }
     }
 }

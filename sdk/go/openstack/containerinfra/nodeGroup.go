@@ -14,28 +14,31 @@ import (
 // Manages a V1 Magnum node group resource within OpenStack.
 //
 // ## Example Usage
-// ### Create a Cluster
+// ### Create a Nodegroup
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/containerinfra"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/containerinfra"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := containerinfra.NewNodeGroup(ctx, "nodegroup1", &containerinfra.NodeGroupArgs{
-// 			ClusterId: pulumi.String("b9a45c5c-cd03-4958-82aa-b80bf93cb922"),
-// 			NodeCount: pulumi.Int(5),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := containerinfra.NewNodeGroup(ctx, "nodegroup1", &containerinfra.NodeGroupArgs{
+//				ClusterId: pulumi.String("b9a45c5c-cd03-4958-82aa-b80bf93cb922"),
+//				NodeCount: pulumi.Int(5),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Attributes reference
 //
@@ -44,12 +47,12 @@ import (
 // * `region` - See Argument Reference above.
 // * `name` - See Argument Reference above.
 // * `projectId` - See Argument Reference above.
-// * `createdAt` - The time at which cluster was created.
-// * `updatedAt` - The time at which cluster was created.
+// * `createdAt` - The time at which node group was created.
+// * `updatedAt` - The time at which node group was created.
 // * `dockerVolumeSize` - See Argument Reference above.
 // * `role` - See Argument Reference above.
-// * `image` - See Argument Reference above.
-// * `flavor` - See Argument Reference above.
+// * `imageId` - See Argument Reference above.
+// * `flavorId` - See Argument Reference above.
 // * `labels` - See Argument Reference above.
 // * `nodeCount` - See Argument Reference above.
 // * `minNodeCount` - See Argument Reference above.
@@ -58,10 +61,12 @@ import (
 //
 // ## Import
 //
-// Node groups can be imported using the `id`, e.g.
+// Node groups can be imported using the `id` (cluster_id/nodegroup_id), e.g.
 //
 // ```sh
-//  $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
+//
+//	$ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922/ce0f9463-dd25-474b-9fe8-94de63e5e42b
+//
 // ```
 type NodeGroup struct {
 	pulumi.CustomResourceState
@@ -72,15 +77,21 @@ type NodeGroup struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The size (in GB) of the Docker volume.
 	// Changing this creates a new node group.
-	DockerVolumeSize pulumi.IntOutput    `pulumi:"dockerVolumeSize"`
-	FlavorId         pulumi.StringOutput `pulumi:"flavorId"`
-	ImageId          pulumi.StringOutput `pulumi:"imageId"`
+	DockerVolumeSize pulumi.IntOutput `pulumi:"dockerVolumeSize"`
+	// The flavor for the nodes of the node group. Can be set
+	// via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+	// node group.
+	FlavorId pulumi.StringOutput `pulumi:"flavorId"`
+	// The reference to an image that is used for nodes of the
+	// node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+	// Changing this updates the image attribute of the existing node group.
+	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// The list of key value pairs representing additional
 	// properties of the node group. Changing this creates a new node group.
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// The maximum number of nodes for the node group.
 	// Changing this update the maximum number of nodes of the node group.
-	MaxNodeCount pulumi.IntOutput `pulumi:"maxNodeCount"`
+	MaxNodeCount pulumi.IntPtrOutput `pulumi:"maxNodeCount"`
 	// Indicates whether the provided labels should be
 	// merged with cluster labels. Changing this creates a new nodegroup.
 	MergeLabels pulumi.BoolPtrOutput `pulumi:"mergeLabels"`
@@ -146,9 +157,15 @@ type nodeGroupState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// The size (in GB) of the Docker volume.
 	// Changing this creates a new node group.
-	DockerVolumeSize *int    `pulumi:"dockerVolumeSize"`
-	FlavorId         *string `pulumi:"flavorId"`
-	ImageId          *string `pulumi:"imageId"`
+	DockerVolumeSize *int `pulumi:"dockerVolumeSize"`
+	// The flavor for the nodes of the node group. Can be set
+	// via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+	// node group.
+	FlavorId *string `pulumi:"flavorId"`
+	// The reference to an image that is used for nodes of the
+	// node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+	// Changing this updates the image attribute of the existing node group.
+	ImageId *string `pulumi:"imageId"`
 	// The list of key value pairs representing additional
 	// properties of the node group. Changing this creates a new node group.
 	Labels map[string]interface{} `pulumi:"labels"`
@@ -190,8 +207,14 @@ type NodeGroupState struct {
 	// The size (in GB) of the Docker volume.
 	// Changing this creates a new node group.
 	DockerVolumeSize pulumi.IntPtrInput
-	FlavorId         pulumi.StringPtrInput
-	ImageId          pulumi.StringPtrInput
+	// The flavor for the nodes of the node group. Can be set
+	// via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+	// node group.
+	FlavorId pulumi.StringPtrInput
+	// The reference to an image that is used for nodes of the
+	// node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+	// Changing this updates the image attribute of the existing node group.
+	ImageId pulumi.StringPtrInput
 	// The list of key value pairs representing additional
 	// properties of the node group. Changing this creates a new node group.
 	Labels pulumi.MapInput
@@ -235,9 +258,15 @@ type nodeGroupArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// The size (in GB) of the Docker volume.
 	// Changing this creates a new node group.
-	DockerVolumeSize *int    `pulumi:"dockerVolumeSize"`
-	FlavorId         *string `pulumi:"flavorId"`
-	ImageId          *string `pulumi:"imageId"`
+	DockerVolumeSize *int `pulumi:"dockerVolumeSize"`
+	// The flavor for the nodes of the node group. Can be set
+	// via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+	// node group.
+	FlavorId *string `pulumi:"flavorId"`
+	// The reference to an image that is used for nodes of the
+	// node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+	// Changing this updates the image attribute of the existing node group.
+	ImageId *string `pulumi:"imageId"`
 	// The list of key value pairs representing additional
 	// properties of the node group. Changing this creates a new node group.
 	Labels map[string]interface{} `pulumi:"labels"`
@@ -261,6 +290,9 @@ type nodeGroupArgs struct {
 	// the `region` argument of the provider is used. Changing this creates a new
 	// node group.
 	Region *string `pulumi:"region"`
+	// The role of nodes in the node group. Changing this
+	// creates a new node group.
+	Role *string `pulumi:"role"`
 }
 
 // The set of arguments for constructing a NodeGroup resource.
@@ -271,8 +303,14 @@ type NodeGroupArgs struct {
 	// The size (in GB) of the Docker volume.
 	// Changing this creates a new node group.
 	DockerVolumeSize pulumi.IntPtrInput
-	FlavorId         pulumi.StringPtrInput
-	ImageId          pulumi.StringPtrInput
+	// The flavor for the nodes of the node group. Can be set
+	// via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+	// node group.
+	FlavorId pulumi.StringPtrInput
+	// The reference to an image that is used for nodes of the
+	// node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+	// Changing this updates the image attribute of the existing node group.
+	ImageId pulumi.StringPtrInput
 	// The list of key value pairs representing additional
 	// properties of the node group. Changing this creates a new node group.
 	Labels pulumi.MapInput
@@ -296,6 +334,9 @@ type NodeGroupArgs struct {
 	// the `region` argument of the provider is used. Changing this creates a new
 	// node group.
 	Region pulumi.StringPtrInput
+	// The role of nodes in the node group. Changing this
+	// creates a new node group.
+	Role pulumi.StringPtrInput
 }
 
 func (NodeGroupArgs) ElementType() reflect.Type {
@@ -324,7 +365,7 @@ func (i *NodeGroup) ToNodeGroupOutputWithContext(ctx context.Context) NodeGroupO
 // NodeGroupArrayInput is an input type that accepts NodeGroupArray and NodeGroupArrayOutput values.
 // You can construct a concrete instance of `NodeGroupArrayInput` via:
 //
-//          NodeGroupArray{ NodeGroupArgs{...} }
+//	NodeGroupArray{ NodeGroupArgs{...} }
 type NodeGroupArrayInput interface {
 	pulumi.Input
 
@@ -349,7 +390,7 @@ func (i NodeGroupArray) ToNodeGroupArrayOutputWithContext(ctx context.Context) N
 // NodeGroupMapInput is an input type that accepts NodeGroupMap and NodeGroupMapOutput values.
 // You can construct a concrete instance of `NodeGroupMapInput` via:
 //
-//          NodeGroupMap{ "key": NodeGroupArgs{...} }
+//	NodeGroupMap{ "key": NodeGroupArgs{...} }
 type NodeGroupMapInput interface {
 	pulumi.Input
 
@@ -401,10 +442,16 @@ func (o NodeGroupOutput) DockerVolumeSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.IntOutput { return v.DockerVolumeSize }).(pulumi.IntOutput)
 }
 
+// The flavor for the nodes of the node group. Can be set
+// via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+// node group.
 func (o NodeGroupOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.FlavorId }).(pulumi.StringOutput)
 }
 
+// The reference to an image that is used for nodes of the
+// node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+// Changing this updates the image attribute of the existing node group.
 func (o NodeGroupOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
 }
@@ -417,8 +464,8 @@ func (o NodeGroupOutput) Labels() pulumi.MapOutput {
 
 // The maximum number of nodes for the node group.
 // Changing this update the maximum number of nodes of the node group.
-func (o NodeGroupOutput) MaxNodeCount() pulumi.IntOutput {
-	return o.ApplyT(func(v *NodeGroup) pulumi.IntOutput { return v.MaxNodeCount }).(pulumi.IntOutput)
+func (o NodeGroupOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.IntPtrOutput { return v.MaxNodeCount }).(pulumi.IntPtrOutput)
 }
 
 // Indicates whether the provided labels should be

@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VolumeV1Attachment {
-    private final @Nullable String device;
-    private final @Nullable String id;
-    private final @Nullable String instanceId;
+    private @Nullable String device;
+    private @Nullable String id;
+    private @Nullable String instanceId;
 
-    @CustomType.Constructor
-    private VolumeV1Attachment(
-        @CustomType.Parameter("device") @Nullable String device,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("instanceId") @Nullable String instanceId) {
-        this.device = device;
-        this.id = id;
-        this.instanceId = instanceId;
-    }
-
+    private VolumeV1Attachment() {}
     public Optional<String> device() {
         return Optional.ofNullable(this.device);
     }
@@ -42,16 +33,12 @@ public final class VolumeV1Attachment {
     public static Builder builder(VolumeV1Attachment defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String device;
         private @Nullable String id;
         private @Nullable String instanceId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(VolumeV1Attachment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.device = defaults.device;
@@ -59,19 +46,27 @@ public final class VolumeV1Attachment {
     	      this.instanceId = defaults.instanceId;
         }
 
+        @CustomType.Setter
         public Builder device(@Nullable String device) {
             this.device = device;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
             this.instanceId = instanceId;
             return this;
-        }        public VolumeV1Attachment build() {
-            return new VolumeV1Attachment(device, id, instanceId);
+        }
+        public VolumeV1Attachment build() {
+            final var o = new VolumeV1Attachment();
+            o.device = device;
+            o.id = id;
+            o.instanceId = instanceId;
+            return o;
         }
     }
 }

@@ -18,7 +18,7 @@ type ShareExportLocation struct {
 // ShareExportLocationInput is an input type that accepts ShareExportLocationArgs and ShareExportLocationOutput values.
 // You can construct a concrete instance of `ShareExportLocationInput` via:
 //
-//          ShareExportLocationArgs{...}
+//	ShareExportLocationArgs{...}
 type ShareExportLocationInput interface {
 	pulumi.Input
 
@@ -46,7 +46,7 @@ func (i ShareExportLocationArgs) ToShareExportLocationOutputWithContext(ctx cont
 // ShareExportLocationArrayInput is an input type that accepts ShareExportLocationArray and ShareExportLocationArrayOutput values.
 // You can construct a concrete instance of `ShareExportLocationArrayInput` via:
 //
-//          ShareExportLocationArray{ ShareExportLocationArgs{...} }
+//	ShareExportLocationArray{ ShareExportLocationArgs{...} }
 type ShareExportLocationArrayInput interface {
 	pulumi.Input
 
@@ -118,7 +118,7 @@ type GetShareExportLocation struct {
 // GetShareExportLocationInput is an input type that accepts GetShareExportLocationArgs and GetShareExportLocationOutput values.
 // You can construct a concrete instance of `GetShareExportLocationInput` via:
 //
-//          GetShareExportLocationArgs{...}
+//	GetShareExportLocationArgs{...}
 type GetShareExportLocationInput interface {
 	pulumi.Input
 
@@ -146,7 +146,7 @@ func (i GetShareExportLocationArgs) ToGetShareExportLocationOutputWithContext(ct
 // GetShareExportLocationArrayInput is an input type that accepts GetShareExportLocationArray and GetShareExportLocationArrayOutput values.
 // You can construct a concrete instance of `GetShareExportLocationArrayInput` via:
 //
-//          GetShareExportLocationArray{ GetShareExportLocationArgs{...} }
+//	GetShareExportLocationArray{ GetShareExportLocationArgs{...} }
 type GetShareExportLocationArrayInput interface {
 	pulumi.Input
 

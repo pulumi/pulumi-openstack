@@ -18,44 +18,47 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/firewall"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/firewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		rule1, err := firewall.NewRule(ctx, "rule1", &firewall.RuleArgs{
-// 			Action:          pulumi.String("deny"),
-// 			Description:     pulumi.String("drop TELNET traffic"),
-// 			DestinationPort: pulumi.String("23"),
-// 			Enabled:         pulumi.Bool(true),
-// 			Protocol:        pulumi.String("tcp"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		rule2, err := firewall.NewRule(ctx, "rule2", &firewall.RuleArgs{
-// 			Action:          pulumi.String("deny"),
-// 			Description:     pulumi.String("drop NTP traffic"),
-// 			DestinationPort: pulumi.String("123"),
-// 			Enabled:         pulumi.Bool(false),
-// 			Protocol:        pulumi.String("udp"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = firewall.NewPolicy(ctx, "policy1", &firewall.PolicyArgs{
-// 			Rules: pulumi.StringArray{
-// 				rule1.ID(),
-// 				rule2.ID(),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			rule1, err := firewall.NewRule(ctx, "rule1", &firewall.RuleArgs{
+//				Action:          pulumi.String("deny"),
+//				Description:     pulumi.String("drop TELNET traffic"),
+//				DestinationPort: pulumi.String("23"),
+//				Enabled:         pulumi.Bool(true),
+//				Protocol:        pulumi.String("tcp"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			rule2, err := firewall.NewRule(ctx, "rule2", &firewall.RuleArgs{
+//				Action:          pulumi.String("deny"),
+//				Description:     pulumi.String("drop NTP traffic"),
+//				DestinationPort: pulumi.String("123"),
+//				Enabled:         pulumi.Bool(false),
+//				Protocol:        pulumi.String("udp"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firewall.NewPolicy(ctx, "policy1", &firewall.PolicyArgs{
+//				Rules: pulumi.StringArray{
+//					rule1.ID(),
+//					rule2.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -63,7 +66,9 @@ import (
 // Firewall Policies can be imported using the `id`, e.g.
 //
 // ```sh
-//  $ pulumi import openstack:firewall/policy:Policy policy_1 07f422e6-c596-474b-8b94-fe2c12506ce0
+//
+//	$ pulumi import openstack:firewall/policy:Policy policy_1 07f422e6-c596-474b-8b94-fe2c12506ce0
+//
 // ```
 type Policy struct {
 	pulumi.CustomResourceState
@@ -291,7 +296,7 @@ func (i *Policy) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 // PolicyArrayInput is an input type that accepts PolicyArray and PolicyArrayOutput values.
 // You can construct a concrete instance of `PolicyArrayInput` via:
 //
-//          PolicyArray{ PolicyArgs{...} }
+//	PolicyArray{ PolicyArgs{...} }
 type PolicyArrayInput interface {
 	pulumi.Input
 
@@ -316,7 +321,7 @@ func (i PolicyArray) ToPolicyArrayOutputWithContext(ctx context.Context) PolicyA
 // PolicyMapInput is an input type that accepts PolicyMap and PolicyMapOutput values.
 // You can construct a concrete instance of `PolicyMapInput` via:
 //
-//          PolicyMap{ "key": PolicyArgs{...} }
+//	PolicyMap{ "key": PolicyArgs{...} }
 type PolicyMapInput interface {
 	pulumi.Input
 

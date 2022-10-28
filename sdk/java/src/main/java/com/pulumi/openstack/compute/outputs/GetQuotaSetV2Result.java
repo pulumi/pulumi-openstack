@@ -14,126 +14,89 @@ public final class GetQuotaSetV2Result {
      * @return The number of allowed server cores.
      * 
      */
-    private final Integer cores;
+    private Integer cores;
     /**
      * @return The number of allowed fixed IP addresses. Available until version 2.35.
      * 
      */
-    private final Integer fixedIps;
+    private Integer fixedIps;
     /**
      * @return The number of allowed floating IP addresses. Available until version 2.35.
      * 
      */
-    private final Integer floatingIps;
+    private Integer floatingIps;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The number of allowed bytes of content for each injected file. Available until version 2.56.
      * 
      */
-    private final Integer injectedFileContentBytes;
+    private Integer injectedFileContentBytes;
     /**
      * @return The number of allowed bytes for each injected file path. Available until version 2.56.
      * 
      */
-    private final Integer injectedFilePathBytes;
+    private Integer injectedFilePathBytes;
     /**
      * @return The number of allowed injected files. Available until version 2.56.
      * 
      */
-    private final Integer injectedFiles;
+    private Integer injectedFiles;
     /**
      * @return The number of allowed servers.
      * 
      */
-    private final Integer instances;
+    private Integer instances;
     /**
      * @return The number of allowed key pairs for each user.
      * 
      */
-    private final Integer keyPairs;
+    private Integer keyPairs;
     /**
      * @return The number of allowed metadata items for each server.
      * 
      */
-    private final Integer metadataItems;
+    private Integer metadataItems;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String projectId;
+    private String projectId;
     /**
      * @return The amount of allowed server RAM, in MiB.
      * 
      */
-    private final Integer ram;
+    private Integer ram;
     /**
      * @return See Argument Reference above.
      * 
      */
-    private final String region;
+    private String region;
     /**
      * @return The number of allowed rules for each security group. Available until version 2.35.
      * 
      */
-    private final Integer securityGroupRules;
+    private Integer securityGroupRules;
     /**
      * @return The number of allowed security groups. Available until version 2.35.
      * 
      */
-    private final Integer securityGroups;
+    private Integer securityGroups;
     /**
      * @return The number of allowed members for each server group.
      * 
      */
-    private final Integer serverGroupMembers;
+    private Integer serverGroupMembers;
     /**
      * @return The number of allowed server groups.
      * 
      */
-    private final Integer serverGroups;
+    private Integer serverGroups;
 
-    @CustomType.Constructor
-    private GetQuotaSetV2Result(
-        @CustomType.Parameter("cores") Integer cores,
-        @CustomType.Parameter("fixedIps") Integer fixedIps,
-        @CustomType.Parameter("floatingIps") Integer floatingIps,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("injectedFileContentBytes") Integer injectedFileContentBytes,
-        @CustomType.Parameter("injectedFilePathBytes") Integer injectedFilePathBytes,
-        @CustomType.Parameter("injectedFiles") Integer injectedFiles,
-        @CustomType.Parameter("instances") Integer instances,
-        @CustomType.Parameter("keyPairs") Integer keyPairs,
-        @CustomType.Parameter("metadataItems") Integer metadataItems,
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("ram") Integer ram,
-        @CustomType.Parameter("region") String region,
-        @CustomType.Parameter("securityGroupRules") Integer securityGroupRules,
-        @CustomType.Parameter("securityGroups") Integer securityGroups,
-        @CustomType.Parameter("serverGroupMembers") Integer serverGroupMembers,
-        @CustomType.Parameter("serverGroups") Integer serverGroups) {
-        this.cores = cores;
-        this.fixedIps = fixedIps;
-        this.floatingIps = floatingIps;
-        this.id = id;
-        this.injectedFileContentBytes = injectedFileContentBytes;
-        this.injectedFilePathBytes = injectedFilePathBytes;
-        this.injectedFiles = injectedFiles;
-        this.instances = instances;
-        this.keyPairs = keyPairs;
-        this.metadataItems = metadataItems;
-        this.projectId = projectId;
-        this.ram = ram;
-        this.region = region;
-        this.securityGroupRules = securityGroupRules;
-        this.securityGroups = securityGroups;
-        this.serverGroupMembers = serverGroupMembers;
-        this.serverGroups = serverGroups;
-    }
-
+    private GetQuotaSetV2Result() {}
     /**
      * @return The number of allowed server cores.
      * 
@@ -261,7 +224,7 @@ public final class GetQuotaSetV2Result {
     public static Builder builder(GetQuotaSetV2Result defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer cores;
         private Integer fixedIps;
@@ -280,11 +243,7 @@ public final class GetQuotaSetV2Result {
         private Integer securityGroups;
         private Integer serverGroupMembers;
         private Integer serverGroups;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetQuotaSetV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cores = defaults.cores;
@@ -306,75 +265,111 @@ public final class GetQuotaSetV2Result {
     	      this.serverGroups = defaults.serverGroups;
         }
 
+        @CustomType.Setter
         public Builder cores(Integer cores) {
             this.cores = Objects.requireNonNull(cores);
             return this;
         }
+        @CustomType.Setter
         public Builder fixedIps(Integer fixedIps) {
             this.fixedIps = Objects.requireNonNull(fixedIps);
             return this;
         }
+        @CustomType.Setter
         public Builder floatingIps(Integer floatingIps) {
             this.floatingIps = Objects.requireNonNull(floatingIps);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder injectedFileContentBytes(Integer injectedFileContentBytes) {
             this.injectedFileContentBytes = Objects.requireNonNull(injectedFileContentBytes);
             return this;
         }
+        @CustomType.Setter
         public Builder injectedFilePathBytes(Integer injectedFilePathBytes) {
             this.injectedFilePathBytes = Objects.requireNonNull(injectedFilePathBytes);
             return this;
         }
+        @CustomType.Setter
         public Builder injectedFiles(Integer injectedFiles) {
             this.injectedFiles = Objects.requireNonNull(injectedFiles);
             return this;
         }
+        @CustomType.Setter
         public Builder instances(Integer instances) {
             this.instances = Objects.requireNonNull(instances);
             return this;
         }
+        @CustomType.Setter
         public Builder keyPairs(Integer keyPairs) {
             this.keyPairs = Objects.requireNonNull(keyPairs);
             return this;
         }
+        @CustomType.Setter
         public Builder metadataItems(Integer metadataItems) {
             this.metadataItems = Objects.requireNonNull(metadataItems);
             return this;
         }
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder ram(Integer ram) {
             this.ram = Objects.requireNonNull(ram);
             return this;
         }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroupRules(Integer securityGroupRules) {
             this.securityGroupRules = Objects.requireNonNull(securityGroupRules);
             return this;
         }
+        @CustomType.Setter
         public Builder securityGroups(Integer securityGroups) {
             this.securityGroups = Objects.requireNonNull(securityGroups);
             return this;
         }
+        @CustomType.Setter
         public Builder serverGroupMembers(Integer serverGroupMembers) {
             this.serverGroupMembers = Objects.requireNonNull(serverGroupMembers);
             return this;
         }
+        @CustomType.Setter
         public Builder serverGroups(Integer serverGroups) {
             this.serverGroups = Objects.requireNonNull(serverGroups);
             return this;
-        }        public GetQuotaSetV2Result build() {
-            return new GetQuotaSetV2Result(cores, fixedIps, floatingIps, id, injectedFileContentBytes, injectedFilePathBytes, injectedFiles, instances, keyPairs, metadataItems, projectId, ram, region, securityGroupRules, securityGroups, serverGroupMembers, serverGroups);
+        }
+        public GetQuotaSetV2Result build() {
+            final var o = new GetQuotaSetV2Result();
+            o.cores = cores;
+            o.fixedIps = fixedIps;
+            o.floatingIps = floatingIps;
+            o.id = id;
+            o.injectedFileContentBytes = injectedFileContentBytes;
+            o.injectedFilePathBytes = injectedFilePathBytes;
+            o.injectedFiles = injectedFiles;
+            o.instances = instances;
+            o.keyPairs = keyPairs;
+            o.metadataItems = metadataItems;
+            o.projectId = projectId;
+            o.ram = ram;
+            o.region = region;
+            o.securityGroupRules = securityGroupRules;
+            o.securityGroups = securityGroups;
+            o.serverGroupMembers = serverGroupMembers;
+            o.serverGroups = serverGroups;
+            return o;
         }
     }
 }
