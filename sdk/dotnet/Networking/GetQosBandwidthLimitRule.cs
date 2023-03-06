@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var qosBandwidthLimitRule1 = OpenStack.Networking.GetQosBandwidthLimitRule.Invoke(new()
         ///     {
-        ///         var qosBandwidthLimitRule1 = Output.Create(OpenStack.Networking.GetQosBandwidthLimitRule.InvokeAsync(new OpenStack.Networking.GetQosBandwidthLimitRuleArgs
-        ///         {
-        ///             MaxKbps = 300,
-        ///         }));
-        ///     }
+        ///         MaxKbps = 300,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetQosBandwidthLimitRuleResult> InvokeAsync(GetQosBandwidthLimitRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQosBandwidthLimitRuleResult>("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", args ?? new GetQosBandwidthLimitRuleArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetQosBandwidthLimitRuleResult>("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", args ?? new GetQosBandwidthLimitRuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var qosBandwidthLimitRule1 = OpenStack.Networking.GetQosBandwidthLimitRule.Invoke(new()
         ///     {
-        ///         var qosBandwidthLimitRule1 = Output.Create(OpenStack.Networking.GetQosBandwidthLimitRule.InvokeAsync(new OpenStack.Networking.GetQosBandwidthLimitRuleArgs
-        ///         {
-        ///             MaxKbps = 300,
-        ///         }));
-        ///     }
+        ///         MaxKbps = 300,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetQosBandwidthLimitRuleResult> Invoke(GetQosBandwidthLimitRuleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetQosBandwidthLimitRuleResult>("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", args ?? new GetQosBandwidthLimitRuleInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetQosBandwidthLimitRuleResult>("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", args ?? new GetQosBandwidthLimitRuleInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetQosBandwidthLimitRuleArgs : Pulumi.InvokeArgs
+    public sealed class GetQosBandwidthLimitRuleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The maximum burst size in kilobits of a QoS bandwidth limit rule.
@@ -102,9 +98,10 @@ namespace Pulumi.OpenStack.Networking
         public GetQosBandwidthLimitRuleArgs()
         {
         }
+        public static new GetQosBandwidthLimitRuleArgs Empty => new GetQosBandwidthLimitRuleArgs();
     }
 
-    public sealed class GetQosBandwidthLimitRuleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetQosBandwidthLimitRuleInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The maximum burst size in kilobits of a QoS bandwidth limit rule.
@@ -135,6 +132,7 @@ namespace Pulumi.OpenStack.Networking
         public GetQosBandwidthLimitRuleInvokeArgs()
         {
         }
+        public static new GetQosBandwidthLimitRuleInvokeArgs Empty => new GetQosBandwidthLimitRuleInvokeArgs();
     }
 
 

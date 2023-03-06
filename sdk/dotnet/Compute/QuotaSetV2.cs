@@ -23,29 +23,26 @@ namespace Pulumi.OpenStack.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var project1 = new OpenStack.Identity.Project("project1", new OpenStack.Identity.ProjectArgs
-    ///         {
-    ///         });
-    ///         var quotaset1 = new OpenStack.Compute.QuotaSetV2("quotaset1", new OpenStack.Compute.QuotaSetV2Args
-    ///         {
-    ///             ProjectId = project1.Id,
-    ///             KeyPairs = 10,
-    ///             Ram = 40960,
-    ///             Cores = 32,
-    ///             Instances = 20,
-    ///             ServerGroups = 4,
-    ///             ServerGroupMembers = 8,
-    ///         });
-    ///     }
+    ///     var project1 = new OpenStack.Identity.Project("project1");
     /// 
-    /// }
+    ///     var quotaset1 = new OpenStack.Compute.QuotaSetV2("quotaset1", new()
+    ///     {
+    ///         ProjectId = project1.Id,
+    ///         KeyPairs = 10,
+    ///         Ram = 40960,
+    ///         Cores = 32,
+    ///         Instances = 20,
+    ///         ServerGroups = 4,
+    ///         ServerGroupMembers = 8,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -57,7 +54,7 @@ namespace Pulumi.OpenStack.Compute
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:compute/quotaSetV2:QuotaSetV2")]
-    public partial class QuotaSetV2 : Pulumi.CustomResource
+    public partial class QuotaSetV2 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Quota value for cores.
@@ -216,7 +213,7 @@ namespace Pulumi.OpenStack.Compute
         }
     }
 
-    public sealed class QuotaSetV2Args : Pulumi.ResourceArgs
+    public sealed class QuotaSetV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Quota value for cores.
@@ -334,9 +331,10 @@ namespace Pulumi.OpenStack.Compute
         public QuotaSetV2Args()
         {
         }
+        public static new QuotaSetV2Args Empty => new QuotaSetV2Args();
     }
 
-    public sealed class QuotaSetV2State : Pulumi.ResourceArgs
+    public sealed class QuotaSetV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Quota value for cores.
@@ -454,5 +452,6 @@ namespace Pulumi.OpenStack.Compute
         public QuotaSetV2State()
         {
         }
+        public static new QuotaSetV2State Empty => new QuotaSetV2State();
     }
 }

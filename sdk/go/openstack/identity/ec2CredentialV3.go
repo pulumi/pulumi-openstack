@@ -36,6 +36,9 @@ import (
 // ```
 // ### EC2 credential in pre-defined project scope
 //
+// This allows administrative users to create EC2 credentials for a scope different
+// from the current auth scope.
+//
 // ```go
 // package main
 //
@@ -76,7 +79,8 @@ type Ec2CredentialV3 struct {
 	Access pulumi.StringOutput `pulumi:"access"`
 	// The ID of the project the EC2 credential is created
 	// for and that authentication requests using this EC2 credential will
-	// be scoped to.
+	// be scoped to. Only administrative users can specify a project ID different
+	// from the current auth scope.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The region in which to obtain the V3 Keystone client.
 	// If omitted, the `region` argument of the provider is used. Changing this
@@ -87,6 +91,8 @@ type Ec2CredentialV3 struct {
 	// contains an EC2 credential trust ID scope
 	TrustId pulumi.StringOutput `pulumi:"trustId"`
 	// The ID of the user the EC2 credential is created for.
+	// Only administrative users can specify a user ID different from the current
+	// auth scope.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
@@ -97,6 +103,10 @@ func NewEc2CredentialV3(ctx *pulumi.Context,
 		args = &Ec2CredentialV3Args{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secret",
+	})
+	opts = append(opts, secrets)
 	var resource Ec2CredentialV3
 	err := ctx.RegisterResource("openstack:identity/ec2CredentialV3:Ec2CredentialV3", name, args, &resource, opts...)
 	if err != nil {
@@ -123,7 +133,8 @@ type ec2CredentialV3State struct {
 	Access *string `pulumi:"access"`
 	// The ID of the project the EC2 credential is created
 	// for and that authentication requests using this EC2 credential will
-	// be scoped to.
+	// be scoped to. Only administrative users can specify a project ID different
+	// from the current auth scope.
 	ProjectId *string `pulumi:"projectId"`
 	// The region in which to obtain the V3 Keystone client.
 	// If omitted, the `region` argument of the provider is used. Changing this
@@ -134,6 +145,8 @@ type ec2CredentialV3State struct {
 	// contains an EC2 credential trust ID scope
 	TrustId *string `pulumi:"trustId"`
 	// The ID of the user the EC2 credential is created for.
+	// Only administrative users can specify a user ID different from the current
+	// auth scope.
 	UserId *string `pulumi:"userId"`
 }
 
@@ -142,7 +155,8 @@ type Ec2CredentialV3State struct {
 	Access pulumi.StringPtrInput
 	// The ID of the project the EC2 credential is created
 	// for and that authentication requests using this EC2 credential will
-	// be scoped to.
+	// be scoped to. Only administrative users can specify a project ID different
+	// from the current auth scope.
 	ProjectId pulumi.StringPtrInput
 	// The region in which to obtain the V3 Keystone client.
 	// If omitted, the `region` argument of the provider is used. Changing this
@@ -153,6 +167,8 @@ type Ec2CredentialV3State struct {
 	// contains an EC2 credential trust ID scope
 	TrustId pulumi.StringPtrInput
 	// The ID of the user the EC2 credential is created for.
+	// Only administrative users can specify a user ID different from the current
+	// auth scope.
 	UserId pulumi.StringPtrInput
 }
 
@@ -163,13 +179,16 @@ func (Ec2CredentialV3State) ElementType() reflect.Type {
 type ec2CredentialV3Args struct {
 	// The ID of the project the EC2 credential is created
 	// for and that authentication requests using this EC2 credential will
-	// be scoped to.
+	// be scoped to. Only administrative users can specify a project ID different
+	// from the current auth scope.
 	ProjectId *string `pulumi:"projectId"`
 	// The region in which to obtain the V3 Keystone client.
 	// If omitted, the `region` argument of the provider is used. Changing this
 	// creates a new EC2 credential.
 	Region *string `pulumi:"region"`
 	// The ID of the user the EC2 credential is created for.
+	// Only administrative users can specify a user ID different from the current
+	// auth scope.
 	UserId *string `pulumi:"userId"`
 }
 
@@ -177,13 +196,16 @@ type ec2CredentialV3Args struct {
 type Ec2CredentialV3Args struct {
 	// The ID of the project the EC2 credential is created
 	// for and that authentication requests using this EC2 credential will
-	// be scoped to.
+	// be scoped to. Only administrative users can specify a project ID different
+	// from the current auth scope.
 	ProjectId pulumi.StringPtrInput
 	// The region in which to obtain the V3 Keystone client.
 	// If omitted, the `region` argument of the provider is used. Changing this
 	// creates a new EC2 credential.
 	Region pulumi.StringPtrInput
 	// The ID of the user the EC2 credential is created for.
+	// Only administrative users can specify a user ID different from the current
+	// auth scope.
 	UserId pulumi.StringPtrInput
 }
 
@@ -281,7 +303,8 @@ func (o Ec2CredentialV3Output) Access() pulumi.StringOutput {
 
 // The ID of the project the EC2 credential is created
 // for and that authentication requests using this EC2 credential will
-// be scoped to.
+// be scoped to. Only administrative users can specify a project ID different
+// from the current auth scope.
 func (o Ec2CredentialV3Output) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ec2CredentialV3) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -304,6 +327,8 @@ func (o Ec2CredentialV3Output) TrustId() pulumi.StringOutput {
 }
 
 // The ID of the user the EC2 credential is created for.
+// Only administrative users can specify a user ID different from the current
+// auth scope.
 func (o Ec2CredentialV3Output) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ec2CredentialV3) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }

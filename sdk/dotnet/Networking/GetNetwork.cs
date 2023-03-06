@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var network = OpenStack.Networking.GetNetwork.Invoke(new()
         ///     {
-        ///         var network = Output.Create(OpenStack.Networking.GetNetwork.InvokeAsync(new OpenStack.Networking.GetNetworkArgs
-        ///         {
-        ///             Name = "tf_test_network",
-        ///         }));
-        ///     }
+        ///         Name = "tf_test_network",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNetworkResult> InvokeAsync(GetNetworkArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("openstack:networking/getNetwork:getNetwork", args ?? new GetNetworkArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("openstack:networking/getNetwork:getNetwork", args ?? new GetNetworkArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack network.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var network = OpenStack.Networking.GetNetwork.Invoke(new()
         ///     {
-        ///         var network = Output.Create(OpenStack.Networking.GetNetwork.InvokeAsync(new OpenStack.Networking.GetNetworkArgs
-        ///         {
-        ///             Name = "tf_test_network",
-        ///         }));
-        ///     }
+        ///         Name = "tf_test_network",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNetworkResult> Invoke(GetNetworkInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNetworkResult>("openstack:networking/getNetwork:getNetwork", args ?? new GetNetworkInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworkResult>("openstack:networking/getNetwork:getNetwork", args ?? new GetNetworkInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNetworkArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworkArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Human-readable description of the network.
@@ -152,9 +148,10 @@ namespace Pulumi.OpenStack.Networking
         public GetNetworkArgs()
         {
         }
+        public static new GetNetworkArgs Empty => new GetNetworkArgs();
     }
 
-    public sealed class GetNetworkInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworkInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Human-readable description of the network.
@@ -235,6 +232,7 @@ namespace Pulumi.OpenStack.Networking
         public GetNetworkInvokeArgs()
         {
         }
+        public static new GetNetworkInvokeArgs Empty => new GetNetworkInvokeArgs();
     }
 
 

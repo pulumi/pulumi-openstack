@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.KeyManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = OpenStack.KeyManager.GetContainer.Invoke(new()
         ///     {
-        ///         var example = Output.Create(OpenStack.KeyManager.GetContainer.InvokeAsync(new OpenStack.KeyManager.GetContainerArgs
-        ///         {
-        ///             Name = "my_container",
-        ///         }));
-        ///     }
+        ///         Name = "my_container",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetContainerResult> InvokeAsync(GetContainerArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetContainerResult>("openstack:keymanager/getContainer:getContainer", args ?? new GetContainerArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetContainerResult>("openstack:keymanager/getContainer:getContainer", args ?? new GetContainerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available Barbican container.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.KeyManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = OpenStack.KeyManager.GetContainer.Invoke(new()
         ///     {
-        ///         var example = Output.Create(OpenStack.KeyManager.GetContainer.InvokeAsync(new OpenStack.KeyManager.GetContainerArgs
-        ///         {
-        ///             Name = "my_container",
-        ///         }));
-        ///     }
+        ///         Name = "my_container",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetContainerResult> Invoke(GetContainerInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetContainerResult>("openstack:keymanager/getContainer:getContainer", args ?? new GetContainerInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetContainerResult>("openstack:keymanager/getContainer:getContainer", args ?? new GetContainerInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetContainerArgs : Pulumi.InvokeArgs
+    public sealed class GetContainerArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Container name.
@@ -90,9 +86,10 @@ namespace Pulumi.OpenStack.KeyManager
         public GetContainerArgs()
         {
         }
+        public static new GetContainerArgs Empty => new GetContainerArgs();
     }
 
-    public sealed class GetContainerInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetContainerInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Container name.
@@ -111,6 +108,7 @@ namespace Pulumi.OpenStack.KeyManager
         public GetContainerInvokeArgs()
         {
         }
+        public static new GetContainerInvokeArgs Empty => new GetContainerInvokeArgs();
     }
 
 

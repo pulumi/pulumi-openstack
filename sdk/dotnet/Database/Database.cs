@@ -16,20 +16,18 @@ namespace Pulumi.OpenStack.Database
     /// ### Database
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mydb = new OpenStack.Database.Database("mydb", new()
     ///     {
-    ///         var mydb = new OpenStack.Database.Database("mydb", new OpenStack.Database.DatabaseArgs
-    ///         {
-    ///             InstanceId = openstack_db_instance_v1.Basic.Id,
-    ///         });
-    ///     }
+    ///         InstanceId = openstack_db_instance_v1.Basic.Id,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -41,7 +39,7 @@ namespace Pulumi.OpenStack.Database
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:database/database:Database")]
-    public partial class Database : Pulumi.CustomResource
+    public partial class Database : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID for the database instance.
@@ -105,7 +103,7 @@ namespace Pulumi.OpenStack.Database
         }
     }
 
-    public sealed class DatabaseArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID for the database instance.
@@ -128,9 +126,10 @@ namespace Pulumi.OpenStack.Database
         public DatabaseArgs()
         {
         }
+        public static new DatabaseArgs Empty => new DatabaseArgs();
     }
 
-    public sealed class DatabaseState : Pulumi.ResourceArgs
+    public sealed class DatabaseState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID for the database instance.
@@ -153,5 +152,6 @@ namespace Pulumi.OpenStack.Database
         public DatabaseState()
         {
         }
+        public static new DatabaseState Empty => new DatabaseState();
     }
 }

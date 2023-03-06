@@ -15,22 +15,20 @@ namespace Pulumi.OpenStack.BlockStorage
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var volume1 = new OpenStack.BlockStorage.VolumeV1("volume1", new()
     ///     {
-    ///         var volume1 = new OpenStack.BlockStorage.VolumeV1("volume1", new OpenStack.BlockStorage.VolumeV1Args
-    ///         {
-    ///             Description = "first test volume",
-    ///             Region = "RegionOne",
-    ///             Size = 3,
-    ///         });
-    ///     }
+    ///         Description = "first test volume",
+    ///         Region = "RegionOne",
+    ///         Size = 3,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.OpenStack.BlockStorage
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:blockstorage/volumeV1:VolumeV1")]
-    public partial class VolumeV1 : Pulumi.CustomResource
+    public partial class VolumeV1 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// If a volume is attached to an instance, this attribute will
@@ -167,7 +165,7 @@ namespace Pulumi.OpenStack.BlockStorage
         }
     }
 
-    public sealed class VolumeV1Args : Pulumi.ResourceArgs
+    public sealed class VolumeV1Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The availability zone for the volume.
@@ -249,9 +247,10 @@ namespace Pulumi.OpenStack.BlockStorage
         public VolumeV1Args()
         {
         }
+        public static new VolumeV1Args Empty => new VolumeV1Args();
     }
 
-    public sealed class VolumeV1State : Pulumi.ResourceArgs
+    public sealed class VolumeV1State : global::Pulumi.ResourceArgs
     {
         [Input("attachments")]
         private InputList<Inputs.VolumeV1AttachmentGetArgs>? _attachments;
@@ -347,5 +346,6 @@ namespace Pulumi.OpenStack.BlockStorage
         public VolumeV1State()
         {
         }
+        public static new VolumeV1State Empty => new VolumeV1State();
     }
 }

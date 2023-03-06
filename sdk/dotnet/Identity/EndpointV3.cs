@@ -17,26 +17,25 @@ namespace Pulumi.OpenStack.Identity
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var service1 = new OpenStack.Identity.ServiceV3("service1", new()
     ///     {
-    ///         var service1 = new OpenStack.Identity.ServiceV3("service1", new OpenStack.Identity.ServiceV3Args
-    ///         {
-    ///             Type = "my-service-type",
-    ///         });
-    ///         var endpoint1 = new OpenStack.Identity.EndpointV3("endpoint1", new OpenStack.Identity.EndpointV3Args
-    ///         {
-    ///             EndpointRegion = service1.Region,
-    ///             ServiceId = service1.Id,
-    ///             Url = "http://my-endpoint",
-    ///         });
-    ///     }
+    ///         Type = "my-service-type",
+    ///     });
     /// 
-    /// }
+    ///     var endpoint1 = new OpenStack.Identity.EndpointV3("endpoint1", new()
+    ///     {
+    ///         EndpointRegion = service1.Region,
+    ///         ServiceId = service1.Id,
+    ///         Url = "http://my-endpoint",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +47,7 @@ namespace Pulumi.OpenStack.Identity
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:identity/endpointV3:EndpointV3")]
-    public partial class EndpointV3 : Pulumi.CustomResource
+    public partial class EndpointV3 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The endpoint region. The `region` and
@@ -145,7 +144,7 @@ namespace Pulumi.OpenStack.Identity
         }
     }
 
-    public sealed class EndpointV3Args : Pulumi.ResourceArgs
+    public sealed class EndpointV3Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The endpoint region. The `region` and
@@ -189,9 +188,10 @@ namespace Pulumi.OpenStack.Identity
         public EndpointV3Args()
         {
         }
+        public static new EndpointV3Args Empty => new EndpointV3Args();
     }
 
-    public sealed class EndpointV3State : Pulumi.ResourceArgs
+    public sealed class EndpointV3State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The endpoint region. The `region` and
@@ -247,5 +247,6 @@ namespace Pulumi.OpenStack.Identity
         public EndpointV3State()
         {
         }
+        public static new EndpointV3State Empty => new EndpointV3State();
     }
 }

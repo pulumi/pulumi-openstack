@@ -19,31 +19,29 @@ namespace Pulumi.OpenStack.Images
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ubuntu = OpenStack.Images.GetImage.Invoke(new()
         ///     {
-        ///         var ubuntu = Output.Create(OpenStack.Images.GetImage.InvokeAsync(new OpenStack.Images.GetImageArgs
+        ///         MostRecent = true,
+        ///         Name = "Ubuntu 16.04",
+        ///         Properties = 
         ///         {
-        ///             MostRecent = true,
-        ///             Name = "Ubuntu 16.04",
-        ///             Properties = 
-        ///             {
-        ///                 { "key", "value" },
-        ///             },
-        ///         }));
-        ///     }
+        ///             { "key", "value" },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("openstack:images/getImage:getImage", args ?? new GetImageArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("openstack:images/getImage:getImage", args ?? new GetImageArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack image.
@@ -53,35 +51,33 @@ namespace Pulumi.OpenStack.Images
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ubuntu = OpenStack.Images.GetImage.Invoke(new()
         ///     {
-        ///         var ubuntu = Output.Create(OpenStack.Images.GetImage.InvokeAsync(new OpenStack.Images.GetImageArgs
+        ///         MostRecent = true,
+        ///         Name = "Ubuntu 16.04",
+        ///         Properties = 
         ///         {
-        ///             MostRecent = true,
-        ///             Name = "Ubuntu 16.04",
-        ///             Properties = 
-        ///             {
-        ///                 { "key", "value" },
-        ///             },
-        ///         }));
-        ///     }
+        ///             { "key", "value" },
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetImageResult> Invoke(GetImageInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetImageResult>("openstack:images/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetImageResult>("openstack:images/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetImageArgs : Pulumi.InvokeArgs
+    public sealed class GetImageArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Whether or not the image is hidden from public list.
@@ -104,10 +100,20 @@ namespace Pulumi.OpenStack.Images
         public bool? MostRecent { get; set; }
 
         /// <summary>
-        /// The name of the image.
+        /// The name of the image. Cannot be used simultaneously
+        /// with `name_regex`.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
+
+        /// <summary>
+        /// The regular expressian of the name of the image.
+        /// Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+        /// `name_regex` filtering does by client on the result of OpenStack search
+        /// query.
+        /// </summary>
+        [Input("nameRegex")]
+        public string? NameRegex { get; set; }
 
         /// <summary>
         /// The owner (UUID) of the image.
@@ -170,6 +176,19 @@ namespace Pulumi.OpenStack.Images
         [Input("tag")]
         public string? Tag { get; set; }
 
+        [Input("tags")]
+        private List<string>? _tags;
+
+        /// <summary>
+        /// A list of tags required to be set on the image 
+        /// (all specified tags must be in the images tag list for it to be matched).
+        /// </summary>
+        public List<string> Tags
+        {
+            get => _tags ?? (_tags = new List<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The visibility of the image. Must be one of
         /// "public", "private", "community", or "shared". Defaults to "private".
@@ -180,9 +199,10 @@ namespace Pulumi.OpenStack.Images
         public GetImageArgs()
         {
         }
+        public static new GetImageArgs Empty => new GetImageArgs();
     }
 
-    public sealed class GetImageInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetImageInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Whether or not the image is hidden from public list.
@@ -205,10 +225,20 @@ namespace Pulumi.OpenStack.Images
         public Input<bool>? MostRecent { get; set; }
 
         /// <summary>
-        /// The name of the image.
+        /// The name of the image. Cannot be used simultaneously
+        /// with `name_regex`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The regular expressian of the name of the image.
+        /// Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+        /// `name_regex` filtering does by client on the result of OpenStack search
+        /// query.
+        /// </summary>
+        [Input("nameRegex")]
+        public Input<string>? NameRegex { get; set; }
 
         /// <summary>
         /// The owner (UUID) of the image.
@@ -271,6 +301,19 @@ namespace Pulumi.OpenStack.Images
         [Input("tag")]
         public Input<string>? Tag { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of tags required to be set on the image 
+        /// (all specified tags must be in the images tag list for it to be matched).
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The visibility of the image. Must be one of
         /// "public", "private", "community", or "shared". Defaults to "private".
@@ -281,6 +324,7 @@ namespace Pulumi.OpenStack.Images
         public GetImageInvokeArgs()
         {
         }
+        public static new GetImageInvokeArgs Empty => new GetImageInvokeArgs();
     }
 
 
@@ -291,13 +335,17 @@ namespace Pulumi.OpenStack.Images
         /// The checksum of the data associated with the image.
         /// </summary>
         public readonly string Checksum;
+        /// <summary>
+        /// The format of the image's container.
+        /// </summary>
         public readonly string ContainerFormat;
         /// <summary>
         /// The date the image was created.
-        /// * `container_format`: The format of the image's container.
-        /// * `disk_format`: The format of the image's disk.
         /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// The format of the image's disk.
+        /// </summary>
         public readonly string DiskFormat;
         /// <summary>
         /// the trailing path after the glance endpoint that represent the
@@ -326,6 +374,7 @@ namespace Pulumi.OpenStack.Images
         public readonly int MinRamMb;
         public readonly bool? MostRecent;
         public readonly string? Name;
+        public readonly string? NameRegex;
         public readonly string? Owner;
         /// <summary>
         /// Freeform information about the image.
@@ -388,6 +437,8 @@ namespace Pulumi.OpenStack.Images
 
             string? name,
 
+            string? nameRegex,
+
             string? owner,
 
             ImmutableDictionary<string, object>? properties,
@@ -429,6 +480,7 @@ namespace Pulumi.OpenStack.Images
             MinRamMb = minRamMb;
             MostRecent = mostRecent;
             Name = name;
+            NameRegex = nameRegex;
             Owner = owner;
             Properties = properties;
             Protected = @protected;

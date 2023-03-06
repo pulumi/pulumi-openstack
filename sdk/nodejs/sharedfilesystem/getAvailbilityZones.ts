@@ -14,16 +14,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const zones = pulumi.output(openstack.sharedfilesystem.getAvailbilityZones());
+ * const zones = openstack.sharedfilesystem.getAvailbilityZones({});
  * ```
  */
 export function getAvailbilityZones(args?: GetAvailbilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailbilityZonesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", {
         "region": args.region,
     }, opts);
@@ -57,9 +54,21 @@ export interface GetAvailbilityZonesResult {
      */
     readonly region: string;
 }
-
+/**
+ * Use this data source to get a list of Shared File System availability zones
+ * from OpenStack
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const zones = openstack.sharedfilesystem.getAvailbilityZones({});
+ * ```
+ */
 export function getAvailbilityZonesOutput(args?: GetAvailbilityZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvailbilityZonesResult> {
-    return pulumi.output(args).apply(a => getAvailbilityZones(a, opts))
+    return pulumi.output(args).apply((a: any) => getAvailbilityZones(a, opts))
 }
 
 /**

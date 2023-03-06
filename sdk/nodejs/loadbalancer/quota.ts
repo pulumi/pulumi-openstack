@@ -26,8 +26,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const project1 = new openstack.identity.Project("project_1", {});
- * const quota1 = new openstack.loadbalancer.Quota("quota_1", {
+ * const project1 = new openstack.identity.Project("project1", {});
+ * const quota1 = new openstack.loadbalancer.Quota("quota1", {
  *     healthMonitor: 10,
  *     l7Policy: 11,
  *     l7Rule: 12,

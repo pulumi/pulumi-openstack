@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const vip1 = new openstack.loadbalancer.Vip("vip_1", {
+ * const vip1 = new openstack.loadbalancer.Vip("vip1", {
  *     poolId: "67890",
  *     port: 80,
  *     protocol: "HTTP",

@@ -27,7 +27,8 @@ class ContainerV1Args:
         :param pulumi.Input['ContainerV1AclArgs'] acl: Allows to control an access to a container. Currently only
                the `read` operation is supported. If not specified, the container is
                accessible project wide. The `read` structure is described below.
-        :param pulumi.Input[str] name: The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+        :param pulumi.Input[str] name: Human-readable name for the Container. Does not have
+               to be unique.
         :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
                A KeyManager client is needed to create a container. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -75,7 +76,8 @@ class ContainerV1Args:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+        Human-readable name for the Container. Does not have
+        to be unique.
         """
         return pulumi.get(self, "name")
 
@@ -135,7 +137,8 @@ class _ContainerV1State:
         :param pulumi.Input[str] container_ref: The container reference / where to find the container.
         :param pulumi.Input[str] created_at: The date the container ACL was created.
         :param pulumi.Input[str] creator_id: The creator of the container.
-        :param pulumi.Input[str] name: The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+        :param pulumi.Input[str] name: Human-readable name for the Container. Does not have
+               to be unique.
         :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
                A KeyManager client is needed to create a container. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -235,7 +238,8 @@ class _ContainerV1State:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+        Human-readable name for the Container. Does not have
+        to be unique.
         """
         return pulumi.get(self, "name")
 
@@ -415,7 +419,8 @@ class ContainerV1(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ContainerV1AclArgs']] acl: Allows to control an access to a container. Currently only
                the `read` operation is supported. If not specified, the container is
                accessible project wide. The `read` structure is described below.
-        :param pulumi.Input[str] name: The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+        :param pulumi.Input[str] name: Human-readable name for the Container. Does not have
+               to be unique.
         :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
                A KeyManager client is needed to create a container. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -598,7 +603,8 @@ class ContainerV1(pulumi.CustomResource):
         :param pulumi.Input[str] container_ref: The container reference / where to find the container.
         :param pulumi.Input[str] created_at: The date the container ACL was created.
         :param pulumi.Input[str] creator_id: The creator of the container.
-        :param pulumi.Input[str] name: The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+        :param pulumi.Input[str] name: Human-readable name for the Container. Does not have
+               to be unique.
         :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
                A KeyManager client is needed to create a container. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -672,7 +678,8 @@ class ContainerV1(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+        Human-readable name for the Container. Does not have
+        to be unique.
         """
         return pulumi.get(self, "name")
 

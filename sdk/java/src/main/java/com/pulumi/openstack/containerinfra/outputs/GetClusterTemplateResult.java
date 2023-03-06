@@ -79,6 +79,11 @@ public final class GetClusterTemplateResult {
      */
     private Boolean floatingIpEnabled;
     /**
+     * @return Indicates whether the ClusterTemplate is hidden or not.
+     * 
+     */
+    private Boolean hidden;
+    /**
      * @return The address of a proxy for receiving all HTTP requests and
      * relay them.
      * 
@@ -282,6 +287,13 @@ public final class GetClusterTemplateResult {
         return this.floatingIpEnabled;
     }
     /**
+     * @return Indicates whether the ClusterTemplate is hidden or not.
+     * 
+     */
+    public Boolean hidden() {
+        return this.hidden;
+    }
+    /**
      * @return The address of a proxy for receiving all HTTP requests and
      * relay them.
      * 
@@ -457,6 +469,7 @@ public final class GetClusterTemplateResult {
         private String fixedSubnet;
         private String flavor;
         private Boolean floatingIpEnabled;
+        private Boolean hidden;
         private String httpProxy;
         private String httpsProxy;
         private String id;
@@ -493,6 +506,7 @@ public final class GetClusterTemplateResult {
     	      this.fixedSubnet = defaults.fixedSubnet;
     	      this.flavor = defaults.flavor;
     	      this.floatingIpEnabled = defaults.floatingIpEnabled;
+    	      this.hidden = defaults.hidden;
     	      this.httpProxy = defaults.httpProxy;
     	      this.httpsProxy = defaults.httpsProxy;
     	      this.id = defaults.id;
@@ -574,6 +588,11 @@ public final class GetClusterTemplateResult {
         @CustomType.Setter
         public Builder floatingIpEnabled(Boolean floatingIpEnabled) {
             this.floatingIpEnabled = Objects.requireNonNull(floatingIpEnabled);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hidden(Boolean hidden) {
+            this.hidden = Objects.requireNonNull(hidden);
             return this;
         }
         @CustomType.Setter
@@ -695,6 +714,7 @@ public final class GetClusterTemplateResult {
             o.fixedSubnet = fixedSubnet;
             o.flavor = flavor;
             o.floatingIpEnabled = floatingIpEnabled;
+            o.hidden = hidden;
             o.httpProxy = httpProxy;
             o.httpsProxy = httpsProxy;
             o.id = id;

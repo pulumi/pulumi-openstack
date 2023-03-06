@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.LoadBalancer.Inputs
 {
 
-    public sealed class MembersMemberArgs : Pulumi.ResourceArgs
+    public sealed class MembersMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address of the members to receive traffic from
@@ -83,5 +83,6 @@ namespace Pulumi.OpenStack.LoadBalancer.Inputs
         public MembersMemberArgs()
         {
         }
+        public static new MembersMemberArgs Empty => new MembersMemberArgs();
     }
 }

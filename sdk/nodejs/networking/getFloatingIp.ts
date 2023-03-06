@@ -13,18 +13,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const floatingip1 = pulumi.output(openstack.networking.getFloatingIp({
+ * const floatingip1 = openstack.networking.getFloatingIp({
  *     address: "192.168.0.4",
- * }));
+ * });
  * ```
  */
 export function getFloatingIp(args?: GetFloatingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIpResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getFloatingIp:getFloatingIp", {
         "address": args.address,
         "description": args.description,
@@ -114,9 +111,22 @@ export interface GetFloatingIpResult {
     readonly tags?: string[];
     readonly tenantId?: string;
 }
-
+/**
+ * Use this data source to get the ID of an available OpenStack floating IP.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const floatingip1 = openstack.networking.getFloatingIp({
+ *     address: "192.168.0.4",
+ * });
+ * ```
+ */
 export function getFloatingIpOutput(args?: GetFloatingIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFloatingIpResult> {
-    return pulumi.output(args).apply(a => getFloatingIp(a, opts))
+    return pulumi.output(args).apply((a: any) => getFloatingIp(a, opts))
 }
 
 /**

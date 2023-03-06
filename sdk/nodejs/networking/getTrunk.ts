@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,18 +15,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const trunk1 = pulumi.output(openstack.networking.getTrunk({
+ * const trunk1 = openstack.networking.getTrunk({
  *     name: "trunk_1",
- * }));
+ * });
  * ```
  */
 export function getTrunk(args?: GetTrunkArgs, opts?: pulumi.InvokeOptions): Promise<GetTrunkResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getTrunk:getTrunk", {
         "adminStateUp": args.adminStateUp,
         "description": args.description,
@@ -113,9 +111,22 @@ export interface GetTrunkResult {
     readonly tags?: string[];
     readonly trunkId?: string;
 }
-
+/**
+ * Use this data source to get the ID of an available OpenStack trunk.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const trunk1 = openstack.networking.getTrunk({
+ *     name: "trunk_1",
+ * });
+ * ```
+ */
 export function getTrunkOutput(args?: GetTrunkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrunkResult> {
-    return pulumi.output(args).apply(a => getTrunk(a, opts))
+    return pulumi.output(args).apply((a: any) => getTrunk(a, opts))
 }
 
 /**

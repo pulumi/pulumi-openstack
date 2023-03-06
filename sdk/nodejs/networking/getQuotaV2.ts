@@ -13,17 +13,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const quota = pulumi.output(openstack.networking.getQuotaV2({
+ * const quota = openstack.networking.getQuotaV2({
  *     projectId: "2e367a3d29f94fd988e6ec54e305ec9d",
- * }));
+ * });
  * ```
  */
 export function getQuotaV2(args: GetQuotaV2Args, opts?: pulumi.InvokeOptions): Promise<GetQuotaV2Result> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getQuotaV2:getQuotaV2", {
         "projectId": args.projectId,
         "region": args.region,
@@ -96,9 +93,22 @@ export interface GetQuotaV2Result {
     readonly subnet: number;
     readonly subnetpool: number;
 }
-
+/**
+ * Use this data source to get the networking quota of an OpenStack project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const quota = openstack.networking.getQuotaV2({
+ *     projectId: "2e367a3d29f94fd988e6ec54e305ec9d",
+ * });
+ * ```
+ */
 export function getQuotaV2Output(args: GetQuotaV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaV2Result> {
-    return pulumi.output(args).apply(a => getQuotaV2(a, opts))
+    return pulumi.output(args).apply((a: any) => getQuotaV2(a, opts))
 }
 
 /**

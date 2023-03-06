@@ -13,18 +13,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const volume1 = pulumi.output(openstack.blockstorage.getVolumeV3({
+ * const volume1 = openstack.blockstorage.getVolumeV3({
  *     name: "volume_1",
- * }));
+ * });
  * ```
  */
 export function getVolumeV3(args?: GetVolumeV3Args, opts?: pulumi.InvokeOptions): Promise<GetVolumeV3Result> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:blockstorage/getVolumeV3:getVolumeV3", {
         "bootable": args.bootable,
         "host": args.host,
@@ -120,9 +117,22 @@ export interface GetVolumeV3Result {
      */
     readonly volumeType: string;
 }
-
+/**
+ * Use this data source to get information about an existing volume.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const volume1 = openstack.blockstorage.getVolumeV3({
+ *     name: "volume_1",
+ * });
+ * ```
+ */
 export function getVolumeV3Output(args?: GetVolumeV3OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeV3Result> {
-    return pulumi.output(args).apply(a => getVolumeV3(a, opts))
+    return pulumi.output(args).apply((a: any) => getVolumeV3(a, opts))
 }
 
 /**

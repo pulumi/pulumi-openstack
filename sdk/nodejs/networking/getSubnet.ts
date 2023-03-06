@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,18 +15,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const subnet1 = pulumi.output(openstack.networking.getSubnet({
+ * const subnet1 = openstack.networking.getSubnet({
  *     name: "subnet_1",
- * }));
+ * });
  * ```
  */
 export function getSubnet(args?: GetSubnetArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getSubnet:getSubnet", {
         "cidr": args.cidr,
         "description": args.description,
@@ -169,9 +167,22 @@ export interface GetSubnetResult {
     readonly tags?: string[];
     readonly tenantId: string;
 }
-
+/**
+ * Use this data source to get the ID of an available OpenStack subnet.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const subnet1 = openstack.networking.getSubnet({
+ *     name: "subnet_1",
+ * });
+ * ```
+ */
 export function getSubnetOutput(args?: GetSubnetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetResult> {
-    return pulumi.output(args).apply(a => getSubnet(a, opts))
+    return pulumi.output(args).apply((a: any) => getSubnet(a, opts))
 }
 
 /**

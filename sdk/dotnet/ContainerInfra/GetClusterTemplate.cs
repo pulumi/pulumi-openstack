@@ -20,26 +20,24 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var clustertemplate1 = OpenStack.ContainerInfra.GetClusterTemplate.Invoke(new()
         ///     {
-        ///         var clustertemplate1 = Output.Create(OpenStack.ContainerInfra.GetClusterTemplate.InvokeAsync(new OpenStack.ContainerInfra.GetClusterTemplateArgs
-        ///         {
-        ///             Name = "clustertemplate_1",
-        ///         }));
-        ///     }
+        ///         Name = "clustertemplate_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterTemplateResult> InvokeAsync(GetClusterTemplateArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterTemplateResult>("openstack:containerinfra/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterTemplateResult>("openstack:containerinfra/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack Magnum cluster
@@ -50,30 +48,28 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var clustertemplate1 = OpenStack.ContainerInfra.GetClusterTemplate.Invoke(new()
         ///     {
-        ///         var clustertemplate1 = Output.Create(OpenStack.ContainerInfra.GetClusterTemplate.InvokeAsync(new OpenStack.ContainerInfra.GetClusterTemplateArgs
-        ///         {
-        ///             Name = "clustertemplate_1",
-        ///         }));
-        ///     }
+        ///         Name = "clustertemplate_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClusterTemplateResult> Invoke(GetClusterTemplateInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClusterTemplateResult>("openstack:containerinfra/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClusterTemplateResult>("openstack:containerinfra/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetClusterTemplateArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterTemplateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the cluster template.
@@ -92,9 +88,10 @@ namespace Pulumi.OpenStack.ContainerInfra
         public GetClusterTemplateArgs()
         {
         }
+        public static new GetClusterTemplateArgs Empty => new GetClusterTemplateArgs();
     }
 
-    public sealed class GetClusterTemplateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the cluster template.
@@ -113,6 +110,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         public GetClusterTemplateInvokeArgs()
         {
         }
+        public static new GetClusterTemplateInvokeArgs Empty => new GetClusterTemplateInvokeArgs();
     }
 
 
@@ -172,6 +170,10 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// floating IP for every node or not.
         /// </summary>
         public readonly bool FloatingIpEnabled;
+        /// <summary>
+        /// Indicates whether the ClusterTemplate is hidden or not.
+        /// </summary>
+        public readonly bool Hidden;
         /// <summary>
         /// The address of a proxy for receiving all HTTP requests and
         /// relay them.
@@ -290,6 +292,8 @@ namespace Pulumi.OpenStack.ContainerInfra
 
             bool floatingIpEnabled,
 
+            bool hidden,
+
             string httpProxy,
 
             string httpsProxy,
@@ -344,6 +348,7 @@ namespace Pulumi.OpenStack.ContainerInfra
             FixedSubnet = fixedSubnet;
             Flavor = flavor;
             FloatingIpEnabled = floatingIpEnabled;
+            Hidden = hidden;
             HttpProxy = httpProxy;
             HttpsProxy = httpsProxy;
             Id = id;

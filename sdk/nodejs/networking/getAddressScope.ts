@@ -13,20 +13,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const publicAddressscope = pulumi.output(openstack.networking.getAddressScope({
+ * const publicAddressscope = openstack.networking.getAddressScope({
  *     ipVersion: 4,
  *     name: "public_addressscope",
  *     shared: true,
- * }));
+ * });
  * ```
  */
 export function getAddressScope(args?: GetAddressScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressScopeResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getAddressScope:getAddressScope", {
         "ipVersion": args.ipVersion,
         "name": args.name,
@@ -91,9 +88,24 @@ export interface GetAddressScopeResult {
      */
     readonly shared?: boolean;
 }
-
+/**
+ * Use this data source to get the ID of an available OpenStack address-scope.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const publicAddressscope = openstack.networking.getAddressScope({
+ *     ipVersion: 4,
+ *     name: "public_addressscope",
+ *     shared: true,
+ * });
+ * ```
+ */
 export function getAddressScopeOutput(args?: GetAddressScopeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressScopeResult> {
-    return pulumi.output(args).apply(a => getAddressScope(a, opts))
+    return pulumi.output(args).apply((a: any) => getAddressScope(a, opts))
 }
 
 /**

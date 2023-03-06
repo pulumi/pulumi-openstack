@@ -28,30 +28,27 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var project1 = new OpenStack.Identity.Project("project1", new OpenStack.Identity.ProjectArgs
-    ///         {
-    ///         });
-    ///         var quota1 = new OpenStack.LoadBalancer.Quota("quota1", new OpenStack.LoadBalancer.QuotaArgs
-    ///         {
-    ///             HealthMonitor = 10,
-    ///             L7Policy = 11,
-    ///             L7Rule = 12,
-    ///             Listener = 7,
-    ///             Loadbalancer = 6,
-    ///             Member = 8,
-    ///             Pool = 9,
-    ///             ProjectId = project1.Id,
-    ///         });
-    ///     }
+    ///     var project1 = new OpenStack.Identity.Project("project1");
     /// 
-    /// }
+    ///     var quota1 = new OpenStack.LoadBalancer.Quota("quota1", new()
+    ///     {
+    ///         HealthMonitor = 10,
+    ///         L7Policy = 11,
+    ///         L7Rule = 12,
+    ///         Listener = 7,
+    ///         Loadbalancer = 6,
+    ///         Member = 8,
+    ///         Pool = 9,
+    ///         ProjectId = project1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -63,7 +60,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:loadbalancer/quota:Quota")]
-    public partial class Quota : Pulumi.CustomResource
+    public partial class Quota : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Quota value for health_monitors. Changing
@@ -174,7 +171,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         }
     }
 
-    public sealed class QuotaArgs : Pulumi.ResourceArgs
+    public sealed class QuotaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Quota value for health_monitors. Changing
@@ -244,9 +241,10 @@ namespace Pulumi.OpenStack.LoadBalancer
         public QuotaArgs()
         {
         }
+        public static new QuotaArgs Empty => new QuotaArgs();
     }
 
-    public sealed class QuotaState : Pulumi.ResourceArgs
+    public sealed class QuotaState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Quota value for health_monitors. Changing
@@ -316,5 +314,6 @@ namespace Pulumi.OpenStack.LoadBalancer
         public QuotaState()
         {
         }
+        public static new QuotaState Empty => new QuotaState();
     }
 }

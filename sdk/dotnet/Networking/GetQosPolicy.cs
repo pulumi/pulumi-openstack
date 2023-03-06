@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var qosPolicy1 = OpenStack.Networking.GetQosPolicy.Invoke(new()
         ///     {
-        ///         var qosPolicy1 = Output.Create(OpenStack.Networking.GetQosPolicy.InvokeAsync(new OpenStack.Networking.GetQosPolicyArgs
-        ///         {
-        ///             Name = "qos_policy_1",
-        ///         }));
-        ///     }
+        ///         Name = "qos_policy_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetQosPolicyResult> InvokeAsync(GetQosPolicyArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQosPolicyResult>("openstack:networking/getQosPolicy:getQosPolicy", args ?? new GetQosPolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetQosPolicyResult>("openstack:networking/getQosPolicy:getQosPolicy", args ?? new GetQosPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack QoS policy.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var qosPolicy1 = OpenStack.Networking.GetQosPolicy.Invoke(new()
         ///     {
-        ///         var qosPolicy1 = Output.Create(OpenStack.Networking.GetQosPolicy.InvokeAsync(new OpenStack.Networking.GetQosPolicyArgs
-        ///         {
-        ///             Name = "qos_policy_1",
-        ///         }));
-        ///     }
+        ///         Name = "qos_policy_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetQosPolicyResult> Invoke(GetQosPolicyInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetQosPolicyResult>("openstack:networking/getQosPolicy:getQosPolicy", args ?? new GetQosPolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetQosPolicyResult>("openstack:networking/getQosPolicy:getQosPolicy", args ?? new GetQosPolicyInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetQosPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetQosPolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The human-readable description for the QoS policy.
@@ -126,9 +122,10 @@ namespace Pulumi.OpenStack.Networking
         public GetQosPolicyArgs()
         {
         }
+        public static new GetQosPolicyArgs Empty => new GetQosPolicyArgs();
     }
 
-    public sealed class GetQosPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetQosPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The human-readable description for the QoS policy.
@@ -183,6 +180,7 @@ namespace Pulumi.OpenStack.Networking
         public GetQosPolicyInvokeArgs()
         {
         }
+        public static new GetQosPolicyInvokeArgs Empty => new GetQosPolicyInvokeArgs();
     }
 
 

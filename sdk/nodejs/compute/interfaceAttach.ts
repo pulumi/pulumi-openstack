@@ -15,15 +15,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: true,
- * });
- * const instance1 = new openstack.compute.Instance("instance_1", {
- *     securityGroups: ["default"],
- * });
- * const ai1 = new openstack.compute.InterfaceAttach("ai_1", {
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const instance1 = new openstack.compute.Instance("instance1", {securityGroups: ["default"]});
+ * const ai1 = new openstack.compute.InterfaceAttach("ai1", {
  *     instanceId: instance1.id,
- *     networkId: openstack_networking_port_v2_network_1.id,
+ *     networkId: openstack_networking_port_v2.network_1.id,
  * });
  * ```
  * ### Attachment Specifying a Fixed IP
@@ -32,16 +28,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: true,
- * });
- * const instance1 = new openstack.compute.Instance("instance_1", {
- *     securityGroups: ["default"],
- * });
- * const ai1 = new openstack.compute.InterfaceAttach("ai_1", {
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const instance1 = new openstack.compute.Instance("instance1", {securityGroups: ["default"]});
+ * const ai1 = new openstack.compute.InterfaceAttach("ai1", {
  *     fixedIp: "10.0.10.10",
  *     instanceId: instance1.id,
- *     networkId: openstack_networking_port_v2_network_1.id,
+ *     networkId: openstack_networking_port_v2.network_1.id,
  * });
  * ```
  * ### Attachment Using an Existing Port
@@ -50,80 +42,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: true,
- * });
- * const port1 = new openstack.networking.Port("port_1", {
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const port1 = new openstack.networking.Port("port1", {
  *     adminStateUp: true,
  *     networkId: network1.id,
  * });
- * const instance1 = new openstack.compute.Instance("instance_1", {
- *     securityGroups: ["default"],
- * });
- * const ai1 = new openstack.compute.InterfaceAttach("ai_1", {
+ * const instance1 = new openstack.compute.Instance("instance1", {securityGroups: ["default"]});
+ * const ai1 = new openstack.compute.InterfaceAttach("ai1", {
  *     instanceId: instance1.id,
  *     portId: port1.id,
- * });
- * ```
- * ### Attaching Multiple Interfaces
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const network1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: true,
- * });
- * const ports: openstack.networking.Port[] = [];
- * for (let i = 0; i < 2; i++) {
- *     ports.push(new openstack.networking.Port(`ports-${i}`, {
- *         adminStateUp: true,
- *         networkId: network1.id,
- *     }));
- * }
- * const instance1 = new openstack.compute.Instance("instance_1", {
- *     securityGroups: ["default"],
- * });
- * const attachments: openstack.compute.InterfaceAttach[] = [];
- * for (let i = 0; i < 2; i++) {
- *     attachments.push(new openstack.compute.InterfaceAttach(`attachments-${i}`, {
- *         instanceId: instance1.id,
- *         portId: pulumi.all(ports.map(v => v.id)).apply(id => id.map(v => v)[i]),
- *     }));
- * }
- * ```
- *
- * Note that the above example will not guarantee that the ports are attached in
- * a deterministic manner. The ports will be attached in a seemingly random
- * order.
- *
- * If you want to ensure that the ports are attached in a given order, create
- * explicit dependencies between the ports, such as:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const network1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: true,
- * });
- * const ports: openstack.networking.Port[] = [];
- * for (let i = 0; i < 2; i++) {
- *     ports.push(new openstack.networking.Port(`ports-${i}`, {
- *         adminStateUp: true,
- *         networkId: network1.id,
- *     }));
- * }
- * const instance1 = new openstack.compute.Instance("instance_1", {
- *     securityGroups: ["default"],
- * });
- * const ai1 = new openstack.compute.InterfaceAttach("ai_1", {
- *     instanceId: instance1.id,
- *     portId: pulumi.all(ports.map(v => v.id)).apply(id => id.map(v => v)[0]),
- * });
- * const ai2 = new openstack.compute.InterfaceAttach("ai_2", {
- *     instanceId: instance1.id,
- *     portId: pulumi.all(ports.map(v => v.id)).apply(id => id.map(v => v)[1]),
  * });
  * ```
  *

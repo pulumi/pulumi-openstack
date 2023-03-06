@@ -13,30 +13,29 @@ namespace Pulumi.OpenStack.BlockStorage
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var volume1 = new OpenStack.BlockStorage.VolumeV2("volume1", new()
     ///     {
-    ///         var volume1 = new OpenStack.BlockStorage.VolumeV2("volume1", new OpenStack.BlockStorage.VolumeV2Args
-    ///         {
-    ///             Size = 1,
-    ///         });
-    ///         var va1 = new OpenStack.BlockStorage.VolumeAttachV2("va1", new OpenStack.BlockStorage.VolumeAttachV2Args
-    ///         {
-    ///             Device = "auto",
-    ///             HostName = "devstack",
-    ///             Initiator = "iqn.1993-08.org.debian:01:e9861fb1859",
-    ///             IpAddress = "192.168.255.10",
-    ///             OsType = "linux2",
-    ///             Platform = "x86_64",
-    ///             VolumeId = volume1.Id,
-    ///         });
-    ///     }
+    ///         Size = 1,
+    ///     });
     /// 
-    /// }
+    ///     var va1 = new OpenStack.BlockStorage.VolumeAttachV2("va1", new()
+    ///     {
+    ///         Device = "auto",
+    ///         HostName = "devstack",
+    ///         Initiator = "iqn.1993-08.org.debian:01:e9861fb1859",
+    ///         IpAddress = "192.168.255.10",
+    ///         OsType = "linux2",
+    ///         Platform = "x86_64",
+    ///         VolumeId = volume1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -44,7 +43,7 @@ namespace Pulumi.OpenStack.BlockStorage
     /// It is not possible to import this resource.
     /// </summary>
     [OpenStackResourceType("openstack:blockstorage/volumeAttachV2:VolumeAttachV2")]
-    public partial class VolumeAttachV2 : Pulumi.CustomResource
+    public partial class VolumeAttachV2 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specify whether to attach the volume as Read-Only
@@ -172,6 +171,10 @@ namespace Pulumi.OpenStack.BlockStorage
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "data",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -193,7 +196,7 @@ namespace Pulumi.OpenStack.BlockStorage
         }
     }
 
-    public sealed class VolumeAttachV2Args : Pulumi.ResourceArgs
+    public sealed class VolumeAttachV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify whether to attach the volume as Read-Only
@@ -287,9 +290,10 @@ namespace Pulumi.OpenStack.BlockStorage
         public VolumeAttachV2Args()
         {
         }
+        public static new VolumeAttachV2Args Empty => new VolumeAttachV2Args();
     }
 
-    public sealed class VolumeAttachV2State : Pulumi.ResourceArgs
+    public sealed class VolumeAttachV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify whether to attach the volume as Read-Only
@@ -310,7 +314,11 @@ namespace Pulumi.OpenStack.BlockStorage
         public InputMap<object> Data
         {
             get => _data ?? (_data = new InputMap<object>());
-            set => _data = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, object>());
+                _data = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
@@ -409,5 +417,6 @@ namespace Pulumi.OpenStack.BlockStorage
         public VolumeAttachV2State()
         {
         }
+        public static new VolumeAttachV2State Empty => new VolumeAttachV2State();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.KeyManager.Inputs
 {
 
-    public sealed class OrderV1MetaGetArgs : Pulumi.ResourceArgs
+    public sealed class OrderV1MetaGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Algorithm to use for key generation.
@@ -19,7 +19,7 @@ namespace Pulumi.OpenStack.KeyManager.Inputs
         public Input<string> Algorithm { get; set; } = null!;
 
         /// <summary>
-        /// - Bit lenght of key to be generated.
+        /// Bit lenght of key to be generated.
         /// </summary>
         [Input("bitLength", required: true)]
         public Input<int> BitLength { get; set; } = null!;
@@ -51,5 +51,6 @@ namespace Pulumi.OpenStack.KeyManager.Inputs
         public OrderV1MetaGetArgs()
         {
         }
+        public static new OrderV1MetaGetArgs Empty => new OrderV1MetaGetArgs();
     }
 }

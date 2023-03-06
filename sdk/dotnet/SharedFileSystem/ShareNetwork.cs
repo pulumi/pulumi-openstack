@@ -19,77 +19,78 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// ### Basic share network
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
     ///     {
-    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
-    ///         {
-    ///             Cidr = "192.168.199.0/24",
-    ///             IpVersion = 4,
-    ///             NetworkId = network1.Id,
-    ///         });
-    ///         var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new OpenStack.SharedFileSystem.ShareNetworkArgs
-    ///         {
-    ///             Description = "test share network",
-    ///             NeutronNetId = network1.Id,
-    ///             NeutronSubnetId = subnet1.Id,
-    ///         });
-    ///     }
+    ///         AdminStateUp = true,
+    ///     });
     /// 
-    /// }
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     {
+    ///         Cidr = "192.168.199.0/24",
+    ///         IpVersion = 4,
+    ///         NetworkId = network1.Id,
+    ///     });
+    /// 
+    ///     var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new()
+    ///     {
+    ///         Description = "test share network",
+    ///         NeutronNetId = network1.Id,
+    ///         NeutronSubnetId = subnet1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Share network with associated security services
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
     ///     {
-    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
-    ///         {
-    ///             Cidr = "192.168.199.0/24",
-    ///             IpVersion = 4,
-    ///             NetworkId = network1.Id,
-    ///         });
-    ///         var securityservice1 = new OpenStack.SharedFileSystem.SecurityService("securityservice1", new OpenStack.SharedFileSystem.SecurityServiceArgs
-    ///         {
-    ///             Description = "created by terraform",
-    ///             DnsIp = "192.168.199.10",
-    ///             Domain = "example.com",
-    ///             Ou = "CN=Computers,DC=example,DC=com",
-    ///             Password = "s8cret",
-    ///             Server = "192.168.199.10",
-    ///             Type = "active_directory",
-    ///             User = "joinDomainUser",
-    ///         });
-    ///         var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new OpenStack.SharedFileSystem.ShareNetworkArgs
-    ///         {
-    ///             Description = "test share network with security services",
-    ///             NeutronNetId = network1.Id,
-    ///             NeutronSubnetId = subnet1.Id,
-    ///             SecurityServiceIds = 
-    ///             {
-    ///                 securityservice1.Id,
-    ///             },
-    ///         });
-    ///     }
+    ///         AdminStateUp = true,
+    ///     });
     /// 
-    /// }
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     {
+    ///         Cidr = "192.168.199.0/24",
+    ///         IpVersion = 4,
+    ///         NetworkId = network1.Id,
+    ///     });
+    /// 
+    ///     var securityservice1 = new OpenStack.SharedFileSystem.SecurityService("securityservice1", new()
+    ///     {
+    ///         Description = "created by terraform",
+    ///         DnsIp = "192.168.199.10",
+    ///         Domain = "example.com",
+    ///         Ou = "CN=Computers,DC=example,DC=com",
+    ///         Password = "s8cret",
+    ///         Server = "192.168.199.10",
+    ///         Type = "active_directory",
+    ///         User = "joinDomainUser",
+    ///     });
+    /// 
+    ///     var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new()
+    ///     {
+    ///         Description = "test share network with security services",
+    ///         NeutronNetId = network1.Id,
+    ///         NeutronSubnetId = subnet1.Id,
+    ///         SecurityServiceIds = new[]
+    ///         {
+    ///             securityservice1.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -101,7 +102,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:sharedfilesystem/shareNetwork:ShareNetwork")]
-    public partial class ShareNetwork : Pulumi.CustomResource
+    public partial class ShareNetwork : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The share network CIDR.
@@ -223,7 +224,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         }
     }
 
-    public sealed class ShareNetworkArgs : Pulumi.ResourceArgs
+    public sealed class ShareNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The human-readable description for the share network.
@@ -280,9 +281,10 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public ShareNetworkArgs()
         {
         }
+        public static new ShareNetworkArgs Empty => new ShareNetworkArgs();
     }
 
-    public sealed class ShareNetworkState : Pulumi.ResourceArgs
+    public sealed class ShareNetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The share network CIDR.
@@ -369,5 +371,6 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public ShareNetworkState()
         {
         }
+        public static new ShareNetworkState Empty => new ShareNetworkState();
     }
 }

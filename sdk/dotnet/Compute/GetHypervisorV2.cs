@@ -20,26 +20,24 @@ namespace Pulumi.OpenStack.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var host01 = OpenStack.Compute.GetHypervisorV2.Invoke(new()
         ///     {
-        ///         var host01 = Output.Create(OpenStack.Compute.GetHypervisorV2.InvokeAsync(new OpenStack.Compute.GetHypervisorV2Args
-        ///         {
-        ///             Hostname = "host01",
-        ///         }));
-        ///     }
+        ///         Hostname = "host01",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHypervisorV2Result> InvokeAsync(GetHypervisorV2Args args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHypervisorV2Result>("openstack:compute/getHypervisorV2:getHypervisorV2", args ?? new GetHypervisorV2Args(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHypervisorV2Result>("openstack:compute/getHypervisorV2:getHypervisorV2", args ?? new GetHypervisorV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about hypervisors
@@ -50,30 +48,28 @@ namespace Pulumi.OpenStack.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var host01 = OpenStack.Compute.GetHypervisorV2.Invoke(new()
         ///     {
-        ///         var host01 = Output.Create(OpenStack.Compute.GetHypervisorV2.InvokeAsync(new OpenStack.Compute.GetHypervisorV2Args
-        ///         {
-        ///             Hostname = "host01",
-        ///         }));
-        ///     }
+        ///         Hostname = "host01",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHypervisorV2Result> Invoke(GetHypervisorV2InvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHypervisorV2Result>("openstack:compute/getHypervisorV2:getHypervisorV2", args ?? new GetHypervisorV2InvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHypervisorV2Result>("openstack:compute/getHypervisorV2:getHypervisorV2", args ?? new GetHypervisorV2InvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetHypervisorV2Args : Pulumi.InvokeArgs
+    public sealed class GetHypervisorV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The hostname of the hypervisor
@@ -84,9 +80,10 @@ namespace Pulumi.OpenStack.Compute
         public GetHypervisorV2Args()
         {
         }
+        public static new GetHypervisorV2Args Empty => new GetHypervisorV2Args();
     }
 
-    public sealed class GetHypervisorV2InvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHypervisorV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The hostname of the hypervisor
@@ -97,6 +94,7 @@ namespace Pulumi.OpenStack.Compute
         public GetHypervisorV2InvokeArgs()
         {
         }
+        public static new GetHypervisorV2InvokeArgs Empty => new GetHypervisorV2InvokeArgs();
     }
 
 

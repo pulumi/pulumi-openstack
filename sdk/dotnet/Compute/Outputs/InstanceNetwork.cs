@@ -37,8 +37,8 @@ namespace Pulumi.OpenStack.Compute.Outputs
         /// </summary>
         public readonly string? Port;
         /// <summary>
-        /// The UUID of
-        /// the image, volume, or snapshot. Changing this creates a new server.
+        /// The network UUID to
+        /// attach to the server. Changing this creates a new server.
         /// </summary>
         public readonly string? Uuid;
 

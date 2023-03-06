@@ -16,28 +16,26 @@ namespace Pulumi.OpenStack.Networking
     /// ### Simple portforwarding
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var pf1 = new OpenStack.Networking.PortForwardingV2("pf1", new()
     ///     {
-    ///         var pf1 = new OpenStack.Networking.PortForwardingV2("pf1", new OpenStack.Networking.PortForwardingV2Args
-    ///         {
-    ///             ExternalPort = 7233,
-    ///             FloatingipId = "7a52eb59-7d47-415d-a884-046666a6fbae",
-    ///             InternalPort = 25,
-    ///             InternalPortId = "b930d7f6-ceb7-40a0-8b81-a425dd994ccf",
-    ///             Protocol = "tcp",
-    ///         });
-    ///     }
+    ///         ExternalPort = 7233,
+    ///         FloatingipId = "7a52eb59-7d47-415d-a884-046666a6fbae",
+    ///         InternalPort = 25,
+    ///         InternalPortId = "b930d7f6-ceb7-40a0-8b81-a425dd994ccf",
+    ///         Protocol = "tcp",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/portForwardingV2:PortForwardingV2")]
-    public partial class PortForwardingV2 : Pulumi.CustomResource
+    public partial class PortForwardingV2 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A text describing the port forwarding. Changing this
@@ -140,7 +138,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
-    public sealed class PortForwardingV2Args : Pulumi.ResourceArgs
+    public sealed class PortForwardingV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A text describing the port forwarding. Changing this
@@ -202,9 +200,10 @@ namespace Pulumi.OpenStack.Networking
         public PortForwardingV2Args()
         {
         }
+        public static new PortForwardingV2Args Empty => new PortForwardingV2Args();
     }
 
-    public sealed class PortForwardingV2State : Pulumi.ResourceArgs
+    public sealed class PortForwardingV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A text describing the port forwarding. Changing this
@@ -266,5 +265,6 @@ namespace Pulumi.OpenStack.Networking
         public PortForwardingV2State()
         {
         }
+        public static new PortForwardingV2State Empty => new PortForwardingV2State();
     }
 }

@@ -16,80 +16,80 @@ namespace Pulumi.OpenStack.Compute
     /// ### Automatically detect the correct network
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
     ///     {
-    ///         var instance1 = new OpenStack.Compute.Instance("instance1", new OpenStack.Compute.InstanceArgs
+    ///         FlavorId = "3",
+    ///         ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
+    ///         KeyPair = "my_key_pair_name",
+    ///         SecurityGroups = new[]
     ///         {
-    ///             FlavorId = "3",
-    ///             ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
-    ///             KeyPair = "my_key_pair_name",
-    ///             SecurityGroups = 
-    ///             {
-    ///                 "default",
-    ///             },
-    ///         });
-    ///         var fip1FloatingIp = new OpenStack.Networking.FloatingIp("fip1FloatingIp", new OpenStack.Networking.FloatingIpArgs
-    ///         {
-    ///             Pool = "my_pool",
-    ///         });
-    ///         var fip1FloatingIpAssociate = new OpenStack.Compute.FloatingIpAssociate("fip1FloatingIpAssociate", new OpenStack.Compute.FloatingIpAssociateArgs
-    ///         {
-    ///             FloatingIp = fip1FloatingIp.Address,
-    ///             InstanceId = instance1.Id,
-    ///         });
-    ///     }
+    ///             "default",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var fip1FloatingIp = new OpenStack.Networking.FloatingIp("fip1FloatingIp", new()
+    ///     {
+    ///         Pool = "my_pool",
+    ///     });
+    /// 
+    ///     var fip1FloatingIpAssociate = new OpenStack.Compute.FloatingIpAssociate("fip1FloatingIpAssociate", new()
+    ///     {
+    ///         FloatingIp = fip1FloatingIp.Address,
+    ///         InstanceId = instance1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Explicitly set the network to attach to
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
     ///     {
-    ///         var instance1 = new OpenStack.Compute.Instance("instance1", new OpenStack.Compute.InstanceArgs
+    ///         FlavorId = "3",
+    ///         ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
+    ///         KeyPair = "my_key_pair_name",
+    ///         Networks = new[]
     ///         {
-    ///             FlavorId = "3",
-    ///             ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
-    ///             KeyPair = "my_key_pair_name",
-    ///             Networks = 
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
     ///             {
-    ///                 new OpenStack.Compute.Inputs.InstanceNetworkArgs
-    ///                 {
-    ///                     Name = "my_network",
-    ///                 },
-    ///                 new OpenStack.Compute.Inputs.InstanceNetworkArgs
-    ///                 {
-    ///                     Name = "default",
-    ///                 },
+    ///                 Name = "my_network",
     ///             },
-    ///             SecurityGroups = 
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
     ///             {
-    ///                 "default",
+    ///                 Name = "default",
     ///             },
-    ///         });
-    ///         var fip1FloatingIp = new OpenStack.Networking.FloatingIp("fip1FloatingIp", new OpenStack.Networking.FloatingIpArgs
+    ///         },
+    ///         SecurityGroups = new[]
     ///         {
-    ///             Pool = "my_pool",
-    ///         });
-    ///         var fip1FloatingIpAssociate = new OpenStack.Compute.FloatingIpAssociate("fip1FloatingIpAssociate", new OpenStack.Compute.FloatingIpAssociateArgs
-    ///         {
-    ///             FixedIp = instance1.Networks.Apply(networks =&gt; networks[1].FixedIpV4),
-    ///             FloatingIp = fip1FloatingIp.Address,
-    ///             InstanceId = instance1.Id,
-    ///         });
-    ///     }
+    ///             "default",
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var fip1FloatingIp = new OpenStack.Networking.FloatingIp("fip1FloatingIp", new()
+    ///     {
+    ///         Pool = "my_pool",
+    ///     });
+    /// 
+    ///     var fip1FloatingIpAssociate = new OpenStack.Compute.FloatingIpAssociate("fip1FloatingIpAssociate", new()
+    ///     {
+    ///         FixedIp = instance1.Networks.Apply(networks =&gt; networks[1].FixedIpV4),
+    ///         FloatingIp = fip1FloatingIp.Address,
+    ///         InstanceId = instance1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -101,7 +101,7 @@ namespace Pulumi.OpenStack.Compute
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:compute/floatingIpAssociate:FloatingIpAssociate")]
-    public partial class FloatingIpAssociate : Pulumi.CustomResource
+    public partial class FloatingIpAssociate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The specific IP address to direct traffic to.
@@ -177,7 +177,7 @@ namespace Pulumi.OpenStack.Compute
         }
     }
 
-    public sealed class FloatingIpAssociateArgs : Pulumi.ResourceArgs
+    public sealed class FloatingIpAssociateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The specific IP address to direct traffic to.
@@ -212,9 +212,10 @@ namespace Pulumi.OpenStack.Compute
         public FloatingIpAssociateArgs()
         {
         }
+        public static new FloatingIpAssociateArgs Empty => new FloatingIpAssociateArgs();
     }
 
-    public sealed class FloatingIpAssociateState : Pulumi.ResourceArgs
+    public sealed class FloatingIpAssociateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The specific IP address to direct traffic to.
@@ -249,5 +250,6 @@ namespace Pulumi.OpenStack.Compute
         public FloatingIpAssociateState()
         {
         }
+        public static new FloatingIpAssociateState Empty => new FloatingIpAssociateState();
     }
 }

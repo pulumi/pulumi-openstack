@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Database.Inputs
 {
 
-    public sealed class InstanceDatabaseArgs : Pulumi.ResourceArgs
+    public sealed class InstanceDatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Database character set. Changing this creates a
@@ -35,5 +35,6 @@ namespace Pulumi.OpenStack.Database.Inputs
         public InstanceDatabaseArgs()
         {
         }
+        public static new InstanceDatabaseArgs Empty => new InstanceDatabaseArgs();
     }
 }

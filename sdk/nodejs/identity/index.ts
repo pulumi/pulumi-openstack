@@ -5,35 +5,91 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./applicationCredential";
-export * from "./ec2CredentialV3";
-export * from "./endpointV3";
-export * from "./getAuthScope";
-export * from "./getEndpoint";
-export * from "./getGroup";
-export * from "./getProject";
-export * from "./getRole";
-export * from "./getService";
-export * from "./getUser";
-export * from "./groupV3";
-export * from "./project";
-export * from "./role";
-export * from "./roleAssignment";
-export * from "./serviceV3";
-export * from "./user";
-export * from "./userMembershipV3";
+export { ApplicationCredentialArgs, ApplicationCredentialState } from "./applicationCredential";
+export type ApplicationCredential = import("./applicationCredential").ApplicationCredential;
+export const ApplicationCredential: typeof import("./applicationCredential").ApplicationCredential = null as any;
+utilities.lazyLoad(exports, ["ApplicationCredential"], () => require("./applicationCredential"));
 
-// Import resources to register:
-import { ApplicationCredential } from "./applicationCredential";
-import { Ec2CredentialV3 } from "./ec2CredentialV3";
-import { EndpointV3 } from "./endpointV3";
-import { GroupV3 } from "./groupV3";
-import { Project } from "./project";
-import { Role } from "./role";
-import { RoleAssignment } from "./roleAssignment";
-import { ServiceV3 } from "./serviceV3";
-import { User } from "./user";
-import { UserMembershipV3 } from "./userMembershipV3";
+export { Ec2CredentialV3Args, Ec2CredentialV3State } from "./ec2CredentialV3";
+export type Ec2CredentialV3 = import("./ec2CredentialV3").Ec2CredentialV3;
+export const Ec2CredentialV3: typeof import("./ec2CredentialV3").Ec2CredentialV3 = null as any;
+utilities.lazyLoad(exports, ["Ec2CredentialV3"], () => require("./ec2CredentialV3"));
+
+export { EndpointV3Args, EndpointV3State } from "./endpointV3";
+export type EndpointV3 = import("./endpointV3").EndpointV3;
+export const EndpointV3: typeof import("./endpointV3").EndpointV3 = null as any;
+utilities.lazyLoad(exports, ["EndpointV3"], () => require("./endpointV3"));
+
+export { GetAuthScopeArgs, GetAuthScopeResult, GetAuthScopeOutputArgs } from "./getAuthScope";
+export const getAuthScope: typeof import("./getAuthScope").getAuthScope = null as any;
+export const getAuthScopeOutput: typeof import("./getAuthScope").getAuthScopeOutput = null as any;
+utilities.lazyLoad(exports, ["getAuthScope","getAuthScopeOutput"], () => require("./getAuthScope"));
+
+export { GetEndpointArgs, GetEndpointResult, GetEndpointOutputArgs } from "./getEndpoint";
+export const getEndpoint: typeof import("./getEndpoint").getEndpoint = null as any;
+export const getEndpointOutput: typeof import("./getEndpoint").getEndpointOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpoint","getEndpointOutput"], () => require("./getEndpoint"));
+
+export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
+export const getGroup: typeof import("./getGroup").getGroup = null as any;
+export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
+
+export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
+export const getProject: typeof import("./getProject").getProject = null as any;
+export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
+utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
+
+export { GetRoleArgs, GetRoleResult, GetRoleOutputArgs } from "./getRole";
+export const getRole: typeof import("./getRole").getRole = null as any;
+export const getRoleOutput: typeof import("./getRole").getRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getRole","getRoleOutput"], () => require("./getRole"));
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+
+export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
+export const getUser: typeof import("./getUser").getUser = null as any;
+export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
+utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
+
+export { GroupV3Args, GroupV3State } from "./groupV3";
+export type GroupV3 = import("./groupV3").GroupV3;
+export const GroupV3: typeof import("./groupV3").GroupV3 = null as any;
+utilities.lazyLoad(exports, ["GroupV3"], () => require("./groupV3"));
+
+export { ProjectArgs, ProjectState } from "./project";
+export type Project = import("./project").Project;
+export const Project: typeof import("./project").Project = null as any;
+utilities.lazyLoad(exports, ["Project"], () => require("./project"));
+
+export { RoleArgs, RoleState } from "./role";
+export type Role = import("./role").Role;
+export const Role: typeof import("./role").Role = null as any;
+utilities.lazyLoad(exports, ["Role"], () => require("./role"));
+
+export { RoleAssignmentArgs, RoleAssignmentState } from "./roleAssignment";
+export type RoleAssignment = import("./roleAssignment").RoleAssignment;
+export const RoleAssignment: typeof import("./roleAssignment").RoleAssignment = null as any;
+utilities.lazyLoad(exports, ["RoleAssignment"], () => require("./roleAssignment"));
+
+export { ServiceV3Args, ServiceV3State } from "./serviceV3";
+export type ServiceV3 = import("./serviceV3").ServiceV3;
+export const ServiceV3: typeof import("./serviceV3").ServiceV3 = null as any;
+utilities.lazyLoad(exports, ["ServiceV3"], () => require("./serviceV3"));
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
+export { UserMembershipV3Args, UserMembershipV3State } from "./userMembershipV3";
+export type UserMembershipV3 = import("./userMembershipV3").UserMembershipV3;
+export const UserMembershipV3: typeof import("./userMembershipV3").UserMembershipV3 = null as any;
+utilities.lazyLoad(exports, ["UserMembershipV3"], () => require("./userMembershipV3"));
+
 
 const _module = {
     version: utilities.getVersion(),

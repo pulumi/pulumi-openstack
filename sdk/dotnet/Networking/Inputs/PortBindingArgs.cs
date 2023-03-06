@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Networking.Inputs
 {
 
-    public sealed class PortBindingArgs : Pulumi.ResourceArgs
+    public sealed class PortBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the host to allocate port on.
@@ -55,5 +55,6 @@ namespace Pulumi.OpenStack.Networking.Inputs
         public PortBindingArgs()
         {
         }
+        public static new PortBindingArgs Empty => new PortBindingArgs();
     }
 }

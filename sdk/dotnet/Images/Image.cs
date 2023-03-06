@@ -13,26 +13,24 @@ namespace Pulumi.OpenStack.Images
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var rancheros = new OpenStack.Images.Image("rancheros", new()
     ///     {
-    ///         var rancheros = new OpenStack.Images.Image("rancheros", new OpenStack.Images.ImageArgs
+    ///         ContainerFormat = "bare",
+    ///         DiskFormat = "qcow2",
+    ///         ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
+    ///         Properties = 
     ///         {
-    ///             ContainerFormat = "bare",
-    ///             DiskFormat = "qcow2",
-    ///             ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
-    ///             Properties = 
-    ///             {
-    ///                 { "key", "value" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "key", "value" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Notes
     /// 
@@ -59,7 +57,7 @@ namespace Pulumi.OpenStack.Images
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:images/image:Image")]
-    public partial class Image : Pulumi.CustomResource
+    public partial class Image : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The checksum of the data associated with the image.
@@ -79,6 +77,15 @@ namespace Pulumi.OpenStack.Images
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, this provider will decompress downloaded
+        /// image before uploading it to OpenStack. Decompression algorithm is chosen by
+        /// checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+        /// Defaults to false. Changing this creates a new Image.
+        /// </summary>
+        [Output("decompress")]
+        public Output<bool?> Decompress { get; private set; } = null!;
 
         /// <summary>
         /// The disk format. Must be one of
@@ -106,7 +113,7 @@ namespace Pulumi.OpenStack.Images
         public Output<string?> ImageCachePath { get; private set; } = null!;
 
         /// <summary>
-        /// Unique ID (valid UUID) of image to create. Changing 
+        /// Unique ID (valid UUID) of image to create. Changing
         /// this creates a new image.
         /// </summary>
         [Output("imageId")]
@@ -285,6 +292,10 @@ namespace Pulumi.OpenStack.Images
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "imageSourcePassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -306,7 +317,7 @@ namespace Pulumi.OpenStack.Images
         }
     }
 
-    public sealed class ImageArgs : Pulumi.ResourceArgs
+    public sealed class ImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The container format. Must be one of
@@ -314,6 +325,15 @@ namespace Pulumi.OpenStack.Images
         /// </summary>
         [Input("containerFormat", required: true)]
         public Input<string> ContainerFormat { get; set; } = null!;
+
+        /// <summary>
+        /// If true, this provider will decompress downloaded
+        /// image before uploading it to OpenStack. Decompression algorithm is chosen by
+        /// checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+        /// Defaults to false. Changing this creates a new Image.
+        /// </summary>
+        [Input("decompress")]
+        public Input<bool>? Decompress { get; set; }
 
         /// <summary>
         /// The disk format. Must be one of
@@ -333,17 +353,27 @@ namespace Pulumi.OpenStack.Images
         public Input<string>? ImageCachePath { get; set; }
 
         /// <summary>
-        /// Unique ID (valid UUID) of image to create. Changing 
+        /// Unique ID (valid UUID) of image to create. Changing
         /// this creates a new image.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
+        [Input("imageSourcePassword")]
+        private Input<string>? _imageSourcePassword;
+
         /// <summary>
         /// The password of basic auth to download `image_source_url`.
         /// </summary>
-        [Input("imageSourcePassword")]
-        public Input<string>? ImageSourcePassword { get; set; }
+        public Input<string>? ImageSourcePassword
+        {
+            get => _imageSourcePassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _imageSourcePassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// This is the url of the raw image. If `web_download`
@@ -458,9 +488,10 @@ namespace Pulumi.OpenStack.Images
         public ImageArgs()
         {
         }
+        public static new ImageArgs Empty => new ImageArgs();
     }
 
-    public sealed class ImageState : Pulumi.ResourceArgs
+    public sealed class ImageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The checksum of the data associated with the image.
@@ -480,6 +511,15 @@ namespace Pulumi.OpenStack.Images
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// If true, this provider will decompress downloaded
+        /// image before uploading it to OpenStack. Decompression algorithm is chosen by
+        /// checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+        /// Defaults to false. Changing this creates a new Image.
+        /// </summary>
+        [Input("decompress")]
+        public Input<bool>? Decompress { get; set; }
 
         /// <summary>
         /// The disk format. Must be one of
@@ -507,17 +547,27 @@ namespace Pulumi.OpenStack.Images
         public Input<string>? ImageCachePath { get; set; }
 
         /// <summary>
-        /// Unique ID (valid UUID) of image to create. Changing 
+        /// Unique ID (valid UUID) of image to create. Changing
         /// this creates a new image.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
+        [Input("imageSourcePassword")]
+        private Input<string>? _imageSourcePassword;
+
         /// <summary>
         /// The password of basic auth to download `image_source_url`.
         /// </summary>
-        [Input("imageSourcePassword")]
-        public Input<string>? ImageSourcePassword { get; set; }
+        public Input<string>? ImageSourcePassword
+        {
+            get => _imageSourcePassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _imageSourcePassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// This is the url of the raw image. If `web_download`
@@ -684,5 +734,6 @@ namespace Pulumi.OpenStack.Images
         public ImageState()
         {
         }
+        public static new ImageState Empty => new ImageState();
     }
 }

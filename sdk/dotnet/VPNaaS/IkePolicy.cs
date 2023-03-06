@@ -15,19 +15,15 @@ namespace Pulumi.OpenStack.VPNaaS
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var policy1 = new OpenStack.VPNaaS.IkePolicy("policy1", new OpenStack.VPNaaS.IkePolicyArgs
-    ///         {
-    ///         });
-    ///     }
+    ///     var policy1 = new OpenStack.VPNaaS.IkePolicy("policy1");
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -39,7 +35,7 @@ namespace Pulumi.OpenStack.VPNaaS
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:vpnaas/ikePolicy:IkePolicy")]
-    public partial class IkePolicy : Pulumi.CustomResource
+    public partial class IkePolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
@@ -162,7 +158,7 @@ namespace Pulumi.OpenStack.VPNaaS
         }
     }
 
-    public sealed class IkePolicyArgs : Pulumi.ResourceArgs
+    public sealed class IkePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
@@ -256,9 +252,10 @@ namespace Pulumi.OpenStack.VPNaaS
         public IkePolicyArgs()
         {
         }
+        public static new IkePolicyArgs Empty => new IkePolicyArgs();
     }
 
-    public sealed class IkePolicyState : Pulumi.ResourceArgs
+    public sealed class IkePolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
@@ -352,5 +349,6 @@ namespace Pulumi.OpenStack.VPNaaS
         public IkePolicyState()
         {
         }
+        public static new IkePolicyState Empty => new IkePolicyState();
     }
 }

@@ -125,7 +125,8 @@ class ContainerV1Consumer(dict):
                  name: Optional[str] = None,
                  url: Optional[str] = None):
         """
-        :param str name: The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+        :param str name: Human-readable name for the Container. Does not have
+               to be unique.
         :param str url: The consumer URL.
         """
         if name is not None:
@@ -137,7 +138,8 @@ class ContainerV1Consumer(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+        Human-readable name for the Container. Does not have
+        to be unique.
         """
         return pulumi.get(self, "name")
 
@@ -227,7 +229,7 @@ class OrderV1Meta(dict):
                  payload_content_type: Optional[str] = None):
         """
         :param str algorithm: Algorithm to use for key generation.
-        :param int bit_length: - Bit lenght of key to be generated.
+        :param int bit_length: Bit lenght of key to be generated.
         :param str expiration: This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
         :param str mode: The mode to use for key generation.
         :param str name: The name of the secret set by the user.
@@ -256,7 +258,7 @@ class OrderV1Meta(dict):
     @pulumi.getter(name="bitLength")
     def bit_length(self) -> int:
         """
-        - Bit lenght of key to be generated.
+        Bit lenght of key to be generated.
         """
         return pulumi.get(self, "bit_length")
 

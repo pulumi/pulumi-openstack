@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Networking.Inputs
 {
 
-    public sealed class NetworkSegmentGetArgs : Pulumi.ResourceArgs
+    public sealed class NetworkSegmentGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of physical network.
@@ -33,5 +33,6 @@ namespace Pulumi.OpenStack.Networking.Inputs
         public NetworkSegmentGetArgs()
         {
         }
+        public static new NetworkSegmentGetArgs Empty => new NetworkSegmentGetArgs();
     }
 }

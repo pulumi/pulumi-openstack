@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var basic = new User(&#34;basic&#34;, UserArgs.builder()        
  *             .databases(&#34;testdb&#34;)
- *             .instance(openstack_db_instance_v1.basic().id())
+ *             .instanceId(openstack_db_instance_v1.basic().id())
  *             .password(&#34;password&#34;)
  *             .build());
  * 
@@ -72,9 +72,17 @@ public class User extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> host() {
         return Codegen.optional(this.host);
     }
+    /**
+     * The ID for the database instance.
+     * 
+     */
     @Export(name="instanceId", type=String.class, parameters={})
     private Output<String> instanceId;
 
+    /**
+     * @return The ID for the database instance.
+     * 
+     */
     public Output<String> instanceId() {
         return this.instanceId;
     }
@@ -153,6 +161,9 @@ public class User extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

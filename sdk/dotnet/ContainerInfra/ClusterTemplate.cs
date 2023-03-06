@@ -16,38 +16,36 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// ### Create a Cluster template
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var clustertemplate1 = new OpenStack.ContainerInfra.ClusterTemplate("clustertemplate1", new()
     ///     {
-    ///         var clustertemplate1 = new OpenStack.ContainerInfra.ClusterTemplate("clustertemplate1", new OpenStack.ContainerInfra.ClusterTemplateArgs
+    ///         Coe = "kubernetes",
+    ///         DnsNameserver = "1.1.1.1",
+    ///         DockerStorageDriver = "devicemapper",
+    ///         DockerVolumeSize = 10,
+    ///         Flavor = "m1.small",
+    ///         FloatingIpEnabled = false,
+    ///         Image = "Fedora-Atomic-27",
+    ///         Labels = 
     ///         {
-    ///             Coe = "kubernetes",
-    ///             DnsNameserver = "1.1.1.1",
-    ///             DockerStorageDriver = "devicemapper",
-    ///             DockerVolumeSize = 10,
-    ///             Flavor = "m1.small",
-    ///             FloatingIpEnabled = false,
-    ///             Image = "Fedora-Atomic-27",
-    ///             Labels = 
-    ///             {
-    ///                 { "influx_grafana_dashboard_enabled", "true" },
-    ///                 { "kube_dashboard_enabled", "true" },
-    ///                 { "kube_tag", "1.11.1" },
-    ///                 { "prometheus_monitoring", "true" },
-    ///             },
-    ///             MasterFlavor = "m1.medium",
-    ///             MasterLbEnabled = true,
-    ///             NetworkDriver = "flannel",
-    ///             ServerType = "vm",
-    ///             VolumeDriver = "cinder",
-    ///         });
-    ///     }
+    ///             { "influx_grafana_dashboard_enabled", "true" },
+    ///             { "kube_dashboard_enabled", "true" },
+    ///             { "kube_tag", "1.11.1" },
+    ///             { "prometheus_monitoring", "true" },
+    ///         },
+    ///         MasterFlavor = "m1.medium",
+    ///         MasterLbEnabled = true,
+    ///         NetworkDriver = "flannel",
+    ///         ServerType = "vm",
+    ///         VolumeDriver = "cinder",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Attributes reference
     /// 
@@ -85,6 +83,7 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// * `server_type` - See Argument Reference above.
     /// * `tls_disabled` - See Argument Reference above.
     /// * `volume_driver` - See Argument Reference above.
+    /// * `hidden` - See Argument Reference above.
     /// 
     /// ## Import
     /// 
@@ -95,7 +94,7 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:containerinfra/clusterTemplate:ClusterTemplate")]
-    public partial class ClusterTemplate : Pulumi.CustomResource
+    public partial class ClusterTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The API server port for the Container
@@ -186,6 +185,14 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// </summary>
         [Output("floatingIpEnabled")]
         public Output<bool?> FloatingIpEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether the ClusterTemplate is hidden or not.
+        /// Changing this updates the hidden attribute of the existing cluster
+        /// template.
+        /// </summary>
+        [Output("hidden")]
+        public Output<bool?> Hidden { get; private set; } = null!;
 
         /// <summary>
         /// The address of a proxy for receiving all HTTP
@@ -383,7 +390,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         }
     }
 
-    public sealed class ClusterTemplateArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The API server port for the Container
@@ -471,6 +478,14 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// </summary>
         [Input("floatingIpEnabled")]
         public Input<bool>? FloatingIpEnabled { get; set; }
+
+        /// <summary>
+        /// Indicates whether the ClusterTemplate is hidden or not.
+        /// Changing this updates the hidden attribute of the existing cluster
+        /// template.
+        /// </summary>
+        [Input("hidden")]
+        public Input<bool>? Hidden { get; set; }
 
         /// <summary>
         /// The address of a proxy for receiving all HTTP
@@ -614,9 +629,10 @@ namespace Pulumi.OpenStack.ContainerInfra
         public ClusterTemplateArgs()
         {
         }
+        public static new ClusterTemplateArgs Empty => new ClusterTemplateArgs();
     }
 
-    public sealed class ClusterTemplateState : Pulumi.ResourceArgs
+    public sealed class ClusterTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The API server port for the Container
@@ -707,6 +723,14 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// </summary>
         [Input("floatingIpEnabled")]
         public Input<bool>? FloatingIpEnabled { get; set; }
+
+        /// <summary>
+        /// Indicates whether the ClusterTemplate is hidden or not.
+        /// Changing this updates the hidden attribute of the existing cluster
+        /// template.
+        /// </summary>
+        [Input("hidden")]
+        public Input<bool>? Hidden { get; set; }
 
         /// <summary>
         /// The address of a proxy for receiving all HTTP
@@ -869,5 +893,6 @@ namespace Pulumi.OpenStack.ContainerInfra
         public ClusterTemplateState()
         {
         }
+        public static new ClusterTemplateState Empty => new ClusterTemplateState();
     }
 }

@@ -213,16 +213,16 @@ public class PoolV1 extends com.pulumi.resources.CustomResource {
         return this.subnetId;
     }
     /**
-     * The owner of the member. Required if admin wants to
-     * create a pool member for another tenant. Changing this creates a new member.
+     * The owner of the pool. Required if admin wants to
+     * create a pool member for another tenant. Changing this creates a new pool.
      * 
      */
     @Export(name="tenantId", type=String.class, parameters={})
     private Output<String> tenantId;
 
     /**
-     * @return The owner of the member. Required if admin wants to
-     * create a pool member for another tenant. Changing this creates a new member.
+     * @return The owner of the pool. Required if admin wants to
+     * create a pool member for another tenant. Changing this creates a new pool.
      * 
      */
     public Output<String> tenantId() {

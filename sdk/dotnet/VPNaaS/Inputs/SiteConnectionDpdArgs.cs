@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.VPNaaS.Inputs
 {
 
-    public sealed class SiteConnectionDpdArgs : Pulumi.ResourceArgs
+    public sealed class SiteConnectionDpdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dead peer detection (DPD) action.
@@ -39,5 +39,6 @@ namespace Pulumi.OpenStack.VPNaaS.Inputs
         public SiteConnectionDpdArgs()
         {
         }
+        public static new SiteConnectionDpdArgs Empty => new SiteConnectionDpdArgs();
     }
 }

@@ -15,36 +15,37 @@ namespace Pulumi.OpenStack.Networking
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var router1 = new OpenStack.Networking.Router("router1", new()
     ///     {
-    ///         var router1 = new OpenStack.Networking.Router("router1", new OpenStack.Networking.RouterArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
-    ///         {
-    ///             Cidr = "192.168.199.0/24",
-    ///             IpVersion = 4,
-    ///             NetworkId = network1.Id,
-    ///         });
-    ///         var subnetRoute1 = new OpenStack.Networking.SubnetRoute("subnetRoute1", new OpenStack.Networking.SubnetRouteArgs
-    ///         {
-    ///             DestinationCidr = "10.0.1.0/24",
-    ///             NextHop = "192.168.199.254",
-    ///             SubnetId = subnet1.Id,
-    ///         });
-    ///     }
+    ///         AdminStateUp = true,
+    ///     });
     /// 
-    /// }
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///     });
+    /// 
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     {
+    ///         Cidr = "192.168.199.0/24",
+    ///         IpVersion = 4,
+    ///         NetworkId = network1.Id,
+    ///     });
+    /// 
+    ///     var subnetRoute1 = new OpenStack.Networking.SubnetRoute("subnetRoute1", new()
+    ///     {
+    ///         DestinationCidr = "10.0.1.0/24",
+    ///         NextHop = "192.168.199.254",
+    ///         SubnetId = subnet1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +57,7 @@ namespace Pulumi.OpenStack.Networking
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/subnetRoute:SubnetRoute")]
-    public partial class SubnetRoute : Pulumi.CustomResource
+    public partial class SubnetRoute : global::Pulumi.CustomResource
     {
         /// <summary>
         /// CIDR block to match on the packet’s destination IP. Changing
@@ -132,7 +133,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
-    public sealed class SubnetRouteArgs : Pulumi.ResourceArgs
+    public sealed class SubnetRouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// CIDR block to match on the packet’s destination IP. Changing
@@ -167,9 +168,10 @@ namespace Pulumi.OpenStack.Networking
         public SubnetRouteArgs()
         {
         }
+        public static new SubnetRouteArgs Empty => new SubnetRouteArgs();
     }
 
-    public sealed class SubnetRouteState : Pulumi.ResourceArgs
+    public sealed class SubnetRouteState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// CIDR block to match on the packet’s destination IP. Changing
@@ -204,5 +206,6 @@ namespace Pulumi.OpenStack.Networking
         public SubnetRouteState()
         {
         }
+        public static new SubnetRouteState Empty => new SubnetRouteState();
     }
 }

@@ -16,20 +16,18 @@ namespace Pulumi.OpenStack.Networking
     /// ### Create a QoS Policy
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var qosPolicy1 = new OpenStack.Networking.QosPolicy("qosPolicy1", new()
     ///     {
-    ///         var qosPolicy1 = new OpenStack.Networking.QosPolicy("qosPolicy1", new OpenStack.Networking.QosPolicyArgs
-    ///         {
-    ///             Description = "bw_limit",
-    ///         });
-    ///     }
+    ///         Description = "bw_limit",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -41,7 +39,7 @@ namespace Pulumi.OpenStack.Networking
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/qosPolicy:QosPolicy")]
-    public partial class QosPolicy : Pulumi.CustomResource
+    public partial class QosPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The collection of tags assigned on the QoS policy, which have been
@@ -170,7 +168,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
-    public sealed class QosPolicyArgs : Pulumi.ResourceArgs
+    public sealed class QosPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The human-readable description for the QoS policy.
@@ -245,9 +243,10 @@ namespace Pulumi.OpenStack.Networking
         public QosPolicyArgs()
         {
         }
+        public static new QosPolicyArgs Empty => new QosPolicyArgs();
     }
 
-    public sealed class QosPolicyState : Pulumi.ResourceArgs
+    public sealed class QosPolicyState : global::Pulumi.ResourceArgs
     {
         [Input("allTags")]
         private InputList<string>? _allTags;
@@ -353,5 +352,6 @@ namespace Pulumi.OpenStack.Networking
         public QosPolicyState()
         {
         }
+        public static new QosPolicyState Empty => new QosPolicyState();
     }
 }

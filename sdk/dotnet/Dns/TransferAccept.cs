@@ -16,33 +16,33 @@ namespace Pulumi.OpenStack.Dns
     /// ### Automatically detect the correct network
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleZone = new OpenStack.Dns.Zone("exampleZone", new()
     ///     {
-    ///         var exampleZone = new OpenStack.Dns.Zone("exampleZone", new OpenStack.Dns.ZoneArgs
-    ///         {
-    ///             Description = "An example zone",
-    ///             Email = "jdoe@example.com",
-    ///             Ttl = 3000,
-    ///             Type = "PRIMARY",
-    ///         });
-    ///         var request1 = new OpenStack.Dns.TransferRequest("request1", new OpenStack.Dns.TransferRequestArgs
-    ///         {
-    ///             Description = "a transfer accept",
-    ///             ZoneId = exampleZone.Id,
-    ///         });
-    ///         var accept1 = new OpenStack.Dns.TransferAccept("accept1", new OpenStack.Dns.TransferAcceptArgs
-    ///         {
-    ///             Key = request1.Key,
-    ///             ZoneTransferRequestId = request1.Id,
-    ///         });
-    ///     }
+    ///         Description = "An example zone",
+    ///         Email = "jdoe@example.com",
+    ///         Ttl = 3000,
+    ///         Type = "PRIMARY",
+    ///     });
     /// 
-    /// }
+    ///     var request1 = new OpenStack.Dns.TransferRequest("request1", new()
+    ///     {
+    ///         Description = "a transfer accept",
+    ///         ZoneId = exampleZone.Id,
+    ///     });
+    /// 
+    ///     var accept1 = new OpenStack.Dns.TransferAccept("accept1", new()
+    ///     {
+    ///         Key = request1.Key,
+    ///         ZoneTransferRequestId = request1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +54,7 @@ namespace Pulumi.OpenStack.Dns
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:dns/transferAccept:TransferAccept")]
-    public partial class TransferAccept : Pulumi.CustomResource
+    public partial class TransferAccept : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Disable wait for zone to reach ACTIVE
@@ -136,7 +136,7 @@ namespace Pulumi.OpenStack.Dns
         }
     }
 
-    public sealed class TransferAcceptArgs : Pulumi.ResourceArgs
+    public sealed class TransferAcceptArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Disable wait for zone to reach ACTIVE
@@ -183,9 +183,10 @@ namespace Pulumi.OpenStack.Dns
         public TransferAcceptArgs()
         {
         }
+        public static new TransferAcceptArgs Empty => new TransferAcceptArgs();
     }
 
-    public sealed class TransferAcceptState : Pulumi.ResourceArgs
+    public sealed class TransferAcceptState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Disable wait for zone to reach ACTIVE
@@ -232,5 +233,6 @@ namespace Pulumi.OpenStack.Dns
         public TransferAcceptState()
         {
         }
+        public static new TransferAcceptState Empty => new TransferAcceptState();
     }
 }

@@ -16,56 +16,54 @@ namespace Pulumi.OpenStack.Networking
     /// ### Create a Subnet Pool
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var subnetpool1 = new OpenStack.Networking.SubnetPool("subnetpool1", new()
     ///     {
-    ///         var subnetpool1 = new OpenStack.Networking.SubnetPool("subnetpool1", new OpenStack.Networking.SubnetPoolArgs
+    ///         IpVersion = 6,
+    ///         Prefixes = new[]
     ///         {
-    ///             IpVersion = 6,
-    ///             Prefixes = 
-    ///             {
-    ///                 "fdf7:b13d:dead:beef::/64",
-    ///                 "fd65:86cc:a334:39b7::/64",
-    ///             },
-    ///         });
-    ///     }
+    ///             "fdf7:b13d:dead:beef::/64",
+    ///             "fd65:86cc:a334:39b7::/64",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Create a Subnet from a Subnet Pool
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
     ///     {
-    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var subnetpool1 = new OpenStack.Networking.SubnetPool("subnetpool1", new OpenStack.Networking.SubnetPoolArgs
-    ///         {
-    ///             Prefixes = 
-    ///             {
-    ///                 "10.11.12.0/24",
-    ///             },
-    ///         });
-    ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
-    ///         {
-    ///             Cidr = "10.11.12.0/25",
-    ///             NetworkId = network1.Id,
-    ///             SubnetpoolId = subnetpool1.Id,
-    ///         });
-    ///     }
+    ///         AdminStateUp = true,
+    ///     });
     /// 
-    /// }
+    ///     var subnetpool1 = new OpenStack.Networking.SubnetPool("subnetpool1", new()
+    ///     {
+    ///         Prefixes = new[]
+    ///         {
+    ///             "10.11.12.0/24",
+    ///         },
+    ///     });
+    /// 
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     {
+    ///         Cidr = "10.11.12.0/25",
+    ///         NetworkId = network1.Id,
+    ///         SubnetpoolId = subnetpool1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -77,7 +75,7 @@ namespace Pulumi.OpenStack.Networking
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/subnetPool:SubnetPool")]
-    public partial class SubnetPool : Pulumi.CustomResource
+    public partial class SubnetPool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Neutron address scope to assign to the
@@ -264,7 +262,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
-    public sealed class SubnetPoolArgs : Pulumi.ResourceArgs
+    public sealed class SubnetPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Neutron address scope to assign to the
@@ -403,9 +401,10 @@ namespace Pulumi.OpenStack.Networking
         public SubnetPoolArgs()
         {
         }
+        public static new SubnetPoolArgs Empty => new SubnetPoolArgs();
     }
 
-    public sealed class SubnetPoolState : Pulumi.ResourceArgs
+    public sealed class SubnetPoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Neutron address scope to assign to the
@@ -575,5 +574,6 @@ namespace Pulumi.OpenStack.Networking
         public SubnetPoolState()
         {
         }
+        public static new SubnetPoolState Empty => new SubnetPoolState();
     }
 }

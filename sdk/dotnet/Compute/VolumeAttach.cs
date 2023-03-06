@@ -17,32 +17,32 @@ namespace Pulumi.OpenStack.Compute
     /// ### Basic attachment of a single volume to a single instance
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var volume1 = new OpenStack.BlockStorage.VolumeV2("volume1", new()
     ///     {
-    ///         var volume1 = new OpenStack.BlockStorage.VolumeV2("volume1", new OpenStack.BlockStorage.VolumeV2Args
-    ///         {
-    ///             Size = 1,
-    ///         });
-    ///         var instance1 = new OpenStack.Compute.Instance("instance1", new OpenStack.Compute.InstanceArgs
-    ///         {
-    ///             SecurityGroups = 
-    ///             {
-    ///                 "default",
-    ///             },
-    ///         });
-    ///         var va1 = new OpenStack.Compute.VolumeAttach("va1", new OpenStack.Compute.VolumeAttachArgs
-    ///         {
-    ///             InstanceId = instance1.Id,
-    ///             VolumeId = volume1.Id,
-    ///         });
-    ///     }
+    ///         Size = 1,
+    ///     });
     /// 
-    /// }
+    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     {
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///     });
+    /// 
+    ///     var va1 = new OpenStack.Compute.VolumeAttach("va1", new()
+    ///     {
+    ///         InstanceId = instance1.Id,
+    ///         VolumeId = volume1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Using Multiattach-enabled volumes
     /// 
@@ -50,53 +50,55 @@ namespace Pulumi.OpenStack.Compute
     /// clouds support multiattach.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var volume1 = new OpenStack.BlockStorage.Volume("volume1", new()
     ///     {
-    ///         var volume1 = new OpenStack.BlockStorage.Volume("volume1", new OpenStack.BlockStorage.VolumeArgs
-    ///         {
-    ///             Multiattach = true,
-    ///             Size = 1,
-    ///         });
-    ///         var instance1 = new OpenStack.Compute.Instance("instance1", new OpenStack.Compute.InstanceArgs
-    ///         {
-    ///             SecurityGroups = 
-    ///             {
-    ///                 "default",
-    ///             },
-    ///         });
-    ///         var instance2 = new OpenStack.Compute.Instance("instance2", new OpenStack.Compute.InstanceArgs
-    ///         {
-    ///             SecurityGroups = 
-    ///             {
-    ///                 "default",
-    ///             },
-    ///         });
-    ///         var va1 = new OpenStack.Compute.VolumeAttach("va1", new OpenStack.Compute.VolumeAttachArgs
-    ///         {
-    ///             InstanceId = instance1.Id,
-    ///             Multiattach = true,
-    ///             VolumeId = openstack_blockstorage_volume_v2.Volume_1.Id,
-    ///         });
-    ///         var va2 = new OpenStack.Compute.VolumeAttach("va2", new OpenStack.Compute.VolumeAttachArgs
-    ///         {
-    ///             InstanceId = instance2.Id,
-    ///             Multiattach = true,
-    ///             VolumeId = openstack_blockstorage_volume_v2.Volume_1.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 "openstack_compute_volume_attach_v2.va_1",
-    ///             },
-    ///         });
-    ///     }
+    ///         Multiattach = true,
+    ///         Size = 1,
+    ///     });
     /// 
-    /// }
+    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     {
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///     });
+    /// 
+    ///     var instance2 = new OpenStack.Compute.Instance("instance2", new()
+    ///     {
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///     });
+    /// 
+    ///     var va1 = new OpenStack.Compute.VolumeAttach("va1", new()
+    ///     {
+    ///         InstanceId = instance1.Id,
+    ///         Multiattach = true,
+    ///         VolumeId = openstack_blockstorage_volume_v2.Volume_1.Id,
+    ///     });
+    /// 
+    ///     var va2 = new OpenStack.Compute.VolumeAttach("va2", new()
+    ///     {
+    ///         InstanceId = instance2.Id,
+    ///         Multiattach = true,
+    ///         VolumeId = openstack_blockstorage_volume_v2.Volume_1.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             "openstack_compute_volume_attach_v2.va_1",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// It is recommended to use `depends_on` for the attach resources
@@ -111,7 +113,7 @@ namespace Pulumi.OpenStack.Compute
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:compute/volumeAttach:VolumeAttach")]
-    public partial class VolumeAttach : Pulumi.CustomResource
+    public partial class VolumeAttach : global::Pulumi.CustomResource
     {
         /// <summary>
         /// See Argument Reference above. _NOTE_: The correctness of this
@@ -199,7 +201,7 @@ namespace Pulumi.OpenStack.Compute
         }
     }
 
-    public sealed class VolumeAttachArgs : Pulumi.ResourceArgs
+    public sealed class VolumeAttachArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// See Argument Reference above. _NOTE_: The correctness of this
@@ -246,9 +248,10 @@ namespace Pulumi.OpenStack.Compute
         public VolumeAttachArgs()
         {
         }
+        public static new VolumeAttachArgs Empty => new VolumeAttachArgs();
     }
 
-    public sealed class VolumeAttachState : Pulumi.ResourceArgs
+    public sealed class VolumeAttachState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// See Argument Reference above. _NOTE_: The correctness of this
@@ -295,5 +298,6 @@ namespace Pulumi.OpenStack.Compute
         public VolumeAttachState()
         {
         }
+        public static new VolumeAttachState Empty => new VolumeAttachState();
     }
 }

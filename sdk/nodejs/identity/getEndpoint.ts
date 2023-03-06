@@ -15,18 +15,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const endpoint1 = pulumi.output(openstack.identity.getEndpoint({
+ * const endpoint1 = openstack.identity.getEndpoint({
  *     serviceName: "demo",
- * }));
+ * });
  * ```
  */
 export function getEndpoint(args?: GetEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:identity/getEndpoint:getEndpoint", {
         "endpointRegion": args.endpointRegion,
         "interface": args.interface,
@@ -116,9 +113,24 @@ export interface GetEndpointResult {
      */
     readonly url: string;
 }
-
+/**
+ * Use this data source to get the ID of an OpenStack endpoint.
+ *
+ * > **Note:** This usually requires admin privileges.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const endpoint1 = openstack.identity.getEndpoint({
+ *     serviceName: "demo",
+ * });
+ * ```
+ */
 export function getEndpointOutput(args?: GetEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointResult> {
-    return pulumi.output(args).apply(a => getEndpoint(a, opts))
+    return pulumi.output(args).apply((a: any) => getEndpoint(a, opts))
 }
 
 /**

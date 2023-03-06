@@ -15,24 +15,22 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var monitor1 = new OpenStack.LoadBalancer.Monitor("monitor1", new()
     ///     {
-    ///         var monitor1 = new OpenStack.LoadBalancer.Monitor("monitor1", new OpenStack.LoadBalancer.MonitorArgs
-    ///         {
-    ///             Delay = 20,
-    ///             MaxRetries = 5,
-    ///             PoolId = openstack_lb_pool_v2.Pool_1.Id,
-    ///             Timeout = 10,
-    ///             Type = "PING",
-    ///         });
-    ///     }
+    ///         Delay = 20,
+    ///         MaxRetries = 5,
+    ///         PoolId = openstack_lb_pool_v2.Pool_1.Id,
+    ///         Timeout = 10,
+    ///         Type = "PING",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:loadbalancer/monitor:Monitor")]
-    public partial class Monitor : Pulumi.CustomResource
+    public partial class Monitor : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The administrative state of the monitor.
@@ -193,7 +191,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         }
     }
 
-    public sealed class MonitorArgs : Pulumi.ResourceArgs
+    public sealed class MonitorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The administrative state of the monitor.
@@ -295,9 +293,10 @@ namespace Pulumi.OpenStack.LoadBalancer
         public MonitorArgs()
         {
         }
+        public static new MonitorArgs Empty => new MonitorArgs();
     }
 
-    public sealed class MonitorState : Pulumi.ResourceArgs
+    public sealed class MonitorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The administrative state of the monitor.
@@ -399,5 +398,6 @@ namespace Pulumi.OpenStack.LoadBalancer
         public MonitorState()
         {
         }
+        public static new MonitorState Empty => new MonitorState();
     }
 }

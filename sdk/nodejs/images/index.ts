@@ -5,16 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getImage";
-export * from "./getImageIds";
-export * from "./image";
-export * from "./imageAccess";
-export * from "./imageAccessAccept";
+export { GetImageArgs, GetImageResult, GetImageOutputArgs } from "./getImage";
+export const getImage: typeof import("./getImage").getImage = null as any;
+export const getImageOutput: typeof import("./getImage").getImageOutput = null as any;
+utilities.lazyLoad(exports, ["getImage","getImageOutput"], () => require("./getImage"));
 
-// Import resources to register:
-import { Image } from "./image";
-import { ImageAccess } from "./imageAccess";
-import { ImageAccessAccept } from "./imageAccessAccept";
+export { GetImageIdsArgs, GetImageIdsResult, GetImageIdsOutputArgs } from "./getImageIds";
+export const getImageIds: typeof import("./getImageIds").getImageIds = null as any;
+export const getImageIdsOutput: typeof import("./getImageIds").getImageIdsOutput = null as any;
+utilities.lazyLoad(exports, ["getImageIds","getImageIdsOutput"], () => require("./getImageIds"));
+
+export { ImageArgs, ImageState } from "./image";
+export type Image = import("./image").Image;
+export const Image: typeof import("./image").Image = null as any;
+utilities.lazyLoad(exports, ["Image"], () => require("./image"));
+
+export { ImageAccessArgs, ImageAccessState } from "./imageAccess";
+export type ImageAccess = import("./imageAccess").ImageAccess;
+export const ImageAccess: typeof import("./imageAccess").ImageAccess = null as any;
+utilities.lazyLoad(exports, ["ImageAccess"], () => require("./imageAccess"));
+
+export { ImageAccessAcceptArgs, ImageAccessAcceptState } from "./imageAccessAccept";
+export type ImageAccessAccept = import("./imageAccessAccept").ImageAccessAccept;
+export const ImageAccessAccept: typeof import("./imageAccessAccept").ImageAccessAccept = null as any;
+utilities.lazyLoad(exports, ["ImageAccessAccept"], () => require("./imageAccessAccept"));
+
 
 const _module = {
     version: utilities.getVersion(),

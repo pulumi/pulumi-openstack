@@ -17,7 +17,7 @@ namespace Pulumi.OpenStack.Identity
         /// the username or project name currently in use as well as the service catalog.
         /// </summary>
         public static Task<GetAuthScopeResult> InvokeAsync(GetAuthScopeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args ?? new GetAuthScopeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args ?? new GetAuthScopeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get authentication information about the current
@@ -25,11 +25,11 @@ namespace Pulumi.OpenStack.Identity
         /// the username or project name currently in use as well as the service catalog.
         /// </summary>
         public static Output<GetAuthScopeResult> Invoke(GetAuthScopeInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args ?? new GetAuthScopeInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args ?? new GetAuthScopeInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAuthScopeArgs : Pulumi.InvokeArgs
+    public sealed class GetAuthScopeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the scope. This is an arbitrary name which is
@@ -49,9 +49,10 @@ namespace Pulumi.OpenStack.Identity
         public GetAuthScopeArgs()
         {
         }
+        public static new GetAuthScopeArgs Empty => new GetAuthScopeArgs();
     }
 
-    public sealed class GetAuthScopeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAuthScopeInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the scope. This is an arbitrary name which is
@@ -71,6 +72,7 @@ namespace Pulumi.OpenStack.Identity
         public GetAuthScopeInvokeArgs()
         {
         }
+        public static new GetAuthScopeInvokeArgs Empty => new GetAuthScopeInvokeArgs();
     }
 
 

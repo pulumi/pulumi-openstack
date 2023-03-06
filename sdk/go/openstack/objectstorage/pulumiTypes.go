@@ -10,145 +10,145 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type ContainerVersioning struct {
+type ContainerVersioningLegacy struct {
 	// Container in which versions will be stored.
 	Location string `pulumi:"location"`
 	// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
 	Type string `pulumi:"type"`
 }
 
-// ContainerVersioningInput is an input type that accepts ContainerVersioningArgs and ContainerVersioningOutput values.
-// You can construct a concrete instance of `ContainerVersioningInput` via:
+// ContainerVersioningLegacyInput is an input type that accepts ContainerVersioningLegacyArgs and ContainerVersioningLegacyOutput values.
+// You can construct a concrete instance of `ContainerVersioningLegacyInput` via:
 //
-//	ContainerVersioningArgs{...}
-type ContainerVersioningInput interface {
+//	ContainerVersioningLegacyArgs{...}
+type ContainerVersioningLegacyInput interface {
 	pulumi.Input
 
-	ToContainerVersioningOutput() ContainerVersioningOutput
-	ToContainerVersioningOutputWithContext(context.Context) ContainerVersioningOutput
+	ToContainerVersioningLegacyOutput() ContainerVersioningLegacyOutput
+	ToContainerVersioningLegacyOutputWithContext(context.Context) ContainerVersioningLegacyOutput
 }
 
-type ContainerVersioningArgs struct {
+type ContainerVersioningLegacyArgs struct {
 	// Container in which versions will be stored.
 	Location pulumi.StringInput `pulumi:"location"`
 	// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
-func (ContainerVersioningArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerVersioning)(nil)).Elem()
+func (ContainerVersioningLegacyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerVersioningLegacy)(nil)).Elem()
 }
 
-func (i ContainerVersioningArgs) ToContainerVersioningOutput() ContainerVersioningOutput {
-	return i.ToContainerVersioningOutputWithContext(context.Background())
+func (i ContainerVersioningLegacyArgs) ToContainerVersioningLegacyOutput() ContainerVersioningLegacyOutput {
+	return i.ToContainerVersioningLegacyOutputWithContext(context.Background())
 }
 
-func (i ContainerVersioningArgs) ToContainerVersioningOutputWithContext(ctx context.Context) ContainerVersioningOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerVersioningOutput)
+func (i ContainerVersioningLegacyArgs) ToContainerVersioningLegacyOutputWithContext(ctx context.Context) ContainerVersioningLegacyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerVersioningLegacyOutput)
 }
 
-func (i ContainerVersioningArgs) ToContainerVersioningPtrOutput() ContainerVersioningPtrOutput {
-	return i.ToContainerVersioningPtrOutputWithContext(context.Background())
+func (i ContainerVersioningLegacyArgs) ToContainerVersioningLegacyPtrOutput() ContainerVersioningLegacyPtrOutput {
+	return i.ToContainerVersioningLegacyPtrOutputWithContext(context.Background())
 }
 
-func (i ContainerVersioningArgs) ToContainerVersioningPtrOutputWithContext(ctx context.Context) ContainerVersioningPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerVersioningOutput).ToContainerVersioningPtrOutputWithContext(ctx)
+func (i ContainerVersioningLegacyArgs) ToContainerVersioningLegacyPtrOutputWithContext(ctx context.Context) ContainerVersioningLegacyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerVersioningLegacyOutput).ToContainerVersioningLegacyPtrOutputWithContext(ctx)
 }
 
-// ContainerVersioningPtrInput is an input type that accepts ContainerVersioningArgs, ContainerVersioningPtr and ContainerVersioningPtrOutput values.
-// You can construct a concrete instance of `ContainerVersioningPtrInput` via:
+// ContainerVersioningLegacyPtrInput is an input type that accepts ContainerVersioningLegacyArgs, ContainerVersioningLegacyPtr and ContainerVersioningLegacyPtrOutput values.
+// You can construct a concrete instance of `ContainerVersioningLegacyPtrInput` via:
 //
-//	        ContainerVersioningArgs{...}
+//	        ContainerVersioningLegacyArgs{...}
 //
 //	or:
 //
 //	        nil
-type ContainerVersioningPtrInput interface {
+type ContainerVersioningLegacyPtrInput interface {
 	pulumi.Input
 
-	ToContainerVersioningPtrOutput() ContainerVersioningPtrOutput
-	ToContainerVersioningPtrOutputWithContext(context.Context) ContainerVersioningPtrOutput
+	ToContainerVersioningLegacyPtrOutput() ContainerVersioningLegacyPtrOutput
+	ToContainerVersioningLegacyPtrOutputWithContext(context.Context) ContainerVersioningLegacyPtrOutput
 }
 
-type containerVersioningPtrType ContainerVersioningArgs
+type containerVersioningLegacyPtrType ContainerVersioningLegacyArgs
 
-func ContainerVersioningPtr(v *ContainerVersioningArgs) ContainerVersioningPtrInput {
-	return (*containerVersioningPtrType)(v)
+func ContainerVersioningLegacyPtr(v *ContainerVersioningLegacyArgs) ContainerVersioningLegacyPtrInput {
+	return (*containerVersioningLegacyPtrType)(v)
 }
 
-func (*containerVersioningPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ContainerVersioning)(nil)).Elem()
+func (*containerVersioningLegacyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerVersioningLegacy)(nil)).Elem()
 }
 
-func (i *containerVersioningPtrType) ToContainerVersioningPtrOutput() ContainerVersioningPtrOutput {
-	return i.ToContainerVersioningPtrOutputWithContext(context.Background())
+func (i *containerVersioningLegacyPtrType) ToContainerVersioningLegacyPtrOutput() ContainerVersioningLegacyPtrOutput {
+	return i.ToContainerVersioningLegacyPtrOutputWithContext(context.Background())
 }
 
-func (i *containerVersioningPtrType) ToContainerVersioningPtrOutputWithContext(ctx context.Context) ContainerVersioningPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ContainerVersioningPtrOutput)
+func (i *containerVersioningLegacyPtrType) ToContainerVersioningLegacyPtrOutputWithContext(ctx context.Context) ContainerVersioningLegacyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerVersioningLegacyPtrOutput)
 }
 
-type ContainerVersioningOutput struct{ *pulumi.OutputState }
+type ContainerVersioningLegacyOutput struct{ *pulumi.OutputState }
 
-func (ContainerVersioningOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ContainerVersioning)(nil)).Elem()
+func (ContainerVersioningLegacyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerVersioningLegacy)(nil)).Elem()
 }
 
-func (o ContainerVersioningOutput) ToContainerVersioningOutput() ContainerVersioningOutput {
+func (o ContainerVersioningLegacyOutput) ToContainerVersioningLegacyOutput() ContainerVersioningLegacyOutput {
 	return o
 }
 
-func (o ContainerVersioningOutput) ToContainerVersioningOutputWithContext(ctx context.Context) ContainerVersioningOutput {
+func (o ContainerVersioningLegacyOutput) ToContainerVersioningLegacyOutputWithContext(ctx context.Context) ContainerVersioningLegacyOutput {
 	return o
 }
 
-func (o ContainerVersioningOutput) ToContainerVersioningPtrOutput() ContainerVersioningPtrOutput {
-	return o.ToContainerVersioningPtrOutputWithContext(context.Background())
+func (o ContainerVersioningLegacyOutput) ToContainerVersioningLegacyPtrOutput() ContainerVersioningLegacyPtrOutput {
+	return o.ToContainerVersioningLegacyPtrOutputWithContext(context.Background())
 }
 
-func (o ContainerVersioningOutput) ToContainerVersioningPtrOutputWithContext(ctx context.Context) ContainerVersioningPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerVersioning) *ContainerVersioning {
+func (o ContainerVersioningLegacyOutput) ToContainerVersioningLegacyPtrOutputWithContext(ctx context.Context) ContainerVersioningLegacyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerVersioningLegacy) *ContainerVersioningLegacy {
 		return &v
-	}).(ContainerVersioningPtrOutput)
+	}).(ContainerVersioningLegacyPtrOutput)
 }
 
 // Container in which versions will be stored.
-func (o ContainerVersioningOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v ContainerVersioning) string { return v.Location }).(pulumi.StringOutput)
+func (o ContainerVersioningLegacyOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerVersioningLegacy) string { return v.Location }).(pulumi.StringOutput)
 }
 
 // Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
-func (o ContainerVersioningOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ContainerVersioning) string { return v.Type }).(pulumi.StringOutput)
+func (o ContainerVersioningLegacyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerVersioningLegacy) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type ContainerVersioningPtrOutput struct{ *pulumi.OutputState }
+type ContainerVersioningLegacyPtrOutput struct{ *pulumi.OutputState }
 
-func (ContainerVersioningPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ContainerVersioning)(nil)).Elem()
+func (ContainerVersioningLegacyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerVersioningLegacy)(nil)).Elem()
 }
 
-func (o ContainerVersioningPtrOutput) ToContainerVersioningPtrOutput() ContainerVersioningPtrOutput {
+func (o ContainerVersioningLegacyPtrOutput) ToContainerVersioningLegacyPtrOutput() ContainerVersioningLegacyPtrOutput {
 	return o
 }
 
-func (o ContainerVersioningPtrOutput) ToContainerVersioningPtrOutputWithContext(ctx context.Context) ContainerVersioningPtrOutput {
+func (o ContainerVersioningLegacyPtrOutput) ToContainerVersioningLegacyPtrOutputWithContext(ctx context.Context) ContainerVersioningLegacyPtrOutput {
 	return o
 }
 
-func (o ContainerVersioningPtrOutput) Elem() ContainerVersioningOutput {
-	return o.ApplyT(func(v *ContainerVersioning) ContainerVersioning {
+func (o ContainerVersioningLegacyPtrOutput) Elem() ContainerVersioningLegacyOutput {
+	return o.ApplyT(func(v *ContainerVersioningLegacy) ContainerVersioningLegacy {
 		if v != nil {
 			return *v
 		}
-		var ret ContainerVersioning
+		var ret ContainerVersioningLegacy
 		return ret
-	}).(ContainerVersioningOutput)
+	}).(ContainerVersioningLegacyOutput)
 }
 
 // Container in which versions will be stored.
-func (o ContainerVersioningPtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ContainerVersioning) *string {
+func (o ContainerVersioningLegacyPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerVersioningLegacy) *string {
 		if v == nil {
 			return nil
 		}
@@ -157,8 +157,8 @@ func (o ContainerVersioningPtrOutput) Location() pulumi.StringPtrOutput {
 }
 
 // Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
-func (o ContainerVersioningPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ContainerVersioning) *string {
+func (o ContainerVersioningLegacyPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerVersioningLegacy) *string {
 		if v == nil {
 			return nil
 		}
@@ -167,8 +167,8 @@ func (o ContainerVersioningPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ContainerVersioningInput)(nil)).Elem(), ContainerVersioningArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ContainerVersioningPtrInput)(nil)).Elem(), ContainerVersioningArgs{})
-	pulumi.RegisterOutputType(ContainerVersioningOutput{})
-	pulumi.RegisterOutputType(ContainerVersioningPtrOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerVersioningLegacyInput)(nil)).Elem(), ContainerVersioningLegacyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerVersioningLegacyPtrInput)(nil)).Elem(), ContainerVersioningLegacyArgs{})
+	pulumi.RegisterOutputType(ContainerVersioningLegacyOutput{})
+	pulumi.RegisterOutputType(ContainerVersioningLegacyPtrOutput{})
 }

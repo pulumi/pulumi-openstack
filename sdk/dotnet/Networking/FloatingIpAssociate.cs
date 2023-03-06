@@ -17,25 +17,24 @@ namespace Pulumi.OpenStack.Networking
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var port1 = new OpenStack.Networking.Port("port1", new()
     ///     {
-    ///         var port1 = new OpenStack.Networking.Port("port1", new OpenStack.Networking.PortArgs
-    ///         {
-    ///             NetworkId = "a5bbd213-e1d3-49b6-aed1-9df60ea94b9a",
-    ///         });
-    ///         var fip1 = new OpenStack.Networking.FloatingIpAssociate("fip1", new OpenStack.Networking.FloatingIpAssociateArgs
-    ///         {
-    ///             FloatingIp = "1.2.3.4",
-    ///             PortId = port1.Id,
-    ///         });
-    ///     }
+    ///         NetworkId = "a5bbd213-e1d3-49b6-aed1-9df60ea94b9a",
+    ///     });
     /// 
-    /// }
+    ///     var fip1 = new OpenStack.Networking.FloatingIpAssociate("fip1", new()
+    ///     {
+    ///         FloatingIp = "1.2.3.4",
+    ///         PortId = port1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +46,7 @@ namespace Pulumi.OpenStack.Networking
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/floatingIpAssociate:FloatingIpAssociate")]
-    public partial class FloatingIpAssociate : Pulumi.CustomResource
+    public partial class FloatingIpAssociate : global::Pulumi.CustomResource
     {
         [Output("fixedIp")]
         public Output<string> FixedIp { get; private set; } = null!;
@@ -119,7 +118,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
-    public sealed class FloatingIpAssociateArgs : Pulumi.ResourceArgs
+    public sealed class FloatingIpAssociateArgs : global::Pulumi.ResourceArgs
     {
         [Input("fixedIp")]
         public Input<string>? FixedIp { get; set; }
@@ -150,9 +149,10 @@ namespace Pulumi.OpenStack.Networking
         public FloatingIpAssociateArgs()
         {
         }
+        public static new FloatingIpAssociateArgs Empty => new FloatingIpAssociateArgs();
     }
 
-    public sealed class FloatingIpAssociateState : Pulumi.ResourceArgs
+    public sealed class FloatingIpAssociateState : global::Pulumi.ResourceArgs
     {
         [Input("fixedIp")]
         public Input<string>? FixedIp { get; set; }
@@ -183,5 +183,6 @@ namespace Pulumi.OpenStack.Networking
         public FloatingIpAssociateState()
         {
         }
+        public static new FloatingIpAssociateState Empty => new FloatingIpAssociateState();
     }
 }

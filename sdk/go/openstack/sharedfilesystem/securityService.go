@@ -112,6 +112,13 @@ func NewSecurityService(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource SecurityService
 	err := ctx.RegisterResource("openstack:sharedfilesystem/securityService:SecurityService", name, args, &resource, opts...)
 	if err != nil {

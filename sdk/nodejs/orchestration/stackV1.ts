@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,10 +15,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const stack1 = new openstack.orchestration.StackV1("stack_1", {
+ * const stack1 = new openstack.orchestration.StackV1("stack1", {
  *     disableRollback: true,
  *     environmentOpts: {
- *         Bin: "\n",
+ *         Bin: `
+ *
+ * `,
  *     },
  *     parameters: {
  *         length: 4,
@@ -34,6 +37,7 @@ import * as utilities from "../utilities";
  *     type: OS::Heat::RandomString
  *     properties:
  *       length: {get_param: length}
+ *
  * `,
  *     },
  *     timeout: 30,

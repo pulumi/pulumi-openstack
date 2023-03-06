@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const role1 = new openstack.identity.Role("role_1", {});
+ * const role1 = new openstack.identity.Role("role1", {});
  * ```
  *
  * ## Import

@@ -5,18 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./endpointGroup";
-export * from "./ikePolicy";
-export * from "./ipSecPolicy";
-export * from "./service";
-export * from "./siteConnection";
+export { EndpointGroupArgs, EndpointGroupState } from "./endpointGroup";
+export type EndpointGroup = import("./endpointGroup").EndpointGroup;
+export const EndpointGroup: typeof import("./endpointGroup").EndpointGroup = null as any;
+utilities.lazyLoad(exports, ["EndpointGroup"], () => require("./endpointGroup"));
 
-// Import resources to register:
-import { EndpointGroup } from "./endpointGroup";
-import { IkePolicy } from "./ikePolicy";
-import { IpSecPolicy } from "./ipSecPolicy";
-import { Service } from "./service";
-import { SiteConnection } from "./siteConnection";
+export { IkePolicyArgs, IkePolicyState } from "./ikePolicy";
+export type IkePolicy = import("./ikePolicy").IkePolicy;
+export const IkePolicy: typeof import("./ikePolicy").IkePolicy = null as any;
+utilities.lazyLoad(exports, ["IkePolicy"], () => require("./ikePolicy"));
+
+export { IpSecPolicyArgs, IpSecPolicyState } from "./ipSecPolicy";
+export type IpSecPolicy = import("./ipSecPolicy").IpSecPolicy;
+export const IpSecPolicy: typeof import("./ipSecPolicy").IpSecPolicy = null as any;
+utilities.lazyLoad(exports, ["IpSecPolicy"], () => require("./ipSecPolicy"));
+
+export { ServiceArgs, ServiceState } from "./service";
+export type Service = import("./service").Service;
+export const Service: typeof import("./service").Service = null as any;
+utilities.lazyLoad(exports, ["Service"], () => require("./service"));
+
+export { SiteConnectionArgs, SiteConnectionState } from "./siteConnection";
+export type SiteConnection = import("./siteConnection").SiteConnection;
+export const SiteConnection: typeof import("./siteConnection").SiteConnection = null as any;
+utilities.lazyLoad(exports, ["SiteConnection"], () => require("./siteConnection"));
+
 
 const _module = {
     version: utilities.getVersion(),

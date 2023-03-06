@@ -21,7 +21,7 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, checksum=None, container_format=None, created_at=None, disk_format=None, file=None, hidden=None, id=None, member_status=None, metadata=None, min_disk_gb=None, min_ram_mb=None, most_recent=None, name=None, owner=None, properties=None, protected=None, region=None, schema=None, size_bytes=None, size_max=None, size_min=None, sort_direction=None, sort_key=None, tag=None, tags=None, updated_at=None, visibility=None):
+    def __init__(__self__, checksum=None, container_format=None, created_at=None, disk_format=None, file=None, hidden=None, id=None, member_status=None, metadata=None, min_disk_gb=None, min_ram_mb=None, most_recent=None, name=None, name_regex=None, owner=None, properties=None, protected=None, region=None, schema=None, size_bytes=None, size_max=None, size_min=None, sort_direction=None, sort_key=None, tag=None, tags=None, updated_at=None, visibility=None):
         if checksum and not isinstance(checksum, str):
             raise TypeError("Expected argument 'checksum' to be a str")
         pulumi.set(__self__, "checksum", checksum)
@@ -61,6 +61,9 @@ class GetImageResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if name_regex and not isinstance(name_regex, str):
+            raise TypeError("Expected argument 'name_regex' to be a str")
+        pulumi.set(__self__, "name_regex", name_regex)
         if owner and not isinstance(owner, str):
             raise TypeError("Expected argument 'owner' to be a str")
         pulumi.set(__self__, "owner", owner)
@@ -115,6 +118,9 @@ class GetImageResult:
     @property
     @pulumi.getter(name="containerFormat")
     def container_format(self) -> str:
+        """
+        The format of the image's container.
+        """
         return pulumi.get(self, "container_format")
 
     @property
@@ -122,14 +128,15 @@ class GetImageResult:
     def created_at(self) -> str:
         """
         The date the image was created.
-        * `container_format`: The format of the image's container.
-        * `disk_format`: The format of the image's disk.
         """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="diskFormat")
     def disk_format(self) -> str:
+        """
+        The format of the image's disk.
+        """
         return pulumi.get(self, "disk_format")
 
     @property
@@ -194,6 +201,11 @@ class GetImageResult:
     @pulumi.getter
     def name(self) -> Optional[str]:
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nameRegex")
+    def name_regex(self) -> Optional[str]:
+        return pulumi.get(self, "name_regex")
 
     @property
     @pulumi.getter
@@ -304,6 +316,7 @@ class AwaitableGetImageResult(GetImageResult):
             min_ram_mb=self.min_ram_mb,
             most_recent=self.most_recent,
             name=self.name,
+            name_regex=self.name_regex,
             owner=self.owner,
             properties=self.properties,
             protected=self.protected,
@@ -324,6 +337,7 @@ def get_image(hidden: Optional[bool] = None,
               member_status: Optional[str] = None,
               most_recent: Optional[bool] = None,
               name: Optional[str] = None,
+              name_regex: Optional[str] = None,
               owner: Optional[str] = None,
               properties: Optional[Mapping[str, Any]] = None,
               region: Optional[str] = None,
@@ -332,6 +346,7 @@ def get_image(hidden: Optional[bool] = None,
               sort_direction: Optional[str] = None,
               sort_key: Optional[str] = None,
               tag: Optional[str] = None,
+              tags: Optional[Sequence[str]] = None,
               visibility: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
@@ -356,7 +371,12 @@ def get_image(hidden: Optional[bool] = None,
            "accepted", "pending", "rejected", or "all".
     :param bool most_recent: If more than one result is returned, use the most
            recent image.
-    :param str name: The name of the image.
+    :param str name: The name of the image. Cannot be used simultaneously
+           with `name_regex`.
+    :param str name_regex: The regular expressian of the name of the image.
+           Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+           `name_regex` filtering does by client on the result of OpenStack search
+           query.
     :param str owner: The owner (UUID) of the image.
     :param Mapping[str, Any] properties: a map of key/value pairs to match an image with.
            All specified properties must be matched. Unlike other options filtering
@@ -372,6 +392,8 @@ def get_image(hidden: Optional[bool] = None,
     :param str sort_direction: Order the results in either `asc` or `desc`.
     :param str sort_key: Sort images based on a certain key. Defaults to `name`.
     :param str tag: Search for images with a specific tag.
+    :param Sequence[str] tags: A list of tags required to be set on the image 
+           (all specified tags must be in the images tag list for it to be matched).
     :param str visibility: The visibility of the image. Must be one of
            "public", "private", "community", or "shared". Defaults to "private".
     """
@@ -380,6 +402,7 @@ def get_image(hidden: Optional[bool] = None,
     __args__['memberStatus'] = member_status
     __args__['mostRecent'] = most_recent
     __args__['name'] = name
+    __args__['nameRegex'] = name_regex
     __args__['owner'] = owner
     __args__['properties'] = properties
     __args__['region'] = region
@@ -388,6 +411,7 @@ def get_image(hidden: Optional[bool] = None,
     __args__['sortDirection'] = sort_direction
     __args__['sortKey'] = sort_key
     __args__['tag'] = tag
+    __args__['tags'] = tags
     __args__['visibility'] = visibility
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('openstack:images/getImage:getImage', __args__, opts=opts, typ=GetImageResult).value
@@ -406,6 +430,7 @@ def get_image(hidden: Optional[bool] = None,
         min_ram_mb=__ret__.min_ram_mb,
         most_recent=__ret__.most_recent,
         name=__ret__.name,
+        name_regex=__ret__.name_regex,
         owner=__ret__.owner,
         properties=__ret__.properties,
         protected=__ret__.protected,
@@ -427,6 +452,7 @@ def get_image_output(hidden: Optional[pulumi.Input[Optional[bool]]] = None,
                      member_status: Optional[pulumi.Input[Optional[str]]] = None,
                      most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
                      name: Optional[pulumi.Input[Optional[str]]] = None,
+                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                      owner: Optional[pulumi.Input[Optional[str]]] = None,
                      properties: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                      region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -435,6 +461,7 @@ def get_image_output(hidden: Optional[pulumi.Input[Optional[bool]]] = None,
                      sort_direction: Optional[pulumi.Input[Optional[str]]] = None,
                      sort_key: Optional[pulumi.Input[Optional[str]]] = None,
                      tag: Optional[pulumi.Input[Optional[str]]] = None,
+                     tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      visibility: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageResult]:
     """
@@ -459,7 +486,12 @@ def get_image_output(hidden: Optional[pulumi.Input[Optional[bool]]] = None,
            "accepted", "pending", "rejected", or "all".
     :param bool most_recent: If more than one result is returned, use the most
            recent image.
-    :param str name: The name of the image.
+    :param str name: The name of the image. Cannot be used simultaneously
+           with `name_regex`.
+    :param str name_regex: The regular expressian of the name of the image.
+           Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+           `name_regex` filtering does by client on the result of OpenStack search
+           query.
     :param str owner: The owner (UUID) of the image.
     :param Mapping[str, Any] properties: a map of key/value pairs to match an image with.
            All specified properties must be matched. Unlike other options filtering
@@ -475,6 +507,8 @@ def get_image_output(hidden: Optional[pulumi.Input[Optional[bool]]] = None,
     :param str sort_direction: Order the results in either `asc` or `desc`.
     :param str sort_key: Sort images based on a certain key. Defaults to `name`.
     :param str tag: Search for images with a specific tag.
+    :param Sequence[str] tags: A list of tags required to be set on the image 
+           (all specified tags must be in the images tag list for it to be matched).
     :param str visibility: The visibility of the image. Must be one of
            "public", "private", "community", or "shared". Defaults to "private".
     """

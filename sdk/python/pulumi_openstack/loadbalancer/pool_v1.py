@@ -47,8 +47,8 @@ class PoolV1Args:
                A Networking client is needed to create an LB pool. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
                LB pool.
-        :param pulumi.Input[str] tenant_id: The owner of the member. Required if admin wants to
-               create a pool member for another tenant. Changing this creates a new member.
+        :param pulumi.Input[str] tenant_id: The owner of the pool. Required if admin wants to
+               create a pool member for another tenant. Changing this creates a new pool.
         """
         pulumi.set(__self__, "lb_method", lb_method)
         pulumi.set(__self__, "protocol", protocol)
@@ -183,8 +183,8 @@ class PoolV1Args:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The owner of the member. Required if admin wants to
-        create a pool member for another tenant. Changing this creates a new member.
+        The owner of the pool. Required if admin wants to
+        create a pool member for another tenant. Changing this creates a new pool.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -229,8 +229,8 @@ class _PoolV1State:
         :param pulumi.Input[str] subnet_id: The network on which the members of the pool will be
                located. Only members that are on this network can be added to the pool.
                Changing this creates a new pool.
-        :param pulumi.Input[str] tenant_id: The owner of the member. Required if admin wants to
-               create a pool member for another tenant. Changing this creates a new member.
+        :param pulumi.Input[str] tenant_id: The owner of the pool. Required if admin wants to
+               create a pool member for another tenant. Changing this creates a new pool.
         """
         if lb_method is not None:
             pulumi.set(__self__, "lb_method", lb_method)
@@ -368,8 +368,8 @@ class _PoolV1State:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The owner of the member. Required if admin wants to
-        create a pool member for another tenant. Changing this creates a new member.
+        The owner of the pool. Required if admin wants to
+        create a pool member for another tenant. Changing this creates a new pool.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -514,8 +514,8 @@ class PoolV1(pulumi.CustomResource):
         :param pulumi.Input[str] subnet_id: The network on which the members of the pool will be
                located. Only members that are on this network can be added to the pool.
                Changing this creates a new pool.
-        :param pulumi.Input[str] tenant_id: The owner of the member. Required if admin wants to
-               create a pool member for another tenant. Changing this creates a new member.
+        :param pulumi.Input[str] tenant_id: The owner of the pool. Required if admin wants to
+               create a pool member for another tenant. Changing this creates a new pool.
         """
         ...
     @overload
@@ -719,8 +719,8 @@ class PoolV1(pulumi.CustomResource):
         :param pulumi.Input[str] subnet_id: The network on which the members of the pool will be
                located. Only members that are on this network can be added to the pool.
                Changing this creates a new pool.
-        :param pulumi.Input[str] tenant_id: The owner of the member. Required if admin wants to
-               create a pool member for another tenant. Changing this creates a new member.
+        :param pulumi.Input[str] tenant_id: The owner of the pool. Required if admin wants to
+               create a pool member for another tenant. Changing this creates a new pool.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -819,8 +819,8 @@ class PoolV1(pulumi.CustomResource):
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
         """
-        The owner of the member. Required if admin wants to
-        create a pool member for another tenant. Changing this creates a new member.
+        The owner of the pool. Required if admin wants to
+        create a pool member for another tenant. Changing this creates a new pool.
         """
         return pulumi.get(self, "tenant_id")
 

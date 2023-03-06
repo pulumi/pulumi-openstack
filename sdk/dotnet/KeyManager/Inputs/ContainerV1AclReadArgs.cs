@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.KeyManager.Inputs
 {
 
-    public sealed class ContainerV1AclReadArgs : Pulumi.ResourceArgs
+    public sealed class ContainerV1AclReadArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date the container ACL was created.
@@ -47,5 +47,6 @@ namespace Pulumi.OpenStack.KeyManager.Inputs
         public ContainerV1AclReadArgs()
         {
         }
+        public static new ContainerV1AclReadArgs Empty => new ContainerV1AclReadArgs();
     }
 }

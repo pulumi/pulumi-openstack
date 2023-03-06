@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Networking.Inputs
 {
 
-    public sealed class SubnetHostRouteArgs : Pulumi.ResourceArgs
+    public sealed class SubnetHostRouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The destination CIDR.
@@ -27,5 +27,6 @@ namespace Pulumi.OpenStack.Networking.Inputs
         public SubnetHostRouteArgs()
         {
         }
+        public static new SubnetHostRouteArgs Empty => new SubnetHostRouteArgs();
     }
 }

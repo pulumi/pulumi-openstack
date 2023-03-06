@@ -5,15 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./firewall";
-export * from "./getPolicy";
-export * from "./policy";
-export * from "./rule";
+export { FirewallArgs, FirewallState } from "./firewall";
+export type Firewall = import("./firewall").Firewall;
+export const Firewall: typeof import("./firewall").Firewall = null as any;
+utilities.lazyLoad(exports, ["Firewall"], () => require("./firewall"));
 
-// Import resources to register:
-import { Firewall } from "./firewall";
-import { Policy } from "./policy";
-import { Rule } from "./rule";
+export { GetPolicyArgs, GetPolicyResult, GetPolicyOutputArgs } from "./getPolicy";
+export const getPolicy: typeof import("./getPolicy").getPolicy = null as any;
+export const getPolicyOutput: typeof import("./getPolicy").getPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicy","getPolicyOutput"], () => require("./getPolicy"));
+
+export { PolicyArgs, PolicyState } from "./policy";
+export type Policy = import("./policy").Policy;
+export const Policy: typeof import("./policy").Policy = null as any;
+utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
+
+export { RuleArgs, RuleState } from "./rule";
+export type Rule = import("./rule").Rule;
+export const Rule: typeof import("./rule").Rule = null as any;
+utilities.lazyLoad(exports, ["Rule"], () => require("./rule"));
+
 
 const _module = {
     version: utilities.getVersion(),

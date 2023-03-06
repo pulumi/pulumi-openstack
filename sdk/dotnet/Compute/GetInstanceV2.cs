@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var instance = OpenStack.Compute.GetInstanceV2.Invoke(new()
         ///     {
-        ///         var instance = Output.Create(OpenStack.Compute.GetInstanceV2.InvokeAsync(new OpenStack.Compute.GetInstanceV2Args
-        ///         {
-        ///             Id = "2ba26dc6-a12d-4889-8f25-794ea5bf4453",
-        ///         }));
-        ///     }
+        ///         Id = "2ba26dc6-a12d-4889-8f25-794ea5bf4453",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceV2Result> InvokeAsync(GetInstanceV2Args args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceV2Result>("openstack:compute/getInstanceV2:getInstanceV2", args ?? new GetInstanceV2Args(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceV2Result>("openstack:compute/getInstanceV2:getInstanceV2", args ?? new GetInstanceV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the details of a running server
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var instance = OpenStack.Compute.GetInstanceV2.Invoke(new()
         ///     {
-        ///         var instance = Output.Create(OpenStack.Compute.GetInstanceV2.InvokeAsync(new OpenStack.Compute.GetInstanceV2Args
-        ///         {
-        ///             Id = "2ba26dc6-a12d-4889-8f25-794ea5bf4453",
-        ///         }));
-        ///     }
+        ///         Id = "2ba26dc6-a12d-4889-8f25-794ea5bf4453",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceV2Result> Invoke(GetInstanceV2InvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetInstanceV2Result>("openstack:compute/getInstanceV2:getInstanceV2", args ?? new GetInstanceV2InvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceV2Result>("openstack:compute/getInstanceV2:getInstanceV2", args ?? new GetInstanceV2InvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetInstanceV2Args : Pulumi.InvokeArgs
+    public sealed class GetInstanceV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The UUID of the instance
@@ -103,9 +99,10 @@ namespace Pulumi.OpenStack.Compute
         public GetInstanceV2Args()
         {
         }
+        public static new GetInstanceV2Args Empty => new GetInstanceV2Args();
     }
 
-    public sealed class GetInstanceV2InvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The UUID of the instance
@@ -137,6 +134,7 @@ namespace Pulumi.OpenStack.Compute
         public GetInstanceV2InvokeArgs()
         {
         }
+        public static new GetInstanceV2InvokeArgs Empty => new GetInstanceV2InvokeArgs();
     }
 
 

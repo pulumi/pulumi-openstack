@@ -272,7 +272,11 @@ class PortFixedIpArgs:
         """
         :param pulumi.Input[str] subnet_id: Subnet in which to allocate IP address for
                this port.
-        :param pulumi.Input[str] ip_address: The additional IP address.
+        :param pulumi.Input[str] ip_address: IP address desired in the subnet for this port. If
+               you don't specify `ip_address`, an available IP address from the specified
+               subnet will be allocated to this port. This field will not be populated if it
+               is left blank or omitted. To retrieve the assigned IP address, use the
+               `all_fixed_ips` attribute.
         """
         pulumi.set(__self__, "subnet_id", subnet_id)
         if ip_address is not None:
@@ -295,7 +299,11 @@ class PortFixedIpArgs:
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The additional IP address.
+        IP address desired in the subnet for this port. If
+        you don't specify `ip_address`, an available IP address from the specified
+        subnet will be allocated to this port. This field will not be populated if it
+        is left blank or omitted. To retrieve the assigned IP address, use the
+        `all_fixed_ips` attribute.
         """
         return pulumi.get(self, "ip_address")
 

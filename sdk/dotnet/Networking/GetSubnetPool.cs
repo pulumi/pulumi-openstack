@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var subnetpool1 = OpenStack.Networking.GetSubnetPool.Invoke(new()
         ///     {
-        ///         var subnetpool1 = Output.Create(OpenStack.Networking.GetSubnetPool.InvokeAsync(new OpenStack.Networking.GetSubnetPoolArgs
-        ///         {
-        ///             Name = "subnetpool_1",
-        ///         }));
-        ///     }
+        ///         Name = "subnetpool_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSubnetPoolResult> InvokeAsync(GetSubnetPoolArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetPoolResult>("openstack:networking/getSubnetPool:getSubnetPool", args ?? new GetSubnetPoolArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSubnetPoolResult>("openstack:networking/getSubnetPool:getSubnetPool", args ?? new GetSubnetPoolArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack subnetpool.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var subnetpool1 = OpenStack.Networking.GetSubnetPool.Invoke(new()
         ///     {
-        ///         var subnetpool1 = Output.Create(OpenStack.Networking.GetSubnetPool.InvokeAsync(new OpenStack.Networking.GetSubnetPoolArgs
-        ///         {
-        ///             Name = "subnetpool_1",
-        ///         }));
-        ///     }
+        ///         Name = "subnetpool_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSubnetPoolResult> Invoke(GetSubnetPoolInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSubnetPoolResult>("openstack:networking/getSubnetPool:getSubnetPool", args ?? new GetSubnetPoolInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSubnetPoolResult>("openstack:networking/getSubnetPool:getSubnetPool", args ?? new GetSubnetPoolInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSubnetPoolArgs : Pulumi.InvokeArgs
+    public sealed class GetSubnetPoolArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Neutron address scope that subnetpools
@@ -165,9 +161,10 @@ namespace Pulumi.OpenStack.Networking
         public GetSubnetPoolArgs()
         {
         }
+        public static new GetSubnetPoolArgs Empty => new GetSubnetPoolArgs();
     }
 
-    public sealed class GetSubnetPoolInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSubnetPoolInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The Neutron address scope that subnetpools
@@ -261,6 +258,7 @@ namespace Pulumi.OpenStack.Networking
         public GetSubnetPoolInvokeArgs()
         {
         }
+        public static new GetSubnetPoolInvokeArgs Empty => new GetSubnetPoolInvokeArgs();
     }
 
 
@@ -269,7 +267,6 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// See Argument Reference above.
-        /// * `ip_version` -The IP protocol version.
         /// </summary>
         public readonly string AddressScopeId;
         /// <summary>
@@ -296,6 +293,9 @@ namespace Pulumi.OpenStack.Networking
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The IP protocol version.
+        /// </summary>
         public readonly int IpVersion;
         /// <summary>
         /// See Argument Reference above.

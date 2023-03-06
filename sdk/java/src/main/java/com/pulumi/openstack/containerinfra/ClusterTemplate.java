@@ -104,6 +104,7 @@ import javax.annotation.Nullable;
  * * `server_type` - See Argument Reference above.
  * * `tls_disabled` - See Argument Reference above.
  * * `volume_driver` - See Argument Reference above.
+ * * `hidden` - See Argument Reference above.
  * 
  * ## Import
  * 
@@ -317,6 +318,24 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> floatingIpEnabled() {
         return Codegen.optional(this.floatingIpEnabled);
+    }
+    /**
+     * Indicates whether the ClusterTemplate is hidden or not.
+     * Changing this updates the hidden attribute of the existing cluster
+     * template.
+     * 
+     */
+    @Export(name="hidden", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> hidden;
+
+    /**
+     * @return Indicates whether the ClusterTemplate is hidden or not.
+     * Changing this updates the hidden attribute of the existing cluster
+     * template.
+     * 
+     */
+    public Output<Optional<Boolean>> hidden() {
+        return Codegen.optional(this.hidden);
     }
     /**
      * The address of a proxy for receiving all HTTP

@@ -11,6 +11,7 @@ import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.sharedfilesystem.ShareAccessArgs;
 import com.pulumi.openstack.sharedfilesystem.inputs.ShareAccessState;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -301,6 +302,9 @@ public class ShareAccess extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "accessKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -15,19 +15,15 @@ namespace Pulumi.OpenStack.VPNaaS
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var policy1 = new OpenStack.VPNaaS.IpSecPolicy("policy1", new OpenStack.VPNaaS.IpSecPolicyArgs
-    ///         {
-    ///         });
-    ///     }
+    ///     var policy1 = new OpenStack.VPNaaS.IpSecPolicy("policy1");
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -39,7 +35,7 @@ namespace Pulumi.OpenStack.VPNaaS
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:vpnaas/ipSecPolicy:IpSecPolicy")]
-    public partial class IpSecPolicy : Pulumi.CustomResource
+    public partial class IpSecPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
@@ -162,7 +158,7 @@ namespace Pulumi.OpenStack.VPNaaS
         }
     }
 
-    public sealed class IpSecPolicyArgs : Pulumi.ResourceArgs
+    public sealed class IpSecPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
@@ -256,9 +252,10 @@ namespace Pulumi.OpenStack.VPNaaS
         public IpSecPolicyArgs()
         {
         }
+        public static new IpSecPolicyArgs Empty => new IpSecPolicyArgs();
     }
 
-    public sealed class IpSecPolicyState : Pulumi.ResourceArgs
+    public sealed class IpSecPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
@@ -352,5 +349,6 @@ namespace Pulumi.OpenStack.VPNaaS
         public IpSecPolicyState()
         {
         }
+        public static new IpSecPolicyState Empty => new IpSecPolicyState();
     }
 }

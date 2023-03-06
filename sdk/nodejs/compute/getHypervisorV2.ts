@@ -14,17 +14,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const host01 = pulumi.output(openstack.compute.getHypervisorV2({
+ * const host01 = openstack.compute.getHypervisorV2({
  *     hostname: "host01",
- * }));
+ * });
  * ```
  */
 export function getHypervisorV2(args: GetHypervisorV2Args, opts?: pulumi.InvokeOptions): Promise<GetHypervisorV2Result> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:compute/getHypervisorV2:getHypervisorV2", {
         "hostname": args.hostname,
     }, opts);
@@ -81,9 +78,23 @@ export interface GetHypervisorV2Result {
      */
     readonly vcpus: number;
 }
-
+/**
+ * Use this data source to get information about hypervisors
+ * by hostname.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const host01 = openstack.compute.getHypervisorV2({
+ *     hostname: "host01",
+ * });
+ * ```
+ */
 export function getHypervisorV2Output(args: GetHypervisorV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHypervisorV2Result> {
-    return pulumi.output(args).apply(a => getHypervisorV2(a, opts))
+    return pulumi.output(args).apply((a: any) => getHypervisorV2(a, opts))
 }
 
 /**

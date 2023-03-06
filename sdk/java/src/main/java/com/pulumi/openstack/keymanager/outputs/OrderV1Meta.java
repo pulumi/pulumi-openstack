@@ -18,7 +18,7 @@ public final class OrderV1Meta {
      */
     private String algorithm;
     /**
-     * @return - Bit lenght of key to be generated.
+     * @return Bit lenght of key to be generated.
      * 
      */
     private Integer bitLength;
@@ -52,7 +52,7 @@ public final class OrderV1Meta {
         return this.algorithm;
     }
     /**
-     * @return - Bit lenght of key to be generated.
+     * @return Bit lenght of key to be generated.
      * 
      */
     public Integer bitLength() {

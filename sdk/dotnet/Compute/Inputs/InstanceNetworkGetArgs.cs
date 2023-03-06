@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Compute.Inputs
 {
 
-    public sealed class InstanceNetworkGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceNetworkGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies if this network should be used for
@@ -50,8 +50,8 @@ namespace Pulumi.OpenStack.Compute.Inputs
         public Input<string>? Port { get; set; }
 
         /// <summary>
-        /// The UUID of
-        /// the image, volume, or snapshot. Changing this creates a new server.
+        /// The network UUID to
+        /// attach to the server. Changing this creates a new server.
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
@@ -59,5 +59,6 @@ namespace Pulumi.OpenStack.Compute.Inputs
         public InstanceNetworkGetArgs()
         {
         }
+        public static new InstanceNetworkGetArgs Empty => new InstanceNetworkGetArgs();
     }
 }

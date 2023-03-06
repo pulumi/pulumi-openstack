@@ -355,28 +355,32 @@ public class Port extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.fixedIps);
     }
     /**
-     * The additional MAC address.
+     * Specify a specific MAC address for the port. Changing
+     * this creates a new port.
      * 
      */
     @Export(name="macAddress", type=String.class, parameters={})
     private Output<String> macAddress;
 
     /**
-     * @return The additional MAC address.
+     * @return Specify a specific MAC address for the port. Changing
+     * this creates a new port.
      * 
      */
     public Output<String> macAddress() {
         return this.macAddress;
     }
     /**
-     * Name of the DHCP option.
+     * A unique name for the port. Changing this
+     * updates the `name` of an existing port.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Name of the DHCP option.
+     * @return A unique name for the port. Changing this
+     * updates the `name` of an existing port.
      * 
      */
     public Output<String> name() {

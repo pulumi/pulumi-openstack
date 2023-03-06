@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var trunk1 = OpenStack.Networking.GetTrunk.Invoke(new()
         ///     {
-        ///         var trunk1 = Output.Create(OpenStack.Networking.GetTrunk.InvokeAsync(new OpenStack.Networking.GetTrunkArgs
-        ///         {
-        ///             Name = "trunk_1",
-        ///         }));
-        ///     }
+        ///         Name = "trunk_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetTrunkResult> InvokeAsync(GetTrunkArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTrunkResult>("openstack:networking/getTrunk:getTrunk", args ?? new GetTrunkArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTrunkResult>("openstack:networking/getTrunk:getTrunk", args ?? new GetTrunkArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack trunk.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var trunk1 = OpenStack.Networking.GetTrunk.Invoke(new()
         ///     {
-        ///         var trunk1 = Output.Create(OpenStack.Networking.GetTrunk.InvokeAsync(new OpenStack.Networking.GetTrunkArgs
-        ///         {
-        ///             Name = "trunk_1",
-        ///         }));
-        ///     }
+        ///         Name = "trunk_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetTrunkResult> Invoke(GetTrunkInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTrunkResult>("openstack:networking/getTrunk:getTrunk", args ?? new GetTrunkInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTrunkResult>("openstack:networking/getTrunk:getTrunk", args ?? new GetTrunkInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetTrunkArgs : Pulumi.InvokeArgs
+    public sealed class GetTrunkArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The administrative state of the trunk.
@@ -138,9 +134,10 @@ namespace Pulumi.OpenStack.Networking
         public GetTrunkArgs()
         {
         }
+        public static new GetTrunkArgs Empty => new GetTrunkArgs();
     }
 
-    public sealed class GetTrunkInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTrunkInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The administrative state of the trunk.
@@ -207,6 +204,7 @@ namespace Pulumi.OpenStack.Networking
         public GetTrunkInvokeArgs()
         {
         }
+        public static new GetTrunkInvokeArgs Empty => new GetTrunkInvokeArgs();
     }
 
 

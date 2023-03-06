@@ -13,17 +13,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const qosDscpMarkingRule1 = pulumi.output(openstack.networking.getQosDscpMarkingRule({
+ * const qosDscpMarkingRule1 = openstack.networking.getQosDscpMarkingRule({
  *     dscpMark: 26,
- * }));
+ * });
  * ```
  */
 export function getQosDscpMarkingRule(args: GetQosDscpMarkingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetQosDscpMarkingRuleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", {
         "dscpMark": args.dscpMark,
         "qosPolicyId": args.qosPolicyId,
@@ -72,9 +69,22 @@ export interface GetQosDscpMarkingRuleResult {
      */
     readonly region: string;
 }
-
+/**
+ * Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const qosDscpMarkingRule1 = openstack.networking.getQosDscpMarkingRule({
+ *     dscpMark: 26,
+ * });
+ * ```
+ */
 export function getQosDscpMarkingRuleOutput(args: GetQosDscpMarkingRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQosDscpMarkingRuleResult> {
-    return pulumi.output(args).apply(a => getQosDscpMarkingRule(a, opts))
+    return pulumi.output(args).apply((a: any) => getQosDscpMarkingRule(a, opts))
 }
 
 /**

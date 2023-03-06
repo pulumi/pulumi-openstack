@@ -65,8 +65,7 @@ type Instance struct {
 	// The flavor ID of the desired flavor for the instance.
 	// Changing this creates new instance.
 	FlavorId pulumi.StringOutput `pulumi:"flavorId"`
-	// Database to be created on new instance. Changing this creates a
-	// new instance.
+	// A unique name for the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this
@@ -131,8 +130,7 @@ type instanceState struct {
 	// The flavor ID of the desired flavor for the instance.
 	// Changing this creates new instance.
 	FlavorId *string `pulumi:"flavorId"`
-	// Database to be created on new instance. Changing this creates a
-	// new instance.
+	// A unique name for the resource.
 	Name *string `pulumi:"name"`
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this
@@ -163,8 +161,7 @@ type InstanceState struct {
 	// The flavor ID of the desired flavor for the instance.
 	// Changing this creates new instance.
 	FlavorId pulumi.StringPtrInput
-	// Database to be created on new instance. Changing this creates a
-	// new instance.
+	// A unique name for the resource.
 	Name pulumi.StringPtrInput
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this
@@ -197,8 +194,7 @@ type instanceArgs struct {
 	// The flavor ID of the desired flavor for the instance.
 	// Changing this creates new instance.
 	FlavorId *string `pulumi:"flavorId"`
-	// Database to be created on new instance. Changing this creates a
-	// new instance.
+	// A unique name for the resource.
 	Name *string `pulumi:"name"`
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this
@@ -228,8 +224,7 @@ type InstanceArgs struct {
 	// The flavor ID of the desired flavor for the instance.
 	// Changing this creates new instance.
 	FlavorId pulumi.StringPtrInput
-	// Database to be created on new instance. Changing this creates a
-	// new instance.
+	// A unique name for the resource.
 	Name pulumi.StringPtrInput
 	// An array of one or more networks to attach to the
 	// instance. The network object structure is documented below. Changing this
@@ -361,8 +356,7 @@ func (o InstanceOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.FlavorId }).(pulumi.StringOutput)
 }
 
-// Database to be created on new instance. Changing this creates a
-// new instance.
+// A unique name for the resource.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -263,8 +263,8 @@ class InstanceNetwork(dict):
                name of the network. Changing this creates a new server.
         :param str port: The port UUID of a
                network to attach to the server. Changing this creates a new server.
-        :param str uuid: The UUID of
-               the image, volume, or snapshot. Changing this creates a new server.
+        :param str uuid: The network UUID to
+               attach to the server. Changing this creates a new server.
         """
         if access_network is not None:
             pulumi.set(__self__, "access_network", access_network)
@@ -338,8 +338,8 @@ class InstanceNetwork(dict):
     @pulumi.getter
     def uuid(self) -> Optional[str]:
         """
-        The UUID of
-        the image, volume, or snapshot. Changing this creates a new server.
+        The network UUID to
+        attach to the server. Changing this creates a new server.
         """
         return pulumi.get(self, "uuid")
 

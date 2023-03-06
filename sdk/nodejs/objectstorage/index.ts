@@ -5,14 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./container";
-export * from "./containerObject";
-export * from "./tempUrl";
+export { ContainerArgs, ContainerState } from "./container";
+export type Container = import("./container").Container;
+export const Container: typeof import("./container").Container = null as any;
+utilities.lazyLoad(exports, ["Container"], () => require("./container"));
 
-// Import resources to register:
-import { Container } from "./container";
-import { ContainerObject } from "./containerObject";
-import { TempUrl } from "./tempUrl";
+export { ContainerObjectArgs, ContainerObjectState } from "./containerObject";
+export type ContainerObject = import("./containerObject").ContainerObject;
+export const ContainerObject: typeof import("./containerObject").ContainerObject = null as any;
+utilities.lazyLoad(exports, ["ContainerObject"], () => require("./containerObject"));
+
+export { TempUrlArgs, TempUrlState } from "./tempUrl";
+export type TempUrl = import("./tempUrl").TempUrl;
+export const TempUrl: typeof import("./tempUrl").TempUrl = null as any;
+utilities.lazyLoad(exports, ["TempUrl"], () => require("./tempUrl"));
+
 
 const _module = {
     version: utilities.getVersion(),

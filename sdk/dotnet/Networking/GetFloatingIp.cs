@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var floatingip1 = OpenStack.Networking.GetFloatingIp.Invoke(new()
         ///     {
-        ///         var floatingip1 = Output.Create(OpenStack.Networking.GetFloatingIp.InvokeAsync(new OpenStack.Networking.GetFloatingIpArgs
-        ///         {
-        ///             Address = "192.168.0.4",
-        ///         }));
-        ///     }
+        ///         Address = "192.168.0.4",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFloatingIpResult> InvokeAsync(GetFloatingIpArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("openstack:networking/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("openstack:networking/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack floating IP.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var floatingip1 = OpenStack.Networking.GetFloatingIp.Invoke(new()
         ///     {
-        ///         var floatingip1 = Output.Create(OpenStack.Networking.GetFloatingIp.InvokeAsync(new OpenStack.Networking.GetFloatingIpArgs
-        ///         {
-        ///             Address = "192.168.0.4",
-        ///         }));
-        ///     }
+        ///         Address = "192.168.0.4",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFloatingIpResult> Invoke(GetFloatingIpInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFloatingIpResult>("openstack:networking/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFloatingIpResult>("openstack:networking/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetFloatingIpArgs : Pulumi.InvokeArgs
+    public sealed class GetFloatingIpArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The IP address of the floating IP.
@@ -138,9 +134,10 @@ namespace Pulumi.OpenStack.Networking
         public GetFloatingIpArgs()
         {
         }
+        public static new GetFloatingIpArgs Empty => new GetFloatingIpArgs();
     }
 
-    public sealed class GetFloatingIpInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFloatingIpInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The IP address of the floating IP.
@@ -207,6 +204,7 @@ namespace Pulumi.OpenStack.Networking
         public GetFloatingIpInvokeArgs()
         {
         }
+        public static new GetFloatingIpInvokeArgs Empty => new GetFloatingIpInvokeArgs();
     }
 
 

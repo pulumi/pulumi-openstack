@@ -15,21 +15,19 @@ namespace Pulumi.OpenStack.Networking
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var router1 = new OpenStack.Networking.Router("router1", new()
     ///     {
-    ///         var router1 = new OpenStack.Networking.Router("router1", new OpenStack.Networking.RouterArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///             ExternalNetworkId = "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f",
-    ///         });
-    ///     }
+    ///         AdminStateUp = true,
+    ///         ExternalNetworkId = "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -41,7 +39,7 @@ namespace Pulumi.OpenStack.Networking
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/router:Router")]
-    public partial class Router : Pulumi.CustomResource
+    public partial class Router : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Administrative up/down status for the router
@@ -215,7 +213,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
-    public sealed class RouterArgs : Pulumi.ResourceArgs
+    public sealed class RouterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Administrative up/down status for the router
@@ -371,9 +369,10 @@ namespace Pulumi.OpenStack.Networking
         public RouterArgs()
         {
         }
+        public static new RouterArgs Empty => new RouterArgs();
     }
 
-    public sealed class RouterState : Pulumi.ResourceArgs
+    public sealed class RouterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Administrative up/down status for the router
@@ -542,5 +541,6 @@ namespace Pulumi.OpenStack.Networking
         public RouterState()
         {
         }
+        public static new RouterState Empty => new RouterState();
     }
 }

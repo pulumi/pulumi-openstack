@@ -10,7 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.objectstorage.ContainerArgs;
 import com.pulumi.openstack.objectstorage.inputs.ContainerState;
-import com.pulumi.openstack.objectstorage.outputs.ContainerVersioning;
+import com.pulumi.openstack.objectstorage.outputs.ContainerVersioningLegacy;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -31,7 +31,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.openstack.objectstorage.Container;
  * import com.pulumi.openstack.objectstorage.ContainerArgs;
- * import com.pulumi.openstack.objectstorage.inputs.ContainerVersioningArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,7 +48,40 @@ import javax.annotation.Nullable;
  *             .contentType(&#34;application/json&#34;)
  *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
  *             .region(&#34;RegionOne&#34;)
- *             .versioning(ContainerVersioningArgs.builder()
+ *             .versioning(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Basic Container with legacy versioning
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.objectstorage.Container;
+ * import com.pulumi.openstack.objectstorage.ContainerArgs;
+ * import com.pulumi.openstack.objectstorage.inputs.ContainerVersioningLegacyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var container1 = new Container(&#34;container1&#34;, ContainerArgs.builder()        
+ *             .contentType(&#34;application/json&#34;)
+ *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
+ *             .region(&#34;RegionOne&#34;)
+ *             .versioningLegacy(ContainerVersioningLegacyArgs.builder()
  *                 .location(&#34;tf-test-container-versions&#34;)
  *                 .type(&#34;versions&#34;)
  *                 .build())
@@ -332,18 +364,38 @@ public class Container extends com.pulumi.resources.CustomResource {
         return this.storagePolicy;
     }
     /**
-     * Enable object versioning. The structure is described below.
+     * A boolean that enables or disable object versioning.
+     * Defaults to `false`
      * 
      */
-    @Export(name="versioning", type=ContainerVersioning.class, parameters={})
-    private Output</* @Nullable */ ContainerVersioning> versioning;
+    @Export(name="versioning", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> versioning;
 
     /**
-     * @return Enable object versioning. The structure is described below.
+     * @return A boolean that enables or disable object versioning.
+     * Defaults to `false`
      * 
      */
-    public Output<Optional<ContainerVersioning>> versioning() {
+    public Output<Optional<Boolean>> versioning() {
         return Codegen.optional(this.versioning);
+    }
+    /**
+     * Enable legacy object versioning. The structure is described below.
+     * 
+     * @deprecated
+     * Use newer &#34;versioning&#34; implementation
+     * 
+     */
+    @Deprecated /* Use newer ""versioning"" implementation */
+    @Export(name="versioningLegacy", type=ContainerVersioningLegacy.class, parameters={})
+    private Output</* @Nullable */ ContainerVersioningLegacy> versioningLegacy;
+
+    /**
+     * @return Enable legacy object versioning. The structure is described below.
+     * 
+     */
+    public Output<Optional<ContainerVersioningLegacy>> versioningLegacy() {
+        return Codegen.optional(this.versioningLegacy);
     }
 
     /**

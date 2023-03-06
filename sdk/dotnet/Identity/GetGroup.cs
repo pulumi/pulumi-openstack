@@ -22,26 +22,24 @@ namespace Pulumi.OpenStack.Identity
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var admins = OpenStack.Identity.GetGroup.Invoke(new()
         ///     {
-        ///         var admins = Output.Create(OpenStack.Identity.GetGroup.InvokeAsync(new OpenStack.Identity.GetGroupArgs
-        ///         {
-        ///             Name = "admins",
-        ///         }));
-        ///     }
+        ///         Name = "admins",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("openstack:identity/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("openstack:identity/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an OpenStack group.
@@ -54,30 +52,28 @@ namespace Pulumi.OpenStack.Identity
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var admins = OpenStack.Identity.GetGroup.Invoke(new()
         ///     {
-        ///         var admins = Output.Create(OpenStack.Identity.GetGroup.InvokeAsync(new OpenStack.Identity.GetGroupArgs
-        ///         {
-        ///             Name = "admins",
-        ///         }));
-        ///     }
+        ///         Name = "admins",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGroupResult>("openstack:identity/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("openstack:identity/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The domain the group belongs to.
@@ -101,9 +97,10 @@ namespace Pulumi.OpenStack.Identity
         public GetGroupArgs()
         {
         }
+        public static new GetGroupArgs Empty => new GetGroupArgs();
     }
 
-    public sealed class GetGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The domain the group belongs to.
@@ -127,6 +124,7 @@ namespace Pulumi.OpenStack.Identity
         public GetGroupInvokeArgs()
         {
         }
+        public static new GetGroupInvokeArgs Empty => new GetGroupInvokeArgs();
     }
 
 

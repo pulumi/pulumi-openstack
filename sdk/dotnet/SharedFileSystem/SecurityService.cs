@@ -26,27 +26,25 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var securityservice1 = new OpenStack.SharedFileSystem.SecurityService("securityservice1", new()
     ///     {
-    ///         var securityservice1 = new OpenStack.SharedFileSystem.SecurityService("securityservice1", new OpenStack.SharedFileSystem.SecurityServiceArgs
-    ///         {
-    ///             Description = "created by terraform",
-    ///             DnsIp = "192.168.199.10",
-    ///             Domain = "example.com",
-    ///             Ou = "CN=Computers,DC=example,DC=com",
-    ///             Password = "s8cret",
-    ///             Server = "192.168.199.10",
-    ///             Type = "active_directory",
-    ///             User = "joinDomainUser",
-    ///         });
-    ///     }
+    ///         Description = "created by terraform",
+    ///         DnsIp = "192.168.199.10",
+    ///         Domain = "example.com",
+    ///         Ou = "CN=Computers,DC=example,DC=com",
+    ///         Password = "s8cret",
+    ///         Server = "192.168.199.10",
+    ///         Type = "active_directory",
+    ///         User = "joinDomainUser",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -58,7 +56,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:sharedfilesystem/securityService:SecurityService")]
-    public partial class SecurityService : Pulumi.CustomResource
+    public partial class SecurityService : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The human-readable description for the security service.
@@ -158,6 +156,10 @@ namespace Pulumi.OpenStack.SharedFileSystem
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -179,7 +181,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         }
     }
 
-    public sealed class SecurityServiceArgs : Pulumi.ResourceArgs
+    public sealed class SecurityServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The human-readable description for the security service.
@@ -215,11 +217,21 @@ namespace Pulumi.OpenStack.SharedFileSystem
         [Input("ou")]
         public Input<string>? Ou { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The user password, if you specify a user.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The region in which to obtain the V2 Shared File System client.
@@ -253,9 +265,10 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public SecurityServiceArgs()
         {
         }
+        public static new SecurityServiceArgs Empty => new SecurityServiceArgs();
     }
 
-    public sealed class SecurityServiceState : Pulumi.ResourceArgs
+    public sealed class SecurityServiceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The human-readable description for the security service.
@@ -291,11 +304,21 @@ namespace Pulumi.OpenStack.SharedFileSystem
         [Input("ou")]
         public Input<string>? Ou { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The user password, if you specify a user.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The owner of the Security Service.
@@ -335,5 +358,6 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public SecurityServiceState()
         {
         }
+        public static new SecurityServiceState Empty => new SecurityServiceState();
     }
 }

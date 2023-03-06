@@ -16,47 +16,46 @@ namespace Pulumi.OpenStack.Networking
     /// ### Simple port
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
     ///     {
-    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var port1 = new OpenStack.Networking.Port("port1", new OpenStack.Networking.PortArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///             NetworkId = network1.Id,
-    ///         });
-    ///     }
+    ///         AdminStateUp = true,
+    ///     });
     /// 
-    /// }
+    ///     var port1 = new OpenStack.Networking.Port("port1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///         NetworkId = network1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Port with physical binding information
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
     ///     {
-    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
+    ///         AdminStateUp = true,
+    ///     });
+    /// 
+    ///     var port1 = new OpenStack.Networking.Port("port1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///         Binding = new OpenStack.Networking.Inputs.PortBindingArgs
     ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var port1 = new OpenStack.Networking.Port("port1", new OpenStack.Networking.PortArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///             Binding = new OpenStack.Networking.Inputs.PortBindingArgs
-    ///             {
-    ///                 HostId = "b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
-    ///                 Profile = @"{
+    ///             HostId = "b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
+    ///             Profile = @"{
     ///   ""local_link_information"": [
     ///     {
     ///       ""switch_info"": ""info1"",
@@ -73,15 +72,14 @@ namespace Pulumi.OpenStack.Networking
     /// }
     /// 
     /// ",
-    ///                 VnicType = "baremetal",
-    ///             },
-    ///             DeviceId = "cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
-    ///             DeviceOwner = "baremetal:none",
-    ///             NetworkId = network1.Id,
-    ///         });
-    ///     }
+    ///             VnicType = "baremetal",
+    ///         },
+    ///         DeviceId = "cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
+    ///         DeviceOwner = "baremetal:none",
+    ///         NetworkId = network1.Id,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Notes
     /// 
@@ -100,7 +98,7 @@ namespace Pulumi.OpenStack.Networking
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/port:Port")]
-    public partial class Port : Pulumi.CustomResource
+    public partial class Port : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Administrative up/down status for the port
@@ -196,13 +194,15 @@ namespace Pulumi.OpenStack.Networking
         public Output<ImmutableArray<Outputs.PortFixedIp>> FixedIps { get; private set; } = null!;
 
         /// <summary>
-        /// The additional MAC address.
+        /// Specify a specific MAC address for the port. Changing
+        /// this creates a new port.
         /// </summary>
         [Output("macAddress")]
         public Output<string> MacAddress { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the DHCP option.
+        /// A unique name for the port. Changing this
+        /// updates the `name` of an existing port.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -330,7 +330,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
-    public sealed class PortArgs : Pulumi.ResourceArgs
+    public sealed class PortArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Administrative up/down status for the port
@@ -417,13 +417,15 @@ namespace Pulumi.OpenStack.Networking
         }
 
         /// <summary>
-        /// The additional MAC address.
+        /// Specify a specific MAC address for the port. Changing
+        /// this creates a new port.
         /// </summary>
         [Input("macAddress")]
         public Input<string>? MacAddress { get; set; }
 
         /// <summary>
-        /// Name of the DHCP option.
+        /// A unique name for the port. Changing this
+        /// updates the `name` of an existing port.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -528,9 +530,10 @@ namespace Pulumi.OpenStack.Networking
         public PortArgs()
         {
         }
+        public static new PortArgs Empty => new PortArgs();
     }
 
-    public sealed class PortState : Pulumi.ResourceArgs
+    public sealed class PortState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Administrative up/down status for the port
@@ -668,13 +671,15 @@ namespace Pulumi.OpenStack.Networking
         }
 
         /// <summary>
-        /// The additional MAC address.
+        /// Specify a specific MAC address for the port. Changing
+        /// this creates a new port.
         /// </summary>
         [Input("macAddress")]
         public Input<string>? MacAddress { get; set; }
 
         /// <summary>
-        /// Name of the DHCP option.
+        /// A unique name for the port. Changing this
+        /// updates the `name` of an existing port.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -779,5 +784,6 @@ namespace Pulumi.OpenStack.Networking
         public PortState()
         {
         }
+        public static new PortState Empty => new PortState();
     }
 }

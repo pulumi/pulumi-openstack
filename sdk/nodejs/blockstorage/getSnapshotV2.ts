@@ -13,19 +13,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const snapshot1 = pulumi.output(openstack.blockstorage.getSnapshotV2({
+ * const snapshot1 = openstack.blockstorage.getSnapshotV2({
  *     mostRecent: true,
  *     name: "snapshot_1",
- * }));
+ * });
  * ```
  */
 export function getSnapshotV2(args?: GetSnapshotV2Args, opts?: pulumi.InvokeOptions): Promise<GetSnapshotV2Result> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:blockstorage/getSnapshotV2:getSnapshotV2", {
         "mostRecent": args.mostRecent,
         "name": args.name,
@@ -101,9 +98,23 @@ export interface GetSnapshotV2Result {
      */
     readonly volumeId: string;
 }
-
+/**
+ * Use this data source to get information about an existing snapshot.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const snapshot1 = openstack.blockstorage.getSnapshotV2({
+ *     mostRecent: true,
+ *     name: "snapshot_1",
+ * });
+ * ```
+ */
 export function getSnapshotV2Output(args?: GetSnapshotV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotV2Result> {
-    return pulumi.output(args).apply(a => getSnapshotV2(a, opts))
+    return pulumi.output(args).apply((a: any) => getSnapshotV2(a, opts))
 }
 
 /**

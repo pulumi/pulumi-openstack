@@ -15,44 +15,45 @@ namespace Pulumi.OpenStack.Firewall
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var rule1 = new OpenStack.Firewall.Rule("rule1", new()
     ///     {
-    ///         var rule1 = new OpenStack.Firewall.Rule("rule1", new OpenStack.Firewall.RuleArgs
-    ///         {
-    ///             Action = "deny",
-    ///             Description = "drop TELNET traffic",
-    ///             DestinationPort = "23",
-    ///             Enabled = true,
-    ///             Protocol = "tcp",
-    ///         });
-    ///         var rule2 = new OpenStack.Firewall.Rule("rule2", new OpenStack.Firewall.RuleArgs
-    ///         {
-    ///             Action = "deny",
-    ///             Description = "drop NTP traffic",
-    ///             DestinationPort = "123",
-    ///             Enabled = false,
-    ///             Protocol = "udp",
-    ///         });
-    ///         var policy1 = new OpenStack.Firewall.Policy("policy1", new OpenStack.Firewall.PolicyArgs
-    ///         {
-    ///             Rules = 
-    ///             {
-    ///                 rule1.Id,
-    ///                 rule2.Id,
-    ///             },
-    ///         });
-    ///         var firewall1 = new OpenStack.Firewall.Firewall("firewall1", new OpenStack.Firewall.FirewallArgs
-    ///         {
-    ///             PolicyId = policy1.Id,
-    ///         });
-    ///     }
+    ///         Action = "deny",
+    ///         Description = "drop TELNET traffic",
+    ///         DestinationPort = "23",
+    ///         Enabled = true,
+    ///         Protocol = "tcp",
+    ///     });
     /// 
-    /// }
+    ///     var rule2 = new OpenStack.Firewall.Rule("rule2", new()
+    ///     {
+    ///         Action = "deny",
+    ///         Description = "drop NTP traffic",
+    ///         DestinationPort = "123",
+    ///         Enabled = false,
+    ///         Protocol = "udp",
+    ///     });
+    /// 
+    ///     var policy1 = new OpenStack.Firewall.Policy("policy1", new()
+    ///     {
+    ///         Rules = new[]
+    ///         {
+    ///             rule1.Id,
+    ///             rule2.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var firewall1 = new OpenStack.Firewall.Firewall("firewall1", new()
+    ///     {
+    ///         PolicyId = policy1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -64,7 +65,7 @@ namespace Pulumi.OpenStack.Firewall
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:firewall/firewall:Firewall")]
-    public partial class Firewall : Pulumi.CustomResource
+    public partial class Firewall : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Administrative up/down status for the firewall
@@ -178,7 +179,7 @@ namespace Pulumi.OpenStack.Firewall
         }
     }
 
-    public sealed class FirewallArgs : Pulumi.ResourceArgs
+    public sealed class FirewallArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Administrative up/down status for the firewall
@@ -263,9 +264,10 @@ namespace Pulumi.OpenStack.Firewall
         public FirewallArgs()
         {
         }
+        public static new FirewallArgs Empty => new FirewallArgs();
     }
 
-    public sealed class FirewallState : Pulumi.ResourceArgs
+    public sealed class FirewallState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Administrative up/down status for the firewall
@@ -350,5 +352,6 @@ namespace Pulumi.OpenStack.Firewall
         public FirewallState()
         {
         }
+        public static new FirewallState Empty => new FirewallState();
     }
 }

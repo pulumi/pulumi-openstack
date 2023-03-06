@@ -16,21 +16,19 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// ### Create a Nodegroup
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var nodegroup1 = new OpenStack.ContainerInfra.NodeGroup("nodegroup1", new()
     ///     {
-    ///         var nodegroup1 = new OpenStack.ContainerInfra.NodeGroup("nodegroup1", new OpenStack.ContainerInfra.NodeGroupArgs
-    ///         {
-    ///             ClusterId = "b9a45c5c-cd03-4958-82aa-b80bf93cb922",
-    ///             NodeCount = 5,
-    ///         });
-    ///     }
+    ///         ClusterId = "b9a45c5c-cd03-4958-82aa-b80bf93cb922",
+    ///         NodeCount = 5,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Attributes reference
     /// 
@@ -60,7 +58,7 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:containerinfra/nodeGroup:NodeGroup")]
-    public partial class NodeGroup : Pulumi.CustomResource
+    public partial class NodeGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The UUID of the V1 Container Infra cluster.
@@ -208,7 +206,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         }
     }
 
-    public sealed class NodeGroupArgs : Pulumi.ResourceArgs
+    public sealed class NodeGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The UUID of the V1 Container Infra cluster.
@@ -307,9 +305,10 @@ namespace Pulumi.OpenStack.ContainerInfra
         public NodeGroupArgs()
         {
         }
+        public static new NodeGroupArgs Empty => new NodeGroupArgs();
     }
 
-    public sealed class NodeGroupState : Pulumi.ResourceArgs
+    public sealed class NodeGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The UUID of the V1 Container Infra cluster.
@@ -422,5 +421,6 @@ namespace Pulumi.OpenStack.ContainerInfra
         public NodeGroupState()
         {
         }
+        public static new NodeGroupState Empty => new NodeGroupState();
     }
 }

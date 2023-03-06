@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -38,7 +39,6 @@ import * as utilities from "../utilities";
  *     description: "Unrestricted application credential",
  *     unrestricted: true,
  * });
- *
  * export const applicationCredentialSecret = unrestricted.secret;
  * ```
  * ### Application credential with access rules
@@ -189,11 +189,13 @@ export class ApplicationCredential extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["roles"] = args ? args.roles : undefined;
-            resourceInputs["secret"] = args ? args.secret : undefined;
+            resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
             resourceInputs["unrestricted"] = args ? args.unrestricted : undefined;
             resourceInputs["projectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["secret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ApplicationCredential.__pulumiType, name, resourceInputs, opts);
     }
 }

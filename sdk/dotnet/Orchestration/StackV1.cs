@@ -15,29 +15,28 @@ namespace Pulumi.OpenStack.Orchestration
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var stack1 = new OpenStack.Orchestration.StackV1("stack1", new()
     ///     {
-    ///         var stack1 = new OpenStack.Orchestration.StackV1("stack1", new OpenStack.Orchestration.StackV1Args
+    ///         DisableRollback = true,
+    ///         EnvironmentOpts = 
     ///         {
-    ///             DisableRollback = true,
-    ///             EnvironmentOpts = 
-    ///             {
-    ///                 { "Bin", @"
+    ///             { "Bin", @"
     /// 
     /// " },
-    ///             },
-    ///             Parameters = 
-    ///             {
-    ///                 { "length", 4 },
-    ///             },
-    ///             TemplateOpts = 
-    ///             {
-    ///                 { "Bin", @"heat_template_version: 2013-05-23
+    ///         },
+    ///         Parameters = 
+    ///         {
+    ///             { "length", 4 },
+    ///         },
+    ///         TemplateOpts = 
+    ///         {
+    ///             { "Bin", @"heat_template_version: 2013-05-23
     /// parameters:
     ///   length:
     ///     type: number
@@ -50,12 +49,11 @@ namespace Pulumi.OpenStack.Orchestration
     ///       length: {get_param: length}
     /// 
     /// " },
-    ///             },
-    ///             Timeout = 30,
-    ///         });
-    ///     }
+    ///         },
+    ///         Timeout = 30,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -67,7 +65,7 @@ namespace Pulumi.OpenStack.Orchestration
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:orchestration/stackV1:StackV1")]
-    public partial class StackV1 : Pulumi.CustomResource
+    public partial class StackV1 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of stack outputs.
@@ -233,7 +231,7 @@ namespace Pulumi.OpenStack.Orchestration
         }
     }
 
-    public sealed class StackV1Args : Pulumi.ResourceArgs
+    public sealed class StackV1Args : global::Pulumi.ResourceArgs
     {
         [Input("StackOutputs")]
         private InputList<Inputs.StackV1StackOutputArgs>? _StackOutputs;
@@ -400,9 +398,10 @@ namespace Pulumi.OpenStack.Orchestration
         public StackV1Args()
         {
         }
+        public static new StackV1Args Empty => new StackV1Args();
     }
 
-    public sealed class StackV1State : Pulumi.ResourceArgs
+    public sealed class StackV1State : global::Pulumi.ResourceArgs
     {
         [Input("StackOutputs")]
         private InputList<Inputs.StackV1StackOutputGetArgs>? _StackOutputs;
@@ -569,5 +568,6 @@ namespace Pulumi.OpenStack.Orchestration
         public StackV1State()
         {
         }
+        public static new StackV1State Empty => new StackV1State();
     }
 }

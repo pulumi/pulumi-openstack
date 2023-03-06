@@ -15,40 +15,40 @@ namespace Pulumi.OpenStack.Firewall
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var rule1 = new OpenStack.Firewall.Rule("rule1", new()
     ///     {
-    ///         var rule1 = new OpenStack.Firewall.Rule("rule1", new OpenStack.Firewall.RuleArgs
-    ///         {
-    ///             Action = "deny",
-    ///             Description = "drop TELNET traffic",
-    ///             DestinationPort = "23",
-    ///             Enabled = true,
-    ///             Protocol = "tcp",
-    ///         });
-    ///         var rule2 = new OpenStack.Firewall.Rule("rule2", new OpenStack.Firewall.RuleArgs
-    ///         {
-    ///             Action = "deny",
-    ///             Description = "drop NTP traffic",
-    ///             DestinationPort = "123",
-    ///             Enabled = false,
-    ///             Protocol = "udp",
-    ///         });
-    ///         var policy1 = new OpenStack.Firewall.Policy("policy1", new OpenStack.Firewall.PolicyArgs
-    ///         {
-    ///             Rules = 
-    ///             {
-    ///                 rule1.Id,
-    ///                 rule2.Id,
-    ///             },
-    ///         });
-    ///     }
+    ///         Action = "deny",
+    ///         Description = "drop TELNET traffic",
+    ///         DestinationPort = "23",
+    ///         Enabled = true,
+    ///         Protocol = "tcp",
+    ///     });
     /// 
-    /// }
+    ///     var rule2 = new OpenStack.Firewall.Rule("rule2", new()
+    ///     {
+    ///         Action = "deny",
+    ///         Description = "drop NTP traffic",
+    ///         DestinationPort = "123",
+    ///         Enabled = false,
+    ///         Protocol = "udp",
+    ///     });
+    /// 
+    ///     var policy1 = new OpenStack.Firewall.Policy("policy1", new()
+    ///     {
+    ///         Rules = new[]
+    ///         {
+    ///             rule1.Id,
+    ///             rule2.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -60,7 +60,7 @@ namespace Pulumi.OpenStack.Firewall
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:firewall/policy:Policy")]
-    public partial class Policy : Pulumi.CustomResource
+    public partial class Policy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Audit status of the firewall policy
@@ -166,7 +166,7 @@ namespace Pulumi.OpenStack.Firewall
         }
     }
 
-    public sealed class PolicyArgs : Pulumi.ResourceArgs
+    public sealed class PolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Audit status of the firewall policy
@@ -243,9 +243,10 @@ namespace Pulumi.OpenStack.Firewall
         public PolicyArgs()
         {
         }
+        public static new PolicyArgs Empty => new PolicyArgs();
     }
 
-    public sealed class PolicyState : Pulumi.ResourceArgs
+    public sealed class PolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Audit status of the firewall policy
@@ -322,5 +323,6 @@ namespace Pulumi.OpenStack.Firewall
         public PolicyState()
         {
         }
+        public static new PolicyState Empty => new PolicyState();
     }
 }

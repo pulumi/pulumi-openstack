@@ -26,7 +26,9 @@ class TrunkArgs:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Trunk resource.
-        :param pulumi.Input[str] port_id: The ID of the port to be made a subport of the trunk.
+        :param pulumi.Input[str] port_id: The ID of the port to be used as the parent port of the
+               trunk. This is the port that should be used as the compute instance network
+               port. Changing this creates a new trunk.
         :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the trunk
                (must be "true" or "false" if provided). Changing this updates the
                `admin_state_up` of an existing trunk.
@@ -64,7 +66,9 @@ class TrunkArgs:
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Input[str]:
         """
-        The ID of the port to be made a subport of the trunk.
+        The ID of the port to be used as the parent port of the
+        trunk. This is the port that should be used as the compute instance network
+        port. Changing this creates a new trunk.
         """
         return pulumi.get(self, "port_id")
 
@@ -189,7 +193,9 @@ class _TrunkState:
                updates the name of the existing trunk.
         :param pulumi.Input[str] name: A unique name for the trunk. Changing this
                updates the `name` of an existing trunk.
-        :param pulumi.Input[str] port_id: The ID of the port to be made a subport of the trunk.
+        :param pulumi.Input[str] port_id: The ID of the port to be used as the parent port of the
+               trunk. This is the port that should be used as the compute instance network
+               port. Changing this creates a new trunk.
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to create a trunk. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -276,7 +282,9 @@ class _TrunkState:
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the port to be made a subport of the trunk.
+        The ID of the port to be used as the parent port of the
+        trunk. This is the port that should be used as the compute instance network
+        port. Changing this creates a new trunk.
         """
         return pulumi.get(self, "port_id")
 
@@ -400,7 +408,9 @@ class Trunk(pulumi.CustomResource):
                updates the name of the existing trunk.
         :param pulumi.Input[str] name: A unique name for the trunk. Changing this
                updates the `name` of an existing trunk.
-        :param pulumi.Input[str] port_id: The ID of the port to be made a subport of the trunk.
+        :param pulumi.Input[str] port_id: The ID of the port to be used as the parent port of the
+               trunk. This is the port that should be used as the compute instance network
+               port. Changing this creates a new trunk.
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to create a trunk. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -534,7 +544,9 @@ class Trunk(pulumi.CustomResource):
                updates the name of the existing trunk.
         :param pulumi.Input[str] name: A unique name for the trunk. Changing this
                updates the `name` of an existing trunk.
-        :param pulumi.Input[str] port_id: The ID of the port to be made a subport of the trunk.
+        :param pulumi.Input[str] port_id: The ID of the port to be used as the parent port of the
+               trunk. This is the port that should be used as the compute instance network
+               port. Changing this creates a new trunk.
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
                A networking client is needed to create a trunk. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -601,7 +613,9 @@ class Trunk(pulumi.CustomResource):
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Output[str]:
         """
-        The ID of the port to be made a subport of the trunk.
+        The ID of the port to be used as the parent port of the
+        trunk. This is the port that should be used as the compute instance network
+        port. Changing this creates a new trunk.
         """
         return pulumi.get(self, "port_id")
 

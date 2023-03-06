@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,18 +15,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const example = pulumi.output(openstack.keymanager.getContainer({
+ * const example = openstack.keymanager.getContainer({
  *     name: "my_container",
- * }));
+ * });
  * ```
  */
 export function getContainer(args?: GetContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:keymanager/getContainer:getContainer", {
         "name": args.name,
         "region": args.region,
@@ -104,9 +102,22 @@ export interface GetContainerResult {
      */
     readonly updatedAt: string;
 }
-
+/**
+ * Use this data source to get the ID of an available Barbican container.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const example = openstack.keymanager.getContainer({
+ *     name: "my_container",
+ * });
+ * ```
+ */
 export function getContainerOutput(args?: GetContainerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerResult> {
-    return pulumi.output(args).apply(a => getContainer(a, opts))
+    return pulumi.output(args).apply((a: any) => getContainer(a, opts))
 }
 
 /**

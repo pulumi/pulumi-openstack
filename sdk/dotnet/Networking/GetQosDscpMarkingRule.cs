@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var qosDscpMarkingRule1 = OpenStack.Networking.GetQosDscpMarkingRule.Invoke(new()
         ///     {
-        ///         var qosDscpMarkingRule1 = Output.Create(OpenStack.Networking.GetQosDscpMarkingRule.InvokeAsync(new OpenStack.Networking.GetQosDscpMarkingRuleArgs
-        ///         {
-        ///             DscpMark = 26,
-        ///         }));
-        ///     }
+        ///         DscpMark = 26,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetQosDscpMarkingRuleResult> InvokeAsync(GetQosDscpMarkingRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQosDscpMarkingRuleResult>("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args ?? new GetQosDscpMarkingRuleArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetQosDscpMarkingRuleResult>("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args ?? new GetQosDscpMarkingRuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var qosDscpMarkingRule1 = OpenStack.Networking.GetQosDscpMarkingRule.Invoke(new()
         ///     {
-        ///         var qosDscpMarkingRule1 = Output.Create(OpenStack.Networking.GetQosDscpMarkingRule.InvokeAsync(new OpenStack.Networking.GetQosDscpMarkingRuleArgs
-        ///         {
-        ///             DscpMark = 26,
-        ///         }));
-        ///     }
+        ///         DscpMark = 26,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetQosDscpMarkingRuleResult> Invoke(GetQosDscpMarkingRuleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetQosDscpMarkingRuleResult>("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args ?? new GetQosDscpMarkingRuleInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetQosDscpMarkingRuleResult>("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args ?? new GetQosDscpMarkingRuleInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetQosDscpMarkingRuleArgs : Pulumi.InvokeArgs
+    public sealed class GetQosDscpMarkingRuleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The value of a DSCP mark.
@@ -96,9 +92,10 @@ namespace Pulumi.OpenStack.Networking
         public GetQosDscpMarkingRuleArgs()
         {
         }
+        public static new GetQosDscpMarkingRuleArgs Empty => new GetQosDscpMarkingRuleArgs();
     }
 
-    public sealed class GetQosDscpMarkingRuleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetQosDscpMarkingRuleInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The value of a DSCP mark.
@@ -123,6 +120,7 @@ namespace Pulumi.OpenStack.Networking
         public GetQosDscpMarkingRuleInvokeArgs()
         {
         }
+        public static new GetQosDscpMarkingRuleInvokeArgs Empty => new GetQosDscpMarkingRuleInvokeArgs();
     }
 
 

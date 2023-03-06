@@ -85,7 +85,6 @@ class GetSubnetPoolResult:
     def address_scope_id(self) -> str:
         """
         See Argument Reference above.
-        * `ip_version` -The IP protocol version.
         """
         return pulumi.get(self, "address_scope_id")
 
@@ -140,6 +139,9 @@ class GetSubnetPoolResult:
     @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> int:
+        """
+        The IP protocol version.
+        """
         return pulumi.get(self, "ip_version")
 
     @property

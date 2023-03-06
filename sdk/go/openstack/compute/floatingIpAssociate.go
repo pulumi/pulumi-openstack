@@ -99,9 +99,9 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewFloatingIpAssociate(ctx, "fip1FloatingIpAssociate", &compute.FloatingIpAssociateArgs{
-//				FixedIp: instance1.Networks.ApplyT(func(networks []compute.InstanceNetwork) (string, error) {
-//					return networks[1].FixedIpV4, nil
-//				}).(pulumi.StringOutput),
+//				FixedIp: instance1.Networks.ApplyT(func(networks []compute.InstanceNetwork) (*string, error) {
+//					return &networks[1].FixedIpV4, nil
+//				}).(pulumi.StringPtrOutput),
 //				FloatingIp: fip1FloatingIp.Address,
 //				InstanceId: instance1.ID(),
 //			})

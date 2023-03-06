@@ -15,35 +15,36 @@ namespace Pulumi.OpenStack.Networking
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
     ///     {
-    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
-    ///         {
-    ///             Cidr = "192.168.199.0/24",
-    ///             IpVersion = 4,
-    ///             NetworkId = network1.Id,
-    ///         });
-    ///         var router1 = new OpenStack.Networking.Router("router1", new OpenStack.Networking.RouterArgs
-    ///         {
-    ///             ExternalNetworkId = "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f",
-    ///         });
-    ///         var routerInterface1 = new OpenStack.Networking.RouterInterface("routerInterface1", new OpenStack.Networking.RouterInterfaceArgs
-    ///         {
-    ///             RouterId = router1.Id,
-    ///             SubnetId = subnet1.Id,
-    ///         });
-    ///     }
+    ///         AdminStateUp = true,
+    ///     });
     /// 
-    /// }
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     {
+    ///         Cidr = "192.168.199.0/24",
+    ///         IpVersion = 4,
+    ///         NetworkId = network1.Id,
+    ///     });
+    /// 
+    ///     var router1 = new OpenStack.Networking.Router("router1", new()
+    ///     {
+    ///         ExternalNetworkId = "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f",
+    ///     });
+    /// 
+    ///     var routerInterface1 = new OpenStack.Networking.RouterInterface("routerInterface1", new()
+    ///     {
+    ///         RouterId = router1.Id,
+    ///         SubnetId = subnet1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +56,7 @@ namespace Pulumi.OpenStack.Networking
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/routerInterface:RouterInterface")]
-    public partial class RouterInterface : Pulumi.CustomResource
+    public partial class RouterInterface : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ID of the port this interface connects to. Changing
@@ -131,7 +132,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
-    public sealed class RouterInterfaceArgs : Pulumi.ResourceArgs
+    public sealed class RouterInterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the port this interface connects to. Changing
@@ -166,9 +167,10 @@ namespace Pulumi.OpenStack.Networking
         public RouterInterfaceArgs()
         {
         }
+        public static new RouterInterfaceArgs Empty => new RouterInterfaceArgs();
     }
 
-    public sealed class RouterInterfaceState : Pulumi.ResourceArgs
+    public sealed class RouterInterfaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the port this interface connects to. Changing
@@ -203,5 +205,6 @@ namespace Pulumi.OpenStack.Networking
         public RouterInterfaceState()
         {
         }
+        public static new RouterInterfaceState Empty => new RouterInterfaceState();
     }
 }

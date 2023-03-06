@@ -13,19 +13,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const small = pulumi.output(openstack.compute.getFlavor({
+ * const small = openstack.compute.getFlavor({
  *     ram: 512,
  *     vcpus: 1,
- * }));
+ * });
  * ```
  */
 export function getFlavor(args?: GetFlavorArgs, opts?: pulumi.InvokeOptions): Promise<GetFlavorResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:compute/getFlavor:getFlavor", {
         "description": args.description,
         "disk": args.disk,
@@ -125,9 +122,23 @@ export interface GetFlavorResult {
     readonly swap?: number;
     readonly vcpus?: number;
 }
-
+/**
+ * Use this data source to get the ID of an available OpenStack flavor.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const small = openstack.compute.getFlavor({
+ *     ram: 512,
+ *     vcpus: 1,
+ * });
+ * ```
+ */
 export function getFlavorOutput(args?: GetFlavorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlavorResult> {
-    return pulumi.output(args).apply(a => getFlavor(a, opts))
+    return pulumi.output(args).apply((a: any) => getFlavor(a, opts))
 }
 
 /**

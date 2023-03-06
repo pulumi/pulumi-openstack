@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const cluster1 = new openstack.containerinfra.Cluster("cluster_1", {
+ * const cluster1 = new openstack.containerinfra.Cluster("cluster1", {
  *     clusterTemplateId: "b9a45c5c-cd03-4958-82aa-b80bf93cb922",
  *     keypair: "ssh_keypair",
  *     masterCount: 3,
@@ -271,6 +271,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["userId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["kubeconfig"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
 }

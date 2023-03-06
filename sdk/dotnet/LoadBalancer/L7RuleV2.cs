@@ -15,57 +15,61 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
     ///     {
-    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
-    ///         {
-    ///             Cidr = "192.168.199.0/24",
-    ///             IpVersion = 4,
-    ///             NetworkId = network1.Id,
-    ///         });
-    ///         var loadbalancer1 = new OpenStack.LoadBalancer.LoadBalancer("loadbalancer1", new OpenStack.LoadBalancer.LoadBalancerArgs
-    ///         {
-    ///             VipSubnetId = subnet1.Id,
-    ///         });
-    ///         var listener1 = new OpenStack.LoadBalancer.Listener("listener1", new OpenStack.LoadBalancer.ListenerArgs
-    ///         {
-    ///             LoadbalancerId = loadbalancer1.Id,
-    ///             Protocol = "HTTP",
-    ///             ProtocolPort = 8080,
-    ///         });
-    ///         var pool1 = new OpenStack.LoadBalancer.Pool("pool1", new OpenStack.LoadBalancer.PoolArgs
-    ///         {
-    ///             LbMethod = "ROUND_ROBIN",
-    ///             LoadbalancerId = loadbalancer1.Id,
-    ///             Protocol = "HTTP",
-    ///         });
-    ///         var l7policy1 = new OpenStack.LoadBalancer.L7PolicyV2("l7policy1", new OpenStack.LoadBalancer.L7PolicyV2Args
-    ///         {
-    ///             Action = "REDIRECT_TO_URL",
-    ///             Description = "test description",
-    ///             ListenerId = listener1.Id,
-    ///             Position = 1,
-    ///             RedirectUrl = "http://www.example.com",
-    ///         });
-    ///         var l7rule1 = new OpenStack.LoadBalancer.L7RuleV2("l7rule1", new OpenStack.LoadBalancer.L7RuleV2Args
-    ///         {
-    ///             CompareType = "EQUAL_TO",
-    ///             L7policyId = l7policy1.Id,
-    ///             Type = "PATH",
-    ///             Value = "/api",
-    ///         });
-    ///     }
+    ///         AdminStateUp = true,
+    ///     });
     /// 
-    /// }
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     {
+    ///         Cidr = "192.168.199.0/24",
+    ///         IpVersion = 4,
+    ///         NetworkId = network1.Id,
+    ///     });
+    /// 
+    ///     var loadbalancer1 = new OpenStack.LoadBalancer.LoadBalancer("loadbalancer1", new()
+    ///     {
+    ///         VipSubnetId = subnet1.Id,
+    ///     });
+    /// 
+    ///     var listener1 = new OpenStack.LoadBalancer.Listener("listener1", new()
+    ///     {
+    ///         LoadbalancerId = loadbalancer1.Id,
+    ///         Protocol = "HTTP",
+    ///         ProtocolPort = 8080,
+    ///     });
+    /// 
+    ///     var pool1 = new OpenStack.LoadBalancer.Pool("pool1", new()
+    ///     {
+    ///         LbMethod = "ROUND_ROBIN",
+    ///         LoadbalancerId = loadbalancer1.Id,
+    ///         Protocol = "HTTP",
+    ///     });
+    /// 
+    ///     var l7policy1 = new OpenStack.LoadBalancer.L7PolicyV2("l7policy1", new()
+    ///     {
+    ///         Action = "REDIRECT_TO_URL",
+    ///         Description = "test description",
+    ///         ListenerId = listener1.Id,
+    ///         Position = 1,
+    ///         RedirectUrl = "http://www.example.com",
+    ///     });
+    /// 
+    ///     var l7rule1 = new OpenStack.LoadBalancer.L7RuleV2("l7rule1", new()
+    ///     {
+    ///         CompareType = "EQUAL_TO",
+    ///         L7policyId = l7policy1.Id,
+    ///         Type = "PATH",
+    ///         Value = "/api",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -77,7 +81,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:loadbalancer/l7RuleV2:L7RuleV2")]
-    public partial class L7RuleV2 : Pulumi.CustomResource
+    public partial class L7RuleV2 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The administrative state of the L7 Rule.
@@ -195,7 +199,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         }
     }
 
-    public sealed class L7RuleV2Args : Pulumi.ResourceArgs
+    public sealed class L7RuleV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The administrative state of the L7 Rule.
@@ -266,9 +270,10 @@ namespace Pulumi.OpenStack.LoadBalancer
         public L7RuleV2Args()
         {
         }
+        public static new L7RuleV2Args Empty => new L7RuleV2Args();
     }
 
-    public sealed class L7RuleV2State : Pulumi.ResourceArgs
+    public sealed class L7RuleV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The administrative state of the L7 Rule.
@@ -345,5 +350,6 @@ namespace Pulumi.OpenStack.LoadBalancer
         public L7RuleV2State()
         {
         }
+        public static new L7RuleV2State Empty => new L7RuleV2State();
     }
 }

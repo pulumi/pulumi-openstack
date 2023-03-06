@@ -13,18 +13,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const qosPolicy1 = pulumi.output(openstack.networking.getQosPolicy({
+ * const qosPolicy1 = openstack.networking.getQosPolicy({
  *     name: "qos_policy_1",
- * }));
+ * });
  * ```
  */
 export function getQosPolicy(args?: GetQosPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetQosPolicyResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getQosPolicy:getQosPolicy", {
         "description": args.description,
         "isDefault": args.isDefault,
@@ -119,9 +116,22 @@ export interface GetQosPolicyResult {
      */
     readonly updatedAt: string;
 }
-
+/**
+ * Use this data source to get the ID of an available OpenStack QoS policy.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const qosPolicy1 = openstack.networking.getQosPolicy({
+ *     name: "qos_policy_1",
+ * });
+ * ```
+ */
 export function getQosPolicyOutput(args?: GetQosPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQosPolicyResult> {
-    return pulumi.output(args).apply(a => getQosPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getQosPolicy(a, opts))
 }
 
 /**

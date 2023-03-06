@@ -10,11 +10,11 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'ContainerVersioning',
+    'ContainerVersioningLegacy',
 ]
 
 @pulumi.output_type
-class ContainerVersioning(dict):
+class ContainerVersioningLegacy(dict):
     def __init__(__self__, *,
                  location: str,
                  type: str):

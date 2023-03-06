@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.KeyManager.Inputs
 {
 
-    public sealed class ContainerV1AclGetArgs : Pulumi.ResourceArgs
+    public sealed class ContainerV1AclGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("read")]
         public Input<Inputs.ContainerV1AclReadGetArgs>? Read { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.OpenStack.KeyManager.Inputs
         public ContainerV1AclGetArgs()
         {
         }
+        public static new ContainerV1AclGetArgs Empty => new ContainerV1AclGetArgs();
     }
 }

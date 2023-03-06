@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var router = OpenStack.Networking.GetRouter.Invoke(new()
         ///     {
-        ///         var router = Output.Create(OpenStack.Networking.GetRouter.InvokeAsync(new OpenStack.Networking.GetRouterArgs
-        ///         {
-        ///             Name = "router_1",
-        ///         }));
-        ///     }
+        ///         Name = "router_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouterResult> InvokeAsync(GetRouterArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("openstack:networking/getRouter:getRouter", args ?? new GetRouterArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("openstack:networking/getRouter:getRouter", args ?? new GetRouterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack router.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var router = OpenStack.Networking.GetRouter.Invoke(new()
         ///     {
-        ///         var router = Output.Create(OpenStack.Networking.GetRouter.InvokeAsync(new OpenStack.Networking.GetRouterArgs
-        ///         {
-        ///             Name = "router_1",
-        ///         }));
-        ///     }
+        ///         Name = "router_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRouterResult> Invoke(GetRouterInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRouterResult>("openstack:networking/getRouter:getRouter", args ?? new GetRouterInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRouterResult>("openstack:networking/getRouter:getRouter", args ?? new GetRouterInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRouterArgs : Pulumi.InvokeArgs
+    public sealed class GetRouterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Administrative up/down status for the router (must be "true" or "false" if provided).
@@ -144,9 +140,10 @@ namespace Pulumi.OpenStack.Networking
         public GetRouterArgs()
         {
         }
+        public static new GetRouterArgs Empty => new GetRouterArgs();
     }
 
-    public sealed class GetRouterInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRouterInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Administrative up/down status for the router (must be "true" or "false" if provided).
@@ -219,6 +216,7 @@ namespace Pulumi.OpenStack.Networking
         public GetRouterInvokeArgs()
         {
         }
+        public static new GetRouterInvokeArgs Empty => new GetRouterInvokeArgs();
     }
 
 

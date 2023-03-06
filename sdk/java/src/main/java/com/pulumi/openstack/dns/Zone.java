@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example_com = new Zone(&#34;example.com&#34;, ZoneArgs.builder()        
+ *         var exampleCom = new Zone(&#34;exampleCom&#34;, ZoneArgs.builder()        
  *             .description(&#34;An example zone&#34;)
  *             .email(&#34;jdoe@example.com&#34;)
  *             .ttl(3000)

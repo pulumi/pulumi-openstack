@@ -15,21 +15,19 @@ namespace Pulumi.OpenStack.VPNaaS
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var service1 = new OpenStack.VPNaaS.Service("service1", new()
     ///     {
-    ///         var service1 = new OpenStack.VPNaaS.Service("service1", new OpenStack.VPNaaS.ServiceArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///             RouterId = "14a75700-fc03-4602-9294-26ee44f366b3",
-    ///         });
-    ///     }
+    ///         AdminStateUp = true,
+    ///         RouterId = "14a75700-fc03-4602-9294-26ee44f366b3",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -41,7 +39,7 @@ namespace Pulumi.OpenStack.VPNaaS
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:vpnaas/service:Service")]
-    public partial class Service : Pulumi.CustomResource
+    public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The administrative state of the resource. Can either be up(true) or down(false).
@@ -160,7 +158,7 @@ namespace Pulumi.OpenStack.VPNaaS
         }
     }
 
-    public sealed class ServiceArgs : Pulumi.ResourceArgs
+    public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The administrative state of the resource. Can either be up(true) or down(false).
@@ -226,9 +224,10 @@ namespace Pulumi.OpenStack.VPNaaS
         public ServiceArgs()
         {
         }
+        public static new ServiceArgs Empty => new ServiceArgs();
     }
 
-    public sealed class ServiceState : Pulumi.ResourceArgs
+    public sealed class ServiceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The administrative state of the resource. Can either be up(true) or down(false).
@@ -312,5 +311,6 @@ namespace Pulumi.OpenStack.VPNaaS
         public ServiceState()
         {
         }
+        public static new ServiceState Empty => new ServiceState();
     }
 }

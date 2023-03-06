@@ -17,25 +17,23 @@ namespace Pulumi.OpenStack.BlockStorage
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var qos = new OpenStack.BlockStorage.QosV3("qos", new()
     ///     {
-    ///         var qos = new OpenStack.BlockStorage.QosV3("qos", new OpenStack.BlockStorage.QosV3Args
+    ///         Consumer = "back-end",
+    ///         Specs = 
     ///         {
-    ///             Consumer = "back-end",
-    ///             Specs = 
-    ///             {
-    ///                 { "read_iops_sec", "40000" },
-    ///                 { "write_iops_sec", "40000" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "read_iops_sec", "40000" },
+    ///             { "write_iops_sec", "40000" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.OpenStack.BlockStorage
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:blockstorage/qosV3:QosV3")]
-    public partial class QosV3 : Pulumi.CustomResource
+    public partial class QosV3 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The consumer of qos. Can be one of `front-end`,
@@ -121,7 +119,7 @@ namespace Pulumi.OpenStack.BlockStorage
         }
     }
 
-    public sealed class QosV3Args : Pulumi.ResourceArgs
+    public sealed class QosV3Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The consumer of qos. Can be one of `front-end`,
@@ -160,9 +158,10 @@ namespace Pulumi.OpenStack.BlockStorage
         public QosV3Args()
         {
         }
+        public static new QosV3Args Empty => new QosV3Args();
     }
 
-    public sealed class QosV3State : Pulumi.ResourceArgs
+    public sealed class QosV3State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The consumer of qos. Can be one of `front-end`,
@@ -201,5 +200,6 @@ namespace Pulumi.OpenStack.BlockStorage
         public QosV3State()
         {
         }
+        public static new QosV3State Empty => new QosV3State();
     }
 }

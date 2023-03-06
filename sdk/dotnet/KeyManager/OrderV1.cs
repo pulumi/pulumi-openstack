@@ -16,51 +16,47 @@ namespace Pulumi.OpenStack.KeyManager
     /// ### Symmetric key order
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var order1 = new OpenStack.KeyManager.OrderV1("order1", new()
     ///     {
-    ///         var order1 = new OpenStack.KeyManager.OrderV1("order1", new OpenStack.KeyManager.OrderV1Args
+    ///         Meta = new OpenStack.KeyManager.Inputs.OrderV1MetaArgs
     ///         {
-    ///             Meta = new OpenStack.KeyManager.Inputs.OrderV1MetaArgs
-    ///             {
-    ///                 Algorithm = "aes",
-    ///                 BitLength = 256,
-    ///                 Mode = "cbc",
-    ///                 Name = "mysecret",
-    ///             },
-    ///             Type = "key",
-    ///         });
-    ///     }
+    ///             Algorithm = "aes",
+    ///             BitLength = 256,
+    ///             Mode = "cbc",
+    ///             Name = "mysecret",
+    ///         },
+    ///         Type = "key",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Asymmetric key pair order
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var order1 = new OpenStack.KeyManager.OrderV1("order1", new()
     ///     {
-    ///         var order1 = new OpenStack.KeyManager.OrderV1("order1", new OpenStack.KeyManager.OrderV1Args
+    ///         Meta = new OpenStack.KeyManager.Inputs.OrderV1MetaArgs
     ///         {
-    ///             Meta = new OpenStack.KeyManager.Inputs.OrderV1MetaArgs
-    ///             {
-    ///                 Algorithm = "rsa",
-    ///                 BitLength = 4096,
-    ///                 Name = "mysecret",
-    ///             },
-    ///             Type = "asymmetric",
-    ///         });
-    ///     }
+    ///             Algorithm = "rsa",
+    ///             BitLength = 4096,
+    ///             Name = "mysecret",
+    ///         },
+    ///         Type = "asymmetric",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -72,7 +68,7 @@ namespace Pulumi.OpenStack.KeyManager
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:keymanager/orderV1:OrderV1")]
-    public partial class OrderV1 : Pulumi.CustomResource
+    public partial class OrderV1 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The container reference / where to find the container.
@@ -193,7 +189,7 @@ namespace Pulumi.OpenStack.KeyManager
         }
     }
 
-    public sealed class OrderV1Args : Pulumi.ResourceArgs
+    public sealed class OrderV1Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Dictionary containing the order metadata used to generate the order. The structure is described below.
@@ -219,9 +215,10 @@ namespace Pulumi.OpenStack.KeyManager
         public OrderV1Args()
         {
         }
+        public static new OrderV1Args Empty => new OrderV1Args();
     }
 
-    public sealed class OrderV1State : Pulumi.ResourceArgs
+    public sealed class OrderV1State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The container reference / where to find the container.
@@ -301,5 +298,6 @@ namespace Pulumi.OpenStack.KeyManager
         public OrderV1State()
         {
         }
+        public static new OrderV1State Empty => new OrderV1State();
     }
 }

@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var qosMinBwRule1 = OpenStack.Networking.GetQosMinimumBandwidthRule.Invoke(new()
         ///     {
-        ///         var qosMinBwRule1 = Output.Create(OpenStack.Networking.GetQosMinimumBandwidthRule.InvokeAsync(new OpenStack.Networking.GetQosMinimumBandwidthRuleArgs
-        ///         {
-        ///             MinKbps = 2000,
-        ///         }));
-        ///     }
+        ///         MinKbps = 2000,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetQosMinimumBandwidthRuleResult> InvokeAsync(GetQosMinimumBandwidthRuleArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQosMinimumBandwidthRuleResult>("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", args ?? new GetQosMinimumBandwidthRuleArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetQosMinimumBandwidthRuleResult>("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", args ?? new GetQosMinimumBandwidthRuleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var qosMinBwRule1 = OpenStack.Networking.GetQosMinimumBandwidthRule.Invoke(new()
         ///     {
-        ///         var qosMinBwRule1 = Output.Create(OpenStack.Networking.GetQosMinimumBandwidthRule.InvokeAsync(new OpenStack.Networking.GetQosMinimumBandwidthRuleArgs
-        ///         {
-        ///             MinKbps = 2000,
-        ///         }));
-        ///     }
+        ///         MinKbps = 2000,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetQosMinimumBandwidthRuleResult> Invoke(GetQosMinimumBandwidthRuleInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetQosMinimumBandwidthRuleResult>("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", args ?? new GetQosMinimumBandwidthRuleInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetQosMinimumBandwidthRuleResult>("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", args ?? new GetQosMinimumBandwidthRuleInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetQosMinimumBandwidthRuleArgs : Pulumi.InvokeArgs
+    public sealed class GetQosMinimumBandwidthRuleArgs : global::Pulumi.InvokeArgs
     {
         [Input("direction")]
         public string? Direction { get; set; }
@@ -99,9 +95,10 @@ namespace Pulumi.OpenStack.Networking
         public GetQosMinimumBandwidthRuleArgs()
         {
         }
+        public static new GetQosMinimumBandwidthRuleArgs Empty => new GetQosMinimumBandwidthRuleArgs();
     }
 
-    public sealed class GetQosMinimumBandwidthRuleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetQosMinimumBandwidthRuleInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -129,6 +126,7 @@ namespace Pulumi.OpenStack.Networking
         public GetQosMinimumBandwidthRuleInvokeArgs()
         {
         }
+        public static new GetQosMinimumBandwidthRuleInvokeArgs Empty => new GetQosMinimumBandwidthRuleInvokeArgs();
     }
 
 

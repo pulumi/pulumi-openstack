@@ -221,8 +221,9 @@ public class Listener extends com.pulumi.resources.CustomResource {
     }
     /**
      * The protocol - can either be TCP, HTTP, HTTPS,
-     * TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
-     * in **Octavia minor version &gt;= 2.23**). Changing this creates a new Listener.
+     * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
+     * in **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
+     * **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
      * 
      */
     @Export(name="protocol", type=String.class, parameters={})
@@ -230,8 +231,9 @@ public class Listener extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The protocol - can either be TCP, HTTP, HTTPS,
-     * TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
-     * in **Octavia minor version &gt;= 2.23**). Changing this creates a new Listener.
+     * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
+     * in **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
+     * **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
      * 
      */
     public Output<String> protocol() {

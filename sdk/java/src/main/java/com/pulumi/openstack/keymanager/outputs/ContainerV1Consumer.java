@@ -12,7 +12,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerV1Consumer {
     /**
-     * @return The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+     * @return Human-readable name for the Container. Does not have
+     * to be unique.
      * 
      */
     private @Nullable String name;
@@ -24,7 +25,8 @@ public final class ContainerV1Consumer {
 
     private ContainerV1Consumer() {}
     /**
-     * @return The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+     * @return Human-readable name for the Container. Does not have
+     * to be unique.
      * 
      */
     public Optional<String> name() {

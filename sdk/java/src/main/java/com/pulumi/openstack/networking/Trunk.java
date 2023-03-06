@@ -170,14 +170,18 @@ public class Trunk extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The ID of the port to be made a subport of the trunk.
+     * The ID of the port to be used as the parent port of the
+     * trunk. This is the port that should be used as the compute instance network
+     * port. Changing this creates a new trunk.
      * 
      */
     @Export(name="portId", type=String.class, parameters={})
     private Output<String> portId;
 
     /**
-     * @return The ID of the port to be made a subport of the trunk.
+     * @return The ID of the port to be used as the parent port of the
+     * trunk. This is the port that should be used as the compute instance network
+     * port. Changing this creates a new trunk.
      * 
      */
     public Output<String> portId() {

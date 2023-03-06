@@ -11,9 +11,30 @@ namespace Pulumi.OpenStack.Database
 {
     /// <summary>
     /// ## Example Usage
+    /// ### User
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basic = new OpenStack.Database.User("basic", new()
+    ///     {
+    ///         Databases = new[]
+    ///         {
+    ///             "testdb",
+    ///         },
+    ///         InstanceId = openstack_db_instance_v1.Basic.Id,
+    ///         Password = "password",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [OpenStackResourceType("openstack:database/user:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of database user should have access to.
@@ -24,6 +45,9 @@ namespace Pulumi.OpenStack.Database
         [Output("host")]
         public Output<string?> Host { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID for the database instance.
+        /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
@@ -68,6 +92,10 @@ namespace Pulumi.OpenStack.Database
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -89,7 +117,7 @@ namespace Pulumi.OpenStack.Database
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         [Input("databases")]
         private InputList<string>? _databases;
@@ -106,6 +134,9 @@ namespace Pulumi.OpenStack.Database
         [Input("host")]
         public Input<string>? Host { get; set; }
 
+        /// <summary>
+        /// The ID for the database instance.
+        /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
@@ -115,11 +146,21 @@ namespace Pulumi.OpenStack.Database
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password", required: true)]
+        private Input<string>? _password;
+
         /// <summary>
         /// User's password.
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Openstack region resource is created in.
@@ -130,9 +171,10 @@ namespace Pulumi.OpenStack.Database
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 
-    public sealed class UserState : Pulumi.ResourceArgs
+    public sealed class UserState : global::Pulumi.ResourceArgs
     {
         [Input("databases")]
         private InputList<string>? _databases;
@@ -149,6 +191,9 @@ namespace Pulumi.OpenStack.Database
         [Input("host")]
         public Input<string>? Host { get; set; }
 
+        /// <summary>
+        /// The ID for the database instance.
+        /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
@@ -158,11 +203,21 @@ namespace Pulumi.OpenStack.Database
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// User's password.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Openstack region resource is created in.
@@ -173,5 +228,6 @@ namespace Pulumi.OpenStack.Database
         public UserState()
         {
         }
+        public static new UserState Empty => new UserState();
     }
 }

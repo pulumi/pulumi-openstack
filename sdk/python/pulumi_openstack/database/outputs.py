@@ -274,7 +274,7 @@ class InstanceUser(dict):
                  host: Optional[str] = None,
                  password: Optional[str] = None):
         """
-        :param str name: Database to be created on new instance. Changing this creates a
+        :param str name: Username to be created on new instance. Changing this creates a
                new instance.
         :param Sequence[str] databases: A list of databases that user will have access to. If not specified,
                user has access to all databases on th einstance. Changing this creates a new instance.
@@ -295,7 +295,7 @@ class InstanceUser(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Database to be created on new instance. Changing this creates a
+        Username to be created on new instance. Changing this creates a
         new instance.
         """
         return pulumi.get(self, "name")

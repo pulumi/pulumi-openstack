@@ -105,16 +105,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Database to be created on new instance. Changing this creates a
-     * new instance.
+     * A unique name for the resource.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Database to be created on new instance. Changing this creates a
-     * new instance.
+     * @return A unique name for the resource.
      * 
      */
     public Optional<Output<String>> name() {
@@ -357,8 +355,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Database to be created on new instance. Changing this creates a
-         * new instance.
+         * @param name A unique name for the resource.
          * 
          * @return builder
          * 
@@ -369,8 +366,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Database to be created on new instance. Changing this creates a
-         * new instance.
+         * @param name A unique name for the resource.
          * 
          * @return builder
          * 

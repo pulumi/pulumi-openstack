@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Database.Inputs
 {
 
-    public sealed class InstanceNetworkGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceNetworkGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies a fixed IPv4 address to be used on this
@@ -43,5 +43,6 @@ namespace Pulumi.OpenStack.Database.Inputs
         public InstanceNetworkGetArgs()
         {
         }
+        public static new InstanceNetworkGetArgs Empty => new InstanceNetworkGetArgs();
     }
 }

@@ -17,15 +17,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: true,
- * });
- * const subnet1 = new openstack.networking.Subnet("subnet_1", {
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
  *     networkId: network1.id,
  * });
- * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
+ * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork1", {
  *     description: "test share network",
  *     neutronNetId: network1.id,
  *     neutronSubnetId: subnet1.id,
@@ -37,15 +35,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: true,
- * });
- * const subnet1 = new openstack.networking.Subnet("subnet_1", {
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
  *     networkId: network1.id,
  * });
- * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice_1", {
+ * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice1", {
  *     description: "created by terraform",
  *     dnsIp: "192.168.199.10",
  *     domain: "example.com",
@@ -55,7 +51,7 @@ import * as utilities from "../utilities";
  *     type: "active_directory",
  *     user: "joinDomainUser",
  * });
- * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
+ * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork1", {
  *     description: "test share network with security services",
  *     neutronNetId: network1.id,
  *     neutronSubnetId: subnet1.id,

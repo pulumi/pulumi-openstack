@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const pool1 = new openstack.loadbalancer.PoolV1("pool_1", {
+ * const pool1 = new openstack.loadbalancer.PoolV1("pool1", {
  *     lbMethod: "ROUND_ROBIN",
  *     lbProvider: "haproxy",
  *     monitorIds: ["67890"],
@@ -27,15 +27,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: true,
- * });
- * const subnet1 = new openstack.networking.Subnet("subnet_1", {
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
  *     networkId: network1.id,
  * });
- * const secgroup1 = new openstack.compute.SecGroup("secgroup_1", {
+ * const secgroup1 = new openstack.compute.SecGroup("secgroup1", {
  *     description: "Rules for secgroup_1",
  *     rules: [
  *         {
@@ -52,7 +50,7 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * });
- * const instance1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance1", {
  *     networks: [{
  *         uuid: network1.id,
  *     }],
@@ -61,7 +59,7 @@ import * as utilities from "../utilities";
  *         secgroup1.name,
  *     ],
  * });
- * const instance2 = new openstack.compute.Instance("instance_2", {
+ * const instance2 = new openstack.compute.Instance("instance2", {
  *     networks: [{
  *         uuid: network1.id,
  *     }],
@@ -70,30 +68,30 @@ import * as utilities from "../utilities";
  *         secgroup1.name,
  *     ],
  * });
- * const monitor1 = new openstack.loadbalancer.MonitorV1("monitor_1", {
+ * const monitor1 = new openstack.loadbalancer.MonitorV1("monitor1", {
  *     adminStateUp: "true",
  *     delay: 30,
  *     maxRetries: 3,
  *     timeout: 5,
  *     type: "TCP",
  * });
- * const pool1 = new openstack.loadbalancer.PoolV1("pool_1", {
+ * const pool1 = new openstack.loadbalancer.PoolV1("pool1", {
  *     lbMethod: "ROUND_ROBIN",
  *     monitorIds: [monitor1.id],
  *     protocol: "TCP",
  *     subnetId: subnet1.id,
  * });
- * const member1 = new openstack.loadbalancer.MemberV1("member_1", {
+ * const member1 = new openstack.loadbalancer.MemberV1("member1", {
  *     address: instance1.accessIpV4,
  *     poolId: pool1.id,
  *     port: 80,
  * });
- * const member2 = new openstack.loadbalancer.MemberV1("member_2", {
+ * const member2 = new openstack.loadbalancer.MemberV1("member2", {
  *     address: instance2.accessIpV4,
  *     poolId: pool1.id,
  *     port: 80,
  * });
- * const vip1 = new openstack.loadbalancer.Vip("vip_1", {
+ * const vip1 = new openstack.loadbalancer.Vip("vip1", {
  *     poolId: pool1.id,
  *     port: 80,
  *     protocol: "TCP",
@@ -190,8 +188,8 @@ export class PoolV1 extends pulumi.CustomResource {
      */
     public readonly subnetId!: pulumi.Output<string>;
     /**
-     * The owner of the member. Required if admin wants to
-     * create a pool member for another tenant. Changing this creates a new member.
+     * The owner of the pool. Required if admin wants to
+     * create a pool member for another tenant. Changing this creates a new pool.
      */
     public readonly tenantId!: pulumi.Output<string>;
 
@@ -296,8 +294,8 @@ export interface PoolV1State {
      */
     subnetId?: pulumi.Input<string>;
     /**
-     * The owner of the member. Required if admin wants to
-     * create a pool member for another tenant. Changing this creates a new member.
+     * The owner of the pool. Required if admin wants to
+     * create a pool member for another tenant. Changing this creates a new pool.
      */
     tenantId?: pulumi.Input<string>;
 }
@@ -355,8 +353,8 @@ export interface PoolV1Args {
      */
     subnetId: pulumi.Input<string>;
     /**
-     * The owner of the member. Required if admin wants to
-     * create a pool member for another tenant. Changing this creates a new member.
+     * The owner of the pool. Required if admin wants to
+     * create a pool member for another tenant. Changing this creates a new pool.
      */
     tenantId?: pulumi.Input<string>;
 }

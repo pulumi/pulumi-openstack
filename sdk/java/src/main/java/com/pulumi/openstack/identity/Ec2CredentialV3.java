@@ -11,6 +11,7 @@ import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.identity.Ec2CredentialV3Args;
 import com.pulumi.openstack.identity.inputs.Ec2CredentialV3State;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -42,6 +43,9 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### EC2 credential in pre-defined project scope
+ * 
+ * This allows administrative users to create EC2 credentials for a scope different
+ * from the current auth scope.
  * ```java
  * package generated_program;
  * 
@@ -99,7 +103,8 @@ public class Ec2CredentialV3 extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the project the EC2 credential is created
      * for and that authentication requests using this EC2 credential will
-     * be scoped to.
+     * be scoped to. Only administrative users can specify a project ID different
+     * from the current auth scope.
      * 
      */
     @Export(name="projectId", type=String.class, parameters={})
@@ -108,7 +113,8 @@ public class Ec2CredentialV3 extends com.pulumi.resources.CustomResource {
     /**
      * @return The ID of the project the EC2 credential is created
      * for and that authentication requests using this EC2 credential will
-     * be scoped to.
+     * be scoped to. Only administrative users can specify a project ID different
+     * from the current auth scope.
      * 
      */
     public Output<String> projectId() {
@@ -162,6 +168,8 @@ public class Ec2CredentialV3 extends com.pulumi.resources.CustomResource {
     }
     /**
      * The ID of the user the EC2 credential is created for.
+     * Only administrative users can specify a user ID different from the current
+     * auth scope.
      * 
      */
     @Export(name="userId", type=String.class, parameters={})
@@ -169,6 +177,8 @@ public class Ec2CredentialV3 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ID of the user the EC2 credential is created for.
+     * Only administrative users can specify a user ID different from the current
+     * auth scope.
      * 
      */
     public Output<String> userId() {
@@ -207,6 +217,9 @@ public class Ec2CredentialV3 extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "secret"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

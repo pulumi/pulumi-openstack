@@ -19,27 +19,25 @@ namespace Pulumi.OpenStack.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var small = OpenStack.Compute.GetFlavor.Invoke(new()
         ///     {
-        ///         var small = Output.Create(OpenStack.Compute.GetFlavor.InvokeAsync(new OpenStack.Compute.GetFlavorArgs
-        ///         {
-        ///             Ram = 512,
-        ///             Vcpus = 1,
-        ///         }));
-        ///     }
+        ///         Ram = 512,
+        ///         Vcpus = 1,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFlavorResult> InvokeAsync(GetFlavorArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFlavorResult>("openstack:compute/getFlavor:getFlavor", args ?? new GetFlavorArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFlavorResult>("openstack:compute/getFlavor:getFlavor", args ?? new GetFlavorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack flavor.
@@ -49,31 +47,29 @@ namespace Pulumi.OpenStack.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var small = OpenStack.Compute.GetFlavor.Invoke(new()
         ///     {
-        ///         var small = Output.Create(OpenStack.Compute.GetFlavor.InvokeAsync(new OpenStack.Compute.GetFlavorArgs
-        ///         {
-        ///             Ram = 512,
-        ///             Vcpus = 1,
-        ///         }));
-        ///     }
+        ///         Ram = 512,
+        ///         Vcpus = 1,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFlavorResult> Invoke(GetFlavorInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFlavorResult>("openstack:compute/getFlavor:getFlavor", args ?? new GetFlavorInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFlavorResult>("openstack:compute/getFlavor:getFlavor", args ?? new GetFlavorInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetFlavorArgs : Pulumi.InvokeArgs
+    public sealed class GetFlavorArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The description of the flavor.
@@ -154,9 +150,10 @@ namespace Pulumi.OpenStack.Compute
         public GetFlavorArgs()
         {
         }
+        public static new GetFlavorArgs Empty => new GetFlavorArgs();
     }
 
-    public sealed class GetFlavorInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFlavorInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The description of the flavor.
@@ -237,6 +234,7 @@ namespace Pulumi.OpenStack.Compute
         public GetFlavorInvokeArgs()
         {
         }
+        public static new GetFlavorInvokeArgs Empty => new GetFlavorInvokeArgs();
     }
 
 

@@ -14,18 +14,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const container1 = new openstack.objectstorage.Container("container_1", {
+ * const container1 = new openstack.objectstorage.Container("container1", {
  *     contentType: "application/json",
  *     metadata: {
  *         test: "true",
  *     },
  *     region: "RegionOne",
  * });
- * const doc1 = new openstack.objectstorage.ContainerObject("doc_1", {
+ * const doc1 = new openstack.objectstorage.ContainerObject("doc1", {
  *     containerName: container1.name,
  *     content: `               {
  *                  "foo" : "bar"
  *                }
+ *
  * `,
  *     contentType: "application/json",
  *     metadata: {
@@ -40,14 +41,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const container1 = new openstack.objectstorage.Container("container_1", {
+ * const container1 = new openstack.objectstorage.Container("container1", {
  *     contentType: "application/json",
  *     metadata: {
  *         test: "true",
  *     },
  *     region: "RegionOne",
  * });
- * const doc1 = new openstack.objectstorage.ContainerObject("doc_1", {
+ * const doc1 = new openstack.objectstorage.ContainerObject("doc1", {
  *     containerName: container1.name,
  *     contentType: "application/json",
  *     metadata: {

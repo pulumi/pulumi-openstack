@@ -32,8 +32,38 @@ import (
 //				Metadata: pulumi.AnyMap{
 //					"test": pulumi.Any("true"),
 //				},
+//				Region:     pulumi.String("RegionOne"),
+//				Versioning: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Basic Container with legacy versioning
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/objectstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
+//				ContentType: pulumi.String("application/json"),
+//				Metadata: pulumi.AnyMap{
+//					"test": pulumi.Any("true"),
+//				},
 //				Region: pulumi.String("RegionOne"),
-//				Versioning: &objectstorage.ContainerVersioningArgs{
+//				VersioningLegacy: &objectstorage.ContainerVersioningLegacyArgs{
 //					Location: pulumi.String("tf-test-container-versions"),
 //					Type:     pulumi.String("versions"),
 //				},
@@ -179,8 +209,13 @@ type Container struct {
 	// The storage policy to be used for the container.
 	// Changing this creates a new container.
 	StoragePolicy pulumi.StringOutput `pulumi:"storagePolicy"`
-	// Enable object versioning. The structure is described below.
-	Versioning ContainerVersioningPtrOutput `pulumi:"versioning"`
+	// A boolean that enables or disable object versioning.
+	// Defaults to `false`
+	Versioning pulumi.BoolPtrOutput `pulumi:"versioning"`
+	// Enable legacy object versioning. The structure is described below.
+	//
+	// Deprecated: Use newer "versioning" implementation
+	VersioningLegacy ContainerVersioningLegacyPtrOutput `pulumi:"versioningLegacy"`
 }
 
 // NewContainer registers a new resource with the given unique name, arguments, and options.
@@ -244,8 +279,13 @@ type containerState struct {
 	// The storage policy to be used for the container.
 	// Changing this creates a new container.
 	StoragePolicy *string `pulumi:"storagePolicy"`
-	// Enable object versioning. The structure is described below.
-	Versioning *ContainerVersioning `pulumi:"versioning"`
+	// A boolean that enables or disable object versioning.
+	// Defaults to `false`
+	Versioning *bool `pulumi:"versioning"`
+	// Enable legacy object versioning. The structure is described below.
+	//
+	// Deprecated: Use newer "versioning" implementation
+	VersioningLegacy *ContainerVersioningLegacy `pulumi:"versioningLegacy"`
 }
 
 type ContainerState struct {
@@ -281,8 +321,13 @@ type ContainerState struct {
 	// The storage policy to be used for the container.
 	// Changing this creates a new container.
 	StoragePolicy pulumi.StringPtrInput
-	// Enable object versioning. The structure is described below.
-	Versioning ContainerVersioningPtrInput
+	// A boolean that enables or disable object versioning.
+	// Defaults to `false`
+	Versioning pulumi.BoolPtrInput
+	// Enable legacy object versioning. The structure is described below.
+	//
+	// Deprecated: Use newer "versioning" implementation
+	VersioningLegacy ContainerVersioningLegacyPtrInput
 }
 
 func (ContainerState) ElementType() reflect.Type {
@@ -322,8 +367,13 @@ type containerArgs struct {
 	// The storage policy to be used for the container.
 	// Changing this creates a new container.
 	StoragePolicy *string `pulumi:"storagePolicy"`
-	// Enable object versioning. The structure is described below.
-	Versioning *ContainerVersioning `pulumi:"versioning"`
+	// A boolean that enables or disable object versioning.
+	// Defaults to `false`
+	Versioning *bool `pulumi:"versioning"`
+	// Enable legacy object versioning. The structure is described below.
+	//
+	// Deprecated: Use newer "versioning" implementation
+	VersioningLegacy *ContainerVersioningLegacy `pulumi:"versioningLegacy"`
 }
 
 // The set of arguments for constructing a Container resource.
@@ -360,8 +410,13 @@ type ContainerArgs struct {
 	// The storage policy to be used for the container.
 	// Changing this creates a new container.
 	StoragePolicy pulumi.StringPtrInput
-	// Enable object versioning. The structure is described below.
-	Versioning ContainerVersioningPtrInput
+	// A boolean that enables or disable object versioning.
+	// Defaults to `false`
+	Versioning pulumi.BoolPtrInput
+	// Enable legacy object versioning. The structure is described below.
+	//
+	// Deprecated: Use newer "versioning" implementation
+	VersioningLegacy ContainerVersioningLegacyPtrInput
 }
 
 func (ContainerArgs) ElementType() reflect.Type {
@@ -513,9 +568,17 @@ func (o ContainerOutput) StoragePolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringOutput { return v.StoragePolicy }).(pulumi.StringOutput)
 }
 
-// Enable object versioning. The structure is described below.
-func (o ContainerOutput) Versioning() ContainerVersioningPtrOutput {
-	return o.ApplyT(func(v *Container) ContainerVersioningPtrOutput { return v.Versioning }).(ContainerVersioningPtrOutput)
+// A boolean that enables or disable object versioning.
+// Defaults to `false`
+func (o ContainerOutput) Versioning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.Versioning }).(pulumi.BoolPtrOutput)
+}
+
+// Enable legacy object versioning. The structure is described below.
+//
+// Deprecated: Use newer "versioning" implementation
+func (o ContainerOutput) VersioningLegacy() ContainerVersioningLegacyPtrOutput {
+	return o.ApplyT(func(v *Container) ContainerVersioningLegacyPtrOutput { return v.VersioningLegacy }).(ContainerVersioningLegacyPtrOutput)
 }
 
 type ContainerArrayOutput struct{ *pulumi.OutputState }

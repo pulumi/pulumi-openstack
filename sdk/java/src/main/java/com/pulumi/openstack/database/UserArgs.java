@@ -38,9 +38,17 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.host);
     }
 
+    /**
+     * The ID for the database instance.
+     * 
+     */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
+    /**
+     * @return The ID for the database instance.
+     * 
+     */
     public Output<String> instanceId() {
         return this.instanceId;
     }
@@ -159,11 +167,23 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
             return host(Output.of(host));
         }
 
+        /**
+         * @param instanceId The ID for the database instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceId(Output<String> instanceId) {
             $.instanceId = instanceId;
             return this;
         }
 
+        /**
+         * @param instanceId The ID for the database instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
         }

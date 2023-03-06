@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Networking.Inputs
 {
 
-    public sealed class SubnetAllocationPoolGetArgs : Pulumi.ResourceArgs
+    public sealed class SubnetAllocationPoolGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ending address.
@@ -27,5 +27,6 @@ namespace Pulumi.OpenStack.Networking.Inputs
         public SubnetAllocationPoolGetArgs()
         {
         }
+        public static new SubnetAllocationPoolGetArgs Empty => new SubnetAllocationPoolGetArgs();
     }
 }

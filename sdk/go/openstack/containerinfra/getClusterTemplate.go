@@ -88,6 +88,8 @@ type LookupClusterTemplateResult struct {
 	// Indicates whether created cluster should create IP
 	// floating IP for every node or not.
 	FloatingIpEnabled bool `pulumi:"floatingIpEnabled"`
+	// Indicates whether the ClusterTemplate is hidden or not.
+	Hidden bool `pulumi:"hidden"`
 	// The address of a proxy for receiving all HTTP requests and
 	// relay them.
 	HttpProxy string `pulumi:"httpProxy"`
@@ -244,6 +246,11 @@ func (o LookupClusterTemplateResultOutput) Flavor() pulumi.StringOutput {
 // floating IP for every node or not.
 func (o LookupClusterTemplateResultOutput) FloatingIpEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClusterTemplateResult) bool { return v.FloatingIpEnabled }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the ClusterTemplate is hidden or not.
+func (o LookupClusterTemplateResultOutput) Hidden() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterTemplateResult) bool { return v.Hidden }).(pulumi.BoolOutput)
 }
 
 // The address of a proxy for receiving all HTTP requests and

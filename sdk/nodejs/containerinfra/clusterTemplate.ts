@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const clustertemplate1 = new openstack.containerinfra.ClusterTemplate("clustertemplate_1", {
+ * const clustertemplate1 = new openstack.containerinfra.ClusterTemplate("clustertemplate1", {
  *     coe: "kubernetes",
  *     dnsNameserver: "1.1.1.1",
  *     dockerStorageDriver: "devicemapper",
@@ -71,6 +71,7 @@ import * as utilities from "../utilities";
  * * `serverType` - See Argument Reference above.
  * * `tlsDisabled` - See Argument Reference above.
  * * `volumeDriver` - See Argument Reference above.
+ * * `hidden` - See Argument Reference above.
  *
  * ## Import
  *
@@ -174,6 +175,12 @@ export class ClusterTemplate extends pulumi.CustomResource {
      * floating IP enabled attribute of the existing cluster template.
      */
     public readonly floatingIpEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Indicates whether the ClusterTemplate is hidden or not.
+     * Changing this updates the hidden attribute of the existing cluster
+     * template.
+     */
+    public readonly hidden!: pulumi.Output<boolean | undefined>;
     /**
      * The address of a proxy for receiving all HTTP
      * requests and relay them. Changing this updates the HTTP proxy address of
@@ -312,6 +319,7 @@ export class ClusterTemplate extends pulumi.CustomResource {
             resourceInputs["fixedSubnet"] = state ? state.fixedSubnet : undefined;
             resourceInputs["flavor"] = state ? state.flavor : undefined;
             resourceInputs["floatingIpEnabled"] = state ? state.floatingIpEnabled : undefined;
+            resourceInputs["hidden"] = state ? state.hidden : undefined;
             resourceInputs["httpProxy"] = state ? state.httpProxy : undefined;
             resourceInputs["httpsProxy"] = state ? state.httpsProxy : undefined;
             resourceInputs["image"] = state ? state.image : undefined;
@@ -351,6 +359,7 @@ export class ClusterTemplate extends pulumi.CustomResource {
             resourceInputs["fixedSubnet"] = args ? args.fixedSubnet : undefined;
             resourceInputs["flavor"] = args ? args.flavor : undefined;
             resourceInputs["floatingIpEnabled"] = args ? args.floatingIpEnabled : undefined;
+            resourceInputs["hidden"] = args ? args.hidden : undefined;
             resourceInputs["httpProxy"] = args ? args.httpProxy : undefined;
             resourceInputs["httpsProxy"] = args ? args.httpsProxy : undefined;
             resourceInputs["image"] = args ? args.image : undefined;
@@ -448,6 +457,12 @@ export interface ClusterTemplateState {
      * floating IP enabled attribute of the existing cluster template.
      */
     floatingIpEnabled?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether the ClusterTemplate is hidden or not.
+     * Changing this updates the hidden attribute of the existing cluster
+     * template.
+     */
+    hidden?: pulumi.Input<boolean>;
     /**
      * The address of a proxy for receiving all HTTP
      * requests and relay them. Changing this updates the HTTP proxy address of
@@ -631,6 +646,12 @@ export interface ClusterTemplateArgs {
      * floating IP enabled attribute of the existing cluster template.
      */
     floatingIpEnabled?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether the ClusterTemplate is hidden or not.
+     * Changing this updates the hidden attribute of the existing cluster
+     * template.
+     */
+    hidden?: pulumi.Input<boolean>;
     /**
      * The address of a proxy for receiving all HTTP
      * requests and relay them. Changing this updates the HTTP proxy address of

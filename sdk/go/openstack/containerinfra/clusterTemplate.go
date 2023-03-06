@@ -92,6 +92,7 @@ import (
 // * `serverType` - See Argument Reference above.
 // * `tlsDisabled` - See Argument Reference above.
 // * `volumeDriver` - See Argument Reference above.
+// * `hidden` - See Argument Reference above.
 //
 // ## Import
 //
@@ -149,6 +150,10 @@ type ClusterTemplate struct {
 	// create floating IP for every node or not. Changing this updates the
 	// floating IP enabled attribute of the existing cluster template.
 	FloatingIpEnabled pulumi.BoolPtrOutput `pulumi:"floatingIpEnabled"`
+	// Indicates whether the ClusterTemplate is hidden or not.
+	// Changing this updates the hidden attribute of the existing cluster
+	// template.
+	Hidden pulumi.BoolPtrOutput `pulumi:"hidden"`
 	// The address of a proxy for receiving all HTTP
 	// requests and relay them. Changing this updates the HTTP proxy address of
 	// the existing cluster template.
@@ -304,6 +309,10 @@ type clusterTemplateState struct {
 	// create floating IP for every node or not. Changing this updates the
 	// floating IP enabled attribute of the existing cluster template.
 	FloatingIpEnabled *bool `pulumi:"floatingIpEnabled"`
+	// Indicates whether the ClusterTemplate is hidden or not.
+	// Changing this updates the hidden attribute of the existing cluster
+	// template.
+	Hidden *bool `pulumi:"hidden"`
 	// The address of a proxy for receiving all HTTP
 	// requests and relay them. Changing this updates the HTTP proxy address of
 	// the existing cluster template.
@@ -425,6 +434,10 @@ type ClusterTemplateState struct {
 	// create floating IP for every node or not. Changing this updates the
 	// floating IP enabled attribute of the existing cluster template.
 	FloatingIpEnabled pulumi.BoolPtrInput
+	// Indicates whether the ClusterTemplate is hidden or not.
+	// Changing this updates the hidden attribute of the existing cluster
+	// template.
+	Hidden pulumi.BoolPtrInput
 	// The address of a proxy for receiving all HTTP
 	// requests and relay them. Changing this updates the HTTP proxy address of
 	// the existing cluster template.
@@ -549,6 +562,10 @@ type clusterTemplateArgs struct {
 	// create floating IP for every node or not. Changing this updates the
 	// floating IP enabled attribute of the existing cluster template.
 	FloatingIpEnabled *bool `pulumi:"floatingIpEnabled"`
+	// Indicates whether the ClusterTemplate is hidden or not.
+	// Changing this updates the hidden attribute of the existing cluster
+	// template.
+	Hidden *bool `pulumi:"hidden"`
 	// The address of a proxy for receiving all HTTP
 	// requests and relay them. Changing this updates the HTTP proxy address of
 	// the existing cluster template.
@@ -661,6 +678,10 @@ type ClusterTemplateArgs struct {
 	// create floating IP for every node or not. Changing this updates the
 	// floating IP enabled attribute of the existing cluster template.
 	FloatingIpEnabled pulumi.BoolPtrInput
+	// Indicates whether the ClusterTemplate is hidden or not.
+	// Changing this updates the hidden attribute of the existing cluster
+	// template.
+	Hidden pulumi.BoolPtrInput
 	// The address of a proxy for receiving all HTTP
 	// requests and relay them. Changing this updates the HTTP proxy address of
 	// the existing cluster template.
@@ -893,6 +914,13 @@ func (o ClusterTemplateOutput) Flavor() pulumi.StringPtrOutput {
 // floating IP enabled attribute of the existing cluster template.
 func (o ClusterTemplateOutput) FloatingIpEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterTemplate) pulumi.BoolPtrOutput { return v.FloatingIpEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the ClusterTemplate is hidden or not.
+// Changing this updates the hidden attribute of the existing cluster
+// template.
+func (o ClusterTemplateOutput) Hidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterTemplate) pulumi.BoolPtrOutput { return v.Hidden }).(pulumi.BoolPtrOutput)
 }
 
 // The address of a proxy for receiving all HTTP

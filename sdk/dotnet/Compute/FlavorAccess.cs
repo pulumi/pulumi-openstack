@@ -20,31 +20,29 @@ namespace Pulumi.OpenStack.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var project1 = new OpenStack.Identity.Project("project1", new OpenStack.Identity.ProjectArgs
-    ///         {
-    ///         });
-    ///         var flavor1 = new OpenStack.Compute.Flavor("flavor1", new OpenStack.Compute.FlavorArgs
-    ///         {
-    ///             Disk = 20,
-    ///             IsPublic = false,
-    ///             Ram = 8096,
-    ///             Vcpus = 2,
-    ///         });
-    ///         var access1 = new OpenStack.Compute.FlavorAccess("access1", new OpenStack.Compute.FlavorAccessArgs
-    ///         {
-    ///             FlavorId = flavor1.Id,
-    ///             TenantId = project1.Id,
-    ///         });
-    ///     }
+    ///     var project1 = new OpenStack.Identity.Project("project1");
     /// 
-    /// }
+    ///     var flavor1 = new OpenStack.Compute.Flavor("flavor1", new()
+    ///     {
+    ///         Disk = 20,
+    ///         IsPublic = false,
+    ///         Ram = 8096,
+    ///         Vcpus = 2,
+    ///     });
+    /// 
+    ///     var access1 = new OpenStack.Compute.FlavorAccess("access1", new()
+    ///     {
+    ///         FlavorId = flavor1.Id,
+    ///         TenantId = project1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +54,7 @@ namespace Pulumi.OpenStack.Compute
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:compute/flavorAccess:FlavorAccess")]
-    public partial class FlavorAccess : Pulumi.CustomResource
+    public partial class FlavorAccess : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The UUID of flavor to use. Changing this creates a new flavor access.
@@ -123,7 +121,7 @@ namespace Pulumi.OpenStack.Compute
         }
     }
 
-    public sealed class FlavorAccessArgs : Pulumi.ResourceArgs
+    public sealed class FlavorAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The UUID of flavor to use. Changing this creates a new flavor access.
@@ -149,9 +147,10 @@ namespace Pulumi.OpenStack.Compute
         public FlavorAccessArgs()
         {
         }
+        public static new FlavorAccessArgs Empty => new FlavorAccessArgs();
     }
 
-    public sealed class FlavorAccessState : Pulumi.ResourceArgs
+    public sealed class FlavorAccessState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The UUID of flavor to use. Changing this creates a new flavor access.
@@ -177,5 +176,6 @@ namespace Pulumi.OpenStack.Compute
         public FlavorAccessState()
         {
         }
+        public static new FlavorAccessState Empty => new FlavorAccessState();
     }
 }

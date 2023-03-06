@@ -86,6 +86,13 @@ export class Image extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
+     * If true, this provider will decompress downloaded
+     * image before uploading it to OpenStack. Decompression algorithm is chosen by
+     * checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+     * Defaults to false. Changing this creates a new Image.
+     */
+    public readonly decompress!: pulumi.Output<boolean | undefined>;
+    /**
      * The disk format. Must be one of
      * "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
      */
@@ -103,7 +110,7 @@ export class Image extends pulumi.CustomResource {
     public readonly hidden!: pulumi.Output<boolean | undefined>;
     public readonly imageCachePath!: pulumi.Output<string | undefined>;
     /**
-     * Unique ID (valid UUID) of image to create. Changing 
+     * Unique ID (valid UUID) of image to create. Changing
      * this creates a new image.
      */
     public readonly imageId!: pulumi.Output<string>;
@@ -234,6 +241,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["checksum"] = state ? state.checksum : undefined;
             resourceInputs["containerFormat"] = state ? state.containerFormat : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["decompress"] = state ? state.decompress : undefined;
             resourceInputs["diskFormat"] = state ? state.diskFormat : undefined;
             resourceInputs["file"] = state ? state.file : undefined;
             resourceInputs["hidden"] = state ? state.hidden : undefined;
@@ -269,11 +277,12 @@ export class Image extends pulumi.CustomResource {
                 throw new Error("Missing required property 'diskFormat'");
             }
             resourceInputs["containerFormat"] = args ? args.containerFormat : undefined;
+            resourceInputs["decompress"] = args ? args.decompress : undefined;
             resourceInputs["diskFormat"] = args ? args.diskFormat : undefined;
             resourceInputs["hidden"] = args ? args.hidden : undefined;
             resourceInputs["imageCachePath"] = args ? args.imageCachePath : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["imageSourcePassword"] = args ? args.imageSourcePassword : undefined;
+            resourceInputs["imageSourcePassword"] = args?.imageSourcePassword ? pulumi.secret(args.imageSourcePassword) : undefined;
             resourceInputs["imageSourceUrl"] = args ? args.imageSourceUrl : undefined;
             resourceInputs["imageSourceUsername"] = args ? args.imageSourceUsername : undefined;
             resourceInputs["localFilePath"] = args ? args.localFilePath : undefined;
@@ -299,6 +308,8 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["imageSourcePassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Image.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -321,6 +332,13 @@ export interface ImageState {
      */
     createdAt?: pulumi.Input<string>;
     /**
+     * If true, this provider will decompress downloaded
+     * image before uploading it to OpenStack. Decompression algorithm is chosen by
+     * checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+     * Defaults to false. Changing this creates a new Image.
+     */
+    decompress?: pulumi.Input<boolean>;
+    /**
      * The disk format. Must be one of
      * "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
      */
@@ -338,7 +356,7 @@ export interface ImageState {
     hidden?: pulumi.Input<boolean>;
     imageCachePath?: pulumi.Input<string>;
     /**
-     * Unique ID (valid UUID) of image to create. Changing 
+     * Unique ID (valid UUID) of image to create. Changing
      * this creates a new image.
      */
     imageId?: pulumi.Input<string>;
@@ -464,6 +482,13 @@ export interface ImageArgs {
      */
     containerFormat: pulumi.Input<string>;
     /**
+     * If true, this provider will decompress downloaded
+     * image before uploading it to OpenStack. Decompression algorithm is chosen by
+     * checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+     * Defaults to false. Changing this creates a new Image.
+     */
+    decompress?: pulumi.Input<boolean>;
+    /**
      * The disk format. Must be one of
      * "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
      */
@@ -475,7 +500,7 @@ export interface ImageArgs {
     hidden?: pulumi.Input<boolean>;
     imageCachePath?: pulumi.Input<string>;
     /**
-     * Unique ID (valid UUID) of image to create. Changing 
+     * Unique ID (valid UUID) of image to create. Changing
      * this creates a new image.
      */
     imageId?: pulumi.Input<string>;

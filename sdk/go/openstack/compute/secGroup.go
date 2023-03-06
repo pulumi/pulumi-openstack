@@ -104,7 +104,7 @@ import (
 //				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
 //				KeyPair:  pulumi.String("my_key_pair_name"),
 //				SecurityGroups: pulumi.StringArray{
-//					pulumi.Any(openstack_compute_secgroup_v2.Secgroup_1.Name),
+//					openstack_compute_secgroup_v2.Secgroup_1.Name,
 //				},
 //			})
 //			if err != nil {

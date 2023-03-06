@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice_1", {
+ * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice1", {
  *     description: "created by terraform",
  *     dnsIp: "192.168.199.10",
  *     domain: "example.com",
@@ -160,7 +160,7 @@ export class SecurityService extends pulumi.CustomResource {
             resourceInputs["domain"] = args ? args.domain : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["ou"] = args ? args.ou : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["server"] = args ? args.server : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -168,6 +168,8 @@ export class SecurityService extends pulumi.CustomResource {
             resourceInputs["projectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(SecurityService.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -15,35 +15,33 @@ namespace Pulumi.OpenStack.VPNaaS
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var conn1 = new OpenStack.VPNaaS.SiteConnection("conn1", new()
     ///     {
-    ///         var conn1 = new OpenStack.VPNaaS.SiteConnection("conn1", new OpenStack.VPNaaS.SiteConnectionArgs
+    ///         Dpds = new[]
     ///         {
-    ///             Dpds = 
+    ///             new OpenStack.VPNaaS.Inputs.SiteConnectionDpdArgs
     ///             {
-    ///                 new OpenStack.VPNaaS.Inputs.SiteConnectionDpdArgs
-    ///                 {
-    ///                     Action = "restart",
-    ///                     Interval = 21,
-    ///                     Timeout = 42,
-    ///                 },
+    ///                 Action = "restart",
+    ///                 Interval = 21,
+    ///                 Timeout = 42,
     ///             },
-    ///             IkepolicyId = openstack_vpnaas_ike_policy_v2.Policy_2.Id,
-    ///             IpsecpolicyId = openstack_vpnaas_ipsec_policy_v2.Policy_1.Id,
-    ///             LocalEpGroupId = openstack_vpnaas_endpoint_group_v2.Group_2.Id,
-    ///             PeerAddress = "192.168.10.1",
-    ///             PeerEpGroupId = openstack_vpnaas_endpoint_group_v2.Group_1.Id,
-    ///             Psk = "secret",
-    ///             VpnserviceId = openstack_vpnaas_service_v2.Service_1.Id,
-    ///         });
-    ///     }
+    ///         },
+    ///         IkepolicyId = openstack_vpnaas_ike_policy_v2.Policy_2.Id,
+    ///         IpsecpolicyId = openstack_vpnaas_ipsec_policy_v2.Policy_1.Id,
+    ///         LocalEpGroupId = openstack_vpnaas_endpoint_group_v2.Group_2.Id,
+    ///         PeerAddress = "192.168.10.1",
+    ///         PeerEpGroupId = openstack_vpnaas_endpoint_group_v2.Group_1.Id,
+    ///         Psk = "secret",
+    ///         VpnserviceId = openstack_vpnaas_service_v2.Service_1.Id,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +53,7 @@ namespace Pulumi.OpenStack.VPNaaS
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:vpnaas/siteConnection:SiteConnection")]
-    public partial class SiteConnection : Pulumi.CustomResource
+    public partial class SiteConnection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The administrative state of the resource. Can either be up(true) or down(false).
@@ -232,7 +230,7 @@ namespace Pulumi.OpenStack.VPNaaS
         }
     }
 
-    public sealed class SiteConnectionArgs : Pulumi.ResourceArgs
+    public sealed class SiteConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The administrative state of the resource. Can either be up(true) or down(false).
@@ -386,9 +384,10 @@ namespace Pulumi.OpenStack.VPNaaS
         public SiteConnectionArgs()
         {
         }
+        public static new SiteConnectionArgs Empty => new SiteConnectionArgs();
     }
 
-    public sealed class SiteConnectionState : Pulumi.ResourceArgs
+    public sealed class SiteConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The administrative state of the resource. Can either be up(true) or down(false).
@@ -542,5 +541,6 @@ namespace Pulumi.OpenStack.VPNaaS
         public SiteConnectionState()
         {
         }
+        public static new SiteConnectionState Empty => new SiteConnectionState();
     }
 }

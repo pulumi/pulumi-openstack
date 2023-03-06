@@ -16,92 +16,107 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// ### Basic Container
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
     ///     {
-    ///         var container1 = new OpenStack.ObjectStorage.Container("container1", new OpenStack.ObjectStorage.ContainerArgs
+    ///         ContentType = "application/json",
+    ///         Metadata = 
     ///         {
-    ///             ContentType = "application/json",
-    ///             Metadata = 
-    ///             {
-    ///                 { "test", "true" },
-    ///             },
-    ///             Region = "RegionOne",
-    ///             Versioning = new OpenStack.ObjectStorage.Inputs.ContainerVersioningArgs
-    ///             {
-    ///                 Location = "tf-test-container-versions",
-    ///                 Type = "versions",
-    ///             },
-    ///         });
-    ///     }
+    ///             { "test", "true" },
+    ///         },
+    ///         Region = "RegionOne",
+    ///         Versioning = true,
+    ///     });
     /// 
-    /// }
+    /// });
+    /// ```
+    /// ### Basic Container with legacy versioning
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
+    ///     {
+    ///         ContentType = "application/json",
+    ///         Metadata = 
+    ///         {
+    ///             { "test", "true" },
+    ///         },
+    ///         Region = "RegionOne",
+    ///         VersioningLegacy = new OpenStack.ObjectStorage.Inputs.ContainerVersioningLegacyArgs
+    ///         {
+    ///             Location = "tf-test-container-versions",
+    ///             Type = "versions",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Global Read Access
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
     ///     {
-    ///         var container1 = new OpenStack.ObjectStorage.Container("container1", new OpenStack.ObjectStorage.ContainerArgs
-    ///         {
-    ///             ContainerRead = ".r:*",
-    ///             Region = "RegionOne",
-    ///         });
-    ///     }
+    ///         ContainerRead = ".r:*",
+    ///         Region = "RegionOne",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Global Read and List Access
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
     ///     {
-    ///         var container1 = new OpenStack.ObjectStorage.Container("container1", new OpenStack.ObjectStorage.ContainerArgs
-    ///         {
-    ///             ContainerRead = ".r:*,.rlistings",
-    ///             Region = "RegionOne",
-    ///         });
-    ///     }
+    ///         ContainerRead = ".r:*,.rlistings",
+    ///         Region = "RegionOne",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Write-Only Access for a User
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var current = OpenStack.Identity.GetAuthScope.Invoke(new()
     ///     {
-    ///         var current = Output.Create(OpenStack.Identity.GetAuthScope.InvokeAsync(new OpenStack.Identity.GetAuthScopeArgs
-    ///         {
-    ///             Name = "current",
-    ///         }));
-    ///         var container1 = new OpenStack.ObjectStorage.Container("container1", new OpenStack.ObjectStorage.ContainerArgs
-    ///         {
-    ///             ContainerRead = $".r:-{@var.Username}",
-    ///             ContainerWrite = current.Apply(current =&gt; $"{current.ProjectId}:{@var.Username}"),
-    ///             Region = "RegionOne",
-    ///         });
-    ///     }
+    ///         Name = "current",
+    ///     });
     /// 
-    /// }
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
+    ///     {
+    ///         ContainerRead = $".r:-{@var.Username}",
+    ///         ContainerWrite = $"{current.Apply(getAuthScopeResult =&gt; getAuthScopeResult.ProjectId)}:{@var.Username}",
+    ///         Region = "RegionOne",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -113,7 +128,7 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:objectstorage/container:Container")]
-    public partial class Container : Pulumi.CustomResource
+    public partial class Container : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Sets an access control list (ACL) that grants
@@ -188,10 +203,17 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Output<string> StoragePolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Enable object versioning. The structure is described below.
+        /// A boolean that enables or disable object versioning.
+        /// Defaults to `false`
         /// </summary>
         [Output("versioning")]
-        public Output<Outputs.ContainerVersioning?> Versioning { get; private set; } = null!;
+        public Output<bool?> Versioning { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable legacy object versioning. The structure is described below.
+        /// </summary>
+        [Output("versioningLegacy")]
+        public Output<Outputs.ContainerVersioningLegacy?> VersioningLegacy { get; private set; } = null!;
 
 
         /// <summary>
@@ -237,7 +259,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         }
     }
 
-    public sealed class ContainerArgs : Pulumi.ResourceArgs
+    public sealed class ContainerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Sets an access control list (ACL) that grants
@@ -318,17 +340,25 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? StoragePolicy { get; set; }
 
         /// <summary>
-        /// Enable object versioning. The structure is described below.
+        /// A boolean that enables or disable object versioning.
+        /// Defaults to `false`
         /// </summary>
         [Input("versioning")]
-        public Input<Inputs.ContainerVersioningArgs>? Versioning { get; set; }
+        public Input<bool>? Versioning { get; set; }
+
+        /// <summary>
+        /// Enable legacy object versioning. The structure is described below.
+        /// </summary>
+        [Input("versioningLegacy")]
+        public Input<Inputs.ContainerVersioningLegacyArgs>? VersioningLegacy { get; set; }
 
         public ContainerArgs()
         {
         }
+        public static new ContainerArgs Empty => new ContainerArgs();
     }
 
-    public sealed class ContainerState : Pulumi.ResourceArgs
+    public sealed class ContainerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Sets an access control list (ACL) that grants
@@ -409,13 +439,21 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? StoragePolicy { get; set; }
 
         /// <summary>
-        /// Enable object versioning. The structure is described below.
+        /// A boolean that enables or disable object versioning.
+        /// Defaults to `false`
         /// </summary>
         [Input("versioning")]
-        public Input<Inputs.ContainerVersioningGetArgs>? Versioning { get; set; }
+        public Input<bool>? Versioning { get; set; }
+
+        /// <summary>
+        /// Enable legacy object versioning. The structure is described below.
+        /// </summary>
+        [Input("versioningLegacy")]
+        public Input<Inputs.ContainerVersioningLegacyGetArgs>? VersioningLegacy { get; set; }
 
         public ContainerState()
         {
         }
+        public static new ContainerState Empty => new ContainerState();
     }
 }

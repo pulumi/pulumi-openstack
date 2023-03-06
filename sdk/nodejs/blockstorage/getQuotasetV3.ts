@@ -13,17 +13,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const quota = pulumi.output(openstack.blockstorage.getQuotasetV3({
+ * const quota = openstack.blockstorage.getQuotasetV3({
  *     projectId: "2e367a3d29f94fd988e6ec54e305ec9d",
- * }));
+ * });
  * ```
  */
 export function getQuotasetV3(args: GetQuotasetV3Args, opts?: pulumi.InvokeOptions): Promise<GetQuotasetV3Result> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:blockstorage/getQuotasetV3:getQuotasetV3", {
         "projectId": args.projectId,
         "region": args.region,
@@ -94,9 +91,22 @@ export interface GetQuotasetV3Result {
      */
     readonly volumes: number;
 }
-
+/**
+ * Use this data source to get the blockstorage quotaset v3 of an OpenStack project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const quota = openstack.blockstorage.getQuotasetV3({
+ *     projectId: "2e367a3d29f94fd988e6ec54e305ec9d",
+ * });
+ * ```
+ */
 export function getQuotasetV3Output(args: GetQuotasetV3OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotasetV3Result> {
-    return pulumi.output(args).apply(a => getQuotasetV3(a, opts))
+    return pulumi.output(args).apply((a: any) => getQuotasetV3(a, opts))
 }
 
 /**

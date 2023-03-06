@@ -16,17 +16,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const admins = pulumi.output(openstack.identity.getGroup({
+ * const admins = openstack.identity.getGroup({
  *     name: "admins",
- * }));
+ * });
  * ```
  */
 export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:identity/getGroup:getGroup", {
         "domainId": args.domainId,
         "name": args.name,
@@ -78,9 +75,25 @@ export interface GetGroupResult {
      */
     readonly region: string;
 }
-
+/**
+ * Use this data source to get the ID of an OpenStack group.
+ *
+ * > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+ * this resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const admins = openstack.identity.getGroup({
+ *     name: "admins",
+ * });
+ * ```
+ */
 export function getGroupOutput(args: GetGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
-    return pulumi.output(args).apply(a => getGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getGroup(a, opts))
 }
 
 /**

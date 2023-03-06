@@ -118,16 +118,16 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The UUID of
-     * the image, volume, or snapshot. Changing this creates a new server.
+     * The network UUID to
+     * attach to the server. Changing this creates a new server.
      * 
      */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
     /**
-     * @return The UUID of
-     * the image, volume, or snapshot. Changing this creates a new server.
+     * @return The network UUID to
+     * attach to the server. Changing this creates a new server.
      * 
      */
     public Optional<Output<String>> uuid() {
@@ -301,8 +301,8 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param uuid The UUID of
-         * the image, volume, or snapshot. Changing this creates a new server.
+         * @param uuid The network UUID to
+         * attach to the server. Changing this creates a new server.
          * 
          * @return builder
          * 
@@ -313,8 +313,8 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param uuid The UUID of
-         * the image, volume, or snapshot. Changing this creates a new server.
+         * @param uuid The network UUID to
+         * attach to the server. Changing this creates a new server.
          * 
          * @return builder
          * 

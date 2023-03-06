@@ -21,7 +21,7 @@ class GetClusterTemplateResult:
     """
     A collection of values returned by getClusterTemplate.
     """
-    def __init__(__self__, apiserver_port=None, cluster_distro=None, coe=None, created_at=None, dns_nameserver=None, docker_storage_driver=None, docker_volume_size=None, external_network_id=None, fixed_network=None, fixed_subnet=None, flavor=None, floating_ip_enabled=None, http_proxy=None, https_proxy=None, id=None, image=None, insecure_registry=None, keypair_id=None, labels=None, master_flavor=None, master_lb_enabled=None, name=None, network_driver=None, no_proxy=None, project_id=None, public=None, region=None, registry_enabled=None, server_type=None, tls_disabled=None, updated_at=None, user_id=None, volume_driver=None):
+    def __init__(__self__, apiserver_port=None, cluster_distro=None, coe=None, created_at=None, dns_nameserver=None, docker_storage_driver=None, docker_volume_size=None, external_network_id=None, fixed_network=None, fixed_subnet=None, flavor=None, floating_ip_enabled=None, hidden=None, http_proxy=None, https_proxy=None, id=None, image=None, insecure_registry=None, keypair_id=None, labels=None, master_flavor=None, master_lb_enabled=None, name=None, network_driver=None, no_proxy=None, project_id=None, public=None, region=None, registry_enabled=None, server_type=None, tls_disabled=None, updated_at=None, user_id=None, volume_driver=None):
         if apiserver_port and not isinstance(apiserver_port, int):
             raise TypeError("Expected argument 'apiserver_port' to be a int")
         pulumi.set(__self__, "apiserver_port", apiserver_port)
@@ -58,6 +58,9 @@ class GetClusterTemplateResult:
         if floating_ip_enabled and not isinstance(floating_ip_enabled, bool):
             raise TypeError("Expected argument 'floating_ip_enabled' to be a bool")
         pulumi.set(__self__, "floating_ip_enabled", floating_ip_enabled)
+        if hidden and not isinstance(hidden, bool):
+            raise TypeError("Expected argument 'hidden' to be a bool")
+        pulumi.set(__self__, "hidden", hidden)
         if http_proxy and not isinstance(http_proxy, str):
             raise TypeError("Expected argument 'http_proxy' to be a str")
         pulumi.set(__self__, "http_proxy", http_proxy)
@@ -222,6 +225,14 @@ class GetClusterTemplateResult:
         floating IP for every node or not.
         """
         return pulumi.get(self, "floating_ip_enabled")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> bool:
+        """
+        Indicates whether the ClusterTemplate is hidden or not.
+        """
+        return pulumi.get(self, "hidden")
 
     @property
     @pulumi.getter(name="httpProxy")
@@ -417,6 +428,7 @@ class AwaitableGetClusterTemplateResult(GetClusterTemplateResult):
             fixed_subnet=self.fixed_subnet,
             flavor=self.flavor,
             floating_ip_enabled=self.floating_ip_enabled,
+            hidden=self.hidden,
             http_proxy=self.http_proxy,
             https_proxy=self.https_proxy,
             id=self.id,
@@ -481,6 +493,7 @@ def get_cluster_template(name: Optional[str] = None,
         fixed_subnet=__ret__.fixed_subnet,
         flavor=__ret__.flavor,
         floating_ip_enabled=__ret__.floating_ip_enabled,
+        hidden=__ret__.hidden,
         http_proxy=__ret__.http_proxy,
         https_proxy=__ret__.https_proxy,
         id=__ret__.id,

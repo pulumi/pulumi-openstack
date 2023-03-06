@@ -8,7 +8,7 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class ContainerVersioning {
+public final class ContainerVersioningLegacy {
     /**
      * @return Container in which versions will be stored.
      * 
@@ -20,7 +20,7 @@ public final class ContainerVersioning {
      */
     private String type;
 
-    private ContainerVersioning() {}
+    private ContainerVersioningLegacy() {}
     /**
      * @return Container in which versions will be stored.
      * 
@@ -40,7 +40,7 @@ public final class ContainerVersioning {
         return new Builder();
     }
 
-    public static Builder builder(ContainerVersioning defaults) {
+    public static Builder builder(ContainerVersioningLegacy defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -48,7 +48,7 @@ public final class ContainerVersioning {
         private String location;
         private String type;
         public Builder() {}
-        public Builder(ContainerVersioning defaults) {
+        public Builder(ContainerVersioningLegacy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.location = defaults.location;
     	      this.type = defaults.type;
@@ -64,8 +64,8 @@ public final class ContainerVersioning {
             this.type = Objects.requireNonNull(type);
             return this;
         }
-        public ContainerVersioning build() {
-            final var o = new ContainerVersioning();
+        public ContainerVersioningLegacy build() {
+            final var o = new ContainerVersioningLegacy();
             o.location = location;
             o.type = type;
             return o;

@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var share1 = OpenStack.SharedFileSystem.GetShare.Invoke(new()
         ///     {
-        ///         var share1 = Output.Create(OpenStack.SharedFileSystem.GetShare.InvokeAsync(new OpenStack.SharedFileSystem.GetShareArgs
-        ///         {
-        ///             Name = "share_1",
-        ///         }));
-        ///     }
+        ///         Name = "share_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetShareResult> InvokeAsync(GetShareArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetShareResult>("openstack:sharedfilesystem/getShare:getShare", args ?? new GetShareArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetShareResult>("openstack:sharedfilesystem/getShare:getShare", args ?? new GetShareArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available Shared File System share.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var share1 = OpenStack.SharedFileSystem.GetShare.Invoke(new()
         ///     {
-        ///         var share1 = Output.Create(OpenStack.SharedFileSystem.GetShare.InvokeAsync(new OpenStack.SharedFileSystem.GetShareArgs
-        ///         {
-        ///             Name = "share_1",
-        ///         }));
-        ///     }
+        ///         Name = "share_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetShareResult> Invoke(GetShareInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetShareResult>("openstack:sharedfilesystem/getShare:getShare", args ?? new GetShareInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetShareResult>("openstack:sharedfilesystem/getShare:getShare", args ?? new GetShareInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetShareArgs : Pulumi.InvokeArgs
+    public sealed class GetShareArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The human-readable description for the share.
@@ -143,9 +139,10 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public GetShareArgs()
         {
         }
+        public static new GetShareArgs Empty => new GetShareArgs();
     }
 
-    public sealed class GetShareInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetShareInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The human-readable description for the share.
@@ -217,6 +214,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public GetShareInvokeArgs()
         {
         }
+        public static new GetShareInvokeArgs Empty => new GetShareInvokeArgs();
     }
 
 

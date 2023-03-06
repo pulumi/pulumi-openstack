@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const listener1 = new openstack.loadbalancer.Listener("listener_1", {
+ * const listener1 = new openstack.loadbalancer.Listener("listener1", {
  *     insertHeaders: {
  *         "X-Forwarded-For": "true",
  *     },
@@ -112,8 +112,9 @@ export class Listener extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The protocol - can either be TCP, HTTP, HTTPS,
-     * TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
-     * in **Octavia minor version >= 2.23**). Changing this creates a new Listener.
+     * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
+     * in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+     * **Octavia minor version >=2.25**). Changing this creates a new Listener.
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
@@ -279,8 +280,9 @@ export interface ListenerState {
     name?: pulumi.Input<string>;
     /**
      * The protocol - can either be TCP, HTTP, HTTPS,
-     * TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
-     * in **Octavia minor version >= 2.23**). Changing this creates a new Listener.
+     * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
+     * in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+     * **Octavia minor version >=2.25**). Changing this creates a new Listener.
      */
     protocol?: pulumi.Input<string>;
     /**
@@ -381,8 +383,9 @@ export interface ListenerArgs {
     name?: pulumi.Input<string>;
     /**
      * The protocol - can either be TCP, HTTP, HTTPS,
-     * TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
-     * in **Octavia minor version >= 2.23**). Changing this creates a new Listener.
+     * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
+     * in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+     * **Octavia minor version >=2.25**). Changing this creates a new Listener.
      */
     protocol: pulumi.Input<string>;
     /**

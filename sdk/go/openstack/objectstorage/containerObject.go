@@ -21,8 +21,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/objectstorage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -42,7 +40,7 @@ import (
 //			}
 //			_, err = objectstorage.NewContainerObject(ctx, "doc1", &objectstorage.ContainerObjectArgs{
 //				ContainerName: container1.Name,
-//				Content:       pulumi.String(fmt.Sprintf("               {\n                 \"foo\" : \"bar\"\n               }\n\n")),
+//				Content:       pulumi.String("               {\n                 \"foo\" : \"bar\"\n               }\n\n"),
 //				ContentType:   pulumi.String("application/json"),
 //				Metadata: pulumi.AnyMap{
 //					"test": pulumi.Any("true"),

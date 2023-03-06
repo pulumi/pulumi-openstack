@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.Identity
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var user1 = OpenStack.Identity.GetUser.Invoke(new()
         ///     {
-        ///         var user1 = Output.Create(OpenStack.Identity.GetUser.InvokeAsync(new OpenStack.Identity.GetUserArgs
-        ///         {
-        ///             Name = "user_1",
-        ///         }));
-        ///     }
+        ///         Name = "user_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("openstack:identity/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("openstack:identity/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an OpenStack user.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.Identity
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var user1 = OpenStack.Identity.GetUser.Invoke(new()
         ///     {
-        ///         var user1 = Output.Create(OpenStack.Identity.GetUser.InvokeAsync(new OpenStack.Identity.GetUserArgs
-        ///         {
-        ///             Name = "user_1",
-        ///         }));
-        ///     }
+        ///         Name = "user_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetUserResult>("openstack:identity/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("openstack:identity/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetUserArgs : Pulumi.InvokeArgs
+    public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The domain this user belongs to.
@@ -125,9 +121,10 @@ namespace Pulumi.OpenStack.Identity
         public GetUserArgs()
         {
         }
+        public static new GetUserArgs Empty => new GetUserArgs();
     }
 
-    public sealed class GetUserInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The domain this user belongs to.
@@ -181,6 +178,7 @@ namespace Pulumi.OpenStack.Identity
         public GetUserInvokeArgs()
         {
         }
+        public static new GetUserInvokeArgs Empty => new GetUserInvokeArgs();
     }
 
 

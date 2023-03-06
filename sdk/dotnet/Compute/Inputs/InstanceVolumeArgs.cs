@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Compute.Inputs
 {
 
-    public sealed class InstanceVolumeArgs : Pulumi.ResourceArgs
+    public sealed class InstanceVolumeArgs : global::Pulumi.ResourceArgs
     {
         [Input("device")]
         public Input<string>? Device { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.OpenStack.Compute.Inputs
         public InstanceVolumeArgs()
         {
         }
+        public static new InstanceVolumeArgs Empty => new InstanceVolumeArgs();
     }
 }

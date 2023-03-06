@@ -21,14 +21,20 @@ public final class GetImageResult {
      * 
      */
     private String checksum;
+    /**
+     * @return The format of the image&#39;s container.
+     * 
+     */
     private String containerFormat;
     /**
      * @return The date the image was created.
-     * * `container_format`: The format of the image&#39;s container.
-     * * `disk_format`: The format of the image&#39;s disk.
      * 
      */
     private String createdAt;
+    /**
+     * @return The format of the image&#39;s disk.
+     * 
+     */
     private String diskFormat;
     /**
      * @return the trailing path after the glance endpoint that represent the
@@ -62,6 +68,7 @@ public final class GetImageResult {
     private Integer minRamMb;
     private @Nullable Boolean mostRecent;
     private @Nullable String name;
+    private @Nullable String nameRegex;
     private @Nullable String owner;
     /**
      * @return Freeform information about the image.
@@ -110,18 +117,24 @@ public final class GetImageResult {
     public String checksum() {
         return this.checksum;
     }
+    /**
+     * @return The format of the image&#39;s container.
+     * 
+     */
     public String containerFormat() {
         return this.containerFormat;
     }
     /**
      * @return The date the image was created.
-     * * `container_format`: The format of the image&#39;s container.
-     * * `disk_format`: The format of the image&#39;s disk.
      * 
      */
     public String createdAt() {
         return this.createdAt;
     }
+    /**
+     * @return The format of the image&#39;s disk.
+     * 
+     */
     public String diskFormat() {
         return this.diskFormat;
     }
@@ -174,6 +187,9 @@ public final class GetImageResult {
     }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+    public Optional<String> nameRegex() {
+        return Optional.ofNullable(this.nameRegex);
     }
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
@@ -265,6 +281,7 @@ public final class GetImageResult {
         private Integer minRamMb;
         private @Nullable Boolean mostRecent;
         private @Nullable String name;
+        private @Nullable String nameRegex;
         private @Nullable String owner;
         private @Nullable Map<String,Object> properties;
         private Boolean protected_;
@@ -295,6 +312,7 @@ public final class GetImageResult {
     	      this.minRamMb = defaults.minRamMb;
     	      this.mostRecent = defaults.mostRecent;
     	      this.name = defaults.name;
+    	      this.nameRegex = defaults.nameRegex;
     	      this.owner = defaults.owner;
     	      this.properties = defaults.properties;
     	      this.protected_ = defaults.protected_;
@@ -374,6 +392,11 @@ public final class GetImageResult {
         @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nameRegex(@Nullable String nameRegex) {
+            this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
@@ -464,6 +487,7 @@ public final class GetImageResult {
             o.minRamMb = minRamMb;
             o.mostRecent = mostRecent;
             o.name = name;
+            o.nameRegex = nameRegex;
             o.owner = owner;
             o.properties = properties;
             o.protected_ = protected_;

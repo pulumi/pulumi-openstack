@@ -5,17 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./cluster";
-export * from "./clusterTemplate";
-export * from "./getCluster";
-export * from "./getClusterTemplate";
-export * from "./getNodeGroup";
-export * from "./nodeGroup";
+export { ClusterArgs, ClusterState } from "./cluster";
+export type Cluster = import("./cluster").Cluster;
+export const Cluster: typeof import("./cluster").Cluster = null as any;
+utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
-// Import resources to register:
-import { Cluster } from "./cluster";
-import { ClusterTemplate } from "./clusterTemplate";
-import { NodeGroup } from "./nodeGroup";
+export { ClusterTemplateArgs, ClusterTemplateState } from "./clusterTemplate";
+export type ClusterTemplate = import("./clusterTemplate").ClusterTemplate;
+export const ClusterTemplate: typeof import("./clusterTemplate").ClusterTemplate = null as any;
+utilities.lazyLoad(exports, ["ClusterTemplate"], () => require("./clusterTemplate"));
+
+export { GetClusterArgs, GetClusterResult, GetClusterOutputArgs } from "./getCluster";
+export const getCluster: typeof import("./getCluster").getCluster = null as any;
+export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
+utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
+
+export { GetClusterTemplateArgs, GetClusterTemplateResult, GetClusterTemplateOutputArgs } from "./getClusterTemplate";
+export const getClusterTemplate: typeof import("./getClusterTemplate").getClusterTemplate = null as any;
+export const getClusterTemplateOutput: typeof import("./getClusterTemplate").getClusterTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterTemplate","getClusterTemplateOutput"], () => require("./getClusterTemplate"));
+
+export { GetNodeGroupArgs, GetNodeGroupResult, GetNodeGroupOutputArgs } from "./getNodeGroup";
+export const getNodeGroup: typeof import("./getNodeGroup").getNodeGroup = null as any;
+export const getNodeGroupOutput: typeof import("./getNodeGroup").getNodeGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getNodeGroup","getNodeGroupOutput"], () => require("./getNodeGroup"));
+
+export { NodeGroupArgs, NodeGroupState } from "./nodeGroup";
+export type NodeGroup = import("./nodeGroup").NodeGroup;
+export const NodeGroup: typeof import("./nodeGroup").NodeGroup = null as any;
+utilities.lazyLoad(exports, ["NodeGroup"], () => require("./nodeGroup"));
+
 
 const _module = {
     version: utilities.getVersion(),

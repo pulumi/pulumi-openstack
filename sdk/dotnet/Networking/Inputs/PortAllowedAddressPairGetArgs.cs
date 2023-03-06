@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Networking.Inputs
 {
 
-    public sealed class PortAllowedAddressPairGetArgs : Pulumi.ResourceArgs
+    public sealed class PortAllowedAddressPairGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The additional IP address.
@@ -27,5 +27,6 @@ namespace Pulumi.OpenStack.Networking.Inputs
         public PortAllowedAddressPairGetArgs()
         {
         }
+        public static new PortAllowedAddressPairGetArgs Empty => new PortAllowedAddressPairGetArgs();
     }
 }

@@ -75,8 +75,7 @@ type Instance struct {
 	// Metadata key/value pairs to make available from
 	// within the instance. Changing this updates the existing server metadata.
 	Metadata pulumi.MapOutput `pulumi:"metadata"`
-	// The human-readable
-	// name of the network. Changing this creates a new server.
+	// A unique name for the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Special string for `network` option to create
 	// the server. `networkMode` can be `"auto"` or `"none"`.
@@ -135,6 +134,13 @@ func NewInstance(ctx *pulumi.Context,
 		args = &InstanceArgs{}
 	}
 
+	if args.AdminPass != nil {
+		args.AdminPass = pulumi.ToSecret(args.AdminPass).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"adminPass",
+	})
+	opts = append(opts, secrets)
 	var resource Instance
 	err := ctx.RegisterResource("openstack:compute/instance:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -219,8 +225,7 @@ type instanceState struct {
 	// Metadata key/value pairs to make available from
 	// within the instance. Changing this updates the existing server metadata.
 	Metadata map[string]interface{} `pulumi:"metadata"`
-	// The human-readable
-	// name of the network. Changing this creates a new server.
+	// A unique name for the resource.
 	Name *string `pulumi:"name"`
 	// Special string for `network` option to create
 	// the server. `networkMode` can be `"auto"` or `"none"`.
@@ -335,8 +340,7 @@ type InstanceState struct {
 	// Metadata key/value pairs to make available from
 	// within the instance. Changing this updates the existing server metadata.
 	Metadata pulumi.MapInput
-	// The human-readable
-	// name of the network. Changing this creates a new server.
+	// A unique name for the resource.
 	Name pulumi.StringPtrInput
 	// Special string for `network` option to create
 	// the server. `networkMode` can be `"auto"` or `"none"`.
@@ -449,8 +453,7 @@ type instanceArgs struct {
 	// Metadata key/value pairs to make available from
 	// within the instance. Changing this updates the existing server metadata.
 	Metadata map[string]interface{} `pulumi:"metadata"`
-	// The human-readable
-	// name of the network. Changing this creates a new server.
+	// A unique name for the resource.
 	Name *string `pulumi:"name"`
 	// Special string for `network` option to create
 	// the server. `networkMode` can be `"auto"` or `"none"`.
@@ -558,8 +561,7 @@ type InstanceArgs struct {
 	// Metadata key/value pairs to make available from
 	// within the instance. Changing this updates the existing server metadata.
 	Metadata pulumi.MapInput
-	// The human-readable
-	// name of the network. Changing this creates a new server.
+	// A unique name for the resource.
 	Name pulumi.StringPtrInput
 	// Special string for `network` option to create
 	// the server. `networkMode` can be `"auto"` or `"none"`.
@@ -812,8 +814,7 @@ func (o InstanceOutput) Metadata() pulumi.MapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
 }
 
-// The human-readable
-// name of the network. Changing this creates a new server.
+// A unique name for the resource.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

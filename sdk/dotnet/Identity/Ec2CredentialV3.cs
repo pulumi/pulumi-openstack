@@ -14,37 +14,34 @@ namespace Pulumi.OpenStack.Identity
     /// ### EC2 credential in current project scope
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var ec2Key1 = new OpenStack.Identity.Ec2CredentialV3("ec2Key1", new OpenStack.Identity.Ec2CredentialV3Args
-    ///         {
-    ///         });
-    ///     }
+    ///     var ec2Key1 = new OpenStack.Identity.Ec2CredentialV3("ec2Key1");
     /// 
-    /// }
+    /// });
     /// ```
     /// ### EC2 credential in pre-defined project scope
     /// 
+    /// This allows administrative users to create EC2 credentials for a scope different
+    /// from the current auth scope.
+    /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var ec2Key1 = new OpenStack.Identity.Ec2CredentialV3("ec2Key1", new()
     ///     {
-    ///         var ec2Key1 = new OpenStack.Identity.Ec2CredentialV3("ec2Key1", new OpenStack.Identity.Ec2CredentialV3Args
-    ///         {
-    ///             ProjectId = "f7ac731cc11f40efbc03a9f9e1d1d21f",
-    ///         });
-    ///     }
+    ///         ProjectId = "f7ac731cc11f40efbc03a9f9e1d1d21f",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +53,7 @@ namespace Pulumi.OpenStack.Identity
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:identity/ec2CredentialV3:Ec2CredentialV3")]
-    public partial class Ec2CredentialV3 : Pulumi.CustomResource
+    public partial class Ec2CredentialV3 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// contains an EC2 credential access UUID
@@ -67,7 +64,8 @@ namespace Pulumi.OpenStack.Identity
         /// <summary>
         /// The ID of the project the EC2 credential is created
         /// for and that authentication requests using this EC2 credential will
-        /// be scoped to.
+        /// be scoped to. Only administrative users can specify a project ID different
+        /// from the current auth scope.
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
@@ -94,6 +92,8 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The ID of the user the EC2 credential is created for.
+        /// Only administrative users can specify a user ID different from the current
+        /// auth scope.
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
@@ -121,6 +121,10 @@ namespace Pulumi.OpenStack.Identity
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "secret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -142,12 +146,13 @@ namespace Pulumi.OpenStack.Identity
         }
     }
 
-    public sealed class Ec2CredentialV3Args : Pulumi.ResourceArgs
+    public sealed class Ec2CredentialV3Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the project the EC2 credential is created
         /// for and that authentication requests using this EC2 credential will
-        /// be scoped to.
+        /// be scoped to. Only administrative users can specify a project ID different
+        /// from the current auth scope.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -162,6 +167,8 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The ID of the user the EC2 credential is created for.
+        /// Only administrative users can specify a user ID different from the current
+        /// auth scope.
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
@@ -169,9 +176,10 @@ namespace Pulumi.OpenStack.Identity
         public Ec2CredentialV3Args()
         {
         }
+        public static new Ec2CredentialV3Args Empty => new Ec2CredentialV3Args();
     }
 
-    public sealed class Ec2CredentialV3State : Pulumi.ResourceArgs
+    public sealed class Ec2CredentialV3State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// contains an EC2 credential access UUID
@@ -182,7 +190,8 @@ namespace Pulumi.OpenStack.Identity
         /// <summary>
         /// The ID of the project the EC2 credential is created
         /// for and that authentication requests using this EC2 credential will
-        /// be scoped to.
+        /// be scoped to. Only administrative users can specify a project ID different
+        /// from the current auth scope.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -195,11 +204,21 @@ namespace Pulumi.OpenStack.Identity
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("secret")]
+        private Input<string>? _secret;
+
         /// <summary>
         /// contains an EC2 credential secret UUID
         /// </summary>
-        [Input("secret")]
-        public Input<string>? Secret { get; set; }
+        public Input<string>? Secret
+        {
+            get => _secret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// contains an EC2 credential trust ID scope
@@ -209,6 +228,8 @@ namespace Pulumi.OpenStack.Identity
 
         /// <summary>
         /// The ID of the user the EC2 credential is created for.
+        /// Only administrative users can specify a user ID different from the current
+        /// auth scope.
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
@@ -216,5 +237,6 @@ namespace Pulumi.OpenStack.Identity
         public Ec2CredentialV3State()
         {
         }
+        public static new Ec2CredentialV3State Empty => new Ec2CredentialV3State();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Identity.Inputs
 {
 
-    public sealed class ApplicationCredentialAccessRuleArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationCredentialAccessRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the existing access rule. The access rule ID of
@@ -49,5 +49,6 @@ namespace Pulumi.OpenStack.Identity.Inputs
         public ApplicationCredentialAccessRuleArgs()
         {
         }
+        public static new ApplicationCredentialAccessRuleArgs Empty => new ApplicationCredentialAccessRuleArgs();
     }
 }

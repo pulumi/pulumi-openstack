@@ -16,14 +16,22 @@ public final class PortFixedIpArgs extends com.pulumi.resources.ResourceArgs {
     public static final PortFixedIpArgs Empty = new PortFixedIpArgs();
 
     /**
-     * The additional IP address.
+     * IP address desired in the subnet for this port. If
+     * you don&#39;t specify `ip_address`, an available IP address from the specified
+     * subnet will be allocated to this port. This field will not be populated if it
+     * is left blank or omitted. To retrieve the assigned IP address, use the
+     * `all_fixed_ips` attribute.
      * 
      */
     @Import(name="ipAddress")
     private @Nullable Output<String> ipAddress;
 
     /**
-     * @return The additional IP address.
+     * @return IP address desired in the subnet for this port. If
+     * you don&#39;t specify `ip_address`, an available IP address from the specified
+     * subnet will be allocated to this port. This field will not be populated if it
+     * is left blank or omitted. To retrieve the assigned IP address, use the
+     * `all_fixed_ips` attribute.
      * 
      */
     public Optional<Output<String>> ipAddress() {
@@ -73,7 +81,11 @@ public final class PortFixedIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddress The additional IP address.
+         * @param ipAddress IP address desired in the subnet for this port. If
+         * you don&#39;t specify `ip_address`, an available IP address from the specified
+         * subnet will be allocated to this port. This field will not be populated if it
+         * is left blank or omitted. To retrieve the assigned IP address, use the
+         * `all_fixed_ips` attribute.
          * 
          * @return builder
          * 
@@ -84,7 +96,11 @@ public final class PortFixedIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipAddress The additional IP address.
+         * @param ipAddress IP address desired in the subnet for this port. If
+         * you don&#39;t specify `ip_address`, an available IP address from the specified
+         * subnet will be allocated to this port. This field will not be populated if it
+         * is left blank or omitted. To retrieve the assigned IP address, use the
+         * `all_fixed_ips` attribute.
          * 
          * @return builder
          * 

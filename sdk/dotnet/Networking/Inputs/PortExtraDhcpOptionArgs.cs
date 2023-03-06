@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Networking.Inputs
 {
 
-    public sealed class PortExtraDhcpOptionArgs : Pulumi.ResourceArgs
+    public sealed class PortExtraDhcpOptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// IP protocol version. Defaults to 4.
@@ -33,5 +33,6 @@ namespace Pulumi.OpenStack.Networking.Inputs
         public PortExtraDhcpOptionArgs()
         {
         }
+        public static new PortExtraDhcpOptionArgs Empty => new PortExtraDhcpOptionArgs();
     }
 }

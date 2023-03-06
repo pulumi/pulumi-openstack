@@ -14,19 +14,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const subnets = pulumi.output(openstack.networking.getSubnetIdsV2({
+ * const subnets = openstack.networking.getSubnetIdsV2({
  *     nameRegex: "public",
  *     tags: ["public"],
- * }));
+ * });
  * ```
  */
 export function getSubnetIdsV2(args?: GetSubnetIdsV2Args, opts?: pulumi.InvokeOptions): Promise<GetSubnetIdsV2Result> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", {
         "cidr": args.cidr,
         "description": args.description,
@@ -145,9 +142,24 @@ export interface GetSubnetIdsV2Result {
     readonly tags?: string[];
     readonly tenantId?: string;
 }
-
+/**
+ * Use this data source to get a list of Openstack Subnet IDs matching the
+ * specified criteria.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const subnets = openstack.networking.getSubnetIdsV2({
+ *     nameRegex: "public",
+ *     tags: ["public"],
+ * });
+ * ```
+ */
 export function getSubnetIdsV2Output(args?: GetSubnetIdsV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetIdsV2Result> {
-    return pulumi.output(args).apply(a => getSubnetIdsV2(a, opts))
+    return pulumi.output(args).apply((a: any) => getSubnetIdsV2(a, opts))
 }
 
 /**

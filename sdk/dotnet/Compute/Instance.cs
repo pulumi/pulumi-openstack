@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Compute
 {
     [OpenStackResourceType("openstack:compute/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The first detected Fixed IPv4 address.
@@ -142,8 +142,7 @@ namespace Pulumi.OpenStack.Compute
         public Output<ImmutableDictionary<string, object>?> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// The human-readable
-        /// name of the network. Changing this creates a new server.
+        /// A unique name for the resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -268,6 +267,10 @@ namespace Pulumi.OpenStack.Compute
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "adminPass",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -289,7 +292,7 @@ namespace Pulumi.OpenStack.Compute
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The first detected Fixed IPv4 address.
@@ -303,12 +306,22 @@ namespace Pulumi.OpenStack.Compute
         [Input("accessIpV6")]
         public Input<string>? AccessIpV6 { get; set; }
 
+        [Input("adminPass")]
+        private Input<string>? _adminPass;
+
         /// <summary>
         /// The administrative password to assign to the server.
         /// Changing this changes the root password on the existing server.
         /// </summary>
-        [Input("adminPass")]
-        public Input<string>? AdminPass { get; set; }
+        public Input<string>? AdminPass
+        {
+            get => _adminPass;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _adminPass = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The availability zone in which to create
@@ -417,8 +430,7 @@ namespace Pulumi.OpenStack.Compute
         }
 
         /// <summary>
-        /// The human-readable
-        /// name of the network. Changing this creates a new server.
+        /// A unique name for the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -553,9 +565,10 @@ namespace Pulumi.OpenStack.Compute
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The first detected Fixed IPv4 address.
@@ -569,12 +582,22 @@ namespace Pulumi.OpenStack.Compute
         [Input("accessIpV6")]
         public Input<string>? AccessIpV6 { get; set; }
 
+        [Input("adminPass")]
+        private Input<string>? _adminPass;
+
         /// <summary>
         /// The administrative password to assign to the server.
         /// Changing this changes the root password on the existing server.
         /// </summary>
-        [Input("adminPass")]
-        public Input<string>? AdminPass { get; set; }
+        public Input<string>? AdminPass
+        {
+            get => _adminPass;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _adminPass = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("allMetadata")]
         private InputMap<object>? _allMetadata;
@@ -710,8 +733,7 @@ namespace Pulumi.OpenStack.Compute
         }
 
         /// <summary>
-        /// The human-readable
-        /// name of the network. Changing this creates a new server.
+        /// A unique name for the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -852,5 +874,6 @@ namespace Pulumi.OpenStack.Compute
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

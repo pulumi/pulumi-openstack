@@ -20,26 +20,24 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ports = OpenStack.Networking.GetPortIds.Invoke(new()
         ///     {
-        ///         var ports = Output.Create(OpenStack.Networking.GetPortIds.InvokeAsync(new OpenStack.Networking.GetPortIdsArgs
-        ///         {
-        ///             Name = "port",
-        ///         }));
-        ///     }
+        ///         Name = "port",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPortIdsResult> InvokeAsync(GetPortIdsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPortIdsResult>("openstack:networking/getPortIds:getPortIds", args ?? new GetPortIdsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPortIdsResult>("openstack:networking/getPortIds:getPortIds", args ?? new GetPortIdsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get a list of Openstack Port IDs matching the
@@ -50,30 +48,28 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var ports = OpenStack.Networking.GetPortIds.Invoke(new()
         ///     {
-        ///         var ports = Output.Create(OpenStack.Networking.GetPortIds.InvokeAsync(new OpenStack.Networking.GetPortIdsArgs
-        ///         {
-        ///             Name = "port",
-        ///         }));
-        ///     }
+        ///         Name = "port",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetPortIdsResult> Invoke(GetPortIdsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPortIdsResult>("openstack:networking/getPortIds:getPortIds", args ?? new GetPortIdsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPortIdsResult>("openstack:networking/getPortIds:getPortIds", args ?? new GetPortIdsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetPortIdsArgs : Pulumi.InvokeArgs
+    public sealed class GetPortIdsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The administrative state of the port.
@@ -189,9 +185,10 @@ namespace Pulumi.OpenStack.Networking
         public GetPortIdsArgs()
         {
         }
+        public static new GetPortIdsArgs Empty => new GetPortIdsArgs();
     }
 
-    public sealed class GetPortIdsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPortIdsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The administrative state of the port.
@@ -307,6 +304,7 @@ namespace Pulumi.OpenStack.Networking
         public GetPortIdsInvokeArgs()
         {
         }
+        public static new GetPortIdsInvokeArgs Empty => new GetPortIdsInvokeArgs();
     }
 
 

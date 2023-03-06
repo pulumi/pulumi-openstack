@@ -5,7 +5,7 @@ package com.pulumi.openstack.objectstorage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.openstack.objectstorage.inputs.ContainerVersioningArgs;
+import com.pulumi.openstack.objectstorage.inputs.ContainerVersioningLegacyArgs;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -194,18 +194,43 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable object versioning. The structure is described below.
+     * A boolean that enables or disable object versioning.
+     * Defaults to `false`
      * 
      */
     @Import(name="versioning")
-    private @Nullable Output<ContainerVersioningArgs> versioning;
+    private @Nullable Output<Boolean> versioning;
 
     /**
-     * @return Enable object versioning. The structure is described below.
+     * @return A boolean that enables or disable object versioning.
+     * Defaults to `false`
      * 
      */
-    public Optional<Output<ContainerVersioningArgs>> versioning() {
+    public Optional<Output<Boolean>> versioning() {
         return Optional.ofNullable(this.versioning);
+    }
+
+    /**
+     * Enable legacy object versioning. The structure is described below.
+     * 
+     * @deprecated
+     * Use newer &#34;versioning&#34; implementation
+     * 
+     */
+    @Deprecated /* Use newer ""versioning"" implementation */
+    @Import(name="versioningLegacy")
+    private @Nullable Output<ContainerVersioningLegacyArgs> versioningLegacy;
+
+    /**
+     * @return Enable legacy object versioning. The structure is described below.
+     * 
+     * @deprecated
+     * Use newer &#34;versioning&#34; implementation
+     * 
+     */
+    @Deprecated /* Use newer ""versioning"" implementation */
+    public Optional<Output<ContainerVersioningLegacyArgs>> versioningLegacy() {
+        return Optional.ofNullable(this.versioningLegacy);
     }
 
     private ContainerArgs() {}
@@ -222,6 +247,7 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         this.region = $.region;
         this.storagePolicy = $.storagePolicy;
         this.versioning = $.versioning;
+        this.versioningLegacy = $.versioningLegacy;
     }
 
     public static Builder builder() {
@@ -477,24 +503,55 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versioning Enable object versioning. The structure is described below.
+         * @param versioning A boolean that enables or disable object versioning.
+         * Defaults to `false`
          * 
          * @return builder
          * 
          */
-        public Builder versioning(@Nullable Output<ContainerVersioningArgs> versioning) {
+        public Builder versioning(@Nullable Output<Boolean> versioning) {
             $.versioning = versioning;
             return this;
         }
 
         /**
-         * @param versioning Enable object versioning. The structure is described below.
+         * @param versioning A boolean that enables or disable object versioning.
+         * Defaults to `false`
          * 
          * @return builder
          * 
          */
-        public Builder versioning(ContainerVersioningArgs versioning) {
+        public Builder versioning(Boolean versioning) {
             return versioning(Output.of(versioning));
+        }
+
+        /**
+         * @param versioningLegacy Enable legacy object versioning. The structure is described below.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use newer &#34;versioning&#34; implementation
+         * 
+         */
+        @Deprecated /* Use newer ""versioning"" implementation */
+        public Builder versioningLegacy(@Nullable Output<ContainerVersioningLegacyArgs> versioningLegacy) {
+            $.versioningLegacy = versioningLegacy;
+            return this;
+        }
+
+        /**
+         * @param versioningLegacy Enable legacy object versioning. The structure is described below.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use newer &#34;versioning&#34; implementation
+         * 
+         */
+        @Deprecated /* Use newer ""versioning"" implementation */
+        public Builder versioningLegacy(ContainerVersioningLegacyArgs versioningLegacy) {
+            return versioningLegacy(Output.of(versioningLegacy));
         }
 
         public ContainerArgs build() {

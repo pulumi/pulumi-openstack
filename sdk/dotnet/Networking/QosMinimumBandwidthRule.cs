@@ -16,25 +16,24 @@ namespace Pulumi.OpenStack.Networking
     /// ### Create a QoS Policy with some minimum bandwidth rule
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var qosPolicy1 = new OpenStack.Networking.QosPolicy("qosPolicy1", new()
     ///     {
-    ///         var qosPolicy1 = new OpenStack.Networking.QosPolicy("qosPolicy1", new OpenStack.Networking.QosPolicyArgs
-    ///         {
-    ///             Description = "min_kbps",
-    ///         });
-    ///         var minimumBandwidthRule1 = new OpenStack.Networking.QosMinimumBandwidthRule("minimumBandwidthRule1", new OpenStack.Networking.QosMinimumBandwidthRuleArgs
-    ///         {
-    ///             MinKbps = 200,
-    ///             QosPolicyId = qosPolicy1.Id,
-    ///         });
-    ///     }
+    ///         Description = "min_kbps",
+    ///     });
     /// 
-    /// }
+    ///     var minimumBandwidthRule1 = new OpenStack.Networking.QosMinimumBandwidthRule("minimumBandwidthRule1", new()
+    ///     {
+    ///         MinKbps = 200,
+    ///         QosPolicyId = qosPolicy1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +45,7 @@ namespace Pulumi.OpenStack.Networking
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule")]
-    public partial class QosMinimumBandwidthRule : Pulumi.CustomResource
+    public partial class QosMinimumBandwidthRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The direction of traffic. Defaults to "egress". Changing this updates the direction of the
@@ -120,7 +119,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
-    public sealed class QosMinimumBandwidthRuleArgs : Pulumi.ResourceArgs
+    public sealed class QosMinimumBandwidthRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The direction of traffic. Defaults to "egress". Changing this updates the direction of the
@@ -153,9 +152,10 @@ namespace Pulumi.OpenStack.Networking
         public QosMinimumBandwidthRuleArgs()
         {
         }
+        public static new QosMinimumBandwidthRuleArgs Empty => new QosMinimumBandwidthRuleArgs();
     }
 
-    public sealed class QosMinimumBandwidthRuleState : Pulumi.ResourceArgs
+    public sealed class QosMinimumBandwidthRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The direction of traffic. Defaults to "egress". Changing this updates the direction of the
@@ -188,5 +188,6 @@ namespace Pulumi.OpenStack.Networking
         public QosMinimumBandwidthRuleState()
         {
         }
+        public static new QosMinimumBandwidthRuleState Empty => new QosMinimumBandwidthRuleState();
     }
 }

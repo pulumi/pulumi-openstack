@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var cluster1 = OpenStack.ContainerInfra.GetCluster.Invoke(new()
         ///     {
-        ///         var cluster1 = Output.Create(OpenStack.ContainerInfra.GetCluster.InvokeAsync(new OpenStack.ContainerInfra.GetClusterArgs
-        ///         {
-        ///             Name = "cluster_1",
-        ///         }));
-        ///     }
+        ///         Name = "cluster_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("openstack:containerinfra/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("openstack:containerinfra/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack Magnum cluster.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var cluster1 = OpenStack.ContainerInfra.GetCluster.Invoke(new()
         ///     {
-        ///         var cluster1 = Output.Create(OpenStack.ContainerInfra.GetCluster.InvokeAsync(new OpenStack.ContainerInfra.GetClusterArgs
-        ///         {
-        ///             Name = "cluster_1",
-        ///         }));
-        ///     }
+        ///         Name = "cluster_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetClusterResult>("openstack:containerinfra/getCluster:getCluster", args ?? new GetClusterInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetClusterResult>("openstack:containerinfra/getCluster:getCluster", args ?? new GetClusterInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetClusterArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the cluster.
@@ -90,9 +86,10 @@ namespace Pulumi.OpenStack.ContainerInfra
         public GetClusterArgs()
         {
         }
+        public static new GetClusterArgs Empty => new GetClusterArgs();
     }
 
-    public sealed class GetClusterInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the cluster.
@@ -111,6 +108,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         public GetClusterInvokeArgs()
         {
         }
+        public static new GetClusterInvokeArgs Empty => new GetClusterInvokeArgs();
     }
 
 

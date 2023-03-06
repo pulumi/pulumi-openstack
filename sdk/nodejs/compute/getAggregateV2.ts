@@ -14,17 +14,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const test = pulumi.output(openstack.compute.getAggregateV2({
+ * const test = openstack.compute.getAggregateV2({
  *     name: "test",
- * }));
+ * });
  * ```
  */
 export function getAggregateV2(args: GetAggregateV2Args, opts?: pulumi.InvokeOptions): Promise<GetAggregateV2Result> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:compute/getAggregateV2:getAggregateV2", {
         "hosts": args.hosts,
         "metadata": args.metadata,
@@ -75,9 +72,23 @@ export interface GetAggregateV2Result {
      */
     readonly zone: string;
 }
-
+/**
+ * Use this data source to get information about host aggregates
+ * by name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const test = openstack.compute.getAggregateV2({
+ *     name: "test",
+ * });
+ * ```
+ */
 export function getAggregateV2Output(args: GetAggregateV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregateV2Result> {
-    return pulumi.output(args).apply(a => getAggregateV2(a, opts))
+    return pulumi.output(args).apply((a: any) => getAggregateV2(a, opts))
 }
 
 /**

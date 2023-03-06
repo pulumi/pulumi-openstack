@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Compute.Inputs
 {
 
-    public sealed class InstanceVendorOptionsGetArgs : Pulumi.ResourceArgs
+    public sealed class InstanceVendorOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to try to detach all attached
@@ -32,5 +32,6 @@ namespace Pulumi.OpenStack.Compute.Inputs
         public InstanceVendorOptionsGetArgs()
         {
         }
+        public static new InstanceVendorOptionsGetArgs Empty => new InstanceVendorOptionsGetArgs();
     }
 }

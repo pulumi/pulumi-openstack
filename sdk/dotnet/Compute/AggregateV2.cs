@@ -16,47 +16,41 @@ namespace Pulumi.OpenStack.Compute
     /// ### Full example
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var dellServers = new OpenStack.Compute.AggregateV2("dellServers", new()
     ///     {
-    ///         var dellServers = new OpenStack.Compute.AggregateV2("dellServers", new OpenStack.Compute.AggregateV2Args
+    ///         Hosts = new[]
     ///         {
-    ///             Hosts = 
-    ///             {
-    ///                 "myhost01.example.com",
-    ///                 "myhost02.example.com",
-    ///             },
-    ///             Metadata = 
-    ///             {
-    ///                 { "cpus", "56" },
-    ///             },
-    ///             Region = "RegionOne",
-    ///             Zone = "nova",
-    ///         });
-    ///     }
+    ///             "myhost01.example.com",
+    ///             "myhost02.example.com",
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "cpus", "56" },
+    ///         },
+    ///         Region = "RegionOne",
+    ///         Zone = "nova",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Minimum required example
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var test = new OpenStack.Compute.AggregateV2("test", new OpenStack.Compute.AggregateV2Args
-    ///         {
-    ///         });
-    ///     }
+    ///     var test = new OpenStack.Compute.AggregateV2("test");
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -72,7 +66,7 @@ namespace Pulumi.OpenStack.Compute
     /// | +----+------+-------------------+
     /// </summary>
     [OpenStackResourceType("openstack:compute/aggregateV2:AggregateV2")]
-    public partial class AggregateV2 : Pulumi.CustomResource
+    public partial class AggregateV2 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The list of hosts contained in the Host Aggregate. The hosts must be added
@@ -153,7 +147,7 @@ namespace Pulumi.OpenStack.Compute
         }
     }
 
-    public sealed class AggregateV2Args : Pulumi.ResourceArgs
+    public sealed class AggregateV2Args : global::Pulumi.ResourceArgs
     {
         [Input("hosts")]
         private InputList<string>? _hosts;
@@ -205,9 +199,10 @@ namespace Pulumi.OpenStack.Compute
         public AggregateV2Args()
         {
         }
+        public static new AggregateV2Args Empty => new AggregateV2Args();
     }
 
-    public sealed class AggregateV2State : Pulumi.ResourceArgs
+    public sealed class AggregateV2State : global::Pulumi.ResourceArgs
     {
         [Input("hosts")]
         private InputList<string>? _hosts;
@@ -259,5 +254,6 @@ namespace Pulumi.OpenStack.Compute
         public AggregateV2State()
         {
         }
+        public static new AggregateV2State Empty => new AggregateV2State();
     }
 }

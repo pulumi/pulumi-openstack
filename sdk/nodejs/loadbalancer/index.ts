@@ -5,34 +5,71 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./l7policyV2";
-export * from "./l7ruleV2";
-export * from "./listener";
-export * from "./loadBalancer";
-export * from "./member";
-export * from "./memberV1";
-export * from "./members";
-export * from "./monitor";
-export * from "./monitorV1";
-export * from "./pool";
-export * from "./poolV1";
-export * from "./quota";
-export * from "./vip";
+export { L7PolicyV2Args, L7PolicyV2State } from "./l7policyV2";
+export type L7PolicyV2 = import("./l7policyV2").L7PolicyV2;
+export const L7PolicyV2: typeof import("./l7policyV2").L7PolicyV2 = null as any;
+utilities.lazyLoad(exports, ["L7PolicyV2"], () => require("./l7policyV2"));
 
-// Import resources to register:
-import { L7PolicyV2 } from "./l7policyV2";
-import { L7RuleV2 } from "./l7ruleV2";
-import { Listener } from "./listener";
-import { LoadBalancer } from "./loadBalancer";
-import { Member } from "./member";
-import { MemberV1 } from "./memberV1";
-import { Members } from "./members";
-import { Monitor } from "./monitor";
-import { MonitorV1 } from "./monitorV1";
-import { Pool } from "./pool";
-import { PoolV1 } from "./poolV1";
-import { Quota } from "./quota";
-import { Vip } from "./vip";
+export { L7RuleV2Args, L7RuleV2State } from "./l7ruleV2";
+export type L7RuleV2 = import("./l7ruleV2").L7RuleV2;
+export const L7RuleV2: typeof import("./l7ruleV2").L7RuleV2 = null as any;
+utilities.lazyLoad(exports, ["L7RuleV2"], () => require("./l7ruleV2"));
+
+export { ListenerArgs, ListenerState } from "./listener";
+export type Listener = import("./listener").Listener;
+export const Listener: typeof import("./listener").Listener = null as any;
+utilities.lazyLoad(exports, ["Listener"], () => require("./listener"));
+
+export { LoadBalancerArgs, LoadBalancerState } from "./loadBalancer";
+export type LoadBalancer = import("./loadBalancer").LoadBalancer;
+export const LoadBalancer: typeof import("./loadBalancer").LoadBalancer = null as any;
+utilities.lazyLoad(exports, ["LoadBalancer"], () => require("./loadBalancer"));
+
+export { MemberArgs, MemberState } from "./member";
+export type Member = import("./member").Member;
+export const Member: typeof import("./member").Member = null as any;
+utilities.lazyLoad(exports, ["Member"], () => require("./member"));
+
+export { MemberV1Args, MemberV1State } from "./memberV1";
+export type MemberV1 = import("./memberV1").MemberV1;
+export const MemberV1: typeof import("./memberV1").MemberV1 = null as any;
+utilities.lazyLoad(exports, ["MemberV1"], () => require("./memberV1"));
+
+export { MembersArgs, MembersState } from "./members";
+export type Members = import("./members").Members;
+export const Members: typeof import("./members").Members = null as any;
+utilities.lazyLoad(exports, ["Members"], () => require("./members"));
+
+export { MonitorArgs, MonitorState } from "./monitor";
+export type Monitor = import("./monitor").Monitor;
+export const Monitor: typeof import("./monitor").Monitor = null as any;
+utilities.lazyLoad(exports, ["Monitor"], () => require("./monitor"));
+
+export { MonitorV1Args, MonitorV1State } from "./monitorV1";
+export type MonitorV1 = import("./monitorV1").MonitorV1;
+export const MonitorV1: typeof import("./monitorV1").MonitorV1 = null as any;
+utilities.lazyLoad(exports, ["MonitorV1"], () => require("./monitorV1"));
+
+export { PoolArgs, PoolState } from "./pool";
+export type Pool = import("./pool").Pool;
+export const Pool: typeof import("./pool").Pool = null as any;
+utilities.lazyLoad(exports, ["Pool"], () => require("./pool"));
+
+export { PoolV1Args, PoolV1State } from "./poolV1";
+export type PoolV1 = import("./poolV1").PoolV1;
+export const PoolV1: typeof import("./poolV1").PoolV1 = null as any;
+utilities.lazyLoad(exports, ["PoolV1"], () => require("./poolV1"));
+
+export { QuotaArgs, QuotaState } from "./quota";
+export type Quota = import("./quota").Quota;
+export const Quota: typeof import("./quota").Quota = null as any;
+utilities.lazyLoad(exports, ["Quota"], () => require("./quota"));
+
+export { VipArgs, VipState } from "./vip";
+export type Vip = import("./vip").Vip;
+export const Vip: typeof import("./vip").Vip = null as any;
+utilities.lazyLoad(exports, ["Vip"], () => require("./vip"));
+
 
 const _module = {
     version: utilities.getVersion(),

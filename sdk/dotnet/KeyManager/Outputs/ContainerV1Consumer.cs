@@ -14,7 +14,8 @@ namespace Pulumi.OpenStack.KeyManager.Outputs
     public sealed class ContainerV1Consumer
     {
         /// <summary>
-        /// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+        /// Human-readable name for the Container. Does not have
+        /// to be unique.
         /// </summary>
         public readonly string? Name;
         /// <summary>

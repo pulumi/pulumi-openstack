@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const rule1 = new openstack.firewall.Rule("rule_1", {
+ * const rule1 = new openstack.firewall.Rule("rule1", {
  *     action: "deny",
  *     description: "drop TELNET traffic",
  *     destinationPort: "23",

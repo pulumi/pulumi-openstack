@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Networking.Inputs
 {
 
-    public sealed class TrunkSubPortArgs : Pulumi.ResourceArgs
+    public sealed class TrunkSubPortArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the port to be made a subport of the trunk.
@@ -33,5 +33,6 @@ namespace Pulumi.OpenStack.Networking.Inputs
         public TrunkSubPortArgs()
         {
         }
+        public static new TrunkSubPortArgs Empty => new TrunkSubPortArgs();
     }
 }

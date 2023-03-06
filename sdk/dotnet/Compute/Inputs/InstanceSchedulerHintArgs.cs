@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Compute.Inputs
 {
 
-    public sealed class InstanceSchedulerHintArgs : Pulumi.ResourceArgs
+    public sealed class InstanceSchedulerHintArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalProperties")]
         private InputMap<object>? _additionalProperties;
@@ -103,5 +103,6 @@ namespace Pulumi.OpenStack.Compute.Inputs
         public InstanceSchedulerHintArgs()
         {
         }
+        public static new InstanceSchedulerHintArgs Empty => new InstanceSchedulerHintArgs();
     }
 }

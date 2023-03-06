@@ -17,6 +17,9 @@ namespace Pulumi.OpenStack.Networking.Outputs
         /// The IP address to set on the router.
         /// </summary>
         public readonly string? IpAddress;
+        /// <summary>
+        /// Subnet in which the fixed IP belongs to.
+        /// </summary>
         public readonly string? SubnetId;
 
         [OutputConstructor]

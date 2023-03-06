@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *
  * const basic = new openstack.database.User("basic", {
  *     databases: ["testdb"],
- *     instance: openstack_db_instance_v1_basic.id,
+ *     instanceId: openstack_db_instance_v1.basic.id,
  *     password: "password",
  * });
  * ```
@@ -52,6 +52,9 @@ export class User extends pulumi.CustomResource {
      */
     public readonly databases!: pulumi.Output<string[]>;
     public readonly host!: pulumi.Output<string | undefined>;
+    /**
+     * The ID for the database instance.
+     */
     public readonly instanceId!: pulumi.Output<string>;
     /**
      * A unique name for the resource.
@@ -97,10 +100,12 @@ export class User extends pulumi.CustomResource {
             resourceInputs["host"] = args ? args.host : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(User.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -114,6 +119,9 @@ export interface UserState {
      */
     databases?: pulumi.Input<pulumi.Input<string>[]>;
     host?: pulumi.Input<string>;
+    /**
+     * The ID for the database instance.
+     */
     instanceId?: pulumi.Input<string>;
     /**
      * A unique name for the resource.
@@ -138,6 +146,9 @@ export interface UserArgs {
      */
     databases?: pulumi.Input<pulumi.Input<string>[]>;
     host?: pulumi.Input<string>;
+    /**
+     * The ID for the database instance.
+     */
     instanceId: pulumi.Input<string>;
     /**
      * A unique name for the resource.

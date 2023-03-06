@@ -15,22 +15,20 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member1 = new OpenStack.LoadBalancer.MemberV1("member1", new()
     ///     {
-    ///         var member1 = new OpenStack.LoadBalancer.MemberV1("member1", new OpenStack.LoadBalancer.MemberV1Args
-    ///         {
-    ///             Address = "192.168.0.10",
-    ///             PoolId = "d9415786-5f1a-428b-b35f-2f1523e146d2",
-    ///             Port = 80,
-    ///         });
-    ///     }
+    ///         Address = "192.168.0.10",
+    ///         PoolId = "d9415786-5f1a-428b-b35f-2f1523e146d2",
+    ///         Port = 80,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:loadbalancer/memberV1:MemberV1")]
-    public partial class MemberV1 : Pulumi.CustomResource
+    public partial class MemberV1 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The IP address of the member. Changing this creates a
@@ -136,7 +134,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         }
     }
 
-    public sealed class MemberV1Args : Pulumi.ResourceArgs
+    public sealed class MemberV1Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address of the member. Changing this creates a
@@ -189,9 +187,10 @@ namespace Pulumi.OpenStack.LoadBalancer
         public MemberV1Args()
         {
         }
+        public static new MemberV1Args Empty => new MemberV1Args();
     }
 
-    public sealed class MemberV1State : Pulumi.ResourceArgs
+    public sealed class MemberV1State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address of the member. Changing this creates a
@@ -244,5 +243,6 @@ namespace Pulumi.OpenStack.LoadBalancer
         public MemberV1State()
         {
         }
+        public static new MemberV1State Empty => new MemberV1State();
     }
 }

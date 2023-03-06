@@ -13,17 +13,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const qosBandwidthLimitRule1 = pulumi.output(openstack.networking.getQosBandwidthLimitRule({
+ * const qosBandwidthLimitRule1 = openstack.networking.getQosBandwidthLimitRule({
  *     maxKbps: 300,
- * }));
+ * });
  * ```
  */
 export function getQosBandwidthLimitRule(args: GetQosBandwidthLimitRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetQosBandwidthLimitRuleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", {
         "maxBurstKbps": args.maxBurstKbps,
         "maxKbps": args.maxKbps,
@@ -85,9 +82,22 @@ export interface GetQosBandwidthLimitRuleResult {
      */
     readonly region: string;
 }
-
+/**
+ * Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const qosBandwidthLimitRule1 = openstack.networking.getQosBandwidthLimitRule({
+ *     maxKbps: 300,
+ * });
+ * ```
+ */
 export function getQosBandwidthLimitRuleOutput(args: GetQosBandwidthLimitRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQosBandwidthLimitRuleResult> {
-    return pulumi.output(args).apply(a => getQosBandwidthLimitRule(a, opts))
+    return pulumi.output(args).apply((a: any) => getQosBandwidthLimitRule(a, opts))
 }
 
 /**

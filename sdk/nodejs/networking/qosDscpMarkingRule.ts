@@ -14,10 +14,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const qosPolicy1 = new openstack.networking.QosPolicy("qos_policy_1", {
- *     description: "dscp_mark",
- * });
- * const dscpMarkingRule1 = new openstack.networking.QosDscpMarkingRule("dscp_marking_rule_1", {
+ * const qosPolicy1 = new openstack.networking.QosPolicy("qosPolicy1", {description: "dscp_mark"});
+ * const dscpMarkingRule1 = new openstack.networking.QosDscpMarkingRule("dscpMarkingRule1", {
  *     dscpMark: 26,
  *     qosPolicyId: qosPolicy1.id,
  * });

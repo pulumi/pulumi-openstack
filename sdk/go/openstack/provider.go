@@ -95,6 +95,13 @@ func NewProvider(ctx *pulumi.Context,
 	if isZero(args.UseOctavia) {
 		args.UseOctavia = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "OS_USE_OCTAVIA").(bool))
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:openstack", name, args, &resource, opts...)
 	if err != nil {

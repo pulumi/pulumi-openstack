@@ -5,17 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getDnsZone";
-export * from "./recordSet";
-export * from "./transferAccept";
-export * from "./transferRequest";
-export * from "./zone";
+export { GetDnsZoneArgs, GetDnsZoneResult, GetDnsZoneOutputArgs } from "./getDnsZone";
+export const getDnsZone: typeof import("./getDnsZone").getDnsZone = null as any;
+export const getDnsZoneOutput: typeof import("./getDnsZone").getDnsZoneOutput = null as any;
+utilities.lazyLoad(exports, ["getDnsZone","getDnsZoneOutput"], () => require("./getDnsZone"));
 
-// Import resources to register:
-import { RecordSet } from "./recordSet";
-import { TransferAccept } from "./transferAccept";
-import { TransferRequest } from "./transferRequest";
-import { Zone } from "./zone";
+export { RecordSetArgs, RecordSetState } from "./recordSet";
+export type RecordSet = import("./recordSet").RecordSet;
+export const RecordSet: typeof import("./recordSet").RecordSet = null as any;
+utilities.lazyLoad(exports, ["RecordSet"], () => require("./recordSet"));
+
+export { TransferAcceptArgs, TransferAcceptState } from "./transferAccept";
+export type TransferAccept = import("./transferAccept").TransferAccept;
+export const TransferAccept: typeof import("./transferAccept").TransferAccept = null as any;
+utilities.lazyLoad(exports, ["TransferAccept"], () => require("./transferAccept"));
+
+export { TransferRequestArgs, TransferRequestState } from "./transferRequest";
+export type TransferRequest = import("./transferRequest").TransferRequest;
+export const TransferRequest: typeof import("./transferRequest").TransferRequest = null as any;
+utilities.lazyLoad(exports, ["TransferRequest"], () => require("./transferRequest"));
+
+export { ZoneArgs, ZoneState } from "./zone";
+export type Zone = import("./zone").Zone;
+export const Zone: typeof import("./zone").Zone = null as any;
+utilities.lazyLoad(exports, ["Zone"], () => require("./zone"));
+
 
 const _module = {
     version: utilities.getVersion(),

@@ -15,11 +15,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const project1 = new openstack.identity.Project("project_1", {});
- * const volumeType1 = new openstack.blockstorage.VolumeTypeV3("volume_type_1", {
- *     isPublic: false,
- * });
- * const volumeTypeAccess = new openstack.blockstorage.VolumeTypeAccessV3("volume_type_access", {
+ * const project1 = new openstack.identity.Project("project1", {});
+ * const volumeType1 = new openstack.blockstorage.VolumeTypeV3("volumeType1", {isPublic: false});
+ * const volumeTypeAccess = new openstack.blockstorage.VolumeTypeAccessV3("volumeTypeAccess", {
  *     projectId: project1.id,
  *     volumeTypeId: volumeType1.id,
  * });

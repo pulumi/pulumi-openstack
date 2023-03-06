@@ -100,6 +100,9 @@ type GetImageIdsArgs struct {
 	SortKey *string `pulumi:"sortKey"`
 	// Search for images with a specific tag.
 	Tag *string `pulumi:"tag"`
+	// A list of tags required to be set on the image
+	// (all specified tags must be in the images tag list for it to be matched).
+	Tags []string `pulumi:"tags"`
 	// The visibility of the image. Must be one of
 	// "public", "private", "community", or "shared". Defaults to "private".
 	Visibility *string `pulumi:"visibility"`
@@ -122,9 +125,10 @@ type GetImageIdsResult struct {
 	// Deprecated: Use option 'sort' instead.
 	SortDirection *string `pulumi:"sortDirection"`
 	// Deprecated: Use option 'sort' instead.
-	SortKey    *string `pulumi:"sortKey"`
-	Tag        *string `pulumi:"tag"`
-	Visibility *string `pulumi:"visibility"`
+	SortKey    *string  `pulumi:"sortKey"`
+	Tag        *string  `pulumi:"tag"`
+	Tags       []string `pulumi:"tags"`
+	Visibility *string  `pulumi:"visibility"`
 }
 
 func GetImageIdsOutput(ctx *pulumi.Context, args GetImageIdsOutputArgs, opts ...pulumi.InvokeOption) GetImageIdsResultOutput {
@@ -189,6 +193,9 @@ type GetImageIdsOutputArgs struct {
 	SortKey pulumi.StringPtrInput `pulumi:"sortKey"`
 	// Search for images with a specific tag.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
+	// A list of tags required to be set on the image
+	// (all specified tags must be in the images tag list for it to be matched).
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// The visibility of the image. Must be one of
 	// "public", "private", "community", or "shared". Defaults to "private".
 	Visibility pulumi.StringPtrInput `pulumi:"visibility"`
@@ -270,6 +277,10 @@ func (o GetImageIdsResultOutput) SortKey() pulumi.StringPtrOutput {
 
 func (o GetImageIdsResultOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImageIdsResult) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+func (o GetImageIdsResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetImageIdsResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 func (o GetImageIdsResultOutput) Visibility() pulumi.StringPtrOutput {

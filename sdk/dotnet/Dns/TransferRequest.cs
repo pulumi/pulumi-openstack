@@ -16,28 +16,27 @@ namespace Pulumi.OpenStack.Dns
     /// ### Automatically detect the correct network
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleZone = new OpenStack.Dns.Zone("exampleZone", new()
     ///     {
-    ///         var exampleZone = new OpenStack.Dns.Zone("exampleZone", new OpenStack.Dns.ZoneArgs
-    ///         {
-    ///             Description = "An example zone",
-    ///             Email = "jdoe@example.com",
-    ///             Ttl = 3000,
-    ///             Type = "PRIMARY",
-    ///         });
-    ///         var request1 = new OpenStack.Dns.TransferRequest("request1", new OpenStack.Dns.TransferRequestArgs
-    ///         {
-    ///             Description = "a transfer request",
-    ///             ZoneId = exampleZone.Id,
-    ///         });
-    ///     }
+    ///         Description = "An example zone",
+    ///         Email = "jdoe@example.com",
+    ///         Ttl = 3000,
+    ///         Type = "PRIMARY",
+    ///     });
     /// 
-    /// }
+    ///     var request1 = new OpenStack.Dns.TransferRequest("request1", new()
+    ///     {
+    ///         Description = "a transfer request",
+    ///         ZoneId = exampleZone.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +48,7 @@ namespace Pulumi.OpenStack.Dns
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:dns/transferRequest:TransferRequest")]
-    public partial class TransferRequest : Pulumi.CustomResource
+    public partial class TransferRequest : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A description of the zone tranfer request.
@@ -141,7 +140,7 @@ namespace Pulumi.OpenStack.Dns
         }
     }
 
-    public sealed class TransferRequestArgs : Pulumi.ResourceArgs
+    public sealed class TransferRequestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the zone tranfer request.
@@ -198,9 +197,10 @@ namespace Pulumi.OpenStack.Dns
         public TransferRequestArgs()
         {
         }
+        public static new TransferRequestArgs Empty => new TransferRequestArgs();
     }
 
-    public sealed class TransferRequestState : Pulumi.ResourceArgs
+    public sealed class TransferRequestState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the zone tranfer request.
@@ -257,5 +257,6 @@ namespace Pulumi.OpenStack.Dns
         public TransferRequestState()
         {
         }
+        public static new TransferRequestState Empty => new TransferRequestState();
     }
 }
