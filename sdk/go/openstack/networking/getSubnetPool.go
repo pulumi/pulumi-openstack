@@ -84,7 +84,6 @@ type LookupSubnetPoolArgs struct {
 // A collection of values returned by getSubnetPool.
 type LookupSubnetPoolResult struct {
 	// See Argument Reference above.
-	// * `ipVersion` -The IP protocol version.
 	AddressScopeId string `pulumi:"addressScopeId"`
 	// The set of string tags applied on the subnetpool.
 	AllTags []string `pulumi:"allTags"`
@@ -97,8 +96,9 @@ type LookupSubnetPoolResult struct {
 	// See Argument Reference above.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string `pulumi:"id"`
-	IpVersion int    `pulumi:"ipVersion"`
+	Id string `pulumi:"id"`
+	// The IP protocol version.
+	IpVersion int `pulumi:"ipVersion"`
 	// See Argument Reference above.
 	IsDefault bool `pulumi:"isDefault"`
 	// See Argument Reference above.
@@ -190,7 +190,6 @@ func (o LookupSubnetPoolResultOutput) ToLookupSubnetPoolResultOutputWithContext(
 }
 
 // See Argument Reference above.
-// * `ipVersion` -The IP protocol version.
 func (o LookupSubnetPoolResultOutput) AddressScopeId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetPoolResult) string { return v.AddressScopeId }).(pulumi.StringOutput)
 }
@@ -225,6 +224,7 @@ func (o LookupSubnetPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The IP protocol version.
 func (o LookupSubnetPoolResultOutput) IpVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupSubnetPoolResult) int { return v.IpVersion }).(pulumi.IntOutput)
 }

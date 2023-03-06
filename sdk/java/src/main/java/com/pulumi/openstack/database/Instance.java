@@ -145,16 +145,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.flavorId;
     }
     /**
-     * Database to be created on new instance. Changing this creates a
-     * new instance.
+     * A unique name for the resource.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Database to be created on new instance. Changing this creates a
-     * new instance.
+     * @return A unique name for the resource.
      * 
      */
     public Output<String> name() {

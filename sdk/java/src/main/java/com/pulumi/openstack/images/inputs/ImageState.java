@@ -68,6 +68,27 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If true, this provider will decompress downloaded
+     * image before uploading it to OpenStack. Decompression algorithm is chosen by
+     * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2.
+     * Defaults to false. Changing this creates a new Image.
+     * 
+     */
+    @Import(name="decompress")
+    private @Nullable Output<Boolean> decompress;
+
+    /**
+     * @return If true, this provider will decompress downloaded
+     * image before uploading it to OpenStack. Decompression algorithm is chosen by
+     * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2.
+     * Defaults to false. Changing this creates a new Image.
+     * 
+     */
+    public Optional<Output<Boolean>> decompress() {
+        return Optional.ofNullable(this.decompress);
+    }
+
+    /**
      * The disk format. Must be one of
      * &#34;ami&#34;, &#34;ari&#34;, &#34;aki&#34;, &#34;vhd&#34;, &#34;vmdk&#34;, &#34;raw&#34;, &#34;qcow2&#34;, &#34;vdi&#34;, &#34;iso&#34;.
      * 
@@ -521,6 +542,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         this.checksum = $.checksum;
         this.containerFormat = $.containerFormat;
         this.createdAt = $.createdAt;
+        this.decompress = $.decompress;
         this.diskFormat = $.diskFormat;
         this.file = $.file;
         this.hidden = $.hidden;
@@ -630,6 +652,33 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param decompress If true, this provider will decompress downloaded
+         * image before uploading it to OpenStack. Decompression algorithm is chosen by
+         * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2.
+         * Defaults to false. Changing this creates a new Image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder decompress(@Nullable Output<Boolean> decompress) {
+            $.decompress = decompress;
+            return this;
+        }
+
+        /**
+         * @param decompress If true, this provider will decompress downloaded
+         * image before uploading it to OpenStack. Decompression algorithm is chosen by
+         * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2.
+         * Defaults to false. Changing this creates a new Image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder decompress(Boolean decompress) {
+            return decompress(Output.of(decompress));
         }
 
         /**

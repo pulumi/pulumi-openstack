@@ -5,40 +5,106 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./aggregateV2";
-export * from "./flavor";
-export * from "./flavorAccess";
-export * from "./floatingIp";
-export * from "./floatingIpAssociate";
-export * from "./getAggregateV2";
-export * from "./getAvailabilityZones";
-export * from "./getFlavor";
-export * from "./getHypervisorV2";
-export * from "./getInstanceV2";
-export * from "./getKeypair";
-export * from "./getLimitsV2";
-export * from "./getQuotaSetV2";
-export * from "./instance";
-export * from "./interfaceAttach";
-export * from "./keypair";
-export * from "./quotaSetV2";
-export * from "./secGroup";
-export * from "./serverGroup";
-export * from "./volumeAttach";
+export { AggregateV2Args, AggregateV2State } from "./aggregateV2";
+export type AggregateV2 = import("./aggregateV2").AggregateV2;
+export const AggregateV2: typeof import("./aggregateV2").AggregateV2 = null as any;
+utilities.lazyLoad(exports, ["AggregateV2"], () => require("./aggregateV2"));
 
-// Import resources to register:
-import { AggregateV2 } from "./aggregateV2";
-import { Flavor } from "./flavor";
-import { FlavorAccess } from "./flavorAccess";
-import { FloatingIp } from "./floatingIp";
-import { FloatingIpAssociate } from "./floatingIpAssociate";
-import { Instance } from "./instance";
-import { InterfaceAttach } from "./interfaceAttach";
-import { Keypair } from "./keypair";
-import { QuotaSetV2 } from "./quotaSetV2";
-import { SecGroup } from "./secGroup";
-import { ServerGroup } from "./serverGroup";
-import { VolumeAttach } from "./volumeAttach";
+export { FlavorArgs, FlavorState } from "./flavor";
+export type Flavor = import("./flavor").Flavor;
+export const Flavor: typeof import("./flavor").Flavor = null as any;
+utilities.lazyLoad(exports, ["Flavor"], () => require("./flavor"));
+
+export { FlavorAccessArgs, FlavorAccessState } from "./flavorAccess";
+export type FlavorAccess = import("./flavorAccess").FlavorAccess;
+export const FlavorAccess: typeof import("./flavorAccess").FlavorAccess = null as any;
+utilities.lazyLoad(exports, ["FlavorAccess"], () => require("./flavorAccess"));
+
+export { FloatingIpArgs, FloatingIpState } from "./floatingIp";
+export type FloatingIp = import("./floatingIp").FloatingIp;
+export const FloatingIp: typeof import("./floatingIp").FloatingIp = null as any;
+utilities.lazyLoad(exports, ["FloatingIp"], () => require("./floatingIp"));
+
+export { FloatingIpAssociateArgs, FloatingIpAssociateState } from "./floatingIpAssociate";
+export type FloatingIpAssociate = import("./floatingIpAssociate").FloatingIpAssociate;
+export const FloatingIpAssociate: typeof import("./floatingIpAssociate").FloatingIpAssociate = null as any;
+utilities.lazyLoad(exports, ["FloatingIpAssociate"], () => require("./floatingIpAssociate"));
+
+export { GetAggregateV2Args, GetAggregateV2Result, GetAggregateV2OutputArgs } from "./getAggregateV2";
+export const getAggregateV2: typeof import("./getAggregateV2").getAggregateV2 = null as any;
+export const getAggregateV2Output: typeof import("./getAggregateV2").getAggregateV2Output = null as any;
+utilities.lazyLoad(exports, ["getAggregateV2","getAggregateV2Output"], () => require("./getAggregateV2"));
+
+export { GetAvailabilityZonesArgs, GetAvailabilityZonesResult, GetAvailabilityZonesOutputArgs } from "./getAvailabilityZones";
+export const getAvailabilityZones: typeof import("./getAvailabilityZones").getAvailabilityZones = null as any;
+export const getAvailabilityZonesOutput: typeof import("./getAvailabilityZones").getAvailabilityZonesOutput = null as any;
+utilities.lazyLoad(exports, ["getAvailabilityZones","getAvailabilityZonesOutput"], () => require("./getAvailabilityZones"));
+
+export { GetFlavorArgs, GetFlavorResult, GetFlavorOutputArgs } from "./getFlavor";
+export const getFlavor: typeof import("./getFlavor").getFlavor = null as any;
+export const getFlavorOutput: typeof import("./getFlavor").getFlavorOutput = null as any;
+utilities.lazyLoad(exports, ["getFlavor","getFlavorOutput"], () => require("./getFlavor"));
+
+export { GetHypervisorV2Args, GetHypervisorV2Result, GetHypervisorV2OutputArgs } from "./getHypervisorV2";
+export const getHypervisorV2: typeof import("./getHypervisorV2").getHypervisorV2 = null as any;
+export const getHypervisorV2Output: typeof import("./getHypervisorV2").getHypervisorV2Output = null as any;
+utilities.lazyLoad(exports, ["getHypervisorV2","getHypervisorV2Output"], () => require("./getHypervisorV2"));
+
+export { GetInstanceV2Args, GetInstanceV2Result, GetInstanceV2OutputArgs } from "./getInstanceV2";
+export const getInstanceV2: typeof import("./getInstanceV2").getInstanceV2 = null as any;
+export const getInstanceV2Output: typeof import("./getInstanceV2").getInstanceV2Output = null as any;
+utilities.lazyLoad(exports, ["getInstanceV2","getInstanceV2Output"], () => require("./getInstanceV2"));
+
+export { GetKeypairArgs, GetKeypairResult, GetKeypairOutputArgs } from "./getKeypair";
+export const getKeypair: typeof import("./getKeypair").getKeypair = null as any;
+export const getKeypairOutput: typeof import("./getKeypair").getKeypairOutput = null as any;
+utilities.lazyLoad(exports, ["getKeypair","getKeypairOutput"], () => require("./getKeypair"));
+
+export { GetLimitsV2Args, GetLimitsV2Result, GetLimitsV2OutputArgs } from "./getLimitsV2";
+export const getLimitsV2: typeof import("./getLimitsV2").getLimitsV2 = null as any;
+export const getLimitsV2Output: typeof import("./getLimitsV2").getLimitsV2Output = null as any;
+utilities.lazyLoad(exports, ["getLimitsV2","getLimitsV2Output"], () => require("./getLimitsV2"));
+
+export { GetQuotaSetV2Args, GetQuotaSetV2Result, GetQuotaSetV2OutputArgs } from "./getQuotaSetV2";
+export const getQuotaSetV2: typeof import("./getQuotaSetV2").getQuotaSetV2 = null as any;
+export const getQuotaSetV2Output: typeof import("./getQuotaSetV2").getQuotaSetV2Output = null as any;
+utilities.lazyLoad(exports, ["getQuotaSetV2","getQuotaSetV2Output"], () => require("./getQuotaSetV2"));
+
+export { InstanceArgs, InstanceState } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+
+export { InterfaceAttachArgs, InterfaceAttachState } from "./interfaceAttach";
+export type InterfaceAttach = import("./interfaceAttach").InterfaceAttach;
+export const InterfaceAttach: typeof import("./interfaceAttach").InterfaceAttach = null as any;
+utilities.lazyLoad(exports, ["InterfaceAttach"], () => require("./interfaceAttach"));
+
+export { KeypairArgs, KeypairState } from "./keypair";
+export type Keypair = import("./keypair").Keypair;
+export const Keypair: typeof import("./keypair").Keypair = null as any;
+utilities.lazyLoad(exports, ["Keypair"], () => require("./keypair"));
+
+export { QuotaSetV2Args, QuotaSetV2State } from "./quotaSetV2";
+export type QuotaSetV2 = import("./quotaSetV2").QuotaSetV2;
+export const QuotaSetV2: typeof import("./quotaSetV2").QuotaSetV2 = null as any;
+utilities.lazyLoad(exports, ["QuotaSetV2"], () => require("./quotaSetV2"));
+
+export { SecGroupArgs, SecGroupState } from "./secGroup";
+export type SecGroup = import("./secGroup").SecGroup;
+export const SecGroup: typeof import("./secGroup").SecGroup = null as any;
+utilities.lazyLoad(exports, ["SecGroup"], () => require("./secGroup"));
+
+export { ServerGroupArgs, ServerGroupState } from "./serverGroup";
+export type ServerGroup = import("./serverGroup").ServerGroup;
+export const ServerGroup: typeof import("./serverGroup").ServerGroup = null as any;
+utilities.lazyLoad(exports, ["ServerGroup"], () => require("./serverGroup"));
+
+export { VolumeAttachArgs, VolumeAttachState } from "./volumeAttach";
+export type VolumeAttach = import("./volumeAttach").VolumeAttach;
+export const VolumeAttach: typeof import("./volumeAttach").VolumeAttach = null as any;
+utilities.lazyLoad(exports, ["VolumeAttach"], () => require("./volumeAttach"));
+
 
 const _module = {
     version: utilities.getVersion(),

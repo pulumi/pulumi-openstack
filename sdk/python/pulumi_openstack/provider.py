@@ -724,7 +724,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
             __props__.__dict__["key"] = key
             __props__.__dict__["max_retries"] = pulumi.Output.from_input(max_retries).apply(pulumi.runtime.to_json) if max_retries is not None else None
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["project_domain_id"] = project_domain_id
             __props__.__dict__["project_domain_name"] = project_domain_name
             if region is None:
@@ -743,6 +743,8 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["user_domain_name"] = user_domain_name
             __props__.__dict__["user_id"] = user_id
             __props__.__dict__["user_name"] = user_name
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'openstack',
             resource_name,

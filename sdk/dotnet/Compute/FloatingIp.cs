@@ -21,20 +21,18 @@ namespace Pulumi.OpenStack.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var floatip1 = new OpenStack.Compute.FloatingIp("floatip1", new()
     ///     {
-    ///         var floatip1 = new OpenStack.Compute.FloatingIp("floatip1", new OpenStack.Compute.FloatingIpArgs
-    ///         {
-    ///             Pool = "public",
-    ///         });
-    ///     }
+    ///         Pool = "public",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +44,7 @@ namespace Pulumi.OpenStack.Compute
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:compute/floatingIp:FloatingIp")]
-    public partial class FloatingIp : Pulumi.CustomResource
+    public partial class FloatingIp : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The actual floating IP address itself.
@@ -127,7 +125,7 @@ namespace Pulumi.OpenStack.Compute
         }
     }
 
-    public sealed class FloatingIpArgs : Pulumi.ResourceArgs
+    public sealed class FloatingIpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the pool from which to obtain the floating
@@ -149,9 +147,10 @@ namespace Pulumi.OpenStack.Compute
         public FloatingIpArgs()
         {
         }
+        public static new FloatingIpArgs Empty => new FloatingIpArgs();
     }
 
-    public sealed class FloatingIpState : Pulumi.ResourceArgs
+    public sealed class FloatingIpState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The actual floating IP address itself.
@@ -191,5 +190,6 @@ namespace Pulumi.OpenStack.Compute
         public FloatingIpState()
         {
         }
+        public static new FloatingIpState Empty => new FloatingIpState();
     }
 }

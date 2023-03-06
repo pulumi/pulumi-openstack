@@ -18,19 +18,15 @@ namespace Pulumi.OpenStack.Identity
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var role1 = new OpenStack.Identity.Role("role1", new OpenStack.Identity.RoleArgs
-    ///         {
-    ///         });
-    ///     }
+    ///     var role1 = new OpenStack.Identity.Role("role1");
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +38,7 @@ namespace Pulumi.OpenStack.Identity
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:identity/role:Role")]
-    public partial class Role : Pulumi.CustomResource
+    public partial class Role : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The domain the role belongs to.
@@ -108,7 +104,7 @@ namespace Pulumi.OpenStack.Identity
         }
     }
 
-    public sealed class RoleArgs : Pulumi.ResourceArgs
+    public sealed class RoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The domain the role belongs to.
@@ -133,9 +129,10 @@ namespace Pulumi.OpenStack.Identity
         public RoleArgs()
         {
         }
+        public static new RoleArgs Empty => new RoleArgs();
     }
 
-    public sealed class RoleState : Pulumi.ResourceArgs
+    public sealed class RoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The domain the role belongs to.
@@ -160,5 +157,6 @@ namespace Pulumi.OpenStack.Identity
         public RoleState()
         {
         }
+        public static new RoleState Empty => new RoleState();
     }
 }

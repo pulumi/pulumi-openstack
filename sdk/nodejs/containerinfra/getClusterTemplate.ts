@@ -14,17 +14,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const clustertemplate1 = pulumi.output(openstack.containerinfra.getClusterTemplate({
+ * const clustertemplate1 = openstack.containerinfra.getClusterTemplate({
  *     name: "clustertemplate_1",
- * }));
+ * });
  * ```
  */
 export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterTemplateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:containerinfra/getClusterTemplate:getClusterTemplate", {
         "name": args.name,
         "region": args.region,
@@ -104,6 +101,10 @@ export interface GetClusterTemplateResult {
      * floating IP for every node or not.
      */
     readonly floatingIpEnabled: boolean;
+    /**
+     * Indicates whether the ClusterTemplate is hidden or not.
+     */
+    readonly hidden: boolean;
     /**
      * The address of a proxy for receiving all HTTP requests and
      * relay them.
@@ -196,9 +197,23 @@ export interface GetClusterTemplateResult {
      */
     readonly volumeDriver: string;
 }
-
+/**
+ * Use this data source to get the ID of an available OpenStack Magnum cluster
+ * template.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const clustertemplate1 = openstack.containerinfra.getClusterTemplate({
+ *     name: "clustertemplate_1",
+ * });
+ * ```
+ */
 export function getClusterTemplateOutput(args: GetClusterTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterTemplateResult> {
-    return pulumi.output(args).apply(a => getClusterTemplate(a, opts))
+    return pulumi.output(args).apply((a: any) => getClusterTemplate(a, opts))
 }
 
 /**

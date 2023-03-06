@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Compute.Inputs
 {
 
-    public sealed class GetInstanceV2NetworkInputArgs : Pulumi.ResourceArgs
+    public sealed class GetInstanceV2NetworkInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IPv4 address assigned to this network port.
@@ -51,5 +51,6 @@ namespace Pulumi.OpenStack.Compute.Inputs
         public GetInstanceV2NetworkInputArgs()
         {
         }
+        public static new GetInstanceV2NetworkInputArgs Empty => new GetInstanceV2NetworkInputArgs();
     }
 }

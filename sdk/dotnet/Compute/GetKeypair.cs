@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var kp = OpenStack.Compute.GetKeypair.Invoke(new()
         ///     {
-        ///         var kp = Output.Create(OpenStack.Compute.GetKeypair.InvokeAsync(new OpenStack.Compute.GetKeypairArgs
-        ///         {
-        ///             Name = "sand",
-        ///         }));
-        ///     }
+        ///         Name = "sand",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeypairResult> InvokeAsync(GetKeypairArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKeypairResult>("openstack:compute/getKeypair:getKeypair", args ?? new GetKeypairArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKeypairResult>("openstack:compute/getKeypair:getKeypair", args ?? new GetKeypairArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID and public key of an OpenStack keypair.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var kp = OpenStack.Compute.GetKeypair.Invoke(new()
         ///     {
-        ///         var kp = Output.Create(OpenStack.Compute.GetKeypair.InvokeAsync(new OpenStack.Compute.GetKeypairArgs
-        ///         {
-        ///             Name = "sand",
-        ///         }));
-        ///     }
+        ///         Name = "sand",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetKeypairResult> Invoke(GetKeypairInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKeypairResult>("openstack:compute/getKeypair:getKeypair", args ?? new GetKeypairInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKeypairResult>("openstack:compute/getKeypair:getKeypair", args ?? new GetKeypairInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetKeypairArgs : Pulumi.InvokeArgs
+    public sealed class GetKeypairArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The unique name of the keypair.
@@ -89,9 +85,10 @@ namespace Pulumi.OpenStack.Compute
         public GetKeypairArgs()
         {
         }
+        public static new GetKeypairArgs Empty => new GetKeypairArgs();
     }
 
-    public sealed class GetKeypairInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKeypairInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The unique name of the keypair.
@@ -109,6 +106,7 @@ namespace Pulumi.OpenStack.Compute
         public GetKeypairInvokeArgs()
         {
         }
+        public static new GetKeypairInvokeArgs Empty => new GetKeypairInvokeArgs();
     }
 
 

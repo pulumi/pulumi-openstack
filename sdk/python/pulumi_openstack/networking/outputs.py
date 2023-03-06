@@ -326,7 +326,11 @@ class PortFixedIp(dict):
         """
         :param str subnet_id: Subnet in which to allocate IP address for
                this port.
-        :param str ip_address: The additional IP address.
+        :param str ip_address: IP address desired in the subnet for this port. If
+               you don't specify `ip_address`, an available IP address from the specified
+               subnet will be allocated to this port. This field will not be populated if it
+               is left blank or omitted. To retrieve the assigned IP address, use the
+               `all_fixed_ips` attribute.
         """
         pulumi.set(__self__, "subnet_id", subnet_id)
         if ip_address is not None:
@@ -345,7 +349,11 @@ class PortFixedIp(dict):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[str]:
         """
-        The additional IP address.
+        IP address desired in the subnet for this port. If
+        you don't specify `ip_address`, an available IP address from the specified
+        subnet will be allocated to this port. This field will not be populated if it
+        is left blank or omitted. To retrieve the assigned IP address, use the
+        `all_fixed_ips` attribute.
         """
         return pulumi.get(self, "ip_address")
 
@@ -745,6 +753,7 @@ class GetRouterExternalFixedIpResult(dict):
                  subnet_id: Optional[str] = None):
         """
         :param str ip_address: The IP address to set on the router.
+        :param str subnet_id: Subnet in which the fixed IP belongs to.
         """
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
@@ -762,6 +771,9 @@ class GetRouterExternalFixedIpResult(dict):
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[str]:
+        """
+        Subnet in which the fixed IP belongs to.
+        """
         return pulumi.get(self, "subnet_id")
 
 

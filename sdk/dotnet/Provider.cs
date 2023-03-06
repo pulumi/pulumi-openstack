@@ -16,7 +16,7 @@ namespace Pulumi.OpenStack
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [OpenStackResourceType("pulumi:providers:openstack")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// Application Credential ID to login with.
@@ -171,6 +171,10 @@ namespace Pulumi.OpenStack
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -179,7 +183,7 @@ namespace Pulumi.OpenStack
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
@@ -300,11 +304,21 @@ namespace Pulumi.OpenStack
         [Input("maxRetries", json: true)]
         public Input<int>? MaxRetries { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Password to login with.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The ID of the domain where the proejct resides (Identity v3).
@@ -389,5 +403,6 @@ namespace Pulumi.OpenStack
             Swauth = Utilities.GetEnvBoolean("OS_SWAUTH");
             UseOctavia = Utilities.GetEnvBoolean("OS_USE_OCTAVIA");
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

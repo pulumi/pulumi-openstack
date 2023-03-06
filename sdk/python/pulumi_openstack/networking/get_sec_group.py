@@ -58,6 +58,9 @@ class GetSecGroupResult:
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -73,7 +76,6 @@ class GetSecGroupResult:
     def name(self) -> Optional[str]:
         """
         See Argument Reference above.
-        * `description`- See Argument Reference above.
         """
         return pulumi.get(self, "name")
 

@@ -13,49 +13,46 @@ namespace Pulumi.OpenStack.Identity
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var project1 = new OpenStack.Identity.Project("project1", new OpenStack.Identity.ProjectArgs
-    ///         {
-    ///         });
-    ///         var user1 = new OpenStack.Identity.User("user1", new OpenStack.Identity.UserArgs
-    ///         {
-    ///             DefaultProjectId = project1.Id,
-    ///             Description = "A user",
-    ///             Extra = 
-    ///             {
-    ///                 { "email", "user_1@foobar.com" },
-    ///             },
-    ///             IgnoreChangePasswordUponFirstUse = true,
-    ///             MultiFactorAuthEnabled = true,
-    ///             MultiFactorAuthRules = 
-    ///             {
-    ///                 new OpenStack.Identity.Inputs.UserMultiFactorAuthRuleArgs
-    ///                 {
-    ///                     Rules = 
-    ///                     {
-    ///                         "password",
-    ///                         "totp",
-    ///                     },
-    ///                 },
-    ///                 new OpenStack.Identity.Inputs.UserMultiFactorAuthRuleArgs
-    ///                 {
-    ///                     Rules = 
-    ///                     {
-    ///                         "password",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Password = "password123",
-    ///         });
-    ///     }
+    ///     var project1 = new OpenStack.Identity.Project("project1");
     /// 
-    /// }
+    ///     var user1 = new OpenStack.Identity.User("user1", new()
+    ///     {
+    ///         DefaultProjectId = project1.Id,
+    ///         Description = "A user",
+    ///         Extra = 
+    ///         {
+    ///             { "email", "user_1@foobar.com" },
+    ///         },
+    ///         IgnoreChangePasswordUponFirstUse = true,
+    ///         MultiFactorAuthEnabled = true,
+    ///         MultiFactorAuthRules = new[]
+    ///         {
+    ///             new OpenStack.Identity.Inputs.UserMultiFactorAuthRuleArgs
+    ///             {
+    ///                 Rules = new[]
+    ///                 {
+    ///                     "password",
+    ///                     "totp",
+    ///                 },
+    ///             },
+    ///             new OpenStack.Identity.Inputs.UserMultiFactorAuthRuleArgs
+    ///             {
+    ///                 Rules = new[]
+    ///                 {
+    ///                     "password",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Password = "password123",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -67,7 +64,7 @@ namespace Pulumi.OpenStack.Identity
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:identity/user:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The default project this user belongs to.
@@ -180,6 +177,10 @@ namespace Pulumi.OpenStack.Identity
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -201,7 +202,7 @@ namespace Pulumi.OpenStack.Identity
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The default project this user belongs to.
@@ -289,11 +290,21 @@ namespace Pulumi.OpenStack.Identity
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password for the user.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
@@ -306,9 +317,10 @@ namespace Pulumi.OpenStack.Identity
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 
-    public sealed class UserState : Pulumi.ResourceArgs
+    public sealed class UserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The default project this user belongs to.
@@ -396,11 +408,21 @@ namespace Pulumi.OpenStack.Identity
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password for the user.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The region in which to obtain the V3 Keystone client.
@@ -413,5 +435,6 @@ namespace Pulumi.OpenStack.Identity
         public UserState()
         {
         }
+        public static new UserState Empty => new UserState();
     }
 }

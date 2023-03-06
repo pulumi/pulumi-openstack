@@ -7,29 +7,26 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.OpenStack.ObjectStorage.Outputs
+namespace Pulumi.OpenStack.ObjectStorage.Inputs
 {
 
-    [OutputType]
-    public sealed class ContainerVersioning
+    public sealed class ContainerVersioningLegacyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Container in which versions will be stored.
         /// </summary>
-        public readonly string Location;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
         /// <summary>
         /// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
         /// </summary>
-        public readonly string Type;
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
-        [OutputConstructor]
-        private ContainerVersioning(
-            string location,
-
-            string type)
+        public ContainerVersioningLegacyArgs()
         {
-            Location = location;
-            Type = type;
         }
+        public static new ContainerVersioningLegacyArgs Empty => new ContainerVersioningLegacyArgs();
     }
 }

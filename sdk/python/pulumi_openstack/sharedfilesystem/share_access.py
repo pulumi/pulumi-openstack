@@ -448,6 +448,8 @@ class ShareAccess(pulumi.CustomResource):
                 raise TypeError("Missing required property 'share_id'")
             __props__.__dict__["share_id"] = share_id
             __props__.__dict__["access_key"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accessKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ShareAccess, __self__).__init__(
             'openstack:sharedfilesystem/shareAccess:ShareAccess',
             resource_name,

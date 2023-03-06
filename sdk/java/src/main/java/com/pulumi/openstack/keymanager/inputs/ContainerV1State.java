@@ -99,14 +99,16 @@ public final class ContainerV1State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+     * Human-readable name for the Container. Does not have
+     * to be unique.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+     * @return Human-readable name for the Container. Does not have
+     * to be unique.
      * 
      */
     public Optional<Output<String>> name() {
@@ -350,7 +352,8 @@ public final class ContainerV1State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+         * @param name Human-readable name for the Container. Does not have
+         * to be unique.
          * 
          * @return builder
          * 
@@ -361,7 +364,8 @@ public final class ContainerV1State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+         * @param name Human-readable name for the Container. Does not have
+         * to be unique.
          * 
          * @return builder
          * 

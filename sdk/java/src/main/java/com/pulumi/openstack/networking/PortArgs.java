@@ -183,14 +183,16 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The additional MAC address.
+     * Specify a specific MAC address for the port. Changing
+     * this creates a new port.
      * 
      */
     @Import(name="macAddress")
     private @Nullable Output<String> macAddress;
 
     /**
-     * @return The additional MAC address.
+     * @return Specify a specific MAC address for the port. Changing
+     * this creates a new port.
      * 
      */
     public Optional<Output<String>> macAddress() {
@@ -198,14 +200,16 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the DHCP option.
+     * A unique name for the port. Changing this
+     * updates the `name` of an existing port.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the DHCP option.
+     * @return A unique name for the port. Changing this
+     * updates the `name` of an existing port.
      * 
      */
     public Optional<Output<String>> name() {
@@ -693,7 +697,8 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param macAddress The additional MAC address.
+         * @param macAddress Specify a specific MAC address for the port. Changing
+         * this creates a new port.
          * 
          * @return builder
          * 
@@ -704,7 +709,8 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param macAddress The additional MAC address.
+         * @param macAddress Specify a specific MAC address for the port. Changing
+         * this creates a new port.
          * 
          * @return builder
          * 
@@ -714,7 +720,8 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the DHCP option.
+         * @param name A unique name for the port. Changing this
+         * updates the `name` of an existing port.
          * 
          * @return builder
          * 
@@ -725,7 +732,8 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the DHCP option.
+         * @param name A unique name for the port. Changing this
+         * updates the `name` of an existing port.
          * 
          * @return builder
          * 

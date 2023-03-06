@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Database
 {
     [OpenStackResourceType("openstack:database/configuration:Configuration")]
-    public partial class Configuration : Pulumi.CustomResource
+    public partial class Configuration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
@@ -32,7 +32,7 @@ namespace Pulumi.OpenStack.Database
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration parameter name. Changing this creates a new resource.
+        /// A unique name for the resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.OpenStack.Database
         }
     }
 
-    public sealed class ConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class ConfigurationArgs : global::Pulumi.ResourceArgs
     {
         [Input("configurations")]
         private InputList<Inputs.ConfigurationConfigurationArgs>? _configurations;
@@ -116,7 +116,7 @@ namespace Pulumi.OpenStack.Database
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// Configuration parameter name. Changing this creates a new resource.
+        /// A unique name for the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -131,9 +131,10 @@ namespace Pulumi.OpenStack.Database
         public ConfigurationArgs()
         {
         }
+        public static new ConfigurationArgs Empty => new ConfigurationArgs();
     }
 
-    public sealed class ConfigurationState : Pulumi.ResourceArgs
+    public sealed class ConfigurationState : global::Pulumi.ResourceArgs
     {
         [Input("configurations")]
         private InputList<Inputs.ConfigurationConfigurationGetArgs>? _configurations;
@@ -161,7 +162,7 @@ namespace Pulumi.OpenStack.Database
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Configuration parameter name. Changing this creates a new resource.
+        /// A unique name for the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -176,5 +177,6 @@ namespace Pulumi.OpenStack.Database
         public ConfigurationState()
         {
         }
+        public static new ConfigurationState Empty => new ConfigurationState();
     }
 }

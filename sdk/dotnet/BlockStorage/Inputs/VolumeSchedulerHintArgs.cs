@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.BlockStorage.Inputs
 {
 
-    public sealed class VolumeSchedulerHintArgs : Pulumi.ResourceArgs
+    public sealed class VolumeSchedulerHintArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalProperties")]
         private InputMap<object>? _additionalProperties;
@@ -72,5 +72,6 @@ namespace Pulumi.OpenStack.BlockStorage.Inputs
         public VolumeSchedulerHintArgs()
         {
         }
+        public static new VolumeSchedulerHintArgs Empty => new VolumeSchedulerHintArgs();
     }
 }

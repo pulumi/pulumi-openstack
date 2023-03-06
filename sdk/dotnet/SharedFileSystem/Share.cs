@@ -15,39 +15,40 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
     ///     {
-    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
-    ///         {
-    ///             Cidr = "192.168.199.0/24",
-    ///             IpVersion = 4,
-    ///             NetworkId = network1.Id,
-    ///         });
-    ///         var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new OpenStack.SharedFileSystem.ShareNetworkArgs
-    ///         {
-    ///             Description = "test share network with security services",
-    ///             NeutronNetId = network1.Id,
-    ///             NeutronSubnetId = subnet1.Id,
-    ///         });
-    ///         var share1 = new OpenStack.SharedFileSystem.Share("share1", new OpenStack.SharedFileSystem.ShareArgs
-    ///         {
-    ///             Description = "test share description",
-    ///             ShareNetworkId = sharenetwork1.Id,
-    ///             ShareProto = "NFS",
-    ///             Size = 1,
-    ///         });
-    ///     }
+    ///         AdminStateUp = true,
+    ///     });
     /// 
-    /// }
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     {
+    ///         Cidr = "192.168.199.0/24",
+    ///         IpVersion = 4,
+    ///         NetworkId = network1.Id,
+    ///     });
+    /// 
+    ///     var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new()
+    ///     {
+    ///         Description = "test share network with security services",
+    ///         NeutronNetId = network1.Id,
+    ///         NeutronSubnetId = subnet1.Id,
+    ///     });
+    /// 
+    ///     var share1 = new OpenStack.SharedFileSystem.Share("share1", new()
+    ///     {
+    ///         Description = "test share description",
+    ///         ShareNetworkId = sharenetwork1.Id,
+    ///         ShareProto = "NFS",
+    ///         Size = 1,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +60,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:sharedfilesystem/share:Share")]
-    public partial class Share : Pulumi.CustomResource
+    public partial class Share : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The map of metadata, assigned on the share, which has been
@@ -229,7 +230,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         }
     }
 
-    public sealed class ShareArgs : Pulumi.ResourceArgs
+    public sealed class ShareArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The share availability zone. Changing this creates a
@@ -320,9 +321,10 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public ShareArgs()
         {
         }
+        public static new ShareArgs Empty => new ShareArgs();
     }
 
-    public sealed class ShareState : Pulumi.ResourceArgs
+    public sealed class ShareState : global::Pulumi.ResourceArgs
     {
         [Input("allMetadata")]
         private InputMap<object>? _allMetadata;
@@ -469,5 +471,6 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public ShareState()
         {
         }
+        public static new ShareState Empty => new ShareState();
     }
 }

@@ -17,30 +17,29 @@ namespace Pulumi.OpenStack.Networking
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var secgroup1 = new OpenStack.Networking.SecGroup("secgroup1", new()
     ///     {
-    ///         var secgroup1 = new OpenStack.Networking.SecGroup("secgroup1", new OpenStack.Networking.SecGroupArgs
-    ///         {
-    ///             Description = "My neutron security group",
-    ///         });
-    ///         var secgroupRule1 = new OpenStack.Networking.SecGroupRule("secgroupRule1", new OpenStack.Networking.SecGroupRuleArgs
-    ///         {
-    ///             Direction = "ingress",
-    ///             Ethertype = "IPv4",
-    ///             PortRangeMax = 22,
-    ///             PortRangeMin = 22,
-    ///             Protocol = "tcp",
-    ///             RemoteIpPrefix = "0.0.0.0/0",
-    ///             SecurityGroupId = secgroup1.Id,
-    ///         });
-    ///     }
+    ///         Description = "My neutron security group",
+    ///     });
     /// 
-    /// }
+    ///     var secgroupRule1 = new OpenStack.Networking.SecGroupRule("secgroupRule1", new()
+    ///     {
+    ///         Direction = "ingress",
+    ///         Ethertype = "IPv4",
+    ///         PortRangeMax = 22,
+    ///         PortRangeMin = 22,
+    ///         Protocol = "tcp",
+    ///         RemoteIpPrefix = "0.0.0.0/0",
+    ///         SecurityGroupId = secgroup1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +51,7 @@ namespace Pulumi.OpenStack.Networking
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/secGroupRule:SecGroupRule")]
-    public partial class SecGroupRule : Pulumi.CustomResource
+    public partial class SecGroupRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A description of the rule. Changing this creates a new security group rule.
@@ -201,7 +200,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
-    public sealed class SecGroupRuleArgs : Pulumi.ResourceArgs
+    public sealed class SecGroupRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the rule. Changing this creates a new security group rule.
@@ -309,9 +308,10 @@ namespace Pulumi.OpenStack.Networking
         public SecGroupRuleArgs()
         {
         }
+        public static new SecGroupRuleArgs Empty => new SecGroupRuleArgs();
     }
 
-    public sealed class SecGroupRuleState : Pulumi.ResourceArgs
+    public sealed class SecGroupRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the rule. Changing this creates a new security group rule.
@@ -419,5 +419,6 @@ namespace Pulumi.OpenStack.Networking
         public SecGroupRuleState()
         {
         }
+        public static new SecGroupRuleState Empty => new SecGroupRuleState();
     }
 }

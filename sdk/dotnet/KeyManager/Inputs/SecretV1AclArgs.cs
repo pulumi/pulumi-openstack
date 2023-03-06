@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.KeyManager.Inputs
 {
 
-    public sealed class SecretV1AclArgs : Pulumi.ResourceArgs
+    public sealed class SecretV1AclArgs : global::Pulumi.ResourceArgs
     {
         [Input("read")]
         public Input<Inputs.SecretV1AclReadArgs>? Read { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.OpenStack.KeyManager.Inputs
         public SecretV1AclArgs()
         {
         }
+        public static new SecretV1AclArgs Empty => new SecretV1AclArgs();
     }
 }

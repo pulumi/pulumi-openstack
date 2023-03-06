@@ -12,15 +12,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const systemPort = pulumi.output(openstack.networking.getPort({
+ * const systemPort = openstack.networking.getPort({
  *     fixedIp: "10.0.0.10",
- * }));
- * const secgroup = pulumi.output(openstack.networking.getSecGroup({
+ * });
+ * const secgroup = openstack.networking.getSecGroup({
  *     name: "secgroup",
- * }));
- * const port1 = new openstack.networking.PortSecGroupAssociate("port_1", {
- *     portId: systemPort.id,
- *     securityGroupIds: [secgroup.id],
+ * });
+ * const port1 = new openstack.networking.PortSecGroupAssociate("port1", {
+ *     portId: systemPort.then(systemPort => systemPort.id),
+ *     securityGroupIds: [secgroup.then(secgroup => secgroup.id)],
  * });
  * ```
  * ### Enforce a security group to an existing port
@@ -29,16 +29,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const systemPort = pulumi.output(openstack.networking.getPort({
+ * const systemPort = openstack.networking.getPort({
  *     fixedIp: "10.0.0.10",
- * }));
- * const secgroup = pulumi.output(openstack.networking.getSecGroup({
+ * });
+ * const secgroup = openstack.networking.getSecGroup({
  *     name: "secgroup",
- * }));
- * const port1 = new openstack.networking.PortSecGroupAssociate("port_1", {
+ * });
+ * const port1 = new openstack.networking.PortSecGroupAssociate("port1", {
  *     enforce: true,
- *     portId: systemPort.id,
- *     securityGroupIds: [secgroup.id],
+ *     portId: systemPort.then(systemPort => systemPort.id),
+ *     securityGroupIds: [secgroup.then(secgroup => secgroup.id)],
  * });
  * ```
  * ### Remove all security groups from an existing port
@@ -47,12 +47,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const systemPort = pulumi.output(openstack.networking.getPort({
+ * const systemPort = openstack.networking.getPort({
  *     fixedIp: "10.0.0.10",
- * }));
- * const port1 = new openstack.networking.PortSecGroupAssociate("port_1", {
+ * });
+ * const port1 = new openstack.networking.PortSecGroupAssociate("port1", {
  *     enforce: true,
- *     portId: systemPort.id,
+ *     portId: systemPort.then(systemPort => systemPort.id),
  *     securityGroupIds: [],
  * });
  * ```

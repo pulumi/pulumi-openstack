@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.ObjectStorage.Inputs
 {
 
-    public sealed class ContainerVersioningGetArgs : Pulumi.ResourceArgs
+    public sealed class ContainerVersioningLegacyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Container in which versions will be stored.
@@ -24,8 +24,9 @@ namespace Pulumi.OpenStack.ObjectStorage.Inputs
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
-        public ContainerVersioningGetArgs()
+        public ContainerVersioningLegacyGetArgs()
         {
         }
+        public static new ContainerVersioningLegacyGetArgs Empty => new ContainerVersioningLegacyGetArgs();
     }
 }

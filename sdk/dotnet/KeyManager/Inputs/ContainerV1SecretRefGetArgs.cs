@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.KeyManager.Inputs
 {
 
-    public sealed class ContainerV1SecretRefGetArgs : Pulumi.ResourceArgs
+    public sealed class ContainerV1SecretRefGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
@@ -27,5 +27,6 @@ namespace Pulumi.OpenStack.KeyManager.Inputs
         public ContainerV1SecretRefGetArgs()
         {
         }
+        public static new ContainerV1SecretRefGetArgs Empty => new ContainerV1SecretRefGetArgs();
     }
 }

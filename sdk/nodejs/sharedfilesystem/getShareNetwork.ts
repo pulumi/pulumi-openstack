@@ -13,18 +13,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const sharenetwork1 = pulumi.output(openstack.sharedfilesystem.getShareNetwork({
+ * const sharenetwork1 = openstack.sharedfilesystem.getShareNetwork({
  *     name: "sharenetwork_1",
- * }));
+ * });
  * ```
  */
 export function getShareNetwork(args?: GetShareNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetShareNetworkResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", {
         "description": args.description,
         "ipVersion": args.ipVersion,
@@ -142,9 +139,22 @@ export interface GetShareNetworkResult {
      */
     readonly segmentationId: number;
 }
-
+/**
+ * Use this data source to get the ID of an available Shared File System share network.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const sharenetwork1 = openstack.sharedfilesystem.getShareNetwork({
+ *     name: "sharenetwork_1",
+ * });
+ * ```
+ */
 export function getShareNetworkOutput(args?: GetShareNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShareNetworkResult> {
-    return pulumi.output(args).apply(a => getShareNetwork(a, opts))
+    return pulumi.output(args).apply((a: any) => getShareNetwork(a, opts))
 }
 
 /**

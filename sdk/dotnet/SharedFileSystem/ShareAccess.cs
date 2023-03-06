@@ -14,114 +14,121 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// ### NFS
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
     ///     {
-    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
-    ///         {
-    ///             Cidr = "192.168.199.0/24",
-    ///             IpVersion = 4,
-    ///             NetworkId = network1.Id,
-    ///         });
-    ///         var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new OpenStack.SharedFileSystem.ShareNetworkArgs
-    ///         {
-    ///             Description = "test share network with security services",
-    ///             NeutronNetId = network1.Id,
-    ///             NeutronSubnetId = subnet1.Id,
-    ///         });
-    ///         var share1 = new OpenStack.SharedFileSystem.Share("share1", new OpenStack.SharedFileSystem.ShareArgs
-    ///         {
-    ///             Description = "test share description",
-    ///             ShareNetworkId = sharenetwork1.Id,
-    ///             ShareProto = "NFS",
-    ///             Size = 1,
-    ///         });
-    ///         var shareAccess1 = new OpenStack.SharedFileSystem.ShareAccess("shareAccess1", new OpenStack.SharedFileSystem.ShareAccessArgs
-    ///         {
-    ///             AccessLevel = "rw",
-    ///             AccessTo = "192.168.199.10",
-    ///             AccessType = "ip",
-    ///             ShareId = share1.Id,
-    ///         });
-    ///     }
+    ///         AdminStateUp = true,
+    ///     });
     /// 
-    /// }
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     {
+    ///         Cidr = "192.168.199.0/24",
+    ///         IpVersion = 4,
+    ///         NetworkId = network1.Id,
+    ///     });
+    /// 
+    ///     var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new()
+    ///     {
+    ///         Description = "test share network with security services",
+    ///         NeutronNetId = network1.Id,
+    ///         NeutronSubnetId = subnet1.Id,
+    ///     });
+    /// 
+    ///     var share1 = new OpenStack.SharedFileSystem.Share("share1", new()
+    ///     {
+    ///         Description = "test share description",
+    ///         ShareNetworkId = sharenetwork1.Id,
+    ///         ShareProto = "NFS",
+    ///         Size = 1,
+    ///     });
+    /// 
+    ///     var shareAccess1 = new OpenStack.SharedFileSystem.ShareAccess("shareAccess1", new()
+    ///     {
+    ///         AccessLevel = "rw",
+    ///         AccessTo = "192.168.199.10",
+    ///         AccessType = "ip",
+    ///         ShareId = share1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### CIFS
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
     ///     {
-    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
-    ///         {
-    ///             Cidr = "192.168.199.0/24",
-    ///             IpVersion = 4,
-    ///             NetworkId = network1.Id,
-    ///         });
-    ///         var securityservice1 = new OpenStack.SharedFileSystem.SecurityService("securityservice1", new OpenStack.SharedFileSystem.SecurityServiceArgs
-    ///         {
-    ///             Description = "created by terraform",
-    ///             DnsIp = "192.168.199.10",
-    ///             Domain = "example.com",
-    ///             Ou = "CN=Computers,DC=example,DC=com",
-    ///             Password = "s8cret",
-    ///             Server = "192.168.199.10",
-    ///             Type = "active_directory",
-    ///             User = "joinDomainUser",
-    ///         });
-    ///         var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new OpenStack.SharedFileSystem.ShareNetworkArgs
-    ///         {
-    ///             Description = "share the secure love",
-    ///             NeutronNetId = network1.Id,
-    ///             NeutronSubnetId = subnet1.Id,
-    ///             SecurityServiceIds = 
-    ///             {
-    ///                 securityservice1.Id,
-    ///             },
-    ///         });
-    ///         var share1 = new OpenStack.SharedFileSystem.Share("share1", new OpenStack.SharedFileSystem.ShareArgs
-    ///         {
-    ///             ShareNetworkId = sharenetwork1.Id,
-    ///             ShareProto = "CIFS",
-    ///             Size = 1,
-    ///         });
-    ///         var shareAccess1 = new OpenStack.SharedFileSystem.ShareAccess("shareAccess1", new OpenStack.SharedFileSystem.ShareAccessArgs
-    ///         {
-    ///             AccessLevel = "ro",
-    ///             AccessTo = "windows",
-    ///             AccessType = "user",
-    ///             ShareId = share1.Id,
-    ///         });
-    ///         var shareAccess2 = new OpenStack.SharedFileSystem.ShareAccess("shareAccess2", new OpenStack.SharedFileSystem.ShareAccessArgs
-    ///         {
-    ///             AccessLevel = "rw",
-    ///             AccessTo = "linux",
-    ///             AccessType = "user",
-    ///             ShareId = share1.Id,
-    ///         });
-    ///         this.ExportLocations = share1.ExportLocations;
-    ///     }
+    ///         AdminStateUp = true,
+    ///     });
     /// 
-    ///     [Output("exportLocations")]
-    ///     public Output&lt;string&gt; ExportLocations { get; set; }
-    /// }
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     {
+    ///         Cidr = "192.168.199.0/24",
+    ///         IpVersion = 4,
+    ///         NetworkId = network1.Id,
+    ///     });
+    /// 
+    ///     var securityservice1 = new OpenStack.SharedFileSystem.SecurityService("securityservice1", new()
+    ///     {
+    ///         Description = "created by terraform",
+    ///         DnsIp = "192.168.199.10",
+    ///         Domain = "example.com",
+    ///         Ou = "CN=Computers,DC=example,DC=com",
+    ///         Password = "s8cret",
+    ///         Server = "192.168.199.10",
+    ///         Type = "active_directory",
+    ///         User = "joinDomainUser",
+    ///     });
+    /// 
+    ///     var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new()
+    ///     {
+    ///         Description = "share the secure love",
+    ///         NeutronNetId = network1.Id,
+    ///         NeutronSubnetId = subnet1.Id,
+    ///         SecurityServiceIds = new[]
+    ///         {
+    ///             securityservice1.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var share1 = new OpenStack.SharedFileSystem.Share("share1", new()
+    ///     {
+    ///         ShareNetworkId = sharenetwork1.Id,
+    ///         ShareProto = "CIFS",
+    ///         Size = 1,
+    ///     });
+    /// 
+    ///     var shareAccess1 = new OpenStack.SharedFileSystem.ShareAccess("shareAccess1", new()
+    ///     {
+    ///         AccessLevel = "ro",
+    ///         AccessTo = "windows",
+    ///         AccessType = "user",
+    ///         ShareId = share1.Id,
+    ///     });
+    /// 
+    ///     var shareAccess2 = new OpenStack.SharedFileSystem.ShareAccess("shareAccess2", new()
+    ///     {
+    ///         AccessLevel = "rw",
+    ///         AccessTo = "linux",
+    ///         AccessType = "user",
+    ///         ShareId = share1.Id,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["exportLocations"] = share1.ExportLocations,
+    ///     };
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -133,7 +140,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:sharedfilesystem/shareAccess:ShareAccess")]
-    public partial class ShareAccess : Pulumi.CustomResource
+    public partial class ShareAccess : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The access credential of the entity granted access.
@@ -199,6 +206,10 @@ namespace Pulumi.OpenStack.SharedFileSystem
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "accessKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -220,7 +231,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         }
     }
 
-    public sealed class ShareAccessArgs : Pulumi.ResourceArgs
+    public sealed class ShareAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The access level to the share. Can either be `rw` or `ro`.
@@ -260,15 +271,26 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public ShareAccessArgs()
         {
         }
+        public static new ShareAccessArgs Empty => new ShareAccessArgs();
     }
 
-    public sealed class ShareAccessState : Pulumi.ResourceArgs
+    public sealed class ShareAccessState : global::Pulumi.ResourceArgs
     {
+        [Input("accessKey")]
+        private Input<string>? _accessKey;
+
         /// <summary>
         /// The access credential of the entity granted access.
         /// </summary>
-        [Input("accessKey")]
-        public Input<string>? AccessKey { get; set; }
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The access level to the share. Can either be `rw` or `ro`.
@@ -308,5 +330,6 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public ShareAccessState()
         {
         }
+        public static new ShareAccessState Empty => new ShareAccessState();
     }
 }

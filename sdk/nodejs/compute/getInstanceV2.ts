@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,18 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const instance = pulumi.output(openstack.compute.getInstanceV2({
- *     // Randomly generated UUID, for demonstration purposes
+ * const instance = openstack.compute.getInstanceV2({
  *     id: "2ba26dc6-a12d-4889-8f25-794ea5bf4453",
- * }));
+ * });
  * ```
  */
 export function getInstanceV2(args: GetInstanceV2Args, opts?: pulumi.InvokeOptions): Promise<GetInstanceV2Result> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:compute/getInstanceV2:getInstanceV2", {
         "id": args.id,
         "networks": args.networks,
@@ -125,9 +122,22 @@ export interface GetInstanceV2Result {
      */
     readonly userData: string;
 }
-
+/**
+ * Use this data source to get the details of a running server
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const instance = openstack.compute.getInstanceV2({
+ *     id: "2ba26dc6-a12d-4889-8f25-794ea5bf4453",
+ * });
+ * ```
+ */
 export function getInstanceV2Output(args: GetInstanceV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceV2Result> {
-    return pulumi.output(args).apply(a => getInstanceV2(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceV2(a, opts))
 }
 
 /**

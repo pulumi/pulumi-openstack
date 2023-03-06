@@ -46,8 +46,8 @@ public final class InstanceNetwork {
      */
     private @Nullable String port;
     /**
-     * @return The UUID of
-     * the image, volume, or snapshot. Changing this creates a new server.
+     * @return The network UUID to
+     * attach to the server. Changing this creates a new server.
      * 
      */
     private @Nullable String uuid;
@@ -101,8 +101,8 @@ public final class InstanceNetwork {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return The UUID of
-     * the image, volume, or snapshot. Changing this creates a new server.
+     * @return The network UUID to
+     * attach to the server. Changing this creates a new server.
      * 
      */
     public Optional<String> uuid() {

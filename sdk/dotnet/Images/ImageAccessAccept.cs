@@ -18,27 +18,26 @@ namespace Pulumi.OpenStack.Images
     /// Accept a shared image membershipship proposal within the current project.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var rancheros = OpenStack.Images.GetImage.Invoke(new()
     ///     {
-    ///         var rancheros = Output.Create(OpenStack.Images.GetImage.InvokeAsync(new OpenStack.Images.GetImageArgs
-    ///         {
-    ///             MemberStatus = "all",
-    ///             Name = "RancherOS",
-    ///             Visibility = "shared",
-    ///         }));
-    ///         var rancherosMember = new OpenStack.Images.ImageAccessAccept("rancherosMember", new OpenStack.Images.ImageAccessAcceptArgs
-    ///         {
-    ///             ImageId = rancheros.Apply(rancheros =&gt; rancheros.Id),
-    ///             Status = "accepted",
-    ///         });
-    ///     }
+    ///         MemberStatus = "all",
+    ///         Name = "RancherOS",
+    ///         Visibility = "shared",
+    ///     });
     /// 
-    /// }
+    ///     var rancherosMember = new OpenStack.Images.ImageAccessAccept("rancherosMember", new()
+    ///     {
+    ///         ImageId = rancheros.Apply(getImageResult =&gt; getImageResult.Id),
+    ///         Status = "accepted",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +49,7 @@ namespace Pulumi.OpenStack.Images
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:images/imageAccessAccept:ImageAccessAccept")]
-    public partial class ImageAccessAccept : Pulumi.CustomResource
+    public partial class ImageAccessAccept : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The date the image membership was created.
@@ -143,7 +142,7 @@ namespace Pulumi.OpenStack.Images
         }
     }
 
-    public sealed class ImageAccessAcceptArgs : Pulumi.ResourceArgs
+    public sealed class ImageAccessAcceptArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The proposed image ID.
@@ -177,9 +176,10 @@ namespace Pulumi.OpenStack.Images
         public ImageAccessAcceptArgs()
         {
         }
+        public static new ImageAccessAcceptArgs Empty => new ImageAccessAcceptArgs();
     }
 
-    public sealed class ImageAccessAcceptState : Pulumi.ResourceArgs
+    public sealed class ImageAccessAcceptState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date the image membership was created.
@@ -231,5 +231,6 @@ namespace Pulumi.OpenStack.Images
         public ImageAccessAcceptState()
         {
         }
+        public static new ImageAccessAcceptState Empty => new ImageAccessAcceptState();
     }
 }

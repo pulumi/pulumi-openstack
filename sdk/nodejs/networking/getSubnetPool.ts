@@ -13,18 +13,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const subnetpool1 = pulumi.output(openstack.networking.getSubnetPool({
+ * const subnetpool1 = openstack.networking.getSubnetPool({
  *     name: "subnetpool_1",
- * }));
+ * });
  * ```
  */
 export function getSubnetPool(args?: GetSubnetPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetPoolResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getSubnetPool:getSubnetPool", {
         "addressScopeId": args.addressScopeId,
         "defaultPrefixlen": args.defaultPrefixlen,
@@ -111,7 +108,6 @@ export interface GetSubnetPoolArgs {
 export interface GetSubnetPoolResult {
     /**
      * See Argument Reference above.
-     * * `ipVersion` -The IP protocol version.
      */
     readonly addressScopeId: string;
     /**
@@ -138,6 +134,9 @@ export interface GetSubnetPoolResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The IP protocol version.
+     */
     readonly ipVersion: number;
     /**
      * See Argument Reference above.
@@ -181,9 +180,22 @@ export interface GetSubnetPoolResult {
      */
     readonly updatedAt: string;
 }
-
+/**
+ * Use this data source to get the ID of an available OpenStack subnetpool.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const subnetpool1 = openstack.networking.getSubnetPool({
+ *     name: "subnetpool_1",
+ * });
+ * ```
+ */
 export function getSubnetPoolOutput(args?: GetSubnetPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetPoolResult> {
-    return pulumi.output(args).apply(a => getSubnetPool(a, opts))
+    return pulumi.output(args).apply((a: any) => getSubnetPool(a, opts))
 }
 
 /**

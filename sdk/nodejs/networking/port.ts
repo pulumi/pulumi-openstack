@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -15,10 +16,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: true,
- * });
- * const port1 = new openstack.networking.Port("port_1", {
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const port1 = new openstack.networking.Port("port1", {
  *     adminStateUp: true,
  *     networkId: network1.id,
  * });
@@ -29,10 +28,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: true,
- * });
- * const port1 = new openstack.networking.Port("port_1", {
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const port1 = new openstack.networking.Port("port1", {
  *     adminStateUp: true,
  *     binding: {
  *         hostId: "b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
@@ -51,6 +48,7 @@ import * as utilities from "../utilities";
  *   ],
  *   "vlan_type": "allowed"
  * }
+ *
  * `,
  *         vnicType: "baremetal",
  *     },
@@ -171,11 +169,13 @@ export class Port extends pulumi.CustomResource {
      */
     public readonly fixedIps!: pulumi.Output<outputs.networking.PortFixedIp[] | undefined>;
     /**
-     * The additional MAC address.
+     * Specify a specific MAC address for the port. Changing
+     * this creates a new port.
      */
     public readonly macAddress!: pulumi.Output<string>;
     /**
-     * Name of the DHCP option.
+     * A unique name for the port. Changing this
+     * updates the `name` of an existing port.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -384,11 +384,13 @@ export interface PortState {
      */
     fixedIps?: pulumi.Input<pulumi.Input<inputs.networking.PortFixedIp>[]>;
     /**
-     * The additional MAC address.
+     * Specify a specific MAC address for the port. Changing
+     * this creates a new port.
      */
     macAddress?: pulumi.Input<string>;
     /**
-     * Name of the DHCP option.
+     * A unique name for the port. Changing this
+     * updates the `name` of an existing port.
      */
     name?: pulumi.Input<string>;
     /**
@@ -505,11 +507,13 @@ export interface PortArgs {
      */
     fixedIps?: pulumi.Input<pulumi.Input<inputs.networking.PortFixedIp>[]>;
     /**
-     * The additional MAC address.
+     * Specify a specific MAC address for the port. Changing
+     * this creates a new port.
      */
     macAddress?: pulumi.Input<string>;
     /**
-     * Name of the DHCP option.
+     * A unique name for the port. Changing this
+     * updates the `name` of an existing port.
      */
     name?: pulumi.Input<string>;
     /**

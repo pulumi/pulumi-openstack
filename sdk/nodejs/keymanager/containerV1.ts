@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -18,22 +19,22 @@ import * as utilities from "../utilities";
  * import * as fs from "fs";
  * import * as openstack from "@pulumi/openstack";
  *
- * const certificate1 = new openstack.keymanager.SecretV1("certificate_1", {
- *     payload: fs.readFileSync("cert.pem", "utf-8"),
+ * const certificate1 = new openstack.keymanager.SecretV1("certificate1", {
+ *     payload: fs.readFileSync("cert.pem"),
  *     payloadContentType: "text/plain",
  *     secretType: "certificate",
  * });
- * const privateKey1 = new openstack.keymanager.SecretV1("private_key_1", {
- *     payload: fs.readFileSync("cert-key.pem", "utf-8"),
+ * const privateKey1 = new openstack.keymanager.SecretV1("privateKey1", {
+ *     payload: fs.readFileSync("cert-key.pem"),
  *     payloadContentType: "text/plain",
  *     secretType: "private",
  * });
- * const intermediate1 = new openstack.keymanager.SecretV1("intermediate_1", {
- *     payload: fs.readFileSync("intermediate-ca.pem", "utf-8"),
+ * const intermediate1 = new openstack.keymanager.SecretV1("intermediate1", {
+ *     payload: fs.readFileSync("intermediate-ca.pem"),
  *     payloadContentType: "text/plain",
  *     secretType: "certificate",
  * });
- * const tls1 = new openstack.keymanager.ContainerV1("tls_1", {
+ * const tls1 = new openstack.keymanager.ContainerV1("tls1", {
  *     secretRefs: [
  *         {
  *             name: "certificate",
@@ -50,13 +51,11 @@ import * as utilities from "../utilities";
  *     ],
  *     type: "certificate",
  * });
- * const subnet1 = pulumi.output(openstack.networking.getSubnet({
+ * const subnet1 = openstack.networking.getSubnet({
  *     name: "my-subnet",
- * }));
- * const lb1 = new openstack.loadbalancer.LoadBalancer("lb_1", {
- *     vipSubnetId: subnet1.id,
  * });
- * const listener1 = new openstack.loadbalancer.Listener("listener_1", {
+ * const lb1 = new openstack.loadbalancer.LoadBalancer("lb1", {vipSubnetId: subnet1.then(subnet1 => subnet1.id)});
+ * const listener1 = new openstack.loadbalancer.Listener("listener1", {
  *     defaultTlsContainerRef: tls1.containerRef,
  *     loadbalancerId: lb1.id,
  *     protocol: "TERMINATED_HTTPS",
@@ -71,7 +70,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const tls1 = new openstack.keymanager.ContainerV1("tls_1", {
+ * const tls1 = new openstack.keymanager.ContainerV1("tls1", {
  *     acl: {
  *         read: {
  *             projectAccess: false,
@@ -84,15 +83,15 @@ import * as utilities from "../utilities";
  *     secretRefs: [
  *         {
  *             name: "certificate",
- *             secretRef: openstack_keymanager_secret_v1_certificate_1.secretRef,
+ *             secretRef: openstack_keymanager_secret_v1.certificate_1.secret_ref,
  *         },
  *         {
  *             name: "private_key",
- *             secretRef: openstack_keymanager_secret_v1_private_key_1.secretRef,
+ *             secretRef: openstack_keymanager_secret_v1.private_key_1.secret_ref,
  *         },
  *         {
  *             name: "intermediates",
- *             secretRef: openstack_keymanager_secret_v1_intermediate_1.secretRef,
+ *             secretRef: openstack_keymanager_secret_v1.intermediate_1.secret_ref,
  *         },
  *     ],
  *     type: "certificate",
@@ -158,7 +157,8 @@ export class ContainerV1 extends pulumi.CustomResource {
      */
     public /*out*/ readonly creatorId!: pulumi.Output<string>;
     /**
-     * The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+     * Human-readable name for the Container. Does not have
+     * to be unique.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -259,7 +259,8 @@ export interface ContainerV1State {
      */
     creatorId?: pulumi.Input<string>;
     /**
-     * The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+     * Human-readable name for the Container. Does not have
+     * to be unique.
      */
     name?: pulumi.Input<string>;
     /**
@@ -299,7 +300,8 @@ export interface ContainerV1Args {
      */
     acl?: pulumi.Input<inputs.keymanager.ContainerV1Acl>;
     /**
-     * The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+     * Human-readable name for the Container. Does not have
+     * to be unique.
      */
     name?: pulumi.Input<string>;
     /**

@@ -16,6 +16,7 @@ class ImageArgs:
     def __init__(__self__, *,
                  container_format: pulumi.Input[str],
                  disk_format: pulumi.Input[str],
+                 decompress: Optional[pulumi.Input[bool]] = None,
                  hidden: Optional[pulumi.Input[bool]] = None,
                  image_cache_path: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -39,9 +40,13 @@ class ImageArgs:
                "ami", "ari", "aki", "bare", "ovf".
         :param pulumi.Input[str] disk_format: The disk format. Must be one of
                "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
+        :param pulumi.Input[bool] decompress: If true, this provider will decompress downloaded
+               image before uploading it to OpenStack. Decompression algorithm is chosen by
+               checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+               Defaults to false. Changing this creates a new Image.
         :param pulumi.Input[bool] hidden: If true, image will be hidden from public list.
                Defaults to false.
-        :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing 
+        :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing
                this creates a new image.
         :param pulumi.Input[str] image_source_password: The password of basic auth to download `image_source_url`.
         :param pulumi.Input[str] image_source_url: This is the url of the raw image. If `web_download`
@@ -80,6 +85,8 @@ class ImageArgs:
         """
         pulumi.set(__self__, "container_format", container_format)
         pulumi.set(__self__, "disk_format", disk_format)
+        if decompress is not None:
+            pulumi.set(__self__, "decompress", decompress)
         if hidden is not None:
             pulumi.set(__self__, "hidden", hidden)
         if image_cache_path is not None:
@@ -143,6 +150,21 @@ class ImageArgs:
 
     @property
     @pulumi.getter
+    def decompress(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, this provider will decompress downloaded
+        image before uploading it to OpenStack. Decompression algorithm is chosen by
+        checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+        Defaults to false. Changing this creates a new Image.
+        """
+        return pulumi.get(self, "decompress")
+
+    @decompress.setter
+    def decompress(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "decompress", value)
+
+    @property
+    @pulumi.getter
     def hidden(self) -> Optional[pulumi.Input[bool]]:
         """
         If true, image will be hidden from public list.
@@ -167,7 +189,7 @@ class ImageArgs:
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique ID (valid UUID) of image to create. Changing 
+        Unique ID (valid UUID) of image to create. Changing
         this creates a new image.
         """
         return pulumi.get(self, "image_id")
@@ -371,6 +393,7 @@ class _ImageState:
                  checksum: Optional[pulumi.Input[str]] = None,
                  container_format: Optional[pulumi.Input[str]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
+                 decompress: Optional[pulumi.Input[bool]] = None,
                  disk_format: Optional[pulumi.Input[str]] = None,
                  file: Optional[pulumi.Input[str]] = None,
                  hidden: Optional[pulumi.Input[bool]] = None,
@@ -403,6 +426,10 @@ class _ImageState:
         :param pulumi.Input[str] container_format: The container format. Must be one of
                "ami", "ari", "aki", "bare", "ovf".
         :param pulumi.Input[str] created_at: The date the image was created.
+        :param pulumi.Input[bool] decompress: If true, this provider will decompress downloaded
+               image before uploading it to OpenStack. Decompression algorithm is chosen by
+               checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+               Defaults to false. Changing this creates a new Image.
         :param pulumi.Input[str] disk_format: The disk format. Must be one of
                "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
         :param pulumi.Input[str] file: the trailing path after the glance
@@ -410,7 +437,7 @@ class _ImageState:
                or the path to retrieve it.
         :param pulumi.Input[bool] hidden: If true, image will be hidden from public list.
                Defaults to false.
-        :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing 
+        :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing
                this creates a new image.
         :param pulumi.Input[str] image_source_password: The password of basic auth to download `image_source_url`.
         :param pulumi.Input[str] image_source_url: This is the url of the raw image. If `web_download`
@@ -464,6 +491,8 @@ class _ImageState:
             pulumi.set(__self__, "container_format", container_format)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if decompress is not None:
+            pulumi.set(__self__, "decompress", decompress)
         if disk_format is not None:
             pulumi.set(__self__, "disk_format", disk_format)
         if file is not None:
@@ -558,6 +587,21 @@ class _ImageState:
         pulumi.set(self, "created_at", value)
 
     @property
+    @pulumi.getter
+    def decompress(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, this provider will decompress downloaded
+        image before uploading it to OpenStack. Decompression algorithm is chosen by
+        checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+        Defaults to false. Changing this creates a new Image.
+        """
+        return pulumi.get(self, "decompress")
+
+    @decompress.setter
+    def decompress(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "decompress", value)
+
+    @property
     @pulumi.getter(name="diskFormat")
     def disk_format(self) -> Optional[pulumi.Input[str]]:
         """
@@ -610,7 +654,7 @@ class _ImageState:
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique ID (valid UUID) of image to create. Changing 
+        Unique ID (valid UUID) of image to create. Changing
         this creates a new image.
         """
         return pulumi.get(self, "image_id")
@@ -902,6 +946,7 @@ class Image(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  container_format: Optional[pulumi.Input[str]] = None,
+                 decompress: Optional[pulumi.Input[bool]] = None,
                  disk_format: Optional[pulumi.Input[str]] = None,
                  hidden: Optional[pulumi.Input[bool]] = None,
                  image_cache_path: Optional[pulumi.Input[str]] = None,
@@ -964,11 +1009,15 @@ class Image(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_format: The container format. Must be one of
                "ami", "ari", "aki", "bare", "ovf".
+        :param pulumi.Input[bool] decompress: If true, this provider will decompress downloaded
+               image before uploading it to OpenStack. Decompression algorithm is chosen by
+               checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+               Defaults to false. Changing this creates a new Image.
         :param pulumi.Input[str] disk_format: The disk format. Must be one of
                "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
         :param pulumi.Input[bool] hidden: If true, image will be hidden from public list.
                Defaults to false.
-        :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing 
+        :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing
                this creates a new image.
         :param pulumi.Input[str] image_source_password: The password of basic auth to download `image_source_url`.
         :param pulumi.Input[str] image_source_url: This is the url of the raw image. If `web_download`
@@ -1066,6 +1115,7 @@ class Image(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  container_format: Optional[pulumi.Input[str]] = None,
+                 decompress: Optional[pulumi.Input[bool]] = None,
                  disk_format: Optional[pulumi.Input[str]] = None,
                  hidden: Optional[pulumi.Input[bool]] = None,
                  image_cache_path: Optional[pulumi.Input[str]] = None,
@@ -1096,13 +1146,14 @@ class Image(pulumi.CustomResource):
             if container_format is None and not opts.urn:
                 raise TypeError("Missing required property 'container_format'")
             __props__.__dict__["container_format"] = container_format
+            __props__.__dict__["decompress"] = decompress
             if disk_format is None and not opts.urn:
                 raise TypeError("Missing required property 'disk_format'")
             __props__.__dict__["disk_format"] = disk_format
             __props__.__dict__["hidden"] = hidden
             __props__.__dict__["image_cache_path"] = image_cache_path
             __props__.__dict__["image_id"] = image_id
-            __props__.__dict__["image_source_password"] = image_source_password
+            __props__.__dict__["image_source_password"] = None if image_source_password is None else pulumi.Output.secret(image_source_password)
             __props__.__dict__["image_source_url"] = image_source_url
             __props__.__dict__["image_source_username"] = image_source_username
             __props__.__dict__["local_file_path"] = local_file_path
@@ -1126,6 +1177,8 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["update_at"] = None
             __props__.__dict__["updated_at"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["imageSourcePassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Image, __self__).__init__(
             'openstack:images/image:Image',
             resource_name,
@@ -1139,6 +1192,7 @@ class Image(pulumi.CustomResource):
             checksum: Optional[pulumi.Input[str]] = None,
             container_format: Optional[pulumi.Input[str]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
+            decompress: Optional[pulumi.Input[bool]] = None,
             disk_format: Optional[pulumi.Input[str]] = None,
             file: Optional[pulumi.Input[str]] = None,
             hidden: Optional[pulumi.Input[bool]] = None,
@@ -1176,6 +1230,10 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] container_format: The container format. Must be one of
                "ami", "ari", "aki", "bare", "ovf".
         :param pulumi.Input[str] created_at: The date the image was created.
+        :param pulumi.Input[bool] decompress: If true, this provider will decompress downloaded
+               image before uploading it to OpenStack. Decompression algorithm is chosen by
+               checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+               Defaults to false. Changing this creates a new Image.
         :param pulumi.Input[str] disk_format: The disk format. Must be one of
                "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
         :param pulumi.Input[str] file: the trailing path after the glance
@@ -1183,7 +1241,7 @@ class Image(pulumi.CustomResource):
                or the path to retrieve it.
         :param pulumi.Input[bool] hidden: If true, image will be hidden from public list.
                Defaults to false.
-        :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing 
+        :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing
                this creates a new image.
         :param pulumi.Input[str] image_source_password: The password of basic auth to download `image_source_url`.
         :param pulumi.Input[str] image_source_url: This is the url of the raw image. If `web_download`
@@ -1238,6 +1296,7 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["checksum"] = checksum
         __props__.__dict__["container_format"] = container_format
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["decompress"] = decompress
         __props__.__dict__["disk_format"] = disk_format
         __props__.__dict__["file"] = file
         __props__.__dict__["hidden"] = hidden
@@ -1292,6 +1351,17 @@ class Image(pulumi.CustomResource):
         return pulumi.get(self, "created_at")
 
     @property
+    @pulumi.getter
+    def decompress(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, this provider will decompress downloaded
+        image before uploading it to OpenStack. Decompression algorithm is chosen by
+        checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+        Defaults to false. Changing this creates a new Image.
+        """
+        return pulumi.get(self, "decompress")
+
+    @property
     @pulumi.getter(name="diskFormat")
     def disk_format(self) -> pulumi.Output[str]:
         """
@@ -1328,7 +1398,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[str]:
         """
-        Unique ID (valid UUID) of image to create. Changing 
+        Unique ID (valid UUID) of image to create. Changing
         this creates a new image.
         """
         return pulumi.get(self, "image_id")

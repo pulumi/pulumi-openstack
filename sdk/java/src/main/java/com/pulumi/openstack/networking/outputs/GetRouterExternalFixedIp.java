@@ -16,6 +16,10 @@ public final class GetRouterExternalFixedIp {
      * 
      */
     private @Nullable String ipAddress;
+    /**
+     * @return Subnet in which the fixed IP belongs to.
+     * 
+     */
     private @Nullable String subnetId;
 
     private GetRouterExternalFixedIp() {}
@@ -26,6 +30,10 @@ public final class GetRouterExternalFixedIp {
     public Optional<String> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
     }
+    /**
+     * @return Subnet in which the fixed IP belongs to.
+     * 
+     */
     public Optional<String> subnetId() {
         return Optional.ofNullable(this.subnetId);
     }

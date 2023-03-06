@@ -64,14 +64,14 @@ public class Configuration extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
-     * Configuration parameter name. Changing this creates a new resource.
+     * A unique name for the resource.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Configuration parameter name. Changing this creates a new resource.
+     * @return A unique name for the resource.
      * 
      */
     public Output<String> name() {

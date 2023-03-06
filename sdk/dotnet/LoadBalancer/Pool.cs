@@ -18,27 +18,25 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var pool1 = new OpenStack.LoadBalancer.Pool("pool1", new()
     ///     {
-    ///         var pool1 = new OpenStack.LoadBalancer.Pool("pool1", new OpenStack.LoadBalancer.PoolArgs
+    ///         LbMethod = "ROUND_ROBIN",
+    ///         ListenerId = "d9415786-5f1a-428b-b35f-2f1523e146d2",
+    ///         Persistence = new OpenStack.LoadBalancer.Inputs.PoolPersistenceArgs
     ///         {
-    ///             LbMethod = "ROUND_ROBIN",
-    ///             ListenerId = "d9415786-5f1a-428b-b35f-2f1523e146d2",
-    ///             Persistence = new OpenStack.LoadBalancer.Inputs.PoolPersistenceArgs
-    ///             {
-    ///                 CookieName = "testCookie",
-    ///                 Type = "APP_COOKIE",
-    ///             },
-    ///             Protocol = "HTTP",
-    ///         });
-    ///     }
+    ///             CookieName = "testCookie",
+    ///             Type = "APP_COOKIE",
+    ///         },
+    ///         Protocol = "HTTP",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:loadbalancer/pool:Pool")]
-    public partial class Pool : Pulumi.CustomResource
+    public partial class Pool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The administrative state of the pool.
@@ -173,7 +171,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         }
     }
 
-    public sealed class PoolArgs : Pulumi.ResourceArgs
+    public sealed class PoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The administrative state of the pool.
@@ -255,9 +253,10 @@ namespace Pulumi.OpenStack.LoadBalancer
         public PoolArgs()
         {
         }
+        public static new PoolArgs Empty => new PoolArgs();
     }
 
-    public sealed class PoolState : Pulumi.ResourceArgs
+    public sealed class PoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The administrative state of the pool.
@@ -339,5 +338,6 @@ namespace Pulumi.OpenStack.LoadBalancer
         public PoolState()
         {
         }
+        public static new PoolState Empty => new PoolState();
     }
 }

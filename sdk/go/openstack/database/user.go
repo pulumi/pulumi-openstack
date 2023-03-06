@@ -12,13 +12,43 @@ import (
 )
 
 // ## Example Usage
+// ### User
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/database"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := database.NewUser(ctx, "basic", &database.UserArgs{
+//				Databases: pulumi.StringArray{
+//					pulumi.String("testdb"),
+//				},
+//				InstanceId: pulumi.Any(openstack_db_instance_v1.Basic.Id),
+//				Password:   pulumi.String("password"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type User struct {
 	pulumi.CustomResourceState
 
 	// A list of database user should have access to.
-	Databases  pulumi.StringArrayOutput `pulumi:"databases"`
-	Host       pulumi.StringPtrOutput   `pulumi:"host"`
-	InstanceId pulumi.StringOutput      `pulumi:"instanceId"`
+	Databases pulumi.StringArrayOutput `pulumi:"databases"`
+	Host      pulumi.StringPtrOutput   `pulumi:"host"`
+	// The ID for the database instance.
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// A unique name for the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// User's password.
@@ -40,6 +70,13 @@ func NewUser(ctx *pulumi.Context,
 	if args.Password == nil {
 		return nil, errors.New("invalid value for required argument 'Password'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource User
 	err := ctx.RegisterResource("openstack:database/user:User", name, args, &resource, opts...)
 	if err != nil {
@@ -63,9 +100,10 @@ func GetUser(ctx *pulumi.Context,
 // Input properties used for looking up and filtering User resources.
 type userState struct {
 	// A list of database user should have access to.
-	Databases  []string `pulumi:"databases"`
-	Host       *string  `pulumi:"host"`
-	InstanceId *string  `pulumi:"instanceId"`
+	Databases []string `pulumi:"databases"`
+	Host      *string  `pulumi:"host"`
+	// The ID for the database instance.
+	InstanceId *string `pulumi:"instanceId"`
 	// A unique name for the resource.
 	Name *string `pulumi:"name"`
 	// User's password.
@@ -76,8 +114,9 @@ type userState struct {
 
 type UserState struct {
 	// A list of database user should have access to.
-	Databases  pulumi.StringArrayInput
-	Host       pulumi.StringPtrInput
+	Databases pulumi.StringArrayInput
+	Host      pulumi.StringPtrInput
+	// The ID for the database instance.
 	InstanceId pulumi.StringPtrInput
 	// A unique name for the resource.
 	Name pulumi.StringPtrInput
@@ -93,9 +132,10 @@ func (UserState) ElementType() reflect.Type {
 
 type userArgs struct {
 	// A list of database user should have access to.
-	Databases  []string `pulumi:"databases"`
-	Host       *string  `pulumi:"host"`
-	InstanceId string   `pulumi:"instanceId"`
+	Databases []string `pulumi:"databases"`
+	Host      *string  `pulumi:"host"`
+	// The ID for the database instance.
+	InstanceId string `pulumi:"instanceId"`
 	// A unique name for the resource.
 	Name *string `pulumi:"name"`
 	// User's password.
@@ -107,8 +147,9 @@ type userArgs struct {
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
 	// A list of database user should have access to.
-	Databases  pulumi.StringArrayInput
-	Host       pulumi.StringPtrInput
+	Databases pulumi.StringArrayInput
+	Host      pulumi.StringPtrInput
+	// The ID for the database instance.
 	InstanceId pulumi.StringInput
 	// A unique name for the resource.
 	Name pulumi.StringPtrInput
@@ -214,6 +255,7 @@ func (o UserOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Host }).(pulumi.StringPtrOutput)
 }
 
+// The ID for the database instance.
 func (o UserOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }

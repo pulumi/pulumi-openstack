@@ -709,7 +709,7 @@ type InstanceUser struct {
 	// An ip address or % sign indicating what ip addresses can connect with
 	// this user credentials. Changing this creates a new instance.
 	Host *string `pulumi:"host"`
-	// Database to be created on new instance. Changing this creates a
+	// Username to be created on new instance. Changing this creates a
 	// new instance.
 	Name string `pulumi:"name"`
 	// User's password. Changing this creates a
@@ -735,7 +735,7 @@ type InstanceUserArgs struct {
 	// An ip address or % sign indicating what ip addresses can connect with
 	// this user credentials. Changing this creates a new instance.
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// Database to be created on new instance. Changing this creates a
+	// Username to be created on new instance. Changing this creates a
 	// new instance.
 	Name pulumi.StringInput `pulumi:"name"`
 	// User's password. Changing this creates a
@@ -806,7 +806,7 @@ func (o InstanceUserOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceUser) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// Database to be created on new instance. Changing this creates a
+// Username to be created on new instance. Changing this creates a
 // new instance.
 func (o InstanceUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceUser) string { return v.Name }).(pulumi.StringOutput)

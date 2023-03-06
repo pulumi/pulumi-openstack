@@ -16,47 +16,44 @@ namespace Pulumi.OpenStack.Networking
     /// ### Create an Address-scope
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var addressscope1 = new OpenStack.Networking.AddressScope("addressscope1", new()
     ///     {
-    ///         var addressscope1 = new OpenStack.Networking.AddressScope("addressscope1", new OpenStack.Networking.AddressScopeArgs
-    ///         {
-    ///             IpVersion = 6,
-    ///         });
-    ///     }
+    ///         IpVersion = 6,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Create a Subnet Pool from an Address-scope
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var addressscope1 = new OpenStack.Networking.AddressScope("addressscope1", new()
     ///     {
-    ///         var addressscope1 = new OpenStack.Networking.AddressScope("addressscope1", new OpenStack.Networking.AddressScopeArgs
-    ///         {
-    ///             IpVersion = 6,
-    ///         });
-    ///         var subnetpool1 = new OpenStack.Networking.SubnetPool("subnetpool1", new OpenStack.Networking.SubnetPoolArgs
-    ///         {
-    ///             AddressScopeId = addressscope1.Id,
-    ///             Prefixes = 
-    ///             {
-    ///                 "fdf7:b13d:dead:beef::/64",
-    ///                 "fd65:86cc:a334:39b7::/64",
-    ///             },
-    ///         });
-    ///     }
+    ///         IpVersion = 6,
+    ///     });
     /// 
-    /// }
+    ///     var subnetpool1 = new OpenStack.Networking.SubnetPool("subnetpool1", new()
+    ///     {
+    ///         AddressScopeId = addressscope1.Id,
+    ///         Prefixes = new[]
+    ///         {
+    ///             "fdf7:b13d:dead:beef::/64",
+    ///             "fd65:86cc:a334:39b7::/64",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -68,7 +65,7 @@ namespace Pulumi.OpenStack.Networking
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/addressScope:AddressScope")]
-    public partial class AddressScope : Pulumi.CustomResource
+    public partial class AddressScope : global::Pulumi.CustomResource
     {
         /// <summary>
         /// IP version, either 4 (default) or 6. Changing this
@@ -153,7 +150,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
-    public sealed class AddressScopeArgs : Pulumi.ResourceArgs
+    public sealed class AddressScopeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// IP version, either 4 (default) or 6. Changing this
@@ -197,9 +194,10 @@ namespace Pulumi.OpenStack.Networking
         public AddressScopeArgs()
         {
         }
+        public static new AddressScopeArgs Empty => new AddressScopeArgs();
     }
 
-    public sealed class AddressScopeState : Pulumi.ResourceArgs
+    public sealed class AddressScopeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// IP version, either 4 (default) or 6. Changing this
@@ -243,5 +241,6 @@ namespace Pulumi.OpenStack.Networking
         public AddressScopeState()
         {
         }
+        public static new AddressScopeState Empty => new AddressScopeState();
     }
 }

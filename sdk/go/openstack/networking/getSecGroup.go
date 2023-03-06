@@ -67,12 +67,12 @@ type LookupSecGroupArgs struct {
 // A collection of values returned by getSecGroup.
 type LookupSecGroupResult struct {
 	// The set of string tags applied on the security group.
-	AllTags     []string `pulumi:"allTags"`
-	Description *string  `pulumi:"description"`
+	AllTags []string `pulumi:"allTags"`
+	// See Argument Reference above.
+	Description *string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// See Argument Reference above.
-	// * `description`- See Argument Reference above.
 	Name *string `pulumi:"name"`
 	// See Argument Reference above.
 	Region     string   `pulumi:"region"`
@@ -136,6 +136,7 @@ func (o LookupSecGroupResultOutput) AllTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSecGroupResult) []string { return v.AllTags }).(pulumi.StringArrayOutput)
 }
 
+// See Argument Reference above.
 func (o LookupSecGroupResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecGroupResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -146,7 +147,6 @@ func (o LookupSecGroupResultOutput) Id() pulumi.StringOutput {
 }
 
 // See Argument Reference above.
-// * `description`- See Argument Reference above.
 func (o LookupSecGroupResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecGroupResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

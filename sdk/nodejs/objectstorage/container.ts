@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -15,13 +16,28 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const container1 = new openstack.objectstorage.Container("container_1", {
+ * const container1 = new openstack.objectstorage.Container("container1", {
  *     contentType: "application/json",
  *     metadata: {
  *         test: "true",
  *     },
  *     region: "RegionOne",
- *     versioning: {
+ *     versioning: true,
+ * });
+ * ```
+ * ### Basic Container with legacy versioning
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const container1 = new openstack.objectstorage.Container("container1", {
+ *     contentType: "application/json",
+ *     metadata: {
+ *         test: "true",
+ *     },
+ *     region: "RegionOne",
+ *     versioningLegacy: {
  *         location: "tf-test-container-versions",
  *         type: "versions",
  *     },
@@ -33,7 +49,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const container1 = new openstack.objectstorage.Container("container_1", {
+ * const container1 = new openstack.objectstorage.Container("container1", {
  *     containerRead: ".r:*",
  *     region: "RegionOne",
  * });
@@ -44,7 +60,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const container1 = new openstack.objectstorage.Container("container_1", {
+ * const container1 = new openstack.objectstorage.Container("container1", {
  *     containerRead: ".r:*,.rlistings",
  *     region: "RegionOne",
  * });
@@ -55,12 +71,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const current = pulumi.output(openstack.identity.getAuthScope({
+ * const current = openstack.identity.getAuthScope({
  *     name: "current",
- * }));
- * const container1 = new openstack.objectstorage.Container("container_1", {
- *     containerRead: `.r:-${var_username}`,
- *     containerWrite: pulumi.interpolate`${current.projectId}:${var_username}`,
+ * });
+ * const container1 = new openstack.objectstorage.Container("container1", {
+ *     containerRead: `.r:-${_var.username}`,
+ *     containerWrite: current.then(current => `${current.projectId}:${_var.username}`),
  *     region: "RegionOne",
  * });
  * ```
@@ -154,9 +170,16 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly storagePolicy!: pulumi.Output<string>;
     /**
-     * Enable object versioning. The structure is described below.
+     * A boolean that enables or disable object versioning.
+     * Defaults to `false`
      */
-    public readonly versioning!: pulumi.Output<outputs.objectstorage.ContainerVersioning | undefined>;
+    public readonly versioning!: pulumi.Output<boolean | undefined>;
+    /**
+     * Enable legacy object versioning. The structure is described below.
+     *
+     * @deprecated Use newer "versioning" implementation
+     */
+    public readonly versioningLegacy!: pulumi.Output<outputs.objectstorage.ContainerVersioningLegacy | undefined>;
 
     /**
      * Create a Container resource with the given unique name, arguments, and options.
@@ -182,6 +205,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["storagePolicy"] = state ? state.storagePolicy : undefined;
             resourceInputs["versioning"] = state ? state.versioning : undefined;
+            resourceInputs["versioningLegacy"] = state ? state.versioningLegacy : undefined;
         } else {
             const args = argsOrState as ContainerArgs | undefined;
             resourceInputs["containerRead"] = args ? args.containerRead : undefined;
@@ -195,6 +219,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["storagePolicy"] = args ? args.storagePolicy : undefined;
             resourceInputs["versioning"] = args ? args.versioning : undefined;
+            resourceInputs["versioningLegacy"] = args ? args.versioningLegacy : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Container.__pulumiType, name, resourceInputs, opts);
@@ -258,9 +283,16 @@ export interface ContainerState {
      */
     storagePolicy?: pulumi.Input<string>;
     /**
-     * Enable object versioning. The structure is described below.
+     * A boolean that enables or disable object versioning.
+     * Defaults to `false`
      */
-    versioning?: pulumi.Input<inputs.objectstorage.ContainerVersioning>;
+    versioning?: pulumi.Input<boolean>;
+    /**
+     * Enable legacy object versioning. The structure is described below.
+     *
+     * @deprecated Use newer "versioning" implementation
+     */
+    versioningLegacy?: pulumi.Input<inputs.objectstorage.ContainerVersioningLegacy>;
 }
 
 /**
@@ -320,7 +352,14 @@ export interface ContainerArgs {
      */
     storagePolicy?: pulumi.Input<string>;
     /**
-     * Enable object versioning. The structure is described below.
+     * A boolean that enables or disable object versioning.
+     * Defaults to `false`
      */
-    versioning?: pulumi.Input<inputs.objectstorage.ContainerVersioning>;
+    versioning?: pulumi.Input<boolean>;
+    /**
+     * Enable legacy object versioning. The structure is described below.
+     *
+     * @deprecated Use newer "versioning" implementation
+     */
+    versioningLegacy?: pulumi.Input<inputs.objectstorage.ContainerVersioningLegacy>;
 }

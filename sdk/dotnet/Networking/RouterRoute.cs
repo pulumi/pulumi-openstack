@@ -15,47 +15,49 @@ namespace Pulumi.OpenStack.Networking
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var router1 = new OpenStack.Networking.Router("router1", new()
     ///     {
-    ///         var router1 = new OpenStack.Networking.Router("router1", new OpenStack.Networking.RouterArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
-    ///         {
-    ///             Cidr = "192.168.199.0/24",
-    ///             IpVersion = 4,
-    ///             NetworkId = network1.Id,
-    ///         });
-    ///         var int1 = new OpenStack.Networking.RouterInterface("int1", new OpenStack.Networking.RouterInterfaceArgs
-    ///         {
-    ///             RouterId = router1.Id,
-    ///             SubnetId = subnet1.Id,
-    ///         });
-    ///         var routerRoute1 = new OpenStack.Networking.RouterRoute("routerRoute1", new OpenStack.Networking.RouterRouteArgs
-    ///         {
-    ///             DestinationCidr = "10.0.1.0/24",
-    ///             NextHop = "192.168.199.254",
-    ///             RouterId = router1.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 "openstack_networking_router_interface_v2.int_1",
-    ///             },
-    ///         });
-    ///     }
+    ///         AdminStateUp = true,
+    ///     });
     /// 
-    /// }
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///     });
+    /// 
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     {
+    ///         Cidr = "192.168.199.0/24",
+    ///         IpVersion = 4,
+    ///         NetworkId = network1.Id,
+    ///     });
+    /// 
+    ///     var int1 = new OpenStack.Networking.RouterInterface("int1", new()
+    ///     {
+    ///         RouterId = router1.Id,
+    ///         SubnetId = subnet1.Id,
+    ///     });
+    /// 
+    ///     var routerRoute1 = new OpenStack.Networking.RouterRoute("routerRoute1", new()
+    ///     {
+    ///         DestinationCidr = "10.0.1.0/24",
+    ///         NextHop = "192.168.199.254",
+    ///         RouterId = router1.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             "openstack_networking_router_interface_v2.int_1",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Notes
     /// 
@@ -72,7 +74,7 @@ namespace Pulumi.OpenStack.Networking
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/routerRoute:RouterRoute")]
-    public partial class RouterRoute : Pulumi.CustomResource
+    public partial class RouterRoute : global::Pulumi.CustomResource
     {
         /// <summary>
         /// CIDR block to match on the packet’s destination IP. Changing
@@ -148,7 +150,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
-    public sealed class RouterRouteArgs : Pulumi.ResourceArgs
+    public sealed class RouterRouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// CIDR block to match on the packet’s destination IP. Changing
@@ -183,9 +185,10 @@ namespace Pulumi.OpenStack.Networking
         public RouterRouteArgs()
         {
         }
+        public static new RouterRouteArgs Empty => new RouterRouteArgs();
     }
 
-    public sealed class RouterRouteState : Pulumi.ResourceArgs
+    public sealed class RouterRouteState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// CIDR block to match on the packet’s destination IP. Changing
@@ -220,5 +223,6 @@ namespace Pulumi.OpenStack.Networking
         public RouterRouteState()
         {
         }
+        public static new RouterRouteState Empty => new RouterRouteState();
     }
 }

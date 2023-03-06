@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Compute.Inputs
 {
 
-    public sealed class InstanceBlockDeviceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceBlockDeviceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The boot index of the volume. It defaults to 0.
@@ -95,5 +95,6 @@ namespace Pulumi.OpenStack.Compute.Inputs
         public InstanceBlockDeviceArgs()
         {
         }
+        public static new InstanceBlockDeviceArgs Empty => new InstanceBlockDeviceArgs();
     }
 }

@@ -102,6 +102,10 @@ func NewTempUrl(ctx *pulumi.Context,
 	if args.Ttl == nil {
 		return nil, errors.New("invalid value for required argument 'Ttl'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"url",
+	})
+	opts = append(opts, secrets)
 	var resource TempUrl
 	err := ctx.RegisterResource("openstack:objectstorage/tempUrl:TempUrl", name, args, &resource, opts...)
 	if err != nil {

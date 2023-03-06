@@ -20,8 +20,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/orchestration"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -32,30 +30,13 @@ import (
 //			_, err := orchestration.NewStackV1(ctx, "stack1", &orchestration.StackV1Args{
 //				DisableRollback: pulumi.Bool(true),
 //				EnvironmentOpts: pulumi.AnyMap{
-//					"Bin": pulumi.Any(fmt.Sprintf("\n\n")),
+//					"Bin": pulumi.Any("\n\n"),
 //				},
 //				Parameters: pulumi.AnyMap{
 //					"length": pulumi.Any(4),
 //				},
 //				TemplateOpts: pulumi.AnyMap{
-//					"Bin": pulumi.Any(fmt.Sprintf(`heat_template_version: 2013-05-23
-//
-// parameters:
-//
-//	length:
-//	  type: number
-//
-// resources:
-//
-//	test_res:
-//	  type: OS::Heat::TestResource
-//	random:
-//	  type: OS::Heat::RandomString
-//	  properties:
-//	    length: {get_param: length}
-//
-// `)),
-//
+//					"Bin": pulumi.Any("heat_template_version: 2013-05-23\nparameters:\n  length:\n    type: number\nresources:\n  test_res:\n    type: OS::Heat::TestResource\n  random:\n    type: OS::Heat::RandomString\n    properties:\n      length: {get_param: length}\n\n"),
 //				},
 //				Timeout: pulumi.Int(30),
 //			})

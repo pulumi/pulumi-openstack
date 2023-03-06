@@ -14,23 +14,21 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// ### Create a Cluster
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var cluster1 = new OpenStack.ContainerInfra.Cluster("cluster1", new()
     ///     {
-    ///         var cluster1 = new OpenStack.ContainerInfra.Cluster("cluster1", new OpenStack.ContainerInfra.ClusterArgs
-    ///         {
-    ///             ClusterTemplateId = "b9a45c5c-cd03-4958-82aa-b80bf93cb922",
-    ///             Keypair = "ssh_keypair",
-    ///             MasterCount = 3,
-    ///             NodeCount = 5,
-    ///         });
-    ///     }
+    ///         ClusterTemplateId = "b9a45c5c-cd03-4958-82aa-b80bf93cb922",
+    ///         Keypair = "ssh_keypair",
+    ///         MasterCount = 3,
+    ///         NodeCount = 5,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Attributes reference
     /// 
@@ -77,7 +75,7 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:containerinfra/cluster:Cluster")]
-    public partial class Cluster : Pulumi.CustomResource
+    public partial class Cluster : global::Pulumi.CustomResource
     {
         [Output("apiAddress")]
         public Output<string> ApiAddress { get; private set; } = null!;
@@ -261,6 +259,10 @@ namespace Pulumi.OpenStack.ContainerInfra
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "kubeconfig",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -282,7 +284,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         }
     }
 
-    public sealed class ClusterArgs : Pulumi.ResourceArgs
+    public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The UUID of the V1 Container Infra cluster
@@ -409,9 +411,10 @@ namespace Pulumi.OpenStack.ContainerInfra
         public ClusterArgs()
         {
         }
+        public static new ClusterArgs Empty => new ClusterArgs();
     }
 
-    public sealed class ClusterState : Pulumi.ResourceArgs
+    public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         [Input("apiAddress")]
         public Input<string>? ApiAddress { get; set; }
@@ -494,7 +497,11 @@ namespace Pulumi.OpenStack.ContainerInfra
         public InputMap<string> Kubeconfig
         {
             get => _kubeconfig ?? (_kubeconfig = new InputMap<string>());
-            set => _kubeconfig = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _kubeconfig = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         [Input("labels")]
@@ -596,5 +603,6 @@ namespace Pulumi.OpenStack.ContainerInfra
         public ClusterState()
         {
         }
+        public static new ClusterState Empty => new ClusterState();
     }
 }

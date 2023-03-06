@@ -18,20 +18,18 @@ namespace Pulumi.OpenStack.Identity
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var group1 = new OpenStack.Identity.GroupV3("group1", new()
     ///     {
-    ///         var group1 = new OpenStack.Identity.GroupV3("group1", new OpenStack.Identity.GroupV3Args
-    ///         {
-    ///             Description = "group 1",
-    ///         });
-    ///     }
+    ///         Description = "group 1",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.OpenStack.Identity
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:identity/groupV3:GroupV3")]
-    public partial class GroupV3 : Pulumi.CustomResource
+    public partial class GroupV3 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A description of the group.
@@ -115,7 +113,7 @@ namespace Pulumi.OpenStack.Identity
         }
     }
 
-    public sealed class GroupV3Args : Pulumi.ResourceArgs
+    public sealed class GroupV3Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the group.
@@ -146,9 +144,10 @@ namespace Pulumi.OpenStack.Identity
         public GroupV3Args()
         {
         }
+        public static new GroupV3Args Empty => new GroupV3Args();
     }
 
-    public sealed class GroupV3State : Pulumi.ResourceArgs
+    public sealed class GroupV3State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the group.
@@ -179,5 +178,6 @@ namespace Pulumi.OpenStack.Identity
         public GroupV3State()
         {
         }
+        public static new GroupV3State Empty => new GroupV3State();
     }
 }

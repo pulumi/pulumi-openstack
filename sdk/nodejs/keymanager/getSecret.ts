@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -12,10 +13,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const example = pulumi.output(openstack.keymanager.getSecret({
+ * const example = openstack.keymanager.getSecret({
  *     mode: "cbc",
  *     secretType: "passphrase",
- * }));
+ * });
  * ```
  * ## Date Filters
  *
@@ -32,20 +33,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const dateFilterExample = pulumi.output(openstack.keymanager.getSecret({
+ * const dateFilterExample = openstack.keymanager.getSecret({
  *     expirationFilter: "gt:2020-01-01T00:00:00Z",
  *     mode: "cbc",
  *     secretType: "passphrase",
- * }));
+ * });
  * ```
  */
 export function getSecret(args?: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:keymanager/getSecret:getSecret", {
         "aclOnly": args.aclOnly,
         "algorithm": args.algorithm,
@@ -214,9 +212,42 @@ export interface GetSecretResult {
      */
     readonly updatedAtFilter?: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const example = openstack.keymanager.getSecret({
+ *     mode: "cbc",
+ *     secretType: "passphrase",
+ * });
+ * ```
+ * ## Date Filters
+ *
+ * The values for the `expirationFilter`, `createdAtFilter`, and
+ * `updatedAtFilter` parameters are comma-separated lists of time stamps in
+ * RFC3339 format. The time stamps can be prefixed with any of these comparison
+ * operators: *gt:* (greater-than), *gte:* (greater-than-or-equal), *lt:*
+ * (less-than), *lte:* (less-than-or-equal).
+ *
+ * For example, to get a passphrase a Secret with CBC moda, that will expire in
+ * January of 2020:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const dateFilterExample = openstack.keymanager.getSecret({
+ *     expirationFilter: "gt:2020-01-01T00:00:00Z",
+ *     mode: "cbc",
+ *     secretType: "passphrase",
+ * });
+ * ```
+ */
 export function getSecretOutput(args?: GetSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretResult> {
-    return pulumi.output(args).apply(a => getSecret(a, opts))
+    return pulumi.output(args).apply((a: any) => getSecret(a, opts))
 }
 
 /**

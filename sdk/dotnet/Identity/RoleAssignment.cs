@@ -18,36 +18,33 @@ namespace Pulumi.OpenStack.Identity
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var project1 = new OpenStack.Identity.Project("project1", new OpenStack.Identity.ProjectArgs
-    ///         {
-    ///         });
-    ///         var user1 = new OpenStack.Identity.User("user1", new OpenStack.Identity.UserArgs
-    ///         {
-    ///             DefaultProjectId = project1.Id,
-    ///         });
-    ///         var role1 = new OpenStack.Identity.Role("role1", new OpenStack.Identity.RoleArgs
-    ///         {
-    ///         });
-    ///         var roleAssignment1 = new OpenStack.Identity.RoleAssignment("roleAssignment1", new OpenStack.Identity.RoleAssignmentArgs
-    ///         {
-    ///             ProjectId = project1.Id,
-    ///             RoleId = role1.Id,
-    ///             UserId = user1.Id,
-    ///         });
-    ///     }
+    ///     var project1 = new OpenStack.Identity.Project("project1");
     /// 
-    /// }
+    ///     var user1 = new OpenStack.Identity.User("user1", new()
+    ///     {
+    ///         DefaultProjectId = project1.Id,
+    ///     });
+    /// 
+    ///     var role1 = new OpenStack.Identity.Role("role1");
+    /// 
+    ///     var roleAssignment1 = new OpenStack.Identity.RoleAssignment("roleAssignment1", new()
+    ///     {
+    ///         ProjectId = project1.Id,
+    ///         RoleId = role1.Id,
+    ///         UserId = user1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:identity/roleAssignment:RoleAssignment")]
-    public partial class RoleAssignment : Pulumi.CustomResource
+    public partial class RoleAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The domain to assign the role in.
@@ -126,7 +123,7 @@ namespace Pulumi.OpenStack.Identity
         }
     }
 
-    public sealed class RoleAssignmentArgs : Pulumi.ResourceArgs
+    public sealed class RoleAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The domain to assign the role in.
@@ -164,9 +161,10 @@ namespace Pulumi.OpenStack.Identity
         public RoleAssignmentArgs()
         {
         }
+        public static new RoleAssignmentArgs Empty => new RoleAssignmentArgs();
     }
 
-    public sealed class RoleAssignmentState : Pulumi.ResourceArgs
+    public sealed class RoleAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The domain to assign the role in.
@@ -204,5 +202,6 @@ namespace Pulumi.OpenStack.Identity
         public RoleAssignmentState()
         {
         }
+        public static new RoleAssignmentState Empty => new RoleAssignmentState();
     }
 }

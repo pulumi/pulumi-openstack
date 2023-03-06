@@ -10,10 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Networking.Inputs
 {
 
-    public sealed class PortFixedIpGetArgs : Pulumi.ResourceArgs
+    public sealed class PortFixedIpGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The additional IP address.
+        /// IP address desired in the subnet for this port. If
+        /// you don't specify `ip_address`, an available IP address from the specified
+        /// subnet will be allocated to this port. This field will not be populated if it
+        /// is left blank or omitted. To retrieve the assigned IP address, use the
+        /// `all_fixed_ips` attribute.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -28,5 +32,6 @@ namespace Pulumi.OpenStack.Networking.Inputs
         public PortFixedIpGetArgs()
         {
         }
+        public static new PortFixedIpGetArgs Empty => new PortFixedIpGetArgs();
     }
 }

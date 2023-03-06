@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.KeyManager.Inputs
 {
 
-    public sealed class SecretV1AclReadGetArgs : Pulumi.ResourceArgs
+    public sealed class SecretV1AclReadGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date the secret ACL was created.
@@ -47,5 +47,6 @@ namespace Pulumi.OpenStack.KeyManager.Inputs
         public SecretV1AclReadGetArgs()
         {
         }
+        public static new SecretV1AclReadGetArgs Empty => new SecretV1AclReadGetArgs();
     }
 }

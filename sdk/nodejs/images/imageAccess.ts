@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     },
  *     visibility: "shared",
  * });
- * const rancherosMember = new openstack.images.ImageAccess("rancheros_member", {
+ * const rancherosMember = new openstack.images.ImageAccess("rancherosMember", {
  *     imageId: rancheros.id,
  *     memberId: "bed6b6cbb86a4e2d8dc2735c2f1000e4",
  * });
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *     },
  *     visibility: "shared",
  * });
- * const rancherosMember = new openstack.images.ImageAccess("rancheros_member", {
+ * const rancherosMember = new openstack.images.ImageAccess("rancherosMember", {
  *     imageId: rancheros.id,
  *     memberId: "bed6b6cbb86a4e2d8dc2735c2f1000e4",
  *     status: "accepted",

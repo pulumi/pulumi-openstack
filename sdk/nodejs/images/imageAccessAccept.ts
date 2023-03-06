@@ -16,13 +16,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const rancheros = pulumi.output(openstack.images.getImage({
+ * const rancheros = openstack.images.getImage({
  *     memberStatus: "all",
  *     name: "RancherOS",
  *     visibility: "shared",
- * }));
- * const rancherosMember = new openstack.images.ImageAccessAccept("rancheros_member", {
- *     imageId: rancheros.id,
+ * });
+ * const rancherosMember = new openstack.images.ImageAccessAccept("rancherosMember", {
+ *     imageId: rancheros.then(rancheros => rancheros.id),
  *     status: "accepted",
  * });
  * ```

@@ -13,18 +13,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const policy = pulumi.output(openstack.firewall.getPolicy({
+ * const policy = openstack.firewall.getPolicy({
  *     name: "tf_test_policy",
- * }));
+ * });
  * ```
  */
 export function getPolicy(args?: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:firewall/getPolicy:getPolicy", {
         "name": args.name,
         "policyId": args.policyId,
@@ -98,9 +95,22 @@ export interface GetPolicyResult {
      */
     readonly tenantId: string;
 }
-
+/**
+ * Use this data source to get firewall policy information of an available OpenStack firewall policy.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const policy = openstack.firewall.getPolicy({
+ *     name: "tf_test_policy",
+ * });
+ * ```
+ */
 export function getPolicyOutput(args?: GetPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyResult> {
-    return pulumi.output(args).apply(a => getPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getPolicy(a, opts))
 }
 
 /**

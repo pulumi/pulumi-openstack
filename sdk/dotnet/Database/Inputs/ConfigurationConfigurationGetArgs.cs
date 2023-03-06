@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Database.Inputs
 {
 
-    public sealed class ConfigurationConfigurationGetArgs : Pulumi.ResourceArgs
+    public sealed class ConfigurationConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration parameter name. Changing this creates a new resource.
@@ -33,5 +33,6 @@ namespace Pulumi.OpenStack.Database.Inputs
         public ConfigurationConfigurationGetArgs()
         {
         }
+        public static new ConfigurationConfigurationGetArgs Empty => new ConfigurationConfigurationGetArgs();
     }
 }

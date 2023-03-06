@@ -24,7 +24,7 @@ namespace Pulumi.OpenStack.Database.Outputs
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// Database to be created on new instance. Changing this creates a
+        /// Username to be created on new instance. Changing this creates a
         /// new instance.
         /// </summary>
         public readonly string Name;

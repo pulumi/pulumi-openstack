@@ -234,6 +234,25 @@ public final class ClusterTemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Indicates whether the ClusterTemplate is hidden or not.
+     * Changing this updates the hidden attribute of the existing cluster
+     * template.
+     * 
+     */
+    @Import(name="hidden")
+    private @Nullable Output<Boolean> hidden;
+
+    /**
+     * @return Indicates whether the ClusterTemplate is hidden or not.
+     * Changing this updates the hidden attribute of the existing cluster
+     * template.
+     * 
+     */
+    public Optional<Output<Boolean>> hidden() {
+        return Optional.ofNullable(this.hidden);
+    }
+
+    /**
      * The address of a proxy for receiving all HTTP
      * requests and relay them. Changing this updates the HTTP proxy address of
      * the existing cluster template.
@@ -610,6 +629,7 @@ public final class ClusterTemplateState extends com.pulumi.resources.ResourceArg
         this.fixedSubnet = $.fixedSubnet;
         this.flavor = $.flavor;
         this.floatingIpEnabled = $.floatingIpEnabled;
+        this.hidden = $.hidden;
         this.httpProxy = $.httpProxy;
         this.httpsProxy = $.httpsProxy;
         this.image = $.image;
@@ -930,6 +950,31 @@ public final class ClusterTemplateState extends com.pulumi.resources.ResourceArg
          */
         public Builder floatingIpEnabled(Boolean floatingIpEnabled) {
             return floatingIpEnabled(Output.of(floatingIpEnabled));
+        }
+
+        /**
+         * @param hidden Indicates whether the ClusterTemplate is hidden or not.
+         * Changing this updates the hidden attribute of the existing cluster
+         * template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hidden(@Nullable Output<Boolean> hidden) {
+            $.hidden = hidden;
+            return this;
+        }
+
+        /**
+         * @param hidden Indicates whether the ClusterTemplate is hidden or not.
+         * Changing this updates the hidden attribute of the existing cluster
+         * template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hidden(Boolean hidden) {
+            return hidden(Output.of(hidden));
         }
 
         /**

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Compute.Inputs
 {
 
-    public sealed class SecGroupRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class SecGroupRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required if `from_group_id` or `self` is empty. The IP range
@@ -64,5 +64,6 @@ namespace Pulumi.OpenStack.Compute.Inputs
         public SecGroupRuleGetArgs()
         {
         }
+        public static new SecGroupRuleGetArgs Empty => new SecGroupRuleGetArgs();
     }
 }

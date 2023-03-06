@@ -26,6 +26,7 @@ class ClusterTemplateArgs:
                  fixed_subnet: Optional[pulumi.Input[str]] = None,
                  flavor: Optional[pulumi.Input[str]] = None,
                  floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
+                 hidden: Optional[pulumi.Input[bool]] = None,
                  http_proxy: Optional[pulumi.Input[str]] = None,
                  https_proxy: Optional[pulumi.Input[str]] = None,
                  insecure_registry: Optional[pulumi.Input[str]] = None,
@@ -79,6 +80,9 @@ class ClusterTemplateArgs:
         :param pulumi.Input[bool] floating_ip_enabled: Indicates whether created cluster should
                create floating IP for every node or not. Changing this updates the
                floating IP enabled attribute of the existing cluster template.
+        :param pulumi.Input[bool] hidden: Indicates whether the ClusterTemplate is hidden or not.
+               Changing this updates the hidden attribute of the existing cluster
+               template.
         :param pulumi.Input[str] http_proxy: The address of a proxy for receiving all HTTP
                requests and relay them. Changing this updates the HTTP proxy address of
                the existing cluster template.
@@ -147,6 +151,8 @@ class ClusterTemplateArgs:
             pulumi.set(__self__, "flavor", flavor)
         if floating_ip_enabled is not None:
             pulumi.set(__self__, "floating_ip_enabled", floating_ip_enabled)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
         if http_proxy is not None:
             pulumi.set(__self__, "http_proxy", http_proxy)
         if https_proxy is not None:
@@ -346,6 +352,20 @@ class ClusterTemplateArgs:
     @floating_ip_enabled.setter
     def floating_ip_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "floating_ip_enabled", value)
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the ClusterTemplate is hidden or not.
+        Changing this updates the hidden attribute of the existing cluster
+        template.
+        """
+        return pulumi.get(self, "hidden")
+
+    @hidden.setter
+    def hidden(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "hidden", value)
 
     @property
     @pulumi.getter(name="httpProxy")
@@ -584,6 +604,7 @@ class _ClusterTemplateState:
                  fixed_subnet: Optional[pulumi.Input[str]] = None,
                  flavor: Optional[pulumi.Input[str]] = None,
                  floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
+                 hidden: Optional[pulumi.Input[bool]] = None,
                  http_proxy: Optional[pulumi.Input[str]] = None,
                  https_proxy: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -638,6 +659,9 @@ class _ClusterTemplateState:
         :param pulumi.Input[bool] floating_ip_enabled: Indicates whether created cluster should
                create floating IP for every node or not. Changing this updates the
                floating IP enabled attribute of the existing cluster template.
+        :param pulumi.Input[bool] hidden: Indicates whether the ClusterTemplate is hidden or not.
+               Changing this updates the hidden attribute of the existing cluster
+               template.
         :param pulumi.Input[str] http_proxy: The address of a proxy for receiving all HTTP
                requests and relay them. Changing this updates the HTTP proxy address of
                the existing cluster template.
@@ -717,6 +741,8 @@ class _ClusterTemplateState:
             pulumi.set(__self__, "flavor", flavor)
         if floating_ip_enabled is not None:
             pulumi.set(__self__, "floating_ip_enabled", floating_ip_enabled)
+        if hidden is not None:
+            pulumi.set(__self__, "hidden", hidden)
         if http_proxy is not None:
             pulumi.set(__self__, "http_proxy", http_proxy)
         if https_proxy is not None:
@@ -919,6 +945,20 @@ class _ClusterTemplateState:
     @floating_ip_enabled.setter
     def floating_ip_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "floating_ip_enabled", value)
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the ClusterTemplate is hidden or not.
+        Changing this updates the hidden attribute of the existing cluster
+        template.
+        """
+        return pulumi.get(self, "hidden")
+
+    @hidden.setter
+    def hidden(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "hidden", value)
 
     @property
     @pulumi.getter(name="httpProxy")
@@ -1209,6 +1249,7 @@ class ClusterTemplate(pulumi.CustomResource):
                  fixed_subnet: Optional[pulumi.Input[str]] = None,
                  flavor: Optional[pulumi.Input[str]] = None,
                  floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
+                 hidden: Optional[pulumi.Input[bool]] = None,
                  http_proxy: Optional[pulumi.Input[str]] = None,
                  https_proxy: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -1293,6 +1334,7 @@ class ClusterTemplate(pulumi.CustomResource):
         * `server_type` - See Argument Reference above.
         * `tls_disabled` - See Argument Reference above.
         * `volume_driver` - See Argument Reference above.
+        * `hidden` - See Argument Reference above.
 
         ## Import
 
@@ -1336,6 +1378,9 @@ class ClusterTemplate(pulumi.CustomResource):
         :param pulumi.Input[bool] floating_ip_enabled: Indicates whether created cluster should
                create floating IP for every node or not. Changing this updates the
                floating IP enabled attribute of the existing cluster template.
+        :param pulumi.Input[bool] hidden: Indicates whether the ClusterTemplate is hidden or not.
+               Changing this updates the hidden attribute of the existing cluster
+               template.
         :param pulumi.Input[str] http_proxy: The address of a proxy for receiving all HTTP
                requests and relay them. Changing this updates the HTTP proxy address of
                the existing cluster template.
@@ -1457,6 +1502,7 @@ class ClusterTemplate(pulumi.CustomResource):
         * `server_type` - See Argument Reference above.
         * `tls_disabled` - See Argument Reference above.
         * `volume_driver` - See Argument Reference above.
+        * `hidden` - See Argument Reference above.
 
         ## Import
 
@@ -1492,6 +1538,7 @@ class ClusterTemplate(pulumi.CustomResource):
                  fixed_subnet: Optional[pulumi.Input[str]] = None,
                  flavor: Optional[pulumi.Input[str]] = None,
                  floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
+                 hidden: Optional[pulumi.Input[bool]] = None,
                  http_proxy: Optional[pulumi.Input[str]] = None,
                  https_proxy: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -1531,6 +1578,7 @@ class ClusterTemplate(pulumi.CustomResource):
             __props__.__dict__["fixed_subnet"] = fixed_subnet
             __props__.__dict__["flavor"] = flavor
             __props__.__dict__["floating_ip_enabled"] = floating_ip_enabled
+            __props__.__dict__["hidden"] = hidden
             __props__.__dict__["http_proxy"] = http_proxy
             __props__.__dict__["https_proxy"] = https_proxy
             if image is None and not opts.urn:
@@ -1576,6 +1624,7 @@ class ClusterTemplate(pulumi.CustomResource):
             fixed_subnet: Optional[pulumi.Input[str]] = None,
             flavor: Optional[pulumi.Input[str]] = None,
             floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
+            hidden: Optional[pulumi.Input[bool]] = None,
             http_proxy: Optional[pulumi.Input[str]] = None,
             https_proxy: Optional[pulumi.Input[str]] = None,
             image: Optional[pulumi.Input[str]] = None,
@@ -1635,6 +1684,9 @@ class ClusterTemplate(pulumi.CustomResource):
         :param pulumi.Input[bool] floating_ip_enabled: Indicates whether created cluster should
                create floating IP for every node or not. Changing this updates the
                floating IP enabled attribute of the existing cluster template.
+        :param pulumi.Input[bool] hidden: Indicates whether the ClusterTemplate is hidden or not.
+               Changing this updates the hidden attribute of the existing cluster
+               template.
         :param pulumi.Input[str] http_proxy: The address of a proxy for receiving all HTTP
                requests and relay them. Changing this updates the HTTP proxy address of
                the existing cluster template.
@@ -1706,6 +1758,7 @@ class ClusterTemplate(pulumi.CustomResource):
         __props__.__dict__["fixed_subnet"] = fixed_subnet
         __props__.__dict__["flavor"] = flavor
         __props__.__dict__["floating_ip_enabled"] = floating_ip_enabled
+        __props__.__dict__["hidden"] = hidden
         __props__.__dict__["http_proxy"] = http_proxy
         __props__.__dict__["https_proxy"] = https_proxy
         __props__.__dict__["image"] = image
@@ -1841,6 +1894,16 @@ class ClusterTemplate(pulumi.CustomResource):
         floating IP enabled attribute of the existing cluster template.
         """
         return pulumi.get(self, "floating_ip_enabled")
+
+    @property
+    @pulumi.getter
+    def hidden(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether the ClusterTemplate is hidden or not.
+        Changing this updates the hidden attribute of the existing cluster
+        template.
+        """
+        return pulumi.get(self, "hidden")
 
     @property
     @pulumi.getter(name="httpProxy")

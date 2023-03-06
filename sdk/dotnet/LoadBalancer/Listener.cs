@@ -18,26 +18,24 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var listener1 = new OpenStack.LoadBalancer.Listener("listener1", new()
     ///     {
-    ///         var listener1 = new OpenStack.LoadBalancer.Listener("listener1", new OpenStack.LoadBalancer.ListenerArgs
+    ///         InsertHeaders = 
     ///         {
-    ///             InsertHeaders = 
-    ///             {
-    ///                 { "X-Forwarded-For", "true" },
-    ///             },
-    ///             LoadbalancerId = "d9415786-5f1a-428b-b35f-2f1523e146d2",
-    ///             Protocol = "HTTP",
-    ///             ProtocolPort = 8080,
-    ///         });
-    ///     }
+    ///             { "X-Forwarded-For", "true" },
+    ///         },
+    ///         LoadbalancerId = "d9415786-5f1a-428b-b35f-2f1523e146d2",
+    ///         Protocol = "HTTP",
+    ///         ProtocolPort = 8080,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:loadbalancer/listener:Listener")]
-    public partial class Listener : Pulumi.CustomResource
+    public partial class Listener : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The administrative state of the Listener.
@@ -119,8 +117,9 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The protocol - can either be TCP, HTTP, HTTPS,
-        /// TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
-        /// in **Octavia minor version &gt;= 2.23**). Changing this creates a new Listener.
+        /// TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
+        /// in **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
+        /// **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
@@ -227,7 +226,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         }
     }
 
-    public sealed class ListenerArgs : Pulumi.ResourceArgs
+    public sealed class ListenerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The administrative state of the Listener.
@@ -309,8 +308,9 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The protocol - can either be TCP, HTTP, HTTPS,
-        /// TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
-        /// in **Octavia minor version &gt;= 2.23**). Changing this creates a new Listener.
+        /// TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
+        /// in **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
+        /// **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
@@ -382,9 +382,10 @@ namespace Pulumi.OpenStack.LoadBalancer
         public ListenerArgs()
         {
         }
+        public static new ListenerArgs Empty => new ListenerArgs();
     }
 
-    public sealed class ListenerState : Pulumi.ResourceArgs
+    public sealed class ListenerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The administrative state of the Listener.
@@ -466,8 +467,9 @@ namespace Pulumi.OpenStack.LoadBalancer
 
         /// <summary>
         /// The protocol - can either be TCP, HTTP, HTTPS,
-        /// TERMINATED_HTTPS, UDP (supported only in Octavia) or SCTP (supported only
-        /// in **Octavia minor version &gt;= 2.23**). Changing this creates a new Listener.
+        /// TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
+        /// in **Octavia minor version &gt;= 2.23**) or PROMETHEUS (supported only in
+        /// **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -539,5 +541,6 @@ namespace Pulumi.OpenStack.LoadBalancer
         public ListenerState()
         {
         }
+        public static new ListenerState Empty => new ListenerState();
     }
 }

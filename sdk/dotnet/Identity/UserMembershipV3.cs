@@ -20,41 +20,40 @@ namespace Pulumi.OpenStack.Identity
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var project1 = new OpenStack.Identity.Project("project1", new OpenStack.Identity.ProjectArgs
-    ///         {
-    ///         });
-    ///         var user1 = new OpenStack.Identity.User("user1", new OpenStack.Identity.UserArgs
-    ///         {
-    ///             DefaultProjectId = project1.Id,
-    ///         });
-    ///         var group1 = new OpenStack.Identity.GroupV3("group1", new OpenStack.Identity.GroupV3Args
-    ///         {
-    ///             Description = "group 1",
-    ///         });
-    ///         var role1 = new OpenStack.Identity.Role("role1", new OpenStack.Identity.RoleArgs
-    ///         {
-    ///         });
-    ///         var userMembership1 = new OpenStack.Identity.UserMembershipV3("userMembership1", new OpenStack.Identity.UserMembershipV3Args
-    ///         {
-    ///             GroupId = group1.Id,
-    ///             UserId = user1.Id,
-    ///         });
-    ///         var roleAssignment1 = new OpenStack.Identity.RoleAssignment("roleAssignment1", new OpenStack.Identity.RoleAssignmentArgs
-    ///         {
-    ///             GroupId = group1.Id,
-    ///             ProjectId = project1.Id,
-    ///             RoleId = role1.Id,
-    ///         });
-    ///     }
+    ///     var project1 = new OpenStack.Identity.Project("project1");
     /// 
-    /// }
+    ///     var user1 = new OpenStack.Identity.User("user1", new()
+    ///     {
+    ///         DefaultProjectId = project1.Id,
+    ///     });
+    /// 
+    ///     var group1 = new OpenStack.Identity.GroupV3("group1", new()
+    ///     {
+    ///         Description = "group 1",
+    ///     });
+    /// 
+    ///     var role1 = new OpenStack.Identity.Role("role1");
+    /// 
+    ///     var userMembership1 = new OpenStack.Identity.UserMembershipV3("userMembership1", new()
+    ///     {
+    ///         GroupId = group1.Id,
+    ///         UserId = user1.Id,
+    ///     });
+    /// 
+    ///     var roleAssignment1 = new OpenStack.Identity.RoleAssignment("roleAssignment1", new()
+    ///     {
+    ///         GroupId = group1.Id,
+    ///         ProjectId = project1.Id,
+    ///         RoleId = role1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -66,7 +65,7 @@ namespace Pulumi.OpenStack.Identity
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:identity/userMembershipV3:UserMembershipV3")]
-    public partial class UserMembershipV3 : Pulumi.CustomResource
+    public partial class UserMembershipV3 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The UUID of group to which the user will be added.
@@ -133,7 +132,7 @@ namespace Pulumi.OpenStack.Identity
         }
     }
 
-    public sealed class UserMembershipV3Args : Pulumi.ResourceArgs
+    public sealed class UserMembershipV3Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The UUID of group to which the user will be added.
@@ -159,9 +158,10 @@ namespace Pulumi.OpenStack.Identity
         public UserMembershipV3Args()
         {
         }
+        public static new UserMembershipV3Args Empty => new UserMembershipV3Args();
     }
 
-    public sealed class UserMembershipV3State : Pulumi.ResourceArgs
+    public sealed class UserMembershipV3State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The UUID of group to which the user will be added.
@@ -187,5 +187,6 @@ namespace Pulumi.OpenStack.Identity
         public UserMembershipV3State()
         {
         }
+        public static new UserMembershipV3State Empty => new UserMembershipV3State();
     }
 }

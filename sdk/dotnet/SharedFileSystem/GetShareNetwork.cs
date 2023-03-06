@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var sharenetwork1 = OpenStack.SharedFileSystem.GetShareNetwork.Invoke(new()
         ///     {
-        ///         var sharenetwork1 = Output.Create(OpenStack.SharedFileSystem.GetShareNetwork.InvokeAsync(new OpenStack.SharedFileSystem.GetShareNetworkArgs
-        ///         {
-        ///             Name = "sharenetwork_1",
-        ///         }));
-        ///     }
+        ///         Name = "sharenetwork_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetShareNetworkResult> InvokeAsync(GetShareNetworkArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetShareNetworkResult>("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", args ?? new GetShareNetworkArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetShareNetworkResult>("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", args ?? new GetShareNetworkArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available Shared File System share network.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var sharenetwork1 = OpenStack.SharedFileSystem.GetShareNetwork.Invoke(new()
         ///     {
-        ///         var sharenetwork1 = Output.Create(OpenStack.SharedFileSystem.GetShareNetwork.InvokeAsync(new OpenStack.SharedFileSystem.GetShareNetworkArgs
-        ///         {
-        ///             Name = "sharenetwork_1",
-        ///         }));
-        ///     }
+        ///         Name = "sharenetwork_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetShareNetworkResult> Invoke(GetShareNetworkInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetShareNetworkResult>("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", args ?? new GetShareNetworkInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetShareNetworkResult>("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", args ?? new GetShareNetworkInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetShareNetworkArgs : Pulumi.InvokeArgs
+    public sealed class GetShareNetworkArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The human-readable description of the share network.
@@ -134,9 +130,10 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public GetShareNetworkArgs()
         {
         }
+        public static new GetShareNetworkArgs Empty => new GetShareNetworkArgs();
     }
 
-    public sealed class GetShareNetworkInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetShareNetworkInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The human-readable description of the share network.
@@ -199,6 +196,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public GetShareNetworkInvokeArgs()
         {
         }
+        public static new GetShareNetworkInvokeArgs Empty => new GetShareNetworkInvokeArgs();
     }
 
 

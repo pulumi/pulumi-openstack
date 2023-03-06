@@ -18,7 +18,7 @@ namespace Pulumi.OpenStack.KeyManager.Outputs
         /// </summary>
         public readonly string Algorithm;
         /// <summary>
-        /// - Bit lenght of key to be generated.
+        /// Bit lenght of key to be generated.
         /// </summary>
         public readonly int BitLength;
         /// <summary>

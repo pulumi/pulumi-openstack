@@ -14,9 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const addressscope1 = new openstack.networking.AddressScope("addressscope_1", {
- *     ipVersion: 6,
- * });
+ * const addressscope1 = new openstack.networking.AddressScope("addressscope1", {ipVersion: 6});
  * ```
  * ### Create a Subnet Pool from an Address-scope
  *
@@ -24,10 +22,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const addressscope1 = new openstack.networking.AddressScope("addressscope_1", {
- *     ipVersion: 6,
- * });
- * const subnetpool1 = new openstack.networking.SubnetPool("subnetpool_1", {
+ * const addressscope1 = new openstack.networking.AddressScope("addressscope1", {ipVersion: 6});
+ * const subnetpool1 = new openstack.networking.SubnetPool("subnetpool1", {
  *     addressScopeId: addressscope1.id,
  *     prefixes: [
  *         "fdf7:b13d:dead:beef::/64",

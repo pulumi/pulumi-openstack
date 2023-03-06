@@ -25,7 +25,7 @@ public final class InstanceUser {
      */
     private @Nullable String host;
     /**
-     * @return Database to be created on new instance. Changing this creates a
+     * @return Username to be created on new instance. Changing this creates a
      * new instance.
      * 
      */
@@ -55,7 +55,7 @@ public final class InstanceUser {
         return Optional.ofNullable(this.host);
     }
     /**
-     * @return Database to be created on new instance. Changing this creates a
+     * @return Username to be created on new instance. Changing this creates a
      * new instance.
      * 
      */

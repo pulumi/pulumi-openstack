@@ -20,31 +20,29 @@ namespace Pulumi.OpenStack.Images
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var images = OpenStack.Images.GetImageIds.Invoke(new()
         ///     {
-        ///         var images = Output.Create(OpenStack.Images.GetImageIds.InvokeAsync(new OpenStack.Images.GetImageIdsArgs
+        ///         NameRegex = "^Ubuntu 16\\.04.*-amd64",
+        ///         Properties = 
         ///         {
-        ///             NameRegex = "^Ubuntu 16\\.04.*-amd64",
-        ///             Properties = 
-        ///             {
-        ///                 { "key", "value" },
-        ///             },
-        ///             Sort = "updated_at",
-        ///         }));
-        ///     }
+        ///             { "key", "value" },
+        ///         },
+        ///         Sort = "updated_at",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetImageIdsResult> InvokeAsync(GetImageIdsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageIdsResult>("openstack:images/getImageIds:getImageIds", args ?? new GetImageIdsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageIdsResult>("openstack:images/getImageIds:getImageIds", args ?? new GetImageIdsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get a list of Openstack Image IDs matching the
@@ -55,35 +53,33 @@ namespace Pulumi.OpenStack.Images
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var images = OpenStack.Images.GetImageIds.Invoke(new()
         ///     {
-        ///         var images = Output.Create(OpenStack.Images.GetImageIds.InvokeAsync(new OpenStack.Images.GetImageIdsArgs
+        ///         NameRegex = "^Ubuntu 16\\.04.*-amd64",
+        ///         Properties = 
         ///         {
-        ///             NameRegex = "^Ubuntu 16\\.04.*-amd64",
-        ///             Properties = 
-        ///             {
-        ///                 { "key", "value" },
-        ///             },
-        ///             Sort = "updated_at",
-        ///         }));
-        ///     }
+        ///             { "key", "value" },
+        ///         },
+        ///         Sort = "updated_at",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetImageIdsResult> Invoke(GetImageIdsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetImageIdsResult>("openstack:images/getImageIds:getImageIds", args ?? new GetImageIdsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetImageIdsResult>("openstack:images/getImageIds:getImageIds", args ?? new GetImageIdsInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetImageIdsArgs : Pulumi.InvokeArgs
+    public sealed class GetImageIdsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The status of the image. Must be one of
@@ -182,6 +178,19 @@ namespace Pulumi.OpenStack.Images
         [Input("tag")]
         public string? Tag { get; set; }
 
+        [Input("tags")]
+        private List<string>? _tags;
+
+        /// <summary>
+        /// A list of tags required to be set on the image
+        /// (all specified tags must be in the images tag list for it to be matched).
+        /// </summary>
+        public List<string> Tags
+        {
+            get => _tags ?? (_tags = new List<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The visibility of the image. Must be one of
         /// "public", "private", "community", or "shared". Defaults to "private".
@@ -192,9 +201,10 @@ namespace Pulumi.OpenStack.Images
         public GetImageIdsArgs()
         {
         }
+        public static new GetImageIdsArgs Empty => new GetImageIdsArgs();
     }
 
-    public sealed class GetImageIdsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetImageIdsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The status of the image. Must be one of
@@ -293,6 +303,19 @@ namespace Pulumi.OpenStack.Images
         [Input("tag")]
         public Input<string>? Tag { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A list of tags required to be set on the image
+        /// (all specified tags must be in the images tag list for it to be matched).
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The visibility of the image. Must be one of
         /// "public", "private", "community", or "shared". Defaults to "private".
@@ -303,6 +326,7 @@ namespace Pulumi.OpenStack.Images
         public GetImageIdsInvokeArgs()
         {
         }
+        public static new GetImageIdsInvokeArgs Empty => new GetImageIdsInvokeArgs();
     }
 
 
@@ -326,6 +350,7 @@ namespace Pulumi.OpenStack.Images
         public readonly string? SortDirection;
         public readonly string? SortKey;
         public readonly string? Tag;
+        public readonly ImmutableArray<string> Tags;
         public readonly string? Visibility;
 
         [OutputConstructor]
@@ -358,6 +383,8 @@ namespace Pulumi.OpenStack.Images
 
             string? tag,
 
+            ImmutableArray<string> tags,
+
             string? visibility)
         {
             Id = id;
@@ -374,6 +401,7 @@ namespace Pulumi.OpenStack.Images
             SortDirection = sortDirection;
             SortKey = sortKey;
             Tag = tag;
+            Tags = tags;
             Visibility = visibility;
         }
     }

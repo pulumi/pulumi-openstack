@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,19 +15,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const conn1 = new openstack.vpnaas.SiteConnection("conn_1", {
+ * const conn1 = new openstack.vpnaas.SiteConnection("conn1", {
  *     dpds: [{
  *         action: "restart",
  *         interval: 21,
  *         timeout: 42,
  *     }],
- *     ikepolicyId: openstack_vpnaas_ike_policy_v2_policy_2.id,
- *     ipsecpolicyId: openstack_vpnaas_ipsec_policy_v2_policy_1.id,
- *     localEpGroupId: openstack_vpnaas_endpoint_group_v2_group_2.id,
+ *     ikepolicyId: openstack_vpnaas_ike_policy_v2.policy_2.id,
+ *     ipsecpolicyId: openstack_vpnaas_ipsec_policy_v2.policy_1.id,
+ *     localEpGroupId: openstack_vpnaas_endpoint_group_v2.group_2.id,
  *     peerAddress: "192.168.10.1",
- *     peerEpGroupId: openstack_vpnaas_endpoint_group_v2_group_1.id,
+ *     peerEpGroupId: openstack_vpnaas_endpoint_group_v2.group_1.id,
  *     psk: "secret",
- *     vpnserviceId: openstack_vpnaas_service_v2_service_1.id,
+ *     vpnserviceId: openstack_vpnaas_service_v2.service_1.id,
  * });
  * ```
  *

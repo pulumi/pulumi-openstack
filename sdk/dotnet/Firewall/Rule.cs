@@ -15,24 +15,22 @@ namespace Pulumi.OpenStack.Firewall
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var rule1 = new OpenStack.Firewall.Rule("rule1", new()
     ///     {
-    ///         var rule1 = new OpenStack.Firewall.Rule("rule1", new OpenStack.Firewall.RuleArgs
-    ///         {
-    ///             Action = "deny",
-    ///             Description = "drop TELNET traffic",
-    ///             DestinationPort = "23",
-    ///             Enabled = true,
-    ///             Protocol = "tcp",
-    ///         });
-    ///     }
+    ///         Action = "deny",
+    ///         Description = "drop TELNET traffic",
+    ///         DestinationPort = "23",
+    ///         Enabled = true,
+    ///         Protocol = "tcp",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -44,7 +42,7 @@ namespace Pulumi.OpenStack.Firewall
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:firewall/rule:Rule")]
-    public partial class Rule : Pulumi.CustomResource
+    public partial class Rule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Action to be taken ( must be "allow" or "deny") when the
@@ -190,7 +188,7 @@ namespace Pulumi.OpenStack.Firewall
         }
     }
 
-    public sealed class RuleArgs : Pulumi.ResourceArgs
+    public sealed class RuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Action to be taken ( must be "allow" or "deny") when the
@@ -301,9 +299,10 @@ namespace Pulumi.OpenStack.Firewall
         public RuleArgs()
         {
         }
+        public static new RuleArgs Empty => new RuleArgs();
     }
 
-    public sealed class RuleState : Pulumi.ResourceArgs
+    public sealed class RuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Action to be taken ( must be "allow" or "deny") when the
@@ -414,5 +413,6 @@ namespace Pulumi.OpenStack.Firewall
         public RuleState()
         {
         }
+        public static new RuleState Empty => new RuleState();
     }
 }

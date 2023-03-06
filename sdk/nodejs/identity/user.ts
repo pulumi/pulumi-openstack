@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -12,8 +13,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const project1 = new openstack.identity.Project("project_1", {});
- * const user1 = new openstack.identity.User("user_1", {
+ * const project1 = new openstack.identity.Project("project1", {});
+ * const user1 = new openstack.identity.User("user1", {
  *     defaultProjectId: project1.id,
  *     description: "A user",
  *     extra: {
@@ -174,10 +175,12 @@ export class User extends pulumi.CustomResource {
             resourceInputs["multiFactorAuthEnabled"] = args ? args.multiFactorAuthEnabled : undefined;
             resourceInputs["multiFactorAuthRules"] = args ? args.multiFactorAuthRules : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(User.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -739,7 +739,7 @@ class SecretV1(pulumi.CustomResource):
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["mode"] = mode
             __props__.__dict__["name"] = name
-            __props__.__dict__["payload"] = payload
+            __props__.__dict__["payload"] = None if payload is None else pulumi.Output.secret(payload)
             __props__.__dict__["payload_content_encoding"] = payload_content_encoding
             __props__.__dict__["payload_content_type"] = payload_content_type
             __props__.__dict__["region"] = region
@@ -751,6 +751,8 @@ class SecretV1(pulumi.CustomResource):
             __props__.__dict__["secret_ref"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["updated_at"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["payload"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(SecretV1, __self__).__init__(
             'openstack:keymanager/secretV1:SecretV1',
             resource_name,

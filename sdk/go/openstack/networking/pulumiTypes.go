@@ -576,7 +576,11 @@ func (o PortExtraDhcpOptionArrayOutput) Index(i pulumi.IntInput) PortExtraDhcpOp
 }
 
 type PortFixedIp struct {
-	// The additional IP address.
+	// IP address desired in the subnet for this port. If
+	// you don't specify `ipAddress`, an available IP address from the specified
+	// subnet will be allocated to this port. This field will not be populated if it
+	// is left blank or omitted. To retrieve the assigned IP address, use the
+	// `allFixedIps` attribute.
 	IpAddress *string `pulumi:"ipAddress"`
 	// Subnet in which to allocate IP address for
 	// this port.
@@ -595,7 +599,11 @@ type PortFixedIpInput interface {
 }
 
 type PortFixedIpArgs struct {
-	// The additional IP address.
+	// IP address desired in the subnet for this port. If
+	// you don't specify `ipAddress`, an available IP address from the specified
+	// subnet will be allocated to this port. This field will not be populated if it
+	// is left blank or omitted. To retrieve the assigned IP address, use the
+	// `allFixedIps` attribute.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// Subnet in which to allocate IP address for
 	// this port.
@@ -653,7 +661,11 @@ func (o PortFixedIpOutput) ToPortFixedIpOutputWithContext(ctx context.Context) P
 	return o
 }
 
-// The additional IP address.
+// IP address desired in the subnet for this port. If
+// you don't specify `ipAddress`, an available IP address from the specified
+// subnet will be allocated to this port. This field will not be populated if it
+// is left blank or omitted. To retrieve the assigned IP address, use the
+// `allFixedIps` attribute.
 func (o PortFixedIpOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PortFixedIp) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
@@ -1724,7 +1736,8 @@ func (o GetPortExtraDhcpOptionArrayOutput) Index(i pulumi.IntInput) GetPortExtra
 type GetRouterExternalFixedIp struct {
 	// The IP address to set on the router.
 	IpAddress *string `pulumi:"ipAddress"`
-	SubnetId  *string `pulumi:"subnetId"`
+	// Subnet in which the fixed IP belongs to.
+	SubnetId *string `pulumi:"subnetId"`
 }
 
 // GetRouterExternalFixedIpInput is an input type that accepts GetRouterExternalFixedIpArgs and GetRouterExternalFixedIpOutput values.
@@ -1741,7 +1754,8 @@ type GetRouterExternalFixedIpInput interface {
 type GetRouterExternalFixedIpArgs struct {
 	// The IP address to set on the router.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
-	SubnetId  pulumi.StringPtrInput `pulumi:"subnetId"`
+	// Subnet in which the fixed IP belongs to.
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
 func (GetRouterExternalFixedIpArgs) ElementType() reflect.Type {
@@ -1800,6 +1814,7 @@ func (o GetRouterExternalFixedIpOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRouterExternalFixedIp) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
+// Subnet in which the fixed IP belongs to.
 func (o GetRouterExternalFixedIpOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRouterExternalFixedIp) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }

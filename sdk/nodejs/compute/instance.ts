@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export class Instance extends pulumi.CustomResource {
@@ -130,8 +131,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The human-readable
-     * name of the network. Changing this creates a new server.
+     * A unique name for the resource.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -258,7 +258,7 @@ export class Instance extends pulumi.CustomResource {
             const args = argsOrState as InstanceArgs | undefined;
             resourceInputs["accessIpV4"] = args ? args.accessIpV4 : undefined;
             resourceInputs["accessIpV6"] = args ? args.accessIpV6 : undefined;
-            resourceInputs["adminPass"] = args ? args.adminPass : undefined;
+            resourceInputs["adminPass"] = args?.adminPass ? pulumi.secret(args.adminPass) : undefined;
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["availabilityZoneHints"] = args ? args.availabilityZoneHints : undefined;
             resourceInputs["blockDevices"] = args ? args.blockDevices : undefined;
@@ -290,6 +290,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["updated"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["adminPass"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -395,8 +397,7 @@ export interface InstanceState {
      */
     metadata?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The human-readable
-     * name of the network. Changing this creates a new server.
+     * A unique name for the resource.
      */
     name?: pulumi.Input<string>;
     /**
@@ -566,8 +567,7 @@ export interface InstanceArgs {
      */
     metadata?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The human-readable
-     * name of the network. Changing this creates a new server.
+     * A unique name for the resource.
      */
     name?: pulumi.Input<string>;
     /**

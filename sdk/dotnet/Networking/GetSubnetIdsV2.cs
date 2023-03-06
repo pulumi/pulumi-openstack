@@ -20,30 +20,28 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var subnets = OpenStack.Networking.GetSubnetIdsV2.Invoke(new()
         ///     {
-        ///         var subnets = Output.Create(OpenStack.Networking.GetSubnetIdsV2.InvokeAsync(new OpenStack.Networking.GetSubnetIdsV2Args
+        ///         NameRegex = "public",
+        ///         Tags = new[]
         ///         {
-        ///             NameRegex = "public",
-        ///             Tags = 
-        ///             {
-        ///                 "public",
-        ///             },
-        ///         }));
-        ///     }
+        ///             "public",
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSubnetIdsV2Result> InvokeAsync(GetSubnetIdsV2Args? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSubnetIdsV2Result>("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", args ?? new GetSubnetIdsV2Args(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSubnetIdsV2Result>("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", args ?? new GetSubnetIdsV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get a list of Openstack Subnet IDs matching the
@@ -54,34 +52,32 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var subnets = OpenStack.Networking.GetSubnetIdsV2.Invoke(new()
         ///     {
-        ///         var subnets = Output.Create(OpenStack.Networking.GetSubnetIdsV2.InvokeAsync(new OpenStack.Networking.GetSubnetIdsV2Args
+        ///         NameRegex = "public",
+        ///         Tags = new[]
         ///         {
-        ///             NameRegex = "public",
-        ///             Tags = 
-        ///             {
-        ///                 "public",
-        ///             },
-        ///         }));
-        ///     }
+        ///             "public",
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSubnetIdsV2Result> Invoke(GetSubnetIdsV2InvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSubnetIdsV2Result>("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", args ?? new GetSubnetIdsV2InvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSubnetIdsV2Result>("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", args ?? new GetSubnetIdsV2InvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSubnetIdsV2Args : Pulumi.InvokeArgs
+    public sealed class GetSubnetIdsV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The CIDR of the subnet.
@@ -190,9 +186,10 @@ namespace Pulumi.OpenStack.Networking
         public GetSubnetIdsV2Args()
         {
         }
+        public static new GetSubnetIdsV2Args Empty => new GetSubnetIdsV2Args();
     }
 
-    public sealed class GetSubnetIdsV2InvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSubnetIdsV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The CIDR of the subnet.
@@ -301,6 +298,7 @@ namespace Pulumi.OpenStack.Networking
         public GetSubnetIdsV2InvokeArgs()
         {
         }
+        public static new GetSubnetIdsV2InvokeArgs Empty => new GetSubnetIdsV2InvokeArgs();
     }
 
 

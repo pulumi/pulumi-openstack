@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -20,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const secgroup1 = new openstack.compute.SecGroup("secgroup_1", {
+ * const secgroup1 = new openstack.compute.SecGroup("secgroup1", {
  *     description: "my security group",
  *     rules: [
  *         {
@@ -62,7 +63,7 @@ import * as utilities from "../utilities";
  *     flavorId: "3",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
  *     keyPair: "my_key_pair_name",
- *     securityGroups: [openstack_compute_secgroup_v2_secgroup_1.name],
+ *     securityGroups: [openstack_compute_secgroup_v2.secgroup_1.name],
  * });
  * ```
  *

@@ -346,7 +346,8 @@ func (o ContainerV1AclReadPtrOutput) Users() pulumi.StringArrayOutput {
 }
 
 type ContainerV1Consumer struct {
-	// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+	// Human-readable name for the Container. Does not have
+	// to be unique.
 	Name *string `pulumi:"name"`
 	// The consumer URL.
 	Url *string `pulumi:"url"`
@@ -364,7 +365,8 @@ type ContainerV1ConsumerInput interface {
 }
 
 type ContainerV1ConsumerArgs struct {
-	// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+	// Human-readable name for the Container. Does not have
+	// to be unique.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The consumer URL.
 	Url pulumi.StringPtrInput `pulumi:"url"`
@@ -421,7 +423,8 @@ func (o ContainerV1ConsumerOutput) ToContainerV1ConsumerOutputWithContext(ctx co
 	return o
 }
 
-// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+// Human-readable name for the Container. Does not have
+// to be unique.
 func (o ContainerV1ConsumerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerV1Consumer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -560,7 +563,7 @@ func (o ContainerV1SecretRefArrayOutput) Index(i pulumi.IntInput) ContainerV1Sec
 type OrderV1Meta struct {
 	// Algorithm to use for key generation.
 	Algorithm string `pulumi:"algorithm"`
-	// - Bit lenght of key to be generated.
+	// Bit lenght of key to be generated.
 	BitLength int `pulumi:"bitLength"`
 	// This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
 	Expiration *string `pulumi:"expiration"`
@@ -586,7 +589,7 @@ type OrderV1MetaInput interface {
 type OrderV1MetaArgs struct {
 	// Algorithm to use for key generation.
 	Algorithm pulumi.StringInput `pulumi:"algorithm"`
-	// - Bit lenght of key to be generated.
+	// Bit lenght of key to be generated.
 	BitLength pulumi.IntInput `pulumi:"bitLength"`
 	// This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
 	Expiration pulumi.StringPtrInput `pulumi:"expiration"`
@@ -680,7 +683,7 @@ func (o OrderV1MetaOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v OrderV1Meta) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
-// - Bit lenght of key to be generated.
+// Bit lenght of key to be generated.
 func (o OrderV1MetaOutput) BitLength() pulumi.IntOutput {
 	return o.ApplyT(func(v OrderV1Meta) int { return v.BitLength }).(pulumi.IntOutput)
 }
@@ -739,7 +742,7 @@ func (o OrderV1MetaPtrOutput) Algorithm() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// - Bit lenght of key to be generated.
+// Bit lenght of key to be generated.
 func (o OrderV1MetaPtrOutput) BitLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OrderV1Meta) *int {
 		if v == nil {

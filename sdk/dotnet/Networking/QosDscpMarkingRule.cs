@@ -16,25 +16,24 @@ namespace Pulumi.OpenStack.Networking
     /// ### Create a QoS Policy with some DSCP marking rule
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var qosPolicy1 = new OpenStack.Networking.QosPolicy("qosPolicy1", new()
     ///     {
-    ///         var qosPolicy1 = new OpenStack.Networking.QosPolicy("qosPolicy1", new OpenStack.Networking.QosPolicyArgs
-    ///         {
-    ///             Description = "dscp_mark",
-    ///         });
-    ///         var dscpMarkingRule1 = new OpenStack.Networking.QosDscpMarkingRule("dscpMarkingRule1", new OpenStack.Networking.QosDscpMarkingRuleArgs
-    ///         {
-    ///             DscpMark = 26,
-    ///             QosPolicyId = qosPolicy1.Id,
-    ///         });
-    ///     }
+    ///         Description = "dscp_mark",
+    ///     });
     /// 
-    /// }
+    ///     var dscpMarkingRule1 = new OpenStack.Networking.QosDscpMarkingRule("dscpMarkingRule1", new()
+    ///     {
+    ///         DscpMark = 26,
+    ///         QosPolicyId = qosPolicy1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -46,7 +45,7 @@ namespace Pulumi.OpenStack.Networking
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule")]
-    public partial class QosDscpMarkingRule : Pulumi.CustomResource
+    public partial class QosDscpMarkingRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The value of DSCP mark. Changing this updates the DSCP mark value existing
@@ -113,7 +112,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
-    public sealed class QosDscpMarkingRuleArgs : Pulumi.ResourceArgs
+    public sealed class QosDscpMarkingRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The value of DSCP mark. Changing this updates the DSCP mark value existing
@@ -139,9 +138,10 @@ namespace Pulumi.OpenStack.Networking
         public QosDscpMarkingRuleArgs()
         {
         }
+        public static new QosDscpMarkingRuleArgs Empty => new QosDscpMarkingRuleArgs();
     }
 
-    public sealed class QosDscpMarkingRuleState : Pulumi.ResourceArgs
+    public sealed class QosDscpMarkingRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The value of DSCP mark. Changing this updates the DSCP mark value existing
@@ -167,5 +167,6 @@ namespace Pulumi.OpenStack.Networking
         public QosDscpMarkingRuleState()
         {
         }
+        public static new QosDscpMarkingRuleState Empty => new QosDscpMarkingRuleState();
     }
 }

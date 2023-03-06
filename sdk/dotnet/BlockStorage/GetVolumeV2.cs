@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.BlockStorage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var volume1 = OpenStack.BlockStorage.GetVolumeV2.Invoke(new()
         ///     {
-        ///         var volume1 = Output.Create(OpenStack.BlockStorage.GetVolumeV2.InvokeAsync(new OpenStack.BlockStorage.GetVolumeV2Args
-        ///         {
-        ///             Name = "volume_1",
-        ///         }));
-        ///     }
+        ///         Name = "volume_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVolumeV2Result> InvokeAsync(GetVolumeV2Args? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVolumeV2Result>("openstack:blockstorage/getVolumeV2:getVolumeV2", args ?? new GetVolumeV2Args(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVolumeV2Result>("openstack:blockstorage/getVolumeV2:getVolumeV2", args ?? new GetVolumeV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about an existing volume.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.BlockStorage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var volume1 = OpenStack.BlockStorage.GetVolumeV2.Invoke(new()
         ///     {
-        ///         var volume1 = Output.Create(OpenStack.BlockStorage.GetVolumeV2.InvokeAsync(new OpenStack.BlockStorage.GetVolumeV2Args
-        ///         {
-        ///             Name = "volume_1",
-        ///         }));
-        ///     }
+        ///         Name = "volume_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVolumeV2Result> Invoke(GetVolumeV2InvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVolumeV2Result>("openstack:blockstorage/getVolumeV2:getVolumeV2", args ?? new GetVolumeV2InvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVolumeV2Result>("openstack:blockstorage/getVolumeV2:getVolumeV2", args ?? new GetVolumeV2InvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetVolumeV2Args : Pulumi.InvokeArgs
+    public sealed class GetVolumeV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Indicates if the volume is bootable.
@@ -119,9 +115,10 @@ namespace Pulumi.OpenStack.BlockStorage
         public GetVolumeV2Args()
         {
         }
+        public static new GetVolumeV2Args Empty => new GetVolumeV2Args();
     }
 
-    public sealed class GetVolumeV2InvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVolumeV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Indicates if the volume is bootable.
@@ -169,6 +166,7 @@ namespace Pulumi.OpenStack.BlockStorage
         public GetVolumeV2InvokeArgs()
         {
         }
+        public static new GetVolumeV2InvokeArgs Empty => new GetVolumeV2InvokeArgs();
     }
 
 

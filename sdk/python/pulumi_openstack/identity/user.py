@@ -660,8 +660,10 @@ class User(pulumi.CustomResource):
             __props__.__dict__["multi_factor_auth_enabled"] = multi_factor_auth_enabled
             __props__.__dict__["multi_factor_auth_rules"] = multi_factor_auth_rules
             __props__.__dict__["name"] = name
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["region"] = region
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(User, __self__).__init__(
             'openstack:identity/user:User',
             resource_name,

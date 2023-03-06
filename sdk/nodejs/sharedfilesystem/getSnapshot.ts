@@ -13,18 +13,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const snapshot1 = pulumi.output(openstack.sharedfilesystem.getSnapshot({
+ * const snapshot1 = openstack.sharedfilesystem.getSnapshot({
  *     name: "snapshot_1",
- * }));
+ * });
  * ```
  */
 export function getSnapshot(args?: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:sharedfilesystem/getSnapshot:getSnapshot", {
         "description": args.description,
         "name": args.name,
@@ -104,9 +101,22 @@ export interface GetSnapshotResult {
      */
     readonly status: string;
 }
-
+/**
+ * Use this data source to get the ID of an available Shared File System snapshot.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const snapshot1 = openstack.sharedfilesystem.getSnapshot({
+ *     name: "snapshot_1",
+ * });
+ * ```
+ */
 export function getSnapshotOutput(args?: GetSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotResult> {
-    return pulumi.output(args).apply(a => getSnapshot(a, opts))
+    return pulumi.output(args).apply((a: any) => getSnapshot(a, opts))
 }
 
 /**

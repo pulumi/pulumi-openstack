@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Networking.Inputs
 {
 
-    public sealed class RouterExternalFixedIpGetArgs : Pulumi.ResourceArgs
+    public sealed class RouterExternalFixedIpGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address to set on the router.
@@ -27,5 +27,6 @@ namespace Pulumi.OpenStack.Networking.Inputs
         public RouterExternalFixedIpGetArgs()
         {
         }
+        public static new RouterExternalFixedIpGetArgs Empty => new RouterExternalFixedIpGetArgs();
     }
 }

@@ -16,23 +16,21 @@ namespace Pulumi.OpenStack.Dns
     /// ### Automatically detect the correct network
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleCom = new OpenStack.Dns.Zone("exampleCom", new()
     ///     {
-    ///         var example_com = new OpenStack.Dns.Zone("example.com", new OpenStack.Dns.ZoneArgs
-    ///         {
-    ///             Description = "An example zone",
-    ///             Email = "jdoe@example.com",
-    ///             Ttl = 3000,
-    ///             Type = "PRIMARY",
-    ///         });
-    ///     }
+    ///         Description = "An example zone",
+    ///         Email = "jdoe@example.com",
+    ///         Ttl = 3000,
+    ///         Type = "PRIMARY",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -48,7 +46,7 @@ namespace Pulumi.OpenStack.Dns
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:dns/zone:Zone")]
-    public partial class Zone : Pulumi.CustomResource
+    public partial class Zone : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Attributes for the DNS Service scheduler.
@@ -172,7 +170,7 @@ namespace Pulumi.OpenStack.Dns
         }
     }
 
-    public sealed class ZoneArgs : Pulumi.ResourceArgs
+    public sealed class ZoneArgs : global::Pulumi.ResourceArgs
     {
         [Input("attributes")]
         private InputMap<object>? _attributes;
@@ -273,9 +271,10 @@ namespace Pulumi.OpenStack.Dns
         public ZoneArgs()
         {
         }
+        public static new ZoneArgs Empty => new ZoneArgs();
     }
 
-    public sealed class ZoneState : Pulumi.ResourceArgs
+    public sealed class ZoneState : global::Pulumi.ResourceArgs
     {
         [Input("attributes")]
         private InputMap<object>? _attributes;
@@ -376,5 +375,6 @@ namespace Pulumi.OpenStack.Dns
         public ZoneState()
         {
         }
+        public static new ZoneState Empty => new ZoneState();
     }
 }

@@ -265,8 +265,8 @@ type InstanceNetwork struct {
 	// The port UUID of a
 	// network to attach to the server. Changing this creates a new server.
 	Port *string `pulumi:"port"`
-	// The UUID of
-	// the image, volume, or snapshot. Changing this creates a new server.
+	// The network UUID to
+	// attach to the server. Changing this creates a new server.
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -298,8 +298,8 @@ type InstanceNetworkArgs struct {
 	// The port UUID of a
 	// network to attach to the server. Changing this creates a new server.
 	Port pulumi.StringPtrInput `pulumi:"port"`
-	// The UUID of
-	// the image, volume, or snapshot. Changing this creates a new server.
+	// The network UUID to
+	// attach to the server. Changing this creates a new server.
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -391,8 +391,8 @@ func (o InstanceNetworkOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// The UUID of
-// the image, volume, or snapshot. Changing this creates a new server.
+// The network UUID to
+// attach to the server. Changing this creates a new server.
 func (o InstanceNetworkOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }

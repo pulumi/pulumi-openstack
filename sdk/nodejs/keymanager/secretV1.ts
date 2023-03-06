@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -13,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const secret1 = new openstack.keymanager.SecretV1("secret_1", {
+ * const secret1 = new openstack.keymanager.SecretV1("secret1", {
  *     algorithm: "aes",
  *     bitLength: 256,
  *     metadata: {
@@ -22,19 +23,6 @@ import * as utilities from "../utilities";
  *     mode: "cbc",
  *     payload: "foobar",
  *     payloadContentType: "text/plain",
- *     secretType: "passphrase",
- * });
- * ```
- * ### Secret with whitespaces
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const secret1 = new openstack.keymanager.SecretV1("secret_1", {
- *     payload: Buffer.from("password with the whitespace at the end ").toString("base64"),
- *     payloadContentEncoding: "base64",
- *     payloadContentType: "application/octet-stream",
  *     secretType: "passphrase",
  * });
  * ```
@@ -47,7 +35,7 @@ import * as utilities from "../utilities";
  * import * as fs from "fs";
  * import * as openstack from "@pulumi/openstack";
  *
- * const secret1 = new openstack.keymanager.SecretV1("secret_1", {
+ * const secret1 = new openstack.keymanager.SecretV1("secret1", {
  *     acl: {
  *         read: {
  *             projectAccess: false,
@@ -57,7 +45,7 @@ import * as utilities from "../utilities";
  *             ],
  *         },
  *     },
- *     payload: fs.readFileSync("certificate.pem", "utf-8"),
+ *     payload: fs.readFileSync("certificate.pem"),
  *     payloadContentType: "text/plain",
  *     secretType: "certificate",
  * });
@@ -224,7 +212,7 @@ export class SecretV1 extends pulumi.CustomResource {
             resourceInputs["metadata"] = args ? args.metadata : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["payload"] = args ? args.payload : undefined;
+            resourceInputs["payload"] = args?.payload ? pulumi.secret(args.payload) : undefined;
             resourceInputs["payloadContentEncoding"] = args ? args.payloadContentEncoding : undefined;
             resourceInputs["payloadContentType"] = args ? args.payloadContentType : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
@@ -238,6 +226,8 @@ export class SecretV1 extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["payload"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(SecretV1.__pulumiType, name, resourceInputs, opts);
     }
 }

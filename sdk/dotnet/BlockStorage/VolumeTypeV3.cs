@@ -17,25 +17,23 @@ namespace Pulumi.OpenStack.BlockStorage
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var volumeType1 = new OpenStack.BlockStorage.VolumeTypeV3("volumeType1", new()
     ///     {
-    ///         var volumeType1 = new OpenStack.BlockStorage.VolumeTypeV3("volumeType1", new OpenStack.BlockStorage.VolumeTypeV3Args
+    ///         Description = "Volume type 1",
+    ///         ExtraSpecs = 
     ///         {
-    ///             Description = "Volume type 1",
-    ///             ExtraSpecs = 
-    ///             {
-    ///                 { "capabilities", "gpu" },
-    ///                 { "volume_backend_name", "ssd" },
-    ///             },
-    ///         });
-    ///     }
+    ///             { "capabilities", "gpu" },
+    ///             { "volume_backend_name", "ssd" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.OpenStack.BlockStorage
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:blockstorage/volumeTypeV3:VolumeTypeV3")]
-    public partial class VolumeTypeV3 : Pulumi.CustomResource
+    public partial class VolumeTypeV3 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Human-readable description of the port. Changing
@@ -128,7 +126,7 @@ namespace Pulumi.OpenStack.BlockStorage
         }
     }
 
-    public sealed class VolumeTypeV3Args : Pulumi.ResourceArgs
+    public sealed class VolumeTypeV3Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Human-readable description of the port. Changing
@@ -174,9 +172,10 @@ namespace Pulumi.OpenStack.BlockStorage
         public VolumeTypeV3Args()
         {
         }
+        public static new VolumeTypeV3Args Empty => new VolumeTypeV3Args();
     }
 
-    public sealed class VolumeTypeV3State : Pulumi.ResourceArgs
+    public sealed class VolumeTypeV3State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Human-readable description of the port. Changing
@@ -222,5 +221,6 @@ namespace Pulumi.OpenStack.BlockStorage
         public VolumeTypeV3State()
         {
         }
+        public static new VolumeTypeV3State Empty => new VolumeTypeV3State();
     }
 }

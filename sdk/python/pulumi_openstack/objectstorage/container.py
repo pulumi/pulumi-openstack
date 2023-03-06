@@ -26,7 +26,8 @@ class ContainerArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  storage_policy: Optional[pulumi.Input[str]] = None,
-                 versioning: Optional[pulumi.Input['ContainerVersioningArgs']] = None):
+                 versioning: Optional[pulumi.Input[bool]] = None,
+                 versioning_legacy: Optional[pulumi.Input['ContainerVersioningLegacyArgs']] = None):
         """
         The set of arguments for constructing a Container resource.
         :param pulumi.Input[str] container_read: Sets an access control list (ACL) that grants
@@ -51,7 +52,9 @@ class ContainerArgs:
                creates a new container.
         :param pulumi.Input[str] storage_policy: The storage policy to be used for the container. 
                Changing this creates a new container.
-        :param pulumi.Input['ContainerVersioningArgs'] versioning: Enable object versioning. The structure is described below.
+        :param pulumi.Input[bool] versioning: A boolean that enables or disable object versioning.
+               Defaults to `false`
+        :param pulumi.Input['ContainerVersioningLegacyArgs'] versioning_legacy: Enable legacy object versioning. The structure is described below.
         """
         if container_read is not None:
             pulumi.set(__self__, "container_read", container_read)
@@ -75,6 +78,11 @@ class ContainerArgs:
             pulumi.set(__self__, "storage_policy", storage_policy)
         if versioning is not None:
             pulumi.set(__self__, "versioning", versioning)
+        if versioning_legacy is not None:
+            warnings.warn("""Use newer \"versioning\" implementation""", DeprecationWarning)
+            pulumi.log.warn("""versioning_legacy is deprecated: Use newer \"versioning\" implementation""")
+        if versioning_legacy is not None:
+            pulumi.set(__self__, "versioning_legacy", versioning_legacy)
 
     @property
     @pulumi.getter(name="containerRead")
@@ -210,15 +218,28 @@ class ContainerArgs:
 
     @property
     @pulumi.getter
-    def versioning(self) -> Optional[pulumi.Input['ContainerVersioningArgs']]:
+    def versioning(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable object versioning. The structure is described below.
+        A boolean that enables or disable object versioning.
+        Defaults to `false`
         """
         return pulumi.get(self, "versioning")
 
     @versioning.setter
-    def versioning(self, value: Optional[pulumi.Input['ContainerVersioningArgs']]):
+    def versioning(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "versioning", value)
+
+    @property
+    @pulumi.getter(name="versioningLegacy")
+    def versioning_legacy(self) -> Optional[pulumi.Input['ContainerVersioningLegacyArgs']]:
+        """
+        Enable legacy object versioning. The structure is described below.
+        """
+        return pulumi.get(self, "versioning_legacy")
+
+    @versioning_legacy.setter
+    def versioning_legacy(self, value: Optional[pulumi.Input['ContainerVersioningLegacyArgs']]):
+        pulumi.set(self, "versioning_legacy", value)
 
 
 @pulumi.input_type
@@ -234,7 +255,8 @@ class _ContainerState:
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  storage_policy: Optional[pulumi.Input[str]] = None,
-                 versioning: Optional[pulumi.Input['ContainerVersioningArgs']] = None):
+                 versioning: Optional[pulumi.Input[bool]] = None,
+                 versioning_legacy: Optional[pulumi.Input['ContainerVersioningLegacyArgs']] = None):
         """
         Input properties used for looking up and filtering Container resources.
         :param pulumi.Input[str] container_read: Sets an access control list (ACL) that grants
@@ -259,7 +281,9 @@ class _ContainerState:
                creates a new container.
         :param pulumi.Input[str] storage_policy: The storage policy to be used for the container. 
                Changing this creates a new container.
-        :param pulumi.Input['ContainerVersioningArgs'] versioning: Enable object versioning. The structure is described below.
+        :param pulumi.Input[bool] versioning: A boolean that enables or disable object versioning.
+               Defaults to `false`
+        :param pulumi.Input['ContainerVersioningLegacyArgs'] versioning_legacy: Enable legacy object versioning. The structure is described below.
         """
         if container_read is not None:
             pulumi.set(__self__, "container_read", container_read)
@@ -283,6 +307,11 @@ class _ContainerState:
             pulumi.set(__self__, "storage_policy", storage_policy)
         if versioning is not None:
             pulumi.set(__self__, "versioning", versioning)
+        if versioning_legacy is not None:
+            warnings.warn("""Use newer \"versioning\" implementation""", DeprecationWarning)
+            pulumi.log.warn("""versioning_legacy is deprecated: Use newer \"versioning\" implementation""")
+        if versioning_legacy is not None:
+            pulumi.set(__self__, "versioning_legacy", versioning_legacy)
 
     @property
     @pulumi.getter(name="containerRead")
@@ -418,15 +447,28 @@ class _ContainerState:
 
     @property
     @pulumi.getter
-    def versioning(self) -> Optional[pulumi.Input['ContainerVersioningArgs']]:
+    def versioning(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable object versioning. The structure is described below.
+        A boolean that enables or disable object versioning.
+        Defaults to `false`
         """
         return pulumi.get(self, "versioning")
 
     @versioning.setter
-    def versioning(self, value: Optional[pulumi.Input['ContainerVersioningArgs']]):
+    def versioning(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "versioning", value)
+
+    @property
+    @pulumi.getter(name="versioningLegacy")
+    def versioning_legacy(self) -> Optional[pulumi.Input['ContainerVersioningLegacyArgs']]:
+        """
+        Enable legacy object versioning. The structure is described below.
+        """
+        return pulumi.get(self, "versioning_legacy")
+
+    @versioning_legacy.setter
+    def versioning_legacy(self, value: Optional[pulumi.Input['ContainerVersioningLegacyArgs']]):
+        pulumi.set(self, "versioning_legacy", value)
 
 
 class Container(pulumi.CustomResource):
@@ -444,7 +486,8 @@ class Container(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  storage_policy: Optional[pulumi.Input[str]] = None,
-                 versioning: Optional[pulumi.Input[pulumi.InputType['ContainerVersioningArgs']]] = None,
+                 versioning: Optional[pulumi.Input[bool]] = None,
+                 versioning_legacy: Optional[pulumi.Input[pulumi.InputType['ContainerVersioningLegacyArgs']]] = None,
                  __props__=None):
         """
         Manages a V1 container resource within OpenStack.
@@ -462,7 +505,21 @@ class Container(pulumi.CustomResource):
                 "test": "true",
             },
             region="RegionOne",
-            versioning=openstack.objectstorage.ContainerVersioningArgs(
+            versioning=True)
+        ```
+        ### Basic Container with legacy versioning
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container1",
+            content_type="application/json",
+            metadata={
+                "test": "true",
+            },
+            region="RegionOne",
+            versioning_legacy=openstack.objectstorage.ContainerVersioningLegacyArgs(
                 location="tf-test-container-versions",
                 type="versions",
             ))
@@ -532,7 +589,9 @@ class Container(pulumi.CustomResource):
                creates a new container.
         :param pulumi.Input[str] storage_policy: The storage policy to be used for the container. 
                Changing this creates a new container.
-        :param pulumi.Input[pulumi.InputType['ContainerVersioningArgs']] versioning: Enable object versioning. The structure is described below.
+        :param pulumi.Input[bool] versioning: A boolean that enables or disable object versioning.
+               Defaults to `false`
+        :param pulumi.Input[pulumi.InputType['ContainerVersioningLegacyArgs']] versioning_legacy: Enable legacy object versioning. The structure is described below.
         """
         ...
     @overload
@@ -556,7 +615,21 @@ class Container(pulumi.CustomResource):
                 "test": "true",
             },
             region="RegionOne",
-            versioning=openstack.objectstorage.ContainerVersioningArgs(
+            versioning=True)
+        ```
+        ### Basic Container with legacy versioning
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container1",
+            content_type="application/json",
+            metadata={
+                "test": "true",
+            },
+            region="RegionOne",
+            versioning_legacy=openstack.objectstorage.ContainerVersioningLegacyArgs(
                 location="tf-test-container-versions",
                 type="versions",
             ))
@@ -627,7 +700,8 @@ class Container(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  storage_policy: Optional[pulumi.Input[str]] = None,
-                 versioning: Optional[pulumi.Input[pulumi.InputType['ContainerVersioningArgs']]] = None,
+                 versioning: Optional[pulumi.Input[bool]] = None,
+                 versioning_legacy: Optional[pulumi.Input[pulumi.InputType['ContainerVersioningLegacyArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -648,6 +722,10 @@ class Container(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["storage_policy"] = storage_policy
             __props__.__dict__["versioning"] = versioning
+            if versioning_legacy is not None and not opts.urn:
+                warnings.warn("""Use newer \"versioning\" implementation""", DeprecationWarning)
+                pulumi.log.warn("""versioning_legacy is deprecated: Use newer \"versioning\" implementation""")
+            __props__.__dict__["versioning_legacy"] = versioning_legacy
         super(Container, __self__).__init__(
             'openstack:objectstorage/container:Container',
             resource_name,
@@ -668,7 +746,8 @@ class Container(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             storage_policy: Optional[pulumi.Input[str]] = None,
-            versioning: Optional[pulumi.Input[pulumi.InputType['ContainerVersioningArgs']]] = None) -> 'Container':
+            versioning: Optional[pulumi.Input[bool]] = None,
+            versioning_legacy: Optional[pulumi.Input[pulumi.InputType['ContainerVersioningLegacyArgs']]] = None) -> 'Container':
         """
         Get an existing Container resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -698,7 +777,9 @@ class Container(pulumi.CustomResource):
                creates a new container.
         :param pulumi.Input[str] storage_policy: The storage policy to be used for the container. 
                Changing this creates a new container.
-        :param pulumi.Input[pulumi.InputType['ContainerVersioningArgs']] versioning: Enable object versioning. The structure is described below.
+        :param pulumi.Input[bool] versioning: A boolean that enables or disable object versioning.
+               Defaults to `false`
+        :param pulumi.Input[pulumi.InputType['ContainerVersioningLegacyArgs']] versioning_legacy: Enable legacy object versioning. The structure is described below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -715,6 +796,7 @@ class Container(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["storage_policy"] = storage_policy
         __props__.__dict__["versioning"] = versioning
+        __props__.__dict__["versioning_legacy"] = versioning_legacy
         return Container(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -811,9 +893,18 @@ class Container(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def versioning(self) -> pulumi.Output[Optional['outputs.ContainerVersioning']]:
+    def versioning(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable object versioning. The structure is described below.
+        A boolean that enables or disable object versioning.
+        Defaults to `false`
         """
         return pulumi.get(self, "versioning")
+
+    @property
+    @pulumi.getter(name="versioningLegacy")
+    def versioning_legacy(self) -> pulumi.Output[Optional['outputs.ContainerVersioningLegacy']]:
+        """
+        Enable legacy object versioning. The structure is described below.
+        """
+        return pulumi.get(self, "versioning_legacy")
 

@@ -14,64 +14,60 @@ namespace Pulumi.OpenStack.KeyManager
     /// ### Simple secret
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var secret1 = new OpenStack.KeyManager.SecretV1("secret1", new()
     ///     {
-    ///         var secret1 = new OpenStack.KeyManager.SecretV1("secret1", new OpenStack.KeyManager.SecretV1Args
+    ///         Algorithm = "aes",
+    ///         BitLength = 256,
+    ///         Metadata = 
     ///         {
-    ///             Algorithm = "aes",
-    ///             BitLength = 256,
-    ///             Metadata = 
-    ///             {
-    ///                 { "key", "foo" },
-    ///             },
-    ///             Mode = "cbc",
-    ///             Payload = "foobar",
-    ///             PayloadContentType = "text/plain",
-    ///             SecretType = "passphrase",
-    ///         });
-    ///     }
+    ///             { "key", "foo" },
+    ///         },
+    ///         Mode = "cbc",
+    ///         Payload = "foobar",
+    ///         PayloadContentType = "text/plain",
+    ///         SecretType = "passphrase",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Secret with the ACL
     /// 
     /// &gt; **Note** Only read ACLs are supported
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var secret1 = new OpenStack.KeyManager.SecretV1("secret1", new()
     ///     {
-    ///         var secret1 = new OpenStack.KeyManager.SecretV1("secret1", new OpenStack.KeyManager.SecretV1Args
+    ///         Acl = new OpenStack.KeyManager.Inputs.SecretV1AclArgs
     ///         {
-    ///             Acl = new OpenStack.KeyManager.Inputs.SecretV1AclArgs
+    ///             Read = new OpenStack.KeyManager.Inputs.SecretV1AclReadArgs
     ///             {
-    ///                 Read = new OpenStack.KeyManager.Inputs.SecretV1AclReadArgs
+    ///                 ProjectAccess = false,
+    ///                 Users = new[]
     ///                 {
-    ///                     ProjectAccess = false,
-    ///                     Users = 
-    ///                     {
-    ///                         "userid1",
-    ///                         "userid2",
-    ///                     },
+    ///                     "userid1",
+    ///                     "userid2",
     ///                 },
     ///             },
-    ///             Payload = File.ReadAllText("certificate.pem"),
-    ///             PayloadContentType = "text/plain",
-    ///             SecretType = "certificate",
-    ///         });
-    ///     }
+    ///         },
+    ///         Payload = File.ReadAllText("certificate.pem"),
+    ///         PayloadContentType = "text/plain",
+    ///         SecretType = "certificate",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -83,7 +79,7 @@ namespace Pulumi.OpenStack.KeyManager
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:keymanager/secretV1:SecretV1")]
-    public partial class SecretV1 : Pulumi.CustomResource
+    public partial class SecretV1 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Allows to control an access to a secret. Currently only the
@@ -229,6 +225,10 @@ namespace Pulumi.OpenStack.KeyManager
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "payload",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -250,7 +250,7 @@ namespace Pulumi.OpenStack.KeyManager
         }
     }
 
-    public sealed class SecretV1Args : Pulumi.ResourceArgs
+    public sealed class SecretV1Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Allows to control an access to a secret. Currently only the
@@ -303,11 +303,21 @@ namespace Pulumi.OpenStack.KeyManager
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("payload")]
+        private Input<string>? _payload;
+
         /// <summary>
         /// The secret's data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
         /// </summary>
-        [Input("payload")]
-        public Input<string>? Payload { get; set; }
+        public Input<string>? Payload
+        {
+            get => _payload;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _payload = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
@@ -339,9 +349,10 @@ namespace Pulumi.OpenStack.KeyManager
         public SecretV1Args()
         {
         }
+        public static new SecretV1Args Empty => new SecretV1Args();
     }
 
-    public sealed class SecretV1State : Pulumi.ResourceArgs
+    public sealed class SecretV1State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Allows to control an access to a secret. Currently only the
@@ -431,11 +442,21 @@ namespace Pulumi.OpenStack.KeyManager
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("payload")]
+        private Input<string>? _payload;
+
         /// <summary>
         /// The secret's data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
         /// </summary>
-        [Input("payload")]
-        public Input<string>? Payload { get; set; }
+        public Input<string>? Payload
+        {
+            get => _payload;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _payload = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
@@ -485,5 +506,6 @@ namespace Pulumi.OpenStack.KeyManager
         public SecretV1State()
         {
         }
+        public static new SecretV1State Empty => new SecretV1State();
     }
 }

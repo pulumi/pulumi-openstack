@@ -8,6 +8,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -68,18 +69,41 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the image.
+     * The name of the image. Cannot be used simultaneously
+     * with `name_regex`.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return The name of the image.
+     * @return The name of the image. Cannot be used simultaneously
+     * with `name_regex`.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The regular expressian of the name of the image.
+     * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+     * `name_regex` filtering does by client on the result of OpenStack search
+     * query.
+     * 
+     */
+    @Import(name="nameRegex")
+    private @Nullable String nameRegex;
+
+    /**
+     * @return The regular expressian of the name of the image.
+     * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+     * `name_regex` filtering does by client on the result of OpenStack search
+     * query.
+     * 
+     */
+    public Optional<String> nameRegex() {
+        return Optional.ofNullable(this.nameRegex);
     }
 
     /**
@@ -217,6 +241,23 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * A list of tags required to be set on the image
+     * (all specified tags must be in the images tag list for it to be matched).
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable List<String> tags;
+
+    /**
+     * @return A list of tags required to be set on the image
+     * (all specified tags must be in the images tag list for it to be matched).
+     * 
+     */
+    public Optional<List<String>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The visibility of the image. Must be one of
      * &#34;public&#34;, &#34;private&#34;, &#34;community&#34;, or &#34;shared&#34;. Defaults to &#34;private&#34;.
      * 
@@ -240,6 +281,7 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
         this.memberStatus = $.memberStatus;
         this.mostRecent = $.mostRecent;
         this.name = $.name;
+        this.nameRegex = $.nameRegex;
         this.owner = $.owner;
         this.properties = $.properties;
         this.region = $.region;
@@ -248,6 +290,7 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
         this.sortDirection = $.sortDirection;
         this.sortKey = $.sortKey;
         this.tag = $.tag;
+        this.tags = $.tags;
         this.visibility = $.visibility;
     }
 
@@ -305,13 +348,28 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The name of the image.
+         * @param name The name of the image. Cannot be used simultaneously
+         * with `name_regex`.
          * 
          * @return builder
          * 
          */
         public Builder name(@Nullable String name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param nameRegex The regular expressian of the name of the image.
+         * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+         * `name_regex` filtering does by client on the result of OpenStack search
+         * query.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameRegex(@Nullable String nameRegex) {
+            $.nameRegex = nameRegex;
             return this;
         }
 
@@ -408,6 +466,29 @@ public final class GetImagePlainArgs extends com.pulumi.resources.InvokeArgs {
         public Builder tag(@Nullable String tag) {
             $.tag = tag;
             return this;
+        }
+
+        /**
+         * @param tags A list of tags required to be set on the image
+         * (all specified tags must be in the images tag list for it to be matched).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable List<String> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A list of tags required to be set on the image
+         * (all specified tags must be in the images tag list for it to be matched).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
 
         /**

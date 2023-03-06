@@ -17,28 +17,26 @@ namespace Pulumi.OpenStack.BlockStorage
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var project1 = new OpenStack.Identity.Project("project1", new OpenStack.Identity.ProjectArgs
-    ///         {
-    ///         });
-    ///         var volumeType1 = new OpenStack.BlockStorage.VolumeTypeV3("volumeType1", new OpenStack.BlockStorage.VolumeTypeV3Args
-    ///         {
-    ///             IsPublic = false,
-    ///         });
-    ///         var volumeTypeAccess = new OpenStack.BlockStorage.VolumeTypeAccessV3("volumeTypeAccess", new OpenStack.BlockStorage.VolumeTypeAccessV3Args
-    ///         {
-    ///             ProjectId = project1.Id,
-    ///             VolumeTypeId = volumeType1.Id,
-    ///         });
-    ///     }
+    ///     var project1 = new OpenStack.Identity.Project("project1");
     /// 
-    /// }
+    ///     var volumeType1 = new OpenStack.BlockStorage.VolumeTypeV3("volumeType1", new()
+    ///     {
+    ///         IsPublic = false,
+    ///     });
+    /// 
+    ///     var volumeTypeAccess = new OpenStack.BlockStorage.VolumeTypeAccessV3("volumeTypeAccess", new()
+    ///     {
+    ///         ProjectId = project1.Id,
+    ///         VolumeTypeId = volumeType1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.OpenStack.BlockStorage
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3")]
-    public partial class VolumeTypeAccessV3 : Pulumi.CustomResource
+    public partial class VolumeTypeAccessV3 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ID of the project to give access to. Changing this
@@ -118,7 +116,7 @@ namespace Pulumi.OpenStack.BlockStorage
         }
     }
 
-    public sealed class VolumeTypeAccessV3Args : Pulumi.ResourceArgs
+    public sealed class VolumeTypeAccessV3Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the project to give access to. Changing this
@@ -145,9 +143,10 @@ namespace Pulumi.OpenStack.BlockStorage
         public VolumeTypeAccessV3Args()
         {
         }
+        public static new VolumeTypeAccessV3Args Empty => new VolumeTypeAccessV3Args();
     }
 
-    public sealed class VolumeTypeAccessV3State : Pulumi.ResourceArgs
+    public sealed class VolumeTypeAccessV3State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the project to give access to. Changing this
@@ -174,5 +173,6 @@ namespace Pulumi.OpenStack.BlockStorage
         public VolumeTypeAccessV3State()
         {
         }
+        public static new VolumeTypeAccessV3State Empty => new VolumeTypeAccessV3State();
     }
 }

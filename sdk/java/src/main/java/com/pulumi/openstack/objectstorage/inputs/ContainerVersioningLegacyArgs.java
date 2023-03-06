@@ -9,9 +9,9 @@ import java.lang.String;
 import java.util.Objects;
 
 
-public final class ContainerVersioningArgs extends com.pulumi.resources.ResourceArgs {
+public final class ContainerVersioningLegacyArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final ContainerVersioningArgs Empty = new ContainerVersioningArgs();
+    public static final ContainerVersioningLegacyArgs Empty = new ContainerVersioningLegacyArgs();
 
     /**
      * Container in which versions will be stored.
@@ -43,9 +43,9 @@ public final class ContainerVersioningArgs extends com.pulumi.resources.Resource
         return this.type;
     }
 
-    private ContainerVersioningArgs() {}
+    private ContainerVersioningLegacyArgs() {}
 
-    private ContainerVersioningArgs(ContainerVersioningArgs $) {
+    private ContainerVersioningLegacyArgs(ContainerVersioningLegacyArgs $) {
         this.location = $.location;
         this.type = $.type;
     }
@@ -53,19 +53,19 @@ public final class ContainerVersioningArgs extends com.pulumi.resources.Resource
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(ContainerVersioningArgs defaults) {
+    public static Builder builder(ContainerVersioningLegacyArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private ContainerVersioningArgs $;
+        private ContainerVersioningLegacyArgs $;
 
         public Builder() {
-            $ = new ContainerVersioningArgs();
+            $ = new ContainerVersioningLegacyArgs();
         }
 
-        public Builder(ContainerVersioningArgs defaults) {
-            $ = new ContainerVersioningArgs(Objects.requireNonNull(defaults));
+        public Builder(ContainerVersioningLegacyArgs defaults) {
+            $ = new ContainerVersioningLegacyArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -110,7 +110,7 @@ public final class ContainerVersioningArgs extends com.pulumi.resources.Resource
             return type(Output.of(type));
         }
 
-        public ContainerVersioningArgs build() {
+        public ContainerVersioningLegacyArgs build() {
             $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
             $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             return $;

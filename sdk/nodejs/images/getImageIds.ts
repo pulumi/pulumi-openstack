@@ -14,22 +14,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const images = pulumi.output(openstack.images.getImageIds({
+ * const images = openstack.images.getImageIds({
  *     nameRegex: "^Ubuntu 16\\.04.*-amd64",
  *     properties: {
  *         key: "value",
  *     },
  *     sort: "updated_at",
- * }));
+ * });
  * ```
  */
 export function getImageIds(args?: GetImageIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetImageIdsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:images/getImageIds:getImageIds", {
         "memberStatus": args.memberStatus,
         "name": args.name,
@@ -43,6 +40,7 @@ export function getImageIds(args?: GetImageIdsArgs, opts?: pulumi.InvokeOptions)
         "sortDirection": args.sortDirection,
         "sortKey": args.sortKey,
         "tag": args.tag,
+        "tags": args.tags,
         "visibility": args.visibility,
     }, opts);
 }
@@ -123,6 +121,11 @@ export interface GetImageIdsArgs {
      */
     tag?: string;
     /**
+     * A list of tags required to be set on the image
+     * (all specified tags must be in the images tag list for it to be matched).
+     */
+    tags?: string[];
+    /**
      * The visibility of the image. Must be one of
      * "public", "private", "community", or "shared". Defaults to "private".
      */
@@ -156,11 +159,30 @@ export interface GetImageIdsResult {
      */
     readonly sortKey?: string;
     readonly tag?: string;
+    readonly tags?: string[];
     readonly visibility?: string;
 }
-
+/**
+ * Use this data source to get a list of Openstack Image IDs matching the
+ * specified criteria.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const images = openstack.images.getImageIds({
+ *     nameRegex: "^Ubuntu 16\\.04.*-amd64",
+ *     properties: {
+ *         key: "value",
+ *     },
+ *     sort: "updated_at",
+ * });
+ * ```
+ */
 export function getImageIdsOutput(args?: GetImageIdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageIdsResult> {
-    return pulumi.output(args).apply(a => getImageIds(a, opts))
+    return pulumi.output(args).apply((a: any) => getImageIds(a, opts))
 }
 
 /**
@@ -238,6 +260,11 @@ export interface GetImageIdsOutputArgs {
      * Search for images with a specific tag.
      */
     tag?: pulumi.Input<string>;
+    /**
+     * A list of tags required to be set on the image
+     * (all specified tags must be in the images tag list for it to be matched).
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The visibility of the image. Must be one of
      * "public", "private", "community", or "shared". Defaults to "private".

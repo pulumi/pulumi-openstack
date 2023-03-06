@@ -23,32 +23,29 @@ namespace Pulumi.OpenStack.Networking
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var project1 = new OpenStack.Identity.Project("project1", new OpenStack.Identity.ProjectArgs
-    ///         {
-    ///         });
-    ///         var quota1 = new OpenStack.Networking.QuotaV2("quota1", new OpenStack.Networking.QuotaV2Args
-    ///         {
-    ///             ProjectId = project1.Id,
-    ///             Floatingip = 10,
-    ///             Network = 4,
-    ///             Port = 100,
-    ///             RbacPolicy = 10,
-    ///             Router = 4,
-    ///             SecurityGroup = 10,
-    ///             SecurityGroupRule = 100,
-    ///             Subnet = 8,
-    ///             Subnetpool = 2,
-    ///         });
-    ///     }
+    ///     var project1 = new OpenStack.Identity.Project("project1");
     /// 
-    /// }
+    ///     var quota1 = new OpenStack.Networking.QuotaV2("quota1", new()
+    ///     {
+    ///         ProjectId = project1.Id,
+    ///         Floatingip = 10,
+    ///         Network = 4,
+    ///         Port = 100,
+    ///         RbacPolicy = 10,
+    ///         Router = 4,
+    ///         SecurityGroup = 10,
+    ///         SecurityGroupRule = 100,
+    ///         Subnet = 8,
+    ///         Subnetpool = 2,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -60,7 +57,7 @@ namespace Pulumi.OpenStack.Networking
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/quotaV2:QuotaV2")]
-    public partial class QuotaV2 : Pulumi.CustomResource
+    public partial class QuotaV2 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Quota value for floating IPs. Changing this updates the
@@ -184,7 +181,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
-    public sealed class QuotaV2Args : Pulumi.ResourceArgs
+    public sealed class QuotaV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Quota value for floating IPs. Changing this updates the
@@ -267,9 +264,10 @@ namespace Pulumi.OpenStack.Networking
         public QuotaV2Args()
         {
         }
+        public static new QuotaV2Args Empty => new QuotaV2Args();
     }
 
-    public sealed class QuotaV2State : Pulumi.ResourceArgs
+    public sealed class QuotaV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Quota value for floating IPs. Changing this updates the
@@ -352,5 +350,6 @@ namespace Pulumi.OpenStack.Networking
         public QuotaV2State()
         {
         }
+        public static new QuotaV2State Empty => new QuotaV2State();
     }
 }

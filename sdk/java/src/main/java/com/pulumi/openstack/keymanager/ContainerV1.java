@@ -250,14 +250,16 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
         return this.creatorId;
     }
     /**
-     * The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+     * Human-readable name for the Container. Does not have
+     * to be unique.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+     * @return Human-readable name for the Container. Does not have
+     * to be unique.
      * 
      */
     public Output<String> name() {

@@ -30,7 +30,7 @@ namespace Pulumi.OpenStack
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("openstack");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("openstack");
 
         private static readonly __Value<bool?> _allowReauth = new __Value<bool?>(() => __config.GetBoolean("allowReauth") ?? Utilities.GetEnvBoolean("OS_ALLOW_REAUTH"));
         /// <summary>

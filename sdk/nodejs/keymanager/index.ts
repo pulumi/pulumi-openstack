@@ -5,16 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./containerV1";
-export * from "./getContainer";
-export * from "./getSecret";
-export * from "./orderV1";
-export * from "./secretV1";
+export { ContainerV1Args, ContainerV1State } from "./containerV1";
+export type ContainerV1 = import("./containerV1").ContainerV1;
+export const ContainerV1: typeof import("./containerV1").ContainerV1 = null as any;
+utilities.lazyLoad(exports, ["ContainerV1"], () => require("./containerV1"));
 
-// Import resources to register:
-import { ContainerV1 } from "./containerV1";
-import { OrderV1 } from "./orderV1";
-import { SecretV1 } from "./secretV1";
+export { GetContainerArgs, GetContainerResult, GetContainerOutputArgs } from "./getContainer";
+export const getContainer: typeof import("./getContainer").getContainer = null as any;
+export const getContainerOutput: typeof import("./getContainer").getContainerOutput = null as any;
+utilities.lazyLoad(exports, ["getContainer","getContainerOutput"], () => require("./getContainer"));
+
+export { GetSecretArgs, GetSecretResult, GetSecretOutputArgs } from "./getSecret";
+export const getSecret: typeof import("./getSecret").getSecret = null as any;
+export const getSecretOutput: typeof import("./getSecret").getSecretOutput = null as any;
+utilities.lazyLoad(exports, ["getSecret","getSecretOutput"], () => require("./getSecret"));
+
+export { OrderV1Args, OrderV1State } from "./orderV1";
+export type OrderV1 = import("./orderV1").OrderV1;
+export const OrderV1: typeof import("./orderV1").OrderV1 = null as any;
+utilities.lazyLoad(exports, ["OrderV1"], () => require("./orderV1"));
+
+export { SecretV1Args, SecretV1State } from "./secretV1";
+export type SecretV1 = import("./secretV1").SecretV1;
+export const SecretV1: typeof import("./secretV1").SecretV1 = null as any;
+utilities.lazyLoad(exports, ["SecretV1"], () => require("./secretV1"));
+
 
 const _module = {
     version: utilities.getVersion(),

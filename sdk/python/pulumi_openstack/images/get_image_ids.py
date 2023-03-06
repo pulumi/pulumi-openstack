@@ -21,7 +21,7 @@ class GetImageIdsResult:
     """
     A collection of values returned by getImageIds.
     """
-    def __init__(__self__, id=None, ids=None, member_status=None, name=None, name_regex=None, owner=None, properties=None, region=None, size_max=None, size_min=None, sort=None, sort_direction=None, sort_key=None, tag=None, visibility=None):
+    def __init__(__self__, id=None, ids=None, member_status=None, name=None, name_regex=None, owner=None, properties=None, region=None, size_max=None, size_min=None, sort=None, sort_direction=None, sort_key=None, tag=None, tags=None, visibility=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -72,6 +72,9 @@ class GetImageIdsResult:
         if tag and not isinstance(tag, str):
             raise TypeError("Expected argument 'tag' to be a str")
         pulumi.set(__self__, "tag", tag)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
         if visibility and not isinstance(visibility, str):
             raise TypeError("Expected argument 'visibility' to be a str")
         pulumi.set(__self__, "visibility", visibility)
@@ -151,6 +154,11 @@ class GetImageIdsResult:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
     def visibility(self) -> Optional[str]:
         return pulumi.get(self, "visibility")
 
@@ -175,6 +183,7 @@ class AwaitableGetImageIdsResult(GetImageIdsResult):
             sort_direction=self.sort_direction,
             sort_key=self.sort_key,
             tag=self.tag,
+            tags=self.tags,
             visibility=self.visibility)
 
 
@@ -190,6 +199,7 @@ def get_image_ids(member_status: Optional[str] = None,
                   sort_direction: Optional[str] = None,
                   sort_key: Optional[str] = None,
                   tag: Optional[str] = None,
+                  tags: Optional[Sequence[str]] = None,
                   visibility: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageIdsResult:
     """
@@ -241,6 +251,8 @@ def get_image_ids(member_status: Optional[str] = None,
            `name`. `sort_key` cannot be used simultaneously with `sort`. If both
            are present in a configuration then only `sort` will be used.
     :param str tag: Search for images with a specific tag.
+    :param Sequence[str] tags: A list of tags required to be set on the image
+           (all specified tags must be in the images tag list for it to be matched).
     :param str visibility: The visibility of the image. Must be one of
            "public", "private", "community", or "shared". Defaults to "private".
     """
@@ -257,6 +269,7 @@ def get_image_ids(member_status: Optional[str] = None,
     __args__['sortDirection'] = sort_direction
     __args__['sortKey'] = sort_key
     __args__['tag'] = tag
+    __args__['tags'] = tags
     __args__['visibility'] = visibility
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('openstack:images/getImageIds:getImageIds', __args__, opts=opts, typ=GetImageIdsResult).value
@@ -276,6 +289,7 @@ def get_image_ids(member_status: Optional[str] = None,
         sort_direction=__ret__.sort_direction,
         sort_key=__ret__.sort_key,
         tag=__ret__.tag,
+        tags=__ret__.tags,
         visibility=__ret__.visibility)
 
 
@@ -292,6 +306,7 @@ def get_image_ids_output(member_status: Optional[pulumi.Input[Optional[str]]] = 
                          sort_direction: Optional[pulumi.Input[Optional[str]]] = None,
                          sort_key: Optional[pulumi.Input[Optional[str]]] = None,
                          tag: Optional[pulumi.Input[Optional[str]]] = None,
+                         tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          visibility: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageIdsResult]:
     """
@@ -343,6 +358,8 @@ def get_image_ids_output(member_status: Optional[pulumi.Input[Optional[str]]] = 
            `name`. `sort_key` cannot be used simultaneously with `sort`. If both
            are present in a configuration then only `sort` will be used.
     :param str tag: Search for images with a specific tag.
+    :param Sequence[str] tags: A list of tags required to be set on the image
+           (all specified tags must be in the images tag list for it to be matched).
     :param str visibility: The visibility of the image. Must be one of
            "public", "private", "community", or "shared". Defaults to "private".
     """

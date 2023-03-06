@@ -13,17 +13,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const qosMinBwRule1 = pulumi.output(openstack.networking.getQosMinimumBandwidthRule({
+ * const qosMinBwRule1 = openstack.networking.getQosMinimumBandwidthRule({
  *     minKbps: 2000,
- * }));
+ * });
  * ```
  */
 export function getQosMinimumBandwidthRule(args: GetQosMinimumBandwidthRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetQosMinimumBandwidthRuleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", {
         "direction": args.direction,
         "minKbps": args.minKbps,
@@ -75,9 +72,22 @@ export interface GetQosMinimumBandwidthRuleResult {
      */
     readonly region: string;
 }
-
+/**
+ * Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const qosMinBwRule1 = openstack.networking.getQosMinimumBandwidthRule({
+ *     minKbps: 2000,
+ * });
+ * ```
+ */
 export function getQosMinimumBandwidthRuleOutput(args: GetQosMinimumBandwidthRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQosMinimumBandwidthRuleResult> {
-    return pulumi.output(args).apply(a => getQosMinimumBandwidthRule(a, opts))
+    return pulumi.output(args).apply((a: any) => getQosMinimumBandwidthRule(a, opts))
 }
 
 /**

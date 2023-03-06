@@ -112,6 +112,10 @@ func NewVolumeAttachV2(ctx *pulumi.Context,
 	if args.VolumeId == nil {
 		return nil, errors.New("invalid value for required argument 'VolumeId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"data",
+	})
+	opts = append(opts, secrets)
 	var resource VolumeAttachV2
 	err := ctx.RegisterResource("openstack:blockstorage/volumeAttachV2:VolumeAttachV2", name, args, &resource, opts...)
 	if err != nil {

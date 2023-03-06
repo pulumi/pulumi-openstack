@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var secgroup = OpenStack.Networking.GetSecGroup.Invoke(new()
         ///     {
-        ///         var secgroup = Output.Create(OpenStack.Networking.GetSecGroup.InvokeAsync(new OpenStack.Networking.GetSecGroupArgs
-        ///         {
-        ///             Name = "tf_test_secgroup",
-        ///         }));
-        ///     }
+        ///         Name = "tf_test_secgroup",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSecGroupResult> InvokeAsync(GetSecGroupArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecGroupResult>("openstack:networking/getSecGroup:getSecGroup", args ?? new GetSecGroupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecGroupResult>("openstack:networking/getSecGroup:getSecGroup", args ?? new GetSecGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack security group.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var secgroup = OpenStack.Networking.GetSecGroup.Invoke(new()
         ///     {
-        ///         var secgroup = Output.Create(OpenStack.Networking.GetSecGroup.InvokeAsync(new OpenStack.Networking.GetSecGroupArgs
-        ///         {
-        ///             Name = "tf_test_secgroup",
-        ///         }));
-        ///     }
+        ///         Name = "tf_test_secgroup",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSecGroupResult> Invoke(GetSecGroupInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecGroupResult>("openstack:networking/getSecGroup:getSecGroup", args ?? new GetSecGroupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecGroupResult>("openstack:networking/getSecGroup:getSecGroup", args ?? new GetSecGroupInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSecGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetSecGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Human-readable description the the subnet.
@@ -120,9 +116,10 @@ namespace Pulumi.OpenStack.Networking
         public GetSecGroupArgs()
         {
         }
+        public static new GetSecGroupArgs Empty => new GetSecGroupArgs();
     }
 
-    public sealed class GetSecGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSecGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Human-readable description the the subnet.
@@ -171,6 +168,7 @@ namespace Pulumi.OpenStack.Networking
         public GetSecGroupInvokeArgs()
         {
         }
+        public static new GetSecGroupInvokeArgs Empty => new GetSecGroupInvokeArgs();
     }
 
 
@@ -181,6 +179,9 @@ namespace Pulumi.OpenStack.Networking
         /// The set of string tags applied on the security group.
         /// </summary>
         public readonly ImmutableArray<string> AllTags;
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         public readonly string? Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -188,7 +189,6 @@ namespace Pulumi.OpenStack.Networking
         public readonly string Id;
         /// <summary>
         /// See Argument Reference above.
-        /// * `description`- See Argument Reference above.
         /// </summary>
         public readonly string? Name;
         /// <summary>

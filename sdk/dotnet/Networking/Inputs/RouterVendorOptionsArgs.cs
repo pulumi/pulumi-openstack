@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Networking.Inputs
 {
 
-    public sealed class RouterVendorOptionsArgs : Pulumi.ResourceArgs
+    public sealed class RouterVendorOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean to control whether
@@ -22,5 +22,6 @@ namespace Pulumi.OpenStack.Networking.Inputs
         public RouterVendorOptionsArgs()
         {
         }
+        public static new RouterVendorOptionsArgs Empty => new RouterVendorOptionsArgs();
     }
 }

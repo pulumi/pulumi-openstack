@@ -13,18 +13,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const zone1 = pulumi.output(openstack.dns.getDnsZone({
+ * const zone1 = openstack.dns.getDnsZone({
  *     name: "example.com",
- * }));
+ * });
  * ```
  */
 export function getDnsZone(args?: GetDnsZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:dns/getDnsZone:getDnsZone", {
         "allProjects": args.allProjects,
         "attributes": args.attributes,
@@ -198,9 +195,22 @@ export interface GetDnsZoneResult {
      */
     readonly version: number;
 }
-
+/**
+ * Use this data source to get the ID of an available OpenStack DNS zone.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const zone1 = openstack.dns.getDnsZone({
+ *     name: "example.com",
+ * });
+ * ```
+ */
 export function getDnsZoneOutput(args?: GetDnsZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDnsZoneResult> {
-    return pulumi.output(args).apply(a => getDnsZone(a, opts))
+    return pulumi.output(args).apply((a: any) => getDnsZone(a, opts))
 }
 
 /**

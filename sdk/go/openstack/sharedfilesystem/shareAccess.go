@@ -208,6 +208,10 @@ func NewShareAccess(ctx *pulumi.Context,
 	if args.ShareId == nil {
 		return nil, errors.New("invalid value for required argument 'ShareId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accessKey",
+	})
+	opts = append(opts, secrets)
 	var resource ShareAccess
 	err := ctx.RegisterResource("openstack:sharedfilesystem/shareAccess:ShareAccess", name, args, &resource, opts...)
 	if err != nil {

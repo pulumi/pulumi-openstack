@@ -17,32 +17,30 @@ namespace Pulumi.OpenStack.BlockStorage
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var qos = new OpenStack.BlockStorage.QosV3("qos", new()
     ///     {
-    ///         var qos = new OpenStack.BlockStorage.QosV3("qos", new OpenStack.BlockStorage.QosV3Args
+    ///         Consumer = "front-end",
+    ///         Specs = 
     ///         {
-    ///             Consumer = "front-end",
-    ///             Specs = 
-    ///             {
-    ///                 { "read_iops_sec", "20000" },
-    ///             },
-    ///         });
-    ///         var volumeType = new OpenStack.BlockStorage.VolumeTypeV3("volumeType", new OpenStack.BlockStorage.VolumeTypeV3Args
-    ///         {
-    ///         });
-    ///         var qosAssociation = new OpenStack.BlockStorage.QosAssociationV3("qosAssociation", new OpenStack.BlockStorage.QosAssociationV3Args
-    ///         {
-    ///             QosId = qos.Id,
-    ///             VolumeTypeId = volumeType.Id,
-    ///         });
-    ///     }
+    ///             { "read_iops_sec", "20000" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var volumeType = new OpenStack.BlockStorage.VolumeTypeV3("volumeType");
+    /// 
+    ///     var qosAssociation = new OpenStack.BlockStorage.QosAssociationV3("qosAssociation", new()
+    ///     {
+    ///         QosId = qos.Id,
+    ///         VolumeTypeId = volumeType.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -54,7 +52,7 @@ namespace Pulumi.OpenStack.BlockStorage
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:blockstorage/qosAssociationV3:QosAssociationV3")]
-    public partial class QosAssociationV3 : Pulumi.CustomResource
+    public partial class QosAssociationV3 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ID of the qos to associate. Changing this creates
@@ -122,7 +120,7 @@ namespace Pulumi.OpenStack.BlockStorage
         }
     }
 
-    public sealed class QosAssociationV3Args : Pulumi.ResourceArgs
+    public sealed class QosAssociationV3Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the qos to associate. Changing this creates
@@ -149,9 +147,10 @@ namespace Pulumi.OpenStack.BlockStorage
         public QosAssociationV3Args()
         {
         }
+        public static new QosAssociationV3Args Empty => new QosAssociationV3Args();
     }
 
-    public sealed class QosAssociationV3State : Pulumi.ResourceArgs
+    public sealed class QosAssociationV3State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the qos to associate. Changing this creates
@@ -178,5 +177,6 @@ namespace Pulumi.OpenStack.BlockStorage
         public QosAssociationV3State()
         {
         }
+        public static new QosAssociationV3State Empty => new QosAssociationV3State();
     }
 }

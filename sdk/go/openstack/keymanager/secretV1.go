@@ -53,7 +53,7 @@ import (
 //
 // import (
 //
-//	"io/ioutil"
+//	"os"
 //
 //	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -61,7 +61,7 @@ import (
 // )
 //
 //	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := ioutil.ReadFile(path)
+//		data, err := os.ReadFile(path)
 //		if err != nil {
 //			panic(err.Error())
 //		}
@@ -159,6 +159,13 @@ func NewSecretV1(ctx *pulumi.Context,
 		args = &SecretV1Args{}
 	}
 
+	if args.Payload != nil {
+		args.Payload = pulumi.ToSecret(args.Payload).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"payload",
+	})
+	opts = append(opts, secrets)
 	var resource SecretV1
 	err := ctx.RegisterResource("openstack:keymanager/secretV1:SecretV1", name, args, &resource, opts...)
 	if err != nil {

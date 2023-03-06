@@ -13,17 +13,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const kp = pulumi.output(openstack.compute.getKeypair({
+ * const kp = openstack.compute.getKeypair({
  *     name: "sand",
- * }));
+ * });
  * ```
  */
 export function getKeypair(args: GetKeypairArgs, opts?: pulumi.InvokeOptions): Promise<GetKeypairResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:compute/getKeypair:getKeypair", {
         "name": args.name,
         "region": args.region,
@@ -70,9 +67,22 @@ export interface GetKeypairResult {
      */
     readonly region: string;
 }
-
+/**
+ * Use this data source to get the ID and public key of an OpenStack keypair.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const kp = openstack.compute.getKeypair({
+ *     name: "sand",
+ * });
+ * ```
+ */
 export function getKeypairOutput(args: GetKeypairOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeypairResult> {
-    return pulumi.output(args).apply(a => getKeypair(a, opts))
+    return pulumi.output(args).apply((a: any) => getKeypair(a, opts))
 }
 
 /**

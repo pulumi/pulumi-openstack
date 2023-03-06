@@ -117,6 +117,13 @@ func NewUser(ctx *pulumi.Context,
 		args = &UserArgs{}
 	}
 
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource User
 	err := ctx.RegisterResource("openstack:identity/user:User", name, args, &resource, opts...)
 	if err != nil {

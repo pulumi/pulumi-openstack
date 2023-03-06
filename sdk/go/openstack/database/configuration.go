@@ -21,7 +21,7 @@ type Configuration struct {
 	Datastore ConfigurationDatastoreOutput `pulumi:"datastore"`
 	// Description of the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Configuration parameter name. Changing this creates a new resource.
+	// A unique name for the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The region in which to create the db instance. Changing this
 	// creates a new instance.
@@ -70,7 +70,7 @@ type configurationState struct {
 	Datastore *ConfigurationDatastore `pulumi:"datastore"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
-	// Configuration parameter name. Changing this creates a new resource.
+	// A unique name for the resource.
 	Name *string `pulumi:"name"`
 	// The region in which to create the db instance. Changing this
 	// creates a new instance.
@@ -85,7 +85,7 @@ type ConfigurationState struct {
 	Datastore ConfigurationDatastorePtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
-	// Configuration parameter name. Changing this creates a new resource.
+	// A unique name for the resource.
 	Name pulumi.StringPtrInput
 	// The region in which to create the db instance. Changing this
 	// creates a new instance.
@@ -104,7 +104,7 @@ type configurationArgs struct {
 	Datastore ConfigurationDatastore `pulumi:"datastore"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
-	// Configuration parameter name. Changing this creates a new resource.
+	// A unique name for the resource.
 	Name *string `pulumi:"name"`
 	// The region in which to create the db instance. Changing this
 	// creates a new instance.
@@ -120,7 +120,7 @@ type ConfigurationArgs struct {
 	Datastore ConfigurationDatastoreInput
 	// Description of the resource.
 	Description pulumi.StringInput
-	// Configuration parameter name. Changing this creates a new resource.
+	// A unique name for the resource.
 	Name pulumi.StringPtrInput
 	// The region in which to create the db instance. Changing this
 	// creates a new instance.
@@ -230,7 +230,7 @@ func (o ConfigurationOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Configuration parameter name. Changing this creates a new resource.
+// A unique name for the resource.
 func (o ConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

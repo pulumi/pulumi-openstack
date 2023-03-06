@@ -12,17 +12,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const ec2Key1 = new openstack.identity.Ec2CredentialV3("ec2_key1", {});
+ * const ec2Key1 = new openstack.identity.Ec2CredentialV3("ec2Key1", {});
  * ```
  * ### EC2 credential in pre-defined project scope
+ *
+ * This allows administrative users to create EC2 credentials for a scope different
+ * from the current auth scope.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const ec2Key1 = new openstack.identity.Ec2CredentialV3("ec2_key1", {
- *     projectId: "f7ac731cc11f40efbc03a9f9e1d1d21f",
- * });
+ * const ec2Key1 = new openstack.identity.Ec2CredentialV3("ec2Key1", {projectId: "f7ac731cc11f40efbc03a9f9e1d1d21f"});
  * ```
  *
  * ## Import
@@ -68,7 +69,8 @@ export class Ec2CredentialV3 extends pulumi.CustomResource {
     /**
      * The ID of the project the EC2 credential is created
      * for and that authentication requests using this EC2 credential will
-     * be scoped to.
+     * be scoped to. Only administrative users can specify a project ID different
+     * from the current auth scope.
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
@@ -87,6 +89,8 @@ export class Ec2CredentialV3 extends pulumi.CustomResource {
     public /*out*/ readonly trustId!: pulumi.Output<string>;
     /**
      * The ID of the user the EC2 credential is created for.
+     * Only administrative users can specify a user ID different from the current
+     * auth scope.
      */
     public readonly userId!: pulumi.Output<string>;
 
@@ -119,6 +123,8 @@ export class Ec2CredentialV3 extends pulumi.CustomResource {
             resourceInputs["trustId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["secret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Ec2CredentialV3.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -134,7 +140,8 @@ export interface Ec2CredentialV3State {
     /**
      * The ID of the project the EC2 credential is created
      * for and that authentication requests using this EC2 credential will
-     * be scoped to.
+     * be scoped to. Only administrative users can specify a project ID different
+     * from the current auth scope.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -153,6 +160,8 @@ export interface Ec2CredentialV3State {
     trustId?: pulumi.Input<string>;
     /**
      * The ID of the user the EC2 credential is created for.
+     * Only administrative users can specify a user ID different from the current
+     * auth scope.
      */
     userId?: pulumi.Input<string>;
 }
@@ -164,7 +173,8 @@ export interface Ec2CredentialV3Args {
     /**
      * The ID of the project the EC2 credential is created
      * for and that authentication requests using this EC2 credential will
-     * be scoped to.
+     * be scoped to. Only administrative users can specify a project ID different
+     * from the current auth scope.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -175,6 +185,8 @@ export interface Ec2CredentialV3Args {
     region?: pulumi.Input<string>;
     /**
      * The ID of the user the EC2 credential is created for.
+     * Only administrative users can specify a user ID different from the current
+     * auth scope.
      */
     userId?: pulumi.Input<string>;
 }

@@ -19,7 +19,7 @@ namespace Pulumi.OpenStack.Networking
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/floatingIp:FloatingIp")]
-    public partial class FloatingIp : Pulumi.CustomResource
+    public partial class FloatingIp : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The actual/specific floating IP to obtain. By default,
@@ -173,7 +173,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
-    public sealed class FloatingIpArgs : Pulumi.ResourceArgs
+    public sealed class FloatingIpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The actual/specific floating IP to obtain. By default,
@@ -297,9 +297,10 @@ namespace Pulumi.OpenStack.Networking
         public FloatingIpArgs()
         {
         }
+        public static new FloatingIpArgs Empty => new FloatingIpArgs();
     }
 
-    public sealed class FloatingIpState : Pulumi.ResourceArgs
+    public sealed class FloatingIpState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The actual/specific floating IP to obtain. By default,
@@ -436,5 +437,6 @@ namespace Pulumi.OpenStack.Networking
         public FloatingIpState()
         {
         }
+        public static new FloatingIpState Empty => new FloatingIpState();
     }
 }

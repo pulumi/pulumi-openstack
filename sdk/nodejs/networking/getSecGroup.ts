@@ -13,18 +13,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const secgroup = pulumi.output(openstack.networking.getSecGroup({
+ * const secgroup = openstack.networking.getSecGroup({
  *     name: "tf_test_secgroup",
- * }));
+ * });
  * ```
  */
 export function getSecGroup(args?: GetSecGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSecGroupResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getSecGroup:getSecGroup", {
         "description": args.description,
         "name": args.name,
@@ -75,6 +72,9 @@ export interface GetSecGroupResult {
      * The set of string tags applied on the security group.
      */
     readonly allTags: string[];
+    /**
+     * See Argument Reference above.
+     */
     readonly description?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -82,7 +82,6 @@ export interface GetSecGroupResult {
     readonly id: string;
     /**
      * See Argument Reference above.
-     * * `description`- See Argument Reference above.
      */
     readonly name?: string;
     /**
@@ -93,9 +92,22 @@ export interface GetSecGroupResult {
     readonly tags?: string[];
     readonly tenantId: string;
 }
-
+/**
+ * Use this data source to get the ID of an available OpenStack security group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const secgroup = openstack.networking.getSecGroup({
+ *     name: "tf_test_secgroup",
+ * });
+ * ```
+ */
 export function getSecGroupOutput(args?: GetSecGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecGroupResult> {
-    return pulumi.output(args).apply(a => getSecGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getSecGroup(a, opts))
 }
 
 /**

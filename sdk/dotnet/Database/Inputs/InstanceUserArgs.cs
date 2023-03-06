@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Database.Inputs
 {
 
-    public sealed class InstanceUserArgs : Pulumi.ResourceArgs
+    public sealed class InstanceUserArgs : global::Pulumi.ResourceArgs
     {
         [Input("databases")]
         private InputList<string>? _databases;
@@ -33,21 +33,32 @@ namespace Pulumi.OpenStack.Database.Inputs
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// Database to be created on new instance. Changing this creates a
+        /// Username to be created on new instance. Changing this creates a
         /// new instance.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// User's password. Changing this creates a
         /// new instance.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public InstanceUserArgs()
         {
         }
+        public static new InstanceUserArgs Empty => new InstanceUserArgs();
     }
 }

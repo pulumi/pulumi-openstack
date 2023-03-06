@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.Dns
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var zone1 = OpenStack.Dns.GetDnsZone.Invoke(new()
         ///     {
-        ///         var zone1 = Output.Create(OpenStack.Dns.GetDnsZone.InvokeAsync(new OpenStack.Dns.GetDnsZoneArgs
-        ///         {
-        ///             Name = "example.com",
-        ///         }));
-        ///     }
+        ///         Name = "example.com",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDnsZoneResult> InvokeAsync(GetDnsZoneArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDnsZoneResult>("openstack:dns/getDnsZone:getDnsZone", args ?? new GetDnsZoneArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDnsZoneResult>("openstack:dns/getDnsZone:getDnsZone", args ?? new GetDnsZoneArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack DNS zone.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.Dns
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var zone1 = OpenStack.Dns.GetDnsZone.Invoke(new()
         ///     {
-        ///         var zone1 = Output.Create(OpenStack.Dns.GetDnsZone.InvokeAsync(new OpenStack.Dns.GetDnsZoneArgs
-        ///         {
-        ///             Name = "example.com",
-        ///         }));
-        ///     }
+        ///         Name = "example.com",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDnsZoneResult> Invoke(GetDnsZoneInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDnsZoneResult>("openstack:dns/getDnsZone:getDnsZone", args ?? new GetDnsZoneInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDnsZoneResult>("openstack:dns/getDnsZone:getDnsZone", args ?? new GetDnsZoneInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDnsZoneArgs : Pulumi.InvokeArgs
+    public sealed class GetDnsZoneArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Try to obtain zone ID by listing all projects
@@ -194,9 +190,10 @@ namespace Pulumi.OpenStack.Dns
         public GetDnsZoneArgs()
         {
         }
+        public static new GetDnsZoneArgs Empty => new GetDnsZoneArgs();
     }
 
-    public sealed class GetDnsZoneInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDnsZoneInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Try to obtain zone ID by listing all projects
@@ -319,6 +316,7 @@ namespace Pulumi.OpenStack.Dns
         public GetDnsZoneInvokeArgs()
         {
         }
+        public static new GetDnsZoneInvokeArgs Empty => new GetDnsZoneInvokeArgs();
     }
 
 

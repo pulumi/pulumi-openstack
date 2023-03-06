@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Compute.Inputs
 {
 
-    public sealed class VolumeAttachVendorOptionsGetArgs : Pulumi.ResourceArgs
+    public sealed class VolumeAttachVendorOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean to control whether
@@ -23,5 +23,6 @@ namespace Pulumi.OpenStack.Compute.Inputs
         public VolumeAttachVendorOptionsGetArgs()
         {
         }
+        public static new VolumeAttachVendorOptionsGetArgs Empty => new VolumeAttachVendorOptionsGetArgs();
     }
 }

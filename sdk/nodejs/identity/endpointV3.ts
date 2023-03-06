@@ -15,10 +15,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const service1 = new openstack.identity.ServiceV3("service_1", {
- *     type: "my-service-type",
- * });
- * const endpoint1 = new openstack.identity.EndpointV3("endpoint_1", {
+ * const service1 = new openstack.identity.ServiceV3("service1", {type: "my-service-type"});
+ * const endpoint1 = new openstack.identity.EndpointV3("endpoint1", {
  *     endpointRegion: service1.region,
  *     serviceId: service1.id,
  *     url: "http://my-endpoint",

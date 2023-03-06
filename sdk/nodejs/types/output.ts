@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export namespace blockstorage {
     export interface VolumeAttachment {
@@ -208,8 +209,8 @@ export namespace compute {
          */
         port: string;
         /**
-         * The UUID of
-         * the image, volume, or snapshot. Changing this creates a new server.
+         * The network UUID to
+         * attach to the server. Changing this creates a new server.
          */
         uuid: string;
     }
@@ -433,7 +434,7 @@ export namespace database {
          */
         host?: string;
         /**
-         * Database to be created on new instance. Changing this creates a
+         * Username to be created on new instance. Changing this creates a
          * new instance.
          */
         name: string;
@@ -570,7 +571,8 @@ export namespace keymanager {
 
     export interface ContainerV1Consumer {
         /**
-         * The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+         * Human-readable name for the Container. Does not have
+         * to be unique.
          */
         name?: string;
         /**
@@ -666,7 +668,7 @@ export namespace keymanager {
          */
         algorithm: string;
         /**
-         * - Bit lenght of key to be generated.
+         * Bit lenght of key to be generated.
          */
         bitLength: number;
         /**
@@ -837,6 +839,9 @@ export namespace networking {
          * The IP address to set on the router.
          */
         ipAddress?: string;
+        /**
+         * Subnet in which the fixed IP belongs to.
+         */
         subnetId?: string;
     }
 
@@ -935,7 +940,11 @@ export namespace networking {
 
     export interface PortFixedIp {
         /**
-         * The additional IP address.
+         * IP address desired in the subnet for this port. If
+         * you don't specify `ipAddress`, an available IP address from the specified
+         * subnet will be allocated to this port. This field will not be populated if it
+         * is left blank or omitted. To retrieve the assigned IP address, use the
+         * `allFixedIps` attribute.
          */
         ipAddress?: string;
         /**
@@ -1011,10 +1020,11 @@ export namespace networking {
          */
         segmentationType: string;
     }
+
 }
 
 export namespace objectstorage {
-    export interface ContainerVersioning {
+    export interface ContainerVersioningLegacy {
         /**
          * Container in which versions will be stored.
          */

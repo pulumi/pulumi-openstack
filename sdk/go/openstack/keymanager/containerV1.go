@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"io/ioutil"
+//	"os"
 //
 //	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
 //	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
@@ -33,7 +33,7 @@ import (
 // )
 //
 //	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := ioutil.ReadFile(path)
+//		data, err := os.ReadFile(path)
 //		if err != nil {
 //			panic(err.Error())
 //		}
@@ -93,7 +93,7 @@ import (
 //				return err
 //			}
 //			lb1, err := loadbalancer.NewLoadBalancer(ctx, "lb1", &loadbalancer.LoadBalancerArgs{
-//				VipSubnetId: pulumi.String(subnet1.Id),
+//				VipSubnetId: *pulumi.String(subnet1.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -187,7 +187,8 @@ type ContainerV1 struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The creator of the container.
 	CreatorId pulumi.StringOutput `pulumi:"creatorId"`
-	// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+	// Human-readable name for the Container. Does not have
+	// to be unique.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The region in which to obtain the V1 KeyManager client.
 	// A KeyManager client is needed to create a container. If omitted, the
@@ -249,7 +250,8 @@ type containerV1State struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// The creator of the container.
 	CreatorId *string `pulumi:"creatorId"`
-	// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+	// Human-readable name for the Container. Does not have
+	// to be unique.
 	Name *string `pulumi:"name"`
 	// The region in which to obtain the V1 KeyManager client.
 	// A KeyManager client is needed to create a container. If omitted, the
@@ -280,7 +282,8 @@ type ContainerV1State struct {
 	CreatedAt pulumi.StringPtrInput
 	// The creator of the container.
 	CreatorId pulumi.StringPtrInput
-	// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+	// Human-readable name for the Container. Does not have
+	// to be unique.
 	Name pulumi.StringPtrInput
 	// The region in which to obtain the V1 KeyManager client.
 	// A KeyManager client is needed to create a container. If omitted, the
@@ -307,7 +310,8 @@ type containerV1Args struct {
 	// the `read` operation is supported. If not specified, the container is
 	// accessible project wide. The `read` structure is described below.
 	Acl *ContainerV1Acl `pulumi:"acl"`
-	// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+	// Human-readable name for the Container. Does not have
+	// to be unique.
 	Name *string `pulumi:"name"`
 	// The region in which to obtain the V1 KeyManager client.
 	// A KeyManager client is needed to create a container. If omitted, the
@@ -327,7 +331,8 @@ type ContainerV1Args struct {
 	// the `read` operation is supported. If not specified, the container is
 	// accessible project wide. The `read` structure is described below.
 	Acl ContainerV1AclPtrInput
-	// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+	// Human-readable name for the Container. Does not have
+	// to be unique.
 	Name pulumi.StringPtrInput
 	// The region in which to obtain the V1 KeyManager client.
 	// A KeyManager client is needed to create a container. If omitted, the
@@ -455,7 +460,8 @@ func (o ContainerV1Output) CreatorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerV1) pulumi.StringOutput { return v.CreatorId }).(pulumi.StringOutput)
 }
 
-// The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+// Human-readable name for the Container. Does not have
+// to be unique.
 func (o ContainerV1Output) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerV1) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

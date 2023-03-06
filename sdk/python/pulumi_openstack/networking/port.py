@@ -62,8 +62,10 @@ class PortArgs:
                times.
         :param pulumi.Input[Sequence[pulumi.Input['PortFixedIpArgs']]] fixed_ips: An array of desired IPs for
                this port. The structure is described below.
-        :param pulumi.Input[str] mac_address: The additional MAC address.
-        :param pulumi.Input[str] name: Name of the DHCP option.
+        :param pulumi.Input[str] mac_address: Specify a specific MAC address for the port. Changing
+               this creates a new port.
+        :param pulumi.Input[str] name: A unique name for the port. Changing this
+               updates the `name` of an existing port.
         :param pulumi.Input[bool] no_fixed_ip: Create a port with no fixed
                IP address. This will also remove any fixed IPs previously set on a port. `true`
                is the only valid value for this argument.
@@ -271,7 +273,8 @@ class PortArgs:
     @pulumi.getter(name="macAddress")
     def mac_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The additional MAC address.
+        Specify a specific MAC address for the port. Changing
+        this creates a new port.
         """
         return pulumi.get(self, "mac_address")
 
@@ -283,7 +286,8 @@ class PortArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the DHCP option.
+        A unique name for the port. Changing this
+        updates the `name` of an existing port.
         """
         return pulumi.get(self, "name")
 
@@ -476,8 +480,10 @@ class _PortState:
                times.
         :param pulumi.Input[Sequence[pulumi.Input['PortFixedIpArgs']]] fixed_ips: An array of desired IPs for
                this port. The structure is described below.
-        :param pulumi.Input[str] mac_address: The additional MAC address.
-        :param pulumi.Input[str] name: Name of the DHCP option.
+        :param pulumi.Input[str] mac_address: Specify a specific MAC address for the port. Changing
+               this creates a new port.
+        :param pulumi.Input[str] name: A unique name for the port. Changing this
+               updates the `name` of an existing port.
         :param pulumi.Input[str] network_id: The ID of the network to attach the port to. Changing
                this creates a new port.
         :param pulumi.Input[bool] no_fixed_ip: Create a port with no fixed
@@ -734,7 +740,8 @@ class _PortState:
     @pulumi.getter(name="macAddress")
     def mac_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The additional MAC address.
+        Specify a specific MAC address for the port. Changing
+        this creates a new port.
         """
         return pulumi.get(self, "mac_address")
 
@@ -746,7 +753,8 @@ class _PortState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the DHCP option.
+        A unique name for the port. Changing this
+        updates the `name` of an existing port.
         """
         return pulumi.get(self, "name")
 
@@ -1009,8 +1017,10 @@ class Port(pulumi.CustomResource):
                times.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortFixedIpArgs']]]] fixed_ips: An array of desired IPs for
                this port. The structure is described below.
-        :param pulumi.Input[str] mac_address: The additional MAC address.
-        :param pulumi.Input[str] name: Name of the DHCP option.
+        :param pulumi.Input[str] mac_address: Specify a specific MAC address for the port. Changing
+               this creates a new port.
+        :param pulumi.Input[str] name: A unique name for the port. Changing this
+               updates the `name` of an existing port.
         :param pulumi.Input[str] network_id: The ID of the network to attach the port to. Changing
                this creates a new port.
         :param pulumi.Input[bool] no_fixed_ip: Create a port with no fixed
@@ -1254,8 +1264,10 @@ class Port(pulumi.CustomResource):
                times.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PortFixedIpArgs']]]] fixed_ips: An array of desired IPs for
                this port. The structure is described below.
-        :param pulumi.Input[str] mac_address: The additional MAC address.
-        :param pulumi.Input[str] name: Name of the DHCP option.
+        :param pulumi.Input[str] mac_address: Specify a specific MAC address for the port. Changing
+               this creates a new port.
+        :param pulumi.Input[str] name: A unique name for the port. Changing this
+               updates the `name` of an existing port.
         :param pulumi.Input[str] network_id: The ID of the network to attach the port to. Changing
                this creates a new port.
         :param pulumi.Input[bool] no_fixed_ip: Create a port with no fixed
@@ -1440,7 +1452,8 @@ class Port(pulumi.CustomResource):
     @pulumi.getter(name="macAddress")
     def mac_address(self) -> pulumi.Output[str]:
         """
-        The additional MAC address.
+        Specify a specific MAC address for the port. Changing
+        this creates a new port.
         """
         return pulumi.get(self, "mac_address")
 
@@ -1448,7 +1461,8 @@ class Port(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the DHCP option.
+        A unique name for the port. Changing this
+        updates the `name` of an existing port.
         """
         return pulumi.get(self, "name")
 

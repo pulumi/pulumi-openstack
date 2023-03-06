@@ -33,7 +33,8 @@ public final class Ec2CredentialV3State extends com.pulumi.resources.ResourceArg
     /**
      * The ID of the project the EC2 credential is created
      * for and that authentication requests using this EC2 credential will
-     * be scoped to.
+     * be scoped to. Only administrative users can specify a project ID different
+     * from the current auth scope.
      * 
      */
     @Import(name="projectId")
@@ -42,7 +43,8 @@ public final class Ec2CredentialV3State extends com.pulumi.resources.ResourceArg
     /**
      * @return The ID of the project the EC2 credential is created
      * for and that authentication requests using this EC2 credential will
-     * be scoped to.
+     * be scoped to. Only administrative users can specify a project ID different
+     * from the current auth scope.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -100,6 +102,8 @@ public final class Ec2CredentialV3State extends com.pulumi.resources.ResourceArg
 
     /**
      * The ID of the user the EC2 credential is created for.
+     * Only administrative users can specify a user ID different from the current
+     * auth scope.
      * 
      */
     @Import(name="userId")
@@ -107,6 +111,8 @@ public final class Ec2CredentialV3State extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The ID of the user the EC2 credential is created for.
+     * Only administrative users can specify a user ID different from the current
+     * auth scope.
      * 
      */
     public Optional<Output<String>> userId() {
@@ -166,7 +172,8 @@ public final class Ec2CredentialV3State extends com.pulumi.resources.ResourceArg
         /**
          * @param projectId The ID of the project the EC2 credential is created
          * for and that authentication requests using this EC2 credential will
-         * be scoped to.
+         * be scoped to. Only administrative users can specify a project ID different
+         * from the current auth scope.
          * 
          * @return builder
          * 
@@ -179,7 +186,8 @@ public final class Ec2CredentialV3State extends com.pulumi.resources.ResourceArg
         /**
          * @param projectId The ID of the project the EC2 credential is created
          * for and that authentication requests using this EC2 credential will
-         * be scoped to.
+         * be scoped to. Only administrative users can specify a project ID different
+         * from the current auth scope.
          * 
          * @return builder
          * 
@@ -257,6 +265,8 @@ public final class Ec2CredentialV3State extends com.pulumi.resources.ResourceArg
 
         /**
          * @param userId The ID of the user the EC2 credential is created for.
+         * Only administrative users can specify a user ID different from the current
+         * auth scope.
          * 
          * @return builder
          * 
@@ -268,6 +278,8 @@ public final class Ec2CredentialV3State extends com.pulumi.resources.ResourceArg
 
         /**
          * @param userId The ID of the user the EC2 credential is created for.
+         * Only administrative users can specify a user ID different from the current
+         * auth scope.
          * 
          * @return builder
          * 

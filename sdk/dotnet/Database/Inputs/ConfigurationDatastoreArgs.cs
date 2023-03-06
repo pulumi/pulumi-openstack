@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Database.Inputs
 {
 
-    public sealed class ConfigurationDatastoreArgs : Pulumi.ResourceArgs
+    public sealed class ConfigurationDatastoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Database engine type to be used with this configuration. Changing this creates a new resource.
@@ -27,5 +27,6 @@ namespace Pulumi.OpenStack.Database.Inputs
         public ConfigurationDatastoreArgs()
         {
         }
+        public static new ConfigurationDatastoreArgs Empty => new ConfigurationDatastoreArgs();
     }
 }

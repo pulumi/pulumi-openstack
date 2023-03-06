@@ -20,26 +20,24 @@ namespace Pulumi.OpenStack.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var test = OpenStack.Compute.GetAggregateV2.Invoke(new()
         ///     {
-        ///         var test = Output.Create(OpenStack.Compute.GetAggregateV2.InvokeAsync(new OpenStack.Compute.GetAggregateV2Args
-        ///         {
-        ///             Name = "test",
-        ///         }));
-        ///     }
+        ///         Name = "test",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAggregateV2Result> InvokeAsync(GetAggregateV2Args args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAggregateV2Result>("openstack:compute/getAggregateV2:getAggregateV2", args ?? new GetAggregateV2Args(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAggregateV2Result>("openstack:compute/getAggregateV2:getAggregateV2", args ?? new GetAggregateV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about host aggregates
@@ -50,30 +48,28 @@ namespace Pulumi.OpenStack.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var test = OpenStack.Compute.GetAggregateV2.Invoke(new()
         ///     {
-        ///         var test = Output.Create(OpenStack.Compute.GetAggregateV2.InvokeAsync(new OpenStack.Compute.GetAggregateV2Args
-        ///         {
-        ///             Name = "test",
-        ///         }));
-        ///     }
+        ///         Name = "test",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAggregateV2Result> Invoke(GetAggregateV2InvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAggregateV2Result>("openstack:compute/getAggregateV2:getAggregateV2", args ?? new GetAggregateV2InvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAggregateV2Result>("openstack:compute/getAggregateV2:getAggregateV2", args ?? new GetAggregateV2InvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAggregateV2Args : Pulumi.InvokeArgs
+    public sealed class GetAggregateV2Args : global::Pulumi.InvokeArgs
     {
         [Input("hosts")]
         private List<string>? _hosts;
@@ -108,9 +104,10 @@ namespace Pulumi.OpenStack.Compute
         public GetAggregateV2Args()
         {
         }
+        public static new GetAggregateV2Args Empty => new GetAggregateV2Args();
     }
 
-    public sealed class GetAggregateV2InvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAggregateV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("hosts")]
         private InputList<string>? _hosts;
@@ -145,6 +142,7 @@ namespace Pulumi.OpenStack.Compute
         public GetAggregateV2InvokeArgs()
         {
         }
+        public static new GetAggregateV2InvokeArgs Empty => new GetAggregateV2InvokeArgs();
     }
 
 

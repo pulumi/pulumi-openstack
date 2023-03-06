@@ -559,7 +559,7 @@ class SecurityService(pulumi.CustomResource):
             __props__.__dict__["domain"] = domain
             __props__.__dict__["name"] = name
             __props__.__dict__["ou"] = ou
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["region"] = region
             __props__.__dict__["server"] = server
             if type is None and not opts.urn:
@@ -567,6 +567,8 @@ class SecurityService(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["user"] = user
             __props__.__dict__["project_id"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(SecurityService, __self__).__init__(
             'openstack:sharedfilesystem/securityService:SecurityService',
             resource_name,

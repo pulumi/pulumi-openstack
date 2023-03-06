@@ -19,7 +19,7 @@ namespace Pulumi.OpenStack.Networking
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/secGroup:SecGroup")]
-    public partial class SecGroup : Pulumi.CustomResource
+    public partial class SecGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The collection of tags assigned on the security group, which have
@@ -115,7 +115,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
-    public sealed class SecGroupArgs : Pulumi.ResourceArgs
+    public sealed class SecGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether or not to delete the default
@@ -169,9 +169,10 @@ namespace Pulumi.OpenStack.Networking
         public SecGroupArgs()
         {
         }
+        public static new SecGroupArgs Empty => new SecGroupArgs();
     }
 
-    public sealed class SecGroupState : Pulumi.ResourceArgs
+    public sealed class SecGroupState : global::Pulumi.ResourceArgs
     {
         [Input("allTags")]
         private InputList<string>? _allTags;
@@ -238,5 +239,6 @@ namespace Pulumi.OpenStack.Networking
         public SecGroupState()
         {
         }
+        public static new SecGroupState Empty => new SecGroupState();
     }
 }

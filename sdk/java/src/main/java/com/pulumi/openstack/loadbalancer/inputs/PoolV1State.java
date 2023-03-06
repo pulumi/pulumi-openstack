@@ -173,16 +173,16 @@ public final class PoolV1State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The owner of the member. Required if admin wants to
-     * create a pool member for another tenant. Changing this creates a new member.
+     * The owner of the pool. Required if admin wants to
+     * create a pool member for another tenant. Changing this creates a new pool.
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return The owner of the member. Required if admin wants to
-     * create a pool member for another tenant. Changing this creates a new member.
+     * @return The owner of the pool. Required if admin wants to
+     * create a pool member for another tenant. Changing this creates a new pool.
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -454,8 +454,8 @@ public final class PoolV1State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId The owner of the member. Required if admin wants to
-         * create a pool member for another tenant. Changing this creates a new member.
+         * @param tenantId The owner of the pool. Required if admin wants to
+         * create a pool member for another tenant. Changing this creates a new pool.
          * 
          * @return builder
          * 
@@ -466,8 +466,8 @@ public final class PoolV1State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId The owner of the member. Required if admin wants to
-         * create a pool member for another tenant. Changing this creates a new member.
+         * @param tenantId The owner of the pool. Required if admin wants to
+         * create a pool member for another tenant. Changing this creates a new pool.
          * 
          * @return builder
          * 

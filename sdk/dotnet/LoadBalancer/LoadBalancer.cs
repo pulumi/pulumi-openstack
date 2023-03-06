@@ -18,20 +18,18 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var lb1 = new OpenStack.LoadBalancer.LoadBalancer("lb1", new()
     ///     {
-    ///         var lb1 = new OpenStack.LoadBalancer.LoadBalancer("lb1", new OpenStack.LoadBalancer.LoadBalancerArgs
-    ///         {
-    ///             VipSubnetId = "d9415786-5f1a-428b-b35f-2f1523e146d2",
-    ///         });
-    ///     }
+    ///         VipSubnetId = "d9415786-5f1a-428b-b35f-2f1523e146d2",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:loadbalancer/loadBalancer:LoadBalancer")]
-    public partial class LoadBalancer : Pulumi.CustomResource
+    public partial class LoadBalancer : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The administrative state of the Loadbalancer.
@@ -197,7 +195,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         }
     }
 
-    public sealed class LoadBalancerArgs : Pulumi.ResourceArgs
+    public sealed class LoadBalancerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The administrative state of the Loadbalancer.
@@ -322,9 +320,10 @@ namespace Pulumi.OpenStack.LoadBalancer
         public LoadBalancerArgs()
         {
         }
+        public static new LoadBalancerArgs Empty => new LoadBalancerArgs();
     }
 
-    public sealed class LoadBalancerState : Pulumi.ResourceArgs
+    public sealed class LoadBalancerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The administrative state of the Loadbalancer.
@@ -449,5 +448,6 @@ namespace Pulumi.OpenStack.LoadBalancer
         public LoadBalancerState()
         {
         }
+        public static new LoadBalancerState Empty => new LoadBalancerState();
     }
 }

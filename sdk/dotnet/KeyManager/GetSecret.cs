@@ -17,21 +17,19 @@ namespace Pulumi.OpenStack.KeyManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = OpenStack.KeyManager.GetSecret.Invoke(new()
         ///     {
-        ///         var example = Output.Create(OpenStack.KeyManager.GetSecret.InvokeAsync(new OpenStack.KeyManager.GetSecretArgs
-        ///         {
-        ///             Mode = "cbc",
-        ///             SecretType = "passphrase",
-        ///         }));
-        ///     }
+        ///         Mode = "cbc",
+        ///         SecretType = "passphrase",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -47,26 +45,24 @@ namespace Pulumi.OpenStack.KeyManager
         /// January of 2020:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var dateFilterExample = OpenStack.KeyManager.GetSecret.Invoke(new()
         ///     {
-        ///         var dateFilterExample = Output.Create(OpenStack.KeyManager.GetSecret.InvokeAsync(new OpenStack.KeyManager.GetSecretArgs
-        ///         {
-        ///             ExpirationFilter = "gt:2020-01-01T00:00:00Z",
-        ///             Mode = "cbc",
-        ///             SecretType = "passphrase",
-        ///         }));
-        ///     }
+        ///         ExpirationFilter = "gt:2020-01-01T00:00:00Z",
+        ///         Mode = "cbc",
+        ///         SecretType = "passphrase",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public static Task<GetSecretResult> InvokeAsync(GetSecretArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("openstack:keymanager/getSecret:getSecret", args ?? new GetSecretArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("openstack:keymanager/getSecret:getSecret", args ?? new GetSecretArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -74,21 +70,19 @@ namespace Pulumi.OpenStack.KeyManager
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = OpenStack.KeyManager.GetSecret.Invoke(new()
         ///     {
-        ///         var example = Output.Create(OpenStack.KeyManager.GetSecret.InvokeAsync(new OpenStack.KeyManager.GetSecretArgs
-        ///         {
-        ///             Mode = "cbc",
-        ///             SecretType = "passphrase",
-        ///         }));
-        ///     }
+        ///         Mode = "cbc",
+        ///         SecretType = "passphrase",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -104,30 +98,28 @@ namespace Pulumi.OpenStack.KeyManager
         /// January of 2020:
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var dateFilterExample = OpenStack.KeyManager.GetSecret.Invoke(new()
         ///     {
-        ///         var dateFilterExample = Output.Create(OpenStack.KeyManager.GetSecret.InvokeAsync(new OpenStack.KeyManager.GetSecretArgs
-        ///         {
-        ///             ExpirationFilter = "gt:2020-01-01T00:00:00Z",
-        ///             Mode = "cbc",
-        ///             SecretType = "passphrase",
-        ///         }));
-        ///     }
+        ///         ExpirationFilter = "gt:2020-01-01T00:00:00Z",
+        ///         Mode = "cbc",
+        ///         SecretType = "passphrase",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// </summary>
         public static Output<GetSecretResult> Invoke(GetSecretInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSecretResult>("openstack:keymanager/getSecret:getSecret", args ?? new GetSecretInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecretResult>("openstack:keymanager/getSecret:getSecret", args ?? new GetSecretInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSecretArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Select the Secret with an ACL that contains the user.
@@ -202,9 +194,10 @@ namespace Pulumi.OpenStack.KeyManager
         public GetSecretArgs()
         {
         }
+        public static new GetSecretArgs Empty => new GetSecretArgs();
     }
 
-    public sealed class GetSecretInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Select the Secret with an ACL that contains the user.
@@ -279,6 +272,7 @@ namespace Pulumi.OpenStack.KeyManager
         public GetSecretInvokeArgs()
         {
         }
+        public static new GetSecretInvokeArgs Empty => new GetSecretInvokeArgs();
     }
 
 

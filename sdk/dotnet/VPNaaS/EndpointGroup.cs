@@ -15,25 +15,23 @@ namespace Pulumi.OpenStack.VPNaaS
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var group1 = new OpenStack.VPNaaS.EndpointGroup("group1", new()
     ///     {
-    ///         var group1 = new OpenStack.VPNaaS.EndpointGroup("group1", new OpenStack.VPNaaS.EndpointGroupArgs
+    ///         Endpoints = new[]
     ///         {
-    ///             Endpoints = 
-    ///             {
-    ///                 "10.2.0.0/24",
-    ///                 "10.3.0.0/24",
-    ///             },
-    ///             Type = "cidr",
-    ///         });
-    ///     }
+    ///             "10.2.0.0/24",
+    ///             "10.3.0.0/24",
+    ///         },
+    ///         Type = "cidr",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -45,7 +43,7 @@ namespace Pulumi.OpenStack.VPNaaS
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:vpnaas/endpointGroup:EndpointGroup")]
-    public partial class EndpointGroup : Pulumi.CustomResource
+    public partial class EndpointGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The human-readable description for the group.
@@ -141,7 +139,7 @@ namespace Pulumi.OpenStack.VPNaaS
         }
     }
 
-    public sealed class EndpointGroupArgs : Pulumi.ResourceArgs
+    public sealed class EndpointGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The human-readable description for the group.
@@ -208,9 +206,10 @@ namespace Pulumi.OpenStack.VPNaaS
         public EndpointGroupArgs()
         {
         }
+        public static new EndpointGroupArgs Empty => new EndpointGroupArgs();
     }
 
-    public sealed class EndpointGroupState : Pulumi.ResourceArgs
+    public sealed class EndpointGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The human-readable description for the group.
@@ -277,5 +276,6 @@ namespace Pulumi.OpenStack.VPNaaS
         public EndpointGroupState()
         {
         }
+        public static new EndpointGroupState Empty => new EndpointGroupState();
     }
 }

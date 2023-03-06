@@ -15,23 +15,21 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var vip1 = new OpenStack.LoadBalancer.Vip("vip1", new()
     ///     {
-    ///         var vip1 = new OpenStack.LoadBalancer.Vip("vip1", new OpenStack.LoadBalancer.VipArgs
-    ///         {
-    ///             PoolId = "67890",
-    ///             Port = 80,
-    ///             Protocol = "HTTP",
-    ///             SubnetId = "12345",
-    ///         });
-    ///     }
+    ///         PoolId = "67890",
+    ///         Port = 80,
+    ///         Protocol = "HTTP",
+    ///         SubnetId = "12345",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -43,7 +41,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:loadbalancer/vip:Vip")]
-    public partial class Vip : Pulumi.CustomResource
+    public partial class Vip : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The IP address of the vip. Changing this creates a new
@@ -193,7 +191,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         }
     }
 
-    public sealed class VipArgs : Pulumi.ResourceArgs
+    public sealed class VipArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address of the vip. Changing this creates a new
@@ -302,9 +300,10 @@ namespace Pulumi.OpenStack.LoadBalancer
         public VipArgs()
         {
         }
+        public static new VipArgs Empty => new VipArgs();
     }
 
-    public sealed class VipState : Pulumi.ResourceArgs
+    public sealed class VipState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address of the vip. Changing this creates a new
@@ -419,5 +418,6 @@ namespace Pulumi.OpenStack.LoadBalancer
         public VipState()
         {
         }
+        public static new VipState Empty => new VipState();
     }
 }

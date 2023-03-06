@@ -23,36 +23,33 @@ namespace Pulumi.OpenStack.BlockStorage
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var project1 = new OpenStack.Identity.Project("project1", new OpenStack.Identity.ProjectArgs
-    ///         {
-    ///         });
-    ///         var quotaset1 = new OpenStack.BlockStorage.QuoteSetV3("quotaset1", new OpenStack.BlockStorage.QuoteSetV3Args
-    ///         {
-    ///             ProjectId = project1.Id,
-    ///             Volumes = 10,
-    ///             Snapshots = 4,
-    ///             Gigabytes = 100,
-    ///             PerVolumeGigabytes = 10,
-    ///             Backups = 4,
-    ///             BackupGigabytes = 10,
-    ///             Groups = 100,
-    ///             VolumeTypeQuota = 
-    ///             {
-    ///                 { "volumes_ssd", 30 },
-    ///                 { "gigabytes_ssd", 500 },
-    ///                 { "snapshots_ssd", 10 },
-    ///             },
-    ///         });
-    ///     }
+    ///     var project1 = new OpenStack.Identity.Project("project1");
     /// 
-    /// }
+    ///     var quotaset1 = new OpenStack.BlockStorage.QuoteSetV3("quotaset1", new()
+    ///     {
+    ///         ProjectId = project1.Id,
+    ///         Volumes = 10,
+    ///         Snapshots = 4,
+    ///         Gigabytes = 100,
+    ///         PerVolumeGigabytes = 10,
+    ///         Backups = 4,
+    ///         BackupGigabytes = 10,
+    ///         Groups = 100,
+    ///         VolumeTypeQuota = 
+    ///         {
+    ///             { "volumes_ssd", 30 },
+    ///             { "gigabytes_ssd", 500 },
+    ///             { "snapshots_ssd", 10 },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -64,7 +61,7 @@ namespace Pulumi.OpenStack.BlockStorage
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:blockstorage/quoteSetV3:QuoteSetV3")]
-    public partial class QuoteSetV3 : Pulumi.CustomResource
+    public partial class QuoteSetV3 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Quota value for backup gigabytes. Changing
@@ -182,7 +179,7 @@ namespace Pulumi.OpenStack.BlockStorage
         }
     }
 
-    public sealed class QuoteSetV3Args : Pulumi.ResourceArgs
+    public sealed class QuoteSetV3Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Quota value for backup gigabytes. Changing
@@ -265,9 +262,10 @@ namespace Pulumi.OpenStack.BlockStorage
         public QuoteSetV3Args()
         {
         }
+        public static new QuoteSetV3Args Empty => new QuoteSetV3Args();
     }
 
-    public sealed class QuoteSetV3State : Pulumi.ResourceArgs
+    public sealed class QuoteSetV3State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Quota value for backup gigabytes. Changing
@@ -350,5 +348,6 @@ namespace Pulumi.OpenStack.BlockStorage
         public QuoteSetV3State()
         {
         }
+        public static new QuoteSetV3State Empty => new QuoteSetV3State();
     }
 }

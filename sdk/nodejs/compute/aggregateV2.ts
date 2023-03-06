@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const dellServers = new openstack.compute.AggregateV2("dell_servers", {
+ * const dellServers = new openstack.compute.AggregateV2("dellServers", {
  *     hosts: [
  *         "myhost01.example.com",
  *         "myhost02.example.com",

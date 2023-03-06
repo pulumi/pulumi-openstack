@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var snapshot1 = OpenStack.SharedFileSystem.GetSnapshot.Invoke(new()
         ///     {
-        ///         var snapshot1 = Output.Create(OpenStack.SharedFileSystem.GetSnapshot.InvokeAsync(new OpenStack.SharedFileSystem.GetSnapshotArgs
-        ///         {
-        ///             Name = "snapshot_1",
-        ///         }));
-        ///     }
+        ///         Name = "snapshot_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSnapshotResult> InvokeAsync(GetSnapshotArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("openstack:sharedfilesystem/getSnapshot:getSnapshot", args ?? new GetSnapshotArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("openstack:sharedfilesystem/getSnapshot:getSnapshot", args ?? new GetSnapshotArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available Shared File System snapshot.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var snapshot1 = OpenStack.SharedFileSystem.GetSnapshot.Invoke(new()
         ///     {
-        ///         var snapshot1 = Output.Create(OpenStack.SharedFileSystem.GetSnapshot.InvokeAsync(new OpenStack.SharedFileSystem.GetSnapshotArgs
-        ///         {
-        ///             Name = "snapshot_1",
-        ///         }));
-        ///     }
+        ///         Name = "snapshot_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSnapshotResult> Invoke(GetSnapshotInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSnapshotResult>("openstack:sharedfilesystem/getSnapshot:getSnapshot", args ?? new GetSnapshotInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotResult>("openstack:sharedfilesystem/getSnapshot:getSnapshot", args ?? new GetSnapshotInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSnapshotArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The human-readable description of the snapshot.
@@ -108,9 +104,10 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public GetSnapshotArgs()
         {
         }
+        public static new GetSnapshotArgs Empty => new GetSnapshotArgs();
     }
 
-    public sealed class GetSnapshotInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The human-readable description of the snapshot.
@@ -147,6 +144,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public GetSnapshotInvokeArgs()
         {
         }
+        public static new GetSnapshotInvokeArgs Empty => new GetSnapshotInvokeArgs();
     }
 
 

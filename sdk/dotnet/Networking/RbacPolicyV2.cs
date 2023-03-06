@@ -27,27 +27,26 @@ namespace Pulumi.OpenStack.Networking
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
     ///     {
-    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var rbacPolicy1 = new OpenStack.Networking.RbacPolicyV2("rbacPolicy1", new OpenStack.Networking.RbacPolicyV2Args
-    ///         {
-    ///             Action = "access_as_shared",
-    ///             ObjectId = network1.Id,
-    ///             ObjectType = "network",
-    ///             TargetTenant = "20415a973c9e45d3917f078950644697",
-    ///         });
-    ///     }
+    ///         AdminStateUp = true,
+    ///     });
     /// 
-    /// }
+    ///     var rbacPolicy1 = new OpenStack.Networking.RbacPolicyV2("rbacPolicy1", new()
+    ///     {
+    ///         Action = "access_as_shared",
+    ///         ObjectId = network1.Id,
+    ///         ObjectType = "network",
+    ///         TargetTenant = "20415a973c9e45d3917f078950644697",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -59,7 +58,7 @@ namespace Pulumi.OpenStack.Networking
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/rbacPolicyV2:RbacPolicyV2")]
-    public partial class RbacPolicyV2 : Pulumi.CustomResource
+    public partial class RbacPolicyV2 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Action for the RBAC policy. Can either be
@@ -147,7 +146,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
-    public sealed class RbacPolicyV2Args : Pulumi.ResourceArgs
+    public sealed class RbacPolicyV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Action for the RBAC policy. Can either be
@@ -191,9 +190,10 @@ namespace Pulumi.OpenStack.Networking
         public RbacPolicyV2Args()
         {
         }
+        public static new RbacPolicyV2Args Empty => new RbacPolicyV2Args();
     }
 
-    public sealed class RbacPolicyV2State : Pulumi.ResourceArgs
+    public sealed class RbacPolicyV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Action for the RBAC policy. Can either be
@@ -240,5 +240,6 @@ namespace Pulumi.OpenStack.Networking
         public RbacPolicyV2State()
         {
         }
+        public static new RbacPolicyV2State Empty => new RbacPolicyV2State();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.LoadBalancer.Inputs
 {
 
-    public sealed class PoolPersistenceArgs : Pulumi.ResourceArgs
+    public sealed class PoolPersistenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the cookie if persistence mode is set
@@ -29,5 +29,6 @@ namespace Pulumi.OpenStack.LoadBalancer.Inputs
         public PoolPersistenceArgs()
         {
         }
+        public static new PoolPersistenceArgs Empty => new PoolPersistenceArgs();
     }
 }

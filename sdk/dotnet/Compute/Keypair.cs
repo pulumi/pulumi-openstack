@@ -14,37 +14,31 @@ namespace Pulumi.OpenStack.Compute
     /// ### Import an Existing Public Key
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var test_keypair = new OpenStack.Compute.Keypair("test-keypair", new()
     ///     {
-    ///         var test_keypair = new OpenStack.Compute.Keypair("test-keypair", new OpenStack.Compute.KeypairArgs
-    ///         {
-    ///             PublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAjpC1hwiOCCmKEWxJ4qzTTsJbKzndLotBCz5PcwtUnflmU+gHJtWMZKpuEGVi29h0A/+ydKek1O18k10Ff+4tyFjiHDQAnOfgWf7+b1yK+qDip3X1C0UPMbwHlTfSGWLGZqd9LvEFx9k3h/M+VtMvwR1lJ9LUyTAImnNjWG7TaIPmui30HvM2UiFEmqkr4ijq45MyX2+fLIePLRIF61p4whjHAQYufqyno3BS48icQb4p6iVEZPo4AE2o9oIyQvj2mx4dk5Y8CgSETOZTYDOR3rU2fZTRDRgPJDH9FWvQjF5tA0p3d9CoWWd2s6GKKbfoUIi8R/Db1BSPJwkqB",
-    ///         });
-    ///     }
+    ///         PublicKey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAjpC1hwiOCCmKEWxJ4qzTTsJbKzndLotBCz5PcwtUnflmU+gHJtWMZKpuEGVi29h0A/+ydKek1O18k10Ff+4tyFjiHDQAnOfgWf7+b1yK+qDip3X1C0UPMbwHlTfSGWLGZqd9LvEFx9k3h/M+VtMvwR1lJ9LUyTAImnNjWG7TaIPmui30HvM2UiFEmqkr4ijq45MyX2+fLIePLRIF61p4whjHAQYufqyno3BS48icQb4p6iVEZPo4AE2o9oIyQvj2mx4dk5Y8CgSETOZTYDOR3rU2fZTRDRgPJDH9FWvQjF5tA0p3d9CoWWd2s6GKKbfoUIi8R/Db1BSPJwkqB",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Generate a Public/Private Key Pair
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var test_keypair = new OpenStack.Compute.Keypair("test-keypair", new OpenStack.Compute.KeypairArgs
-    ///         {
-    ///         });
-    ///     }
+    ///     var test_keypair = new OpenStack.Compute.Keypair("test-keypair");
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -56,7 +50,7 @@ namespace Pulumi.OpenStack.Compute
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:compute/keypair:Keypair")]
-    public partial class Keypair : Pulumi.CustomResource
+    public partial class Keypair : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The fingerprint of the public key.
@@ -154,7 +148,7 @@ namespace Pulumi.OpenStack.Compute
         }
     }
 
-    public sealed class KeypairArgs : Pulumi.ResourceArgs
+    public sealed class KeypairArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A unique name for the keypair. Changing this creates a new
@@ -205,9 +199,10 @@ namespace Pulumi.OpenStack.Compute
         public KeypairArgs()
         {
         }
+        public static new KeypairArgs Empty => new KeypairArgs();
     }
 
-    public sealed class KeypairState : Pulumi.ResourceArgs
+    public sealed class KeypairState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The fingerprint of the public key.
@@ -270,5 +265,6 @@ namespace Pulumi.OpenStack.Compute
         public KeypairState()
         {
         }
+        public static new KeypairState Empty => new KeypairState();
     }
 }

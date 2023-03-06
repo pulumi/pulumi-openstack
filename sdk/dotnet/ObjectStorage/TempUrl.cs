@@ -21,39 +21,39 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
     ///     {
-    ///         var container1 = new OpenStack.ObjectStorage.Container("container1", new OpenStack.ObjectStorage.ContainerArgs
+    ///         Metadata = 
     ///         {
-    ///             Metadata = 
-    ///             {
-    ///                 { "Temp-URL-Key", "testkey" },
-    ///             },
-    ///         });
-    ///         var object1 = new OpenStack.ObjectStorage.ContainerObject("object1", new OpenStack.ObjectStorage.ContainerObjectArgs
-    ///         {
-    ///             ContainerName = container1.Name,
-    ///             Content = "Hello, world!",
-    ///         });
-    ///         var objTempurl = new OpenStack.ObjectStorage.TempUrl("objTempurl", new OpenStack.ObjectStorage.TempUrlArgs
-    ///         {
-    ///             Container = container1.Name,
-    ///             Method = "post",
-    ///             Object = object1.Name,
-    ///             Ttl = 20,
-    ///         });
-    ///     }
+    ///             { "Temp-URL-Key", "testkey" },
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var object1 = new OpenStack.ObjectStorage.ContainerObject("object1", new()
+    ///     {
+    ///         ContainerName = container1.Name,
+    ///         Content = "Hello, world!",
+    ///     });
+    /// 
+    ///     var objTempurl = new OpenStack.ObjectStorage.TempUrl("objTempurl", new()
+    ///     {
+    ///         Container = container1.Name,
+    ///         Method = "post",
+    ///         Object = object1.Name,
+    ///         Ttl = 20,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:objectstorage/tempUrl:TempUrl")]
-    public partial class TempUrl : Pulumi.CustomResource
+    public partial class TempUrl : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The container name the object belongs to.
@@ -127,6 +127,10 @@ namespace Pulumi.OpenStack.ObjectStorage
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "url",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -148,7 +152,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         }
     }
 
-    public sealed class TempUrlArgs : Pulumi.ResourceArgs
+    public sealed class TempUrlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The container name the object belongs to.
@@ -196,9 +200,10 @@ namespace Pulumi.OpenStack.ObjectStorage
         public TempUrlArgs()
         {
         }
+        public static new TempUrlArgs Empty => new TempUrlArgs();
     }
 
-    public sealed class TempUrlState : Pulumi.ResourceArgs
+    public sealed class TempUrlState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The container name the object belongs to.
@@ -243,14 +248,25 @@ namespace Pulumi.OpenStack.ObjectStorage
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
 
+        [Input("url")]
+        private Input<string>? _url;
+
         /// <summary>
         /// The URL
         /// </summary>
-        [Input("url")]
-        public Input<string>? Url { get; set; }
+        public Input<string>? Url
+        {
+            get => _url;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _url = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public TempUrlState()
         {
         }
+        public static new TempUrlState Empty => new TempUrlState();
     }
 }

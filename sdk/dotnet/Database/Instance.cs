@@ -14,38 +14,36 @@ namespace Pulumi.OpenStack.Database
     /// ### Instance
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var test = new OpenStack.Database.Instance("test", new()
     ///     {
-    ///         var test = new OpenStack.Database.Instance("test", new OpenStack.Database.InstanceArgs
+    ///         Datastore = new OpenStack.Database.Inputs.InstanceDatastoreArgs
     ///         {
-    ///             Datastore = new OpenStack.Database.Inputs.InstanceDatastoreArgs
+    ///             Type = "mysql",
+    ///             Version = "mysql-5.7",
+    ///         },
+    ///         FlavorId = "31792d21-c355-4587-9290-56c1ed0ca376",
+    ///         Networks = new[]
+    ///         {
+    ///             new OpenStack.Database.Inputs.InstanceNetworkArgs
     ///             {
-    ///                 Type = "mysql",
-    ///                 Version = "mysql-5.7",
+    ///                 Uuid = "c0612505-caf2-4fb0-b7cb-56a0240a2b12",
     ///             },
-    ///             FlavorId = "31792d21-c355-4587-9290-56c1ed0ca376",
-    ///             Networks = 
-    ///             {
-    ///                 new OpenStack.Database.Inputs.InstanceNetworkArgs
-    ///                 {
-    ///                     Uuid = "c0612505-caf2-4fb0-b7cb-56a0240a2b12",
-    ///                 },
-    ///             },
-    ///             Region = "region-test",
-    ///             Size = 8,
-    ///         });
-    ///     }
+    ///         },
+    ///         Region = "region-test",
+    ///         Size = 8,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:database/instance:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of IP addresses assigned to the instance.
@@ -82,8 +80,7 @@ namespace Pulumi.OpenStack.Database
         public Output<string> FlavorId { get; private set; } = null!;
 
         /// <summary>
-        /// Database to be created on new instance. Changing this creates a
-        /// new instance.
+        /// A unique name for the resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -160,7 +157,7 @@ namespace Pulumi.OpenStack.Database
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration ID to be attached to the instance. Database instance
@@ -197,8 +194,7 @@ namespace Pulumi.OpenStack.Database
         public Input<string>? FlavorId { get; set; }
 
         /// <summary>
-        /// Database to be created on new instance. Changing this creates a
-        /// new instance.
+        /// A unique name for the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -246,9 +242,10 @@ namespace Pulumi.OpenStack.Database
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 
-    public sealed class InstanceState : Pulumi.ResourceArgs
+    public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         [Input("addresses")]
         private InputList<string>? _addresses;
@@ -297,8 +294,7 @@ namespace Pulumi.OpenStack.Database
         public Input<string>? FlavorId { get; set; }
 
         /// <summary>
-        /// Database to be created on new instance. Changing this creates a
-        /// new instance.
+        /// A unique name for the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -346,5 +342,6 @@ namespace Pulumi.OpenStack.Database
         public InstanceState()
         {
         }
+        public static new InstanceState Empty => new InstanceState();
     }
 }

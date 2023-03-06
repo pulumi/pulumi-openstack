@@ -17,20 +17,18 @@ namespace Pulumi.OpenStack.Identity
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var service1 = new OpenStack.Identity.ServiceV3("service1", new()
     ///     {
-    ///         var service1 = new OpenStack.Identity.ServiceV3("service1", new OpenStack.Identity.ServiceV3Args
-    ///         {
-    ///             Type = "custom",
-    ///         });
-    ///     }
+    ///         Type = "custom",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.OpenStack.Identity
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:identity/serviceV3:ServiceV3")]
-    public partial class ServiceV3 : Pulumi.CustomResource
+    public partial class ServiceV3 : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The service description.
@@ -119,7 +117,7 @@ namespace Pulumi.OpenStack.Identity
         }
     }
 
-    public sealed class ServiceV3Args : Pulumi.ResourceArgs
+    public sealed class ServiceV3Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The service description.
@@ -155,9 +153,10 @@ namespace Pulumi.OpenStack.Identity
         public ServiceV3Args()
         {
         }
+        public static new ServiceV3Args Empty => new ServiceV3Args();
     }
 
-    public sealed class ServiceV3State : Pulumi.ResourceArgs
+    public sealed class ServiceV3State : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The service description.
@@ -193,5 +192,6 @@ namespace Pulumi.OpenStack.Identity
         public ServiceV3State()
         {
         }
+        public static new ServiceV3State Empty => new ServiceV3State();
     }
 }

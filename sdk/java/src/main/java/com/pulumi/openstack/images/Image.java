@@ -124,6 +124,26 @@ public class Image extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
+     * If true, this provider will decompress downloaded
+     * image before uploading it to OpenStack. Decompression algorithm is chosen by
+     * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2.
+     * Defaults to false. Changing this creates a new Image.
+     * 
+     */
+    @Export(name="decompress", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> decompress;
+
+    /**
+     * @return If true, this provider will decompress downloaded
+     * image before uploading it to OpenStack. Decompression algorithm is chosen by
+     * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2.
+     * Defaults to false. Changing this creates a new Image.
+     * 
+     */
+    public Output<Optional<Boolean>> decompress() {
+        return Codegen.optional(this.decompress);
+    }
+    /**
      * The disk format. Must be one of
      * &#34;ami&#34;, &#34;ari&#34;, &#34;aki&#34;, &#34;vhd&#34;, &#34;vmdk&#34;, &#34;raw&#34;, &#34;qcow2&#34;, &#34;vdi&#34;, &#34;iso&#34;.
      * 
@@ -574,6 +594,9 @@ public class Image extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "imageSourcePassword"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

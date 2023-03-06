@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export class Configuration extends pulumi.CustomResource {
@@ -47,7 +48,7 @@ export class Configuration extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Configuration parameter name. Changing this creates a new resource.
+     * A unique name for the resource.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -111,7 +112,7 @@ export interface ConfigurationState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Configuration parameter name. Changing this creates a new resource.
+     * A unique name for the resource.
      */
     name?: pulumi.Input<string>;
     /**
@@ -139,7 +140,7 @@ export interface ConfigurationArgs {
      */
     description: pulumi.Input<string>;
     /**
-     * Configuration parameter name. Changing this creates a new resource.
+     * A unique name for the resource.
      */
     name?: pulumi.Input<string>;
     /**

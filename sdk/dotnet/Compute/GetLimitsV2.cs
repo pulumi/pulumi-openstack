@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var limits = OpenStack.Compute.GetLimitsV2.Invoke(new()
         ///     {
-        ///         var limits = Output.Create(OpenStack.Compute.GetLimitsV2.InvokeAsync(new OpenStack.Compute.GetLimitsV2Args
-        ///         {
-        ///             ProjectId = "2e367a3d29f94fd988e6ec54e305ec9d",
-        ///         }));
-        ///     }
+        ///         ProjectId = "2e367a3d29f94fd988e6ec54e305ec9d",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetLimitsV2Result> InvokeAsync(GetLimitsV2Args args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLimitsV2Result>("openstack:compute/getLimitsV2:getLimitsV2", args ?? new GetLimitsV2Args(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetLimitsV2Result>("openstack:compute/getLimitsV2:getLimitsV2", args ?? new GetLimitsV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the compute limits of an OpenStack project.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var limits = OpenStack.Compute.GetLimitsV2.Invoke(new()
         ///     {
-        ///         var limits = Output.Create(OpenStack.Compute.GetLimitsV2.InvokeAsync(new OpenStack.Compute.GetLimitsV2Args
-        ///         {
-        ///             ProjectId = "2e367a3d29f94fd988e6ec54e305ec9d",
-        ///         }));
-        ///     }
+        ///         ProjectId = "2e367a3d29f94fd988e6ec54e305ec9d",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetLimitsV2Result> Invoke(GetLimitsV2InvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLimitsV2Result>("openstack:compute/getLimitsV2:getLimitsV2", args ?? new GetLimitsV2InvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetLimitsV2Result>("openstack:compute/getLimitsV2:getLimitsV2", args ?? new GetLimitsV2InvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetLimitsV2Args : Pulumi.InvokeArgs
+    public sealed class GetLimitsV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The id of the project to retrieve the limits.
@@ -89,9 +85,10 @@ namespace Pulumi.OpenStack.Compute
         public GetLimitsV2Args()
         {
         }
+        public static new GetLimitsV2Args Empty => new GetLimitsV2Args();
     }
 
-    public sealed class GetLimitsV2InvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetLimitsV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The id of the project to retrieve the limits.
@@ -109,6 +106,7 @@ namespace Pulumi.OpenStack.Compute
         public GetLimitsV2InvokeArgs()
         {
         }
+        public static new GetLimitsV2InvokeArgs Empty => new GetLimitsV2InvokeArgs();
     }
 
 

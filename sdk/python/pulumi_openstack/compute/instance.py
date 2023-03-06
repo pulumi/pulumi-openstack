@@ -86,8 +86,7 @@ class InstanceArgs:
                Changing this creates a new server.
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
                within the instance. Changing this updates the existing server metadata.
-        :param pulumi.Input[str] name: The human-readable
-               name of the network. Changing this creates a new server.
+        :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] network_mode: Special string for `network` option to create
                the server. `network_mode` can be `"auto"` or `"none"`.
                Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
@@ -392,8 +391,7 @@ class InstanceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The human-readable
-        name of the network. Changing this creates a new server.
+        A unique name for the resource.
         """
         return pulumi.get(self, "name")
 
@@ -645,8 +643,7 @@ class _InstanceState:
                Changing this creates a new server.
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
                within the instance. Changing this updates the existing server metadata.
-        :param pulumi.Input[str] name: The human-readable
-               name of the network. Changing this creates a new server.
+        :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] network_mode: Special string for `network` option to create
                the server. `network_mode` can be `"auto"` or `"none"`.
                Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
@@ -994,8 +991,7 @@ class _InstanceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The human-readable
-        name of the network. Changing this creates a new server.
+        A unique name for the resource.
         """
         return pulumi.get(self, "name")
 
@@ -1257,8 +1253,7 @@ class Instance(pulumi.CustomResource):
                Changing this creates a new server.
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
                within the instance. Changing this updates the existing server metadata.
-        :param pulumi.Input[str] name: The human-readable
-               name of the network. Changing this creates a new server.
+        :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] network_mode: Special string for `network` option to create
                the server. `network_mode` can be `"auto"` or `"none"`.
                Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
@@ -1355,7 +1350,7 @@ class Instance(pulumi.CustomResource):
 
             __props__.__dict__["access_ip_v4"] = access_ip_v4
             __props__.__dict__["access_ip_v6"] = access_ip_v6
-            __props__.__dict__["admin_pass"] = admin_pass
+            __props__.__dict__["admin_pass"] = None if admin_pass is None else pulumi.Output.secret(admin_pass)
             __props__.__dict__["availability_zone"] = availability_zone
             __props__.__dict__["availability_zone_hints"] = availability_zone_hints
             __props__.__dict__["block_devices"] = block_devices
@@ -1391,6 +1386,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["all_tags"] = None
             __props__.__dict__["created"] = None
             __props__.__dict__["updated"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["adminPass"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Instance, __self__).__init__(
             'openstack:compute/instance:Instance',
             resource_name,
@@ -1483,8 +1480,7 @@ class Instance(pulumi.CustomResource):
                Changing this creates a new server.
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
                within the instance. Changing this updates the existing server metadata.
-        :param pulumi.Input[str] name: The human-readable
-               name of the network. Changing this creates a new server.
+        :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] network_mode: Special string for `network` option to create
                the server. `network_mode` can be `"auto"` or `"none"`.
                Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
@@ -1727,8 +1723,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The human-readable
-        name of the network. Changing this creates a new server.
+        A unique name for the resource.
         """
         return pulumi.get(self, "name")
 

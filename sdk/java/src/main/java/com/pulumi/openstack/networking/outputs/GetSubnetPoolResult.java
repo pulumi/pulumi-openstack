@@ -15,7 +15,6 @@ import javax.annotation.Nullable;
 public final class GetSubnetPoolResult {
     /**
      * @return See Argument Reference above.
-     * * `ip_version` -The IP protocol version.
      * 
      */
     private String addressScopeId;
@@ -49,6 +48,10 @@ public final class GetSubnetPoolResult {
      * 
      */
     private String id;
+    /**
+     * @return The IP protocol version.
+     * 
+     */
     private Integer ipVersion;
     /**
      * @return See Argument Reference above.
@@ -105,7 +108,6 @@ public final class GetSubnetPoolResult {
     private GetSubnetPoolResult() {}
     /**
      * @return See Argument Reference above.
-     * * `ip_version` -The IP protocol version.
      * 
      */
     public String addressScopeId() {
@@ -153,6 +155,10 @@ public final class GetSubnetPoolResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The IP protocol version.
+     * 
+     */
     public Integer ipVersion() {
         return this.ipVersion;
     }

@@ -20,23 +20,21 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var zones = Output.Create(OpenStack.SharedFileSystem.GetAvailbilityZones.InvokeAsync());
-        ///     }
+        ///     var zones = OpenStack.SharedFileSystem.GetAvailbilityZones.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAvailbilityZonesResult> InvokeAsync(GetAvailbilityZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAvailbilityZonesResult>("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", args ?? new GetAvailbilityZonesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAvailbilityZonesResult>("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", args ?? new GetAvailbilityZonesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get a list of Shared File System availability zones
@@ -47,27 +45,25 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var zones = Output.Create(OpenStack.SharedFileSystem.GetAvailbilityZones.InvokeAsync());
-        ///     }
+        ///     var zones = OpenStack.SharedFileSystem.GetAvailbilityZones.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAvailbilityZonesResult> Invoke(GetAvailbilityZonesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAvailbilityZonesResult>("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", args ?? new GetAvailbilityZonesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAvailbilityZonesResult>("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", args ?? new GetAvailbilityZonesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAvailbilityZonesArgs : Pulumi.InvokeArgs
+    public sealed class GetAvailbilityZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The region in which to obtain the V2 Shared File System
@@ -79,9 +75,10 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public GetAvailbilityZonesArgs()
         {
         }
+        public static new GetAvailbilityZonesArgs Empty => new GetAvailbilityZonesArgs();
     }
 
-    public sealed class GetAvailbilityZonesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAvailbilityZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The region in which to obtain the V2 Shared File System
@@ -93,6 +90,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         public GetAvailbilityZonesInvokeArgs()
         {
         }
+        public static new GetAvailbilityZonesInvokeArgs Empty => new GetAvailbilityZonesInvokeArgs();
     }
 
 

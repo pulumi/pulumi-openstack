@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.VPNaaS.Inputs
 {
 
-    public sealed class IkePolicyLifetimeArgs : Pulumi.ResourceArgs
+    public sealed class IkePolicyLifetimeArgs : global::Pulumi.ResourceArgs
     {
         [Input("units")]
         public Input<string>? Units { get; set; }
@@ -25,5 +25,6 @@ namespace Pulumi.OpenStack.VPNaaS.Inputs
         public IkePolicyLifetimeArgs()
         {
         }
+        public static new IkePolicyLifetimeArgs Empty => new IkePolicyLifetimeArgs();
     }
 }

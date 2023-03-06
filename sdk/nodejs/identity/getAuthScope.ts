@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const scope = pulumi.output(openstack.identity.getAuthScope({
+ * const scope = openstack.identity.getAuthScope({
  *     name: "my_scope",
- * }));
+ * });
  * ```
  *
  * To find the the public object storage endpoint for "region1" as listed in the
@@ -33,11 +34,8 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAuthScope(args: GetAuthScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthScopeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:identity/getAuthScope:getAuthScope", {
         "name": args.name,
         "region": args.region,
@@ -126,9 +124,35 @@ export interface GetAuthScopeResult {
      */
     readonly userName: string;
 }
-
+/**
+ * Use this data source to get authentication information about the current
+ * auth scope in use. This can be used as self-discovery or introspection of
+ * the username or project name currently in use as well as the service catalog.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const scope = openstack.identity.getAuthScope({
+ *     name: "my_scope",
+ * });
+ * ```
+ *
+ * To find the the public object storage endpoint for "region1" as listed in the
+ * service catalog:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * const objectStoreService = .filter(entry => entry.type == "object-store").map(entry => entry)[0];
+ * const objectStoreEndpoint = .filter(endpoint => endpoint["interface"] == "public" && endpoint.region == "region1").map(endpoint => endpoint)[0];
+ * const objectStorePublicUrl = objectStoreEndpoint.url;
+ * ```
+ */
 export function getAuthScopeOutput(args: GetAuthScopeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthScopeResult> {
-    return pulumi.output(args).apply(a => getAuthScope(a, opts))
+    return pulumi.output(args).apply((a: any) => getAuthScope(a, opts))
 }
 
 /**

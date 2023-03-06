@@ -15,22 +15,20 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var member1 = new OpenStack.LoadBalancer.Member("member1", new()
     ///     {
-    ///         var member1 = new OpenStack.LoadBalancer.Member("member1", new OpenStack.LoadBalancer.MemberArgs
-    ///         {
-    ///             Address = "192.168.199.23",
-    ///             PoolId = "935685fb-a896-40f9-9ff4-ae531a3a00fe",
-    ///             ProtocolPort = 8080,
-    ///         });
-    ///     }
+    ///         Address = "192.168.199.23",
+    ///         PoolId = "935685fb-a896-40f9-9ff4-ae531a3a00fe",
+    ///         ProtocolPort = 8080,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -42,7 +40,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:loadbalancer/member:Member")]
-    public partial class Member : Pulumi.CustomResource
+    public partial class Member : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The IP address of the member to receive traffic from
@@ -175,7 +173,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         }
     }
 
-    public sealed class MemberArgs : Pulumi.ResourceArgs
+    public sealed class MemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address of the member to receive traffic from
@@ -267,9 +265,10 @@ namespace Pulumi.OpenStack.LoadBalancer
         public MemberArgs()
         {
         }
+        public static new MemberArgs Empty => new MemberArgs();
     }
 
-    public sealed class MemberState : Pulumi.ResourceArgs
+    public sealed class MemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address of the member to receive traffic from
@@ -361,5 +360,6 @@ namespace Pulumi.OpenStack.LoadBalancer
         public MemberState()
         {
         }
+        public static new MemberState Empty => new MemberState();
     }
 }

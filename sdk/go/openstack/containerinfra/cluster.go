@@ -169,6 +169,10 @@ func NewCluster(ctx *pulumi.Context,
 	if args.ClusterTemplateId == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterTemplateId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"kubeconfig",
+	})
+	opts = append(opts, secrets)
 	var resource Cluster
 	err := ctx.RegisterResource("openstack:containerinfra/cluster:Cluster", name, args, &resource, opts...)
 	if err != nil {

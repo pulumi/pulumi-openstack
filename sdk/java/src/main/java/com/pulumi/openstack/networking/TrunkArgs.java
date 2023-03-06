@@ -72,14 +72,18 @@ public final class TrunkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the port to be made a subport of the trunk.
+     * The ID of the port to be used as the parent port of the
+     * trunk. This is the port that should be used as the compute instance network
+     * port. Changing this creates a new trunk.
      * 
      */
     @Import(name="portId", required=true)
     private Output<String> portId;
 
     /**
-     * @return The ID of the port to be made a subport of the trunk.
+     * @return The ID of the port to be used as the parent port of the
+     * trunk. This is the port that should be used as the compute instance network
+     * port. Changing this creates a new trunk.
      * 
      */
     public Output<String> portId() {
@@ -259,7 +263,9 @@ public final class TrunkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portId The ID of the port to be made a subport of the trunk.
+         * @param portId The ID of the port to be used as the parent port of the
+         * trunk. This is the port that should be used as the compute instance network
+         * port. Changing this creates a new trunk.
          * 
          * @return builder
          * 
@@ -270,7 +276,9 @@ public final class TrunkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portId The ID of the port to be made a subport of the trunk.
+         * @param portId The ID of the port to be used as the parent port of the
+         * trunk. This is the port that should be used as the compute instance network
+         * port. Changing this creates a new trunk.
          * 
          * @return builder
          * 

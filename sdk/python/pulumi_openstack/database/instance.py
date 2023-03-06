@@ -36,8 +36,7 @@ class InstanceArgs:
                object structure is documented below.
         :param pulumi.Input[str] flavor_id: The flavor ID of the desired flavor for the instance.
                Changing this creates new instance.
-        :param pulumi.Input[str] name: Database to be created on new instance. Changing this creates a
-               new instance.
+        :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]] networks: An array of one or more networks to attach to the
                instance. The network object structure is documented below. Changing this
                creates a new instance.
@@ -131,8 +130,7 @@ class InstanceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Database to be created on new instance. Changing this creates a
-        new instance.
+        A unique name for the resource.
         """
         return pulumi.get(self, "name")
 
@@ -205,8 +203,7 @@ class _InstanceState:
                object structure is documented below. Changing this creates a new instance.
         :param pulumi.Input[str] flavor_id: The flavor ID of the desired flavor for the instance.
                Changing this creates new instance.
-        :param pulumi.Input[str] name: Database to be created on new instance. Changing this creates a
-               new instance.
+        :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]] networks: An array of one or more networks to attach to the
                instance. The network object structure is documented below. Changing this
                creates a new instance.
@@ -305,8 +302,7 @@ class _InstanceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Database to be created on new instance. Changing this creates a
-        new instance.
+        A unique name for the resource.
         """
         return pulumi.get(self, "name")
 
@@ -413,8 +409,7 @@ class Instance(pulumi.CustomResource):
                object structure is documented below. Changing this creates a new instance.
         :param pulumi.Input[str] flavor_id: The flavor ID of the desired flavor for the instance.
                Changing this creates new instance.
-        :param pulumi.Input[str] name: Database to be created on new instance. Changing this creates a
-               new instance.
+        :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: An array of one or more networks to attach to the
                instance. The network object structure is documented below. Changing this
                creates a new instance.
@@ -534,8 +529,7 @@ class Instance(pulumi.CustomResource):
                object structure is documented below. Changing this creates a new instance.
         :param pulumi.Input[str] flavor_id: The flavor ID of the desired flavor for the instance.
                Changing this creates new instance.
-        :param pulumi.Input[str] name: Database to be created on new instance. Changing this creates a
-               new instance.
+        :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkArgs']]]] networks: An array of one or more networks to attach to the
                instance. The network object structure is documented below. Changing this
                creates a new instance.
@@ -609,8 +603,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Database to be created on new instance. Changing this creates a
-        new instance.
+        A unique name for the resource.
         """
         return pulumi.get(self, "name")
 

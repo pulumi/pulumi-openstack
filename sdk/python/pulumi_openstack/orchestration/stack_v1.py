@@ -679,7 +679,9 @@ class StackV1(pulumi.CustomResource):
         stack1 = openstack.orchestration.StackV1("stack1",
             disable_rollback=True,
             environment_opts={
-                "Bin": "\\n\\n",
+                "Bin": \"\"\"
+
+        \"\"\",
             },
             parameters={
                 "length": 4,
@@ -766,7 +768,9 @@ class StackV1(pulumi.CustomResource):
         stack1 = openstack.orchestration.StackV1("stack1",
             disable_rollback=True,
             environment_opts={
-                "Bin": "\\n\\n",
+                "Bin": \"\"\"
+
+        \"\"\",
             },
             parameters={
                 "length": 4,

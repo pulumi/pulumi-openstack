@@ -16,78 +16,76 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// ### Example with simple content
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
     ///     {
-    ///         var container1 = new OpenStack.ObjectStorage.Container("container1", new OpenStack.ObjectStorage.ContainerArgs
+    ///         ContentType = "application/json",
+    ///         Metadata = 
     ///         {
-    ///             ContentType = "application/json",
-    ///             Metadata = 
-    ///             {
-    ///                 { "test", "true" },
-    ///             },
-    ///             Region = "RegionOne",
-    ///         });
-    ///         var doc1 = new OpenStack.ObjectStorage.ContainerObject("doc1", new OpenStack.ObjectStorage.ContainerObjectArgs
-    ///         {
-    ///             ContainerName = container1.Name,
-    ///             Content = @"               {
+    ///             { "test", "true" },
+    ///         },
+    ///         Region = "RegionOne",
+    ///     });
+    /// 
+    ///     var doc1 = new OpenStack.ObjectStorage.ContainerObject("doc1", new()
+    ///     {
+    ///         ContainerName = container1.Name,
+    ///         Content = @"               {
     ///                  ""foo"" : ""bar""
     ///                }
     /// 
     /// ",
-    ///             ContentType = "application/json",
-    ///             Metadata = 
-    ///             {
-    ///                 { "test", "true" },
-    ///             },
-    ///             Region = "RegionOne",
-    ///         });
-    ///     }
+    ///         ContentType = "application/json",
+    ///         Metadata = 
+    ///         {
+    ///             { "test", "true" },
+    ///         },
+    ///         Region = "RegionOne",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### Example with content from file
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
     ///     {
-    ///         var container1 = new OpenStack.ObjectStorage.Container("container1", new OpenStack.ObjectStorage.ContainerArgs
+    ///         ContentType = "application/json",
+    ///         Metadata = 
     ///         {
-    ///             ContentType = "application/json",
-    ///             Metadata = 
-    ///             {
-    ///                 { "test", "true" },
-    ///             },
-    ///             Region = "RegionOne",
-    ///         });
-    ///         var doc1 = new OpenStack.ObjectStorage.ContainerObject("doc1", new OpenStack.ObjectStorage.ContainerObjectArgs
-    ///         {
-    ///             ContainerName = container1.Name,
-    ///             ContentType = "application/json",
-    ///             Metadata = 
-    ///             {
-    ///                 { "test", "true" },
-    ///             },
-    ///             Region = "RegionOne",
-    ///             Source = "./default.json",
-    ///         });
-    ///     }
+    ///             { "test", "true" },
+    ///         },
+    ///         Region = "RegionOne",
+    ///     });
     /// 
-    /// }
+    ///     var doc1 = new OpenStack.ObjectStorage.ContainerObject("doc1", new()
+    ///     {
+    ///         ContainerName = container1.Name,
+    ///         ContentType = "application/json",
+    ///         Metadata = 
+    ///         {
+    ///             { "test", "true" },
+    ///         },
+    ///         Region = "RegionOne",
+    ///         Source = "./default.json",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:objectstorage/containerObject:ContainerObject")]
-    public partial class ContainerObject : Pulumi.CustomResource
+    public partial class ContainerObject : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A unique (within an account) name for the container. 
@@ -278,7 +276,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         }
     }
 
-    public sealed class ContainerObjectArgs : Pulumi.ResourceArgs
+    public sealed class ContainerObjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A unique (within an account) name for the container. 
@@ -400,9 +398,10 @@ namespace Pulumi.OpenStack.ObjectStorage
         public ContainerObjectArgs()
         {
         }
+        public static new ContainerObjectArgs Empty => new ContainerObjectArgs();
     }
 
-    public sealed class ContainerObjectState : Pulumi.ResourceArgs
+    public sealed class ContainerObjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A unique (within an account) name for the container. 
@@ -557,5 +556,6 @@ namespace Pulumi.OpenStack.ObjectStorage
         public ContainerObjectState()
         {
         }
+        public static new ContainerObjectState Empty => new ContainerObjectState();
     }
 }

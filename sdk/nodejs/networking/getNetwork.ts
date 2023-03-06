@@ -13,18 +13,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network = pulumi.output(openstack.networking.getNetwork({
+ * const network = openstack.networking.getNetwork({
  *     name: "tf_test_network",
- * }));
+ * });
  * ```
  */
 export function getNetwork(args?: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getNetwork:getNetwork", {
         "description": args.description,
         "external": args.external,
@@ -158,9 +155,22 @@ export interface GetNetworkResult {
      */
     readonly transparentVlan?: boolean;
 }
-
+/**
+ * Use this data source to get the ID of an available OpenStack network.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const network = openstack.networking.getNetwork({
+ *     name: "tf_test_network",
+ * });
+ * ```
+ */
 export function getNetworkOutput(args?: GetNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkResult> {
-    return pulumi.output(args).apply(a => getNetwork(a, opts))
+    return pulumi.output(args).apply((a: any) => getNetwork(a, opts))
 }
 
 /**

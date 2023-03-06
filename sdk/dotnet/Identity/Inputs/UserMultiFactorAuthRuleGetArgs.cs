@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Identity.Inputs
 {
 
-    public sealed class UserMultiFactorAuthRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class UserMultiFactorAuthRuleGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("rules", required: true)]
         private InputList<string>? _rules;
@@ -28,5 +28,6 @@ namespace Pulumi.OpenStack.Identity.Inputs
         public UserMultiFactorAuthRuleGetArgs()
         {
         }
+        public static new UserMultiFactorAuthRuleGetArgs Empty => new UserMultiFactorAuthRuleGetArgs();
     }
 }

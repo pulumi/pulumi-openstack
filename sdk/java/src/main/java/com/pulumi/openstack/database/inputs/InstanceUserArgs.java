@@ -51,7 +51,7 @@ public final class InstanceUserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Database to be created on new instance. Changing this creates a
+     * Username to be created on new instance. Changing this creates a
      * new instance.
      * 
      */
@@ -59,7 +59,7 @@ public final class InstanceUserArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> name;
 
     /**
-     * @return Database to be created on new instance. Changing this creates a
+     * @return Username to be created on new instance. Changing this creates a
      * new instance.
      * 
      */
@@ -169,7 +169,7 @@ public final class InstanceUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Database to be created on new instance. Changing this creates a
+         * @param name Username to be created on new instance. Changing this creates a
          * new instance.
          * 
          * @return builder
@@ -181,7 +181,7 @@ public final class InstanceUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Database to be created on new instance. Changing this creates a
+         * @param name Username to be created on new instance. Changing this creates a
          * new instance.
          * 
          * @return builder

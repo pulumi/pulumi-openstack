@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.BlockStorage.Inputs
 {
 
-    public sealed class VolumeV1AttachmentGetArgs : Pulumi.ResourceArgs
+    public sealed class VolumeV1AttachmentGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("device")]
         public Input<string>? Device { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.OpenStack.BlockStorage.Inputs
         public VolumeV1AttachmentGetArgs()
         {
         }
+        public static new VolumeV1AttachmentGetArgs Empty => new VolumeV1AttachmentGetArgs();
     }
 }

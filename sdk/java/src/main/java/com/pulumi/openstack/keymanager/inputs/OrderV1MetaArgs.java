@@ -32,14 +32,14 @@ public final class OrderV1MetaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * - Bit lenght of key to be generated.
+     * Bit lenght of key to be generated.
      * 
      */
     @Import(name="bitLength", required=true)
     private Output<Integer> bitLength;
 
     /**
-     * @return - Bit lenght of key to be generated.
+     * @return Bit lenght of key to be generated.
      * 
      */
     public Output<Integer> bitLength() {
@@ -157,7 +157,7 @@ public final class OrderV1MetaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bitLength - Bit lenght of key to be generated.
+         * @param bitLength Bit lenght of key to be generated.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class OrderV1MetaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bitLength - Bit lenght of key to be generated.
+         * @param bitLength Bit lenght of key to be generated.
          * 
          * @return builder
          * 

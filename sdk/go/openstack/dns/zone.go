@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dns.NewZone(ctx, "example.com", &dns.ZoneArgs{
+//			_, err := dns.NewZone(ctx, "exampleCom", &dns.ZoneArgs{
 //				Description: pulumi.String("An example zone"),
 //				Email:       pulumi.String("jdoe@example.com"),
 //				Ttl:         pulumi.Int(3000),

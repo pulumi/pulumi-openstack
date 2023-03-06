@@ -15,82 +15,85 @@ namespace Pulumi.OpenStack.Networking
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
     ///     {
-    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var subnet1 = new OpenStack.Networking.Subnet("subnet1", new OpenStack.Networking.SubnetArgs
-    ///         {
-    ///             Cidr = "192.168.1.0/24",
-    ///             EnableDhcp = true,
-    ///             IpVersion = 4,
-    ///             NetworkId = network1.Id,
-    ///             NoGateway = true,
-    ///         });
-    ///         var parentPort1 = new OpenStack.Networking.Port("parentPort1", new OpenStack.Networking.PortArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///             NetworkId = network1.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 "openstack_networking_subnet_v2.subnet_1",
-    ///             },
-    ///         });
-    ///         var subport1 = new OpenStack.Networking.Port("subport1", new OpenStack.Networking.PortArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///             NetworkId = network1.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 "openstack_networking_subnet_v2.subnet_1",
-    ///             },
-    ///         });
-    ///         var trunk1 = new OpenStack.Networking.Trunk("trunk1", new OpenStack.Networking.TrunkArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///             PortId = parentPort1.Id,
-    ///             SubPorts = 
-    ///             {
-    ///                 new OpenStack.Networking.Inputs.TrunkSubPortArgs
-    ///                 {
-    ///                     PortId = subport1.Id,
-    ///                     SegmentationId = 1,
-    ///                     SegmentationType = "vlan",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var instance1 = new OpenStack.Compute.Instance("instance1", new OpenStack.Compute.InstanceArgs
-    ///         {
-    ///             Networks = 
-    ///             {
-    ///                 new OpenStack.Compute.Inputs.InstanceNetworkArgs
-    ///                 {
-    ///                     Port = trunk1.PortId,
-    ///                 },
-    ///             },
-    ///             SecurityGroups = 
-    ///             {
-    ///                 "default",
-    ///             },
-    ///         });
-    ///     }
+    ///         AdminStateUp = true,
+    ///     });
     /// 
-    /// }
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     {
+    ///         Cidr = "192.168.1.0/24",
+    ///         EnableDhcp = true,
+    ///         IpVersion = 4,
+    ///         NetworkId = network1.Id,
+    ///         NoGateway = true,
+    ///     });
+    /// 
+    ///     var parentPort1 = new OpenStack.Networking.Port("parentPort1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///         NetworkId = network1.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             "openstack_networking_subnet_v2.subnet_1",
+    ///         },
+    ///     });
+    /// 
+    ///     var subport1 = new OpenStack.Networking.Port("subport1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///         NetworkId = network1.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             "openstack_networking_subnet_v2.subnet_1",
+    ///         },
+    ///     });
+    /// 
+    ///     var trunk1 = new OpenStack.Networking.Trunk("trunk1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///         PortId = parentPort1.Id,
+    ///         SubPorts = new[]
+    ///         {
+    ///             new OpenStack.Networking.Inputs.TrunkSubPortArgs
+    ///             {
+    ///                 PortId = subport1.Id,
+    ///                 SegmentationId = 1,
+    ///                 SegmentationType = "vlan",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     {
+    ///         Networks = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Port = trunk1.PortId,
+    ///             },
+    ///         },
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/trunk:Trunk")]
-    public partial class Trunk : Pulumi.CustomResource
+    public partial class Trunk : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Administrative up/down status for the trunk
@@ -122,7 +125,9 @@ namespace Pulumi.OpenStack.Networking
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the port to be made a subport of the trunk.
+        /// The ID of the port to be used as the parent port of the
+        /// trunk. This is the port that should be used as the compute instance network
+        /// port. Changing this creates a new trunk.
         /// </summary>
         [Output("portId")]
         public Output<string> PortId { get; private set; } = null!;
@@ -200,7 +205,7 @@ namespace Pulumi.OpenStack.Networking
         }
     }
 
-    public sealed class TrunkArgs : Pulumi.ResourceArgs
+    public sealed class TrunkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Administrative up/down status for the trunk
@@ -225,7 +230,9 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the port to be made a subport of the trunk.
+        /// The ID of the port to be used as the parent port of the
+        /// trunk. This is the port that should be used as the compute instance network
+        /// port. Changing this creates a new trunk.
         /// </summary>
         [Input("portId", required: true)]
         public Input<string> PortId { get; set; } = null!;
@@ -274,9 +281,10 @@ namespace Pulumi.OpenStack.Networking
         public TrunkArgs()
         {
         }
+        public static new TrunkArgs Empty => new TrunkArgs();
     }
 
-    public sealed class TrunkState : Pulumi.ResourceArgs
+    public sealed class TrunkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Administrative up/down status for the trunk
@@ -314,7 +322,9 @@ namespace Pulumi.OpenStack.Networking
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the port to be made a subport of the trunk.
+        /// The ID of the port to be used as the parent port of the
+        /// trunk. This is the port that should be used as the compute instance network
+        /// port. Changing this creates a new trunk.
         /// </summary>
         [Input("portId")]
         public Input<string>? PortId { get; set; }
@@ -363,5 +373,6 @@ namespace Pulumi.OpenStack.Networking
         public TrunkState()
         {
         }
+        public static new TrunkState Empty => new TrunkState();
     }
 }

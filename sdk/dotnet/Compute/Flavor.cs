@@ -15,27 +15,25 @@ namespace Pulumi.OpenStack.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var test_flavor = new OpenStack.Compute.Flavor("test-flavor", new()
     ///     {
-    ///         var test_flavor = new OpenStack.Compute.Flavor("test-flavor", new OpenStack.Compute.FlavorArgs
+    ///         Disk = 20,
+    ///         ExtraSpecs = 
     ///         {
-    ///             Disk = 20,
-    ///             ExtraSpecs = 
-    ///             {
-    ///                 { "hw:cpu_policy", "CPU-POLICY" },
-    ///                 { "hw:cpu_thread_policy", "CPU-THREAD-POLICY" },
-    ///             },
-    ///             Ram = 8096,
-    ///             Vcpus = 2,
-    ///         });
-    ///     }
+    ///             { "hw:cpu_policy", "CPU-POLICY" },
+    ///             { "hw:cpu_thread_policy", "CPU-THREAD-POLICY" },
+    ///         },
+    ///         Ram = 8096,
+    ///         Vcpus = 2,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -47,7 +45,7 @@ namespace Pulumi.OpenStack.Compute
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:compute/flavor:Flavor")]
-    public partial class Flavor : Pulumi.CustomResource
+    public partial class Flavor : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the flavor. Changing this
@@ -178,7 +176,7 @@ namespace Pulumi.OpenStack.Compute
         }
     }
 
-    public sealed class FlavorArgs : Pulumi.ResourceArgs
+    public sealed class FlavorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the flavor. Changing this
@@ -274,9 +272,10 @@ namespace Pulumi.OpenStack.Compute
         public FlavorArgs()
         {
         }
+        public static new FlavorArgs Empty => new FlavorArgs();
     }
 
-    public sealed class FlavorState : Pulumi.ResourceArgs
+    public sealed class FlavorState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the flavor. Changing this
@@ -372,5 +371,6 @@ namespace Pulumi.OpenStack.Compute
         public FlavorState()
         {
         }
+        public static new FlavorState Empty => new FlavorState();
     }
 }

@@ -591,9 +591,11 @@ class ApplicationCredential(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["region"] = region
             __props__.__dict__["roles"] = roles
-            __props__.__dict__["secret"] = secret
+            __props__.__dict__["secret"] = None if secret is None else pulumi.Output.secret(secret)
             __props__.__dict__["unrestricted"] = unrestricted
             __props__.__dict__["project_id"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ApplicationCredential, __self__).__init__(
             'openstack:identity/applicationCredential:ApplicationCredential',
             resource_name,

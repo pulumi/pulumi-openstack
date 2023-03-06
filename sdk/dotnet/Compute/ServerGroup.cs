@@ -15,23 +15,21 @@ namespace Pulumi.OpenStack.Compute
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var test_sg = new OpenStack.Compute.ServerGroup("test-sg", new()
     ///     {
-    ///         var test_sg = new OpenStack.Compute.ServerGroup("test-sg", new OpenStack.Compute.ServerGroupArgs
+    ///         Policies = new[]
     ///         {
-    ///             Policies = 
-    ///             {
-    ///                 "anti-affinity",
-    ///             },
-    ///         });
-    ///     }
+    ///             "anti-affinity",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Policies
     /// 
@@ -60,7 +58,7 @@ namespace Pulumi.OpenStack.Compute
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:compute/serverGroup:ServerGroup")]
-    public partial class ServerGroup : Pulumi.CustomResource
+    public partial class ServerGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The instances that are part of this server group.
@@ -141,7 +139,7 @@ namespace Pulumi.OpenStack.Compute
         }
     }
 
-    public sealed class ServerGroupArgs : Pulumi.ResourceArgs
+    public sealed class ServerGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A unique name for the server group. Changing this creates
@@ -187,9 +185,10 @@ namespace Pulumi.OpenStack.Compute
         public ServerGroupArgs()
         {
         }
+        public static new ServerGroupArgs Empty => new ServerGroupArgs();
     }
 
-    public sealed class ServerGroupState : Pulumi.ResourceArgs
+    public sealed class ServerGroupState : global::Pulumi.ResourceArgs
     {
         [Input("members")]
         private InputList<string>? _members;
@@ -247,5 +246,6 @@ namespace Pulumi.OpenStack.Compute
         public ServerGroupState()
         {
         }
+        public static new ServerGroupState Empty => new ServerGroupState();
     }
 }

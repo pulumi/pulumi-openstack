@@ -60,8 +60,14 @@ type LookupImageArgs struct {
 	// If more than one result is returned, use the most
 	// recent image.
 	MostRecent *bool `pulumi:"mostRecent"`
-	// The name of the image.
+	// The name of the image. Cannot be used simultaneously
+	// with `nameRegex`.
 	Name *string `pulumi:"name"`
+	// The regular expressian of the name of the image.
+	// Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+	// `nameRegex` filtering does by client on the result of OpenStack search
+	// query.
+	NameRegex *string `pulumi:"nameRegex"`
 	// The owner (UUID) of the image.
 	Owner *string `pulumi:"owner"`
 	// a map of key/value pairs to match an image with.
@@ -85,6 +91,9 @@ type LookupImageArgs struct {
 	SortKey *string `pulumi:"sortKey"`
 	// Search for images with a specific tag.
 	Tag *string `pulumi:"tag"`
+	// A list of tags required to be set on the image
+	// (all specified tags must be in the images tag list for it to be matched).
+	Tags []string `pulumi:"tags"`
 	// The visibility of the image. Must be one of
 	// "public", "private", "community", or "shared". Defaults to "private".
 	Visibility *string `pulumi:"visibility"`
@@ -93,12 +102,12 @@ type LookupImageArgs struct {
 // A collection of values returned by getImage.
 type LookupImageResult struct {
 	// The checksum of the data associated with the image.
-	Checksum        string `pulumi:"checksum"`
+	Checksum string `pulumi:"checksum"`
+	// The format of the image's container.
 	ContainerFormat string `pulumi:"containerFormat"`
 	// The date the image was created.
-	// * `containerFormat`: The format of the image's container.
-	// * `diskFormat`: The format of the image's disk.
-	CreatedAt  string `pulumi:"createdAt"`
+	CreatedAt string `pulumi:"createdAt"`
+	// The format of the image's disk.
 	DiskFormat string `pulumi:"diskFormat"`
 	// the trailing path after the glance endpoint that represent the
 	// location of the image or the path to retrieve it.
@@ -117,6 +126,7 @@ type LookupImageResult struct {
 	MinRamMb   int     `pulumi:"minRamMb"`
 	MostRecent *bool   `pulumi:"mostRecent"`
 	Name       *string `pulumi:"name"`
+	NameRegex  *string `pulumi:"nameRegex"`
 	Owner      *string `pulumi:"owner"`
 	// Freeform information about the image.
 	Properties map[string]interface{} `pulumi:"properties"`
@@ -163,8 +173,14 @@ type LookupImageOutputArgs struct {
 	// If more than one result is returned, use the most
 	// recent image.
 	MostRecent pulumi.BoolPtrInput `pulumi:"mostRecent"`
-	// The name of the image.
+	// The name of the image. Cannot be used simultaneously
+	// with `nameRegex`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The regular expressian of the name of the image.
+	// Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+	// `nameRegex` filtering does by client on the result of OpenStack search
+	// query.
+	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The owner (UUID) of the image.
 	Owner pulumi.StringPtrInput `pulumi:"owner"`
 	// a map of key/value pairs to match an image with.
@@ -188,6 +204,9 @@ type LookupImageOutputArgs struct {
 	SortKey pulumi.StringPtrInput `pulumi:"sortKey"`
 	// Search for images with a specific tag.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
+	// A list of tags required to be set on the image
+	// (all specified tags must be in the images tag list for it to be matched).
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// The visibility of the image. Must be one of
 	// "public", "private", "community", or "shared". Defaults to "private".
 	Visibility pulumi.StringPtrInput `pulumi:"visibility"`
@@ -217,17 +236,17 @@ func (o LookupImageResultOutput) Checksum() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Checksum }).(pulumi.StringOutput)
 }
 
+// The format of the image's container.
 func (o LookupImageResultOutput) ContainerFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.ContainerFormat }).(pulumi.StringOutput)
 }
 
 // The date the image was created.
-// * `containerFormat`: The format of the image's container.
-// * `diskFormat`: The format of the image's disk.
 func (o LookupImageResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// The format of the image's disk.
 func (o LookupImageResultOutput) DiskFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.DiskFormat }).(pulumi.StringOutput)
 }
@@ -274,6 +293,10 @@ func (o LookupImageResultOutput) MostRecent() pulumi.BoolPtrOutput {
 
 func (o LookupImageResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupImageResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupImageResultOutput) NameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupImageResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupImageResultOutput) Owner() pulumi.StringPtrOutput {

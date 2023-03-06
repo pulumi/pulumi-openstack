@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,18 +15,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const port1 = pulumi.output(openstack.networking.getPort({
+ * const port1 = openstack.networking.getPort({
  *     name: "port_1",
- * }));
+ * });
  * ```
  */
 export function getPort(args?: GetPortArgs, opts?: pulumi.InvokeOptions): Promise<GetPortResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:networking/getPort:getPort", {
         "adminStateUp": args.adminStateUp,
         "description": args.description,
@@ -206,9 +204,22 @@ export interface GetPortResult {
     readonly tags?: string[];
     readonly tenantId?: string;
 }
-
+/**
+ * Use this data source to get the ID of an available OpenStack port.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const port1 = openstack.networking.getPort({
+ *     name: "port_1",
+ * });
+ * ```
+ */
 export function getPortOutput(args?: GetPortOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortResult> {
-    return pulumi.output(args).apply(a => getPort(a, opts))
+    return pulumi.output(args).apply((a: any) => getPort(a, opts))
 }
 
 /**

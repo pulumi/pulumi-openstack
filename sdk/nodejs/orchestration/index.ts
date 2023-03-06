@@ -5,10 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./stackV1";
+export { StackV1Args, StackV1State } from "./stackV1";
+export type StackV1 = import("./stackV1").StackV1;
+export const StackV1: typeof import("./stackV1").StackV1 = null as any;
+utilities.lazyLoad(exports, ["StackV1"], () => require("./stackV1"));
 
-// Import resources to register:
-import { StackV1 } from "./stackV1";
 
 const _module = {
     version: utilities.getVersion(),

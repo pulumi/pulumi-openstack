@@ -13,26 +13,24 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const router1 = new openstack.networking.Router("router_1", {
- *     adminStateUp: true,
- * });
- * const network1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: true,
- * });
- * const subnet1 = new openstack.networking.Subnet("subnet_1", {
+ * const router1 = new openstack.networking.Router("router1", {adminStateUp: true});
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
  *     networkId: network1.id,
  * });
- * const int1 = new openstack.networking.RouterInterface("int_1", {
+ * const int1 = new openstack.networking.RouterInterface("int1", {
  *     routerId: router1.id,
  *     subnetId: subnet1.id,
  * });
- * const routerRoute1 = new openstack.networking.RouterRoute("router_route_1", {
+ * const routerRoute1 = new openstack.networking.RouterRoute("routerRoute1", {
  *     destinationCidr: "10.0.1.0/24",
  *     nextHop: "192.168.199.254",
  *     routerId: router1.id,
- * }, { dependsOn: [int1] });
+ * }, {
+ *     dependsOn: ["openstack_networking_router_interface_v2.int_1"],
+ * });
  * ```
  * ## Notes
  *

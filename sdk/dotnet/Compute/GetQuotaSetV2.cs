@@ -19,26 +19,24 @@ namespace Pulumi.OpenStack.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var quota = OpenStack.Compute.GetQuotaSetV2.Invoke(new()
         ///     {
-        ///         var quota = Output.Create(OpenStack.Compute.GetQuotaSetV2.InvokeAsync(new OpenStack.Compute.GetQuotaSetV2Args
-        ///         {
-        ///             ProjectId = "2e367a3d29f94fd988e6ec54e305ec9d",
-        ///         }));
-        ///     }
+        ///         ProjectId = "2e367a3d29f94fd988e6ec54e305ec9d",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetQuotaSetV2Result> InvokeAsync(GetQuotaSetV2Args args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetQuotaSetV2Result>("openstack:compute/getQuotaSetV2:getQuotaSetV2", args ?? new GetQuotaSetV2Args(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetQuotaSetV2Result>("openstack:compute/getQuotaSetV2:getQuotaSetV2", args ?? new GetQuotaSetV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the compute quotaset of an OpenStack project.
@@ -48,30 +46,28 @@ namespace Pulumi.OpenStack.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var quota = OpenStack.Compute.GetQuotaSetV2.Invoke(new()
         ///     {
-        ///         var quota = Output.Create(OpenStack.Compute.GetQuotaSetV2.InvokeAsync(new OpenStack.Compute.GetQuotaSetV2Args
-        ///         {
-        ///             ProjectId = "2e367a3d29f94fd988e6ec54e305ec9d",
-        ///         }));
-        ///     }
+        ///         ProjectId = "2e367a3d29f94fd988e6ec54e305ec9d",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetQuotaSetV2Result> Invoke(GetQuotaSetV2InvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetQuotaSetV2Result>("openstack:compute/getQuotaSetV2:getQuotaSetV2", args ?? new GetQuotaSetV2InvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetQuotaSetV2Result>("openstack:compute/getQuotaSetV2:getQuotaSetV2", args ?? new GetQuotaSetV2InvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetQuotaSetV2Args : Pulumi.InvokeArgs
+    public sealed class GetQuotaSetV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The id of the project to retrieve the quotaset.
@@ -89,9 +85,10 @@ namespace Pulumi.OpenStack.Compute
         public GetQuotaSetV2Args()
         {
         }
+        public static new GetQuotaSetV2Args Empty => new GetQuotaSetV2Args();
     }
 
-    public sealed class GetQuotaSetV2InvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetQuotaSetV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The id of the project to retrieve the quotaset.
@@ -109,6 +106,7 @@ namespace Pulumi.OpenStack.Compute
         public GetQuotaSetV2InvokeArgs()
         {
         }
+        public static new GetQuotaSetV2InvokeArgs Empty => new GetQuotaSetV2InvokeArgs();
     }
 
 

@@ -22,33 +22,31 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var members1 = new OpenStack.LoadBalancer.Members("members1", new()
     ///     {
-    ///         var members1 = new OpenStack.LoadBalancer.Members("members1", new OpenStack.LoadBalancer.MembersArgs
+    ///         MemberList = new[]
     ///         {
-    ///             MemberList = 
+    ///             new OpenStack.LoadBalancer.Inputs.MembersMemberArgs
     ///             {
-    ///                 new OpenStack.LoadBalancer.Inputs.MembersMemberArgs
-    ///                 {
-    ///                     Address = "192.168.199.23",
-    ///                     ProtocolPort = 8080,
-    ///                 },
-    ///                 new OpenStack.LoadBalancer.Inputs.MembersMemberArgs
-    ///                 {
-    ///                     Address = "192.168.199.24",
-    ///                     ProtocolPort = 8080,
-    ///                 },
+    ///                 Address = "192.168.199.23",
+    ///                 ProtocolPort = 8080,
     ///             },
-    ///             PoolId = "935685fb-a896-40f9-9ff4-ae531a3a00fe",
-    ///         });
-    ///     }
+    ///             new OpenStack.LoadBalancer.Inputs.MembersMemberArgs
+    ///             {
+    ///                 Address = "192.168.199.24",
+    ///                 ProtocolPort = 8080,
+    ///             },
+    ///         },
+    ///         PoolId = "935685fb-a896-40f9-9ff4-ae531a3a00fe",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -60,7 +58,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:loadbalancer/members:Members")]
-    public partial class Members : Pulumi.CustomResource
+    public partial class Members : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A set of dictionaries containing member parameters. The
@@ -129,7 +127,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         }
     }
 
-    public sealed class MembersArgs : Pulumi.ResourceArgs
+    public sealed class MembersArgs : global::Pulumi.ResourceArgs
     {
         [Input("members")]
         private InputList<Inputs.MembersMemberArgs>? _members;
@@ -163,9 +161,10 @@ namespace Pulumi.OpenStack.LoadBalancer
         public MembersArgs()
         {
         }
+        public static new MembersArgs Empty => new MembersArgs();
     }
 
-    public sealed class MembersState : Pulumi.ResourceArgs
+    public sealed class MembersState : global::Pulumi.ResourceArgs
     {
         [Input("members")]
         private InputList<Inputs.MembersMemberGetArgs>? _members;
@@ -199,5 +198,6 @@ namespace Pulumi.OpenStack.LoadBalancer
         public MembersState()
         {
         }
+        public static new MembersState Empty => new MembersState();
     }
 }

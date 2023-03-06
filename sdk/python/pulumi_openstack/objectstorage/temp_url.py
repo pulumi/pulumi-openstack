@@ -405,6 +405,8 @@ class TempUrl(pulumi.CustomResource):
                 raise TypeError("Missing required property 'ttl'")
             __props__.__dict__["ttl"] = ttl
             __props__.__dict__["url"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["url"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(TempUrl, __self__).__init__(
             'openstack:objectstorage/tempUrl:TempUrl',
             resource_name,

@@ -20,32 +20,31 @@ namespace Pulumi.OpenStack.Images
     /// `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var rancheros = new OpenStack.Images.Image("rancheros", new()
     ///     {
-    ///         var rancheros = new OpenStack.Images.Image("rancheros", new OpenStack.Images.ImageArgs
+    ///         ContainerFormat = "bare",
+    ///         DiskFormat = "qcow2",
+    ///         ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
+    ///         Properties = 
     ///         {
-    ///             ContainerFormat = "bare",
-    ///             DiskFormat = "qcow2",
-    ///             ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
-    ///             Properties = 
-    ///             {
-    ///                 { "key", "value" },
-    ///             },
-    ///             Visibility = "shared",
-    ///         });
-    ///         var rancherosMember = new OpenStack.Images.ImageAccess("rancherosMember", new OpenStack.Images.ImageAccessArgs
-    ///         {
-    ///             ImageId = rancheros.Id,
-    ///             MemberId = "bed6b6cbb86a4e2d8dc2735c2f1000e4",
-    ///         });
-    ///     }
+    ///             { "key", "value" },
+    ///         },
+    ///         Visibility = "shared",
+    ///     });
     /// 
-    /// }
+    ///     var rancherosMember = new OpenStack.Images.ImageAccess("rancherosMember", new()
+    ///     {
+    ///         ImageId = rancheros.Id,
+    ///         MemberId = "bed6b6cbb86a4e2d8dc2735c2f1000e4",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Privileged user
     /// 
@@ -53,33 +52,32 @@ namespace Pulumi.OpenStack.Images
     /// `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var rancheros = new OpenStack.Images.Image("rancheros", new()
     ///     {
-    ///         var rancheros = new OpenStack.Images.Image("rancheros", new OpenStack.Images.ImageArgs
+    ///         ContainerFormat = "bare",
+    ///         DiskFormat = "qcow2",
+    ///         ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
+    ///         Properties = 
     ///         {
-    ///             ContainerFormat = "bare",
-    ///             DiskFormat = "qcow2",
-    ///             ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
-    ///             Properties = 
-    ///             {
-    ///                 { "key", "value" },
-    ///             },
-    ///             Visibility = "shared",
-    ///         });
-    ///         var rancherosMember = new OpenStack.Images.ImageAccess("rancherosMember", new OpenStack.Images.ImageAccessArgs
-    ///         {
-    ///             ImageId = rancheros.Id,
-    ///             MemberId = "bed6b6cbb86a4e2d8dc2735c2f1000e4",
-    ///             Status = "accepted",
-    ///         });
-    ///     }
+    ///             { "key", "value" },
+    ///         },
+    ///         Visibility = "shared",
+    ///     });
     /// 
-    /// }
+    ///     var rancherosMember = new OpenStack.Images.ImageAccess("rancherosMember", new()
+    ///     {
+    ///         ImageId = rancheros.Id,
+    ///         MemberId = "bed6b6cbb86a4e2d8dc2735c2f1000e4",
+    ///         Status = "accepted",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -91,7 +89,7 @@ namespace Pulumi.OpenStack.Images
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:images/imageAccess:ImageAccess")]
-    public partial class ImageAccess : Pulumi.CustomResource
+    public partial class ImageAccess : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The date the image access was created.
@@ -183,7 +181,7 @@ namespace Pulumi.OpenStack.Images
         }
     }
 
-    public sealed class ImageAccessArgs : Pulumi.ResourceArgs
+    public sealed class ImageAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The image ID.
@@ -216,9 +214,10 @@ namespace Pulumi.OpenStack.Images
         public ImageAccessArgs()
         {
         }
+        public static new ImageAccessArgs Empty => new ImageAccessArgs();
     }
 
-    public sealed class ImageAccessState : Pulumi.ResourceArgs
+    public sealed class ImageAccessState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The date the image access was created.
@@ -269,5 +268,6 @@ namespace Pulumi.OpenStack.Images
         public ImageAccessState()
         {
         }
+        public static new ImageAccessState Empty => new ImageAccessState();
     }
 }

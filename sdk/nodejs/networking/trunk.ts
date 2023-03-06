@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,25 +15,27 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network_1", {
- *     adminStateUp: true,
- * });
- * const subnet1 = new openstack.networking.Subnet("subnet_1", {
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
  *     cidr: "192.168.1.0/24",
  *     enableDhcp: true,
  *     ipVersion: 4,
  *     networkId: network1.id,
  *     noGateway: true,
  * });
- * const parentPort1 = new openstack.networking.Port("parent_port_1", {
+ * const parentPort1 = new openstack.networking.Port("parentPort1", {
  *     adminStateUp: true,
  *     networkId: network1.id,
- * }, { dependsOn: [subnet1] });
- * const subport1 = new openstack.networking.Port("subport_1", {
+ * }, {
+ *     dependsOn: ["openstack_networking_subnet_v2.subnet_1"],
+ * });
+ * const subport1 = new openstack.networking.Port("subport1", {
  *     adminStateUp: true,
  *     networkId: network1.id,
- * }, { dependsOn: [subnet1] });
- * const trunk1 = new openstack.networking.Trunk("trunk_1", {
+ * }, {
+ *     dependsOn: ["openstack_networking_subnet_v2.subnet_1"],
+ * });
+ * const trunk1 = new openstack.networking.Trunk("trunk1", {
  *     adminStateUp: true,
  *     portId: parentPort1.id,
  *     subPorts: [{
@@ -41,7 +44,7 @@ import * as utilities from "../utilities";
  *         segmentationType: "vlan",
  *     }],
  * });
- * const instance1 = new openstack.compute.Instance("instance_1", {
+ * const instance1 = new openstack.compute.Instance("instance1", {
  *     networks: [{
  *         port: trunk1.portId,
  *     }],
@@ -99,7 +102,9 @@ export class Trunk extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The ID of the port to be made a subport of the trunk.
+     * The ID of the port to be used as the parent port of the
+     * trunk. This is the port that should be used as the compute instance network
+     * port. Changing this creates a new trunk.
      */
     public readonly portId!: pulumi.Output<string>;
     /**
@@ -192,7 +197,9 @@ export interface TrunkState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID of the port to be made a subport of the trunk.
+     * The ID of the port to be used as the parent port of the
+     * trunk. This is the port that should be used as the compute instance network
+     * port. Changing this creates a new trunk.
      */
     portId?: pulumi.Input<string>;
     /**
@@ -239,7 +246,9 @@ export interface TrunkArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID of the port to be made a subport of the trunk.
+     * The ID of the port to be used as the parent port of the
+     * trunk. This is the port that should be used as the compute instance network
+     * port. Changing this creates a new trunk.
      */
     portId: pulumi.Input<string>;
     /**

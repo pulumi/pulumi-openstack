@@ -19,23 +19,21 @@ namespace Pulumi.OpenStack.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var zones = Output.Create(OpenStack.Compute.GetAvailabilityZones.InvokeAsync());
-        ///     }
+        ///     var zones = OpenStack.Compute.GetAvailabilityZones.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAvailabilityZonesResult> InvokeAsync(GetAvailabilityZonesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAvailabilityZonesResult>("openstack:compute/getAvailabilityZones:getAvailabilityZones", args ?? new GetAvailabilityZonesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAvailabilityZonesResult>("openstack:compute/getAvailabilityZones:getAvailabilityZones", args ?? new GetAvailabilityZonesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get a list of availability zones from OpenStack
@@ -45,27 +43,25 @@ namespace Pulumi.OpenStack.Compute
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var zones = Output.Create(OpenStack.Compute.GetAvailabilityZones.InvokeAsync());
-        ///     }
+        ///     var zones = OpenStack.Compute.GetAvailabilityZones.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAvailabilityZonesResult> Invoke(GetAvailabilityZonesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAvailabilityZonesResult>("openstack:compute/getAvailabilityZones:getAvailabilityZones", args ?? new GetAvailabilityZonesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAvailabilityZonesResult>("openstack:compute/getAvailabilityZones:getAvailabilityZones", args ?? new GetAvailabilityZonesInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAvailabilityZonesArgs : Pulumi.InvokeArgs
+    public sealed class GetAvailabilityZonesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The `region` to fetch availability zones from, defaults to the provider's `region`
@@ -82,9 +78,10 @@ namespace Pulumi.OpenStack.Compute
         public GetAvailabilityZonesArgs()
         {
         }
+        public static new GetAvailabilityZonesArgs Empty => new GetAvailabilityZonesArgs();
     }
 
-    public sealed class GetAvailabilityZonesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAvailabilityZonesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The `region` to fetch availability zones from, defaults to the provider's `region`
@@ -101,6 +98,7 @@ namespace Pulumi.OpenStack.Compute
         public GetAvailabilityZonesInvokeArgs()
         {
         }
+        public static new GetAvailabilityZonesInvokeArgs Empty => new GetAvailabilityZonesInvokeArgs();
     }
 
 

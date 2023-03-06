@@ -117,7 +117,8 @@ class ContainerV1ConsumerArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+        :param pulumi.Input[str] name: Human-readable name for the Container. Does not have
+               to be unique.
         :param pulumi.Input[str] url: The consumer URL.
         """
         if name is not None:
@@ -129,7 +130,8 @@ class ContainerV1ConsumerArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
+        Human-readable name for the Container. Does not have
+        to be unique.
         """
         return pulumi.get(self, "name")
 
@@ -199,7 +201,7 @@ class OrderV1MetaArgs:
                  payload_content_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] algorithm: Algorithm to use for key generation.
-        :param pulumi.Input[int] bit_length: - Bit lenght of key to be generated.
+        :param pulumi.Input[int] bit_length: Bit lenght of key to be generated.
         :param pulumi.Input[str] expiration: This is a UTC timestamp in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ. If set, the secret will not be available after this time.
         :param pulumi.Input[str] mode: The mode to use for key generation.
         :param pulumi.Input[str] name: The name of the secret set by the user.
@@ -232,7 +234,7 @@ class OrderV1MetaArgs:
     @pulumi.getter(name="bitLength")
     def bit_length(self) -> pulumi.Input[int]:
         """
-        - Bit lenght of key to be generated.
+        Bit lenght of key to be generated.
         """
         return pulumi.get(self, "bit_length")
 

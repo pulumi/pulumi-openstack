@@ -17,6 +17,10 @@ public final class GetSecGroupResult {
      * 
      */
     private List<String> allTags;
+    /**
+     * @return See Argument Reference above.
+     * 
+     */
     private @Nullable String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -25,7 +29,6 @@ public final class GetSecGroupResult {
     private String id;
     /**
      * @return See Argument Reference above.
-     * * `description`- See Argument Reference above.
      * 
      */
     private @Nullable String name;
@@ -46,6 +49,10 @@ public final class GetSecGroupResult {
     public List<String> allTags() {
         return this.allTags;
     }
+    /**
+     * @return See Argument Reference above.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -58,7 +65,6 @@ public final class GetSecGroupResult {
     }
     /**
      * @return See Argument Reference above.
-     * * `description`- See Argument Reference above.
      * 
      */
     public Optional<String> name() {

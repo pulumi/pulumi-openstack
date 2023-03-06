@@ -639,6 +639,8 @@ class VolumeAttach(pulumi.CustomResource):
             __props__.__dict__["data"] = None
             __props__.__dict__["driver_volume_type"] = None
             __props__.__dict__["mount_point_base"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["data"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(VolumeAttach, __self__).__init__(
             'openstack:blockstorage/volumeAttach:VolumeAttach',
             resource_name,

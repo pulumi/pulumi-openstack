@@ -16,34 +16,33 @@ namespace Pulumi.OpenStack.Dns
     /// ### Automatically detect the correct network
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleZone = new OpenStack.Dns.Zone("exampleZone", new()
     ///     {
-    ///         var exampleZone = new OpenStack.Dns.Zone("exampleZone", new OpenStack.Dns.ZoneArgs
-    ///         {
-    ///             Description = "a zone",
-    ///             Email = "email2@example.com",
-    ///             Ttl = 6000,
-    ///             Type = "PRIMARY",
-    ///         });
-    ///         var rsExampleCom = new OpenStack.Dns.RecordSet("rsExampleCom", new OpenStack.Dns.RecordSetArgs
-    ///         {
-    ///             Description = "An example record set",
-    ///             Records = 
-    ///             {
-    ///                 "10.0.0.1",
-    ///             },
-    ///             Ttl = 3000,
-    ///             Type = "A",
-    ///             ZoneId = exampleZone.Id,
-    ///         });
-    ///     }
+    ///         Description = "a zone",
+    ///         Email = "email2@example.com",
+    ///         Ttl = 6000,
+    ///         Type = "PRIMARY",
+    ///     });
     /// 
-    /// }
+    ///     var rsExampleCom = new OpenStack.Dns.RecordSet("rsExampleCom", new()
+    ///     {
+    ///         Description = "An example record set",
+    ///         Records = new[]
+    ///         {
+    ///             "10.0.0.1",
+    ///         },
+    ///         Ttl = 3000,
+    ///         Type = "A",
+    ///         ZoneId = exampleZone.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -55,7 +54,7 @@ namespace Pulumi.OpenStack.Dns
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:dns/recordSet:RecordSet")]
-    public partial class RecordSet : Pulumi.CustomResource
+    public partial class RecordSet : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A description of the  record set.
@@ -173,7 +172,7 @@ namespace Pulumi.OpenStack.Dns
         }
     }
 
-    public sealed class RecordSetArgs : Pulumi.ResourceArgs
+    public sealed class RecordSetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the  record set.
@@ -262,9 +261,10 @@ namespace Pulumi.OpenStack.Dns
         public RecordSetArgs()
         {
         }
+        public static new RecordSetArgs Empty => new RecordSetArgs();
     }
 
-    public sealed class RecordSetState : Pulumi.ResourceArgs
+    public sealed class RecordSetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the  record set.
@@ -353,5 +353,6 @@ namespace Pulumi.OpenStack.Dns
         public RecordSetState()
         {
         }
+        public static new RecordSetState Empty => new RecordSetState();
     }
 }

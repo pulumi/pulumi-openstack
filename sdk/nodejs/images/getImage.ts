@@ -13,27 +13,25 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const ubuntu = pulumi.output(openstack.images.getImage({
+ * const ubuntu = openstack.images.getImage({
  *     mostRecent: true,
  *     name: "Ubuntu 16.04",
  *     properties: {
  *         key: "value",
  *     },
- * }));
+ * });
  * ```
  */
 export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:images/getImage:getImage", {
         "hidden": args.hidden,
         "memberStatus": args.memberStatus,
         "mostRecent": args.mostRecent,
         "name": args.name,
+        "nameRegex": args.nameRegex,
         "owner": args.owner,
         "properties": args.properties,
         "region": args.region,
@@ -42,6 +40,7 @@ export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Prom
         "sortDirection": args.sortDirection,
         "sortKey": args.sortKey,
         "tag": args.tag,
+        "tags": args.tags,
         "visibility": args.visibility,
     }, opts);
 }
@@ -65,9 +64,17 @@ export interface GetImageArgs {
      */
     mostRecent?: boolean;
     /**
-     * The name of the image.
+     * The name of the image. Cannot be used simultaneously
+     * with `nameRegex`.
      */
     name?: string;
+    /**
+     * The regular expressian of the name of the image.
+     * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+     * `nameRegex` filtering does by client on the result of OpenStack search
+     * query.
+     */
+    nameRegex?: string;
     /**
      * The owner (UUID) of the image.
      */
@@ -108,6 +115,11 @@ export interface GetImageArgs {
      */
     tag?: string;
     /**
+     * A list of tags required to be set on the image 
+     * (all specified tags must be in the images tag list for it to be matched).
+     */
+    tags?: string[];
+    /**
      * The visibility of the image. Must be one of
      * "public", "private", "community", or "shared". Defaults to "private".
      */
@@ -122,13 +134,17 @@ export interface GetImageResult {
      * The checksum of the data associated with the image.
      */
     readonly checksum: string;
+    /**
+     * The format of the image's container.
+     */
     readonly containerFormat: string;
     /**
      * The date the image was created.
-     * * `containerFormat`: The format of the image's container.
-     * * `diskFormat`: The format of the image's disk.
      */
     readonly createdAt: string;
+    /**
+     * The format of the image's disk.
+     */
     readonly diskFormat: string;
     /**
      * the trailing path after the glance endpoint that represent the
@@ -157,6 +173,7 @@ export interface GetImageResult {
     readonly minRamMb: number;
     readonly mostRecent?: boolean;
     readonly name?: string;
+    readonly nameRegex?: string;
     readonly owner?: string;
     /**
      * Freeform information about the image.
@@ -191,9 +208,26 @@ export interface GetImageResult {
     readonly updatedAt: string;
     readonly visibility?: string;
 }
-
+/**
+ * Use this data source to get the ID of an available OpenStack image.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const ubuntu = openstack.images.getImage({
+ *     mostRecent: true,
+ *     name: "Ubuntu 16.04",
+ *     properties: {
+ *         key: "value",
+ *     },
+ * });
+ * ```
+ */
 export function getImageOutput(args?: GetImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageResult> {
-    return pulumi.output(args).apply(a => getImage(a, opts))
+    return pulumi.output(args).apply((a: any) => getImage(a, opts))
 }
 
 /**
@@ -215,9 +249,17 @@ export interface GetImageOutputArgs {
      */
     mostRecent?: pulumi.Input<boolean>;
     /**
-     * The name of the image.
+     * The name of the image. Cannot be used simultaneously
+     * with `nameRegex`.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The regular expressian of the name of the image.
+     * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+     * `nameRegex` filtering does by client on the result of OpenStack search
+     * query.
+     */
+    nameRegex?: pulumi.Input<string>;
     /**
      * The owner (UUID) of the image.
      */
@@ -257,6 +299,11 @@ export interface GetImageOutputArgs {
      * Search for images with a specific tag.
      */
     tag?: pulumi.Input<string>;
+    /**
+     * A list of tags required to be set on the image 
+     * (all specified tags must be in the images tag list for it to be matched).
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The visibility of the image. Must be one of
      * "public", "private", "community", or "shared". Defaults to "private".

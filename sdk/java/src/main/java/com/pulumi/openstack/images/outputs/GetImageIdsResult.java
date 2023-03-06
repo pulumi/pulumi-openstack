@@ -45,6 +45,7 @@ public final class GetImageIdsResult {
     @Deprecated /* Use option 'sort' instead. */
     private @Nullable String sortKey;
     private @Nullable String tag;
+    private @Nullable List<String> tags;
     private @Nullable String visibility;
 
     private GetImageIdsResult() {}
@@ -106,6 +107,9 @@ public final class GetImageIdsResult {
     public Optional<String> tag() {
         return Optional.ofNullable(this.tag);
     }
+    public List<String> tags() {
+        return this.tags == null ? List.of() : this.tags;
+    }
     public Optional<String> visibility() {
         return Optional.ofNullable(this.visibility);
     }
@@ -133,6 +137,7 @@ public final class GetImageIdsResult {
         private @Nullable String sortDirection;
         private @Nullable String sortKey;
         private @Nullable String tag;
+        private @Nullable List<String> tags;
         private @Nullable String visibility;
         public Builder() {}
         public Builder(GetImageIdsResult defaults) {
@@ -151,6 +156,7 @@ public final class GetImageIdsResult {
     	      this.sortDirection = defaults.sortDirection;
     	      this.sortKey = defaults.sortKey;
     	      this.tag = defaults.tag;
+    	      this.tags = defaults.tags;
     	      this.visibility = defaults.visibility;
         }
 
@@ -228,6 +234,14 @@ public final class GetImageIdsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(@Nullable List<String> tags) {
+            this.tags = tags;
+            return this;
+        }
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
+        }
+        @CustomType.Setter
         public Builder visibility(@Nullable String visibility) {
             this.visibility = visibility;
             return this;
@@ -248,6 +262,7 @@ public final class GetImageIdsResult {
             o.sortDirection = sortDirection;
             o.sortKey = sortKey;
             o.tag = tag;
+            o.tags = tags;
             o.visibility = visibility;
             return o;
         }

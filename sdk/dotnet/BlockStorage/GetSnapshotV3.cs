@@ -19,27 +19,25 @@ namespace Pulumi.OpenStack.BlockStorage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var snapshot1 = OpenStack.BlockStorage.GetSnapshotV3.Invoke(new()
         ///     {
-        ///         var snapshot1 = Output.Create(OpenStack.BlockStorage.GetSnapshotV3.InvokeAsync(new OpenStack.BlockStorage.GetSnapshotV3Args
-        ///         {
-        ///             MostRecent = true,
-        ///             Name = "snapshot_1",
-        ///         }));
-        ///     }
+        ///         MostRecent = true,
+        ///         Name = "snapshot_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSnapshotV3Result> InvokeAsync(GetSnapshotV3Args? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotV3Result>("openstack:blockstorage/getSnapshotV3:getSnapshotV3", args ?? new GetSnapshotV3Args(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotV3Result>("openstack:blockstorage/getSnapshotV3:getSnapshotV3", args ?? new GetSnapshotV3Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about an existing snapshot.
@@ -49,31 +47,29 @@ namespace Pulumi.OpenStack.BlockStorage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var snapshot1 = OpenStack.BlockStorage.GetSnapshotV3.Invoke(new()
         ///     {
-        ///         var snapshot1 = Output.Create(OpenStack.BlockStorage.GetSnapshotV3.InvokeAsync(new OpenStack.BlockStorage.GetSnapshotV3Args
-        ///         {
-        ///             MostRecent = true,
-        ///             Name = "snapshot_1",
-        ///         }));
-        ///     }
+        ///         MostRecent = true,
+        ///         Name = "snapshot_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSnapshotV3Result> Invoke(GetSnapshotV3InvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSnapshotV3Result>("openstack:blockstorage/getSnapshotV3:getSnapshotV3", args ?? new GetSnapshotV3InvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotV3Result>("openstack:blockstorage/getSnapshotV3:getSnapshotV3", args ?? new GetSnapshotV3InvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetSnapshotV3Args : Pulumi.InvokeArgs
+    public sealed class GetSnapshotV3Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Pick the most recently created snapshot if there
@@ -110,9 +106,10 @@ namespace Pulumi.OpenStack.BlockStorage
         public GetSnapshotV3Args()
         {
         }
+        public static new GetSnapshotV3Args Empty => new GetSnapshotV3Args();
     }
 
-    public sealed class GetSnapshotV3InvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotV3InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Pick the most recently created snapshot if there
@@ -149,6 +146,7 @@ namespace Pulumi.OpenStack.BlockStorage
         public GetSnapshotV3InvokeArgs()
         {
         }
+        public static new GetSnapshotV3InvokeArgs Empty => new GetSnapshotV3InvokeArgs();
     }
 
 

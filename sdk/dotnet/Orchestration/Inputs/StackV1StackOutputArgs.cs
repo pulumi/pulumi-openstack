@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Orchestration.Inputs
 {
 
-    public sealed class StackV1StackOutputArgs : Pulumi.ResourceArgs
+    public sealed class StackV1StackOutputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the stack resource.
@@ -27,5 +27,6 @@ namespace Pulumi.OpenStack.Orchestration.Inputs
         public StackV1StackOutputArgs()
         {
         }
+        public static new StackV1StackOutputArgs Empty => new StackV1StackOutputArgs();
     }
 }

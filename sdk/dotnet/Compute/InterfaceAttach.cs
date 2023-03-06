@@ -17,98 +17,99 @@ namespace Pulumi.OpenStack.Compute
     /// ### Basic Attachment
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
     ///     {
-    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var instance1 = new OpenStack.Compute.Instance("instance1", new OpenStack.Compute.InstanceArgs
-    ///         {
-    ///             SecurityGroups = 
-    ///             {
-    ///                 "default",
-    ///             },
-    ///         });
-    ///         var ai1 = new OpenStack.Compute.InterfaceAttach("ai1", new OpenStack.Compute.InterfaceAttachArgs
-    ///         {
-    ///             InstanceId = instance1.Id,
-    ///             NetworkId = openstack_networking_port_v2.Network_1.Id,
-    ///         });
-    ///     }
+    ///         AdminStateUp = true,
+    ///     });
     /// 
-    /// }
+    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     {
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///     });
+    /// 
+    ///     var ai1 = new OpenStack.Compute.InterfaceAttach("ai1", new()
+    ///     {
+    ///         InstanceId = instance1.Id,
+    ///         NetworkId = openstack_networking_port_v2.Network_1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Attachment Specifying a Fixed IP
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
     ///     {
-    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var instance1 = new OpenStack.Compute.Instance("instance1", new OpenStack.Compute.InstanceArgs
-    ///         {
-    ///             SecurityGroups = 
-    ///             {
-    ///                 "default",
-    ///             },
-    ///         });
-    ///         var ai1 = new OpenStack.Compute.InterfaceAttach("ai1", new OpenStack.Compute.InterfaceAttachArgs
-    ///         {
-    ///             FixedIp = "10.0.10.10",
-    ///             InstanceId = instance1.Id,
-    ///             NetworkId = openstack_networking_port_v2.Network_1.Id,
-    ///         });
-    ///     }
+    ///         AdminStateUp = true,
+    ///     });
     /// 
-    /// }
+    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     {
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///     });
+    /// 
+    ///     var ai1 = new OpenStack.Compute.InterfaceAttach("ai1", new()
+    ///     {
+    ///         FixedIp = "10.0.10.10",
+    ///         InstanceId = instance1.Id,
+    ///         NetworkId = openstack_networking_port_v2.Network_1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ### Attachment Using an Existing Port
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
     ///     {
-    ///         var network1 = new OpenStack.Networking.Network("network1", new OpenStack.Networking.NetworkArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///         });
-    ///         var port1 = new OpenStack.Networking.Port("port1", new OpenStack.Networking.PortArgs
-    ///         {
-    ///             AdminStateUp = true,
-    ///             NetworkId = network1.Id,
-    ///         });
-    ///         var instance1 = new OpenStack.Compute.Instance("instance1", new OpenStack.Compute.InstanceArgs
-    ///         {
-    ///             SecurityGroups = 
-    ///             {
-    ///                 "default",
-    ///             },
-    ///         });
-    ///         var ai1 = new OpenStack.Compute.InterfaceAttach("ai1", new OpenStack.Compute.InterfaceAttachArgs
-    ///         {
-    ///             InstanceId = instance1.Id,
-    ///             PortId = port1.Id,
-    ///         });
-    ///     }
+    ///         AdminStateUp = true,
+    ///     });
     /// 
-    /// }
+    ///     var port1 = new OpenStack.Networking.Port("port1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///         NetworkId = network1.Id,
+    ///     });
+    /// 
+    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     {
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///     });
+    /// 
+    ///     var ai1 = new OpenStack.Compute.InterfaceAttach("ai1", new()
+    ///     {
+    ///         InstanceId = instance1.Id,
+    ///         PortId = port1.Id,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -120,7 +121,7 @@ namespace Pulumi.OpenStack.Compute
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:compute/interfaceAttach:InterfaceAttach")]
-    public partial class InterfaceAttach : Pulumi.CustomResource
+    public partial class InterfaceAttach : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An IP address to assosciate with the port.
@@ -201,7 +202,7 @@ namespace Pulumi.OpenStack.Compute
         }
     }
 
-    public sealed class InterfaceAttachArgs : Pulumi.ResourceArgs
+    public sealed class InterfaceAttachArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An IP address to assosciate with the port.
@@ -241,9 +242,10 @@ namespace Pulumi.OpenStack.Compute
         public InterfaceAttachArgs()
         {
         }
+        public static new InterfaceAttachArgs Empty => new InterfaceAttachArgs();
     }
 
-    public sealed class InterfaceAttachState : Pulumi.ResourceArgs
+    public sealed class InterfaceAttachState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An IP address to assosciate with the port.
@@ -283,5 +285,6 @@ namespace Pulumi.OpenStack.Compute
         public InterfaceAttachState()
         {
         }
+        public static new InterfaceAttachState Empty => new InterfaceAttachState();
     }
 }

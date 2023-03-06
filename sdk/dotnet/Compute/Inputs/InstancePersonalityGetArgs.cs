@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Compute.Inputs
 {
 
-    public sealed class InstancePersonalityGetArgs : Pulumi.ResourceArgs
+    public sealed class InstancePersonalityGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The contents of the file. Limited to 255 bytes.
@@ -27,5 +27,6 @@ namespace Pulumi.OpenStack.Compute.Inputs
         public InstancePersonalityGetArgs()
         {
         }
+        public static new InstancePersonalityGetArgs Empty => new InstancePersonalityGetArgs();
     }
 }

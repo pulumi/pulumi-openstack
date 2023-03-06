@@ -19,28 +19,26 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var publicAddressscope = OpenStack.Networking.GetAddressScope.Invoke(new()
         ///     {
-        ///         var publicAddressscope = Output.Create(OpenStack.Networking.GetAddressScope.InvokeAsync(new OpenStack.Networking.GetAddressScopeArgs
-        ///         {
-        ///             IpVersion = 4,
-        ///             Name = "public_addressscope",
-        ///             Shared = true,
-        ///         }));
-        ///     }
+        ///         IpVersion = 4,
+        ///         Name = "public_addressscope",
+        ///         Shared = true,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAddressScopeResult> InvokeAsync(GetAddressScopeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAddressScopeResult>("openstack:networking/getAddressScope:getAddressScope", args ?? new GetAddressScopeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAddressScopeResult>("openstack:networking/getAddressScope:getAddressScope", args ?? new GetAddressScopeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack address-scope.
@@ -50,32 +48,30 @@ namespace Pulumi.OpenStack.Networking
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var publicAddressscope = OpenStack.Networking.GetAddressScope.Invoke(new()
         ///     {
-        ///         var publicAddressscope = Output.Create(OpenStack.Networking.GetAddressScope.InvokeAsync(new OpenStack.Networking.GetAddressScopeArgs
-        ///         {
-        ///             IpVersion = 4,
-        ///             Name = "public_addressscope",
-        ///             Shared = true,
-        ///         }));
-        ///     }
+        ///         IpVersion = 4,
+        ///         Name = "public_addressscope",
+        ///         Shared = true,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAddressScopeResult> Invoke(GetAddressScopeInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAddressScopeResult>("openstack:networking/getAddressScope:getAddressScope", args ?? new GetAddressScopeInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAddressScopeResult>("openstack:networking/getAddressScope:getAddressScope", args ?? new GetAddressScopeInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAddressScopeArgs : Pulumi.InvokeArgs
+    public sealed class GetAddressScopeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// IP version.
@@ -113,9 +109,10 @@ namespace Pulumi.OpenStack.Networking
         public GetAddressScopeArgs()
         {
         }
+        public static new GetAddressScopeArgs Empty => new GetAddressScopeArgs();
     }
 
-    public sealed class GetAddressScopeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAddressScopeInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// IP version.
@@ -153,6 +150,7 @@ namespace Pulumi.OpenStack.Networking
         public GetAddressScopeInvokeArgs()
         {
         }
+        public static new GetAddressScopeInvokeArgs Empty => new GetAddressScopeInvokeArgs();
     }
 
 

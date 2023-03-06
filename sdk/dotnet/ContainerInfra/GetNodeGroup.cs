@@ -19,27 +19,25 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var nodegroup1 = OpenStack.ContainerInfra.GetNodeGroup.Invoke(new()
         ///     {
-        ///         var nodegroup1 = Output.Create(OpenStack.ContainerInfra.GetNodeGroup.InvokeAsync(new OpenStack.ContainerInfra.GetNodeGroupArgs
-        ///         {
-        ///             ClusterId = "cluster_1",
-        ///             Name = "nodegroup_1",
-        ///         }));
-        ///     }
+        ///         ClusterId = "cluster_1",
+        ///         Name = "nodegroup_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNodeGroupResult> InvokeAsync(GetNodeGroupArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeGroupResult>("openstack:containerinfra/getNodeGroup:getNodeGroup", args ?? new GetNodeGroupArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeGroupResult>("openstack:containerinfra/getNodeGroup:getNodeGroup", args ?? new GetNodeGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information of an available OpenStack Magnum node group.
@@ -49,31 +47,29 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var nodegroup1 = OpenStack.ContainerInfra.GetNodeGroup.Invoke(new()
         ///     {
-        ///         var nodegroup1 = Output.Create(OpenStack.ContainerInfra.GetNodeGroup.InvokeAsync(new OpenStack.ContainerInfra.GetNodeGroupArgs
-        ///         {
-        ///             ClusterId = "cluster_1",
-        ///             Name = "nodegroup_1",
-        ///         }));
-        ///     }
+        ///         ClusterId = "cluster_1",
+        ///         Name = "nodegroup_1",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNodeGroupResult> Invoke(GetNodeGroupInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodeGroupResult>("openstack:containerinfra/getNodeGroup:getNodeGroup", args ?? new GetNodeGroupInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodeGroupResult>("openstack:containerinfra/getNodeGroup:getNodeGroup", args ?? new GetNodeGroupInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNodeGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the OpenStack Magnum cluster.
@@ -98,9 +94,10 @@ namespace Pulumi.OpenStack.ContainerInfra
         public GetNodeGroupArgs()
         {
         }
+        public static new GetNodeGroupArgs Empty => new GetNodeGroupArgs();
     }
 
-    public sealed class GetNodeGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The name of the OpenStack Magnum cluster.
@@ -125,6 +122,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         public GetNodeGroupInvokeArgs()
         {
         }
+        public static new GetNodeGroupInvokeArgs Empty => new GetNodeGroupInvokeArgs();
     }
 
 

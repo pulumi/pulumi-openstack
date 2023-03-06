@@ -13,16 +13,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const zones = pulumi.output(openstack.compute.getAvailabilityZones());
+ * const zones = openstack.compute.getAvailabilityZones({});
  * ```
  */
 export function getAvailabilityZones(args?: GetAvailabilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZonesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:compute/getAvailabilityZones:getAvailabilityZones", {
         "region": args.region,
         "state": args.state,
@@ -58,9 +55,20 @@ export interface GetAvailabilityZonesResult {
     readonly region: string;
     readonly state?: string;
 }
-
+/**
+ * Use this data source to get a list of availability zones from OpenStack
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const zones = openstack.compute.getAvailabilityZones({});
+ * ```
+ */
 export function getAvailabilityZonesOutput(args?: GetAvailabilityZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvailabilityZonesResult> {
-    return pulumi.output(args).apply(a => getAvailabilityZones(a, opts))
+    return pulumi.output(args).apply((a: any) => getAvailabilityZones(a, opts))
 }
 
 /**

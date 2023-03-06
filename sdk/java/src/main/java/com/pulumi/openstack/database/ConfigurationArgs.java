@@ -66,14 +66,14 @@ public final class ConfigurationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration parameter name. Changing this creates a new resource.
+     * A unique name for the resource.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Configuration parameter name. Changing this creates a new resource.
+     * @return A unique name for the resource.
      * 
      */
     public Optional<Output<String>> name() {
@@ -201,7 +201,7 @@ public final class ConfigurationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Configuration parameter name. Changing this creates a new resource.
+         * @param name A unique name for the resource.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class ConfigurationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Configuration parameter name. Changing this creates a new resource.
+         * @param name A unique name for the resource.
          * 
          * @return builder
          * 

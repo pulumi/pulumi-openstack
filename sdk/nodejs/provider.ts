@@ -145,7 +145,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["insecure"] = pulumi.output((args ? args.insecure : undefined) ?? utilities.getEnvBoolean("OS_INSECURE")).apply(JSON.stringify);
             resourceInputs["key"] = args ? args.key : undefined;
             resourceInputs["maxRetries"] = pulumi.output(args ? args.maxRetries : undefined).apply(JSON.stringify);
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["projectDomainId"] = args ? args.projectDomainId : undefined;
             resourceInputs["projectDomainName"] = args ? args.projectDomainName : undefined;
             resourceInputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("OS_REGION_NAME");
@@ -160,6 +160,8 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["userName"] = args ? args.userName : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,18 +15,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const share1 = pulumi.output(openstack.sharedfilesystem.getShare({
+ * const share1 = openstack.sharedfilesystem.getShare({
  *     name: "share_1",
- * }));
+ * });
  * ```
  */
 export function getShare(args?: GetShareArgs, opts?: pulumi.InvokeOptions): Promise<GetShareResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("openstack:sharedfilesystem/getShare:getShare", {
         "description": args.description,
         "exportLocationPath": args.exportLocationPath,
@@ -155,9 +153,22 @@ export interface GetShareResult {
      */
     readonly status: string;
 }
-
+/**
+ * Use this data source to get the ID of an available Shared File System share.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const share1 = openstack.sharedfilesystem.getShare({
+ *     name: "share_1",
+ * });
+ * ```
+ */
 export function getShareOutput(args?: GetShareOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShareResult> {
-    return pulumi.output(args).apply(a => getShare(a, opts))
+    return pulumi.output(args).apply((a: any) => getShare(a, opts))
 }
 
 /**
