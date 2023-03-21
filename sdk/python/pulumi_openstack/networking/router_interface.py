@@ -15,6 +15,7 @@ __all__ = ['RouterInterfaceArgs', 'RouterInterface']
 class RouterInterfaceArgs:
     def __init__(__self__, *,
                  router_id: pulumi.Input[str],
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  port_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None):
@@ -22,6 +23,9 @@ class RouterInterfaceArgs:
         The set of arguments for constructing a RouterInterface resource.
         :param pulumi.Input[str] router_id: ID of the router this interface belongs to. Changing
                this creates a new router interface.
+        :param pulumi.Input[bool] force_destroy: A boolean indicating whether the routes from the
+               corresponding router ID should be deleted so that the router interface can
+               be destroyed without any errors. The default value is `false`.
         :param pulumi.Input[str] port_id: ID of the port this interface connects to. Changing
                this creates a new router interface.
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
@@ -32,6 +36,8 @@ class RouterInterfaceArgs:
                this creates a new router interface.
         """
         pulumi.set(__self__, "router_id", router_id)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if port_id is not None:
             pulumi.set(__self__, "port_id", port_id)
         if region is not None:
@@ -51,6 +57,20 @@ class RouterInterfaceArgs:
     @router_id.setter
     def router_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "router_id", value)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean indicating whether the routes from the
+        corresponding router ID should be deleted so that the router interface can
+        be destroyed without any errors. The default value is `false`.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
 
     @property
     @pulumi.getter(name="portId")
@@ -97,12 +117,16 @@ class RouterInterfaceArgs:
 @pulumi.input_type
 class _RouterInterfaceState:
     def __init__(__self__, *,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  port_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router_id: Optional[pulumi.Input[str]] = None,
                  subnet_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RouterInterface resources.
+        :param pulumi.Input[bool] force_destroy: A boolean indicating whether the routes from the
+               corresponding router ID should be deleted so that the router interface can
+               be destroyed without any errors. The default value is `false`.
         :param pulumi.Input[str] port_id: ID of the port this interface connects to. Changing
                this creates a new router interface.
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
@@ -114,6 +138,8 @@ class _RouterInterfaceState:
         :param pulumi.Input[str] subnet_id: ID of the subnet this interface connects to. Changing
                this creates a new router interface.
         """
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if port_id is not None:
             pulumi.set(__self__, "port_id", port_id)
         if region is not None:
@@ -122,6 +148,20 @@ class _RouterInterfaceState:
             pulumi.set(__self__, "router_id", router_id)
         if subnet_id is not None:
             pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean indicating whether the routes from the
+        corresponding router ID should be deleted so that the router interface can
+        be destroyed without any errors. The default value is `false`.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
 
     @property
     @pulumi.getter(name="portId")
@@ -183,6 +223,7 @@ class RouterInterface(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  port_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router_id: Optional[pulumi.Input[str]] = None,
@@ -218,6 +259,9 @@ class RouterInterface(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] force_destroy: A boolean indicating whether the routes from the
+               corresponding router ID should be deleted so that the router interface can
+               be destroyed without any errors. The default value is `false`.
         :param pulumi.Input[str] port_id: ID of the port this interface connects to. Changing
                this creates a new router interface.
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
@@ -278,6 +322,7 @@ class RouterInterface(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  port_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router_id: Optional[pulumi.Input[str]] = None,
@@ -291,6 +336,7 @@ class RouterInterface(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RouterInterfaceArgs.__new__(RouterInterfaceArgs)
 
+            __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["port_id"] = port_id
             __props__.__dict__["region"] = region
             if router_id is None and not opts.urn:
@@ -307,6 +353,7 @@ class RouterInterface(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            force_destroy: Optional[pulumi.Input[bool]] = None,
             port_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             router_id: Optional[pulumi.Input[str]] = None,
@@ -318,6 +365,9 @@ class RouterInterface(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] force_destroy: A boolean indicating whether the routes from the
+               corresponding router ID should be deleted so that the router interface can
+               be destroyed without any errors. The default value is `false`.
         :param pulumi.Input[str] port_id: ID of the port this interface connects to. Changing
                this creates a new router interface.
         :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
@@ -333,11 +383,22 @@ class RouterInterface(pulumi.CustomResource):
 
         __props__ = _RouterInterfaceState.__new__(_RouterInterfaceState)
 
+        __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["port_id"] = port_id
         __props__.__dict__["region"] = region
         __props__.__dict__["router_id"] = router_id
         __props__.__dict__["subnet_id"] = subnet_id
         return RouterInterface(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        A boolean indicating whether the routes from the
+        corresponding router ID should be deleted so that the router interface can
+        be destroyed without any errors. The default value is `false`.
+        """
+        return pulumi.get(self, "force_destroy")
 
     @property
     @pulumi.getter(name="portId")

@@ -132,7 +132,7 @@ type SecretV1 struct {
 	// to be unique.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The secret's data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
-	Payload pulumi.StringOutput `pulumi:"payload"`
+	Payload pulumi.StringPtrOutput `pulumi:"payload"`
 	// (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
 	PayloadContentEncoding pulumi.StringPtrOutput `pulumi:"payloadContentEncoding"`
 	// (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
@@ -501,8 +501,8 @@ func (o SecretV1Output) Name() pulumi.StringOutput {
 }
 
 // The secret's data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
-func (o SecretV1Output) Payload() pulumi.StringOutput {
-	return o.ApplyT(func(v *SecretV1) pulumi.StringOutput { return v.Payload }).(pulumi.StringOutput)
+func (o SecretV1Output) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretV1) pulumi.StringPtrOutput { return v.Payload }).(pulumi.StringPtrOutput)
 }
 
 // (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.

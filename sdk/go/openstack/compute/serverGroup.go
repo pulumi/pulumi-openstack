@@ -13,6 +13,7 @@ import (
 // Manages a V2 Server Group resource within OpenStack.
 //
 // ## Example Usage
+// ### Compute service API version 2.63 or below:
 //
 // ```go
 // package main
@@ -27,8 +28,34 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewServerGroup(ctx, "test-sg", &compute.ServerGroupArgs{
-//				Policies: pulumi.StringArray{
-//					pulumi.String("anti-affinity"),
+//				Policies: pulumi.String("anti-affinity"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Compute service API version 2.64 or above:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewServerGroup(ctx, "test-sg", &compute.ServerGroupArgs{
+//				Policies: pulumi.String("anti-affinity"),
+//				Rules: &compute.ServerGroupRulesArgs{
+//					MaxServerPerHost: pulumi.Int(3),
 //				},
 //			})
 //			if err != nil {
@@ -74,14 +101,17 @@ type ServerGroup struct {
 	// A unique name for the server group. Changing this creates
 	// a new server group.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The set of policies for the server group. All policies
-	// are mutually exclusive. See the Policies section for more information.
-	// Changing this creates a new server group.
-	Policies pulumi.StringArrayOutput `pulumi:"policies"`
+	// A list of exactly one policy name to associate with
+	// the server group. See the Policies section for more information. Changing this
+	// creates a new server group.
+	Policies pulumi.StringPtrOutput `pulumi:"policies"`
 	// The region in which to obtain the V2 Compute client.
 	// If omitted, the `region` argument of the provider is used. Changing
 	// this creates a new server group.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The rules which are applied to specified `policy`. Currently,
+	// only the `maxServerPerHost` rule is supported for the `anti-affinity` policy.
+	Rules ServerGroupRulesOutput `pulumi:"rules"`
 	// Map of additional options.
 	ValueSpecs pulumi.MapOutput `pulumi:"valueSpecs"`
 }
@@ -120,14 +150,17 @@ type serverGroupState struct {
 	// A unique name for the server group. Changing this creates
 	// a new server group.
 	Name *string `pulumi:"name"`
-	// The set of policies for the server group. All policies
-	// are mutually exclusive. See the Policies section for more information.
-	// Changing this creates a new server group.
-	Policies []string `pulumi:"policies"`
+	// A list of exactly one policy name to associate with
+	// the server group. See the Policies section for more information. Changing this
+	// creates a new server group.
+	Policies *string `pulumi:"policies"`
 	// The region in which to obtain the V2 Compute client.
 	// If omitted, the `region` argument of the provider is used. Changing
 	// this creates a new server group.
 	Region *string `pulumi:"region"`
+	// The rules which are applied to specified `policy`. Currently,
+	// only the `maxServerPerHost` rule is supported for the `anti-affinity` policy.
+	Rules *ServerGroupRules `pulumi:"rules"`
 	// Map of additional options.
 	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
 }
@@ -138,14 +171,17 @@ type ServerGroupState struct {
 	// A unique name for the server group. Changing this creates
 	// a new server group.
 	Name pulumi.StringPtrInput
-	// The set of policies for the server group. All policies
-	// are mutually exclusive. See the Policies section for more information.
-	// Changing this creates a new server group.
-	Policies pulumi.StringArrayInput
+	// A list of exactly one policy name to associate with
+	// the server group. See the Policies section for more information. Changing this
+	// creates a new server group.
+	Policies pulumi.StringPtrInput
 	// The region in which to obtain the V2 Compute client.
 	// If omitted, the `region` argument of the provider is used. Changing
 	// this creates a new server group.
 	Region pulumi.StringPtrInput
+	// The rules which are applied to specified `policy`. Currently,
+	// only the `maxServerPerHost` rule is supported for the `anti-affinity` policy.
+	Rules ServerGroupRulesPtrInput
 	// Map of additional options.
 	ValueSpecs pulumi.MapInput
 }
@@ -158,14 +194,17 @@ type serverGroupArgs struct {
 	// A unique name for the server group. Changing this creates
 	// a new server group.
 	Name *string `pulumi:"name"`
-	// The set of policies for the server group. All policies
-	// are mutually exclusive. See the Policies section for more information.
-	// Changing this creates a new server group.
-	Policies []string `pulumi:"policies"`
+	// A list of exactly one policy name to associate with
+	// the server group. See the Policies section for more information. Changing this
+	// creates a new server group.
+	Policies *string `pulumi:"policies"`
 	// The region in which to obtain the V2 Compute client.
 	// If omitted, the `region` argument of the provider is used. Changing
 	// this creates a new server group.
 	Region *string `pulumi:"region"`
+	// The rules which are applied to specified `policy`. Currently,
+	// only the `maxServerPerHost` rule is supported for the `anti-affinity` policy.
+	Rules *ServerGroupRules `pulumi:"rules"`
 	// Map of additional options.
 	ValueSpecs map[string]interface{} `pulumi:"valueSpecs"`
 }
@@ -175,14 +214,17 @@ type ServerGroupArgs struct {
 	// A unique name for the server group. Changing this creates
 	// a new server group.
 	Name pulumi.StringPtrInput
-	// The set of policies for the server group. All policies
-	// are mutually exclusive. See the Policies section for more information.
-	// Changing this creates a new server group.
-	Policies pulumi.StringArrayInput
+	// A list of exactly one policy name to associate with
+	// the server group. See the Policies section for more information. Changing this
+	// creates a new server group.
+	Policies pulumi.StringPtrInput
 	// The region in which to obtain the V2 Compute client.
 	// If omitted, the `region` argument of the provider is used. Changing
 	// this creates a new server group.
 	Region pulumi.StringPtrInput
+	// The rules which are applied to specified `policy`. Currently,
+	// only the `maxServerPerHost` rule is supported for the `anti-affinity` policy.
+	Rules ServerGroupRulesPtrInput
 	// Map of additional options.
 	ValueSpecs pulumi.MapInput
 }
@@ -285,11 +327,11 @@ func (o ServerGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The set of policies for the server group. All policies
-// are mutually exclusive. See the Policies section for more information.
-// Changing this creates a new server group.
-func (o ServerGroupOutput) Policies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ServerGroup) pulumi.StringArrayOutput { return v.Policies }).(pulumi.StringArrayOutput)
+// A list of exactly one policy name to associate with
+// the server group. See the Policies section for more information. Changing this
+// creates a new server group.
+func (o ServerGroupOutput) Policies() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerGroup) pulumi.StringPtrOutput { return v.Policies }).(pulumi.StringPtrOutput)
 }
 
 // The region in which to obtain the V2 Compute client.
@@ -297,6 +339,12 @@ func (o ServerGroupOutput) Policies() pulumi.StringArrayOutput {
 // this creates a new server group.
 func (o ServerGroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The rules which are applied to specified `policy`. Currently,
+// only the `maxServerPerHost` rule is supported for the `anti-affinity` policy.
+func (o ServerGroupOutput) Rules() ServerGroupRulesOutput {
+	return o.ApplyT(func(v *ServerGroup) ServerGroupRulesOutput { return v.Rules }).(ServerGroupRulesOutput)
 }
 
 // Map of additional options.

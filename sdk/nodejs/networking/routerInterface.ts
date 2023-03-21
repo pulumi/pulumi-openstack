@@ -63,6 +63,12 @@ export class RouterInterface extends pulumi.CustomResource {
     }
 
     /**
+     * A boolean indicating whether the routes from the
+     * corresponding router ID should be deleted so that the router interface can
+     * be destroyed without any errors. The default value is `false`.
+     */
+    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    /**
      * ID of the port this interface connects to. Changing
      * this creates a new router interface.
      */
@@ -98,6 +104,7 @@ export class RouterInterface extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouterInterfaceState | undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["portId"] = state ? state.portId : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["routerId"] = state ? state.routerId : undefined;
@@ -107,6 +114,7 @@ export class RouterInterface extends pulumi.CustomResource {
             if ((!args || args.routerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routerId'");
             }
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["portId"] = args ? args.portId : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["routerId"] = args ? args.routerId : undefined;
@@ -121,6 +129,12 @@ export class RouterInterface extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RouterInterface resources.
  */
 export interface RouterInterfaceState {
+    /**
+     * A boolean indicating whether the routes from the
+     * corresponding router ID should be deleted so that the router interface can
+     * be destroyed without any errors. The default value is `false`.
+     */
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * ID of the port this interface connects to. Changing
      * this creates a new router interface.
@@ -149,6 +163,12 @@ export interface RouterInterfaceState {
  * The set of arguments for constructing a RouterInterface resource.
  */
 export interface RouterInterfaceArgs {
+    /**
+     * A boolean indicating whether the routes from the
+     * corresponding router ID should be deleted so that the router interface can
+     * be destroyed without any errors. The default value is `false`.
+     */
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * ID of the port this interface connects to. Changing
      * this creates a new router interface.

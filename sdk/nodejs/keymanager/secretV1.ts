@@ -138,7 +138,7 @@ export class SecretV1 extends pulumi.CustomResource {
     /**
      * The secret's data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
      */
-    public readonly payload!: pulumi.Output<string>;
+    public readonly payload!: pulumi.Output<string | undefined>;
     /**
      * (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
      */

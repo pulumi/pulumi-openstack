@@ -10,7 +10,9 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.networking.RouterInterfaceArgs;
 import com.pulumi.openstack.networking.inputs.RouterInterfaceState;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -78,6 +80,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="openstack:networking/routerInterface:RouterInterface")
 public class RouterInterface extends com.pulumi.resources.CustomResource {
+    /**
+     * A boolean indicating whether the routes from the
+     * corresponding router ID should be deleted so that the router interface can
+     * be destroyed without any errors. The default value is `false`.
+     * 
+     */
+    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> forceDestroy;
+
+    /**
+     * @return A boolean indicating whether the routes from the
+     * corresponding router ID should be deleted so that the router interface can
+     * be destroyed without any errors. The default value is `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDestroy() {
+        return Codegen.optional(this.forceDestroy);
+    }
     /**
      * ID of the port this interface connects to. Changing
      * this creates a new router interface.

@@ -17,6 +17,7 @@ __all__ = [
     'InstanceVendorOptionsArgs',
     'InstanceVolumeArgs',
     'SecGroupRuleArgs',
+    'ServerGroupRulesArgs',
     'VolumeAttachVendorOptionsArgs',
     'GetInstanceV2NetworkArgs',
 ]
@@ -774,6 +775,23 @@ class SecGroupRuleArgs:
     @self.setter
     def self(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "self", value)
+
+
+@pulumi.input_type
+class ServerGroupRulesArgs:
+    def __init__(__self__, *,
+                 max_server_per_host: Optional[pulumi.Input[int]] = None):
+        if max_server_per_host is not None:
+            pulumi.set(__self__, "max_server_per_host", max_server_per_host)
+
+    @property
+    @pulumi.getter(name="maxServerPerHost")
+    def max_server_per_host(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_server_per_host")
+
+    @max_server_per_host.setter
+    def max_server_per_host(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_server_per_host", value)
 
 
 @pulumi.input_type

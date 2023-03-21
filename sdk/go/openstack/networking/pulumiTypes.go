@@ -1376,6 +1376,112 @@ func (o TrunkSubPortArrayOutput) Index(i pulumi.IntInput) TrunkSubPortOutput {
 	}).(TrunkSubPortOutput)
 }
 
+type GetNetworkSegment struct {
+	NetworkType     string `pulumi:"networkType"`
+	PhysicalNetwork string `pulumi:"physicalNetwork"`
+	SegmentationId  int    `pulumi:"segmentationId"`
+}
+
+// GetNetworkSegmentInput is an input type that accepts GetNetworkSegmentArgs and GetNetworkSegmentOutput values.
+// You can construct a concrete instance of `GetNetworkSegmentInput` via:
+//
+//	GetNetworkSegmentArgs{...}
+type GetNetworkSegmentInput interface {
+	pulumi.Input
+
+	ToGetNetworkSegmentOutput() GetNetworkSegmentOutput
+	ToGetNetworkSegmentOutputWithContext(context.Context) GetNetworkSegmentOutput
+}
+
+type GetNetworkSegmentArgs struct {
+	NetworkType     pulumi.StringInput `pulumi:"networkType"`
+	PhysicalNetwork pulumi.StringInput `pulumi:"physicalNetwork"`
+	SegmentationId  pulumi.IntInput    `pulumi:"segmentationId"`
+}
+
+func (GetNetworkSegmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkSegment)(nil)).Elem()
+}
+
+func (i GetNetworkSegmentArgs) ToGetNetworkSegmentOutput() GetNetworkSegmentOutput {
+	return i.ToGetNetworkSegmentOutputWithContext(context.Background())
+}
+
+func (i GetNetworkSegmentArgs) ToGetNetworkSegmentOutputWithContext(ctx context.Context) GetNetworkSegmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkSegmentOutput)
+}
+
+// GetNetworkSegmentArrayInput is an input type that accepts GetNetworkSegmentArray and GetNetworkSegmentArrayOutput values.
+// You can construct a concrete instance of `GetNetworkSegmentArrayInput` via:
+//
+//	GetNetworkSegmentArray{ GetNetworkSegmentArgs{...} }
+type GetNetworkSegmentArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkSegmentArrayOutput() GetNetworkSegmentArrayOutput
+	ToGetNetworkSegmentArrayOutputWithContext(context.Context) GetNetworkSegmentArrayOutput
+}
+
+type GetNetworkSegmentArray []GetNetworkSegmentInput
+
+func (GetNetworkSegmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkSegment)(nil)).Elem()
+}
+
+func (i GetNetworkSegmentArray) ToGetNetworkSegmentArrayOutput() GetNetworkSegmentArrayOutput {
+	return i.ToGetNetworkSegmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkSegmentArray) ToGetNetworkSegmentArrayOutputWithContext(ctx context.Context) GetNetworkSegmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkSegmentArrayOutput)
+}
+
+type GetNetworkSegmentOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkSegmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkSegment)(nil)).Elem()
+}
+
+func (o GetNetworkSegmentOutput) ToGetNetworkSegmentOutput() GetNetworkSegmentOutput {
+	return o
+}
+
+func (o GetNetworkSegmentOutput) ToGetNetworkSegmentOutputWithContext(ctx context.Context) GetNetworkSegmentOutput {
+	return o
+}
+
+func (o GetNetworkSegmentOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkSegment) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkSegmentOutput) PhysicalNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkSegment) string { return v.PhysicalNetwork }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkSegmentOutput) SegmentationId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkSegment) int { return v.SegmentationId }).(pulumi.IntOutput)
+}
+
+type GetNetworkSegmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkSegmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkSegment)(nil)).Elem()
+}
+
+func (o GetNetworkSegmentArrayOutput) ToGetNetworkSegmentArrayOutput() GetNetworkSegmentArrayOutput {
+	return o
+}
+
+func (o GetNetworkSegmentArrayOutput) ToGetNetworkSegmentArrayOutputWithContext(ctx context.Context) GetNetworkSegmentArrayOutput {
+	return o
+}
+
+func (o GetNetworkSegmentArrayOutput) Index(i pulumi.IntInput) GetNetworkSegmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkSegment {
+		return vs[0].([]GetNetworkSegment)[vs[1].(int)]
+	}).(GetNetworkSegmentOutput)
+}
+
 type GetPortAllowedAddressPair struct {
 	// The additional IP address.
 	IpAddress string `pulumi:"ipAddress"`
@@ -2177,6 +2283,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetHostRouteArrayInput)(nil)).Elem(), SubnetHostRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrunkSubPortInput)(nil)).Elem(), TrunkSubPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrunkSubPortArrayInput)(nil)).Elem(), TrunkSubPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkSegmentInput)(nil)).Elem(), GetNetworkSegmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkSegmentArrayInput)(nil)).Elem(), GetNetworkSegmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortAllowedAddressPairInput)(nil)).Elem(), GetPortAllowedAddressPairArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortAllowedAddressPairArrayInput)(nil)).Elem(), GetPortAllowedAddressPairArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPortBindingInput)(nil)).Elem(), GetPortBindingArgs{})
@@ -2213,6 +2321,8 @@ func init() {
 	pulumi.RegisterOutputType(SubnetHostRouteArrayOutput{})
 	pulumi.RegisterOutputType(TrunkSubPortOutput{})
 	pulumi.RegisterOutputType(TrunkSubPortArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkSegmentOutput{})
+	pulumi.RegisterOutputType(GetNetworkSegmentArrayOutput{})
 	pulumi.RegisterOutputType(GetPortAllowedAddressPairOutput{})
 	pulumi.RegisterOutputType(GetPortAllowedAddressPairArrayOutput{})
 	pulumi.RegisterOutputType(GetPortBindingOutput{})

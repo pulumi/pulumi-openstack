@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,25 @@ import javax.annotation.Nullable;
 public final class RouterInterfaceState extends com.pulumi.resources.ResourceArgs {
 
     public static final RouterInterfaceState Empty = new RouterInterfaceState();
+
+    /**
+     * A boolean indicating whether the routes from the
+     * corresponding router ID should be deleted so that the router interface can
+     * be destroyed without any errors. The default value is `false`.
+     * 
+     */
+    @Import(name="forceDestroy")
+    private @Nullable Output<Boolean> forceDestroy;
+
+    /**
+     * @return A boolean indicating whether the routes from the
+     * corresponding router ID should be deleted so that the router interface can
+     * be destroyed without any errors. The default value is `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDestroy() {
+        return Optional.ofNullable(this.forceDestroy);
+    }
 
     /**
      * ID of the port this interface connects to. Changing
@@ -90,6 +110,7 @@ public final class RouterInterfaceState extends com.pulumi.resources.ResourceArg
     private RouterInterfaceState() {}
 
     private RouterInterfaceState(RouterInterfaceState $) {
+        this.forceDestroy = $.forceDestroy;
         this.portId = $.portId;
         this.region = $.region;
         this.routerId = $.routerId;
@@ -112,6 +133,31 @@ public final class RouterInterfaceState extends com.pulumi.resources.ResourceArg
 
         public Builder(RouterInterfaceState defaults) {
             $ = new RouterInterfaceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param forceDestroy A boolean indicating whether the routes from the
+         * corresponding router ID should be deleted so that the router interface can
+         * be destroyed without any errors. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
+            $.forceDestroy = forceDestroy;
+            return this;
+        }
+
+        /**
+         * @param forceDestroy A boolean indicating whether the routes from the
+         * corresponding router ID should be deleted so that the router interface can
+         * be destroyed without any errors. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDestroy(Boolean forceDestroy) {
+            return forceDestroy(Output.of(forceDestroy));
         }
 
         /**

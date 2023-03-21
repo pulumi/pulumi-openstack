@@ -107,6 +107,7 @@ type Listener struct {
 	// [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
 	// for more information.
 	SniContainerRefs pulumi.StringArrayOutput `pulumi:"sniContainerRefs"`
+	Tags             pulumi.StringArrayOutput `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
 	// the Listener.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new Listener.
@@ -208,6 +209,7 @@ type listenerState struct {
 	// [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
 	// for more information.
 	SniContainerRefs []string `pulumi:"sniContainerRefs"`
+	Tags             []string `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
 	// the Listener.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new Listener.
@@ -272,6 +274,7 @@ type ListenerState struct {
 	// [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
 	// for more information.
 	SniContainerRefs pulumi.StringArrayInput
+	Tags             pulumi.StringArrayInput
 	// Required for admins. The UUID of the tenant who owns
 	// the Listener.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new Listener.
@@ -340,6 +343,7 @@ type listenerArgs struct {
 	// [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
 	// for more information.
 	SniContainerRefs []string `pulumi:"sniContainerRefs"`
+	Tags             []string `pulumi:"tags"`
 	// Required for admins. The UUID of the tenant who owns
 	// the Listener.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new Listener.
@@ -405,6 +409,7 @@ type ListenerArgs struct {
 	// [here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)
 	// for more information.
 	SniContainerRefs pulumi.StringArrayInput
+	Tags             pulumi.StringArrayInput
 	// Required for admins. The UUID of the tenant who owns
 	// the Listener.  Only administrative users can specify a tenant UUID
 	// other than their own. Changing this creates a new Listener.
@@ -592,6 +597,10 @@ func (o ListenerOutput) Region() pulumi.StringOutput {
 // for more information.
 func (o ListenerOutput) SniContainerRefs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringArrayOutput { return v.SniContainerRefs }).(pulumi.StringArrayOutput)
+}
+
+func (o ListenerOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Listener) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // Required for admins. The UUID of the tenant who owns

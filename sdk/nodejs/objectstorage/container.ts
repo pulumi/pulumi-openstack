@@ -170,8 +170,12 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly storagePolicy!: pulumi.Output<string>;
     /**
-     * A boolean that enables or disable object versioning.
-     * Defaults to `false`
+     * A boolean that can enable or disable object
+     * versioning. The default value is `false`. To use this feature, your Swift
+     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+     * and a cloud administrator must have set the `allowObjectVersioning = true`
+     * configuration option in Swift. If you cannot set this versioning type, you may
+     * want to consider using `versioningLegacy` instead.
      */
     public readonly versioning!: pulumi.Output<boolean | undefined>;
     /**
@@ -283,8 +287,12 @@ export interface ContainerState {
      */
     storagePolicy?: pulumi.Input<string>;
     /**
-     * A boolean that enables or disable object versioning.
-     * Defaults to `false`
+     * A boolean that can enable or disable object
+     * versioning. The default value is `false`. To use this feature, your Swift
+     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+     * and a cloud administrator must have set the `allowObjectVersioning = true`
+     * configuration option in Swift. If you cannot set this versioning type, you may
+     * want to consider using `versioningLegacy` instead.
      */
     versioning?: pulumi.Input<boolean>;
     /**
@@ -352,8 +360,12 @@ export interface ContainerArgs {
      */
     storagePolicy?: pulumi.Input<string>;
     /**
-     * A boolean that enables or disable object versioning.
-     * Defaults to `false`
+     * A boolean that can enable or disable object
+     * versioning. The default value is `false`. To use this feature, your Swift
+     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+     * and a cloud administrator must have set the `allowObjectVersioning = true`
+     * configuration option in Swift. If you cannot set this versioning type, you may
+     * want to consider using `versioningLegacy` instead.
      */
     versioning?: pulumi.Input<boolean>;
     /**

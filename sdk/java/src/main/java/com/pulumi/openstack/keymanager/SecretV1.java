@@ -278,14 +278,14 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="payload", type=String.class, parameters={})
-    private Output<String> payload;
+    private Output</* @Nullable */ String> payload;
 
     /**
      * @return The secret&#39;s data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
      * 
      */
-    public Output<String> payload() {
-        return this.payload;
+    public Output<Optional<String>> payload() {
+        return Codegen.optional(this.payload);
     }
     /**
      * (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.

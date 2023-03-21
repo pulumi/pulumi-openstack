@@ -27,6 +27,7 @@ class ListenerArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  sni_container_refs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  timeout_client_data: Optional[pulumi.Input[int]] = None,
                  timeout_member_connect: Optional[pulumi.Input[int]] = None,
@@ -101,6 +102,8 @@ class ListenerArgs:
             pulumi.set(__self__, "region", region)
         if sni_container_refs is not None:
             pulumi.set(__self__, "sni_container_refs", sni_container_refs)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if timeout_client_data is not None:
@@ -291,6 +294,15 @@ class ListenerArgs:
         pulumi.set(self, "sni_container_refs", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -370,6 +382,7 @@ class _ListenerState:
                  protocol_port: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  sni_container_refs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  timeout_client_data: Optional[pulumi.Input[int]] = None,
                  timeout_member_connect: Optional[pulumi.Input[int]] = None,
@@ -447,6 +460,8 @@ class _ListenerState:
             pulumi.set(__self__, "region", region)
         if sni_container_refs is not None:
             pulumi.set(__self__, "sni_container_refs", sni_container_refs)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if timeout_client_data is not None:
@@ -637,6 +652,15 @@ class _ListenerState:
         pulumi.set(self, "sni_container_refs", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -718,6 +742,7 @@ class Listener(pulumi.CustomResource):
                  protocol_port: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  sni_container_refs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  timeout_client_data: Optional[pulumi.Input[int]] = None,
                  timeout_member_connect: Optional[pulumi.Input[int]] = None,
@@ -862,6 +887,7 @@ class Listener(pulumi.CustomResource):
                  protocol_port: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  sni_container_refs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  timeout_client_data: Optional[pulumi.Input[int]] = None,
                  timeout_member_connect: Optional[pulumi.Input[int]] = None,
@@ -895,6 +921,7 @@ class Listener(pulumi.CustomResource):
             __props__.__dict__["protocol_port"] = protocol_port
             __props__.__dict__["region"] = region
             __props__.__dict__["sni_container_refs"] = sni_container_refs
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["tenant_id"] = tenant_id
             __props__.__dict__["timeout_client_data"] = timeout_client_data
             __props__.__dict__["timeout_member_connect"] = timeout_member_connect
@@ -923,6 +950,7 @@ class Listener(pulumi.CustomResource):
             protocol_port: Optional[pulumi.Input[int]] = None,
             region: Optional[pulumi.Input[str]] = None,
             sni_container_refs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None,
             timeout_client_data: Optional[pulumi.Input[int]] = None,
             timeout_member_connect: Optional[pulumi.Input[int]] = None,
@@ -996,6 +1024,7 @@ class Listener(pulumi.CustomResource):
         __props__.__dict__["protocol_port"] = protocol_port
         __props__.__dict__["region"] = region
         __props__.__dict__["sni_container_refs"] = sni_container_refs
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["tenant_id"] = tenant_id
         __props__.__dict__["timeout_client_data"] = timeout_client_data
         __props__.__dict__["timeout_member_connect"] = timeout_member_connect
@@ -1128,6 +1157,11 @@ class Listener(pulumi.CustomResource):
         for more information.
         """
         return pulumi.get(self, "sni_container_refs")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="tenantId")

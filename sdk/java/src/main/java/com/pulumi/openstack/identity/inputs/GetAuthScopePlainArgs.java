@@ -4,6 +4,7 @@
 package com.pulumi.openstack.identity.inputs;
 
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -50,11 +51,37 @@ public final class GetAuthScopePlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * A boolean argument that determines whether to
+     * export the current auth scope token ID. When set to `true`, the `token_id`
+     * attribute will contain an unencrypted token that can be used for further API
+     * calls. **Warning**: please note that the leaked token may allow unauthorized
+     * access to other OpenStack services within the current auth scope, so use this
+     * option with caution.
+     * 
+     */
+    @Import(name="setTokenId")
+    private @Nullable Boolean setTokenId;
+
+    /**
+     * @return A boolean argument that determines whether to
+     * export the current auth scope token ID. When set to `true`, the `token_id`
+     * attribute will contain an unencrypted token that can be used for further API
+     * calls. **Warning**: please note that the leaked token may allow unauthorized
+     * access to other OpenStack services within the current auth scope, so use this
+     * option with caution.
+     * 
+     */
+    public Optional<Boolean> setTokenId() {
+        return Optional.ofNullable(this.setTokenId);
+    }
+
     private GetAuthScopePlainArgs() {}
 
     private GetAuthScopePlainArgs(GetAuthScopePlainArgs $) {
         this.name = $.name;
         this.region = $.region;
+        this.setTokenId = $.setTokenId;
     }
 
     public static Builder builder() {
@@ -97,6 +124,22 @@ public final class GetAuthScopePlainArgs extends com.pulumi.resources.InvokeArgs
          */
         public Builder region(@Nullable String region) {
             $.region = region;
+            return this;
+        }
+
+        /**
+         * @param setTokenId A boolean argument that determines whether to
+         * export the current auth scope token ID. When set to `true`, the `token_id`
+         * attribute will contain an unencrypted token that can be used for further API
+         * calls. **Warning**: please note that the leaked token may allow unauthorized
+         * access to other OpenStack services within the current auth scope, so use this
+         * option with caution.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder setTokenId(@Nullable Boolean setTokenId) {
+            $.setTokenId = setTokenId;
             return this;
         }
 

@@ -295,6 +295,12 @@ public class Listener extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> sniContainerRefs() {
         return Codegen.optional(this.sniContainerRefs);
     }
+    @Export(name="tags", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> tags;
+
+    public Output<Optional<List<String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
     /**
      * Required for admins. The UUID of the tenant who owns
      * the Listener.  Only administrative users can specify a tenant UUID

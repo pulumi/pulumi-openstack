@@ -155,7 +155,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// The secret's data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
         /// </summary>
         [Output("payload")]
-        public Output<string> Payload { get; private set; } = null!;
+        public Output<string?> Payload { get; private set; } = null!;
 
         /// <summary>
         /// (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.

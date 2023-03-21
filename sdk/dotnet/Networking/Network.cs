@@ -185,6 +185,9 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// An array of one or more provider segment objects.
+        /// Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+        /// updating any provider related segments attributes. Check your plug-in whether
+        /// it supports updating.
         /// </summary>
         [Output("segments")]
         public Output<ImmutableArray<Outputs.NetworkSegment>> Segments { get; private set; } = null!;
@@ -363,6 +366,9 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// An array of one or more provider segment objects.
+        /// Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+        /// updating any provider related segments attributes. Check your plug-in whether
+        /// it supports updating.
         /// </summary>
         public InputList<Inputs.NetworkSegmentArgs> Segments
         {
@@ -531,6 +537,9 @@ namespace Pulumi.OpenStack.Networking
 
         /// <summary>
         /// An array of one or more provider segment objects.
+        /// Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+        /// updating any provider related segments attributes. Check your plug-in whether
+        /// it supports updating.
         /// </summary>
         public InputList<Inputs.NetworkSegmentGetArgs> Segments
         {

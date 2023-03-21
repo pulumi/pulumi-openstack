@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'GetNetworkResult',
@@ -21,7 +22,7 @@ class GetNetworkResult:
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, admin_state_up=None, all_tags=None, availability_zone_hints=None, description=None, dns_domain=None, external=None, id=None, matching_subnet_cidr=None, mtu=None, name=None, network_id=None, region=None, shared=None, status=None, subnets=None, tags=None, tenant_id=None, transparent_vlan=None):
+    def __init__(__self__, admin_state_up=None, all_tags=None, availability_zone_hints=None, description=None, dns_domain=None, external=None, id=None, matching_subnet_cidr=None, mtu=None, name=None, network_id=None, region=None, segments=None, shared=None, status=None, subnets=None, tags=None, tenant_id=None, transparent_vlan=None):
         if admin_state_up and not isinstance(admin_state_up, str):
             raise TypeError("Expected argument 'admin_state_up' to be a str")
         pulumi.set(__self__, "admin_state_up", admin_state_up)
@@ -58,6 +59,9 @@ class GetNetworkResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if segments and not isinstance(segments, list):
+            raise TypeError("Expected argument 'segments' to be a list")
+        pulumi.set(__self__, "segments", segments)
         if shared and not isinstance(shared, str):
             raise TypeError("Expected argument 'shared' to be a str")
         pulumi.set(__self__, "shared", shared)
@@ -170,6 +174,14 @@ class GetNetworkResult:
 
     @property
     @pulumi.getter
+    def segments(self) -> Sequence['outputs.GetNetworkSegmentResult']:
+        """
+        An array of one or more provider segment objects.
+        """
+        return pulumi.get(self, "segments")
+
+    @property
+    @pulumi.getter
     def shared(self) -> str:
         """
         Specifies whether the network resource can be accessed by any
@@ -227,6 +239,7 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             name=self.name,
             network_id=self.network_id,
             region=self.region,
+            segments=self.segments,
             shared=self.shared,
             status=self.status,
             subnets=self.subnets,
@@ -304,6 +317,7 @@ def get_network(description: Optional[str] = None,
         name=__ret__.name,
         network_id=__ret__.network_id,
         region=__ret__.region,
+        segments=__ret__.segments,
         shared=__ret__.shared,
         status=__ret__.status,
         subnets=__ret__.subnets,

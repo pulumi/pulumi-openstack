@@ -12,17 +12,17 @@ namespace Pulumi.OpenStack.Identity
     public static class GetAuthScope
     {
         /// <summary>
-        /// Use this data source to get authentication information about the current
-        /// auth scope in use. This can be used as self-discovery or introspection of
-        /// the username or project name currently in use as well as the service catalog.
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAuthScopeResult> InvokeAsync(GetAuthScopeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args ?? new GetAuthScopeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get authentication information about the current
-        /// auth scope in use. This can be used as self-discovery or introspection of
-        /// the username or project name currently in use as well as the service catalog.
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAuthScopeResult> Invoke(GetAuthScopeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAuthScopeResult>("openstack:identity/getAuthScope:getAuthScope", args ?? new GetAuthScopeInvokeArgs(), options.WithDefaults());
@@ -46,6 +46,17 @@ namespace Pulumi.OpenStack.Identity
         [Input("region")]
         public string? Region { get; set; }
 
+        /// <summary>
+        /// A boolean argument that determines whether to
+        /// export the current auth scope token ID. When set to `true`, the `token_id`
+        /// attribute will contain an unencrypted token that can be used for further API
+        /// calls. **Warning**: please note that the leaked token may allow unauthorized
+        /// access to other OpenStack services within the current auth scope, so use this
+        /// option with caution.
+        /// </summary>
+        [Input("setTokenId")]
+        public bool? SetTokenId { get; set; }
+
         public GetAuthScopeArgs()
         {
         }
@@ -68,6 +79,17 @@ namespace Pulumi.OpenStack.Identity
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// A boolean argument that determines whether to
+        /// export the current auth scope token ID. When set to `true`, the `token_id`
+        /// attribute will contain an unencrypted token that can be used for further API
+        /// calls. **Warning**: please note that the leaked token may allow unauthorized
+        /// access to other OpenStack services within the current auth scope, so use this
+        /// option with caution.
+        /// </summary>
+        [Input("setTokenId")]
+        public Input<bool>? SetTokenId { get; set; }
 
         public GetAuthScopeInvokeArgs()
         {
@@ -123,6 +145,11 @@ namespace Pulumi.OpenStack.Identity
         /// A list of service catalog entries returned with the token.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAuthScopeServiceCatalogResult> ServiceCatalogs;
+        public readonly bool? SetTokenId;
+        /// <summary>
+        /// The token ID of the scope.
+        /// </summary>
+        public readonly string TokenId;
         /// <summary>
         /// The domain ID of the user.
         /// </summary>
@@ -164,6 +191,10 @@ namespace Pulumi.OpenStack.Identity
 
             ImmutableArray<Outputs.GetAuthScopeServiceCatalogResult> serviceCatalogs,
 
+            bool? setTokenId,
+
+            string tokenId,
+
             string userDomainId,
 
             string userDomainName,
@@ -183,6 +214,8 @@ namespace Pulumi.OpenStack.Identity
             Region = region;
             Roles = roles;
             ServiceCatalogs = serviceCatalogs;
+            SetTokenId = setTokenId;
+            TokenId = tokenId;
             UserDomainId = userDomainId;
             UserDomainName = userDomainName;
             UserId = userId;

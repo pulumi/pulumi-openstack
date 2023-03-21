@@ -283,6 +283,10 @@ namespace Pulumi.OpenStack.Networking
         /// </summary>
         public readonly string Region;
         /// <summary>
+        /// An array of one or more provider segment objects.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetNetworkSegmentResult> Segments;
+        /// <summary>
         /// Specifies whether the network resource can be accessed by any
         /// tenant or not.
         /// </summary>
@@ -325,6 +329,8 @@ namespace Pulumi.OpenStack.Networking
 
             string region,
 
+            ImmutableArray<Outputs.GetNetworkSegmentResult> segments,
+
             string shared,
 
             string? status,
@@ -349,6 +355,7 @@ namespace Pulumi.OpenStack.Networking
             Name = name;
             NetworkId = networkId;
             Region = region;
+            Segments = segments;
             Shared = shared;
             Status = status;
             Subnets = subnets;

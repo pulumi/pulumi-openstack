@@ -7,11 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Use this data source to get authentication information about the current
- * auth scope in use. This can be used as self-discovery or introspection of
- * the username or project name currently in use as well as the service catalog.
- *
  * ## Example Usage
+ * ### Simple
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,6 +36,7 @@ export function getAuthScope(args: GetAuthScopeArgs, opts?: pulumi.InvokeOptions
     return pulumi.runtime.invoke("openstack:identity/getAuthScope:getAuthScope", {
         "name": args.name,
         "region": args.region,
+        "setTokenId": args.setTokenId,
     }, opts);
 }
 
@@ -57,6 +55,15 @@ export interface GetAuthScopeArgs {
      * `region` argument of the provider is used.
      */
     region?: string;
+    /**
+     * A boolean argument that determines whether to
+     * export the current auth scope token ID. When set to `true`, the `tokenId`
+     * attribute will contain an unencrypted token that can be used for further API
+     * calls. **Warning**: please note that the leaked token may allow unauthorized
+     * access to other OpenStack services within the current auth scope, so use this
+     * option with caution.
+     */
+    setTokenId?: boolean;
 }
 
 /**
@@ -107,6 +114,11 @@ export interface GetAuthScopeResult {
      * A list of service catalog entries returned with the token.
      */
     readonly serviceCatalogs: outputs.identity.GetAuthScopeServiceCatalog[];
+    readonly setTokenId?: boolean;
+    /**
+     * The token ID of the scope.
+     */
+    readonly tokenId: string;
     /**
      * The domain ID of the user.
      */
@@ -125,11 +137,8 @@ export interface GetAuthScopeResult {
     readonly userName: string;
 }
 /**
- * Use this data source to get authentication information about the current
- * auth scope in use. This can be used as self-discovery or introspection of
- * the username or project name currently in use as well as the service catalog.
- *
  * ## Example Usage
+ * ### Simple
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -170,4 +179,13 @@ export interface GetAuthScopeOutputArgs {
      * `region` argument of the provider is used.
      */
     region?: pulumi.Input<string>;
+    /**
+     * A boolean argument that determines whether to
+     * export the current auth scope token ID. When set to `true`, the `tokenId`
+     * attribute will contain an unencrypted token that can be used for further API
+     * calls. **Warning**: please note that the leaked token may allow unauthorized
+     * access to other OpenStack services within the current auth scope, so use this
+     * option with caution.
+     */
+    setTokenId?: pulumi.Input<boolean>;
 }

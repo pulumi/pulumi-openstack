@@ -5,6 +5,7 @@ package com.pulumi.openstack.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.openstack.compute.inputs.ServerGroupRulesArgs;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -51,21 +52,21 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The set of policies for the server group. All policies
-     * are mutually exclusive. See the Policies section for more information.
-     * Changing this creates a new server group.
+     * A list of exactly one policy name to associate with
+     * the server group. See the Policies section for more information. Changing this
+     * creates a new server group.
      * 
      */
     @Import(name="policies")
-    private @Nullable Output<List<String>> policies;
+    private @Nullable Output<String> policies;
 
     /**
-     * @return The set of policies for the server group. All policies
-     * are mutually exclusive. See the Policies section for more information.
-     * Changing this creates a new server group.
+     * @return A list of exactly one policy name to associate with
+     * the server group. See the Policies section for more information. Changing this
+     * creates a new server group.
      * 
      */
-    public Optional<Output<List<String>>> policies() {
+    public Optional<Output<String>> policies() {
         return Optional.ofNullable(this.policies);
     }
 
@@ -86,6 +87,23 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
+    }
+
+    /**
+     * The rules which are applied to specified `policy`. Currently,
+     * only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
+     * 
+     */
+    @Import(name="rules")
+    private @Nullable Output<ServerGroupRulesArgs> rules;
+
+    /**
+     * @return The rules which are applied to specified `policy`. Currently,
+     * only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
+     * 
+     */
+    public Optional<Output<ServerGroupRulesArgs>> rules() {
+        return Optional.ofNullable(this.rules);
     }
 
     /**
@@ -110,6 +128,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.policies = $.policies;
         this.region = $.region;
+        this.rules = $.rules;
         this.valueSpecs = $.valueSpecs;
     }
 
@@ -186,40 +205,28 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policies The set of policies for the server group. All policies
-         * are mutually exclusive. See the Policies section for more information.
-         * Changing this creates a new server group.
+         * @param policies A list of exactly one policy name to associate with
+         * the server group. See the Policies section for more information. Changing this
+         * creates a new server group.
          * 
          * @return builder
          * 
          */
-        public Builder policies(@Nullable Output<List<String>> policies) {
+        public Builder policies(@Nullable Output<String> policies) {
             $.policies = policies;
             return this;
         }
 
         /**
-         * @param policies The set of policies for the server group. All policies
-         * are mutually exclusive. See the Policies section for more information.
-         * Changing this creates a new server group.
+         * @param policies A list of exactly one policy name to associate with
+         * the server group. See the Policies section for more information. Changing this
+         * creates a new server group.
          * 
          * @return builder
          * 
          */
-        public Builder policies(List<String> policies) {
+        public Builder policies(String policies) {
             return policies(Output.of(policies));
-        }
-
-        /**
-         * @param policies The set of policies for the server group. All policies
-         * are mutually exclusive. See the Policies section for more information.
-         * Changing this creates a new server group.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder policies(String... policies) {
-            return policies(List.of(policies));
         }
 
         /**
@@ -245,6 +252,29 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param rules The rules which are applied to specified `policy`. Currently,
+         * only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rules(@Nullable Output<ServerGroupRulesArgs> rules) {
+            $.rules = rules;
+            return this;
+        }
+
+        /**
+         * @param rules The rules which are applied to specified `policy`. Currently,
+         * only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rules(ServerGroupRulesArgs rules) {
+            return rules(Output.of(rules));
         }
 
         /**

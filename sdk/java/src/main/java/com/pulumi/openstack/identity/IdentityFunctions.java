@@ -33,11 +33,8 @@ import java.util.concurrent.CompletableFuture;
 
 public final class IdentityFunctions {
     /**
-     * Use this data source to get authentication information about the current
-     * auth scope in use. This can be used as self-discovery or introspection of
-     * the username or project name currently in use as well as the service catalog.
-     * 
      * ## Example Usage
+     * ### Simple
      * ```java
      * package generated_program;
      * 
@@ -75,11 +72,8 @@ public final class IdentityFunctions {
         return getAuthScope(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get authentication information about the current
-     * auth scope in use. This can be used as self-discovery or introspection of
-     * the username or project name currently in use as well as the service catalog.
-     * 
      * ## Example Usage
+     * ### Simple
      * ```java
      * package generated_program;
      * 
@@ -117,11 +111,8 @@ public final class IdentityFunctions {
         return getAuthScopePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get authentication information about the current
-     * auth scope in use. This can be used as self-discovery or introspection of
-     * the username or project name currently in use as well as the service catalog.
-     * 
      * ## Example Usage
+     * ### Simple
      * ```java
      * package generated_program;
      * 
@@ -159,11 +150,8 @@ public final class IdentityFunctions {
         return Deployment.getInstance().invoke("openstack:identity/getAuthScope:getAuthScope", TypeShape.of(GetAuthScopeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get authentication information about the current
-     * auth scope in use. This can be used as self-discovery or introspection of
-     * the username or project name currently in use as well as the service catalog.
-     * 
      * ## Example Usage
+     * ### Simple
      * ```java
      * package generated_program;
      * 

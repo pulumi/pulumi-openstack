@@ -259,6 +259,13 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sniContainerRefs);
     }
 
+    @Import(name="tags")
+    private @Nullable Output<List<String>> tags;
+
+    public Optional<Output<List<String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     /**
      * Required for admins. The UUID of the tenant who owns
      * the Listener.  Only administrative users can specify a tenant UUID
@@ -356,6 +363,7 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
         this.protocolPort = $.protocolPort;
         this.region = $.region;
         this.sniContainerRefs = $.sniContainerRefs;
+        this.tags = $.tags;
         this.tenantId = $.tenantId;
         this.timeoutClientData = $.timeoutClientData;
         this.timeoutMemberConnect = $.timeoutMemberConnect;
@@ -720,6 +728,19 @@ public final class ListenerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sniContainerRefs(String... sniContainerRefs) {
             return sniContainerRefs(List.of(sniContainerRefs));
+        }
+
+        public Builder tags(@Nullable Output<List<String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        public Builder tags(List<String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
 
         /**

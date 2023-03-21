@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -138,6 +140,10 @@ export interface GetNetworkResult {
      * See Argument Reference above.
      */
     readonly region: string;
+    /**
+     * An array of one or more provider segment objects.
+     */
+    readonly segments: outputs.networking.GetNetworkSegment[];
     /**
      * Specifies whether the network resource can be accessed by any
      * tenant or not.
