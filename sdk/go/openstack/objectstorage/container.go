@@ -209,8 +209,12 @@ type Container struct {
 	// The storage policy to be used for the container.
 	// Changing this creates a new container.
 	StoragePolicy pulumi.StringOutput `pulumi:"storagePolicy"`
-	// A boolean that enables or disable object versioning.
-	// Defaults to `false`
+	// A boolean that can enable or disable object
+	// versioning. The default value is `false`. To use this feature, your Swift
+	// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+	// and a cloud administrator must have set the `allowObjectVersioning = true`
+	// configuration option in Swift. If you cannot set this versioning type, you may
+	// want to consider using `versioningLegacy` instead.
 	Versioning pulumi.BoolPtrOutput `pulumi:"versioning"`
 	// Enable legacy object versioning. The structure is described below.
 	//
@@ -279,8 +283,12 @@ type containerState struct {
 	// The storage policy to be used for the container.
 	// Changing this creates a new container.
 	StoragePolicy *string `pulumi:"storagePolicy"`
-	// A boolean that enables or disable object versioning.
-	// Defaults to `false`
+	// A boolean that can enable or disable object
+	// versioning. The default value is `false`. To use this feature, your Swift
+	// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+	// and a cloud administrator must have set the `allowObjectVersioning = true`
+	// configuration option in Swift. If you cannot set this versioning type, you may
+	// want to consider using `versioningLegacy` instead.
 	Versioning *bool `pulumi:"versioning"`
 	// Enable legacy object versioning. The structure is described below.
 	//
@@ -321,8 +329,12 @@ type ContainerState struct {
 	// The storage policy to be used for the container.
 	// Changing this creates a new container.
 	StoragePolicy pulumi.StringPtrInput
-	// A boolean that enables or disable object versioning.
-	// Defaults to `false`
+	// A boolean that can enable or disable object
+	// versioning. The default value is `false`. To use this feature, your Swift
+	// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+	// and a cloud administrator must have set the `allowObjectVersioning = true`
+	// configuration option in Swift. If you cannot set this versioning type, you may
+	// want to consider using `versioningLegacy` instead.
 	Versioning pulumi.BoolPtrInput
 	// Enable legacy object versioning. The structure is described below.
 	//
@@ -367,8 +379,12 @@ type containerArgs struct {
 	// The storage policy to be used for the container.
 	// Changing this creates a new container.
 	StoragePolicy *string `pulumi:"storagePolicy"`
-	// A boolean that enables or disable object versioning.
-	// Defaults to `false`
+	// A boolean that can enable or disable object
+	// versioning. The default value is `false`. To use this feature, your Swift
+	// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+	// and a cloud administrator must have set the `allowObjectVersioning = true`
+	// configuration option in Swift. If you cannot set this versioning type, you may
+	// want to consider using `versioningLegacy` instead.
 	Versioning *bool `pulumi:"versioning"`
 	// Enable legacy object versioning. The structure is described below.
 	//
@@ -410,8 +426,12 @@ type ContainerArgs struct {
 	// The storage policy to be used for the container.
 	// Changing this creates a new container.
 	StoragePolicy pulumi.StringPtrInput
-	// A boolean that enables or disable object versioning.
-	// Defaults to `false`
+	// A boolean that can enable or disable object
+	// versioning. The default value is `false`. To use this feature, your Swift
+	// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+	// and a cloud administrator must have set the `allowObjectVersioning = true`
+	// configuration option in Swift. If you cannot set this versioning type, you may
+	// want to consider using `versioningLegacy` instead.
 	Versioning pulumi.BoolPtrInput
 	// Enable legacy object versioning. The structure is described below.
 	//
@@ -568,8 +588,12 @@ func (o ContainerOutput) StoragePolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringOutput { return v.StoragePolicy }).(pulumi.StringOutput)
 }
 
-// A boolean that enables or disable object versioning.
-// Defaults to `false`
+// A boolean that can enable or disable object
+// versioning. The default value is `false`. To use this feature, your Swift
+// version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+// and a cloud administrator must have set the `allowObjectVersioning = true`
+// configuration option in Swift. If you cannot set this versioning type, you may
+// want to consider using `versioningLegacy` instead.
 func (o ContainerOutput) Versioning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.Versioning }).(pulumi.BoolPtrOutput)
 }

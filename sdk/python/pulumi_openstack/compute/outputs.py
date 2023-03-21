@@ -17,6 +17,7 @@ __all__ = [
     'InstanceVendorOptions',
     'InstanceVolume',
     'SecGroupRule',
+    'ServerGroupRules',
     'VolumeAttachVendorOptions',
     'GetInstanceV2NetworkResult',
 ]
@@ -753,6 +754,36 @@ class SecGroupRule(dict):
         be combined with `cidr` or `from_group_id`.
         """
         return pulumi.get(self, "self")
+
+
+@pulumi.output_type
+class ServerGroupRules(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxServerPerHost":
+            suggest = "max_server_per_host"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerGroupRules. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerGroupRules.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerGroupRules.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_server_per_host: Optional[int] = None):
+        if max_server_per_host is not None:
+            pulumi.set(__self__, "max_server_per_host", max_server_per_host)
+
+    @property
+    @pulumi.getter(name="maxServerPerHost")
+    def max_server_per_host(self) -> Optional[int]:
+        return pulumi.get(self, "max_server_per_host")
 
 
 @pulumi.output_type

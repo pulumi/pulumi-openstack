@@ -935,7 +935,7 @@ class SecretV1(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def payload(self) -> pulumi.Output[str]:
+    def payload(self) -> pulumi.Output[Optional[str]]:
         """
         The secret's data to be stored. **payload\\_content\\_type** must also be supplied if **payload** is included.
         """

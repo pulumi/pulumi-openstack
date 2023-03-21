@@ -72,6 +72,10 @@ import (
 type RouterInterface struct {
 	pulumi.CustomResourceState
 
+	// A boolean indicating whether the routes from the
+	// corresponding router ID should be deleted so that the router interface can
+	// be destroyed without any errors. The default value is `false`.
+	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// ID of the port this interface connects to. Changing
 	// this creates a new router interface.
 	PortId pulumi.StringOutput `pulumi:"portId"`
@@ -120,6 +124,10 @@ func GetRouterInterface(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RouterInterface resources.
 type routerInterfaceState struct {
+	// A boolean indicating whether the routes from the
+	// corresponding router ID should be deleted so that the router interface can
+	// be destroyed without any errors. The default value is `false`.
+	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// ID of the port this interface connects to. Changing
 	// this creates a new router interface.
 	PortId *string `pulumi:"portId"`
@@ -137,6 +145,10 @@ type routerInterfaceState struct {
 }
 
 type RouterInterfaceState struct {
+	// A boolean indicating whether the routes from the
+	// corresponding router ID should be deleted so that the router interface can
+	// be destroyed without any errors. The default value is `false`.
+	ForceDestroy pulumi.BoolPtrInput
 	// ID of the port this interface connects to. Changing
 	// this creates a new router interface.
 	PortId pulumi.StringPtrInput
@@ -158,6 +170,10 @@ func (RouterInterfaceState) ElementType() reflect.Type {
 }
 
 type routerInterfaceArgs struct {
+	// A boolean indicating whether the routes from the
+	// corresponding router ID should be deleted so that the router interface can
+	// be destroyed without any errors. The default value is `false`.
+	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// ID of the port this interface connects to. Changing
 	// this creates a new router interface.
 	PortId *string `pulumi:"portId"`
@@ -176,6 +192,10 @@ type routerInterfaceArgs struct {
 
 // The set of arguments for constructing a RouterInterface resource.
 type RouterInterfaceArgs struct {
+	// A boolean indicating whether the routes from the
+	// corresponding router ID should be deleted so that the router interface can
+	// be destroyed without any errors. The default value is `false`.
+	ForceDestroy pulumi.BoolPtrInput
 	// ID of the port this interface connects to. Changing
 	// this creates a new router interface.
 	PortId pulumi.StringPtrInput
@@ -277,6 +297,13 @@ func (o RouterInterfaceOutput) ToRouterInterfaceOutput() RouterInterfaceOutput {
 
 func (o RouterInterfaceOutput) ToRouterInterfaceOutputWithContext(ctx context.Context) RouterInterfaceOutput {
 	return o
+}
+
+// A boolean indicating whether the routes from the
+// corresponding router ID should be deleted so that the router interface can
+// be destroyed without any errors. The default value is `false`.
+func (o RouterInterfaceOutput) ForceDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RouterInterface) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
 
 // ID of the port this interface connects to. Changing

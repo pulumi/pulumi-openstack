@@ -101,6 +101,8 @@ type LookupNetworkResult struct {
 	NetworkId *string `pulumi:"networkId"`
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
+	// An array of one or more provider segment objects.
+	Segments []GetNetworkSegment `pulumi:"segments"`
 	// Specifies whether the network resource can be accessed by any
 	// tenant or not.
 	Shared string  `pulumi:"shared"`
@@ -232,6 +234,11 @@ func (o LookupNetworkResultOutput) NetworkId() pulumi.StringPtrOutput {
 // See Argument Reference above.
 func (o LookupNetworkResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// An array of one or more provider segment objects.
+func (o LookupNetworkResultOutput) Segments() GetNetworkSegmentArrayOutput {
+	return o.ApplyT(func(v LookupNetworkResult) []GetNetworkSegment { return v.Segments }).(GetNetworkSegmentArrayOutput)
 }
 
 // Specifies whether the network resource can be accessed by any

@@ -956,6 +956,20 @@
                 }
             }
         },
+        "openstack:compute/ServerGroupRules:ServerGroupRules": {
+            "properties": {
+                "maxServerPerHost": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object"
+        },
         "openstack:compute/VolumeAttachVendorOptions:VolumeAttachVendorOptions": {
             "properties": {
                 "ignoreVolumeConfirmation": {
@@ -2103,8 +2117,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 },
                 "physicalNetwork": {
                     "type": "string",
@@ -2113,8 +2126,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 },
                 "segmentationId": {
                     "type": "integer",
@@ -2123,8 +2135,7 @@
                         "python": {
                             "mapCase": false
                         }
-                    },
-                    "willReplaceOnChanges": true
+                    }
                 }
             },
             "type": "object"
@@ -2440,6 +2451,45 @@
                 "segmentationId",
                 "segmentationType"
             ]
+        },
+        "openstack:networking/getNetworkSegment:getNetworkSegment": {
+            "properties": {
+                "networkType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "physicalNetwork": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "segmentationId": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "networkType",
+                "physicalNetwork",
+                "segmentationId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "openstack:networking/getPortAllowedAddressPair:getPortAllowedAddressPair": {
             "properties": {
@@ -6555,7 +6605,7 @@
             }
         },
         "openstack:compute/serverGroup:ServerGroup": {
-            "description": "Manages a V2 Server Group resource within OpenStack.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst test_sg = new openstack.compute.ServerGroup(\"test-sg\", {policies: [\"anti-affinity\"]});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ntest_sg = openstack.compute.ServerGroup(\"test-sg\", policies=[\"anti-affinity\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test_sg = new OpenStack.Compute.ServerGroup(\"test-sg\", new()\n    {\n        Policies = new[]\n        {\n            \"anti-affinity\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.NewServerGroup(ctx, \"test-sg\", \u0026compute.ServerGroupArgs{\n\t\t\tPolicies: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"anti-affinity\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.compute.ServerGroup;\nimport com.pulumi.openstack.compute.ServerGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test_sg = new ServerGroup(\"test-sg\", ServerGroupArgs.builder()        \n            .policies(\"anti-affinity\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test-sg:\n    type: openstack:compute:ServerGroup\n    properties:\n      policies:\n        - anti-affinity\n```\n{{% /example %}}\n{{% /examples %}}\n## Policies\n\n* `affinity` - All instances/servers launched in this group will be hosted on\n    the same compute node.\n\n* `anti-affinity` - All instances/servers launched in this group will be\n    hosted on different compute nodes.\n\n* `soft-affinity` - All instances/servers launched in this group will be hosted\n    on the same compute node if possible, but if not possible they\n    still will be scheduled instead of failure. To use this policy your\n    OpenStack environment should support Compute service API 2.15 or above.\n\n* `soft-anti-affinity` - All instances/servers launched in this group will be\n    hosted on different compute nodes if possible, but if not possible they\n    still will be scheduled instead of failure. To use this policy your\n    OpenStack environment should support Compute service API 2.15 or above.\n\n\n## Import\n\nServer Groups can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf\n```\n\n ",
+            "description": "Manages a V2 Server Group resource within OpenStack.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Compute service API version 2.63 or below:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst test_sg = new openstack.compute.ServerGroup(\"test-sg\", {policies: \"anti-affinity\"});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ntest_sg = openstack.compute.ServerGroup(\"test-sg\", policies=\"anti-affinity\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test_sg = new OpenStack.Compute.ServerGroup(\"test-sg\", new()\n    {\n        Policies = \"anti-affinity\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.NewServerGroup(ctx, \"test-sg\", \u0026compute.ServerGroupArgs{\n\t\t\tPolicies: pulumi.String(\"anti-affinity\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.compute.ServerGroup;\nimport com.pulumi.openstack.compute.ServerGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test_sg = new ServerGroup(\"test-sg\", ServerGroupArgs.builder()        \n            .policies(\"anti-affinity\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test-sg:\n    type: openstack:compute:ServerGroup\n    properties:\n      policies: anti-affinity\n```\n{{% /example %}}\n{{% example %}}\n### Compute service API version 2.64 or above:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst test_sg = new openstack.compute.ServerGroup(\"test-sg\", {\n    policies: \"anti-affinity\",\n    rules: {\n        maxServerPerHost: 3,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\ntest_sg = openstack.compute.ServerGroup(\"test-sg\",\n    policies=\"anti-affinity\",\n    rules=openstack.compute.ServerGroupRulesArgs(\n        max_server_per_host=3,\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test_sg = new OpenStack.Compute.ServerGroup(\"test-sg\", new()\n    {\n        Policies = \"anti-affinity\",\n        Rules = new OpenStack.Compute.Inputs.ServerGroupRulesArgs\n        {\n            MaxServerPerHost = 3,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := compute.NewServerGroup(ctx, \"test-sg\", \u0026compute.ServerGroupArgs{\n\t\t\tPolicies: pulumi.String(\"anti-affinity\"),\n\t\t\tRules: \u0026compute.ServerGroupRulesArgs{\n\t\t\t\tMaxServerPerHost: pulumi.Int(3),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.compute.ServerGroup;\nimport com.pulumi.openstack.compute.ServerGroupArgs;\nimport com.pulumi.openstack.compute.inputs.ServerGroupRulesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test_sg = new ServerGroup(\"test-sg\", ServerGroupArgs.builder()        \n            .policies(\"anti-affinity\")\n            .rules(ServerGroupRulesArgs.builder()\n                .maxServerPerHost(3)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test-sg:\n    type: openstack:compute:ServerGroup\n    properties:\n      policies: anti-affinity\n      rules:\n        maxServerPerHost: 3\n```\n{{% /example %}}\n{{% /examples %}}\n## Policies\n\n* `affinity` - All instances/servers launched in this group will be hosted on\n    the same compute node.\n\n* `anti-affinity` - All instances/servers launched in this group will be\n    hosted on different compute nodes.\n\n* `soft-affinity` - All instances/servers launched in this group will be hosted\n    on the same compute node if possible, but if not possible they\n    still will be scheduled instead of failure. To use this policy your\n    OpenStack environment should support Compute service API 2.15 or above.\n\n* `soft-anti-affinity` - All instances/servers launched in this group will be\n    hosted on different compute nodes if possible, but if not possible they\n    still will be scheduled instead of failure. To use this policy your\n    OpenStack environment should support Compute service API 2.15 or above.\n\n\n## Import\n\nServer Groups can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf\n```\n\n ",
             "properties": {
                 "members": {
                     "type": "array",
@@ -6569,15 +6619,16 @@
                     "description": "A unique name for the server group. Changing this creates\na new server group.\n"
                 },
                 "policies": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "The set of policies for the server group. All policies\nare mutually exclusive. See the Policies section for more information.\nChanging this creates a new server group.\n"
+                    "type": "string",
+                    "description": "A list of exactly one policy name to associate with\nthe server group. See the Policies section for more information. Changing this\ncreates a new server group.\n"
                 },
                 "region": {
                     "type": "string",
                     "description": "The region in which to obtain the V2 Compute client.\nIf omitted, the `region` argument of the provider is used. Changing\nthis creates a new server group.\n"
+                },
+                "rules": {
+                    "$ref": "#/types/openstack:compute/ServerGroupRules:ServerGroupRules",
+                    "description": "The rules which are applied to specified `policy`. Currently,\nonly the `max_server_per_host` rule is supported for the `anti-affinity` policy.\n"
                 },
                 "valueSpecs": {
                     "type": "object",
@@ -6590,7 +6641,8 @@
             "required": [
                 "members",
                 "name",
-                "region"
+                "region",
+                "rules"
             ],
             "inputProperties": {
                 "name": {
@@ -6599,16 +6651,18 @@
                     "willReplaceOnChanges": true
                 },
                 "policies": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "The set of policies for the server group. All policies\nare mutually exclusive. See the Policies section for more information.\nChanging this creates a new server group.\n",
+                    "type": "string",
+                    "description": "A list of exactly one policy name to associate with\nthe server group. See the Policies section for more information. Changing this\ncreates a new server group.\n",
                     "willReplaceOnChanges": true
                 },
                 "region": {
                     "type": "string",
                     "description": "The region in which to obtain the V2 Compute client.\nIf omitted, the `region` argument of the provider is used. Changing\nthis creates a new server group.\n",
+                    "willReplaceOnChanges": true
+                },
+                "rules": {
+                    "$ref": "#/types/openstack:compute/ServerGroupRules:ServerGroupRules",
+                    "description": "The rules which are applied to specified `policy`. Currently,\nonly the `max_server_per_host` rule is supported for the `anti-affinity` policy.\n",
                     "willReplaceOnChanges": true
                 },
                 "valueSpecs": {
@@ -6636,16 +6690,18 @@
                         "willReplaceOnChanges": true
                     },
                     "policies": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "The set of policies for the server group. All policies\nare mutually exclusive. See the Policies section for more information.\nChanging this creates a new server group.\n",
+                        "type": "string",
+                        "description": "A list of exactly one policy name to associate with\nthe server group. See the Policies section for more information. Changing this\ncreates a new server group.\n",
                         "willReplaceOnChanges": true
                     },
                     "region": {
                         "type": "string",
                         "description": "The region in which to obtain the V2 Compute client.\nIf omitted, the `region` argument of the provider is used. Changing\nthis creates a new server group.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "rules": {
+                        "$ref": "#/types/openstack:compute/ServerGroupRules:ServerGroupRules",
+                        "description": "The rules which are applied to specified `policy`. Currently,\nonly the `max_server_per_host` rule is supported for the `anti-affinity` policy.\n",
                         "willReplaceOnChanges": true
                     },
                     "valueSpecs": {
@@ -11389,7 +11445,6 @@
                 "creatorId",
                 "mode",
                 "name",
-                "payload",
                 "region",
                 "secretRef",
                 "secretType",
@@ -11928,6 +11983,12 @@
                     },
                     "description": "A list of references to Barbican Secrets\ncontainers which store SNI information. See\n[here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)\nfor more information.\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "tenantId": {
                     "type": "string",
                     "description": "Required for admins. The UUID of the tenant who owns\nthe Listener.  Only administrative users can specify a tenant UUID\nother than their own. Changing this creates a new Listener.\n"
@@ -12029,6 +12090,12 @@
                     },
                     "description": "A list of references to Barbican Secrets\ncontainers which store SNI information. See\n[here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)\nfor more information.\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "tenantId": {
                     "type": "string",
                     "description": "Required for admins. The UUID of the tenant who owns\nthe Listener.  Only administrative users can specify a tenant UUID\nother than their own. Changing this creates a new Listener.\n",
@@ -12123,6 +12190,12 @@
                             "type": "string"
                         },
                         "description": "A list of references to Barbican Secrets\ncontainers which store SNI information. See\n[here](https://wiki.openstack.org/wiki/Network/LBaaS/docs/how-to-create-tls-loadbalancer)\nfor more information.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     },
                     "tenantId": {
                         "type": "string",
@@ -14248,7 +14321,7 @@
                     "items": {
                         "$ref": "#/types/openstack:networking/NetworkSegment:NetworkSegment"
                     },
-                    "description": "An array of one or more provider segment objects.\n"
+                    "description": "An array of one or more provider segment objects.\nNote: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support\nupdating any provider related segments attributes. Check your plug-in whether\nit supports updating.\n"
                 },
                 "shared": {
                     "type": "boolean",
@@ -14288,6 +14361,7 @@
                 "portSecurityEnabled",
                 "qosPolicyId",
                 "region",
+                "segments",
                 "shared",
                 "tenantId",
                 "transparentVlan"
@@ -14343,8 +14417,7 @@
                     "items": {
                         "$ref": "#/types/openstack:networking/NetworkSegment:NetworkSegment"
                     },
-                    "description": "An array of one or more provider segment objects.\n",
-                    "willReplaceOnChanges": true
+                    "description": "An array of one or more provider segment objects.\nNote: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support\nupdating any provider related segments attributes. Check your plug-in whether\nit supports updating.\n"
                 },
                 "shared": {
                     "type": "boolean",
@@ -14436,8 +14509,7 @@
                         "items": {
                             "$ref": "#/types/openstack:networking/NetworkSegment:NetworkSegment"
                         },
-                        "description": "An array of one or more provider segment objects.\n",
-                        "willReplaceOnChanges": true
+                        "description": "An array of one or more provider segment objects.\nNote: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support\nupdating any provider related segments attributes. Check your plug-in whether\nit supports updating.\n"
                     },
                     "shared": {
                         "type": "boolean",
@@ -16065,6 +16137,10 @@
         "openstack:networking/routerInterface:RouterInterface": {
             "description": "Manages a V2 router interface resource within OpenStack.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst network1 = new openstack.networking.Network(\"network1\", {adminStateUp: true});\nconst subnet1 = new openstack.networking.Subnet(\"subnet1\", {\n    cidr: \"192.168.199.0/24\",\n    ipVersion: 4,\n    networkId: network1.id,\n});\nconst router1 = new openstack.networking.Router(\"router1\", {externalNetworkId: \"f67f0d72-0ddf-11e4-9d95-e1f29f417e2f\"});\nconst routerInterface1 = new openstack.networking.RouterInterface(\"routerInterface1\", {\n    routerId: router1.id,\n    subnetId: subnet1.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nnetwork1 = openstack.networking.Network(\"network1\", admin_state_up=True)\nsubnet1 = openstack.networking.Subnet(\"subnet1\",\n    cidr=\"192.168.199.0/24\",\n    ip_version=4,\n    network_id=network1.id)\nrouter1 = openstack.networking.Router(\"router1\", external_network_id=\"f67f0d72-0ddf-11e4-9d95-e1f29f417e2f\")\nrouter_interface1 = openstack.networking.RouterInterface(\"routerInterface1\",\n    router_id=router1.id,\n    subnet_id=subnet1.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var network1 = new OpenStack.Networking.Network(\"network1\", new()\n    {\n        AdminStateUp = true,\n    });\n\n    var subnet1 = new OpenStack.Networking.Subnet(\"subnet1\", new()\n    {\n        Cidr = \"192.168.199.0/24\",\n        IpVersion = 4,\n        NetworkId = network1.Id,\n    });\n\n    var router1 = new OpenStack.Networking.Router(\"router1\", new()\n    {\n        ExternalNetworkId = \"f67f0d72-0ddf-11e4-9d95-e1f29f417e2f\",\n    });\n\n    var routerInterface1 = new OpenStack.Networking.RouterInterface(\"routerInterface1\", new()\n    {\n        RouterId = router1.Id,\n        SubnetId = subnet1.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tnetwork1, err := networking.NewNetwork(ctx, \"network1\", \u0026networking.NetworkArgs{\n\t\t\tAdminStateUp: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tsubnet1, err := networking.NewSubnet(ctx, \"subnet1\", \u0026networking.SubnetArgs{\n\t\t\tCidr:      pulumi.String(\"192.168.199.0/24\"),\n\t\t\tIpVersion: pulumi.Int(4),\n\t\t\tNetworkId: network1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\trouter1, err := networking.NewRouter(ctx, \"router1\", \u0026networking.RouterArgs{\n\t\t\tExternalNetworkId: pulumi.String(\"f67f0d72-0ddf-11e4-9d95-e1f29f417e2f\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = networking.NewRouterInterface(ctx, \"routerInterface1\", \u0026networking.RouterInterfaceArgs{\n\t\t\tRouterId: router1.ID(),\n\t\t\tSubnetId: subnet1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.networking.Network;\nimport com.pulumi.openstack.networking.NetworkArgs;\nimport com.pulumi.openstack.networking.Subnet;\nimport com.pulumi.openstack.networking.SubnetArgs;\nimport com.pulumi.openstack.networking.Router;\nimport com.pulumi.openstack.networking.RouterArgs;\nimport com.pulumi.openstack.networking.RouterInterface;\nimport com.pulumi.openstack.networking.RouterInterfaceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var network1 = new Network(\"network1\", NetworkArgs.builder()        \n            .adminStateUp(\"true\")\n            .build());\n\n        var subnet1 = new Subnet(\"subnet1\", SubnetArgs.builder()        \n            .cidr(\"192.168.199.0/24\")\n            .ipVersion(4)\n            .networkId(network1.id())\n            .build());\n\n        var router1 = new Router(\"router1\", RouterArgs.builder()        \n            .externalNetworkId(\"f67f0d72-0ddf-11e4-9d95-e1f29f417e2f\")\n            .build());\n\n        var routerInterface1 = new RouterInterface(\"routerInterface1\", RouterInterfaceArgs.builder()        \n            .routerId(router1.id())\n            .subnetId(subnet1.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  network1:\n    type: openstack:networking:Network\n    properties:\n      adminStateUp: 'true'\n  subnet1:\n    type: openstack:networking:Subnet\n    properties:\n      cidr: 192.168.199.0/24\n      ipVersion: 4\n      networkId: ${network1.id}\n  router1:\n    type: openstack:networking:Router\n    properties:\n      externalNetworkId: f67f0d72-0ddf-11e4-9d95-e1f29f417e2f\n  routerInterface1:\n    type: openstack:networking:RouterInterface\n    properties:\n      routerId: ${router1.id}\n      subnetId: ${subnet1.id}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nRouter Interfaces can be imported using the port `id`, e.g. $ openstack port list --router \u003crouter name or id\u003e\n\n```sh\n $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 \u003cport id from above output\u003e\n```\n\n ",
             "properties": {
+                "forceDestroy": {
+                    "type": "boolean",
+                    "description": "A boolean indicating whether the routes from the\ncorresponding router ID should be deleted so that the router interface can\nbe destroyed without any errors. The default value is `false`.\n"
+                },
                 "portId": {
                     "type": "string",
                     "description": "ID of the port this interface connects to. Changing\nthis creates a new router interface.\n"
@@ -16089,6 +16165,10 @@
                 "subnetId"
             ],
             "inputProperties": {
+                "forceDestroy": {
+                    "type": "boolean",
+                    "description": "A boolean indicating whether the routes from the\ncorresponding router ID should be deleted so that the router interface can\nbe destroyed without any errors. The default value is `false`.\n"
+                },
                 "portId": {
                     "type": "string",
                     "description": "ID of the port this interface connects to. Changing\nthis creates a new router interface.\n",
@@ -16116,6 +16196,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering RouterInterface resources.\n",
                 "properties": {
+                    "forceDestroy": {
+                        "type": "boolean",
+                        "description": "A boolean indicating whether the routes from the\ncorresponding router ID should be deleted so that the router interface can\nbe destroyed without any errors. The default value is `false`.\n"
+                    },
                     "portId": {
                         "type": "string",
                         "description": "ID of the port this interface connects to. Changing\nthis creates a new router interface.\n",
@@ -17476,7 +17560,7 @@
                 },
                 "versioning": {
                     "type": "boolean",
-                    "description": "A boolean that enables or disable object versioning.\nDefaults to `false`\n"
+                    "description": "A boolean that can enable or disable object\nversioning. The default value is `false`. To use this feature, your Swift\nversion must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),\nand a cloud administrator must have set the `allow_object_versioning = true`\nconfiguration option in Swift. If you cannot set this versioning type, you may\nwant to consider using `versioning_legacy` instead.\n"
                 },
                 "versioningLegacy": {
                     "$ref": "#/types/openstack:objectstorage/ContainerVersioningLegacy:ContainerVersioningLegacy",
@@ -17537,7 +17621,7 @@
                 },
                 "versioning": {
                     "type": "boolean",
-                    "description": "A boolean that enables or disable object versioning.\nDefaults to `false`\n"
+                    "description": "A boolean that can enable or disable object\nversioning. The default value is `false`. To use this feature, your Swift\nversion must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),\nand a cloud administrator must have set the `allow_object_versioning = true`\nconfiguration option in Swift. If you cannot set this versioning type, you may\nwant to consider using `versioning_legacy` instead.\n"
                 },
                 "versioningLegacy": {
                     "$ref": "#/types/openstack:objectstorage/ContainerVersioningLegacy:ContainerVersioningLegacy",
@@ -17595,7 +17679,7 @@
                     },
                     "versioning": {
                         "type": "boolean",
-                        "description": "A boolean that enables or disable object versioning.\nDefaults to `false`\n"
+                        "description": "A boolean that can enable or disable object\nversioning. The default value is `false`. To use this feature, your Swift\nversion must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),\nand a cloud administrator must have set the `allow_object_versioning = true`\nconfiguration option in Swift. If you cannot set this versioning type, you may\nwant to consider using `versioning_legacy` instead.\n"
                     },
                     "versioningLegacy": {
                         "$ref": "#/types/openstack:objectstorage/ContainerVersioningLegacy:ContainerVersioningLegacy",
@@ -21911,7 +21995,7 @@
             }
         },
         "openstack:identity/getAuthScope:getAuthScope": {
-            "description": "Use this data source to get authentication information about the current\nauth scope in use. This can be used as self-discovery or introspection of\nthe username or project name currently in use as well as the service catalog.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst scope = openstack.identity.getAuthScope({\n    name: \"my_scope\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nscope = openstack.identity.get_auth_scope(name=\"my_scope\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var scope = OpenStack.Identity.GetAuthScope.Invoke(new()\n    {\n        Name = \"my_scope\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := identity.GetAuthScope(ctx, \u0026identity.GetAuthScopeArgs{\n\t\t\tName: \"my_scope\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.identity.IdentityFunctions;\nimport com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var scope = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()\n            .name(\"my_scope\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  scope:\n    fn::invoke:\n      Function: openstack:identity:getAuthScope\n      Arguments:\n        name: my_scope\n```\n\nTo find the the public object storage endpoint for \"region1\" as listed in the\nservice catalog:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n\nconst objectStoreService = .filter(entry =\u003e entry.type == \"object-store\").map(entry =\u003e entry)[0];\nconst objectStoreEndpoint = .filter(endpoint =\u003e endpoint[\"interface\"] == \"public\" \u0026\u0026 endpoint.region == \"region1\").map(endpoint =\u003e endpoint)[0];\nconst objectStorePublicUrl = objectStoreEndpoint.url;\n```\n```python\nimport pulumi\n\nobject_store_service = [entry for entry in data[\"openstack_identity_auth_scope_v3\"][\"scope\"][\"service_catalog\"] if entry[\"type\"] == \"object-store\"][0]\nobject_store_endpoint = [endpoint for endpoint in object_store_service[\"endpoints\"] if endpoint[\"interface\"] == \"public\" and endpoint[\"region\"] == \"region1\"][0]\nobject_store_public_url = object_store_endpoint[\"url\"]\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n### Simple\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst scope = openstack.identity.getAuthScope({\n    name: \"my_scope\",\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nscope = openstack.identity.get_auth_scope(name=\"my_scope\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var scope = OpenStack.Identity.GetAuthScope.Invoke(new()\n    {\n        Name = \"my_scope\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := identity.GetAuthScope(ctx, \u0026identity.GetAuthScopeArgs{\n\t\t\tName: \"my_scope\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.identity.IdentityFunctions;\nimport com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var scope = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()\n            .name(\"my_scope\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  scope:\n    fn::invoke:\n      Function: openstack:identity:getAuthScope\n      Arguments:\n        name: my_scope\n```\n\nTo find the the public object storage endpoint for \"region1\" as listed in the\nservice catalog:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n\nconst objectStoreService = .filter(entry =\u003e entry.type == \"object-store\").map(entry =\u003e entry)[0];\nconst objectStoreEndpoint = .filter(endpoint =\u003e endpoint[\"interface\"] == \"public\" \u0026\u0026 endpoint.region == \"region1\").map(endpoint =\u003e endpoint)[0];\nconst objectStorePublicUrl = objectStoreEndpoint.url;\n```\n```python\nimport pulumi\n\nobject_store_service = [entry for entry in data[\"openstack_identity_auth_scope_v3\"][\"scope\"][\"service_catalog\"] if entry[\"type\"] == \"object-store\"][0]\nobject_store_endpoint = [endpoint for endpoint in object_store_service[\"endpoints\"] if endpoint[\"interface\"] == \"public\" and endpoint[\"region\"] == \"region1\"][0]\nobject_store_public_url = object_store_endpoint[\"url\"]\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getAuthScope.\n",
                 "properties": {
@@ -21923,6 +22007,11 @@
                     "region": {
                         "type": "string",
                         "description": "The region in which to obtain the V3 Identity client.\nA Identity client is needed to retrieve tokens IDs. If omitted, the\n`region` argument of the provider is used.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "setTokenId": {
+                        "type": "boolean",
+                        "description": "A boolean argument that determines whether to\nexport the current auth scope token ID. When set to `true`, the `token_id`\nattribute will contain an unencrypted token that can be used for further API\ncalls. **Warning**: please note that the leaked token may allow unauthorized\naccess to other OpenStack services within the current auth scope, so use this\noption with caution.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -21984,6 +22073,14 @@
                         },
                         "description": "A list of service catalog entries returned with the token.\n"
                     },
+                    "setTokenId": {
+                        "type": "boolean"
+                    },
+                    "tokenId": {
+                        "type": "string",
+                        "description": "The token ID of the scope.\n",
+                        "secret": true
+                    },
                     "userDomainId": {
                         "type": "string",
                         "description": "The domain ID of the user.\n"
@@ -22013,6 +22110,7 @@
                     "region",
                     "roles",
                     "serviceCatalogs",
+                    "tokenId",
                     "userDomainId",
                     "userDomainName",
                     "userId",
@@ -23384,6 +23482,13 @@
                         "type": "string",
                         "description": "See Argument Reference above.\n"
                     },
+                    "segments": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/openstack:networking/getNetworkSegment:getNetworkSegment"
+                        },
+                        "description": "An array of one or more provider segment objects.\n"
+                    },
                     "shared": {
                         "type": "string",
                         "description": "Specifies whether the network resource can be accessed by any\ntenant or not.\n"
@@ -23419,6 +23524,7 @@
                     "availabilityZoneHints",
                     "dnsDomain",
                     "region",
+                    "segments",
                     "shared",
                     "subnets",
                     "id"

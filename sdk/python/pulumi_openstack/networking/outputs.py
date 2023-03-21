@@ -21,6 +21,7 @@ __all__ = [
     'SubnetAllocationPoolsCollection',
     'SubnetHostRoute',
     'TrunkSubPort',
+    'GetNetworkSegmentResult',
     'GetPortAllowedAddressPairResult',
     'GetPortBindingResult',
     'GetPortExtraDhcpOptionResult',
@@ -611,6 +612,32 @@ class TrunkSubPort(dict):
         The segmentation technology to use, e.g., "vlan".
         """
         return pulumi.get(self, "segmentation_type")
+
+
+@pulumi.output_type
+class GetNetworkSegmentResult(dict):
+    def __init__(__self__, *,
+                 network_type: str,
+                 physical_network: str,
+                 segmentation_id: int):
+        pulumi.set(__self__, "network_type", network_type)
+        pulumi.set(__self__, "physical_network", physical_network)
+        pulumi.set(__self__, "segmentation_id", segmentation_id)
+
+    @property
+    @pulumi.getter(name="networkType")
+    def network_type(self) -> str:
+        return pulumi.get(self, "network_type")
+
+    @property
+    @pulumi.getter(name="physicalNetwork")
+    def physical_network(self) -> str:
+        return pulumi.get(self, "physical_network")
+
+    @property
+    @pulumi.getter(name="segmentationId")
+    def segmentation_id(self) -> int:
+        return pulumi.get(self, "segmentation_id")
 
 
 @pulumi.output_type

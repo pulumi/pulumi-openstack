@@ -136,6 +136,7 @@ export class Listener extends pulumi.CustomResource {
      * for more information.
      */
     public readonly sniContainerRefs!: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the Listener.  Only administrative users can specify a tenant UUID
@@ -186,6 +187,7 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["protocolPort"] = state ? state.protocolPort : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["sniContainerRefs"] = state ? state.sniContainerRefs : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tenantId"] = state ? state.tenantId : undefined;
             resourceInputs["timeoutClientData"] = state ? state.timeoutClientData : undefined;
             resourceInputs["timeoutMemberConnect"] = state ? state.timeoutMemberConnect : undefined;
@@ -215,6 +217,7 @@ export class Listener extends pulumi.CustomResource {
             resourceInputs["protocolPort"] = args ? args.protocolPort : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["sniContainerRefs"] = args ? args.sniContainerRefs : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["timeoutClientData"] = args ? args.timeoutClientData : undefined;
             resourceInputs["timeoutMemberConnect"] = args ? args.timeoutMemberConnect : undefined;
@@ -304,6 +307,7 @@ export interface ListenerState {
      * for more information.
      */
     sniContainerRefs?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the Listener.  Only administrative users can specify a tenant UUID
@@ -407,6 +411,7 @@ export interface ListenerArgs {
      * for more information.
      */
     sniContainerRefs?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Required for admins. The UUID of the tenant who owns
      * the Listener.  Only administrative users can specify a tenant UUID

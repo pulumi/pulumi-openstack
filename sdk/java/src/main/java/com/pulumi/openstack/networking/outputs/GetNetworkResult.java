@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.openstack.networking.outputs.GetNetworkSegment;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -67,6 +68,11 @@ public final class GetNetworkResult {
      * 
      */
     private String region;
+    /**
+     * @return An array of one or more provider segment objects.
+     * 
+     */
+    private List<GetNetworkSegment> segments;
     /**
      * @return Specifies whether the network resource can be accessed by any
      * tenant or not.
@@ -166,6 +172,13 @@ public final class GetNetworkResult {
         return this.region;
     }
     /**
+     * @return An array of one or more provider segment objects.
+     * 
+     */
+    public List<GetNetworkSegment> segments() {
+        return this.segments;
+    }
+    /**
      * @return Specifies whether the network resource can be accessed by any
      * tenant or not.
      * 
@@ -218,6 +231,7 @@ public final class GetNetworkResult {
         private @Nullable String name;
         private @Nullable String networkId;
         private String region;
+        private List<GetNetworkSegment> segments;
         private String shared;
         private @Nullable String status;
         private List<String> subnets;
@@ -239,6 +253,7 @@ public final class GetNetworkResult {
     	      this.name = defaults.name;
     	      this.networkId = defaults.networkId;
     	      this.region = defaults.region;
+    	      this.segments = defaults.segments;
     	      this.shared = defaults.shared;
     	      this.status = defaults.status;
     	      this.subnets = defaults.subnets;
@@ -314,6 +329,14 @@ public final class GetNetworkResult {
             return this;
         }
         @CustomType.Setter
+        public Builder segments(List<GetNetworkSegment> segments) {
+            this.segments = Objects.requireNonNull(segments);
+            return this;
+        }
+        public Builder segments(GetNetworkSegment... segments) {
+            return segments(List.of(segments));
+        }
+        @CustomType.Setter
         public Builder shared(String shared) {
             this.shared = Objects.requireNonNull(shared);
             return this;
@@ -363,6 +386,7 @@ public final class GetNetworkResult {
             o.name = name;
             o.networkId = networkId;
             o.region = region;
+            o.segments = segments;
             o.shared = shared;
             o.status = status;
             o.subnets = subnets;

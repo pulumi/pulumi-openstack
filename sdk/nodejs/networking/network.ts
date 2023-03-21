@@ -151,8 +151,11 @@ export class Network extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * An array of one or more provider segment objects.
+     * Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+     * updating any provider related segments attributes. Check your plug-in whether
+     * it supports updating.
      */
-    public readonly segments!: pulumi.Output<outputs.networking.NetworkSegment[] | undefined>;
+    public readonly segments!: pulumi.Output<outputs.networking.NetworkSegment[]>;
     /**
      * Specifies whether the network resource can be accessed
      * by any tenant or not. Changing this updates the sharing capabilities of the
@@ -307,6 +310,9 @@ export interface NetworkState {
     region?: pulumi.Input<string>;
     /**
      * An array of one or more provider segment objects.
+     * Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+     * updating any provider related segments attributes. Check your plug-in whether
+     * it supports updating.
      */
     segments?: pulumi.Input<pulumi.Input<inputs.networking.NetworkSegment>[]>;
     /**
@@ -404,6 +410,9 @@ export interface NetworkArgs {
     region?: pulumi.Input<string>;
     /**
      * An array of one or more provider segment objects.
+     * Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+     * updating any provider related segments attributes. Check your plug-in whether
+     * it supports updating.
      */
     segments?: pulumi.Input<pulumi.Input<inputs.networking.NetworkSegment>[]>;
     /**

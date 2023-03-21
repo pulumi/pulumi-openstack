@@ -215,6 +215,9 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * An array of one or more provider segment objects.
+     * Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+     * updating any provider related segments attributes. Check your plug-in whether
+     * it supports updating.
      * 
      */
     @Import(name="segments")
@@ -222,6 +225,9 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return An array of one or more provider segment objects.
+     * Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+     * updating any provider related segments attributes. Check your plug-in whether
+     * it supports updating.
      * 
      */
     public Optional<Output<List<NetworkSegmentArgs>>> segments() {
@@ -621,6 +627,9 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param segments An array of one or more provider segment objects.
+         * Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+         * updating any provider related segments attributes. Check your plug-in whether
+         * it supports updating.
          * 
          * @return builder
          * 
@@ -632,6 +641,9 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param segments An array of one or more provider segment objects.
+         * Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+         * updating any provider related segments attributes. Check your plug-in whether
+         * it supports updating.
          * 
          * @return builder
          * 
@@ -642,6 +654,9 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param segments An array of one or more provider segment objects.
+         * Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+         * updating any provider related segments attributes. Check your plug-in whether
+         * it supports updating.
          * 
          * @return builder
          * 

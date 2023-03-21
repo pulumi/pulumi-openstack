@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.openstack.Utilities;
 import com.pulumi.openstack.compute.ServerGroupArgs;
 import com.pulumi.openstack.compute.inputs.ServerGroupState;
+import com.pulumi.openstack.compute.outputs.ServerGroupRules;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -21,6 +22,7 @@ import javax.annotation.Nullable;
  * Manages a V2 Server Group resource within OpenStack.
  * 
  * ## Example Usage
+ * ### Compute service API version 2.63 or below:
  * ```java
  * package generated_program;
  * 
@@ -44,6 +46,39 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var test_sg = new ServerGroup(&#34;test-sg&#34;, ServerGroupArgs.builder()        
  *             .policies(&#34;anti-affinity&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Compute service API version 2.64 or above:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.compute.ServerGroup;
+ * import com.pulumi.openstack.compute.ServerGroupArgs;
+ * import com.pulumi.openstack.compute.inputs.ServerGroupRulesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test_sg = new ServerGroup(&#34;test-sg&#34;, ServerGroupArgs.builder()        
+ *             .policies(&#34;anti-affinity&#34;)
+ *             .rules(ServerGroupRulesArgs.builder()
+ *                 .maxServerPerHost(3)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -109,21 +144,21 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The set of policies for the server group. All policies
-     * are mutually exclusive. See the Policies section for more information.
-     * Changing this creates a new server group.
+     * A list of exactly one policy name to associate with
+     * the server group. See the Policies section for more information. Changing this
+     * creates a new server group.
      * 
      */
-    @Export(name="policies", type=List.class, parameters={String.class})
-    private Output</* @Nullable */ List<String>> policies;
+    @Export(name="policies", type=String.class, parameters={})
+    private Output</* @Nullable */ String> policies;
 
     /**
-     * @return The set of policies for the server group. All policies
-     * are mutually exclusive. See the Policies section for more information.
-     * Changing this creates a new server group.
+     * @return A list of exactly one policy name to associate with
+     * the server group. See the Policies section for more information. Changing this
+     * creates a new server group.
      * 
      */
-    public Output<Optional<List<String>>> policies() {
+    public Output<Optional<String>> policies() {
         return Codegen.optional(this.policies);
     }
     /**
@@ -143,6 +178,22 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<String> region() {
         return this.region;
+    }
+    /**
+     * The rules which are applied to specified `policy`. Currently,
+     * only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
+     * 
+     */
+    @Export(name="rules", type=ServerGroupRules.class, parameters={})
+    private Output<ServerGroupRules> rules;
+
+    /**
+     * @return The rules which are applied to specified `policy`. Currently,
+     * only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
+     * 
+     */
+    public Output<ServerGroupRules> rules() {
+        return this.rules;
     }
     /**
      * Map of additional options.

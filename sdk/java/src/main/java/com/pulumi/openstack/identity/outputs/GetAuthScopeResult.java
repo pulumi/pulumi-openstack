@@ -6,9 +6,12 @@ package com.pulumi.openstack.identity.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.openstack.identity.outputs.GetAuthScopeRole;
 import com.pulumi.openstack.identity.outputs.GetAuthScopeServiceCatalog;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAuthScopeResult {
@@ -67,6 +70,12 @@ public final class GetAuthScopeResult {
      * 
      */
     private List<GetAuthScopeServiceCatalog> serviceCatalogs;
+    private @Nullable Boolean setTokenId;
+    /**
+     * @return The token ID of the scope.
+     * 
+     */
+    private String tokenId;
     /**
      * @return The domain ID of the user.
      * 
@@ -166,6 +175,16 @@ public final class GetAuthScopeResult {
     public List<GetAuthScopeServiceCatalog> serviceCatalogs() {
         return this.serviceCatalogs;
     }
+    public Optional<Boolean> setTokenId() {
+        return Optional.ofNullable(this.setTokenId);
+    }
+    /**
+     * @return The token ID of the scope.
+     * 
+     */
+    public String tokenId() {
+        return this.tokenId;
+    }
     /**
      * @return The domain ID of the user.
      * 
@@ -215,6 +234,8 @@ public final class GetAuthScopeResult {
         private String region;
         private List<GetAuthScopeRole> roles;
         private List<GetAuthScopeServiceCatalog> serviceCatalogs;
+        private @Nullable Boolean setTokenId;
+        private String tokenId;
         private String userDomainId;
         private String userDomainName;
         private String userId;
@@ -233,6 +254,8 @@ public final class GetAuthScopeResult {
     	      this.region = defaults.region;
     	      this.roles = defaults.roles;
     	      this.serviceCatalogs = defaults.serviceCatalogs;
+    	      this.setTokenId = defaults.setTokenId;
+    	      this.tokenId = defaults.tokenId;
     	      this.userDomainId = defaults.userDomainId;
     	      this.userDomainName = defaults.userDomainName;
     	      this.userId = defaults.userId;
@@ -301,6 +324,16 @@ public final class GetAuthScopeResult {
             return serviceCatalogs(List.of(serviceCatalogs));
         }
         @CustomType.Setter
+        public Builder setTokenId(@Nullable Boolean setTokenId) {
+            this.setTokenId = setTokenId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tokenId(String tokenId) {
+            this.tokenId = Objects.requireNonNull(tokenId);
+            return this;
+        }
+        @CustomType.Setter
         public Builder userDomainId(String userDomainId) {
             this.userDomainId = Objects.requireNonNull(userDomainId);
             return this;
@@ -333,6 +366,8 @@ public final class GetAuthScopeResult {
             o.region = region;
             o.roles = roles;
             o.serviceCatalogs = serviceCatalogs;
+            o.setTokenId = setTokenId;
+            o.tokenId = tokenId;
             o.userDomainId = userDomainId;
             o.userDomainName = userDomainName;
             o.userId = userId;

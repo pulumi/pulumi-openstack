@@ -149,6 +149,9 @@ namespace Pulumi.OpenStack.LoadBalancer
         [Output("sniContainerRefs")]
         public Output<ImmutableArray<string>> SniContainerRefs { get; private set; } = null!;
 
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
         /// <summary>
         /// Required for admins. The UUID of the tenant who owns
         /// the Listener.  Only administrative users can specify a tenant UUID
@@ -346,6 +349,14 @@ namespace Pulumi.OpenStack.LoadBalancer
             set => _sniContainerRefs = value;
         }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// Required for admins. The UUID of the tenant who owns
         /// the Listener.  Only administrative users can specify a tenant UUID
@@ -503,6 +514,14 @@ namespace Pulumi.OpenStack.LoadBalancer
         {
             get => _sniContainerRefs ?? (_sniContainerRefs = new InputList<string>());
             set => _sniContainerRefs = value;
+        }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
         }
 
         /// <summary>

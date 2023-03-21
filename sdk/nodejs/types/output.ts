@@ -331,6 +331,10 @@ export namespace compute {
         toPort: number;
     }
 
+    export interface ServerGroupRules {
+        maxServerPerHost?: number;
+    }
+
     export interface VolumeAttachVendorOptions {
         /**
          * Boolean to control whether
@@ -784,6 +788,12 @@ export namespace loadbalancer {
 }
 
 export namespace networking {
+    export interface GetNetworkSegment {
+        networkType: string;
+        physicalNetwork: string;
+        segmentationId: number;
+    }
+
     export interface GetPortAllowedAddressPair {
         /**
          * The additional IP address.

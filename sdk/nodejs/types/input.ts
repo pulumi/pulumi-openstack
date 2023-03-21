@@ -357,6 +357,10 @@ export namespace compute {
         toPort: pulumi.Input<number>;
     }
 
+    export interface ServerGroupRules {
+        maxServerPerHost?: pulumi.Input<number>;
+    }
+
     export interface VolumeAttachVendorOptions {
         /**
          * Boolean to control whether

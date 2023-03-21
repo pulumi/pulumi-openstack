@@ -66,6 +66,9 @@ class NetworkArgs:
                `region` argument of the provider is used. Changing this creates a new
                network.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkSegmentArgs']]] segments: An array of one or more provider segment objects.
+               Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+               updating any provider related segments attributes. Check your plug-in whether
+               it supports updating.
         :param pulumi.Input[bool] shared: Specifies whether the network resource can be accessed
                by any tenant or not. Changing this updates the sharing capabilities of the
                existing network.
@@ -257,6 +260,9 @@ class NetworkArgs:
     def segments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkSegmentArgs']]]]:
         """
         An array of one or more provider segment objects.
+        Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+        updating any provider related segments attributes. Check your plug-in whether
+        it supports updating.
         """
         return pulumi.get(self, "segments")
 
@@ -387,6 +393,9 @@ class _NetworkState:
                `region` argument of the provider is used. Changing this creates a new
                network.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkSegmentArgs']]] segments: An array of one or more provider segment objects.
+               Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+               updating any provider related segments attributes. Check your plug-in whether
+               it supports updating.
         :param pulumi.Input[bool] shared: Specifies whether the network resource can be accessed
                by any tenant or not. Changing this updates the sharing capabilities of the
                existing network.
@@ -593,6 +602,9 @@ class _NetworkState:
     def segments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkSegmentArgs']]]]:
         """
         An array of one or more provider segment objects.
+        Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+        updating any provider related segments attributes. Check your plug-in whether
+        it supports updating.
         """
         return pulumi.get(self, "segments")
 
@@ -768,6 +780,9 @@ class Network(pulumi.CustomResource):
                `region` argument of the provider is used. Changing this creates a new
                network.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkSegmentArgs']]]] segments: An array of one or more provider segment objects.
+               Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+               updating any provider related segments attributes. Check your plug-in whether
+               it supports updating.
         :param pulumi.Input[bool] shared: Specifies whether the network resource can be accessed
                by any tenant or not. Changing this updates the sharing capabilities of the
                existing network.
@@ -956,6 +971,9 @@ class Network(pulumi.CustomResource):
                `region` argument of the provider is used. Changing this creates a new
                network.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkSegmentArgs']]]] segments: An array of one or more provider segment objects.
+               Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+               updating any provider related segments attributes. Check your plug-in whether
+               it supports updating.
         :param pulumi.Input[bool] shared: Specifies whether the network resource can be accessed
                by any tenant or not. Changing this updates the sharing capabilities of the
                existing network.
@@ -1103,9 +1121,12 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def segments(self) -> pulumi.Output[Optional[Sequence['outputs.NetworkSegment']]]:
+    def segments(self) -> pulumi.Output[Sequence['outputs.NetworkSegment']]:
         """
         An array of one or more provider segment objects.
+        Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+        updating any provider related segments attributes. Check your plug-in whether
+        it supports updating.
         """
         return pulumi.get(self, "segments")
 

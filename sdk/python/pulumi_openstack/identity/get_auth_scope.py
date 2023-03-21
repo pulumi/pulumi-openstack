@@ -22,7 +22,7 @@ class GetAuthScopeResult:
     """
     A collection of values returned by getAuthScope.
     """
-    def __init__(__self__, domain_id=None, domain_name=None, id=None, name=None, project_domain_id=None, project_domain_name=None, project_id=None, project_name=None, region=None, roles=None, service_catalogs=None, user_domain_id=None, user_domain_name=None, user_id=None, user_name=None):
+    def __init__(__self__, domain_id=None, domain_name=None, id=None, name=None, project_domain_id=None, project_domain_name=None, project_id=None, project_name=None, region=None, roles=None, service_catalogs=None, set_token_id=None, token_id=None, user_domain_id=None, user_domain_name=None, user_id=None, user_name=None):
         if domain_id and not isinstance(domain_id, str):
             raise TypeError("Expected argument 'domain_id' to be a str")
         pulumi.set(__self__, "domain_id", domain_id)
@@ -56,6 +56,12 @@ class GetAuthScopeResult:
         if service_catalogs and not isinstance(service_catalogs, list):
             raise TypeError("Expected argument 'service_catalogs' to be a list")
         pulumi.set(__self__, "service_catalogs", service_catalogs)
+        if set_token_id and not isinstance(set_token_id, bool):
+            raise TypeError("Expected argument 'set_token_id' to be a bool")
+        pulumi.set(__self__, "set_token_id", set_token_id)
+        if token_id and not isinstance(token_id, str):
+            raise TypeError("Expected argument 'token_id' to be a str")
+        pulumi.set(__self__, "token_id", token_id)
         if user_domain_id and not isinstance(user_domain_id, str):
             raise TypeError("Expected argument 'user_domain_id' to be a str")
         pulumi.set(__self__, "user_domain_id", user_domain_id)
@@ -158,6 +164,19 @@ class GetAuthScopeResult:
         return pulumi.get(self, "service_catalogs")
 
     @property
+    @pulumi.getter(name="setTokenId")
+    def set_token_id(self) -> Optional[bool]:
+        return pulumi.get(self, "set_token_id")
+
+    @property
+    @pulumi.getter(name="tokenId")
+    def token_id(self) -> str:
+        """
+        The token ID of the scope.
+        """
+        return pulumi.get(self, "token_id")
+
+    @property
     @pulumi.getter(name="userDomainId")
     def user_domain_id(self) -> str:
         """
@@ -207,6 +226,8 @@ class AwaitableGetAuthScopeResult(GetAuthScopeResult):
             region=self.region,
             roles=self.roles,
             service_catalogs=self.service_catalogs,
+            set_token_id=self.set_token_id,
+            token_id=self.token_id,
             user_domain_id=self.user_domain_id,
             user_domain_name=self.user_domain_name,
             user_id=self.user_id,
@@ -215,13 +236,11 @@ class AwaitableGetAuthScopeResult(GetAuthScopeResult):
 
 def get_auth_scope(name: Optional[str] = None,
                    region: Optional[str] = None,
+                   set_token_id: Optional[bool] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAuthScopeResult:
     """
-    Use this data source to get authentication information about the current
-    auth scope in use. This can be used as self-discovery or introspection of
-    the username or project name currently in use as well as the service catalog.
-
     ## Example Usage
+    ### Simple
 
     ```python
     import pulumi
@@ -247,10 +266,17 @@ def get_auth_scope(name: Optional[str] = None,
     :param str region: The region in which to obtain the V3 Identity client.
            A Identity client is needed to retrieve tokens IDs. If omitted, the
            `region` argument of the provider is used.
+    :param bool set_token_id: A boolean argument that determines whether to
+           export the current auth scope token ID. When set to `true`, the `token_id`
+           attribute will contain an unencrypted token that can be used for further API
+           calls. **Warning**: please note that the leaked token may allow unauthorized
+           access to other OpenStack services within the current auth scope, so use this
+           option with caution.
     """
     __args__ = dict()
     __args__['name'] = name
     __args__['region'] = region
+    __args__['setTokenId'] = set_token_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('openstack:identity/getAuthScope:getAuthScope', __args__, opts=opts, typ=GetAuthScopeResult).value
 
@@ -266,6 +292,8 @@ def get_auth_scope(name: Optional[str] = None,
         region=__ret__.region,
         roles=__ret__.roles,
         service_catalogs=__ret__.service_catalogs,
+        set_token_id=__ret__.set_token_id,
+        token_id=__ret__.token_id,
         user_domain_id=__ret__.user_domain_id,
         user_domain_name=__ret__.user_domain_name,
         user_id=__ret__.user_id,
@@ -275,13 +303,11 @@ def get_auth_scope(name: Optional[str] = None,
 @_utilities.lift_output_func(get_auth_scope)
 def get_auth_scope_output(name: Optional[pulumi.Input[str]] = None,
                           region: Optional[pulumi.Input[Optional[str]]] = None,
+                          set_token_id: Optional[pulumi.Input[Optional[bool]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAuthScopeResult]:
     """
-    Use this data source to get authentication information about the current
-    auth scope in use. This can be used as self-discovery or introspection of
-    the username or project name currently in use as well as the service catalog.
-
     ## Example Usage
+    ### Simple
 
     ```python
     import pulumi
@@ -307,5 +333,11 @@ def get_auth_scope_output(name: Optional[pulumi.Input[str]] = None,
     :param str region: The region in which to obtain the V3 Identity client.
            A Identity client is needed to retrieve tokens IDs. If omitted, the
            `region` argument of the provider is used.
+    :param bool set_token_id: A boolean argument that determines whether to
+           export the current auth scope token ID. When set to `true`, the `token_id`
+           attribute will contain an unencrypted token that can be used for further API
+           calls. **Warning**: please note that the leaked token may allow unauthorized
+           access to other OpenStack services within the current auth scope, so use this
+           option with caution.
     """
     ...

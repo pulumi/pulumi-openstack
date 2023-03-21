@@ -1173,6 +1173,139 @@ func (o SecGroupRuleArrayOutput) Index(i pulumi.IntInput) SecGroupRuleOutput {
 	}).(SecGroupRuleOutput)
 }
 
+type ServerGroupRules struct {
+	MaxServerPerHost *int `pulumi:"maxServerPerHost"`
+}
+
+// ServerGroupRulesInput is an input type that accepts ServerGroupRulesArgs and ServerGroupRulesOutput values.
+// You can construct a concrete instance of `ServerGroupRulesInput` via:
+//
+//	ServerGroupRulesArgs{...}
+type ServerGroupRulesInput interface {
+	pulumi.Input
+
+	ToServerGroupRulesOutput() ServerGroupRulesOutput
+	ToServerGroupRulesOutputWithContext(context.Context) ServerGroupRulesOutput
+}
+
+type ServerGroupRulesArgs struct {
+	MaxServerPerHost pulumi.IntPtrInput `pulumi:"maxServerPerHost"`
+}
+
+func (ServerGroupRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupRules)(nil)).Elem()
+}
+
+func (i ServerGroupRulesArgs) ToServerGroupRulesOutput() ServerGroupRulesOutput {
+	return i.ToServerGroupRulesOutputWithContext(context.Background())
+}
+
+func (i ServerGroupRulesArgs) ToServerGroupRulesOutputWithContext(ctx context.Context) ServerGroupRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupRulesOutput)
+}
+
+func (i ServerGroupRulesArgs) ToServerGroupRulesPtrOutput() ServerGroupRulesPtrOutput {
+	return i.ToServerGroupRulesPtrOutputWithContext(context.Background())
+}
+
+func (i ServerGroupRulesArgs) ToServerGroupRulesPtrOutputWithContext(ctx context.Context) ServerGroupRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupRulesOutput).ToServerGroupRulesPtrOutputWithContext(ctx)
+}
+
+// ServerGroupRulesPtrInput is an input type that accepts ServerGroupRulesArgs, ServerGroupRulesPtr and ServerGroupRulesPtrOutput values.
+// You can construct a concrete instance of `ServerGroupRulesPtrInput` via:
+//
+//	        ServerGroupRulesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerGroupRulesPtrInput interface {
+	pulumi.Input
+
+	ToServerGroupRulesPtrOutput() ServerGroupRulesPtrOutput
+	ToServerGroupRulesPtrOutputWithContext(context.Context) ServerGroupRulesPtrOutput
+}
+
+type serverGroupRulesPtrType ServerGroupRulesArgs
+
+func ServerGroupRulesPtr(v *ServerGroupRulesArgs) ServerGroupRulesPtrInput {
+	return (*serverGroupRulesPtrType)(v)
+}
+
+func (*serverGroupRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroupRules)(nil)).Elem()
+}
+
+func (i *serverGroupRulesPtrType) ToServerGroupRulesPtrOutput() ServerGroupRulesPtrOutput {
+	return i.ToServerGroupRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *serverGroupRulesPtrType) ToServerGroupRulesPtrOutputWithContext(ctx context.Context) ServerGroupRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupRulesPtrOutput)
+}
+
+type ServerGroupRulesOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerGroupRules)(nil)).Elem()
+}
+
+func (o ServerGroupRulesOutput) ToServerGroupRulesOutput() ServerGroupRulesOutput {
+	return o
+}
+
+func (o ServerGroupRulesOutput) ToServerGroupRulesOutputWithContext(ctx context.Context) ServerGroupRulesOutput {
+	return o
+}
+
+func (o ServerGroupRulesOutput) ToServerGroupRulesPtrOutput() ServerGroupRulesPtrOutput {
+	return o.ToServerGroupRulesPtrOutputWithContext(context.Background())
+}
+
+func (o ServerGroupRulesOutput) ToServerGroupRulesPtrOutputWithContext(ctx context.Context) ServerGroupRulesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerGroupRules) *ServerGroupRules {
+		return &v
+	}).(ServerGroupRulesPtrOutput)
+}
+
+func (o ServerGroupRulesOutput) MaxServerPerHost() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServerGroupRules) *int { return v.MaxServerPerHost }).(pulumi.IntPtrOutput)
+}
+
+type ServerGroupRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerGroupRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerGroupRules)(nil)).Elem()
+}
+
+func (o ServerGroupRulesPtrOutput) ToServerGroupRulesPtrOutput() ServerGroupRulesPtrOutput {
+	return o
+}
+
+func (o ServerGroupRulesPtrOutput) ToServerGroupRulesPtrOutputWithContext(ctx context.Context) ServerGroupRulesPtrOutput {
+	return o
+}
+
+func (o ServerGroupRulesPtrOutput) Elem() ServerGroupRulesOutput {
+	return o.ApplyT(func(v *ServerGroupRules) ServerGroupRules {
+		if v != nil {
+			return *v
+		}
+		var ret ServerGroupRules
+		return ret
+	}).(ServerGroupRulesOutput)
+}
+
+func (o ServerGroupRulesPtrOutput) MaxServerPerHost() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServerGroupRules) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxServerPerHost
+	}).(pulumi.IntPtrOutput)
+}
+
 type VolumeAttachVendorOptions struct {
 	// Boolean to control whether
 	// to ignore volume status confirmation of the attached volume. This can be helpful
@@ -1475,6 +1608,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceVolumeArrayInput)(nil)).Elem(), InstanceVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupRuleInput)(nil)).Elem(), SecGroupRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecGroupRuleArrayInput)(nil)).Elem(), SecGroupRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupRulesInput)(nil)).Elem(), ServerGroupRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupRulesPtrInput)(nil)).Elem(), ServerGroupRulesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachVendorOptionsInput)(nil)).Elem(), VolumeAttachVendorOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachVendorOptionsPtrInput)(nil)).Elem(), VolumeAttachVendorOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceV2NetworkInput)(nil)).Elem(), GetInstanceV2NetworkArgs{})
@@ -1493,6 +1628,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceVolumeArrayOutput{})
 	pulumi.RegisterOutputType(SecGroupRuleOutput{})
 	pulumi.RegisterOutputType(SecGroupRuleArrayOutput{})
+	pulumi.RegisterOutputType(ServerGroupRulesOutput{})
+	pulumi.RegisterOutputType(ServerGroupRulesPtrOutput{})
 	pulumi.RegisterOutputType(VolumeAttachVendorOptionsOutput{})
 	pulumi.RegisterOutputType(VolumeAttachVendorOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GetInstanceV2NetworkOutput{})

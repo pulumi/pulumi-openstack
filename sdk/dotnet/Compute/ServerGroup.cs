@@ -13,6 +13,7 @@ namespace Pulumi.OpenStack.Compute
     /// Manages a V2 Server Group resource within OpenStack.
     /// 
     /// ## Example Usage
+    /// ### Compute service API version 2.63 or below:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -23,9 +24,26 @@ namespace Pulumi.OpenStack.Compute
     /// {
     ///     var test_sg = new OpenStack.Compute.ServerGroup("test-sg", new()
     ///     {
-    ///         Policies = new[]
+    ///         Policies = "anti-affinity",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Compute service API version 2.64 or above:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test_sg = new OpenStack.Compute.ServerGroup("test-sg", new()
+    ///     {
+    ///         Policies = "anti-affinity",
+    ///         Rules = new OpenStack.Compute.Inputs.ServerGroupRulesArgs
     ///         {
-    ///             "anti-affinity",
+    ///             MaxServerPerHost = 3,
     ///         },
     ///     });
     /// 
@@ -74,12 +92,12 @@ namespace Pulumi.OpenStack.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The set of policies for the server group. All policies
-        /// are mutually exclusive. See the Policies section for more information.
-        /// Changing this creates a new server group.
+        /// A list of exactly one policy name to associate with
+        /// the server group. See the Policies section for more information. Changing this
+        /// creates a new server group.
         /// </summary>
         [Output("policies")]
-        public Output<ImmutableArray<string>> Policies { get; private set; } = null!;
+        public Output<string?> Policies { get; private set; } = null!;
 
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
@@ -88,6 +106,13 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// The rules which are applied to specified `policy`. Currently,
+        /// only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
+        /// </summary>
+        [Output("rules")]
+        public Output<Outputs.ServerGroupRules> Rules { get; private set; } = null!;
 
         /// <summary>
         /// Map of additional options.
@@ -148,19 +173,13 @@ namespace Pulumi.OpenStack.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("policies")]
-        private InputList<string>? _policies;
-
         /// <summary>
-        /// The set of policies for the server group. All policies
-        /// are mutually exclusive. See the Policies section for more information.
-        /// Changing this creates a new server group.
+        /// A list of exactly one policy name to associate with
+        /// the server group. See the Policies section for more information. Changing this
+        /// creates a new server group.
         /// </summary>
-        public InputList<string> Policies
-        {
-            get => _policies ?? (_policies = new InputList<string>());
-            set => _policies = value;
-        }
+        [Input("policies")]
+        public Input<string>? Policies { get; set; }
 
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
@@ -169,6 +188,13 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The rules which are applied to specified `policy`. Currently,
+        /// only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
+        /// </summary>
+        [Input("rules")]
+        public Input<Inputs.ServerGroupRulesArgs>? Rules { get; set; }
 
         [Input("valueSpecs")]
         private InputMap<object>? _valueSpecs;
@@ -209,19 +235,13 @@ namespace Pulumi.OpenStack.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("policies")]
-        private InputList<string>? _policies;
-
         /// <summary>
-        /// The set of policies for the server group. All policies
-        /// are mutually exclusive. See the Policies section for more information.
-        /// Changing this creates a new server group.
+        /// A list of exactly one policy name to associate with
+        /// the server group. See the Policies section for more information. Changing this
+        /// creates a new server group.
         /// </summary>
-        public InputList<string> Policies
-        {
-            get => _policies ?? (_policies = new InputList<string>());
-            set => _policies = value;
-        }
+        [Input("policies")]
+        public Input<string>? Policies { get; set; }
 
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
@@ -230,6 +250,13 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The rules which are applied to specified `policy`. Currently,
+        /// only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
+        /// </summary>
+        [Input("rules")]
+        public Input<Inputs.ServerGroupRulesGetArgs>? Rules { get; set; }
 
         [Input("valueSpecs")]
         private InputMap<object>? _valueSpecs;

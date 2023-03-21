@@ -147,6 +147,9 @@ type Network struct {
 	// network.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// An array of one or more provider segment objects.
+	// Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+	// updating any provider related segments attributes. Check your plug-in whether
+	// it supports updating.
 	Segments NetworkSegmentArrayOutput `pulumi:"segments"`
 	// Specifies whether the network resource can be accessed
 	// by any tenant or not. Changing this updates the sharing capabilities of the
@@ -240,6 +243,9 @@ type networkState struct {
 	// network.
 	Region *string `pulumi:"region"`
 	// An array of one or more provider segment objects.
+	// Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+	// updating any provider related segments attributes. Check your plug-in whether
+	// it supports updating.
 	Segments []NetworkSegment `pulumi:"segments"`
 	// Specifies whether the network resource can be accessed
 	// by any tenant or not. Changing this updates the sharing capabilities of the
@@ -305,6 +311,9 @@ type NetworkState struct {
 	// network.
 	Region pulumi.StringPtrInput
 	// An array of one or more provider segment objects.
+	// Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+	// updating any provider related segments attributes. Check your plug-in whether
+	// it supports updating.
 	Segments NetworkSegmentArrayInput
 	// Specifies whether the network resource can be accessed
 	// by any tenant or not. Changing this updates the sharing capabilities of the
@@ -371,6 +380,9 @@ type networkArgs struct {
 	// network.
 	Region *string `pulumi:"region"`
 	// An array of one or more provider segment objects.
+	// Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+	// updating any provider related segments attributes. Check your plug-in whether
+	// it supports updating.
 	Segments []NetworkSegment `pulumi:"segments"`
 	// Specifies whether the network resource can be accessed
 	// by any tenant or not. Changing this updates the sharing capabilities of the
@@ -434,6 +446,9 @@ type NetworkArgs struct {
 	// network.
 	Region pulumi.StringPtrInput
 	// An array of one or more provider segment objects.
+	// Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+	// updating any provider related segments attributes. Check your plug-in whether
+	// it supports updating.
 	Segments NetworkSegmentArrayInput
 	// Specifies whether the network resource can be accessed
 	// by any tenant or not. Changing this updates the sharing capabilities of the
@@ -618,6 +633,9 @@ func (o NetworkOutput) Region() pulumi.StringOutput {
 }
 
 // An array of one or more provider segment objects.
+// Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+// updating any provider related segments attributes. Check your plug-in whether
+// it supports updating.
 func (o NetworkOutput) Segments() NetworkSegmentArrayOutput {
 	return o.ApplyT(func(v *Network) NetworkSegmentArrayOutput { return v.Segments }).(NetworkSegmentArrayOutput)
 }

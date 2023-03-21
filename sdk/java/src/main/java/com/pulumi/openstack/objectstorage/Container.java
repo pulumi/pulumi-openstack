@@ -364,16 +364,24 @@ public class Container extends com.pulumi.resources.CustomResource {
         return this.storagePolicy;
     }
     /**
-     * A boolean that enables or disable object versioning.
-     * Defaults to `false`
+     * A boolean that can enable or disable object
+     * versioning. The default value is `false`. To use this feature, your Swift
+     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+     * and a cloud administrator must have set the `allow_object_versioning = true`
+     * configuration option in Swift. If you cannot set this versioning type, you may
+     * want to consider using `versioning_legacy` instead.
      * 
      */
     @Export(name="versioning", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> versioning;
 
     /**
-     * @return A boolean that enables or disable object versioning.
-     * Defaults to `false`
+     * @return A boolean that can enable or disable object
+     * versioning. The default value is `false`. To use this feature, your Swift
+     * version must be 2.24 or higher (as described in the [OpenStack Swift Ussuri release notes](https://docs.openstack.org/releasenotes/swift/ussuri.html#relnotes-2-24-0-stable-ussuri)),
+     * and a cloud administrator must have set the `allow_object_versioning = true`
+     * configuration option in Swift. If you cannot set this versioning type, you may
+     * want to consider using `versioning_legacy` instead.
      * 
      */
     public Output<Optional<Boolean>> versioning() {

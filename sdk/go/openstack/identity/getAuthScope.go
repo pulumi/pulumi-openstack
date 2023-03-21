@@ -10,9 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get authentication information about the current
-// auth scope in use. This can be used as self-discovery or introspection of
-// the username or project name currently in use as well as the service catalog.
+// ## Example Usage
 func GetAuthScope(ctx *pulumi.Context, args *GetAuthScopeArgs, opts ...pulumi.InvokeOption) (*GetAuthScopeResult, error) {
 	var rv GetAuthScopeResult
 	err := ctx.Invoke("openstack:identity/getAuthScope:getAuthScope", args, &rv, opts...)
@@ -31,6 +29,13 @@ type GetAuthScopeArgs struct {
 	// A Identity client is needed to retrieve tokens IDs. If omitted, the
 	// `region` argument of the provider is used.
 	Region *string `pulumi:"region"`
+	// A boolean argument that determines whether to
+	// export the current auth scope token ID. When set to `true`, the `tokenId`
+	// attribute will contain an unencrypted token that can be used for further API
+	// calls. **Warning**: please note that the leaked token may allow unauthorized
+	// access to other OpenStack services within the current auth scope, so use this
+	// option with caution.
+	SetTokenId *bool `pulumi:"setTokenId"`
 }
 
 // A collection of values returned by getAuthScope.
@@ -57,6 +62,9 @@ type GetAuthScopeResult struct {
 	Roles []GetAuthScopeRole `pulumi:"roles"`
 	// A list of service catalog entries returned with the token.
 	ServiceCatalogs []GetAuthScopeServiceCatalog `pulumi:"serviceCatalogs"`
+	SetTokenId      *bool                        `pulumi:"setTokenId"`
+	// The token ID of the scope.
+	TokenId string `pulumi:"tokenId"`
 	// The domain ID of the user.
 	UserDomainId string `pulumi:"userDomainId"`
 	// The domain name of the user.
@@ -89,6 +97,13 @@ type GetAuthScopeOutputArgs struct {
 	// A Identity client is needed to retrieve tokens IDs. If omitted, the
 	// `region` argument of the provider is used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
+	// A boolean argument that determines whether to
+	// export the current auth scope token ID. When set to `true`, the `tokenId`
+	// attribute will contain an unencrypted token that can be used for further API
+	// calls. **Warning**: please note that the leaked token may allow unauthorized
+	// access to other OpenStack services within the current auth scope, so use this
+	// option with caution.
+	SetTokenId pulumi.BoolPtrInput `pulumi:"setTokenId"`
 }
 
 func (GetAuthScopeOutputArgs) ElementType() reflect.Type {
@@ -163,6 +178,15 @@ func (o GetAuthScopeResultOutput) Roles() GetAuthScopeRoleArrayOutput {
 // A list of service catalog entries returned with the token.
 func (o GetAuthScopeResultOutput) ServiceCatalogs() GetAuthScopeServiceCatalogArrayOutput {
 	return o.ApplyT(func(v GetAuthScopeResult) []GetAuthScopeServiceCatalog { return v.ServiceCatalogs }).(GetAuthScopeServiceCatalogArrayOutput)
+}
+
+func (o GetAuthScopeResultOutput) SetTokenId() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAuthScopeResult) *bool { return v.SetTokenId }).(pulumi.BoolPtrOutput)
+}
+
+// The token ID of the scope.
+func (o GetAuthScopeResultOutput) TokenId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAuthScopeResult) string { return v.TokenId }).(pulumi.StringOutput)
 }
 
 // The domain ID of the user.

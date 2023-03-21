@@ -59,6 +59,14 @@ namespace Pulumi.OpenStack.Networking
     public partial class RouterInterface : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// A boolean indicating whether the routes from the
+        /// corresponding router ID should be deleted so that the router interface can
+        /// be destroyed without any errors. The default value is `false`.
+        /// </summary>
+        [Output("forceDestroy")]
+        public Output<bool?> ForceDestroy { get; private set; } = null!;
+
+        /// <summary>
         /// ID of the port this interface connects to. Changing
         /// this creates a new router interface.
         /// </summary>
@@ -135,6 +143,14 @@ namespace Pulumi.OpenStack.Networking
     public sealed class RouterInterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A boolean indicating whether the routes from the
+        /// corresponding router ID should be deleted so that the router interface can
+        /// be destroyed without any errors. The default value is `false`.
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
+
+        /// <summary>
         /// ID of the port this interface connects to. Changing
         /// this creates a new router interface.
         /// </summary>
@@ -172,6 +188,14 @@ namespace Pulumi.OpenStack.Networking
 
     public sealed class RouterInterfaceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A boolean indicating whether the routes from the
+        /// corresponding router ID should be deleted so that the router interface can
+        /// be destroyed without any errors. The default value is `false`.
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
+
         /// <summary>
         /// ID of the port this interface connects to. Changing
         /// this creates a new router interface.

@@ -308,17 +308,23 @@ public class Network extends com.pulumi.resources.CustomResource {
     }
     /**
      * An array of one or more provider segment objects.
+     * Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+     * updating any provider related segments attributes. Check your plug-in whether
+     * it supports updating.
      * 
      */
     @Export(name="segments", type=List.class, parameters={NetworkSegment.class})
-    private Output</* @Nullable */ List<NetworkSegment>> segments;
+    private Output<List<NetworkSegment>> segments;
 
     /**
      * @return An array of one or more provider segment objects.
+     * Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+     * updating any provider related segments attributes. Check your plug-in whether
+     * it supports updating.
      * 
      */
-    public Output<Optional<List<NetworkSegment>>> segments() {
-        return Codegen.optional(this.segments);
+    public Output<List<NetworkSegment>> segments() {
+        return this.segments;
     }
     /**
      * Specifies whether the network resource can be accessed
