@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const test_sg = new openstack.compute.ServerGroup("test-sg", {policies: "anti-affinity"});
+ * const test_sg = new openstack.compute.ServerGroup("test-sg", {policies: ["anti-affinity"]});
  * ```
  * ### Compute service API version 2.64 or above:
  *
@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const test_sg = new openstack.compute.ServerGroup("test-sg", {
- *     policies: "anti-affinity",
+ *     policies: ["anti-affinity"],
  *     rules: {
  *         maxServerPerHost: 3,
  *     },
@@ -99,7 +99,7 @@ export class ServerGroup extends pulumi.CustomResource {
      * the server group. See the Policies section for more information. Changing this
      * creates a new server group.
      */
-    public readonly policies!: pulumi.Output<string | undefined>;
+    public readonly policies!: pulumi.Output<string[] | undefined>;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used. Changing
@@ -167,7 +167,7 @@ export interface ServerGroupState {
      * the server group. See the Policies section for more information. Changing this
      * creates a new server group.
      */
-    policies?: pulumi.Input<string>;
+    policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used. Changing
@@ -199,7 +199,7 @@ export interface ServerGroupArgs {
      * the server group. See the Policies section for more information. Changing this
      * creates a new server group.
      */
-    policies?: pulumi.Input<string>;
+    policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The region in which to obtain the V2 Compute client.
      * If omitted, the `region` argument of the provider is used. Changing
