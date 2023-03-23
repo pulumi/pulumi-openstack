@@ -80,6 +80,8 @@ func openstackResource(mod string, res string) tokens.Type {
 
 // Provider returns additional overlaid schema and metadata associated with the openstack package.
 func Provider() tfbridge.ProviderInfo {
+	falseVar := false
+
 	p := shimv2.NewProvider(openstack.Provider())
 
 	prov := tfbridge.ProviderInfo{
@@ -156,10 +158,20 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_compute_interface_attach_v2":     {Tok: openstackResource(computeMod, "InterfaceAttach")},
 			"openstack_compute_keypair_v2":              {Tok: openstackResource(computeMod, "Keypair")},
 			"openstack_compute_secgroup_v2":             {Tok: openstackResource(computeMod, "SecGroup")},
-			"openstack_compute_servergroup_v2":          {Tok: openstackResource(computeMod, "ServerGroup")},
-			"openstack_compute_volume_attach_v2":        {Tok: openstackResource(computeMod, "VolumeAttach")},
-			"openstack_compute_quotaset_v2":             {Tok: openstackResource(computeMod, "QuotaSetV2")},
-			"openstack_compute_aggregate_v2":            {Tok: openstackResource(computeMod, "AggregateV2")},
+
+			"openstack_compute_servergroup_v2": {
+				Tok: openstackResource(computeMod, "ServerGroup"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"policies": {
+						// TODO[pulumi/pulumi-openstack#249]
+						MaxItemsOne: &falseVar,
+					},
+				},
+			},
+
+			"openstack_compute_volume_attach_v2": {Tok: openstackResource(computeMod, "VolumeAttach")},
+			"openstack_compute_quotaset_v2":      {Tok: openstackResource(computeMod, "QuotaSetV2")},
+			"openstack_compute_aggregate_v2":     {Tok: openstackResource(computeMod, "AggregateV2")},
 
 			// Container Infrastructure
 			"openstack_containerinfra_cluster_v1":         {Tok: openstackResource(containerinfraMod, "Cluster")},
