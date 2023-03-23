@@ -24,7 +24,10 @@ namespace Pulumi.OpenStack.Compute
     /// {
     ///     var test_sg = new OpenStack.Compute.ServerGroup("test-sg", new()
     ///     {
-    ///         Policies = "anti-affinity",
+    ///         Policies = new[]
+    ///         {
+    ///             "anti-affinity",
+    ///         },
     ///     });
     /// 
     /// });
@@ -40,7 +43,10 @@ namespace Pulumi.OpenStack.Compute
     /// {
     ///     var test_sg = new OpenStack.Compute.ServerGroup("test-sg", new()
     ///     {
-    ///         Policies = "anti-affinity",
+    ///         Policies = new[]
+    ///         {
+    ///             "anti-affinity",
+    ///         },
     ///         Rules = new OpenStack.Compute.Inputs.ServerGroupRulesArgs
     ///         {
     ///             MaxServerPerHost = 3,
@@ -97,7 +103,7 @@ namespace Pulumi.OpenStack.Compute
         /// creates a new server group.
         /// </summary>
         [Output("policies")]
-        public Output<string?> Policies { get; private set; } = null!;
+        public Output<ImmutableArray<string>> Policies { get; private set; } = null!;
 
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
@@ -173,13 +179,19 @@ namespace Pulumi.OpenStack.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("policies")]
+        private InputList<string>? _policies;
+
         /// <summary>
         /// A list of exactly one policy name to associate with
         /// the server group. See the Policies section for more information. Changing this
         /// creates a new server group.
         /// </summary>
-        [Input("policies")]
-        public Input<string>? Policies { get; set; }
+        public InputList<string> Policies
+        {
+            get => _policies ?? (_policies = new InputList<string>());
+            set => _policies = value;
+        }
 
         /// <summary>
         /// The region in which to obtain the V2 Compute client.
@@ -235,13 +247,19 @@ namespace Pulumi.OpenStack.Compute
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("policies")]
+        private InputList<string>? _policies;
+
         /// <summary>
         /// A list of exactly one policy name to associate with
         /// the server group. See the Policies section for more information. Changing this
         /// creates a new server group.
         /// </summary>
-        [Input("policies")]
-        public Input<string>? Policies { get; set; }
+        public InputList<string> Policies
+        {
+            get => _policies ?? (_policies = new InputList<string>());
+            set => _policies = value;
+        }
 
         /// <summary>
         /// The region in which to obtain the V2 Compute client.

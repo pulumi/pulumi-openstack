@@ -149,8 +149,8 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * creates a new server group.
      * 
      */
-    @Export(name="policies", type=String.class, parameters={})
-    private Output</* @Nullable */ String> policies;
+    @Export(name="policies", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> policies;
 
     /**
      * @return A list of exactly one policy name to associate with
@@ -158,7 +158,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * creates a new server group.
      * 
      */
-    public Output<Optional<String>> policies() {
+    public Output<Optional<List<String>>> policies() {
         return Codegen.optional(this.policies);
     }
     /**
