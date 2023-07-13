@@ -154,16 +154,16 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-     * Changing this updates the existing policy.
+     * The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
+     * is group5. Changing this updates the existing policy.
      * 
      */
     @Export(name="pfs", type=String.class, parameters={})
     private Output<String> pfs;
 
     /**
-     * @return The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-     * Changing this updates the existing policy.
+     * @return The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
+     * is group5. Changing this updates the existing policy.
      * 
      */
     public Output<String> pfs() {
@@ -206,7 +206,7 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
         return this.tenantId;
     }
     /**
-     * The transform protocol. Valid values are ESP, AH and AH-ESP.
+     * The transform protocol. Valid values are esp, ah and ah-esp.
      * Changing this updates the existing policy. Default is ESP.
      * 
      */
@@ -214,7 +214,7 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
     private Output<String> transformProtocol;
 
     /**
-     * @return The transform protocol. Valid values are ESP, AH and AH-ESP.
+     * @return The transform protocol. Valid values are esp, ah and ah-esp.
      * Changing this updates the existing policy. Default is ESP.
      * 
      */

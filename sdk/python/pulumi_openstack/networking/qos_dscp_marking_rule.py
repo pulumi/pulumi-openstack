@@ -154,8 +154,8 @@ class QosDscpMarkingRule(pulumi.CustomResource):
 
         qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="dscp_mark")
         dscp_marking_rule1 = openstack.networking.QosDscpMarkingRule("dscpMarkingRule1",
-            dscp_mark=26,
-            qos_policy_id=qos_policy1.id)
+            qos_policy_id=qos_policy1.id,
+            dscp_mark=26)
         ```
 
         ## Import
@@ -193,8 +193,8 @@ class QosDscpMarkingRule(pulumi.CustomResource):
 
         qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="dscp_mark")
         dscp_marking_rule1 = openstack.networking.QosDscpMarkingRule("dscpMarkingRule1",
-            dscp_mark=26,
-            qos_policy_id=qos_policy1.id)
+            qos_policy_id=qos_policy1.id,
+            dscp_mark=26)
         ```
 
         ## Import

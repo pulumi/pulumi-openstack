@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupFloatingIp(ctx *pulumi.Context, args *LookupFloatingIpArgs, opts ...pulumi.InvokeOption) (*LookupFloatingIpResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFloatingIpResult
 	err := ctx.Invoke("openstack:networking/getFloatingIp:getFloatingIp", args, &rv, opts...)
 	if err != nil {

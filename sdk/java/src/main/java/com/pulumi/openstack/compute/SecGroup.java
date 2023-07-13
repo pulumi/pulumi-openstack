@@ -122,8 +122,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test_server = new Instance(&#34;test-server&#34;, InstanceArgs.builder()        
- *             .flavorId(&#34;3&#34;)
  *             .imageId(&#34;ad091b52-742f-469e-8f3c-fd81cadf0743&#34;)
+ *             .flavorId(&#34;3&#34;)
  *             .keyPair(&#34;my_key_pair_name&#34;)
  *             .securityGroups(openstack_compute_secgroup_v2.secgroup_1().name())
  *             .build());

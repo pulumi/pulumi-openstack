@@ -206,17 +206,17 @@ def get_volume_v3(bootable: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:blockstorage/getVolumeV3:getVolumeV3', __args__, opts=opts, typ=GetVolumeV3Result).value
 
     return AwaitableGetVolumeV3Result(
-        bootable=__ret__.bootable,
-        host=__ret__.host,
-        id=__ret__.id,
-        metadata=__ret__.metadata,
-        multiattach=__ret__.multiattach,
-        name=__ret__.name,
-        region=__ret__.region,
-        size=__ret__.size,
-        source_volume_id=__ret__.source_volume_id,
-        status=__ret__.status,
-        volume_type=__ret__.volume_type)
+        bootable=pulumi.get(__ret__, 'bootable'),
+        host=pulumi.get(__ret__, 'host'),
+        id=pulumi.get(__ret__, 'id'),
+        metadata=pulumi.get(__ret__, 'metadata'),
+        multiattach=pulumi.get(__ret__, 'multiattach'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'),
+        size=pulumi.get(__ret__, 'size'),
+        source_volume_id=pulumi.get(__ret__, 'source_volume_id'),
+        status=pulumi.get(__ret__, 'status'),
+        volume_type=pulumi.get(__ret__, 'volume_type'))
 
 
 @_utilities.lift_output_func(get_volume_v3)

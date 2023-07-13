@@ -164,15 +164,15 @@ def get_hypervisor_v2(hostname: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:compute/getHypervisorV2:getHypervisorV2', __args__, opts=opts, typ=GetHypervisorV2Result).value
 
     return AwaitableGetHypervisorV2Result(
-        disk=__ret__.disk,
-        host_ip=__ret__.host_ip,
-        hostname=__ret__.hostname,
-        id=__ret__.id,
-        memory=__ret__.memory,
-        state=__ret__.state,
-        status=__ret__.status,
-        type=__ret__.type,
-        vcpus=__ret__.vcpus)
+        disk=pulumi.get(__ret__, 'disk'),
+        host_ip=pulumi.get(__ret__, 'host_ip'),
+        hostname=pulumi.get(__ret__, 'hostname'),
+        id=pulumi.get(__ret__, 'id'),
+        memory=pulumi.get(__ret__, 'memory'),
+        state=pulumi.get(__ret__, 'state'),
+        status=pulumi.get(__ret__, 'status'),
+        type=pulumi.get(__ret__, 'type'),
+        vcpus=pulumi.get(__ret__, 'vcpus'))
 
 
 @_utilities.lift_output_func(get_hypervisor_v2)

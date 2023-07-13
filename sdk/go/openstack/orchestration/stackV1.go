@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,7 +37,24 @@ import (
 //					"length": pulumi.Any(4),
 //				},
 //				TemplateOpts: pulumi.AnyMap{
-//					"Bin": pulumi.Any("heat_template_version: 2013-05-23\nparameters:\n  length:\n    type: number\nresources:\n  test_res:\n    type: OS::Heat::TestResource\n  random:\n    type: OS::Heat::RandomString\n    properties:\n      length: {get_param: length}\n\n"),
+//					"Bin": pulumi.Any(`heat_template_version: 2013-05-23
+//
+// parameters:
+//
+//	length:
+//	  type: number
+//
+// resources:
+//
+//	test_res:
+//	  type: OS::Heat::TestResource
+//	random:
+//	  type: OS::Heat::RandomString
+//	  properties:
+//	    length: {get_param: length}
+//
+// `),
+//
 //				},
 //				Timeout: pulumi.Int(30),
 //			})
@@ -125,6 +143,7 @@ func NewStackV1(ctx *pulumi.Context,
 	if args.TemplateOpts == nil {
 		return nil, errors.New("invalid value for required argument 'TemplateOpts'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource StackV1
 	err := ctx.RegisterResource("openstack:orchestration/stackV1:StackV1", name, args, &resource, opts...)
 	if err != nil {

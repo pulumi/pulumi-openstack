@@ -14,11 +14,11 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const monitor1 = new openstack.loadbalancer.Monitor("monitor1", {
- *     delay: 20,
- *     maxRetries: 5,
  *     poolId: openstack_lb_pool_v2.pool_1.id,
- *     timeout: 10,
  *     type: "PING",
+ *     delay: 20,
+ *     timeout: 10,
+ *     maxRetries: 5,
  * });
  * ```
  *

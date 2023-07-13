@@ -7,10 +7,17 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a V1 DB instance resource within OpenStack.
+//
+// > **Note:** All arguments including the instance user password will be stored
+// in the raw state as plain-text. Read more about sensitive data in
+// state.
+//
 // ## Example Usage
 // ### Instance
 //
@@ -94,6 +101,7 @@ func NewInstance(ctx *pulumi.Context,
 	if args.Size == nil {
 		return nil, errors.New("invalid value for required argument 'Size'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Instance
 	err := ctx.RegisterResource("openstack:database/instance:Instance", name, args, &resource, opts...)
 	if err != nil {

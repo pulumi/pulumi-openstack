@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupQuotaSetV2(ctx *pulumi.Context, args *LookupQuotaSetV2Args, opts ...pulumi.InvokeOption) (*LookupQuotaSetV2Result, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupQuotaSetV2Result
 	err := ctx.Invoke("openstack:compute/getQuotaSetV2:getQuotaSetV2", args, &rv, opts...)
 	if err != nil {

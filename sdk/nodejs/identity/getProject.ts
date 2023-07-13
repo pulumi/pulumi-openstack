@@ -28,6 +28,7 @@ export function getProject(args?: GetProjectArgs, opts?: pulumi.InvokeOptions): 
         "isDomain": args.isDomain,
         "name": args.name,
         "parentId": args.parentId,
+        "projectId": args.projectId,
         "region": args.region,
     }, opts);
 }
@@ -58,6 +59,11 @@ export interface GetProjectArgs {
      * The parent of this project.
      */
     parentId?: string;
+    /**
+     * The id of the project. Conflicts with any of the
+     * above arguments.
+     */
+    projectId?: string;
     /**
      * The region the project is located in.
      */
@@ -96,6 +102,10 @@ export interface GetProjectResult {
      * See Argument Reference above.
      */
     readonly parentId?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly projectId?: string;
     /**
      * The region the project is located in.
      */
@@ -149,6 +159,11 @@ export interface GetProjectOutputArgs {
      * The parent of this project.
      */
     parentId?: pulumi.Input<string>;
+    /**
+     * The id of the project. Conflicts with any of the
+     * above arguments.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * The region the project is located in.
      */

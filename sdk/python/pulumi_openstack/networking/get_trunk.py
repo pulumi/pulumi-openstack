@@ -203,18 +203,18 @@ def get_trunk(admin_state_up: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('openstack:networking/getTrunk:getTrunk', __args__, opts=opts, typ=GetTrunkResult).value
 
     return AwaitableGetTrunkResult(
-        admin_state_up=__ret__.admin_state_up,
-        all_tags=__ret__.all_tags,
-        description=__ret__.description,
-        id=__ret__.id,
-        name=__ret__.name,
-        port_id=__ret__.port_id,
-        project_id=__ret__.project_id,
-        region=__ret__.region,
-        status=__ret__.status,
-        sub_ports=__ret__.sub_ports,
-        tags=__ret__.tags,
-        trunk_id=__ret__.trunk_id)
+        admin_state_up=pulumi.get(__ret__, 'admin_state_up'),
+        all_tags=pulumi.get(__ret__, 'all_tags'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        port_id=pulumi.get(__ret__, 'port_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        region=pulumi.get(__ret__, 'region'),
+        status=pulumi.get(__ret__, 'status'),
+        sub_ports=pulumi.get(__ret__, 'sub_ports'),
+        tags=pulumi.get(__ret__, 'tags'),
+        trunk_id=pulumi.get(__ret__, 'trunk_id'))
 
 
 @_utilities.lift_output_func(get_trunk)

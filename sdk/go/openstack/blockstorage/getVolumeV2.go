@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupVolumeV2(ctx *pulumi.Context, args *LookupVolumeV2Args, opts ...pulumi.InvokeOption) (*LookupVolumeV2Result, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVolumeV2Result
 	err := ctx.Invoke("openstack:blockstorage/getVolumeV2:getVolumeV2", args, &rv, opts...)
 	if err != nil {

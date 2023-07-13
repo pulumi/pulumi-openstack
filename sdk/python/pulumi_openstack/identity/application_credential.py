@@ -388,6 +388,17 @@ class ApplicationCredential(pulumi.CustomResource):
                  unrestricted: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        Manages a V3 Application Credential resource within OpenStack Keystone.
+
+        > **Note:** All arguments including the application credential name and secret
+        will be stored in the raw state as plain-text. Read more about sensitive data
+        in state.
+
+        > **Note:** An Application Credential is created within the authenticated user
+        project scope and is not visible by an admin or other accounts.
+        The Application Credential visibility is similar to
+        `compute.Keypair`.
+
         ## Example Usage
         ### Predefined secret
 
@@ -488,6 +499,17 @@ class ApplicationCredential(pulumi.CustomResource):
                  args: Optional[ApplicationCredentialArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a V3 Application Credential resource within OpenStack Keystone.
+
+        > **Note:** All arguments including the application credential name and secret
+        will be stored in the raw state as plain-text. Read more about sensitive data
+        in state.
+
+        > **Note:** An Application Credential is created within the authenticated user
+        project scope and is not visible by an admin or other accounts.
+        The Application Credential visibility is similar to
+        `compute.Keypair`.
+
         ## Example Usage
         ### Predefined secret
 

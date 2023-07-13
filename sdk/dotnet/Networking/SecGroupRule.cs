@@ -18,6 +18,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -32,9 +33,9 @@ namespace Pulumi.OpenStack.Networking
     ///     {
     ///         Direction = "ingress",
     ///         Ethertype = "IPv4",
-    ///         PortRangeMax = 22,
-    ///         PortRangeMin = 22,
     ///         Protocol = "tcp",
+    ///         PortRangeMin = 22,
+    ///         PortRangeMax = 22,
     ///         RemoteIpPrefix = "0.0.0.0/0",
     ///         SecurityGroupId = secgroup1.Id,
     ///     });

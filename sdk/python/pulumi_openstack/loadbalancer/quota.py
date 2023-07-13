@@ -397,14 +397,14 @@ class Quota(pulumi.CustomResource):
 
         project1 = openstack.identity.Project("project1")
         quota1 = openstack.loadbalancer.Quota("quota1",
-            health_monitor=10,
-            l7_policy=11,
-            l7_rule=12,
-            listener=7,
+            project_id=project1.id,
             loadbalancer=6,
+            listener=7,
             member=8,
             pool=9,
-            project_id=project1.id)
+            health_monitor=10,
+            l7_policy=11,
+            l7_rule=12)
         ```
 
         ## Import
@@ -468,14 +468,14 @@ class Quota(pulumi.CustomResource):
 
         project1 = openstack.identity.Project("project1")
         quota1 = openstack.loadbalancer.Quota("quota1",
-            health_monitor=10,
-            l7_policy=11,
-            l7_rule=12,
-            listener=7,
+            project_id=project1.id,
             loadbalancer=6,
+            listener=7,
             member=8,
             pool=9,
-            project_id=project1.id)
+            health_monitor=10,
+            l7_policy=11,
+            l7_rule=12)
         ```
 
         ## Import

@@ -17,6 +17,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -29,8 +30,8 @@ namespace Pulumi.OpenStack.Networking
     /// 
     ///     var dscpMarkingRule1 = new OpenStack.Networking.QosDscpMarkingRule("dscpMarkingRule1", new()
     ///     {
-    ///         DscpMark = 26,
     ///         QosPolicyId = qosPolicy1.Id,
+    ///         DscpMark = 26,
     ///     });
     /// 
     /// });

@@ -47,11 +47,31 @@ public final class GetKeypairArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * The user id of the owner of the key pair.
+     * This parameter can be specified only if the provider is configured to use
+     * the credentials of an OpenStack administrator.
+     * 
+     */
+    @Import(name="userId")
+    private @Nullable Output<String> userId;
+
+    /**
+     * @return The user id of the owner of the key pair.
+     * This parameter can be specified only if the provider is configured to use
+     * the credentials of an OpenStack administrator.
+     * 
+     */
+    public Optional<Output<String>> userId() {
+        return Optional.ofNullable(this.userId);
+    }
+
     private GetKeypairArgs() {}
 
     private GetKeypairArgs(GetKeypairArgs $) {
         this.name = $.name;
         this.region = $.region;
+        this.userId = $.userId;
     }
 
     public static Builder builder() {
@@ -114,6 +134,31 @@ public final class GetKeypairArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param userId The user id of the owner of the key pair.
+         * This parameter can be specified only if the provider is configured to use
+         * the credentials of an OpenStack administrator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userId(@Nullable Output<String> userId) {
+            $.userId = userId;
+            return this;
+        }
+
+        /**
+         * @param userId The user id of the owner of the key pair.
+         * This parameter can be specified only if the provider is configured to use
+         * the credentials of an OpenStack administrator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userId(String userId) {
+            return userId(Output.of(userId));
         }
 
         public GetKeypairArgs build() {

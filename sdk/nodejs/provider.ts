@@ -22,7 +22,7 @@ export class Provider extends pulumi.ProviderResource {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === Provider.__pulumiType;
+        return obj['__pulumiType'] === "pulumi:providers:" + Provider.__pulumiType;
     }
 
     /**
@@ -107,7 +107,7 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly userDomainName!: pulumi.Output<string | undefined>;
     /**
-     * Username to login with.
+     * User ID to login with.
      */
     public readonly userId!: pulumi.Output<string | undefined>;
     /**
@@ -150,6 +150,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["projectDomainName"] = args ? args.projectDomainName : undefined;
             resourceInputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("OS_REGION_NAME");
             resourceInputs["swauth"] = pulumi.output((args ? args.swauth : undefined) ?? utilities.getEnvBoolean("OS_SWAUTH")).apply(JSON.stringify);
+            resourceInputs["systemScope"] = pulumi.output(args ? args.systemScope : undefined).apply(JSON.stringify);
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["tenantName"] = args ? args.tenantName : undefined;
             resourceInputs["token"] = args ? args.token : undefined;
@@ -266,6 +267,10 @@ export interface ProviderArgs {
      */
     swauth?: pulumi.Input<boolean>;
     /**
+     * If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
+     */
+    systemScope?: pulumi.Input<boolean>;
+    /**
      * The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
      */
     tenantId?: pulumi.Input<string>;
@@ -290,7 +295,7 @@ export interface ProviderArgs {
      */
     userDomainName?: pulumi.Input<string>;
     /**
-     * Username to login with.
+     * User ID to login with.
      */
     userId?: pulumi.Input<string>;
     /**

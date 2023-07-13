@@ -243,9 +243,9 @@ class InterfaceAttach(pulumi.CustomResource):
         network1 = openstack.networking.Network("network1", admin_state_up=True)
         instance1 = openstack.compute.Instance("instance1", security_groups=["default"])
         ai1 = openstack.compute.InterfaceAttach("ai1",
-            fixed_ip="10.0.10.10",
             instance_id=instance1.id,
-            network_id=openstack_networking_port_v2["network_1"]["id"])
+            network_id=openstack_networking_port_v2["network_1"]["id"],
+            fixed_ip="10.0.10.10")
         ```
         ### Attachment Using an Existing Port
 
@@ -255,8 +255,8 @@ class InterfaceAttach(pulumi.CustomResource):
 
         network1 = openstack.networking.Network("network1", admin_state_up=True)
         port1 = openstack.networking.Port("port1",
-            admin_state_up=True,
-            network_id=network1.id)
+            network_id=network1.id,
+            admin_state_up=True)
         instance1 = openstack.compute.Instance("instance1", security_groups=["default"])
         ai1 = openstack.compute.InterfaceAttach("ai1",
             instance_id=instance1.id,
@@ -316,9 +316,9 @@ class InterfaceAttach(pulumi.CustomResource):
         network1 = openstack.networking.Network("network1", admin_state_up=True)
         instance1 = openstack.compute.Instance("instance1", security_groups=["default"])
         ai1 = openstack.compute.InterfaceAttach("ai1",
-            fixed_ip="10.0.10.10",
             instance_id=instance1.id,
-            network_id=openstack_networking_port_v2["network_1"]["id"])
+            network_id=openstack_networking_port_v2["network_1"]["id"],
+            fixed_ip="10.0.10.10")
         ```
         ### Attachment Using an Existing Port
 
@@ -328,8 +328,8 @@ class InterfaceAttach(pulumi.CustomResource):
 
         network1 = openstack.networking.Network("network1", admin_state_up=True)
         port1 = openstack.networking.Port("port1",
-            admin_state_up=True,
-            network_id=network1.id)
+            network_id=network1.id,
+            admin_state_up=True)
         instance1 = openstack.compute.Instance("instance1", security_groups=["default"])
         ai1 = openstack.compute.InterfaceAttach("ai1",
             instance_id=instance1.id,

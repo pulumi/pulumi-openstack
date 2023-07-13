@@ -16,10 +16,10 @@ import * as utilities from "../utilities";
  *
  * const qosPolicy1 = new openstack.networking.QosPolicy("qosPolicy1", {description: "bw_limit"});
  * const bwLimitRule1 = new openstack.networking.QosBandwidthLimitRule("bwLimitRule1", {
- *     direction: "egress",
- *     maxBurstKbps: 300,
- *     maxKbps: 3000,
  *     qosPolicyId: qosPolicy1.id,
+ *     maxKbps: 3000,
+ *     maxBurstKbps: 300,
+ *     direction: "egress",
  * });
  * ```
  *

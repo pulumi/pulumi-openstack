@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupQosPolicy(ctx *pulumi.Context, args *LookupQosPolicyArgs, opts ...pulumi.InvokeOption) (*LookupQosPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupQosPolicyResult
 	err := ctx.Invoke("openstack:networking/getQosPolicy:getQosPolicy", args, &rv, opts...)
 	if err != nil {

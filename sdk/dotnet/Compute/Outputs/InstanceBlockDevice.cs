@@ -49,6 +49,11 @@ namespace Pulumi.OpenStack.Compute.Outputs
         /// </summary>
         public readonly string? GuestFormat;
         /// <summary>
+        /// Enable the attachment of multiattach-capable
+        /// volumes.
+        /// </summary>
+        public readonly bool? Multiattach;
+        /// <summary>
         /// The source type of the device. Must be one of
         /// "blank", "image", "volume", or "snapshot". Changing this creates a new
         /// server.
@@ -88,6 +93,8 @@ namespace Pulumi.OpenStack.Compute.Outputs
 
             string? guestFormat,
 
+            bool? multiattach,
+
             string sourceType,
 
             string? uuid,
@@ -102,6 +109,7 @@ namespace Pulumi.OpenStack.Compute.Outputs
             DeviceType = deviceType;
             DiskBus = diskBus;
             GuestFormat = guestFormat;
+            Multiattach = multiattach;
             SourceType = sourceType;
             Uuid = uuid;
             VolumeSize = volumeSize;

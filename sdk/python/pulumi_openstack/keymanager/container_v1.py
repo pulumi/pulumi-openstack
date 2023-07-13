@@ -337,17 +337,18 @@ class ContainerV1(pulumi.CustomResource):
 
         certificate1 = openstack.keymanager.SecretV1("certificate1",
             payload=(lambda path: open(path).read())("cert.pem"),
-            payload_content_type="text/plain",
-            secret_type="certificate")
+            secret_type="certificate",
+            payload_content_type="text/plain")
         private_key1 = openstack.keymanager.SecretV1("privateKey1",
             payload=(lambda path: open(path).read())("cert-key.pem"),
-            payload_content_type="text/plain",
-            secret_type="private")
+            secret_type="private",
+            payload_content_type="text/plain")
         intermediate1 = openstack.keymanager.SecretV1("intermediate1",
             payload=(lambda path: open(path).read())("intermediate-ca.pem"),
-            payload_content_type="text/plain",
-            secret_type="certificate")
+            secret_type="certificate",
+            payload_content_type="text/plain")
         tls1 = openstack.keymanager.ContainerV1("tls1",
+            type="certificate",
             secret_refs=[
                 openstack.keymanager.ContainerV1SecretRefArgs(
                     name="certificate",
@@ -361,15 +362,14 @@ class ContainerV1(pulumi.CustomResource):
                     name="intermediates",
                     secret_ref=intermediate1.secret_ref,
                 ),
-            ],
-            type="certificate")
+            ])
         subnet1 = openstack.networking.get_subnet(name="my-subnet")
         lb1 = openstack.loadbalancer.LoadBalancer("lb1", vip_subnet_id=subnet1.id)
         listener1 = openstack.loadbalancer.Listener("listener1",
-            default_tls_container_ref=tls1.container_ref,
-            loadbalancer_id=lb1.id,
             protocol="TERMINATED_HTTPS",
-            protocol_port=443)
+            protocol_port=443,
+            loadbalancer_id=lb1.id,
+            default_tls_container_ref=tls1.container_ref)
         ```
         ### Container with the ACL
 
@@ -380,15 +380,7 @@ class ContainerV1(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         tls1 = openstack.keymanager.ContainerV1("tls1",
-            acl=openstack.keymanager.ContainerV1AclArgs(
-                read=openstack.keymanager.ContainerV1AclReadArgs(
-                    project_access=False,
-                    users=[
-                        "userid1",
-                        "userid2",
-                    ],
-                ),
-            ),
+            type="certificate",
             secret_refs=[
                 openstack.keymanager.ContainerV1SecretRefArgs(
                     name="certificate",
@@ -403,7 +395,15 @@ class ContainerV1(pulumi.CustomResource):
                     secret_ref=openstack_keymanager_secret_v1["intermediate_1"]["secret_ref"],
                 ),
             ],
-            type="certificate")
+            acl=openstack.keymanager.ContainerV1AclArgs(
+                read=openstack.keymanager.ContainerV1AclReadArgs(
+                    project_access=False,
+                    users=[
+                        "userid1",
+                        "userid2",
+                    ],
+                ),
+            ))
         ```
 
         ## Import
@@ -449,17 +449,18 @@ class ContainerV1(pulumi.CustomResource):
 
         certificate1 = openstack.keymanager.SecretV1("certificate1",
             payload=(lambda path: open(path).read())("cert.pem"),
-            payload_content_type="text/plain",
-            secret_type="certificate")
+            secret_type="certificate",
+            payload_content_type="text/plain")
         private_key1 = openstack.keymanager.SecretV1("privateKey1",
             payload=(lambda path: open(path).read())("cert-key.pem"),
-            payload_content_type="text/plain",
-            secret_type="private")
+            secret_type="private",
+            payload_content_type="text/plain")
         intermediate1 = openstack.keymanager.SecretV1("intermediate1",
             payload=(lambda path: open(path).read())("intermediate-ca.pem"),
-            payload_content_type="text/plain",
-            secret_type="certificate")
+            secret_type="certificate",
+            payload_content_type="text/plain")
         tls1 = openstack.keymanager.ContainerV1("tls1",
+            type="certificate",
             secret_refs=[
                 openstack.keymanager.ContainerV1SecretRefArgs(
                     name="certificate",
@@ -473,15 +474,14 @@ class ContainerV1(pulumi.CustomResource):
                     name="intermediates",
                     secret_ref=intermediate1.secret_ref,
                 ),
-            ],
-            type="certificate")
+            ])
         subnet1 = openstack.networking.get_subnet(name="my-subnet")
         lb1 = openstack.loadbalancer.LoadBalancer("lb1", vip_subnet_id=subnet1.id)
         listener1 = openstack.loadbalancer.Listener("listener1",
-            default_tls_container_ref=tls1.container_ref,
-            loadbalancer_id=lb1.id,
             protocol="TERMINATED_HTTPS",
-            protocol_port=443)
+            protocol_port=443,
+            loadbalancer_id=lb1.id,
+            default_tls_container_ref=tls1.container_ref)
         ```
         ### Container with the ACL
 
@@ -492,15 +492,7 @@ class ContainerV1(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         tls1 = openstack.keymanager.ContainerV1("tls1",
-            acl=openstack.keymanager.ContainerV1AclArgs(
-                read=openstack.keymanager.ContainerV1AclReadArgs(
-                    project_access=False,
-                    users=[
-                        "userid1",
-                        "userid2",
-                    ],
-                ),
-            ),
+            type="certificate",
             secret_refs=[
                 openstack.keymanager.ContainerV1SecretRefArgs(
                     name="certificate",
@@ -515,7 +507,15 @@ class ContainerV1(pulumi.CustomResource):
                     secret_ref=openstack_keymanager_secret_v1["intermediate_1"]["secret_ref"],
                 ),
             ],
-            type="certificate")
+            acl=openstack.keymanager.ContainerV1AclArgs(
+                read=openstack.keymanager.ContainerV1AclReadArgs(
+                    project_access=False,
+                    users=[
+                        "userid1",
+                        "userid2",
+                    ],
+                ),
+            ))
         ```
 
         ## Import

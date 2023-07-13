@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectResult
 	err := ctx.Invoke("openstack:identity/getProject:getProject", args, &rv, opts...)
 	if err != nil {
@@ -60,6 +62,9 @@ type LookupProjectArgs struct {
 	Name *string `pulumi:"name"`
 	// The parent of this project.
 	ParentId *string `pulumi:"parentId"`
+	// The id of the project. Conflicts with any of the
+	// above arguments.
+	ProjectId *string `pulumi:"projectId"`
 	// The region the project is located in.
 	Region *string `pulumi:"region"`
 }
@@ -80,6 +85,8 @@ type LookupProjectResult struct {
 	Name *string `pulumi:"name"`
 	// See Argument Reference above.
 	ParentId *string `pulumi:"parentId"`
+	// See Argument Reference above.
+	ProjectId *string `pulumi:"projectId"`
 	// The region the project is located in.
 	Region string `pulumi:"region"`
 	// See Argument Reference above.
@@ -113,6 +120,9 @@ type LookupProjectOutputArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The parent of this project.
 	ParentId pulumi.StringPtrInput `pulumi:"parentId"`
+	// The id of the project. Conflicts with any of the
+	// above arguments.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// The region the project is located in.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
@@ -169,6 +179,11 @@ func (o LookupProjectResultOutput) Name() pulumi.StringPtrOutput {
 // See Argument Reference above.
 func (o LookupProjectResultOutput) ParentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectResult) *string { return v.ParentId }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o LookupProjectResultOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProjectResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
 // The region the project is located in.

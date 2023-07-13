@@ -17,6 +17,7 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -24,28 +25,33 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// {
     ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
     ///     {
-    ///         ContentType = "application/json",
-    ///         Metadata = 
-    ///         {
-    ///             { "test", "true" },
-    ///         },
     ///         Region = "RegionOne",
+    ///         Metadata = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "test", "true" },
+    ///             },
+    ///         },
+    ///         ContentType = "application/json",
     ///     });
     /// 
     ///     var doc1 = new OpenStack.ObjectStorage.ContainerObject("doc1", new()
     ///     {
+    ///         Region = "RegionOne",
     ///         ContainerName = container1.Name,
+    ///         Metadata = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "test", "true" },
+    ///             },
+    ///         },
+    ///         ContentType = "application/json",
     ///         Content = @"               {
     ///                  ""foo"" : ""bar""
     ///                }
-    /// 
     /// ",
-    ///         ContentType = "application/json",
-    ///         Metadata = 
-    ///         {
-    ///             { "test", "true" },
-    ///         },
-    ///         Region = "RegionOne",
     ///     });
     /// 
     /// });
@@ -54,6 +60,7 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -61,23 +68,29 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// {
     ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
     ///     {
-    ///         ContentType = "application/json",
-    ///         Metadata = 
-    ///         {
-    ///             { "test", "true" },
-    ///         },
     ///         Region = "RegionOne",
+    ///         Metadata = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "test", "true" },
+    ///             },
+    ///         },
+    ///         ContentType = "application/json",
     ///     });
     /// 
     ///     var doc1 = new OpenStack.ObjectStorage.ContainerObject("doc1", new()
     ///     {
-    ///         ContainerName = container1.Name,
-    ///         ContentType = "application/json",
-    ///         Metadata = 
-    ///         {
-    ///             { "test", "true" },
-    ///         },
     ///         Region = "RegionOne",
+    ///         ContainerName = container1.Name,
+    ///         Metadata = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "test", "true" },
+    ///             },
+    ///         },
+    ///         ContentType = "application/json",
     ///         Source = "./default.json",
     ///     });
     /// 

@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,11 +29,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := loadbalancer.NewMonitor(ctx, "monitor1", &loadbalancer.MonitorArgs{
-//				Delay:      pulumi.Int(20),
-//				MaxRetries: pulumi.Int(5),
 //				PoolId:     pulumi.Any(openstack_lb_pool_v2.Pool_1.Id),
-//				Timeout:    pulumi.Int(10),
 //				Type:       pulumi.String("PING"),
+//				Delay:      pulumi.Int(20),
+//				Timeout:    pulumi.Int(10),
+//				MaxRetries: pulumi.Int(5),
 //			})
 //			if err != nil {
 //				return err
@@ -132,6 +133,7 @@ func NewMonitor(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Monitor
 	err := ctx.RegisterResource("openstack:loadbalancer/monitor:Monitor", name, args, &resource, opts...)
 	if err != nil {

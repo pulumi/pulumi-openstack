@@ -16,6 +16,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -33,9 +34,9 @@ namespace Pulumi.OpenStack.Networking
     /// 
     ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
     ///     {
+    ///         NetworkId = network1.Id,
     ///         Cidr = "192.168.199.0/24",
     ///         IpVersion = 4,
-    ///         NetworkId = network1.Id,
     ///     });
     /// 
     ///     var int1 = new OpenStack.Networking.RouterInterface("int1", new()
@@ -46,9 +47,9 @@ namespace Pulumi.OpenStack.Networking
     /// 
     ///     var routerRoute1 = new OpenStack.Networking.RouterRoute("routerRoute1", new()
     ///     {
+    ///         RouterId = router1.Id,
     ///         DestinationCidr = "10.0.1.0/24",
     ///         NextHop = "192.168.199.254",
-    ///         RouterId = router1.Id,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn = new[]

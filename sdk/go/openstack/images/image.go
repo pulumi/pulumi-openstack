@@ -7,10 +7,17 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a V2 Image resource within OpenStack Glance.
+//
+// > **Note:** All arguments including the source image URL password will be
+// stored in the raw state as plain-text. Read more about sensitive data in
+// state.
+//
 // ## Example Usage
 //
 // ```go
@@ -78,7 +85,7 @@ type Image struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// If true, this provider will decompress downloaded
 	// image before uploading it to OpenStack. Decompression algorithm is chosen by
-	// checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+	// checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
 	// Defaults to false. Changing this creates a new Image.
 	Decompress pulumi.BoolPtrOutput `pulumi:"decompress"`
 	// The disk format. Must be one of
@@ -185,6 +192,7 @@ func NewImage(ctx *pulumi.Context,
 		"imageSourcePassword",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Image
 	err := ctx.RegisterResource("openstack:images/image:Image", name, args, &resource, opts...)
 	if err != nil {
@@ -216,7 +224,7 @@ type imageState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// If true, this provider will decompress downloaded
 	// image before uploading it to OpenStack. Decompression algorithm is chosen by
-	// checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+	// checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
 	// Defaults to false. Changing this creates a new Image.
 	Decompress *bool `pulumi:"decompress"`
 	// The disk format. Must be one of
@@ -313,7 +321,7 @@ type ImageState struct {
 	CreatedAt pulumi.StringPtrInput
 	// If true, this provider will decompress downloaded
 	// image before uploading it to OpenStack. Decompression algorithm is chosen by
-	// checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+	// checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
 	// Defaults to false. Changing this creates a new Image.
 	Decompress pulumi.BoolPtrInput
 	// The disk format. Must be one of
@@ -410,7 +418,7 @@ type imageArgs struct {
 	ContainerFormat string `pulumi:"containerFormat"`
 	// If true, this provider will decompress downloaded
 	// image before uploading it to OpenStack. Decompression algorithm is chosen by
-	// checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+	// checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
 	// Defaults to false. Changing this creates a new Image.
 	Decompress *bool `pulumi:"decompress"`
 	// The disk format. Must be one of
@@ -480,7 +488,7 @@ type ImageArgs struct {
 	ContainerFormat pulumi.StringInput
 	// If true, this provider will decompress downloaded
 	// image before uploading it to OpenStack. Decompression algorithm is chosen by
-	// checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+	// checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
 	// Defaults to false. Changing this creates a new Image.
 	Decompress pulumi.BoolPtrInput
 	// The disk format. Must be one of
@@ -648,7 +656,7 @@ func (o ImageOutput) CreatedAt() pulumi.StringOutput {
 
 // If true, this provider will decompress downloaded
 // image before uploading it to OpenStack. Decompression algorithm is chosen by
-// checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+// checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
 // Defaults to false. Changing this creates a new Image.
 func (o ImageOutput) Decompress() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.BoolPtrOutput { return v.Decompress }).(pulumi.BoolPtrOutput)

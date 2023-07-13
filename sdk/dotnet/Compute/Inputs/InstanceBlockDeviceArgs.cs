@@ -60,6 +60,13 @@ namespace Pulumi.OpenStack.Compute.Inputs
         public Input<string>? GuestFormat { get; set; }
 
         /// <summary>
+        /// Enable the attachment of multiattach-capable
+        /// volumes.
+        /// </summary>
+        [Input("multiattach")]
+        public Input<bool>? Multiattach { get; set; }
+
+        /// <summary>
         /// The source type of the device. Must be one of
         /// "blank", "image", "volume", or "snapshot". Changing this creates a new
         /// server.

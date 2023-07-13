@@ -418,8 +418,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Provide the VM state. Only &#39;active&#39; and &#39;shutoff&#39;
-     * are supported values. *Note*: If the initial power_state is the shutoff
+     * Provide the VM state. Only &#39;active&#39;, &#39;shutoff&#39;
+     * and &#39;shelved_offloaded&#39; are supported values.
+     * *Note*: If the initial power_state is the shutoff
      * the VM will be stopped immediately after build and the provisioners like
      * remote-exec or files are not supported.
      * 
@@ -428,8 +429,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> powerState;
 
     /**
-     * @return Provide the VM state. Only &#39;active&#39; and &#39;shutoff&#39;
-     * are supported values. *Note*: If the initial power_state is the shutoff
+     * @return Provide the VM state. Only &#39;active&#39;, &#39;shutoff&#39;
+     * and &#39;shelved_offloaded&#39; are supported values.
+     * *Note*: If the initial power_state is the shutoff
      * the VM will be stopped immediately after build and the provisioners like
      * remote-exec or files are not supported.
      * 
@@ -1229,8 +1231,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param powerState Provide the VM state. Only &#39;active&#39; and &#39;shutoff&#39;
-         * are supported values. *Note*: If the initial power_state is the shutoff
+         * @param powerState Provide the VM state. Only &#39;active&#39;, &#39;shutoff&#39;
+         * and &#39;shelved_offloaded&#39; are supported values.
+         * *Note*: If the initial power_state is the shutoff
          * the VM will be stopped immediately after build and the provisioners like
          * remote-exec or files are not supported.
          * 
@@ -1243,8 +1246,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param powerState Provide the VM state. Only &#39;active&#39; and &#39;shutoff&#39;
-         * are supported values. *Note*: If the initial power_state is the shutoff
+         * @param powerState Provide the VM state. Only &#39;active&#39;, &#39;shutoff&#39;
+         * and &#39;shelved_offloaded&#39; are supported values.
+         * *Note*: If the initial power_state is the shutoff
          * the VM will be stopped immediately after build and the provisioners like
          * remote-exec or files are not supported.
          * 

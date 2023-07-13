@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,9 +32,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			rancheros, err := images.LookupImage(ctx, &images.LookupImageArgs{
-//				MemberStatus: pulumi.StringRef("all"),
 //				Name:         pulumi.StringRef("RancherOS"),
 //				Visibility:   pulumi.StringRef("shared"),
+//				MemberStatus: pulumi.StringRef("all"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -97,6 +98,7 @@ func NewImageAccessAccept(ctx *pulumi.Context,
 	if args.Status == nil {
 		return nil, errors.New("invalid value for required argument 'Status'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ImageAccessAccept
 	err := ctx.RegisterResource("openstack:images/imageAccessAccept:ImageAccessAccept", name, args, &resource, opts...)
 	if err != nil {

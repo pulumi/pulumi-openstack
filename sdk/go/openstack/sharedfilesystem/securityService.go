@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,7 +64,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 <id>
+//	$ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 id
 //
 // ```
 type SecurityService struct {
@@ -119,6 +120,7 @@ func NewSecurityService(ctx *pulumi.Context,
 		"password",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecurityService
 	err := ctx.RegisterResource("openstack:sharedfilesystem/securityService:SecurityService", name, args, &resource, opts...)
 	if err != nil {

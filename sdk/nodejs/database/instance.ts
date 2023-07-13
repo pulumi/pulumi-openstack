@@ -7,6 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Manages a V1 DB instance resource within OpenStack.
+ *
+ * > **Note:** All arguments including the instance user password will be stored
+ * in the raw state as plain-text. Read more about sensitive data in
+ * state.
+ *
  * ## Example Usage
  * ### Instance
  *

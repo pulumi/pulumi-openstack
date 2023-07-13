@@ -15,8 +15,8 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const instance1 = new openstack.compute.Instance("instance1", {
- *     flavorId: "3",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
+ *     flavorId: "3",
  *     keyPair: "my_key_pair_name",
  *     securityGroups: ["default"],
  * });
@@ -33,9 +33,10 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const instance1 = new openstack.compute.Instance("instance1", {
- *     flavorId: "3",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
+ *     flavorId: "3",
  *     keyPair: "my_key_pair_name",
+ *     securityGroups: ["default"],
  *     networks: [
  *         {
  *             name: "my_network",
@@ -44,13 +45,12 @@ import * as utilities from "../utilities";
  *             name: "default",
  *         },
  *     ],
- *     securityGroups: ["default"],
  * });
  * const fip1FloatingIp = new openstack.networking.FloatingIp("fip1FloatingIp", {pool: "my_pool"});
  * const fip1FloatingIpAssociate = new openstack.compute.FloatingIpAssociate("fip1FloatingIpAssociate", {
- *     fixedIp: instance1.networks.apply(networks => networks[1].fixedIpV4),
  *     floatingIp: fip1FloatingIp.address,
  *     instanceId: instance1.id,
+ *     fixedIp: instance1.networks.apply(networks => networks[1].fixedIpV4),
  * });
  * ```
  *
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * This resource can be imported by specifying all three arguments, separated by a forward slash
  *
  * ```sh
- *  $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 <floating_ip>/<instance_id>/<fixed_ip>
+ *  $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 floating_ip/instance_id/fixed_ip
  * ```
  */
 export class FloatingIpAssociate extends pulumi.CustomResource {

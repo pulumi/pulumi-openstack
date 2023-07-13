@@ -29,6 +29,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -38,14 +39,14 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     ///     var quota1 = new OpenStack.LoadBalancer.Quota("quota1", new()
     ///     {
+    ///         ProjectId = project1.Id,
+    ///         Loadbalancer = 6,
+    ///         Listener = 7,
+    ///         Member = 8,
+    ///         Pool = 9,
     ///         HealthMonitor = 10,
     ///         L7Policy = 11,
     ///         L7Rule = 12,
-    ///         Listener = 7,
-    ///         Loadbalancer = 6,
-    ///         Member = 8,
-    ///         Pool = 9,
-    ///         ProjectId = project1.Id,
     ///     });
     /// 
     /// });

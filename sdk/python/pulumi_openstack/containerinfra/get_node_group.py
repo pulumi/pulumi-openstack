@@ -242,21 +242,21 @@ def get_node_group(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:containerinfra/getNodeGroup:getNodeGroup', __args__, opts=opts, typ=GetNodeGroupResult).value
 
     return AwaitableGetNodeGroupResult(
-        cluster_id=__ret__.cluster_id,
-        created_at=__ret__.created_at,
-        docker_volume_size=__ret__.docker_volume_size,
-        flavor=__ret__.flavor,
-        id=__ret__.id,
-        image=__ret__.image,
-        labels=__ret__.labels,
-        max_node_count=__ret__.max_node_count,
-        min_node_count=__ret__.min_node_count,
-        name=__ret__.name,
-        node_count=__ret__.node_count,
-        project_id=__ret__.project_id,
-        region=__ret__.region,
-        role=__ret__.role,
-        updated_at=__ret__.updated_at)
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        docker_volume_size=pulumi.get(__ret__, 'docker_volume_size'),
+        flavor=pulumi.get(__ret__, 'flavor'),
+        id=pulumi.get(__ret__, 'id'),
+        image=pulumi.get(__ret__, 'image'),
+        labels=pulumi.get(__ret__, 'labels'),
+        max_node_count=pulumi.get(__ret__, 'max_node_count'),
+        min_node_count=pulumi.get(__ret__, 'min_node_count'),
+        name=pulumi.get(__ret__, 'name'),
+        node_count=pulumi.get(__ret__, 'node_count'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        region=pulumi.get(__ret__, 'region'),
+        role=pulumi.get(__ret__, 'role'),
+        updated_at=pulumi.get(__ret__, 'updated_at'))
 
 
 @_utilities.lift_output_func(get_node_group)

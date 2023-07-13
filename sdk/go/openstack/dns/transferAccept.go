@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			exampleZone, err := dns.NewZone(ctx, "exampleZone", &dns.ZoneArgs{
-//				Description: pulumi.String("An example zone"),
 //				Email:       pulumi.String("jdoe@example.com"),
+//				Description: pulumi.String("An example zone"),
 //				Ttl:         pulumi.Int(3000),
 //				Type:        pulumi.String("PRIMARY"),
 //			})
@@ -38,15 +39,15 @@ import (
 //				return err
 //			}
 //			request1, err := dns.NewTransferRequest(ctx, "request1", &dns.TransferRequestArgs{
-//				Description: pulumi.String("a transfer accept"),
 //				ZoneId:      exampleZone.ID(),
+//				Description: pulumi.String("a transfer accept"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dns.NewTransferAccept(ctx, "accept1", &dns.TransferAcceptArgs{
-//				Key:                   request1.Key,
 //				ZoneTransferRequestId: request1.ID(),
+//				Key:                   request1.Key,
 //			})
 //			if err != nil {
 //				return err
@@ -63,7 +64,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 <accept_id>
+//	$ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 accept_id
 //
 // ```
 type TransferAccept struct {
@@ -100,6 +101,7 @@ func NewTransferAccept(ctx *pulumi.Context,
 	if args.ZoneTransferRequestId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneTransferRequestId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TransferAccept
 	err := ctx.RegisterResource("openstack:dns/transferAccept:TransferAccept", name, args, &resource, opts...)
 	if err != nil {

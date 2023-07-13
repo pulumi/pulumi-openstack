@@ -15,6 +15,7 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -43,6 +44,7 @@ namespace Pulumi.OpenStack.KeyManager
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.IO;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -50,6 +52,9 @@ namespace Pulumi.OpenStack.KeyManager
     /// {
     ///     var secret1 = new OpenStack.KeyManager.SecretV1("secret1", new()
     ///     {
+    ///         Payload = File.ReadAllText("certificate.pem"),
+    ///         SecretType = "certificate",
+    ///         PayloadContentType = "text/plain",
     ///         Acl = new OpenStack.KeyManager.Inputs.SecretV1AclArgs
     ///         {
     ///             Read = new OpenStack.KeyManager.Inputs.SecretV1AclReadArgs
@@ -62,9 +67,6 @@ namespace Pulumi.OpenStack.KeyManager
     ///                 },
     ///             },
     ///         },
-    ///         Payload = File.ReadAllText("certificate.pem"),
-    ///         PayloadContentType = "text/plain",
-    ///         SecretType = "certificate",
     ///     });
     /// 
     /// });

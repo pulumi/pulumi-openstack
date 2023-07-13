@@ -712,23 +712,22 @@ class ContainerObject(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         container1 = openstack.objectstorage.Container("container1",
-            content_type="application/json",
-            metadata={
+            region="RegionOne",
+            metadata=[{
                 "test": "true",
-            },
-            region="RegionOne")
+            }],
+            content_type="application/json")
         doc1 = openstack.objectstorage.ContainerObject("doc1",
+            region="RegionOne",
             container_name=container1.name,
+            metadata=[{
+                "test": "true",
+            }],
+            content_type="application/json",
             content=\"\"\"               {
                          "foo" : "bar"
                        }
-
-        \"\"\",
-            content_type="application/json",
-            metadata={
-                "test": "true",
-            },
-            region="RegionOne")
+        \"\"\")
         ```
         ### Example with content from file
 
@@ -737,18 +736,18 @@ class ContainerObject(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         container1 = openstack.objectstorage.Container("container1",
-            content_type="application/json",
-            metadata={
-                "test": "true",
-            },
-            region="RegionOne")
-        doc1 = openstack.objectstorage.ContainerObject("doc1",
-            container_name=container1.name,
-            content_type="application/json",
-            metadata={
-                "test": "true",
-            },
             region="RegionOne",
+            metadata=[{
+                "test": "true",
+            }],
+            content_type="application/json")
+        doc1 = openstack.objectstorage.ContainerObject("doc1",
+            region="RegionOne",
+            container_name=container1.name,
+            metadata=[{
+                "test": "true",
+            }],
+            content_type="application/json",
             source="./default.json")
         ```
 
@@ -811,23 +810,22 @@ class ContainerObject(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         container1 = openstack.objectstorage.Container("container1",
-            content_type="application/json",
-            metadata={
+            region="RegionOne",
+            metadata=[{
                 "test": "true",
-            },
-            region="RegionOne")
+            }],
+            content_type="application/json")
         doc1 = openstack.objectstorage.ContainerObject("doc1",
+            region="RegionOne",
             container_name=container1.name,
+            metadata=[{
+                "test": "true",
+            }],
+            content_type="application/json",
             content=\"\"\"               {
                          "foo" : "bar"
                        }
-
-        \"\"\",
-            content_type="application/json",
-            metadata={
-                "test": "true",
-            },
-            region="RegionOne")
+        \"\"\")
         ```
         ### Example with content from file
 
@@ -836,18 +834,18 @@ class ContainerObject(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         container1 = openstack.objectstorage.Container("container1",
-            content_type="application/json",
-            metadata={
-                "test": "true",
-            },
-            region="RegionOne")
-        doc1 = openstack.objectstorage.ContainerObject("doc1",
-            container_name=container1.name,
-            content_type="application/json",
-            metadata={
-                "test": "true",
-            },
             region="RegionOne",
+            metadata=[{
+                "test": "true",
+            }],
+            content_type="application/json")
+        doc1 = openstack.objectstorage.ContainerObject("doc1",
+            region="RegionOne",
+            container_name=container1.name,
+            metadata=[{
+                "test": "true",
+            }],
+            content_type="application/json",
             source="./default.json")
         ```
 

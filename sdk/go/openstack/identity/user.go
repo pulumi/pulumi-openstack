@@ -7,9 +7,19 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a V3 User resource within OpenStack Keystone.
+//
+// > **Note:** All arguments including the user password will be stored in the
+// raw state as plain-text. Read more about sensitive data in
+// state.
+//
+// > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+// this resource.
+//
 // ## Example Usage
 //
 // ```go
@@ -29,11 +39,9 @@ import (
 //				return err
 //			}
 //			_, err = identity.NewUser(ctx, "user1", &identity.UserArgs{
-//				DefaultProjectId: project1.ID(),
-//				Description:      pulumi.String("A user"),
-//				Extra: pulumi.AnyMap{
-//					"email": pulumi.Any("user_1@foobar.com"),
-//				},
+//				DefaultProjectId:                 project1.ID(),
+//				Description:                      pulumi.String("A user"),
+//				Password:                         pulumi.String("password123"),
 //				IgnoreChangePasswordUponFirstUse: pulumi.Bool(true),
 //				MultiFactorAuthEnabled:           pulumi.Bool(true),
 //				MultiFactorAuthRules: identity.UserMultiFactorAuthRuleArray{
@@ -49,7 +57,9 @@ import (
 //						},
 //					},
 //				},
-//				Password: pulumi.String("password123"),
+//				Extra: pulumi.AnyMap{
+//					"email": pulumi.Any("user_1@foobar.com"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -124,6 +134,7 @@ func NewUser(ctx *pulumi.Context,
 		"password",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource User
 	err := ctx.RegisterResource("openstack:identity/user:User", name, args, &resource, opts...)
 	if err != nil {

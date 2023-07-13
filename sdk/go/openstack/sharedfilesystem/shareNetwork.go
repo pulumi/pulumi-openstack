@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -90,13 +91,13 @@ import (
 //			}
 //			securityservice1, err := sharedfilesystem.NewSecurityService(ctx, "securityservice1", &sharedfilesystem.SecurityServiceArgs{
 //				Description: pulumi.String("created by terraform"),
+//				Type:        pulumi.String("active_directory"),
+//				Server:      pulumi.String("192.168.199.10"),
 //				DnsIp:       pulumi.String("192.168.199.10"),
 //				Domain:      pulumi.String("example.com"),
 //				Ou:          pulumi.String("CN=Computers,DC=example,DC=com"),
-//				Password:    pulumi.String("s8cret"),
-//				Server:      pulumi.String("192.168.199.10"),
-//				Type:        pulumi.String("active_directory"),
 //				User:        pulumi.String("joinDomainUser"),
+//				Password:    pulumi.String("s8cret"),
 //			})
 //			if err != nil {
 //				return err
@@ -124,7 +125,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 <id>
+//	$ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 id
 //
 // ```
 type ShareNetwork struct {
@@ -177,6 +178,7 @@ func NewShareNetwork(ctx *pulumi.Context,
 	if args.NeutronSubnetId == nil {
 		return nil, errors.New("invalid value for required argument 'NeutronSubnetId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ShareNetwork
 	err := ctx.RegisterResource("openstack:sharedfilesystem/shareNetwork:ShareNetwork", name, args, &resource, opts...)
 	if err != nil {

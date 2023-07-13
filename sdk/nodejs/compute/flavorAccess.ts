@@ -20,14 +20,14 @@ import * as utilities from "../utilities";
  *
  * const project1 = new openstack.identity.Project("project1", {});
  * const flavor1 = new openstack.compute.Flavor("flavor1", {
- *     disk: 20,
- *     isPublic: false,
  *     ram: 8096,
  *     vcpus: 2,
+ *     disk: 20,
+ *     isPublic: false,
  * });
  * const access1 = new openstack.compute.FlavorAccess("access1", {
- *     flavorId: flavor1.id,
  *     tenantId: project1.id,
+ *     flavorId: flavor1.id,
  * });
  * ```
  *
@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * This resource can be imported by specifying all two arguments, separated by a forward slash
  *
  * ```sh
- *  $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 <flavor_id>/<tenant_id>
+ *  $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 flavor_id/tenant_id
  * ```
  */
 export class FlavorAccess extends pulumi.CustomResource {

@@ -20,6 +20,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages a V1 Magnum cluster resource within OpenStack.
+ * 
+ * &gt; **Note:** All arguments including the `kubeconfig` computed attribute will be
+ * stored in the raw state as plain-text. Read more about sensitive data in
+ * state.
+ * 
  * ## Example Usage
  * ### Create a Cluster
  * ```java
@@ -349,16 +355,16 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mergeLabels);
     }
     /**
-     * The name of the cluster. Changing this updates the name
-     * of the existing cluster template.
+     * The name of the cluster. Changing this creates a new
+     * cluster.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the cluster. Changing this updates the name
-     * of the existing cluster template.
+     * @return The name of the cluster. Changing this creates a new
+     * cluster.
      * 
      */
     public Output<String> name() {
@@ -371,16 +377,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.nodeAddresses;
     }
     /**
-     * The number of nodes for the cluster. Changing this
-     * creates a new cluster.
+     * The number of nodes for the cluster.
      * 
      */
     @Export(name="nodeCount", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> nodeCount;
 
     /**
-     * @return The number of nodes for the cluster. Changing this
-     * creates a new cluster.
+     * @return The number of nodes for the cluster.
      * 
      */
     public Output<Optional<Integer>> nodeCount() {

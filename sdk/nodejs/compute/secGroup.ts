@@ -60,8 +60,8 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const test_server = new openstack.compute.Instance("test-server", {
- *     flavorId: "3",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
+ *     flavorId: "3",
  *     keyPair: "my_key_pair_name",
  *     securityGroups: [openstack_compute_secgroup_v2.secgroup_1.name],
  * });

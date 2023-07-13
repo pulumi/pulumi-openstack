@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			exampleZone, err := dns.NewZone(ctx, "exampleZone", &dns.ZoneArgs{
-//				Description: pulumi.String("a zone"),
 //				Email:       pulumi.String("email2@example.com"),
+//				Description: pulumi.String("a zone"),
 //				Ttl:         pulumi.Int(6000),
 //				Type:        pulumi.String("PRIMARY"),
 //			})
@@ -38,13 +39,13 @@ import (
 //				return err
 //			}
 //			_, err = dns.NewRecordSet(ctx, "rsExampleCom", &dns.RecordSetArgs{
+//				ZoneId:      exampleZone.ID(),
 //				Description: pulumi.String("An example record set"),
+//				Ttl:         pulumi.Int(3000),
+//				Type:        pulumi.String("A"),
 //				Records: pulumi.StringArray{
 //					pulumi.String("10.0.0.1"),
 //				},
-//				Ttl:    pulumi.Int(3000),
-//				Type:   pulumi.String("A"),
-//				ZoneId: exampleZone.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -61,7 +62,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import openstack:dns/recordSet:RecordSet recordset_1 <zone_id>/<recordset_id>
+//	$ pulumi import openstack:dns/recordSet:RecordSet recordset_1 zone_id/recordset_id
 //
 // ```
 type RecordSet struct {
@@ -80,9 +81,7 @@ type RecordSet struct {
 	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
 	// user role in target project)
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// An array of DNS records. _Note:_ if an IPv6 address
-	// contains brackets (`[ ]`), the brackets will be stripped and the modified
-	// address will be recorded in the state.
+	// An array of DNS records.
 	Records pulumi.StringArrayOutput `pulumi:"records"`
 	// The region in which to obtain the V2 DNS client.
 	// If omitted, the `region` argument of the provider is used.
@@ -108,9 +107,13 @@ func NewRecordSet(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Records == nil {
+		return nil, errors.New("invalid value for required argument 'Records'")
+	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RecordSet
 	err := ctx.RegisterResource("openstack:dns/recordSet:RecordSet", name, args, &resource, opts...)
 	if err != nil {
@@ -146,9 +149,7 @@ type recordSetState struct {
 	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
 	// user role in target project)
 	ProjectId *string `pulumi:"projectId"`
-	// An array of DNS records. _Note:_ if an IPv6 address
-	// contains brackets (`[ ]`), the brackets will be stripped and the modified
-	// address will be recorded in the state.
+	// An array of DNS records.
 	Records []string `pulumi:"records"`
 	// The region in which to obtain the V2 DNS client.
 	// If omitted, the `region` argument of the provider is used.
@@ -181,9 +182,7 @@ type RecordSetState struct {
 	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
 	// user role in target project)
 	ProjectId pulumi.StringPtrInput
-	// An array of DNS records. _Note:_ if an IPv6 address
-	// contains brackets (`[ ]`), the brackets will be stripped and the modified
-	// address will be recorded in the state.
+	// An array of DNS records.
 	Records pulumi.StringArrayInput
 	// The region in which to obtain the V2 DNS client.
 	// If omitted, the `region` argument of the provider is used.
@@ -220,9 +219,7 @@ type recordSetArgs struct {
 	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
 	// user role in target project)
 	ProjectId *string `pulumi:"projectId"`
-	// An array of DNS records. _Note:_ if an IPv6 address
-	// contains brackets (`[ ]`), the brackets will be stripped and the modified
-	// address will be recorded in the state.
+	// An array of DNS records.
 	Records []string `pulumi:"records"`
 	// The region in which to obtain the V2 DNS client.
 	// If omitted, the `region` argument of the provider is used.
@@ -256,9 +253,7 @@ type RecordSetArgs struct {
 	// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
 	// user role in target project)
 	ProjectId pulumi.StringPtrInput
-	// An array of DNS records. _Note:_ if an IPv6 address
-	// contains brackets (`[ ]`), the brackets will be stripped and the modified
-	// address will be recorded in the state.
+	// An array of DNS records.
 	Records pulumi.StringArrayInput
 	// The region in which to obtain the V2 DNS client.
 	// If omitted, the `region` argument of the provider is used.
@@ -389,9 +384,7 @@ func (o RecordSetOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RecordSet) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// An array of DNS records. _Note:_ if an IPv6 address
-// contains brackets (`[ ]`), the brackets will be stripped and the modified
-// address will be recorded in the state.
+// An array of DNS records.
 func (o RecordSetOutput) Records() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RecordSet) pulumi.StringArrayOutput { return v.Records }).(pulumi.StringArrayOutput)
 }

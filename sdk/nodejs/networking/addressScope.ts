@@ -24,11 +24,11 @@ import * as utilities from "../utilities";
  *
  * const addressscope1 = new openstack.networking.AddressScope("addressscope1", {ipVersion: 6});
  * const subnetpool1 = new openstack.networking.SubnetPool("subnetpool1", {
- *     addressScopeId: addressscope1.id,
  *     prefixes: [
  *         "fdf7:b13d:dead:beef::/64",
  *         "fd65:86cc:a334:39b7::/64",
  *     ],
+ *     addressScopeId: addressscope1.id,
  * });
  * ```
  *

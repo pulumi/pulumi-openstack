@@ -174,15 +174,15 @@ def get_policy(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:firewall/getPolicy:getPolicy', __args__, opts=opts, typ=GetPolicyResult).value
 
     return AwaitableGetPolicyResult(
-        audited=__ret__.audited,
-        description=__ret__.description,
-        id=__ret__.id,
-        name=__ret__.name,
-        policy_id=__ret__.policy_id,
-        region=__ret__.region,
-        rules=__ret__.rules,
-        shared=__ret__.shared,
-        tenant_id=__ret__.tenant_id)
+        audited=pulumi.get(__ret__, 'audited'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        policy_id=pulumi.get(__ret__, 'policy_id'),
+        region=pulumi.get(__ret__, 'region'),
+        rules=pulumi.get(__ret__, 'rules'),
+        shared=pulumi.get(__ret__, 'shared'),
+        tenant_id=pulumi.get(__ret__, 'tenant_id'))
 
 
 @_utilities.lift_output_func(get_policy)

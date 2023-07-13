@@ -20,6 +20,7 @@ namespace Pulumi.OpenStack.KeyManager
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.IO;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -28,26 +29,27 @@ namespace Pulumi.OpenStack.KeyManager
     ///     var certificate1 = new OpenStack.KeyManager.SecretV1("certificate1", new()
     ///     {
     ///         Payload = File.ReadAllText("cert.pem"),
-    ///         PayloadContentType = "text/plain",
     ///         SecretType = "certificate",
+    ///         PayloadContentType = "text/plain",
     ///     });
     /// 
     ///     var privateKey1 = new OpenStack.KeyManager.SecretV1("privateKey1", new()
     ///     {
     ///         Payload = File.ReadAllText("cert-key.pem"),
-    ///         PayloadContentType = "text/plain",
     ///         SecretType = "private",
+    ///         PayloadContentType = "text/plain",
     ///     });
     /// 
     ///     var intermediate1 = new OpenStack.KeyManager.SecretV1("intermediate1", new()
     ///     {
     ///         Payload = File.ReadAllText("intermediate-ca.pem"),
-    ///         PayloadContentType = "text/plain",
     ///         SecretType = "certificate",
+    ///         PayloadContentType = "text/plain",
     ///     });
     /// 
     ///     var tls1 = new OpenStack.KeyManager.ContainerV1("tls1", new()
     ///     {
+    ///         Type = "certificate",
     ///         SecretRefs = new[]
     ///         {
     ///             new OpenStack.KeyManager.Inputs.ContainerV1SecretRefArgs
@@ -66,7 +68,6 @@ namespace Pulumi.OpenStack.KeyManager
     ///                 SecretRef = intermediate1.SecretRef,
     ///             },
     ///         },
-    ///         Type = "certificate",
     ///     });
     /// 
     ///     var subnet1 = OpenStack.Networking.GetSubnet.Invoke(new()
@@ -81,10 +82,10 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     ///     var listener1 = new OpenStack.LoadBalancer.Listener("listener1", new()
     ///     {
-    ///         DefaultTlsContainerRef = tls1.ContainerRef,
-    ///         LoadbalancerId = lb1.Id,
     ///         Protocol = "TERMINATED_HTTPS",
     ///         ProtocolPort = 443,
+    ///         LoadbalancerId = lb1.Id,
+    ///         DefaultTlsContainerRef = tls1.ContainerRef,
     ///     });
     /// 
     /// });
@@ -95,6 +96,7 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -102,18 +104,7 @@ namespace Pulumi.OpenStack.KeyManager
     /// {
     ///     var tls1 = new OpenStack.KeyManager.ContainerV1("tls1", new()
     ///     {
-    ///         Acl = new OpenStack.KeyManager.Inputs.ContainerV1AclArgs
-    ///         {
-    ///             Read = new OpenStack.KeyManager.Inputs.ContainerV1AclReadArgs
-    ///             {
-    ///                 ProjectAccess = false,
-    ///                 Users = new[]
-    ///                 {
-    ///                     "userid1",
-    ///                     "userid2",
-    ///                 },
-    ///             },
-    ///         },
+    ///         Type = "certificate",
     ///         SecretRefs = new[]
     ///         {
     ///             new OpenStack.KeyManager.Inputs.ContainerV1SecretRefArgs
@@ -132,7 +123,18 @@ namespace Pulumi.OpenStack.KeyManager
     ///                 SecretRef = openstack_keymanager_secret_v1.Intermediate_1.Secret_ref,
     ///             },
     ///         },
-    ///         Type = "certificate",
+    ///         Acl = new OpenStack.KeyManager.Inputs.ContainerV1AclArgs
+    ///         {
+    ///             Read = new OpenStack.KeyManager.Inputs.ContainerV1AclReadArgs
+    ///             {
+    ///                 ProjectAccess = false,
+    ///                 Users = new[]
+    ///                 {
+    ///                     "userid1",
+    ///                     "userid2",
+    ///                 },
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });

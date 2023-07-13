@@ -186,16 +186,16 @@ def get_snapshot(description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getSnapshot:getSnapshot', __args__, opts=opts, typ=GetSnapshotResult).value
 
     return AwaitableGetSnapshotResult(
-        description=__ret__.description,
-        id=__ret__.id,
-        name=__ret__.name,
-        project_id=__ret__.project_id,
-        region=__ret__.region,
-        share_id=__ret__.share_id,
-        share_proto=__ret__.share_proto,
-        share_size=__ret__.share_size,
-        size=__ret__.size,
-        status=__ret__.status)
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        region=pulumi.get(__ret__, 'region'),
+        share_id=pulumi.get(__ret__, 'share_id'),
+        share_proto=pulumi.get(__ret__, 'share_proto'),
+        share_size=pulumi.get(__ret__, 'share_size'),
+        size=pulumi.get(__ret__, 'size'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_snapshot)

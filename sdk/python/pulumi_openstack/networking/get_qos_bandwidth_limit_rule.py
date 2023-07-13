@@ -138,12 +138,12 @@ def get_qos_bandwidth_limit_rule(max_burst_kbps: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule', __args__, opts=opts, typ=GetQosBandwidthLimitRuleResult).value
 
     return AwaitableGetQosBandwidthLimitRuleResult(
-        direction=__ret__.direction,
-        id=__ret__.id,
-        max_burst_kbps=__ret__.max_burst_kbps,
-        max_kbps=__ret__.max_kbps,
-        qos_policy_id=__ret__.qos_policy_id,
-        region=__ret__.region)
+        direction=pulumi.get(__ret__, 'direction'),
+        id=pulumi.get(__ret__, 'id'),
+        max_burst_kbps=pulumi.get(__ret__, 'max_burst_kbps'),
+        max_kbps=pulumi.get(__ret__, 'max_kbps'),
+        qos_policy_id=pulumi.get(__ret__, 'qos_policy_id'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_qos_bandwidth_limit_rule)

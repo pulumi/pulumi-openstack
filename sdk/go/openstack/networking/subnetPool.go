@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -174,6 +175,7 @@ func NewSubnetPool(ctx *pulumi.Context,
 	if args.Prefixes == nil {
 		return nil, errors.New("invalid value for required argument 'Prefixes'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SubnetPool
 	err := ctx.RegisterResource("openstack:networking/subnetPool:SubnetPool", name, args, &resource, opts...)
 	if err != nil {

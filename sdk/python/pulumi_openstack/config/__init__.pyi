@@ -128,6 +128,11 @@ swauth: Optional[bool]
 Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
 """
 
+systemScope: Optional[bool]
+"""
+If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
+"""
+
 tenantId: Optional[str]
 """
 The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
@@ -160,7 +165,7 @@ The name of the domain where the user resides (Identity v3).
 
 userId: Optional[str]
 """
-Username to login with.
+User ID to login with.
 """
 
 userName: Optional[str]

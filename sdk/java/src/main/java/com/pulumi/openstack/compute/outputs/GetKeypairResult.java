@@ -34,6 +34,11 @@ public final class GetKeypairResult {
      * 
      */
     private String region;
+    /**
+     * @return See Argument Reference above.
+     * 
+     */
+    private String userId;
 
     private GetKeypairResult() {}
     /**
@@ -71,6 +76,13 @@ public final class GetKeypairResult {
     public String region() {
         return this.region;
     }
+    /**
+     * @return See Argument Reference above.
+     * 
+     */
+    public String userId() {
+        return this.userId;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -86,6 +98,7 @@ public final class GetKeypairResult {
         private String name;
         private String publicKey;
         private String region;
+        private String userId;
         public Builder() {}
         public Builder(GetKeypairResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -94,6 +107,7 @@ public final class GetKeypairResult {
     	      this.name = defaults.name;
     	      this.publicKey = defaults.publicKey;
     	      this.region = defaults.region;
+    	      this.userId = defaults.userId;
         }
 
         @CustomType.Setter
@@ -121,6 +135,11 @@ public final class GetKeypairResult {
             this.region = Objects.requireNonNull(region);
             return this;
         }
+        @CustomType.Setter
+        public Builder userId(String userId) {
+            this.userId = Objects.requireNonNull(userId);
+            return this;
+        }
         public GetKeypairResult build() {
             final var o = new GetKeypairResult();
             o.fingerprint = fingerprint;
@@ -128,6 +147,7 @@ public final class GetKeypairResult {
             o.name = name;
             o.publicKey = publicKey;
             o.region = region;
+            o.userId = userId;
             return o;
         }
     }

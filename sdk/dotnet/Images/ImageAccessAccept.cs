@@ -19,6 +19,7 @@ namespace Pulumi.OpenStack.Images
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -26,9 +27,9 @@ namespace Pulumi.OpenStack.Images
     /// {
     ///     var rancheros = OpenStack.Images.GetImage.Invoke(new()
     ///     {
-    ///         MemberStatus = "all",
     ///         Name = "RancherOS",
     ///         Visibility = "shared",
+    ///         MemberStatus = "all",
     ///     });
     /// 
     ///     var rancherosMember = new OpenStack.Images.ImageAccessAccept("rancherosMember", new()

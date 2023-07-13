@@ -734,18 +734,18 @@ class SiteConnection(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         conn1 = openstack.vpnaas.SiteConnection("conn1",
-            dpds=[openstack.vpnaas.SiteConnectionDpdArgs(
-                action="restart",
-                interval=21,
-                timeout=42,
-            )],
             ikepolicy_id=openstack_vpnaas_ike_policy_v2["policy_2"]["id"],
             ipsecpolicy_id=openstack_vpnaas_ipsec_policy_v2["policy_1"]["id"],
-            local_ep_group_id=openstack_vpnaas_endpoint_group_v2["group_2"]["id"],
-            peer_address="192.168.10.1",
-            peer_ep_group_id=openstack_vpnaas_endpoint_group_v2["group_1"]["id"],
+            vpnservice_id=openstack_vpnaas_service_v2["service_1"]["id"],
             psk="secret",
-            vpnservice_id=openstack_vpnaas_service_v2["service_1"]["id"])
+            peer_address="192.168.10.1",
+            local_ep_group_id=openstack_vpnaas_endpoint_group_v2["group_2"]["id"],
+            peer_ep_group_id=openstack_vpnaas_endpoint_group_v2["group_1"]["id"],
+            dpds=[openstack.vpnaas.SiteConnectionDpdArgs(
+                action="restart",
+                timeout=42,
+                interval=21,
+            )])
         ```
 
         ## Import
@@ -811,18 +811,18 @@ class SiteConnection(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         conn1 = openstack.vpnaas.SiteConnection("conn1",
-            dpds=[openstack.vpnaas.SiteConnectionDpdArgs(
-                action="restart",
-                interval=21,
-                timeout=42,
-            )],
             ikepolicy_id=openstack_vpnaas_ike_policy_v2["policy_2"]["id"],
             ipsecpolicy_id=openstack_vpnaas_ipsec_policy_v2["policy_1"]["id"],
-            local_ep_group_id=openstack_vpnaas_endpoint_group_v2["group_2"]["id"],
-            peer_address="192.168.10.1",
-            peer_ep_group_id=openstack_vpnaas_endpoint_group_v2["group_1"]["id"],
+            vpnservice_id=openstack_vpnaas_service_v2["service_1"]["id"],
             psk="secret",
-            vpnservice_id=openstack_vpnaas_service_v2["service_1"]["id"])
+            peer_address="192.168.10.1",
+            local_ep_group_id=openstack_vpnaas_endpoint_group_v2["group_2"]["id"],
+            peer_ep_group_id=openstack_vpnaas_endpoint_group_v2["group_1"]["id"],
+            dpds=[openstack.vpnaas.SiteConnectionDpdArgs(
+                action="restart",
+                timeout=42,
+                interval=21,
+            )])
         ```
 
         ## Import

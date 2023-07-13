@@ -46,19 +46,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var rule1 = new Rule(&#34;rule1&#34;, RuleArgs.builder()        
- *             .action(&#34;deny&#34;)
  *             .description(&#34;drop TELNET traffic&#34;)
+ *             .action(&#34;deny&#34;)
+ *             .protocol(&#34;tcp&#34;)
  *             .destinationPort(&#34;23&#34;)
  *             .enabled(&#34;true&#34;)
- *             .protocol(&#34;tcp&#34;)
  *             .build());
  * 
  *         var rule2 = new Rule(&#34;rule2&#34;, RuleArgs.builder()        
- *             .action(&#34;deny&#34;)
  *             .description(&#34;drop NTP traffic&#34;)
+ *             .action(&#34;deny&#34;)
+ *             .protocol(&#34;udp&#34;)
  *             .destinationPort(&#34;123&#34;)
  *             .enabled(&#34;false&#34;)
- *             .protocol(&#34;udp&#34;)
  *             .build());
  * 
  *         var policy1 = new Policy(&#34;policy1&#34;, PolicyArgs.builder()        

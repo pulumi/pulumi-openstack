@@ -191,17 +191,17 @@ def get_quotaset_v3(project_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:blockstorage/getQuotasetV3:getQuotasetV3', __args__, opts=opts, typ=GetQuotasetV3Result).value
 
     return AwaitableGetQuotasetV3Result(
-        backup_gigabytes=__ret__.backup_gigabytes,
-        backups=__ret__.backups,
-        gigabytes=__ret__.gigabytes,
-        groups=__ret__.groups,
-        id=__ret__.id,
-        per_volume_gigabytes=__ret__.per_volume_gigabytes,
-        project_id=__ret__.project_id,
-        region=__ret__.region,
-        snapshots=__ret__.snapshots,
-        volume_type_quota=__ret__.volume_type_quota,
-        volumes=__ret__.volumes)
+        backup_gigabytes=pulumi.get(__ret__, 'backup_gigabytes'),
+        backups=pulumi.get(__ret__, 'backups'),
+        gigabytes=pulumi.get(__ret__, 'gigabytes'),
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        per_volume_gigabytes=pulumi.get(__ret__, 'per_volume_gigabytes'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        region=pulumi.get(__ret__, 'region'),
+        snapshots=pulumi.get(__ret__, 'snapshots'),
+        volume_type_quota=pulumi.get(__ret__, 'volume_type_quota'),
+        volumes=pulumi.get(__ret__, 'volumes'))
 
 
 @_utilities.lift_output_func(get_quotaset_v3)

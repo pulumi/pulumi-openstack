@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func GetPortIds(ctx *pulumi.Context, args *GetPortIdsArgs, opts ...pulumi.InvokeOption) (*GetPortIdsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPortIdsResult
 	err := ctx.Invoke("openstack:networking/getPortIds:getPortIds", args, &rv, opts...)
 	if err != nil {

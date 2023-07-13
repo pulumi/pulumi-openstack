@@ -48,8 +48,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var minimumBandwidthRule1 = new QosMinimumBandwidthRule(&#34;minimumBandwidthRule1&#34;, QosMinimumBandwidthRuleArgs.builder()        
- *             .minKbps(200)
  *             .qosPolicyId(qosPolicy1.id())
+ *             .minKbps(200)
  *             .build());
  * 
  *     }

@@ -14,18 +14,18 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const rule1 = new openstack.firewall.Rule("rule1", {
- *     action: "deny",
  *     description: "drop TELNET traffic",
+ *     action: "deny",
+ *     protocol: "tcp",
  *     destinationPort: "23",
  *     enabled: true,
- *     protocol: "tcp",
  * });
  * const rule2 = new openstack.firewall.Rule("rule2", {
- *     action: "deny",
  *     description: "drop NTP traffic",
+ *     action: "deny",
+ *     protocol: "udp",
  *     destinationPort: "123",
  *     enabled: false,
- *     protocol: "udp",
  * });
  * const policy1 = new openstack.firewall.Policy("policy1", {rules: [
  *     rule1.id,

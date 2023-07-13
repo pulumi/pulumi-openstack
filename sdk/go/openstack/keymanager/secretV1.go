@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -71,6 +72,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := keymanager.NewSecretV1(ctx, "secret1", &keymanager.SecretV1Args{
+//				Payload:            readFileOrPanic("certificate.pem"),
+//				SecretType:         pulumi.String("certificate"),
+//				PayloadContentType: pulumi.String("text/plain"),
 //				Acl: &keymanager.SecretV1AclArgs{
 //					Read: &keymanager.SecretV1AclReadArgs{
 //						ProjectAccess: pulumi.Bool(false),
@@ -80,9 +84,6 @@ import (
 //						},
 //					},
 //				},
-//				Payload:            readFileOrPanic("certificate.pem"),
-//				PayloadContentType: pulumi.String("text/plain"),
-//				SecretType:         pulumi.String("certificate"),
 //			})
 //			if err != nil {
 //				return err
@@ -166,6 +167,7 @@ func NewSecretV1(ctx *pulumi.Context,
 		"payload",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecretV1
 	err := ctx.RegisterResource("openstack:keymanager/secretV1:SecretV1", name, args, &resource, opts...)
 	if err != nil {

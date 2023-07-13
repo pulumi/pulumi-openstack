@@ -10,11 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Database
 {
     /// <summary>
+    /// Manages a V1 DB user resource within OpenStack.
+    /// 
+    /// &gt; **Note:** All arguments including the database password will be stored in the
+    /// raw state as plain-text. Read more about sensitive data in
+    /// state.
+    /// 
     /// ## Example Usage
     /// ### User
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -22,12 +29,12 @@ namespace Pulumi.OpenStack.Database
     /// {
     ///     var basic = new OpenStack.Database.User("basic", new()
     ///     {
+    ///         InstanceId = openstack_db_instance_v1.Basic.Id,
+    ///         Password = "password",
     ///         Databases = new[]
     ///         {
     ///             "testdb",
     ///         },
-    ///         InstanceId = openstack_db_instance_v1.Basic.Id,
-    ///         Password = "password",
     ///     });
     /// 
     /// });

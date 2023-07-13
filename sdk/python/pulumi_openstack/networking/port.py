@@ -941,8 +941,8 @@ class Port(pulumi.CustomResource):
 
         network1 = openstack.networking.Network("network1", admin_state_up=True)
         port1 = openstack.networking.Port("port1",
-            admin_state_up=True,
-            network_id=network1.id)
+            network_id=network1.id,
+            admin_state_up=True)
         ```
         ### Port with physical binding information
 
@@ -952,9 +952,13 @@ class Port(pulumi.CustomResource):
 
         network1 = openstack.networking.Network("network1", admin_state_up=True)
         port1 = openstack.networking.Port("port1",
+            network_id=network1.id,
+            device_id="cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
+            device_owner="baremetal:none",
             admin_state_up=True,
             binding=openstack.networking.PortBindingArgs(
                 host_id="b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
+                vnic_type="baremetal",
                 profile=\"\"\"{
           "local_link_information": [
             {
@@ -970,13 +974,8 @@ class Port(pulumi.CustomResource):
           ],
           "vlan_type": "allowed"
         }
-
         \"\"\",
-                vnic_type="baremetal",
-            ),
-            device_id="cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
-            device_owner="baremetal:none",
-            network_id=network1.id)
+            ))
         ```
         ## Notes
 
@@ -1069,8 +1068,8 @@ class Port(pulumi.CustomResource):
 
         network1 = openstack.networking.Network("network1", admin_state_up=True)
         port1 = openstack.networking.Port("port1",
-            admin_state_up=True,
-            network_id=network1.id)
+            network_id=network1.id,
+            admin_state_up=True)
         ```
         ### Port with physical binding information
 
@@ -1080,9 +1079,13 @@ class Port(pulumi.CustomResource):
 
         network1 = openstack.networking.Network("network1", admin_state_up=True)
         port1 = openstack.networking.Port("port1",
+            network_id=network1.id,
+            device_id="cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
+            device_owner="baremetal:none",
             admin_state_up=True,
             binding=openstack.networking.PortBindingArgs(
                 host_id="b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
+                vnic_type="baremetal",
                 profile=\"\"\"{
           "local_link_information": [
             {
@@ -1098,13 +1101,8 @@ class Port(pulumi.CustomResource):
           ],
           "vlan_type": "allowed"
         }
-
         \"\"\",
-                vnic_type="baremetal",
-            ),
-            device_id="cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
-            device_owner="baremetal:none",
-            network_id=network1.id)
+            ))
         ```
         ## Notes
 

@@ -20,6 +20,7 @@ namespace Pulumi.OpenStack.Identity
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
@@ -47,6 +48,7 @@ namespace Pulumi.OpenStack.Identity
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
@@ -102,6 +104,13 @@ namespace Pulumi.OpenStack.Identity
         public string? ParentId { get; set; }
 
         /// <summary>
+        /// The id of the project. Conflicts with any of the
+        /// above arguments.
+        /// </summary>
+        [Input("projectId")]
+        public string? ProjectId { get; set; }
+
+        /// <summary>
         /// The region the project is located in.
         /// </summary>
         [Input("region")]
@@ -148,6 +157,13 @@ namespace Pulumi.OpenStack.Identity
         public Input<string>? ParentId { get; set; }
 
         /// <summary>
+        /// The id of the project. Conflicts with any of the
+        /// above arguments.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
         /// The region the project is located in.
         /// </summary>
         [Input("region")]
@@ -192,6 +208,10 @@ namespace Pulumi.OpenStack.Identity
         /// </summary>
         public readonly string? ParentId;
         /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
+        public readonly string? ProjectId;
+        /// <summary>
         /// The region the project is located in.
         /// </summary>
         public readonly string Region;
@@ -216,6 +236,8 @@ namespace Pulumi.OpenStack.Identity
 
             string? parentId,
 
+            string? projectId,
+
             string region,
 
             ImmutableArray<string> tags)
@@ -227,6 +249,7 @@ namespace Pulumi.OpenStack.Identity
             IsDomain = isDomain;
             Name = name;
             ParentId = parentId;
+            ProjectId = projectId;
             Region = region;
             Tags = tags;
         }

@@ -17,8 +17,8 @@ import * as utilities from "../utilities";
  *
  * const service1 = new openstack.identity.ServiceV3("service1", {type: "my-service-type"});
  * const endpoint1 = new openstack.identity.EndpointV3("endpoint1", {
- *     endpointRegion: service1.region,
  *     serviceId: service1.id,
+ *     endpointRegion: service1.region,
  *     url: "http://my-endpoint",
  * });
  * ```

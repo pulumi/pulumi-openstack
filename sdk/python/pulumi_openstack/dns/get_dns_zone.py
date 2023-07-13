@@ -320,24 +320,24 @@ def get_dns_zone(all_projects: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:dns/getDnsZone:getDnsZone', __args__, opts=opts, typ=GetDnsZoneResult).value
 
     return AwaitableGetDnsZoneResult(
-        all_projects=__ret__.all_projects,
-        attributes=__ret__.attributes,
-        created_at=__ret__.created_at,
-        description=__ret__.description,
-        email=__ret__.email,
-        id=__ret__.id,
-        masters=__ret__.masters,
-        name=__ret__.name,
-        pool_id=__ret__.pool_id,
-        project_id=__ret__.project_id,
-        region=__ret__.region,
-        serial=__ret__.serial,
-        status=__ret__.status,
-        transferred_at=__ret__.transferred_at,
-        ttl=__ret__.ttl,
-        type=__ret__.type,
-        updated_at=__ret__.updated_at,
-        version=__ret__.version)
+        all_projects=pulumi.get(__ret__, 'all_projects'),
+        attributes=pulumi.get(__ret__, 'attributes'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        description=pulumi.get(__ret__, 'description'),
+        email=pulumi.get(__ret__, 'email'),
+        id=pulumi.get(__ret__, 'id'),
+        masters=pulumi.get(__ret__, 'masters'),
+        name=pulumi.get(__ret__, 'name'),
+        pool_id=pulumi.get(__ret__, 'pool_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        region=pulumi.get(__ret__, 'region'),
+        serial=pulumi.get(__ret__, 'serial'),
+        status=pulumi.get(__ret__, 'status'),
+        transferred_at=pulumi.get(__ret__, 'transferred_at'),
+        ttl=pulumi.get(__ret__, 'ttl'),
+        type=pulumi.get(__ret__, 'type'),
+        updated_at=pulumi.get(__ret__, 'updated_at'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_dns_zone)

@@ -16,14 +16,14 @@ import * as utilities from "../utilities";
  * const router1 = new openstack.networking.Router("router1", {adminStateUp: true});
  * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
  * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ *     networkId: network1.id,
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
- *     networkId: network1.id,
  * });
  * const subnetRoute1 = new openstack.networking.SubnetRoute("subnetRoute1", {
+ *     subnetId: subnet1.id,
  *     destinationCidr: "10.0.1.0/24",
  *     nextHop: "192.168.199.254",
- *     subnetId: subnet1.id,
  * });
  * ```
  *

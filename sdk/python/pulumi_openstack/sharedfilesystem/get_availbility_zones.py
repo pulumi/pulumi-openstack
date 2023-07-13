@@ -93,9 +93,9 @@ def get_availbility_zones(region: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones', __args__, opts=opts, typ=GetAvailbilityZonesResult).value
 
     return AwaitableGetAvailbilityZonesResult(
-        id=__ret__.id,
-        names=__ret__.names,
-        region=__ret__.region)
+        id=pulumi.get(__ret__, 'id'),
+        names=pulumi.get(__ret__, 'names'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_availbility_zones)

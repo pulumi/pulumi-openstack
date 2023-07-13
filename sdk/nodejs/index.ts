@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { GetFwGroupV2Args, GetFwGroupV2Result, GetFwGroupV2OutputArgs } from "./getFwGroupV2";
+export const getFwGroupV2: typeof import("./getFwGroupV2").getFwGroupV2 = null as any;
+export const getFwGroupV2Output: typeof import("./getFwGroupV2").getFwGroupV2Output = null as any;
+utilities.lazyLoad(exports, ["getFwGroupV2","getFwGroupV2Output"], () => require("./getFwGroupV2"));
+
+export { GetFwPolicyV2Args, GetFwPolicyV2Result, GetFwPolicyV2OutputArgs } from "./getFwPolicyV2";
+export const getFwPolicyV2: typeof import("./getFwPolicyV2").getFwPolicyV2 = null as any;
+export const getFwPolicyV2Output: typeof import("./getFwPolicyV2").getFwPolicyV2Output = null as any;
+utilities.lazyLoad(exports, ["getFwPolicyV2","getFwPolicyV2Output"], () => require("./getFwPolicyV2"));
+
+export { GetFwRuleV2Args, GetFwRuleV2Result, GetFwRuleV2OutputArgs } from "./getFwRuleV2";
+export const getFwRuleV2: typeof import("./getFwRuleV2").getFwRuleV2 = null as any;
+export const getFwRuleV2Output: typeof import("./getFwRuleV2").getFwRuleV2Output = null as any;
+utilities.lazyLoad(exports, ["getFwRuleV2","getFwRuleV2Output"], () => require("./getFwRuleV2"));
+
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;

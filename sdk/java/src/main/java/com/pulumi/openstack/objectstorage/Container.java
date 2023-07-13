@@ -190,10 +190,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the name of the containerSome attributes can&#39;t be imported * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key` So you&#39;ll have to `terraform plan` and `terraform apply` after the import to fix those missing attributes.
+ * This resource can be imported by specifying the name of the containerSome attributes can&#39;t be imported * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key` So you&#39;ll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.
  * 
  * ```sh
- *  $ pulumi import openstack:objectstorage/container:Container container_1 &lt;name&gt;
+ *  $ pulumi import openstack:objectstorage/container:Container container_1 container_name
  * ```
  * 
  */

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,9 +35,9 @@ import (
 //				return err
 //			}
 //			subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//				NetworkId: network1.ID(),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //				IpVersion: pulumi.Int(4),
-//				NetworkId: network1.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -45,10 +46,10 @@ import (
 //				Description: pulumi.String("a security group"),
 //				Rules: compute.SecGroupRuleArray{
 //					&compute.SecGroupRuleArgs{
-//						Cidr:       pulumi.String("0.0.0.0/0"),
 //						FromPort:   pulumi.Int(22),
-//						IpProtocol: pulumi.String("tcp"),
 //						ToPort:     pulumi.Int(22),
+//						IpProtocol: pulumi.String("tcp"),
+//						Cidr:       pulumi.String("0.0.0.0/0"),
 //					},
 //				},
 //			})
@@ -56,29 +57,29 @@ import (
 //				return err
 //			}
 //			port1, err := networking.NewPort(ctx, "port1", &networking.PortArgs{
+//				NetworkId:    network1.ID(),
 //				AdminStateUp: pulumi.Bool(true),
-//				FixedIps: networking.PortFixedIpArray{
-//					&networking.PortFixedIpArgs{
-//						IpAddress: pulumi.String("192.168.199.10"),
-//						SubnetId:  subnet1.ID(),
-//					},
-//				},
-//				NetworkId: network1.ID(),
 //				SecurityGroupIds: pulumi.StringArray{
 //					secgroup1.ID(),
+//				},
+//				FixedIps: networking.PortFixedIpArray{
+//					&networking.PortFixedIpArgs{
+//						SubnetId:  subnet1.ID(),
+//						IpAddress: pulumi.String("192.168.199.10"),
+//					},
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//				SecurityGroups: pulumi.StringArray{
+//					secgroup1.Name,
+//				},
 //				Networks: compute.InstanceNetworkArray{
 //					&compute.InstanceNetworkArgs{
 //						Port: port1.ID(),
 //					},
-//				},
-//				SecurityGroups: pulumi.StringArray{
-//					secgroup1.Name,
 //				},
 //			})
 //			if err != nil {
@@ -176,6 +177,7 @@ func NewNetwork(ctx *pulumi.Context,
 		args = &NetworkArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Network
 	err := ctx.RegisterResource("openstack:networking/network:Network", name, args, &resource, opts...)
 	if err != nil {

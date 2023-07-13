@@ -245,16 +245,16 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the cluster. Changing this updates the name
-     * of the existing cluster template.
+     * The name of the cluster. Changing this creates a new
+     * cluster.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the cluster. Changing this updates the name
-     * of the existing cluster template.
+     * @return The name of the cluster. Changing this creates a new
+     * cluster.
      * 
      */
     public Optional<Output<String>> name() {
@@ -262,16 +262,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of nodes for the cluster. Changing this
-     * creates a new cluster.
+     * The number of nodes for the cluster.
      * 
      */
     @Import(name="nodeCount")
     private @Nullable Output<Integer> nodeCount;
 
     /**
-     * @return The number of nodes for the cluster. Changing this
-     * creates a new cluster.
+     * @return The number of nodes for the cluster.
      * 
      */
     public Optional<Output<Integer>> nodeCount() {
@@ -642,8 +640,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the cluster. Changing this updates the name
-         * of the existing cluster template.
+         * @param name The name of the cluster. Changing this creates a new
+         * cluster.
          * 
          * @return builder
          * 
@@ -654,8 +652,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the cluster. Changing this updates the name
-         * of the existing cluster template.
+         * @param name The name of the cluster. Changing this creates a new
+         * cluster.
          * 
          * @return builder
          * 
@@ -665,8 +663,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeCount The number of nodes for the cluster. Changing this
-         * creates a new cluster.
+         * @param nodeCount The number of nodes for the cluster.
          * 
          * @return builder
          * 
@@ -677,8 +674,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeCount The number of nodes for the cluster. Changing this
-         * creates a new cluster.
+         * @param nodeCount The number of nodes for the cluster.
          * 
          * @return builder
          * 

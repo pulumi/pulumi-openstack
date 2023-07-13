@@ -25,15 +25,15 @@ import * as utilities from "../utilities";
  * });
  * const share1 = new openstack.sharedfilesystem.Share("share1", {
  *     description: "test share description",
- *     shareNetworkId: sharenetwork1.id,
  *     shareProto: "NFS",
  *     size: 1,
+ *     shareNetworkId: sharenetwork1.id,
  * });
  * const shareAccess1 = new openstack.sharedfilesystem.ShareAccess("shareAccess1", {
- *     accessLevel: "rw",
- *     accessTo: "192.168.199.10",
- *     accessType: "ip",
  *     shareId: share1.id,
+ *     accessType: "ip",
+ *     accessTo: "192.168.199.10",
+ *     accessLevel: "rw",
  * });
  * ```
  * ### CIFS
@@ -50,13 +50,13 @@ import * as utilities from "../utilities";
  * });
  * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice1", {
  *     description: "created by terraform",
+ *     type: "active_directory",
+ *     server: "192.168.199.10",
  *     dnsIp: "192.168.199.10",
  *     domain: "example.com",
  *     ou: "CN=Computers,DC=example,DC=com",
- *     password: "s8cret",
- *     server: "192.168.199.10",
- *     type: "active_directory",
  *     user: "joinDomainUser",
+ *     password: "s8cret",
  * });
  * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork1", {
  *     description: "share the secure love",
@@ -65,21 +65,21 @@ import * as utilities from "../utilities";
  *     securityServiceIds: [securityservice1.id],
  * });
  * const share1 = new openstack.sharedfilesystem.Share("share1", {
- *     shareNetworkId: sharenetwork1.id,
  *     shareProto: "CIFS",
  *     size: 1,
+ *     shareNetworkId: sharenetwork1.id,
  * });
  * const shareAccess1 = new openstack.sharedfilesystem.ShareAccess("shareAccess1", {
- *     accessLevel: "ro",
- *     accessTo: "windows",
- *     accessType: "user",
  *     shareId: share1.id,
+ *     accessType: "user",
+ *     accessTo: "windows",
+ *     accessLevel: "ro",
  * });
  * const shareAccess2 = new openstack.sharedfilesystem.ShareAccess("shareAccess2", {
- *     accessLevel: "rw",
- *     accessTo: "linux",
- *     accessType: "user",
  *     shareId: share1.id,
+ *     accessType: "user",
+ *     accessTo: "linux",
+ *     accessLevel: "rw",
  * });
  * export const exportLocations = share1.exportLocations;
  * ```
@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  * This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 <share id>/<share access id>
+ *  $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 share_id/share_access_id
  * ```
  */
 export class ShareAccess extends pulumi.CustomResource {
@@ -149,6 +149,10 @@ export class ShareAccess extends pulumi.CustomResource {
      * The UUID of the share to which you are granted access.
      */
     public readonly shareId!: pulumi.Output<string>;
+    /**
+     * The share access state.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a ShareAccess resource with the given unique name, arguments, and options.
@@ -169,6 +173,7 @@ export class ShareAccess extends pulumi.CustomResource {
             resourceInputs["accessType"] = state ? state.accessType : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["shareId"] = state ? state.shareId : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as ShareAccessArgs | undefined;
             if ((!args || args.accessLevel === undefined) && !opts.urn) {
@@ -189,6 +194,7 @@ export class ShareAccess extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["shareId"] = args ? args.shareId : undefined;
             resourceInputs["accessKey"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["accessKey"] };
@@ -230,6 +236,10 @@ export interface ShareAccessState {
      * The UUID of the share to which you are granted access.
      */
     shareId?: pulumi.Input<string>;
+    /**
+     * The share access state.
+     */
+    state?: pulumi.Input<string>;
 }
 
 /**

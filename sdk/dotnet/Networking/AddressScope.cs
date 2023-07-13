@@ -17,6 +17,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -33,6 +34,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -45,12 +47,12 @@ namespace Pulumi.OpenStack.Networking
     /// 
     ///     var subnetpool1 = new OpenStack.Networking.SubnetPool("subnetpool1", new()
     ///     {
-    ///         AddressScopeId = addressscope1.Id,
     ///         Prefixes = new[]
     ///         {
     ///             "fdf7:b13d:dead:beef::/64",
     ///             "fd65:86cc:a334:39b7::/64",
     ///         },
+    ///         AddressScopeId = addressscope1.Id,
     ///     });
     /// 
     /// });

@@ -240,9 +240,9 @@ class RouterInterface(pulumi.CustomResource):
 
         network1 = openstack.networking.Network("network1", admin_state_up=True)
         subnet1 = openstack.networking.Subnet("subnet1",
+            network_id=network1.id,
             cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
+            ip_version=4)
         router1 = openstack.networking.Router("router1", external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
         router_interface1 = openstack.networking.RouterInterface("routerInterface1",
             router_id=router1.id,
@@ -254,7 +254,7 @@ class RouterInterface(pulumi.CustomResource):
         Router Interfaces can be imported using the port `id`, e.g. $ openstack port list --router <router name or id>
 
         ```sh
-         $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 <port id from above output>
+         $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 port_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -290,9 +290,9 @@ class RouterInterface(pulumi.CustomResource):
 
         network1 = openstack.networking.Network("network1", admin_state_up=True)
         subnet1 = openstack.networking.Subnet("subnet1",
+            network_id=network1.id,
             cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
+            ip_version=4)
         router1 = openstack.networking.Router("router1", external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
         router_interface1 = openstack.networking.RouterInterface("routerInterface1",
             router_id=router1.id,
@@ -304,7 +304,7 @@ class RouterInterface(pulumi.CustomResource):
         Router Interfaces can be imported using the port `id`, e.g. $ openstack port list --router <router name or id>
 
         ```sh
-         $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 <port id from above output>
+         $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 port_id
         ```
 
         :param str resource_name: The name of the resource.

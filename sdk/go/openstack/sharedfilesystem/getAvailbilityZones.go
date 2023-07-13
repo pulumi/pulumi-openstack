@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +38,7 @@ import (
 //
 // ```
 func GetAvailbilityZones(ctx *pulumi.Context, args *GetAvailbilityZonesArgs, opts ...pulumi.InvokeOption) (*GetAvailbilityZonesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAvailbilityZonesResult
 	err := ctx.Invoke("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", args, &rv, opts...)
 	if err != nil {

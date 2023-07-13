@@ -83,6 +83,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var secret1 = new SecretV1(&#34;secret1&#34;, SecretV1Args.builder()        
+ *             .payload(Files.readString(Paths.get(&#34;certificate.pem&#34;)))
+ *             .secretType(&#34;certificate&#34;)
+ *             .payloadContentType(&#34;text/plain&#34;)
  *             .acl(SecretV1AclArgs.builder()
  *                 .read(SecretV1AclReadArgs.builder()
  *                     .projectAccess(false)
@@ -91,9 +94,6 @@ import javax.annotation.Nullable;
  *                         &#34;userid2&#34;)
  *                     .build())
  *                 .build())
- *             .payload(Files.readString(Paths.get(&#34;certificate.pem&#34;)))
- *             .payloadContentType(&#34;text/plain&#34;)
- *             .secretType(&#34;certificate&#34;)
  *             .build());
  * 
  *     }

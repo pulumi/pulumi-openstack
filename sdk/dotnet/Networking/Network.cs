@@ -16,6 +16,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -28,9 +29,9 @@ namespace Pulumi.OpenStack.Networking
     /// 
     ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
     ///     {
+    ///         NetworkId = network1.Id,
     ///         Cidr = "192.168.199.0/24",
     ///         IpVersion = 4,
-    ///         NetworkId = network1.Id,
     ///     });
     /// 
     ///     var secgroup1 = new OpenStack.Compute.SecGroup("secgroup1", new()
@@ -40,44 +41,44 @@ namespace Pulumi.OpenStack.Networking
     ///         {
     ///             new OpenStack.Compute.Inputs.SecGroupRuleArgs
     ///             {
-    ///                 Cidr = "0.0.0.0/0",
     ///                 FromPort = 22,
-    ///                 IpProtocol = "tcp",
     ///                 ToPort = 22,
+    ///                 IpProtocol = "tcp",
+    ///                 Cidr = "0.0.0.0/0",
     ///             },
     ///         },
     ///     });
     /// 
     ///     var port1 = new OpenStack.Networking.Port("port1", new()
     ///     {
+    ///         NetworkId = network1.Id,
     ///         AdminStateUp = true,
+    ///         SecurityGroupIds = new[]
+    ///         {
+    ///             secgroup1.Id,
+    ///         },
     ///         FixedIps = new[]
     ///         {
     ///             new OpenStack.Networking.Inputs.PortFixedIpArgs
     ///             {
-    ///                 IpAddress = "192.168.199.10",
     ///                 SubnetId = subnet1.Id,
+    ///                 IpAddress = "192.168.199.10",
     ///             },
-    ///         },
-    ///         NetworkId = network1.Id,
-    ///         SecurityGroupIds = new[]
-    ///         {
-    ///             secgroup1.Id,
     ///         },
     ///     });
     /// 
     ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
     ///     {
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             secgroup1.Name,
+    ///         },
     ///         Networks = new[]
     ///         {
     ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
     ///             {
     ///                 Port = port1.Id,
     ///             },
-    ///         },
-    ///         SecurityGroups = new[]
-    ///         {
-    ///             secgroup1.Name,
     ///         },
     ///     });
     /// 

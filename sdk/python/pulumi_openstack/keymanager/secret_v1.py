@@ -597,6 +597,9 @@ class SecretV1(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         secret1 = openstack.keymanager.SecretV1("secret1",
+            payload=(lambda path: open(path).read())("certificate.pem"),
+            secret_type="certificate",
+            payload_content_type="text/plain",
             acl=openstack.keymanager.SecretV1AclArgs(
                 read=openstack.keymanager.SecretV1AclReadArgs(
                     project_access=False,
@@ -605,10 +608,7 @@ class SecretV1(pulumi.CustomResource):
                         "userid2",
                     ],
                 ),
-            ),
-            payload=(lambda path: open(path).read())("certificate.pem"),
-            payload_content_type="text/plain",
-            secret_type="certificate")
+            ))
         ```
 
         ## Import
@@ -674,6 +674,9 @@ class SecretV1(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         secret1 = openstack.keymanager.SecretV1("secret1",
+            payload=(lambda path: open(path).read())("certificate.pem"),
+            secret_type="certificate",
+            payload_content_type="text/plain",
             acl=openstack.keymanager.SecretV1AclArgs(
                 read=openstack.keymanager.SecretV1AclReadArgs(
                     project_access=False,
@@ -682,10 +685,7 @@ class SecretV1(pulumi.CustomResource):
                         "userid2",
                     ],
                 ),
-            ),
-            payload=(lambda path: open(path).read())("certificate.pem"),
-            payload_content_type="text/plain",
-            secret_type="certificate")
+            ))
         ```
 
         ## Import

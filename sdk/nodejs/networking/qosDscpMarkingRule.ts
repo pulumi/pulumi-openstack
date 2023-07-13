@@ -16,8 +16,8 @@ import * as utilities from "../utilities";
  *
  * const qosPolicy1 = new openstack.networking.QosPolicy("qosPolicy1", {description: "dscp_mark"});
  * const dscpMarkingRule1 = new openstack.networking.QosDscpMarkingRule("dscpMarkingRule1", {
- *     dscpMark: 26,
  *     qosPolicyId: qosPolicy1.id,
+ *     dscpMark: 26,
  * });
  * ```
  *

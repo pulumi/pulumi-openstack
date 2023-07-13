@@ -186,15 +186,15 @@ def get_endpoint(endpoint_region: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:identity/getEndpoint:getEndpoint', __args__, opts=opts, typ=GetEndpointResult).value
 
     return AwaitableGetEndpointResult(
-        endpoint_region=__ret__.endpoint_region,
-        id=__ret__.id,
-        interface=__ret__.interface,
-        name=__ret__.name,
-        region=__ret__.region,
-        service_id=__ret__.service_id,
-        service_name=__ret__.service_name,
-        service_type=__ret__.service_type,
-        url=__ret__.url)
+        endpoint_region=pulumi.get(__ret__, 'endpoint_region'),
+        id=pulumi.get(__ret__, 'id'),
+        interface=pulumi.get(__ret__, 'interface'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'),
+        service_id=pulumi.get(__ret__, 'service_id'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        service_type=pulumi.get(__ret__, 'service_type'),
+        url=pulumi.get(__ret__, 'url'))
 
 
 @_utilities.lift_output_func(get_endpoint)

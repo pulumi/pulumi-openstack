@@ -28,14 +28,14 @@ import * as utilities from "../utilities";
  *
  * const project1 = new openstack.identity.Project("project1", {});
  * const quota1 = new openstack.loadbalancer.Quota("quota1", {
+ *     projectId: project1.id,
+ *     loadbalancer: 6,
+ *     listener: 7,
+ *     member: 8,
+ *     pool: 9,
  *     healthMonitor: 10,
  *     l7Policy: 11,
  *     l7Rule: 12,
- *     listener: 7,
- *     loadbalancer: 6,
- *     member: 8,
- *     pool: 9,
- *     projectId: project1.id,
  * });
  * ```
  *

@@ -42,11 +42,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var monitor1 = new Monitor(&#34;monitor1&#34;, MonitorArgs.builder()        
- *             .delay(20)
- *             .maxRetries(5)
  *             .poolId(openstack_lb_pool_v2.pool_1().id())
- *             .timeout(10)
  *             .type(&#34;PING&#34;)
+ *             .delay(20)
+ *             .timeout(10)
+ *             .maxRetries(5)
  *             .build());
  * 
  *     }

@@ -15,6 +15,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -45,6 +46,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -62,8 +64,8 @@ namespace Pulumi.OpenStack.Networking
     /// 
     ///     var port1 = new OpenStack.Networking.PortSecGroupAssociate("port1", new()
     ///     {
-    ///         Enforce = true,
     ///         PortId = systemPort.Apply(getPortResult =&gt; getPortResult.Id),
+    ///         Enforce = true,
     ///         SecurityGroupIds = new[]
     ///         {
     ///             secgroup.Apply(getSecGroupResult =&gt; getSecGroupResult.Id),
@@ -76,6 +78,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -88,8 +91,8 @@ namespace Pulumi.OpenStack.Networking
     /// 
     ///     var port1 = new OpenStack.Networking.PortSecGroupAssociate("port1", new()
     ///     {
-    ///         Enforce = true,
     ///         PortId = systemPort.Apply(getPortResult =&gt; getPortResult.Id),
+    ///         Enforce = true,
     ///         SecurityGroupIds = new[] {},
     ///     });
     /// 

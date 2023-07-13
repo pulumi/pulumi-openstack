@@ -243,6 +243,9 @@ class ContainerArgs:
         """
         Enable legacy object versioning. The structure is described below.
         """
+        warnings.warn("""Use newer \"versioning\" implementation""", DeprecationWarning)
+        pulumi.log.warn("""versioning_legacy is deprecated: Use newer \"versioning\" implementation""")
+
         return pulumi.get(self, "versioning_legacy")
 
     @versioning_legacy.setter
@@ -480,6 +483,9 @@ class _ContainerState:
         """
         Enable legacy object versioning. The structure is described below.
         """
+        warnings.warn("""Use newer \"versioning\" implementation""", DeprecationWarning)
+        pulumi.log.warn("""versioning_legacy is deprecated: Use newer \"versioning\" implementation""")
+
         return pulumi.get(self, "versioning_legacy")
 
     @versioning_legacy.setter
@@ -575,10 +581,10 @@ class Container(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the name of the containerSome attributes can't be imported * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key` So you'll have to `terraform plan` and `terraform apply` after the import to fix those missing attributes.
+        This resource can be imported by specifying the name of the containerSome attributes can't be imported * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key` So you'll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.
 
         ```sh
-         $ pulumi import openstack:objectstorage/container:Container container_1 <name>
+         $ pulumi import openstack:objectstorage/container:Container container_1 container_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -689,10 +695,10 @@ class Container(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the name of the containerSome attributes can't be imported * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key` So you'll have to `terraform plan` and `terraform apply` after the import to fix those missing attributes.
+        This resource can be imported by specifying the name of the containerSome attributes can't be imported * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key` So you'll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.
 
         ```sh
-         $ pulumi import openstack:objectstorage/container:Container container_1 <name>
+         $ pulumi import openstack:objectstorage/container:Container container_1 container_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -934,5 +940,8 @@ class Container(pulumi.CustomResource):
         """
         Enable legacy object versioning. The structure is described below.
         """
+        warnings.warn("""Use newer \"versioning\" implementation""", DeprecationWarning)
+        pulumi.log.warn("""versioning_legacy is deprecated: Use newer \"versioning\" implementation""")
+
         return pulumi.get(self, "versioning_legacy")
 

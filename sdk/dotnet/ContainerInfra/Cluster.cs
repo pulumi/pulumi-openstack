@@ -10,11 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.ContainerInfra
 {
     /// <summary>
+    /// Manages a V1 Magnum cluster resource within OpenStack.
+    /// 
+    /// &gt; **Note:** All arguments including the `kubeconfig` computed attribute will be
+    /// stored in the raw state as plain-text. Read more about sensitive data in
+    /// state.
+    /// 
     /// ## Example Usage
     /// ### Create a Cluster
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -189,8 +196,8 @@ namespace Pulumi.OpenStack.ContainerInfra
         public Output<bool?> MergeLabels { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the cluster. Changing this updates the name
-        /// of the existing cluster template.
+        /// The name of the cluster. Changing this creates a new
+        /// cluster.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -199,8 +206,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         public Output<ImmutableArray<string>> NodeAddresses { get; private set; } = null!;
 
         /// <summary>
-        /// The number of nodes for the cluster. Changing this
-        /// creates a new cluster.
+        /// The number of nodes for the cluster.
         /// </summary>
         [Output("nodeCount")]
         public Output<int?> NodeCount { get; private set; } = null!;
@@ -386,15 +392,14 @@ namespace Pulumi.OpenStack.ContainerInfra
         public Input<bool>? MergeLabels { get; set; }
 
         /// <summary>
-        /// The name of the cluster. Changing this updates the name
-        /// of the existing cluster template.
+        /// The name of the cluster. Changing this creates a new
+        /// cluster.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The number of nodes for the cluster. Changing this
-        /// creates a new cluster.
+        /// The number of nodes for the cluster.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
@@ -548,8 +553,8 @@ namespace Pulumi.OpenStack.ContainerInfra
         public Input<bool>? MergeLabels { get; set; }
 
         /// <summary>
-        /// The name of the cluster. Changing this updates the name
-        /// of the existing cluster template.
+        /// The name of the cluster. Changing this creates a new
+        /// cluster.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -563,8 +568,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         }
 
         /// <summary>
-        /// The number of nodes for the cluster. Changing this
-        /// creates a new cluster.
+        /// The number of nodes for the cluster.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }

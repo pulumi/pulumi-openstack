@@ -271,24 +271,24 @@ def get_subnet_ids_v2(cidr: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:networking/getSubnetIdsV2:getSubnetIdsV2', __args__, opts=opts, typ=GetSubnetIdsV2Result).value
 
     return AwaitableGetSubnetIdsV2Result(
-        cidr=__ret__.cidr,
-        description=__ret__.description,
-        dhcp_enabled=__ret__.dhcp_enabled,
-        gateway_ip=__ret__.gateway_ip,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        ip_version=__ret__.ip_version,
-        ipv6_address_mode=__ret__.ipv6_address_mode,
-        ipv6_ra_mode=__ret__.ipv6_ra_mode,
-        name=__ret__.name,
-        name_regex=__ret__.name_regex,
-        network_id=__ret__.network_id,
-        region=__ret__.region,
-        sort_direction=__ret__.sort_direction,
-        sort_key=__ret__.sort_key,
-        subnetpool_id=__ret__.subnetpool_id,
-        tags=__ret__.tags,
-        tenant_id=__ret__.tenant_id)
+        cidr=pulumi.get(__ret__, 'cidr'),
+        description=pulumi.get(__ret__, 'description'),
+        dhcp_enabled=pulumi.get(__ret__, 'dhcp_enabled'),
+        gateway_ip=pulumi.get(__ret__, 'gateway_ip'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        ip_version=pulumi.get(__ret__, 'ip_version'),
+        ipv6_address_mode=pulumi.get(__ret__, 'ipv6_address_mode'),
+        ipv6_ra_mode=pulumi.get(__ret__, 'ipv6_ra_mode'),
+        name=pulumi.get(__ret__, 'name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        network_id=pulumi.get(__ret__, 'network_id'),
+        region=pulumi.get(__ret__, 'region'),
+        sort_direction=pulumi.get(__ret__, 'sort_direction'),
+        sort_key=pulumi.get(__ret__, 'sort_key'),
+        subnetpool_id=pulumi.get(__ret__, 'subnetpool_id'),
+        tags=pulumi.get(__ret__, 'tags'),
+        tenant_id=pulumi.get(__ret__, 'tenant_id'))
 
 
 @_utilities.lift_output_func(get_subnet_ids_v2)

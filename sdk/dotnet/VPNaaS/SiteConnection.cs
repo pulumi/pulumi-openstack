@@ -16,6 +16,7 @@ namespace Pulumi.OpenStack.VPNaaS
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -23,22 +24,22 @@ namespace Pulumi.OpenStack.VPNaaS
     /// {
     ///     var conn1 = new OpenStack.VPNaaS.SiteConnection("conn1", new()
     ///     {
+    ///         IkepolicyId = openstack_vpnaas_ike_policy_v2.Policy_2.Id,
+    ///         IpsecpolicyId = openstack_vpnaas_ipsec_policy_v2.Policy_1.Id,
+    ///         VpnserviceId = openstack_vpnaas_service_v2.Service_1.Id,
+    ///         Psk = "secret",
+    ///         PeerAddress = "192.168.10.1",
+    ///         LocalEpGroupId = openstack_vpnaas_endpoint_group_v2.Group_2.Id,
+    ///         PeerEpGroupId = openstack_vpnaas_endpoint_group_v2.Group_1.Id,
     ///         Dpds = new[]
     ///         {
     ///             new OpenStack.VPNaaS.Inputs.SiteConnectionDpdArgs
     ///             {
     ///                 Action = "restart",
-    ///                 Interval = 21,
     ///                 Timeout = 42,
+    ///                 Interval = 21,
     ///             },
     ///         },
-    ///         IkepolicyId = openstack_vpnaas_ike_policy_v2.Policy_2.Id,
-    ///         IpsecpolicyId = openstack_vpnaas_ipsec_policy_v2.Policy_1.Id,
-    ///         LocalEpGroupId = openstack_vpnaas_endpoint_group_v2.Group_2.Id,
-    ///         PeerAddress = "192.168.10.1",
-    ///         PeerEpGroupId = openstack_vpnaas_endpoint_group_v2.Group_1.Id,
-    ///         Psk = "secret",
-    ///         VpnserviceId = openstack_vpnaas_service_v2.Service_1.Id,
     ///     });
     /// 
     /// });

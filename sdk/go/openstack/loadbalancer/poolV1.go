@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,9 +68,9 @@ import (
 //				return err
 //			}
 //			subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//				NetworkId: network1.ID(),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //				IpVersion: pulumi.Int(4),
-//				NetworkId: network1.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -78,16 +79,16 @@ import (
 //				Description: pulumi.String("Rules for secgroup_1"),
 //				Rules: compute.SecGroupRuleArray{
 //					&compute.SecGroupRuleArgs{
-//						Cidr:       pulumi.String("0.0.0.0/0"),
 //						FromPort:   -1,
-//						IpProtocol: pulumi.String("icmp"),
 //						ToPort:     -1,
+//						IpProtocol: pulumi.String("icmp"),
+//						Cidr:       pulumi.String("0.0.0.0/0"),
 //					},
 //					&compute.SecGroupRuleArgs{
-//						Cidr:       pulumi.String("0.0.0.0/0"),
 //						FromPort:   pulumi.Int(80),
-//						IpProtocol: pulumi.String("tcp"),
 //						ToPort:     pulumi.Int(80),
+//						IpProtocol: pulumi.String("tcp"),
+//						Cidr:       pulumi.String("0.0.0.0/0"),
 //					},
 //				},
 //			})
@@ -95,75 +96,75 @@ import (
 //				return err
 //			}
 //			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//					secgroup1.Name,
+//				},
 //				Networks: compute.InstanceNetworkArray{
 //					&compute.InstanceNetworkArgs{
 //						Uuid: network1.ID(),
 //					},
-//				},
-//				SecurityGroups: pulumi.StringArray{
-//					pulumi.String("default"),
-//					secgroup1.Name,
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			instance2, err := compute.NewInstance(ctx, "instance2", &compute.InstanceArgs{
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//					secgroup1.Name,
+//				},
 //				Networks: compute.InstanceNetworkArray{
 //					&compute.InstanceNetworkArgs{
 //						Uuid: network1.ID(),
 //					},
-//				},
-//				SecurityGroups: pulumi.StringArray{
-//					pulumi.String("default"),
-//					secgroup1.Name,
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			monitor1, err := loadbalancer.NewMonitorV1(ctx, "monitor1", &loadbalancer.MonitorV1Args{
-//				AdminStateUp: pulumi.String("true"),
-//				Delay:        pulumi.Int(30),
-//				MaxRetries:   pulumi.Int(3),
-//				Timeout:      pulumi.Int(5),
 //				Type:         pulumi.String("TCP"),
+//				Delay:        pulumi.Int(30),
+//				Timeout:      pulumi.Int(5),
+//				MaxRetries:   pulumi.Int(3),
+//				AdminStateUp: pulumi.String("true"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			pool1, err := loadbalancer.NewPoolV1(ctx, "pool1", &loadbalancer.PoolV1Args{
+//				Protocol: pulumi.String("TCP"),
+//				SubnetId: subnet1.ID(),
 //				LbMethod: pulumi.String("ROUND_ROBIN"),
 //				MonitorIds: pulumi.StringArray{
 //					monitor1.ID(),
 //				},
-//				Protocol: pulumi.String("TCP"),
-//				SubnetId: subnet1.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = loadbalancer.NewMemberV1(ctx, "member1", &loadbalancer.MemberV1Args{
-//				Address: instance1.AccessIpV4,
 //				PoolId:  pool1.ID(),
+//				Address: instance1.AccessIpV4,
 //				Port:    pulumi.Int(80),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = loadbalancer.NewMemberV1(ctx, "member2", &loadbalancer.MemberV1Args{
-//				Address: instance2.AccessIpV4,
 //				PoolId:  pool1.ID(),
+//				Address: instance2.AccessIpV4,
 //				Port:    pulumi.Int(80),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = loadbalancer.NewVip(ctx, "vip1", &loadbalancer.VipArgs{
-//				PoolId:   pool1.ID(),
-//				Port:     pulumi.Int(80),
-//				Protocol: pulumi.String("TCP"),
 //				SubnetId: subnet1.ID(),
+//				Protocol: pulumi.String("TCP"),
+//				Port:     pulumi.Int(80),
+//				PoolId:   pool1.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -243,6 +244,7 @@ func NewPoolV1(ctx *pulumi.Context,
 	if args.SubnetId == nil {
 		return nil, errors.New("invalid value for required argument 'SubnetId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PoolV1
 	err := ctx.RegisterResource("openstack:loadbalancer/poolV1:PoolV1", name, args, &resource, opts...)
 	if err != nil {

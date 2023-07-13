@@ -16,6 +16,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages a V1 DB user resource within OpenStack.
+ * 
+ * &gt; **Note:** All arguments including the database password will be stored in the
+ * raw state as plain-text. Read more about sensitive data in
+ * state.
+ * 
  * ## Example Usage
  * ### User
  * ```java
@@ -40,9 +46,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basic = new User(&#34;basic&#34;, UserArgs.builder()        
- *             .databases(&#34;testdb&#34;)
  *             .instanceId(openstack_db_instance_v1.basic().id())
  *             .password(&#34;password&#34;)
+ *             .databases(&#34;testdb&#34;)
  *             .build());
  * 
  *     }

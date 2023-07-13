@@ -46,11 +46,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var rancheros = new Image(&#34;rancheros&#34;, ImageArgs.builder()        
+ *             .imageSourceUrl(&#34;https://releases.rancher.com/os/latest/rancheros-openstack.img&#34;)
  *             .containerFormat(&#34;bare&#34;)
  *             .diskFormat(&#34;qcow2&#34;)
- *             .imageSourceUrl(&#34;https://releases.rancher.com/os/latest/rancheros-openstack.img&#34;)
- *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
  *             .visibility(&#34;shared&#34;)
+ *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
  *             .build());
  * 
  *         var rancherosMember = new ImageAccess(&#34;rancherosMember&#34;, ImageAccessArgs.builder()        
@@ -89,11 +89,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var rancheros = new Image(&#34;rancheros&#34;, ImageArgs.builder()        
+ *             .imageSourceUrl(&#34;https://releases.rancher.com/os/latest/rancheros-openstack.img&#34;)
  *             .containerFormat(&#34;bare&#34;)
  *             .diskFormat(&#34;qcow2&#34;)
- *             .imageSourceUrl(&#34;https://releases.rancher.com/os/latest/rancheros-openstack.img&#34;)
- *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
  *             .visibility(&#34;shared&#34;)
+ *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
  *             .build());
  * 
  *         var rancherosMember = new ImageAccess(&#34;rancherosMember&#34;, ImageAccessArgs.builder()        

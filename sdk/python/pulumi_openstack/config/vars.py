@@ -183,6 +183,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_bool('swauth') or _utilities.get_env_bool('OS_SWAUTH')
 
     @property
+    def system_scope(self) -> Optional[bool]:
+        """
+        If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
+        """
+        return __config__.get_bool('systemScope')
+
+    @property
     def tenant_id(self) -> Optional[str]:
         """
         The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
@@ -227,7 +234,7 @@ class _ExportableConfig(types.ModuleType):
     @property
     def user_id(self) -> Optional[str]:
         """
-        Username to login with.
+        User ID to login with.
         """
         return __config__.get('userId')
 

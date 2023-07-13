@@ -182,6 +182,9 @@ class SubnetArgs:
         use with DHCP in this subnet.
         The `allocation_pools` block is documented below.
         """
+        warnings.warn("""use allocation_pool instead""", DeprecationWarning)
+        pulumi.log.warn("""allocation_pools_collection is deprecated: use allocation_pool instead""")
+
         return pulumi.get(self, "allocation_pools_collection")
 
     @allocation_pools_collection.setter
@@ -268,6 +271,9 @@ class SubnetArgs:
         object structure is documented below. Changing this updates the host routes
         for the existing subnet.
         """
+        warnings.warn("""Use openstack_networking_subnet_route_v2 instead""", DeprecationWarning)
+        pulumi.log.warn("""host_routes is deprecated: Use openstack_networking_subnet_route_v2 instead""")
+
         return pulumi.get(self, "host_routes")
 
     @host_routes.setter
@@ -607,6 +613,9 @@ class _SubnetState:
         use with DHCP in this subnet.
         The `allocation_pools` block is documented below.
         """
+        warnings.warn("""use allocation_pool instead""", DeprecationWarning)
+        pulumi.log.warn("""allocation_pools_collection is deprecated: use allocation_pool instead""")
+
         return pulumi.get(self, "allocation_pools_collection")
 
     @allocation_pools_collection.setter
@@ -693,6 +702,9 @@ class _SubnetState:
         object structure is documented below. Changing this updates the host routes
         for the existing subnet.
         """
+        warnings.warn("""Use openstack_networking_subnet_route_v2 instead""", DeprecationWarning)
+        pulumi.log.warn("""host_routes is deprecated: Use openstack_networking_subnet_route_v2 instead""")
+
         return pulumi.get(self, "host_routes")
 
     @host_routes.setter
@@ -908,8 +920,8 @@ class Subnet(pulumi.CustomResource):
 
         network1 = openstack.networking.Network("network1", admin_state_up=True)
         subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="192.168.199.0/24",
-            network_id=network1.id)
+            network_id=network1.id,
+            cidr="192.168.199.0/24")
         ```
 
         ## Import
@@ -996,8 +1008,8 @@ class Subnet(pulumi.CustomResource):
 
         network1 = openstack.networking.Network("network1", admin_state_up=True)
         subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="192.168.199.0/24",
-            network_id=network1.id)
+            network_id=network1.id,
+            cidr="192.168.199.0/24")
         ```
 
         ## Import
@@ -1239,6 +1251,9 @@ class Subnet(pulumi.CustomResource):
         use with DHCP in this subnet.
         The `allocation_pools` block is documented below.
         """
+        warnings.warn("""use allocation_pool instead""", DeprecationWarning)
+        pulumi.log.warn("""allocation_pools_collection is deprecated: use allocation_pool instead""")
+
         return pulumi.get(self, "allocation_pools_collection")
 
     @property
@@ -1301,6 +1316,9 @@ class Subnet(pulumi.CustomResource):
         object structure is documented below. Changing this updates the host routes
         for the existing subnet.
         """
+        warnings.warn("""Use openstack_networking_subnet_route_v2 instead""", DeprecationWarning)
+        pulumi.log.warn("""host_routes is deprecated: Use openstack_networking_subnet_route_v2 instead""")
+
         return pulumi.get(self, "host_routes")
 
     @property

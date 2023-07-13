@@ -95,9 +95,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ai1 = new InterfaceAttach(&#34;ai1&#34;, InterfaceAttachArgs.builder()        
- *             .fixedIp(&#34;10.0.10.10&#34;)
  *             .instanceId(instance1.id())
  *             .networkId(openstack_networking_port_v2.network_1().id())
+ *             .fixedIp(&#34;10.0.10.10&#34;)
  *             .build());
  * 
  *     }
@@ -136,8 +136,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var port1 = new Port(&#34;port1&#34;, PortArgs.builder()        
- *             .adminStateUp(&#34;true&#34;)
  *             .networkId(network1.id())
+ *             .adminStateUp(&#34;true&#34;)
  *             .build());
  * 
  *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        

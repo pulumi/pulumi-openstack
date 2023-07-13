@@ -505,6 +505,15 @@ class User(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manages a V3 User resource within OpenStack Keystone.
+
+        > **Note:** All arguments including the user password will be stored in the
+        raw state as plain-text. Read more about sensitive data in
+        state.
+
+        > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+        this resource.
+
         ## Example Usage
 
         ```python
@@ -515,9 +524,7 @@ class User(pulumi.CustomResource):
         user1 = openstack.identity.User("user1",
             default_project_id=project1.id,
             description="A user",
-            extra={
-                "email": "user_1@foobar.com",
-            },
+            password="password123",
             ignore_change_password_upon_first_use=True,
             multi_factor_auth_enabled=True,
             multi_factor_auth_rules=[
@@ -531,7 +538,9 @@ class User(pulumi.CustomResource):
                     rules=["password"],
                 ),
             ],
-            password="password123")
+            extra={
+                "email": "user_1@foobar.com",
+            })
         ```
 
         ## Import
@@ -575,6 +584,15 @@ class User(pulumi.CustomResource):
                  args: Optional[UserArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a V3 User resource within OpenStack Keystone.
+
+        > **Note:** All arguments including the user password will be stored in the
+        raw state as plain-text. Read more about sensitive data in
+        state.
+
+        > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+        this resource.
+
         ## Example Usage
 
         ```python
@@ -585,9 +603,7 @@ class User(pulumi.CustomResource):
         user1 = openstack.identity.User("user1",
             default_project_id=project1.id,
             description="A user",
-            extra={
-                "email": "user_1@foobar.com",
-            },
+            password="password123",
             ignore_change_password_upon_first_use=True,
             multi_factor_auth_enabled=True,
             multi_factor_auth_rules=[
@@ -601,7 +617,9 @@ class User(pulumi.CustomResource):
                     rules=["password"],
                 ),
             ],
-            password="password123")
+            extra={
+                "email": "user_1@foobar.com",
+            })
         ```
 
         ## Import

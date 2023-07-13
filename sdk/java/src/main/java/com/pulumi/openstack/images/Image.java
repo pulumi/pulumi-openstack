@@ -20,6 +20,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages a V2 Image resource within OpenStack Glance.
+ * 
+ * &gt; **Note:** All arguments including the source image URL password will be
+ * stored in the raw state as plain-text. Read more about sensitive data in
+ * state.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -126,7 +132,7 @@ public class Image extends com.pulumi.resources.CustomResource {
     /**
      * If true, this provider will decompress downloaded
      * image before uploading it to OpenStack. Decompression algorithm is chosen by
-     * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2.
+     * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2 and xz.
      * Defaults to false. Changing this creates a new Image.
      * 
      */
@@ -136,7 +142,7 @@ public class Image extends com.pulumi.resources.CustomResource {
     /**
      * @return If true, this provider will decompress downloaded
      * image before uploading it to OpenStack. Decompression algorithm is chosen by
-     * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2.
+     * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2 and xz.
      * Defaults to false. Changing this creates a new Image.
      * 
      */

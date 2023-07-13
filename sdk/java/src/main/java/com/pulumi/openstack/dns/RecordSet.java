@@ -48,18 +48,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleZone = new Zone(&#34;exampleZone&#34;, ZoneArgs.builder()        
- *             .description(&#34;a zone&#34;)
  *             .email(&#34;email2@example.com&#34;)
+ *             .description(&#34;a zone&#34;)
  *             .ttl(6000)
  *             .type(&#34;PRIMARY&#34;)
  *             .build());
  * 
  *         var rsExampleCom = new RecordSet(&#34;rsExampleCom&#34;, RecordSetArgs.builder()        
+ *             .zoneId(exampleZone.id())
  *             .description(&#34;An example record set&#34;)
- *             .records(&#34;10.0.0.1&#34;)
  *             .ttl(3000)
  *             .type(&#34;A&#34;)
- *             .zoneId(exampleZone.id())
+ *             .records(&#34;10.0.0.1&#34;)
  *             .build());
  * 
  *     }
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * This resource can be imported by specifying the zone ID and recordset ID, separated by a forward slash.
  * 
  * ```sh
- *  $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 &lt;zone_id&gt;/&lt;recordset_id&gt;
+ *  $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 zone_id/recordset_id
  * ```
  * 
  */
@@ -144,22 +144,18 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
         return this.projectId;
     }
     /**
-     * An array of DNS records. _Note:_ if an IPv6 address
-     * contains brackets (`[ ]`), the brackets will be stripped and the modified
-     * address will be recorded in the state.
+     * An array of DNS records.
      * 
      */
     @Export(name="records", type=List.class, parameters={String.class})
-    private Output</* @Nullable */ List<String>> records;
+    private Output<List<String>> records;
 
     /**
-     * @return An array of DNS records. _Note:_ if an IPv6 address
-     * contains brackets (`[ ]`), the brackets will be stripped and the modified
-     * address will be recorded in the state.
+     * @return An array of DNS records.
      * 
      */
-    public Output<Optional<List<String>>> records() {
-        return Codegen.optional(this.records);
+    public Output<List<String>> records() {
+        return this.records;
     }
     /**
      * The region in which to obtain the V2 DNS client.

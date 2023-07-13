@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -95,6 +96,7 @@ func NewQosPolicy(ctx *pulumi.Context,
 		args = &QosPolicyArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource QosPolicy
 	err := ctx.RegisterResource("openstack:networking/qosPolicy:QosPolicy", name, args, &resource, opts...)
 	if err != nil {

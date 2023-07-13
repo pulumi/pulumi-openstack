@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -91,6 +92,7 @@ func NewMembers(ctx *pulumi.Context,
 	if args.PoolId == nil {
 		return nil, errors.New("invalid value for required argument 'PoolId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Members
 	err := ctx.RegisterResource("openstack:loadbalancer/members:Members", name, args, &resource, opts...)
 	if err != nil {

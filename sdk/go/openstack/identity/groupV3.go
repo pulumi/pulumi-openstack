@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -72,6 +73,7 @@ func NewGroupV3(ctx *pulumi.Context,
 		args = &GroupV3Args{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GroupV3
 	err := ctx.RegisterResource("openstack:identity/groupV3:GroupV3", name, args, &resource, opts...)
 	if err != nil {

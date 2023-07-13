@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,8 +35,8 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
-//				Cidr:      pulumi.String("192.168.199.0/24"),
 //				NetworkId: network1.ID(),
+//				Cidr:      pulumi.String("192.168.199.0/24"),
 //			})
 //			if err != nil {
 //				return err
@@ -154,6 +155,7 @@ func NewSubnet(ctx *pulumi.Context,
 	if args.NetworkId == nil {
 		return nil, errors.New("invalid value for required argument 'NetworkId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Subnet
 	err := ctx.RegisterResource("openstack:networking/subnet:Subnet", name, args, &resource, opts...)
 	if err != nil {

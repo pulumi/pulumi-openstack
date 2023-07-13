@@ -20,6 +20,7 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
@@ -47,6 +48,7 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
@@ -82,6 +84,14 @@ namespace Pulumi.OpenStack.Compute
         [Input("region")]
         public string? Region { get; set; }
 
+        /// <summary>
+        /// The user id of the owner of the key pair.
+        /// This parameter can be specified only if the provider is configured to use
+        /// the credentials of an OpenStack administrator.
+        /// </summary>
+        [Input("userId")]
+        public string? UserId { get; set; }
+
         public GetKeypairArgs()
         {
         }
@@ -102,6 +112,14 @@ namespace Pulumi.OpenStack.Compute
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The user id of the owner of the key pair.
+        /// This parameter can be specified only if the provider is configured to use
+        /// the credentials of an OpenStack administrator.
+        /// </summary>
+        [Input("userId")]
+        public Input<string>? UserId { get; set; }
 
         public GetKeypairInvokeArgs()
         {
@@ -133,6 +151,10 @@ namespace Pulumi.OpenStack.Compute
         /// See Argument Reference above.
         /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
+        public readonly string UserId;
 
         [OutputConstructor]
         private GetKeypairResult(
@@ -144,13 +166,16 @@ namespace Pulumi.OpenStack.Compute
 
             string publicKey,
 
-            string region)
+            string region,
+
+            string userId)
         {
             Fingerprint = fingerprint;
             Id = id;
             Name = name;
             PublicKey = publicKey;
             Region = region;
+            UserId = userId;
         }
     }
 }

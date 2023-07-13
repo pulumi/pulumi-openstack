@@ -201,18 +201,18 @@ def get_quota_v2(project_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:networking/getQuotaV2:getQuotaV2', __args__, opts=opts, typ=GetQuotaV2Result).value
 
     return AwaitableGetQuotaV2Result(
-        floatingip=__ret__.floatingip,
-        id=__ret__.id,
-        network=__ret__.network,
-        port=__ret__.port,
-        project_id=__ret__.project_id,
-        rbac_policy=__ret__.rbac_policy,
-        region=__ret__.region,
-        router=__ret__.router,
-        security_group=__ret__.security_group,
-        security_group_rule=__ret__.security_group_rule,
-        subnet=__ret__.subnet,
-        subnetpool=__ret__.subnetpool)
+        floatingip=pulumi.get(__ret__, 'floatingip'),
+        id=pulumi.get(__ret__, 'id'),
+        network=pulumi.get(__ret__, 'network'),
+        port=pulumi.get(__ret__, 'port'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        rbac_policy=pulumi.get(__ret__, 'rbac_policy'),
+        region=pulumi.get(__ret__, 'region'),
+        router=pulumi.get(__ret__, 'router'),
+        security_group=pulumi.get(__ret__, 'security_group'),
+        security_group_rule=pulumi.get(__ret__, 'security_group_rule'),
+        subnet=pulumi.get(__ret__, 'subnet'),
+        subnetpool=pulumi.get(__ret__, 'subnetpool'))
 
 
 @_utilities.lift_output_func(get_quota_v2)

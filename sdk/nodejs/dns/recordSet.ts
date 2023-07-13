@@ -15,17 +15,17 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const exampleZone = new openstack.dns.Zone("exampleZone", {
- *     description: "a zone",
  *     email: "email2@example.com",
+ *     description: "a zone",
  *     ttl: 6000,
  *     type: "PRIMARY",
  * });
  * const rsExampleCom = new openstack.dns.RecordSet("rsExampleCom", {
+ *     zoneId: exampleZone.id,
  *     description: "An example record set",
- *     records: ["10.0.0.1"],
  *     ttl: 3000,
  *     type: "A",
- *     zoneId: exampleZone.id,
+ *     records: ["10.0.0.1"],
  * });
  * ```
  *
@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * This resource can be imported by specifying the zone ID and recordset ID, separated by a forward slash.
  *
  * ```sh
- *  $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 <zone_id>/<recordset_id>
+ *  $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 zone_id/recordset_id
  * ```
  */
 export class RecordSet extends pulumi.CustomResource {
@@ -87,11 +87,9 @@ export class RecordSet extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * An array of DNS records. _Note:_ if an IPv6 address
-     * contains brackets (`[ ]`), the brackets will be stripped and the modified
-     * address will be recorded in the state.
+     * An array of DNS records.
      */
-    public readonly records!: pulumi.Output<string[] | undefined>;
+    public readonly records!: pulumi.Output<string[]>;
     /**
      * The region in which to obtain the V2 DNS client.
      * If omitted, the `region` argument of the provider is used.
@@ -143,6 +141,9 @@ export class RecordSet extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as RecordSetArgs | undefined;
+            if ((!args || args.records === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'records'");
+            }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
@@ -188,9 +189,7 @@ export interface RecordSetState {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * An array of DNS records. _Note:_ if an IPv6 address
-     * contains brackets (`[ ]`), the brackets will be stripped and the modified
-     * address will be recorded in the state.
+     * An array of DNS records.
      */
     records?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -246,11 +245,9 @@ export interface RecordSetArgs {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * An array of DNS records. _Note:_ if an IPv6 address
-     * contains brackets (`[ ]`), the brackets will be stripped and the modified
-     * address will be recorded in the state.
+     * An array of DNS records.
      */
-    records?: pulumi.Input<pulumi.Input<string>[]>;
+    records: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The region in which to obtain the V2 DNS client.
      * If omitted, the `region` argument of the provider is used.

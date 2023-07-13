@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,9 +39,9 @@ import (
 //			_, err = networking.NewSecGroupRule(ctx, "secgroupRule1", &networking.SecGroupRuleArgs{
 //				Direction:       pulumi.String("ingress"),
 //				Ethertype:       pulumi.String("IPv4"),
-//				PortRangeMax:    pulumi.Int(22),
-//				PortRangeMin:    pulumi.Int(22),
 //				Protocol:        pulumi.String("tcp"),
+//				PortRangeMin:    pulumi.Int(22),
+//				PortRangeMax:    pulumi.Int(22),
 //				RemoteIpPrefix:  pulumi.String("0.0.0.0/0"),
 //				SecurityGroupId: secgroup1.ID(),
 //			})
@@ -142,6 +143,7 @@ func NewSecGroupRule(ctx *pulumi.Context,
 	if args.SecurityGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'SecurityGroupId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecGroupRule
 	err := ctx.RegisterResource("openstack:networking/secGroupRule:SecGroupRule", name, args, &resource, opts...)
 	if err != nil {

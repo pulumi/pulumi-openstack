@@ -38,6 +38,7 @@ class ProviderArgs:
                  project_domain_name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  swauth: Optional[pulumi.Input[bool]] = None,
+                 system_scope: Optional[pulumi.Input[bool]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  tenant_name: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
@@ -73,13 +74,14 @@ class ProviderArgs:
         :param pulumi.Input[str] project_domain_name: The name of the domain where the project resides (Identity v3).
         :param pulumi.Input[str] region: The OpenStack region to connect to.
         :param pulumi.Input[bool] swauth: Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
+        :param pulumi.Input[bool] system_scope: If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
         :param pulumi.Input[str] tenant_id: The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
         :param pulumi.Input[str] tenant_name: The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
         :param pulumi.Input[str] token: Authentication token to use as an alternative to username/password.
         :param pulumi.Input[bool] use_octavia: If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
         :param pulumi.Input[str] user_domain_id: The ID of the domain where the user resides (Identity v3).
         :param pulumi.Input[str] user_domain_name: The name of the domain where the user resides (Identity v3).
-        :param pulumi.Input[str] user_id: Username to login with.
+        :param pulumi.Input[str] user_id: User ID to login with.
         :param pulumi.Input[str] user_name: Username to login with.
         """
         if allow_reauth is None:
@@ -144,6 +146,8 @@ class ProviderArgs:
             swauth = _utilities.get_env_bool('OS_SWAUTH')
         if swauth is not None:
             pulumi.set(__self__, "swauth", swauth)
+        if system_scope is not None:
+            pulumi.set(__self__, "system_scope", system_scope)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
         if tenant_name is not None:
@@ -451,6 +455,18 @@ class ProviderArgs:
         pulumi.set(self, "swauth", value)
 
     @property
+    @pulumi.getter(name="systemScope")
+    def system_scope(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
+        """
+        return pulumi.get(self, "system_scope")
+
+    @system_scope.setter
+    def system_scope(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "system_scope", value)
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -526,7 +542,7 @@ class ProviderArgs:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Username to login with.
+        User ID to login with.
         """
         return pulumi.get(self, "user_id")
 
@@ -576,6 +592,7 @@ class Provider(pulumi.ProviderResource):
                  project_domain_name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  swauth: Optional[pulumi.Input[bool]] = None,
+                 system_scope: Optional[pulumi.Input[bool]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  tenant_name: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
@@ -618,13 +635,14 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] project_domain_name: The name of the domain where the project resides (Identity v3).
         :param pulumi.Input[str] region: The OpenStack region to connect to.
         :param pulumi.Input[bool] swauth: Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
+        :param pulumi.Input[bool] system_scope: If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
         :param pulumi.Input[str] tenant_id: The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
         :param pulumi.Input[str] tenant_name: The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
         :param pulumi.Input[str] token: Authentication token to use as an alternative to username/password.
         :param pulumi.Input[bool] use_octavia: If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
         :param pulumi.Input[str] user_domain_id: The ID of the domain where the user resides (Identity v3).
         :param pulumi.Input[str] user_domain_name: The name of the domain where the user resides (Identity v3).
-        :param pulumi.Input[str] user_id: Username to login with.
+        :param pulumi.Input[str] user_id: User ID to login with.
         :param pulumi.Input[str] user_name: Username to login with.
         """
         ...
@@ -678,6 +696,7 @@ class Provider(pulumi.ProviderResource):
                  project_domain_name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  swauth: Optional[pulumi.Input[bool]] = None,
+                 system_scope: Optional[pulumi.Input[bool]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  tenant_name: Optional[pulumi.Input[str]] = None,
                  token: Optional[pulumi.Input[str]] = None,
@@ -733,6 +752,7 @@ class Provider(pulumi.ProviderResource):
             if swauth is None:
                 swauth = _utilities.get_env_bool('OS_SWAUTH')
             __props__.__dict__["swauth"] = pulumi.Output.from_input(swauth).apply(pulumi.runtime.to_json) if swauth is not None else None
+            __props__.__dict__["system_scope"] = pulumi.Output.from_input(system_scope).apply(pulumi.runtime.to_json) if system_scope is not None else None
             __props__.__dict__["tenant_id"] = tenant_id
             __props__.__dict__["tenant_name"] = tenant_name
             __props__.__dict__["token"] = token
@@ -920,7 +940,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Username to login with.
+        User ID to login with.
         """
         return pulumi.get(self, "user_id")
 

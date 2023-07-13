@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -100,8 +101,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewInstance(ctx, "test-server", &compute.InstanceArgs{
-//				FlavorId: pulumi.String("3"),
 //				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
+//				FlavorId: pulumi.String("3"),
 //				KeyPair:  pulumi.String("my_key_pair_name"),
 //				SecurityGroups: pulumi.StringArray{
 //					openstack_compute_secgroup_v2.Secgroup_1.Name,
@@ -156,6 +157,7 @@ func NewSecGroup(ctx *pulumi.Context,
 	if args.Description == nil {
 		return nil, errors.New("invalid value for required argument 'Description'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecGroup
 	err := ctx.RegisterResource("openstack:compute/secGroup:SecGroup", name, args, &resource, opts...)
 	if err != nil {

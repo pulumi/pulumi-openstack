@@ -21,7 +21,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, api_address=None, cluster_template_id=None, coe_version=None, container_version=None, create_timeout=None, created_at=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, floating_ip_enabled=None, id=None, keypair=None, labels=None, master_addresses=None, master_count=None, master_flavor=None, name=None, node_addresses=None, node_count=None, project_id=None, region=None, stack_id=None, updated_at=None, user_id=None):
+    def __init__(__self__, api_address=None, cluster_template_id=None, coe_version=None, container_version=None, create_timeout=None, created_at=None, discovery_url=None, docker_volume_size=None, fixed_network=None, fixed_subnet=None, flavor=None, floating_ip_enabled=None, id=None, keypair=None, kubeconfig=None, labels=None, master_addresses=None, master_count=None, master_flavor=None, name=None, node_addresses=None, node_count=None, project_id=None, region=None, stack_id=None, updated_at=None, user_id=None):
         if api_address and not isinstance(api_address, str):
             raise TypeError("Expected argument 'api_address' to be a str")
         pulumi.set(__self__, "api_address", api_address)
@@ -64,6 +64,9 @@ class GetClusterResult:
         if keypair and not isinstance(keypair, str):
             raise TypeError("Expected argument 'keypair' to be a str")
         pulumi.set(__self__, "keypair", keypair)
+        if kubeconfig and not isinstance(kubeconfig, dict):
+            raise TypeError("Expected argument 'kubeconfig' to be a dict")
+        pulumi.set(__self__, "kubeconfig", kubeconfig)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -209,6 +212,14 @@ class GetClusterResult:
 
     @property
     @pulumi.getter
+    def kubeconfig(self) -> Mapping[str, str]:
+        """
+        The Kubernetes cluster's credentials
+        """
+        return pulumi.get(self, "kubeconfig")
+
+    @property
+    @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
         """
         The list of key value pairs representing additional properties of
@@ -325,6 +336,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             floating_ip_enabled=self.floating_ip_enabled,
             id=self.id,
             keypair=self.keypair,
+            kubeconfig=self.kubeconfig,
             labels=self.labels,
             master_addresses=self.master_addresses,
             master_count=self.master_count,
@@ -367,32 +379,33 @@ def get_cluster(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:containerinfra/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult).value
 
     return AwaitableGetClusterResult(
-        api_address=__ret__.api_address,
-        cluster_template_id=__ret__.cluster_template_id,
-        coe_version=__ret__.coe_version,
-        container_version=__ret__.container_version,
-        create_timeout=__ret__.create_timeout,
-        created_at=__ret__.created_at,
-        discovery_url=__ret__.discovery_url,
-        docker_volume_size=__ret__.docker_volume_size,
-        fixed_network=__ret__.fixed_network,
-        fixed_subnet=__ret__.fixed_subnet,
-        flavor=__ret__.flavor,
-        floating_ip_enabled=__ret__.floating_ip_enabled,
-        id=__ret__.id,
-        keypair=__ret__.keypair,
-        labels=__ret__.labels,
-        master_addresses=__ret__.master_addresses,
-        master_count=__ret__.master_count,
-        master_flavor=__ret__.master_flavor,
-        name=__ret__.name,
-        node_addresses=__ret__.node_addresses,
-        node_count=__ret__.node_count,
-        project_id=__ret__.project_id,
-        region=__ret__.region,
-        stack_id=__ret__.stack_id,
-        updated_at=__ret__.updated_at,
-        user_id=__ret__.user_id)
+        api_address=pulumi.get(__ret__, 'api_address'),
+        cluster_template_id=pulumi.get(__ret__, 'cluster_template_id'),
+        coe_version=pulumi.get(__ret__, 'coe_version'),
+        container_version=pulumi.get(__ret__, 'container_version'),
+        create_timeout=pulumi.get(__ret__, 'create_timeout'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        discovery_url=pulumi.get(__ret__, 'discovery_url'),
+        docker_volume_size=pulumi.get(__ret__, 'docker_volume_size'),
+        fixed_network=pulumi.get(__ret__, 'fixed_network'),
+        fixed_subnet=pulumi.get(__ret__, 'fixed_subnet'),
+        flavor=pulumi.get(__ret__, 'flavor'),
+        floating_ip_enabled=pulumi.get(__ret__, 'floating_ip_enabled'),
+        id=pulumi.get(__ret__, 'id'),
+        keypair=pulumi.get(__ret__, 'keypair'),
+        kubeconfig=pulumi.get(__ret__, 'kubeconfig'),
+        labels=pulumi.get(__ret__, 'labels'),
+        master_addresses=pulumi.get(__ret__, 'master_addresses'),
+        master_count=pulumi.get(__ret__, 'master_count'),
+        master_flavor=pulumi.get(__ret__, 'master_flavor'),
+        name=pulumi.get(__ret__, 'name'),
+        node_addresses=pulumi.get(__ret__, 'node_addresses'),
+        node_count=pulumi.get(__ret__, 'node_count'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        region=pulumi.get(__ret__, 'region'),
+        stack_id=pulumi.get(__ret__, 'stack_id'),
+        updated_at=pulumi.get(__ret__, 'updated_at'),
+        user_id=pulumi.get(__ret__, 'user_id'))
 
 
 @_utilities.lift_output_func(get_cluster)

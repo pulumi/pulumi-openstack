@@ -58,23 +58,23 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
- *             .cidr(&#34;192.168.1.0/24&#34;)
- *             .enableDhcp(true)
- *             .ipVersion(4)
  *             .networkId(network1.id())
+ *             .cidr(&#34;192.168.1.0/24&#34;)
+ *             .ipVersion(4)
+ *             .enableDhcp(true)
  *             .noGateway(true)
  *             .build());
  * 
  *         var parentPort1 = new Port(&#34;parentPort1&#34;, PortArgs.builder()        
- *             .adminStateUp(&#34;true&#34;)
  *             .networkId(network1.id())
+ *             .adminStateUp(&#34;true&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(&#34;openstack_networking_subnet_v2.subnet_1&#34;)
  *                 .build());
  * 
  *         var subport1 = new Port(&#34;subport1&#34;, PortArgs.builder()        
- *             .adminStateUp(&#34;true&#34;)
  *             .networkId(network1.id())
+ *             .adminStateUp(&#34;true&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(&#34;openstack_networking_subnet_v2.subnet_1&#34;)
  *                 .build());
@@ -90,10 +90,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        
+ *             .securityGroups(&#34;default&#34;)
  *             .networks(InstanceNetworkArgs.builder()
  *                 .port(trunk1.portId())
  *                 .build())
- *             .securityGroups(&#34;default&#34;)
  *             .build());
  * 
  *     }

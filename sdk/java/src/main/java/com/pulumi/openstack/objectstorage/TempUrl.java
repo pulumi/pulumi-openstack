@@ -63,8 +63,8 @@ import javax.annotation.Nullable;
  * 
  *         var objTempurl = new TempUrl(&#34;objTempurl&#34;, TempUrlArgs.builder()        
  *             .container(container1.name())
- *             .method(&#34;post&#34;)
  *             .object(object1.name())
+ *             .method(&#34;post&#34;)
  *             .ttl(20)
  *             .build());
  * 

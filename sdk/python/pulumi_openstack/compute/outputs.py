@@ -65,6 +65,7 @@ class InstanceBlockDevice(dict):
                  device_type: Optional[str] = None,
                  disk_bus: Optional[str] = None,
                  guest_format: Optional[str] = None,
+                 multiattach: Optional[bool] = None,
                  uuid: Optional[str] = None,
                  volume_size: Optional[int] = None,
                  volume_type: Optional[str] = None):
@@ -89,6 +90,8 @@ class InstanceBlockDevice(dict):
                must be local and only one swap disk per server and the size of the swap disk
                must be less than or equal to the swap size of the flavor. Changing this
                creates a new server.
+        :param bool multiattach: Enable the attachment of multiattach-capable
+               volumes.
         :param str uuid: The UUID of
                the image, volume, or snapshot. Changing this creates a new server.
         :param int volume_size: The size of the volume to create (in gigabytes). Required
@@ -113,6 +116,8 @@ class InstanceBlockDevice(dict):
             pulumi.set(__self__, "disk_bus", disk_bus)
         if guest_format is not None:
             pulumi.set(__self__, "guest_format", guest_format)
+        if multiattach is not None:
+            pulumi.set(__self__, "multiattach", multiattach)
         if uuid is not None:
             pulumi.set(__self__, "uuid", uuid)
         if volume_size is not None:
@@ -188,6 +193,15 @@ class InstanceBlockDevice(dict):
         creates a new server.
         """
         return pulumi.get(self, "guest_format")
+
+    @property
+    @pulumi.getter
+    def multiattach(self) -> Optional[bool]:
+        """
+        Enable the attachment of multiattach-capable
+        volumes.
+        """
+        return pulumi.get(self, "multiattach")
 
     @property
     @pulumi.getter
@@ -310,6 +324,9 @@ class InstanceNetwork(dict):
     @property
     @pulumi.getter(name="floatingIp")
     def floating_ip(self) -> Optional[str]:
+        warnings.warn("""Use the openstack_compute_floatingip_associate_v2 resource instead""", DeprecationWarning)
+        pulumi.log.warn("""floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead""")
+
         return pulumi.get(self, "floating_ip")
 
     @property

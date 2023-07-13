@@ -153,8 +153,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly personalities!: pulumi.Output<outputs.compute.InstancePersonality[] | undefined>;
     /**
-     * Provide the VM state. Only 'active' and 'shutoff'
-     * are supported values. *Note*: If the initial powerState is the shutoff
+     * Provide the VM state. Only 'active', 'shutoff'
+     * and 'shelved_offloaded' are supported values.
+     * *Note*: If the initial powerState is the shutoff
      * the VM will be stopped immediately after build and the provisioners like
      * remote-exec or files are not supported.
      */
@@ -419,8 +420,9 @@ export interface InstanceState {
      */
     personalities?: pulumi.Input<pulumi.Input<inputs.compute.InstancePersonality>[]>;
     /**
-     * Provide the VM state. Only 'active' and 'shutoff'
-     * are supported values. *Note*: If the initial powerState is the shutoff
+     * Provide the VM state. Only 'active', 'shutoff'
+     * and 'shelved_offloaded' are supported values.
+     * *Note*: If the initial powerState is the shutoff
      * the VM will be stopped immediately after build and the provisioners like
      * remote-exec or files are not supported.
      */
@@ -589,8 +591,9 @@ export interface InstanceArgs {
      */
     personalities?: pulumi.Input<pulumi.Input<inputs.compute.InstancePersonality>[]>;
     /**
-     * Provide the VM state. Only 'active' and 'shutoff'
-     * are supported values. *Note*: If the initial powerState is the shutoff
+     * Provide the VM state. Only 'active', 'shutoff'
+     * and 'shelved_offloaded' are supported values.
+     * *Note*: If the initial powerState is the shutoff
      * the VM will be stopped immediately after build and the provisioners like
      * remote-exec or files are not supported.
      */

@@ -32,6 +32,7 @@ class InstanceBlockDeviceArgs:
                  device_type: Optional[pulumi.Input[str]] = None,
                  disk_bus: Optional[pulumi.Input[str]] = None,
                  guest_format: Optional[pulumi.Input[str]] = None,
+                 multiattach: Optional[pulumi.Input[bool]] = None,
                  uuid: Optional[pulumi.Input[str]] = None,
                  volume_size: Optional[pulumi.Input[int]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
@@ -56,6 +57,8 @@ class InstanceBlockDeviceArgs:
                must be local and only one swap disk per server and the size of the swap disk
                must be less than or equal to the swap size of the flavor. Changing this
                creates a new server.
+        :param pulumi.Input[bool] multiattach: Enable the attachment of multiattach-capable
+               volumes.
         :param pulumi.Input[str] uuid: The UUID of
                the image, volume, or snapshot. Changing this creates a new server.
         :param pulumi.Input[int] volume_size: The size of the volume to create (in gigabytes). Required
@@ -80,6 +83,8 @@ class InstanceBlockDeviceArgs:
             pulumi.set(__self__, "disk_bus", disk_bus)
         if guest_format is not None:
             pulumi.set(__self__, "guest_format", guest_format)
+        if multiattach is not None:
+            pulumi.set(__self__, "multiattach", multiattach)
         if uuid is not None:
             pulumi.set(__self__, "uuid", uuid)
         if volume_size is not None:
@@ -183,6 +188,19 @@ class InstanceBlockDeviceArgs:
     @guest_format.setter
     def guest_format(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "guest_format", value)
+
+    @property
+    @pulumi.getter
+    def multiattach(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the attachment of multiattach-capable
+        volumes.
+        """
+        return pulumi.get(self, "multiattach")
+
+    @multiattach.setter
+    def multiattach(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multiattach", value)
 
     @property
     @pulumi.getter
@@ -309,6 +327,9 @@ class InstanceNetworkArgs:
     @property
     @pulumi.getter(name="floatingIp")
     def floating_ip(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Use the openstack_compute_floatingip_associate_v2 resource instead""", DeprecationWarning)
+        pulumi.log.warn("""floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead""")
+
         return pulumi.get(self, "floating_ip")
 
     @floating_ip.setter

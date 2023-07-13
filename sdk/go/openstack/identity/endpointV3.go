@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,8 +37,8 @@ import (
 //				return err
 //			}
 //			_, err = identity.NewEndpointV3(ctx, "endpoint1", &identity.EndpointV3Args{
-//				EndpointRegion: service1.Region,
 //				ServiceId:      service1.ID(),
+//				EndpointRegion: service1.Region,
 //				Url:            pulumi.String("http://my-endpoint"),
 //			})
 //			if err != nil {
@@ -98,6 +99,7 @@ func NewEndpointV3(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EndpointV3
 	err := ctx.RegisterResource("openstack:identity/endpointV3:EndpointV3", name, args, &resource, opts...)
 	if err != nil {

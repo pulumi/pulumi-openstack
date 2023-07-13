@@ -51,9 +51,9 @@ import javax.annotation.Nullable;
  *         var secgroupRule1 = new SecGroupRule(&#34;secgroupRule1&#34;, SecGroupRuleArgs.builder()        
  *             .direction(&#34;ingress&#34;)
  *             .ethertype(&#34;IPv4&#34;)
- *             .portRangeMax(22)
- *             .portRangeMin(22)
  *             .protocol(&#34;tcp&#34;)
+ *             .portRangeMin(22)
+ *             .portRangeMax(22)
  *             .remoteIpPrefix(&#34;0.0.0.0/0&#34;)
  *             .securityGroupId(secgroup1.id())
  *             .build());

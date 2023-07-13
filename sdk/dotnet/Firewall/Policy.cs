@@ -16,6 +16,7 @@ namespace Pulumi.OpenStack.Firewall
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -23,20 +24,20 @@ namespace Pulumi.OpenStack.Firewall
     /// {
     ///     var rule1 = new OpenStack.Firewall.Rule("rule1", new()
     ///     {
-    ///         Action = "deny",
     ///         Description = "drop TELNET traffic",
+    ///         Action = "deny",
+    ///         Protocol = "tcp",
     ///         DestinationPort = "23",
     ///         Enabled = true,
-    ///         Protocol = "tcp",
     ///     });
     /// 
     ///     var rule2 = new OpenStack.Firewall.Rule("rule2", new()
     ///     {
-    ///         Action = "deny",
     ///         Description = "drop NTP traffic",
+    ///         Action = "deny",
+    ///         Protocol = "udp",
     ///         DestinationPort = "123",
     ///         Enabled = false,
-    ///         Protocol = "udp",
     ///     });
     /// 
     ///     var policy1 = new OpenStack.Firewall.Policy("policy1", new()

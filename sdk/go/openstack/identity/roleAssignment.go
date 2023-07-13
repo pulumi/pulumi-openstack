@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,9 +46,9 @@ import (
 //				return err
 //			}
 //			_, err = identity.NewRoleAssignment(ctx, "roleAssignment1", &identity.RoleAssignmentArgs{
+//				UserId:    user1.ID(),
 //				ProjectId: project1.ID(),
 //				RoleId:    role1.ID(),
-//				UserId:    user1.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -55,6 +56,18 @@ import (
 //			return nil
 //		})
 //	}
+//
+// ```
+//
+// ## Import
+//
+// Role assignments can be imported using a constructed id. The id should have the form of `domainID/projectID/groupID/userID/roleID`. When something is not used then leave blank. For example this will import the role assignment for:
+//
+// projectID014395cd-89fc-4c9b-96b7-13d1ee79dad2, userID4142e64b-1b35-44a0-9b1e-5affc7af1106, roleIDea257959-eeb1-4c10-8d33-26f0409a755d ( domainID and groupID are left blank)
+//
+// ```sh
+//
+//	$ pulumi import openstack:identity/roleAssignment:RoleAssignment role_assignment_1 /014395cd-89fc-4c9b-96b7-13d1ee79dad2//4142e64b-1b35-44a0-9b1e-5affc7af1106/ea257959-eeb1-4c10-8d33-26f0409a755d
 //
 // ```
 type RoleAssignment struct {
@@ -83,6 +96,7 @@ func NewRoleAssignment(ctx *pulumi.Context,
 	if args.RoleId == nil {
 		return nil, errors.New("invalid value for required argument 'RoleId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RoleAssignment
 	err := ctx.RegisterResource("openstack:identity/roleAssignment:RoleAssignment", name, args, &resource, opts...)
 	if err != nil {

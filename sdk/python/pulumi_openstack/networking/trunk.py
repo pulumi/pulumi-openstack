@@ -371,18 +371,18 @@ class Trunk(pulumi.CustomResource):
 
         network1 = openstack.networking.Network("network1", admin_state_up=True)
         subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="192.168.1.0/24",
-            enable_dhcp=True,
-            ip_version=4,
             network_id=network1.id,
+            cidr="192.168.1.0/24",
+            ip_version=4,
+            enable_dhcp=True,
             no_gateway=True)
         parent_port1 = openstack.networking.Port("parentPort1",
-            admin_state_up=True,
             network_id=network1.id,
+            admin_state_up=True,
             opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
         subport1 = openstack.networking.Port("subport1",
-            admin_state_up=True,
             network_id=network1.id,
+            admin_state_up=True,
             opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
         trunk1 = openstack.networking.Trunk("trunk1",
             admin_state_up=True,
@@ -393,10 +393,10 @@ class Trunk(pulumi.CustomResource):
                 segmentation_type="vlan",
             )])
         instance1 = openstack.compute.Instance("instance1",
+            security_groups=["default"],
             networks=[openstack.compute.InstanceNetworkArgs(
                 port=trunk1.port_id,
-            )],
-            security_groups=["default"])
+            )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -438,18 +438,18 @@ class Trunk(pulumi.CustomResource):
 
         network1 = openstack.networking.Network("network1", admin_state_up=True)
         subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="192.168.1.0/24",
-            enable_dhcp=True,
-            ip_version=4,
             network_id=network1.id,
+            cidr="192.168.1.0/24",
+            ip_version=4,
+            enable_dhcp=True,
             no_gateway=True)
         parent_port1 = openstack.networking.Port("parentPort1",
-            admin_state_up=True,
             network_id=network1.id,
+            admin_state_up=True,
             opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
         subport1 = openstack.networking.Port("subport1",
-            admin_state_up=True,
             network_id=network1.id,
+            admin_state_up=True,
             opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
         trunk1 = openstack.networking.Trunk("trunk1",
             admin_state_up=True,
@@ -460,10 +460,10 @@ class Trunk(pulumi.CustomResource):
                 segmentation_type="vlan",
             )])
         instance1 = openstack.compute.Instance("instance1",
+            security_groups=["default"],
             networks=[openstack.compute.InstanceNetworkArgs(
                 port=trunk1.port_id,
-            )],
-            security_groups=["default"])
+            )])
         ```
 
         :param str resource_name: The name of the resource.

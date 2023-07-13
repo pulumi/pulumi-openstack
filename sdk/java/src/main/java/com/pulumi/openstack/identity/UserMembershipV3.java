@@ -64,8 +64,8 @@ import javax.annotation.Nullable;
  *         var role1 = new Role(&#34;role1&#34;);
  * 
  *         var userMembership1 = new UserMembershipV3(&#34;userMembership1&#34;, UserMembershipV3Args.builder()        
- *             .groupId(group1.id())
  *             .userId(user1.id())
+ *             .groupId(group1.id())
  *             .build());
  * 
  *         var roleAssignment1 = new RoleAssignment(&#34;roleAssignment1&#34;, RoleAssignmentArgs.builder()        
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  * This resource can be imported by specifying all two arguments, separated by a forward slash
  * 
  * ```sh
- *  $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 &lt;user_id&gt;/&lt;group_id&gt;
+ *  $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
  * ```
  * 
  */

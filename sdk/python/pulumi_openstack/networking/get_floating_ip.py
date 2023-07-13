@@ -212,19 +212,19 @@ def get_floating_ip(address: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:networking/getFloatingIp:getFloatingIp', __args__, opts=opts, typ=GetFloatingIpResult).value
 
     return AwaitableGetFloatingIpResult(
-        address=__ret__.address,
-        all_tags=__ret__.all_tags,
-        description=__ret__.description,
-        dns_domain=__ret__.dns_domain,
-        dns_name=__ret__.dns_name,
-        fixed_ip=__ret__.fixed_ip,
-        id=__ret__.id,
-        pool=__ret__.pool,
-        port_id=__ret__.port_id,
-        region=__ret__.region,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        tenant_id=__ret__.tenant_id)
+        address=pulumi.get(__ret__, 'address'),
+        all_tags=pulumi.get(__ret__, 'all_tags'),
+        description=pulumi.get(__ret__, 'description'),
+        dns_domain=pulumi.get(__ret__, 'dns_domain'),
+        dns_name=pulumi.get(__ret__, 'dns_name'),
+        fixed_ip=pulumi.get(__ret__, 'fixed_ip'),
+        id=pulumi.get(__ret__, 'id'),
+        pool=pulumi.get(__ret__, 'pool'),
+        port_id=pulumi.get(__ret__, 'port_id'),
+        region=pulumi.get(__ret__, 'region'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        tenant_id=pulumi.get(__ret__, 'tenant_id'))
 
 
 @_utilities.lift_output_func(get_floating_ip)

@@ -36,6 +36,9 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const secret1 = new openstack.keymanager.SecretV1("secret1", {
+ *     payload: fs.readFileSync("certificate.pem"),
+ *     secretType: "certificate",
+ *     payloadContentType: "text/plain",
  *     acl: {
  *         read: {
  *             projectAccess: false,
@@ -45,9 +48,6 @@ import * as utilities from "../utilities";
  *             ],
  *         },
  *     },
- *     payload: fs.readFileSync("certificate.pem"),
- *     payloadContentType: "text/plain",
- *     secretType: "certificate",
  * });
  * ```
  *

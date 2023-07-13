@@ -49,6 +49,11 @@ public final class GetProjectResult {
      */
     private @Nullable String parentId;
     /**
+     * @return See Argument Reference above.
+     * 
+     */
+    private @Nullable String projectId;
+    /**
      * @return The region the project is located in.
      * 
      */
@@ -110,6 +115,13 @@ public final class GetProjectResult {
         return Optional.ofNullable(this.parentId);
     }
     /**
+     * @return See Argument Reference above.
+     * 
+     */
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+    /**
      * @return The region the project is located in.
      * 
      */
@@ -140,6 +152,7 @@ public final class GetProjectResult {
         private @Nullable Boolean isDomain;
         private @Nullable String name;
         private @Nullable String parentId;
+        private @Nullable String projectId;
         private String region;
         private List<String> tags;
         public Builder() {}
@@ -152,6 +165,7 @@ public final class GetProjectResult {
     	      this.isDomain = defaults.isDomain;
     	      this.name = defaults.name;
     	      this.parentId = defaults.parentId;
+    	      this.projectId = defaults.projectId;
     	      this.region = defaults.region;
     	      this.tags = defaults.tags;
         }
@@ -192,6 +206,11 @@ public final class GetProjectResult {
             return this;
         }
         @CustomType.Setter
+        public Builder projectId(@Nullable String projectId) {
+            this.projectId = projectId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
@@ -213,6 +232,7 @@ public final class GetProjectResult {
             o.isDomain = isDomain;
             o.name = name;
             o.parentId = parentId;
+            o.projectId = projectId;
             o.region = region;
             o.tags = tags;
             return o;

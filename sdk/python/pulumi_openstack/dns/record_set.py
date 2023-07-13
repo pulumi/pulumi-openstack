@@ -14,18 +14,19 @@ __all__ = ['RecordSetArgs', 'RecordSet']
 @pulumi.input_type
 class RecordSetArgs:
     def __init__(__self__, *,
+                 records: pulumi.Input[Sequence[pulumi.Input[str]]],
                  zone_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  disable_status_check: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 records: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a RecordSet resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records.
         :param pulumi.Input[str] zone_id: The ID of the zone in which to create the record set.
                Changing this creates a new DNS  record set.
         :param pulumi.Input[str] description: A description of the  record set.
@@ -37,9 +38,6 @@ class RecordSetArgs:
         :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
                for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
                user role in target project)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records. _Note:_ if an IPv6 address
-               contains brackets (`[ ]`), the brackets will be stripped and the modified
-               address will be recorded in the state.
         :param pulumi.Input[str] region: The region in which to obtain the V2 DNS client.
                If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS  record set.
@@ -49,6 +47,7 @@ class RecordSetArgs:
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
                new record set.
         """
+        pulumi.set(__self__, "records", records)
         pulumi.set(__self__, "zone_id", zone_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -58,8 +57,6 @@ class RecordSetArgs:
             pulumi.set(__self__, "name", name)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
-        if records is not None:
-            pulumi.set(__self__, "records", records)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if ttl is not None:
@@ -68,6 +65,18 @@ class RecordSetArgs:
             pulumi.set(__self__, "type", type)
         if value_specs is not None:
             pulumi.set(__self__, "value_specs", value_specs)
+
+    @property
+    @pulumi.getter
+    def records(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        An array of DNS records.
+        """
+        return pulumi.get(self, "records")
+
+    @records.setter
+    def records(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "records", value)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -134,20 +143,6 @@ class RecordSetArgs:
     @project_id.setter
     def project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id", value)
-
-    @property
-    @pulumi.getter
-    def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        An array of DNS records. _Note:_ if an IPv6 address
-        contains brackets (`[ ]`), the brackets will be stripped and the modified
-        address will be recorded in the state.
-        """
-        return pulumi.get(self, "records")
-
-    @records.setter
-    def records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "records", value)
 
     @property
     @pulumi.getter
@@ -226,9 +221,7 @@ class _RecordSetState:
         :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
                for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
                user role in target project)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records. _Note:_ if an IPv6 address
-               contains brackets (`[ ]`), the brackets will be stripped and the modified
-               address will be recorded in the state.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records.
         :param pulumi.Input[str] region: The region in which to obtain the V2 DNS client.
                If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS  record set.
@@ -318,9 +311,7 @@ class _RecordSetState:
     @pulumi.getter
     def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        An array of DNS records. _Note:_ if an IPv6 address
-        contains brackets (`[ ]`), the brackets will be stripped and the modified
-        address will be recorded in the state.
+        An array of DNS records.
         """
         return pulumi.get(self, "records")
 
@@ -421,16 +412,16 @@ class RecordSet(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         example_zone = openstack.dns.Zone("exampleZone",
-            description="a zone",
             email="email2@example.com",
+            description="a zone",
             ttl=6000,
             type="PRIMARY")
         rs_example_com = openstack.dns.RecordSet("rsExampleCom",
+            zone_id=example_zone.id,
             description="An example record set",
-            records=["10.0.0.1"],
             ttl=3000,
             type="A",
-            zone_id=example_zone.id)
+            records=["10.0.0.1"])
         ```
 
         ## Import
@@ -438,7 +429,7 @@ class RecordSet(pulumi.CustomResource):
         This resource can be imported by specifying the zone ID and recordset ID, separated by a forward slash.
 
         ```sh
-         $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 <zone_id>/<recordset_id>
+         $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 zone_id/recordset_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -452,9 +443,7 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
                for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
                user role in target project)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records. _Note:_ if an IPv6 address
-               contains brackets (`[ ]`), the brackets will be stripped and the modified
-               address will be recorded in the state.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records.
         :param pulumi.Input[str] region: The region in which to obtain the V2 DNS client.
                If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS  record set.
@@ -483,16 +472,16 @@ class RecordSet(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         example_zone = openstack.dns.Zone("exampleZone",
-            description="a zone",
             email="email2@example.com",
+            description="a zone",
             ttl=6000,
             type="PRIMARY")
         rs_example_com = openstack.dns.RecordSet("rsExampleCom",
+            zone_id=example_zone.id,
             description="An example record set",
-            records=["10.0.0.1"],
             ttl=3000,
             type="A",
-            zone_id=example_zone.id)
+            records=["10.0.0.1"])
         ```
 
         ## Import
@@ -500,7 +489,7 @@ class RecordSet(pulumi.CustomResource):
         This resource can be imported by specifying the zone ID and recordset ID, separated by a forward slash.
 
         ```sh
-         $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 <zone_id>/<recordset_id>
+         $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 zone_id/recordset_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -541,6 +530,8 @@ class RecordSet(pulumi.CustomResource):
             __props__.__dict__["disable_status_check"] = disable_status_check
             __props__.__dict__["name"] = name
             __props__.__dict__["project_id"] = project_id
+            if records is None and not opts.urn:
+                raise TypeError("Missing required property 'records'")
             __props__.__dict__["records"] = records
             __props__.__dict__["region"] = region
             __props__.__dict__["ttl"] = ttl
@@ -585,9 +576,7 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
                for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
                user role in target project)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records. _Note:_ if an IPv6 address
-               contains brackets (`[ ]`), the brackets will be stripped and the modified
-               address will be recorded in the state.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records.
         :param pulumi.Input[str] region: The region in which to obtain the V2 DNS client.
                If omitted, the `region` argument of the provider is used.
                Changing this creates a new DNS  record set.
@@ -654,11 +643,9 @@ class RecordSet(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def records(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def records(self) -> pulumi.Output[Sequence[str]]:
         """
-        An array of DNS records. _Note:_ if an IPv6 address
-        contains brackets (`[ ]`), the brackets will be stripped and the modified
-        address will be recorded in the state.
+        An array of DNS records.
         """
         return pulumi.get(self, "records")
 

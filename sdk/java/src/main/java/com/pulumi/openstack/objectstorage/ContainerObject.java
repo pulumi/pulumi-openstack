@@ -47,22 +47,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var container1 = new Container(&#34;container1&#34;, ContainerArgs.builder()        
- *             .contentType(&#34;application/json&#34;)
- *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
  *             .region(&#34;RegionOne&#34;)
+ *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
+ *             .contentType(&#34;application/json&#34;)
  *             .build());
  * 
  *         var doc1 = new ContainerObject(&#34;doc1&#34;, ContainerObjectArgs.builder()        
+ *             .region(&#34;RegionOne&#34;)
  *             .containerName(container1.name())
+ *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
+ *             .contentType(&#34;application/json&#34;)
  *             .content(&#34;&#34;&#34;
  *                {
  *                  &#34;foo&#34; : &#34;bar&#34;
  *                }
- * 
  *             &#34;&#34;&#34;)
- *             .contentType(&#34;application/json&#34;)
- *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
- *             .region(&#34;RegionOne&#34;)
  *             .build());
  * 
  *     }
@@ -93,16 +92,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var container1 = new Container(&#34;container1&#34;, ContainerArgs.builder()        
- *             .contentType(&#34;application/json&#34;)
- *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
  *             .region(&#34;RegionOne&#34;)
+ *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
+ *             .contentType(&#34;application/json&#34;)
  *             .build());
  * 
  *         var doc1 = new ContainerObject(&#34;doc1&#34;, ContainerObjectArgs.builder()        
- *             .containerName(container1.name())
- *             .contentType(&#34;application/json&#34;)
- *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
  *             .region(&#34;RegionOne&#34;)
+ *             .containerName(container1.name())
+ *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
+ *             .contentType(&#34;application/json&#34;)
  *             .source(&#34;./default.json&#34;)
  *             .build());
  * 

@@ -17,6 +17,7 @@ namespace Pulumi.OpenStack.Dns
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -38,11 +39,11 @@ namespace Pulumi.OpenStack.Dns
     /// This resource can be imported by specifying the zone ID with optional project ID
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:dns/zone:Zone zone_1 &lt;zone_id&gt;
+    ///  $ pulumi import openstack:dns/zone:Zone zone_1 zone_id
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:dns/zone:Zone zone_1 &lt;zone_id&gt;:&lt;project_id&gt;
+    ///  $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:dns/zone:Zone")]

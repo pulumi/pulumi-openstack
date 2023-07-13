@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func GetInstanceV2(ctx *pulumi.Context, args *GetInstanceV2Args, opts ...pulumi.InvokeOption) (*GetInstanceV2Result, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceV2Result
 	err := ctx.Invoke("openstack:compute/getInstanceV2:getInstanceV2", args, &rv, opts...)
 	if err != nil {

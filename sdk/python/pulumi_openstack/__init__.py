@@ -5,6 +5,9 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .get_fw_group_v2 import *
+from .get_fw_policy_v2 import *
+from .get_fw_rule_v2 import *
 from .provider import *
 
 # Make subpackages available:
@@ -344,6 +347,14 @@ _utilities.register(
  },
  {
   "pkg": "openstack",
+  "mod": "firewall/groupV2",
+  "fqn": "pulumi_openstack.firewall",
+  "classes": {
+   "openstack:firewall/groupV2:GroupV2": "GroupV2"
+  }
+ },
+ {
+  "pkg": "openstack",
   "mod": "firewall/policy",
   "fqn": "pulumi_openstack.firewall",
   "classes": {
@@ -352,10 +363,26 @@ _utilities.register(
  },
  {
   "pkg": "openstack",
+  "mod": "firewall/policyV2",
+  "fqn": "pulumi_openstack.firewall",
+  "classes": {
+   "openstack:firewall/policyV2:PolicyV2": "PolicyV2"
+  }
+ },
+ {
+  "pkg": "openstack",
   "mod": "firewall/rule",
   "fqn": "pulumi_openstack.firewall",
   "classes": {
    "openstack:firewall/rule:Rule": "Rule"
+  }
+ },
+ {
+  "pkg": "openstack",
+  "mod": "firewall/ruleV2",
+  "fqn": "pulumi_openstack.firewall",
+  "classes": {
+   "openstack:firewall/ruleV2:RuleV2": "RuleV2"
   }
  },
  {
@@ -388,6 +415,14 @@ _utilities.register(
   "fqn": "pulumi_openstack.identity",
   "classes": {
    "openstack:identity/groupV3:GroupV3": "GroupV3"
+  }
+ },
+ {
+  "pkg": "openstack",
+  "mod": "identity/inheritRoleAssignment",
+  "fqn": "pulumi_openstack.identity",
+  "classes": {
+   "openstack:identity/inheritRoleAssignment:InheritRoleAssignment": "InheritRoleAssignment"
   }
  },
  {

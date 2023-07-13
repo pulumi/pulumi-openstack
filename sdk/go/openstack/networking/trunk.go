@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,18 +36,18 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
-//				Cidr:       pulumi.String("192.168.1.0/24"),
-//				EnableDhcp: pulumi.Bool(true),
-//				IpVersion:  pulumi.Int(4),
 //				NetworkId:  network1.ID(),
+//				Cidr:       pulumi.String("192.168.1.0/24"),
+//				IpVersion:  pulumi.Int(4),
+//				EnableDhcp: pulumi.Bool(true),
 //				NoGateway:  pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			parentPort1, err := networking.NewPort(ctx, "parentPort1", &networking.PortArgs{
-//				AdminStateUp: pulumi.Bool(true),
 //				NetworkId:    network1.ID(),
+//				AdminStateUp: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				pulumi.Resource("openstack_networking_subnet_v2.subnet_1"),
 //			}))
@@ -54,8 +55,8 @@ import (
 //				return err
 //			}
 //			subport1, err := networking.NewPort(ctx, "subport1", &networking.PortArgs{
-//				AdminStateUp: pulumi.Bool(true),
 //				NetworkId:    network1.ID(),
+//				AdminStateUp: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				pulumi.Resource("openstack_networking_subnet_v2.subnet_1"),
 //			}))
@@ -77,13 +78,13 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
 //				Networks: compute.InstanceNetworkArray{
 //					&compute.InstanceNetworkArgs{
 //						Port: trunk1.PortId,
 //					},
-//				},
-//				SecurityGroups: pulumi.StringArray{
-//					pulumi.String("default"),
 //				},
 //			})
 //			if err != nil {
@@ -139,6 +140,7 @@ func NewTrunk(ctx *pulumi.Context,
 	if args.PortId == nil {
 		return nil, errors.New("invalid value for required argument 'PortId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Trunk
 	err := ctx.RegisterResource("openstack:networking/trunk:Trunk", name, args, &resource, opts...)
 	if err != nil {

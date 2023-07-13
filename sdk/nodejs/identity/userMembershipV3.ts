@@ -23,8 +23,8 @@ import * as utilities from "../utilities";
  * const group1 = new openstack.identity.GroupV3("group1", {description: "group 1"});
  * const role1 = new openstack.identity.Role("role1", {});
  * const userMembership1 = new openstack.identity.UserMembershipV3("userMembership1", {
- *     groupId: group1.id,
  *     userId: user1.id,
+ *     groupId: group1.id,
  * });
  * const roleAssignment1 = new openstack.identity.RoleAssignment("roleAssignment1", {
  *     groupId: group1.id,
@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * This resource can be imported by specifying all two arguments, separated by a forward slash
  *
  * ```sh
- *  $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 <user_id>/<group_id>
+ *  $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
  * ```
  */
 export class UserMembershipV3 extends pulumi.CustomResource {

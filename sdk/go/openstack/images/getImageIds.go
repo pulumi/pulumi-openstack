@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetImageIds(ctx *pulumi.Context, args *GetImageIdsArgs, opts ...pulumi.InvokeOption) (*GetImageIdsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetImageIdsResult
 	err := ctx.Invoke("openstack:images/getImageIds:getImageIds", args, &rv, opts...)
 	if err != nil {

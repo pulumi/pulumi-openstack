@@ -294,13 +294,13 @@ class TransferRequest(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         example_zone = openstack.dns.Zone("exampleZone",
-            description="An example zone",
             email="jdoe@example.com",
+            description="An example zone",
             ttl=3000,
             type="PRIMARY")
         request1 = openstack.dns.TransferRequest("request1",
-            description="a transfer request",
-            zone_id=example_zone.id)
+            zone_id=example_zone.id,
+            description="a transfer request")
         ```
 
         ## Import
@@ -308,7 +308,7 @@ class TransferRequest(pulumi.CustomResource):
         This resource can be imported by specifying the transferRequest ID
 
         ```sh
-         $ pulumi import openstack:dns/transferRequest:TransferRequest request_1 <request_id>
+         $ pulumi import openstack:dns/transferRequest:TransferRequest request_1 request_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -344,13 +344,13 @@ class TransferRequest(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         example_zone = openstack.dns.Zone("exampleZone",
-            description="An example zone",
             email="jdoe@example.com",
+            description="An example zone",
             ttl=3000,
             type="PRIMARY")
         request1 = openstack.dns.TransferRequest("request1",
-            description="a transfer request",
-            zone_id=example_zone.id)
+            zone_id=example_zone.id,
+            description="a transfer request")
         ```
 
         ## Import
@@ -358,7 +358,7 @@ class TransferRequest(pulumi.CustomResource):
         This resource can be imported by specifying the transferRequest ID
 
         ```sh
-         $ pulumi import openstack:dns/transferRequest:TransferRequest request_1 <request_id>
+         $ pulumi import openstack:dns/transferRequest:TransferRequest request_1 request_id
         ```
 
         :param str resource_name: The name of the resource.

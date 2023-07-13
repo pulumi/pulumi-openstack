@@ -222,6 +222,12 @@ class User(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manages a V1 DB user resource within OpenStack.
+
+        > **Note:** All arguments including the database password will be stored in the
+        raw state as plain-text. Read more about sensitive data in
+        state.
+
         ## Example Usage
         ### User
 
@@ -230,9 +236,9 @@ class User(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         basic = openstack.database.User("basic",
-            databases=["testdb"],
             instance_id=openstack_db_instance_v1["basic"]["id"],
-            password="password")
+            password="password",
+            databases=["testdb"])
         ```
 
         :param str resource_name: The name of the resource.
@@ -250,6 +256,12 @@ class User(pulumi.CustomResource):
                  args: UserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a V1 DB user resource within OpenStack.
+
+        > **Note:** All arguments including the database password will be stored in the
+        raw state as plain-text. Read more about sensitive data in
+        state.
+
         ## Example Usage
         ### User
 
@@ -258,9 +270,9 @@ class User(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         basic = openstack.database.User("basic",
-            databases=["testdb"],
             instance_id=openstack_db_instance_v1["basic"]["id"],
-            password="password")
+            password="password",
+            databases=["testdb"])
         ```
 
         :param str resource_name: The name of the resource.

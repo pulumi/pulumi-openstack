@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,8 +51,8 @@ import (
 //			}
 //			_, err = objectstorage.NewTempUrl(ctx, "objTempurl", &objectstorage.TempUrlArgs{
 //				Container: container1.Name,
-//				Method:    pulumi.String("post"),
 //				Object:    object1.Name,
+//				Method:    pulumi.String("post"),
 //				Ttl:       pulumi.Int(20),
 //			})
 //			if err != nil {
@@ -106,6 +107,7 @@ func NewTempUrl(ctx *pulumi.Context,
 		"url",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TempUrl
 	err := ctx.RegisterResource("openstack:objectstorage/tempUrl:TempUrl", name, args, &resource, opts...)
 	if err != nil {

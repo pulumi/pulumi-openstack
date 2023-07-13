@@ -231,16 +231,16 @@ class TransferAccept(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         example_zone = openstack.dns.Zone("exampleZone",
-            description="An example zone",
             email="jdoe@example.com",
+            description="An example zone",
             ttl=3000,
             type="PRIMARY")
         request1 = openstack.dns.TransferRequest("request1",
-            description="a transfer accept",
-            zone_id=example_zone.id)
+            zone_id=example_zone.id,
+            description="a transfer accept")
         accept1 = openstack.dns.TransferAccept("accept1",
-            key=request1.key,
-            zone_transfer_request_id=request1.id)
+            zone_transfer_request_id=request1.id,
+            key=request1.key)
         ```
 
         ## Import
@@ -248,7 +248,7 @@ class TransferAccept(pulumi.CustomResource):
         This resource can be imported by specifying the transferAccept ID
 
         ```sh
-         $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 <accept_id>
+         $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 accept_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -282,16 +282,16 @@ class TransferAccept(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         example_zone = openstack.dns.Zone("exampleZone",
-            description="An example zone",
             email="jdoe@example.com",
+            description="An example zone",
             ttl=3000,
             type="PRIMARY")
         request1 = openstack.dns.TransferRequest("request1",
-            description="a transfer accept",
-            zone_id=example_zone.id)
+            zone_id=example_zone.id,
+            description="a transfer accept")
         accept1 = openstack.dns.TransferAccept("accept1",
-            key=request1.key,
-            zone_transfer_request_id=request1.id)
+            zone_transfer_request_id=request1.id,
+            key=request1.key)
         ```
 
         ## Import
@@ -299,7 +299,7 @@ class TransferAccept(pulumi.CustomResource):
         This resource can be imported by specifying the transferAccept ID
 
         ```sh
-         $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 <accept_id>
+         $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 accept_id
         ```
 
         :param str resource_name: The name of the resource.

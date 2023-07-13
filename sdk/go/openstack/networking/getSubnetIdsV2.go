@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func GetSubnetIdsV2(ctx *pulumi.Context, args *GetSubnetIdsV2Args, opts ...pulumi.InvokeOption) (*GetSubnetIdsV2Result, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSubnetIdsV2Result
 	err := ctx.Invoke("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", args, &rv, opts...)
 	if err != nil {

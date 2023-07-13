@@ -48,10 +48,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bwLimitRule1 = new QosBandwidthLimitRule(&#34;bwLimitRule1&#34;, QosBandwidthLimitRuleArgs.builder()        
- *             .direction(&#34;egress&#34;)
- *             .maxBurstKbps(300)
- *             .maxKbps(3000)
  *             .qosPolicyId(qosPolicy1.id())
+ *             .maxKbps(3000)
+ *             .maxBurstKbps(300)
+ *             .direction(&#34;egress&#34;)
  *             .build());
  * 
  *     }

@@ -209,17 +209,17 @@ def get_user(domain_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:identity/getUser:getUser', __args__, opts=opts, typ=GetUserResult).value
 
     return AwaitableGetUserResult(
-        default_project_id=__ret__.default_project_id,
-        description=__ret__.description,
-        domain_id=__ret__.domain_id,
-        enabled=__ret__.enabled,
-        id=__ret__.id,
-        idp_id=__ret__.idp_id,
-        name=__ret__.name,
-        password_expires_at=__ret__.password_expires_at,
-        protocol_id=__ret__.protocol_id,
-        region=__ret__.region,
-        unique_id=__ret__.unique_id)
+        default_project_id=pulumi.get(__ret__, 'default_project_id'),
+        description=pulumi.get(__ret__, 'description'),
+        domain_id=pulumi.get(__ret__, 'domain_id'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        id=pulumi.get(__ret__, 'id'),
+        idp_id=pulumi.get(__ret__, 'idp_id'),
+        name=pulumi.get(__ret__, 'name'),
+        password_expires_at=pulumi.get(__ret__, 'password_expires_at'),
+        protocol_id=pulumi.get(__ret__, 'protocol_id'),
+        region=pulumi.get(__ret__, 'region'),
+        unique_id=pulumi.get(__ret__, 'unique_id'))
 
 
 @_utilities.lift_output_func(get_user)

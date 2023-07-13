@@ -24,6 +24,7 @@ export function getKeypair(args: GetKeypairArgs, opts?: pulumi.InvokeOptions): P
     return pulumi.runtime.invoke("openstack:compute/getKeypair:getKeypair", {
         "name": args.name,
         "region": args.region,
+        "userId": args.userId,
     }, opts);
 }
 
@@ -40,6 +41,12 @@ export interface GetKeypairArgs {
      * If omitted, the `region` argument of the provider is used.
      */
     region?: string;
+    /**
+     * The user id of the owner of the key pair.
+     * This parameter can be specified only if the provider is configured to use
+     * the credentials of an OpenStack administrator.
+     */
+    userId?: string;
 }
 
 /**
@@ -66,6 +73,10 @@ export interface GetKeypairResult {
      * See Argument Reference above.
      */
     readonly region: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly userId: string;
 }
 /**
  * Use this data source to get the ID and public key of an OpenStack keypair.
@@ -98,4 +109,10 @@ export interface GetKeypairOutputArgs {
      * If omitted, the `region` argument of the provider is used.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The user id of the owner of the key pair.
+     * This parameter can be specified only if the provider is configured to use
+     * the credentials of an OpenStack administrator.
+     */
+    userId?: pulumi.Input<string>;
 }

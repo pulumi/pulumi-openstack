@@ -209,6 +209,14 @@ class Ec2CredentialV3(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manages a V3 EC2 Credential resource within OpenStack Keystone.
+        EC2 credentials in OpenStack are used to access S3 compatible Swift/RadosGW
+        endpoints or to authenticate against Keystone.
+
+        > **Note:** All arguments including the EC2 credential access key and secret
+        will be stored in the raw state as plain-text. Read more about sensitive data
+        in state.
+
         ## Example Usage
         ### EC2 credential in current project scope
 
@@ -258,6 +266,14 @@ class Ec2CredentialV3(pulumi.CustomResource):
                  args: Optional[Ec2CredentialV3Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a V3 EC2 Credential resource within OpenStack Keystone.
+        EC2 credentials in OpenStack are used to access S3 compatible Swift/RadosGW
+        endpoints or to authenticate against Keystone.
+
+        > **Note:** All arguments including the EC2 credential access key and secret
+        will be stored in the raw state as plain-text. Read more about sensitive data
+        in state.
+
         ## Example Usage
         ### EC2 credential in current project scope
 

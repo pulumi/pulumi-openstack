@@ -67,29 +67,29 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var listener1 = new Listener(&#34;listener1&#34;, ListenerArgs.builder()        
- *             .loadbalancerId(loadbalancer1.id())
  *             .protocol(&#34;HTTP&#34;)
  *             .protocolPort(8080)
+ *             .loadbalancerId(loadbalancer1.id())
  *             .build());
  * 
  *         var pool1 = new Pool(&#34;pool1&#34;, PoolArgs.builder()        
+ *             .protocol(&#34;HTTP&#34;)
  *             .lbMethod(&#34;ROUND_ROBIN&#34;)
  *             .loadbalancerId(loadbalancer1.id())
- *             .protocol(&#34;HTTP&#34;)
  *             .build());
  * 
  *         var l7policy1 = new L7PolicyV2(&#34;l7policy1&#34;, L7PolicyV2Args.builder()        
  *             .action(&#34;REDIRECT_TO_URL&#34;)
  *             .description(&#34;test description&#34;)
- *             .listenerId(listener1.id())
  *             .position(1)
+ *             .listenerId(listener1.id())
  *             .redirectUrl(&#34;http://www.example.com&#34;)
  *             .build());
  * 
  *         var l7rule1 = new L7RuleV2(&#34;l7rule1&#34;, L7RuleV2Args.builder()        
- *             .compareType(&#34;EQUAL_TO&#34;)
  *             .l7policyId(l7policy1.id())
  *             .type(&#34;PATH&#34;)
+ *             .compareType(&#34;EQUAL_TO&#34;)
  *             .value(&#34;/api&#34;)
  *             .build());
  * 

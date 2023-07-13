@@ -51,9 +51,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
+ *             .networkId(network1.id())
  *             .cidr(&#34;192.168.199.0/24&#34;)
  *             .ipVersion(4)
- *             .networkId(network1.id())
  *             .build());
  * 
  *         var router1 = new Router(&#34;router1&#34;, RouterArgs.builder()        
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * Router Interfaces can be imported using the port `id`, e.g. $ openstack port list --router &lt;router name or id&gt;
  * 
  * ```sh
- *  $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 &lt;port id from above output&gt;
+ *  $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 port_id
  * ```
  * 
  */

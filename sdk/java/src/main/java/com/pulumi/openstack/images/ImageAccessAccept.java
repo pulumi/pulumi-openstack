@@ -44,9 +44,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var rancheros = ImagesFunctions.getImage(GetImageArgs.builder()
- *             .memberStatus(&#34;all&#34;)
  *             .name(&#34;RancherOS&#34;)
  *             .visibility(&#34;shared&#34;)
+ *             .memberStatus(&#34;all&#34;)
  *             .build());
  * 
  *         var rancherosMember = new ImageAccessAccept(&#34;rancherosMember&#34;, ImageAccessAcceptArgs.builder()        

@@ -109,10 +109,10 @@ def get_availability_zones_v3(region: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3', __args__, opts=opts, typ=GetAvailabilityZonesV3Result).value
 
     return AwaitableGetAvailabilityZonesV3Result(
-        id=__ret__.id,
-        names=__ret__.names,
-        region=__ret__.region,
-        state=__ret__.state)
+        id=pulumi.get(__ret__, 'id'),
+        names=pulumi.get(__ret__, 'names'),
+        region=pulumi.get(__ret__, 'region'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_availability_zones_v3)

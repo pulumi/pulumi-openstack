@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupShareNetwork(ctx *pulumi.Context, args *LookupShareNetworkArgs, opts ...pulumi.InvokeOption) (*LookupShareNetworkResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupShareNetworkResult
 	err := ctx.Invoke("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", args, &rv, opts...)
 	if err != nil {

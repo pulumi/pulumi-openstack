@@ -95,6 +95,23 @@ public final class GetProjectPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * The id of the project. Conflicts with any of the
+     * above arguments.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable String projectId;
+
+    /**
+     * @return The id of the project. Conflicts with any of the
+     * above arguments.
+     * 
+     */
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+
+    /**
      * The region the project is located in.
      * 
      */
@@ -117,6 +134,7 @@ public final class GetProjectPlainArgs extends com.pulumi.resources.InvokeArgs {
         this.isDomain = $.isDomain;
         this.name = $.name;
         this.parentId = $.parentId;
+        this.projectId = $.projectId;
         this.region = $.region;
     }
 
@@ -192,6 +210,18 @@ public final class GetProjectPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder parentId(@Nullable String parentId) {
             $.parentId = parentId;
+            return this;
+        }
+
+        /**
+         * @param projectId The id of the project. Conflicts with any of the
+         * above arguments.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable String projectId) {
+            $.projectId = projectId;
             return this;
         }
 

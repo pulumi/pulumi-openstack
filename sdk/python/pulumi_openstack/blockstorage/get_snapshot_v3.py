@@ -175,15 +175,15 @@ def get_snapshot_v3(most_recent: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('openstack:blockstorage/getSnapshotV3:getSnapshotV3', __args__, opts=opts, typ=GetSnapshotV3Result).value
 
     return AwaitableGetSnapshotV3Result(
-        description=__ret__.description,
-        id=__ret__.id,
-        metadata=__ret__.metadata,
-        most_recent=__ret__.most_recent,
-        name=__ret__.name,
-        region=__ret__.region,
-        size=__ret__.size,
-        status=__ret__.status,
-        volume_id=__ret__.volume_id)
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        metadata=pulumi.get(__ret__, 'metadata'),
+        most_recent=pulumi.get(__ret__, 'most_recent'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'),
+        size=pulumi.get(__ret__, 'size'),
+        status=pulumi.get(__ret__, 'status'),
+        volume_id=pulumi.get(__ret__, 'volume_id'))
 
 
 @_utilities.lift_output_func(get_snapshot_v3)

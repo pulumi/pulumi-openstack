@@ -10,10 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Images
 {
     /// <summary>
+    /// Manages a V2 Image resource within OpenStack Glance.
+    /// 
+    /// &gt; **Note:** All arguments including the source image URL password will be
+    /// stored in the raw state as plain-text. Read more about sensitive data in
+    /// state.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -81,7 +88,7 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// If true, this provider will decompress downloaded
         /// image before uploading it to OpenStack. Decompression algorithm is chosen by
-        /// checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+        /// checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
         /// Defaults to false. Changing this creates a new Image.
         /// </summary>
         [Output("decompress")]
@@ -329,7 +336,7 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// If true, this provider will decompress downloaded
         /// image before uploading it to OpenStack. Decompression algorithm is chosen by
-        /// checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+        /// checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
         /// Defaults to false. Changing this creates a new Image.
         /// </summary>
         [Input("decompress")]
@@ -515,7 +522,7 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// If true, this provider will decompress downloaded
         /// image before uploading it to OpenStack. Decompression algorithm is chosen by
-        /// checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+        /// checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
         /// Defaults to false. Changing this creates a new Image.
         /// </summary>
         [Input("decompress")]

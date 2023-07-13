@@ -130,6 +130,23 @@ public final class InstanceBlockDeviceArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Enable the attachment of multiattach-capable
+     * volumes.
+     * 
+     */
+    @Import(name="multiattach")
+    private @Nullable Output<Boolean> multiattach;
+
+    /**
+     * @return Enable the attachment of multiattach-capable
+     * volumes.
+     * 
+     */
+    public Optional<Output<Boolean>> multiattach() {
+        return Optional.ofNullable(this.multiattach);
+    }
+
+    /**
      * The source type of the device. Must be one of
      * &#34;blank&#34;, &#34;image&#34;, &#34;volume&#34;, or &#34;snapshot&#34;. Changing this creates a new
      * server.
@@ -216,6 +233,7 @@ public final class InstanceBlockDeviceArgs extends com.pulumi.resources.Resource
         this.deviceType = $.deviceType;
         this.diskBus = $.diskBus;
         this.guestFormat = $.guestFormat;
+        this.multiattach = $.multiattach;
         this.sourceType = $.sourceType;
         this.uuid = $.uuid;
         this.volumeSize = $.volumeSize;
@@ -386,6 +404,29 @@ public final class InstanceBlockDeviceArgs extends com.pulumi.resources.Resource
          */
         public Builder guestFormat(String guestFormat) {
             return guestFormat(Output.of(guestFormat));
+        }
+
+        /**
+         * @param multiattach Enable the attachment of multiattach-capable
+         * volumes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiattach(@Nullable Output<Boolean> multiattach) {
+            $.multiattach = multiattach;
+            return this;
+        }
+
+        /**
+         * @param multiattach Enable the attachment of multiattach-capable
+         * volumes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiattach(Boolean multiattach) {
+            return multiattach(Output.of(multiattach));
         }
 
         /**

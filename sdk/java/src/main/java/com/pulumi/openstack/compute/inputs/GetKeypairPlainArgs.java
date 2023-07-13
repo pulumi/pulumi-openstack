@@ -46,11 +46,31 @@ public final class GetKeypairPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * The user id of the owner of the key pair.
+     * This parameter can be specified only if the provider is configured to use
+     * the credentials of an OpenStack administrator.
+     * 
+     */
+    @Import(name="userId")
+    private @Nullable String userId;
+
+    /**
+     * @return The user id of the owner of the key pair.
+     * This parameter can be specified only if the provider is configured to use
+     * the credentials of an OpenStack administrator.
+     * 
+     */
+    public Optional<String> userId() {
+        return Optional.ofNullable(this.userId);
+    }
+
     private GetKeypairPlainArgs() {}
 
     private GetKeypairPlainArgs(GetKeypairPlainArgs $) {
         this.name = $.name;
         this.region = $.region;
+        this.userId = $.userId;
     }
 
     public static Builder builder() {
@@ -91,6 +111,19 @@ public final class GetKeypairPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder region(@Nullable String region) {
             $.region = region;
+            return this;
+        }
+
+        /**
+         * @param userId The user id of the owner of the key pair.
+         * This parameter can be specified only if the provider is configured to use
+         * the credentials of an OpenStack administrator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userId(@Nullable String userId) {
+            $.userId = userId;
             return this;
         }
 

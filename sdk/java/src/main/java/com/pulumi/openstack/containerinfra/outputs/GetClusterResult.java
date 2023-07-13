@@ -77,6 +77,11 @@ public final class GetClusterResult {
      */
     private String keypair;
     /**
+     * @return The Kubernetes cluster&#39;s credentials
+     * 
+     */
+    private Map<String,String> kubeconfig;
+    /**
      * @return The list of key value pairs representing additional properties of
      * the cluster.
      * 
@@ -230,6 +235,13 @@ public final class GetClusterResult {
         return this.keypair;
     }
     /**
+     * @return The Kubernetes cluster&#39;s credentials
+     * 
+     */
+    public Map<String,String> kubeconfig() {
+        return this.kubeconfig;
+    }
+    /**
      * @return The list of key value pairs representing additional properties of
      * the cluster.
      * 
@@ -338,6 +350,7 @@ public final class GetClusterResult {
         private Boolean floatingIpEnabled;
         private String id;
         private String keypair;
+        private Map<String,String> kubeconfig;
         private Map<String,Object> labels;
         private List<String> masterAddresses;
         private Integer masterCount;
@@ -367,6 +380,7 @@ public final class GetClusterResult {
     	      this.floatingIpEnabled = defaults.floatingIpEnabled;
     	      this.id = defaults.id;
     	      this.keypair = defaults.keypair;
+    	      this.kubeconfig = defaults.kubeconfig;
     	      this.labels = defaults.labels;
     	      this.masterAddresses = defaults.masterAddresses;
     	      this.masterCount = defaults.masterCount;
@@ -452,6 +466,11 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder kubeconfig(Map<String,String> kubeconfig) {
+            this.kubeconfig = Objects.requireNonNull(kubeconfig);
+            return this;
+        }
+        @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
@@ -533,6 +552,7 @@ public final class GetClusterResult {
             o.floatingIpEnabled = floatingIpEnabled;
             o.id = id;
             o.keypair = keypair;
+            o.kubeconfig = kubeconfig;
             o.labels = labels;
             o.masterAddresses = masterAddresses;
             o.masterCount = masterCount;

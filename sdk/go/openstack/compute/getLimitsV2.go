@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func GetLimitsV2(ctx *pulumi.Context, args *GetLimitsV2Args, opts ...pulumi.InvokeOption) (*GetLimitsV2Result, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLimitsV2Result
 	err := ctx.Invoke("openstack:compute/getLimitsV2:getLimitsV2", args, &rv, opts...)
 	if err != nil {

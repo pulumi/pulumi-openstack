@@ -49,15 +49,15 @@ import javax.annotation.Nullable;
  *         var project1 = new Project(&#34;project1&#34;);
  * 
  *         var flavor1 = new Flavor(&#34;flavor1&#34;, FlavorArgs.builder()        
- *             .disk(&#34;20&#34;)
- *             .isPublic(false)
  *             .ram(&#34;8096&#34;)
  *             .vcpus(&#34;2&#34;)
+ *             .disk(&#34;20&#34;)
+ *             .isPublic(false)
  *             .build());
  * 
  *         var access1 = new FlavorAccess(&#34;access1&#34;, FlavorAccessArgs.builder()        
- *             .flavorId(flavor1.id())
  *             .tenantId(project1.id())
+ *             .flavorId(flavor1.id())
  *             .build());
  * 
  *     }
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * This resource can be imported by specifying all two arguments, separated by a forward slash
  * 
  * ```sh
- *  $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 &lt;flavor_id&gt;/&lt;tenant_id&gt;
+ *  $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 flavor_id/tenant_id
  * ```
  * 
  */

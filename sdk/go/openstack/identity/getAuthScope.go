@@ -7,11 +7,117 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // ## Example Usage
+// ### Simple
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := identity.GetAuthScope(ctx, &identity.GetAuthScopeArgs{
+//				Name: "my_scope",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// To find the the public object storage endpoint for "region1" as listed in the
+// service catalog:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			objectStoreService := "TODO: For expression"[0]
+//			objectStoreEndpoint := "TODO: For expression"[0]
+//			_ := objectStoreEndpoint.Url
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### In a combination with an http data source provider
+//
+// See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := identity.GetAuthScope(ctx, &identity.GetAuthScopeArgs{
+//				Name: "my_scope",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-http/sdk/go/http"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// objectStoreService := "TODO: For expression"[0];
+// objectStoreEndpoint := "TODO: For expression"[0];
+// objectStorePublicUrl := objectStoreEndpoint.Url;
+// example, err := http.GetHttp(ctx, &http.GetHttpArgs{
+// Url: objectStorePublicUrl,
+// RequestHeaders: interface{}{
+// Accept: "application/json",
+// XAuthToken: data.Openstack_identity_auth_scope_v3.Scope.Token_id,
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("containers", example.ResponseBody)
+// return nil
+// })
+// }
+// ```
 func GetAuthScope(ctx *pulumi.Context, args *GetAuthScopeArgs, opts ...pulumi.InvokeOption) (*GetAuthScopeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAuthScopeResult
 	err := ctx.Invoke("openstack:identity/getAuthScope:getAuthScope", args, &rv, opts...)
 	if err != nil {

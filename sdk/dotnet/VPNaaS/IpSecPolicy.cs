@@ -16,6 +16,7 @@ namespace Pulumi.OpenStack.VPNaaS
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -79,8 +80,8 @@ namespace Pulumi.OpenStack.VPNaaS
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-        /// Changing this updates the existing policy.
+        /// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
+        /// is group5. Changing this updates the existing policy.
         /// </summary>
         [Output("pfs")]
         public Output<string> Pfs { get; private set; } = null!;
@@ -102,7 +103,7 @@ namespace Pulumi.OpenStack.VPNaaS
         public Output<string> TenantId { get; private set; } = null!;
 
         /// <summary>
-        /// The transform protocol. Valid values are ESP, AH and AH-ESP.
+        /// The transform protocol. Valid values are esp, ah and ah-esp.
         /// Changing this updates the existing policy. Default is ESP.
         /// </summary>
         [Output("transformProtocol")]
@@ -208,8 +209,8 @@ namespace Pulumi.OpenStack.VPNaaS
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-        /// Changing this updates the existing policy.
+        /// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
+        /// is group5. Changing this updates the existing policy.
         /// </summary>
         [Input("pfs")]
         public Input<string>? Pfs { get; set; }
@@ -231,7 +232,7 @@ namespace Pulumi.OpenStack.VPNaaS
         public Input<string>? TenantId { get; set; }
 
         /// <summary>
-        /// The transform protocol. Valid values are ESP, AH and AH-ESP.
+        /// The transform protocol. Valid values are esp, ah and ah-esp.
         /// Changing this updates the existing policy. Default is ESP.
         /// </summary>
         [Input("transformProtocol")]
@@ -305,8 +306,8 @@ namespace Pulumi.OpenStack.VPNaaS
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-        /// Changing this updates the existing policy.
+        /// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default 
+        /// is group5. Changing this updates the existing policy.
         /// </summary>
         [Input("pfs")]
         public Input<string>? Pfs { get; set; }
@@ -328,7 +329,7 @@ namespace Pulumi.OpenStack.VPNaaS
         public Input<string>? TenantId { get; set; }
 
         /// <summary>
-        /// The transform protocol. Valid values are ESP, AH and AH-ESP.
+        /// The transform protocol. Valid values are esp, ah and ah-esp.
         /// Changing this updates the existing policy. Default is ESP.
         /// </summary>
         [Input("transformProtocol")]
