@@ -27,6 +27,29 @@ class ZoneArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Zone resource.
+        :param pulumi.Input[Mapping[str, Any]] attributes: Attributes for the DNS Service scheduler.
+               Changing this creates a new zone.
+        :param pulumi.Input[str] description: A description of the zone.
+        :param pulumi.Input[bool] disable_status_check: Disable wait for zone to reach ACTIVE
+               status. The check is enabled by default. If this argument is true, zone
+               will be considered as created/updated if OpenStack request returned success.
+        :param pulumi.Input[str] email: The email contact for the zone record.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] masters: An array of master DNS servers. For when `type` is
+               `SECONDARY`.
+        :param pulumi.Input[str] name: The name of the zone. Note the `.` at the end of the name.
+               Changing this creates a new DNS zone.
+        :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               user role in target project)
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
+               Keypairs are associated with accounts, but a Compute client is needed to
+               create one. If omitted, the `region` argument of the provider is used.
+               Changing this creates a new DNS zone.
+        :param pulumi.Input[int] ttl: The time to live (TTL) of the zone.
+        :param pulumi.Input[str] type: The type of zone. Can either be `PRIMARY` or `SECONDARY`.
+               Changing this creates a new zone.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+               new zone.
         """
         if attributes is not None:
             pulumi.set(__self__, "attributes", attributes)
@@ -54,6 +77,10 @@ class ZoneArgs:
     @property
     @pulumi.getter
     def attributes(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Attributes for the DNS Service scheduler.
+        Changing this creates a new zone.
+        """
         return pulumi.get(self, "attributes")
 
     @attributes.setter
@@ -63,6 +90,9 @@ class ZoneArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the zone.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -72,6 +102,11 @@ class ZoneArgs:
     @property
     @pulumi.getter(name="disableStatusCheck")
     def disable_status_check(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable wait for zone to reach ACTIVE
+        status. The check is enabled by default. If this argument is true, zone
+        will be considered as created/updated if OpenStack request returned success.
+        """
         return pulumi.get(self, "disable_status_check")
 
     @disable_status_check.setter
@@ -81,6 +116,9 @@ class ZoneArgs:
     @property
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email contact for the zone record.
+        """
         return pulumi.get(self, "email")
 
     @email.setter
@@ -90,6 +128,10 @@ class ZoneArgs:
     @property
     @pulumi.getter
     def masters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of master DNS servers. For when `type` is
+        `SECONDARY`.
+        """
         return pulumi.get(self, "masters")
 
     @masters.setter
@@ -99,6 +141,10 @@ class ZoneArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the zone. Note the `.` at the end of the name.
+        Changing this creates a new DNS zone.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -108,6 +154,11 @@ class ZoneArgs:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project DNS zone is created
+        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        user role in target project)
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -117,6 +168,12 @@ class ZoneArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Compute client.
+        Keypairs are associated with accounts, but a Compute client is needed to
+        create one. If omitted, the `region` argument of the provider is used.
+        Changing this creates a new DNS zone.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -126,6 +183,9 @@ class ZoneArgs:
     @property
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time to live (TTL) of the zone.
+        """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
@@ -135,6 +195,10 @@ class ZoneArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of zone. Can either be `PRIMARY` or `SECONDARY`.
+        Changing this creates a new zone.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -144,6 +208,10 @@ class ZoneArgs:
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Map of additional options. Changing this creates a
+        new zone.
+        """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
@@ -167,6 +235,29 @@ class _ZoneState:
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering Zone resources.
+        :param pulumi.Input[Mapping[str, Any]] attributes: Attributes for the DNS Service scheduler.
+               Changing this creates a new zone.
+        :param pulumi.Input[str] description: A description of the zone.
+        :param pulumi.Input[bool] disable_status_check: Disable wait for zone to reach ACTIVE
+               status. The check is enabled by default. If this argument is true, zone
+               will be considered as created/updated if OpenStack request returned success.
+        :param pulumi.Input[str] email: The email contact for the zone record.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] masters: An array of master DNS servers. For when `type` is
+               `SECONDARY`.
+        :param pulumi.Input[str] name: The name of the zone. Note the `.` at the end of the name.
+               Changing this creates a new DNS zone.
+        :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               user role in target project)
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
+               Keypairs are associated with accounts, but a Compute client is needed to
+               create one. If omitted, the `region` argument of the provider is used.
+               Changing this creates a new DNS zone.
+        :param pulumi.Input[int] ttl: The time to live (TTL) of the zone.
+        :param pulumi.Input[str] type: The type of zone. Can either be `PRIMARY` or `SECONDARY`.
+               Changing this creates a new zone.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+               new zone.
         """
         if attributes is not None:
             pulumi.set(__self__, "attributes", attributes)
@@ -194,6 +285,10 @@ class _ZoneState:
     @property
     @pulumi.getter
     def attributes(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Attributes for the DNS Service scheduler.
+        Changing this creates a new zone.
+        """
         return pulumi.get(self, "attributes")
 
     @attributes.setter
@@ -203,6 +298,9 @@ class _ZoneState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the zone.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -212,6 +310,11 @@ class _ZoneState:
     @property
     @pulumi.getter(name="disableStatusCheck")
     def disable_status_check(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable wait for zone to reach ACTIVE
+        status. The check is enabled by default. If this argument is true, zone
+        will be considered as created/updated if OpenStack request returned success.
+        """
         return pulumi.get(self, "disable_status_check")
 
     @disable_status_check.setter
@@ -221,6 +324,9 @@ class _ZoneState:
     @property
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email contact for the zone record.
+        """
         return pulumi.get(self, "email")
 
     @email.setter
@@ -230,6 +336,10 @@ class _ZoneState:
     @property
     @pulumi.getter
     def masters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of master DNS servers. For when `type` is
+        `SECONDARY`.
+        """
         return pulumi.get(self, "masters")
 
     @masters.setter
@@ -239,6 +349,10 @@ class _ZoneState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the zone. Note the `.` at the end of the name.
+        Changing this creates a new DNS zone.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -248,6 +362,11 @@ class _ZoneState:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project DNS zone is created
+        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        user role in target project)
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -257,6 +376,12 @@ class _ZoneState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Compute client.
+        Keypairs are associated with accounts, but a Compute client is needed to
+        create one. If omitted, the `region` argument of the provider is used.
+        Changing this creates a new DNS zone.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -266,6 +391,9 @@ class _ZoneState:
     @property
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time to live (TTL) of the zone.
+        """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
@@ -275,6 +403,10 @@ class _ZoneState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of zone. Can either be `PRIMARY` or `SECONDARY`.
+        Changing this creates a new zone.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -284,6 +416,10 @@ class _ZoneState:
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Map of additional options. Changing this creates a
+        new zone.
+        """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
@@ -309,9 +445,59 @@ class Zone(pulumi.CustomResource):
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
-        Create a Zone resource with the given unique name, props, and options.
+        Manages a DNS zone in the OpenStack DNS Service.
+
+        ## Example Usage
+        ### Automatically detect the correct network
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        example_com = openstack.dns.Zone("exampleCom",
+            description="An example zone",
+            email="jdoe@example.com",
+            ttl=3000,
+            type="PRIMARY")
+        ```
+
+        ## Import
+
+        This resource can be imported by specifying the zone ID with optional project ID
+
+        ```sh
+         $ pulumi import openstack:dns/zone:Zone zone_1 zone_id
+        ```
+
+        ```sh
+         $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, Any]] attributes: Attributes for the DNS Service scheduler.
+               Changing this creates a new zone.
+        :param pulumi.Input[str] description: A description of the zone.
+        :param pulumi.Input[bool] disable_status_check: Disable wait for zone to reach ACTIVE
+               status. The check is enabled by default. If this argument is true, zone
+               will be considered as created/updated if OpenStack request returned success.
+        :param pulumi.Input[str] email: The email contact for the zone record.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] masters: An array of master DNS servers. For when `type` is
+               `SECONDARY`.
+        :param pulumi.Input[str] name: The name of the zone. Note the `.` at the end of the name.
+               Changing this creates a new DNS zone.
+        :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               user role in target project)
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
+               Keypairs are associated with accounts, but a Compute client is needed to
+               create one. If omitted, the `region` argument of the provider is used.
+               Changing this creates a new DNS zone.
+        :param pulumi.Input[int] ttl: The time to live (TTL) of the zone.
+        :param pulumi.Input[str] type: The type of zone. Can either be `PRIMARY` or `SECONDARY`.
+               Changing this creates a new zone.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+               new zone.
         """
         ...
     @overload
@@ -320,7 +506,34 @@ class Zone(pulumi.CustomResource):
                  args: Optional[ZoneArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Zone resource with the given unique name, props, and options.
+        Manages a DNS zone in the OpenStack DNS Service.
+
+        ## Example Usage
+        ### Automatically detect the correct network
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        example_com = openstack.dns.Zone("exampleCom",
+            description="An example zone",
+            email="jdoe@example.com",
+            ttl=3000,
+            type="PRIMARY")
+        ```
+
+        ## Import
+
+        This resource can be imported by specifying the zone ID with optional project ID
+
+        ```sh
+         $ pulumi import openstack:dns/zone:Zone zone_1 zone_id
+        ```
+
+        ```sh
+         $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param ZoneArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -395,6 +608,29 @@ class Zone(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, Any]] attributes: Attributes for the DNS Service scheduler.
+               Changing this creates a new zone.
+        :param pulumi.Input[str] description: A description of the zone.
+        :param pulumi.Input[bool] disable_status_check: Disable wait for zone to reach ACTIVE
+               status. The check is enabled by default. If this argument is true, zone
+               will be considered as created/updated if OpenStack request returned success.
+        :param pulumi.Input[str] email: The email contact for the zone record.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] masters: An array of master DNS servers. For when `type` is
+               `SECONDARY`.
+        :param pulumi.Input[str] name: The name of the zone. Note the `.` at the end of the name.
+               Changing this creates a new DNS zone.
+        :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               user role in target project)
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
+               Keypairs are associated with accounts, but a Compute client is needed to
+               create one. If omitted, the `region` argument of the provider is used.
+               Changing this creates a new DNS zone.
+        :param pulumi.Input[int] ttl: The time to live (TTL) of the zone.
+        :param pulumi.Input[str] type: The type of zone. Can either be `PRIMARY` or `SECONDARY`.
+               Changing this creates a new zone.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+               new zone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -416,55 +652,100 @@ class Zone(pulumi.CustomResource):
     @property
     @pulumi.getter
     def attributes(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        Attributes for the DNS Service scheduler.
+        Changing this creates a new zone.
+        """
         return pulumi.get(self, "attributes")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        A description of the zone.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="disableStatusCheck")
     def disable_status_check(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Disable wait for zone to reach ACTIVE
+        status. The check is enabled by default. If this argument is true, zone
+        will be considered as created/updated if OpenStack request returned success.
+        """
         return pulumi.get(self, "disable_status_check")
 
     @property
     @pulumi.getter
     def email(self) -> pulumi.Output[Optional[str]]:
+        """
+        The email contact for the zone record.
+        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter
     def masters(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        An array of master DNS servers. For when `type` is
+        `SECONDARY`.
+        """
         return pulumi.get(self, "masters")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the zone. Note the `.` at the end of the name.
+        Changing this creates a new DNS zone.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the project DNS zone is created
+        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        user role in target project)
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to obtain the V2 Compute client.
+        Keypairs are associated with accounts, but a Compute client is needed to
+        create one. If omitted, the `region` argument of the provider is used.
+        Changing this creates a new DNS zone.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def ttl(self) -> pulumi.Output[int]:
+        """
+        The time to live (TTL) of the zone.
+        """
         return pulumi.get(self, "ttl")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
+        """
+        The type of zone. Can either be `PRIMARY` or `SECONDARY`.
+        Changing this creates a new zone.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        Map of additional options. Changing this creates a
+        new zone.
+        """
         return pulumi.get(self, "value_specs")
 

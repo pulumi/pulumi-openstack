@@ -28,6 +28,34 @@ class NodeGroupArgs:
                  role: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NodeGroup resource.
+        :param pulumi.Input[str] cluster_id: The UUID of the V1 Container Infra cluster.
+               Changing this creates a new node group.
+        :param pulumi.Input[int] docker_volume_size: The size (in GB) of the Docker volume.
+               Changing this creates a new node group.
+        :param pulumi.Input[str] flavor_id: The flavor for the nodes of the node group. Can be set
+               via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+               node group.
+        :param pulumi.Input[str] image_id: The reference to an image that is used for nodes of the
+               node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+               Changing this updates the image attribute of the existing node group.
+        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+               properties of the node group. Changing this creates a new node group.
+        :param pulumi.Input[int] max_node_count: The maximum number of nodes for the node group.
+               Changing this update the maximum number of nodes of the node group.
+        :param pulumi.Input[bool] merge_labels: Indicates whether the provided labels should be
+               merged with cluster labels. Changing this creates a new nodegroup.
+        :param pulumi.Input[int] min_node_count: The minimum number of nodes for the node group.
+               Changing this update the minimum number of nodes of the node group.
+        :param pulumi.Input[str] name: The name of the node group. Changing this creates a new
+               node group.
+        :param pulumi.Input[int] node_count: The number of nodes for the node group. Changing
+               this update the number of nodes of the node group.
+        :param pulumi.Input[str] region: The region in which to obtain the V1 Container Infra
+               client. A Container Infra client is needed to create a cluster. If omitted,
+               the `region` argument of the provider is used. Changing this creates a new
+               node group.
+        :param pulumi.Input[str] role: The role of nodes in the node group. Changing this
+               creates a new node group.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         if docker_volume_size is not None:
@@ -56,6 +84,10 @@ class NodeGroupArgs:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[str]:
+        """
+        The UUID of the V1 Container Infra cluster.
+        Changing this creates a new node group.
+        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -65,6 +97,10 @@ class NodeGroupArgs:
     @property
     @pulumi.getter(name="dockerVolumeSize")
     def docker_volume_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size (in GB) of the Docker volume.
+        Changing this creates a new node group.
+        """
         return pulumi.get(self, "docker_volume_size")
 
     @docker_volume_size.setter
@@ -74,6 +110,11 @@ class NodeGroupArgs:
     @property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The flavor for the nodes of the node group. Can be set
+        via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+        node group.
+        """
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
@@ -83,6 +124,11 @@ class NodeGroupArgs:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reference to an image that is used for nodes of the
+        node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+        Changing this updates the image attribute of the existing node group.
+        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -92,6 +138,10 @@ class NodeGroupArgs:
     @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The list of key value pairs representing additional
+        properties of the node group. Changing this creates a new node group.
+        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -101,6 +151,10 @@ class NodeGroupArgs:
     @property
     @pulumi.getter(name="maxNodeCount")
     def max_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of nodes for the node group.
+        Changing this update the maximum number of nodes of the node group.
+        """
         return pulumi.get(self, "max_node_count")
 
     @max_node_count.setter
@@ -110,6 +164,10 @@ class NodeGroupArgs:
     @property
     @pulumi.getter(name="mergeLabels")
     def merge_labels(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the provided labels should be
+        merged with cluster labels. Changing this creates a new nodegroup.
+        """
         return pulumi.get(self, "merge_labels")
 
     @merge_labels.setter
@@ -119,6 +177,10 @@ class NodeGroupArgs:
     @property
     @pulumi.getter(name="minNodeCount")
     def min_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of nodes for the node group.
+        Changing this update the minimum number of nodes of the node group.
+        """
         return pulumi.get(self, "min_node_count")
 
     @min_node_count.setter
@@ -128,6 +190,10 @@ class NodeGroupArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the node group. Changing this creates a new
+        node group.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -137,6 +203,10 @@ class NodeGroupArgs:
     @property
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of nodes for the node group. Changing
+        this update the number of nodes of the node group.
+        """
         return pulumi.get(self, "node_count")
 
     @node_count.setter
@@ -146,6 +216,12 @@ class NodeGroupArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V1 Container Infra
+        client. A Container Infra client is needed to create a cluster. If omitted,
+        the `region` argument of the provider is used. Changing this creates a new
+        node group.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -155,6 +231,10 @@ class NodeGroupArgs:
     @property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role of nodes in the node group. Changing this
+        creates a new node group.
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -182,6 +262,37 @@ class _NodeGroupState:
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NodeGroup resources.
+        :param pulumi.Input[str] cluster_id: The UUID of the V1 Container Infra cluster.
+               Changing this creates a new node group.
+        :param pulumi.Input[int] docker_volume_size: The size (in GB) of the Docker volume.
+               Changing this creates a new node group.
+        :param pulumi.Input[str] flavor_id: The flavor for the nodes of the node group. Can be set
+               via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+               node group.
+        :param pulumi.Input[str] image_id: The reference to an image that is used for nodes of the
+               node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+               Changing this updates the image attribute of the existing node group.
+        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+               properties of the node group. Changing this creates a new node group.
+        :param pulumi.Input[int] max_node_count: The maximum number of nodes for the node group.
+               Changing this update the maximum number of nodes of the node group.
+        :param pulumi.Input[bool] merge_labels: Indicates whether the provided labels should be
+               merged with cluster labels. Changing this creates a new nodegroup.
+        :param pulumi.Input[int] min_node_count: The minimum number of nodes for the node group.
+               Changing this update the minimum number of nodes of the node group.
+        :param pulumi.Input[str] name: The name of the node group. Changing this creates a new
+               node group.
+        :param pulumi.Input[int] node_count: The number of nodes for the node group. Changing
+               this update the number of nodes of the node group.
+        :param pulumi.Input[str] project_id: The project of the node group. Required if admin
+               wants to create a cluster in another project. Changing this creates a new
+               node group.
+        :param pulumi.Input[str] region: The region in which to obtain the V1 Container Infra
+               client. A Container Infra client is needed to create a cluster. If omitted,
+               the `region` argument of the provider is used. Changing this creates a new
+               node group.
+        :param pulumi.Input[str] role: The role of nodes in the node group. Changing this
+               creates a new node group.
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -217,6 +328,10 @@ class _NodeGroupState:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The UUID of the V1 Container Infra cluster.
+        Changing this creates a new node group.
+        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -235,6 +350,10 @@ class _NodeGroupState:
     @property
     @pulumi.getter(name="dockerVolumeSize")
     def docker_volume_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size (in GB) of the Docker volume.
+        Changing this creates a new node group.
+        """
         return pulumi.get(self, "docker_volume_size")
 
     @docker_volume_size.setter
@@ -244,6 +363,11 @@ class _NodeGroupState:
     @property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The flavor for the nodes of the node group. Can be set
+        via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+        node group.
+        """
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
@@ -253,6 +377,11 @@ class _NodeGroupState:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reference to an image that is used for nodes of the
+        node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+        Changing this updates the image attribute of the existing node group.
+        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -262,6 +391,10 @@ class _NodeGroupState:
     @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The list of key value pairs representing additional
+        properties of the node group. Changing this creates a new node group.
+        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -271,6 +404,10 @@ class _NodeGroupState:
     @property
     @pulumi.getter(name="maxNodeCount")
     def max_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of nodes for the node group.
+        Changing this update the maximum number of nodes of the node group.
+        """
         return pulumi.get(self, "max_node_count")
 
     @max_node_count.setter
@@ -280,6 +417,10 @@ class _NodeGroupState:
     @property
     @pulumi.getter(name="mergeLabels")
     def merge_labels(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the provided labels should be
+        merged with cluster labels. Changing this creates a new nodegroup.
+        """
         return pulumi.get(self, "merge_labels")
 
     @merge_labels.setter
@@ -289,6 +430,10 @@ class _NodeGroupState:
     @property
     @pulumi.getter(name="minNodeCount")
     def min_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of nodes for the node group.
+        Changing this update the minimum number of nodes of the node group.
+        """
         return pulumi.get(self, "min_node_count")
 
     @min_node_count.setter
@@ -298,6 +443,10 @@ class _NodeGroupState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the node group. Changing this creates a new
+        node group.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -307,6 +456,10 @@ class _NodeGroupState:
     @property
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of nodes for the node group. Changing
+        this update the number of nodes of the node group.
+        """
         return pulumi.get(self, "node_count")
 
     @node_count.setter
@@ -316,6 +469,11 @@ class _NodeGroupState:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project of the node group. Required if admin
+        wants to create a cluster in another project. Changing this creates a new
+        node group.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -325,6 +483,12 @@ class _NodeGroupState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V1 Container Infra
+        client. A Container Infra client is needed to create a cluster. If omitted,
+        the `region` argument of the provider is used. Changing this creates a new
+        node group.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -334,6 +498,10 @@ class _NodeGroupState:
     @property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role of nodes in the node group. Changing this
+        creates a new node group.
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -369,9 +537,76 @@ class NodeGroup(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a NodeGroup resource with the given unique name, props, and options.
+        Manages a V1 Magnum node group resource within OpenStack.
+
+        ## Example Usage
+        ### Create a Nodegroup
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        nodegroup1 = openstack.containerinfra.NodeGroup("nodegroup1",
+            cluster_id="b9a45c5c-cd03-4958-82aa-b80bf93cb922",
+            node_count=5)
+        ```
+        ## Attributes reference
+
+        The following attributes are exported:
+
+        * `region` - See Argument Reference above.
+        * `name` - See Argument Reference above.
+        * `project_id` - See Argument Reference above.
+        * `created_at` - The time at which node group was created.
+        * `updated_at` - The time at which node group was created.
+        * `docker_volume_size` - See Argument Reference above.
+        * `role` - See Argument Reference above.
+        * `image_id` - See Argument Reference above.
+        * `flavor_id` - See Argument Reference above.
+        * `labels` - See Argument Reference above.
+        * `node_count` - See Argument Reference above.
+        * `min_node_count` - See Argument Reference above.
+        * `max_node_count` - See Argument Reference above.
+        * `role` - See Argument Reference above.
+
+        ## Import
+
+        Node groups can be imported using the `id` (cluster_id/nodegroup_id), e.g.
+
+        ```sh
+         $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922/ce0f9463-dd25-474b-9fe8-94de63e5e42b
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] cluster_id: The UUID of the V1 Container Infra cluster.
+               Changing this creates a new node group.
+        :param pulumi.Input[int] docker_volume_size: The size (in GB) of the Docker volume.
+               Changing this creates a new node group.
+        :param pulumi.Input[str] flavor_id: The flavor for the nodes of the node group. Can be set
+               via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+               node group.
+        :param pulumi.Input[str] image_id: The reference to an image that is used for nodes of the
+               node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+               Changing this updates the image attribute of the existing node group.
+        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+               properties of the node group. Changing this creates a new node group.
+        :param pulumi.Input[int] max_node_count: The maximum number of nodes for the node group.
+               Changing this update the maximum number of nodes of the node group.
+        :param pulumi.Input[bool] merge_labels: Indicates whether the provided labels should be
+               merged with cluster labels. Changing this creates a new nodegroup.
+        :param pulumi.Input[int] min_node_count: The minimum number of nodes for the node group.
+               Changing this update the minimum number of nodes of the node group.
+        :param pulumi.Input[str] name: The name of the node group. Changing this creates a new
+               node group.
+        :param pulumi.Input[int] node_count: The number of nodes for the node group. Changing
+               this update the number of nodes of the node group.
+        :param pulumi.Input[str] region: The region in which to obtain the V1 Container Infra
+               client. A Container Infra client is needed to create a cluster. If omitted,
+               the `region` argument of the provider is used. Changing this creates a new
+               node group.
+        :param pulumi.Input[str] role: The role of nodes in the node group. Changing this
+               creates a new node group.
         """
         ...
     @overload
@@ -380,7 +615,46 @@ class NodeGroup(pulumi.CustomResource):
                  args: NodeGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a NodeGroup resource with the given unique name, props, and options.
+        Manages a V1 Magnum node group resource within OpenStack.
+
+        ## Example Usage
+        ### Create a Nodegroup
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        nodegroup1 = openstack.containerinfra.NodeGroup("nodegroup1",
+            cluster_id="b9a45c5c-cd03-4958-82aa-b80bf93cb922",
+            node_count=5)
+        ```
+        ## Attributes reference
+
+        The following attributes are exported:
+
+        * `region` - See Argument Reference above.
+        * `name` - See Argument Reference above.
+        * `project_id` - See Argument Reference above.
+        * `created_at` - The time at which node group was created.
+        * `updated_at` - The time at which node group was created.
+        * `docker_volume_size` - See Argument Reference above.
+        * `role` - See Argument Reference above.
+        * `image_id` - See Argument Reference above.
+        * `flavor_id` - See Argument Reference above.
+        * `labels` - See Argument Reference above.
+        * `node_count` - See Argument Reference above.
+        * `min_node_count` - See Argument Reference above.
+        * `max_node_count` - See Argument Reference above.
+        * `role` - See Argument Reference above.
+
+        ## Import
+
+        Node groups can be imported using the `id` (cluster_id/nodegroup_id), e.g.
+
+        ```sh
+         $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922/ce0f9463-dd25-474b-9fe8-94de63e5e42b
+        ```
+
         :param str resource_name: The name of the resource.
         :param NodeGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -466,6 +740,37 @@ class NodeGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] cluster_id: The UUID of the V1 Container Infra cluster.
+               Changing this creates a new node group.
+        :param pulumi.Input[int] docker_volume_size: The size (in GB) of the Docker volume.
+               Changing this creates a new node group.
+        :param pulumi.Input[str] flavor_id: The flavor for the nodes of the node group. Can be set
+               via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+               node group.
+        :param pulumi.Input[str] image_id: The reference to an image that is used for nodes of the
+               node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+               Changing this updates the image attribute of the existing node group.
+        :param pulumi.Input[Mapping[str, Any]] labels: The list of key value pairs representing additional
+               properties of the node group. Changing this creates a new node group.
+        :param pulumi.Input[int] max_node_count: The maximum number of nodes for the node group.
+               Changing this update the maximum number of nodes of the node group.
+        :param pulumi.Input[bool] merge_labels: Indicates whether the provided labels should be
+               merged with cluster labels. Changing this creates a new nodegroup.
+        :param pulumi.Input[int] min_node_count: The minimum number of nodes for the node group.
+               Changing this update the minimum number of nodes of the node group.
+        :param pulumi.Input[str] name: The name of the node group. Changing this creates a new
+               node group.
+        :param pulumi.Input[int] node_count: The number of nodes for the node group. Changing
+               this update the number of nodes of the node group.
+        :param pulumi.Input[str] project_id: The project of the node group. Required if admin
+               wants to create a cluster in another project. Changing this creates a new
+               node group.
+        :param pulumi.Input[str] region: The region in which to obtain the V1 Container Infra
+               client. A Container Infra client is needed to create a cluster. If omitted,
+               the `region` argument of the provider is used. Changing this creates a new
+               node group.
+        :param pulumi.Input[str] role: The role of nodes in the node group. Changing this
+               creates a new node group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -491,6 +796,10 @@ class NodeGroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
+        """
+        The UUID of the V1 Container Infra cluster.
+        Changing this creates a new node group.
+        """
         return pulumi.get(self, "cluster_id")
 
     @property
@@ -501,61 +810,114 @@ class NodeGroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="dockerVolumeSize")
     def docker_volume_size(self) -> pulumi.Output[int]:
+        """
+        The size (in GB) of the Docker volume.
+        Changing this creates a new node group.
+        """
         return pulumi.get(self, "docker_volume_size")
 
     @property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> pulumi.Output[str]:
+        """
+        The flavor for the nodes of the node group. Can be set
+        via the `OS_MAGNUM_FLAVOR` environment variable. Changing this creates a new
+        node group.
+        """
         return pulumi.get(self, "flavor_id")
 
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[str]:
+        """
+        The reference to an image that is used for nodes of the
+        node group. Can be set via the `OS_MAGNUM_IMAGE` environment variable.
+        Changing this updates the image attribute of the existing node group.
+        """
         return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        The list of key value pairs representing additional
+        properties of the node group. Changing this creates a new node group.
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="maxNodeCount")
     def max_node_count(self) -> pulumi.Output[Optional[int]]:
+        """
+        The maximum number of nodes for the node group.
+        Changing this update the maximum number of nodes of the node group.
+        """
         return pulumi.get(self, "max_node_count")
 
     @property
     @pulumi.getter(name="mergeLabels")
     def merge_labels(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether the provided labels should be
+        merged with cluster labels. Changing this creates a new nodegroup.
+        """
         return pulumi.get(self, "merge_labels")
 
     @property
     @pulumi.getter(name="minNodeCount")
     def min_node_count(self) -> pulumi.Output[int]:
+        """
+        The minimum number of nodes for the node group.
+        Changing this update the minimum number of nodes of the node group.
+        """
         return pulumi.get(self, "min_node_count")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the node group. Changing this creates a new
+        node group.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> pulumi.Output[Optional[int]]:
+        """
+        The number of nodes for the node group. Changing
+        this update the number of nodes of the node group.
+        """
         return pulumi.get(self, "node_count")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
+        """
+        The project of the node group. Required if admin
+        wants to create a cluster in another project. Changing this creates a new
+        node group.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to obtain the V1 Container Infra
+        client. A Container Infra client is needed to create a cluster. If omitted,
+        the `region` argument of the provider is used. Changing this creates a new
+        node group.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
+        """
+        The role of nodes in the node group. Changing this
+        creates a new node group.
+        """
         return pulumi.get(self, "role")
 
     @property

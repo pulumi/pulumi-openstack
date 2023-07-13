@@ -85,31 +85,49 @@ class GetInstanceV2Result:
     @property
     @pulumi.getter(name="accessIpV4")
     def access_ip_v4(self) -> str:
+        """
+        The first IPv4 address assigned to this server.
+        """
         return pulumi.get(self, "access_ip_v4")
 
     @property
     @pulumi.getter(name="accessIpV6")
     def access_ip_v6(self) -> str:
+        """
+        The first IPv6 address assigned to this server.
+        """
         return pulumi.get(self, "access_ip_v6")
 
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> str:
+        """
+        The availability zone of this server.
+        """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter
     def created(self) -> str:
+        """
+        The creation time of the instance.
+        """
         return pulumi.get(self, "created")
 
     @property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> str:
+        """
+        The flavor ID used to create the server.
+        """
         return pulumi.get(self, "flavor_id")
 
     @property
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> str:
+        """
+        The flavor name used to create the server.
+        """
         return pulumi.get(self, "flavor_name")
 
     @property
@@ -120,31 +138,49 @@ class GetInstanceV2Result:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> str:
+        """
+        The image ID used to create the server.
+        """
         return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter(name="imageName")
     def image_name(self) -> str:
+        """
+        The image name used to create the server.
+        """
         return pulumi.get(self, "image_name")
 
     @property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> str:
+        """
+        The name of the key pair assigned to this server.
+        """
         return pulumi.get(self, "key_pair")
 
     @property
     @pulumi.getter
     def metadata(self) -> Mapping[str, Any]:
+        """
+        A set of key/value pairs made available to the server.
+        """
         return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the network
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def networks(self) -> Sequence['outputs.GetInstanceV2NetworkResult']:
+        """
+        An array of maps, detailed below.
+        """
         return pulumi.get(self, "networks")
 
     @property
@@ -160,21 +196,33 @@ class GetInstanceV2Result:
     @property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Sequence[str]:
+        """
+        An array of security group names associated with this server.
+        """
         return pulumi.get(self, "security_groups")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence[str]:
+        """
+        A set of string tags assigned to this server.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def updated(self) -> str:
+        """
+        The time when the instance was last updated.
+        """
         return pulumi.get(self, "updated")
 
     @property
     @pulumi.getter(name="userData")
     def user_data(self) -> str:
+        """
+        The user data added when the server was created.
+        """
         return pulumi.get(self, "user_data")
 
 
@@ -211,7 +259,21 @@ def get_instance_v2(id: Optional[str] = None,
                     user_data: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceV2Result:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the details of a running server
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    instance = openstack.compute.get_instance_v2(id="2ba26dc6-a12d-4889-8f25-794ea5bf4453")
+    ```
+
+
+    :param str id: The UUID of the instance
+    :param Sequence[pulumi.InputType['GetInstanceV2NetworkArgs']] networks: An array of maps, detailed below.
+    :param str user_data: The user data added when the server was created.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -250,6 +312,20 @@ def get_instance_v2_output(id: Optional[pulumi.Input[str]] = None,
                            user_data: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceV2Result]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the details of a running server
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    instance = openstack.compute.get_instance_v2(id="2ba26dc6-a12d-4889-8f25-794ea5bf4453")
+    ```
+
+
+    :param str id: The UUID of the instance
+    :param Sequence[pulumi.InputType['GetInstanceV2NetworkArgs']] networks: An array of maps, detailed below.
+    :param str user_data: The user data added when the server was created.
     """
     ...

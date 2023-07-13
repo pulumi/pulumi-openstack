@@ -53,6 +53,9 @@ class GetEndpointResult:
     @property
     @pulumi.getter(name="endpointRegion")
     def endpoint_region(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "endpoint_region")
 
     @property
@@ -66,36 +69,57 @@ class GetEndpointResult:
     @property
     @pulumi.getter
     def interface(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "interface")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "service_id")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="serviceType")
     def service_type(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "service_type")
 
     @property
     @pulumi.getter
     def url(self) -> str:
+        """
+        The endpoint URL.
+        """
         return pulumi.get(self, "url")
 
 
@@ -125,7 +149,30 @@ def get_endpoint(endpoint_region: Optional[str] = None,
                  service_type: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEndpointResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an OpenStack endpoint.
+
+    > **Note:** This usually requires admin privileges.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    endpoint1 = openstack.identity.get_endpoint(service_name="demo")
+    ```
+
+
+    :param str endpoint_region: The region the endpoint is assigned to. The
+           `region` and `endpoint_region` can be different.
+    :param str interface: The endpoint interface. Valid values are `public`,
+           `internal`, and `admin`. Default value is `public`
+    :param str name: The name of the endpoint.
+    :param str region: The region in which to obtain the V3 Keystone client.
+           If omitted, the `region` argument of the provider is used.
+    :param str service_id: The service id this endpoint belongs to.
+    :param str service_name: The service name of the endpoint.
+    :param str service_type: The service type of the endpoint.
     """
     __args__ = dict()
     __args__['endpointRegion'] = endpoint_region
@@ -160,6 +207,29 @@ def get_endpoint_output(endpoint_region: Optional[pulumi.Input[Optional[str]]] =
                         service_type: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEndpointResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an OpenStack endpoint.
+
+    > **Note:** This usually requires admin privileges.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    endpoint1 = openstack.identity.get_endpoint(service_name="demo")
+    ```
+
+
+    :param str endpoint_region: The region the endpoint is assigned to. The
+           `region` and `endpoint_region` can be different.
+    :param str interface: The endpoint interface. Valid values are `public`,
+           `internal`, and `admin`. Default value is `public`
+    :param str name: The name of the endpoint.
+    :param str region: The region in which to obtain the V3 Keystone client.
+           If omitted, the `region` argument of the provider is used.
+    :param str service_id: The service id this endpoint belongs to.
+    :param str service_name: The service name of the endpoint.
+    :param str service_type: The service type of the endpoint.
     """
     ...

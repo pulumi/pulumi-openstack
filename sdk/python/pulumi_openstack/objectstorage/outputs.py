@@ -18,17 +18,27 @@ class ContainerVersioningLegacy(dict):
     def __init__(__self__, *,
                  location: str,
                  type: str):
+        """
+        :param str location: Container in which versions will be stored.
+        :param str type: Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+        """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
     def location(self) -> str:
+        """
+        Container in which versions will be stored.
+        """
         return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
+        """
         return pulumi.get(self, "type")
 
 

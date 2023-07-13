@@ -72,21 +72,35 @@ class GetShareResult:
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> str:
+        """
+        The share availability zone.
+        """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="exportLocationPath")
     def export_location_path(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "export_location_path")
 
     @property
     @pulumi.getter(name="exportLocations")
     def export_locations(self) -> Sequence['outputs.GetShareExportLocationResult']:
+        """
+        A list of export locations. For example, when a share
+        server has more than one network interface, it can have multiple export
+        locations.
+        """
         return pulumi.get(self, "export_locations")
 
     @property
@@ -100,51 +114,81 @@ class GetShareResult:
     @property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> bool:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "is_public")
 
     @property
     @pulumi.getter
     def metadata(self) -> Mapping[str, Any]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        The region in which to obtain the V2 Shared File System client.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="shareNetworkId")
     def share_network_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "share_network_id")
 
     @property
     @pulumi.getter(name="shareProto")
     def share_proto(self) -> str:
+        """
+        The share protocol.
+        """
         return pulumi.get(self, "share_proto")
 
     @property
     @pulumi.getter
     def size(self) -> int:
+        """
+        The share size, in GBs.
+        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "status")
 
 
@@ -182,7 +226,34 @@ def get_share(description: Optional[str] = None,
               status: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetShareResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an available Shared File System share.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    share1 = openstack.sharedfilesystem.get_share(name="share_1")
+    ```
+
+
+    :param str description: The human-readable description for the share.
+    :param str export_location_path: The export location path of the share. Available
+           since Manila API version 2.35.
+    :param bool is_public: The level of visibility for the share.
+           length.
+    :param Mapping[str, Any] metadata: One or more metadata key and value pairs as a dictionary of
+           strings.
+    :param str name: The name of the share.
+    :param str region: The region in which to obtain the V2 Shared File System client.
+    :param str share_network_id: The UUID of the share's share network.
+    :param str snapshot_id: The UUID of the share's base snapshot.
+    :param str status: A share status filter. A valid value is `creating`,
+           `error`, `available`, `deleting`, `error_deleting`, `manage_starting`,
+           `manage_error`, `unmanage_starting`, `unmanage_error`, `unmanaged`,
+           `extending`, `extending_error`, `shrinking`, `shrinking_error`, or
+           `shrinking_possible_data_loss_error`.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -227,6 +298,33 @@ def get_share_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                      status: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetShareResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an available Shared File System share.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    share1 = openstack.sharedfilesystem.get_share(name="share_1")
+    ```
+
+
+    :param str description: The human-readable description for the share.
+    :param str export_location_path: The export location path of the share. Available
+           since Manila API version 2.35.
+    :param bool is_public: The level of visibility for the share.
+           length.
+    :param Mapping[str, Any] metadata: One or more metadata key and value pairs as a dictionary of
+           strings.
+    :param str name: The name of the share.
+    :param str region: The region in which to obtain the V2 Shared File System client.
+    :param str share_network_id: The UUID of the share's share network.
+    :param str snapshot_id: The UUID of the share's base snapshot.
+    :param str status: A share status filter. A valid value is `creating`,
+           `error`, `available`, `deleting`, `error_deleting`, `manage_starting`,
+           `manage_error`, `unmanage_starting`, `unmanage_error`, `unmanaged`,
+           `extending`, `extending_error`, `shrinking`, `shrinking_error`, or
+           `shrinking_possible_data_loss_error`.
     """
     ...

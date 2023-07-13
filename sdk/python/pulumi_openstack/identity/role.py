@@ -19,6 +19,11 @@ class RoleArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Role resource.
+        :param pulumi.Input[str] domain_id: The domain the role belongs to.
+        :param pulumi.Input[str] name: The name of the role.
+        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
+               If omitted, the `region` argument of the provider is used. Changing this
+               creates a new Role.
         """
         if domain_id is not None:
             pulumi.set(__self__, "domain_id", domain_id)
@@ -30,6 +35,9 @@ class RoleArgs:
     @property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain the role belongs to.
+        """
         return pulumi.get(self, "domain_id")
 
     @domain_id.setter
@@ -39,6 +47,9 @@ class RoleArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the role.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -48,6 +59,11 @@ class RoleArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V3 Keystone client.
+        If omitted, the `region` argument of the provider is used. Changing this
+        creates a new Role.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -63,6 +79,11 @@ class _RoleState:
                  region: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Role resources.
+        :param pulumi.Input[str] domain_id: The domain the role belongs to.
+        :param pulumi.Input[str] name: The name of the role.
+        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
+               If omitted, the `region` argument of the provider is used. Changing this
+               creates a new Role.
         """
         if domain_id is not None:
             pulumi.set(__self__, "domain_id", domain_id)
@@ -74,6 +95,9 @@ class _RoleState:
     @property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain the role belongs to.
+        """
         return pulumi.get(self, "domain_id")
 
     @domain_id.setter
@@ -83,6 +107,9 @@ class _RoleState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the role.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -92,6 +119,11 @@ class _RoleState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V3 Keystone client.
+        If omitted, the `region` argument of the provider is used. Changing this
+        creates a new Role.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -109,9 +141,35 @@ class Role(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Role resource with the given unique name, props, and options.
+        Manages a V3 Role resource within OpenStack Keystone.
+
+        > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+        this resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        role1 = openstack.identity.Role("role1")
+        ```
+
+        ## Import
+
+        Roles can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:identity/role:Role role_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] domain_id: The domain the role belongs to.
+        :param pulumi.Input[str] name: The name of the role.
+        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
+               If omitted, the `region` argument of the provider is used. Changing this
+               creates a new Role.
         """
         ...
     @overload
@@ -120,7 +178,28 @@ class Role(pulumi.CustomResource):
                  args: Optional[RoleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Role resource with the given unique name, props, and options.
+        Manages a V3 Role resource within OpenStack Keystone.
+
+        > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+        this resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        role1 = openstack.identity.Role("role1")
+        ```
+
+        ## Import
+
+        Roles can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:identity/role:Role role_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+        ```
+
         :param str resource_name: The name of the resource.
         :param RoleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -171,6 +250,11 @@ class Role(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] domain_id: The domain the role belongs to.
+        :param pulumi.Input[str] name: The name of the role.
+        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
+               If omitted, the `region` argument of the provider is used. Changing this
+               creates a new Role.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -184,15 +268,26 @@ class Role(pulumi.CustomResource):
     @property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> pulumi.Output[str]:
+        """
+        The domain the role belongs to.
+        """
         return pulumi.get(self, "domain_id")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the role.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to obtain the V3 Keystone client.
+        If omitted, the `region` argument of the provider is used. Changing this
+        creates a new Role.
+        """
         return pulumi.get(self, "region")
 

@@ -59,21 +59,33 @@ class GetQuotasetV3Result:
     @property
     @pulumi.getter(name="backupGigabytes")
     def backup_gigabytes(self) -> int:
+        """
+        The size (GB) of backups that are allowed.
+        """
         return pulumi.get(self, "backup_gigabytes")
 
     @property
     @pulumi.getter
     def backups(self) -> int:
+        """
+        The number of backups that are allowed.
+        """
         return pulumi.get(self, "backups")
 
     @property
     @pulumi.getter
     def gigabytes(self) -> int:
+        """
+        The size (GB) of volumes and snapshots that are allowed.
+        """
         return pulumi.get(self, "gigabytes")
 
     @property
     @pulumi.getter
     def groups(self) -> int:
+        """
+        The number of groups that are allowed.
+        """
         return pulumi.get(self, "groups")
 
     @property
@@ -87,31 +99,49 @@ class GetQuotasetV3Result:
     @property
     @pulumi.getter(name="perVolumeGigabytes")
     def per_volume_gigabytes(self) -> int:
+        """
+        The size (GB) of volumes that are allowed for each volume.
+        """
         return pulumi.get(self, "per_volume_gigabytes")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def snapshots(self) -> int:
+        """
+        The number of snapshots that are allowed.
+        """
         return pulumi.get(self, "snapshots")
 
     @property
     @pulumi.getter(name="volumeTypeQuota")
     def volume_type_quota(self) -> Mapping[str, Any]:
+        """
+        Map with gigabytes_{volume_type}, snapshots_{volume_type}, volumes_{volume_type} for each volume type.
+        """
         return pulumi.get(self, "volume_type_quota")
 
     @property
     @pulumi.getter
     def volumes(self) -> int:
+        """
+        The number of volumes that are allowed.
+        """
         return pulumi.get(self, "volumes")
 
 
@@ -138,7 +168,21 @@ def get_quotaset_v3(project_id: Optional[str] = None,
                     region: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQuotasetV3Result:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the blockstorage quotaset v3 of an OpenStack project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    quota = openstack.blockstorage.get_quotaset_v3(project_id="2e367a3d29f94fd988e6ec54e305ec9d")
+    ```
+
+
+    :param str project_id: The id of the project to retrieve the quotaset.
+    :param str region: The region in which to obtain the V3 Blockstorage client.
+           If omitted, the `region` argument of the provider is used.
     """
     __args__ = dict()
     __args__['projectId'] = project_id
@@ -165,6 +209,20 @@ def get_quotaset_v3_output(project_id: Optional[pulumi.Input[str]] = None,
                            region: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQuotasetV3Result]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the blockstorage quotaset v3 of an OpenStack project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    quota = openstack.blockstorage.get_quotaset_v3(project_id="2e367a3d29f94fd988e6ec54e305ec9d")
+    ```
+
+
+    :param str project_id: The id of the project to retrieve the quotaset.
+    :param str region: The region in which to obtain the V3 Blockstorage client.
+           If omitted, the `region` argument of the provider is used.
     """
     ...

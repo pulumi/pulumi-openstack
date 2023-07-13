@@ -83,31 +83,49 @@ class GetSubnetPoolResult:
     @property
     @pulumi.getter(name="addressScopeId")
     def address_scope_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "address_scope_id")
 
     @property
     @pulumi.getter(name="allTags")
     def all_tags(self) -> Sequence[str]:
+        """
+        The set of string tags applied on the subnetpool.
+        """
         return pulumi.get(self, "all_tags")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        The time at which subnetpool was created.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="defaultPrefixlen")
     def default_prefixlen(self) -> int:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "default_prefixlen")
 
     @property
     @pulumi.getter(name="defaultQuota")
     def default_quota(self) -> int:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "default_quota")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -121,51 +139,81 @@ class GetSubnetPoolResult:
     @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> int:
+        """
+        The IP protocol version.
+        """
         return pulumi.get(self, "ip_version")
 
     @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> bool:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "is_default")
 
     @property
     @pulumi.getter(name="maxPrefixlen")
     def max_prefixlen(self) -> int:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "max_prefixlen")
 
     @property
     @pulumi.getter(name="minPrefixlen")
     def min_prefixlen(self) -> int:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "min_prefixlen")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def prefixes(self) -> Sequence[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "prefixes")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="revisionNumber")
     def revision_number(self) -> int:
+        """
+        The revision number of the subnetpool.
+        """
         return pulumi.get(self, "revision_number")
 
     @property
     @pulumi.getter
     def shared(self) -> bool:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "shared")
 
     @property
@@ -176,6 +224,9 @@ class GetSubnetPoolResult:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
+        """
+        The time at which subnetpool was created.
+        """
         return pulumi.get(self, "updated_at")
 
 
@@ -221,7 +272,36 @@ def get_subnet_pool(address_scope_id: Optional[str] = None,
                     tags: Optional[Sequence[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubnetPoolResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an available OpenStack subnetpool.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    subnetpool1 = openstack.networking.get_subnet_pool(name="subnetpool_1")
+    ```
+
+
+    :param str address_scope_id: The Neutron address scope that subnetpools
+           is assigned to.
+    :param int default_prefixlen: The size of the subnetpool default prefix
+           length.
+    :param int default_quota: The per-project quota on the prefix space that
+           can be allocated from the subnetpool for project subnets.
+    :param str description: The human-readable description for the subnetpool.
+    :param int ip_version: The IP protocol version.
+    :param bool is_default: Whether the subnetpool is default subnetpool or not.
+    :param int max_prefixlen: The size of the subnetpool max prefix length.
+    :param int min_prefixlen: The size of the subnetpool min prefix length.
+    :param str name: The name of the subnetpool.
+    :param str project_id: The owner of the subnetpool.
+    :param str region: The region in which to obtain the V2 Networking client.
+           A Networking client is needed to retrieve a subnetpool id. If omitted, the
+           `region` argument of the provider is used.
+    :param bool shared: Whether this subnetpool is shared across all projects.
+    :param Sequence[str] tags: The list of subnetpool tags to filter.
     """
     __args__ = dict()
     __args__['addressScopeId'] = address_scope_id
@@ -278,6 +358,35 @@ def get_subnet_pool_output(address_scope_id: Optional[pulumi.Input[Optional[str]
                            tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetPoolResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an available OpenStack subnetpool.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    subnetpool1 = openstack.networking.get_subnet_pool(name="subnetpool_1")
+    ```
+
+
+    :param str address_scope_id: The Neutron address scope that subnetpools
+           is assigned to.
+    :param int default_prefixlen: The size of the subnetpool default prefix
+           length.
+    :param int default_quota: The per-project quota on the prefix space that
+           can be allocated from the subnetpool for project subnets.
+    :param str description: The human-readable description for the subnetpool.
+    :param int ip_version: The IP protocol version.
+    :param bool is_default: Whether the subnetpool is default subnetpool or not.
+    :param int max_prefixlen: The size of the subnetpool max prefix length.
+    :param int min_prefixlen: The size of the subnetpool min prefix length.
+    :param str name: The name of the subnetpool.
+    :param str project_id: The owner of the subnetpool.
+    :param str region: The region in which to obtain the V2 Networking client.
+           A Networking client is needed to retrieve a subnetpool id. If omitted, the
+           `region` argument of the provider is used.
+    :param bool shared: Whether this subnetpool is shared across all projects.
+    :param Sequence[str] tags: The list of subnetpool tags to filter.
     """
     ...

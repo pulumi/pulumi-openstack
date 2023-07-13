@@ -41,6 +41,11 @@ class ConfigurationConfiguration(dict):
                  name: str,
                  value: str,
                  string_type: Optional[bool] = None):
+        """
+        :param str name: Configuration parameter name. Changing this creates a new resource.
+        :param str value: Configuration parameter value. Changing this creates a new resource.
+        :param bool string_type: Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
         if string_type is not None:
@@ -49,16 +54,25 @@ class ConfigurationConfiguration(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Configuration parameter name. Changing this creates a new resource.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        Configuration parameter value. Changing this creates a new resource.
+        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter(name="stringType")
     def string_type(self) -> Optional[bool]:
+        """
+        Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
+        """
         return pulumi.get(self, "string_type")
 
 
@@ -67,17 +81,27 @@ class ConfigurationDatastore(dict):
     def __init__(__self__, *,
                  type: str,
                  version: str):
+        """
+        :param str type: Database engine type to be used with this configuration. Changing this creates a new resource.
+        :param str version: Version of database engine type to be used with this configuration. Changing this creates a new resource.
+        """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Database engine type to be used with this configuration. Changing this creates a new resource.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def version(self) -> str:
+        """
+        Version of database engine type to be used with this configuration. Changing this creates a new resource.
+        """
         return pulumi.get(self, "version")
 
 
@@ -87,6 +111,13 @@ class InstanceDatabase(dict):
                  name: str,
                  charset: Optional[str] = None,
                  collate: Optional[str] = None):
+        """
+        :param str name: Database to be created on new instance. Changing this creates a
+               new instance.
+        :param str charset: Database character set. Changing this creates a
+               new instance.
+        :param str collate: Database collation. Changing this creates a new instance.
+        """
         pulumi.set(__self__, "name", name)
         if charset is not None:
             pulumi.set(__self__, "charset", charset)
@@ -96,16 +127,27 @@ class InstanceDatabase(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Database to be created on new instance. Changing this creates a
+        new instance.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def charset(self) -> Optional[str]:
+        """
+        Database character set. Changing this creates a
+        new instance.
+        """
         return pulumi.get(self, "charset")
 
     @property
     @pulumi.getter
     def collate(self) -> Optional[str]:
+        """
+        Database collation. Changing this creates a new instance.
+        """
         return pulumi.get(self, "collate")
 
 
@@ -114,17 +156,31 @@ class InstanceDatastore(dict):
     def __init__(__self__, *,
                  type: str,
                  version: str):
+        """
+        :param str type: Database engine type to be used in new instance. Changing this
+               creates a new instance.
+        :param str version: Version of database engine type to be used in new instance.
+               Changing this creates a new instance.
+        """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Database engine type to be used in new instance. Changing this
+        creates a new instance.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def version(self) -> str:
+        """
+        Version of database engine type to be used in new instance.
+        Changing this creates a new instance.
+        """
         return pulumi.get(self, "version")
 
 
@@ -154,6 +210,16 @@ class InstanceNetwork(dict):
                  fixed_ip_v6: Optional[str] = None,
                  port: Optional[str] = None,
                  uuid: Optional[str] = None):
+        """
+        :param str fixed_ip_v4: Specifies a fixed IPv4 address to be used on this
+               network. Changing this creates a new instance.
+        :param str fixed_ip_v6: Specifies a fixed IPv6 address to be used on this
+               network. Changing this creates a new instance.
+        :param str port: The port UUID of a
+               network to attach to the instance. Changing this creates a new instance.
+        :param str uuid: The network UUID to
+               attach to the instance. Changing this creates a new instance.
+        """
         if fixed_ip_v4 is not None:
             pulumi.set(__self__, "fixed_ip_v4", fixed_ip_v4)
         if fixed_ip_v6 is not None:
@@ -166,21 +232,37 @@ class InstanceNetwork(dict):
     @property
     @pulumi.getter(name="fixedIpV4")
     def fixed_ip_v4(self) -> Optional[str]:
+        """
+        Specifies a fixed IPv4 address to be used on this
+        network. Changing this creates a new instance.
+        """
         return pulumi.get(self, "fixed_ip_v4")
 
     @property
     @pulumi.getter(name="fixedIpV6")
     def fixed_ip_v6(self) -> Optional[str]:
+        """
+        Specifies a fixed IPv6 address to be used on this
+        network. Changing this creates a new instance.
+        """
         return pulumi.get(self, "fixed_ip_v6")
 
     @property
     @pulumi.getter
     def port(self) -> Optional[str]:
+        """
+        The port UUID of a
+        network to attach to the instance. Changing this creates a new instance.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def uuid(self) -> Optional[str]:
+        """
+        The network UUID to
+        attach to the instance. Changing this creates a new instance.
+        """
         return pulumi.get(self, "uuid")
 
 
@@ -191,6 +273,16 @@ class InstanceUser(dict):
                  databases: Optional[Sequence[str]] = None,
                  host: Optional[str] = None,
                  password: Optional[str] = None):
+        """
+        :param str name: Username to be created on new instance. Changing this creates a
+               new instance.
+        :param Sequence[str] databases: A list of databases that user will have access to. If not specified,
+               user has access to all databases on th einstance. Changing this creates a new instance.
+        :param str host: An ip address or % sign indicating what ip addresses can connect with
+               this user credentials. Changing this creates a new instance.
+        :param str password: User's password. Changing this creates a
+               new instance.
+        """
         pulumi.set(__self__, "name", name)
         if databases is not None:
             pulumi.set(__self__, "databases", databases)
@@ -202,21 +294,37 @@ class InstanceUser(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Username to be created on new instance. Changing this creates a
+        new instance.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def databases(self) -> Optional[Sequence[str]]:
+        """
+        A list of databases that user will have access to. If not specified,
+        user has access to all databases on th einstance. Changing this creates a new instance.
+        """
         return pulumi.get(self, "databases")
 
     @property
     @pulumi.getter
     def host(self) -> Optional[str]:
+        """
+        An ip address or % sign indicating what ip addresses can connect with
+        this user credentials. Changing this creates a new instance.
+        """
         return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
     def password(self) -> Optional[str]:
+        """
+        User's password. Changing this creates a
+        new instance.
+        """
         return pulumi.get(self, "password")
 
 

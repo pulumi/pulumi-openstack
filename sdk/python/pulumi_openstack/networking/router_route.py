@@ -20,6 +20,16 @@ class RouterRouteArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RouterRoute resource.
+        :param pulumi.Input[str] destination_cidr: CIDR block to match on the packet’s destination IP. Changing
+               this creates a new routing entry.
+        :param pulumi.Input[str] next_hop: IP address of the next hop gateway.  Changing
+               this creates a new routing entry.
+        :param pulumi.Input[str] router_id: ID of the router this routing entry belongs to. Changing
+               this creates a new routing entry.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
+               A networking client is needed to configure a routing entry on a router. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               routing entry.
         """
         pulumi.set(__self__, "destination_cidr", destination_cidr)
         pulumi.set(__self__, "next_hop", next_hop)
@@ -30,6 +40,10 @@ class RouterRouteArgs:
     @property
     @pulumi.getter(name="destinationCidr")
     def destination_cidr(self) -> pulumi.Input[str]:
+        """
+        CIDR block to match on the packet’s destination IP. Changing
+        this creates a new routing entry.
+        """
         return pulumi.get(self, "destination_cidr")
 
     @destination_cidr.setter
@@ -39,6 +53,10 @@ class RouterRouteArgs:
     @property
     @pulumi.getter(name="nextHop")
     def next_hop(self) -> pulumi.Input[str]:
+        """
+        IP address of the next hop gateway.  Changing
+        this creates a new routing entry.
+        """
         return pulumi.get(self, "next_hop")
 
     @next_hop.setter
@@ -48,6 +66,10 @@ class RouterRouteArgs:
     @property
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Input[str]:
+        """
+        ID of the router this routing entry belongs to. Changing
+        this creates a new routing entry.
+        """
         return pulumi.get(self, "router_id")
 
     @router_id.setter
@@ -57,6 +79,12 @@ class RouterRouteArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 networking client.
+        A networking client is needed to configure a routing entry on a router. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        routing entry.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -73,6 +101,16 @@ class _RouterRouteState:
                  router_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RouterRoute resources.
+        :param pulumi.Input[str] destination_cidr: CIDR block to match on the packet’s destination IP. Changing
+               this creates a new routing entry.
+        :param pulumi.Input[str] next_hop: IP address of the next hop gateway.  Changing
+               this creates a new routing entry.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
+               A networking client is needed to configure a routing entry on a router. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               routing entry.
+        :param pulumi.Input[str] router_id: ID of the router this routing entry belongs to. Changing
+               this creates a new routing entry.
         """
         if destination_cidr is not None:
             pulumi.set(__self__, "destination_cidr", destination_cidr)
@@ -86,6 +124,10 @@ class _RouterRouteState:
     @property
     @pulumi.getter(name="destinationCidr")
     def destination_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        CIDR block to match on the packet’s destination IP. Changing
+        this creates a new routing entry.
+        """
         return pulumi.get(self, "destination_cidr")
 
     @destination_cidr.setter
@@ -95,6 +137,10 @@ class _RouterRouteState:
     @property
     @pulumi.getter(name="nextHop")
     def next_hop(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP address of the next hop gateway.  Changing
+        this creates a new routing entry.
+        """
         return pulumi.get(self, "next_hop")
 
     @next_hop.setter
@@ -104,6 +150,12 @@ class _RouterRouteState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 networking client.
+        A networking client is needed to configure a routing entry on a router. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        routing entry.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -113,6 +165,10 @@ class _RouterRouteState:
     @property
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the router this routing entry belongs to. Changing
+        this creates a new routing entry.
+        """
         return pulumi.get(self, "router_id")
 
     @router_id.setter
@@ -131,9 +187,55 @@ class RouterRoute(pulumi.CustomResource):
                  router_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a RouterRoute resource with the given unique name, props, and options.
+        Creates a routing entry on a OpenStack V2 router.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        router1 = openstack.networking.Router("router1", admin_state_up=True)
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            network_id=network1.id,
+            cidr="192.168.199.0/24",
+            ip_version=4)
+        int1 = openstack.networking.RouterInterface("int1",
+            router_id=router1.id,
+            subnet_id=subnet1.id)
+        router_route1 = openstack.networking.RouterRoute("routerRoute1",
+            router_id=router1.id,
+            destination_cidr="10.0.1.0/24",
+            next_hop="192.168.199.254",
+            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_router_interface_v2.int_1"]))
+        ```
+        ## Notes
+
+        The `next_hop` IP address must be directly reachable from the router at the ``networking.RouterRoute``
+        resource creation time.  You can ensure that by explicitly specifying a dependency on the ``networking.RouterInterface``
+        resource that connects the next hop to the router, as in the example above.
+
+        ## Import
+
+        Routing entries can be imported using a combined ID using the following format``<router_id>-route-<destination_cidr>-<next_hop>``
+
+        ```sh
+         $ pulumi import openstack:networking/routerRoute:RouterRoute router_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] destination_cidr: CIDR block to match on the packet’s destination IP. Changing
+               this creates a new routing entry.
+        :param pulumi.Input[str] next_hop: IP address of the next hop gateway.  Changing
+               this creates a new routing entry.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
+               A networking client is needed to configure a routing entry on a router. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               routing entry.
+        :param pulumi.Input[str] router_id: ID of the router this routing entry belongs to. Changing
+               this creates a new routing entry.
         """
         ...
     @overload
@@ -142,7 +244,43 @@ class RouterRoute(pulumi.CustomResource):
                  args: RouterRouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a RouterRoute resource with the given unique name, props, and options.
+        Creates a routing entry on a OpenStack V2 router.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        router1 = openstack.networking.Router("router1", admin_state_up=True)
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            network_id=network1.id,
+            cidr="192.168.199.0/24",
+            ip_version=4)
+        int1 = openstack.networking.RouterInterface("int1",
+            router_id=router1.id,
+            subnet_id=subnet1.id)
+        router_route1 = openstack.networking.RouterRoute("routerRoute1",
+            router_id=router1.id,
+            destination_cidr="10.0.1.0/24",
+            next_hop="192.168.199.254",
+            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_router_interface_v2.int_1"]))
+        ```
+        ## Notes
+
+        The `next_hop` IP address must be directly reachable from the router at the ``networking.RouterRoute``
+        resource creation time.  You can ensure that by explicitly specifying a dependency on the ``networking.RouterInterface``
+        resource that connects the next hop to the router, as in the example above.
+
+        ## Import
+
+        Routing entries can be imported using a combined ID using the following format``<router_id>-route-<destination_cidr>-<next_hop>``
+
+        ```sh
+         $ pulumi import openstack:networking/routerRoute:RouterRoute router_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
+        ```
+
         :param str resource_name: The name of the resource.
         :param RouterRouteArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -202,6 +340,16 @@ class RouterRoute(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] destination_cidr: CIDR block to match on the packet’s destination IP. Changing
+               this creates a new routing entry.
+        :param pulumi.Input[str] next_hop: IP address of the next hop gateway.  Changing
+               this creates a new routing entry.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
+               A networking client is needed to configure a routing entry on a router. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               routing entry.
+        :param pulumi.Input[str] router_id: ID of the router this routing entry belongs to. Changing
+               this creates a new routing entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -216,20 +364,38 @@ class RouterRoute(pulumi.CustomResource):
     @property
     @pulumi.getter(name="destinationCidr")
     def destination_cidr(self) -> pulumi.Output[str]:
+        """
+        CIDR block to match on the packet’s destination IP. Changing
+        this creates a new routing entry.
+        """
         return pulumi.get(self, "destination_cidr")
 
     @property
     @pulumi.getter(name="nextHop")
     def next_hop(self) -> pulumi.Output[str]:
+        """
+        IP address of the next hop gateway.  Changing
+        this creates a new routing entry.
+        """
         return pulumi.get(self, "next_hop")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to obtain the V2 networking client.
+        A networking client is needed to configure a routing entry on a router. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        routing entry.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Output[str]:
+        """
+        ID of the router this routing entry belongs to. Changing
+        this creates a new routing entry.
+        """
         return pulumi.get(self, "router_id")
 

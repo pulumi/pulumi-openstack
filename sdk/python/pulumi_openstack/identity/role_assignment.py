@@ -22,6 +22,11 @@ class RoleAssignmentArgs:
                  user_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RoleAssignment resource.
+        :param pulumi.Input[str] role_id: The role to assign.
+        :param pulumi.Input[str] domain_id: The domain to assign the role in.
+        :param pulumi.Input[str] group_id: The group to assign the role to.
+        :param pulumi.Input[str] project_id: The project to assign the role in.
+        :param pulumi.Input[str] user_id: The user to assign the role to.
         """
         pulumi.set(__self__, "role_id", role_id)
         if domain_id is not None:
@@ -38,6 +43,9 @@ class RoleAssignmentArgs:
     @property
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Input[str]:
+        """
+        The role to assign.
+        """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
@@ -47,6 +55,9 @@ class RoleAssignmentArgs:
     @property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain to assign the role in.
+        """
         return pulumi.get(self, "domain_id")
 
     @domain_id.setter
@@ -56,6 +67,9 @@ class RoleAssignmentArgs:
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The group to assign the role to.
+        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -65,6 +79,9 @@ class RoleAssignmentArgs:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project to assign the role in.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -83,6 +100,9 @@ class RoleAssignmentArgs:
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user to assign the role to.
+        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -101,6 +121,11 @@ class _RoleAssignmentState:
                  user_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RoleAssignment resources.
+        :param pulumi.Input[str] domain_id: The domain to assign the role in.
+        :param pulumi.Input[str] group_id: The group to assign the role to.
+        :param pulumi.Input[str] project_id: The project to assign the role in.
+        :param pulumi.Input[str] role_id: The role to assign.
+        :param pulumi.Input[str] user_id: The user to assign the role to.
         """
         if domain_id is not None:
             pulumi.set(__self__, "domain_id", domain_id)
@@ -118,6 +143,9 @@ class _RoleAssignmentState:
     @property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain to assign the role in.
+        """
         return pulumi.get(self, "domain_id")
 
     @domain_id.setter
@@ -127,6 +155,9 @@ class _RoleAssignmentState:
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The group to assign the role to.
+        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -136,6 +167,9 @@ class _RoleAssignmentState:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project to assign the role in.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -154,6 +188,9 @@ class _RoleAssignmentState:
     @property
     @pulumi.getter(name="roleId")
     def role_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role to assign.
+        """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
@@ -163,6 +200,9 @@ class _RoleAssignmentState:
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user to assign the role to.
+        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -183,9 +223,43 @@ class RoleAssignment(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a RoleAssignment resource with the given unique name, props, and options.
+        Manages a V3 Role assignment within OpenStack Keystone.
+
+        > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+        this resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        user1 = openstack.identity.User("user1", default_project_id=project1.id)
+        role1 = openstack.identity.Role("role1")
+        role_assignment1 = openstack.identity.RoleAssignment("roleAssignment1",
+            user_id=user1.id,
+            project_id=project1.id,
+            role_id=role1.id)
+        ```
+
+        ## Import
+
+        Role assignments can be imported using a constructed id. The id should have the form of `domainID/projectID/groupID/userID/roleID`. When something is not used then leave blank. For example this will import the role assignment for:
+
+        projectID014395cd-89fc-4c9b-96b7-13d1ee79dad2, userID4142e64b-1b35-44a0-9b1e-5affc7af1106, roleIDea257959-eeb1-4c10-8d33-26f0409a755d ( domainID and groupID are left blank)
+
+        ```sh
+         $ pulumi import openstack:identity/roleAssignment:RoleAssignment role_assignment_1 /014395cd-89fc-4c9b-96b7-13d1ee79dad2//4142e64b-1b35-44a0-9b1e-5affc7af1106/ea257959-eeb1-4c10-8d33-26f0409a755d
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] domain_id: The domain to assign the role in.
+        :param pulumi.Input[str] group_id: The group to assign the role to.
+        :param pulumi.Input[str] project_id: The project to assign the role in.
+        :param pulumi.Input[str] role_id: The role to assign.
+        :param pulumi.Input[str] user_id: The user to assign the role to.
         """
         ...
     @overload
@@ -194,7 +268,36 @@ class RoleAssignment(pulumi.CustomResource):
                  args: RoleAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a RoleAssignment resource with the given unique name, props, and options.
+        Manages a V3 Role assignment within OpenStack Keystone.
+
+        > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+        this resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        user1 = openstack.identity.User("user1", default_project_id=project1.id)
+        role1 = openstack.identity.Role("role1")
+        role_assignment1 = openstack.identity.RoleAssignment("roleAssignment1",
+            user_id=user1.id,
+            project_id=project1.id,
+            role_id=role1.id)
+        ```
+
+        ## Import
+
+        Role assignments can be imported using a constructed id. The id should have the form of `domainID/projectID/groupID/userID/roleID`. When something is not used then leave blank. For example this will import the role assignment for:
+
+        projectID014395cd-89fc-4c9b-96b7-13d1ee79dad2, userID4142e64b-1b35-44a0-9b1e-5affc7af1106, roleIDea257959-eeb1-4c10-8d33-26f0409a755d ( domainID and groupID are left blank)
+
+        ```sh
+         $ pulumi import openstack:identity/roleAssignment:RoleAssignment role_assignment_1 /014395cd-89fc-4c9b-96b7-13d1ee79dad2//4142e64b-1b35-44a0-9b1e-5affc7af1106/ea257959-eeb1-4c10-8d33-26f0409a755d
+        ```
+
         :param str resource_name: The name of the resource.
         :param RoleAssignmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -256,6 +359,11 @@ class RoleAssignment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] domain_id: The domain to assign the role in.
+        :param pulumi.Input[str] group_id: The group to assign the role to.
+        :param pulumi.Input[str] project_id: The project to assign the role in.
+        :param pulumi.Input[str] role_id: The role to assign.
+        :param pulumi.Input[str] user_id: The user to assign the role to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -272,16 +380,25 @@ class RoleAssignment(pulumi.CustomResource):
     @property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The domain to assign the role in.
+        """
         return pulumi.get(self, "domain_id")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The group to assign the role to.
+        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The project to assign the role in.
+        """
         return pulumi.get(self, "project_id")
 
     @property
@@ -292,10 +409,16 @@ class RoleAssignment(pulumi.CustomResource):
     @property
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Output[str]:
+        """
+        The role to assign.
+        """
         return pulumi.get(self, "role_id")
 
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The user to assign the role to.
+        """
         return pulumi.get(self, "user_id")
 

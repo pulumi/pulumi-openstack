@@ -68,6 +68,9 @@ class GetTrunkResult:
     @property
     @pulumi.getter(name="allTags")
     def all_tags(self) -> Sequence[str]:
+        """
+        The set of string tags applied on the trunk.
+        """
         return pulumi.get(self, "all_tags")
 
     @property
@@ -91,6 +94,9 @@ class GetTrunkResult:
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[str]:
+        """
+        The ID of the trunk subport.
+        """
         return pulumi.get(self, "port_id")
 
     @property
@@ -111,6 +117,10 @@ class GetTrunkResult:
     @property
     @pulumi.getter(name="subPorts")
     def sub_ports(self) -> Sequence['outputs.GetTrunkSubPortResult']:
+        """
+        The set of the trunk subports. The structure of each subport is
+        described below.
+        """
         return pulumi.get(self, "sub_ports")
 
     @property
@@ -155,7 +165,29 @@ def get_trunk(admin_state_up: Optional[bool] = None,
               trunk_id: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTrunkResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an available OpenStack trunk.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    trunk1 = openstack.networking.get_trunk(name="trunk_1")
+    ```
+
+
+    :param bool admin_state_up: The administrative state of the trunk.
+    :param str description: Human-readable description of the trunk.
+    :param str name: The name of the trunk.
+    :param str port_id: The ID of the trunk parent port.
+    :param str project_id: The owner of the trunk.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve trunk ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str status: The status of the trunk.
+    :param Sequence[str] tags: The list of trunk tags to filter.
+    :param str trunk_id: The ID of the trunk.
     """
     __args__ = dict()
     __args__['adminStateUp'] = admin_state_up
@@ -197,6 +229,28 @@ def get_trunk_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = No
                      trunk_id: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrunkResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an available OpenStack trunk.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    trunk1 = openstack.networking.get_trunk(name="trunk_1")
+    ```
+
+
+    :param bool admin_state_up: The administrative state of the trunk.
+    :param str description: Human-readable description of the trunk.
+    :param str name: The name of the trunk.
+    :param str port_id: The ID of the trunk parent port.
+    :param str project_id: The owner of the trunk.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve trunk ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str status: The status of the trunk.
+    :param Sequence[str] tags: The list of trunk tags to filter.
+    :param str trunk_id: The ID of the trunk.
     """
     ...

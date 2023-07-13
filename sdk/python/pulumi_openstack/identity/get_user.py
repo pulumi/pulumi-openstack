@@ -59,21 +59,33 @@ class GetUserResult:
     @property
     @pulumi.getter(name="defaultProjectId")
     def default_project_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "default_project_id")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        A description of the user.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "domain_id")
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -87,31 +99,49 @@ class GetUserResult:
     @property
     @pulumi.getter(name="idpId")
     def idp_id(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "idp_id")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="passwordExpiresAt")
     def password_expires_at(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "password_expires_at")
 
     @property
     @pulumi.getter(name="protocolId")
     def protocol_id(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "protocol_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        The region the user is located in.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="uniqueId")
     def unique_id(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "unique_id")
 
 
@@ -144,7 +174,27 @@ def get_user(domain_id: Optional[str] = None,
              unique_id: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an OpenStack user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    user1 = openstack.identity.get_user(name="user_1")
+    ```
+
+
+    :param str domain_id: The domain this user belongs to.
+    :param bool enabled: Whether the user is enabled or disabled. Valid
+           values are `true` and `false`.
+    :param str idp_id: The identity provider ID of the user.
+    :param str name: The name of the user.
+    :param str password_expires_at: Query for expired passwords. See the [OpenStack API docs](https://developer.openstack.org/api-ref/identity/v3/#list-users) for more information on the query format.
+    :param str protocol_id: The protocol ID of the user.
+    :param str region: The region the user is located in.
+    :param str unique_id: The unique ID of the user.
     """
     __args__ = dict()
     __args__['domainId'] = domain_id
@@ -183,6 +233,26 @@ def get_user_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
                     unique_id: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an OpenStack user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    user1 = openstack.identity.get_user(name="user_1")
+    ```
+
+
+    :param str domain_id: The domain this user belongs to.
+    :param bool enabled: Whether the user is enabled or disabled. Valid
+           values are `true` and `false`.
+    :param str idp_id: The identity provider ID of the user.
+    :param str name: The name of the user.
+    :param str password_expires_at: Query for expired passwords. See the [OpenStack API docs](https://developer.openstack.org/api-ref/identity/v3/#list-users) for more information on the query format.
+    :param str protocol_id: The protocol ID of the user.
+    :param str region: The region the user is located in.
+    :param str unique_id: The unique ID of the user.
     """
     ...

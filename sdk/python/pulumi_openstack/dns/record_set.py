@@ -26,6 +26,26 @@ class RecordSetArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a RecordSet resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records.
+        :param pulumi.Input[str] zone_id: The ID of the zone in which to create the record set.
+               Changing this creates a new DNS  record set.
+        :param pulumi.Input[str] description: A description of the  record set.
+        :param pulumi.Input[bool] disable_status_check: Disable wait for recordset to reach ACTIVE
+               status. This argumen is disabled by default. If it is set to true, the recordset
+               will be considered as created/updated/deleted if OpenStack request returned success.
+        :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
+               Changing this creates a new DNS  record set.
+        :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               user role in target project)
+        :param pulumi.Input[str] region: The region in which to obtain the V2 DNS client.
+               If omitted, the `region` argument of the provider is used.
+               Changing this creates a new DNS  record set.
+        :param pulumi.Input[int] ttl: The time to live (TTL) of the record set.
+        :param pulumi.Input[str] type: The type of record set. Examples: "A", "MX".
+               Changing this creates a new DNS  record set.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+               new record set.
         """
         pulumi.set(__self__, "records", records)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -49,6 +69,9 @@ class RecordSetArgs:
     @property
     @pulumi.getter
     def records(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        An array of DNS records.
+        """
         return pulumi.get(self, "records")
 
     @records.setter
@@ -58,6 +81,10 @@ class RecordSetArgs:
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the zone in which to create the record set.
+        Changing this creates a new DNS  record set.
+        """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
@@ -67,6 +94,9 @@ class RecordSetArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the  record set.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -76,6 +106,11 @@ class RecordSetArgs:
     @property
     @pulumi.getter(name="disableStatusCheck")
     def disable_status_check(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable wait for recordset to reach ACTIVE
+        status. This argumen is disabled by default. If it is set to true, the recordset
+        will be considered as created/updated/deleted if OpenStack request returned success.
+        """
         return pulumi.get(self, "disable_status_check")
 
     @disable_status_check.setter
@@ -85,6 +120,10 @@ class RecordSetArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the record set. Note the `.` at the end of the name.
+        Changing this creates a new DNS  record set.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -94,6 +133,11 @@ class RecordSetArgs:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project DNS zone is created
+        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        user role in target project)
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -103,6 +147,11 @@ class RecordSetArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 DNS client.
+        If omitted, the `region` argument of the provider is used.
+        Changing this creates a new DNS  record set.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -112,6 +161,9 @@ class RecordSetArgs:
     @property
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time to live (TTL) of the record set.
+        """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
@@ -121,6 +173,10 @@ class RecordSetArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of record set. Examples: "A", "MX".
+        Changing this creates a new DNS  record set.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -130,6 +186,10 @@ class RecordSetArgs:
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Map of additional options. Changing this creates a
+        new record set.
+        """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
@@ -152,6 +212,26 @@ class _RecordSetState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RecordSet resources.
+        :param pulumi.Input[str] description: A description of the  record set.
+        :param pulumi.Input[bool] disable_status_check: Disable wait for recordset to reach ACTIVE
+               status. This argumen is disabled by default. If it is set to true, the recordset
+               will be considered as created/updated/deleted if OpenStack request returned success.
+        :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
+               Changing this creates a new DNS  record set.
+        :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               user role in target project)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 DNS client.
+               If omitted, the `region` argument of the provider is used.
+               Changing this creates a new DNS  record set.
+        :param pulumi.Input[int] ttl: The time to live (TTL) of the record set.
+        :param pulumi.Input[str] type: The type of record set. Examples: "A", "MX".
+               Changing this creates a new DNS  record set.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+               new record set.
+        :param pulumi.Input[str] zone_id: The ID of the zone in which to create the record set.
+               Changing this creates a new DNS  record set.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -177,6 +257,9 @@ class _RecordSetState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the  record set.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -186,6 +269,11 @@ class _RecordSetState:
     @property
     @pulumi.getter(name="disableStatusCheck")
     def disable_status_check(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable wait for recordset to reach ACTIVE
+        status. This argumen is disabled by default. If it is set to true, the recordset
+        will be considered as created/updated/deleted if OpenStack request returned success.
+        """
         return pulumi.get(self, "disable_status_check")
 
     @disable_status_check.setter
@@ -195,6 +283,10 @@ class _RecordSetState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the record set. Note the `.` at the end of the name.
+        Changing this creates a new DNS  record set.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -204,6 +296,11 @@ class _RecordSetState:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project DNS zone is created
+        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        user role in target project)
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -213,6 +310,9 @@ class _RecordSetState:
     @property
     @pulumi.getter
     def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of DNS records.
+        """
         return pulumi.get(self, "records")
 
     @records.setter
@@ -222,6 +322,11 @@ class _RecordSetState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 DNS client.
+        If omitted, the `region` argument of the provider is used.
+        Changing this creates a new DNS  record set.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -231,6 +336,9 @@ class _RecordSetState:
     @property
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time to live (TTL) of the record set.
+        """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
@@ -240,6 +348,10 @@ class _RecordSetState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of record set. Examples: "A", "MX".
+        Changing this creates a new DNS  record set.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -249,6 +361,10 @@ class _RecordSetState:
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Map of additional options. Changing this creates a
+        new record set.
+        """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
@@ -258,6 +374,10 @@ class _RecordSetState:
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the zone in which to create the record set.
+        Changing this creates a new DNS  record set.
+        """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
@@ -282,9 +402,58 @@ class RecordSet(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a RecordSet resource with the given unique name, props, and options.
+        Manages a DNS record set in the OpenStack DNS Service.
+
+        ## Example Usage
+        ### Automatically detect the correct network
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        example_zone = openstack.dns.Zone("exampleZone",
+            email="email2@example.com",
+            description="a zone",
+            ttl=6000,
+            type="PRIMARY")
+        rs_example_com = openstack.dns.RecordSet("rsExampleCom",
+            zone_id=example_zone.id,
+            description="An example record set",
+            ttl=3000,
+            type="A",
+            records=["10.0.0.1"])
+        ```
+
+        ## Import
+
+        This resource can be imported by specifying the zone ID and recordset ID, separated by a forward slash.
+
+        ```sh
+         $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 zone_id/recordset_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: A description of the  record set.
+        :param pulumi.Input[bool] disable_status_check: Disable wait for recordset to reach ACTIVE
+               status. This argumen is disabled by default. If it is set to true, the recordset
+               will be considered as created/updated/deleted if OpenStack request returned success.
+        :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
+               Changing this creates a new DNS  record set.
+        :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               user role in target project)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 DNS client.
+               If omitted, the `region` argument of the provider is used.
+               Changing this creates a new DNS  record set.
+        :param pulumi.Input[int] ttl: The time to live (TTL) of the record set.
+        :param pulumi.Input[str] type: The type of record set. Examples: "A", "MX".
+               Changing this creates a new DNS  record set.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+               new record set.
+        :param pulumi.Input[str] zone_id: The ID of the zone in which to create the record set.
+               Changing this creates a new DNS  record set.
         """
         ...
     @overload
@@ -293,7 +462,36 @@ class RecordSet(pulumi.CustomResource):
                  args: RecordSetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a RecordSet resource with the given unique name, props, and options.
+        Manages a DNS record set in the OpenStack DNS Service.
+
+        ## Example Usage
+        ### Automatically detect the correct network
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        example_zone = openstack.dns.Zone("exampleZone",
+            email="email2@example.com",
+            description="a zone",
+            ttl=6000,
+            type="PRIMARY")
+        rs_example_com = openstack.dns.RecordSet("rsExampleCom",
+            zone_id=example_zone.id,
+            description="An example record set",
+            ttl=3000,
+            type="A",
+            records=["10.0.0.1"])
+        ```
+
+        ## Import
+
+        This resource can be imported by specifying the zone ID and recordset ID, separated by a forward slash.
+
+        ```sh
+         $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 zone_id/recordset_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param RecordSetArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -369,6 +567,26 @@ class RecordSet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: A description of the  record set.
+        :param pulumi.Input[bool] disable_status_check: Disable wait for recordset to reach ACTIVE
+               status. This argumen is disabled by default. If it is set to true, the recordset
+               will be considered as created/updated/deleted if OpenStack request returned success.
+        :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
+               Changing this creates a new DNS  record set.
+        :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               user role in target project)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 DNS client.
+               If omitted, the `region` argument of the provider is used.
+               Changing this creates a new DNS  record set.
+        :param pulumi.Input[int] ttl: The time to live (TTL) of the record set.
+        :param pulumi.Input[str] type: The type of record set. Examples: "A", "MX".
+               Changing this creates a new DNS  record set.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
+               new record set.
+        :param pulumi.Input[str] zone_id: The ID of the zone in which to create the record set.
+               Changing this creates a new DNS  record set.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -389,50 +607,90 @@ class RecordSet(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        A description of the  record set.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="disableStatusCheck")
     def disable_status_check(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Disable wait for recordset to reach ACTIVE
+        status. This argumen is disabled by default. If it is set to true, the recordset
+        will be considered as created/updated/deleted if OpenStack request returned success.
+        """
         return pulumi.get(self, "disable_status_check")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the record set. Note the `.` at the end of the name.
+        Changing this creates a new DNS  record set.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the project DNS zone is created
+        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        user role in target project)
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def records(self) -> pulumi.Output[Sequence[str]]:
+        """
+        An array of DNS records.
+        """
         return pulumi.get(self, "records")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to obtain the V2 DNS client.
+        If omitted, the `region` argument of the provider is used.
+        Changing this creates a new DNS  record set.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def ttl(self) -> pulumi.Output[int]:
+        """
+        The time to live (TTL) of the record set.
+        """
         return pulumi.get(self, "ttl")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
+        """
+        The type of record set. Examples: "A", "MX".
+        Changing this creates a new DNS  record set.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        Map of additional options. Changing this creates a
+        new record set.
+        """
         return pulumi.get(self, "value_specs")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the zone in which to create the record set.
+        Changing this creates a new DNS  record set.
+        """
         return pulumi.get(self, "zone_id")
 

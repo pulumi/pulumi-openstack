@@ -53,16 +53,25 @@ class GetHypervisorV2Result:
     @property
     @pulumi.getter
     def disk(self) -> int:
+        """
+        The amount in GigaBytes of local storage the hypervisor can provide
+        """
         return pulumi.get(self, "disk")
 
     @property
     @pulumi.getter(name="hostIp")
     def host_ip(self) -> str:
+        """
+        The IP address of the Hypervisor
+        """
         return pulumi.get(self, "host_ip")
 
     @property
     @pulumi.getter
     def hostname(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "hostname")
 
     @property
@@ -76,26 +85,41 @@ class GetHypervisorV2Result:
     @property
     @pulumi.getter
     def memory(self) -> int:
+        """
+        The number in MegaBytes of memory the hypervisor can provide
+        """
         return pulumi.get(self, "memory")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the hypervisor (`up` or `down`)
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        The status of the hypervisor (`enabled` or `disabled`)
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The type of the hypervisor (example: `QEMU`)
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def vcpus(self) -> int:
+        """
+        The number of virtual CPUs the hypervisor can provide
+        """
         return pulumi.get(self, "vcpus")
 
 
@@ -119,7 +143,20 @@ class AwaitableGetHypervisorV2Result(GetHypervisorV2Result):
 def get_hypervisor_v2(hostname: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHypervisorV2Result:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get information about hypervisors
+    by hostname.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    host01 = openstack.compute.get_hypervisor_v2(hostname="host01")
+    ```
+
+
+    :param str hostname: The hostname of the hypervisor
     """
     __args__ = dict()
     __args__['hostname'] = hostname
@@ -142,6 +179,19 @@ def get_hypervisor_v2(hostname: Optional[str] = None,
 def get_hypervisor_v2_output(hostname: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHypervisorV2Result]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get information about hypervisors
+    by hostname.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    host01 = openstack.compute.get_hypervisor_v2(hostname="host01")
+    ```
+
+
+    :param str hostname: The hostname of the hypervisor
     """
     ...

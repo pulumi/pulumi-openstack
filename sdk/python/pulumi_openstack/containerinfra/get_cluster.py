@@ -107,16 +107,25 @@ class GetClusterResult:
     @property
     @pulumi.getter(name="apiAddress")
     def api_address(self) -> str:
+        """
+        COE API address.
+        """
         return pulumi.get(self, "api_address")
 
     @property
     @pulumi.getter(name="clusterTemplateId")
     def cluster_template_id(self) -> str:
+        """
+        The UUID of the V1 Container Infra cluster template.
+        """
         return pulumi.get(self, "cluster_template_id")
 
     @property
     @pulumi.getter(name="coeVersion")
     def coe_version(self) -> str:
+        """
+        COE software version.
+        """
         return pulumi.get(self, "coe_version")
 
     @property
@@ -127,36 +136,57 @@ class GetClusterResult:
     @property
     @pulumi.getter(name="createTimeout")
     def create_timeout(self) -> int:
+        """
+        The timeout (in minutes) for creating the cluster.
+        """
         return pulumi.get(self, "create_timeout")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        The time at which cluster was created.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="discoveryUrl")
     def discovery_url(self) -> str:
+        """
+        The URL used for cluster node discovery.
+        """
         return pulumi.get(self, "discovery_url")
 
     @property
     @pulumi.getter(name="dockerVolumeSize")
     def docker_volume_size(self) -> int:
+        """
+        The size (in GB) of the Docker volume.
+        """
         return pulumi.get(self, "docker_volume_size")
 
     @property
     @pulumi.getter(name="fixedNetwork")
     def fixed_network(self) -> str:
+        """
+        The fixed network that is attached to the cluster.
+        """
         return pulumi.get(self, "fixed_network")
 
     @property
     @pulumi.getter(name="fixedSubnet")
     def fixed_subnet(self) -> str:
+        """
+        The fixed subnet that is attached to the cluster.
+        """
         return pulumi.get(self, "fixed_subnet")
 
     @property
     @pulumi.getter
     def flavor(self) -> str:
+        """
+        The flavor for the nodes of the cluster.
+        """
         return pulumi.get(self, "flavor")
 
     @property
@@ -175,71 +205,114 @@ class GetClusterResult:
     @property
     @pulumi.getter
     def keypair(self) -> str:
+        """
+        The name of the Compute service SSH keypair.
+        """
         return pulumi.get(self, "keypair")
 
     @property
     @pulumi.getter
     def kubeconfig(self) -> Mapping[str, str]:
+        """
+        The Kubernetes cluster's credentials
+        """
         return pulumi.get(self, "kubeconfig")
 
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
+        """
+        The list of key value pairs representing additional properties of
+        the cluster.
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="masterAddresses")
     def master_addresses(self) -> Sequence[str]:
+        """
+        IP addresses of the master node of the cluster.
+        """
         return pulumi.get(self, "master_addresses")
 
     @property
     @pulumi.getter(name="masterCount")
     def master_count(self) -> int:
+        """
+        The number of master nodes for the cluster.
+        """
         return pulumi.get(self, "master_count")
 
     @property
     @pulumi.getter(name="masterFlavor")
     def master_flavor(self) -> str:
+        """
+        The flavor for the master nodes.
+        """
         return pulumi.get(self, "master_flavor")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nodeAddresses")
     def node_addresses(self) -> Sequence[str]:
+        """
+        IP addresses of the node of the cluster.
+        """
         return pulumi.get(self, "node_addresses")
 
     @property
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> int:
+        """
+        The number of nodes for the cluster.
+        """
         return pulumi.get(self, "node_count")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
+        """
+        The project of the cluster.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="stackId")
     def stack_id(self) -> str:
+        """
+        UUID of the Orchestration service stack.
+        """
         return pulumi.get(self, "stack_id")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
+        """
+        The time at which cluster was updated.
+        """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> str:
+        """
+        The user of the cluster.
+        """
         return pulumi.get(self, "user_id")
 
 
@@ -282,7 +355,22 @@ def get_cluster(name: Optional[str] = None,
                 region: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an available OpenStack Magnum cluster.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    cluster1 = openstack.containerinfra.get_cluster(name="cluster_1")
+    ```
+
+
+    :param str name: The name of the cluster.
+    :param str region: The region in which to obtain the V1 Container Infra
+           client.
+           If omitted, the `region` argument of the provider is used.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -325,6 +413,21 @@ def get_cluster_output(name: Optional[pulumi.Input[str]] = None,
                        region: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an available OpenStack Magnum cluster.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    cluster1 = openstack.containerinfra.get_cluster(name="cluster_1")
+    ```
+
+
+    :param str name: The name of the cluster.
+    :param str region: The region in which to obtain the V1 Container Infra
+           client.
+           If omitted, the `region` argument of the provider is used.
     """
     ...

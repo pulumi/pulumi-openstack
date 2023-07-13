@@ -19,6 +19,9 @@ class DatabaseArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Database resource.
+        :param pulumi.Input[str] instance_id: The ID for the database instance.
+        :param pulumi.Input[str] name: A unique name for the resource.
+        :param pulumi.Input[str] region: Openstack region resource is created in.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if name is not None:
@@ -29,6 +32,9 @@ class DatabaseArgs:
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
+        """
+        The ID for the database instance.
+        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -38,6 +44,9 @@ class DatabaseArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the resource.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -47,6 +56,9 @@ class DatabaseArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Openstack region resource is created in.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -62,6 +74,9 @@ class _DatabaseState:
                  region: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
+        :param pulumi.Input[str] instance_id: The ID for the database instance.
+        :param pulumi.Input[str] name: A unique name for the resource.
+        :param pulumi.Input[str] region: Openstack region resource is created in.
         """
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
@@ -73,6 +88,9 @@ class _DatabaseState:
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID for the database instance.
+        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -82,6 +100,9 @@ class _DatabaseState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the resource.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -91,6 +112,9 @@ class _DatabaseState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Openstack region resource is created in.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -108,9 +132,31 @@ class Database(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Database resource with the given unique name, props, and options.
+        Manages a V1 DB database resource within OpenStack.
+
+        ## Example Usage
+        ### Database
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        mydb = openstack.database.Database("mydb", instance_id=openstack_db_instance_v1["basic"]["id"])
+        ```
+
+        ## Import
+
+        Databases can be imported by using `instance-id/db-name`, e.g.
+
+        ```sh
+         $ pulumi import openstack:database/database:Database mydb 7b9e3cd3-00d9-449c-b074-8439f8e274fa/mydb
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] instance_id: The ID for the database instance.
+        :param pulumi.Input[str] name: A unique name for the resource.
+        :param pulumi.Input[str] region: Openstack region resource is created in.
         """
         ...
     @overload
@@ -119,7 +165,26 @@ class Database(pulumi.CustomResource):
                  args: DatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Database resource with the given unique name, props, and options.
+        Manages a V1 DB database resource within OpenStack.
+
+        ## Example Usage
+        ### Database
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        mydb = openstack.database.Database("mydb", instance_id=openstack_db_instance_v1["basic"]["id"])
+        ```
+
+        ## Import
+
+        Databases can be imported by using `instance-id/db-name`, e.g.
+
+        ```sh
+         $ pulumi import openstack:database/database:Database mydb 7b9e3cd3-00d9-449c-b074-8439f8e274fa/mydb
+        ```
+
         :param str resource_name: The name of the resource.
         :param DatabaseArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -172,6 +237,9 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] instance_id: The ID for the database instance.
+        :param pulumi.Input[str] name: A unique name for the resource.
+        :param pulumi.Input[str] region: Openstack region resource is created in.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -185,15 +253,24 @@ class Database(pulumi.CustomResource):
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
+        """
+        The ID for the database instance.
+        """
         return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        A unique name for the resource.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        Openstack region resource is created in.
+        """
         return pulumi.get(self, "region")
 

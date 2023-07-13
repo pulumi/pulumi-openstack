@@ -36,6 +36,52 @@ class ImageArgs:
                  web_download: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Image resource.
+        :param pulumi.Input[str] container_format: The container format. Must be one of
+               "ami", "ari", "aki", "bare", "ovf".
+        :param pulumi.Input[str] disk_format: The disk format. Must be one of
+               "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
+        :param pulumi.Input[bool] decompress: If true, this provider will decompress downloaded
+               image before uploading it to OpenStack. Decompression algorithm is chosen by
+               checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
+               Defaults to false. Changing this creates a new Image.
+        :param pulumi.Input[bool] hidden: If true, image will be hidden from public list.
+               Defaults to false.
+        :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing
+               this creates a new image.
+        :param pulumi.Input[str] image_source_password: The password of basic auth to download `image_source_url`.
+        :param pulumi.Input[str] image_source_url: This is the url of the raw image. If `web_download`
+               is not used, then the image will be downloaded in the `image_cache_path` before
+               being uploaded to Glance.
+               Conflicts with `local_file_path`.
+        :param pulumi.Input[str] image_source_username: The username of basic auth to download `image_source_url`.
+        :param pulumi.Input[str] local_file_path: This is the filepath of the raw image file
+               that will be uploaded to Glance. Conflicts with `image_source_url` and
+               `web_download`.
+        :param pulumi.Input[int] min_disk_gb: Amount of disk space (in GB) required to boot image.
+               Defaults to 0.
+        :param pulumi.Input[int] min_ram_mb: Amount of ram (in MB) required to boot image.
+               Defauts to 0.
+        :param pulumi.Input[str] name: The name of the image.
+        :param pulumi.Input[Mapping[str, Any]] properties: A map of key/value pairs to set freeform
+               information about an image. See the "Notes" section for further
+               information about properties.
+        :param pulumi.Input[bool] protected: If true, image will not be deletable.
+               Defaults to false.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Glance client.
+               A Glance client is needed to create an Image that can be used with
+               a compute instance. If omitted, the `region` argument of the provider
+               is used. Changing this creates a new Image.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the image. It must be a list of strings.
+               At this time, it is not possible to delete all tags of an image.
+        :param pulumi.Input[bool] verify_checksum: If false, the checksum will not be verified
+               once the image is finished uploading. Conflicts with `web_download`.
+               Defaults to true when not using `web_download`.
+        :param pulumi.Input[str] visibility: The visibility of the image. Must be one of
+               "public", "private", "community", or "shared". The ability to set the
+               visibility depends upon the configuration of the OpenStack cloud.
+        :param pulumi.Input[bool] web_download: If true, the "web-download" import method will
+               be used to let Openstack download the image directly from the remote source.
+               Conflicts with `local_file_path`. Defaults to false.
         """
         pulumi.set(__self__, "container_format", container_format)
         pulumi.set(__self__, "disk_format", disk_format)
@@ -79,6 +125,10 @@ class ImageArgs:
     @property
     @pulumi.getter(name="containerFormat")
     def container_format(self) -> pulumi.Input[str]:
+        """
+        The container format. Must be one of
+        "ami", "ari", "aki", "bare", "ovf".
+        """
         return pulumi.get(self, "container_format")
 
     @container_format.setter
@@ -88,6 +138,10 @@ class ImageArgs:
     @property
     @pulumi.getter(name="diskFormat")
     def disk_format(self) -> pulumi.Input[str]:
+        """
+        The disk format. Must be one of
+        "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
+        """
         return pulumi.get(self, "disk_format")
 
     @disk_format.setter
@@ -97,6 +151,12 @@ class ImageArgs:
     @property
     @pulumi.getter
     def decompress(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, this provider will decompress downloaded
+        image before uploading it to OpenStack. Decompression algorithm is chosen by
+        checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
+        Defaults to false. Changing this creates a new Image.
+        """
         return pulumi.get(self, "decompress")
 
     @decompress.setter
@@ -106,6 +166,10 @@ class ImageArgs:
     @property
     @pulumi.getter
     def hidden(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, image will be hidden from public list.
+        Defaults to false.
+        """
         return pulumi.get(self, "hidden")
 
     @hidden.setter
@@ -124,6 +188,10 @@ class ImageArgs:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique ID (valid UUID) of image to create. Changing
+        this creates a new image.
+        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -133,6 +201,9 @@ class ImageArgs:
     @property
     @pulumi.getter(name="imageSourcePassword")
     def image_source_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password of basic auth to download `image_source_url`.
+        """
         return pulumi.get(self, "image_source_password")
 
     @image_source_password.setter
@@ -142,6 +213,12 @@ class ImageArgs:
     @property
     @pulumi.getter(name="imageSourceUrl")
     def image_source_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is the url of the raw image. If `web_download`
+        is not used, then the image will be downloaded in the `image_cache_path` before
+        being uploaded to Glance.
+        Conflicts with `local_file_path`.
+        """
         return pulumi.get(self, "image_source_url")
 
     @image_source_url.setter
@@ -151,6 +228,9 @@ class ImageArgs:
     @property
     @pulumi.getter(name="imageSourceUsername")
     def image_source_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username of basic auth to download `image_source_url`.
+        """
         return pulumi.get(self, "image_source_username")
 
     @image_source_username.setter
@@ -160,6 +240,11 @@ class ImageArgs:
     @property
     @pulumi.getter(name="localFilePath")
     def local_file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is the filepath of the raw image file
+        that will be uploaded to Glance. Conflicts with `image_source_url` and
+        `web_download`.
+        """
         return pulumi.get(self, "local_file_path")
 
     @local_file_path.setter
@@ -169,6 +254,10 @@ class ImageArgs:
     @property
     @pulumi.getter(name="minDiskGb")
     def min_disk_gb(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of disk space (in GB) required to boot image.
+        Defaults to 0.
+        """
         return pulumi.get(self, "min_disk_gb")
 
     @min_disk_gb.setter
@@ -178,6 +267,10 @@ class ImageArgs:
     @property
     @pulumi.getter(name="minRamMb")
     def min_ram_mb(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of ram (in MB) required to boot image.
+        Defauts to 0.
+        """
         return pulumi.get(self, "min_ram_mb")
 
     @min_ram_mb.setter
@@ -187,6 +280,9 @@ class ImageArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the image.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -196,6 +292,11 @@ class ImageArgs:
     @property
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A map of key/value pairs to set freeform
+        information about an image. See the "Notes" section for further
+        information about properties.
+        """
         return pulumi.get(self, "properties")
 
     @properties.setter
@@ -205,6 +306,10 @@ class ImageArgs:
     @property
     @pulumi.getter
     def protected(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, image will not be deletable.
+        Defaults to false.
+        """
         return pulumi.get(self, "protected")
 
     @protected.setter
@@ -214,6 +319,12 @@ class ImageArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Glance client.
+        A Glance client is needed to create an Image that can be used with
+        a compute instance. If omitted, the `region` argument of the provider
+        is used. Changing this creates a new Image.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -223,6 +334,10 @@ class ImageArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The tags of the image. It must be a list of strings.
+        At this time, it is not possible to delete all tags of an image.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -232,6 +347,11 @@ class ImageArgs:
     @property
     @pulumi.getter(name="verifyChecksum")
     def verify_checksum(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If false, the checksum will not be verified
+        once the image is finished uploading. Conflicts with `web_download`.
+        Defaults to true when not using `web_download`.
+        """
         return pulumi.get(self, "verify_checksum")
 
     @verify_checksum.setter
@@ -241,6 +361,11 @@ class ImageArgs:
     @property
     @pulumi.getter
     def visibility(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility of the image. Must be one of
+        "public", "private", "community", or "shared". The ability to set the
+        visibility depends upon the configuration of the OpenStack cloud.
+        """
         return pulumi.get(self, "visibility")
 
     @visibility.setter
@@ -250,6 +375,11 @@ class ImageArgs:
     @property
     @pulumi.getter(name="webDownload")
     def web_download(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the "web-download" import method will
+        be used to let Openstack download the image directly from the remote source.
+        Conflicts with `local_file_path`. Defaults to false.
+        """
         return pulumi.get(self, "web_download")
 
     @web_download.setter
@@ -292,6 +422,68 @@ class _ImageState:
                  web_download: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Image resources.
+        :param pulumi.Input[str] checksum: The checksum of the data associated with the image.
+        :param pulumi.Input[str] container_format: The container format. Must be one of
+               "ami", "ari", "aki", "bare", "ovf".
+        :param pulumi.Input[str] created_at: The date the image was created.
+        :param pulumi.Input[bool] decompress: If true, this provider will decompress downloaded
+               image before uploading it to OpenStack. Decompression algorithm is chosen by
+               checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
+               Defaults to false. Changing this creates a new Image.
+        :param pulumi.Input[str] disk_format: The disk format. Must be one of
+               "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
+        :param pulumi.Input[str] file: the trailing path after the glance
+               endpoint that represent the location of the image
+               or the path to retrieve it.
+        :param pulumi.Input[bool] hidden: If true, image will be hidden from public list.
+               Defaults to false.
+        :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing
+               this creates a new image.
+        :param pulumi.Input[str] image_source_password: The password of basic auth to download `image_source_url`.
+        :param pulumi.Input[str] image_source_url: This is the url of the raw image. If `web_download`
+               is not used, then the image will be downloaded in the `image_cache_path` before
+               being uploaded to Glance.
+               Conflicts with `local_file_path`.
+        :param pulumi.Input[str] image_source_username: The username of basic auth to download `image_source_url`.
+        :param pulumi.Input[str] local_file_path: This is the filepath of the raw image file
+               that will be uploaded to Glance. Conflicts with `image_source_url` and
+               `web_download`.
+        :param pulumi.Input[Mapping[str, Any]] metadata: The metadata associated with the image.
+               Image metadata allow for meaningfully define the image properties
+               and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+        :param pulumi.Input[int] min_disk_gb: Amount of disk space (in GB) required to boot image.
+               Defaults to 0.
+        :param pulumi.Input[int] min_ram_mb: Amount of ram (in MB) required to boot image.
+               Defauts to 0.
+        :param pulumi.Input[str] name: The name of the image.
+        :param pulumi.Input[str] owner: The id of the openstack user who owns the image.
+        :param pulumi.Input[Mapping[str, Any]] properties: A map of key/value pairs to set freeform
+               information about an image. See the "Notes" section for further
+               information about properties.
+        :param pulumi.Input[bool] protected: If true, image will not be deletable.
+               Defaults to false.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Glance client.
+               A Glance client is needed to create an Image that can be used with
+               a compute instance. If omitted, the `region` argument of the provider
+               is used. Changing this creates a new Image.
+        :param pulumi.Input[str] schema: The path to the JSON-schema that represent
+               the image or image
+        :param pulumi.Input[int] size_bytes: The size in bytes of the data associated with the image.
+        :param pulumi.Input[str] status: The status of the image. It can be "queued", "active"
+               or "saving".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the image. It must be a list of strings.
+               At this time, it is not possible to delete all tags of an image.
+        :param pulumi.Input[str] update_at: (**Deprecated** - use `updated_at` instead)
+        :param pulumi.Input[str] updated_at: The date the image was last updated.
+        :param pulumi.Input[bool] verify_checksum: If false, the checksum will not be verified
+               once the image is finished uploading. Conflicts with `web_download`.
+               Defaults to true when not using `web_download`.
+        :param pulumi.Input[str] visibility: The visibility of the image. Must be one of
+               "public", "private", "community", or "shared". The ability to set the
+               visibility depends upon the configuration of the OpenStack cloud.
+        :param pulumi.Input[bool] web_download: If true, the "web-download" import method will
+               be used to let Openstack download the image directly from the remote source.
+               Conflicts with `local_file_path`. Defaults to false.
         """
         if checksum is not None:
             pulumi.set(__self__, "checksum", checksum)
@@ -360,6 +552,9 @@ class _ImageState:
     @property
     @pulumi.getter
     def checksum(self) -> Optional[pulumi.Input[str]]:
+        """
+        The checksum of the data associated with the image.
+        """
         return pulumi.get(self, "checksum")
 
     @checksum.setter
@@ -369,6 +564,10 @@ class _ImageState:
     @property
     @pulumi.getter(name="containerFormat")
     def container_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The container format. Must be one of
+        "ami", "ari", "aki", "bare", "ovf".
+        """
         return pulumi.get(self, "container_format")
 
     @container_format.setter
@@ -378,6 +577,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date the image was created.
+        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -387,6 +589,12 @@ class _ImageState:
     @property
     @pulumi.getter
     def decompress(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, this provider will decompress downloaded
+        image before uploading it to OpenStack. Decompression algorithm is chosen by
+        checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
+        Defaults to false. Changing this creates a new Image.
+        """
         return pulumi.get(self, "decompress")
 
     @decompress.setter
@@ -396,6 +604,10 @@ class _ImageState:
     @property
     @pulumi.getter(name="diskFormat")
     def disk_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disk format. Must be one of
+        "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
+        """
         return pulumi.get(self, "disk_format")
 
     @disk_format.setter
@@ -405,6 +617,11 @@ class _ImageState:
     @property
     @pulumi.getter
     def file(self) -> Optional[pulumi.Input[str]]:
+        """
+        the trailing path after the glance
+        endpoint that represent the location of the image
+        or the path to retrieve it.
+        """
         return pulumi.get(self, "file")
 
     @file.setter
@@ -414,6 +631,10 @@ class _ImageState:
     @property
     @pulumi.getter
     def hidden(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, image will be hidden from public list.
+        Defaults to false.
+        """
         return pulumi.get(self, "hidden")
 
     @hidden.setter
@@ -432,6 +653,10 @@ class _ImageState:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique ID (valid UUID) of image to create. Changing
+        this creates a new image.
+        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -441,6 +666,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="imageSourcePassword")
     def image_source_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password of basic auth to download `image_source_url`.
+        """
         return pulumi.get(self, "image_source_password")
 
     @image_source_password.setter
@@ -450,6 +678,12 @@ class _ImageState:
     @property
     @pulumi.getter(name="imageSourceUrl")
     def image_source_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is the url of the raw image. If `web_download`
+        is not used, then the image will be downloaded in the `image_cache_path` before
+        being uploaded to Glance.
+        Conflicts with `local_file_path`.
+        """
         return pulumi.get(self, "image_source_url")
 
     @image_source_url.setter
@@ -459,6 +693,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="imageSourceUsername")
     def image_source_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username of basic auth to download `image_source_url`.
+        """
         return pulumi.get(self, "image_source_username")
 
     @image_source_username.setter
@@ -468,6 +705,11 @@ class _ImageState:
     @property
     @pulumi.getter(name="localFilePath")
     def local_file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is the filepath of the raw image file
+        that will be uploaded to Glance. Conflicts with `image_source_url` and
+        `web_download`.
+        """
         return pulumi.get(self, "local_file_path")
 
     @local_file_path.setter
@@ -477,6 +719,11 @@ class _ImageState:
     @property
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The metadata associated with the image.
+        Image metadata allow for meaningfully define the image properties
+        and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+        """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
@@ -486,6 +733,10 @@ class _ImageState:
     @property
     @pulumi.getter(name="minDiskGb")
     def min_disk_gb(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of disk space (in GB) required to boot image.
+        Defaults to 0.
+        """
         return pulumi.get(self, "min_disk_gb")
 
     @min_disk_gb.setter
@@ -495,6 +746,10 @@ class _ImageState:
     @property
     @pulumi.getter(name="minRamMb")
     def min_ram_mb(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of ram (in MB) required to boot image.
+        Defauts to 0.
+        """
         return pulumi.get(self, "min_ram_mb")
 
     @min_ram_mb.setter
@@ -504,6 +759,9 @@ class _ImageState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the image.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -513,6 +771,9 @@ class _ImageState:
     @property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the openstack user who owns the image.
+        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -522,6 +783,11 @@ class _ImageState:
     @property
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A map of key/value pairs to set freeform
+        information about an image. See the "Notes" section for further
+        information about properties.
+        """
         return pulumi.get(self, "properties")
 
     @properties.setter
@@ -531,6 +797,10 @@ class _ImageState:
     @property
     @pulumi.getter
     def protected(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, image will not be deletable.
+        Defaults to false.
+        """
         return pulumi.get(self, "protected")
 
     @protected.setter
@@ -540,6 +810,12 @@ class _ImageState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Glance client.
+        A Glance client is needed to create an Image that can be used with
+        a compute instance. If omitted, the `region` argument of the provider
+        is used. Changing this creates a new Image.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -549,6 +825,10 @@ class _ImageState:
     @property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to the JSON-schema that represent
+        the image or image
+        """
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -558,6 +838,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="sizeBytes")
     def size_bytes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size in bytes of the data associated with the image.
+        """
         return pulumi.get(self, "size_bytes")
 
     @size_bytes.setter
@@ -567,6 +850,10 @@ class _ImageState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the image. It can be "queued", "active"
+        or "saving".
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -576,6 +863,10 @@ class _ImageState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The tags of the image. It must be a list of strings.
+        At this time, it is not possible to delete all tags of an image.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -585,6 +876,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="updateAt")
     def update_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        (**Deprecated** - use `updated_at` instead)
+        """
         warnings.warn("""Use updated_at instead""", DeprecationWarning)
         pulumi.log.warn("""update_at is deprecated: Use updated_at instead""")
 
@@ -597,6 +891,9 @@ class _ImageState:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date the image was last updated.
+        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -606,6 +903,11 @@ class _ImageState:
     @property
     @pulumi.getter(name="verifyChecksum")
     def verify_checksum(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If false, the checksum will not be verified
+        once the image is finished uploading. Conflicts with `web_download`.
+        Defaults to true when not using `web_download`.
+        """
         return pulumi.get(self, "verify_checksum")
 
     @verify_checksum.setter
@@ -615,6 +917,11 @@ class _ImageState:
     @property
     @pulumi.getter
     def visibility(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visibility of the image. Must be one of
+        "public", "private", "community", or "shared". The ability to set the
+        visibility depends upon the configuration of the OpenStack cloud.
+        """
         return pulumi.get(self, "visibility")
 
     @visibility.setter
@@ -624,6 +931,11 @@ class _ImageState:
     @property
     @pulumi.getter(name="webDownload")
     def web_download(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the "web-download" import method will
+        be used to let Openstack download the image directly from the remote source.
+        Conflicts with `local_file_path`. Defaults to false.
+        """
         return pulumi.get(self, "web_download")
 
     @web_download.setter
@@ -658,9 +970,98 @@ class Image(pulumi.CustomResource):
                  web_download: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a Image resource with the given unique name, props, and options.
+        Manages a V2 Image resource within OpenStack Glance.
+
+        > **Note:** All arguments including the source image URL password will be
+        stored in the raw state as plain-text. Read more about sensitive data in
+        state.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rancheros = openstack.images.Image("rancheros",
+            container_format="bare",
+            disk_format="qcow2",
+            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
+            properties={
+                "key": "value",
+            })
+        ```
+        ## Notes
+
+        ### Properties
+
+        This resource supports the ability to add properties to a resource during
+        creation as well as add, update, and delete properties during an update of this
+        resource.
+
+        Newer versions of OpenStack are adding some read-only properties to each image.
+        These properties start with the prefix `os_`. If these properties are detected,
+        this resource will automatically reconcile these with the user-provided
+        properties.
+
+        In addition, the `direct_url` and `stores` properties are also automatically reconciled if the
+        Image Service set it.
+
+        ## Import
+
+        Images can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:images/image:Image rancheros 89c60255-9bd6-460c-822a-e2b959ede9d2
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] container_format: The container format. Must be one of
+               "ami", "ari", "aki", "bare", "ovf".
+        :param pulumi.Input[bool] decompress: If true, this provider will decompress downloaded
+               image before uploading it to OpenStack. Decompression algorithm is chosen by
+               checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
+               Defaults to false. Changing this creates a new Image.
+        :param pulumi.Input[str] disk_format: The disk format. Must be one of
+               "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
+        :param pulumi.Input[bool] hidden: If true, image will be hidden from public list.
+               Defaults to false.
+        :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing
+               this creates a new image.
+        :param pulumi.Input[str] image_source_password: The password of basic auth to download `image_source_url`.
+        :param pulumi.Input[str] image_source_url: This is the url of the raw image. If `web_download`
+               is not used, then the image will be downloaded in the `image_cache_path` before
+               being uploaded to Glance.
+               Conflicts with `local_file_path`.
+        :param pulumi.Input[str] image_source_username: The username of basic auth to download `image_source_url`.
+        :param pulumi.Input[str] local_file_path: This is the filepath of the raw image file
+               that will be uploaded to Glance. Conflicts with `image_source_url` and
+               `web_download`.
+        :param pulumi.Input[int] min_disk_gb: Amount of disk space (in GB) required to boot image.
+               Defaults to 0.
+        :param pulumi.Input[int] min_ram_mb: Amount of ram (in MB) required to boot image.
+               Defauts to 0.
+        :param pulumi.Input[str] name: The name of the image.
+        :param pulumi.Input[Mapping[str, Any]] properties: A map of key/value pairs to set freeform
+               information about an image. See the "Notes" section for further
+               information about properties.
+        :param pulumi.Input[bool] protected: If true, image will not be deletable.
+               Defaults to false.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Glance client.
+               A Glance client is needed to create an Image that can be used with
+               a compute instance. If omitted, the `region` argument of the provider
+               is used. Changing this creates a new Image.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the image. It must be a list of strings.
+               At this time, it is not possible to delete all tags of an image.
+        :param pulumi.Input[bool] verify_checksum: If false, the checksum will not be verified
+               once the image is finished uploading. Conflicts with `web_download`.
+               Defaults to true when not using `web_download`.
+        :param pulumi.Input[str] visibility: The visibility of the image. Must be one of
+               "public", "private", "community", or "shared". The ability to set the
+               visibility depends upon the configuration of the OpenStack cloud.
+        :param pulumi.Input[bool] web_download: If true, the "web-download" import method will
+               be used to let Openstack download the image directly from the remote source.
+               Conflicts with `local_file_path`. Defaults to false.
         """
         ...
     @overload
@@ -669,7 +1070,50 @@ class Image(pulumi.CustomResource):
                  args: ImageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Image resource with the given unique name, props, and options.
+        Manages a V2 Image resource within OpenStack Glance.
+
+        > **Note:** All arguments including the source image URL password will be
+        stored in the raw state as plain-text. Read more about sensitive data in
+        state.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rancheros = openstack.images.Image("rancheros",
+            container_format="bare",
+            disk_format="qcow2",
+            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
+            properties={
+                "key": "value",
+            })
+        ```
+        ## Notes
+
+        ### Properties
+
+        This resource supports the ability to add properties to a resource during
+        creation as well as add, update, and delete properties during an update of this
+        resource.
+
+        Newer versions of OpenStack are adding some read-only properties to each image.
+        These properties start with the prefix `os_`. If these properties are detected,
+        this resource will automatically reconcile these with the user-provided
+        properties.
+
+        In addition, the `direct_url` and `stores` properties are also automatically reconciled if the
+        Image Service set it.
+
+        ## Import
+
+        Images can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:images/image:Image rancheros 89c60255-9bd6-460c-822a-e2b959ede9d2
+        ```
+
         :param str resource_name: The name of the resource.
         :param ImageArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -797,6 +1241,68 @@ class Image(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] checksum: The checksum of the data associated with the image.
+        :param pulumi.Input[str] container_format: The container format. Must be one of
+               "ami", "ari", "aki", "bare", "ovf".
+        :param pulumi.Input[str] created_at: The date the image was created.
+        :param pulumi.Input[bool] decompress: If true, this provider will decompress downloaded
+               image before uploading it to OpenStack. Decompression algorithm is chosen by
+               checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
+               Defaults to false. Changing this creates a new Image.
+        :param pulumi.Input[str] disk_format: The disk format. Must be one of
+               "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
+        :param pulumi.Input[str] file: the trailing path after the glance
+               endpoint that represent the location of the image
+               or the path to retrieve it.
+        :param pulumi.Input[bool] hidden: If true, image will be hidden from public list.
+               Defaults to false.
+        :param pulumi.Input[str] image_id: Unique ID (valid UUID) of image to create. Changing
+               this creates a new image.
+        :param pulumi.Input[str] image_source_password: The password of basic auth to download `image_source_url`.
+        :param pulumi.Input[str] image_source_url: This is the url of the raw image. If `web_download`
+               is not used, then the image will be downloaded in the `image_cache_path` before
+               being uploaded to Glance.
+               Conflicts with `local_file_path`.
+        :param pulumi.Input[str] image_source_username: The username of basic auth to download `image_source_url`.
+        :param pulumi.Input[str] local_file_path: This is the filepath of the raw image file
+               that will be uploaded to Glance. Conflicts with `image_source_url` and
+               `web_download`.
+        :param pulumi.Input[Mapping[str, Any]] metadata: The metadata associated with the image.
+               Image metadata allow for meaningfully define the image properties
+               and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+        :param pulumi.Input[int] min_disk_gb: Amount of disk space (in GB) required to boot image.
+               Defaults to 0.
+        :param pulumi.Input[int] min_ram_mb: Amount of ram (in MB) required to boot image.
+               Defauts to 0.
+        :param pulumi.Input[str] name: The name of the image.
+        :param pulumi.Input[str] owner: The id of the openstack user who owns the image.
+        :param pulumi.Input[Mapping[str, Any]] properties: A map of key/value pairs to set freeform
+               information about an image. See the "Notes" section for further
+               information about properties.
+        :param pulumi.Input[bool] protected: If true, image will not be deletable.
+               Defaults to false.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Glance client.
+               A Glance client is needed to create an Image that can be used with
+               a compute instance. If omitted, the `region` argument of the provider
+               is used. Changing this creates a new Image.
+        :param pulumi.Input[str] schema: The path to the JSON-schema that represent
+               the image or image
+        :param pulumi.Input[int] size_bytes: The size in bytes of the data associated with the image.
+        :param pulumi.Input[str] status: The status of the image. It can be "queued", "active"
+               or "saving".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the image. It must be a list of strings.
+               At this time, it is not possible to delete all tags of an image.
+        :param pulumi.Input[str] update_at: (**Deprecated** - use `updated_at` instead)
+        :param pulumi.Input[str] updated_at: The date the image was last updated.
+        :param pulumi.Input[bool] verify_checksum: If false, the checksum will not be verified
+               once the image is finished uploading. Conflicts with `web_download`.
+               Defaults to true when not using `web_download`.
+        :param pulumi.Input[str] visibility: The visibility of the image. Must be one of
+               "public", "private", "community", or "shared". The ability to set the
+               visibility depends upon the configuration of the OpenStack cloud.
+        :param pulumi.Input[bool] web_download: If true, the "web-download" import method will
+               be used to let Openstack download the image directly from the remote source.
+               Conflicts with `local_file_path`. Defaults to false.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -837,36 +1343,65 @@ class Image(pulumi.CustomResource):
     @property
     @pulumi.getter
     def checksum(self) -> pulumi.Output[str]:
+        """
+        The checksum of the data associated with the image.
+        """
         return pulumi.get(self, "checksum")
 
     @property
     @pulumi.getter(name="containerFormat")
     def container_format(self) -> pulumi.Output[str]:
+        """
+        The container format. Must be one of
+        "ami", "ari", "aki", "bare", "ovf".
+        """
         return pulumi.get(self, "container_format")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
+        """
+        The date the image was created.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def decompress(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, this provider will decompress downloaded
+        image before uploading it to OpenStack. Decompression algorithm is chosen by
+        checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
+        Defaults to false. Changing this creates a new Image.
+        """
         return pulumi.get(self, "decompress")
 
     @property
     @pulumi.getter(name="diskFormat")
     def disk_format(self) -> pulumi.Output[str]:
+        """
+        The disk format. Must be one of
+        "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
+        """
         return pulumi.get(self, "disk_format")
 
     @property
     @pulumi.getter
     def file(self) -> pulumi.Output[str]:
+        """
+        the trailing path after the glance
+        endpoint that represent the location of the image
+        or the path to retrieve it.
+        """
         return pulumi.get(self, "file")
 
     @property
     @pulumi.getter
     def hidden(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, image will be hidden from public list.
+        Defaults to false.
+        """
         return pulumi.get(self, "hidden")
 
     @property
@@ -877,91 +1412,164 @@ class Image(pulumi.CustomResource):
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[str]:
+        """
+        Unique ID (valid UUID) of image to create. Changing
+        this creates a new image.
+        """
         return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter(name="imageSourcePassword")
     def image_source_password(self) -> pulumi.Output[Optional[str]]:
+        """
+        The password of basic auth to download `image_source_url`.
+        """
         return pulumi.get(self, "image_source_password")
 
     @property
     @pulumi.getter(name="imageSourceUrl")
     def image_source_url(self) -> pulumi.Output[Optional[str]]:
+        """
+        This is the url of the raw image. If `web_download`
+        is not used, then the image will be downloaded in the `image_cache_path` before
+        being uploaded to Glance.
+        Conflicts with `local_file_path`.
+        """
         return pulumi.get(self, "image_source_url")
 
     @property
     @pulumi.getter(name="imageSourceUsername")
     def image_source_username(self) -> pulumi.Output[Optional[str]]:
+        """
+        The username of basic auth to download `image_source_url`.
+        """
         return pulumi.get(self, "image_source_username")
 
     @property
     @pulumi.getter(name="localFilePath")
     def local_file_path(self) -> pulumi.Output[Optional[str]]:
+        """
+        This is the filepath of the raw image file
+        that will be uploaded to Glance. Conflicts with `image_source_url` and
+        `web_download`.
+        """
         return pulumi.get(self, "local_file_path")
 
     @property
     @pulumi.getter
     def metadata(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        The metadata associated with the image.
+        Image metadata allow for meaningfully define the image properties
+        and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
+        """
         return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter(name="minDiskGb")
     def min_disk_gb(self) -> pulumi.Output[Optional[int]]:
+        """
+        Amount of disk space (in GB) required to boot image.
+        Defaults to 0.
+        """
         return pulumi.get(self, "min_disk_gb")
 
     @property
     @pulumi.getter(name="minRamMb")
     def min_ram_mb(self) -> pulumi.Output[Optional[int]]:
+        """
+        Amount of ram (in MB) required to boot image.
+        Defauts to 0.
+        """
         return pulumi.get(self, "min_ram_mb")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the image.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def owner(self) -> pulumi.Output[str]:
+        """
+        The id of the openstack user who owns the image.
+        """
         return pulumi.get(self, "owner")
 
     @property
     @pulumi.getter
     def properties(self) -> pulumi.Output[Mapping[str, Any]]:
+        """
+        A map of key/value pairs to set freeform
+        information about an image. See the "Notes" section for further
+        information about properties.
+        """
         return pulumi.get(self, "properties")
 
     @property
     @pulumi.getter
     def protected(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, image will not be deletable.
+        Defaults to false.
+        """
         return pulumi.get(self, "protected")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to obtain the V2 Glance client.
+        A Glance client is needed to create an Image that can be used with
+        a compute instance. If omitted, the `region` argument of the provider
+        is used. Changing this creates a new Image.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def schema(self) -> pulumi.Output[str]:
+        """
+        The path to the JSON-schema that represent
+        the image or image
+        """
         return pulumi.get(self, "schema")
 
     @property
     @pulumi.getter(name="sizeBytes")
     def size_bytes(self) -> pulumi.Output[int]:
+        """
+        The size in bytes of the data associated with the image.
+        """
         return pulumi.get(self, "size_bytes")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        The status of the image. It can be "queued", "active"
+        or "saving".
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The tags of the image. It must be a list of strings.
+        At this time, it is not possible to delete all tags of an image.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="updateAt")
     def update_at(self) -> pulumi.Output[str]:
+        """
+        (**Deprecated** - use `updated_at` instead)
+        """
         warnings.warn("""Use updated_at instead""", DeprecationWarning)
         pulumi.log.warn("""update_at is deprecated: Use updated_at instead""")
 
@@ -970,20 +1578,38 @@ class Image(pulumi.CustomResource):
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
+        """
+        The date the image was last updated.
+        """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter(name="verifyChecksum")
     def verify_checksum(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If false, the checksum will not be verified
+        once the image is finished uploading. Conflicts with `web_download`.
+        Defaults to true when not using `web_download`.
+        """
         return pulumi.get(self, "verify_checksum")
 
     @property
     @pulumi.getter
     def visibility(self) -> pulumi.Output[Optional[str]]:
+        """
+        The visibility of the image. Must be one of
+        "public", "private", "community", or "shared". The ability to set the
+        visibility depends upon the configuration of the OpenStack cloud.
+        """
         return pulumi.get(self, "visibility")
 
     @property
     @pulumi.getter(name="webDownload")
     def web_download(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, the "web-download" import method will
+        be used to let Openstack download the image directly from the remote source.
+        Conflicts with `local_file_path`. Defaults to false.
+        """
         return pulumi.get(self, "web_download")
 

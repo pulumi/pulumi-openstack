@@ -34,6 +34,52 @@ class NetworkArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Network resource.
+        :param pulumi.Input[bool] admin_state_up: The administrative state of the network.
+               Acceptable values are "true" and "false". Changing this value updates the
+               state of the existing network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make
+               network resources highly available. Used for resources with high availability
+               so that they are scheduled on different availability zones. Changing this
+               creates a new network.
+        :param pulumi.Input[str] description: Human-readable description of the network. Changing this
+               updates the name of the existing network.
+        :param pulumi.Input[str] dns_domain: The network DNS domain. Available, when Neutron DNS
+               extension is enabled. The `dns_domain` of a network in conjunction with the
+               `dns_name` attribute of its ports will be published in an external DNS
+               service when Neutron is configured to integrate with such a service.
+        :param pulumi.Input[bool] external: Specifies whether the network resource has the
+               external routing facility. Valid values are true and false. Defaults to
+               false. Changing this updates the external attribute of the existing network.
+        :param pulumi.Input[int] mtu: The network MTU. Available for read-only, when Neutron
+               `net-mtu` extension is enabled. Available for the modification, when
+               Neutron `net-mtu-writable` extension is enabled.
+        :param pulumi.Input[str] name: The name of the network. Changing this updates the name of
+               the existing network.
+        :param pulumi.Input[bool] port_security_enabled: Whether to explicitly enable or disable
+               port security on the network. Port Security is usually enabled by default, so
+               omitting this argument will usually result in a value of "true". Setting this
+               explicitly to `false` will disable port security. Valid values are `true` and
+               `false`.
+        :param pulumi.Input[str] qos_policy_id: Reference to the associated QoS policy.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a Neutron network. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               network.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkSegmentArgs']]] segments: An array of one or more provider segment objects.
+               Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+               updating any provider related segments attributes. Check your plug-in whether
+               it supports updating.
+        :param pulumi.Input[bool] shared: Specifies whether the network resource can be accessed
+               by any tenant or not. Changing this updates the sharing capabilities of the
+               existing network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the network.
+        :param pulumi.Input[str] tenant_id: The owner of the network. Required if admin wants to
+               create a network for another tenant. Changing this creates a new network.
+        :param pulumi.Input[bool] transparent_vlan: Specifies whether the network resource has the
+               VLAN transparent attribute set. Valid values are true and false. Defaults to
+               false. Changing this updates the `transparent_vlan` attribute of the existing
+               network.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         if admin_state_up is not None:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
@@ -71,6 +117,11 @@ class NetworkArgs:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The administrative state of the network.
+        Acceptable values are "true" and "false". Changing this value updates the
+        state of the existing network.
+        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -80,6 +131,12 @@ class NetworkArgs:
     @property
     @pulumi.getter(name="availabilityZoneHints")
     def availability_zone_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An availability zone is used to make
+        network resources highly available. Used for resources with high availability
+        so that they are scheduled on different availability zones. Changing this
+        creates a new network.
+        """
         return pulumi.get(self, "availability_zone_hints")
 
     @availability_zone_hints.setter
@@ -89,6 +146,10 @@ class NetworkArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human-readable description of the network. Changing this
+        updates the name of the existing network.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -98,6 +159,12 @@ class NetworkArgs:
     @property
     @pulumi.getter(name="dnsDomain")
     def dns_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network DNS domain. Available, when Neutron DNS
+        extension is enabled. The `dns_domain` of a network in conjunction with the
+        `dns_name` attribute of its ports will be published in an external DNS
+        service when Neutron is configured to integrate with such a service.
+        """
         return pulumi.get(self, "dns_domain")
 
     @dns_domain.setter
@@ -107,6 +174,11 @@ class NetworkArgs:
     @property
     @pulumi.getter
     def external(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether the network resource has the
+        external routing facility. Valid values are true and false. Defaults to
+        false. Changing this updates the external attribute of the existing network.
+        """
         return pulumi.get(self, "external")
 
     @external.setter
@@ -116,6 +188,11 @@ class NetworkArgs:
     @property
     @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[int]]:
+        """
+        The network MTU. Available for read-only, when Neutron
+        `net-mtu` extension is enabled. Available for the modification, when
+        Neutron `net-mtu-writable` extension is enabled.
+        """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
@@ -125,6 +202,10 @@ class NetworkArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the network. Changing this updates the name of
+        the existing network.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -134,6 +215,13 @@ class NetworkArgs:
     @property
     @pulumi.getter(name="portSecurityEnabled")
     def port_security_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to explicitly enable or disable
+        port security on the network. Port Security is usually enabled by default, so
+        omitting this argument will usually result in a value of "true". Setting this
+        explicitly to `false` will disable port security. Valid values are `true` and
+        `false`.
+        """
         return pulumi.get(self, "port_security_enabled")
 
     @port_security_enabled.setter
@@ -143,6 +231,9 @@ class NetworkArgs:
     @property
     @pulumi.getter(name="qosPolicyId")
     def qos_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to the associated QoS policy.
+        """
         return pulumi.get(self, "qos_policy_id")
 
     @qos_policy_id.setter
@@ -152,6 +243,12 @@ class NetworkArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create a Neutron network. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        network.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -161,6 +258,12 @@ class NetworkArgs:
     @property
     @pulumi.getter
     def segments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkSegmentArgs']]]]:
+        """
+        An array of one or more provider segment objects.
+        Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+        updating any provider related segments attributes. Check your plug-in whether
+        it supports updating.
+        """
         return pulumi.get(self, "segments")
 
     @segments.setter
@@ -170,6 +273,11 @@ class NetworkArgs:
     @property
     @pulumi.getter
     def shared(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether the network resource can be accessed
+        by any tenant or not. Changing this updates the sharing capabilities of the
+        existing network.
+        """
         return pulumi.get(self, "shared")
 
     @shared.setter
@@ -179,6 +287,9 @@ class NetworkArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of string tags for the network.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -188,6 +299,10 @@ class NetworkArgs:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The owner of the network. Required if admin wants to
+        create a network for another tenant. Changing this creates a new network.
+        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -197,6 +312,12 @@ class NetworkArgs:
     @property
     @pulumi.getter(name="transparentVlan")
     def transparent_vlan(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether the network resource has the
+        VLAN transparent attribute set. Valid values are true and false. Defaults to
+        false. Changing this updates the `transparent_vlan` attribute of the existing
+        network.
+        """
         return pulumi.get(self, "transparent_vlan")
 
     @transparent_vlan.setter
@@ -206,6 +327,9 @@ class NetworkArgs:
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Map of additional options.
+        """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
@@ -235,6 +359,54 @@ class _NetworkState:
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering Network resources.
+        :param pulumi.Input[bool] admin_state_up: The administrative state of the network.
+               Acceptable values are "true" and "false". Changing this value updates the
+               state of the existing network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] all_tags: The collection of tags assigned on the network, which have been
+               explicitly and implicitly added.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make
+               network resources highly available. Used for resources with high availability
+               so that they are scheduled on different availability zones. Changing this
+               creates a new network.
+        :param pulumi.Input[str] description: Human-readable description of the network. Changing this
+               updates the name of the existing network.
+        :param pulumi.Input[str] dns_domain: The network DNS domain. Available, when Neutron DNS
+               extension is enabled. The `dns_domain` of a network in conjunction with the
+               `dns_name` attribute of its ports will be published in an external DNS
+               service when Neutron is configured to integrate with such a service.
+        :param pulumi.Input[bool] external: Specifies whether the network resource has the
+               external routing facility. Valid values are true and false. Defaults to
+               false. Changing this updates the external attribute of the existing network.
+        :param pulumi.Input[int] mtu: The network MTU. Available for read-only, when Neutron
+               `net-mtu` extension is enabled. Available for the modification, when
+               Neutron `net-mtu-writable` extension is enabled.
+        :param pulumi.Input[str] name: The name of the network. Changing this updates the name of
+               the existing network.
+        :param pulumi.Input[bool] port_security_enabled: Whether to explicitly enable or disable
+               port security on the network. Port Security is usually enabled by default, so
+               omitting this argument will usually result in a value of "true". Setting this
+               explicitly to `false` will disable port security. Valid values are `true` and
+               `false`.
+        :param pulumi.Input[str] qos_policy_id: Reference to the associated QoS policy.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a Neutron network. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               network.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkSegmentArgs']]] segments: An array of one or more provider segment objects.
+               Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+               updating any provider related segments attributes. Check your plug-in whether
+               it supports updating.
+        :param pulumi.Input[bool] shared: Specifies whether the network resource can be accessed
+               by any tenant or not. Changing this updates the sharing capabilities of the
+               existing network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the network.
+        :param pulumi.Input[str] tenant_id: The owner of the network. Required if admin wants to
+               create a network for another tenant. Changing this creates a new network.
+        :param pulumi.Input[bool] transparent_vlan: Specifies whether the network resource has the
+               VLAN transparent attribute set. Valid values are true and false. Defaults to
+               false. Changing this updates the `transparent_vlan` attribute of the existing
+               network.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         if admin_state_up is not None:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
@@ -274,6 +446,11 @@ class _NetworkState:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The administrative state of the network.
+        Acceptable values are "true" and "false". Changing this value updates the
+        state of the existing network.
+        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -283,6 +460,10 @@ class _NetworkState:
     @property
     @pulumi.getter(name="allTags")
     def all_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The collection of tags assigned on the network, which have been
+        explicitly and implicitly added.
+        """
         return pulumi.get(self, "all_tags")
 
     @all_tags.setter
@@ -292,6 +473,12 @@ class _NetworkState:
     @property
     @pulumi.getter(name="availabilityZoneHints")
     def availability_zone_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An availability zone is used to make
+        network resources highly available. Used for resources with high availability
+        so that they are scheduled on different availability zones. Changing this
+        creates a new network.
+        """
         return pulumi.get(self, "availability_zone_hints")
 
     @availability_zone_hints.setter
@@ -301,6 +488,10 @@ class _NetworkState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human-readable description of the network. Changing this
+        updates the name of the existing network.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -310,6 +501,12 @@ class _NetworkState:
     @property
     @pulumi.getter(name="dnsDomain")
     def dns_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network DNS domain. Available, when Neutron DNS
+        extension is enabled. The `dns_domain` of a network in conjunction with the
+        `dns_name` attribute of its ports will be published in an external DNS
+        service when Neutron is configured to integrate with such a service.
+        """
         return pulumi.get(self, "dns_domain")
 
     @dns_domain.setter
@@ -319,6 +516,11 @@ class _NetworkState:
     @property
     @pulumi.getter
     def external(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether the network resource has the
+        external routing facility. Valid values are true and false. Defaults to
+        false. Changing this updates the external attribute of the existing network.
+        """
         return pulumi.get(self, "external")
 
     @external.setter
@@ -328,6 +530,11 @@ class _NetworkState:
     @property
     @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[int]]:
+        """
+        The network MTU. Available for read-only, when Neutron
+        `net-mtu` extension is enabled. Available for the modification, when
+        Neutron `net-mtu-writable` extension is enabled.
+        """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
@@ -337,6 +544,10 @@ class _NetworkState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the network. Changing this updates the name of
+        the existing network.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -346,6 +557,13 @@ class _NetworkState:
     @property
     @pulumi.getter(name="portSecurityEnabled")
     def port_security_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to explicitly enable or disable
+        port security on the network. Port Security is usually enabled by default, so
+        omitting this argument will usually result in a value of "true". Setting this
+        explicitly to `false` will disable port security. Valid values are `true` and
+        `false`.
+        """
         return pulumi.get(self, "port_security_enabled")
 
     @port_security_enabled.setter
@@ -355,6 +573,9 @@ class _NetworkState:
     @property
     @pulumi.getter(name="qosPolicyId")
     def qos_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to the associated QoS policy.
+        """
         return pulumi.get(self, "qos_policy_id")
 
     @qos_policy_id.setter
@@ -364,6 +585,12 @@ class _NetworkState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create a Neutron network. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        network.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -373,6 +600,12 @@ class _NetworkState:
     @property
     @pulumi.getter
     def segments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkSegmentArgs']]]]:
+        """
+        An array of one or more provider segment objects.
+        Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+        updating any provider related segments attributes. Check your plug-in whether
+        it supports updating.
+        """
         return pulumi.get(self, "segments")
 
     @segments.setter
@@ -382,6 +615,11 @@ class _NetworkState:
     @property
     @pulumi.getter
     def shared(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether the network resource can be accessed
+        by any tenant or not. Changing this updates the sharing capabilities of the
+        existing network.
+        """
         return pulumi.get(self, "shared")
 
     @shared.setter
@@ -391,6 +629,9 @@ class _NetworkState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of string tags for the network.
+        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -400,6 +641,10 @@ class _NetworkState:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The owner of the network. Required if admin wants to
+        create a network for another tenant. Changing this creates a new network.
+        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -409,6 +654,12 @@ class _NetworkState:
     @property
     @pulumi.getter(name="transparentVlan")
     def transparent_vlan(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether the network resource has the
+        VLAN transparent attribute set. Valid values are true and false. Defaults to
+        false. Changing this updates the `transparent_vlan` attribute of the existing
+        network.
+        """
         return pulumi.get(self, "transparent_vlan")
 
     @transparent_vlan.setter
@@ -418,6 +669,9 @@ class _NetworkState:
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        Map of additional options.
+        """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
@@ -448,9 +702,98 @@ class Network(pulumi.CustomResource):
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
-        Create a Network resource with the given unique name, props, and options.
+        Manages a V2 Neutron network resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            network_id=network1.id,
+            cidr="192.168.199.0/24",
+            ip_version=4)
+        secgroup1 = openstack.compute.SecGroup("secgroup1",
+            description="a security group",
+            rules=[openstack.compute.SecGroupRuleArgs(
+                from_port=22,
+                to_port=22,
+                ip_protocol="tcp",
+                cidr="0.0.0.0/0",
+            )])
+        port1 = openstack.networking.Port("port1",
+            network_id=network1.id,
+            admin_state_up=True,
+            security_group_ids=[secgroup1.id],
+            fixed_ips=[openstack.networking.PortFixedIpArgs(
+                subnet_id=subnet1.id,
+                ip_address="192.168.199.10",
+            )])
+        instance1 = openstack.compute.Instance("instance1",
+            security_groups=[secgroup1.name],
+            networks=[openstack.compute.InstanceNetworkArgs(
+                port=port1.id,
+            )])
+        ```
+
+        ## Import
+
+        Networks can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/network:Network network_1 d90ce693-5ccf-4136-a0ed-152ce412b6b9
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] admin_state_up: The administrative state of the network.
+               Acceptable values are "true" and "false". Changing this value updates the
+               state of the existing network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make
+               network resources highly available. Used for resources with high availability
+               so that they are scheduled on different availability zones. Changing this
+               creates a new network.
+        :param pulumi.Input[str] description: Human-readable description of the network. Changing this
+               updates the name of the existing network.
+        :param pulumi.Input[str] dns_domain: The network DNS domain. Available, when Neutron DNS
+               extension is enabled. The `dns_domain` of a network in conjunction with the
+               `dns_name` attribute of its ports will be published in an external DNS
+               service when Neutron is configured to integrate with such a service.
+        :param pulumi.Input[bool] external: Specifies whether the network resource has the
+               external routing facility. Valid values are true and false. Defaults to
+               false. Changing this updates the external attribute of the existing network.
+        :param pulumi.Input[int] mtu: The network MTU. Available for read-only, when Neutron
+               `net-mtu` extension is enabled. Available for the modification, when
+               Neutron `net-mtu-writable` extension is enabled.
+        :param pulumi.Input[str] name: The name of the network. Changing this updates the name of
+               the existing network.
+        :param pulumi.Input[bool] port_security_enabled: Whether to explicitly enable or disable
+               port security on the network. Port Security is usually enabled by default, so
+               omitting this argument will usually result in a value of "true". Setting this
+               explicitly to `false` will disable port security. Valid values are `true` and
+               `false`.
+        :param pulumi.Input[str] qos_policy_id: Reference to the associated QoS policy.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a Neutron network. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               network.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkSegmentArgs']]]] segments: An array of one or more provider segment objects.
+               Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+               updating any provider related segments attributes. Check your plug-in whether
+               it supports updating.
+        :param pulumi.Input[bool] shared: Specifies whether the network resource can be accessed
+               by any tenant or not. Changing this updates the sharing capabilities of the
+               existing network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the network.
+        :param pulumi.Input[str] tenant_id: The owner of the network. Required if admin wants to
+               create a network for another tenant. Changing this creates a new network.
+        :param pulumi.Input[bool] transparent_vlan: Specifies whether the network resource has the
+               VLAN transparent attribute set. Valid values are true and false. Defaults to
+               false. Changing this updates the `transparent_vlan` attribute of the existing
+               network.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         ...
     @overload
@@ -459,7 +802,50 @@ class Network(pulumi.CustomResource):
                  args: Optional[NetworkArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Network resource with the given unique name, props, and options.
+        Manages a V2 Neutron network resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            network_id=network1.id,
+            cidr="192.168.199.0/24",
+            ip_version=4)
+        secgroup1 = openstack.compute.SecGroup("secgroup1",
+            description="a security group",
+            rules=[openstack.compute.SecGroupRuleArgs(
+                from_port=22,
+                to_port=22,
+                ip_protocol="tcp",
+                cidr="0.0.0.0/0",
+            )])
+        port1 = openstack.networking.Port("port1",
+            network_id=network1.id,
+            admin_state_up=True,
+            security_group_ids=[secgroup1.id],
+            fixed_ips=[openstack.networking.PortFixedIpArgs(
+                subnet_id=subnet1.id,
+                ip_address="192.168.199.10",
+            )])
+        instance1 = openstack.compute.Instance("instance1",
+            security_groups=[secgroup1.name],
+            networks=[openstack.compute.InstanceNetworkArgs(
+                port=port1.id,
+            )])
+        ```
+
+        ## Import
+
+        Networks can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/network:Network network_1 d90ce693-5ccf-4136-a0ed-152ce412b6b9
+        ```
+
         :param str resource_name: The name of the resource.
         :param NetworkArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -551,6 +937,54 @@ class Network(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] admin_state_up: The administrative state of the network.
+               Acceptable values are "true" and "false". Changing this value updates the
+               state of the existing network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] all_tags: The collection of tags assigned on the network, which have been
+               explicitly and implicitly added.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] availability_zone_hints: An availability zone is used to make
+               network resources highly available. Used for resources with high availability
+               so that they are scheduled on different availability zones. Changing this
+               creates a new network.
+        :param pulumi.Input[str] description: Human-readable description of the network. Changing this
+               updates the name of the existing network.
+        :param pulumi.Input[str] dns_domain: The network DNS domain. Available, when Neutron DNS
+               extension is enabled. The `dns_domain` of a network in conjunction with the
+               `dns_name` attribute of its ports will be published in an external DNS
+               service when Neutron is configured to integrate with such a service.
+        :param pulumi.Input[bool] external: Specifies whether the network resource has the
+               external routing facility. Valid values are true and false. Defaults to
+               false. Changing this updates the external attribute of the existing network.
+        :param pulumi.Input[int] mtu: The network MTU. Available for read-only, when Neutron
+               `net-mtu` extension is enabled. Available for the modification, when
+               Neutron `net-mtu-writable` extension is enabled.
+        :param pulumi.Input[str] name: The name of the network. Changing this updates the name of
+               the existing network.
+        :param pulumi.Input[bool] port_security_enabled: Whether to explicitly enable or disable
+               port security on the network. Port Security is usually enabled by default, so
+               omitting this argument will usually result in a value of "true". Setting this
+               explicitly to `false` will disable port security. Valid values are `true` and
+               `false`.
+        :param pulumi.Input[str] qos_policy_id: Reference to the associated QoS policy.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a Neutron network. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               network.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkSegmentArgs']]]] segments: An array of one or more provider segment objects.
+               Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+               updating any provider related segments attributes. Check your plug-in whether
+               it supports updating.
+        :param pulumi.Input[bool] shared: Specifies whether the network resource can be accessed
+               by any tenant or not. Changing this updates the sharing capabilities of the
+               existing network.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the network.
+        :param pulumi.Input[str] tenant_id: The owner of the network. Required if admin wants to
+               create a network for another tenant. Changing this creates a new network.
+        :param pulumi.Input[bool] transparent_vlan: Specifies whether the network resource has the
+               VLAN transparent attribute set. Valid values are true and false. Defaults to
+               false. Changing this updates the `transparent_vlan` attribute of the existing
+               network.
+        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -578,85 +1012,167 @@ class Network(pulumi.CustomResource):
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[bool]:
+        """
+        The administrative state of the network.
+        Acceptable values are "true" and "false". Changing this value updates the
+        state of the existing network.
+        """
         return pulumi.get(self, "admin_state_up")
 
     @property
     @pulumi.getter(name="allTags")
     def all_tags(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The collection of tags assigned on the network, which have been
+        explicitly and implicitly added.
+        """
         return pulumi.get(self, "all_tags")
 
     @property
     @pulumi.getter(name="availabilityZoneHints")
     def availability_zone_hints(self) -> pulumi.Output[Sequence[str]]:
+        """
+        An availability zone is used to make
+        network resources highly available. Used for resources with high availability
+        so that they are scheduled on different availability zones. Changing this
+        creates a new network.
+        """
         return pulumi.get(self, "availability_zone_hints")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        Human-readable description of the network. Changing this
+        updates the name of the existing network.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="dnsDomain")
     def dns_domain(self) -> pulumi.Output[str]:
+        """
+        The network DNS domain. Available, when Neutron DNS
+        extension is enabled. The `dns_domain` of a network in conjunction with the
+        `dns_name` attribute of its ports will be published in an external DNS
+        service when Neutron is configured to integrate with such a service.
+        """
         return pulumi.get(self, "dns_domain")
 
     @property
     @pulumi.getter
     def external(self) -> pulumi.Output[bool]:
+        """
+        Specifies whether the network resource has the
+        external routing facility. Valid values are true and false. Defaults to
+        false. Changing this updates the external attribute of the existing network.
+        """
         return pulumi.get(self, "external")
 
     @property
     @pulumi.getter
     def mtu(self) -> pulumi.Output[int]:
+        """
+        The network MTU. Available for read-only, when Neutron
+        `net-mtu` extension is enabled. Available for the modification, when
+        Neutron `net-mtu-writable` extension is enabled.
+        """
         return pulumi.get(self, "mtu")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the network. Changing this updates the name of
+        the existing network.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="portSecurityEnabled")
     def port_security_enabled(self) -> pulumi.Output[bool]:
+        """
+        Whether to explicitly enable or disable
+        port security on the network. Port Security is usually enabled by default, so
+        omitting this argument will usually result in a value of "true". Setting this
+        explicitly to `false` will disable port security. Valid values are `true` and
+        `false`.
+        """
         return pulumi.get(self, "port_security_enabled")
 
     @property
     @pulumi.getter(name="qosPolicyId")
     def qos_policy_id(self) -> pulumi.Output[str]:
+        """
+        Reference to the associated QoS policy.
+        """
         return pulumi.get(self, "qos_policy_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create a Neutron network. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        network.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def segments(self) -> pulumi.Output[Sequence['outputs.NetworkSegment']]:
+        """
+        An array of one or more provider segment objects.
+        Note: most Networking plug-ins (e.g. ML2 Plugin) and drivers do not support
+        updating any provider related segments attributes. Check your plug-in whether
+        it supports updating.
+        """
         return pulumi.get(self, "segments")
 
     @property
     @pulumi.getter
     def shared(self) -> pulumi.Output[bool]:
+        """
+        Specifies whether the network resource can be accessed
+        by any tenant or not. Changing this updates the sharing capabilities of the
+        existing network.
+        """
         return pulumi.get(self, "shared")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A set of string tags for the network.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
+        """
+        The owner of the network. Required if admin wants to
+        create a network for another tenant. Changing this creates a new network.
+        """
         return pulumi.get(self, "tenant_id")
 
     @property
     @pulumi.getter(name="transparentVlan")
     def transparent_vlan(self) -> pulumi.Output[bool]:
+        """
+        Specifies whether the network resource has the
+        VLAN transparent attribute set. Valid values are true and false. Defaults to
+        false. Changing this updates the `transparent_vlan` attribute of the existing
+        network.
+        """
         return pulumi.get(self, "transparent_vlan")
 
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        Map of additional options.
+        """
         return pulumi.get(self, "value_specs")
 

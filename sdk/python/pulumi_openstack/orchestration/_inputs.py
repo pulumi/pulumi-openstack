@@ -19,6 +19,9 @@ class StackV1StackOutputArgs:
                  output_key: pulumi.Input[str],
                  output_value: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] description: The description of the stack resource.
+        """
         pulumi.set(__self__, "output_key", output_key)
         pulumi.set(__self__, "output_value", output_value)
         if description is not None:
@@ -45,6 +48,9 @@ class StackV1StackOutputArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the stack resource.
+        """
         return pulumi.get(self, "description")
 
     @description.setter

@@ -21,6 +21,19 @@ class RouterInterfaceArgs:
                  subnet_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RouterInterface resource.
+        :param pulumi.Input[str] router_id: ID of the router this interface belongs to. Changing
+               this creates a new router interface.
+        :param pulumi.Input[bool] force_destroy: A boolean indicating whether the routes from the
+               corresponding router ID should be deleted so that the router interface can
+               be destroyed without any errors. The default value is `false`.
+        :param pulumi.Input[str] port_id: ID of the port this interface connects to. Changing
+               this creates a new router interface.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
+               A networking client is needed to create a router. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               router interface.
+        :param pulumi.Input[str] subnet_id: ID of the subnet this interface connects to. Changing
+               this creates a new router interface.
         """
         pulumi.set(__self__, "router_id", router_id)
         if force_destroy is not None:
@@ -35,6 +48,10 @@ class RouterInterfaceArgs:
     @property
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Input[str]:
+        """
+        ID of the router this interface belongs to. Changing
+        this creates a new router interface.
+        """
         return pulumi.get(self, "router_id")
 
     @router_id.setter
@@ -44,6 +61,11 @@ class RouterInterfaceArgs:
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean indicating whether the routes from the
+        corresponding router ID should be deleted so that the router interface can
+        be destroyed without any errors. The default value is `false`.
+        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -53,6 +75,10 @@ class RouterInterfaceArgs:
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the port this interface connects to. Changing
+        this creates a new router interface.
+        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -62,6 +88,12 @@ class RouterInterfaceArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 networking client.
+        A networking client is needed to create a router. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        router interface.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -71,6 +103,10 @@ class RouterInterfaceArgs:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the subnet this interface connects to. Changing
+        this creates a new router interface.
+        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -88,6 +124,19 @@ class _RouterInterfaceState:
                  subnet_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RouterInterface resources.
+        :param pulumi.Input[bool] force_destroy: A boolean indicating whether the routes from the
+               corresponding router ID should be deleted so that the router interface can
+               be destroyed without any errors. The default value is `false`.
+        :param pulumi.Input[str] port_id: ID of the port this interface connects to. Changing
+               this creates a new router interface.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
+               A networking client is needed to create a router. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               router interface.
+        :param pulumi.Input[str] router_id: ID of the router this interface belongs to. Changing
+               this creates a new router interface.
+        :param pulumi.Input[str] subnet_id: ID of the subnet this interface connects to. Changing
+               this creates a new router interface.
         """
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
@@ -103,6 +152,11 @@ class _RouterInterfaceState:
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A boolean indicating whether the routes from the
+        corresponding router ID should be deleted so that the router interface can
+        be destroyed without any errors. The default value is `false`.
+        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -112,6 +166,10 @@ class _RouterInterfaceState:
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the port this interface connects to. Changing
+        this creates a new router interface.
+        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -121,6 +179,12 @@ class _RouterInterfaceState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 networking client.
+        A networking client is needed to create a router. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        router interface.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -130,6 +194,10 @@ class _RouterInterfaceState:
     @property
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the router this interface belongs to. Changing
+        this creates a new router interface.
+        """
         return pulumi.get(self, "router_id")
 
     @router_id.setter
@@ -139,6 +207,10 @@ class _RouterInterfaceState:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the subnet this interface connects to. Changing
+        this creates a new router interface.
+        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -158,9 +230,48 @@ class RouterInterface(pulumi.CustomResource):
                  subnet_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a RouterInterface resource with the given unique name, props, and options.
+        Manages a V2 router interface resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            network_id=network1.id,
+            cidr="192.168.199.0/24",
+            ip_version=4)
+        router1 = openstack.networking.Router("router1", external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
+        router_interface1 = openstack.networking.RouterInterface("routerInterface1",
+            router_id=router1.id,
+            subnet_id=subnet1.id)
+        ```
+
+        ## Import
+
+        Router Interfaces can be imported using the port `id`, e.g. $ openstack port list --router <router name or id>
+
+        ```sh
+         $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 port_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] force_destroy: A boolean indicating whether the routes from the
+               corresponding router ID should be deleted so that the router interface can
+               be destroyed without any errors. The default value is `false`.
+        :param pulumi.Input[str] port_id: ID of the port this interface connects to. Changing
+               this creates a new router interface.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
+               A networking client is needed to create a router. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               router interface.
+        :param pulumi.Input[str] router_id: ID of the router this interface belongs to. Changing
+               this creates a new router interface.
+        :param pulumi.Input[str] subnet_id: ID of the subnet this interface connects to. Changing
+               this creates a new router interface.
         """
         ...
     @overload
@@ -169,7 +280,33 @@ class RouterInterface(pulumi.CustomResource):
                  args: RouterInterfaceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a RouterInterface resource with the given unique name, props, and options.
+        Manages a V2 router interface resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            network_id=network1.id,
+            cidr="192.168.199.0/24",
+            ip_version=4)
+        router1 = openstack.networking.Router("router1", external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
+        router_interface1 = openstack.networking.RouterInterface("routerInterface1",
+            router_id=router1.id,
+            subnet_id=subnet1.id)
+        ```
+
+        ## Import
+
+        Router Interfaces can be imported using the port `id`, e.g. $ openstack port list --router <router name or id>
+
+        ```sh
+         $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 port_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param RouterInterfaceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -228,6 +365,19 @@ class RouterInterface(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] force_destroy: A boolean indicating whether the routes from the
+               corresponding router ID should be deleted so that the router interface can
+               be destroyed without any errors. The default value is `false`.
+        :param pulumi.Input[str] port_id: ID of the port this interface connects to. Changing
+               this creates a new router interface.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
+               A networking client is needed to create a router. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               router interface.
+        :param pulumi.Input[str] router_id: ID of the router this interface belongs to. Changing
+               this creates a new router interface.
+        :param pulumi.Input[str] subnet_id: ID of the subnet this interface connects to. Changing
+               this creates a new router interface.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -243,25 +393,48 @@ class RouterInterface(pulumi.CustomResource):
     @property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        A boolean indicating whether the routes from the
+        corresponding router ID should be deleted so that the router interface can
+        be destroyed without any errors. The default value is `false`.
+        """
         return pulumi.get(self, "force_destroy")
 
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Output[str]:
+        """
+        ID of the port this interface connects to. Changing
+        this creates a new router interface.
+        """
         return pulumi.get(self, "port_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to obtain the V2 networking client.
+        A networking client is needed to create a router. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        router interface.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Output[str]:
+        """
+        ID of the router this interface belongs to. Changing
+        this creates a new router interface.
+        """
         return pulumi.get(self, "router_id")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[str]:
+        """
+        ID of the subnet this interface connects to. Changing
+        this creates a new router interface.
+        """
         return pulumi.get(self, "subnet_id")
 

@@ -21,6 +21,20 @@ class AddressScopeArgs:
                  shared: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a AddressScope resource.
+        :param pulumi.Input[int] ip_version: IP version, either 4 (default) or 6. Changing this
+               creates a new address-scope.
+        :param pulumi.Input[str] name: The name of the address-scope. Changing this updates the
+               name of the existing address-scope.
+        :param pulumi.Input[str] project_id: The owner of the address-scope. Required if admin
+               wants to create a address-scope for another project. Changing this creates a
+               new address-scope.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a Neutron address-scope. If omitted,
+               the `region` argument of the provider is used. Changing this creates a new
+               address-scope.
+        :param pulumi.Input[bool] shared: Indicates whether this address-scope is shared across
+               all projects. Changing this updates the shared status of the existing
+               address-scope.
         """
         if ip_version is not None:
             pulumi.set(__self__, "ip_version", ip_version)
@@ -36,6 +50,10 @@ class AddressScopeArgs:
     @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[int]]:
+        """
+        IP version, either 4 (default) or 6. Changing this
+        creates a new address-scope.
+        """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
@@ -45,6 +63,10 @@ class AddressScopeArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the address-scope. Changing this updates the
+        name of the existing address-scope.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -54,6 +76,11 @@ class AddressScopeArgs:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The owner of the address-scope. Required if admin
+        wants to create a address-scope for another project. Changing this creates a
+        new address-scope.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -63,6 +90,12 @@ class AddressScopeArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create a Neutron address-scope. If omitted,
+        the `region` argument of the provider is used. Changing this creates a new
+        address-scope.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -72,6 +105,11 @@ class AddressScopeArgs:
     @property
     @pulumi.getter
     def shared(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether this address-scope is shared across
+        all projects. Changing this updates the shared status of the existing
+        address-scope.
+        """
         return pulumi.get(self, "shared")
 
     @shared.setter
@@ -89,6 +127,20 @@ class _AddressScopeState:
                  shared: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering AddressScope resources.
+        :param pulumi.Input[int] ip_version: IP version, either 4 (default) or 6. Changing this
+               creates a new address-scope.
+        :param pulumi.Input[str] name: The name of the address-scope. Changing this updates the
+               name of the existing address-scope.
+        :param pulumi.Input[str] project_id: The owner of the address-scope. Required if admin
+               wants to create a address-scope for another project. Changing this creates a
+               new address-scope.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a Neutron address-scope. If omitted,
+               the `region` argument of the provider is used. Changing this creates a new
+               address-scope.
+        :param pulumi.Input[bool] shared: Indicates whether this address-scope is shared across
+               all projects. Changing this updates the shared status of the existing
+               address-scope.
         """
         if ip_version is not None:
             pulumi.set(__self__, "ip_version", ip_version)
@@ -104,6 +156,10 @@ class _AddressScopeState:
     @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[int]]:
+        """
+        IP version, either 4 (default) or 6. Changing this
+        creates a new address-scope.
+        """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
@@ -113,6 +169,10 @@ class _AddressScopeState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the address-scope. Changing this updates the
+        name of the existing address-scope.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -122,6 +182,11 @@ class _AddressScopeState:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The owner of the address-scope. Required if admin
+        wants to create a address-scope for another project. Changing this creates a
+        new address-scope.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -131,6 +196,12 @@ class _AddressScopeState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create a Neutron address-scope. If omitted,
+        the `region` argument of the provider is used. Changing this creates a new
+        address-scope.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -140,6 +211,11 @@ class _AddressScopeState:
     @property
     @pulumi.getter
     def shared(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether this address-scope is shared across
+        all projects. Changing this updates the shared status of the existing
+        address-scope.
+        """
         return pulumi.get(self, "shared")
 
     @shared.setter
@@ -159,9 +235,56 @@ class AddressScope(pulumi.CustomResource):
                  shared: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a AddressScope resource with the given unique name, props, and options.
+        Manages a V2 Neutron addressscope resource within OpenStack.
+
+        ## Example Usage
+        ### Create an Address-scope
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        addressscope1 = openstack.networking.AddressScope("addressscope1", ip_version=6)
+        ```
+        ### Create a Subnet Pool from an Address-scope
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        addressscope1 = openstack.networking.AddressScope("addressscope1", ip_version=6)
+        subnetpool1 = openstack.networking.SubnetPool("subnetpool1",
+            prefixes=[
+                "fdf7:b13d:dead:beef::/64",
+                "fd65:86cc:a334:39b7::/64",
+            ],
+            address_scope_id=addressscope1.id)
+        ```
+
+        ## Import
+
+        Address-scopes can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/addressScope:AddressScope addressscope_1 9cc35860-522a-4d35-974d-51d4b011801e
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] ip_version: IP version, either 4 (default) or 6. Changing this
+               creates a new address-scope.
+        :param pulumi.Input[str] name: The name of the address-scope. Changing this updates the
+               name of the existing address-scope.
+        :param pulumi.Input[str] project_id: The owner of the address-scope. Required if admin
+               wants to create a address-scope for another project. Changing this creates a
+               new address-scope.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a Neutron address-scope. If omitted,
+               the `region` argument of the provider is used. Changing this creates a new
+               address-scope.
+        :param pulumi.Input[bool] shared: Indicates whether this address-scope is shared across
+               all projects. Changing this updates the shared status of the existing
+               address-scope.
         """
         ...
     @overload
@@ -170,7 +293,40 @@ class AddressScope(pulumi.CustomResource):
                  args: Optional[AddressScopeArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AddressScope resource with the given unique name, props, and options.
+        Manages a V2 Neutron addressscope resource within OpenStack.
+
+        ## Example Usage
+        ### Create an Address-scope
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        addressscope1 = openstack.networking.AddressScope("addressscope1", ip_version=6)
+        ```
+        ### Create a Subnet Pool from an Address-scope
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        addressscope1 = openstack.networking.AddressScope("addressscope1", ip_version=6)
+        subnetpool1 = openstack.networking.SubnetPool("subnetpool1",
+            prefixes=[
+                "fdf7:b13d:dead:beef::/64",
+                "fd65:86cc:a334:39b7::/64",
+            ],
+            address_scope_id=addressscope1.id)
+        ```
+
+        ## Import
+
+        Address-scopes can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/addressScope:AddressScope addressscope_1 9cc35860-522a-4d35-974d-51d4b011801e
+        ```
+
         :param str resource_name: The name of the resource.
         :param AddressScopeArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -227,6 +383,20 @@ class AddressScope(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] ip_version: IP version, either 4 (default) or 6. Changing this
+               creates a new address-scope.
+        :param pulumi.Input[str] name: The name of the address-scope. Changing this updates the
+               name of the existing address-scope.
+        :param pulumi.Input[str] project_id: The owner of the address-scope. Required if admin
+               wants to create a address-scope for another project. Changing this creates a
+               new address-scope.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a Neutron address-scope. If omitted,
+               the `region` argument of the provider is used. Changing this creates a new
+               address-scope.
+        :param pulumi.Input[bool] shared: Indicates whether this address-scope is shared across
+               all projects. Changing this updates the shared status of the existing
+               address-scope.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -242,25 +412,49 @@ class AddressScope(pulumi.CustomResource):
     @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> pulumi.Output[Optional[int]]:
+        """
+        IP version, either 4 (default) or 6. Changing this
+        creates a new address-scope.
+        """
         return pulumi.get(self, "ip_version")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the address-scope. Changing this updates the
+        name of the existing address-scope.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
+        """
+        The owner of the address-scope. Required if admin
+        wants to create a address-scope for another project. Changing this creates a
+        new address-scope.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create a Neutron address-scope. If omitted,
+        the `region` argument of the provider is used. Changing this creates a new
+        address-scope.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def shared(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether this address-scope is shared across
+        all projects. Changing this updates the shared status of the existing
+        address-scope.
+        """
         return pulumi.get(self, "shared")
 

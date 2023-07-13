@@ -21,6 +21,14 @@ class MembersArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Members resource.
+        :param pulumi.Input[str] pool_id: The id of the pool that members will be assigned to.
+               Changing this creates a new members resource.
+        :param pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]] members: A set of dictionaries containing member parameters. The
+               structure is described below.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create pool members. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               members resource.
         """
         pulumi.set(__self__, "pool_id", pool_id)
         if members is not None:
@@ -31,6 +39,10 @@ class MembersArgs:
     @property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Input[str]:
+        """
+        The id of the pool that members will be assigned to.
+        Changing this creates a new members resource.
+        """
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
@@ -40,6 +52,10 @@ class MembersArgs:
     @property
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]]]:
+        """
+        A set of dictionaries containing member parameters. The
+        structure is described below.
+        """
         return pulumi.get(self, "members")
 
     @members.setter
@@ -49,6 +65,12 @@ class MembersArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create pool members. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        members resource.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -64,6 +86,14 @@ class _MembersState:
                  region: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Members resources.
+        :param pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]] members: A set of dictionaries containing member parameters. The
+               structure is described below.
+        :param pulumi.Input[str] pool_id: The id of the pool that members will be assigned to.
+               Changing this creates a new members resource.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create pool members. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               members resource.
         """
         if members is not None:
             pulumi.set(__self__, "members", members)
@@ -75,6 +105,10 @@ class _MembersState:
     @property
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]]]:
+        """
+        A set of dictionaries containing member parameters. The
+        structure is described below.
+        """
         return pulumi.get(self, "members")
 
     @members.setter
@@ -84,6 +118,10 @@ class _MembersState:
     @property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the pool that members will be assigned to.
+        Changing this creates a new members resource.
+        """
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
@@ -93,6 +131,12 @@ class _MembersState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create pool members. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        members resource.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -110,9 +154,53 @@ class Members(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Members resource with the given unique name, props, and options.
+        Manages a V2 members resource within OpenStack (batch members update).
+
+        > **Note:** This resource has attributes that depend on octavia minor versions.
+        Please ensure your Openstack cloud supports the required minor version.
+
+        > **Note:** This resource works only within Octavia API. For
+        legacy Neutron LBaaS v2 extension please use
+        loadbalancer.Member resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        members1 = openstack.loadbalancer.Members("members1",
+            members=[
+                openstack.loadbalancer.MembersMemberArgs(
+                    address="192.168.199.23",
+                    protocol_port=8080,
+                ),
+                openstack.loadbalancer.MembersMemberArgs(
+                    address="192.168.199.24",
+                    protocol_port=8080,
+                ),
+            ],
+            pool_id="935685fb-a896-40f9-9ff4-ae531a3a00fe")
+        ```
+
+        ## Import
+
+        Load Balancer Pool Members can be imported using the Pool ID, e.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/members:Members members_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembersMemberArgs']]]] members: A set of dictionaries containing member parameters. The
+               structure is described below.
+        :param pulumi.Input[str] pool_id: The id of the pool that members will be assigned to.
+               Changing this creates a new members resource.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create pool members. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               members resource.
         """
         ...
     @overload
@@ -121,7 +209,43 @@ class Members(pulumi.CustomResource):
                  args: MembersArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Members resource with the given unique name, props, and options.
+        Manages a V2 members resource within OpenStack (batch members update).
+
+        > **Note:** This resource has attributes that depend on octavia minor versions.
+        Please ensure your Openstack cloud supports the required minor version.
+
+        > **Note:** This resource works only within Octavia API. For
+        legacy Neutron LBaaS v2 extension please use
+        loadbalancer.Member resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        members1 = openstack.loadbalancer.Members("members1",
+            members=[
+                openstack.loadbalancer.MembersMemberArgs(
+                    address="192.168.199.23",
+                    protocol_port=8080,
+                ),
+                openstack.loadbalancer.MembersMemberArgs(
+                    address="192.168.199.24",
+                    protocol_port=8080,
+                ),
+            ],
+            pool_id="935685fb-a896-40f9-9ff4-ae531a3a00fe")
+        ```
+
+        ## Import
+
+        Load Balancer Pool Members can be imported using the Pool ID, e.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/members:Members members_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5
+        ```
+
         :param str resource_name: The name of the resource.
         :param MembersArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -174,6 +298,14 @@ class Members(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembersMemberArgs']]]] members: A set of dictionaries containing member parameters. The
+               structure is described below.
+        :param pulumi.Input[str] pool_id: The id of the pool that members will be assigned to.
+               Changing this creates a new members resource.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create pool members. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               members resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -187,15 +319,29 @@ class Members(pulumi.CustomResource):
     @property
     @pulumi.getter
     def members(self) -> pulumi.Output[Optional[Sequence['outputs.MembersMember']]]:
+        """
+        A set of dictionaries containing member parameters. The
+        structure is described below.
+        """
         return pulumi.get(self, "members")
 
     @property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Output[str]:
+        """
+        The id of the pool that members will be assigned to.
+        Changing this creates a new members resource.
+        """
         return pulumi.get(self, "pool_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create pool members. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        members resource.
+        """
         return pulumi.get(self, "region")
 

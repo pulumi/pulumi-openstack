@@ -21,6 +21,22 @@ class ApplicationCredentialAccessRuleArgs:
                  path: pulumi.Input[str],
                  service: pulumi.Input[str],
                  id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] method: The request method that the application credential is
+               permitted to use for a given API endpoint. Allowed values: `POST`, `GET`,
+               `HEAD`, `PATCH`, `PUT` and `DELETE`.
+        :param pulumi.Input[str] path: The API path that the application credential is permitted
+               to access. May use named wildcards such as **{tag}** or the unnamed wildcard
+               **\\*** to match against any string in the path up to a **/**, or the recursive
+               wildcard **\\*\\*** to include **/** in the matched path.
+        :param pulumi.Input[str] service: The service type identifier for the service that the
+               application credential is granted to access. Must be a service type that is
+               listed in the service catalog and not a code name for a service. E.g.
+               **identity**, **compute**, **volumev3**, **image**, **network**,
+               **object-store**, **sharev2**, **dns**, **key-manager**, **monitoring**, etc.
+        :param pulumi.Input[str] id: The ID of the existing access rule. The access rule ID of
+               another application credential can be provided.
+        """
         pulumi.set(__self__, "method", method)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "service", service)
@@ -30,6 +46,11 @@ class ApplicationCredentialAccessRuleArgs:
     @property
     @pulumi.getter
     def method(self) -> pulumi.Input[str]:
+        """
+        The request method that the application credential is
+        permitted to use for a given API endpoint. Allowed values: `POST`, `GET`,
+        `HEAD`, `PATCH`, `PUT` and `DELETE`.
+        """
         return pulumi.get(self, "method")
 
     @method.setter
@@ -39,6 +60,12 @@ class ApplicationCredentialAccessRuleArgs:
     @property
     @pulumi.getter
     def path(self) -> pulumi.Input[str]:
+        """
+        The API path that the application credential is permitted
+        to access. May use named wildcards such as **{tag}** or the unnamed wildcard
+        **\\*** to match against any string in the path up to a **/**, or the recursive
+        wildcard **\\*\\*** to include **/** in the matched path.
+        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -48,6 +75,13 @@ class ApplicationCredentialAccessRuleArgs:
     @property
     @pulumi.getter
     def service(self) -> pulumi.Input[str]:
+        """
+        The service type identifier for the service that the
+        application credential is granted to access. Must be a service type that is
+        listed in the service catalog and not a code name for a service. E.g.
+        **identity**, **compute**, **volumev3**, **image**, **network**,
+        **object-store**, **sharev2**, **dns**, **key-manager**, **monitoring**, etc.
+        """
         return pulumi.get(self, "service")
 
     @service.setter
@@ -57,6 +91,10 @@ class ApplicationCredentialAccessRuleArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the existing access rule. The access rule ID of
+        another application credential can be provided.
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -68,11 +106,19 @@ class ApplicationCredentialAccessRuleArgs:
 class UserMultiFactorAuthRuleArgs:
     def __init__(__self__, *,
                  rules: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rules: A list of authentication plugins that the user must
+               authenticate with.
+        """
         pulumi.set(__self__, "rules", rules)
 
     @property
     @pulumi.getter
     def rules(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of authentication plugins that the user must
+        authenticate with.
+        """
         return pulumi.get(self, "rules")
 
     @rules.setter

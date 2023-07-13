@@ -63,26 +63,43 @@ class GetContainerResult:
     @property
     @pulumi.getter
     def acls(self) -> Sequence['outputs.GetContainerAclResult']:
+        """
+        The list of ACLs assigned to a container. The `read` structure is
+        described below.
+        """
         return pulumi.get(self, "acls")
 
     @property
     @pulumi.getter
     def consumers(self) -> Sequence['outputs.GetContainerConsumerResult']:
+        """
+        The list of the container consumers. The structure is described
+        below.
+        """
         return pulumi.get(self, "consumers")
 
     @property
     @pulumi.getter(name="containerRef")
     def container_ref(self) -> str:
+        """
+        The container reference / where to find the container.
+        """
         return pulumi.get(self, "container_ref")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
+        """
+        The date the container ACL was created.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="creatorId")
     def creator_id(self) -> str:
+        """
+        The creator of the container.
+        """
         return pulumi.get(self, "creator_id")
 
     @property
@@ -96,31 +113,50 @@ class GetContainerResult:
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The name of the consumer.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="secretRefs")
     def secret_refs(self) -> Sequence['outputs.GetContainerSecretRefResult']:
+        """
+        A set of dictionaries containing references to secrets. The
+        structure is described below.
+        """
         return pulumi.get(self, "secret_refs")
 
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        The status of the container.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The container type.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
+        """
+        The date the container ACL was last updated.
+        """
         return pulumi.get(self, "updated_at")
 
 
@@ -148,7 +184,22 @@ def get_container(name: Optional[str] = None,
                   region: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetContainerResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an available Barbican container.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    example = openstack.keymanager.get_container(name="my_container")
+    ```
+
+
+    :param str name: The Container name.
+    :param str region: The region in which to obtain the V1 KeyManager client.
+           A KeyManager client is needed to fetch a container. If omitted, the `region`
+           argument of the provider is used.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -176,6 +227,21 @@ def get_container_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an available Barbican container.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    example = openstack.keymanager.get_container(name="my_container")
+    ```
+
+
+    :param str name: The Container name.
+    :param str region: The region in which to obtain the V1 KeyManager client.
+           A KeyManager client is needed to fetch a container. If omitted, the `region`
+           argument of the provider is used.
     """
     ...

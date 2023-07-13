@@ -19,6 +19,13 @@ class VolumeTypeAccessV3Args:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a VolumeTypeAccessV3 resource.
+        :param pulumi.Input[str] project_id: ID of the project to give access to. Changing this
+               creates a new resource.
+        :param pulumi.Input[str] volume_type_id: ID of the volume type to give access to. Changing
+               this creates a new resource.
+        :param pulumi.Input[str] region: The region in which to create the volume. If
+               omitted, the `region` argument of the provider is used. Changing this
+               creates a new quotaset.
         """
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "volume_type_id", volume_type_id)
@@ -28,6 +35,10 @@ class VolumeTypeAccessV3Args:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[str]:
+        """
+        ID of the project to give access to. Changing this
+        creates a new resource.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -37,6 +48,10 @@ class VolumeTypeAccessV3Args:
     @property
     @pulumi.getter(name="volumeTypeId")
     def volume_type_id(self) -> pulumi.Input[str]:
+        """
+        ID of the volume type to give access to. Changing
+        this creates a new resource.
+        """
         return pulumi.get(self, "volume_type_id")
 
     @volume_type_id.setter
@@ -46,6 +61,11 @@ class VolumeTypeAccessV3Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to create the volume. If
+        omitted, the `region` argument of the provider is used. Changing this
+        creates a new quotaset.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -61,6 +81,13 @@ class _VolumeTypeAccessV3State:
                  volume_type_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering VolumeTypeAccessV3 resources.
+        :param pulumi.Input[str] project_id: ID of the project to give access to. Changing this
+               creates a new resource.
+        :param pulumi.Input[str] region: The region in which to create the volume. If
+               omitted, the `region` argument of the provider is used. Changing this
+               creates a new quotaset.
+        :param pulumi.Input[str] volume_type_id: ID of the volume type to give access to. Changing
+               this creates a new resource.
         """
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
@@ -72,6 +99,10 @@ class _VolumeTypeAccessV3State:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the project to give access to. Changing this
+        creates a new resource.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -81,6 +112,11 @@ class _VolumeTypeAccessV3State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to create the volume. If
+        omitted, the `region` argument of the provider is used. Changing this
+        creates a new quotaset.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -90,6 +126,10 @@ class _VolumeTypeAccessV3State:
     @property
     @pulumi.getter(name="volumeTypeId")
     def volume_type_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the volume type to give access to. Changing
+        this creates a new resource.
+        """
         return pulumi.get(self, "volume_type_id")
 
     @volume_type_id.setter
@@ -107,9 +147,40 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
                  volume_type_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a VolumeTypeAccessV3 resource with the given unique name, props, and options.
+        Manages a V3 block storage volume type access resource within OpenStack.
+
+        > **Note:** This usually requires admin privileges.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        volume_type1 = openstack.blockstorage.VolumeTypeV3("volumeType1", is_public=False)
+        volume_type_access = openstack.blockstorage.VolumeTypeAccessV3("volumeTypeAccess",
+            project_id=project1.id,
+            volume_type_id=volume_type1.id)
+        ```
+
+        ## Import
+
+        Volume types access can be imported using the `volume_type_id/project_id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3 volume_type_access 941793f0-0a34-4bc4-b72e-a6326ae58283/ed498e81f0cc448bae0ad4f8f21bf67f
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project_id: ID of the project to give access to. Changing this
+               creates a new resource.
+        :param pulumi.Input[str] region: The region in which to create the volume. If
+               omitted, the `region` argument of the provider is used. Changing this
+               creates a new quotaset.
+        :param pulumi.Input[str] volume_type_id: ID of the volume type to give access to. Changing
+               this creates a new resource.
         """
         ...
     @overload
@@ -118,7 +189,31 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
                  args: VolumeTypeAccessV3Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a VolumeTypeAccessV3 resource with the given unique name, props, and options.
+        Manages a V3 block storage volume type access resource within OpenStack.
+
+        > **Note:** This usually requires admin privileges.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        volume_type1 = openstack.blockstorage.VolumeTypeV3("volumeType1", is_public=False)
+        volume_type_access = openstack.blockstorage.VolumeTypeAccessV3("volumeTypeAccess",
+            project_id=project1.id,
+            volume_type_id=volume_type1.id)
+        ```
+
+        ## Import
+
+        Volume types access can be imported using the `volume_type_id/project_id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3 volume_type_access 941793f0-0a34-4bc4-b72e-a6326ae58283/ed498e81f0cc448bae0ad4f8f21bf67f
+        ```
+
         :param str resource_name: The name of the resource.
         :param VolumeTypeAccessV3Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -173,6 +268,13 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project_id: ID of the project to give access to. Changing this
+               creates a new resource.
+        :param pulumi.Input[str] region: The region in which to create the volume. If
+               omitted, the `region` argument of the provider is used. Changing this
+               creates a new quotaset.
+        :param pulumi.Input[str] volume_type_id: ID of the volume type to give access to. Changing
+               this creates a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -186,15 +288,28 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
+        """
+        ID of the project to give access to. Changing this
+        creates a new resource.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to create the volume. If
+        omitted, the `region` argument of the provider is used. Changing this
+        creates a new quotaset.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="volumeTypeId")
     def volume_type_id(self) -> pulumi.Output[str]:
+        """
+        ID of the volume type to give access to. Changing
+        this creates a new resource.
+        """
         return pulumi.get(self, "volume_type_id")
 

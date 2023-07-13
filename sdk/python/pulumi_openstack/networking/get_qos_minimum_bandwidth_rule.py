@@ -54,16 +54,25 @@ class GetQosMinimumBandwidthRuleResult:
     @property
     @pulumi.getter(name="minKbps")
     def min_kbps(self) -> int:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "min_kbps")
 
     @property
     @pulumi.getter(name="qosPolicyId")
     def qos_policy_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "qos_policy_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "region")
 
 
@@ -86,7 +95,23 @@ def get_qos_minimum_bandwidth_rule(direction: Optional[str] = None,
                                    region: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQosMinimumBandwidthRuleResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    qos_min_bw_rule1 = openstack.networking.get_qos_minimum_bandwidth_rule(min_kbps=2000)
+    ```
+
+
+    :param int min_kbps: The value of a minimum kbps bandwidth.
+    :param str qos_policy_id: The QoS policy reference.
+    :param str region: The region in which to obtain the V2 Networking client.
+           A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
+           `region` argument of the provider is used.
     """
     __args__ = dict()
     __args__['direction'] = direction
@@ -111,6 +136,22 @@ def get_qos_minimum_bandwidth_rule_output(direction: Optional[pulumi.Input[Optio
                                           region: Optional[pulumi.Input[Optional[str]]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQosMinimumBandwidthRuleResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    qos_min_bw_rule1 = openstack.networking.get_qos_minimum_bandwidth_rule(min_kbps=2000)
+    ```
+
+
+    :param int min_kbps: The value of a minimum kbps bandwidth.
+    :param str qos_policy_id: The QoS policy reference.
+    :param str region: The region in which to obtain the V2 Networking client.
+           A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
+           `region` argument of the provider is used.
     """
     ...

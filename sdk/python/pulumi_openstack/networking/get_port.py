@@ -99,61 +99,101 @@ class GetPortResult:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[bool]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "admin_state_up")
 
     @property
     @pulumi.getter(name="allFixedIps")
     def all_fixed_ips(self) -> Sequence[str]:
+        """
+        The collection of Fixed IP addresses on the port in the
+        order returned by the Network v2 API.
+        """
         return pulumi.get(self, "all_fixed_ips")
 
     @property
     @pulumi.getter(name="allSecurityGroupIds")
     def all_security_group_ids(self) -> Sequence[str]:
+        """
+        The set of security group IDs applied on the port.
+        """
         return pulumi.get(self, "all_security_group_ids")
 
     @property
     @pulumi.getter(name="allTags")
     def all_tags(self) -> Sequence[str]:
+        """
+        The set of string tags applied on the port.
+        """
         return pulumi.get(self, "all_tags")
 
     @property
     @pulumi.getter(name="allowedAddressPairs")
     def allowed_address_pairs(self) -> Sequence['outputs.GetPortAllowedAddressPairResult']:
+        """
+        An IP/MAC Address pair of additional IP
+        addresses that can be active on this port. The structure is described
+        below.
+        """
         return pulumi.get(self, "allowed_address_pairs")
 
     @property
     @pulumi.getter
     def bindings(self) -> Sequence['outputs.GetPortBindingResult']:
+        """
+        The port binding information. The structure is described below.
+        """
         return pulumi.get(self, "bindings")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="deviceId")
     def device_id(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "device_id")
 
     @property
     @pulumi.getter(name="deviceOwner")
     def device_owner(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "device_owner")
 
     @property
     @pulumi.getter(name="dnsAssignments")
     def dns_assignments(self) -> Sequence[Mapping[str, Any]]:
+        """
+        The list of maps representing port DNS assignments.
+        """
         return pulumi.get(self, "dns_assignments")
 
     @property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "dns_name")
 
     @property
     @pulumi.getter(name="extraDhcpOptions")
     def extra_dhcp_options(self) -> Sequence['outputs.GetPortExtraDhcpOptionResult']:
+        """
+        An extra DHCP option configured on the port.
+        The structure is described below.
+        """
         return pulumi.get(self, "extra_dhcp_options")
 
     @property
@@ -172,31 +212,49 @@ class GetPortResult:
     @property
     @pulumi.getter(name="macAddress")
     def mac_address(self) -> Optional[str]:
+        """
+        The additional MAC address.
+        """
         return pulumi.get(self, "mac_address")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        Name of the DHCP option.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "network_id")
 
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "port_id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "region")
 
     @property
@@ -270,7 +328,36 @@ def get_port(admin_state_up: Optional[bool] = None,
              tenant_id: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPortResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an available OpenStack port.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    port1 = openstack.networking.get_port(name="port_1")
+    ```
+
+
+    :param bool admin_state_up: The administrative state of the port.
+    :param str description: Human-readable description of the port.
+    :param str device_id: The ID of the device the port belongs to.
+    :param str device_owner: The device owner of the port.
+    :param str dns_name: The port DNS name to filter. Available, when Neutron
+           DNS extension is enabled.
+    :param str fixed_ip: The port IP address filter.
+    :param str mac_address: The MAC address of the port.
+    :param str name: The name of the port.
+    :param str network_id: The ID of the network the port belongs to.
+    :param str port_id: The ID of the port.
+    :param str project_id: The owner of the port.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve port ids. If omitted, the
+           `region` argument of the provider is used.
+    :param Sequence[str] security_group_ids: The list of port security group IDs to filter.
+    :param str status: The status of the port.
+    :param Sequence[str] tags: The list of port tags to filter.
     """
     __args__ = dict()
     __args__['adminStateUp'] = admin_state_up
@@ -338,6 +425,35 @@ def get_port_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = Non
                     tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPortResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an available OpenStack port.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    port1 = openstack.networking.get_port(name="port_1")
+    ```
+
+
+    :param bool admin_state_up: The administrative state of the port.
+    :param str description: Human-readable description of the port.
+    :param str device_id: The ID of the device the port belongs to.
+    :param str device_owner: The device owner of the port.
+    :param str dns_name: The port DNS name to filter. Available, when Neutron
+           DNS extension is enabled.
+    :param str fixed_ip: The port IP address filter.
+    :param str mac_address: The MAC address of the port.
+    :param str name: The name of the port.
+    :param str network_id: The ID of the network the port belongs to.
+    :param str port_id: The ID of the port.
+    :param str project_id: The owner of the port.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve port ids. If omitted, the
+           `region` argument of the provider is used.
+    :param Sequence[str] security_group_ids: The list of port security group IDs to filter.
+    :param str status: The status of the port.
+    :param Sequence[str] tags: The list of port tags to filter.
     """
     ...

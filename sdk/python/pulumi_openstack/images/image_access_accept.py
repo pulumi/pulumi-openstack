@@ -20,6 +20,15 @@ class ImageAccessAcceptArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ImageAccessAccept resource.
+        :param pulumi.Input[str] image_id: The proposed image ID.
+        :param pulumi.Input[str] status: The membership proposal status. Can either be
+               `accepted`, `rejected` or `pending`.
+        :param pulumi.Input[str] member_id: The member ID, e.g. the target project ID. Optional
+               for admin accounts. Defaults to the current scope project ID.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Glance client.
+               A Glance client is needed to manage Image memberships. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               membership.
         """
         pulumi.set(__self__, "image_id", image_id)
         pulumi.set(__self__, "status", status)
@@ -31,6 +40,9 @@ class ImageAccessAcceptArgs:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Input[str]:
+        """
+        The proposed image ID.
+        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -40,6 +52,10 @@ class ImageAccessAcceptArgs:
     @property
     @pulumi.getter
     def status(self) -> pulumi.Input[str]:
+        """
+        The membership proposal status. Can either be
+        `accepted`, `rejected` or `pending`.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -49,6 +65,10 @@ class ImageAccessAcceptArgs:
     @property
     @pulumi.getter(name="memberId")
     def member_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The member ID, e.g. the target project ID. Optional
+        for admin accounts. Defaults to the current scope project ID.
+        """
         return pulumi.get(self, "member_id")
 
     @member_id.setter
@@ -58,6 +78,12 @@ class ImageAccessAcceptArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Glance client.
+        A Glance client is needed to manage Image memberships. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        membership.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -77,6 +103,18 @@ class _ImageAccessAcceptState:
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ImageAccessAccept resources.
+        :param pulumi.Input[str] created_at: The date the image membership was created.
+        :param pulumi.Input[str] image_id: The proposed image ID.
+        :param pulumi.Input[str] member_id: The member ID, e.g. the target project ID. Optional
+               for admin accounts. Defaults to the current scope project ID.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Glance client.
+               A Glance client is needed to manage Image memberships. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               membership.
+        :param pulumi.Input[str] schema: The membership schema.
+        :param pulumi.Input[str] status: The membership proposal status. Can either be
+               `accepted`, `rejected` or `pending`.
+        :param pulumi.Input[str] updated_at: The date the image membership was last updated.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -96,6 +134,9 @@ class _ImageAccessAcceptState:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date the image membership was created.
+        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -105,6 +146,9 @@ class _ImageAccessAcceptState:
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The proposed image ID.
+        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -114,6 +158,10 @@ class _ImageAccessAcceptState:
     @property
     @pulumi.getter(name="memberId")
     def member_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The member ID, e.g. the target project ID. Optional
+        for admin accounts. Defaults to the current scope project ID.
+        """
         return pulumi.get(self, "member_id")
 
     @member_id.setter
@@ -123,6 +171,12 @@ class _ImageAccessAcceptState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Glance client.
+        A Glance client is needed to manage Image memberships. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        membership.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -132,6 +186,9 @@ class _ImageAccessAcceptState:
     @property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        The membership schema.
+        """
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -141,6 +198,10 @@ class _ImageAccessAcceptState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The membership proposal status. Can either be
+        `accepted`, `rejected` or `pending`.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -150,6 +211,9 @@ class _ImageAccessAcceptState:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date the image membership was last updated.
+        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -168,9 +232,44 @@ class ImageAccessAccept(pulumi.CustomResource):
                  status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ImageAccessAccept resource with the given unique name, props, and options.
+        Manages memberships status for the shared OpenStack Glance V2 Image within the
+        destination project, which has a member proposal.
+
+        ## Example Usage
+
+        Accept a shared image membershipship proposal within the current project.
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rancheros = openstack.images.get_image(name="RancherOS",
+            visibility="shared",
+            member_status="all")
+        rancheros_member = openstack.images.ImageAccessAccept("rancherosMember",
+            image_id=rancheros.id,
+            status="accepted")
+        ```
+
+        ## Import
+
+        Image access acceptance status can be imported using the `image_id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:images/imageAccessAccept:ImageAccessAccept openstack_images_image_access_accept_v2 89c60255-9bd6-460c-822a-e2b959ede9d2
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] image_id: The proposed image ID.
+        :param pulumi.Input[str] member_id: The member ID, e.g. the target project ID. Optional
+               for admin accounts. Defaults to the current scope project ID.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Glance client.
+               A Glance client is needed to manage Image memberships. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               membership.
+        :param pulumi.Input[str] status: The membership proposal status. Can either be
+               `accepted`, `rejected` or `pending`.
         """
         ...
     @overload
@@ -179,7 +278,33 @@ class ImageAccessAccept(pulumi.CustomResource):
                  args: ImageAccessAcceptArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ImageAccessAccept resource with the given unique name, props, and options.
+        Manages memberships status for the shared OpenStack Glance V2 Image within the
+        destination project, which has a member proposal.
+
+        ## Example Usage
+
+        Accept a shared image membershipship proposal within the current project.
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rancheros = openstack.images.get_image(name="RancherOS",
+            visibility="shared",
+            member_status="all")
+        rancheros_member = openstack.images.ImageAccessAccept("rancherosMember",
+            image_id=rancheros.id,
+            status="accepted")
+        ```
+
+        ## Import
+
+        Image access acceptance status can be imported using the `image_id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:images/imageAccessAccept:ImageAccessAccept openstack_images_image_access_accept_v2 89c60255-9bd6-460c-822a-e2b959ede9d2
+        ```
+
         :param str resource_name: The name of the resource.
         :param ImageAccessAcceptArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -243,6 +368,18 @@ class ImageAccessAccept(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] created_at: The date the image membership was created.
+        :param pulumi.Input[str] image_id: The proposed image ID.
+        :param pulumi.Input[str] member_id: The member ID, e.g. the target project ID. Optional
+               for admin accounts. Defaults to the current scope project ID.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Glance client.
+               A Glance client is needed to manage Image memberships. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               membership.
+        :param pulumi.Input[str] schema: The membership schema.
+        :param pulumi.Input[str] status: The membership proposal status. Can either be
+               `accepted`, `rejected` or `pending`.
+        :param pulumi.Input[str] updated_at: The date the image membership was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -260,35 +397,61 @@ class ImageAccessAccept(pulumi.CustomResource):
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
+        """
+        The date the image membership was created.
+        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[str]:
+        """
+        The proposed image ID.
+        """
         return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter(name="memberId")
     def member_id(self) -> pulumi.Output[str]:
+        """
+        The member ID, e.g. the target project ID. Optional
+        for admin accounts. Defaults to the current scope project ID.
+        """
         return pulumi.get(self, "member_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to obtain the V2 Glance client.
+        A Glance client is needed to manage Image memberships. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        membership.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def schema(self) -> pulumi.Output[str]:
+        """
+        The membership schema.
+        """
         return pulumi.get(self, "schema")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        The membership proposal status. Can either be
+        `accepted`, `rejected` or `pending`.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
+        """
+        The date the image membership was last updated.
+        """
         return pulumi.get(self, "updated_at")
 

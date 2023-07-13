@@ -19,6 +19,13 @@ class QosAssociationV3Args:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a QosAssociationV3 resource.
+        :param pulumi.Input[str] qos_id: ID of the qos to associate. Changing this creates
+               a new qos association.
+        :param pulumi.Input[str] volume_type_id: ID of the volume_type to associate.
+               Changing this creates a new qos association.
+        :param pulumi.Input[str] region: The region in which to create the qos association.
+               If omitted, the `region` argument of the provider is used. Changing
+               this creates a new qos association.
         """
         pulumi.set(__self__, "qos_id", qos_id)
         pulumi.set(__self__, "volume_type_id", volume_type_id)
@@ -28,6 +35,10 @@ class QosAssociationV3Args:
     @property
     @pulumi.getter(name="qosId")
     def qos_id(self) -> pulumi.Input[str]:
+        """
+        ID of the qos to associate. Changing this creates
+        a new qos association.
+        """
         return pulumi.get(self, "qos_id")
 
     @qos_id.setter
@@ -37,6 +48,10 @@ class QosAssociationV3Args:
     @property
     @pulumi.getter(name="volumeTypeId")
     def volume_type_id(self) -> pulumi.Input[str]:
+        """
+        ID of the volume_type to associate.
+        Changing this creates a new qos association.
+        """
         return pulumi.get(self, "volume_type_id")
 
     @volume_type_id.setter
@@ -46,6 +61,11 @@ class QosAssociationV3Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to create the qos association.
+        If omitted, the `region` argument of the provider is used. Changing
+        this creates a new qos association.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -61,6 +81,13 @@ class _QosAssociationV3State:
                  volume_type_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering QosAssociationV3 resources.
+        :param pulumi.Input[str] qos_id: ID of the qos to associate. Changing this creates
+               a new qos association.
+        :param pulumi.Input[str] region: The region in which to create the qos association.
+               If omitted, the `region` argument of the provider is used. Changing
+               this creates a new qos association.
+        :param pulumi.Input[str] volume_type_id: ID of the volume_type to associate.
+               Changing this creates a new qos association.
         """
         if qos_id is not None:
             pulumi.set(__self__, "qos_id", qos_id)
@@ -72,6 +99,10 @@ class _QosAssociationV3State:
     @property
     @pulumi.getter(name="qosId")
     def qos_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the qos to associate. Changing this creates
+        a new qos association.
+        """
         return pulumi.get(self, "qos_id")
 
     @qos_id.setter
@@ -81,6 +112,11 @@ class _QosAssociationV3State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to create the qos association.
+        If omitted, the `region` argument of the provider is used. Changing
+        this creates a new qos association.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -90,6 +126,10 @@ class _QosAssociationV3State:
     @property
     @pulumi.getter(name="volumeTypeId")
     def volume_type_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the volume_type to associate.
+        Changing this creates a new qos association.
+        """
         return pulumi.get(self, "volume_type_id")
 
     @volume_type_id.setter
@@ -107,9 +147,44 @@ class QosAssociationV3(pulumi.CustomResource):
                  volume_type_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a QosAssociationV3 resource with the given unique name, props, and options.
+        Manages a V3 block storage Qos Association resource within OpenStack.
+
+        > **Note:** This usually requires admin privileges.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        qos = openstack.blockstorage.QosV3("qos",
+            consumer="front-end",
+            specs={
+                "read_iops_sec": "20000",
+            })
+        volume_type = openstack.blockstorage.VolumeTypeV3("volumeType")
+        qos_association = openstack.blockstorage.QosAssociationV3("qosAssociation",
+            qos_id=qos.id,
+            volume_type_id=volume_type.id)
+        ```
+
+        ## Import
+
+        Qos association can be imported using the `qos_id/volume_type_id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:blockstorage/qosAssociationV3:QosAssociationV3 qos_association 941793f0-0a34-4bc4-b72e-a6326ae58283/ea257959-eeb1-4c10-8d33-26f0409a755d
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] qos_id: ID of the qos to associate. Changing this creates
+               a new qos association.
+        :param pulumi.Input[str] region: The region in which to create the qos association.
+               If omitted, the `region` argument of the provider is used. Changing
+               this creates a new qos association.
+        :param pulumi.Input[str] volume_type_id: ID of the volume_type to associate.
+               Changing this creates a new qos association.
         """
         ...
     @overload
@@ -118,7 +193,35 @@ class QosAssociationV3(pulumi.CustomResource):
                  args: QosAssociationV3Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a QosAssociationV3 resource with the given unique name, props, and options.
+        Manages a V3 block storage Qos Association resource within OpenStack.
+
+        > **Note:** This usually requires admin privileges.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        qos = openstack.blockstorage.QosV3("qos",
+            consumer="front-end",
+            specs={
+                "read_iops_sec": "20000",
+            })
+        volume_type = openstack.blockstorage.VolumeTypeV3("volumeType")
+        qos_association = openstack.blockstorage.QosAssociationV3("qosAssociation",
+            qos_id=qos.id,
+            volume_type_id=volume_type.id)
+        ```
+
+        ## Import
+
+        Qos association can be imported using the `qos_id/volume_type_id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:blockstorage/qosAssociationV3:QosAssociationV3 qos_association 941793f0-0a34-4bc4-b72e-a6326ae58283/ea257959-eeb1-4c10-8d33-26f0409a755d
+        ```
+
         :param str resource_name: The name of the resource.
         :param QosAssociationV3Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -173,6 +276,13 @@ class QosAssociationV3(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] qos_id: ID of the qos to associate. Changing this creates
+               a new qos association.
+        :param pulumi.Input[str] region: The region in which to create the qos association.
+               If omitted, the `region` argument of the provider is used. Changing
+               this creates a new qos association.
+        :param pulumi.Input[str] volume_type_id: ID of the volume_type to associate.
+               Changing this creates a new qos association.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -186,15 +296,28 @@ class QosAssociationV3(pulumi.CustomResource):
     @property
     @pulumi.getter(name="qosId")
     def qos_id(self) -> pulumi.Output[str]:
+        """
+        ID of the qos to associate. Changing this creates
+        a new qos association.
+        """
         return pulumi.get(self, "qos_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to create the qos association.
+        If omitted, the `region` argument of the provider is used. Changing
+        this creates a new qos association.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="volumeTypeId")
     def volume_type_id(self) -> pulumi.Output[str]:
+        """
+        ID of the volume_type to associate.
+        Changing this creates a new qos association.
+        """
         return pulumi.get(self, "volume_type_id")
 

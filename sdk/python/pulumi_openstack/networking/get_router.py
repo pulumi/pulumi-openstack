@@ -77,11 +77,17 @@ class GetRouterResult:
     @property
     @pulumi.getter(name="allTags")
     def all_tags(self) -> Sequence[str]:
+        """
+        The set of string tags applied on the router.
+        """
         return pulumi.get(self, "all_tags")
 
     @property
     @pulumi.getter(name="availabilityZoneHints")
     def availability_zone_hints(self) -> Sequence[str]:
+        """
+        The availability zone that is used to make router resources highly available.
+        """
         return pulumi.get(self, "availability_zone_hints")
 
     @property
@@ -97,16 +103,25 @@ class GetRouterResult:
     @property
     @pulumi.getter(name="enableSnat")
     def enable_snat(self) -> bool:
+        """
+        The value that points out if the Source NAT is enabled on the router.
+        """
         return pulumi.get(self, "enable_snat")
 
     @property
     @pulumi.getter(name="externalFixedIps")
     def external_fixed_ips(self) -> Sequence['outputs.GetRouterExternalFixedIpResult']:
+        """
+        The external fixed IPs of the router.
+        """
         return pulumi.get(self, "external_fixed_ips")
 
     @property
     @pulumi.getter(name="externalNetworkId")
     def external_network_id(self) -> str:
+        """
+        The network UUID of an external gateway for the router.
+        """
         return pulumi.get(self, "external_network_id")
 
     @property
@@ -183,7 +198,30 @@ def get_router(admin_state_up: Optional[bool] = None,
                tenant_id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouterResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an available OpenStack router.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    router = openstack.networking.get_router(name="router_1")
+    ```
+
+
+    :param bool admin_state_up: Administrative up/down status for the router (must be "true" or "false" if provided).
+    :param str description: Human-readable description of the router.
+    :param bool distributed: Indicates whether or not to get a distributed router.
+    :param bool enable_snat: The value that points out if the Source NAT is enabled on the router.
+    :param str name: The name of the router.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve router ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str router_id: The UUID of the router resource.
+    :param str status: The status of the router (ACTIVE/DOWN).
+    :param Sequence[str] tags: The list of router tags to filter.
+    :param str tenant_id: The owner of the router.
     """
     __args__ = dict()
     __args__['adminStateUp'] = admin_state_up
@@ -230,6 +268,29 @@ def get_router_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = N
                       tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouterResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an available OpenStack router.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    router = openstack.networking.get_router(name="router_1")
+    ```
+
+
+    :param bool admin_state_up: Administrative up/down status for the router (must be "true" or "false" if provided).
+    :param str description: Human-readable description of the router.
+    :param bool distributed: Indicates whether or not to get a distributed router.
+    :param bool enable_snat: The value that points out if the Source NAT is enabled on the router.
+    :param str name: The name of the router.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve router ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str router_id: The UUID of the router resource.
+    :param str status: The status of the router (ACTIVE/DOWN).
+    :param Sequence[str] tags: The list of router tags to filter.
+    :param str tenant_id: The owner of the router.
     """
     ...

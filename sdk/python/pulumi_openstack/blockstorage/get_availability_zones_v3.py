@@ -46,16 +46,26 @@ class GetAvailabilityZonesV3Result:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        The names of the availability zones, ordered alphanumerically, that
+        match the queried `state`.
+        """
         return pulumi.get(self, "names")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def state(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "state")
 
 
@@ -75,7 +85,22 @@ def get_availability_zones_v3(region: Optional[str] = None,
                               state: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAvailabilityZonesV3Result:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get a list of Block Storage availability zones from OpenStack
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    zones = openstack.blockstorage.get_availability_zones_v3()
+    ```
+
+
+    :param str region: The region in which to obtain the Block Storage client.
+           If omitted, the `region` argument of the provider is used.
+    :param str state: The `state` of the availability zones to match. Can
+           either be `available` or `unavailable`. Default is `available`.
     """
     __args__ = dict()
     __args__['region'] = region
@@ -95,6 +120,21 @@ def get_availability_zones_v3_output(region: Optional[pulumi.Input[Optional[str]
                                      state: Optional[pulumi.Input[Optional[str]]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAvailabilityZonesV3Result]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get a list of Block Storage availability zones from OpenStack
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    zones = openstack.blockstorage.get_availability_zones_v3()
+    ```
+
+
+    :param str region: The region in which to obtain the Block Storage client.
+           If omitted, the `region` argument of the provider is used.
+    :param str state: The `state` of the availability zones to match. Can
+           either be `available` or `unavailable`. Default is `available`.
     """
     ...

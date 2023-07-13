@@ -20,6 +20,14 @@ class FloatingIpAssociateArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FloatingIpAssociate resource.
+        :param pulumi.Input[str] floating_ip: IP Address of an existing floating IP.
+        :param pulumi.Input[str] port_id: ID of an existing port with at least one IP address to
+               associate with this floating IP.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a floating IP that can be used with
+               another networking resource, such as a load balancer. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               floating IP (which may or may not have a different address).
         """
         pulumi.set(__self__, "floating_ip", floating_ip)
         pulumi.set(__self__, "port_id", port_id)
@@ -31,6 +39,9 @@ class FloatingIpAssociateArgs:
     @property
     @pulumi.getter(name="floatingIp")
     def floating_ip(self) -> pulumi.Input[str]:
+        """
+        IP Address of an existing floating IP.
+        """
         return pulumi.get(self, "floating_ip")
 
     @floating_ip.setter
@@ -40,6 +51,10 @@ class FloatingIpAssociateArgs:
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Input[str]:
+        """
+        ID of an existing port with at least one IP address to
+        associate with this floating IP.
+        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -58,6 +73,13 @@ class FloatingIpAssociateArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create a floating IP that can be used with
+        another networking resource, such as a load balancer. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        floating IP (which may or may not have a different address).
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -74,6 +96,14 @@ class _FloatingIpAssociateState:
                  region: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FloatingIpAssociate resources.
+        :param pulumi.Input[str] floating_ip: IP Address of an existing floating IP.
+        :param pulumi.Input[str] port_id: ID of an existing port with at least one IP address to
+               associate with this floating IP.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a floating IP that can be used with
+               another networking resource, such as a load balancer. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               floating IP (which may or may not have a different address).
         """
         if fixed_ip is not None:
             pulumi.set(__self__, "fixed_ip", fixed_ip)
@@ -96,6 +126,9 @@ class _FloatingIpAssociateState:
     @property
     @pulumi.getter(name="floatingIp")
     def floating_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP Address of an existing floating IP.
+        """
         return pulumi.get(self, "floating_ip")
 
     @floating_ip.setter
@@ -105,6 +138,10 @@ class _FloatingIpAssociateState:
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of an existing port with at least one IP address to
+        associate with this floating IP.
+        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -114,6 +151,13 @@ class _FloatingIpAssociateState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create a floating IP that can be used with
+        another networking resource, such as a load balancer. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        floating IP (which may or may not have a different address).
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -132,9 +176,40 @@ class FloatingIpAssociate(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a FloatingIpAssociate resource with the given unique name, props, and options.
+        Associates a floating IP to a port. This is useful for situations
+        where you have a pre-allocated floating IP or are unable to use the
+        `networking.FloatingIp` resource to create a floating IP.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        port1 = openstack.networking.Port("port1", network_id="a5bbd213-e1d3-49b6-aed1-9df60ea94b9a")
+        fip1 = openstack.networking.FloatingIpAssociate("fip1",
+            floating_ip="1.2.3.4",
+            port_id=port1.id)
+        ```
+
+        ## Import
+
+        Floating IP associations can be imported using the `id` of the floating IP, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/floatingIpAssociate:FloatingIpAssociate fip 2c7f39f3-702b-48d1-940c-b50384177ee1
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] floating_ip: IP Address of an existing floating IP.
+        :param pulumi.Input[str] port_id: ID of an existing port with at least one IP address to
+               associate with this floating IP.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a floating IP that can be used with
+               another networking resource, such as a load balancer. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               floating IP (which may or may not have a different address).
         """
         ...
     @overload
@@ -143,7 +218,30 @@ class FloatingIpAssociate(pulumi.CustomResource):
                  args: FloatingIpAssociateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a FloatingIpAssociate resource with the given unique name, props, and options.
+        Associates a floating IP to a port. This is useful for situations
+        where you have a pre-allocated floating IP or are unable to use the
+        `networking.FloatingIp` resource to create a floating IP.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        port1 = openstack.networking.Port("port1", network_id="a5bbd213-e1d3-49b6-aed1-9df60ea94b9a")
+        fip1 = openstack.networking.FloatingIpAssociate("fip1",
+            floating_ip="1.2.3.4",
+            port_id=port1.id)
+        ```
+
+        ## Import
+
+        Floating IP associations can be imported using the `id` of the floating IP, e.g.
+
+        ```sh
+         $ pulumi import openstack:networking/floatingIpAssociate:FloatingIpAssociate fip 2c7f39f3-702b-48d1-940c-b50384177ee1
+        ```
+
         :param str resource_name: The name of the resource.
         :param FloatingIpAssociateArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -201,6 +299,14 @@ class FloatingIpAssociate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] floating_ip: IP Address of an existing floating IP.
+        :param pulumi.Input[str] port_id: ID of an existing port with at least one IP address to
+               associate with this floating IP.
+        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
+               A Networking client is needed to create a floating IP that can be used with
+               another networking resource, such as a load balancer. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               floating IP (which may or may not have a different address).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -220,15 +326,29 @@ class FloatingIpAssociate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="floatingIp")
     def floating_ip(self) -> pulumi.Output[str]:
+        """
+        IP Address of an existing floating IP.
+        """
         return pulumi.get(self, "floating_ip")
 
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Output[str]:
+        """
+        ID of an existing port with at least one IP address to
+        associate with this floating IP.
+        """
         return pulumi.get(self, "port_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to obtain the V2 Networking client.
+        A Networking client is needed to create a floating IP that can be used with
+        another networking resource, such as a load balancer. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        floating IP (which may or may not have a different address).
+        """
         return pulumi.get(self, "region")
 

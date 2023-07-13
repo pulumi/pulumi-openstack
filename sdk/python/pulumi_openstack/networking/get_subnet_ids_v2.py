@@ -215,7 +215,40 @@ def get_subnet_ids_v2(cidr: Optional[str] = None,
                       tenant_id: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubnetIdsV2Result:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get a list of Openstack Subnet IDs matching the
+    specified criteria.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    subnets = openstack.networking.get_subnet_ids_v2(name_regex="public",
+        tags=["public"])
+    ```
+
+
+    :param str cidr: The CIDR of the subnet.
+    :param str description: Human-readable description of the subnet.
+    :param bool dhcp_enabled: If the subnet has DHCP enabled.
+    :param str gateway_ip: The IP of the subnet's gateway.
+    :param int ip_version: The IP version of the subnet (either 4 or 6).
+    :param str ipv6_address_mode: The IPv6 address mode. Valid values are
+           `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+    :param str ipv6_ra_mode: The IPv6 Router Advertisement mode. Valid values
+           are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+    :param str name: The name of the subnet.
+    :param str network_id: The ID of the network the subnet belongs to.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve subnet ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str sort_direction: Order the results in either `asc` or `desc`.
+           Defaults to none.
+    :param str sort_key: Sort subnets based on a certain key. Defaults to none.
+    :param str subnetpool_id: The ID of the subnetpool associated with the subnet.
+    :param Sequence[str] tags: The list of subnet tags to filter.
+    :param str tenant_id: The owner of the subnet.
     """
     __args__ = dict()
     __args__['cidr'] = cidr
@@ -277,6 +310,39 @@ def get_subnet_ids_v2_output(cidr: Optional[pulumi.Input[Optional[str]]] = None,
                              tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetIdsV2Result]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get a list of Openstack Subnet IDs matching the
+    specified criteria.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    subnets = openstack.networking.get_subnet_ids_v2(name_regex="public",
+        tags=["public"])
+    ```
+
+
+    :param str cidr: The CIDR of the subnet.
+    :param str description: Human-readable description of the subnet.
+    :param bool dhcp_enabled: If the subnet has DHCP enabled.
+    :param str gateway_ip: The IP of the subnet's gateway.
+    :param int ip_version: The IP version of the subnet (either 4 or 6).
+    :param str ipv6_address_mode: The IPv6 address mode. Valid values are
+           `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+    :param str ipv6_ra_mode: The IPv6 Router Advertisement mode. Valid values
+           are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
+    :param str name: The name of the subnet.
+    :param str network_id: The ID of the network the subnet belongs to.
+    :param str region: The region in which to obtain the V2 Neutron client.
+           A Neutron client is needed to retrieve subnet ids. If omitted, the
+           `region` argument of the provider is used.
+    :param str sort_direction: Order the results in either `asc` or `desc`.
+           Defaults to none.
+    :param str sort_key: Sort subnets based on a certain key. Defaults to none.
+    :param str subnetpool_id: The ID of the subnetpool associated with the subnet.
+    :param Sequence[str] tags: The list of subnet tags to filter.
+    :param str tenant_id: The owner of the subnet.
     """
     ...

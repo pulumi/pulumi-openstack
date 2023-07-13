@@ -26,6 +26,39 @@ class GroupV2Args:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GroupV2 resource.
+        :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the firewall
+               group (must be "true" or "false" if provided - defaults to "true").
+               Changing this updates the `admin_state_up` of an existing firewall group.
+        :param pulumi.Input[str] description: A description for the firewall group. Changing this
+               updates the `description` of an existing firewall group.
+        :param pulumi.Input[str] egress_firewall_policy_id: The egress firewall policy resource
+               id for the firewall group. Changing this updates the
+               `egress_firewall_policy_id` of an existing firewall group.
+        :param pulumi.Input[str] ingress_firewall_policy_id: The ingress firewall policy resource
+               id for the firewall group. Changing this updates the
+               `ingress_firewall_policy_id` of an existing firewall group.
+        :param pulumi.Input[str] name: A name for the firewall group. Changing this
+               updates the `name` of an existing firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: Port(s) to associate this firewall group
+               with. Must be a list of strings. Changing this updates the associated ports
+               of an existing firewall group.
+        :param pulumi.Input[str] project_id: This argument conflict and interchangeable with
+               `tenant_id`. The owner of the firewall group. Required if admin wants to
+               create a firewall group for another project. Changing this creates a new
+               firewall group.
+        :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
+               A networking client is needed to create a firewall group. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               firewall group.
+        :param pulumi.Input[bool] shared: Sharing status of the firewall group (must be "true"
+               or "false" if provided). If this is "true" the firewall group is visible to,
+               and can be used in, firewalls in other tenants. Changing this updates the
+               `shared` status of an existing firewall group. Only administrative users
+               can specify if the firewall group should be shared.
+        :param pulumi.Input[str] tenant_id: This argument conflict and interchangeable with
+               `project_id`. The owner of the firewall group. Required if admin wants to
+               create a firewall group for another tenant. Changing this creates a new
+               firewall group.
         """
         if admin_state_up is not None:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
@@ -51,6 +84,11 @@ class GroupV2Args:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Administrative up/down status for the firewall
+        group (must be "true" or "false" if provided - defaults to "true").
+        Changing this updates the `admin_state_up` of an existing firewall group.
+        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -60,6 +98,10 @@ class GroupV2Args:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the firewall group. Changing this
+        updates the `description` of an existing firewall group.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -69,6 +111,11 @@ class GroupV2Args:
     @property
     @pulumi.getter(name="egressFirewallPolicyId")
     def egress_firewall_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The egress firewall policy resource
+        id for the firewall group. Changing this updates the
+        `egress_firewall_policy_id` of an existing firewall group.
+        """
         return pulumi.get(self, "egress_firewall_policy_id")
 
     @egress_firewall_policy_id.setter
@@ -78,6 +125,11 @@ class GroupV2Args:
     @property
     @pulumi.getter(name="ingressFirewallPolicyId")
     def ingress_firewall_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ingress firewall policy resource
+        id for the firewall group. Changing this updates the
+        `ingress_firewall_policy_id` of an existing firewall group.
+        """
         return pulumi.get(self, "ingress_firewall_policy_id")
 
     @ingress_firewall_policy_id.setter
@@ -87,6 +139,10 @@ class GroupV2Args:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A name for the firewall group. Changing this
+        updates the `name` of an existing firewall.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -96,6 +152,11 @@ class GroupV2Args:
     @property
     @pulumi.getter
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Port(s) to associate this firewall group
+        with. Must be a list of strings. Changing this updates the associated ports
+        of an existing firewall group.
+        """
         return pulumi.get(self, "ports")
 
     @ports.setter
@@ -105,6 +166,12 @@ class GroupV2Args:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        This argument conflict and interchangeable with
+        `tenant_id`. The owner of the firewall group. Required if admin wants to
+        create a firewall group for another project. Changing this creates a new
+        firewall group.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -114,6 +181,12 @@ class GroupV2Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the v2 networking client.
+        A networking client is needed to create a firewall group. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        firewall group.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -123,6 +196,13 @@ class GroupV2Args:
     @property
     @pulumi.getter
     def shared(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Sharing status of the firewall group (must be "true"
+        or "false" if provided). If this is "true" the firewall group is visible to,
+        and can be used in, firewalls in other tenants. Changing this updates the
+        `shared` status of an existing firewall group. Only administrative users
+        can specify if the firewall group should be shared.
+        """
         return pulumi.get(self, "shared")
 
     @shared.setter
@@ -132,6 +212,12 @@ class GroupV2Args:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        This argument conflict and interchangeable with
+        `project_id`. The owner of the firewall group. Required if admin wants to
+        create a firewall group for another tenant. Changing this creates a new
+        firewall group.
+        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -155,6 +241,40 @@ class _GroupV2State:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GroupV2 resources.
+        :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the firewall
+               group (must be "true" or "false" if provided - defaults to "true").
+               Changing this updates the `admin_state_up` of an existing firewall group.
+        :param pulumi.Input[str] description: A description for the firewall group. Changing this
+               updates the `description` of an existing firewall group.
+        :param pulumi.Input[str] egress_firewall_policy_id: The egress firewall policy resource
+               id for the firewall group. Changing this updates the
+               `egress_firewall_policy_id` of an existing firewall group.
+        :param pulumi.Input[str] ingress_firewall_policy_id: The ingress firewall policy resource
+               id for the firewall group. Changing this updates the
+               `ingress_firewall_policy_id` of an existing firewall group.
+        :param pulumi.Input[str] name: A name for the firewall group. Changing this
+               updates the `name` of an existing firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: Port(s) to associate this firewall group
+               with. Must be a list of strings. Changing this updates the associated ports
+               of an existing firewall group.
+        :param pulumi.Input[str] project_id: This argument conflict and interchangeable with
+               `tenant_id`. The owner of the firewall group. Required if admin wants to
+               create a firewall group for another project. Changing this creates a new
+               firewall group.
+        :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
+               A networking client is needed to create a firewall group. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               firewall group.
+        :param pulumi.Input[bool] shared: Sharing status of the firewall group (must be "true"
+               or "false" if provided). If this is "true" the firewall group is visible to,
+               and can be used in, firewalls in other tenants. Changing this updates the
+               `shared` status of an existing firewall group. Only administrative users
+               can specify if the firewall group should be shared.
+        :param pulumi.Input[str] status: The status of the firewall group.
+        :param pulumi.Input[str] tenant_id: This argument conflict and interchangeable with
+               `project_id`. The owner of the firewall group. Required if admin wants to
+               create a firewall group for another tenant. Changing this creates a new
+               firewall group.
         """
         if admin_state_up is not None:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
@@ -182,6 +302,11 @@ class _GroupV2State:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Administrative up/down status for the firewall
+        group (must be "true" or "false" if provided - defaults to "true").
+        Changing this updates the `admin_state_up` of an existing firewall group.
+        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -191,6 +316,10 @@ class _GroupV2State:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the firewall group. Changing this
+        updates the `description` of an existing firewall group.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -200,6 +329,11 @@ class _GroupV2State:
     @property
     @pulumi.getter(name="egressFirewallPolicyId")
     def egress_firewall_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The egress firewall policy resource
+        id for the firewall group. Changing this updates the
+        `egress_firewall_policy_id` of an existing firewall group.
+        """
         return pulumi.get(self, "egress_firewall_policy_id")
 
     @egress_firewall_policy_id.setter
@@ -209,6 +343,11 @@ class _GroupV2State:
     @property
     @pulumi.getter(name="ingressFirewallPolicyId")
     def ingress_firewall_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ingress firewall policy resource
+        id for the firewall group. Changing this updates the
+        `ingress_firewall_policy_id` of an existing firewall group.
+        """
         return pulumi.get(self, "ingress_firewall_policy_id")
 
     @ingress_firewall_policy_id.setter
@@ -218,6 +357,10 @@ class _GroupV2State:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A name for the firewall group. Changing this
+        updates the `name` of an existing firewall.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -227,6 +370,11 @@ class _GroupV2State:
     @property
     @pulumi.getter
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Port(s) to associate this firewall group
+        with. Must be a list of strings. Changing this updates the associated ports
+        of an existing firewall group.
+        """
         return pulumi.get(self, "ports")
 
     @ports.setter
@@ -236,6 +384,12 @@ class _GroupV2State:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        This argument conflict and interchangeable with
+        `tenant_id`. The owner of the firewall group. Required if admin wants to
+        create a firewall group for another project. Changing this creates a new
+        firewall group.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -245,6 +399,12 @@ class _GroupV2State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the v2 networking client.
+        A networking client is needed to create a firewall group. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        firewall group.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -254,6 +414,13 @@ class _GroupV2State:
     @property
     @pulumi.getter
     def shared(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Sharing status of the firewall group (must be "true"
+        or "false" if provided). If this is "true" the firewall group is visible to,
+        and can be used in, firewalls in other tenants. Changing this updates the
+        `shared` status of an existing firewall group. Only administrative users
+        can specify if the firewall group should be shared.
+        """
         return pulumi.get(self, "shared")
 
     @shared.setter
@@ -263,6 +430,9 @@ class _GroupV2State:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the firewall group.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -272,6 +442,12 @@ class _GroupV2State:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        This argument conflict and interchangeable with
+        `project_id`. The owner of the firewall group. Required if admin wants to
+        create a firewall group for another tenant. Changing this creates a new
+        firewall group.
+        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -296,9 +472,78 @@ class GroupV2(pulumi.CustomResource):
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a GroupV2 resource with the given unique name, props, and options.
+        Manages a v2 firewall group resource within OpenStack.
+
+        > **Note:** Firewall v2 has no support for OVN currently.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rule1 = openstack.firewall.RuleV2("rule1",
+            description="drop TELNET traffic",
+            action="deny",
+            protocol="tcp",
+            destination_port="23",
+            enabled=True)
+        rule2 = openstack.firewall.RuleV2("rule2",
+            description="drop NTP traffic",
+            action="deny",
+            protocol="udp",
+            destination_port="123",
+            enabled=False)
+        policy1 = openstack.firewall.PolicyV2("policy1", rules=[rule1.id])
+        policy2 = openstack.firewall.PolicyV2("policy2", rules=[rule2.id])
+        group1 = openstack.firewall.GroupV2("group1",
+            ingress_firewall_policy_id=policy1.id,
+            egress_firewall_policy_id=policy2.id)
+        ```
+
+        ## Import
+
+        Firewall groups can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:firewall/groupV2:GroupV2 group_1 c9e39fb2-ce20-46c8-a964-25f3898c7a97
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the firewall
+               group (must be "true" or "false" if provided - defaults to "true").
+               Changing this updates the `admin_state_up` of an existing firewall group.
+        :param pulumi.Input[str] description: A description for the firewall group. Changing this
+               updates the `description` of an existing firewall group.
+        :param pulumi.Input[str] egress_firewall_policy_id: The egress firewall policy resource
+               id for the firewall group. Changing this updates the
+               `egress_firewall_policy_id` of an existing firewall group.
+        :param pulumi.Input[str] ingress_firewall_policy_id: The ingress firewall policy resource
+               id for the firewall group. Changing this updates the
+               `ingress_firewall_policy_id` of an existing firewall group.
+        :param pulumi.Input[str] name: A name for the firewall group. Changing this
+               updates the `name` of an existing firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: Port(s) to associate this firewall group
+               with. Must be a list of strings. Changing this updates the associated ports
+               of an existing firewall group.
+        :param pulumi.Input[str] project_id: This argument conflict and interchangeable with
+               `tenant_id`. The owner of the firewall group. Required if admin wants to
+               create a firewall group for another project. Changing this creates a new
+               firewall group.
+        :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
+               A networking client is needed to create a firewall group. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               firewall group.
+        :param pulumi.Input[bool] shared: Sharing status of the firewall group (must be "true"
+               or "false" if provided). If this is "true" the firewall group is visible to,
+               and can be used in, firewalls in other tenants. Changing this updates the
+               `shared` status of an existing firewall group. Only administrative users
+               can specify if the firewall group should be shared.
+        :param pulumi.Input[str] tenant_id: This argument conflict and interchangeable with
+               `project_id`. The owner of the firewall group. Required if admin wants to
+               create a firewall group for another tenant. Changing this creates a new
+               firewall group.
         """
         ...
     @overload
@@ -307,7 +552,43 @@ class GroupV2(pulumi.CustomResource):
                  args: Optional[GroupV2Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a GroupV2 resource with the given unique name, props, and options.
+        Manages a v2 firewall group resource within OpenStack.
+
+        > **Note:** Firewall v2 has no support for OVN currently.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rule1 = openstack.firewall.RuleV2("rule1",
+            description="drop TELNET traffic",
+            action="deny",
+            protocol="tcp",
+            destination_port="23",
+            enabled=True)
+        rule2 = openstack.firewall.RuleV2("rule2",
+            description="drop NTP traffic",
+            action="deny",
+            protocol="udp",
+            destination_port="123",
+            enabled=False)
+        policy1 = openstack.firewall.PolicyV2("policy1", rules=[rule1.id])
+        policy2 = openstack.firewall.PolicyV2("policy2", rules=[rule2.id])
+        group1 = openstack.firewall.GroupV2("group1",
+            ingress_firewall_policy_id=policy1.id,
+            egress_firewall_policy_id=policy2.id)
+        ```
+
+        ## Import
+
+        Firewall groups can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:firewall/groupV2:GroupV2 group_1 c9e39fb2-ce20-46c8-a964-25f3898c7a97
+        ```
+
         :param str resource_name: The name of the resource.
         :param GroupV2Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -381,6 +662,40 @@ class GroupV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the firewall
+               group (must be "true" or "false" if provided - defaults to "true").
+               Changing this updates the `admin_state_up` of an existing firewall group.
+        :param pulumi.Input[str] description: A description for the firewall group. Changing this
+               updates the `description` of an existing firewall group.
+        :param pulumi.Input[str] egress_firewall_policy_id: The egress firewall policy resource
+               id for the firewall group. Changing this updates the
+               `egress_firewall_policy_id` of an existing firewall group.
+        :param pulumi.Input[str] ingress_firewall_policy_id: The ingress firewall policy resource
+               id for the firewall group. Changing this updates the
+               `ingress_firewall_policy_id` of an existing firewall group.
+        :param pulumi.Input[str] name: A name for the firewall group. Changing this
+               updates the `name` of an existing firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: Port(s) to associate this firewall group
+               with. Must be a list of strings. Changing this updates the associated ports
+               of an existing firewall group.
+        :param pulumi.Input[str] project_id: This argument conflict and interchangeable with
+               `tenant_id`. The owner of the firewall group. Required if admin wants to
+               create a firewall group for another project. Changing this creates a new
+               firewall group.
+        :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
+               A networking client is needed to create a firewall group. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               firewall group.
+        :param pulumi.Input[bool] shared: Sharing status of the firewall group (must be "true"
+               or "false" if provided). If this is "true" the firewall group is visible to,
+               and can be used in, firewalls in other tenants. Changing this updates the
+               `shared` status of an existing firewall group. Only administrative users
+               can specify if the firewall group should be shared.
+        :param pulumi.Input[str] status: The status of the firewall group.
+        :param pulumi.Input[str] tenant_id: This argument conflict and interchangeable with
+               `project_id`. The owner of the firewall group. Required if admin wants to
+               create a firewall group for another tenant. Changing this creates a new
+               firewall group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -402,55 +717,111 @@ class GroupV2(pulumi.CustomResource):
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Administrative up/down status for the firewall
+        group (must be "true" or "false" if provided - defaults to "true").
+        Changing this updates the `admin_state_up` of an existing firewall group.
+        """
         return pulumi.get(self, "admin_state_up")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        A description for the firewall group. Changing this
+        updates the `description` of an existing firewall group.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="egressFirewallPolicyId")
     def egress_firewall_policy_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The egress firewall policy resource
+        id for the firewall group. Changing this updates the
+        `egress_firewall_policy_id` of an existing firewall group.
+        """
         return pulumi.get(self, "egress_firewall_policy_id")
 
     @property
     @pulumi.getter(name="ingressFirewallPolicyId")
     def ingress_firewall_policy_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ingress firewall policy resource
+        id for the firewall group. Changing this updates the
+        `ingress_firewall_policy_id` of an existing firewall group.
+        """
         return pulumi.get(self, "ingress_firewall_policy_id")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        A name for the firewall group. Changing this
+        updates the `name` of an existing firewall.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def ports(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Port(s) to associate this firewall group
+        with. Must be a list of strings. Changing this updates the associated ports
+        of an existing firewall group.
+        """
         return pulumi.get(self, "ports")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
+        """
+        This argument conflict and interchangeable with
+        `tenant_id`. The owner of the firewall group. Required if admin wants to
+        create a firewall group for another project. Changing this creates a new
+        firewall group.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to obtain the v2 networking client.
+        A networking client is needed to create a firewall group. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        firewall group.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def shared(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Sharing status of the firewall group (must be "true"
+        or "false" if provided). If this is "true" the firewall group is visible to,
+        and can be used in, firewalls in other tenants. Changing this updates the
+        `shared` status of an existing firewall group. Only administrative users
+        can specify if the firewall group should be shared.
+        """
         return pulumi.get(self, "shared")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        The status of the firewall group.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
+        """
+        This argument conflict and interchangeable with
+        `project_id`. The owner of the firewall group. Required if admin wants to
+        create a firewall group for another tenant. Changing this creates a new
+        firewall group.
+        """
         return pulumi.get(self, "tenant_id")
 

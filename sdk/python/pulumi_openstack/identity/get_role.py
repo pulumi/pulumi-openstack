@@ -38,6 +38,9 @@ class GetRoleResult:
     @property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "domain_id")
 
     @property
@@ -51,11 +54,17 @@ class GetRoleResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "region")
 
 
@@ -76,7 +85,22 @@ def get_role(domain_id: Optional[str] = None,
              region: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an OpenStack role.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    admin = openstack.identity.get_role(name="admin")
+    ```
+
+
+    :param str domain_id: The domain the role belongs to.
+    :param str name: The name of the role.
+    :param str region: The region in which to obtain the V3 Keystone client.
+           If omitted, the `region` argument of the provider is used.
     """
     __args__ = dict()
     __args__['domainId'] = domain_id
@@ -98,6 +122,21 @@ def get_role_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
                     region: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an OpenStack role.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    admin = openstack.identity.get_role(name="admin")
+    ```
+
+
+    :param str domain_id: The domain the role belongs to.
+    :param str name: The name of the role.
+    :param str region: The region in which to obtain the V3 Keystone client.
+           If omitted, the `region` argument of the provider is used.
     """
     ...

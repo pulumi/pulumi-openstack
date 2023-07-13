@@ -29,6 +29,45 @@ class RuleV2Args:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RuleV2 resource.
+        :param pulumi.Input[str] action: Action to be taken (must be "allow", "deny" or "reject")
+               when the firewall rule matches. Changing this updates the `action` of an
+               existing firewall rule. Default is `deny`.
+        :param pulumi.Input[str] description: A description for the firewall rule. Changing this
+               updates the `description` of an existing firewall rule.
+        :param pulumi.Input[str] destination_ip_address: The destination IP address on which the
+               firewall rule operates. Changing this updates the `destination_ip_address`
+               of an existing firewall rule.
+        :param pulumi.Input[str] destination_port: The destination port on which the firewall
+               rule operates. Changing this updates the `destination_port` of an existing
+               firewall rule. Require not `any` or empty protocol.
+        :param pulumi.Input[bool] enabled: Enabled status for the firewall rule (must be "true"
+               or "false" if provided - defaults to "true"). Changing this updates the
+               `enabled` status of an existing firewall rule.
+        :param pulumi.Input[int] ip_version: IP version, either 4 or 6. Changing this
+               updates the `ip_version` of an existing firewall rule. Default is `4`.
+        :param pulumi.Input[str] name: A unique name for the firewall rule. Changing this
+               updates the `name` of an existing firewall rule.
+        :param pulumi.Input[str] protocol: (Optional; Required if `source_port` or `destination_port` is not
+               empty) The protocol type on which the firewall rule operates.
+               Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
+               `protocol` of an existing firewall rule. Default is `any`.
+        :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
+               A networking client is needed to create a firewall rule. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               firewall rule.
+        :param pulumi.Input[bool] shared: Sharing status of the firewall rule (must be "true"
+               or "false" if provided). If this is "true" the policy is visible to, and
+               can be used in, firewalls in other tenants. Changing this updates the
+               `shared` status of an existing firewall policy. On
+        :param pulumi.Input[str] source_ip_address: The source IP address on which the firewall
+               rule operates. Changing this updates the `source_ip_address` of an existing
+               firewall rule.
+        :param pulumi.Input[str] source_port: The source port on which the firewall
+               rule operates. Changing this updates the `source_port` of an existing
+               firewall rule. Require not `any` or empty protocol.
+        :param pulumi.Input[str] tenant_id: The owner of the firewall rule. Required if admin
+               wants to create a firewall rule for another tenant. Changing this creates a
+               new firewall rule.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -60,6 +99,11 @@ class RuleV2Args:
     @property
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Action to be taken (must be "allow", "deny" or "reject")
+        when the firewall rule matches. Changing this updates the `action` of an
+        existing firewall rule. Default is `deny`.
+        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -69,6 +113,10 @@ class RuleV2Args:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the firewall rule. Changing this
+        updates the `description` of an existing firewall rule.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -78,6 +126,11 @@ class RuleV2Args:
     @property
     @pulumi.getter(name="destinationIpAddress")
     def destination_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination IP address on which the
+        firewall rule operates. Changing this updates the `destination_ip_address`
+        of an existing firewall rule.
+        """
         return pulumi.get(self, "destination_ip_address")
 
     @destination_ip_address.setter
@@ -87,6 +140,11 @@ class RuleV2Args:
     @property
     @pulumi.getter(name="destinationPort")
     def destination_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination port on which the firewall
+        rule operates. Changing this updates the `destination_port` of an existing
+        firewall rule. Require not `any` or empty protocol.
+        """
         return pulumi.get(self, "destination_port")
 
     @destination_port.setter
@@ -96,6 +154,11 @@ class RuleV2Args:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enabled status for the firewall rule (must be "true"
+        or "false" if provided - defaults to "true"). Changing this updates the
+        `enabled` status of an existing firewall rule.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -105,6 +168,10 @@ class RuleV2Args:
     @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[int]]:
+        """
+        IP version, either 4 or 6. Changing this
+        updates the `ip_version` of an existing firewall rule. Default is `4`.
+        """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
@@ -114,6 +181,10 @@ class RuleV2Args:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the firewall rule. Changing this
+        updates the `name` of an existing firewall rule.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -123,6 +194,12 @@ class RuleV2Args:
     @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional; Required if `source_port` or `destination_port` is not
+        empty) The protocol type on which the firewall rule operates.
+        Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
+        `protocol` of an existing firewall rule. Default is `any`.
+        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -132,6 +209,12 @@ class RuleV2Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the v2 networking client.
+        A networking client is needed to create a firewall rule. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        firewall rule.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -141,6 +224,12 @@ class RuleV2Args:
     @property
     @pulumi.getter
     def shared(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Sharing status of the firewall rule (must be "true"
+        or "false" if provided). If this is "true" the policy is visible to, and
+        can be used in, firewalls in other tenants. Changing this updates the
+        `shared` status of an existing firewall policy. On
+        """
         return pulumi.get(self, "shared")
 
     @shared.setter
@@ -150,6 +239,11 @@ class RuleV2Args:
     @property
     @pulumi.getter(name="sourceIpAddress")
     def source_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source IP address on which the firewall
+        rule operates. Changing this updates the `source_ip_address` of an existing
+        firewall rule.
+        """
         return pulumi.get(self, "source_ip_address")
 
     @source_ip_address.setter
@@ -159,6 +253,11 @@ class RuleV2Args:
     @property
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source port on which the firewall
+        rule operates. Changing this updates the `source_port` of an existing
+        firewall rule. Require not `any` or empty protocol.
+        """
         return pulumi.get(self, "source_port")
 
     @source_port.setter
@@ -168,6 +267,11 @@ class RuleV2Args:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The owner of the firewall rule. Required if admin
+        wants to create a firewall rule for another tenant. Changing this creates a
+        new firewall rule.
+        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -193,6 +297,45 @@ class _RuleV2State:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RuleV2 resources.
+        :param pulumi.Input[str] action: Action to be taken (must be "allow", "deny" or "reject")
+               when the firewall rule matches. Changing this updates the `action` of an
+               existing firewall rule. Default is `deny`.
+        :param pulumi.Input[str] description: A description for the firewall rule. Changing this
+               updates the `description` of an existing firewall rule.
+        :param pulumi.Input[str] destination_ip_address: The destination IP address on which the
+               firewall rule operates. Changing this updates the `destination_ip_address`
+               of an existing firewall rule.
+        :param pulumi.Input[str] destination_port: The destination port on which the firewall
+               rule operates. Changing this updates the `destination_port` of an existing
+               firewall rule. Require not `any` or empty protocol.
+        :param pulumi.Input[bool] enabled: Enabled status for the firewall rule (must be "true"
+               or "false" if provided - defaults to "true"). Changing this updates the
+               `enabled` status of an existing firewall rule.
+        :param pulumi.Input[int] ip_version: IP version, either 4 or 6. Changing this
+               updates the `ip_version` of an existing firewall rule. Default is `4`.
+        :param pulumi.Input[str] name: A unique name for the firewall rule. Changing this
+               updates the `name` of an existing firewall rule.
+        :param pulumi.Input[str] protocol: (Optional; Required if `source_port` or `destination_port` is not
+               empty) The protocol type on which the firewall rule operates.
+               Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
+               `protocol` of an existing firewall rule. Default is `any`.
+        :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
+               A networking client is needed to create a firewall rule. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               firewall rule.
+        :param pulumi.Input[bool] shared: Sharing status of the firewall rule (must be "true"
+               or "false" if provided). If this is "true" the policy is visible to, and
+               can be used in, firewalls in other tenants. Changing this updates the
+               `shared` status of an existing firewall policy. On
+        :param pulumi.Input[str] source_ip_address: The source IP address on which the firewall
+               rule operates. Changing this updates the `source_ip_address` of an existing
+               firewall rule.
+        :param pulumi.Input[str] source_port: The source port on which the firewall
+               rule operates. Changing this updates the `source_port` of an existing
+               firewall rule. Require not `any` or empty protocol.
+        :param pulumi.Input[str] tenant_id: The owner of the firewall rule. Required if admin
+               wants to create a firewall rule for another tenant. Changing this creates a
+               new firewall rule.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -224,6 +367,11 @@ class _RuleV2State:
     @property
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Action to be taken (must be "allow", "deny" or "reject")
+        when the firewall rule matches. Changing this updates the `action` of an
+        existing firewall rule. Default is `deny`.
+        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -233,6 +381,10 @@ class _RuleV2State:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the firewall rule. Changing this
+        updates the `description` of an existing firewall rule.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -242,6 +394,11 @@ class _RuleV2State:
     @property
     @pulumi.getter(name="destinationIpAddress")
     def destination_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination IP address on which the
+        firewall rule operates. Changing this updates the `destination_ip_address`
+        of an existing firewall rule.
+        """
         return pulumi.get(self, "destination_ip_address")
 
     @destination_ip_address.setter
@@ -251,6 +408,11 @@ class _RuleV2State:
     @property
     @pulumi.getter(name="destinationPort")
     def destination_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination port on which the firewall
+        rule operates. Changing this updates the `destination_port` of an existing
+        firewall rule. Require not `any` or empty protocol.
+        """
         return pulumi.get(self, "destination_port")
 
     @destination_port.setter
@@ -260,6 +422,11 @@ class _RuleV2State:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enabled status for the firewall rule (must be "true"
+        or "false" if provided - defaults to "true"). Changing this updates the
+        `enabled` status of an existing firewall rule.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -269,6 +436,10 @@ class _RuleV2State:
     @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[int]]:
+        """
+        IP version, either 4 or 6. Changing this
+        updates the `ip_version` of an existing firewall rule. Default is `4`.
+        """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
@@ -278,6 +449,10 @@ class _RuleV2State:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique name for the firewall rule. Changing this
+        updates the `name` of an existing firewall rule.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -287,6 +462,12 @@ class _RuleV2State:
     @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional; Required if `source_port` or `destination_port` is not
+        empty) The protocol type on which the firewall rule operates.
+        Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
+        `protocol` of an existing firewall rule. Default is `any`.
+        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -296,6 +477,12 @@ class _RuleV2State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the v2 networking client.
+        A networking client is needed to create a firewall rule. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        firewall rule.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -305,6 +492,12 @@ class _RuleV2State:
     @property
     @pulumi.getter
     def shared(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Sharing status of the firewall rule (must be "true"
+        or "false" if provided). If this is "true" the policy is visible to, and
+        can be used in, firewalls in other tenants. Changing this updates the
+        `shared` status of an existing firewall policy. On
+        """
         return pulumi.get(self, "shared")
 
     @shared.setter
@@ -314,6 +507,11 @@ class _RuleV2State:
     @property
     @pulumi.getter(name="sourceIpAddress")
     def source_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source IP address on which the firewall
+        rule operates. Changing this updates the `source_ip_address` of an existing
+        firewall rule.
+        """
         return pulumi.get(self, "source_ip_address")
 
     @source_ip_address.setter
@@ -323,6 +521,11 @@ class _RuleV2State:
     @property
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source port on which the firewall
+        rule operates. Changing this updates the `source_port` of an existing
+        firewall rule. Require not `any` or empty protocol.
+        """
         return pulumi.get(self, "source_port")
 
     @source_port.setter
@@ -332,6 +535,11 @@ class _RuleV2State:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The owner of the firewall rule. Required if admin
+        wants to create a firewall rule for another tenant. Changing this creates a
+        new firewall rule.
+        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -359,9 +567,73 @@ class RuleV2(pulumi.CustomResource):
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a RuleV2 resource with the given unique name, props, and options.
+        Manages a v2 firewall rule resource within OpenStack.
+
+        > **Note:** Firewall v2 has no support for OVN currently.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rule2 = openstack.firewall.RuleV2("rule2",
+            action="deny",
+            description="drop TELNET traffic",
+            destination_port="23",
+            enabled=True,
+            protocol="tcp")
+        ```
+
+        ## Import
+
+        Firewall Rules can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:firewall/ruleV2:RuleV2 rule_1 8dbc0c28-e49c-463f-b712-5c5d1bbac327
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] action: Action to be taken (must be "allow", "deny" or "reject")
+               when the firewall rule matches. Changing this updates the `action` of an
+               existing firewall rule. Default is `deny`.
+        :param pulumi.Input[str] description: A description for the firewall rule. Changing this
+               updates the `description` of an existing firewall rule.
+        :param pulumi.Input[str] destination_ip_address: The destination IP address on which the
+               firewall rule operates. Changing this updates the `destination_ip_address`
+               of an existing firewall rule.
+        :param pulumi.Input[str] destination_port: The destination port on which the firewall
+               rule operates. Changing this updates the `destination_port` of an existing
+               firewall rule. Require not `any` or empty protocol.
+        :param pulumi.Input[bool] enabled: Enabled status for the firewall rule (must be "true"
+               or "false" if provided - defaults to "true"). Changing this updates the
+               `enabled` status of an existing firewall rule.
+        :param pulumi.Input[int] ip_version: IP version, either 4 or 6. Changing this
+               updates the `ip_version` of an existing firewall rule. Default is `4`.
+        :param pulumi.Input[str] name: A unique name for the firewall rule. Changing this
+               updates the `name` of an existing firewall rule.
+        :param pulumi.Input[str] protocol: (Optional; Required if `source_port` or `destination_port` is not
+               empty) The protocol type on which the firewall rule operates.
+               Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
+               `protocol` of an existing firewall rule. Default is `any`.
+        :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
+               A networking client is needed to create a firewall rule. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               firewall rule.
+        :param pulumi.Input[bool] shared: Sharing status of the firewall rule (must be "true"
+               or "false" if provided). If this is "true" the policy is visible to, and
+               can be used in, firewalls in other tenants. Changing this updates the
+               `shared` status of an existing firewall policy. On
+        :param pulumi.Input[str] source_ip_address: The source IP address on which the firewall
+               rule operates. Changing this updates the `source_ip_address` of an existing
+               firewall rule.
+        :param pulumi.Input[str] source_port: The source port on which the firewall
+               rule operates. Changing this updates the `source_port` of an existing
+               firewall rule. Require not `any` or empty protocol.
+        :param pulumi.Input[str] tenant_id: The owner of the firewall rule. Required if admin
+               wants to create a firewall rule for another tenant. Changing this creates a
+               new firewall rule.
         """
         ...
     @overload
@@ -370,7 +642,32 @@ class RuleV2(pulumi.CustomResource):
                  args: Optional[RuleV2Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a RuleV2 resource with the given unique name, props, and options.
+        Manages a v2 firewall rule resource within OpenStack.
+
+        > **Note:** Firewall v2 has no support for OVN currently.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rule2 = openstack.firewall.RuleV2("rule2",
+            action="deny",
+            description="drop TELNET traffic",
+            destination_port="23",
+            enabled=True,
+            protocol="tcp")
+        ```
+
+        ## Import
+
+        Firewall Rules can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import openstack:firewall/ruleV2:RuleV2 rule_1 8dbc0c28-e49c-463f-b712-5c5d1bbac327
+        ```
+
         :param str resource_name: The name of the resource.
         :param RuleV2Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -451,6 +748,45 @@ class RuleV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] action: Action to be taken (must be "allow", "deny" or "reject")
+               when the firewall rule matches. Changing this updates the `action` of an
+               existing firewall rule. Default is `deny`.
+        :param pulumi.Input[str] description: A description for the firewall rule. Changing this
+               updates the `description` of an existing firewall rule.
+        :param pulumi.Input[str] destination_ip_address: The destination IP address on which the
+               firewall rule operates. Changing this updates the `destination_ip_address`
+               of an existing firewall rule.
+        :param pulumi.Input[str] destination_port: The destination port on which the firewall
+               rule operates. Changing this updates the `destination_port` of an existing
+               firewall rule. Require not `any` or empty protocol.
+        :param pulumi.Input[bool] enabled: Enabled status for the firewall rule (must be "true"
+               or "false" if provided - defaults to "true"). Changing this updates the
+               `enabled` status of an existing firewall rule.
+        :param pulumi.Input[int] ip_version: IP version, either 4 or 6. Changing this
+               updates the `ip_version` of an existing firewall rule. Default is `4`.
+        :param pulumi.Input[str] name: A unique name for the firewall rule. Changing this
+               updates the `name` of an existing firewall rule.
+        :param pulumi.Input[str] protocol: (Optional; Required if `source_port` or `destination_port` is not
+               empty) The protocol type on which the firewall rule operates.
+               Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
+               `protocol` of an existing firewall rule. Default is `any`.
+        :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
+               A networking client is needed to create a firewall rule. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               firewall rule.
+        :param pulumi.Input[bool] shared: Sharing status of the firewall rule (must be "true"
+               or "false" if provided). If this is "true" the policy is visible to, and
+               can be used in, firewalls in other tenants. Changing this updates the
+               `shared` status of an existing firewall policy. On
+        :param pulumi.Input[str] source_ip_address: The source IP address on which the firewall
+               rule operates. Changing this updates the `source_ip_address` of an existing
+               firewall rule.
+        :param pulumi.Input[str] source_port: The source port on which the firewall
+               rule operates. Changing this updates the `source_port` of an existing
+               firewall rule. Require not `any` or empty protocol.
+        :param pulumi.Input[str] tenant_id: The owner of the firewall rule. Required if admin
+               wants to create a firewall rule for another tenant. Changing this creates a
+               new firewall rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -474,65 +810,130 @@ class RuleV2(pulumi.CustomResource):
     @property
     @pulumi.getter
     def action(self) -> pulumi.Output[Optional[str]]:
+        """
+        Action to be taken (must be "allow", "deny" or "reject")
+        when the firewall rule matches. Changing this updates the `action` of an
+        existing firewall rule. Default is `deny`.
+        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        A description for the firewall rule. Changing this
+        updates the `description` of an existing firewall rule.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="destinationIpAddress")
     def destination_ip_address(self) -> pulumi.Output[Optional[str]]:
+        """
+        The destination IP address on which the
+        firewall rule operates. Changing this updates the `destination_ip_address`
+        of an existing firewall rule.
+        """
         return pulumi.get(self, "destination_ip_address")
 
     @property
     @pulumi.getter(name="destinationPort")
     def destination_port(self) -> pulumi.Output[Optional[str]]:
+        """
+        The destination port on which the firewall
+        rule operates. Changing this updates the `destination_port` of an existing
+        firewall rule. Require not `any` or empty protocol.
+        """
         return pulumi.get(self, "destination_port")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enabled status for the firewall rule (must be "true"
+        or "false" if provided - defaults to "true"). Changing this updates the
+        `enabled` status of an existing firewall rule.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> pulumi.Output[Optional[int]]:
+        """
+        IP version, either 4 or 6. Changing this
+        updates the `ip_version` of an existing firewall rule. Default is `4`.
+        """
         return pulumi.get(self, "ip_version")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        A unique name for the firewall rule. Changing this
+        updates the `name` of an existing firewall rule.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def protocol(self) -> pulumi.Output[Optional[str]]:
+        """
+        (Optional; Required if `source_port` or `destination_port` is not
+        empty) The protocol type on which the firewall rule operates.
+        Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
+        `protocol` of an existing firewall rule. Default is `any`.
+        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to obtain the v2 networking client.
+        A networking client is needed to create a firewall rule. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        firewall rule.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def shared(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Sharing status of the firewall rule (must be "true"
+        or "false" if provided). If this is "true" the policy is visible to, and
+        can be used in, firewalls in other tenants. Changing this updates the
+        `shared` status of an existing firewall policy. On
+        """
         return pulumi.get(self, "shared")
 
     @property
     @pulumi.getter(name="sourceIpAddress")
     def source_ip_address(self) -> pulumi.Output[Optional[str]]:
+        """
+        The source IP address on which the firewall
+        rule operates. Changing this updates the `source_ip_address` of an existing
+        firewall rule.
+        """
         return pulumi.get(self, "source_ip_address")
 
     @property
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> pulumi.Output[Optional[str]]:
+        """
+        The source port on which the firewall
+        rule operates. Changing this updates the `source_port` of an existing
+        firewall rule. Require not `any` or empty protocol.
+        """
         return pulumi.get(self, "source_port")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The owner of the firewall rule. Required if admin
+        wants to create a firewall rule for another tenant. Changing this creates a
+        new firewall rule.
+        """
         return pulumi.get(self, "tenant_id")
 

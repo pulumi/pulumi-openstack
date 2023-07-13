@@ -21,6 +21,12 @@ class OrderV1Args:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrderV1 resource.
+        :param pulumi.Input['OrderV1MetaArgs'] meta: Dictionary containing the order metadata used to generate the order. The structure is described below.
+        :param pulumi.Input[str] type: The type of key to be generated. Must be one of `asymmetric`, `key`.
+        :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
+               A KeyManager client is needed to create a order. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               V1 order.
         """
         pulumi.set(__self__, "meta", meta)
         pulumi.set(__self__, "type", type)
@@ -30,6 +36,9 @@ class OrderV1Args:
     @property
     @pulumi.getter
     def meta(self) -> pulumi.Input['OrderV1MetaArgs']:
+        """
+        Dictionary containing the order metadata used to generate the order. The structure is described below.
+        """
         return pulumi.get(self, "meta")
 
     @meta.setter
@@ -39,6 +48,9 @@ class OrderV1Args:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
+        """
+        The type of key to be generated. Must be one of `asymmetric`, `key`.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -48,6 +60,12 @@ class OrderV1Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V1 KeyManager client.
+        A KeyManager client is needed to create a order. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        V1 order.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -72,6 +90,21 @@ class _OrderV1State:
                  updated: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OrderV1 resources.
+        :param pulumi.Input[str] container_ref: The container reference / where to find the container.
+        :param pulumi.Input[str] created: The date the order was created.
+        :param pulumi.Input[str] creator_id: The creator of the order.
+        :param pulumi.Input['OrderV1MetaArgs'] meta: Dictionary containing the order metadata used to generate the order. The structure is described below.
+        :param pulumi.Input[str] order_ref: The order reference / where to find the order.
+        :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
+               A KeyManager client is needed to create a order. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               V1 order.
+        :param pulumi.Input[str] secret_ref: The secret reference / where to find the secret.
+        :param pulumi.Input[str] status: The status of the order.
+        :param pulumi.Input[str] sub_status: The sub status of the order.
+        :param pulumi.Input[str] sub_status_message: The sub status message of the order.
+        :param pulumi.Input[str] type: The type of key to be generated. Must be one of `asymmetric`, `key`.
+        :param pulumi.Input[str] updated: The date the order was last updated.
         """
         if container_ref is not None:
             pulumi.set(__self__, "container_ref", container_ref)
@@ -101,6 +134,9 @@ class _OrderV1State:
     @property
     @pulumi.getter(name="containerRef")
     def container_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        The container reference / where to find the container.
+        """
         return pulumi.get(self, "container_ref")
 
     @container_ref.setter
@@ -110,6 +146,9 @@ class _OrderV1State:
     @property
     @pulumi.getter
     def created(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date the order was created.
+        """
         return pulumi.get(self, "created")
 
     @created.setter
@@ -119,6 +158,9 @@ class _OrderV1State:
     @property
     @pulumi.getter(name="creatorId")
     def creator_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creator of the order.
+        """
         return pulumi.get(self, "creator_id")
 
     @creator_id.setter
@@ -128,6 +170,9 @@ class _OrderV1State:
     @property
     @pulumi.getter
     def meta(self) -> Optional[pulumi.Input['OrderV1MetaArgs']]:
+        """
+        Dictionary containing the order metadata used to generate the order. The structure is described below.
+        """
         return pulumi.get(self, "meta")
 
     @meta.setter
@@ -137,6 +182,9 @@ class _OrderV1State:
     @property
     @pulumi.getter(name="orderRef")
     def order_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        The order reference / where to find the order.
+        """
         return pulumi.get(self, "order_ref")
 
     @order_ref.setter
@@ -146,6 +194,12 @@ class _OrderV1State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region in which to obtain the V1 KeyManager client.
+        A KeyManager client is needed to create a order. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        V1 order.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -155,6 +209,9 @@ class _OrderV1State:
     @property
     @pulumi.getter(name="secretRef")
     def secret_ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        The secret reference / where to find the secret.
+        """
         return pulumi.get(self, "secret_ref")
 
     @secret_ref.setter
@@ -164,6 +221,9 @@ class _OrderV1State:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the order.
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -173,6 +233,9 @@ class _OrderV1State:
     @property
     @pulumi.getter(name="subStatus")
     def sub_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The sub status of the order.
+        """
         return pulumi.get(self, "sub_status")
 
     @sub_status.setter
@@ -182,6 +245,9 @@ class _OrderV1State:
     @property
     @pulumi.getter(name="subStatusMessage")
     def sub_status_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        The sub status message of the order.
+        """
         return pulumi.get(self, "sub_status_message")
 
     @sub_status_message.setter
@@ -191,6 +257,9 @@ class _OrderV1State:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of key to be generated. Must be one of `asymmetric`, `key`.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -200,6 +269,9 @@ class _OrderV1State:
     @property
     @pulumi.getter
     def updated(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date the order was last updated.
+        """
         return pulumi.get(self, "updated")
 
     @updated.setter
@@ -217,9 +289,55 @@ class OrderV1(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a OrderV1 resource with the given unique name, props, and options.
+        Manages a V1 Barbican order resource within OpenStack.
+
+        ## Example Usage
+        ### Symmetric key order
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        order1 = openstack.keymanager.OrderV1("order1",
+            meta=openstack.keymanager.OrderV1MetaArgs(
+                algorithm="aes",
+                bit_length=256,
+                mode="cbc",
+                name="mysecret",
+            ),
+            type="key")
+        ```
+        ### Asymmetric key pair order
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        order1 = openstack.keymanager.OrderV1("order1",
+            meta=openstack.keymanager.OrderV1MetaArgs(
+                algorithm="rsa",
+                bit_length=4096,
+                name="mysecret",
+            ),
+            type="asymmetric")
+        ```
+
+        ## Import
+
+        Orders can be imported using the order id (the last part of the order reference), e.g.
+
+        ```sh
+         $ pulumi import openstack:keymanager/orderV1:OrderV1 order_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['OrderV1MetaArgs']] meta: Dictionary containing the order metadata used to generate the order. The structure is described below.
+        :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
+               A KeyManager client is needed to create a order. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               V1 order.
+        :param pulumi.Input[str] type: The type of key to be generated. Must be one of `asymmetric`, `key`.
         """
         ...
     @overload
@@ -228,7 +346,47 @@ class OrderV1(pulumi.CustomResource):
                  args: OrderV1Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a OrderV1 resource with the given unique name, props, and options.
+        Manages a V1 Barbican order resource within OpenStack.
+
+        ## Example Usage
+        ### Symmetric key order
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        order1 = openstack.keymanager.OrderV1("order1",
+            meta=openstack.keymanager.OrderV1MetaArgs(
+                algorithm="aes",
+                bit_length=256,
+                mode="cbc",
+                name="mysecret",
+            ),
+            type="key")
+        ```
+        ### Asymmetric key pair order
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        order1 = openstack.keymanager.OrderV1("order1",
+            meta=openstack.keymanager.OrderV1MetaArgs(
+                algorithm="rsa",
+                bit_length=4096,
+                name="mysecret",
+            ),
+            type="asymmetric")
+        ```
+
+        ## Import
+
+        Orders can be imported using the order id (the last part of the order reference), e.g.
+
+        ```sh
+         $ pulumi import openstack:keymanager/orderV1:OrderV1 order_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
+        ```
+
         :param str resource_name: The name of the resource.
         :param OrderV1Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -301,6 +459,21 @@ class OrderV1(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] container_ref: The container reference / where to find the container.
+        :param pulumi.Input[str] created: The date the order was created.
+        :param pulumi.Input[str] creator_id: The creator of the order.
+        :param pulumi.Input[pulumi.InputType['OrderV1MetaArgs']] meta: Dictionary containing the order metadata used to generate the order. The structure is described below.
+        :param pulumi.Input[str] order_ref: The order reference / where to find the order.
+        :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
+               A KeyManager client is needed to create a order. If omitted, the
+               `region` argument of the provider is used. Changing this creates a new
+               V1 order.
+        :param pulumi.Input[str] secret_ref: The secret reference / where to find the secret.
+        :param pulumi.Input[str] status: The status of the order.
+        :param pulumi.Input[str] sub_status: The sub status of the order.
+        :param pulumi.Input[str] sub_status_message: The sub status message of the order.
+        :param pulumi.Input[str] type: The type of key to be generated. Must be one of `asymmetric`, `key`.
+        :param pulumi.Input[str] updated: The date the order was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -323,60 +496,99 @@ class OrderV1(pulumi.CustomResource):
     @property
     @pulumi.getter(name="containerRef")
     def container_ref(self) -> pulumi.Output[str]:
+        """
+        The container reference / where to find the container.
+        """
         return pulumi.get(self, "container_ref")
 
     @property
     @pulumi.getter
     def created(self) -> pulumi.Output[str]:
+        """
+        The date the order was created.
+        """
         return pulumi.get(self, "created")
 
     @property
     @pulumi.getter(name="creatorId")
     def creator_id(self) -> pulumi.Output[str]:
+        """
+        The creator of the order.
+        """
         return pulumi.get(self, "creator_id")
 
     @property
     @pulumi.getter
     def meta(self) -> pulumi.Output['outputs.OrderV1Meta']:
+        """
+        Dictionary containing the order metadata used to generate the order. The structure is described below.
+        """
         return pulumi.get(self, "meta")
 
     @property
     @pulumi.getter(name="orderRef")
     def order_ref(self) -> pulumi.Output[str]:
+        """
+        The order reference / where to find the order.
+        """
         return pulumi.get(self, "order_ref")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        The region in which to obtain the V1 KeyManager client.
+        A KeyManager client is needed to create a order. If omitted, the
+        `region` argument of the provider is used. Changing this creates a new
+        V1 order.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="secretRef")
     def secret_ref(self) -> pulumi.Output[str]:
+        """
+        The secret reference / where to find the secret.
+        """
         return pulumi.get(self, "secret_ref")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        The status of the order.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="subStatus")
     def sub_status(self) -> pulumi.Output[str]:
+        """
+        The sub status of the order.
+        """
         return pulumi.get(self, "sub_status")
 
     @property
     @pulumi.getter(name="subStatusMessage")
     def sub_status_message(self) -> pulumi.Output[str]:
+        """
+        The sub status message of the order.
+        """
         return pulumi.get(self, "sub_status_message")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
+        """
+        The type of key to be generated. Must be one of `asymmetric`, `key`.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def updated(self) -> pulumi.Output[str]:
+        """
+        The date the order was last updated.
+        """
         return pulumi.get(self, "updated")
 

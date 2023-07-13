@@ -25,6 +25,26 @@ class QuotaArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Quota resource.
+        :param pulumi.Input[str] project_id: ID of the project to manage quotas. Changing this
+               creates a new quota.
+        :param pulumi.Input[int] health_monitor: Quota value for health_monitors. Changing
+               this updates the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[int] l7_policy: Quota value for l7_policies. Changing this
+               updates the existing quota. Omitting it sets it to 0. Available in
+               **Octavia minor version 2.19**.
+        :param pulumi.Input[int] l7_rule: Quota value for l7_rules. Changing this
+               updates the existing quota. Omitting it sets it to 0. Available in
+               **Octavia minor version 2.19**.
+        :param pulumi.Input[int] listener: Quota value for listeners. Changing this updates
+               the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[int] loadbalancer: Quota value for loadbalancers. Changing this
+               updates the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[int] member: Quota value for members. Changing this updates
+               the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[int] pool: Quota value for pools. Changing this updates the
+               the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[str] region: Region in which to manage quotas. Changing this
+               creates a new quota. If ommited, the region of the credentials is used.
         """
         pulumi.set(__self__, "project_id", project_id)
         if health_monitor is not None:
@@ -47,6 +67,10 @@ class QuotaArgs:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[str]:
+        """
+        ID of the project to manage quotas. Changing this
+        creates a new quota.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -56,6 +80,10 @@ class QuotaArgs:
     @property
     @pulumi.getter(name="healthMonitor")
     def health_monitor(self) -> Optional[pulumi.Input[int]]:
+        """
+        Quota value for health_monitors. Changing
+        this updates the existing quota. Omitting it sets it to 0.
+        """
         return pulumi.get(self, "health_monitor")
 
     @health_monitor.setter
@@ -65,6 +93,11 @@ class QuotaArgs:
     @property
     @pulumi.getter(name="l7Policy")
     def l7_policy(self) -> Optional[pulumi.Input[int]]:
+        """
+        Quota value for l7_policies. Changing this
+        updates the existing quota. Omitting it sets it to 0. Available in
+        **Octavia minor version 2.19**.
+        """
         return pulumi.get(self, "l7_policy")
 
     @l7_policy.setter
@@ -74,6 +107,11 @@ class QuotaArgs:
     @property
     @pulumi.getter(name="l7Rule")
     def l7_rule(self) -> Optional[pulumi.Input[int]]:
+        """
+        Quota value for l7_rules. Changing this
+        updates the existing quota. Omitting it sets it to 0. Available in
+        **Octavia minor version 2.19**.
+        """
         return pulumi.get(self, "l7_rule")
 
     @l7_rule.setter
@@ -83,6 +121,10 @@ class QuotaArgs:
     @property
     @pulumi.getter
     def listener(self) -> Optional[pulumi.Input[int]]:
+        """
+        Quota value for listeners. Changing this updates
+        the existing quota. Omitting it sets it to 0.
+        """
         return pulumi.get(self, "listener")
 
     @listener.setter
@@ -92,6 +134,10 @@ class QuotaArgs:
     @property
     @pulumi.getter
     def loadbalancer(self) -> Optional[pulumi.Input[int]]:
+        """
+        Quota value for loadbalancers. Changing this
+        updates the existing quota. Omitting it sets it to 0.
+        """
         return pulumi.get(self, "loadbalancer")
 
     @loadbalancer.setter
@@ -101,6 +147,10 @@ class QuotaArgs:
     @property
     @pulumi.getter
     def member(self) -> Optional[pulumi.Input[int]]:
+        """
+        Quota value for members. Changing this updates
+        the existing quota. Omitting it sets it to 0.
+        """
         return pulumi.get(self, "member")
 
     @member.setter
@@ -110,6 +160,10 @@ class QuotaArgs:
     @property
     @pulumi.getter
     def pool(self) -> Optional[pulumi.Input[int]]:
+        """
+        Quota value for pools. Changing this updates the
+        the existing quota. Omitting it sets it to 0.
+        """
         return pulumi.get(self, "pool")
 
     @pool.setter
@@ -119,6 +173,10 @@ class QuotaArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Region in which to manage quotas. Changing this
+        creates a new quota. If ommited, the region of the credentials is used.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -140,6 +198,26 @@ class _QuotaState:
                  region: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Quota resources.
+        :param pulumi.Input[int] health_monitor: Quota value for health_monitors. Changing
+               this updates the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[int] l7_policy: Quota value for l7_policies. Changing this
+               updates the existing quota. Omitting it sets it to 0. Available in
+               **Octavia minor version 2.19**.
+        :param pulumi.Input[int] l7_rule: Quota value for l7_rules. Changing this
+               updates the existing quota. Omitting it sets it to 0. Available in
+               **Octavia minor version 2.19**.
+        :param pulumi.Input[int] listener: Quota value for listeners. Changing this updates
+               the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[int] loadbalancer: Quota value for loadbalancers. Changing this
+               updates the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[int] member: Quota value for members. Changing this updates
+               the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[int] pool: Quota value for pools. Changing this updates the
+               the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[str] project_id: ID of the project to manage quotas. Changing this
+               creates a new quota.
+        :param pulumi.Input[str] region: Region in which to manage quotas. Changing this
+               creates a new quota. If ommited, the region of the credentials is used.
         """
         if health_monitor is not None:
             pulumi.set(__self__, "health_monitor", health_monitor)
@@ -163,6 +241,10 @@ class _QuotaState:
     @property
     @pulumi.getter(name="healthMonitor")
     def health_monitor(self) -> Optional[pulumi.Input[int]]:
+        """
+        Quota value for health_monitors. Changing
+        this updates the existing quota. Omitting it sets it to 0.
+        """
         return pulumi.get(self, "health_monitor")
 
     @health_monitor.setter
@@ -172,6 +254,11 @@ class _QuotaState:
     @property
     @pulumi.getter(name="l7Policy")
     def l7_policy(self) -> Optional[pulumi.Input[int]]:
+        """
+        Quota value for l7_policies. Changing this
+        updates the existing quota. Omitting it sets it to 0. Available in
+        **Octavia minor version 2.19**.
+        """
         return pulumi.get(self, "l7_policy")
 
     @l7_policy.setter
@@ -181,6 +268,11 @@ class _QuotaState:
     @property
     @pulumi.getter(name="l7Rule")
     def l7_rule(self) -> Optional[pulumi.Input[int]]:
+        """
+        Quota value for l7_rules. Changing this
+        updates the existing quota. Omitting it sets it to 0. Available in
+        **Octavia minor version 2.19**.
+        """
         return pulumi.get(self, "l7_rule")
 
     @l7_rule.setter
@@ -190,6 +282,10 @@ class _QuotaState:
     @property
     @pulumi.getter
     def listener(self) -> Optional[pulumi.Input[int]]:
+        """
+        Quota value for listeners. Changing this updates
+        the existing quota. Omitting it sets it to 0.
+        """
         return pulumi.get(self, "listener")
 
     @listener.setter
@@ -199,6 +295,10 @@ class _QuotaState:
     @property
     @pulumi.getter
     def loadbalancer(self) -> Optional[pulumi.Input[int]]:
+        """
+        Quota value for loadbalancers. Changing this
+        updates the existing quota. Omitting it sets it to 0.
+        """
         return pulumi.get(self, "loadbalancer")
 
     @loadbalancer.setter
@@ -208,6 +308,10 @@ class _QuotaState:
     @property
     @pulumi.getter
     def member(self) -> Optional[pulumi.Input[int]]:
+        """
+        Quota value for members. Changing this updates
+        the existing quota. Omitting it sets it to 0.
+        """
         return pulumi.get(self, "member")
 
     @member.setter
@@ -217,6 +321,10 @@ class _QuotaState:
     @property
     @pulumi.getter
     def pool(self) -> Optional[pulumi.Input[int]]:
+        """
+        Quota value for pools. Changing this updates the
+        the existing quota. Omitting it sets it to 0.
+        """
         return pulumi.get(self, "pool")
 
     @pool.setter
@@ -226,6 +334,10 @@ class _QuotaState:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the project to manage quotas. Changing this
+        creates a new quota.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -235,6 +347,10 @@ class _QuotaState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Region in which to manage quotas. Changing this
+        creates a new quota. If ommited, the region of the credentials is used.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -258,9 +374,69 @@ class Quota(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Quota resource with the given unique name, props, and options.
+        Manages a V2 load balancer quota resource within OpenStack.
+
+        > **Note:** This usually requires admin privileges.
+
+        > **Note:** This resource is only available for Octavia.
+
+        > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack
+           API in case of delete call.
+
+        > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
+           created with zero value.
+
+        > **Note:** This resource has attributes that depend on octavia minor versions.
+        Please ensure your Openstack cloud supports the required minor version.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        quota1 = openstack.loadbalancer.Quota("quota1",
+            project_id=project1.id,
+            loadbalancer=6,
+            listener=7,
+            member=8,
+            pool=9,
+            health_monitor=10,
+            l7_policy=11,
+            l7_rule=12)
+        ```
+
+        ## Import
+
+        Quotas can be imported using the `project_id/region_name`, where region_name is the one defined is the Openstack credentials that are in use. E.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] health_monitor: Quota value for health_monitors. Changing
+               this updates the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[int] l7_policy: Quota value for l7_policies. Changing this
+               updates the existing quota. Omitting it sets it to 0. Available in
+               **Octavia minor version 2.19**.
+        :param pulumi.Input[int] l7_rule: Quota value for l7_rules. Changing this
+               updates the existing quota. Omitting it sets it to 0. Available in
+               **Octavia minor version 2.19**.
+        :param pulumi.Input[int] listener: Quota value for listeners. Changing this updates
+               the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[int] loadbalancer: Quota value for loadbalancers. Changing this
+               updates the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[int] member: Quota value for members. Changing this updates
+               the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[int] pool: Quota value for pools. Changing this updates the
+               the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[str] project_id: ID of the project to manage quotas. Changing this
+               creates a new quota.
+        :param pulumi.Input[str] region: Region in which to manage quotas. Changing this
+               creates a new quota. If ommited, the region of the credentials is used.
         """
         ...
     @overload
@@ -269,7 +445,47 @@ class Quota(pulumi.CustomResource):
                  args: QuotaArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Quota resource with the given unique name, props, and options.
+        Manages a V2 load balancer quota resource within OpenStack.
+
+        > **Note:** This usually requires admin privileges.
+
+        > **Note:** This resource is only available for Octavia.
+
+        > **Note:** This resource has a no-op deletion so no actual actions will be done against the OpenStack
+           API in case of delete call.
+
+        > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
+           created with zero value.
+
+        > **Note:** This resource has attributes that depend on octavia minor versions.
+        Please ensure your Openstack cloud supports the required minor version.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        quota1 = openstack.loadbalancer.Quota("quota1",
+            project_id=project1.id,
+            loadbalancer=6,
+            listener=7,
+            member=8,
+            pool=9,
+            health_monitor=10,
+            l7_policy=11,
+            l7_rule=12)
+        ```
+
+        ## Import
+
+        Quotas can be imported using the `project_id/region_name`, where region_name is the one defined is the Openstack credentials that are in use. E.g.
+
+        ```sh
+         $ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
+        ```
+
         :param str resource_name: The name of the resource.
         :param QuotaArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -340,6 +556,26 @@ class Quota(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] health_monitor: Quota value for health_monitors. Changing
+               this updates the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[int] l7_policy: Quota value for l7_policies. Changing this
+               updates the existing quota. Omitting it sets it to 0. Available in
+               **Octavia minor version 2.19**.
+        :param pulumi.Input[int] l7_rule: Quota value for l7_rules. Changing this
+               updates the existing quota. Omitting it sets it to 0. Available in
+               **Octavia minor version 2.19**.
+        :param pulumi.Input[int] listener: Quota value for listeners. Changing this updates
+               the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[int] loadbalancer: Quota value for loadbalancers. Changing this
+               updates the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[int] member: Quota value for members. Changing this updates
+               the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[int] pool: Quota value for pools. Changing this updates the
+               the existing quota. Omitting it sets it to 0.
+        :param pulumi.Input[str] project_id: ID of the project to manage quotas. Changing this
+               creates a new quota.
+        :param pulumi.Input[str] region: Region in which to manage quotas. Changing this
+               creates a new quota. If ommited, the region of the credentials is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -359,45 +595,83 @@ class Quota(pulumi.CustomResource):
     @property
     @pulumi.getter(name="healthMonitor")
     def health_monitor(self) -> pulumi.Output[int]:
+        """
+        Quota value for health_monitors. Changing
+        this updates the existing quota. Omitting it sets it to 0.
+        """
         return pulumi.get(self, "health_monitor")
 
     @property
     @pulumi.getter(name="l7Policy")
     def l7_policy(self) -> pulumi.Output[int]:
+        """
+        Quota value for l7_policies. Changing this
+        updates the existing quota. Omitting it sets it to 0. Available in
+        **Octavia minor version 2.19**.
+        """
         return pulumi.get(self, "l7_policy")
 
     @property
     @pulumi.getter(name="l7Rule")
     def l7_rule(self) -> pulumi.Output[int]:
+        """
+        Quota value for l7_rules. Changing this
+        updates the existing quota. Omitting it sets it to 0. Available in
+        **Octavia minor version 2.19**.
+        """
         return pulumi.get(self, "l7_rule")
 
     @property
     @pulumi.getter
     def listener(self) -> pulumi.Output[int]:
+        """
+        Quota value for listeners. Changing this updates
+        the existing quota. Omitting it sets it to 0.
+        """
         return pulumi.get(self, "listener")
 
     @property
     @pulumi.getter
     def loadbalancer(self) -> pulumi.Output[int]:
+        """
+        Quota value for loadbalancers. Changing this
+        updates the existing quota. Omitting it sets it to 0.
+        """
         return pulumi.get(self, "loadbalancer")
 
     @property
     @pulumi.getter
     def member(self) -> pulumi.Output[int]:
+        """
+        Quota value for members. Changing this updates
+        the existing quota. Omitting it sets it to 0.
+        """
         return pulumi.get(self, "member")
 
     @property
     @pulumi.getter
     def pool(self) -> pulumi.Output[int]:
+        """
+        Quota value for pools. Changing this updates the
+        the existing quota. Omitting it sets it to 0.
+        """
         return pulumi.get(self, "pool")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
+        """
+        ID of the project to manage quotas. Changing this
+        creates a new quota.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
+        """
+        Region in which to manage quotas. Changing this
+        creates a new quota. If ommited, the region of the credentials is used.
+        """
         return pulumi.get(self, "region")
 

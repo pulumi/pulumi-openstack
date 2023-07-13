@@ -56,16 +56,25 @@ class GetProjectResult:
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the project.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "domain_id")
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -79,31 +88,49 @@ class GetProjectResult:
     @property
     @pulumi.getter(name="isDomain")
     def is_domain(self) -> Optional[bool]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "is_domain")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "parent_id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
+        """
+        The region the project is located in.
+        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence[str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -134,7 +161,28 @@ def get_project(domain_id: Optional[str] = None,
                 region: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an OpenStack project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    project1 = openstack.identity.get_project(name="demo")
+    ```
+
+
+    :param str domain_id: The domain this project belongs to.
+    :param bool enabled: Whether the project is enabled or disabled. Valid
+           values are `true` and `false`.
+    :param bool is_domain: Whether this project is a domain. Valid values
+           are `true` and `false`.
+    :param str name: The name of the project.
+    :param str parent_id: The parent of this project.
+    :param str project_id: The id of the project. Conflicts with any of the
+           above arguments.
+    :param str region: The region the project is located in.
     """
     __args__ = dict()
     __args__['domainId'] = domain_id
@@ -170,6 +218,27 @@ def get_project_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
                        region: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get the ID of an OpenStack project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    project1 = openstack.identity.get_project(name="demo")
+    ```
+
+
+    :param str domain_id: The domain this project belongs to.
+    :param bool enabled: Whether the project is enabled or disabled. Valid
+           values are `true` and `false`.
+    :param bool is_domain: Whether this project is a domain. Valid values
+           are `true` and `false`.
+    :param str name: The name of the project.
+    :param str parent_id: The parent of this project.
+    :param str project_id: The id of the project. Conflicts with any of the
+           above arguments.
+    :param str region: The region the project is located in.
     """
     ...
