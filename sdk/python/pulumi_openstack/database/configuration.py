@@ -23,13 +23,6 @@ class ConfigurationArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Configuration resource.
-        :param pulumi.Input['ConfigurationDatastoreArgs'] datastore: An array of database engine type and version. The datastore
-               object structure is documented below. Changing this creates resource.
-        :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
-        :param pulumi.Input[str] name: A unique name for the resource.
-        :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
-               creates a new instance.
         """
         pulumi.set(__self__, "datastore", datastore)
         pulumi.set(__self__, "description", description)
@@ -43,10 +36,6 @@ class ConfigurationArgs:
     @property
     @pulumi.getter
     def datastore(self) -> pulumi.Input['ConfigurationDatastoreArgs']:
-        """
-        An array of database engine type and version. The datastore
-        object structure is documented below. Changing this creates resource.
-        """
         return pulumi.get(self, "datastore")
 
     @datastore.setter
@@ -56,9 +45,6 @@ class ConfigurationArgs:
     @property
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
-        """
-        Description of the resource.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -68,9 +54,6 @@ class ConfigurationArgs:
     @property
     @pulumi.getter
     def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]]:
-        """
-        An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
-        """
         return pulumi.get(self, "configurations")
 
     @configurations.setter
@@ -80,9 +63,6 @@ class ConfigurationArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        A unique name for the resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -92,10 +72,6 @@ class ConfigurationArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to create the db instance. Changing this
-        creates a new instance.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -113,13 +89,6 @@ class _ConfigurationState:
                  region: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Configuration resources.
-        :param pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
-        :param pulumi.Input['ConfigurationDatastoreArgs'] datastore: An array of database engine type and version. The datastore
-               object structure is documented below. Changing this creates resource.
-        :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[str] name: A unique name for the resource.
-        :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
-               creates a new instance.
         """
         if configurations is not None:
             pulumi.set(__self__, "configurations", configurations)
@@ -135,9 +104,6 @@ class _ConfigurationState:
     @property
     @pulumi.getter
     def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]]:
-        """
-        An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
-        """
         return pulumi.get(self, "configurations")
 
     @configurations.setter
@@ -147,10 +113,6 @@ class _ConfigurationState:
     @property
     @pulumi.getter
     def datastore(self) -> Optional[pulumi.Input['ConfigurationDatastoreArgs']]:
-        """
-        An array of database engine type and version. The datastore
-        object structure is documented below. Changing this creates resource.
-        """
         return pulumi.get(self, "datastore")
 
     @datastore.setter
@@ -160,9 +122,6 @@ class _ConfigurationState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Description of the resource.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -172,9 +131,6 @@ class _ConfigurationState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        A unique name for the resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -184,10 +140,6 @@ class _ConfigurationState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to create the db instance. Changing this
-        creates a new instance.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -210,13 +162,6 @@ class Configuration(pulumi.CustomResource):
         Create a Configuration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigurationConfigurationArgs']]]] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConfigurationDatastoreArgs']] datastore: An array of database engine type and version. The datastore
-               object structure is documented below. Changing this creates resource.
-        :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[str] name: A unique name for the resource.
-        :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
-               creates a new instance.
         """
         ...
     @overload
@@ -286,13 +231,6 @@ class Configuration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigurationConfigurationArgs']]]] configurations: An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
-        :param pulumi.Input[pulumi.InputType['ConfigurationDatastoreArgs']] datastore: An array of database engine type and version. The datastore
-               object structure is documented below. Changing this creates resource.
-        :param pulumi.Input[str] description: Description of the resource.
-        :param pulumi.Input[str] name: A unique name for the resource.
-        :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
-               creates a new instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -308,42 +246,25 @@ class Configuration(pulumi.CustomResource):
     @property
     @pulumi.getter
     def configurations(self) -> pulumi.Output[Optional[Sequence['outputs.ConfigurationConfiguration']]]:
-        """
-        An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
-        """
         return pulumi.get(self, "configurations")
 
     @property
     @pulumi.getter
     def datastore(self) -> pulumi.Output['outputs.ConfigurationDatastore']:
-        """
-        An array of database engine type and version. The datastore
-        object structure is documented below. Changing this creates resource.
-        """
         return pulumi.get(self, "datastore")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
-        """
-        Description of the resource.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        A unique name for the resource.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to create the db instance. Changing this
-        creates a new instance.
-        """
         return pulumi.get(self, "region")
 

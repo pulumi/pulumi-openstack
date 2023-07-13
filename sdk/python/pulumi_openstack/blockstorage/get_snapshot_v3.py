@@ -53,9 +53,6 @@ class GetSnapshotV3Result:
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        The snapshot's description.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -69,9 +66,6 @@ class GetSnapshotV3Result:
     @property
     @pulumi.getter
     def metadata(self) -> Mapping[str, Any]:
-        """
-        The snapshot's metadata.
-        """
         return pulumi.get(self, "metadata")
 
     @property
@@ -82,41 +76,26 @@ class GetSnapshotV3Result:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def size(self) -> int:
-        """
-        The size of the snapshot.
-        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "volume_id")
 
 
@@ -144,26 +123,7 @@ def get_snapshot_v3(most_recent: Optional[bool] = None,
                     volume_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotV3Result:
     """
-    Use this data source to get information about an existing snapshot.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    snapshot1 = openstack.blockstorage.get_snapshot_v3(most_recent=True,
-        name="snapshot_1")
-    ```
-
-
-    :param bool most_recent: Pick the most recently created snapshot if there
-           are multiple results.
-    :param str name: The name of the snapshot.
-    :param str region: The region in which to obtain the V3 Block Storage
-           client. If omitted, the `region` argument of the provider is used.
-    :param str status: The status of the snapshot.
-    :param str volume_id: The ID of the snapshot's volume.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['mostRecent'] = most_recent
@@ -194,25 +154,6 @@ def get_snapshot_v3_output(most_recent: Optional[pulumi.Input[Optional[bool]]] =
                            volume_id: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotV3Result]:
     """
-    Use this data source to get information about an existing snapshot.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    snapshot1 = openstack.blockstorage.get_snapshot_v3(most_recent=True,
-        name="snapshot_1")
-    ```
-
-
-    :param bool most_recent: Pick the most recently created snapshot if there
-           are multiple results.
-    :param str name: The name of the snapshot.
-    :param str region: The region in which to obtain the V3 Block Storage
-           client. If omitted, the `region` argument of the provider is used.
-    :param str status: The status of the snapshot.
-    :param str volume_id: The ID of the snapshot's volume.
+    Use this data source to access information about an existing resource.
     """
     ...

@@ -70,9 +70,6 @@ class GetFloatingIpResult:
     @property
     @pulumi.getter(name="allTags")
     def all_tags(self) -> Sequence[str]:
-        """
-        A set of string tags applied on the floating IP.
-        """
         return pulumi.get(self, "all_tags")
 
     @property
@@ -83,19 +80,11 @@ class GetFloatingIpResult:
     @property
     @pulumi.getter(name="dnsDomain")
     def dns_domain(self) -> str:
-        """
-        The floating IP DNS domain. Available, when Neutron DNS
-        extension is enabled.
-        """
         return pulumi.get(self, "dns_domain")
 
     @property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> str:
-        """
-        The floating IP DNS name. Available, when Neutron DNS extension
-        is enabled.
-        """
         return pulumi.get(self, "dns_name")
 
     @property
@@ -174,29 +163,7 @@ def get_floating_ip(address: Optional[str] = None,
                     tenant_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFloatingIpResult:
     """
-    Use this data source to get the ID of an available OpenStack floating IP.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    floatingip1 = openstack.networking.get_floating_ip(address="192.168.0.4")
-    ```
-
-
-    :param str address: The IP address of the floating IP.
-    :param str description: Human-readable description of the floating IP.
-    :param str fixed_ip: The specific IP address of the internal port which should be associated with the floating IP.
-    :param str pool: The name of the pool from which the floating IP belongs to.
-    :param str port_id: The ID of the port the floating IP is attached.
-    :param str region: The region in which to obtain the V2 Neutron client.
-           A Neutron client is needed to retrieve floating IP ids. If omitted, the
-           `region` argument of the provider is used.
-    :param str status: status of the floating IP (ACTIVE/DOWN).
-    :param Sequence[str] tags: The list of floating IP tags to filter.
-    :param str tenant_id: The owner of the floating IP.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['address'] = address
@@ -239,28 +206,6 @@ def get_floating_ip_output(address: Optional[pulumi.Input[Optional[str]]] = None
                            tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFloatingIpResult]:
     """
-    Use this data source to get the ID of an available OpenStack floating IP.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    floatingip1 = openstack.networking.get_floating_ip(address="192.168.0.4")
-    ```
-
-
-    :param str address: The IP address of the floating IP.
-    :param str description: Human-readable description of the floating IP.
-    :param str fixed_ip: The specific IP address of the internal port which should be associated with the floating IP.
-    :param str pool: The name of the pool from which the floating IP belongs to.
-    :param str port_id: The ID of the port the floating IP is attached.
-    :param str region: The region in which to obtain the V2 Neutron client.
-           A Neutron client is needed to retrieve floating IP ids. If omitted, the
-           `region` argument of the provider is used.
-    :param str status: status of the floating IP (ACTIVE/DOWN).
-    :param Sequence[str] tags: The list of floating IP tags to filter.
-    :param str tenant_id: The owner of the floating IP.
+    Use this data source to access information about an existing resource.
     """
     ...

@@ -29,39 +29,6 @@ class VipArgs:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Vip resource.
-        :param pulumi.Input[str] pool_id: The ID of the pool with which the vip is associated.
-               Changing this updates the pool_id of the existing vip.
-        :param pulumi.Input[int] port: The port on which to listen for client traffic. Changing
-               this creates a new vip.
-        :param pulumi.Input[str] protocol: The protocol - can be either 'TCP, 'HTTP', or
-               HTTPS'. Changing this creates a new vip.
-        :param pulumi.Input[str] subnet_id: The network on which to allocate the vip's address. A
-               tenant can only create vips on networks authorized by policy (e.g. networks
-               that belong to them or networks that are shared). Changing this creates a
-               new vip.
-        :param pulumi.Input[str] address: The IP address of the vip. Changing this creates a new
-               vip.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the vip.
-               Acceptable values are "true" and "false". Changing this value updates the
-               state of the existing vip.
-        :param pulumi.Input[int] conn_limit: The maximum number of connections allowed for the
-               vip. Default is -1, meaning no limit. Changing this updates the conn_limit
-               of the existing vip.
-        :param pulumi.Input[str] description: Human-readable description for the vip. Changing
-               this updates the description of the existing vip.
-        :param pulumi.Input[str] floating_ip: A *Networking* Floating IP that will be associated
-               with the vip. The Floating IP must be provisioned already.
-        :param pulumi.Input[str] name: The name of the vip. Changing this updates the name of
-               the existing vip.
-        :param pulumi.Input[Mapping[str, Any]] persistence: Omit this field to prevent session persistence.
-               The persistence object structure is documented below. Changing this updates
-               the persistence of the existing vip.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a VIP. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               VIP.
-        :param pulumi.Input[str] tenant_id: The owner of the vip. Required if admin wants to
-               create a vip member for another tenant. Changing this creates a new vip.
         """
         pulumi.set(__self__, "pool_id", pool_id)
         pulumi.set(__self__, "port", port)
@@ -89,10 +56,6 @@ class VipArgs:
     @property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the pool with which the vip is associated.
-        Changing this updates the pool_id of the existing vip.
-        """
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
@@ -102,10 +65,6 @@ class VipArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
-        """
-        The port on which to listen for client traffic. Changing
-        this creates a new vip.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -115,10 +74,6 @@ class VipArgs:
     @property
     @pulumi.getter
     def protocol(self) -> pulumi.Input[str]:
-        """
-        The protocol - can be either 'TCP, 'HTTP', or
-        HTTPS'. Changing this creates a new vip.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -128,12 +83,6 @@ class VipArgs:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Input[str]:
-        """
-        The network on which to allocate the vip's address. A
-        tenant can only create vips on networks authorized by policy (e.g. networks
-        that belong to them or networks that are shared). Changing this creates a
-        new vip.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -143,10 +92,6 @@ class VipArgs:
     @property
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
-        """
-        The IP address of the vip. Changing this creates a new
-        vip.
-        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -156,11 +101,6 @@ class VipArgs:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The administrative state of the vip.
-        Acceptable values are "true" and "false". Changing this value updates the
-        state of the existing vip.
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -170,11 +110,6 @@ class VipArgs:
     @property
     @pulumi.getter(name="connLimit")
     def conn_limit(self) -> Optional[pulumi.Input[int]]:
-        """
-        The maximum number of connections allowed for the
-        vip. Default is -1, meaning no limit. Changing this updates the conn_limit
-        of the existing vip.
-        """
         return pulumi.get(self, "conn_limit")
 
     @conn_limit.setter
@@ -184,10 +119,6 @@ class VipArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable description for the vip. Changing
-        this updates the description of the existing vip.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -197,10 +128,6 @@ class VipArgs:
     @property
     @pulumi.getter(name="floatingIp")
     def floating_ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        A *Networking* Floating IP that will be associated
-        with the vip. The Floating IP must be provisioned already.
-        """
         return pulumi.get(self, "floating_ip")
 
     @floating_ip.setter
@@ -210,10 +137,6 @@ class VipArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the vip. Changing this updates the name of
-        the existing vip.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -223,11 +146,6 @@ class VipArgs:
     @property
     @pulumi.getter
     def persistence(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        Omit this field to prevent session persistence.
-        The persistence object structure is documented below. Changing this updates
-        the persistence of the existing vip.
-        """
         return pulumi.get(self, "persistence")
 
     @persistence.setter
@@ -237,12 +155,6 @@ class VipArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a VIP. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        VIP.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -252,10 +164,6 @@ class VipArgs:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The owner of the vip. Required if admin wants to
-        create a vip member for another tenant. Changing this creates a new vip.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -282,40 +190,6 @@ class _VipState:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Vip resources.
-        :param pulumi.Input[str] address: The IP address of the vip. Changing this creates a new
-               vip.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the vip.
-               Acceptable values are "true" and "false". Changing this value updates the
-               state of the existing vip.
-        :param pulumi.Input[int] conn_limit: The maximum number of connections allowed for the
-               vip. Default is -1, meaning no limit. Changing this updates the conn_limit
-               of the existing vip.
-        :param pulumi.Input[str] description: Human-readable description for the vip. Changing
-               this updates the description of the existing vip.
-        :param pulumi.Input[str] floating_ip: A *Networking* Floating IP that will be associated
-               with the vip. The Floating IP must be provisioned already.
-        :param pulumi.Input[str] name: The name of the vip. Changing this updates the name of
-               the existing vip.
-        :param pulumi.Input[Mapping[str, Any]] persistence: Omit this field to prevent session persistence.
-               The persistence object structure is documented below. Changing this updates
-               the persistence of the existing vip.
-        :param pulumi.Input[str] pool_id: The ID of the pool with which the vip is associated.
-               Changing this updates the pool_id of the existing vip.
-        :param pulumi.Input[int] port: The port on which to listen for client traffic. Changing
-               this creates a new vip.
-        :param pulumi.Input[str] port_id: Port UUID for this VIP at associated floating IP (if any).
-        :param pulumi.Input[str] protocol: The protocol - can be either 'TCP, 'HTTP', or
-               HTTPS'. Changing this creates a new vip.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a VIP. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               VIP.
-        :param pulumi.Input[str] subnet_id: The network on which to allocate the vip's address. A
-               tenant can only create vips on networks authorized by policy (e.g. networks
-               that belong to them or networks that are shared). Changing this creates a
-               new vip.
-        :param pulumi.Input[str] tenant_id: The owner of the vip. Required if admin wants to
-               create a vip member for another tenant. Changing this creates a new vip.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -349,10 +223,6 @@ class _VipState:
     @property
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
-        """
-        The IP address of the vip. Changing this creates a new
-        vip.
-        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -362,11 +232,6 @@ class _VipState:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The administrative state of the vip.
-        Acceptable values are "true" and "false". Changing this value updates the
-        state of the existing vip.
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -376,11 +241,6 @@ class _VipState:
     @property
     @pulumi.getter(name="connLimit")
     def conn_limit(self) -> Optional[pulumi.Input[int]]:
-        """
-        The maximum number of connections allowed for the
-        vip. Default is -1, meaning no limit. Changing this updates the conn_limit
-        of the existing vip.
-        """
         return pulumi.get(self, "conn_limit")
 
     @conn_limit.setter
@@ -390,10 +250,6 @@ class _VipState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable description for the vip. Changing
-        this updates the description of the existing vip.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -403,10 +259,6 @@ class _VipState:
     @property
     @pulumi.getter(name="floatingIp")
     def floating_ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        A *Networking* Floating IP that will be associated
-        with the vip. The Floating IP must be provisioned already.
-        """
         return pulumi.get(self, "floating_ip")
 
     @floating_ip.setter
@@ -416,10 +268,6 @@ class _VipState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the vip. Changing this updates the name of
-        the existing vip.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -429,11 +277,6 @@ class _VipState:
     @property
     @pulumi.getter
     def persistence(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        Omit this field to prevent session persistence.
-        The persistence object structure is documented below. Changing this updates
-        the persistence of the existing vip.
-        """
         return pulumi.get(self, "persistence")
 
     @persistence.setter
@@ -443,10 +286,6 @@ class _VipState:
     @property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the pool with which the vip is associated.
-        Changing this updates the pool_id of the existing vip.
-        """
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
@@ -456,10 +295,6 @@ class _VipState:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
-        """
-        The port on which to listen for client traffic. Changing
-        this creates a new vip.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -469,9 +304,6 @@ class _VipState:
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Port UUID for this VIP at associated floating IP (if any).
-        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -481,10 +313,6 @@ class _VipState:
     @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
-        """
-        The protocol - can be either 'TCP, 'HTTP', or
-        HTTPS'. Changing this creates a new vip.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -494,12 +322,6 @@ class _VipState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a VIP. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        VIP.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -509,12 +331,6 @@ class _VipState:
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The network on which to allocate the vip's address. A
-        tenant can only create vips on networks authorized by policy (e.g. networks
-        that belong to them or networks that are shared). Changing this creates a
-        new vip.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -524,10 +340,6 @@ class _VipState:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The owner of the vip. Required if admin wants to
-        create a vip member for another tenant. Changing this creates a new vip.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -555,64 +367,9 @@ class Vip(pulumi.CustomResource):
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a V1 load balancer vip resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        vip1 = openstack.loadbalancer.Vip("vip1",
-            pool_id="67890",
-            port=80,
-            protocol="HTTP",
-            subnet_id="12345")
-        ```
-
-        ## Import
-
-        Load Balancer VIPs can be imported using the `id`, e.g.
-
-        ```sh
-         $ pulumi import openstack:loadbalancer/vip:Vip vip_1 50e16b26-89c1-475e-a492-76167182511e
-        ```
-
+        Create a Vip resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The IP address of the vip. Changing this creates a new
-               vip.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the vip.
-               Acceptable values are "true" and "false". Changing this value updates the
-               state of the existing vip.
-        :param pulumi.Input[int] conn_limit: The maximum number of connections allowed for the
-               vip. Default is -1, meaning no limit. Changing this updates the conn_limit
-               of the existing vip.
-        :param pulumi.Input[str] description: Human-readable description for the vip. Changing
-               this updates the description of the existing vip.
-        :param pulumi.Input[str] floating_ip: A *Networking* Floating IP that will be associated
-               with the vip. The Floating IP must be provisioned already.
-        :param pulumi.Input[str] name: The name of the vip. Changing this updates the name of
-               the existing vip.
-        :param pulumi.Input[Mapping[str, Any]] persistence: Omit this field to prevent session persistence.
-               The persistence object structure is documented below. Changing this updates
-               the persistence of the existing vip.
-        :param pulumi.Input[str] pool_id: The ID of the pool with which the vip is associated.
-               Changing this updates the pool_id of the existing vip.
-        :param pulumi.Input[int] port: The port on which to listen for client traffic. Changing
-               this creates a new vip.
-        :param pulumi.Input[str] protocol: The protocol - can be either 'TCP, 'HTTP', or
-               HTTPS'. Changing this creates a new vip.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a VIP. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               VIP.
-        :param pulumi.Input[str] subnet_id: The network on which to allocate the vip's address. A
-               tenant can only create vips on networks authorized by policy (e.g. networks
-               that belong to them or networks that are shared). Changing this creates a
-               new vip.
-        :param pulumi.Input[str] tenant_id: The owner of the vip. Required if admin wants to
-               create a vip member for another tenant. Changing this creates a new vip.
         """
         ...
     @overload
@@ -621,29 +378,7 @@ class Vip(pulumi.CustomResource):
                  args: VipArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V1 load balancer vip resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        vip1 = openstack.loadbalancer.Vip("vip1",
-            pool_id="67890",
-            port=80,
-            protocol="HTTP",
-            subnet_id="12345")
-        ```
-
-        ## Import
-
-        Load Balancer VIPs can be imported using the `id`, e.g.
-
-        ```sh
-         $ pulumi import openstack:loadbalancer/vip:Vip vip_1 50e16b26-89c1-475e-a492-76167182511e
-        ```
-
+        Create a Vip resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param VipArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -734,40 +469,6 @@ class Vip(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The IP address of the vip. Changing this creates a new
-               vip.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the vip.
-               Acceptable values are "true" and "false". Changing this value updates the
-               state of the existing vip.
-        :param pulumi.Input[int] conn_limit: The maximum number of connections allowed for the
-               vip. Default is -1, meaning no limit. Changing this updates the conn_limit
-               of the existing vip.
-        :param pulumi.Input[str] description: Human-readable description for the vip. Changing
-               this updates the description of the existing vip.
-        :param pulumi.Input[str] floating_ip: A *Networking* Floating IP that will be associated
-               with the vip. The Floating IP must be provisioned already.
-        :param pulumi.Input[str] name: The name of the vip. Changing this updates the name of
-               the existing vip.
-        :param pulumi.Input[Mapping[str, Any]] persistence: Omit this field to prevent session persistence.
-               The persistence object structure is documented below. Changing this updates
-               the persistence of the existing vip.
-        :param pulumi.Input[str] pool_id: The ID of the pool with which the vip is associated.
-               Changing this updates the pool_id of the existing vip.
-        :param pulumi.Input[int] port: The port on which to listen for client traffic. Changing
-               this creates a new vip.
-        :param pulumi.Input[str] port_id: Port UUID for this VIP at associated floating IP (if any).
-        :param pulumi.Input[str] protocol: The protocol - can be either 'TCP, 'HTTP', or
-               HTTPS'. Changing this creates a new vip.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a VIP. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               VIP.
-        :param pulumi.Input[str] subnet_id: The network on which to allocate the vip's address. A
-               tenant can only create vips on networks authorized by policy (e.g. networks
-               that belong to them or networks that are shared). Changing this creates a
-               new vip.
-        :param pulumi.Input[str] tenant_id: The owner of the vip. Required if admin wants to
-               create a vip member for another tenant. Changing this creates a new vip.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -792,132 +493,70 @@ class Vip(pulumi.CustomResource):
     @property
     @pulumi.getter
     def address(self) -> pulumi.Output[str]:
-        """
-        The IP address of the vip. Changing this creates a new
-        vip.
-        """
         return pulumi.get(self, "address")
 
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[bool]:
-        """
-        The administrative state of the vip.
-        Acceptable values are "true" and "false". Changing this value updates the
-        state of the existing vip.
-        """
         return pulumi.get(self, "admin_state_up")
 
     @property
     @pulumi.getter(name="connLimit")
     def conn_limit(self) -> pulumi.Output[int]:
-        """
-        The maximum number of connections allowed for the
-        vip. Default is -1, meaning no limit. Changing this updates the conn_limit
-        of the existing vip.
-        """
         return pulumi.get(self, "conn_limit")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
-        """
-        Human-readable description for the vip. Changing
-        this updates the description of the existing vip.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="floatingIp")
     def floating_ip(self) -> pulumi.Output[Optional[str]]:
-        """
-        A *Networking* Floating IP that will be associated
-        with the vip. The Floating IP must be provisioned already.
-        """
         return pulumi.get(self, "floating_ip")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the vip. Changing this updates the name of
-        the existing vip.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def persistence(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
-        """
-        Omit this field to prevent session persistence.
-        The persistence object structure is documented below. Changing this updates
-        the persistence of the existing vip.
-        """
         return pulumi.get(self, "persistence")
 
     @property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the pool with which the vip is associated.
-        Changing this updates the pool_id of the existing vip.
-        """
         return pulumi.get(self, "pool_id")
 
     @property
     @pulumi.getter
     def port(self) -> pulumi.Output[int]:
-        """
-        The port on which to listen for client traffic. Changing
-        this creates a new vip.
-        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Output[str]:
-        """
-        Port UUID for this VIP at associated floating IP (if any).
-        """
         return pulumi.get(self, "port_id")
 
     @property
     @pulumi.getter
     def protocol(self) -> pulumi.Output[str]:
-        """
-        The protocol - can be either 'TCP, 'HTTP', or
-        HTTPS'. Changing this creates a new vip.
-        """
         return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a VIP. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        VIP.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[str]:
-        """
-        The network on which to allocate the vip's address. A
-        tenant can only create vips on networks authorized by policy (e.g. networks
-        that belong to them or networks that are shared). Changing this creates a
-        new vip.
-        """
         return pulumi.get(self, "subnet_id")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
-        """
-        The owner of the vip. Required if admin wants to
-        create a vip member for another tenant. Changing this creates a new vip.
-        """
         return pulumi.get(self, "tenant_id")
 

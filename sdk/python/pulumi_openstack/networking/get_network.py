@@ -84,50 +84,31 @@ class GetNetworkResult:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> str:
-        """
-        The administrative state of the network.
-        """
         return pulumi.get(self, "admin_state_up")
 
     @property
     @pulumi.getter(name="allTags")
     def all_tags(self) -> Sequence[str]:
-        """
-        The set of string tags applied on the network.
-        """
         return pulumi.get(self, "all_tags")
 
     @property
     @pulumi.getter(name="availabilityZoneHints")
     def availability_zone_hints(self) -> Sequence[str]:
-        """
-        The availability zone candidates for the network.
-        """
         return pulumi.get(self, "availability_zone_hints")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="dnsDomain")
     def dns_domain(self) -> str:
-        """
-        The network DNS domain. Available, when Neutron DNS extension
-        is enabled
-        """
         return pulumi.get(self, "dns_domain")
 
     @property
     @pulumi.getter
     def external(self) -> Optional[bool]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "external")
 
     @property
@@ -146,17 +127,11 @@ class GetNetworkResult:
     @property
     @pulumi.getter
     def mtu(self) -> Optional[int]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "mtu")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -167,26 +142,16 @@ class GetNetworkResult:
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def segments(self) -> Sequence['outputs.GetNetworkSegmentResult']:
-        """
-        An array of one or more provider segment objects.
-        """
         return pulumi.get(self, "segments")
 
     @property
     @pulumi.getter
     def shared(self) -> str:
-        """
-        Specifies whether the network resource can be accessed by any
-        tenant or not.
-        """
         return pulumi.get(self, "shared")
 
     @property
@@ -197,9 +162,6 @@ class GetNetworkResult:
     @property
     @pulumi.getter
     def subnets(self) -> Sequence[str]:
-        """
-        A list of subnet IDs belonging to the network.
-        """
         return pulumi.get(self, "subnets")
 
     @property
@@ -215,9 +177,6 @@ class GetNetworkResult:
     @property
     @pulumi.getter(name="transparentVlan")
     def transparent_vlan(self) -> Optional[bool]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "transparent_vlan")
 
 
@@ -261,33 +220,7 @@ def get_network(description: Optional[str] = None,
                 transparent_vlan: Optional[bool] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkResult:
     """
-    Use this data source to get the ID of an available OpenStack network.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    network = openstack.networking.get_network(name="tf_test_network")
-    ```
-
-
-    :param str description: Human-readable description of the network.
-    :param bool external: The external routing facility of the network.
-    :param str matching_subnet_cidr: The CIDR of a subnet within the network.
-    :param int mtu: The network MTU to filter. Available, when Neutron `net-mtu`
-           extension is enabled.
-    :param str name: The name of the network.
-    :param str network_id: The ID of the network.
-    :param str region: The region in which to obtain the V2 Neutron client.
-           A Neutron client is needed to retrieve networks ids. If omitted, the
-           `region` argument of the provider is used.
-    :param str status: The status of the network.
-    :param Sequence[str] tags: The list of network tags to filter.
-    :param str tenant_id: The owner of the network.
-    :param bool transparent_vlan: The VLAN transparent attribute for the
-           network.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -340,32 +273,6 @@ def get_network_output(description: Optional[pulumi.Input[Optional[str]]] = None
                        transparent_vlan: Optional[pulumi.Input[Optional[bool]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkResult]:
     """
-    Use this data source to get the ID of an available OpenStack network.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    network = openstack.networking.get_network(name="tf_test_network")
-    ```
-
-
-    :param str description: Human-readable description of the network.
-    :param bool external: The external routing facility of the network.
-    :param str matching_subnet_cidr: The CIDR of a subnet within the network.
-    :param int mtu: The network MTU to filter. Available, when Neutron `net-mtu`
-           extension is enabled.
-    :param str name: The name of the network.
-    :param str network_id: The ID of the network.
-    :param str region: The region in which to obtain the V2 Neutron client.
-           A Neutron client is needed to retrieve networks ids. If omitted, the
-           `region` argument of the provider is used.
-    :param str status: The status of the network.
-    :param Sequence[str] tags: The list of network tags to filter.
-    :param str tenant_id: The owner of the network.
-    :param bool transparent_vlan: The VLAN transparent attribute for the
-           network.
+    Use this data source to access information about an existing resource.
     """
     ...

@@ -44,9 +44,6 @@ class GetKeypairResult:
     @property
     @pulumi.getter
     def fingerprint(self) -> str:
-        """
-        The fingerprint of the OpenSSH key.
-        """
         return pulumi.get(self, "fingerprint")
 
     @property
@@ -60,33 +57,21 @@ class GetKeypairResult:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> str:
-        """
-        The OpenSSH-formatted public key of the keypair.
-        """
         return pulumi.get(self, "public_key")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "user_id")
 
 
@@ -109,24 +94,7 @@ def get_keypair(name: Optional[str] = None,
                 user_id: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeypairResult:
     """
-    Use this data source to get the ID and public key of an OpenStack keypair.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    kp = openstack.compute.get_keypair(name="sand")
-    ```
-
-
-    :param str name: The unique name of the keypair.
-    :param str region: The region in which to obtain the V2 Compute client.
-           If omitted, the `region` argument of the provider is used.
-    :param str user_id: The user id of the owner of the key pair.
-           This parameter can be specified only if the provider is configured to use
-           the credentials of an OpenStack administrator.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -150,23 +118,6 @@ def get_keypair_output(name: Optional[pulumi.Input[str]] = None,
                        user_id: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeypairResult]:
     """
-    Use this data source to get the ID and public key of an OpenStack keypair.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    kp = openstack.compute.get_keypair(name="sand")
-    ```
-
-
-    :param str name: The unique name of the keypair.
-    :param str region: The region in which to obtain the V2 Compute client.
-           If omitted, the `region` argument of the provider is used.
-    :param str user_id: The user id of the owner of the key pair.
-           This parameter can be specified only if the provider is configured to use
-           the credentials of an OpenStack administrator.
+    Use this data source to access information about an existing resource.
     """
     ...

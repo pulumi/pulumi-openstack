@@ -110,42 +110,26 @@ class GetImageResult:
     @property
     @pulumi.getter
     def checksum(self) -> str:
-        """
-        The checksum of the data associated with the image.
-        """
         return pulumi.get(self, "checksum")
 
     @property
     @pulumi.getter(name="containerFormat")
     def container_format(self) -> str:
-        """
-        The format of the image's container.
-        """
         return pulumi.get(self, "container_format")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        The date the image was created.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="diskFormat")
     def disk_format(self) -> str:
-        """
-        The format of the image's disk.
-        """
         return pulumi.get(self, "disk_format")
 
     @property
     @pulumi.getter
     def file(self) -> str:
-        """
-        the trailing path after the glance endpoint that represent the
-        location of the image or the path to retrieve it.
-        """
         return pulumi.get(self, "file")
 
     @property
@@ -169,27 +153,16 @@ class GetImageResult:
     @property
     @pulumi.getter
     def metadata(self) -> Mapping[str, Any]:
-        """
-        The metadata associated with the image.
-        Image metadata allow for meaningfully define the image properties
-        and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
-        """
         return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter(name="minDiskGb")
     def min_disk_gb(self) -> int:
-        """
-        The minimum amount of disk space required to use the image.
-        """
         return pulumi.get(self, "min_disk_gb")
 
     @property
     @pulumi.getter(name="minRamMb")
     def min_ram_mb(self) -> int:
-        """
-        The minimum amount of ram required to use the image.
-        """
         return pulumi.get(self, "min_ram_mb")
 
     @property
@@ -215,17 +188,11 @@ class GetImageResult:
     @property
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, Any]]:
-        """
-        Freeform information about the image.
-        """
         return pulumi.get(self, "properties")
 
     @property
     @pulumi.getter
     def protected(self) -> bool:
-        """
-        Whether or not the image is protected.
-        """
         return pulumi.get(self, "protected")
 
     @property
@@ -236,18 +203,11 @@ class GetImageResult:
     @property
     @pulumi.getter
     def schema(self) -> str:
-        """
-        The path to the JSON-schema that represent
-        the image or image
-        """
         return pulumi.get(self, "schema")
 
     @property
     @pulumi.getter(name="sizeBytes")
     def size_bytes(self) -> int:
-        """
-        The size of the image (in bytes).
-        """
         return pulumi.get(self, "size_bytes")
 
     @property
@@ -278,17 +238,11 @@ class GetImageResult:
     @property
     @pulumi.getter
     def tags(self) -> Sequence[str]:
-        """
-        The tags list of the image.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
-        """
-        The date the image was last updated.
-        """
         return pulumi.get(self, "updated_at")
 
     @property
@@ -350,52 +304,7 @@ def get_image(hidden: Optional[bool] = None,
               visibility: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
-    Use this data source to get the ID of an available OpenStack image.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    ubuntu = openstack.images.get_image(most_recent=True,
-        name="Ubuntu 16.04",
-        properties={
-            "key": "value",
-        })
-    ```
-
-
-    :param bool hidden: Whether or not the image is hidden from public list.
-    :param str member_status: The status of the image. Must be one of
-           "accepted", "pending", "rejected", or "all".
-    :param bool most_recent: If more than one result is returned, use the most
-           recent image.
-    :param str name: The name of the image. Cannot be used simultaneously
-           with `name_regex`.
-    :param str name_regex: The regular expressian of the name of the image.
-           Cannot be used simultaneously with `name`. Unlike filtering by `name` the
-           `name_regex` filtering does by client on the result of OpenStack search
-           query.
-    :param str owner: The owner (UUID) of the image.
-    :param Mapping[str, Any] properties: a map of key/value pairs to match an image with.
-           All specified properties must be matched. Unlike other options filtering
-           by `properties` does by client on the result of OpenStack search query.
-           Filtering is applied if server responce contains at least 2 images. In
-           case there is only one image the `properties` ignores.
-    :param str region: The region in which to obtain the V2 Glance client.
-           A Glance client is needed to create an Image that can be used with
-           a compute instance. If omitted, the `region` argument of the provider
-           is used.
-    :param int size_max: The maximum size (in bytes) of the image to return.
-    :param int size_min: The minimum size (in bytes) of the image to return.
-    :param str sort_direction: Order the results in either `asc` or `desc`.
-    :param str sort_key: Sort images based on a certain key. Defaults to `name`.
-    :param str tag: Search for images with a specific tag.
-    :param Sequence[str] tags: A list of tags required to be set on the image 
-           (all specified tags must be in the images tag list for it to be matched).
-    :param str visibility: The visibility of the image. Must be one of
-           "public", "private", "community", or "shared". Defaults to "private".
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['hidden'] = hidden
@@ -465,51 +374,6 @@ def get_image_output(hidden: Optional[pulumi.Input[Optional[bool]]] = None,
                      visibility: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageResult]:
     """
-    Use this data source to get the ID of an available OpenStack image.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    ubuntu = openstack.images.get_image(most_recent=True,
-        name="Ubuntu 16.04",
-        properties={
-            "key": "value",
-        })
-    ```
-
-
-    :param bool hidden: Whether or not the image is hidden from public list.
-    :param str member_status: The status of the image. Must be one of
-           "accepted", "pending", "rejected", or "all".
-    :param bool most_recent: If more than one result is returned, use the most
-           recent image.
-    :param str name: The name of the image. Cannot be used simultaneously
-           with `name_regex`.
-    :param str name_regex: The regular expressian of the name of the image.
-           Cannot be used simultaneously with `name`. Unlike filtering by `name` the
-           `name_regex` filtering does by client on the result of OpenStack search
-           query.
-    :param str owner: The owner (UUID) of the image.
-    :param Mapping[str, Any] properties: a map of key/value pairs to match an image with.
-           All specified properties must be matched. Unlike other options filtering
-           by `properties` does by client on the result of OpenStack search query.
-           Filtering is applied if server responce contains at least 2 images. In
-           case there is only one image the `properties` ignores.
-    :param str region: The region in which to obtain the V2 Glance client.
-           A Glance client is needed to create an Image that can be used with
-           a compute instance. If omitted, the `region` argument of the provider
-           is used.
-    :param int size_max: The maximum size (in bytes) of the image to return.
-    :param int size_min: The minimum size (in bytes) of the image to return.
-    :param str sort_direction: Order the results in either `asc` or `desc`.
-    :param str sort_key: Sort images based on a certain key. Defaults to `name`.
-    :param str tag: Search for images with a specific tag.
-    :param Sequence[str] tags: A list of tags required to be set on the image 
-           (all specified tags must be in the images tag list for it to be matched).
-    :param str visibility: The visibility of the image. Must be one of
-           "public", "private", "community", or "shared". Defaults to "private".
+    Use this data source to access information about an existing resource.
     """
     ...

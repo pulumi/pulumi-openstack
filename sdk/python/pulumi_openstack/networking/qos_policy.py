@@ -24,24 +24,6 @@ class QosPolicyArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a QosPolicy resource.
-        :param pulumi.Input[str] description: The human-readable description for the QoS policy.
-               Changing this updates the description of the existing QoS policy.
-        :param pulumi.Input[bool] is_default: Indicates whether the QoS policy is default
-               QoS policy or not. Changing this updates the default status of the existing
-               QoS policy.
-        :param pulumi.Input[str] name: The name of the QoS policy. Changing this updates the name of
-               the existing QoS policy.
-        :param pulumi.Input[str] project_id: The owner of the QoS policy. Required if admin wants to
-               create a QoS policy for another project. Changing this creates a new QoS policy.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a Neutron Qos policy. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               QoS policy.
-        :param pulumi.Input[bool] shared: Indicates whether this QoS policy is shared across
-               all projects. Changing this updates the shared status of the existing
-               QoS policy.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the QoS policy.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -63,10 +45,6 @@ class QosPolicyArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The human-readable description for the QoS policy.
-        Changing this updates the description of the existing QoS policy.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -76,11 +54,6 @@ class QosPolicyArgs:
     @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether the QoS policy is default
-        QoS policy or not. Changing this updates the default status of the existing
-        QoS policy.
-        """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
@@ -90,10 +63,6 @@ class QosPolicyArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the QoS policy. Changing this updates the name of
-        the existing QoS policy.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -103,10 +72,6 @@ class QosPolicyArgs:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The owner of the QoS policy. Required if admin wants to
-        create a QoS policy for another project. Changing this creates a new QoS policy.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -116,12 +81,6 @@ class QosPolicyArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a Neutron Qos policy. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        QoS policy.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -131,11 +90,6 @@ class QosPolicyArgs:
     @property
     @pulumi.getter
     def shared(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether this QoS policy is shared across
-        all projects. Changing this updates the shared status of the existing
-        QoS policy.
-        """
         return pulumi.get(self, "shared")
 
     @shared.setter
@@ -145,9 +99,6 @@ class QosPolicyArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A set of string tags for the QoS policy.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -157,9 +108,6 @@ class QosPolicyArgs:
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        Map of additional options.
-        """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
@@ -184,29 +132,6 @@ class _QosPolicyState:
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering QosPolicy resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] all_tags: The collection of tags assigned on the QoS policy, which have been
-               explicitly and implicitly added.
-        :param pulumi.Input[str] created_at: The time at which QoS policy was created.
-        :param pulumi.Input[str] description: The human-readable description for the QoS policy.
-               Changing this updates the description of the existing QoS policy.
-        :param pulumi.Input[bool] is_default: Indicates whether the QoS policy is default
-               QoS policy or not. Changing this updates the default status of the existing
-               QoS policy.
-        :param pulumi.Input[str] name: The name of the QoS policy. Changing this updates the name of
-               the existing QoS policy.
-        :param pulumi.Input[str] project_id: The owner of the QoS policy. Required if admin wants to
-               create a QoS policy for another project. Changing this creates a new QoS policy.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a Neutron Qos policy. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               QoS policy.
-        :param pulumi.Input[int] revision_number: The revision number of the QoS policy.
-        :param pulumi.Input[bool] shared: Indicates whether this QoS policy is shared across
-               all projects. Changing this updates the shared status of the existing
-               QoS policy.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the QoS policy.
-        :param pulumi.Input[str] updated_at: The time at which QoS policy was created.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         if all_tags is not None:
             pulumi.set(__self__, "all_tags", all_tags)
@@ -236,10 +161,6 @@ class _QosPolicyState:
     @property
     @pulumi.getter(name="allTags")
     def all_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The collection of tags assigned on the QoS policy, which have been
-        explicitly and implicitly added.
-        """
         return pulumi.get(self, "all_tags")
 
     @all_tags.setter
@@ -249,9 +170,6 @@ class _QosPolicyState:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time at which QoS policy was created.
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -261,10 +179,6 @@ class _QosPolicyState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The human-readable description for the QoS policy.
-        Changing this updates the description of the existing QoS policy.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -274,11 +188,6 @@ class _QosPolicyState:
     @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether the QoS policy is default
-        QoS policy or not. Changing this updates the default status of the existing
-        QoS policy.
-        """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
@@ -288,10 +197,6 @@ class _QosPolicyState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the QoS policy. Changing this updates the name of
-        the existing QoS policy.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -301,10 +206,6 @@ class _QosPolicyState:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The owner of the QoS policy. Required if admin wants to
-        create a QoS policy for another project. Changing this creates a new QoS policy.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -314,12 +215,6 @@ class _QosPolicyState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a Neutron Qos policy. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        QoS policy.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -329,9 +224,6 @@ class _QosPolicyState:
     @property
     @pulumi.getter(name="revisionNumber")
     def revision_number(self) -> Optional[pulumi.Input[int]]:
-        """
-        The revision number of the QoS policy.
-        """
         return pulumi.get(self, "revision_number")
 
     @revision_number.setter
@@ -341,11 +233,6 @@ class _QosPolicyState:
     @property
     @pulumi.getter
     def shared(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether this QoS policy is shared across
-        all projects. Changing this updates the shared status of the existing
-        QoS policy.
-        """
         return pulumi.get(self, "shared")
 
     @shared.setter
@@ -355,9 +242,6 @@ class _QosPolicyState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A set of string tags for the QoS policy.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -367,9 +251,6 @@ class _QosPolicyState:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time at which QoS policy was created.
-        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -379,9 +260,6 @@ class _QosPolicyState:
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        Map of additional options.
-        """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
@@ -404,46 +282,9 @@ class QosPolicy(pulumi.CustomResource):
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
-        Manages a V2 Neutron QoS policy resource within OpenStack.
-
-        ## Example Usage
-        ### Create a QoS Policy
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="bw_limit")
-        ```
-
-        ## Import
-
-        QoS Policies can be imported using the `id`, e.g.
-
-        ```sh
-         $ pulumi import openstack:networking/qosPolicy:QosPolicy qos_policy_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae
-        ```
-
+        Create a QosPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The human-readable description for the QoS policy.
-               Changing this updates the description of the existing QoS policy.
-        :param pulumi.Input[bool] is_default: Indicates whether the QoS policy is default
-               QoS policy or not. Changing this updates the default status of the existing
-               QoS policy.
-        :param pulumi.Input[str] name: The name of the QoS policy. Changing this updates the name of
-               the existing QoS policy.
-        :param pulumi.Input[str] project_id: The owner of the QoS policy. Required if admin wants to
-               create a QoS policy for another project. Changing this creates a new QoS policy.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a Neutron Qos policy. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               QoS policy.
-        :param pulumi.Input[bool] shared: Indicates whether this QoS policy is shared across
-               all projects. Changing this updates the shared status of the existing
-               QoS policy.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the QoS policy.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         ...
     @overload
@@ -452,26 +293,7 @@ class QosPolicy(pulumi.CustomResource):
                  args: Optional[QosPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V2 Neutron QoS policy resource within OpenStack.
-
-        ## Example Usage
-        ### Create a QoS Policy
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="bw_limit")
-        ```
-
-        ## Import
-
-        QoS Policies can be imported using the `id`, e.g.
-
-        ```sh
-         $ pulumi import openstack:networking/qosPolicy:QosPolicy qos_policy_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae
-        ```
-
+        Create a QosPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param QosPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -545,29 +367,6 @@ class QosPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] all_tags: The collection of tags assigned on the QoS policy, which have been
-               explicitly and implicitly added.
-        :param pulumi.Input[str] created_at: The time at which QoS policy was created.
-        :param pulumi.Input[str] description: The human-readable description for the QoS policy.
-               Changing this updates the description of the existing QoS policy.
-        :param pulumi.Input[bool] is_default: Indicates whether the QoS policy is default
-               QoS policy or not. Changing this updates the default status of the existing
-               QoS policy.
-        :param pulumi.Input[str] name: The name of the QoS policy. Changing this updates the name of
-               the existing QoS policy.
-        :param pulumi.Input[str] project_id: The owner of the QoS policy. Required if admin wants to
-               create a QoS policy for another project. Changing this creates a new QoS policy.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create a Neutron Qos policy. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               QoS policy.
-        :param pulumi.Input[int] revision_number: The revision number of the QoS policy.
-        :param pulumi.Input[bool] shared: Indicates whether this QoS policy is shared across
-               all projects. Changing this updates the shared status of the existing
-               QoS policy.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the QoS policy.
-        :param pulumi.Input[str] updated_at: The time at which QoS policy was created.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -590,107 +389,60 @@ class QosPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter(name="allTags")
     def all_tags(self) -> pulumi.Output[Sequence[str]]:
-        """
-        The collection of tags assigned on the QoS policy, which have been
-        explicitly and implicitly added.
-        """
         return pulumi.get(self, "all_tags")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
-        """
-        The time at which QoS policy was created.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The human-readable description for the QoS policy.
-        Changing this updates the description of the existing QoS policy.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="isDefault")
     def is_default(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Indicates whether the QoS policy is default
-        QoS policy or not. Changing this updates the default status of the existing
-        QoS policy.
-        """
         return pulumi.get(self, "is_default")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the QoS policy. Changing this updates the name of
-        the existing QoS policy.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
-        """
-        The owner of the QoS policy. Required if admin wants to
-        create a QoS policy for another project. Changing this creates a new QoS policy.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create a Neutron Qos policy. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        QoS policy.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="revisionNumber")
     def revision_number(self) -> pulumi.Output[int]:
-        """
-        The revision number of the QoS policy.
-        """
         return pulumi.get(self, "revision_number")
 
     @property
     @pulumi.getter
     def shared(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Indicates whether this QoS policy is shared across
-        all projects. Changing this updates the shared status of the existing
-        QoS policy.
-        """
         return pulumi.get(self, "shared")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        A set of string tags for the QoS policy.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
-        """
-        The time at which QoS policy was created.
-        """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
-        """
-        Map of additional options.
-        """
         return pulumi.get(self, "value_specs")
 

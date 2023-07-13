@@ -76,25 +76,16 @@ class GetNodeGroupResult:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        The time at which the node group was created.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="dockerVolumeSize")
     def docker_volume_size(self) -> int:
-        """
-        The size (in GB) of the Docker volume.
-        """
         return pulumi.get(self, "docker_volume_size")
 
     @property
     @pulumi.getter
     def flavor(self) -> str:
-        """
-        The flavor for the nodes of the node group.
-        """
         return pulumi.get(self, "flavor")
 
     @property
@@ -108,82 +99,51 @@ class GetNodeGroupResult:
     @property
     @pulumi.getter
     def image(self) -> str:
-        """
-        The reference to an image that is used for nodes of the node group.
-        """
         return pulumi.get(self, "image")
 
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, Any]:
-        """
-        The list of key value pairs representing additional properties of
-        the node group.
-        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="maxNodeCount")
     def max_node_count(self) -> int:
-        """
-        The maximum number of nodes for the node group.
-        """
         return pulumi.get(self, "max_node_count")
 
     @property
     @pulumi.getter(name="minNodeCount")
     def min_node_count(self) -> int:
-        """
-        The minimum number of nodes for the node group.
-        """
         return pulumi.get(self, "min_node_count")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> int:
-        """
-        The number of nodes for the node group.
-        """
         return pulumi.get(self, "node_count")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
-        """
-        The project of the node group.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def role(self) -> str:
-        """
-        The role of the node group.
-        """
         return pulumi.get(self, "role")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
-        """
-        The time at which the node group was updated.
-        """
         return pulumi.get(self, "updated_at")
 
 
@@ -215,24 +175,7 @@ def get_node_group(cluster_id: Optional[str] = None,
                    region: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodeGroupResult:
     """
-    Use this data source to get information of an available OpenStack Magnum node group.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    nodegroup1 = openstack.containerinfra.get_node_group(cluster_id="cluster_1",
-        name="nodegroup_1")
-    ```
-
-
-    :param str cluster_id: The name of the OpenStack Magnum cluster.
-    :param str name: The name of the node group.
-    :param str region: The region in which to obtain the V1 Container Infra
-           client.
-           If omitted, the `region` argument of the provider is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -265,23 +208,6 @@ def get_node_group_output(cluster_id: Optional[pulumi.Input[str]] = None,
                           region: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeGroupResult]:
     """
-    Use this data source to get information of an available OpenStack Magnum node group.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    nodegroup1 = openstack.containerinfra.get_node_group(cluster_id="cluster_1",
-        name="nodegroup_1")
-    ```
-
-
-    :param str cluster_id: The name of the OpenStack Magnum cluster.
-    :param str name: The name of the node group.
-    :param str region: The region in which to obtain the V1 Container Infra
-           client.
-           If omitted, the `region` argument of the provider is used.
+    Use this data source to access information about an existing resource.
     """
     ...

@@ -21,16 +21,6 @@ class AggregateV2Args:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AggregateV2 resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: The list of hosts contained in the Host Aggregate. The hosts must be added
-               to Openstack and visible in the web interface, or the provider will fail to add them to the host
-               aggregate.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
-        :param pulumi.Input[str] name: The name of the Host Aggregate
-        :param pulumi.Input[str] region: The region in which to create the Host Aggregate. If
-               omitted, the `region` argument of the provider is used. Changing this
-               creates a new Host Aggregate.
-        :param pulumi.Input[str] zone: The name of the Availability Zone to use. If ommited, it will take the default
-               availability zone.
         """
         if hosts is not None:
             pulumi.set(__self__, "hosts", hosts)
@@ -46,11 +36,6 @@ class AggregateV2Args:
     @property
     @pulumi.getter
     def hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The list of hosts contained in the Host Aggregate. The hosts must be added
-        to Openstack and visible in the web interface, or the provider will fail to add them to the host
-        aggregate.
-        """
         return pulumi.get(self, "hosts")
 
     @hosts.setter
@@ -60,9 +45,6 @@ class AggregateV2Args:
     @property
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
-        """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
@@ -72,9 +54,6 @@ class AggregateV2Args:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the Host Aggregate
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -84,11 +63,6 @@ class AggregateV2Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to create the Host Aggregate. If
-        omitted, the `region` argument of the provider is used. Changing this
-        creates a new Host Aggregate.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -98,10 +72,6 @@ class AggregateV2Args:
     @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the Availability Zone to use. If ommited, it will take the default
-        availability zone.
-        """
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -119,16 +89,6 @@ class _AggregateV2State:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AggregateV2 resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: The list of hosts contained in the Host Aggregate. The hosts must be added
-               to Openstack and visible in the web interface, or the provider will fail to add them to the host
-               aggregate.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
-        :param pulumi.Input[str] name: The name of the Host Aggregate
-        :param pulumi.Input[str] region: The region in which to create the Host Aggregate. If
-               omitted, the `region` argument of the provider is used. Changing this
-               creates a new Host Aggregate.
-        :param pulumi.Input[str] zone: The name of the Availability Zone to use. If ommited, it will take the default
-               availability zone.
         """
         if hosts is not None:
             pulumi.set(__self__, "hosts", hosts)
@@ -144,11 +104,6 @@ class _AggregateV2State:
     @property
     @pulumi.getter
     def hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The list of hosts contained in the Host Aggregate. The hosts must be added
-        to Openstack and visible in the web interface, or the provider will fail to add them to the host
-        aggregate.
-        """
         return pulumi.get(self, "hosts")
 
     @hosts.setter
@@ -158,9 +113,6 @@ class _AggregateV2State:
     @property
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
-        """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
@@ -170,9 +122,6 @@ class _AggregateV2State:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the Host Aggregate
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -182,11 +131,6 @@ class _AggregateV2State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to create the Host Aggregate. If
-        omitted, the `region` argument of the provider is used. Changing this
-        creates a new Host Aggregate.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -196,10 +140,6 @@ class _AggregateV2State:
     @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the Availability Zone to use. If ommited, it will take the default
-        availability zone.
-        """
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -219,59 +159,9 @@ class AggregateV2(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a Host Aggregate within Openstack Nova.
-
-        ## Example Usage
-        ### Full example
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        dell_servers = openstack.compute.AggregateV2("dellServers",
-            hosts=[
-                "myhost01.example.com",
-                "myhost02.example.com",
-            ],
-            metadata={
-                "cpus": "56",
-            },
-            region="RegionOne",
-            zone="nova")
-        ```
-        ### Minimum required example
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test = openstack.compute.AggregateV2("test")
-        ```
-
-        ## Import
-
-        You can import an existing Host Aggregate by their ID.
-
-        ```sh
-         $ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24
-        ```
-
-         The ID can be obtained with an openstack command$ openstack aggregate list +----+------+-------------------+ | ID | Name | Availability Zone | +----+------+-------------------+ | 59 | test | None
-
-        | +----+------+-------------------+
-
+        Create a AggregateV2 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: The list of hosts contained in the Host Aggregate. The hosts must be added
-               to Openstack and visible in the web interface, or the provider will fail to add them to the host
-               aggregate.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
-        :param pulumi.Input[str] name: The name of the Host Aggregate
-        :param pulumi.Input[str] region: The region in which to create the Host Aggregate. If
-               omitted, the `region` argument of the provider is used. Changing this
-               creates a new Host Aggregate.
-        :param pulumi.Input[str] zone: The name of the Availability Zone to use. If ommited, it will take the default
-               availability zone.
         """
         ...
     @overload
@@ -280,47 +170,7 @@ class AggregateV2(pulumi.CustomResource):
                  args: Optional[AggregateV2Args] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Host Aggregate within Openstack Nova.
-
-        ## Example Usage
-        ### Full example
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        dell_servers = openstack.compute.AggregateV2("dellServers",
-            hosts=[
-                "myhost01.example.com",
-                "myhost02.example.com",
-            ],
-            metadata={
-                "cpus": "56",
-            },
-            region="RegionOne",
-            zone="nova")
-        ```
-        ### Minimum required example
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test = openstack.compute.AggregateV2("test")
-        ```
-
-        ## Import
-
-        You can import an existing Host Aggregate by their ID.
-
-        ```sh
-         $ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24
-        ```
-
-         The ID can be obtained with an openstack command$ openstack aggregate list +----+------+-------------------+ | ID | Name | Availability Zone | +----+------+-------------------+ | 59 | test | None
-
-        | +----+------+-------------------+
-
+        Create a AggregateV2 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AggregateV2Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -377,16 +227,6 @@ class AggregateV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: The list of hosts contained in the Host Aggregate. The hosts must be added
-               to Openstack and visible in the web interface, or the provider will fail to add them to the host
-               aggregate.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
-        :param pulumi.Input[str] name: The name of the Host Aggregate
-        :param pulumi.Input[str] region: The region in which to create the Host Aggregate. If
-               omitted, the `region` argument of the provider is used. Changing this
-               creates a new Host Aggregate.
-        :param pulumi.Input[str] zone: The name of the Availability Zone to use. If ommited, it will take the default
-               availability zone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -402,45 +242,25 @@ class AggregateV2(pulumi.CustomResource):
     @property
     @pulumi.getter
     def hosts(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        The list of hosts contained in the Host Aggregate. The hosts must be added
-        to Openstack and visible in the web interface, or the provider will fail to add them to the host
-        aggregate.
-        """
         return pulumi.get(self, "hosts")
 
     @property
     @pulumi.getter
     def metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
-        """
         return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the Host Aggregate
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to create the Host Aggregate. If
-        omitted, the `region` argument of the provider is used. Changing this
-        creates a new Host Aggregate.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def zone(self) -> pulumi.Output[Optional[str]]:
-        """
-        The name of the Availability Zone to use. If ommited, it will take the default
-        availability zone.
-        """
         return pulumi.get(self, "zone")
 

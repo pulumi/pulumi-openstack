@@ -44,9 +44,6 @@ class GetQosBandwidthLimitRuleResult:
     @property
     @pulumi.getter
     def direction(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "direction")
 
     @property
@@ -60,33 +57,21 @@ class GetQosBandwidthLimitRuleResult:
     @property
     @pulumi.getter(name="maxBurstKbps")
     def max_burst_kbps(self) -> int:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "max_burst_kbps")
 
     @property
     @pulumi.getter(name="maxKbps")
     def max_kbps(self) -> int:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "max_kbps")
 
     @property
     @pulumi.getter(name="qosPolicyId")
     def qos_policy_id(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "qos_policy_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
 
@@ -110,24 +95,7 @@ def get_qos_bandwidth_limit_rule(max_burst_kbps: Optional[int] = None,
                                  region: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetQosBandwidthLimitRuleResult:
     """
-    Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    qos_bandwidth_limit_rule1 = openstack.networking.get_qos_bandwidth_limit_rule(max_kbps=300)
-    ```
-
-
-    :param int max_burst_kbps: The maximum burst size in kilobits of a QoS bandwidth limit rule.
-    :param int max_kbps: The maximum kilobits per second of a QoS bandwidth limit rule.
-    :param str qos_policy_id: The QoS policy reference.
-    :param str region: The region in which to obtain the V2 Networking client.
-           A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
-           `region` argument of the provider is used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['maxBurstKbps'] = max_burst_kbps
@@ -153,23 +121,6 @@ def get_qos_bandwidth_limit_rule_output(max_burst_kbps: Optional[pulumi.Input[Op
                                         region: Optional[pulumi.Input[Optional[str]]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQosBandwidthLimitRuleResult]:
     """
-    Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    qos_bandwidth_limit_rule1 = openstack.networking.get_qos_bandwidth_limit_rule(max_kbps=300)
-    ```
-
-
-    :param int max_burst_kbps: The maximum burst size in kilobits of a QoS bandwidth limit rule.
-    :param int max_kbps: The maximum kilobits per second of a QoS bandwidth limit rule.
-    :param str qos_policy_id: The QoS policy reference.
-    :param str region: The region in which to obtain the V2 Networking client.
-           A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
-           `region` argument of the provider is used.
+    Use this data source to access information about an existing resource.
     """
     ...

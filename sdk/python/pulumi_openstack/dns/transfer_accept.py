@@ -21,17 +21,6 @@ class TransferAcceptArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a TransferAccept resource.
-        :param pulumi.Input[str] key: The transfer key.
-        :param pulumi.Input[str] zone_transfer_request_id: The ID of the zone transfer request.
-        :param pulumi.Input[bool] disable_status_check: Disable wait for zone to reach ACTIVE
-               status. The check is enabled by default. If this argument is true, zone
-               will be considered as created/updated if OpenStack accept returned success.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
-               Keypairs are associated with accounts, but a Compute client is needed to
-               create one. If omitted, the `region` argument of the provider is used.
-               Changing this creates a new DNS zone.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
-               new transfer accept.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "zone_transfer_request_id", zone_transfer_request_id)
@@ -45,9 +34,6 @@ class TransferAcceptArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
-        """
-        The transfer key.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -57,9 +43,6 @@ class TransferAcceptArgs:
     @property
     @pulumi.getter(name="zoneTransferRequestId")
     def zone_transfer_request_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the zone transfer request.
-        """
         return pulumi.get(self, "zone_transfer_request_id")
 
     @zone_transfer_request_id.setter
@@ -69,11 +52,6 @@ class TransferAcceptArgs:
     @property
     @pulumi.getter(name="disableStatusCheck")
     def disable_status_check(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Disable wait for zone to reach ACTIVE
-        status. The check is enabled by default. If this argument is true, zone
-        will be considered as created/updated if OpenStack accept returned success.
-        """
         return pulumi.get(self, "disable_status_check")
 
     @disable_status_check.setter
@@ -83,12 +61,6 @@ class TransferAcceptArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Compute client.
-        Keypairs are associated with accounts, but a Compute client is needed to
-        create one. If omitted, the `region` argument of the provider is used.
-        Changing this creates a new DNS zone.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -98,10 +70,6 @@ class TransferAcceptArgs:
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        Map of additional options. Changing this creates a
-        new transfer accept.
-        """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
@@ -119,17 +87,6 @@ class _TransferAcceptState:
                  zone_transfer_request_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TransferAccept resources.
-        :param pulumi.Input[bool] disable_status_check: Disable wait for zone to reach ACTIVE
-               status. The check is enabled by default. If this argument is true, zone
-               will be considered as created/updated if OpenStack accept returned success.
-        :param pulumi.Input[str] key: The transfer key.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
-               Keypairs are associated with accounts, but a Compute client is needed to
-               create one. If omitted, the `region` argument of the provider is used.
-               Changing this creates a new DNS zone.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
-               new transfer accept.
-        :param pulumi.Input[str] zone_transfer_request_id: The ID of the zone transfer request.
         """
         if disable_status_check is not None:
             pulumi.set(__self__, "disable_status_check", disable_status_check)
@@ -145,11 +102,6 @@ class _TransferAcceptState:
     @property
     @pulumi.getter(name="disableStatusCheck")
     def disable_status_check(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Disable wait for zone to reach ACTIVE
-        status. The check is enabled by default. If this argument is true, zone
-        will be considered as created/updated if OpenStack accept returned success.
-        """
         return pulumi.get(self, "disable_status_check")
 
     @disable_status_check.setter
@@ -159,9 +111,6 @@ class _TransferAcceptState:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
-        """
-        The transfer key.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -171,12 +120,6 @@ class _TransferAcceptState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Compute client.
-        Keypairs are associated with accounts, but a Compute client is needed to
-        create one. If omitted, the `region` argument of the provider is used.
-        Changing this creates a new DNS zone.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -186,10 +129,6 @@ class _TransferAcceptState:
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        Map of additional options. Changing this creates a
-        new transfer accept.
-        """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
@@ -199,9 +138,6 @@ class _TransferAcceptState:
     @property
     @pulumi.getter(name="zoneTransferRequestId")
     def zone_transfer_request_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the zone transfer request.
-        """
         return pulumi.get(self, "zone_transfer_request_id")
 
     @zone_transfer_request_id.setter
@@ -221,49 +157,9 @@ class TransferAccept(pulumi.CustomResource):
                  zone_transfer_request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a DNS zone transfer accept in the OpenStack DNS Service.
-
-        ## Example Usage
-        ### Automatically detect the correct network
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        example_zone = openstack.dns.Zone("exampleZone",
-            email="jdoe@example.com",
-            description="An example zone",
-            ttl=3000,
-            type="PRIMARY")
-        request1 = openstack.dns.TransferRequest("request1",
-            zone_id=example_zone.id,
-            description="a transfer accept")
-        accept1 = openstack.dns.TransferAccept("accept1",
-            zone_transfer_request_id=request1.id,
-            key=request1.key)
-        ```
-
-        ## Import
-
-        This resource can be imported by specifying the transferAccept ID
-
-        ```sh
-         $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 accept_id
-        ```
-
+        Create a TransferAccept resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] disable_status_check: Disable wait for zone to reach ACTIVE
-               status. The check is enabled by default. If this argument is true, zone
-               will be considered as created/updated if OpenStack accept returned success.
-        :param pulumi.Input[str] key: The transfer key.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
-               Keypairs are associated with accounts, but a Compute client is needed to
-               create one. If omitted, the `region` argument of the provider is used.
-               Changing this creates a new DNS zone.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
-               new transfer accept.
-        :param pulumi.Input[str] zone_transfer_request_id: The ID of the zone transfer request.
         """
         ...
     @overload
@@ -272,36 +168,7 @@ class TransferAccept(pulumi.CustomResource):
                  args: TransferAcceptArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DNS zone transfer accept in the OpenStack DNS Service.
-
-        ## Example Usage
-        ### Automatically detect the correct network
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        example_zone = openstack.dns.Zone("exampleZone",
-            email="jdoe@example.com",
-            description="An example zone",
-            ttl=3000,
-            type="PRIMARY")
-        request1 = openstack.dns.TransferRequest("request1",
-            zone_id=example_zone.id,
-            description="a transfer accept")
-        accept1 = openstack.dns.TransferAccept("accept1",
-            zone_transfer_request_id=request1.id,
-            key=request1.key)
-        ```
-
-        ## Import
-
-        This resource can be imported by specifying the transferAccept ID
-
-        ```sh
-         $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 accept_id
-        ```
-
+        Create a TransferAccept resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param TransferAcceptArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -362,17 +229,6 @@ class TransferAccept(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] disable_status_check: Disable wait for zone to reach ACTIVE
-               status. The check is enabled by default. If this argument is true, zone
-               will be considered as created/updated if OpenStack accept returned success.
-        :param pulumi.Input[str] key: The transfer key.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
-               Keypairs are associated with accounts, but a Compute client is needed to
-               create one. If omitted, the `region` argument of the provider is used.
-               Changing this creates a new DNS zone.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
-               new transfer accept.
-        :param pulumi.Input[str] zone_transfer_request_id: The ID of the zone transfer request.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -388,46 +244,25 @@ class TransferAccept(pulumi.CustomResource):
     @property
     @pulumi.getter(name="disableStatusCheck")
     def disable_status_check(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Disable wait for zone to reach ACTIVE
-        status. The check is enabled by default. If this argument is true, zone
-        will be considered as created/updated if OpenStack accept returned success.
-        """
         return pulumi.get(self, "disable_status_check")
 
     @property
     @pulumi.getter
     def key(self) -> pulumi.Output[str]:
-        """
-        The transfer key.
-        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Compute client.
-        Keypairs are associated with accounts, but a Compute client is needed to
-        create one. If omitted, the `region` argument of the provider is used.
-        Changing this creates a new DNS zone.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
-        """
-        Map of additional options. Changing this creates a
-        new transfer accept.
-        """
         return pulumi.get(self, "value_specs")
 
     @property
     @pulumi.getter(name="zoneTransferRequestId")
     def zone_transfer_request_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the zone transfer request.
-        """
         return pulumi.get(self, "zone_transfer_request_id")
 

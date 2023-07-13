@@ -23,18 +23,6 @@ class ContainerV1Args:
                  secret_refs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]] = None):
         """
         The set of arguments for constructing a ContainerV1 resource.
-        :param pulumi.Input[str] type: Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
-        :param pulumi.Input['ContainerV1AclArgs'] acl: Allows to control an access to a container. Currently only
-               the `read` operation is supported. If not specified, the container is
-               accessible project wide. The `read` structure is described below.
-        :param pulumi.Input[str] name: Human-readable name for the Container. Does not have
-               to be unique.
-        :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
-               A KeyManager client is needed to create a container. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               V1 container.
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]] secret_refs: A set of dictionaries containing references to secrets. The structure is described
-               below.
         """
         pulumi.set(__self__, "type", type)
         if acl is not None:
@@ -49,9 +37,6 @@ class ContainerV1Args:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
-        """
-        Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -61,11 +46,6 @@ class ContainerV1Args:
     @property
     @pulumi.getter
     def acl(self) -> Optional[pulumi.Input['ContainerV1AclArgs']]:
-        """
-        Allows to control an access to a container. Currently only
-        the `read` operation is supported. If not specified, the container is
-        accessible project wide. The `read` structure is described below.
-        """
         return pulumi.get(self, "acl")
 
     @acl.setter
@@ -75,10 +55,6 @@ class ContainerV1Args:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable name for the Container. Does not have
-        to be unique.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -88,12 +64,6 @@ class ContainerV1Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V1 KeyManager client.
-        A KeyManager client is needed to create a container. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        V1 container.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -103,10 +73,6 @@ class ContainerV1Args:
     @property
     @pulumi.getter(name="secretRefs")
     def secret_refs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]]:
-        """
-        A set of dictionaries containing references to secrets. The structure is described
-        below.
-        """
         return pulumi.get(self, "secret_refs")
 
     @secret_refs.setter
@@ -130,24 +96,6 @@ class _ContainerV1State:
                  updated_at: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ContainerV1 resources.
-        :param pulumi.Input['ContainerV1AclArgs'] acl: Allows to control an access to a container. Currently only
-               the `read` operation is supported. If not specified, the container is
-               accessible project wide. The `read` structure is described below.
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerV1ConsumerArgs']]] consumers: The list of the container consumers. The structure is described below.
-        :param pulumi.Input[str] container_ref: The container reference / where to find the container.
-        :param pulumi.Input[str] created_at: The date the container ACL was created.
-        :param pulumi.Input[str] creator_id: The creator of the container.
-        :param pulumi.Input[str] name: Human-readable name for the Container. Does not have
-               to be unique.
-        :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
-               A KeyManager client is needed to create a container. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               V1 container.
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]] secret_refs: A set of dictionaries containing references to secrets. The structure is described
-               below.
-        :param pulumi.Input[str] status: The status of the container.
-        :param pulumi.Input[str] type: Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
-        :param pulumi.Input[str] updated_at: The date the container ACL was last updated.
         """
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
@@ -175,11 +123,6 @@ class _ContainerV1State:
     @property
     @pulumi.getter
     def acl(self) -> Optional[pulumi.Input['ContainerV1AclArgs']]:
-        """
-        Allows to control an access to a container. Currently only
-        the `read` operation is supported. If not specified, the container is
-        accessible project wide. The `read` structure is described below.
-        """
         return pulumi.get(self, "acl")
 
     @acl.setter
@@ -189,9 +132,6 @@ class _ContainerV1State:
     @property
     @pulumi.getter
     def consumers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerV1ConsumerArgs']]]]:
-        """
-        The list of the container consumers. The structure is described below.
-        """
         return pulumi.get(self, "consumers")
 
     @consumers.setter
@@ -201,9 +141,6 @@ class _ContainerV1State:
     @property
     @pulumi.getter(name="containerRef")
     def container_ref(self) -> Optional[pulumi.Input[str]]:
-        """
-        The container reference / where to find the container.
-        """
         return pulumi.get(self, "container_ref")
 
     @container_ref.setter
@@ -213,9 +150,6 @@ class _ContainerV1State:
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
-        """
-        The date the container ACL was created.
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -225,9 +159,6 @@ class _ContainerV1State:
     @property
     @pulumi.getter(name="creatorId")
     def creator_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The creator of the container.
-        """
         return pulumi.get(self, "creator_id")
 
     @creator_id.setter
@@ -237,10 +168,6 @@ class _ContainerV1State:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable name for the Container. Does not have
-        to be unique.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -250,12 +177,6 @@ class _ContainerV1State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V1 KeyManager client.
-        A KeyManager client is needed to create a container. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        V1 container.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -265,10 +186,6 @@ class _ContainerV1State:
     @property
     @pulumi.getter(name="secretRefs")
     def secret_refs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]]:
-        """
-        A set of dictionaries containing references to secrets. The structure is described
-        below.
-        """
         return pulumi.get(self, "secret_refs")
 
     @secret_refs.setter
@@ -278,9 +195,6 @@ class _ContainerV1State:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        The status of the container.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -290,9 +204,6 @@ class _ContainerV1State:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -302,9 +213,6 @@ class _ContainerV1State:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
-        """
-        The date the container ACL was last updated.
-        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -324,110 +232,9 @@ class ContainerV1(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a V1 Barbican container resource within OpenStack.
-
-        ## Example Usage
-        ### Simple secret
-
-        The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        certificate1 = openstack.keymanager.SecretV1("certificate1",
-            payload=(lambda path: open(path).read())("cert.pem"),
-            secret_type="certificate",
-            payload_content_type="text/plain")
-        private_key1 = openstack.keymanager.SecretV1("privateKey1",
-            payload=(lambda path: open(path).read())("cert-key.pem"),
-            secret_type="private",
-            payload_content_type="text/plain")
-        intermediate1 = openstack.keymanager.SecretV1("intermediate1",
-            payload=(lambda path: open(path).read())("intermediate-ca.pem"),
-            secret_type="certificate",
-            payload_content_type="text/plain")
-        tls1 = openstack.keymanager.ContainerV1("tls1",
-            type="certificate",
-            secret_refs=[
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="certificate",
-                    secret_ref=certificate1.secret_ref,
-                ),
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="private_key",
-                    secret_ref=private_key1.secret_ref,
-                ),
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="intermediates",
-                    secret_ref=intermediate1.secret_ref,
-                ),
-            ])
-        subnet1 = openstack.networking.get_subnet(name="my-subnet")
-        lb1 = openstack.loadbalancer.LoadBalancer("lb1", vip_subnet_id=subnet1.id)
-        listener1 = openstack.loadbalancer.Listener("listener1",
-            protocol="TERMINATED_HTTPS",
-            protocol_port=443,
-            loadbalancer_id=lb1.id,
-            default_tls_container_ref=tls1.container_ref)
-        ```
-        ### Container with the ACL
-
-        > **Note** Only read ACLs are supported
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        tls1 = openstack.keymanager.ContainerV1("tls1",
-            type="certificate",
-            secret_refs=[
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="certificate",
-                    secret_ref=openstack_keymanager_secret_v1["certificate_1"]["secret_ref"],
-                ),
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="private_key",
-                    secret_ref=openstack_keymanager_secret_v1["private_key_1"]["secret_ref"],
-                ),
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="intermediates",
-                    secret_ref=openstack_keymanager_secret_v1["intermediate_1"]["secret_ref"],
-                ),
-            ],
-            acl=openstack.keymanager.ContainerV1AclArgs(
-                read=openstack.keymanager.ContainerV1AclReadArgs(
-                    project_access=False,
-                    users=[
-                        "userid1",
-                        "userid2",
-                    ],
-                ),
-            ))
-        ```
-
-        ## Import
-
-        Containers can be imported using the container id (the last part of the container reference), e.g.
-
-        ```sh
-         $ pulumi import openstack:keymanager/containerV1:ContainerV1 container_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
-        ```
-
+        Create a ContainerV1 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ContainerV1AclArgs']] acl: Allows to control an access to a container. Currently only
-               the `read` operation is supported. If not specified, the container is
-               accessible project wide. The `read` structure is described below.
-        :param pulumi.Input[str] name: Human-readable name for the Container. Does not have
-               to be unique.
-        :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
-               A KeyManager client is needed to create a container. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               V1 container.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerV1SecretRefArgs']]]] secret_refs: A set of dictionaries containing references to secrets. The structure is described
-               below.
-        :param pulumi.Input[str] type: Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
         """
         ...
     @overload
@@ -436,96 +243,7 @@ class ContainerV1(pulumi.CustomResource):
                  args: ContainerV1Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V1 Barbican container resource within OpenStack.
-
-        ## Example Usage
-        ### Simple secret
-
-        The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        certificate1 = openstack.keymanager.SecretV1("certificate1",
-            payload=(lambda path: open(path).read())("cert.pem"),
-            secret_type="certificate",
-            payload_content_type="text/plain")
-        private_key1 = openstack.keymanager.SecretV1("privateKey1",
-            payload=(lambda path: open(path).read())("cert-key.pem"),
-            secret_type="private",
-            payload_content_type="text/plain")
-        intermediate1 = openstack.keymanager.SecretV1("intermediate1",
-            payload=(lambda path: open(path).read())("intermediate-ca.pem"),
-            secret_type="certificate",
-            payload_content_type="text/plain")
-        tls1 = openstack.keymanager.ContainerV1("tls1",
-            type="certificate",
-            secret_refs=[
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="certificate",
-                    secret_ref=certificate1.secret_ref,
-                ),
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="private_key",
-                    secret_ref=private_key1.secret_ref,
-                ),
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="intermediates",
-                    secret_ref=intermediate1.secret_ref,
-                ),
-            ])
-        subnet1 = openstack.networking.get_subnet(name="my-subnet")
-        lb1 = openstack.loadbalancer.LoadBalancer("lb1", vip_subnet_id=subnet1.id)
-        listener1 = openstack.loadbalancer.Listener("listener1",
-            protocol="TERMINATED_HTTPS",
-            protocol_port=443,
-            loadbalancer_id=lb1.id,
-            default_tls_container_ref=tls1.container_ref)
-        ```
-        ### Container with the ACL
-
-        > **Note** Only read ACLs are supported
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        tls1 = openstack.keymanager.ContainerV1("tls1",
-            type="certificate",
-            secret_refs=[
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="certificate",
-                    secret_ref=openstack_keymanager_secret_v1["certificate_1"]["secret_ref"],
-                ),
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="private_key",
-                    secret_ref=openstack_keymanager_secret_v1["private_key_1"]["secret_ref"],
-                ),
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="intermediates",
-                    secret_ref=openstack_keymanager_secret_v1["intermediate_1"]["secret_ref"],
-                ),
-            ],
-            acl=openstack.keymanager.ContainerV1AclArgs(
-                read=openstack.keymanager.ContainerV1AclReadArgs(
-                    project_access=False,
-                    users=[
-                        "userid1",
-                        "userid2",
-                    ],
-                ),
-            ))
-        ```
-
-        ## Import
-
-        Containers can be imported using the container id (the last part of the container reference), e.g.
-
-        ```sh
-         $ pulumi import openstack:keymanager/containerV1:ContainerV1 container_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
-        ```
-
+        Create a ContainerV1 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ContainerV1Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -596,24 +314,6 @@ class ContainerV1(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ContainerV1AclArgs']] acl: Allows to control an access to a container. Currently only
-               the `read` operation is supported. If not specified, the container is
-               accessible project wide. The `read` structure is described below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerV1ConsumerArgs']]]] consumers: The list of the container consumers. The structure is described below.
-        :param pulumi.Input[str] container_ref: The container reference / where to find the container.
-        :param pulumi.Input[str] created_at: The date the container ACL was created.
-        :param pulumi.Input[str] creator_id: The creator of the container.
-        :param pulumi.Input[str] name: Human-readable name for the Container. Does not have
-               to be unique.
-        :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
-               A KeyManager client is needed to create a container. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               V1 container.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerV1SecretRefArgs']]]] secret_refs: A set of dictionaries containing references to secrets. The structure is described
-               below.
-        :param pulumi.Input[str] status: The status of the container.
-        :param pulumi.Input[str] type: Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
-        :param pulumi.Input[str] updated_at: The date the container ACL was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -635,95 +335,55 @@ class ContainerV1(pulumi.CustomResource):
     @property
     @pulumi.getter
     def acl(self) -> pulumi.Output['outputs.ContainerV1Acl']:
-        """
-        Allows to control an access to a container. Currently only
-        the `read` operation is supported. If not specified, the container is
-        accessible project wide. The `read` structure is described below.
-        """
         return pulumi.get(self, "acl")
 
     @property
     @pulumi.getter
     def consumers(self) -> pulumi.Output[Sequence['outputs.ContainerV1Consumer']]:
-        """
-        The list of the container consumers. The structure is described below.
-        """
         return pulumi.get(self, "consumers")
 
     @property
     @pulumi.getter(name="containerRef")
     def container_ref(self) -> pulumi.Output[str]:
-        """
-        The container reference / where to find the container.
-        """
         return pulumi.get(self, "container_ref")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
-        """
-        The date the container ACL was created.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="creatorId")
     def creator_id(self) -> pulumi.Output[str]:
-        """
-        The creator of the container.
-        """
         return pulumi.get(self, "creator_id")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Human-readable name for the Container. Does not have
-        to be unique.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V1 KeyManager client.
-        A KeyManager client is needed to create a container. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        V1 container.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="secretRefs")
     def secret_refs(self) -> pulumi.Output[Optional[Sequence['outputs.ContainerV1SecretRef']]]:
-        """
-        A set of dictionaries containing references to secrets. The structure is described
-        below.
-        """
         return pulumi.get(self, "secret_refs")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
-        """
-        The status of the container.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
-        """
-        Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
-        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
-        """
-        The date the container ACL was last updated.
-        """
         return pulumi.get(self, "updated_at")
 

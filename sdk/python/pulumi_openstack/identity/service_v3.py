@@ -21,12 +21,6 @@ class ServiceV3Args:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServiceV3 resource.
-        :param pulumi.Input[str] type: The service type.
-        :param pulumi.Input[str] description: The service description.
-        :param pulumi.Input[bool] enabled: The service status. Defaults to `true`.
-        :param pulumi.Input[str] name: The service name.
-        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
-               If omitted, the `region` argument of the provider is used.
         """
         pulumi.set(__self__, "type", type)
         if description is not None:
@@ -41,9 +35,6 @@ class ServiceV3Args:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
-        """
-        The service type.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -53,9 +44,6 @@ class ServiceV3Args:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The service description.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -65,9 +53,6 @@ class ServiceV3Args:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The service status. Defaults to `true`.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -77,9 +62,6 @@ class ServiceV3Args:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The service name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -89,10 +71,6 @@ class ServiceV3Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V3 Keystone client.
-        If omitted, the `region` argument of the provider is used.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -110,12 +88,6 @@ class _ServiceV3State:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServiceV3 resources.
-        :param pulumi.Input[str] description: The service description.
-        :param pulumi.Input[bool] enabled: The service status. Defaults to `true`.
-        :param pulumi.Input[str] name: The service name.
-        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
-               If omitted, the `region` argument of the provider is used.
-        :param pulumi.Input[str] type: The service type.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -131,9 +103,6 @@ class _ServiceV3State:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The service description.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -143,9 +112,6 @@ class _ServiceV3State:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The service status. Defaults to `true`.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -155,9 +121,6 @@ class _ServiceV3State:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The service name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -167,10 +130,6 @@ class _ServiceV3State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V3 Keystone client.
-        If omitted, the `region` argument of the provider is used.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -180,9 +139,6 @@ class _ServiceV3State:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The service type.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -202,35 +158,9 @@ class ServiceV3(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a V3 Service resource within OpenStack Keystone.
-
-        > **Note:** This usually requires admin privileges.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        service1 = openstack.identity.ServiceV3("service1", type="custom")
-        ```
-
-        ## Import
-
-        Services can be imported using the `id`, e.g.
-
-        ```sh
-         $ pulumi import openstack:identity/serviceV3:ServiceV3 service_1 6688e967-158a-496f-a224-cae3414e6b61
-        ```
-
+        Create a ServiceV3 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The service description.
-        :param pulumi.Input[bool] enabled: The service status. Defaults to `true`.
-        :param pulumi.Input[str] name: The service name.
-        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
-               If omitted, the `region` argument of the provider is used.
-        :param pulumi.Input[str] type: The service type.
         """
         ...
     @overload
@@ -239,27 +169,7 @@ class ServiceV3(pulumi.CustomResource):
                  args: ServiceV3Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V3 Service resource within OpenStack Keystone.
-
-        > **Note:** This usually requires admin privileges.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        service1 = openstack.identity.ServiceV3("service1", type="custom")
-        ```
-
-        ## Import
-
-        Services can be imported using the `id`, e.g.
-
-        ```sh
-         $ pulumi import openstack:identity/serviceV3:ServiceV3 service_1 6688e967-158a-496f-a224-cae3414e6b61
-        ```
-
+        Create a ServiceV3 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ServiceV3Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -318,12 +228,6 @@ class ServiceV3(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The service description.
-        :param pulumi.Input[bool] enabled: The service status. Defaults to `true`.
-        :param pulumi.Input[str] name: The service name.
-        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
-               If omitted, the `region` argument of the provider is used.
-        :param pulumi.Input[str] type: The service type.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -339,41 +243,25 @@ class ServiceV3(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The service description.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        The service status. Defaults to `true`.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The service name.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V3 Keystone client.
-        If omitted, the `region` argument of the provider is used.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
-        """
-        The service type.
-        """
         return pulumi.get(self, "type")
 

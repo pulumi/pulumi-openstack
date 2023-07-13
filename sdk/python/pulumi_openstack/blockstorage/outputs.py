@@ -94,22 +94,6 @@ class VolumeSchedulerHint(dict):
                  local_to_instance: Optional[str] = None,
                  query: Optional[str] = None,
                  same_hosts: Optional[Sequence[str]] = None):
-        """
-        :param Mapping[str, Any] additional_properties: Arbitrary key/value pairs of additional
-               properties to pass to the scheduler.
-        :param Sequence[str] different_hosts: The volume should be scheduled on a 
-               different host from the set of volumes specified in the list provided.
-        :param str local_to_instance: An instance UUID. The volume should be 
-               scheduled on the same host as the instance.
-        :param str query: A conditional query that a back-end must pass in
-               order to host a volume. The query must use the `JsonFilter` syntax
-               which is described
-               [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
-               At this time, only simple queries are supported. Compound queries using
-               `and`, `or`, or `not` are not supported. An example of a simple query is:
-        :param Sequence[str] same_hosts: A list of volume UUIDs. The volume should be
-               scheduled on the same host as another volume specified in the list provided.
-        """
         if additional_properties is not None:
             pulumi.set(__self__, "additional_properties", additional_properties)
         if different_hosts is not None:
@@ -124,50 +108,26 @@ class VolumeSchedulerHint(dict):
     @property
     @pulumi.getter(name="additionalProperties")
     def additional_properties(self) -> Optional[Mapping[str, Any]]:
-        """
-        Arbitrary key/value pairs of additional
-        properties to pass to the scheduler.
-        """
         return pulumi.get(self, "additional_properties")
 
     @property
     @pulumi.getter(name="differentHosts")
     def different_hosts(self) -> Optional[Sequence[str]]:
-        """
-        The volume should be scheduled on a 
-        different host from the set of volumes specified in the list provided.
-        """
         return pulumi.get(self, "different_hosts")
 
     @property
     @pulumi.getter(name="localToInstance")
     def local_to_instance(self) -> Optional[str]:
-        """
-        An instance UUID. The volume should be 
-        scheduled on the same host as the instance.
-        """
         return pulumi.get(self, "local_to_instance")
 
     @property
     @pulumi.getter
     def query(self) -> Optional[str]:
-        """
-        A conditional query that a back-end must pass in
-        order to host a volume. The query must use the `JsonFilter` syntax
-        which is described
-        [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
-        At this time, only simple queries are supported. Compound queries using
-        `and`, `or`, or `not` are not supported. An example of a simple query is:
-        """
         return pulumi.get(self, "query")
 
     @property
     @pulumi.getter(name="sameHosts")
     def same_hosts(self) -> Optional[Sequence[str]]:
-        """
-        A list of volume UUIDs. The volume should be
-        scheduled on the same host as another volume specified in the list provided.
-        """
         return pulumi.get(self, "same_hosts")
 
 
@@ -294,22 +254,6 @@ class VolumeV2SchedulerHint(dict):
                  local_to_instance: Optional[str] = None,
                  query: Optional[str] = None,
                  same_hosts: Optional[Sequence[str]] = None):
-        """
-        :param Mapping[str, Any] additional_properties: Arbitrary key/value pairs of additional
-               properties to pass to the scheduler.
-        :param Sequence[str] different_hosts: The volume should be scheduled on a 
-               different host from the set of volumes specified in the list provided.
-        :param str local_to_instance: An instance UUID. The volume should be 
-               scheduled on the same host as the instance.
-        :param str query: A conditional query that a back-end must pass in
-               order to host a volume. The query must use the `JsonFilter` syntax
-               which is described
-               [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
-               At this time, only simple queries are supported. Compound queries using
-               `and`, `or`, or `not` are not supported. An example of a simple query is:
-        :param Sequence[str] same_hosts: A list of volume UUIDs. The volume should be
-               scheduled on the same host as another volume specified in the list provided.
-        """
         if additional_properties is not None:
             pulumi.set(__self__, "additional_properties", additional_properties)
         if different_hosts is not None:
@@ -324,50 +268,26 @@ class VolumeV2SchedulerHint(dict):
     @property
     @pulumi.getter(name="additionalProperties")
     def additional_properties(self) -> Optional[Mapping[str, Any]]:
-        """
-        Arbitrary key/value pairs of additional
-        properties to pass to the scheduler.
-        """
         return pulumi.get(self, "additional_properties")
 
     @property
     @pulumi.getter(name="differentHosts")
     def different_hosts(self) -> Optional[Sequence[str]]:
-        """
-        The volume should be scheduled on a 
-        different host from the set of volumes specified in the list provided.
-        """
         return pulumi.get(self, "different_hosts")
 
     @property
     @pulumi.getter(name="localToInstance")
     def local_to_instance(self) -> Optional[str]:
-        """
-        An instance UUID. The volume should be 
-        scheduled on the same host as the instance.
-        """
         return pulumi.get(self, "local_to_instance")
 
     @property
     @pulumi.getter
     def query(self) -> Optional[str]:
-        """
-        A conditional query that a back-end must pass in
-        order to host a volume. The query must use the `JsonFilter` syntax
-        which is described
-        [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
-        At this time, only simple queries are supported. Compound queries using
-        `and`, `or`, or `not` are not supported. An example of a simple query is:
-        """
         return pulumi.get(self, "query")
 
     @property
     @pulumi.getter(name="sameHosts")
     def same_hosts(self) -> Optional[Sequence[str]]:
-        """
-        A list of volume UUIDs. The volume should be
-        scheduled on the same host as another volume specified in the list provided.
-        """
         return pulumi.get(self, "same_hosts")
 
 

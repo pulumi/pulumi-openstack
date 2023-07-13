@@ -23,17 +23,6 @@ class ServerGroupArgs:
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a ServerGroup resource.
-        :param pulumi.Input[str] name: A unique name for the server group. Changing this creates
-               a new server group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: A list of exactly one policy name to associate with
-               the server group. See the Policies section for more information. Changing this
-               creates a new server group.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
-               If omitted, the `region` argument of the provider is used. Changing
-               this creates a new server group.
-        :param pulumi.Input['ServerGroupRulesArgs'] rules: The rules which are applied to specified `policy`. Currently,
-               only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -49,10 +38,6 @@ class ServerGroupArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        A unique name for the server group. Changing this creates
-        a new server group.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -62,11 +47,6 @@ class ServerGroupArgs:
     @property
     @pulumi.getter
     def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of exactly one policy name to associate with
-        the server group. See the Policies section for more information. Changing this
-        creates a new server group.
-        """
         return pulumi.get(self, "policies")
 
     @policies.setter
@@ -76,11 +56,6 @@ class ServerGroupArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Compute client.
-        If omitted, the `region` argument of the provider is used. Changing
-        this creates a new server group.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -90,10 +65,6 @@ class ServerGroupArgs:
     @property
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input['ServerGroupRulesArgs']]:
-        """
-        The rules which are applied to specified `policy`. Currently,
-        only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
-        """
         return pulumi.get(self, "rules")
 
     @rules.setter
@@ -103,9 +74,6 @@ class ServerGroupArgs:
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        Map of additional options.
-        """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
@@ -124,18 +92,6 @@ class _ServerGroupState:
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering ServerGroup resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: The instances that are part of this server group.
-        :param pulumi.Input[str] name: A unique name for the server group. Changing this creates
-               a new server group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: A list of exactly one policy name to associate with
-               the server group. See the Policies section for more information. Changing this
-               creates a new server group.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
-               If omitted, the `region` argument of the provider is used. Changing
-               this creates a new server group.
-        :param pulumi.Input['ServerGroupRulesArgs'] rules: The rules which are applied to specified `policy`. Currently,
-               only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         if members is not None:
             pulumi.set(__self__, "members", members)
@@ -153,9 +109,6 @@ class _ServerGroupState:
     @property
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The instances that are part of this server group.
-        """
         return pulumi.get(self, "members")
 
     @members.setter
@@ -165,10 +118,6 @@ class _ServerGroupState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        A unique name for the server group. Changing this creates
-        a new server group.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -178,11 +127,6 @@ class _ServerGroupState:
     @property
     @pulumi.getter
     def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of exactly one policy name to associate with
-        the server group. See the Policies section for more information. Changing this
-        creates a new server group.
-        """
         return pulumi.get(self, "policies")
 
     @policies.setter
@@ -192,11 +136,6 @@ class _ServerGroupState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Compute client.
-        If omitted, the `region` argument of the provider is used. Changing
-        this creates a new server group.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -206,10 +145,6 @@ class _ServerGroupState:
     @property
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input['ServerGroupRulesArgs']]:
-        """
-        The rules which are applied to specified `policy`. Currently,
-        only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
-        """
         return pulumi.get(self, "rules")
 
     @rules.setter
@@ -219,9 +154,6 @@ class _ServerGroupState:
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        Map of additional options.
-        """
         return pulumi.get(self, "value_specs")
 
     @value_specs.setter
@@ -241,68 +173,9 @@ class ServerGroup(pulumi.CustomResource):
                  value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
-        Manages a V2 Server Group resource within OpenStack.
-
-        ## Example Usage
-        ### Compute service API version 2.63 or below:
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test_sg = openstack.compute.ServerGroup("test-sg", policies=["anti-affinity"])
-        ```
-        ### Compute service API version 2.64 or above:
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test_sg = openstack.compute.ServerGroup("test-sg",
-            policies=["anti-affinity"],
-            rules=openstack.compute.ServerGroupRulesArgs(
-                max_server_per_host=3,
-            ))
-        ```
-        ## Policies
-
-        * `affinity` - All instances/servers launched in this group will be hosted on
-          the same compute node.
-
-        * `anti-affinity` - All instances/servers launched in this group will be
-          hosted on different compute nodes.
-
-        * `soft-affinity` - All instances/servers launched in this group will be hosted
-          on the same compute node if possible, but if not possible they
-          still will be scheduled instead of failure. To use this policy your
-          OpenStack environment should support Compute service API 2.15 or above.
-
-        * `soft-anti-affinity` - All instances/servers launched in this group will be
-          hosted on different compute nodes if possible, but if not possible they
-          still will be scheduled instead of failure. To use this policy your
-          OpenStack environment should support Compute service API 2.15 or above.
-
-        ## Import
-
-        Server Groups can be imported using the `id`, e.g.
-
-        ```sh
-         $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
-        ```
-
+        Create a ServerGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: A unique name for the server group. Changing this creates
-               a new server group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: A list of exactly one policy name to associate with
-               the server group. See the Policies section for more information. Changing this
-               creates a new server group.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
-               If omitted, the `region` argument of the provider is used. Changing
-               this creates a new server group.
-        :param pulumi.Input[pulumi.InputType['ServerGroupRulesArgs']] rules: The rules which are applied to specified `policy`. Currently,
-               only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         ...
     @overload
@@ -311,55 +184,7 @@ class ServerGroup(pulumi.CustomResource):
                  args: Optional[ServerGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V2 Server Group resource within OpenStack.
-
-        ## Example Usage
-        ### Compute service API version 2.63 or below:
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test_sg = openstack.compute.ServerGroup("test-sg", policies=["anti-affinity"])
-        ```
-        ### Compute service API version 2.64 or above:
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test_sg = openstack.compute.ServerGroup("test-sg",
-            policies=["anti-affinity"],
-            rules=openstack.compute.ServerGroupRulesArgs(
-                max_server_per_host=3,
-            ))
-        ```
-        ## Policies
-
-        * `affinity` - All instances/servers launched in this group will be hosted on
-          the same compute node.
-
-        * `anti-affinity` - All instances/servers launched in this group will be
-          hosted on different compute nodes.
-
-        * `soft-affinity` - All instances/servers launched in this group will be hosted
-          on the same compute node if possible, but if not possible they
-          still will be scheduled instead of failure. To use this policy your
-          OpenStack environment should support Compute service API 2.15 or above.
-
-        * `soft-anti-affinity` - All instances/servers launched in this group will be
-          hosted on different compute nodes if possible, but if not possible they
-          still will be scheduled instead of failure. To use this policy your
-          OpenStack environment should support Compute service API 2.15 or above.
-
-        ## Import
-
-        Server Groups can be imported using the `id`, e.g.
-
-        ```sh
-         $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
-        ```
-
+        Create a ServerGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ServerGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -418,18 +243,6 @@ class ServerGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: The instances that are part of this server group.
-        :param pulumi.Input[str] name: A unique name for the server group. Changing this creates
-               a new server group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: A list of exactly one policy name to associate with
-               the server group. See the Policies section for more information. Changing this
-               creates a new server group.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
-               If omitted, the `region` argument of the provider is used. Changing
-               this creates a new server group.
-        :param pulumi.Input[pulumi.InputType['ServerGroupRulesArgs']] rules: The rules which are applied to specified `policy`. Currently,
-               only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
-        :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -446,54 +259,30 @@ class ServerGroup(pulumi.CustomResource):
     @property
     @pulumi.getter
     def members(self) -> pulumi.Output[Sequence[str]]:
-        """
-        The instances that are part of this server group.
-        """
         return pulumi.get(self, "members")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        A unique name for the server group. Changing this creates
-        a new server group.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def policies(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        A list of exactly one policy name to associate with
-        the server group. See the Policies section for more information. Changing this
-        creates a new server group.
-        """
         return pulumi.get(self, "policies")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Compute client.
-        If omitted, the `region` argument of the provider is used. Changing
-        this creates a new server group.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def rules(self) -> pulumi.Output['outputs.ServerGroupRules']:
-        """
-        The rules which are applied to specified `policy`. Currently,
-        only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
-        """
         return pulumi.get(self, "rules")
 
     @property
     @pulumi.getter(name="valueSpecs")
     def value_specs(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
-        """
-        Map of additional options.
-        """
         return pulumi.get(self, "value_specs")
 

@@ -23,21 +23,6 @@ class MemberV1Args:
                  weight: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a MemberV1 resource.
-        :param pulumi.Input[str] address: The IP address of the member. Changing this creates a
-               new member.
-        :param pulumi.Input[str] pool_id: The ID of the LB pool. Changing this creates a new
-               member.
-        :param pulumi.Input[int] port: An integer representing the port on which the member is
-               hosted. Changing this creates a new member.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the member.
-               Acceptable values are 'true' and 'false'. Changing this value updates the
-               state of the existing member.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an LB member. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               LB member.
-        :param pulumi.Input[str] tenant_id: The owner of the member. Required if admin wants to
-               create a member for another tenant. Changing this creates a new member.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "pool_id", pool_id)
@@ -54,10 +39,6 @@ class MemberV1Args:
     @property
     @pulumi.getter
     def address(self) -> pulumi.Input[str]:
-        """
-        The IP address of the member. Changing this creates a
-        new member.
-        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -67,10 +48,6 @@ class MemberV1Args:
     @property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the LB pool. Changing this creates a new
-        member.
-        """
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
@@ -80,10 +57,6 @@ class MemberV1Args:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
-        """
-        An integer representing the port on which the member is
-        hosted. Changing this creates a new member.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -93,11 +66,6 @@ class MemberV1Args:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The administrative state of the member.
-        Acceptable values are 'true' and 'false'. Changing this value updates the
-        state of the existing member.
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -107,12 +75,6 @@ class MemberV1Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an LB member. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        LB member.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -122,10 +84,6 @@ class MemberV1Args:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The owner of the member. Required if admin wants to
-        create a member for another tenant. Changing this creates a new member.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -154,21 +112,6 @@ class _MemberV1State:
                  weight: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering MemberV1 resources.
-        :param pulumi.Input[str] address: The IP address of the member. Changing this creates a
-               new member.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the member.
-               Acceptable values are 'true' and 'false'. Changing this value updates the
-               state of the existing member.
-        :param pulumi.Input[str] pool_id: The ID of the LB pool. Changing this creates a new
-               member.
-        :param pulumi.Input[int] port: An integer representing the port on which the member is
-               hosted. Changing this creates a new member.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an LB member. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               LB member.
-        :param pulumi.Input[str] tenant_id: The owner of the member. Required if admin wants to
-               create a member for another tenant. Changing this creates a new member.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -188,10 +131,6 @@ class _MemberV1State:
     @property
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
-        """
-        The IP address of the member. Changing this creates a
-        new member.
-        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -201,11 +140,6 @@ class _MemberV1State:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The administrative state of the member.
-        Acceptable values are 'true' and 'false'. Changing this value updates the
-        state of the existing member.
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -215,10 +149,6 @@ class _MemberV1State:
     @property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the LB pool. Changing this creates a new
-        member.
-        """
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
@@ -228,10 +158,6 @@ class _MemberV1State:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
-        """
-        An integer representing the port on which the member is
-        hosted. Changing this creates a new member.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -241,12 +167,6 @@ class _MemberV1State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an LB member. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        LB member.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -256,10 +176,6 @@ class _MemberV1State:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The owner of the member. Required if admin wants to
-        create a member for another tenant. Changing this creates a new member.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -290,45 +206,9 @@ class MemberV1(pulumi.CustomResource):
                  weight: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Manages a V1 load balancer member resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        member1 = openstack.loadbalancer.MemberV1("member1",
-            address="192.168.0.10",
-            pool_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
-            port=80)
-        ```
-
-        ## Import
-
-        Load Balancer Members can be imported using the `id`, e.g.
-
-        ```sh
-         $ pulumi import openstack:loadbalancer/memberV1:MemberV1 member_1 a7498676-4fe4-4243-a864-2eaaf18c73df
-        ```
-
+        Create a MemberV1 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The IP address of the member. Changing this creates a
-               new member.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the member.
-               Acceptable values are 'true' and 'false'. Changing this value updates the
-               state of the existing member.
-        :param pulumi.Input[str] pool_id: The ID of the LB pool. Changing this creates a new
-               member.
-        :param pulumi.Input[int] port: An integer representing the port on which the member is
-               hosted. Changing this creates a new member.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an LB member. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               LB member.
-        :param pulumi.Input[str] tenant_id: The owner of the member. Required if admin wants to
-               create a member for another tenant. Changing this creates a new member.
         """
         ...
     @overload
@@ -337,28 +217,7 @@ class MemberV1(pulumi.CustomResource):
                  args: MemberV1Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V1 load balancer member resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        member1 = openstack.loadbalancer.MemberV1("member1",
-            address="192.168.0.10",
-            pool_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
-            port=80)
-        ```
-
-        ## Import
-
-        Load Balancer Members can be imported using the `id`, e.g.
-
-        ```sh
-         $ pulumi import openstack:loadbalancer/memberV1:MemberV1 member_1 a7498676-4fe4-4243-a864-2eaaf18c73df
-        ```
-
+        Create a MemberV1 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param MemberV1Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -427,21 +286,6 @@ class MemberV1(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The IP address of the member. Changing this creates a
-               new member.
-        :param pulumi.Input[bool] admin_state_up: The administrative state of the member.
-               Acceptable values are 'true' and 'false'. Changing this value updates the
-               state of the existing member.
-        :param pulumi.Input[str] pool_id: The ID of the LB pool. Changing this creates a new
-               member.
-        :param pulumi.Input[int] port: An integer representing the port on which the member is
-               hosted. Changing this creates a new member.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Networking client.
-               A Networking client is needed to create an LB member. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               LB member.
-        :param pulumi.Input[str] tenant_id: The owner of the member. Required if admin wants to
-               create a member for another tenant. Changing this creates a new member.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -459,58 +303,31 @@ class MemberV1(pulumi.CustomResource):
     @property
     @pulumi.getter
     def address(self) -> pulumi.Output[str]:
-        """
-        The IP address of the member. Changing this creates a
-        new member.
-        """
         return pulumi.get(self, "address")
 
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[bool]:
-        """
-        The administrative state of the member.
-        Acceptable values are 'true' and 'false'. Changing this value updates the
-        state of the existing member.
-        """
         return pulumi.get(self, "admin_state_up")
 
     @property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the LB pool. Changing this creates a new
-        member.
-        """
         return pulumi.get(self, "pool_id")
 
     @property
     @pulumi.getter
     def port(self) -> pulumi.Output[int]:
-        """
-        An integer representing the port on which the member is
-        hosted. Changing this creates a new member.
-        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Networking client.
-        A Networking client is needed to create an LB member. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        LB member.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The owner of the member. Required if admin wants to
-        create a member for another tenant. Changing this creates a new member.
-        """
         return pulumi.get(self, "tenant_id")
 
     @property

@@ -20,16 +20,6 @@ class PortSecGroupAssociateArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PortSecGroupAssociate resource.
-        :param pulumi.Input[str] port_id: An UUID of the port to apply security groups to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs to apply to
-               the port. The security groups must be specified by ID and not name (as
-               opposed to how they are configured with the Compute Instance).
-        :param pulumi.Input[bool] enforce: Whether to replace or append the list of security
-               groups, specified in the `security_group_ids`. Defaults to `false`.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to manage a port. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               resource.
         """
         pulumi.set(__self__, "port_id", port_id)
         pulumi.set(__self__, "security_group_ids", security_group_ids)
@@ -41,9 +31,6 @@ class PortSecGroupAssociateArgs:
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Input[str]:
-        """
-        An UUID of the port to apply security groups to.
-        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -53,11 +40,6 @@ class PortSecGroupAssociateArgs:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        A list of security group IDs to apply to
-        the port. The security groups must be specified by ID and not name (as
-        opposed to how they are configured with the Compute Instance).
-        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -67,10 +49,6 @@ class PortSecGroupAssociateArgs:
     @property
     @pulumi.getter
     def enforce(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether to replace or append the list of security
-        groups, specified in the `security_group_ids`. Defaults to `false`.
-        """
         return pulumi.get(self, "enforce")
 
     @enforce.setter
@@ -80,12 +58,6 @@ class PortSecGroupAssociateArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to manage a port. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -103,18 +75,6 @@ class _PortSecGroupAssociateState:
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering PortSecGroupAssociate resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] all_security_group_ids: The collection of Security Group IDs on the port
-               which have been explicitly and implicitly added.
-        :param pulumi.Input[bool] enforce: Whether to replace or append the list of security
-               groups, specified in the `security_group_ids`. Defaults to `false`.
-        :param pulumi.Input[str] port_id: An UUID of the port to apply security groups to.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to manage a port. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs to apply to
-               the port. The security groups must be specified by ID and not name (as
-               opposed to how they are configured with the Compute Instance).
         """
         if all_security_group_ids is not None:
             pulumi.set(__self__, "all_security_group_ids", all_security_group_ids)
@@ -130,10 +90,6 @@ class _PortSecGroupAssociateState:
     @property
     @pulumi.getter(name="allSecurityGroupIds")
     def all_security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The collection of Security Group IDs on the port
-        which have been explicitly and implicitly added.
-        """
         return pulumi.get(self, "all_security_group_ids")
 
     @all_security_group_ids.setter
@@ -143,10 +99,6 @@ class _PortSecGroupAssociateState:
     @property
     @pulumi.getter
     def enforce(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether to replace or append the list of security
-        groups, specified in the `security_group_ids`. Defaults to `false`.
-        """
         return pulumi.get(self, "enforce")
 
     @enforce.setter
@@ -156,9 +108,6 @@ class _PortSecGroupAssociateState:
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        An UUID of the port to apply security groups to.
-        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -168,12 +117,6 @@ class _PortSecGroupAssociateState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to manage a port. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -183,11 +126,6 @@ class _PortSecGroupAssociateState:
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of security group IDs to apply to
-        the port. The security groups must be specified by ID and not name (as
-        opposed to how they are configured with the Compute Instance).
-        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -206,65 +144,9 @@ class PortSecGroupAssociate(pulumi.CustomResource):
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        ## Example Usage
-        ### Append a security group to an existing port
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
-        secgroup = openstack.networking.get_sec_group(name="secgroup")
-        port1 = openstack.networking.PortSecGroupAssociate("port1",
-            port_id=system_port.id,
-            security_group_ids=[secgroup.id])
-        ```
-        ### Enforce a security group to an existing port
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
-        secgroup = openstack.networking.get_sec_group(name="secgroup")
-        port1 = openstack.networking.PortSecGroupAssociate("port1",
-            port_id=system_port.id,
-            enforce=True,
-            security_group_ids=[secgroup.id])
-        ```
-        ### Remove all security groups from an existing port
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
-        port1 = openstack.networking.PortSecGroupAssociate("port1",
-            port_id=system_port.id,
-            enforce=True,
-            security_group_ids=[])
-        ```
-
-        ## Import
-
-        Port security group association can be imported using the `id` of the port, e.g.
-
-        ```sh
-         $ pulumi import openstack:networking/portSecGroupAssociate:PortSecGroupAssociate port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
-        ```
-
+        Create a PortSecGroupAssociate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enforce: Whether to replace or append the list of security
-               groups, specified in the `security_group_ids`. Defaults to `false`.
-        :param pulumi.Input[str] port_id: An UUID of the port to apply security groups to.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to manage a port. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs to apply to
-               the port. The security groups must be specified by ID and not name (as
-               opposed to how they are configured with the Compute Instance).
         """
         ...
     @overload
@@ -273,53 +155,7 @@ class PortSecGroupAssociate(pulumi.CustomResource):
                  args: PortSecGroupAssociateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-        ### Append a security group to an existing port
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
-        secgroup = openstack.networking.get_sec_group(name="secgroup")
-        port1 = openstack.networking.PortSecGroupAssociate("port1",
-            port_id=system_port.id,
-            security_group_ids=[secgroup.id])
-        ```
-        ### Enforce a security group to an existing port
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
-        secgroup = openstack.networking.get_sec_group(name="secgroup")
-        port1 = openstack.networking.PortSecGroupAssociate("port1",
-            port_id=system_port.id,
-            enforce=True,
-            security_group_ids=[secgroup.id])
-        ```
-        ### Remove all security groups from an existing port
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
-        port1 = openstack.networking.PortSecGroupAssociate("port1",
-            port_id=system_port.id,
-            enforce=True,
-            security_group_ids=[])
-        ```
-
-        ## Import
-
-        Port security group association can be imported using the `id` of the port, e.g.
-
-        ```sh
-         $ pulumi import openstack:networking/portSecGroupAssociate:PortSecGroupAssociate port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
-        ```
-
+        Create a PortSecGroupAssociate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param PortSecGroupAssociateArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -379,18 +215,6 @@ class PortSecGroupAssociate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] all_security_group_ids: The collection of Security Group IDs on the port
-               which have been explicitly and implicitly added.
-        :param pulumi.Input[bool] enforce: Whether to replace or append the list of security
-               groups, specified in the `security_group_ids`. Defaults to `false`.
-        :param pulumi.Input[str] port_id: An UUID of the port to apply security groups to.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to manage a port. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group IDs to apply to
-               the port. The security groups must be specified by ID and not name (as
-               opposed to how they are configured with the Compute Instance).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -406,47 +230,25 @@ class PortSecGroupAssociate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="allSecurityGroupIds")
     def all_security_group_ids(self) -> pulumi.Output[Sequence[str]]:
-        """
-        The collection of Security Group IDs on the port
-        which have been explicitly and implicitly added.
-        """
         return pulumi.get(self, "all_security_group_ids")
 
     @property
     @pulumi.getter
     def enforce(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Whether to replace or append the list of security
-        groups, specified in the `security_group_ids`. Defaults to `false`.
-        """
         return pulumi.get(self, "enforce")
 
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Output[str]:
-        """
-        An UUID of the port to apply security groups to.
-        """
         return pulumi.get(self, "port_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to manage a port. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        resource.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
-        """
-        A list of security group IDs to apply to
-        the port. The security groups must be specified by ID and not name (as
-        opposed to how they are configured with the Compute Instance).
-        """
         return pulumi.get(self, "security_group_ids")
 

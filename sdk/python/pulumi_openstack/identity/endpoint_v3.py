@@ -22,15 +22,6 @@ class EndpointV3Args:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EndpointV3 resource.
-        :param pulumi.Input[str] endpoint_region: The endpoint region. The `region` and
-               `endpoint_region` can be different.
-        :param pulumi.Input[str] service_id: The endpoint service ID.
-        :param pulumi.Input[str] url: The endpoint url.
-        :param pulumi.Input[str] interface: The endpoint interface. Valid values are `public`,
-               `internal` and `admin`. Default value is `public`
-        :param pulumi.Input[str] name: The endpoint name.
-        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
-               If omitted, the `region` argument of the provider is used.
         """
         pulumi.set(__self__, "endpoint_region", endpoint_region)
         pulumi.set(__self__, "service_id", service_id)
@@ -45,10 +36,6 @@ class EndpointV3Args:
     @property
     @pulumi.getter(name="endpointRegion")
     def endpoint_region(self) -> pulumi.Input[str]:
-        """
-        The endpoint region. The `region` and
-        `endpoint_region` can be different.
-        """
         return pulumi.get(self, "endpoint_region")
 
     @endpoint_region.setter
@@ -58,9 +45,6 @@ class EndpointV3Args:
     @property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Input[str]:
-        """
-        The endpoint service ID.
-        """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
@@ -70,9 +54,6 @@ class EndpointV3Args:
     @property
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
-        """
-        The endpoint url.
-        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -82,10 +63,6 @@ class EndpointV3Args:
     @property
     @pulumi.getter
     def interface(self) -> Optional[pulumi.Input[str]]:
-        """
-        The endpoint interface. Valid values are `public`,
-        `internal` and `admin`. Default value is `public`
-        """
         return pulumi.get(self, "interface")
 
     @interface.setter
@@ -95,9 +72,6 @@ class EndpointV3Args:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The endpoint name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -107,10 +81,6 @@ class EndpointV3Args:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V3 Keystone client.
-        If omitted, the `region` argument of the provider is used.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -131,17 +101,6 @@ class _EndpointV3State:
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EndpointV3 resources.
-        :param pulumi.Input[str] endpoint_region: The endpoint region. The `region` and
-               `endpoint_region` can be different.
-        :param pulumi.Input[str] interface: The endpoint interface. Valid values are `public`,
-               `internal` and `admin`. Default value is `public`
-        :param pulumi.Input[str] name: The endpoint name.
-        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
-               If omitted, the `region` argument of the provider is used.
-        :param pulumi.Input[str] service_id: The endpoint service ID.
-        :param pulumi.Input[str] service_name: The service name of the endpoint.
-        :param pulumi.Input[str] service_type: The service type of the endpoint.
-        :param pulumi.Input[str] url: The endpoint url.
         """
         if endpoint_region is not None:
             pulumi.set(__self__, "endpoint_region", endpoint_region)
@@ -163,10 +122,6 @@ class _EndpointV3State:
     @property
     @pulumi.getter(name="endpointRegion")
     def endpoint_region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The endpoint region. The `region` and
-        `endpoint_region` can be different.
-        """
         return pulumi.get(self, "endpoint_region")
 
     @endpoint_region.setter
@@ -176,10 +131,6 @@ class _EndpointV3State:
     @property
     @pulumi.getter
     def interface(self) -> Optional[pulumi.Input[str]]:
-        """
-        The endpoint interface. Valid values are `public`,
-        `internal` and `admin`. Default value is `public`
-        """
         return pulumi.get(self, "interface")
 
     @interface.setter
@@ -189,9 +140,6 @@ class _EndpointV3State:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The endpoint name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -201,10 +149,6 @@ class _EndpointV3State:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V3 Keystone client.
-        If omitted, the `region` argument of the provider is used.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -214,9 +158,6 @@ class _EndpointV3State:
     @property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The endpoint service ID.
-        """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
@@ -226,9 +167,6 @@ class _EndpointV3State:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The service name of the endpoint.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -238,9 +176,6 @@ class _EndpointV3State:
     @property
     @pulumi.getter(name="serviceType")
     def service_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The service type of the endpoint.
-        """
         return pulumi.get(self, "service_type")
 
     @service_type.setter
@@ -250,9 +185,6 @@ class _EndpointV3State:
     @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
-        """
-        The endpoint url.
-        """
         return pulumi.get(self, "url")
 
     @url.setter
@@ -273,42 +205,9 @@ class EndpointV3(pulumi.CustomResource):
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a V3 Endpoint resource within OpenStack Keystone.
-
-        > **Note:** This usually requires admin privileges.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        service1 = openstack.identity.ServiceV3("service1", type="my-service-type")
-        endpoint1 = openstack.identity.EndpointV3("endpoint1",
-            service_id=service1.id,
-            endpoint_region=service1.region,
-            url="http://my-endpoint")
-        ```
-
-        ## Import
-
-        Endpoints can be imported using the `id`, e.g.
-
-        ```sh
-         $ pulumi import openstack:identity/endpointV3:EndpointV3 endpoint_1 5392472b-106a-4845-90c6-7c8445f18770
-        ```
-
+        Create a EndpointV3 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] endpoint_region: The endpoint region. The `region` and
-               `endpoint_region` can be different.
-        :param pulumi.Input[str] interface: The endpoint interface. Valid values are `public`,
-               `internal` and `admin`. Default value is `public`
-        :param pulumi.Input[str] name: The endpoint name.
-        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
-               If omitted, the `region` argument of the provider is used.
-        :param pulumi.Input[str] service_id: The endpoint service ID.
-        :param pulumi.Input[str] url: The endpoint url.
         """
         ...
     @overload
@@ -317,31 +216,7 @@ class EndpointV3(pulumi.CustomResource):
                  args: EndpointV3Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a V3 Endpoint resource within OpenStack Keystone.
-
-        > **Note:** This usually requires admin privileges.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        service1 = openstack.identity.ServiceV3("service1", type="my-service-type")
-        endpoint1 = openstack.identity.EndpointV3("endpoint1",
-            service_id=service1.id,
-            endpoint_region=service1.region,
-            url="http://my-endpoint")
-        ```
-
-        ## Import
-
-        Endpoints can be imported using the `id`, e.g.
-
-        ```sh
-         $ pulumi import openstack:identity/endpointV3:EndpointV3 endpoint_1 5392472b-106a-4845-90c6-7c8445f18770
-        ```
-
+        Create a EndpointV3 resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param EndpointV3Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -411,17 +286,6 @@ class EndpointV3(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] endpoint_region: The endpoint region. The `region` and
-               `endpoint_region` can be different.
-        :param pulumi.Input[str] interface: The endpoint interface. Valid values are `public`,
-               `internal` and `admin`. Default value is `public`
-        :param pulumi.Input[str] name: The endpoint name.
-        :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
-               If omitted, the `region` argument of the provider is used.
-        :param pulumi.Input[str] service_id: The endpoint service ID.
-        :param pulumi.Input[str] service_name: The service name of the endpoint.
-        :param pulumi.Input[str] service_type: The service type of the endpoint.
-        :param pulumi.Input[str] url: The endpoint url.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -440,67 +304,40 @@ class EndpointV3(pulumi.CustomResource):
     @property
     @pulumi.getter(name="endpointRegion")
     def endpoint_region(self) -> pulumi.Output[str]:
-        """
-        The endpoint region. The `region` and
-        `endpoint_region` can be different.
-        """
         return pulumi.get(self, "endpoint_region")
 
     @property
     @pulumi.getter
     def interface(self) -> pulumi.Output[Optional[str]]:
-        """
-        The endpoint interface. Valid values are `public`,
-        `internal` and `admin`. Default value is `public`
-        """
         return pulumi.get(self, "interface")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The endpoint name.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V3 Keystone client.
-        If omitted, the `region` argument of the provider is used.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Output[str]:
-        """
-        The endpoint service ID.
-        """
         return pulumi.get(self, "service_id")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
-        """
-        The service name of the endpoint.
-        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter(name="serviceType")
     def service_type(self) -> pulumi.Output[str]:
-        """
-        The service type of the endpoint.
-        """
         return pulumi.get(self, "service_type")
 
     @property
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
-        """
-        The endpoint url.
-        """
         return pulumi.get(self, "url")
 

@@ -29,31 +29,6 @@ class ShareArgs:
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Share resource.
-        :param pulumi.Input[str] share_proto: The share protocol - can either be NFS, CIFS,
-               CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
-        :param pulumi.Input[int] size: The share size, in GBs. The requested share size cannot be greater
-               than the allowed GB quota. Changing this resizes the existing share.
-        :param pulumi.Input[str] availability_zone: The share availability zone. Changing this creates a
-               new share.
-        :param pulumi.Input[str] description: The human-readable description for the share.
-               Changing this updates the description of the existing share.
-        :param pulumi.Input[bool] is_public: The level of visibility for the share. Set to true to make
-               share public. Set to false to make it private. Default value is false. Changing this
-               updates the existing share.
-        :param pulumi.Input[Mapping[str, Any]] metadata: One or more metadata key and value pairs as a dictionary of
-               strings.
-        :param pulumi.Input[str] name: The name of the share. Changing this updates the name
-               of the existing share.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Shared File System client.
-               A Shared File System client is needed to create a share. Changing this
-               creates a new share.
-        :param pulumi.Input[str] share_network_id: The UUID of a share network where the share server exists
-               or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-               the share_network_id value from the snapshot is used. Changing this creates a new share.
-        :param pulumi.Input[str] share_type: The share type name. If you omit this parameter, the default
-               share type is used.
-        :param pulumi.Input[str] snapshot_id: The UUID of the share's base snapshot. Changing this creates
-               a new share.
         """
         pulumi.set(__self__, "share_proto", share_proto)
         pulumi.set(__self__, "size", size)
@@ -79,10 +54,6 @@ class ShareArgs:
     @property
     @pulumi.getter(name="shareProto")
     def share_proto(self) -> pulumi.Input[str]:
-        """
-        The share protocol - can either be NFS, CIFS,
-        CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
-        """
         return pulumi.get(self, "share_proto")
 
     @share_proto.setter
@@ -92,10 +63,6 @@ class ShareArgs:
     @property
     @pulumi.getter
     def size(self) -> pulumi.Input[int]:
-        """
-        The share size, in GBs. The requested share size cannot be greater
-        than the allowed GB quota. Changing this resizes the existing share.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -105,10 +72,6 @@ class ShareArgs:
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The share availability zone. Changing this creates a
-        new share.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -118,10 +81,6 @@ class ShareArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The human-readable description for the share.
-        Changing this updates the description of the existing share.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -131,11 +90,6 @@ class ShareArgs:
     @property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The level of visibility for the share. Set to true to make
-        share public. Set to false to make it private. Default value is false. Changing this
-        updates the existing share.
-        """
         return pulumi.get(self, "is_public")
 
     @is_public.setter
@@ -145,10 +99,6 @@ class ShareArgs:
     @property
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        One or more metadata key and value pairs as a dictionary of
-        strings.
-        """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
@@ -158,10 +108,6 @@ class ShareArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the share. Changing this updates the name
-        of the existing share.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -171,11 +117,6 @@ class ShareArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Shared File System client.
-        A Shared File System client is needed to create a share. Changing this
-        creates a new share.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -185,11 +126,6 @@ class ShareArgs:
     @property
     @pulumi.getter(name="shareNetworkId")
     def share_network_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The UUID of a share network where the share server exists
-        or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-        the share_network_id value from the snapshot is used. Changing this creates a new share.
-        """
         return pulumi.get(self, "share_network_id")
 
     @share_network_id.setter
@@ -199,10 +135,6 @@ class ShareArgs:
     @property
     @pulumi.getter(name="shareType")
     def share_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The share type name. If you omit this parameter, the default
-        share type is used.
-        """
         return pulumi.get(self, "share_type")
 
     @share_type.setter
@@ -212,10 +144,6 @@ class ShareArgs:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The UUID of the share's base snapshot. Changing this creates
-        a new share.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -246,40 +174,6 @@ class _ShareState:
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Share resources.
-        :param pulumi.Input[Mapping[str, Any]] all_metadata: The map of metadata, assigned on the share, which has been
-               explicitly and implicitly added.
-        :param pulumi.Input[str] availability_zone: The share availability zone. Changing this creates a
-               new share.
-        :param pulumi.Input[str] description: The human-readable description for the share.
-               Changing this updates the description of the existing share.
-        :param pulumi.Input[Sequence[pulumi.Input['ShareExportLocationArgs']]] export_locations: A list of export locations. For example, when a share server
-               has more than one network interface, it can have multiple export locations.
-        :param pulumi.Input[bool] has_replicas: Indicates whether a share has replicas or not.
-        :param pulumi.Input[str] host: The share host name.
-        :param pulumi.Input[bool] is_public: The level of visibility for the share. Set to true to make
-               share public. Set to false to make it private. Default value is false. Changing this
-               updates the existing share.
-        :param pulumi.Input[Mapping[str, Any]] metadata: One or more metadata key and value pairs as a dictionary of
-               strings.
-        :param pulumi.Input[str] name: The name of the share. Changing this updates the name
-               of the existing share.
-        :param pulumi.Input[str] project_id: The owner of the Share.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Shared File System client.
-               A Shared File System client is needed to create a share. Changing this
-               creates a new share.
-        :param pulumi.Input[str] replication_type: The share replication type.
-        :param pulumi.Input[str] share_network_id: The UUID of a share network where the share server exists
-               or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-               the share_network_id value from the snapshot is used. Changing this creates a new share.
-        :param pulumi.Input[str] share_proto: The share protocol - can either be NFS, CIFS,
-               CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
-        :param pulumi.Input[str] share_server_id: The UUID of the share server.
-        :param pulumi.Input[str] share_type: The share type name. If you omit this parameter, the default
-               share type is used.
-        :param pulumi.Input[int] size: The share size, in GBs. The requested share size cannot be greater
-               than the allowed GB quota. Changing this resizes the existing share.
-        :param pulumi.Input[str] snapshot_id: The UUID of the share's base snapshot. Changing this creates
-               a new share.
         """
         if all_metadata is not None:
             pulumi.set(__self__, "all_metadata", all_metadata)
@@ -321,10 +215,6 @@ class _ShareState:
     @property
     @pulumi.getter(name="allMetadata")
     def all_metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        The map of metadata, assigned on the share, which has been
-        explicitly and implicitly added.
-        """
         return pulumi.get(self, "all_metadata")
 
     @all_metadata.setter
@@ -334,10 +224,6 @@ class _ShareState:
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The share availability zone. Changing this creates a
-        new share.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -347,10 +233,6 @@ class _ShareState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The human-readable description for the share.
-        Changing this updates the description of the existing share.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -360,10 +242,6 @@ class _ShareState:
     @property
     @pulumi.getter(name="exportLocations")
     def export_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShareExportLocationArgs']]]]:
-        """
-        A list of export locations. For example, when a share server
-        has more than one network interface, it can have multiple export locations.
-        """
         return pulumi.get(self, "export_locations")
 
     @export_locations.setter
@@ -373,9 +251,6 @@ class _ShareState:
     @property
     @pulumi.getter(name="hasReplicas")
     def has_replicas(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates whether a share has replicas or not.
-        """
         return pulumi.get(self, "has_replicas")
 
     @has_replicas.setter
@@ -385,9 +260,6 @@ class _ShareState:
     @property
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
-        """
-        The share host name.
-        """
         return pulumi.get(self, "host")
 
     @host.setter
@@ -397,11 +269,6 @@ class _ShareState:
     @property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> Optional[pulumi.Input[bool]]:
-        """
-        The level of visibility for the share. Set to true to make
-        share public. Set to false to make it private. Default value is false. Changing this
-        updates the existing share.
-        """
         return pulumi.get(self, "is_public")
 
     @is_public.setter
@@ -411,10 +278,6 @@ class _ShareState:
     @property
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
-        """
-        One or more metadata key and value pairs as a dictionary of
-        strings.
-        """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
@@ -424,10 +287,6 @@ class _ShareState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the share. Changing this updates the name
-        of the existing share.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -437,9 +296,6 @@ class _ShareState:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The owner of the Share.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -449,11 +305,6 @@ class _ShareState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Shared File System client.
-        A Shared File System client is needed to create a share. Changing this
-        creates a new share.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -463,9 +314,6 @@ class _ShareState:
     @property
     @pulumi.getter(name="replicationType")
     def replication_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The share replication type.
-        """
         return pulumi.get(self, "replication_type")
 
     @replication_type.setter
@@ -475,11 +323,6 @@ class _ShareState:
     @property
     @pulumi.getter(name="shareNetworkId")
     def share_network_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The UUID of a share network where the share server exists
-        or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-        the share_network_id value from the snapshot is used. Changing this creates a new share.
-        """
         return pulumi.get(self, "share_network_id")
 
     @share_network_id.setter
@@ -489,10 +332,6 @@ class _ShareState:
     @property
     @pulumi.getter(name="shareProto")
     def share_proto(self) -> Optional[pulumi.Input[str]]:
-        """
-        The share protocol - can either be NFS, CIFS,
-        CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
-        """
         return pulumi.get(self, "share_proto")
 
     @share_proto.setter
@@ -502,9 +341,6 @@ class _ShareState:
     @property
     @pulumi.getter(name="shareServerId")
     def share_server_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The UUID of the share server.
-        """
         return pulumi.get(self, "share_server_id")
 
     @share_server_id.setter
@@ -514,10 +350,6 @@ class _ShareState:
     @property
     @pulumi.getter(name="shareType")
     def share_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The share type name. If you omit this parameter, the default
-        share type is used.
-        """
         return pulumi.get(self, "share_type")
 
     @share_type.setter
@@ -527,10 +359,6 @@ class _ShareState:
     @property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
-        """
-        The share size, in GBs. The requested share size cannot be greater
-        than the allowed GB quota. Changing this resizes the existing share.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -540,10 +368,6 @@ class _ShareState:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The UUID of the share's base snapshot. Changing this creates
-        a new share.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -569,65 +393,9 @@ class Share(pulumi.CustomResource):
                  snapshot_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Use this resource to configure a share.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
-        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
-            description="test share network with security services",
-            neutron_net_id=network1.id,
-            neutron_subnet_id=subnet1.id)
-        share1 = openstack.sharedfilesystem.Share("share1",
-            description="test share description",
-            share_proto="NFS",
-            size=1,
-            share_network_id=sharenetwork1.id)
-        ```
-
-        ## Import
-
-        This resource can be imported by specifying the ID of the share
-
-        ```sh
-         $ pulumi import openstack:sharedfilesystem/share:Share share_1 id
-        ```
-
+        Create a Share resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] availability_zone: The share availability zone. Changing this creates a
-               new share.
-        :param pulumi.Input[str] description: The human-readable description for the share.
-               Changing this updates the description of the existing share.
-        :param pulumi.Input[bool] is_public: The level of visibility for the share. Set to true to make
-               share public. Set to false to make it private. Default value is false. Changing this
-               updates the existing share.
-        :param pulumi.Input[Mapping[str, Any]] metadata: One or more metadata key and value pairs as a dictionary of
-               strings.
-        :param pulumi.Input[str] name: The name of the share. Changing this updates the name
-               of the existing share.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Shared File System client.
-               A Shared File System client is needed to create a share. Changing this
-               creates a new share.
-        :param pulumi.Input[str] share_network_id: The UUID of a share network where the share server exists
-               or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-               the share_network_id value from the snapshot is used. Changing this creates a new share.
-        :param pulumi.Input[str] share_proto: The share protocol - can either be NFS, CIFS,
-               CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
-        :param pulumi.Input[str] share_type: The share type name. If you omit this parameter, the default
-               share type is used.
-        :param pulumi.Input[int] size: The share size, in GBs. The requested share size cannot be greater
-               than the allowed GB quota. Changing this resizes the existing share.
-        :param pulumi.Input[str] snapshot_id: The UUID of the share's base snapshot. Changing this creates
-               a new share.
         """
         ...
     @overload
@@ -636,38 +404,7 @@ class Share(pulumi.CustomResource):
                  args: ShareArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Use this resource to configure a share.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
-        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
-            description="test share network with security services",
-            neutron_net_id=network1.id,
-            neutron_subnet_id=subnet1.id)
-        share1 = openstack.sharedfilesystem.Share("share1",
-            description="test share description",
-            share_proto="NFS",
-            size=1,
-            share_network_id=sharenetwork1.id)
-        ```
-
-        ## Import
-
-        This resource can be imported by specifying the ID of the share
-
-        ```sh
-         $ pulumi import openstack:sharedfilesystem/share:Share share_1 id
-        ```
-
+        Create a Share resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ShareArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -760,40 +497,6 @@ class Share(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, Any]] all_metadata: The map of metadata, assigned on the share, which has been
-               explicitly and implicitly added.
-        :param pulumi.Input[str] availability_zone: The share availability zone. Changing this creates a
-               new share.
-        :param pulumi.Input[str] description: The human-readable description for the share.
-               Changing this updates the description of the existing share.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShareExportLocationArgs']]]] export_locations: A list of export locations. For example, when a share server
-               has more than one network interface, it can have multiple export locations.
-        :param pulumi.Input[bool] has_replicas: Indicates whether a share has replicas or not.
-        :param pulumi.Input[str] host: The share host name.
-        :param pulumi.Input[bool] is_public: The level of visibility for the share. Set to true to make
-               share public. Set to false to make it private. Default value is false. Changing this
-               updates the existing share.
-        :param pulumi.Input[Mapping[str, Any]] metadata: One or more metadata key and value pairs as a dictionary of
-               strings.
-        :param pulumi.Input[str] name: The name of the share. Changing this updates the name
-               of the existing share.
-        :param pulumi.Input[str] project_id: The owner of the Share.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Shared File System client.
-               A Shared File System client is needed to create a share. Changing this
-               creates a new share.
-        :param pulumi.Input[str] replication_type: The share replication type.
-        :param pulumi.Input[str] share_network_id: The UUID of a share network where the share server exists
-               or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-               the share_network_id value from the snapshot is used. Changing this creates a new share.
-        :param pulumi.Input[str] share_proto: The share protocol - can either be NFS, CIFS,
-               CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
-        :param pulumi.Input[str] share_server_id: The UUID of the share server.
-        :param pulumi.Input[str] share_type: The share type name. If you omit this parameter, the default
-               share type is used.
-        :param pulumi.Input[int] size: The share size, in GBs. The requested share size cannot be greater
-               than the allowed GB quota. Changing this resizes the existing share.
-        :param pulumi.Input[str] snapshot_id: The UUID of the share's base snapshot. Changing this creates
-               a new share.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -822,160 +525,90 @@ class Share(pulumi.CustomResource):
     @property
     @pulumi.getter(name="allMetadata")
     def all_metadata(self) -> pulumi.Output[Mapping[str, Any]]:
-        """
-        The map of metadata, assigned on the share, which has been
-        explicitly and implicitly added.
-        """
         return pulumi.get(self, "all_metadata")
 
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[str]:
-        """
-        The share availability zone. Changing this creates a
-        new share.
-        """
         return pulumi.get(self, "availability_zone")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The human-readable description for the share.
-        Changing this updates the description of the existing share.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="exportLocations")
     def export_locations(self) -> pulumi.Output[Sequence['outputs.ShareExportLocation']]:
-        """
-        A list of export locations. For example, when a share server
-        has more than one network interface, it can have multiple export locations.
-        """
         return pulumi.get(self, "export_locations")
 
     @property
     @pulumi.getter(name="hasReplicas")
     def has_replicas(self) -> pulumi.Output[bool]:
-        """
-        Indicates whether a share has replicas or not.
-        """
         return pulumi.get(self, "has_replicas")
 
     @property
     @pulumi.getter
     def host(self) -> pulumi.Output[str]:
-        """
-        The share host name.
-        """
         return pulumi.get(self, "host")
 
     @property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> pulumi.Output[Optional[bool]]:
-        """
-        The level of visibility for the share. Set to true to make
-        share public. Set to false to make it private. Default value is false. Changing this
-        updates the existing share.
-        """
         return pulumi.get(self, "is_public")
 
     @property
     @pulumi.getter
     def metadata(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
-        """
-        One or more metadata key and value pairs as a dictionary of
-        strings.
-        """
         return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the share. Changing this updates the name
-        of the existing share.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
-        """
-        The owner of the Share.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Shared File System client.
-        A Shared File System client is needed to create a share. Changing this
-        creates a new share.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="replicationType")
     def replication_type(self) -> pulumi.Output[str]:
-        """
-        The share replication type.
-        """
         return pulumi.get(self, "replication_type")
 
     @property
     @pulumi.getter(name="shareNetworkId")
     def share_network_id(self) -> pulumi.Output[str]:
-        """
-        The UUID of a share network where the share server exists
-        or will be created. If `share_network_id` is not set and you provide a `snapshot_id`,
-        the share_network_id value from the snapshot is used. Changing this creates a new share.
-        """
         return pulumi.get(self, "share_network_id")
 
     @property
     @pulumi.getter(name="shareProto")
     def share_proto(self) -> pulumi.Output[str]:
-        """
-        The share protocol - can either be NFS, CIFS,
-        CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
-        """
         return pulumi.get(self, "share_proto")
 
     @property
     @pulumi.getter(name="shareServerId")
     def share_server_id(self) -> pulumi.Output[str]:
-        """
-        The UUID of the share server.
-        """
         return pulumi.get(self, "share_server_id")
 
     @property
     @pulumi.getter(name="shareType")
     def share_type(self) -> pulumi.Output[str]:
-        """
-        The share type name. If you omit this parameter, the default
-        share type is used.
-        """
         return pulumi.get(self, "share_type")
 
     @property
     @pulumi.getter
     def size(self) -> pulumi.Output[int]:
-        """
-        The share size, in GBs. The requested share size cannot be greater
-        than the allowed GB quota. Changing this resizes the existing share.
-        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> pulumi.Output[Optional[str]]:
-        """
-        The UUID of the share's base snapshot. Changing this creates
-        a new share.
-        """
         return pulumi.get(self, "snapshot_id")
 

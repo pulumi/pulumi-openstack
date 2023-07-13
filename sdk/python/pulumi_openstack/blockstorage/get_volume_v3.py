@@ -59,17 +59,11 @@ class GetVolumeV3Result:
     @property
     @pulumi.getter
     def bootable(self) -> str:
-        """
-        Indicates if the volume is bootable.
-        """
         return pulumi.get(self, "bootable")
 
     @property
     @pulumi.getter
     def host(self) -> str:
-        """
-        The OpenStack host on which the volume is located.
-        """
         return pulumi.get(self, "host")
 
     @property
@@ -83,65 +77,41 @@ class GetVolumeV3Result:
     @property
     @pulumi.getter
     def metadata(self) -> Mapping[str, Any]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter
     def multiattach(self) -> bool:
-        """
-        Indicates if the volume can be attached to more then one server.
-        """
         return pulumi.get(self, "multiattach")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def size(self) -> int:
-        """
-        The size of the volume in GBs.
-        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="sourceVolumeId")
     def source_volume_id(self) -> str:
-        """
-        The ID of the volume from which the current volume was created.
-        """
         return pulumi.get(self, "source_volume_id")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> str:
-        """
-        The type of the volume.
-        """
         return pulumi.get(self, "volume_type")
 
 
@@ -173,26 +143,7 @@ def get_volume_v3(bootable: Optional[str] = None,
                   volume_type: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeV3Result:
     """
-    Use this data source to get information about an existing volume.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    volume1 = openstack.blockstorage.get_volume_v3(name="volume_1")
-    ```
-
-
-    :param str bootable: Indicates if the volume is bootable.
-    :param str host: The OpenStack host on which the volume is located.
-    :param Mapping[str, Any] metadata: Metadata key/value pairs associated with the volume.
-    :param str name: The name of the volume.
-    :param str region: The region in which to obtain the V3 Block Storage
-           client. If omitted, the `region` argument of the provider is used.
-    :param str status: The status of the volume.
-    :param str volume_type: The type of the volume.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['bootable'] = bootable
@@ -229,25 +180,6 @@ def get_volume_v3_output(bootable: Optional[pulumi.Input[Optional[str]]] = None,
                          volume_type: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumeV3Result]:
     """
-    Use this data source to get information about an existing volume.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    volume1 = openstack.blockstorage.get_volume_v3(name="volume_1")
-    ```
-
-
-    :param str bootable: Indicates if the volume is bootable.
-    :param str host: The OpenStack host on which the volume is located.
-    :param Mapping[str, Any] metadata: Metadata key/value pairs associated with the volume.
-    :param str name: The name of the volume.
-    :param str region: The region in which to obtain the V3 Block Storage
-           client. If omitted, the `region` argument of the provider is used.
-    :param str status: The status of the volume.
-    :param str volume_type: The type of the volume.
+    Use this data source to access information about an existing resource.
     """
     ...

@@ -26,25 +26,6 @@ class TrunkArgs:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Trunk resource.
-        :param pulumi.Input[str] port_id: The ID of the port to be used as the parent port of the
-               trunk. This is the port that should be used as the compute instance network
-               port. Changing this creates a new trunk.
-        :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the trunk
-               (must be "true" or "false" if provided). Changing this updates the
-               `admin_state_up` of an existing trunk.
-        :param pulumi.Input[str] description: Human-readable description of the trunk. Changing this
-               updates the name of the existing trunk.
-        :param pulumi.Input[str] name: A unique name for the trunk. Changing this
-               updates the `name` of an existing trunk.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a trunk. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               trunk.
-        :param pulumi.Input[Sequence[pulumi.Input['TrunkSubPortArgs']]] sub_ports: The set of ports that will be made subports of the trunk.
-               The structure of each subport is described below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the port.
-        :param pulumi.Input[str] tenant_id: The owner of the Trunk. Required if admin wants
-               to create a trunk on behalf of another tenant. Changing this creates a new trunk.
         """
         pulumi.set(__self__, "port_id", port_id)
         if admin_state_up is not None:
@@ -65,11 +46,6 @@ class TrunkArgs:
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the port to be used as the parent port of the
-        trunk. This is the port that should be used as the compute instance network
-        port. Changing this creates a new trunk.
-        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -79,11 +55,6 @@ class TrunkArgs:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Administrative up/down status for the trunk
-        (must be "true" or "false" if provided). Changing this updates the
-        `admin_state_up` of an existing trunk.
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -93,10 +64,6 @@ class TrunkArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable description of the trunk. Changing this
-        updates the name of the existing trunk.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -106,10 +73,6 @@ class TrunkArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        A unique name for the trunk. Changing this
-        updates the `name` of an existing trunk.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -119,12 +82,6 @@ class TrunkArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to create a trunk. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        trunk.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -134,10 +91,6 @@ class TrunkArgs:
     @property
     @pulumi.getter(name="subPorts")
     def sub_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrunkSubPortArgs']]]]:
-        """
-        The set of ports that will be made subports of the trunk.
-        The structure of each subport is described below.
-        """
         return pulumi.get(self, "sub_ports")
 
     @sub_ports.setter
@@ -147,9 +100,6 @@ class TrunkArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A set of string tags for the port.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -159,10 +109,6 @@ class TrunkArgs:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The owner of the Trunk. Required if admin wants
-        to create a trunk on behalf of another tenant. Changing this creates a new trunk.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -184,27 +130,6 @@ class _TrunkState:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Trunk resources.
-        :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the trunk
-               (must be "true" or "false" if provided). Changing this updates the
-               `admin_state_up` of an existing trunk.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] all_tags: The collection of tags assigned on the trunk, which have been
-               explicitly and implicitly added.
-        :param pulumi.Input[str] description: Human-readable description of the trunk. Changing this
-               updates the name of the existing trunk.
-        :param pulumi.Input[str] name: A unique name for the trunk. Changing this
-               updates the `name` of an existing trunk.
-        :param pulumi.Input[str] port_id: The ID of the port to be used as the parent port of the
-               trunk. This is the port that should be used as the compute instance network
-               port. Changing this creates a new trunk.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a trunk. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               trunk.
-        :param pulumi.Input[Sequence[pulumi.Input['TrunkSubPortArgs']]] sub_ports: The set of ports that will be made subports of the trunk.
-               The structure of each subport is described below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the port.
-        :param pulumi.Input[str] tenant_id: The owner of the Trunk. Required if admin wants
-               to create a trunk on behalf of another tenant. Changing this creates a new trunk.
         """
         if admin_state_up is not None:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
@@ -228,11 +153,6 @@ class _TrunkState:
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Administrative up/down status for the trunk
-        (must be "true" or "false" if provided). Changing this updates the
-        `admin_state_up` of an existing trunk.
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -242,10 +162,6 @@ class _TrunkState:
     @property
     @pulumi.getter(name="allTags")
     def all_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The collection of tags assigned on the trunk, which have been
-        explicitly and implicitly added.
-        """
         return pulumi.get(self, "all_tags")
 
     @all_tags.setter
@@ -255,10 +171,6 @@ class _TrunkState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Human-readable description of the trunk. Changing this
-        updates the name of the existing trunk.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -268,10 +180,6 @@ class _TrunkState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        A unique name for the trunk. Changing this
-        updates the `name` of an existing trunk.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -281,11 +189,6 @@ class _TrunkState:
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the port to be used as the parent port of the
-        trunk. This is the port that should be used as the compute instance network
-        port. Changing this creates a new trunk.
-        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -295,12 +198,6 @@ class _TrunkState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to create a trunk. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        trunk.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -310,10 +207,6 @@ class _TrunkState:
     @property
     @pulumi.getter(name="subPorts")
     def sub_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrunkSubPortArgs']]]]:
-        """
-        The set of ports that will be made subports of the trunk.
-        The structure of each subport is described below.
-        """
         return pulumi.get(self, "sub_ports")
 
     @sub_ports.setter
@@ -323,9 +216,6 @@ class _TrunkState:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A set of string tags for the port.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -335,10 +225,6 @@ class _TrunkState:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The owner of the Trunk. Required if admin wants
-        to create a trunk on behalf of another tenant. Changing this creates a new trunk.
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -361,65 +247,9 @@ class Trunk(pulumi.CustomResource):
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a networking V2 trunk resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            network_id=network1.id,
-            cidr="192.168.1.0/24",
-            ip_version=4,
-            enable_dhcp=True,
-            no_gateway=True)
-        parent_port1 = openstack.networking.Port("parentPort1",
-            network_id=network1.id,
-            admin_state_up=True,
-            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
-        subport1 = openstack.networking.Port("subport1",
-            network_id=network1.id,
-            admin_state_up=True,
-            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
-        trunk1 = openstack.networking.Trunk("trunk1",
-            admin_state_up=True,
-            port_id=parent_port1.id,
-            sub_ports=[openstack.networking.TrunkSubPortArgs(
-                port_id=subport1.id,
-                segmentation_id=1,
-                segmentation_type="vlan",
-            )])
-        instance1 = openstack.compute.Instance("instance1",
-            security_groups=["default"],
-            networks=[openstack.compute.InstanceNetworkArgs(
-                port=trunk1.port_id,
-            )])
-        ```
-
+        Create a Trunk resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the trunk
-               (must be "true" or "false" if provided). Changing this updates the
-               `admin_state_up` of an existing trunk.
-        :param pulumi.Input[str] description: Human-readable description of the trunk. Changing this
-               updates the name of the existing trunk.
-        :param pulumi.Input[str] name: A unique name for the trunk. Changing this
-               updates the `name` of an existing trunk.
-        :param pulumi.Input[str] port_id: The ID of the port to be used as the parent port of the
-               trunk. This is the port that should be used as the compute instance network
-               port. Changing this creates a new trunk.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a trunk. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               trunk.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrunkSubPortArgs']]]] sub_ports: The set of ports that will be made subports of the trunk.
-               The structure of each subport is described below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the port.
-        :param pulumi.Input[str] tenant_id: The owner of the Trunk. Required if admin wants
-               to create a trunk on behalf of another tenant. Changing this creates a new trunk.
         """
         ...
     @overload
@@ -428,44 +258,7 @@ class Trunk(pulumi.CustomResource):
                  args: TrunkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a networking V2 trunk resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            network_id=network1.id,
-            cidr="192.168.1.0/24",
-            ip_version=4,
-            enable_dhcp=True,
-            no_gateway=True)
-        parent_port1 = openstack.networking.Port("parentPort1",
-            network_id=network1.id,
-            admin_state_up=True,
-            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
-        subport1 = openstack.networking.Port("subport1",
-            network_id=network1.id,
-            admin_state_up=True,
-            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
-        trunk1 = openstack.networking.Trunk("trunk1",
-            admin_state_up=True,
-            port_id=parent_port1.id,
-            sub_ports=[openstack.networking.TrunkSubPortArgs(
-                port_id=subport1.id,
-                segmentation_id=1,
-                segmentation_type="vlan",
-            )])
-        instance1 = openstack.compute.Instance("instance1",
-            security_groups=["default"],
-            networks=[openstack.compute.InstanceNetworkArgs(
-                port=trunk1.port_id,
-            )])
-        ```
-
+        Create a Trunk resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param TrunkArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -535,27 +328,6 @@ class Trunk(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the trunk
-               (must be "true" or "false" if provided). Changing this updates the
-               `admin_state_up` of an existing trunk.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] all_tags: The collection of tags assigned on the trunk, which have been
-               explicitly and implicitly added.
-        :param pulumi.Input[str] description: Human-readable description of the trunk. Changing this
-               updates the name of the existing trunk.
-        :param pulumi.Input[str] name: A unique name for the trunk. Changing this
-               updates the `name` of an existing trunk.
-        :param pulumi.Input[str] port_id: The ID of the port to be used as the parent port of the
-               trunk. This is the port that should be used as the compute instance network
-               port. Changing this creates a new trunk.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a trunk. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               trunk.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TrunkSubPortArgs']]]] sub_ports: The set of ports that will be made subports of the trunk.
-               The structure of each subport is described below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the port.
-        :param pulumi.Input[str] tenant_id: The owner of the Trunk. Required if admin wants
-               to create a trunk on behalf of another tenant. Changing this creates a new trunk.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -575,84 +347,45 @@ class Trunk(pulumi.CustomResource):
     @property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Administrative up/down status for the trunk
-        (must be "true" or "false" if provided). Changing this updates the
-        `admin_state_up` of an existing trunk.
-        """
         return pulumi.get(self, "admin_state_up")
 
     @property
     @pulumi.getter(name="allTags")
     def all_tags(self) -> pulumi.Output[Sequence[str]]:
-        """
-        The collection of tags assigned on the trunk, which have been
-        explicitly and implicitly added.
-        """
         return pulumi.get(self, "all_tags")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        Human-readable description of the trunk. Changing this
-        updates the name of the existing trunk.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        A unique name for the trunk. Changing this
-        updates the `name` of an existing trunk.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Output[str]:
-        """
-        The ID of the port to be used as the parent port of the
-        trunk. This is the port that should be used as the compute instance network
-        port. Changing this creates a new trunk.
-        """
         return pulumi.get(self, "port_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to create a trunk. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        trunk.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="subPorts")
     def sub_ports(self) -> pulumi.Output[Optional[Sequence['outputs.TrunkSubPort']]]:
-        """
-        The set of ports that will be made subports of the trunk.
-        The structure of each subport is described below.
-        """
         return pulumi.get(self, "sub_ports")
 
     @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        A set of string tags for the port.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
-        """
-        The owner of the Trunk. Required if admin wants
-        to create a trunk on behalf of another tenant. Changing this creates a new trunk.
-        """
         return pulumi.get(self, "tenant_id")
 

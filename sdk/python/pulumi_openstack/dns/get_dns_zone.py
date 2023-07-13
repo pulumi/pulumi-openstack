@@ -85,33 +85,21 @@ class GetDnsZoneResult:
     @property
     @pulumi.getter
     def attributes(self) -> Mapping[str, Any]:
-        """
-        Attributes of the DNS Service scheduler.
-        """
         return pulumi.get(self, "attributes")
 
     @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> str:
-        """
-        The time the zone was created.
-        """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def email(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "email")
 
     @property
@@ -125,97 +113,61 @@ class GetDnsZoneResult:
     @property
     @pulumi.getter
     def masters(self) -> Sequence[str]:
-        """
-        An array of master DNS servers. When `type` is  `SECONDARY`.
-        """
         return pulumi.get(self, "masters")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> str:
-        """
-        The ID of the pool hosting the zone.
-        """
         return pulumi.get(self, "pool_id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
-        """
-        The project ID that owns the zone.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
     def serial(self) -> int:
-        """
-        The serial number of the zone.
-        """
         return pulumi.get(self, "serial")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="transferredAt")
     def transferred_at(self) -> str:
-        """
-        The time the zone was transferred.
-        """
         return pulumi.get(self, "transferred_at")
 
     @property
     @pulumi.getter
     def ttl(self) -> Optional[int]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "ttl")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
-        """
-        See Argument Reference above.
-        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
-        """
-        The time the zone was last updated.
-        """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter
     def version(self) -> int:
-        """
-        The version of the zone.
-        """
         return pulumi.get(self, "version")
 
 
@@ -264,39 +216,7 @@ def get_dns_zone(all_projects: Optional[str] = None,
                  version: Optional[int] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDnsZoneResult:
     """
-    Use this data source to get the ID of an available OpenStack DNS zone.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    zone1 = openstack.dns.get_dns_zone(name="example.com")
-    ```
-
-
-    :param str all_projects: Try to obtain zone ID by listing all projects
-           (requires admin role by default, depends on your policy configuration)
-    :param Mapping[str, Any] attributes: Attributes of the DNS Service scheduler.
-    :param str created_at: The time the zone was created.
-    :param str description: A description of the zone.
-    :param str email: The email contact for the zone record.
-    :param Sequence[str] masters: An array of master DNS servers. When `type` is  `SECONDARY`.
-    :param str name: The name of the zone.
-    :param str pool_id: The ID of the pool hosting the zone.
-    :param str project_id: The ID of the project the DNS zone is obtained from,
-           sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target project)
-    :param str region: The region in which to obtain the V2 DNS client.
-           A DNS client is needed to retrieve zone ids. If omitted, the
-           `region` argument of the provider is used.
-    :param int serial: The serial number of the zone.
-    :param str status: The zone's status.
-    :param str transferred_at: The time the zone was transferred.
-    :param int ttl: The time to live (TTL) of the zone.
-    :param str type: The type of the zone. Can either be `PRIMARY` or `SECONDARY`.
-    :param str updated_at: The time the zone was last updated.
-    :param int version: The version of the zone.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['allProjects'] = all_projects
@@ -360,38 +280,6 @@ def get_dns_zone_output(all_projects: Optional[pulumi.Input[Optional[str]]] = No
                         version: Optional[pulumi.Input[Optional[int]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDnsZoneResult]:
     """
-    Use this data source to get the ID of an available OpenStack DNS zone.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    zone1 = openstack.dns.get_dns_zone(name="example.com")
-    ```
-
-
-    :param str all_projects: Try to obtain zone ID by listing all projects
-           (requires admin role by default, depends on your policy configuration)
-    :param Mapping[str, Any] attributes: Attributes of the DNS Service scheduler.
-    :param str created_at: The time the zone was created.
-    :param str description: A description of the zone.
-    :param str email: The email contact for the zone record.
-    :param Sequence[str] masters: An array of master DNS servers. When `type` is  `SECONDARY`.
-    :param str name: The name of the zone.
-    :param str pool_id: The ID of the pool hosting the zone.
-    :param str project_id: The ID of the project the DNS zone is obtained from,
-           sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target project)
-    :param str region: The region in which to obtain the V2 DNS client.
-           A DNS client is needed to retrieve zone ids. If omitted, the
-           `region` argument of the provider is used.
-    :param int serial: The serial number of the zone.
-    :param str status: The zone's status.
-    :param str transferred_at: The time the zone was transferred.
-    :param int ttl: The time to live (TTL) of the zone.
-    :param str type: The type of the zone. Can either be `PRIMARY` or `SECONDARY`.
-    :param str updated_at: The time the zone was last updated.
-    :param int version: The version of the zone.
+    Use this data source to access information about an existing resource.
     """
     ...

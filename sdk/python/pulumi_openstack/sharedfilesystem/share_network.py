@@ -22,22 +22,6 @@ class ShareNetworkArgs:
                  security_service_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ShareNetwork resource.
-        :param pulumi.Input[str] neutron_net_id: The UUID of a neutron network when setting up or updating
-               a share network. Changing this updates the existing share network if it's not used by
-               shares.
-        :param pulumi.Input[str] neutron_subnet_id: The UUID of the neutron subnet when setting up or
-               updating a share network. Changing this updates the existing share network if it's
-               not used by shares.
-        :param pulumi.Input[str] description: The human-readable description for the share network.
-               Changing this updates the description of the existing share network.
-        :param pulumi.Input[str] name: The name for the share network. Changing this updates the name
-               of the existing share network.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Shared File System client.
-               A Shared File System client is needed to create a share network. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               share network.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_service_ids: The list of security service IDs to associate with
-               the share network. The security service must be specified by ID and not name.
         """
         pulumi.set(__self__, "neutron_net_id", neutron_net_id)
         pulumi.set(__self__, "neutron_subnet_id", neutron_subnet_id)
@@ -53,11 +37,6 @@ class ShareNetworkArgs:
     @property
     @pulumi.getter(name="neutronNetId")
     def neutron_net_id(self) -> pulumi.Input[str]:
-        """
-        The UUID of a neutron network when setting up or updating
-        a share network. Changing this updates the existing share network if it's not used by
-        shares.
-        """
         return pulumi.get(self, "neutron_net_id")
 
     @neutron_net_id.setter
@@ -67,11 +46,6 @@ class ShareNetworkArgs:
     @property
     @pulumi.getter(name="neutronSubnetId")
     def neutron_subnet_id(self) -> pulumi.Input[str]:
-        """
-        The UUID of the neutron subnet when setting up or
-        updating a share network. Changing this updates the existing share network if it's
-        not used by shares.
-        """
         return pulumi.get(self, "neutron_subnet_id")
 
     @neutron_subnet_id.setter
@@ -81,10 +55,6 @@ class ShareNetworkArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The human-readable description for the share network.
-        Changing this updates the description of the existing share network.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -94,10 +64,6 @@ class ShareNetworkArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name for the share network. Changing this updates the name
-        of the existing share network.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -107,12 +73,6 @@ class ShareNetworkArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Shared File System client.
-        A Shared File System client is needed to create a share network. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        share network.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -122,10 +82,6 @@ class ShareNetworkArgs:
     @property
     @pulumi.getter(name="securityServiceIds")
     def security_service_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The list of security service IDs to associate with
-        the share network. The security service must be specified by ID and not name.
-        """
         return pulumi.get(self, "security_service_ids")
 
     @security_service_ids.setter
@@ -149,27 +105,6 @@ class _ShareNetworkState:
                  segmentation_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering ShareNetwork resources.
-        :param pulumi.Input[str] cidr: The share network CIDR.
-        :param pulumi.Input[str] description: The human-readable description for the share network.
-               Changing this updates the description of the existing share network.
-        :param pulumi.Input[int] ip_version: The IP version of the share network. Can either be 4 or 6.
-        :param pulumi.Input[str] name: The name for the share network. Changing this updates the name
-               of the existing share network.
-        :param pulumi.Input[str] network_type: The share network type. Can either be VLAN, VXLAN, GRE, or flat.
-        :param pulumi.Input[str] neutron_net_id: The UUID of a neutron network when setting up or updating
-               a share network. Changing this updates the existing share network if it's not used by
-               shares.
-        :param pulumi.Input[str] neutron_subnet_id: The UUID of the neutron subnet when setting up or
-               updating a share network. Changing this updates the existing share network if it's
-               not used by shares.
-        :param pulumi.Input[str] project_id: The owner of the Share Network.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Shared File System client.
-               A Shared File System client is needed to create a share network. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               share network.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_service_ids: The list of security service IDs to associate with
-               the share network. The security service must be specified by ID and not name.
-        :param pulumi.Input[int] segmentation_id: The share network segmentation ID.
         """
         if cidr is not None:
             pulumi.set(__self__, "cidr", cidr)
@@ -197,9 +132,6 @@ class _ShareNetworkState:
     @property
     @pulumi.getter
     def cidr(self) -> Optional[pulumi.Input[str]]:
-        """
-        The share network CIDR.
-        """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
@@ -209,10 +141,6 @@ class _ShareNetworkState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The human-readable description for the share network.
-        Changing this updates the description of the existing share network.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -222,9 +150,6 @@ class _ShareNetworkState:
     @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[int]]:
-        """
-        The IP version of the share network. Can either be 4 or 6.
-        """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
@@ -234,10 +159,6 @@ class _ShareNetworkState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name for the share network. Changing this updates the name
-        of the existing share network.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -247,9 +168,6 @@ class _ShareNetworkState:
     @property
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The share network type. Can either be VLAN, VXLAN, GRE, or flat.
-        """
         return pulumi.get(self, "network_type")
 
     @network_type.setter
@@ -259,11 +177,6 @@ class _ShareNetworkState:
     @property
     @pulumi.getter(name="neutronNetId")
     def neutron_net_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The UUID of a neutron network when setting up or updating
-        a share network. Changing this updates the existing share network if it's not used by
-        shares.
-        """
         return pulumi.get(self, "neutron_net_id")
 
     @neutron_net_id.setter
@@ -273,11 +186,6 @@ class _ShareNetworkState:
     @property
     @pulumi.getter(name="neutronSubnetId")
     def neutron_subnet_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The UUID of the neutron subnet when setting up or
-        updating a share network. Changing this updates the existing share network if it's
-        not used by shares.
-        """
         return pulumi.get(self, "neutron_subnet_id")
 
     @neutron_subnet_id.setter
@@ -287,9 +195,6 @@ class _ShareNetworkState:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The owner of the Share Network.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -299,12 +204,6 @@ class _ShareNetworkState:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The region in which to obtain the V2 Shared File System client.
-        A Shared File System client is needed to create a share network. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        share network.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -314,10 +213,6 @@ class _ShareNetworkState:
     @property
     @pulumi.getter(name="securityServiceIds")
     def security_service_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The list of security service IDs to associate with
-        the share network. The security service must be specified by ID and not name.
-        """
         return pulumi.get(self, "security_service_ids")
 
     @security_service_ids.setter
@@ -327,9 +222,6 @@ class _ShareNetworkState:
     @property
     @pulumi.getter(name="segmentationId")
     def segmentation_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        The share network segmentation ID.
-        """
         return pulumi.get(self, "segmentation_id")
 
     @segmentation_id.setter
@@ -350,81 +242,9 @@ class ShareNetwork(pulumi.CustomResource):
                  security_service_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Use this resource to configure a share network.
-
-        A share network stores network information that share servers can use when
-        shares are created.
-
-        ## Example Usage
-        ### Basic share network
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
-        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
-            description="test share network",
-            neutron_net_id=network1.id,
-            neutron_subnet_id=subnet1.id)
-        ```
-        ### Share network with associated security services
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
-        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
-            description="created by terraform",
-            type="active_directory",
-            server="192.168.199.10",
-            dns_ip="192.168.199.10",
-            domain="example.com",
-            ou="CN=Computers,DC=example,DC=com",
-            user="joinDomainUser",
-            password="s8cret")
-        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
-            description="test share network with security services",
-            neutron_net_id=network1.id,
-            neutron_subnet_id=subnet1.id,
-            security_service_ids=[securityservice1.id])
-        ```
-
-        ## Import
-
-        This resource can be imported by specifying the ID of the share network
-
-        ```sh
-         $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 id
-        ```
-
+        Create a ShareNetwork resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The human-readable description for the share network.
-               Changing this updates the description of the existing share network.
-        :param pulumi.Input[str] name: The name for the share network. Changing this updates the name
-               of the existing share network.
-        :param pulumi.Input[str] neutron_net_id: The UUID of a neutron network when setting up or updating
-               a share network. Changing this updates the existing share network if it's not used by
-               shares.
-        :param pulumi.Input[str] neutron_subnet_id: The UUID of the neutron subnet when setting up or
-               updating a share network. Changing this updates the existing share network if it's
-               not used by shares.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Shared File System client.
-               A Shared File System client is needed to create a share network. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               share network.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_service_ids: The list of security service IDs to associate with
-               the share network. The security service must be specified by ID and not name.
         """
         ...
     @overload
@@ -433,63 +253,7 @@ class ShareNetwork(pulumi.CustomResource):
                  args: ShareNetworkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Use this resource to configure a share network.
-
-        A share network stores network information that share servers can use when
-        shares are created.
-
-        ## Example Usage
-        ### Basic share network
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
-        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
-            description="test share network",
-            neutron_net_id=network1.id,
-            neutron_subnet_id=subnet1.id)
-        ```
-        ### Share network with associated security services
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
-        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
-            description="created by terraform",
-            type="active_directory",
-            server="192.168.199.10",
-            dns_ip="192.168.199.10",
-            domain="example.com",
-            ou="CN=Computers,DC=example,DC=com",
-            user="joinDomainUser",
-            password="s8cret")
-        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
-            description="test share network with security services",
-            neutron_net_id=network1.id,
-            neutron_subnet_id=subnet1.id,
-            security_service_ids=[securityservice1.id])
-        ```
-
-        ## Import
-
-        This resource can be imported by specifying the ID of the share network
-
-        ```sh
-         $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 id
-        ```
-
+        Create a ShareNetwork resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ShareNetworkArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -563,27 +327,6 @@ class ShareNetwork(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cidr: The share network CIDR.
-        :param pulumi.Input[str] description: The human-readable description for the share network.
-               Changing this updates the description of the existing share network.
-        :param pulumi.Input[int] ip_version: The IP version of the share network. Can either be 4 or 6.
-        :param pulumi.Input[str] name: The name for the share network. Changing this updates the name
-               of the existing share network.
-        :param pulumi.Input[str] network_type: The share network type. Can either be VLAN, VXLAN, GRE, or flat.
-        :param pulumi.Input[str] neutron_net_id: The UUID of a neutron network when setting up or updating
-               a share network. Changing this updates the existing share network if it's not used by
-               shares.
-        :param pulumi.Input[str] neutron_subnet_id: The UUID of the neutron subnet when setting up or
-               updating a share network. Changing this updates the existing share network if it's
-               not used by shares.
-        :param pulumi.Input[str] project_id: The owner of the Share Network.
-        :param pulumi.Input[str] region: The region in which to obtain the V2 Shared File System client.
-               A Shared File System client is needed to create a share network. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               share network.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_service_ids: The list of security service IDs to associate with
-               the share network. The security service must be specified by ID and not name.
-        :param pulumi.Input[int] segmentation_id: The share network segmentation ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -605,98 +348,55 @@ class ShareNetwork(pulumi.CustomResource):
     @property
     @pulumi.getter
     def cidr(self) -> pulumi.Output[str]:
-        """
-        The share network CIDR.
-        """
         return pulumi.get(self, "cidr")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The human-readable description for the share network.
-        Changing this updates the description of the existing share network.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> pulumi.Output[int]:
-        """
-        The IP version of the share network. Can either be 4 or 6.
-        """
         return pulumi.get(self, "ip_version")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name for the share network. Changing this updates the name
-        of the existing share network.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="networkType")
     def network_type(self) -> pulumi.Output[str]:
-        """
-        The share network type. Can either be VLAN, VXLAN, GRE, or flat.
-        """
         return pulumi.get(self, "network_type")
 
     @property
     @pulumi.getter(name="neutronNetId")
     def neutron_net_id(self) -> pulumi.Output[str]:
-        """
-        The UUID of a neutron network when setting up or updating
-        a share network. Changing this updates the existing share network if it's not used by
-        shares.
-        """
         return pulumi.get(self, "neutron_net_id")
 
     @property
     @pulumi.getter(name="neutronSubnetId")
     def neutron_subnet_id(self) -> pulumi.Output[str]:
-        """
-        The UUID of the neutron subnet when setting up or
-        updating a share network. Changing this updates the existing share network if it's
-        not used by shares.
-        """
         return pulumi.get(self, "neutron_subnet_id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
-        """
-        The owner of the Share Network.
-        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
-        """
-        The region in which to obtain the V2 Shared File System client.
-        A Shared File System client is needed to create a share network. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        share network.
-        """
         return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="securityServiceIds")
     def security_service_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        The list of security service IDs to associate with
-        the share network. The security service must be specified by ID and not name.
-        """
         return pulumi.get(self, "security_service_ids")
 
     @property
     @pulumi.getter(name="segmentationId")
     def segmentation_id(self) -> pulumi.Output[int]:
-        """
-        The share network segmentation ID.
-        """
         return pulumi.get(self, "segmentation_id")
 
