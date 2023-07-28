@@ -85,6 +85,7 @@ func openstackResource(mod string, res string) tokens.Type {
 // Provider returns additional overlaid schema and metadata associated with the openstack package.
 func Provider() tfbridge.ProviderInfo {
 	falseVar := false
+	trueVar := true
 
 	p := shimv2.NewProvider(openstack.Provider())
 
@@ -162,8 +163,17 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_compute_floatingip_associate_v2": {Tok: openstackResource(computeMod, "FloatingIpAssociate")},
 			"openstack_compute_instance_v2":             {Tok: openstackResource(computeMod, "Instance")},
 			"openstack_compute_interface_attach_v2":     {Tok: openstackResource(computeMod, "InterfaceAttach")},
-			"openstack_compute_keypair_v2":              {Tok: openstackResource(computeMod, "Keypair")},
-			"openstack_compute_secgroup_v2":             {Tok: openstackResource(computeMod, "SecGroup")},
+
+			"openstack_compute_keypair_v2": {
+				Tok: openstackResource(computeMod, "Keypair"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"private_key": {
+						Secret: &trueVar,
+					},
+				},
+			},
+
+			"openstack_compute_secgroup_v2": {Tok: openstackResource(computeMod, "SecGroup")},
 
 			"openstack_compute_servergroup_v2": {
 				Tok: openstackResource(computeMod, "ServerGroup"),
