@@ -29,13 +29,13 @@ func TestKeyPair(t *testing.T) {
 			Dir:   path.Join(getCwd(t), "keypair"),
 			Quick: true,
 			ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
-				output, ok := stack.Outputs["keypair"]
-				require.Truef(t, ok, "Expected a 'keypair' stack output, found none")
+				output, ok := stack.Outputs["privateKey"]
+				require.Truef(t, ok, "Expected a 'privateKey' stack output, found none")
 				o, ok := output.(map[string]interface{})
-				if assert.Truef(t, ok, "Expected Secret 'keypair' stack output (map[string]any), found %T", output) {
+				if assert.Truef(t, ok, "Expected Secret 'privateKey' stack output (map[string]any), found %T", output) {
 					assert.Equalf(t, "1b47061264138c4ac30d75fd1eb44270",
 						o["4dabf18193072939515e22adb298388d"],
-						"Expected a Secret 'keypair' stack output")
+						"Expected a Secret 'privateKey' stack output")
 				}
 			},
 		})
