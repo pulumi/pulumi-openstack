@@ -17,6 +17,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -29,8 +30,8 @@ namespace Pulumi.OpenStack.Networking
     /// 
     ///     var port1 = new OpenStack.Networking.Port("port1", new()
     ///     {
-    ///         AdminStateUp = true,
     ///         NetworkId = network1.Id,
+    ///         AdminStateUp = true,
     ///     });
     /// 
     /// });
@@ -39,6 +40,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -51,10 +53,14 @@ namespace Pulumi.OpenStack.Networking
     /// 
     ///     var port1 = new OpenStack.Networking.Port("port1", new()
     ///     {
+    ///         NetworkId = network1.Id,
+    ///         DeviceId = "cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
+    ///         DeviceOwner = "baremetal:none",
     ///         AdminStateUp = true,
     ///         Binding = new OpenStack.Networking.Inputs.PortBindingArgs
     ///         {
     ///             HostId = "b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
+    ///             VnicType = "baremetal",
     ///             Profile = @"{
     ///   ""local_link_information"": [
     ///     {
@@ -70,13 +76,8 @@ namespace Pulumi.OpenStack.Networking
     ///   ],
     ///   ""vlan_type"": ""allowed""
     /// }
-    /// 
     /// ",
-    ///             VnicType = "baremetal",
     ///         },
-    ///         DeviceId = "cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
-    ///         DeviceOwner = "baremetal:none",
-    ///         NetworkId = network1.Id,
     ///     });
     /// 
     /// });

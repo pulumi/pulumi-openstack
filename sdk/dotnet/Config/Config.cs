@@ -271,6 +271,16 @@ namespace Pulumi.OpenStack
             set => _swauth.Set(value);
         }
 
+        private static readonly __Value<bool?> _systemScope = new __Value<bool?>(() => __config.GetBoolean("systemScope"));
+        /// <summary>
+        /// If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
+        /// </summary>
+        public static bool? SystemScope
+        {
+            get => _systemScope.Get();
+            set => _systemScope.Set(value);
+        }
+
         private static readonly __Value<string?> _tenantId = new __Value<string?>(() => __config.Get("tenantId"));
         /// <summary>
         /// The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
@@ -333,7 +343,7 @@ namespace Pulumi.OpenStack
 
         private static readonly __Value<string?> _userId = new __Value<string?>(() => __config.Get("userId"));
         /// <summary>
-        /// Username to login with.
+        /// User ID to login with.
         /// </summary>
         public static string? UserId
         {

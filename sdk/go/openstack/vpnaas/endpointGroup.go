@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -85,6 +86,7 @@ func NewEndpointGroup(ctx *pulumi.Context,
 		args = &EndpointGroupArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EndpointGroup
 	err := ctx.RegisterResource("openstack:vpnaas/endpointGroup:EndpointGroup", name, args, &resource, opts...)
 	if err != nil {

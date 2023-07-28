@@ -47,8 +47,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var dscpMarkingRule1 = new QosDscpMarkingRule(&#34;dscpMarkingRule1&#34;, QosDscpMarkingRuleArgs.builder()        
- *             .dscpMark(26)
  *             .qosPolicyId(qosPolicy1.id())
+ *             .dscpMark(26)
  *             .build());
  * 
  *     }

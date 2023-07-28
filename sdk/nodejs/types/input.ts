@@ -181,6 +181,11 @@ export namespace compute {
          */
         guestFormat?: pulumi.Input<string>;
         /**
+         * Enable the attachment of multiattach-capable
+         * volumes.
+         */
+        multiattach?: pulumi.Input<boolean>;
+        /**
          * The source type of the device. Must be one of
          * "blank", "image", "volume", or "snapshot". Changing this creates a new
          * server.

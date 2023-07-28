@@ -20,6 +20,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -50,6 +51,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -70,13 +72,13 @@ namespace Pulumi.OpenStack.SharedFileSystem
     ///     var securityservice1 = new OpenStack.SharedFileSystem.SecurityService("securityservice1", new()
     ///     {
     ///         Description = "created by terraform",
+    ///         Type = "active_directory",
+    ///         Server = "192.168.199.10",
     ///         DnsIp = "192.168.199.10",
     ///         Domain = "example.com",
     ///         Ou = "CN=Computers,DC=example,DC=com",
-    ///         Password = "s8cret",
-    ///         Server = "192.168.199.10",
-    ///         Type = "active_directory",
     ///         User = "joinDomainUser",
+    ///         Password = "s8cret",
     ///     });
     /// 
     ///     var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new()
@@ -98,7 +100,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// This resource can be imported by specifying the ID of the share network
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 &lt;id&gt;
+    ///  $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 id
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:sharedfilesystem/shareNetwork:ShareNetwork")]

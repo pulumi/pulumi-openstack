@@ -384,6 +384,8 @@ class Keypair(pulumi.CustomResource):
             __props__.__dict__["value_specs"] = value_specs
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["private_key"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["privateKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Keypair, __self__).__init__(
             'openstack:compute/keypair:Keypair',
             resource_name,

@@ -96,8 +96,9 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]] personalities: Customize the personality of an instance by
                defining one or more files and their contents. The personality structure
                is described below. Changing this rebuilds the existing server.
-        :param pulumi.Input[str] power_state: Provide the VM state. Only 'active' and 'shutoff'
-               are supported values. *Note*: If the initial power_state is the shutoff
+        :param pulumi.Input[str] power_state: Provide the VM state. Only 'active', 'shutoff'
+               and 'shelved_offloaded' are supported values.
+               *Note*: If the initial power_state is the shutoff
                the VM will be stopped immediately after build and the provisioners like
                remote-exec or files are not supported.
         :param pulumi.Input[str] region: The region in which to create the server instance. If
@@ -311,6 +312,9 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="floatingIp")
     def floating_ip(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Use the openstack_compute_floatingip_associate_v2 resource instead""", DeprecationWarning)
+        pulumi.log.warn("""floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead""")
+
         return pulumi.get(self, "floating_ip")
 
     @floating_ip.setter
@@ -445,8 +449,9 @@ class InstanceArgs:
     @pulumi.getter(name="powerState")
     def power_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Provide the VM state. Only 'active' and 'shutoff'
-        are supported values. *Note*: If the initial power_state is the shutoff
+        Provide the VM state. Only 'active', 'shutoff'
+        and 'shelved_offloaded' are supported values.
+        *Note*: If the initial power_state is the shutoff
         the VM will be stopped immediately after build and the provisioners like
         remote-exec or files are not supported.
         """
@@ -556,6 +561,9 @@ class InstanceArgs:
     @property
     @pulumi.getter
     def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVolumeArgs']]]]:
+        warnings.warn("""Use block_device or openstack_compute_volume_attach_v2 instead""", DeprecationWarning)
+        pulumi.log.warn("""volumes is deprecated: Use block_device or openstack_compute_volume_attach_v2 instead""")
+
         return pulumi.get(self, "volumes")
 
     @volumes.setter
@@ -653,8 +661,9 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]] personalities: Customize the personality of an instance by
                defining one or more files and their contents. The personality structure
                is described below. Changing this rebuilds the existing server.
-        :param pulumi.Input[str] power_state: Provide the VM state. Only 'active' and 'shutoff'
-               are supported values. *Note*: If the initial power_state is the shutoff
+        :param pulumi.Input[str] power_state: Provide the VM state. Only 'active', 'shutoff'
+               and 'shelved_offloaded' are supported values.
+               *Note*: If the initial power_state is the shutoff
                the VM will be stopped immediately after build and the provisioners like
                remote-exec or files are not supported.
         :param pulumi.Input[str] region: The region in which to create the server instance. If
@@ -911,6 +920,9 @@ class _InstanceState:
     @property
     @pulumi.getter(name="floatingIp")
     def floating_ip(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""Use the openstack_compute_floatingip_associate_v2 resource instead""", DeprecationWarning)
+        pulumi.log.warn("""floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead""")
+
         return pulumi.get(self, "floating_ip")
 
     @floating_ip.setter
@@ -1045,8 +1057,9 @@ class _InstanceState:
     @pulumi.getter(name="powerState")
     def power_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Provide the VM state. Only 'active' and 'shutoff'
-        are supported values. *Note*: If the initial power_state is the shutoff
+        Provide the VM state. Only 'active', 'shutoff'
+        and 'shelved_offloaded' are supported values.
+        *Note*: If the initial power_state is the shutoff
         the VM will be stopped immediately after build and the provisioners like
         remote-exec or files are not supported.
         """
@@ -1168,6 +1181,9 @@ class _InstanceState:
     @property
     @pulumi.getter
     def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVolumeArgs']]]]:
+        warnings.warn("""Use block_device or openstack_compute_volume_attach_v2 instead""", DeprecationWarning)
+        pulumi.log.warn("""volumes is deprecated: Use block_device or openstack_compute_volume_attach_v2 instead""")
+
         return pulumi.get(self, "volumes")
 
     @volumes.setter
@@ -1263,8 +1279,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePersonalityArgs']]]] personalities: Customize the personality of an instance by
                defining one or more files and their contents. The personality structure
                is described below. Changing this rebuilds the existing server.
-        :param pulumi.Input[str] power_state: Provide the VM state. Only 'active' and 'shutoff'
-               are supported values. *Note*: If the initial power_state is the shutoff
+        :param pulumi.Input[str] power_state: Provide the VM state. Only 'active', 'shutoff'
+               and 'shelved_offloaded' are supported values.
+               *Note*: If the initial power_state is the shutoff
                the VM will be stopped immediately after build and the provisioners like
                remote-exec or files are not supported.
         :param pulumi.Input[str] region: The region in which to create the server instance. If
@@ -1490,8 +1507,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstancePersonalityArgs']]]] personalities: Customize the personality of an instance by
                defining one or more files and their contents. The personality structure
                is described below. Changing this rebuilds the existing server.
-        :param pulumi.Input[str] power_state: Provide the VM state. Only 'active' and 'shutoff'
-               are supported values. *Note*: If the initial power_state is the shutoff
+        :param pulumi.Input[str] power_state: Provide the VM state. Only 'active', 'shutoff'
+               and 'shelved_offloaded' are supported values.
+               *Note*: If the initial power_state is the shutoff
                the VM will be stopped immediately after build and the provisioners like
                remote-exec or files are not supported.
         :param pulumi.Input[str] region: The region in which to create the server instance. If
@@ -1667,6 +1685,9 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="floatingIp")
     def floating_ip(self) -> pulumi.Output[Optional[str]]:
+        warnings.warn("""Use the openstack_compute_floatingip_associate_v2 resource instead""", DeprecationWarning)
+        pulumi.log.warn("""floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead""")
+
         return pulumi.get(self, "floating_ip")
 
     @property
@@ -1761,8 +1782,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="powerState")
     def power_state(self) -> pulumi.Output[Optional[str]]:
         """
-        Provide the VM state. Only 'active' and 'shutoff'
-        are supported values. *Note*: If the initial power_state is the shutoff
+        Provide the VM state. Only 'active', 'shutoff'
+        and 'shelved_offloaded' are supported values.
+        *Note*: If the initial power_state is the shutoff
         the VM will be stopped immediately after build and the provisioners like
         remote-exec or files are not supported.
         """
@@ -1848,5 +1870,8 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def volumes(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceVolume']]]:
+        warnings.warn("""Use block_device or openstack_compute_volume_attach_v2 instead""", DeprecationWarning)
+        pulumi.log.warn("""volumes is deprecated: Use block_device or openstack_compute_volume_attach_v2 instead""")
+
         return pulumi.get(self, "volumes")
 

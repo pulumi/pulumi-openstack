@@ -17,6 +17,7 @@ namespace Pulumi.OpenStack.Dns
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -24,22 +25,22 @@ namespace Pulumi.OpenStack.Dns
     /// {
     ///     var exampleZone = new OpenStack.Dns.Zone("exampleZone", new()
     ///     {
-    ///         Description = "a zone",
     ///         Email = "email2@example.com",
+    ///         Description = "a zone",
     ///         Ttl = 6000,
     ///         Type = "PRIMARY",
     ///     });
     /// 
     ///     var rsExampleCom = new OpenStack.Dns.RecordSet("rsExampleCom", new()
     ///     {
+    ///         ZoneId = exampleZone.Id,
     ///         Description = "An example record set",
+    ///         Ttl = 3000,
+    ///         Type = "A",
     ///         Records = new[]
     ///         {
     ///             "10.0.0.1",
     ///         },
-    ///         Ttl = 3000,
-    ///         Type = "A",
-    ///         ZoneId = exampleZone.Id,
     ///     });
     /// 
     /// });
@@ -50,7 +51,7 @@ namespace Pulumi.OpenStack.Dns
     /// This resource can be imported by specifying the zone ID and recordset ID, separated by a forward slash.
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 &lt;zone_id&gt;/&lt;recordset_id&gt;
+    ///  $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 zone_id/recordset_id
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:dns/recordSet:RecordSet")]
@@ -86,9 +87,7 @@ namespace Pulumi.OpenStack.Dns
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// An array of DNS records. _Note:_ if an IPv6 address
-        /// contains brackets (`[ ]`), the brackets will be stripped and the modified
-        /// address will be recorded in the state.
+        /// An array of DNS records.
         /// </summary>
         [Output("records")]
         public Output<ImmutableArray<string>> Records { get; private set; } = null!;
@@ -203,13 +202,11 @@ namespace Pulumi.OpenStack.Dns
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
-        [Input("records")]
+        [Input("records", required: true)]
         private InputList<string>? _records;
 
         /// <summary>
-        /// An array of DNS records. _Note:_ if an IPv6 address
-        /// contains brackets (`[ ]`), the brackets will be stripped and the modified
-        /// address will be recorded in the state.
+        /// An array of DNS records.
         /// </summary>
         public InputList<string> Records
         {
@@ -299,9 +296,7 @@ namespace Pulumi.OpenStack.Dns
         private InputList<string>? _records;
 
         /// <summary>
-        /// An array of DNS records. _Note:_ if an IPv6 address
-        /// contains brackets (`[ ]`), the brackets will be stripped and the modified
-        /// address will be recorded in the state.
+        /// An array of DNS records.
         /// </summary>
         public InputList<string> Records
         {

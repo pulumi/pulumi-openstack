@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
-//				FlavorId: pulumi.String("3"),
 //				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
+//				FlavorId: pulumi.String("3"),
 //				KeyPair:  pulumi.String("my_key_pair_name"),
 //				SecurityGroups: pulumi.StringArray{
 //					pulumi.String("default"),
@@ -74,9 +75,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
-//				FlavorId: pulumi.String("3"),
 //				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
+//				FlavorId: pulumi.String("3"),
 //				KeyPair:  pulumi.String("my_key_pair_name"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
 //				Networks: compute.InstanceNetworkArray{
 //					&compute.InstanceNetworkArgs{
 //						Name: pulumi.String("my_network"),
@@ -84,9 +88,6 @@ import (
 //					&compute.InstanceNetworkArgs{
 //						Name: pulumi.String("default"),
 //					},
-//				},
-//				SecurityGroups: pulumi.StringArray{
-//					pulumi.String("default"),
 //				},
 //			})
 //			if err != nil {
@@ -99,11 +100,11 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewFloatingIpAssociate(ctx, "fip1FloatingIpAssociate", &compute.FloatingIpAssociateArgs{
+//				FloatingIp: fip1FloatingIp.Address,
+//				InstanceId: instance1.ID(),
 //				FixedIp: instance1.Networks.ApplyT(func(networks []compute.InstanceNetwork) (*string, error) {
 //					return &networks[1].FixedIpV4, nil
 //				}).(pulumi.StringPtrOutput),
-//				FloatingIp: fip1FloatingIp.Address,
-//				InstanceId: instance1.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -120,7 +121,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 <floating_ip>/<instance_id>/<fixed_ip>
+//	$ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 floating_ip/instance_id/fixed_ip
 //
 // ```
 type FloatingIpAssociate struct {
@@ -153,6 +154,7 @@ func NewFloatingIpAssociate(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FloatingIpAssociate
 	err := ctx.RegisterResource("openstack:compute/floatingIpAssociate:FloatingIpAssociate", name, args, &resource, opts...)
 	if err != nil {

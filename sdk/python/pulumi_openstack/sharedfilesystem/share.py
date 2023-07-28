@@ -588,9 +588,9 @@ class Share(pulumi.CustomResource):
             neutron_subnet_id=subnet1.id)
         share1 = openstack.sharedfilesystem.Share("share1",
             description="test share description",
-            share_network_id=sharenetwork1.id,
             share_proto="NFS",
-            size=1)
+            size=1,
+            share_network_id=sharenetwork1.id)
         ```
 
         ## Import
@@ -598,7 +598,7 @@ class Share(pulumi.CustomResource):
         This resource can be imported by specifying the ID of the share
 
         ```sh
-         $ pulumi import openstack:sharedfilesystem/share:Share share_1 <id>
+         $ pulumi import openstack:sharedfilesystem/share:Share share_1 id
         ```
 
         :param str resource_name: The name of the resource.
@@ -655,9 +655,9 @@ class Share(pulumi.CustomResource):
             neutron_subnet_id=subnet1.id)
         share1 = openstack.sharedfilesystem.Share("share1",
             description="test share description",
-            share_network_id=sharenetwork1.id,
             share_proto="NFS",
-            size=1)
+            size=1,
+            share_network_id=sharenetwork1.id)
         ```
 
         ## Import
@@ -665,7 +665,7 @@ class Share(pulumi.CustomResource):
         This resource can be imported by specifying the ID of the share
 
         ```sh
-         $ pulumi import openstack:sharedfilesystem/share:Share share_1 <id>
+         $ pulumi import openstack:sharedfilesystem/share:Share share_1 id
         ```
 
         :param str resource_name: The name of the resource.

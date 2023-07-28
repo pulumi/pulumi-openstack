@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Manages a V1 Magnum cluster resource within OpenStack.
+ *
+ * > **Note:** All arguments including the `kubeconfig` computed attribute will be
+ * stored in the raw state as plain-text. Read more about sensitive data in
+ * state.
+ *
  * ## Example Usage
  * ### Create a Cluster
  *
@@ -165,14 +171,13 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly mergeLabels!: pulumi.Output<boolean | undefined>;
     /**
-     * The name of the cluster. Changing this updates the name
-     * of the existing cluster template.
+     * The name of the cluster. Changing this creates a new
+     * cluster.
      */
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly nodeAddresses!: pulumi.Output<string[]>;
     /**
-     * The number of nodes for the cluster. Changing this
-     * creates a new cluster.
+     * The number of nodes for the cluster.
      */
     public readonly nodeCount!: pulumi.Output<number | undefined>;
     /**
@@ -355,14 +360,13 @@ export interface ClusterState {
      */
     mergeLabels?: pulumi.Input<boolean>;
     /**
-     * The name of the cluster. Changing this updates the name
-     * of the existing cluster template.
+     * The name of the cluster. Changing this creates a new
+     * cluster.
      */
     name?: pulumi.Input<string>;
     nodeAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The number of nodes for the cluster. Changing this
-     * creates a new cluster.
+     * The number of nodes for the cluster.
      */
     nodeCount?: pulumi.Input<number>;
     /**
@@ -460,13 +464,12 @@ export interface ClusterArgs {
      */
     mergeLabels?: pulumi.Input<boolean>;
     /**
-     * The name of the cluster. Changing this updates the name
-     * of the existing cluster template.
+     * The name of the cluster. Changing this creates a new
+     * cluster.
      */
     name?: pulumi.Input<string>;
     /**
-     * The number of nodes for the cluster. Changing this
-     * creates a new cluster.
+     * The number of nodes for the cluster.
      */
     nodeCount?: pulumi.Input<number>;
     /**

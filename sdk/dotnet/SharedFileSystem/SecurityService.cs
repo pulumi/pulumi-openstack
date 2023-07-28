@@ -27,6 +27,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -52,7 +53,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// This resource can be imported by specifying the ID of the security service
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 &lt;id&gt;
+    ///  $ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 id
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:sharedfilesystem/securityService:SecurityService")]

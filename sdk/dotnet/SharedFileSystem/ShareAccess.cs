@@ -15,6 +15,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -42,17 +43,17 @@ namespace Pulumi.OpenStack.SharedFileSystem
     ///     var share1 = new OpenStack.SharedFileSystem.Share("share1", new()
     ///     {
     ///         Description = "test share description",
-    ///         ShareNetworkId = sharenetwork1.Id,
     ///         ShareProto = "NFS",
     ///         Size = 1,
+    ///         ShareNetworkId = sharenetwork1.Id,
     ///     });
     /// 
     ///     var shareAccess1 = new OpenStack.SharedFileSystem.ShareAccess("shareAccess1", new()
     ///     {
-    ///         AccessLevel = "rw",
-    ///         AccessTo = "192.168.199.10",
-    ///         AccessType = "ip",
     ///         ShareId = share1.Id,
+    ///         AccessType = "ip",
+    ///         AccessTo = "192.168.199.10",
+    ///         AccessLevel = "rw",
     ///     });
     /// 
     /// });
@@ -61,6 +62,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -81,13 +83,13 @@ namespace Pulumi.OpenStack.SharedFileSystem
     ///     var securityservice1 = new OpenStack.SharedFileSystem.SecurityService("securityservice1", new()
     ///     {
     ///         Description = "created by terraform",
+    ///         Type = "active_directory",
+    ///         Server = "192.168.199.10",
     ///         DnsIp = "192.168.199.10",
     ///         Domain = "example.com",
     ///         Ou = "CN=Computers,DC=example,DC=com",
-    ///         Password = "s8cret",
-    ///         Server = "192.168.199.10",
-    ///         Type = "active_directory",
     ///         User = "joinDomainUser",
+    ///         Password = "s8cret",
     ///     });
     /// 
     ///     var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new()
@@ -103,25 +105,25 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     ///     var share1 = new OpenStack.SharedFileSystem.Share("share1", new()
     ///     {
-    ///         ShareNetworkId = sharenetwork1.Id,
     ///         ShareProto = "CIFS",
     ///         Size = 1,
+    ///         ShareNetworkId = sharenetwork1.Id,
     ///     });
     /// 
     ///     var shareAccess1 = new OpenStack.SharedFileSystem.ShareAccess("shareAccess1", new()
     ///     {
-    ///         AccessLevel = "ro",
-    ///         AccessTo = "windows",
-    ///         AccessType = "user",
     ///         ShareId = share1.Id,
+    ///         AccessType = "user",
+    ///         AccessTo = "windows",
+    ///         AccessLevel = "ro",
     ///     });
     /// 
     ///     var shareAccess2 = new OpenStack.SharedFileSystem.ShareAccess("shareAccess2", new()
     ///     {
-    ///         AccessLevel = "rw",
-    ///         AccessTo = "linux",
-    ///         AccessType = "user",
     ///         ShareId = share1.Id,
+    ///         AccessType = "user",
+    ///         AccessTo = "linux",
+    ///         AccessLevel = "rw",
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
@@ -136,7 +138,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 &lt;share id&gt;/&lt;share access id&gt;
+    ///  $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 share_id/share_access_id
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:sharedfilesystem/shareAccess:ShareAccess")]
@@ -182,6 +184,12 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// </summary>
         [Output("shareId")]
         public Output<string> ShareId { get; private set; } = null!;
+
+        /// <summary>
+        /// The share access state.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
 
 
         /// <summary>
@@ -326,6 +334,12 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// </summary>
         [Input("shareId")]
         public Input<string>? ShareId { get; set; }
+
+        /// <summary>
+        /// The share access state.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         public ShareAccessState()
         {

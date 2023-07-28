@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,13 +49,13 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import openstack:dns/zone:Zone zone_1 <zone_id>
+//	$ pulumi import openstack:dns/zone:Zone zone_1 zone_id
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import openstack:dns/zone:Zone zone_1 <zone_id>:<project_id>
+//	$ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
 //
 // ```
 type Zone struct {
@@ -103,6 +104,7 @@ func NewZone(ctx *pulumi.Context,
 		args = &ZoneArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Zone
 	err := ctx.RegisterResource("openstack:dns/zone:Zone", name, args, &resource, opts...)
 	if err != nil {

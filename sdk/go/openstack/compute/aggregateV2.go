@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -110,6 +111,7 @@ func NewAggregateV2(ctx *pulumi.Context,
 		args = &AggregateV2Args{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AggregateV2
 	err := ctx.RegisterResource("openstack:compute/aggregateV2:AggregateV2", name, args, &resource, opts...)
 	if err != nil {

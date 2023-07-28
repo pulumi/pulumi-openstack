@@ -47,18 +47,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var conn1 = new SiteConnection(&#34;conn1&#34;, SiteConnectionArgs.builder()        
- *             .dpds(SiteConnectionDpdArgs.builder()
- *                 .action(&#34;restart&#34;)
- *                 .interval(21)
- *                 .timeout(42)
- *                 .build())
  *             .ikepolicyId(openstack_vpnaas_ike_policy_v2.policy_2().id())
  *             .ipsecpolicyId(openstack_vpnaas_ipsec_policy_v2.policy_1().id())
- *             .localEpGroupId(openstack_vpnaas_endpoint_group_v2.group_2().id())
- *             .peerAddress(&#34;192.168.10.1&#34;)
- *             .peerEpGroupId(openstack_vpnaas_endpoint_group_v2.group_1().id())
- *             .psk(&#34;secret&#34;)
  *             .vpnserviceId(openstack_vpnaas_service_v2.service_1().id())
+ *             .psk(&#34;secret&#34;)
+ *             .peerAddress(&#34;192.168.10.1&#34;)
+ *             .localEpGroupId(openstack_vpnaas_endpoint_group_v2.group_2().id())
+ *             .peerEpGroupId(openstack_vpnaas_endpoint_group_v2.group_1().id())
+ *             .dpds(SiteConnectionDpdArgs.builder()
+ *                 .action(&#34;restart&#34;)
+ *                 .timeout(42)
+ *                 .interval(21)
+ *                 .build())
  *             .build());
  * 
  *     }

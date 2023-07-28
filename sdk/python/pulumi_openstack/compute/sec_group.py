@@ -251,8 +251,8 @@ class SecGroup(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         test_server = openstack.compute.Instance("test-server",
-            flavor_id="3",
             image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
             key_pair="my_key_pair_name",
             security_groups=[openstack_compute_secgroup_v2["secgroup_1"]["name"]])
         ```
@@ -339,8 +339,8 @@ class SecGroup(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         test_server = openstack.compute.Instance("test-server",
-            flavor_id="3",
             image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
             key_pair="my_key_pair_name",
             security_groups=[openstack_compute_secgroup_v2["secgroup_1"]["name"]])
         ```

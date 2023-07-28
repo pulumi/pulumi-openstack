@@ -22,6 +22,7 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -44,8 +45,8 @@ namespace Pulumi.OpenStack.ObjectStorage
     ///     var objTempurl = new OpenStack.ObjectStorage.TempUrl("objTempurl", new()
     ///     {
     ///         Container = container1.Name,
-    ///         Method = "post",
     ///         Object = object1.Name,
+    ///         Method = "post",
     ///         Ttl = 20,
     ///     });
     /// 

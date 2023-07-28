@@ -308,8 +308,8 @@ class TempUrl(pulumi.CustomResource):
             content="Hello, world!")
         obj_tempurl = openstack.objectstorage.TempUrl("objTempurl",
             container=container1.name,
-            method="post",
             object=object1.name,
+            method="post",
             ttl=20)
         ```
 
@@ -355,8 +355,8 @@ class TempUrl(pulumi.CustomResource):
             content="Hello, world!")
         obj_tempurl = openstack.objectstorage.TempUrl("objTempurl",
             container=container1.name,
-            method="post",
             object=object1.name,
+            method="post",
             ttl=20)
         ```
 

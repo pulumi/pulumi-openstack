@@ -55,8 +55,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var port1 = new Port(&#34;port1&#34;, PortArgs.builder()        
- *             .adminStateUp(&#34;true&#34;)
  *             .networkId(network1.id())
+ *             .adminStateUp(&#34;true&#34;)
  *             .build());
  * 
  *     }
@@ -92,9 +92,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var port1 = new Port(&#34;port1&#34;, PortArgs.builder()        
+ *             .networkId(network1.id())
+ *             .deviceId(&#34;cdf70fcf-c161-4f24-9c70-96b3f5a54b71&#34;)
+ *             .deviceOwner(&#34;baremetal:none&#34;)
  *             .adminStateUp(&#34;true&#34;)
  *             .binding(PortBindingArgs.builder()
  *                 .hostId(&#34;b080b9cf-46e0-4ce8-ad47-0fd4accc872b&#34;)
+ *                 .vnicType(&#34;baremetal&#34;)
  *                 .profile(&#34;&#34;&#34;
  * {
  *   &#34;local_link_information&#34;: [
@@ -111,13 +115,8 @@ import javax.annotation.Nullable;
  *   ],
  *   &#34;vlan_type&#34;: &#34;allowed&#34;
  * }
- * 
  *                 &#34;&#34;&#34;)
- *                 .vnicType(&#34;baremetal&#34;)
  *                 .build())
- *             .deviceId(&#34;cdf70fcf-c161-4f24-9c70-96b3f5a54b71&#34;)
- *             .deviceOwner(&#34;baremetal:none&#34;)
- *             .networkId(network1.id())
  *             .build());
  * 
  *     }

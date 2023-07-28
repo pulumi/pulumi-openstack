@@ -7,10 +7,17 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a V1 Magnum cluster resource within OpenStack.
+//
+// > **Note:** All arguments including the `kubeconfig` computed attribute will be
+// stored in the raw state as plain-text. Read more about sensitive data in
+// state.
+//
 // ## Example Usage
 // ### Create a Cluster
 //
@@ -135,12 +142,11 @@ type Cluster struct {
 	// Indicates whether the provided labels should be
 	// merged with cluster template labels. Changing this creates a new cluster.
 	MergeLabels pulumi.BoolPtrOutput `pulumi:"mergeLabels"`
-	// The name of the cluster. Changing this updates the name
-	// of the existing cluster template.
+	// The name of the cluster. Changing this creates a new
+	// cluster.
 	Name          pulumi.StringOutput      `pulumi:"name"`
 	NodeAddresses pulumi.StringArrayOutput `pulumi:"nodeAddresses"`
-	// The number of nodes for the cluster. Changing this
-	// creates a new cluster.
+	// The number of nodes for the cluster.
 	NodeCount pulumi.IntPtrOutput `pulumi:"nodeCount"`
 	// The project of the cluster. Required if admin wants
 	// to create a cluster in another project. Changing this creates a new
@@ -173,6 +179,7 @@ func NewCluster(ctx *pulumi.Context,
 		"kubeconfig",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Cluster
 	err := ctx.RegisterResource("openstack:containerinfra/cluster:Cluster", name, args, &resource, opts...)
 	if err != nil {
@@ -242,12 +249,11 @@ type clusterState struct {
 	// Indicates whether the provided labels should be
 	// merged with cluster template labels. Changing this creates a new cluster.
 	MergeLabels *bool `pulumi:"mergeLabels"`
-	// The name of the cluster. Changing this updates the name
-	// of the existing cluster template.
+	// The name of the cluster. Changing this creates a new
+	// cluster.
 	Name          *string  `pulumi:"name"`
 	NodeAddresses []string `pulumi:"nodeAddresses"`
-	// The number of nodes for the cluster. Changing this
-	// creates a new cluster.
+	// The number of nodes for the cluster.
 	NodeCount *int `pulumi:"nodeCount"`
 	// The project of the cluster. Required if admin wants
 	// to create a cluster in another project. Changing this creates a new
@@ -314,12 +320,11 @@ type ClusterState struct {
 	// Indicates whether the provided labels should be
 	// merged with cluster template labels. Changing this creates a new cluster.
 	MergeLabels pulumi.BoolPtrInput
-	// The name of the cluster. Changing this updates the name
-	// of the existing cluster template.
+	// The name of the cluster. Changing this creates a new
+	// cluster.
 	Name          pulumi.StringPtrInput
 	NodeAddresses pulumi.StringArrayInput
-	// The number of nodes for the cluster. Changing this
-	// creates a new cluster.
+	// The number of nodes for the cluster.
 	NodeCount pulumi.IntPtrInput
 	// The project of the cluster. Required if admin wants
 	// to create a cluster in another project. Changing this creates a new
@@ -384,11 +389,10 @@ type clusterArgs struct {
 	// Indicates whether the provided labels should be
 	// merged with cluster template labels. Changing this creates a new cluster.
 	MergeLabels *bool `pulumi:"mergeLabels"`
-	// The name of the cluster. Changing this updates the name
-	// of the existing cluster template.
+	// The name of the cluster. Changing this creates a new
+	// cluster.
 	Name *string `pulumi:"name"`
-	// The number of nodes for the cluster. Changing this
-	// creates a new cluster.
+	// The number of nodes for the cluster.
 	NodeCount *int `pulumi:"nodeCount"`
 	// The region in which to obtain the V1 Container Infra
 	// client. A Container Infra client is needed to create a cluster. If omitted,
@@ -440,11 +444,10 @@ type ClusterArgs struct {
 	// Indicates whether the provided labels should be
 	// merged with cluster template labels. Changing this creates a new cluster.
 	MergeLabels pulumi.BoolPtrInput
-	// The name of the cluster. Changing this updates the name
-	// of the existing cluster template.
+	// The name of the cluster. Changing this creates a new
+	// cluster.
 	Name pulumi.StringPtrInput
-	// The number of nodes for the cluster. Changing this
-	// creates a new cluster.
+	// The number of nodes for the cluster.
 	NodeCount pulumi.IntPtrInput
 	// The region in which to obtain the V1 Container Infra
 	// client. A Container Infra client is needed to create a cluster. If omitted,
@@ -644,8 +647,8 @@ func (o ClusterOutput) MergeLabels() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.MergeLabels }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the cluster. Changing this updates the name
-// of the existing cluster template.
+// The name of the cluster. Changing this creates a new
+// cluster.
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -654,8 +657,7 @@ func (o ClusterOutput) NodeAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.NodeAddresses }).(pulumi.StringArrayOutput)
 }
 
-// The number of nodes for the cluster. Changing this
-// creates a new cluster.
+// The number of nodes for the cluster.
 func (o ClusterOutput) NodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.NodeCount }).(pulumi.IntPtrOutput)
 }

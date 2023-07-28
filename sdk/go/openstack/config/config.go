@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // If set to `false`, OpenStack authorization won't be perfomed automatically, if the initial auth token get expired.
 // Defaults to `true`
@@ -15,7 +18,11 @@ func GetAllowReauth(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(false, parseEnvBool, "OS_ALLOW_REAUTH").(bool)
+	var value bool
+	if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "OS_ALLOW_REAUTH"); d != nil {
+		value = d.(bool)
+	}
+	return value
 }
 
 // Application Credential ID to login with.
@@ -54,7 +61,11 @@ func GetCloud(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "OS_CLOUD").(string)
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "OS_CLOUD"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
@@ -69,7 +80,11 @@ func GetDelayedAuth(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(false, parseEnvBool, "OS_DELAYED_AUTH").(bool)
+	var value bool
+	if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "OS_DELAYED_AUTH"); d != nil {
+		value = d.(bool)
+	}
+	return value
 }
 
 // If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.
@@ -101,7 +116,11 @@ func GetEndpointType(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "OS_ENDPOINT_TYPE").(string)
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "OS_ENDPOINT_TYPE"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // Trust self-signed certificates.
@@ -110,7 +129,11 @@ func GetInsecure(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(false, parseEnvBool, "OS_INSECURE").(bool)
+	var value bool
+	if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "OS_INSECURE"); d != nil {
+		value = d.(bool)
+	}
+	return value
 }
 
 // A client private key to authenticate with.
@@ -144,7 +167,11 @@ func GetRegion(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "OS_REGION_NAME").(string)
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "OS_REGION_NAME"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
@@ -153,7 +180,16 @@ func GetSwauth(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(false, parseEnvBool, "OS_SWAUTH").(bool)
+	var value bool
+	if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "OS_SWAUTH"); d != nil {
+		value = d.(bool)
+	}
+	return value
+}
+
+// If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
+func GetSystemScope(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "openstack:systemScope")
 }
 
 // The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
@@ -177,7 +213,11 @@ func GetUseOctavia(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(false, parseEnvBool, "OS_USE_OCTAVIA").(bool)
+	var value bool
+	if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "OS_USE_OCTAVIA"); d != nil {
+		value = d.(bool)
+	}
+	return value
 }
 
 // The ID of the domain where the user resides (Identity v3).
@@ -190,7 +230,7 @@ func GetUserDomainName(ctx *pulumi.Context) string {
 	return config.Get(ctx, "openstack:userDomainName")
 }
 
-// Username to login with.
+// User ID to login with.
 func GetUserId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "openstack:userId")
 }

@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Manages a V2 Image resource within OpenStack Glance.
+ *
+ * > **Note:** All arguments including the source image URL password will be
+ * stored in the raw state as plain-text. Read more about sensitive data in
+ * state.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -88,7 +94,7 @@ export class Image extends pulumi.CustomResource {
     /**
      * If true, this provider will decompress downloaded
      * image before uploading it to OpenStack. Decompression algorithm is chosen by
-     * checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+     * checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
      * Defaults to false. Changing this creates a new Image.
      */
     public readonly decompress!: pulumi.Output<boolean | undefined>;
@@ -334,7 +340,7 @@ export interface ImageState {
     /**
      * If true, this provider will decompress downloaded
      * image before uploading it to OpenStack. Decompression algorithm is chosen by
-     * checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+     * checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
      * Defaults to false. Changing this creates a new Image.
      */
     decompress?: pulumi.Input<boolean>;
@@ -484,7 +490,7 @@ export interface ImageArgs {
     /**
      * If true, this provider will decompress downloaded
      * image before uploading it to OpenStack. Decompression algorithm is chosen by
-     * checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+     * checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
      * Defaults to false. Changing this creates a new Image.
      */
     decompress?: pulumi.Input<boolean>;

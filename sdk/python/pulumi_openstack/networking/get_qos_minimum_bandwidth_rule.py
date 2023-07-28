@@ -122,11 +122,11 @@ def get_qos_minimum_bandwidth_rule(direction: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule', __args__, opts=opts, typ=GetQosMinimumBandwidthRuleResult).value
 
     return AwaitableGetQosMinimumBandwidthRuleResult(
-        direction=__ret__.direction,
-        id=__ret__.id,
-        min_kbps=__ret__.min_kbps,
-        qos_policy_id=__ret__.qos_policy_id,
-        region=__ret__.region)
+        direction=pulumi.get(__ret__, 'direction'),
+        id=pulumi.get(__ret__, 'id'),
+        min_kbps=pulumi.get(__ret__, 'min_kbps'),
+        qos_policy_id=pulumi.get(__ret__, 'qos_policy_id'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_qos_minimum_bandwidth_rule)

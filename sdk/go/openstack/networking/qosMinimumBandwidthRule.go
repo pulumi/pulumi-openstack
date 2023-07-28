@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,8 +36,8 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewQosMinimumBandwidthRule(ctx, "minimumBandwidthRule1", &networking.QosMinimumBandwidthRuleArgs{
-//				MinKbps:     pulumi.Int(200),
 //				QosPolicyId: qosPolicy1.ID(),
+//				MinKbps:     pulumi.Int(200),
 //			})
 //			if err != nil {
 //				return err
@@ -86,6 +87,7 @@ func NewQosMinimumBandwidthRule(ctx *pulumi.Context,
 	if args.QosPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'QosPolicyId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource QosMinimumBandwidthRule
 	err := ctx.RegisterResource("openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule", name, args, &resource, opts...)
 	if err != nil {

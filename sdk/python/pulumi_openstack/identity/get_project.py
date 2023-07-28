@@ -21,7 +21,7 @@ class GetProjectResult:
     """
     A collection of values returned by getProject.
     """
-    def __init__(__self__, description=None, domain_id=None, enabled=None, id=None, is_domain=None, name=None, parent_id=None, region=None, tags=None):
+    def __init__(__self__, description=None, domain_id=None, enabled=None, id=None, is_domain=None, name=None, parent_id=None, project_id=None, region=None, tags=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -43,6 +43,9 @@ class GetProjectResult:
         if parent_id and not isinstance(parent_id, str):
             raise TypeError("Expected argument 'parent_id' to be a str")
         pulumi.set(__self__, "parent_id", parent_id)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -107,6 +110,14 @@ class GetProjectResult:
         return pulumi.get(self, "parent_id")
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        """
+        See Argument Reference above.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
     @pulumi.getter
     def region(self) -> str:
         """
@@ -136,6 +147,7 @@ class AwaitableGetProjectResult(GetProjectResult):
             is_domain=self.is_domain,
             name=self.name,
             parent_id=self.parent_id,
+            project_id=self.project_id,
             region=self.region,
             tags=self.tags)
 
@@ -145,6 +157,7 @@ def get_project(domain_id: Optional[str] = None,
                 is_domain: Optional[bool] = None,
                 name: Optional[str] = None,
                 parent_id: Optional[str] = None,
+                project_id: Optional[str] = None,
                 region: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
@@ -167,6 +180,8 @@ def get_project(domain_id: Optional[str] = None,
            are `true` and `false`.
     :param str name: The name of the project.
     :param str parent_id: The parent of this project.
+    :param str project_id: The id of the project. Conflicts with any of the
+           above arguments.
     :param str region: The region the project is located in.
     """
     __args__ = dict()
@@ -175,20 +190,22 @@ def get_project(domain_id: Optional[str] = None,
     __args__['isDomain'] = is_domain
     __args__['name'] = name
     __args__['parentId'] = parent_id
+    __args__['projectId'] = project_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('openstack:identity/getProject:getProject', __args__, opts=opts, typ=GetProjectResult).value
 
     return AwaitableGetProjectResult(
-        description=__ret__.description,
-        domain_id=__ret__.domain_id,
-        enabled=__ret__.enabled,
-        id=__ret__.id,
-        is_domain=__ret__.is_domain,
-        name=__ret__.name,
-        parent_id=__ret__.parent_id,
-        region=__ret__.region,
-        tags=__ret__.tags)
+        description=pulumi.get(__ret__, 'description'),
+        domain_id=pulumi.get(__ret__, 'domain_id'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        id=pulumi.get(__ret__, 'id'),
+        is_domain=pulumi.get(__ret__, 'is_domain'),
+        name=pulumi.get(__ret__, 'name'),
+        parent_id=pulumi.get(__ret__, 'parent_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        region=pulumi.get(__ret__, 'region'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_project)
@@ -197,6 +214,7 @@ def get_project_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
                        is_domain: Optional[pulumi.Input[Optional[bool]]] = None,
                        name: Optional[pulumi.Input[Optional[str]]] = None,
                        parent_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       project_id: Optional[pulumi.Input[Optional[str]]] = None,
                        region: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
     """
@@ -219,6 +237,8 @@ def get_project_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
            are `true` and `false`.
     :param str name: The name of the project.
     :param str parent_id: The parent of this project.
+    :param str project_id: The id of the project. Conflicts with any of the
+           above arguments.
     :param str region: The region the project is located in.
     """
     ...

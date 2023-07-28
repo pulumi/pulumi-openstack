@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func GetQuotasetV3(ctx *pulumi.Context, args *GetQuotasetV3Args, opts ...pulumi.InvokeOption) (*GetQuotasetV3Result, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetQuotasetV3Result
 	err := ctx.Invoke("openstack:blockstorage/getQuotasetV3:getQuotasetV3", args, &rv, opts...)
 	if err != nil {

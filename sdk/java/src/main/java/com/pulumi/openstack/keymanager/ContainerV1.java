@@ -57,23 +57,24 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var certificate1 = new SecretV1(&#34;certificate1&#34;, SecretV1Args.builder()        
  *             .payload(Files.readString(Paths.get(&#34;cert.pem&#34;)))
- *             .payloadContentType(&#34;text/plain&#34;)
  *             .secretType(&#34;certificate&#34;)
+ *             .payloadContentType(&#34;text/plain&#34;)
  *             .build());
  * 
  *         var privateKey1 = new SecretV1(&#34;privateKey1&#34;, SecretV1Args.builder()        
  *             .payload(Files.readString(Paths.get(&#34;cert-key.pem&#34;)))
- *             .payloadContentType(&#34;text/plain&#34;)
  *             .secretType(&#34;private&#34;)
+ *             .payloadContentType(&#34;text/plain&#34;)
  *             .build());
  * 
  *         var intermediate1 = new SecretV1(&#34;intermediate1&#34;, SecretV1Args.builder()        
  *             .payload(Files.readString(Paths.get(&#34;intermediate-ca.pem&#34;)))
- *             .payloadContentType(&#34;text/plain&#34;)
  *             .secretType(&#34;certificate&#34;)
+ *             .payloadContentType(&#34;text/plain&#34;)
  *             .build());
  * 
  *         var tls1 = new ContainerV1(&#34;tls1&#34;, ContainerV1Args.builder()        
+ *             .type(&#34;certificate&#34;)
  *             .secretRefs(            
  *                 ContainerV1SecretRefArgs.builder()
  *                     .name(&#34;certificate&#34;)
@@ -87,7 +88,6 @@ import javax.annotation.Nullable;
  *                     .name(&#34;intermediates&#34;)
  *                     .secretRef(intermediate1.secretRef())
  *                     .build())
- *             .type(&#34;certificate&#34;)
  *             .build());
  * 
  *         final var subnet1 = NetworkingFunctions.getSubnet(GetSubnetArgs.builder()
@@ -99,10 +99,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var listener1 = new Listener(&#34;listener1&#34;, ListenerArgs.builder()        
- *             .defaultTlsContainerRef(tls1.containerRef())
- *             .loadbalancerId(lb1.id())
  *             .protocol(&#34;TERMINATED_HTTPS&#34;)
  *             .protocolPort(443)
+ *             .loadbalancerId(lb1.id())
+ *             .defaultTlsContainerRef(tls1.containerRef())
  *             .build());
  * 
  *     }
@@ -119,9 +119,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.openstack.keymanager.ContainerV1;
  * import com.pulumi.openstack.keymanager.ContainerV1Args;
+ * import com.pulumi.openstack.keymanager.inputs.ContainerV1SecretRefArgs;
  * import com.pulumi.openstack.keymanager.inputs.ContainerV1AclArgs;
  * import com.pulumi.openstack.keymanager.inputs.ContainerV1AclReadArgs;
- * import com.pulumi.openstack.keymanager.inputs.ContainerV1SecretRefArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -136,14 +136,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tls1 = new ContainerV1(&#34;tls1&#34;, ContainerV1Args.builder()        
- *             .acl(ContainerV1AclArgs.builder()
- *                 .read(ContainerV1AclReadArgs.builder()
- *                     .projectAccess(false)
- *                     .users(                    
- *                         &#34;userid1&#34;,
- *                         &#34;userid2&#34;)
- *                     .build())
- *                 .build())
+ *             .type(&#34;certificate&#34;)
  *             .secretRefs(            
  *                 ContainerV1SecretRefArgs.builder()
  *                     .name(&#34;certificate&#34;)
@@ -157,7 +150,14 @@ import javax.annotation.Nullable;
  *                     .name(&#34;intermediates&#34;)
  *                     .secretRef(openstack_keymanager_secret_v1.intermediate_1().secret_ref())
  *                     .build())
- *             .type(&#34;certificate&#34;)
+ *             .acl(ContainerV1AclArgs.builder()
+ *                 .read(ContainerV1AclReadArgs.builder()
+ *                     .projectAccess(false)
+ *                     .users(                    
+ *                         &#34;userid1&#34;,
+ *                         &#34;userid2&#34;)
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }

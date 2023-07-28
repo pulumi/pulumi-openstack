@@ -57,17 +57,9 @@ class GetImageIdsResult:
         pulumi.set(__self__, "sort", sort)
         if sort_direction and not isinstance(sort_direction, str):
             raise TypeError("Expected argument 'sort_direction' to be a str")
-        if sort_direction is not None:
-            warnings.warn("""Use option 'sort' instead.""", DeprecationWarning)
-            pulumi.log.warn("""sort_direction is deprecated: Use option 'sort' instead.""")
-
         pulumi.set(__self__, "sort_direction", sort_direction)
         if sort_key and not isinstance(sort_key, str):
             raise TypeError("Expected argument 'sort_key' to be a str")
-        if sort_key is not None:
-            warnings.warn("""Use option 'sort' instead.""", DeprecationWarning)
-            pulumi.log.warn("""sort_key is deprecated: Use option 'sort' instead.""")
-
         pulumi.set(__self__, "sort_key", sort_key)
         if tag and not isinstance(tag, str):
             raise TypeError("Expected argument 'tag' to be a str")
@@ -140,11 +132,17 @@ class GetImageIdsResult:
     @property
     @pulumi.getter(name="sortDirection")
     def sort_direction(self) -> Optional[str]:
+        warnings.warn("""Use option 'sort' instead.""", DeprecationWarning)
+        pulumi.log.warn("""sort_direction is deprecated: Use option 'sort' instead.""")
+
         return pulumi.get(self, "sort_direction")
 
     @property
     @pulumi.getter(name="sortKey")
     def sort_key(self) -> Optional[str]:
+        warnings.warn("""Use option 'sort' instead.""", DeprecationWarning)
+        pulumi.log.warn("""sort_key is deprecated: Use option 'sort' instead.""")
+
         return pulumi.get(self, "sort_key")
 
     @property
@@ -275,22 +273,22 @@ def get_image_ids(member_status: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:images/getImageIds:getImageIds', __args__, opts=opts, typ=GetImageIdsResult).value
 
     return AwaitableGetImageIdsResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        member_status=__ret__.member_status,
-        name=__ret__.name,
-        name_regex=__ret__.name_regex,
-        owner=__ret__.owner,
-        properties=__ret__.properties,
-        region=__ret__.region,
-        size_max=__ret__.size_max,
-        size_min=__ret__.size_min,
-        sort=__ret__.sort,
-        sort_direction=__ret__.sort_direction,
-        sort_key=__ret__.sort_key,
-        tag=__ret__.tag,
-        tags=__ret__.tags,
-        visibility=__ret__.visibility)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        member_status=pulumi.get(__ret__, 'member_status'),
+        name=pulumi.get(__ret__, 'name'),
+        name_regex=pulumi.get(__ret__, 'name_regex'),
+        owner=pulumi.get(__ret__, 'owner'),
+        properties=pulumi.get(__ret__, 'properties'),
+        region=pulumi.get(__ret__, 'region'),
+        size_max=pulumi.get(__ret__, 'size_max'),
+        size_min=pulumi.get(__ret__, 'size_min'),
+        sort=pulumi.get(__ret__, 'sort'),
+        sort_direction=pulumi.get(__ret__, 'sort_direction'),
+        sort_key=pulumi.get(__ret__, 'sort_key'),
+        tag=pulumi.get(__ret__, 'tag'),
+        tags=pulumi.get(__ret__, 'tags'),
+        visibility=pulumi.get(__ret__, 'visibility'))
 
 
 @_utilities.lift_output_func(get_image_ids)

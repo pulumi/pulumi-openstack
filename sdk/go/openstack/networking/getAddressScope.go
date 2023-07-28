@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupAddressScope(ctx *pulumi.Context, args *LookupAddressScopeArgs, opts ...pulumi.InvokeOption) (*LookupAddressScopeResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAddressScopeResult
 	err := ctx.Invoke("openstack:networking/getAddressScope:getAddressScope", args, &rv, opts...)
 	if err != nil {

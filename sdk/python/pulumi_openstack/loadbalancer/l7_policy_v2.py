@@ -421,18 +421,18 @@ class L7PolicyV2(pulumi.CustomResource):
             network_id=network1.id)
         loadbalancer1 = openstack.loadbalancer.LoadBalancer("loadbalancer1", vip_subnet_id=subnet1.id)
         listener1 = openstack.loadbalancer.Listener("listener1",
-            loadbalancer_id=loadbalancer1.id,
             protocol="HTTP",
-            protocol_port=8080)
+            protocol_port=8080,
+            loadbalancer_id=loadbalancer1.id)
         pool1 = openstack.loadbalancer.Pool("pool1",
+            protocol="HTTP",
             lb_method="ROUND_ROBIN",
-            loadbalancer_id=loadbalancer1.id,
-            protocol="HTTP")
+            loadbalancer_id=loadbalancer1.id)
         l7policy1 = openstack.loadbalancer.L7PolicyV2("l7policy1",
             action="REDIRECT_TO_POOL",
             description="test l7 policy",
-            listener_id=listener1.id,
             position=1,
+            listener_id=listener1.id,
             redirect_pool_id=pool1.id)
         ```
 
@@ -490,18 +490,18 @@ class L7PolicyV2(pulumi.CustomResource):
             network_id=network1.id)
         loadbalancer1 = openstack.loadbalancer.LoadBalancer("loadbalancer1", vip_subnet_id=subnet1.id)
         listener1 = openstack.loadbalancer.Listener("listener1",
-            loadbalancer_id=loadbalancer1.id,
             protocol="HTTP",
-            protocol_port=8080)
+            protocol_port=8080,
+            loadbalancer_id=loadbalancer1.id)
         pool1 = openstack.loadbalancer.Pool("pool1",
+            protocol="HTTP",
             lb_method="ROUND_ROBIN",
-            loadbalancer_id=loadbalancer1.id,
-            protocol="HTTP")
+            loadbalancer_id=loadbalancer1.id)
         l7policy1 = openstack.loadbalancer.L7PolicyV2("l7policy1",
             action="REDIRECT_TO_POOL",
             description="test l7 policy",
-            listener_id=listener1.id,
             position=1,
+            listener_id=listener1.id,
             redirect_pool_id=pool1.id)
         ```
 

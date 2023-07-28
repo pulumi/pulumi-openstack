@@ -16,8 +16,8 @@ import * as utilities from "../utilities";
  *
  * const qosPolicy1 = new openstack.networking.QosPolicy("qosPolicy1", {description: "min_kbps"});
  * const minimumBandwidthRule1 = new openstack.networking.QosMinimumBandwidthRule("minimumBandwidthRule1", {
- *     minKbps: 200,
  *     qosPolicyId: qosPolicy1.id,
+ *     minKbps: 200,
  * });
  * ```
  *

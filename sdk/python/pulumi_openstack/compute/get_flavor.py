@@ -225,20 +225,20 @@ def get_flavor(description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:compute/getFlavor:getFlavor', __args__, opts=opts, typ=GetFlavorResult).value
 
     return AwaitableGetFlavorResult(
-        description=__ret__.description,
-        disk=__ret__.disk,
-        extra_specs=__ret__.extra_specs,
-        flavor_id=__ret__.flavor_id,
-        id=__ret__.id,
-        is_public=__ret__.is_public,
-        min_disk=__ret__.min_disk,
-        min_ram=__ret__.min_ram,
-        name=__ret__.name,
-        ram=__ret__.ram,
-        region=__ret__.region,
-        rx_tx_factor=__ret__.rx_tx_factor,
-        swap=__ret__.swap,
-        vcpus=__ret__.vcpus)
+        description=pulumi.get(__ret__, 'description'),
+        disk=pulumi.get(__ret__, 'disk'),
+        extra_specs=pulumi.get(__ret__, 'extra_specs'),
+        flavor_id=pulumi.get(__ret__, 'flavor_id'),
+        id=pulumi.get(__ret__, 'id'),
+        is_public=pulumi.get(__ret__, 'is_public'),
+        min_disk=pulumi.get(__ret__, 'min_disk'),
+        min_ram=pulumi.get(__ret__, 'min_ram'),
+        name=pulumi.get(__ret__, 'name'),
+        ram=pulumi.get(__ret__, 'ram'),
+        region=pulumi.get(__ret__, 'region'),
+        rx_tx_factor=pulumi.get(__ret__, 'rx_tx_factor'),
+        swap=pulumi.get(__ret__, 'swap'),
+        vcpus=pulumi.get(__ret__, 'vcpus'))
 
 
 @_utilities.lift_output_func(get_flavor)

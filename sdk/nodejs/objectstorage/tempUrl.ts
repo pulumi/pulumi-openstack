@@ -28,8 +28,8 @@ import * as utilities from "../utilities";
  * });
  * const objTempurl = new openstack.objectstorage.TempUrl("objTempurl", {
  *     container: container1.name,
- *     method: "post",
  *     object: object1.name,
+ *     method: "post",
  *     ttl: 20,
  * });
  * ```

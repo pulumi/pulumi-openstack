@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,8 +80,8 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewPortSecGroupAssociate(ctx, "port1", &networking.PortSecGroupAssociateArgs{
-//				Enforce: pulumi.Bool(true),
 //				PortId:  *pulumi.String(systemPort.Id),
+//				Enforce: pulumi.Bool(true),
 //				SecurityGroupIds: pulumi.StringArray{
 //					*pulumi.String(secgroup.Id),
 //				},
@@ -114,8 +115,8 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewPortSecGroupAssociate(ctx, "port1", &networking.PortSecGroupAssociateArgs{
-//				Enforce:          pulumi.Bool(true),
 //				PortId:           *pulumi.String(systemPort.Id),
+//				Enforce:          pulumi.Bool(true),
 //				SecurityGroupIds: pulumi.StringArray{},
 //			})
 //			if err != nil {
@@ -171,6 +172,7 @@ func NewPortSecGroupAssociate(ctx *pulumi.Context,
 	if args.SecurityGroupIds == nil {
 		return nil, errors.New("invalid value for required argument 'SecurityGroupIds'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PortSecGroupAssociate
 	err := ctx.RegisterResource("openstack:networking/portSecGroupAssociate:PortSecGroupAssociate", name, args, &resource, opts...)
 	if err != nil {

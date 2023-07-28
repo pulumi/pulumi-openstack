@@ -69,9 +69,9 @@ import javax.annotation.Nullable;
  * 
  *         var share1 = new Share(&#34;share1&#34;, ShareArgs.builder()        
  *             .description(&#34;test share description&#34;)
- *             .shareNetworkId(sharenetwork1.id())
  *             .shareProto(&#34;NFS&#34;)
  *             .size(1)
+ *             .shareNetworkId(sharenetwork1.id())
  *             .build());
  * 
  *     }
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  * This resource can be imported by specifying the ID of the share
  * 
  * ```sh
- *  $ pulumi import openstack:sharedfilesystem/share:Share share_1 &lt;id&gt;
+ *  $ pulumi import openstack:sharedfilesystem/share:Share share_1 id
  * ```
  * 
  */

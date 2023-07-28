@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,6 +74,7 @@ import (
 //
 // ```
 func GetSecret(ctx *pulumi.Context, args *GetSecretArgs, opts ...pulumi.InvokeOption) (*GetSecretResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSecretResult
 	err := ctx.Invoke("openstack:keymanager/getSecret:getSecret", args, &rv, opts...)
 	if err != nil {

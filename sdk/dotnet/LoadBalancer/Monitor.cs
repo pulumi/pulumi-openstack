@@ -16,6 +16,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -23,11 +24,11 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// {
     ///     var monitor1 = new OpenStack.LoadBalancer.Monitor("monitor1", new()
     ///     {
-    ///         Delay = 20,
-    ///         MaxRetries = 5,
     ///         PoolId = openstack_lb_pool_v2.Pool_1.Id,
-    ///         Timeout = 10,
     ///         Type = "PING",
+    ///         Delay = 20,
+    ///         Timeout = 10,
+    ///         MaxRetries = 5,
     ///     });
     /// 
     /// });

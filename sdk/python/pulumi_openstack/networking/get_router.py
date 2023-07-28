@@ -238,21 +238,21 @@ def get_router(admin_state_up: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('openstack:networking/getRouter:getRouter', __args__, opts=opts, typ=GetRouterResult).value
 
     return AwaitableGetRouterResult(
-        admin_state_up=__ret__.admin_state_up,
-        all_tags=__ret__.all_tags,
-        availability_zone_hints=__ret__.availability_zone_hints,
-        description=__ret__.description,
-        distributed=__ret__.distributed,
-        enable_snat=__ret__.enable_snat,
-        external_fixed_ips=__ret__.external_fixed_ips,
-        external_network_id=__ret__.external_network_id,
-        id=__ret__.id,
-        name=__ret__.name,
-        region=__ret__.region,
-        router_id=__ret__.router_id,
-        status=__ret__.status,
-        tags=__ret__.tags,
-        tenant_id=__ret__.tenant_id)
+        admin_state_up=pulumi.get(__ret__, 'admin_state_up'),
+        all_tags=pulumi.get(__ret__, 'all_tags'),
+        availability_zone_hints=pulumi.get(__ret__, 'availability_zone_hints'),
+        description=pulumi.get(__ret__, 'description'),
+        distributed=pulumi.get(__ret__, 'distributed'),
+        enable_snat=pulumi.get(__ret__, 'enable_snat'),
+        external_fixed_ips=pulumi.get(__ret__, 'external_fixed_ips'),
+        external_network_id=pulumi.get(__ret__, 'external_network_id'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'),
+        router_id=pulumi.get(__ret__, 'router_id'),
+        status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
+        tenant_id=pulumi.get(__ret__, 'tenant_id'))
 
 
 @_utilities.lift_output_func(get_router)

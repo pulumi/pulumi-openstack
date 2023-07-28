@@ -145,6 +145,9 @@ class VolumeAttachV2Args:
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""instance_id is no longer used in this resource""", DeprecationWarning)
+        pulumi.log.warn("""instance_id is deprecated: instance_id is no longer used in this resource""")
+
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -404,6 +407,9 @@ class _VolumeAttachV2State:
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""instance_id is no longer used in this resource""", DeprecationWarning)
+        pulumi.log.warn("""instance_id is deprecated: instance_id is no longer used in this resource""")
+
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -543,6 +549,23 @@ class VolumeAttachV2(pulumi.CustomResource):
                  wwpns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
+        > **Note:** This resource usually requires admin privileges.
+
+        > **Note:** This resource does not actually attach a volume to an instance.
+        Please use the `compute.VolumeAttach` resource for that.
+
+        > **Note:** All arguments including the `data` computed attribute will be
+        stored in the raw state as plain-text. Read more about sensitive data in
+        state.
+
+        Creates a general purpose attachment connection to a Block
+        Storage volume using the OpenStack Block Storage (Cinder) v2 API.
+
+        Depending on your Block Storage service configuration, this
+        resource can assist in attaching a volume to a non-OpenStack resource
+        such as a bare-metal server or a remote virtual machine in a
+        different cloud provider.
+
         ## Example Usage
 
         ```python
@@ -551,13 +574,13 @@ class VolumeAttachV2(pulumi.CustomResource):
 
         volume1 = openstack.blockstorage.VolumeV2("volume1", size=1)
         va1 = openstack.blockstorage.VolumeAttachV2("va1",
+            volume_id=volume1.id,
             device="auto",
             host_name="devstack",
-            initiator="iqn.1993-08.org.debian:01:e9861fb1859",
             ip_address="192.168.255.10",
+            initiator="iqn.1993-08.org.debian:01:e9861fb1859",
             os_type="linux2",
-            platform="x86_64",
-            volume_id=volume1.id)
+            platform="x86_64")
         ```
 
         ## Import
@@ -594,6 +617,23 @@ class VolumeAttachV2(pulumi.CustomResource):
                  args: VolumeAttachV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Note:** This resource usually requires admin privileges.
+
+        > **Note:** This resource does not actually attach a volume to an instance.
+        Please use the `compute.VolumeAttach` resource for that.
+
+        > **Note:** All arguments including the `data` computed attribute will be
+        stored in the raw state as plain-text. Read more about sensitive data in
+        state.
+
+        Creates a general purpose attachment connection to a Block
+        Storage volume using the OpenStack Block Storage (Cinder) v2 API.
+
+        Depending on your Block Storage service configuration, this
+        resource can assist in attaching a volume to a non-OpenStack resource
+        such as a bare-metal server or a remote virtual machine in a
+        different cloud provider.
+
         ## Example Usage
 
         ```python
@@ -602,13 +642,13 @@ class VolumeAttachV2(pulumi.CustomResource):
 
         volume1 = openstack.blockstorage.VolumeV2("volume1", size=1)
         va1 = openstack.blockstorage.VolumeAttachV2("va1",
+            volume_id=volume1.id,
             device="auto",
             host_name="devstack",
-            initiator="iqn.1993-08.org.debian:01:e9861fb1859",
             ip_address="192.168.255.10",
+            initiator="iqn.1993-08.org.debian:01:e9861fb1859",
             os_type="linux2",
-            platform="x86_64",
-            volume_id=volume1.id)
+            platform="x86_64")
         ```
 
         ## Import
@@ -815,6 +855,9 @@ class VolumeAttachV2(pulumi.CustomResource):
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[Optional[str]]:
+        warnings.warn("""instance_id is no longer used in this resource""", DeprecationWarning)
+        pulumi.log.warn("""instance_id is deprecated: instance_id is no longer used in this resource""")
+
         return pulumi.get(self, "instance_id")
 
     @property

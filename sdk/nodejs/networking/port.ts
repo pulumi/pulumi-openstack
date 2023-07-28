@@ -18,8 +18,8 @@ import * as utilities from "../utilities";
  *
  * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
  * const port1 = new openstack.networking.Port("port1", {
- *     adminStateUp: true,
  *     networkId: network1.id,
+ *     adminStateUp: true,
  * });
  * ```
  * ### Port with physical binding information
@@ -30,9 +30,13 @@ import * as utilities from "../utilities";
  *
  * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
  * const port1 = new openstack.networking.Port("port1", {
+ *     networkId: network1.id,
+ *     deviceId: "cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
+ *     deviceOwner: "baremetal:none",
  *     adminStateUp: true,
  *     binding: {
  *         hostId: "b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
+ *         vnicType: "baremetal",
  *         profile: `{
  *   "local_link_information": [
  *     {
@@ -48,13 +52,8 @@ import * as utilities from "../utilities";
  *   ],
  *   "vlan_type": "allowed"
  * }
- *
  * `,
- *         vnicType: "baremetal",
  *     },
- *     deviceId: "cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
- *     deviceOwner: "baremetal:none",
- *     networkId: network1.id,
  * });
  * ```
  * ## Notes

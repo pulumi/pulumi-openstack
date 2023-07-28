@@ -377,6 +377,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
+     * 
+     */
+    @Import(name="systemScope", json=true)
+    private @Nullable Output<Boolean> systemScope;
+
+    /**
+     * @return If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
+     * 
+     */
+    public Optional<Output<Boolean>> systemScope() {
+        return Optional.ofNullable(this.systemScope);
+    }
+
+    /**
      * The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
      * 
      */
@@ -467,14 +482,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Username to login with.
+     * User ID to login with.
      * 
      */
     @Import(name="userId")
     private @Nullable Output<String> userId;
 
     /**
-     * @return Username to login with.
+     * @return User ID to login with.
      * 
      */
     public Optional<Output<String>> userId() {
@@ -523,6 +538,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.projectDomainName = $.projectDomainName;
         this.region = $.region;
         this.swauth = $.swauth;
+        this.systemScope = $.systemScope;
         this.tenantId = $.tenantId;
         this.tenantName = $.tenantName;
         this.token = $.token;
@@ -1048,6 +1064,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param systemScope If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemScope(@Nullable Output<Boolean> systemScope) {
+            $.systemScope = systemScope;
+            return this;
+        }
+
+        /**
+         * @param systemScope If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemScope(Boolean systemScope) {
+            return systemScope(Output.of(systemScope));
+        }
+
+        /**
          * @param tenantId The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
          * 
          * @return builder
@@ -1174,7 +1211,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userId Username to login with.
+         * @param userId User ID to login with.
          * 
          * @return builder
          * 
@@ -1185,7 +1222,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userId Username to login with.
+         * @param userId User ID to login with.
          * 
          * @return builder
          * 

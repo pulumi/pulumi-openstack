@@ -111,10 +111,10 @@ def get_qos_dscp_marking_rule(dscp_mark: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule', __args__, opts=opts, typ=GetQosDscpMarkingRuleResult).value
 
     return AwaitableGetQosDscpMarkingRuleResult(
-        dscp_mark=__ret__.dscp_mark,
-        id=__ret__.id,
-        qos_policy_id=__ret__.qos_policy_id,
-        region=__ret__.region)
+        dscp_mark=pulumi.get(__ret__, 'dscp_mark'),
+        id=pulumi.get(__ret__, 'id'),
+        qos_policy_id=pulumi.get(__ret__, 'qos_policy_id'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_qos_dscp_marking_rule)

@@ -259,6 +259,31 @@ def get_auth_scope(name: Optional[str] = None,
     object_store_endpoint = [endpoint for endpoint in object_store_service["endpoints"] if endpoint["interface"] == "public" and endpoint["region"] == "region1"][0]
     object_store_public_url = object_store_endpoint["url"]
     ```
+    ### In a combination with an http data source provider
+
+    See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    scope = openstack.identity.get_auth_scope(name="my_scope")
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_http as http
+
+    object_store_service = [entry for entry in data["openstack_identity_auth_scope_v3"]["scope"]["service_catalog"] if entry["type"] == "object-store"][0]
+    object_store_endpoint = [endpoint for endpoint in object_store_service["endpoints"] if endpoint["interface"] == "public" and endpoint["region"] == "region1"][0]
+    object_store_public_url = object_store_endpoint["url"]
+    example = http.get_http(url=object_store_public_url,
+        request_headers={
+            "Accept": "application/json",
+            "X-Auth-Token": data["openstack_identity_auth_scope_v3"]["scope"]["token_id"],
+        })
+    pulumi.export("containers", example.response_body)
+    ```
 
 
     :param str name: The name of the scope. This is an arbitrary name which is
@@ -281,23 +306,23 @@ def get_auth_scope(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:identity/getAuthScope:getAuthScope', __args__, opts=opts, typ=GetAuthScopeResult).value
 
     return AwaitableGetAuthScopeResult(
-        domain_id=__ret__.domain_id,
-        domain_name=__ret__.domain_name,
-        id=__ret__.id,
-        name=__ret__.name,
-        project_domain_id=__ret__.project_domain_id,
-        project_domain_name=__ret__.project_domain_name,
-        project_id=__ret__.project_id,
-        project_name=__ret__.project_name,
-        region=__ret__.region,
-        roles=__ret__.roles,
-        service_catalogs=__ret__.service_catalogs,
-        set_token_id=__ret__.set_token_id,
-        token_id=__ret__.token_id,
-        user_domain_id=__ret__.user_domain_id,
-        user_domain_name=__ret__.user_domain_name,
-        user_id=__ret__.user_id,
-        user_name=__ret__.user_name)
+        domain_id=pulumi.get(__ret__, 'domain_id'),
+        domain_name=pulumi.get(__ret__, 'domain_name'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        project_domain_id=pulumi.get(__ret__, 'project_domain_id'),
+        project_domain_name=pulumi.get(__ret__, 'project_domain_name'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        project_name=pulumi.get(__ret__, 'project_name'),
+        region=pulumi.get(__ret__, 'region'),
+        roles=pulumi.get(__ret__, 'roles'),
+        service_catalogs=pulumi.get(__ret__, 'service_catalogs'),
+        set_token_id=pulumi.get(__ret__, 'set_token_id'),
+        token_id=pulumi.get(__ret__, 'token_id'),
+        user_domain_id=pulumi.get(__ret__, 'user_domain_id'),
+        user_domain_name=pulumi.get(__ret__, 'user_domain_name'),
+        user_id=pulumi.get(__ret__, 'user_id'),
+        user_name=pulumi.get(__ret__, 'user_name'))
 
 
 @_utilities.lift_output_func(get_auth_scope)
@@ -325,6 +350,31 @@ def get_auth_scope_output(name: Optional[pulumi.Input[str]] = None,
     object_store_service = [entry for entry in data["openstack_identity_auth_scope_v3"]["scope"]["service_catalog"] if entry["type"] == "object-store"][0]
     object_store_endpoint = [endpoint for endpoint in object_store_service["endpoints"] if endpoint["interface"] == "public" and endpoint["region"] == "region1"][0]
     object_store_public_url = object_store_endpoint["url"]
+    ```
+    ### In a combination with an http data source provider
+
+    See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    scope = openstack.identity.get_auth_scope(name="my_scope")
+    ```
+
+    ```python
+    import pulumi
+    import pulumi_http as http
+
+    object_store_service = [entry for entry in data["openstack_identity_auth_scope_v3"]["scope"]["service_catalog"] if entry["type"] == "object-store"][0]
+    object_store_endpoint = [endpoint for endpoint in object_store_service["endpoints"] if endpoint["interface"] == "public" and endpoint["region"] == "region1"][0]
+    object_store_public_url = object_store_endpoint["url"]
+    example = http.get_http(url=object_store_public_url,
+        request_headers={
+            "Accept": "application/json",
+            "X-Auth-Token": data["openstack_identity_auth_scope_v3"]["scope"]["token_id"],
+        })
+    pulumi.export("containers", example.response_body)
     ```
 
 

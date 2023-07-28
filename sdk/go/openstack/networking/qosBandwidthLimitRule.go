@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,10 +36,10 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewQosBandwidthLimitRule(ctx, "bwLimitRule1", &networking.QosBandwidthLimitRuleArgs{
-//				Direction:    pulumi.String("egress"),
-//				MaxBurstKbps: pulumi.Int(300),
-//				MaxKbps:      pulumi.Int(3000),
 //				QosPolicyId:  qosPolicy1.ID(),
+//				MaxKbps:      pulumi.Int(3000),
+//				MaxBurstKbps: pulumi.Int(300),
+//				Direction:    pulumi.String("egress"),
 //			})
 //			if err != nil {
 //				return err
@@ -91,6 +92,7 @@ func NewQosBandwidthLimitRule(ctx *pulumi.Context,
 	if args.QosPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'QosPolicyId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource QosBandwidthLimitRule
 	err := ctx.RegisterResource("openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule", name, args, &resource, opts...)
 	if err != nil {

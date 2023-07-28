@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,13 +34,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			rancheros, err := images.NewImage(ctx, "rancheros", &images.ImageArgs{
+//				ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
 //				ContainerFormat: pulumi.String("bare"),
 //				DiskFormat:      pulumi.String("qcow2"),
-//				ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
+//				Visibility:      pulumi.String("shared"),
 //				Properties: pulumi.AnyMap{
 //					"key": pulumi.Any("value"),
 //				},
-//				Visibility: pulumi.String("shared"),
 //			})
 //			if err != nil {
 //				return err
@@ -74,13 +75,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			rancheros, err := images.NewImage(ctx, "rancheros", &images.ImageArgs{
+//				ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
 //				ContainerFormat: pulumi.String("bare"),
 //				DiskFormat:      pulumi.String("qcow2"),
-//				ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
+//				Visibility:      pulumi.String("shared"),
 //				Properties: pulumi.AnyMap{
 //					"key": pulumi.Any("value"),
 //				},
-//				Visibility: pulumi.String("shared"),
 //			})
 //			if err != nil {
 //				return err
@@ -144,6 +145,7 @@ func NewImageAccess(ctx *pulumi.Context,
 	if args.MemberId == nil {
 		return nil, errors.New("invalid value for required argument 'MemberId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ImageAccess
 	err := ctx.RegisterResource("openstack:images/imageAccess:ImageAccess", name, args, &resource, opts...)
 	if err != nil {

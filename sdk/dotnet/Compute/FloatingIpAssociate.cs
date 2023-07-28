@@ -17,6 +17,7 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -24,8 +25,8 @@ namespace Pulumi.OpenStack.Compute
     /// {
     ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
     ///     {
-    ///         FlavorId = "3",
     ///         ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
+    ///         FlavorId = "3",
     ///         KeyPair = "my_key_pair_name",
     ///         SecurityGroups = new[]
     ///         {
@@ -50,6 +51,7 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -57,9 +59,13 @@ namespace Pulumi.OpenStack.Compute
     /// {
     ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
     ///     {
-    ///         FlavorId = "3",
     ///         ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
+    ///         FlavorId = "3",
     ///         KeyPair = "my_key_pair_name",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
     ///         Networks = new[]
     ///         {
     ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
@@ -71,10 +77,6 @@ namespace Pulumi.OpenStack.Compute
     ///                 Name = "default",
     ///             },
     ///         },
-    ///         SecurityGroups = new[]
-    ///         {
-    ///             "default",
-    ///         },
     ///     });
     /// 
     ///     var fip1FloatingIp = new OpenStack.Networking.FloatingIp("fip1FloatingIp", new()
@@ -84,9 +86,9 @@ namespace Pulumi.OpenStack.Compute
     /// 
     ///     var fip1FloatingIpAssociate = new OpenStack.Compute.FloatingIpAssociate("fip1FloatingIpAssociate", new()
     ///     {
-    ///         FixedIp = instance1.Networks.Apply(networks =&gt; networks[1].FixedIpV4),
     ///         FloatingIp = fip1FloatingIp.Address,
     ///         InstanceId = instance1.Id,
+    ///         FixedIp = instance1.Networks.Apply(networks =&gt; networks[1].FixedIpV4),
     ///     });
     /// 
     /// });
@@ -97,7 +99,7 @@ namespace Pulumi.OpenStack.Compute
     /// This resource can be imported by specifying all three arguments, separated by a forward slash
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 &lt;floating_ip&gt;/&lt;instance_id&gt;/&lt;fixed_ip&gt;
+    ///  $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 floating_ip/instance_id/fixed_ip
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:compute/floatingIpAssociate:FloatingIpAssociate")]

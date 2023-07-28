@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Manages a V1 DB user resource within OpenStack.
+ *
+ * > **Note:** All arguments including the database password will be stored in the
+ * raw state as plain-text. Read more about sensitive data in
+ * state.
+ *
  * ## Example Usage
  * ### User
  *
@@ -13,9 +19,9 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const basic = new openstack.database.User("basic", {
- *     databases: ["testdb"],
  *     instanceId: openstack_db_instance_v1.basic.id,
  *     password: "password",
+ *     databases: ["testdb"],
  * });
  * ```
  */

@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,9 +41,9 @@ import (
 //				return err
 //			}
 //			subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//				NetworkId: network1.ID(),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //				IpVersion: pulumi.Int(4),
-//				NetworkId: network1.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -55,9 +56,9 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewRouterRoute(ctx, "routerRoute1", &networking.RouterRouteArgs{
+//				RouterId:        router1.ID(),
 //				DestinationCidr: pulumi.String("10.0.1.0/24"),
 //				NextHop:         pulumi.String("192.168.199.254"),
-//				RouterId:        router1.ID(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				pulumi.Resource("openstack_networking_router_interface_v2.int_1"),
 //			}))
@@ -119,6 +120,7 @@ func NewRouterRoute(ctx *pulumi.Context,
 	if args.RouterId == nil {
 		return nil, errors.New("invalid value for required argument 'RouterId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RouterRoute
 	err := ctx.RegisterResource("openstack:networking/routerRoute:RouterRoute", name, args, &resource, opts...)
 	if err != nil {

@@ -15,14 +15,14 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const exampleZone = new openstack.dns.Zone("exampleZone", {
- *     description: "An example zone",
  *     email: "jdoe@example.com",
+ *     description: "An example zone",
  *     ttl: 3000,
  *     type: "PRIMARY",
  * });
  * const request1 = new openstack.dns.TransferRequest("request1", {
- *     description: "a transfer request",
  *     zoneId: exampleZone.id,
+ *     description: "a transfer request",
  * });
  * ```
  *
@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * This resource can be imported by specifying the transferRequest ID
  *
  * ```sh
- *  $ pulumi import openstack:dns/transferRequest:TransferRequest request_1 <request_id>
+ *  $ pulumi import openstack:dns/transferRequest:TransferRequest request_1 request_id
  * ```
  */
 export class TransferRequest extends pulumi.CustomResource {

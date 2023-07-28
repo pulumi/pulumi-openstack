@@ -243,9 +243,9 @@ class ImageAccessAccept(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        rancheros = openstack.images.get_image(member_status="all",
-            name="RancherOS",
-            visibility="shared")
+        rancheros = openstack.images.get_image(name="RancherOS",
+            visibility="shared",
+            member_status="all")
         rancheros_member = openstack.images.ImageAccessAccept("rancherosMember",
             image_id=rancheros.id,
             status="accepted")
@@ -289,9 +289,9 @@ class ImageAccessAccept(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        rancheros = openstack.images.get_image(member_status="all",
-            name="RancherOS",
-            visibility="shared")
+        rancheros = openstack.images.get_image(name="RancherOS",
+            visibility="shared",
+            member_status="all")
         rancheros_member = openstack.images.ImageAccessAccept("rancherosMember",
             image_id=rancheros.id,
             status="accepted")

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -127,6 +128,7 @@ func NewServerGroup(ctx *pulumi.Context,
 		args = &ServerGroupArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServerGroup
 	err := ctx.RegisterResource("openstack:compute/serverGroup:ServerGroup", name, args, &resource, opts...)
 	if err != nil {

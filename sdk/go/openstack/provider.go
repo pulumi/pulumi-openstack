@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,7 +59,7 @@ type Provider struct {
 	UserDomainId pulumi.StringPtrOutput `pulumi:"userDomainId"`
 	// The name of the domain where the user resides (Identity v3).
 	UserDomainName pulumi.StringPtrOutput `pulumi:"userDomainName"`
-	// Username to login with.
+	// User ID to login with.
 	UserId pulumi.StringPtrOutput `pulumi:"userId"`
 	// Username to login with.
 	UserName pulumi.StringPtrOutput `pulumi:"userName"`
@@ -71,29 +72,45 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
-	if isZero(args.AllowReauth) {
-		args.AllowReauth = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "OS_ALLOW_REAUTH").(bool))
+	if args.AllowReauth == nil {
+		if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "OS_ALLOW_REAUTH"); d != nil {
+			args.AllowReauth = pulumi.BoolPtr(d.(bool))
+		}
 	}
-	if isZero(args.Cloud) {
-		args.Cloud = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_CLOUD").(string))
+	if args.Cloud == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "OS_CLOUD"); d != nil {
+			args.Cloud = pulumi.StringPtr(d.(string))
+		}
 	}
-	if isZero(args.DelayedAuth) {
-		args.DelayedAuth = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "OS_DELAYED_AUTH").(bool))
+	if args.DelayedAuth == nil {
+		if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "OS_DELAYED_AUTH"); d != nil {
+			args.DelayedAuth = pulumi.BoolPtr(d.(bool))
+		}
 	}
-	if isZero(args.EndpointType) {
-		args.EndpointType = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_ENDPOINT_TYPE").(string))
+	if args.EndpointType == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "OS_ENDPOINT_TYPE"); d != nil {
+			args.EndpointType = pulumi.StringPtr(d.(string))
+		}
 	}
-	if isZero(args.Insecure) {
-		args.Insecure = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "OS_INSECURE").(bool))
+	if args.Insecure == nil {
+		if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "OS_INSECURE"); d != nil {
+			args.Insecure = pulumi.BoolPtr(d.(bool))
+		}
 	}
-	if isZero(args.Region) {
-		args.Region = pulumi.StringPtr(getEnvOrDefault("", nil, "OS_REGION_NAME").(string))
+	if args.Region == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "OS_REGION_NAME"); d != nil {
+			args.Region = pulumi.StringPtr(d.(string))
+		}
 	}
-	if isZero(args.Swauth) {
-		args.Swauth = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "OS_SWAUTH").(bool))
+	if args.Swauth == nil {
+		if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "OS_SWAUTH"); d != nil {
+			args.Swauth = pulumi.BoolPtr(d.(bool))
+		}
 	}
-	if isZero(args.UseOctavia) {
-		args.UseOctavia = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "OS_USE_OCTAVIA").(bool))
+	if args.UseOctavia == nil {
+		if d := internal.GetEnvOrDefault(nil, internal.ParseEnvBool, "OS_USE_OCTAVIA"); d != nil {
+			args.UseOctavia = pulumi.BoolPtr(d.(bool))
+		}
 	}
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
@@ -102,6 +119,7 @@ func NewProvider(ctx *pulumi.Context,
 		"password",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:openstack", name, args, &resource, opts...)
 	if err != nil {
@@ -160,6 +178,8 @@ type providerArgs struct {
 	Region *string `pulumi:"region"`
 	// Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
 	Swauth *bool `pulumi:"swauth"`
+	// If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
+	SystemScope *bool `pulumi:"systemScope"`
 	// The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
 	TenantId *string `pulumi:"tenantId"`
 	// The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
@@ -172,7 +192,7 @@ type providerArgs struct {
 	UserDomainId *string `pulumi:"userDomainId"`
 	// The name of the domain where the user resides (Identity v3).
 	UserDomainName *string `pulumi:"userDomainName"`
-	// Username to login with.
+	// User ID to login with.
 	UserId *string `pulumi:"userId"`
 	// Username to login with.
 	UserName *string `pulumi:"userName"`
@@ -229,6 +249,8 @@ type ProviderArgs struct {
 	Region pulumi.StringPtrInput
 	// Use Swift's authentication system instead of Keystone. Only used for interaction with Swift.
 	Swauth pulumi.BoolPtrInput
+	// If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
+	SystemScope pulumi.BoolPtrInput
 	// The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
 	TenantId pulumi.StringPtrInput
 	// The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
@@ -241,7 +263,7 @@ type ProviderArgs struct {
 	UserDomainId pulumi.StringPtrInput
 	// The name of the domain where the user resides (Identity v3).
 	UserDomainName pulumi.StringPtrInput
-	// Username to login with.
+	// User ID to login with.
 	UserId pulumi.StringPtrInput
 	// Username to login with.
 	UserName pulumi.StringPtrInput
@@ -388,7 +410,7 @@ func (o ProviderOutput) UserDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.UserDomainName }).(pulumi.StringPtrOutput)
 }
 
-// Username to login with.
+// User ID to login with.
 func (o ProviderOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.UserId }).(pulumi.StringPtrOutput)
 }

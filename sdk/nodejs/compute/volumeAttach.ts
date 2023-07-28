@@ -34,20 +34,20 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const volume1 = new openstack.blockstorage.Volume("volume1", {
- *     multiattach: true,
  *     size: 1,
+ *     multiattach: true,
  * });
  * const instance1 = new openstack.compute.Instance("instance1", {securityGroups: ["default"]});
  * const instance2 = new openstack.compute.Instance("instance2", {securityGroups: ["default"]});
  * const va1 = new openstack.compute.VolumeAttach("va1", {
  *     instanceId: instance1.id,
- *     multiattach: true,
  *     volumeId: openstack_blockstorage_volume_v2.volume_1.id,
+ *     multiattach: true,
  * });
  * const va2 = new openstack.compute.VolumeAttach("va2", {
  *     instanceId: instance2.id,
- *     multiattach: true,
  *     volumeId: openstack_blockstorage_volume_v2.volume_1.id,
+ *     multiattach: true,
  * }, {
  *     dependsOn: ["openstack_compute_volume_attach_v2.va_1"],
  * });

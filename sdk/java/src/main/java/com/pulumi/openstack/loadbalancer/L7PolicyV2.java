@@ -66,22 +66,22 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var listener1 = new Listener(&#34;listener1&#34;, ListenerArgs.builder()        
- *             .loadbalancerId(loadbalancer1.id())
  *             .protocol(&#34;HTTP&#34;)
  *             .protocolPort(8080)
+ *             .loadbalancerId(loadbalancer1.id())
  *             .build());
  * 
  *         var pool1 = new Pool(&#34;pool1&#34;, PoolArgs.builder()        
+ *             .protocol(&#34;HTTP&#34;)
  *             .lbMethod(&#34;ROUND_ROBIN&#34;)
  *             .loadbalancerId(loadbalancer1.id())
- *             .protocol(&#34;HTTP&#34;)
  *             .build());
  * 
  *         var l7policy1 = new L7PolicyV2(&#34;l7policy1&#34;, L7PolicyV2Args.builder()        
  *             .action(&#34;REDIRECT_TO_POOL&#34;)
  *             .description(&#34;test l7 policy&#34;)
- *             .listenerId(listener1.id())
  *             .position(1)
+ *             .listenerId(listener1.id())
  *             .redirectPoolId(pool1.id())
  *             .build());
  * 

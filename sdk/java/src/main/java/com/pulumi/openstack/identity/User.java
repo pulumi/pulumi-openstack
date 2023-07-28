@@ -20,6 +20,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Manages a V3 User resource within OpenStack Keystone.
+ * 
+ * &gt; **Note:** All arguments including the user password will be stored in the
+ * raw state as plain-text. Read more about sensitive data in
+ * state.
+ * 
+ * &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+ * this resource.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -49,7 +58,7 @@ import javax.annotation.Nullable;
  *         var user1 = new User(&#34;user1&#34;, UserArgs.builder()        
  *             .defaultProjectId(project1.id())
  *             .description(&#34;A user&#34;)
- *             .extra(Map.of(&#34;email&#34;, &#34;user_1@foobar.com&#34;))
+ *             .password(&#34;password123&#34;)
  *             .ignoreChangePasswordUponFirstUse(true)
  *             .multiFactorAuthEnabled(true)
  *             .multiFactorAuthRules(            
@@ -61,7 +70,7 @@ import javax.annotation.Nullable;
  *                 UserMultiFactorAuthRuleArgs.builder()
  *                     .rules(&#34;password&#34;)
  *                     .build())
- *             .password(&#34;password123&#34;)
+ *             .extra(Map.of(&#34;email&#34;, &#34;user_1@foobar.com&#34;))
  *             .build());
  * 
  *     }

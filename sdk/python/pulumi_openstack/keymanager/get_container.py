@@ -208,18 +208,18 @@ def get_container(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:keymanager/getContainer:getContainer', __args__, opts=opts, typ=GetContainerResult).value
 
     return AwaitableGetContainerResult(
-        acls=__ret__.acls,
-        consumers=__ret__.consumers,
-        container_ref=__ret__.container_ref,
-        created_at=__ret__.created_at,
-        creator_id=__ret__.creator_id,
-        id=__ret__.id,
-        name=__ret__.name,
-        region=__ret__.region,
-        secret_refs=__ret__.secret_refs,
-        status=__ret__.status,
-        type=__ret__.type,
-        updated_at=__ret__.updated_at)
+        acls=pulumi.get(__ret__, 'acls'),
+        consumers=pulumi.get(__ret__, 'consumers'),
+        container_ref=pulumi.get(__ret__, 'container_ref'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        creator_id=pulumi.get(__ret__, 'creator_id'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'),
+        secret_refs=pulumi.get(__ret__, 'secret_refs'),
+        status=pulumi.get(__ret__, 'status'),
+        type=pulumi.get(__ret__, 'type'),
+        updated_at=pulumi.get(__ret__, 'updated_at'))
 
 
 @_utilities.lift_output_func(get_container)

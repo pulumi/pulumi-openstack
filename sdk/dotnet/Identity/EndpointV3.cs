@@ -18,6 +18,7 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -30,8 +31,8 @@ namespace Pulumi.OpenStack.Identity
     /// 
     ///     var endpoint1 = new OpenStack.Identity.EndpointV3("endpoint1", new()
     ///     {
-    ///         EndpointRegion = service1.Region,
     ///         ServiceId = service1.Id,
+    ///         EndpointRegion = service1.Region,
     ///         Url = "http://my-endpoint",
     ///     });
     /// 

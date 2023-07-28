@@ -61,11 +61,11 @@ import javax.annotation.Nullable;
  * This resource can be imported by specifying the zone ID with optional project ID
  * 
  * ```sh
- *  $ pulumi import openstack:dns/zone:Zone zone_1 &lt;zone_id&gt;
+ *  $ pulumi import openstack:dns/zone:Zone zone_1 zone_id
  * ```
  * 
  * ```sh
- *  $ pulumi import openstack:dns/zone:Zone zone_1 &lt;zone_id&gt;:&lt;project_id&gt;
+ *  $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
  * ```
  * 
  */

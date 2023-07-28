@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,20 +29,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vpnaas.NewSiteConnection(ctx, "conn1", &vpnaas.SiteConnectionArgs{
+//				IkepolicyId:    pulumi.Any(openstack_vpnaas_ike_policy_v2.Policy_2.Id),
+//				IpsecpolicyId:  pulumi.Any(openstack_vpnaas_ipsec_policy_v2.Policy_1.Id),
+//				VpnserviceId:   pulumi.Any(openstack_vpnaas_service_v2.Service_1.Id),
+//				Psk:            pulumi.String("secret"),
+//				PeerAddress:    pulumi.String("192.168.10.1"),
+//				LocalEpGroupId: pulumi.Any(openstack_vpnaas_endpoint_group_v2.Group_2.Id),
+//				PeerEpGroupId:  pulumi.Any(openstack_vpnaas_endpoint_group_v2.Group_1.Id),
 //				Dpds: vpnaas.SiteConnectionDpdArray{
 //					&vpnaas.SiteConnectionDpdArgs{
 //						Action:   pulumi.String("restart"),
-//						Interval: pulumi.Int(21),
 //						Timeout:  pulumi.Int(42),
+//						Interval: pulumi.Int(21),
 //					},
 //				},
-//				IkepolicyId:    pulumi.Any(openstack_vpnaas_ike_policy_v2.Policy_2.Id),
-//				IpsecpolicyId:  pulumi.Any(openstack_vpnaas_ipsec_policy_v2.Policy_1.Id),
-//				LocalEpGroupId: pulumi.Any(openstack_vpnaas_endpoint_group_v2.Group_2.Id),
-//				PeerAddress:    pulumi.String("192.168.10.1"),
-//				PeerEpGroupId:  pulumi.Any(openstack_vpnaas_endpoint_group_v2.Group_1.Id),
-//				Psk:            pulumi.String("secret"),
-//				VpnserviceId:   pulumi.Any(openstack_vpnaas_service_v2.Service_1.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -146,6 +147,7 @@ func NewSiteConnection(ctx *pulumi.Context,
 	if args.VpnserviceId == nil {
 		return nil, errors.New("invalid value for required argument 'VpnserviceId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SiteConnection
 	err := ctx.RegisterResource("openstack:vpnaas/siteConnection:SiteConnection", name, args, &resource, opts...)
 	if err != nil {

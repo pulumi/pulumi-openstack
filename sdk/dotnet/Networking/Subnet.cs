@@ -16,6 +16,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -28,8 +29,8 @@ namespace Pulumi.OpenStack.Networking
     /// 
     ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
     ///     {
-    ///         Cidr = "192.168.199.0/24",
     ///         NetworkId = network1.Id,
+    ///         Cidr = "192.168.199.0/24",
     ///     });
     /// 
     /// });

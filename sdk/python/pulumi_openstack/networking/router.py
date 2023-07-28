@@ -210,6 +210,9 @@ class RouterArgs:
         will be using floating IPs. Changing this updates the external gateway
         of an existing router.
         """
+        warnings.warn("""use external_network_id instead""", DeprecationWarning)
+        pulumi.log.warn("""external_gateway is deprecated: use external_network_id instead""")
+
         return pulumi.get(self, "external_gateway")
 
     @external_gateway.setter
@@ -541,6 +544,9 @@ class _RouterState:
         will be using floating IPs. Changing this updates the external gateway
         of an existing router.
         """
+        warnings.warn("""use external_network_id instead""", DeprecationWarning)
+        pulumi.log.warn("""external_gateway is deprecated: use external_network_id instead""")
+
         return pulumi.get(self, "external_gateway")
 
     @external_gateway.setter
@@ -1020,6 +1026,9 @@ class Router(pulumi.CustomResource):
         will be using floating IPs. Changing this updates the external gateway
         of an existing router.
         """
+        warnings.warn("""use external_network_id instead""", DeprecationWarning)
+        pulumi.log.warn("""external_gateway is deprecated: use external_network_id instead""")
+
         return pulumi.get(self, "external_gateway")
 
     @property

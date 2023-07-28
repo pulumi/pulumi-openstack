@@ -93,8 +93,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var port1 = new PortSecGroupAssociate(&#34;port1&#34;, PortSecGroupAssociateArgs.builder()        
- *             .enforce(&#34;true&#34;)
  *             .portId(systemPort.applyValue(getPortResult -&gt; getPortResult.id()))
+ *             .enforce(&#34;true&#34;)
  *             .securityGroupIds(secgroup.applyValue(getSecGroupResult -&gt; getSecGroupResult.id()))
  *             .build());
  * 
@@ -130,8 +130,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var port1 = new PortSecGroupAssociate(&#34;port1&#34;, PortSecGroupAssociateArgs.builder()        
- *             .enforce(&#34;true&#34;)
  *             .portId(systemPort.applyValue(getPortResult -&gt; getPortResult.id()))
+ *             .enforce(&#34;true&#34;)
  *             .securityGroupIds()
  *             .build());
  * 

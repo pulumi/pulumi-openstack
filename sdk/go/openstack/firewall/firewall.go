@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,21 +29,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			rule1, err := firewall.NewRule(ctx, "rule1", &firewall.RuleArgs{
-//				Action:          pulumi.String("deny"),
 //				Description:     pulumi.String("drop TELNET traffic"),
+//				Action:          pulumi.String("deny"),
+//				Protocol:        pulumi.String("tcp"),
 //				DestinationPort: pulumi.String("23"),
 //				Enabled:         pulumi.Bool(true),
-//				Protocol:        pulumi.String("tcp"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			rule2, err := firewall.NewRule(ctx, "rule2", &firewall.RuleArgs{
-//				Action:          pulumi.String("deny"),
 //				Description:     pulumi.String("drop NTP traffic"),
+//				Action:          pulumi.String("deny"),
+//				Protocol:        pulumi.String("udp"),
 //				DestinationPort: pulumi.String("123"),
 //				Enabled:         pulumi.Bool(false),
-//				Protocol:        pulumi.String("udp"),
 //			})
 //			if err != nil {
 //				return err
@@ -124,6 +125,7 @@ func NewFirewall(ctx *pulumi.Context,
 	if args.PolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'PolicyId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Firewall
 	err := ctx.RegisterResource("openstack:firewall/firewall:Firewall", name, args, &resource, opts...)
 	if err != nil {

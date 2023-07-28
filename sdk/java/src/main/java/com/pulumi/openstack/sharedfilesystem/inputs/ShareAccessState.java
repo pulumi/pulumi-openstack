@@ -115,6 +115,21 @@ public final class ShareAccessState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.shareId);
     }
 
+    /**
+     * The share access state.
+     * 
+     */
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    /**
+     * @return The share access state.
+     * 
+     */
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
+    }
+
     private ShareAccessState() {}
 
     private ShareAccessState(ShareAccessState $) {
@@ -124,6 +139,7 @@ public final class ShareAccessState extends com.pulumi.resources.ResourceArgs {
         this.accessType = $.accessType;
         this.region = $.region;
         this.shareId = $.shareId;
+        this.state = $.state;
     }
 
     public static Builder builder() {
@@ -278,6 +294,27 @@ public final class ShareAccessState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder shareId(String shareId) {
             return shareId(Output.of(shareId));
+        }
+
+        /**
+         * @param state The share access state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        /**
+         * @param state The share access state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(String state) {
+            return state(Output.of(state));
         }
 
         public ShareAccessState build() {

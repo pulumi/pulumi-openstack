@@ -40,7 +40,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * If true, this provider will decompress downloaded
      * image before uploading it to OpenStack. Decompression algorithm is chosen by
-     * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2.
+     * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2 and xz.
      * Defaults to false. Changing this creates a new Image.
      * 
      */
@@ -50,7 +50,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return If true, this provider will decompress downloaded
      * image before uploading it to OpenStack. Decompression algorithm is chosen by
-     * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2.
+     * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2 and xz.
      * Defaults to false. Changing this creates a new Image.
      * 
      */
@@ -435,7 +435,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param decompress If true, this provider will decompress downloaded
          * image before uploading it to OpenStack. Decompression algorithm is chosen by
-         * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2.
+         * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2 and xz.
          * Defaults to false. Changing this creates a new Image.
          * 
          * @return builder
@@ -449,7 +449,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param decompress If true, this provider will decompress downloaded
          * image before uploading it to OpenStack. Decompression algorithm is chosen by
-         * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2.
+         * checking &#34;Content-Type&#34; header, supported algorithm are: gzip, bzip2 and xz.
          * Defaults to false. Changing this creates a new Image.
          * 
          * @return builder

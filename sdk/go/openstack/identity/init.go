@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EndpointV3{}
 	case "openstack:identity/groupV3:GroupV3":
 		r = &GroupV3{}
+	case "openstack:identity/inheritRoleAssignment:InheritRoleAssignment":
+		r = &InheritRoleAssignment{}
 	case "openstack:identity/project:Project":
 		r = &Project{}
 	case "openstack:identity/role:Role":
@@ -50,7 +52,7 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 }
 
 func init() {
-	version, err := openstack.PkgVersion()
+	version, err := internal.PkgVersion()
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
@@ -72,6 +74,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"openstack",
 		"identity/groupV3",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"openstack",
+		"identity/inheritRoleAssignment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

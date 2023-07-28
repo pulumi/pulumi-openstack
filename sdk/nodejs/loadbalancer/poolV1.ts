@@ -29,73 +29,73 @@ import * as utilities from "../utilities";
  *
  * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
  * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ *     networkId: network1.id,
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
- *     networkId: network1.id,
  * });
  * const secgroup1 = new openstack.compute.SecGroup("secgroup1", {
  *     description: "Rules for secgroup_1",
  *     rules: [
  *         {
- *             cidr: "0.0.0.0/0",
  *             fromPort: -1,
- *             ipProtocol: "icmp",
  *             toPort: -1,
+ *             ipProtocol: "icmp",
+ *             cidr: "0.0.0.0/0",
  *         },
  *         {
- *             cidr: "0.0.0.0/0",
  *             fromPort: 80,
- *             ipProtocol: "tcp",
  *             toPort: 80,
+ *             ipProtocol: "tcp",
+ *             cidr: "0.0.0.0/0",
  *         },
  *     ],
  * });
  * const instance1 = new openstack.compute.Instance("instance1", {
- *     networks: [{
- *         uuid: network1.id,
- *     }],
  *     securityGroups: [
  *         "default",
  *         secgroup1.name,
  *     ],
+ *     networks: [{
+ *         uuid: network1.id,
+ *     }],
  * });
  * const instance2 = new openstack.compute.Instance("instance2", {
- *     networks: [{
- *         uuid: network1.id,
- *     }],
  *     securityGroups: [
  *         "default",
  *         secgroup1.name,
  *     ],
+ *     networks: [{
+ *         uuid: network1.id,
+ *     }],
  * });
  * const monitor1 = new openstack.loadbalancer.MonitorV1("monitor1", {
- *     adminStateUp: "true",
- *     delay: 30,
- *     maxRetries: 3,
- *     timeout: 5,
  *     type: "TCP",
+ *     delay: 30,
+ *     timeout: 5,
+ *     maxRetries: 3,
+ *     adminStateUp: "true",
  * });
  * const pool1 = new openstack.loadbalancer.PoolV1("pool1", {
- *     lbMethod: "ROUND_ROBIN",
- *     monitorIds: [monitor1.id],
  *     protocol: "TCP",
  *     subnetId: subnet1.id,
+ *     lbMethod: "ROUND_ROBIN",
+ *     monitorIds: [monitor1.id],
  * });
  * const member1 = new openstack.loadbalancer.MemberV1("member1", {
- *     address: instance1.accessIpV4,
  *     poolId: pool1.id,
+ *     address: instance1.accessIpV4,
  *     port: 80,
  * });
  * const member2 = new openstack.loadbalancer.MemberV1("member2", {
- *     address: instance2.accessIpV4,
  *     poolId: pool1.id,
+ *     address: instance2.accessIpV4,
  *     port: 80,
  * });
  * const vip1 = new openstack.loadbalancer.Vip("vip1", {
- *     poolId: pool1.id,
- *     port: 80,
- *     protocol: "TCP",
  *     subnetId: subnet1.id,
+ *     protocol: "TCP",
+ *     port: 80,
+ *     poolId: pool1.id,
  * });
  * ```
  *

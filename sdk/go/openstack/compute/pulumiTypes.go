@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type InstanceBlockDevice struct {
 	// The boot index of the volume. It defaults to 0.
@@ -34,6 +37,9 @@ type InstanceBlockDevice struct {
 	// must be less than or equal to the swap size of the flavor. Changing this
 	// creates a new server.
 	GuestFormat *string `pulumi:"guestFormat"`
+	// Enable the attachment of multiattach-capable
+	// volumes.
+	Multiattach *bool `pulumi:"multiattach"`
 	// The source type of the device. Must be one of
 	// "blank", "image", "volume", or "snapshot". Changing this creates a new
 	// server.
@@ -88,6 +94,9 @@ type InstanceBlockDeviceArgs struct {
 	// must be less than or equal to the swap size of the flavor. Changing this
 	// creates a new server.
 	GuestFormat pulumi.StringPtrInput `pulumi:"guestFormat"`
+	// Enable the attachment of multiattach-capable
+	// volumes.
+	Multiattach pulumi.BoolPtrInput `pulumi:"multiattach"`
 	// The source type of the device. Must be one of
 	// "blank", "image", "volume", or "snapshot". Changing this creates a new
 	// server.
@@ -197,6 +206,12 @@ func (o InstanceBlockDeviceOutput) DiskBus() pulumi.StringPtrOutput {
 // creates a new server.
 func (o InstanceBlockDeviceOutput) GuestFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBlockDevice) *string { return v.GuestFormat }).(pulumi.StringPtrOutput)
+}
+
+// Enable the attachment of multiattach-capable
+// volumes.
+func (o InstanceBlockDeviceOutput) Multiattach() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceBlockDevice) *bool { return v.Multiattach }).(pulumi.BoolPtrOutput)
 }
 
 // The source type of the device. Must be one of

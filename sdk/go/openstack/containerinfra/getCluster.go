@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult
 	err := ctx.Invoke("openstack:containerinfra/getCluster:getCluster", args, &rv, opts...)
 	if err != nil {
@@ -84,6 +86,8 @@ type LookupClusterResult struct {
 	Id string `pulumi:"id"`
 	// The name of the Compute service SSH keypair.
 	Keypair string `pulumi:"keypair"`
+	// The Kubernetes cluster's credentials
+	Kubeconfig map[string]string `pulumi:"kubeconfig"`
 	// The list of key value pairs representing additional properties of
 	// the cluster.
 	Labels map[string]interface{} `pulumi:"labels"`
@@ -219,6 +223,11 @@ func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 // The name of the Compute service SSH keypair.
 func (o LookupClusterResultOutput) Keypair() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Keypair }).(pulumi.StringOutput)
+}
+
+// The Kubernetes cluster's credentials
+func (o LookupClusterResultOutput) Kubeconfig() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.Kubeconfig }).(pulumi.StringMapOutput)
 }
 
 // The list of key value pairs representing additional properties of

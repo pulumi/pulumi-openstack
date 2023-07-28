@@ -385,13 +385,13 @@ class ShareNetwork(pulumi.CustomResource):
             network_id=network1.id)
         securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
             description="created by terraform",
+            type="active_directory",
+            server="192.168.199.10",
             dns_ip="192.168.199.10",
             domain="example.com",
             ou="CN=Computers,DC=example,DC=com",
-            password="s8cret",
-            server="192.168.199.10",
-            type="active_directory",
-            user="joinDomainUser")
+            user="joinDomainUser",
+            password="s8cret")
         sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
             description="test share network with security services",
             neutron_net_id=network1.id,
@@ -404,7 +404,7 @@ class ShareNetwork(pulumi.CustomResource):
         This resource can be imported by specifying the ID of the share network
 
         ```sh
-         $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 <id>
+         $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 id
         ```
 
         :param str resource_name: The name of the resource.
@@ -468,13 +468,13 @@ class ShareNetwork(pulumi.CustomResource):
             network_id=network1.id)
         securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
             description="created by terraform",
+            type="active_directory",
+            server="192.168.199.10",
             dns_ip="192.168.199.10",
             domain="example.com",
             ou="CN=Computers,DC=example,DC=com",
-            password="s8cret",
-            server="192.168.199.10",
-            type="active_directory",
-            user="joinDomainUser")
+            user="joinDomainUser",
+            password="s8cret")
         sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
             description="test share network with security services",
             neutron_net_id=network1.id,
@@ -487,7 +487,7 @@ class ShareNetwork(pulumi.CustomResource):
         This resource can be imported by specifying the ID of the share network
 
         ```sh
-         $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 <id>
+         $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 id
         ```
 
         :param str resource_name: The name of the resource.

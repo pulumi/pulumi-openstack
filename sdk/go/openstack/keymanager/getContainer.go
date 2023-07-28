@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func GetContainer(ctx *pulumi.Context, args *GetContainerArgs, opts ...pulumi.InvokeOption) (*GetContainerResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetContainerResult
 	err := ctx.Invoke("openstack:keymanager/getContainer:getContainer", args, &rv, opts...)
 	if err != nil {

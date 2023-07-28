@@ -48,20 +48,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleZone = new Zone(&#34;exampleZone&#34;, ZoneArgs.builder()        
- *             .description(&#34;An example zone&#34;)
  *             .email(&#34;jdoe@example.com&#34;)
+ *             .description(&#34;An example zone&#34;)
  *             .ttl(3000)
  *             .type(&#34;PRIMARY&#34;)
  *             .build());
  * 
  *         var request1 = new TransferRequest(&#34;request1&#34;, TransferRequestArgs.builder()        
- *             .description(&#34;a transfer accept&#34;)
  *             .zoneId(exampleZone.id())
+ *             .description(&#34;a transfer accept&#34;)
  *             .build());
  * 
  *         var accept1 = new TransferAccept(&#34;accept1&#34;, TransferAcceptArgs.builder()        
- *             .key(request1.key())
  *             .zoneTransferRequestId(request1.id())
+ *             .key(request1.key())
  *             .build());
  * 
  *     }
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * This resource can be imported by specifying the transferAccept ID
  * 
  * ```sh
- *  $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 &lt;accept_id&gt;
+ *  $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 accept_id
  * ```
  * 
  */

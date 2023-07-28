@@ -19,6 +19,23 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Note:** This resource usually requires admin privileges.
+ * 
+ * &gt; **Note:** This resource does not actually attach a volume to an instance.
+ * Please use the `openstack.compute.VolumeAttach` resource for that.
+ * 
+ * &gt; **Note:** All arguments including the `data` computed attribute will be
+ * stored in the raw state as plain-text. Read more about sensitive data in
+ * state.
+ * 
+ * Creates a general purpose attachment connection to a Block
+ * Storage volume using the OpenStack Block Storage (Cinder) v3 API.
+ * 
+ * Depending on your Block Storage service configuration, this
+ * resource can assist in attaching a volume to a non-OpenStack resource
+ * such as a bare-metal server or a remote virtual machine in a
+ * different cloud provider.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -48,13 +65,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var va1 = new VolumeAttach(&#34;va1&#34;, VolumeAttachArgs.builder()        
+ *             .volumeId(volume1.id())
  *             .device(&#34;auto&#34;)
  *             .hostName(&#34;devstack&#34;)
- *             .initiator(&#34;iqn.1993-08.org.debian:01:e9861fb1859&#34;)
  *             .ipAddress(&#34;192.168.255.10&#34;)
+ *             .initiator(&#34;iqn.1993-08.org.debian:01:e9861fb1859&#34;)
  *             .osType(&#34;linux2&#34;)
  *             .platform(&#34;x86_64&#34;)
- *             .volumeId(volume1.id())
  *             .build());
  * 
  *     }

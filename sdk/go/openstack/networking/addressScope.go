@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -59,11 +60,11 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewSubnetPool(ctx, "subnetpool1", &networking.SubnetPoolArgs{
-//				AddressScopeId: addressscope1.ID(),
 //				Prefixes: pulumi.StringArray{
 //					pulumi.String("fdf7:b13d:dead:beef::/64"),
 //					pulumi.String("fd65:86cc:a334:39b7::/64"),
 //				},
+//				AddressScopeId: addressscope1.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -114,6 +115,7 @@ func NewAddressScope(ctx *pulumi.Context,
 		args = &AddressScopeArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AddressScope
 	err := ctx.RegisterResource("openstack:networking/addressScope:AddressScope", name, args, &resource, opts...)
 	if err != nil {

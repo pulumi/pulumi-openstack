@@ -17,8 +17,8 @@ import * as utilities from "../utilities";
  *
  * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
  * const subnet1 = new openstack.networking.Subnet("subnet1", {
- *     cidr: "192.168.199.0/24",
  *     networkId: network1.id,
+ *     cidr: "192.168.199.0/24",
  * });
  * ```
  *

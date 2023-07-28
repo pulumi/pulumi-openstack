@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,17 +39,17 @@ import (
 //				return err
 //			}
 //			flavor1, err := compute.NewFlavor(ctx, "flavor1", &compute.FlavorArgs{
-//				Disk:     pulumi.Int(20),
-//				IsPublic: pulumi.Bool(false),
 //				Ram:      pulumi.Int(8096),
 //				Vcpus:    pulumi.Int(2),
+//				Disk:     pulumi.Int(20),
+//				IsPublic: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewFlavorAccess(ctx, "access1", &compute.FlavorAccessArgs{
-//				FlavorId: flavor1.ID(),
 //				TenantId: project1.ID(),
+//				FlavorId: flavor1.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -65,7 +66,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 <flavor_id>/<tenant_id>
+//	$ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 flavor_id/tenant_id
 //
 // ```
 type FlavorAccess struct {
@@ -95,6 +96,7 @@ func NewFlavorAccess(ctx *pulumi.Context,
 	if args.TenantId == nil {
 		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FlavorAccess
 	err := ctx.RegisterResource("openstack:compute/flavorAccess:FlavorAccess", name, args, &resource, opts...)
 	if err != nil {

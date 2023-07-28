@@ -21,6 +21,7 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -42,8 +43,8 @@ namespace Pulumi.OpenStack.Identity
     /// 
     ///     var userMembership1 = new OpenStack.Identity.UserMembershipV3("userMembership1", new()
     ///     {
-    ///         GroupId = group1.Id,
     ///         UserId = user1.Id,
+    ///         GroupId = group1.Id,
     ///     });
     /// 
     ///     var roleAssignment1 = new OpenStack.Identity.RoleAssignment("roleAssignment1", new()
@@ -61,7 +62,7 @@ namespace Pulumi.OpenStack.Identity
     /// This resource can be imported by specifying all two arguments, separated by a forward slash
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 &lt;user_id&gt;/&lt;group_id&gt;
+    ///  $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:identity/userMembershipV3:UserMembershipV3")]

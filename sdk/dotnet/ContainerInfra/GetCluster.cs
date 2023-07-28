@@ -20,6 +20,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
@@ -47,6 +48,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using OpenStack = Pulumi.OpenStack;
         /// 
@@ -166,6 +168,10 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// </summary>
         public readonly string Keypair;
         /// <summary>
+        /// The Kubernetes cluster's credentials
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Kubeconfig;
+        /// <summary>
         /// The list of key value pairs representing additional properties of
         /// the cluster.
         /// </summary>
@@ -245,6 +251,8 @@ namespace Pulumi.OpenStack.ContainerInfra
 
             string keypair,
 
+            ImmutableDictionary<string, string> kubeconfig,
+
             ImmutableDictionary<string, object> labels,
 
             ImmutableArray<string> masterAddresses,
@@ -283,6 +291,7 @@ namespace Pulumi.OpenStack.ContainerInfra
             FloatingIpEnabled = floatingIpEnabled;
             Id = id;
             Keypair = keypair;
+            Kubeconfig = kubeconfig;
             Labels = labels;
             MasterAddresses = masterAddresses;
             MasterCount = masterCount;

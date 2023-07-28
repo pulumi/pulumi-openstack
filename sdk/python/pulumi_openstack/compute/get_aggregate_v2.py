@@ -122,11 +122,11 @@ def get_aggregate_v2(hosts: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('openstack:compute/getAggregateV2:getAggregateV2', __args__, opts=opts, typ=GetAggregateV2Result).value
 
     return AwaitableGetAggregateV2Result(
-        hosts=__ret__.hosts,
-        id=__ret__.id,
-        metadata=__ret__.metadata,
-        name=__ret__.name,
-        zone=__ret__.zone)
+        hosts=pulumi.get(__ret__, 'hosts'),
+        id=pulumi.get(__ret__, 'id'),
+        metadata=pulumi.get(__ret__, 'metadata'),
+        name=pulumi.get(__ret__, 'name'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_aggregate_v2)

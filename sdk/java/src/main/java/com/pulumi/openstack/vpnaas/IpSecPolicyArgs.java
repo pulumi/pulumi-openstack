@@ -120,16 +120,16 @@ public final class IpSecPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-     * Changing this updates the existing policy.
+     * The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
+     * is group5. Changing this updates the existing policy.
      * 
      */
     @Import(name="pfs")
     private @Nullable Output<String> pfs;
 
     /**
-     * @return The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-     * Changing this updates the existing policy.
+     * @return The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
+     * is group5. Changing this updates the existing policy.
      * 
      */
     public Optional<Output<String>> pfs() {
@@ -175,7 +175,7 @@ public final class IpSecPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The transform protocol. Valid values are ESP, AH and AH-ESP.
+     * The transform protocol. Valid values are esp, ah and ah-esp.
      * Changing this updates the existing policy. Default is ESP.
      * 
      */
@@ -183,7 +183,7 @@ public final class IpSecPolicyArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> transformProtocol;
 
     /**
-     * @return The transform protocol. Valid values are ESP, AH and AH-ESP.
+     * @return The transform protocol. Valid values are esp, ah and ah-esp.
      * Changing this updates the existing policy. Default is ESP.
      * 
      */
@@ -387,8 +387,8 @@ public final class IpSecPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pfs The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-         * Changing this updates the existing policy.
+         * @param pfs The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
+         * is group5. Changing this updates the existing policy.
          * 
          * @return builder
          * 
@@ -399,8 +399,8 @@ public final class IpSecPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pfs The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-         * Changing this updates the existing policy.
+         * @param pfs The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
+         * is group5. Changing this updates the existing policy.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class IpSecPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param transformProtocol The transform protocol. Valid values are ESP, AH and AH-ESP.
+         * @param transformProtocol The transform protocol. Valid values are esp, ah and ah-esp.
          * Changing this updates the existing policy. Default is ESP.
          * 
          * @return builder
@@ -472,7 +472,7 @@ public final class IpSecPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param transformProtocol The transform protocol. Valid values are ESP, AH and AH-ESP.
+         * @param transformProtocol The transform protocol. Valid values are esp, ah and ah-esp.
          * Changing this updates the existing policy. Default is ESP.
          * 
          * @return builder

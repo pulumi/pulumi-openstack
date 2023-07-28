@@ -556,9 +556,9 @@ class SecGroupRule(pulumi.CustomResource):
         secgroup_rule1 = openstack.networking.SecGroupRule("secgroupRule1",
             direction="ingress",
             ethertype="IPv4",
-            port_range_max=22,
-            port_range_min=22,
             protocol="tcp",
+            port_range_min=22,
+            port_range_max=22,
             remote_ip_prefix="0.0.0.0/0",
             security_group_id=secgroup1.id)
         ```
@@ -643,9 +643,9 @@ class SecGroupRule(pulumi.CustomResource):
         secgroup_rule1 = openstack.networking.SecGroupRule("secgroupRule1",
             direction="ingress",
             ethertype="IPv4",
-            port_range_max=22,
-            port_range_min=22,
             protocol="tcp",
+            port_range_min=22,
+            port_range_max=22,
             remote_ip_prefix="0.0.0.0/0",
             security_group_id=secgroup1.id)
         ```

@@ -91,18 +91,14 @@ public final class RecordSetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An array of DNS records. _Note:_ if an IPv6 address
-     * contains brackets (`[ ]`), the brackets will be stripped and the modified
-     * address will be recorded in the state.
+     * An array of DNS records.
      * 
      */
     @Import(name="records")
     private @Nullable Output<List<String>> records;
 
     /**
-     * @return An array of DNS records. _Note:_ if an IPv6 address
-     * contains brackets (`[ ]`), the brackets will be stripped and the modified
-     * address will be recorded in the state.
+     * @return An array of DNS records.
      * 
      */
     public Optional<Output<List<String>>> records() {
@@ -322,9 +318,7 @@ public final class RecordSetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param records An array of DNS records. _Note:_ if an IPv6 address
-         * contains brackets (`[ ]`), the brackets will be stripped and the modified
-         * address will be recorded in the state.
+         * @param records An array of DNS records.
          * 
          * @return builder
          * 
@@ -335,9 +329,7 @@ public final class RecordSetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param records An array of DNS records. _Note:_ if an IPv6 address
-         * contains brackets (`[ ]`), the brackets will be stripped and the modified
-         * address will be recorded in the state.
+         * @param records An array of DNS records.
          * 
          * @return builder
          * 
@@ -347,9 +339,7 @@ public final class RecordSetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param records An array of DNS records. _Note:_ if an IPv6 address
-         * contains brackets (`[ ]`), the brackets will be stripped and the modified
-         * address will be recorded in the state.
+         * @param records An array of DNS records.
          * 
          * @return builder
          * 

@@ -16,6 +16,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -43,9 +44,9 @@ namespace Pulumi.OpenStack.SharedFileSystem
     ///     var share1 = new OpenStack.SharedFileSystem.Share("share1", new()
     ///     {
     ///         Description = "test share description",
-    ///         ShareNetworkId = sharenetwork1.Id,
     ///         ShareProto = "NFS",
     ///         Size = 1,
+    ///         ShareNetworkId = sharenetwork1.Id,
     ///     });
     /// 
     /// });
@@ -56,7 +57,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// This resource can be imported by specifying the ID of the share
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:sharedfilesystem/share:Share share_1 &lt;id&gt;
+    ///  $ pulumi import openstack:sharedfilesystem/share:Share share_1 id
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:sharedfilesystem/share:Share")]

@@ -18,6 +18,7 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -51,6 +52,7 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -58,8 +60,8 @@ namespace Pulumi.OpenStack.Compute
     /// {
     ///     var volume1 = new OpenStack.BlockStorage.Volume("volume1", new()
     ///     {
-    ///         Multiattach = true,
     ///         Size = 1,
+    ///         Multiattach = true,
     ///     });
     /// 
     ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
@@ -81,15 +83,15 @@ namespace Pulumi.OpenStack.Compute
     ///     var va1 = new OpenStack.Compute.VolumeAttach("va1", new()
     ///     {
     ///         InstanceId = instance1.Id,
-    ///         Multiattach = true,
     ///         VolumeId = openstack_blockstorage_volume_v2.Volume_1.Id,
+    ///         Multiattach = true,
     ///     });
     /// 
     ///     var va2 = new OpenStack.Compute.VolumeAttach("va2", new()
     ///     {
     ///         InstanceId = instance2.Id,
-    ///         Multiattach = true,
     ///         VolumeId = openstack_blockstorage_volume_v2.Volume_1.Id,
+    ///         Multiattach = true,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn = new[]

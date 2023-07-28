@@ -37,10 +37,6 @@ class GetSubnetResult:
         pulumi.set(__self__, "description", description)
         if dhcp_disabled and not isinstance(dhcp_disabled, bool):
             raise TypeError("Expected argument 'dhcp_disabled' to be a bool")
-        if dhcp_disabled is not None:
-            warnings.warn("""use dhcp_enabled instead""", DeprecationWarning)
-            pulumi.log.warn("""dhcp_disabled is deprecated: use dhcp_enabled instead""")
-
         pulumi.set(__self__, "dhcp_disabled", dhcp_disabled)
         if dhcp_enabled and not isinstance(dhcp_enabled, bool):
             raise TypeError("Expected argument 'dhcp_enabled' to be a bool")
@@ -123,6 +119,9 @@ class GetSubnetResult:
     @property
     @pulumi.getter(name="dhcpDisabled")
     def dhcp_disabled(self) -> Optional[bool]:
+        warnings.warn("""use dhcp_enabled instead""", DeprecationWarning)
+        pulumi.log.warn("""dhcp_disabled is deprecated: use dhcp_enabled instead""")
+
         return pulumi.get(self, "dhcp_disabled")
 
     @property
@@ -327,28 +326,28 @@ def get_subnet(cidr: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:networking/getSubnet:getSubnet', __args__, opts=opts, typ=GetSubnetResult).value
 
     return AwaitableGetSubnetResult(
-        all_tags=__ret__.all_tags,
-        allocation_pools=__ret__.allocation_pools,
-        cidr=__ret__.cidr,
-        description=__ret__.description,
-        dhcp_disabled=__ret__.dhcp_disabled,
-        dhcp_enabled=__ret__.dhcp_enabled,
-        dns_nameservers=__ret__.dns_nameservers,
-        enable_dhcp=__ret__.enable_dhcp,
-        gateway_ip=__ret__.gateway_ip,
-        host_routes=__ret__.host_routes,
-        id=__ret__.id,
-        ip_version=__ret__.ip_version,
-        ipv6_address_mode=__ret__.ipv6_address_mode,
-        ipv6_ra_mode=__ret__.ipv6_ra_mode,
-        name=__ret__.name,
-        network_id=__ret__.network_id,
-        region=__ret__.region,
-        service_types=__ret__.service_types,
-        subnet_id=__ret__.subnet_id,
-        subnetpool_id=__ret__.subnetpool_id,
-        tags=__ret__.tags,
-        tenant_id=__ret__.tenant_id)
+        all_tags=pulumi.get(__ret__, 'all_tags'),
+        allocation_pools=pulumi.get(__ret__, 'allocation_pools'),
+        cidr=pulumi.get(__ret__, 'cidr'),
+        description=pulumi.get(__ret__, 'description'),
+        dhcp_disabled=pulumi.get(__ret__, 'dhcp_disabled'),
+        dhcp_enabled=pulumi.get(__ret__, 'dhcp_enabled'),
+        dns_nameservers=pulumi.get(__ret__, 'dns_nameservers'),
+        enable_dhcp=pulumi.get(__ret__, 'enable_dhcp'),
+        gateway_ip=pulumi.get(__ret__, 'gateway_ip'),
+        host_routes=pulumi.get(__ret__, 'host_routes'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_version=pulumi.get(__ret__, 'ip_version'),
+        ipv6_address_mode=pulumi.get(__ret__, 'ipv6_address_mode'),
+        ipv6_ra_mode=pulumi.get(__ret__, 'ipv6_ra_mode'),
+        name=pulumi.get(__ret__, 'name'),
+        network_id=pulumi.get(__ret__, 'network_id'),
+        region=pulumi.get(__ret__, 'region'),
+        service_types=pulumi.get(__ret__, 'service_types'),
+        subnet_id=pulumi.get(__ret__, 'subnet_id'),
+        subnetpool_id=pulumi.get(__ret__, 'subnetpool_id'),
+        tags=pulumi.get(__ret__, 'tags'),
+        tenant_id=pulumi.get(__ret__, 'tenant_id'))
 
 
 @_utilities.lift_output_func(get_subnet)

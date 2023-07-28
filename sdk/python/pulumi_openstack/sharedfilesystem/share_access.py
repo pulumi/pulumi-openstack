@@ -113,7 +113,8 @@ class _ShareAccessState:
                  access_to: Optional[pulumi.Input[str]] = None,
                  access_type: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 share_id: Optional[pulumi.Input[str]] = None):
+                 share_id: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ShareAccess resources.
         :param pulumi.Input[str] access_key: The access credential of the entity granted access.
@@ -127,6 +128,7 @@ class _ShareAccessState:
                A Shared File System client is needed to create a share access. Changing this
                creates a new share access.
         :param pulumi.Input[str] share_id: The UUID of the share to which you are granted access.
+        :param pulumi.Input[str] state: The share access state.
         """
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -140,6 +142,8 @@ class _ShareAccessState:
             pulumi.set(__self__, "region", region)
         if share_id is not None:
             pulumi.set(__self__, "share_id", share_id)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -218,6 +222,18 @@ class _ShareAccessState:
     def share_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "share_id", value)
 
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The share access state.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
 
 class ShareAccess(pulumi.CustomResource):
     @overload
@@ -249,14 +265,14 @@ class ShareAccess(pulumi.CustomResource):
             neutron_subnet_id=subnet1.id)
         share1 = openstack.sharedfilesystem.Share("share1",
             description="test share description",
-            share_network_id=sharenetwork1.id,
             share_proto="NFS",
-            size=1)
+            size=1,
+            share_network_id=sharenetwork1.id)
         share_access1 = openstack.sharedfilesystem.ShareAccess("shareAccess1",
-            access_level="rw",
-            access_to="192.168.199.10",
+            share_id=share1.id,
             access_type="ip",
-            share_id=share1.id)
+            access_to="192.168.199.10",
+            access_level="rw")
         ```
         ### CIFS
 
@@ -271,32 +287,32 @@ class ShareAccess(pulumi.CustomResource):
             network_id=network1.id)
         securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
             description="created by terraform",
+            type="active_directory",
+            server="192.168.199.10",
             dns_ip="192.168.199.10",
             domain="example.com",
             ou="CN=Computers,DC=example,DC=com",
-            password="s8cret",
-            server="192.168.199.10",
-            type="active_directory",
-            user="joinDomainUser")
+            user="joinDomainUser",
+            password="s8cret")
         sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
             description="share the secure love",
             neutron_net_id=network1.id,
             neutron_subnet_id=subnet1.id,
             security_service_ids=[securityservice1.id])
         share1 = openstack.sharedfilesystem.Share("share1",
-            share_network_id=sharenetwork1.id,
             share_proto="CIFS",
-            size=1)
+            size=1,
+            share_network_id=sharenetwork1.id)
         share_access1 = openstack.sharedfilesystem.ShareAccess("shareAccess1",
-            access_level="ro",
+            share_id=share1.id,
+            access_type="user",
             access_to="windows",
-            access_type="user",
-            share_id=share1.id)
+            access_level="ro")
         share_access2 = openstack.sharedfilesystem.ShareAccess("shareAccess2",
-            access_level="rw",
-            access_to="linux",
+            share_id=share1.id,
             access_type="user",
-            share_id=share1.id)
+            access_to="linux",
+            access_level="rw")
         pulumi.export("exportLocations", share1.export_locations)
         ```
 
@@ -305,7 +321,7 @@ class ShareAccess(pulumi.CustomResource):
         This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.
 
         ```sh
-         $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 <share id>/<share access id>
+         $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 share_id/share_access_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -346,14 +362,14 @@ class ShareAccess(pulumi.CustomResource):
             neutron_subnet_id=subnet1.id)
         share1 = openstack.sharedfilesystem.Share("share1",
             description="test share description",
-            share_network_id=sharenetwork1.id,
             share_proto="NFS",
-            size=1)
+            size=1,
+            share_network_id=sharenetwork1.id)
         share_access1 = openstack.sharedfilesystem.ShareAccess("shareAccess1",
-            access_level="rw",
-            access_to="192.168.199.10",
+            share_id=share1.id,
             access_type="ip",
-            share_id=share1.id)
+            access_to="192.168.199.10",
+            access_level="rw")
         ```
         ### CIFS
 
@@ -368,32 +384,32 @@ class ShareAccess(pulumi.CustomResource):
             network_id=network1.id)
         securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
             description="created by terraform",
+            type="active_directory",
+            server="192.168.199.10",
             dns_ip="192.168.199.10",
             domain="example.com",
             ou="CN=Computers,DC=example,DC=com",
-            password="s8cret",
-            server="192.168.199.10",
-            type="active_directory",
-            user="joinDomainUser")
+            user="joinDomainUser",
+            password="s8cret")
         sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
             description="share the secure love",
             neutron_net_id=network1.id,
             neutron_subnet_id=subnet1.id,
             security_service_ids=[securityservice1.id])
         share1 = openstack.sharedfilesystem.Share("share1",
-            share_network_id=sharenetwork1.id,
             share_proto="CIFS",
-            size=1)
+            size=1,
+            share_network_id=sharenetwork1.id)
         share_access1 = openstack.sharedfilesystem.ShareAccess("shareAccess1",
-            access_level="ro",
+            share_id=share1.id,
+            access_type="user",
             access_to="windows",
-            access_type="user",
-            share_id=share1.id)
+            access_level="ro")
         share_access2 = openstack.sharedfilesystem.ShareAccess("shareAccess2",
-            access_level="rw",
-            access_to="linux",
+            share_id=share1.id,
             access_type="user",
-            share_id=share1.id)
+            access_to="linux",
+            access_level="rw")
         pulumi.export("exportLocations", share1.export_locations)
         ```
 
@@ -402,7 +418,7 @@ class ShareAccess(pulumi.CustomResource):
         This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.
 
         ```sh
-         $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 <share id>/<share access id>
+         $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 share_id/share_access_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -448,6 +464,7 @@ class ShareAccess(pulumi.CustomResource):
                 raise TypeError("Missing required property 'share_id'")
             __props__.__dict__["share_id"] = share_id
             __props__.__dict__["access_key"] = None
+            __props__.__dict__["state"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accessKey"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ShareAccess, __self__).__init__(
@@ -465,7 +482,8 @@ class ShareAccess(pulumi.CustomResource):
             access_to: Optional[pulumi.Input[str]] = None,
             access_type: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            share_id: Optional[pulumi.Input[str]] = None) -> 'ShareAccess':
+            share_id: Optional[pulumi.Input[str]] = None,
+            state: Optional[pulumi.Input[str]] = None) -> 'ShareAccess':
         """
         Get an existing ShareAccess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -484,6 +502,7 @@ class ShareAccess(pulumi.CustomResource):
                A Shared File System client is needed to create a share access. Changing this
                creates a new share access.
         :param pulumi.Input[str] share_id: The UUID of the share to which you are granted access.
+        :param pulumi.Input[str] state: The share access state.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -495,6 +514,7 @@ class ShareAccess(pulumi.CustomResource):
         __props__.__dict__["access_type"] = access_type
         __props__.__dict__["region"] = region
         __props__.__dict__["share_id"] = share_id
+        __props__.__dict__["state"] = state
         return ShareAccess(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -549,4 +569,12 @@ class ShareAccess(pulumi.CustomResource):
         The UUID of the share to which you are granted access.
         """
         return pulumi.get(self, "share_id")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The share access state.
+        """
+        return pulumi.get(self, "state")
 

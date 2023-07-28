@@ -7,10 +7,28 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Note:** This resource usually requires admin privileges.
+//
+// > **Note:** This resource does not actually attach a volume to an instance.
+// Please use the `compute.VolumeAttach` resource for that.
+//
+// > **Note:** All arguments including the `data` computed attribute will be
+// stored in the raw state as plain-text. Read more about sensitive data in
+// state.
+//
+// Creates a general purpose attachment connection to a Block
+// Storage volume using the OpenStack Block Storage (Cinder) v3 API.
+//
+// Depending on your Block Storage service configuration, this
+// resource can assist in attaching a volume to a non-OpenStack resource
+// such as a bare-metal server or a remote virtual machine in a
+// different cloud provider.
+//
 // ## Example Usage
 //
 // ```go
@@ -32,13 +50,13 @@ import (
 //				return err
 //			}
 //			_, err = blockstorage.NewVolumeAttach(ctx, "va1", &blockstorage.VolumeAttachArgs{
+//				VolumeId:  volume1.ID(),
 //				Device:    pulumi.String("auto"),
 //				HostName:  pulumi.String("devstack"),
-//				Initiator: pulumi.String("iqn.1993-08.org.debian:01:e9861fb1859"),
 //				IpAddress: pulumi.String("192.168.255.10"),
+//				Initiator: pulumi.String("iqn.1993-08.org.debian:01:e9861fb1859"),
 //				OsType:    pulumi.String("linux2"),
 //				Platform:  pulumi.String("x86_64"),
-//				VolumeId:  volume1.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -114,6 +132,7 @@ func NewVolumeAttach(ctx *pulumi.Context,
 		"data",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VolumeAttach
 	err := ctx.RegisterResource("openstack:blockstorage/volumeAttach:VolumeAttach", name, args, &resource, opts...)
 	if err != nil {

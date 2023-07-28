@@ -36,8 +36,8 @@ import * as utilities from "../utilities";
  *     name: "secgroup",
  * });
  * const port1 = new openstack.networking.PortSecGroupAssociate("port1", {
- *     enforce: true,
  *     portId: systemPort.then(systemPort => systemPort.id),
+ *     enforce: true,
  *     securityGroupIds: [secgroup.then(secgroup => secgroup.id)],
  * });
  * ```
@@ -51,8 +51,8 @@ import * as utilities from "../utilities";
  *     fixedIp: "10.0.0.10",
  * });
  * const port1 = new openstack.networking.PortSecGroupAssociate("port1", {
- *     enforce: true,
  *     portId: systemPort.then(systemPort => systemPort.id),
+ *     enforce: true,
  *     securityGroupIds: [],
  * });
  * ```

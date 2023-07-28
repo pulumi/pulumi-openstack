@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -87,6 +88,7 @@ func NewFloatingIpAssociate(ctx *pulumi.Context,
 	if args.PortId == nil {
 		return nil, errors.New("invalid value for required argument 'PortId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FloatingIpAssociate
 	err := ctx.RegisterResource("openstack:networking/floatingIpAssociate:FloatingIpAssociate", name, args, &resource, opts...)
 	if err != nil {

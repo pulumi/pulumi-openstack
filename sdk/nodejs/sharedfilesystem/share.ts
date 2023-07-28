@@ -28,9 +28,9 @@ import * as utilities from "../utilities";
  * });
  * const share1 = new openstack.sharedfilesystem.Share("share1", {
  *     description: "test share description",
- *     shareNetworkId: sharenetwork1.id,
  *     shareProto: "NFS",
  *     size: 1,
+ *     shareNetworkId: sharenetwork1.id,
  * });
  * ```
  *
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * This resource can be imported by specifying the ID of the share
  *
  * ```sh
- *  $ pulumi import openstack:sharedfilesystem/share:Share share_1 <id>
+ *  $ pulumi import openstack:sharedfilesystem/share:Share share_1 id
  * ```
  */
 export class Share extends pulumi.CustomResource {

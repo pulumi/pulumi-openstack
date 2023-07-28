@@ -60,10 +60,9 @@ class ClusterArgs:
                new cluster.
         :param pulumi.Input[bool] merge_labels: Indicates whether the provided labels should be
                merged with cluster template labels. Changing this creates a new cluster.
-        :param pulumi.Input[str] name: The name of the cluster. Changing this updates the name
-               of the existing cluster template.
-        :param pulumi.Input[int] node_count: The number of nodes for the cluster. Changing this
-               creates a new cluster.
+        :param pulumi.Input[str] name: The name of the cluster. Changing this creates a new
+               cluster.
+        :param pulumi.Input[int] node_count: The number of nodes for the cluster.
         :param pulumi.Input[str] region: The region in which to obtain the V1 Container Infra
                client. A Container Infra client is needed to create a cluster. If omitted,
                the `region` argument of the provider is used. Changing this creates a new
@@ -276,8 +275,8 @@ class ClusterArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the cluster. Changing this updates the name
-        of the existing cluster template.
+        The name of the cluster. Changing this creates a new
+        cluster.
         """
         return pulumi.get(self, "name")
 
@@ -289,8 +288,7 @@ class ClusterArgs:
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of nodes for the cluster. Changing this
-        creates a new cluster.
+        The number of nodes for the cluster.
         """
         return pulumi.get(self, "node_count")
 
@@ -374,10 +372,9 @@ class _ClusterState:
                new cluster.
         :param pulumi.Input[bool] merge_labels: Indicates whether the provided labels should be
                merged with cluster template labels. Changing this creates a new cluster.
-        :param pulumi.Input[str] name: The name of the cluster. Changing this updates the name
-               of the existing cluster template.
-        :param pulumi.Input[int] node_count: The number of nodes for the cluster. Changing this
-               creates a new cluster.
+        :param pulumi.Input[str] name: The name of the cluster. Changing this creates a new
+               cluster.
+        :param pulumi.Input[int] node_count: The number of nodes for the cluster.
         :param pulumi.Input[str] project_id: The project of the cluster. Required if admin wants
                to create a cluster in another project. Changing this creates a new
                cluster.
@@ -673,8 +670,8 @@ class _ClusterState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the cluster. Changing this updates the name
-        of the existing cluster template.
+        The name of the cluster. Changing this creates a new
+        cluster.
         """
         return pulumi.get(self, "name")
 
@@ -695,8 +692,7 @@ class _ClusterState:
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of nodes for the cluster. Changing this
-        creates a new cluster.
+        The number of nodes for the cluster.
         """
         return pulumi.get(self, "node_count")
 
@@ -789,6 +785,12 @@ class Cluster(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manages a V1 Magnum cluster resource within OpenStack.
+
+        > **Note:** All arguments including the `kubeconfig` computed attribute will be
+        stored in the raw state as plain-text. Read more about sensitive data in
+        state.
+
         ## Example Usage
         ### Create a Cluster
 
@@ -876,10 +878,9 @@ class Cluster(pulumi.CustomResource):
                new cluster.
         :param pulumi.Input[bool] merge_labels: Indicates whether the provided labels should be
                merged with cluster template labels. Changing this creates a new cluster.
-        :param pulumi.Input[str] name: The name of the cluster. Changing this updates the name
-               of the existing cluster template.
-        :param pulumi.Input[int] node_count: The number of nodes for the cluster. Changing this
-               creates a new cluster.
+        :param pulumi.Input[str] name: The name of the cluster. Changing this creates a new
+               cluster.
+        :param pulumi.Input[int] node_count: The number of nodes for the cluster.
         :param pulumi.Input[str] region: The region in which to obtain the V1 Container Infra
                client. A Container Infra client is needed to create a cluster. If omitted,
                the `region` argument of the provider is used. Changing this creates a new
@@ -892,6 +893,12 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a V1 Magnum cluster resource within OpenStack.
+
+        > **Note:** All arguments including the `kubeconfig` computed attribute will be
+        stored in the raw state as plain-text. Read more about sensitive data in
+        state.
+
         ## Example Usage
         ### Create a Cluster
 
@@ -1092,10 +1099,9 @@ class Cluster(pulumi.CustomResource):
                new cluster.
         :param pulumi.Input[bool] merge_labels: Indicates whether the provided labels should be
                merged with cluster template labels. Changing this creates a new cluster.
-        :param pulumi.Input[str] name: The name of the cluster. Changing this updates the name
-               of the existing cluster template.
-        :param pulumi.Input[int] node_count: The number of nodes for the cluster. Changing this
-               creates a new cluster.
+        :param pulumi.Input[str] name: The name of the cluster. Changing this creates a new
+               cluster.
+        :param pulumi.Input[int] node_count: The number of nodes for the cluster.
         :param pulumi.Input[str] project_id: The project of the cluster. Required if admin wants
                to create a cluster in another project. Changing this creates a new
                cluster.
@@ -1293,8 +1299,8 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the cluster. Changing this updates the name
-        of the existing cluster template.
+        The name of the cluster. Changing this creates a new
+        cluster.
         """
         return pulumi.get(self, "name")
 
@@ -1307,8 +1313,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of nodes for the cluster. Changing this
-        creates a new cluster.
+        The number of nodes for the cluster.
         """
         return pulumi.get(self, "node_count")
 

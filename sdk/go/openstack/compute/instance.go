@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -89,8 +90,9 @@ type Instance struct {
 	// defining one or more files and their contents. The personality structure
 	// is described below. Changing this rebuilds the existing server.
 	Personalities InstancePersonalityArrayOutput `pulumi:"personalities"`
-	// Provide the VM state. Only 'active' and 'shutoff'
-	// are supported values. *Note*: If the initial powerState is the shutoff
+	// Provide the VM state. Only 'active', 'shutoff'
+	// and 'shelved_offloaded' are supported values.
+	// *Note*: If the initial powerState is the shutoff
 	// the VM will be stopped immediately after build and the provisioners like
 	// remote-exec or files are not supported.
 	PowerState pulumi.StringPtrOutput `pulumi:"powerState"`
@@ -141,6 +143,7 @@ func NewInstance(ctx *pulumi.Context,
 		"adminPass",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Instance
 	err := ctx.RegisterResource("openstack:compute/instance:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -239,8 +242,9 @@ type instanceState struct {
 	// defining one or more files and their contents. The personality structure
 	// is described below. Changing this rebuilds the existing server.
 	Personalities []InstancePersonality `pulumi:"personalities"`
-	// Provide the VM state. Only 'active' and 'shutoff'
-	// are supported values. *Note*: If the initial powerState is the shutoff
+	// Provide the VM state. Only 'active', 'shutoff'
+	// and 'shelved_offloaded' are supported values.
+	// *Note*: If the initial powerState is the shutoff
 	// the VM will be stopped immediately after build and the provisioners like
 	// remote-exec or files are not supported.
 	PowerState *string `pulumi:"powerState"`
@@ -354,8 +358,9 @@ type InstanceState struct {
 	// defining one or more files and their contents. The personality structure
 	// is described below. Changing this rebuilds the existing server.
 	Personalities InstancePersonalityArrayInput
-	// Provide the VM state. Only 'active' and 'shutoff'
-	// are supported values. *Note*: If the initial powerState is the shutoff
+	// Provide the VM state. Only 'active', 'shutoff'
+	// and 'shelved_offloaded' are supported values.
+	// *Note*: If the initial powerState is the shutoff
 	// the VM will be stopped immediately after build and the provisioners like
 	// remote-exec or files are not supported.
 	PowerState pulumi.StringPtrInput
@@ -467,8 +472,9 @@ type instanceArgs struct {
 	// defining one or more files and their contents. The personality structure
 	// is described below. Changing this rebuilds the existing server.
 	Personalities []InstancePersonality `pulumi:"personalities"`
-	// Provide the VM state. Only 'active' and 'shutoff'
-	// are supported values. *Note*: If the initial powerState is the shutoff
+	// Provide the VM state. Only 'active', 'shutoff'
+	// and 'shelved_offloaded' are supported values.
+	// *Note*: If the initial powerState is the shutoff
 	// the VM will be stopped immediately after build and the provisioners like
 	// remote-exec or files are not supported.
 	PowerState *string `pulumi:"powerState"`
@@ -575,8 +581,9 @@ type InstanceArgs struct {
 	// defining one or more files and their contents. The personality structure
 	// is described below. Changing this rebuilds the existing server.
 	Personalities InstancePersonalityArrayInput
-	// Provide the VM state. Only 'active' and 'shutoff'
-	// are supported values. *Note*: If the initial powerState is the shutoff
+	// Provide the VM state. Only 'active', 'shutoff'
+	// and 'shelved_offloaded' are supported values.
+	// *Note*: If the initial powerState is the shutoff
 	// the VM will be stopped immediately after build and the provisioners like
 	// remote-exec or files are not supported.
 	PowerState pulumi.StringPtrInput
@@ -840,8 +847,9 @@ func (o InstanceOutput) Personalities() InstancePersonalityArrayOutput {
 	return o.ApplyT(func(v *Instance) InstancePersonalityArrayOutput { return v.Personalities }).(InstancePersonalityArrayOutput)
 }
 
-// Provide the VM state. Only 'active' and 'shutoff'
-// are supported values. *Note*: If the initial powerState is the shutoff
+// Provide the VM state. Only 'active', 'shutoff'
+// and 'shelved_offloaded' are supported values.
+// *Note*: If the initial powerState is the shutoff
 // the VM will be stopped immediately after build and the provisioners like
 // remote-exec or files are not supported.
 func (o InstanceOutput) PowerState() pulumi.StringPtrOutput {

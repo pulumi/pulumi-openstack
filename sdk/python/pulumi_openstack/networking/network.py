@@ -712,30 +712,30 @@ class Network(pulumi.CustomResource):
 
         network1 = openstack.networking.Network("network1", admin_state_up=True)
         subnet1 = openstack.networking.Subnet("subnet1",
+            network_id=network1.id,
             cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
+            ip_version=4)
         secgroup1 = openstack.compute.SecGroup("secgroup1",
             description="a security group",
             rules=[openstack.compute.SecGroupRuleArgs(
-                cidr="0.0.0.0/0",
                 from_port=22,
-                ip_protocol="tcp",
                 to_port=22,
+                ip_protocol="tcp",
+                cidr="0.0.0.0/0",
             )])
         port1 = openstack.networking.Port("port1",
-            admin_state_up=True,
-            fixed_ips=[openstack.networking.PortFixedIpArgs(
-                ip_address="192.168.199.10",
-                subnet_id=subnet1.id,
-            )],
             network_id=network1.id,
-            security_group_ids=[secgroup1.id])
+            admin_state_up=True,
+            security_group_ids=[secgroup1.id],
+            fixed_ips=[openstack.networking.PortFixedIpArgs(
+                subnet_id=subnet1.id,
+                ip_address="192.168.199.10",
+            )])
         instance1 = openstack.compute.Instance("instance1",
+            security_groups=[secgroup1.name],
             networks=[openstack.compute.InstanceNetworkArgs(
                 port=port1.id,
-            )],
-            security_groups=[secgroup1.name])
+            )])
         ```
 
         ## Import
@@ -812,30 +812,30 @@ class Network(pulumi.CustomResource):
 
         network1 = openstack.networking.Network("network1", admin_state_up=True)
         subnet1 = openstack.networking.Subnet("subnet1",
+            network_id=network1.id,
             cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
+            ip_version=4)
         secgroup1 = openstack.compute.SecGroup("secgroup1",
             description="a security group",
             rules=[openstack.compute.SecGroupRuleArgs(
-                cidr="0.0.0.0/0",
                 from_port=22,
-                ip_protocol="tcp",
                 to_port=22,
+                ip_protocol="tcp",
+                cidr="0.0.0.0/0",
             )])
         port1 = openstack.networking.Port("port1",
-            admin_state_up=True,
-            fixed_ips=[openstack.networking.PortFixedIpArgs(
-                ip_address="192.168.199.10",
-                subnet_id=subnet1.id,
-            )],
             network_id=network1.id,
-            security_group_ids=[secgroup1.id])
+            admin_state_up=True,
+            security_group_ids=[secgroup1.id],
+            fixed_ips=[openstack.networking.PortFixedIpArgs(
+                subnet_id=subnet1.id,
+                ip_address="192.168.199.10",
+            )])
         instance1 = openstack.compute.Instance("instance1",
+            security_groups=[secgroup1.name],
             networks=[openstack.compute.InstanceNetworkArgs(
                 port=port1.id,
-            )],
-            security_groups=[secgroup1.name])
+            )])
         ```
 
         ## Import

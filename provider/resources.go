@@ -20,8 +20,12 @@ import (
 	"strings"
 	"unicode"
 
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
+
 	"github.com/pulumi/pulumi-openstack/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/terraform-provider-openstack/terraform-provider-openstack/openstack"
@@ -85,14 +89,16 @@ func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(openstack.Provider())
 
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "openstack",
-		Description: "A Pulumi package for creating and managing OpenStack cloud resources.",
-		Keywords:    []string{"pulumi", "openstack"},
-		Homepage:    "https://pulumi.io",
-		License:     "Apache-2.0",
-		GitHubOrg:   "terraform-provider-openstack",
-		Repository:  "https://github.com/pulumi/pulumi-openstack",
+		P:            p,
+		Name:         "openstack",
+		Description:  "A Pulumi package for creating and managing OpenStack cloud resources.",
+		Keywords:     []string{"pulumi", "openstack"},
+		Homepage:     "https://pulumi.io",
+		License:      "Apache-2.0",
+		GitHubOrg:    "terraform-provider-openstack",
+		Repository:   "https://github.com/pulumi/pulumi-openstack",
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+		Version:      version.Version,
 		Config: map[string]*tfbridge.SchemaInfo{
 			"region": {
 				Default: &tfbridge.DefaultInfo{
@@ -191,16 +197,17 @@ func Provider() tfbridge.ProviderInfo {
 			"openstack_dns_transfer_accept_v2":  {Tok: openstackResource(dnsMod, "TransferAccept")},
 
 			// Identity
-			"openstack_identity_application_credential_v3": {Tok: openstackResource(identityMod, "ApplicationCredential")},
-			"openstack_identity_project_v3":                {Tok: openstackResource(identityMod, "Project")},
-			"openstack_identity_role_v3":                   {Tok: openstackResource(identityMod, "Role")},
-			"openstack_identity_role_assignment_v3":        {Tok: openstackResource(identityMod, "RoleAssignment")},
-			"openstack_identity_user_v3":                   {Tok: openstackResource(identityMod, "User")},
-			"openstack_identity_endpoint_v3":               {Tok: openstackResource(identityMod, "EndpointV3")},
-			"openstack_identity_service_v3":                {Tok: openstackResource(identityMod, "ServiceV3")},
-			"openstack_identity_group_v3":                  {Tok: openstackResource(identityMod, "GroupV3")},
-			"openstack_identity_ec2_credential_v3":         {Tok: openstackResource(identityMod, "Ec2CredentialV3")},
-			"openstack_identity_user_membership_v3":        {Tok: openstackResource(identityMod, "UserMembershipV3")},
+			"openstack_identity_application_credential_v3":  {Tok: openstackResource(identityMod, "ApplicationCredential")},
+			"openstack_identity_project_v3":                 {Tok: openstackResource(identityMod, "Project")},
+			"openstack_identity_role_v3":                    {Tok: openstackResource(identityMod, "Role")},
+			"openstack_identity_inherit_role_assignment_v3": {Tok: openstackResource(identityMod, "InheritRoleAssignment")},
+			"openstack_identity_role_assignment_v3":         {Tok: openstackResource(identityMod, "RoleAssignment")},
+			"openstack_identity_user_v3":                    {Tok: openstackResource(identityMod, "User")},
+			"openstack_identity_endpoint_v3":                {Tok: openstackResource(identityMod, "EndpointV3")},
+			"openstack_identity_service_v3":                 {Tok: openstackResource(identityMod, "ServiceV3")},
+			"openstack_identity_group_v3":                   {Tok: openstackResource(identityMod, "GroupV3")},
+			"openstack_identity_ec2_credential_v3":          {Tok: openstackResource(identityMod, "Ec2CredentialV3")},
+			"openstack_identity_user_membership_v3":         {Tok: openstackResource(identityMod, "UserMembershipV3")},
 
 			// Images
 			"openstack_images_image_v2":               {Tok: openstackResource(imagesMod, "Image")},
@@ -271,8 +278,11 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Firewall
 			"openstack_fw_firewall_v1": {Tok: openstackResource(firewallMod, "Firewall")},
+			"openstack_fw_group_v2":    {Tok: openstackResource(firewallMod, "GroupV2")},
 			"openstack_fw_policy_v1":   {Tok: openstackResource(firewallMod, "Policy")},
+			"openstack_fw_policy_v2":   {Tok: openstackResource(firewallMod, "PolicyV2")},
 			"openstack_fw_rule_v1":     {Tok: openstackResource(firewallMod, "Rule")},
+			"openstack_fw_rule_v2":     {Tok: openstackResource(firewallMod, "RuleV2")},
 
 			// Object Storage
 			"openstack_objectstorage_container_v1": {Tok: openstackResource(osMod, "Container")},
@@ -421,7 +431,29 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
+	prov.MustComputeTokens(tfbridgetokens.KnownModules("openstack_", "index", []string{
+		"blockstorage_",
+		"compute_",
+		"containerinfra_",
+		"database_",
+		"dns_",
+		"identity_",
+		"images_",
+		"keymanager_",
+		"networking_",
+		"loadbalancer_",
+		"firewall_",
+		"objectstorage_",
+		"orchestration_",
+		"sharedfile_system_",
+		"vpnaas_",
+	}, tfbridgetokens.MakeStandard(openstackPkg)))
+
+	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-openstack/bridge-metadata.json
+var metadata []byte

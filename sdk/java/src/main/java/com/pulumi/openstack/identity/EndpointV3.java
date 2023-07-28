@@ -48,8 +48,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var endpoint1 = new EndpointV3(&#34;endpoint1&#34;, EndpointV3Args.builder()        
- *             .endpointRegion(service1.region())
  *             .serviceId(service1.id())
+ *             .endpointRegion(service1.region())
  *             .url(&#34;http://my-endpoint&#34;)
  *             .build());
  * 

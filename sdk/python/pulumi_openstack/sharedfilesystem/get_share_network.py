@@ -240,19 +240,19 @@ def get_share_network(description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getShareNetwork:getShareNetwork', __args__, opts=opts, typ=GetShareNetworkResult).value
 
     return AwaitableGetShareNetworkResult(
-        cidr=__ret__.cidr,
-        description=__ret__.description,
-        id=__ret__.id,
-        ip_version=__ret__.ip_version,
-        name=__ret__.name,
-        network_type=__ret__.network_type,
-        neutron_net_id=__ret__.neutron_net_id,
-        neutron_subnet_id=__ret__.neutron_subnet_id,
-        project_id=__ret__.project_id,
-        region=__ret__.region,
-        security_service_id=__ret__.security_service_id,
-        security_service_ids=__ret__.security_service_ids,
-        segmentation_id=__ret__.segmentation_id)
+        cidr=pulumi.get(__ret__, 'cidr'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_version=pulumi.get(__ret__, 'ip_version'),
+        name=pulumi.get(__ret__, 'name'),
+        network_type=pulumi.get(__ret__, 'network_type'),
+        neutron_net_id=pulumi.get(__ret__, 'neutron_net_id'),
+        neutron_subnet_id=pulumi.get(__ret__, 'neutron_subnet_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        region=pulumi.get(__ret__, 'region'),
+        security_service_id=pulumi.get(__ret__, 'security_service_id'),
+        security_service_ids=pulumi.get(__ret__, 'security_service_ids'),
+        segmentation_id=pulumi.get(__ret__, 'segmentation_id'))
 
 
 @_utilities.lift_output_func(get_share_network)

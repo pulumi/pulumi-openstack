@@ -15,24 +15,23 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const container1 = new openstack.objectstorage.Container("container1", {
- *     contentType: "application/json",
- *     metadata: {
- *         test: "true",
- *     },
  *     region: "RegionOne",
+ *     metadata: [{
+ *         test: "true",
+ *     }],
+ *     contentType: "application/json",
  * });
  * const doc1 = new openstack.objectstorage.ContainerObject("doc1", {
+ *     region: "RegionOne",
  *     containerName: container1.name,
+ *     metadata: [{
+ *         test: "true",
+ *     }],
+ *     contentType: "application/json",
  *     content: `               {
  *                  "foo" : "bar"
  *                }
- *
  * `,
- *     contentType: "application/json",
- *     metadata: {
- *         test: "true",
- *     },
- *     region: "RegionOne",
  * });
  * ```
  * ### Example with content from file
@@ -42,19 +41,19 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const container1 = new openstack.objectstorage.Container("container1", {
- *     contentType: "application/json",
- *     metadata: {
- *         test: "true",
- *     },
  *     region: "RegionOne",
+ *     metadata: [{
+ *         test: "true",
+ *     }],
+ *     contentType: "application/json",
  * });
  * const doc1 = new openstack.objectstorage.ContainerObject("doc1", {
- *     containerName: container1.name,
- *     contentType: "application/json",
- *     metadata: {
- *         test: "true",
- *     },
  *     region: "RegionOne",
+ *     containerName: container1.name,
+ *     metadata: [{
+ *         test: "true",
+ *     }],
+ *     contentType: "application/json",
  *     source: "./default.json",
  * });
  * ```

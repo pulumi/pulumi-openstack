@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupQosBandwidthLimitRule(ctx *pulumi.Context, args *LookupQosBandwidthLimitRuleArgs, opts ...pulumi.InvokeOption) (*LookupQosBandwidthLimitRuleResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupQosBandwidthLimitRuleResult
 	err := ctx.Invoke("openstack:networking/getQosBandwidthLimitRule:getQosBandwidthLimitRule", args, &rv, opts...)
 	if err != nil {

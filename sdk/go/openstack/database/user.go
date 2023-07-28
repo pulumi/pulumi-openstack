@@ -7,10 +7,17 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a V1 DB user resource within OpenStack.
+//
+// > **Note:** All arguments including the database password will be stored in the
+// raw state as plain-text. Read more about sensitive data in
+// state.
+//
 // ## Example Usage
 // ### User
 //
@@ -27,11 +34,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := database.NewUser(ctx, "basic", &database.UserArgs{
+//				InstanceId: pulumi.Any(openstack_db_instance_v1.Basic.Id),
+//				Password:   pulumi.String("password"),
 //				Databases: pulumi.StringArray{
 //					pulumi.String("testdb"),
 //				},
-//				InstanceId: pulumi.Any(openstack_db_instance_v1.Basic.Id),
-//				Password:   pulumi.String("password"),
 //			})
 //			if err != nil {
 //				return err
@@ -77,6 +84,7 @@ func NewUser(ctx *pulumi.Context,
 		"password",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource User
 	err := ctx.RegisterResource("openstack:database/user:User", name, args, &resource, opts...)
 	if err != nil {

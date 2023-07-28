@@ -110,10 +110,10 @@ def get_role(domain_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:identity/getRole:getRole', __args__, opts=opts, typ=GetRoleResult).value
 
     return AwaitableGetRoleResult(
-        domain_id=__ret__.domain_id,
-        id=__ret__.id,
-        name=__ret__.name,
-        region=__ret__.region)
+        domain_id=pulumi.get(__ret__, 'domain_id'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_role)

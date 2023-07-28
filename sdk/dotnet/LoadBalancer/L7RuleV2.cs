@@ -16,6 +16,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -40,32 +41,32 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     ///     var listener1 = new OpenStack.LoadBalancer.Listener("listener1", new()
     ///     {
-    ///         LoadbalancerId = loadbalancer1.Id,
     ///         Protocol = "HTTP",
     ///         ProtocolPort = 8080,
+    ///         LoadbalancerId = loadbalancer1.Id,
     ///     });
     /// 
     ///     var pool1 = new OpenStack.LoadBalancer.Pool("pool1", new()
     ///     {
+    ///         Protocol = "HTTP",
     ///         LbMethod = "ROUND_ROBIN",
     ///         LoadbalancerId = loadbalancer1.Id,
-    ///         Protocol = "HTTP",
     ///     });
     /// 
     ///     var l7policy1 = new OpenStack.LoadBalancer.L7PolicyV2("l7policy1", new()
     ///     {
     ///         Action = "REDIRECT_TO_URL",
     ///         Description = "test description",
-    ///         ListenerId = listener1.Id,
     ///         Position = 1,
+    ///         ListenerId = listener1.Id,
     ///         RedirectUrl = "http://www.example.com",
     ///     });
     /// 
     ///     var l7rule1 = new OpenStack.LoadBalancer.L7RuleV2("l7rule1", new()
     ///     {
-    ///         CompareType = "EQUAL_TO",
     ///         L7policyId = l7policy1.Id,
     ///         Type = "PATH",
+    ///         CompareType = "EQUAL_TO",
     ///         Value = "/api",
     ///     });
     /// 

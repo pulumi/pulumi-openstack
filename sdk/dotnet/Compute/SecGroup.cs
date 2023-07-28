@@ -22,6 +22,7 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -59,6 +60,7 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -74,6 +76,7 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -81,8 +84,8 @@ namespace Pulumi.OpenStack.Compute
     /// {
     ///     var test_server = new OpenStack.Compute.Instance("test-server", new()
     ///     {
-    ///         FlavorId = "3",
     ///         ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
+    ///         FlavorId = "3",
     ///         KeyPair = "my_key_pair_name",
     ///         SecurityGroups = new[]
     ///         {

@@ -359,17 +359,17 @@ class Policy(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         rule1 = openstack.firewall.Rule("rule1",
-            action="deny",
             description="drop TELNET traffic",
-            destination_port="23",
-            enabled=True,
-            protocol="tcp")
-        rule2 = openstack.firewall.Rule("rule2",
             action="deny",
+            protocol="tcp",
+            destination_port="23",
+            enabled=True)
+        rule2 = openstack.firewall.Rule("rule2",
             description="drop NTP traffic",
+            action="deny",
+            protocol="udp",
             destination_port="123",
-            enabled=False,
-            protocol="udp")
+            enabled=False)
         policy1 = openstack.firewall.Policy("policy1", rules=[
             rule1.id,
             rule2.id,
@@ -425,17 +425,17 @@ class Policy(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         rule1 = openstack.firewall.Rule("rule1",
-            action="deny",
             description="drop TELNET traffic",
-            destination_port="23",
-            enabled=True,
-            protocol="tcp")
-        rule2 = openstack.firewall.Rule("rule2",
             action="deny",
+            protocol="tcp",
+            destination_port="23",
+            enabled=True)
+        rule2 = openstack.firewall.Rule("rule2",
             description="drop NTP traffic",
+            action="deny",
+            protocol="udp",
             destination_port="123",
-            enabled=False,
-            protocol="udp")
+            enabled=False)
         policy1 = openstack.firewall.Policy("policy1", rules=[
             rule1.id,
             rule2.id,

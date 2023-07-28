@@ -91,22 +91,18 @@ public final class RecordSetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An array of DNS records. _Note:_ if an IPv6 address
-     * contains brackets (`[ ]`), the brackets will be stripped and the modified
-     * address will be recorded in the state.
+     * An array of DNS records.
      * 
      */
-    @Import(name="records")
-    private @Nullable Output<List<String>> records;
+    @Import(name="records", required=true)
+    private Output<List<String>> records;
 
     /**
-     * @return An array of DNS records. _Note:_ if an IPv6 address
-     * contains brackets (`[ ]`), the brackets will be stripped and the modified
-     * address will be recorded in the state.
+     * @return An array of DNS records.
      * 
      */
-    public Optional<Output<List<String>>> records() {
-        return Optional.ofNullable(this.records);
+    public Output<List<String>> records() {
+        return this.records;
     }
 
     /**
@@ -322,22 +318,18 @@ public final class RecordSetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param records An array of DNS records. _Note:_ if an IPv6 address
-         * contains brackets (`[ ]`), the brackets will be stripped and the modified
-         * address will be recorded in the state.
+         * @param records An array of DNS records.
          * 
          * @return builder
          * 
          */
-        public Builder records(@Nullable Output<List<String>> records) {
+        public Builder records(Output<List<String>> records) {
             $.records = records;
             return this;
         }
 
         /**
-         * @param records An array of DNS records. _Note:_ if an IPv6 address
-         * contains brackets (`[ ]`), the brackets will be stripped and the modified
-         * address will be recorded in the state.
+         * @param records An array of DNS records.
          * 
          * @return builder
          * 
@@ -347,9 +339,7 @@ public final class RecordSetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param records An array of DNS records. _Note:_ if an IPv6 address
-         * contains brackets (`[ ]`), the brackets will be stripped and the modified
-         * address will be recorded in the state.
+         * @param records An array of DNS records.
          * 
          * @return builder
          * 
@@ -474,6 +464,7 @@ public final class RecordSetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RecordSetArgs build() {
+            $.records = Objects.requireNonNull($.records, "expected parameter 'records' to be non-null");
             $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
             return $;
         }

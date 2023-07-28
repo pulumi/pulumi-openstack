@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -105,6 +106,11 @@ func NewKeypair(ctx *pulumi.Context,
 		args = &KeypairArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"privateKey",
+	})
+	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Keypair
 	err := ctx.RegisterResource("openstack:compute/keypair:Keypair", name, args, &resource, opts...)
 	if err != nil {

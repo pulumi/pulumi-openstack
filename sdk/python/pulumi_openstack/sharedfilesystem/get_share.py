@@ -269,21 +269,21 @@ def get_share(description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:sharedfilesystem/getShare:getShare', __args__, opts=opts, typ=GetShareResult).value
 
     return AwaitableGetShareResult(
-        availability_zone=__ret__.availability_zone,
-        description=__ret__.description,
-        export_location_path=__ret__.export_location_path,
-        export_locations=__ret__.export_locations,
-        id=__ret__.id,
-        is_public=__ret__.is_public,
-        metadata=__ret__.metadata,
-        name=__ret__.name,
-        project_id=__ret__.project_id,
-        region=__ret__.region,
-        share_network_id=__ret__.share_network_id,
-        share_proto=__ret__.share_proto,
-        size=__ret__.size,
-        snapshot_id=__ret__.snapshot_id,
-        status=__ret__.status)
+        availability_zone=pulumi.get(__ret__, 'availability_zone'),
+        description=pulumi.get(__ret__, 'description'),
+        export_location_path=pulumi.get(__ret__, 'export_location_path'),
+        export_locations=pulumi.get(__ret__, 'export_locations'),
+        id=pulumi.get(__ret__, 'id'),
+        is_public=pulumi.get(__ret__, 'is_public'),
+        metadata=pulumi.get(__ret__, 'metadata'),
+        name=pulumi.get(__ret__, 'name'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        region=pulumi.get(__ret__, 'region'),
+        share_network_id=pulumi.get(__ret__, 'share_network_id'),
+        share_proto=pulumi.get(__ret__, 'share_proto'),
+        size=pulumi.get(__ret__, 'size'),
+        snapshot_id=pulumi.get(__ret__, 'snapshot_id'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_share)

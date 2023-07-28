@@ -7,9 +7,18 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a V3 EC2 Credential resource within OpenStack Keystone.
+// EC2 credentials in OpenStack are used to access S3 compatible Swift/RadosGW
+// endpoints or to authenticate against Keystone.
+//
+// > **Note:** All arguments including the EC2 credential access key and secret
+// will be stored in the raw state as plain-text. Read more about sensitive data
+// in state.
+//
 // ## Example Usage
 // ### EC2 credential in current project scope
 //
@@ -107,6 +116,7 @@ func NewEc2CredentialV3(ctx *pulumi.Context,
 		"secret",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Ec2CredentialV3
 	err := ctx.RegisterResource("openstack:identity/ec2CredentialV3:Ec2CredentialV3", name, args, &resource, opts...)
 	if err != nil {

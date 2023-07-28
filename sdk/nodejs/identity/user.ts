@@ -7,6 +7,15 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Manages a V3 User resource within OpenStack Keystone.
+ *
+ * > **Note:** All arguments including the user password will be stored in the
+ * raw state as plain-text. Read more about sensitive data in
+ * state.
+ *
+ * > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+ * this resource.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -17,9 +26,7 @@ import * as utilities from "../utilities";
  * const user1 = new openstack.identity.User("user1", {
  *     defaultProjectId: project1.id,
  *     description: "A user",
- *     extra: {
- *         email: "user_1@foobar.com",
- *     },
+ *     password: "password123",
  *     ignoreChangePasswordUponFirstUse: true,
  *     multiFactorAuthEnabled: true,
  *     multiFactorAuthRules: [
@@ -33,7 +40,9 @@ import * as utilities from "../utilities";
  *             rules: ["password"],
  *         },
  *     ],
- *     password: "password123",
+ *     extra: {
+ *         email: "user_1@foobar.com",
+ *     },
  * });
  * ```
  *

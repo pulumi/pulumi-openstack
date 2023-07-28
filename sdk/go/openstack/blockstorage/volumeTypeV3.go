@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,6 +81,7 @@ func NewVolumeTypeV3(ctx *pulumi.Context,
 		args = &VolumeTypeV3Args{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VolumeTypeV3
 	err := ctx.RegisterResource("openstack:blockstorage/volumeTypeV3:VolumeTypeV3", name, args, &resource, opts...)
 	if err != nil {

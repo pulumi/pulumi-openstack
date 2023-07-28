@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,8 +54,8 @@ import (
 //				return err
 //			}
 //			_, err = identity.NewUserMembershipV3(ctx, "userMembership1", &identity.UserMembershipV3Args{
-//				GroupId: group1.ID(),
 //				UserId:  user1.ID(),
+//				GroupId: group1.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -79,7 +80,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 <user_id>/<group_id>
+//	$ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
 //
 // ```
 type UserMembershipV3 struct {
@@ -109,6 +110,7 @@ func NewUserMembershipV3(ctx *pulumi.Context,
 	if args.UserId == nil {
 		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource UserMembershipV3
 	err := ctx.RegisterResource("openstack:identity/userMembershipV3:UserMembershipV3", name, args, &resource, opts...)
 	if err != nil {

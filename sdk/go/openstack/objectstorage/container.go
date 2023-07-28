@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -167,11 +168,11 @@ import (
 //
 // ## Import
 //
-// This resource can be imported by specifying the name of the containerSome attributes can't be imported * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key` So you'll have to `terraform plan` and `terraform apply` after the import to fix those missing attributes.
+// This resource can be imported by specifying the name of the containerSome attributes can't be imported * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key` So you'll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.
 //
 // ```sh
 //
-//	$ pulumi import openstack:objectstorage/container:Container container_1 <name>
+//	$ pulumi import openstack:objectstorage/container:Container container_1 container_name
 //
 // ```
 type Container struct {
@@ -229,6 +230,7 @@ func NewContainer(ctx *pulumi.Context,
 		args = &ContainerArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Container
 	err := ctx.RegisterResource("openstack:objectstorage/container:Container", name, args, &resource, opts...)
 	if err != nil {

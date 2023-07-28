@@ -21,20 +21,21 @@ import * as utilities from "../utilities";
  *
  * const certificate1 = new openstack.keymanager.SecretV1("certificate1", {
  *     payload: fs.readFileSync("cert.pem"),
- *     payloadContentType: "text/plain",
  *     secretType: "certificate",
+ *     payloadContentType: "text/plain",
  * });
  * const privateKey1 = new openstack.keymanager.SecretV1("privateKey1", {
  *     payload: fs.readFileSync("cert-key.pem"),
- *     payloadContentType: "text/plain",
  *     secretType: "private",
+ *     payloadContentType: "text/plain",
  * });
  * const intermediate1 = new openstack.keymanager.SecretV1("intermediate1", {
  *     payload: fs.readFileSync("intermediate-ca.pem"),
- *     payloadContentType: "text/plain",
  *     secretType: "certificate",
+ *     payloadContentType: "text/plain",
  * });
  * const tls1 = new openstack.keymanager.ContainerV1("tls1", {
+ *     type: "certificate",
  *     secretRefs: [
  *         {
  *             name: "certificate",
@@ -49,17 +50,16 @@ import * as utilities from "../utilities";
  *             secretRef: intermediate1.secretRef,
  *         },
  *     ],
- *     type: "certificate",
  * });
  * const subnet1 = openstack.networking.getSubnet({
  *     name: "my-subnet",
  * });
  * const lb1 = new openstack.loadbalancer.LoadBalancer("lb1", {vipSubnetId: subnet1.then(subnet1 => subnet1.id)});
  * const listener1 = new openstack.loadbalancer.Listener("listener1", {
- *     defaultTlsContainerRef: tls1.containerRef,
- *     loadbalancerId: lb1.id,
  *     protocol: "TERMINATED_HTTPS",
  *     protocolPort: 443,
+ *     loadbalancerId: lb1.id,
+ *     defaultTlsContainerRef: tls1.containerRef,
  * });
  * ```
  * ### Container with the ACL
@@ -71,15 +71,7 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const tls1 = new openstack.keymanager.ContainerV1("tls1", {
- *     acl: {
- *         read: {
- *             projectAccess: false,
- *             users: [
- *                 "userid1",
- *                 "userid2",
- *             ],
- *         },
- *     },
+ *     type: "certificate",
  *     secretRefs: [
  *         {
  *             name: "certificate",
@@ -94,7 +86,15 @@ import * as utilities from "../utilities";
  *             secretRef: openstack_keymanager_secret_v1.intermediate_1.secret_ref,
  *         },
  *     ],
- *     type: "certificate",
+ *     acl: {
+ *         read: {
+ *             projectAccess: false,
+ *             users: [
+ *                 "userid1",
+ *                 "userid2",
+ *             ],
+ *         },
+ *     },
  * });
  * ```
  *

@@ -15,9 +15,9 @@ import * as utilities from "../utilities";
  *
  * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
  * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ *     networkId: network1.id,
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
- *     networkId: network1.id,
  * });
  * const router1 = new openstack.networking.Router("router1", {externalNetworkId: "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f"});
  * const routerInterface1 = new openstack.networking.RouterInterface("routerInterface1", {
@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * Router Interfaces can be imported using the port `id`, e.g. $ openstack port list --router <router name or id>
  *
  * ```sh
- *  $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 <port id from above output>
+ *  $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 port_id
  * ```
  */
 export class RouterInterface extends pulumi.CustomResource {

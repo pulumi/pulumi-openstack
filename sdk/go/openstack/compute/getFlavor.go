@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupFlavor(ctx *pulumi.Context, args *LookupFlavorArgs, opts ...pulumi.InvokeOption) (*LookupFlavorResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFlavorResult
 	err := ctx.Invoke("openstack:compute/getFlavor:getFlavor", args, &rv, opts...)
 	if err != nil {

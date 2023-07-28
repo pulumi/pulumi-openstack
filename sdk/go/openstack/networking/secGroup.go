@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,6 +54,7 @@ func NewSecGroup(ctx *pulumi.Context,
 		args = &SecGroupArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecGroup
 	err := ctx.RegisterResource("openstack:networking/secGroup:SecGroup", name, args, &resource, opts...)
 	if err != nil {

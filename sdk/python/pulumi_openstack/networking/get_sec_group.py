@@ -159,14 +159,14 @@ def get_sec_group(description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:networking/getSecGroup:getSecGroup', __args__, opts=opts, typ=GetSecGroupResult).value
 
     return AwaitableGetSecGroupResult(
-        all_tags=__ret__.all_tags,
-        description=__ret__.description,
-        id=__ret__.id,
-        name=__ret__.name,
-        region=__ret__.region,
-        secgroup_id=__ret__.secgroup_id,
-        tags=__ret__.tags,
-        tenant_id=__ret__.tenant_id)
+        all_tags=pulumi.get(__ret__, 'all_tags'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'),
+        secgroup_id=pulumi.get(__ret__, 'secgroup_id'),
+        tags=pulumi.get(__ret__, 'tags'),
+        tenant_id=pulumi.get(__ret__, 'tenant_id'))
 
 
 @_utilities.lift_output_func(get_sec_group)

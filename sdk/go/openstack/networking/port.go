@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,8 +36,8 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewPort(ctx, "port1", &networking.PortArgs{
-//				AdminStateUp: pulumi.Bool(true),
 //				NetworkId:    network1.ID(),
+//				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -67,15 +68,32 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewPort(ctx, "port1", &networking.PortArgs{
+//				NetworkId:    network1.ID(),
+//				DeviceId:     pulumi.String("cdf70fcf-c161-4f24-9c70-96b3f5a54b71"),
+//				DeviceOwner:  pulumi.String("baremetal:none"),
 //				AdminStateUp: pulumi.Bool(true),
 //				Binding: &networking.PortBindingArgs{
 //					HostId:   pulumi.String("b080b9cf-46e0-4ce8-ad47-0fd4accc872b"),
-//					Profile:  pulumi.String("{\n  \"local_link_information\": [\n    {\n      \"switch_info\": \"info1\",\n      \"port_id\": \"Ethernet3/4\",\n      \"switch_id\": \"12:34:56:78:9A:BC\"\n    },\n    {\n      \"switch_info\": \"info2\",\n      \"port_id\": \"Ethernet3/4\",\n      \"switch_id\": \"12:34:56:78:9A:BD\"\n    }\n  ],\n  \"vlan_type\": \"allowed\"\n}\n\n"),
 //					VnicType: pulumi.String("baremetal"),
+//					Profile: pulumi.String(`{
+//	  "local_link_information": [
+//	    {
+//	      "switch_info": "info1",
+//	      "port_id": "Ethernet3/4",
+//	      "switch_id": "12:34:56:78:9A:BC"
+//	    },
+//	    {
+//	      "switch_info": "info2",
+//	      "port_id": "Ethernet3/4",
+//	      "switch_id": "12:34:56:78:9A:BD"
+//	    }
+//	  ],
+//	  "vlan_type": "allowed"
+//	}
+//
+// `),
+//
 //				},
-//				DeviceId:    pulumi.String("cdf70fcf-c161-4f24-9c70-96b3f5a54b71"),
-//				DeviceOwner: pulumi.String("baremetal:none"),
-//				NetworkId:   network1.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -203,6 +221,7 @@ func NewPort(ctx *pulumi.Context,
 	if args.NetworkId == nil {
 		return nil, errors.New("invalid value for required argument 'NetworkId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Port
 	err := ctx.RegisterResource("openstack:networking/port:Port", name, args, &resource, opts...)
 	if err != nil {

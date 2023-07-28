@@ -211,8 +211,8 @@ class FloatingIpAssociate(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         instance1 = openstack.compute.Instance("instance1",
-            flavor_id="3",
             image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
             key_pair="my_key_pair_name",
             security_groups=["default"])
         fip1_floating_ip = openstack.networking.FloatingIp("fip1FloatingIp", pool="my_pool")
@@ -227,9 +227,10 @@ class FloatingIpAssociate(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         instance1 = openstack.compute.Instance("instance1",
-            flavor_id="3",
             image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
             key_pair="my_key_pair_name",
+            security_groups=["default"],
             networks=[
                 openstack.compute.InstanceNetworkArgs(
                     name="my_network",
@@ -237,13 +238,12 @@ class FloatingIpAssociate(pulumi.CustomResource):
                 openstack.compute.InstanceNetworkArgs(
                     name="default",
                 ),
-            ],
-            security_groups=["default"])
+            ])
         fip1_floating_ip = openstack.networking.FloatingIp("fip1FloatingIp", pool="my_pool")
         fip1_floating_ip_associate = openstack.compute.FloatingIpAssociate("fip1FloatingIpAssociate",
-            fixed_ip=instance1.networks[1].fixed_ip_v4,
             floating_ip=fip1_floating_ip.address,
-            instance_id=instance1.id)
+            instance_id=instance1.id,
+            fixed_ip=instance1.networks[1].fixed_ip_v4)
         ```
 
         ## Import
@@ -251,7 +251,7 @@ class FloatingIpAssociate(pulumi.CustomResource):
         This resource can be imported by specifying all three arguments, separated by a forward slash
 
         ```sh
-         $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 <floating_ip>/<instance_id>/<fixed_ip>
+         $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 floating_ip/instance_id/fixed_ip
         ```
 
         :param str resource_name: The name of the resource.
@@ -281,8 +281,8 @@ class FloatingIpAssociate(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         instance1 = openstack.compute.Instance("instance1",
-            flavor_id="3",
             image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
             key_pair="my_key_pair_name",
             security_groups=["default"])
         fip1_floating_ip = openstack.networking.FloatingIp("fip1FloatingIp", pool="my_pool")
@@ -297,9 +297,10 @@ class FloatingIpAssociate(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         instance1 = openstack.compute.Instance("instance1",
-            flavor_id="3",
             image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
+            flavor_id="3",
             key_pair="my_key_pair_name",
+            security_groups=["default"],
             networks=[
                 openstack.compute.InstanceNetworkArgs(
                     name="my_network",
@@ -307,13 +308,12 @@ class FloatingIpAssociate(pulumi.CustomResource):
                 openstack.compute.InstanceNetworkArgs(
                     name="default",
                 ),
-            ],
-            security_groups=["default"])
+            ])
         fip1_floating_ip = openstack.networking.FloatingIp("fip1FloatingIp", pool="my_pool")
         fip1_floating_ip_associate = openstack.compute.FloatingIpAssociate("fip1FloatingIpAssociate",
-            fixed_ip=instance1.networks[1].fixed_ip_v4,
             floating_ip=fip1_floating_ip.address,
-            instance_id=instance1.id)
+            instance_id=instance1.id,
+            fixed_ip=instance1.networks[1].fixed_ip_v4)
         ```
 
         ## Import
@@ -321,7 +321,7 @@ class FloatingIpAssociate(pulumi.CustomResource):
         This resource can be imported by specifying all three arguments, separated by a forward slash
 
         ```sh
-         $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 <floating_ip>/<instance_id>/<fixed_ip>
+         $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 floating_ip/instance_id/fixed_ip
         ```
 
         :param str resource_name: The name of the resource.

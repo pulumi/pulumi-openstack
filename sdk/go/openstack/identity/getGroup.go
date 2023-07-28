@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetGroup(ctx *pulumi.Context, args *GetGroupArgs, opts ...pulumi.InvokeOption) (*GetGroupResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupResult
 	err := ctx.Invoke("openstack:identity/getGroup:getGroup", args, &rv, opts...)
 	if err != nil {

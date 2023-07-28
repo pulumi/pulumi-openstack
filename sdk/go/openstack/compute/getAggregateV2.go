@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupAggregateV2(ctx *pulumi.Context, args *LookupAggregateV2Args, opts ...pulumi.InvokeOption) (*LookupAggregateV2Result, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAggregateV2Result
 	err := ctx.Invoke("openstack:compute/getAggregateV2:getAggregateV2", args, &rv, opts...)
 	if err != nil {

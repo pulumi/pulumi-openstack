@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -51,18 +52,18 @@ import (
 //			}
 //			share1, err := sharedfilesystem.NewShare(ctx, "share1", &sharedfilesystem.ShareArgs{
 //				Description:    pulumi.String("test share description"),
-//				ShareNetworkId: sharenetwork1.ID(),
 //				ShareProto:     pulumi.String("NFS"),
 //				Size:           pulumi.Int(1),
+//				ShareNetworkId: sharenetwork1.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sharedfilesystem.NewShareAccess(ctx, "shareAccess1", &sharedfilesystem.ShareAccessArgs{
-//				AccessLevel: pulumi.String("rw"),
-//				AccessTo:    pulumi.String("192.168.199.10"),
-//				AccessType:  pulumi.String("ip"),
 //				ShareId:     share1.ID(),
+//				AccessType:  pulumi.String("ip"),
+//				AccessTo:    pulumi.String("192.168.199.10"),
+//				AccessLevel: pulumi.String("rw"),
 //			})
 //			if err != nil {
 //				return err
@@ -103,13 +104,13 @@ import (
 //			}
 //			securityservice1, err := sharedfilesystem.NewSecurityService(ctx, "securityservice1", &sharedfilesystem.SecurityServiceArgs{
 //				Description: pulumi.String("created by terraform"),
+//				Type:        pulumi.String("active_directory"),
+//				Server:      pulumi.String("192.168.199.10"),
 //				DnsIp:       pulumi.String("192.168.199.10"),
 //				Domain:      pulumi.String("example.com"),
 //				Ou:          pulumi.String("CN=Computers,DC=example,DC=com"),
-//				Password:    pulumi.String("s8cret"),
-//				Server:      pulumi.String("192.168.199.10"),
-//				Type:        pulumi.String("active_directory"),
 //				User:        pulumi.String("joinDomainUser"),
+//				Password:    pulumi.String("s8cret"),
 //			})
 //			if err != nil {
 //				return err
@@ -126,27 +127,27 @@ import (
 //				return err
 //			}
 //			share1, err := sharedfilesystem.NewShare(ctx, "share1", &sharedfilesystem.ShareArgs{
-//				ShareNetworkId: sharenetwork1.ID(),
 //				ShareProto:     pulumi.String("CIFS"),
 //				Size:           pulumi.Int(1),
+//				ShareNetworkId: sharenetwork1.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sharedfilesystem.NewShareAccess(ctx, "shareAccess1", &sharedfilesystem.ShareAccessArgs{
-//				AccessLevel: pulumi.String("ro"),
-//				AccessTo:    pulumi.String("windows"),
-//				AccessType:  pulumi.String("user"),
 //				ShareId:     share1.ID(),
+//				AccessType:  pulumi.String("user"),
+//				AccessTo:    pulumi.String("windows"),
+//				AccessLevel: pulumi.String("ro"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sharedfilesystem.NewShareAccess(ctx, "shareAccess2", &sharedfilesystem.ShareAccessArgs{
-//				AccessLevel: pulumi.String("rw"),
-//				AccessTo:    pulumi.String("linux"),
-//				AccessType:  pulumi.String("user"),
 //				ShareId:     share1.ID(),
+//				AccessType:  pulumi.String("user"),
+//				AccessTo:    pulumi.String("linux"),
+//				AccessLevel: pulumi.String("rw"),
 //			})
 //			if err != nil {
 //				return err
@@ -164,7 +165,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 <share id>/<share access id>
+//	$ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 share_id/share_access_id
 //
 // ```
 type ShareAccess struct {
@@ -187,6 +188,8 @@ type ShareAccess struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The UUID of the share to which you are granted access.
 	ShareId pulumi.StringOutput `pulumi:"shareId"`
+	// The share access state.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewShareAccess registers a new resource with the given unique name, arguments, and options.
@@ -212,6 +215,7 @@ func NewShareAccess(ctx *pulumi.Context,
 		"accessKey",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ShareAccess
 	err := ctx.RegisterResource("openstack:sharedfilesystem/shareAccess:ShareAccess", name, args, &resource, opts...)
 	if err != nil {
@@ -251,6 +255,8 @@ type shareAccessState struct {
 	Region *string `pulumi:"region"`
 	// The UUID of the share to which you are granted access.
 	ShareId *string `pulumi:"shareId"`
+	// The share access state.
+	State *string `pulumi:"state"`
 }
 
 type ShareAccessState struct {
@@ -271,6 +277,8 @@ type ShareAccessState struct {
 	Region pulumi.StringPtrInput
 	// The UUID of the share to which you are granted access.
 	ShareId pulumi.StringPtrInput
+	// The share access state.
+	State pulumi.StringPtrInput
 }
 
 func (ShareAccessState) ElementType() reflect.Type {
@@ -434,6 +442,11 @@ func (o ShareAccessOutput) Region() pulumi.StringOutput {
 // The UUID of the share to which you are granted access.
 func (o ShareAccessOutput) ShareId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ShareAccess) pulumi.StringOutput { return v.ShareId }).(pulumi.StringOutput)
+}
+
+// The share access state.
+func (o ShareAccessOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *ShareAccess) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 type ShareAccessArrayOutput struct{ *pulumi.OutputState }

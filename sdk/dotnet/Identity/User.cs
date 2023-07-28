@@ -10,10 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.Identity
 {
     /// <summary>
+    /// Manages a V3 User resource within OpenStack Keystone.
+    /// 
+    /// &gt; **Note:** All arguments including the user password will be stored in the
+    /// raw state as plain-text. Read more about sensitive data in
+    /// state.
+    /// 
+    /// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
+    /// this resource.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -25,10 +35,7 @@ namespace Pulumi.OpenStack.Identity
     ///     {
     ///         DefaultProjectId = project1.Id,
     ///         Description = "A user",
-    ///         Extra = 
-    ///         {
-    ///             { "email", "user_1@foobar.com" },
-    ///         },
+    ///         Password = "password123",
     ///         IgnoreChangePasswordUponFirstUse = true,
     ///         MultiFactorAuthEnabled = true,
     ///         MultiFactorAuthRules = new[]
@@ -49,7 +56,10 @@ namespace Pulumi.OpenStack.Identity
     ///                 },
     ///             },
     ///         },
-    ///         Password = "password123",
+    ///         Extra = 
+    ///         {
+    ///             { "email", "user_1@foobar.com" },
+    ///         },
     ///     });
     /// 
     /// });

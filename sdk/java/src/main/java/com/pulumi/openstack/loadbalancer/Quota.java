@@ -56,14 +56,14 @@ import javax.annotation.Nullable;
  *         var project1 = new Project(&#34;project1&#34;);
  * 
  *         var quota1 = new Quota(&#34;quota1&#34;, QuotaArgs.builder()        
+ *             .projectId(project1.id())
+ *             .loadbalancer(6)
+ *             .listener(7)
+ *             .member(8)
+ *             .pool(9)
  *             .healthMonitor(10)
  *             .l7Policy(11)
  *             .l7Rule(12)
- *             .listener(7)
- *             .loadbalancer(6)
- *             .member(8)
- *             .pool(9)
- *             .projectId(project1.id())
  *             .build());
  * 
  *     }

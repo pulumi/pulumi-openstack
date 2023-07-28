@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -112,6 +113,7 @@ func NewFlavor(ctx *pulumi.Context,
 	if args.Vcpus == nil {
 		return nil, errors.New("invalid value for required argument 'Vcpus'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Flavor
 	err := ctx.RegisterResource("openstack:compute/flavor:Flavor", name, args, &resource, opts...)
 	if err != nil {

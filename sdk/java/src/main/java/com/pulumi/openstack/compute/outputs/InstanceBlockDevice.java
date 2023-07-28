@@ -55,6 +55,12 @@ public final class InstanceBlockDevice {
      */
     private @Nullable String guestFormat;
     /**
+     * @return Enable the attachment of multiattach-capable
+     * volumes.
+     * 
+     */
+    private @Nullable Boolean multiattach;
+    /**
      * @return The source type of the device. Must be one of
      * &#34;blank&#34;, &#34;image&#34;, &#34;volume&#34;, or &#34;snapshot&#34;. Changing this creates a new
      * server.
@@ -139,6 +145,14 @@ public final class InstanceBlockDevice {
         return Optional.ofNullable(this.guestFormat);
     }
     /**
+     * @return Enable the attachment of multiattach-capable
+     * volumes.
+     * 
+     */
+    public Optional<Boolean> multiattach() {
+        return Optional.ofNullable(this.multiattach);
+    }
+    /**
      * @return The source type of the device. Must be one of
      * &#34;blank&#34;, &#34;image&#34;, &#34;volume&#34;, or &#34;snapshot&#34;. Changing this creates a new
      * server.
@@ -191,6 +205,7 @@ public final class InstanceBlockDevice {
         private @Nullable String deviceType;
         private @Nullable String diskBus;
         private @Nullable String guestFormat;
+        private @Nullable Boolean multiattach;
         private String sourceType;
         private @Nullable String uuid;
         private @Nullable Integer volumeSize;
@@ -204,6 +219,7 @@ public final class InstanceBlockDevice {
     	      this.deviceType = defaults.deviceType;
     	      this.diskBus = defaults.diskBus;
     	      this.guestFormat = defaults.guestFormat;
+    	      this.multiattach = defaults.multiattach;
     	      this.sourceType = defaults.sourceType;
     	      this.uuid = defaults.uuid;
     	      this.volumeSize = defaults.volumeSize;
@@ -241,6 +257,11 @@ public final class InstanceBlockDevice {
             return this;
         }
         @CustomType.Setter
+        public Builder multiattach(@Nullable Boolean multiattach) {
+            this.multiattach = multiattach;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sourceType(String sourceType) {
             this.sourceType = Objects.requireNonNull(sourceType);
             return this;
@@ -268,6 +289,7 @@ public final class InstanceBlockDevice {
             o.deviceType = deviceType;
             o.diskBus = diskBus;
             o.guestFormat = guestFormat;
+            o.multiattach = multiattach;
             o.sourceType = sourceType;
             o.uuid = uuid;
             o.volumeSize = volumeSize;

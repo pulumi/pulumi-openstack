@@ -56,9 +56,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
+ *             .networkId(network1.id())
  *             .cidr(&#34;192.168.199.0/24&#34;)
  *             .ipVersion(4)
- *             .networkId(network1.id())
  *             .build());
  * 
  *         var int1 = new RouterInterface(&#34;int1&#34;, RouterInterfaceArgs.builder()        
@@ -67,9 +67,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var routerRoute1 = new RouterRoute(&#34;routerRoute1&#34;, RouterRouteArgs.builder()        
+ *             .routerId(router1.id())
  *             .destinationCidr(&#34;10.0.1.0/24&#34;)
  *             .nextHop(&#34;192.168.199.254&#34;)
- *             .routerId(router1.id())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(&#34;openstack_networking_router_interface_v2.int_1&#34;)
  *                 .build());

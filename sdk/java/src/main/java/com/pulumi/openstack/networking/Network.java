@@ -61,36 +61,36 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
+ *             .networkId(network1.id())
  *             .cidr(&#34;192.168.199.0/24&#34;)
  *             .ipVersion(4)
- *             .networkId(network1.id())
  *             .build());
  * 
  *         var secgroup1 = new SecGroup(&#34;secgroup1&#34;, SecGroupArgs.builder()        
  *             .description(&#34;a security group&#34;)
  *             .rules(SecGroupRuleArgs.builder()
- *                 .cidr(&#34;0.0.0.0/0&#34;)
  *                 .fromPort(22)
- *                 .ipProtocol(&#34;tcp&#34;)
  *                 .toPort(22)
+ *                 .ipProtocol(&#34;tcp&#34;)
+ *                 .cidr(&#34;0.0.0.0/0&#34;)
  *                 .build())
  *             .build());
  * 
  *         var port1 = new Port(&#34;port1&#34;, PortArgs.builder()        
- *             .adminStateUp(&#34;true&#34;)
- *             .fixedIps(PortFixedIpArgs.builder()
- *                 .ipAddress(&#34;192.168.199.10&#34;)
- *                 .subnetId(subnet1.id())
- *                 .build())
  *             .networkId(network1.id())
+ *             .adminStateUp(&#34;true&#34;)
  *             .securityGroupIds(secgroup1.id())
+ *             .fixedIps(PortFixedIpArgs.builder()
+ *                 .subnetId(subnet1.id())
+ *                 .ipAddress(&#34;192.168.199.10&#34;)
+ *                 .build())
  *             .build());
  * 
  *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        
+ *             .securityGroups(secgroup1.name())
  *             .networks(InstanceNetworkArgs.builder()
  *                 .port(port1.id())
  *                 .build())
- *             .securityGroups(secgroup1.name())
  *             .build());
  * 
  *     }

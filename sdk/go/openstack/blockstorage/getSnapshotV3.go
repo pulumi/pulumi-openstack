@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func GetSnapshotV3(ctx *pulumi.Context, args *GetSnapshotV3Args, opts ...pulumi.InvokeOption) (*GetSnapshotV3Result, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSnapshotV3Result
 	err := ctx.Invoke("openstack:blockstorage/getSnapshotV3:getSnapshotV3", args, &rv, opts...)
 	if err != nil {

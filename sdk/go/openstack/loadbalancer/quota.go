@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,14 +49,14 @@ import (
 //				return err
 //			}
 //			_, err = loadbalancer.NewQuota(ctx, "quota1", &loadbalancer.QuotaArgs{
+//				ProjectId:     project1.ID(),
+//				Loadbalancer:  pulumi.Int(6),
+//				Listener:      pulumi.Int(7),
+//				Member:        pulumi.Int(8),
+//				Pool:          pulumi.Int(9),
 //				HealthMonitor: pulumi.Int(10),
 //				L7Policy:      pulumi.Int(11),
 //				L7Rule:        pulumi.Int(12),
-//				Listener:      pulumi.Int(7),
-//				Loadbalancer:  pulumi.Int(6),
-//				Member:        pulumi.Int(8),
-//				Pool:          pulumi.Int(9),
-//				ProjectId:     project1.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -119,6 +120,7 @@ func NewQuota(ctx *pulumi.Context,
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Quota
 	err := ctx.RegisterResource("openstack:loadbalancer/quota:Quota", name, args, &resource, opts...)
 	if err != nil {

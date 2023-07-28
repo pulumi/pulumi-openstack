@@ -94,8 +94,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var volume1 = new Volume(&#34;volume1&#34;, VolumeArgs.builder()        
- *             .multiattach(true)
  *             .size(1)
+ *             .multiattach(true)
  *             .build());
  * 
  *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        
@@ -108,14 +108,14 @@ import javax.annotation.Nullable;
  * 
  *         var va1 = new VolumeAttach(&#34;va1&#34;, VolumeAttachArgs.builder()        
  *             .instanceId(instance1.id())
- *             .multiattach(true)
  *             .volumeId(openstack_blockstorage_volume_v2.volume_1().id())
+ *             .multiattach(true)
  *             .build());
  * 
  *         var va2 = new VolumeAttach(&#34;va2&#34;, VolumeAttachArgs.builder()        
  *             .instanceId(instance2.id())
- *             .multiattach(true)
  *             .volumeId(openstack_blockstorage_volume_v2.volume_1().id())
+ *             .multiattach(true)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(&#34;openstack_compute_volume_attach_v2.va_1&#34;)
  *                 .build());

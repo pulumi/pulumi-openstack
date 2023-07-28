@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,8 +66,8 @@ type IpSecPolicy struct {
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-	// Changing this updates the existing policy.
+	// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
+	// is group5. Changing this updates the existing policy.
 	Pfs pulumi.StringOutput `pulumi:"pfs"`
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an IPSec policy. If omitted, the
@@ -76,7 +77,7 @@ type IpSecPolicy struct {
 	// The owner of the policy. Required if admin wants to
 	// create a policy for another project. Changing this creates a new policy.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
-	// The transform protocol. Valid values are ESP, AH and AH-ESP.
+	// The transform protocol. Valid values are esp, ah and ah-esp.
 	// Changing this updates the existing policy. Default is ESP.
 	TransformProtocol pulumi.StringOutput `pulumi:"transformProtocol"`
 	// Map of additional options.
@@ -90,6 +91,7 @@ func NewIpSecPolicy(ctx *pulumi.Context,
 		args = &IpSecPolicyArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IpSecPolicy
 	err := ctx.RegisterResource("openstack:vpnaas/ipSecPolicy:IpSecPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -129,8 +131,8 @@ type ipSecPolicyState struct {
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
 	Name *string `pulumi:"name"`
-	// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-	// Changing this updates the existing policy.
+	// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
+	// is group5. Changing this updates the existing policy.
 	Pfs *string `pulumi:"pfs"`
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an IPSec policy. If omitted, the
@@ -140,7 +142,7 @@ type ipSecPolicyState struct {
 	// The owner of the policy. Required if admin wants to
 	// create a policy for another project. Changing this creates a new policy.
 	TenantId *string `pulumi:"tenantId"`
-	// The transform protocol. Valid values are ESP, AH and AH-ESP.
+	// The transform protocol. Valid values are esp, ah and ah-esp.
 	// Changing this updates the existing policy. Default is ESP.
 	TransformProtocol *string `pulumi:"transformProtocol"`
 	// Map of additional options.
@@ -165,8 +167,8 @@ type IpSecPolicyState struct {
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
 	Name pulumi.StringPtrInput
-	// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-	// Changing this updates the existing policy.
+	// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
+	// is group5. Changing this updates the existing policy.
 	Pfs pulumi.StringPtrInput
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an IPSec policy. If omitted, the
@@ -176,7 +178,7 @@ type IpSecPolicyState struct {
 	// The owner of the policy. Required if admin wants to
 	// create a policy for another project. Changing this creates a new policy.
 	TenantId pulumi.StringPtrInput
-	// The transform protocol. Valid values are ESP, AH and AH-ESP.
+	// The transform protocol. Valid values are esp, ah and ah-esp.
 	// Changing this updates the existing policy. Default is ESP.
 	TransformProtocol pulumi.StringPtrInput
 	// Map of additional options.
@@ -205,8 +207,8 @@ type ipSecPolicyArgs struct {
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
 	Name *string `pulumi:"name"`
-	// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-	// Changing this updates the existing policy.
+	// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
+	// is group5. Changing this updates the existing policy.
 	Pfs *string `pulumi:"pfs"`
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an IPSec policy. If omitted, the
@@ -216,7 +218,7 @@ type ipSecPolicyArgs struct {
 	// The owner of the policy. Required if admin wants to
 	// create a policy for another project. Changing this creates a new policy.
 	TenantId *string `pulumi:"tenantId"`
-	// The transform protocol. Valid values are ESP, AH and AH-ESP.
+	// The transform protocol. Valid values are esp, ah and ah-esp.
 	// Changing this updates the existing policy. Default is ESP.
 	TransformProtocol *string `pulumi:"transformProtocol"`
 	// Map of additional options.
@@ -242,8 +244,8 @@ type IpSecPolicyArgs struct {
 	// The name of the policy. Changing this updates the name of
 	// the existing policy.
 	Name pulumi.StringPtrInput
-	// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-	// Changing this updates the existing policy.
+	// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
+	// is group5. Changing this updates the existing policy.
 	Pfs pulumi.StringPtrInput
 	// The region in which to obtain the V2 Networking client.
 	// A Networking client is needed to create an IPSec policy. If omitted, the
@@ -253,7 +255,7 @@ type IpSecPolicyArgs struct {
 	// The owner of the policy. Required if admin wants to
 	// create a policy for another project. Changing this creates a new policy.
 	TenantId pulumi.StringPtrInput
-	// The transform protocol. Valid values are ESP, AH and AH-ESP.
+	// The transform protocol. Valid values are esp, ah and ah-esp.
 	// Changing this updates the existing policy. Default is ESP.
 	TransformProtocol pulumi.StringPtrInput
 	// Map of additional options.
@@ -382,8 +384,8 @@ func (o IpSecPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The perfect forward secrecy mode. Valid values are Group2, Group5 and Group14. Default is Group5.
-// Changing this updates the existing policy.
+// The perfect forward secrecy mode. Valid values are group2, group5 and group14. Default
+// is group5. Changing this updates the existing policy.
 func (o IpSecPolicyOutput) Pfs() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringOutput { return v.Pfs }).(pulumi.StringOutput)
 }
@@ -402,7 +404,7 @@ func (o IpSecPolicyOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// The transform protocol. Valid values are ESP, AH and AH-ESP.
+// The transform protocol. Valid values are esp, ah and ah-esp.
 // Changing this updates the existing policy. Default is ESP.
 func (o IpSecPolicyOutput) TransformProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpSecPolicy) pulumi.StringOutput { return v.TransformProtocol }).(pulumi.StringOutput)

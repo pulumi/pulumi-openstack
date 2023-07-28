@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,6 +85,7 @@ func NewFloatingIp(ctx *pulumi.Context,
 	if args.Pool == nil {
 		return nil, errors.New("invalid value for required argument 'Pool'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FloatingIp
 	err := ctx.RegisterResource("openstack:compute/floatingIp:FloatingIp", name, args, &resource, opts...)
 	if err != nil {

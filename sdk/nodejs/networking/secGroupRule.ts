@@ -19,9 +19,9 @@ import * as utilities from "../utilities";
  * const secgroupRule1 = new openstack.networking.SecGroupRule("secgroupRule1", {
  *     direction: "ingress",
  *     ethertype: "IPv4",
- *     portRangeMax: 22,
- *     portRangeMin: 22,
  *     protocol: "tcp",
+ *     portRangeMin: 22,
+ *     portRangeMax: 22,
  *     remoteIpPrefix: "0.0.0.0/0",
  *     securityGroupId: secgroup1.id,
  * });

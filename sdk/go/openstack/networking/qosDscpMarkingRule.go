@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,8 +36,8 @@ import (
 //				return err
 //			}
 //			_, err = networking.NewQosDscpMarkingRule(ctx, "dscpMarkingRule1", &networking.QosDscpMarkingRuleArgs{
-//				DscpMark:    pulumi.Int(26),
 //				QosPolicyId: qosPolicy1.ID(),
+//				DscpMark:    pulumi.Int(26),
 //			})
 //			if err != nil {
 //				return err
@@ -83,6 +84,7 @@ func NewQosDscpMarkingRule(ctx *pulumi.Context,
 	if args.QosPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'QosPolicyId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource QosDscpMarkingRule
 	err := ctx.RegisterResource("openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule", name, args, &resource, opts...)
 	if err != nil {

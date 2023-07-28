@@ -139,12 +139,12 @@ def get_service(enabled: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('openstack:identity/getService:getService', __args__, opts=opts, typ=GetServiceResult).value
 
     return AwaitableGetServiceResult(
-        description=__ret__.description,
-        enabled=__ret__.enabled,
-        id=__ret__.id,
-        name=__ret__.name,
-        region=__ret__.region,
-        type=__ret__.type)
+        description=pulumi.get(__ret__, 'description'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_service)

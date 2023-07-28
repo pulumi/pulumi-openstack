@@ -213,18 +213,18 @@ def get_qos_policy(description: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:networking/getQosPolicy:getQosPolicy', __args__, opts=opts, typ=GetQosPolicyResult).value
 
     return AwaitableGetQosPolicyResult(
-        all_tags=__ret__.all_tags,
-        created_at=__ret__.created_at,
-        description=__ret__.description,
-        id=__ret__.id,
-        is_default=__ret__.is_default,
-        name=__ret__.name,
-        project_id=__ret__.project_id,
-        region=__ret__.region,
-        revision_number=__ret__.revision_number,
-        shared=__ret__.shared,
-        tags=__ret__.tags,
-        updated_at=__ret__.updated_at)
+        all_tags=pulumi.get(__ret__, 'all_tags'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        is_default=pulumi.get(__ret__, 'is_default'),
+        name=pulumi.get(__ret__, 'name'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        region=pulumi.get(__ret__, 'region'),
+        revision_number=pulumi.get(__ret__, 'revision_number'),
+        shared=pulumi.get(__ret__, 'shared'),
+        tags=pulumi.get(__ret__, 'tags'),
+        updated_at=pulumi.get(__ret__, 'updated_at'))
 
 
 @_utilities.lift_output_func(get_qos_policy)

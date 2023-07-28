@@ -263,23 +263,23 @@ def get_quota_set_v2(project_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:compute/getQuotaSetV2:getQuotaSetV2', __args__, opts=opts, typ=GetQuotaSetV2Result).value
 
     return AwaitableGetQuotaSetV2Result(
-        cores=__ret__.cores,
-        fixed_ips=__ret__.fixed_ips,
-        floating_ips=__ret__.floating_ips,
-        id=__ret__.id,
-        injected_file_content_bytes=__ret__.injected_file_content_bytes,
-        injected_file_path_bytes=__ret__.injected_file_path_bytes,
-        injected_files=__ret__.injected_files,
-        instances=__ret__.instances,
-        key_pairs=__ret__.key_pairs,
-        metadata_items=__ret__.metadata_items,
-        project_id=__ret__.project_id,
-        ram=__ret__.ram,
-        region=__ret__.region,
-        security_group_rules=__ret__.security_group_rules,
-        security_groups=__ret__.security_groups,
-        server_group_members=__ret__.server_group_members,
-        server_groups=__ret__.server_groups)
+        cores=pulumi.get(__ret__, 'cores'),
+        fixed_ips=pulumi.get(__ret__, 'fixed_ips'),
+        floating_ips=pulumi.get(__ret__, 'floating_ips'),
+        id=pulumi.get(__ret__, 'id'),
+        injected_file_content_bytes=pulumi.get(__ret__, 'injected_file_content_bytes'),
+        injected_file_path_bytes=pulumi.get(__ret__, 'injected_file_path_bytes'),
+        injected_files=pulumi.get(__ret__, 'injected_files'),
+        instances=pulumi.get(__ret__, 'instances'),
+        key_pairs=pulumi.get(__ret__, 'key_pairs'),
+        metadata_items=pulumi.get(__ret__, 'metadata_items'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        ram=pulumi.get(__ret__, 'ram'),
+        region=pulumi.get(__ret__, 'region'),
+        security_group_rules=pulumi.get(__ret__, 'security_group_rules'),
+        security_groups=pulumi.get(__ret__, 'security_groups'),
+        server_group_members=pulumi.get(__ret__, 'server_group_members'),
+        server_groups=pulumi.get(__ret__, 'server_groups'))
 
 
 @_utilities.lift_output_func(get_quota_set_v2)

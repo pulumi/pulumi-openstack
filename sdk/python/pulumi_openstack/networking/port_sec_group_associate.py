@@ -228,8 +228,8 @@ class PortSecGroupAssociate(pulumi.CustomResource):
         system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
         secgroup = openstack.networking.get_sec_group(name="secgroup")
         port1 = openstack.networking.PortSecGroupAssociate("port1",
-            enforce=True,
             port_id=system_port.id,
+            enforce=True,
             security_group_ids=[secgroup.id])
         ```
         ### Remove all security groups from an existing port
@@ -240,8 +240,8 @@ class PortSecGroupAssociate(pulumi.CustomResource):
 
         system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
         port1 = openstack.networking.PortSecGroupAssociate("port1",
-            enforce=True,
             port_id=system_port.id,
+            enforce=True,
             security_group_ids=[])
         ```
 
@@ -295,8 +295,8 @@ class PortSecGroupAssociate(pulumi.CustomResource):
         system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
         secgroup = openstack.networking.get_sec_group(name="secgroup")
         port1 = openstack.networking.PortSecGroupAssociate("port1",
-            enforce=True,
             port_id=system_port.id,
+            enforce=True,
             security_group_ids=[secgroup.id])
         ```
         ### Remove all security groups from an existing port
@@ -307,8 +307,8 @@ class PortSecGroupAssociate(pulumi.CustomResource):
 
         system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
         port1 = openstack.networking.PortSecGroupAssociate("port1",
-            enforce=True,
             port_id=system_port.id,
+            enforce=True,
             security_group_ids=[])
         ```
 

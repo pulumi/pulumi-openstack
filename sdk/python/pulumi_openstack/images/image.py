@@ -42,7 +42,7 @@ class ImageArgs:
                "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
         :param pulumi.Input[bool] decompress: If true, this provider will decompress downloaded
                image before uploading it to OpenStack. Decompression algorithm is chosen by
-               checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+               checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
                Defaults to false. Changing this creates a new Image.
         :param pulumi.Input[bool] hidden: If true, image will be hidden from public list.
                Defaults to false.
@@ -154,7 +154,7 @@ class ImageArgs:
         """
         If true, this provider will decompress downloaded
         image before uploading it to OpenStack. Decompression algorithm is chosen by
-        checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+        checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
         Defaults to false. Changing this creates a new Image.
         """
         return pulumi.get(self, "decompress")
@@ -428,7 +428,7 @@ class _ImageState:
         :param pulumi.Input[str] created_at: The date the image was created.
         :param pulumi.Input[bool] decompress: If true, this provider will decompress downloaded
                image before uploading it to OpenStack. Decompression algorithm is chosen by
-               checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+               checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
                Defaults to false. Changing this creates a new Image.
         :param pulumi.Input[str] disk_format: The disk format. Must be one of
                "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
@@ -592,7 +592,7 @@ class _ImageState:
         """
         If true, this provider will decompress downloaded
         image before uploading it to OpenStack. Decompression algorithm is chosen by
-        checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+        checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
         Defaults to false. Changing this creates a new Image.
         """
         return pulumi.get(self, "decompress")
@@ -879,6 +879,9 @@ class _ImageState:
         """
         (**Deprecated** - use `updated_at` instead)
         """
+        warnings.warn("""Use updated_at instead""", DeprecationWarning)
+        pulumi.log.warn("""update_at is deprecated: Use updated_at instead""")
+
         return pulumi.get(self, "update_at")
 
     @update_at.setter
@@ -967,6 +970,12 @@ class Image(pulumi.CustomResource):
                  web_download: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        Manages a V2 Image resource within OpenStack Glance.
+
+        > **Note:** All arguments including the source image URL password will be
+        stored in the raw state as plain-text. Read more about sensitive data in
+        state.
+
         ## Example Usage
 
         ```python
@@ -1011,7 +1020,7 @@ class Image(pulumi.CustomResource):
                "ami", "ari", "aki", "bare", "ovf".
         :param pulumi.Input[bool] decompress: If true, this provider will decompress downloaded
                image before uploading it to OpenStack. Decompression algorithm is chosen by
-               checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+               checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
                Defaults to false. Changing this creates a new Image.
         :param pulumi.Input[str] disk_format: The disk format. Must be one of
                "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
@@ -1061,6 +1070,12 @@ class Image(pulumi.CustomResource):
                  args: ImageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a V2 Image resource within OpenStack Glance.
+
+        > **Note:** All arguments including the source image URL password will be
+        stored in the raw state as plain-text. Read more about sensitive data in
+        state.
+
         ## Example Usage
 
         ```python
@@ -1232,7 +1247,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: The date the image was created.
         :param pulumi.Input[bool] decompress: If true, this provider will decompress downloaded
                image before uploading it to OpenStack. Decompression algorithm is chosen by
-               checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+               checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
                Defaults to false. Changing this creates a new Image.
         :param pulumi.Input[str] disk_format: The disk format. Must be one of
                "ami", "ari", "aki", "vhd", "vmdk", "raw", "qcow2", "vdi", "iso".
@@ -1356,7 +1371,7 @@ class Image(pulumi.CustomResource):
         """
         If true, this provider will decompress downloaded
         image before uploading it to OpenStack. Decompression algorithm is chosen by
-        checking "Content-Type" header, supported algorithm are: gzip, bzip2.
+        checking "Content-Type" header, supported algorithm are: gzip, bzip2 and xz.
         Defaults to false. Changing this creates a new Image.
         """
         return pulumi.get(self, "decompress")
@@ -1555,6 +1570,9 @@ class Image(pulumi.CustomResource):
         """
         (**Deprecated** - use `updated_at` instead)
         """
+        warnings.warn("""Use updated_at instead""", DeprecationWarning)
+        pulumi.log.warn("""update_at is deprecated: Use updated_at instead""")
+
         return pulumi.get(self, "update_at")
 
     @property

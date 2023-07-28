@@ -271,6 +271,17 @@ Object.defineProperty(exports, "swauth", {
 });
 
 /**
+ * If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
+ */
+export declare const systemScope: boolean | undefined;
+Object.defineProperty(exports, "systemScope", {
+    get() {
+        return __config.getObject<boolean>("systemScope");
+    },
+    enumerable: true,
+});
+
+/**
  * The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
  */
 export declare const tenantId: string | undefined;
@@ -337,7 +348,7 @@ Object.defineProperty(exports, "userDomainName", {
 });
 
 /**
- * Username to login with.
+ * User ID to login with.
  */
 export declare const userId: string | undefined;
 Object.defineProperty(exports, "userId", {

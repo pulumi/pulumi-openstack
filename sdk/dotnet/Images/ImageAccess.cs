@@ -21,6 +21,7 @@ namespace Pulumi.OpenStack.Images
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -28,14 +29,14 @@ namespace Pulumi.OpenStack.Images
     /// {
     ///     var rancheros = new OpenStack.Images.Image("rancheros", new()
     ///     {
+    ///         ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
     ///         ContainerFormat = "bare",
     ///         DiskFormat = "qcow2",
-    ///         ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
+    ///         Visibility = "shared",
     ///         Properties = 
     ///         {
     ///             { "key", "value" },
     ///         },
-    ///         Visibility = "shared",
     ///     });
     /// 
     ///     var rancherosMember = new OpenStack.Images.ImageAccess("rancherosMember", new()
@@ -53,6 +54,7 @@ namespace Pulumi.OpenStack.Images
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -60,14 +62,14 @@ namespace Pulumi.OpenStack.Images
     /// {
     ///     var rancheros = new OpenStack.Images.Image("rancheros", new()
     ///     {
+    ///         ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
     ///         ContainerFormat = "bare",
     ///         DiskFormat = "qcow2",
-    ///         ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
+    ///         Visibility = "shared",
     ///         Properties = 
     ///         {
     ///             { "key", "value" },
     ///         },
-    ///         Visibility = "shared",
     ///     });
     /// 
     ///     var rancherosMember = new OpenStack.Images.ImageAccess("rancherosMember", new()

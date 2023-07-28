@@ -18,6 +18,7 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -48,6 +49,7 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -68,9 +70,9 @@ namespace Pulumi.OpenStack.Compute
     /// 
     ///     var ai1 = new OpenStack.Compute.InterfaceAttach("ai1", new()
     ///     {
-    ///         FixedIp = "10.0.10.10",
     ///         InstanceId = instance1.Id,
     ///         NetworkId = openstack_networking_port_v2.Network_1.Id,
+    ///         FixedIp = "10.0.10.10",
     ///     });
     /// 
     /// });
@@ -79,6 +81,7 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -91,8 +94,8 @@ namespace Pulumi.OpenStack.Compute
     /// 
     ///     var port1 = new OpenStack.Networking.Port("port1", new()
     ///     {
-    ///         AdminStateUp = true,
     ///         NetworkId = network1.Id,
+    ///         AdminStateUp = true,
     ///     });
     /// 
     ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()

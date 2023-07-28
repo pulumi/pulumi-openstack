@@ -16,6 +16,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -28,17 +29,17 @@ namespace Pulumi.OpenStack.Networking
     /// 
     ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
     ///     {
-    ///         Cidr = "192.168.1.0/24",
-    ///         EnableDhcp = true,
-    ///         IpVersion = 4,
     ///         NetworkId = network1.Id,
+    ///         Cidr = "192.168.1.0/24",
+    ///         IpVersion = 4,
+    ///         EnableDhcp = true,
     ///         NoGateway = true,
     ///     });
     /// 
     ///     var parentPort1 = new OpenStack.Networking.Port("parentPort1", new()
     ///     {
-    ///         AdminStateUp = true,
     ///         NetworkId = network1.Id,
+    ///         AdminStateUp = true,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn = new[]
@@ -49,8 +50,8 @@ namespace Pulumi.OpenStack.Networking
     /// 
     ///     var subport1 = new OpenStack.Networking.Port("subport1", new()
     ///     {
-    ///         AdminStateUp = true,
     ///         NetworkId = network1.Id,
+    ///         AdminStateUp = true,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn = new[]
@@ -76,16 +77,16 @@ namespace Pulumi.OpenStack.Networking
     /// 
     ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
     ///     {
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
     ///         Networks = new[]
     ///         {
     ///             new OpenStack.Compute.Inputs.InstanceNetworkArgs
     ///             {
     ///                 Port = trunk1.PortId,
     ///             },
-    ///         },
-    ///         SecurityGroups = new[]
-    ///         {
-    ///             "default",
     ///         },
     ///     });
     /// 

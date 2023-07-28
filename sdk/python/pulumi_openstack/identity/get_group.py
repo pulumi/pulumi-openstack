@@ -125,11 +125,11 @@ def get_group(domain_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:identity/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult).value
 
     return AwaitableGetGroupResult(
-        description=__ret__.description,
-        domain_id=__ret__.domain_id,
-        id=__ret__.id,
-        name=__ret__.name,
-        region=__ret__.region)
+        description=pulumi.get(__ret__, 'description'),
+        domain_id=pulumi.get(__ret__, 'domain_id'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_group)

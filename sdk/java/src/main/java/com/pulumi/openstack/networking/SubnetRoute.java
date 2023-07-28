@@ -53,15 +53,15 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
+ *             .networkId(network1.id())
  *             .cidr(&#34;192.168.199.0/24&#34;)
  *             .ipVersion(4)
- *             .networkId(network1.id())
  *             .build());
  * 
  *         var subnetRoute1 = new SubnetRoute(&#34;subnetRoute1&#34;, SubnetRouteArgs.builder()        
+ *             .subnetId(subnet1.id())
  *             .destinationCidr(&#34;10.0.1.0/24&#34;)
  *             .nextHop(&#34;192.168.199.254&#34;)
- *             .subnetId(subnet1.id())
  *             .build());
  * 
  *     }

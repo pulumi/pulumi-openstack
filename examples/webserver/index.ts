@@ -4,7 +4,7 @@ import * as os from "@pulumi/openstack";
 // OpenStack installation you're using.
 const instance = new os.compute.Instance("test", {
     flavorName: "s1-2",
-    imageName: "Ubuntu 18.04",
+    imageName: "Ubuntu 22.04",
 
     // Networks are optional if there is only one network. This example assumes there is a network called "Ext-Net".
     //

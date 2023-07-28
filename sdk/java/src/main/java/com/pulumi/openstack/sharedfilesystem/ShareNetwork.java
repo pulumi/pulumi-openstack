@@ -108,13 +108,13 @@ import javax.annotation.Nullable;
  * 
  *         var securityservice1 = new SecurityService(&#34;securityservice1&#34;, SecurityServiceArgs.builder()        
  *             .description(&#34;created by terraform&#34;)
+ *             .type(&#34;active_directory&#34;)
+ *             .server(&#34;192.168.199.10&#34;)
  *             .dnsIp(&#34;192.168.199.10&#34;)
  *             .domain(&#34;example.com&#34;)
  *             .ou(&#34;CN=Computers,DC=example,DC=com&#34;)
- *             .password(&#34;s8cret&#34;)
- *             .server(&#34;192.168.199.10&#34;)
- *             .type(&#34;active_directory&#34;)
  *             .user(&#34;joinDomainUser&#34;)
+ *             .password(&#34;s8cret&#34;)
  *             .build());
  * 
  *         var sharenetwork1 = new ShareNetwork(&#34;sharenetwork1&#34;, ShareNetworkArgs.builder()        
@@ -133,7 +133,7 @@ import javax.annotation.Nullable;
  * This resource can be imported by specifying the ID of the share network
  * 
  * ```sh
- *  $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 &lt;id&gt;
+ *  $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 id
  * ```
  * 
  */

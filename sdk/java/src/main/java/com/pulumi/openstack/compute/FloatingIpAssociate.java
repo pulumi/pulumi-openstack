@@ -46,8 +46,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        
- *             .flavorId(3)
  *             .imageId(&#34;ad091b52-742f-469e-8f3c-fd81cadf0743&#34;)
+ *             .flavorId(3)
  *             .keyPair(&#34;my_key_pair_name&#34;)
  *             .securityGroups(&#34;default&#34;)
  *             .build());
@@ -92,9 +92,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        
- *             .flavorId(3)
  *             .imageId(&#34;ad091b52-742f-469e-8f3c-fd81cadf0743&#34;)
+ *             .flavorId(3)
  *             .keyPair(&#34;my_key_pair_name&#34;)
+ *             .securityGroups(&#34;default&#34;)
  *             .networks(            
  *                 InstanceNetworkArgs.builder()
  *                     .name(&#34;my_network&#34;)
@@ -102,7 +103,6 @@ import javax.annotation.Nullable;
  *                 InstanceNetworkArgs.builder()
  *                     .name(&#34;default&#34;)
  *                     .build())
- *             .securityGroups(&#34;default&#34;)
  *             .build());
  * 
  *         var fip1FloatingIp = new FloatingIp(&#34;fip1FloatingIp&#34;, FloatingIpArgs.builder()        
@@ -110,9 +110,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var fip1FloatingIpAssociate = new FloatingIpAssociate(&#34;fip1FloatingIpAssociate&#34;, FloatingIpAssociateArgs.builder()        
- *             .fixedIp(instance1.networks().applyValue(networks -&gt; networks[1].fixedIpV4()))
  *             .floatingIp(fip1FloatingIp.address())
  *             .instanceId(instance1.id())
+ *             .fixedIp(instance1.networks().applyValue(networks -&gt; networks[1].fixedIpV4()))
  *             .build());
  * 
  *     }
@@ -124,7 +124,7 @@ import javax.annotation.Nullable;
  * This resource can be imported by specifying all three arguments, separated by a forward slash
  * 
  * ```sh
- *  $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 &lt;floating_ip&gt;/&lt;instance_id&gt;/&lt;fixed_ip&gt;
+ *  $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 floating_ip/instance_id/fixed_ip
  * ```
  * 
  */

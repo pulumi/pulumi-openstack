@@ -7,9 +7,21 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a V3 Application Credential resource within OpenStack Keystone.
+//
+// > **Note:** All arguments including the application credential name and secret
+// will be stored in the raw state as plain-text. Read more about sensitive data
+// in state.
+//
+// > **Note:** An Application Credential is created within the authenticated user
+// project scope and is not visible by an admin or other accounts.
+// The Application Credential visibility is similar to
+// `compute.Keypair`.
+//
 // ## Example Usage
 // ### Predefined secret
 //
@@ -182,6 +194,7 @@ func NewApplicationCredential(ctx *pulumi.Context,
 		"secret",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApplicationCredential
 	err := ctx.RegisterResource("openstack:identity/applicationCredential:ApplicationCredential", name, args, &resource, opts...)
 	if err != nil {

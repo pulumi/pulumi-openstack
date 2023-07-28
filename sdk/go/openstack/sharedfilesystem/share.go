@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,9 +53,9 @@ import (
 //			}
 //			_, err = sharedfilesystem.NewShare(ctx, "share1", &sharedfilesystem.ShareArgs{
 //				Description:    pulumi.String("test share description"),
-//				ShareNetworkId: sharenetwork1.ID(),
 //				ShareProto:     pulumi.String("NFS"),
 //				Size:           pulumi.Int(1),
+//				ShareNetworkId: sharenetwork1.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -71,7 +72,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import openstack:sharedfilesystem/share:Share share_1 <id>
+//	$ pulumi import openstack:sharedfilesystem/share:Share share_1 id
 //
 // ```
 type Share struct {
@@ -144,6 +145,7 @@ func NewShare(ctx *pulumi.Context,
 	if args.Size == nil {
 		return nil, errors.New("invalid value for required argument 'Size'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Share
 	err := ctx.RegisterResource("openstack:sharedfilesystem/share:Share", name, args, &resource, opts...)
 	if err != nil {

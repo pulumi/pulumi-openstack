@@ -17,6 +17,7 @@ namespace Pulumi.OpenStack.Dns
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -24,22 +25,22 @@ namespace Pulumi.OpenStack.Dns
     /// {
     ///     var exampleZone = new OpenStack.Dns.Zone("exampleZone", new()
     ///     {
-    ///         Description = "An example zone",
     ///         Email = "jdoe@example.com",
+    ///         Description = "An example zone",
     ///         Ttl = 3000,
     ///         Type = "PRIMARY",
     ///     });
     /// 
     ///     var request1 = new OpenStack.Dns.TransferRequest("request1", new()
     ///     {
-    ///         Description = "a transfer accept",
     ///         ZoneId = exampleZone.Id,
+    ///         Description = "a transfer accept",
     ///     });
     /// 
     ///     var accept1 = new OpenStack.Dns.TransferAccept("accept1", new()
     ///     {
-    ///         Key = request1.Key,
     ///         ZoneTransferRequestId = request1.Id,
+    ///         Key = request1.Key,
     ///     });
     /// 
     /// });
@@ -50,7 +51,7 @@ namespace Pulumi.OpenStack.Dns
     /// This resource can be imported by specifying the transferAccept ID
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 &lt;accept_id&gt;
+    ///  $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 accept_id
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:dns/transferAccept:TransferAccept")]

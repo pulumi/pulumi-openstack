@@ -19,13 +19,13 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const rancheros = new openstack.images.Image("rancheros", {
+ *     imageSourceUrl: "https://releases.rancher.com/os/latest/rancheros-openstack.img",
  *     containerFormat: "bare",
  *     diskFormat: "qcow2",
- *     imageSourceUrl: "https://releases.rancher.com/os/latest/rancheros-openstack.img",
+ *     visibility: "shared",
  *     properties: {
  *         key: "value",
  *     },
- *     visibility: "shared",
  * });
  * const rancherosMember = new openstack.images.ImageAccess("rancherosMember", {
  *     imageId: rancheros.id,
@@ -42,13 +42,13 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const rancheros = new openstack.images.Image("rancheros", {
+ *     imageSourceUrl: "https://releases.rancher.com/os/latest/rancheros-openstack.img",
  *     containerFormat: "bare",
  *     diskFormat: "qcow2",
- *     imageSourceUrl: "https://releases.rancher.com/os/latest/rancheros-openstack.img",
+ *     visibility: "shared",
  *     properties: {
  *         key: "value",
  *     },
- *     visibility: "shared",
  * });
  * const rancherosMember = new openstack.images.ImageAccess("rancherosMember", {
  *     imageId: rancheros.id,

@@ -64,16 +64,16 @@ import javax.annotation.Nullable;
  * 
  *         var share1 = new Share(&#34;share1&#34;, ShareArgs.builder()        
  *             .description(&#34;test share description&#34;)
- *             .shareNetworkId(sharenetwork1.id())
  *             .shareProto(&#34;NFS&#34;)
  *             .size(1)
+ *             .shareNetworkId(sharenetwork1.id())
  *             .build());
  * 
  *         var shareAccess1 = new ShareAccess(&#34;shareAccess1&#34;, ShareAccessArgs.builder()        
- *             .accessLevel(&#34;rw&#34;)
- *             .accessTo(&#34;192.168.199.10&#34;)
- *             .accessType(&#34;ip&#34;)
  *             .shareId(share1.id())
+ *             .accessType(&#34;ip&#34;)
+ *             .accessTo(&#34;192.168.199.10&#34;)
+ *             .accessLevel(&#34;rw&#34;)
  *             .build());
  * 
  *     }
@@ -123,13 +123,13 @@ import javax.annotation.Nullable;
  * 
  *         var securityservice1 = new SecurityService(&#34;securityservice1&#34;, SecurityServiceArgs.builder()        
  *             .description(&#34;created by terraform&#34;)
+ *             .type(&#34;active_directory&#34;)
+ *             .server(&#34;192.168.199.10&#34;)
  *             .dnsIp(&#34;192.168.199.10&#34;)
  *             .domain(&#34;example.com&#34;)
  *             .ou(&#34;CN=Computers,DC=example,DC=com&#34;)
- *             .password(&#34;s8cret&#34;)
- *             .server(&#34;192.168.199.10&#34;)
- *             .type(&#34;active_directory&#34;)
  *             .user(&#34;joinDomainUser&#34;)
+ *             .password(&#34;s8cret&#34;)
  *             .build());
  * 
  *         var sharenetwork1 = new ShareNetwork(&#34;sharenetwork1&#34;, ShareNetworkArgs.builder()        
@@ -140,23 +140,23 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var share1 = new Share(&#34;share1&#34;, ShareArgs.builder()        
- *             .shareNetworkId(sharenetwork1.id())
  *             .shareProto(&#34;CIFS&#34;)
  *             .size(1)
+ *             .shareNetworkId(sharenetwork1.id())
  *             .build());
  * 
  *         var shareAccess1 = new ShareAccess(&#34;shareAccess1&#34;, ShareAccessArgs.builder()        
- *             .accessLevel(&#34;ro&#34;)
- *             .accessTo(&#34;windows&#34;)
- *             .accessType(&#34;user&#34;)
  *             .shareId(share1.id())
+ *             .accessType(&#34;user&#34;)
+ *             .accessTo(&#34;windows&#34;)
+ *             .accessLevel(&#34;ro&#34;)
  *             .build());
  * 
  *         var shareAccess2 = new ShareAccess(&#34;shareAccess2&#34;, ShareAccessArgs.builder()        
- *             .accessLevel(&#34;rw&#34;)
- *             .accessTo(&#34;linux&#34;)
- *             .accessType(&#34;user&#34;)
  *             .shareId(share1.id())
+ *             .accessType(&#34;user&#34;)
+ *             .accessTo(&#34;linux&#34;)
+ *             .accessLevel(&#34;rw&#34;)
  *             .build());
  * 
  *         ctx.export(&#34;exportLocations&#34;, share1.exportLocations());
@@ -169,7 +169,7 @@ import javax.annotation.Nullable;
  * This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.
  * 
  * ```sh
- *  $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 &lt;share id&gt;/&lt;share access id&gt;
+ *  $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 share_id/share_access_id
  * ```
  * 
  */
@@ -268,6 +268,20 @@ public class ShareAccess extends com.pulumi.resources.CustomResource {
      */
     public Output<String> shareId() {
         return this.shareId;
+    }
+    /**
+     * The share access state.
+     * 
+     */
+    @Export(name="state", type=String.class, parameters={})
+    private Output<String> state;
+
+    /**
+     * @return The share access state.
+     * 
+     */
+    public Output<String> state() {
+        return this.state;
     }
 
     /**

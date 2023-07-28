@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,8 +76,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := blockstorage.NewVolume(ctx, "volume1", &blockstorage.VolumeArgs{
-//				Multiattach: pulumi.Bool(true),
 //				Size:        pulumi.Int(1),
+//				Multiattach: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -99,16 +100,16 @@ import (
 //			}
 //			_, err = compute.NewVolumeAttach(ctx, "va1", &compute.VolumeAttachArgs{
 //				InstanceId:  instance1.ID(),
-//				Multiattach: pulumi.Bool(true),
 //				VolumeId:    pulumi.Any(openstack_blockstorage_volume_v2.Volume_1.Id),
+//				Multiattach: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewVolumeAttach(ctx, "va2", &compute.VolumeAttachArgs{
 //				InstanceId:  instance2.ID(),
-//				Multiattach: pulumi.Bool(true),
 //				VolumeId:    pulumi.Any(openstack_blockstorage_volume_v2.Volume_1.Id),
+//				Multiattach: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				pulumi.Resource("openstack_compute_volume_attach_v2.va_1"),
 //			}))
@@ -169,6 +170,7 @@ func NewVolumeAttach(ctx *pulumi.Context,
 	if args.VolumeId == nil {
 		return nil, errors.New("invalid value for required argument 'VolumeId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VolumeAttach
 	err := ctx.RegisterResource("openstack:compute/volumeAttach:VolumeAttach", name, args, &resource, opts...)
 	if err != nil {

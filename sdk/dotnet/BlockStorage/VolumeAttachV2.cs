@@ -10,10 +10,28 @@ using Pulumi.Serialization;
 namespace Pulumi.OpenStack.BlockStorage
 {
     /// <summary>
+    /// &gt; **Note:** This resource usually requires admin privileges.
+    /// 
+    /// &gt; **Note:** This resource does not actually attach a volume to an instance.
+    /// Please use the `openstack.compute.VolumeAttach` resource for that.
+    /// 
+    /// &gt; **Note:** All arguments including the `data` computed attribute will be
+    /// stored in the raw state as plain-text. Read more about sensitive data in
+    /// state.
+    /// 
+    /// Creates a general purpose attachment connection to a Block
+    /// Storage volume using the OpenStack Block Storage (Cinder) v2 API.
+    /// 
+    /// Depending on your Block Storage service configuration, this
+    /// resource can assist in attaching a volume to a non-OpenStack resource
+    /// such as a bare-metal server or a remote virtual machine in a
+    /// different cloud provider.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -26,13 +44,13 @@ namespace Pulumi.OpenStack.BlockStorage
     /// 
     ///     var va1 = new OpenStack.BlockStorage.VolumeAttachV2("va1", new()
     ///     {
+    ///         VolumeId = volume1.Id,
     ///         Device = "auto",
     ///         HostName = "devstack",
-    ///         Initiator = "iqn.1993-08.org.debian:01:e9861fb1859",
     ///         IpAddress = "192.168.255.10",
+    ///         Initiator = "iqn.1993-08.org.debian:01:e9861fb1859",
     ///         OsType = "linux2",
     ///         Platform = "x86_64",
-    ///         VolumeId = volume1.Id,
     ///     });
     /// 
     /// });

@@ -21,7 +21,7 @@ class GetKeypairResult:
     """
     A collection of values returned by getKeypair.
     """
-    def __init__(__self__, fingerprint=None, id=None, name=None, public_key=None, region=None):
+    def __init__(__self__, fingerprint=None, id=None, name=None, public_key=None, region=None, user_id=None):
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         pulumi.set(__self__, "fingerprint", fingerprint)
@@ -37,6 +37,9 @@ class GetKeypairResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if user_id and not isinstance(user_id, str):
+            raise TypeError("Expected argument 'user_id' to be a str")
+        pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter
@@ -78,6 +81,14 @@ class GetKeypairResult:
         """
         return pulumi.get(self, "region")
 
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
+        return pulumi.get(self, "user_id")
+
 
 class AwaitableGetKeypairResult(GetKeypairResult):
     # pylint: disable=using-constant-test
@@ -89,11 +100,13 @@ class AwaitableGetKeypairResult(GetKeypairResult):
             id=self.id,
             name=self.name,
             public_key=self.public_key,
-            region=self.region)
+            region=self.region,
+            user_id=self.user_id)
 
 
 def get_keypair(name: Optional[str] = None,
                 region: Optional[str] = None,
+                user_id: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeypairResult:
     """
     Use this data source to get the ID and public key of an OpenStack keypair.
@@ -111,24 +124,30 @@ def get_keypair(name: Optional[str] = None,
     :param str name: The unique name of the keypair.
     :param str region: The region in which to obtain the V2 Compute client.
            If omitted, the `region` argument of the provider is used.
+    :param str user_id: The user id of the owner of the key pair.
+           This parameter can be specified only if the provider is configured to use
+           the credentials of an OpenStack administrator.
     """
     __args__ = dict()
     __args__['name'] = name
     __args__['region'] = region
+    __args__['userId'] = user_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('openstack:compute/getKeypair:getKeypair', __args__, opts=opts, typ=GetKeypairResult).value
 
     return AwaitableGetKeypairResult(
-        fingerprint=__ret__.fingerprint,
-        id=__ret__.id,
-        name=__ret__.name,
-        public_key=__ret__.public_key,
-        region=__ret__.region)
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        public_key=pulumi.get(__ret__, 'public_key'),
+        region=pulumi.get(__ret__, 'region'),
+        user_id=pulumi.get(__ret__, 'user_id'))
 
 
 @_utilities.lift_output_func(get_keypair)
 def get_keypair_output(name: Optional[pulumi.Input[str]] = None,
                        region: Optional[pulumi.Input[Optional[str]]] = None,
+                       user_id: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeypairResult]:
     """
     Use this data source to get the ID and public key of an OpenStack keypair.
@@ -146,5 +165,8 @@ def get_keypair_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: The unique name of the keypair.
     :param str region: The region in which to obtain the V2 Compute client.
            If omitted, the `region` argument of the provider is used.
+    :param str user_id: The user id of the owner of the key pair.
+           This parameter can be specified only if the provider is configured to use
+           the credentials of an OpenStack administrator.
     """
     ...

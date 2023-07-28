@@ -43,13 +43,13 @@ import * as utilities from "../utilities";
  * });
  * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice1", {
  *     description: "created by terraform",
+ *     type: "active_directory",
+ *     server: "192.168.199.10",
  *     dnsIp: "192.168.199.10",
  *     domain: "example.com",
  *     ou: "CN=Computers,DC=example,DC=com",
- *     password: "s8cret",
- *     server: "192.168.199.10",
- *     type: "active_directory",
  *     user: "joinDomainUser",
+ *     password: "s8cret",
  * });
  * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork1", {
  *     description: "test share network with security services",
@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  * This resource can be imported by specifying the ID of the share network
  *
  * ```sh
- *  $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 <id>
+ *  $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 id
  * ```
  */
 export class ShareNetwork extends pulumi.CustomResource {

@@ -60,6 +60,11 @@ export type GroupV3 = import("./groupV3").GroupV3;
 export const GroupV3: typeof import("./groupV3").GroupV3 = null as any;
 utilities.lazyLoad(exports, ["GroupV3"], () => require("./groupV3"));
 
+export { InheritRoleAssignmentArgs, InheritRoleAssignmentState } from "./inheritRoleAssignment";
+export type InheritRoleAssignment = import("./inheritRoleAssignment").InheritRoleAssignment;
+export const InheritRoleAssignment: typeof import("./inheritRoleAssignment").InheritRoleAssignment = null as any;
+utilities.lazyLoad(exports, ["InheritRoleAssignment"], () => require("./inheritRoleAssignment"));
+
 export { ProjectArgs, ProjectState } from "./project";
 export type Project = import("./project").Project;
 export const Project: typeof import("./project").Project = null as any;
@@ -103,6 +108,8 @@ const _module = {
                 return new EndpointV3(name, <any>undefined, { urn })
             case "openstack:identity/groupV3:GroupV3":
                 return new GroupV3(name, <any>undefined, { urn })
+            case "openstack:identity/inheritRoleAssignment:InheritRoleAssignment":
+                return new InheritRoleAssignment(name, <any>undefined, { urn })
             case "openstack:identity/project:Project":
                 return new Project(name, <any>undefined, { urn })
             case "openstack:identity/role:Role":
@@ -124,6 +131,7 @@ pulumi.runtime.registerResourceModule("openstack", "identity/applicationCredenti
 pulumi.runtime.registerResourceModule("openstack", "identity/ec2CredentialV3", _module)
 pulumi.runtime.registerResourceModule("openstack", "identity/endpointV3", _module)
 pulumi.runtime.registerResourceModule("openstack", "identity/groupV3", _module)
+pulumi.runtime.registerResourceModule("openstack", "identity/inheritRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("openstack", "identity/project", _module)
 pulumi.runtime.registerResourceModule("openstack", "identity/role", _module)
 pulumi.runtime.registerResourceModule("openstack", "identity/roleAssignment", _module)

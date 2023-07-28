@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Manages a V3 EC2 Credential resource within OpenStack Keystone.
+ * EC2 credentials in OpenStack are used to access S3 compatible Swift/RadosGW
+ * endpoints or to authenticate against Keystone.
+ *
+ * > **Note:** All arguments including the EC2 credential access key and secret
+ * will be stored in the raw state as plain-text. Read more about sensitive data
+ * in state.
+ *
  * ## Example Usage
  * ### EC2 credential in current project scope
  *

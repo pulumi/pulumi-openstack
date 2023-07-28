@@ -17,21 +17,21 @@ import * as utilities from "../utilities";
  *
  * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
  * const subnet1 = new openstack.networking.Subnet("subnet1", {
- *     cidr: "192.168.1.0/24",
- *     enableDhcp: true,
- *     ipVersion: 4,
  *     networkId: network1.id,
+ *     cidr: "192.168.1.0/24",
+ *     ipVersion: 4,
+ *     enableDhcp: true,
  *     noGateway: true,
  * });
  * const parentPort1 = new openstack.networking.Port("parentPort1", {
- *     adminStateUp: true,
  *     networkId: network1.id,
+ *     adminStateUp: true,
  * }, {
  *     dependsOn: ["openstack_networking_subnet_v2.subnet_1"],
  * });
  * const subport1 = new openstack.networking.Port("subport1", {
- *     adminStateUp: true,
  *     networkId: network1.id,
+ *     adminStateUp: true,
  * }, {
  *     dependsOn: ["openstack_networking_subnet_v2.subnet_1"],
  * });
@@ -45,10 +45,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const instance1 = new openstack.compute.Instance("instance1", {
+ *     securityGroups: ["default"],
  *     networks: [{
  *         port: trunk1.portId,
  *     }],
- *     securityGroups: ["default"],
  * });
  * ```
  */

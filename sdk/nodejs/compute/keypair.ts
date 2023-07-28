@@ -129,6 +129,8 @@ export class Keypair extends pulumi.CustomResource {
             resourceInputs["privateKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["privateKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Keypair.__pulumiType, name, resourceInputs, opts);
     }
 }

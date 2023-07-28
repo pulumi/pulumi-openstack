@@ -450,7 +450,7 @@ class SecurityService(pulumi.CustomResource):
         This resource can be imported by specifying the ID of the security service
 
         ```sh
-         $ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 <id>
+         $ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 id
         ```
 
         :param str resource_name: The name of the resource.
@@ -517,7 +517,7 @@ class SecurityService(pulumi.CustomResource):
         This resource can be imported by specifying the ID of the security service
 
         ```sh
-         $ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 <id>
+         $ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 id
         ```
 
         :param str resource_name: The name of the resource.

@@ -21,26 +21,26 @@ import * as utilities from "../utilities";
  * });
  * const loadbalancer1 = new openstack.loadbalancer.LoadBalancer("loadbalancer1", {vipSubnetId: subnet1.id});
  * const listener1 = new openstack.loadbalancer.Listener("listener1", {
- *     loadbalancerId: loadbalancer1.id,
  *     protocol: "HTTP",
  *     protocolPort: 8080,
+ *     loadbalancerId: loadbalancer1.id,
  * });
  * const pool1 = new openstack.loadbalancer.Pool("pool1", {
+ *     protocol: "HTTP",
  *     lbMethod: "ROUND_ROBIN",
  *     loadbalancerId: loadbalancer1.id,
- *     protocol: "HTTP",
  * });
  * const l7policy1 = new openstack.loadbalancer.L7PolicyV2("l7policy1", {
  *     action: "REDIRECT_TO_URL",
  *     description: "test description",
- *     listenerId: listener1.id,
  *     position: 1,
+ *     listenerId: listener1.id,
  *     redirectUrl: "http://www.example.com",
  * });
  * const l7rule1 = new openstack.loadbalancer.L7RuleV2("l7rule1", {
- *     compareType: "EQUAL_TO",
  *     l7policyId: l7policy1.id,
  *     type: "PATH",
+ *     compareType: "EQUAL_TO",
  *     value: "/api",
  * });
  * ```

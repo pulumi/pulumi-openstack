@@ -17,9 +17,9 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const rancheros = openstack.images.getImage({
- *     memberStatus: "all",
  *     name: "RancherOS",
  *     visibility: "shared",
+ *     memberStatus: "all",
  * });
  * const rancherosMember = new openstack.images.ImageAccessAccept("rancherosMember", {
  *     imageId: rancheros.then(rancheros => rancheros.id),

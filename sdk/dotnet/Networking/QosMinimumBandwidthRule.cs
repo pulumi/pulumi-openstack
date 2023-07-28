@@ -17,6 +17,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
     /// 
@@ -29,8 +30,8 @@ namespace Pulumi.OpenStack.Networking
     /// 
     ///     var minimumBandwidthRule1 = new OpenStack.Networking.QosMinimumBandwidthRule("minimumBandwidthRule1", new()
     ///     {
-    ///         MinKbps = 200,
     ///         QosPolicyId = qosPolicy1.Id,
+    ///         MinKbps = 200,
     ///     });
     /// 
     /// });

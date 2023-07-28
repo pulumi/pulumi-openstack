@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,17 +50,17 @@ import (
 //				return err
 //			}
 //			listener1, err := loadbalancer.NewListener(ctx, "listener1", &loadbalancer.ListenerArgs{
-//				LoadbalancerId: loadbalancer1.ID(),
 //				Protocol:       pulumi.String("HTTP"),
 //				ProtocolPort:   pulumi.Int(8080),
+//				LoadbalancerId: loadbalancer1.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = loadbalancer.NewPool(ctx, "pool1", &loadbalancer.PoolArgs{
+//				Protocol:       pulumi.String("HTTP"),
 //				LbMethod:       pulumi.String("ROUND_ROBIN"),
 //				LoadbalancerId: loadbalancer1.ID(),
-//				Protocol:       pulumi.String("HTTP"),
 //			})
 //			if err != nil {
 //				return err
@@ -67,17 +68,17 @@ import (
 //			l7policy1, err := loadbalancer.NewL7PolicyV2(ctx, "l7policy1", &loadbalancer.L7PolicyV2Args{
 //				Action:      pulumi.String("REDIRECT_TO_URL"),
 //				Description: pulumi.String("test description"),
-//				ListenerId:  listener1.ID(),
 //				Position:    pulumi.Int(1),
+//				ListenerId:  listener1.ID(),
 //				RedirectUrl: pulumi.String("http://www.example.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = loadbalancer.NewL7RuleV2(ctx, "l7rule1", &loadbalancer.L7RuleV2Args{
-//				CompareType: pulumi.String("EQUAL_TO"),
 //				L7policyId:  l7policy1.ID(),
 //				Type:        pulumi.String("PATH"),
+//				CompareType: pulumi.String("EQUAL_TO"),
 //				Value:       pulumi.String("/api"),
 //			})
 //			if err != nil {
@@ -154,6 +155,7 @@ func NewL7RuleV2(ctx *pulumi.Context,
 	if args.Value == nil {
 		return nil, errors.New("invalid value for required argument 'Value'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource L7RuleV2
 	err := ctx.RegisterResource("openstack:loadbalancer/l7RuleV2:L7RuleV2", name, args, &resource, opts...)
 	if err != nil {

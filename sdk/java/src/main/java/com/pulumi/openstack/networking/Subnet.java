@@ -54,8 +54,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
- *             .cidr(&#34;192.168.199.0/24&#34;)
  *             .networkId(network1.id())
+ *             .cidr(&#34;192.168.199.0/24&#34;)
  *             .build());
  * 
  *     }

@@ -98,6 +98,10 @@ export interface GetClusterResult {
      */
     readonly keypair: string;
     /**
+     * The Kubernetes cluster's credentials
+     */
+    readonly kubeconfig: {[key: string]: string};
+    /**
      * The list of key value pairs representing additional properties of
      * the cluster.
      */

@@ -310,14 +310,14 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.userDomainName);
     }
     /**
-     * Username to login with.
+     * User ID to login with.
      * 
      */
     @Export(name="userId", type=String.class, parameters={})
     private Output</* @Nullable */ String> userId;
 
     /**
-     * @return Username to login with.
+     * @return User ID to login with.
      * 
      */
     public Output<Optional<String>> userId() {

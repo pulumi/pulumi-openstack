@@ -285,8 +285,8 @@ class EndpointV3(pulumi.CustomResource):
 
         service1 = openstack.identity.ServiceV3("service1", type="my-service-type")
         endpoint1 = openstack.identity.EndpointV3("endpoint1",
-            endpoint_region=service1.region,
             service_id=service1.id,
+            endpoint_region=service1.region,
             url="http://my-endpoint")
         ```
 
@@ -329,8 +329,8 @@ class EndpointV3(pulumi.CustomResource):
 
         service1 = openstack.identity.ServiceV3("service1", type="my-service-type")
         endpoint1 = openstack.identity.EndpointV3("endpoint1",
-            endpoint_region=service1.region,
             service_id=service1.id,
+            endpoint_region=service1.region,
             url="http://my-endpoint")
         ```
 

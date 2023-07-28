@@ -161,8 +161,8 @@ class UserMembershipV3(pulumi.CustomResource):
         group1 = openstack.identity.GroupV3("group1", description="group 1")
         role1 = openstack.identity.Role("role1")
         user_membership1 = openstack.identity.UserMembershipV3("userMembership1",
-            group_id=group1.id,
-            user_id=user1.id)
+            user_id=user1.id,
+            group_id=group1.id)
         role_assignment1 = openstack.identity.RoleAssignment("roleAssignment1",
             group_id=group1.id,
             project_id=project1.id,
@@ -174,7 +174,7 @@ class UserMembershipV3(pulumi.CustomResource):
         This resource can be imported by specifying all two arguments, separated by a forward slash
 
         ```sh
-         $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 <user_id>/<group_id>
+         $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -211,8 +211,8 @@ class UserMembershipV3(pulumi.CustomResource):
         group1 = openstack.identity.GroupV3("group1", description="group 1")
         role1 = openstack.identity.Role("role1")
         user_membership1 = openstack.identity.UserMembershipV3("userMembership1",
-            group_id=group1.id,
-            user_id=user1.id)
+            user_id=user1.id,
+            group_id=group1.id)
         role_assignment1 = openstack.identity.RoleAssignment("roleAssignment1",
             group_id=group1.id,
             project_id=project1.id,
@@ -224,7 +224,7 @@ class UserMembershipV3(pulumi.CustomResource):
         This resource can be imported by specifying all two arguments, separated by a forward slash
 
         ```sh
-         $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 <user_id>/<group_id>
+         $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
         ```
 
         :param str resource_name: The name of the resource.

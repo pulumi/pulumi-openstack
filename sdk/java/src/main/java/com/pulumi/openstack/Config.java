@@ -182,6 +182,13 @@ public final class Config {
         return Codegen.booleanProp("swauth").config(config).env("OS_SWAUTH").get();
     }
 /**
+ * If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
+ * 
+ */
+    public Optional<Boolean> systemScope() {
+        return Codegen.booleanProp("systemScope").config(config).get();
+    }
+/**
  * The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
  * 
  */
@@ -224,7 +231,7 @@ public final class Config {
         return Codegen.stringProp("userDomainName").config(config).get();
     }
 /**
- * Username to login with.
+ * User ID to login with.
  * 
  */
     public Optional<String> userId() {

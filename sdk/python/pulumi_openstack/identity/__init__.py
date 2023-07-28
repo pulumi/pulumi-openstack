@@ -16,6 +16,7 @@ from .get_role import *
 from .get_service import *
 from .get_user import *
 from .group_v3 import *
+from .inherit_role_assignment import *
 from .project import *
 from .role import *
 from .role_assignment import *

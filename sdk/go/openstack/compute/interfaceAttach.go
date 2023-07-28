@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -86,9 +87,9 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewInterfaceAttach(ctx, "ai1", &compute.InterfaceAttachArgs{
-//				FixedIp:    pulumi.String("10.0.10.10"),
 //				InstanceId: instance1.ID(),
 //				NetworkId:  pulumi.Any(openstack_networking_port_v2.Network_1.Id),
+//				FixedIp:    pulumi.String("10.0.10.10"),
 //			})
 //			if err != nil {
 //				return err
@@ -120,8 +121,8 @@ import (
 //				return err
 //			}
 //			port1, err := networking.NewPort(ctx, "port1", &networking.PortArgs{
-//				AdminStateUp: pulumi.Bool(true),
 //				NetworkId:    network1.ID(),
+//				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -186,6 +187,7 @@ func NewInterfaceAttach(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InterfaceAttach
 	err := ctx.RegisterResource("openstack:compute/interfaceAttach:InterfaceAttach", name, args, &resource, opts...)
 	if err != nil {

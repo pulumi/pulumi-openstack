@@ -142,7 +142,7 @@ namespace Pulumi.OpenStack
         public Output<string?> UserDomainName { get; private set; } = null!;
 
         /// <summary>
-        /// Username to login with.
+        /// User ID to login with.
         /// </summary>
         [Output("userId")]
         public Output<string?> UserId { get; private set; } = null!;
@@ -345,6 +345,12 @@ namespace Pulumi.OpenStack
         public Input<bool>? Swauth { get; set; }
 
         /// <summary>
+        /// If set to `true`, system scoped authorization will be enabled. Defaults to `false` (Identity v3).
+        /// </summary>
+        [Input("systemScope", json: true)]
+        public Input<bool>? SystemScope { get; set; }
+
+        /// <summary>
         /// The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
         /// </summary>
         [Input("tenantId")]
@@ -381,7 +387,7 @@ namespace Pulumi.OpenStack
         public Input<string>? UserDomainName { get; set; }
 
         /// <summary>
-        /// Username to login with.
+        /// User ID to login with.
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }

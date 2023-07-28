@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupKeypair(ctx *pulumi.Context, args *LookupKeypairArgs, opts ...pulumi.InvokeOption) (*LookupKeypairResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKeypairResult
 	err := ctx.Invoke("openstack:compute/getKeypair:getKeypair", args, &rv, opts...)
 	if err != nil {
@@ -53,6 +55,10 @@ type LookupKeypairArgs struct {
 	// The region in which to obtain the V2 Compute client.
 	// If omitted, the `region` argument of the provider is used.
 	Region *string `pulumi:"region"`
+	// The user id of the owner of the key pair.
+	// This parameter can be specified only if the provider is configured to use
+	// the credentials of an OpenStack administrator.
+	UserId *string `pulumi:"userId"`
 }
 
 // A collection of values returned by getKeypair.
@@ -67,6 +73,8 @@ type LookupKeypairResult struct {
 	PublicKey string `pulumi:"publicKey"`
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
+	// See Argument Reference above.
+	UserId string `pulumi:"userId"`
 }
 
 func LookupKeypairOutput(ctx *pulumi.Context, args LookupKeypairOutputArgs, opts ...pulumi.InvokeOption) LookupKeypairResultOutput {
@@ -89,6 +97,10 @@ type LookupKeypairOutputArgs struct {
 	// The region in which to obtain the V2 Compute client.
 	// If omitted, the `region` argument of the provider is used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The user id of the owner of the key pair.
+	// This parameter can be specified only if the provider is configured to use
+	// the credentials of an OpenStack administrator.
+	UserId pulumi.StringPtrInput `pulumi:"userId"`
 }
 
 func (LookupKeypairOutputArgs) ElementType() reflect.Type {
@@ -133,6 +145,11 @@ func (o LookupKeypairResultOutput) PublicKey() pulumi.StringOutput {
 // See Argument Reference above.
 func (o LookupKeypairResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeypairResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// See Argument Reference above.
+func (o LookupKeypairResultOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeypairResult) string { return v.UserId }).(pulumi.StringOutput)
 }
 
 func init() {

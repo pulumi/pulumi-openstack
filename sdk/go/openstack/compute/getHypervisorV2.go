@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func GetHypervisorV2(ctx *pulumi.Context, args *GetHypervisorV2Args, opts ...pulumi.InvokeOption) (*GetHypervisorV2Result, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHypervisorV2Result
 	err := ctx.Invoke("openstack:compute/getHypervisorV2:getHypervisorV2", args, &rv, opts...)
 	if err != nil {
