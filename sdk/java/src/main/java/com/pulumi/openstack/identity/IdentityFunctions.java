@@ -66,6 +66,37 @@ public final class IdentityFunctions {
      * 
      * To find the the public object storage endpoint for &#34;region1&#34; as listed in the
      * service catalog:
+     * ### In a combination with an http data source provider
+     * 
+     * See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scope = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()
+     *             .name(&#34;my_scope&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAuthScopeResult> getAuthScope(GetAuthScopeArgs args) {
@@ -105,6 +136,37 @@ public final class IdentityFunctions {
      * 
      * To find the the public object storage endpoint for &#34;region1&#34; as listed in the
      * service catalog:
+     * ### In a combination with an http data source provider
+     * 
+     * See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scope = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()
+     *             .name(&#34;my_scope&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAuthScopeResult> getAuthScopePlain(GetAuthScopePlainArgs args) {
@@ -144,6 +206,37 @@ public final class IdentityFunctions {
      * 
      * To find the the public object storage endpoint for &#34;region1&#34; as listed in the
      * service catalog:
+     * ### In a combination with an http data source provider
+     * 
+     * See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scope = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()
+     *             .name(&#34;my_scope&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAuthScopeResult> getAuthScope(GetAuthScopeArgs args, InvokeOptions options) {
@@ -183,6 +276,37 @@ public final class IdentityFunctions {
      * 
      * To find the the public object storage endpoint for &#34;region1&#34; as listed in the
      * service catalog:
+     * ### In a combination with an http data source provider
+     * 
+     * See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.openstack.identity.IdentityFunctions;
+     * import com.pulumi.openstack.identity.inputs.GetAuthScopeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var scope = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()
+     *             .name(&#34;my_scope&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAuthScopeResult> getAuthScopePlain(GetAuthScopePlainArgs args, InvokeOptions options) {

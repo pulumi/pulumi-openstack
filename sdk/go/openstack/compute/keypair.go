@@ -105,6 +105,10 @@ func NewKeypair(ctx *pulumi.Context,
 		args = &KeypairArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"privateKey",
+	})
+	opts = append(opts, secrets)
 	var resource Keypair
 	err := ctx.RegisterResource("openstack:compute/keypair:Keypair", name, args, &resource, opts...)
 	if err != nil {
