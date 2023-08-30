@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-openstack/provider/v3
 
-go 1.19
+go 1.20
 
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.57.0
