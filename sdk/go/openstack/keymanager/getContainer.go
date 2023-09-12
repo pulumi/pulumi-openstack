@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the ID of an available Barbican container.
@@ -129,6 +130,12 @@ func (o GetContainerResultOutput) ToGetContainerResultOutput() GetContainerResul
 
 func (o GetContainerResultOutput) ToGetContainerResultOutputWithContext(ctx context.Context) GetContainerResultOutput {
 	return o
+}
+
+func (o GetContainerResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerResult] {
+	return pulumix.Output[GetContainerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The list of ACLs assigned to a container. The `read` structure is

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get a list of Shared File System availability zones
@@ -101,6 +102,12 @@ func (o GetAvailbilityZonesResultOutput) ToGetAvailbilityZonesResultOutput() Get
 
 func (o GetAvailbilityZonesResultOutput) ToGetAvailbilityZonesResultOutputWithContext(ctx context.Context) GetAvailbilityZonesResultOutput {
 	return o
+}
+
+func (o GetAvailbilityZonesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAvailbilityZonesResult] {
+	return pulumix.Output[GetAvailbilityZonesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

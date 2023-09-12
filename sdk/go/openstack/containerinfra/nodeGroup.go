@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V1 Magnum node group resource within OpenStack.
@@ -364,6 +365,12 @@ func (i *NodeGroup) ToNodeGroupOutputWithContext(ctx context.Context) NodeGroupO
 	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupOutput)
 }
 
+func (i *NodeGroup) ToOutput(ctx context.Context) pulumix.Output[*NodeGroup] {
+	return pulumix.Output[*NodeGroup]{
+		OutputState: i.ToNodeGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NodeGroupArrayInput is an input type that accepts NodeGroupArray and NodeGroupArrayOutput values.
 // You can construct a concrete instance of `NodeGroupArrayInput` via:
 //
@@ -387,6 +394,12 @@ func (i NodeGroupArray) ToNodeGroupArrayOutput() NodeGroupArrayOutput {
 
 func (i NodeGroupArray) ToNodeGroupArrayOutputWithContext(ctx context.Context) NodeGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupArrayOutput)
+}
+
+func (i NodeGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*NodeGroup] {
+	return pulumix.Output[[]*NodeGroup]{
+		OutputState: i.ToNodeGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NodeGroupMapInput is an input type that accepts NodeGroupMap and NodeGroupMapOutput values.
@@ -414,6 +427,12 @@ func (i NodeGroupMap) ToNodeGroupMapOutputWithContext(ctx context.Context) NodeG
 	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupMapOutput)
 }
 
+func (i NodeGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NodeGroup] {
+	return pulumix.Output[map[string]*NodeGroup]{
+		OutputState: i.ToNodeGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NodeGroupOutput struct{ *pulumi.OutputState }
 
 func (NodeGroupOutput) ElementType() reflect.Type {
@@ -426,6 +445,12 @@ func (o NodeGroupOutput) ToNodeGroupOutput() NodeGroupOutput {
 
 func (o NodeGroupOutput) ToNodeGroupOutputWithContext(ctx context.Context) NodeGroupOutput {
 	return o
+}
+
+func (o NodeGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeGroup] {
+	return pulumix.Output[*NodeGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The UUID of the V1 Container Infra cluster.
@@ -533,6 +558,12 @@ func (o NodeGroupArrayOutput) ToNodeGroupArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o NodeGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NodeGroup] {
+	return pulumix.Output[[]*NodeGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NodeGroupArrayOutput) Index(i pulumi.IntInput) NodeGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NodeGroup {
 		return vs[0].([]*NodeGroup)[vs[1].(int)]
@@ -551,6 +582,12 @@ func (o NodeGroupMapOutput) ToNodeGroupMapOutput() NodeGroupMapOutput {
 
 func (o NodeGroupMapOutput) ToNodeGroupMapOutputWithContext(ctx context.Context) NodeGroupMapOutput {
 	return o
+}
+
+func (o NodeGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NodeGroup] {
+	return pulumix.Output[map[string]*NodeGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeGroupMapOutput) MapIndex(k pulumi.StringInput) NodeGroupOutput {

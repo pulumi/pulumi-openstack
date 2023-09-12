@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Associate a floating IP to an instance.
@@ -117,7 +118,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported by specifying all three arguments, separated by a forward slash
+// This resource can be imported by specifying all three arguments, separated by a forward slash:
 //
 // ```sh
 //
@@ -264,6 +265,12 @@ func (i *FloatingIpAssociate) ToFloatingIpAssociateOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpAssociateOutput)
 }
 
+func (i *FloatingIpAssociate) ToOutput(ctx context.Context) pulumix.Output[*FloatingIpAssociate] {
+	return pulumix.Output[*FloatingIpAssociate]{
+		OutputState: i.ToFloatingIpAssociateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FloatingIpAssociateArrayInput is an input type that accepts FloatingIpAssociateArray and FloatingIpAssociateArrayOutput values.
 // You can construct a concrete instance of `FloatingIpAssociateArrayInput` via:
 //
@@ -287,6 +294,12 @@ func (i FloatingIpAssociateArray) ToFloatingIpAssociateArrayOutput() FloatingIpA
 
 func (i FloatingIpAssociateArray) ToFloatingIpAssociateArrayOutputWithContext(ctx context.Context) FloatingIpAssociateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpAssociateArrayOutput)
+}
+
+func (i FloatingIpAssociateArray) ToOutput(ctx context.Context) pulumix.Output[[]*FloatingIpAssociate] {
+	return pulumix.Output[[]*FloatingIpAssociate]{
+		OutputState: i.ToFloatingIpAssociateArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FloatingIpAssociateMapInput is an input type that accepts FloatingIpAssociateMap and FloatingIpAssociateMapOutput values.
@@ -314,6 +327,12 @@ func (i FloatingIpAssociateMap) ToFloatingIpAssociateMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(FloatingIpAssociateMapOutput)
 }
 
+func (i FloatingIpAssociateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FloatingIpAssociate] {
+	return pulumix.Output[map[string]*FloatingIpAssociate]{
+		OutputState: i.ToFloatingIpAssociateMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FloatingIpAssociateOutput struct{ *pulumi.OutputState }
 
 func (FloatingIpAssociateOutput) ElementType() reflect.Type {
@@ -326,6 +345,12 @@ func (o FloatingIpAssociateOutput) ToFloatingIpAssociateOutput() FloatingIpAssoc
 
 func (o FloatingIpAssociateOutput) ToFloatingIpAssociateOutputWithContext(ctx context.Context) FloatingIpAssociateOutput {
 	return o
+}
+
+func (o FloatingIpAssociateOutput) ToOutput(ctx context.Context) pulumix.Output[*FloatingIpAssociate] {
+	return pulumix.Output[*FloatingIpAssociate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The specific IP address to direct traffic to.
@@ -369,6 +394,12 @@ func (o FloatingIpAssociateArrayOutput) ToFloatingIpAssociateArrayOutputWithCont
 	return o
 }
 
+func (o FloatingIpAssociateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FloatingIpAssociate] {
+	return pulumix.Output[[]*FloatingIpAssociate]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FloatingIpAssociateArrayOutput) Index(i pulumi.IntInput) FloatingIpAssociateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FloatingIpAssociate {
 		return vs[0].([]*FloatingIpAssociate)[vs[1].(int)]
@@ -387,6 +418,12 @@ func (o FloatingIpAssociateMapOutput) ToFloatingIpAssociateMapOutput() FloatingI
 
 func (o FloatingIpAssociateMapOutput) ToFloatingIpAssociateMapOutputWithContext(ctx context.Context) FloatingIpAssociateMapOutput {
 	return o
+}
+
+func (o FloatingIpAssociateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FloatingIpAssociate] {
+	return pulumix.Output[map[string]*FloatingIpAssociate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FloatingIpAssociateMapOutput) MapIndex(k pulumi.StringInput) FloatingIpAssociateOutput {

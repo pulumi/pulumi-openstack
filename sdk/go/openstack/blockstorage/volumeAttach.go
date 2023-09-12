@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // > **Note:** This resource usually requires admin privileges.
@@ -338,6 +339,12 @@ func (i *VolumeAttach) ToVolumeAttachOutputWithContext(ctx context.Context) Volu
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachOutput)
 }
 
+func (i *VolumeAttach) ToOutput(ctx context.Context) pulumix.Output[*VolumeAttach] {
+	return pulumix.Output[*VolumeAttach]{
+		OutputState: i.ToVolumeAttachOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VolumeAttachArrayInput is an input type that accepts VolumeAttachArray and VolumeAttachArrayOutput values.
 // You can construct a concrete instance of `VolumeAttachArrayInput` via:
 //
@@ -361,6 +368,12 @@ func (i VolumeAttachArray) ToVolumeAttachArrayOutput() VolumeAttachArrayOutput {
 
 func (i VolumeAttachArray) ToVolumeAttachArrayOutputWithContext(ctx context.Context) VolumeAttachArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachArrayOutput)
+}
+
+func (i VolumeAttachArray) ToOutput(ctx context.Context) pulumix.Output[[]*VolumeAttach] {
+	return pulumix.Output[[]*VolumeAttach]{
+		OutputState: i.ToVolumeAttachArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VolumeAttachMapInput is an input type that accepts VolumeAttachMap and VolumeAttachMapOutput values.
@@ -388,6 +401,12 @@ func (i VolumeAttachMap) ToVolumeAttachMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachMapOutput)
 }
 
+func (i VolumeAttachMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*VolumeAttach] {
+	return pulumix.Output[map[string]*VolumeAttach]{
+		OutputState: i.ToVolumeAttachMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VolumeAttachOutput struct{ *pulumi.OutputState }
 
 func (VolumeAttachOutput) ElementType() reflect.Type {
@@ -400,6 +419,12 @@ func (o VolumeAttachOutput) ToVolumeAttachOutput() VolumeAttachOutput {
 
 func (o VolumeAttachOutput) ToVolumeAttachOutputWithContext(ctx context.Context) VolumeAttachOutput {
 	return o
+}
+
+func (o VolumeAttachOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeAttach] {
+	return pulumix.Output[*VolumeAttach]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specify whether to attach the volume as Read-Only
@@ -501,6 +526,12 @@ func (o VolumeAttachArrayOutput) ToVolumeAttachArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o VolumeAttachArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VolumeAttach] {
+	return pulumix.Output[[]*VolumeAttach]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VolumeAttachArrayOutput) Index(i pulumi.IntInput) VolumeAttachOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VolumeAttach {
 		return vs[0].([]*VolumeAttach)[vs[1].(int)]
@@ -519,6 +550,12 @@ func (o VolumeAttachMapOutput) ToVolumeAttachMapOutput() VolumeAttachMapOutput {
 
 func (o VolumeAttachMapOutput) ToVolumeAttachMapOutputWithContext(ctx context.Context) VolumeAttachMapOutput {
 	return o
+}
+
+func (o VolumeAttachMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VolumeAttach] {
+	return pulumix.Output[map[string]*VolumeAttach]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeAttachMapOutput) MapIndex(k pulumi.StringInput) VolumeAttachOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the compute limits of an OpenStack project.
@@ -144,6 +145,12 @@ func (o GetLimitsV2ResultOutput) ToGetLimitsV2ResultOutput() GetLimitsV2ResultOu
 
 func (o GetLimitsV2ResultOutput) ToGetLimitsV2ResultOutputWithContext(ctx context.Context) GetLimitsV2ResultOutput {
 	return o
+}
+
+func (o GetLimitsV2ResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetLimitsV2Result] {
+	return pulumix.Output[GetLimitsV2Result]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

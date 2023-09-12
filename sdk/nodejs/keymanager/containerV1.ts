@@ -100,7 +100,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Containers can be imported using the container id (the last part of the container reference), e.g.
+ * Containers can be imported using the container id (the last part of the container reference), e.g.:
  *
  * ```sh
  *  $ pulumi import openstack:keymanager/containerV1:ContainerV1 container_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953

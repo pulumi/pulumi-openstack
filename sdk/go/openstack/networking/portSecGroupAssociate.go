@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -296,6 +297,12 @@ func (i *PortSecGroupAssociate) ToPortSecGroupAssociateOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(PortSecGroupAssociateOutput)
 }
 
+func (i *PortSecGroupAssociate) ToOutput(ctx context.Context) pulumix.Output[*PortSecGroupAssociate] {
+	return pulumix.Output[*PortSecGroupAssociate]{
+		OutputState: i.ToPortSecGroupAssociateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PortSecGroupAssociateArrayInput is an input type that accepts PortSecGroupAssociateArray and PortSecGroupAssociateArrayOutput values.
 // You can construct a concrete instance of `PortSecGroupAssociateArrayInput` via:
 //
@@ -319,6 +326,12 @@ func (i PortSecGroupAssociateArray) ToPortSecGroupAssociateArrayOutput() PortSec
 
 func (i PortSecGroupAssociateArray) ToPortSecGroupAssociateArrayOutputWithContext(ctx context.Context) PortSecGroupAssociateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PortSecGroupAssociateArrayOutput)
+}
+
+func (i PortSecGroupAssociateArray) ToOutput(ctx context.Context) pulumix.Output[[]*PortSecGroupAssociate] {
+	return pulumix.Output[[]*PortSecGroupAssociate]{
+		OutputState: i.ToPortSecGroupAssociateArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PortSecGroupAssociateMapInput is an input type that accepts PortSecGroupAssociateMap and PortSecGroupAssociateMapOutput values.
@@ -346,6 +359,12 @@ func (i PortSecGroupAssociateMap) ToPortSecGroupAssociateMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(PortSecGroupAssociateMapOutput)
 }
 
+func (i PortSecGroupAssociateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PortSecGroupAssociate] {
+	return pulumix.Output[map[string]*PortSecGroupAssociate]{
+		OutputState: i.ToPortSecGroupAssociateMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PortSecGroupAssociateOutput struct{ *pulumi.OutputState }
 
 func (PortSecGroupAssociateOutput) ElementType() reflect.Type {
@@ -358,6 +377,12 @@ func (o PortSecGroupAssociateOutput) ToPortSecGroupAssociateOutput() PortSecGrou
 
 func (o PortSecGroupAssociateOutput) ToPortSecGroupAssociateOutputWithContext(ctx context.Context) PortSecGroupAssociateOutput {
 	return o
+}
+
+func (o PortSecGroupAssociateOutput) ToOutput(ctx context.Context) pulumix.Output[*PortSecGroupAssociate] {
+	return pulumix.Output[*PortSecGroupAssociate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The collection of Security Group IDs on the port
@@ -406,6 +431,12 @@ func (o PortSecGroupAssociateArrayOutput) ToPortSecGroupAssociateArrayOutputWith
 	return o
 }
 
+func (o PortSecGroupAssociateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PortSecGroupAssociate] {
+	return pulumix.Output[[]*PortSecGroupAssociate]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PortSecGroupAssociateArrayOutput) Index(i pulumi.IntInput) PortSecGroupAssociateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PortSecGroupAssociate {
 		return vs[0].([]*PortSecGroupAssociate)[vs[1].(int)]
@@ -424,6 +455,12 @@ func (o PortSecGroupAssociateMapOutput) ToPortSecGroupAssociateMapOutput() PortS
 
 func (o PortSecGroupAssociateMapOutput) ToPortSecGroupAssociateMapOutputWithContext(ctx context.Context) PortSecGroupAssociateMapOutput {
 	return o
+}
+
+func (o PortSecGroupAssociateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PortSecGroupAssociate] {
+	return pulumix.Output[map[string]*PortSecGroupAssociate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PortSecGroupAssociateMapOutput) MapIndex(k pulumi.StringInput) PortSecGroupAssociateOutput {

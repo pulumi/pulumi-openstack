@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a DNS zone transfer accept in the OpenStack DNS Service.
@@ -60,7 +61,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported by specifying the transferAccept ID
+// This resource can be imported by specifying the transferAccept ID:
 //
 // ```sh
 //
@@ -227,6 +228,12 @@ func (i *TransferAccept) ToTransferAcceptOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TransferAcceptOutput)
 }
 
+func (i *TransferAccept) ToOutput(ctx context.Context) pulumix.Output[*TransferAccept] {
+	return pulumix.Output[*TransferAccept]{
+		OutputState: i.ToTransferAcceptOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TransferAcceptArrayInput is an input type that accepts TransferAcceptArray and TransferAcceptArrayOutput values.
 // You can construct a concrete instance of `TransferAcceptArrayInput` via:
 //
@@ -250,6 +257,12 @@ func (i TransferAcceptArray) ToTransferAcceptArrayOutput() TransferAcceptArrayOu
 
 func (i TransferAcceptArray) ToTransferAcceptArrayOutputWithContext(ctx context.Context) TransferAcceptArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransferAcceptArrayOutput)
+}
+
+func (i TransferAcceptArray) ToOutput(ctx context.Context) pulumix.Output[[]*TransferAccept] {
+	return pulumix.Output[[]*TransferAccept]{
+		OutputState: i.ToTransferAcceptArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TransferAcceptMapInput is an input type that accepts TransferAcceptMap and TransferAcceptMapOutput values.
@@ -277,6 +290,12 @@ func (i TransferAcceptMap) ToTransferAcceptMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TransferAcceptMapOutput)
 }
 
+func (i TransferAcceptMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransferAccept] {
+	return pulumix.Output[map[string]*TransferAccept]{
+		OutputState: i.ToTransferAcceptMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TransferAcceptOutput struct{ *pulumi.OutputState }
 
 func (TransferAcceptOutput) ElementType() reflect.Type {
@@ -289,6 +308,12 @@ func (o TransferAcceptOutput) ToTransferAcceptOutput() TransferAcceptOutput {
 
 func (o TransferAcceptOutput) ToTransferAcceptOutputWithContext(ctx context.Context) TransferAcceptOutput {
 	return o
+}
+
+func (o TransferAcceptOutput) ToOutput(ctx context.Context) pulumix.Output[*TransferAccept] {
+	return pulumix.Output[*TransferAccept]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Disable wait for zone to reach ACTIVE
@@ -336,6 +361,12 @@ func (o TransferAcceptArrayOutput) ToTransferAcceptArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o TransferAcceptArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TransferAccept] {
+	return pulumix.Output[[]*TransferAccept]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TransferAcceptArrayOutput) Index(i pulumi.IntInput) TransferAcceptOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransferAccept {
 		return vs[0].([]*TransferAccept)[vs[1].(int)]
@@ -354,6 +385,12 @@ func (o TransferAcceptMapOutput) ToTransferAcceptMapOutput() TransferAcceptMapOu
 
 func (o TransferAcceptMapOutput) ToTransferAcceptMapOutputWithContext(ctx context.Context) TransferAcceptMapOutput {
 	return o
+}
+
+func (o TransferAcceptMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransferAccept] {
+	return pulumix.Output[map[string]*TransferAccept]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransferAcceptMapOutput) MapIndex(k pulumi.StringInput) TransferAcceptOutput {

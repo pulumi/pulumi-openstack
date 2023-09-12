@@ -608,7 +608,7 @@ class LoadBalancer(pulumi.CustomResource):
 
         ## Import
 
-        Load Balancer can be imported using the Load Balancer ID, e.g.
+        Load Balancer can be imported using the Load Balancer ID, e.g.:
 
         ```sh
          $ pulumi import openstack:loadbalancer/loadBalancer:LoadBalancer loadbalancer_1 19bcfdc7-c521-4a7e-9459-6750bd16df76
@@ -678,7 +678,7 @@ class LoadBalancer(pulumi.CustomResource):
 
         ## Import
 
-        Load Balancer can be imported using the Load Balancer ID, e.g.
+        Load Balancer can be imported using the Load Balancer ID, e.g.:
 
         ```sh
          $ pulumi import openstack:loadbalancer/loadBalancer:LoadBalancer loadbalancer_1 19bcfdc7-c521-4a7e-9459-6750bd16df76

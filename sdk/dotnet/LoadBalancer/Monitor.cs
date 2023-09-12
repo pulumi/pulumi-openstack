@@ -36,13 +36,12 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// ## Import
     /// 
-    /// Load Balancer Pool Monitor can be imported using the Monitor ID, e.g.
+    /// Load Balancer Pool Monitor can be imported using the Monitor ID, e.g.:
     /// 
     /// ```sh
     ///  $ pulumi import openstack:loadbalancer/monitor:Monitor monitor_1 47c26fc3-2403-427a-8c79-1589bd0533c2
     /// ```
-    /// 
-    ///  In case of using OpenContrail, the import may not work properly. If you face an issue, try to import the monitor providing its parent pool ID
+    ///  In case of using OpenContrail, the import may not work properly. If you face an issue, try to import the monitor providing its parent pool ID:
     /// 
     /// ```sh
     ///  $ pulumi import openstack:loadbalancer/monitor:Monitor monitor_1 47c26fc3-2403-427a-8c79-1589bd0533c2/708bc224-0f8c-4981-ac82-97095fe051b6

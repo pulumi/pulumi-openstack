@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the ID of an OpenStack group.
@@ -117,6 +118,12 @@ func (o GetGroupResultOutput) ToGetGroupResultOutput() GetGroupResultOutput {
 
 func (o GetGroupResultOutput) ToGetGroupResultOutputWithContext(ctx context.Context) GetGroupResultOutput {
 	return o
+}
+
+func (o GetGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupResult] {
+	return pulumix.Output[GetGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A description of the group.

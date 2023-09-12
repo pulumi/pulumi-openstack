@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported by specifying all two arguments, separated by a forward slash
+ * This resource can be imported by specifying all two arguments, separated by a forward slash:
  *
  * ```sh
  *  $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id

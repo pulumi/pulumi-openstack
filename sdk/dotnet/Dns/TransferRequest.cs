@@ -42,7 +42,7 @@ namespace Pulumi.OpenStack.Dns
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying the transferRequest ID
+    /// This resource can be imported by specifying the transferRequest ID:
     /// 
     /// ```sh
     ///  $ pulumi import openstack:dns/transferRequest:TransferRequest request_1 request_id

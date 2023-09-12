@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -98,6 +99,12 @@ func (i MembersMemberArgs) ToMembersMemberOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(MembersMemberOutput)
 }
 
+func (i MembersMemberArgs) ToOutput(ctx context.Context) pulumix.Output[MembersMember] {
+	return pulumix.Output[MembersMember]{
+		OutputState: i.ToMembersMemberOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MembersMemberArrayInput is an input type that accepts MembersMemberArray and MembersMemberArrayOutput values.
 // You can construct a concrete instance of `MembersMemberArrayInput` via:
 //
@@ -123,6 +130,12 @@ func (i MembersMemberArray) ToMembersMemberArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(MembersMemberArrayOutput)
 }
 
+func (i MembersMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]MembersMember] {
+	return pulumix.Output[[]MembersMember]{
+		OutputState: i.ToMembersMemberArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MembersMemberOutput struct{ *pulumi.OutputState }
 
 func (MembersMemberOutput) ElementType() reflect.Type {
@@ -135,6 +148,12 @@ func (o MembersMemberOutput) ToMembersMemberOutput() MembersMemberOutput {
 
 func (o MembersMemberOutput) ToMembersMemberOutputWithContext(ctx context.Context) MembersMemberOutput {
 	return o
+}
+
+func (o MembersMemberOutput) ToOutput(ctx context.Context) pulumix.Output[MembersMember] {
+	return pulumix.Output[MembersMember]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP address of the members to receive traffic from
@@ -209,6 +228,12 @@ func (o MembersMemberArrayOutput) ToMembersMemberArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o MembersMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MembersMember] {
+	return pulumix.Output[[]MembersMember]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MembersMemberArrayOutput) Index(i pulumi.IntInput) MembersMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MembersMember {
 		return vs[0].([]MembersMember)[vs[1].(int)]
@@ -256,6 +281,12 @@ func (i PoolPersistenceArgs) ToPoolPersistenceOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(PoolPersistenceOutput)
 }
 
+func (i PoolPersistenceArgs) ToOutput(ctx context.Context) pulumix.Output[PoolPersistence] {
+	return pulumix.Output[PoolPersistence]{
+		OutputState: i.ToPoolPersistenceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i PoolPersistenceArgs) ToPoolPersistencePtrOutput() PoolPersistencePtrOutput {
 	return i.ToPoolPersistencePtrOutputWithContext(context.Background())
 }
@@ -297,6 +328,12 @@ func (i *poolPersistencePtrType) ToPoolPersistencePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(PoolPersistencePtrOutput)
 }
 
+func (i *poolPersistencePtrType) ToOutput(ctx context.Context) pulumix.Output[*PoolPersistence] {
+	return pulumix.Output[*PoolPersistence]{
+		OutputState: i.ToPoolPersistencePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PoolPersistenceOutput struct{ *pulumi.OutputState }
 
 func (PoolPersistenceOutput) ElementType() reflect.Type {
@@ -319,6 +356,12 @@ func (o PoolPersistenceOutput) ToPoolPersistencePtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PoolPersistence) *PoolPersistence {
 		return &v
 	}).(PoolPersistencePtrOutput)
+}
+
+func (o PoolPersistenceOutput) ToOutput(ctx context.Context) pulumix.Output[PoolPersistence] {
+	return pulumix.Output[PoolPersistence]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the cookie if persistence mode is set
@@ -345,6 +388,12 @@ func (o PoolPersistencePtrOutput) ToPoolPersistencePtrOutput() PoolPersistencePt
 
 func (o PoolPersistencePtrOutput) ToPoolPersistencePtrOutputWithContext(ctx context.Context) PoolPersistencePtrOutput {
 	return o
+}
+
+func (o PoolPersistencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PoolPersistence] {
+	return pulumix.Output[*PoolPersistence]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PoolPersistencePtrOutput) Elem() PoolPersistenceOutput {

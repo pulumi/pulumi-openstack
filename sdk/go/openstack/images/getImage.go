@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the ID of an available OpenStack image.
@@ -231,6 +232,12 @@ func (o LookupImageResultOutput) ToLookupImageResultOutput() LookupImageResultOu
 
 func (o LookupImageResultOutput) ToLookupImageResultOutputWithContext(ctx context.Context) LookupImageResultOutput {
 	return o
+}
+
+func (o LookupImageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupImageResult] {
+	return pulumix.Output[LookupImageResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The checksum of the data associated with the image.

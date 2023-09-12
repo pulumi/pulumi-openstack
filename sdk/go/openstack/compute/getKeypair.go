@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the ID and public key of an OpenStack keypair.
@@ -120,6 +121,12 @@ func (o LookupKeypairResultOutput) ToLookupKeypairResultOutput() LookupKeypairRe
 
 func (o LookupKeypairResultOutput) ToLookupKeypairResultOutputWithContext(ctx context.Context) LookupKeypairResultOutput {
 	return o
+}
+
+func (o LookupKeypairResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKeypairResult] {
+	return pulumix.Output[LookupKeypairResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The fingerprint of the OpenSSH key.

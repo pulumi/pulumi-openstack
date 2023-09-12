@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the ID of an available OpenStack security group.
@@ -131,6 +132,12 @@ func (o LookupSecGroupResultOutput) ToLookupSecGroupResultOutput() LookupSecGrou
 
 func (o LookupSecGroupResultOutput) ToLookupSecGroupResultOutputWithContext(ctx context.Context) LookupSecGroupResultOutput {
 	return o
+}
+
+func (o LookupSecGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSecGroupResult] {
+	return pulumix.Output[LookupSecGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The set of string tags applied on the security group.

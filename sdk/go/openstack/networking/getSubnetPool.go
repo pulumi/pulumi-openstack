@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the ID of an available OpenStack subnetpool.
@@ -189,6 +190,12 @@ func (o LookupSubnetPoolResultOutput) ToLookupSubnetPoolResultOutput() LookupSub
 
 func (o LookupSubnetPoolResultOutput) ToLookupSubnetPoolResultOutputWithContext(ctx context.Context) LookupSubnetPoolResultOutput {
 	return o
+}
+
+func (o LookupSubnetPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSubnetPoolResult] {
+	return pulumix.Output[LookupSubnetPoolResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // See Argument Reference above.

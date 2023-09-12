@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V1 Barbican order resource within OpenStack.
@@ -79,7 +80,7 @@ import (
 //
 // ## Import
 //
-// Orders can be imported using the order id (the last part of the order reference), e.g.
+// Orders can be imported using the order id (the last part of the order reference), e.g.:
 //
 // ```sh
 //
@@ -265,6 +266,12 @@ func (i *OrderV1) ToOrderV1OutputWithContext(ctx context.Context) OrderV1Output 
 	return pulumi.ToOutputWithContext(ctx, i).(OrderV1Output)
 }
 
+func (i *OrderV1) ToOutput(ctx context.Context) pulumix.Output[*OrderV1] {
+	return pulumix.Output[*OrderV1]{
+		OutputState: i.ToOrderV1OutputWithContext(ctx).OutputState,
+	}
+}
+
 // OrderV1ArrayInput is an input type that accepts OrderV1Array and OrderV1ArrayOutput values.
 // You can construct a concrete instance of `OrderV1ArrayInput` via:
 //
@@ -288,6 +295,12 @@ func (i OrderV1Array) ToOrderV1ArrayOutput() OrderV1ArrayOutput {
 
 func (i OrderV1Array) ToOrderV1ArrayOutputWithContext(ctx context.Context) OrderV1ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrderV1ArrayOutput)
+}
+
+func (i OrderV1Array) ToOutput(ctx context.Context) pulumix.Output[[]*OrderV1] {
+	return pulumix.Output[[]*OrderV1]{
+		OutputState: i.ToOrderV1ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // OrderV1MapInput is an input type that accepts OrderV1Map and OrderV1MapOutput values.
@@ -315,6 +328,12 @@ func (i OrderV1Map) ToOrderV1MapOutputWithContext(ctx context.Context) OrderV1Ma
 	return pulumi.ToOutputWithContext(ctx, i).(OrderV1MapOutput)
 }
 
+func (i OrderV1Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrderV1] {
+	return pulumix.Output[map[string]*OrderV1]{
+		OutputState: i.ToOrderV1MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrderV1Output struct{ *pulumi.OutputState }
 
 func (OrderV1Output) ElementType() reflect.Type {
@@ -327,6 +346,12 @@ func (o OrderV1Output) ToOrderV1Output() OrderV1Output {
 
 func (o OrderV1Output) ToOrderV1OutputWithContext(ctx context.Context) OrderV1Output {
 	return o
+}
+
+func (o OrderV1Output) ToOutput(ctx context.Context) pulumix.Output[*OrderV1] {
+	return pulumix.Output[*OrderV1]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The container reference / where to find the container.
@@ -406,6 +431,12 @@ func (o OrderV1ArrayOutput) ToOrderV1ArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o OrderV1ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OrderV1] {
+	return pulumix.Output[[]*OrderV1]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o OrderV1ArrayOutput) Index(i pulumi.IntInput) OrderV1Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrderV1 {
 		return vs[0].([]*OrderV1)[vs[1].(int)]
@@ -424,6 +455,12 @@ func (o OrderV1MapOutput) ToOrderV1MapOutput() OrderV1MapOutput {
 
 func (o OrderV1MapOutput) ToOrderV1MapOutputWithContext(ctx context.Context) OrderV1MapOutput {
 	return o
+}
+
+func (o OrderV1MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrderV1] {
+	return pulumix.Output[map[string]*OrderV1]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrderV1MapOutput) MapIndex(k pulumi.StringInput) OrderV1Output {

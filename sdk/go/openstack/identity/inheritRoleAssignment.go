@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V3 Inherit Role assignment within OpenStack Keystone. This uses the
@@ -61,11 +62,9 @@ import (
 //
 // ## Import
 //
-// Inherit role assignments can be imported using a constructed id. The id should
+// Inherit role assignments can be imported using a constructed id. The id should have the form of `domainID/projectID/groupID/userID/roleID`. When something is not used then leave blank.
 //
-// have the form of `domainID/projectID/groupID/userID/roleID`. When something is not used then leave blank. For example this will import the inherit role assignment for:
-//
-// projectID014395cd-89fc-4c9b-96b7-13d1ee79dad2, userID4142e64b-1b35-44a0-9b1e-5affc7af1106, roleIDea257959-eeb1-4c10-8d33-26f0409a755d ( domainID and groupID are left blank)
+// For example this will import the inherit role assignment forprojectID014395cd-89fc-4c9b-96b7-13d1ee79dad2, userID4142e64b-1b35-44a0-9b1e-5affc7af1106, roleIDea257959-eeb1-4c10-8d33-26f0409a755d ( domainID and groupID are left blank)
 //
 // ```sh
 //
@@ -209,6 +208,12 @@ func (i *InheritRoleAssignment) ToInheritRoleAssignmentOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(InheritRoleAssignmentOutput)
 }
 
+func (i *InheritRoleAssignment) ToOutput(ctx context.Context) pulumix.Output[*InheritRoleAssignment] {
+	return pulumix.Output[*InheritRoleAssignment]{
+		OutputState: i.ToInheritRoleAssignmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InheritRoleAssignmentArrayInput is an input type that accepts InheritRoleAssignmentArray and InheritRoleAssignmentArrayOutput values.
 // You can construct a concrete instance of `InheritRoleAssignmentArrayInput` via:
 //
@@ -232,6 +237,12 @@ func (i InheritRoleAssignmentArray) ToInheritRoleAssignmentArrayOutput() Inherit
 
 func (i InheritRoleAssignmentArray) ToInheritRoleAssignmentArrayOutputWithContext(ctx context.Context) InheritRoleAssignmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InheritRoleAssignmentArrayOutput)
+}
+
+func (i InheritRoleAssignmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*InheritRoleAssignment] {
+	return pulumix.Output[[]*InheritRoleAssignment]{
+		OutputState: i.ToInheritRoleAssignmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // InheritRoleAssignmentMapInput is an input type that accepts InheritRoleAssignmentMap and InheritRoleAssignmentMapOutput values.
@@ -259,6 +270,12 @@ func (i InheritRoleAssignmentMap) ToInheritRoleAssignmentMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(InheritRoleAssignmentMapOutput)
 }
 
+func (i InheritRoleAssignmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InheritRoleAssignment] {
+	return pulumix.Output[map[string]*InheritRoleAssignment]{
+		OutputState: i.ToInheritRoleAssignmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InheritRoleAssignmentOutput struct{ *pulumi.OutputState }
 
 func (InheritRoleAssignmentOutput) ElementType() reflect.Type {
@@ -271,6 +288,12 @@ func (o InheritRoleAssignmentOutput) ToInheritRoleAssignmentOutput() InheritRole
 
 func (o InheritRoleAssignmentOutput) ToInheritRoleAssignmentOutputWithContext(ctx context.Context) InheritRoleAssignmentOutput {
 	return o
+}
+
+func (o InheritRoleAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*InheritRoleAssignment] {
+	return pulumix.Output[*InheritRoleAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The domain to assign the role in.
@@ -317,6 +340,12 @@ func (o InheritRoleAssignmentArrayOutput) ToInheritRoleAssignmentArrayOutputWith
 	return o
 }
 
+func (o InheritRoleAssignmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InheritRoleAssignment] {
+	return pulumix.Output[[]*InheritRoleAssignment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InheritRoleAssignmentArrayOutput) Index(i pulumi.IntInput) InheritRoleAssignmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InheritRoleAssignment {
 		return vs[0].([]*InheritRoleAssignment)[vs[1].(int)]
@@ -335,6 +364,12 @@ func (o InheritRoleAssignmentMapOutput) ToInheritRoleAssignmentMapOutput() Inher
 
 func (o InheritRoleAssignmentMapOutput) ToInheritRoleAssignmentMapOutputWithContext(ctx context.Context) InheritRoleAssignmentMapOutput {
 	return o
+}
+
+func (o InheritRoleAssignmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InheritRoleAssignment] {
+	return pulumix.Output[map[string]*InheritRoleAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InheritRoleAssignmentMapOutput) MapIndex(k pulumi.StringInput) InheritRoleAssignmentOutput {

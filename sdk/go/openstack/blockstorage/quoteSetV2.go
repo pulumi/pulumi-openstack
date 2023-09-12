@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 block storage quotaset resource within OpenStack.
@@ -313,6 +314,12 @@ func (i *QuoteSetV2) ToQuoteSetV2OutputWithContext(ctx context.Context) QuoteSet
 	return pulumi.ToOutputWithContext(ctx, i).(QuoteSetV2Output)
 }
 
+func (i *QuoteSetV2) ToOutput(ctx context.Context) pulumix.Output[*QuoteSetV2] {
+	return pulumix.Output[*QuoteSetV2]{
+		OutputState: i.ToQuoteSetV2OutputWithContext(ctx).OutputState,
+	}
+}
+
 // QuoteSetV2ArrayInput is an input type that accepts QuoteSetV2Array and QuoteSetV2ArrayOutput values.
 // You can construct a concrete instance of `QuoteSetV2ArrayInput` via:
 //
@@ -336,6 +343,12 @@ func (i QuoteSetV2Array) ToQuoteSetV2ArrayOutput() QuoteSetV2ArrayOutput {
 
 func (i QuoteSetV2Array) ToQuoteSetV2ArrayOutputWithContext(ctx context.Context) QuoteSetV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QuoteSetV2ArrayOutput)
+}
+
+func (i QuoteSetV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*QuoteSetV2] {
+	return pulumix.Output[[]*QuoteSetV2]{
+		OutputState: i.ToQuoteSetV2ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // QuoteSetV2MapInput is an input type that accepts QuoteSetV2Map and QuoteSetV2MapOutput values.
@@ -363,6 +376,12 @@ func (i QuoteSetV2Map) ToQuoteSetV2MapOutputWithContext(ctx context.Context) Quo
 	return pulumi.ToOutputWithContext(ctx, i).(QuoteSetV2MapOutput)
 }
 
+func (i QuoteSetV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*QuoteSetV2] {
+	return pulumix.Output[map[string]*QuoteSetV2]{
+		OutputState: i.ToQuoteSetV2MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type QuoteSetV2Output struct{ *pulumi.OutputState }
 
 func (QuoteSetV2Output) ElementType() reflect.Type {
@@ -375,6 +394,12 @@ func (o QuoteSetV2Output) ToQuoteSetV2Output() QuoteSetV2Output {
 
 func (o QuoteSetV2Output) ToQuoteSetV2OutputWithContext(ctx context.Context) QuoteSetV2Output {
 	return o
+}
+
+func (o QuoteSetV2Output) ToOutput(ctx context.Context) pulumix.Output[*QuoteSetV2] {
+	return pulumix.Output[*QuoteSetV2]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Quota value for backup gigabytes. Changing
@@ -453,6 +478,12 @@ func (o QuoteSetV2ArrayOutput) ToQuoteSetV2ArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o QuoteSetV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*QuoteSetV2] {
+	return pulumix.Output[[]*QuoteSetV2]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o QuoteSetV2ArrayOutput) Index(i pulumi.IntInput) QuoteSetV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QuoteSetV2 {
 		return vs[0].([]*QuoteSetV2)[vs[1].(int)]
@@ -471,6 +502,12 @@ func (o QuoteSetV2MapOutput) ToQuoteSetV2MapOutput() QuoteSetV2MapOutput {
 
 func (o QuoteSetV2MapOutput) ToQuoteSetV2MapOutputWithContext(ctx context.Context) QuoteSetV2MapOutput {
 	return o
+}
+
+func (o QuoteSetV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*QuoteSetV2] {
+	return pulumix.Output[map[string]*QuoteSetV2]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QuoteSetV2MapOutput) MapIndex(k pulumi.StringInput) QuoteSetV2Output {

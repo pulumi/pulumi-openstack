@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V3 EC2 Credential resource within OpenStack Keystone.
@@ -242,6 +243,12 @@ func (i *Ec2CredentialV3) ToEc2CredentialV3OutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(Ec2CredentialV3Output)
 }
 
+func (i *Ec2CredentialV3) ToOutput(ctx context.Context) pulumix.Output[*Ec2CredentialV3] {
+	return pulumix.Output[*Ec2CredentialV3]{
+		OutputState: i.ToEc2CredentialV3OutputWithContext(ctx).OutputState,
+	}
+}
+
 // Ec2CredentialV3ArrayInput is an input type that accepts Ec2CredentialV3Array and Ec2CredentialV3ArrayOutput values.
 // You can construct a concrete instance of `Ec2CredentialV3ArrayInput` via:
 //
@@ -265,6 +272,12 @@ func (i Ec2CredentialV3Array) ToEc2CredentialV3ArrayOutput() Ec2CredentialV3Arra
 
 func (i Ec2CredentialV3Array) ToEc2CredentialV3ArrayOutputWithContext(ctx context.Context) Ec2CredentialV3ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Ec2CredentialV3ArrayOutput)
+}
+
+func (i Ec2CredentialV3Array) ToOutput(ctx context.Context) pulumix.Output[[]*Ec2CredentialV3] {
+	return pulumix.Output[[]*Ec2CredentialV3]{
+		OutputState: i.ToEc2CredentialV3ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Ec2CredentialV3MapInput is an input type that accepts Ec2CredentialV3Map and Ec2CredentialV3MapOutput values.
@@ -292,6 +305,12 @@ func (i Ec2CredentialV3Map) ToEc2CredentialV3MapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(Ec2CredentialV3MapOutput)
 }
 
+func (i Ec2CredentialV3Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*Ec2CredentialV3] {
+	return pulumix.Output[map[string]*Ec2CredentialV3]{
+		OutputState: i.ToEc2CredentialV3MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type Ec2CredentialV3Output struct{ *pulumi.OutputState }
 
 func (Ec2CredentialV3Output) ElementType() reflect.Type {
@@ -304,6 +323,12 @@ func (o Ec2CredentialV3Output) ToEc2CredentialV3Output() Ec2CredentialV3Output {
 
 func (o Ec2CredentialV3Output) ToEc2CredentialV3OutputWithContext(ctx context.Context) Ec2CredentialV3Output {
 	return o
+}
+
+func (o Ec2CredentialV3Output) ToOutput(ctx context.Context) pulumix.Output[*Ec2CredentialV3] {
+	return pulumix.Output[*Ec2CredentialV3]{
+		OutputState: o.OutputState,
+	}
 }
 
 // contains an EC2 credential access UUID
@@ -357,6 +382,12 @@ func (o Ec2CredentialV3ArrayOutput) ToEc2CredentialV3ArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o Ec2CredentialV3ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Ec2CredentialV3] {
+	return pulumix.Output[[]*Ec2CredentialV3]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o Ec2CredentialV3ArrayOutput) Index(i pulumi.IntInput) Ec2CredentialV3Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Ec2CredentialV3 {
 		return vs[0].([]*Ec2CredentialV3)[vs[1].(int)]
@@ -375,6 +406,12 @@ func (o Ec2CredentialV3MapOutput) ToEc2CredentialV3MapOutput() Ec2CredentialV3Ma
 
 func (o Ec2CredentialV3MapOutput) ToEc2CredentialV3MapOutputWithContext(ctx context.Context) Ec2CredentialV3MapOutput {
 	return o
+}
+
+func (o Ec2CredentialV3MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Ec2CredentialV3] {
+	return pulumix.Output[map[string]*Ec2CredentialV3]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o Ec2CredentialV3MapOutput) MapIndex(k pulumi.StringInput) Ec2CredentialV3Output {

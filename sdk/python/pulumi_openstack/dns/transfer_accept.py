@@ -245,7 +245,7 @@ class TransferAccept(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the transferAccept ID
+        This resource can be imported by specifying the transferAccept ID:
 
         ```sh
          $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 accept_id
@@ -296,7 +296,7 @@ class TransferAccept(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the transferAccept ID
+        This resource can be imported by specifying the transferAccept ID:
 
         ```sh
          $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 accept_id

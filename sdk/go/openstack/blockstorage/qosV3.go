@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V3 block storage Quality-Of-Servirce (qos) resource within OpenStack.
@@ -188,6 +189,12 @@ func (i *QosV3) ToQosV3OutputWithContext(ctx context.Context) QosV3Output {
 	return pulumi.ToOutputWithContext(ctx, i).(QosV3Output)
 }
 
+func (i *QosV3) ToOutput(ctx context.Context) pulumix.Output[*QosV3] {
+	return pulumix.Output[*QosV3]{
+		OutputState: i.ToQosV3OutputWithContext(ctx).OutputState,
+	}
+}
+
 // QosV3ArrayInput is an input type that accepts QosV3Array and QosV3ArrayOutput values.
 // You can construct a concrete instance of `QosV3ArrayInput` via:
 //
@@ -211,6 +218,12 @@ func (i QosV3Array) ToQosV3ArrayOutput() QosV3ArrayOutput {
 
 func (i QosV3Array) ToQosV3ArrayOutputWithContext(ctx context.Context) QosV3ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosV3ArrayOutput)
+}
+
+func (i QosV3Array) ToOutput(ctx context.Context) pulumix.Output[[]*QosV3] {
+	return pulumix.Output[[]*QosV3]{
+		OutputState: i.ToQosV3ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // QosV3MapInput is an input type that accepts QosV3Map and QosV3MapOutput values.
@@ -238,6 +251,12 @@ func (i QosV3Map) ToQosV3MapOutputWithContext(ctx context.Context) QosV3MapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(QosV3MapOutput)
 }
 
+func (i QosV3Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*QosV3] {
+	return pulumix.Output[map[string]*QosV3]{
+		OutputState: i.ToQosV3MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type QosV3Output struct{ *pulumi.OutputState }
 
 func (QosV3Output) ElementType() reflect.Type {
@@ -250,6 +269,12 @@ func (o QosV3Output) ToQosV3Output() QosV3Output {
 
 func (o QosV3Output) ToQosV3OutputWithContext(ctx context.Context) QosV3Output {
 	return o
+}
+
+func (o QosV3Output) ToOutput(ctx context.Context) pulumix.Output[*QosV3] {
+	return pulumix.Output[*QosV3]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The consumer of qos. Can be one of `front-end`,
@@ -290,6 +315,12 @@ func (o QosV3ArrayOutput) ToQosV3ArrayOutputWithContext(ctx context.Context) Qos
 	return o
 }
 
+func (o QosV3ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*QosV3] {
+	return pulumix.Output[[]*QosV3]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o QosV3ArrayOutput) Index(i pulumi.IntInput) QosV3Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QosV3 {
 		return vs[0].([]*QosV3)[vs[1].(int)]
@@ -308,6 +339,12 @@ func (o QosV3MapOutput) ToQosV3MapOutput() QosV3MapOutput {
 
 func (o QosV3MapOutput) ToQosV3MapOutputWithContext(ctx context.Context) QosV3MapOutput {
 	return o
+}
+
+func (o QosV3MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*QosV3] {
+	return pulumix.Output[map[string]*QosV3]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QosV3MapOutput) MapIndex(k pulumi.StringInput) QosV3Output {

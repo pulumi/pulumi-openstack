@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Attaches a Network Interface (a Port) to an Instance using the OpenStack
@@ -309,6 +310,12 @@ func (i *InterfaceAttach) ToInterfaceAttachOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(InterfaceAttachOutput)
 }
 
+func (i *InterfaceAttach) ToOutput(ctx context.Context) pulumix.Output[*InterfaceAttach] {
+	return pulumix.Output[*InterfaceAttach]{
+		OutputState: i.ToInterfaceAttachOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InterfaceAttachArrayInput is an input type that accepts InterfaceAttachArray and InterfaceAttachArrayOutput values.
 // You can construct a concrete instance of `InterfaceAttachArrayInput` via:
 //
@@ -332,6 +339,12 @@ func (i InterfaceAttachArray) ToInterfaceAttachArrayOutput() InterfaceAttachArra
 
 func (i InterfaceAttachArray) ToInterfaceAttachArrayOutputWithContext(ctx context.Context) InterfaceAttachArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InterfaceAttachArrayOutput)
+}
+
+func (i InterfaceAttachArray) ToOutput(ctx context.Context) pulumix.Output[[]*InterfaceAttach] {
+	return pulumix.Output[[]*InterfaceAttach]{
+		OutputState: i.ToInterfaceAttachArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // InterfaceAttachMapInput is an input type that accepts InterfaceAttachMap and InterfaceAttachMapOutput values.
@@ -359,6 +372,12 @@ func (i InterfaceAttachMap) ToInterfaceAttachMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(InterfaceAttachMapOutput)
 }
 
+func (i InterfaceAttachMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InterfaceAttach] {
+	return pulumix.Output[map[string]*InterfaceAttach]{
+		OutputState: i.ToInterfaceAttachMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InterfaceAttachOutput struct{ *pulumi.OutputState }
 
 func (InterfaceAttachOutput) ElementType() reflect.Type {
@@ -371,6 +390,12 @@ func (o InterfaceAttachOutput) ToInterfaceAttachOutput() InterfaceAttachOutput {
 
 func (o InterfaceAttachOutput) ToInterfaceAttachOutputWithContext(ctx context.Context) InterfaceAttachOutput {
 	return o
+}
+
+func (o InterfaceAttachOutput) ToOutput(ctx context.Context) pulumix.Output[*InterfaceAttach] {
+	return pulumix.Output[*InterfaceAttach]{
+		OutputState: o.OutputState,
+	}
 }
 
 // An IP address to assosciate with the port.
@@ -417,6 +442,12 @@ func (o InterfaceAttachArrayOutput) ToInterfaceAttachArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o InterfaceAttachArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InterfaceAttach] {
+	return pulumix.Output[[]*InterfaceAttach]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InterfaceAttachArrayOutput) Index(i pulumi.IntInput) InterfaceAttachOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InterfaceAttach {
 		return vs[0].([]*InterfaceAttach)[vs[1].(int)]
@@ -435,6 +466,12 @@ func (o InterfaceAttachMapOutput) ToInterfaceAttachMapOutput() InterfaceAttachMa
 
 func (o InterfaceAttachMapOutput) ToInterfaceAttachMapOutputWithContext(ctx context.Context) InterfaceAttachMapOutput {
 	return o
+}
+
+func (o InterfaceAttachMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InterfaceAttach] {
+	return pulumix.Output[map[string]*InterfaceAttach]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InterfaceAttachMapOutput) MapIndex(k pulumi.StringInput) InterfaceAttachOutput {

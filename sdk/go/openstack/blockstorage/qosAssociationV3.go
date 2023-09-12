@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V3 block storage Qos Association resource within OpenStack.
@@ -195,6 +196,12 @@ func (i *QosAssociationV3) ToQosAssociationV3OutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(QosAssociationV3Output)
 }
 
+func (i *QosAssociationV3) ToOutput(ctx context.Context) pulumix.Output[*QosAssociationV3] {
+	return pulumix.Output[*QosAssociationV3]{
+		OutputState: i.ToQosAssociationV3OutputWithContext(ctx).OutputState,
+	}
+}
+
 // QosAssociationV3ArrayInput is an input type that accepts QosAssociationV3Array and QosAssociationV3ArrayOutput values.
 // You can construct a concrete instance of `QosAssociationV3ArrayInput` via:
 //
@@ -218,6 +225,12 @@ func (i QosAssociationV3Array) ToQosAssociationV3ArrayOutput() QosAssociationV3A
 
 func (i QosAssociationV3Array) ToQosAssociationV3ArrayOutputWithContext(ctx context.Context) QosAssociationV3ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosAssociationV3ArrayOutput)
+}
+
+func (i QosAssociationV3Array) ToOutput(ctx context.Context) pulumix.Output[[]*QosAssociationV3] {
+	return pulumix.Output[[]*QosAssociationV3]{
+		OutputState: i.ToQosAssociationV3ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // QosAssociationV3MapInput is an input type that accepts QosAssociationV3Map and QosAssociationV3MapOutput values.
@@ -245,6 +258,12 @@ func (i QosAssociationV3Map) ToQosAssociationV3MapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(QosAssociationV3MapOutput)
 }
 
+func (i QosAssociationV3Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*QosAssociationV3] {
+	return pulumix.Output[map[string]*QosAssociationV3]{
+		OutputState: i.ToQosAssociationV3MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type QosAssociationV3Output struct{ *pulumi.OutputState }
 
 func (QosAssociationV3Output) ElementType() reflect.Type {
@@ -257,6 +276,12 @@ func (o QosAssociationV3Output) ToQosAssociationV3Output() QosAssociationV3Outpu
 
 func (o QosAssociationV3Output) ToQosAssociationV3OutputWithContext(ctx context.Context) QosAssociationV3Output {
 	return o
+}
+
+func (o QosAssociationV3Output) ToOutput(ctx context.Context) pulumix.Output[*QosAssociationV3] {
+	return pulumix.Output[*QosAssociationV3]{
+		OutputState: o.OutputState,
+	}
 }
 
 // ID of the qos to associate. Changing this creates
@@ -292,6 +317,12 @@ func (o QosAssociationV3ArrayOutput) ToQosAssociationV3ArrayOutputWithContext(ct
 	return o
 }
 
+func (o QosAssociationV3ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*QosAssociationV3] {
+	return pulumix.Output[[]*QosAssociationV3]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o QosAssociationV3ArrayOutput) Index(i pulumi.IntInput) QosAssociationV3Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QosAssociationV3 {
 		return vs[0].([]*QosAssociationV3)[vs[1].(int)]
@@ -310,6 +341,12 @@ func (o QosAssociationV3MapOutput) ToQosAssociationV3MapOutput() QosAssociationV
 
 func (o QosAssociationV3MapOutput) ToQosAssociationV3MapOutputWithContext(ctx context.Context) QosAssociationV3MapOutput {
 	return o
+}
+
+func (o QosAssociationV3MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*QosAssociationV3] {
+	return pulumix.Output[map[string]*QosAssociationV3]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QosAssociationV3MapOutput) MapIndex(k pulumi.StringInput) QosAssociationV3Output {

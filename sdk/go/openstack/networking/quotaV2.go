@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 networking quota resource within OpenStack.
@@ -320,6 +321,12 @@ func (i *QuotaV2) ToQuotaV2OutputWithContext(ctx context.Context) QuotaV2Output 
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaV2Output)
 }
 
+func (i *QuotaV2) ToOutput(ctx context.Context) pulumix.Output[*QuotaV2] {
+	return pulumix.Output[*QuotaV2]{
+		OutputState: i.ToQuotaV2OutputWithContext(ctx).OutputState,
+	}
+}
+
 // QuotaV2ArrayInput is an input type that accepts QuotaV2Array and QuotaV2ArrayOutput values.
 // You can construct a concrete instance of `QuotaV2ArrayInput` via:
 //
@@ -343,6 +350,12 @@ func (i QuotaV2Array) ToQuotaV2ArrayOutput() QuotaV2ArrayOutput {
 
 func (i QuotaV2Array) ToQuotaV2ArrayOutputWithContext(ctx context.Context) QuotaV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaV2ArrayOutput)
+}
+
+func (i QuotaV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*QuotaV2] {
+	return pulumix.Output[[]*QuotaV2]{
+		OutputState: i.ToQuotaV2ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // QuotaV2MapInput is an input type that accepts QuotaV2Map and QuotaV2MapOutput values.
@@ -370,6 +383,12 @@ func (i QuotaV2Map) ToQuotaV2MapOutputWithContext(ctx context.Context) QuotaV2Ma
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaV2MapOutput)
 }
 
+func (i QuotaV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*QuotaV2] {
+	return pulumix.Output[map[string]*QuotaV2]{
+		OutputState: i.ToQuotaV2MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type QuotaV2Output struct{ *pulumi.OutputState }
 
 func (QuotaV2Output) ElementType() reflect.Type {
@@ -382,6 +401,12 @@ func (o QuotaV2Output) ToQuotaV2Output() QuotaV2Output {
 
 func (o QuotaV2Output) ToQuotaV2OutputWithContext(ctx context.Context) QuotaV2Output {
 	return o
+}
+
+func (o QuotaV2Output) ToOutput(ctx context.Context) pulumix.Output[*QuotaV2] {
+	return pulumix.Output[*QuotaV2]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Quota value for floating IPs. Changing this updates the
@@ -465,6 +490,12 @@ func (o QuotaV2ArrayOutput) ToQuotaV2ArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o QuotaV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*QuotaV2] {
+	return pulumix.Output[[]*QuotaV2]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o QuotaV2ArrayOutput) Index(i pulumi.IntInput) QuotaV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QuotaV2 {
 		return vs[0].([]*QuotaV2)[vs[1].(int)]
@@ -483,6 +514,12 @@ func (o QuotaV2MapOutput) ToQuotaV2MapOutput() QuotaV2MapOutput {
 
 func (o QuotaV2MapOutput) ToQuotaV2MapOutputWithContext(ctx context.Context) QuotaV2MapOutput {
 	return o
+}
+
+func (o QuotaV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*QuotaV2] {
+	return pulumix.Output[map[string]*QuotaV2]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QuotaV2MapOutput) MapIndex(k pulumi.StringInput) QuotaV2Output {

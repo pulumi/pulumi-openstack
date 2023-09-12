@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the ID of an available OpenStack Magnum cluster
@@ -183,6 +184,12 @@ func (o LookupClusterTemplateResultOutput) ToLookupClusterTemplateResultOutput()
 
 func (o LookupClusterTemplateResultOutput) ToLookupClusterTemplateResultOutputWithContext(ctx context.Context) LookupClusterTemplateResultOutput {
 	return o
+}
+
+func (o LookupClusterTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClusterTemplateResult] {
+	return pulumix.Output[LookupClusterTemplateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The API server port for the Container Orchestration
