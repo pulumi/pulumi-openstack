@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the ID of an OpenStack service.
@@ -122,6 +123,12 @@ func (o GetServiceResultOutput) ToGetServiceResultOutput() GetServiceResultOutpu
 
 func (o GetServiceResultOutput) ToGetServiceResultOutputWithContext(ctx context.Context) GetServiceResultOutput {
 	return o
+}
+
+func (o GetServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServiceResult] {
+	return pulumix.Output[GetServiceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The service description.

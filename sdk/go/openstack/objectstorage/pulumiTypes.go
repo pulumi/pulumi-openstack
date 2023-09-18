@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -48,6 +49,12 @@ func (i ContainerVersioningLegacyArgs) ToContainerVersioningLegacyOutput() Conta
 
 func (i ContainerVersioningLegacyArgs) ToContainerVersioningLegacyOutputWithContext(ctx context.Context) ContainerVersioningLegacyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerVersioningLegacyOutput)
+}
+
+func (i ContainerVersioningLegacyArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerVersioningLegacy] {
+	return pulumix.Output[ContainerVersioningLegacy]{
+		OutputState: i.ToContainerVersioningLegacyOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ContainerVersioningLegacyArgs) ToContainerVersioningLegacyPtrOutput() ContainerVersioningLegacyPtrOutput {
@@ -91,6 +98,12 @@ func (i *containerVersioningLegacyPtrType) ToContainerVersioningLegacyPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerVersioningLegacyPtrOutput)
 }
 
+func (i *containerVersioningLegacyPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerVersioningLegacy] {
+	return pulumix.Output[*ContainerVersioningLegacy]{
+		OutputState: i.ToContainerVersioningLegacyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerVersioningLegacyOutput struct{ *pulumi.OutputState }
 
 func (ContainerVersioningLegacyOutput) ElementType() reflect.Type {
@@ -115,6 +128,12 @@ func (o ContainerVersioningLegacyOutput) ToContainerVersioningLegacyPtrOutputWit
 	}).(ContainerVersioningLegacyPtrOutput)
 }
 
+func (o ContainerVersioningLegacyOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerVersioningLegacy] {
+	return pulumix.Output[ContainerVersioningLegacy]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Container in which versions will be stored.
 func (o ContainerVersioningLegacyOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerVersioningLegacy) string { return v.Location }).(pulumi.StringOutput)
@@ -137,6 +156,12 @@ func (o ContainerVersioningLegacyPtrOutput) ToContainerVersioningLegacyPtrOutput
 
 func (o ContainerVersioningLegacyPtrOutput) ToContainerVersioningLegacyPtrOutputWithContext(ctx context.Context) ContainerVersioningLegacyPtrOutput {
 	return o
+}
+
+func (o ContainerVersioningLegacyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerVersioningLegacy] {
+	return pulumix.Output[*ContainerVersioningLegacy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerVersioningLegacyPtrOutput) Elem() ContainerVersioningLegacyOutput {

@@ -104,7 +104,7 @@ public class AddressScope extends com.pulumi.resources.CustomResource {
      * creates a new address-scope.
      * 
      */
-    @Export(name="ipVersion", type=Integer.class, parameters={})
+    @Export(name="ipVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ipVersion;
 
     /**
@@ -120,7 +120,7 @@ public class AddressScope extends com.pulumi.resources.CustomResource {
      * name of the existing address-scope.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -137,7 +137,7 @@ public class AddressScope extends com.pulumi.resources.CustomResource {
      * new address-scope.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -156,7 +156,7 @@ public class AddressScope extends com.pulumi.resources.CustomResource {
      * address-scope.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -175,7 +175,7 @@ public class AddressScope extends com.pulumi.resources.CustomResource {
      * address-scope.
      * 
      */
-    @Export(name="shared", type=Boolean.class, parameters={})
+    @Export(name="shared", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> shared;
 
     /**

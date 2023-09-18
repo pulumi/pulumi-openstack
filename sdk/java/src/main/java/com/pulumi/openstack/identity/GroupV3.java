@@ -65,7 +65,7 @@ public class GroupV3 extends com.pulumi.resources.CustomResource {
      * A description of the group.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -79,7 +79,7 @@ public class GroupV3 extends com.pulumi.resources.CustomResource {
      * The domain the group belongs to.
      * 
      */
-    @Export(name="domainId", type=String.class, parameters={})
+    @Export(name="domainId", refs={String.class}, tree="[0]")
     private Output<String> domainId;
 
     /**
@@ -93,7 +93,7 @@ public class GroupV3 extends com.pulumi.resources.CustomResource {
      * The name of the group.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -109,7 +109,7 @@ public class GroupV3 extends com.pulumi.resources.CustomResource {
      * creates a new group.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**

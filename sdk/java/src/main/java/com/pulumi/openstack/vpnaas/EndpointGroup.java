@@ -69,7 +69,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * Changing this updates the description of the existing group.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -85,7 +85,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * Changing this creates a new group.
      * 
      */
-    @Export(name="endpoints", type=List.class, parameters={String.class})
+    @Export(name="endpoints", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> endpoints;
 
     /**
@@ -101,7 +101,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * the existing group.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -119,7 +119,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * group.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -137,7 +137,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * create an endpoint group for another project. Changing this creates a new group.
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
@@ -153,7 +153,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * Changing this creates a new group.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -168,7 +168,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
      * Map of additional options.
      * 
      */
-    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**

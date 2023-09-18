@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V1 load balancer member resource within OpenStack.
@@ -244,6 +245,12 @@ func (i *MemberV1) ToMemberV1OutputWithContext(ctx context.Context) MemberV1Outp
 	return pulumi.ToOutputWithContext(ctx, i).(MemberV1Output)
 }
 
+func (i *MemberV1) ToOutput(ctx context.Context) pulumix.Output[*MemberV1] {
+	return pulumix.Output[*MemberV1]{
+		OutputState: i.ToMemberV1OutputWithContext(ctx).OutputState,
+	}
+}
+
 // MemberV1ArrayInput is an input type that accepts MemberV1Array and MemberV1ArrayOutput values.
 // You can construct a concrete instance of `MemberV1ArrayInput` via:
 //
@@ -267,6 +274,12 @@ func (i MemberV1Array) ToMemberV1ArrayOutput() MemberV1ArrayOutput {
 
 func (i MemberV1Array) ToMemberV1ArrayOutputWithContext(ctx context.Context) MemberV1ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MemberV1ArrayOutput)
+}
+
+func (i MemberV1Array) ToOutput(ctx context.Context) pulumix.Output[[]*MemberV1] {
+	return pulumix.Output[[]*MemberV1]{
+		OutputState: i.ToMemberV1ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MemberV1MapInput is an input type that accepts MemberV1Map and MemberV1MapOutput values.
@@ -294,6 +307,12 @@ func (i MemberV1Map) ToMemberV1MapOutputWithContext(ctx context.Context) MemberV
 	return pulumi.ToOutputWithContext(ctx, i).(MemberV1MapOutput)
 }
 
+func (i MemberV1Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*MemberV1] {
+	return pulumix.Output[map[string]*MemberV1]{
+		OutputState: i.ToMemberV1MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MemberV1Output struct{ *pulumi.OutputState }
 
 func (MemberV1Output) ElementType() reflect.Type {
@@ -306,6 +325,12 @@ func (o MemberV1Output) ToMemberV1Output() MemberV1Output {
 
 func (o MemberV1Output) ToMemberV1OutputWithContext(ctx context.Context) MemberV1Output {
 	return o
+}
+
+func (o MemberV1Output) ToOutput(ctx context.Context) pulumix.Output[*MemberV1] {
+	return pulumix.Output[*MemberV1]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP address of the member. Changing this creates a
@@ -365,6 +390,12 @@ func (o MemberV1ArrayOutput) ToMemberV1ArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o MemberV1ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MemberV1] {
+	return pulumix.Output[[]*MemberV1]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MemberV1ArrayOutput) Index(i pulumi.IntInput) MemberV1Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MemberV1 {
 		return vs[0].([]*MemberV1)[vs[1].(int)]
@@ -383,6 +414,12 @@ func (o MemberV1MapOutput) ToMemberV1MapOutput() MemberV1MapOutput {
 
 func (o MemberV1MapOutput) ToMemberV1MapOutputWithContext(ctx context.Context) MemberV1MapOutput {
 	return o
+}
+
+func (o MemberV1MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MemberV1] {
+	return pulumix.Output[map[string]*MemberV1]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MemberV1MapOutput) MapIndex(k pulumi.StringInput) MemberV1Output {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 Neutron addressscope resource within OpenStack.
@@ -253,6 +254,12 @@ func (i *AddressScope) ToAddressScopeOutputWithContext(ctx context.Context) Addr
 	return pulumi.ToOutputWithContext(ctx, i).(AddressScopeOutput)
 }
 
+func (i *AddressScope) ToOutput(ctx context.Context) pulumix.Output[*AddressScope] {
+	return pulumix.Output[*AddressScope]{
+		OutputState: i.ToAddressScopeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AddressScopeArrayInput is an input type that accepts AddressScopeArray and AddressScopeArrayOutput values.
 // You can construct a concrete instance of `AddressScopeArrayInput` via:
 //
@@ -276,6 +283,12 @@ func (i AddressScopeArray) ToAddressScopeArrayOutput() AddressScopeArrayOutput {
 
 func (i AddressScopeArray) ToAddressScopeArrayOutputWithContext(ctx context.Context) AddressScopeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AddressScopeArrayOutput)
+}
+
+func (i AddressScopeArray) ToOutput(ctx context.Context) pulumix.Output[[]*AddressScope] {
+	return pulumix.Output[[]*AddressScope]{
+		OutputState: i.ToAddressScopeArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AddressScopeMapInput is an input type that accepts AddressScopeMap and AddressScopeMapOutput values.
@@ -303,6 +316,12 @@ func (i AddressScopeMap) ToAddressScopeMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AddressScopeMapOutput)
 }
 
+func (i AddressScopeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AddressScope] {
+	return pulumix.Output[map[string]*AddressScope]{
+		OutputState: i.ToAddressScopeMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AddressScopeOutput struct{ *pulumi.OutputState }
 
 func (AddressScopeOutput) ElementType() reflect.Type {
@@ -315,6 +334,12 @@ func (o AddressScopeOutput) ToAddressScopeOutput() AddressScopeOutput {
 
 func (o AddressScopeOutput) ToAddressScopeOutputWithContext(ctx context.Context) AddressScopeOutput {
 	return o
+}
+
+func (o AddressScopeOutput) ToOutput(ctx context.Context) pulumix.Output[*AddressScope] {
+	return pulumix.Output[*AddressScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 // IP version, either 4 (default) or 6. Changing this
@@ -365,6 +390,12 @@ func (o AddressScopeArrayOutput) ToAddressScopeArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o AddressScopeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AddressScope] {
+	return pulumix.Output[[]*AddressScope]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AddressScopeArrayOutput) Index(i pulumi.IntInput) AddressScopeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AddressScope {
 		return vs[0].([]*AddressScope)[vs[1].(int)]
@@ -383,6 +414,12 @@ func (o AddressScopeMapOutput) ToAddressScopeMapOutput() AddressScopeMapOutput {
 
 func (o AddressScopeMapOutput) ToAddressScopeMapOutputWithContext(ctx context.Context) AddressScopeMapOutput {
 	return o
+}
+
+func (o AddressScopeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AddressScope] {
+	return pulumix.Output[map[string]*AddressScope]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddressScopeMapOutput) MapIndex(k pulumi.StringInput) AddressScopeOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the networking quota of an OpenStack project.
@@ -124,6 +125,12 @@ func (o LookupQuotaV2ResultOutput) ToLookupQuotaV2ResultOutput() LookupQuotaV2Re
 
 func (o LookupQuotaV2ResultOutput) ToLookupQuotaV2ResultOutputWithContext(ctx context.Context) LookupQuotaV2ResultOutput {
 	return o
+}
+
+func (o LookupQuotaV2ResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupQuotaV2Result] {
+	return pulumix.Output[LookupQuotaV2Result]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The number of allowed floating ips.

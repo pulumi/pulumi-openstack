@@ -62,7 +62,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * The ID for the database instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -76,7 +76,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * A unique name for the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -90,7 +90,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Openstack region resource is created in.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**

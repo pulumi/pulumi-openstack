@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported by specifying the ID of the share network
+ * This resource can be imported by specifying the ID of the share network:
  *
  * ```sh
  *  $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 id

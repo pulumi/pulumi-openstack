@@ -67,7 +67,7 @@ public class MemberV1 extends com.pulumi.resources.CustomResource {
      * new member.
      * 
      */
-    @Export(name="address", type=String.class, parameters={})
+    @Export(name="address", refs={String.class}, tree="[0]")
     private Output<String> address;
 
     /**
@@ -84,7 +84,7 @@ public class MemberV1 extends com.pulumi.resources.CustomResource {
      * state of the existing member.
      * 
      */
-    @Export(name="adminStateUp", type=Boolean.class, parameters={})
+    @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> adminStateUp;
 
     /**
@@ -101,7 +101,7 @@ public class MemberV1 extends com.pulumi.resources.CustomResource {
      * member.
      * 
      */
-    @Export(name="poolId", type=String.class, parameters={})
+    @Export(name="poolId", refs={String.class}, tree="[0]")
     private Output<String> poolId;
 
     /**
@@ -117,7 +117,7 @@ public class MemberV1 extends com.pulumi.resources.CustomResource {
      * hosted. Changing this creates a new member.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
@@ -135,7 +135,7 @@ public class MemberV1 extends com.pulumi.resources.CustomResource {
      * LB member.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -153,7 +153,7 @@ public class MemberV1 extends com.pulumi.resources.CustomResource {
      * create a member for another tenant. Changing this creates a new member.
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tenantId;
 
     /**
@@ -164,7 +164,7 @@ public class MemberV1 extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> tenantId() {
         return Codegen.optional(this.tenantId);
     }
-    @Export(name="weight", type=Integer.class, parameters={})
+    @Export(name="weight", refs={Integer.class}, tree="[0]")
     private Output<Integer> weight;
 
     public Output<Integer> weight() {

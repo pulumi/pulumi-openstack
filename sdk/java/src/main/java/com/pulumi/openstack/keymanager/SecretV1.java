@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Secrets can be imported using the secret id (the last part of the secret reference), e.g.
+ * Secrets can be imported using the secret id (the last part of the secret reference), e.g.:
  * 
  * ```sh
  *  $ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
@@ -117,7 +117,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * project wide.
      * 
      */
-    @Export(name="acl", type=SecretV1Acl.class, parameters={})
+    @Export(name="acl", refs={SecretV1Acl.class}, tree="[0]")
     private Output<SecretV1Acl> acl;
 
     /**
@@ -133,7 +133,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * Metadata provided by a user or system for informational purposes.
      * 
      */
-    @Export(name="algorithm", type=String.class, parameters={})
+    @Export(name="algorithm", refs={String.class}, tree="[0]")
     private Output<String> algorithm;
 
     /**
@@ -148,7 +148,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * explicitly and implicitly added.
      * 
      */
-    @Export(name="allMetadata", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="allMetadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> allMetadata;
 
     /**
@@ -163,7 +163,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * Metadata provided by a user or system for informational purposes.
      * 
      */
-    @Export(name="bitLength", type=Integer.class, parameters={})
+    @Export(name="bitLength", refs={Integer.class}, tree="[0]")
     private Output<Integer> bitLength;
 
     /**
@@ -177,7 +177,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * The map of the content types, assigned on the secret.
      * 
      */
-    @Export(name="contentTypes", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="contentTypes", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> contentTypes;
 
     /**
@@ -191,7 +191,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * The date the secret ACL was created.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -205,7 +205,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * The creator of the secret.
      * 
      */
-    @Export(name="creatorId", type=String.class, parameters={})
+    @Export(name="creatorId", refs={String.class}, tree="[0]")
     private Output<String> creatorId;
 
     /**
@@ -219,7 +219,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
      * 
      */
-    @Export(name="expiration", type=String.class, parameters={})
+    @Export(name="expiration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expiration;
 
     /**
@@ -233,7 +233,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * Additional Metadata for the secret.
      * 
      */
-    @Export(name="metadata", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> metadata;
 
     /**
@@ -247,7 +247,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * Metadata provided by a user or system for informational purposes.
      * 
      */
-    @Export(name="mode", type=String.class, parameters={})
+    @Export(name="mode", refs={String.class}, tree="[0]")
     private Output<String> mode;
 
     /**
@@ -262,7 +262,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * to be unique.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -277,7 +277,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * The secret&#39;s data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
      * 
      */
-    @Export(name="payload", type=String.class, parameters={})
+    @Export(name="payload", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> payload;
 
     /**
@@ -291,7 +291,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
      * 
      */
-    @Export(name="payloadContentEncoding", type=String.class, parameters={})
+    @Export(name="payloadContentEncoding", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> payloadContentEncoding;
 
     /**
@@ -305,7 +305,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
      * 
      */
-    @Export(name="payloadContentType", type=String.class, parameters={})
+    @Export(name="payloadContentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> payloadContentType;
 
     /**
@@ -322,7 +322,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * V1 secret.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -339,7 +339,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * The secret reference / where to find the secret.
      * 
      */
-    @Export(name="secretRef", type=String.class, parameters={})
+    @Export(name="secretRef", refs={String.class}, tree="[0]")
     private Output<String> secretRef;
 
     /**
@@ -353,7 +353,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
      * 
      */
-    @Export(name="secretType", type=String.class, parameters={})
+    @Export(name="secretType", refs={String.class}, tree="[0]")
     private Output<String> secretType;
 
     /**
@@ -367,7 +367,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * The status of the secret.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -381,7 +381,7 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
      * The date the secret ACL was last updated.
      * 
      */
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**

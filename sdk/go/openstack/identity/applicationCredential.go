@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V3 Application Credential resource within OpenStack Keystone.
@@ -396,6 +397,12 @@ func (i *ApplicationCredential) ToApplicationCredentialOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCredentialOutput)
 }
 
+func (i *ApplicationCredential) ToOutput(ctx context.Context) pulumix.Output[*ApplicationCredential] {
+	return pulumix.Output[*ApplicationCredential]{
+		OutputState: i.ToApplicationCredentialOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ApplicationCredentialArrayInput is an input type that accepts ApplicationCredentialArray and ApplicationCredentialArrayOutput values.
 // You can construct a concrete instance of `ApplicationCredentialArrayInput` via:
 //
@@ -419,6 +426,12 @@ func (i ApplicationCredentialArray) ToApplicationCredentialArrayOutput() Applica
 
 func (i ApplicationCredentialArray) ToApplicationCredentialArrayOutputWithContext(ctx context.Context) ApplicationCredentialArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCredentialArrayOutput)
+}
+
+func (i ApplicationCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationCredential] {
+	return pulumix.Output[[]*ApplicationCredential]{
+		OutputState: i.ToApplicationCredentialArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ApplicationCredentialMapInput is an input type that accepts ApplicationCredentialMap and ApplicationCredentialMapOutput values.
@@ -446,6 +459,12 @@ func (i ApplicationCredentialMap) ToApplicationCredentialMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCredentialMapOutput)
 }
 
+func (i ApplicationCredentialMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationCredential] {
+	return pulumix.Output[map[string]*ApplicationCredential]{
+		OutputState: i.ToApplicationCredentialMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApplicationCredentialOutput struct{ *pulumi.OutputState }
 
 func (ApplicationCredentialOutput) ElementType() reflect.Type {
@@ -458,6 +477,12 @@ func (o ApplicationCredentialOutput) ToApplicationCredentialOutput() Application
 
 func (o ApplicationCredentialOutput) ToApplicationCredentialOutputWithContext(ctx context.Context) ApplicationCredentialOutput {
 	return o
+}
+
+func (o ApplicationCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationCredential] {
+	return pulumix.Output[*ApplicationCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A collection of one or more access rules, which
@@ -538,6 +563,12 @@ func (o ApplicationCredentialArrayOutput) ToApplicationCredentialArrayOutputWith
 	return o
 }
 
+func (o ApplicationCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationCredential] {
+	return pulumix.Output[[]*ApplicationCredential]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ApplicationCredentialArrayOutput) Index(i pulumi.IntInput) ApplicationCredentialOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationCredential {
 		return vs[0].([]*ApplicationCredential)[vs[1].(int)]
@@ -556,6 +587,12 @@ func (o ApplicationCredentialMapOutput) ToApplicationCredentialMapOutput() Appli
 
 func (o ApplicationCredentialMapOutput) ToApplicationCredentialMapOutputWithContext(ctx context.Context) ApplicationCredentialMapOutput {
 	return o
+}
+
+func (o ApplicationCredentialMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationCredential] {
+	return pulumix.Output[map[string]*ApplicationCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationCredentialMapOutput) MapIndex(k pulumi.StringInput) ApplicationCredentialOutput {

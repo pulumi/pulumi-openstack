@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="openstack:containerinfra/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
-    @Export(name="apiAddress", type=String.class, parameters={})
+    @Export(name="apiAddress", refs={String.class}, tree="[0]")
     private Output<String> apiAddress;
 
     public Output<String> apiAddress() {
@@ -117,7 +117,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * template. Changing this creates a new cluster.
      * 
      */
-    @Export(name="clusterTemplateId", type=String.class, parameters={})
+    @Export(name="clusterTemplateId", refs={String.class}, tree="[0]")
     private Output<String> clusterTemplateId;
 
     /**
@@ -128,13 +128,13 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<String> clusterTemplateId() {
         return this.clusterTemplateId;
     }
-    @Export(name="coeVersion", type=String.class, parameters={})
+    @Export(name="coeVersion", refs={String.class}, tree="[0]")
     private Output<String> coeVersion;
 
     public Output<String> coeVersion() {
         return this.coeVersion;
     }
-    @Export(name="containerVersion", type=String.class, parameters={})
+    @Export(name="containerVersion", refs={String.class}, tree="[0]")
     private Output<String> containerVersion;
 
     public Output<String> containerVersion() {
@@ -145,7 +145,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * cluster. Changing this creates a new cluster.
      * 
      */
-    @Export(name="createTimeout", type=Integer.class, parameters={})
+    @Export(name="createTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> createTimeout;
 
     /**
@@ -156,7 +156,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Integer> createTimeout() {
         return this.createTimeout;
     }
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     public Output<String> createdAt() {
@@ -167,7 +167,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Changing this creates a new cluster.
      * 
      */
-    @Export(name="discoveryUrl", type=String.class, parameters={})
+    @Export(name="discoveryUrl", refs={String.class}, tree="[0]")
     private Output<String> discoveryUrl;
 
     /**
@@ -183,7 +183,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Changing this creates a new cluster.
      * 
      */
-    @Export(name="dockerVolumeSize", type=Integer.class, parameters={})
+    @Export(name="dockerVolumeSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> dockerVolumeSize;
 
     /**
@@ -199,7 +199,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * cluster. Changing this creates a new cluster.
      * 
      */
-    @Export(name="fixedNetwork", type=String.class, parameters={})
+    @Export(name="fixedNetwork", refs={String.class}, tree="[0]")
     private Output<String> fixedNetwork;
 
     /**
@@ -215,7 +215,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * cluster. Changing this creates a new cluster.
      * 
      */
-    @Export(name="fixedSubnet", type=String.class, parameters={})
+    @Export(name="fixedSubnet", refs={String.class}, tree="[0]")
     private Output<String> fixedSubnet;
 
     /**
@@ -232,7 +232,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * cluster.
      * 
      */
-    @Export(name="flavor", type=String.class, parameters={})
+    @Export(name="flavor", refs={String.class}, tree="[0]")
     private Output<String> flavor;
 
     /**
@@ -249,7 +249,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * created for every cluster node. Changing this creates a new cluster.
      * 
      */
-    @Export(name="floatingIpEnabled", type=Boolean.class, parameters={})
+    @Export(name="floatingIpEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> floatingIpEnabled;
 
     /**
@@ -265,7 +265,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * this creates a new cluster.
      * 
      */
-    @Export(name="keypair", type=String.class, parameters={})
+    @Export(name="keypair", refs={String.class}, tree="[0]")
     private Output<String> keypair;
 
     /**
@@ -276,7 +276,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<String> keypair() {
         return this.keypair;
     }
-    @Export(name="kubeconfig", type=Map.class, parameters={String.class, String.class})
+    @Export(name="kubeconfig", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> kubeconfig;
 
     public Output<Map<String,String>> kubeconfig() {
@@ -287,7 +287,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * properties of the cluster. Changing this creates a new cluster.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -298,7 +298,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Map<String,Object>> labels() {
         return this.labels;
     }
-    @Export(name="masterAddresses", type=List.class, parameters={String.class})
+    @Export(name="masterAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> masterAddresses;
 
     public Output<List<String>> masterAddresses() {
@@ -309,7 +309,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Changing this creates a new cluster.
      * 
      */
-    @Export(name="masterCount", type=Integer.class, parameters={})
+    @Export(name="masterCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> masterCount;
 
     /**
@@ -326,7 +326,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * new cluster.
      * 
      */
-    @Export(name="masterFlavor", type=String.class, parameters={})
+    @Export(name="masterFlavor", refs={String.class}, tree="[0]")
     private Output<String> masterFlavor;
 
     /**
@@ -343,7 +343,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * merged with cluster template labels. Changing this creates a new cluster.
      * 
      */
-    @Export(name="mergeLabels", type=Boolean.class, parameters={})
+    @Export(name="mergeLabels", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> mergeLabels;
 
     /**
@@ -359,7 +359,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * cluster.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -370,7 +370,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="nodeAddresses", type=List.class, parameters={String.class})
+    @Export(name="nodeAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> nodeAddresses;
 
     public Output<List<String>> nodeAddresses() {
@@ -380,7 +380,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The number of nodes for the cluster.
      * 
      */
-    @Export(name="nodeCount", type=Integer.class, parameters={})
+    @Export(name="nodeCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> nodeCount;
 
     /**
@@ -396,7 +396,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * cluster.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -415,7 +415,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * cluster.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -428,13 +428,13 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<String> region() {
         return this.region;
     }
-    @Export(name="stackId", type=String.class, parameters={})
+    @Export(name="stackId", refs={String.class}, tree="[0]")
     private Output<String> stackId;
 
     public Output<String> stackId() {
         return this.stackId;
     }
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     public Output<String> updatedAt() {
@@ -446,7 +446,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * cluster.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 Neutron QoS minimum bandwidth rule resource within OpenStack.
@@ -197,6 +198,12 @@ func (i *QosMinimumBandwidthRule) ToQosMinimumBandwidthRuleOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(QosMinimumBandwidthRuleOutput)
 }
 
+func (i *QosMinimumBandwidthRule) ToOutput(ctx context.Context) pulumix.Output[*QosMinimumBandwidthRule] {
+	return pulumix.Output[*QosMinimumBandwidthRule]{
+		OutputState: i.ToQosMinimumBandwidthRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // QosMinimumBandwidthRuleArrayInput is an input type that accepts QosMinimumBandwidthRuleArray and QosMinimumBandwidthRuleArrayOutput values.
 // You can construct a concrete instance of `QosMinimumBandwidthRuleArrayInput` via:
 //
@@ -220,6 +227,12 @@ func (i QosMinimumBandwidthRuleArray) ToQosMinimumBandwidthRuleArrayOutput() Qos
 
 func (i QosMinimumBandwidthRuleArray) ToQosMinimumBandwidthRuleArrayOutputWithContext(ctx context.Context) QosMinimumBandwidthRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosMinimumBandwidthRuleArrayOutput)
+}
+
+func (i QosMinimumBandwidthRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*QosMinimumBandwidthRule] {
+	return pulumix.Output[[]*QosMinimumBandwidthRule]{
+		OutputState: i.ToQosMinimumBandwidthRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // QosMinimumBandwidthRuleMapInput is an input type that accepts QosMinimumBandwidthRuleMap and QosMinimumBandwidthRuleMapOutput values.
@@ -247,6 +260,12 @@ func (i QosMinimumBandwidthRuleMap) ToQosMinimumBandwidthRuleMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(QosMinimumBandwidthRuleMapOutput)
 }
 
+func (i QosMinimumBandwidthRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*QosMinimumBandwidthRule] {
+	return pulumix.Output[map[string]*QosMinimumBandwidthRule]{
+		OutputState: i.ToQosMinimumBandwidthRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type QosMinimumBandwidthRuleOutput struct{ *pulumi.OutputState }
 
 func (QosMinimumBandwidthRuleOutput) ElementType() reflect.Type {
@@ -259,6 +278,12 @@ func (o QosMinimumBandwidthRuleOutput) ToQosMinimumBandwidthRuleOutput() QosMini
 
 func (o QosMinimumBandwidthRuleOutput) ToQosMinimumBandwidthRuleOutputWithContext(ctx context.Context) QosMinimumBandwidthRuleOutput {
 	return o
+}
+
+func (o QosMinimumBandwidthRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*QosMinimumBandwidthRule] {
+	return pulumix.Output[*QosMinimumBandwidthRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The direction of traffic. Defaults to "egress". Changing this updates the direction of the
@@ -299,6 +324,12 @@ func (o QosMinimumBandwidthRuleArrayOutput) ToQosMinimumBandwidthRuleArrayOutput
 	return o
 }
 
+func (o QosMinimumBandwidthRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*QosMinimumBandwidthRule] {
+	return pulumix.Output[[]*QosMinimumBandwidthRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o QosMinimumBandwidthRuleArrayOutput) Index(i pulumi.IntInput) QosMinimumBandwidthRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QosMinimumBandwidthRule {
 		return vs[0].([]*QosMinimumBandwidthRule)[vs[1].(int)]
@@ -317,6 +348,12 @@ func (o QosMinimumBandwidthRuleMapOutput) ToQosMinimumBandwidthRuleMapOutput() Q
 
 func (o QosMinimumBandwidthRuleMapOutput) ToQosMinimumBandwidthRuleMapOutputWithContext(ctx context.Context) QosMinimumBandwidthRuleMapOutput {
 	return o
+}
+
+func (o QosMinimumBandwidthRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*QosMinimumBandwidthRule] {
+	return pulumix.Output[map[string]*QosMinimumBandwidthRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o QosMinimumBandwidthRuleMapOutput) MapIndex(k pulumi.StringInput) QosMinimumBandwidthRuleOutput {

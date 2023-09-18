@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 flavor resource within OpenStack.
@@ -323,6 +324,12 @@ func (i *Flavor) ToFlavorOutputWithContext(ctx context.Context) FlavorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlavorOutput)
 }
 
+func (i *Flavor) ToOutput(ctx context.Context) pulumix.Output[*Flavor] {
+	return pulumix.Output[*Flavor]{
+		OutputState: i.ToFlavorOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FlavorArrayInput is an input type that accepts FlavorArray and FlavorArrayOutput values.
 // You can construct a concrete instance of `FlavorArrayInput` via:
 //
@@ -346,6 +353,12 @@ func (i FlavorArray) ToFlavorArrayOutput() FlavorArrayOutput {
 
 func (i FlavorArray) ToFlavorArrayOutputWithContext(ctx context.Context) FlavorArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlavorArrayOutput)
+}
+
+func (i FlavorArray) ToOutput(ctx context.Context) pulumix.Output[[]*Flavor] {
+	return pulumix.Output[[]*Flavor]{
+		OutputState: i.ToFlavorArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FlavorMapInput is an input type that accepts FlavorMap and FlavorMapOutput values.
@@ -373,6 +386,12 @@ func (i FlavorMap) ToFlavorMapOutputWithContext(ctx context.Context) FlavorMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(FlavorMapOutput)
 }
 
+func (i FlavorMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Flavor] {
+	return pulumix.Output[map[string]*Flavor]{
+		OutputState: i.ToFlavorMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FlavorOutput struct{ *pulumi.OutputState }
 
 func (FlavorOutput) ElementType() reflect.Type {
@@ -385,6 +404,12 @@ func (o FlavorOutput) ToFlavorOutput() FlavorOutput {
 
 func (o FlavorOutput) ToFlavorOutputWithContext(ctx context.Context) FlavorOutput {
 	return o
+}
+
+func (o FlavorOutput) ToOutput(ctx context.Context) pulumix.Output[*Flavor] {
+	return pulumix.Output[*Flavor]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the flavor. Changing this
@@ -474,6 +499,12 @@ func (o FlavorArrayOutput) ToFlavorArrayOutputWithContext(ctx context.Context) F
 	return o
 }
 
+func (o FlavorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Flavor] {
+	return pulumix.Output[[]*Flavor]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FlavorArrayOutput) Index(i pulumi.IntInput) FlavorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Flavor {
 		return vs[0].([]*Flavor)[vs[1].(int)]
@@ -492,6 +523,12 @@ func (o FlavorMapOutput) ToFlavorMapOutput() FlavorMapOutput {
 
 func (o FlavorMapOutput) ToFlavorMapOutputWithContext(ctx context.Context) FlavorMapOutput {
 	return o
+}
+
+func (o FlavorMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Flavor] {
+	return pulumix.Output[map[string]*Flavor]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FlavorMapOutput) MapIndex(k pulumi.StringInput) FlavorOutput {

@@ -54,7 +54,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying the ID of the share
+    /// This resource can be imported by specifying the ID of the share:
     /// 
     /// ```sh
     ///  $ pulumi import openstack:sharedfilesystem/share:Share share_1 id

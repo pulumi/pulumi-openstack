@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the transferRequest ID
+ * This resource can be imported by specifying the transferRequest ID:
  * 
  * ```sh
  *  $ pulumi import openstack:dns/transferRequest:TransferRequest request_1 request_id
@@ -76,7 +76,7 @@ public class TransferRequest extends com.pulumi.resources.CustomResource {
      * A description of the zone tranfer request.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -92,7 +92,7 @@ public class TransferRequest extends com.pulumi.resources.CustomResource {
      * will be considered as created/updated if OpenStack request returned success.
      * 
      */
-    @Export(name="disableStatusCheck", type=Boolean.class, parameters={})
+    @Export(name="disableStatusCheck", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableStatusCheck;
 
     /**
@@ -104,7 +104,7 @@ public class TransferRequest extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> disableStatusCheck() {
         return Codegen.optional(this.disableStatusCheck);
     }
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     public Output<String> key() {
@@ -117,7 +117,7 @@ public class TransferRequest extends com.pulumi.resources.CustomResource {
      * Changing this creates a new DNS zone.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -134,7 +134,7 @@ public class TransferRequest extends com.pulumi.resources.CustomResource {
      * The target Project ID to transfer to.
      * 
      */
-    @Export(name="targetProjectId", type=String.class, parameters={})
+    @Export(name="targetProjectId", refs={String.class}, tree="[0]")
     private Output<String> targetProjectId;
 
     /**
@@ -149,7 +149,7 @@ public class TransferRequest extends com.pulumi.resources.CustomResource {
      * new transfer request.
      * 
      */
-    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**
@@ -165,7 +165,7 @@ public class TransferRequest extends com.pulumi.resources.CustomResource {
      * request.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

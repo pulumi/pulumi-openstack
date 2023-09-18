@@ -51,7 +51,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ## Import
     /// 
-    /// Routing entries can be imported using a combined ID using the following format``&lt;subnet_id&gt;-route-&lt;destination_cidr&gt;-&lt;next_hop&gt;``
+    /// Routing entries can be imported using a combined ID using the following format`&lt;subnet_id&gt;-route-&lt;destination_cidr&gt;-&lt;next_hop&gt;`
     /// 
     /// ```sh
     ///  $ pulumi import openstack:networking/subnetRoute:SubnetRoute subnet_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25

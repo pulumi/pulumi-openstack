@@ -581,7 +581,11 @@ class Container(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the name of the containerSome attributes can't be imported * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key` So you'll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.
+        This resource can be imported by specifying the name of the container:
+
+        Some attributes can't be imported * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key`
+
+        So you'll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.
 
         ```sh
          $ pulumi import openstack:objectstorage/container:Container container_1 container_name
@@ -695,7 +699,11 @@ class Container(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the name of the containerSome attributes can't be imported * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key` So you'll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.
+        This resource can be imported by specifying the name of the container:
+
+        Some attributes can't be imported * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key`
+
+        So you'll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.
 
         ```sh
          $ pulumi import openstack:objectstorage/container:Container container_1 container_name

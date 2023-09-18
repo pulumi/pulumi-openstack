@@ -87,7 +87,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * Changing this creates a new node group.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -98,7 +98,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
     public Output<String> clusterId() {
         return this.clusterId;
     }
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     public Output<String> createdAt() {
@@ -109,7 +109,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * Changing this creates a new node group.
      * 
      */
-    @Export(name="dockerVolumeSize", type=Integer.class, parameters={})
+    @Export(name="dockerVolumeSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> dockerVolumeSize;
 
     /**
@@ -126,7 +126,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * node group.
      * 
      */
-    @Export(name="flavorId", type=String.class, parameters={})
+    @Export(name="flavorId", refs={String.class}, tree="[0]")
     private Output<String> flavorId;
 
     /**
@@ -144,7 +144,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * Changing this updates the image attribute of the existing node group.
      * 
      */
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output<String> imageId;
 
     /**
@@ -161,7 +161,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * properties of the node group. Changing this creates a new node group.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> labels;
 
     /**
@@ -177,7 +177,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * Changing this update the maximum number of nodes of the node group.
      * 
      */
-    @Export(name="maxNodeCount", type=Integer.class, parameters={})
+    @Export(name="maxNodeCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxNodeCount;
 
     /**
@@ -193,7 +193,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * merged with cluster labels. Changing this creates a new nodegroup.
      * 
      */
-    @Export(name="mergeLabels", type=Boolean.class, parameters={})
+    @Export(name="mergeLabels", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> mergeLabels;
 
     /**
@@ -209,7 +209,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * Changing this update the minimum number of nodes of the node group.
      * 
      */
-    @Export(name="minNodeCount", type=Integer.class, parameters={})
+    @Export(name="minNodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> minNodeCount;
 
     /**
@@ -225,7 +225,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * node group.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -241,7 +241,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * this update the number of nodes of the node group.
      * 
      */
-    @Export(name="nodeCount", type=Integer.class, parameters={})
+    @Export(name="nodeCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> nodeCount;
 
     /**
@@ -258,7 +258,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * node group.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -277,7 +277,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * node group.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -295,7 +295,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
      * creates a new node group.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
@@ -306,7 +306,7 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
     public Output<String> role() {
         return this.role;
     }
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     public Output<String> updatedAt() {

@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the transferAccept ID
+ * This resource can be imported by specifying the transferAccept ID:
  * 
  * ```sh
  *  $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 accept_id
@@ -85,7 +85,7 @@ public class TransferAccept extends com.pulumi.resources.CustomResource {
      * will be considered as created/updated if OpenStack accept returned success.
      * 
      */
-    @Export(name="disableStatusCheck", type=Boolean.class, parameters={})
+    @Export(name="disableStatusCheck", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableStatusCheck;
 
     /**
@@ -101,7 +101,7 @@ public class TransferAccept extends com.pulumi.resources.CustomResource {
      * The transfer key.
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -118,7 +118,7 @@ public class TransferAccept extends com.pulumi.resources.CustomResource {
      * Changing this creates a new DNS zone.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -136,7 +136,7 @@ public class TransferAccept extends com.pulumi.resources.CustomResource {
      * new transfer accept.
      * 
      */
-    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**
@@ -151,7 +151,7 @@ public class TransferAccept extends com.pulumi.resources.CustomResource {
      * The ID of the zone transfer request.
      * 
      */
-    @Export(name="zoneTransferRequestId", type=String.class, parameters={})
+    @Export(name="zoneTransferRequestId", refs={String.class}, tree="[0]")
     private Output<String> zoneTransferRequestId;
 
     /**

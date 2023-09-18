@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.
+ * Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.:
  * 
  * ```sh
  *  $ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
@@ -105,7 +105,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * REDIRECT\_TO\_URL or REJECT.
      * 
      */
-    @Export(name="action", type=String.class, parameters={})
+    @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
@@ -121,7 +121,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * A valid value is true (UP) or false (DOWN).
      * 
      */
-    @Export(name="adminStateUp", type=Boolean.class, parameters={})
+    @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> adminStateUp;
 
     /**
@@ -136,7 +136,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * Human-readable description for the L7 Policy.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -151,7 +151,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * Changing this creates a new L7 Policy.
      * 
      */
-    @Export(name="listenerId", type=String.class, parameters={})
+    @Export(name="listenerId", refs={String.class}, tree="[0]")
     private Output<String> listenerId;
 
     /**
@@ -167,7 +167,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * to be unique.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -182,7 +182,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * The position of this policy on the listener. Positions start at 1.
      * 
      */
-    @Export(name="position", type=Integer.class, parameters={})
+    @Export(name="position", refs={Integer.class}, tree="[0]")
     private Output<Integer> position;
 
     /**
@@ -197,7 +197,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
      * 
      */
-    @Export(name="redirectPoolId", type=String.class, parameters={})
+    @Export(name="redirectPoolId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> redirectPoolId;
 
     /**
@@ -213,7 +213,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * Only valid if action is REDIRECT\_TO\_URL.
      * 
      */
-    @Export(name="redirectUrl", type=String.class, parameters={})
+    @Export(name="redirectUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> redirectUrl;
 
     /**
@@ -231,7 +231,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * L7 Policy.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -250,7 +250,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * other than their own. Changing this creates a new L7 Policy.
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**

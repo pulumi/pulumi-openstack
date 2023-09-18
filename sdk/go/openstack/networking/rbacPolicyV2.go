@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The RBAC policy resource contains functionality for working with Neutron RBAC
@@ -254,6 +255,12 @@ func (i *RbacPolicyV2) ToRbacPolicyV2OutputWithContext(ctx context.Context) Rbac
 	return pulumi.ToOutputWithContext(ctx, i).(RbacPolicyV2Output)
 }
 
+func (i *RbacPolicyV2) ToOutput(ctx context.Context) pulumix.Output[*RbacPolicyV2] {
+	return pulumix.Output[*RbacPolicyV2]{
+		OutputState: i.ToRbacPolicyV2OutputWithContext(ctx).OutputState,
+	}
+}
+
 // RbacPolicyV2ArrayInput is an input type that accepts RbacPolicyV2Array and RbacPolicyV2ArrayOutput values.
 // You can construct a concrete instance of `RbacPolicyV2ArrayInput` via:
 //
@@ -277,6 +284,12 @@ func (i RbacPolicyV2Array) ToRbacPolicyV2ArrayOutput() RbacPolicyV2ArrayOutput {
 
 func (i RbacPolicyV2Array) ToRbacPolicyV2ArrayOutputWithContext(ctx context.Context) RbacPolicyV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RbacPolicyV2ArrayOutput)
+}
+
+func (i RbacPolicyV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*RbacPolicyV2] {
+	return pulumix.Output[[]*RbacPolicyV2]{
+		OutputState: i.ToRbacPolicyV2ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RbacPolicyV2MapInput is an input type that accepts RbacPolicyV2Map and RbacPolicyV2MapOutput values.
@@ -304,6 +317,12 @@ func (i RbacPolicyV2Map) ToRbacPolicyV2MapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RbacPolicyV2MapOutput)
 }
 
+func (i RbacPolicyV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*RbacPolicyV2] {
+	return pulumix.Output[map[string]*RbacPolicyV2]{
+		OutputState: i.ToRbacPolicyV2MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RbacPolicyV2Output struct{ *pulumi.OutputState }
 
 func (RbacPolicyV2Output) ElementType() reflect.Type {
@@ -316,6 +335,12 @@ func (o RbacPolicyV2Output) ToRbacPolicyV2Output() RbacPolicyV2Output {
 
 func (o RbacPolicyV2Output) ToRbacPolicyV2OutputWithContext(ctx context.Context) RbacPolicyV2Output {
 	return o
+}
+
+func (o RbacPolicyV2Output) ToOutput(ctx context.Context) pulumix.Output[*RbacPolicyV2] {
+	return pulumix.Output[*RbacPolicyV2]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Action for the RBAC policy. Can either be
@@ -370,6 +395,12 @@ func (o RbacPolicyV2ArrayOutput) ToRbacPolicyV2ArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o RbacPolicyV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RbacPolicyV2] {
+	return pulumix.Output[[]*RbacPolicyV2]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RbacPolicyV2ArrayOutput) Index(i pulumi.IntInput) RbacPolicyV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RbacPolicyV2 {
 		return vs[0].([]*RbacPolicyV2)[vs[1].(int)]
@@ -388,6 +419,12 @@ func (o RbacPolicyV2MapOutput) ToRbacPolicyV2MapOutput() RbacPolicyV2MapOutput {
 
 func (o RbacPolicyV2MapOutput) ToRbacPolicyV2MapOutputWithContext(ctx context.Context) RbacPolicyV2MapOutput {
 	return o
+}
+
+func (o RbacPolicyV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RbacPolicyV2] {
+	return pulumix.Output[map[string]*RbacPolicyV2]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RbacPolicyV2MapOutput) MapIndex(k pulumi.StringInput) RbacPolicyV2Output {

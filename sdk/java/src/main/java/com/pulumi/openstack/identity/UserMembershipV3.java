@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying all two arguments, separated by a forward slash
+ * This resource can be imported by specifying all two arguments, separated by a forward slash:
  * 
  * ```sh
  *  $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
@@ -94,7 +94,7 @@ public class UserMembershipV3 extends com.pulumi.resources.CustomResource {
      * Changing this creates a new user membership.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -111,7 +111,7 @@ public class UserMembershipV3 extends com.pulumi.resources.CustomResource {
      * Changing this creates a new user membership.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -127,7 +127,7 @@ public class UserMembershipV3 extends com.pulumi.resources.CustomResource {
      * The UUID of user to use. Changing this creates a new user membership.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**

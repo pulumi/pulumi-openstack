@@ -324,7 +324,7 @@ class OrderV1(pulumi.CustomResource):
 
         ## Import
 
-        Orders can be imported using the order id (the last part of the order reference), e.g.
+        Orders can be imported using the order id (the last part of the order reference), e.g.:
 
         ```sh
          $ pulumi import openstack:keymanager/orderV1:OrderV1 order_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
@@ -381,7 +381,7 @@ class OrderV1(pulumi.CustomResource):
 
         ## Import
 
-        Orders can be imported using the order id (the last part of the order reference), e.g.
+        Orders can be imported using the order id (the last part of the order reference), e.g.:
 
         ```sh
          $ pulumi import openstack:keymanager/orderV1:OrderV1 order_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953

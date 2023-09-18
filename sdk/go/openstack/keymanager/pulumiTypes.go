@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -42,6 +43,12 @@ func (i ContainerV1AclArgs) ToContainerV1AclOutput() ContainerV1AclOutput {
 
 func (i ContainerV1AclArgs) ToContainerV1AclOutputWithContext(ctx context.Context) ContainerV1AclOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1AclOutput)
+}
+
+func (i ContainerV1AclArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerV1Acl] {
+	return pulumix.Output[ContainerV1Acl]{
+		OutputState: i.ToContainerV1AclOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ContainerV1AclArgs) ToContainerV1AclPtrOutput() ContainerV1AclPtrOutput {
@@ -85,6 +92,12 @@ func (i *containerV1AclPtrType) ToContainerV1AclPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1AclPtrOutput)
 }
 
+func (i *containerV1AclPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerV1Acl] {
+	return pulumix.Output[*ContainerV1Acl]{
+		OutputState: i.ToContainerV1AclPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerV1AclOutput struct{ *pulumi.OutputState }
 
 func (ContainerV1AclOutput) ElementType() reflect.Type {
@@ -109,6 +122,12 @@ func (o ContainerV1AclOutput) ToContainerV1AclPtrOutputWithContext(ctx context.C
 	}).(ContainerV1AclPtrOutput)
 }
 
+func (o ContainerV1AclOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerV1Acl] {
+	return pulumix.Output[ContainerV1Acl]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ContainerV1AclOutput) Read() ContainerV1AclReadPtrOutput {
 	return o.ApplyT(func(v ContainerV1Acl) *ContainerV1AclRead { return v.Read }).(ContainerV1AclReadPtrOutput)
 }
@@ -125,6 +144,12 @@ func (o ContainerV1AclPtrOutput) ToContainerV1AclPtrOutput() ContainerV1AclPtrOu
 
 func (o ContainerV1AclPtrOutput) ToContainerV1AclPtrOutputWithContext(ctx context.Context) ContainerV1AclPtrOutput {
 	return o
+}
+
+func (o ContainerV1AclPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerV1Acl] {
+	return pulumix.Output[*ContainerV1Acl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerV1AclPtrOutput) Elem() ContainerV1AclOutput {
@@ -195,6 +220,12 @@ func (i ContainerV1AclReadArgs) ToContainerV1AclReadOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1AclReadOutput)
 }
 
+func (i ContainerV1AclReadArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerV1AclRead] {
+	return pulumix.Output[ContainerV1AclRead]{
+		OutputState: i.ToContainerV1AclReadOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ContainerV1AclReadArgs) ToContainerV1AclReadPtrOutput() ContainerV1AclReadPtrOutput {
 	return i.ToContainerV1AclReadPtrOutputWithContext(context.Background())
 }
@@ -236,6 +267,12 @@ func (i *containerV1AclReadPtrType) ToContainerV1AclReadPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1AclReadPtrOutput)
 }
 
+func (i *containerV1AclReadPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerV1AclRead] {
+	return pulumix.Output[*ContainerV1AclRead]{
+		OutputState: i.ToContainerV1AclReadPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerV1AclReadOutput struct{ *pulumi.OutputState }
 
 func (ContainerV1AclReadOutput) ElementType() reflect.Type {
@@ -258,6 +295,12 @@ func (o ContainerV1AclReadOutput) ToContainerV1AclReadPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerV1AclRead) *ContainerV1AclRead {
 		return &v
 	}).(ContainerV1AclReadPtrOutput)
+}
+
+func (o ContainerV1AclReadOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerV1AclRead] {
+	return pulumix.Output[ContainerV1AclRead]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The date the container ACL was created.
@@ -294,6 +337,12 @@ func (o ContainerV1AclReadPtrOutput) ToContainerV1AclReadPtrOutput() ContainerV1
 
 func (o ContainerV1AclReadPtrOutput) ToContainerV1AclReadPtrOutputWithContext(ctx context.Context) ContainerV1AclReadPtrOutput {
 	return o
+}
+
+func (o ContainerV1AclReadPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerV1AclRead] {
+	return pulumix.Output[*ContainerV1AclRead]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerV1AclReadPtrOutput) Elem() ContainerV1AclReadOutput {
@@ -387,6 +436,12 @@ func (i ContainerV1ConsumerArgs) ToContainerV1ConsumerOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1ConsumerOutput)
 }
 
+func (i ContainerV1ConsumerArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerV1Consumer] {
+	return pulumix.Output[ContainerV1Consumer]{
+		OutputState: i.ToContainerV1ConsumerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerV1ConsumerArrayInput is an input type that accepts ContainerV1ConsumerArray and ContainerV1ConsumerArrayOutput values.
 // You can construct a concrete instance of `ContainerV1ConsumerArrayInput` via:
 //
@@ -412,6 +467,12 @@ func (i ContainerV1ConsumerArray) ToContainerV1ConsumerArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1ConsumerArrayOutput)
 }
 
+func (i ContainerV1ConsumerArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerV1Consumer] {
+	return pulumix.Output[[]ContainerV1Consumer]{
+		OutputState: i.ToContainerV1ConsumerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerV1ConsumerOutput struct{ *pulumi.OutputState }
 
 func (ContainerV1ConsumerOutput) ElementType() reflect.Type {
@@ -424,6 +485,12 @@ func (o ContainerV1ConsumerOutput) ToContainerV1ConsumerOutput() ContainerV1Cons
 
 func (o ContainerV1ConsumerOutput) ToContainerV1ConsumerOutputWithContext(ctx context.Context) ContainerV1ConsumerOutput {
 	return o
+}
+
+func (o ContainerV1ConsumerOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerV1Consumer] {
+	return pulumix.Output[ContainerV1Consumer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Human-readable name for the Container. Does not have
@@ -449,6 +516,12 @@ func (o ContainerV1ConsumerArrayOutput) ToContainerV1ConsumerArrayOutput() Conta
 
 func (o ContainerV1ConsumerArrayOutput) ToContainerV1ConsumerArrayOutputWithContext(ctx context.Context) ContainerV1ConsumerArrayOutput {
 	return o
+}
+
+func (o ContainerV1ConsumerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerV1Consumer] {
+	return pulumix.Output[[]ContainerV1Consumer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerV1ConsumerArrayOutput) Index(i pulumi.IntInput) ContainerV1ConsumerOutput {
@@ -494,6 +567,12 @@ func (i ContainerV1SecretRefArgs) ToContainerV1SecretRefOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1SecretRefOutput)
 }
 
+func (i ContainerV1SecretRefArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerV1SecretRef] {
+	return pulumix.Output[ContainerV1SecretRef]{
+		OutputState: i.ToContainerV1SecretRefOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerV1SecretRefArrayInput is an input type that accepts ContainerV1SecretRefArray and ContainerV1SecretRefArrayOutput values.
 // You can construct a concrete instance of `ContainerV1SecretRefArrayInput` via:
 //
@@ -519,6 +598,12 @@ func (i ContainerV1SecretRefArray) ToContainerV1SecretRefArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerV1SecretRefArrayOutput)
 }
 
+func (i ContainerV1SecretRefArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerV1SecretRef] {
+	return pulumix.Output[[]ContainerV1SecretRef]{
+		OutputState: i.ToContainerV1SecretRefArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerV1SecretRefOutput struct{ *pulumi.OutputState }
 
 func (ContainerV1SecretRefOutput) ElementType() reflect.Type {
@@ -531,6 +616,12 @@ func (o ContainerV1SecretRefOutput) ToContainerV1SecretRefOutput() ContainerV1Se
 
 func (o ContainerV1SecretRefOutput) ToContainerV1SecretRefOutputWithContext(ctx context.Context) ContainerV1SecretRefOutput {
 	return o
+}
+
+func (o ContainerV1SecretRefOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerV1SecretRef] {
+	return pulumix.Output[ContainerV1SecretRef]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
@@ -555,6 +646,12 @@ func (o ContainerV1SecretRefArrayOutput) ToContainerV1SecretRefArrayOutput() Con
 
 func (o ContainerV1SecretRefArrayOutput) ToContainerV1SecretRefArrayOutputWithContext(ctx context.Context) ContainerV1SecretRefArrayOutput {
 	return o
+}
+
+func (o ContainerV1SecretRefArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerV1SecretRef] {
+	return pulumix.Output[[]ContainerV1SecretRef]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerV1SecretRefArrayOutput) Index(i pulumi.IntInput) ContainerV1SecretRefOutput {
@@ -616,6 +713,12 @@ func (i OrderV1MetaArgs) ToOrderV1MetaOutputWithContext(ctx context.Context) Ord
 	return pulumi.ToOutputWithContext(ctx, i).(OrderV1MetaOutput)
 }
 
+func (i OrderV1MetaArgs) ToOutput(ctx context.Context) pulumix.Output[OrderV1Meta] {
+	return pulumix.Output[OrderV1Meta]{
+		OutputState: i.ToOrderV1MetaOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i OrderV1MetaArgs) ToOrderV1MetaPtrOutput() OrderV1MetaPtrOutput {
 	return i.ToOrderV1MetaPtrOutputWithContext(context.Background())
 }
@@ -657,6 +760,12 @@ func (i *orderV1MetaPtrType) ToOrderV1MetaPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(OrderV1MetaPtrOutput)
 }
 
+func (i *orderV1MetaPtrType) ToOutput(ctx context.Context) pulumix.Output[*OrderV1Meta] {
+	return pulumix.Output[*OrderV1Meta]{
+		OutputState: i.ToOrderV1MetaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type OrderV1MetaOutput struct{ *pulumi.OutputState }
 
 func (OrderV1MetaOutput) ElementType() reflect.Type {
@@ -679,6 +788,12 @@ func (o OrderV1MetaOutput) ToOrderV1MetaPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrderV1Meta) *OrderV1Meta {
 		return &v
 	}).(OrderV1MetaPtrOutput)
+}
+
+func (o OrderV1MetaOutput) ToOutput(ctx context.Context) pulumix.Output[OrderV1Meta] {
+	return pulumix.Output[OrderV1Meta]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Algorithm to use for key generation.
@@ -723,6 +838,12 @@ func (o OrderV1MetaPtrOutput) ToOrderV1MetaPtrOutput() OrderV1MetaPtrOutput {
 
 func (o OrderV1MetaPtrOutput) ToOrderV1MetaPtrOutputWithContext(ctx context.Context) OrderV1MetaPtrOutput {
 	return o
+}
+
+func (o OrderV1MetaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrderV1Meta] {
+	return pulumix.Output[*OrderV1Meta]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o OrderV1MetaPtrOutput) Elem() OrderV1MetaOutput {
@@ -826,6 +947,12 @@ func (i SecretV1AclArgs) ToSecretV1AclOutputWithContext(ctx context.Context) Sec
 	return pulumi.ToOutputWithContext(ctx, i).(SecretV1AclOutput)
 }
 
+func (i SecretV1AclArgs) ToOutput(ctx context.Context) pulumix.Output[SecretV1Acl] {
+	return pulumix.Output[SecretV1Acl]{
+		OutputState: i.ToSecretV1AclOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecretV1AclArgs) ToSecretV1AclPtrOutput() SecretV1AclPtrOutput {
 	return i.ToSecretV1AclPtrOutputWithContext(context.Background())
 }
@@ -867,6 +994,12 @@ func (i *secretV1AclPtrType) ToSecretV1AclPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecretV1AclPtrOutput)
 }
 
+func (i *secretV1AclPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretV1Acl] {
+	return pulumix.Output[*SecretV1Acl]{
+		OutputState: i.ToSecretV1AclPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecretV1AclOutput struct{ *pulumi.OutputState }
 
 func (SecretV1AclOutput) ElementType() reflect.Type {
@@ -891,6 +1024,12 @@ func (o SecretV1AclOutput) ToSecretV1AclPtrOutputWithContext(ctx context.Context
 	}).(SecretV1AclPtrOutput)
 }
 
+func (o SecretV1AclOutput) ToOutput(ctx context.Context) pulumix.Output[SecretV1Acl] {
+	return pulumix.Output[SecretV1Acl]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecretV1AclOutput) Read() SecretV1AclReadPtrOutput {
 	return o.ApplyT(func(v SecretV1Acl) *SecretV1AclRead { return v.Read }).(SecretV1AclReadPtrOutput)
 }
@@ -907,6 +1046,12 @@ func (o SecretV1AclPtrOutput) ToSecretV1AclPtrOutput() SecretV1AclPtrOutput {
 
 func (o SecretV1AclPtrOutput) ToSecretV1AclPtrOutputWithContext(ctx context.Context) SecretV1AclPtrOutput {
 	return o
+}
+
+func (o SecretV1AclPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretV1Acl] {
+	return pulumix.Output[*SecretV1Acl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretV1AclPtrOutput) Elem() SecretV1AclOutput {
@@ -977,6 +1122,12 @@ func (i SecretV1AclReadArgs) ToSecretV1AclReadOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecretV1AclReadOutput)
 }
 
+func (i SecretV1AclReadArgs) ToOutput(ctx context.Context) pulumix.Output[SecretV1AclRead] {
+	return pulumix.Output[SecretV1AclRead]{
+		OutputState: i.ToSecretV1AclReadOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecretV1AclReadArgs) ToSecretV1AclReadPtrOutput() SecretV1AclReadPtrOutput {
 	return i.ToSecretV1AclReadPtrOutputWithContext(context.Background())
 }
@@ -1018,6 +1169,12 @@ func (i *secretV1AclReadPtrType) ToSecretV1AclReadPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecretV1AclReadPtrOutput)
 }
 
+func (i *secretV1AclReadPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretV1AclRead] {
+	return pulumix.Output[*SecretV1AclRead]{
+		OutputState: i.ToSecretV1AclReadPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecretV1AclReadOutput struct{ *pulumi.OutputState }
 
 func (SecretV1AclReadOutput) ElementType() reflect.Type {
@@ -1040,6 +1197,12 @@ func (o SecretV1AclReadOutput) ToSecretV1AclReadPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretV1AclRead) *SecretV1AclRead {
 		return &v
 	}).(SecretV1AclReadPtrOutput)
+}
+
+func (o SecretV1AclReadOutput) ToOutput(ctx context.Context) pulumix.Output[SecretV1AclRead] {
+	return pulumix.Output[SecretV1AclRead]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The date the secret ACL was created.
@@ -1076,6 +1239,12 @@ func (o SecretV1AclReadPtrOutput) ToSecretV1AclReadPtrOutput() SecretV1AclReadPt
 
 func (o SecretV1AclReadPtrOutput) ToSecretV1AclReadPtrOutputWithContext(ctx context.Context) SecretV1AclReadPtrOutput {
 	return o
+}
+
+func (o SecretV1AclReadPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretV1AclRead] {
+	return pulumix.Output[*SecretV1AclRead]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretV1AclReadPtrOutput) Elem() SecretV1AclReadOutput {
@@ -1161,6 +1330,12 @@ func (i GetContainerAclArgs) ToGetContainerAclOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerAclOutput)
 }
 
+func (i GetContainerAclArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerAcl] {
+	return pulumix.Output[GetContainerAcl]{
+		OutputState: i.ToGetContainerAclOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerAclArrayInput is an input type that accepts GetContainerAclArray and GetContainerAclArrayOutput values.
 // You can construct a concrete instance of `GetContainerAclArrayInput` via:
 //
@@ -1186,6 +1361,12 @@ func (i GetContainerAclArray) ToGetContainerAclArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerAclArrayOutput)
 }
 
+func (i GetContainerAclArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerAcl] {
+	return pulumix.Output[[]GetContainerAcl]{
+		OutputState: i.ToGetContainerAclArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerAclOutput struct{ *pulumi.OutputState }
 
 func (GetContainerAclOutput) ElementType() reflect.Type {
@@ -1198,6 +1379,12 @@ func (o GetContainerAclOutput) ToGetContainerAclOutput() GetContainerAclOutput {
 
 func (o GetContainerAclOutput) ToGetContainerAclOutputWithContext(ctx context.Context) GetContainerAclOutput {
 	return o
+}
+
+func (o GetContainerAclOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerAcl] {
+	return pulumix.Output[GetContainerAcl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetContainerAclOutput) Read() GetContainerAclReadOutput {
@@ -1216,6 +1403,12 @@ func (o GetContainerAclArrayOutput) ToGetContainerAclArrayOutput() GetContainerA
 
 func (o GetContainerAclArrayOutput) ToGetContainerAclArrayOutputWithContext(ctx context.Context) GetContainerAclArrayOutput {
 	return o
+}
+
+func (o GetContainerAclArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerAcl] {
+	return pulumix.Output[[]GetContainerAcl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetContainerAclArrayOutput) Index(i pulumi.IntInput) GetContainerAclOutput {
@@ -1271,6 +1464,12 @@ func (i GetContainerAclReadArgs) ToGetContainerAclReadOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerAclReadOutput)
 }
 
+func (i GetContainerAclReadArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerAclRead] {
+	return pulumix.Output[GetContainerAclRead]{
+		OutputState: i.ToGetContainerAclReadOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerAclReadOutput struct{ *pulumi.OutputState }
 
 func (GetContainerAclReadOutput) ElementType() reflect.Type {
@@ -1283,6 +1482,12 @@ func (o GetContainerAclReadOutput) ToGetContainerAclReadOutput() GetContainerAcl
 
 func (o GetContainerAclReadOutput) ToGetContainerAclReadOutputWithContext(ctx context.Context) GetContainerAclReadOutput {
 	return o
+}
+
+func (o GetContainerAclReadOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerAclRead] {
+	return pulumix.Output[GetContainerAclRead]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The date the container ACL was created.
@@ -1343,6 +1548,12 @@ func (i GetContainerConsumerArgs) ToGetContainerConsumerOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerConsumerOutput)
 }
 
+func (i GetContainerConsumerArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerConsumer] {
+	return pulumix.Output[GetContainerConsumer]{
+		OutputState: i.ToGetContainerConsumerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerConsumerArrayInput is an input type that accepts GetContainerConsumerArray and GetContainerConsumerArrayOutput values.
 // You can construct a concrete instance of `GetContainerConsumerArrayInput` via:
 //
@@ -1368,6 +1579,12 @@ func (i GetContainerConsumerArray) ToGetContainerConsumerArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerConsumerArrayOutput)
 }
 
+func (i GetContainerConsumerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerConsumer] {
+	return pulumix.Output[[]GetContainerConsumer]{
+		OutputState: i.ToGetContainerConsumerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerConsumerOutput struct{ *pulumi.OutputState }
 
 func (GetContainerConsumerOutput) ElementType() reflect.Type {
@@ -1380,6 +1597,12 @@ func (o GetContainerConsumerOutput) ToGetContainerConsumerOutput() GetContainerC
 
 func (o GetContainerConsumerOutput) ToGetContainerConsumerOutputWithContext(ctx context.Context) GetContainerConsumerOutput {
 	return o
+}
+
+func (o GetContainerConsumerOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerConsumer] {
+	return pulumix.Output[GetContainerConsumer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Container name.
@@ -1404,6 +1627,12 @@ func (o GetContainerConsumerArrayOutput) ToGetContainerConsumerArrayOutput() Get
 
 func (o GetContainerConsumerArrayOutput) ToGetContainerConsumerArrayOutputWithContext(ctx context.Context) GetContainerConsumerArrayOutput {
 	return o
+}
+
+func (o GetContainerConsumerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerConsumer] {
+	return pulumix.Output[[]GetContainerConsumer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetContainerConsumerArrayOutput) Index(i pulumi.IntInput) GetContainerConsumerOutput {
@@ -1449,6 +1678,12 @@ func (i GetContainerSecretRefArgs) ToGetContainerSecretRefOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerSecretRefOutput)
 }
 
+func (i GetContainerSecretRefArgs) ToOutput(ctx context.Context) pulumix.Output[GetContainerSecretRef] {
+	return pulumix.Output[GetContainerSecretRef]{
+		OutputState: i.ToGetContainerSecretRefOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetContainerSecretRefArrayInput is an input type that accepts GetContainerSecretRefArray and GetContainerSecretRefArrayOutput values.
 // You can construct a concrete instance of `GetContainerSecretRefArrayInput` via:
 //
@@ -1474,6 +1709,12 @@ func (i GetContainerSecretRefArray) ToGetContainerSecretRefArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetContainerSecretRefArrayOutput)
 }
 
+func (i GetContainerSecretRefArray) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerSecretRef] {
+	return pulumix.Output[[]GetContainerSecretRef]{
+		OutputState: i.ToGetContainerSecretRefArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetContainerSecretRefOutput struct{ *pulumi.OutputState }
 
 func (GetContainerSecretRefOutput) ElementType() reflect.Type {
@@ -1486,6 +1727,12 @@ func (o GetContainerSecretRefOutput) ToGetContainerSecretRefOutput() GetContaine
 
 func (o GetContainerSecretRefOutput) ToGetContainerSecretRefOutputWithContext(ctx context.Context) GetContainerSecretRefOutput {
 	return o
+}
+
+func (o GetContainerSecretRefOutput) ToOutput(ctx context.Context) pulumix.Output[GetContainerSecretRef] {
+	return pulumix.Output[GetContainerSecretRef]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Container name.
@@ -1510,6 +1757,12 @@ func (o GetContainerSecretRefArrayOutput) ToGetContainerSecretRefArrayOutput() G
 
 func (o GetContainerSecretRefArrayOutput) ToGetContainerSecretRefArrayOutputWithContext(ctx context.Context) GetContainerSecretRefArrayOutput {
 	return o
+}
+
+func (o GetContainerSecretRefArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetContainerSecretRef] {
+	return pulumix.Output[[]GetContainerSecretRef]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetContainerSecretRefArrayOutput) Index(i pulumi.IntInput) GetContainerSecretRefOutput {
@@ -1549,6 +1802,12 @@ func (i GetSecretAclArgs) ToGetSecretAclOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretAclOutput)
 }
 
+func (i GetSecretAclArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretAcl] {
+	return pulumix.Output[GetSecretAcl]{
+		OutputState: i.ToGetSecretAclOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetSecretAclArrayInput is an input type that accepts GetSecretAclArray and GetSecretAclArrayOutput values.
 // You can construct a concrete instance of `GetSecretAclArrayInput` via:
 //
@@ -1574,6 +1833,12 @@ func (i GetSecretAclArray) ToGetSecretAclArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretAclArrayOutput)
 }
 
+func (i GetSecretAclArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretAcl] {
+	return pulumix.Output[[]GetSecretAcl]{
+		OutputState: i.ToGetSecretAclArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetSecretAclOutput struct{ *pulumi.OutputState }
 
 func (GetSecretAclOutput) ElementType() reflect.Type {
@@ -1586,6 +1851,12 @@ func (o GetSecretAclOutput) ToGetSecretAclOutput() GetSecretAclOutput {
 
 func (o GetSecretAclOutput) ToGetSecretAclOutputWithContext(ctx context.Context) GetSecretAclOutput {
 	return o
+}
+
+func (o GetSecretAclOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretAcl] {
+	return pulumix.Output[GetSecretAcl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSecretAclOutput) Read() GetSecretAclReadOutput {
@@ -1604,6 +1875,12 @@ func (o GetSecretAclArrayOutput) ToGetSecretAclArrayOutput() GetSecretAclArrayOu
 
 func (o GetSecretAclArrayOutput) ToGetSecretAclArrayOutputWithContext(ctx context.Context) GetSecretAclArrayOutput {
 	return o
+}
+
+func (o GetSecretAclArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretAcl] {
+	return pulumix.Output[[]GetSecretAcl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSecretAclArrayOutput) Index(i pulumi.IntInput) GetSecretAclOutput {
@@ -1659,6 +1936,12 @@ func (i GetSecretAclReadArgs) ToGetSecretAclReadOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretAclReadOutput)
 }
 
+func (i GetSecretAclReadArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretAclRead] {
+	return pulumix.Output[GetSecretAclRead]{
+		OutputState: i.ToGetSecretAclReadOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetSecretAclReadOutput struct{ *pulumi.OutputState }
 
 func (GetSecretAclReadOutput) ElementType() reflect.Type {
@@ -1671,6 +1954,12 @@ func (o GetSecretAclReadOutput) ToGetSecretAclReadOutput() GetSecretAclReadOutpu
 
 func (o GetSecretAclReadOutput) ToGetSecretAclReadOutputWithContext(ctx context.Context) GetSecretAclReadOutput {
 	return o
+}
+
+func (o GetSecretAclReadOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretAclRead] {
+	return pulumix.Output[GetSecretAclRead]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The date the secret ACL was created.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get firewall policy information of an available OpenStack firewall policy.
@@ -128,6 +129,12 @@ func (o LookupPolicyResultOutput) ToLookupPolicyResultOutput() LookupPolicyResul
 
 func (o LookupPolicyResultOutput) ToLookupPolicyResultOutputWithContext(ctx context.Context) LookupPolicyResultOutput {
 	return o
+}
+
+func (o LookupPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPolicyResult] {
+	return pulumix.Output[LookupPolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The audit status of the firewall policy.

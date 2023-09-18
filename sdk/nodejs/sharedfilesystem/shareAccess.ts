@@ -86,7 +86,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.
+ * This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.:
  *
  * ```sh
  *  $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 share_id/share_access_id

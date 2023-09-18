@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this resource to generate an OpenStack Object Storage temporary URL.
@@ -241,6 +242,12 @@ func (i *TempUrl) ToTempUrlOutputWithContext(ctx context.Context) TempUrlOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(TempUrlOutput)
 }
 
+func (i *TempUrl) ToOutput(ctx context.Context) pulumix.Output[*TempUrl] {
+	return pulumix.Output[*TempUrl]{
+		OutputState: i.ToTempUrlOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TempUrlArrayInput is an input type that accepts TempUrlArray and TempUrlArrayOutput values.
 // You can construct a concrete instance of `TempUrlArrayInput` via:
 //
@@ -264,6 +271,12 @@ func (i TempUrlArray) ToTempUrlArrayOutput() TempUrlArrayOutput {
 
 func (i TempUrlArray) ToTempUrlArrayOutputWithContext(ctx context.Context) TempUrlArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TempUrlArrayOutput)
+}
+
+func (i TempUrlArray) ToOutput(ctx context.Context) pulumix.Output[[]*TempUrl] {
+	return pulumix.Output[[]*TempUrl]{
+		OutputState: i.ToTempUrlArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TempUrlMapInput is an input type that accepts TempUrlMap and TempUrlMapOutput values.
@@ -291,6 +304,12 @@ func (i TempUrlMap) ToTempUrlMapOutputWithContext(ctx context.Context) TempUrlMa
 	return pulumi.ToOutputWithContext(ctx, i).(TempUrlMapOutput)
 }
 
+func (i TempUrlMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TempUrl] {
+	return pulumix.Output[map[string]*TempUrl]{
+		OutputState: i.ToTempUrlMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TempUrlOutput struct{ *pulumi.OutputState }
 
 func (TempUrlOutput) ElementType() reflect.Type {
@@ -303,6 +322,12 @@ func (o TempUrlOutput) ToTempUrlOutput() TempUrlOutput {
 
 func (o TempUrlOutput) ToTempUrlOutputWithContext(ctx context.Context) TempUrlOutput {
 	return o
+}
+
+func (o TempUrlOutput) ToOutput(ctx context.Context) pulumix.Output[*TempUrl] {
+	return pulumix.Output[*TempUrl]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The container name the object belongs to.
@@ -362,6 +387,12 @@ func (o TempUrlArrayOutput) ToTempUrlArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o TempUrlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TempUrl] {
+	return pulumix.Output[[]*TempUrl]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TempUrlArrayOutput) Index(i pulumi.IntInput) TempUrlOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TempUrl {
 		return vs[0].([]*TempUrl)[vs[1].(int)]
@@ -380,6 +411,12 @@ func (o TempUrlMapOutput) ToTempUrlMapOutput() TempUrlMapOutput {
 
 func (o TempUrlMapOutput) ToTempUrlMapOutputWithContext(ctx context.Context) TempUrlMapOutput {
 	return o
+}
+
+func (o TempUrlMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TempUrl] {
+	return pulumix.Output[map[string]*TempUrl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TempUrlMapOutput) MapIndex(k pulumi.StringInput) TempUrlOutput {

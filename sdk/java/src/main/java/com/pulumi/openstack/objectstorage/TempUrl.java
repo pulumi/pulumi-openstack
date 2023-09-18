@@ -79,7 +79,7 @@ public class TempUrl extends com.pulumi.resources.CustomResource {
      * The container name the object belongs to.
      * 
      */
-    @Export(name="container", type=String.class, parameters={})
+    @Export(name="container", refs={String.class}, tree="[0]")
     private Output<String> container;
 
     /**
@@ -94,7 +94,7 @@ public class TempUrl extends com.pulumi.resources.CustomResource {
      * Valid values are `GET`, and `POST`. Default is `GET`.
      * 
      */
-    @Export(name="method", type=String.class, parameters={})
+    @Export(name="method", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> method;
 
     /**
@@ -109,7 +109,7 @@ public class TempUrl extends com.pulumi.resources.CustomResource {
      * The object name the tempurl is for.
      * 
      */
-    @Export(name="object", type=String.class, parameters={})
+    @Export(name="object", refs={String.class}, tree="[0]")
     private Output<String> object;
 
     /**
@@ -125,7 +125,7 @@ public class TempUrl extends com.pulumi.resources.CustomResource {
      * ID and new URL. Defaults to false.
      * 
      */
-    @Export(name="regenerate", type=Boolean.class, parameters={})
+    @Export(name="regenerate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> regenerate;
 
     /**
@@ -141,7 +141,7 @@ public class TempUrl extends com.pulumi.resources.CustomResource {
      * The region the tempurl is located in.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -151,7 +151,7 @@ public class TempUrl extends com.pulumi.resources.CustomResource {
     public Output<String> region() {
         return this.region;
     }
-    @Export(name="split", type=String.class, parameters={})
+    @Export(name="split", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> split;
 
     public Output<Optional<String>> split() {
@@ -162,7 +162,7 @@ public class TempUrl extends com.pulumi.resources.CustomResource {
      * be valid.
      * 
      */
-    @Export(name="ttl", type=Integer.class, parameters={})
+    @Export(name="ttl", refs={Integer.class}, tree="[0]")
     private Output<Integer> ttl;
 
     /**
@@ -177,7 +177,7 @@ public class TempUrl extends com.pulumi.resources.CustomResource {
      * The URL
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**

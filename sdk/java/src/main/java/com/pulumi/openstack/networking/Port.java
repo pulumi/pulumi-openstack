@@ -147,7 +147,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * `admin_state_up` of an existing port.
      * 
      */
-    @Export(name="adminStateUp", type=Boolean.class, parameters={})
+    @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> adminStateUp;
 
     /**
@@ -164,7 +164,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * order returned by the Network v2 API.
      * 
      */
-    @Export(name="allFixedIps", type=List.class, parameters={String.class})
+    @Export(name="allFixedIps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> allFixedIps;
 
     /**
@@ -180,7 +180,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * which have been explicitly and implicitly added.
      * 
      */
-    @Export(name="allSecurityGroupIds", type=List.class, parameters={String.class})
+    @Export(name="allSecurityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> allSecurityGroupIds;
 
     /**
@@ -196,7 +196,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * explicitly and implicitly added.
      * 
      */
-    @Export(name="allTags", type=List.class, parameters={String.class})
+    @Export(name="allTags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> allTags;
 
     /**
@@ -213,7 +213,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * below.
      * 
      */
-    @Export(name="allowedAddressPairs", type=List.class, parameters={PortAllowedAddressPair.class})
+    @Export(name="allowedAddressPairs", refs={List.class,PortAllowedAddressPair.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PortAllowedAddressPair>> allowedAddressPairs;
 
     /**
@@ -230,7 +230,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * for the port. The structure is described below.
      * 
      */
-    @Export(name="binding", type=PortBinding.class, parameters={})
+    @Export(name="binding", refs={PortBinding.class}, tree="[0]")
     private Output<PortBinding> binding;
 
     /**
@@ -246,7 +246,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * this updates the `description` of an existing port.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -262,7 +262,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * creates a new port.
      * 
      */
-    @Export(name="deviceId", type=String.class, parameters={})
+    @Export(name="deviceId", refs={String.class}, tree="[0]")
     private Output<String> deviceId;
 
     /**
@@ -278,7 +278,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * a new port.
      * 
      */
-    @Export(name="deviceOwner", type=String.class, parameters={})
+    @Export(name="deviceOwner", refs={String.class}, tree="[0]")
     private Output<String> deviceOwner;
 
     /**
@@ -293,7 +293,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * The list of maps representing port DNS assignments.
      * 
      */
-    @Export(name="dnsAssignments", type=List.class, parameters={Map.class})
+    @Export(name="dnsAssignments", refs={List.class,Map.class,String.class,Object.class}, tree="[0,[1,2,3]]")
     private Output<List<Map<String,Object>>> dnsAssignments;
 
     /**
@@ -308,7 +308,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * is enabled.
      * 
      */
-    @Export(name="dnsName", type=String.class, parameters={})
+    @Export(name="dnsName", refs={String.class}, tree="[0]")
     private Output<String> dnsName;
 
     /**
@@ -325,7 +325,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * times.
      * 
      */
-    @Export(name="extraDhcpOptions", type=List.class, parameters={PortExtraDhcpOption.class})
+    @Export(name="extraDhcpOptions", refs={List.class,PortExtraDhcpOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PortExtraDhcpOption>> extraDhcpOptions;
 
     /**
@@ -342,7 +342,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * this port. The structure is described below.
      * 
      */
-    @Export(name="fixedIps", type=List.class, parameters={PortFixedIp.class})
+    @Export(name="fixedIps", refs={List.class,PortFixedIp.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PortFixedIp>> fixedIps;
 
     /**
@@ -358,7 +358,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * this creates a new port.
      * 
      */
-    @Export(name="macAddress", type=String.class, parameters={})
+    @Export(name="macAddress", refs={String.class}, tree="[0]")
     private Output<String> macAddress;
 
     /**
@@ -374,7 +374,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * updates the `name` of an existing port.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -390,7 +390,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * this creates a new port.
      * 
      */
-    @Export(name="networkId", type=String.class, parameters={})
+    @Export(name="networkId", refs={String.class}, tree="[0]")
     private Output<String> networkId;
 
     /**
@@ -407,7 +407,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * is the only valid value for this argument.
      * 
      */
-    @Export(name="noFixedIp", type=Boolean.class, parameters={})
+    @Export(name="noFixedIp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> noFixedIp;
 
     /**
@@ -427,7 +427,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * security group.
      * 
      */
-    @Export(name="noSecurityGroups", type=Boolean.class, parameters={})
+    @Export(name="noSecurityGroups", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> noSecurityGroups;
 
     /**
@@ -450,7 +450,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * and `false`.
      * 
      */
-    @Export(name="portSecurityEnabled", type=Boolean.class, parameters={})
+    @Export(name="portSecurityEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> portSecurityEnabled;
 
     /**
@@ -469,7 +469,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * Reference to the associated QoS policy.
      * 
      */
-    @Export(name="qosPolicyId", type=String.class, parameters={})
+    @Export(name="qosPolicyId", refs={String.class}, tree="[0]")
     private Output<String> qosPolicyId;
 
     /**
@@ -486,7 +486,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * port.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -506,7 +506,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * the Compute Instance).
      * 
      */
-    @Export(name="securityGroupIds", type=List.class, parameters={String.class})
+    @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> securityGroupIds;
 
     /**
@@ -523,7 +523,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * A set of string tags for the port.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -538,7 +538,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * to create a port for another tenant. Changing this creates a new port.
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
@@ -553,7 +553,7 @@ public class Port extends com.pulumi.resources.CustomResource {
      * Map of additional options.
      * 
      */
-    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**

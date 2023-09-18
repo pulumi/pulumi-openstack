@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 Neutron IPSec policy resource within OpenStack.
@@ -285,6 +286,12 @@ func (i *IpSecPolicy) ToIpSecPolicyOutputWithContext(ctx context.Context) IpSecP
 	return pulumi.ToOutputWithContext(ctx, i).(IpSecPolicyOutput)
 }
 
+func (i *IpSecPolicy) ToOutput(ctx context.Context) pulumix.Output[*IpSecPolicy] {
+	return pulumix.Output[*IpSecPolicy]{
+		OutputState: i.ToIpSecPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IpSecPolicyArrayInput is an input type that accepts IpSecPolicyArray and IpSecPolicyArrayOutput values.
 // You can construct a concrete instance of `IpSecPolicyArrayInput` via:
 //
@@ -308,6 +315,12 @@ func (i IpSecPolicyArray) ToIpSecPolicyArrayOutput() IpSecPolicyArrayOutput {
 
 func (i IpSecPolicyArray) ToIpSecPolicyArrayOutputWithContext(ctx context.Context) IpSecPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IpSecPolicyArrayOutput)
+}
+
+func (i IpSecPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*IpSecPolicy] {
+	return pulumix.Output[[]*IpSecPolicy]{
+		OutputState: i.ToIpSecPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // IpSecPolicyMapInput is an input type that accepts IpSecPolicyMap and IpSecPolicyMapOutput values.
@@ -335,6 +348,12 @@ func (i IpSecPolicyMap) ToIpSecPolicyMapOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(IpSecPolicyMapOutput)
 }
 
+func (i IpSecPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpSecPolicy] {
+	return pulumix.Output[map[string]*IpSecPolicy]{
+		OutputState: i.ToIpSecPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IpSecPolicyOutput struct{ *pulumi.OutputState }
 
 func (IpSecPolicyOutput) ElementType() reflect.Type {
@@ -347,6 +366,12 @@ func (o IpSecPolicyOutput) ToIpSecPolicyOutput() IpSecPolicyOutput {
 
 func (o IpSecPolicyOutput) ToIpSecPolicyOutputWithContext(ctx context.Context) IpSecPolicyOutput {
 	return o
+}
+
+func (o IpSecPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*IpSecPolicy] {
+	return pulumix.Output[*IpSecPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
@@ -429,6 +454,12 @@ func (o IpSecPolicyArrayOutput) ToIpSecPolicyArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o IpSecPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IpSecPolicy] {
+	return pulumix.Output[[]*IpSecPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o IpSecPolicyArrayOutput) Index(i pulumi.IntInput) IpSecPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IpSecPolicy {
 		return vs[0].([]*IpSecPolicy)[vs[1].(int)]
@@ -447,6 +478,12 @@ func (o IpSecPolicyMapOutput) ToIpSecPolicyMapOutput() IpSecPolicyMapOutput {
 
 func (o IpSecPolicyMapOutput) ToIpSecPolicyMapOutputWithContext(ctx context.Context) IpSecPolicyMapOutput {
 	return o
+}
+
+func (o IpSecPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpSecPolicy] {
+	return pulumix.Output[map[string]*IpSecPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IpSecPolicyMapOutput) MapIndex(k pulumi.StringInput) IpSecPolicyOutput {

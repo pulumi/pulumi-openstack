@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V3 group resource within OpenStack Keystone.
@@ -175,6 +176,12 @@ func (i *GroupV3) ToGroupV3OutputWithContext(ctx context.Context) GroupV3Output 
 	return pulumi.ToOutputWithContext(ctx, i).(GroupV3Output)
 }
 
+func (i *GroupV3) ToOutput(ctx context.Context) pulumix.Output[*GroupV3] {
+	return pulumix.Output[*GroupV3]{
+		OutputState: i.ToGroupV3OutputWithContext(ctx).OutputState,
+	}
+}
+
 // GroupV3ArrayInput is an input type that accepts GroupV3Array and GroupV3ArrayOutput values.
 // You can construct a concrete instance of `GroupV3ArrayInput` via:
 //
@@ -198,6 +205,12 @@ func (i GroupV3Array) ToGroupV3ArrayOutput() GroupV3ArrayOutput {
 
 func (i GroupV3Array) ToGroupV3ArrayOutputWithContext(ctx context.Context) GroupV3ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupV3ArrayOutput)
+}
+
+func (i GroupV3Array) ToOutput(ctx context.Context) pulumix.Output[[]*GroupV3] {
+	return pulumix.Output[[]*GroupV3]{
+		OutputState: i.ToGroupV3ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GroupV3MapInput is an input type that accepts GroupV3Map and GroupV3MapOutput values.
@@ -225,6 +238,12 @@ func (i GroupV3Map) ToGroupV3MapOutputWithContext(ctx context.Context) GroupV3Ma
 	return pulumi.ToOutputWithContext(ctx, i).(GroupV3MapOutput)
 }
 
+func (i GroupV3Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupV3] {
+	return pulumix.Output[map[string]*GroupV3]{
+		OutputState: i.ToGroupV3MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GroupV3Output struct{ *pulumi.OutputState }
 
 func (GroupV3Output) ElementType() reflect.Type {
@@ -237,6 +256,12 @@ func (o GroupV3Output) ToGroupV3Output() GroupV3Output {
 
 func (o GroupV3Output) ToGroupV3OutputWithContext(ctx context.Context) GroupV3Output {
 	return o
+}
+
+func (o GroupV3Output) ToOutput(ctx context.Context) pulumix.Output[*GroupV3] {
+	return pulumix.Output[*GroupV3]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A description of the group.
@@ -275,6 +300,12 @@ func (o GroupV3ArrayOutput) ToGroupV3ArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o GroupV3ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupV3] {
+	return pulumix.Output[[]*GroupV3]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GroupV3ArrayOutput) Index(i pulumi.IntInput) GroupV3Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupV3 {
 		return vs[0].([]*GroupV3)[vs[1].(int)]
@@ -293,6 +324,12 @@ func (o GroupV3MapOutput) ToGroupV3MapOutput() GroupV3MapOutput {
 
 func (o GroupV3MapOutput) ToGroupV3MapOutputWithContext(ctx context.Context) GroupV3MapOutput {
 	return o
+}
+
+func (o GroupV3MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupV3] {
+	return pulumix.Output[map[string]*GroupV3]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GroupV3MapOutput) MapIndex(k pulumi.StringInput) GroupV3Output {

@@ -64,7 +64,7 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
      * Default is sha1. Changing this updates the algorithm of the existing policy.
      * 
      */
-    @Export(name="authAlgorithm", type=String.class, parameters={})
+    @Export(name="authAlgorithm", refs={String.class}, tree="[0]")
     private Output<String> authAlgorithm;
 
     /**
@@ -80,7 +80,7 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
      * Changing this updates the description of the existing policy.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -96,7 +96,7 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing policy.
      * 
      */
-    @Export(name="encapsulationMode", type=String.class, parameters={})
+    @Export(name="encapsulationMode", refs={String.class}, tree="[0]")
     private Output<String> encapsulationMode;
 
     /**
@@ -112,7 +112,7 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
      * The default value is aes-128. Changing this updates the existing policy.
      * 
      */
-    @Export(name="encryptionAlgorithm", type=String.class, parameters={})
+    @Export(name="encryptionAlgorithm", refs={String.class}, tree="[0]")
     private Output<String> encryptionAlgorithm;
 
     /**
@@ -127,7 +127,7 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
      * The lifetime of the security association. Consists of Unit and Value.
      * 
      */
-    @Export(name="lifetimes", type=List.class, parameters={IpSecPolicyLifetime.class})
+    @Export(name="lifetimes", refs={List.class,IpSecPolicyLifetime.class}, tree="[0,1]")
     private Output<List<IpSecPolicyLifetime>> lifetimes;
 
     /**
@@ -142,7 +142,7 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
      * the existing policy.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -158,7 +158,7 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
      * is group5. Changing this updates the existing policy.
      * 
      */
-    @Export(name="pfs", type=String.class, parameters={})
+    @Export(name="pfs", refs={String.class}, tree="[0]")
     private Output<String> pfs;
 
     /**
@@ -176,7 +176,7 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
      * policy.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -194,7 +194,7 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
      * create a policy for another project. Changing this creates a new policy.
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
@@ -210,7 +210,7 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing policy. Default is ESP.
      * 
      */
-    @Export(name="transformProtocol", type=String.class, parameters={})
+    @Export(name="transformProtocol", refs={String.class}, tree="[0]")
     private Output<String> transformProtocol;
 
     /**
@@ -225,7 +225,7 @@ public class IpSecPolicy extends com.pulumi.resources.CustomResource {
      * Map of additional options.
      * 
      */
-    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**

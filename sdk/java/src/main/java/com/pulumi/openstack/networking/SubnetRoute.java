@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Routing entries can be imported using a combined ID using the following format``&lt;subnet_id&gt;-route-&lt;destination_cidr&gt;-&lt;next_hop&gt;``
+ * Routing entries can be imported using a combined ID using the following format`&lt;subnet_id&gt;-route-&lt;destination_cidr&gt;-&lt;next_hop&gt;`
  * 
  * ```sh
  *  $ pulumi import openstack:networking/subnetRoute:SubnetRoute subnet_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
@@ -84,7 +84,7 @@ public class SubnetRoute extends com.pulumi.resources.CustomResource {
      * this creates a new routing entry.
      * 
      */
-    @Export(name="destinationCidr", type=String.class, parameters={})
+    @Export(name="destinationCidr", refs={String.class}, tree="[0]")
     private Output<String> destinationCidr;
 
     /**
@@ -100,7 +100,7 @@ public class SubnetRoute extends com.pulumi.resources.CustomResource {
      * this creates a new routing entry.
      * 
      */
-    @Export(name="nextHop", type=String.class, parameters={})
+    @Export(name="nextHop", refs={String.class}, tree="[0]")
     private Output<String> nextHop;
 
     /**
@@ -118,7 +118,7 @@ public class SubnetRoute extends com.pulumi.resources.CustomResource {
      * routing entry.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -136,7 +136,7 @@ public class SubnetRoute extends com.pulumi.resources.CustomResource {
      * this creates a new routing entry.
      * 
      */
-    @Export(name="subnetId", type=String.class, parameters={})
+    @Export(name="subnetId", refs={String.class}, tree="[0]")
     private Output<String> subnetId;
 
     /**

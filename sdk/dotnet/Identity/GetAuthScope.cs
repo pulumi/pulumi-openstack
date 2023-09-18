@@ -45,13 +45,13 @@ namespace Pulumi.OpenStack.Identity
         /// {
         ///     var objectStoreService = .Where(entry =&gt; entry.Type == "object-store").Select(entry =&gt; 
         ///     {
-        ///         return  entry;
-        ///     })[0];
+        ///         return entry;
+        ///     }).ToList()[0];
         /// 
         ///     var objectStoreEndpoint = .Where(endpoint =&gt; endpoint.Interface == "public" &amp;&amp; endpoint.Region == "region1").Select(endpoint =&gt; 
         ///     {
-        ///         return  endpoint;
-        ///     })[0];
+        ///         return endpoint;
+        ///     }).ToList()[0];
         /// 
         ///     var objectStorePublicUrl = objectStoreEndpoint.Url;
         /// 
@@ -89,13 +89,13 @@ namespace Pulumi.OpenStack.Identity
         /// {
         ///     var objectStoreService = .Where(entry =&gt; entry.Type == "object-store").Select(entry =&gt; 
         ///     {
-        ///         return  entry;
-        ///     })[0];
+        ///         return entry;
+        ///     }).ToList()[0];
         /// 
         ///     var objectStoreEndpoint = .Where(endpoint =&gt; endpoint.Interface == "public" &amp;&amp; endpoint.Region == "region1").Select(endpoint =&gt; 
         ///     {
-        ///         return  endpoint;
-        ///     })[0];
+        ///         return endpoint;
+        ///     }).ToList()[0];
         /// 
         ///     var objectStorePublicUrl = objectStoreEndpoint.Url;
         /// 
@@ -155,13 +155,13 @@ namespace Pulumi.OpenStack.Identity
         /// {
         ///     var objectStoreService = .Where(entry =&gt; entry.Type == "object-store").Select(entry =&gt; 
         ///     {
-        ///         return  entry;
-        ///     })[0];
+        ///         return entry;
+        ///     }).ToList()[0];
         /// 
         ///     var objectStoreEndpoint = .Where(endpoint =&gt; endpoint.Interface == "public" &amp;&amp; endpoint.Region == "region1").Select(endpoint =&gt; 
         ///     {
-        ///         return  endpoint;
-        ///     })[0];
+        ///         return endpoint;
+        ///     }).ToList()[0];
         /// 
         ///     var objectStorePublicUrl = objectStoreEndpoint.Url;
         /// 
@@ -199,13 +199,13 @@ namespace Pulumi.OpenStack.Identity
         /// {
         ///     var objectStoreService = .Where(entry =&gt; entry.Type == "object-store").Select(entry =&gt; 
         ///     {
-        ///         return  entry;
-        ///     })[0];
+        ///         return entry;
+        ///     }).ToList()[0];
         /// 
         ///     var objectStoreEndpoint = .Where(endpoint =&gt; endpoint.Interface == "public" &amp;&amp; endpoint.Region == "region1").Select(endpoint =&gt; 
         ///     {
-        ///         return  endpoint;
-        ///     })[0];
+        ///         return endpoint;
+        ///     }).ToList()[0];
         /// 
         ///     var objectStorePublicUrl = objectStoreEndpoint.Url;
         /// 

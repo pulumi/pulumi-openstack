@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the details of a running server
@@ -139,6 +140,12 @@ func (o GetInstanceV2ResultOutput) ToGetInstanceV2ResultOutput() GetInstanceV2Re
 
 func (o GetInstanceV2ResultOutput) ToGetInstanceV2ResultOutputWithContext(ctx context.Context) GetInstanceV2ResultOutput {
 	return o
+}
+
+func (o GetInstanceV2ResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceV2Result] {
+	return pulumix.Output[GetInstanceV2Result]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The first IPv4 address assigned to this server.

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a Load Balancer L7 Policy resource within OpenStack.
@@ -83,7 +84,7 @@ import (
 //
 // ## Import
 //
-// Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.
+// Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.:
 //
 // ```sh
 //
@@ -325,6 +326,12 @@ func (i *L7PolicyV2) ToL7PolicyV2OutputWithContext(ctx context.Context) L7Policy
 	return pulumi.ToOutputWithContext(ctx, i).(L7PolicyV2Output)
 }
 
+func (i *L7PolicyV2) ToOutput(ctx context.Context) pulumix.Output[*L7PolicyV2] {
+	return pulumix.Output[*L7PolicyV2]{
+		OutputState: i.ToL7PolicyV2OutputWithContext(ctx).OutputState,
+	}
+}
+
 // L7PolicyV2ArrayInput is an input type that accepts L7PolicyV2Array and L7PolicyV2ArrayOutput values.
 // You can construct a concrete instance of `L7PolicyV2ArrayInput` via:
 //
@@ -348,6 +355,12 @@ func (i L7PolicyV2Array) ToL7PolicyV2ArrayOutput() L7PolicyV2ArrayOutput {
 
 func (i L7PolicyV2Array) ToL7PolicyV2ArrayOutputWithContext(ctx context.Context) L7PolicyV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(L7PolicyV2ArrayOutput)
+}
+
+func (i L7PolicyV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*L7PolicyV2] {
+	return pulumix.Output[[]*L7PolicyV2]{
+		OutputState: i.ToL7PolicyV2ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // L7PolicyV2MapInput is an input type that accepts L7PolicyV2Map and L7PolicyV2MapOutput values.
@@ -375,6 +388,12 @@ func (i L7PolicyV2Map) ToL7PolicyV2MapOutputWithContext(ctx context.Context) L7P
 	return pulumi.ToOutputWithContext(ctx, i).(L7PolicyV2MapOutput)
 }
 
+func (i L7PolicyV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*L7PolicyV2] {
+	return pulumix.Output[map[string]*L7PolicyV2]{
+		OutputState: i.ToL7PolicyV2MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type L7PolicyV2Output struct{ *pulumi.OutputState }
 
 func (L7PolicyV2Output) ElementType() reflect.Type {
@@ -387,6 +406,12 @@ func (o L7PolicyV2Output) ToL7PolicyV2Output() L7PolicyV2Output {
 
 func (o L7PolicyV2Output) ToL7PolicyV2OutputWithContext(ctx context.Context) L7PolicyV2Output {
 	return o
+}
+
+func (o L7PolicyV2Output) ToOutput(ctx context.Context) pulumix.Output[*L7PolicyV2] {
+	return pulumix.Output[*L7PolicyV2]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The L7 Policy action - can either be REDIRECT\_TO\_POOL,
@@ -464,6 +489,12 @@ func (o L7PolicyV2ArrayOutput) ToL7PolicyV2ArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o L7PolicyV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*L7PolicyV2] {
+	return pulumix.Output[[]*L7PolicyV2]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o L7PolicyV2ArrayOutput) Index(i pulumi.IntInput) L7PolicyV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *L7PolicyV2 {
 		return vs[0].([]*L7PolicyV2)[vs[1].(int)]
@@ -482,6 +513,12 @@ func (o L7PolicyV2MapOutput) ToL7PolicyV2MapOutput() L7PolicyV2MapOutput {
 
 func (o L7PolicyV2MapOutput) ToL7PolicyV2MapOutputWithContext(ctx context.Context) L7PolicyV2MapOutput {
 	return o
+}
+
+func (o L7PolicyV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*L7PolicyV2] {
+	return pulumix.Output[map[string]*L7PolicyV2]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o L7PolicyV2MapOutput) MapIndex(k pulumi.StringInput) L7PolicyV2Output {

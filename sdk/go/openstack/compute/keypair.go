@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -260,6 +261,12 @@ func (i *Keypair) ToKeypairOutputWithContext(ctx context.Context) KeypairOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(KeypairOutput)
 }
 
+func (i *Keypair) ToOutput(ctx context.Context) pulumix.Output[*Keypair] {
+	return pulumix.Output[*Keypair]{
+		OutputState: i.ToKeypairOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KeypairArrayInput is an input type that accepts KeypairArray and KeypairArrayOutput values.
 // You can construct a concrete instance of `KeypairArrayInput` via:
 //
@@ -283,6 +290,12 @@ func (i KeypairArray) ToKeypairArrayOutput() KeypairArrayOutput {
 
 func (i KeypairArray) ToKeypairArrayOutputWithContext(ctx context.Context) KeypairArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeypairArrayOutput)
+}
+
+func (i KeypairArray) ToOutput(ctx context.Context) pulumix.Output[[]*Keypair] {
+	return pulumix.Output[[]*Keypair]{
+		OutputState: i.ToKeypairArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KeypairMapInput is an input type that accepts KeypairMap and KeypairMapOutput values.
@@ -310,6 +323,12 @@ func (i KeypairMap) ToKeypairMapOutputWithContext(ctx context.Context) KeypairMa
 	return pulumi.ToOutputWithContext(ctx, i).(KeypairMapOutput)
 }
 
+func (i KeypairMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Keypair] {
+	return pulumix.Output[map[string]*Keypair]{
+		OutputState: i.ToKeypairMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KeypairOutput struct{ *pulumi.OutputState }
 
 func (KeypairOutput) ElementType() reflect.Type {
@@ -322,6 +341,12 @@ func (o KeypairOutput) ToKeypairOutput() KeypairOutput {
 
 func (o KeypairOutput) ToKeypairOutputWithContext(ctx context.Context) KeypairOutput {
 	return o
+}
+
+func (o KeypairOutput) ToOutput(ctx context.Context) pulumix.Output[*Keypair] {
+	return pulumix.Output[*Keypair]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The fingerprint of the public key.
@@ -383,6 +408,12 @@ func (o KeypairArrayOutput) ToKeypairArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o KeypairArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Keypair] {
+	return pulumix.Output[[]*Keypair]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KeypairArrayOutput) Index(i pulumi.IntInput) KeypairOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Keypair {
 		return vs[0].([]*Keypair)[vs[1].(int)]
@@ -401,6 +432,12 @@ func (o KeypairMapOutput) ToKeypairMapOutput() KeypairMapOutput {
 
 func (o KeypairMapOutput) ToKeypairMapOutputWithContext(ctx context.Context) KeypairMapOutput {
 	return o
+}
+
+func (o KeypairMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Keypair] {
+	return pulumix.Output[map[string]*Keypair]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KeypairMapOutput) MapIndex(k pulumi.StringInput) KeypairOutput {

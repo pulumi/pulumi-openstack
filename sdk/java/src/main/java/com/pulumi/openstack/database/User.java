@@ -62,7 +62,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * A list of database user should have access to.
      * 
      */
-    @Export(name="databases", type=List.class, parameters={String.class})
+    @Export(name="databases", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> databases;
 
     /**
@@ -72,7 +72,7 @@ public class User extends com.pulumi.resources.CustomResource {
     public Output<List<String>> databases() {
         return this.databases;
     }
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> host;
 
     public Output<Optional<String>> host() {
@@ -82,7 +82,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The ID for the database instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -96,7 +96,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * A unique name for the resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -110,7 +110,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * User&#39;s password.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -124,7 +124,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Openstack region resource is created in.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
