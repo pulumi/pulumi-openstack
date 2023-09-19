@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the ID of the share
+ * This resource can be imported by specifying the ID of the share:
  * 
  * ```sh
  *  $ pulumi import openstack:sharedfilesystem/share:Share share_1 id
@@ -94,7 +94,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * explicitly and implicitly added.
      * 
      */
-    @Export(name="allMetadata", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="allMetadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> allMetadata;
 
     /**
@@ -110,7 +110,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * new share.
      * 
      */
-    @Export(name="availabilityZone", type=String.class, parameters={})
+    @Export(name="availabilityZone", refs={String.class}, tree="[0]")
     private Output<String> availabilityZone;
 
     /**
@@ -126,7 +126,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * Changing this updates the description of the existing share.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -142,7 +142,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * has more than one network interface, it can have multiple export locations.
      * 
      */
-    @Export(name="exportLocations", type=List.class, parameters={ShareExportLocation.class})
+    @Export(name="exportLocations", refs={List.class,ShareExportLocation.class}, tree="[0,1]")
     private Output<List<ShareExportLocation>> exportLocations;
 
     /**
@@ -157,7 +157,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * Indicates whether a share has replicas or not.
      * 
      */
-    @Export(name="hasReplicas", type=Boolean.class, parameters={})
+    @Export(name="hasReplicas", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> hasReplicas;
 
     /**
@@ -171,7 +171,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * The share host name.
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     /**
@@ -187,7 +187,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * updates the existing share.
      * 
      */
-    @Export(name="isPublic", type=Boolean.class, parameters={})
+    @Export(name="isPublic", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isPublic;
 
     /**
@@ -204,7 +204,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * strings.
      * 
      */
-    @Export(name="metadata", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> metadata;
 
     /**
@@ -220,7 +220,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * of the existing share.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -235,7 +235,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * The owner of the Share.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -251,7 +251,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * creates a new share.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -267,7 +267,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * The share replication type.
      * 
      */
-    @Export(name="replicationType", type=String.class, parameters={})
+    @Export(name="replicationType", refs={String.class}, tree="[0]")
     private Output<String> replicationType;
 
     /**
@@ -283,7 +283,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * the share_network_id value from the snapshot is used. Changing this creates a new share.
      * 
      */
-    @Export(name="shareNetworkId", type=String.class, parameters={})
+    @Export(name="shareNetworkId", refs={String.class}, tree="[0]")
     private Output<String> shareNetworkId;
 
     /**
@@ -300,7 +300,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * CEPHFS, GLUSTERFS, HDFS or MAPRFS. Changing this creates a new share.
      * 
      */
-    @Export(name="shareProto", type=String.class, parameters={})
+    @Export(name="shareProto", refs={String.class}, tree="[0]")
     private Output<String> shareProto;
 
     /**
@@ -315,7 +315,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * The UUID of the share server.
      * 
      */
-    @Export(name="shareServerId", type=String.class, parameters={})
+    @Export(name="shareServerId", refs={String.class}, tree="[0]")
     private Output<String> shareServerId;
 
     /**
@@ -330,7 +330,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * share type is used.
      * 
      */
-    @Export(name="shareType", type=String.class, parameters={})
+    @Export(name="shareType", refs={String.class}, tree="[0]")
     private Output<String> shareType;
 
     /**
@@ -346,7 +346,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * than the allowed GB quota. Changing this resizes the existing share.
      * 
      */
-    @Export(name="size", type=Integer.class, parameters={})
+    @Export(name="size", refs={Integer.class}, tree="[0]")
     private Output<Integer> size;
 
     /**
@@ -362,7 +362,7 @@ public class Share extends com.pulumi.resources.CustomResource {
      * a new share.
      * 
      */
-    @Export(name="snapshotId", type=String.class, parameters={})
+    @Export(name="snapshotId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> snapshotId;
 
     /**

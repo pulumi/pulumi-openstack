@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the ID of an available OpenStack flavor.
@@ -163,6 +164,12 @@ func (o LookupFlavorResultOutput) ToLookupFlavorResultOutput() LookupFlavorResul
 
 func (o LookupFlavorResultOutput) ToLookupFlavorResultOutputWithContext(ctx context.Context) LookupFlavorResultOutput {
 	return o
+}
+
+func (o LookupFlavorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFlavorResult] {
+	return pulumix.Output[LookupFlavorResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LookupFlavorResultOutput) Description() pulumi.StringPtrOutput {

@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Load Balancer Pool Member can be imported using the Pool ID and Member ID separated by a slash, e.g.
+ * Load Balancer Pool Member can be imported using the Pool ID and Member ID separated by a slash, e.g.:
  * 
  * ```sh
  *  $ pulumi import openstack:loadbalancer/member:Member member_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5/9563b79c-8460-47da-8a95-2711b746510f
@@ -67,7 +67,7 @@ public class Member extends com.pulumi.resources.CustomResource {
      * the load balancer. Changing this creates a new member.
      * 
      */
-    @Export(name="address", type=String.class, parameters={})
+    @Export(name="address", refs={String.class}, tree="[0]")
     private Output<String> address;
 
     /**
@@ -83,7 +83,7 @@ public class Member extends com.pulumi.resources.CustomResource {
      * A valid value is true (UP) or false (DOWN). Defaults to true.
      * 
      */
-    @Export(name="adminStateUp", type=Boolean.class, parameters={})
+    @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> adminStateUp;
 
     /**
@@ -99,7 +99,7 @@ public class Member extends com.pulumi.resources.CustomResource {
      * only for Octavia &gt;= 2.1.
      * 
      */
-    @Export(name="backup", type=Boolean.class, parameters={})
+    @Export(name="backup", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> backup;
 
     /**
@@ -115,7 +115,7 @@ public class Member extends com.pulumi.resources.CustomResource {
      * Available only for Octavia
      * 
      */
-    @Export(name="monitorAddress", type=String.class, parameters={})
+    @Export(name="monitorAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> monitorAddress;
 
     /**
@@ -131,7 +131,7 @@ public class Member extends com.pulumi.resources.CustomResource {
      * Available only for Octavia
      * 
      */
-    @Export(name="monitorPort", type=Integer.class, parameters={})
+    @Export(name="monitorPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> monitorPort;
 
     /**
@@ -146,7 +146,7 @@ public class Member extends com.pulumi.resources.CustomResource {
      * Human-readable name for the member.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -161,7 +161,7 @@ public class Member extends com.pulumi.resources.CustomResource {
      * to. Changing this creates a new member.
      * 
      */
-    @Export(name="poolId", type=String.class, parameters={})
+    @Export(name="poolId", refs={String.class}, tree="[0]")
     private Output<String> poolId;
 
     /**
@@ -177,7 +177,7 @@ public class Member extends com.pulumi.resources.CustomResource {
      * Changing this creates a new member.
      * 
      */
-    @Export(name="protocolPort", type=Integer.class, parameters={})
+    @Export(name="protocolPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> protocolPort;
 
     /**
@@ -194,7 +194,7 @@ public class Member extends com.pulumi.resources.CustomResource {
      * argument of the provider is used. Changing this creates a new member.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -211,7 +211,7 @@ public class Member extends com.pulumi.resources.CustomResource {
      * this creates a new member.
      * 
      */
-    @Export(name="subnetId", type=String.class, parameters={})
+    @Export(name="subnetId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> subnetId;
 
     /**
@@ -228,7 +228,7 @@ public class Member extends com.pulumi.resources.CustomResource {
      * other than their own. Changing this creates a new member.
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
@@ -247,7 +247,7 @@ public class Member extends com.pulumi.resources.CustomResource {
      * as a member with a weight of 2. Defaults to 1.
      * 
      */
-    @Export(name="weight", type=Integer.class, parameters={})
+    @Export(name="weight", refs={Integer.class}, tree="[0]")
     private Output<Integer> weight;
 
     /**

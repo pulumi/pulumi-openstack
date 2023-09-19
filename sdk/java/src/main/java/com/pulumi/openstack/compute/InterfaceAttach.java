@@ -169,7 +169,7 @@ public class InterfaceAttach extends com.pulumi.resources.CustomResource {
      * _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.
      * 
      */
-    @Export(name="fixedIp", type=String.class, parameters={})
+    @Export(name="fixedIp", refs={String.class}, tree="[0]")
     private Output<String> fixedIp;
 
     /**
@@ -184,7 +184,7 @@ public class InterfaceAttach extends com.pulumi.resources.CustomResource {
      * The ID of the Instance to attach the Port or Network to.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -199,7 +199,7 @@ public class InterfaceAttach extends com.pulumi.resources.CustomResource {
      * _NOTE_: This option and `port_id` are mutually exclusive.
      * 
      */
-    @Export(name="networkId", type=String.class, parameters={})
+    @Export(name="networkId", refs={String.class}, tree="[0]")
     private Output<String> networkId;
 
     /**
@@ -215,7 +215,7 @@ public class InterfaceAttach extends com.pulumi.resources.CustomResource {
      * _NOTE_: This option and `network_id` are mutually exclusive.
      * 
      */
-    @Export(name="portId", type=String.class, parameters={})
+    @Export(name="portId", refs={String.class}, tree="[0]")
     private Output<String> portId;
 
     /**
@@ -232,7 +232,7 @@ public class InterfaceAttach extends com.pulumi.resources.CustomResource {
      * creates a new attachment.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**

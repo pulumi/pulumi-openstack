@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V1 load balancer vip resource within OpenStack.
@@ -374,6 +375,12 @@ func (i *Vip) ToVipOutputWithContext(ctx context.Context) VipOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VipOutput)
 }
 
+func (i *Vip) ToOutput(ctx context.Context) pulumix.Output[*Vip] {
+	return pulumix.Output[*Vip]{
+		OutputState: i.ToVipOutputWithContext(ctx).OutputState,
+	}
+}
+
 // VipArrayInput is an input type that accepts VipArray and VipArrayOutput values.
 // You can construct a concrete instance of `VipArrayInput` via:
 //
@@ -397,6 +404,12 @@ func (i VipArray) ToVipArrayOutput() VipArrayOutput {
 
 func (i VipArray) ToVipArrayOutputWithContext(ctx context.Context) VipArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VipArrayOutput)
+}
+
+func (i VipArray) ToOutput(ctx context.Context) pulumix.Output[[]*Vip] {
+	return pulumix.Output[[]*Vip]{
+		OutputState: i.ToVipArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // VipMapInput is an input type that accepts VipMap and VipMapOutput values.
@@ -424,6 +437,12 @@ func (i VipMap) ToVipMapOutputWithContext(ctx context.Context) VipMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VipMapOutput)
 }
 
+func (i VipMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Vip] {
+	return pulumix.Output[map[string]*Vip]{
+		OutputState: i.ToVipMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VipOutput struct{ *pulumi.OutputState }
 
 func (VipOutput) ElementType() reflect.Type {
@@ -436,6 +455,12 @@ func (o VipOutput) ToVipOutput() VipOutput {
 
 func (o VipOutput) ToVipOutputWithContext(ctx context.Context) VipOutput {
 	return o
+}
+
+func (o VipOutput) ToOutput(ctx context.Context) pulumix.Output[*Vip] {
+	return pulumix.Output[*Vip]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IP address of the vip. Changing this creates a new
@@ -542,6 +567,12 @@ func (o VipArrayOutput) ToVipArrayOutputWithContext(ctx context.Context) VipArra
 	return o
 }
 
+func (o VipArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Vip] {
+	return pulumix.Output[[]*Vip]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o VipArrayOutput) Index(i pulumi.IntInput) VipOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Vip {
 		return vs[0].([]*Vip)[vs[1].(int)]
@@ -560,6 +591,12 @@ func (o VipMapOutput) ToVipMapOutput() VipMapOutput {
 
 func (o VipMapOutput) ToVipMapOutputWithContext(ctx context.Context) VipMapOutput {
 	return o
+}
+
+func (o VipMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Vip] {
+	return pulumix.Output[map[string]*Vip]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VipMapOutput) MapIndex(k pulumi.StringInput) VipOutput {

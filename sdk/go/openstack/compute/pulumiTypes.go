@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -128,6 +129,12 @@ func (i InstanceBlockDeviceArgs) ToInstanceBlockDeviceOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceBlockDeviceOutput)
 }
 
+func (i InstanceBlockDeviceArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceBlockDevice] {
+	return pulumix.Output[InstanceBlockDevice]{
+		OutputState: i.ToInstanceBlockDeviceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceBlockDeviceArrayInput is an input type that accepts InstanceBlockDeviceArray and InstanceBlockDeviceArrayOutput values.
 // You can construct a concrete instance of `InstanceBlockDeviceArrayInput` via:
 //
@@ -153,6 +160,12 @@ func (i InstanceBlockDeviceArray) ToInstanceBlockDeviceArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceBlockDeviceArrayOutput)
 }
 
+func (i InstanceBlockDeviceArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceBlockDevice] {
+	return pulumix.Output[[]InstanceBlockDevice]{
+		OutputState: i.ToInstanceBlockDeviceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceBlockDeviceOutput struct{ *pulumi.OutputState }
 
 func (InstanceBlockDeviceOutput) ElementType() reflect.Type {
@@ -165,6 +178,12 @@ func (o InstanceBlockDeviceOutput) ToInstanceBlockDeviceOutput() InstanceBlockDe
 
 func (o InstanceBlockDeviceOutput) ToInstanceBlockDeviceOutputWithContext(ctx context.Context) InstanceBlockDeviceOutput {
 	return o
+}
+
+func (o InstanceBlockDeviceOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceBlockDevice] {
+	return pulumix.Output[InstanceBlockDevice]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The boot index of the volume. It defaults to 0.
@@ -257,6 +276,12 @@ func (o InstanceBlockDeviceArrayOutput) ToInstanceBlockDeviceArrayOutputWithCont
 	return o
 }
 
+func (o InstanceBlockDeviceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceBlockDevice] {
+	return pulumix.Output[[]InstanceBlockDevice]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceBlockDeviceArrayOutput) Index(i pulumi.IntInput) InstanceBlockDeviceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceBlockDevice {
 		return vs[0].([]InstanceBlockDevice)[vs[1].(int)]
@@ -330,6 +355,12 @@ func (i InstanceNetworkArgs) ToInstanceNetworkOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkOutput)
 }
 
+func (i InstanceNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceNetwork] {
+	return pulumix.Output[InstanceNetwork]{
+		OutputState: i.ToInstanceNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceNetworkArrayInput is an input type that accepts InstanceNetworkArray and InstanceNetworkArrayOutput values.
 // You can construct a concrete instance of `InstanceNetworkArrayInput` via:
 //
@@ -355,6 +386,12 @@ func (i InstanceNetworkArray) ToInstanceNetworkArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkArrayOutput)
 }
 
+func (i InstanceNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceNetwork] {
+	return pulumix.Output[[]InstanceNetwork]{
+		OutputState: i.ToInstanceNetworkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceNetworkOutput struct{ *pulumi.OutputState }
 
 func (InstanceNetworkOutput) ElementType() reflect.Type {
@@ -367,6 +404,12 @@ func (o InstanceNetworkOutput) ToInstanceNetworkOutput() InstanceNetworkOutput {
 
 func (o InstanceNetworkOutput) ToInstanceNetworkOutputWithContext(ctx context.Context) InstanceNetworkOutput {
 	return o
+}
+
+func (o InstanceNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceNetwork] {
+	return pulumix.Output[InstanceNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specifies if this network should be used for
@@ -426,6 +469,12 @@ func (o InstanceNetworkArrayOutput) ToInstanceNetworkArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o InstanceNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceNetwork] {
+	return pulumix.Output[[]InstanceNetwork]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceNetworkArrayOutput) Index(i pulumi.IntInput) InstanceNetworkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceNetwork {
 		return vs[0].([]InstanceNetwork)[vs[1].(int)]
@@ -469,6 +518,12 @@ func (i InstancePersonalityArgs) ToInstancePersonalityOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstancePersonalityOutput)
 }
 
+func (i InstancePersonalityArgs) ToOutput(ctx context.Context) pulumix.Output[InstancePersonality] {
+	return pulumix.Output[InstancePersonality]{
+		OutputState: i.ToInstancePersonalityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstancePersonalityArrayInput is an input type that accepts InstancePersonalityArray and InstancePersonalityArrayOutput values.
 // You can construct a concrete instance of `InstancePersonalityArrayInput` via:
 //
@@ -494,6 +549,12 @@ func (i InstancePersonalityArray) ToInstancePersonalityArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(InstancePersonalityArrayOutput)
 }
 
+func (i InstancePersonalityArray) ToOutput(ctx context.Context) pulumix.Output[[]InstancePersonality] {
+	return pulumix.Output[[]InstancePersonality]{
+		OutputState: i.ToInstancePersonalityArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstancePersonalityOutput struct{ *pulumi.OutputState }
 
 func (InstancePersonalityOutput) ElementType() reflect.Type {
@@ -506,6 +567,12 @@ func (o InstancePersonalityOutput) ToInstancePersonalityOutput() InstancePersona
 
 func (o InstancePersonalityOutput) ToInstancePersonalityOutputWithContext(ctx context.Context) InstancePersonalityOutput {
 	return o
+}
+
+func (o InstancePersonalityOutput) ToOutput(ctx context.Context) pulumix.Output[InstancePersonality] {
+	return pulumix.Output[InstancePersonality]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The contents of the file. Limited to 255 bytes.
@@ -530,6 +597,12 @@ func (o InstancePersonalityArrayOutput) ToInstancePersonalityArrayOutput() Insta
 
 func (o InstancePersonalityArrayOutput) ToInstancePersonalityArrayOutputWithContext(ctx context.Context) InstancePersonalityArrayOutput {
 	return o
+}
+
+func (o InstancePersonalityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstancePersonality] {
+	return pulumix.Output[[]InstancePersonality]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstancePersonalityArrayOutput) Index(i pulumi.IntInput) InstancePersonalityOutput {
@@ -619,6 +692,12 @@ func (i InstanceSchedulerHintArgs) ToInstanceSchedulerHintOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceSchedulerHintOutput)
 }
 
+func (i InstanceSchedulerHintArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceSchedulerHint] {
+	return pulumix.Output[InstanceSchedulerHint]{
+		OutputState: i.ToInstanceSchedulerHintOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceSchedulerHintArrayInput is an input type that accepts InstanceSchedulerHintArray and InstanceSchedulerHintArrayOutput values.
 // You can construct a concrete instance of `InstanceSchedulerHintArrayInput` via:
 //
@@ -644,6 +723,12 @@ func (i InstanceSchedulerHintArray) ToInstanceSchedulerHintArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceSchedulerHintArrayOutput)
 }
 
+func (i InstanceSchedulerHintArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceSchedulerHint] {
+	return pulumix.Output[[]InstanceSchedulerHint]{
+		OutputState: i.ToInstanceSchedulerHintArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceSchedulerHintOutput struct{ *pulumi.OutputState }
 
 func (InstanceSchedulerHintOutput) ElementType() reflect.Type {
@@ -656,6 +741,12 @@ func (o InstanceSchedulerHintOutput) ToInstanceSchedulerHintOutput() InstanceSch
 
 func (o InstanceSchedulerHintOutput) ToInstanceSchedulerHintOutputWithContext(ctx context.Context) InstanceSchedulerHintOutput {
 	return o
+}
+
+func (o InstanceSchedulerHintOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceSchedulerHint] {
+	return pulumix.Output[InstanceSchedulerHint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Arbitrary key/value pairs of additional
@@ -722,6 +813,12 @@ func (o InstanceSchedulerHintArrayOutput) ToInstanceSchedulerHintArrayOutputWith
 	return o
 }
 
+func (o InstanceSchedulerHintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceSchedulerHint] {
+	return pulumix.Output[[]InstanceSchedulerHint]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o InstanceSchedulerHintArrayOutput) Index(i pulumi.IntInput) InstanceSchedulerHintOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceSchedulerHint {
 		return vs[0].([]InstanceSchedulerHint)[vs[1].(int)]
@@ -775,6 +872,12 @@ func (i InstanceVendorOptionsArgs) ToInstanceVendorOptionsOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceVendorOptionsOutput)
 }
 
+func (i InstanceVendorOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceVendorOptions] {
+	return pulumix.Output[InstanceVendorOptions]{
+		OutputState: i.ToInstanceVendorOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i InstanceVendorOptionsArgs) ToInstanceVendorOptionsPtrOutput() InstanceVendorOptionsPtrOutput {
 	return i.ToInstanceVendorOptionsPtrOutputWithContext(context.Background())
 }
@@ -816,6 +919,12 @@ func (i *instanceVendorOptionsPtrType) ToInstanceVendorOptionsPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceVendorOptionsPtrOutput)
 }
 
+func (i *instanceVendorOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceVendorOptions] {
+	return pulumix.Output[*InstanceVendorOptions]{
+		OutputState: i.ToInstanceVendorOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceVendorOptionsOutput struct{ *pulumi.OutputState }
 
 func (InstanceVendorOptionsOutput) ElementType() reflect.Type {
@@ -838,6 +947,12 @@ func (o InstanceVendorOptionsOutput) ToInstanceVendorOptionsPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceVendorOptions) *InstanceVendorOptions {
 		return &v
 	}).(InstanceVendorOptionsPtrOutput)
+}
+
+func (o InstanceVendorOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceVendorOptions] {
+	return pulumix.Output[InstanceVendorOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to try to detach all attached
@@ -867,6 +982,12 @@ func (o InstanceVendorOptionsPtrOutput) ToInstanceVendorOptionsPtrOutput() Insta
 
 func (o InstanceVendorOptionsPtrOutput) ToInstanceVendorOptionsPtrOutputWithContext(ctx context.Context) InstanceVendorOptionsPtrOutput {
 	return o
+}
+
+func (o InstanceVendorOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceVendorOptions] {
+	return pulumix.Output[*InstanceVendorOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceVendorOptionsPtrOutput) Elem() InstanceVendorOptionsOutput {
@@ -939,6 +1060,12 @@ func (i InstanceVolumeArgs) ToInstanceVolumeOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeOutput)
 }
 
+func (i InstanceVolumeArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceVolume] {
+	return pulumix.Output[InstanceVolume]{
+		OutputState: i.ToInstanceVolumeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // InstanceVolumeArrayInput is an input type that accepts InstanceVolumeArray and InstanceVolumeArrayOutput values.
 // You can construct a concrete instance of `InstanceVolumeArrayInput` via:
 //
@@ -964,6 +1091,12 @@ func (i InstanceVolumeArray) ToInstanceVolumeArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceVolumeArrayOutput)
 }
 
+func (i InstanceVolumeArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceVolume] {
+	return pulumix.Output[[]InstanceVolume]{
+		OutputState: i.ToInstanceVolumeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type InstanceVolumeOutput struct{ *pulumi.OutputState }
 
 func (InstanceVolumeOutput) ElementType() reflect.Type {
@@ -976,6 +1109,12 @@ func (o InstanceVolumeOutput) ToInstanceVolumeOutput() InstanceVolumeOutput {
 
 func (o InstanceVolumeOutput) ToInstanceVolumeOutputWithContext(ctx context.Context) InstanceVolumeOutput {
 	return o
+}
+
+func (o InstanceVolumeOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceVolume] {
+	return pulumix.Output[InstanceVolume]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceVolumeOutput) Device() pulumi.StringPtrOutput {
@@ -1002,6 +1141,12 @@ func (o InstanceVolumeArrayOutput) ToInstanceVolumeArrayOutput() InstanceVolumeA
 
 func (o InstanceVolumeArrayOutput) ToInstanceVolumeArrayOutputWithContext(ctx context.Context) InstanceVolumeArrayOutput {
 	return o
+}
+
+func (o InstanceVolumeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceVolume] {
+	return pulumix.Output[[]InstanceVolume]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o InstanceVolumeArrayOutput) Index(i pulumi.IntInput) InstanceVolumeOutput {
@@ -1085,6 +1230,12 @@ func (i SecGroupRuleArgs) ToSecGroupRuleOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SecGroupRuleOutput)
 }
 
+func (i SecGroupRuleArgs) ToOutput(ctx context.Context) pulumix.Output[SecGroupRule] {
+	return pulumix.Output[SecGroupRule]{
+		OutputState: i.ToSecGroupRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SecGroupRuleArrayInput is an input type that accepts SecGroupRuleArray and SecGroupRuleArrayOutput values.
 // You can construct a concrete instance of `SecGroupRuleArrayInput` via:
 //
@@ -1110,6 +1261,12 @@ func (i SecGroupRuleArray) ToSecGroupRuleArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecGroupRuleArrayOutput)
 }
 
+func (i SecGroupRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]SecGroupRule] {
+	return pulumix.Output[[]SecGroupRule]{
+		OutputState: i.ToSecGroupRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecGroupRuleOutput struct{ *pulumi.OutputState }
 
 func (SecGroupRuleOutput) ElementType() reflect.Type {
@@ -1122,6 +1279,12 @@ func (o SecGroupRuleOutput) ToSecGroupRuleOutput() SecGroupRuleOutput {
 
 func (o SecGroupRuleOutput) ToSecGroupRuleOutputWithContext(ctx context.Context) SecGroupRuleOutput {
 	return o
+}
+
+func (o SecGroupRuleOutput) ToOutput(ctx context.Context) pulumix.Output[SecGroupRule] {
+	return pulumix.Output[SecGroupRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Required if `fromGroupId` or `self` is empty. The IP range
@@ -1182,6 +1345,12 @@ func (o SecGroupRuleArrayOutput) ToSecGroupRuleArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o SecGroupRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SecGroupRule] {
+	return pulumix.Output[[]SecGroupRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecGroupRuleArrayOutput) Index(i pulumi.IntInput) SecGroupRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecGroupRule {
 		return vs[0].([]SecGroupRule)[vs[1].(int)]
@@ -1217,6 +1386,12 @@ func (i ServerGroupRulesArgs) ToServerGroupRulesOutput() ServerGroupRulesOutput 
 
 func (i ServerGroupRulesArgs) ToServerGroupRulesOutputWithContext(ctx context.Context) ServerGroupRulesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupRulesOutput)
+}
+
+func (i ServerGroupRulesArgs) ToOutput(ctx context.Context) pulumix.Output[ServerGroupRules] {
+	return pulumix.Output[ServerGroupRules]{
+		OutputState: i.ToServerGroupRulesOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ServerGroupRulesArgs) ToServerGroupRulesPtrOutput() ServerGroupRulesPtrOutput {
@@ -1260,6 +1435,12 @@ func (i *serverGroupRulesPtrType) ToServerGroupRulesPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupRulesPtrOutput)
 }
 
+func (i *serverGroupRulesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServerGroupRules] {
+	return pulumix.Output[*ServerGroupRules]{
+		OutputState: i.ToServerGroupRulesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServerGroupRulesOutput struct{ *pulumi.OutputState }
 
 func (ServerGroupRulesOutput) ElementType() reflect.Type {
@@ -1284,6 +1465,12 @@ func (o ServerGroupRulesOutput) ToServerGroupRulesPtrOutputWithContext(ctx conte
 	}).(ServerGroupRulesPtrOutput)
 }
 
+func (o ServerGroupRulesOutput) ToOutput(ctx context.Context) pulumix.Output[ServerGroupRules] {
+	return pulumix.Output[ServerGroupRules]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServerGroupRulesOutput) MaxServerPerHost() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupRules) *int { return v.MaxServerPerHost }).(pulumi.IntPtrOutput)
 }
@@ -1300,6 +1487,12 @@ func (o ServerGroupRulesPtrOutput) ToServerGroupRulesPtrOutput() ServerGroupRule
 
 func (o ServerGroupRulesPtrOutput) ToServerGroupRulesPtrOutputWithContext(ctx context.Context) ServerGroupRulesPtrOutput {
 	return o
+}
+
+func (o ServerGroupRulesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerGroupRules] {
+	return pulumix.Output[*ServerGroupRules]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServerGroupRulesPtrOutput) Elem() ServerGroupRulesOutput {
@@ -1358,6 +1551,12 @@ func (i VolumeAttachVendorOptionsArgs) ToVolumeAttachVendorOptionsOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachVendorOptionsOutput)
 }
 
+func (i VolumeAttachVendorOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeAttachVendorOptions] {
+	return pulumix.Output[VolumeAttachVendorOptions]{
+		OutputState: i.ToVolumeAttachVendorOptionsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i VolumeAttachVendorOptionsArgs) ToVolumeAttachVendorOptionsPtrOutput() VolumeAttachVendorOptionsPtrOutput {
 	return i.ToVolumeAttachVendorOptionsPtrOutputWithContext(context.Background())
 }
@@ -1399,6 +1598,12 @@ func (i *volumeAttachVendorOptionsPtrType) ToVolumeAttachVendorOptionsPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachVendorOptionsPtrOutput)
 }
 
+func (i *volumeAttachVendorOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*VolumeAttachVendorOptions] {
+	return pulumix.Output[*VolumeAttachVendorOptions]{
+		OutputState: i.ToVolumeAttachVendorOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type VolumeAttachVendorOptionsOutput struct{ *pulumi.OutputState }
 
 func (VolumeAttachVendorOptionsOutput) ElementType() reflect.Type {
@@ -1423,6 +1628,12 @@ func (o VolumeAttachVendorOptionsOutput) ToVolumeAttachVendorOptionsPtrOutputWit
 	}).(VolumeAttachVendorOptionsPtrOutput)
 }
 
+func (o VolumeAttachVendorOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeAttachVendorOptions] {
+	return pulumix.Output[VolumeAttachVendorOptions]{
+		OutputState: o.OutputState,
+	}
+}
+
 // Boolean to control whether
 // to ignore volume status confirmation of the attached volume. This can be helpful
 // to work with some OpenStack clouds which don't have the Block Storage V3 API available.
@@ -1442,6 +1653,12 @@ func (o VolumeAttachVendorOptionsPtrOutput) ToVolumeAttachVendorOptionsPtrOutput
 
 func (o VolumeAttachVendorOptionsPtrOutput) ToVolumeAttachVendorOptionsPtrOutputWithContext(ctx context.Context) VolumeAttachVendorOptionsPtrOutput {
 	return o
+}
+
+func (o VolumeAttachVendorOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeAttachVendorOptions] {
+	return pulumix.Output[*VolumeAttachVendorOptions]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o VolumeAttachVendorOptionsPtrOutput) Elem() VolumeAttachVendorOptionsOutput {
@@ -1519,6 +1736,12 @@ func (i GetInstanceV2NetworkArgs) ToGetInstanceV2NetworkOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceV2NetworkOutput)
 }
 
+func (i GetInstanceV2NetworkArgs) ToOutput(ctx context.Context) pulumix.Output[GetInstanceV2Network] {
+	return pulumix.Output[GetInstanceV2Network]{
+		OutputState: i.ToGetInstanceV2NetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetInstanceV2NetworkArrayInput is an input type that accepts GetInstanceV2NetworkArray and GetInstanceV2NetworkArrayOutput values.
 // You can construct a concrete instance of `GetInstanceV2NetworkArrayInput` via:
 //
@@ -1544,6 +1767,12 @@ func (i GetInstanceV2NetworkArray) ToGetInstanceV2NetworkArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceV2NetworkArrayOutput)
 }
 
+func (i GetInstanceV2NetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceV2Network] {
+	return pulumix.Output[[]GetInstanceV2Network]{
+		OutputState: i.ToGetInstanceV2NetworkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetInstanceV2NetworkOutput struct{ *pulumi.OutputState }
 
 func (GetInstanceV2NetworkOutput) ElementType() reflect.Type {
@@ -1556,6 +1785,12 @@ func (o GetInstanceV2NetworkOutput) ToGetInstanceV2NetworkOutput() GetInstanceV2
 
 func (o GetInstanceV2NetworkOutput) ToGetInstanceV2NetworkOutputWithContext(ctx context.Context) GetInstanceV2NetworkOutput {
 	return o
+}
+
+func (o GetInstanceV2NetworkOutput) ToOutput(ctx context.Context) pulumix.Output[GetInstanceV2Network] {
+	return pulumix.Output[GetInstanceV2Network]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The IPv4 address assigned to this network port.
@@ -1600,6 +1835,12 @@ func (o GetInstanceV2NetworkArrayOutput) ToGetInstanceV2NetworkArrayOutput() Get
 
 func (o GetInstanceV2NetworkArrayOutput) ToGetInstanceV2NetworkArrayOutputWithContext(ctx context.Context) GetInstanceV2NetworkArrayOutput {
 	return o
+}
+
+func (o GetInstanceV2NetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInstanceV2Network] {
+	return pulumix.Output[[]GetInstanceV2Network]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetInstanceV2NetworkArrayOutput) Index(i pulumi.IntInput) GetInstanceV2NetworkOutput {

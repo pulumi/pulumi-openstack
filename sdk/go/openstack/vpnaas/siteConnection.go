@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 Neutron IPSec site connection resource within OpenStack.
@@ -429,6 +430,12 @@ func (i *SiteConnection) ToSiteConnectionOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SiteConnectionOutput)
 }
 
+func (i *SiteConnection) ToOutput(ctx context.Context) pulumix.Output[*SiteConnection] {
+	return pulumix.Output[*SiteConnection]{
+		OutputState: i.ToSiteConnectionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SiteConnectionArrayInput is an input type that accepts SiteConnectionArray and SiteConnectionArrayOutput values.
 // You can construct a concrete instance of `SiteConnectionArrayInput` via:
 //
@@ -452,6 +459,12 @@ func (i SiteConnectionArray) ToSiteConnectionArrayOutput() SiteConnectionArrayOu
 
 func (i SiteConnectionArray) ToSiteConnectionArrayOutputWithContext(ctx context.Context) SiteConnectionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SiteConnectionArrayOutput)
+}
+
+func (i SiteConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]*SiteConnection] {
+	return pulumix.Output[[]*SiteConnection]{
+		OutputState: i.ToSiteConnectionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SiteConnectionMapInput is an input type that accepts SiteConnectionMap and SiteConnectionMapOutput values.
@@ -479,6 +492,12 @@ func (i SiteConnectionMap) ToSiteConnectionMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SiteConnectionMapOutput)
 }
 
+func (i SiteConnectionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SiteConnection] {
+	return pulumix.Output[map[string]*SiteConnection]{
+		OutputState: i.ToSiteConnectionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SiteConnectionOutput struct{ *pulumi.OutputState }
 
 func (SiteConnectionOutput) ElementType() reflect.Type {
@@ -491,6 +510,12 @@ func (o SiteConnectionOutput) ToSiteConnectionOutput() SiteConnectionOutput {
 
 func (o SiteConnectionOutput) ToSiteConnectionOutputWithContext(ctx context.Context) SiteConnectionOutput {
 	return o
+}
+
+func (o SiteConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*SiteConnection] {
+	return pulumix.Output[*SiteConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The administrative state of the resource. Can either be up(true) or down(false).
@@ -619,6 +644,12 @@ func (o SiteConnectionArrayOutput) ToSiteConnectionArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o SiteConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SiteConnection] {
+	return pulumix.Output[[]*SiteConnection]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SiteConnectionArrayOutput) Index(i pulumi.IntInput) SiteConnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SiteConnection {
 		return vs[0].([]*SiteConnection)[vs[1].(int)]
@@ -637,6 +668,12 @@ func (o SiteConnectionMapOutput) ToSiteConnectionMapOutput() SiteConnectionMapOu
 
 func (o SiteConnectionMapOutput) ToSiteConnectionMapOutputWithContext(ctx context.Context) SiteConnectionMapOutput {
 	return o
+}
+
+func (o SiteConnectionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SiteConnection] {
+	return pulumix.Output[map[string]*SiteConnection]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SiteConnectionMapOutput) MapIndex(k pulumi.StringInput) SiteConnectionOutput {

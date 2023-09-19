@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the ID of an available Shared File System share.
@@ -172,6 +173,12 @@ func (o LookupShareResultOutput) ToLookupShareResultOutput() LookupShareResultOu
 
 func (o LookupShareResultOutput) ToLookupShareResultOutputWithContext(ctx context.Context) LookupShareResultOutput {
 	return o
+}
+
+func (o LookupShareResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupShareResult] {
+	return pulumix.Output[LookupShareResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The share availability zone.

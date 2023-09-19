@@ -81,7 +81,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * A description of the  record set.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -97,7 +97,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * will be considered as created/updated/deleted if OpenStack request returned success.
      * 
      */
-    @Export(name="disableStatusCheck", type=Boolean.class, parameters={})
+    @Export(name="disableStatusCheck", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableStatusCheck;
 
     /**
@@ -114,7 +114,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * Changing this creates a new DNS  record set.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -131,7 +131,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * user role in target project)
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -147,7 +147,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * An array of DNS records.
      * 
      */
-    @Export(name="records", type=List.class, parameters={String.class})
+    @Export(name="records", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> records;
 
     /**
@@ -163,7 +163,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * Changing this creates a new DNS  record set.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -179,7 +179,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * The time to live (TTL) of the record set.
      * 
      */
-    @Export(name="ttl", type=Integer.class, parameters={})
+    @Export(name="ttl", refs={Integer.class}, tree="[0]")
     private Output<Integer> ttl;
 
     /**
@@ -194,7 +194,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * Changing this creates a new DNS  record set.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -210,7 +210,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * new record set.
      * 
      */
-    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**
@@ -226,7 +226,7 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
      * Changing this creates a new DNS  record set.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

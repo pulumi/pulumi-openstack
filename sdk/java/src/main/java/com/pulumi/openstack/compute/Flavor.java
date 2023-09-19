@@ -74,7 +74,7 @@ public class Flavor extends com.pulumi.resources.CustomResource {
      * updates the description of the flavor. Requires microversion &gt;= 2.55.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -90,7 +90,7 @@ public class Flavor extends com.pulumi.resources.CustomResource {
      * (/) partition. Changing this creates a new flavor.
      * 
      */
-    @Export(name="disk", type=Integer.class, parameters={})
+    @Export(name="disk", refs={Integer.class}, tree="[0]")
     private Output<Integer> disk;
 
     /**
@@ -106,7 +106,7 @@ public class Flavor extends com.pulumi.resources.CustomResource {
      * the default is 0. Changing this creates a new flavor.
      * 
      */
-    @Export(name="ephemeral", type=Integer.class, parameters={})
+    @Export(name="ephemeral", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ephemeral;
 
     /**
@@ -121,7 +121,7 @@ public class Flavor extends com.pulumi.resources.CustomResource {
      * Key/Value pairs of metadata for the flavor.
      * 
      */
-    @Export(name="extraSpecs", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="extraSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> extraSpecs;
 
     /**
@@ -136,7 +136,7 @@ public class Flavor extends com.pulumi.resources.CustomResource {
      * this creates a new flavor.
      * 
      */
-    @Export(name="flavorId", type=String.class, parameters={})
+    @Export(name="flavorId", refs={String.class}, tree="[0]")
     private Output<String> flavorId;
 
     /**
@@ -152,7 +152,7 @@ public class Flavor extends com.pulumi.resources.CustomResource {
      * a new flavor.
      * 
      */
-    @Export(name="isPublic", type=Boolean.class, parameters={})
+    @Export(name="isPublic", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isPublic;
 
     /**
@@ -168,7 +168,7 @@ public class Flavor extends com.pulumi.resources.CustomResource {
      * flavor.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -184,7 +184,7 @@ public class Flavor extends com.pulumi.resources.CustomResource {
      * creates a new flavor.
      * 
      */
-    @Export(name="ram", type=Integer.class, parameters={})
+    @Export(name="ram", refs={Integer.class}, tree="[0]")
     private Output<Integer> ram;
 
     /**
@@ -202,7 +202,7 @@ public class Flavor extends com.pulumi.resources.CustomResource {
      * Changing this creates a new flavor.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -220,7 +220,7 @@ public class Flavor extends com.pulumi.resources.CustomResource {
      * this creates a new flavor.
      * 
      */
-    @Export(name="rxTxFactor", type=Double.class, parameters={})
+    @Export(name="rxTxFactor", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> rxTxFactor;
 
     /**
@@ -236,7 +236,7 @@ public class Flavor extends com.pulumi.resources.CustomResource {
      * unspecified, the default is 0. Changing this creates a new flavor.
      * 
      */
-    @Export(name="swap", type=Integer.class, parameters={})
+    @Export(name="swap", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> swap;
 
     /**
@@ -252,7 +252,7 @@ public class Flavor extends com.pulumi.resources.CustomResource {
      * a new flavor.
      * 
      */
-    @Export(name="vcpus", type=Integer.class, parameters={})
+    @Export(name="vcpus", refs={Integer.class}, tree="[0]")
     private Output<Integer> vcpus;
 
     /**

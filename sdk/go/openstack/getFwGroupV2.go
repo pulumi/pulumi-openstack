@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information of an available OpenStack firewall group v2.
@@ -168,6 +169,12 @@ func (o GetFwGroupV2ResultOutput) ToGetFwGroupV2ResultOutput() GetFwGroupV2Resul
 
 func (o GetFwGroupV2ResultOutput) ToGetFwGroupV2ResultOutputWithContext(ctx context.Context) GetFwGroupV2ResultOutput {
 	return o
+}
+
+func (o GetFwGroupV2ResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetFwGroupV2Result] {
+	return pulumix.Output[GetFwGroupV2Result]{
+		OutputState: o.OutputState,
+	}
 }
 
 // See Argument Reference above.

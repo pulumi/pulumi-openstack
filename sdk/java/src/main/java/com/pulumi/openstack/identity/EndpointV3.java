@@ -73,7 +73,7 @@ public class EndpointV3 extends com.pulumi.resources.CustomResource {
      * `endpoint_region` can be different.
      * 
      */
-    @Export(name="endpointRegion", type=String.class, parameters={})
+    @Export(name="endpointRegion", refs={String.class}, tree="[0]")
     private Output<String> endpointRegion;
 
     /**
@@ -89,7 +89,7 @@ public class EndpointV3 extends com.pulumi.resources.CustomResource {
      * `internal` and `admin`. Default value is `public`
      * 
      */
-    @Export(name="interface", type=String.class, parameters={})
+    @Export(name="interface", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> interface_;
 
     /**
@@ -104,7 +104,7 @@ public class EndpointV3 extends com.pulumi.resources.CustomResource {
      * The endpoint name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -119,7 +119,7 @@ public class EndpointV3 extends com.pulumi.resources.CustomResource {
      * If omitted, the `region` argument of the provider is used.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -134,7 +134,7 @@ public class EndpointV3 extends com.pulumi.resources.CustomResource {
      * The endpoint service ID.
      * 
      */
-    @Export(name="serviceId", type=String.class, parameters={})
+    @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
 
     /**
@@ -148,7 +148,7 @@ public class EndpointV3 extends com.pulumi.resources.CustomResource {
      * The service name of the endpoint.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -162,7 +162,7 @@ public class EndpointV3 extends com.pulumi.resources.CustomResource {
      * The service type of the endpoint.
      * 
      */
-    @Export(name="serviceType", type=String.class, parameters={})
+    @Export(name="serviceType", refs={String.class}, tree="[0]")
     private Output<String> serviceType;
 
     /**
@@ -176,7 +176,7 @@ public class EndpointV3 extends com.pulumi.resources.CustomResource {
      * The endpoint url.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about host aggregates
@@ -113,6 +114,12 @@ func (o LookupAggregateV2ResultOutput) ToLookupAggregateV2ResultOutput() LookupA
 
 func (o LookupAggregateV2ResultOutput) ToLookupAggregateV2ResultOutputWithContext(ctx context.Context) LookupAggregateV2ResultOutput {
 	return o
+}
+
+func (o LookupAggregateV2ResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAggregateV2Result] {
+	return pulumix.Output[LookupAggregateV2Result]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of Hypervisors contained in the Host Aggregate

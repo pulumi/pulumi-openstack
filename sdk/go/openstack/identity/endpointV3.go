@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V3 Endpoint resource within OpenStack Keystone.
@@ -229,6 +230,12 @@ func (i *EndpointV3) ToEndpointV3OutputWithContext(ctx context.Context) Endpoint
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointV3Output)
 }
 
+func (i *EndpointV3) ToOutput(ctx context.Context) pulumix.Output[*EndpointV3] {
+	return pulumix.Output[*EndpointV3]{
+		OutputState: i.ToEndpointV3OutputWithContext(ctx).OutputState,
+	}
+}
+
 // EndpointV3ArrayInput is an input type that accepts EndpointV3Array and EndpointV3ArrayOutput values.
 // You can construct a concrete instance of `EndpointV3ArrayInput` via:
 //
@@ -252,6 +259,12 @@ func (i EndpointV3Array) ToEndpointV3ArrayOutput() EndpointV3ArrayOutput {
 
 func (i EndpointV3Array) ToEndpointV3ArrayOutputWithContext(ctx context.Context) EndpointV3ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointV3ArrayOutput)
+}
+
+func (i EndpointV3Array) ToOutput(ctx context.Context) pulumix.Output[[]*EndpointV3] {
+	return pulumix.Output[[]*EndpointV3]{
+		OutputState: i.ToEndpointV3ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EndpointV3MapInput is an input type that accepts EndpointV3Map and EndpointV3MapOutput values.
@@ -279,6 +292,12 @@ func (i EndpointV3Map) ToEndpointV3MapOutputWithContext(ctx context.Context) End
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointV3MapOutput)
 }
 
+func (i EndpointV3Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*EndpointV3] {
+	return pulumix.Output[map[string]*EndpointV3]{
+		OutputState: i.ToEndpointV3MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EndpointV3Output struct{ *pulumi.OutputState }
 
 func (EndpointV3Output) ElementType() reflect.Type {
@@ -291,6 +310,12 @@ func (o EndpointV3Output) ToEndpointV3Output() EndpointV3Output {
 
 func (o EndpointV3Output) ToEndpointV3OutputWithContext(ctx context.Context) EndpointV3Output {
 	return o
+}
+
+func (o EndpointV3Output) ToOutput(ctx context.Context) pulumix.Output[*EndpointV3] {
+	return pulumix.Output[*EndpointV3]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The endpoint region. The `region` and
@@ -350,6 +375,12 @@ func (o EndpointV3ArrayOutput) ToEndpointV3ArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o EndpointV3ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EndpointV3] {
+	return pulumix.Output[[]*EndpointV3]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EndpointV3ArrayOutput) Index(i pulumi.IntInput) EndpointV3Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EndpointV3 {
 		return vs[0].([]*EndpointV3)[vs[1].(int)]
@@ -368,6 +399,12 @@ func (o EndpointV3MapOutput) ToEndpointV3MapOutput() EndpointV3MapOutput {
 
 func (o EndpointV3MapOutput) ToEndpointV3MapOutputWithContext(ctx context.Context) EndpointV3MapOutput {
 	return o
+}
+
+func (o EndpointV3MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EndpointV3] {
+	return pulumix.Output[map[string]*EndpointV3]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EndpointV3MapOutput) MapIndex(k pulumi.StringInput) EndpointV3Output {

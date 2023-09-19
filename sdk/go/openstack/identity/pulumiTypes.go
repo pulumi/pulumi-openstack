@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -78,6 +79,12 @@ func (i ApplicationCredentialAccessRuleArgs) ToApplicationCredentialAccessRuleOu
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCredentialAccessRuleOutput)
 }
 
+func (i ApplicationCredentialAccessRuleArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationCredentialAccessRule] {
+	return pulumix.Output[ApplicationCredentialAccessRule]{
+		OutputState: i.ToApplicationCredentialAccessRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ApplicationCredentialAccessRuleArrayInput is an input type that accepts ApplicationCredentialAccessRuleArray and ApplicationCredentialAccessRuleArrayOutput values.
 // You can construct a concrete instance of `ApplicationCredentialAccessRuleArrayInput` via:
 //
@@ -103,6 +110,12 @@ func (i ApplicationCredentialAccessRuleArray) ToApplicationCredentialAccessRuleA
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCredentialAccessRuleArrayOutput)
 }
 
+func (i ApplicationCredentialAccessRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationCredentialAccessRule] {
+	return pulumix.Output[[]ApplicationCredentialAccessRule]{
+		OutputState: i.ToApplicationCredentialAccessRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApplicationCredentialAccessRuleOutput struct{ *pulumi.OutputState }
 
 func (ApplicationCredentialAccessRuleOutput) ElementType() reflect.Type {
@@ -115,6 +128,12 @@ func (o ApplicationCredentialAccessRuleOutput) ToApplicationCredentialAccessRule
 
 func (o ApplicationCredentialAccessRuleOutput) ToApplicationCredentialAccessRuleOutputWithContext(ctx context.Context) ApplicationCredentialAccessRuleOutput {
 	return o
+}
+
+func (o ApplicationCredentialAccessRuleOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationCredentialAccessRule] {
+	return pulumix.Output[ApplicationCredentialAccessRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the existing access rule. The access rule ID of
@@ -161,6 +180,12 @@ func (o ApplicationCredentialAccessRuleArrayOutput) ToApplicationCredentialAcces
 	return o
 }
 
+func (o ApplicationCredentialAccessRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationCredentialAccessRule] {
+	return pulumix.Output[[]ApplicationCredentialAccessRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ApplicationCredentialAccessRuleArrayOutput) Index(i pulumi.IntInput) ApplicationCredentialAccessRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationCredentialAccessRule {
 		return vs[0].([]ApplicationCredentialAccessRule)[vs[1].(int)]
@@ -202,6 +227,12 @@ func (i UserMultiFactorAuthRuleArgs) ToUserMultiFactorAuthRuleOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(UserMultiFactorAuthRuleOutput)
 }
 
+func (i UserMultiFactorAuthRuleArgs) ToOutput(ctx context.Context) pulumix.Output[UserMultiFactorAuthRule] {
+	return pulumix.Output[UserMultiFactorAuthRule]{
+		OutputState: i.ToUserMultiFactorAuthRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UserMultiFactorAuthRuleArrayInput is an input type that accepts UserMultiFactorAuthRuleArray and UserMultiFactorAuthRuleArrayOutput values.
 // You can construct a concrete instance of `UserMultiFactorAuthRuleArrayInput` via:
 //
@@ -227,6 +258,12 @@ func (i UserMultiFactorAuthRuleArray) ToUserMultiFactorAuthRuleArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(UserMultiFactorAuthRuleArrayOutput)
 }
 
+func (i UserMultiFactorAuthRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]UserMultiFactorAuthRule] {
+	return pulumix.Output[[]UserMultiFactorAuthRule]{
+		OutputState: i.ToUserMultiFactorAuthRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UserMultiFactorAuthRuleOutput struct{ *pulumi.OutputState }
 
 func (UserMultiFactorAuthRuleOutput) ElementType() reflect.Type {
@@ -239,6 +276,12 @@ func (o UserMultiFactorAuthRuleOutput) ToUserMultiFactorAuthRuleOutput() UserMul
 
 func (o UserMultiFactorAuthRuleOutput) ToUserMultiFactorAuthRuleOutputWithContext(ctx context.Context) UserMultiFactorAuthRuleOutput {
 	return o
+}
+
+func (o UserMultiFactorAuthRuleOutput) ToOutput(ctx context.Context) pulumix.Output[UserMultiFactorAuthRule] {
+	return pulumix.Output[UserMultiFactorAuthRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of authentication plugins that the user must
@@ -259,6 +302,12 @@ func (o UserMultiFactorAuthRuleArrayOutput) ToUserMultiFactorAuthRuleArrayOutput
 
 func (o UserMultiFactorAuthRuleArrayOutput) ToUserMultiFactorAuthRuleArrayOutputWithContext(ctx context.Context) UserMultiFactorAuthRuleArrayOutput {
 	return o
+}
+
+func (o UserMultiFactorAuthRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UserMultiFactorAuthRule] {
+	return pulumix.Output[[]UserMultiFactorAuthRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserMultiFactorAuthRuleArrayOutput) Index(i pulumi.IntInput) UserMultiFactorAuthRuleOutput {
@@ -304,6 +353,12 @@ func (i GetAuthScopeRoleArgs) ToGetAuthScopeRoleOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetAuthScopeRoleOutput)
 }
 
+func (i GetAuthScopeRoleArgs) ToOutput(ctx context.Context) pulumix.Output[GetAuthScopeRole] {
+	return pulumix.Output[GetAuthScopeRole]{
+		OutputState: i.ToGetAuthScopeRoleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAuthScopeRoleArrayInput is an input type that accepts GetAuthScopeRoleArray and GetAuthScopeRoleArrayOutput values.
 // You can construct a concrete instance of `GetAuthScopeRoleArrayInput` via:
 //
@@ -329,6 +384,12 @@ func (i GetAuthScopeRoleArray) ToGetAuthScopeRoleArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetAuthScopeRoleArrayOutput)
 }
 
+func (i GetAuthScopeRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAuthScopeRole] {
+	return pulumix.Output[[]GetAuthScopeRole]{
+		OutputState: i.ToGetAuthScopeRoleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAuthScopeRoleOutput struct{ *pulumi.OutputState }
 
 func (GetAuthScopeRoleOutput) ElementType() reflect.Type {
@@ -341,6 +402,12 @@ func (o GetAuthScopeRoleOutput) ToGetAuthScopeRoleOutput() GetAuthScopeRoleOutpu
 
 func (o GetAuthScopeRoleOutput) ToGetAuthScopeRoleOutputWithContext(ctx context.Context) GetAuthScopeRoleOutput {
 	return o
+}
+
+func (o GetAuthScopeRoleOutput) ToOutput(ctx context.Context) pulumix.Output[GetAuthScopeRole] {
+	return pulumix.Output[GetAuthScopeRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the role.
@@ -365,6 +432,12 @@ func (o GetAuthScopeRoleArrayOutput) ToGetAuthScopeRoleArrayOutput() GetAuthScop
 
 func (o GetAuthScopeRoleArrayOutput) ToGetAuthScopeRoleArrayOutputWithContext(ctx context.Context) GetAuthScopeRoleArrayOutput {
 	return o
+}
+
+func (o GetAuthScopeRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAuthScopeRole] {
+	return pulumix.Output[[]GetAuthScopeRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAuthScopeRoleArrayOutput) Index(i pulumi.IntInput) GetAuthScopeRoleOutput {
@@ -420,6 +493,12 @@ func (i GetAuthScopeServiceCatalogArgs) ToGetAuthScopeServiceCatalogOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetAuthScopeServiceCatalogOutput)
 }
 
+func (i GetAuthScopeServiceCatalogArgs) ToOutput(ctx context.Context) pulumix.Output[GetAuthScopeServiceCatalog] {
+	return pulumix.Output[GetAuthScopeServiceCatalog]{
+		OutputState: i.ToGetAuthScopeServiceCatalogOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAuthScopeServiceCatalogArrayInput is an input type that accepts GetAuthScopeServiceCatalogArray and GetAuthScopeServiceCatalogArrayOutput values.
 // You can construct a concrete instance of `GetAuthScopeServiceCatalogArrayInput` via:
 //
@@ -445,6 +524,12 @@ func (i GetAuthScopeServiceCatalogArray) ToGetAuthScopeServiceCatalogArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetAuthScopeServiceCatalogArrayOutput)
 }
 
+func (i GetAuthScopeServiceCatalogArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAuthScopeServiceCatalog] {
+	return pulumix.Output[[]GetAuthScopeServiceCatalog]{
+		OutputState: i.ToGetAuthScopeServiceCatalogArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAuthScopeServiceCatalogOutput struct{ *pulumi.OutputState }
 
 func (GetAuthScopeServiceCatalogOutput) ElementType() reflect.Type {
@@ -457,6 +542,12 @@ func (o GetAuthScopeServiceCatalogOutput) ToGetAuthScopeServiceCatalogOutput() G
 
 func (o GetAuthScopeServiceCatalogOutput) ToGetAuthScopeServiceCatalogOutputWithContext(ctx context.Context) GetAuthScopeServiceCatalogOutput {
 	return o
+}
+
+func (o GetAuthScopeServiceCatalogOutput) ToOutput(ctx context.Context) pulumix.Output[GetAuthScopeServiceCatalog] {
+	return pulumix.Output[GetAuthScopeServiceCatalog]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of endpoints for the service.
@@ -492,6 +583,12 @@ func (o GetAuthScopeServiceCatalogArrayOutput) ToGetAuthScopeServiceCatalogArray
 
 func (o GetAuthScopeServiceCatalogArrayOutput) ToGetAuthScopeServiceCatalogArrayOutputWithContext(ctx context.Context) GetAuthScopeServiceCatalogArrayOutput {
 	return o
+}
+
+func (o GetAuthScopeServiceCatalogArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAuthScopeServiceCatalog] {
+	return pulumix.Output[[]GetAuthScopeServiceCatalog]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAuthScopeServiceCatalogArrayOutput) Index(i pulumi.IntInput) GetAuthScopeServiceCatalogOutput {
@@ -553,6 +650,12 @@ func (i GetAuthScopeServiceCatalogEndpointArgs) ToGetAuthScopeServiceCatalogEndp
 	return pulumi.ToOutputWithContext(ctx, i).(GetAuthScopeServiceCatalogEndpointOutput)
 }
 
+func (i GetAuthScopeServiceCatalogEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[GetAuthScopeServiceCatalogEndpoint] {
+	return pulumix.Output[GetAuthScopeServiceCatalogEndpoint]{
+		OutputState: i.ToGetAuthScopeServiceCatalogEndpointOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAuthScopeServiceCatalogEndpointArrayInput is an input type that accepts GetAuthScopeServiceCatalogEndpointArray and GetAuthScopeServiceCatalogEndpointArrayOutput values.
 // You can construct a concrete instance of `GetAuthScopeServiceCatalogEndpointArrayInput` via:
 //
@@ -578,6 +681,12 @@ func (i GetAuthScopeServiceCatalogEndpointArray) ToGetAuthScopeServiceCatalogEnd
 	return pulumi.ToOutputWithContext(ctx, i).(GetAuthScopeServiceCatalogEndpointArrayOutput)
 }
 
+func (i GetAuthScopeServiceCatalogEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAuthScopeServiceCatalogEndpoint] {
+	return pulumix.Output[[]GetAuthScopeServiceCatalogEndpoint]{
+		OutputState: i.ToGetAuthScopeServiceCatalogEndpointArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAuthScopeServiceCatalogEndpointOutput struct{ *pulumi.OutputState }
 
 func (GetAuthScopeServiceCatalogEndpointOutput) ElementType() reflect.Type {
@@ -590,6 +699,12 @@ func (o GetAuthScopeServiceCatalogEndpointOutput) ToGetAuthScopeServiceCatalogEn
 
 func (o GetAuthScopeServiceCatalogEndpointOutput) ToGetAuthScopeServiceCatalogEndpointOutputWithContext(ctx context.Context) GetAuthScopeServiceCatalogEndpointOutput {
 	return o
+}
+
+func (o GetAuthScopeServiceCatalogEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[GetAuthScopeServiceCatalogEndpoint] {
+	return pulumix.Output[GetAuthScopeServiceCatalogEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the endpoint.
@@ -631,6 +746,12 @@ func (o GetAuthScopeServiceCatalogEndpointArrayOutput) ToGetAuthScopeServiceCata
 
 func (o GetAuthScopeServiceCatalogEndpointArrayOutput) ToGetAuthScopeServiceCatalogEndpointArrayOutputWithContext(ctx context.Context) GetAuthScopeServiceCatalogEndpointArrayOutput {
 	return o
+}
+
+func (o GetAuthScopeServiceCatalogEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAuthScopeServiceCatalogEndpoint] {
+	return pulumix.Output[[]GetAuthScopeServiceCatalogEndpoint]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAuthScopeServiceCatalogEndpointArrayOutput) Index(i pulumi.IntInput) GetAuthScopeServiceCatalogEndpointOutput {

@@ -123,7 +123,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * API server port of the existing cluster template.
      * 
      */
-    @Export(name="apiserverPort", type=Integer.class, parameters={})
+    @Export(name="apiserverPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> apiserverPort;
 
     /**
@@ -141,7 +141,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * cluster template.
      * 
      */
-    @Export(name="clusterDistro", type=String.class, parameters={})
+    @Export(name="clusterDistro", refs={String.class}, tree="[0]")
     private Output<String> clusterDistro;
 
     /**
@@ -159,7 +159,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * template.
      * 
      */
-    @Export(name="coe", type=String.class, parameters={})
+    @Export(name="coe", refs={String.class}, tree="[0]")
     private Output<String> coe;
 
     /**
@@ -171,7 +171,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
     public Output<String> coe() {
         return this.coe;
     }
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     public Output<String> createdAt() {
@@ -183,7 +183,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * existing cluster template.
      * 
      */
-    @Export(name="dnsNameserver", type=String.class, parameters={})
+    @Export(name="dnsNameserver", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dnsNameserver;
 
     /**
@@ -200,7 +200,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * updates the Docker storage driver of the existing cluster template.
      * 
      */
-    @Export(name="dockerStorageDriver", type=String.class, parameters={})
+    @Export(name="dockerStorageDriver", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dockerStorageDriver;
 
     /**
@@ -217,7 +217,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * template.
      * 
      */
-    @Export(name="dockerVolumeSize", type=Integer.class, parameters={})
+    @Export(name="dockerVolumeSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> dockerVolumeSize;
 
     /**
@@ -235,7 +235,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * the existing cluster template.
      * 
      */
-    @Export(name="externalNetworkId", type=String.class, parameters={})
+    @Export(name="externalNetworkId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalNetworkId;
 
     /**
@@ -253,7 +253,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * template.
      * 
      */
-    @Export(name="fixedNetwork", type=String.class, parameters={})
+    @Export(name="fixedNetwork", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fixedNetwork;
 
     /**
@@ -271,7 +271,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * template.
      * 
      */
-    @Export(name="fixedSubnet", type=String.class, parameters={})
+    @Export(name="fixedSubnet", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fixedSubnet;
 
     /**
@@ -289,7 +289,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * flavor of the existing cluster template.
      * 
      */
-    @Export(name="flavor", type=String.class, parameters={})
+    @Export(name="flavor", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> flavor;
 
     /**
@@ -307,7 +307,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * floating IP enabled attribute of the existing cluster template.
      * 
      */
-    @Export(name="floatingIpEnabled", type=Boolean.class, parameters={})
+    @Export(name="floatingIpEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> floatingIpEnabled;
 
     /**
@@ -325,7 +325,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * template.
      * 
      */
-    @Export(name="hidden", type=Boolean.class, parameters={})
+    @Export(name="hidden", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> hidden;
 
     /**
@@ -343,7 +343,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * the existing cluster template.
      * 
      */
-    @Export(name="httpProxy", type=String.class, parameters={})
+    @Export(name="httpProxy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> httpProxy;
 
     /**
@@ -361,7 +361,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * the existing cluster template.
      * 
      */
-    @Export(name="httpsProxy", type=String.class, parameters={})
+    @Export(name="httpsProxy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> httpsProxy;
 
     /**
@@ -379,7 +379,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * Changing this updates the image attribute of the existing cluster template.
      * 
      */
-    @Export(name="image", type=String.class, parameters={})
+    @Export(name="image", refs={String.class}, tree="[0]")
     private Output<String> image;
 
     /**
@@ -397,7 +397,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * existing cluster template.
      * 
      */
-    @Export(name="insecureRegistry", type=String.class, parameters={})
+    @Export(name="insecureRegistry", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> insecureRegistry;
 
     /**
@@ -414,7 +414,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * Changing this updates the keypair of the existing cluster template.
      * 
      */
-    @Export(name="keypairId", type=String.class, parameters={})
+    @Export(name="keypairId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keypairId;
 
     /**
@@ -431,7 +431,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * existing cluster template.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="labels", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> labels;
 
     /**
@@ -449,7 +449,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * the master flavor of the existing cluster template.
      * 
      */
-    @Export(name="masterFlavor", type=String.class, parameters={})
+    @Export(name="masterFlavor", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> masterFlavor;
 
     /**
@@ -467,7 +467,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * attribute of the existing cluster template.
      * 
      */
-    @Export(name="masterLbEnabled", type=Boolean.class, parameters={})
+    @Export(name="masterLbEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> masterLbEnabled;
 
     /**
@@ -484,7 +484,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * the name of the existing cluster template.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -501,7 +501,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * template.
      * 
      */
-    @Export(name="networkDriver", type=String.class, parameters={})
+    @Export(name="networkDriver", refs={String.class}, tree="[0]")
     private Output<String> networkDriver;
 
     /**
@@ -519,7 +519,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * existing cluster template.
      * 
      */
-    @Export(name="noProxy", type=String.class, parameters={})
+    @Export(name="noProxy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> noProxy;
 
     /**
@@ -537,7 +537,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * creates a new cluster template.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -555,7 +555,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * template.
      * 
      */
-    @Export(name="public", type=Boolean.class, parameters={})
+    @Export(name="public", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> public_;
 
     /**
@@ -574,7 +574,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * creates a new cluster template.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -593,7 +593,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * existing cluster template.
      * 
      */
-    @Export(name="registryEnabled", type=Boolean.class, parameters={})
+    @Export(name="registryEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> registryEnabled;
 
     /**
@@ -610,7 +610,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * this updates the server type of the existing cluster template.
      * 
      */
-    @Export(name="serverType", type=String.class, parameters={})
+    @Export(name="serverType", refs={String.class}, tree="[0]")
     private Output<String> serverType;
 
     /**
@@ -626,7 +626,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * the cluster. Changing this updates the attribute of the existing cluster.
      * 
      */
-    @Export(name="tlsDisabled", type=Boolean.class, parameters={})
+    @Export(name="tlsDisabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> tlsDisabled;
 
     /**
@@ -637,7 +637,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> tlsDisabled() {
         return Codegen.optional(this.tlsDisabled);
     }
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     public Output<String> updatedAt() {
@@ -649,7 +649,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * a new cluster template.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**
@@ -667,7 +667,7 @@ public class ClusterTemplate extends com.pulumi.resources.CustomResource {
      * the existing cluster template.
      * 
      */
-    @Export(name="volumeDriver", type=String.class, parameters={})
+    @Export(name="volumeDriver", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> volumeDriver;
 
     /**

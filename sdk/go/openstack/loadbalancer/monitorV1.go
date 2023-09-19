@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V1 load balancer monitor resource within OpenStack.
@@ -339,6 +340,12 @@ func (i *MonitorV1) ToMonitorV1OutputWithContext(ctx context.Context) MonitorV1O
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorV1Output)
 }
 
+func (i *MonitorV1) ToOutput(ctx context.Context) pulumix.Output[*MonitorV1] {
+	return pulumix.Output[*MonitorV1]{
+		OutputState: i.ToMonitorV1OutputWithContext(ctx).OutputState,
+	}
+}
+
 // MonitorV1ArrayInput is an input type that accepts MonitorV1Array and MonitorV1ArrayOutput values.
 // You can construct a concrete instance of `MonitorV1ArrayInput` via:
 //
@@ -362,6 +369,12 @@ func (i MonitorV1Array) ToMonitorV1ArrayOutput() MonitorV1ArrayOutput {
 
 func (i MonitorV1Array) ToMonitorV1ArrayOutputWithContext(ctx context.Context) MonitorV1ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorV1ArrayOutput)
+}
+
+func (i MonitorV1Array) ToOutput(ctx context.Context) pulumix.Output[[]*MonitorV1] {
+	return pulumix.Output[[]*MonitorV1]{
+		OutputState: i.ToMonitorV1ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MonitorV1MapInput is an input type that accepts MonitorV1Map and MonitorV1MapOutput values.
@@ -389,6 +402,12 @@ func (i MonitorV1Map) ToMonitorV1MapOutputWithContext(ctx context.Context) Monit
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorV1MapOutput)
 }
 
+func (i MonitorV1Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*MonitorV1] {
+	return pulumix.Output[map[string]*MonitorV1]{
+		OutputState: i.ToMonitorV1MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MonitorV1Output struct{ *pulumi.OutputState }
 
 func (MonitorV1Output) ElementType() reflect.Type {
@@ -401,6 +420,12 @@ func (o MonitorV1Output) ToMonitorV1Output() MonitorV1Output {
 
 func (o MonitorV1Output) ToMonitorV1OutputWithContext(ctx context.Context) MonitorV1Output {
 	return o
+}
+
+func (o MonitorV1Output) ToOutput(ctx context.Context) pulumix.Output[*MonitorV1] {
+	return pulumix.Output[*MonitorV1]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The administrative state of the monitor.
@@ -487,6 +512,12 @@ func (o MonitorV1ArrayOutput) ToMonitorV1ArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o MonitorV1ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MonitorV1] {
+	return pulumix.Output[[]*MonitorV1]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MonitorV1ArrayOutput) Index(i pulumi.IntInput) MonitorV1Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MonitorV1 {
 		return vs[0].([]*MonitorV1)[vs[1].(int)]
@@ -505,6 +536,12 @@ func (o MonitorV1MapOutput) ToMonitorV1MapOutput() MonitorV1MapOutput {
 
 func (o MonitorV1MapOutput) ToMonitorV1MapOutputWithContext(ctx context.Context) MonitorV1MapOutput {
 	return o
+}
+
+func (o MonitorV1MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MonitorV1] {
+	return pulumix.Output[map[string]*MonitorV1]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MonitorV1MapOutput) MapIndex(k pulumi.StringInput) MonitorV1Output {

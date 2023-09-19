@@ -74,7 +74,7 @@ public class VolumeTypeAccessV3 extends com.pulumi.resources.CustomResource {
      * creates a new resource.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -91,7 +91,7 @@ public class VolumeTypeAccessV3 extends com.pulumi.resources.CustomResource {
      * creates a new quotaset.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -108,7 +108,7 @@ public class VolumeTypeAccessV3 extends com.pulumi.resources.CustomResource {
      * this creates a new resource.
      * 
      */
-    @Export(name="volumeTypeId", type=String.class, parameters={})
+    @Export(name="volumeTypeId", refs={String.class}, tree="[0]")
     private Output<String> volumeTypeId;
 
     /**

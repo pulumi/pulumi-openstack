@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V1 stack resource within OpenStack.
@@ -413,6 +414,12 @@ func (i *StackV1) ToStackV1OutputWithContext(ctx context.Context) StackV1Output 
 	return pulumi.ToOutputWithContext(ctx, i).(StackV1Output)
 }
 
+func (i *StackV1) ToOutput(ctx context.Context) pulumix.Output[*StackV1] {
+	return pulumix.Output[*StackV1]{
+		OutputState: i.ToStackV1OutputWithContext(ctx).OutputState,
+	}
+}
+
 // StackV1ArrayInput is an input type that accepts StackV1Array and StackV1ArrayOutput values.
 // You can construct a concrete instance of `StackV1ArrayInput` via:
 //
@@ -436,6 +443,12 @@ func (i StackV1Array) ToStackV1ArrayOutput() StackV1ArrayOutput {
 
 func (i StackV1Array) ToStackV1ArrayOutputWithContext(ctx context.Context) StackV1ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StackV1ArrayOutput)
+}
+
+func (i StackV1Array) ToOutput(ctx context.Context) pulumix.Output[[]*StackV1] {
+	return pulumix.Output[[]*StackV1]{
+		OutputState: i.ToStackV1ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // StackV1MapInput is an input type that accepts StackV1Map and StackV1MapOutput values.
@@ -463,6 +476,12 @@ func (i StackV1Map) ToStackV1MapOutputWithContext(ctx context.Context) StackV1Ma
 	return pulumi.ToOutputWithContext(ctx, i).(StackV1MapOutput)
 }
 
+func (i StackV1Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*StackV1] {
+	return pulumix.Output[map[string]*StackV1]{
+		OutputState: i.ToStackV1MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StackV1Output struct{ *pulumi.OutputState }
 
 func (StackV1Output) ElementType() reflect.Type {
@@ -475,6 +494,12 @@ func (o StackV1Output) ToStackV1Output() StackV1Output {
 
 func (o StackV1Output) ToStackV1OutputWithContext(ctx context.Context) StackV1Output {
 	return o
+}
+
+func (o StackV1Output) ToOutput(ctx context.Context) pulumix.Output[*StackV1] {
+	return pulumix.Output[*StackV1]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of stack outputs.
@@ -594,6 +619,12 @@ func (o StackV1ArrayOutput) ToStackV1ArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o StackV1ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*StackV1] {
+	return pulumix.Output[[]*StackV1]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StackV1ArrayOutput) Index(i pulumi.IntInput) StackV1Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StackV1 {
 		return vs[0].([]*StackV1)[vs[1].(int)]
@@ -612,6 +643,12 @@ func (o StackV1MapOutput) ToStackV1MapOutput() StackV1MapOutput {
 
 func (o StackV1MapOutput) ToStackV1MapOutputWithContext(ctx context.Context) StackV1MapOutput {
 	return o
+}
+
+func (o StackV1MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*StackV1] {
+	return pulumix.Output[map[string]*StackV1]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StackV1MapOutput) MapIndex(k pulumi.StringInput) StackV1Output {

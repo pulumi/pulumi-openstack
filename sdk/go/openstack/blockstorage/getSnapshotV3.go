@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about an existing snapshot.
@@ -132,6 +133,12 @@ func (o GetSnapshotV3ResultOutput) ToGetSnapshotV3ResultOutput() GetSnapshotV3Re
 
 func (o GetSnapshotV3ResultOutput) ToGetSnapshotV3ResultOutputWithContext(ctx context.Context) GetSnapshotV3ResultOutput {
 	return o
+}
+
+func (o GetSnapshotV3ResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSnapshotV3Result] {
+	return pulumix.Output[GetSnapshotV3Result]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The snapshot's description.

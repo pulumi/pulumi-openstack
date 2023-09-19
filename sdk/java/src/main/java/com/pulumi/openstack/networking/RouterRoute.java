@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Routing entries can be imported using a combined ID using the following format``&lt;router_id&gt;-route-&lt;destination_cidr&gt;-&lt;next_hop&gt;``
+ * Routing entries can be imported using a combined ID using the following format`&lt;router_id&gt;-route-&lt;destination_cidr&gt;-&lt;next_hop&gt;`
  * 
  * ```sh
  *  $ pulumi import openstack:networking/routerRoute:RouterRoute router_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
@@ -99,7 +99,7 @@ public class RouterRoute extends com.pulumi.resources.CustomResource {
      * this creates a new routing entry.
      * 
      */
-    @Export(name="destinationCidr", type=String.class, parameters={})
+    @Export(name="destinationCidr", refs={String.class}, tree="[0]")
     private Output<String> destinationCidr;
 
     /**
@@ -115,7 +115,7 @@ public class RouterRoute extends com.pulumi.resources.CustomResource {
      * this creates a new routing entry.
      * 
      */
-    @Export(name="nextHop", type=String.class, parameters={})
+    @Export(name="nextHop", refs={String.class}, tree="[0]")
     private Output<String> nextHop;
 
     /**
@@ -133,7 +133,7 @@ public class RouterRoute extends com.pulumi.resources.CustomResource {
      * routing entry.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -151,7 +151,7 @@ public class RouterRoute extends com.pulumi.resources.CustomResource {
      * this creates a new routing entry.
      * 
      */
-    @Export(name="routerId", type=String.class, parameters={})
+    @Export(name="routerId", refs={String.class}, tree="[0]")
     private Output<String> routerId;
 
     /**

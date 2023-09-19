@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 portforwarding resource within OpenStack.
@@ -261,6 +262,12 @@ func (i *PortForwardingV2) ToPortForwardingV2OutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PortForwardingV2Output)
 }
 
+func (i *PortForwardingV2) ToOutput(ctx context.Context) pulumix.Output[*PortForwardingV2] {
+	return pulumix.Output[*PortForwardingV2]{
+		OutputState: i.ToPortForwardingV2OutputWithContext(ctx).OutputState,
+	}
+}
+
 // PortForwardingV2ArrayInput is an input type that accepts PortForwardingV2Array and PortForwardingV2ArrayOutput values.
 // You can construct a concrete instance of `PortForwardingV2ArrayInput` via:
 //
@@ -284,6 +291,12 @@ func (i PortForwardingV2Array) ToPortForwardingV2ArrayOutput() PortForwardingV2A
 
 func (i PortForwardingV2Array) ToPortForwardingV2ArrayOutputWithContext(ctx context.Context) PortForwardingV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PortForwardingV2ArrayOutput)
+}
+
+func (i PortForwardingV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*PortForwardingV2] {
+	return pulumix.Output[[]*PortForwardingV2]{
+		OutputState: i.ToPortForwardingV2ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PortForwardingV2MapInput is an input type that accepts PortForwardingV2Map and PortForwardingV2MapOutput values.
@@ -311,6 +324,12 @@ func (i PortForwardingV2Map) ToPortForwardingV2MapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PortForwardingV2MapOutput)
 }
 
+func (i PortForwardingV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*PortForwardingV2] {
+	return pulumix.Output[map[string]*PortForwardingV2]{
+		OutputState: i.ToPortForwardingV2MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PortForwardingV2Output struct{ *pulumi.OutputState }
 
 func (PortForwardingV2Output) ElementType() reflect.Type {
@@ -323,6 +342,12 @@ func (o PortForwardingV2Output) ToPortForwardingV2Output() PortForwardingV2Outpu
 
 func (o PortForwardingV2Output) ToPortForwardingV2OutputWithContext(ctx context.Context) PortForwardingV2Output {
 	return o
+}
+
+func (o PortForwardingV2Output) ToOutput(ctx context.Context) pulumix.Output[*PortForwardingV2] {
+	return pulumix.Output[*PortForwardingV2]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A text describing the port forwarding. Changing this
@@ -388,6 +413,12 @@ func (o PortForwardingV2ArrayOutput) ToPortForwardingV2ArrayOutputWithContext(ct
 	return o
 }
 
+func (o PortForwardingV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PortForwardingV2] {
+	return pulumix.Output[[]*PortForwardingV2]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PortForwardingV2ArrayOutput) Index(i pulumi.IntInput) PortForwardingV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PortForwardingV2 {
 		return vs[0].([]*PortForwardingV2)[vs[1].(int)]
@@ -406,6 +437,12 @@ func (o PortForwardingV2MapOutput) ToPortForwardingV2MapOutput() PortForwardingV
 
 func (o PortForwardingV2MapOutput) ToPortForwardingV2MapOutputWithContext(ctx context.Context) PortForwardingV2MapOutput {
 	return o
+}
+
+func (o PortForwardingV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PortForwardingV2] {
+	return pulumix.Output[map[string]*PortForwardingV2]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PortForwardingV2MapOutput) MapIndex(k pulumi.StringInput) PortForwardingV2Output {

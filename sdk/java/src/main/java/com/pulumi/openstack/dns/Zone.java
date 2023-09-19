@@ -76,7 +76,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Changing this creates a new zone.
      * 
      */
-    @Export(name="attributes", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="attributes", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> attributes;
 
     /**
@@ -91,7 +91,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * A description of the zone.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -107,7 +107,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * will be considered as created/updated if OpenStack request returned success.
      * 
      */
-    @Export(name="disableStatusCheck", type=Boolean.class, parameters={})
+    @Export(name="disableStatusCheck", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableStatusCheck;
 
     /**
@@ -123,7 +123,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * The email contact for the zone record.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> email;
 
     /**
@@ -138,7 +138,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * `SECONDARY`.
      * 
      */
-    @Export(name="masters", type=List.class, parameters={String.class})
+    @Export(name="masters", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> masters;
 
     /**
@@ -154,7 +154,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Changing this creates a new DNS zone.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -171,7 +171,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * user role in target project)
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -190,7 +190,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Changing this creates a new DNS zone.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -207,7 +207,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * The time to live (TTL) of the zone.
      * 
      */
-    @Export(name="ttl", type=Integer.class, parameters={})
+    @Export(name="ttl", refs={Integer.class}, tree="[0]")
     private Output<Integer> ttl;
 
     /**
@@ -222,7 +222,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Changing this creates a new zone.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -238,7 +238,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * new zone.
      * 
      */
-    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**

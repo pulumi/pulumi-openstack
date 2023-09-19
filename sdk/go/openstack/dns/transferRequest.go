@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a DNS zone transfer request in the OpenStack DNS Service.
@@ -53,7 +54,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported by specifying the transferRequest ID
+// This resource can be imported by specifying the transferRequest ID:
 //
 // ```sh
 //
@@ -237,6 +238,12 @@ func (i *TransferRequest) ToTransferRequestOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TransferRequestOutput)
 }
 
+func (i *TransferRequest) ToOutput(ctx context.Context) pulumix.Output[*TransferRequest] {
+	return pulumix.Output[*TransferRequest]{
+		OutputState: i.ToTransferRequestOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TransferRequestArrayInput is an input type that accepts TransferRequestArray and TransferRequestArrayOutput values.
 // You can construct a concrete instance of `TransferRequestArrayInput` via:
 //
@@ -260,6 +267,12 @@ func (i TransferRequestArray) ToTransferRequestArrayOutput() TransferRequestArra
 
 func (i TransferRequestArray) ToTransferRequestArrayOutputWithContext(ctx context.Context) TransferRequestArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransferRequestArrayOutput)
+}
+
+func (i TransferRequestArray) ToOutput(ctx context.Context) pulumix.Output[[]*TransferRequest] {
+	return pulumix.Output[[]*TransferRequest]{
+		OutputState: i.ToTransferRequestArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TransferRequestMapInput is an input type that accepts TransferRequestMap and TransferRequestMapOutput values.
@@ -287,6 +300,12 @@ func (i TransferRequestMap) ToTransferRequestMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TransferRequestMapOutput)
 }
 
+func (i TransferRequestMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransferRequest] {
+	return pulumix.Output[map[string]*TransferRequest]{
+		OutputState: i.ToTransferRequestMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TransferRequestOutput struct{ *pulumi.OutputState }
 
 func (TransferRequestOutput) ElementType() reflect.Type {
@@ -299,6 +318,12 @@ func (o TransferRequestOutput) ToTransferRequestOutput() TransferRequestOutput {
 
 func (o TransferRequestOutput) ToTransferRequestOutputWithContext(ctx context.Context) TransferRequestOutput {
 	return o
+}
+
+func (o TransferRequestOutput) ToOutput(ctx context.Context) pulumix.Output[*TransferRequest] {
+	return pulumix.Output[*TransferRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A description of the zone tranfer request.
@@ -356,6 +381,12 @@ func (o TransferRequestArrayOutput) ToTransferRequestArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o TransferRequestArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TransferRequest] {
+	return pulumix.Output[[]*TransferRequest]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TransferRequestArrayOutput) Index(i pulumi.IntInput) TransferRequestOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TransferRequest {
 		return vs[0].([]*TransferRequest)[vs[1].(int)]
@@ -374,6 +405,12 @@ func (o TransferRequestMapOutput) ToTransferRequestMapOutput() TransferRequestMa
 
 func (o TransferRequestMapOutput) ToTransferRequestMapOutputWithContext(ctx context.Context) TransferRequestMapOutput {
 	return o
+}
+
+func (o TransferRequestMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TransferRequest] {
+	return pulumix.Output[map[string]*TransferRequest]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TransferRequestMapOutput) MapIndex(k pulumi.StringInput) TransferRequestOutput {

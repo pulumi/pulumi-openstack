@@ -117,7 +117,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * The instances that are part of this server group.
      * 
      */
-    @Export(name="members", type=List.class, parameters={String.class})
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     /**
@@ -132,7 +132,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * a new server group.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -149,7 +149,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * creates a new server group.
      * 
      */
-    @Export(name="policies", type=List.class, parameters={String.class})
+    @Export(name="policies", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> policies;
 
     /**
@@ -167,7 +167,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * this creates a new server group.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -184,7 +184,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
      * 
      */
-    @Export(name="rules", type=ServerGroupRules.class, parameters={})
+    @Export(name="rules", refs={ServerGroupRules.class}, tree="[0]")
     private Output<ServerGroupRules> rules;
 
     /**
@@ -199,7 +199,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * Map of additional options.
      * 
      */
-    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**

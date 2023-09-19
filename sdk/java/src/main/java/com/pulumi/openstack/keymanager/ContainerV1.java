@@ -166,7 +166,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Containers can be imported using the container id (the last part of the container reference), e.g.
+ * Containers can be imported using the container id (the last part of the container reference), e.g.:
  * 
  * ```sh
  *  $ pulumi import openstack:keymanager/containerV1:ContainerV1 container_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
@@ -181,7 +181,7 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
      * accessible project wide. The `read` structure is described below.
      * 
      */
-    @Export(name="acl", type=ContainerV1Acl.class, parameters={})
+    @Export(name="acl", refs={ContainerV1Acl.class}, tree="[0]")
     private Output<ContainerV1Acl> acl;
 
     /**
@@ -197,7 +197,7 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
      * The list of the container consumers. The structure is described below.
      * 
      */
-    @Export(name="consumers", type=List.class, parameters={ContainerV1Consumer.class})
+    @Export(name="consumers", refs={List.class,ContainerV1Consumer.class}, tree="[0,1]")
     private Output<List<ContainerV1Consumer>> consumers;
 
     /**
@@ -211,7 +211,7 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
      * The container reference / where to find the container.
      * 
      */
-    @Export(name="containerRef", type=String.class, parameters={})
+    @Export(name="containerRef", refs={String.class}, tree="[0]")
     private Output<String> containerRef;
 
     /**
@@ -225,7 +225,7 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
      * The date the container ACL was created.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -239,7 +239,7 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
      * The creator of the container.
      * 
      */
-    @Export(name="creatorId", type=String.class, parameters={})
+    @Export(name="creatorId", refs={String.class}, tree="[0]")
     private Output<String> creatorId;
 
     /**
@@ -254,7 +254,7 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
      * to be unique.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -272,7 +272,7 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
      * V1 container.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -290,7 +290,7 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
      * below.
      * 
      */
-    @Export(name="secretRefs", type=List.class, parameters={ContainerV1SecretRef.class})
+    @Export(name="secretRefs", refs={List.class,ContainerV1SecretRef.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ContainerV1SecretRef>> secretRefs;
 
     /**
@@ -305,7 +305,7 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
      * The status of the container.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -319,7 +319,7 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
      * Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -333,7 +333,7 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
      * The date the container ACL was last updated.
      * 
      */
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**

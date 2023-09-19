@@ -83,7 +83,7 @@ public class RbacPolicyV2 extends com.pulumi.resources.CustomResource {
      * `access_as_external` or `access_as_shared`.
      * 
      */
-    @Export(name="action", type=String.class, parameters={})
+    @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
@@ -100,7 +100,7 @@ public class RbacPolicyV2 extends com.pulumi.resources.CustomResource {
      * `qos_policy` returns a QoS ID.
      * 
      */
-    @Export(name="objectId", type=String.class, parameters={})
+    @Export(name="objectId", refs={String.class}, tree="[0]")
     private Output<String> objectId;
 
     /**
@@ -118,7 +118,7 @@ public class RbacPolicyV2 extends com.pulumi.resources.CustomResource {
      * `network`, `qos_policy`, `security_group` or `subnetpool`.
      * 
      */
-    @Export(name="objectType", type=String.class, parameters={})
+    @Export(name="objectType", refs={String.class}, tree="[0]")
     private Output<String> objectType;
 
     /**
@@ -130,7 +130,7 @@ public class RbacPolicyV2 extends com.pulumi.resources.CustomResource {
     public Output<String> objectType() {
         return this.objectType;
     }
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     public Output<String> projectId() {
@@ -143,7 +143,7 @@ public class RbacPolicyV2 extends com.pulumi.resources.CustomResource {
      * routing entry.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -161,7 +161,7 @@ public class RbacPolicyV2 extends com.pulumi.resources.CustomResource {
      * will be enforced.
      * 
      */
-    @Export(name="targetTenant", type=String.class, parameters={})
+    @Export(name="targetTenant", refs={String.class}, tree="[0]")
     private Output<String> targetTenant;
 
     /**

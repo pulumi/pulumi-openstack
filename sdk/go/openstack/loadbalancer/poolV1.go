@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V1 load balancer pool resource within OpenStack.
@@ -446,6 +447,12 @@ func (i *PoolV1) ToPoolV1OutputWithContext(ctx context.Context) PoolV1Output {
 	return pulumi.ToOutputWithContext(ctx, i).(PoolV1Output)
 }
 
+func (i *PoolV1) ToOutput(ctx context.Context) pulumix.Output[*PoolV1] {
+	return pulumix.Output[*PoolV1]{
+		OutputState: i.ToPoolV1OutputWithContext(ctx).OutputState,
+	}
+}
+
 // PoolV1ArrayInput is an input type that accepts PoolV1Array and PoolV1ArrayOutput values.
 // You can construct a concrete instance of `PoolV1ArrayInput` via:
 //
@@ -469,6 +476,12 @@ func (i PoolV1Array) ToPoolV1ArrayOutput() PoolV1ArrayOutput {
 
 func (i PoolV1Array) ToPoolV1ArrayOutputWithContext(ctx context.Context) PoolV1ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PoolV1ArrayOutput)
+}
+
+func (i PoolV1Array) ToOutput(ctx context.Context) pulumix.Output[[]*PoolV1] {
+	return pulumix.Output[[]*PoolV1]{
+		OutputState: i.ToPoolV1ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PoolV1MapInput is an input type that accepts PoolV1Map and PoolV1MapOutput values.
@@ -496,6 +509,12 @@ func (i PoolV1Map) ToPoolV1MapOutputWithContext(ctx context.Context) PoolV1MapOu
 	return pulumi.ToOutputWithContext(ctx, i).(PoolV1MapOutput)
 }
 
+func (i PoolV1Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*PoolV1] {
+	return pulumix.Output[map[string]*PoolV1]{
+		OutputState: i.ToPoolV1MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PoolV1Output struct{ *pulumi.OutputState }
 
 func (PoolV1Output) ElementType() reflect.Type {
@@ -508,6 +527,12 @@ func (o PoolV1Output) ToPoolV1Output() PoolV1Output {
 
 func (o PoolV1Output) ToPoolV1OutputWithContext(ctx context.Context) PoolV1Output {
 	return o
+}
+
+func (o PoolV1Output) ToOutput(ctx context.Context) pulumix.Output[*PoolV1] {
+	return pulumix.Output[*PoolV1]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The algorithm used to distribute load between the
@@ -586,6 +611,12 @@ func (o PoolV1ArrayOutput) ToPoolV1ArrayOutputWithContext(ctx context.Context) P
 	return o
 }
 
+func (o PoolV1ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PoolV1] {
+	return pulumix.Output[[]*PoolV1]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PoolV1ArrayOutput) Index(i pulumi.IntInput) PoolV1Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PoolV1 {
 		return vs[0].([]*PoolV1)[vs[1].(int)]
@@ -604,6 +635,12 @@ func (o PoolV1MapOutput) ToPoolV1MapOutput() PoolV1MapOutput {
 
 func (o PoolV1MapOutput) ToPoolV1MapOutputWithContext(ctx context.Context) PoolV1MapOutput {
 	return o
+}
+
+func (o PoolV1MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PoolV1] {
+	return pulumix.Output[map[string]*PoolV1]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PoolV1MapOutput) MapIndex(k pulumi.StringInput) PoolV1Output {

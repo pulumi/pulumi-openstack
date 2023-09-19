@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a routing entry on a OpenStack V2 subnet.
@@ -64,7 +65,7 @@ import (
 //
 // ## Import
 //
-// Routing entries can be imported using a combined ID using the following format“<subnet_id>-route-<destination_cidr>-<next_hop>“
+// Routing entries can be imported using a combined ID using the following format`<subnet_id>-route-<destination_cidr>-<next_hop>`
 //
 // ```sh
 //
@@ -224,6 +225,12 @@ func (i *SubnetRoute) ToSubnetRouteOutputWithContext(ctx context.Context) Subnet
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetRouteOutput)
 }
 
+func (i *SubnetRoute) ToOutput(ctx context.Context) pulumix.Output[*SubnetRoute] {
+	return pulumix.Output[*SubnetRoute]{
+		OutputState: i.ToSubnetRouteOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SubnetRouteArrayInput is an input type that accepts SubnetRouteArray and SubnetRouteArrayOutput values.
 // You can construct a concrete instance of `SubnetRouteArrayInput` via:
 //
@@ -247,6 +254,12 @@ func (i SubnetRouteArray) ToSubnetRouteArrayOutput() SubnetRouteArrayOutput {
 
 func (i SubnetRouteArray) ToSubnetRouteArrayOutputWithContext(ctx context.Context) SubnetRouteArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetRouteArrayOutput)
+}
+
+func (i SubnetRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]*SubnetRoute] {
+	return pulumix.Output[[]*SubnetRoute]{
+		OutputState: i.ToSubnetRouteArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SubnetRouteMapInput is an input type that accepts SubnetRouteMap and SubnetRouteMapOutput values.
@@ -274,6 +287,12 @@ func (i SubnetRouteMap) ToSubnetRouteMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetRouteMapOutput)
 }
 
+func (i SubnetRouteMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SubnetRoute] {
+	return pulumix.Output[map[string]*SubnetRoute]{
+		OutputState: i.ToSubnetRouteMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SubnetRouteOutput struct{ *pulumi.OutputState }
 
 func (SubnetRouteOutput) ElementType() reflect.Type {
@@ -286,6 +305,12 @@ func (o SubnetRouteOutput) ToSubnetRouteOutput() SubnetRouteOutput {
 
 func (o SubnetRouteOutput) ToSubnetRouteOutputWithContext(ctx context.Context) SubnetRouteOutput {
 	return o
+}
+
+func (o SubnetRouteOutput) ToOutput(ctx context.Context) pulumix.Output[*SubnetRoute] {
+	return pulumix.Output[*SubnetRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 // CIDR block to match on the packet’s destination IP. Changing
@@ -328,6 +353,12 @@ func (o SubnetRouteArrayOutput) ToSubnetRouteArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o SubnetRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SubnetRoute] {
+	return pulumix.Output[[]*SubnetRoute]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SubnetRouteArrayOutput) Index(i pulumi.IntInput) SubnetRouteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SubnetRoute {
 		return vs[0].([]*SubnetRoute)[vs[1].(int)]
@@ -346,6 +377,12 @@ func (o SubnetRouteMapOutput) ToSubnetRouteMapOutput() SubnetRouteMapOutput {
 
 func (o SubnetRouteMapOutput) ToSubnetRouteMapOutputWithContext(ctx context.Context) SubnetRouteMapOutput {
 	return o
+}
+
+func (o SubnetRouteMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SubnetRoute] {
+	return pulumix.Output[map[string]*SubnetRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SubnetRouteMapOutput) MapIndex(k pulumi.StringInput) SubnetRouteOutput {

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -50,6 +51,12 @@ func (i StackV1StackOutputArgs) ToStackV1StackOutputOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(StackV1StackOutputOutput)
 }
 
+func (i StackV1StackOutputArgs) ToOutput(ctx context.Context) pulumix.Output[StackV1StackOutput] {
+	return pulumix.Output[StackV1StackOutput]{
+		OutputState: i.ToStackV1StackOutputOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StackV1StackOutputArrayInput is an input type that accepts StackV1StackOutputArray and StackV1StackOutputArrayOutput values.
 // You can construct a concrete instance of `StackV1StackOutputArrayInput` via:
 //
@@ -75,6 +82,12 @@ func (i StackV1StackOutputArray) ToStackV1StackOutputArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(StackV1StackOutputArrayOutput)
 }
 
+func (i StackV1StackOutputArray) ToOutput(ctx context.Context) pulumix.Output[[]StackV1StackOutput] {
+	return pulumix.Output[[]StackV1StackOutput]{
+		OutputState: i.ToStackV1StackOutputArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StackV1StackOutputOutput struct{ *pulumi.OutputState }
 
 func (StackV1StackOutputOutput) ElementType() reflect.Type {
@@ -87,6 +100,12 @@ func (o StackV1StackOutputOutput) ToStackV1StackOutputOutput() StackV1StackOutpu
 
 func (o StackV1StackOutputOutput) ToStackV1StackOutputOutputWithContext(ctx context.Context) StackV1StackOutputOutput {
 	return o
+}
+
+func (o StackV1StackOutputOutput) ToOutput(ctx context.Context) pulumix.Output[StackV1StackOutput] {
+	return pulumix.Output[StackV1StackOutput]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the stack resource.
@@ -114,6 +133,12 @@ func (o StackV1StackOutputArrayOutput) ToStackV1StackOutputArrayOutput() StackV1
 
 func (o StackV1StackOutputArrayOutput) ToStackV1StackOutputArrayOutputWithContext(ctx context.Context) StackV1StackOutputArrayOutput {
 	return o
+}
+
+func (o StackV1StackOutputArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StackV1StackOutput] {
+	return pulumix.Output[[]StackV1StackOutput]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StackV1StackOutputArrayOutput) Index(i pulumi.IntInput) StackV1StackOutputOutput {

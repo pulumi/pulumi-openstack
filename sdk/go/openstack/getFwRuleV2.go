@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information of an available OpenStack firewall rule v2.
@@ -194,6 +195,12 @@ func (o GetFwRuleV2ResultOutput) ToGetFwRuleV2ResultOutput() GetFwRuleV2ResultOu
 
 func (o GetFwRuleV2ResultOutput) ToGetFwRuleV2ResultOutputWithContext(ctx context.Context) GetFwRuleV2ResultOutput {
 	return o
+}
+
+func (o GetFwRuleV2ResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetFwRuleV2Result] {
+	return pulumix.Output[GetFwRuleV2Result]{
+		OutputState: o.OutputState,
+	}
 }
 
 // See Argument Reference above.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -96,7 +97,7 @@ import (
 //
 // ## Import
 //
-// Secrets can be imported using the secret id (the last part of the secret reference), e.g.
+// Secrets can be imported using the secret id (the last part of the secret reference), e.g.:
 //
 // ```sh
 //
@@ -379,6 +380,12 @@ func (i *SecretV1) ToSecretV1OutputWithContext(ctx context.Context) SecretV1Outp
 	return pulumi.ToOutputWithContext(ctx, i).(SecretV1Output)
 }
 
+func (i *SecretV1) ToOutput(ctx context.Context) pulumix.Output[*SecretV1] {
+	return pulumix.Output[*SecretV1]{
+		OutputState: i.ToSecretV1OutputWithContext(ctx).OutputState,
+	}
+}
+
 // SecretV1ArrayInput is an input type that accepts SecretV1Array and SecretV1ArrayOutput values.
 // You can construct a concrete instance of `SecretV1ArrayInput` via:
 //
@@ -402,6 +409,12 @@ func (i SecretV1Array) ToSecretV1ArrayOutput() SecretV1ArrayOutput {
 
 func (i SecretV1Array) ToSecretV1ArrayOutputWithContext(ctx context.Context) SecretV1ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretV1ArrayOutput)
+}
+
+func (i SecretV1Array) ToOutput(ctx context.Context) pulumix.Output[[]*SecretV1] {
+	return pulumix.Output[[]*SecretV1]{
+		OutputState: i.ToSecretV1ArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SecretV1MapInput is an input type that accepts SecretV1Map and SecretV1MapOutput values.
@@ -429,6 +442,12 @@ func (i SecretV1Map) ToSecretV1MapOutputWithContext(ctx context.Context) SecretV
 	return pulumi.ToOutputWithContext(ctx, i).(SecretV1MapOutput)
 }
 
+func (i SecretV1Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecretV1] {
+	return pulumix.Output[map[string]*SecretV1]{
+		OutputState: i.ToSecretV1MapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecretV1Output struct{ *pulumi.OutputState }
 
 func (SecretV1Output) ElementType() reflect.Type {
@@ -441,6 +460,12 @@ func (o SecretV1Output) ToSecretV1Output() SecretV1Output {
 
 func (o SecretV1Output) ToSecretV1OutputWithContext(ctx context.Context) SecretV1Output {
 	return o
+}
+
+func (o SecretV1Output) ToOutput(ctx context.Context) pulumix.Output[*SecretV1] {
+	return pulumix.Output[*SecretV1]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Allows to control an access to a secret. Currently only the
@@ -559,6 +584,12 @@ func (o SecretV1ArrayOutput) ToSecretV1ArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o SecretV1ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecretV1] {
+	return pulumix.Output[[]*SecretV1]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecretV1ArrayOutput) Index(i pulumi.IntInput) SecretV1Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecretV1 {
 		return vs[0].([]*SecretV1)[vs[1].(int)]
@@ -577,6 +608,12 @@ func (o SecretV1MapOutput) ToSecretV1MapOutput() SecretV1MapOutput {
 
 func (o SecretV1MapOutput) ToSecretV1MapOutputWithContext(ctx context.Context) SecretV1MapOutput {
 	return o
+}
+
+func (o SecretV1MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecretV1] {
+	return pulumix.Output[map[string]*SecretV1]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretV1MapOutput) MapIndex(k pulumi.StringInput) SecretV1Output {

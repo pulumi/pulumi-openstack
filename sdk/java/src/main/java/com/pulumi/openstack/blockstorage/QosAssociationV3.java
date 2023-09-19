@@ -75,7 +75,7 @@ public class QosAssociationV3 extends com.pulumi.resources.CustomResource {
      * a new qos association.
      * 
      */
-    @Export(name="qosId", type=String.class, parameters={})
+    @Export(name="qosId", refs={String.class}, tree="[0]")
     private Output<String> qosId;
 
     /**
@@ -92,7 +92,7 @@ public class QosAssociationV3 extends com.pulumi.resources.CustomResource {
      * this creates a new qos association.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -109,7 +109,7 @@ public class QosAssociationV3 extends com.pulumi.resources.CustomResource {
      * Changing this creates a new qos association.
      * 
      */
-    @Export(name="volumeTypeId", type=String.class, parameters={})
+    @Export(name="volumeTypeId", refs={String.class}, tree="[0]")
     private Output<String> volumeTypeId;
 
     /**

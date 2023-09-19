@@ -64,7 +64,7 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
      * Default is sha1. Changing this updates the algorithm of the existing policy.
      * 
      */
-    @Export(name="authAlgorithm", type=String.class, parameters={})
+    @Export(name="authAlgorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authAlgorithm;
 
     /**
@@ -80,7 +80,7 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
      * Changing this updates the description of the existing policy.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -96,7 +96,7 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
      * The default value is aes-128. Changing this updates the existing policy.
      * 
      */
-    @Export(name="encryptionAlgorithm", type=String.class, parameters={})
+    @Export(name="encryptionAlgorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptionAlgorithm;
 
     /**
@@ -112,7 +112,7 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing policy.
      * 
      */
-    @Export(name="ikeVersion", type=String.class, parameters={})
+    @Export(name="ikeVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ikeVersion;
 
     /**
@@ -127,7 +127,7 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
      * The lifetime of the security association. Consists of Unit and Value.
      * 
      */
-    @Export(name="lifetimes", type=List.class, parameters={IkePolicyLifetime.class})
+    @Export(name="lifetimes", refs={List.class,IkePolicyLifetime.class}, tree="[0,1]")
     private Output<List<IkePolicyLifetime>> lifetimes;
 
     /**
@@ -142,7 +142,7 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
      * the existing policy.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -158,7 +158,7 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing policy.
      * 
      */
-    @Export(name="pfs", type=String.class, parameters={})
+    @Export(name="pfs", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pfs;
 
     /**
@@ -174,7 +174,7 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing policy.
      * 
      */
-    @Export(name="phase1NegotiationMode", type=String.class, parameters={})
+    @Export(name="phase1NegotiationMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> phase1NegotiationMode;
 
     /**
@@ -192,7 +192,7 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
      * service.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -210,7 +210,7 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
      * create a service for another policy. Changing this creates a new policy.
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
@@ -225,7 +225,7 @@ public class IkePolicy extends com.pulumi.resources.CustomResource {
      * Map of additional options.
      * 
      */
-    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**

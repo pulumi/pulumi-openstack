@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this resource to configure a security service.
@@ -60,7 +61,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported by specifying the ID of the security service
+// This resource can be imported by specifying the ID of the security service:
 //
 // ```sh
 //
@@ -302,6 +303,12 @@ func (i *SecurityService) ToSecurityServiceOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityServiceOutput)
 }
 
+func (i *SecurityService) ToOutput(ctx context.Context) pulumix.Output[*SecurityService] {
+	return pulumix.Output[*SecurityService]{
+		OutputState: i.ToSecurityServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SecurityServiceArrayInput is an input type that accepts SecurityServiceArray and SecurityServiceArrayOutput values.
 // You can construct a concrete instance of `SecurityServiceArrayInput` via:
 //
@@ -325,6 +332,12 @@ func (i SecurityServiceArray) ToSecurityServiceArrayOutput() SecurityServiceArra
 
 func (i SecurityServiceArray) ToSecurityServiceArrayOutputWithContext(ctx context.Context) SecurityServiceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityServiceArrayOutput)
+}
+
+func (i SecurityServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]*SecurityService] {
+	return pulumix.Output[[]*SecurityService]{
+		OutputState: i.ToSecurityServiceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SecurityServiceMapInput is an input type that accepts SecurityServiceMap and SecurityServiceMapOutput values.
@@ -352,6 +365,12 @@ func (i SecurityServiceMap) ToSecurityServiceMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityServiceMapOutput)
 }
 
+func (i SecurityServiceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecurityService] {
+	return pulumix.Output[map[string]*SecurityService]{
+		OutputState: i.ToSecurityServiceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecurityServiceOutput struct{ *pulumi.OutputState }
 
 func (SecurityServiceOutput) ElementType() reflect.Type {
@@ -364,6 +383,12 @@ func (o SecurityServiceOutput) ToSecurityServiceOutput() SecurityServiceOutput {
 
 func (o SecurityServiceOutput) ToSecurityServiceOutputWithContext(ctx context.Context) SecurityServiceOutput {
 	return o
+}
+
+func (o SecurityServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityService] {
+	return pulumix.Output[*SecurityService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The human-readable description for the security service.
@@ -444,6 +469,12 @@ func (o SecurityServiceArrayOutput) ToSecurityServiceArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o SecurityServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecurityService] {
+	return pulumix.Output[[]*SecurityService]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SecurityServiceArrayOutput) Index(i pulumi.IntInput) SecurityServiceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecurityService {
 		return vs[0].([]*SecurityService)[vs[1].(int)]
@@ -462,6 +493,12 @@ func (o SecurityServiceMapOutput) ToSecurityServiceMapOutput() SecurityServiceMa
 
 func (o SecurityServiceMapOutput) ToSecurityServiceMapOutputWithContext(ctx context.Context) SecurityServiceMapOutput {
 	return o
+}
+
+func (o SecurityServiceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecurityService] {
+	return pulumix.Output[map[string]*SecurityService]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecurityServiceMapOutput) MapIndex(k pulumi.StringInput) SecurityServiceOutput {

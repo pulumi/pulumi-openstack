@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this resource to configure a share network.
@@ -121,7 +122,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported by specifying the ID of the share network
+// This resource can be imported by specifying the ID of the share network:
 //
 // ```sh
 //
@@ -348,6 +349,12 @@ func (i *ShareNetwork) ToShareNetworkOutputWithContext(ctx context.Context) Shar
 	return pulumi.ToOutputWithContext(ctx, i).(ShareNetworkOutput)
 }
 
+func (i *ShareNetwork) ToOutput(ctx context.Context) pulumix.Output[*ShareNetwork] {
+	return pulumix.Output[*ShareNetwork]{
+		OutputState: i.ToShareNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ShareNetworkArrayInput is an input type that accepts ShareNetworkArray and ShareNetworkArrayOutput values.
 // You can construct a concrete instance of `ShareNetworkArrayInput` via:
 //
@@ -371,6 +378,12 @@ func (i ShareNetworkArray) ToShareNetworkArrayOutput() ShareNetworkArrayOutput {
 
 func (i ShareNetworkArray) ToShareNetworkArrayOutputWithContext(ctx context.Context) ShareNetworkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShareNetworkArrayOutput)
+}
+
+func (i ShareNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]*ShareNetwork] {
+	return pulumix.Output[[]*ShareNetwork]{
+		OutputState: i.ToShareNetworkArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ShareNetworkMapInput is an input type that accepts ShareNetworkMap and ShareNetworkMapOutput values.
@@ -398,6 +411,12 @@ func (i ShareNetworkMap) ToShareNetworkMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ShareNetworkMapOutput)
 }
 
+func (i ShareNetworkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ShareNetwork] {
+	return pulumix.Output[map[string]*ShareNetwork]{
+		OutputState: i.ToShareNetworkMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ShareNetworkOutput struct{ *pulumi.OutputState }
 
 func (ShareNetworkOutput) ElementType() reflect.Type {
@@ -410,6 +429,12 @@ func (o ShareNetworkOutput) ToShareNetworkOutput() ShareNetworkOutput {
 
 func (o ShareNetworkOutput) ToShareNetworkOutputWithContext(ctx context.Context) ShareNetworkOutput {
 	return o
+}
+
+func (o ShareNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*ShareNetwork] {
+	return pulumix.Output[*ShareNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The share network CIDR.
@@ -491,6 +516,12 @@ func (o ShareNetworkArrayOutput) ToShareNetworkArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o ShareNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ShareNetwork] {
+	return pulumix.Output[[]*ShareNetwork]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ShareNetworkArrayOutput) Index(i pulumi.IntInput) ShareNetworkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ShareNetwork {
 		return vs[0].([]*ShareNetwork)[vs[1].(int)]
@@ -509,6 +540,12 @@ func (o ShareNetworkMapOutput) ToShareNetworkMapOutput() ShareNetworkMapOutput {
 
 func (o ShareNetworkMapOutput) ToShareNetworkMapOutputWithContext(ctx context.Context) ShareNetworkMapOutput {
 	return o
+}
+
+func (o ShareNetworkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ShareNetwork] {
+	return pulumix.Output[map[string]*ShareNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ShareNetworkMapOutput) MapIndex(k pulumi.StringInput) ShareNetworkOutput {

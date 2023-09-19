@@ -48,7 +48,7 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying all two arguments, separated by a forward slash
+    /// This resource can be imported by specifying all two arguments, separated by a forward slash:
     /// 
     /// ```sh
     ///  $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 flavor_id/tenant_id

@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
@@ -122,6 +123,12 @@ func (o LookupQosBandwidthLimitRuleResultOutput) ToLookupQosBandwidthLimitRuleRe
 
 func (o LookupQosBandwidthLimitRuleResultOutput) ToLookupQosBandwidthLimitRuleResultOutputWithContext(ctx context.Context) LookupQosBandwidthLimitRuleResultOutput {
 	return o
+}
+
+func (o LookupQosBandwidthLimitRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupQosBandwidthLimitRuleResult] {
+	return pulumix.Output[LookupQosBandwidthLimitRuleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // See Argument Reference above.

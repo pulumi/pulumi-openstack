@@ -90,7 +90,7 @@ public class Keypair extends com.pulumi.resources.CustomResource {
      * The fingerprint of the public key.
      * 
      */
-    @Export(name="fingerprint", type=String.class, parameters={})
+    @Export(name="fingerprint", refs={String.class}, tree="[0]")
     private Output<String> fingerprint;
 
     /**
@@ -105,7 +105,7 @@ public class Keypair extends com.pulumi.resources.CustomResource {
      * keypair.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -120,7 +120,7 @@ public class Keypair extends com.pulumi.resources.CustomResource {
      * The generated private key when no public key is specified.
      * 
      */
-    @Export(name="privateKey", type=String.class, parameters={})
+    @Export(name="privateKey", refs={String.class}, tree="[0]")
     private Output<String> privateKey;
 
     /**
@@ -138,7 +138,7 @@ public class Keypair extends com.pulumi.resources.CustomResource {
      * keypair forever.
      * 
      */
-    @Export(name="publicKey", type=String.class, parameters={})
+    @Export(name="publicKey", refs={String.class}, tree="[0]")
     private Output<String> publicKey;
 
     /**
@@ -159,7 +159,7 @@ public class Keypair extends com.pulumi.resources.CustomResource {
      * Changing this creates a new keypair.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -178,7 +178,7 @@ public class Keypair extends com.pulumi.resources.CustomResource {
      * 2.10 (Liberty) or later.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**
@@ -194,7 +194,7 @@ public class Keypair extends com.pulumi.resources.CustomResource {
      * Map of additional options.
      * 
      */
-    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**
