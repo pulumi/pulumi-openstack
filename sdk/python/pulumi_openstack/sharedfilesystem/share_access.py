@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ShareAccessArgs', 'ShareAccess']
@@ -32,12 +32,29 @@ class ShareAccessArgs:
                A Shared File System client is needed to create a share access. Changing this
                creates a new share access.
         """
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "access_to", access_to)
-        pulumi.set(__self__, "access_type", access_type)
-        pulumi.set(__self__, "share_id", share_id)
+        ShareAccessArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_level=access_level,
+            access_to=access_to,
+            access_type=access_type,
+            share_id=share_id,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_level: pulumi.Input[str],
+             access_to: pulumi.Input[str],
+             access_type: pulumi.Input[str],
+             share_id: pulumi.Input[str],
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_level", access_level)
+        _setter("access_to", access_to)
+        _setter("access_type", access_type)
+        _setter("share_id", share_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="accessLevel")
@@ -130,20 +147,41 @@ class _ShareAccessState:
         :param pulumi.Input[str] share_id: The UUID of the share to which you are granted access.
         :param pulumi.Input[str] state: The share access state.
         """
+        _ShareAccessState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_key=access_key,
+            access_level=access_level,
+            access_to=access_to,
+            access_type=access_type,
+            region=region,
+            share_id=share_id,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_key: Optional[pulumi.Input[str]] = None,
+             access_level: Optional[pulumi.Input[str]] = None,
+             access_to: Optional[pulumi.Input[str]] = None,
+             access_type: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             share_id: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
+            _setter("access_level", access_level)
         if access_to is not None:
-            pulumi.set(__self__, "access_to", access_to)
+            _setter("access_to", access_to)
         if access_type is not None:
-            pulumi.set(__self__, "access_type", access_type)
+            _setter("access_type", access_type)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if share_id is not None:
-            pulumi.set(__self__, "share_id", share_id)
+            _setter("share_id", share_id)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -431,6 +469,10 @@ class ShareAccess(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ShareAccessArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

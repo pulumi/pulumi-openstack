@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RbacPolicyV2Args', 'RbacPolicyV2']
@@ -36,12 +36,29 @@ class RbacPolicyV2Args:
                `region` argument of the provider is used. Changing this creates a new
                routing entry.
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "object_id", object_id)
-        pulumi.set(__self__, "object_type", object_type)
-        pulumi.set(__self__, "target_tenant", target_tenant)
+        RbacPolicyV2Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            object_id=object_id,
+            object_type=object_type,
+            target_tenant=target_tenant,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: pulumi.Input[str],
+             object_id: pulumi.Input[str],
+             object_type: pulumi.Input[str],
+             target_tenant: pulumi.Input[str],
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
+        _setter("object_id", object_id)
+        _setter("object_type", object_type)
+        _setter("target_tenant", target_tenant)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter
@@ -139,18 +156,37 @@ class _RbacPolicyV2State:
         :param pulumi.Input[str] target_tenant: The ID of the tenant to which the RBAC policy
                will be enforced.
         """
+        _RbacPolicyV2State._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            object_id=object_id,
+            object_type=object_type,
+            project_id=project_id,
+            region=region,
+            target_tenant=target_tenant,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             object_id: Optional[pulumi.Input[str]] = None,
+             object_type: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             target_tenant: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if object_id is not None:
-            pulumi.set(__self__, "object_id", object_id)
+            _setter("object_id", object_id)
         if object_type is not None:
-            pulumi.set(__self__, "object_type", object_type)
+            _setter("object_type", object_type)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if target_tenant is not None:
-            pulumi.set(__self__, "target_tenant", target_tenant)
+            _setter("target_tenant", target_tenant)
 
     @property
     @pulumi.getter
@@ -349,6 +385,10 @@ class RbacPolicyV2(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RbacPolicyV2Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

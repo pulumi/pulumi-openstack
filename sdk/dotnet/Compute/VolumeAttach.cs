@@ -117,11 +117,6 @@ namespace Pulumi.OpenStack.Compute
     [OpenStackResourceType("openstack:compute/volumeAttach:VolumeAttach")]
     public partial class VolumeAttach : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// See Argument Reference above. _NOTE_: The correctness of this
-        /// information is dependent upon the hypervisor in use. In some cases, this
-        /// should not be used as an authoritative piece of information.
-        /// </summary>
         [Output("device")]
         public Output<string> Device { get; private set; } = null!;
 
@@ -205,11 +200,6 @@ namespace Pulumi.OpenStack.Compute
 
     public sealed class VolumeAttachArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// See Argument Reference above. _NOTE_: The correctness of this
-        /// information is dependent upon the hypervisor in use. In some cases, this
-        /// should not be used as an authoritative piece of information.
-        /// </summary>
         [Input("device")]
         public Input<string>? Device { get; set; }
 
@@ -255,11 +245,6 @@ namespace Pulumi.OpenStack.Compute
 
     public sealed class VolumeAttachState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// See Argument Reference above. _NOTE_: The correctness of this
-        /// information is dependent upon the hypervisor in use. In some cases, this
-        /// should not be used as an authoritative piece of information.
-        /// </summary>
         [Input("device")]
         public Input<string>? Device { get; set; }
 

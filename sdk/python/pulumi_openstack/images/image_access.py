@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ImageAccessArgs', 'ImageAccess']
@@ -29,12 +29,27 @@ class ImageAccessArgs:
                force the member proposal acceptance. Can either be `accepted`, `rejected` or
                `pending`. Defaults to `pending`. Foridden for non-admin users.
         """
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "member_id", member_id)
+        ImageAccessArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_id=image_id,
+            member_id=member_id,
+            region=region,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_id: pulumi.Input[str],
+             member_id: pulumi.Input[str],
+             region: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("image_id", image_id)
+        _setter("member_id", member_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="imageId")
@@ -113,20 +128,41 @@ class _ImageAccessState:
                `pending`. Defaults to `pending`. Foridden for non-admin users.
         :param pulumi.Input[str] updated_at: The date the image access was last updated.
         """
+        _ImageAccessState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            image_id=image_id,
+            member_id=member_id,
+            region=region,
+            schema=schema,
+            status=status,
+            updated_at=updated_at,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: Optional[pulumi.Input[str]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             member_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             schema: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if member_id is not None:
-            pulumi.set(__self__, "member_id", member_id)
+            _setter("member_id", member_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if schema is not None:
-            pulumi.set(__self__, "schema", schema)
+            _setter("schema", schema)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -368,6 +404,10 @@ class ImageAccess(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ImageAccessArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

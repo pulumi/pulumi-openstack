@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ContainerObjectArgs', 'ContainerObject']
@@ -71,35 +71,72 @@ class ContainerObjectArgs:
         :param pulumi.Input[str] source: A string representing the local path of a file which will be used
                as the object's content. Conflicts with `source` and `copy_from`.
         """
-        pulumi.set(__self__, "container_name", container_name)
+        ContainerObjectArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            container_name=container_name,
+            content=content,
+            content_disposition=content_disposition,
+            content_encoding=content_encoding,
+            content_type=content_type,
+            copy_from=copy_from,
+            delete_after=delete_after,
+            delete_at=delete_at,
+            detect_content_type=detect_content_type,
+            etag=etag,
+            metadata=metadata,
+            name=name,
+            object_manifest=object_manifest,
+            region=region,
+            source=source,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             container_name: pulumi.Input[str],
+             content: Optional[pulumi.Input[str]] = None,
+             content_disposition: Optional[pulumi.Input[str]] = None,
+             content_encoding: Optional[pulumi.Input[str]] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
+             copy_from: Optional[pulumi.Input[str]] = None,
+             delete_after: Optional[pulumi.Input[int]] = None,
+             delete_at: Optional[pulumi.Input[str]] = None,
+             detect_content_type: Optional[pulumi.Input[bool]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             object_manifest: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("container_name", container_name)
         if content is not None:
-            pulumi.set(__self__, "content", content)
+            _setter("content", content)
         if content_disposition is not None:
-            pulumi.set(__self__, "content_disposition", content_disposition)
+            _setter("content_disposition", content_disposition)
         if content_encoding is not None:
-            pulumi.set(__self__, "content_encoding", content_encoding)
+            _setter("content_encoding", content_encoding)
         if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
+            _setter("content_type", content_type)
         if copy_from is not None:
-            pulumi.set(__self__, "copy_from", copy_from)
+            _setter("copy_from", copy_from)
         if delete_after is not None:
-            pulumi.set(__self__, "delete_after", delete_after)
+            _setter("delete_after", delete_after)
         if delete_at is not None:
-            pulumi.set(__self__, "delete_at", delete_at)
+            _setter("delete_at", delete_at)
         if detect_content_type is not None:
-            pulumi.set(__self__, "detect_content_type", detect_content_type)
+            _setter("detect_content_type", detect_content_type)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if object_manifest is not None:
-            pulumi.set(__self__, "object_manifest", object_manifest)
+            _setter("object_manifest", object_manifest)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
 
     @property
     @pulumi.getter(name="containerName")
@@ -381,44 +418,89 @@ class _ContainerObjectState:
         :param pulumi.Input[str] trans_id: A unique transaction ID for this request. Your service provider might 
                need this value if you report a problem.
         """
+        _ContainerObjectState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            container_name=container_name,
+            content=content,
+            content_disposition=content_disposition,
+            content_encoding=content_encoding,
+            content_length=content_length,
+            content_type=content_type,
+            copy_from=copy_from,
+            date=date,
+            delete_after=delete_after,
+            delete_at=delete_at,
+            detect_content_type=detect_content_type,
+            etag=etag,
+            last_modified=last_modified,
+            metadata=metadata,
+            name=name,
+            object_manifest=object_manifest,
+            region=region,
+            source=source,
+            trans_id=trans_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             container_name: Optional[pulumi.Input[str]] = None,
+             content: Optional[pulumi.Input[str]] = None,
+             content_disposition: Optional[pulumi.Input[str]] = None,
+             content_encoding: Optional[pulumi.Input[str]] = None,
+             content_length: Optional[pulumi.Input[int]] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
+             copy_from: Optional[pulumi.Input[str]] = None,
+             date: Optional[pulumi.Input[str]] = None,
+             delete_after: Optional[pulumi.Input[int]] = None,
+             delete_at: Optional[pulumi.Input[str]] = None,
+             detect_content_type: Optional[pulumi.Input[bool]] = None,
+             etag: Optional[pulumi.Input[str]] = None,
+             last_modified: Optional[pulumi.Input[str]] = None,
+             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             object_manifest: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             trans_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if container_name is not None:
-            pulumi.set(__self__, "container_name", container_name)
+            _setter("container_name", container_name)
         if content is not None:
-            pulumi.set(__self__, "content", content)
+            _setter("content", content)
         if content_disposition is not None:
-            pulumi.set(__self__, "content_disposition", content_disposition)
+            _setter("content_disposition", content_disposition)
         if content_encoding is not None:
-            pulumi.set(__self__, "content_encoding", content_encoding)
+            _setter("content_encoding", content_encoding)
         if content_length is not None:
-            pulumi.set(__self__, "content_length", content_length)
+            _setter("content_length", content_length)
         if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
+            _setter("content_type", content_type)
         if copy_from is not None:
-            pulumi.set(__self__, "copy_from", copy_from)
+            _setter("copy_from", copy_from)
         if date is not None:
-            pulumi.set(__self__, "date", date)
+            _setter("date", date)
         if delete_after is not None:
-            pulumi.set(__self__, "delete_after", delete_after)
+            _setter("delete_after", delete_after)
         if delete_at is not None:
-            pulumi.set(__self__, "delete_at", delete_at)
+            _setter("delete_at", delete_at)
         if detect_content_type is not None:
-            pulumi.set(__self__, "detect_content_type", detect_content_type)
+            _setter("detect_content_type", detect_content_type)
         if etag is not None:
-            pulumi.set(__self__, "etag", etag)
+            _setter("etag", etag)
         if last_modified is not None:
-            pulumi.set(__self__, "last_modified", last_modified)
+            _setter("last_modified", last_modified)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if object_manifest is not None:
-            pulumi.set(__self__, "object_manifest", object_manifest)
+            _setter("object_manifest", object_manifest)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if trans_id is not None:
-            pulumi.set(__self__, "trans_id", trans_id)
+            _setter("trans_id", trans_id)
 
     @property
     @pulumi.getter(name="containerName")
@@ -859,6 +941,10 @@ class ContainerObject(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ContainerObjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

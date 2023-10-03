@@ -138,9 +138,6 @@ import (
 type VolumeAttach struct {
 	pulumi.CustomResourceState
 
-	// See Argument Reference above. _NOTE_: The correctness of this
-	// information is dependent upon the hypervisor in use. In some cases, this
-	// should not be used as an authoritative piece of information.
 	Device pulumi.StringOutput `pulumi:"device"`
 	// The ID of the Instance to attach the Volume to.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
@@ -194,9 +191,6 @@ func GetVolumeAttach(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VolumeAttach resources.
 type volumeAttachState struct {
-	// See Argument Reference above. _NOTE_: The correctness of this
-	// information is dependent upon the hypervisor in use. In some cases, this
-	// should not be used as an authoritative piece of information.
 	Device *string `pulumi:"device"`
 	// The ID of the Instance to attach the Volume to.
 	InstanceId *string `pulumi:"instanceId"`
@@ -215,9 +209,6 @@ type volumeAttachState struct {
 }
 
 type VolumeAttachState struct {
-	// See Argument Reference above. _NOTE_: The correctness of this
-	// information is dependent upon the hypervisor in use. In some cases, this
-	// should not be used as an authoritative piece of information.
 	Device pulumi.StringPtrInput
 	// The ID of the Instance to attach the Volume to.
 	InstanceId pulumi.StringPtrInput
@@ -240,9 +231,6 @@ func (VolumeAttachState) ElementType() reflect.Type {
 }
 
 type volumeAttachArgs struct {
-	// See Argument Reference above. _NOTE_: The correctness of this
-	// information is dependent upon the hypervisor in use. In some cases, this
-	// should not be used as an authoritative piece of information.
 	Device *string `pulumi:"device"`
 	// The ID of the Instance to attach the Volume to.
 	InstanceId string `pulumi:"instanceId"`
@@ -262,9 +250,6 @@ type volumeAttachArgs struct {
 
 // The set of arguments for constructing a VolumeAttach resource.
 type VolumeAttachArgs struct {
-	// See Argument Reference above. _NOTE_: The correctness of this
-	// information is dependent upon the hypervisor in use. In some cases, this
-	// should not be used as an authoritative piece of information.
 	Device pulumi.StringPtrInput
 	// The ID of the Instance to attach the Volume to.
 	InstanceId pulumi.StringInput
@@ -393,9 +378,6 @@ func (o VolumeAttachOutput) ToOutput(ctx context.Context) pulumix.Output[*Volume
 	}
 }
 
-// See Argument Reference above. _NOTE_: The correctness of this
-// information is dependent upon the hypervisor in use. In some cases, this
-// should not be used as an authoritative piece of information.
 func (o VolumeAttachOutput) Device() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeAttach) pulumi.StringOutput { return v.Device }).(pulumi.StringOutput)
 }

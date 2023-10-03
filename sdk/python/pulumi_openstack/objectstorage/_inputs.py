@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -22,8 +22,19 @@ class ContainerVersioningLegacyArgs:
         :param pulumi.Input[str] location: Container in which versions will be stored.
         :param pulumi.Input[str] type: Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
         """
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "type", type)
+        ContainerVersioningLegacyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            location=location,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             location: pulumi.Input[str],
+             type: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("location", location)
+        _setter("type", type)
 
     @property
     @pulumi.getter

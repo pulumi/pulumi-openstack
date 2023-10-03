@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -70,27 +70,56 @@ class InstanceBlockDeviceArgs:
                cloud is configured and what classes of storage are provided. Changing this
                creates a new server.
         """
-        pulumi.set(__self__, "source_type", source_type)
+        InstanceBlockDeviceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            source_type=source_type,
+            boot_index=boot_index,
+            delete_on_termination=delete_on_termination,
+            destination_type=destination_type,
+            device_type=device_type,
+            disk_bus=disk_bus,
+            guest_format=guest_format,
+            multiattach=multiattach,
+            uuid=uuid,
+            volume_size=volume_size,
+            volume_type=volume_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             source_type: pulumi.Input[str],
+             boot_index: Optional[pulumi.Input[int]] = None,
+             delete_on_termination: Optional[pulumi.Input[bool]] = None,
+             destination_type: Optional[pulumi.Input[str]] = None,
+             device_type: Optional[pulumi.Input[str]] = None,
+             disk_bus: Optional[pulumi.Input[str]] = None,
+             guest_format: Optional[pulumi.Input[str]] = None,
+             multiattach: Optional[pulumi.Input[bool]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
+             volume_size: Optional[pulumi.Input[int]] = None,
+             volume_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("source_type", source_type)
         if boot_index is not None:
-            pulumi.set(__self__, "boot_index", boot_index)
+            _setter("boot_index", boot_index)
         if delete_on_termination is not None:
-            pulumi.set(__self__, "delete_on_termination", delete_on_termination)
+            _setter("delete_on_termination", delete_on_termination)
         if destination_type is not None:
-            pulumi.set(__self__, "destination_type", destination_type)
+            _setter("destination_type", destination_type)
         if device_type is not None:
-            pulumi.set(__self__, "device_type", device_type)
+            _setter("device_type", device_type)
         if disk_bus is not None:
-            pulumi.set(__self__, "disk_bus", disk_bus)
+            _setter("disk_bus", disk_bus)
         if guest_format is not None:
-            pulumi.set(__self__, "guest_format", guest_format)
+            _setter("guest_format", guest_format)
         if multiattach is not None:
-            pulumi.set(__self__, "multiattach", multiattach)
+            _setter("multiattach", multiattach)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
         if volume_size is not None:
-            pulumi.set(__self__, "volume_size", volume_size)
+            _setter("volume_size", volume_size)
         if volume_type is not None:
-            pulumi.set(__self__, "volume_type", volume_type)
+            _setter("volume_type", volume_type)
 
     @property
     @pulumi.getter(name="sourceType")
@@ -269,25 +298,48 @@ class InstanceNetworkArgs:
         :param pulumi.Input[str] uuid: The network UUID to
                attach to the server. Changing this creates a new server.
         """
+        InstanceNetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_network=access_network,
+            fixed_ip_v4=fixed_ip_v4,
+            fixed_ip_v6=fixed_ip_v6,
+            floating_ip=floating_ip,
+            mac=mac,
+            name=name,
+            port=port,
+            uuid=uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_network: Optional[pulumi.Input[bool]] = None,
+             fixed_ip_v4: Optional[pulumi.Input[str]] = None,
+             fixed_ip_v6: Optional[pulumi.Input[str]] = None,
+             floating_ip: Optional[pulumi.Input[str]] = None,
+             mac: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_network is not None:
-            pulumi.set(__self__, "access_network", access_network)
+            _setter("access_network", access_network)
         if fixed_ip_v4 is not None:
-            pulumi.set(__self__, "fixed_ip_v4", fixed_ip_v4)
+            _setter("fixed_ip_v4", fixed_ip_v4)
         if fixed_ip_v6 is not None:
-            pulumi.set(__self__, "fixed_ip_v6", fixed_ip_v6)
+            _setter("fixed_ip_v6", fixed_ip_v6)
         if floating_ip is not None:
             warnings.warn("""Use the openstack_compute_floatingip_associate_v2 resource instead""", DeprecationWarning)
             pulumi.log.warn("""floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead""")
         if floating_ip is not None:
-            pulumi.set(__self__, "floating_ip", floating_ip)
+            _setter("floating_ip", floating_ip)
         if mac is not None:
-            pulumi.set(__self__, "mac", mac)
+            _setter("mac", mac)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
 
     @property
     @pulumi.getter(name="accessNetwork")
@@ -394,8 +446,19 @@ class InstancePersonalityArgs:
         :param pulumi.Input[str] content: The contents of the file. Limited to 255 bytes.
         :param pulumi.Input[str] file: The absolute path of the destination file.
         """
-        pulumi.set(__self__, "content", content)
-        pulumi.set(__self__, "file", file)
+        InstancePersonalityArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content=content,
+            file=file,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content: pulumi.Input[str],
+             file: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("content", content)
+        _setter("file", file)
 
     @property
     @pulumi.getter
@@ -453,22 +516,45 @@ class InstanceSchedulerHintArgs:
                scheduled on the same host of those specified.
         :param pulumi.Input[str] target_cell: The name of a cell to host the instance.
         """
+        InstanceSchedulerHintArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            additional_properties=additional_properties,
+            build_near_host_ip=build_near_host_ip,
+            different_cells=different_cells,
+            different_hosts=different_hosts,
+            group=group,
+            queries=queries,
+            same_hosts=same_hosts,
+            target_cell=target_cell,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             additional_properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             build_near_host_ip: Optional[pulumi.Input[str]] = None,
+             different_cells: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             different_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             group: Optional[pulumi.Input[str]] = None,
+             queries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             same_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             target_cell: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if additional_properties is not None:
-            pulumi.set(__self__, "additional_properties", additional_properties)
+            _setter("additional_properties", additional_properties)
         if build_near_host_ip is not None:
-            pulumi.set(__self__, "build_near_host_ip", build_near_host_ip)
+            _setter("build_near_host_ip", build_near_host_ip)
         if different_cells is not None:
-            pulumi.set(__self__, "different_cells", different_cells)
+            _setter("different_cells", different_cells)
         if different_hosts is not None:
-            pulumi.set(__self__, "different_hosts", different_hosts)
+            _setter("different_hosts", different_hosts)
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if queries is not None:
-            pulumi.set(__self__, "queries", queries)
+            _setter("queries", queries)
         if same_hosts is not None:
-            pulumi.set(__self__, "same_hosts", same_hosts)
+            _setter("same_hosts", same_hosts)
         if target_cell is not None:
-            pulumi.set(__self__, "target_cell", target_cell)
+            _setter("target_cell", target_cell)
 
     @property
     @pulumi.getter(name="additionalProperties")
@@ -591,10 +677,21 @@ class InstanceVendorOptionsArgs:
                to work with some OpenStack clouds which automatically confirm resizing of
                instances after some timeout.
         """
+        InstanceVendorOptionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            detach_ports_before_destroy=detach_ports_before_destroy,
+            ignore_resize_confirmation=ignore_resize_confirmation,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             detach_ports_before_destroy: Optional[pulumi.Input[bool]] = None,
+             ignore_resize_confirmation: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if detach_ports_before_destroy is not None:
-            pulumi.set(__self__, "detach_ports_before_destroy", detach_ports_before_destroy)
+            _setter("detach_ports_before_destroy", detach_ports_before_destroy)
         if ignore_resize_confirmation is not None:
-            pulumi.set(__self__, "ignore_resize_confirmation", ignore_resize_confirmation)
+            _setter("ignore_resize_confirmation", ignore_resize_confirmation)
 
     @property
     @pulumi.getter(name="detachPortsBeforeDestroy")
@@ -632,11 +729,24 @@ class InstanceVolumeArgs:
                  volume_id: pulumi.Input[str],
                  device: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "volume_id", volume_id)
+        InstanceVolumeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            volume_id=volume_id,
+            device=device,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             volume_id: pulumi.Input[str],
+             device: Optional[pulumi.Input[str]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("volume_id", volume_id)
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
 
     @property
     @pulumi.getter(name="volumeId")
@@ -694,17 +804,38 @@ class SecGroupRuleArgs:
                the security group itself will be added as a source to this ingress rule. Cannot
                be combined with `cidr` or `from_group_id`.
         """
-        pulumi.set(__self__, "from_port", from_port)
-        pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "to_port", to_port)
+        SecGroupRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            from_port=from_port,
+            ip_protocol=ip_protocol,
+            to_port=to_port,
+            cidr=cidr,
+            from_group_id=from_group_id,
+            id=id,
+            self=self,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             from_port: pulumi.Input[int],
+             ip_protocol: pulumi.Input[str],
+             to_port: pulumi.Input[int],
+             cidr: Optional[pulumi.Input[str]] = None,
+             from_group_id: Optional[pulumi.Input[str]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             self: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("from_port", from_port)
+        _setter("ip_protocol", ip_protocol)
+        _setter("to_port", to_port)
         if cidr is not None:
-            pulumi.set(__self__, "cidr", cidr)
+            _setter("cidr", cidr)
         if from_group_id is not None:
-            pulumi.set(__self__, "from_group_id", from_group_id)
+            _setter("from_group_id", from_group_id)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if self is not None:
-            pulumi.set(__self__, "self", self)
+            _setter("self", self)
 
     @property
     @pulumi.getter(name="fromPort")
@@ -802,8 +933,17 @@ class SecGroupRuleArgs:
 class ServerGroupRulesArgs:
     def __init__(__self__, *,
                  max_server_per_host: Optional[pulumi.Input[int]] = None):
+        ServerGroupRulesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_server_per_host=max_server_per_host,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_server_per_host: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max_server_per_host is not None:
-            pulumi.set(__self__, "max_server_per_host", max_server_per_host)
+            _setter("max_server_per_host", max_server_per_host)
 
     @property
     @pulumi.getter(name="maxServerPerHost")
@@ -824,8 +964,17 @@ class VolumeAttachVendorOptionsArgs:
                to ignore volume status confirmation of the attached volume. This can be helpful
                to work with some OpenStack clouds which don't have the Block Storage V3 API available.
         """
+        VolumeAttachVendorOptionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ignore_volume_confirmation=ignore_volume_confirmation,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ignore_volume_confirmation: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ignore_volume_confirmation is not None:
-            pulumi.set(__self__, "ignore_volume_confirmation", ignore_volume_confirmation)
+            _setter("ignore_volume_confirmation", ignore_volume_confirmation)
 
     @property
     @pulumi.getter(name="ignoreVolumeConfirmation")
@@ -859,12 +1008,31 @@ class GetInstanceV2NetworkArgs:
         :param str port: The port UUID for this network
         :param str uuid: The UUID of the network
         """
-        pulumi.set(__self__, "fixed_ip_v4", fixed_ip_v4)
-        pulumi.set(__self__, "fixed_ip_v6", fixed_ip_v6)
-        pulumi.set(__self__, "mac", mac)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "uuid", uuid)
+        GetInstanceV2NetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fixed_ip_v4=fixed_ip_v4,
+            fixed_ip_v6=fixed_ip_v6,
+            mac=mac,
+            name=name,
+            port=port,
+            uuid=uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fixed_ip_v4: str,
+             fixed_ip_v6: str,
+             mac: str,
+             name: str,
+             port: str,
+             uuid: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("fixed_ip_v4", fixed_ip_v4)
+        _setter("fixed_ip_v6", fixed_ip_v6)
+        _setter("mac", mac)
+        _setter("name", name)
+        _setter("port", port)
+        _setter("uuid", uuid)
 
     @property
     @pulumi.getter(name="fixedIpV4")

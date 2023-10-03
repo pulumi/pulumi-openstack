@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -34,12 +34,25 @@ class NetworkSegmentArgs:
         :param pulumi.Input[str] physical_network: The physical network where this network is implemented.
         :param pulumi.Input[int] segmentation_id: An isolated segment on the physical network.
         """
+        NetworkSegmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_type=network_type,
+            physical_network=physical_network,
+            segmentation_id=segmentation_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_type: Optional[pulumi.Input[str]] = None,
+             physical_network: Optional[pulumi.Input[str]] = None,
+             segmentation_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if network_type is not None:
-            pulumi.set(__self__, "network_type", network_type)
+            _setter("network_type", network_type)
         if physical_network is not None:
-            pulumi.set(__self__, "physical_network", physical_network)
+            _setter("physical_network", physical_network)
         if segmentation_id is not None:
-            pulumi.set(__self__, "segmentation_id", segmentation_id)
+            _setter("segmentation_id", segmentation_id)
 
     @property
     @pulumi.getter(name="networkType")
@@ -87,9 +100,20 @@ class PortAllowedAddressPairArgs:
         :param pulumi.Input[str] ip_address: The additional IP address.
         :param pulumi.Input[str] mac_address: The additional MAC address.
         """
-        pulumi.set(__self__, "ip_address", ip_address)
+        PortAllowedAddressPairArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_address=ip_address,
+            mac_address=mac_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_address: pulumi.Input[str],
+             mac_address: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ip_address", ip_address)
         if mac_address is not None:
-            pulumi.set(__self__, "mac_address", mac_address)
+            _setter("mac_address", mac_address)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -135,16 +159,33 @@ class PortBindingArgs:
                `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
                Default value is `normal`.
         """
+        PortBindingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_id=host_id,
+            profile=profile,
+            vif_details=vif_details,
+            vif_type=vif_type,
+            vnic_type=vnic_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_id: Optional[pulumi.Input[str]] = None,
+             profile: Optional[pulumi.Input[str]] = None,
+             vif_details: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vif_type: Optional[pulumi.Input[str]] = None,
+             vnic_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if host_id is not None:
-            pulumi.set(__self__, "host_id", host_id)
+            _setter("host_id", host_id)
         if profile is not None:
-            pulumi.set(__self__, "profile", profile)
+            _setter("profile", profile)
         if vif_details is not None:
-            pulumi.set(__self__, "vif_details", vif_details)
+            _setter("vif_details", vif_details)
         if vif_type is not None:
-            pulumi.set(__self__, "vif_type", vif_type)
+            _setter("vif_type", vif_type)
         if vnic_type is not None:
-            pulumi.set(__self__, "vnic_type", vnic_type)
+            _setter("vnic_type", vnic_type)
 
     @property
     @pulumi.getter(name="hostId")
@@ -222,10 +263,23 @@ class PortExtraDhcpOptionArgs:
         :param pulumi.Input[str] value: Value of the DHCP option.
         :param pulumi.Input[int] ip_version: IP protocol version. Defaults to 4.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        PortExtraDhcpOptionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+            ip_version=ip_version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             value: pulumi.Input[str],
+             ip_version: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("value", value)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
 
     @property
     @pulumi.getter
@@ -278,9 +332,20 @@ class PortFixedIpArgs:
                is left blank or omitted. To retrieve the assigned IP address, use the
                `all_fixed_ips` attribute.
         """
-        pulumi.set(__self__, "subnet_id", subnet_id)
+        PortFixedIpArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            subnet_id=subnet_id,
+            ip_address=ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             subnet_id: pulumi.Input[str],
+             ip_address: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("subnet_id", subnet_id)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
 
     @property
     @pulumi.getter(name="subnetId")
@@ -321,10 +386,21 @@ class RouterExternalFixedIpArgs:
         :param pulumi.Input[str] ip_address: The IP address to set on the router.
         :param pulumi.Input[str] subnet_id: Subnet in which the fixed IP belongs to.
         """
+        RouterExternalFixedIpArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_address=ip_address,
+            subnet_id=subnet_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_address: Optional[pulumi.Input[str]] = None,
+             subnet_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if subnet_id is not None:
-            pulumi.set(__self__, "subnet_id", subnet_id)
+            _setter("subnet_id", subnet_id)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -359,8 +435,17 @@ class RouterVendorOptionsArgs:
         :param pulumi.Input[bool] set_router_gateway_after_create: Boolean to control whether
                the Router gateway is assigned during creation or updated after creation.
         """
+        RouterVendorOptionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            set_router_gateway_after_create=set_router_gateway_after_create,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             set_router_gateway_after_create: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if set_router_gateway_after_create is not None:
-            pulumi.set(__self__, "set_router_gateway_after_create", set_router_gateway_after_create)
+            _setter("set_router_gateway_after_create", set_router_gateway_after_create)
 
     @property
     @pulumi.getter(name="setRouterGatewayAfterCreate")
@@ -385,8 +470,19 @@ class SubnetAllocationPoolArgs:
         :param pulumi.Input[str] end: The ending address.
         :param pulumi.Input[str] start: The starting address.
         """
-        pulumi.set(__self__, "end", end)
-        pulumi.set(__self__, "start", start)
+        SubnetAllocationPoolArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end=end,
+            start=start,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end: pulumi.Input[str],
+             start: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("end", end)
+        _setter("start", start)
 
     @property
     @pulumi.getter
@@ -422,8 +518,19 @@ class SubnetAllocationPoolsCollectionArgs:
         :param pulumi.Input[str] end: The ending address.
         :param pulumi.Input[str] start: The starting address.
         """
-        pulumi.set(__self__, "end", end)
-        pulumi.set(__self__, "start", start)
+        SubnetAllocationPoolsCollectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end=end,
+            start=start,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end: pulumi.Input[str],
+             start: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("end", end)
+        _setter("start", start)
 
     @property
     @pulumi.getter
@@ -459,8 +566,19 @@ class SubnetHostRouteArgs:
         :param pulumi.Input[str] destination_cidr: The destination CIDR.
         :param pulumi.Input[str] next_hop: The next hop in the route.
         """
-        pulumi.set(__self__, "destination_cidr", destination_cidr)
-        pulumi.set(__self__, "next_hop", next_hop)
+        SubnetHostRouteArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destination_cidr=destination_cidr,
+            next_hop=next_hop,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destination_cidr: pulumi.Input[str],
+             next_hop: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("destination_cidr", destination_cidr)
+        _setter("next_hop", next_hop)
 
     @property
     @pulumi.getter(name="destinationCidr")
@@ -498,9 +616,22 @@ class TrunkSubPortArgs:
         :param pulumi.Input[int] segmentation_id: The numeric id of the subport segment.
         :param pulumi.Input[str] segmentation_type: The segmentation technology to use, e.g., "vlan".
         """
-        pulumi.set(__self__, "port_id", port_id)
-        pulumi.set(__self__, "segmentation_id", segmentation_id)
-        pulumi.set(__self__, "segmentation_type", segmentation_type)
+        TrunkSubPortArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port_id=port_id,
+            segmentation_id=segmentation_id,
+            segmentation_type=segmentation_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port_id: pulumi.Input[str],
+             segmentation_id: pulumi.Input[int],
+             segmentation_type: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("port_id", port_id)
+        _setter("segmentation_id", segmentation_id)
+        _setter("segmentation_type", segmentation_type)
 
     @property
     @pulumi.getter(name="portId")

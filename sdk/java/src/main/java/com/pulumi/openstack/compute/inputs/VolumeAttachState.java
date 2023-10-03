@@ -17,21 +17,9 @@ public final class VolumeAttachState extends com.pulumi.resources.ResourceArgs {
 
     public static final VolumeAttachState Empty = new VolumeAttachState();
 
-    /**
-     * See Argument Reference above. _NOTE_: The correctness of this
-     * information is dependent upon the hypervisor in use. In some cases, this
-     * should not be used as an authoritative piece of information.
-     * 
-     */
     @Import(name="device")
     private @Nullable Output<String> device;
 
-    /**
-     * @return See Argument Reference above. _NOTE_: The correctness of this
-     * information is dependent upon the hypervisor in use. In some cases, this
-     * should not be used as an authoritative piece of information.
-     * 
-     */
     public Optional<Output<String>> device() {
         return Optional.ofNullable(this.device);
     }
@@ -148,27 +136,11 @@ public final class VolumeAttachState extends com.pulumi.resources.ResourceArgs {
             $ = new VolumeAttachState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param device See Argument Reference above. _NOTE_: The correctness of this
-         * information is dependent upon the hypervisor in use. In some cases, this
-         * should not be used as an authoritative piece of information.
-         * 
-         * @return builder
-         * 
-         */
         public Builder device(@Nullable Output<String> device) {
             $.device = device;
             return this;
         }
 
-        /**
-         * @param device See Argument Reference above. _NOTE_: The correctness of this
-         * information is dependent upon the hypervisor in use. In some cases, this
-         * should not be used as an authoritative piece of information.
-         * 
-         * @return builder
-         * 
-         */
         public Builder device(String device) {
             return device(Output.of(device));
         }

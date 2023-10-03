@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -24,10 +24,21 @@ class IkePolicyLifetimeArgs:
         :param pulumi.Input[int] value: The value for the lifetime of the security association. Must be a positive integer.
                Default is 3600.
         """
+        IkePolicyLifetimeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            units=units,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             units: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if units is not None:
-            pulumi.set(__self__, "units", units)
+            _setter("units", units)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -61,10 +72,21 @@ class IpSecPolicyLifetimeArgs:
         :param pulumi.Input[int] value: The value for the lifetime of the security association. Must be a positive integer.
                Default is 3600.
         """
+        IpSecPolicyLifetimeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            units=units,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             units: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if units is not None:
-            pulumi.set(__self__, "units", units)
+            _setter("units", units)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -106,12 +128,25 @@ class SiteConnectionDpdArgs:
                A valid value is a positive integer that is greater than the DPD interval value.
                Default is 120.
         """
+        SiteConnectionDpdArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            interval=interval,
+            timeout=timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             interval: Optional[pulumi.Input[int]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
 
     @property
     @pulumi.getter

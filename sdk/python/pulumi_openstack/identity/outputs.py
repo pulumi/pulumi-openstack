@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -41,11 +41,26 @@ class ApplicationCredentialAccessRule(dict):
         :param str id: The ID of the existing access rule. The access rule ID of
                another application credential can be provided.
         """
-        pulumi.set(__self__, "method", method)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "service", service)
+        ApplicationCredentialAccessRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            method=method,
+            path=path,
+            service=service,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             method: str,
+             path: str,
+             service: str,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("method", method)
+        _setter("path", path)
+        _setter("service", service)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
 
     @property
     @pulumi.getter
@@ -98,7 +113,16 @@ class UserMultiFactorAuthRule(dict):
         :param Sequence[str] rules: A list of authentication plugins that the user must
                authenticate with.
         """
-        pulumi.set(__self__, "rules", rules)
+        UserMultiFactorAuthRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            rules=rules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             rules: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("rules", rules)
 
     @property
     @pulumi.getter
@@ -119,8 +143,19 @@ class GetAuthScopeRoleResult(dict):
         :param str role_id: The ID of the role.
         :param str role_name: The name of the role.
         """
-        pulumi.set(__self__, "role_id", role_id)
-        pulumi.set(__self__, "role_name", role_name)
+        GetAuthScopeRoleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            role_id=role_id,
+            role_name=role_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             role_id: str,
+             role_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("role_id", role_id)
+        _setter("role_name", role_name)
 
     @property
     @pulumi.getter(name="roleId")
@@ -153,10 +188,25 @@ class GetAuthScopeServiceCatalogResult(dict):
                only used as a unique identifier so an actual token isn't used as the ID.
         :param str type: The type of the service.
         """
-        pulumi.set(__self__, "endpoints", endpoints)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        GetAuthScopeServiceCatalogResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoints=endpoints,
+            id=id,
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoints: Sequence['outputs.GetAuthScopeServiceCatalogEndpointResult'],
+             id: str,
+             name: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("endpoints", endpoints)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -209,11 +259,28 @@ class GetAuthScopeServiceCatalogEndpointResult(dict):
         :param str region_id: The region ID of the endpoint.
         :param str url: The URL of the endpoint.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "interface", interface)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "url", url)
+        GetAuthScopeServiceCatalogEndpointResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            interface=interface,
+            region=region,
+            region_id=region_id,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             interface: str,
+             region: str,
+             region_id: str,
+             url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("interface", interface)
+        _setter("region", region)
+        _setter("region_id", region_id)
+        _setter("url", url)
 
     @property
     @pulumi.getter

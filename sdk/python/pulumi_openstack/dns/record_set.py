@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RecordSetArgs', 'RecordSet']
@@ -47,24 +47,51 @@ class RecordSetArgs:
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
                new record set.
         """
-        pulumi.set(__self__, "records", records)
-        pulumi.set(__self__, "zone_id", zone_id)
+        RecordSetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            records=records,
+            zone_id=zone_id,
+            description=description,
+            disable_status_check=disable_status_check,
+            name=name,
+            project_id=project_id,
+            region=region,
+            ttl=ttl,
+            type=type,
+            value_specs=value_specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             records: pulumi.Input[Sequence[pulumi.Input[str]]],
+             zone_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             disable_status_check: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("records", records)
+        _setter("zone_id", zone_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_status_check is not None:
-            pulumi.set(__self__, "disable_status_check", disable_status_check)
+            _setter("disable_status_check", disable_status_check)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
 
     @property
     @pulumi.getter
@@ -233,26 +260,53 @@ class _RecordSetState:
         :param pulumi.Input[str] zone_id: The ID of the zone in which to create the record set.
                Changing this creates a new DNS  record set.
         """
+        _RecordSetState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            disable_status_check=disable_status_check,
+            name=name,
+            project_id=project_id,
+            records=records,
+            region=region,
+            ttl=ttl,
+            type=type,
+            value_specs=value_specs,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             disable_status_check: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             records: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_status_check is not None:
-            pulumi.set(__self__, "disable_status_check", disable_status_check)
+            _setter("disable_status_check", disable_status_check)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if records is not None:
-            pulumi.set(__self__, "records", records)
+            _setter("records", records)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -502,6 +556,10 @@ class RecordSet(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RecordSetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

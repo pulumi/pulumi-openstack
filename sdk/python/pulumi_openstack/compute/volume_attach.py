@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -26,9 +26,6 @@ class VolumeAttachArgs:
         The set of arguments for constructing a VolumeAttach resource.
         :param pulumi.Input[str] instance_id: The ID of the Instance to attach the Volume to.
         :param pulumi.Input[str] volume_id: The ID of the Volume to attach to an Instance.
-        :param pulumi.Input[str] device: See Argument Reference above. _NOTE_: The correctness of this
-               information is dependent upon the hypervisor in use. In some cases, this
-               should not be used as an authoritative piece of information.
         :param pulumi.Input[bool] multiattach: Enable attachment of multiattach-capable volumes.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
                A Compute client is needed to create a volume attachment. If omitted, the
@@ -37,16 +34,35 @@ class VolumeAttachArgs:
         :param pulumi.Input['VolumeAttachVendorOptionsArgs'] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "volume_id", volume_id)
+        VolumeAttachArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            volume_id=volume_id,
+            device=device,
+            multiattach=multiattach,
+            region=region,
+            vendor_options=vendor_options,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: pulumi.Input[str],
+             volume_id: pulumi.Input[str],
+             device: Optional[pulumi.Input[str]] = None,
+             multiattach: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             vendor_options: Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_id", instance_id)
+        _setter("volume_id", volume_id)
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if multiattach is not None:
-            pulumi.set(__self__, "multiattach", multiattach)
+            _setter("multiattach", multiattach)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if vendor_options is not None:
-            pulumi.set(__self__, "vendor_options", vendor_options)
+            _setter("vendor_options", vendor_options)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -75,11 +91,6 @@ class VolumeAttachArgs:
     @property
     @pulumi.getter
     def device(self) -> Optional[pulumi.Input[str]]:
-        """
-        See Argument Reference above. _NOTE_: The correctness of this
-        information is dependent upon the hypervisor in use. In some cases, this
-        should not be used as an authoritative piece of information.
-        """
         return pulumi.get(self, "device")
 
     @device.setter
@@ -138,9 +149,6 @@ class _VolumeAttachState:
                  volume_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering VolumeAttach resources.
-        :param pulumi.Input[str] device: See Argument Reference above. _NOTE_: The correctness of this
-               information is dependent upon the hypervisor in use. In some cases, this
-               should not be used as an authoritative piece of information.
         :param pulumi.Input[str] instance_id: The ID of the Instance to attach the Volume to.
         :param pulumi.Input[bool] multiattach: Enable attachment of multiattach-capable volumes.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
@@ -151,27 +159,41 @@ class _VolumeAttachState:
                Supported options are described below.
         :param pulumi.Input[str] volume_id: The ID of the Volume to attach to an Instance.
         """
+        _VolumeAttachState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            device=device,
+            instance_id=instance_id,
+            multiattach=multiattach,
+            region=region,
+            vendor_options=vendor_options,
+            volume_id=volume_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             device: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             multiattach: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             vendor_options: Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']] = None,
+             volume_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if multiattach is not None:
-            pulumi.set(__self__, "multiattach", multiattach)
+            _setter("multiattach", multiattach)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if vendor_options is not None:
-            pulumi.set(__self__, "vendor_options", vendor_options)
+            _setter("vendor_options", vendor_options)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
 
     @property
     @pulumi.getter
     def device(self) -> Optional[pulumi.Input[str]]:
-        """
-        See Argument Reference above. _NOTE_: The correctness of this
-        information is dependent upon the hypervisor in use. In some cases, this
-        should not be used as an authoritative piece of information.
-        """
         return pulumi.get(self, "device")
 
     @device.setter
@@ -310,9 +332,6 @@ class VolumeAttach(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] device: See Argument Reference above. _NOTE_: The correctness of this
-               information is dependent upon the hypervisor in use. In some cases, this
-               should not be used as an authoritative piece of information.
         :param pulumi.Input[str] instance_id: The ID of the Instance to attach the Volume to.
         :param pulumi.Input[bool] multiattach: Enable attachment of multiattach-capable volumes.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
@@ -392,6 +411,10 @@ class VolumeAttach(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VolumeAttachArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -418,6 +441,11 @@ class VolumeAttach(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["multiattach"] = multiattach
             __props__.__dict__["region"] = region
+            if vendor_options is not None and not isinstance(vendor_options, VolumeAttachVendorOptionsArgs):
+                vendor_options = vendor_options or {}
+                def _setter(key, value):
+                    vendor_options[key] = value
+                VolumeAttachVendorOptionsArgs._configure(_setter, **vendor_options)
             __props__.__dict__["vendor_options"] = vendor_options
             if volume_id is None and not opts.urn:
                 raise TypeError("Missing required property 'volume_id'")
@@ -445,9 +473,6 @@ class VolumeAttach(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] device: See Argument Reference above. _NOTE_: The correctness of this
-               information is dependent upon the hypervisor in use. In some cases, this
-               should not be used as an authoritative piece of information.
         :param pulumi.Input[str] instance_id: The ID of the Instance to attach the Volume to.
         :param pulumi.Input[bool] multiattach: Enable attachment of multiattach-capable volumes.
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
@@ -473,11 +498,6 @@ class VolumeAttach(pulumi.CustomResource):
     @property
     @pulumi.getter
     def device(self) -> pulumi.Output[str]:
-        """
-        See Argument Reference above. _NOTE_: The correctness of this
-        information is dependent upon the hypervisor in use. In some cases, this
-        should not be used as an authoritative piece of information.
-        """
         return pulumi.get(self, "device")
 
     @property

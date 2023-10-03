@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -46,10 +46,23 @@ class ConfigurationConfiguration(dict):
         :param str value: Configuration parameter value. Changing this creates a new resource.
         :param bool string_type: Whether or not to store configuration parameter value as string. Changing this creates a new resource. See the below note for more information.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        ConfigurationConfiguration._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+            string_type=string_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: str,
+             string_type: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("value", value)
         if string_type is not None:
-            pulumi.set(__self__, "string_type", string_type)
+            _setter("string_type", string_type)
 
     @property
     @pulumi.getter
@@ -85,8 +98,19 @@ class ConfigurationDatastore(dict):
         :param str type: Database engine type to be used with this configuration. Changing this creates a new resource.
         :param str version: Version of database engine type to be used with this configuration. Changing this creates a new resource.
         """
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "version", version)
+        ConfigurationDatastore._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             version: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
+        _setter("version", version)
 
     @property
     @pulumi.getter
@@ -118,11 +142,24 @@ class InstanceDatabase(dict):
                new instance.
         :param str collate: Database collation. Changing this creates a new instance.
         """
-        pulumi.set(__self__, "name", name)
+        InstanceDatabase._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            charset=charset,
+            collate=collate,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             charset: Optional[str] = None,
+             collate: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if charset is not None:
-            pulumi.set(__self__, "charset", charset)
+            _setter("charset", charset)
         if collate is not None:
-            pulumi.set(__self__, "collate", collate)
+            _setter("collate", collate)
 
     @property
     @pulumi.getter
@@ -162,8 +199,19 @@ class InstanceDatastore(dict):
         :param str version: Version of database engine type to be used in new instance.
                Changing this creates a new instance.
         """
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "version", version)
+        InstanceDatastore._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             version: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
+        _setter("version", version)
 
     @property
     @pulumi.getter
@@ -220,14 +268,29 @@ class InstanceNetwork(dict):
         :param str uuid: The network UUID to
                attach to the instance. Changing this creates a new instance.
         """
+        InstanceNetwork._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fixed_ip_v4=fixed_ip_v4,
+            fixed_ip_v6=fixed_ip_v6,
+            port=port,
+            uuid=uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fixed_ip_v4: Optional[str] = None,
+             fixed_ip_v6: Optional[str] = None,
+             port: Optional[str] = None,
+             uuid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if fixed_ip_v4 is not None:
-            pulumi.set(__self__, "fixed_ip_v4", fixed_ip_v4)
+            _setter("fixed_ip_v4", fixed_ip_v4)
         if fixed_ip_v6 is not None:
-            pulumi.set(__self__, "fixed_ip_v6", fixed_ip_v6)
+            _setter("fixed_ip_v6", fixed_ip_v6)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
 
     @property
     @pulumi.getter(name="fixedIpV4")
@@ -283,13 +346,28 @@ class InstanceUser(dict):
         :param str password: User's password. Changing this creates a
                new instance.
         """
-        pulumi.set(__self__, "name", name)
+        InstanceUser._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            databases=databases,
+            host=host,
+            password=password,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             databases: Optional[Sequence[str]] = None,
+             host: Optional[str] = None,
+             password: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if databases is not None:
-            pulumi.set(__self__, "databases", databases)
+            _setter("databases", databases)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
 
     @property
     @pulumi.getter

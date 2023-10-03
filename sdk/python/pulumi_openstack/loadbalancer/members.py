@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -30,11 +30,24 @@ class MembersArgs:
                `region` argument of the provider is used. Changing this creates a new
                members resource.
         """
-        pulumi.set(__self__, "pool_id", pool_id)
+        MembersArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pool_id=pool_id,
+            members=members,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pool_id: pulumi.Input[str],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("pool_id", pool_id)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="poolId")
@@ -95,12 +108,25 @@ class _MembersState:
                `region` argument of the provider is used. Changing this creates a new
                members resource.
         """
+        _MembersState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            members=members,
+            pool_id=pool_id,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input['MembersMemberArgs']]]] = None,
+             pool_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if pool_id is not None:
-            pulumi.set(__self__, "pool_id", pool_id)
+            _setter("pool_id", pool_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter
@@ -256,6 +282,10 @@ class Members(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MembersArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

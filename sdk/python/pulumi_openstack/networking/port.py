@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -94,47 +94,96 @@ class PortArgs:
                to create a port for another tenant. Changing this creates a new port.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
-        pulumi.set(__self__, "network_id", network_id)
+        PortArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_id=network_id,
+            admin_state_up=admin_state_up,
+            allowed_address_pairs=allowed_address_pairs,
+            binding=binding,
+            description=description,
+            device_id=device_id,
+            device_owner=device_owner,
+            dns_name=dns_name,
+            extra_dhcp_options=extra_dhcp_options,
+            fixed_ips=fixed_ips,
+            mac_address=mac_address,
+            name=name,
+            no_fixed_ip=no_fixed_ip,
+            no_security_groups=no_security_groups,
+            port_security_enabled=port_security_enabled,
+            qos_policy_id=qos_policy_id,
+            region=region,
+            security_group_ids=security_group_ids,
+            tags=tags,
+            tenant_id=tenant_id,
+            value_specs=value_specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_id: pulumi.Input[str],
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             allowed_address_pairs: Optional[pulumi.Input[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]]] = None,
+             binding: Optional[pulumi.Input['PortBindingArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             device_id: Optional[pulumi.Input[str]] = None,
+             device_owner: Optional[pulumi.Input[str]] = None,
+             dns_name: Optional[pulumi.Input[str]] = None,
+             extra_dhcp_options: Optional[pulumi.Input[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]]] = None,
+             fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input['PortFixedIpArgs']]]] = None,
+             mac_address: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             no_fixed_ip: Optional[pulumi.Input[bool]] = None,
+             no_security_groups: Optional[pulumi.Input[bool]] = None,
+             port_security_enabled: Optional[pulumi.Input[bool]] = None,
+             qos_policy_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network_id", network_id)
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if allowed_address_pairs is not None:
-            pulumi.set(__self__, "allowed_address_pairs", allowed_address_pairs)
+            _setter("allowed_address_pairs", allowed_address_pairs)
         if binding is not None:
-            pulumi.set(__self__, "binding", binding)
+            _setter("binding", binding)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if device_id is not None:
-            pulumi.set(__self__, "device_id", device_id)
+            _setter("device_id", device_id)
         if device_owner is not None:
-            pulumi.set(__self__, "device_owner", device_owner)
+            _setter("device_owner", device_owner)
         if dns_name is not None:
-            pulumi.set(__self__, "dns_name", dns_name)
+            _setter("dns_name", dns_name)
         if extra_dhcp_options is not None:
-            pulumi.set(__self__, "extra_dhcp_options", extra_dhcp_options)
+            _setter("extra_dhcp_options", extra_dhcp_options)
         if fixed_ips is not None:
-            pulumi.set(__self__, "fixed_ips", fixed_ips)
+            _setter("fixed_ips", fixed_ips)
         if mac_address is not None:
-            pulumi.set(__self__, "mac_address", mac_address)
+            _setter("mac_address", mac_address)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if no_fixed_ip is not None:
-            pulumi.set(__self__, "no_fixed_ip", no_fixed_ip)
+            _setter("no_fixed_ip", no_fixed_ip)
         if no_security_groups is not None:
-            pulumi.set(__self__, "no_security_groups", no_security_groups)
+            _setter("no_security_groups", no_security_groups)
         if port_security_enabled is not None:
-            pulumi.set(__self__, "port_security_enabled", port_security_enabled)
+            _setter("port_security_enabled", port_security_enabled)
         if qos_policy_id is not None:
-            pulumi.set(__self__, "qos_policy_id", qos_policy_id)
+            _setter("qos_policy_id", qos_policy_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
 
     @property
     @pulumi.getter(name="networkId")
@@ -514,56 +563,113 @@ class _PortState:
                to create a port for another tenant. Changing this creates a new port.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
+        _PortState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_state_up=admin_state_up,
+            all_fixed_ips=all_fixed_ips,
+            all_security_group_ids=all_security_group_ids,
+            all_tags=all_tags,
+            allowed_address_pairs=allowed_address_pairs,
+            binding=binding,
+            description=description,
+            device_id=device_id,
+            device_owner=device_owner,
+            dns_assignments=dns_assignments,
+            dns_name=dns_name,
+            extra_dhcp_options=extra_dhcp_options,
+            fixed_ips=fixed_ips,
+            mac_address=mac_address,
+            name=name,
+            network_id=network_id,
+            no_fixed_ip=no_fixed_ip,
+            no_security_groups=no_security_groups,
+            port_security_enabled=port_security_enabled,
+            qos_policy_id=qos_policy_id,
+            region=region,
+            security_group_ids=security_group_ids,
+            tags=tags,
+            tenant_id=tenant_id,
+            value_specs=value_specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             all_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             all_security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             allowed_address_pairs: Optional[pulumi.Input[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]]] = None,
+             binding: Optional[pulumi.Input['PortBindingArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             device_id: Optional[pulumi.Input[str]] = None,
+             device_owner: Optional[pulumi.Input[str]] = None,
+             dns_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
+             dns_name: Optional[pulumi.Input[str]] = None,
+             extra_dhcp_options: Optional[pulumi.Input[Sequence[pulumi.Input['PortExtraDhcpOptionArgs']]]] = None,
+             fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input['PortFixedIpArgs']]]] = None,
+             mac_address: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_id: Optional[pulumi.Input[str]] = None,
+             no_fixed_ip: Optional[pulumi.Input[bool]] = None,
+             no_security_groups: Optional[pulumi.Input[bool]] = None,
+             port_security_enabled: Optional[pulumi.Input[bool]] = None,
+             qos_policy_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if all_fixed_ips is not None:
-            pulumi.set(__self__, "all_fixed_ips", all_fixed_ips)
+            _setter("all_fixed_ips", all_fixed_ips)
         if all_security_group_ids is not None:
-            pulumi.set(__self__, "all_security_group_ids", all_security_group_ids)
+            _setter("all_security_group_ids", all_security_group_ids)
         if all_tags is not None:
-            pulumi.set(__self__, "all_tags", all_tags)
+            _setter("all_tags", all_tags)
         if allowed_address_pairs is not None:
-            pulumi.set(__self__, "allowed_address_pairs", allowed_address_pairs)
+            _setter("allowed_address_pairs", allowed_address_pairs)
         if binding is not None:
-            pulumi.set(__self__, "binding", binding)
+            _setter("binding", binding)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if device_id is not None:
-            pulumi.set(__self__, "device_id", device_id)
+            _setter("device_id", device_id)
         if device_owner is not None:
-            pulumi.set(__self__, "device_owner", device_owner)
+            _setter("device_owner", device_owner)
         if dns_assignments is not None:
-            pulumi.set(__self__, "dns_assignments", dns_assignments)
+            _setter("dns_assignments", dns_assignments)
         if dns_name is not None:
-            pulumi.set(__self__, "dns_name", dns_name)
+            _setter("dns_name", dns_name)
         if extra_dhcp_options is not None:
-            pulumi.set(__self__, "extra_dhcp_options", extra_dhcp_options)
+            _setter("extra_dhcp_options", extra_dhcp_options)
         if fixed_ips is not None:
-            pulumi.set(__self__, "fixed_ips", fixed_ips)
+            _setter("fixed_ips", fixed_ips)
         if mac_address is not None:
-            pulumi.set(__self__, "mac_address", mac_address)
+            _setter("mac_address", mac_address)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_id is not None:
-            pulumi.set(__self__, "network_id", network_id)
+            _setter("network_id", network_id)
         if no_fixed_ip is not None:
-            pulumi.set(__self__, "no_fixed_ip", no_fixed_ip)
+            _setter("no_fixed_ip", no_fixed_ip)
         if no_security_groups is not None:
-            pulumi.set(__self__, "no_security_groups", no_security_groups)
+            _setter("no_security_groups", no_security_groups)
         if port_security_enabled is not None:
-            pulumi.set(__self__, "port_security_enabled", port_security_enabled)
+            _setter("port_security_enabled", port_security_enabled)
         if qos_policy_id is not None:
-            pulumi.set(__self__, "qos_policy_id", qos_policy_id)
+            _setter("qos_policy_id", qos_policy_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
 
     @property
     @pulumi.getter(name="adminStateUp")
@@ -1130,6 +1236,10 @@ class Port(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PortArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1167,6 +1277,11 @@ class Port(pulumi.CustomResource):
 
             __props__.__dict__["admin_state_up"] = admin_state_up
             __props__.__dict__["allowed_address_pairs"] = allowed_address_pairs
+            if binding is not None and not isinstance(binding, PortBindingArgs):
+                binding = binding or {}
+                def _setter(key, value):
+                    binding[key] = value
+                PortBindingArgs._configure(_setter, **binding)
             __props__.__dict__["binding"] = binding
             __props__.__dict__["description"] = description
             __props__.__dict__["device_id"] = device_id

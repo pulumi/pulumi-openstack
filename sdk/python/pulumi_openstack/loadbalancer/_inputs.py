@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -47,24 +47,51 @@ class MembersMemberArgs:
                example, a member with a weight of 10 receives five times as much traffic
                as a member with a weight of 2. Defaults to 1.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "protocol_port", protocol_port)
+        MembersMemberArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            protocol_port=protocol_port,
+            admin_state_up=admin_state_up,
+            backup=backup,
+            id=id,
+            monitor_address=monitor_address,
+            monitor_port=monitor_port,
+            name=name,
+            subnet_id=subnet_id,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: pulumi.Input[str],
+             protocol_port: pulumi.Input[int],
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             backup: Optional[pulumi.Input[bool]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             monitor_address: Optional[pulumi.Input[str]] = None,
+             monitor_port: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             subnet_id: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("protocol_port", protocol_port)
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if backup is not None:
-            pulumi.set(__self__, "backup", backup)
+            _setter("backup", backup)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if monitor_address is not None:
-            pulumi.set(__self__, "monitor_address", monitor_address)
+            _setter("monitor_address", monitor_address)
         if monitor_port is not None:
-            pulumi.set(__self__, "monitor_port", monitor_port)
+            _setter("monitor_port", monitor_port)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if subnet_id is not None:
-            pulumi.set(__self__, "subnet_id", subnet_id)
+            _setter("subnet_id", subnet_id)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter
@@ -206,9 +233,20 @@ class PoolPersistenceArgs:
         :param pulumi.Input[str] cookie_name: The name of the cookie if persistence mode is set
                appropriately. Required if `type = APP_COOKIE`.
         """
-        pulumi.set(__self__, "type", type)
+        PoolPersistenceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            cookie_name=cookie_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: pulumi.Input[str],
+             cookie_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if cookie_name is not None:
-            pulumi.set(__self__, "cookie_name", cookie_name)
+            _setter("cookie_name", cookie_name)
 
     @property
     @pulumi.getter

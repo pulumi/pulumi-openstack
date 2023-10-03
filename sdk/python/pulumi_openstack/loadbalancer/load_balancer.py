@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['LoadBalancerArgs', 'LoadBalancer']
@@ -69,34 +69,69 @@ class LoadBalancerArgs:
                are shared).  Changing this creates a new loadbalancer.
                It is required to Neutron LBaaS but optional for Octavia.
         """
+        LoadBalancerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_state_up=admin_state_up,
+            availability_zone=availability_zone,
+            description=description,
+            flavor_id=flavor_id,
+            loadbalancer_provider=loadbalancer_provider,
+            name=name,
+            region=region,
+            security_group_ids=security_group_ids,
+            tags=tags,
+            tenant_id=tenant_id,
+            vip_address=vip_address,
+            vip_network_id=vip_network_id,
+            vip_port_id=vip_port_id,
+            vip_subnet_id=vip_subnet_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             availability_zone: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             flavor_id: Optional[pulumi.Input[str]] = None,
+             loadbalancer_provider: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             vip_address: Optional[pulumi.Input[str]] = None,
+             vip_network_id: Optional[pulumi.Input[str]] = None,
+             vip_port_id: Optional[pulumi.Input[str]] = None,
+             vip_subnet_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if availability_zone is not None:
-            pulumi.set(__self__, "availability_zone", availability_zone)
+            _setter("availability_zone", availability_zone)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if flavor_id is not None:
-            pulumi.set(__self__, "flavor_id", flavor_id)
+            _setter("flavor_id", flavor_id)
         if loadbalancer_provider is not None:
-            pulumi.set(__self__, "loadbalancer_provider", loadbalancer_provider)
+            _setter("loadbalancer_provider", loadbalancer_provider)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if vip_address is not None:
-            pulumi.set(__self__, "vip_address", vip_address)
+            _setter("vip_address", vip_address)
         if vip_network_id is not None:
-            pulumi.set(__self__, "vip_network_id", vip_network_id)
+            _setter("vip_network_id", vip_network_id)
         if vip_port_id is not None:
-            pulumi.set(__self__, "vip_port_id", vip_port_id)
+            _setter("vip_port_id", vip_port_id)
         if vip_subnet_id is not None:
-            pulumi.set(__self__, "vip_subnet_id", vip_subnet_id)
+            _setter("vip_subnet_id", vip_subnet_id)
 
     @property
     @pulumi.getter(name="adminStateUp")
@@ -349,34 +384,69 @@ class _LoadBalancerState:
                are shared).  Changing this creates a new loadbalancer.
                It is required to Neutron LBaaS but optional for Octavia.
         """
+        _LoadBalancerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_state_up=admin_state_up,
+            availability_zone=availability_zone,
+            description=description,
+            flavor_id=flavor_id,
+            loadbalancer_provider=loadbalancer_provider,
+            name=name,
+            region=region,
+            security_group_ids=security_group_ids,
+            tags=tags,
+            tenant_id=tenant_id,
+            vip_address=vip_address,
+            vip_network_id=vip_network_id,
+            vip_port_id=vip_port_id,
+            vip_subnet_id=vip_subnet_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             availability_zone: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             flavor_id: Optional[pulumi.Input[str]] = None,
+             loadbalancer_provider: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             vip_address: Optional[pulumi.Input[str]] = None,
+             vip_network_id: Optional[pulumi.Input[str]] = None,
+             vip_port_id: Optional[pulumi.Input[str]] = None,
+             vip_subnet_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if availability_zone is not None:
-            pulumi.set(__self__, "availability_zone", availability_zone)
+            _setter("availability_zone", availability_zone)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if flavor_id is not None:
-            pulumi.set(__self__, "flavor_id", flavor_id)
+            _setter("flavor_id", flavor_id)
         if loadbalancer_provider is not None:
-            pulumi.set(__self__, "loadbalancer_provider", loadbalancer_provider)
+            _setter("loadbalancer_provider", loadbalancer_provider)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if vip_address is not None:
-            pulumi.set(__self__, "vip_address", vip_address)
+            _setter("vip_address", vip_address)
         if vip_network_id is not None:
-            pulumi.set(__self__, "vip_network_id", vip_network_id)
+            _setter("vip_network_id", vip_network_id)
         if vip_port_id is not None:
-            pulumi.set(__self__, "vip_port_id", vip_port_id)
+            _setter("vip_port_id", vip_port_id)
         if vip_subnet_id is not None:
-            pulumi.set(__self__, "vip_subnet_id", vip_subnet_id)
+            _setter("vip_subnet_id", vip_subnet_id)
 
     @property
     @pulumi.getter(name="adminStateUp")
@@ -694,6 +764,10 @@ class LoadBalancer(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LoadBalancerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

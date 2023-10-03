@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,14 +31,31 @@ class ConfigurationArgs:
         :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
                creates a new instance.
         """
-        pulumi.set(__self__, "datastore", datastore)
-        pulumi.set(__self__, "description", description)
+        ConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            datastore=datastore,
+            description=description,
+            configurations=configurations,
+            name=name,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             datastore: pulumi.Input['ConfigurationDatastoreArgs'],
+             description: pulumi.Input[str],
+             configurations: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("datastore", datastore)
+        _setter("description", description)
         if configurations is not None:
-            pulumi.set(__self__, "configurations", configurations)
+            _setter("configurations", configurations)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter
@@ -121,16 +138,33 @@ class _ConfigurationState:
         :param pulumi.Input[str] region: The region in which to create the db instance. Changing this
                creates a new instance.
         """
+        _ConfigurationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            configurations=configurations,
+            datastore=datastore,
+            description=description,
+            name=name,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             configurations: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]] = None,
+             datastore: Optional[pulumi.Input['ConfigurationDatastoreArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if configurations is not None:
-            pulumi.set(__self__, "configurations", configurations)
+            _setter("configurations", configurations)
         if datastore is not None:
-            pulumi.set(__self__, "datastore", datastore)
+            _setter("datastore", datastore)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter
@@ -236,6 +270,10 @@ class Configuration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConfigurationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -256,6 +294,11 @@ class Configuration(pulumi.CustomResource):
             __props__ = ConfigurationArgs.__new__(ConfigurationArgs)
 
             __props__.__dict__["configurations"] = configurations
+            if datastore is not None and not isinstance(datastore, ConfigurationDatastoreArgs):
+                datastore = datastore or {}
+                def _setter(key, value):
+                    datastore[key] = value
+                ConfigurationDatastoreArgs._configure(_setter, **datastore)
             if datastore is None and not opts.urn:
                 raise TypeError("Missing required property 'datastore'")
             __props__.__dict__["datastore"] = datastore

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -52,22 +52,45 @@ class ApplicationCredentialArgs:
                credential may be used for creation or destruction of other application
                credentials or trusts. Changing this creates a new application credential.
         """
+        ApplicationCredentialArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_rules=access_rules,
+            description=description,
+            expires_at=expires_at,
+            name=name,
+            region=region,
+            roles=roles,
+            secret=secret,
+            unrestricted=unrestricted,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCredentialAccessRuleArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             expires_at: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             secret: Optional[pulumi.Input[str]] = None,
+             unrestricted: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_rules is not None:
-            pulumi.set(__self__, "access_rules", access_rules)
+            _setter("access_rules", access_rules)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
+            _setter("expires_at", expires_at)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if roles is not None:
-            pulumi.set(__self__, "roles", roles)
+            _setter("roles", roles)
         if secret is not None:
-            pulumi.set(__self__, "secret", secret)
+            _setter("secret", secret)
         if unrestricted is not None:
-            pulumi.set(__self__, "unrestricted", unrestricted)
+            _setter("unrestricted", unrestricted)
 
     @property
     @pulumi.getter(name="accessRules")
@@ -226,24 +249,49 @@ class _ApplicationCredentialState:
                credential may be used for creation or destruction of other application
                credentials or trusts. Changing this creates a new application credential.
         """
+        _ApplicationCredentialState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_rules=access_rules,
+            description=description,
+            expires_at=expires_at,
+            name=name,
+            project_id=project_id,
+            region=region,
+            roles=roles,
+            secret=secret,
+            unrestricted=unrestricted,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCredentialAccessRuleArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             expires_at: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             secret: Optional[pulumi.Input[str]] = None,
+             unrestricted: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_rules is not None:
-            pulumi.set(__self__, "access_rules", access_rules)
+            _setter("access_rules", access_rules)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
+            _setter("expires_at", expires_at)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if roles is not None:
-            pulumi.set(__self__, "roles", roles)
+            _setter("roles", roles)
         if secret is not None:
-            pulumi.set(__self__, "secret", secret)
+            _setter("secret", secret)
         if unrestricted is not None:
-            pulumi.set(__self__, "unrestricted", unrestricted)
+            _setter("unrestricted", unrestricted)
 
     @property
     @pulumi.getter(name="accessRules")
@@ -585,6 +633,10 @@ class ApplicationCredential(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationCredentialArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

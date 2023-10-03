@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -22,10 +22,23 @@ class StackV1StackOutputArgs:
         """
         :param pulumi.Input[str] description: The description of the stack resource.
         """
-        pulumi.set(__self__, "output_key", output_key)
-        pulumi.set(__self__, "output_value", output_value)
+        StackV1StackOutputArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            output_key=output_key,
+            output_value=output_value,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             output_key: pulumi.Input[str],
+             output_value: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("output_key", output_key)
+        _setter("output_value", output_value)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="outputKey")

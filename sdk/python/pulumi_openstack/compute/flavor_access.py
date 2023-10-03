@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FlavorAccessArgs', 'FlavorAccess']
@@ -26,10 +26,23 @@ class FlavorAccessArgs:
                If omitted, the `region` argument of the provider is used.
                Changing this creates a new flavor access.
         """
-        pulumi.set(__self__, "flavor_id", flavor_id)
-        pulumi.set(__self__, "tenant_id", tenant_id)
+        FlavorAccessArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            flavor_id=flavor_id,
+            tenant_id=tenant_id,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             flavor_id: pulumi.Input[str],
+             tenant_id: pulumi.Input[str],
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("flavor_id", flavor_id)
+        _setter("tenant_id", tenant_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="flavorId")
@@ -86,12 +99,25 @@ class _FlavorAccessState:
         :param pulumi.Input[str] tenant_id: The UUID of tenant which is allowed to use the flavor.
                Changing this creates a new flavor access.
         """
+        _FlavorAccessState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            flavor_id=flavor_id,
+            region=region,
+            tenant_id=tenant_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             flavor_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if flavor_id is not None:
-            pulumi.set(__self__, "flavor_id", flavor_id)
+            _setter("flavor_id", flavor_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
 
     @property
     @pulumi.getter(name="flavorId")
@@ -233,6 +259,10 @@ class FlavorAccess(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FlavorAccessArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

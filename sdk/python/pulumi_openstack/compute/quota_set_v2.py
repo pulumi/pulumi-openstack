@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['QuotaSetV2Args', 'QuotaSetV2']
@@ -66,37 +66,76 @@ class QuotaSetV2Args:
         :param pulumi.Input[int] server_groups: Quota value for server groups.
                Changing this updates the existing quotaset.
         """
-        pulumi.set(__self__, "project_id", project_id)
+        QuotaSetV2Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project_id=project_id,
+            cores=cores,
+            fixed_ips=fixed_ips,
+            floating_ips=floating_ips,
+            injected_file_content_bytes=injected_file_content_bytes,
+            injected_file_path_bytes=injected_file_path_bytes,
+            injected_files=injected_files,
+            instances=instances,
+            key_pairs=key_pairs,
+            metadata_items=metadata_items,
+            ram=ram,
+            region=region,
+            security_group_rules=security_group_rules,
+            security_groups=security_groups,
+            server_group_members=server_group_members,
+            server_groups=server_groups,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project_id: pulumi.Input[str],
+             cores: Optional[pulumi.Input[int]] = None,
+             fixed_ips: Optional[pulumi.Input[int]] = None,
+             floating_ips: Optional[pulumi.Input[int]] = None,
+             injected_file_content_bytes: Optional[pulumi.Input[int]] = None,
+             injected_file_path_bytes: Optional[pulumi.Input[int]] = None,
+             injected_files: Optional[pulumi.Input[int]] = None,
+             instances: Optional[pulumi.Input[int]] = None,
+             key_pairs: Optional[pulumi.Input[int]] = None,
+             metadata_items: Optional[pulumi.Input[int]] = None,
+             ram: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             security_group_rules: Optional[pulumi.Input[int]] = None,
+             security_groups: Optional[pulumi.Input[int]] = None,
+             server_group_members: Optional[pulumi.Input[int]] = None,
+             server_groups: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project_id", project_id)
         if cores is not None:
-            pulumi.set(__self__, "cores", cores)
+            _setter("cores", cores)
         if fixed_ips is not None:
-            pulumi.set(__self__, "fixed_ips", fixed_ips)
+            _setter("fixed_ips", fixed_ips)
         if floating_ips is not None:
-            pulumi.set(__self__, "floating_ips", floating_ips)
+            _setter("floating_ips", floating_ips)
         if injected_file_content_bytes is not None:
-            pulumi.set(__self__, "injected_file_content_bytes", injected_file_content_bytes)
+            _setter("injected_file_content_bytes", injected_file_content_bytes)
         if injected_file_path_bytes is not None:
-            pulumi.set(__self__, "injected_file_path_bytes", injected_file_path_bytes)
+            _setter("injected_file_path_bytes", injected_file_path_bytes)
         if injected_files is not None:
-            pulumi.set(__self__, "injected_files", injected_files)
+            _setter("injected_files", injected_files)
         if instances is not None:
-            pulumi.set(__self__, "instances", instances)
+            _setter("instances", instances)
         if key_pairs is not None:
-            pulumi.set(__self__, "key_pairs", key_pairs)
+            _setter("key_pairs", key_pairs)
         if metadata_items is not None:
-            pulumi.set(__self__, "metadata_items", metadata_items)
+            _setter("metadata_items", metadata_items)
         if ram is not None:
-            pulumi.set(__self__, "ram", ram)
+            _setter("ram", ram)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if security_group_rules is not None:
-            pulumi.set(__self__, "security_group_rules", security_group_rules)
+            _setter("security_group_rules", security_group_rules)
         if security_groups is not None:
-            pulumi.set(__self__, "security_groups", security_groups)
+            _setter("security_groups", security_groups)
         if server_group_members is not None:
-            pulumi.set(__self__, "server_group_members", server_group_members)
+            _setter("server_group_members", server_group_members)
         if server_groups is not None:
-            pulumi.set(__self__, "server_groups", server_groups)
+            _setter("server_groups", server_groups)
 
     @property
     @pulumi.getter(name="projectId")
@@ -363,38 +402,77 @@ class _QuotaSetV2State:
         :param pulumi.Input[int] server_groups: Quota value for server groups.
                Changing this updates the existing quotaset.
         """
+        _QuotaSetV2State._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cores=cores,
+            fixed_ips=fixed_ips,
+            floating_ips=floating_ips,
+            injected_file_content_bytes=injected_file_content_bytes,
+            injected_file_path_bytes=injected_file_path_bytes,
+            injected_files=injected_files,
+            instances=instances,
+            key_pairs=key_pairs,
+            metadata_items=metadata_items,
+            project_id=project_id,
+            ram=ram,
+            region=region,
+            security_group_rules=security_group_rules,
+            security_groups=security_groups,
+            server_group_members=server_group_members,
+            server_groups=server_groups,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cores: Optional[pulumi.Input[int]] = None,
+             fixed_ips: Optional[pulumi.Input[int]] = None,
+             floating_ips: Optional[pulumi.Input[int]] = None,
+             injected_file_content_bytes: Optional[pulumi.Input[int]] = None,
+             injected_file_path_bytes: Optional[pulumi.Input[int]] = None,
+             injected_files: Optional[pulumi.Input[int]] = None,
+             instances: Optional[pulumi.Input[int]] = None,
+             key_pairs: Optional[pulumi.Input[int]] = None,
+             metadata_items: Optional[pulumi.Input[int]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             ram: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             security_group_rules: Optional[pulumi.Input[int]] = None,
+             security_groups: Optional[pulumi.Input[int]] = None,
+             server_group_members: Optional[pulumi.Input[int]] = None,
+             server_groups: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cores is not None:
-            pulumi.set(__self__, "cores", cores)
+            _setter("cores", cores)
         if fixed_ips is not None:
-            pulumi.set(__self__, "fixed_ips", fixed_ips)
+            _setter("fixed_ips", fixed_ips)
         if floating_ips is not None:
-            pulumi.set(__self__, "floating_ips", floating_ips)
+            _setter("floating_ips", floating_ips)
         if injected_file_content_bytes is not None:
-            pulumi.set(__self__, "injected_file_content_bytes", injected_file_content_bytes)
+            _setter("injected_file_content_bytes", injected_file_content_bytes)
         if injected_file_path_bytes is not None:
-            pulumi.set(__self__, "injected_file_path_bytes", injected_file_path_bytes)
+            _setter("injected_file_path_bytes", injected_file_path_bytes)
         if injected_files is not None:
-            pulumi.set(__self__, "injected_files", injected_files)
+            _setter("injected_files", injected_files)
         if instances is not None:
-            pulumi.set(__self__, "instances", instances)
+            _setter("instances", instances)
         if key_pairs is not None:
-            pulumi.set(__self__, "key_pairs", key_pairs)
+            _setter("key_pairs", key_pairs)
         if metadata_items is not None:
-            pulumi.set(__self__, "metadata_items", metadata_items)
+            _setter("metadata_items", metadata_items)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if ram is not None:
-            pulumi.set(__self__, "ram", ram)
+            _setter("ram", ram)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if security_group_rules is not None:
-            pulumi.set(__self__, "security_group_rules", security_group_rules)
+            _setter("security_group_rules", security_group_rules)
         if security_groups is not None:
-            pulumi.set(__self__, "security_groups", security_groups)
+            _setter("security_groups", security_groups)
         if server_group_members is not None:
-            pulumi.set(__self__, "server_group_members", server_group_members)
+            _setter("server_group_members", server_group_members)
         if server_groups is not None:
-            pulumi.set(__self__, "server_groups", server_groups)
+            _setter("server_groups", server_groups)
 
     @property
     @pulumi.getter
@@ -752,6 +830,10 @@ class QuotaSetV2(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            QuotaSetV2Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

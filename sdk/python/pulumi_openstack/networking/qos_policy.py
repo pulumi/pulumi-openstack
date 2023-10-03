@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['QosPolicyArgs', 'QosPolicy']
@@ -43,22 +43,45 @@ class QosPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the QoS policy.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
+        QosPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            is_default=is_default,
+            name=name,
+            project_id=project_id,
+            region=region,
+            shared=shared,
+            tags=tags,
+            value_specs=value_specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             is_default: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             shared: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if is_default is not None:
-            pulumi.set(__self__, "is_default", is_default)
+            _setter("is_default", is_default)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if shared is not None:
-            pulumi.set(__self__, "shared", shared)
+            _setter("shared", shared)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
 
     @property
     @pulumi.getter
@@ -208,30 +231,61 @@ class _QosPolicyState:
         :param pulumi.Input[str] updated_at: The time at which QoS policy was created.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
+        _QosPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all_tags=all_tags,
+            created_at=created_at,
+            description=description,
+            is_default=is_default,
+            name=name,
+            project_id=project_id,
+            region=region,
+            revision_number=revision_number,
+            shared=shared,
+            tags=tags,
+            updated_at=updated_at,
+            value_specs=value_specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             is_default: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             revision_number: Optional[pulumi.Input[int]] = None,
+             shared: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if all_tags is not None:
-            pulumi.set(__self__, "all_tags", all_tags)
+            _setter("all_tags", all_tags)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if is_default is not None:
-            pulumi.set(__self__, "is_default", is_default)
+            _setter("is_default", is_default)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if revision_number is not None:
-            pulumi.set(__self__, "revision_number", revision_number)
+            _setter("revision_number", revision_number)
         if shared is not None:
-            pulumi.set(__self__, "shared", shared)
+            _setter("shared", shared)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
 
     @property
     @pulumi.getter(name="allTags")
@@ -482,6 +536,10 @@ class QosPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            QosPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

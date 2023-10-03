@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InterfaceAttachArgs', 'InterfaceAttach']
@@ -32,15 +32,32 @@ class InterfaceAttachArgs:
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new attachment.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
+        InterfaceAttachArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            fixed_ip=fixed_ip,
+            network_id=network_id,
+            port_id=port_id,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: pulumi.Input[str],
+             fixed_ip: Optional[pulumi.Input[str]] = None,
+             network_id: Optional[pulumi.Input[str]] = None,
+             port_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_id", instance_id)
         if fixed_ip is not None:
-            pulumi.set(__self__, "fixed_ip", fixed_ip)
+            _setter("fixed_ip", fixed_ip)
         if network_id is not None:
-            pulumi.set(__self__, "network_id", network_id)
+            _setter("network_id", network_id)
         if port_id is not None:
-            pulumi.set(__self__, "port_id", port_id)
+            _setter("port_id", port_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -129,16 +146,33 @@ class _InterfaceAttachState:
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new attachment.
         """
+        _InterfaceAttachState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fixed_ip=fixed_ip,
+            instance_id=instance_id,
+            network_id=network_id,
+            port_id=port_id,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fixed_ip: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             network_id: Optional[pulumi.Input[str]] = None,
+             port_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if fixed_ip is not None:
-            pulumi.set(__self__, "fixed_ip", fixed_ip)
+            _setter("fixed_ip", fixed_ip)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if network_id is not None:
-            pulumi.set(__self__, "network_id", network_id)
+            _setter("network_id", network_id)
         if port_id is not None:
-            pulumi.set(__self__, "port_id", port_id)
+            _setter("port_id", port_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="fixedIp")
@@ -354,6 +388,10 @@ class InterfaceAttach(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InterfaceAttachArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
