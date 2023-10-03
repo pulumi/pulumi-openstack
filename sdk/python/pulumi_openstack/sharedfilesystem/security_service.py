@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SecurityServiceArgs', 'SecurityService']
@@ -46,25 +46,52 @@ class SecurityServiceArgs:
         :param pulumi.Input[str] user: The security service user or group name that is used by the
                tenant.
         """
-        pulumi.set(__self__, "type", type)
+        SecurityServiceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            description=description,
+            dns_ip=dns_ip,
+            domain=domain,
+            name=name,
+            ou=ou,
+            password=password,
+            region=region,
+            server=server,
+            user=user,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             dns_ip: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             ou: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             server: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dns_ip is not None:
-            pulumi.set(__self__, "dns_ip", dns_ip)
+            _setter("dns_ip", dns_ip)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if ou is not None:
-            pulumi.set(__self__, "ou", ou)
+            _setter("ou", ou)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if server is not None:
-            pulumi.set(__self__, "server", server)
+            _setter("server", server)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
 
     @property
     @pulumi.getter
@@ -233,28 +260,57 @@ class _SecurityServiceState:
         :param pulumi.Input[str] user: The security service user or group name that is used by the
                tenant.
         """
+        _SecurityServiceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            dns_ip=dns_ip,
+            domain=domain,
+            name=name,
+            ou=ou,
+            password=password,
+            project_id=project_id,
+            region=region,
+            server=server,
+            type=type,
+            user=user,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             dns_ip: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             ou: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             server: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             user: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dns_ip is not None:
-            pulumi.set(__self__, "dns_ip", dns_ip)
+            _setter("dns_ip", dns_ip)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if ou is not None:
-            pulumi.set(__self__, "ou", ou)
+            _setter("ou", ou)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if server is not None:
-            pulumi.set(__self__, "server", server)
+            _setter("server", server)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if user is not None:
-            pulumi.set(__self__, "user", user)
+            _setter("user", user)
 
     @property
     @pulumi.getter
@@ -530,6 +586,10 @@ class SecurityService(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SecurityServiceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

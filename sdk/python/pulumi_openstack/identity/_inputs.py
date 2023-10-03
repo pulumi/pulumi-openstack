@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -37,11 +37,26 @@ class ApplicationCredentialAccessRuleArgs:
         :param pulumi.Input[str] id: The ID of the existing access rule. The access rule ID of
                another application credential can be provided.
         """
-        pulumi.set(__self__, "method", method)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "service", service)
+        ApplicationCredentialAccessRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            method=method,
+            path=path,
+            service=service,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             method: pulumi.Input[str],
+             path: pulumi.Input[str],
+             service: pulumi.Input[str],
+             id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("method", method)
+        _setter("path", path)
+        _setter("service", service)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
 
     @property
     @pulumi.getter
@@ -110,7 +125,16 @@ class UserMultiFactorAuthRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rules: A list of authentication plugins that the user must
                authenticate with.
         """
-        pulumi.set(__self__, "rules", rules)
+        UserMultiFactorAuthRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            rules=rules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             rules: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("rules", rules)
 
     @property
     @pulumi.getter

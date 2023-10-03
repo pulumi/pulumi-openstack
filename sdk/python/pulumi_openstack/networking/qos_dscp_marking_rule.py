@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['QosDscpMarkingRuleArgs', 'QosDscpMarkingRule']
@@ -26,10 +26,23 @@ class QosDscpMarkingRuleArgs:
                A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
                `region` argument of the provider is used. Changing this creates a new QoS DSCP marking rule.
         """
-        pulumi.set(__self__, "dscp_mark", dscp_mark)
-        pulumi.set(__self__, "qos_policy_id", qos_policy_id)
+        QosDscpMarkingRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dscp_mark=dscp_mark,
+            qos_policy_id=qos_policy_id,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dscp_mark: pulumi.Input[int],
+             qos_policy_id: pulumi.Input[str],
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dscp_mark", dscp_mark)
+        _setter("qos_policy_id", qos_policy_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="dscpMark")
@@ -86,12 +99,25 @@ class _QosDscpMarkingRuleState:
                A Networking client is needed to create a Neutron QoS DSCP marking rule. If omitted, the
                `region` argument of the provider is used. Changing this creates a new QoS DSCP marking rule.
         """
+        _QosDscpMarkingRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dscp_mark=dscp_mark,
+            qos_policy_id=qos_policy_id,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dscp_mark: Optional[pulumi.Input[int]] = None,
+             qos_policy_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dscp_mark is not None:
-            pulumi.set(__self__, "dscp_mark", dscp_mark)
+            _setter("dscp_mark", dscp_mark)
         if qos_policy_id is not None:
-            pulumi.set(__self__, "qos_policy_id", qos_policy_id)
+            _setter("qos_policy_id", qos_policy_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="dscpMark")
@@ -215,6 +241,10 @@ class QosDscpMarkingRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            QosDscpMarkingRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

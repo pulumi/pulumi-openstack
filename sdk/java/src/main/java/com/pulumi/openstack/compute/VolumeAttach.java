@@ -138,21 +138,9 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="openstack:compute/volumeAttach:VolumeAttach")
 public class VolumeAttach extends com.pulumi.resources.CustomResource {
-    /**
-     * See Argument Reference above. _NOTE_: The correctness of this
-     * information is dependent upon the hypervisor in use. In some cases, this
-     * should not be used as an authoritative piece of information.
-     * 
-     */
     @Export(name="device", refs={String.class}, tree="[0]")
     private Output<String> device;
 
-    /**
-     * @return See Argument Reference above. _NOTE_: The correctness of this
-     * information is dependent upon the hypervisor in use. In some cases, this
-     * should not be used as an authoritative piece of information.
-     * 
-     */
     public Output<String> device() {
         return this.device;
     }

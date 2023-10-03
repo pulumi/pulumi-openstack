@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ImageArgs', 'Image']
@@ -83,44 +83,91 @@ class ImageArgs:
                be used to let Openstack download the image directly from the remote source.
                Conflicts with `local_file_path`. Defaults to false.
         """
-        pulumi.set(__self__, "container_format", container_format)
-        pulumi.set(__self__, "disk_format", disk_format)
+        ImageArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            container_format=container_format,
+            disk_format=disk_format,
+            decompress=decompress,
+            hidden=hidden,
+            image_cache_path=image_cache_path,
+            image_id=image_id,
+            image_source_password=image_source_password,
+            image_source_url=image_source_url,
+            image_source_username=image_source_username,
+            local_file_path=local_file_path,
+            min_disk_gb=min_disk_gb,
+            min_ram_mb=min_ram_mb,
+            name=name,
+            properties=properties,
+            protected=protected,
+            region=region,
+            tags=tags,
+            verify_checksum=verify_checksum,
+            visibility=visibility,
+            web_download=web_download,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             container_format: pulumi.Input[str],
+             disk_format: pulumi.Input[str],
+             decompress: Optional[pulumi.Input[bool]] = None,
+             hidden: Optional[pulumi.Input[bool]] = None,
+             image_cache_path: Optional[pulumi.Input[str]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             image_source_password: Optional[pulumi.Input[str]] = None,
+             image_source_url: Optional[pulumi.Input[str]] = None,
+             image_source_username: Optional[pulumi.Input[str]] = None,
+             local_file_path: Optional[pulumi.Input[str]] = None,
+             min_disk_gb: Optional[pulumi.Input[int]] = None,
+             min_ram_mb: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             protected: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             verify_checksum: Optional[pulumi.Input[bool]] = None,
+             visibility: Optional[pulumi.Input[str]] = None,
+             web_download: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("container_format", container_format)
+        _setter("disk_format", disk_format)
         if decompress is not None:
-            pulumi.set(__self__, "decompress", decompress)
+            _setter("decompress", decompress)
         if hidden is not None:
-            pulumi.set(__self__, "hidden", hidden)
+            _setter("hidden", hidden)
         if image_cache_path is not None:
-            pulumi.set(__self__, "image_cache_path", image_cache_path)
+            _setter("image_cache_path", image_cache_path)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if image_source_password is not None:
-            pulumi.set(__self__, "image_source_password", image_source_password)
+            _setter("image_source_password", image_source_password)
         if image_source_url is not None:
-            pulumi.set(__self__, "image_source_url", image_source_url)
+            _setter("image_source_url", image_source_url)
         if image_source_username is not None:
-            pulumi.set(__self__, "image_source_username", image_source_username)
+            _setter("image_source_username", image_source_username)
         if local_file_path is not None:
-            pulumi.set(__self__, "local_file_path", local_file_path)
+            _setter("local_file_path", local_file_path)
         if min_disk_gb is not None:
-            pulumi.set(__self__, "min_disk_gb", min_disk_gb)
+            _setter("min_disk_gb", min_disk_gb)
         if min_ram_mb is not None:
-            pulumi.set(__self__, "min_ram_mb", min_ram_mb)
+            _setter("min_ram_mb", min_ram_mb)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if properties is not None:
-            pulumi.set(__self__, "properties", properties)
+            _setter("properties", properties)
         if protected is not None:
-            pulumi.set(__self__, "protected", protected)
+            _setter("protected", protected)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if verify_checksum is not None:
-            pulumi.set(__self__, "verify_checksum", verify_checksum)
+            _setter("verify_checksum", verify_checksum)
         if visibility is not None:
-            pulumi.set(__self__, "visibility", visibility)
+            _setter("visibility", visibility)
         if web_download is not None:
-            pulumi.set(__self__, "web_download", web_download)
+            _setter("web_download", web_download)
 
     @property
     @pulumi.getter(name="containerFormat")
@@ -485,69 +532,136 @@ class _ImageState:
                be used to let Openstack download the image directly from the remote source.
                Conflicts with `local_file_path`. Defaults to false.
         """
+        _ImageState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            checksum=checksum,
+            container_format=container_format,
+            created_at=created_at,
+            decompress=decompress,
+            disk_format=disk_format,
+            file=file,
+            hidden=hidden,
+            image_cache_path=image_cache_path,
+            image_id=image_id,
+            image_source_password=image_source_password,
+            image_source_url=image_source_url,
+            image_source_username=image_source_username,
+            local_file_path=local_file_path,
+            metadata=metadata,
+            min_disk_gb=min_disk_gb,
+            min_ram_mb=min_ram_mb,
+            name=name,
+            owner=owner,
+            properties=properties,
+            protected=protected,
+            region=region,
+            schema=schema,
+            size_bytes=size_bytes,
+            status=status,
+            tags=tags,
+            update_at=update_at,
+            updated_at=updated_at,
+            verify_checksum=verify_checksum,
+            visibility=visibility,
+            web_download=web_download,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             checksum: Optional[pulumi.Input[str]] = None,
+             container_format: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             decompress: Optional[pulumi.Input[bool]] = None,
+             disk_format: Optional[pulumi.Input[str]] = None,
+             file: Optional[pulumi.Input[str]] = None,
+             hidden: Optional[pulumi.Input[bool]] = None,
+             image_cache_path: Optional[pulumi.Input[str]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             image_source_password: Optional[pulumi.Input[str]] = None,
+             image_source_url: Optional[pulumi.Input[str]] = None,
+             image_source_username: Optional[pulumi.Input[str]] = None,
+             local_file_path: Optional[pulumi.Input[str]] = None,
+             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             min_disk_gb: Optional[pulumi.Input[int]] = None,
+             min_ram_mb: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             owner: Optional[pulumi.Input[str]] = None,
+             properties: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             protected: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             schema: Optional[pulumi.Input[str]] = None,
+             size_bytes: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             update_at: Optional[pulumi.Input[str]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             verify_checksum: Optional[pulumi.Input[bool]] = None,
+             visibility: Optional[pulumi.Input[str]] = None,
+             web_download: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if checksum is not None:
-            pulumi.set(__self__, "checksum", checksum)
+            _setter("checksum", checksum)
         if container_format is not None:
-            pulumi.set(__self__, "container_format", container_format)
+            _setter("container_format", container_format)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if decompress is not None:
-            pulumi.set(__self__, "decompress", decompress)
+            _setter("decompress", decompress)
         if disk_format is not None:
-            pulumi.set(__self__, "disk_format", disk_format)
+            _setter("disk_format", disk_format)
         if file is not None:
-            pulumi.set(__self__, "file", file)
+            _setter("file", file)
         if hidden is not None:
-            pulumi.set(__self__, "hidden", hidden)
+            _setter("hidden", hidden)
         if image_cache_path is not None:
-            pulumi.set(__self__, "image_cache_path", image_cache_path)
+            _setter("image_cache_path", image_cache_path)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if image_source_password is not None:
-            pulumi.set(__self__, "image_source_password", image_source_password)
+            _setter("image_source_password", image_source_password)
         if image_source_url is not None:
-            pulumi.set(__self__, "image_source_url", image_source_url)
+            _setter("image_source_url", image_source_url)
         if image_source_username is not None:
-            pulumi.set(__self__, "image_source_username", image_source_username)
+            _setter("image_source_username", image_source_username)
         if local_file_path is not None:
-            pulumi.set(__self__, "local_file_path", local_file_path)
+            _setter("local_file_path", local_file_path)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if min_disk_gb is not None:
-            pulumi.set(__self__, "min_disk_gb", min_disk_gb)
+            _setter("min_disk_gb", min_disk_gb)
         if min_ram_mb is not None:
-            pulumi.set(__self__, "min_ram_mb", min_ram_mb)
+            _setter("min_ram_mb", min_ram_mb)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if owner is not None:
-            pulumi.set(__self__, "owner", owner)
+            _setter("owner", owner)
         if properties is not None:
-            pulumi.set(__self__, "properties", properties)
+            _setter("properties", properties)
         if protected is not None:
-            pulumi.set(__self__, "protected", protected)
+            _setter("protected", protected)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if schema is not None:
-            pulumi.set(__self__, "schema", schema)
+            _setter("schema", schema)
         if size_bytes is not None:
-            pulumi.set(__self__, "size_bytes", size_bytes)
+            _setter("size_bytes", size_bytes)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if update_at is not None:
             warnings.warn("""Use updated_at instead""", DeprecationWarning)
             pulumi.log.warn("""update_at is deprecated: Use updated_at instead""")
         if update_at is not None:
-            pulumi.set(__self__, "update_at", update_at)
+            _setter("update_at", update_at)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
         if verify_checksum is not None:
-            pulumi.set(__self__, "verify_checksum", verify_checksum)
+            _setter("verify_checksum", verify_checksum)
         if visibility is not None:
-            pulumi.set(__self__, "visibility", visibility)
+            _setter("visibility", visibility)
         if web_download is not None:
-            pulumi.set(__self__, "web_download", web_download)
+            _setter("web_download", web_download)
 
     @property
     @pulumi.getter
@@ -1124,6 +1238,10 @@ class Image(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ImageArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['QuotaArgs', 'Quota']
@@ -46,23 +46,48 @@ class QuotaArgs:
         :param pulumi.Input[str] region: Region in which to manage quotas. Changing this
                creates a new quota. If ommited, the region of the credentials is used.
         """
-        pulumi.set(__self__, "project_id", project_id)
+        QuotaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project_id=project_id,
+            health_monitor=health_monitor,
+            l7_policy=l7_policy,
+            l7_rule=l7_rule,
+            listener=listener,
+            loadbalancer=loadbalancer,
+            member=member,
+            pool=pool,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project_id: pulumi.Input[str],
+             health_monitor: Optional[pulumi.Input[int]] = None,
+             l7_policy: Optional[pulumi.Input[int]] = None,
+             l7_rule: Optional[pulumi.Input[int]] = None,
+             listener: Optional[pulumi.Input[int]] = None,
+             loadbalancer: Optional[pulumi.Input[int]] = None,
+             member: Optional[pulumi.Input[int]] = None,
+             pool: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project_id", project_id)
         if health_monitor is not None:
-            pulumi.set(__self__, "health_monitor", health_monitor)
+            _setter("health_monitor", health_monitor)
         if l7_policy is not None:
-            pulumi.set(__self__, "l7_policy", l7_policy)
+            _setter("l7_policy", l7_policy)
         if l7_rule is not None:
-            pulumi.set(__self__, "l7_rule", l7_rule)
+            _setter("l7_rule", l7_rule)
         if listener is not None:
-            pulumi.set(__self__, "listener", listener)
+            _setter("listener", listener)
         if loadbalancer is not None:
-            pulumi.set(__self__, "loadbalancer", loadbalancer)
+            _setter("loadbalancer", loadbalancer)
         if member is not None:
-            pulumi.set(__self__, "member", member)
+            _setter("member", member)
         if pool is not None:
-            pulumi.set(__self__, "pool", pool)
+            _setter("pool", pool)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="projectId")
@@ -219,24 +244,49 @@ class _QuotaState:
         :param pulumi.Input[str] region: Region in which to manage quotas. Changing this
                creates a new quota. If ommited, the region of the credentials is used.
         """
+        _QuotaState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            health_monitor=health_monitor,
+            l7_policy=l7_policy,
+            l7_rule=l7_rule,
+            listener=listener,
+            loadbalancer=loadbalancer,
+            member=member,
+            pool=pool,
+            project_id=project_id,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             health_monitor: Optional[pulumi.Input[int]] = None,
+             l7_policy: Optional[pulumi.Input[int]] = None,
+             l7_rule: Optional[pulumi.Input[int]] = None,
+             listener: Optional[pulumi.Input[int]] = None,
+             loadbalancer: Optional[pulumi.Input[int]] = None,
+             member: Optional[pulumi.Input[int]] = None,
+             pool: Optional[pulumi.Input[int]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if health_monitor is not None:
-            pulumi.set(__self__, "health_monitor", health_monitor)
+            _setter("health_monitor", health_monitor)
         if l7_policy is not None:
-            pulumi.set(__self__, "l7_policy", l7_policy)
+            _setter("l7_policy", l7_policy)
         if l7_rule is not None:
-            pulumi.set(__self__, "l7_rule", l7_rule)
+            _setter("l7_rule", l7_rule)
         if listener is not None:
-            pulumi.set(__self__, "listener", listener)
+            _setter("listener", listener)
         if loadbalancer is not None:
-            pulumi.set(__self__, "loadbalancer", loadbalancer)
+            _setter("loadbalancer", loadbalancer)
         if member is not None:
-            pulumi.set(__self__, "member", member)
+            _setter("member", member)
         if pool is not None:
-            pulumi.set(__self__, "pool", pool)
+            _setter("pool", pool)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="healthMonitor")
@@ -496,6 +546,10 @@ class Quota(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            QuotaArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

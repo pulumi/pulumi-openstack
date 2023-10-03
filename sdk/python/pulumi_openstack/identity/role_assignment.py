@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RoleAssignmentArgs', 'RoleAssignment']
@@ -28,17 +28,36 @@ class RoleAssignmentArgs:
         :param pulumi.Input[str] project_id: The project to assign the role in.
         :param pulumi.Input[str] user_id: The user to assign the role to.
         """
-        pulumi.set(__self__, "role_id", role_id)
+        RoleAssignmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            role_id=role_id,
+            domain_id=domain_id,
+            group_id=group_id,
+            project_id=project_id,
+            region=region,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             role_id: pulumi.Input[str],
+             domain_id: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("role_id", role_id)
         if domain_id is not None:
-            pulumi.set(__self__, "domain_id", domain_id)
+            _setter("domain_id", domain_id)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="roleId")
@@ -127,18 +146,37 @@ class _RoleAssignmentState:
         :param pulumi.Input[str] role_id: The role to assign.
         :param pulumi.Input[str] user_id: The user to assign the role to.
         """
+        _RoleAssignmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_id=domain_id,
+            group_id=group_id,
+            project_id=project_id,
+            region=region,
+            role_id=role_id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_id: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if domain_id is not None:
-            pulumi.set(__self__, "domain_id", domain_id)
+            _setter("domain_id", domain_id)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role_id is not None:
-            pulumi.set(__self__, "role_id", role_id)
+            _setter("role_id", role_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="domainId")
@@ -308,6 +346,10 @@ class RoleAssignment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RoleAssignmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

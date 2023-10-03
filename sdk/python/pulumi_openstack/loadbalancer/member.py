@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['MemberArgs', 'Member']
@@ -56,27 +56,58 @@ class MemberArgs:
                example, a member with a weight of 10 receives five times as much traffic
                as a member with a weight of 2. Defaults to 1.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "pool_id", pool_id)
-        pulumi.set(__self__, "protocol_port", protocol_port)
+        MemberArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            pool_id=pool_id,
+            protocol_port=protocol_port,
+            admin_state_up=admin_state_up,
+            backup=backup,
+            monitor_address=monitor_address,
+            monitor_port=monitor_port,
+            name=name,
+            region=region,
+            subnet_id=subnet_id,
+            tenant_id=tenant_id,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: pulumi.Input[str],
+             pool_id: pulumi.Input[str],
+             protocol_port: pulumi.Input[int],
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             backup: Optional[pulumi.Input[bool]] = None,
+             monitor_address: Optional[pulumi.Input[str]] = None,
+             monitor_port: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             subnet_id: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("pool_id", pool_id)
+        _setter("protocol_port", protocol_port)
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if backup is not None:
-            pulumi.set(__self__, "backup", backup)
+            _setter("backup", backup)
         if monitor_address is not None:
-            pulumi.set(__self__, "monitor_address", monitor_address)
+            _setter("monitor_address", monitor_address)
         if monitor_port is not None:
-            pulumi.set(__self__, "monitor_port", monitor_port)
+            _setter("monitor_port", monitor_port)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if subnet_id is not None:
-            pulumi.set(__self__, "subnet_id", subnet_id)
+            _setter("subnet_id", subnet_id)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter
@@ -283,30 +314,61 @@ class _MemberState:
                example, a member with a weight of 10 receives five times as much traffic
                as a member with a weight of 2. Defaults to 1.
         """
+        _MemberState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            admin_state_up=admin_state_up,
+            backup=backup,
+            monitor_address=monitor_address,
+            monitor_port=monitor_port,
+            name=name,
+            pool_id=pool_id,
+            protocol_port=protocol_port,
+            region=region,
+            subnet_id=subnet_id,
+            tenant_id=tenant_id,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             backup: Optional[pulumi.Input[bool]] = None,
+             monitor_address: Optional[pulumi.Input[str]] = None,
+             monitor_port: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             pool_id: Optional[pulumi.Input[str]] = None,
+             protocol_port: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             subnet_id: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if backup is not None:
-            pulumi.set(__self__, "backup", backup)
+            _setter("backup", backup)
         if monitor_address is not None:
-            pulumi.set(__self__, "monitor_address", monitor_address)
+            _setter("monitor_address", monitor_address)
         if monitor_port is not None:
-            pulumi.set(__self__, "monitor_port", monitor_port)
+            _setter("monitor_port", monitor_port)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if pool_id is not None:
-            pulumi.set(__self__, "pool_id", pool_id)
+            _setter("pool_id", pool_id)
         if protocol_port is not None:
-            pulumi.set(__self__, "protocol_port", protocol_port)
+            _setter("protocol_port", protocol_port)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if subnet_id is not None:
-            pulumi.set(__self__, "subnet_id", subnet_id)
+            _setter("subnet_id", subnet_id)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter
@@ -578,6 +640,10 @@ class Member(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

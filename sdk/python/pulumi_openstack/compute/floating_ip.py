@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FloatingIpArgs', 'FloatingIp']
@@ -26,9 +26,20 @@ class FloatingIpArgs:
                is used. Changing this creates a new floating IP (which may or may not
                have a different address).
         """
-        pulumi.set(__self__, "pool", pool)
+        FloatingIpArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pool=pool,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pool: pulumi.Input[str],
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("pool", pool)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter
@@ -81,16 +92,33 @@ class _FloatingIpState:
                is used. Changing this creates a new floating IP (which may or may not
                have a different address).
         """
+        _FloatingIpState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            fixed_ip=fixed_ip,
+            instance_id=instance_id,
+            pool=pool,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             fixed_ip: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             pool: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if fixed_ip is not None:
-            pulumi.set(__self__, "fixed_ip", fixed_ip)
+            _setter("fixed_ip", fixed_ip)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if pool is not None:
-            pulumi.set(__self__, "pool", pool)
+            _setter("pool", pool)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter
@@ -244,6 +272,10 @@ class FloatingIp(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FloatingIpArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

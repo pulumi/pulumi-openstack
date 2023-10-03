@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -40,12 +40,25 @@ class VolumeAttachment(dict):
                  device: Optional[str] = None,
                  id: Optional[str] = None,
                  instance_id: Optional[str] = None):
+        VolumeAttachment._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            device=device,
+            id=id,
+            instance_id=instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             device: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
 
     @property
     @pulumi.getter
@@ -110,16 +123,33 @@ class VolumeSchedulerHint(dict):
         :param Sequence[str] same_hosts: A list of volume UUIDs. The volume should be
                scheduled on the same host as another volume specified in the list provided.
         """
+        VolumeSchedulerHint._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            additional_properties=additional_properties,
+            different_hosts=different_hosts,
+            local_to_instance=local_to_instance,
+            query=query,
+            same_hosts=same_hosts,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             additional_properties: Optional[Mapping[str, Any]] = None,
+             different_hosts: Optional[Sequence[str]] = None,
+             local_to_instance: Optional[str] = None,
+             query: Optional[str] = None,
+             same_hosts: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if additional_properties is not None:
-            pulumi.set(__self__, "additional_properties", additional_properties)
+            _setter("additional_properties", additional_properties)
         if different_hosts is not None:
-            pulumi.set(__self__, "different_hosts", different_hosts)
+            _setter("different_hosts", different_hosts)
         if local_to_instance is not None:
-            pulumi.set(__self__, "local_to_instance", local_to_instance)
+            _setter("local_to_instance", local_to_instance)
         if query is not None:
-            pulumi.set(__self__, "query", query)
+            _setter("query", query)
         if same_hosts is not None:
-            pulumi.set(__self__, "same_hosts", same_hosts)
+            _setter("same_hosts", same_hosts)
 
     @property
     @pulumi.getter(name="additionalProperties")
@@ -194,12 +224,25 @@ class VolumeV1Attachment(dict):
                  device: Optional[str] = None,
                  id: Optional[str] = None,
                  instance_id: Optional[str] = None):
+        VolumeV1Attachment._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            device=device,
+            id=id,
+            instance_id=instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             device: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
 
     @property
     @pulumi.getter
@@ -240,12 +283,25 @@ class VolumeV2Attachment(dict):
                  device: Optional[str] = None,
                  id: Optional[str] = None,
                  instance_id: Optional[str] = None):
+        VolumeV2Attachment._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            device=device,
+            id=id,
+            instance_id=instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             device: Optional[str] = None,
+             id: Optional[str] = None,
+             instance_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
 
     @property
     @pulumi.getter
@@ -310,16 +366,33 @@ class VolumeV2SchedulerHint(dict):
         :param Sequence[str] same_hosts: A list of volume UUIDs. The volume should be
                scheduled on the same host as another volume specified in the list provided.
         """
+        VolumeV2SchedulerHint._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            additional_properties=additional_properties,
+            different_hosts=different_hosts,
+            local_to_instance=local_to_instance,
+            query=query,
+            same_hosts=same_hosts,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             additional_properties: Optional[Mapping[str, Any]] = None,
+             different_hosts: Optional[Sequence[str]] = None,
+             local_to_instance: Optional[str] = None,
+             query: Optional[str] = None,
+             same_hosts: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if additional_properties is not None:
-            pulumi.set(__self__, "additional_properties", additional_properties)
+            _setter("additional_properties", additional_properties)
         if different_hosts is not None:
-            pulumi.set(__self__, "different_hosts", different_hosts)
+            _setter("different_hosts", different_hosts)
         if local_to_instance is not None:
-            pulumi.set(__self__, "local_to_instance", local_to_instance)
+            _setter("local_to_instance", local_to_instance)
         if query is not None:
-            pulumi.set(__self__, "query", query)
+            _setter("query", query)
         if same_hosts is not None:
-            pulumi.set(__self__, "same_hosts", same_hosts)
+            _setter("same_hosts", same_hosts)
 
     @property
     @pulumi.getter(name="additionalProperties")

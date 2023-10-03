@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['KeypairArgs', 'Keypair']
@@ -37,16 +37,33 @@ class KeypairArgs:
                2.10 (Liberty) or later.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
+        KeypairArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            public_key=public_key,
+            region=region,
+            user_id=user_id,
+            value_specs=value_specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             public_key: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if public_key is not None:
-            pulumi.set(__self__, "public_key", public_key)
+            _setter("public_key", public_key)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
 
     @property
     @pulumi.getter
@@ -149,20 +166,41 @@ class _KeypairState:
                2.10 (Liberty) or later.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
+        _KeypairState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fingerprint=fingerprint,
+            name=name,
+            private_key=private_key,
+            public_key=public_key,
+            region=region,
+            user_id=user_id,
+            value_specs=value_specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fingerprint: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
+             public_key: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
+            _setter("fingerprint", fingerprint)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if public_key is not None:
-            pulumi.set(__self__, "public_key", public_key)
+            _setter("public_key", public_key)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
 
     @property
     @pulumi.getter
@@ -358,6 +396,10 @@ class Keypair(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            KeypairArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

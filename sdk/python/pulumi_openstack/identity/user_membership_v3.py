@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['UserMembershipV3Args', 'UserMembershipV3']
@@ -26,10 +26,23 @@ class UserMembershipV3Args:
                If omitted, the `region` argument of the provider is used.
                Changing this creates a new user membership.
         """
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "user_id", user_id)
+        UserMembershipV3Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            user_id=user_id,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: pulumi.Input[str],
+             user_id: pulumi.Input[str],
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_id", group_id)
+        _setter("user_id", user_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="groupId")
@@ -86,12 +99,25 @@ class _UserMembershipV3State:
                Changing this creates a new user membership.
         :param pulumi.Input[str] user_id: The UUID of user to use. Changing this creates a new user membership.
         """
+        _UserMembershipV3State._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            region=region,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="groupId")
@@ -237,6 +263,10 @@ class UserMembershipV3(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserMembershipV3Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

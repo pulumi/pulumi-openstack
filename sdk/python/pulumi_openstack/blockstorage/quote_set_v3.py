@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['QuoteSetV3Args', 'QuoteSetV3']
@@ -49,25 +49,52 @@ class QuoteSetV3Args:
         :param pulumi.Input[int] volumes: Quota value for volumes. Changing this updates the
                existing quotaset.
         """
-        pulumi.set(__self__, "project_id", project_id)
+        QuoteSetV3Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project_id=project_id,
+            backup_gigabytes=backup_gigabytes,
+            backups=backups,
+            gigabytes=gigabytes,
+            groups=groups,
+            per_volume_gigabytes=per_volume_gigabytes,
+            region=region,
+            snapshots=snapshots,
+            volume_type_quota=volume_type_quota,
+            volumes=volumes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project_id: pulumi.Input[str],
+             backup_gigabytes: Optional[pulumi.Input[int]] = None,
+             backups: Optional[pulumi.Input[int]] = None,
+             gigabytes: Optional[pulumi.Input[int]] = None,
+             groups: Optional[pulumi.Input[int]] = None,
+             per_volume_gigabytes: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             snapshots: Optional[pulumi.Input[int]] = None,
+             volume_type_quota: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             volumes: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project_id", project_id)
         if backup_gigabytes is not None:
-            pulumi.set(__self__, "backup_gigabytes", backup_gigabytes)
+            _setter("backup_gigabytes", backup_gigabytes)
         if backups is not None:
-            pulumi.set(__self__, "backups", backups)
+            _setter("backups", backups)
         if gigabytes is not None:
-            pulumi.set(__self__, "gigabytes", gigabytes)
+            _setter("gigabytes", gigabytes)
         if groups is not None:
-            pulumi.set(__self__, "groups", groups)
+            _setter("groups", groups)
         if per_volume_gigabytes is not None:
-            pulumi.set(__self__, "per_volume_gigabytes", per_volume_gigabytes)
+            _setter("per_volume_gigabytes", per_volume_gigabytes)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if snapshots is not None:
-            pulumi.set(__self__, "snapshots", snapshots)
+            _setter("snapshots", snapshots)
         if volume_type_quota is not None:
-            pulumi.set(__self__, "volume_type_quota", volume_type_quota)
+            _setter("volume_type_quota", volume_type_quota)
         if volumes is not None:
-            pulumi.set(__self__, "volumes", volumes)
+            _setter("volumes", volumes)
 
     @property
     @pulumi.getter(name="projectId")
@@ -240,26 +267,53 @@ class _QuoteSetV3State:
         :param pulumi.Input[int] volumes: Quota value for volumes. Changing this updates the
                existing quotaset.
         """
+        _QuoteSetV3State._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_gigabytes=backup_gigabytes,
+            backups=backups,
+            gigabytes=gigabytes,
+            groups=groups,
+            per_volume_gigabytes=per_volume_gigabytes,
+            project_id=project_id,
+            region=region,
+            snapshots=snapshots,
+            volume_type_quota=volume_type_quota,
+            volumes=volumes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_gigabytes: Optional[pulumi.Input[int]] = None,
+             backups: Optional[pulumi.Input[int]] = None,
+             gigabytes: Optional[pulumi.Input[int]] = None,
+             groups: Optional[pulumi.Input[int]] = None,
+             per_volume_gigabytes: Optional[pulumi.Input[int]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             snapshots: Optional[pulumi.Input[int]] = None,
+             volume_type_quota: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             volumes: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backup_gigabytes is not None:
-            pulumi.set(__self__, "backup_gigabytes", backup_gigabytes)
+            _setter("backup_gigabytes", backup_gigabytes)
         if backups is not None:
-            pulumi.set(__self__, "backups", backups)
+            _setter("backups", backups)
         if gigabytes is not None:
-            pulumi.set(__self__, "gigabytes", gigabytes)
+            _setter("gigabytes", gigabytes)
         if groups is not None:
-            pulumi.set(__self__, "groups", groups)
+            _setter("groups", groups)
         if per_volume_gigabytes is not None:
-            pulumi.set(__self__, "per_volume_gigabytes", per_volume_gigabytes)
+            _setter("per_volume_gigabytes", per_volume_gigabytes)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if snapshots is not None:
-            pulumi.set(__self__, "snapshots", snapshots)
+            _setter("snapshots", snapshots)
         if volume_type_quota is not None:
-            pulumi.set(__self__, "volume_type_quota", volume_type_quota)
+            _setter("volume_type_quota", volume_type_quota)
         if volumes is not None:
-            pulumi.set(__self__, "volumes", volumes)
+            _setter("volumes", volumes)
 
     @property
     @pulumi.getter(name="backupGigabytes")
@@ -535,6 +589,10 @@ class QuoteSetV3(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            QuoteSetV3Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

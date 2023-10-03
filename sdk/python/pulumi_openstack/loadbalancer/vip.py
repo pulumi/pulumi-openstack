@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VipArgs', 'Vip']
@@ -63,28 +63,61 @@ class VipArgs:
         :param pulumi.Input[str] tenant_id: The owner of the vip. Required if admin wants to
                create a vip member for another tenant. Changing this creates a new vip.
         """
-        pulumi.set(__self__, "pool_id", pool_id)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "subnet_id", subnet_id)
+        VipArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pool_id=pool_id,
+            port=port,
+            protocol=protocol,
+            subnet_id=subnet_id,
+            address=address,
+            admin_state_up=admin_state_up,
+            conn_limit=conn_limit,
+            description=description,
+            floating_ip=floating_ip,
+            name=name,
+            persistence=persistence,
+            region=region,
+            tenant_id=tenant_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pool_id: pulumi.Input[str],
+             port: pulumi.Input[int],
+             protocol: pulumi.Input[str],
+             subnet_id: pulumi.Input[str],
+             address: Optional[pulumi.Input[str]] = None,
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             conn_limit: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             floating_ip: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             persistence: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("pool_id", pool_id)
+        _setter("port", port)
+        _setter("protocol", protocol)
+        _setter("subnet_id", subnet_id)
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if conn_limit is not None:
-            pulumi.set(__self__, "conn_limit", conn_limit)
+            _setter("conn_limit", conn_limit)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if floating_ip is not None:
-            pulumi.set(__self__, "floating_ip", floating_ip)
+            _setter("floating_ip", floating_ip)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if persistence is not None:
-            pulumi.set(__self__, "persistence", persistence)
+            _setter("persistence", persistence)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
 
     @property
     @pulumi.getter(name="poolId")
@@ -317,34 +350,69 @@ class _VipState:
         :param pulumi.Input[str] tenant_id: The owner of the vip. Required if admin wants to
                create a vip member for another tenant. Changing this creates a new vip.
         """
+        _VipState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            admin_state_up=admin_state_up,
+            conn_limit=conn_limit,
+            description=description,
+            floating_ip=floating_ip,
+            name=name,
+            persistence=persistence,
+            pool_id=pool_id,
+            port=port,
+            port_id=port_id,
+            protocol=protocol,
+            region=region,
+            subnet_id=subnet_id,
+            tenant_id=tenant_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             conn_limit: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             floating_ip: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             persistence: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             pool_id: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             port_id: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             subnet_id: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if conn_limit is not None:
-            pulumi.set(__self__, "conn_limit", conn_limit)
+            _setter("conn_limit", conn_limit)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if floating_ip is not None:
-            pulumi.set(__self__, "floating_ip", floating_ip)
+            _setter("floating_ip", floating_ip)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if persistence is not None:
-            pulumi.set(__self__, "persistence", persistence)
+            _setter("persistence", persistence)
         if pool_id is not None:
-            pulumi.set(__self__, "pool_id", pool_id)
+            _setter("pool_id", pool_id)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if port_id is not None:
-            pulumi.set(__self__, "port_id", port_id)
+            _setter("port_id", port_id)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if subnet_id is not None:
-            pulumi.set(__self__, "subnet_id", subnet_id)
+            _setter("subnet_id", subnet_id)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
 
     @property
     @pulumi.getter
@@ -654,6 +722,10 @@ class Vip(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VipArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

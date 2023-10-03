@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TransferRequestArgs', 'TransferRequest']
@@ -37,19 +37,40 @@ class TransferRequestArgs:
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
                new transfer request.
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        TransferRequestArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id=zone_id,
+            description=description,
+            disable_status_check=disable_status_check,
+            key=key,
+            region=region,
+            target_project_id=target_project_id,
+            value_specs=value_specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             disable_status_check: Optional[pulumi.Input[bool]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             target_project_id: Optional[pulumi.Input[str]] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("zone_id", zone_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_status_check is not None:
-            pulumi.set(__self__, "disable_status_check", disable_status_check)
+            _setter("disable_status_check", disable_status_check)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if target_project_id is not None:
-            pulumi.set(__self__, "target_project_id", target_project_id)
+            _setter("target_project_id", target_project_id)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -166,20 +187,41 @@ class _TransferRequestState:
         :param pulumi.Input[str] zone_id: The ID of the zone for which to create the transfer
                request.
         """
+        _TransferRequestState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            disable_status_check=disable_status_check,
+            key=key,
+            region=region,
+            target_project_id=target_project_id,
+            value_specs=value_specs,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             disable_status_check: Optional[pulumi.Input[bool]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             target_project_id: Optional[pulumi.Input[str]] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_status_check is not None:
-            pulumi.set(__self__, "disable_status_check", disable_status_check)
+            _setter("disable_status_check", disable_status_check)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if target_project_id is not None:
-            pulumi.set(__self__, "target_project_id", target_project_id)
+            _setter("target_project_id", target_project_id)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -371,6 +413,10 @@ class TransferRequest(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TransferRequestArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

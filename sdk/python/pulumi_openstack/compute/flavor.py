@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FlavorArgs', 'Flavor']
@@ -54,27 +54,58 @@ class FlavorArgs:
         :param pulumi.Input[int] swap: The amount of disk space in megabytes to use. If
                unspecified, the default is 0. Changing this creates a new flavor.
         """
-        pulumi.set(__self__, "disk", disk)
-        pulumi.set(__self__, "ram", ram)
-        pulumi.set(__self__, "vcpus", vcpus)
+        FlavorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk=disk,
+            ram=ram,
+            vcpus=vcpus,
+            description=description,
+            ephemeral=ephemeral,
+            extra_specs=extra_specs,
+            flavor_id=flavor_id,
+            is_public=is_public,
+            name=name,
+            region=region,
+            rx_tx_factor=rx_tx_factor,
+            swap=swap,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk: pulumi.Input[int],
+             ram: pulumi.Input[int],
+             vcpus: pulumi.Input[int],
+             description: Optional[pulumi.Input[str]] = None,
+             ephemeral: Optional[pulumi.Input[int]] = None,
+             extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             flavor_id: Optional[pulumi.Input[str]] = None,
+             is_public: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             rx_tx_factor: Optional[pulumi.Input[float]] = None,
+             swap: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("disk", disk)
+        _setter("ram", ram)
+        _setter("vcpus", vcpus)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ephemeral is not None:
-            pulumi.set(__self__, "ephemeral", ephemeral)
+            _setter("ephemeral", ephemeral)
         if extra_specs is not None:
-            pulumi.set(__self__, "extra_specs", extra_specs)
+            _setter("extra_specs", extra_specs)
         if flavor_id is not None:
-            pulumi.set(__self__, "flavor_id", flavor_id)
+            _setter("flavor_id", flavor_id)
         if is_public is not None:
-            pulumi.set(__self__, "is_public", is_public)
+            _setter("is_public", is_public)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if rx_tx_factor is not None:
-            pulumi.set(__self__, "rx_tx_factor", rx_tx_factor)
+            _setter("rx_tx_factor", rx_tx_factor)
         if swap is not None:
-            pulumi.set(__self__, "swap", swap)
+            _setter("swap", swap)
 
     @property
     @pulumi.getter
@@ -277,30 +308,61 @@ class _FlavorState:
         :param pulumi.Input[int] vcpus: The number of virtual CPUs to use. Changing this creates
                a new flavor.
         """
+        _FlavorState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            disk=disk,
+            ephemeral=ephemeral,
+            extra_specs=extra_specs,
+            flavor_id=flavor_id,
+            is_public=is_public,
+            name=name,
+            ram=ram,
+            region=region,
+            rx_tx_factor=rx_tx_factor,
+            swap=swap,
+            vcpus=vcpus,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             disk: Optional[pulumi.Input[int]] = None,
+             ephemeral: Optional[pulumi.Input[int]] = None,
+             extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             flavor_id: Optional[pulumi.Input[str]] = None,
+             is_public: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             ram: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             rx_tx_factor: Optional[pulumi.Input[float]] = None,
+             swap: Optional[pulumi.Input[int]] = None,
+             vcpus: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disk is not None:
-            pulumi.set(__self__, "disk", disk)
+            _setter("disk", disk)
         if ephemeral is not None:
-            pulumi.set(__self__, "ephemeral", ephemeral)
+            _setter("ephemeral", ephemeral)
         if extra_specs is not None:
-            pulumi.set(__self__, "extra_specs", extra_specs)
+            _setter("extra_specs", extra_specs)
         if flavor_id is not None:
-            pulumi.set(__self__, "flavor_id", flavor_id)
+            _setter("flavor_id", flavor_id)
         if is_public is not None:
-            pulumi.set(__self__, "is_public", is_public)
+            _setter("is_public", is_public)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if ram is not None:
-            pulumi.set(__self__, "ram", ram)
+            _setter("ram", ram)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if rx_tx_factor is not None:
-            pulumi.set(__self__, "rx_tx_factor", rx_tx_factor)
+            _setter("rx_tx_factor", rx_tx_factor)
         if swap is not None:
-            pulumi.set(__self__, "swap", swap)
+            _setter("swap", swap)
         if vcpus is not None:
-            pulumi.set(__self__, "vcpus", vcpus)
+            _setter("vcpus", vcpus)
 
     @property
     @pulumi.getter
@@ -576,6 +638,10 @@ class Flavor(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FlavorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

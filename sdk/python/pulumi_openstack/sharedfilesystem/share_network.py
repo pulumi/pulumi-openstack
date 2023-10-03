@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ShareNetworkArgs', 'ShareNetwork']
@@ -39,16 +39,35 @@ class ShareNetworkArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_service_ids: The list of security service IDs to associate with
                the share network. The security service must be specified by ID and not name.
         """
-        pulumi.set(__self__, "neutron_net_id", neutron_net_id)
-        pulumi.set(__self__, "neutron_subnet_id", neutron_subnet_id)
+        ShareNetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            neutron_net_id=neutron_net_id,
+            neutron_subnet_id=neutron_subnet_id,
+            description=description,
+            name=name,
+            region=region,
+            security_service_ids=security_service_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             neutron_net_id: pulumi.Input[str],
+             neutron_subnet_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             security_service_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("neutron_net_id", neutron_net_id)
+        _setter("neutron_subnet_id", neutron_subnet_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if security_service_ids is not None:
-            pulumi.set(__self__, "security_service_ids", security_service_ids)
+            _setter("security_service_ids", security_service_ids)
 
     @property
     @pulumi.getter(name="neutronNetId")
@@ -171,28 +190,57 @@ class _ShareNetworkState:
                the share network. The security service must be specified by ID and not name.
         :param pulumi.Input[int] segmentation_id: The share network segmentation ID.
         """
+        _ShareNetworkState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr=cidr,
+            description=description,
+            ip_version=ip_version,
+            name=name,
+            network_type=network_type,
+            neutron_net_id=neutron_net_id,
+            neutron_subnet_id=neutron_subnet_id,
+            project_id=project_id,
+            region=region,
+            security_service_ids=security_service_ids,
+            segmentation_id=segmentation_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             ip_version: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_type: Optional[pulumi.Input[str]] = None,
+             neutron_net_id: Optional[pulumi.Input[str]] = None,
+             neutron_subnet_id: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             security_service_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             segmentation_id: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cidr is not None:
-            pulumi.set(__self__, "cidr", cidr)
+            _setter("cidr", cidr)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_type is not None:
-            pulumi.set(__self__, "network_type", network_type)
+            _setter("network_type", network_type)
         if neutron_net_id is not None:
-            pulumi.set(__self__, "neutron_net_id", neutron_net_id)
+            _setter("neutron_net_id", neutron_net_id)
         if neutron_subnet_id is not None:
-            pulumi.set(__self__, "neutron_subnet_id", neutron_subnet_id)
+            _setter("neutron_subnet_id", neutron_subnet_id)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if security_service_ids is not None:
-            pulumi.set(__self__, "security_service_ids", security_service_ids)
+            _setter("security_service_ids", security_service_ids)
         if segmentation_id is not None:
-            pulumi.set(__self__, "segmentation_id", segmentation_id)
+            _setter("segmentation_id", segmentation_id)
 
     @property
     @pulumi.getter
@@ -500,6 +548,10 @@ class ShareNetwork(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ShareNetworkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

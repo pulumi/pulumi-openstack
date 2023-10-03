@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ClusterTemplateArgs', 'ClusterTemplate']
@@ -129,62 +129,127 @@ class ClusterTemplateArgs:
                volumes of the cluster nodes. Changing this updates the volume driver of
                the existing cluster template.
         """
-        pulumi.set(__self__, "coe", coe)
-        pulumi.set(__self__, "image", image)
+        ClusterTemplateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            coe=coe,
+            image=image,
+            apiserver_port=apiserver_port,
+            cluster_distro=cluster_distro,
+            dns_nameserver=dns_nameserver,
+            docker_storage_driver=docker_storage_driver,
+            docker_volume_size=docker_volume_size,
+            external_network_id=external_network_id,
+            fixed_network=fixed_network,
+            fixed_subnet=fixed_subnet,
+            flavor=flavor,
+            floating_ip_enabled=floating_ip_enabled,
+            hidden=hidden,
+            http_proxy=http_proxy,
+            https_proxy=https_proxy,
+            insecure_registry=insecure_registry,
+            keypair_id=keypair_id,
+            labels=labels,
+            master_flavor=master_flavor,
+            master_lb_enabled=master_lb_enabled,
+            name=name,
+            network_driver=network_driver,
+            no_proxy=no_proxy,
+            public=public,
+            region=region,
+            registry_enabled=registry_enabled,
+            server_type=server_type,
+            tls_disabled=tls_disabled,
+            volume_driver=volume_driver,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             coe: pulumi.Input[str],
+             image: pulumi.Input[str],
+             apiserver_port: Optional[pulumi.Input[int]] = None,
+             cluster_distro: Optional[pulumi.Input[str]] = None,
+             dns_nameserver: Optional[pulumi.Input[str]] = None,
+             docker_storage_driver: Optional[pulumi.Input[str]] = None,
+             docker_volume_size: Optional[pulumi.Input[int]] = None,
+             external_network_id: Optional[pulumi.Input[str]] = None,
+             fixed_network: Optional[pulumi.Input[str]] = None,
+             fixed_subnet: Optional[pulumi.Input[str]] = None,
+             flavor: Optional[pulumi.Input[str]] = None,
+             floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
+             hidden: Optional[pulumi.Input[bool]] = None,
+             http_proxy: Optional[pulumi.Input[str]] = None,
+             https_proxy: Optional[pulumi.Input[str]] = None,
+             insecure_registry: Optional[pulumi.Input[str]] = None,
+             keypair_id: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             master_flavor: Optional[pulumi.Input[str]] = None,
+             master_lb_enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_driver: Optional[pulumi.Input[str]] = None,
+             no_proxy: Optional[pulumi.Input[str]] = None,
+             public: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             registry_enabled: Optional[pulumi.Input[bool]] = None,
+             server_type: Optional[pulumi.Input[str]] = None,
+             tls_disabled: Optional[pulumi.Input[bool]] = None,
+             volume_driver: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("coe", coe)
+        _setter("image", image)
         if apiserver_port is not None:
-            pulumi.set(__self__, "apiserver_port", apiserver_port)
+            _setter("apiserver_port", apiserver_port)
         if cluster_distro is not None:
-            pulumi.set(__self__, "cluster_distro", cluster_distro)
+            _setter("cluster_distro", cluster_distro)
         if dns_nameserver is not None:
-            pulumi.set(__self__, "dns_nameserver", dns_nameserver)
+            _setter("dns_nameserver", dns_nameserver)
         if docker_storage_driver is not None:
-            pulumi.set(__self__, "docker_storage_driver", docker_storage_driver)
+            _setter("docker_storage_driver", docker_storage_driver)
         if docker_volume_size is not None:
-            pulumi.set(__self__, "docker_volume_size", docker_volume_size)
+            _setter("docker_volume_size", docker_volume_size)
         if external_network_id is not None:
-            pulumi.set(__self__, "external_network_id", external_network_id)
+            _setter("external_network_id", external_network_id)
         if fixed_network is not None:
-            pulumi.set(__self__, "fixed_network", fixed_network)
+            _setter("fixed_network", fixed_network)
         if fixed_subnet is not None:
-            pulumi.set(__self__, "fixed_subnet", fixed_subnet)
+            _setter("fixed_subnet", fixed_subnet)
         if flavor is not None:
-            pulumi.set(__self__, "flavor", flavor)
+            _setter("flavor", flavor)
         if floating_ip_enabled is not None:
-            pulumi.set(__self__, "floating_ip_enabled", floating_ip_enabled)
+            _setter("floating_ip_enabled", floating_ip_enabled)
         if hidden is not None:
-            pulumi.set(__self__, "hidden", hidden)
+            _setter("hidden", hidden)
         if http_proxy is not None:
-            pulumi.set(__self__, "http_proxy", http_proxy)
+            _setter("http_proxy", http_proxy)
         if https_proxy is not None:
-            pulumi.set(__self__, "https_proxy", https_proxy)
+            _setter("https_proxy", https_proxy)
         if insecure_registry is not None:
-            pulumi.set(__self__, "insecure_registry", insecure_registry)
+            _setter("insecure_registry", insecure_registry)
         if keypair_id is not None:
-            pulumi.set(__self__, "keypair_id", keypair_id)
+            _setter("keypair_id", keypair_id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if master_flavor is not None:
-            pulumi.set(__self__, "master_flavor", master_flavor)
+            _setter("master_flavor", master_flavor)
         if master_lb_enabled is not None:
-            pulumi.set(__self__, "master_lb_enabled", master_lb_enabled)
+            _setter("master_lb_enabled", master_lb_enabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_driver is not None:
-            pulumi.set(__self__, "network_driver", network_driver)
+            _setter("network_driver", network_driver)
         if no_proxy is not None:
-            pulumi.set(__self__, "no_proxy", no_proxy)
+            _setter("no_proxy", no_proxy)
         if public is not None:
-            pulumi.set(__self__, "public", public)
+            _setter("public", public)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if registry_enabled is not None:
-            pulumi.set(__self__, "registry_enabled", registry_enabled)
+            _setter("registry_enabled", registry_enabled)
         if server_type is not None:
-            pulumi.set(__self__, "server_type", server_type)
+            _setter("server_type", server_type)
         if tls_disabled is not None:
-            pulumi.set(__self__, "tls_disabled", tls_disabled)
+            _setter("tls_disabled", tls_disabled)
         if volume_driver is not None:
-            pulumi.set(__self__, "volume_driver", volume_driver)
+            _setter("volume_driver", volume_driver)
 
     @property
     @pulumi.getter
@@ -717,72 +782,145 @@ class _ClusterTemplateState:
                volumes of the cluster nodes. Changing this updates the volume driver of
                the existing cluster template.
         """
+        _ClusterTemplateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            apiserver_port=apiserver_port,
+            cluster_distro=cluster_distro,
+            coe=coe,
+            created_at=created_at,
+            dns_nameserver=dns_nameserver,
+            docker_storage_driver=docker_storage_driver,
+            docker_volume_size=docker_volume_size,
+            external_network_id=external_network_id,
+            fixed_network=fixed_network,
+            fixed_subnet=fixed_subnet,
+            flavor=flavor,
+            floating_ip_enabled=floating_ip_enabled,
+            hidden=hidden,
+            http_proxy=http_proxy,
+            https_proxy=https_proxy,
+            image=image,
+            insecure_registry=insecure_registry,
+            keypair_id=keypair_id,
+            labels=labels,
+            master_flavor=master_flavor,
+            master_lb_enabled=master_lb_enabled,
+            name=name,
+            network_driver=network_driver,
+            no_proxy=no_proxy,
+            project_id=project_id,
+            public=public,
+            region=region,
+            registry_enabled=registry_enabled,
+            server_type=server_type,
+            tls_disabled=tls_disabled,
+            updated_at=updated_at,
+            user_id=user_id,
+            volume_driver=volume_driver,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             apiserver_port: Optional[pulumi.Input[int]] = None,
+             cluster_distro: Optional[pulumi.Input[str]] = None,
+             coe: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             dns_nameserver: Optional[pulumi.Input[str]] = None,
+             docker_storage_driver: Optional[pulumi.Input[str]] = None,
+             docker_volume_size: Optional[pulumi.Input[int]] = None,
+             external_network_id: Optional[pulumi.Input[str]] = None,
+             fixed_network: Optional[pulumi.Input[str]] = None,
+             fixed_subnet: Optional[pulumi.Input[str]] = None,
+             flavor: Optional[pulumi.Input[str]] = None,
+             floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
+             hidden: Optional[pulumi.Input[bool]] = None,
+             http_proxy: Optional[pulumi.Input[str]] = None,
+             https_proxy: Optional[pulumi.Input[str]] = None,
+             image: Optional[pulumi.Input[str]] = None,
+             insecure_registry: Optional[pulumi.Input[str]] = None,
+             keypair_id: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             master_flavor: Optional[pulumi.Input[str]] = None,
+             master_lb_enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_driver: Optional[pulumi.Input[str]] = None,
+             no_proxy: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             public: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             registry_enabled: Optional[pulumi.Input[bool]] = None,
+             server_type: Optional[pulumi.Input[str]] = None,
+             tls_disabled: Optional[pulumi.Input[bool]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             volume_driver: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if apiserver_port is not None:
-            pulumi.set(__self__, "apiserver_port", apiserver_port)
+            _setter("apiserver_port", apiserver_port)
         if cluster_distro is not None:
-            pulumi.set(__self__, "cluster_distro", cluster_distro)
+            _setter("cluster_distro", cluster_distro)
         if coe is not None:
-            pulumi.set(__self__, "coe", coe)
+            _setter("coe", coe)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if dns_nameserver is not None:
-            pulumi.set(__self__, "dns_nameserver", dns_nameserver)
+            _setter("dns_nameserver", dns_nameserver)
         if docker_storage_driver is not None:
-            pulumi.set(__self__, "docker_storage_driver", docker_storage_driver)
+            _setter("docker_storage_driver", docker_storage_driver)
         if docker_volume_size is not None:
-            pulumi.set(__self__, "docker_volume_size", docker_volume_size)
+            _setter("docker_volume_size", docker_volume_size)
         if external_network_id is not None:
-            pulumi.set(__self__, "external_network_id", external_network_id)
+            _setter("external_network_id", external_network_id)
         if fixed_network is not None:
-            pulumi.set(__self__, "fixed_network", fixed_network)
+            _setter("fixed_network", fixed_network)
         if fixed_subnet is not None:
-            pulumi.set(__self__, "fixed_subnet", fixed_subnet)
+            _setter("fixed_subnet", fixed_subnet)
         if flavor is not None:
-            pulumi.set(__self__, "flavor", flavor)
+            _setter("flavor", flavor)
         if floating_ip_enabled is not None:
-            pulumi.set(__self__, "floating_ip_enabled", floating_ip_enabled)
+            _setter("floating_ip_enabled", floating_ip_enabled)
         if hidden is not None:
-            pulumi.set(__self__, "hidden", hidden)
+            _setter("hidden", hidden)
         if http_proxy is not None:
-            pulumi.set(__self__, "http_proxy", http_proxy)
+            _setter("http_proxy", http_proxy)
         if https_proxy is not None:
-            pulumi.set(__self__, "https_proxy", https_proxy)
+            _setter("https_proxy", https_proxy)
         if image is not None:
-            pulumi.set(__self__, "image", image)
+            _setter("image", image)
         if insecure_registry is not None:
-            pulumi.set(__self__, "insecure_registry", insecure_registry)
+            _setter("insecure_registry", insecure_registry)
         if keypair_id is not None:
-            pulumi.set(__self__, "keypair_id", keypair_id)
+            _setter("keypair_id", keypair_id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if master_flavor is not None:
-            pulumi.set(__self__, "master_flavor", master_flavor)
+            _setter("master_flavor", master_flavor)
         if master_lb_enabled is not None:
-            pulumi.set(__self__, "master_lb_enabled", master_lb_enabled)
+            _setter("master_lb_enabled", master_lb_enabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_driver is not None:
-            pulumi.set(__self__, "network_driver", network_driver)
+            _setter("network_driver", network_driver)
         if no_proxy is not None:
-            pulumi.set(__self__, "no_proxy", no_proxy)
+            _setter("no_proxy", no_proxy)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if public is not None:
-            pulumi.set(__self__, "public", public)
+            _setter("public", public)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if registry_enabled is not None:
-            pulumi.set(__self__, "registry_enabled", registry_enabled)
+            _setter("registry_enabled", registry_enabled)
         if server_type is not None:
-            pulumi.set(__self__, "server_type", server_type)
+            _setter("server_type", server_type)
         if tls_disabled is not None:
-            pulumi.set(__self__, "tls_disabled", tls_disabled)
+            _setter("tls_disabled", tls_disabled)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
         if volume_driver is not None:
-            pulumi.set(__self__, "volume_driver", volume_driver)
+            _setter("volume_driver", volume_driver)
 
     @property
     @pulumi.getter(name="apiserverPort")
@@ -1522,6 +1660,10 @@ class ClusterTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClusterTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -92,11 +92,6 @@ export class VolumeAttach extends pulumi.CustomResource {
         return obj['__pulumiType'] === VolumeAttach.__pulumiType;
     }
 
-    /**
-     * See Argument Reference above. _NOTE_: The correctness of this
-     * information is dependent upon the hypervisor in use. In some cases, this
-     * should not be used as an authoritative piece of information.
-     */
     public readonly device!: pulumi.Output<string>;
     /**
      * The ID of the Instance to attach the Volume to.
@@ -166,11 +161,6 @@ export class VolumeAttach extends pulumi.CustomResource {
  * Input properties used for looking up and filtering VolumeAttach resources.
  */
 export interface VolumeAttachState {
-    /**
-     * See Argument Reference above. _NOTE_: The correctness of this
-     * information is dependent upon the hypervisor in use. In some cases, this
-     * should not be used as an authoritative piece of information.
-     */
     device?: pulumi.Input<string>;
     /**
      * The ID of the Instance to attach the Volume to.
@@ -202,11 +192,6 @@ export interface VolumeAttachState {
  * The set of arguments for constructing a VolumeAttach resource.
  */
 export interface VolumeAttachArgs {
-    /**
-     * See Argument Reference above. _NOTE_: The correctness of this
-     * information is dependent upon the hypervisor in use. In some cases, this
-     * should not be used as an authoritative piece of information.
-     */
     device?: pulumi.Input<string>;
     /**
      * The ID of the Instance to attach the Volume to.

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EndpointV3Args', 'EndpointV3']
@@ -32,15 +32,34 @@ class EndpointV3Args:
         :param pulumi.Input[str] region: The region in which to obtain the V3 Keystone client.
                If omitted, the `region` argument of the provider is used.
         """
-        pulumi.set(__self__, "endpoint_region", endpoint_region)
-        pulumi.set(__self__, "service_id", service_id)
-        pulumi.set(__self__, "url", url)
+        EndpointV3Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint_region=endpoint_region,
+            service_id=service_id,
+            url=url,
+            interface=interface,
+            name=name,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint_region: pulumi.Input[str],
+             service_id: pulumi.Input[str],
+             url: pulumi.Input[str],
+             interface: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("endpoint_region", endpoint_region)
+        _setter("service_id", service_id)
+        _setter("url", url)
         if interface is not None:
-            pulumi.set(__self__, "interface", interface)
+            _setter("interface", interface)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="endpointRegion")
@@ -143,22 +162,45 @@ class _EndpointV3State:
         :param pulumi.Input[str] service_type: The service type of the endpoint.
         :param pulumi.Input[str] url: The endpoint url.
         """
+        _EndpointV3State._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint_region=endpoint_region,
+            interface=interface,
+            name=name,
+            region=region,
+            service_id=service_id,
+            service_name=service_name,
+            service_type=service_type,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint_region: Optional[pulumi.Input[str]] = None,
+             interface: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             service_id: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             service_type: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if endpoint_region is not None:
-            pulumi.set(__self__, "endpoint_region", endpoint_region)
+            _setter("endpoint_region", endpoint_region)
         if interface is not None:
-            pulumi.set(__self__, "interface", interface)
+            _setter("interface", interface)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if service_id is not None:
-            pulumi.set(__self__, "service_id", service_id)
+            _setter("service_id", service_id)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if service_type is not None:
-            pulumi.set(__self__, "service_type", service_type)
+            _setter("service_type", service_type)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter(name="endpointRegion")
@@ -352,6 +394,10 @@ class EndpointV3(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EndpointV3Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

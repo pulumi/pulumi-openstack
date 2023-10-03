@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FloatingIpAssociateArgs', 'FloatingIpAssociate']
@@ -29,14 +29,31 @@ class FloatingIpAssociateArgs:
                create one. If omitted, the `region` argument of the provider is used.
                Changing this creates a new floatingip_associate.
         """
-        pulumi.set(__self__, "floating_ip", floating_ip)
-        pulumi.set(__self__, "instance_id", instance_id)
+        FloatingIpAssociateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            floating_ip=floating_ip,
+            instance_id=instance_id,
+            fixed_ip=fixed_ip,
+            region=region,
+            wait_until_associated=wait_until_associated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             floating_ip: pulumi.Input[str],
+             instance_id: pulumi.Input[str],
+             fixed_ip: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             wait_until_associated: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("floating_ip", floating_ip)
+        _setter("instance_id", instance_id)
         if fixed_ip is not None:
-            pulumi.set(__self__, "fixed_ip", fixed_ip)
+            _setter("fixed_ip", fixed_ip)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if wait_until_associated is not None:
-            pulumi.set(__self__, "wait_until_associated", wait_until_associated)
+            _setter("wait_until_associated", wait_until_associated)
 
     @property
     @pulumi.getter(name="floatingIp")
@@ -117,16 +134,33 @@ class _FloatingIpAssociateState:
                create one. If omitted, the `region` argument of the provider is used.
                Changing this creates a new floatingip_associate.
         """
+        _FloatingIpAssociateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            fixed_ip=fixed_ip,
+            floating_ip=floating_ip,
+            instance_id=instance_id,
+            region=region,
+            wait_until_associated=wait_until_associated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             fixed_ip: Optional[pulumi.Input[str]] = None,
+             floating_ip: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             wait_until_associated: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if fixed_ip is not None:
-            pulumi.set(__self__, "fixed_ip", fixed_ip)
+            _setter("fixed_ip", fixed_ip)
         if floating_ip is not None:
-            pulumi.set(__self__, "floating_ip", floating_ip)
+            _setter("floating_ip", floating_ip)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if wait_until_associated is not None:
-            pulumi.set(__self__, "wait_until_associated", wait_until_associated)
+            _setter("wait_until_associated", wait_until_associated)
 
     @property
     @pulumi.getter(name="fixedIp")
@@ -334,6 +368,10 @@ class FloatingIpAssociate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FloatingIpAssociateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
