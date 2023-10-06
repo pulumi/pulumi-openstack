@@ -1,0 +1,18 @@
+provider: openstack
+major-version: 3
+env:
+  OS_AUTH_URL: "https://auth.cloud.ovh.net/v3/"
+  OS_IDENTITY_API_VERSION: 3
+  OS_PASSWORD: ${{ secrets.OS_PASSWORD }}
+  OS_REGION_NAME: UK1
+  OS_TENANT_ID: "9d596a0506974e0f8c79673edf0bbdd3"
+  OS_TENANT_NAME: "9616699805113213"
+  OS_USERNAME: "jrGMbHHjkUQ7"
+  OS_USER_DOMAIN_NAME: Default
+  OS_PROJECT_DOMAIN_NAME: Default
+makeTemplate: bridged
+plugins:
+  - name: http
+    version: 0.0.1
+team: ecosystem
+javaGenVersion: "v0.9.5"
