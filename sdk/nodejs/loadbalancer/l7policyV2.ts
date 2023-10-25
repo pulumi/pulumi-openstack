@@ -7,38 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Manages a Load Balancer L7 Policy resource within OpenStack.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const subnet1 = new openstack.networking.Subnet("subnet1", {
- *     cidr: "192.168.199.0/24",
- *     ipVersion: 4,
- *     networkId: network1.id,
- * });
- * const loadbalancer1 = new openstack.loadbalancer.LoadBalancer("loadbalancer1", {vipSubnetId: subnet1.id});
- * const listener1 = new openstack.loadbalancer.Listener("listener1", {
- *     protocol: "HTTP",
- *     protocolPort: 8080,
- *     loadbalancerId: loadbalancer1.id,
- * });
- * const pool1 = new openstack.loadbalancer.Pool("pool1", {
- *     protocol: "HTTP",
- *     lbMethod: "ROUND_ROBIN",
- *     loadbalancerId: loadbalancer1.id,
- * });
- * const l7policy1 = new openstack.loadbalancer.L7PolicyV2("l7policy1", {
- *     action: "REDIRECT_TO_POOL",
- *     description: "test l7 policy",
- *     position: 1,
- *     listenerId: listener1.id,
- *     redirectPoolId: pool1.id,
- * });
- * ```
- *
  * ## Import
  *
  * Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.:

@@ -8,55 +8,6 @@ import * as utilities from "../utilities";
  * Manages a V1 container object resource within OpenStack.
  *
  * ## Example Usage
- * ### Example with simple content
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const container1 = new openstack.objectstorage.Container("container1", {
- *     region: "RegionOne",
- *     metadata: [{
- *         test: "true",
- *     }],
- *     contentType: "application/json",
- * });
- * const doc1 = new openstack.objectstorage.ContainerObject("doc1", {
- *     region: "RegionOne",
- *     containerName: container1.name,
- *     metadata: [{
- *         test: "true",
- *     }],
- *     contentType: "application/json",
- *     content: `               {
- *                  "foo" : "bar"
- *                }
- * `,
- * });
- * ```
- * ### Example with content from file
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const container1 = new openstack.objectstorage.Container("container1", {
- *     region: "RegionOne",
- *     metadata: [{
- *         test: "true",
- *     }],
- *     contentType: "application/json",
- * });
- * const doc1 = new openstack.objectstorage.ContainerObject("doc1", {
- *     region: "RegionOne",
- *     containerName: container1.name,
- *     metadata: [{
- *         test: "true",
- *     }],
- *     contentType: "application/json",
- *     source: "./default.json",
- * });
- * ```
  */
 export class ContainerObject extends pulumi.CustomResource {
     /**

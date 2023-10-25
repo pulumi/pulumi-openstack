@@ -119,7 +119,25 @@ class NetworkArgs:
              tenant_id: Optional[pulumi.Input[str]] = None,
              transparent_vlan: Optional[pulumi.Input[bool]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if availability_zone_hints is None and 'availabilityZoneHints' in kwargs:
+            availability_zone_hints = kwargs['availabilityZoneHints']
+        if dns_domain is None and 'dnsDomain' in kwargs:
+            dns_domain = kwargs['dnsDomain']
+        if port_security_enabled is None and 'portSecurityEnabled' in kwargs:
+            port_security_enabled = kwargs['portSecurityEnabled']
+        if qos_policy_id is None and 'qosPolicyId' in kwargs:
+            qos_policy_id = kwargs['qosPolicyId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if transparent_vlan is None and 'transparentVlan' in kwargs:
+            transparent_vlan = kwargs['transparentVlan']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
         if availability_zone_hints is not None:
@@ -487,7 +505,27 @@ class _NetworkState:
              tenant_id: Optional[pulumi.Input[str]] = None,
              transparent_vlan: Optional[pulumi.Input[bool]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if all_tags is None and 'allTags' in kwargs:
+            all_tags = kwargs['allTags']
+        if availability_zone_hints is None and 'availabilityZoneHints' in kwargs:
+            availability_zone_hints = kwargs['availabilityZoneHints']
+        if dns_domain is None and 'dnsDomain' in kwargs:
+            dns_domain = kwargs['dnsDomain']
+        if port_security_enabled is None and 'portSecurityEnabled' in kwargs:
+            port_security_enabled = kwargs['portSecurityEnabled']
+        if qos_policy_id is None and 'qosPolicyId' in kwargs:
+            qos_policy_id = kwargs['qosPolicyId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if transparent_vlan is None and 'transparentVlan' in kwargs:
+            transparent_vlan = kwargs['transparentVlan']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
         if all_tags is not None:
@@ -784,40 +822,6 @@ class Network(pulumi.CustomResource):
         """
         Manages a V2 Neutron network resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            network_id=network1.id,
-            cidr="192.168.199.0/24",
-            ip_version=4)
-        secgroup1 = openstack.compute.SecGroup("secgroup1",
-            description="a security group",
-            rules=[openstack.compute.SecGroupRuleArgs(
-                from_port=22,
-                to_port=22,
-                ip_protocol="tcp",
-                cidr="0.0.0.0/0",
-            )])
-        port1 = openstack.networking.Port("port1",
-            network_id=network1.id,
-            admin_state_up=True,
-            security_group_ids=[secgroup1.id],
-            fixed_ips=[openstack.networking.PortFixedIpArgs(
-                subnet_id=subnet1.id,
-                ip_address="192.168.199.10",
-            )])
-        instance1 = openstack.compute.Instance("instance1",
-            security_groups=[secgroup1.name],
-            networks=[openstack.compute.InstanceNetworkArgs(
-                port=port1.id,
-            )])
-        ```
-
         ## Import
 
         Networks can be imported using the `id`, e.g.
@@ -883,40 +887,6 @@ class Network(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 Neutron network resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            network_id=network1.id,
-            cidr="192.168.199.0/24",
-            ip_version=4)
-        secgroup1 = openstack.compute.SecGroup("secgroup1",
-            description="a security group",
-            rules=[openstack.compute.SecGroupRuleArgs(
-                from_port=22,
-                to_port=22,
-                ip_protocol="tcp",
-                cidr="0.0.0.0/0",
-            )])
-        port1 = openstack.networking.Port("port1",
-            network_id=network1.id,
-            admin_state_up=True,
-            security_group_ids=[secgroup1.id],
-            fixed_ips=[openstack.networking.PortFixedIpArgs(
-                subnet_id=subnet1.id,
-                ip_address="192.168.199.10",
-            )])
-        instance1 = openstack.compute.Instance("instance1",
-            security_groups=[secgroup1.name],
-            networks=[openstack.compute.InstanceNetworkArgs(
-                port=port1.id,
-            )])
-        ```
 
         ## Import
 

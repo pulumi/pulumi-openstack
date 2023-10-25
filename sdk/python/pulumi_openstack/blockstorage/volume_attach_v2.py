@@ -69,8 +69,8 @@ class VolumeAttachV2Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host_name: pulumi.Input[str],
-             volume_id: pulumi.Input[str],
+             host_name: Optional[pulumi.Input[str]] = None,
+             volume_id: Optional[pulumi.Input[str]] = None,
              attach_mode: Optional[pulumi.Input[str]] = None,
              device: Optional[pulumi.Input[str]] = None,
              initiator: Optional[pulumi.Input[str]] = None,
@@ -82,7 +82,25 @@ class VolumeAttachV2Args:
              region: Optional[pulumi.Input[str]] = None,
              wwnn: Optional[pulumi.Input[str]] = None,
              wwpns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if host_name is None and 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if host_name is None:
+            raise TypeError("Missing 'host_name' argument")
+        if volume_id is None and 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+        if volume_id is None:
+            raise TypeError("Missing 'volume_id' argument")
+        if attach_mode is None and 'attachMode' in kwargs:
+            attach_mode = kwargs['attachMode']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if os_type is None and 'osType' in kwargs:
+            os_type = kwargs['osType']
+
         _setter("host_name", host_name)
         _setter("volume_id", volume_id)
         if attach_mode is not None:
@@ -361,7 +379,25 @@ class _VolumeAttachV2State:
              volume_id: Optional[pulumi.Input[str]] = None,
              wwnn: Optional[pulumi.Input[str]] = None,
              wwpns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if attach_mode is None and 'attachMode' in kwargs:
+            attach_mode = kwargs['attachMode']
+        if driver_volume_type is None and 'driverVolumeType' in kwargs:
+            driver_volume_type = kwargs['driverVolumeType']
+        if host_name is None and 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if mount_point_base is None and 'mountPointBase' in kwargs:
+            mount_point_base = kwargs['mountPointBase']
+        if os_type is None and 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if volume_id is None and 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+
         if attach_mode is not None:
             _setter("attach_mode", attach_mode)
         if data is not None:
@@ -638,23 +674,6 @@ class VolumeAttachV2(pulumi.CustomResource):
         such as a bare-metal server or a remote virtual machine in a
         different cloud provider.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        volume1 = openstack.blockstorage.VolumeV2("volume1", size=1)
-        va1 = openstack.blockstorage.VolumeAttachV2("va1",
-            volume_id=volume1.id,
-            device="auto",
-            host_name="devstack",
-            ip_address="192.168.255.10",
-            initiator="iqn.1993-08.org.debian:01:e9861fb1859",
-            os_type="linux2",
-            platform="x86_64")
-        ```
-
         ## Import
 
         It is not possible to import this resource.
@@ -705,23 +724,6 @@ class VolumeAttachV2(pulumi.CustomResource):
         resource can assist in attaching a volume to a non-OpenStack resource
         such as a bare-metal server or a remote virtual machine in a
         different cloud provider.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        volume1 = openstack.blockstorage.VolumeV2("volume1", size=1)
-        va1 = openstack.blockstorage.VolumeAttachV2("va1",
-            volume_id=volume1.id,
-            device="auto",
-            host_name="devstack",
-            ip_address="192.168.255.10",
-            initiator="iqn.1993-08.org.debian:01:e9861fb1859",
-            os_type="linux2",
-            platform="x86_64")
-        ```
 
         ## Import
 

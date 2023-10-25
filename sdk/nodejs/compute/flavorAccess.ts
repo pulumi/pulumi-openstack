@@ -12,25 +12,6 @@ import * as utilities from "../utilities";
  *
  * ***
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const project1 = new openstack.identity.Project("project1", {});
- * const flavor1 = new openstack.compute.Flavor("flavor1", {
- *     ram: 8096,
- *     vcpus: 2,
- *     disk: 20,
- *     isPublic: false,
- * });
- * const access1 = new openstack.compute.FlavorAccess("access1", {
- *     tenantId: project1.id,
- *     flavorId: flavor1.id,
- * });
- * ```
- *
  * ## Import
  *
  * This resource can be imported by specifying all two arguments, separated by a forward slash:

@@ -13,27 +13,6 @@ namespace Pulumi.OpenStack.Networking
     /// Manages a V2 portforwarding resource within OpenStack.
     /// 
     /// ## Example Usage
-    /// ### Simple portforwarding
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var pf1 = new OpenStack.Networking.PortForwardingV2("pf1", new()
-    ///     {
-    ///         ExternalPort = 7233,
-    ///         FloatingipId = "7a52eb59-7d47-415d-a884-046666a6fbae",
-    ///         InternalPort = 25,
-    ///         InternalPortId = "b930d7f6-ceb7-40a0-8b81-a425dd994ccf",
-    ///         Protocol = "tcp",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/portForwardingV2:PortForwardingV2")]
     public partial class PortForwardingV2 : global::Pulumi.CustomResource

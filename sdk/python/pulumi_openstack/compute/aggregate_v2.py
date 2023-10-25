@@ -48,7 +48,9 @@ class AggregateV2Args:
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if hosts is not None:
             _setter("hosts", hosts)
         if metadata is not None:
@@ -163,7 +165,9 @@ class _AggregateV2State:
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if hosts is not None:
             _setter("hosts", hosts)
         if metadata is not None:
@@ -256,31 +260,6 @@ class AggregateV2(pulumi.CustomResource):
         Manages a Host Aggregate within Openstack Nova.
 
         ## Example Usage
-        ### Full example
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        dell_servers = openstack.compute.AggregateV2("dellServers",
-            hosts=[
-                "myhost01.example.com",
-                "myhost02.example.com",
-            ],
-            metadata={
-                "cpus": "56",
-            },
-            region="RegionOne",
-            zone="nova")
-        ```
-        ### Minimum required example
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test = openstack.compute.AggregateV2("test")
-        ```
 
         ## Import
 
@@ -317,31 +296,6 @@ class AggregateV2(pulumi.CustomResource):
         Manages a Host Aggregate within Openstack Nova.
 
         ## Example Usage
-        ### Full example
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        dell_servers = openstack.compute.AggregateV2("dellServers",
-            hosts=[
-                "myhost01.example.com",
-                "myhost02.example.com",
-            ],
-            metadata={
-                "cpus": "56",
-            },
-            region="RegionOne",
-            zone="nova")
-        ```
-        ### Minimum required example
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test = openstack.compute.AggregateV2("test")
-        ```
 
         ## Import
 

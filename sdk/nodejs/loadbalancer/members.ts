@@ -16,27 +16,6 @@ import * as utilities from "../utilities";
  * legacy Neutron LBaaS v2 extension please use
  * openstack.loadbalancer.Member resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const members1 = new openstack.loadbalancer.Members("members1", {
- *     members: [
- *         {
- *             address: "192.168.199.23",
- *             protocolPort: 8080,
- *         },
- *         {
- *             address: "192.168.199.24",
- *             protocolPort: 8080,
- *         },
- *     ],
- *     poolId: "935685fb-a896-40f9-9ff4-ae531a3a00fe",
- * });
- * ```
- *
  * ## Import
  *
  * Load Balancer Pool Members can be imported using the Pool ID, e.g.:

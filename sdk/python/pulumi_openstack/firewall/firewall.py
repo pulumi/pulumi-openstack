@@ -64,7 +64,7 @@ class FirewallArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             policy_id: pulumi.Input[str],
+             policy_id: Optional[pulumi.Input[str]] = None,
              admin_state_up: Optional[pulumi.Input[bool]] = None,
              associated_routers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -73,7 +73,23 @@ class FirewallArgs:
              region: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if policy_id is None:
+            raise TypeError("Missing 'policy_id' argument")
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if associated_routers is None and 'associatedRouters' in kwargs:
+            associated_routers = kwargs['associatedRouters']
+        if no_routers is None and 'noRouters' in kwargs:
+            no_routers = kwargs['noRouters']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         _setter("policy_id", policy_id)
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
@@ -277,7 +293,21 @@ class _FirewallState:
              region: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if associated_routers is None and 'associatedRouters' in kwargs:
+            associated_routers = kwargs['associatedRouters']
+        if no_routers is None and 'noRouters' in kwargs:
+            no_routers = kwargs['noRouters']
+        if policy_id is None and 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
         if associated_routers is not None:
@@ -438,31 +468,6 @@ class Firewall(pulumi.CustomResource):
         """
         Manages a v1 firewall resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rule1 = openstack.firewall.Rule("rule1",
-            description="drop TELNET traffic",
-            action="deny",
-            protocol="tcp",
-            destination_port="23",
-            enabled=True)
-        rule2 = openstack.firewall.Rule("rule2",
-            description="drop NTP traffic",
-            action="deny",
-            protocol="udp",
-            destination_port="123",
-            enabled=False)
-        policy1 = openstack.firewall.Policy("policy1", rules=[
-            rule1.id,
-            rule2.id,
-        ])
-        firewall1 = openstack.firewall.Firewall("firewall1", policy_id=policy1.id)
-        ```
-
         ## Import
 
         Firewalls can be imported using the `id`, e.g.
@@ -505,31 +510,6 @@ class Firewall(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a v1 firewall resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rule1 = openstack.firewall.Rule("rule1",
-            description="drop TELNET traffic",
-            action="deny",
-            protocol="tcp",
-            destination_port="23",
-            enabled=True)
-        rule2 = openstack.firewall.Rule("rule2",
-            description="drop NTP traffic",
-            action="deny",
-            protocol="udp",
-            destination_port="123",
-            enabled=False)
-        policy1 = openstack.firewall.Policy("policy1", rules=[
-            rule1.id,
-            rule2.id,
-        ])
-        firewall1 = openstack.firewall.Firewall("firewall1", policy_id=policy1.id)
-        ```
 
         ## Import
 

@@ -42,7 +42,13 @@ class Ec2CredentialV3Args:
              project_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if project_id is not None:
             _setter("project_id", project_id)
         if region is not None:
@@ -137,7 +143,15 @@ class _Ec2CredentialV3State:
              secret: Optional[pulumi.Input[str]] = None,
              trust_id: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if trust_id is None and 'trustId' in kwargs:
+            trust_id = kwargs['trustId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if access is not None:
             _setter("access", access)
         if project_id is not None:
@@ -250,25 +264,6 @@ class Ec2CredentialV3(pulumi.CustomResource):
         in state.
 
         ## Example Usage
-        ### EC2 credential in current project scope
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        ec2_key1 = openstack.identity.Ec2CredentialV3("ec2Key1")
-        ```
-        ### EC2 credential in pre-defined project scope
-
-        This allows administrative users to create EC2 credentials for a scope different
-        from the current auth scope.
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        ec2_key1 = openstack.identity.Ec2CredentialV3("ec2Key1", project_id="f7ac731cc11f40efbc03a9f9e1d1d21f")
-        ```
 
         ## Import
 
@@ -307,25 +302,6 @@ class Ec2CredentialV3(pulumi.CustomResource):
         in state.
 
         ## Example Usage
-        ### EC2 credential in current project scope
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        ec2_key1 = openstack.identity.Ec2CredentialV3("ec2Key1")
-        ```
-        ### EC2 credential in pre-defined project scope
-
-        This allows administrative users to create EC2 credentials for a scope different
-        from the current auth scope.
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        ec2_key1 = openstack.identity.Ec2CredentialV3("ec2Key1", project_id="f7ac731cc11f40efbc03a9f9e1d1d21f")
-        ```
 
         ## Import
 

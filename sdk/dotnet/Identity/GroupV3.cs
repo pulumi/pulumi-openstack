@@ -15,24 +15,6 @@ namespace Pulumi.OpenStack.Identity
     /// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
     /// this resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var group1 = new OpenStack.Identity.GroupV3("group1", new()
-    ///     {
-    ///         Description = "group 1",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// groups can be imported using the `id`, e.g.

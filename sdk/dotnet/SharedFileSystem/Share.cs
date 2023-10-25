@@ -12,46 +12,6 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// <summary>
     /// Use this resource to configure a share.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
-    ///     {
-    ///         AdminStateUp = true,
-    ///     });
-    /// 
-    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
-    ///     {
-    ///         Cidr = "192.168.199.0/24",
-    ///         IpVersion = 4,
-    ///         NetworkId = network1.Id,
-    ///     });
-    /// 
-    ///     var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new()
-    ///     {
-    ///         Description = "test share network with security services",
-    ///         NeutronNetId = network1.Id,
-    ///         NeutronSubnetId = subnet1.Id,
-    ///     });
-    /// 
-    ///     var share1 = new OpenStack.SharedFileSystem.Share("share1", new()
-    ///     {
-    ///         Description = "test share description",
-    ///         ShareProto = "NFS",
-    ///         Size = 1,
-    ///         ShareNetworkId = sharenetwork1.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the ID of the share:

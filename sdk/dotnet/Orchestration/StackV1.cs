@@ -12,51 +12,6 @@ namespace Pulumi.OpenStack.Orchestration
     /// <summary>
     /// Manages a V1 stack resource within OpenStack.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var stack1 = new OpenStack.Orchestration.StackV1("stack1", new()
-    ///     {
-    ///         DisableRollback = true,
-    ///         EnvironmentOpts = 
-    ///         {
-    ///             { "Bin", @"
-    /// 
-    /// " },
-    ///         },
-    ///         Parameters = 
-    ///         {
-    ///             { "length", 4 },
-    ///         },
-    ///         TemplateOpts = 
-    ///         {
-    ///             { "Bin", @"heat_template_version: 2013-05-23
-    /// parameters:
-    ///   length:
-    ///     type: number
-    /// resources:
-    ///   test_res:
-    ///     type: OS::Heat::TestResource
-    ///   random:
-    ///     type: OS::Heat::RandomString
-    ///     properties:
-    ///       length: {get_param: length}
-    /// 
-    /// " },
-    ///         },
-    ///         Timeout = 30,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// stacks can be imported using the `id`, e.g.

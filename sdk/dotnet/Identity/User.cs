@@ -19,52 +19,6 @@ namespace Pulumi.OpenStack.Identity
     /// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
     /// this resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project1 = new OpenStack.Identity.Project("project1");
-    /// 
-    ///     var user1 = new OpenStack.Identity.User("user1", new()
-    ///     {
-    ///         DefaultProjectId = project1.Id,
-    ///         Description = "A user",
-    ///         Password = "password123",
-    ///         IgnoreChangePasswordUponFirstUse = true,
-    ///         MultiFactorAuthEnabled = true,
-    ///         MultiFactorAuthRules = new[]
-    ///         {
-    ///             new OpenStack.Identity.Inputs.UserMultiFactorAuthRuleArgs
-    ///             {
-    ///                 Rules = new[]
-    ///                 {
-    ///                     "password",
-    ///                     "totp",
-    ///                 },
-    ///             },
-    ///             new OpenStack.Identity.Inputs.UserMultiFactorAuthRuleArgs
-    ///             {
-    ///                 Rules = new[]
-    ///                 {
-    ///                     "password",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Extra = 
-    ///         {
-    ///             { "email", "user_1@foobar.com" },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Users can be imported using the `id`, e.g.

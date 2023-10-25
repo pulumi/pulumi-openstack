@@ -12,25 +12,6 @@ namespace Pulumi.OpenStack.Networking
     /// <summary>
     /// Manages a V2 router resource within OpenStack.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var router1 = new OpenStack.Networking.Router("router1", new()
-    ///     {
-    ///         AdminStateUp = true,
-    ///         ExternalNetworkId = "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Routers can be imported using the `id`, e.g.

@@ -9,20 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** This usually requires admin privileges.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const service1 = new openstack.identity.ServiceV3("service1", {type: "my-service-type"});
- * const endpoint1 = new openstack.identity.EndpointV3("endpoint1", {
- *     serviceId: service1.id,
- *     endpointRegion: service1.region,
- *     url: "http://my-endpoint",
- * });
- * ```
- *
  * ## Import
  *
  * Endpoints can be imported using the `id`, e.g.

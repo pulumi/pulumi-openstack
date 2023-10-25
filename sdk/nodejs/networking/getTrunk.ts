@@ -8,17 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the ID of an available OpenStack trunk.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const trunk1 = openstack.networking.getTrunk({
- *     name: "trunk_1",
- * });
- * ```
  */
 export function getTrunk(args?: GetTrunkArgs, opts?: pulumi.InvokeOptions): Promise<GetTrunkResult> {
     args = args || {};
@@ -113,17 +102,6 @@ export interface GetTrunkResult {
 }
 /**
  * Use this data source to get the ID of an available OpenStack trunk.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const trunk1 = openstack.networking.getTrunk({
- *     name: "trunk_1",
- * });
- * ```
  */
 export function getTrunkOutput(args?: GetTrunkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrunkResult> {
     return pulumi.output(args).apply((a: any) => getTrunk(a, opts))

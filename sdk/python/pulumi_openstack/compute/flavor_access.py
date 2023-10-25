@@ -35,10 +35,20 @@ class FlavorAccessArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             flavor_id: pulumi.Input[str],
-             tenant_id: pulumi.Input[str],
+             flavor_id: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if flavor_id is None and 'flavorId' in kwargs:
+            flavor_id = kwargs['flavorId']
+        if flavor_id is None:
+            raise TypeError("Missing 'flavor_id' argument")
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if tenant_id is None:
+            raise TypeError("Missing 'tenant_id' argument")
+
         _setter("flavor_id", flavor_id)
         _setter("tenant_id", tenant_id)
         if region is not None:
@@ -111,7 +121,13 @@ class _FlavorAccessState:
              flavor_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if flavor_id is None and 'flavorId' in kwargs:
+            flavor_id = kwargs['flavorId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if flavor_id is not None:
             _setter("flavor_id", flavor_id)
         if region is not None:
@@ -176,23 +192,6 @@ class FlavorAccess(pulumi.CustomResource):
 
         ***
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        project1 = openstack.identity.Project("project1")
-        flavor1 = openstack.compute.Flavor("flavor1",
-            ram=8096,
-            vcpus=2,
-            disk=20,
-            is_public=False)
-        access1 = openstack.compute.FlavorAccess("access1",
-            tenant_id=project1.id,
-            flavor_id=flavor1.id)
-        ```
-
         ## Import
 
         This resource can be imported by specifying all two arguments, separated by a forward slash:
@@ -223,23 +222,6 @@ class FlavorAccess(pulumi.CustomResource):
         this resource.
 
         ***
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        project1 = openstack.identity.Project("project1")
-        flavor1 = openstack.compute.Flavor("flavor1",
-            ram=8096,
-            vcpus=2,
-            disk=20,
-            is_public=False)
-        access1 = openstack.compute.FlavorAccess("access1",
-            tenant_id=project1.id,
-            flavor_id=flavor1.id)
-        ```
 
         ## Import
 

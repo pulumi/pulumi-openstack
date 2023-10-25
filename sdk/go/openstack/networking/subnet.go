@@ -15,39 +15,6 @@ import (
 
 // Manages a V2 Neutron subnet resource within OpenStack.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
-//				AdminStateUp: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
-//				NetworkId: network1.ID(),
-//				Cidr:      pulumi.String("192.168.199.0/24"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Subnets can be imported using the `id`, e.g.

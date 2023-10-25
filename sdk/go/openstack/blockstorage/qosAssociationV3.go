@@ -17,46 +17,6 @@ import (
 //
 // > **Note:** This usually requires admin privileges.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			qos, err := blockstorage.NewQosV3(ctx, "qos", &blockstorage.QosV3Args{
-//				Consumer: pulumi.String("front-end"),
-//				Specs: pulumi.AnyMap{
-//					"read_iops_sec": pulumi.Any("20000"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			volumeType, err := blockstorage.NewVolumeTypeV3(ctx, "volumeType", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = blockstorage.NewQosAssociationV3(ctx, "qosAssociation", &blockstorage.QosAssociationV3Args{
-//				QosId:        qos.ID(),
-//				VolumeTypeId: volumeType.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Qos association can be imported using the `qos_id/volume_type_id`, e.g.

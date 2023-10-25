@@ -9,25 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** This usually requires admin privileges.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const qos = new openstack.blockstorage.QosV3("qos", {
- *     consumer: "front-end",
- *     specs: {
- *         read_iops_sec: "20000",
- *     },
- * });
- * const volumeType = new openstack.blockstorage.VolumeTypeV3("volumeType", {});
- * const qosAssociation = new openstack.blockstorage.QosAssociationV3("qosAssociation", {
- *     qosId: qos.id,
- *     volumeTypeId: volumeType.id,
- * });
- * ```
- *
  * ## Import
  *
  * Qos association can be imported using the `qos_id/volume_type_id`, e.g.

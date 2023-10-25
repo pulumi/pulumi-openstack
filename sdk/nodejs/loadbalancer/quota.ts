@@ -20,25 +20,6 @@ import * as utilities from "../utilities";
  * > **Note:** This resource has attributes that depend on octavia minor versions.
  * Please ensure your Openstack cloud supports the required minor version.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const project1 = new openstack.identity.Project("project1", {});
- * const quota1 = new openstack.loadbalancer.Quota("quota1", {
- *     projectId: project1.id,
- *     loadbalancer: 6,
- *     listener: 7,
- *     member: 8,
- *     pool: 9,
- *     healthMonitor: 10,
- *     l7Policy: 11,
- *     l7Rule: 12,
- * });
- * ```
- *
  * ## Import
  *
  * Quotas can be imported using the `project_id/region_name`, where region_name is the one defined is the Openstack credentials that are in use. E.g.

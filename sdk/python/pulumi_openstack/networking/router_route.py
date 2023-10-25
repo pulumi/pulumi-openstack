@@ -41,11 +41,25 @@ class RouterRouteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination_cidr: pulumi.Input[str],
-             next_hop: pulumi.Input[str],
-             router_id: pulumi.Input[str],
+             destination_cidr: Optional[pulumi.Input[str]] = None,
+             next_hop: Optional[pulumi.Input[str]] = None,
+             router_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if destination_cidr is None and 'destinationCidr' in kwargs:
+            destination_cidr = kwargs['destinationCidr']
+        if destination_cidr is None:
+            raise TypeError("Missing 'destination_cidr' argument")
+        if next_hop is None and 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if next_hop is None:
+            raise TypeError("Missing 'next_hop' argument")
+        if router_id is None and 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+        if router_id is None:
+            raise TypeError("Missing 'router_id' argument")
+
         _setter("destination_cidr", destination_cidr)
         _setter("next_hop", next_hop)
         _setter("router_id", router_id)
@@ -141,7 +155,15 @@ class _RouterRouteState:
              next_hop: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              router_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if destination_cidr is None and 'destinationCidr' in kwargs:
+            destination_cidr = kwargs['destinationCidr']
+        if next_hop is None and 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if router_id is None and 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+
         if destination_cidr is not None:
             _setter("destination_cidr", destination_cidr)
         if next_hop is not None:
@@ -219,27 +241,6 @@ class RouterRoute(pulumi.CustomResource):
         """
         Creates a routing entry on a OpenStack V2 router.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        router1 = openstack.networking.Router("router1", admin_state_up=True)
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            network_id=network1.id,
-            cidr="192.168.199.0/24",
-            ip_version=4)
-        int1 = openstack.networking.RouterInterface("int1",
-            router_id=router1.id,
-            subnet_id=subnet1.id)
-        router_route1 = openstack.networking.RouterRoute("routerRoute1",
-            router_id=router1.id,
-            destination_cidr="10.0.1.0/24",
-            next_hop="192.168.199.254",
-            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_router_interface_v2.int_1"]))
-        ```
         ## Notes
 
         The `next_hop` IP address must be directly reachable from the router at the ``networking.RouterRoute``
@@ -276,27 +277,6 @@ class RouterRoute(pulumi.CustomResource):
         """
         Creates a routing entry on a OpenStack V2 router.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        router1 = openstack.networking.Router("router1", admin_state_up=True)
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            network_id=network1.id,
-            cidr="192.168.199.0/24",
-            ip_version=4)
-        int1 = openstack.networking.RouterInterface("int1",
-            router_id=router1.id,
-            subnet_id=subnet1.id)
-        router_route1 = openstack.networking.RouterRoute("routerRoute1",
-            router_id=router1.id,
-            destination_cidr="10.0.1.0/24",
-            next_hop="192.168.199.254",
-            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_router_interface_v2.int_1"]))
-        ```
         ## Notes
 
         The `next_hop` IP address must be directly reachable from the router at the ``networking.RouterRoute``

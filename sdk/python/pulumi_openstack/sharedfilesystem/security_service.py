@@ -62,7 +62,7 @@ class SecurityServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dns_ip: Optional[pulumi.Input[str]] = None,
              domain: Optional[pulumi.Input[str]] = None,
@@ -72,7 +72,13 @@ class SecurityServiceArgs:
              region: Optional[pulumi.Input[str]] = None,
              server: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if dns_ip is None and 'dnsIp' in kwargs:
+            dns_ip = kwargs['dnsIp']
+
         _setter("type", type)
         if description is not None:
             _setter("description", description)
@@ -288,7 +294,13 @@ class _SecurityServiceState:
              server: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dns_ip is None and 'dnsIp' in kwargs:
+            dns_ip = kwargs['dnsIp']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         if description is not None:
             _setter("description", description)
         if dns_ip is not None:
@@ -484,23 +496,6 @@ class SecurityService(pulumi.CustomResource):
 
         Minimum supported Manila microversion is 2.7.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
-            description="created by terraform",
-            dns_ip="192.168.199.10",
-            domain="example.com",
-            ou="CN=Computers,DC=example,DC=com",
-            password="s8cret",
-            server="192.168.199.10",
-            type="active_directory",
-            user="joinDomainUser")
-        ```
-
         ## Import
 
         This resource can be imported by specifying the ID of the security service:
@@ -550,23 +545,6 @@ class SecurityService(pulumi.CustomResource):
         Microsoft Active Directory.
 
         Minimum supported Manila microversion is 2.7.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
-            description="created by terraform",
-            dns_ip="192.168.199.10",
-            domain="example.com",
-            ou="CN=Computers,DC=example,DC=com",
-            password="s8cret",
-            server="192.168.199.10",
-            type="active_directory",
-            user="joinDomainUser")
-        ```
 
         ## Import
 

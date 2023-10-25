@@ -25,33 +25,6 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// &gt; **Note:** This resource has attributes that depend on octavia minor versions.
     /// Please ensure your Openstack cloud supports the required minor version.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project1 = new OpenStack.Identity.Project("project1");
-    /// 
-    ///     var quota1 = new OpenStack.LoadBalancer.Quota("quota1", new()
-    ///     {
-    ///         ProjectId = project1.Id,
-    ///         Loadbalancer = 6,
-    ///         Listener = 7,
-    ///         Member = 8,
-    ///         Pool = 9,
-    ///         HealthMonitor = 10,
-    ///         L7Policy = 11,
-    ///         L7Rule = 12,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Quotas can be imported using the `project_id/region_name`, where region_name is the one defined is the Openstack credentials that are in use. E.g.

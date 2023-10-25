@@ -18,24 +18,6 @@ namespace Pulumi.OpenStack.Compute
     /// recommended to use the `openstack.networking.FloatingIp`
     /// resource instead, which uses the OpenStack Networking API.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var floatip1 = new OpenStack.Compute.FloatingIp("floatip1", new()
-    ///     {
-    ///         Pool = "public",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Floating IPs can be imported using the `id`, e.g.

@@ -94,7 +94,7 @@ class SubnetPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             prefixes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              address_scope_id: Optional[pulumi.Input[str]] = None,
              default_prefixlen: Optional[pulumi.Input[int]] = None,
              default_quota: Optional[pulumi.Input[int]] = None,
@@ -109,7 +109,29 @@ class SubnetPoolArgs:
              shared: Optional[pulumi.Input[bool]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if prefixes is None:
+            raise TypeError("Missing 'prefixes' argument")
+        if address_scope_id is None and 'addressScopeId' in kwargs:
+            address_scope_id = kwargs['addressScopeId']
+        if default_prefixlen is None and 'defaultPrefixlen' in kwargs:
+            default_prefixlen = kwargs['defaultPrefixlen']
+        if default_quota is None and 'defaultQuota' in kwargs:
+            default_quota = kwargs['defaultQuota']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if is_default is None and 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+        if max_prefixlen is None and 'maxPrefixlen' in kwargs:
+            max_prefixlen = kwargs['maxPrefixlen']
+        if min_prefixlen is None and 'minPrefixlen' in kwargs:
+            min_prefixlen = kwargs['minPrefixlen']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         _setter("prefixes", prefixes)
         if address_scope_id is not None:
             _setter("address_scope_id", address_scope_id)
@@ -462,7 +484,35 @@ class _SubnetPoolState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if address_scope_id is None and 'addressScopeId' in kwargs:
+            address_scope_id = kwargs['addressScopeId']
+        if all_tags is None and 'allTags' in kwargs:
+            all_tags = kwargs['allTags']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if default_prefixlen is None and 'defaultPrefixlen' in kwargs:
+            default_prefixlen = kwargs['defaultPrefixlen']
+        if default_quota is None and 'defaultQuota' in kwargs:
+            default_quota = kwargs['defaultQuota']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if is_default is None and 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+        if max_prefixlen is None and 'maxPrefixlen' in kwargs:
+            max_prefixlen = kwargs['maxPrefixlen']
+        if min_prefixlen is None and 'minPrefixlen' in kwargs:
+            min_prefixlen = kwargs['minPrefixlen']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if revision_number is None and 'revisionNumber' in kwargs:
+            revision_number = kwargs['revisionNumber']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if address_scope_id is not None:
             _setter("address_scope_id", address_scope_id)
         if all_tags is not None:
@@ -783,32 +833,6 @@ class SubnetPool(pulumi.CustomResource):
         Manages a V2 Neutron subnetpool resource within OpenStack.
 
         ## Example Usage
-        ### Create a Subnet Pool
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        subnetpool1 = openstack.networking.SubnetPool("subnetpool1",
-            ip_version=6,
-            prefixes=[
-                "fdf7:b13d:dead:beef::/64",
-                "fd65:86cc:a334:39b7::/64",
-            ])
-        ```
-        ### Create a Subnet from a Subnet Pool
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnetpool1 = openstack.networking.SubnetPool("subnetpool1", prefixes=["10.11.12.0/24"])
-        subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="10.11.12.0/25",
-            network_id=network1.id,
-            subnetpool_id=subnetpool1.id)
-        ```
 
         ## Import
 
@@ -872,32 +896,6 @@ class SubnetPool(pulumi.CustomResource):
         Manages a V2 Neutron subnetpool resource within OpenStack.
 
         ## Example Usage
-        ### Create a Subnet Pool
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        subnetpool1 = openstack.networking.SubnetPool("subnetpool1",
-            ip_version=6,
-            prefixes=[
-                "fdf7:b13d:dead:beef::/64",
-                "fd65:86cc:a334:39b7::/64",
-            ])
-        ```
-        ### Create a Subnet from a Subnet Pool
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnetpool1 = openstack.networking.SubnetPool("subnetpool1", prefixes=["10.11.12.0/24"])
-        subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="10.11.12.0/25",
-            network_id=network1.id,
-            subnetpool_id=subnetpool1.id)
-        ```
 
         ## Import
 

@@ -20,46 +20,6 @@ import (
 // > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
 // this resource.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			user1, err := identity.NewUser(ctx, "user1", &identity.UserArgs{
-//				DomainId: pulumi.String("default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			role1, err := identity.NewRole(ctx, "role1", &identity.RoleArgs{
-//				DomainId: pulumi.String("default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = identity.NewInheritRoleAssignment(ctx, "roleAssignment1", &identity.InheritRoleAssignmentArgs{
-//				UserId:   user1.ID(),
-//				DomainId: pulumi.String("default"),
-//				RoleId:   role1.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Inherit role assignments can be imported using a constructed id. The id should have the form of `domainID/projectID/groupID/userID/roleID`. When something is not used then leave blank.

@@ -35,10 +35,20 @@ class QosDscpMarkingRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dscp_mark: pulumi.Input[int],
-             qos_policy_id: pulumi.Input[str],
+             dscp_mark: Optional[pulumi.Input[int]] = None,
+             qos_policy_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dscp_mark is None and 'dscpMark' in kwargs:
+            dscp_mark = kwargs['dscpMark']
+        if dscp_mark is None:
+            raise TypeError("Missing 'dscp_mark' argument")
+        if qos_policy_id is None and 'qosPolicyId' in kwargs:
+            qos_policy_id = kwargs['qosPolicyId']
+        if qos_policy_id is None:
+            raise TypeError("Missing 'qos_policy_id' argument")
+
         _setter("dscp_mark", dscp_mark)
         _setter("qos_policy_id", qos_policy_id)
         if region is not None:
@@ -111,7 +121,13 @@ class _QosDscpMarkingRuleState:
              dscp_mark: Optional[pulumi.Input[int]] = None,
              qos_policy_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dscp_mark is None and 'dscpMark' in kwargs:
+            dscp_mark = kwargs['dscpMark']
+        if qos_policy_id is None and 'qosPolicyId' in kwargs:
+            qos_policy_id = kwargs['qosPolicyId']
+
         if dscp_mark is not None:
             _setter("dscp_mark", dscp_mark)
         if qos_policy_id is not None:
@@ -172,17 +188,6 @@ class QosDscpMarkingRule(pulumi.CustomResource):
         Manages a V2 Neutron QoS DSCP marking rule resource within OpenStack.
 
         ## Example Usage
-        ### Create a QoS Policy with some DSCP marking rule
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="dscp_mark")
-        dscp_marking_rule1 = openstack.networking.QosDscpMarkingRule("dscpMarkingRule1",
-            qos_policy_id=qos_policy1.id,
-            dscp_mark=26)
-        ```
 
         ## Import
 
@@ -211,17 +216,6 @@ class QosDscpMarkingRule(pulumi.CustomResource):
         Manages a V2 Neutron QoS DSCP marking rule resource within OpenStack.
 
         ## Example Usage
-        ### Create a QoS Policy with some DSCP marking rule
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="dscp_mark")
-        dscp_marking_rule1 = openstack.networking.QosDscpMarkingRule("dscpMarkingRule1",
-            qos_policy_id=qos_policy1.id,
-            dscp_mark=26)
-        ```
 
         ## Import
 

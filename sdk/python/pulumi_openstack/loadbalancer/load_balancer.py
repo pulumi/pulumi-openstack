@@ -103,7 +103,29 @@ class LoadBalancerArgs:
              vip_network_id: Optional[pulumi.Input[str]] = None,
              vip_port_id: Optional[pulumi.Input[str]] = None,
              vip_subnet_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if availability_zone is None and 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if flavor_id is None and 'flavorId' in kwargs:
+            flavor_id = kwargs['flavorId']
+        if loadbalancer_provider is None and 'loadbalancerProvider' in kwargs:
+            loadbalancer_provider = kwargs['loadbalancerProvider']
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if vip_address is None and 'vipAddress' in kwargs:
+            vip_address = kwargs['vipAddress']
+        if vip_network_id is None and 'vipNetworkId' in kwargs:
+            vip_network_id = kwargs['vipNetworkId']
+        if vip_port_id is None and 'vipPortId' in kwargs:
+            vip_port_id = kwargs['vipPortId']
+        if vip_subnet_id is None and 'vipSubnetId' in kwargs:
+            vip_subnet_id = kwargs['vipSubnetId']
+
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
         if availability_zone is not None:
@@ -418,7 +440,29 @@ class _LoadBalancerState:
              vip_network_id: Optional[pulumi.Input[str]] = None,
              vip_port_id: Optional[pulumi.Input[str]] = None,
              vip_subnet_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if availability_zone is None and 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if flavor_id is None and 'flavorId' in kwargs:
+            flavor_id = kwargs['flavorId']
+        if loadbalancer_provider is None and 'loadbalancerProvider' in kwargs:
+            loadbalancer_provider = kwargs['loadbalancerProvider']
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if vip_address is None and 'vipAddress' in kwargs:
+            vip_address = kwargs['vipAddress']
+        if vip_network_id is None and 'vipNetworkId' in kwargs:
+            vip_network_id = kwargs['vipNetworkId']
+        if vip_port_id is None and 'vipPortId' in kwargs:
+            vip_port_id = kwargs['vipPortId']
+        if vip_subnet_id is None and 'vipSubnetId' in kwargs:
+            vip_subnet_id = kwargs['vipSubnetId']
+
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
         if availability_zone is not None:
@@ -667,15 +711,6 @@ class LoadBalancer(pulumi.CustomResource):
         > **Note:** This resource has attributes that depend on octavia minor versions.
         Please ensure your Openstack cloud supports the required minor version.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        lb1 = openstack.loadbalancer.LoadBalancer("lb1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
-        ```
-
         ## Import
 
         Load Balancer can be imported using the Load Balancer ID, e.g.:
@@ -736,15 +771,6 @@ class LoadBalancer(pulumi.CustomResource):
 
         > **Note:** This resource has attributes that depend on octavia minor versions.
         Please ensure your Openstack cloud supports the required minor version.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        lb1 = openstack.loadbalancer.LoadBalancer("lb1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
-        ```
 
         ## Import
 

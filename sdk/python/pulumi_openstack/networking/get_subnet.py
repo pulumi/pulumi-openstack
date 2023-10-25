@@ -277,15 +277,6 @@ def get_subnet(cidr: Optional[str] = None,
     """
     Use this data source to get the ID of an available OpenStack subnet.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    subnet1 = openstack.networking.get_subnet(name="subnet_1")
-    ```
-
 
     :param str cidr: The CIDR of the subnet.
     :param str description: Human-readable description of the subnet.
@@ -369,15 +360,6 @@ def get_subnet_output(cidr: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetResult]:
     """
     Use this data source to get the ID of an available OpenStack subnet.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    subnet1 = openstack.networking.get_subnet(name="subnet_1")
-    ```
 
 
     :param str cidr: The CIDR of the subnet.

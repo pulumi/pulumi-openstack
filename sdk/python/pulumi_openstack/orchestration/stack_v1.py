@@ -94,7 +94,7 @@ class StackV1Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             template_opts: pulumi.Input[Mapping[str, Any]],
+             template_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              stack_outputs: Optional[pulumi.Input[Sequence[pulumi.Input['StackV1StackOutputArgs']]]] = None,
              capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              creation_time: Optional[pulumi.Input[str]] = None,
@@ -111,7 +111,29 @@ class StackV1Args:
              template_description: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
              updated_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if template_opts is None and 'templateOpts' in kwargs:
+            template_opts = kwargs['templateOpts']
+        if template_opts is None:
+            raise TypeError("Missing 'template_opts' argument")
+        if stack_outputs is None and 'StackOutputs' in kwargs:
+            stack_outputs = kwargs['StackOutputs']
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if disable_rollback is None and 'disableRollback' in kwargs:
+            disable_rollback = kwargs['disableRollback']
+        if environment_opts is None and 'environmentOpts' in kwargs:
+            environment_opts = kwargs['environmentOpts']
+        if notification_topics is None and 'notificationTopics' in kwargs:
+            notification_topics = kwargs['notificationTopics']
+        if status_reason is None and 'statusReason' in kwargs:
+            status_reason = kwargs['statusReason']
+        if template_description is None and 'templateDescription' in kwargs:
+            template_description = kwargs['templateDescription']
+        if updated_time is None and 'updatedTime' in kwargs:
+            updated_time = kwargs['updatedTime']
+
         _setter("template_opts", template_opts)
         if stack_outputs is not None:
             _setter("stack_outputs", stack_outputs)
@@ -467,7 +489,27 @@ class _StackV1State:
              template_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
              updated_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if stack_outputs is None and 'StackOutputs' in kwargs:
+            stack_outputs = kwargs['StackOutputs']
+        if creation_time is None and 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if disable_rollback is None and 'disableRollback' in kwargs:
+            disable_rollback = kwargs['disableRollback']
+        if environment_opts is None and 'environmentOpts' in kwargs:
+            environment_opts = kwargs['environmentOpts']
+        if notification_topics is None and 'notificationTopics' in kwargs:
+            notification_topics = kwargs['notificationTopics']
+        if status_reason is None and 'statusReason' in kwargs:
+            status_reason = kwargs['statusReason']
+        if template_description is None and 'templateDescription' in kwargs:
+            template_description = kwargs['templateDescription']
+        if template_opts is None and 'templateOpts' in kwargs:
+            template_opts = kwargs['templateOpts']
+        if updated_time is None and 'updatedTime' in kwargs:
+            updated_time = kwargs['updatedTime']
+
         if stack_outputs is not None:
             _setter("stack_outputs", stack_outputs)
         if capabilities is not None:
@@ -752,40 +794,6 @@ class StackV1(pulumi.CustomResource):
         """
         Manages a V1 stack resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        stack1 = openstack.orchestration.StackV1("stack1",
-            disable_rollback=True,
-            environment_opts={
-                "Bin": \"\"\"
-
-        \"\"\",
-            },
-            parameters={
-                "length": 4,
-            },
-            template_opts={
-                "Bin": \"\"\"heat_template_version: 2013-05-23
-        parameters:
-          length:
-            type: number
-        resources:
-          test_res:
-            type: OS::Heat::TestResource
-          random:
-            type: OS::Heat::RandomString
-            properties:
-              length: {get_param: length}
-
-        \"\"\",
-            },
-            timeout=30)
-        ```
-
         ## Import
 
         stacks can be imported using the `id`, e.g.
@@ -840,40 +848,6 @@ class StackV1(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V1 stack resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        stack1 = openstack.orchestration.StackV1("stack1",
-            disable_rollback=True,
-            environment_opts={
-                "Bin": \"\"\"
-
-        \"\"\",
-            },
-            parameters={
-                "length": 4,
-            },
-            template_opts={
-                "Bin": \"\"\"heat_template_version: 2013-05-23
-        parameters:
-          length:
-            type: number
-        resources:
-          test_res:
-            type: OS::Heat::TestResource
-          random:
-            type: OS::Heat::RandomString
-            properties:
-              length: {get_param: length}
-
-        \"\"\",
-            },
-            timeout=30)
-        ```
 
         ## Import
 

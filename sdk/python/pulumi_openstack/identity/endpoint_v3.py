@@ -44,13 +44,25 @@ class EndpointV3Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint_region: pulumi.Input[str],
-             service_id: pulumi.Input[str],
-             url: pulumi.Input[str],
+             endpoint_region: Optional[pulumi.Input[str]] = None,
+             service_id: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
              interface: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if endpoint_region is None and 'endpointRegion' in kwargs:
+            endpoint_region = kwargs['endpointRegion']
+        if endpoint_region is None:
+            raise TypeError("Missing 'endpoint_region' argument")
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if service_id is None:
+            raise TypeError("Missing 'service_id' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("endpoint_region", endpoint_region)
         _setter("service_id", service_id)
         _setter("url", url)
@@ -184,7 +196,17 @@ class _EndpointV3State:
              service_name: Optional[pulumi.Input[str]] = None,
              service_type: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if endpoint_region is None and 'endpointRegion' in kwargs:
+            endpoint_region = kwargs['endpointRegion']
+        if service_id is None and 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_type is None and 'serviceType' in kwargs:
+            service_type = kwargs['serviceType']
+
         if endpoint_region is not None:
             _setter("endpoint_region", endpoint_region)
         if interface is not None:
@@ -319,19 +341,6 @@ class EndpointV3(pulumi.CustomResource):
 
         > **Note:** This usually requires admin privileges.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        service1 = openstack.identity.ServiceV3("service1", type="my-service-type")
-        endpoint1 = openstack.identity.EndpointV3("endpoint1",
-            service_id=service1.id,
-            endpoint_region=service1.region,
-            url="http://my-endpoint")
-        ```
-
         ## Import
 
         Endpoints can be imported using the `id`, e.g.
@@ -362,19 +371,6 @@ class EndpointV3(pulumi.CustomResource):
         Manages a V3 Endpoint resource within OpenStack Keystone.
 
         > **Note:** This usually requires admin privileges.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        service1 = openstack.identity.ServiceV3("service1", type="my-service-type")
-        endpoint1 = openstack.identity.EndpointV3("endpoint1",
-            service_id=service1.id,
-            endpoint_region=service1.region,
-            url="http://my-endpoint")
-        ```
 
         ## Import
 

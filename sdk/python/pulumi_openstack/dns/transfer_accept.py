@@ -44,12 +44,24 @@ class TransferAcceptArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: pulumi.Input[str],
-             zone_transfer_request_id: pulumi.Input[str],
+             key: Optional[pulumi.Input[str]] = None,
+             zone_transfer_request_id: Optional[pulumi.Input[str]] = None,
              disable_status_check: Optional[pulumi.Input[bool]] = None,
              region: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if zone_transfer_request_id is None and 'zoneTransferRequestId' in kwargs:
+            zone_transfer_request_id = kwargs['zoneTransferRequestId']
+        if zone_transfer_request_id is None:
+            raise TypeError("Missing 'zone_transfer_request_id' argument")
+        if disable_status_check is None and 'disableStatusCheck' in kwargs:
+            disable_status_check = kwargs['disableStatusCheck']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         _setter("key", key)
         _setter("zone_transfer_request_id", zone_transfer_request_id)
         if disable_status_check is not None:
@@ -164,7 +176,15 @@ class _TransferAcceptState:
              region: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_transfer_request_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disable_status_check is None and 'disableStatusCheck' in kwargs:
+            disable_status_check = kwargs['disableStatusCheck']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+        if zone_transfer_request_id is None and 'zoneTransferRequestId' in kwargs:
+            zone_transfer_request_id = kwargs['zoneTransferRequestId']
+
         if disable_status_check is not None:
             _setter("disable_status_check", disable_status_check)
         if key is not None:
@@ -258,24 +278,6 @@ class TransferAccept(pulumi.CustomResource):
         Manages a DNS zone transfer accept in the OpenStack DNS Service.
 
         ## Example Usage
-        ### Automatically detect the correct network
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        example_zone = openstack.dns.Zone("exampleZone",
-            email="jdoe@example.com",
-            description="An example zone",
-            ttl=3000,
-            type="PRIMARY")
-        request1 = openstack.dns.TransferRequest("request1",
-            zone_id=example_zone.id,
-            description="a transfer accept")
-        accept1 = openstack.dns.TransferAccept("accept1",
-            zone_transfer_request_id=request1.id,
-            key=request1.key)
-        ```
 
         ## Import
 
@@ -309,24 +311,6 @@ class TransferAccept(pulumi.CustomResource):
         Manages a DNS zone transfer accept in the OpenStack DNS Service.
 
         ## Example Usage
-        ### Automatically detect the correct network
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        example_zone = openstack.dns.Zone("exampleZone",
-            email="jdoe@example.com",
-            description="An example zone",
-            ttl=3000,
-            type="PRIMARY")
-        request1 = openstack.dns.TransferRequest("request1",
-            zone_id=example_zone.id,
-            description="a transfer accept")
-        accept1 = openstack.dns.TransferAccept("accept1",
-            zone_transfer_request_id=request1.id,
-            key=request1.key)
-        ```
 
         ## Import
 

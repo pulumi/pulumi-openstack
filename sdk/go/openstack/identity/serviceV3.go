@@ -17,32 +17,6 @@ import (
 //
 // > **Note:** This usually requires admin privileges.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := identity.NewServiceV3(ctx, "service1", &identity.ServiceV3Args{
-//				Type: pulumi.String("custom"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Services can be imported using the `id`, e.g.

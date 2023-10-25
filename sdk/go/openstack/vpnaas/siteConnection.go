@@ -15,45 +15,6 @@ import (
 
 // Manages a V2 Neutron IPSec site connection resource within OpenStack.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/vpnaas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpnaas.NewSiteConnection(ctx, "conn1", &vpnaas.SiteConnectionArgs{
-//				IkepolicyId:    pulumi.Any(openstack_vpnaas_ike_policy_v2.Policy_2.Id),
-//				IpsecpolicyId:  pulumi.Any(openstack_vpnaas_ipsec_policy_v2.Policy_1.Id),
-//				VpnserviceId:   pulumi.Any(openstack_vpnaas_service_v2.Service_1.Id),
-//				Psk:            pulumi.String("secret"),
-//				PeerAddress:    pulumi.String("192.168.10.1"),
-//				LocalEpGroupId: pulumi.Any(openstack_vpnaas_endpoint_group_v2.Group_2.Id),
-//				PeerEpGroupId:  pulumi.Any(openstack_vpnaas_endpoint_group_v2.Group_1.Id),
-//				Dpds: vpnaas.SiteConnectionDpdArray{
-//					&vpnaas.SiteConnectionDpdArgs{
-//						Action:   pulumi.String("restart"),
-//						Timeout:  pulumi.Int(42),
-//						Interval: pulumi.Int(21),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Site Connections can be imported using the `id`, e.g.

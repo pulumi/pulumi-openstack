@@ -72,8 +72,8 @@ class ShareArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             share_proto: pulumi.Input[str],
-             size: pulumi.Input[int],
+             share_proto: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
              availability_zone: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              is_public: Optional[pulumi.Input[bool]] = None,
@@ -83,7 +83,25 @@ class ShareArgs:
              share_network_id: Optional[pulumi.Input[str]] = None,
              share_type: Optional[pulumi.Input[str]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if share_proto is None and 'shareProto' in kwargs:
+            share_proto = kwargs['shareProto']
+        if share_proto is None:
+            raise TypeError("Missing 'share_proto' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if availability_zone is None and 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if is_public is None and 'isPublic' in kwargs:
+            is_public = kwargs['isPublic']
+        if share_network_id is None and 'shareNetworkId' in kwargs:
+            share_network_id = kwargs['shareNetworkId']
+        if share_type is None and 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         _setter("share_proto", share_proto)
         _setter("size", size)
         if availability_zone is not None:
@@ -352,7 +370,33 @@ class _ShareState:
              share_type: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if all_metadata is None and 'allMetadata' in kwargs:
+            all_metadata = kwargs['allMetadata']
+        if availability_zone is None and 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if export_locations is None and 'exportLocations' in kwargs:
+            export_locations = kwargs['exportLocations']
+        if has_replicas is None and 'hasReplicas' in kwargs:
+            has_replicas = kwargs['hasReplicas']
+        if is_public is None and 'isPublic' in kwargs:
+            is_public = kwargs['isPublic']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if replication_type is None and 'replicationType' in kwargs:
+            replication_type = kwargs['replicationType']
+        if share_network_id is None and 'shareNetworkId' in kwargs:
+            share_network_id = kwargs['shareNetworkId']
+        if share_proto is None and 'shareProto' in kwargs:
+            share_proto = kwargs['shareProto']
+        if share_server_id is None and 'shareServerId' in kwargs:
+            share_server_id = kwargs['shareServerId']
+        if share_type is None and 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         if all_metadata is not None:
             _setter("all_metadata", all_metadata)
         if availability_zone is not None:
@@ -643,28 +687,6 @@ class Share(pulumi.CustomResource):
         """
         Use this resource to configure a share.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
-        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
-            description="test share network with security services",
-            neutron_net_id=network1.id,
-            neutron_subnet_id=subnet1.id)
-        share1 = openstack.sharedfilesystem.Share("share1",
-            description="test share description",
-            share_proto="NFS",
-            size=1,
-            share_network_id=sharenetwork1.id)
-        ```
-
         ## Import
 
         This resource can be imported by specifying the ID of the share:
@@ -709,28 +731,6 @@ class Share(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Use this resource to configure a share.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
-        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
-            description="test share network with security services",
-            neutron_net_id=network1.id,
-            neutron_subnet_id=subnet1.id)
-        share1 = openstack.sharedfilesystem.Share("share1",
-            description="test share description",
-            share_proto="NFS",
-            size=1,
-            share_network_id=sharenetwork1.id)
-        ```
 
         ## Import
 

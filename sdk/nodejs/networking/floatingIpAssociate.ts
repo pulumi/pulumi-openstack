@@ -9,19 +9,6 @@ import * as utilities from "../utilities";
  * where you have a pre-allocated floating IP or are unable to use the
  * `openstack.networking.FloatingIp` resource to create a floating IP.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const port1 = new openstack.networking.Port("port1", {networkId: "a5bbd213-e1d3-49b6-aed1-9df60ea94b9a"});
- * const fip1 = new openstack.networking.FloatingIpAssociate("fip1", {
- *     floatingIp: "1.2.3.4",
- *     portId: port1.id,
- * });
- * ```
- *
  * ## Import
  *
  * Floating IP associations can be imported using the `id` of the floating IP, e.g.

@@ -6,15 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get a list of availability zones from OpenStack
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const zones = openstack.compute.getAvailabilityZones({});
- * ```
  */
 export function getAvailabilityZones(args?: GetAvailabilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZonesResult> {
     args = args || {};
@@ -57,15 +48,6 @@ export interface GetAvailabilityZonesResult {
 }
 /**
  * Use this data source to get a list of availability zones from OpenStack
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const zones = openstack.compute.getAvailabilityZones({});
- * ```
  */
 export function getAvailabilityZonesOutput(args?: GetAvailabilityZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvailabilityZonesResult> {
     return pulumi.output(args).apply((a: any) => getAvailabilityZones(a, opts))

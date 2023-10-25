@@ -30,9 +30,15 @@ class ContainerVersioningLegacy(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             location: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             location: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if location is None:
+            raise TypeError("Missing 'location' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("location", location)
         _setter("type", type)
 

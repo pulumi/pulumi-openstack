@@ -47,12 +47,28 @@ class RbacPolicyV2Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             object_id: pulumi.Input[str],
-             object_type: pulumi.Input[str],
-             target_tenant: pulumi.Input[str],
+             action: Optional[pulumi.Input[str]] = None,
+             object_id: Optional[pulumi.Input[str]] = None,
+             object_type: Optional[pulumi.Input[str]] = None,
+             target_tenant: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if object_id is None and 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+        if object_id is None:
+            raise TypeError("Missing 'object_id' argument")
+        if object_type is None and 'objectType' in kwargs:
+            object_type = kwargs['objectType']
+        if object_type is None:
+            raise TypeError("Missing 'object_type' argument")
+        if target_tenant is None and 'targetTenant' in kwargs:
+            target_tenant = kwargs['targetTenant']
+        if target_tenant is None:
+            raise TypeError("Missing 'target_tenant' argument")
+
         _setter("action", action)
         _setter("object_id", object_id)
         _setter("object_type", object_type)
@@ -174,7 +190,17 @@ class _RbacPolicyV2State:
              project_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              target_tenant: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if object_id is None and 'objectId' in kwargs:
+            object_id = kwargs['objectId']
+        if object_type is None and 'objectType' in kwargs:
+            object_type = kwargs['objectType']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if target_tenant is None and 'targetTenant' in kwargs:
+            target_tenant = kwargs['targetTenant']
+
         if action is not None:
             _setter("action", action)
         if object_id is not None:
@@ -293,20 +319,6 @@ class RbacPolicyV2(pulumi.CustomResource):
         a wildcard RBAC policy granting everyone access to preserve previous behavior
         before this feature was added.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        rbac_policy1 = openstack.networking.RbacPolicyV2("rbacPolicy1",
-            action="access_as_shared",
-            object_id=network1.id,
-            object_type="network",
-            target_tenant="20415a973c9e45d3917f078950644697")
-        ```
-
         ## Import
 
         RBAC policies can be imported using the `id`, e.g.
@@ -352,20 +364,6 @@ class RbacPolicyV2(pulumi.CustomResource):
         If a network is marked as external during creation, it now implicitly creates
         a wildcard RBAC policy granting everyone access to preserve previous behavior
         before this feature was added.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        rbac_policy1 = openstack.networking.RbacPolicyV2("rbacPolicy1",
-            action="access_as_shared",
-            object_id=network1.id,
-            object_type="network",
-            target_tenant="20415a973c9e45d3917f078950644697")
-        ```
 
         ## Import
 

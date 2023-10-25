@@ -8,17 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the ID of an available Barbican container.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const example = openstack.keymanager.getContainer({
- *     name: "my_container",
- * });
- * ```
  */
 export function getContainer(args?: GetContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerResult> {
     args = args || {};
@@ -104,17 +93,6 @@ export interface GetContainerResult {
 }
 /**
  * Use this data source to get the ID of an available Barbican container.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const example = openstack.keymanager.getContainer({
- *     name: "my_container",
- * });
- * ```
  */
 export function getContainerOutput(args?: GetContainerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerResult> {
     return pulumi.output(args).apply((a: any) => getContainer(a, opts))

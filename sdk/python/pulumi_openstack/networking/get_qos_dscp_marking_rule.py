@@ -87,15 +87,6 @@ def get_qos_dscp_marking_rule(dscp_mark: Optional[int] = None,
     """
     Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    qos_dscp_marking_rule1 = openstack.networking.get_qos_dscp_marking_rule(dscp_mark=26)
-    ```
-
 
     :param int dscp_mark: The value of a DSCP mark.
     :param str qos_policy_id: The QoS policy reference.
@@ -124,15 +115,6 @@ def get_qos_dscp_marking_rule_output(dscp_mark: Optional[pulumi.Input[Optional[i
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQosDscpMarkingRuleResult]:
     """
     Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    qos_dscp_marking_rule1 = openstack.networking.get_qos_dscp_marking_rule(dscp_mark=26)
-    ```
 
 
     :param int dscp_mark: The value of a DSCP mark.

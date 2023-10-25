@@ -13,31 +13,6 @@ namespace Pulumi.OpenStack.Networking
     /// Manages a V2 Neutron QoS bandwidth limit rule resource within OpenStack.
     /// 
     /// ## Example Usage
-    /// ### Create a QoS Policy with some bandwidth limit rule
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var qosPolicy1 = new OpenStack.Networking.QosPolicy("qosPolicy1", new()
-    ///     {
-    ///         Description = "bw_limit",
-    ///     });
-    /// 
-    ///     var bwLimitRule1 = new OpenStack.Networking.QosBandwidthLimitRule("bwLimitRule1", new()
-    ///     {
-    ///         QosPolicyId = qosPolicy1.Id,
-    ///         MaxKbps = 3000,
-    ///         MaxBurstKbps = 300,
-    ///         Direction = "egress",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

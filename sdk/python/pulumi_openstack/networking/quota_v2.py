@@ -68,7 +68,7 @@ class QuotaV2Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_id: pulumi.Input[str],
+             project_id: Optional[pulumi.Input[str]] = None,
              floatingip: Optional[pulumi.Input[int]] = None,
              network: Optional[pulumi.Input[int]] = None,
              port: Optional[pulumi.Input[int]] = None,
@@ -79,7 +79,19 @@ class QuotaV2Args:
              security_group_rule: Optional[pulumi.Input[int]] = None,
              subnet: Optional[pulumi.Input[int]] = None,
              subnetpool: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if rbac_policy is None and 'rbacPolicy' in kwargs:
+            rbac_policy = kwargs['rbacPolicy']
+        if security_group is None and 'securityGroup' in kwargs:
+            security_group = kwargs['securityGroup']
+        if security_group_rule is None and 'securityGroupRule' in kwargs:
+            security_group_rule = kwargs['securityGroupRule']
+
         _setter("project_id", project_id)
         if floatingip is not None:
             _setter("floatingip", floatingip)
@@ -315,7 +327,17 @@ class _QuotaV2State:
              security_group_rule: Optional[pulumi.Input[int]] = None,
              subnet: Optional[pulumi.Input[int]] = None,
              subnetpool: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if rbac_policy is None and 'rbacPolicy' in kwargs:
+            rbac_policy = kwargs['rbacPolicy']
+        if security_group is None and 'securityGroup' in kwargs:
+            security_group = kwargs['securityGroup']
+        if security_group_rule is None and 'securityGroupRule' in kwargs:
+            security_group_rule = kwargs['securityGroupRule']
+
         if floatingip is not None:
             _setter("floatingip", floatingip)
         if network is not None:
@@ -512,26 +534,6 @@ class QuotaV2(pulumi.CustomResource):
         > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
             created with zero value.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        project1 = openstack.identity.Project("project1")
-        quota1 = openstack.networking.QuotaV2("quota1",
-            project_id=project1.id,
-            floatingip=10,
-            network=4,
-            port=100,
-            rbac_policy=10,
-            router=4,
-            security_group=10,
-            security_group_rule=100,
-            subnet=8,
-            subnetpool=2)
-        ```
-
         ## Import
 
         Quotas can be imported using the `project_id/region_name`, e.g.
@@ -582,26 +584,6 @@ class QuotaV2(pulumi.CustomResource):
 
         > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
             created with zero value.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        project1 = openstack.identity.Project("project1")
-        quota1 = openstack.networking.QuotaV2("quota1",
-            project_id=project1.id,
-            floatingip=10,
-            network=4,
-            port=100,
-            rbac_policy=10,
-            router=4,
-            security_group=10,
-            security_group_rule=100,
-            subnet=8,
-            subnetpool=2)
-        ```
 
         ## Import
 

@@ -15,62 +15,6 @@ import (
 // Manages a Host Aggregate within Openstack Nova.
 //
 // ## Example Usage
-// ### Full example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewAggregateV2(ctx, "dellServers", &compute.AggregateV2Args{
-//				Hosts: pulumi.StringArray{
-//					pulumi.String("myhost01.example.com"),
-//					pulumi.String("myhost02.example.com"),
-//				},
-//				Metadata: pulumi.StringMap{
-//					"cpus": pulumi.String("56"),
-//				},
-//				Region: pulumi.String("RegionOne"),
-//				Zone:   pulumi.String("nova"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Minimum required example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewAggregateV2(ctx, "test", nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

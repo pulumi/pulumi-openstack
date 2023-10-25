@@ -9,17 +9,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
  * this resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const admins = openstack.identity.getGroup({
- *     name: "admins",
- * });
- * ```
  */
 export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
 
@@ -80,17 +69,6 @@ export interface GetGroupResult {
  *
  * > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
  * this resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const admins = openstack.identity.getGroup({
- *     name: "admins",
- * });
- * ```
  */
 export function getGroupOutput(args: GetGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
     return pulumi.output(args).apply((a: any) => getGroup(a, opts))

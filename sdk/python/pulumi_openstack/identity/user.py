@@ -87,7 +87,23 @@ class UserArgs:
              name: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_project_id is None and 'defaultProjectId' in kwargs:
+            default_project_id = kwargs['defaultProjectId']
+        if domain_id is None and 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if ignore_change_password_upon_first_use is None and 'ignoreChangePasswordUponFirstUse' in kwargs:
+            ignore_change_password_upon_first_use = kwargs['ignoreChangePasswordUponFirstUse']
+        if ignore_lockout_failure_attempts is None and 'ignoreLockoutFailureAttempts' in kwargs:
+            ignore_lockout_failure_attempts = kwargs['ignoreLockoutFailureAttempts']
+        if ignore_password_expiry is None and 'ignorePasswordExpiry' in kwargs:
+            ignore_password_expiry = kwargs['ignorePasswordExpiry']
+        if multi_factor_auth_enabled is None and 'multiFactorAuthEnabled' in kwargs:
+            multi_factor_auth_enabled = kwargs['multiFactorAuthEnabled']
+        if multi_factor_auth_rules is None and 'multiFactorAuthRules' in kwargs:
+            multi_factor_auth_rules = kwargs['multiFactorAuthRules']
+
         if default_project_id is not None:
             _setter("default_project_id", default_project_id)
         if description is not None:
@@ -356,7 +372,23 @@ class _UserState:
              name: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_project_id is None and 'defaultProjectId' in kwargs:
+            default_project_id = kwargs['defaultProjectId']
+        if domain_id is None and 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if ignore_change_password_upon_first_use is None and 'ignoreChangePasswordUponFirstUse' in kwargs:
+            ignore_change_password_upon_first_use = kwargs['ignoreChangePasswordUponFirstUse']
+        if ignore_lockout_failure_attempts is None and 'ignoreLockoutFailureAttempts' in kwargs:
+            ignore_lockout_failure_attempts = kwargs['ignoreLockoutFailureAttempts']
+        if ignore_password_expiry is None and 'ignorePasswordExpiry' in kwargs:
+            ignore_password_expiry = kwargs['ignorePasswordExpiry']
+        if multi_factor_auth_enabled is None and 'multiFactorAuthEnabled' in kwargs:
+            multi_factor_auth_enabled = kwargs['multiFactorAuthEnabled']
+        if multi_factor_auth_rules is None and 'multiFactorAuthRules' in kwargs:
+            multi_factor_auth_rules = kwargs['multiFactorAuthRules']
+
         if default_project_id is not None:
             _setter("default_project_id", default_project_id)
         if description is not None:
@@ -580,35 +612,6 @@ class User(pulumi.CustomResource):
         > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        project1 = openstack.identity.Project("project1")
-        user1 = openstack.identity.User("user1",
-            default_project_id=project1.id,
-            description="A user",
-            password="password123",
-            ignore_change_password_upon_first_use=True,
-            multi_factor_auth_enabled=True,
-            multi_factor_auth_rules=[
-                openstack.identity.UserMultiFactorAuthRuleArgs(
-                    rules=[
-                        "password",
-                        "totp",
-                    ],
-                ),
-                openstack.identity.UserMultiFactorAuthRuleArgs(
-                    rules=["password"],
-                ),
-            ],
-            extra={
-                "email": "user_1@foobar.com",
-            })
-        ```
-
         ## Import
 
         Users can be imported using the `id`, e.g.
@@ -658,35 +661,6 @@ class User(pulumi.CustomResource):
 
         > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        project1 = openstack.identity.Project("project1")
-        user1 = openstack.identity.User("user1",
-            default_project_id=project1.id,
-            description="A user",
-            password="password123",
-            ignore_change_password_upon_first_use=True,
-            multi_factor_auth_enabled=True,
-            multi_factor_auth_rules=[
-                openstack.identity.UserMultiFactorAuthRuleArgs(
-                    rules=[
-                        "password",
-                        "totp",
-                    ],
-                ),
-                openstack.identity.UserMultiFactorAuthRuleArgs(
-                    rules=["password"],
-                ),
-            ],
-            extra={
-                "email": "user_1@foobar.com",
-            })
-        ```
 
         ## Import
 

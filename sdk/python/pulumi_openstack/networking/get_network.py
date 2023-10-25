@@ -263,15 +263,6 @@ def get_network(description: Optional[str] = None,
     """
     Use this data source to get the ID of an available OpenStack network.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    network = openstack.networking.get_network(name="tf_test_network")
-    ```
-
 
     :param str description: Human-readable description of the network.
     :param bool external: The external routing facility of the network.
@@ -341,15 +332,6 @@ def get_network_output(description: Optional[pulumi.Input[Optional[str]]] = None
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkResult]:
     """
     Use this data source to get the ID of an available OpenStack network.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    network = openstack.networking.get_network(name="tf_test_network")
-    ```
 
 
     :param str description: Human-readable description of the network.

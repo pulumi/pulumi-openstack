@@ -176,15 +176,6 @@ def get_user(domain_id: Optional[str] = None,
     """
     Use this data source to get the ID of an OpenStack user.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    user1 = openstack.identity.get_user(name="user_1")
-    ```
-
 
     :param str domain_id: The domain this user belongs to.
     :param bool enabled: Whether the user is enabled or disabled. Valid
@@ -234,15 +225,6 @@ def get_user_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
     """
     Use this data source to get the ID of an OpenStack user.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    user1 = openstack.identity.get_user(name="user_1")
-    ```
 
 
     :param str domain_id: The domain this user belongs to.

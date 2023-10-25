@@ -15,34 +15,6 @@ import (
 // Manages a DNS zone in the OpenStack DNS Service.
 //
 // ## Example Usage
-// ### Automatically detect the correct network
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/dns"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dns.NewZone(ctx, "exampleCom", &dns.ZoneArgs{
-//				Description: pulumi.String("An example zone"),
-//				Email:       pulumi.String("jdoe@example.com"),
-//				Ttl:         pulumi.Int(3000),
-//				Type:        pulumi.String("PRIMARY"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

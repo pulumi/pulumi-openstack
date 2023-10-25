@@ -31,7 +31,9 @@ class ContainerV1AclArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              read: Optional[pulumi.Input['ContainerV1AclReadArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if read is not None:
             _setter("read", read)
 
@@ -74,7 +76,15 @@ class ContainerV1AclReadArgs:
              project_access: Optional[pulumi.Input[bool]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
              users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if project_access is None and 'projectAccess' in kwargs:
+            project_access = kwargs['projectAccess']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if project_access is not None:
@@ -155,7 +165,9 @@ class ContainerV1ConsumerArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if url is not None:
@@ -204,9 +216,15 @@ class ContainerV1SecretRefArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             secret_ref: pulumi.Input[str],
+             secret_ref: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if secret_ref is None and 'secretRef' in kwargs:
+            secret_ref = kwargs['secretRef']
+        if secret_ref is None:
+            raise TypeError("Missing 'secret_ref' argument")
+
         _setter("secret_ref", secret_ref)
         if name is not None:
             _setter("name", name)
@@ -265,13 +283,23 @@ class OrderV1MetaArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             algorithm: pulumi.Input[str],
-             bit_length: pulumi.Input[int],
+             algorithm: Optional[pulumi.Input[str]] = None,
+             bit_length: Optional[pulumi.Input[int]] = None,
              expiration: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              payload_content_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if algorithm is None:
+            raise TypeError("Missing 'algorithm' argument")
+        if bit_length is None and 'bitLength' in kwargs:
+            bit_length = kwargs['bitLength']
+        if bit_length is None:
+            raise TypeError("Missing 'bit_length' argument")
+        if payload_content_type is None and 'payloadContentType' in kwargs:
+            payload_content_type = kwargs['payloadContentType']
+
         _setter("algorithm", algorithm)
         _setter("bit_length", bit_length)
         if expiration is not None:
@@ -368,7 +396,9 @@ class SecretV1AclArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              read: Optional[pulumi.Input['SecretV1AclReadArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if read is not None:
             _setter("read", read)
 
@@ -411,7 +441,15 @@ class SecretV1AclReadArgs:
              project_access: Optional[pulumi.Input[bool]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
              users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if project_access is None and 'projectAccess' in kwargs:
+            project_access = kwargs['projectAccess']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if project_access is not None:

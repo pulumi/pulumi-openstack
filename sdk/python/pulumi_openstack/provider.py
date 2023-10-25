@@ -156,7 +156,59 @@ class ProviderArgs:
              user_domain_name: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if allow_reauth is None and 'allowReauth' in kwargs:
+            allow_reauth = kwargs['allowReauth']
+        if application_credential_id is None and 'applicationCredentialId' in kwargs:
+            application_credential_id = kwargs['applicationCredentialId']
+        if application_credential_name is None and 'applicationCredentialName' in kwargs:
+            application_credential_name = kwargs['applicationCredentialName']
+        if application_credential_secret is None and 'applicationCredentialSecret' in kwargs:
+            application_credential_secret = kwargs['applicationCredentialSecret']
+        if auth_url is None and 'authUrl' in kwargs:
+            auth_url = kwargs['authUrl']
+        if cacert_file is None and 'cacertFile' in kwargs:
+            cacert_file = kwargs['cacertFile']
+        if default_domain is None and 'defaultDomain' in kwargs:
+            default_domain = kwargs['defaultDomain']
+        if delayed_auth is None and 'delayedAuth' in kwargs:
+            delayed_auth = kwargs['delayedAuth']
+        if disable_no_cache_header is None and 'disableNoCacheHeader' in kwargs:
+            disable_no_cache_header = kwargs['disableNoCacheHeader']
+        if domain_id is None and 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if endpoint_overrides is None and 'endpointOverrides' in kwargs:
+            endpoint_overrides = kwargs['endpointOverrides']
+        if endpoint_type is None and 'endpointType' in kwargs:
+            endpoint_type = kwargs['endpointType']
+        if max_retries is None and 'maxRetries' in kwargs:
+            max_retries = kwargs['maxRetries']
+        if project_domain_id is None and 'projectDomainId' in kwargs:
+            project_domain_id = kwargs['projectDomainId']
+        if project_domain_name is None and 'projectDomainName' in kwargs:
+            project_domain_name = kwargs['projectDomainName']
+        if system_scope is None and 'systemScope' in kwargs:
+            system_scope = kwargs['systemScope']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if tenant_name is None and 'tenantName' in kwargs:
+            tenant_name = kwargs['tenantName']
+        if use_octavia is None and 'useOctavia' in kwargs:
+            use_octavia = kwargs['useOctavia']
+        if user_domain_id is None and 'userDomainId' in kwargs:
+            user_domain_id = kwargs['userDomainId']
+        if user_domain_name is None and 'userDomainName' in kwargs:
+            user_domain_name = kwargs['userDomainName']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_name is None and 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if allow_reauth is None:
             allow_reauth = _utilities.get_env_bool('OS_ALLOW_REAUTH')
         if allow_reauth is not None:

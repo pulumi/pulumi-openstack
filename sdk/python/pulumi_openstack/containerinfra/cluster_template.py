@@ -164,8 +164,8 @@ class ClusterTemplateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             coe: pulumi.Input[str],
-             image: pulumi.Input[str],
+             coe: Optional[pulumi.Input[str]] = None,
+             image: Optional[pulumi.Input[str]] = None,
              apiserver_port: Optional[pulumi.Input[int]] = None,
              cluster_distro: Optional[pulumi.Input[str]] = None,
              dns_nameserver: Optional[pulumi.Input[str]] = None,
@@ -193,7 +193,55 @@ class ClusterTemplateArgs:
              server_type: Optional[pulumi.Input[str]] = None,
              tls_disabled: Optional[pulumi.Input[bool]] = None,
              volume_driver: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if coe is None:
+            raise TypeError("Missing 'coe' argument")
+        if image is None:
+            raise TypeError("Missing 'image' argument")
+        if apiserver_port is None and 'apiserverPort' in kwargs:
+            apiserver_port = kwargs['apiserverPort']
+        if cluster_distro is None and 'clusterDistro' in kwargs:
+            cluster_distro = kwargs['clusterDistro']
+        if dns_nameserver is None and 'dnsNameserver' in kwargs:
+            dns_nameserver = kwargs['dnsNameserver']
+        if docker_storage_driver is None and 'dockerStorageDriver' in kwargs:
+            docker_storage_driver = kwargs['dockerStorageDriver']
+        if docker_volume_size is None and 'dockerVolumeSize' in kwargs:
+            docker_volume_size = kwargs['dockerVolumeSize']
+        if external_network_id is None and 'externalNetworkId' in kwargs:
+            external_network_id = kwargs['externalNetworkId']
+        if fixed_network is None and 'fixedNetwork' in kwargs:
+            fixed_network = kwargs['fixedNetwork']
+        if fixed_subnet is None and 'fixedSubnet' in kwargs:
+            fixed_subnet = kwargs['fixedSubnet']
+        if floating_ip_enabled is None and 'floatingIpEnabled' in kwargs:
+            floating_ip_enabled = kwargs['floatingIpEnabled']
+        if http_proxy is None and 'httpProxy' in kwargs:
+            http_proxy = kwargs['httpProxy']
+        if https_proxy is None and 'httpsProxy' in kwargs:
+            https_proxy = kwargs['httpsProxy']
+        if insecure_registry is None and 'insecureRegistry' in kwargs:
+            insecure_registry = kwargs['insecureRegistry']
+        if keypair_id is None and 'keypairId' in kwargs:
+            keypair_id = kwargs['keypairId']
+        if master_flavor is None and 'masterFlavor' in kwargs:
+            master_flavor = kwargs['masterFlavor']
+        if master_lb_enabled is None and 'masterLbEnabled' in kwargs:
+            master_lb_enabled = kwargs['masterLbEnabled']
+        if network_driver is None and 'networkDriver' in kwargs:
+            network_driver = kwargs['networkDriver']
+        if no_proxy is None and 'noProxy' in kwargs:
+            no_proxy = kwargs['noProxy']
+        if registry_enabled is None and 'registryEnabled' in kwargs:
+            registry_enabled = kwargs['registryEnabled']
+        if server_type is None and 'serverType' in kwargs:
+            server_type = kwargs['serverType']
+        if tls_disabled is None and 'tlsDisabled' in kwargs:
+            tls_disabled = kwargs['tlsDisabled']
+        if volume_driver is None and 'volumeDriver' in kwargs:
+            volume_driver = kwargs['volumeDriver']
+
         _setter("coe", coe)
         _setter("image", image)
         if apiserver_port is not None:
@@ -854,7 +902,59 @@ class _ClusterTemplateState:
              updated_at: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
              volume_driver: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if apiserver_port is None and 'apiserverPort' in kwargs:
+            apiserver_port = kwargs['apiserverPort']
+        if cluster_distro is None and 'clusterDistro' in kwargs:
+            cluster_distro = kwargs['clusterDistro']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if dns_nameserver is None and 'dnsNameserver' in kwargs:
+            dns_nameserver = kwargs['dnsNameserver']
+        if docker_storage_driver is None and 'dockerStorageDriver' in kwargs:
+            docker_storage_driver = kwargs['dockerStorageDriver']
+        if docker_volume_size is None and 'dockerVolumeSize' in kwargs:
+            docker_volume_size = kwargs['dockerVolumeSize']
+        if external_network_id is None and 'externalNetworkId' in kwargs:
+            external_network_id = kwargs['externalNetworkId']
+        if fixed_network is None and 'fixedNetwork' in kwargs:
+            fixed_network = kwargs['fixedNetwork']
+        if fixed_subnet is None and 'fixedSubnet' in kwargs:
+            fixed_subnet = kwargs['fixedSubnet']
+        if floating_ip_enabled is None and 'floatingIpEnabled' in kwargs:
+            floating_ip_enabled = kwargs['floatingIpEnabled']
+        if http_proxy is None and 'httpProxy' in kwargs:
+            http_proxy = kwargs['httpProxy']
+        if https_proxy is None and 'httpsProxy' in kwargs:
+            https_proxy = kwargs['httpsProxy']
+        if insecure_registry is None and 'insecureRegistry' in kwargs:
+            insecure_registry = kwargs['insecureRegistry']
+        if keypair_id is None and 'keypairId' in kwargs:
+            keypair_id = kwargs['keypairId']
+        if master_flavor is None and 'masterFlavor' in kwargs:
+            master_flavor = kwargs['masterFlavor']
+        if master_lb_enabled is None and 'masterLbEnabled' in kwargs:
+            master_lb_enabled = kwargs['masterLbEnabled']
+        if network_driver is None and 'networkDriver' in kwargs:
+            network_driver = kwargs['networkDriver']
+        if no_proxy is None and 'noProxy' in kwargs:
+            no_proxy = kwargs['noProxy']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if registry_enabled is None and 'registryEnabled' in kwargs:
+            registry_enabled = kwargs['registryEnabled']
+        if server_type is None and 'serverType' in kwargs:
+            server_type = kwargs['serverType']
+        if tls_disabled is None and 'tlsDisabled' in kwargs:
+            tls_disabled = kwargs['tlsDisabled']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if volume_driver is None and 'volumeDriver' in kwargs:
+            volume_driver = kwargs['volumeDriver']
+
         if apiserver_port is not None:
             _setter("apiserver_port", apiserver_port)
         if cluster_distro is not None:
@@ -1410,32 +1510,6 @@ class ClusterTemplate(pulumi.CustomResource):
         Manages a V1 Magnum cluster template resource within OpenStack.
 
         ## Example Usage
-        ### Create a Cluster template
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        clustertemplate1 = openstack.containerinfra.ClusterTemplate("clustertemplate1",
-            coe="kubernetes",
-            dns_nameserver="1.1.1.1",
-            docker_storage_driver="devicemapper",
-            docker_volume_size=10,
-            flavor="m1.small",
-            floating_ip_enabled=False,
-            image="Fedora-Atomic-27",
-            labels={
-                "influx_grafana_dashboard_enabled": "true",
-                "kube_dashboard_enabled": "true",
-                "kube_tag": "1.11.1",
-                "prometheus_monitoring": "true",
-            },
-            master_flavor="m1.medium",
-            master_lb_enabled=True,
-            network_driver="flannel",
-            server_type="vm",
-            volume_driver="cinder")
-        ```
         ## Attributes reference
 
         The following attributes are exported:
@@ -1578,32 +1652,6 @@ class ClusterTemplate(pulumi.CustomResource):
         Manages a V1 Magnum cluster template resource within OpenStack.
 
         ## Example Usage
-        ### Create a Cluster template
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        clustertemplate1 = openstack.containerinfra.ClusterTemplate("clustertemplate1",
-            coe="kubernetes",
-            dns_nameserver="1.1.1.1",
-            docker_storage_driver="devicemapper",
-            docker_volume_size=10,
-            flavor="m1.small",
-            floating_ip_enabled=False,
-            image="Fedora-Atomic-27",
-            labels={
-                "influx_grafana_dashboard_enabled": "true",
-                "kube_dashboard_enabled": "true",
-                "kube_tag": "1.11.1",
-                "prometheus_monitoring": "true",
-            },
-            master_flavor="m1.medium",
-            master_lb_enabled=True,
-            network_driver="flannel",
-            server_type="vm",
-            volume_driver="cinder")
-        ```
         ## Attributes reference
 
         The following attributes are exported:

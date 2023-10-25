@@ -29,7 +29,9 @@ class ShareExportLocation(dict):
              _setter: Callable[[Any, Any], None],
              path: Optional[str] = None,
              preferred: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if path is not None:
             _setter("path", path)
         if preferred is not None:
@@ -59,9 +61,15 @@ class GetShareExportLocationResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             path: str,
-             preferred: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             path: Optional[str] = None,
+             preferred: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if preferred is None:
+            raise TypeError("Missing 'preferred' argument")
+
         _setter("path", path)
         _setter("preferred", preferred)
 

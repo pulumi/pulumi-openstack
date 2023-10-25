@@ -352,19 +352,6 @@ def get_image(hidden: Optional[bool] = None,
     """
     Use this data source to get the ID of an available OpenStack image.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    ubuntu = openstack.images.get_image(most_recent=True,
-        name="Ubuntu 16.04",
-        properties={
-            "key": "value",
-        })
-    ```
-
 
     :param bool hidden: Whether or not the image is hidden from public list.
     :param str member_status: The status of the image. Must be one of
@@ -466,19 +453,6 @@ def get_image_output(hidden: Optional[pulumi.Input[Optional[bool]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageResult]:
     """
     Use this data source to get the ID of an available OpenStack image.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    ubuntu = openstack.images.get_image(most_recent=True,
-        name="Ubuntu 16.04",
-        properties={
-            "key": "value",
-        })
-    ```
 
 
     :param bool hidden: Whether or not the image is hidden from public list.

@@ -39,11 +39,23 @@ class FloatingIpAssociateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             floating_ip: pulumi.Input[str],
-             port_id: pulumi.Input[str],
+             floating_ip: Optional[pulumi.Input[str]] = None,
+             port_id: Optional[pulumi.Input[str]] = None,
              fixed_ip: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if floating_ip is None and 'floatingIp' in kwargs:
+            floating_ip = kwargs['floatingIp']
+        if floating_ip is None:
+            raise TypeError("Missing 'floating_ip' argument")
+        if port_id is None and 'portId' in kwargs:
+            port_id = kwargs['portId']
+        if port_id is None:
+            raise TypeError("Missing 'port_id' argument")
+        if fixed_ip is None and 'fixedIp' in kwargs:
+            fixed_ip = kwargs['fixedIp']
+
         _setter("floating_ip", floating_ip)
         _setter("port_id", port_id)
         if fixed_ip is not None:
@@ -134,7 +146,15 @@ class _FloatingIpAssociateState:
              floating_ip: Optional[pulumi.Input[str]] = None,
              port_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fixed_ip is None and 'fixedIp' in kwargs:
+            fixed_ip = kwargs['fixedIp']
+        if floating_ip is None and 'floatingIp' in kwargs:
+            floating_ip = kwargs['floatingIp']
+        if port_id is None and 'portId' in kwargs:
+            port_id = kwargs['portId']
+
         if fixed_ip is not None:
             _setter("fixed_ip", fixed_ip)
         if floating_ip is not None:
@@ -210,18 +230,6 @@ class FloatingIpAssociate(pulumi.CustomResource):
         where you have a pre-allocated floating IP or are unable to use the
         `networking.FloatingIp` resource to create a floating IP.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        port1 = openstack.networking.Port("port1", network_id="a5bbd213-e1d3-49b6-aed1-9df60ea94b9a")
-        fip1 = openstack.networking.FloatingIpAssociate("fip1",
-            floating_ip="1.2.3.4",
-            port_id=port1.id)
-        ```
-
         ## Import
 
         Floating IP associations can be imported using the `id` of the floating IP, e.g.
@@ -251,18 +259,6 @@ class FloatingIpAssociate(pulumi.CustomResource):
         Associates a floating IP to a port. This is useful for situations
         where you have a pre-allocated floating IP or are unable to use the
         `networking.FloatingIp` resource to create a floating IP.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        port1 = openstack.networking.Port("port1", network_id="a5bbd213-e1d3-49b6-aed1-9df60ea94b9a")
-        fip1 = openstack.networking.FloatingIpAssociate("fip1",
-            floating_ip="1.2.3.4",
-            port_id=port1.id)
-        ```
 
         ## Import
 

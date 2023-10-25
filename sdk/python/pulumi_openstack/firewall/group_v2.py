@@ -86,7 +86,19 @@ class GroupV2Args:
              region: Optional[pulumi.Input[str]] = None,
              shared: Optional[pulumi.Input[bool]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if egress_firewall_policy_id is None and 'egressFirewallPolicyId' in kwargs:
+            egress_firewall_policy_id = kwargs['egressFirewallPolicyId']
+        if ingress_firewall_policy_id is None and 'ingressFirewallPolicyId' in kwargs:
+            ingress_firewall_policy_id = kwargs['ingressFirewallPolicyId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
         if description is not None:
@@ -331,7 +343,19 @@ class _GroupV2State:
              shared: Optional[pulumi.Input[bool]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if egress_firewall_policy_id is None and 'egressFirewallPolicyId' in kwargs:
+            egress_firewall_policy_id = kwargs['egressFirewallPolicyId']
+        if ingress_firewall_policy_id is None and 'ingressFirewallPolicyId' in kwargs:
+            ingress_firewall_policy_id = kwargs['ingressFirewallPolicyId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
         if description is not None:
@@ -532,31 +556,6 @@ class GroupV2(pulumi.CustomResource):
 
         > **Note:** Firewall v2 has no support for OVN currently.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rule1 = openstack.firewall.RuleV2("rule1",
-            description="drop TELNET traffic",
-            action="deny",
-            protocol="tcp",
-            destination_port="23",
-            enabled=True)
-        rule2 = openstack.firewall.RuleV2("rule2",
-            description="drop NTP traffic",
-            action="deny",
-            protocol="udp",
-            destination_port="123",
-            enabled=False)
-        policy1 = openstack.firewall.PolicyV2("policy1", rules=[rule1.id])
-        policy2 = openstack.firewall.PolicyV2("policy2", rules=[rule2.id])
-        group1 = openstack.firewall.GroupV2("group1",
-            ingress_firewall_policy_id=policy1.id,
-            egress_firewall_policy_id=policy2.id)
-        ```
-
         ## Import
 
         Firewall groups can be imported using the `id`, e.g.
@@ -611,31 +610,6 @@ class GroupV2(pulumi.CustomResource):
         Manages a v2 firewall group resource within OpenStack.
 
         > **Note:** Firewall v2 has no support for OVN currently.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rule1 = openstack.firewall.RuleV2("rule1",
-            description="drop TELNET traffic",
-            action="deny",
-            protocol="tcp",
-            destination_port="23",
-            enabled=True)
-        rule2 = openstack.firewall.RuleV2("rule2",
-            description="drop NTP traffic",
-            action="deny",
-            protocol="udp",
-            destination_port="123",
-            enabled=False)
-        policy1 = openstack.firewall.PolicyV2("policy1", rules=[rule1.id])
-        policy2 = openstack.firewall.PolicyV2("policy2", rules=[rule2.id])
-        group1 = openstack.firewall.GroupV2("group1",
-            ingress_firewall_policy_id=policy1.id,
-            egress_firewall_policy_id=policy2.id)
-        ```
 
         ## Import
 

@@ -84,7 +84,7 @@ class VolumeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             size: pulumi.Input[int],
+             size: Optional[pulumi.Input[int]] = None,
              availability_zone: Optional[pulumi.Input[str]] = None,
              consistency_group_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -99,7 +99,29 @@ class VolumeArgs:
              source_replica: Optional[pulumi.Input[str]] = None,
              source_vol_id: Optional[pulumi.Input[str]] = None,
              volume_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if availability_zone is None and 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if consistency_group_id is None and 'consistencyGroupId' in kwargs:
+            consistency_group_id = kwargs['consistencyGroupId']
+        if enable_online_resize is None and 'enableOnlineResize' in kwargs:
+            enable_online_resize = kwargs['enableOnlineResize']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if scheduler_hints is None and 'schedulerHints' in kwargs:
+            scheduler_hints = kwargs['schedulerHints']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if source_replica is None and 'sourceReplica' in kwargs:
+            source_replica = kwargs['sourceReplica']
+        if source_vol_id is None and 'sourceVolId' in kwargs:
+            source_vol_id = kwargs['sourceVolId']
+        if volume_type is None and 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         _setter("size", size)
         if availability_zone is not None:
             _setter("availability_zone", availability_zone)
@@ -417,7 +439,27 @@ class _VolumeState:
              source_replica: Optional[pulumi.Input[str]] = None,
              source_vol_id: Optional[pulumi.Input[str]] = None,
              volume_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if availability_zone is None and 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if consistency_group_id is None and 'consistencyGroupId' in kwargs:
+            consistency_group_id = kwargs['consistencyGroupId']
+        if enable_online_resize is None and 'enableOnlineResize' in kwargs:
+            enable_online_resize = kwargs['enableOnlineResize']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if scheduler_hints is None and 'schedulerHints' in kwargs:
+            scheduler_hints = kwargs['schedulerHints']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if source_replica is None and 'sourceReplica' in kwargs:
+            source_replica = kwargs['sourceReplica']
+        if source_vol_id is None and 'sourceVolId' in kwargs:
+            source_vol_id = kwargs['sourceVolId']
+        if volume_type is None and 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         if attachments is not None:
             _setter("attachments", attachments)
         if availability_zone is not None:
@@ -684,18 +726,6 @@ class Volume(pulumi.CustomResource):
         """
         Manages a V3 volume resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        volume1 = openstack.blockstorage.Volume("volume1",
-            description="first test volume",
-            region="RegionOne",
-            size=3)
-        ```
-
         ## Import
 
         Volumes can be imported using the `id`, e.g.
@@ -744,18 +774,6 @@ class Volume(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V3 volume resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        volume1 = openstack.blockstorage.Volume("volume1",
-            description="first test volume",
-            region="RegionOne",
-            size=3)
-        ```
 
         ## Import
 

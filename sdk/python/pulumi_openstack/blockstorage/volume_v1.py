@@ -66,7 +66,7 @@ class VolumeV1Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             size: pulumi.Input[int],
+             size: Optional[pulumi.Input[int]] = None,
              availability_zone: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              image_id: Optional[pulumi.Input[str]] = None,
@@ -76,7 +76,21 @@ class VolumeV1Args:
              snapshot_id: Optional[pulumi.Input[str]] = None,
              source_vol_id: Optional[pulumi.Input[str]] = None,
              volume_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if availability_zone is None and 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if source_vol_id is None and 'sourceVolId' in kwargs:
+            source_vol_id = kwargs['sourceVolId']
+        if volume_type is None and 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         _setter("size", size)
         if availability_zone is not None:
             _setter("availability_zone", availability_zone)
@@ -298,7 +312,19 @@ class _VolumeV1State:
              snapshot_id: Optional[pulumi.Input[str]] = None,
              source_vol_id: Optional[pulumi.Input[str]] = None,
              volume_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if availability_zone is None and 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if source_vol_id is None and 'sourceVolId' in kwargs:
+            source_vol_id = kwargs['sourceVolId']
+        if volume_type is None and 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         if attachments is not None:
             _setter("attachments", attachments)
         if availability_zone is not None:
@@ -487,18 +513,6 @@ class VolumeV1(pulumi.CustomResource):
         """
         Manages a V1 volume resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        volume1 = openstack.blockstorage.VolumeV1("volume1",
-            description="first test volume",
-            region="RegionOne",
-            size=3)
-        ```
-
         ## Import
 
         Volumes can be imported using the `id`, e.g.
@@ -539,18 +553,6 @@ class VolumeV1(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V1 volume resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        volume1 = openstack.blockstorage.VolumeV1("volume1",
-            description="first test volume",
-            region="RegionOne",
-            size=3)
-        ```
 
         ## Import
 

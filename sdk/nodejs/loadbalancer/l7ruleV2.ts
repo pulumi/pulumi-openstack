@@ -7,44 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Manages a V2 L7 Rule resource within OpenStack.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const subnet1 = new openstack.networking.Subnet("subnet1", {
- *     cidr: "192.168.199.0/24",
- *     ipVersion: 4,
- *     networkId: network1.id,
- * });
- * const loadbalancer1 = new openstack.loadbalancer.LoadBalancer("loadbalancer1", {vipSubnetId: subnet1.id});
- * const listener1 = new openstack.loadbalancer.Listener("listener1", {
- *     protocol: "HTTP",
- *     protocolPort: 8080,
- *     loadbalancerId: loadbalancer1.id,
- * });
- * const pool1 = new openstack.loadbalancer.Pool("pool1", {
- *     protocol: "HTTP",
- *     lbMethod: "ROUND_ROBIN",
- *     loadbalancerId: loadbalancer1.id,
- * });
- * const l7policy1 = new openstack.loadbalancer.L7PolicyV2("l7policy1", {
- *     action: "REDIRECT_TO_URL",
- *     description: "test description",
- *     position: 1,
- *     listenerId: listener1.id,
- *     redirectUrl: "http://www.example.com",
- * });
- * const l7rule1 = new openstack.loadbalancer.L7RuleV2("l7rule1", {
- *     l7policyId: l7policy1.id,
- *     type: "PATH",
- *     compareType: "EQUAL_TO",
- *     value: "/api",
- * });
- * ```
- *
  * ## Import
  *
  * Load Balancer L7 Rule can be imported using the L7 Policy ID and L7 Rule ID separated by a slash, e.g.:

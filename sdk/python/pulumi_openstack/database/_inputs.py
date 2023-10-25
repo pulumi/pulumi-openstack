@@ -38,10 +38,18 @@ class ConfigurationConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             value: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              string_type: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if string_type is None and 'stringType' in kwargs:
+            string_type = kwargs['stringType']
+
         _setter("name", name)
         _setter("value", value)
         if string_type is not None:
@@ -101,9 +109,15 @@ class ConfigurationDatastoreArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
-             version: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             type: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("type", type)
         _setter("version", version)
 
@@ -154,10 +168,14 @@ class InstanceDatabaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              charset: Optional[pulumi.Input[str]] = None,
              collate: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if charset is not None:
             _setter("charset", charset)
@@ -222,9 +240,15 @@ class InstanceDatastoreArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
-             version: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             type: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("type", type)
         _setter("version", version)
 
@@ -286,7 +310,13 @@ class InstanceNetworkArgs:
              fixed_ip_v6: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[str]] = None,
              uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fixed_ip_v4 is None and 'fixedIpV4' in kwargs:
+            fixed_ip_v4 = kwargs['fixedIpV4']
+        if fixed_ip_v6 is None and 'fixedIpV6' in kwargs:
+            fixed_ip_v6 = kwargs['fixedIpV6']
+
         if fixed_ip_v4 is not None:
             _setter("fixed_ip_v4", fixed_ip_v4)
         if fixed_ip_v6 is not None:
@@ -376,11 +406,15 @@ class InstanceUserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              databases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              host: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if databases is not None:
             _setter("databases", databases)

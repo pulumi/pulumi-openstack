@@ -90,7 +90,7 @@ class ClusterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_template_id: pulumi.Input[str],
+             cluster_template_id: Optional[pulumi.Input[str]] = None,
              create_timeout: Optional[pulumi.Input[int]] = None,
              discovery_url: Optional[pulumi.Input[str]] = None,
              docker_volume_size: Optional[pulumi.Input[int]] = None,
@@ -106,7 +106,33 @@ class ClusterArgs:
              name: Optional[pulumi.Input[str]] = None,
              node_count: Optional[pulumi.Input[int]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster_template_id is None and 'clusterTemplateId' in kwargs:
+            cluster_template_id = kwargs['clusterTemplateId']
+        if cluster_template_id is None:
+            raise TypeError("Missing 'cluster_template_id' argument")
+        if create_timeout is None and 'createTimeout' in kwargs:
+            create_timeout = kwargs['createTimeout']
+        if discovery_url is None and 'discoveryUrl' in kwargs:
+            discovery_url = kwargs['discoveryUrl']
+        if docker_volume_size is None and 'dockerVolumeSize' in kwargs:
+            docker_volume_size = kwargs['dockerVolumeSize']
+        if fixed_network is None and 'fixedNetwork' in kwargs:
+            fixed_network = kwargs['fixedNetwork']
+        if fixed_subnet is None and 'fixedSubnet' in kwargs:
+            fixed_subnet = kwargs['fixedSubnet']
+        if floating_ip_enabled is None and 'floatingIpEnabled' in kwargs:
+            floating_ip_enabled = kwargs['floatingIpEnabled']
+        if master_count is None and 'masterCount' in kwargs:
+            master_count = kwargs['masterCount']
+        if master_flavor is None and 'masterFlavor' in kwargs:
+            master_flavor = kwargs['masterFlavor']
+        if merge_labels is None and 'mergeLabels' in kwargs:
+            merge_labels = kwargs['mergeLabels']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+
         _setter("cluster_template_id", cluster_template_id)
         if create_timeout is not None:
             _setter("create_timeout", create_timeout)
@@ -485,7 +511,51 @@ class _ClusterState:
              stack_id: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_address is None and 'apiAddress' in kwargs:
+            api_address = kwargs['apiAddress']
+        if cluster_template_id is None and 'clusterTemplateId' in kwargs:
+            cluster_template_id = kwargs['clusterTemplateId']
+        if coe_version is None and 'coeVersion' in kwargs:
+            coe_version = kwargs['coeVersion']
+        if container_version is None and 'containerVersion' in kwargs:
+            container_version = kwargs['containerVersion']
+        if create_timeout is None and 'createTimeout' in kwargs:
+            create_timeout = kwargs['createTimeout']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if discovery_url is None and 'discoveryUrl' in kwargs:
+            discovery_url = kwargs['discoveryUrl']
+        if docker_volume_size is None and 'dockerVolumeSize' in kwargs:
+            docker_volume_size = kwargs['dockerVolumeSize']
+        if fixed_network is None and 'fixedNetwork' in kwargs:
+            fixed_network = kwargs['fixedNetwork']
+        if fixed_subnet is None and 'fixedSubnet' in kwargs:
+            fixed_subnet = kwargs['fixedSubnet']
+        if floating_ip_enabled is None and 'floatingIpEnabled' in kwargs:
+            floating_ip_enabled = kwargs['floatingIpEnabled']
+        if master_addresses is None and 'masterAddresses' in kwargs:
+            master_addresses = kwargs['masterAddresses']
+        if master_count is None and 'masterCount' in kwargs:
+            master_count = kwargs['masterCount']
+        if master_flavor is None and 'masterFlavor' in kwargs:
+            master_flavor = kwargs['masterFlavor']
+        if merge_labels is None and 'mergeLabels' in kwargs:
+            merge_labels = kwargs['mergeLabels']
+        if node_addresses is None and 'nodeAddresses' in kwargs:
+            node_addresses = kwargs['nodeAddresses']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if stack_id is None and 'stackId' in kwargs:
+            stack_id = kwargs['stackId']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if api_address is not None:
             _setter("api_address", api_address)
         if cluster_template_id is not None:
@@ -892,18 +962,6 @@ class Cluster(pulumi.CustomResource):
         state.
 
         ## Example Usage
-        ### Create a Cluster
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        cluster1 = openstack.containerinfra.Cluster("cluster1",
-            cluster_template_id="b9a45c5c-cd03-4958-82aa-b80bf93cb922",
-            keypair="ssh_keypair",
-            master_count=3,
-            node_count=5)
-        ```
         ## Attributes reference
 
         The following attributes are exported:
@@ -1000,18 +1058,6 @@ class Cluster(pulumi.CustomResource):
         state.
 
         ## Example Usage
-        ### Create a Cluster
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        cluster1 = openstack.containerinfra.Cluster("cluster1",
-            cluster_template_id="b9a45c5c-cd03-4958-82aa-b80bf93cb922",
-            keypair="ssh_keypair",
-            master_count=3,
-            node_count=5)
-        ```
         ## Attributes reference
 
         The following attributes are exported:

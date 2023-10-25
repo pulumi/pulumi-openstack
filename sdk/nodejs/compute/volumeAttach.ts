@@ -11,50 +11,6 @@ import * as utilities from "../utilities";
  * Compute (Nova) v2 API.
  *
  * ## Example Usage
- * ### Basic attachment of a single volume to a single instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const volume1 = new openstack.blockstorage.VolumeV2("volume1", {size: 1});
- * const instance1 = new openstack.compute.Instance("instance1", {securityGroups: ["default"]});
- * const va1 = new openstack.compute.VolumeAttach("va1", {
- *     instanceId: instance1.id,
- *     volumeId: volume1.id,
- * });
- * ```
- * ### Using Multiattach-enabled volumes
- *
- * Multiattach Volumes are dependent upon your OpenStack cloud and not all
- * clouds support multiattach.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const volume1 = new openstack.blockstorage.Volume("volume1", {
- *     size: 1,
- *     multiattach: true,
- * });
- * const instance1 = new openstack.compute.Instance("instance1", {securityGroups: ["default"]});
- * const instance2 = new openstack.compute.Instance("instance2", {securityGroups: ["default"]});
- * const va1 = new openstack.compute.VolumeAttach("va1", {
- *     instanceId: instance1.id,
- *     volumeId: openstack_blockstorage_volume_v2.volume_1.id,
- *     multiattach: true,
- * });
- * const va2 = new openstack.compute.VolumeAttach("va2", {
- *     instanceId: instance2.id,
- *     volumeId: openstack_blockstorage_volume_v2.volume_1.id,
- *     multiattach: true,
- * }, {
- *     dependsOn: ["openstack_compute_volume_attach_v2.va_1"],
- * });
- * ```
- *
- * It is recommended to use `dependsOn` for the attach resources
- * to enforce the volume attachments to happen one at a time.
  *
  * ## Import
  *

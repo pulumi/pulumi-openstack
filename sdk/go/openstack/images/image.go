@@ -19,36 +19,6 @@ import (
 // stored in the raw state as plain-text. Read more about sensitive data in
 // state.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/images"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := images.NewImage(ctx, "rancheros", &images.ImageArgs{
-//				ContainerFormat: pulumi.String("bare"),
-//				DiskFormat:      pulumi.String("qcow2"),
-//				ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
-//				Properties: pulumi.AnyMap{
-//					"key": pulumi.Any("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## Notes
 //
 // ### Properties

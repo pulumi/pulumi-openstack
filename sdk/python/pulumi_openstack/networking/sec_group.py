@@ -54,7 +54,13 @@ class SecGroupArgs:
              region: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if delete_default_rules is None and 'deleteDefaultRules' in kwargs:
+            delete_default_rules = kwargs['deleteDefaultRules']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if delete_default_rules is not None:
             _setter("delete_default_rules", delete_default_rules)
         if description is not None:
@@ -196,7 +202,15 @@ class _SecGroupState:
              region: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if all_tags is None and 'allTags' in kwargs:
+            all_tags = kwargs['allTags']
+        if delete_default_rules is None and 'deleteDefaultRules' in kwargs:
+            delete_default_rules = kwargs['deleteDefaultRules']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if all_tags is not None:
             _setter("all_tags", all_tags)
         if delete_default_rules is not None:

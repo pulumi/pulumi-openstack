@@ -8,17 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the ID of an available Shared File System share.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const share1 = openstack.sharedfilesystem.getShare({
- *     name: "share_1",
- * });
- * ```
  */
 export function getShare(args?: GetShareArgs, opts?: pulumi.InvokeOptions): Promise<GetShareResult> {
     args = args || {};
@@ -155,17 +144,6 @@ export interface GetShareResult {
 }
 /**
  * Use this data source to get the ID of an available Shared File System share.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const share1 = openstack.sharedfilesystem.getShare({
- *     name: "share_1",
- * });
- * ```
  */
 export function getShareOutput(args?: GetShareOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShareResult> {
     return pulumi.output(args).apply((a: any) => getShare(a, opts))

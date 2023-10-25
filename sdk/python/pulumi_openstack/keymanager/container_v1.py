@@ -47,12 +47,18 @@ class ContainerV1Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              acl: Optional[pulumi.Input['ContainerV1AclArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              secret_refs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if secret_refs is None and 'secretRefs' in kwargs:
+            secret_refs = kwargs['secretRefs']
+
         _setter("type", type)
         if acl is not None:
             _setter("acl", acl)
@@ -194,7 +200,19 @@ class _ContainerV1State:
              status: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if container_ref is None and 'containerRef' in kwargs:
+            container_ref = kwargs['containerRef']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if creator_id is None and 'creatorId' in kwargs:
+            creator_id = kwargs['creatorId']
+        if secret_refs is None and 'secretRefs' in kwargs:
+            secret_refs = kwargs['secretRefs']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if acl is not None:
             _setter("acl", acl)
         if consumers is not None:
@@ -373,84 +391,6 @@ class ContainerV1(pulumi.CustomResource):
         Manages a V1 Barbican container resource within OpenStack.
 
         ## Example Usage
-        ### Simple secret
-
-        The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        certificate1 = openstack.keymanager.SecretV1("certificate1",
-            payload=(lambda path: open(path).read())("cert.pem"),
-            secret_type="certificate",
-            payload_content_type="text/plain")
-        private_key1 = openstack.keymanager.SecretV1("privateKey1",
-            payload=(lambda path: open(path).read())("cert-key.pem"),
-            secret_type="private",
-            payload_content_type="text/plain")
-        intermediate1 = openstack.keymanager.SecretV1("intermediate1",
-            payload=(lambda path: open(path).read())("intermediate-ca.pem"),
-            secret_type="certificate",
-            payload_content_type="text/plain")
-        tls1 = openstack.keymanager.ContainerV1("tls1",
-            type="certificate",
-            secret_refs=[
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="certificate",
-                    secret_ref=certificate1.secret_ref,
-                ),
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="private_key",
-                    secret_ref=private_key1.secret_ref,
-                ),
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="intermediates",
-                    secret_ref=intermediate1.secret_ref,
-                ),
-            ])
-        subnet1 = openstack.networking.get_subnet(name="my-subnet")
-        lb1 = openstack.loadbalancer.LoadBalancer("lb1", vip_subnet_id=subnet1.id)
-        listener1 = openstack.loadbalancer.Listener("listener1",
-            protocol="TERMINATED_HTTPS",
-            protocol_port=443,
-            loadbalancer_id=lb1.id,
-            default_tls_container_ref=tls1.container_ref)
-        ```
-        ### Container with the ACL
-
-        > **Note** Only read ACLs are supported
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        tls1 = openstack.keymanager.ContainerV1("tls1",
-            type="certificate",
-            secret_refs=[
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="certificate",
-                    secret_ref=openstack_keymanager_secret_v1["certificate_1"]["secret_ref"],
-                ),
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="private_key",
-                    secret_ref=openstack_keymanager_secret_v1["private_key_1"]["secret_ref"],
-                ),
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="intermediates",
-                    secret_ref=openstack_keymanager_secret_v1["intermediate_1"]["secret_ref"],
-                ),
-            ],
-            acl=openstack.keymanager.ContainerV1AclArgs(
-                read=openstack.keymanager.ContainerV1AclReadArgs(
-                    project_access=False,
-                    users=[
-                        "userid1",
-                        "userid2",
-                    ],
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -485,84 +425,6 @@ class ContainerV1(pulumi.CustomResource):
         Manages a V1 Barbican container resource within OpenStack.
 
         ## Example Usage
-        ### Simple secret
-
-        The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        certificate1 = openstack.keymanager.SecretV1("certificate1",
-            payload=(lambda path: open(path).read())("cert.pem"),
-            secret_type="certificate",
-            payload_content_type="text/plain")
-        private_key1 = openstack.keymanager.SecretV1("privateKey1",
-            payload=(lambda path: open(path).read())("cert-key.pem"),
-            secret_type="private",
-            payload_content_type="text/plain")
-        intermediate1 = openstack.keymanager.SecretV1("intermediate1",
-            payload=(lambda path: open(path).read())("intermediate-ca.pem"),
-            secret_type="certificate",
-            payload_content_type="text/plain")
-        tls1 = openstack.keymanager.ContainerV1("tls1",
-            type="certificate",
-            secret_refs=[
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="certificate",
-                    secret_ref=certificate1.secret_ref,
-                ),
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="private_key",
-                    secret_ref=private_key1.secret_ref,
-                ),
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="intermediates",
-                    secret_ref=intermediate1.secret_ref,
-                ),
-            ])
-        subnet1 = openstack.networking.get_subnet(name="my-subnet")
-        lb1 = openstack.loadbalancer.LoadBalancer("lb1", vip_subnet_id=subnet1.id)
-        listener1 = openstack.loadbalancer.Listener("listener1",
-            protocol="TERMINATED_HTTPS",
-            protocol_port=443,
-            loadbalancer_id=lb1.id,
-            default_tls_container_ref=tls1.container_ref)
-        ```
-        ### Container with the ACL
-
-        > **Note** Only read ACLs are supported
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        tls1 = openstack.keymanager.ContainerV1("tls1",
-            type="certificate",
-            secret_refs=[
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="certificate",
-                    secret_ref=openstack_keymanager_secret_v1["certificate_1"]["secret_ref"],
-                ),
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="private_key",
-                    secret_ref=openstack_keymanager_secret_v1["private_key_1"]["secret_ref"],
-                ),
-                openstack.keymanager.ContainerV1SecretRefArgs(
-                    name="intermediates",
-                    secret_ref=openstack_keymanager_secret_v1["intermediate_1"]["secret_ref"],
-                ),
-            ],
-            acl=openstack.keymanager.ContainerV1AclArgs(
-                read=openstack.keymanager.ContainerV1AclReadArgs(
-                    project_access=False,
-                    users=[
-                        "userid1",
-                        "userid2",
-                    ],
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -605,11 +467,7 @@ class ContainerV1(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ContainerV1Args.__new__(ContainerV1Args)
 
-            if acl is not None and not isinstance(acl, ContainerV1AclArgs):
-                acl = acl or {}
-                def _setter(key, value):
-                    acl[key] = value
-                ContainerV1AclArgs._configure(_setter, **acl)
+            acl = _utilities.configure(acl, ContainerV1AclArgs, True)
             __props__.__dict__["acl"] = acl
             __props__.__dict__["name"] = name
             __props__.__dict__["region"] = region

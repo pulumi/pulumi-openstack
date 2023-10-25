@@ -16,40 +16,6 @@ import (
 // Manages a V2 Neutron QoS bandwidth limit rule resource within OpenStack.
 //
 // ## Example Usage
-// ### Create a QoS Policy with some bandwidth limit rule
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			qosPolicy1, err := networking.NewQosPolicy(ctx, "qosPolicy1", &networking.QosPolicyArgs{
-//				Description: pulumi.String("bw_limit"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networking.NewQosBandwidthLimitRule(ctx, "bwLimitRule1", &networking.QosBandwidthLimitRuleArgs{
-//				QosPolicyId:  qosPolicy1.ID(),
-//				MaxKbps:      pulumi.Int(3000),
-//				MaxBurstKbps: pulumi.Int(300),
-//				Direction:    pulumi.String("egress"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

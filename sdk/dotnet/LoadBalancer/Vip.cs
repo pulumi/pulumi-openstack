@@ -12,27 +12,6 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// <summary>
     /// Manages a V1 load balancer vip resource within OpenStack.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var vip1 = new OpenStack.LoadBalancer.Vip("vip1", new()
-    ///     {
-    ///         PoolId = "67890",
-    ///         Port = 80,
-    ///         Protocol = "HTTP",
-    ///         SubnetId = "12345",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Load Balancer VIPs can be imported using the `id`, e.g.

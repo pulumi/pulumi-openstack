@@ -80,7 +80,21 @@ class IpSecPolicyArgs:
              tenant_id: Optional[pulumi.Input[str]] = None,
              transform_protocol: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auth_algorithm is None and 'authAlgorithm' in kwargs:
+            auth_algorithm = kwargs['authAlgorithm']
+        if encapsulation_mode is None and 'encapsulationMode' in kwargs:
+            encapsulation_mode = kwargs['encapsulationMode']
+        if encryption_algorithm is None and 'encryptionAlgorithm' in kwargs:
+            encryption_algorithm = kwargs['encryptionAlgorithm']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if transform_protocol is None and 'transformProtocol' in kwargs:
+            transform_protocol = kwargs['transformProtocol']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if auth_algorithm is not None:
             _setter("auth_algorithm", auth_algorithm)
         if description is not None:
@@ -315,7 +329,21 @@ class _IpSecPolicyState:
              tenant_id: Optional[pulumi.Input[str]] = None,
              transform_protocol: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auth_algorithm is None and 'authAlgorithm' in kwargs:
+            auth_algorithm = kwargs['authAlgorithm']
+        if encapsulation_mode is None and 'encapsulationMode' in kwargs:
+            encapsulation_mode = kwargs['encapsulationMode']
+        if encryption_algorithm is None and 'encryptionAlgorithm' in kwargs:
+            encryption_algorithm = kwargs['encryptionAlgorithm']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if transform_protocol is None and 'transformProtocol' in kwargs:
+            transform_protocol = kwargs['transformProtocol']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if auth_algorithm is not None:
             _setter("auth_algorithm", auth_algorithm)
         if description is not None:
@@ -503,15 +531,6 @@ class IpSecPolicy(pulumi.CustomResource):
         """
         Manages a V2 Neutron IPSec policy resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        policy1 = openstack.vpnaas.IpSecPolicy("policy1")
-        ```
-
         ## Import
 
         Policies can be imported using the `id`, e.g.
@@ -553,15 +572,6 @@ class IpSecPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 Neutron IPSec policy resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        policy1 = openstack.vpnaas.IpSecPolicy("policy1")
-        ```
 
         ## Import
 

@@ -13,58 +13,12 @@ namespace Pulumi.OpenStack.BlockStorage
     {
         /// <summary>
         /// Use this data source to get information about an existing snapshot.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using OpenStack = Pulumi.OpenStack;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var snapshot1 = OpenStack.BlockStorage.GetSnapshotV2.Invoke(new()
-        ///     {
-        ///         MostRecent = true,
-        ///         Name = "snapshot_1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSnapshotV2Result> InvokeAsync(GetSnapshotV2Args? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotV2Result>("openstack:blockstorage/getSnapshotV2:getSnapshotV2", args ?? new GetSnapshotV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about an existing snapshot.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using OpenStack = Pulumi.OpenStack;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var snapshot1 = OpenStack.BlockStorage.GetSnapshotV2.Invoke(new()
-        ///     {
-        ///         MostRecent = true,
-        ///         Name = "snapshot_1",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetSnapshotV2Result> Invoke(GetSnapshotV2InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotV2Result>("openstack:blockstorage/getSnapshotV2:getSnapshotV2", args ?? new GetSnapshotV2InvokeArgs(), options.WithDefaults());

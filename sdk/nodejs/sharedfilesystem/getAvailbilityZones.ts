@@ -7,15 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get a list of Shared File System availability zones
  * from OpenStack
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const zones = openstack.sharedfilesystem.getAvailbilityZones({});
- * ```
  */
 export function getAvailbilityZones(args?: GetAvailbilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailbilityZonesResult> {
     args = args || {};
@@ -57,15 +48,6 @@ export interface GetAvailbilityZonesResult {
 /**
  * Use this data source to get a list of Shared File System availability zones
  * from OpenStack
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const zones = openstack.sharedfilesystem.getAvailbilityZones({});
- * ```
  */
 export function getAvailbilityZonesOutput(args?: GetAvailbilityZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvailbilityZonesResult> {
     return pulumi.output(args).apply((a: any) => getAvailbilityZones(a, opts))

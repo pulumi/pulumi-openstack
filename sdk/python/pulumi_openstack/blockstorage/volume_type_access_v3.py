@@ -36,10 +36,20 @@ class VolumeTypeAccessV3Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_id: pulumi.Input[str],
-             volume_type_id: pulumi.Input[str],
+             project_id: Optional[pulumi.Input[str]] = None,
+             volume_type_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if volume_type_id is None and 'volumeTypeId' in kwargs:
+            volume_type_id = kwargs['volumeTypeId']
+        if volume_type_id is None:
+            raise TypeError("Missing 'volume_type_id' argument")
+
         _setter("project_id", project_id)
         _setter("volume_type_id", volume_type_id)
         if region is not None:
@@ -114,7 +124,13 @@ class _VolumeTypeAccessV3State:
              project_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              volume_type_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if volume_type_id is None and 'volumeTypeId' in kwargs:
+            volume_type_id = kwargs['volumeTypeId']
+
         if project_id is not None:
             _setter("project_id", project_id)
         if region is not None:
@@ -177,19 +193,6 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
 
         > **Note:** This usually requires admin privileges.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        project1 = openstack.identity.Project("project1")
-        volume_type1 = openstack.blockstorage.VolumeTypeV3("volumeType1", is_public=False)
-        volume_type_access = openstack.blockstorage.VolumeTypeAccessV3("volumeTypeAccess",
-            project_id=project1.id,
-            volume_type_id=volume_type1.id)
-        ```
-
         ## Import
 
         Volume types access can be imported using the `volume_type_id/project_id`, e.g.
@@ -218,19 +221,6 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
         Manages a V3 block storage volume type access resource within OpenStack.
 
         > **Note:** This usually requires admin privileges.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        project1 = openstack.identity.Project("project1")
-        volume_type1 = openstack.blockstorage.VolumeTypeV3("volumeType1", is_public=False)
-        volume_type_access = openstack.blockstorage.VolumeTypeAccessV3("volumeTypeAccess",
-            project_id=project1.id,
-            volume_type_id=volume_type1.id)
-        ```
 
         ## Import
 

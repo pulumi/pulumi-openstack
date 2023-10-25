@@ -75,7 +75,15 @@ class NetworkSegment(dict):
              network_type: Optional[str] = None,
              physical_network: Optional[str] = None,
              segmentation_id: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if network_type is None and 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if physical_network is None and 'physicalNetwork' in kwargs:
+            physical_network = kwargs['physicalNetwork']
+        if segmentation_id is None and 'segmentationId' in kwargs:
+            segmentation_id = kwargs['segmentationId']
+
         if network_type is not None:
             _setter("network_type", network_type)
         if physical_network is not None:
@@ -144,9 +152,17 @@ class PortAllowedAddressPair(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_address: str,
+             ip_address: Optional[str] = None,
              mac_address: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if mac_address is None and 'macAddress' in kwargs:
+            mac_address = kwargs['macAddress']
+
         _setter("ip_address", ip_address)
         if mac_address is not None:
             _setter("mac_address", mac_address)
@@ -226,7 +242,17 @@ class PortBinding(dict):
              vif_details: Optional[Mapping[str, Any]] = None,
              vif_type: Optional[str] = None,
              vnic_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if host_id is None and 'hostId' in kwargs:
+            host_id = kwargs['hostId']
+        if vif_details is None and 'vifDetails' in kwargs:
+            vif_details = kwargs['vifDetails']
+        if vif_type is None and 'vifType' in kwargs:
+            vif_type = kwargs['vifType']
+        if vnic_type is None and 'vnicType' in kwargs:
+            vnic_type = kwargs['vnicType']
+
         if host_id is not None:
             _setter("host_id", host_id)
         if profile is not None:
@@ -320,10 +346,18 @@ class PortExtraDhcpOption(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             value: str,
+             name: Optional[str] = None,
+             value: Optional[str] = None,
              ip_version: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+
         _setter("name", name)
         _setter("value", value)
         if ip_version is not None:
@@ -395,9 +429,17 @@ class PortFixedIp(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             subnet_id: str,
+             subnet_id: Optional[str] = None,
              ip_address: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if subnet_id is None:
+            raise TypeError("Missing 'subnet_id' argument")
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         _setter("subnet_id", subnet_id)
         if ip_address is not None:
             _setter("ip_address", ip_address)
@@ -462,7 +504,13 @@ class RouterExternalFixedIp(dict):
              _setter: Callable[[Any, Any], None],
              ip_address: Optional[str] = None,
              subnet_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+
         if ip_address is not None:
             _setter("ip_address", ip_address)
         if subnet_id is not None:
@@ -518,7 +566,11 @@ class RouterVendorOptions(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              set_router_gateway_after_create: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if set_router_gateway_after_create is None and 'setRouterGatewayAfterCreate' in kwargs:
+            set_router_gateway_after_create = kwargs['setRouterGatewayAfterCreate']
+
         if set_router_gateway_after_create is not None:
             _setter("set_router_gateway_after_create", set_router_gateway_after_create)
 
@@ -549,9 +601,15 @@ class SubnetAllocationPool(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             end: str,
-             start: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             end: Optional[str] = None,
+             start: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if end is None:
+            raise TypeError("Missing 'end' argument")
+        if start is None:
+            raise TypeError("Missing 'start' argument")
+
         _setter("end", end)
         _setter("start", start)
 
@@ -589,9 +647,15 @@ class SubnetAllocationPoolsCollection(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             end: str,
-             start: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             end: Optional[str] = None,
+             start: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if end is None:
+            raise TypeError("Missing 'end' argument")
+        if start is None:
+            raise TypeError("Missing 'start' argument")
+
         _setter("end", end)
         _setter("start", start)
 
@@ -648,9 +712,19 @@ class SubnetHostRoute(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination_cidr: str,
-             next_hop: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             destination_cidr: Optional[str] = None,
+             next_hop: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if destination_cidr is None and 'destinationCidr' in kwargs:
+            destination_cidr = kwargs['destinationCidr']
+        if destination_cidr is None:
+            raise TypeError("Missing 'destination_cidr' argument")
+        if next_hop is None and 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if next_hop is None:
+            raise TypeError("Missing 'next_hop' argument")
+
         _setter("destination_cidr", destination_cidr)
         _setter("next_hop", next_hop)
 
@@ -712,10 +786,24 @@ class TrunkSubPort(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port_id: str,
-             segmentation_id: int,
-             segmentation_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             port_id: Optional[str] = None,
+             segmentation_id: Optional[int] = None,
+             segmentation_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if port_id is None and 'portId' in kwargs:
+            port_id = kwargs['portId']
+        if port_id is None:
+            raise TypeError("Missing 'port_id' argument")
+        if segmentation_id is None and 'segmentationId' in kwargs:
+            segmentation_id = kwargs['segmentationId']
+        if segmentation_id is None:
+            raise TypeError("Missing 'segmentation_id' argument")
+        if segmentation_type is None and 'segmentationType' in kwargs:
+            segmentation_type = kwargs['segmentationType']
+        if segmentation_type is None:
+            raise TypeError("Missing 'segmentation_type' argument")
+
         _setter("port_id", port_id)
         _setter("segmentation_id", segmentation_id)
         _setter("segmentation_type", segmentation_type)
@@ -760,10 +848,24 @@ class GetNetworkSegmentResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_type: str,
-             physical_network: str,
-             segmentation_id: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             network_type: Optional[str] = None,
+             physical_network: Optional[str] = None,
+             segmentation_id: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if network_type is None and 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if network_type is None:
+            raise TypeError("Missing 'network_type' argument")
+        if physical_network is None and 'physicalNetwork' in kwargs:
+            physical_network = kwargs['physicalNetwork']
+        if physical_network is None:
+            raise TypeError("Missing 'physical_network' argument")
+        if segmentation_id is None and 'segmentationId' in kwargs:
+            segmentation_id = kwargs['segmentationId']
+        if segmentation_id is None:
+            raise TypeError("Missing 'segmentation_id' argument")
+
         _setter("network_type", network_type)
         _setter("physical_network", physical_network)
         _setter("segmentation_id", segmentation_id)
@@ -801,9 +903,19 @@ class GetPortAllowedAddressPairResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_address: str,
-             mac_address: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ip_address: Optional[str] = None,
+             mac_address: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if ip_address is None:
+            raise TypeError("Missing 'ip_address' argument")
+        if mac_address is None and 'macAddress' in kwargs:
+            mac_address = kwargs['macAddress']
+        if mac_address is None:
+            raise TypeError("Missing 'mac_address' argument")
+
         _setter("ip_address", ip_address)
         _setter("mac_address", mac_address)
 
@@ -851,12 +963,32 @@ class GetPortBindingResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host_id: str,
-             profile: str,
-             vif_details: Mapping[str, Any],
-             vif_type: str,
-             vnic_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             host_id: Optional[str] = None,
+             profile: Optional[str] = None,
+             vif_details: Optional[Mapping[str, Any]] = None,
+             vif_type: Optional[str] = None,
+             vnic_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if host_id is None and 'hostId' in kwargs:
+            host_id = kwargs['hostId']
+        if host_id is None:
+            raise TypeError("Missing 'host_id' argument")
+        if profile is None:
+            raise TypeError("Missing 'profile' argument")
+        if vif_details is None and 'vifDetails' in kwargs:
+            vif_details = kwargs['vifDetails']
+        if vif_details is None:
+            raise TypeError("Missing 'vif_details' argument")
+        if vif_type is None and 'vifType' in kwargs:
+            vif_type = kwargs['vifType']
+        if vif_type is None:
+            raise TypeError("Missing 'vif_type' argument")
+        if vnic_type is None and 'vnicType' in kwargs:
+            vnic_type = kwargs['vnicType']
+        if vnic_type is None:
+            raise TypeError("Missing 'vnic_type' argument")
+
         _setter("host_id", host_id)
         _setter("profile", profile)
         _setter("vif_details", vif_details)
@@ -925,10 +1057,20 @@ class GetPortExtraDhcpOptionResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip_version: int,
-             name: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             ip_version: Optional[int] = None,
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if ip_version is None:
+            raise TypeError("Missing 'ip_version' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("ip_version", ip_version)
         _setter("name", name)
         _setter("value", value)
@@ -977,7 +1119,13 @@ class GetRouterExternalFixedIpResult(dict):
              _setter: Callable[[Any, Any], None],
              ip_address: Optional[str] = None,
              subnet_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ip_address is None and 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+
         if ip_address is not None:
             _setter("ip_address", ip_address)
         if subnet_id is not None:
@@ -1013,9 +1161,15 @@ class GetSubnetAllocationPoolResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             end: str,
-             start: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             end: Optional[str] = None,
+             start: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if end is None:
+            raise TypeError("Missing 'end' argument")
+        if start is None:
+            raise TypeError("Missing 'start' argument")
+
         _setter("end", end)
         _setter("start", start)
 
@@ -1043,9 +1197,19 @@ class GetSubnetHostRouteResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination_cidr: str,
-             next_hop: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             destination_cidr: Optional[str] = None,
+             next_hop: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if destination_cidr is None and 'destinationCidr' in kwargs:
+            destination_cidr = kwargs['destinationCidr']
+        if destination_cidr is None:
+            raise TypeError("Missing 'destination_cidr' argument")
+        if next_hop is None and 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if next_hop is None:
+            raise TypeError("Missing 'next_hop' argument")
+
         _setter("destination_cidr", destination_cidr)
         _setter("next_hop", next_hop)
 
@@ -1080,10 +1244,24 @@ class GetTrunkSubPortResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port_id: str,
-             segmentation_id: int,
-             segmentation_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             port_id: Optional[str] = None,
+             segmentation_id: Optional[int] = None,
+             segmentation_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if port_id is None and 'portId' in kwargs:
+            port_id = kwargs['portId']
+        if port_id is None:
+            raise TypeError("Missing 'port_id' argument")
+        if segmentation_id is None and 'segmentationId' in kwargs:
+            segmentation_id = kwargs['segmentationId']
+        if segmentation_id is None:
+            raise TypeError("Missing 'segmentation_id' argument")
+        if segmentation_type is None and 'segmentationType' in kwargs:
+            segmentation_type = kwargs['segmentationType']
+        if segmentation_type is None:
+            raise TypeError("Missing 'segmentation_type' argument")
+
         _setter("port_id", port_id)
         _setter("segmentation_id", segmentation_id)
         _setter("segmentation_type", segmentation_type)

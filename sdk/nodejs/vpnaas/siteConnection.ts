@@ -9,28 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Manages a V2 Neutron IPSec site connection resource within OpenStack.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const conn1 = new openstack.vpnaas.SiteConnection("conn1", {
- *     ikepolicyId: openstack_vpnaas_ike_policy_v2.policy_2.id,
- *     ipsecpolicyId: openstack_vpnaas_ipsec_policy_v2.policy_1.id,
- *     vpnserviceId: openstack_vpnaas_service_v2.service_1.id,
- *     psk: "secret",
- *     peerAddress: "192.168.10.1",
- *     localEpGroupId: openstack_vpnaas_endpoint_group_v2.group_2.id,
- *     peerEpGroupId: openstack_vpnaas_endpoint_group_v2.group_1.id,
- *     dpds: [{
- *         action: "restart",
- *         timeout: 42,
- *         interval: 21,
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * Site Connections can be imported using the `id`, e.g.

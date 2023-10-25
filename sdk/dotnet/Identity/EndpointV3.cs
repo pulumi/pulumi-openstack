@@ -14,31 +14,6 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// &gt; **Note:** This usually requires admin privileges.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var service1 = new OpenStack.Identity.ServiceV3("service1", new()
-    ///     {
-    ///         Type = "my-service-type",
-    ///     });
-    /// 
-    ///     var endpoint1 = new OpenStack.Identity.EndpointV3("endpoint1", new()
-    ///     {
-    ///         ServiceId = service1.Id,
-    ///         EndpointRegion = service1.Region,
-    ///         Url = "http://my-endpoint",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Endpoints can be imported using the `id`, e.g.

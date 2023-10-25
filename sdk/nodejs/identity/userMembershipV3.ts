@@ -12,27 +12,6 @@ import * as utilities from "../utilities";
  *
  * ***
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const project1 = new openstack.identity.Project("project1", {});
- * const user1 = new openstack.identity.User("user1", {defaultProjectId: project1.id});
- * const group1 = new openstack.identity.GroupV3("group1", {description: "group 1"});
- * const role1 = new openstack.identity.Role("role1", {});
- * const userMembership1 = new openstack.identity.UserMembershipV3("userMembership1", {
- *     userId: user1.id,
- *     groupId: group1.id,
- * });
- * const roleAssignment1 = new openstack.identity.RoleAssignment("roleAssignment1", {
- *     groupId: group1.id,
- *     projectId: project1.id,
- *     roleId: role1.id,
- * });
- * ```
- *
  * ## Import
  *
  * This resource can be imported by specifying all two arguments, separated by a forward slash:

@@ -90,7 +90,25 @@ class ContainerArgs:
              storage_policy: Optional[pulumi.Input[str]] = None,
              versioning: Optional[pulumi.Input[bool]] = None,
              versioning_legacy: Optional[pulumi.Input['ContainerVersioningLegacyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if container_read is None and 'containerRead' in kwargs:
+            container_read = kwargs['containerRead']
+        if container_sync_key is None and 'containerSyncKey' in kwargs:
+            container_sync_key = kwargs['containerSyncKey']
+        if container_sync_to is None and 'containerSyncTo' in kwargs:
+            container_sync_to = kwargs['containerSyncTo']
+        if container_write is None and 'containerWrite' in kwargs:
+            container_write = kwargs['containerWrite']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if storage_policy is None and 'storagePolicy' in kwargs:
+            storage_policy = kwargs['storagePolicy']
+        if versioning_legacy is None and 'versioningLegacy' in kwargs:
+            versioning_legacy = kwargs['versioningLegacy']
+
         if container_read is not None:
             _setter("container_read", container_read)
         if container_sync_key is not None:
@@ -361,7 +379,25 @@ class _ContainerState:
              storage_policy: Optional[pulumi.Input[str]] = None,
              versioning: Optional[pulumi.Input[bool]] = None,
              versioning_legacy: Optional[pulumi.Input['ContainerVersioningLegacyArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if container_read is None and 'containerRead' in kwargs:
+            container_read = kwargs['containerRead']
+        if container_sync_key is None and 'containerSyncKey' in kwargs:
+            container_sync_key = kwargs['containerSyncKey']
+        if container_sync_to is None and 'containerSyncTo' in kwargs:
+            container_sync_to = kwargs['containerSyncTo']
+        if container_write is None and 'containerWrite' in kwargs:
+            container_write = kwargs['containerWrite']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if storage_policy is None and 'storagePolicy' in kwargs:
+            storage_policy = kwargs['storagePolicy']
+        if versioning_legacy is None and 'versioningLegacy' in kwargs:
+            versioning_legacy = kwargs['versioningLegacy']
+
         if container_read is not None:
             _setter("container_read", container_read)
         if container_sync_key is not None:
@@ -577,69 +613,6 @@ class Container(pulumi.CustomResource):
         Manages a V1 container resource within OpenStack.
 
         ## Example Usage
-        ### Basic Container
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        container1 = openstack.objectstorage.Container("container1",
-            content_type="application/json",
-            metadata={
-                "test": "true",
-            },
-            region="RegionOne",
-            versioning=True)
-        ```
-        ### Basic Container with legacy versioning
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        container1 = openstack.objectstorage.Container("container1",
-            content_type="application/json",
-            metadata={
-                "test": "true",
-            },
-            region="RegionOne",
-            versioning_legacy=openstack.objectstorage.ContainerVersioningLegacyArgs(
-                location="tf-test-container-versions",
-                type="versions",
-            ))
-        ```
-        ### Global Read Access
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        container1 = openstack.objectstorage.Container("container1",
-            container_read=".r:*",
-            region="RegionOne")
-        ```
-        ### Global Read and List Access
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        container1 = openstack.objectstorage.Container("container1",
-            container_read=".r:*,.rlistings",
-            region="RegionOne")
-        ```
-        ### Write-Only Access for a User
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        current = openstack.identity.get_auth_scope(name="current")
-        container1 = openstack.objectstorage.Container("container1",
-            container_read=f".r:-{var['username']}",
-            container_write=f"{current.project_id}:{var['username']}",
-            region="RegionOne")
-        ```
 
         ## Import
 
@@ -695,69 +668,6 @@ class Container(pulumi.CustomResource):
         Manages a V1 container resource within OpenStack.
 
         ## Example Usage
-        ### Basic Container
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        container1 = openstack.objectstorage.Container("container1",
-            content_type="application/json",
-            metadata={
-                "test": "true",
-            },
-            region="RegionOne",
-            versioning=True)
-        ```
-        ### Basic Container with legacy versioning
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        container1 = openstack.objectstorage.Container("container1",
-            content_type="application/json",
-            metadata={
-                "test": "true",
-            },
-            region="RegionOne",
-            versioning_legacy=openstack.objectstorage.ContainerVersioningLegacyArgs(
-                location="tf-test-container-versions",
-                type="versions",
-            ))
-        ```
-        ### Global Read Access
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        container1 = openstack.objectstorage.Container("container1",
-            container_read=".r:*",
-            region="RegionOne")
-        ```
-        ### Global Read and List Access
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        container1 = openstack.objectstorage.Container("container1",
-            container_read=".r:*,.rlistings",
-            region="RegionOne")
-        ```
-        ### Write-Only Access for a User
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        current = openstack.identity.get_auth_scope(name="current")
-        container1 = openstack.objectstorage.Container("container1",
-            container_read=f".r:-{var['username']}",
-            container_write=f"{current.project_id}:{var['username']}",
-            region="RegionOne")
-        ```
 
         ## Import
 
@@ -822,11 +732,7 @@ class Container(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["storage_policy"] = storage_policy
             __props__.__dict__["versioning"] = versioning
-            if versioning_legacy is not None and not isinstance(versioning_legacy, ContainerVersioningLegacyArgs):
-                versioning_legacy = versioning_legacy or {}
-                def _setter(key, value):
-                    versioning_legacy[key] = value
-                ContainerVersioningLegacyArgs._configure(_setter, **versioning_legacy)
+            versioning_legacy = _utilities.configure(versioning_legacy, ContainerVersioningLegacyArgs, True)
             __props__.__dict__["versioning_legacy"] = versioning_legacy
         super(Container, __self__).__init__(
             'openstack:objectstorage/container:Container',

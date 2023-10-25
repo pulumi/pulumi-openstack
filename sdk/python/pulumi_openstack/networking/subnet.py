@@ -123,7 +123,7 @@ class SubnetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_id: pulumi.Input[str],
+             network_id: Optional[pulumi.Input[str]] = None,
              allocation_pools: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]] = None,
              allocation_pools_collection: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolsCollectionArgs']]]] = None,
              cidr: Optional[pulumi.Input[str]] = None,
@@ -144,7 +144,43 @@ class SubnetArgs:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if network_id is None and 'networkId' in kwargs:
+            network_id = kwargs['networkId']
+        if network_id is None:
+            raise TypeError("Missing 'network_id' argument")
+        if allocation_pools is None and 'allocationPools' in kwargs:
+            allocation_pools = kwargs['allocationPools']
+        if allocation_pools_collection is None and 'allocationPoolsCollection' in kwargs:
+            allocation_pools_collection = kwargs['allocationPoolsCollection']
+        if dns_nameservers is None and 'dnsNameservers' in kwargs:
+            dns_nameservers = kwargs['dnsNameservers']
+        if enable_dhcp is None and 'enableDhcp' in kwargs:
+            enable_dhcp = kwargs['enableDhcp']
+        if gateway_ip is None and 'gatewayIp' in kwargs:
+            gateway_ip = kwargs['gatewayIp']
+        if host_routes is None and 'hostRoutes' in kwargs:
+            host_routes = kwargs['hostRoutes']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if ipv6_address_mode is None and 'ipv6AddressMode' in kwargs:
+            ipv6_address_mode = kwargs['ipv6AddressMode']
+        if ipv6_ra_mode is None and 'ipv6RaMode' in kwargs:
+            ipv6_ra_mode = kwargs['ipv6RaMode']
+        if no_gateway is None and 'noGateway' in kwargs:
+            no_gateway = kwargs['noGateway']
+        if prefix_length is None and 'prefixLength' in kwargs:
+            prefix_length = kwargs['prefixLength']
+        if service_types is None and 'serviceTypes' in kwargs:
+            service_types = kwargs['serviceTypes']
+        if subnetpool_id is None and 'subnetpoolId' in kwargs:
+            subnetpool_id = kwargs['subnetpoolId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         _setter("network_id", network_id)
         if allocation_pools is not None:
             _setter("allocation_pools", allocation_pools)
@@ -623,7 +659,43 @@ class _SubnetState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if all_tags is None and 'allTags' in kwargs:
+            all_tags = kwargs['allTags']
+        if allocation_pools is None and 'allocationPools' in kwargs:
+            allocation_pools = kwargs['allocationPools']
+        if allocation_pools_collection is None and 'allocationPoolsCollection' in kwargs:
+            allocation_pools_collection = kwargs['allocationPoolsCollection']
+        if dns_nameservers is None and 'dnsNameservers' in kwargs:
+            dns_nameservers = kwargs['dnsNameservers']
+        if enable_dhcp is None and 'enableDhcp' in kwargs:
+            enable_dhcp = kwargs['enableDhcp']
+        if gateway_ip is None and 'gatewayIp' in kwargs:
+            gateway_ip = kwargs['gatewayIp']
+        if host_routes is None and 'hostRoutes' in kwargs:
+            host_routes = kwargs['hostRoutes']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if ipv6_address_mode is None and 'ipv6AddressMode' in kwargs:
+            ipv6_address_mode = kwargs['ipv6AddressMode']
+        if ipv6_ra_mode is None and 'ipv6RaMode' in kwargs:
+            ipv6_ra_mode = kwargs['ipv6RaMode']
+        if network_id is None and 'networkId' in kwargs:
+            network_id = kwargs['networkId']
+        if no_gateway is None and 'noGateway' in kwargs:
+            no_gateway = kwargs['noGateway']
+        if prefix_length is None and 'prefixLength' in kwargs:
+            prefix_length = kwargs['prefixLength']
+        if service_types is None and 'serviceTypes' in kwargs:
+            service_types = kwargs['serviceTypes']
+        if subnetpool_id is None and 'subnetpoolId' in kwargs:
+            subnetpool_id = kwargs['subnetpoolId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if all_tags is not None:
             _setter("all_tags", all_tags)
         if allocation_pools is not None:
@@ -1012,18 +1084,6 @@ class Subnet(pulumi.CustomResource):
         """
         Manages a V2 Neutron subnet resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            network_id=network1.id,
-            cidr="192.168.199.0/24")
-        ```
-
         ## Import
 
         Subnets can be imported using the `id`, e.g.
@@ -1099,18 +1159,6 @@ class Subnet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 Neutron subnet resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            network_id=network1.id,
-            cidr="192.168.199.0/24")
-        ```
 
         ## Import
 

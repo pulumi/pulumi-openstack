@@ -357,15 +357,6 @@ def get_cluster(name: Optional[str] = None,
     """
     Use this data source to get the ID of an available OpenStack Magnum cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    cluster1 = openstack.containerinfra.get_cluster(name="cluster_1")
-    ```
-
 
     :param str name: The name of the cluster.
     :param str region: The region in which to obtain the V1 Container Infra
@@ -414,15 +405,6 @@ def get_cluster_output(name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
     """
     Use this data source to get the ID of an available OpenStack Magnum cluster.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    cluster1 = openstack.containerinfra.get_cluster(name="cluster_1")
-    ```
 
 
     :param str name: The name of the cluster.

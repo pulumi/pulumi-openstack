@@ -64,8 +64,8 @@ class L7PolicyV2Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             listener_id: pulumi.Input[str],
+             action: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
              admin_state_up: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -74,7 +74,23 @@ class L7PolicyV2Args:
              redirect_url: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if listener_id is None and 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if redirect_pool_id is None and 'redirectPoolId' in kwargs:
+            redirect_pool_id = kwargs['redirectPoolId']
+        if redirect_url is None and 'redirectUrl' in kwargs:
+            redirect_url = kwargs['redirectUrl']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         _setter("action", action)
         _setter("listener_id", listener_id)
         if admin_state_up is not None:
@@ -289,7 +305,19 @@ class _L7PolicyV2State:
              redirect_url: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if listener_id is None and 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if redirect_pool_id is None and 'redirectPoolId' in kwargs:
+            redirect_pool_id = kwargs['redirectPoolId']
+        if redirect_url is None and 'redirectUrl' in kwargs:
+            redirect_url = kwargs['redirectUrl']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if action is not None:
             _setter("action", action)
         if admin_state_up is not None:
@@ -462,34 +490,6 @@ class L7PolicyV2(pulumi.CustomResource):
         """
         Manages a Load Balancer L7 Policy resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
-        loadbalancer1 = openstack.loadbalancer.LoadBalancer("loadbalancer1", vip_subnet_id=subnet1.id)
-        listener1 = openstack.loadbalancer.Listener("listener1",
-            protocol="HTTP",
-            protocol_port=8080,
-            loadbalancer_id=loadbalancer1.id)
-        pool1 = openstack.loadbalancer.Pool("pool1",
-            protocol="HTTP",
-            lb_method="ROUND_ROBIN",
-            loadbalancer_id=loadbalancer1.id)
-        l7policy1 = openstack.loadbalancer.L7PolicyV2("l7policy1",
-            action="REDIRECT_TO_POOL",
-            description="test l7 policy",
-            position=1,
-            listener_id=listener1.id,
-            redirect_pool_id=pool1.id)
-        ```
-
         ## Import
 
         Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.:
@@ -530,34 +530,6 @@ class L7PolicyV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Load Balancer L7 Policy resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
-        loadbalancer1 = openstack.loadbalancer.LoadBalancer("loadbalancer1", vip_subnet_id=subnet1.id)
-        listener1 = openstack.loadbalancer.Listener("listener1",
-            protocol="HTTP",
-            protocol_port=8080,
-            loadbalancer_id=loadbalancer1.id)
-        pool1 = openstack.loadbalancer.Pool("pool1",
-            protocol="HTTP",
-            lb_method="ROUND_ROBIN",
-            loadbalancer_id=loadbalancer1.id)
-        l7policy1 = openstack.loadbalancer.L7PolicyV2("l7policy1",
-            action="REDIRECT_TO_POOL",
-            description="test l7 policy",
-            position=1,
-            listener_id=listener1.id,
-            redirect_pool_id=pool1.id)
-        ```
 
         ## Import
 

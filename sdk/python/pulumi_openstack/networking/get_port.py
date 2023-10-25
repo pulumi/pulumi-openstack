@@ -330,15 +330,6 @@ def get_port(admin_state_up: Optional[bool] = None,
     """
     Use this data source to get the ID of an available OpenStack port.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    port1 = openstack.networking.get_port(name="port_1")
-    ```
-
 
     :param bool admin_state_up: The administrative state of the port.
     :param str description: Human-readable description of the port.
@@ -426,15 +417,6 @@ def get_port_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = Non
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPortResult]:
     """
     Use this data source to get the ID of an available OpenStack port.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    port1 = openstack.networking.get_port(name="port_1")
-    ```
 
 
     :param bool admin_state_up: The administrative state of the port.

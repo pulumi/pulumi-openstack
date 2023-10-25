@@ -16,38 +16,6 @@ import (
 // Manages a V2 Neutron QoS DSCP marking rule resource within OpenStack.
 //
 // ## Example Usage
-// ### Create a QoS Policy with some DSCP marking rule
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			qosPolicy1, err := networking.NewQosPolicy(ctx, "qosPolicy1", &networking.QosPolicyArgs{
-//				Description: pulumi.String("dscp_mark"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networking.NewQosDscpMarkingRule(ctx, "dscpMarkingRule1", &networking.QosDscpMarkingRuleArgs{
-//				QosPolicyId: qosPolicy1.ID(),
-//				DscpMark:    pulumi.Int(26),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

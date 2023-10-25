@@ -43,12 +43,24 @@ class QosBandwidthLimitRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             max_kbps: pulumi.Input[int],
-             qos_policy_id: pulumi.Input[str],
+             max_kbps: Optional[pulumi.Input[int]] = None,
+             qos_policy_id: Optional[pulumi.Input[str]] = None,
              direction: Optional[pulumi.Input[str]] = None,
              max_burst_kbps: Optional[pulumi.Input[int]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if max_kbps is None and 'maxKbps' in kwargs:
+            max_kbps = kwargs['maxKbps']
+        if max_kbps is None:
+            raise TypeError("Missing 'max_kbps' argument")
+        if qos_policy_id is None and 'qosPolicyId' in kwargs:
+            qos_policy_id = kwargs['qosPolicyId']
+        if qos_policy_id is None:
+            raise TypeError("Missing 'qos_policy_id' argument")
+        if max_burst_kbps is None and 'maxBurstKbps' in kwargs:
+            max_burst_kbps = kwargs['maxBurstKbps']
+
         _setter("max_kbps", max_kbps)
         _setter("qos_policy_id", qos_policy_id)
         if direction is not None:
@@ -161,7 +173,15 @@ class _QosBandwidthLimitRuleState:
              max_kbps: Optional[pulumi.Input[int]] = None,
              qos_policy_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if max_burst_kbps is None and 'maxBurstKbps' in kwargs:
+            max_burst_kbps = kwargs['maxBurstKbps']
+        if max_kbps is None and 'maxKbps' in kwargs:
+            max_kbps = kwargs['maxKbps']
+        if qos_policy_id is None and 'qosPolicyId' in kwargs:
+            qos_policy_id = kwargs['qosPolicyId']
+
         if direction is not None:
             _setter("direction", direction)
         if max_burst_kbps is not None:
@@ -254,19 +274,6 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
         Manages a V2 Neutron QoS bandwidth limit rule resource within OpenStack.
 
         ## Example Usage
-        ### Create a QoS Policy with some bandwidth limit rule
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="bw_limit")
-        bw_limit_rule1 = openstack.networking.QosBandwidthLimitRule("bwLimitRule1",
-            qos_policy_id=qos_policy1.id,
-            max_kbps=3000,
-            max_burst_kbps=300,
-            direction="egress")
-        ```
 
         ## Import
 
@@ -299,19 +306,6 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
         Manages a V2 Neutron QoS bandwidth limit rule resource within OpenStack.
 
         ## Example Usage
-        ### Create a QoS Policy with some bandwidth limit rule
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="bw_limit")
-        bw_limit_rule1 = openstack.networking.QosBandwidthLimitRule("bwLimitRule1",
-            qos_policy_id=qos_policy1.id,
-            max_kbps=3000,
-            max_burst_kbps=300,
-            direction="egress")
-        ```
 
         ## Import
 

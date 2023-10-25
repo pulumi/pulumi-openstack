@@ -100,15 +100,6 @@ def get_aggregate_v2(hosts: Optional[Sequence[str]] = None,
     Use this data source to get information about host aggregates
     by name.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    test = openstack.compute.get_aggregate_v2(name="test")
-    ```
-
 
     :param Sequence[str] hosts: List of Hypervisors contained in the Host Aggregate
     :param Mapping[str, str] metadata: Metadata of the Host Aggregate
@@ -137,15 +128,6 @@ def get_aggregate_v2_output(hosts: Optional[pulumi.Input[Optional[Sequence[str]]
     """
     Use this data source to get information about host aggregates
     by name.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    test = openstack.compute.get_aggregate_v2(name="test")
-    ```
 
 
     :param Sequence[str] hosts: List of Hypervisors contained in the Host Aggregate

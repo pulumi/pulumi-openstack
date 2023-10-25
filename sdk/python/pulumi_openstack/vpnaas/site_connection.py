@@ -99,12 +99,12 @@ class SiteConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ikepolicy_id: pulumi.Input[str],
-             ipsecpolicy_id: pulumi.Input[str],
-             peer_address: pulumi.Input[str],
-             peer_id: pulumi.Input[str],
-             psk: pulumi.Input[str],
-             vpnservice_id: pulumi.Input[str],
+             ikepolicy_id: Optional[pulumi.Input[str]] = None,
+             ipsecpolicy_id: Optional[pulumi.Input[str]] = None,
+             peer_address: Optional[pulumi.Input[str]] = None,
+             peer_id: Optional[pulumi.Input[str]] = None,
+             psk: Optional[pulumi.Input[str]] = None,
+             vpnservice_id: Optional[pulumi.Input[str]] = None,
              admin_state_up: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dpds: Optional[pulumi.Input[Sequence[pulumi.Input['SiteConnectionDpdArgs']]]] = None,
@@ -118,7 +118,45 @@ class SiteConnectionArgs:
              region: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ikepolicy_id is None and 'ikepolicyId' in kwargs:
+            ikepolicy_id = kwargs['ikepolicyId']
+        if ikepolicy_id is None:
+            raise TypeError("Missing 'ikepolicy_id' argument")
+        if ipsecpolicy_id is None and 'ipsecpolicyId' in kwargs:
+            ipsecpolicy_id = kwargs['ipsecpolicyId']
+        if ipsecpolicy_id is None:
+            raise TypeError("Missing 'ipsecpolicy_id' argument")
+        if peer_address is None and 'peerAddress' in kwargs:
+            peer_address = kwargs['peerAddress']
+        if peer_address is None:
+            raise TypeError("Missing 'peer_address' argument")
+        if peer_id is None and 'peerId' in kwargs:
+            peer_id = kwargs['peerId']
+        if peer_id is None:
+            raise TypeError("Missing 'peer_id' argument")
+        if psk is None:
+            raise TypeError("Missing 'psk' argument")
+        if vpnservice_id is None and 'vpnserviceId' in kwargs:
+            vpnservice_id = kwargs['vpnserviceId']
+        if vpnservice_id is None:
+            raise TypeError("Missing 'vpnservice_id' argument")
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if local_ep_group_id is None and 'localEpGroupId' in kwargs:
+            local_ep_group_id = kwargs['localEpGroupId']
+        if local_id is None and 'localId' in kwargs:
+            local_id = kwargs['localId']
+        if peer_cidrs is None and 'peerCidrs' in kwargs:
+            peer_cidrs = kwargs['peerCidrs']
+        if peer_ep_group_id is None and 'peerEpGroupId' in kwargs:
+            peer_ep_group_id = kwargs['peerEpGroupId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         _setter("ikepolicy_id", ikepolicy_id)
         _setter("ipsecpolicy_id", ipsecpolicy_id)
         _setter("peer_address", peer_address)
@@ -503,7 +541,33 @@ class _SiteConnectionState:
              tenant_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpnservice_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if ikepolicy_id is None and 'ikepolicyId' in kwargs:
+            ikepolicy_id = kwargs['ikepolicyId']
+        if ipsecpolicy_id is None and 'ipsecpolicyId' in kwargs:
+            ipsecpolicy_id = kwargs['ipsecpolicyId']
+        if local_ep_group_id is None and 'localEpGroupId' in kwargs:
+            local_ep_group_id = kwargs['localEpGroupId']
+        if local_id is None and 'localId' in kwargs:
+            local_id = kwargs['localId']
+        if peer_address is None and 'peerAddress' in kwargs:
+            peer_address = kwargs['peerAddress']
+        if peer_cidrs is None and 'peerCidrs' in kwargs:
+            peer_cidrs = kwargs['peerCidrs']
+        if peer_ep_group_id is None and 'peerEpGroupId' in kwargs:
+            peer_ep_group_id = kwargs['peerEpGroupId']
+        if peer_id is None and 'peerId' in kwargs:
+            peer_id = kwargs['peerId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+        if vpnservice_id is None and 'vpnserviceId' in kwargs:
+            vpnservice_id = kwargs['vpnserviceId']
+
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
         if description is not None:
@@ -817,27 +881,6 @@ class SiteConnection(pulumi.CustomResource):
         """
         Manages a V2 Neutron IPSec site connection resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        conn1 = openstack.vpnaas.SiteConnection("conn1",
-            ikepolicy_id=openstack_vpnaas_ike_policy_v2["policy_2"]["id"],
-            ipsecpolicy_id=openstack_vpnaas_ipsec_policy_v2["policy_1"]["id"],
-            vpnservice_id=openstack_vpnaas_service_v2["service_1"]["id"],
-            psk="secret",
-            peer_address="192.168.10.1",
-            local_ep_group_id=openstack_vpnaas_endpoint_group_v2["group_2"]["id"],
-            peer_ep_group_id=openstack_vpnaas_endpoint_group_v2["group_1"]["id"],
-            dpds=[openstack.vpnaas.SiteConnectionDpdArgs(
-                action="restart",
-                timeout=42,
-                interval=21,
-            )])
-        ```
-
         ## Import
 
         Site Connections can be imported using the `id`, e.g.
@@ -893,27 +936,6 @@ class SiteConnection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 Neutron IPSec site connection resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        conn1 = openstack.vpnaas.SiteConnection("conn1",
-            ikepolicy_id=openstack_vpnaas_ike_policy_v2["policy_2"]["id"],
-            ipsecpolicy_id=openstack_vpnaas_ipsec_policy_v2["policy_1"]["id"],
-            vpnservice_id=openstack_vpnaas_service_v2["service_1"]["id"],
-            psk="secret",
-            peer_address="192.168.10.1",
-            local_ep_group_id=openstack_vpnaas_endpoint_group_v2["group_2"]["id"],
-            peer_ep_group_id=openstack_vpnaas_endpoint_group_v2["group_1"]["id"],
-            dpds=[openstack.vpnaas.SiteConnectionDpdArgs(
-                action="restart",
-                timeout=42,
-                interval=21,
-            )])
-        ```
 
         ## Import
 

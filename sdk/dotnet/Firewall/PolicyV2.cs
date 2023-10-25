@@ -14,46 +14,6 @@ namespace Pulumi.OpenStack.Firewall
     /// 
     /// &gt; **Note:** Firewall v2 has no support for OVN currently.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var rule1 = new OpenStack.Firewall.RuleV2("rule1", new()
-    ///     {
-    ///         Description = "drop TELNET traffic",
-    ///         Action = "deny",
-    ///         Protocol = "tcp",
-    ///         DestinationPort = "23",
-    ///         Enabled = true,
-    ///     });
-    /// 
-    ///     var rule2 = new OpenStack.Firewall.RuleV2("rule2", new()
-    ///     {
-    ///         Description = "drop NTP traffic",
-    ///         Action = "deny",
-    ///         Protocol = "udp",
-    ///         DestinationPort = "123",
-    ///         Enabled = false,
-    ///     });
-    /// 
-    ///     var policy1 = new OpenStack.Firewall.PolicyV2("policy1", new()
-    ///     {
-    ///         Rules = new[]
-    ///         {
-    ///             rule1.Id,
-    ///             rule2.Id,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Firewall Policies can be imported using the `id`, e.g.

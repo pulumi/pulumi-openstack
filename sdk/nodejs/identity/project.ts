@@ -10,15 +10,6 @@ import * as utilities from "../utilities";
  * > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
  * this resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const project1 = new openstack.identity.Project("project1", {description: "A project"});
- * ```
- *
  * ## Import
  *
  * Projects can be imported using the `id`, e.g.

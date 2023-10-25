@@ -75,7 +75,7 @@ class NodeGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cluster_id: pulumi.Input[str],
+             cluster_id: Optional[pulumi.Input[str]] = None,
              docker_volume_size: Optional[pulumi.Input[int]] = None,
              flavor_id: Optional[pulumi.Input[str]] = None,
              image_id: Optional[pulumi.Input[str]] = None,
@@ -87,7 +87,27 @@ class NodeGroupArgs:
              node_count: Optional[pulumi.Input[int]] = None,
              region: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if docker_volume_size is None and 'dockerVolumeSize' in kwargs:
+            docker_volume_size = kwargs['dockerVolumeSize']
+        if flavor_id is None and 'flavorId' in kwargs:
+            flavor_id = kwargs['flavorId']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if max_node_count is None and 'maxNodeCount' in kwargs:
+            max_node_count = kwargs['maxNodeCount']
+        if merge_labels is None and 'mergeLabels' in kwargs:
+            merge_labels = kwargs['mergeLabels']
+        if min_node_count is None and 'minNodeCount' in kwargs:
+            min_node_count = kwargs['minNodeCount']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+
         _setter("cluster_id", cluster_id)
         if docker_volume_size is not None:
             _setter("docker_volume_size", docker_volume_size)
@@ -361,7 +381,31 @@ class _NodeGroupState:
              region: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if docker_volume_size is None and 'dockerVolumeSize' in kwargs:
+            docker_volume_size = kwargs['dockerVolumeSize']
+        if flavor_id is None and 'flavorId' in kwargs:
+            flavor_id = kwargs['flavorId']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if max_node_count is None and 'maxNodeCount' in kwargs:
+            max_node_count = kwargs['maxNodeCount']
+        if merge_labels is None and 'mergeLabels' in kwargs:
+            merge_labels = kwargs['mergeLabels']
+        if min_node_count is None and 'minNodeCount' in kwargs:
+            min_node_count = kwargs['minNodeCount']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if created_at is not None:
@@ -608,16 +652,6 @@ class NodeGroup(pulumi.CustomResource):
         Manages a V1 Magnum node group resource within OpenStack.
 
         ## Example Usage
-        ### Create a Nodegroup
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        nodegroup1 = openstack.containerinfra.NodeGroup("nodegroup1",
-            cluster_id="b9a45c5c-cd03-4958-82aa-b80bf93cb922",
-            node_count=5)
-        ```
         ## Attributes reference
 
         The following attributes are exported:
@@ -686,16 +720,6 @@ class NodeGroup(pulumi.CustomResource):
         Manages a V1 Magnum node group resource within OpenStack.
 
         ## Example Usage
-        ### Create a Nodegroup
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        nodegroup1 = openstack.containerinfra.NodeGroup("nodegroup1",
-            cluster_id="b9a45c5c-cd03-4958-82aa-b80bf93cb922",
-            node_count=5)
-        ```
         ## Attributes reference
 
         The following attributes are exported:

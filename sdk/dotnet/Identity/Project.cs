@@ -15,24 +15,6 @@ namespace Pulumi.OpenStack.Identity
     /// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
     /// this resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project1 = new OpenStack.Identity.Project("project1", new()
-    ///     {
-    ///         Description = "A project",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Projects can be imported using the `id`, e.g.

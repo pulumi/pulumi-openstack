@@ -146,15 +146,6 @@ def get_hypervisor_v2(hostname: Optional[str] = None,
     Use this data source to get information about hypervisors
     by hostname.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    host01 = openstack.compute.get_hypervisor_v2(hostname="host01")
-    ```
-
 
     :param str hostname: The hostname of the hypervisor
     """
@@ -181,15 +172,6 @@ def get_hypervisor_v2_output(hostname: Optional[pulumi.Input[str]] = None,
     """
     Use this data source to get information about hypervisors
     by hostname.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    host01 = openstack.compute.get_hypervisor_v2(hostname="host01")
-    ```
 
 
     :param str hostname: The hostname of the hypervisor

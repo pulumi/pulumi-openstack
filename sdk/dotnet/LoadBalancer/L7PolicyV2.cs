@@ -12,59 +12,6 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// <summary>
     /// Manages a Load Balancer L7 Policy resource within OpenStack.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
-    ///     {
-    ///         AdminStateUp = true,
-    ///     });
-    /// 
-    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
-    ///     {
-    ///         Cidr = "192.168.199.0/24",
-    ///         IpVersion = 4,
-    ///         NetworkId = network1.Id,
-    ///     });
-    /// 
-    ///     var loadbalancer1 = new OpenStack.LoadBalancer.LoadBalancer("loadbalancer1", new()
-    ///     {
-    ///         VipSubnetId = subnet1.Id,
-    ///     });
-    /// 
-    ///     var listener1 = new OpenStack.LoadBalancer.Listener("listener1", new()
-    ///     {
-    ///         Protocol = "HTTP",
-    ///         ProtocolPort = 8080,
-    ///         LoadbalancerId = loadbalancer1.Id,
-    ///     });
-    /// 
-    ///     var pool1 = new OpenStack.LoadBalancer.Pool("pool1", new()
-    ///     {
-    ///         Protocol = "HTTP",
-    ///         LbMethod = "ROUND_ROBIN",
-    ///         LoadbalancerId = loadbalancer1.Id,
-    ///     });
-    /// 
-    ///     var l7policy1 = new OpenStack.LoadBalancer.L7PolicyV2("l7policy1", new()
-    ///     {
-    ///         Action = "REDIRECT_TO_POOL",
-    ///         Description = "test l7 policy",
-    ///         Position = 1,
-    ///         ListenerId = listener1.Id,
-    ///         RedirectPoolId = pool1.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.:

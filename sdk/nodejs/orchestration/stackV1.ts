@@ -9,41 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Manages a V1 stack resource within OpenStack.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const stack1 = new openstack.orchestration.StackV1("stack1", {
- *     disableRollback: true,
- *     environmentOpts: {
- *         Bin: `
- *
- * `,
- *     },
- *     parameters: {
- *         length: 4,
- *     },
- *     templateOpts: {
- *         Bin: `heat_template_version: 2013-05-23
- * parameters:
- *   length:
- *     type: number
- * resources:
- *   test_res:
- *     type: OS::Heat::TestResource
- *   random:
- *     type: OS::Heat::RandomString
- *     properties:
- *       length: {get_param: length}
- *
- * `,
- *     },
- *     timeout: 30,
- * });
- * ```
- *
  * ## Import
  *
  * stacks can be imported using the `id`, e.g.

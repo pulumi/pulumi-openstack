@@ -85,7 +85,7 @@ class FloatingIpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pool: pulumi.Input[str],
+             pool: Optional[pulumi.Input[str]] = None,
              address: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dns_domain: Optional[pulumi.Input[str]] = None,
@@ -98,7 +98,27 @@ class FloatingIpArgs:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if pool is None:
+            raise TypeError("Missing 'pool' argument")
+        if dns_domain is None and 'dnsDomain' in kwargs:
+            dns_domain = kwargs['dnsDomain']
+        if dns_name is None and 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if fixed_ip is None and 'fixedIp' in kwargs:
+            fixed_ip = kwargs['fixedIp']
+        if port_id is None and 'portId' in kwargs:
+            port_id = kwargs['portId']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if subnet_ids is None and 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         _setter("pool", pool)
         if address is not None:
             _setter("address", address)
@@ -397,7 +417,27 @@ class _FloatingIpState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if all_tags is None and 'allTags' in kwargs:
+            all_tags = kwargs['allTags']
+        if dns_domain is None and 'dnsDomain' in kwargs:
+            dns_domain = kwargs['dnsDomain']
+        if dns_name is None and 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if fixed_ip is None and 'fixedIp' in kwargs:
+            fixed_ip = kwargs['fixedIp']
+        if port_id is None and 'portId' in kwargs:
+            port_id = kwargs['portId']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if subnet_ids is None and 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if address is not None:
             _setter("address", address)
         if all_tags is not None:

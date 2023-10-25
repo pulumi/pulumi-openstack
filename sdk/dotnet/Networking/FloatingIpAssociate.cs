@@ -14,30 +14,6 @@ namespace Pulumi.OpenStack.Networking
     /// where you have a pre-allocated floating IP or are unable to use the
     /// `openstack.networking.FloatingIp` resource to create a floating IP.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var port1 = new OpenStack.Networking.Port("port1", new()
-    ///     {
-    ///         NetworkId = "a5bbd213-e1d3-49b6-aed1-9df60ea94b9a",
-    ///     });
-    /// 
-    ///     var fip1 = new OpenStack.Networking.FloatingIpAssociate("fip1", new()
-    ///     {
-    ///         FloatingIp = "1.2.3.4",
-    ///         PortId = port1.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Floating IP associations can be imported using the `id` of the floating IP, e.g.

@@ -30,44 +30,6 @@ import (
 // > **Note:** This resource has attributes that depend on octavia minor versions.
 // Please ensure your Openstack cloud supports the required minor version.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project1, err := identity.NewProject(ctx, "project1", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = loadbalancer.NewQuota(ctx, "quota1", &loadbalancer.QuotaArgs{
-//				ProjectId:     project1.ID(),
-//				Loadbalancer:  pulumi.Int(6),
-//				Listener:      pulumi.Int(7),
-//				Member:        pulumi.Int(8),
-//				Pool:          pulumi.Int(9),
-//				HealthMonitor: pulumi.Int(10),
-//				L7Policy:      pulumi.Int(11),
-//				L7Rule:        pulumi.Int(12),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Quotas can be imported using the `project_id/region_name`, where region_name is the one defined is the Openstack credentials that are in use. E.g.

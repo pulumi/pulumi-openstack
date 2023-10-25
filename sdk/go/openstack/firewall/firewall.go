@@ -15,61 +15,6 @@ import (
 
 // Manages a v1 firewall resource within OpenStack.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/firewall"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			rule1, err := firewall.NewRule(ctx, "rule1", &firewall.RuleArgs{
-//				Description:     pulumi.String("drop TELNET traffic"),
-//				Action:          pulumi.String("deny"),
-//				Protocol:        pulumi.String("tcp"),
-//				DestinationPort: pulumi.String("23"),
-//				Enabled:         pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			rule2, err := firewall.NewRule(ctx, "rule2", &firewall.RuleArgs{
-//				Description:     pulumi.String("drop NTP traffic"),
-//				Action:          pulumi.String("deny"),
-//				Protocol:        pulumi.String("udp"),
-//				DestinationPort: pulumi.String("123"),
-//				Enabled:         pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			policy1, err := firewall.NewPolicy(ctx, "policy1", &firewall.PolicyArgs{
-//				Rules: pulumi.StringArray{
-//					rule1.ID(),
-//					rule2.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = firewall.NewFirewall(ctx, "firewall1", &firewall.FirewallArgs{
-//				PolicyId: policy1.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Firewalls can be imported using the `id`, e.g.

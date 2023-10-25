@@ -53,7 +53,15 @@ class KeypairArgs:
              region: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if public_key is None and 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if name is not None:
             _setter("name", name)
         if public_key is not None:
@@ -186,7 +194,17 @@ class _KeypairState:
              region: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if public_key is None and 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if fingerprint is not None:
             _setter("fingerprint", fingerprint)
         if name is not None:
@@ -310,22 +328,6 @@ class Keypair(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Import an Existing Public Key
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test_keypair = openstack.compute.Keypair("test-keypair", public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAjpC1hwiOCCmKEWxJ4qzTTsJbKzndLotBCz5PcwtUnflmU+gHJtWMZKpuEGVi29h0A/+ydKek1O18k10Ff+4tyFjiHDQAnOfgWf7+b1yK+qDip3X1C0UPMbwHlTfSGWLGZqd9LvEFx9k3h/M+VtMvwR1lJ9LUyTAImnNjWG7TaIPmui30HvM2UiFEmqkr4ijq45MyX2+fLIePLRIF61p4whjHAQYufqyno3BS48icQb4p6iVEZPo4AE2o9oIyQvj2mx4dk5Y8CgSETOZTYDOR3rU2fZTRDRgPJDH9FWvQjF5tA0p3d9CoWWd2s6GKKbfoUIi8R/Db1BSPJwkqB")
-        ```
-        ### Generate a Public/Private Key Pair
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test_keypair = openstack.compute.Keypair("test-keypair")
-        ```
 
         ## Import
 
@@ -361,22 +363,6 @@ class Keypair(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Import an Existing Public Key
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test_keypair = openstack.compute.Keypair("test-keypair", public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAjpC1hwiOCCmKEWxJ4qzTTsJbKzndLotBCz5PcwtUnflmU+gHJtWMZKpuEGVi29h0A/+ydKek1O18k10Ff+4tyFjiHDQAnOfgWf7+b1yK+qDip3X1C0UPMbwHlTfSGWLGZqd9LvEFx9k3h/M+VtMvwR1lJ9LUyTAImnNjWG7TaIPmui30HvM2UiFEmqkr4ijq45MyX2+fLIePLRIF61p4whjHAQYufqyno3BS48icQb4p6iVEZPo4AE2o9oIyQvj2mx4dk5Y8CgSETOZTYDOR3rU2fZTRDRgPJDH9FWvQjF5tA0p3d9CoWWd2s6GKKbfoUIi8R/Db1BSPJwkqB")
-        ```
-        ### Generate a Public/Private Key Pair
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test_keypair = openstack.compute.Keypair("test-keypair")
-        ```
 
         ## Import
 

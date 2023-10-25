@@ -41,11 +41,25 @@ class SubnetRouteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination_cidr: pulumi.Input[str],
-             next_hop: pulumi.Input[str],
-             subnet_id: pulumi.Input[str],
+             destination_cidr: Optional[pulumi.Input[str]] = None,
+             next_hop: Optional[pulumi.Input[str]] = None,
+             subnet_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if destination_cidr is None and 'destinationCidr' in kwargs:
+            destination_cidr = kwargs['destinationCidr']
+        if destination_cidr is None:
+            raise TypeError("Missing 'destination_cidr' argument")
+        if next_hop is None and 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if next_hop is None:
+            raise TypeError("Missing 'next_hop' argument")
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if subnet_id is None:
+            raise TypeError("Missing 'subnet_id' argument")
+
         _setter("destination_cidr", destination_cidr)
         _setter("next_hop", next_hop)
         _setter("subnet_id", subnet_id)
@@ -141,7 +155,15 @@ class _SubnetRouteState:
              next_hop: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              subnet_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if destination_cidr is None and 'destinationCidr' in kwargs:
+            destination_cidr = kwargs['destinationCidr']
+        if next_hop is None and 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+
         if destination_cidr is not None:
             _setter("destination_cidr", destination_cidr)
         if next_hop is not None:
@@ -219,24 +241,6 @@ class SubnetRoute(pulumi.CustomResource):
         """
         Creates a routing entry on a OpenStack V2 subnet.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        router1 = openstack.networking.Router("router1", admin_state_up=True)
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            network_id=network1.id,
-            cidr="192.168.199.0/24",
-            ip_version=4)
-        subnet_route1 = openstack.networking.SubnetRoute("subnetRoute1",
-            subnet_id=subnet1.id,
-            destination_cidr="10.0.1.0/24",
-            next_hop="192.168.199.254")
-        ```
-
         ## Import
 
         Routing entries can be imported using a combined ID using the following format`<subnet_id>-route-<destination_cidr>-<next_hop>`
@@ -266,24 +270,6 @@ class SubnetRoute(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a routing entry on a OpenStack V2 subnet.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        router1 = openstack.networking.Router("router1", admin_state_up=True)
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            network_id=network1.id,
-            cidr="192.168.199.0/24",
-            ip_version=4)
-        subnet_route1 = openstack.networking.SubnetRoute("subnetRoute1",
-            subnet_id=subnet1.id,
-            destination_cidr="10.0.1.0/24",
-            next_hop="192.168.199.254")
-        ```
 
         ## Import
 

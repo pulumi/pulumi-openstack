@@ -60,7 +60,7 @@ class TrunkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port_id: pulumi.Input[str],
+             port_id: Optional[pulumi.Input[str]] = None,
              admin_state_up: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -68,7 +68,19 @@ class TrunkArgs:
              sub_ports: Optional[pulumi.Input[Sequence[pulumi.Input['TrunkSubPortArgs']]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if port_id is None and 'portId' in kwargs:
+            port_id = kwargs['portId']
+        if port_id is None:
+            raise TypeError("Missing 'port_id' argument")
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if sub_ports is None and 'subPorts' in kwargs:
+            sub_ports = kwargs['subPorts']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         _setter("port_id", port_id)
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
@@ -253,7 +265,19 @@ class _TrunkState:
              sub_ports: Optional[pulumi.Input[Sequence[pulumi.Input['TrunkSubPortArgs']]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if all_tags is None and 'allTags' in kwargs:
+            all_tags = kwargs['allTags']
+        if port_id is None and 'portId' in kwargs:
+            port_id = kwargs['portId']
+        if sub_ports is None and 'subPorts' in kwargs:
+            sub_ports = kwargs['subPorts']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
         if all_tags is not None:
@@ -411,42 +435,6 @@ class Trunk(pulumi.CustomResource):
         """
         Manages a networking V2 trunk resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            network_id=network1.id,
-            cidr="192.168.1.0/24",
-            ip_version=4,
-            enable_dhcp=True,
-            no_gateway=True)
-        parent_port1 = openstack.networking.Port("parentPort1",
-            network_id=network1.id,
-            admin_state_up=True,
-            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
-        subport1 = openstack.networking.Port("subport1",
-            network_id=network1.id,
-            admin_state_up=True,
-            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
-        trunk1 = openstack.networking.Trunk("trunk1",
-            admin_state_up=True,
-            port_id=parent_port1.id,
-            sub_ports=[openstack.networking.TrunkSubPortArgs(
-                port_id=subport1.id,
-                segmentation_id=1,
-                segmentation_type="vlan",
-            )])
-        instance1 = openstack.compute.Instance("instance1",
-            security_groups=["default"],
-            networks=[openstack.compute.InstanceNetworkArgs(
-                port=trunk1.port_id,
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_state_up: Administrative up/down status for the trunk
@@ -477,42 +465,6 @@ class Trunk(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a networking V2 trunk resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            network_id=network1.id,
-            cidr="192.168.1.0/24",
-            ip_version=4,
-            enable_dhcp=True,
-            no_gateway=True)
-        parent_port1 = openstack.networking.Port("parentPort1",
-            network_id=network1.id,
-            admin_state_up=True,
-            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
-        subport1 = openstack.networking.Port("subport1",
-            network_id=network1.id,
-            admin_state_up=True,
-            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
-        trunk1 = openstack.networking.Trunk("trunk1",
-            admin_state_up=True,
-            port_id=parent_port1.id,
-            sub_ports=[openstack.networking.TrunkSubPortArgs(
-                port_id=subport1.id,
-                segmentation_id=1,
-                segmentation_type="vlan",
-            )])
-        instance1 = openstack.compute.Instance("instance1",
-            security_groups=["default"],
-            networks=[openstack.compute.InstanceNetworkArgs(
-                port=trunk1.port_id,
-            )])
-        ```
 
         :param str resource_name: The name of the resource.
         :param TrunkArgs args: The arguments to use to populate this resource's properties.

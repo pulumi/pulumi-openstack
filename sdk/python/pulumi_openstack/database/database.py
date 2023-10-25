@@ -32,10 +32,16 @@ class DatabaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+
         _setter("instance_id", instance_id)
         if name is not None:
             _setter("name", name)
@@ -103,7 +109,11 @@ class _DatabaseState:
              instance_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if instance_id is not None:
             _setter("instance_id", instance_id)
         if name is not None:
@@ -161,14 +171,6 @@ class Database(pulumi.CustomResource):
         Manages a V1 DB database resource within OpenStack.
 
         ## Example Usage
-        ### Database
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        mydb = openstack.database.Database("mydb", instance_id=openstack_db_instance_v1["basic"]["id"])
-        ```
 
         ## Import
 
@@ -194,14 +196,6 @@ class Database(pulumi.CustomResource):
         Manages a V1 DB database resource within OpenStack.
 
         ## Example Usage
-        ### Database
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        mydb = openstack.database.Database("mydb", instance_id=openstack_db_instance_v1["basic"]["id"])
-        ```
 
         ## Import
 

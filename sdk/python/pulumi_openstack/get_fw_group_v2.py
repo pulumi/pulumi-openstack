@@ -203,15 +203,6 @@ def get_fw_group_v2(admin_state_up: Optional[bool] = None,
     """
     Use this data source to get information of an available OpenStack firewall group v2.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    group = openstack.get_fw_group_v2(name="tf_test_group")
-    ```
-
 
     :param bool admin_state_up: Administrative up/down status for the firewall group.
     :param str description: Human-readable description of the firewall group.
@@ -275,15 +266,6 @@ def get_fw_group_v2_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFwGroupV2Result]:
     """
     Use this data source to get information of an available OpenStack firewall group v2.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    group = openstack.get_fw_group_v2(name="tf_test_group")
-    ```
 
 
     :param bool admin_state_up: Administrative up/down status for the firewall group.

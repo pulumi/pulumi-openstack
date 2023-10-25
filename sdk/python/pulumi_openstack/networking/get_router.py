@@ -200,15 +200,6 @@ def get_router(admin_state_up: Optional[bool] = None,
     """
     Use this data source to get the ID of an available OpenStack router.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    router = openstack.networking.get_router(name="router_1")
-    ```
-
 
     :param bool admin_state_up: Administrative up/down status for the router (must be "true" or "false" if provided).
     :param str description: Human-readable description of the router.
@@ -269,15 +260,6 @@ def get_router_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = N
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouterResult]:
     """
     Use this data source to get the ID of an available OpenStack router.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    router = openstack.networking.get_router(name="router_1")
-    ```
 
 
     :param bool admin_state_up: Administrative up/down status for the router (must be "true" or "false" if provided).

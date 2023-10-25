@@ -35,7 +35,11 @@ class VolumeAttachmentArgs:
              device: Optional[pulumi.Input[str]] = None,
              id: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if device is not None:
             _setter("device", device)
         if id is not None:
@@ -111,7 +115,17 @@ class VolumeSchedulerHintArgs:
              local_to_instance: Optional[pulumi.Input[str]] = None,
              query: Optional[pulumi.Input[str]] = None,
              same_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if additional_properties is None and 'additionalProperties' in kwargs:
+            additional_properties = kwargs['additionalProperties']
+        if different_hosts is None and 'differentHosts' in kwargs:
+            different_hosts = kwargs['differentHosts']
+        if local_to_instance is None and 'localToInstance' in kwargs:
+            local_to_instance = kwargs['localToInstance']
+        if same_hosts is None and 'sameHosts' in kwargs:
+            same_hosts = kwargs['sameHosts']
+
         if additional_properties is not None:
             _setter("additional_properties", additional_properties)
         if different_hosts is not None:
@@ -211,7 +225,11 @@ class VolumeV1AttachmentArgs:
              device: Optional[pulumi.Input[str]] = None,
              id: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if device is not None:
             _setter("device", device)
         if id is not None:
@@ -265,7 +283,11 @@ class VolumeV2AttachmentArgs:
              device: Optional[pulumi.Input[str]] = None,
              id: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if device is not None:
             _setter("device", device)
         if id is not None:
@@ -341,7 +363,17 @@ class VolumeV2SchedulerHintArgs:
              local_to_instance: Optional[pulumi.Input[str]] = None,
              query: Optional[pulumi.Input[str]] = None,
              same_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if additional_properties is None and 'additionalProperties' in kwargs:
+            additional_properties = kwargs['additionalProperties']
+        if different_hosts is None and 'differentHosts' in kwargs:
+            different_hosts = kwargs['differentHosts']
+        if local_to_instance is None and 'localToInstance' in kwargs:
+            local_to_instance = kwargs['localToInstance']
+        if same_hosts is None and 'sameHosts' in kwargs:
+            same_hosts = kwargs['sameHosts']
+
         if additional_properties is not None:
             _setter("additional_properties", additional_properties)
         if different_hosts is not None:

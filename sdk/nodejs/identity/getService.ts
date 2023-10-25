@@ -8,17 +8,6 @@ import * as utilities from "../utilities";
  * Use this data source to get the ID of an OpenStack service.
  *
  * > **Note:** This usually requires admin privileges.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const service1 = openstack.identity.getService({
- *     name: "keystone",
- * });
- * ```
  */
 export function getService(args?: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
     args = args || {};
@@ -88,17 +77,6 @@ export interface GetServiceResult {
  * Use this data source to get the ID of an OpenStack service.
  *
  * > **Note:** This usually requires admin privileges.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const service1 = openstack.identity.getService({
- *     name: "keystone",
- * });
- * ```
  */
 export function getServiceOutput(args?: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
     return pulumi.output(args).apply((a: any) => getService(a, opts))

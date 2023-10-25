@@ -11,21 +11,6 @@ import * as utilities from "../utilities";
  * stored in the raw state as plain-text. Read more about sensitive data in
  * state.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const rancheros = new openstack.images.Image("rancheros", {
- *     containerFormat: "bare",
- *     diskFormat: "qcow2",
- *     imageSourceUrl: "https://releases.rancher.com/os/latest/rancheros-openstack.img",
- *     properties: {
- *         key: "value",
- *     },
- * });
- * ```
  * ## Notes
  *
  * ### Properties

@@ -61,7 +61,7 @@ class QuotaArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_id: pulumi.Input[str],
+             project_id: Optional[pulumi.Input[str]] = None,
              health_monitor: Optional[pulumi.Input[int]] = None,
              l7_policy: Optional[pulumi.Input[int]] = None,
              l7_rule: Optional[pulumi.Input[int]] = None,
@@ -70,7 +70,19 @@ class QuotaArgs:
              member: Optional[pulumi.Input[int]] = None,
              pool: Optional[pulumi.Input[int]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if health_monitor is None and 'healthMonitor' in kwargs:
+            health_monitor = kwargs['healthMonitor']
+        if l7_policy is None and 'l7Policy' in kwargs:
+            l7_policy = kwargs['l7Policy']
+        if l7_rule is None and 'l7Rule' in kwargs:
+            l7_rule = kwargs['l7Rule']
+
         _setter("project_id", project_id)
         if health_monitor is not None:
             _setter("health_monitor", health_monitor)
@@ -268,7 +280,17 @@ class _QuotaState:
              pool: Optional[pulumi.Input[int]] = None,
              project_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if health_monitor is None and 'healthMonitor' in kwargs:
+            health_monitor = kwargs['healthMonitor']
+        if l7_policy is None and 'l7Policy' in kwargs:
+            l7_policy = kwargs['l7Policy']
+        if l7_rule is None and 'l7Rule' in kwargs:
+            l7_rule = kwargs['l7Rule']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         if health_monitor is not None:
             _setter("health_monitor", health_monitor)
         if l7_policy is not None:
@@ -439,24 +461,6 @@ class Quota(pulumi.CustomResource):
         > **Note:** This resource has attributes that depend on octavia minor versions.
         Please ensure your Openstack cloud supports the required minor version.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        project1 = openstack.identity.Project("project1")
-        quota1 = openstack.loadbalancer.Quota("quota1",
-            project_id=project1.id,
-            loadbalancer=6,
-            listener=7,
-            member=8,
-            pool=9,
-            health_monitor=10,
-            l7_policy=11,
-            l7_rule=12)
-        ```
-
         ## Import
 
         Quotas can be imported using the `project_id/region_name`, where region_name is the one defined is the Openstack credentials that are in use. E.g.
@@ -509,24 +513,6 @@ class Quota(pulumi.CustomResource):
 
         > **Note:** This resource has attributes that depend on octavia minor versions.
         Please ensure your Openstack cloud supports the required minor version.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        project1 = openstack.identity.Project("project1")
-        quota1 = openstack.loadbalancer.Quota("quota1",
-            project_id=project1.id,
-            loadbalancer=6,
-            listener=7,
-            member=8,
-            pool=9,
-            health_monitor=10,
-            l7_policy=11,
-            l7_rule=12)
-        ```
 
         ## Import
 

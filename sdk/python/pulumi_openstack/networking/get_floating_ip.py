@@ -176,15 +176,6 @@ def get_floating_ip(address: Optional[str] = None,
     """
     Use this data source to get the ID of an available OpenStack floating IP.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    floatingip1 = openstack.networking.get_floating_ip(address="192.168.0.4")
-    ```
-
 
     :param str address: The IP address of the floating IP.
     :param str description: Human-readable description of the floating IP.
@@ -240,15 +231,6 @@ def get_floating_ip_output(address: Optional[pulumi.Input[Optional[str]]] = None
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFloatingIpResult]:
     """
     Use this data source to get the ID of an available OpenStack floating IP.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    floatingip1 = openstack.networking.get_floating_ip(address="192.168.0.4")
-    ```
 
 
     :param str address: The IP address of the floating IP.
