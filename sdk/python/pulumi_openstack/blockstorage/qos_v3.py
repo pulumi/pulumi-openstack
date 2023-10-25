@@ -43,7 +43,9 @@ class QosV3Args:
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if consumer is not None:
             _setter("consumer", consumer)
         if name is not None:
@@ -138,7 +140,9 @@ class _QosV3State:
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if consumer is not None:
             _setter("consumer", consumer)
         if name is not None:
@@ -216,20 +220,6 @@ class QosV3(pulumi.CustomResource):
 
         > **Note:** This usually requires admin privileges.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        qos = openstack.blockstorage.QosV3("qos",
-            consumer="back-end",
-            specs={
-                "read_iops_sec": "40000",
-                "write_iops_sec": "40000",
-            })
-        ```
-
         ## Import
 
         Qos can be imported using the `qos_id`, e.g.
@@ -259,20 +249,6 @@ class QosV3(pulumi.CustomResource):
         Manages a V3 block storage Quality-Of-Servirce (qos) resource within OpenStack.
 
         > **Note:** This usually requires admin privileges.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        qos = openstack.blockstorage.QosV3("qos",
-            consumer="back-end",
-            specs={
-                "read_iops_sec": "40000",
-                "write_iops_sec": "40000",
-            })
-        ```
 
         ## Import
 

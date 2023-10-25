@@ -38,7 +38,9 @@ class ContainerV1Acl(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              read: Optional['outputs.ContainerV1AclRead'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if read is not None:
             _setter("read", read)
 
@@ -98,7 +100,15 @@ class ContainerV1AclRead(dict):
              project_access: Optional[bool] = None,
              updated_at: Optional[str] = None,
              users: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if project_access is None and 'projectAccess' in kwargs:
+            project_access = kwargs['projectAccess']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if project_access is not None:
@@ -163,7 +173,9 @@ class ContainerV1Consumer(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if url is not None:
@@ -221,9 +233,15 @@ class ContainerV1SecretRef(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             secret_ref: str,
+             secret_ref: Optional[str] = None,
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if secret_ref is None and 'secretRef' in kwargs:
+            secret_ref = kwargs['secretRef']
+        if secret_ref is None:
+            raise TypeError("Missing 'secret_ref' argument")
+
         _setter("secret_ref", secret_ref)
         if name is not None:
             _setter("name", name)
@@ -293,13 +311,23 @@ class OrderV1Meta(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             algorithm: str,
-             bit_length: int,
+             algorithm: Optional[str] = None,
+             bit_length: Optional[int] = None,
              expiration: Optional[str] = None,
              mode: Optional[str] = None,
              name: Optional[str] = None,
              payload_content_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if algorithm is None:
+            raise TypeError("Missing 'algorithm' argument")
+        if bit_length is None and 'bitLength' in kwargs:
+            bit_length = kwargs['bitLength']
+        if bit_length is None:
+            raise TypeError("Missing 'bit_length' argument")
+        if payload_content_type is None and 'payloadContentType' in kwargs:
+            payload_content_type = kwargs['payloadContentType']
+
         _setter("algorithm", algorithm)
         _setter("bit_length", bit_length)
         if expiration is not None:
@@ -372,7 +400,9 @@ class SecretV1Acl(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              read: Optional['outputs.SecretV1AclRead'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if read is not None:
             _setter("read", read)
 
@@ -432,7 +462,15 @@ class SecretV1AclRead(dict):
              project_access: Optional[bool] = None,
              updated_at: Optional[str] = None,
              users: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if project_access is None and 'projectAccess' in kwargs:
+            project_access = kwargs['projectAccess']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if project_access is not None:
@@ -488,8 +526,12 @@ class GetContainerAclResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             read: 'outputs.GetContainerAclReadResult',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             read: Optional['outputs.GetContainerAclReadResult'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if read is None:
+            raise TypeError("Missing 'read' argument")
+
         _setter("read", read)
 
     @property
@@ -522,11 +564,23 @@ class GetContainerAclReadResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created_at: str,
-             updated_at: str,
+             created_at: Optional[str] = None,
+             updated_at: Optional[str] = None,
              project_access: Optional[bool] = None,
              users: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_at is None:
+            raise TypeError("Missing 'created_at' argument")
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if updated_at is None:
+            raise TypeError("Missing 'updated_at' argument")
+        if project_access is None and 'projectAccess' in kwargs:
+            project_access = kwargs['projectAccess']
+
         _setter("created_at", created_at)
         _setter("updated_at", updated_at)
         if project_access is not None:
@@ -587,7 +641,9 @@ class GetContainerConsumerResult(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if url is not None:
@@ -629,7 +685,11 @@ class GetContainerSecretRefResult(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              secret_ref: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if secret_ref is None and 'secretRef' in kwargs:
+            secret_ref = kwargs['secretRef']
+
         if name is not None:
             _setter("name", name)
         if secret_ref is not None:
@@ -663,8 +723,12 @@ class GetSecretAclResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             read: 'outputs.GetSecretAclReadResult',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             read: Optional['outputs.GetSecretAclReadResult'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if read is None:
+            raise TypeError("Missing 'read' argument")
+
         _setter("read", read)
 
     @property
@@ -697,11 +761,23 @@ class GetSecretAclReadResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             created_at: str,
-             updated_at: str,
+             created_at: Optional[str] = None,
+             updated_at: Optional[str] = None,
              project_access: Optional[bool] = None,
              users: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_at is None:
+            raise TypeError("Missing 'created_at' argument")
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if updated_at is None:
+            raise TypeError("Missing 'updated_at' argument")
+        if project_access is None and 'projectAccess' in kwargs:
+            project_access = kwargs['projectAccess']
+
         _setter("created_at", created_at)
         _setter("updated_at", updated_at)
         if project_access is not None:

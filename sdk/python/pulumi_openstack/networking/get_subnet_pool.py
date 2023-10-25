@@ -274,15 +274,6 @@ def get_subnet_pool(address_scope_id: Optional[str] = None,
     """
     Use this data source to get the ID of an available OpenStack subnetpool.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    subnetpool1 = openstack.networking.get_subnet_pool(name="subnetpool_1")
-    ```
-
 
     :param str address_scope_id: The Neutron address scope that subnetpools
            is assigned to.
@@ -359,15 +350,6 @@ def get_subnet_pool_output(address_scope_id: Optional[pulumi.Input[Optional[str]
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetPoolResult]:
     """
     Use this data source to get the ID of an available OpenStack subnetpool.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    subnetpool1 = openstack.networking.get_subnet_pool(name="subnetpool_1")
-    ```
 
 
     :param str address_scope_id: The Neutron address scope that subnetpools

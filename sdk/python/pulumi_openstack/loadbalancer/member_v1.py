@@ -52,14 +52,28 @@ class MemberV1Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: pulumi.Input[str],
-             pool_id: pulumi.Input[str],
-             port: pulumi.Input[int],
+             address: Optional[pulumi.Input[str]] = None,
+             pool_id: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
              admin_state_up: Optional[pulumi.Input[bool]] = None,
              region: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if pool_id is None and 'poolId' in kwargs:
+            pool_id = kwargs['poolId']
+        if pool_id is None:
+            raise TypeError("Missing 'pool_id' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         _setter("address", address)
         _setter("pool_id", pool_id)
         _setter("port", port)
@@ -211,7 +225,15 @@ class _MemberV1State:
              region: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if pool_id is None and 'poolId' in kwargs:
+            pool_id = kwargs['poolId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if address is not None:
             _setter("address", address)
         if admin_state_up is not None:
@@ -334,18 +356,6 @@ class MemberV1(pulumi.CustomResource):
         """
         Manages a V1 load balancer member resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        member1 = openstack.loadbalancer.MemberV1("member1",
-            address="192.168.0.10",
-            pool_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
-            port=80)
-        ```
-
         ## Import
 
         Load Balancer Members can be imported using the `id`, e.g.
@@ -380,18 +390,6 @@ class MemberV1(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V1 load balancer member resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        member1 = openstack.loadbalancer.MemberV1("member1",
-            address="192.168.0.10",
-            pool_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
-            port=80)
-        ```
 
         ## Import
 

@@ -14,36 +14,6 @@ import (
 
 // Manages a V2 Neutron Endpoint Group resource within OpenStack.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/vpnaas"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpnaas.NewEndpointGroup(ctx, "group1", &vpnaas.EndpointGroupArgs{
-//				Endpoints: pulumi.StringArray{
-//					pulumi.String("10.2.0.0/24"),
-//					pulumi.String("10.3.0.0/24"),
-//				},
-//				Type: pulumi.String("cidr"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Groups can be imported using the `id`, e.g.

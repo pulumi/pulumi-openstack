@@ -6,15 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get a list of Block Storage availability zones from OpenStack
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const zones = openstack.blockstorage.getAvailabilityZonesV3({});
- * ```
  */
 export function getAvailabilityZonesV3(args?: GetAvailabilityZonesV3Args, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZonesV3Result> {
     args = args || {};
@@ -66,15 +57,6 @@ export interface GetAvailabilityZonesV3Result {
 }
 /**
  * Use this data source to get a list of Block Storage availability zones from OpenStack
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const zones = openstack.blockstorage.getAvailabilityZonesV3({});
- * ```
  */
 export function getAvailabilityZonesV3Output(args?: GetAvailabilityZonesV3OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvailabilityZonesV3Result> {
     return pulumi.output(args).apply((a: any) => getAvailabilityZonesV3(a, opts))

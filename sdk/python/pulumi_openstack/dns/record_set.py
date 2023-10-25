@@ -63,8 +63,8 @@ class RecordSetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             records: pulumi.Input[Sequence[pulumi.Input[str]]],
-             zone_id: pulumi.Input[str],
+             records: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disable_status_check: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -73,7 +73,21 @@ class RecordSetArgs:
              ttl: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if records is None:
+            raise TypeError("Missing 'records' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if disable_status_check is None and 'disableStatusCheck' in kwargs:
+            disable_status_check = kwargs['disableStatusCheck']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         _setter("records", records)
         _setter("zone_id", zone_id)
         if description is not None:
@@ -286,7 +300,17 @@ class _RecordSetState:
              type: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disable_status_check is None and 'disableStatusCheck' in kwargs:
+            disable_status_check = kwargs['disableStatusCheck']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if description is not None:
             _setter("description", description)
         if disable_status_check is not None:
@@ -459,24 +483,6 @@ class RecordSet(pulumi.CustomResource):
         Manages a DNS record set in the OpenStack DNS Service.
 
         ## Example Usage
-        ### Automatically detect the correct network
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        example_zone = openstack.dns.Zone("exampleZone",
-            email="email2@example.com",
-            description="a zone",
-            ttl=6000,
-            type="PRIMARY")
-        rs_example_com = openstack.dns.RecordSet("rsExampleCom",
-            zone_id=example_zone.id,
-            description="An example record set",
-            ttl=3000,
-            type="A",
-            records=["10.0.0.1"])
-        ```
 
         ## Import
 
@@ -519,24 +525,6 @@ class RecordSet(pulumi.CustomResource):
         Manages a DNS record set in the OpenStack DNS Service.
 
         ## Example Usage
-        ### Automatically detect the correct network
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        example_zone = openstack.dns.Zone("exampleZone",
-            email="email2@example.com",
-            description="a zone",
-            ttl=6000,
-            type="PRIMARY")
-        rs_example_com = openstack.dns.RecordSet("rsExampleCom",
-            zone_id=example_zone.id,
-            description="An example record set",
-            ttl=3000,
-            type="A",
-            records=["10.0.0.1"])
-        ```
 
         ## Import
 

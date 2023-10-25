@@ -180,15 +180,6 @@ def get_quota_v2(project_id: Optional[str] = None,
     """
     Use this data source to get the networking quota of an OpenStack project.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    quota = openstack.networking.get_quota_v2(project_id="2e367a3d29f94fd988e6ec54e305ec9d")
-    ```
-
 
     :param str project_id: The id of the project to retrieve the quota.
     :param str region: The region in which to obtain the V2 Network client.
@@ -221,15 +212,6 @@ def get_quota_v2_output(project_id: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQuotaV2Result]:
     """
     Use this data source to get the networking quota of an OpenStack project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    quota = openstack.networking.get_quota_v2(project_id="2e367a3d29f94fd988e6ec54e305ec9d")
-    ```
 
 
     :param str project_id: The id of the project to retrieve the quota.

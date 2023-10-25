@@ -46,13 +46,25 @@ class VolumeAttachArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             instance_id: pulumi.Input[str],
-             volume_id: pulumi.Input[str],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             volume_id: Optional[pulumi.Input[str]] = None,
              device: Optional[pulumi.Input[str]] = None,
              multiattach: Optional[pulumi.Input[bool]] = None,
              region: Optional[pulumi.Input[str]] = None,
              vendor_options: Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if volume_id is None and 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+        if volume_id is None:
+            raise TypeError("Missing 'volume_id' argument")
+        if vendor_options is None and 'vendorOptions' in kwargs:
+            vendor_options = kwargs['vendorOptions']
+
         _setter("instance_id", instance_id)
         _setter("volume_id", volume_id)
         if device is not None:
@@ -177,7 +189,15 @@ class _VolumeAttachState:
              region: Optional[pulumi.Input[str]] = None,
              vendor_options: Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']] = None,
              volume_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if vendor_options is None and 'vendorOptions' in kwargs:
+            vendor_options = kwargs['vendorOptions']
+        if volume_id is None and 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+
         if device is not None:
             _setter("device", device)
         if instance_id is not None:
@@ -282,45 +302,6 @@ class VolumeAttach(pulumi.CustomResource):
         Compute (Nova) v2 API.
 
         ## Example Usage
-        ### Basic attachment of a single volume to a single instance
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        volume1 = openstack.blockstorage.VolumeV2("volume1", size=1)
-        instance1 = openstack.compute.Instance("instance1", security_groups=["default"])
-        va1 = openstack.compute.VolumeAttach("va1",
-            instance_id=instance1.id,
-            volume_id=volume1.id)
-        ```
-        ### Using Multiattach-enabled volumes
-
-        Multiattach Volumes are dependent upon your OpenStack cloud and not all
-        clouds support multiattach.
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        volume1 = openstack.blockstorage.Volume("volume1",
-            size=1,
-            multiattach=True)
-        instance1 = openstack.compute.Instance("instance1", security_groups=["default"])
-        instance2 = openstack.compute.Instance("instance2", security_groups=["default"])
-        va1 = openstack.compute.VolumeAttach("va1",
-            instance_id=instance1.id,
-            volume_id=openstack_blockstorage_volume_v2["volume_1"]["id"],
-            multiattach=True)
-        va2 = openstack.compute.VolumeAttach("va2",
-            instance_id=instance2.id,
-            volume_id=openstack_blockstorage_volume_v2["volume_1"]["id"],
-            multiattach=True,
-            opts=pulumi.ResourceOptions(depends_on=["openstack_compute_volume_attach_v2.va_1"]))
-        ```
-
-        It is recommended to use `depends_on` for the attach resources
-        to enforce the volume attachments to happen one at a time.
 
         ## Import
 
@@ -353,45 +334,6 @@ class VolumeAttach(pulumi.CustomResource):
         Compute (Nova) v2 API.
 
         ## Example Usage
-        ### Basic attachment of a single volume to a single instance
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        volume1 = openstack.blockstorage.VolumeV2("volume1", size=1)
-        instance1 = openstack.compute.Instance("instance1", security_groups=["default"])
-        va1 = openstack.compute.VolumeAttach("va1",
-            instance_id=instance1.id,
-            volume_id=volume1.id)
-        ```
-        ### Using Multiattach-enabled volumes
-
-        Multiattach Volumes are dependent upon your OpenStack cloud and not all
-        clouds support multiattach.
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        volume1 = openstack.blockstorage.Volume("volume1",
-            size=1,
-            multiattach=True)
-        instance1 = openstack.compute.Instance("instance1", security_groups=["default"])
-        instance2 = openstack.compute.Instance("instance2", security_groups=["default"])
-        va1 = openstack.compute.VolumeAttach("va1",
-            instance_id=instance1.id,
-            volume_id=openstack_blockstorage_volume_v2["volume_1"]["id"],
-            multiattach=True)
-        va2 = openstack.compute.VolumeAttach("va2",
-            instance_id=instance2.id,
-            volume_id=openstack_blockstorage_volume_v2["volume_1"]["id"],
-            multiattach=True,
-            opts=pulumi.ResourceOptions(depends_on=["openstack_compute_volume_attach_v2.va_1"]))
-        ```
-
-        It is recommended to use `depends_on` for the attach resources
-        to enforce the volume attachments to happen one at a time.
 
         ## Import
 
@@ -441,11 +383,7 @@ class VolumeAttach(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["multiattach"] = multiattach
             __props__.__dict__["region"] = region
-            if vendor_options is not None and not isinstance(vendor_options, VolumeAttachVendorOptionsArgs):
-                vendor_options = vendor_options or {}
-                def _setter(key, value):
-                    vendor_options[key] = value
-                VolumeAttachVendorOptionsArgs._configure(_setter, **vendor_options)
+            vendor_options = _utilities.configure(vendor_options, VolumeAttachVendorOptionsArgs, True)
             __props__.__dict__["vendor_options"] = vendor_options
             if volume_id is None and not opts.urn:
                 raise TypeError("Missing required property 'volume_id'")

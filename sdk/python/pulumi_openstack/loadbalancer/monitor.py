@@ -81,11 +81,11 @@ class MonitorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             delay: pulumi.Input[int],
-             max_retries: pulumi.Input[int],
-             pool_id: pulumi.Input[str],
-             timeout: pulumi.Input[int],
-             type: pulumi.Input[str],
+             delay: Optional[pulumi.Input[int]] = None,
+             max_retries: Optional[pulumi.Input[int]] = None,
+             pool_id: Optional[pulumi.Input[str]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              admin_state_up: Optional[pulumi.Input[bool]] = None,
              expected_codes: Optional[pulumi.Input[str]] = None,
              http_method: Optional[pulumi.Input[str]] = None,
@@ -94,7 +94,35 @@ class MonitorArgs:
              region: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              url_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if delay is None:
+            raise TypeError("Missing 'delay' argument")
+        if max_retries is None and 'maxRetries' in kwargs:
+            max_retries = kwargs['maxRetries']
+        if max_retries is None:
+            raise TypeError("Missing 'max_retries' argument")
+        if pool_id is None and 'poolId' in kwargs:
+            pool_id = kwargs['poolId']
+        if pool_id is None:
+            raise TypeError("Missing 'pool_id' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if expected_codes is None and 'expectedCodes' in kwargs:
+            expected_codes = kwargs['expectedCodes']
+        if http_method is None and 'httpMethod' in kwargs:
+            http_method = kwargs['httpMethod']
+        if max_retries_down is None and 'maxRetriesDown' in kwargs:
+            max_retries_down = kwargs['maxRetriesDown']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if url_path is None and 'urlPath' in kwargs:
+            url_path = kwargs['urlPath']
+
         _setter("delay", delay)
         _setter("max_retries", max_retries)
         _setter("pool_id", pool_id)
@@ -376,7 +404,25 @@ class _MonitorState:
              timeout: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
              url_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if expected_codes is None and 'expectedCodes' in kwargs:
+            expected_codes = kwargs['expectedCodes']
+        if http_method is None and 'httpMethod' in kwargs:
+            http_method = kwargs['httpMethod']
+        if max_retries is None and 'maxRetries' in kwargs:
+            max_retries = kwargs['maxRetries']
+        if max_retries_down is None and 'maxRetriesDown' in kwargs:
+            max_retries_down = kwargs['maxRetriesDown']
+        if pool_id is None and 'poolId' in kwargs:
+            pool_id = kwargs['poolId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if url_path is None and 'urlPath' in kwargs:
+            url_path = kwargs['urlPath']
+
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
         if delay is not None:
@@ -602,20 +648,6 @@ class Monitor(pulumi.CustomResource):
         """
         Manages a V2 monitor resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        monitor1 = openstack.loadbalancer.Monitor("monitor1",
-            pool_id=openstack_lb_pool_v2["pool_1"]["id"],
-            type="PING",
-            delay=20,
-            timeout=10,
-            max_retries=5)
-        ```
-
         ## Import
 
         Load Balancer Pool Monitor can be imported using the Monitor ID, e.g.:
@@ -672,20 +704,6 @@ class Monitor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 monitor resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        monitor1 = openstack.loadbalancer.Monitor("monitor1",
-            pool_id=openstack_lb_pool_v2["pool_1"]["id"],
-            type="PING",
-            delay=20,
-            timeout=10,
-            max_retries=5)
-        ```
 
         ## Import
 

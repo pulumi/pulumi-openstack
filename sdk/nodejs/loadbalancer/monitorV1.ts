@@ -7,21 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Manages a V1 load balancer monitor resource within OpenStack.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const monitor1 = new openstack.loadbalancer.MonitorV1("monitor1", {
- *     adminStateUp: "true",
- *     delay: 30,
- *     maxRetries: 3,
- *     timeout: 5,
- *     type: "PING",
- * });
- * ```
- *
  * ## Import
  *
  * Load Balancer Members can be imported using the `id`, e.g.

@@ -55,10 +55,18 @@ class ConfigurationConfiguration(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             value: str,
+             name: Optional[str] = None,
+             value: Optional[str] = None,
              string_type: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if string_type is None and 'stringType' in kwargs:
+            string_type = kwargs['stringType']
+
         _setter("name", name)
         _setter("value", value)
         if string_type is not None:
@@ -106,9 +114,15 @@ class ConfigurationDatastore(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             type: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("type", type)
         _setter("version", version)
 
@@ -151,10 +165,14 @@ class InstanceDatabase(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              charset: Optional[str] = None,
              collate: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if charset is not None:
             _setter("charset", charset)
@@ -207,9 +225,15 @@ class InstanceDatastore(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
-             version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             type: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if version is None:
+            raise TypeError("Missing 'version' argument")
+
         _setter("type", type)
         _setter("version", version)
 
@@ -282,7 +306,13 @@ class InstanceNetwork(dict):
              fixed_ip_v6: Optional[str] = None,
              port: Optional[str] = None,
              uuid: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fixed_ip_v4 is None and 'fixedIpV4' in kwargs:
+            fixed_ip_v4 = kwargs['fixedIpV4']
+        if fixed_ip_v6 is None and 'fixedIpV6' in kwargs:
+            fixed_ip_v6 = kwargs['fixedIpV6']
+
         if fixed_ip_v4 is not None:
             _setter("fixed_ip_v4", fixed_ip_v4)
         if fixed_ip_v6 is not None:
@@ -356,11 +386,15 @@ class InstanceUser(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              databases: Optional[Sequence[str]] = None,
              host: Optional[str] = None,
              password: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
         if databases is not None:
             _setter("databases", databases)

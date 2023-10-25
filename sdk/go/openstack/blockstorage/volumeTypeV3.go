@@ -16,36 +16,6 @@ import (
 //
 // > **Note:** This usually requires admin privileges.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := blockstorage.NewVolumeTypeV3(ctx, "volumeType1", &blockstorage.VolumeTypeV3Args{
-//				Description: pulumi.String("Volume type 1"),
-//				ExtraSpecs: pulumi.AnyMap{
-//					"capabilities":        pulumi.Any("gpu"),
-//					"volume_backend_name": pulumi.Any("ssd"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Volume types can be imported using the `volume_type_id`, e.g.

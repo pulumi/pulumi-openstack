@@ -10,27 +10,6 @@ import * as utilities from "../utilities";
  * Manages a V2 Server Group resource within OpenStack.
  *
  * ## Example Usage
- * ### Compute service API version 2.63 or below:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const test_sg = new openstack.compute.ServerGroup("test-sg", {policies: ["anti-affinity"]});
- * ```
- * ### Compute service API version 2.64 or above:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const test_sg = new openstack.compute.ServerGroup("test-sg", {
- *     policies: ["anti-affinity"],
- *     rules: {
- *         maxServerPerHost: 3,
- *     },
- * });
- * ```
  * ## Policies
  *
  * * `affinity` - All instances/servers launched in this group will be hosted on

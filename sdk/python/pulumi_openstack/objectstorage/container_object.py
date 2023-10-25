@@ -92,7 +92,7 @@ class ContainerObjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             container_name: pulumi.Input[str],
+             container_name: Optional[pulumi.Input[str]] = None,
              content: Optional[pulumi.Input[str]] = None,
              content_disposition: Optional[pulumi.Input[str]] = None,
              content_encoding: Optional[pulumi.Input[str]] = None,
@@ -107,7 +107,29 @@ class ContainerObjectArgs:
              object_manifest: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if container_name is None and 'containerName' in kwargs:
+            container_name = kwargs['containerName']
+        if container_name is None:
+            raise TypeError("Missing 'container_name' argument")
+        if content_disposition is None and 'contentDisposition' in kwargs:
+            content_disposition = kwargs['contentDisposition']
+        if content_encoding is None and 'contentEncoding' in kwargs:
+            content_encoding = kwargs['contentEncoding']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if copy_from is None and 'copyFrom' in kwargs:
+            copy_from = kwargs['copyFrom']
+        if delete_after is None and 'deleteAfter' in kwargs:
+            delete_after = kwargs['deleteAfter']
+        if delete_at is None and 'deleteAt' in kwargs:
+            delete_at = kwargs['deleteAt']
+        if detect_content_type is None and 'detectContentType' in kwargs:
+            detect_content_type = kwargs['detectContentType']
+        if object_manifest is None and 'objectManifest' in kwargs:
+            object_manifest = kwargs['objectManifest']
+
         _setter("container_name", container_name)
         if content is not None:
             _setter("content", content)
@@ -462,7 +484,33 @@ class _ContainerObjectState:
              region: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
              trans_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if container_name is None and 'containerName' in kwargs:
+            container_name = kwargs['containerName']
+        if content_disposition is None and 'contentDisposition' in kwargs:
+            content_disposition = kwargs['contentDisposition']
+        if content_encoding is None and 'contentEncoding' in kwargs:
+            content_encoding = kwargs['contentEncoding']
+        if content_length is None and 'contentLength' in kwargs:
+            content_length = kwargs['contentLength']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if copy_from is None and 'copyFrom' in kwargs:
+            copy_from = kwargs['copyFrom']
+        if delete_after is None and 'deleteAfter' in kwargs:
+            delete_after = kwargs['deleteAfter']
+        if delete_at is None and 'deleteAt' in kwargs:
+            delete_at = kwargs['deleteAt']
+        if detect_content_type is None and 'detectContentType' in kwargs:
+            detect_content_type = kwargs['detectContentType']
+        if last_modified is None and 'lastModified' in kwargs:
+            last_modified = kwargs['lastModified']
+        if object_manifest is None and 'objectManifest' in kwargs:
+            object_manifest = kwargs['objectManifest']
+        if trans_id is None and 'transId' in kwargs:
+            trans_id = kwargs['transId']
+
         if container_name is not None:
             _setter("container_name", container_name)
         if content is not None:
@@ -787,51 +835,6 @@ class ContainerObject(pulumi.CustomResource):
         Manages a V1 container object resource within OpenStack.
 
         ## Example Usage
-        ### Example with simple content
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        container1 = openstack.objectstorage.Container("container1",
-            region="RegionOne",
-            metadata=[{
-                "test": "true",
-            }],
-            content_type="application/json")
-        doc1 = openstack.objectstorage.ContainerObject("doc1",
-            region="RegionOne",
-            container_name=container1.name,
-            metadata=[{
-                "test": "true",
-            }],
-            content_type="application/json",
-            content=\"\"\"               {
-                         "foo" : "bar"
-                       }
-        \"\"\")
-        ```
-        ### Example with content from file
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        container1 = openstack.objectstorage.Container("container1",
-            region="RegionOne",
-            metadata=[{
-                "test": "true",
-            }],
-            content_type="application/json")
-        doc1 = openstack.objectstorage.ContainerObject("doc1",
-            region="RegionOne",
-            container_name=container1.name,
-            metadata=[{
-                "test": "true",
-            }],
-            content_type="application/json",
-            source="./default.json")
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -885,51 +888,6 @@ class ContainerObject(pulumi.CustomResource):
         Manages a V1 container object resource within OpenStack.
 
         ## Example Usage
-        ### Example with simple content
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        container1 = openstack.objectstorage.Container("container1",
-            region="RegionOne",
-            metadata=[{
-                "test": "true",
-            }],
-            content_type="application/json")
-        doc1 = openstack.objectstorage.ContainerObject("doc1",
-            region="RegionOne",
-            container_name=container1.name,
-            metadata=[{
-                "test": "true",
-            }],
-            content_type="application/json",
-            content=\"\"\"               {
-                         "foo" : "bar"
-                       }
-        \"\"\")
-        ```
-        ### Example with content from file
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        container1 = openstack.objectstorage.Container("container1",
-            region="RegionOne",
-            metadata=[{
-                "test": "true",
-            }],
-            content_type="application/json")
-        doc1 = openstack.objectstorage.ContainerObject("doc1",
-            region="RegionOne",
-            container_name=container1.name,
-            metadata=[{
-                "test": "true",
-            }],
-            content_type="application/json",
-            source="./default.json")
-        ```
 
         :param str resource_name: The name of the resource.
         :param ContainerObjectArgs args: The arguments to use to populate this resource's properties.

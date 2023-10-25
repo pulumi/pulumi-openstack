@@ -34,7 +34,9 @@ class IkePolicyLifetimeArgs:
              _setter: Callable[[Any, Any], None],
              units: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if units is not None:
             _setter("units", units)
         if value is not None:
@@ -82,7 +84,9 @@ class IpSecPolicyLifetimeArgs:
              _setter: Callable[[Any, Any], None],
              units: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if units is not None:
             _setter("units", units)
         if value is not None:
@@ -140,7 +144,9 @@ class SiteConnectionDpdArgs:
              action: Optional[pulumi.Input[str]] = None,
              interval: Optional[pulumi.Input[int]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if action is not None:
             _setter("action", action)
         if interval is not None:

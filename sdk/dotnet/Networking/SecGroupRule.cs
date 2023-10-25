@@ -14,35 +14,6 @@ namespace Pulumi.OpenStack.Networking
     /// Unlike Nova security groups, neutron separates the group from the rules
     /// and also allows an admin to target a specific tenant_id.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var secgroup1 = new OpenStack.Networking.SecGroup("secgroup1", new()
-    ///     {
-    ///         Description = "My neutron security group",
-    ///     });
-    /// 
-    ///     var secgroupRule1 = new OpenStack.Networking.SecGroupRule("secgroupRule1", new()
-    ///     {
-    ///         Direction = "ingress",
-    ///         Ethertype = "IPv4",
-    ///         Protocol = "tcp",
-    ///         PortRangeMin = 22,
-    ///         PortRangeMax = 22,
-    ///         RemoteIpPrefix = "0.0.0.0/0",
-    ///         SecurityGroupId = secgroup1.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Security Group Rules can be imported using the `id`, e.g.

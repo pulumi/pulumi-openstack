@@ -13,33 +13,6 @@ import (
 )
 
 // Use this data source to get information of an available OpenStack Magnum node group.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/containerinfra"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := containerinfra.LookupNodeGroup(ctx, &containerinfra.LookupNodeGroupArgs{
-//				ClusterId: "cluster_1",
-//				Name:      pulumi.StringRef("nodegroup_1"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupNodeGroup(ctx *pulumi.Context, args *LookupNodeGroupArgs, opts ...pulumi.InvokeOption) (*LookupNodeGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNodeGroupResult

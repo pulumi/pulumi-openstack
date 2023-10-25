@@ -9,44 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Manages a V2 Neutron network resource within OpenStack.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const subnet1 = new openstack.networking.Subnet("subnet1", {
- *     networkId: network1.id,
- *     cidr: "192.168.199.0/24",
- *     ipVersion: 4,
- * });
- * const secgroup1 = new openstack.compute.SecGroup("secgroup1", {
- *     description: "a security group",
- *     rules: [{
- *         fromPort: 22,
- *         toPort: 22,
- *         ipProtocol: "tcp",
- *         cidr: "0.0.0.0/0",
- *     }],
- * });
- * const port1 = new openstack.networking.Port("port1", {
- *     networkId: network1.id,
- *     adminStateUp: true,
- *     securityGroupIds: [secgroup1.id],
- *     fixedIps: [{
- *         subnetId: subnet1.id,
- *         ipAddress: "192.168.199.10",
- *     }],
- * });
- * const instance1 = new openstack.compute.Instance("instance1", {
- *     securityGroups: [secgroup1.name],
- *     networks: [{
- *         port: port1.id,
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * Networks can be imported using the `id`, e.g.

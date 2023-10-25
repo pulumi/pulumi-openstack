@@ -9,50 +9,6 @@ import * as utilities from "../utilities";
  * Compute (Nova) v2 API.
  *
  * ## Example Usage
- * ### Basic Attachment
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const instance1 = new openstack.compute.Instance("instance1", {securityGroups: ["default"]});
- * const ai1 = new openstack.compute.InterfaceAttach("ai1", {
- *     instanceId: instance1.id,
- *     networkId: openstack_networking_port_v2.network_1.id,
- * });
- * ```
- * ### Attachment Specifying a Fixed IP
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const instance1 = new openstack.compute.Instance("instance1", {securityGroups: ["default"]});
- * const ai1 = new openstack.compute.InterfaceAttach("ai1", {
- *     instanceId: instance1.id,
- *     networkId: openstack_networking_port_v2.network_1.id,
- *     fixedIp: "10.0.10.10",
- * });
- * ```
- * ### Attachment Using an Existing Port
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const port1 = new openstack.networking.Port("port1", {
- *     networkId: network1.id,
- *     adminStateUp: true,
- * });
- * const instance1 = new openstack.compute.Instance("instance1", {securityGroups: ["default"]});
- * const ai1 = new openstack.compute.InterfaceAttach("ai1", {
- *     instanceId: instance1.id,
- *     portId: port1.id,
- * });
- * ```
  *
  * ## Import
  *

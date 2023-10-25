@@ -13,53 +13,6 @@ namespace Pulumi.OpenStack.KeyManager
     /// Manages a V1 Barbican order resource within OpenStack.
     /// 
     /// ## Example Usage
-    /// ### Symmetric key order
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var order1 = new OpenStack.KeyManager.OrderV1("order1", new()
-    ///     {
-    ///         Meta = new OpenStack.KeyManager.Inputs.OrderV1MetaArgs
-    ///         {
-    ///             Algorithm = "aes",
-    ///             BitLength = 256,
-    ///             Mode = "cbc",
-    ///             Name = "mysecret",
-    ///         },
-    ///         Type = "key",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Asymmetric key pair order
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var order1 = new OpenStack.KeyManager.OrderV1("order1", new()
-    ///     {
-    ///         Meta = new OpenStack.KeyManager.Inputs.OrderV1MetaArgs
-    ///         {
-    ///             Algorithm = "rsa",
-    ///             BitLength = 4096,
-    ///             Name = "mysecret",
-    ///         },
-    ///         Type = "asymmetric",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

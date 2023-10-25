@@ -20,35 +20,6 @@ namespace Pulumi.OpenStack.Networking
     /// &gt; **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
     ///     created with zero value.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project1 = new OpenStack.Identity.Project("project1");
-    /// 
-    ///     var quota1 = new OpenStack.Networking.QuotaV2("quota1", new()
-    ///     {
-    ///         ProjectId = project1.Id,
-    ///         Floatingip = 10,
-    ///         Network = 4,
-    ///         Port = 100,
-    ///         RbacPolicy = 10,
-    ///         Router = 4,
-    ///         SecurityGroup = 10,
-    ///         SecurityGroupRule = 100,
-    ///         Subnet = 8,
-    ///         Subnetpool = 2,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Quotas can be imported using the `project_id/region_name`, e.g.

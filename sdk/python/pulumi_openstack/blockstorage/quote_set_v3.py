@@ -65,7 +65,7 @@ class QuoteSetV3Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_id: pulumi.Input[str],
+             project_id: Optional[pulumi.Input[str]] = None,
              backup_gigabytes: Optional[pulumi.Input[int]] = None,
              backups: Optional[pulumi.Input[int]] = None,
              gigabytes: Optional[pulumi.Input[int]] = None,
@@ -75,7 +75,19 @@ class QuoteSetV3Args:
              snapshots: Optional[pulumi.Input[int]] = None,
              volume_type_quota: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              volumes: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if backup_gigabytes is None and 'backupGigabytes' in kwargs:
+            backup_gigabytes = kwargs['backupGigabytes']
+        if per_volume_gigabytes is None and 'perVolumeGigabytes' in kwargs:
+            per_volume_gigabytes = kwargs['perVolumeGigabytes']
+        if volume_type_quota is None and 'volumeTypeQuota' in kwargs:
+            volume_type_quota = kwargs['volumeTypeQuota']
+
         _setter("project_id", project_id)
         if backup_gigabytes is not None:
             _setter("backup_gigabytes", backup_gigabytes)
@@ -293,7 +305,17 @@ class _QuoteSetV3State:
              snapshots: Optional[pulumi.Input[int]] = None,
              volume_type_quota: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              volumes: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if backup_gigabytes is None and 'backupGigabytes' in kwargs:
+            backup_gigabytes = kwargs['backupGigabytes']
+        if per_volume_gigabytes is None and 'perVolumeGigabytes' in kwargs:
+            per_volume_gigabytes = kwargs['perVolumeGigabytes']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if volume_type_quota is None and 'volumeTypeQuota' in kwargs:
+            volume_type_quota = kwargs['volumeTypeQuota']
+
         if backup_gigabytes is not None:
             _setter("backup_gigabytes", backup_gigabytes)
         if backups is not None:
@@ -475,29 +497,6 @@ class QuoteSetV3(pulumi.CustomResource):
         > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
             created with zero value. This excludes volume type quota.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        project1 = openstack.identity.Project("project1")
-        quotaset1 = openstack.blockstorage.QuoteSetV3("quotaset1",
-            project_id=project1.id,
-            volumes=10,
-            snapshots=4,
-            gigabytes=100,
-            per_volume_gigabytes=10,
-            backups=4,
-            backup_gigabytes=10,
-            groups=100,
-            volume_type_quota={
-                "volumes_ssd": 30,
-                "gigabytes_ssd": 500,
-                "snapshots_ssd": 10,
-            })
-        ```
-
         ## Import
 
         Quotasets can be imported using the `project_id/region`, e.g.
@@ -547,29 +546,6 @@ class QuoteSetV3(pulumi.CustomResource):
 
         > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
             created with zero value. This excludes volume type quota.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        project1 = openstack.identity.Project("project1")
-        quotaset1 = openstack.blockstorage.QuoteSetV3("quotaset1",
-            project_id=project1.id,
-            volumes=10,
-            snapshots=4,
-            gigabytes=100,
-            per_volume_gigabytes=10,
-            backups=4,
-            backup_gigabytes=10,
-            groups=100,
-            volume_type_quota={
-                "volumes_ssd": 30,
-                "gigabytes_ssd": 500,
-                "snapshots_ssd": 10,
-            })
-        ```
 
         ## Import
 

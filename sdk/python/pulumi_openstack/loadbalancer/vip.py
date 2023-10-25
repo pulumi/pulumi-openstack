@@ -82,10 +82,10 @@ class VipArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pool_id: pulumi.Input[str],
-             port: pulumi.Input[int],
-             protocol: pulumi.Input[str],
-             subnet_id: pulumi.Input[str],
+             pool_id: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             subnet_id: Optional[pulumi.Input[str]] = None,
              address: Optional[pulumi.Input[str]] = None,
              admin_state_up: Optional[pulumi.Input[bool]] = None,
              conn_limit: Optional[pulumi.Input[int]] = None,
@@ -95,7 +95,29 @@ class VipArgs:
              persistence: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              region: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if pool_id is None and 'poolId' in kwargs:
+            pool_id = kwargs['poolId']
+        if pool_id is None:
+            raise TypeError("Missing 'pool_id' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if subnet_id is None:
+            raise TypeError("Missing 'subnet_id' argument")
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if conn_limit is None and 'connLimit' in kwargs:
+            conn_limit = kwargs['connLimit']
+        if floating_ip is None and 'floatingIp' in kwargs:
+            floating_ip = kwargs['floatingIp']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         _setter("pool_id", pool_id)
         _setter("port", port)
         _setter("protocol", protocol)
@@ -384,7 +406,23 @@ class _VipState:
              region: Optional[pulumi.Input[str]] = None,
              subnet_id: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if conn_limit is None and 'connLimit' in kwargs:
+            conn_limit = kwargs['connLimit']
+        if floating_ip is None and 'floatingIp' in kwargs:
+            floating_ip = kwargs['floatingIp']
+        if pool_id is None and 'poolId' in kwargs:
+            pool_id = kwargs['poolId']
+        if port_id is None and 'portId' in kwargs:
+            port_id = kwargs['portId']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if address is not None:
             _setter("address", address)
         if admin_state_up is not None:
@@ -625,19 +663,6 @@ class Vip(pulumi.CustomResource):
         """
         Manages a V1 load balancer vip resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        vip1 = openstack.loadbalancer.Vip("vip1",
-            pool_id="67890",
-            port=80,
-            protocol="HTTP",
-            subnet_id="12345")
-        ```
-
         ## Import
 
         Load Balancer VIPs can be imported using the `id`, e.g.
@@ -690,19 +715,6 @@ class Vip(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V1 load balancer vip resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        vip1 = openstack.loadbalancer.Vip("vip1",
-            pool_id="67890",
-            port=80,
-            protocol="HTTP",
-            subnet_id="12345")
-        ```
 
         ## Import
 

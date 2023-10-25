@@ -88,8 +88,8 @@ class MembersMember(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             protocol_port: int,
+             address: Optional[str] = None,
+             protocol_port: Optional[int] = None,
              admin_state_up: Optional[bool] = None,
              backup: Optional[bool] = None,
              id: Optional[str] = None,
@@ -98,7 +98,23 @@ class MembersMember(dict):
              name: Optional[str] = None,
              subnet_id: Optional[str] = None,
              weight: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if protocol_port is None and 'protocolPort' in kwargs:
+            protocol_port = kwargs['protocolPort']
+        if protocol_port is None:
+            raise TypeError("Missing 'protocol_port' argument")
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if monitor_address is None and 'monitorAddress' in kwargs:
+            monitor_address = kwargs['monitorAddress']
+        if monitor_port is None and 'monitorPort' in kwargs:
+            monitor_port = kwargs['monitorPort']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+
         _setter("address", address)
         _setter("protocol_port", protocol_port)
         if admin_state_up is not None:
@@ -243,9 +259,15 @@ class PoolPersistence(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              cookie_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if cookie_name is None and 'cookieName' in kwargs:
+            cookie_name = kwargs['cookieName']
+
         _setter("type", type)
         if cookie_name is not None:
             _setter("cookie_name", cookie_name)

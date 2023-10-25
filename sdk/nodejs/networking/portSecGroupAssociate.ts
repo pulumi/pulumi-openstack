@@ -6,56 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Append a security group to an existing port
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const systemPort = openstack.networking.getPort({
- *     fixedIp: "10.0.0.10",
- * });
- * const secgroup = openstack.networking.getSecGroup({
- *     name: "secgroup",
- * });
- * const port1 = new openstack.networking.PortSecGroupAssociate("port1", {
- *     portId: systemPort.then(systemPort => systemPort.id),
- *     securityGroupIds: [secgroup.then(secgroup => secgroup.id)],
- * });
- * ```
- * ### Enforce a security group to an existing port
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const systemPort = openstack.networking.getPort({
- *     fixedIp: "10.0.0.10",
- * });
- * const secgroup = openstack.networking.getSecGroup({
- *     name: "secgroup",
- * });
- * const port1 = new openstack.networking.PortSecGroupAssociate("port1", {
- *     portId: systemPort.then(systemPort => systemPort.id),
- *     enforce: true,
- *     securityGroupIds: [secgroup.then(secgroup => secgroup.id)],
- * });
- * ```
- * ### Remove all security groups from an existing port
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const systemPort = openstack.networking.getPort({
- *     fixedIp: "10.0.0.10",
- * });
- * const port1 = new openstack.networking.PortSecGroupAssociate("port1", {
- *     portId: systemPort.then(systemPort => systemPort.id),
- *     enforce: true,
- *     securityGroupIds: [],
- * });
- * ```
  *
  * ## Import
  *

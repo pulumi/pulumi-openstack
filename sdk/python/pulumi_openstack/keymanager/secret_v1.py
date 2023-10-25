@@ -79,7 +79,17 @@ class SecretV1Args:
              payload_content_type: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              secret_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bit_length is None and 'bitLength' in kwargs:
+            bit_length = kwargs['bitLength']
+        if payload_content_encoding is None and 'payloadContentEncoding' in kwargs:
+            payload_content_encoding = kwargs['payloadContentEncoding']
+        if payload_content_type is None and 'payloadContentType' in kwargs:
+            payload_content_type = kwargs['payloadContentType']
+        if secret_type is None and 'secretType' in kwargs:
+            secret_type = kwargs['secretType']
+
         if acl is not None:
             _setter("acl", acl)
         if algorithm is not None:
@@ -351,7 +361,29 @@ class _SecretV1State:
              secret_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if all_metadata is None and 'allMetadata' in kwargs:
+            all_metadata = kwargs['allMetadata']
+        if bit_length is None and 'bitLength' in kwargs:
+            bit_length = kwargs['bitLength']
+        if content_types is None and 'contentTypes' in kwargs:
+            content_types = kwargs['contentTypes']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if creator_id is None and 'creatorId' in kwargs:
+            creator_id = kwargs['creatorId']
+        if payload_content_encoding is None and 'payloadContentEncoding' in kwargs:
+            payload_content_encoding = kwargs['payloadContentEncoding']
+        if payload_content_type is None and 'payloadContentType' in kwargs:
+            payload_content_type = kwargs['payloadContentType']
+        if secret_ref is None and 'secretRef' in kwargs:
+            secret_ref = kwargs['secretRef']
+        if secret_type is None and 'secretType' in kwargs:
+            secret_type = kwargs['secretType']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if acl is not None:
             _setter("acl", acl)
         if algorithm is not None:
@@ -647,45 +679,6 @@ class SecretV1(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Simple secret
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        secret1 = openstack.keymanager.SecretV1("secret1",
-            algorithm="aes",
-            bit_length=256,
-            metadata={
-                "key": "foo",
-            },
-            mode="cbc",
-            payload="foobar",
-            payload_content_type="text/plain",
-            secret_type="passphrase")
-        ```
-        ### Secret with the ACL
-
-        > **Note** Only read ACLs are supported
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        secret1 = openstack.keymanager.SecretV1("secret1",
-            payload=(lambda path: open(path).read())("certificate.pem"),
-            secret_type="certificate",
-            payload_content_type="text/plain",
-            acl=openstack.keymanager.SecretV1AclArgs(
-                read=openstack.keymanager.SecretV1AclReadArgs(
-                    project_access=False,
-                    users=[
-                        "userid1",
-                        "userid2",
-                    ],
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -724,45 +717,6 @@ class SecretV1(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Simple secret
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        secret1 = openstack.keymanager.SecretV1("secret1",
-            algorithm="aes",
-            bit_length=256,
-            metadata={
-                "key": "foo",
-            },
-            mode="cbc",
-            payload="foobar",
-            payload_content_type="text/plain",
-            secret_type="passphrase")
-        ```
-        ### Secret with the ACL
-
-        > **Note** Only read ACLs are supported
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        secret1 = openstack.keymanager.SecretV1("secret1",
-            payload=(lambda path: open(path).read())("certificate.pem"),
-            secret_type="certificate",
-            payload_content_type="text/plain",
-            acl=openstack.keymanager.SecretV1AclArgs(
-                read=openstack.keymanager.SecretV1AclReadArgs(
-                    project_access=False,
-                    users=[
-                        "userid1",
-                        "userid2",
-                    ],
-                ),
-            ))
-        ```
 
         ## Import
 
@@ -812,11 +766,7 @@ class SecretV1(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecretV1Args.__new__(SecretV1Args)
 
-            if acl is not None and not isinstance(acl, SecretV1AclArgs):
-                acl = acl or {}
-                def _setter(key, value):
-                    acl[key] = value
-                SecretV1AclArgs._configure(_setter, **acl)
+            acl = _utilities.configure(acl, SecretV1AclArgs, True)
             __props__.__dict__["acl"] = acl
             __props__.__dict__["algorithm"] = algorithm
             __props__.__dict__["bit_length"] = bit_length

@@ -7,21 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Manages a V2 monitor resource within OpenStack.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const monitor1 = new openstack.loadbalancer.Monitor("monitor1", {
- *     poolId: openstack_lb_pool_v2.pool_1.id,
- *     type: "PING",
- *     delay: 20,
- *     timeout: 10,
- *     maxRetries: 5,
- * });
- * ```
- *
  * ## Import
  *
  * Load Balancer Pool Monitor can be imported using the Monitor ID, e.g.:

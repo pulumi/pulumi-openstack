@@ -163,15 +163,6 @@ def get_project(domain_id: Optional[str] = None,
     """
     Use this data source to get the ID of an OpenStack project.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    project1 = openstack.identity.get_project(name="demo")
-    ```
-
 
     :param str domain_id: The domain this project belongs to.
     :param bool enabled: Whether the project is enabled or disabled. Valid
@@ -219,15 +210,6 @@ def get_project_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
     """
     Use this data source to get the ID of an OpenStack project.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    project1 = openstack.identity.get_project(name="demo")
-    ```
 
 
     :param str domain_id: The domain this project belongs to.

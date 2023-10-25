@@ -6,17 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the ID and public key of an OpenStack keypair.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const kp = openstack.compute.getKeypair({
- *     name: "sand",
- * });
- * ```
  */
 export function getKeypair(args: GetKeypairArgs, opts?: pulumi.InvokeOptions): Promise<GetKeypairResult> {
 
@@ -80,17 +69,6 @@ export interface GetKeypairResult {
 }
 /**
  * Use this data source to get the ID and public key of an OpenStack keypair.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const kp = openstack.compute.getKeypair({
- *     name: "sand",
- * });
- * ```
  */
 export function getKeypairOutput(args: GetKeypairOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeypairResult> {
     return pulumi.output(args).apply((a: any) => getKeypair(a, opts))

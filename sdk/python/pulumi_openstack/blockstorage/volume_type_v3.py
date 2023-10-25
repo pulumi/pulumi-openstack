@@ -48,7 +48,13 @@ class VolumeTypeV3Args:
              is_public: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if extra_specs is None and 'extraSpecs' in kwargs:
+            extra_specs = kwargs['extraSpecs']
+        if is_public is None and 'isPublic' in kwargs:
+            is_public = kwargs['isPublic']
+
         if description is not None:
             _setter("description", description)
         if extra_specs is not None:
@@ -163,7 +169,13 @@ class _VolumeTypeV3State:
              is_public: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if extra_specs is None and 'extraSpecs' in kwargs:
+            extra_specs = kwargs['extraSpecs']
+        if is_public is None and 'isPublic' in kwargs:
+            is_public = kwargs['isPublic']
+
         if description is not None:
             _setter("description", description)
         if extra_specs is not None:
@@ -257,20 +269,6 @@ class VolumeTypeV3(pulumi.CustomResource):
 
         > **Note:** This usually requires admin privileges.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        volume_type1 = openstack.blockstorage.VolumeTypeV3("volumeType1",
-            description="Volume type 1",
-            extra_specs={
-                "capabilities": "gpu",
-                "volume_backend_name": "ssd",
-            })
-        ```
-
         ## Import
 
         Volume types can be imported using the `volume_type_id`, e.g.
@@ -302,20 +300,6 @@ class VolumeTypeV3(pulumi.CustomResource):
         Manages a V3 block storage volume type resource within OpenStack.
 
         > **Note:** This usually requires admin privileges.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        volume_type1 = openstack.blockstorage.VolumeTypeV3("volumeType1",
-            description="Volume type 1",
-            extra_specs={
-                "capabilities": "gpu",
-                "volume_backend_name": "ssd",
-            })
-        ```
 
         ## Import
 

@@ -12,28 +12,6 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// <summary>
     /// Manages a V1 load balancer monitor resource within OpenStack.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var monitor1 = new OpenStack.LoadBalancer.MonitorV1("monitor1", new()
-    ///     {
-    ///         AdminStateUp = "true",
-    ///         Delay = 30,
-    ///         MaxRetries = 3,
-    ///         Timeout = 5,
-    ///         Type = "PING",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Load Balancer Members can be imported using the `id`, e.g.

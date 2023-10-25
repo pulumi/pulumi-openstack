@@ -18,24 +18,6 @@ import * as utilities from "../utilities";
  *
  * Minimum supported Manila microversion is 2.7.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice1", {
- *     description: "created by terraform",
- *     dnsIp: "192.168.199.10",
- *     domain: "example.com",
- *     ou: "CN=Computers,DC=example,DC=com",
- *     password: "s8cret",
- *     server: "192.168.199.10",
- *     type: "active_directory",
- *     user: "joinDomainUser",
- * });
- * ```
- *
  * ## Import
  *
  * This resource can be imported by specifying the ID of the security service:

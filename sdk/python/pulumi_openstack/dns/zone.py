@@ -79,7 +79,15 @@ class ZoneArgs:
              ttl: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disable_status_check is None and 'disableStatusCheck' in kwargs:
+            disable_status_check = kwargs['disableStatusCheck']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if attributes is not None:
             _setter("attributes", attributes)
         if description is not None:
@@ -316,7 +324,15 @@ class _ZoneState:
              ttl: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disable_status_check is None and 'disableStatusCheck' in kwargs:
+            disable_status_check = kwargs['disableStatusCheck']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if attributes is not None:
             _setter("attributes", attributes)
         if description is not None:
@@ -506,18 +522,6 @@ class Zone(pulumi.CustomResource):
         Manages a DNS zone in the OpenStack DNS Service.
 
         ## Example Usage
-        ### Automatically detect the correct network
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        example_com = openstack.dns.Zone("exampleCom",
-            description="An example zone",
-            email="jdoe@example.com",
-            ttl=3000,
-            type="PRIMARY")
-        ```
 
         ## Import
 
@@ -567,18 +571,6 @@ class Zone(pulumi.CustomResource):
         Manages a DNS zone in the OpenStack DNS Service.
 
         ## Example Usage
-        ### Automatically detect the correct network
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        example_com = openstack.dns.Zone("exampleCom",
-            description="An example zone",
-            email="jdoe@example.com",
-            ttl=3000,
-            type="PRIMARY")
-        ```
 
         ## Import
 

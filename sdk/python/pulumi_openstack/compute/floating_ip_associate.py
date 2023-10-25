@@ -40,12 +40,26 @@ class FloatingIpAssociateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             floating_ip: pulumi.Input[str],
-             instance_id: pulumi.Input[str],
+             floating_ip: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
              fixed_ip: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              wait_until_associated: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if floating_ip is None and 'floatingIp' in kwargs:
+            floating_ip = kwargs['floatingIp']
+        if floating_ip is None:
+            raise TypeError("Missing 'floating_ip' argument")
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if instance_id is None:
+            raise TypeError("Missing 'instance_id' argument")
+        if fixed_ip is None and 'fixedIp' in kwargs:
+            fixed_ip = kwargs['fixedIp']
+        if wait_until_associated is None and 'waitUntilAssociated' in kwargs:
+            wait_until_associated = kwargs['waitUntilAssociated']
+
         _setter("floating_ip", floating_ip)
         _setter("instance_id", instance_id)
         if fixed_ip is not None:
@@ -150,7 +164,17 @@ class _FloatingIpAssociateState:
              instance_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              wait_until_associated: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fixed_ip is None and 'fixedIp' in kwargs:
+            fixed_ip = kwargs['fixedIp']
+        if floating_ip is None and 'floatingIp' in kwargs:
+            floating_ip = kwargs['floatingIp']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if wait_until_associated is None and 'waitUntilAssociated' in kwargs:
+            wait_until_associated = kwargs['waitUntilAssociated']
+
         if fixed_ip is not None:
             _setter("fixed_ip", fixed_ip)
         if floating_ip is not None:
@@ -238,47 +262,6 @@ class FloatingIpAssociate(pulumi.CustomResource):
         Associate a floating IP to an instance.
 
         ## Example Usage
-        ### Automatically detect the correct network
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        instance1 = openstack.compute.Instance("instance1",
-            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
-            flavor_id="3",
-            key_pair="my_key_pair_name",
-            security_groups=["default"])
-        fip1_floating_ip = openstack.networking.FloatingIp("fip1FloatingIp", pool="my_pool")
-        fip1_floating_ip_associate = openstack.compute.FloatingIpAssociate("fip1FloatingIpAssociate",
-            floating_ip=fip1_floating_ip.address,
-            instance_id=instance1.id)
-        ```
-        ### Explicitly set the network to attach to
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        instance1 = openstack.compute.Instance("instance1",
-            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
-            flavor_id="3",
-            key_pair="my_key_pair_name",
-            security_groups=["default"],
-            networks=[
-                openstack.compute.InstanceNetworkArgs(
-                    name="my_network",
-                ),
-                openstack.compute.InstanceNetworkArgs(
-                    name="default",
-                ),
-            ])
-        fip1_floating_ip = openstack.networking.FloatingIp("fip1FloatingIp", pool="my_pool")
-        fip1_floating_ip_associate = openstack.compute.FloatingIpAssociate("fip1FloatingIpAssociate",
-            floating_ip=fip1_floating_ip.address,
-            instance_id=instance1.id,
-            fixed_ip=instance1.networks[1].fixed_ip_v4)
-        ```
 
         ## Import
 
@@ -308,47 +291,6 @@ class FloatingIpAssociate(pulumi.CustomResource):
         Associate a floating IP to an instance.
 
         ## Example Usage
-        ### Automatically detect the correct network
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        instance1 = openstack.compute.Instance("instance1",
-            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
-            flavor_id="3",
-            key_pair="my_key_pair_name",
-            security_groups=["default"])
-        fip1_floating_ip = openstack.networking.FloatingIp("fip1FloatingIp", pool="my_pool")
-        fip1_floating_ip_associate = openstack.compute.FloatingIpAssociate("fip1FloatingIpAssociate",
-            floating_ip=fip1_floating_ip.address,
-            instance_id=instance1.id)
-        ```
-        ### Explicitly set the network to attach to
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        instance1 = openstack.compute.Instance("instance1",
-            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
-            flavor_id="3",
-            key_pair="my_key_pair_name",
-            security_groups=["default"],
-            networks=[
-                openstack.compute.InstanceNetworkArgs(
-                    name="my_network",
-                ),
-                openstack.compute.InstanceNetworkArgs(
-                    name="default",
-                ),
-            ])
-        fip1_floating_ip = openstack.networking.FloatingIp("fip1FloatingIp", pool="my_pool")
-        fip1_floating_ip_associate = openstack.compute.FloatingIpAssociate("fip1FloatingIpAssociate",
-            floating_ip=fip1_floating_ip.address,
-            instance_id=instance1.id,
-            fixed_ip=instance1.networks[1].fixed_ip_v4)
-        ```
 
         ## Import
 

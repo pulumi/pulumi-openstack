@@ -104,9 +104,9 @@ class ListenerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             loadbalancer_id: pulumi.Input[str],
-             protocol: pulumi.Input[str],
-             protocol_port: pulumi.Input[int],
+             loadbalancer_id: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             protocol_port: Optional[pulumi.Input[int]] = None,
              admin_state_up: Optional[pulumi.Input[bool]] = None,
              allowed_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              connection_limit: Optional[pulumi.Input[int]] = None,
@@ -123,7 +123,43 @@ class ListenerArgs:
              timeout_member_connect: Optional[pulumi.Input[int]] = None,
              timeout_member_data: Optional[pulumi.Input[int]] = None,
              timeout_tcp_inspect: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if loadbalancer_id is None and 'loadbalancerId' in kwargs:
+            loadbalancer_id = kwargs['loadbalancerId']
+        if loadbalancer_id is None:
+            raise TypeError("Missing 'loadbalancer_id' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if protocol_port is None and 'protocolPort' in kwargs:
+            protocol_port = kwargs['protocolPort']
+        if protocol_port is None:
+            raise TypeError("Missing 'protocol_port' argument")
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if allowed_cidrs is None and 'allowedCidrs' in kwargs:
+            allowed_cidrs = kwargs['allowedCidrs']
+        if connection_limit is None and 'connectionLimit' in kwargs:
+            connection_limit = kwargs['connectionLimit']
+        if default_pool_id is None and 'defaultPoolId' in kwargs:
+            default_pool_id = kwargs['defaultPoolId']
+        if default_tls_container_ref is None and 'defaultTlsContainerRef' in kwargs:
+            default_tls_container_ref = kwargs['defaultTlsContainerRef']
+        if insert_headers is None and 'insertHeaders' in kwargs:
+            insert_headers = kwargs['insertHeaders']
+        if sni_container_refs is None and 'sniContainerRefs' in kwargs:
+            sni_container_refs = kwargs['sniContainerRefs']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if timeout_client_data is None and 'timeoutClientData' in kwargs:
+            timeout_client_data = kwargs['timeoutClientData']
+        if timeout_member_connect is None and 'timeoutMemberConnect' in kwargs:
+            timeout_member_connect = kwargs['timeoutMemberConnect']
+        if timeout_member_data is None and 'timeoutMemberData' in kwargs:
+            timeout_member_data = kwargs['timeoutMemberData']
+        if timeout_tcp_inspect is None and 'timeoutTcpInspect' in kwargs:
+            timeout_tcp_inspect = kwargs['timeoutTcpInspect']
+
         _setter("loadbalancer_id", loadbalancer_id)
         _setter("protocol", protocol)
         _setter("protocol_port", protocol_port)
@@ -523,7 +559,37 @@ class _ListenerState:
              timeout_member_connect: Optional[pulumi.Input[int]] = None,
              timeout_member_data: Optional[pulumi.Input[int]] = None,
              timeout_tcp_inspect: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if allowed_cidrs is None and 'allowedCidrs' in kwargs:
+            allowed_cidrs = kwargs['allowedCidrs']
+        if connection_limit is None and 'connectionLimit' in kwargs:
+            connection_limit = kwargs['connectionLimit']
+        if default_pool_id is None and 'defaultPoolId' in kwargs:
+            default_pool_id = kwargs['defaultPoolId']
+        if default_tls_container_ref is None and 'defaultTlsContainerRef' in kwargs:
+            default_tls_container_ref = kwargs['defaultTlsContainerRef']
+        if insert_headers is None and 'insertHeaders' in kwargs:
+            insert_headers = kwargs['insertHeaders']
+        if loadbalancer_id is None and 'loadbalancerId' in kwargs:
+            loadbalancer_id = kwargs['loadbalancerId']
+        if protocol_port is None and 'protocolPort' in kwargs:
+            protocol_port = kwargs['protocolPort']
+        if sni_container_refs is None and 'sniContainerRefs' in kwargs:
+            sni_container_refs = kwargs['sniContainerRefs']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if timeout_client_data is None and 'timeoutClientData' in kwargs:
+            timeout_client_data = kwargs['timeoutClientData']
+        if timeout_member_connect is None and 'timeoutMemberConnect' in kwargs:
+            timeout_member_connect = kwargs['timeoutMemberConnect']
+        if timeout_member_data is None and 'timeoutMemberData' in kwargs:
+            timeout_member_data = kwargs['timeoutMemberData']
+        if timeout_tcp_inspect is None and 'timeoutTcpInspect' in kwargs:
+            timeout_tcp_inspect = kwargs['timeoutTcpInspect']
+
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
         if allowed_cidrs is not None:
@@ -845,21 +911,6 @@ class Listener(pulumi.CustomResource):
         > **Note:** This resource has attributes that depend on octavia minor versions.
         Please ensure your Openstack cloud supports the required minor version.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        listener1 = openstack.loadbalancer.Listener("listener1",
-            insert_headers={
-                "X-Forwarded-For": "true",
-            },
-            loadbalancer_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
-            protocol="HTTP",
-            protocol_port=8080)
-        ```
-
         ## Import
 
         Load Balancer Listener can be imported using the Listener ID, e.g.:
@@ -925,21 +976,6 @@ class Listener(pulumi.CustomResource):
 
         > **Note:** This resource has attributes that depend on octavia minor versions.
         Please ensure your Openstack cloud supports the required minor version.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        listener1 = openstack.loadbalancer.Listener("listener1",
-            insert_headers={
-                "X-Forwarded-For": "true",
-            },
-            loadbalancer_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
-            protocol="HTTP",
-            protocol_port=8080)
-        ```
 
         ## Import
 

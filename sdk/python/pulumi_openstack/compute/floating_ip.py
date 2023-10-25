@@ -34,9 +34,13 @@ class FloatingIpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pool: pulumi.Input[str],
+             pool: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if pool is None:
+            raise TypeError("Missing 'pool' argument")
+
         _setter("pool", pool)
         if region is not None:
             _setter("region", region)
@@ -108,7 +112,13 @@ class _FloatingIpState:
              instance_id: Optional[pulumi.Input[str]] = None,
              pool: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fixed_ip is None and 'fixedIp' in kwargs:
+            fixed_ip = kwargs['fixedIp']
+        if instance_id is None and 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if address is not None:
             _setter("address", address)
         if fixed_ip is not None:
@@ -203,15 +213,6 @@ class FloatingIp(pulumi.CustomResource):
         recommended to use the `networking.FloatingIp`
         resource instead, which uses the OpenStack Networking API.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        floatip1 = openstack.compute.FloatingIp("floatip1", pool="public")
-        ```
-
         ## Import
 
         Floating IPs can be imported using the `id`, e.g.
@@ -244,15 +245,6 @@ class FloatingIp(pulumi.CustomResource):
         been deprecated. Unless you are using an older OpenStack environment, it is
         recommended to use the `networking.FloatingIp`
         resource instead, which uses the OpenStack Networking API.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        floatip1 = openstack.compute.FloatingIp("floatip1", pool="public")
-        ```
 
         ## Import
 

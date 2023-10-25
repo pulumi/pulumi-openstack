@@ -184,7 +184,51 @@ class InstanceArgs:
              user_data: Optional[pulumi.Input[str]] = None,
              vendor_options: Optional[pulumi.Input['InstanceVendorOptionsArgs']] = None,
              volumes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVolumeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_ip_v4 is None and 'accessIpV4' in kwargs:
+            access_ip_v4 = kwargs['accessIpV4']
+        if access_ip_v6 is None and 'accessIpV6' in kwargs:
+            access_ip_v6 = kwargs['accessIpV6']
+        if admin_pass is None and 'adminPass' in kwargs:
+            admin_pass = kwargs['adminPass']
+        if availability_zone is None and 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if availability_zone_hints is None and 'availabilityZoneHints' in kwargs:
+            availability_zone_hints = kwargs['availabilityZoneHints']
+        if block_devices is None and 'blockDevices' in kwargs:
+            block_devices = kwargs['blockDevices']
+        if config_drive is None and 'configDrive' in kwargs:
+            config_drive = kwargs['configDrive']
+        if flavor_id is None and 'flavorId' in kwargs:
+            flavor_id = kwargs['flavorId']
+        if flavor_name is None and 'flavorName' in kwargs:
+            flavor_name = kwargs['flavorName']
+        if floating_ip is None and 'floatingIp' in kwargs:
+            floating_ip = kwargs['floatingIp']
+        if force_delete is None and 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if image_name is None and 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if key_pair is None and 'keyPair' in kwargs:
+            key_pair = kwargs['keyPair']
+        if network_mode is None and 'networkMode' in kwargs:
+            network_mode = kwargs['networkMode']
+        if power_state is None and 'powerState' in kwargs:
+            power_state = kwargs['powerState']
+        if scheduler_hints is None and 'schedulerHints' in kwargs:
+            scheduler_hints = kwargs['schedulerHints']
+        if security_groups is None and 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if stop_before_destroy is None and 'stopBeforeDestroy' in kwargs:
+            stop_before_destroy = kwargs['stopBeforeDestroy']
+        if user_data is None and 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if vendor_options is None and 'vendorOptions' in kwargs:
+            vendor_options = kwargs['vendorOptions']
+
         if access_ip_v4 is not None:
             _setter("access_ip_v4", access_ip_v4)
         if access_ip_v6 is not None:
@@ -821,7 +865,55 @@ class _InstanceState:
              user_data: Optional[pulumi.Input[str]] = None,
              vendor_options: Optional[pulumi.Input['InstanceVendorOptionsArgs']] = None,
              volumes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVolumeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_ip_v4 is None and 'accessIpV4' in kwargs:
+            access_ip_v4 = kwargs['accessIpV4']
+        if access_ip_v6 is None and 'accessIpV6' in kwargs:
+            access_ip_v6 = kwargs['accessIpV6']
+        if admin_pass is None and 'adminPass' in kwargs:
+            admin_pass = kwargs['adminPass']
+        if all_metadata is None and 'allMetadata' in kwargs:
+            all_metadata = kwargs['allMetadata']
+        if all_tags is None and 'allTags' in kwargs:
+            all_tags = kwargs['allTags']
+        if availability_zone is None and 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if availability_zone_hints is None and 'availabilityZoneHints' in kwargs:
+            availability_zone_hints = kwargs['availabilityZoneHints']
+        if block_devices is None and 'blockDevices' in kwargs:
+            block_devices = kwargs['blockDevices']
+        if config_drive is None and 'configDrive' in kwargs:
+            config_drive = kwargs['configDrive']
+        if flavor_id is None and 'flavorId' in kwargs:
+            flavor_id = kwargs['flavorId']
+        if flavor_name is None and 'flavorName' in kwargs:
+            flavor_name = kwargs['flavorName']
+        if floating_ip is None and 'floatingIp' in kwargs:
+            floating_ip = kwargs['floatingIp']
+        if force_delete is None and 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if image_name is None and 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if key_pair is None and 'keyPair' in kwargs:
+            key_pair = kwargs['keyPair']
+        if network_mode is None and 'networkMode' in kwargs:
+            network_mode = kwargs['networkMode']
+        if power_state is None and 'powerState' in kwargs:
+            power_state = kwargs['powerState']
+        if scheduler_hints is None and 'schedulerHints' in kwargs:
+            scheduler_hints = kwargs['schedulerHints']
+        if security_groups is None and 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if stop_before_destroy is None and 'stopBeforeDestroy' in kwargs:
+            stop_before_destroy = kwargs['stopBeforeDestroy']
+        if user_data is None and 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if vendor_options is None and 'vendorOptions' in kwargs:
+            vendor_options = kwargs['vendorOptions']
+
         if access_ip_v4 is not None:
             _setter("access_ip_v4", access_ip_v4)
         if access_ip_v6 is not None:
@@ -1529,11 +1621,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["stop_before_destroy"] = stop_before_destroy
             __props__.__dict__["tags"] = tags
             __props__.__dict__["user_data"] = user_data
-            if vendor_options is not None and not isinstance(vendor_options, InstanceVendorOptionsArgs):
-                vendor_options = vendor_options or {}
-                def _setter(key, value):
-                    vendor_options[key] = value
-                InstanceVendorOptionsArgs._configure(_setter, **vendor_options)
+            vendor_options = _utilities.configure(vendor_options, InstanceVendorOptionsArgs, True)
             __props__.__dict__["vendor_options"] = vendor_options
             __props__.__dict__["volumes"] = volumes
             __props__.__dict__["all_metadata"] = None

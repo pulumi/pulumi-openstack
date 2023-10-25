@@ -202,15 +202,6 @@ def get_share_network(description: Optional[str] = None,
     """
     Use this data source to get the ID of an available Shared File System share network.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    sharenetwork1 = openstack.sharedfilesystem.get_share_network(name="sharenetwork_1")
-    ```
-
 
     :param str description: The human-readable description of the share network.
     :param int ip_version: The IP version of the share network. Can either be 4 or 6.
@@ -268,15 +259,6 @@ def get_share_network_output(description: Optional[pulumi.Input[Optional[str]]] 
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetShareNetworkResult]:
     """
     Use this data source to get the ID of an available Shared File System share network.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    sharenetwork1 = openstack.sharedfilesystem.get_share_network(name="sharenetwork_1")
-    ```
 
 
     :param str description: The human-readable description of the share network.

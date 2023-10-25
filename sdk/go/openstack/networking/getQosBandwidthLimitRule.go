@@ -13,32 +13,6 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networking.LookupQosBandwidthLimitRule(ctx, &networking.LookupQosBandwidthLimitRuleArgs{
-//				MaxKbps: pulumi.IntRef(300),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupQosBandwidthLimitRule(ctx *pulumi.Context, args *LookupQosBandwidthLimitRuleArgs, opts ...pulumi.InvokeOption) (*LookupQosBandwidthLimitRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupQosBandwidthLimitRuleResult

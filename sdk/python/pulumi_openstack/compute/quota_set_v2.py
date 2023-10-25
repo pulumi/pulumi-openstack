@@ -88,7 +88,7 @@ class QuotaSetV2Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_id: pulumi.Input[str],
+             project_id: Optional[pulumi.Input[str]] = None,
              cores: Optional[pulumi.Input[int]] = None,
              fixed_ips: Optional[pulumi.Input[int]] = None,
              floating_ips: Optional[pulumi.Input[int]] = None,
@@ -104,7 +104,35 @@ class QuotaSetV2Args:
              security_groups: Optional[pulumi.Input[int]] = None,
              server_group_members: Optional[pulumi.Input[int]] = None,
              server_groups: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if fixed_ips is None and 'fixedIps' in kwargs:
+            fixed_ips = kwargs['fixedIps']
+        if floating_ips is None and 'floatingIps' in kwargs:
+            floating_ips = kwargs['floatingIps']
+        if injected_file_content_bytes is None and 'injectedFileContentBytes' in kwargs:
+            injected_file_content_bytes = kwargs['injectedFileContentBytes']
+        if injected_file_path_bytes is None and 'injectedFilePathBytes' in kwargs:
+            injected_file_path_bytes = kwargs['injectedFilePathBytes']
+        if injected_files is None and 'injectedFiles' in kwargs:
+            injected_files = kwargs['injectedFiles']
+        if key_pairs is None and 'keyPairs' in kwargs:
+            key_pairs = kwargs['keyPairs']
+        if metadata_items is None and 'metadataItems' in kwargs:
+            metadata_items = kwargs['metadataItems']
+        if security_group_rules is None and 'securityGroupRules' in kwargs:
+            security_group_rules = kwargs['securityGroupRules']
+        if security_groups is None and 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if server_group_members is None and 'serverGroupMembers' in kwargs:
+            server_group_members = kwargs['serverGroupMembers']
+        if server_groups is None and 'serverGroups' in kwargs:
+            server_groups = kwargs['serverGroups']
+
         _setter("project_id", project_id)
         if cores is not None:
             _setter("cores", cores)
@@ -440,7 +468,33 @@ class _QuotaSetV2State:
              security_groups: Optional[pulumi.Input[int]] = None,
              server_group_members: Optional[pulumi.Input[int]] = None,
              server_groups: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fixed_ips is None and 'fixedIps' in kwargs:
+            fixed_ips = kwargs['fixedIps']
+        if floating_ips is None and 'floatingIps' in kwargs:
+            floating_ips = kwargs['floatingIps']
+        if injected_file_content_bytes is None and 'injectedFileContentBytes' in kwargs:
+            injected_file_content_bytes = kwargs['injectedFileContentBytes']
+        if injected_file_path_bytes is None and 'injectedFilePathBytes' in kwargs:
+            injected_file_path_bytes = kwargs['injectedFilePathBytes']
+        if injected_files is None and 'injectedFiles' in kwargs:
+            injected_files = kwargs['injectedFiles']
+        if key_pairs is None and 'keyPairs' in kwargs:
+            key_pairs = kwargs['keyPairs']
+        if metadata_items is None and 'metadataItems' in kwargs:
+            metadata_items = kwargs['metadataItems']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if security_group_rules is None and 'securityGroupRules' in kwargs:
+            security_group_rules = kwargs['securityGroupRules']
+        if security_groups is None and 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if server_group_members is None and 'serverGroupMembers' in kwargs:
+            server_group_members = kwargs['serverGroupMembers']
+        if server_groups is None and 'serverGroups' in kwargs:
+            server_groups = kwargs['serverGroups']
+
         if cores is not None:
             _setter("cores", cores)
         if fixed_ips is not None:
@@ -717,23 +771,6 @@ class QuotaSetV2(pulumi.CustomResource):
         > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
             created with zero value.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        project1 = openstack.identity.Project("project1")
-        quotaset1 = openstack.compute.QuotaSetV2("quotaset1",
-            project_id=project1.id,
-            key_pairs=10,
-            ram=40960,
-            cores=32,
-            instances=20,
-            server_groups=4,
-            server_group_members=8)
-        ```
-
         ## Import
 
         Quotasets can be imported using the `project_id/region_name`, e.g.
@@ -794,23 +831,6 @@ class QuotaSetV2(pulumi.CustomResource):
 
         > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
             created with zero value.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        project1 = openstack.identity.Project("project1")
-        quotaset1 = openstack.compute.QuotaSetV2("quotaset1",
-            project_id=project1.id,
-            key_pairs=10,
-            ram=40960,
-            cores=32,
-            instances=20,
-            server_groups=4,
-            server_group_members=8)
-        ```
 
         ## Import
 

@@ -12,29 +12,6 @@ namespace Pulumi.OpenStack.VPNaaS
     /// <summary>
     /// Manages a V2 Neutron Endpoint Group resource within OpenStack.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var group1 = new OpenStack.VPNaaS.EndpointGroup("group1", new()
-    ///     {
-    ///         Endpoints = new[]
-    ///         {
-    ///             "10.2.0.0/24",
-    ///             "10.3.0.0/24",
-    ///         },
-    ///         Type = "cidr",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Groups can be imported using the `id`, e.g.

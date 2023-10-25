@@ -80,7 +80,21 @@ class IkePolicyArgs:
              region: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auth_algorithm is None and 'authAlgorithm' in kwargs:
+            auth_algorithm = kwargs['authAlgorithm']
+        if encryption_algorithm is None and 'encryptionAlgorithm' in kwargs:
+            encryption_algorithm = kwargs['encryptionAlgorithm']
+        if ike_version is None and 'ikeVersion' in kwargs:
+            ike_version = kwargs['ikeVersion']
+        if phase1_negotiation_mode is None and 'phase1NegotiationMode' in kwargs:
+            phase1_negotiation_mode = kwargs['phase1NegotiationMode']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if auth_algorithm is not None:
             _setter("auth_algorithm", auth_algorithm)
         if description is not None:
@@ -315,7 +329,21 @@ class _IkePolicyState:
              region: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auth_algorithm is None and 'authAlgorithm' in kwargs:
+            auth_algorithm = kwargs['authAlgorithm']
+        if encryption_algorithm is None and 'encryptionAlgorithm' in kwargs:
+            encryption_algorithm = kwargs['encryptionAlgorithm']
+        if ike_version is None and 'ikeVersion' in kwargs:
+            ike_version = kwargs['ikeVersion']
+        if phase1_negotiation_mode is None and 'phase1NegotiationMode' in kwargs:
+            phase1_negotiation_mode = kwargs['phase1NegotiationMode']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if auth_algorithm is not None:
             _setter("auth_algorithm", auth_algorithm)
         if description is not None:
@@ -503,15 +531,6 @@ class IkePolicy(pulumi.CustomResource):
         """
         Manages a V2 Neutron IKE policy resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        policy1 = openstack.vpnaas.IkePolicy("policy1")
-        ```
-
         ## Import
 
         Services can be imported using the `id`, e.g.
@@ -553,15 +572,6 @@ class IkePolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 Neutron IKE policy resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        policy1 = openstack.vpnaas.IkePolicy("policy1")
-        ```
 
         ## Import
 

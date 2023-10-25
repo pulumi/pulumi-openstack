@@ -28,7 +28,9 @@ class ShareExportLocationArgs:
              _setter: Callable[[Any, Any], None],
              path: Optional[pulumi.Input[str]] = None,
              preferred: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if path is not None:
             _setter("path", path)
         if preferred is not None:

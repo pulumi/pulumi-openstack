@@ -20,32 +20,6 @@ namespace Pulumi.OpenStack.Compute
     /// &gt; **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
     ///     created with zero value.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project1 = new OpenStack.Identity.Project("project1");
-    /// 
-    ///     var quotaset1 = new OpenStack.Compute.QuotaSetV2("quotaset1", new()
-    ///     {
-    ///         ProjectId = project1.Id,
-    ///         KeyPairs = 10,
-    ///         Ram = 40960,
-    ///         Cores = 32,
-    ///         Instances = 20,
-    ///         ServerGroups = 4,
-    ///         ServerGroupMembers = 8,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Quotasets can be imported using the `project_id/region_name`, e.g.

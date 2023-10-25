@@ -228,15 +228,6 @@ def get_share(description: Optional[str] = None,
     """
     Use this data source to get the ID of an available Shared File System share.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    share1 = openstack.sharedfilesystem.get_share(name="share_1")
-    ```
-
 
     :param str description: The human-readable description for the share.
     :param str export_location_path: The export location path of the share. Available
@@ -299,15 +290,6 @@ def get_share_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetShareResult]:
     """
     Use this data source to get the ID of an available Shared File System share.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    share1 = openstack.sharedfilesystem.get_share(name="share_1")
-    ```
 
 
     :param str description: The human-readable description for the share.

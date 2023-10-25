@@ -8,48 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- * ### Simple secret
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const secret1 = new openstack.keymanager.SecretV1("secret1", {
- *     algorithm: "aes",
- *     bitLength: 256,
- *     metadata: {
- *         key: "foo",
- *     },
- *     mode: "cbc",
- *     payload: "foobar",
- *     payloadContentType: "text/plain",
- *     secretType: "passphrase",
- * });
- * ```
- * ### Secret with the ACL
- *
- * > **Note** Only read ACLs are supported
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
- * import * as openstack from "@pulumi/openstack";
- *
- * const secret1 = new openstack.keymanager.SecretV1("secret1", {
- *     payload: fs.readFileSync("certificate.pem"),
- *     secretType: "certificate",
- *     payloadContentType: "text/plain",
- *     acl: {
- *         read: {
- *             projectAccess: false,
- *             users: [
- *                 "userid1",
- *                 "userid2",
- *             ],
- *         },
- *     },
- * });
- * ```
  *
  * ## Import
  *

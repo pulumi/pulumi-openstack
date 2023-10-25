@@ -72,8 +72,8 @@ class PoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             lb_method: pulumi.Input[str],
-             protocol: pulumi.Input[str],
+             lb_method: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
              admin_state_up: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
              listener_id: Optional[pulumi.Input[str]] = None,
@@ -82,7 +82,23 @@ class PoolArgs:
              persistence: Optional[pulumi.Input['PoolPersistenceArgs']] = None,
              region: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if lb_method is None and 'lbMethod' in kwargs:
+            lb_method = kwargs['lbMethod']
+        if lb_method is None:
+            raise TypeError("Missing 'lb_method' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if listener_id is None and 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if loadbalancer_id is None and 'loadbalancerId' in kwargs:
+            loadbalancer_id = kwargs['loadbalancerId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         _setter("lb_method", lb_method)
         _setter("protocol", protocol)
         if admin_state_up is not None:
@@ -309,7 +325,19 @@ class _PoolState:
              protocol: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if lb_method is None and 'lbMethod' in kwargs:
+            lb_method = kwargs['lbMethod']
+        if listener_id is None and 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if loadbalancer_id is None and 'loadbalancerId' in kwargs:
+            loadbalancer_id = kwargs['loadbalancerId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
         if description is not None:
@@ -491,22 +519,6 @@ class Pool(pulumi.CustomResource):
         > **Note:** This resource has attributes that depend on octavia minor versions.
         Please ensure your Openstack cloud supports the required minor version.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        pool1 = openstack.loadbalancer.Pool("pool1",
-            lb_method="ROUND_ROBIN",
-            listener_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
-            persistence=openstack.loadbalancer.PoolPersistenceArgs(
-                cookie_name="testCookie",
-                type="APP_COOKIE",
-            ),
-            protocol="HTTP")
-        ```
-
         ## Import
 
         Load Balancer Pool can be imported using the Pool ID, e.g.:
@@ -556,22 +568,6 @@ class Pool(pulumi.CustomResource):
 
         > **Note:** This resource has attributes that depend on octavia minor versions.
         Please ensure your Openstack cloud supports the required minor version.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        pool1 = openstack.loadbalancer.Pool("pool1",
-            lb_method="ROUND_ROBIN",
-            listener_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
-            persistence=openstack.loadbalancer.PoolPersistenceArgs(
-                cookie_name="testCookie",
-                type="APP_COOKIE",
-            ),
-            protocol="HTTP")
-        ```
 
         ## Import
 
@@ -627,11 +623,7 @@ class Pool(pulumi.CustomResource):
             __props__.__dict__["listener_id"] = listener_id
             __props__.__dict__["loadbalancer_id"] = loadbalancer_id
             __props__.__dict__["name"] = name
-            if persistence is not None and not isinstance(persistence, PoolPersistenceArgs):
-                persistence = persistence or {}
-                def _setter(key, value):
-                    persistence[key] = value
-                PoolPersistenceArgs._configure(_setter, **persistence)
+            persistence = _utilities.configure(persistence, PoolPersistenceArgs, True)
             __props__.__dict__["persistence"] = persistence
             if protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol'")

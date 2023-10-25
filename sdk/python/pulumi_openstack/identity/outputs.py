@@ -51,11 +51,19 @@ class ApplicationCredentialAccessRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             method: str,
-             path: str,
-             service: str,
+             method: Optional[str] = None,
+             path: Optional[str] = None,
+             service: Optional[str] = None,
              id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("method", method)
         _setter("path", path)
         _setter("service", service)
@@ -120,8 +128,12 @@ class UserMultiFactorAuthRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             rules: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             rules: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if rules is None:
+            raise TypeError("Missing 'rules' argument")
+
         _setter("rules", rules)
 
     @property
@@ -151,9 +163,19 @@ class GetAuthScopeRoleResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             role_id: str,
-             role_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             role_id: Optional[str] = None,
+             role_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
+        if role_name is None and 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+        if role_name is None:
+            raise TypeError("Missing 'role_name' argument")
+
         _setter("role_id", role_id)
         _setter("role_name", role_name)
 
@@ -198,11 +220,21 @@ class GetAuthScopeServiceCatalogResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoints: Sequence['outputs.GetAuthScopeServiceCatalogEndpointResult'],
-             id: str,
-             name: str,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             endpoints: Optional[Sequence['outputs.GetAuthScopeServiceCatalogEndpointResult']] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if endpoints is None:
+            raise TypeError("Missing 'endpoints' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("endpoints", endpoints)
         _setter("id", id)
         _setter("name", name)
@@ -270,12 +302,26 @@ class GetAuthScopeServiceCatalogEndpointResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             interface: str,
-             region: str,
-             region_id: str,
-             url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[str] = None,
+             interface: Optional[str] = None,
+             region: Optional[str] = None,
+             region_id: Optional[str] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if interface is None:
+            raise TypeError("Missing 'interface' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if region_id is None and 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
         _setter("id", id)
         _setter("interface", interface)
         _setter("region", region)

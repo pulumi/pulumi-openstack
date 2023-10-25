@@ -6,17 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the compute limits of an OpenStack project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const limits = openstack.compute.getLimitsV2({
- *     projectId: "2e367a3d29f94fd988e6ec54e305ec9d",
- * });
- * ```
  */
 export function getLimitsV2(args: GetLimitsV2Args, opts?: pulumi.InvokeOptions): Promise<GetLimitsV2Result> {
 
@@ -137,17 +126,6 @@ export interface GetLimitsV2Result {
 }
 /**
  * Use this data source to get the compute limits of an OpenStack project.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const limits = openstack.compute.getLimitsV2({
- *     projectId: "2e367a3d29f94fd988e6ec54e305ec9d",
- * });
- * ```
  */
 export function getLimitsV2Output(args: GetLimitsV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLimitsV2Result> {
     return pulumi.output(args).apply((a: any) => getLimitsV2(a, opts))

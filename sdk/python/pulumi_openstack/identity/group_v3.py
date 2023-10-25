@@ -41,7 +41,11 @@ class GroupV3Args:
              domain_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain_id is None and 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+
         if description is not None:
             _setter("description", description)
         if domain_id is not None:
@@ -132,7 +136,11 @@ class _GroupV3State:
              domain_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain_id is None and 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+
         if description is not None:
             _setter("description", description)
         if domain_id is not None:
@@ -209,15 +217,6 @@ class GroupV3(pulumi.CustomResource):
         > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        group1 = openstack.identity.GroupV3("group1", description="group 1")
-        ```
-
         ## Import
 
         groups can be imported using the `id`, e.g.
@@ -246,15 +245,6 @@ class GroupV3(pulumi.CustomResource):
 
         > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        group1 = openstack.identity.GroupV3("group1", description="group 1")
-        ```
 
         ## Import
 

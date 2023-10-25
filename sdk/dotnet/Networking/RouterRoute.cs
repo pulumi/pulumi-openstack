@@ -12,54 +12,6 @@ namespace Pulumi.OpenStack.Networking
     /// <summary>
     /// Creates a routing entry on a OpenStack V2 router.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var router1 = new OpenStack.Networking.Router("router1", new()
-    ///     {
-    ///         AdminStateUp = true,
-    ///     });
-    /// 
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
-    ///     {
-    ///         AdminStateUp = true,
-    ///     });
-    /// 
-    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
-    ///     {
-    ///         NetworkId = network1.Id,
-    ///         Cidr = "192.168.199.0/24",
-    ///         IpVersion = 4,
-    ///     });
-    /// 
-    ///     var int1 = new OpenStack.Networking.RouterInterface("int1", new()
-    ///     {
-    ///         RouterId = router1.Id,
-    ///         SubnetId = subnet1.Id,
-    ///     });
-    /// 
-    ///     var routerRoute1 = new OpenStack.Networking.RouterRoute("routerRoute1", new()
-    ///     {
-    ///         RouterId = router1.Id,
-    ///         DestinationCidr = "10.0.1.0/24",
-    ///         NextHop = "192.168.199.254",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             "openstack_networking_router_interface_v2.int_1",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ## Notes
     /// 
     /// The `next_hop` IP address must be directly reachable from the router at the ``openstack.networking.RouterRoute``

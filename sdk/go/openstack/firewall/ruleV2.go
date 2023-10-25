@@ -16,36 +16,6 @@ import (
 //
 // > **Note:** Firewall v2 has no support for OVN currently.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/firewall"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firewall.NewRuleV2(ctx, "rule2", &firewall.RuleV2Args{
-//				Action:          pulumi.String("deny"),
-//				Description:     pulumi.String("drop TELNET traffic"),
-//				DestinationPort: pulumi.String("23"),
-//				Enabled:         pulumi.Bool(true),
-//				Protocol:        pulumi.String("tcp"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Firewall Rules can be imported using the `id`, e.g.

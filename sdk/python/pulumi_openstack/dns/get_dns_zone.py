@@ -266,15 +266,6 @@ def get_dns_zone(all_projects: Optional[str] = None,
     """
     Use this data source to get the ID of an available OpenStack DNS zone.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    zone1 = openstack.dns.get_dns_zone(name="example.com")
-    ```
-
 
     :param str all_projects: Try to obtain zone ID by listing all projects
            (requires admin role by default, depends on your policy configuration)
@@ -361,15 +352,6 @@ def get_dns_zone_output(all_projects: Optional[pulumi.Input[Optional[str]]] = No
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDnsZoneResult]:
     """
     Use this data source to get the ID of an available OpenStack DNS zone.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    zone1 = openstack.dns.get_dns_zone(name="example.com")
-    ```
 
 
     :param str all_projects: Try to obtain zone ID by listing all projects

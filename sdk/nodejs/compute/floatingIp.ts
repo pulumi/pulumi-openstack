@@ -13,15 +13,6 @@ import * as utilities from "../utilities";
  * recommended to use the `openstack.networking.FloatingIp`
  * resource instead, which uses the OpenStack Networking API.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const floatip1 = new openstack.compute.FloatingIp("floatip1", {pool: "public"});
- * ```
- *
  * ## Import
  *
  * Floating IPs can be imported using the `id`, e.g.

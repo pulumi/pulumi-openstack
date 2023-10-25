@@ -13,32 +13,6 @@ import (
 )
 
 // Use this data source to get the ID of an available Shared File System share network.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/sharedfilesystem"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sharedfilesystem.LookupShareNetwork(ctx, &sharedfilesystem.LookupShareNetworkArgs{
-//				Name: pulumi.StringRef("sharenetwork_1"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupShareNetwork(ctx *pulumi.Context, args *LookupShareNetworkArgs, opts ...pulumi.InvokeOption) (*LookupShareNetworkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupShareNetworkResult

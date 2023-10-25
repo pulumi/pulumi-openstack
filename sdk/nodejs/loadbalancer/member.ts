@@ -7,19 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Manages a V2 member resource within OpenStack.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const member1 = new openstack.loadbalancer.Member("member1", {
- *     address: "192.168.199.23",
- *     poolId: "935685fb-a896-40f9-9ff4-ae531a3a00fe",
- *     protocolPort: 8080,
- * });
- * ```
- *
  * ## Import
  *
  * Load Balancer Pool Member can be imported using the Pool ID and Member ID separated by a slash, e.g.:

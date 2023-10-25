@@ -74,9 +74,9 @@ class MemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: pulumi.Input[str],
-             pool_id: pulumi.Input[str],
-             protocol_port: pulumi.Input[int],
+             address: Optional[pulumi.Input[str]] = None,
+             pool_id: Optional[pulumi.Input[str]] = None,
+             protocol_port: Optional[pulumi.Input[int]] = None,
              admin_state_up: Optional[pulumi.Input[bool]] = None,
              backup: Optional[pulumi.Input[bool]] = None,
              monitor_address: Optional[pulumi.Input[str]] = None,
@@ -86,7 +86,29 @@ class MemberArgs:
              subnet_id: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if pool_id is None and 'poolId' in kwargs:
+            pool_id = kwargs['poolId']
+        if pool_id is None:
+            raise TypeError("Missing 'pool_id' argument")
+        if protocol_port is None and 'protocolPort' in kwargs:
+            protocol_port = kwargs['protocolPort']
+        if protocol_port is None:
+            raise TypeError("Missing 'protocol_port' argument")
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if monitor_address is None and 'monitorAddress' in kwargs:
+            monitor_address = kwargs['monitorAddress']
+        if monitor_port is None and 'monitorPort' in kwargs:
+            monitor_port = kwargs['monitorPort']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         _setter("address", address)
         _setter("pool_id", pool_id)
         _setter("protocol_port", protocol_port)
@@ -344,7 +366,23 @@ class _MemberState:
              subnet_id: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if monitor_address is None and 'monitorAddress' in kwargs:
+            monitor_address = kwargs['monitorAddress']
+        if monitor_port is None and 'monitorPort' in kwargs:
+            monitor_port = kwargs['monitorPort']
+        if pool_id is None and 'poolId' in kwargs:
+            pool_id = kwargs['poolId']
+        if protocol_port is None and 'protocolPort' in kwargs:
+            protocol_port = kwargs['protocolPort']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if address is not None:
             _setter("address", address)
         if admin_state_up is not None:
@@ -551,18 +589,6 @@ class Member(pulumi.CustomResource):
         """
         Manages a V2 member resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        member1 = openstack.loadbalancer.Member("member1",
-            address="192.168.199.23",
-            pool_id="935685fb-a896-40f9-9ff4-ae531a3a00fe",
-            protocol_port=8080)
-        ```
-
         ## Import
 
         Load Balancer Pool Member can be imported using the Pool ID and Member ID separated by a slash, e.g.:
@@ -609,18 +635,6 @@ class Member(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 member resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        member1 = openstack.loadbalancer.Member("member1",
-            address="192.168.199.23",
-            pool_id="935685fb-a896-40f9-9ff4-ae531a3a00fe",
-            protocol_port=8080)
-        ```
 
         ## Import
 

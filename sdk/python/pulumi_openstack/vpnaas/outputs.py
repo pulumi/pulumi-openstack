@@ -34,7 +34,9 @@ class IkePolicyLifetime(dict):
              _setter: Callable[[Any, Any], None],
              units: Optional[str] = None,
              value: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if units is not None:
             _setter("units", units)
         if value is not None:
@@ -74,7 +76,9 @@ class IpSecPolicyLifetime(dict):
              _setter: Callable[[Any, Any], None],
              units: Optional[str] = None,
              value: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if units is not None:
             _setter("units", units)
         if value is not None:
@@ -124,7 +128,9 @@ class SiteConnectionDpd(dict):
              action: Optional[str] = None,
              interval: Optional[int] = None,
              timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if action is not None:
             _setter("action", action)
         if interval is not None:

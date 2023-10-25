@@ -12,51 +12,6 @@ namespace Pulumi.OpenStack.Firewall
     /// <summary>
     /// Manages a v1 firewall resource within OpenStack.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var rule1 = new OpenStack.Firewall.Rule("rule1", new()
-    ///     {
-    ///         Description = "drop TELNET traffic",
-    ///         Action = "deny",
-    ///         Protocol = "tcp",
-    ///         DestinationPort = "23",
-    ///         Enabled = true,
-    ///     });
-    /// 
-    ///     var rule2 = new OpenStack.Firewall.Rule("rule2", new()
-    ///     {
-    ///         Description = "drop NTP traffic",
-    ///         Action = "deny",
-    ///         Protocol = "udp",
-    ///         DestinationPort = "123",
-    ///         Enabled = false,
-    ///     });
-    /// 
-    ///     var policy1 = new OpenStack.Firewall.Policy("policy1", new()
-    ///     {
-    ///         Rules = new[]
-    ///         {
-    ///             rule1.Id,
-    ///             rule2.Id,
-    ///         },
-    ///     });
-    /// 
-    ///     var firewall1 = new OpenStack.Firewall.Firewall("firewall1", new()
-    ///     {
-    ///         PolicyId = policy1.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Firewalls can be imported using the `id`, e.g.

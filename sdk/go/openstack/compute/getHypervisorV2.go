@@ -14,32 +14,6 @@ import (
 
 // Use this data source to get information about hypervisors
 // by hostname.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.GetHypervisorV2(ctx, &compute.GetHypervisorV2Args{
-//				Hostname: "host01",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetHypervisorV2(ctx *pulumi.Context, args *GetHypervisorV2Args, opts ...pulumi.InvokeOption) (*GetHypervisorV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHypervisorV2Result

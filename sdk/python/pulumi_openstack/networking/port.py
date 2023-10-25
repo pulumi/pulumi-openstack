@@ -121,7 +121,7 @@ class PortArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network_id: pulumi.Input[str],
+             network_id: Optional[pulumi.Input[str]] = None,
              admin_state_up: Optional[pulumi.Input[bool]] = None,
              allowed_address_pairs: Optional[pulumi.Input[Sequence[pulumi.Input['PortAllowedAddressPairArgs']]]] = None,
              binding: Optional[pulumi.Input['PortBindingArgs']] = None,
@@ -142,7 +142,43 @@ class PortArgs:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if network_id is None and 'networkId' in kwargs:
+            network_id = kwargs['networkId']
+        if network_id is None:
+            raise TypeError("Missing 'network_id' argument")
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if allowed_address_pairs is None and 'allowedAddressPairs' in kwargs:
+            allowed_address_pairs = kwargs['allowedAddressPairs']
+        if device_id is None and 'deviceId' in kwargs:
+            device_id = kwargs['deviceId']
+        if device_owner is None and 'deviceOwner' in kwargs:
+            device_owner = kwargs['deviceOwner']
+        if dns_name is None and 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if extra_dhcp_options is None and 'extraDhcpOptions' in kwargs:
+            extra_dhcp_options = kwargs['extraDhcpOptions']
+        if fixed_ips is None and 'fixedIps' in kwargs:
+            fixed_ips = kwargs['fixedIps']
+        if mac_address is None and 'macAddress' in kwargs:
+            mac_address = kwargs['macAddress']
+        if no_fixed_ip is None and 'noFixedIp' in kwargs:
+            no_fixed_ip = kwargs['noFixedIp']
+        if no_security_groups is None and 'noSecurityGroups' in kwargs:
+            no_security_groups = kwargs['noSecurityGroups']
+        if port_security_enabled is None and 'portSecurityEnabled' in kwargs:
+            port_security_enabled = kwargs['portSecurityEnabled']
+        if qos_policy_id is None and 'qosPolicyId' in kwargs:
+            qos_policy_id = kwargs['qosPolicyId']
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         _setter("network_id", network_id)
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
@@ -619,7 +655,49 @@ class _PortState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if all_fixed_ips is None and 'allFixedIps' in kwargs:
+            all_fixed_ips = kwargs['allFixedIps']
+        if all_security_group_ids is None and 'allSecurityGroupIds' in kwargs:
+            all_security_group_ids = kwargs['allSecurityGroupIds']
+        if all_tags is None and 'allTags' in kwargs:
+            all_tags = kwargs['allTags']
+        if allowed_address_pairs is None and 'allowedAddressPairs' in kwargs:
+            allowed_address_pairs = kwargs['allowedAddressPairs']
+        if device_id is None and 'deviceId' in kwargs:
+            device_id = kwargs['deviceId']
+        if device_owner is None and 'deviceOwner' in kwargs:
+            device_owner = kwargs['deviceOwner']
+        if dns_assignments is None and 'dnsAssignments' in kwargs:
+            dns_assignments = kwargs['dnsAssignments']
+        if dns_name is None and 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if extra_dhcp_options is None and 'extraDhcpOptions' in kwargs:
+            extra_dhcp_options = kwargs['extraDhcpOptions']
+        if fixed_ips is None and 'fixedIps' in kwargs:
+            fixed_ips = kwargs['fixedIps']
+        if mac_address is None and 'macAddress' in kwargs:
+            mac_address = kwargs['macAddress']
+        if network_id is None and 'networkId' in kwargs:
+            network_id = kwargs['networkId']
+        if no_fixed_ip is None and 'noFixedIp' in kwargs:
+            no_fixed_ip = kwargs['noFixedIp']
+        if no_security_groups is None and 'noSecurityGroups' in kwargs:
+            no_security_groups = kwargs['noSecurityGroups']
+        if port_security_enabled is None and 'portSecurityEnabled' in kwargs:
+            port_security_enabled = kwargs['portSecurityEnabled']
+        if qos_policy_id is None and 'qosPolicyId' in kwargs:
+            qos_policy_id = kwargs['qosPolicyId']
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
         if all_fixed_ips is not None:
@@ -1039,50 +1117,6 @@ class Port(pulumi.CustomResource):
         Manages a V2 port resource within OpenStack.
 
         ## Example Usage
-        ### Simple port
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        port1 = openstack.networking.Port("port1",
-            network_id=network1.id,
-            admin_state_up=True)
-        ```
-        ### Port with physical binding information
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        port1 = openstack.networking.Port("port1",
-            network_id=network1.id,
-            device_id="cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
-            device_owner="baremetal:none",
-            admin_state_up=True,
-            binding=openstack.networking.PortBindingArgs(
-                host_id="b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
-                vnic_type="baremetal",
-                profile=\"\"\"{
-          "local_link_information": [
-            {
-              "switch_info": "info1",
-              "port_id": "Ethernet3/4",
-              "switch_id": "12:34:56:78:9A:BC"
-            },
-            {
-              "switch_info": "info2",
-              "port_id": "Ethernet3/4",
-              "switch_id": "12:34:56:78:9A:BD"
-            }
-          ],
-          "vlan_type": "allowed"
-        }
-        \"\"\",
-            ))
-        ```
         ## Notes
 
         ### Ports and Instances
@@ -1166,50 +1200,6 @@ class Port(pulumi.CustomResource):
         Manages a V2 port resource within OpenStack.
 
         ## Example Usage
-        ### Simple port
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        port1 = openstack.networking.Port("port1",
-            network_id=network1.id,
-            admin_state_up=True)
-        ```
-        ### Port with physical binding information
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        port1 = openstack.networking.Port("port1",
-            network_id=network1.id,
-            device_id="cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
-            device_owner="baremetal:none",
-            admin_state_up=True,
-            binding=openstack.networking.PortBindingArgs(
-                host_id="b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
-                vnic_type="baremetal",
-                profile=\"\"\"{
-          "local_link_information": [
-            {
-              "switch_info": "info1",
-              "port_id": "Ethernet3/4",
-              "switch_id": "12:34:56:78:9A:BC"
-            },
-            {
-              "switch_info": "info2",
-              "port_id": "Ethernet3/4",
-              "switch_id": "12:34:56:78:9A:BD"
-            }
-          ],
-          "vlan_type": "allowed"
-        }
-        \"\"\",
-            ))
-        ```
         ## Notes
 
         ### Ports and Instances
@@ -1277,11 +1267,7 @@ class Port(pulumi.CustomResource):
 
             __props__.__dict__["admin_state_up"] = admin_state_up
             __props__.__dict__["allowed_address_pairs"] = allowed_address_pairs
-            if binding is not None and not isinstance(binding, PortBindingArgs):
-                binding = binding or {}
-                def _setter(key, value):
-                    binding[key] = value
-                PortBindingArgs._configure(_setter, **binding)
+            binding = _utilities.configure(binding, PortBindingArgs, True)
             __props__.__dict__["binding"] = binding
             __props__.__dict__["description"] = description
             __props__.__dict__["device_id"] = device_id

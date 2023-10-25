@@ -101,7 +101,21 @@ class RuleV2Args:
              source_ip_address: Optional[pulumi.Input[str]] = None,
              source_port: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if destination_ip_address is None and 'destinationIpAddress' in kwargs:
+            destination_ip_address = kwargs['destinationIpAddress']
+        if destination_port is None and 'destinationPort' in kwargs:
+            destination_port = kwargs['destinationPort']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if source_ip_address is None and 'sourceIpAddress' in kwargs:
+            source_ip_address = kwargs['sourceIpAddress']
+        if source_port is None and 'sourcePort' in kwargs:
+            source_port = kwargs['sourcePort']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if action is not None:
             _setter("action", action)
         if description is not None:
@@ -402,7 +416,21 @@ class _RuleV2State:
              source_ip_address: Optional[pulumi.Input[str]] = None,
              source_port: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if destination_ip_address is None and 'destinationIpAddress' in kwargs:
+            destination_ip_address = kwargs['destinationIpAddress']
+        if destination_port is None and 'destinationPort' in kwargs:
+            destination_port = kwargs['destinationPort']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if source_ip_address is None and 'sourceIpAddress' in kwargs:
+            source_ip_address = kwargs['sourceIpAddress']
+        if source_port is None and 'sourcePort' in kwargs:
+            source_port = kwargs['sourcePort']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if action is not None:
             _setter("action", action)
         if description is not None:
@@ -637,20 +665,6 @@ class RuleV2(pulumi.CustomResource):
 
         > **Note:** Firewall v2 has no support for OVN currently.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rule2 = openstack.firewall.RuleV2("rule2",
-            action="deny",
-            description="drop TELNET traffic",
-            destination_port="23",
-            enabled=True,
-            protocol="tcp")
-        ```
-
         ## Import
 
         Firewall Rules can be imported using the `id`, e.g.
@@ -711,20 +725,6 @@ class RuleV2(pulumi.CustomResource):
         Manages a v2 firewall rule resource within OpenStack.
 
         > **Note:** Firewall v2 has no support for OVN currently.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rule2 = openstack.firewall.RuleV2("rule2",
-            action="deny",
-            description="drop TELNET traffic",
-            destination_port="23",
-            enabled=True,
-            protocol="tcp")
-        ```
 
         ## Import
 

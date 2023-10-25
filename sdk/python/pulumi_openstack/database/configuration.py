@@ -42,12 +42,18 @@ class ConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datastore: pulumi.Input['ConfigurationDatastoreArgs'],
-             description: pulumi.Input[str],
+             datastore: Optional[pulumi.Input['ConfigurationDatastoreArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
              configurations: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationConfigurationArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if datastore is None:
+            raise TypeError("Missing 'datastore' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+
         _setter("datastore", datastore)
         _setter("description", description)
         if configurations is not None:
@@ -154,7 +160,9 @@ class _ConfigurationState:
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if configurations is not None:
             _setter("configurations", configurations)
         if datastore is not None:
@@ -294,11 +302,7 @@ class Configuration(pulumi.CustomResource):
             __props__ = ConfigurationArgs.__new__(ConfigurationArgs)
 
             __props__.__dict__["configurations"] = configurations
-            if datastore is not None and not isinstance(datastore, ConfigurationDatastoreArgs):
-                datastore = datastore or {}
-                def _setter(key, value):
-                    datastore[key] = value
-                ConfigurationDatastoreArgs._configure(_setter, **datastore)
+            datastore = _utilities.configure(datastore, ConfigurationDatastoreArgs, True)
             if datastore is None and not opts.urn:
                 raise TypeError("Missing required property 'datastore'")
             __props__.__dict__["datastore"] = datastore

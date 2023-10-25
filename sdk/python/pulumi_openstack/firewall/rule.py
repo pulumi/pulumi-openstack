@@ -84,8 +84,8 @@ class RuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             protocol: pulumi.Input[str],
+             action: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              destination_ip_address: Optional[pulumi.Input[str]] = None,
              destination_port: Optional[pulumi.Input[str]] = None,
@@ -97,7 +97,27 @@ class RuleArgs:
              source_port: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if destination_ip_address is None and 'destinationIpAddress' in kwargs:
+            destination_ip_address = kwargs['destinationIpAddress']
+        if destination_port is None and 'destinationPort' in kwargs:
+            destination_port = kwargs['destinationPort']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if source_ip_address is None and 'sourceIpAddress' in kwargs:
+            source_ip_address = kwargs['sourceIpAddress']
+        if source_port is None and 'sourcePort' in kwargs:
+            source_port = kwargs['sourcePort']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         _setter("action", action)
         _setter("protocol", protocol)
         if description is not None:
@@ -388,7 +408,23 @@ class _RuleState:
              source_port: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if destination_ip_address is None and 'destinationIpAddress' in kwargs:
+            destination_ip_address = kwargs['destinationIpAddress']
+        if destination_port is None and 'destinationPort' in kwargs:
+            destination_port = kwargs['destinationPort']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if source_ip_address is None and 'sourceIpAddress' in kwargs:
+            source_ip_address = kwargs['sourceIpAddress']
+        if source_port is None and 'sourcePort' in kwargs:
+            source_port = kwargs['sourcePort']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if action is not None:
             _setter("action", action)
         if description is not None:
@@ -617,20 +653,6 @@ class Rule(pulumi.CustomResource):
         """
         Manages a v1 firewall rule resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rule1 = openstack.firewall.Rule("rule1",
-            action="deny",
-            description="drop TELNET traffic",
-            destination_port="23",
-            enabled=True,
-            protocol="tcp")
-        ```
-
         ## Import
 
         Firewall Rules can be imported using the `id`, e.g.
@@ -685,20 +707,6 @@ class Rule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a v1 firewall rule resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rule1 = openstack.firewall.Rule("rule1",
-            action="deny",
-            description="drop TELNET traffic",
-            destination_port="23",
-            enabled=True,
-            protocol="tcp")
-        ```
 
         ## Import
 

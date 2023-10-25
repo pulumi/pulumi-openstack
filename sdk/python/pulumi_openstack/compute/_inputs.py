@@ -87,7 +87,7 @@ class InstanceBlockDeviceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source_type: pulumi.Input[str],
+             source_type: Optional[pulumi.Input[str]] = None,
              boot_index: Optional[pulumi.Input[int]] = None,
              delete_on_termination: Optional[pulumi.Input[bool]] = None,
              destination_type: Optional[pulumi.Input[str]] = None,
@@ -98,7 +98,29 @@ class InstanceBlockDeviceArgs:
              uuid: Optional[pulumi.Input[str]] = None,
              volume_size: Optional[pulumi.Input[int]] = None,
              volume_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if source_type is None and 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
+        if boot_index is None and 'bootIndex' in kwargs:
+            boot_index = kwargs['bootIndex']
+        if delete_on_termination is None and 'deleteOnTermination' in kwargs:
+            delete_on_termination = kwargs['deleteOnTermination']
+        if destination_type is None and 'destinationType' in kwargs:
+            destination_type = kwargs['destinationType']
+        if device_type is None and 'deviceType' in kwargs:
+            device_type = kwargs['deviceType']
+        if disk_bus is None and 'diskBus' in kwargs:
+            disk_bus = kwargs['diskBus']
+        if guest_format is None and 'guestFormat' in kwargs:
+            guest_format = kwargs['guestFormat']
+        if volume_size is None and 'volumeSize' in kwargs:
+            volume_size = kwargs['volumeSize']
+        if volume_type is None and 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         _setter("source_type", source_type)
         if boot_index is not None:
             _setter("boot_index", boot_index)
@@ -320,7 +342,17 @@ class InstanceNetworkArgs:
              name: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[str]] = None,
              uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_network is None and 'accessNetwork' in kwargs:
+            access_network = kwargs['accessNetwork']
+        if fixed_ip_v4 is None and 'fixedIpV4' in kwargs:
+            fixed_ip_v4 = kwargs['fixedIpV4']
+        if fixed_ip_v6 is None and 'fixedIpV6' in kwargs:
+            fixed_ip_v6 = kwargs['fixedIpV6']
+        if floating_ip is None and 'floatingIp' in kwargs:
+            floating_ip = kwargs['floatingIp']
+
         if access_network is not None:
             _setter("access_network", access_network)
         if fixed_ip_v4 is not None:
@@ -454,9 +486,15 @@ class InstancePersonalityArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content: pulumi.Input[str],
-             file: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             content: Optional[pulumi.Input[str]] = None,
+             file: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if file is None:
+            raise TypeError("Missing 'file' argument")
+
         _setter("content", content)
         _setter("file", file)
 
@@ -538,7 +576,21 @@ class InstanceSchedulerHintArgs:
              queries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              same_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_cell: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if additional_properties is None and 'additionalProperties' in kwargs:
+            additional_properties = kwargs['additionalProperties']
+        if build_near_host_ip is None and 'buildNearHostIp' in kwargs:
+            build_near_host_ip = kwargs['buildNearHostIp']
+        if different_cells is None and 'differentCells' in kwargs:
+            different_cells = kwargs['differentCells']
+        if different_hosts is None and 'differentHosts' in kwargs:
+            different_hosts = kwargs['differentHosts']
+        if same_hosts is None and 'sameHosts' in kwargs:
+            same_hosts = kwargs['sameHosts']
+        if target_cell is None and 'targetCell' in kwargs:
+            target_cell = kwargs['targetCell']
+
         if additional_properties is not None:
             _setter("additional_properties", additional_properties)
         if build_near_host_ip is not None:
@@ -687,7 +739,13 @@ class InstanceVendorOptionsArgs:
              _setter: Callable[[Any, Any], None],
              detach_ports_before_destroy: Optional[pulumi.Input[bool]] = None,
              ignore_resize_confirmation: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if detach_ports_before_destroy is None and 'detachPortsBeforeDestroy' in kwargs:
+            detach_ports_before_destroy = kwargs['detachPortsBeforeDestroy']
+        if ignore_resize_confirmation is None and 'ignoreResizeConfirmation' in kwargs:
+            ignore_resize_confirmation = kwargs['ignoreResizeConfirmation']
+
         if detach_ports_before_destroy is not None:
             _setter("detach_ports_before_destroy", detach_ports_before_destroy)
         if ignore_resize_confirmation is not None:
@@ -738,10 +796,16 @@ class InstanceVolumeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             volume_id: pulumi.Input[str],
+             volume_id: Optional[pulumi.Input[str]] = None,
              device: Optional[pulumi.Input[str]] = None,
              id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if volume_id is None and 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+        if volume_id is None:
+            raise TypeError("Missing 'volume_id' argument")
+
         _setter("volume_id", volume_id)
         if device is not None:
             _setter("device", device)
@@ -817,14 +881,30 @@ class SecGroupRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             from_port: pulumi.Input[int],
-             ip_protocol: pulumi.Input[str],
-             to_port: pulumi.Input[int],
+             from_port: Optional[pulumi.Input[int]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             to_port: Optional[pulumi.Input[int]] = None,
              cidr: Optional[pulumi.Input[str]] = None,
              from_group_id: Optional[pulumi.Input[str]] = None,
              id: Optional[pulumi.Input[str]] = None,
              self: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if from_port is None and 'fromPort' in kwargs:
+            from_port = kwargs['fromPort']
+        if from_port is None:
+            raise TypeError("Missing 'from_port' argument")
+        if ip_protocol is None and 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if ip_protocol is None:
+            raise TypeError("Missing 'ip_protocol' argument")
+        if to_port is None and 'toPort' in kwargs:
+            to_port = kwargs['toPort']
+        if to_port is None:
+            raise TypeError("Missing 'to_port' argument")
+        if from_group_id is None and 'fromGroupId' in kwargs:
+            from_group_id = kwargs['fromGroupId']
+
         _setter("from_port", from_port)
         _setter("ip_protocol", ip_protocol)
         _setter("to_port", to_port)
@@ -941,7 +1021,11 @@ class ServerGroupRulesArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              max_server_per_host: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if max_server_per_host is None and 'maxServerPerHost' in kwargs:
+            max_server_per_host = kwargs['maxServerPerHost']
+
         if max_server_per_host is not None:
             _setter("max_server_per_host", max_server_per_host)
 
@@ -972,7 +1056,11 @@ class VolumeAttachVendorOptionsArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              ignore_volume_confirmation: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ignore_volume_confirmation is None and 'ignoreVolumeConfirmation' in kwargs:
+            ignore_volume_confirmation = kwargs['ignoreVolumeConfirmation']
+
         if ignore_volume_confirmation is not None:
             _setter("ignore_volume_confirmation", ignore_volume_confirmation)
 
@@ -1020,13 +1108,31 @@ class GetInstanceV2NetworkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fixed_ip_v4: str,
-             fixed_ip_v6: str,
-             mac: str,
-             name: str,
-             port: str,
-             uuid: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             fixed_ip_v4: Optional[str] = None,
+             fixed_ip_v6: Optional[str] = None,
+             mac: Optional[str] = None,
+             name: Optional[str] = None,
+             port: Optional[str] = None,
+             uuid: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fixed_ip_v4 is None and 'fixedIpV4' in kwargs:
+            fixed_ip_v4 = kwargs['fixedIpV4']
+        if fixed_ip_v4 is None:
+            raise TypeError("Missing 'fixed_ip_v4' argument")
+        if fixed_ip_v6 is None and 'fixedIpV6' in kwargs:
+            fixed_ip_v6 = kwargs['fixedIpV6']
+        if fixed_ip_v6 is None:
+            raise TypeError("Missing 'fixed_ip_v6' argument")
+        if mac is None:
+            raise TypeError("Missing 'mac' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
+        if uuid is None:
+            raise TypeError("Missing 'uuid' argument")
+
         _setter("fixed_ip_v4", fixed_ip_v4)
         _setter("fixed_ip_v6", fixed_ip_v6)
         _setter("mac", mac)

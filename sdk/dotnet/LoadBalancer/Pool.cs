@@ -15,31 +15,6 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// &gt; **Note:** This resource has attributes that depend on octavia minor versions.
     /// Please ensure your Openstack cloud supports the required minor version.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var pool1 = new OpenStack.LoadBalancer.Pool("pool1", new()
-    ///     {
-    ///         LbMethod = "ROUND_ROBIN",
-    ///         ListenerId = "d9415786-5f1a-428b-b35f-2f1523e146d2",
-    ///         Persistence = new OpenStack.LoadBalancer.Inputs.PoolPersistenceArgs
-    ///         {
-    ///             CookieName = "testCookie",
-    ///             Type = "APP_COOKIE",
-    ///         },
-    ///         Protocol = "HTTP",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Load Balancer Pool can be imported using the Pool ID, e.g.:

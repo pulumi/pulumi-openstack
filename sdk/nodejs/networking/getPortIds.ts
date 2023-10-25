@@ -7,17 +7,6 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get a list of Openstack Port IDs matching the
  * specified criteria.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const ports = openstack.networking.getPortIds({
- *     name: "port",
- * });
- * ```
  */
 export function getPortIds(args?: GetPortIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetPortIdsResult> {
     args = args || {};
@@ -145,17 +134,6 @@ export interface GetPortIdsResult {
 /**
  * Use this data source to get a list of Openstack Port IDs matching the
  * specified criteria.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const ports = openstack.networking.getPortIds({
- *     name: "port",
- * });
- * ```
  */
 export function getPortIdsOutput(args?: GetPortIdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortIdsResult> {
     return pulumi.output(args).apply((a: any) => getPortIds(a, opts))

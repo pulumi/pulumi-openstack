@@ -10,15 +10,6 @@ import * as utilities from "../utilities";
  * > **Note:** This resource has attributes that depend on octavia minor versions.
  * Please ensure your Openstack cloud supports the required minor version.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const lb1 = new openstack.loadbalancer.LoadBalancer("lb1", {vipSubnetId: "d9415786-5f1a-428b-b35f-2f1523e146d2"});
- * ```
- *
  * ## Import
  *
  * Load Balancer can be imported using the Load Balancer ID, e.g.:

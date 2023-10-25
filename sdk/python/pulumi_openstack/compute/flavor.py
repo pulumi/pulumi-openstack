@@ -72,9 +72,9 @@ class FlavorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             disk: pulumi.Input[int],
-             ram: pulumi.Input[int],
-             vcpus: pulumi.Input[int],
+             disk: Optional[pulumi.Input[int]] = None,
+             ram: Optional[pulumi.Input[int]] = None,
+             vcpus: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              ephemeral: Optional[pulumi.Input[int]] = None,
              extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -84,7 +84,23 @@ class FlavorArgs:
              region: Optional[pulumi.Input[str]] = None,
              rx_tx_factor: Optional[pulumi.Input[float]] = None,
              swap: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disk is None:
+            raise TypeError("Missing 'disk' argument")
+        if ram is None:
+            raise TypeError("Missing 'ram' argument")
+        if vcpus is None:
+            raise TypeError("Missing 'vcpus' argument")
+        if extra_specs is None and 'extraSpecs' in kwargs:
+            extra_specs = kwargs['extraSpecs']
+        if flavor_id is None and 'flavorId' in kwargs:
+            flavor_id = kwargs['flavorId']
+        if is_public is None and 'isPublic' in kwargs:
+            is_public = kwargs['isPublic']
+        if rx_tx_factor is None and 'rxTxFactor' in kwargs:
+            rx_tx_factor = kwargs['rxTxFactor']
+
         _setter("disk", disk)
         _setter("ram", ram)
         _setter("vcpus", vcpus)
@@ -338,7 +354,17 @@ class _FlavorState:
              rx_tx_factor: Optional[pulumi.Input[float]] = None,
              swap: Optional[pulumi.Input[int]] = None,
              vcpus: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if extra_specs is None and 'extraSpecs' in kwargs:
+            extra_specs = kwargs['extraSpecs']
+        if flavor_id is None and 'flavorId' in kwargs:
+            flavor_id = kwargs['flavorId']
+        if is_public is None and 'isPublic' in kwargs:
+            is_public = kwargs['isPublic']
+        if rx_tx_factor is None and 'rxTxFactor' in kwargs:
+            rx_tx_factor = kwargs['rxTxFactor']
+
         if description is not None:
             _setter("description", description)
         if disk is not None:
@@ -543,22 +569,6 @@ class Flavor(pulumi.CustomResource):
         """
         Manages a V2 flavor resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test_flavor = openstack.compute.Flavor("test-flavor",
-            disk=20,
-            extra_specs={
-                "hw:cpu_policy": "CPU-POLICY",
-                "hw:cpu_thread_policy": "CPU-THREAD-POLICY",
-            },
-            ram=8096,
-            vcpus=2)
-        ```
-
         ## Import
 
         Flavors can be imported using the `ID`, e.g.
@@ -603,22 +613,6 @@ class Flavor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 flavor resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test_flavor = openstack.compute.Flavor("test-flavor",
-            disk=20,
-            extra_specs={
-                "hw:cpu_policy": "CPU-POLICY",
-                "hw:cpu_thread_policy": "CPU-THREAD-POLICY",
-            },
-            ram=8096,
-            vcpus=2)
-        ```
 
         ## Import
 

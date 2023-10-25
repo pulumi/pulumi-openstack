@@ -13,23 +13,6 @@ namespace Pulumi.OpenStack.Database
     /// Manages a V1 DB database resource within OpenStack.
     /// 
     /// ## Example Usage
-    /// ### Database
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var mydb = new OpenStack.Database.Database("mydb", new()
-    ///     {
-    ///         InstanceId = openstack_db_instance_v1.Basic.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

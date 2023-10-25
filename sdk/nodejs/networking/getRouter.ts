@@ -8,17 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the ID of an available OpenStack router.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const router = openstack.networking.getRouter({
- *     name: "router_1",
- * });
- * ```
  */
 export function getRouter(args?: GetRouterArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterResult> {
     args = args || {};
@@ -126,17 +115,6 @@ export interface GetRouterResult {
 }
 /**
  * Use this data source to get the ID of an available OpenStack router.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const router = openstack.networking.getRouter({
- *     name: "router_1",
- * });
- * ```
  */
 export function getRouterOutput(args?: GetRouterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterResult> {
     return pulumi.output(args).apply((a: any) => getRouter(a, opts))

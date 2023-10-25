@@ -47,11 +47,19 @@ class ApplicationCredentialAccessRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             method: pulumi.Input[str],
-             path: pulumi.Input[str],
-             service: pulumi.Input[str],
+             method: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("method", method)
         _setter("path", path)
         _setter("service", service)
@@ -132,8 +140,12 @@ class UserMultiFactorAuthRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             rules: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if rules is None:
+            raise TypeError("Missing 'rules' argument")
+
         _setter("rules", rules)
 
     @property

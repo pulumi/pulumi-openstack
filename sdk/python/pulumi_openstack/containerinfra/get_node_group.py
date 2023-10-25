@@ -217,16 +217,6 @@ def get_node_group(cluster_id: Optional[str] = None,
     """
     Use this data source to get information of an available OpenStack Magnum node group.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    nodegroup1 = openstack.containerinfra.get_node_group(cluster_id="cluster_1",
-        name="nodegroup_1")
-    ```
-
 
     :param str cluster_id: The name of the OpenStack Magnum cluster.
     :param str name: The name of the node group.
@@ -266,16 +256,6 @@ def get_node_group_output(cluster_id: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeGroupResult]:
     """
     Use this data source to get information of an available OpenStack Magnum node group.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    nodegroup1 = openstack.containerinfra.get_node_group(cluster_id="cluster_1",
-        name="nodegroup_1")
-    ```
 
 
     :param str cluster_id: The name of the OpenStack Magnum cluster.

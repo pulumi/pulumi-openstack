@@ -16,43 +16,6 @@ import (
 // Manages memberships status for the shared OpenStack Glance V2 Image within the
 // destination project, which has a member proposal.
 //
-// ## Example Usage
-//
-// Accept a shared image membershipship proposal within the current project.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/images"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			rancheros, err := images.LookupImage(ctx, &images.LookupImageArgs{
-//				Name:         pulumi.StringRef("RancherOS"),
-//				Visibility:   pulumi.StringRef("shared"),
-//				MemberStatus: pulumi.StringRef("all"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = images.NewImageAccessAccept(ctx, "rancherosMember", &images.ImageAccessAcceptArgs{
-//				ImageId: *pulumi.String(rancheros.Id),
-//				Status:  pulumi.String("accepted"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Image access acceptance status can be imported using the `image_id`, e.g.

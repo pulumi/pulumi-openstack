@@ -39,12 +39,16 @@ class ServiceV3Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
         if description is not None:
             _setter("description", description)
@@ -150,7 +154,9 @@ class _ServiceV3State:
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if enabled is not None:
@@ -240,15 +246,6 @@ class ServiceV3(pulumi.CustomResource):
 
         > **Note:** This usually requires admin privileges.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        service1 = openstack.identity.ServiceV3("service1", type="custom")
-        ```
-
         ## Import
 
         Services can be imported using the `id`, e.g.
@@ -276,15 +273,6 @@ class ServiceV3(pulumi.CustomResource):
         Manages a V3 Service resource within OpenStack Keystone.
 
         > **Note:** This usually requires admin privileges.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        service1 = openstack.identity.ServiceV3("service1", type="custom")
-        ```
 
         ## Import
 

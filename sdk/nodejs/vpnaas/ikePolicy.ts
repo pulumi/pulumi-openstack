@@ -9,15 +9,6 @@ import * as utilities from "../utilities";
 /**
  * Manages a V2 Neutron IKE policy resource within OpenStack.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const policy1 = new openstack.vpnaas.IkePolicy("policy1", {});
- * ```
- *
  * ## Import
  *
  * Services can be imported using the `id`, e.g.

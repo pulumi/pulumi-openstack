@@ -153,15 +153,6 @@ def get_endpoint(endpoint_region: Optional[str] = None,
 
     > **Note:** This usually requires admin privileges.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    endpoint1 = openstack.identity.get_endpoint(service_name="demo")
-    ```
-
 
     :param str endpoint_region: The region the endpoint is assigned to. The
            `region` and `endpoint_region` can be different.
@@ -210,15 +201,6 @@ def get_endpoint_output(endpoint_region: Optional[pulumi.Input[Optional[str]]] =
     Use this data source to get the ID of an OpenStack endpoint.
 
     > **Note:** This usually requires admin privileges.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    endpoint1 = openstack.identity.get_endpoint(service_name="demo")
-    ```
 
 
     :param str endpoint_region: The region the endpoint is assigned to. The

@@ -111,15 +111,6 @@ def get_keypair(name: Optional[str] = None,
     """
     Use this data source to get the ID and public key of an OpenStack keypair.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    kp = openstack.compute.get_keypair(name="sand")
-    ```
-
 
     :param str name: The unique name of the keypair.
     :param str region: The region in which to obtain the V2 Compute client.
@@ -151,15 +142,6 @@ def get_keypair_output(name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeypairResult]:
     """
     Use this data source to get the ID and public key of an OpenStack keypair.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    kp = openstack.compute.get_keypair(name="sand")
-    ```
 
 
     :param str name: The unique name of the keypair.

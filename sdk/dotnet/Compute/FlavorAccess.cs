@@ -17,35 +17,6 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// ***
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var project1 = new OpenStack.Identity.Project("project1");
-    /// 
-    ///     var flavor1 = new OpenStack.Compute.Flavor("flavor1", new()
-    ///     {
-    ///         Ram = 8096,
-    ///         Vcpus = 2,
-    ///         Disk = 20,
-    ///         IsPublic = false,
-    ///     });
-    /// 
-    ///     var access1 = new OpenStack.Compute.FlavorAccess("access1", new()
-    ///     {
-    ///         TenantId = project1.Id,
-    ///         FlavorId = flavor1.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying all two arguments, separated by a forward slash:

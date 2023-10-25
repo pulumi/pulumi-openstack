@@ -59,7 +59,13 @@ class EndpointGroupArgs:
              tenant_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if description is not None:
             _setter("description", description)
         if endpoints is not None:
@@ -216,7 +222,13 @@ class _EndpointGroupState:
              tenant_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if description is not None:
             _setter("description", description)
         if endpoints is not None:
@@ -341,20 +353,6 @@ class EndpointGroup(pulumi.CustomResource):
         """
         Manages a V2 Neutron Endpoint Group resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        group1 = openstack.vpnaas.EndpointGroup("group1",
-            endpoints=[
-                "10.2.0.0/24",
-                "10.3.0.0/24",
-            ],
-            type="cidr")
-        ```
-
         ## Import
 
         Groups can be imported using the `id`, e.g.
@@ -389,20 +387,6 @@ class EndpointGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 Neutron Endpoint Group resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        group1 = openstack.vpnaas.EndpointGroup("group1",
-            endpoints=[
-                "10.2.0.0/24",
-                "10.3.0.0/24",
-            ],
-            type="cidr")
-        ```
 
         ## Import
 

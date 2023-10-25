@@ -39,11 +39,21 @@ class ImageAccessArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image_id: pulumi.Input[str],
-             member_id: pulumi.Input[str],
+             image_id: Optional[pulumi.Input[str]] = None,
+             member_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if member_id is None and 'memberId' in kwargs:
+            member_id = kwargs['memberId']
+        if member_id is None:
+            raise TypeError("Missing 'member_id' argument")
+
         _setter("image_id", image_id)
         _setter("member_id", member_id)
         if region is not None:
@@ -148,7 +158,17 @@ class _ImageAccessState:
              schema: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if member_id is None and 'memberId' in kwargs:
+            member_id = kwargs['memberId']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if image_id is not None:
@@ -268,49 +288,6 @@ class ImageAccess(pulumi.CustomResource):
         project, which owns the Image.
 
         ## Example Usage
-        ### Unprivileged user
-
-        Create a shared image and propose a membership to the
-        `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rancheros = openstack.images.Image("rancheros",
-            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
-            container_format="bare",
-            disk_format="qcow2",
-            visibility="shared",
-            properties={
-                "key": "value",
-            })
-        rancheros_member = openstack.images.ImageAccess("rancherosMember",
-            image_id=rancheros.id,
-            member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4")
-        ```
-        ### Privileged user
-
-        Create a shared image and set a membership to the
-        `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rancheros = openstack.images.Image("rancheros",
-            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
-            container_format="bare",
-            disk_format="qcow2",
-            visibility="shared",
-            properties={
-                "key": "value",
-            })
-        rancheros_member = openstack.images.ImageAccess("rancherosMember",
-            image_id=rancheros.id,
-            member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4",
-            status="accepted")
-        ```
 
         ## Import
 
@@ -342,49 +319,6 @@ class ImageAccess(pulumi.CustomResource):
         project, which owns the Image.
 
         ## Example Usage
-        ### Unprivileged user
-
-        Create a shared image and propose a membership to the
-        `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rancheros = openstack.images.Image("rancheros",
-            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
-            container_format="bare",
-            disk_format="qcow2",
-            visibility="shared",
-            properties={
-                "key": "value",
-            })
-        rancheros_member = openstack.images.ImageAccess("rancherosMember",
-            image_id=rancheros.id,
-            member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4")
-        ```
-        ### Privileged user
-
-        Create a shared image and set a membership to the
-        `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rancheros = openstack.images.Image("rancheros",
-            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
-            container_format="bare",
-            disk_format="qcow2",
-            visibility="shared",
-            properties={
-                "key": "value",
-            })
-        rancheros_member = openstack.images.ImageAccess("rancherosMember",
-            image_id=rancheros.id,
-            member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4",
-            status="accepted")
-        ```
 
         ## Import
 

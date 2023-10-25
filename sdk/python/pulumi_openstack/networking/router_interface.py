@@ -46,12 +46,24 @@ class RouterInterfaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             router_id: pulumi.Input[str],
+             router_id: Optional[pulumi.Input[str]] = None,
              force_destroy: Optional[pulumi.Input[bool]] = None,
              port_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              subnet_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if router_id is None and 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+        if router_id is None:
+            raise TypeError("Missing 'router_id' argument")
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if port_id is None and 'portId' in kwargs:
+            port_id = kwargs['portId']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+
         _setter("router_id", router_id)
         if force_destroy is not None:
             _setter("force_destroy", force_destroy)
@@ -171,7 +183,17 @@ class _RouterInterfaceState:
              region: Optional[pulumi.Input[str]] = None,
              router_id: Optional[pulumi.Input[str]] = None,
              subnet_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if port_id is None and 'portId' in kwargs:
+            port_id = kwargs['portId']
+        if router_id is None and 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+
         if force_destroy is not None:
             _setter("force_destroy", force_destroy)
         if port_id is not None:
@@ -266,23 +288,6 @@ class RouterInterface(pulumi.CustomResource):
         """
         Manages a V2 router interface resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            network_id=network1.id,
-            cidr="192.168.199.0/24",
-            ip_version=4)
-        router1 = openstack.networking.Router("router1", external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
-        router_interface1 = openstack.networking.RouterInterface("routerInterface1",
-            router_id=router1.id,
-            subnet_id=subnet1.id)
-        ```
-
         ## Import
 
         Router Interfaces can be imported using the port `id`, e.g. $ openstack port list --router <router name or id>
@@ -315,23 +320,6 @@ class RouterInterface(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 router interface resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            network_id=network1.id,
-            cidr="192.168.199.0/24",
-            ip_version=4)
-        router1 = openstack.networking.Router("router1", external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
-        router_interface1 = openstack.networking.RouterInterface("routerInterface1",
-            router_id=router1.id,
-            subnet_id=subnet1.id)
-        ```
 
         ## Import
 

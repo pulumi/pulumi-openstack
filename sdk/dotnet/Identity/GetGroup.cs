@@ -16,28 +16,6 @@ namespace Pulumi.OpenStack.Identity
         /// 
         /// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         /// this resource.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using OpenStack = Pulumi.OpenStack;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var admins = OpenStack.Identity.GetGroup.Invoke(new()
-        ///     {
-        ///         Name = "admins",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("openstack:identity/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithDefaults());
@@ -47,28 +25,6 @@ namespace Pulumi.OpenStack.Identity
         /// 
         /// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         /// this resource.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using OpenStack = Pulumi.OpenStack;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var admins = OpenStack.Identity.GetGroup.Invoke(new()
-        ///     {
-        ///         Name = "admins",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("openstack:identity/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());

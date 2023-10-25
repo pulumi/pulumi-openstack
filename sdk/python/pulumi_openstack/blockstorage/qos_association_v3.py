@@ -36,10 +36,20 @@ class QosAssociationV3Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             qos_id: pulumi.Input[str],
-             volume_type_id: pulumi.Input[str],
+             qos_id: Optional[pulumi.Input[str]] = None,
+             volume_type_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if qos_id is None and 'qosId' in kwargs:
+            qos_id = kwargs['qosId']
+        if qos_id is None:
+            raise TypeError("Missing 'qos_id' argument")
+        if volume_type_id is None and 'volumeTypeId' in kwargs:
+            volume_type_id = kwargs['volumeTypeId']
+        if volume_type_id is None:
+            raise TypeError("Missing 'volume_type_id' argument")
+
         _setter("qos_id", qos_id)
         _setter("volume_type_id", volume_type_id)
         if region is not None:
@@ -114,7 +124,13 @@ class _QosAssociationV3State:
              qos_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              volume_type_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if qos_id is None and 'qosId' in kwargs:
+            qos_id = kwargs['qosId']
+        if volume_type_id is None and 'volumeTypeId' in kwargs:
+            volume_type_id = kwargs['volumeTypeId']
+
         if qos_id is not None:
             _setter("qos_id", qos_id)
         if region is not None:
@@ -177,23 +193,6 @@ class QosAssociationV3(pulumi.CustomResource):
 
         > **Note:** This usually requires admin privileges.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        qos = openstack.blockstorage.QosV3("qos",
-            consumer="front-end",
-            specs={
-                "read_iops_sec": "20000",
-            })
-        volume_type = openstack.blockstorage.VolumeTypeV3("volumeType")
-        qos_association = openstack.blockstorage.QosAssociationV3("qosAssociation",
-            qos_id=qos.id,
-            volume_type_id=volume_type.id)
-        ```
-
         ## Import
 
         Qos association can be imported using the `qos_id/volume_type_id`, e.g.
@@ -222,23 +221,6 @@ class QosAssociationV3(pulumi.CustomResource):
         Manages a V3 block storage Qos Association resource within OpenStack.
 
         > **Note:** This usually requires admin privileges.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        qos = openstack.blockstorage.QosV3("qos",
-            consumer="front-end",
-            specs={
-                "read_iops_sec": "20000",
-            })
-        volume_type = openstack.blockstorage.VolumeTypeV3("volumeType")
-        qos_association = openstack.blockstorage.QosAssociationV3("qosAssociation",
-            qos_id=qos.id,
-            volume_type_id=volume_type.id)
-        ```
 
         ## Import
 

@@ -146,16 +146,6 @@ def get_snapshot_v3(most_recent: Optional[bool] = None,
     """
     Use this data source to get information about an existing snapshot.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    snapshot1 = openstack.blockstorage.get_snapshot_v3(most_recent=True,
-        name="snapshot_1")
-    ```
-
 
     :param bool most_recent: Pick the most recently created snapshot if there
            are multiple results.
@@ -195,16 +185,6 @@ def get_snapshot_v3_output(most_recent: Optional[pulumi.Input[Optional[bool]]] =
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotV3Result]:
     """
     Use this data source to get information about an existing snapshot.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    snapshot1 = openstack.blockstorage.get_snapshot_v3(most_recent=True,
-        name="snapshot_1")
-    ```
 
 
     :param bool most_recent: Pick the most recently created snapshot if there

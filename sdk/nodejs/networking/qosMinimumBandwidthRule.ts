@@ -8,18 +8,6 @@ import * as utilities from "../utilities";
  * Manages a V2 Neutron QoS minimum bandwidth rule resource within OpenStack.
  *
  * ## Example Usage
- * ### Create a QoS Policy with some minimum bandwidth rule
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const qosPolicy1 = new openstack.networking.QosPolicy("qosPolicy1", {description: "min_kbps"});
- * const minimumBandwidthRule1 = new openstack.networking.QosMinimumBandwidthRule("minimumBandwidthRule1", {
- *     qosPolicyId: qosPolicy1.id,
- *     minKbps: 200,
- * });
- * ```
  *
  * ## Import
  *

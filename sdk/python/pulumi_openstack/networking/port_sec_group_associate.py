@@ -41,11 +41,21 @@ class PortSecGroupAssociateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             port_id: pulumi.Input[str],
-             security_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             port_id: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              enforce: Optional[pulumi.Input[bool]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if port_id is None and 'portId' in kwargs:
+            port_id = kwargs['portId']
+        if port_id is None:
+            raise TypeError("Missing 'port_id' argument")
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if security_group_ids is None:
+            raise TypeError("Missing 'security_group_ids' argument")
+
         _setter("port_id", port_id)
         _setter("security_group_ids", security_group_ids)
         if enforce is not None:
@@ -147,7 +157,15 @@ class _PortSecGroupAssociateState:
              port_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if all_security_group_ids is None and 'allSecurityGroupIds' in kwargs:
+            all_security_group_ids = kwargs['allSecurityGroupIds']
+        if port_id is None and 'portId' in kwargs:
+            port_id = kwargs['portId']
+        if security_group_ids is None and 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+
         if all_security_group_ids is not None:
             _setter("all_security_group_ids", all_security_group_ids)
         if enforce is not None:
@@ -239,43 +257,6 @@ class PortSecGroupAssociate(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
-        ### Append a security group to an existing port
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
-        secgroup = openstack.networking.get_sec_group(name="secgroup")
-        port1 = openstack.networking.PortSecGroupAssociate("port1",
-            port_id=system_port.id,
-            security_group_ids=[secgroup.id])
-        ```
-        ### Enforce a security group to an existing port
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
-        secgroup = openstack.networking.get_sec_group(name="secgroup")
-        port1 = openstack.networking.PortSecGroupAssociate("port1",
-            port_id=system_port.id,
-            enforce=True,
-            security_group_ids=[secgroup.id])
-        ```
-        ### Remove all security groups from an existing port
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
-        port1 = openstack.networking.PortSecGroupAssociate("port1",
-            port_id=system_port.id,
-            enforce=True,
-            security_group_ids=[])
-        ```
 
         ## Import
 
@@ -306,43 +287,6 @@ class PortSecGroupAssociate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-        ### Append a security group to an existing port
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
-        secgroup = openstack.networking.get_sec_group(name="secgroup")
-        port1 = openstack.networking.PortSecGroupAssociate("port1",
-            port_id=system_port.id,
-            security_group_ids=[secgroup.id])
-        ```
-        ### Enforce a security group to an existing port
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
-        secgroup = openstack.networking.get_sec_group(name="secgroup")
-        port1 = openstack.networking.PortSecGroupAssociate("port1",
-            port_id=system_port.id,
-            enforce=True,
-            security_group_ids=[secgroup.id])
-        ```
-        ### Remove all security groups from an existing port
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
-        port1 = openstack.networking.PortSecGroupAssociate("port1",
-            port_id=system_port.id,
-            enforce=True,
-            security_group_ids=[])
-        ```
 
         ## Import
 

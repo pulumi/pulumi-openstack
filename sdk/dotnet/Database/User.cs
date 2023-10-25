@@ -17,28 +17,6 @@ namespace Pulumi.OpenStack.Database
     /// state.
     /// 
     /// ## Example Usage
-    /// ### User
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var basic = new OpenStack.Database.User("basic", new()
-    ///     {
-    ///         InstanceId = openstack_db_instance_v1.Basic.Id,
-    ///         Password = "password",
-    ///         Databases = new[]
-    ///         {
-    ///             "testdb",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [OpenStackResourceType("openstack:database/user:User")]
     public partial class User : global::Pulumi.CustomResource

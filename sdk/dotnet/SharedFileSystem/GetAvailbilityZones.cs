@@ -14,25 +14,6 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// <summary>
         /// Use this data source to get a list of Shared File System availability zones
         /// from OpenStack
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using OpenStack = Pulumi.OpenStack;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var zones = OpenStack.SharedFileSystem.GetAvailbilityZones.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAvailbilityZonesResult> InvokeAsync(GetAvailbilityZonesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAvailbilityZonesResult>("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", args ?? new GetAvailbilityZonesArgs(), options.WithDefaults());
@@ -40,25 +21,6 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// <summary>
         /// Use this data source to get a list of Shared File System availability zones
         /// from OpenStack
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using OpenStack = Pulumi.OpenStack;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var zones = OpenStack.SharedFileSystem.GetAvailbilityZones.Invoke();
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAvailbilityZonesResult> Invoke(GetAvailbilityZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAvailbilityZonesResult>("openstack:sharedfilesystem/getAvailbilityZones:getAvailbilityZones", args ?? new GetAvailbilityZonesInvokeArgs(), options.WithDefaults());

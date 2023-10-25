@@ -16,69 +16,6 @@ import (
 //
 // > **Note:** Firewall v2 has no support for OVN currently.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/firewall"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			rule1, err := firewall.NewRuleV2(ctx, "rule1", &firewall.RuleV2Args{
-//				Description:     pulumi.String("drop TELNET traffic"),
-//				Action:          pulumi.String("deny"),
-//				Protocol:        pulumi.String("tcp"),
-//				DestinationPort: pulumi.String("23"),
-//				Enabled:         pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			rule2, err := firewall.NewRuleV2(ctx, "rule2", &firewall.RuleV2Args{
-//				Description:     pulumi.String("drop NTP traffic"),
-//				Action:          pulumi.String("deny"),
-//				Protocol:        pulumi.String("udp"),
-//				DestinationPort: pulumi.String("123"),
-//				Enabled:         pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			policy1, err := firewall.NewPolicyV2(ctx, "policy1", &firewall.PolicyV2Args{
-//				Rules: pulumi.StringArray{
-//					rule1.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			policy2, err := firewall.NewPolicyV2(ctx, "policy2", &firewall.PolicyV2Args{
-//				Rules: pulumi.StringArray{
-//					rule2.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = firewall.NewGroupV2(ctx, "group1", &firewall.GroupV2Args{
-//				IngressFirewallPolicyId: policy1.ID(),
-//				EgressFirewallPolicyId:  policy2.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Firewall groups can be imported using the `id`, e.g.

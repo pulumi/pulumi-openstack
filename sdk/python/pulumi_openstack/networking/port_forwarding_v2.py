@@ -56,15 +56,39 @@ class PortForwardingV2Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             external_port: pulumi.Input[int],
-             floatingip_id: pulumi.Input[str],
-             internal_ip_address: pulumi.Input[str],
-             internal_port: pulumi.Input[int],
-             internal_port_id: pulumi.Input[str],
-             protocol: pulumi.Input[str],
+             external_port: Optional[pulumi.Input[int]] = None,
+             floatingip_id: Optional[pulumi.Input[str]] = None,
+             internal_ip_address: Optional[pulumi.Input[str]] = None,
+             internal_port: Optional[pulumi.Input[int]] = None,
+             internal_port_id: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if external_port is None and 'externalPort' in kwargs:
+            external_port = kwargs['externalPort']
+        if external_port is None:
+            raise TypeError("Missing 'external_port' argument")
+        if floatingip_id is None and 'floatingipId' in kwargs:
+            floatingip_id = kwargs['floatingipId']
+        if floatingip_id is None:
+            raise TypeError("Missing 'floatingip_id' argument")
+        if internal_ip_address is None and 'internalIpAddress' in kwargs:
+            internal_ip_address = kwargs['internalIpAddress']
+        if internal_ip_address is None:
+            raise TypeError("Missing 'internal_ip_address' argument")
+        if internal_port is None and 'internalPort' in kwargs:
+            internal_port = kwargs['internalPort']
+        if internal_port is None:
+            raise TypeError("Missing 'internal_port' argument")
+        if internal_port_id is None and 'internalPortId' in kwargs:
+            internal_port_id = kwargs['internalPortId']
+        if internal_port_id is None:
+            raise TypeError("Missing 'internal_port_id' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+
         _setter("external_port", external_port)
         _setter("floatingip_id", floatingip_id)
         _setter("internal_ip_address", internal_ip_address)
@@ -235,7 +259,19 @@ class _PortForwardingV2State:
              internal_port_id: Optional[pulumi.Input[str]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if external_port is None and 'externalPort' in kwargs:
+            external_port = kwargs['externalPort']
+        if floatingip_id is None and 'floatingipId' in kwargs:
+            floatingip_id = kwargs['floatingipId']
+        if internal_ip_address is None and 'internalIpAddress' in kwargs:
+            internal_ip_address = kwargs['internalIpAddress']
+        if internal_port is None and 'internalPort' in kwargs:
+            internal_port = kwargs['internalPort']
+        if internal_port_id is None and 'internalPortId' in kwargs:
+            internal_port_id = kwargs['internalPortId']
+
         if description is not None:
             _setter("description", description)
         if external_port is not None:
@@ -377,19 +413,6 @@ class PortForwardingV2(pulumi.CustomResource):
         Manages a V2 portforwarding resource within OpenStack.
 
         ## Example Usage
-        ### Simple portforwarding
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        pf1 = openstack.networking.PortForwardingV2("pf1",
-            external_port=7233,
-            floatingip_id="7a52eb59-7d47-415d-a884-046666a6fbae",
-            internal_port=25,
-            internal_port_id="b930d7f6-ceb7-40a0-8b81-a425dd994ccf",
-            protocol="tcp")
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -421,19 +444,6 @@ class PortForwardingV2(pulumi.CustomResource):
         Manages a V2 portforwarding resource within OpenStack.
 
         ## Example Usage
-        ### Simple portforwarding
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        pf1 = openstack.networking.PortForwardingV2("pf1",
-            external_port=7233,
-            floatingip_id="7a52eb59-7d47-415d-a884-046666a6fbae",
-            internal_port=25,
-            internal_port_id="b930d7f6-ceb7-40a0-8b81-a425dd994ccf",
-            protocol="tcp")
-        ```
 
         :param str resource_name: The name of the resource.
         :param PortForwardingV2Args args: The arguments to use to populate this resource's properties.

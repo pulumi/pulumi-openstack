@@ -40,11 +40,21 @@ class ImageAccessAcceptArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             image_id: pulumi.Input[str],
-             status: pulumi.Input[str],
+             image_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
              member_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if image_id is None:
+            raise TypeError("Missing 'image_id' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if member_id is None and 'memberId' in kwargs:
+            member_id = kwargs['memberId']
+
         _setter("image_id", image_id)
         _setter("status", status)
         if member_id is not None:
@@ -151,7 +161,17 @@ class _ImageAccessAcceptState:
              schema: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if member_id is None and 'memberId' in kwargs:
+            member_id = kwargs['memberId']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if image_id is not None:
@@ -271,22 +291,6 @@ class ImageAccessAccept(pulumi.CustomResource):
         Manages memberships status for the shared OpenStack Glance V2 Image within the
         destination project, which has a member proposal.
 
-        ## Example Usage
-
-        Accept a shared image membershipship proposal within the current project.
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rancheros = openstack.images.get_image(name="RancherOS",
-            visibility="shared",
-            member_status="all")
-        rancheros_member = openstack.images.ImageAccessAccept("rancherosMember",
-            image_id=rancheros.id,
-            status="accepted")
-        ```
-
         ## Import
 
         Image access acceptance status can be imported using the `image_id`, e.g.
@@ -316,22 +320,6 @@ class ImageAccessAccept(pulumi.CustomResource):
         """
         Manages memberships status for the shared OpenStack Glance V2 Image within the
         destination project, which has a member proposal.
-
-        ## Example Usage
-
-        Accept a shared image membershipship proposal within the current project.
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rancheros = openstack.images.get_image(name="RancherOS",
-            visibility="shared",
-            member_status="all")
-        rancheros_member = openstack.images.ImageAccessAccept("rancherosMember",
-            image_id=rancheros.id,
-            status="accepted")
-        ```
 
         ## Import
 

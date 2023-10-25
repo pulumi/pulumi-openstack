@@ -17,37 +17,6 @@ namespace Pulumi.OpenStack.Database
     /// state.
     /// 
     /// ## Example Usage
-    /// ### Instance
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var test = new OpenStack.Database.Instance("test", new()
-    ///     {
-    ///         Datastore = new OpenStack.Database.Inputs.InstanceDatastoreArgs
-    ///         {
-    ///             Type = "mysql",
-    ///             Version = "mysql-5.7",
-    ///         },
-    ///         FlavorId = "31792d21-c355-4587-9290-56c1ed0ca376",
-    ///         Networks = new[]
-    ///         {
-    ///             new OpenStack.Database.Inputs.InstanceNetworkArgs
-    ///             {
-    ///                 Uuid = "c0612505-caf2-4fb0-b7cb-56a0240a2b12",
-    ///             },
-    ///         },
-    ///         Region = "region-test",
-    ///         Size = 8,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [OpenStackResourceType("openstack:database/instance:Instance")]
     public partial class Instance : global::Pulumi.CustomResource

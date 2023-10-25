@@ -37,10 +37,16 @@ class OrderV1Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             meta: pulumi.Input['OrderV1MetaArgs'],
-             type: pulumi.Input[str],
+             meta: Optional[pulumi.Input['OrderV1MetaArgs']] = None,
+             type: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if meta is None:
+            raise TypeError("Missing 'meta' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("meta", meta)
         _setter("type", type)
         if region is not None:
@@ -149,7 +155,21 @@ class _OrderV1State:
              sub_status_message: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              updated: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if container_ref is None and 'containerRef' in kwargs:
+            container_ref = kwargs['containerRef']
+        if creator_id is None and 'creatorId' in kwargs:
+            creator_id = kwargs['creatorId']
+        if order_ref is None and 'orderRef' in kwargs:
+            order_ref = kwargs['orderRef']
+        if secret_ref is None and 'secretRef' in kwargs:
+            secret_ref = kwargs['secretRef']
+        if sub_status is None and 'subStatus' in kwargs:
+            sub_status = kwargs['subStatus']
+        if sub_status_message is None and 'subStatusMessage' in kwargs:
+            sub_status_message = kwargs['subStatusMessage']
+
         if container_ref is not None:
             _setter("container_ref", container_ref)
         if created is not None:
@@ -336,35 +356,6 @@ class OrderV1(pulumi.CustomResource):
         Manages a V1 Barbican order resource within OpenStack.
 
         ## Example Usage
-        ### Symmetric key order
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        order1 = openstack.keymanager.OrderV1("order1",
-            meta=openstack.keymanager.OrderV1MetaArgs(
-                algorithm="aes",
-                bit_length=256,
-                mode="cbc",
-                name="mysecret",
-            ),
-            type="key")
-        ```
-        ### Asymmetric key pair order
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        order1 = openstack.keymanager.OrderV1("order1",
-            meta=openstack.keymanager.OrderV1MetaArgs(
-                algorithm="rsa",
-                bit_length=4096,
-                name="mysecret",
-            ),
-            type="asymmetric")
-        ```
 
         ## Import
 
@@ -393,35 +384,6 @@ class OrderV1(pulumi.CustomResource):
         Manages a V1 Barbican order resource within OpenStack.
 
         ## Example Usage
-        ### Symmetric key order
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        order1 = openstack.keymanager.OrderV1("order1",
-            meta=openstack.keymanager.OrderV1MetaArgs(
-                algorithm="aes",
-                bit_length=256,
-                mode="cbc",
-                name="mysecret",
-            ),
-            type="key")
-        ```
-        ### Asymmetric key pair order
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        order1 = openstack.keymanager.OrderV1("order1",
-            meta=openstack.keymanager.OrderV1MetaArgs(
-                algorithm="rsa",
-                bit_length=4096,
-                name="mysecret",
-            ),
-            type="asymmetric")
-        ```
 
         ## Import
 
@@ -462,11 +424,7 @@ class OrderV1(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrderV1Args.__new__(OrderV1Args)
 
-            if meta is not None and not isinstance(meta, OrderV1MetaArgs):
-                meta = meta or {}
-                def _setter(key, value):
-                    meta[key] = value
-                OrderV1MetaArgs._configure(_setter, **meta)
+            meta = _utilities.configure(meta, OrderV1MetaArgs, True)
             if meta is None and not opts.urn:
                 raise TypeError("Missing required property 'meta'")
             __props__.__dict__["meta"] = meta

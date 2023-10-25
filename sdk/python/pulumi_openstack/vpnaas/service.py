@@ -54,7 +54,7 @@ class ServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             router_id: pulumi.Input[str],
+             router_id: Optional[pulumi.Input[str]] = None,
              admin_state_up: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
@@ -62,7 +62,21 @@ class ServiceArgs:
              subnet_id: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if router_id is None and 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+        if router_id is None:
+            raise TypeError("Missing 'router_id' argument")
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         _setter("router_id", router_id)
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
@@ -246,7 +260,23 @@ class _ServiceState:
              subnet_id: Optional[pulumi.Input[str]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if external_v4_ip is None and 'externalV4Ip' in kwargs:
+            external_v4_ip = kwargs['externalV4Ip']
+        if external_v6_ip is None and 'externalV6Ip' in kwargs:
+            external_v6_ip = kwargs['externalV6Ip']
+        if router_id is None and 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
         if description is not None:
@@ -427,17 +457,6 @@ class Service(pulumi.CustomResource):
         """
         Manages a V2 Neutron VPN service resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        service1 = openstack.vpnaas.Service("service1",
-            admin_state_up=True,
-            router_id="14a75700-fc03-4602-9294-26ee44f366b3")
-        ```
-
         ## Import
 
         Services can be imported using the `id`, e.g.
@@ -472,17 +491,6 @@ class Service(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 Neutron VPN service resource within OpenStack.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        service1 = openstack.vpnaas.Service("service1",
-            admin_state_up=True,
-            router_id="14a75700-fc03-4602-9294-26ee44f366b3")
-        ```
 
         ## Import
 

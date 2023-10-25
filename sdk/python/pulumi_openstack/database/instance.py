@@ -60,8 +60,8 @@ class InstanceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datastore: pulumi.Input['InstanceDatastoreArgs'],
-             size: pulumi.Input[int],
+             datastore: Optional[pulumi.Input['InstanceDatastoreArgs']] = None,
+             size: Optional[pulumi.Input[int]] = None,
              configuration_id: Optional[pulumi.Input[str]] = None,
              databases: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDatabaseArgs']]]] = None,
              flavor_id: Optional[pulumi.Input[str]] = None,
@@ -69,7 +69,17 @@ class InstanceArgs:
              networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
              region: Optional[pulumi.Input[str]] = None,
              users: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if datastore is None:
+            raise TypeError("Missing 'datastore' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if configuration_id is None and 'configurationId' in kwargs:
+            configuration_id = kwargs['configurationId']
+        if flavor_id is None and 'flavorId' in kwargs:
+            flavor_id = kwargs['flavorId']
+
         _setter("datastore", datastore)
         _setter("size", size)
         if configuration_id is not None:
@@ -264,7 +274,13 @@ class _InstanceState:
              region: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
              users: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if configuration_id is None and 'configurationId' in kwargs:
+            configuration_id = kwargs['configurationId']
+        if flavor_id is None and 'flavorId' in kwargs:
+            flavor_id = kwargs['flavorId']
+
         if addresses is not None:
             _setter("addresses", addresses)
         if configuration_id is not None:
@@ -438,24 +454,6 @@ class Instance(pulumi.CustomResource):
         state.
 
         ## Example Usage
-        ### Instance
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test = openstack.database.Instance("test",
-            datastore=openstack.database.InstanceDatastoreArgs(
-                type="mysql",
-                version="mysql-5.7",
-            ),
-            flavor_id="31792d21-c355-4587-9290-56c1ed0ca376",
-            networks=[openstack.database.InstanceNetworkArgs(
-                uuid="c0612505-caf2-4fb0-b7cb-56a0240a2b12",
-            )],
-            region="region-test",
-            size=8)
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -491,24 +489,6 @@ class Instance(pulumi.CustomResource):
         state.
 
         ## Example Usage
-        ### Instance
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        test = openstack.database.Instance("test",
-            datastore=openstack.database.InstanceDatastoreArgs(
-                type="mysql",
-                version="mysql-5.7",
-            ),
-            flavor_id="31792d21-c355-4587-9290-56c1ed0ca376",
-            networks=[openstack.database.InstanceNetworkArgs(
-                uuid="c0612505-caf2-4fb0-b7cb-56a0240a2b12",
-            )],
-            region="region-test",
-            size=8)
-        ```
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.
@@ -549,11 +529,7 @@ class Instance(pulumi.CustomResource):
 
             __props__.__dict__["configuration_id"] = configuration_id
             __props__.__dict__["databases"] = databases
-            if datastore is not None and not isinstance(datastore, InstanceDatastoreArgs):
-                datastore = datastore or {}
-                def _setter(key, value):
-                    datastore[key] = value
-                InstanceDatastoreArgs._configure(_setter, **datastore)
+            datastore = _utilities.configure(datastore, InstanceDatastoreArgs, True)
             if datastore is None and not opts.urn:
                 raise TypeError("Missing required property 'datastore'")
             __props__.__dict__["datastore"] = datastore

@@ -51,13 +51,25 @@ class ShareNetworkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             neutron_net_id: pulumi.Input[str],
-             neutron_subnet_id: pulumi.Input[str],
+             neutron_net_id: Optional[pulumi.Input[str]] = None,
+             neutron_subnet_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              security_service_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if neutron_net_id is None and 'neutronNetId' in kwargs:
+            neutron_net_id = kwargs['neutronNetId']
+        if neutron_net_id is None:
+            raise TypeError("Missing 'neutron_net_id' argument")
+        if neutron_subnet_id is None and 'neutronSubnetId' in kwargs:
+            neutron_subnet_id = kwargs['neutronSubnetId']
+        if neutron_subnet_id is None:
+            raise TypeError("Missing 'neutron_subnet_id' argument")
+        if security_service_ids is None and 'securityServiceIds' in kwargs:
+            security_service_ids = kwargs['securityServiceIds']
+
         _setter("neutron_net_id", neutron_net_id)
         _setter("neutron_subnet_id", neutron_subnet_id)
         if description is not None:
@@ -218,7 +230,23 @@ class _ShareNetworkState:
              region: Optional[pulumi.Input[str]] = None,
              security_service_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              segmentation_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if network_type is None and 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if neutron_net_id is None and 'neutronNetId' in kwargs:
+            neutron_net_id = kwargs['neutronNetId']
+        if neutron_subnet_id is None and 'neutronSubnetId' in kwargs:
+            neutron_subnet_id = kwargs['neutronSubnetId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if security_service_ids is None and 'securityServiceIds' in kwargs:
+            security_service_ids = kwargs['securityServiceIds']
+        if segmentation_id is None and 'segmentationId' in kwargs:
+            segmentation_id = kwargs['segmentationId']
+
         if cidr is not None:
             _setter("cidr", cidr)
         if description is not None:
@@ -404,48 +432,6 @@ class ShareNetwork(pulumi.CustomResource):
         shares are created.
 
         ## Example Usage
-        ### Basic share network
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
-        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
-            description="test share network",
-            neutron_net_id=network1.id,
-            neutron_subnet_id=subnet1.id)
-        ```
-        ### Share network with associated security services
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
-        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
-            description="created by terraform",
-            type="active_directory",
-            server="192.168.199.10",
-            dns_ip="192.168.199.10",
-            domain="example.com",
-            ou="CN=Computers,DC=example,DC=com",
-            user="joinDomainUser",
-            password="s8cret")
-        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
-            description="test share network with security services",
-            neutron_net_id=network1.id,
-            neutron_subnet_id=subnet1.id,
-            security_service_ids=[securityservice1.id])
-        ```
 
         ## Import
 
@@ -487,48 +473,6 @@ class ShareNetwork(pulumi.CustomResource):
         shares are created.
 
         ## Example Usage
-        ### Basic share network
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
-        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
-            description="test share network",
-            neutron_net_id=network1.id,
-            neutron_subnet_id=subnet1.id)
-        ```
-        ### Share network with associated security services
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
-            cidr="192.168.199.0/24",
-            ip_version=4,
-            network_id=network1.id)
-        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
-            description="created by terraform",
-            type="active_directory",
-            server="192.168.199.10",
-            dns_ip="192.168.199.10",
-            domain="example.com",
-            ou="CN=Computers,DC=example,DC=com",
-            user="joinDomainUser",
-            password="s8cret")
-        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
-            description="test share network with security services",
-            neutron_net_id=network1.id,
-            neutron_subnet_id=subnet1.id,
-            security_service_ids=[securityservice1.id])
-        ```
 
         ## Import
 

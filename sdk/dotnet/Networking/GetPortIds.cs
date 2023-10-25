@@ -14,28 +14,6 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Use this data source to get a list of Openstack Port IDs matching the
         /// specified criteria.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using OpenStack = Pulumi.OpenStack;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ports = OpenStack.Networking.GetPortIds.Invoke(new()
-        ///     {
-        ///         Name = "port",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPortIdsResult> InvokeAsync(GetPortIdsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPortIdsResult>("openstack:networking/getPortIds:getPortIds", args ?? new GetPortIdsArgs(), options.WithDefaults());
@@ -43,28 +21,6 @@ namespace Pulumi.OpenStack.Networking
         /// <summary>
         /// Use this data source to get a list of Openstack Port IDs matching the
         /// specified criteria.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using OpenStack = Pulumi.OpenStack;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ports = OpenStack.Networking.GetPortIds.Invoke(new()
-        ///     {
-        ///         Name = "port",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPortIdsResult> Invoke(GetPortIdsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPortIdsResult>("openstack:networking/getPortIds:getPortIds", args ?? new GetPortIdsInvokeArgs(), options.WithDefaults());

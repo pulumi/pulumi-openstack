@@ -167,15 +167,6 @@ def get_trunk(admin_state_up: Optional[bool] = None,
     """
     Use this data source to get the ID of an available OpenStack trunk.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    trunk1 = openstack.networking.get_trunk(name="trunk_1")
-    ```
-
 
     :param bool admin_state_up: The administrative state of the trunk.
     :param str description: Human-readable description of the trunk.
@@ -230,15 +221,6 @@ def get_trunk_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = No
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrunkResult]:
     """
     Use this data source to get the ID of an available OpenStack trunk.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    trunk1 = openstack.networking.get_trunk(name="trunk_1")
-    ```
 
 
     :param bool admin_state_up: The administrative state of the trunk.

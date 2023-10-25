@@ -175,15 +175,6 @@ def get_volume_v3(bootable: Optional[str] = None,
     """
     Use this data source to get information about an existing volume.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    volume1 = openstack.blockstorage.get_volume_v3(name="volume_1")
-    ```
-
 
     :param str bootable: Indicates if the volume is bootable.
     :param str host: The OpenStack host on which the volume is located.
@@ -230,15 +221,6 @@ def get_volume_v3_output(bootable: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumeV3Result]:
     """
     Use this data source to get information about an existing volume.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    volume1 = openstack.blockstorage.get_volume_v3(name="volume_1")
-    ```
 
 
     :param str bootable: Indicates if the volume is bootable.

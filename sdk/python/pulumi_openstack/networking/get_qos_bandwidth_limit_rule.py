@@ -112,15 +112,6 @@ def get_qos_bandwidth_limit_rule(max_burst_kbps: Optional[int] = None,
     """
     Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    qos_bandwidth_limit_rule1 = openstack.networking.get_qos_bandwidth_limit_rule(max_kbps=300)
-    ```
-
 
     :param int max_burst_kbps: The maximum burst size in kilobits of a QoS bandwidth limit rule.
     :param int max_kbps: The maximum kilobits per second of a QoS bandwidth limit rule.
@@ -154,15 +145,6 @@ def get_qos_bandwidth_limit_rule_output(max_burst_kbps: Optional[pulumi.Input[Op
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQosBandwidthLimitRuleResult]:
     """
     Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_openstack as openstack
-
-    qos_bandwidth_limit_rule1 = openstack.networking.get_qos_bandwidth_limit_rule(max_kbps=300)
-    ```
 
 
     :param int max_burst_kbps: The maximum burst size in kilobits of a QoS bandwidth limit rule.

@@ -13,56 +13,12 @@ namespace Pulumi.OpenStack.Compute
     {
         /// <summary>
         /// Use this data source to get the details of a running server
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using OpenStack = Pulumi.OpenStack;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var instance = OpenStack.Compute.GetInstanceV2.Invoke(new()
-        ///     {
-        ///         Id = "2ba26dc6-a12d-4889-8f25-794ea5bf4453",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceV2Result> InvokeAsync(GetInstanceV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceV2Result>("openstack:compute/getInstanceV2:getInstanceV2", args ?? new GetInstanceV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the details of a running server
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using OpenStack = Pulumi.OpenStack;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var instance = OpenStack.Compute.GetInstanceV2.Invoke(new()
-        ///     {
-        ///         Id = "2ba26dc6-a12d-4889-8f25-794ea5bf4453",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetInstanceV2Result> Invoke(GetInstanceV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceV2Result>("openstack:compute/getInstanceV2:getInstanceV2", args ?? new GetInstanceV2InvokeArgs(), options.WithDefaults());

@@ -13,32 +13,6 @@ import (
 )
 
 // Use this data source to get the compute limits of an OpenStack project.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.GetLimitsV2(ctx, &compute.GetLimitsV2Args{
-//				ProjectId: "2e367a3d29f94fd988e6ec54e305ec9d",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetLimitsV2(ctx *pulumi.Context, args *GetLimitsV2Args, opts ...pulumi.InvokeOption) (*GetLimitsV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLimitsV2Result

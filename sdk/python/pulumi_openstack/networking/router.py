@@ -116,7 +116,29 @@ class RouterArgs:
              tenant_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vendor_options: Optional[pulumi.Input['RouterVendorOptionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if availability_zone_hints is None and 'availabilityZoneHints' in kwargs:
+            availability_zone_hints = kwargs['availabilityZoneHints']
+        if enable_snat is None and 'enableSnat' in kwargs:
+            enable_snat = kwargs['enableSnat']
+        if external_fixed_ips is None and 'externalFixedIps' in kwargs:
+            external_fixed_ips = kwargs['externalFixedIps']
+        if external_gateway is None and 'externalGateway' in kwargs:
+            external_gateway = kwargs['externalGateway']
+        if external_network_id is None and 'externalNetworkId' in kwargs:
+            external_network_id = kwargs['externalNetworkId']
+        if external_subnet_ids is None and 'externalSubnetIds' in kwargs:
+            external_subnet_ids = kwargs['externalSubnetIds']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+        if vendor_options is None and 'vendorOptions' in kwargs:
+            vendor_options = kwargs['vendorOptions']
+
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
         if availability_zone_hints is not None:
@@ -474,7 +496,31 @@ class _RouterState:
              tenant_id: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vendor_options: Optional[pulumi.Input['RouterVendorOptionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if all_tags is None and 'allTags' in kwargs:
+            all_tags = kwargs['allTags']
+        if availability_zone_hints is None and 'availabilityZoneHints' in kwargs:
+            availability_zone_hints = kwargs['availabilityZoneHints']
+        if enable_snat is None and 'enableSnat' in kwargs:
+            enable_snat = kwargs['enableSnat']
+        if external_fixed_ips is None and 'externalFixedIps' in kwargs:
+            external_fixed_ips = kwargs['externalFixedIps']
+        if external_gateway is None and 'externalGateway' in kwargs:
+            external_gateway = kwargs['externalGateway']
+        if external_network_id is None and 'externalNetworkId' in kwargs:
+            external_network_id = kwargs['externalNetworkId']
+        if external_subnet_ids is None and 'externalSubnetIds' in kwargs:
+            external_subnet_ids = kwargs['externalSubnetIds']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+        if vendor_options is None and 'vendorOptions' in kwargs:
+            vendor_options = kwargs['vendorOptions']
+
         if admin_state_up is not None:
             _setter("admin_state_up", admin_state_up)
         if all_tags is not None:
@@ -763,17 +809,6 @@ class Router(pulumi.CustomResource):
         """
         Manages a V2 router resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        router1 = openstack.networking.Router("router1",
-            admin_state_up=True,
-            external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
-        ```
-
         ## Import
 
         Routers can be imported using the `id`, e.g.
@@ -840,17 +875,6 @@ class Router(pulumi.CustomResource):
         """
         Manages a V2 router resource within OpenStack.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        router1 = openstack.networking.Router("router1",
-            admin_state_up=True,
-            external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
-        ```
-
         ## Import
 
         Routers can be imported using the `id`, e.g.
@@ -916,11 +940,7 @@ class Router(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tenant_id"] = tenant_id
             __props__.__dict__["value_specs"] = value_specs
-            if vendor_options is not None and not isinstance(vendor_options, RouterVendorOptionsArgs):
-                vendor_options = vendor_options or {}
-                def _setter(key, value):
-                    vendor_options[key] = value
-                RouterVendorOptionsArgs._configure(_setter, **vendor_options)
+            vendor_options = _utilities.configure(vendor_options, RouterVendorOptionsArgs, True)
             __props__.__dict__["vendor_options"] = vendor_options
             __props__.__dict__["all_tags"] = None
         super(Router, __self__).__init__(

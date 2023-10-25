@@ -12,18 +12,6 @@ import * as utilities from "../utilities";
  * state.
  *
  * ## Example Usage
- * ### User
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const basic = new openstack.database.User("basic", {
- *     instanceId: openstack_db_instance_v1.basic.id,
- *     password: "password",
- *     databases: ["testdb"],
- * });
- * ```
  */
 export class User extends pulumi.CustomResource {
     /**

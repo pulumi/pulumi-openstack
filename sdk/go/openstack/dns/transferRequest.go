@@ -16,41 +16,6 @@ import (
 // Manages a DNS zone transfer request in the OpenStack DNS Service.
 //
 // ## Example Usage
-// ### Automatically detect the correct network
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/dns"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZone, err := dns.NewZone(ctx, "exampleZone", &dns.ZoneArgs{
-//				Email:       pulumi.String("jdoe@example.com"),
-//				Description: pulumi.String("An example zone"),
-//				Ttl:         pulumi.Int(3000),
-//				Type:        pulumi.String("PRIMARY"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = dns.NewTransferRequest(ctx, "request1", &dns.TransferRequestArgs{
-//				ZoneId:      exampleZone.ID(),
-//				Description: pulumi.String("a transfer request"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

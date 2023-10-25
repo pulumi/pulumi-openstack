@@ -6,18 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the ID of an available OpenStack flavor.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const small = openstack.compute.getFlavor({
- *     ram: 512,
- *     vcpus: 1,
- * });
- * ```
  */
 export function getFlavor(args?: GetFlavorArgs, opts?: pulumi.InvokeOptions): Promise<GetFlavorResult> {
     args = args || {};
@@ -124,18 +112,6 @@ export interface GetFlavorResult {
 }
 /**
  * Use this data source to get the ID of an available OpenStack flavor.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const small = openstack.compute.getFlavor({
- *     ram: 512,
- *     vcpus: 1,
- * });
- * ```
  */
 export function getFlavorOutput(args?: GetFlavorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlavorResult> {
     return pulumi.output(args).apply((a: any) => getFlavor(a, opts))

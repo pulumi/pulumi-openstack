@@ -109,8 +109,8 @@ class ImageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             container_format: pulumi.Input[str],
-             disk_format: pulumi.Input[str],
+             container_format: Optional[pulumi.Input[str]] = None,
+             disk_format: Optional[pulumi.Input[str]] = None,
              decompress: Optional[pulumi.Input[bool]] = None,
              hidden: Optional[pulumi.Input[bool]] = None,
              image_cache_path: Optional[pulumi.Input[str]] = None,
@@ -129,7 +129,37 @@ class ImageArgs:
              verify_checksum: Optional[pulumi.Input[bool]] = None,
              visibility: Optional[pulumi.Input[str]] = None,
              web_download: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if container_format is None and 'containerFormat' in kwargs:
+            container_format = kwargs['containerFormat']
+        if container_format is None:
+            raise TypeError("Missing 'container_format' argument")
+        if disk_format is None and 'diskFormat' in kwargs:
+            disk_format = kwargs['diskFormat']
+        if disk_format is None:
+            raise TypeError("Missing 'disk_format' argument")
+        if image_cache_path is None and 'imageCachePath' in kwargs:
+            image_cache_path = kwargs['imageCachePath']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if image_source_password is None and 'imageSourcePassword' in kwargs:
+            image_source_password = kwargs['imageSourcePassword']
+        if image_source_url is None and 'imageSourceUrl' in kwargs:
+            image_source_url = kwargs['imageSourceUrl']
+        if image_source_username is None and 'imageSourceUsername' in kwargs:
+            image_source_username = kwargs['imageSourceUsername']
+        if local_file_path is None and 'localFilePath' in kwargs:
+            local_file_path = kwargs['localFilePath']
+        if min_disk_gb is None and 'minDiskGb' in kwargs:
+            min_disk_gb = kwargs['minDiskGb']
+        if min_ram_mb is None and 'minRamMb' in kwargs:
+            min_ram_mb = kwargs['minRamMb']
+        if verify_checksum is None and 'verifyChecksum' in kwargs:
+            verify_checksum = kwargs['verifyChecksum']
+        if web_download is None and 'webDownload' in kwargs:
+            web_download = kwargs['webDownload']
+
         _setter("container_format", container_format)
         _setter("disk_format", disk_format)
         if decompress is not None:
@@ -598,7 +628,41 @@ class _ImageState:
              verify_checksum: Optional[pulumi.Input[bool]] = None,
              visibility: Optional[pulumi.Input[str]] = None,
              web_download: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if container_format is None and 'containerFormat' in kwargs:
+            container_format = kwargs['containerFormat']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if disk_format is None and 'diskFormat' in kwargs:
+            disk_format = kwargs['diskFormat']
+        if image_cache_path is None and 'imageCachePath' in kwargs:
+            image_cache_path = kwargs['imageCachePath']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if image_source_password is None and 'imageSourcePassword' in kwargs:
+            image_source_password = kwargs['imageSourcePassword']
+        if image_source_url is None and 'imageSourceUrl' in kwargs:
+            image_source_url = kwargs['imageSourceUrl']
+        if image_source_username is None and 'imageSourceUsername' in kwargs:
+            image_source_username = kwargs['imageSourceUsername']
+        if local_file_path is None and 'localFilePath' in kwargs:
+            local_file_path = kwargs['localFilePath']
+        if min_disk_gb is None and 'minDiskGb' in kwargs:
+            min_disk_gb = kwargs['minDiskGb']
+        if min_ram_mb is None and 'minRamMb' in kwargs:
+            min_ram_mb = kwargs['minRamMb']
+        if size_bytes is None and 'sizeBytes' in kwargs:
+            size_bytes = kwargs['sizeBytes']
+        if update_at is None and 'updateAt' in kwargs:
+            update_at = kwargs['updateAt']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if verify_checksum is None and 'verifyChecksum' in kwargs:
+            verify_checksum = kwargs['verifyChecksum']
+        if web_download is None and 'webDownload' in kwargs:
+            web_download = kwargs['webDownload']
+
         if checksum is not None:
             _setter("checksum", checksum)
         if container_format is not None:
@@ -1090,20 +1154,6 @@ class Image(pulumi.CustomResource):
         stored in the raw state as plain-text. Read more about sensitive data in
         state.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rancheros = openstack.images.Image("rancheros",
-            container_format="bare",
-            disk_format="qcow2",
-            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
-            properties={
-                "key": "value",
-            })
-        ```
         ## Notes
 
         ### Properties
@@ -1190,20 +1240,6 @@ class Image(pulumi.CustomResource):
         stored in the raw state as plain-text. Read more about sensitive data in
         state.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rancheros = openstack.images.Image("rancheros",
-            container_format="bare",
-            disk_format="qcow2",
-            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
-            properties={
-                "key": "value",
-            })
-        ```
         ## Notes
 
         ### Properties

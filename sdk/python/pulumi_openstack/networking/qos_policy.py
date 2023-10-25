@@ -65,7 +65,15 @@ class QosPolicyArgs:
              shared: Optional[pulumi.Input[bool]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if is_default is None and 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if description is not None:
             _setter("description", description)
         if is_default is not None:
@@ -261,7 +269,23 @@ class _QosPolicyState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
              value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if all_tags is None and 'allTags' in kwargs:
+            all_tags = kwargs['allTags']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if is_default is None and 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if revision_number is None and 'revisionNumber' in kwargs:
+            revision_number = kwargs['revisionNumber']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if all_tags is not None:
             _setter("all_tags", all_tags)
         if created_at is not None:
@@ -461,14 +485,6 @@ class QosPolicy(pulumi.CustomResource):
         Manages a V2 Neutron QoS policy resource within OpenStack.
 
         ## Example Usage
-        ### Create a QoS Policy
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="bw_limit")
-        ```
 
         ## Import
 
@@ -509,14 +525,6 @@ class QosPolicy(pulumi.CustomResource):
         Manages a V2 Neutron QoS policy resource within OpenStack.
 
         ## Example Usage
-        ### Create a QoS Policy
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="bw_limit")
-        ```
 
         ## Import
 

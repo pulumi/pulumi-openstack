@@ -68,7 +68,11 @@ class PolicyV2Args:
              rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              shared: Optional[pulumi.Input[bool]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if audited is not None:
             _setter("audited", audited)
         if description is not None:
@@ -243,7 +247,11 @@ class _PolicyV2State:
              rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              shared: Optional[pulumi.Input[bool]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if audited is not None:
             _setter("audited", audited)
         if description is not None:
@@ -379,30 +387,6 @@ class PolicyV2(pulumi.CustomResource):
 
         > **Note:** Firewall v2 has no support for OVN currently.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rule1 = openstack.firewall.RuleV2("rule1",
-            description="drop TELNET traffic",
-            action="deny",
-            protocol="tcp",
-            destination_port="23",
-            enabled=True)
-        rule2 = openstack.firewall.RuleV2("rule2",
-            description="drop NTP traffic",
-            action="deny",
-            protocol="udp",
-            destination_port="123",
-            enabled=False)
-        policy1 = openstack.firewall.PolicyV2("policy1", rules=[
-            rule1.id,
-            rule2.id,
-        ])
-        ```
-
         ## Import
 
         Firewall Policies can be imported using the `id`, e.g.
@@ -448,30 +432,6 @@ class PolicyV2(pulumi.CustomResource):
         Manages a v2 firewall policy resource within OpenStack.
 
         > **Note:** Firewall v2 has no support for OVN currently.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        rule1 = openstack.firewall.RuleV2("rule1",
-            description="drop TELNET traffic",
-            action="deny",
-            protocol="tcp",
-            destination_port="23",
-            enabled=True)
-        rule2 = openstack.firewall.RuleV2("rule2",
-            description="drop NTP traffic",
-            action="deny",
-            protocol="udp",
-            destination_port="123",
-            enabled=False)
-        policy1 = openstack.firewall.PolicyV2("policy1", rules=[
-            rule1.id,
-            rule2.id,
-        ])
-        ```
 
         ## Import
 

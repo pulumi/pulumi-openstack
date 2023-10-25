@@ -41,13 +41,27 @@ class InheritRoleAssignmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             role_id: pulumi.Input[str],
+             role_id: Optional[pulumi.Input[str]] = None,
              domain_id: Optional[pulumi.Input[str]] = None,
              group_id: Optional[pulumi.Input[str]] = None,
              project_id: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
+        if domain_id is None and 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         _setter("role_id", role_id)
         if domain_id is not None:
             _setter("domain_id", domain_id)
@@ -167,7 +181,19 @@ class _InheritRoleAssignmentState:
              region: Optional[pulumi.Input[str]] = None,
              role_id: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain_id is None and 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if group_id is None and 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if domain_id is not None:
             _setter("domain_id", domain_id)
         if group_id is not None:
@@ -272,20 +298,6 @@ class InheritRoleAssignment(pulumi.CustomResource):
         > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        user1 = openstack.identity.User("user1", domain_id="default")
-        role1 = openstack.identity.Role("role1", domain_id="default")
-        role_assignment1 = openstack.identity.InheritRoleAssignment("roleAssignment1",
-            user_id=user1.id,
-            domain_id="default",
-            role_id=role1.id)
-        ```
-
         ## Import
 
         Inherit role assignments can be imported using a constructed id. The id should have the form of `domainID/projectID/groupID/userID/roleID`. When something is not used then leave blank.
@@ -318,20 +330,6 @@ class InheritRoleAssignment(pulumi.CustomResource):
 
         > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        user1 = openstack.identity.User("user1", domain_id="default")
-        role1 = openstack.identity.Role("role1", domain_id="default")
-        role_assignment1 = openstack.identity.InheritRoleAssignment("roleAssignment1",
-            user_id=user1.id,
-            domain_id="default",
-            role_id=role1.id)
-        ```
 
         ## Import
 
