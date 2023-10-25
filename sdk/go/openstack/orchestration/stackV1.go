@@ -15,6 +15,59 @@ import (
 
 // Manages a V1 stack resource within OpenStack.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/orchestration"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := orchestration.NewStackV1(ctx, "stack1", &orchestration.StackV1Args{
+//				DisableRollback: pulumi.Bool(true),
+//				EnvironmentOpts: pulumi.Map{
+//					"Bin": pulumi.Any("\n\n"),
+//				},
+//				Parameters: pulumi.Map{
+//					"length": pulumi.Any(4),
+//				},
+//				TemplateOpts: pulumi.Map{
+//					"Bin": pulumi.Any(`heat_template_version: 2013-05-23
+//
+// parameters:
+//
+//	length:
+//	  type: number
+//
+// resources:
+//
+//	test_res:
+//	  type: OS::Heat::TestResource
+//	random:
+//	  type: OS::Heat::RandomString
+//	  properties:
+//	    length: {get_param: length}
+//
+// `),
+//
+//				},
+//				Timeout: pulumi.Int(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // stacks can be imported using the `id`, e.g.

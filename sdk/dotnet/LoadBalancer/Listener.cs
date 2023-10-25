@@ -15,6 +15,30 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// &gt; **Note:** This resource has attributes that depend on octavia minor versions.
     /// Please ensure your Openstack cloud supports the required minor version.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var listener1 = new OpenStack.LoadBalancer.Listener("listener1", new()
+    ///     {
+    ///         InsertHeaders = 
+    ///         {
+    ///             { "X-Forwarded-For", "true" },
+    ///         },
+    ///         LoadbalancerId = "d9415786-5f1a-428b-b35f-2f1523e146d2",
+    ///         Protocol = "HTTP",
+    ///         ProtocolPort = 8080,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Load Balancer Listener can be imported using the Listener ID, e.g.:

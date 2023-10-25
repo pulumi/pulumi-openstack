@@ -13,6 +13,32 @@ import (
 )
 
 // Use this data source to get the details of a running server
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.GetInstanceV2(ctx, &compute.GetInstanceV2Args{
+//				Id: "2ba26dc6-a12d-4889-8f25-794ea5bf4453",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetInstanceV2(ctx *pulumi.Context, args *GetInstanceV2Args, opts ...pulumi.InvokeOption) (*GetInstanceV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceV2Result

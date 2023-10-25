@@ -7,6 +7,23 @@ import * as utilities from "../utilities";
 /**
  * Manages a V2 flavor resource within OpenStack.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const test_flavor = new openstack.compute.Flavor("test-flavor", {
+ *     disk: 20,
+ *     extraSpecs: {
+ *         "hw:cpu_policy": "CPU-POLICY",
+ *         "hw:cpu_thread_policy": "CPU-THREAD-POLICY",
+ *     },
+ *     ram: 8096,
+ *     vcpus: 2,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Flavors can be imported using the `ID`, e.g.

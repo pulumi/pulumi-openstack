@@ -532,6 +532,20 @@ class MonitorV1(pulumi.CustomResource):
         """
         Manages a V1 load balancer monitor resource within OpenStack.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        monitor1 = openstack.loadbalancer.MonitorV1("monitor1",
+            admin_state_up="true",
+            delay=30,
+            max_retries=3,
+            timeout=5,
+            type="PING")
+        ```
+
         ## Import
 
         Load Balancer Members can be imported using the `id`, e.g.
@@ -581,6 +595,20 @@ class MonitorV1(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V1 load balancer monitor resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        monitor1 = openstack.loadbalancer.MonitorV1("monitor1",
+            admin_state_up="true",
+            delay=30,
+            max_retries=3,
+            timeout=5,
+            type="PING")
+        ```
 
         ## Import
 

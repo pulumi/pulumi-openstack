@@ -19,6 +19,37 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// legacy Neutron LBaaS v2 extension please use
     /// openstack.loadbalancer.Member resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var members1 = new OpenStack.LoadBalancer.Members("members1", new()
+    ///     {
+    ///         MemberList = new[]
+    ///         {
+    ///             new OpenStack.LoadBalancer.Inputs.MembersMemberArgs
+    ///             {
+    ///                 Address = "192.168.199.23",
+    ///                 ProtocolPort = 8080,
+    ///             },
+    ///             new OpenStack.LoadBalancer.Inputs.MembersMemberArgs
+    ///             {
+    ///                 Address = "192.168.199.24",
+    ///                 ProtocolPort = 8080,
+    ///             },
+    ///         },
+    ///         PoolId = "935685fb-a896-40f9-9ff4-ae531a3a00fe",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Load Balancer Pool Members can be imported using the Pool ID, e.g.:

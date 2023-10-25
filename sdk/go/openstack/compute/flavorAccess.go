@@ -20,6 +20,47 @@ import (
 //
 // ***
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			flavor1, err := compute.NewFlavor(ctx, "flavor1", &compute.FlavorArgs{
+//				Ram:      pulumi.Int(8096),
+//				Vcpus:    pulumi.Int(2),
+//				Disk:     pulumi.Int(20),
+//				IsPublic: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewFlavorAccess(ctx, "access1", &compute.FlavorAccessArgs{
+//				TenantId: project1.ID(),
+//				FlavorId: flavor1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by specifying all two arguments, separated by a forward slash:

@@ -393,6 +393,15 @@ class Project(pulumi.CustomResource):
         > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1", description="A project")
+        ```
+
         ## Import
 
         Projects can be imported using the `id`, e.g.
@@ -430,6 +439,15 @@ class Project(pulumi.CustomResource):
 
         > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1", description="A project")
+        ```
 
         ## Import
 

@@ -8,6 +8,19 @@ import * as utilities from "../utilities";
  * Manages a DNS zone in the OpenStack DNS Service.
  *
  * ## Example Usage
+ * ### Automatically detect the correct network
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const exampleCom = new openstack.dns.Zone("exampleCom", {
+ *     description: "An example zone",
+ *     email: "jdoe@example.com",
+ *     ttl: 3000,
+ *     type: "PRIMARY",
+ * });
+ * ```
  *
  * ## Import
  *

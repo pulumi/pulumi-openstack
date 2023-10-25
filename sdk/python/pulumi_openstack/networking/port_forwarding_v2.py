@@ -413,6 +413,19 @@ class PortForwardingV2(pulumi.CustomResource):
         Manages a V2 portforwarding resource within OpenStack.
 
         ## Example Usage
+        ### Simple portforwarding
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        pf1 = openstack.networking.PortForwardingV2("pf1",
+            external_port=7233,
+            floatingip_id="7a52eb59-7d47-415d-a884-046666a6fbae",
+            internal_port=25,
+            internal_port_id="b930d7f6-ceb7-40a0-8b81-a425dd994ccf",
+            protocol="tcp")
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -444,6 +457,19 @@ class PortForwardingV2(pulumi.CustomResource):
         Manages a V2 portforwarding resource within OpenStack.
 
         ## Example Usage
+        ### Simple portforwarding
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        pf1 = openstack.networking.PortForwardingV2("pf1",
+            external_port=7233,
+            floatingip_id="7a52eb59-7d47-415d-a884-046666a6fbae",
+            internal_port=25,
+            internal_port_id="b930d7f6-ceb7-40a0-8b81-a425dd994ccf",
+            protocol="tcp")
+        ```
 
         :param str resource_name: The name of the resource.
         :param PortForwardingV2Args args: The arguments to use to populate this resource's properties.

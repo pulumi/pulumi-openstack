@@ -261,6 +261,15 @@ def get_instance_v2(id: Optional[str] = None,
     """
     Use this data source to get the details of a running server
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    instance = openstack.compute.get_instance_v2(id="2ba26dc6-a12d-4889-8f25-794ea5bf4453")
+    ```
+
 
     :param str id: The UUID of the instance
     :param Sequence[pulumi.InputType['GetInstanceV2NetworkArgs']] networks: An array of maps, detailed below.
@@ -304,6 +313,15 @@ def get_instance_v2_output(id: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceV2Result]:
     """
     Use this data source to get the details of a running server
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    instance = openstack.compute.get_instance_v2(id="2ba26dc6-a12d-4889-8f25-794ea5bf4453")
+    ```
 
 
     :param str id: The UUID of the instance

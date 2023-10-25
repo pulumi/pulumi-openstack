@@ -468,6 +468,31 @@ class Firewall(pulumi.CustomResource):
         """
         Manages a v1 firewall resource within OpenStack.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rule1 = openstack.firewall.Rule("rule1",
+            description="drop TELNET traffic",
+            action="deny",
+            protocol="tcp",
+            destination_port="23",
+            enabled=True)
+        rule2 = openstack.firewall.Rule("rule2",
+            description="drop NTP traffic",
+            action="deny",
+            protocol="udp",
+            destination_port="123",
+            enabled=False)
+        policy1 = openstack.firewall.Policy("policy1", rules=[
+            rule1.id,
+            rule2.id,
+        ])
+        firewall1 = openstack.firewall.Firewall("firewall1", policy_id=policy1.id)
+        ```
+
         ## Import
 
         Firewalls can be imported using the `id`, e.g.
@@ -510,6 +535,31 @@ class Firewall(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a v1 firewall resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rule1 = openstack.firewall.Rule("rule1",
+            description="drop TELNET traffic",
+            action="deny",
+            protocol="tcp",
+            destination_port="23",
+            enabled=True)
+        rule2 = openstack.firewall.Rule("rule2",
+            description="drop NTP traffic",
+            action="deny",
+            protocol="udp",
+            destination_port="123",
+            enabled=False)
+        policy1 = openstack.firewall.Policy("policy1", rules=[
+            rule1.id,
+            rule2.id,
+        ])
+        firewall1 = openstack.firewall.Firewall("firewall1", policy_id=policy1.id)
+        ```
 
         ## Import
 

@@ -213,6 +213,15 @@ class FloatingIp(pulumi.CustomResource):
         recommended to use the `networking.FloatingIp`
         resource instead, which uses the OpenStack Networking API.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        floatip1 = openstack.compute.FloatingIp("floatip1", pool="public")
+        ```
+
         ## Import
 
         Floating IPs can be imported using the `id`, e.g.
@@ -245,6 +254,15 @@ class FloatingIp(pulumi.CustomResource):
         been deprecated. Unless you are using an older OpenStack environment, it is
         recommended to use the `networking.FloatingIp`
         resource instead, which uses the OpenStack Networking API.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        floatip1 = openstack.compute.FloatingIp("floatip1", pool="public")
+        ```
 
         ## Import
 

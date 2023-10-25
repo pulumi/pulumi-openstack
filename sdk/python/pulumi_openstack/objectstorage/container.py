@@ -613,6 +613,69 @@ class Container(pulumi.CustomResource):
         Manages a V1 container resource within OpenStack.
 
         ## Example Usage
+        ### Basic Container
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container1",
+            content_type="application/json",
+            metadata={
+                "test": "true",
+            },
+            region="RegionOne",
+            versioning=True)
+        ```
+        ### Basic Container with legacy versioning
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container1",
+            content_type="application/json",
+            metadata={
+                "test": "true",
+            },
+            region="RegionOne",
+            versioning_legacy=openstack.objectstorage.ContainerVersioningLegacyArgs(
+                location="tf-test-container-versions",
+                type="versions",
+            ))
+        ```
+        ### Global Read Access
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container1",
+            container_read=".r:*",
+            region="RegionOne")
+        ```
+        ### Global Read and List Access
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container1",
+            container_read=".r:*,.rlistings",
+            region="RegionOne")
+        ```
+        ### Write-Only Access for a User
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        current = openstack.identity.get_auth_scope(name="current")
+        container1 = openstack.objectstorage.Container("container1",
+            container_read=f".r:-{var['username']}",
+            container_write=f"{current.project_id}:{var['username']}",
+            region="RegionOne")
+        ```
 
         ## Import
 
@@ -668,6 +731,69 @@ class Container(pulumi.CustomResource):
         Manages a V1 container resource within OpenStack.
 
         ## Example Usage
+        ### Basic Container
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container1",
+            content_type="application/json",
+            metadata={
+                "test": "true",
+            },
+            region="RegionOne",
+            versioning=True)
+        ```
+        ### Basic Container with legacy versioning
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container1",
+            content_type="application/json",
+            metadata={
+                "test": "true",
+            },
+            region="RegionOne",
+            versioning_legacy=openstack.objectstorage.ContainerVersioningLegacyArgs(
+                location="tf-test-container-versions",
+                type="versions",
+            ))
+        ```
+        ### Global Read Access
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container1",
+            container_read=".r:*",
+            region="RegionOne")
+        ```
+        ### Global Read and List Access
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container1",
+            container_read=".r:*,.rlistings",
+            region="RegionOne")
+        ```
+        ### Write-Only Access for a User
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        current = openstack.identity.get_auth_scope(name="current")
+        container1 = openstack.objectstorage.Container("container1",
+            container_read=f".r:-{var['username']}",
+            container_write=f"{current.project_id}:{var['username']}",
+            region="RegionOne")
+        ```
 
         ## Import
 

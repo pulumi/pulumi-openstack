@@ -15,6 +15,31 @@ import (
 // Manages a V2 Neutron QoS policy resource within OpenStack.
 //
 // ## Example Usage
+// ### Create a QoS Policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.NewQosPolicy(ctx, "qosPolicy1", &networking.QosPolicyArgs{
+//				Description: pulumi.String("bw_limit"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

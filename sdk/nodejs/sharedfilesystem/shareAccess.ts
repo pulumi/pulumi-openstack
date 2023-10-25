@@ -6,6 +6,83 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### NFS
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ *     cidr: "192.168.199.0/24",
+ *     ipVersion: 4,
+ *     networkId: network1.id,
+ * });
+ * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork1", {
+ *     description: "test share network with security services",
+ *     neutronNetId: network1.id,
+ *     neutronSubnetId: subnet1.id,
+ * });
+ * const share1 = new openstack.sharedfilesystem.Share("share1", {
+ *     description: "test share description",
+ *     shareProto: "NFS",
+ *     size: 1,
+ *     shareNetworkId: sharenetwork1.id,
+ * });
+ * const shareAccess1 = new openstack.sharedfilesystem.ShareAccess("shareAccess1", {
+ *     shareId: share1.id,
+ *     accessType: "ip",
+ *     accessTo: "192.168.199.10",
+ *     accessLevel: "rw",
+ * });
+ * ```
+ * ### CIFS
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ *     cidr: "192.168.199.0/24",
+ *     ipVersion: 4,
+ *     networkId: network1.id,
+ * });
+ * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice1", {
+ *     description: "created by terraform",
+ *     type: "active_directory",
+ *     server: "192.168.199.10",
+ *     dnsIp: "192.168.199.10",
+ *     domain: "example.com",
+ *     ou: "CN=Computers,DC=example,DC=com",
+ *     user: "joinDomainUser",
+ *     password: "s8cret",
+ * });
+ * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork1", {
+ *     description: "share the secure love",
+ *     neutronNetId: network1.id,
+ *     neutronSubnetId: subnet1.id,
+ *     securityServiceIds: [securityservice1.id],
+ * });
+ * const share1 = new openstack.sharedfilesystem.Share("share1", {
+ *     shareProto: "CIFS",
+ *     size: 1,
+ *     shareNetworkId: sharenetwork1.id,
+ * });
+ * const shareAccess1 = new openstack.sharedfilesystem.ShareAccess("shareAccess1", {
+ *     shareId: share1.id,
+ *     accessType: "user",
+ *     accessTo: "windows",
+ *     accessLevel: "ro",
+ * });
+ * const shareAccess2 = new openstack.sharedfilesystem.ShareAccess("shareAccess2", {
+ *     shareId: share1.id,
+ *     accessType: "user",
+ *     accessTo: "linux",
+ *     accessLevel: "rw",
+ * });
+ * export const exportLocations = share1.exportLocations;
+ * ```
  *
  * ## Import
  *

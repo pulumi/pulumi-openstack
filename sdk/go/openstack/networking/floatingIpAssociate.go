@@ -17,6 +17,39 @@ import (
 // where you have a pre-allocated floating IP or are unable to use the
 // `networking.FloatingIp` resource to create a floating IP.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			port1, err := networking.NewPort(ctx, "port1", &networking.PortArgs{
+//				NetworkId: pulumi.String("a5bbd213-e1d3-49b6-aed1-9df60ea94b9a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewFloatingIpAssociate(ctx, "fip1", &networking.FloatingIpAssociateArgs{
+//				FloatingIp: pulumi.String("1.2.3.4"),
+//				PortId:     port1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Floating IP associations can be imported using the `id` of the floating IP, e.g.

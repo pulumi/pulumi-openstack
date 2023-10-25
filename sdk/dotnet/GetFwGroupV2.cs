@@ -13,12 +13,56 @@ namespace Pulumi.OpenStack
     {
         /// <summary>
         /// Use this data source to get information of an available OpenStack firewall group v2.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @group = OpenStack.GetFwGroupV2.Invoke(new()
+        ///     {
+        ///         Name = "tf_test_group",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFwGroupV2Result> InvokeAsync(GetFwGroupV2Args? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFwGroupV2Result>("openstack:index/getFwGroupV2:getFwGroupV2", args ?? new GetFwGroupV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information of an available OpenStack firewall group v2.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @group = OpenStack.GetFwGroupV2.Invoke(new()
+        ///     {
+        ///         Name = "tf_test_group",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetFwGroupV2Result> Invoke(GetFwGroupV2InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFwGroupV2Result>("openstack:index/getFwGroupV2:getFwGroupV2", args ?? new GetFwGroupV2InvokeArgs(), options.WithDefaults());

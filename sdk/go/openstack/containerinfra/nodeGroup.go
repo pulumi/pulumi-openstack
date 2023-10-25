@@ -16,6 +16,32 @@ import (
 // Manages a V1 Magnum node group resource within OpenStack.
 //
 // ## Example Usage
+// ### Create a Nodegroup
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/containerinfra"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := containerinfra.NewNodeGroup(ctx, "nodegroup1", &containerinfra.NodeGroupArgs{
+//				ClusterId: pulumi.String("b9a45c5c-cd03-4958-82aa-b80bf93cb922"),
+//				NodeCount: pulumi.Int(5),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Attributes reference
 //
 // The following attributes are exported:

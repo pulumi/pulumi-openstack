@@ -218,6 +218,16 @@ def get_subnet_ids_v2(cidr: Optional[str] = None,
     Use this data source to get a list of Openstack Subnet IDs matching the
     specified criteria.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    subnets = openstack.networking.get_subnet_ids_v2(name_regex="public",
+        tags=["public"])
+    ```
+
 
     :param str cidr: The CIDR of the subnet.
     :param str description: Human-readable description of the subnet.
@@ -302,6 +312,16 @@ def get_subnet_ids_v2_output(cidr: Optional[pulumi.Input[Optional[str]]] = None,
     """
     Use this data source to get a list of Openstack Subnet IDs matching the
     specified criteria.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    subnets = openstack.networking.get_subnet_ids_v2(name_regex="public",
+        tags=["public"])
+    ```
 
 
     :param str cidr: The CIDR of the subnet.

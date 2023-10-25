@@ -16,6 +16,29 @@ namespace Pulumi.OpenStack.Images
     /// stored in the raw state as plain-text. Read more about sensitive data in
     /// state.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var rancheros = new OpenStack.Images.Image("rancheros", new()
+    ///     {
+    ///         ContainerFormat = "bare",
+    ///         DiskFormat = "qcow2",
+    ///         ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
+    ///         Properties = 
+    ///         {
+    ///             { "key", "value" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Notes
     /// 
     /// ### Properties

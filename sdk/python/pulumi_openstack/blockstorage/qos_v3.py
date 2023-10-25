@@ -220,6 +220,20 @@ class QosV3(pulumi.CustomResource):
 
         > **Note:** This usually requires admin privileges.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        qos = openstack.blockstorage.QosV3("qos",
+            consumer="back-end",
+            specs={
+                "read_iops_sec": "40000",
+                "write_iops_sec": "40000",
+            })
+        ```
+
         ## Import
 
         Qos can be imported using the `qos_id`, e.g.
@@ -249,6 +263,20 @@ class QosV3(pulumi.CustomResource):
         Manages a V3 block storage Quality-Of-Servirce (qos) resource within OpenStack.
 
         > **Note:** This usually requires admin privileges.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        qos = openstack.blockstorage.QosV3("qos",
+            consumer="back-end",
+            specs={
+                "read_iops_sec": "40000",
+                "write_iops_sec": "40000",
+            })
+        ```
 
         ## Import
 

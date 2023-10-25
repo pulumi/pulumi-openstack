@@ -16,6 +16,36 @@ import * as utilities from "../utilities";
  * > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
  * this resource.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const project1 = new openstack.identity.Project("project1", {});
+ * const user1 = new openstack.identity.User("user1", {
+ *     defaultProjectId: project1.id,
+ *     description: "A user",
+ *     password: "password123",
+ *     ignoreChangePasswordUponFirstUse: true,
+ *     multiFactorAuthEnabled: true,
+ *     multiFactorAuthRules: [
+ *         {
+ *             rules: [
+ *                 "password",
+ *                 "totp",
+ *             ],
+ *         },
+ *         {
+ *             rules: ["password"],
+ *         },
+ *     ],
+ *     extra: {
+ *         email: "user_1@foobar.com",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Users can be imported using the `id`, e.g.

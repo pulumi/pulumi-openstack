@@ -15,6 +15,36 @@ import (
 
 // Manages a V2 monitor resource within OpenStack.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := loadbalancer.NewMonitor(ctx, "monitor1", &loadbalancer.MonitorArgs{
+//				PoolId:     pulumi.Any(openstack_lb_pool_v2.Pool_1.Id),
+//				Type:       pulumi.String("PING"),
+//				Delay:      pulumi.Int(20),
+//				Timeout:    pulumi.Int(10),
+//				MaxRetries: pulumi.Int(5),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Load Balancer Pool Monitor can be imported using the Monitor ID, e.g.:

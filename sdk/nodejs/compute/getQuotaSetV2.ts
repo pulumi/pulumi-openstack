@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the compute quotaset of an OpenStack project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const quota = openstack.compute.getQuotaSetV2({
+ *     projectId: "2e367a3d29f94fd988e6ec54e305ec9d",
+ * });
+ * ```
  */
 export function getQuotaSetV2(args: GetQuotaSetV2Args, opts?: pulumi.InvokeOptions): Promise<GetQuotaSetV2Result> {
 
@@ -106,6 +117,17 @@ export interface GetQuotaSetV2Result {
 }
 /**
  * Use this data source to get the compute quotaset of an OpenStack project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const quota = openstack.compute.getQuotaSetV2({
+ *     projectId: "2e367a3d29f94fd988e6ec54e305ec9d",
+ * });
+ * ```
  */
 export function getQuotaSetV2Output(args: GetQuotaSetV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaSetV2Result> {
     return pulumi.output(args).apply((a: any) => getQuotaSetV2(a, opts))

@@ -652,6 +652,16 @@ class NodeGroup(pulumi.CustomResource):
         Manages a V1 Magnum node group resource within OpenStack.
 
         ## Example Usage
+        ### Create a Nodegroup
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        nodegroup1 = openstack.containerinfra.NodeGroup("nodegroup1",
+            cluster_id="b9a45c5c-cd03-4958-82aa-b80bf93cb922",
+            node_count=5)
+        ```
         ## Attributes reference
 
         The following attributes are exported:
@@ -720,6 +730,16 @@ class NodeGroup(pulumi.CustomResource):
         Manages a V1 Magnum node group resource within OpenStack.
 
         ## Example Usage
+        ### Create a Nodegroup
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        nodegroup1 = openstack.containerinfra.NodeGroup("nodegroup1",
+            cluster_id="b9a45c5c-cd03-4958-82aa-b80bf93cb922",
+            node_count=5)
+        ```
         ## Attributes reference
 
         The following attributes are exported:

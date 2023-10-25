@@ -13,6 +13,30 @@ import (
 )
 
 // Use this data source to get a list of Block Storage availability zones from OpenStack
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := blockstorage.GetAvailabilityZonesV3(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAvailabilityZonesV3(ctx *pulumi.Context, args *GetAvailabilityZonesV3Args, opts ...pulumi.InvokeOption) (*GetAvailabilityZonesV3Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAvailabilityZonesV3Result

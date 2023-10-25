@@ -298,6 +298,20 @@ class InheritRoleAssignment(pulumi.CustomResource):
         > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        user1 = openstack.identity.User("user1", domain_id="default")
+        role1 = openstack.identity.Role("role1", domain_id="default")
+        role_assignment1 = openstack.identity.InheritRoleAssignment("roleAssignment1",
+            user_id=user1.id,
+            domain_id="default",
+            role_id=role1.id)
+        ```
+
         ## Import
 
         Inherit role assignments can be imported using a constructed id. The id should have the form of `domainID/projectID/groupID/userID/roleID`. When something is not used then leave blank.
@@ -330,6 +344,20 @@ class InheritRoleAssignment(pulumi.CustomResource):
 
         > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        user1 = openstack.identity.User("user1", domain_id="default")
+        role1 = openstack.identity.Role("role1", domain_id="default")
+        role_assignment1 = openstack.identity.InheritRoleAssignment("roleAssignment1",
+            user_id=user1.id,
+            domain_id="default",
+            role_id=role1.id)
+        ```
 
         ## Import
 

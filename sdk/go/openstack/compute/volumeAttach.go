@@ -17,6 +17,114 @@ import (
 // Compute (Nova) v2 API.
 //
 // ## Example Usage
+// ### Basic attachment of a single volume to a single instance
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			volume1, err := blockstorage.NewVolumeV2(ctx, "volume1", &blockstorage.VolumeV2Args{
+//				Size: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewVolumeAttach(ctx, "va1", &compute.VolumeAttachArgs{
+//				InstanceId: instance1.ID(),
+//				VolumeId:   volume1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Using Multiattach-enabled volumes
+//
+// Multiattach Volumes are dependent upon your OpenStack cloud and not all
+// clouds support multiattach.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := blockstorage.NewVolume(ctx, "volume1", &blockstorage.VolumeArgs{
+//				Size:        pulumi.Int(1),
+//				Multiattach: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance2, err := compute.NewInstance(ctx, "instance2", &compute.InstanceArgs{
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewVolumeAttach(ctx, "va1", &compute.VolumeAttachArgs{
+//				InstanceId:  instance1.ID(),
+//				VolumeId:    pulumi.Any(openstack_blockstorage_volume_v2.Volume_1.Id),
+//				Multiattach: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewVolumeAttach(ctx, "va2", &compute.VolumeAttachArgs{
+//				InstanceId:  instance2.ID(),
+//				VolumeId:    pulumi.Any(openstack_blockstorage_volume_v2.Volume_1.Id),
+//				Multiattach: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				pulumi.Resource("openstack_compute_volume_attach_v2.va_1"),
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// It is recommended to use `dependsOn` for the attach resources
+// to enforce the volume attachments to happen one at a time.
 //
 // ## Import
 //

@@ -835,6 +835,51 @@ class ContainerObject(pulumi.CustomResource):
         Manages a V1 container object resource within OpenStack.
 
         ## Example Usage
+        ### Example with simple content
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container1",
+            region="RegionOne",
+            metadata=[{
+                "test": "true",
+            }],
+            content_type="application/json")
+        doc1 = openstack.objectstorage.ContainerObject("doc1",
+            region="RegionOne",
+            container_name=container1.name,
+            metadata=[{
+                "test": "true",
+            }],
+            content_type="application/json",
+            content=\"\"\"               {
+                         "foo" : "bar"
+                       }
+        \"\"\")
+        ```
+        ### Example with content from file
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container1",
+            region="RegionOne",
+            metadata=[{
+                "test": "true",
+            }],
+            content_type="application/json")
+        doc1 = openstack.objectstorage.ContainerObject("doc1",
+            region="RegionOne",
+            container_name=container1.name,
+            metadata=[{
+                "test": "true",
+            }],
+            content_type="application/json",
+            source="./default.json")
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -888,6 +933,51 @@ class ContainerObject(pulumi.CustomResource):
         Manages a V1 container object resource within OpenStack.
 
         ## Example Usage
+        ### Example with simple content
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container1",
+            region="RegionOne",
+            metadata=[{
+                "test": "true",
+            }],
+            content_type="application/json")
+        doc1 = openstack.objectstorage.ContainerObject("doc1",
+            region="RegionOne",
+            container_name=container1.name,
+            metadata=[{
+                "test": "true",
+            }],
+            content_type="application/json",
+            content=\"\"\"               {
+                         "foo" : "bar"
+                       }
+        \"\"\")
+        ```
+        ### Example with content from file
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container1",
+            region="RegionOne",
+            metadata=[{
+                "test": "true",
+            }],
+            content_type="application/json")
+        doc1 = openstack.objectstorage.ContainerObject("doc1",
+            region="RegionOne",
+            container_name=container1.name,
+            metadata=[{
+                "test": "true",
+            }],
+            content_type="application/json",
+            source="./default.json")
+        ```
 
         :param str resource_name: The name of the resource.
         :param ContainerObjectArgs args: The arguments to use to populate this resource's properties.

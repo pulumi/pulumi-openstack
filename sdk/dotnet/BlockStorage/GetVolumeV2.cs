@@ -13,12 +13,56 @@ namespace Pulumi.OpenStack.BlockStorage
     {
         /// <summary>
         /// Use this data source to get information about an existing volume.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var volume1 = OpenStack.BlockStorage.GetVolumeV2.Invoke(new()
+        ///     {
+        ///         Name = "volume_1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVolumeV2Result> InvokeAsync(GetVolumeV2Args? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVolumeV2Result>("openstack:blockstorage/getVolumeV2:getVolumeV2", args ?? new GetVolumeV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information about an existing volume.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var volume1 = OpenStack.BlockStorage.GetVolumeV2.Invoke(new()
+        ///     {
+        ///         Name = "volume_1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetVolumeV2Result> Invoke(GetVolumeV2InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumeV2Result>("openstack:blockstorage/getVolumeV2:getVolumeV2", args ?? new GetVolumeV2InvokeArgs(), options.WithDefaults());

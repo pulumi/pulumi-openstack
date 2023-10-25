@@ -351,6 +351,21 @@ class TransferRequest(pulumi.CustomResource):
         Manages a DNS zone transfer request in the OpenStack DNS Service.
 
         ## Example Usage
+        ### Automatically detect the correct network
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        example_zone = openstack.dns.Zone("exampleZone",
+            email="jdoe@example.com",
+            description="An example zone",
+            ttl=3000,
+            type="PRIMARY")
+        request1 = openstack.dns.TransferRequest("request1",
+            zone_id=example_zone.id,
+            description="a transfer request")
+        ```
 
         ## Import
 
@@ -386,6 +401,21 @@ class TransferRequest(pulumi.CustomResource):
         Manages a DNS zone transfer request in the OpenStack DNS Service.
 
         ## Example Usage
+        ### Automatically detect the correct network
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        example_zone = openstack.dns.Zone("exampleZone",
+            email="jdoe@example.com",
+            description="An example zone",
+            ttl=3000,
+            type="PRIMARY")
+        request1 = openstack.dns.TransferRequest("request1",
+            zone_id=example_zone.id,
+            description="a transfer request")
+        ```
 
         ## Import
 

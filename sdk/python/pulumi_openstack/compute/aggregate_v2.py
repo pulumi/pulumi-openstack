@@ -260,6 +260,31 @@ class AggregateV2(pulumi.CustomResource):
         Manages a Host Aggregate within Openstack Nova.
 
         ## Example Usage
+        ### Full example
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        dell_servers = openstack.compute.AggregateV2("dellServers",
+            hosts=[
+                "myhost01.example.com",
+                "myhost02.example.com",
+            ],
+            metadata={
+                "cpus": "56",
+            },
+            region="RegionOne",
+            zone="nova")
+        ```
+        ### Minimum required example
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        test = openstack.compute.AggregateV2("test")
+        ```
 
         ## Import
 
@@ -296,6 +321,31 @@ class AggregateV2(pulumi.CustomResource):
         Manages a Host Aggregate within Openstack Nova.
 
         ## Example Usage
+        ### Full example
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        dell_servers = openstack.compute.AggregateV2("dellServers",
+            hosts=[
+                "myhost01.example.com",
+                "myhost02.example.com",
+            ],
+            metadata={
+                "cpus": "56",
+            },
+            region="RegionOne",
+            zone="nova")
+        ```
+        ### Minimum required example
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        test = openstack.compute.AggregateV2("test")
+        ```
 
         ## Import
 

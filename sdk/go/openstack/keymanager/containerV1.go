@@ -16,6 +16,154 @@ import (
 // Manages a V1 Barbican container resource within OpenStack.
 //
 // ## Example Usage
+// ### Simple secret
+//
+// The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"os"
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			certificate1, err := keymanager.NewSecretV1(ctx, "certificate1", &keymanager.SecretV1Args{
+//				Payload:            readFileOrPanic("cert.pem"),
+//				SecretType:         pulumi.String("certificate"),
+//				PayloadContentType: pulumi.String("text/plain"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			privateKey1, err := keymanager.NewSecretV1(ctx, "privateKey1", &keymanager.SecretV1Args{
+//				Payload:            readFileOrPanic("cert-key.pem"),
+//				SecretType:         pulumi.String("private"),
+//				PayloadContentType: pulumi.String("text/plain"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			intermediate1, err := keymanager.NewSecretV1(ctx, "intermediate1", &keymanager.SecretV1Args{
+//				Payload:            readFileOrPanic("intermediate-ca.pem"),
+//				SecretType:         pulumi.String("certificate"),
+//				PayloadContentType: pulumi.String("text/plain"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tls1, err := keymanager.NewContainerV1(ctx, "tls1", &keymanager.ContainerV1Args{
+//				Type: pulumi.String("certificate"),
+//				SecretRefs: keymanager.ContainerV1SecretRefArray{
+//					&keymanager.ContainerV1SecretRefArgs{
+//						Name:      pulumi.String("certificate"),
+//						SecretRef: certificate1.SecretRef,
+//					},
+//					&keymanager.ContainerV1SecretRefArgs{
+//						Name:      pulumi.String("private_key"),
+//						SecretRef: privateKey1.SecretRef,
+//					},
+//					&keymanager.ContainerV1SecretRefArgs{
+//						Name:      pulumi.String("intermediates"),
+//						SecretRef: intermediate1.SecretRef,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet1, err := networking.LookupSubnet(ctx, &networking.LookupSubnetArgs{
+//				Name: pulumi.StringRef("my-subnet"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			lb1, err := loadbalancer.NewLoadBalancer(ctx, "lb1", &loadbalancer.LoadBalancerArgs{
+//				VipSubnetId: *pulumi.String(subnet1.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = loadbalancer.NewListener(ctx, "listener1", &loadbalancer.ListenerArgs{
+//				Protocol:               pulumi.String("TERMINATED_HTTPS"),
+//				ProtocolPort:           pulumi.Int(443),
+//				LoadbalancerId:         lb1.ID(),
+//				DefaultTlsContainerRef: tls1.ContainerRef,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Container with the ACL
+//
+// > **Note** Only read ACLs are supported
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := keymanager.NewContainerV1(ctx, "tls1", &keymanager.ContainerV1Args{
+//				Type: pulumi.String("certificate"),
+//				SecretRefs: keymanager.ContainerV1SecretRefArray{
+//					&keymanager.ContainerV1SecretRefArgs{
+//						Name:      pulumi.String("certificate"),
+//						SecretRef: pulumi.Any(openstack_keymanager_secret_v1.Certificate_1.Secret_ref),
+//					},
+//					&keymanager.ContainerV1SecretRefArgs{
+//						Name:      pulumi.String("private_key"),
+//						SecretRef: pulumi.Any(openstack_keymanager_secret_v1.Private_key_1.Secret_ref),
+//					},
+//					&keymanager.ContainerV1SecretRefArgs{
+//						Name:      pulumi.String("intermediates"),
+//						SecretRef: pulumi.Any(openstack_keymanager_secret_v1.Intermediate_1.Secret_ref),
+//					},
+//				},
+//				Acl: &keymanager.ContainerV1AclArgs{
+//					Read: &keymanager.ContainerV1AclReadArgs{
+//						ProjectAccess: pulumi.Bool(false),
+//						Users: pulumi.StringArray{
+//							pulumi.String("userid1"),
+//							pulumi.String("userid2"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

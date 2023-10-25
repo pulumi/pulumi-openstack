@@ -20,6 +20,39 @@ namespace Pulumi.OpenStack.BlockStorage
     /// &gt; **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
     ///     created with zero value. This excludes volume type quota.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project1 = new OpenStack.Identity.Project("project1");
+    /// 
+    ///     var quotaset1 = new OpenStack.BlockStorage.QuoteSetV2("quotaset1", new()
+    ///     {
+    ///         ProjectId = project1.Id,
+    ///         Volumes = 10,
+    ///         Snapshots = 4,
+    ///         Gigabytes = 100,
+    ///         PerVolumeGigabytes = 10,
+    ///         Backups = 4,
+    ///         BackupGigabytes = 10,
+    ///         Groups = 100,
+    ///         VolumeTypeQuota = 
+    ///         {
+    ///             { "volumes_ssd", 30 },
+    ///             { "gigabytes_ssd", 500 },
+    ///             { "snapshots_ssd", 10 },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Quotasets can be imported using the `project_id/region`, e.g.

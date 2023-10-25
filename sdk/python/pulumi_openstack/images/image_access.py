@@ -288,6 +288,49 @@ class ImageAccess(pulumi.CustomResource):
         project, which owns the Image.
 
         ## Example Usage
+        ### Unprivileged user
+
+        Create a shared image and propose a membership to the
+        `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rancheros = openstack.images.Image("rancheros",
+            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
+            container_format="bare",
+            disk_format="qcow2",
+            visibility="shared",
+            properties={
+                "key": "value",
+            })
+        rancheros_member = openstack.images.ImageAccess("rancherosMember",
+            image_id=rancheros.id,
+            member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4")
+        ```
+        ### Privileged user
+
+        Create a shared image and set a membership to the
+        `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rancheros = openstack.images.Image("rancheros",
+            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
+            container_format="bare",
+            disk_format="qcow2",
+            visibility="shared",
+            properties={
+                "key": "value",
+            })
+        rancheros_member = openstack.images.ImageAccess("rancherosMember",
+            image_id=rancheros.id,
+            member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4",
+            status="accepted")
+        ```
 
         ## Import
 
@@ -319,6 +362,49 @@ class ImageAccess(pulumi.CustomResource):
         project, which owns the Image.
 
         ## Example Usage
+        ### Unprivileged user
+
+        Create a shared image and propose a membership to the
+        `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rancheros = openstack.images.Image("rancheros",
+            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
+            container_format="bare",
+            disk_format="qcow2",
+            visibility="shared",
+            properties={
+                "key": "value",
+            })
+        rancheros_member = openstack.images.ImageAccess("rancherosMember",
+            image_id=rancheros.id,
+            member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4")
+        ```
+        ### Privileged user
+
+        Create a shared image and set a membership to the
+        `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rancheros = openstack.images.Image("rancheros",
+            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
+            container_format="bare",
+            disk_format="qcow2",
+            visibility="shared",
+            properties={
+                "key": "value",
+            })
+        rancheros_member = openstack.images.ImageAccess("rancherosMember",
+            image_id=rancheros.id,
+            member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4",
+            status="accepted")
+        ```
 
         ## Import
 

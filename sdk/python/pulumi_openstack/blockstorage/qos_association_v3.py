@@ -193,6 +193,23 @@ class QosAssociationV3(pulumi.CustomResource):
 
         > **Note:** This usually requires admin privileges.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        qos = openstack.blockstorage.QosV3("qos",
+            consumer="front-end",
+            specs={
+                "read_iops_sec": "20000",
+            })
+        volume_type = openstack.blockstorage.VolumeTypeV3("volumeType")
+        qos_association = openstack.blockstorage.QosAssociationV3("qosAssociation",
+            qos_id=qos.id,
+            volume_type_id=volume_type.id)
+        ```
+
         ## Import
 
         Qos association can be imported using the `qos_id/volume_type_id`, e.g.
@@ -221,6 +238,23 @@ class QosAssociationV3(pulumi.CustomResource):
         Manages a V3 block storage Qos Association resource within OpenStack.
 
         > **Note:** This usually requires admin privileges.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        qos = openstack.blockstorage.QosV3("qos",
+            consumer="front-end",
+            specs={
+                "read_iops_sec": "20000",
+            })
+        volume_type = openstack.blockstorage.VolumeTypeV3("volumeType")
+        qos_association = openstack.blockstorage.QosAssociationV3("qosAssociation",
+            qos_id=qos.id,
+            volume_type_id=volume_type.id)
+        ```
 
         ## Import
 

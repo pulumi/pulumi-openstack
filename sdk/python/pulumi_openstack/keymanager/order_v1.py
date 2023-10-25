@@ -356,6 +356,35 @@ class OrderV1(pulumi.CustomResource):
         Manages a V1 Barbican order resource within OpenStack.
 
         ## Example Usage
+        ### Symmetric key order
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        order1 = openstack.keymanager.OrderV1("order1",
+            meta=openstack.keymanager.OrderV1MetaArgs(
+                algorithm="aes",
+                bit_length=256,
+                mode="cbc",
+                name="mysecret",
+            ),
+            type="key")
+        ```
+        ### Asymmetric key pair order
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        order1 = openstack.keymanager.OrderV1("order1",
+            meta=openstack.keymanager.OrderV1MetaArgs(
+                algorithm="rsa",
+                bit_length=4096,
+                name="mysecret",
+            ),
+            type="asymmetric")
+        ```
 
         ## Import
 
@@ -384,6 +413,35 @@ class OrderV1(pulumi.CustomResource):
         Manages a V1 Barbican order resource within OpenStack.
 
         ## Example Usage
+        ### Symmetric key order
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        order1 = openstack.keymanager.OrderV1("order1",
+            meta=openstack.keymanager.OrderV1MetaArgs(
+                algorithm="aes",
+                bit_length=256,
+                mode="cbc",
+                name="mysecret",
+            ),
+            type="key")
+        ```
+        ### Asymmetric key pair order
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        order1 = openstack.keymanager.OrderV1("order1",
+            meta=openstack.keymanager.OrderV1MetaArgs(
+                algorithm="rsa",
+                bit_length=4096,
+                name="mysecret",
+            ),
+            type="asymmetric")
+        ```
 
         ## Import
 

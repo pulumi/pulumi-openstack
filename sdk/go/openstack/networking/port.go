@@ -16,6 +16,94 @@ import (
 // Manages a V2 port resource within OpenStack.
 //
 // ## Example Usage
+// ### Simple port
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewPort(ctx, "port1", &networking.PortArgs{
+//				NetworkId:    network1.ID(),
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Port with physical binding information
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewPort(ctx, "port1", &networking.PortArgs{
+//				NetworkId:    network1.ID(),
+//				DeviceId:     pulumi.String("cdf70fcf-c161-4f24-9c70-96b3f5a54b71"),
+//				DeviceOwner:  pulumi.String("baremetal:none"),
+//				AdminStateUp: pulumi.Bool(true),
+//				Binding: &networking.PortBindingArgs{
+//					HostId:   pulumi.String("b080b9cf-46e0-4ce8-ad47-0fd4accc872b"),
+//					VnicType: pulumi.String("baremetal"),
+//					Profile: pulumi.String(`{
+//	  "local_link_information": [
+//	    {
+//	      "switch_info": "info1",
+//	      "port_id": "Ethernet3/4",
+//	      "switch_id": "12:34:56:78:9A:BC"
+//	    },
+//	    {
+//	      "switch_info": "info2",
+//	      "port_id": "Ethernet3/4",
+//	      "switch_id": "12:34:56:78:9A:BD"
+//	    }
+//	  ],
+//	  "vlan_type": "allowed"
+//	}
+//
+// `),
+//
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Notes
 //
 // ### Ports and Instances

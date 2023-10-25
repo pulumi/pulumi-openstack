@@ -13,12 +13,56 @@ namespace Pulumi.OpenStack.BlockStorage
     {
         /// <summary>
         /// Use this data source to get the blockstorage quotaset v3 of an OpenStack project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var quota = OpenStack.BlockStorage.GetQuotasetV3.Invoke(new()
+        ///     {
+        ///         ProjectId = "2e367a3d29f94fd988e6ec54e305ec9d",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetQuotasetV3Result> InvokeAsync(GetQuotasetV3Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQuotasetV3Result>("openstack:blockstorage/getQuotasetV3:getQuotasetV3", args ?? new GetQuotasetV3Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the blockstorage quotaset v3 of an OpenStack project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var quota = OpenStack.BlockStorage.GetQuotasetV3.Invoke(new()
+        ///     {
+        ///         ProjectId = "2e367a3d29f94fd988e6ec54e305ec9d",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetQuotasetV3Result> Invoke(GetQuotasetV3InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQuotasetV3Result>("openstack:blockstorage/getQuotasetV3:getQuotasetV3", args ?? new GetQuotasetV3InvokeArgs(), options.WithDefaults());

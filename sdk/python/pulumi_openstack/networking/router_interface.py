@@ -288,6 +288,23 @@ class RouterInterface(pulumi.CustomResource):
         """
         Manages a V2 router interface resource within OpenStack.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            network_id=network1.id,
+            cidr="192.168.199.0/24",
+            ip_version=4)
+        router1 = openstack.networking.Router("router1", external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
+        router_interface1 = openstack.networking.RouterInterface("routerInterface1",
+            router_id=router1.id,
+            subnet_id=subnet1.id)
+        ```
+
         ## Import
 
         Router Interfaces can be imported using the port `id`, e.g. $ openstack port list --router <router name or id>
@@ -320,6 +337,23 @@ class RouterInterface(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 router interface resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            network_id=network1.id,
+            cidr="192.168.199.0/24",
+            ip_version=4)
+        router1 = openstack.networking.Router("router1", external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
+        router_interface1 = openstack.networking.RouterInterface("routerInterface1",
+            router_id=router1.id,
+            subnet_id=subnet1.id)
+        ```
 
         ## Import
 

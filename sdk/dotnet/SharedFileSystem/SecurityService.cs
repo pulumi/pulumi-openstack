@@ -23,6 +23,31 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// Minimum supported Manila microversion is 2.7.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var securityservice1 = new OpenStack.SharedFileSystem.SecurityService("securityservice1", new()
+    ///     {
+    ///         Description = "created by terraform",
+    ///         DnsIp = "192.168.199.10",
+    ///         Domain = "example.com",
+    ///         Ou = "CN=Computers,DC=example,DC=com",
+    ///         Password = "s8cret",
+    ///         Server = "192.168.199.10",
+    ///         Type = "active_directory",
+    ///         User = "joinDomainUser",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the ID of the security service:

@@ -13,6 +13,29 @@ namespace Pulumi.OpenStack.Networking
     /// Manages a V2 Neutron QoS DSCP marking rule resource within OpenStack.
     /// 
     /// ## Example Usage
+    /// ### Create a QoS Policy with some DSCP marking rule
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var qosPolicy1 = new OpenStack.Networking.QosPolicy("qosPolicy1", new()
+    ///     {
+    ///         Description = "dscp_mark",
+    ///     });
+    /// 
+    ///     var dscpMarkingRule1 = new OpenStack.Networking.QosDscpMarkingRule("dscpMarkingRule1", new()
+    ///     {
+    ///         QosPolicyId = qosPolicy1.Id,
+    ///         DscpMark = 26,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

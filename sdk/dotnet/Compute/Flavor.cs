@@ -12,6 +12,31 @@ namespace Pulumi.OpenStack.Compute
     /// <summary>
     /// Manages a V2 flavor resource within OpenStack.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test_flavor = new OpenStack.Compute.Flavor("test-flavor", new()
+    ///     {
+    ///         Disk = 20,
+    ///         ExtraSpecs = 
+    ///         {
+    ///             { "hw:cpu_policy", "CPU-POLICY" },
+    ///             { "hw:cpu_thread_policy", "CPU-THREAD-POLICY" },
+    ///         },
+    ///         Ram = 8096,
+    ///         Vcpus = 2,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Flavors can be imported using the `ID`, e.g.

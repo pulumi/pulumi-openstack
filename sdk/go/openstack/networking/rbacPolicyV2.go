@@ -27,6 +27,41 @@ import (
 // a wildcard RBAC policy granting everyone access to preserve previous behavior
 // before this feature was added.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewRbacPolicyV2(ctx, "rbacPolicy1", &networking.RbacPolicyV2Args{
+//				Action:       pulumi.String("access_as_shared"),
+//				ObjectId:     network1.ID(),
+//				ObjectType:   pulumi.String("network"),
+//				TargetTenant: pulumi.String("20415a973c9e45d3917f078950644697"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // RBAC policies can be imported using the `id`, e.g.

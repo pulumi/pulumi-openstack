@@ -114,6 +114,15 @@ def get_service(enabled: Optional[bool] = None,
 
     > **Note:** This usually requires admin privileges.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    service1 = openstack.identity.get_service(name="keystone")
+    ```
+
 
     :param bool enabled: The service status.
     :param str name: The service name.
@@ -148,6 +157,15 @@ def get_service_output(enabled: Optional[pulumi.Input[Optional[bool]]] = None,
     Use this data source to get the ID of an OpenStack service.
 
     > **Note:** This usually requires admin privileges.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    service1 = openstack.identity.get_service(name="keystone")
+    ```
 
 
     :param bool enabled: The service status.

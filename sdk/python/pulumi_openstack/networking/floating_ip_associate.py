@@ -230,6 +230,18 @@ class FloatingIpAssociate(pulumi.CustomResource):
         where you have a pre-allocated floating IP or are unable to use the
         `networking.FloatingIp` resource to create a floating IP.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        port1 = openstack.networking.Port("port1", network_id="a5bbd213-e1d3-49b6-aed1-9df60ea94b9a")
+        fip1 = openstack.networking.FloatingIpAssociate("fip1",
+            floating_ip="1.2.3.4",
+            port_id=port1.id)
+        ```
+
         ## Import
 
         Floating IP associations can be imported using the `id` of the floating IP, e.g.
@@ -259,6 +271,18 @@ class FloatingIpAssociate(pulumi.CustomResource):
         Associates a floating IP to a port. This is useful for situations
         where you have a pre-allocated floating IP or are unable to use the
         `networking.FloatingIp` resource to create a floating IP.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        port1 = openstack.networking.Port("port1", network_id="a5bbd213-e1d3-49b6-aed1-9df60ea94b9a")
+        fip1 = openstack.networking.FloatingIpAssociate("fip1",
+            floating_ip="1.2.3.4",
+            port_id=port1.id)
+        ```
 
         ## Import
 

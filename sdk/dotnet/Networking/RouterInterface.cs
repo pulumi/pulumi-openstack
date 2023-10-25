@@ -12,6 +12,42 @@ namespace Pulumi.OpenStack.Networking
     /// <summary>
     /// Manages a V2 router interface resource within OpenStack.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///     });
+    /// 
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     {
+    ///         NetworkId = network1.Id,
+    ///         Cidr = "192.168.199.0/24",
+    ///         IpVersion = 4,
+    ///     });
+    /// 
+    ///     var router1 = new OpenStack.Networking.Router("router1", new()
+    ///     {
+    ///         ExternalNetworkId = "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f",
+    ///     });
+    /// 
+    ///     var routerInterface1 = new OpenStack.Networking.RouterInterface("routerInterface1", new()
+    ///     {
+    ///         RouterId = router1.Id,
+    ///         SubnetId = subnet1.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Router Interfaces can be imported using the port `id`, e.g. $ openstack port list --router &lt;router name or id&gt;

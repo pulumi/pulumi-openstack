@@ -14,6 +14,108 @@ namespace Pulumi.OpenStack.Identity
         /// <summary>
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Simple
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var scope = OpenStack.Identity.GetAuthScope.Invoke(new()
+        ///     {
+        ///         Name = "my_scope",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// To find the the public object storage endpoint for "region1" as listed in the
+        /// service catalog:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var objectStoreService = .Where(entry =&gt; entry.Type == "object-store").Select(entry =&gt; 
+        ///     {
+        ///         return entry;
+        ///     }).ToList()[0];
+        /// 
+        ///     var objectStoreEndpoint = .Where(endpoint =&gt; endpoint.Interface == "public" &amp;&amp; endpoint.Region == "region1").Select(endpoint =&gt; 
+        ///     {
+        ///         return endpoint;
+        ///     }).ToList()[0];
+        /// 
+        ///     var objectStorePublicUrl = objectStoreEndpoint.Url;
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### In a combination with an http data source provider
+        /// 
+        /// See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var scope = OpenStack.Identity.GetAuthScope.Invoke(new()
+        ///     {
+        ///         Name = "my_scope",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Http = Pulumi.Http;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var objectStoreService = .Where(entry =&gt; entry.Type == "object-store").Select(entry =&gt; 
+        ///     {
+        ///         return entry;
+        ///     }).ToList()[0];
+        /// 
+        ///     var objectStoreEndpoint = .Where(endpoint =&gt; endpoint.Interface == "public" &amp;&amp; endpoint.Region == "region1").Select(endpoint =&gt; 
+        ///     {
+        ///         return endpoint;
+        ///     }).ToList()[0];
+        /// 
+        ///     var objectStorePublicUrl = objectStoreEndpoint.Url;
+        /// 
+        ///     var example = Http.GetHttp.Invoke(new()
+        ///     {
+        ///         Url = objectStorePublicUrl,
+        ///         RequestHeaders = 
+        ///         {
+        ///             { "Accept", "application/json" },
+        ///             { "X-Auth-Token", data.Openstack_identity_auth_scope_v3.Scope.Token_id },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["containers"] = example.Apply(getHttpResult =&gt; getHttpResult.ResponseBody),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAuthScopeResult> InvokeAsync(GetAuthScopeArgs args, InvokeOptions? options = null)
@@ -22,6 +124,108 @@ namespace Pulumi.OpenStack.Identity
         /// <summary>
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Simple
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var scope = OpenStack.Identity.GetAuthScope.Invoke(new()
+        ///     {
+        ///         Name = "my_scope",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// To find the the public object storage endpoint for "region1" as listed in the
+        /// service catalog:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var objectStoreService = .Where(entry =&gt; entry.Type == "object-store").Select(entry =&gt; 
+        ///     {
+        ///         return entry;
+        ///     }).ToList()[0];
+        /// 
+        ///     var objectStoreEndpoint = .Where(endpoint =&gt; endpoint.Interface == "public" &amp;&amp; endpoint.Region == "region1").Select(endpoint =&gt; 
+        ///     {
+        ///         return endpoint;
+        ///     }).ToList()[0];
+        /// 
+        ///     var objectStorePublicUrl = objectStoreEndpoint.Url;
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### In a combination with an http data source provider
+        /// 
+        /// See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var scope = OpenStack.Identity.GetAuthScope.Invoke(new()
+        ///     {
+        ///         Name = "my_scope",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Http = Pulumi.Http;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var objectStoreService = .Where(entry =&gt; entry.Type == "object-store").Select(entry =&gt; 
+        ///     {
+        ///         return entry;
+        ///     }).ToList()[0];
+        /// 
+        ///     var objectStoreEndpoint = .Where(endpoint =&gt; endpoint.Interface == "public" &amp;&amp; endpoint.Region == "region1").Select(endpoint =&gt; 
+        ///     {
+        ///         return endpoint;
+        ///     }).ToList()[0];
+        /// 
+        ///     var objectStorePublicUrl = objectStoreEndpoint.Url;
+        /// 
+        ///     var example = Http.GetHttp.Invoke(new()
+        ///     {
+        ///         Url = objectStorePublicUrl,
+        ///         RequestHeaders = 
+        ///         {
+        ///             { "Accept", "application/json" },
+        ///             { "X-Auth-Token", data.Openstack_identity_auth_scope_v3.Scope.Token_id },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["containers"] = example.Apply(getHttpResult =&gt; getHttpResult.ResponseBody),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAuthScopeResult> Invoke(GetAuthScopeInvokeArgs args, InvokeOptions? options = null)

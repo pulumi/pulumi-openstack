@@ -13,6 +13,32 @@ import (
 )
 
 // Use this data source to get information of an available OpenStack firewall policy v2.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := openstack.GetFwPolicyV2(ctx, &openstack.GetFwPolicyV2Args{
+//				Name: pulumi.StringRef("tf_test_policy"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetFwPolicyV2(ctx *pulumi.Context, args *GetFwPolicyV2Args, opts ...pulumi.InvokeOption) (*GetFwPolicyV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFwPolicyV2Result

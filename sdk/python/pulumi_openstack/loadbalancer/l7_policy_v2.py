@@ -490,6 +490,34 @@ class L7PolicyV2(pulumi.CustomResource):
         """
         Manages a Load Balancer L7 Policy resource within OpenStack.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            ip_version=4,
+            network_id=network1.id)
+        loadbalancer1 = openstack.loadbalancer.LoadBalancer("loadbalancer1", vip_subnet_id=subnet1.id)
+        listener1 = openstack.loadbalancer.Listener("listener1",
+            protocol="HTTP",
+            protocol_port=8080,
+            loadbalancer_id=loadbalancer1.id)
+        pool1 = openstack.loadbalancer.Pool("pool1",
+            protocol="HTTP",
+            lb_method="ROUND_ROBIN",
+            loadbalancer_id=loadbalancer1.id)
+        l7policy1 = openstack.loadbalancer.L7PolicyV2("l7policy1",
+            action="REDIRECT_TO_POOL",
+            description="test l7 policy",
+            position=1,
+            listener_id=listener1.id,
+            redirect_pool_id=pool1.id)
+        ```
+
         ## Import
 
         Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.:
@@ -530,6 +558,34 @@ class L7PolicyV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Load Balancer L7 Policy resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            ip_version=4,
+            network_id=network1.id)
+        loadbalancer1 = openstack.loadbalancer.LoadBalancer("loadbalancer1", vip_subnet_id=subnet1.id)
+        listener1 = openstack.loadbalancer.Listener("listener1",
+            protocol="HTTP",
+            protocol_port=8080,
+            loadbalancer_id=loadbalancer1.id)
+        pool1 = openstack.loadbalancer.Pool("pool1",
+            protocol="HTTP",
+            lb_method="ROUND_ROBIN",
+            loadbalancer_id=loadbalancer1.id)
+        l7policy1 = openstack.loadbalancer.L7PolicyV2("l7policy1",
+            action="REDIRECT_TO_POOL",
+            description="test l7 policy",
+            position=1,
+            listener_id=listener1.id,
+            redirect_pool_id=pool1.id)
+        ```
 
         ## Import
 

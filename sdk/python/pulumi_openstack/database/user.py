@@ -279,6 +279,17 @@ class User(pulumi.CustomResource):
         state.
 
         ## Example Usage
+        ### User
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        basic = openstack.database.User("basic",
+            instance_id=openstack_db_instance_v1["basic"]["id"],
+            password="password",
+            databases=["testdb"])
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -302,6 +313,17 @@ class User(pulumi.CustomResource):
         state.
 
         ## Example Usage
+        ### User
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        basic = openstack.database.User("basic",
+            instance_id=openstack_db_instance_v1["basic"]["id"],
+            password="password",
+            databases=["testdb"])
+        ```
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

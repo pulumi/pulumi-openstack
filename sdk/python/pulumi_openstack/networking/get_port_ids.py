@@ -228,6 +228,15 @@ def get_port_ids(admin_state_up: Optional[bool] = None,
     Use this data source to get a list of Openstack Port IDs matching the
     specified criteria.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    ports = openstack.networking.get_port_ids(name="port")
+    ```
+
 
     :param bool admin_state_up: The administrative state of the port.
     :param str description: Human-readable description of the port.
@@ -313,6 +322,15 @@ def get_port_ids_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] =
     """
     Use this data source to get a list of Openstack Port IDs matching the
     specified criteria.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    ports = openstack.networking.get_port_ids(name="port")
+    ```
 
 
     :param bool admin_state_up: The administrative state of the port.

@@ -24,6 +24,32 @@ namespace Pulumi.OpenStack.Networking
     /// a wildcard RBAC policy granting everyone access to preserve previous behavior
     /// before this feature was added.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///     });
+    /// 
+    ///     var rbacPolicy1 = new OpenStack.Networking.RbacPolicyV2("rbacPolicy1", new()
+    ///     {
+    ///         Action = "access_as_shared",
+    ///         ObjectId = network1.Id,
+    ///         ObjectType = "network",
+    ///         TargetTenant = "20415a973c9e45d3917f078950644697",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RBAC policies can be imported using the `id`, e.g.

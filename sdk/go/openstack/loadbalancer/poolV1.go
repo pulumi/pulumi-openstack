@@ -15,6 +15,167 @@ import (
 
 // Manages a V1 load balancer pool resource within OpenStack.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := loadbalancer.NewPoolV1(ctx, "pool1", &loadbalancer.PoolV1Args{
+//				LbMethod:   pulumi.String("ROUND_ROBIN"),
+//				LbProvider: pulumi.String("haproxy"),
+//				MonitorIds: pulumi.StringArray{
+//					pulumi.String("67890"),
+//				},
+//				Protocol: pulumi.String("HTTP"),
+//				SubnetId: pulumi.String("12345"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Complete Load Balancing Stack Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//				NetworkId: network1.ID(),
+//				Cidr:      pulumi.String("192.168.199.0/24"),
+//				IpVersion: pulumi.Int(4),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			secgroup1, err := compute.NewSecGroup(ctx, "secgroup1", &compute.SecGroupArgs{
+//				Description: pulumi.String("Rules for secgroup_1"),
+//				Rules: compute.SecGroupRuleArray{
+//					&compute.SecGroupRuleArgs{
+//						FromPort:   -1,
+//						ToPort:     -1,
+//						IpProtocol: pulumi.String("icmp"),
+//						Cidr:       pulumi.String("0.0.0.0/0"),
+//					},
+//					&compute.SecGroupRuleArgs{
+//						FromPort:   pulumi.Int(80),
+//						ToPort:     pulumi.Int(80),
+//						IpProtocol: pulumi.String("tcp"),
+//						Cidr:       pulumi.String("0.0.0.0/0"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//					secgroup1.Name,
+//				},
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Uuid: network1.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			instance2, err := compute.NewInstance(ctx, "instance2", &compute.InstanceArgs{
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//					secgroup1.Name,
+//				},
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Uuid: network1.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			monitor1, err := loadbalancer.NewMonitorV1(ctx, "monitor1", &loadbalancer.MonitorV1Args{
+//				Type:         pulumi.String("TCP"),
+//				Delay:        pulumi.Int(30),
+//				Timeout:      pulumi.Int(5),
+//				MaxRetries:   pulumi.Int(3),
+//				AdminStateUp: pulumi.String("true"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			pool1, err := loadbalancer.NewPoolV1(ctx, "pool1", &loadbalancer.PoolV1Args{
+//				Protocol: pulumi.String("TCP"),
+//				SubnetId: subnet1.ID(),
+//				LbMethod: pulumi.String("ROUND_ROBIN"),
+//				MonitorIds: pulumi.StringArray{
+//					monitor1.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = loadbalancer.NewMemberV1(ctx, "member1", &loadbalancer.MemberV1Args{
+//				PoolId:  pool1.ID(),
+//				Address: instance1.AccessIpV4,
+//				Port:    pulumi.Int(80),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = loadbalancer.NewMemberV1(ctx, "member2", &loadbalancer.MemberV1Args{
+//				PoolId:  pool1.ID(),
+//				Address: instance2.AccessIpV4,
+//				Port:    pulumi.Int(80),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = loadbalancer.NewVip(ctx, "vip1", &loadbalancer.VipArgs{
+//				SubnetId: subnet1.ID(),
+//				Protocol: pulumi.String("TCP"),
+//				Port:     pulumi.Int(80),
+//				PoolId:   pool1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Notes
 //
 // The `member` block is deprecated in favor of the `loadbalancer.MemberV1` resource.

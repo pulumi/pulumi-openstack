@@ -16,6 +16,36 @@ import (
 //
 // > **Note:** This usually requires admin privileges.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := blockstorage.NewQosV3(ctx, "qos", &blockstorage.QosV3Args{
+//				Consumer: pulumi.String("back-end"),
+//				Specs: pulumi.Map{
+//					"read_iops_sec":  pulumi.Any("40000"),
+//					"write_iops_sec": pulumi.Any("40000"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Qos can be imported using the `qos_id`, e.g.

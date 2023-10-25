@@ -13,6 +13,24 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// Manages a V1 Magnum node group resource within OpenStack.
     /// 
     /// ## Example Usage
+    /// ### Create a Nodegroup
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var nodegroup1 = new OpenStack.ContainerInfra.NodeGroup("nodegroup1", new()
+    ///     {
+    ///         ClusterId = "b9a45c5c-cd03-4958-82aa-b80bf93cb922",
+    ///         NodeCount = 5,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Attributes reference
     /// 
     /// The following attributes are exported:

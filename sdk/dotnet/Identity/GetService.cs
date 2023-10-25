@@ -15,6 +15,28 @@ namespace Pulumi.OpenStack.Identity
         /// Use this data source to get the ID of an OpenStack service.
         /// 
         /// &gt; **Note:** This usually requires admin privileges.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var service1 = OpenStack.Identity.GetService.Invoke(new()
+        ///     {
+        ///         Name = "keystone",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("openstack:identity/getService:getService", args ?? new GetServiceArgs(), options.WithDefaults());
@@ -23,6 +45,28 @@ namespace Pulumi.OpenStack.Identity
         /// Use this data source to get the ID of an OpenStack service.
         /// 
         /// &gt; **Note:** This usually requires admin privileges.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var service1 = OpenStack.Identity.GetService.Invoke(new()
+        ///     {
+        ///         Name = "keystone",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("openstack:identity/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());

@@ -13,6 +13,116 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// Manages a V1 container resource within OpenStack.
     /// 
     /// ## Example Usage
+    /// ### Basic Container
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
+    ///     {
+    ///         ContentType = "application/json",
+    ///         Metadata = 
+    ///         {
+    ///             { "test", "true" },
+    ///         },
+    ///         Region = "RegionOne",
+    ///         Versioning = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Basic Container with legacy versioning
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
+    ///     {
+    ///         ContentType = "application/json",
+    ///         Metadata = 
+    ///         {
+    ///             { "test", "true" },
+    ///         },
+    ///         Region = "RegionOne",
+    ///         VersioningLegacy = new OpenStack.ObjectStorage.Inputs.ContainerVersioningLegacyArgs
+    ///         {
+    ///             Location = "tf-test-container-versions",
+    ///             Type = "versions",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Global Read Access
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
+    ///     {
+    ///         ContainerRead = ".r:*",
+    ///         Region = "RegionOne",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Global Read and List Access
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
+    ///     {
+    ///         ContainerRead = ".r:*,.rlistings",
+    ///         Region = "RegionOne",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Write-Only Access for a User
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = OpenStack.Identity.GetAuthScope.Invoke(new()
+    ///     {
+    ///         Name = "current",
+    ///     });
+    /// 
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
+    ///     {
+    ///         ContainerRead = $".r:-{@var.Username}",
+    ///         ContainerWrite = $"{current.Apply(getAuthScopeResult =&gt; getAuthScopeResult.ProjectId)}:{@var.Username}",
+    ///         Region = "RegionOne",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -180,6 +180,15 @@ class Role(pulumi.CustomResource):
         > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        role1 = openstack.identity.Role("role1")
+        ```
+
         ## Import
 
         Roles can be imported using the `id`, e.g.
@@ -207,6 +216,15 @@ class Role(pulumi.CustomResource):
 
         > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        role1 = openstack.identity.Role("role1")
+        ```
 
         ## Import
 

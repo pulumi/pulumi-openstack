@@ -348,6 +348,25 @@ class TempUrl(pulumi.CustomResource):
         the `regenerate` argument to `true`. This will create a new resource with
         a new ID and URL.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container1", metadata={
+            "Temp-URL-Key": "testkey",
+        })
+        object1 = openstack.objectstorage.ContainerObject("object1",
+            container_name=container1.name,
+            content="Hello, world!")
+        obj_tempurl = openstack.objectstorage.TempUrl("objTempurl",
+            container=container1.name,
+            object=object1.name,
+            method="post",
+            ttl=20)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container: The container name the object belongs to.
@@ -375,6 +394,25 @@ class TempUrl(pulumi.CustomResource):
         will remain in place. If you wish to automatically regenerate a URL, set
         the `regenerate` argument to `true`. This will create a new resource with
         a new ID and URL.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        container1 = openstack.objectstorage.Container("container1", metadata={
+            "Temp-URL-Key": "testkey",
+        })
+        object1 = openstack.objectstorage.ContainerObject("object1",
+            container_name=container1.name,
+            content="Hello, world!")
+        obj_tempurl = openstack.objectstorage.TempUrl("objTempurl",
+            container=container1.name,
+            object=object1.name,
+            method="post",
+            ttl=20)
+        ```
 
         :param str resource_name: The name of the resource.
         :param TempUrlArgs args: The arguments to use to populate this resource's properties.

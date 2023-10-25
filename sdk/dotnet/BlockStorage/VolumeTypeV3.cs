@@ -14,6 +14,29 @@ namespace Pulumi.OpenStack.BlockStorage
     /// 
     /// &gt; **Note:** This usually requires admin privileges.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var volumeType1 = new OpenStack.BlockStorage.VolumeTypeV3("volumeType1", new()
+    ///     {
+    ///         Description = "Volume type 1",
+    ///         ExtraSpecs = 
+    ///         {
+    ///             { "capabilities", "gpu" },
+    ///             { "volume_backend_name", "ssd" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Volume types can be imported using the `volume_type_id`, e.g.

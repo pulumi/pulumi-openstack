@@ -13,6 +13,32 @@ import (
 )
 
 // Use this data source to get the ID of an available Barbican container.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := keymanager.GetContainer(ctx, &keymanager.GetContainerArgs{
+//				Name: pulumi.StringRef("my_container"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetContainer(ctx *pulumi.Context, args *GetContainerArgs, opts ...pulumi.InvokeOption) (*GetContainerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetContainerResult

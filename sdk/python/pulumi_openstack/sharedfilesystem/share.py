@@ -687,6 +687,28 @@ class Share(pulumi.CustomResource):
         """
         Use this resource to configure a share.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            ip_version=4,
+            network_id=network1.id)
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+            description="test share network with security services",
+            neutron_net_id=network1.id,
+            neutron_subnet_id=subnet1.id)
+        share1 = openstack.sharedfilesystem.Share("share1",
+            description="test share description",
+            share_proto="NFS",
+            size=1,
+            share_network_id=sharenetwork1.id)
+        ```
+
         ## Import
 
         This resource can be imported by specifying the ID of the share:
@@ -731,6 +753,28 @@ class Share(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Use this resource to configure a share.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            ip_version=4,
+            network_id=network1.id)
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+            description="test share network with security services",
+            neutron_net_id=network1.id,
+            neutron_subnet_id=subnet1.id)
+        share1 = openstack.sharedfilesystem.Share("share1",
+            description="test share description",
+            share_proto="NFS",
+            size=1,
+            share_network_id=sharenetwork1.id)
+        ```
 
         ## Import
 

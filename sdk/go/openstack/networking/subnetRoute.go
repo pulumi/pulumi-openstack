@@ -15,6 +15,54 @@ import (
 
 // Creates a routing entry on a OpenStack V2 subnet.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.NewRouter(ctx, "router1", &networking.RouterArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//				NetworkId: network1.ID(),
+//				Cidr:      pulumi.String("192.168.199.0/24"),
+//				IpVersion: pulumi.Int(4),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewSubnetRoute(ctx, "subnetRoute1", &networking.SubnetRouteArgs{
+//				SubnetId:        subnet1.ID(),
+//				DestinationCidr: pulumi.String("10.0.1.0/24"),
+//				NextHop:         pulumi.String("192.168.199.254"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Routing entries can be imported using a combined ID using the following format`<subnet_id>-route-<destination_cidr>-<next_hop>`

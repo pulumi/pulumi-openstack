@@ -30,6 +30,44 @@ import (
 // such as a bare-metal server or a remote virtual machine in a
 // different cloud provider.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			volume1, err := blockstorage.NewVolumeV2(ctx, "volume1", &blockstorage.VolumeV2Args{
+//				Size: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = blockstorage.NewVolumeAttachV2(ctx, "va1", &blockstorage.VolumeAttachV2Args{
+//				VolumeId:  volume1.ID(),
+//				Device:    pulumi.String("auto"),
+//				HostName:  pulumi.String("devstack"),
+//				IpAddress: pulumi.String("192.168.255.10"),
+//				Initiator: pulumi.String("iqn.1993-08.org.debian:01:e9861fb1859"),
+//				OsType:    pulumi.String("linux2"),
+//				Platform:  pulumi.String("x86_64"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // It is not possible to import this resource.

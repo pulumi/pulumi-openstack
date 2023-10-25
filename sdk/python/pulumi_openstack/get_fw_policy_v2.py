@@ -148,6 +148,15 @@ def get_fw_policy_v2(audited: Optional[bool] = None,
     """
     Use this data source to get information of an available OpenStack firewall policy v2.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    policy = openstack.get_fw_policy_v2(name="tf_test_policy")
+    ```
+
 
     :param bool audited: Whether this policy has been audited.
     :param str description: Human-readable description of the policy.
@@ -193,6 +202,15 @@ def get_fw_policy_v2_output(audited: Optional[pulumi.Input[Optional[bool]]] = No
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFwPolicyV2Result]:
     """
     Use this data source to get information of an available OpenStack firewall policy v2.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    policy = openstack.get_fw_policy_v2(name="tf_test_policy")
+    ```
 
 
     :param bool audited: Whether this policy has been audited.

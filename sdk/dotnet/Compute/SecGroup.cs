@@ -18,7 +18,83 @@ namespace Pulumi.OpenStack.Compute
     /// and `openstack.networking.SecGroupRule`
     /// resources instead, which uses the OpenStack Networking API.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secgroup1 = new OpenStack.Compute.SecGroup("secgroup1", new()
+    ///     {
+    ///         Description = "my security group",
+    ///         Rules = new[]
+    ///         {
+    ///             new OpenStack.Compute.Inputs.SecGroupRuleArgs
+    ///             {
+    ///                 Cidr = "0.0.0.0/0",
+    ///                 FromPort = 22,
+    ///                 IpProtocol = "tcp",
+    ///                 ToPort = 22,
+    ///             },
+    ///             new OpenStack.Compute.Inputs.SecGroupRuleArgs
+    ///             {
+    ///                 Cidr = "0.0.0.0/0",
+    ///                 FromPort = 80,
+    ///                 IpProtocol = "tcp",
+    ///                 ToPort = 80,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Notes
+    /// 
+    /// ### ICMP Rules
+    /// 
+    /// When using ICMP as the `ip_protocol`, the `from_port` sets the ICMP _type_ and the `to_port` sets the ICMP _code_. To allow all ICMP types, set each value to `-1`, like so:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    /// });
+    /// ```
+    /// 
+    /// A list of ICMP types and codes can be found [here](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages).
+    /// 
+    /// ### Referencing Security Groups
+    /// 
+    /// When referencing a security group in a configuration (for example, a configuration creates a new security group and then needs to apply it to an instance being created in the same configuration), it is currently recommended to reference the security group by name and not by ID, like this:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test_server = new OpenStack.Compute.Instance("test-server", new()
+    ///     {
+    ///         ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
+    ///         FlavorId = "3",
+    ///         KeyPair = "my_key_pair_name",
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             openstack_compute_secgroup_v2.Secgroup_1.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

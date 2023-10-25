@@ -20,6 +20,61 @@ import (
 //
 // ***
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			user1, err := identity.NewUser(ctx, "user1", &identity.UserArgs{
+//				DefaultProjectId: project1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			group1, err := identity.NewGroupV3(ctx, "group1", &identity.GroupV3Args{
+//				Description: pulumi.String("group 1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			role1, err := identity.NewRole(ctx, "role1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = identity.NewUserMembershipV3(ctx, "userMembership1", &identity.UserMembershipV3Args{
+//				UserId:  user1.ID(),
+//				GroupId: group1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = identity.NewRoleAssignment(ctx, "roleAssignment1", &identity.RoleAssignmentArgs{
+//				GroupId:   group1.ID(),
+//				ProjectId: project1.ID(),
+//				RoleId:    role1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by specifying all two arguments, separated by a forward slash:

@@ -638,6 +638,23 @@ class SecGroupRule(pulumi.CustomResource):
         Unlike Nova security groups, neutron separates the group from the rules
         and also allows an admin to target a specific tenant_id.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        secgroup1 = openstack.networking.SecGroup("secgroup1", description="My neutron security group")
+        secgroup_rule1 = openstack.networking.SecGroupRule("secgroupRule1",
+            direction="ingress",
+            ethertype="IPv4",
+            protocol="tcp",
+            port_range_min=22,
+            port_range_max=22,
+            remote_ip_prefix="0.0.0.0/0",
+            security_group_id=secgroup1.id)
+        ```
+
         ## Import
 
         Security Group Rules can be imported using the `id`, e.g.
@@ -707,6 +724,23 @@ class SecGroupRule(pulumi.CustomResource):
         Manages a V2 neutron security group rule resource within OpenStack.
         Unlike Nova security groups, neutron separates the group from the rules
         and also allows an admin to target a specific tenant_id.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        secgroup1 = openstack.networking.SecGroup("secgroup1", description="My neutron security group")
+        secgroup_rule1 = openstack.networking.SecGroupRule("secgroupRule1",
+            direction="ingress",
+            ethertype="IPv4",
+            protocol="tcp",
+            port_range_min=22,
+            port_range_max=22,
+            remote_ip_prefix="0.0.0.0/0",
+            security_group_id=secgroup1.id)
+        ```
 
         ## Import
 

@@ -12,6 +12,27 @@ import * as utilities from "../utilities";
  * will remain in place. If you wish to automatically regenerate a URL, set
  * the `regenerate` argument to `true`. This will create a new resource with
  * a new ID and URL.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const container1 = new openstack.objectstorage.Container("container1", {metadata: {
+ *     "Temp-URL-Key": "testkey",
+ * }});
+ * const object1 = new openstack.objectstorage.ContainerObject("object1", {
+ *     containerName: container1.name,
+ *     content: "Hello, world!",
+ * });
+ * const objTempurl = new openstack.objectstorage.TempUrl("objTempurl", {
+ *     container: container1.name,
+ *     object: object1.name,
+ *     method: "post",
+ *     ttl: 20,
+ * });
+ * ```
  */
 export class TempUrl extends pulumi.CustomResource {
     /**

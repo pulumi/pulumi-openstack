@@ -522,6 +522,18 @@ class Zone(pulumi.CustomResource):
         Manages a DNS zone in the OpenStack DNS Service.
 
         ## Example Usage
+        ### Automatically detect the correct network
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        example_com = openstack.dns.Zone("exampleCom",
+            description="An example zone",
+            email="jdoe@example.com",
+            ttl=3000,
+            type="PRIMARY")
+        ```
 
         ## Import
 
@@ -571,6 +583,18 @@ class Zone(pulumi.CustomResource):
         Manages a DNS zone in the OpenStack DNS Service.
 
         ## Example Usage
+        ### Automatically detect the correct network
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        example_com = openstack.dns.Zone("exampleCom",
+            description="An example zone",
+            email="jdoe@example.com",
+            ttl=3000,
+            type="PRIMARY")
+        ```
 
         ## Import
 

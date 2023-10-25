@@ -7,6 +7,21 @@ import * as utilities from "../utilities";
 /**
  * Manages a v1 firewall rule resource within OpenStack.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const rule1 = new openstack.firewall.Rule("rule1", {
+ *     action: "deny",
+ *     description: "drop TELNET traffic",
+ *     destinationPort: "23",
+ *     enabled: true,
+ *     protocol: "tcp",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Firewall Rules can be imported using the `id`, e.g.

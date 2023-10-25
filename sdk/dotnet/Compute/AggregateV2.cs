@@ -13,6 +13,47 @@ namespace Pulumi.OpenStack.Compute
     /// Manages a Host Aggregate within Openstack Nova.
     /// 
     /// ## Example Usage
+    /// ### Full example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dellServers = new OpenStack.Compute.AggregateV2("dellServers", new()
+    ///     {
+    ///         Hosts = new[]
+    ///         {
+    ///             "myhost01.example.com",
+    ///             "myhost02.example.com",
+    ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "cpus", "56" },
+    ///         },
+    ///         Region = "RegionOne",
+    ///         Zone = "nova",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Minimum required example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test = new OpenStack.Compute.AggregateV2("test");
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

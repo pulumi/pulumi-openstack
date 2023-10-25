@@ -497,6 +497,29 @@ class QuoteSetV3(pulumi.CustomResource):
         > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
             created with zero value. This excludes volume type quota.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        quotaset1 = openstack.blockstorage.QuoteSetV3("quotaset1",
+            project_id=project1.id,
+            volumes=10,
+            snapshots=4,
+            gigabytes=100,
+            per_volume_gigabytes=10,
+            backups=4,
+            backup_gigabytes=10,
+            groups=100,
+            volume_type_quota={
+                "volumes_ssd": 30,
+                "gigabytes_ssd": 500,
+                "snapshots_ssd": 10,
+            })
+        ```
+
         ## Import
 
         Quotasets can be imported using the `project_id/region`, e.g.
@@ -546,6 +569,29 @@ class QuoteSetV3(pulumi.CustomResource):
 
         > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
             created with zero value. This excludes volume type quota.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        quotaset1 = openstack.blockstorage.QuoteSetV3("quotaset1",
+            project_id=project1.id,
+            volumes=10,
+            snapshots=4,
+            gigabytes=100,
+            per_volume_gigabytes=10,
+            backups=4,
+            backup_gigabytes=10,
+            groups=100,
+            volume_type_quota={
+                "volumes_ssd": 30,
+                "gigabytes_ssd": 500,
+                "snapshots_ssd": 10,
+            })
+        ```
 
         ## Import
 

@@ -257,6 +257,43 @@ class PortSecGroupAssociate(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Append a security group to an existing port
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
+        secgroup = openstack.networking.get_sec_group(name="secgroup")
+        port1 = openstack.networking.PortSecGroupAssociate("port1",
+            port_id=system_port.id,
+            security_group_ids=[secgroup.id])
+        ```
+        ### Enforce a security group to an existing port
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
+        secgroup = openstack.networking.get_sec_group(name="secgroup")
+        port1 = openstack.networking.PortSecGroupAssociate("port1",
+            port_id=system_port.id,
+            enforce=True,
+            security_group_ids=[secgroup.id])
+        ```
+        ### Remove all security groups from an existing port
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
+        port1 = openstack.networking.PortSecGroupAssociate("port1",
+            port_id=system_port.id,
+            enforce=True,
+            security_group_ids=[])
+        ```
 
         ## Import
 
@@ -287,6 +324,43 @@ class PortSecGroupAssociate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Append a security group to an existing port
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
+        secgroup = openstack.networking.get_sec_group(name="secgroup")
+        port1 = openstack.networking.PortSecGroupAssociate("port1",
+            port_id=system_port.id,
+            security_group_ids=[secgroup.id])
+        ```
+        ### Enforce a security group to an existing port
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
+        secgroup = openstack.networking.get_sec_group(name="secgroup")
+        port1 = openstack.networking.PortSecGroupAssociate("port1",
+            port_id=system_port.id,
+            enforce=True,
+            security_group_ids=[secgroup.id])
+        ```
+        ### Remove all security groups from an existing port
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        system_port = openstack.networking.get_port(fixed_ip="10.0.0.10")
+        port1 = openstack.networking.PortSecGroupAssociate("port1",
+            port_id=system_port.id,
+            enforce=True,
+            security_group_ids=[])
+        ```
 
         ## Import
 

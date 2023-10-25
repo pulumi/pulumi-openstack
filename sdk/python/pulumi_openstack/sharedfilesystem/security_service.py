@@ -496,6 +496,23 @@ class SecurityService(pulumi.CustomResource):
 
         Minimum supported Manila microversion is 2.7.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
+            description="created by terraform",
+            dns_ip="192.168.199.10",
+            domain="example.com",
+            ou="CN=Computers,DC=example,DC=com",
+            password="s8cret",
+            server="192.168.199.10",
+            type="active_directory",
+            user="joinDomainUser")
+        ```
+
         ## Import
 
         This resource can be imported by specifying the ID of the security service:
@@ -545,6 +562,23 @@ class SecurityService(pulumi.CustomResource):
         Microsoft Active Directory.
 
         Minimum supported Manila microversion is 2.7.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
+            description="created by terraform",
+            dns_ip="192.168.199.10",
+            domain="example.com",
+            ou="CN=Computers,DC=example,DC=com",
+            password="s8cret",
+            server="192.168.199.10",
+            type="active_directory",
+            user="joinDomainUser")
+        ```
 
         ## Import
 

@@ -13,6 +13,60 @@ namespace Pulumi.OpenStack.Networking
     /// Manages a V2 Neutron subnetpool resource within OpenStack.
     /// 
     /// ## Example Usage
+    /// ### Create a Subnet Pool
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var subnetpool1 = new OpenStack.Networking.SubnetPool("subnetpool1", new()
+    ///     {
+    ///         IpVersion = 6,
+    ///         Prefixes = new[]
+    ///         {
+    ///             "fdf7:b13d:dead:beef::/64",
+    ///             "fd65:86cc:a334:39b7::/64",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Create a Subnet from a Subnet Pool
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///     });
+    /// 
+    ///     var subnetpool1 = new OpenStack.Networking.SubnetPool("subnetpool1", new()
+    ///     {
+    ///         Prefixes = new[]
+    ///         {
+    ///             "10.11.12.0/24",
+    ///         },
+    ///     });
+    /// 
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     {
+    ///         Cidr = "10.11.12.0/25",
+    ///         NetworkId = network1.Id,
+    ///         SubnetpoolId = subnetpool1.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

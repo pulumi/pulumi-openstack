@@ -556,6 +556,31 @@ class GroupV2(pulumi.CustomResource):
 
         > **Note:** Firewall v2 has no support for OVN currently.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rule1 = openstack.firewall.RuleV2("rule1",
+            description="drop TELNET traffic",
+            action="deny",
+            protocol="tcp",
+            destination_port="23",
+            enabled=True)
+        rule2 = openstack.firewall.RuleV2("rule2",
+            description="drop NTP traffic",
+            action="deny",
+            protocol="udp",
+            destination_port="123",
+            enabled=False)
+        policy1 = openstack.firewall.PolicyV2("policy1", rules=[rule1.id])
+        policy2 = openstack.firewall.PolicyV2("policy2", rules=[rule2.id])
+        group1 = openstack.firewall.GroupV2("group1",
+            ingress_firewall_policy_id=policy1.id,
+            egress_firewall_policy_id=policy2.id)
+        ```
+
         ## Import
 
         Firewall groups can be imported using the `id`, e.g.
@@ -610,6 +635,31 @@ class GroupV2(pulumi.CustomResource):
         Manages a v2 firewall group resource within OpenStack.
 
         > **Note:** Firewall v2 has no support for OVN currently.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rule1 = openstack.firewall.RuleV2("rule1",
+            description="drop TELNET traffic",
+            action="deny",
+            protocol="tcp",
+            destination_port="23",
+            enabled=True)
+        rule2 = openstack.firewall.RuleV2("rule2",
+            description="drop NTP traffic",
+            action="deny",
+            protocol="udp",
+            destination_port="123",
+            enabled=False)
+        policy1 = openstack.firewall.PolicyV2("policy1", rules=[rule1.id])
+        policy2 = openstack.firewall.PolicyV2("policy2", rules=[rule2.id])
+        group1 = openstack.firewall.GroupV2("group1",
+            ingress_firewall_policy_id=policy1.id,
+            egress_firewall_policy_id=policy2.id)
+        ```
 
         ## Import
 

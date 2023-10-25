@@ -711,6 +711,15 @@ class LoadBalancer(pulumi.CustomResource):
         > **Note:** This resource has attributes that depend on octavia minor versions.
         Please ensure your Openstack cloud supports the required minor version.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        lb1 = openstack.loadbalancer.LoadBalancer("lb1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
+        ```
+
         ## Import
 
         Load Balancer can be imported using the Load Balancer ID, e.g.:
@@ -771,6 +780,15 @@ class LoadBalancer(pulumi.CustomResource):
 
         > **Note:** This resource has attributes that depend on octavia minor versions.
         Please ensure your Openstack cloud supports the required minor version.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        lb1 = openstack.loadbalancer.LoadBalancer("lb1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
+        ```
 
         ## Import
 

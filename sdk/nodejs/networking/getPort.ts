@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the ID of an available OpenStack port.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const port1 = openstack.networking.getPort({
+ *     name: "port_1",
+ * });
+ * ```
  */
 export function getPort(args?: GetPortArgs, opts?: pulumi.InvokeOptions): Promise<GetPortResult> {
     args = args || {};
@@ -195,6 +206,17 @@ export interface GetPortResult {
 }
 /**
  * Use this data source to get the ID of an available OpenStack port.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const port1 = openstack.networking.getPort({
+ *     name: "port_1",
+ * });
+ * ```
  */
 export function getPortOutput(args?: GetPortOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortResult> {
     return pulumi.output(args).apply((a: any) => getPort(a, opts))

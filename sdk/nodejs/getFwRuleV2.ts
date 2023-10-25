@@ -6,6 +6,17 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to get information of an available OpenStack firewall rule v2.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const rule = openstack.getFwRuleV2({
+ *     name: "tf_test_rule",
+ * });
+ * ```
  */
 export function getFwRuleV2(args?: GetFwRuleV2Args, opts?: pulumi.InvokeOptions): Promise<GetFwRuleV2Result> {
     args = args || {};
@@ -173,6 +184,17 @@ export interface GetFwRuleV2Result {
 }
 /**
  * Use this data source to get information of an available OpenStack firewall rule v2.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const rule = openstack.getFwRuleV2({
+ *     name: "tf_test_rule",
+ * });
+ * ```
  */
 export function getFwRuleV2Output(args?: GetFwRuleV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFwRuleV2Result> {
     return pulumi.output(args).apply((a: any) => getFwRuleV2(a, opts))

@@ -97,6 +97,15 @@ def get_qos_minimum_bandwidth_rule(direction: Optional[str] = None,
     """
     Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    qos_min_bw_rule1 = openstack.networking.get_qos_minimum_bandwidth_rule(min_kbps=2000)
+    ```
+
 
     :param int min_kbps: The value of a minimum kbps bandwidth.
     :param str qos_policy_id: The QoS policy reference.
@@ -128,6 +137,15 @@ def get_qos_minimum_bandwidth_rule_output(direction: Optional[pulumi.Input[Optio
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQosMinimumBandwidthRuleResult]:
     """
     Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    qos_min_bw_rule1 = openstack.networking.get_qos_minimum_bandwidth_rule(min_kbps=2000)
+    ```
 
 
     :param int min_kbps: The value of a minimum kbps bandwidth.

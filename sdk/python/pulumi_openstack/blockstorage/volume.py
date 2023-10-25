@@ -726,6 +726,18 @@ class Volume(pulumi.CustomResource):
         """
         Manages a V3 volume resource within OpenStack.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        volume1 = openstack.blockstorage.Volume("volume1",
+            description="first test volume",
+            region="RegionOne",
+            size=3)
+        ```
+
         ## Import
 
         Volumes can be imported using the `id`, e.g.
@@ -774,6 +786,18 @@ class Volume(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V3 volume resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        volume1 = openstack.blockstorage.Volume("volume1",
+            description="first test volume",
+            region="RegionOne",
+            size=3)
+        ```
 
         ## Import
 

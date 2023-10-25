@@ -180,6 +180,16 @@ def get_flavor(description: Optional[str] = None,
     """
     Use this data source to get the ID of an available OpenStack flavor.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    small = openstack.compute.get_flavor(ram=512,
+        vcpus=1)
+    ```
+
 
     :param str description: The description of the flavor.
     :param int disk: The exact amount of disk (in gigabytes).
@@ -247,6 +257,16 @@ def get_flavor_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlavorResult]:
     """
     Use this data source to get the ID of an available OpenStack flavor.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    small = openstack.compute.get_flavor(ram=512,
+        vcpus=1)
+    ```
 
 
     :param str description: The description of the flavor.

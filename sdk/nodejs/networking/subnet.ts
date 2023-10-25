@@ -9,6 +9,19 @@ import * as utilities from "../utilities";
 /**
  * Manages a V2 Neutron subnet resource within OpenStack.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ *     networkId: network1.id,
+ *     cidr: "192.168.199.0/24",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Subnets can be imported using the `id`, e.g.

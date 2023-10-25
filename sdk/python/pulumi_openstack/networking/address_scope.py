@@ -284,6 +284,28 @@ class AddressScope(pulumi.CustomResource):
         Manages a V2 Neutron addressscope resource within OpenStack.
 
         ## Example Usage
+        ### Create an Address-scope
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        addressscope1 = openstack.networking.AddressScope("addressscope1", ip_version=6)
+        ```
+        ### Create a Subnet Pool from an Address-scope
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        addressscope1 = openstack.networking.AddressScope("addressscope1", ip_version=6)
+        subnetpool1 = openstack.networking.SubnetPool("subnetpool1",
+            prefixes=[
+                "fdf7:b13d:dead:beef::/64",
+                "fd65:86cc:a334:39b7::/64",
+            ],
+            address_scope_id=addressscope1.id)
+        ```
 
         ## Import
 
@@ -320,6 +342,28 @@ class AddressScope(pulumi.CustomResource):
         Manages a V2 Neutron addressscope resource within OpenStack.
 
         ## Example Usage
+        ### Create an Address-scope
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        addressscope1 = openstack.networking.AddressScope("addressscope1", ip_version=6)
+        ```
+        ### Create a Subnet Pool from an Address-scope
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        addressscope1 = openstack.networking.AddressScope("addressscope1", ip_version=6)
+        subnetpool1 = openstack.networking.SubnetPool("subnetpool1",
+            prefixes=[
+                "fdf7:b13d:dead:beef::/64",
+                "fd65:86cc:a334:39b7::/64",
+            ],
+            address_scope_id=addressscope1.id)
+        ```
 
         ## Import
 

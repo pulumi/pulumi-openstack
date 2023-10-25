@@ -17,6 +17,40 @@ import (
 //
 // > **Note:** This usually requires admin privileges.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			service1, err := identity.NewServiceV3(ctx, "service1", &identity.ServiceV3Args{
+//				Type: pulumi.String("my-service-type"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = identity.NewEndpointV3(ctx, "endpoint1", &identity.EndpointV3Args{
+//				ServiceId:      service1.ID(),
+//				EndpointRegion: service1.Region,
+//				Url:            pulumi.String("http://my-endpoint"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Endpoints can be imported using the `id`, e.g.

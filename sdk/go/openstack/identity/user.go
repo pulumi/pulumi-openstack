@@ -21,6 +21,56 @@ import (
 // > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
 // this resource.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = identity.NewUser(ctx, "user1", &identity.UserArgs{
+//				DefaultProjectId:                 project1.ID(),
+//				Description:                      pulumi.String("A user"),
+//				Password:                         pulumi.String("password123"),
+//				IgnoreChangePasswordUponFirstUse: pulumi.Bool(true),
+//				MultiFactorAuthEnabled:           pulumi.Bool(true),
+//				MultiFactorAuthRules: identity.UserMultiFactorAuthRuleArray{
+//					&identity.UserMultiFactorAuthRuleArgs{
+//						Rules: pulumi.StringArray{
+//							pulumi.String("password"),
+//							pulumi.String("totp"),
+//						},
+//					},
+//					&identity.UserMultiFactorAuthRuleArgs{
+//						Rules: pulumi.StringArray{
+//							pulumi.String("password"),
+//						},
+//					},
+//				},
+//				Extra: pulumi.Map{
+//					"email": pulumi.Any("user_1@foobar.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Users can be imported using the `id`, e.g.

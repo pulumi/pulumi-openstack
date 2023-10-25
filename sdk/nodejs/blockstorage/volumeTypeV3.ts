@@ -9,6 +9,21 @@ import * as utilities from "../utilities";
  *
  * > **Note:** This usually requires admin privileges.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const volumeType1 = new openstack.blockstorage.VolumeTypeV3("volumeType1", {
+ *     description: "Volume type 1",
+ *     extraSpecs: {
+ *         capabilities: "gpu",
+ *         volume_backend_name: "ssd",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Volume types can be imported using the `volume_type_id`, e.g.

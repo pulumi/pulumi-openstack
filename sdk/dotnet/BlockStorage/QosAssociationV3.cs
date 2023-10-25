@@ -14,6 +14,36 @@ namespace Pulumi.OpenStack.BlockStorage
     /// 
     /// &gt; **Note:** This usually requires admin privileges.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var qos = new OpenStack.BlockStorage.QosV3("qos", new()
+    ///     {
+    ///         Consumer = "front-end",
+    ///         Specs = 
+    ///         {
+    ///             { "read_iops_sec", "20000" },
+    ///         },
+    ///     });
+    /// 
+    ///     var volumeType = new OpenStack.BlockStorage.VolumeTypeV3("volumeType");
+    /// 
+    ///     var qosAssociation = new OpenStack.BlockStorage.QosAssociationV3("qosAssociation", new()
+    ///     {
+    ///         QosId = qos.Id,
+    ///         VolumeTypeId = volumeType.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Qos association can be imported using the `qos_id/volume_type_id`, e.g.

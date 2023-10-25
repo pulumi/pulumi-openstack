@@ -8,6 +8,25 @@ import * as utilities from "../utilities";
  * Manages memberships status for the shared OpenStack Glance V2 Image within the
  * destination project, which has a member proposal.
  *
+ * ## Example Usage
+ *
+ * Accept a shared image membershipship proposal within the current project.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const rancheros = openstack.images.getImage({
+ *     name: "RancherOS",
+ *     visibility: "shared",
+ *     memberStatus: "all",
+ * });
+ * const rancherosMember = new openstack.images.ImageAccessAccept("rancherosMember", {
+ *     imageId: rancheros.then(rancheros => rancheros.id),
+ *     status: "accepted",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Image access acceptance status can be imported using the `image_id`, e.g.

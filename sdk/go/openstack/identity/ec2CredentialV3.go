@@ -21,6 +21,57 @@ import (
 // in state.
 //
 // ## Example Usage
+// ### EC2 credential in current project scope
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := identity.NewEc2CredentialV3(ctx, "ec2Key1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### EC2 credential in pre-defined project scope
+//
+// This allows administrative users to create EC2 credentials for a scope different
+// from the current auth scope.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := identity.NewEc2CredentialV3(ctx, "ec2Key1", &identity.Ec2CredentialV3Args{
+//				ProjectId: pulumi.String("f7ac731cc11f40efbc03a9f9e1d1d21f"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -204,6 +204,19 @@ def get_image_ids(member_status: Optional[str] = None,
     Use this data source to get a list of Openstack Image IDs matching the
     specified criteria.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    images = openstack.images.get_image_ids(name_regex="^Ubuntu 16\\\\.04.*-amd64",
+        properties={
+            "key": "value",
+        },
+        sort="updated_at")
+    ```
+
 
     :param str member_status: The status of the image. Must be one of
            "accepted", "pending", "rejected", or "all".
@@ -297,6 +310,19 @@ def get_image_ids_output(member_status: Optional[pulumi.Input[Optional[str]]] = 
     """
     Use this data source to get a list of Openstack Image IDs matching the
     specified criteria.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    images = openstack.images.get_image_ids(name_regex="^Ubuntu 16\\\\.04.*-amd64",
+        properties={
+            "key": "value",
+        },
+        sort="updated_at")
+    ```
 
 
     :param str member_status: The status of the image. Must be one of

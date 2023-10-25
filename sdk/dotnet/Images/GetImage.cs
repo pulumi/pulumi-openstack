@@ -13,12 +13,66 @@ namespace Pulumi.OpenStack.Images
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack image.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ubuntu = OpenStack.Images.GetImage.Invoke(new()
+        ///     {
+        ///         MostRecent = true,
+        ///         Name = "Ubuntu 16.04",
+        ///         Properties = 
+        ///         {
+        ///             { "key", "value" },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("openstack:images/getImage:getImage", args ?? new GetImageArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack image.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ubuntu = OpenStack.Images.GetImage.Invoke(new()
+        ///     {
+        ///         MostRecent = true,
+        ///         Name = "Ubuntu 16.04",
+        ///         Properties = 
+        ///         {
+        ///             { "key", "value" },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetImageResult> Invoke(GetImageInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImageResult>("openstack:images/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());

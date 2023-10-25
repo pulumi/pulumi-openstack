@@ -87,6 +87,15 @@ def get_role(domain_id: Optional[str] = None,
     """
     Use this data source to get the ID of an OpenStack role.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    admin = openstack.identity.get_role(name="admin")
+    ```
+
 
     :param str domain_id: The domain the role belongs to.
     :param str name: The name of the role.
@@ -114,6 +123,15 @@ def get_role_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleResult]:
     """
     Use this data source to get the ID of an OpenStack role.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    admin = openstack.identity.get_role(name="admin")
+    ```
 
 
     :param str domain_id: The domain the role belongs to.

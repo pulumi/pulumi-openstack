@@ -454,6 +454,24 @@ class Instance(pulumi.CustomResource):
         state.
 
         ## Example Usage
+        ### Instance
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        test = openstack.database.Instance("test",
+            datastore=openstack.database.InstanceDatastoreArgs(
+                type="mysql",
+                version="mysql-5.7",
+            ),
+            flavor_id="31792d21-c355-4587-9290-56c1ed0ca376",
+            networks=[openstack.database.InstanceNetworkArgs(
+                uuid="c0612505-caf2-4fb0-b7cb-56a0240a2b12",
+            )],
+            region="region-test",
+            size=8)
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -489,6 +507,24 @@ class Instance(pulumi.CustomResource):
         state.
 
         ## Example Usage
+        ### Instance
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        test = openstack.database.Instance("test",
+            datastore=openstack.database.InstanceDatastoreArgs(
+                type="mysql",
+                version="mysql-5.7",
+            ),
+            flavor_id="31792d21-c355-4587-9290-56c1ed0ca376",
+            networks=[openstack.database.InstanceNetworkArgs(
+                uuid="c0612505-caf2-4fb0-b7cb-56a0240a2b12",
+            )],
+            region="region-test",
+            size=8)
+        ```
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

@@ -6,6 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get information about an existing snapshot.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const snapshot1 = openstack.blockstorage.getSnapshotV2({
+ *     mostRecent: true,
+ *     name: "snapshot_1",
+ * });
+ * ```
  */
 export function getSnapshotV2(args?: GetSnapshotV2Args, opts?: pulumi.InvokeOptions): Promise<GetSnapshotV2Result> {
     args = args || {};
@@ -88,6 +100,18 @@ export interface GetSnapshotV2Result {
 }
 /**
  * Use this data source to get information about an existing snapshot.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const snapshot1 = openstack.blockstorage.getSnapshotV2({
+ *     mostRecent: true,
+ *     name: "snapshot_1",
+ * });
+ * ```
  */
 export function getSnapshotV2Output(args?: GetSnapshotV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotV2Result> {
     return pulumi.output(args).apply((a: any) => getSnapshotV2(a, opts))

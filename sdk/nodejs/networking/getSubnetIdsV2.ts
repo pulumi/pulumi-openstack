@@ -7,6 +7,18 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get a list of Openstack Subnet IDs matching the
  * specified criteria.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const subnets = openstack.networking.getSubnetIdsV2({
+ *     nameRegex: "public",
+ *     tags: ["public"],
+ * });
+ * ```
  */
 export function getSubnetIdsV2(args?: GetSubnetIdsV2Args, opts?: pulumi.InvokeOptions): Promise<GetSubnetIdsV2Result> {
     args = args || {};
@@ -133,6 +145,18 @@ export interface GetSubnetIdsV2Result {
 /**
  * Use this data source to get a list of Openstack Subnet IDs matching the
  * specified criteria.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const subnets = openstack.networking.getSubnetIdsV2({
+ *     nameRegex: "public",
+ *     tags: ["public"],
+ * });
+ * ```
  */
 export function getSubnetIdsV2Output(args?: GetSubnetIdsV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetIdsV2Result> {
     return pulumi.output(args).apply((a: any) => getSubnetIdsV2(a, opts))
