@@ -17,6 +17,46 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// ***
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project1 = new OpenStack.Identity.Project("project1");
+    /// 
+    ///     var user1 = new OpenStack.Identity.User("user1", new()
+    ///     {
+    ///         DefaultProjectId = project1.Id,
+    ///     });
+    /// 
+    ///     var group1 = new OpenStack.Identity.GroupV3("group1", new()
+    ///     {
+    ///         Description = "group 1",
+    ///     });
+    /// 
+    ///     var role1 = new OpenStack.Identity.Role("role1");
+    /// 
+    ///     var userMembership1 = new OpenStack.Identity.UserMembershipV3("userMembership1", new()
+    ///     {
+    ///         UserId = user1.Id,
+    ///         GroupId = group1.Id,
+    ///     });
+    /// 
+    ///     var roleAssignment1 = new OpenStack.Identity.RoleAssignment("roleAssignment1", new()
+    ///     {
+    ///         GroupId = group1.Id,
+    ///         ProjectId = project1.Id,
+    ///         RoleId = role1.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying all two arguments, separated by a forward slash:

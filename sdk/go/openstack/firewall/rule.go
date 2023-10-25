@@ -15,6 +15,36 @@ import (
 
 // Manages a v1 firewall rule resource within OpenStack.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/firewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := firewall.NewRule(ctx, "rule1", &firewall.RuleArgs{
+//				Action:          pulumi.String("deny"),
+//				Description:     pulumi.String("drop TELNET traffic"),
+//				DestinationPort: pulumi.String("23"),
+//				Enabled:         pulumi.Bool(true),
+//				Protocol:        pulumi.String("tcp"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Firewall Rules can be imported using the `id`, e.g.

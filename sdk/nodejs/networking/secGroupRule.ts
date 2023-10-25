@@ -9,6 +9,24 @@ import * as utilities from "../utilities";
  * Unlike Nova security groups, neutron separates the group from the rules
  * and also allows an admin to target a specific tenant_id.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const secgroup1 = new openstack.networking.SecGroup("secgroup1", {description: "My neutron security group"});
+ * const secgroupRule1 = new openstack.networking.SecGroupRule("secgroupRule1", {
+ *     direction: "ingress",
+ *     ethertype: "IPv4",
+ *     protocol: "tcp",
+ *     portRangeMin: 22,
+ *     portRangeMax: 22,
+ *     remoteIpPrefix: "0.0.0.0/0",
+ *     securityGroupId: secgroup1.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Security Group Rules can be imported using the `id`, e.g.

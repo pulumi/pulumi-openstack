@@ -16,6 +16,31 @@ import (
 // Manages a V1 DB database resource within OpenStack.
 //
 // ## Example Usage
+// ### Database
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/database"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := database.NewDatabase(ctx, "mydb", &database.DatabaseArgs{
+//				InstanceId: pulumi.Any(openstack_db_instance_v1.Basic.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

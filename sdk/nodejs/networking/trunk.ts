@@ -8,6 +8,49 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a networking V2 trunk resource within OpenStack.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ *     networkId: network1.id,
+ *     cidr: "192.168.1.0/24",
+ *     ipVersion: 4,
+ *     enableDhcp: true,
+ *     noGateway: true,
+ * });
+ * const parentPort1 = new openstack.networking.Port("parentPort1", {
+ *     networkId: network1.id,
+ *     adminStateUp: true,
+ * }, {
+ *     dependsOn: ["openstack_networking_subnet_v2.subnet_1"],
+ * });
+ * const subport1 = new openstack.networking.Port("subport1", {
+ *     networkId: network1.id,
+ *     adminStateUp: true,
+ * }, {
+ *     dependsOn: ["openstack_networking_subnet_v2.subnet_1"],
+ * });
+ * const trunk1 = new openstack.networking.Trunk("trunk1", {
+ *     adminStateUp: true,
+ *     portId: parentPort1.id,
+ *     subPorts: [{
+ *         portId: subport1.id,
+ *         segmentationId: 1,
+ *         segmentationType: "vlan",
+ *     }],
+ * });
+ * const instance1 = new openstack.compute.Instance("instance1", {
+ *     securityGroups: ["default"],
+ *     networks: [{
+ *         port: trunk1.portId,
+ *     }],
+ * });
+ * ```
  */
 export class Trunk extends pulumi.CustomResource {
     /**

@@ -229,6 +229,17 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
         Manages a V2 Neutron QoS minimum bandwidth rule resource within OpenStack.
 
         ## Example Usage
+        ### Create a QoS Policy with some minimum bandwidth rule
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="min_kbps")
+        minimum_bandwidth_rule1 = openstack.networking.QosMinimumBandwidthRule("minimumBandwidthRule1",
+            qos_policy_id=qos_policy1.id,
+            min_kbps=200)
+        ```
 
         ## Import
 
@@ -259,6 +270,17 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
         Manages a V2 Neutron QoS minimum bandwidth rule resource within OpenStack.
 
         ## Example Usage
+        ### Create a QoS Policy with some minimum bandwidth rule
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="min_kbps")
+        minimum_bandwidth_rule1 = openstack.networking.QosMinimumBandwidthRule("minimumBandwidthRule1",
+            qos_policy_id=qos_policy1.id,
+            min_kbps=200)
+        ```
 
         ## Import
 

@@ -13,6 +13,32 @@ import (
 )
 
 // Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networking.LookupQosMinimumBandwidthRule(ctx, &networking.LookupQosMinimumBandwidthRuleArgs{
+//				MinKbps: pulumi.IntRef(2000),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupQosMinimumBandwidthRule(ctx *pulumi.Context, args *LookupQosMinimumBandwidthRuleArgs, opts ...pulumi.InvokeOption) (*LookupQosMinimumBandwidthRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupQosMinimumBandwidthRuleResult

@@ -8,6 +8,27 @@ import * as utilities from "../utilities";
  * Manages a DNS zone transfer accept in the OpenStack DNS Service.
  *
  * ## Example Usage
+ * ### Automatically detect the correct network
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const exampleZone = new openstack.dns.Zone("exampleZone", {
+ *     email: "jdoe@example.com",
+ *     description: "An example zone",
+ *     ttl: 3000,
+ *     type: "PRIMARY",
+ * });
+ * const request1 = new openstack.dns.TransferRequest("request1", {
+ *     zoneId: exampleZone.id,
+ *     description: "a transfer accept",
+ * });
+ * const accept1 = new openstack.dns.TransferAccept("accept1", {
+ *     zoneTransferRequestId: request1.id,
+ *     key: request1.key,
+ * });
+ * ```
  *
  * ## Import
  *

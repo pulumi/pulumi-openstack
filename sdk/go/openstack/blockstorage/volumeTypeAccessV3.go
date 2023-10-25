@@ -17,6 +17,44 @@ import (
 //
 // > **Note:** This usually requires admin privileges.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			volumeType1, err := blockstorage.NewVolumeTypeV3(ctx, "volumeType1", &blockstorage.VolumeTypeV3Args{
+//				IsPublic: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = blockstorage.NewVolumeTypeAccessV3(ctx, "volumeTypeAccess", &blockstorage.VolumeTypeAccessV3Args{
+//				ProjectId:    project1.ID(),
+//				VolumeTypeId: volumeType1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Volume types access can be imported using the `volume_type_id/project_id`, e.g.

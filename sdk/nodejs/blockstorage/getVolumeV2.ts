@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get information about an existing volume.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const volume1 = openstack.blockstorage.getVolumeV2({
+ *     name: "volume_1",
+ * });
+ * ```
  */
 export function getVolumeV2(args?: GetVolumeV2Args, opts?: pulumi.InvokeOptions): Promise<GetVolumeV2Result> {
     args = args || {};
@@ -95,6 +106,17 @@ export interface GetVolumeV2Result {
 }
 /**
  * Use this data source to get information about an existing volume.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const volume1 = openstack.blockstorage.getVolumeV2({
+ *     name: "volume_1",
+ * });
+ * ```
  */
 export function getVolumeV2Output(args?: GetVolumeV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeV2Result> {
     return pulumi.output(args).apply((a: any) => getVolumeV2(a, opts))

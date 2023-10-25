@@ -353,6 +353,20 @@ class EndpointGroup(pulumi.CustomResource):
         """
         Manages a V2 Neutron Endpoint Group resource within OpenStack.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        group1 = openstack.vpnaas.EndpointGroup("group1",
+            endpoints=[
+                "10.2.0.0/24",
+                "10.3.0.0/24",
+            ],
+            type="cidr")
+        ```
+
         ## Import
 
         Groups can be imported using the `id`, e.g.
@@ -387,6 +401,20 @@ class EndpointGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 Neutron Endpoint Group resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        group1 = openstack.vpnaas.EndpointGroup("group1",
+            endpoints=[
+                "10.2.0.0/24",
+                "10.3.0.0/24",
+            ],
+            type="cidr")
+        ```
 
         ## Import
 

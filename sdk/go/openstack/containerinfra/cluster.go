@@ -20,6 +20,34 @@ import (
 // state.
 //
 // ## Example Usage
+// ### Create a Cluster
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/containerinfra"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := containerinfra.NewCluster(ctx, "cluster1", &containerinfra.ClusterArgs{
+//				ClusterTemplateId: pulumi.String("b9a45c5c-cd03-4958-82aa-b80bf93cb922"),
+//				Keypair:           pulumi.String("ssh_keypair"),
+//				MasterCount:       pulumi.Int(3),
+//				NodeCount:         pulumi.Int(5),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Attributes reference
 //
 // The following attributes are exported:

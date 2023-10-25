@@ -12,6 +12,21 @@ namespace Pulumi.OpenStack.VPNaaS
     /// <summary>
     /// Manages a V2 Neutron IKE policy resource within OpenStack.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policy1 = new OpenStack.VPNaaS.IkePolicy("policy1");
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Services can be imported using the `id`, e.g.

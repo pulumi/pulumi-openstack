@@ -13,6 +13,50 @@ namespace Pulumi.OpenStack.Compute
     /// Manages a V2 Server Group resource within OpenStack.
     /// 
     /// ## Example Usage
+    /// ### Compute service API version 2.63 or below:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test_sg = new OpenStack.Compute.ServerGroup("test-sg", new()
+    ///     {
+    ///         Policies = new[]
+    ///         {
+    ///             "anti-affinity",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Compute service API version 2.64 or above:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test_sg = new OpenStack.Compute.ServerGroup("test-sg", new()
+    ///     {
+    ///         Policies = new[]
+    ///         {
+    ///             "anti-affinity",
+    ///         },
+    ///         Rules = new OpenStack.Compute.Inputs.ServerGroupRulesArgs
+    ///         {
+    ///             MaxServerPerHost = 3,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Policies
     /// 
     /// * `affinity` - All instances/servers launched in this group will be hosted on

@@ -13,6 +13,23 @@ namespace Pulumi.OpenStack.Networking
     /// Manages a V2 Neutron QoS policy resource within OpenStack.
     /// 
     /// ## Example Usage
+    /// ### Create a QoS Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var qosPolicy1 = new OpenStack.Networking.QosPolicy("qosPolicy1", new()
+    ///     {
+    ///         Description = "bw_limit",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

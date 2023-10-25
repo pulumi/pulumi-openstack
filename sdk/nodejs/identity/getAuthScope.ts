@@ -8,6 +8,56 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ * ### Simple
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const scope = openstack.identity.getAuthScope({
+ *     name: "my_scope",
+ * });
+ * ```
+ *
+ * To find the the public object storage endpoint for "region1" as listed in the
+ * service catalog:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * const objectStoreService = .filter(entry => entry.type == "object-store").map(entry => (entry))[0];
+ * const objectStoreEndpoint = .filter(endpoint => endpoint["interface"] == "public" && endpoint.region == "region1").map(endpoint => (endpoint))[0];
+ * const objectStorePublicUrl = objectStoreEndpoint.url;
+ * ```
+ * ### In a combination with an http data source provider
+ *
+ * See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const scope = openstack.identity.getAuthScope({
+ *     name: "my_scope",
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as http from "@pulumi/http";
+ *
+ * const objectStoreService = .filter(entry => entry.type == "object-store").map(entry => (entry))[0];
+ * const objectStoreEndpoint = .filter(endpoint => endpoint["interface"] == "public" && endpoint.region == "region1").map(endpoint => (endpoint))[0];
+ * const objectStorePublicUrl = objectStoreEndpoint.url;
+ * const example = http.getHttp({
+ *     url: objectStorePublicUrl,
+ *     requestHeaders: {
+ *         Accept: "application/json",
+ *         "X-Auth-Token": data.openstack_identity_auth_scope_v3.scope.token_id,
+ *     },
+ * });
+ * export const containers = example.then(example => example.responseBody);
+ * ```
  */
 export function getAuthScope(args: GetAuthScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthScopeResult> {
 
@@ -117,6 +167,56 @@ export interface GetAuthScopeResult {
 }
 /**
  * ## Example Usage
+ * ### Simple
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const scope = openstack.identity.getAuthScope({
+ *     name: "my_scope",
+ * });
+ * ```
+ *
+ * To find the the public object storage endpoint for "region1" as listed in the
+ * service catalog:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ *
+ * const objectStoreService = .filter(entry => entry.type == "object-store").map(entry => (entry))[0];
+ * const objectStoreEndpoint = .filter(endpoint => endpoint["interface"] == "public" && endpoint.region == "region1").map(endpoint => (endpoint))[0];
+ * const objectStorePublicUrl = objectStoreEndpoint.url;
+ * ```
+ * ### In a combination with an http data source provider
+ *
+ * See [http](https://www.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) provider for reference.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const scope = openstack.identity.getAuthScope({
+ *     name: "my_scope",
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as http from "@pulumi/http";
+ *
+ * const objectStoreService = .filter(entry => entry.type == "object-store").map(entry => (entry))[0];
+ * const objectStoreEndpoint = .filter(endpoint => endpoint["interface"] == "public" && endpoint.region == "region1").map(endpoint => (endpoint))[0];
+ * const objectStorePublicUrl = objectStoreEndpoint.url;
+ * const example = http.getHttp({
+ *     url: objectStorePublicUrl,
+ *     requestHeaders: {
+ *         Accept: "application/json",
+ *         "X-Auth-Token": data.openstack_identity_auth_scope_v3.scope.token_id,
+ *     },
+ * });
+ * export const containers = example.then(example => example.responseBody);
+ * ```
  */
 export function getAuthScopeOutput(args: GetAuthScopeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthScopeResult> {
     return pulumi.output(args).apply((a: any) => getAuthScope(a, opts))

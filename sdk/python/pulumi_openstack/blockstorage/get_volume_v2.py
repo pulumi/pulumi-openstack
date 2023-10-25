@@ -150,6 +150,15 @@ def get_volume_v2(bootable: Optional[str] = None,
     """
     Use this data source to get information about an existing volume.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    volume1 = openstack.blockstorage.get_volume_v2(name="volume_1")
+    ```
+
 
     :param str bootable: Indicates if the volume is bootable.
     :param Mapping[str, Any] metadata: Metadata key/value pairs associated with the volume.
@@ -191,6 +200,15 @@ def get_volume_v2_output(bootable: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVolumeV2Result]:
     """
     Use this data source to get information about an existing volume.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    volume1 = openstack.blockstorage.get_volume_v2(name="volume_1")
+    ```
 
 
     :param str bootable: Indicates if the volume is bootable.

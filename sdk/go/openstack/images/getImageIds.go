@@ -14,6 +14,36 @@ import (
 
 // Use this data source to get a list of Openstack Image IDs matching the
 // specified criteria.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/images"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := images.GetImageIds(ctx, &images.GetImageIdsArgs{
+//				NameRegex: pulumi.StringRef("^Ubuntu 16\\.04.*-amd64"),
+//				Properties: map[string]interface{}{
+//					"key": "value",
+//				},
+//				Sort: pulumi.StringRef("updated_at"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetImageIds(ctx *pulumi.Context, args *GetImageIdsArgs, opts ...pulumi.InvokeOption) (*GetImageIdsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetImageIdsResult

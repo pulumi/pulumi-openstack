@@ -19,6 +19,21 @@ import * as utilities from "../utilities";
  * a wildcard RBAC policy granting everyone access to preserve previous behavior
  * before this feature was added.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const rbacPolicy1 = new openstack.networking.RbacPolicyV2("rbacPolicy1", {
+ *     action: "access_as_shared",
+ *     objectId: network1.id,
+ *     objectType: "network",
+ *     targetTenant: "20415a973c9e45d3917f078950644697",
+ * });
+ * ```
+ *
  * ## Import
  *
  * RBAC policies can be imported using the `id`, e.g.

@@ -16,6 +16,48 @@ import (
 // Manages a V1 Magnum cluster template resource within OpenStack.
 //
 // ## Example Usage
+// ### Create a Cluster template
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/containerinfra"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := containerinfra.NewClusterTemplate(ctx, "clustertemplate1", &containerinfra.ClusterTemplateArgs{
+//				Coe:                 pulumi.String("kubernetes"),
+//				DnsNameserver:       pulumi.String("1.1.1.1"),
+//				DockerStorageDriver: pulumi.String("devicemapper"),
+//				DockerVolumeSize:    pulumi.Int(10),
+//				Flavor:              pulumi.String("m1.small"),
+//				FloatingIpEnabled:   pulumi.Bool(false),
+//				Image:               pulumi.String("Fedora-Atomic-27"),
+//				Labels: pulumi.Map{
+//					"influx_grafana_dashboard_enabled": pulumi.Any("true"),
+//					"kube_dashboard_enabled":           pulumi.Any("true"),
+//					"kube_tag":                         pulumi.Any("1.11.1"),
+//					"prometheus_monitoring":            pulumi.Any("true"),
+//				},
+//				MasterFlavor:    pulumi.String("m1.medium"),
+//				MasterLbEnabled: pulumi.Bool(true),
+//				NetworkDriver:   pulumi.String("flannel"),
+//				ServerType:      pulumi.String("vm"),
+//				VolumeDriver:    pulumi.String("cinder"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Attributes reference
 //
 // The following attributes are exported:

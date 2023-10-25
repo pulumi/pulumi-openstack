@@ -27,6 +27,35 @@ namespace Pulumi.OpenStack.BlockStorage
     /// such as a bare-metal server or a remote virtual machine in a
     /// different cloud provider.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var volume1 = new OpenStack.BlockStorage.Volume("volume1", new()
+    ///     {
+    ///         Size = 1,
+    ///     });
+    /// 
+    ///     var va1 = new OpenStack.BlockStorage.VolumeAttach("va1", new()
+    ///     {
+    ///         VolumeId = volume1.Id,
+    ///         Device = "auto",
+    ///         HostName = "devstack",
+    ///         IpAddress = "192.168.255.10",
+    ///         Initiator = "iqn.1993-08.org.debian:01:e9861fb1859",
+    ///         OsType = "linux2",
+    ///         Platform = "x86_64",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// It is not possible to import this resource.

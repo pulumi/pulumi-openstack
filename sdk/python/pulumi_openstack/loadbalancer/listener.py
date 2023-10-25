@@ -911,6 +911,21 @@ class Listener(pulumi.CustomResource):
         > **Note:** This resource has attributes that depend on octavia minor versions.
         Please ensure your Openstack cloud supports the required minor version.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        listener1 = openstack.loadbalancer.Listener("listener1",
+            insert_headers={
+                "X-Forwarded-For": "true",
+            },
+            loadbalancer_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
+            protocol="HTTP",
+            protocol_port=8080)
+        ```
+
         ## Import
 
         Load Balancer Listener can be imported using the Listener ID, e.g.:
@@ -976,6 +991,21 @@ class Listener(pulumi.CustomResource):
 
         > **Note:** This resource has attributes that depend on octavia minor versions.
         Please ensure your Openstack cloud supports the required minor version.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        listener1 = openstack.loadbalancer.Listener("listener1",
+            insert_headers={
+                "X-Forwarded-For": "true",
+            },
+            loadbalancer_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
+            protocol="HTTP",
+            protocol_port=8080)
+        ```
 
         ## Import
 

@@ -771,6 +771,23 @@ class QuotaSetV2(pulumi.CustomResource):
         > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
             created with zero value.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        quotaset1 = openstack.compute.QuotaSetV2("quotaset1",
+            project_id=project1.id,
+            key_pairs=10,
+            ram=40960,
+            cores=32,
+            instances=20,
+            server_groups=4,
+            server_group_members=8)
+        ```
+
         ## Import
 
         Quotasets can be imported using the `project_id/region_name`, e.g.
@@ -831,6 +848,23 @@ class QuotaSetV2(pulumi.CustomResource):
 
         > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
             created with zero value.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        quotaset1 = openstack.compute.QuotaSetV2("quotaset1",
+            project_id=project1.id,
+            key_pairs=10,
+            ram=40960,
+            cores=32,
+            instances=20,
+            server_groups=4,
+            server_group_members=8)
+        ```
 
         ## Import
 

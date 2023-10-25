@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the ID of an available OpenStack network.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const network = openstack.networking.getNetwork({
+ *     name: "tf_test_network",
+ * });
+ * ```
  */
 export function getNetwork(args?: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
     args = args || {};
@@ -152,6 +163,17 @@ export interface GetNetworkResult {
 }
 /**
  * Use this data source to get the ID of an available OpenStack network.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const network = openstack.networking.getNetwork({
+ *     name: "tf_test_network",
+ * });
+ * ```
  */
 export function getNetworkOutput(args?: GetNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkResult> {
     return pulumi.output(args).apply((a: any) => getNetwork(a, opts))

@@ -16,6 +16,84 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// shares are created.
     /// 
     /// ## Example Usage
+    /// ### Basic share network
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///     });
+    /// 
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     {
+    ///         Cidr = "192.168.199.0/24",
+    ///         IpVersion = 4,
+    ///         NetworkId = network1.Id,
+    ///     });
+    /// 
+    ///     var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new()
+    ///     {
+    ///         Description = "test share network",
+    ///         NeutronNetId = network1.Id,
+    ///         NeutronSubnetId = subnet1.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Share network with associated security services
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///     });
+    /// 
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     {
+    ///         Cidr = "192.168.199.0/24",
+    ///         IpVersion = 4,
+    ///         NetworkId = network1.Id,
+    ///     });
+    /// 
+    ///     var securityservice1 = new OpenStack.SharedFileSystem.SecurityService("securityservice1", new()
+    ///     {
+    ///         Description = "created by terraform",
+    ///         Type = "active_directory",
+    ///         Server = "192.168.199.10",
+    ///         DnsIp = "192.168.199.10",
+    ///         Domain = "example.com",
+    ///         Ou = "CN=Computers,DC=example,DC=com",
+    ///         User = "joinDomainUser",
+    ///         Password = "s8cret",
+    ///     });
+    /// 
+    ///     var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new()
+    ///     {
+    ///         Description = "test share network with security services",
+    ///         NeutronNetId = network1.Id,
+    ///         NeutronSubnetId = subnet1.Id,
+    ///         SecurityServiceIds = new[]
+    ///         {
+    ///             securityservice1.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

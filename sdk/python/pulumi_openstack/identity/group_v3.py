@@ -217,6 +217,15 @@ class GroupV3(pulumi.CustomResource):
         > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        group1 = openstack.identity.GroupV3("group1", description="group 1")
+        ```
+
         ## Import
 
         groups can be imported using the `id`, e.g.
@@ -245,6 +254,15 @@ class GroupV3(pulumi.CustomResource):
 
         > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        group1 = openstack.identity.GroupV3("group1", description="group 1")
+        ```
 
         ## Import
 

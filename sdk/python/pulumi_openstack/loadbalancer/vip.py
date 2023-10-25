@@ -663,6 +663,19 @@ class Vip(pulumi.CustomResource):
         """
         Manages a V1 load balancer vip resource within OpenStack.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        vip1 = openstack.loadbalancer.Vip("vip1",
+            pool_id="67890",
+            port=80,
+            protocol="HTTP",
+            subnet_id="12345")
+        ```
+
         ## Import
 
         Load Balancer VIPs can be imported using the `id`, e.g.
@@ -715,6 +728,19 @@ class Vip(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V1 load balancer vip resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        vip1 = openstack.loadbalancer.Vip("vip1",
+            pool_id="67890",
+            port=80,
+            protocol="HTTP",
+            subnet_id="12345")
+        ```
 
         ## Import
 

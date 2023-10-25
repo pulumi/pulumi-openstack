@@ -8,6 +8,34 @@ import * as utilities from "../utilities";
  * Manages a V2 Neutron subnetpool resource within OpenStack.
  *
  * ## Example Usage
+ * ### Create a Subnet Pool
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const subnetpool1 = new openstack.networking.SubnetPool("subnetpool1", {
+ *     ipVersion: 6,
+ *     prefixes: [
+ *         "fdf7:b13d:dead:beef::/64",
+ *         "fd65:86cc:a334:39b7::/64",
+ *     ],
+ * });
+ * ```
+ * ### Create a Subnet from a Subnet Pool
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const subnetpool1 = new openstack.networking.SubnetPool("subnetpool1", {prefixes: ["10.11.12.0/24"]});
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ *     cidr: "10.11.12.0/25",
+ *     networkId: network1.id,
+ *     subnetpoolId: subnetpool1.id,
+ * });
+ * ```
  *
  * ## Import
  *

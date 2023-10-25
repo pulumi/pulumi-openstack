@@ -14,6 +14,33 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// Use this data source to get a list of Openstack Image IDs matching the
         /// specified criteria.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var images = OpenStack.Images.GetImageIds.Invoke(new()
+        ///     {
+        ///         NameRegex = "^Ubuntu 16\\.04.*-amd64",
+        ///         Properties = 
+        ///         {
+        ///             { "key", "value" },
+        ///         },
+        ///         Sort = "updated_at",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetImageIdsResult> InvokeAsync(GetImageIdsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageIdsResult>("openstack:images/getImageIds:getImageIds", args ?? new GetImageIdsArgs(), options.WithDefaults());
@@ -21,6 +48,33 @@ namespace Pulumi.OpenStack.Images
         /// <summary>
         /// Use this data source to get a list of Openstack Image IDs matching the
         /// specified criteria.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var images = OpenStack.Images.GetImageIds.Invoke(new()
+        ///     {
+        ///         NameRegex = "^Ubuntu 16\\.04.*-amd64",
+        ///         Properties = 
+        ///         {
+        ///             { "key", "value" },
+        ///         },
+        ///         Sort = "updated_at",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetImageIdsResult> Invoke(GetImageIdsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImageIdsResult>("openstack:images/getImageIds:getImageIds", args ?? new GetImageIdsInvokeArgs(), options.WithDefaults());

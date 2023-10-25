@@ -15,6 +15,58 @@ import (
 
 // Use this resource to configure a share.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/sharedfilesystem"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//				Cidr:      pulumi.String("192.168.199.0/24"),
+//				IpVersion: pulumi.Int(4),
+//				NetworkId: network1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sharenetwork1, err := sharedfilesystem.NewShareNetwork(ctx, "sharenetwork1", &sharedfilesystem.ShareNetworkArgs{
+//				Description:     pulumi.String("test share network with security services"),
+//				NeutronNetId:    network1.ID(),
+//				NeutronSubnetId: subnet1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sharedfilesystem.NewShare(ctx, "share1", &sharedfilesystem.ShareArgs{
+//				Description:    pulumi.String("test share description"),
+//				ShareProto:     pulumi.String("NFS"),
+//				Size:           pulumi.Int(1),
+//				ShareNetworkId: sharenetwork1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // This resource can be imported by specifying the ID of the share:

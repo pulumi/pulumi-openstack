@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the ID of an available Shared File System share network.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const sharenetwork1 = openstack.sharedfilesystem.getShareNetwork({
+ *     name: "sharenetwork_1",
+ * });
+ * ```
  */
 export function getShareNetwork(args?: GetShareNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetShareNetworkResult> {
     args = args || {};
@@ -130,6 +141,17 @@ export interface GetShareNetworkResult {
 }
 /**
  * Use this data source to get the ID of an available Shared File System share network.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const sharenetwork1 = openstack.sharedfilesystem.getShareNetwork({
+ *     name: "sharenetwork_1",
+ * });
+ * ```
  */
 export function getShareNetworkOutput(args?: GetShareNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShareNetworkResult> {
     return pulumi.output(args).apply((a: any) => getShareNetwork(a, opts))

@@ -199,6 +199,26 @@ class Members(pulumi.CustomResource):
         legacy Neutron LBaaS v2 extension please use
         loadbalancer.Member resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        members1 = openstack.loadbalancer.Members("members1",
+            members=[
+                openstack.loadbalancer.MembersMemberArgs(
+                    address="192.168.199.23",
+                    protocol_port=8080,
+                ),
+                openstack.loadbalancer.MembersMemberArgs(
+                    address="192.168.199.24",
+                    protocol_port=8080,
+                ),
+            ],
+            pool_id="935685fb-a896-40f9-9ff4-ae531a3a00fe")
+        ```
+
         ## Import
 
         Load Balancer Pool Members can be imported using the Pool ID, e.g.:
@@ -233,6 +253,26 @@ class Members(pulumi.CustomResource):
         > **Note:** This resource works only within Octavia API. For
         legacy Neutron LBaaS v2 extension please use
         loadbalancer.Member resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        members1 = openstack.loadbalancer.Members("members1",
+            members=[
+                openstack.loadbalancer.MembersMemberArgs(
+                    address="192.168.199.23",
+                    protocol_port=8080,
+                ),
+                openstack.loadbalancer.MembersMemberArgs(
+                    address="192.168.199.24",
+                    protocol_port=8080,
+                ),
+            ],
+            pool_id="935685fb-a896-40f9-9ff4-ae531a3a00fe")
+        ```
 
         ## Import
 

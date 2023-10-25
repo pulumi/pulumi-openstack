@@ -15,7 +15,57 @@ import * as utilities from "../utilities";
  * and `openstack.networking.SecGroupRule`
  * resources instead, which uses the OpenStack Networking API.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const secgroup1 = new openstack.compute.SecGroup("secgroup1", {
+ *     description: "my security group",
+ *     rules: [
+ *         {
+ *             cidr: "0.0.0.0/0",
+ *             fromPort: 22,
+ *             ipProtocol: "tcp",
+ *             toPort: 22,
+ *         },
+ *         {
+ *             cidr: "0.0.0.0/0",
+ *             fromPort: 80,
+ *             ipProtocol: "tcp",
+ *             toPort: 80,
+ *         },
+ *     ],
+ * });
+ * ```
  * ## Notes
+ *
+ * ### ICMP Rules
+ *
+ * When using ICMP as the `ipProtocol`, the `fromPort` sets the ICMP _type_ and the `toPort` sets the ICMP _code_. To allow all ICMP types, set each value to `-1`, like so:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ *
+ * A list of ICMP types and codes can be found [here](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages).
+ *
+ * ### Referencing Security Groups
+ *
+ * When referencing a security group in a configuration (for example, a configuration creates a new security group and then needs to apply it to an instance being created in the same configuration), it is currently recommended to reference the security group by name and not by ID, like this:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const test_server = new openstack.compute.Instance("test-server", {
+ *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
+ *     flavorId: "3",
+ *     keyPair: "my_key_pair_name",
+ *     securityGroups: [openstack_compute_secgroup_v2.secgroup_1.name],
+ * });
+ * ```
  *
  * ## Import
  *

@@ -16,6 +16,105 @@ import (
 // Associate a floating IP to an instance.
 //
 // ## Example Usage
+// ### Automatically detect the correct network
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
+//				FlavorId: pulumi.String("3"),
+//				KeyPair:  pulumi.String("my_key_pair_name"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fip1FloatingIp, err := networking.NewFloatingIp(ctx, "fip1FloatingIp", &networking.FloatingIpArgs{
+//				Pool: pulumi.String("my_pool"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewFloatingIpAssociate(ctx, "fip1FloatingIpAssociate", &compute.FloatingIpAssociateArgs{
+//				FloatingIp: fip1FloatingIp.Address,
+//				InstanceId: instance1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Explicitly set the network to attach to
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
+//				FlavorId: pulumi.String("3"),
+//				KeyPair:  pulumi.String("my_key_pair_name"),
+//				SecurityGroups: pulumi.StringArray{
+//					pulumi.String("default"),
+//				},
+//				Networks: compute.InstanceNetworkArray{
+//					&compute.InstanceNetworkArgs{
+//						Name: pulumi.String("my_network"),
+//					},
+//					&compute.InstanceNetworkArgs{
+//						Name: pulumi.String("default"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			fip1FloatingIp, err := networking.NewFloatingIp(ctx, "fip1FloatingIp", &networking.FloatingIpArgs{
+//				Pool: pulumi.String("my_pool"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewFloatingIpAssociate(ctx, "fip1FloatingIpAssociate", &compute.FloatingIpAssociateArgs{
+//				FloatingIp: fip1FloatingIp.Address,
+//				InstanceId: instance1.ID(),
+//				FixedIp: instance1.Networks.ApplyT(func(networks []compute.InstanceNetwork) (*string, error) {
+//					return &networks[1].FixedIpV4, nil
+//				}).(pulumi.StringPtrOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

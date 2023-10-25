@@ -288,6 +288,26 @@ class ServerGroup(pulumi.CustomResource):
         Manages a V2 Server Group resource within OpenStack.
 
         ## Example Usage
+        ### Compute service API version 2.63 or below:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        test_sg = openstack.compute.ServerGroup("test-sg", policies=["anti-affinity"])
+        ```
+        ### Compute service API version 2.64 or above:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        test_sg = openstack.compute.ServerGroup("test-sg",
+            policies=["anti-affinity"],
+            rules=openstack.compute.ServerGroupRulesArgs(
+                max_server_per_host=3,
+            ))
+        ```
         ## Policies
 
         * `affinity` - All instances/servers launched in this group will be hosted on
@@ -338,6 +358,26 @@ class ServerGroup(pulumi.CustomResource):
         Manages a V2 Server Group resource within OpenStack.
 
         ## Example Usage
+        ### Compute service API version 2.63 or below:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        test_sg = openstack.compute.ServerGroup("test-sg", policies=["anti-affinity"])
+        ```
+        ### Compute service API version 2.64 or above:
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        test_sg = openstack.compute.ServerGroup("test-sg",
+            policies=["anti-affinity"],
+            rules=openstack.compute.ServerGroupRulesArgs(
+                max_server_per_host=3,
+            ))
+        ```
         ## Policies
 
         * `affinity` - All instances/servers launched in this group will be hosted on

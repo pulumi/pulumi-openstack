@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get firewall policy information of an available OpenStack firewall policy.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const policy = openstack.firewall.getPolicy({
+ *     name: "tf_test_policy",
+ * });
+ * ```
  */
 export function getPolicy(args?: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
     args = args || {};
@@ -86,6 +97,17 @@ export interface GetPolicyResult {
 }
 /**
  * Use this data source to get firewall policy information of an available OpenStack firewall policy.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const policy = openstack.firewall.getPolicy({
+ *     name: "tf_test_policy",
+ * });
+ * ```
  */
 export function getPolicyOutput(args?: GetPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyResult> {
     return pulumi.output(args).apply((a: any) => getPolicy(a, opts))

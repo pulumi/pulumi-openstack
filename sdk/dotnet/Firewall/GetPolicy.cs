@@ -13,12 +13,56 @@ namespace Pulumi.OpenStack.Firewall
     {
         /// <summary>
         /// Use this data source to get firewall policy information of an available OpenStack firewall policy.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = OpenStack.Firewall.GetPolicy.Invoke(new()
+        ///     {
+        ///         Name = "tf_test_policy",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPolicyResult> InvokeAsync(GetPolicyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyResult>("openstack:firewall/getPolicy:getPolicy", args ?? new GetPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get firewall policy information of an available OpenStack firewall policy.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = OpenStack.Firewall.GetPolicy.Invoke(new()
+        ///     {
+        ///         Name = "tf_test_policy",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetPolicyResult> Invoke(GetPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyResult>("openstack:firewall/getPolicy:getPolicy", args ?? new GetPolicyInvokeArgs(), options.WithDefaults());

@@ -341,6 +341,19 @@ class EndpointV3(pulumi.CustomResource):
 
         > **Note:** This usually requires admin privileges.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        service1 = openstack.identity.ServiceV3("service1", type="my-service-type")
+        endpoint1 = openstack.identity.EndpointV3("endpoint1",
+            service_id=service1.id,
+            endpoint_region=service1.region,
+            url="http://my-endpoint")
+        ```
+
         ## Import
 
         Endpoints can be imported using the `id`, e.g.
@@ -371,6 +384,19 @@ class EndpointV3(pulumi.CustomResource):
         Manages a V3 Endpoint resource within OpenStack Keystone.
 
         > **Note:** This usually requires admin privileges.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        service1 = openstack.identity.ServiceV3("service1", type="my-service-type")
+        endpoint1 = openstack.identity.EndpointV3("endpoint1",
+            service_id=service1.id,
+            endpoint_region=service1.region,
+            url="http://my-endpoint")
+        ```
 
         ## Import
 

@@ -483,6 +483,24 @@ class RecordSet(pulumi.CustomResource):
         Manages a DNS record set in the OpenStack DNS Service.
 
         ## Example Usage
+        ### Automatically detect the correct network
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        example_zone = openstack.dns.Zone("exampleZone",
+            email="email2@example.com",
+            description="a zone",
+            ttl=6000,
+            type="PRIMARY")
+        rs_example_com = openstack.dns.RecordSet("rsExampleCom",
+            zone_id=example_zone.id,
+            description="An example record set",
+            ttl=3000,
+            type="A",
+            records=["10.0.0.1"])
+        ```
 
         ## Import
 
@@ -525,6 +543,24 @@ class RecordSet(pulumi.CustomResource):
         Manages a DNS record set in the OpenStack DNS Service.
 
         ## Example Usage
+        ### Automatically detect the correct network
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        example_zone = openstack.dns.Zone("exampleZone",
+            email="email2@example.com",
+            description="a zone",
+            ttl=6000,
+            type="PRIMARY")
+        rs_example_com = openstack.dns.RecordSet("rsExampleCom",
+            zone_id=example_zone.id,
+            description="An example record set",
+            ttl=3000,
+            type="A",
+            records=["10.0.0.1"])
+        ```
 
         ## Import
 

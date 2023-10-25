@@ -16,6 +16,32 @@ import (
 //
 // > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
 // this resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := identity.GetGroup(ctx, &identity.GetGroupArgs{
+//				Name: "admins",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetGroup(ctx *pulumi.Context, args *GetGroupArgs, opts ...pulumi.InvokeOption) (*GetGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupResult

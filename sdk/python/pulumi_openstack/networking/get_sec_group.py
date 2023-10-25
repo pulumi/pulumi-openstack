@@ -129,6 +129,15 @@ def get_sec_group(description: Optional[str] = None,
     """
     Use this data source to get the ID of an available OpenStack security group.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    secgroup = openstack.networking.get_sec_group(name="tf_test_secgroup")
+    ```
+
 
     :param str description: Human-readable description the the subnet.
     :param str name: The name of the security group.
@@ -170,6 +179,15 @@ def get_sec_group_output(description: Optional[pulumi.Input[Optional[str]]] = No
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecGroupResult]:
     """
     Use this data source to get the ID of an available OpenStack security group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    secgroup = openstack.networking.get_sec_group(name="tf_test_secgroup")
+    ```
 
 
     :param str description: Human-readable description the the subnet.

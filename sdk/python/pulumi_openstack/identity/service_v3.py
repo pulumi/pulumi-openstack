@@ -246,6 +246,15 @@ class ServiceV3(pulumi.CustomResource):
 
         > **Note:** This usually requires admin privileges.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        service1 = openstack.identity.ServiceV3("service1", type="custom")
+        ```
+
         ## Import
 
         Services can be imported using the `id`, e.g.
@@ -273,6 +282,15 @@ class ServiceV3(pulumi.CustomResource):
         Manages a V3 Service resource within OpenStack Keystone.
 
         > **Note:** This usually requires admin privileges.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        service1 = openstack.identity.ServiceV3("service1", type="custom")
+        ```
 
         ## Import
 

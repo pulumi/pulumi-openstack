@@ -193,6 +193,19 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
 
         > **Note:** This usually requires admin privileges.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        volume_type1 = openstack.blockstorage.VolumeTypeV3("volumeType1", is_public=False)
+        volume_type_access = openstack.blockstorage.VolumeTypeAccessV3("volumeTypeAccess",
+            project_id=project1.id,
+            volume_type_id=volume_type1.id)
+        ```
+
         ## Import
 
         Volume types access can be imported using the `volume_type_id/project_id`, e.g.
@@ -221,6 +234,19 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
         Manages a V3 block storage volume type access resource within OpenStack.
 
         > **Note:** This usually requires admin privileges.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        volume_type1 = openstack.blockstorage.VolumeTypeV3("volumeType1", is_public=False)
+        volume_type_access = openstack.blockstorage.VolumeTypeAccessV3("volumeTypeAccess",
+            project_id=project1.id,
+            volume_type_id=volume_type1.id)
+        ```
 
         ## Import
 

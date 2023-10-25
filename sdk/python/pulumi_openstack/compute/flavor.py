@@ -569,6 +569,22 @@ class Flavor(pulumi.CustomResource):
         """
         Manages a V2 flavor resource within OpenStack.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        test_flavor = openstack.compute.Flavor("test-flavor",
+            disk=20,
+            extra_specs={
+                "hw:cpu_policy": "CPU-POLICY",
+                "hw:cpu_thread_policy": "CPU-THREAD-POLICY",
+            },
+            ram=8096,
+            vcpus=2)
+        ```
+
         ## Import
 
         Flavors can be imported using the `ID`, e.g.
@@ -613,6 +629,22 @@ class Flavor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 flavor resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        test_flavor = openstack.compute.Flavor("test-flavor",
+            disk=20,
+            extra_specs={
+                "hw:cpu_policy": "CPU-POLICY",
+                "hw:cpu_thread_policy": "CPU-THREAD-POLICY",
+            },
+            ram=8096,
+            vcpus=2)
+        ```
 
         ## Import
 

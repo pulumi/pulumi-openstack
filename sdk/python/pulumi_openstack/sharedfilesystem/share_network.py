@@ -432,6 +432,48 @@ class ShareNetwork(pulumi.CustomResource):
         shares are created.
 
         ## Example Usage
+        ### Basic share network
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            ip_version=4,
+            network_id=network1.id)
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+            description="test share network",
+            neutron_net_id=network1.id,
+            neutron_subnet_id=subnet1.id)
+        ```
+        ### Share network with associated security services
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            ip_version=4,
+            network_id=network1.id)
+        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
+            description="created by terraform",
+            type="active_directory",
+            server="192.168.199.10",
+            dns_ip="192.168.199.10",
+            domain="example.com",
+            ou="CN=Computers,DC=example,DC=com",
+            user="joinDomainUser",
+            password="s8cret")
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+            description="test share network with security services",
+            neutron_net_id=network1.id,
+            neutron_subnet_id=subnet1.id,
+            security_service_ids=[securityservice1.id])
+        ```
 
         ## Import
 
@@ -473,6 +515,48 @@ class ShareNetwork(pulumi.CustomResource):
         shares are created.
 
         ## Example Usage
+        ### Basic share network
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            ip_version=4,
+            network_id=network1.id)
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+            description="test share network",
+            neutron_net_id=network1.id,
+            neutron_subnet_id=subnet1.id)
+        ```
+        ### Share network with associated security services
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            cidr="192.168.199.0/24",
+            ip_version=4,
+            network_id=network1.id)
+        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
+            description="created by terraform",
+            type="active_directory",
+            server="192.168.199.10",
+            dns_ip="192.168.199.10",
+            domain="example.com",
+            ou="CN=Computers,DC=example,DC=com",
+            user="joinDomainUser",
+            password="s8cret")
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+            description="test share network with security services",
+            neutron_net_id=network1.id,
+            neutron_subnet_id=subnet1.id,
+            security_service_ids=[securityservice1.id])
+        ```
 
         ## Import
 

@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the networking quota of an OpenStack project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const quota = openstack.networking.getQuotaV2({
+ *     projectId: "2e367a3d29f94fd988e6ec54e305ec9d",
+ * });
+ * ```
  */
 export function getQuotaV2(args: GetQuotaV2Args, opts?: pulumi.InvokeOptions): Promise<GetQuotaV2Result> {
 
@@ -84,6 +95,17 @@ export interface GetQuotaV2Result {
 }
 /**
  * Use this data source to get the networking quota of an OpenStack project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const quota = openstack.networking.getQuotaV2({
+ *     projectId: "2e367a3d29f94fd988e6ec54e305ec9d",
+ * });
+ * ```
  */
 export function getQuotaV2Output(args: GetQuotaV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaV2Result> {
     return pulumi.output(args).apply((a: any) => getQuotaV2(a, opts))

@@ -7,6 +7,21 @@ import * as utilities from "../utilities";
 /**
  * Use this data source to get a list of Openstack Image IDs matching the
  * specified criteria.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const images = openstack.images.getImageIds({
+ *     nameRegex: "^Ubuntu 16\\.04.*-amd64",
+ *     properties: {
+ *         key: "value",
+ *     },
+ *     sort: "updated_at",
+ * });
+ * ```
  */
 export function getImageIds(args?: GetImageIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetImageIdsResult> {
     args = args || {};
@@ -150,6 +165,21 @@ export interface GetImageIdsResult {
 /**
  * Use this data source to get a list of Openstack Image IDs matching the
  * specified criteria.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const images = openstack.images.getImageIds({
+ *     nameRegex: "^Ubuntu 16\\.04.*-amd64",
+ *     properties: {
+ *         key: "value",
+ *     },
+ *     sort: "updated_at",
+ * });
+ * ```
  */
 export function getImageIdsOutput(args?: GetImageIdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageIdsResult> {
     return pulumi.output(args).apply((a: any) => getImageIds(a, opts))

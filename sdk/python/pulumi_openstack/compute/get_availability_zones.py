@@ -80,6 +80,15 @@ def get_availability_zones(region: Optional[str] = None,
     """
     Use this data source to get a list of availability zones from OpenStack
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    zones = openstack.compute.get_availability_zones()
+    ```
+
 
     :param str region: The `region` to fetch availability zones from, defaults to the provider's `region`
     :param str state: The `state` of the availability zones to match, default ("available").
@@ -103,6 +112,15 @@ def get_availability_zones_output(region: Optional[pulumi.Input[Optional[str]]] 
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAvailabilityZonesResult]:
     """
     Use this data source to get a list of availability zones from OpenStack
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    zones = openstack.compute.get_availability_zones()
+    ```
 
 
     :param str region: The `region` to fetch availability zones from, defaults to the provider's `region`

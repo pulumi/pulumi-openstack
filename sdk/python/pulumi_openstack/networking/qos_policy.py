@@ -485,6 +485,14 @@ class QosPolicy(pulumi.CustomResource):
         Manages a V2 Neutron QoS policy resource within OpenStack.
 
         ## Example Usage
+        ### Create a QoS Policy
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="bw_limit")
+        ```
 
         ## Import
 
@@ -525,6 +533,14 @@ class QosPolicy(pulumi.CustomResource):
         Manages a V2 Neutron QoS policy resource within OpenStack.
 
         ## Example Usage
+        ### Create a QoS Policy
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="bw_limit")
+        ```
 
         ## Import
 

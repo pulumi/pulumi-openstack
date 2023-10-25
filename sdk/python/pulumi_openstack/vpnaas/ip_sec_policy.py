@@ -531,6 +531,15 @@ class IpSecPolicy(pulumi.CustomResource):
         """
         Manages a V2 Neutron IPSec policy resource within OpenStack.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        policy1 = openstack.vpnaas.IpSecPolicy("policy1")
+        ```
+
         ## Import
 
         Policies can be imported using the `id`, e.g.
@@ -572,6 +581,15 @@ class IpSecPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 Neutron IPSec policy resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        policy1 = openstack.vpnaas.IpSecPolicy("policy1")
+        ```
 
         ## Import
 

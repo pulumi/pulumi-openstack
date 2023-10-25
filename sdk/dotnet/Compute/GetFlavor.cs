@@ -13,12 +13,58 @@ namespace Pulumi.OpenStack.Compute
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack flavor.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var small = OpenStack.Compute.GetFlavor.Invoke(new()
+        ///     {
+        ///         Ram = 512,
+        ///         Vcpus = 1,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFlavorResult> InvokeAsync(GetFlavorArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFlavorResult>("openstack:compute/getFlavor:getFlavor", args ?? new GetFlavorArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack flavor.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var small = OpenStack.Compute.GetFlavor.Invoke(new()
+        ///     {
+        ///         Ram = 512,
+        ///         Vcpus = 1,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetFlavorResult> Invoke(GetFlavorInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlavorResult>("openstack:compute/getFlavor:getFlavor", args ?? new GetFlavorInvokeArgs(), options.WithDefaults());

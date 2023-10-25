@@ -482,6 +482,88 @@ class PoolV1(pulumi.CustomResource):
         """
         Manages a V1 load balancer pool resource within OpenStack.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        pool1 = openstack.loadbalancer.PoolV1("pool1",
+            lb_method="ROUND_ROBIN",
+            lb_provider="haproxy",
+            monitor_ids=["67890"],
+            protocol="HTTP",
+            subnet_id="12345")
+        ```
+        ## Complete Load Balancing Stack Example
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            network_id=network1.id,
+            cidr="192.168.199.0/24",
+            ip_version=4)
+        secgroup1 = openstack.compute.SecGroup("secgroup1",
+            description="Rules for secgroup_1",
+            rules=[
+                openstack.compute.SecGroupRuleArgs(
+                    from_port=-1,
+                    to_port=-1,
+                    ip_protocol="icmp",
+                    cidr="0.0.0.0/0",
+                ),
+                openstack.compute.SecGroupRuleArgs(
+                    from_port=80,
+                    to_port=80,
+                    ip_protocol="tcp",
+                    cidr="0.0.0.0/0",
+                ),
+            ])
+        instance1 = openstack.compute.Instance("instance1",
+            security_groups=[
+                "default",
+                secgroup1.name,
+            ],
+            networks=[openstack.compute.InstanceNetworkArgs(
+                uuid=network1.id,
+            )])
+        instance2 = openstack.compute.Instance("instance2",
+            security_groups=[
+                "default",
+                secgroup1.name,
+            ],
+            networks=[openstack.compute.InstanceNetworkArgs(
+                uuid=network1.id,
+            )])
+        monitor1 = openstack.loadbalancer.MonitorV1("monitor1",
+            type="TCP",
+            delay=30,
+            timeout=5,
+            max_retries=3,
+            admin_state_up="true")
+        pool1 = openstack.loadbalancer.PoolV1("pool1",
+            protocol="TCP",
+            subnet_id=subnet1.id,
+            lb_method="ROUND_ROBIN",
+            monitor_ids=[monitor1.id])
+        member1 = openstack.loadbalancer.MemberV1("member1",
+            pool_id=pool1.id,
+            address=instance1.access_ip_v4,
+            port=80)
+        member2 = openstack.loadbalancer.MemberV1("member2",
+            pool_id=pool1.id,
+            address=instance2.access_ip_v4,
+            port=80)
+        vip1 = openstack.loadbalancer.Vip("vip1",
+            subnet_id=subnet1.id,
+            protocol="TCP",
+            port=80,
+            pool_id=pool1.id)
+        ```
+
         ## Notes
 
         The `member` block is deprecated in favor of the `loadbalancer.MemberV1` resource.
@@ -529,6 +611,88 @@ class PoolV1(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V1 load balancer pool resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        pool1 = openstack.loadbalancer.PoolV1("pool1",
+            lb_method="ROUND_ROBIN",
+            lb_provider="haproxy",
+            monitor_ids=["67890"],
+            protocol="HTTP",
+            subnet_id="12345")
+        ```
+        ## Complete Load Balancing Stack Example
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            network_id=network1.id,
+            cidr="192.168.199.0/24",
+            ip_version=4)
+        secgroup1 = openstack.compute.SecGroup("secgroup1",
+            description="Rules for secgroup_1",
+            rules=[
+                openstack.compute.SecGroupRuleArgs(
+                    from_port=-1,
+                    to_port=-1,
+                    ip_protocol="icmp",
+                    cidr="0.0.0.0/0",
+                ),
+                openstack.compute.SecGroupRuleArgs(
+                    from_port=80,
+                    to_port=80,
+                    ip_protocol="tcp",
+                    cidr="0.0.0.0/0",
+                ),
+            ])
+        instance1 = openstack.compute.Instance("instance1",
+            security_groups=[
+                "default",
+                secgroup1.name,
+            ],
+            networks=[openstack.compute.InstanceNetworkArgs(
+                uuid=network1.id,
+            )])
+        instance2 = openstack.compute.Instance("instance2",
+            security_groups=[
+                "default",
+                secgroup1.name,
+            ],
+            networks=[openstack.compute.InstanceNetworkArgs(
+                uuid=network1.id,
+            )])
+        monitor1 = openstack.loadbalancer.MonitorV1("monitor1",
+            type="TCP",
+            delay=30,
+            timeout=5,
+            max_retries=3,
+            admin_state_up="true")
+        pool1 = openstack.loadbalancer.PoolV1("pool1",
+            protocol="TCP",
+            subnet_id=subnet1.id,
+            lb_method="ROUND_ROBIN",
+            monitor_ids=[monitor1.id])
+        member1 = openstack.loadbalancer.MemberV1("member1",
+            pool_id=pool1.id,
+            address=instance1.access_ip_v4,
+            port=80)
+        member2 = openstack.loadbalancer.MemberV1("member2",
+            pool_id=pool1.id,
+            address=instance2.access_ip_v4,
+            port=80)
+        vip1 = openstack.loadbalancer.Vip("vip1",
+            subnet_id=subnet1.id,
+            protocol="TCP",
+            port=80,
+            pool_id=pool1.id)
+        ```
 
         ## Notes
 

@@ -648,6 +648,20 @@ class Monitor(pulumi.CustomResource):
         """
         Manages a V2 monitor resource within OpenStack.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        monitor1 = openstack.loadbalancer.Monitor("monitor1",
+            pool_id=openstack_lb_pool_v2["pool_1"]["id"],
+            type="PING",
+            delay=20,
+            timeout=10,
+            max_retries=5)
+        ```
+
         ## Import
 
         Load Balancer Pool Monitor can be imported using the Monitor ID, e.g.:
@@ -704,6 +718,20 @@ class Monitor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V2 monitor resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        monitor1 = openstack.loadbalancer.Monitor("monitor1",
+            pool_id=openstack_lb_pool_v2["pool_1"]["id"],
+            type="PING",
+            delay=20,
+            timeout=10,
+            max_retries=5)
+        ```
 
         ## Import
 

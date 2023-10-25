@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
  * Manages a V1 Magnum node group resource within OpenStack.
  *
  * ## Example Usage
+ * ### Create a Nodegroup
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const nodegroup1 = new openstack.containerinfra.NodeGroup("nodegroup1", {
+ *     clusterId: "b9a45c5c-cd03-4958-82aa-b80bf93cb922",
+ *     nodeCount: 5,
+ * });
+ * ```
  * ## Attributes reference
  *
  * The following attributes are exported:

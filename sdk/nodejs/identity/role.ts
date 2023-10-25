@@ -10,6 +10,15 @@ import * as utilities from "../utilities";
  * > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
  * this resource.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const role1 = new openstack.identity.Role("role1", {});
+ * ```
+ *
  * ## Import
  *
  * Roles can be imported using the `id`, e.g.

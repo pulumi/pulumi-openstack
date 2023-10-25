@@ -102,6 +102,15 @@ def get_group(domain_id: Optional[str] = None,
     > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
     this resource.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    admins = openstack.identity.get_group(name="admins")
+    ```
+
 
     :param str domain_id: The domain the group belongs to.
     :param str name: The name of the group.
@@ -133,6 +142,15 @@ def get_group_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
     this resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    admins = openstack.identity.get_group(name="admins")
+    ```
 
 
     :param str domain_id: The domain the group belongs to.

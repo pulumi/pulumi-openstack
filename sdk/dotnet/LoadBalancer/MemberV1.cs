@@ -12,6 +12,26 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// <summary>
     /// Manages a V1 load balancer member resource within OpenStack.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member1 = new OpenStack.LoadBalancer.MemberV1("member1", new()
+    ///     {
+    ///         Address = "192.168.0.10",
+    ///         PoolId = "d9415786-5f1a-428b-b35f-2f1523e146d2",
+    ///         Port = 80,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Load Balancer Members can be imported using the `id`, e.g.

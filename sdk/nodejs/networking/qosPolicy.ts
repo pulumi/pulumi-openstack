@@ -8,6 +8,14 @@ import * as utilities from "../utilities";
  * Manages a V2 Neutron QoS policy resource within OpenStack.
  *
  * ## Example Usage
+ * ### Create a QoS Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const qosPolicy1 = new openstack.networking.QosPolicy("qosPolicy1", {description: "bw_limit"});
+ * ```
  *
  * ## Import
  *

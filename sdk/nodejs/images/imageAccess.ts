@@ -9,6 +9,53 @@ import * as utilities from "../utilities";
  * project, which owns the Image.
  *
  * ## Example Usage
+ * ### Unprivileged user
+ *
+ * Create a shared image and propose a membership to the
+ * `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const rancheros = new openstack.images.Image("rancheros", {
+ *     imageSourceUrl: "https://releases.rancher.com/os/latest/rancheros-openstack.img",
+ *     containerFormat: "bare",
+ *     diskFormat: "qcow2",
+ *     visibility: "shared",
+ *     properties: {
+ *         key: "value",
+ *     },
+ * });
+ * const rancherosMember = new openstack.images.ImageAccess("rancherosMember", {
+ *     imageId: rancheros.id,
+ *     memberId: "bed6b6cbb86a4e2d8dc2735c2f1000e4",
+ * });
+ * ```
+ * ### Privileged user
+ *
+ * Create a shared image and set a membership to the
+ * `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const rancheros = new openstack.images.Image("rancheros", {
+ *     imageSourceUrl: "https://releases.rancher.com/os/latest/rancheros-openstack.img",
+ *     containerFormat: "bare",
+ *     diskFormat: "qcow2",
+ *     visibility: "shared",
+ *     properties: {
+ *         key: "value",
+ *     },
+ * });
+ * const rancherosMember = new openstack.images.ImageAccess("rancherosMember", {
+ *     imageId: rancheros.id,
+ *     memberId: "bed6b6cbb86a4e2d8dc2735c2f1000e4",
+ *     status: "accepted",
+ * });
+ * ```
  *
  * ## Import
  *

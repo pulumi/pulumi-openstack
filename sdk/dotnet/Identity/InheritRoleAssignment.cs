@@ -17,6 +17,36 @@ namespace Pulumi.OpenStack.Identity
     /// &gt; **Note:** You _must_ have admin privileges in your OpenStack cloud to use
     /// this resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var user1 = new OpenStack.Identity.User("user1", new()
+    ///     {
+    ///         DomainId = "default",
+    ///     });
+    /// 
+    ///     var role1 = new OpenStack.Identity.Role("role1", new()
+    ///     {
+    ///         DomainId = "default",
+    ///     });
+    /// 
+    ///     var roleAssignment1 = new OpenStack.Identity.InheritRoleAssignment("roleAssignment1", new()
+    ///     {
+    ///         UserId = user1.Id,
+    ///         DomainId = "default",
+    ///         RoleId = role1.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Inherit role assignments can be imported using a constructed id. The id should have the form of `domainID/projectID/groupID/userID/roleID`. When something is not used then leave blank.

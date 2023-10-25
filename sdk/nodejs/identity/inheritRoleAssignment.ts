@@ -12,6 +12,21 @@ import * as utilities from "../utilities";
  * > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
  * this resource.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const user1 = new openstack.identity.User("user1", {domainId: "default"});
+ * const role1 = new openstack.identity.Role("role1", {domainId: "default"});
+ * const roleAssignment1 = new openstack.identity.InheritRoleAssignment("roleAssignment1", {
+ *     userId: user1.id,
+ *     domainId: "default",
+ *     roleId: role1.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Inherit role assignments can be imported using a constructed id. The id should have the form of `domainID/projectID/groupID/userID/roleID`. When something is not used then leave blank.

@@ -12,6 +12,43 @@ namespace Pulumi.OpenStack.Networking
     /// <summary>
     /// Creates a routing entry on a OpenStack V2 subnet.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var router1 = new OpenStack.Networking.Router("router1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///     });
+    /// 
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///     });
+    /// 
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     {
+    ///         NetworkId = network1.Id,
+    ///         Cidr = "192.168.199.0/24",
+    ///         IpVersion = 4,
+    ///     });
+    /// 
+    ///     var subnetRoute1 = new OpenStack.Networking.SubnetRoute("subnetRoute1", new()
+    ///     {
+    ///         SubnetId = subnet1.Id,
+    ///         DestinationCidr = "10.0.1.0/24",
+    ///         NextHop = "192.168.199.254",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Routing entries can be imported using a combined ID using the following format`&lt;subnet_id&gt;-route-&lt;destination_cidr&gt;-&lt;next_hop&gt;`

@@ -10,6 +10,52 @@ import * as utilities from "../utilities";
  * Manages a V2 port resource within OpenStack.
  *
  * ## Example Usage
+ * ### Simple port
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const port1 = new openstack.networking.Port("port1", {
+ *     networkId: network1.id,
+ *     adminStateUp: true,
+ * });
+ * ```
+ * ### Port with physical binding information
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const port1 = new openstack.networking.Port("port1", {
+ *     networkId: network1.id,
+ *     deviceId: "cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
+ *     deviceOwner: "baremetal:none",
+ *     adminStateUp: true,
+ *     binding: {
+ *         hostId: "b080b9cf-46e0-4ce8-ad47-0fd4accc872b",
+ *         vnicType: "baremetal",
+ *         profile: `{
+ *   "local_link_information": [
+ *     {
+ *       "switch_info": "info1",
+ *       "port_id": "Ethernet3/4",
+ *       "switch_id": "12:34:56:78:9A:BC"
+ *     },
+ *     {
+ *       "switch_info": "info2",
+ *       "port_id": "Ethernet3/4",
+ *       "switch_id": "12:34:56:78:9A:BD"
+ *     }
+ *   ],
+ *   "vlan_type": "allowed"
+ * }
+ * `,
+ *     },
+ * });
+ * ```
  * ## Notes
  *
  * ### Ports and Instances

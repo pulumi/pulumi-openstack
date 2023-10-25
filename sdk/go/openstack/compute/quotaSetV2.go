@@ -25,6 +25,43 @@ import (
 //
 //	created with zero value.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewQuotaSetV2(ctx, "quotaset1", &compute.QuotaSetV2Args{
+//				ProjectId:          project1.ID(),
+//				KeyPairs:           pulumi.Int(10),
+//				Ram:                pulumi.Int(40960),
+//				Cores:              pulumi.Int(32),
+//				Instances:          pulumi.Int(20),
+//				ServerGroups:       pulumi.Int(4),
+//				ServerGroupMembers: pulumi.Int(8),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Quotasets can be imported using the `project_id/region_name`, e.g.

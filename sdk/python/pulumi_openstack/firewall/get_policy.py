@@ -148,6 +148,15 @@ def get_policy(name: Optional[str] = None,
     """
     Use this data source to get firewall policy information of an available OpenStack firewall policy.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    policy = openstack.firewall.get_policy(name="tf_test_policy")
+    ```
+
 
     :param str name: The name of the firewall policy.
     :param str policy_id: The ID of the firewall policy.
@@ -184,6 +193,15 @@ def get_policy_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyResult]:
     """
     Use this data source to get firewall policy information of an available OpenStack firewall policy.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    policy = openstack.firewall.get_policy(name="tf_test_policy")
+    ```
 
 
     :param str name: The name of the firewall policy.

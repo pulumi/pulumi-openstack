@@ -17,6 +17,26 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// state.
     /// 
     /// ## Example Usage
+    /// ### Create a Cluster
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cluster1 = new OpenStack.ContainerInfra.Cluster("cluster1", new()
+    ///     {
+    ///         ClusterTemplateId = "b9a45c5c-cd03-4958-82aa-b80bf93cb922",
+    ///         Keypair = "ssh_keypair",
+    ///         MasterCount = 3,
+    ///         NodeCount = 5,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Attributes reference
     /// 
     /// The following attributes are exported:

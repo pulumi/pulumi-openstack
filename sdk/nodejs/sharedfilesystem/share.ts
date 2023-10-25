@@ -9,6 +9,31 @@ import * as utilities from "../utilities";
 /**
  * Use this resource to configure a share.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ *     cidr: "192.168.199.0/24",
+ *     ipVersion: 4,
+ *     networkId: network1.id,
+ * });
+ * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork1", {
+ *     description: "test share network with security services",
+ *     neutronNetId: network1.id,
+ *     neutronSubnetId: subnet1.id,
+ * });
+ * const share1 = new openstack.sharedfilesystem.Share("share1", {
+ *     description: "test share description",
+ *     shareProto: "NFS",
+ *     size: 1,
+ *     shareNetworkId: sharenetwork1.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource can be imported by specifying the ID of the share:

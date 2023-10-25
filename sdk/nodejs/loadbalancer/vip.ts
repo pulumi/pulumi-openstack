@@ -7,6 +7,20 @@ import * as utilities from "../utilities";
 /**
  * Manages a V1 load balancer vip resource within OpenStack.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const vip1 = new openstack.loadbalancer.Vip("vip1", {
+ *     poolId: "67890",
+ *     port: 80,
+ *     protocol: "HTTP",
+ *     subnetId: "12345",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Load Balancer VIPs can be imported using the `id`, e.g.

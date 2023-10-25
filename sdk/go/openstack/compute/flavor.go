@@ -15,6 +15,38 @@ import (
 
 // Manages a V2 flavor resource within OpenStack.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewFlavor(ctx, "test-flavor", &compute.FlavorArgs{
+//				Disk: pulumi.Int(20),
+//				ExtraSpecs: pulumi.Map{
+//					"hw:cpu_policy":        pulumi.Any("CPU-POLICY"),
+//					"hw:cpu_thread_policy": pulumi.Any("CPU-THREAD-POLICY"),
+//				},
+//				Ram:   pulumi.Int(8096),
+//				Vcpus: pulumi.Int(2),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Flavors can be imported using the `ID`, e.g.

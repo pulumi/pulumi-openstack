@@ -794,6 +794,40 @@ class StackV1(pulumi.CustomResource):
         """
         Manages a V1 stack resource within OpenStack.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        stack1 = openstack.orchestration.StackV1("stack1",
+            disable_rollback=True,
+            environment_opts={
+                "Bin": \"\"\"
+
+        \"\"\",
+            },
+            parameters={
+                "length": 4,
+            },
+            template_opts={
+                "Bin": \"\"\"heat_template_version: 2013-05-23
+        parameters:
+          length:
+            type: number
+        resources:
+          test_res:
+            type: OS::Heat::TestResource
+          random:
+            type: OS::Heat::RandomString
+            properties:
+              length: {get_param: length}
+
+        \"\"\",
+            },
+            timeout=30)
+        ```
+
         ## Import
 
         stacks can be imported using the `id`, e.g.
@@ -848,6 +882,40 @@ class StackV1(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a V1 stack resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        stack1 = openstack.orchestration.StackV1("stack1",
+            disable_rollback=True,
+            environment_opts={
+                "Bin": \"\"\"
+
+        \"\"\",
+            },
+            parameters={
+                "length": 4,
+            },
+            template_opts={
+                "Bin": \"\"\"heat_template_version: 2013-05-23
+        parameters:
+          length:
+            type: number
+        resources:
+          test_res:
+            type: OS::Heat::TestResource
+          random:
+            type: OS::Heat::RandomString
+            properties:
+              length: {get_param: length}
+
+        \"\"\",
+            },
+            timeout=30)
+        ```
 
         ## Import
 

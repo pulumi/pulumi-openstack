@@ -192,6 +192,25 @@ class UserMembershipV3(pulumi.CustomResource):
 
         ***
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        user1 = openstack.identity.User("user1", default_project_id=project1.id)
+        group1 = openstack.identity.GroupV3("group1", description="group 1")
+        role1 = openstack.identity.Role("role1")
+        user_membership1 = openstack.identity.UserMembershipV3("userMembership1",
+            user_id=user1.id,
+            group_id=group1.id)
+        role_assignment1 = openstack.identity.RoleAssignment("roleAssignment1",
+            group_id=group1.id,
+            project_id=project1.id,
+            role_id=role1.id)
+        ```
+
         ## Import
 
         This resource can be imported by specifying all two arguments, separated by a forward slash:
@@ -222,6 +241,25 @@ class UserMembershipV3(pulumi.CustomResource):
         this resource.
 
         ***
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        user1 = openstack.identity.User("user1", default_project_id=project1.id)
+        group1 = openstack.identity.GroupV3("group1", description="group 1")
+        role1 = openstack.identity.Role("role1")
+        user_membership1 = openstack.identity.UserMembershipV3("userMembership1",
+            user_id=user1.id,
+            group_id=group1.id)
+        role_assignment1 = openstack.identity.RoleAssignment("roleAssignment1",
+            group_id=group1.id,
+            project_id=project1.id,
+            role_id=role1.id)
+        ```
 
         ## Import
 

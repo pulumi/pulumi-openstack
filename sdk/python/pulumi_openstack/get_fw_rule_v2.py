@@ -243,6 +243,15 @@ def get_fw_rule_v2(action: Optional[str] = None,
     """
     Use this data source to get information of an available OpenStack firewall rule v2.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    rule = openstack.get_fw_rule_v2(name="tf_test_rule")
+    ```
+
 
     :param str action: Action to be taken when the firewall rule matches.
     :param str description: The description of the firewall rule.
@@ -323,6 +332,15 @@ def get_fw_rule_v2_output(action: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFwRuleV2Result]:
     """
     Use this data source to get information of an available OpenStack firewall rule v2.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    rule = openstack.get_fw_rule_v2(name="tf_test_rule")
+    ```
 
 
     :param str action: Action to be taken when the firewall rule matches.

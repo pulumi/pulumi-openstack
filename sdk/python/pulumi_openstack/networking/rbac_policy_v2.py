@@ -319,6 +319,20 @@ class RbacPolicyV2(pulumi.CustomResource):
         a wildcard RBAC policy granting everyone access to preserve previous behavior
         before this feature was added.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        rbac_policy1 = openstack.networking.RbacPolicyV2("rbacPolicy1",
+            action="access_as_shared",
+            object_id=network1.id,
+            object_type="network",
+            target_tenant="20415a973c9e45d3917f078950644697")
+        ```
+
         ## Import
 
         RBAC policies can be imported using the `id`, e.g.
@@ -364,6 +378,20 @@ class RbacPolicyV2(pulumi.CustomResource):
         If a network is marked as external during creation, it now implicitly creates
         a wildcard RBAC policy granting everyone access to preserve previous behavior
         before this feature was added.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        rbac_policy1 = openstack.networking.RbacPolicyV2("rbacPolicy1",
+            action="access_as_shared",
+            object_id=network1.id,
+            object_type="network",
+            target_tenant="20415a973c9e45d3917f078950644697")
+        ```
 
         ## Import
 

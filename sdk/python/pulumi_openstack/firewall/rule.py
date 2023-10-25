@@ -653,6 +653,20 @@ class Rule(pulumi.CustomResource):
         """
         Manages a v1 firewall rule resource within OpenStack.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rule1 = openstack.firewall.Rule("rule1",
+            action="deny",
+            description="drop TELNET traffic",
+            destination_port="23",
+            enabled=True,
+            protocol="tcp")
+        ```
+
         ## Import
 
         Firewall Rules can be imported using the `id`, e.g.
@@ -707,6 +721,20 @@ class Rule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a v1 firewall rule resource within OpenStack.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rule1 = openstack.firewall.Rule("rule1",
+            action="deny",
+            description="drop TELNET traffic",
+            destination_port="23",
+            enabled=True,
+            protocol="tcp")
+        ```
 
         ## Import
 

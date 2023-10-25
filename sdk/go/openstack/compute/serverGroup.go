@@ -15,6 +15,63 @@ import (
 // Manages a V2 Server Group resource within OpenStack.
 //
 // ## Example Usage
+// ### Compute service API version 2.63 or below:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewServerGroup(ctx, "test-sg", &compute.ServerGroupArgs{
+//				Policies: pulumi.StringArray{
+//					pulumi.String("anti-affinity"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Compute service API version 2.64 or above:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewServerGroup(ctx, "test-sg", &compute.ServerGroupArgs{
+//				Policies: pulumi.StringArray{
+//					pulumi.String("anti-affinity"),
+//				},
+//				Rules: &compute.ServerGroupRulesArgs{
+//					MaxServerPerHost: pulumi.Int(3),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Policies
 //
 //   - `affinity` - All instances/servers launched in this group will be hosted on

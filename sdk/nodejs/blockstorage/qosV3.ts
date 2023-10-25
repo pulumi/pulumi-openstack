@@ -9,6 +9,21 @@ import * as utilities from "../utilities";
  *
  * > **Note:** This usually requires admin privileges.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const qos = new openstack.blockstorage.QosV3("qos", {
+ *     consumer: "back-end",
+ *     specs: {
+ *         read_iops_sec: "40000",
+ *         write_iops_sec: "40000",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Qos can be imported using the `qos_id`, e.g.

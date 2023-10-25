@@ -962,6 +962,18 @@ class Cluster(pulumi.CustomResource):
         state.
 
         ## Example Usage
+        ### Create a Cluster
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        cluster1 = openstack.containerinfra.Cluster("cluster1",
+            cluster_template_id="b9a45c5c-cd03-4958-82aa-b80bf93cb922",
+            keypair="ssh_keypair",
+            master_count=3,
+            node_count=5)
+        ```
         ## Attributes reference
 
         The following attributes are exported:
@@ -1058,6 +1070,18 @@ class Cluster(pulumi.CustomResource):
         state.
 
         ## Example Usage
+        ### Create a Cluster
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        cluster1 = openstack.containerinfra.Cluster("cluster1",
+            cluster_template_id="b9a45c5c-cd03-4958-82aa-b80bf93cb922",
+            keypair="ssh_keypair",
+            master_count=3,
+            node_count=5)
+        ```
         ## Attributes reference
 
         The following attributes are exported:

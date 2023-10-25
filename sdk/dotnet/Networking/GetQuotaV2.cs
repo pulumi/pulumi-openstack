@@ -13,12 +13,56 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// Use this data source to get the networking quota of an OpenStack project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var quota = OpenStack.Networking.GetQuotaV2.Invoke(new()
+        ///     {
+        ///         ProjectId = "2e367a3d29f94fd988e6ec54e305ec9d",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetQuotaV2Result> InvokeAsync(GetQuotaV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQuotaV2Result>("openstack:networking/getQuotaV2:getQuotaV2", args ?? new GetQuotaV2Args(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the networking quota of an OpenStack project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var quota = OpenStack.Networking.GetQuotaV2.Invoke(new()
+        ///     {
+        ///         ProjectId = "2e367a3d29f94fd988e6ec54e305ec9d",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetQuotaV2Result> Invoke(GetQuotaV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQuotaV2Result>("openstack:networking/getQuotaV2:getQuotaV2", args ?? new GetQuotaV2InvokeArgs(), options.WithDefaults());

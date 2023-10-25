@@ -679,6 +679,45 @@ class SecretV1(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Simple secret
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        secret1 = openstack.keymanager.SecretV1("secret1",
+            algorithm="aes",
+            bit_length=256,
+            metadata={
+                "key": "foo",
+            },
+            mode="cbc",
+            payload="foobar",
+            payload_content_type="text/plain",
+            secret_type="passphrase")
+        ```
+        ### Secret with the ACL
+
+        > **Note** Only read ACLs are supported
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        secret1 = openstack.keymanager.SecretV1("secret1",
+            payload=(lambda path: open(path).read())("certificate.pem"),
+            secret_type="certificate",
+            payload_content_type="text/plain",
+            acl=openstack.keymanager.SecretV1AclArgs(
+                read=openstack.keymanager.SecretV1AclReadArgs(
+                    project_access=False,
+                    users=[
+                        "userid1",
+                        "userid2",
+                    ],
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -717,6 +756,45 @@ class SecretV1(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Simple secret
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        secret1 = openstack.keymanager.SecretV1("secret1",
+            algorithm="aes",
+            bit_length=256,
+            metadata={
+                "key": "foo",
+            },
+            mode="cbc",
+            payload="foobar",
+            payload_content_type="text/plain",
+            secret_type="passphrase")
+        ```
+        ### Secret with the ACL
+
+        > **Note** Only read ACLs are supported
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        secret1 = openstack.keymanager.SecretV1("secret1",
+            payload=(lambda path: open(path).read())("certificate.pem"),
+            secret_type="certificate",
+            payload_content_type="text/plain",
+            acl=openstack.keymanager.SecretV1AclArgs(
+                read=openstack.keymanager.SecretV1AclReadArgs(
+                    project_access=False,
+                    users=[
+                        "userid1",
+                        "userid2",
+                    ],
+                ),
+            ))
+        ```
 
         ## Import
 

@@ -612,6 +612,35 @@ class User(pulumi.CustomResource):
         > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        user1 = openstack.identity.User("user1",
+            default_project_id=project1.id,
+            description="A user",
+            password="password123",
+            ignore_change_password_upon_first_use=True,
+            multi_factor_auth_enabled=True,
+            multi_factor_auth_rules=[
+                openstack.identity.UserMultiFactorAuthRuleArgs(
+                    rules=[
+                        "password",
+                        "totp",
+                    ],
+                ),
+                openstack.identity.UserMultiFactorAuthRuleArgs(
+                    rules=["password"],
+                ),
+            ],
+            extra={
+                "email": "user_1@foobar.com",
+            })
+        ```
+
         ## Import
 
         Users can be imported using the `id`, e.g.
@@ -661,6 +690,35 @@ class User(pulumi.CustomResource):
 
         > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        user1 = openstack.identity.User("user1",
+            default_project_id=project1.id,
+            description="A user",
+            password="password123",
+            ignore_change_password_upon_first_use=True,
+            multi_factor_auth_enabled=True,
+            multi_factor_auth_rules=[
+                openstack.identity.UserMultiFactorAuthRuleArgs(
+                    rules=[
+                        "password",
+                        "totp",
+                    ],
+                ),
+                openstack.identity.UserMultiFactorAuthRuleArgs(
+                    rules=["password"],
+                ),
+            ],
+            extra={
+                "email": "user_1@foobar.com",
+            })
+        ```
 
         ## Import
 

@@ -12,6 +12,26 @@ namespace Pulumi.OpenStack.BlockStorage
     /// <summary>
     /// Manages a V1 volume resource within OpenStack.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var volume1 = new OpenStack.BlockStorage.VolumeV1("volume1", new()
+    ///     {
+    ///         Description = "first test volume",
+    ///         Region = "RegionOne",
+    ///         Size = 3,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Volumes can be imported using the `id`, e.g.

@@ -10,6 +10,76 @@ import * as utilities from "../utilities";
  * Manages a V1 container resource within OpenStack.
  *
  * ## Example Usage
+ * ### Basic Container
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const container1 = new openstack.objectstorage.Container("container1", {
+ *     contentType: "application/json",
+ *     metadata: {
+ *         test: "true",
+ *     },
+ *     region: "RegionOne",
+ *     versioning: true,
+ * });
+ * ```
+ * ### Basic Container with legacy versioning
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const container1 = new openstack.objectstorage.Container("container1", {
+ *     contentType: "application/json",
+ *     metadata: {
+ *         test: "true",
+ *     },
+ *     region: "RegionOne",
+ *     versioningLegacy: {
+ *         location: "tf-test-container-versions",
+ *         type: "versions",
+ *     },
+ * });
+ * ```
+ * ### Global Read Access
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const container1 = new openstack.objectstorage.Container("container1", {
+ *     containerRead: ".r:*",
+ *     region: "RegionOne",
+ * });
+ * ```
+ * ### Global Read and List Access
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const container1 = new openstack.objectstorage.Container("container1", {
+ *     containerRead: ".r:*,.rlistings",
+ *     region: "RegionOne",
+ * });
+ * ```
+ * ### Write-Only Access for a User
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const current = openstack.identity.getAuthScope({
+ *     name: "current",
+ * });
+ * const container1 = new openstack.objectstorage.Container("container1", {
+ *     containerRead: `.r:-${_var.username}`,
+ *     containerWrite: current.then(current => `${current.projectId}:${_var.username}`),
+ *     region: "RegionOne",
+ * });
+ * ```
  *
  * ## Import
  *

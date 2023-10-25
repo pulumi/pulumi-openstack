@@ -278,6 +278,24 @@ class TransferAccept(pulumi.CustomResource):
         Manages a DNS zone transfer accept in the OpenStack DNS Service.
 
         ## Example Usage
+        ### Automatically detect the correct network
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        example_zone = openstack.dns.Zone("exampleZone",
+            email="jdoe@example.com",
+            description="An example zone",
+            ttl=3000,
+            type="PRIMARY")
+        request1 = openstack.dns.TransferRequest("request1",
+            zone_id=example_zone.id,
+            description="a transfer accept")
+        accept1 = openstack.dns.TransferAccept("accept1",
+            zone_transfer_request_id=request1.id,
+            key=request1.key)
+        ```
 
         ## Import
 
@@ -311,6 +329,24 @@ class TransferAccept(pulumi.CustomResource):
         Manages a DNS zone transfer accept in the OpenStack DNS Service.
 
         ## Example Usage
+        ### Automatically detect the correct network
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        example_zone = openstack.dns.Zone("exampleZone",
+            email="jdoe@example.com",
+            description="An example zone",
+            ttl=3000,
+            type="PRIMARY")
+        request1 = openstack.dns.TransferRequest("request1",
+            zone_id=example_zone.id,
+            description="a transfer accept")
+        accept1 = openstack.dns.TransferAccept("accept1",
+            zone_transfer_request_id=request1.id,
+            key=request1.key)
+        ```
 
         ## Import
 

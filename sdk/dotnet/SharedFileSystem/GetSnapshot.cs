@@ -13,12 +13,56 @@ namespace Pulumi.OpenStack.SharedFileSystem
     {
         /// <summary>
         /// Use this data source to get the ID of an available Shared File System snapshot.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var snapshot1 = OpenStack.SharedFileSystem.GetSnapshot.Invoke(new()
+        ///     {
+        ///         Name = "snapshot_1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetSnapshotResult> InvokeAsync(GetSnapshotArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("openstack:sharedfilesystem/getSnapshot:getSnapshot", args ?? new GetSnapshotArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available Shared File System snapshot.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var snapshot1 = OpenStack.SharedFileSystem.GetSnapshot.Invoke(new()
+        ///     {
+        ///         Name = "snapshot_1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetSnapshotResult> Invoke(GetSnapshotInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotResult>("openstack:sharedfilesystem/getSnapshot:getSnapshot", args ?? new GetSnapshotInvokeArgs(), options.WithDefaults());

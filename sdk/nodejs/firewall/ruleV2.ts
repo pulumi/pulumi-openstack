@@ -9,6 +9,21 @@ import * as utilities from "../utilities";
  *
  * > **Note:** Firewall v2 has no support for OVN currently.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const rule2 = new openstack.firewall.RuleV2("rule2", {
+ *     action: "deny",
+ *     description: "drop TELNET traffic",
+ *     destinationPort: "23",
+ *     enabled: true,
+ *     protocol: "tcp",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Firewall Rules can be imported using the `id`, e.g.

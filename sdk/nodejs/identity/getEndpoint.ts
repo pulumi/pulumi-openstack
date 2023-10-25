@@ -8,6 +8,17 @@ import * as utilities from "../utilities";
  * Use this data source to get the ID of an OpenStack endpoint.
  *
  * > **Note:** This usually requires admin privileges.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const endpoint1 = openstack.identity.getEndpoint({
+ *     serviceName: "demo",
+ * });
+ * ```
  */
 export function getEndpoint(args?: GetEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointResult> {
     args = args || {};
@@ -106,6 +117,17 @@ export interface GetEndpointResult {
  * Use this data source to get the ID of an OpenStack endpoint.
  *
  * > **Note:** This usually requires admin privileges.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const endpoint1 = openstack.identity.getEndpoint({
+ *     serviceName: "demo",
+ * });
+ * ```
  */
 export function getEndpointOutput(args?: GetEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointResult> {
     return pulumi.output(args).apply((a: any) => getEndpoint(a, opts))

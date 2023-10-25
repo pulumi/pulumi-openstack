@@ -292,6 +292,21 @@ class RoleAssignment(pulumi.CustomResource):
         > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        user1 = openstack.identity.User("user1", default_project_id=project1.id)
+        role1 = openstack.identity.Role("role1")
+        role_assignment1 = openstack.identity.RoleAssignment("roleAssignment1",
+            user_id=user1.id,
+            project_id=project1.id,
+            role_id=role1.id)
+        ```
+
         ## Import
 
         Role assignments can be imported using a constructed id. The id should have the form of `domainID/projectID/groupID/userID/roleID`. When something is not used then leave blank.
@@ -321,6 +336,21 @@ class RoleAssignment(pulumi.CustomResource):
 
         > **Note:** You _must_ have admin privileges in your OpenStack cloud to use
         this resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        user1 = openstack.identity.User("user1", default_project_id=project1.id)
+        role1 = openstack.identity.Role("role1")
+        role_assignment1 = openstack.identity.RoleAssignment("roleAssignment1",
+            user_id=user1.id,
+            project_id=project1.id,
+            role_id=role1.id)
+        ```
 
         ## Import
 

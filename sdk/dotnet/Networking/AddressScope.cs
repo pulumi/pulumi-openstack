@@ -13,6 +13,50 @@ namespace Pulumi.OpenStack.Networking
     /// Manages a V2 Neutron addressscope resource within OpenStack.
     /// 
     /// ## Example Usage
+    /// ### Create an Address-scope
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var addressscope1 = new OpenStack.Networking.AddressScope("addressscope1", new()
+    ///     {
+    ///         IpVersion = 6,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Create a Subnet Pool from an Address-scope
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var addressscope1 = new OpenStack.Networking.AddressScope("addressscope1", new()
+    ///     {
+    ///         IpVersion = 6,
+    ///     });
+    /// 
+    ///     var subnetpool1 = new OpenStack.Networking.SubnetPool("subnetpool1", new()
+    ///     {
+    ///         Prefixes = new[]
+    ///         {
+    ///             "fdf7:b13d:dead:beef::/64",
+    ///             "fd65:86cc:a334:39b7::/64",
+    ///         },
+    ///         AddressScopeId = addressscope1.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

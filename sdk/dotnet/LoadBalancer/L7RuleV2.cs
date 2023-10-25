@@ -12,6 +12,67 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// <summary>
     /// Manages a V2 L7 Rule resource within OpenStack.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///     });
+    /// 
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     {
+    ///         Cidr = "192.168.199.0/24",
+    ///         IpVersion = 4,
+    ///         NetworkId = network1.Id,
+    ///     });
+    /// 
+    ///     var loadbalancer1 = new OpenStack.LoadBalancer.LoadBalancer("loadbalancer1", new()
+    ///     {
+    ///         VipSubnetId = subnet1.Id,
+    ///     });
+    /// 
+    ///     var listener1 = new OpenStack.LoadBalancer.Listener("listener1", new()
+    ///     {
+    ///         Protocol = "HTTP",
+    ///         ProtocolPort = 8080,
+    ///         LoadbalancerId = loadbalancer1.Id,
+    ///     });
+    /// 
+    ///     var pool1 = new OpenStack.LoadBalancer.Pool("pool1", new()
+    ///     {
+    ///         Protocol = "HTTP",
+    ///         LbMethod = "ROUND_ROBIN",
+    ///         LoadbalancerId = loadbalancer1.Id,
+    ///     });
+    /// 
+    ///     var l7policy1 = new OpenStack.LoadBalancer.L7PolicyV2("l7policy1", new()
+    ///     {
+    ///         Action = "REDIRECT_TO_URL",
+    ///         Description = "test description",
+    ///         Position = 1,
+    ///         ListenerId = listener1.Id,
+    ///         RedirectUrl = "http://www.example.com",
+    ///     });
+    /// 
+    ///     var l7rule1 = new OpenStack.LoadBalancer.L7RuleV2("l7rule1", new()
+    ///     {
+    ///         L7policyId = l7policy1.Id,
+    ///         Type = "PATH",
+    ///         CompareType = "EQUAL_TO",
+    ///         Value = "/api",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Load Balancer L7 Rule can be imported using the L7 Policy ID and L7 Rule ID separated by a slash, e.g.:

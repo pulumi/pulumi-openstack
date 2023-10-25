@@ -192,6 +192,23 @@ class FlavorAccess(pulumi.CustomResource):
 
         ***
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        flavor1 = openstack.compute.Flavor("flavor1",
+            ram=8096,
+            vcpus=2,
+            disk=20,
+            is_public=False)
+        access1 = openstack.compute.FlavorAccess("access1",
+            tenant_id=project1.id,
+            flavor_id=flavor1.id)
+        ```
+
         ## Import
 
         This resource can be imported by specifying all two arguments, separated by a forward slash:
@@ -222,6 +239,23 @@ class FlavorAccess(pulumi.CustomResource):
         this resource.
 
         ***
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        project1 = openstack.identity.Project("project1")
+        flavor1 = openstack.compute.Flavor("flavor1",
+            ram=8096,
+            vcpus=2,
+            disk=20,
+            is_public=False)
+        access1 = openstack.compute.FlavorAccess("access1",
+            tenant_id=project1.id,
+            flavor_id=flavor1.id)
+        ```
 
         ## Import
 

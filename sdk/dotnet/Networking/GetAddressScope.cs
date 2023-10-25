@@ -13,12 +13,60 @@ namespace Pulumi.OpenStack.Networking
     {
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack address-scope.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var publicAddressscope = OpenStack.Networking.GetAddressScope.Invoke(new()
+        ///     {
+        ///         IpVersion = 4,
+        ///         Name = "public_addressscope",
+        ///         Shared = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAddressScopeResult> InvokeAsync(GetAddressScopeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAddressScopeResult>("openstack:networking/getAddressScope:getAddressScope", args ?? new GetAddressScopeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack address-scope.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using OpenStack = Pulumi.OpenStack;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var publicAddressscope = OpenStack.Networking.GetAddressScope.Invoke(new()
+        ///     {
+        ///         IpVersion = 4,
+        ///         Name = "public_addressscope",
+        ///         Shared = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAddressScopeResult> Invoke(GetAddressScopeInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAddressScopeResult>("openstack:networking/getAddressScope:getAddressScope", args ?? new GetAddressScopeInvokeArgs(), options.WithDefaults());

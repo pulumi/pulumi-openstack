@@ -14,6 +14,106 @@ namespace Pulumi.OpenStack.Compute
     /// Compute (Nova) v2 API.
     /// 
     /// ## Example Usage
+    /// ### Basic Attachment
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///     });
+    /// 
+    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     {
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///     });
+    /// 
+    ///     var ai1 = new OpenStack.Compute.InterfaceAttach("ai1", new()
+    ///     {
+    ///         InstanceId = instance1.Id,
+    ///         NetworkId = openstack_networking_port_v2.Network_1.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Attachment Specifying a Fixed IP
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///     });
+    /// 
+    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     {
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///     });
+    /// 
+    ///     var ai1 = new OpenStack.Compute.InterfaceAttach("ai1", new()
+    ///     {
+    ///         InstanceId = instance1.Id,
+    ///         NetworkId = openstack_networking_port_v2.Network_1.Id,
+    ///         FixedIp = "10.0.10.10",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Attachment Using an Existing Port
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///     });
+    /// 
+    ///     var port1 = new OpenStack.Networking.Port("port1", new()
+    ///     {
+    ///         NetworkId = network1.Id,
+    ///         AdminStateUp = true,
+    ///     });
+    /// 
+    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     {
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             "default",
+    ///         },
+    ///     });
+    /// 
+    ///     var ai1 = new OpenStack.Compute.InterfaceAttach("ai1", new()
+    ///     {
+    ///         InstanceId = instance1.Id,
+    ///         PortId = port1.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

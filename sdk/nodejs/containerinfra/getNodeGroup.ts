@@ -6,6 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get information of an available OpenStack Magnum node group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const nodegroup1 = openstack.containerinfra.getNodeGroup({
+ *     clusterId: "cluster_1",
+ *     name: "nodegroup_1",
+ * });
+ * ```
  */
 export function getNodeGroup(args: GetNodeGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeGroupResult> {
 
@@ -102,6 +114,18 @@ export interface GetNodeGroupResult {
 }
 /**
  * Use this data source to get information of an available OpenStack Magnum node group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const nodegroup1 = openstack.containerinfra.getNodeGroup({
+ *     clusterId: "cluster_1",
+ *     name: "nodegroup_1",
+ * });
+ * ```
  */
 export function getNodeGroupOutput(args: GetNodeGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeGroupResult> {
     return pulumi.output(args).apply((a: any) => getNodeGroup(a, opts))

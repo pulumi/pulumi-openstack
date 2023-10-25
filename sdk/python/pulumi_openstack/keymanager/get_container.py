@@ -186,6 +186,15 @@ def get_container(name: Optional[str] = None,
     """
     Use this data source to get the ID of an available Barbican container.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    example = openstack.keymanager.get_container(name="my_container")
+    ```
+
 
     :param str name: The Container name.
     :param str region: The region in which to obtain the V1 KeyManager client.
@@ -219,6 +228,15 @@ def get_container_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerResult]:
     """
     Use this data source to get the ID of an available Barbican container.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    example = openstack.keymanager.get_container(name="my_container")
+    ```
 
 
     :param str name: The Container name.

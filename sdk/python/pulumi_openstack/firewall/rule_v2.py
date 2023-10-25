@@ -665,6 +665,20 @@ class RuleV2(pulumi.CustomResource):
 
         > **Note:** Firewall v2 has no support for OVN currently.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rule2 = openstack.firewall.RuleV2("rule2",
+            action="deny",
+            description="drop TELNET traffic",
+            destination_port="23",
+            enabled=True,
+            protocol="tcp")
+        ```
+
         ## Import
 
         Firewall Rules can be imported using the `id`, e.g.
@@ -725,6 +739,20 @@ class RuleV2(pulumi.CustomResource):
         Manages a v2 firewall rule resource within OpenStack.
 
         > **Note:** Firewall v2 has no support for OVN currently.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        rule2 = openstack.firewall.RuleV2("rule2",
+            action="deny",
+            description="drop TELNET traffic",
+            destination_port="23",
+            enabled=True,
+            protocol="tcp")
+        ```
 
         ## Import
 

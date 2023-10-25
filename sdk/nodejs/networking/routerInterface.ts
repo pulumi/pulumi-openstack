@@ -7,6 +7,25 @@ import * as utilities from "../utilities";
 /**
  * Manages a V2 router interface resource within OpenStack.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ *     networkId: network1.id,
+ *     cidr: "192.168.199.0/24",
+ *     ipVersion: 4,
+ * });
+ * const router1 = new openstack.networking.Router("router1", {externalNetworkId: "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f"});
+ * const routerInterface1 = new openstack.networking.RouterInterface("routerInterface1", {
+ *     routerId: router1.id,
+ *     subnetId: subnet1.id,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Router Interfaces can be imported using the port `id`, e.g. $ openstack port list --router <router name or id>

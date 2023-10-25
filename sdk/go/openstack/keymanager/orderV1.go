@@ -16,6 +16,67 @@ import (
 // Manages a V1 Barbican order resource within OpenStack.
 //
 // ## Example Usage
+// ### Symmetric key order
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := keymanager.NewOrderV1(ctx, "order1", &keymanager.OrderV1Args{
+//				Meta: &keymanager.OrderV1MetaArgs{
+//					Algorithm: pulumi.String("aes"),
+//					BitLength: pulumi.Int(256),
+//					Mode:      pulumi.String("cbc"),
+//					Name:      pulumi.String("mysecret"),
+//				},
+//				Type: pulumi.String("key"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Asymmetric key pair order
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := keymanager.NewOrderV1(ctx, "order1", &keymanager.OrderV1Args{
+//				Meta: &keymanager.OrderV1MetaArgs{
+//					Algorithm: pulumi.String("rsa"),
+//					BitLength: pulumi.Int(4096),
+//					Name:      pulumi.String("mysecret"),
+//				},
+//				Type: pulumi.String("asymmetric"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

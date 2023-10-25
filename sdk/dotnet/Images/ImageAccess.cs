@@ -14,6 +14,73 @@ namespace Pulumi.OpenStack.Images
     /// project, which owns the Image.
     /// 
     /// ## Example Usage
+    /// ### Unprivileged user
+    /// 
+    /// Create a shared image and propose a membership to the
+    /// `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var rancheros = new OpenStack.Images.Image("rancheros", new()
+    ///     {
+    ///         ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
+    ///         ContainerFormat = "bare",
+    ///         DiskFormat = "qcow2",
+    ///         Visibility = "shared",
+    ///         Properties = 
+    ///         {
+    ///             { "key", "value" },
+    ///         },
+    ///     });
+    /// 
+    ///     var rancherosMember = new OpenStack.Images.ImageAccess("rancherosMember", new()
+    ///     {
+    ///         ImageId = rancheros.Id,
+    ///         MemberId = "bed6b6cbb86a4e2d8dc2735c2f1000e4",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Privileged user
+    /// 
+    /// Create a shared image and set a membership to the
+    /// `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var rancheros = new OpenStack.Images.Image("rancheros", new()
+    ///     {
+    ///         ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
+    ///         ContainerFormat = "bare",
+    ///         DiskFormat = "qcow2",
+    ///         Visibility = "shared",
+    ///         Properties = 
+    ///         {
+    ///             { "key", "value" },
+    ///         },
+    ///     });
+    /// 
+    ///     var rancherosMember = new OpenStack.Images.ImageAccess("rancherosMember", new()
+    ///     {
+    ///         ImageId = rancheros.Id,
+    ///         MemberId = "bed6b6cbb86a4e2d8dc2735c2f1000e4",
+    ///         Status = "accepted",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

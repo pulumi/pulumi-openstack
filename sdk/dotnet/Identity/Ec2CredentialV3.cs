@@ -19,6 +19,40 @@ namespace Pulumi.OpenStack.Identity
     /// in state.
     /// 
     /// ## Example Usage
+    /// ### EC2 credential in current project scope
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ec2Key1 = new OpenStack.Identity.Ec2CredentialV3("ec2Key1");
+    /// 
+    /// });
+    /// ```
+    /// ### EC2 credential in pre-defined project scope
+    /// 
+    /// This allows administrative users to create EC2 credentials for a scope different
+    /// from the current auth scope.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ec2Key1 = new OpenStack.Identity.Ec2CredentialV3("ec2Key1", new()
+    ///     {
+    ///         ProjectId = "f7ac731cc11f40efbc03a9f9e1d1d21f",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

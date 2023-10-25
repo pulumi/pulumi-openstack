@@ -8,6 +8,32 @@ import * as utilities from "../utilities";
  * Manages a Host Aggregate within Openstack Nova.
  *
  * ## Example Usage
+ * ### Full example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const dellServers = new openstack.compute.AggregateV2("dellServers", {
+ *     hosts: [
+ *         "myhost01.example.com",
+ *         "myhost02.example.com",
+ *     ],
+ *     metadata: {
+ *         cpus: "56",
+ *     },
+ *     region: "RegionOne",
+ *     zone: "nova",
+ * });
+ * ```
+ * ### Minimum required example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const test = new openstack.compute.AggregateV2("test", {});
+ * ```
  *
  * ## Import
  *

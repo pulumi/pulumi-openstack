@@ -9,6 +9,15 @@ import * as utilities from "../utilities";
  *
  * > **Note:** This usually requires admin privileges.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const service1 = new openstack.identity.ServiceV3("service1", {type: "custom"});
+ * ```
+ *
  * ## Import
  *
  * Services can be imported using the `id`, e.g.

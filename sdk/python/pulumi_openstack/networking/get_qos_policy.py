@@ -181,6 +181,15 @@ def get_qos_policy(description: Optional[str] = None,
     """
     Use this data source to get the ID of an available OpenStack QoS policy.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    qos_policy1 = openstack.networking.get_qos_policy(name="qos_policy_1")
+    ```
+
 
     :param str description: The human-readable description for the QoS policy.
     :param bool is_default: Whether the QoS policy is default policy or not.
@@ -229,6 +238,15 @@ def get_qos_policy_output(description: Optional[pulumi.Input[Optional[str]]] = N
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQosPolicyResult]:
     """
     Use this data source to get the ID of an available OpenStack QoS policy.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_openstack as openstack
+
+    qos_policy1 = openstack.networking.get_qos_policy(name="qos_policy_1")
+    ```
 
 
     :param str description: The human-readable description for the QoS policy.

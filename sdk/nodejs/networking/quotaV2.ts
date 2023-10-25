@@ -15,6 +15,27 @@ import * as utilities from "../utilities";
  * > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
  *     created with zero value.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const project1 = new openstack.identity.Project("project1", {});
+ * const quota1 = new openstack.networking.QuotaV2("quota1", {
+ *     projectId: project1.id,
+ *     floatingip: 10,
+ *     network: 4,
+ *     port: 100,
+ *     rbacPolicy: 10,
+ *     router: 4,
+ *     securityGroup: 10,
+ *     securityGroupRule: 100,
+ *     subnet: 8,
+ *     subnetpool: 2,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Quotas can be imported using the `project_id/region_name`, e.g.
