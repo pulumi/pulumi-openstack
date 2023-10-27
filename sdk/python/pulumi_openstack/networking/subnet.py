@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -96,138 +96,53 @@ class SubnetArgs:
                create a subnet for another tenant. Changing this creates a new subnet.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
-        SubnetArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            network_id=network_id,
-            allocation_pools=allocation_pools,
-            allocation_pools_collection=allocation_pools_collection,
-            cidr=cidr,
-            description=description,
-            dns_nameservers=dns_nameservers,
-            enable_dhcp=enable_dhcp,
-            gateway_ip=gateway_ip,
-            host_routes=host_routes,
-            ip_version=ip_version,
-            ipv6_address_mode=ipv6_address_mode,
-            ipv6_ra_mode=ipv6_ra_mode,
-            name=name,
-            no_gateway=no_gateway,
-            prefix_length=prefix_length,
-            region=region,
-            service_types=service_types,
-            subnetpool_id=subnetpool_id,
-            tags=tags,
-            tenant_id=tenant_id,
-            value_specs=value_specs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             network_id: Optional[pulumi.Input[str]] = None,
-             allocation_pools: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]] = None,
-             allocation_pools_collection: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolsCollectionArgs']]]] = None,
-             cidr: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             dns_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             enable_dhcp: Optional[pulumi.Input[bool]] = None,
-             gateway_ip: Optional[pulumi.Input[str]] = None,
-             host_routes: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetHostRouteArgs']]]] = None,
-             ip_version: Optional[pulumi.Input[int]] = None,
-             ipv6_address_mode: Optional[pulumi.Input[str]] = None,
-             ipv6_ra_mode: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             no_gateway: Optional[pulumi.Input[bool]] = None,
-             prefix_length: Optional[pulumi.Input[int]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             service_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             subnetpool_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tenant_id: Optional[pulumi.Input[str]] = None,
-             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if network_id is None and 'networkId' in kwargs:
-            network_id = kwargs['networkId']
-        if network_id is None:
-            raise TypeError("Missing 'network_id' argument")
-        if allocation_pools is None and 'allocationPools' in kwargs:
-            allocation_pools = kwargs['allocationPools']
-        if allocation_pools_collection is None and 'allocationPoolsCollection' in kwargs:
-            allocation_pools_collection = kwargs['allocationPoolsCollection']
-        if dns_nameservers is None and 'dnsNameservers' in kwargs:
-            dns_nameservers = kwargs['dnsNameservers']
-        if enable_dhcp is None and 'enableDhcp' in kwargs:
-            enable_dhcp = kwargs['enableDhcp']
-        if gateway_ip is None and 'gatewayIp' in kwargs:
-            gateway_ip = kwargs['gatewayIp']
-        if host_routes is None and 'hostRoutes' in kwargs:
-            host_routes = kwargs['hostRoutes']
-        if ip_version is None and 'ipVersion' in kwargs:
-            ip_version = kwargs['ipVersion']
-        if ipv6_address_mode is None and 'ipv6AddressMode' in kwargs:
-            ipv6_address_mode = kwargs['ipv6AddressMode']
-        if ipv6_ra_mode is None and 'ipv6RaMode' in kwargs:
-            ipv6_ra_mode = kwargs['ipv6RaMode']
-        if no_gateway is None and 'noGateway' in kwargs:
-            no_gateway = kwargs['noGateway']
-        if prefix_length is None and 'prefixLength' in kwargs:
-            prefix_length = kwargs['prefixLength']
-        if service_types is None and 'serviceTypes' in kwargs:
-            service_types = kwargs['serviceTypes']
-        if subnetpool_id is None and 'subnetpoolId' in kwargs:
-            subnetpool_id = kwargs['subnetpoolId']
-        if tenant_id is None and 'tenantId' in kwargs:
-            tenant_id = kwargs['tenantId']
-        if value_specs is None and 'valueSpecs' in kwargs:
-            value_specs = kwargs['valueSpecs']
-
-        _setter("network_id", network_id)
+        pulumi.set(__self__, "network_id", network_id)
         if allocation_pools is not None:
-            _setter("allocation_pools", allocation_pools)
+            pulumi.set(__self__, "allocation_pools", allocation_pools)
         if allocation_pools_collection is not None:
             warnings.warn("""use allocation_pool instead""", DeprecationWarning)
             pulumi.log.warn("""allocation_pools_collection is deprecated: use allocation_pool instead""")
         if allocation_pools_collection is not None:
-            _setter("allocation_pools_collection", allocation_pools_collection)
+            pulumi.set(__self__, "allocation_pools_collection", allocation_pools_collection)
         if cidr is not None:
-            _setter("cidr", cidr)
+            pulumi.set(__self__, "cidr", cidr)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dns_nameservers is not None:
-            _setter("dns_nameservers", dns_nameservers)
+            pulumi.set(__self__, "dns_nameservers", dns_nameservers)
         if enable_dhcp is not None:
-            _setter("enable_dhcp", enable_dhcp)
+            pulumi.set(__self__, "enable_dhcp", enable_dhcp)
         if gateway_ip is not None:
-            _setter("gateway_ip", gateway_ip)
+            pulumi.set(__self__, "gateway_ip", gateway_ip)
         if host_routes is not None:
             warnings.warn("""Use openstack_networking_subnet_route_v2 instead""", DeprecationWarning)
             pulumi.log.warn("""host_routes is deprecated: Use openstack_networking_subnet_route_v2 instead""")
         if host_routes is not None:
-            _setter("host_routes", host_routes)
+            pulumi.set(__self__, "host_routes", host_routes)
         if ip_version is not None:
-            _setter("ip_version", ip_version)
+            pulumi.set(__self__, "ip_version", ip_version)
         if ipv6_address_mode is not None:
-            _setter("ipv6_address_mode", ipv6_address_mode)
+            pulumi.set(__self__, "ipv6_address_mode", ipv6_address_mode)
         if ipv6_ra_mode is not None:
-            _setter("ipv6_ra_mode", ipv6_ra_mode)
+            pulumi.set(__self__, "ipv6_ra_mode", ipv6_ra_mode)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if no_gateway is not None:
-            _setter("no_gateway", no_gateway)
+            pulumi.set(__self__, "no_gateway", no_gateway)
         if prefix_length is not None:
-            _setter("prefix_length", prefix_length)
+            pulumi.set(__self__, "prefix_length", prefix_length)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if service_types is not None:
-            _setter("service_types", service_types)
+            pulumi.set(__self__, "service_types", service_types)
         if subnetpool_id is not None:
-            _setter("subnetpool_id", subnetpool_id)
+            pulumi.set(__self__, "subnetpool_id", subnetpool_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
-            _setter("tenant_id", tenant_id)
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if value_specs is not None:
-            _setter("value_specs", value_specs)
+            pulumi.set(__self__, "value_specs", value_specs)
 
     @property
     @pulumi.getter(name="networkId")
@@ -609,143 +524,56 @@ class _SubnetState:
                create a subnet for another tenant. Changing this creates a new subnet.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
-        _SubnetState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            all_tags=all_tags,
-            allocation_pools=allocation_pools,
-            allocation_pools_collection=allocation_pools_collection,
-            cidr=cidr,
-            description=description,
-            dns_nameservers=dns_nameservers,
-            enable_dhcp=enable_dhcp,
-            gateway_ip=gateway_ip,
-            host_routes=host_routes,
-            ip_version=ip_version,
-            ipv6_address_mode=ipv6_address_mode,
-            ipv6_ra_mode=ipv6_ra_mode,
-            name=name,
-            network_id=network_id,
-            no_gateway=no_gateway,
-            prefix_length=prefix_length,
-            region=region,
-            service_types=service_types,
-            subnetpool_id=subnetpool_id,
-            tags=tags,
-            tenant_id=tenant_id,
-            value_specs=value_specs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             allocation_pools: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolArgs']]]] = None,
-             allocation_pools_collection: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolsCollectionArgs']]]] = None,
-             cidr: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             dns_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             enable_dhcp: Optional[pulumi.Input[bool]] = None,
-             gateway_ip: Optional[pulumi.Input[str]] = None,
-             host_routes: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetHostRouteArgs']]]] = None,
-             ip_version: Optional[pulumi.Input[int]] = None,
-             ipv6_address_mode: Optional[pulumi.Input[str]] = None,
-             ipv6_ra_mode: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_id: Optional[pulumi.Input[str]] = None,
-             no_gateway: Optional[pulumi.Input[bool]] = None,
-             prefix_length: Optional[pulumi.Input[int]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             service_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             subnetpool_id: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tenant_id: Optional[pulumi.Input[str]] = None,
-             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if all_tags is None and 'allTags' in kwargs:
-            all_tags = kwargs['allTags']
-        if allocation_pools is None and 'allocationPools' in kwargs:
-            allocation_pools = kwargs['allocationPools']
-        if allocation_pools_collection is None and 'allocationPoolsCollection' in kwargs:
-            allocation_pools_collection = kwargs['allocationPoolsCollection']
-        if dns_nameservers is None and 'dnsNameservers' in kwargs:
-            dns_nameservers = kwargs['dnsNameservers']
-        if enable_dhcp is None and 'enableDhcp' in kwargs:
-            enable_dhcp = kwargs['enableDhcp']
-        if gateway_ip is None and 'gatewayIp' in kwargs:
-            gateway_ip = kwargs['gatewayIp']
-        if host_routes is None and 'hostRoutes' in kwargs:
-            host_routes = kwargs['hostRoutes']
-        if ip_version is None and 'ipVersion' in kwargs:
-            ip_version = kwargs['ipVersion']
-        if ipv6_address_mode is None and 'ipv6AddressMode' in kwargs:
-            ipv6_address_mode = kwargs['ipv6AddressMode']
-        if ipv6_ra_mode is None and 'ipv6RaMode' in kwargs:
-            ipv6_ra_mode = kwargs['ipv6RaMode']
-        if network_id is None and 'networkId' in kwargs:
-            network_id = kwargs['networkId']
-        if no_gateway is None and 'noGateway' in kwargs:
-            no_gateway = kwargs['noGateway']
-        if prefix_length is None and 'prefixLength' in kwargs:
-            prefix_length = kwargs['prefixLength']
-        if service_types is None and 'serviceTypes' in kwargs:
-            service_types = kwargs['serviceTypes']
-        if subnetpool_id is None and 'subnetpoolId' in kwargs:
-            subnetpool_id = kwargs['subnetpoolId']
-        if tenant_id is None and 'tenantId' in kwargs:
-            tenant_id = kwargs['tenantId']
-        if value_specs is None and 'valueSpecs' in kwargs:
-            value_specs = kwargs['valueSpecs']
-
         if all_tags is not None:
-            _setter("all_tags", all_tags)
+            pulumi.set(__self__, "all_tags", all_tags)
         if allocation_pools is not None:
-            _setter("allocation_pools", allocation_pools)
+            pulumi.set(__self__, "allocation_pools", allocation_pools)
         if allocation_pools_collection is not None:
             warnings.warn("""use allocation_pool instead""", DeprecationWarning)
             pulumi.log.warn("""allocation_pools_collection is deprecated: use allocation_pool instead""")
         if allocation_pools_collection is not None:
-            _setter("allocation_pools_collection", allocation_pools_collection)
+            pulumi.set(__self__, "allocation_pools_collection", allocation_pools_collection)
         if cidr is not None:
-            _setter("cidr", cidr)
+            pulumi.set(__self__, "cidr", cidr)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dns_nameservers is not None:
-            _setter("dns_nameservers", dns_nameservers)
+            pulumi.set(__self__, "dns_nameservers", dns_nameservers)
         if enable_dhcp is not None:
-            _setter("enable_dhcp", enable_dhcp)
+            pulumi.set(__self__, "enable_dhcp", enable_dhcp)
         if gateway_ip is not None:
-            _setter("gateway_ip", gateway_ip)
+            pulumi.set(__self__, "gateway_ip", gateway_ip)
         if host_routes is not None:
             warnings.warn("""Use openstack_networking_subnet_route_v2 instead""", DeprecationWarning)
             pulumi.log.warn("""host_routes is deprecated: Use openstack_networking_subnet_route_v2 instead""")
         if host_routes is not None:
-            _setter("host_routes", host_routes)
+            pulumi.set(__self__, "host_routes", host_routes)
         if ip_version is not None:
-            _setter("ip_version", ip_version)
+            pulumi.set(__self__, "ip_version", ip_version)
         if ipv6_address_mode is not None:
-            _setter("ipv6_address_mode", ipv6_address_mode)
+            pulumi.set(__self__, "ipv6_address_mode", ipv6_address_mode)
         if ipv6_ra_mode is not None:
-            _setter("ipv6_ra_mode", ipv6_ra_mode)
+            pulumi.set(__self__, "ipv6_ra_mode", ipv6_ra_mode)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_id is not None:
-            _setter("network_id", network_id)
+            pulumi.set(__self__, "network_id", network_id)
         if no_gateway is not None:
-            _setter("no_gateway", no_gateway)
+            pulumi.set(__self__, "no_gateway", no_gateway)
         if prefix_length is not None:
-            _setter("prefix_length", prefix_length)
+            pulumi.set(__self__, "prefix_length", prefix_length)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if service_types is not None:
-            _setter("service_types", service_types)
+            pulumi.set(__self__, "service_types", service_types)
         if subnetpool_id is not None:
-            _setter("subnetpool_id", subnetpool_id)
+            pulumi.set(__self__, "subnetpool_id", subnetpool_id)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
-            _setter("tenant_id", tenant_id)
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if value_specs is not None:
-            _setter("value_specs", value_specs)
+            pulumi.set(__self__, "value_specs", value_specs)
 
     @property
     @pulumi.getter(name="allTags")
@@ -1202,10 +1030,6 @@ class Subnet(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SubnetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

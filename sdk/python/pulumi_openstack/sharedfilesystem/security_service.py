@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SecurityServiceArgs', 'SecurityService']
@@ -46,58 +46,25 @@ class SecurityServiceArgs:
         :param pulumi.Input[str] user: The security service user or group name that is used by the
                tenant.
         """
-        SecurityServiceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            description=description,
-            dns_ip=dns_ip,
-            domain=domain,
-            name=name,
-            ou=ou,
-            password=password,
-            region=region,
-            server=server,
-            user=user,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             dns_ip: Optional[pulumi.Input[str]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             ou: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             server: Optional[pulumi.Input[str]] = None,
-             user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if dns_ip is None and 'dnsIp' in kwargs:
-            dns_ip = kwargs['dnsIp']
-
-        _setter("type", type)
+        pulumi.set(__self__, "type", type)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dns_ip is not None:
-            _setter("dns_ip", dns_ip)
+            pulumi.set(__self__, "dns_ip", dns_ip)
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if ou is not None:
-            _setter("ou", ou)
+            pulumi.set(__self__, "ou", ou)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if server is not None:
-            _setter("server", server)
+            pulumi.set(__self__, "server", server)
         if user is not None:
-            _setter("user", user)
+            pulumi.set(__self__, "user", user)
 
     @property
     @pulumi.getter
@@ -266,63 +233,28 @@ class _SecurityServiceState:
         :param pulumi.Input[str] user: The security service user or group name that is used by the
                tenant.
         """
-        _SecurityServiceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            dns_ip=dns_ip,
-            domain=domain,
-            name=name,
-            ou=ou,
-            password=password,
-            project_id=project_id,
-            region=region,
-            server=server,
-            type=type,
-            user=user,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             dns_ip: Optional[pulumi.Input[str]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             ou: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             server: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if dns_ip is None and 'dnsIp' in kwargs:
-            dns_ip = kwargs['dnsIp']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dns_ip is not None:
-            _setter("dns_ip", dns_ip)
+            pulumi.set(__self__, "dns_ip", dns_ip)
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if ou is not None:
-            _setter("ou", ou)
+            pulumi.set(__self__, "ou", ou)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if server is not None:
-            _setter("server", server)
+            pulumi.set(__self__, "server", server)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if user is not None:
-            _setter("user", user)
+            pulumi.set(__self__, "user", user)
 
     @property
     @pulumi.getter
@@ -598,10 +530,6 @@ class SecurityService(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SecurityServiceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

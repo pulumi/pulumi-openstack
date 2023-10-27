@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VolumeAttachArgs', 'VolumeAttach']
@@ -49,75 +49,28 @@ class VolumeAttachArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] wwpns: An array of wwpn strings. Used for Fibre Channel
                connections.
         """
-        VolumeAttachArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            host_name=host_name,
-            volume_id=volume_id,
-            attach_mode=attach_mode,
-            device=device,
-            initiator=initiator,
-            ip_address=ip_address,
-            multipath=multipath,
-            os_type=os_type,
-            platform=platform,
-            region=region,
-            wwnn=wwnn,
-            wwpns=wwpns,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             host_name: Optional[pulumi.Input[str]] = None,
-             volume_id: Optional[pulumi.Input[str]] = None,
-             attach_mode: Optional[pulumi.Input[str]] = None,
-             device: Optional[pulumi.Input[str]] = None,
-             initiator: Optional[pulumi.Input[str]] = None,
-             ip_address: Optional[pulumi.Input[str]] = None,
-             multipath: Optional[pulumi.Input[bool]] = None,
-             os_type: Optional[pulumi.Input[str]] = None,
-             platform: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             wwnn: Optional[pulumi.Input[str]] = None,
-             wwpns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if host_name is None and 'hostName' in kwargs:
-            host_name = kwargs['hostName']
-        if host_name is None:
-            raise TypeError("Missing 'host_name' argument")
-        if volume_id is None and 'volumeId' in kwargs:
-            volume_id = kwargs['volumeId']
-        if volume_id is None:
-            raise TypeError("Missing 'volume_id' argument")
-        if attach_mode is None and 'attachMode' in kwargs:
-            attach_mode = kwargs['attachMode']
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-        if os_type is None and 'osType' in kwargs:
-            os_type = kwargs['osType']
-
-        _setter("host_name", host_name)
-        _setter("volume_id", volume_id)
+        pulumi.set(__self__, "host_name", host_name)
+        pulumi.set(__self__, "volume_id", volume_id)
         if attach_mode is not None:
-            _setter("attach_mode", attach_mode)
+            pulumi.set(__self__, "attach_mode", attach_mode)
         if device is not None:
-            _setter("device", device)
+            pulumi.set(__self__, "device", device)
         if initiator is not None:
-            _setter("initiator", initiator)
+            pulumi.set(__self__, "initiator", initiator)
         if ip_address is not None:
-            _setter("ip_address", ip_address)
+            pulumi.set(__self__, "ip_address", ip_address)
         if multipath is not None:
-            _setter("multipath", multipath)
+            pulumi.set(__self__, "multipath", multipath)
         if os_type is not None:
-            _setter("os_type", os_type)
+            pulumi.set(__self__, "os_type", os_type)
         if platform is not None:
-            _setter("platform", platform)
+            pulumi.set(__self__, "platform", platform)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if wwnn is not None:
-            _setter("wwnn", wwnn)
+            pulumi.set(__self__, "wwnn", wwnn)
         if wwpns is not None:
-            _setter("wwpns", wwpns)
+            pulumi.set(__self__, "wwpns", wwpns)
 
     @property
     @pulumi.getter(name="hostName")
@@ -318,89 +271,36 @@ class _VolumeAttachState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] wwpns: An array of wwpn strings. Used for Fibre Channel
                connections.
         """
-        _VolumeAttachState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attach_mode=attach_mode,
-            data=data,
-            device=device,
-            driver_volume_type=driver_volume_type,
-            host_name=host_name,
-            initiator=initiator,
-            ip_address=ip_address,
-            mount_point_base=mount_point_base,
-            multipath=multipath,
-            os_type=os_type,
-            platform=platform,
-            region=region,
-            volume_id=volume_id,
-            wwnn=wwnn,
-            wwpns=wwpns,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attach_mode: Optional[pulumi.Input[str]] = None,
-             data: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             device: Optional[pulumi.Input[str]] = None,
-             driver_volume_type: Optional[pulumi.Input[str]] = None,
-             host_name: Optional[pulumi.Input[str]] = None,
-             initiator: Optional[pulumi.Input[str]] = None,
-             ip_address: Optional[pulumi.Input[str]] = None,
-             mount_point_base: Optional[pulumi.Input[str]] = None,
-             multipath: Optional[pulumi.Input[bool]] = None,
-             os_type: Optional[pulumi.Input[str]] = None,
-             platform: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             volume_id: Optional[pulumi.Input[str]] = None,
-             wwnn: Optional[pulumi.Input[str]] = None,
-             wwpns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if attach_mode is None and 'attachMode' in kwargs:
-            attach_mode = kwargs['attachMode']
-        if driver_volume_type is None and 'driverVolumeType' in kwargs:
-            driver_volume_type = kwargs['driverVolumeType']
-        if host_name is None and 'hostName' in kwargs:
-            host_name = kwargs['hostName']
-        if ip_address is None and 'ipAddress' in kwargs:
-            ip_address = kwargs['ipAddress']
-        if mount_point_base is None and 'mountPointBase' in kwargs:
-            mount_point_base = kwargs['mountPointBase']
-        if os_type is None and 'osType' in kwargs:
-            os_type = kwargs['osType']
-        if volume_id is None and 'volumeId' in kwargs:
-            volume_id = kwargs['volumeId']
-
         if attach_mode is not None:
-            _setter("attach_mode", attach_mode)
+            pulumi.set(__self__, "attach_mode", attach_mode)
         if data is not None:
-            _setter("data", data)
+            pulumi.set(__self__, "data", data)
         if device is not None:
-            _setter("device", device)
+            pulumi.set(__self__, "device", device)
         if driver_volume_type is not None:
-            _setter("driver_volume_type", driver_volume_type)
+            pulumi.set(__self__, "driver_volume_type", driver_volume_type)
         if host_name is not None:
-            _setter("host_name", host_name)
+            pulumi.set(__self__, "host_name", host_name)
         if initiator is not None:
-            _setter("initiator", initiator)
+            pulumi.set(__self__, "initiator", initiator)
         if ip_address is not None:
-            _setter("ip_address", ip_address)
+            pulumi.set(__self__, "ip_address", ip_address)
         if mount_point_base is not None:
-            _setter("mount_point_base", mount_point_base)
+            pulumi.set(__self__, "mount_point_base", mount_point_base)
         if multipath is not None:
-            _setter("multipath", multipath)
+            pulumi.set(__self__, "multipath", multipath)
         if os_type is not None:
-            _setter("os_type", os_type)
+            pulumi.set(__self__, "os_type", os_type)
         if platform is not None:
-            _setter("platform", platform)
+            pulumi.set(__self__, "platform", platform)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if volume_id is not None:
-            _setter("volume_id", volume_id)
+            pulumi.set(__self__, "volume_id", volume_id)
         if wwnn is not None:
-            _setter("wwnn", wwnn)
+            pulumi.set(__self__, "wwnn", wwnn)
         if wwpns is not None:
-            _setter("wwpns", wwpns)
+            pulumi.set(__self__, "wwpns", wwpns)
 
     @property
     @pulumi.getter(name="attachMode")
@@ -728,10 +628,6 @@ class VolumeAttach(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VolumeAttachArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

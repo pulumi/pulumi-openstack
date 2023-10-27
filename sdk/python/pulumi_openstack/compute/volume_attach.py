@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -34,47 +34,16 @@ class VolumeAttachArgs:
         :param pulumi.Input['VolumeAttachVendorOptionsArgs'] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         """
-        VolumeAttachArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            volume_id=volume_id,
-            device=device,
-            multiattach=multiattach,
-            region=region,
-            vendor_options=vendor_options,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[pulumi.Input[str]] = None,
-             volume_id: Optional[pulumi.Input[str]] = None,
-             device: Optional[pulumi.Input[str]] = None,
-             multiattach: Optional[pulumi.Input[bool]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             vendor_options: Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if volume_id is None and 'volumeId' in kwargs:
-            volume_id = kwargs['volumeId']
-        if volume_id is None:
-            raise TypeError("Missing 'volume_id' argument")
-        if vendor_options is None and 'vendorOptions' in kwargs:
-            vendor_options = kwargs['vendorOptions']
-
-        _setter("instance_id", instance_id)
-        _setter("volume_id", volume_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "volume_id", volume_id)
         if device is not None:
-            _setter("device", device)
+            pulumi.set(__self__, "device", device)
         if multiattach is not None:
-            _setter("multiattach", multiattach)
+            pulumi.set(__self__, "multiattach", multiattach)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if vendor_options is not None:
-            _setter("vendor_options", vendor_options)
+            pulumi.set(__self__, "vendor_options", vendor_options)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -171,45 +140,18 @@ class _VolumeAttachState:
                Supported options are described below.
         :param pulumi.Input[str] volume_id: The ID of the Volume to attach to an Instance.
         """
-        _VolumeAttachState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            device=device,
-            instance_id=instance_id,
-            multiattach=multiattach,
-            region=region,
-            vendor_options=vendor_options,
-            volume_id=volume_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             device: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             multiattach: Optional[pulumi.Input[bool]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             vendor_options: Optional[pulumi.Input['VolumeAttachVendorOptionsArgs']] = None,
-             volume_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if vendor_options is None and 'vendorOptions' in kwargs:
-            vendor_options = kwargs['vendorOptions']
-        if volume_id is None and 'volumeId' in kwargs:
-            volume_id = kwargs['volumeId']
-
         if device is not None:
-            _setter("device", device)
+            pulumi.set(__self__, "device", device)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if multiattach is not None:
-            _setter("multiattach", multiattach)
+            pulumi.set(__self__, "multiattach", multiattach)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if vendor_options is not None:
-            _setter("vendor_options", vendor_options)
+            pulumi.set(__self__, "vendor_options", vendor_options)
         if volume_id is not None:
-            _setter("volume_id", volume_id)
+            pulumi.set(__self__, "volume_id", volume_id)
 
     @property
     @pulumi.getter
@@ -431,10 +373,6 @@ class VolumeAttach(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VolumeAttachArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -461,7 +399,6 @@ class VolumeAttach(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["multiattach"] = multiattach
             __props__.__dict__["region"] = region
-            vendor_options = _utilities.configure(vendor_options, VolumeAttachVendorOptionsArgs, True)
             __props__.__dict__["vendor_options"] = vendor_options
             if volume_id is None and not opts.urn:
                 raise TypeError("Missing required property 'volume_id'")

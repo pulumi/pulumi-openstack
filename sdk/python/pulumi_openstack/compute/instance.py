@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -122,175 +122,68 @@ class InstanceArgs:
         :param pulumi.Input['InstanceVendorOptionsArgs'] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_ip_v4=access_ip_v4,
-            access_ip_v6=access_ip_v6,
-            admin_pass=admin_pass,
-            availability_zone=availability_zone,
-            availability_zone_hints=availability_zone_hints,
-            block_devices=block_devices,
-            config_drive=config_drive,
-            flavor_id=flavor_id,
-            flavor_name=flavor_name,
-            floating_ip=floating_ip,
-            force_delete=force_delete,
-            image_id=image_id,
-            image_name=image_name,
-            key_pair=key_pair,
-            metadata=metadata,
-            name=name,
-            network_mode=network_mode,
-            networks=networks,
-            personalities=personalities,
-            power_state=power_state,
-            region=region,
-            scheduler_hints=scheduler_hints,
-            security_groups=security_groups,
-            stop_before_destroy=stop_before_destroy,
-            tags=tags,
-            user_data=user_data,
-            vendor_options=vendor_options,
-            volumes=volumes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_ip_v4: Optional[pulumi.Input[str]] = None,
-             access_ip_v6: Optional[pulumi.Input[str]] = None,
-             admin_pass: Optional[pulumi.Input[str]] = None,
-             availability_zone: Optional[pulumi.Input[str]] = None,
-             availability_zone_hints: Optional[pulumi.Input[str]] = None,
-             block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]]] = None,
-             config_drive: Optional[pulumi.Input[bool]] = None,
-             flavor_id: Optional[pulumi.Input[str]] = None,
-             flavor_name: Optional[pulumi.Input[str]] = None,
-             floating_ip: Optional[pulumi.Input[str]] = None,
-             force_delete: Optional[pulumi.Input[bool]] = None,
-             image_id: Optional[pulumi.Input[str]] = None,
-             image_name: Optional[pulumi.Input[str]] = None,
-             key_pair: Optional[pulumi.Input[str]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_mode: Optional[pulumi.Input[str]] = None,
-             networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
-             personalities: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]]] = None,
-             power_state: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]] = None,
-             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             stop_before_destroy: Optional[pulumi.Input[bool]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             user_data: Optional[pulumi.Input[str]] = None,
-             vendor_options: Optional[pulumi.Input['InstanceVendorOptionsArgs']] = None,
-             volumes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVolumeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_ip_v4 is None and 'accessIpV4' in kwargs:
-            access_ip_v4 = kwargs['accessIpV4']
-        if access_ip_v6 is None and 'accessIpV6' in kwargs:
-            access_ip_v6 = kwargs['accessIpV6']
-        if admin_pass is None and 'adminPass' in kwargs:
-            admin_pass = kwargs['adminPass']
-        if availability_zone is None and 'availabilityZone' in kwargs:
-            availability_zone = kwargs['availabilityZone']
-        if availability_zone_hints is None and 'availabilityZoneHints' in kwargs:
-            availability_zone_hints = kwargs['availabilityZoneHints']
-        if block_devices is None and 'blockDevices' in kwargs:
-            block_devices = kwargs['blockDevices']
-        if config_drive is None and 'configDrive' in kwargs:
-            config_drive = kwargs['configDrive']
-        if flavor_id is None and 'flavorId' in kwargs:
-            flavor_id = kwargs['flavorId']
-        if flavor_name is None and 'flavorName' in kwargs:
-            flavor_name = kwargs['flavorName']
-        if floating_ip is None and 'floatingIp' in kwargs:
-            floating_ip = kwargs['floatingIp']
-        if force_delete is None and 'forceDelete' in kwargs:
-            force_delete = kwargs['forceDelete']
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_name is None and 'imageName' in kwargs:
-            image_name = kwargs['imageName']
-        if key_pair is None and 'keyPair' in kwargs:
-            key_pair = kwargs['keyPair']
-        if network_mode is None and 'networkMode' in kwargs:
-            network_mode = kwargs['networkMode']
-        if power_state is None and 'powerState' in kwargs:
-            power_state = kwargs['powerState']
-        if scheduler_hints is None and 'schedulerHints' in kwargs:
-            scheduler_hints = kwargs['schedulerHints']
-        if security_groups is None and 'securityGroups' in kwargs:
-            security_groups = kwargs['securityGroups']
-        if stop_before_destroy is None and 'stopBeforeDestroy' in kwargs:
-            stop_before_destroy = kwargs['stopBeforeDestroy']
-        if user_data is None and 'userData' in kwargs:
-            user_data = kwargs['userData']
-        if vendor_options is None and 'vendorOptions' in kwargs:
-            vendor_options = kwargs['vendorOptions']
-
         if access_ip_v4 is not None:
-            _setter("access_ip_v4", access_ip_v4)
+            pulumi.set(__self__, "access_ip_v4", access_ip_v4)
         if access_ip_v6 is not None:
-            _setter("access_ip_v6", access_ip_v6)
+            pulumi.set(__self__, "access_ip_v6", access_ip_v6)
         if admin_pass is not None:
-            _setter("admin_pass", admin_pass)
+            pulumi.set(__self__, "admin_pass", admin_pass)
         if availability_zone is not None:
-            _setter("availability_zone", availability_zone)
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if availability_zone_hints is not None:
-            _setter("availability_zone_hints", availability_zone_hints)
+            pulumi.set(__self__, "availability_zone_hints", availability_zone_hints)
         if block_devices is not None:
-            _setter("block_devices", block_devices)
+            pulumi.set(__self__, "block_devices", block_devices)
         if config_drive is not None:
-            _setter("config_drive", config_drive)
+            pulumi.set(__self__, "config_drive", config_drive)
         if flavor_id is not None:
-            _setter("flavor_id", flavor_id)
+            pulumi.set(__self__, "flavor_id", flavor_id)
         if flavor_name is not None:
-            _setter("flavor_name", flavor_name)
+            pulumi.set(__self__, "flavor_name", flavor_name)
         if floating_ip is not None:
             warnings.warn("""Use the openstack_compute_floatingip_associate_v2 resource instead""", DeprecationWarning)
             pulumi.log.warn("""floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead""")
         if floating_ip is not None:
-            _setter("floating_ip", floating_ip)
+            pulumi.set(__self__, "floating_ip", floating_ip)
         if force_delete is not None:
-            _setter("force_delete", force_delete)
+            pulumi.set(__self__, "force_delete", force_delete)
         if image_id is not None:
-            _setter("image_id", image_id)
+            pulumi.set(__self__, "image_id", image_id)
         if image_name is not None:
-            _setter("image_name", image_name)
+            pulumi.set(__self__, "image_name", image_name)
         if key_pair is not None:
-            _setter("key_pair", key_pair)
+            pulumi.set(__self__, "key_pair", key_pair)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_mode is not None:
-            _setter("network_mode", network_mode)
+            pulumi.set(__self__, "network_mode", network_mode)
         if networks is not None:
-            _setter("networks", networks)
+            pulumi.set(__self__, "networks", networks)
         if personalities is not None:
-            _setter("personalities", personalities)
+            pulumi.set(__self__, "personalities", personalities)
         if power_state is not None:
-            _setter("power_state", power_state)
+            pulumi.set(__self__, "power_state", power_state)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if scheduler_hints is not None:
-            _setter("scheduler_hints", scheduler_hints)
+            pulumi.set(__self__, "scheduler_hints", scheduler_hints)
         if security_groups is not None:
-            _setter("security_groups", security_groups)
+            pulumi.set(__self__, "security_groups", security_groups)
         if stop_before_destroy is not None:
-            _setter("stop_before_destroy", stop_before_destroy)
+            pulumi.set(__self__, "stop_before_destroy", stop_before_destroy)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if user_data is not None:
-            _setter("user_data", user_data)
+            pulumi.set(__self__, "user_data", user_data)
         if vendor_options is not None:
-            _setter("vendor_options", vendor_options)
+            pulumi.set(__self__, "vendor_options", vendor_options)
         if volumes is not None:
             warnings.warn("""Use block_device or openstack_compute_volume_attach_v2 instead""", DeprecationWarning)
             pulumi.log.warn("""volumes is deprecated: Use block_device or openstack_compute_volume_attach_v2 instead""")
         if volumes is not None:
-            _setter("volumes", volumes)
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter(name="accessIpV4")
@@ -795,195 +688,76 @@ class _InstanceState:
         :param pulumi.Input['InstanceVendorOptionsArgs'] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_ip_v4=access_ip_v4,
-            access_ip_v6=access_ip_v6,
-            admin_pass=admin_pass,
-            all_metadata=all_metadata,
-            all_tags=all_tags,
-            availability_zone=availability_zone,
-            availability_zone_hints=availability_zone_hints,
-            block_devices=block_devices,
-            config_drive=config_drive,
-            created=created,
-            flavor_id=flavor_id,
-            flavor_name=flavor_name,
-            floating_ip=floating_ip,
-            force_delete=force_delete,
-            image_id=image_id,
-            image_name=image_name,
-            key_pair=key_pair,
-            metadata=metadata,
-            name=name,
-            network_mode=network_mode,
-            networks=networks,
-            personalities=personalities,
-            power_state=power_state,
-            region=region,
-            scheduler_hints=scheduler_hints,
-            security_groups=security_groups,
-            stop_before_destroy=stop_before_destroy,
-            tags=tags,
-            updated=updated,
-            user_data=user_data,
-            vendor_options=vendor_options,
-            volumes=volumes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_ip_v4: Optional[pulumi.Input[str]] = None,
-             access_ip_v6: Optional[pulumi.Input[str]] = None,
-             admin_pass: Optional[pulumi.Input[str]] = None,
-             all_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             availability_zone: Optional[pulumi.Input[str]] = None,
-             availability_zone_hints: Optional[pulumi.Input[str]] = None,
-             block_devices: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBlockDeviceArgs']]]] = None,
-             config_drive: Optional[pulumi.Input[bool]] = None,
-             created: Optional[pulumi.Input[str]] = None,
-             flavor_id: Optional[pulumi.Input[str]] = None,
-             flavor_name: Optional[pulumi.Input[str]] = None,
-             floating_ip: Optional[pulumi.Input[str]] = None,
-             force_delete: Optional[pulumi.Input[bool]] = None,
-             image_id: Optional[pulumi.Input[str]] = None,
-             image_name: Optional[pulumi.Input[str]] = None,
-             key_pair: Optional[pulumi.Input[str]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             network_mode: Optional[pulumi.Input[str]] = None,
-             networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
-             personalities: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePersonalityArgs']]]] = None,
-             power_state: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]] = None,
-             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             stop_before_destroy: Optional[pulumi.Input[bool]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             updated: Optional[pulumi.Input[str]] = None,
-             user_data: Optional[pulumi.Input[str]] = None,
-             vendor_options: Optional[pulumi.Input['InstanceVendorOptionsArgs']] = None,
-             volumes: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVolumeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if access_ip_v4 is None and 'accessIpV4' in kwargs:
-            access_ip_v4 = kwargs['accessIpV4']
-        if access_ip_v6 is None and 'accessIpV6' in kwargs:
-            access_ip_v6 = kwargs['accessIpV6']
-        if admin_pass is None and 'adminPass' in kwargs:
-            admin_pass = kwargs['adminPass']
-        if all_metadata is None and 'allMetadata' in kwargs:
-            all_metadata = kwargs['allMetadata']
-        if all_tags is None and 'allTags' in kwargs:
-            all_tags = kwargs['allTags']
-        if availability_zone is None and 'availabilityZone' in kwargs:
-            availability_zone = kwargs['availabilityZone']
-        if availability_zone_hints is None and 'availabilityZoneHints' in kwargs:
-            availability_zone_hints = kwargs['availabilityZoneHints']
-        if block_devices is None and 'blockDevices' in kwargs:
-            block_devices = kwargs['blockDevices']
-        if config_drive is None and 'configDrive' in kwargs:
-            config_drive = kwargs['configDrive']
-        if flavor_id is None and 'flavorId' in kwargs:
-            flavor_id = kwargs['flavorId']
-        if flavor_name is None and 'flavorName' in kwargs:
-            flavor_name = kwargs['flavorName']
-        if floating_ip is None and 'floatingIp' in kwargs:
-            floating_ip = kwargs['floatingIp']
-        if force_delete is None and 'forceDelete' in kwargs:
-            force_delete = kwargs['forceDelete']
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_name is None and 'imageName' in kwargs:
-            image_name = kwargs['imageName']
-        if key_pair is None and 'keyPair' in kwargs:
-            key_pair = kwargs['keyPair']
-        if network_mode is None and 'networkMode' in kwargs:
-            network_mode = kwargs['networkMode']
-        if power_state is None and 'powerState' in kwargs:
-            power_state = kwargs['powerState']
-        if scheduler_hints is None and 'schedulerHints' in kwargs:
-            scheduler_hints = kwargs['schedulerHints']
-        if security_groups is None and 'securityGroups' in kwargs:
-            security_groups = kwargs['securityGroups']
-        if stop_before_destroy is None and 'stopBeforeDestroy' in kwargs:
-            stop_before_destroy = kwargs['stopBeforeDestroy']
-        if user_data is None and 'userData' in kwargs:
-            user_data = kwargs['userData']
-        if vendor_options is None and 'vendorOptions' in kwargs:
-            vendor_options = kwargs['vendorOptions']
-
         if access_ip_v4 is not None:
-            _setter("access_ip_v4", access_ip_v4)
+            pulumi.set(__self__, "access_ip_v4", access_ip_v4)
         if access_ip_v6 is not None:
-            _setter("access_ip_v6", access_ip_v6)
+            pulumi.set(__self__, "access_ip_v6", access_ip_v6)
         if admin_pass is not None:
-            _setter("admin_pass", admin_pass)
+            pulumi.set(__self__, "admin_pass", admin_pass)
         if all_metadata is not None:
-            _setter("all_metadata", all_metadata)
+            pulumi.set(__self__, "all_metadata", all_metadata)
         if all_tags is not None:
-            _setter("all_tags", all_tags)
+            pulumi.set(__self__, "all_tags", all_tags)
         if availability_zone is not None:
-            _setter("availability_zone", availability_zone)
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if availability_zone_hints is not None:
-            _setter("availability_zone_hints", availability_zone_hints)
+            pulumi.set(__self__, "availability_zone_hints", availability_zone_hints)
         if block_devices is not None:
-            _setter("block_devices", block_devices)
+            pulumi.set(__self__, "block_devices", block_devices)
         if config_drive is not None:
-            _setter("config_drive", config_drive)
+            pulumi.set(__self__, "config_drive", config_drive)
         if created is not None:
-            _setter("created", created)
+            pulumi.set(__self__, "created", created)
         if flavor_id is not None:
-            _setter("flavor_id", flavor_id)
+            pulumi.set(__self__, "flavor_id", flavor_id)
         if flavor_name is not None:
-            _setter("flavor_name", flavor_name)
+            pulumi.set(__self__, "flavor_name", flavor_name)
         if floating_ip is not None:
             warnings.warn("""Use the openstack_compute_floatingip_associate_v2 resource instead""", DeprecationWarning)
             pulumi.log.warn("""floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead""")
         if floating_ip is not None:
-            _setter("floating_ip", floating_ip)
+            pulumi.set(__self__, "floating_ip", floating_ip)
         if force_delete is not None:
-            _setter("force_delete", force_delete)
+            pulumi.set(__self__, "force_delete", force_delete)
         if image_id is not None:
-            _setter("image_id", image_id)
+            pulumi.set(__self__, "image_id", image_id)
         if image_name is not None:
-            _setter("image_name", image_name)
+            pulumi.set(__self__, "image_name", image_name)
         if key_pair is not None:
-            _setter("key_pair", key_pair)
+            pulumi.set(__self__, "key_pair", key_pair)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if network_mode is not None:
-            _setter("network_mode", network_mode)
+            pulumi.set(__self__, "network_mode", network_mode)
         if networks is not None:
-            _setter("networks", networks)
+            pulumi.set(__self__, "networks", networks)
         if personalities is not None:
-            _setter("personalities", personalities)
+            pulumi.set(__self__, "personalities", personalities)
         if power_state is not None:
-            _setter("power_state", power_state)
+            pulumi.set(__self__, "power_state", power_state)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if scheduler_hints is not None:
-            _setter("scheduler_hints", scheduler_hints)
+            pulumi.set(__self__, "scheduler_hints", scheduler_hints)
         if security_groups is not None:
-            _setter("security_groups", security_groups)
+            pulumi.set(__self__, "security_groups", security_groups)
         if stop_before_destroy is not None:
-            _setter("stop_before_destroy", stop_before_destroy)
+            pulumi.set(__self__, "stop_before_destroy", stop_before_destroy)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if updated is not None:
-            _setter("updated", updated)
+            pulumi.set(__self__, "updated", updated)
         if user_data is not None:
-            _setter("user_data", user_data)
+            pulumi.set(__self__, "user_data", user_data)
         if vendor_options is not None:
-            _setter("vendor_options", vendor_options)
+            pulumi.set(__self__, "vendor_options", vendor_options)
         if volumes is not None:
             warnings.warn("""Use block_device or openstack_compute_volume_attach_v2 instead""", DeprecationWarning)
             pulumi.log.warn("""volumes is deprecated: Use block_device or openstack_compute_volume_attach_v2 instead""")
         if volumes is not None:
-            _setter("volumes", volumes)
+            pulumi.set(__self__, "volumes", volumes)
 
     @property
     @pulumi.getter(name="accessIpV4")
@@ -1549,10 +1323,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1621,7 +1391,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["stop_before_destroy"] = stop_before_destroy
             __props__.__dict__["tags"] = tags
             __props__.__dict__["user_data"] = user_data
-            vendor_options = _utilities.configure(vendor_options, InstanceVendorOptionsArgs, True)
             __props__.__dict__["vendor_options"] = vendor_options
             __props__.__dict__["volumes"] = volumes
             __props__.__dict__["all_metadata"] = None

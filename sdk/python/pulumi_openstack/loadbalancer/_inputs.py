@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -47,67 +47,24 @@ class MembersMemberArgs:
                example, a member with a weight of 10 receives five times as much traffic
                as a member with a weight of 2. Defaults to 1.
         """
-        MembersMemberArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            protocol_port=protocol_port,
-            admin_state_up=admin_state_up,
-            backup=backup,
-            id=id,
-            monitor_address=monitor_address,
-            monitor_port=monitor_port,
-            name=name,
-            subnet_id=subnet_id,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input[str]] = None,
-             protocol_port: Optional[pulumi.Input[int]] = None,
-             admin_state_up: Optional[pulumi.Input[bool]] = None,
-             backup: Optional[pulumi.Input[bool]] = None,
-             id: Optional[pulumi.Input[str]] = None,
-             monitor_address: Optional[pulumi.Input[str]] = None,
-             monitor_port: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             subnet_id: Optional[pulumi.Input[str]] = None,
-             weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address is None:
-            raise TypeError("Missing 'address' argument")
-        if protocol_port is None and 'protocolPort' in kwargs:
-            protocol_port = kwargs['protocolPort']
-        if protocol_port is None:
-            raise TypeError("Missing 'protocol_port' argument")
-        if admin_state_up is None and 'adminStateUp' in kwargs:
-            admin_state_up = kwargs['adminStateUp']
-        if monitor_address is None and 'monitorAddress' in kwargs:
-            monitor_address = kwargs['monitorAddress']
-        if monitor_port is None and 'monitorPort' in kwargs:
-            monitor_port = kwargs['monitorPort']
-        if subnet_id is None and 'subnetId' in kwargs:
-            subnet_id = kwargs['subnetId']
-
-        _setter("address", address)
-        _setter("protocol_port", protocol_port)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "protocol_port", protocol_port)
         if admin_state_up is not None:
-            _setter("admin_state_up", admin_state_up)
+            pulumi.set(__self__, "admin_state_up", admin_state_up)
         if backup is not None:
-            _setter("backup", backup)
+            pulumi.set(__self__, "backup", backup)
         if id is not None:
-            _setter("id", id)
+            pulumi.set(__self__, "id", id)
         if monitor_address is not None:
-            _setter("monitor_address", monitor_address)
+            pulumi.set(__self__, "monitor_address", monitor_address)
         if monitor_port is not None:
-            _setter("monitor_port", monitor_port)
+            pulumi.set(__self__, "monitor_port", monitor_port)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if subnet_id is not None:
-            _setter("subnet_id", subnet_id)
+            pulumi.set(__self__, "subnet_id", subnet_id)
         if weight is not None:
-            _setter("weight", weight)
+            pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter
@@ -249,26 +206,9 @@ class PoolPersistenceArgs:
         :param pulumi.Input[str] cookie_name: The name of the cookie if persistence mode is set
                appropriately. Required if `type = APP_COOKIE`.
         """
-        PoolPersistenceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            cookie_name=cookie_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[pulumi.Input[str]] = None,
-             cookie_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if cookie_name is None and 'cookieName' in kwargs:
-            cookie_name = kwargs['cookieName']
-
-        _setter("type", type)
+        pulumi.set(__self__, "type", type)
         if cookie_name is not None:
-            _setter("cookie_name", cookie_name)
+            pulumi.set(__self__, "cookie_name", cookie_name)
 
     @property
     @pulumi.getter

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SubnetPoolArgs', 'SubnetPool']
@@ -73,94 +73,35 @@ class SubnetPoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of string tags for the subnetpool.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
-        SubnetPoolArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            prefixes=prefixes,
-            address_scope_id=address_scope_id,
-            default_prefixlen=default_prefixlen,
-            default_quota=default_quota,
-            description=description,
-            ip_version=ip_version,
-            is_default=is_default,
-            max_prefixlen=max_prefixlen,
-            min_prefixlen=min_prefixlen,
-            name=name,
-            project_id=project_id,
-            region=region,
-            shared=shared,
-            tags=tags,
-            value_specs=value_specs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             address_scope_id: Optional[pulumi.Input[str]] = None,
-             default_prefixlen: Optional[pulumi.Input[int]] = None,
-             default_quota: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             ip_version: Optional[pulumi.Input[int]] = None,
-             is_default: Optional[pulumi.Input[bool]] = None,
-             max_prefixlen: Optional[pulumi.Input[int]] = None,
-             min_prefixlen: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             shared: Optional[pulumi.Input[bool]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if prefixes is None:
-            raise TypeError("Missing 'prefixes' argument")
-        if address_scope_id is None and 'addressScopeId' in kwargs:
-            address_scope_id = kwargs['addressScopeId']
-        if default_prefixlen is None and 'defaultPrefixlen' in kwargs:
-            default_prefixlen = kwargs['defaultPrefixlen']
-        if default_quota is None and 'defaultQuota' in kwargs:
-            default_quota = kwargs['defaultQuota']
-        if ip_version is None and 'ipVersion' in kwargs:
-            ip_version = kwargs['ipVersion']
-        if is_default is None and 'isDefault' in kwargs:
-            is_default = kwargs['isDefault']
-        if max_prefixlen is None and 'maxPrefixlen' in kwargs:
-            max_prefixlen = kwargs['maxPrefixlen']
-        if min_prefixlen is None and 'minPrefixlen' in kwargs:
-            min_prefixlen = kwargs['minPrefixlen']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if value_specs is None and 'valueSpecs' in kwargs:
-            value_specs = kwargs['valueSpecs']
-
-        _setter("prefixes", prefixes)
+        pulumi.set(__self__, "prefixes", prefixes)
         if address_scope_id is not None:
-            _setter("address_scope_id", address_scope_id)
+            pulumi.set(__self__, "address_scope_id", address_scope_id)
         if default_prefixlen is not None:
-            _setter("default_prefixlen", default_prefixlen)
+            pulumi.set(__self__, "default_prefixlen", default_prefixlen)
         if default_quota is not None:
-            _setter("default_quota", default_quota)
+            pulumi.set(__self__, "default_quota", default_quota)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if ip_version is not None:
-            _setter("ip_version", ip_version)
+            pulumi.set(__self__, "ip_version", ip_version)
         if is_default is not None:
-            _setter("is_default", is_default)
+            pulumi.set(__self__, "is_default", is_default)
         if max_prefixlen is not None:
-            _setter("max_prefixlen", max_prefixlen)
+            pulumi.set(__self__, "max_prefixlen", max_prefixlen)
         if min_prefixlen is not None:
-            _setter("min_prefixlen", min_prefixlen)
+            pulumi.set(__self__, "min_prefixlen", min_prefixlen)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if shared is not None:
-            _setter("shared", shared)
+            pulumi.set(__self__, "shared", shared)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if value_specs is not None:
-            _setter("value_specs", value_specs)
+            pulumi.set(__self__, "value_specs", value_specs)
 
     @property
     @pulumi.getter
@@ -440,117 +381,44 @@ class _SubnetPoolState:
         :param pulumi.Input[str] updated_at: The time at which subnetpool was created.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
-        _SubnetPoolState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address_scope_id=address_scope_id,
-            all_tags=all_tags,
-            created_at=created_at,
-            default_prefixlen=default_prefixlen,
-            default_quota=default_quota,
-            description=description,
-            ip_version=ip_version,
-            is_default=is_default,
-            max_prefixlen=max_prefixlen,
-            min_prefixlen=min_prefixlen,
-            name=name,
-            prefixes=prefixes,
-            project_id=project_id,
-            region=region,
-            revision_number=revision_number,
-            shared=shared,
-            tags=tags,
-            updated_at=updated_at,
-            value_specs=value_specs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address_scope_id: Optional[pulumi.Input[str]] = None,
-             all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             created_at: Optional[pulumi.Input[str]] = None,
-             default_prefixlen: Optional[pulumi.Input[int]] = None,
-             default_quota: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             ip_version: Optional[pulumi.Input[int]] = None,
-             is_default: Optional[pulumi.Input[bool]] = None,
-             max_prefixlen: Optional[pulumi.Input[int]] = None,
-             min_prefixlen: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             revision_number: Optional[pulumi.Input[int]] = None,
-             shared: Optional[pulumi.Input[bool]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             updated_at: Optional[pulumi.Input[str]] = None,
-             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address_scope_id is None and 'addressScopeId' in kwargs:
-            address_scope_id = kwargs['addressScopeId']
-        if all_tags is None and 'allTags' in kwargs:
-            all_tags = kwargs['allTags']
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if default_prefixlen is None and 'defaultPrefixlen' in kwargs:
-            default_prefixlen = kwargs['defaultPrefixlen']
-        if default_quota is None and 'defaultQuota' in kwargs:
-            default_quota = kwargs['defaultQuota']
-        if ip_version is None and 'ipVersion' in kwargs:
-            ip_version = kwargs['ipVersion']
-        if is_default is None and 'isDefault' in kwargs:
-            is_default = kwargs['isDefault']
-        if max_prefixlen is None and 'maxPrefixlen' in kwargs:
-            max_prefixlen = kwargs['maxPrefixlen']
-        if min_prefixlen is None and 'minPrefixlen' in kwargs:
-            min_prefixlen = kwargs['minPrefixlen']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if revision_number is None and 'revisionNumber' in kwargs:
-            revision_number = kwargs['revisionNumber']
-        if updated_at is None and 'updatedAt' in kwargs:
-            updated_at = kwargs['updatedAt']
-        if value_specs is None and 'valueSpecs' in kwargs:
-            value_specs = kwargs['valueSpecs']
-
         if address_scope_id is not None:
-            _setter("address_scope_id", address_scope_id)
+            pulumi.set(__self__, "address_scope_id", address_scope_id)
         if all_tags is not None:
-            _setter("all_tags", all_tags)
+            pulumi.set(__self__, "all_tags", all_tags)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if default_prefixlen is not None:
-            _setter("default_prefixlen", default_prefixlen)
+            pulumi.set(__self__, "default_prefixlen", default_prefixlen)
         if default_quota is not None:
-            _setter("default_quota", default_quota)
+            pulumi.set(__self__, "default_quota", default_quota)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if ip_version is not None:
-            _setter("ip_version", ip_version)
+            pulumi.set(__self__, "ip_version", ip_version)
         if is_default is not None:
-            _setter("is_default", is_default)
+            pulumi.set(__self__, "is_default", is_default)
         if max_prefixlen is not None:
-            _setter("max_prefixlen", max_prefixlen)
+            pulumi.set(__self__, "max_prefixlen", max_prefixlen)
         if min_prefixlen is not None:
-            _setter("min_prefixlen", min_prefixlen)
+            pulumi.set(__self__, "min_prefixlen", min_prefixlen)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if prefixes is not None:
-            _setter("prefixes", prefixes)
+            pulumi.set(__self__, "prefixes", prefixes)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if revision_number is not None:
-            _setter("revision_number", revision_number)
+            pulumi.set(__self__, "revision_number", revision_number)
         if shared is not None:
-            _setter("shared", shared)
+            pulumi.set(__self__, "shared", shared)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if updated_at is not None:
-            _setter("updated_at", updated_at)
+            pulumi.set(__self__, "updated_at", updated_at)
         if value_specs is not None:
-            _setter("value_specs", value_specs)
+            pulumi.set(__self__, "value_specs", value_specs)
 
     @property
     @pulumi.getter(name="addressScopeId")
@@ -967,10 +835,6 @@ class SubnetPool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SubnetPoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

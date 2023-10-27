@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FirewallArgs', 'Firewall']
@@ -49,64 +49,23 @@ class FirewallArgs:
                firewall.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
-        FirewallArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            policy_id=policy_id,
-            admin_state_up=admin_state_up,
-            associated_routers=associated_routers,
-            description=description,
-            name=name,
-            no_routers=no_routers,
-            region=region,
-            tenant_id=tenant_id,
-            value_specs=value_specs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             policy_id: Optional[pulumi.Input[str]] = None,
-             admin_state_up: Optional[pulumi.Input[bool]] = None,
-             associated_routers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             no_routers: Optional[pulumi.Input[bool]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             tenant_id: Optional[pulumi.Input[str]] = None,
-             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-        if policy_id is None:
-            raise TypeError("Missing 'policy_id' argument")
-        if admin_state_up is None and 'adminStateUp' in kwargs:
-            admin_state_up = kwargs['adminStateUp']
-        if associated_routers is None and 'associatedRouters' in kwargs:
-            associated_routers = kwargs['associatedRouters']
-        if no_routers is None and 'noRouters' in kwargs:
-            no_routers = kwargs['noRouters']
-        if tenant_id is None and 'tenantId' in kwargs:
-            tenant_id = kwargs['tenantId']
-        if value_specs is None and 'valueSpecs' in kwargs:
-            value_specs = kwargs['valueSpecs']
-
-        _setter("policy_id", policy_id)
+        pulumi.set(__self__, "policy_id", policy_id)
         if admin_state_up is not None:
-            _setter("admin_state_up", admin_state_up)
+            pulumi.set(__self__, "admin_state_up", admin_state_up)
         if associated_routers is not None:
-            _setter("associated_routers", associated_routers)
+            pulumi.set(__self__, "associated_routers", associated_routers)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if no_routers is not None:
-            _setter("no_routers", no_routers)
+            pulumi.set(__self__, "no_routers", no_routers)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if tenant_id is not None:
-            _setter("tenant_id", tenant_id)
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if value_specs is not None:
-            _setter("value_specs", value_specs)
+            pulumi.set(__self__, "value_specs", value_specs)
 
     @property
     @pulumi.getter(name="policyId")
@@ -269,63 +228,24 @@ class _FirewallState:
                firewall.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
-        _FirewallState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            admin_state_up=admin_state_up,
-            associated_routers=associated_routers,
-            description=description,
-            name=name,
-            no_routers=no_routers,
-            policy_id=policy_id,
-            region=region,
-            tenant_id=tenant_id,
-            value_specs=value_specs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             admin_state_up: Optional[pulumi.Input[bool]] = None,
-             associated_routers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             no_routers: Optional[pulumi.Input[bool]] = None,
-             policy_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             tenant_id: Optional[pulumi.Input[str]] = None,
-             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if admin_state_up is None and 'adminStateUp' in kwargs:
-            admin_state_up = kwargs['adminStateUp']
-        if associated_routers is None and 'associatedRouters' in kwargs:
-            associated_routers = kwargs['associatedRouters']
-        if no_routers is None and 'noRouters' in kwargs:
-            no_routers = kwargs['noRouters']
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-        if tenant_id is None and 'tenantId' in kwargs:
-            tenant_id = kwargs['tenantId']
-        if value_specs is None and 'valueSpecs' in kwargs:
-            value_specs = kwargs['valueSpecs']
-
         if admin_state_up is not None:
-            _setter("admin_state_up", admin_state_up)
+            pulumi.set(__self__, "admin_state_up", admin_state_up)
         if associated_routers is not None:
-            _setter("associated_routers", associated_routers)
+            pulumi.set(__self__, "associated_routers", associated_routers)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if no_routers is not None:
-            _setter("no_routers", no_routers)
+            pulumi.set(__self__, "no_routers", no_routers)
         if policy_id is not None:
-            _setter("policy_id", policy_id)
+            pulumi.set(__self__, "policy_id", policy_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if tenant_id is not None:
-            _setter("tenant_id", tenant_id)
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if value_specs is not None:
-            _setter("value_specs", value_specs)
+            pulumi.set(__self__, "value_specs", value_specs)
 
     @property
     @pulumi.getter(name="adminStateUp")
@@ -579,10 +499,6 @@ class Firewall(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FirewallArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

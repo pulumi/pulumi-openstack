@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,57 +45,22 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]] users: An array of username, password, host and databases. The user
                object structure is documented below.
         """
-        InstanceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            datastore=datastore,
-            size=size,
-            configuration_id=configuration_id,
-            databases=databases,
-            flavor_id=flavor_id,
-            name=name,
-            networks=networks,
-            region=region,
-            users=users,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             datastore: Optional[pulumi.Input['InstanceDatastoreArgs']] = None,
-             size: Optional[pulumi.Input[int]] = None,
-             configuration_id: Optional[pulumi.Input[str]] = None,
-             databases: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDatabaseArgs']]]] = None,
-             flavor_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             users: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if datastore is None:
-            raise TypeError("Missing 'datastore' argument")
-        if size is None:
-            raise TypeError("Missing 'size' argument")
-        if configuration_id is None and 'configurationId' in kwargs:
-            configuration_id = kwargs['configurationId']
-        if flavor_id is None and 'flavorId' in kwargs:
-            flavor_id = kwargs['flavorId']
-
-        _setter("datastore", datastore)
-        _setter("size", size)
+        pulumi.set(__self__, "datastore", datastore)
+        pulumi.set(__self__, "size", size)
         if configuration_id is not None:
-            _setter("configuration_id", configuration_id)
+            pulumi.set(__self__, "configuration_id", configuration_id)
         if databases is not None:
-            _setter("databases", databases)
+            pulumi.set(__self__, "databases", databases)
         if flavor_id is not None:
-            _setter("flavor_id", flavor_id)
+            pulumi.set(__self__, "flavor_id", flavor_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if networks is not None:
-            _setter("networks", networks)
+            pulumi.set(__self__, "networks", networks)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if users is not None:
-            _setter("users", users)
+            pulumi.set(__self__, "users", users)
 
     @property
     @pulumi.getter
@@ -248,59 +213,26 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]] users: An array of username, password, host and databases. The user
                object structure is documented below.
         """
-        _InstanceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            addresses=addresses,
-            configuration_id=configuration_id,
-            databases=databases,
-            datastore=datastore,
-            flavor_id=flavor_id,
-            name=name,
-            networks=networks,
-            region=region,
-            size=size,
-            users=users,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             configuration_id: Optional[pulumi.Input[str]] = None,
-             databases: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDatabaseArgs']]]] = None,
-             datastore: Optional[pulumi.Input['InstanceDatastoreArgs']] = None,
-             flavor_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             size: Optional[pulumi.Input[int]] = None,
-             users: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceUserArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if configuration_id is None and 'configurationId' in kwargs:
-            configuration_id = kwargs['configurationId']
-        if flavor_id is None and 'flavorId' in kwargs:
-            flavor_id = kwargs['flavorId']
-
         if addresses is not None:
-            _setter("addresses", addresses)
+            pulumi.set(__self__, "addresses", addresses)
         if configuration_id is not None:
-            _setter("configuration_id", configuration_id)
+            pulumi.set(__self__, "configuration_id", configuration_id)
         if databases is not None:
-            _setter("databases", databases)
+            pulumi.set(__self__, "databases", databases)
         if datastore is not None:
-            _setter("datastore", datastore)
+            pulumi.set(__self__, "datastore", datastore)
         if flavor_id is not None:
-            _setter("flavor_id", flavor_id)
+            pulumi.set(__self__, "flavor_id", flavor_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if networks is not None:
-            _setter("networks", networks)
+            pulumi.set(__self__, "networks", networks)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
         if users is not None:
-            _setter("users", users)
+            pulumi.set(__self__, "users", users)
 
     @property
     @pulumi.getter
@@ -536,10 +468,6 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -565,7 +493,6 @@ class Instance(pulumi.CustomResource):
 
             __props__.__dict__["configuration_id"] = configuration_id
             __props__.__dict__["databases"] = databases
-            datastore = _utilities.configure(datastore, InstanceDatastoreArgs, True)
             if datastore is None and not opts.urn:
                 raise TypeError("Missing required property 'datastore'")
             __props__.__dict__["datastore"] = datastore
