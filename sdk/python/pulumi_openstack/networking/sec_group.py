@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SecGroupArgs', 'SecGroup']
@@ -36,43 +36,18 @@ class SecGroupArgs:
                wants to create a port for another tenant. Changing this creates a new
                security group.
         """
-        SecGroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            delete_default_rules=delete_default_rules,
-            description=description,
-            name=name,
-            region=region,
-            tags=tags,
-            tenant_id=tenant_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             delete_default_rules: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if delete_default_rules is None and 'deleteDefaultRules' in kwargs:
-            delete_default_rules = kwargs['deleteDefaultRules']
-        if tenant_id is None and 'tenantId' in kwargs:
-            tenant_id = kwargs['tenantId']
-
         if delete_default_rules is not None:
-            _setter("delete_default_rules", delete_default_rules)
+            pulumi.set(__self__, "delete_default_rules", delete_default_rules)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
-            _setter("tenant_id", tenant_id)
+            pulumi.set(__self__, "tenant_id", tenant_id)
 
     @property
     @pulumi.getter(name="deleteDefaultRules")
@@ -182,49 +157,20 @@ class _SecGroupState:
                wants to create a port for another tenant. Changing this creates a new
                security group.
         """
-        _SecGroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            all_tags=all_tags,
-            delete_default_rules=delete_default_rules,
-            description=description,
-            name=name,
-            region=region,
-            tags=tags,
-            tenant_id=tenant_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             delete_default_rules: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if all_tags is None and 'allTags' in kwargs:
-            all_tags = kwargs['allTags']
-        if delete_default_rules is None and 'deleteDefaultRules' in kwargs:
-            delete_default_rules = kwargs['deleteDefaultRules']
-        if tenant_id is None and 'tenantId' in kwargs:
-            tenant_id = kwargs['tenantId']
-
         if all_tags is not None:
-            _setter("all_tags", all_tags)
+            pulumi.set(__self__, "all_tags", all_tags)
         if delete_default_rules is not None:
-            _setter("delete_default_rules", delete_default_rules)
+            pulumi.set(__self__, "delete_default_rules", delete_default_rules)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
-            _setter("tenant_id", tenant_id)
+            pulumi.set(__self__, "tenant_id", tenant_id)
 
     @property
     @pulumi.getter(name="allTags")
@@ -381,10 +327,6 @@ class SecGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SecGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

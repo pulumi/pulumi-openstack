@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -74,121 +74,38 @@ class SiteConnectionArgs:
                create a connection for another project. Changing this creates a new connection.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
-        SiteConnectionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            ikepolicy_id=ikepolicy_id,
-            ipsecpolicy_id=ipsecpolicy_id,
-            peer_address=peer_address,
-            peer_id=peer_id,
-            psk=psk,
-            vpnservice_id=vpnservice_id,
-            admin_state_up=admin_state_up,
-            description=description,
-            dpds=dpds,
-            initiator=initiator,
-            local_ep_group_id=local_ep_group_id,
-            local_id=local_id,
-            mtu=mtu,
-            name=name,
-            peer_cidrs=peer_cidrs,
-            peer_ep_group_id=peer_ep_group_id,
-            region=region,
-            tenant_id=tenant_id,
-            value_specs=value_specs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             ikepolicy_id: Optional[pulumi.Input[str]] = None,
-             ipsecpolicy_id: Optional[pulumi.Input[str]] = None,
-             peer_address: Optional[pulumi.Input[str]] = None,
-             peer_id: Optional[pulumi.Input[str]] = None,
-             psk: Optional[pulumi.Input[str]] = None,
-             vpnservice_id: Optional[pulumi.Input[str]] = None,
-             admin_state_up: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             dpds: Optional[pulumi.Input[Sequence[pulumi.Input['SiteConnectionDpdArgs']]]] = None,
-             initiator: Optional[pulumi.Input[str]] = None,
-             local_ep_group_id: Optional[pulumi.Input[str]] = None,
-             local_id: Optional[pulumi.Input[str]] = None,
-             mtu: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             peer_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             peer_ep_group_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             tenant_id: Optional[pulumi.Input[str]] = None,
-             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if ikepolicy_id is None and 'ikepolicyId' in kwargs:
-            ikepolicy_id = kwargs['ikepolicyId']
-        if ikepolicy_id is None:
-            raise TypeError("Missing 'ikepolicy_id' argument")
-        if ipsecpolicy_id is None and 'ipsecpolicyId' in kwargs:
-            ipsecpolicy_id = kwargs['ipsecpolicyId']
-        if ipsecpolicy_id is None:
-            raise TypeError("Missing 'ipsecpolicy_id' argument")
-        if peer_address is None and 'peerAddress' in kwargs:
-            peer_address = kwargs['peerAddress']
-        if peer_address is None:
-            raise TypeError("Missing 'peer_address' argument")
-        if peer_id is None and 'peerId' in kwargs:
-            peer_id = kwargs['peerId']
-        if peer_id is None:
-            raise TypeError("Missing 'peer_id' argument")
-        if psk is None:
-            raise TypeError("Missing 'psk' argument")
-        if vpnservice_id is None and 'vpnserviceId' in kwargs:
-            vpnservice_id = kwargs['vpnserviceId']
-        if vpnservice_id is None:
-            raise TypeError("Missing 'vpnservice_id' argument")
-        if admin_state_up is None and 'adminStateUp' in kwargs:
-            admin_state_up = kwargs['adminStateUp']
-        if local_ep_group_id is None and 'localEpGroupId' in kwargs:
-            local_ep_group_id = kwargs['localEpGroupId']
-        if local_id is None and 'localId' in kwargs:
-            local_id = kwargs['localId']
-        if peer_cidrs is None and 'peerCidrs' in kwargs:
-            peer_cidrs = kwargs['peerCidrs']
-        if peer_ep_group_id is None and 'peerEpGroupId' in kwargs:
-            peer_ep_group_id = kwargs['peerEpGroupId']
-        if tenant_id is None and 'tenantId' in kwargs:
-            tenant_id = kwargs['tenantId']
-        if value_specs is None and 'valueSpecs' in kwargs:
-            value_specs = kwargs['valueSpecs']
-
-        _setter("ikepolicy_id", ikepolicy_id)
-        _setter("ipsecpolicy_id", ipsecpolicy_id)
-        _setter("peer_address", peer_address)
-        _setter("peer_id", peer_id)
-        _setter("psk", psk)
-        _setter("vpnservice_id", vpnservice_id)
+        pulumi.set(__self__, "ikepolicy_id", ikepolicy_id)
+        pulumi.set(__self__, "ipsecpolicy_id", ipsecpolicy_id)
+        pulumi.set(__self__, "peer_address", peer_address)
+        pulumi.set(__self__, "peer_id", peer_id)
+        pulumi.set(__self__, "psk", psk)
+        pulumi.set(__self__, "vpnservice_id", vpnservice_id)
         if admin_state_up is not None:
-            _setter("admin_state_up", admin_state_up)
+            pulumi.set(__self__, "admin_state_up", admin_state_up)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dpds is not None:
-            _setter("dpds", dpds)
+            pulumi.set(__self__, "dpds", dpds)
         if initiator is not None:
-            _setter("initiator", initiator)
+            pulumi.set(__self__, "initiator", initiator)
         if local_ep_group_id is not None:
-            _setter("local_ep_group_id", local_ep_group_id)
+            pulumi.set(__self__, "local_ep_group_id", local_ep_group_id)
         if local_id is not None:
-            _setter("local_id", local_id)
+            pulumi.set(__self__, "local_id", local_id)
         if mtu is not None:
-            _setter("mtu", mtu)
+            pulumi.set(__self__, "mtu", mtu)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if peer_cidrs is not None:
-            _setter("peer_cidrs", peer_cidrs)
+            pulumi.set(__self__, "peer_cidrs", peer_cidrs)
         if peer_ep_group_id is not None:
-            _setter("peer_ep_group_id", peer_ep_group_id)
+            pulumi.set(__self__, "peer_ep_group_id", peer_ep_group_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if tenant_id is not None:
-            _setter("tenant_id", tenant_id)
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if value_specs is not None:
-            _setter("value_specs", value_specs)
+            pulumi.set(__self__, "value_specs", value_specs)
 
     @property
     @pulumi.getter(name="ikepolicyId")
@@ -497,115 +414,44 @@ class _SiteConnectionState:
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         :param pulumi.Input[str] vpnservice_id: The ID of the VPN service. Changing this creates a new connection.
         """
-        _SiteConnectionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            admin_state_up=admin_state_up,
-            description=description,
-            dpds=dpds,
-            ikepolicy_id=ikepolicy_id,
-            initiator=initiator,
-            ipsecpolicy_id=ipsecpolicy_id,
-            local_ep_group_id=local_ep_group_id,
-            local_id=local_id,
-            mtu=mtu,
-            name=name,
-            peer_address=peer_address,
-            peer_cidrs=peer_cidrs,
-            peer_ep_group_id=peer_ep_group_id,
-            peer_id=peer_id,
-            psk=psk,
-            region=region,
-            tenant_id=tenant_id,
-            value_specs=value_specs,
-            vpnservice_id=vpnservice_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             admin_state_up: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             dpds: Optional[pulumi.Input[Sequence[pulumi.Input['SiteConnectionDpdArgs']]]] = None,
-             ikepolicy_id: Optional[pulumi.Input[str]] = None,
-             initiator: Optional[pulumi.Input[str]] = None,
-             ipsecpolicy_id: Optional[pulumi.Input[str]] = None,
-             local_ep_group_id: Optional[pulumi.Input[str]] = None,
-             local_id: Optional[pulumi.Input[str]] = None,
-             mtu: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             peer_address: Optional[pulumi.Input[str]] = None,
-             peer_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             peer_ep_group_id: Optional[pulumi.Input[str]] = None,
-             peer_id: Optional[pulumi.Input[str]] = None,
-             psk: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             tenant_id: Optional[pulumi.Input[str]] = None,
-             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             vpnservice_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if admin_state_up is None and 'adminStateUp' in kwargs:
-            admin_state_up = kwargs['adminStateUp']
-        if ikepolicy_id is None and 'ikepolicyId' in kwargs:
-            ikepolicy_id = kwargs['ikepolicyId']
-        if ipsecpolicy_id is None and 'ipsecpolicyId' in kwargs:
-            ipsecpolicy_id = kwargs['ipsecpolicyId']
-        if local_ep_group_id is None and 'localEpGroupId' in kwargs:
-            local_ep_group_id = kwargs['localEpGroupId']
-        if local_id is None and 'localId' in kwargs:
-            local_id = kwargs['localId']
-        if peer_address is None and 'peerAddress' in kwargs:
-            peer_address = kwargs['peerAddress']
-        if peer_cidrs is None and 'peerCidrs' in kwargs:
-            peer_cidrs = kwargs['peerCidrs']
-        if peer_ep_group_id is None and 'peerEpGroupId' in kwargs:
-            peer_ep_group_id = kwargs['peerEpGroupId']
-        if peer_id is None and 'peerId' in kwargs:
-            peer_id = kwargs['peerId']
-        if tenant_id is None and 'tenantId' in kwargs:
-            tenant_id = kwargs['tenantId']
-        if value_specs is None and 'valueSpecs' in kwargs:
-            value_specs = kwargs['valueSpecs']
-        if vpnservice_id is None and 'vpnserviceId' in kwargs:
-            vpnservice_id = kwargs['vpnserviceId']
-
         if admin_state_up is not None:
-            _setter("admin_state_up", admin_state_up)
+            pulumi.set(__self__, "admin_state_up", admin_state_up)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if dpds is not None:
-            _setter("dpds", dpds)
+            pulumi.set(__self__, "dpds", dpds)
         if ikepolicy_id is not None:
-            _setter("ikepolicy_id", ikepolicy_id)
+            pulumi.set(__self__, "ikepolicy_id", ikepolicy_id)
         if initiator is not None:
-            _setter("initiator", initiator)
+            pulumi.set(__self__, "initiator", initiator)
         if ipsecpolicy_id is not None:
-            _setter("ipsecpolicy_id", ipsecpolicy_id)
+            pulumi.set(__self__, "ipsecpolicy_id", ipsecpolicy_id)
         if local_ep_group_id is not None:
-            _setter("local_ep_group_id", local_ep_group_id)
+            pulumi.set(__self__, "local_ep_group_id", local_ep_group_id)
         if local_id is not None:
-            _setter("local_id", local_id)
+            pulumi.set(__self__, "local_id", local_id)
         if mtu is not None:
-            _setter("mtu", mtu)
+            pulumi.set(__self__, "mtu", mtu)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if peer_address is not None:
-            _setter("peer_address", peer_address)
+            pulumi.set(__self__, "peer_address", peer_address)
         if peer_cidrs is not None:
-            _setter("peer_cidrs", peer_cidrs)
+            pulumi.set(__self__, "peer_cidrs", peer_cidrs)
         if peer_ep_group_id is not None:
-            _setter("peer_ep_group_id", peer_ep_group_id)
+            pulumi.set(__self__, "peer_ep_group_id", peer_ep_group_id)
         if peer_id is not None:
-            _setter("peer_id", peer_id)
+            pulumi.set(__self__, "peer_id", peer_id)
         if psk is not None:
-            _setter("psk", psk)
+            pulumi.set(__self__, "psk", psk)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if tenant_id is not None:
-            _setter("tenant_id", tenant_id)
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if value_specs is not None:
-            _setter("value_specs", value_specs)
+            pulumi.set(__self__, "value_specs", value_specs)
         if vpnservice_id is not None:
-            _setter("vpnservice_id", vpnservice_id)
+            pulumi.set(__self__, "vpnservice_id", vpnservice_id)
 
     @property
     @pulumi.getter(name="adminStateUp")
@@ -997,10 +843,6 @@ class SiteConnection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SiteConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

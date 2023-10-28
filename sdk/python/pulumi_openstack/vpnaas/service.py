@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ServiceArgs', 'Service']
@@ -40,58 +40,21 @@ class ServiceArgs:
                create a service for another project. Changing this creates a new service.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
-        ServiceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            router_id=router_id,
-            admin_state_up=admin_state_up,
-            description=description,
-            name=name,
-            region=region,
-            subnet_id=subnet_id,
-            tenant_id=tenant_id,
-            value_specs=value_specs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             router_id: Optional[pulumi.Input[str]] = None,
-             admin_state_up: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             subnet_id: Optional[pulumi.Input[str]] = None,
-             tenant_id: Optional[pulumi.Input[str]] = None,
-             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if router_id is None and 'routerId' in kwargs:
-            router_id = kwargs['routerId']
-        if router_id is None:
-            raise TypeError("Missing 'router_id' argument")
-        if admin_state_up is None and 'adminStateUp' in kwargs:
-            admin_state_up = kwargs['adminStateUp']
-        if subnet_id is None and 'subnetId' in kwargs:
-            subnet_id = kwargs['subnetId']
-        if tenant_id is None and 'tenantId' in kwargs:
-            tenant_id = kwargs['tenantId']
-        if value_specs is None and 'valueSpecs' in kwargs:
-            value_specs = kwargs['valueSpecs']
-
-        _setter("router_id", router_id)
+        pulumi.set(__self__, "router_id", router_id)
         if admin_state_up is not None:
-            _setter("admin_state_up", admin_state_up)
+            pulumi.set(__self__, "admin_state_up", admin_state_up)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if subnet_id is not None:
-            _setter("subnet_id", subnet_id)
+            pulumi.set(__self__, "subnet_id", subnet_id)
         if tenant_id is not None:
-            _setter("tenant_id", tenant_id)
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if value_specs is not None:
-            _setter("value_specs", value_specs)
+            pulumi.set(__self__, "value_specs", value_specs)
 
     @property
     @pulumi.getter(name="routerId")
@@ -232,73 +195,28 @@ class _ServiceState:
                create a service for another project. Changing this creates a new service.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
-        _ServiceState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            admin_state_up=admin_state_up,
-            description=description,
-            external_v4_ip=external_v4_ip,
-            external_v6_ip=external_v6_ip,
-            name=name,
-            region=region,
-            router_id=router_id,
-            status=status,
-            subnet_id=subnet_id,
-            tenant_id=tenant_id,
-            value_specs=value_specs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             admin_state_up: Optional[pulumi.Input[bool]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             external_v4_ip: Optional[pulumi.Input[str]] = None,
-             external_v6_ip: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             router_id: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             subnet_id: Optional[pulumi.Input[str]] = None,
-             tenant_id: Optional[pulumi.Input[str]] = None,
-             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if admin_state_up is None and 'adminStateUp' in kwargs:
-            admin_state_up = kwargs['adminStateUp']
-        if external_v4_ip is None and 'externalV4Ip' in kwargs:
-            external_v4_ip = kwargs['externalV4Ip']
-        if external_v6_ip is None and 'externalV6Ip' in kwargs:
-            external_v6_ip = kwargs['externalV6Ip']
-        if router_id is None and 'routerId' in kwargs:
-            router_id = kwargs['routerId']
-        if subnet_id is None and 'subnetId' in kwargs:
-            subnet_id = kwargs['subnetId']
-        if tenant_id is None and 'tenantId' in kwargs:
-            tenant_id = kwargs['tenantId']
-        if value_specs is None and 'valueSpecs' in kwargs:
-            value_specs = kwargs['valueSpecs']
-
         if admin_state_up is not None:
-            _setter("admin_state_up", admin_state_up)
+            pulumi.set(__self__, "admin_state_up", admin_state_up)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if external_v4_ip is not None:
-            _setter("external_v4_ip", external_v4_ip)
+            pulumi.set(__self__, "external_v4_ip", external_v4_ip)
         if external_v6_ip is not None:
-            _setter("external_v6_ip", external_v6_ip)
+            pulumi.set(__self__, "external_v6_ip", external_v6_ip)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if router_id is not None:
-            _setter("router_id", router_id)
+            pulumi.set(__self__, "router_id", router_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if subnet_id is not None:
-            _setter("subnet_id", subnet_id)
+            pulumi.set(__self__, "subnet_id", subnet_id)
         if tenant_id is not None:
-            _setter("tenant_id", tenant_id)
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if value_specs is not None:
-            _setter("value_specs", value_specs)
+            pulumi.set(__self__, "value_specs", value_specs)
 
     @property
     @pulumi.getter(name="adminStateUp")
@@ -532,10 +450,6 @@ class Service(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ServiceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

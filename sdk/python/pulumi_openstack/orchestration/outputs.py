@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -41,33 +41,10 @@ class StackV1StackOutput(dict):
         """
         :param str description: The description of the stack resource.
         """
-        StackV1StackOutput._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            output_key=output_key,
-            output_value=output_value,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             output_key: Optional[str] = None,
-             output_value: Optional[str] = None,
-             description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if output_key is None and 'outputKey' in kwargs:
-            output_key = kwargs['outputKey']
-        if output_key is None:
-            raise TypeError("Missing 'output_key' argument")
-        if output_value is None and 'outputValue' in kwargs:
-            output_value = kwargs['outputValue']
-        if output_value is None:
-            raise TypeError("Missing 'output_value' argument")
-
-        _setter("output_key", output_key)
-        _setter("output_value", output_value)
+        pulumi.set(__self__, "output_key", output_key)
+        pulumi.set(__self__, "output_value", output_value)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter(name="outputKey")

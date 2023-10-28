@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -71,102 +71,39 @@ class StackV1Args:
                For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
                is the time zone as an offset from UTC.
         """
-        StackV1Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            template_opts=template_opts,
-            stack_outputs=stack_outputs,
-            capabilities=capabilities,
-            creation_time=creation_time,
-            description=description,
-            disable_rollback=disable_rollback,
-            environment_opts=environment_opts,
-            name=name,
-            notification_topics=notification_topics,
-            parameters=parameters,
-            region=region,
-            status=status,
-            status_reason=status_reason,
-            tags=tags,
-            template_description=template_description,
-            timeout=timeout,
-            updated_time=updated_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             template_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             stack_outputs: Optional[pulumi.Input[Sequence[pulumi.Input['StackV1StackOutputArgs']]]] = None,
-             capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             creation_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disable_rollback: Optional[pulumi.Input[bool]] = None,
-             environment_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notification_topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             status_reason: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             template_description: Optional[pulumi.Input[str]] = None,
-             timeout: Optional[pulumi.Input[int]] = None,
-             updated_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if template_opts is None and 'templateOpts' in kwargs:
-            template_opts = kwargs['templateOpts']
-        if template_opts is None:
-            raise TypeError("Missing 'template_opts' argument")
-        if stack_outputs is None and 'StackOutputs' in kwargs:
-            stack_outputs = kwargs['StackOutputs']
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if disable_rollback is None and 'disableRollback' in kwargs:
-            disable_rollback = kwargs['disableRollback']
-        if environment_opts is None and 'environmentOpts' in kwargs:
-            environment_opts = kwargs['environmentOpts']
-        if notification_topics is None and 'notificationTopics' in kwargs:
-            notification_topics = kwargs['notificationTopics']
-        if status_reason is None and 'statusReason' in kwargs:
-            status_reason = kwargs['statusReason']
-        if template_description is None and 'templateDescription' in kwargs:
-            template_description = kwargs['templateDescription']
-        if updated_time is None and 'updatedTime' in kwargs:
-            updated_time = kwargs['updatedTime']
-
-        _setter("template_opts", template_opts)
+        pulumi.set(__self__, "template_opts", template_opts)
         if stack_outputs is not None:
-            _setter("stack_outputs", stack_outputs)
+            pulumi.set(__self__, "stack_outputs", stack_outputs)
         if capabilities is not None:
-            _setter("capabilities", capabilities)
+            pulumi.set(__self__, "capabilities", capabilities)
         if creation_time is not None:
-            _setter("creation_time", creation_time)
+            pulumi.set(__self__, "creation_time", creation_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disable_rollback is not None:
-            _setter("disable_rollback", disable_rollback)
+            pulumi.set(__self__, "disable_rollback", disable_rollback)
         if environment_opts is not None:
-            _setter("environment_opts", environment_opts)
+            pulumi.set(__self__, "environment_opts", environment_opts)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notification_topics is not None:
-            _setter("notification_topics", notification_topics)
+            pulumi.set(__self__, "notification_topics", notification_topics)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if status_reason is not None:
-            _setter("status_reason", status_reason)
+            pulumi.set(__self__, "status_reason", status_reason)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if template_description is not None:
-            _setter("template_description", template_description)
+            pulumi.set(__self__, "template_description", template_description)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
         if updated_time is not None:
-            _setter("updated_time", updated_time)
+            pulumi.set(__self__, "updated_time", updated_time)
 
     @property
     @pulumi.getter(name="templateOpts")
@@ -449,101 +386,40 @@ class _StackV1State:
                For example, 2015-08-27T09:49:58-05:00. The ±hh:mm value, if included,
                is the time zone as an offset from UTC.
         """
-        _StackV1State._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            stack_outputs=stack_outputs,
-            capabilities=capabilities,
-            creation_time=creation_time,
-            description=description,
-            disable_rollback=disable_rollback,
-            environment_opts=environment_opts,
-            name=name,
-            notification_topics=notification_topics,
-            parameters=parameters,
-            region=region,
-            status=status,
-            status_reason=status_reason,
-            tags=tags,
-            template_description=template_description,
-            template_opts=template_opts,
-            timeout=timeout,
-            updated_time=updated_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             stack_outputs: Optional[pulumi.Input[Sequence[pulumi.Input['StackV1StackOutputArgs']]]] = None,
-             capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             creation_time: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disable_rollback: Optional[pulumi.Input[bool]] = None,
-             environment_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notification_topics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             status_reason: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             template_description: Optional[pulumi.Input[str]] = None,
-             template_opts: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             timeout: Optional[pulumi.Input[int]] = None,
-             updated_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if stack_outputs is None and 'StackOutputs' in kwargs:
-            stack_outputs = kwargs['StackOutputs']
-        if creation_time is None and 'creationTime' in kwargs:
-            creation_time = kwargs['creationTime']
-        if disable_rollback is None and 'disableRollback' in kwargs:
-            disable_rollback = kwargs['disableRollback']
-        if environment_opts is None and 'environmentOpts' in kwargs:
-            environment_opts = kwargs['environmentOpts']
-        if notification_topics is None and 'notificationTopics' in kwargs:
-            notification_topics = kwargs['notificationTopics']
-        if status_reason is None and 'statusReason' in kwargs:
-            status_reason = kwargs['statusReason']
-        if template_description is None and 'templateDescription' in kwargs:
-            template_description = kwargs['templateDescription']
-        if template_opts is None and 'templateOpts' in kwargs:
-            template_opts = kwargs['templateOpts']
-        if updated_time is None and 'updatedTime' in kwargs:
-            updated_time = kwargs['updatedTime']
-
         if stack_outputs is not None:
-            _setter("stack_outputs", stack_outputs)
+            pulumi.set(__self__, "stack_outputs", stack_outputs)
         if capabilities is not None:
-            _setter("capabilities", capabilities)
+            pulumi.set(__self__, "capabilities", capabilities)
         if creation_time is not None:
-            _setter("creation_time", creation_time)
+            pulumi.set(__self__, "creation_time", creation_time)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disable_rollback is not None:
-            _setter("disable_rollback", disable_rollback)
+            pulumi.set(__self__, "disable_rollback", disable_rollback)
         if environment_opts is not None:
-            _setter("environment_opts", environment_opts)
+            pulumi.set(__self__, "environment_opts", environment_opts)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notification_topics is not None:
-            _setter("notification_topics", notification_topics)
+            pulumi.set(__self__, "notification_topics", notification_topics)
         if parameters is not None:
-            _setter("parameters", parameters)
+            pulumi.set(__self__, "parameters", parameters)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if status_reason is not None:
-            _setter("status_reason", status_reason)
+            pulumi.set(__self__, "status_reason", status_reason)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if template_description is not None:
-            _setter("template_description", template_description)
+            pulumi.set(__self__, "template_description", template_description)
         if template_opts is not None:
-            _setter("template_opts", template_opts)
+            pulumi.set(__self__, "template_opts", template_opts)
         if timeout is not None:
-            _setter("timeout", timeout)
+            pulumi.set(__self__, "timeout", timeout)
         if updated_time is not None:
-            _setter("updated_time", updated_time)
+            pulumi.set(__self__, "updated_time", updated_time)
 
     @property
     @pulumi.getter(name="StackOutputs")
@@ -935,10 +811,6 @@ class StackV1(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            StackV1Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

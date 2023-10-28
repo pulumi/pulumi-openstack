@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -22,25 +22,8 @@ class ContainerVersioningLegacy(dict):
         :param str location: Container in which versions will be stored.
         :param str type: Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
         """
-        ContainerVersioningLegacy._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            location=location,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             location: Optional[str] = None,
-             type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if location is None:
-            raise TypeError("Missing 'location' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("location", location)
-        _setter("type", type)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter

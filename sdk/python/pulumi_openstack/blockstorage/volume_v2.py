@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -58,84 +58,31 @@ class VolumeV2Args:
         :param pulumi.Input[str] volume_type: The type of volume to create.
                Changing this creates a new volume.
         """
-        VolumeV2Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            size=size,
-            availability_zone=availability_zone,
-            consistency_group_id=consistency_group_id,
-            description=description,
-            image_id=image_id,
-            metadata=metadata,
-            name=name,
-            region=region,
-            scheduler_hints=scheduler_hints,
-            snapshot_id=snapshot_id,
-            source_replica=source_replica,
-            source_vol_id=source_vol_id,
-            volume_type=volume_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             size: Optional[pulumi.Input[int]] = None,
-             availability_zone: Optional[pulumi.Input[str]] = None,
-             consistency_group_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             image_id: Optional[pulumi.Input[str]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeV2SchedulerHintArgs']]]] = None,
-             snapshot_id: Optional[pulumi.Input[str]] = None,
-             source_replica: Optional[pulumi.Input[str]] = None,
-             source_vol_id: Optional[pulumi.Input[str]] = None,
-             volume_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if size is None:
-            raise TypeError("Missing 'size' argument")
-        if availability_zone is None and 'availabilityZone' in kwargs:
-            availability_zone = kwargs['availabilityZone']
-        if consistency_group_id is None and 'consistencyGroupId' in kwargs:
-            consistency_group_id = kwargs['consistencyGroupId']
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if scheduler_hints is None and 'schedulerHints' in kwargs:
-            scheduler_hints = kwargs['schedulerHints']
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-        if source_replica is None and 'sourceReplica' in kwargs:
-            source_replica = kwargs['sourceReplica']
-        if source_vol_id is None and 'sourceVolId' in kwargs:
-            source_vol_id = kwargs['sourceVolId']
-        if volume_type is None and 'volumeType' in kwargs:
-            volume_type = kwargs['volumeType']
-
-        _setter("size", size)
+        pulumi.set(__self__, "size", size)
         if availability_zone is not None:
-            _setter("availability_zone", availability_zone)
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if consistency_group_id is not None:
-            _setter("consistency_group_id", consistency_group_id)
+            pulumi.set(__self__, "consistency_group_id", consistency_group_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if image_id is not None:
-            _setter("image_id", image_id)
+            pulumi.set(__self__, "image_id", image_id)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if scheduler_hints is not None:
-            _setter("scheduler_hints", scheduler_hints)
+            pulumi.set(__self__, "scheduler_hints", scheduler_hints)
         if snapshot_id is not None:
-            _setter("snapshot_id", snapshot_id)
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
         if source_replica is not None:
-            _setter("source_replica", source_replica)
+            pulumi.set(__self__, "source_replica", source_replica)
         if source_vol_id is not None:
-            _setter("source_vol_id", source_vol_id)
+            pulumi.set(__self__, "source_vol_id", source_vol_id)
         if volume_type is not None:
-            _setter("volume_type", volume_type)
+            pulumi.set(__self__, "volume_type", volume_type)
 
     @property
     @pulumi.getter
@@ -356,87 +303,34 @@ class _VolumeV2State:
         :param pulumi.Input[str] volume_type: The type of volume to create.
                Changing this creates a new volume.
         """
-        _VolumeV2State._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attachments=attachments,
-            availability_zone=availability_zone,
-            consistency_group_id=consistency_group_id,
-            description=description,
-            image_id=image_id,
-            metadata=metadata,
-            name=name,
-            region=region,
-            scheduler_hints=scheduler_hints,
-            size=size,
-            snapshot_id=snapshot_id,
-            source_replica=source_replica,
-            source_vol_id=source_vol_id,
-            volume_type=volume_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attachments: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeV2AttachmentArgs']]]] = None,
-             availability_zone: Optional[pulumi.Input[str]] = None,
-             consistency_group_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             image_id: Optional[pulumi.Input[str]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeV2SchedulerHintArgs']]]] = None,
-             size: Optional[pulumi.Input[int]] = None,
-             snapshot_id: Optional[pulumi.Input[str]] = None,
-             source_replica: Optional[pulumi.Input[str]] = None,
-             source_vol_id: Optional[pulumi.Input[str]] = None,
-             volume_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if availability_zone is None and 'availabilityZone' in kwargs:
-            availability_zone = kwargs['availabilityZone']
-        if consistency_group_id is None and 'consistencyGroupId' in kwargs:
-            consistency_group_id = kwargs['consistencyGroupId']
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if scheduler_hints is None and 'schedulerHints' in kwargs:
-            scheduler_hints = kwargs['schedulerHints']
-        if snapshot_id is None and 'snapshotId' in kwargs:
-            snapshot_id = kwargs['snapshotId']
-        if source_replica is None and 'sourceReplica' in kwargs:
-            source_replica = kwargs['sourceReplica']
-        if source_vol_id is None and 'sourceVolId' in kwargs:
-            source_vol_id = kwargs['sourceVolId']
-        if volume_type is None and 'volumeType' in kwargs:
-            volume_type = kwargs['volumeType']
-
         if attachments is not None:
-            _setter("attachments", attachments)
+            pulumi.set(__self__, "attachments", attachments)
         if availability_zone is not None:
-            _setter("availability_zone", availability_zone)
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if consistency_group_id is not None:
-            _setter("consistency_group_id", consistency_group_id)
+            pulumi.set(__self__, "consistency_group_id", consistency_group_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if image_id is not None:
-            _setter("image_id", image_id)
+            pulumi.set(__self__, "image_id", image_id)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if scheduler_hints is not None:
-            _setter("scheduler_hints", scheduler_hints)
+            pulumi.set(__self__, "scheduler_hints", scheduler_hints)
         if size is not None:
-            _setter("size", size)
+            pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
-            _setter("snapshot_id", snapshot_id)
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
         if source_replica is not None:
-            _setter("source_replica", source_replica)
+            pulumi.set(__self__, "source_replica", source_replica)
         if source_vol_id is not None:
-            _setter("source_vol_id", source_vol_id)
+            pulumi.set(__self__, "source_vol_id", source_vol_id)
         if volume_type is not None:
-            _setter("volume_type", volume_type)
+            pulumi.set(__self__, "volume_type", volume_type)
 
     @property
     @pulumi.getter
@@ -732,10 +626,6 @@ class VolumeV2(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VolumeV2Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

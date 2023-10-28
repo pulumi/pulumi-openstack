@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ImageAccessArgs', 'ImageAccess']
@@ -29,37 +29,12 @@ class ImageAccessArgs:
                force the member proposal acceptance. Can either be `accepted`, `rejected` or
                `pending`. Defaults to `pending`. Foridden for non-admin users.
         """
-        ImageAccessArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            image_id=image_id,
-            member_id=member_id,
-            region=region,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             image_id: Optional[pulumi.Input[str]] = None,
-             member_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if image_id is None:
-            raise TypeError("Missing 'image_id' argument")
-        if member_id is None and 'memberId' in kwargs:
-            member_id = kwargs['memberId']
-        if member_id is None:
-            raise TypeError("Missing 'member_id' argument")
-
-        _setter("image_id", image_id)
-        _setter("member_id", member_id)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "member_id", member_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="imageId")
@@ -138,51 +113,20 @@ class _ImageAccessState:
                `pending`. Defaults to `pending`. Foridden for non-admin users.
         :param pulumi.Input[str] updated_at: The date the image access was last updated.
         """
-        _ImageAccessState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            created_at=created_at,
-            image_id=image_id,
-            member_id=member_id,
-            region=region,
-            schema=schema,
-            status=status,
-            updated_at=updated_at,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             created_at: Optional[pulumi.Input[str]] = None,
-             image_id: Optional[pulumi.Input[str]] = None,
-             member_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             schema: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if image_id is None and 'imageId' in kwargs:
-            image_id = kwargs['imageId']
-        if member_id is None and 'memberId' in kwargs:
-            member_id = kwargs['memberId']
-        if updated_at is None and 'updatedAt' in kwargs:
-            updated_at = kwargs['updatedAt']
-
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if image_id is not None:
-            _setter("image_id", image_id)
+            pulumi.set(__self__, "image_id", image_id)
         if member_id is not None:
-            _setter("member_id", member_id)
+            pulumi.set(__self__, "member_id", member_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if schema is not None:
-            _setter("schema", schema)
+            pulumi.set(__self__, "schema", schema)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if updated_at is not None:
-            _setter("updated_at", updated_at)
+            pulumi.set(__self__, "updated_at", updated_at)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -424,10 +368,6 @@ class ImageAccess(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ImageAccessArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

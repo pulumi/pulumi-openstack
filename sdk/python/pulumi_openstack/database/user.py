@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['UserArgs', 'User']
@@ -28,43 +28,16 @@ class UserArgs:
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] region: Openstack region resource is created in.
         """
-        UserArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            instance_id=instance_id,
-            password=password,
-            databases=databases,
-            host=host,
-            name=name,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             instance_id: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             databases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             host: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-        if instance_id is None:
-            raise TypeError("Missing 'instance_id' argument")
-        if password is None:
-            raise TypeError("Missing 'password' argument")
-
-        _setter("instance_id", instance_id)
-        _setter("password", password)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "password", password)
         if databases is not None:
-            _setter("databases", databases)
+            pulumi.set(__self__, "databases", databases)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -153,41 +126,18 @@ class _UserState:
         :param pulumi.Input[str] password: User's password.
         :param pulumi.Input[str] region: Openstack region resource is created in.
         """
-        _UserState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            databases=databases,
-            host=host,
-            instance_id=instance_id,
-            name=name,
-            password=password,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             databases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             host: Optional[pulumi.Input[str]] = None,
-             instance_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if instance_id is None and 'instanceId' in kwargs:
-            instance_id = kwargs['instanceId']
-
         if databases is not None:
-            _setter("databases", databases)
+            pulumi.set(__self__, "databases", databases)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if instance_id is not None:
-            _setter("instance_id", instance_id)
+            pulumi.set(__self__, "instance_id", instance_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -335,10 +285,6 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

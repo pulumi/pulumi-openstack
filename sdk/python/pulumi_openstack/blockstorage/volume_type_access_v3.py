@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VolumeTypeAccessV3Args', 'VolumeTypeAccessV3']
@@ -27,33 +27,10 @@ class VolumeTypeAccessV3Args:
                omitted, the `region` argument of the provider is used. Changing this
                creates a new quotaset.
         """
-        VolumeTypeAccessV3Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project_id=project_id,
-            volume_type_id=volume_type_id,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project_id: Optional[pulumi.Input[str]] = None,
-             volume_type_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if project_id is None:
-            raise TypeError("Missing 'project_id' argument")
-        if volume_type_id is None and 'volumeTypeId' in kwargs:
-            volume_type_id = kwargs['volumeTypeId']
-        if volume_type_id is None:
-            raise TypeError("Missing 'volume_type_id' argument")
-
-        _setter("project_id", project_id)
-        _setter("volume_type_id", volume_type_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "volume_type_id", volume_type_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="projectId")
@@ -112,31 +89,12 @@ class _VolumeTypeAccessV3State:
         :param pulumi.Input[str] volume_type_id: ID of the volume type to give access to. Changing
                this creates a new resource.
         """
-        _VolumeTypeAccessV3State._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project_id=project_id,
-            region=region,
-            volume_type_id=volume_type_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             volume_type_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if volume_type_id is None and 'volumeTypeId' in kwargs:
-            volume_type_id = kwargs['volumeTypeId']
-
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if volume_type_id is not None:
-            _setter("volume_type_id", volume_type_id)
+            pulumi.set(__self__, "volume_type_id", volume_type_id)
 
     @property
     @pulumi.getter(name="projectId")
@@ -266,10 +224,6 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VolumeTypeAccessV3Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

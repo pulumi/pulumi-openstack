@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InheritRoleAssignmentArgs', 'InheritRoleAssignment']
@@ -29,50 +29,17 @@ class InheritRoleAssignmentArgs:
                The project should be able to containt child projects.
         :param pulumi.Input[str] user_id: The user to assign the role to.
         """
-        InheritRoleAssignmentArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            role_id=role_id,
-            domain_id=domain_id,
-            group_id=group_id,
-            project_id=project_id,
-            region=region,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             role_id: Optional[pulumi.Input[str]] = None,
-             domain_id: Optional[pulumi.Input[str]] = None,
-             group_id: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if role_id is None and 'roleId' in kwargs:
-            role_id = kwargs['roleId']
-        if role_id is None:
-            raise TypeError("Missing 'role_id' argument")
-        if domain_id is None and 'domainId' in kwargs:
-            domain_id = kwargs['domainId']
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-
-        _setter("role_id", role_id)
+        pulumi.set(__self__, "role_id", role_id)
         if domain_id is not None:
-            _setter("domain_id", domain_id)
+            pulumi.set(__self__, "domain_id", domain_id)
         if group_id is not None:
-            _setter("group_id", group_id)
+            pulumi.set(__self__, "group_id", group_id)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter(name="roleId")
@@ -163,49 +130,18 @@ class _InheritRoleAssignmentState:
         :param pulumi.Input[str] role_id: The role to assign.
         :param pulumi.Input[str] user_id: The user to assign the role to.
         """
-        _InheritRoleAssignmentState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain_id=domain_id,
-            group_id=group_id,
-            project_id=project_id,
-            region=region,
-            role_id=role_id,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain_id: Optional[pulumi.Input[str]] = None,
-             group_id: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             role_id: Optional[pulumi.Input[str]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if domain_id is None and 'domainId' in kwargs:
-            domain_id = kwargs['domainId']
-        if group_id is None and 'groupId' in kwargs:
-            group_id = kwargs['groupId']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if role_id is None and 'roleId' in kwargs:
-            role_id = kwargs['roleId']
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-
         if domain_id is not None:
-            _setter("domain_id", domain_id)
+            pulumi.set(__self__, "domain_id", domain_id)
         if group_id is not None:
-            _setter("group_id", group_id)
+            pulumi.set(__self__, "group_id", group_id)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if role_id is not None:
-            _setter("role_id", role_id)
+            pulumi.set(__self__, "role_id", role_id)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter(name="domainId")
@@ -379,10 +315,6 @@ class InheritRoleAssignment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            InheritRoleAssignmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

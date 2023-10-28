@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PortSecGroupAssociateArgs', 'PortSecGroupAssociate']
@@ -31,37 +31,12 @@ class PortSecGroupAssociateArgs:
                `region` argument of the provider is used. Changing this creates a new
                resource.
         """
-        PortSecGroupAssociateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            port_id=port_id,
-            security_group_ids=security_group_ids,
-            enforce=enforce,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             port_id: Optional[pulumi.Input[str]] = None,
-             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             enforce: Optional[pulumi.Input[bool]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if port_id is None and 'portId' in kwargs:
-            port_id = kwargs['portId']
-        if port_id is None:
-            raise TypeError("Missing 'port_id' argument")
-        if security_group_ids is None and 'securityGroupIds' in kwargs:
-            security_group_ids = kwargs['securityGroupIds']
-        if security_group_ids is None:
-            raise TypeError("Missing 'security_group_ids' argument")
-
-        _setter("port_id", port_id)
-        _setter("security_group_ids", security_group_ids)
+        pulumi.set(__self__, "port_id", port_id)
+        pulumi.set(__self__, "security_group_ids", security_group_ids)
         if enforce is not None:
-            _setter("enforce", enforce)
+            pulumi.set(__self__, "enforce", enforce)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="portId")
@@ -141,41 +116,16 @@ class _PortSecGroupAssociateState:
                the port. The security groups must be specified by ID and not name (as
                opposed to how they are configured with the Compute Instance).
         """
-        _PortSecGroupAssociateState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            all_security_group_ids=all_security_group_ids,
-            enforce=enforce,
-            port_id=port_id,
-            region=region,
-            security_group_ids=security_group_ids,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             all_security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             enforce: Optional[pulumi.Input[bool]] = None,
-             port_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if all_security_group_ids is None and 'allSecurityGroupIds' in kwargs:
-            all_security_group_ids = kwargs['allSecurityGroupIds']
-        if port_id is None and 'portId' in kwargs:
-            port_id = kwargs['portId']
-        if security_group_ids is None and 'securityGroupIds' in kwargs:
-            security_group_ids = kwargs['securityGroupIds']
-
         if all_security_group_ids is not None:
-            _setter("all_security_group_ids", all_security_group_ids)
+            pulumi.set(__self__, "all_security_group_ids", all_security_group_ids)
         if enforce is not None:
-            _setter("enforce", enforce)
+            pulumi.set(__self__, "enforce", enforce)
         if port_id is not None:
-            _setter("port_id", port_id)
+            pulumi.set(__self__, "port_id", port_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if security_group_ids is not None:
-            _setter("security_group_ids", security_group_ids)
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
 
     @property
     @pulumi.getter(name="allSecurityGroupIds")
@@ -380,10 +330,6 @@ class PortSecGroupAssociate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PortSecGroupAssociateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

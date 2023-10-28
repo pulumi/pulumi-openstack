@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -36,38 +36,15 @@ class ContainerV1Args:
         :param pulumi.Input[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]] secret_refs: A set of dictionaries containing references to secrets. The structure is described
                below.
         """
-        ContainerV1Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            type=type,
-            acl=acl,
-            name=name,
-            region=region,
-            secret_refs=secret_refs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             type: Optional[pulumi.Input[str]] = None,
-             acl: Optional[pulumi.Input['ContainerV1AclArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             secret_refs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if secret_refs is None and 'secretRefs' in kwargs:
-            secret_refs = kwargs['secretRefs']
-
-        _setter("type", type)
+        pulumi.set(__self__, "type", type)
         if acl is not None:
-            _setter("acl", acl)
+            pulumi.set(__self__, "acl", acl)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if secret_refs is not None:
-            _setter("secret_refs", secret_refs)
+            pulumi.set(__self__, "secret_refs", secret_refs)
 
     @property
     @pulumi.getter
@@ -172,69 +149,28 @@ class _ContainerV1State:
         :param pulumi.Input[str] type: Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
         :param pulumi.Input[str] updated_at: The date the container ACL was last updated.
         """
-        _ContainerV1State._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            acl=acl,
-            consumers=consumers,
-            container_ref=container_ref,
-            created_at=created_at,
-            creator_id=creator_id,
-            name=name,
-            region=region,
-            secret_refs=secret_refs,
-            status=status,
-            type=type,
-            updated_at=updated_at,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             acl: Optional[pulumi.Input['ContainerV1AclArgs']] = None,
-             consumers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerV1ConsumerArgs']]]] = None,
-             container_ref: Optional[pulumi.Input[str]] = None,
-             created_at: Optional[pulumi.Input[str]] = None,
-             creator_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             secret_refs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerV1SecretRefArgs']]]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             updated_at: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if container_ref is None and 'containerRef' in kwargs:
-            container_ref = kwargs['containerRef']
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if creator_id is None and 'creatorId' in kwargs:
-            creator_id = kwargs['creatorId']
-        if secret_refs is None and 'secretRefs' in kwargs:
-            secret_refs = kwargs['secretRefs']
-        if updated_at is None and 'updatedAt' in kwargs:
-            updated_at = kwargs['updatedAt']
-
         if acl is not None:
-            _setter("acl", acl)
+            pulumi.set(__self__, "acl", acl)
         if consumers is not None:
-            _setter("consumers", consumers)
+            pulumi.set(__self__, "consumers", consumers)
         if container_ref is not None:
-            _setter("container_ref", container_ref)
+            pulumi.set(__self__, "container_ref", container_ref)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if creator_id is not None:
-            _setter("creator_id", creator_id)
+            pulumi.set(__self__, "creator_id", creator_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if secret_refs is not None:
-            _setter("secret_refs", secret_refs)
+            pulumi.set(__self__, "secret_refs", secret_refs)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if updated_at is not None:
-            _setter("updated_at", updated_at)
+            pulumi.set(__self__, "updated_at", updated_at)
 
     @property
     @pulumi.getter
@@ -600,10 +536,6 @@ class ContainerV1(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ContainerV1Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -623,7 +555,6 @@ class ContainerV1(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ContainerV1Args.__new__(ContainerV1Args)
 
-            acl = _utilities.configure(acl, ContainerV1AclArgs, True)
             __props__.__dict__["acl"] = acl
             __props__.__dict__["name"] = name
             __props__.__dict__["region"] = region
