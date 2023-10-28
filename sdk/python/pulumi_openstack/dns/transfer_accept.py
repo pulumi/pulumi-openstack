@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TransferAcceptArgs', 'TransferAccept']
@@ -33,43 +33,14 @@ class TransferAcceptArgs:
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
                new transfer accept.
         """
-        TransferAcceptArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            key=key,
-            zone_transfer_request_id=zone_transfer_request_id,
-            disable_status_check=disable_status_check,
-            region=region,
-            value_specs=value_specs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             key: Optional[pulumi.Input[str]] = None,
-             zone_transfer_request_id: Optional[pulumi.Input[str]] = None,
-             disable_status_check: Optional[pulumi.Input[bool]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if zone_transfer_request_id is None and 'zoneTransferRequestId' in kwargs:
-            zone_transfer_request_id = kwargs['zoneTransferRequestId']
-        if zone_transfer_request_id is None:
-            raise TypeError("Missing 'zone_transfer_request_id' argument")
-        if disable_status_check is None and 'disableStatusCheck' in kwargs:
-            disable_status_check = kwargs['disableStatusCheck']
-        if value_specs is None and 'valueSpecs' in kwargs:
-            value_specs = kwargs['valueSpecs']
-
-        _setter("key", key)
-        _setter("zone_transfer_request_id", zone_transfer_request_id)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "zone_transfer_request_id", zone_transfer_request_id)
         if disable_status_check is not None:
-            _setter("disable_status_check", disable_status_check)
+            pulumi.set(__self__, "disable_status_check", disable_status_check)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if value_specs is not None:
-            _setter("value_specs", value_specs)
+            pulumi.set(__self__, "value_specs", value_specs)
 
     @property
     @pulumi.getter
@@ -160,41 +131,16 @@ class _TransferAcceptState:
                new transfer accept.
         :param pulumi.Input[str] zone_transfer_request_id: The ID of the zone transfer request.
         """
-        _TransferAcceptState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            disable_status_check=disable_status_check,
-            key=key,
-            region=region,
-            value_specs=value_specs,
-            zone_transfer_request_id=zone_transfer_request_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             disable_status_check: Optional[pulumi.Input[bool]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             zone_transfer_request_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disable_status_check is None and 'disableStatusCheck' in kwargs:
-            disable_status_check = kwargs['disableStatusCheck']
-        if value_specs is None and 'valueSpecs' in kwargs:
-            value_specs = kwargs['valueSpecs']
-        if zone_transfer_request_id is None and 'zoneTransferRequestId' in kwargs:
-            zone_transfer_request_id = kwargs['zoneTransferRequestId']
-
         if disable_status_check is not None:
-            _setter("disable_status_check", disable_status_check)
+            pulumi.set(__self__, "disable_status_check", disable_status_check)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if value_specs is not None:
-            _setter("value_specs", value_specs)
+            pulumi.set(__self__, "value_specs", value_specs)
         if zone_transfer_request_id is not None:
-            _setter("zone_transfer_request_id", zone_transfer_request_id)
+            pulumi.set(__self__, "zone_transfer_request_id", zone_transfer_request_id)
 
     @property
     @pulumi.getter(name="disableStatusCheck")
@@ -366,10 +312,6 @@ class TransferAccept(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TransferAcceptArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

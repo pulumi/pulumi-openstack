@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -37,34 +37,11 @@ class ApplicationCredentialAccessRuleArgs:
         :param pulumi.Input[str] id: The ID of the existing access rule. The access rule ID of
                another application credential can be provided.
         """
-        ApplicationCredentialAccessRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            method=method,
-            path=path,
-            service=service,
-            id=id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             method: Optional[pulumi.Input[str]] = None,
-             path: Optional[pulumi.Input[str]] = None,
-             service: Optional[pulumi.Input[str]] = None,
-             id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if method is None:
-            raise TypeError("Missing 'method' argument")
-        if path is None:
-            raise TypeError("Missing 'path' argument")
-        if service is None:
-            raise TypeError("Missing 'service' argument")
-
-        _setter("method", method)
-        _setter("path", path)
-        _setter("service", service)
+        pulumi.set(__self__, "method", method)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "service", service)
         if id is not None:
-            _setter("id", id)
+            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
@@ -133,20 +110,7 @@ class UserMultiFactorAuthRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rules: A list of authentication plugins that the user must
                authenticate with.
         """
-        UserMultiFactorAuthRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            rules=rules,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if rules is None:
-            raise TypeError("Missing 'rules' argument")
-
-        _setter("rules", rules)
+        pulumi.set(__self__, "rules", rules)
 
     @property
     @pulumi.getter

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -52,71 +52,28 @@ class IpSecPolicyArgs:
                Changing this updates the existing policy. Default is ESP.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
-        IpSecPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auth_algorithm=auth_algorithm,
-            description=description,
-            encapsulation_mode=encapsulation_mode,
-            encryption_algorithm=encryption_algorithm,
-            lifetimes=lifetimes,
-            name=name,
-            pfs=pfs,
-            region=region,
-            tenant_id=tenant_id,
-            transform_protocol=transform_protocol,
-            value_specs=value_specs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auth_algorithm: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             encapsulation_mode: Optional[pulumi.Input[str]] = None,
-             encryption_algorithm: Optional[pulumi.Input[str]] = None,
-             lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input['IpSecPolicyLifetimeArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             pfs: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             tenant_id: Optional[pulumi.Input[str]] = None,
-             transform_protocol: Optional[pulumi.Input[str]] = None,
-             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auth_algorithm is None and 'authAlgorithm' in kwargs:
-            auth_algorithm = kwargs['authAlgorithm']
-        if encapsulation_mode is None and 'encapsulationMode' in kwargs:
-            encapsulation_mode = kwargs['encapsulationMode']
-        if encryption_algorithm is None and 'encryptionAlgorithm' in kwargs:
-            encryption_algorithm = kwargs['encryptionAlgorithm']
-        if tenant_id is None and 'tenantId' in kwargs:
-            tenant_id = kwargs['tenantId']
-        if transform_protocol is None and 'transformProtocol' in kwargs:
-            transform_protocol = kwargs['transformProtocol']
-        if value_specs is None and 'valueSpecs' in kwargs:
-            value_specs = kwargs['valueSpecs']
-
         if auth_algorithm is not None:
-            _setter("auth_algorithm", auth_algorithm)
+            pulumi.set(__self__, "auth_algorithm", auth_algorithm)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if encapsulation_mode is not None:
-            _setter("encapsulation_mode", encapsulation_mode)
+            pulumi.set(__self__, "encapsulation_mode", encapsulation_mode)
         if encryption_algorithm is not None:
-            _setter("encryption_algorithm", encryption_algorithm)
+            pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
         if lifetimes is not None:
-            _setter("lifetimes", lifetimes)
+            pulumi.set(__self__, "lifetimes", lifetimes)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if pfs is not None:
-            _setter("pfs", pfs)
+            pulumi.set(__self__, "pfs", pfs)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if tenant_id is not None:
-            _setter("tenant_id", tenant_id)
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if transform_protocol is not None:
-            _setter("transform_protocol", transform_protocol)
+            pulumi.set(__self__, "transform_protocol", transform_protocol)
         if value_specs is not None:
-            _setter("value_specs", value_specs)
+            pulumi.set(__self__, "value_specs", value_specs)
 
     @property
     @pulumi.getter(name="authAlgorithm")
@@ -301,71 +258,28 @@ class _IpSecPolicyState:
                Changing this updates the existing policy. Default is ESP.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
-        _IpSecPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auth_algorithm=auth_algorithm,
-            description=description,
-            encapsulation_mode=encapsulation_mode,
-            encryption_algorithm=encryption_algorithm,
-            lifetimes=lifetimes,
-            name=name,
-            pfs=pfs,
-            region=region,
-            tenant_id=tenant_id,
-            transform_protocol=transform_protocol,
-            value_specs=value_specs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auth_algorithm: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             encapsulation_mode: Optional[pulumi.Input[str]] = None,
-             encryption_algorithm: Optional[pulumi.Input[str]] = None,
-             lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input['IpSecPolicyLifetimeArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             pfs: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             tenant_id: Optional[pulumi.Input[str]] = None,
-             transform_protocol: Optional[pulumi.Input[str]] = None,
-             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auth_algorithm is None and 'authAlgorithm' in kwargs:
-            auth_algorithm = kwargs['authAlgorithm']
-        if encapsulation_mode is None and 'encapsulationMode' in kwargs:
-            encapsulation_mode = kwargs['encapsulationMode']
-        if encryption_algorithm is None and 'encryptionAlgorithm' in kwargs:
-            encryption_algorithm = kwargs['encryptionAlgorithm']
-        if tenant_id is None and 'tenantId' in kwargs:
-            tenant_id = kwargs['tenantId']
-        if transform_protocol is None and 'transformProtocol' in kwargs:
-            transform_protocol = kwargs['transformProtocol']
-        if value_specs is None and 'valueSpecs' in kwargs:
-            value_specs = kwargs['valueSpecs']
-
         if auth_algorithm is not None:
-            _setter("auth_algorithm", auth_algorithm)
+            pulumi.set(__self__, "auth_algorithm", auth_algorithm)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if encapsulation_mode is not None:
-            _setter("encapsulation_mode", encapsulation_mode)
+            pulumi.set(__self__, "encapsulation_mode", encapsulation_mode)
         if encryption_algorithm is not None:
-            _setter("encryption_algorithm", encryption_algorithm)
+            pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
         if lifetimes is not None:
-            _setter("lifetimes", lifetimes)
+            pulumi.set(__self__, "lifetimes", lifetimes)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if pfs is not None:
-            _setter("pfs", pfs)
+            pulumi.set(__self__, "pfs", pfs)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if tenant_id is not None:
-            _setter("tenant_id", tenant_id)
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if transform_protocol is not None:
-            _setter("transform_protocol", transform_protocol)
+            pulumi.set(__self__, "transform_protocol", transform_protocol)
         if value_specs is not None:
-            _setter("value_specs", value_specs)
+            pulumi.set(__self__, "value_specs", value_specs)
 
     @property
     @pulumi.getter(name="authAlgorithm")
@@ -609,10 +523,6 @@ class IpSecPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IpSecPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['Ec2CredentialV3Args', 'Ec2CredentialV3']
@@ -30,31 +30,12 @@ class Ec2CredentialV3Args:
                Only administrative users can specify a user ID different from the current
                auth scope.
         """
-        Ec2CredentialV3Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project_id=project_id,
-            region=region,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter(name="projectId")
@@ -125,45 +106,18 @@ class _Ec2CredentialV3State:
                Only administrative users can specify a user ID different from the current
                auth scope.
         """
-        _Ec2CredentialV3State._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access=access,
-            project_id=project_id,
-            region=region,
-            secret=secret,
-            trust_id=trust_id,
-            user_id=user_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             secret: Optional[pulumi.Input[str]] = None,
-             trust_id: Optional[pulumi.Input[str]] = None,
-             user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if trust_id is None and 'trustId' in kwargs:
-            trust_id = kwargs['trustId']
-        if user_id is None and 'userId' in kwargs:
-            user_id = kwargs['userId']
-
         if access is not None:
-            _setter("access", access)
+            pulumi.set(__self__, "access", access)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if secret is not None:
-            _setter("secret", secret)
+            pulumi.set(__self__, "secret", secret)
         if trust_id is not None:
-            _setter("trust_id", trust_id)
+            pulumi.set(__self__, "trust_id", trust_id)
         if user_id is not None:
-            _setter("user_id", user_id)
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter
@@ -359,10 +313,6 @@ class Ec2CredentialV3(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            Ec2CredentialV3Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VolumeTypeV3Args', 'VolumeTypeV3']
@@ -32,39 +32,16 @@ class VolumeTypeV3Args:
                omitted, the `region` argument of the provider is used. Changing this
                creates a new quotaset.
         """
-        VolumeTypeV3Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            extra_specs=extra_specs,
-            is_public=is_public,
-            name=name,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             is_public: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if extra_specs is None and 'extraSpecs' in kwargs:
-            extra_specs = kwargs['extraSpecs']
-        if is_public is None and 'isPublic' in kwargs:
-            is_public = kwargs['isPublic']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if extra_specs is not None:
-            _setter("extra_specs", extra_specs)
+            pulumi.set(__self__, "extra_specs", extra_specs)
         if is_public is not None:
-            _setter("is_public", is_public)
+            pulumi.set(__self__, "is_public", is_public)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -153,39 +130,16 @@ class _VolumeTypeV3State:
                omitted, the `region` argument of the provider is used. Changing this
                creates a new quotaset.
         """
-        _VolumeTypeV3State._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            extra_specs=extra_specs,
-            is_public=is_public,
-            name=name,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             extra_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             is_public: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if extra_specs is None and 'extraSpecs' in kwargs:
-            extra_specs = kwargs['extraSpecs']
-        if is_public is None and 'isPublic' in kwargs:
-            is_public = kwargs['isPublic']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if extra_specs is not None:
-            _setter("extra_specs", extra_specs)
+            pulumi.set(__self__, "extra_specs", extra_specs)
         if is_public is not None:
-            _setter("is_public", is_public)
+            pulumi.set(__self__, "is_public", is_public)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -347,10 +301,6 @@ class VolumeTypeV3(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            VolumeTypeV3Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

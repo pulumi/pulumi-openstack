@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -23,19 +23,8 @@ __all__ = [
 class ContainerV1AclArgs:
     def __init__(__self__, *,
                  read: Optional[pulumi.Input['ContainerV1AclReadArgs']] = None):
-        ContainerV1AclArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            read=read,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             read: Optional[pulumi.Input['ContainerV1AclReadArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if read is not None:
-            _setter("read", read)
+            pulumi.set(__self__, "read", read)
 
     @property
     @pulumi.getter
@@ -62,37 +51,14 @@ class ContainerV1AclReadArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The list of user IDs, which are allowed to access the
                container, when `project_access` is set to `false`.
         """
-        ContainerV1AclReadArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            created_at=created_at,
-            project_access=project_access,
-            updated_at=updated_at,
-            users=users,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             created_at: Optional[pulumi.Input[str]] = None,
-             project_access: Optional[pulumi.Input[bool]] = None,
-             updated_at: Optional[pulumi.Input[str]] = None,
-             users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if project_access is None and 'projectAccess' in kwargs:
-            project_access = kwargs['projectAccess']
-        if updated_at is None and 'updatedAt' in kwargs:
-            updated_at = kwargs['updatedAt']
-
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if project_access is not None:
-            _setter("project_access", project_access)
+            pulumi.set(__self__, "project_access", project_access)
         if updated_at is not None:
-            _setter("updated_at", updated_at)
+            pulumi.set(__self__, "updated_at", updated_at)
         if users is not None:
-            _setter("users", users)
+            pulumi.set(__self__, "users", users)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -155,23 +121,10 @@ class ContainerV1ConsumerArgs:
                to be unique.
         :param pulumi.Input[str] url: The consumer URL.
         """
-        ContainerV1ConsumerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            url=url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
@@ -208,26 +161,9 @@ class ContainerV1SecretRefArgs:
         :param pulumi.Input[str] secret_ref: The secret reference / where to find the secret, URL.
         :param pulumi.Input[str] name: The name of the secret reference. The reference names must correspond the container type, more details are available [here](https://docs.openstack.org/barbican/stein/api/reference/containers.html).
         """
-        ContainerV1SecretRefArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            secret_ref=secret_ref,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             secret_ref: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if secret_ref is None and 'secretRef' in kwargs:
-            secret_ref = kwargs['secretRef']
-        if secret_ref is None:
-            raise TypeError("Missing 'secret_ref' argument")
-
-        _setter("secret_ref", secret_ref)
+        pulumi.set(__self__, "secret_ref", secret_ref)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="secretRef")
@@ -271,45 +207,16 @@ class OrderV1MetaArgs:
         :param pulumi.Input[str] name: The name of the secret set by the user.
         :param pulumi.Input[str] payload_content_type: The media type for the content of the secrets payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
         """
-        OrderV1MetaArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            algorithm=algorithm,
-            bit_length=bit_length,
-            expiration=expiration,
-            mode=mode,
-            name=name,
-            payload_content_type=payload_content_type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             algorithm: Optional[pulumi.Input[str]] = None,
-             bit_length: Optional[pulumi.Input[int]] = None,
-             expiration: Optional[pulumi.Input[str]] = None,
-             mode: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             payload_content_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if algorithm is None:
-            raise TypeError("Missing 'algorithm' argument")
-        if bit_length is None and 'bitLength' in kwargs:
-            bit_length = kwargs['bitLength']
-        if bit_length is None:
-            raise TypeError("Missing 'bit_length' argument")
-        if payload_content_type is None and 'payloadContentType' in kwargs:
-            payload_content_type = kwargs['payloadContentType']
-
-        _setter("algorithm", algorithm)
-        _setter("bit_length", bit_length)
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "bit_length", bit_length)
         if expiration is not None:
-            _setter("expiration", expiration)
+            pulumi.set(__self__, "expiration", expiration)
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if payload_content_type is not None:
-            _setter("payload_content_type", payload_content_type)
+            pulumi.set(__self__, "payload_content_type", payload_content_type)
 
     @property
     @pulumi.getter
@@ -388,19 +295,8 @@ class OrderV1MetaArgs:
 class SecretV1AclArgs:
     def __init__(__self__, *,
                  read: Optional[pulumi.Input['SecretV1AclReadArgs']] = None):
-        SecretV1AclArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            read=read,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             read: Optional[pulumi.Input['SecretV1AclReadArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if read is not None:
-            _setter("read", read)
+            pulumi.set(__self__, "read", read)
 
     @property
     @pulumi.getter
@@ -427,37 +323,14 @@ class SecretV1AclReadArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: The list of user IDs, which are allowed to access the
                secret, when `project_access` is set to `false`.
         """
-        SecretV1AclReadArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            created_at=created_at,
-            project_access=project_access,
-            updated_at=updated_at,
-            users=users,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             created_at: Optional[pulumi.Input[str]] = None,
-             project_access: Optional[pulumi.Input[bool]] = None,
-             updated_at: Optional[pulumi.Input[str]] = None,
-             users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if project_access is None and 'projectAccess' in kwargs:
-            project_access = kwargs['projectAccess']
-        if updated_at is None and 'updatedAt' in kwargs:
-            updated_at = kwargs['updatedAt']
-
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if project_access is not None:
-            _setter("project_access", project_access)
+            pulumi.set(__self__, "project_access", project_access)
         if updated_at is not None:
-            _setter("updated_at", updated_at)
+            pulumi.set(__self__, "updated_at", updated_at)
         if users is not None:
-            _setter("users", users)
+            pulumi.set(__self__, "users", users)
 
     @property
     @pulumi.getter(name="createdAt")

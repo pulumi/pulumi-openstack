@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RouterRouteArgs', 'RouterRoute']
@@ -31,40 +31,11 @@ class RouterRouteArgs:
                `region` argument of the provider is used. Changing this creates a new
                routing entry.
         """
-        RouterRouteArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            destination_cidr=destination_cidr,
-            next_hop=next_hop,
-            router_id=router_id,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             destination_cidr: Optional[pulumi.Input[str]] = None,
-             next_hop: Optional[pulumi.Input[str]] = None,
-             router_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if destination_cidr is None and 'destinationCidr' in kwargs:
-            destination_cidr = kwargs['destinationCidr']
-        if destination_cidr is None:
-            raise TypeError("Missing 'destination_cidr' argument")
-        if next_hop is None and 'nextHop' in kwargs:
-            next_hop = kwargs['nextHop']
-        if next_hop is None:
-            raise TypeError("Missing 'next_hop' argument")
-        if router_id is None and 'routerId' in kwargs:
-            router_id = kwargs['routerId']
-        if router_id is None:
-            raise TypeError("Missing 'router_id' argument")
-
-        _setter("destination_cidr", destination_cidr)
-        _setter("next_hop", next_hop)
-        _setter("router_id", router_id)
+        pulumi.set(__self__, "destination_cidr", destination_cidr)
+        pulumi.set(__self__, "next_hop", next_hop)
+        pulumi.set(__self__, "router_id", router_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="destinationCidr")
@@ -141,37 +112,14 @@ class _RouterRouteState:
         :param pulumi.Input[str] router_id: ID of the router this routing entry belongs to. Changing
                this creates a new routing entry.
         """
-        _RouterRouteState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            destination_cidr=destination_cidr,
-            next_hop=next_hop,
-            region=region,
-            router_id=router_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             destination_cidr: Optional[pulumi.Input[str]] = None,
-             next_hop: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             router_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if destination_cidr is None and 'destinationCidr' in kwargs:
-            destination_cidr = kwargs['destinationCidr']
-        if next_hop is None and 'nextHop' in kwargs:
-            next_hop = kwargs['nextHop']
-        if router_id is None and 'routerId' in kwargs:
-            router_id = kwargs['routerId']
-
         if destination_cidr is not None:
-            _setter("destination_cidr", destination_cidr)
+            pulumi.set(__self__, "destination_cidr", destination_cidr)
         if next_hop is not None:
-            _setter("next_hop", next_hop)
+            pulumi.set(__self__, "next_hop", next_hop)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if router_id is not None:
-            _setter("router_id", router_id)
+            pulumi.set(__self__, "router_id", router_id)
 
     @property
     @pulumi.getter(name="destinationCidr")
@@ -343,10 +291,6 @@ class RouterRoute(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RouterRouteArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

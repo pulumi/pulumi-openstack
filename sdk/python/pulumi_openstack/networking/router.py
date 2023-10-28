@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -80,98 +80,39 @@ class RouterArgs:
         :param pulumi.Input['RouterVendorOptionsArgs'] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         """
-        RouterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            admin_state_up=admin_state_up,
-            availability_zone_hints=availability_zone_hints,
-            description=description,
-            distributed=distributed,
-            enable_snat=enable_snat,
-            external_fixed_ips=external_fixed_ips,
-            external_gateway=external_gateway,
-            external_network_id=external_network_id,
-            external_subnet_ids=external_subnet_ids,
-            name=name,
-            region=region,
-            tags=tags,
-            tenant_id=tenant_id,
-            value_specs=value_specs,
-            vendor_options=vendor_options,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             admin_state_up: Optional[pulumi.Input[bool]] = None,
-             availability_zone_hints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             distributed: Optional[pulumi.Input[bool]] = None,
-             enable_snat: Optional[pulumi.Input[bool]] = None,
-             external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]] = None,
-             external_gateway: Optional[pulumi.Input[str]] = None,
-             external_network_id: Optional[pulumi.Input[str]] = None,
-             external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tenant_id: Optional[pulumi.Input[str]] = None,
-             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             vendor_options: Optional[pulumi.Input['RouterVendorOptionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if admin_state_up is None and 'adminStateUp' in kwargs:
-            admin_state_up = kwargs['adminStateUp']
-        if availability_zone_hints is None and 'availabilityZoneHints' in kwargs:
-            availability_zone_hints = kwargs['availabilityZoneHints']
-        if enable_snat is None and 'enableSnat' in kwargs:
-            enable_snat = kwargs['enableSnat']
-        if external_fixed_ips is None and 'externalFixedIps' in kwargs:
-            external_fixed_ips = kwargs['externalFixedIps']
-        if external_gateway is None and 'externalGateway' in kwargs:
-            external_gateway = kwargs['externalGateway']
-        if external_network_id is None and 'externalNetworkId' in kwargs:
-            external_network_id = kwargs['externalNetworkId']
-        if external_subnet_ids is None and 'externalSubnetIds' in kwargs:
-            external_subnet_ids = kwargs['externalSubnetIds']
-        if tenant_id is None and 'tenantId' in kwargs:
-            tenant_id = kwargs['tenantId']
-        if value_specs is None and 'valueSpecs' in kwargs:
-            value_specs = kwargs['valueSpecs']
-        if vendor_options is None and 'vendorOptions' in kwargs:
-            vendor_options = kwargs['vendorOptions']
-
         if admin_state_up is not None:
-            _setter("admin_state_up", admin_state_up)
+            pulumi.set(__self__, "admin_state_up", admin_state_up)
         if availability_zone_hints is not None:
-            _setter("availability_zone_hints", availability_zone_hints)
+            pulumi.set(__self__, "availability_zone_hints", availability_zone_hints)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if distributed is not None:
-            _setter("distributed", distributed)
+            pulumi.set(__self__, "distributed", distributed)
         if enable_snat is not None:
-            _setter("enable_snat", enable_snat)
+            pulumi.set(__self__, "enable_snat", enable_snat)
         if external_fixed_ips is not None:
-            _setter("external_fixed_ips", external_fixed_ips)
+            pulumi.set(__self__, "external_fixed_ips", external_fixed_ips)
         if external_gateway is not None:
             warnings.warn("""use external_network_id instead""", DeprecationWarning)
             pulumi.log.warn("""external_gateway is deprecated: use external_network_id instead""")
         if external_gateway is not None:
-            _setter("external_gateway", external_gateway)
+            pulumi.set(__self__, "external_gateway", external_gateway)
         if external_network_id is not None:
-            _setter("external_network_id", external_network_id)
+            pulumi.set(__self__, "external_network_id", external_network_id)
         if external_subnet_ids is not None:
-            _setter("external_subnet_ids", external_subnet_ids)
+            pulumi.set(__self__, "external_subnet_ids", external_subnet_ids)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
-            _setter("tenant_id", tenant_id)
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if value_specs is not None:
-            _setter("value_specs", value_specs)
+            pulumi.set(__self__, "value_specs", value_specs)
         if vendor_options is not None:
-            _setter("vendor_options", vendor_options)
+            pulumi.set(__self__, "vendor_options", vendor_options)
 
     @property
     @pulumi.getter(name="adminStateUp")
@@ -458,104 +399,41 @@ class _RouterState:
         :param pulumi.Input['RouterVendorOptionsArgs'] vendor_options: Map of additional vendor-specific options.
                Supported options are described below.
         """
-        _RouterState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            admin_state_up=admin_state_up,
-            all_tags=all_tags,
-            availability_zone_hints=availability_zone_hints,
-            description=description,
-            distributed=distributed,
-            enable_snat=enable_snat,
-            external_fixed_ips=external_fixed_ips,
-            external_gateway=external_gateway,
-            external_network_id=external_network_id,
-            external_subnet_ids=external_subnet_ids,
-            name=name,
-            region=region,
-            tags=tags,
-            tenant_id=tenant_id,
-            value_specs=value_specs,
-            vendor_options=vendor_options,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             admin_state_up: Optional[pulumi.Input[bool]] = None,
-             all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             availability_zone_hints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             distributed: Optional[pulumi.Input[bool]] = None,
-             enable_snat: Optional[pulumi.Input[bool]] = None,
-             external_fixed_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RouterExternalFixedIpArgs']]]] = None,
-             external_gateway: Optional[pulumi.Input[str]] = None,
-             external_network_id: Optional[pulumi.Input[str]] = None,
-             external_subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tenant_id: Optional[pulumi.Input[str]] = None,
-             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             vendor_options: Optional[pulumi.Input['RouterVendorOptionsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if admin_state_up is None and 'adminStateUp' in kwargs:
-            admin_state_up = kwargs['adminStateUp']
-        if all_tags is None and 'allTags' in kwargs:
-            all_tags = kwargs['allTags']
-        if availability_zone_hints is None and 'availabilityZoneHints' in kwargs:
-            availability_zone_hints = kwargs['availabilityZoneHints']
-        if enable_snat is None and 'enableSnat' in kwargs:
-            enable_snat = kwargs['enableSnat']
-        if external_fixed_ips is None and 'externalFixedIps' in kwargs:
-            external_fixed_ips = kwargs['externalFixedIps']
-        if external_gateway is None and 'externalGateway' in kwargs:
-            external_gateway = kwargs['externalGateway']
-        if external_network_id is None and 'externalNetworkId' in kwargs:
-            external_network_id = kwargs['externalNetworkId']
-        if external_subnet_ids is None and 'externalSubnetIds' in kwargs:
-            external_subnet_ids = kwargs['externalSubnetIds']
-        if tenant_id is None and 'tenantId' in kwargs:
-            tenant_id = kwargs['tenantId']
-        if value_specs is None and 'valueSpecs' in kwargs:
-            value_specs = kwargs['valueSpecs']
-        if vendor_options is None and 'vendorOptions' in kwargs:
-            vendor_options = kwargs['vendorOptions']
-
         if admin_state_up is not None:
-            _setter("admin_state_up", admin_state_up)
+            pulumi.set(__self__, "admin_state_up", admin_state_up)
         if all_tags is not None:
-            _setter("all_tags", all_tags)
+            pulumi.set(__self__, "all_tags", all_tags)
         if availability_zone_hints is not None:
-            _setter("availability_zone_hints", availability_zone_hints)
+            pulumi.set(__self__, "availability_zone_hints", availability_zone_hints)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if distributed is not None:
-            _setter("distributed", distributed)
+            pulumi.set(__self__, "distributed", distributed)
         if enable_snat is not None:
-            _setter("enable_snat", enable_snat)
+            pulumi.set(__self__, "enable_snat", enable_snat)
         if external_fixed_ips is not None:
-            _setter("external_fixed_ips", external_fixed_ips)
+            pulumi.set(__self__, "external_fixed_ips", external_fixed_ips)
         if external_gateway is not None:
             warnings.warn("""use external_network_id instead""", DeprecationWarning)
             pulumi.log.warn("""external_gateway is deprecated: use external_network_id instead""")
         if external_gateway is not None:
-            _setter("external_gateway", external_gateway)
+            pulumi.set(__self__, "external_gateway", external_gateway)
         if external_network_id is not None:
-            _setter("external_network_id", external_network_id)
+            pulumi.set(__self__, "external_network_id", external_network_id)
         if external_subnet_ids is not None:
-            _setter("external_subnet_ids", external_subnet_ids)
+            pulumi.set(__self__, "external_subnet_ids", external_subnet_ids)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
-            _setter("tenant_id", tenant_id)
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if value_specs is not None:
-            _setter("value_specs", value_specs)
+            pulumi.set(__self__, "value_specs", value_specs)
         if vendor_options is not None:
-            _setter("vendor_options", vendor_options)
+            pulumi.set(__self__, "vendor_options", vendor_options)
 
     @property
     @pulumi.getter(name="adminStateUp")
@@ -915,10 +793,6 @@ class Router(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RouterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -962,7 +836,6 @@ class Router(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tenant_id"] = tenant_id
             __props__.__dict__["value_specs"] = value_specs
-            vendor_options = _utilities.configure(vendor_options, RouterVendorOptionsArgs, True)
             __props__.__dict__["vendor_options"] = vendor_options
             __props__.__dict__["all_tags"] = None
         super(Router, __self__).__init__(

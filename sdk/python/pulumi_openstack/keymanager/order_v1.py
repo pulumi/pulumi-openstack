@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,29 +28,10 @@ class OrderV1Args:
                `region` argument of the provider is used. Changing this creates a new
                V1 order.
         """
-        OrderV1Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            meta=meta,
-            type=type,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             meta: Optional[pulumi.Input['OrderV1MetaArgs']] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if meta is None:
-            raise TypeError("Missing 'meta' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("meta", meta)
-        _setter("type", type)
+        pulumi.set(__self__, "meta", meta)
+        pulumi.set(__self__, "type", type)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -125,75 +106,30 @@ class _OrderV1State:
         :param pulumi.Input[str] type: The type of key to be generated. Must be one of `asymmetric`, `key`.
         :param pulumi.Input[str] updated: The date the order was last updated.
         """
-        _OrderV1State._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            container_ref=container_ref,
-            created=created,
-            creator_id=creator_id,
-            meta=meta,
-            order_ref=order_ref,
-            region=region,
-            secret_ref=secret_ref,
-            status=status,
-            sub_status=sub_status,
-            sub_status_message=sub_status_message,
-            type=type,
-            updated=updated,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             container_ref: Optional[pulumi.Input[str]] = None,
-             created: Optional[pulumi.Input[str]] = None,
-             creator_id: Optional[pulumi.Input[str]] = None,
-             meta: Optional[pulumi.Input['OrderV1MetaArgs']] = None,
-             order_ref: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             secret_ref: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             sub_status: Optional[pulumi.Input[str]] = None,
-             sub_status_message: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             updated: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if container_ref is None and 'containerRef' in kwargs:
-            container_ref = kwargs['containerRef']
-        if creator_id is None and 'creatorId' in kwargs:
-            creator_id = kwargs['creatorId']
-        if order_ref is None and 'orderRef' in kwargs:
-            order_ref = kwargs['orderRef']
-        if secret_ref is None and 'secretRef' in kwargs:
-            secret_ref = kwargs['secretRef']
-        if sub_status is None and 'subStatus' in kwargs:
-            sub_status = kwargs['subStatus']
-        if sub_status_message is None and 'subStatusMessage' in kwargs:
-            sub_status_message = kwargs['subStatusMessage']
-
         if container_ref is not None:
-            _setter("container_ref", container_ref)
+            pulumi.set(__self__, "container_ref", container_ref)
         if created is not None:
-            _setter("created", created)
+            pulumi.set(__self__, "created", created)
         if creator_id is not None:
-            _setter("creator_id", creator_id)
+            pulumi.set(__self__, "creator_id", creator_id)
         if meta is not None:
-            _setter("meta", meta)
+            pulumi.set(__self__, "meta", meta)
         if order_ref is not None:
-            _setter("order_ref", order_ref)
+            pulumi.set(__self__, "order_ref", order_ref)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if secret_ref is not None:
-            _setter("secret_ref", secret_ref)
+            pulumi.set(__self__, "secret_ref", secret_ref)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if sub_status is not None:
-            _setter("sub_status", sub_status)
+            pulumi.set(__self__, "sub_status", sub_status)
         if sub_status_message is not None:
-            _setter("sub_status_message", sub_status_message)
+            pulumi.set(__self__, "sub_status_message", sub_status_message)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if updated is not None:
-            _setter("updated", updated)
+            pulumi.set(__self__, "updated", updated)
 
     @property
     @pulumi.getter(name="containerRef")
@@ -461,10 +397,6 @@ class OrderV1(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            OrderV1Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -482,7 +414,6 @@ class OrderV1(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrderV1Args.__new__(OrderV1Args)
 
-            meta = _utilities.configure(meta, OrderV1MetaArgs, True)
             if meta is None and not opts.urn:
                 raise TypeError("Missing required property 'meta'")
             __props__.__dict__["meta"] = meta

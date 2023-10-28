@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ZoneArgs', 'Zone']
@@ -51,65 +51,28 @@ class ZoneArgs:
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
                new zone.
         """
-        ZoneArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attributes=attributes,
-            description=description,
-            disable_status_check=disable_status_check,
-            email=email,
-            masters=masters,
-            name=name,
-            project_id=project_id,
-            region=region,
-            ttl=ttl,
-            type=type,
-            value_specs=value_specs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attributes: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disable_status_check: Optional[pulumi.Input[bool]] = None,
-             email: Optional[pulumi.Input[str]] = None,
-             masters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             ttl: Optional[pulumi.Input[int]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disable_status_check is None and 'disableStatusCheck' in kwargs:
-            disable_status_check = kwargs['disableStatusCheck']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if value_specs is None and 'valueSpecs' in kwargs:
-            value_specs = kwargs['valueSpecs']
-
         if attributes is not None:
-            _setter("attributes", attributes)
+            pulumi.set(__self__, "attributes", attributes)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disable_status_check is not None:
-            _setter("disable_status_check", disable_status_check)
+            pulumi.set(__self__, "disable_status_check", disable_status_check)
         if email is not None:
-            _setter("email", email)
+            pulumi.set(__self__, "email", email)
         if masters is not None:
-            _setter("masters", masters)
+            pulumi.set(__self__, "masters", masters)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if ttl is not None:
-            _setter("ttl", ttl)
+            pulumi.set(__self__, "ttl", ttl)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if value_specs is not None:
-            _setter("value_specs", value_specs)
+            pulumi.set(__self__, "value_specs", value_specs)
 
     @property
     @pulumi.getter
@@ -296,65 +259,28 @@ class _ZoneState:
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options. Changing this creates a
                new zone.
         """
-        _ZoneState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            attributes=attributes,
-            description=description,
-            disable_status_check=disable_status_check,
-            email=email,
-            masters=masters,
-            name=name,
-            project_id=project_id,
-            region=region,
-            ttl=ttl,
-            type=type,
-            value_specs=value_specs,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             attributes: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disable_status_check: Optional[pulumi.Input[bool]] = None,
-             email: Optional[pulumi.Input[str]] = None,
-             masters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             ttl: Optional[pulumi.Input[int]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disable_status_check is None and 'disableStatusCheck' in kwargs:
-            disable_status_check = kwargs['disableStatusCheck']
-        if project_id is None and 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if value_specs is None and 'valueSpecs' in kwargs:
-            value_specs = kwargs['valueSpecs']
-
         if attributes is not None:
-            _setter("attributes", attributes)
+            pulumi.set(__self__, "attributes", attributes)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disable_status_check is not None:
-            _setter("disable_status_check", disable_status_check)
+            pulumi.set(__self__, "disable_status_check", disable_status_check)
         if email is not None:
-            _setter("email", email)
+            pulumi.set(__self__, "email", email)
         if masters is not None:
-            _setter("masters", masters)
+            pulumi.set(__self__, "masters", masters)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if ttl is not None:
-            _setter("ttl", ttl)
+            pulumi.set(__self__, "ttl", ttl)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if value_specs is not None:
-            _setter("value_specs", value_specs)
+            pulumi.set(__self__, "value_specs", value_specs)
 
     @property
     @pulumi.getter
@@ -618,10 +544,6 @@ class Zone(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ZoneArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

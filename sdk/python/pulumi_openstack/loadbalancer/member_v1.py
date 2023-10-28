@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['MemberV1Args', 'MemberV1']
@@ -39,52 +39,17 @@ class MemberV1Args:
         :param pulumi.Input[str] tenant_id: The owner of the member. Required if admin wants to
                create a member for another tenant. Changing this creates a new member.
         """
-        MemberV1Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            pool_id=pool_id,
-            port=port,
-            admin_state_up=admin_state_up,
-            region=region,
-            tenant_id=tenant_id,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input[str]] = None,
-             pool_id: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             admin_state_up: Optional[pulumi.Input[bool]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             tenant_id: Optional[pulumi.Input[str]] = None,
-             weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if address is None:
-            raise TypeError("Missing 'address' argument")
-        if pool_id is None and 'poolId' in kwargs:
-            pool_id = kwargs['poolId']
-        if pool_id is None:
-            raise TypeError("Missing 'pool_id' argument")
-        if port is None:
-            raise TypeError("Missing 'port' argument")
-        if admin_state_up is None and 'adminStateUp' in kwargs:
-            admin_state_up = kwargs['adminStateUp']
-        if tenant_id is None and 'tenantId' in kwargs:
-            tenant_id = kwargs['tenantId']
-
-        _setter("address", address)
-        _setter("pool_id", pool_id)
-        _setter("port", port)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "pool_id", pool_id)
+        pulumi.set(__self__, "port", port)
         if admin_state_up is not None:
-            _setter("admin_state_up", admin_state_up)
+            pulumi.set(__self__, "admin_state_up", admin_state_up)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if tenant_id is not None:
-            _setter("tenant_id", tenant_id)
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if weight is not None:
-            _setter("weight", weight)
+            pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter
@@ -205,49 +170,20 @@ class _MemberV1State:
         :param pulumi.Input[str] tenant_id: The owner of the member. Required if admin wants to
                create a member for another tenant. Changing this creates a new member.
         """
-        _MemberV1State._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            admin_state_up=admin_state_up,
-            pool_id=pool_id,
-            port=port,
-            region=region,
-            tenant_id=tenant_id,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input[str]] = None,
-             admin_state_up: Optional[pulumi.Input[bool]] = None,
-             pool_id: Optional[pulumi.Input[str]] = None,
-             port: Optional[pulumi.Input[int]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             tenant_id: Optional[pulumi.Input[str]] = None,
-             weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if admin_state_up is None and 'adminStateUp' in kwargs:
-            admin_state_up = kwargs['adminStateUp']
-        if pool_id is None and 'poolId' in kwargs:
-            pool_id = kwargs['poolId']
-        if tenant_id is None and 'tenantId' in kwargs:
-            tenant_id = kwargs['tenantId']
-
         if address is not None:
-            _setter("address", address)
+            pulumi.set(__self__, "address", address)
         if admin_state_up is not None:
-            _setter("admin_state_up", admin_state_up)
+            pulumi.set(__self__, "admin_state_up", admin_state_up)
         if pool_id is not None:
-            _setter("pool_id", pool_id)
+            pulumi.set(__self__, "pool_id", pool_id)
         if port is not None:
-            _setter("port", port)
+            pulumi.set(__self__, "port", port)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if tenant_id is not None:
-            _setter("tenant_id", tenant_id)
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if weight is not None:
-            _setter("weight", weight)
+            pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter
@@ -433,10 +369,6 @@ class MemberV1(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MemberV1Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

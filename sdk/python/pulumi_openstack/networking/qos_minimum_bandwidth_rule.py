@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['QosMinimumBandwidthRuleArgs', 'QosMinimumBandwidthRule']
@@ -29,37 +29,12 @@ class QosMinimumBandwidthRuleArgs:
                A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
                `region` argument of the provider is used. Changing this creates a new QoS minimum bandwidth rule.
         """
-        QosMinimumBandwidthRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            min_kbps=min_kbps,
-            qos_policy_id=qos_policy_id,
-            direction=direction,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             min_kbps: Optional[pulumi.Input[int]] = None,
-             qos_policy_id: Optional[pulumi.Input[str]] = None,
-             direction: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if min_kbps is None and 'minKbps' in kwargs:
-            min_kbps = kwargs['minKbps']
-        if min_kbps is None:
-            raise TypeError("Missing 'min_kbps' argument")
-        if qos_policy_id is None and 'qosPolicyId' in kwargs:
-            qos_policy_id = kwargs['qosPolicyId']
-        if qos_policy_id is None:
-            raise TypeError("Missing 'qos_policy_id' argument")
-
-        _setter("min_kbps", min_kbps)
-        _setter("qos_policy_id", qos_policy_id)
+        pulumi.set(__self__, "min_kbps", min_kbps)
+        pulumi.set(__self__, "qos_policy_id", qos_policy_id)
         if direction is not None:
-            _setter("direction", direction)
+            pulumi.set(__self__, "direction", direction)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="minKbps")
@@ -132,35 +107,14 @@ class _QosMinimumBandwidthRuleState:
                A Networking client is needed to create a Neutron QoS minimum bandwidth rule. If omitted, the
                `region` argument of the provider is used. Changing this creates a new QoS minimum bandwidth rule.
         """
-        _QosMinimumBandwidthRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            direction=direction,
-            min_kbps=min_kbps,
-            qos_policy_id=qos_policy_id,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             direction: Optional[pulumi.Input[str]] = None,
-             min_kbps: Optional[pulumi.Input[int]] = None,
-             qos_policy_id: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if min_kbps is None and 'minKbps' in kwargs:
-            min_kbps = kwargs['minKbps']
-        if qos_policy_id is None and 'qosPolicyId' in kwargs:
-            qos_policy_id = kwargs['qosPolicyId']
-
         if direction is not None:
-            _setter("direction", direction)
+            pulumi.set(__self__, "direction", direction)
         if min_kbps is not None:
-            _setter("min_kbps", min_kbps)
+            pulumi.set(__self__, "min_kbps", min_kbps)
         if qos_policy_id is not None:
-            _setter("qos_policy_id", qos_policy_id)
+            pulumi.set(__self__, "qos_policy_id", qos_policy_id)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -300,10 +254,6 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            QosMinimumBandwidthRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
