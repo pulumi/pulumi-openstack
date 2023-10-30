@@ -79,7 +79,7 @@ public class FlavorAccess extends com.pulumi.resources.CustomResource {
      * The UUID of flavor to use. Changing this creates a new flavor access.
      * 
      */
-    @Export(name="flavorId", type=String.class, parameters={})
+    @Export(name="flavorId", refs={String.class}, tree="[0]")
     private Output<String> flavorId;
 
     /**
@@ -95,7 +95,7 @@ public class FlavorAccess extends com.pulumi.resources.CustomResource {
      * Changing this creates a new flavor access.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -112,7 +112,7 @@ public class FlavorAccess extends com.pulumi.resources.CustomResource {
      * Changing this creates a new flavor access.
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**

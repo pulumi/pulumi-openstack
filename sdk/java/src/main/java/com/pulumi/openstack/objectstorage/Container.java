@@ -210,7 +210,7 @@ public class Container extends com.pulumi.resources.CustomResource {
      * container). Changing this updates the access control list read access.
      * 
      */
-    @Export(name="containerRead", type=String.class, parameters={})
+    @Export(name="containerRead", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> containerRead;
 
     /**
@@ -228,7 +228,7 @@ public class Container extends com.pulumi.resources.CustomResource {
      * Changing this updates container synchronization.
      * 
      */
-    @Export(name="containerSyncKey", type=String.class, parameters={})
+    @Export(name="containerSyncKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> containerSyncKey;
 
     /**
@@ -244,7 +244,7 @@ public class Container extends com.pulumi.resources.CustomResource {
      * Changing this updates container synchronization.
      * 
      */
-    @Export(name="containerSyncTo", type=String.class, parameters={})
+    @Export(name="containerSyncTo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> containerSyncTo;
 
     /**
@@ -260,7 +260,7 @@ public class Container extends com.pulumi.resources.CustomResource {
      * Changing this updates the access control list write access.
      * 
      */
-    @Export(name="containerWrite", type=String.class, parameters={})
+    @Export(name="containerWrite", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> containerWrite;
 
     /**
@@ -276,7 +276,7 @@ public class Container extends com.pulumi.resources.CustomResource {
      * updates the MIME type.
      * 
      */
-    @Export(name="contentType", type=String.class, parameters={})
+    @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentType;
 
     /**
@@ -291,7 +291,7 @@ public class Container extends com.pulumi.resources.CustomResource {
      * A boolean that indicates all objects should be deleted from the container so that the container can be destroyed without error. These objects are not recoverable.
      * 
      */
-    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
@@ -306,7 +306,7 @@ public class Container extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing container metadata.
      * 
      */
-    @Export(name="metadata", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> metadata;
 
     /**
@@ -322,7 +322,7 @@ public class Container extends com.pulumi.resources.CustomResource {
      * new container.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -339,7 +339,7 @@ public class Container extends com.pulumi.resources.CustomResource {
      * creates a new container.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -356,7 +356,7 @@ public class Container extends com.pulumi.resources.CustomResource {
      * Changing this creates a new container.
      * 
      */
-    @Export(name="storagePolicy", type=String.class, parameters={})
+    @Export(name="storagePolicy", refs={String.class}, tree="[0]")
     private Output<String> storagePolicy;
 
     /**
@@ -376,7 +376,7 @@ public class Container extends com.pulumi.resources.CustomResource {
      * want to consider using `versioning_legacy` instead.
      * 
      */
-    @Export(name="versioning", type=Boolean.class, parameters={})
+    @Export(name="versioning", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> versioning;
 
     /**
@@ -399,7 +399,7 @@ public class Container extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use newer ""versioning"" implementation */
-    @Export(name="versioningLegacy", type=ContainerVersioningLegacy.class, parameters={})
+    @Export(name="versioningLegacy", refs={ContainerVersioningLegacy.class}, tree="[0]")
     private Output</* @Nullable */ ContainerVersioningLegacy> versioningLegacy;
 
     /**

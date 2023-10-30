@@ -72,7 +72,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * existing firewall rule. Default is `deny`.
      * 
      */
-    @Export(name="action", type=String.class, parameters={})
+    @Export(name="action", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> action;
 
     /**
@@ -89,7 +89,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * updates the `description` of an existing firewall rule.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -106,7 +106,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * of an existing firewall rule.
      * 
      */
-    @Export(name="destinationIpAddress", type=String.class, parameters={})
+    @Export(name="destinationIpAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationIpAddress;
 
     /**
@@ -124,7 +124,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * firewall rule. Require not `any` or empty protocol.
      * 
      */
-    @Export(name="destinationPort", type=String.class, parameters={})
+    @Export(name="destinationPort", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationPort;
 
     /**
@@ -142,7 +142,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * `enabled` status of an existing firewall rule.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -159,7 +159,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * updates the `ip_version` of an existing firewall rule. Default is `4`.
      * 
      */
-    @Export(name="ipVersion", type=Integer.class, parameters={})
+    @Export(name="ipVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ipVersion;
 
     /**
@@ -175,7 +175,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * updates the `name` of an existing firewall rule.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -193,7 +193,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * firewall rule.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -213,7 +213,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * `protocol` of an existing firewall rule. Default is `any`.
      * 
      */
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> protocol;
 
     /**
@@ -233,7 +233,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * firewall rule.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -253,7 +253,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * `shared` status of an existing firewall policy. On
      * 
      */
-    @Export(name="shared", type=Boolean.class, parameters={})
+    @Export(name="shared", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> shared;
 
     /**
@@ -272,7 +272,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * firewall rule.
      * 
      */
-    @Export(name="sourceIpAddress", type=String.class, parameters={})
+    @Export(name="sourceIpAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceIpAddress;
 
     /**
@@ -290,7 +290,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * firewall rule. Require not `any` or empty protocol.
      * 
      */
-    @Export(name="sourcePort", type=String.class, parameters={})
+    @Export(name="sourcePort", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourcePort;
 
     /**
@@ -309,7 +309,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * firewall rule.
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**

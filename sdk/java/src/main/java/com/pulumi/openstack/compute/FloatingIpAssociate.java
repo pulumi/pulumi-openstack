@@ -134,7 +134,7 @@ public class FloatingIpAssociate extends com.pulumi.resources.CustomResource {
      * The specific IP address to direct traffic to.
      * 
      */
-    @Export(name="fixedIp", type=String.class, parameters={})
+    @Export(name="fixedIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fixedIp;
 
     /**
@@ -148,7 +148,7 @@ public class FloatingIpAssociate extends com.pulumi.resources.CustomResource {
      * The floating IP to associate.
      * 
      */
-    @Export(name="floatingIp", type=String.class, parameters={})
+    @Export(name="floatingIp", refs={String.class}, tree="[0]")
     private Output<String> floatingIp;
 
     /**
@@ -162,7 +162,7 @@ public class FloatingIpAssociate extends com.pulumi.resources.CustomResource {
      * The instance to associte the floating IP with.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -179,7 +179,7 @@ public class FloatingIpAssociate extends com.pulumi.resources.CustomResource {
      * Changing this creates a new floatingip_associate.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -192,7 +192,7 @@ public class FloatingIpAssociate extends com.pulumi.resources.CustomResource {
     public Output<String> region() {
         return this.region;
     }
-    @Export(name="waitUntilAssociated", type=Boolean.class, parameters={})
+    @Export(name="waitUntilAssociated", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitUntilAssociated;
 
     public Output<Optional<Boolean>> waitUntilAssociated() {

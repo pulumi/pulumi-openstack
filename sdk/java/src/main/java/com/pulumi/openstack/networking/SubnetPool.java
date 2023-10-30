@@ -116,7 +116,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * subnetpool.
      * 
      */
-    @Export(name="addressScopeId", type=String.class, parameters={})
+    @Export(name="addressScopeId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> addressScopeId;
 
     /**
@@ -133,7 +133,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * explicitly and implicitly added.
      * 
      */
-    @Export(name="allTags", type=List.class, parameters={String.class})
+    @Export(name="allTags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> allTags;
 
     /**
@@ -148,7 +148,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * The time at which subnetpool was created.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -165,7 +165,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * subnetpool.
      * 
      */
-    @Export(name="defaultPrefixlen", type=Integer.class, parameters={})
+    @Export(name="defaultPrefixlen", refs={Integer.class}, tree="[0]")
     private Output<Integer> defaultPrefixlen;
 
     /**
@@ -184,7 +184,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * default quota of the existing subnetpool.
      * 
      */
-    @Export(name="defaultQuota", type=Integer.class, parameters={})
+    @Export(name="defaultQuota", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> defaultQuota;
 
     /**
@@ -201,7 +201,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * Changing this updates the description of the existing subnetpool.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -216,7 +216,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * The IP protocol version.
      * 
      */
-    @Export(name="ipVersion", type=Integer.class, parameters={})
+    @Export(name="ipVersion", refs={Integer.class}, tree="[0]")
     private Output<Integer> ipVersion;
 
     /**
@@ -232,7 +232,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * subnetpool.
      * 
      */
-    @Export(name="isDefault", type=Boolean.class, parameters={})
+    @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isDefault;
 
     /**
@@ -251,7 +251,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * subnetpool.
      * 
      */
-    @Export(name="maxPrefixlen", type=Integer.class, parameters={})
+    @Export(name="maxPrefixlen", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxPrefixlen;
 
     /**
@@ -270,7 +270,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * is 64. Changing this updates the min prefixlen of the existing subnetpool.
      * 
      */
-    @Export(name="minPrefixlen", type=Integer.class, parameters={})
+    @Export(name="minPrefixlen", refs={Integer.class}, tree="[0]")
     private Output<Integer> minPrefixlen;
 
     /**
@@ -287,7 +287,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * the existing subnetpool.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -306,7 +306,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * of the existing subnetpool.
      * 
      */
-    @Export(name="prefixes", type=List.class, parameters={String.class})
+    @Export(name="prefixes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> prefixes;
 
     /**
@@ -325,7 +325,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * create a subnetpool for another project. Changing this creates a new subnetpool.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -343,7 +343,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * subnetpool.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -360,7 +360,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * The revision number of the subnetpool.
      * 
      */
-    @Export(name="revisionNumber", type=Integer.class, parameters={})
+    @Export(name="revisionNumber", refs={Integer.class}, tree="[0]")
     private Output<Integer> revisionNumber;
 
     /**
@@ -376,7 +376,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * subnetpool.
      * 
      */
-    @Export(name="shared", type=Boolean.class, parameters={})
+    @Export(name="shared", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> shared;
 
     /**
@@ -392,7 +392,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * A set of string tags for the subnetpool.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -406,7 +406,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * The time at which subnetpool was created.
      * 
      */
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
@@ -420,7 +420,7 @@ public class SubnetPool extends com.pulumi.resources.CustomResource {
      * Map of additional options.
      * 
      */
-    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**

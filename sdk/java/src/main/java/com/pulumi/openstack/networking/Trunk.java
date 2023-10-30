@@ -109,7 +109,7 @@ public class Trunk extends com.pulumi.resources.CustomResource {
      * `admin_state_up` of an existing trunk.
      * 
      */
-    @Export(name="adminStateUp", type=Boolean.class, parameters={})
+    @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> adminStateUp;
 
     /**
@@ -126,7 +126,7 @@ public class Trunk extends com.pulumi.resources.CustomResource {
      * explicitly and implicitly added.
      * 
      */
-    @Export(name="allTags", type=List.class, parameters={String.class})
+    @Export(name="allTags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> allTags;
 
     /**
@@ -142,7 +142,7 @@ public class Trunk extends com.pulumi.resources.CustomResource {
      * updates the name of the existing trunk.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -158,7 +158,7 @@ public class Trunk extends com.pulumi.resources.CustomResource {
      * updates the `name` of an existing trunk.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -175,7 +175,7 @@ public class Trunk extends com.pulumi.resources.CustomResource {
      * port. Changing this creates a new trunk.
      * 
      */
-    @Export(name="portId", type=String.class, parameters={})
+    @Export(name="portId", refs={String.class}, tree="[0]")
     private Output<String> portId;
 
     /**
@@ -194,7 +194,7 @@ public class Trunk extends com.pulumi.resources.CustomResource {
      * trunk.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -212,7 +212,7 @@ public class Trunk extends com.pulumi.resources.CustomResource {
      * The structure of each subport is described below.
      * 
      */
-    @Export(name="subPorts", type=List.class, parameters={TrunkSubPort.class})
+    @Export(name="subPorts", refs={List.class,TrunkSubPort.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TrunkSubPort>> subPorts;
 
     /**
@@ -227,7 +227,7 @@ public class Trunk extends com.pulumi.resources.CustomResource {
      * A set of string tags for the port.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -242,7 +242,7 @@ public class Trunk extends com.pulumi.resources.CustomResource {
      * to create a trunk on behalf of another tenant. Changing this creates a new trunk.
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**

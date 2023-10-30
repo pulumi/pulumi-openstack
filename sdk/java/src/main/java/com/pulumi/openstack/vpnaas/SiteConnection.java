@@ -81,7 +81,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * Changing this updates the administrative state of the existing connection.
      * 
      */
-    @Export(name="adminStateUp", type=Boolean.class, parameters={})
+    @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> adminStateUp;
 
     /**
@@ -97,7 +97,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * Changing this updates the description of the existing connection.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -112,7 +112,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * A dictionary with dead peer detection (DPD) protocol controls.
      * 
      */
-    @Export(name="dpds", type=List.class, parameters={SiteConnectionDpd.class})
+    @Export(name="dpds", refs={List.class,SiteConnectionDpd.class}, tree="[0,1]")
     private Output<List<SiteConnectionDpd>> dpds;
 
     /**
@@ -126,7 +126,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * The ID of the IKE policy. Changing this creates a new connection.
      * 
      */
-    @Export(name="ikepolicyId", type=String.class, parameters={})
+    @Export(name="ikepolicyId", refs={String.class}, tree="[0]")
     private Output<String> ikepolicyId;
 
     /**
@@ -140,7 +140,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * A valid value is response-only or bi-directional. Default is bi-directional.
      * 
      */
-    @Export(name="initiator", type=String.class, parameters={})
+    @Export(name="initiator", refs={String.class}, tree="[0]")
     private Output<String> initiator;
 
     /**
@@ -154,7 +154,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * The ID of the IPsec policy. Changing this creates a new connection.
      * 
      */
-    @Export(name="ipsecpolicyId", type=String.class, parameters={})
+    @Export(name="ipsecpolicyId", refs={String.class}, tree="[0]")
     private Output<String> ipsecpolicyId;
 
     /**
@@ -171,7 +171,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing connection.
      * 
      */
-    @Export(name="localEpGroupId", type=String.class, parameters={})
+    @Export(name="localEpGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> localEpGroupId;
 
     /**
@@ -190,7 +190,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * If this is not configured then the external IP address will be used as the ID.
      * 
      */
-    @Export(name="localId", type=String.class, parameters={})
+    @Export(name="localId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> localId;
 
     /**
@@ -207,7 +207,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * Minimum value is 68 for IPv4, and 1280 for IPv6.
      * 
      */
-    @Export(name="mtu", type=Integer.class, parameters={})
+    @Export(name="mtu", refs={Integer.class}, tree="[0]")
     private Output<Integer> mtu;
 
     /**
@@ -223,7 +223,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * the existing connection.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -238,7 +238,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * The peer gateway public IPv4 or IPv6 address or FQDN.
      * 
      */
-    @Export(name="peerAddress", type=String.class, parameters={})
+    @Export(name="peerAddress", refs={String.class}, tree="[0]")
     private Output<String> peerAddress;
 
     /**
@@ -252,7 +252,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * Unique list of valid peer private CIDRs in the form &lt; net_address &gt; / &lt; prefix &gt; .
      * 
      */
-    @Export(name="peerCidrs", type=List.class, parameters={String.class})
+    @Export(name="peerCidrs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> peerCidrs;
 
     /**
@@ -268,7 +268,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * where peer_cidrs is provided with a subnet_id for the VPN service.
      * 
      */
-    @Export(name="peerEpGroupId", type=String.class, parameters={})
+    @Export(name="peerEpGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peerEpGroupId;
 
     /**
@@ -286,7 +286,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing policy.
      * 
      */
-    @Export(name="peerId", type=String.class, parameters={})
+    @Export(name="peerId", refs={String.class}, tree="[0]")
     private Output<String> peerId;
 
     /**
@@ -302,7 +302,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * The pre-shared key. A valid value is any string.
      * 
      */
-    @Export(name="psk", type=String.class, parameters={})
+    @Export(name="psk", refs={String.class}, tree="[0]")
     private Output<String> psk;
 
     /**
@@ -319,7 +319,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * site connection.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -337,7 +337,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * create a connection for another project. Changing this creates a new connection.
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
@@ -352,7 +352,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * Map of additional options.
      * 
      */
-    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**
@@ -366,7 +366,7 @@ public class SiteConnection extends com.pulumi.resources.CustomResource {
      * The ID of the VPN service. Changing this creates a new connection.
      * 
      */
-    @Export(name="vpnserviceId", type=String.class, parameters={})
+    @Export(name="vpnserviceId", refs={String.class}, tree="[0]")
     private Output<String> vpnserviceId;
 
     /**

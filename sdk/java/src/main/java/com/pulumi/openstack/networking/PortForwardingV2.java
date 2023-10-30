@@ -61,7 +61,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
      * updates the `description` of an existing port forwarding.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -77,7 +77,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
      * updates the `external_port` of an existing port forwarding.
      * 
      */
-    @Export(name="externalPort", type=Integer.class, parameters={})
+    @Export(name="externalPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> externalPort;
 
     /**
@@ -92,7 +92,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
      * The ID of the Neutron floating IP address. Changing this creates a new port forwarding.
      * 
      */
-    @Export(name="floatingipId", type=String.class, parameters={})
+    @Export(name="floatingipId", refs={String.class}, tree="[0]")
     private Output<String> floatingipId;
 
     /**
@@ -107,7 +107,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the `internal_ip_address` of an existing port forwarding.
      * 
      */
-    @Export(name="internalIpAddress", type=String.class, parameters={})
+    @Export(name="internalIpAddress", refs={String.class}, tree="[0]")
     private Output<String> internalIpAddress;
 
     /**
@@ -123,7 +123,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
      * port forwarding. Changing this updates the `internal_port` of an existing port forwarding.
      * 
      */
-    @Export(name="internalPort", type=Integer.class, parameters={})
+    @Export(name="internalPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> internalPort;
 
     /**
@@ -139,7 +139,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
      * this updates the `internal_port_id` of an existing port forwarding.
      * 
      */
-    @Export(name="internalPortId", type=String.class, parameters={})
+    @Export(name="internalPortId", refs={String.class}, tree="[0]")
     private Output<String> internalPortId;
 
     /**
@@ -155,7 +155,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
      * of an existing port forwarding.
      * 
      */
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
@@ -173,7 +173,7 @@ public class PortForwardingV2 extends com.pulumi.resources.CustomResource {
      * port forwarding.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**

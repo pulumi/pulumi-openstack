@@ -90,7 +90,7 @@ public class PolicyV2 extends com.pulumi.resources.CustomResource {
      * firewall policy.
      * 
      */
-    @Export(name="audited", type=Boolean.class, parameters={})
+    @Export(name="audited", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> audited;
 
     /**
@@ -109,7 +109,7 @@ public class PolicyV2 extends com.pulumi.resources.CustomResource {
      * this updates the `description` of an existing firewall policy.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -125,7 +125,7 @@ public class PolicyV2 extends com.pulumi.resources.CustomResource {
      * updates the `name` of an existing firewall policy.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -143,7 +143,7 @@ public class PolicyV2 extends com.pulumi.resources.CustomResource {
      * firewall policy.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -163,7 +163,7 @@ public class PolicyV2 extends com.pulumi.resources.CustomResource {
      * firewall policy.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -182,7 +182,7 @@ public class PolicyV2 extends com.pulumi.resources.CustomResource {
      * existing firewall policy.
      * 
      */
-    @Export(name="rules", type=List.class, parameters={String.class})
+    @Export(name="rules", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> rules;
 
     /**
@@ -202,7 +202,7 @@ public class PolicyV2 extends com.pulumi.resources.CustomResource {
      * can specify if the policy should be shared.
      * 
      */
-    @Export(name="shared", type=Boolean.class, parameters={})
+    @Export(name="shared", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> shared;
 
     /**
@@ -223,7 +223,7 @@ public class PolicyV2 extends com.pulumi.resources.CustomResource {
      * firewall policy.
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**

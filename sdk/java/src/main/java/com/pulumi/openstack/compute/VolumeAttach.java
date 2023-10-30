@@ -138,7 +138,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="openstack:compute/volumeAttach:VolumeAttach")
 public class VolumeAttach extends com.pulumi.resources.CustomResource {
-    @Export(name="device", type=String.class, parameters={})
+    @Export(name="device", refs={String.class}, tree="[0]")
     private Output<String> device;
 
     public Output<String> device() {
@@ -148,7 +148,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * The ID of the Instance to attach the Volume to.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -162,7 +162,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * Enable attachment of multiattach-capable volumes.
      * 
      */
-    @Export(name="multiattach", type=Boolean.class, parameters={})
+    @Export(name="multiattach", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> multiattach;
 
     /**
@@ -179,7 +179,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * new volume attachment.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -197,7 +197,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * Supported options are described below.
      * 
      */
-    @Export(name="vendorOptions", type=VolumeAttachVendorOptions.class, parameters={})
+    @Export(name="vendorOptions", refs={VolumeAttachVendorOptions.class}, tree="[0]")
     private Output</* @Nullable */ VolumeAttachVendorOptions> vendorOptions;
 
     /**
@@ -212,7 +212,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * The ID of the Volume to attach to an Instance.
      * 
      */
-    @Export(name="volumeId", type=String.class, parameters={})
+    @Export(name="volumeId", refs={String.class}, tree="[0]")
     private Output<String> volumeId;
 
     /**

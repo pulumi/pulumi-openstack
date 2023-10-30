@@ -179,7 +179,7 @@ public class ShareAccess extends com.pulumi.resources.CustomResource {
      * The access credential of the entity granted access.
      * 
      */
-    @Export(name="accessKey", type=String.class, parameters={})
+    @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output<String> accessKey;
 
     /**
@@ -193,7 +193,7 @@ public class ShareAccess extends com.pulumi.resources.CustomResource {
      * The access level to the share. Can either be `rw` or `ro`.
      * 
      */
-    @Export(name="accessLevel", type=String.class, parameters={})
+    @Export(name="accessLevel", refs={String.class}, tree="[0]")
     private Output<String> accessLevel;
 
     /**
@@ -208,7 +208,7 @@ public class ShareAccess extends com.pulumi.resources.CustomResource {
      * address or a username verified by configured Security Service of the Share Network.
      * 
      */
-    @Export(name="accessTo", type=String.class, parameters={})
+    @Export(name="accessTo", refs={String.class}, tree="[0]")
     private Output<String> accessTo;
 
     /**
@@ -225,7 +225,7 @@ public class ShareAccess extends com.pulumi.resources.CustomResource {
      * Shared Filesystem microversion 2.13 (Mitaka) or later.
      * 
      */
-    @Export(name="accessType", type=String.class, parameters={})
+    @Export(name="accessType", refs={String.class}, tree="[0]")
     private Output<String> accessType;
 
     /**
@@ -243,7 +243,7 @@ public class ShareAccess extends com.pulumi.resources.CustomResource {
      * creates a new share access.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -259,7 +259,7 @@ public class ShareAccess extends com.pulumi.resources.CustomResource {
      * The UUID of the share to which you are granted access.
      * 
      */
-    @Export(name="shareId", type=String.class, parameters={})
+    @Export(name="shareId", refs={String.class}, tree="[0]")
     private Output<String> shareId;
 
     /**
@@ -273,7 +273,7 @@ public class ShareAccess extends com.pulumi.resources.CustomResource {
      * The share access state.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**

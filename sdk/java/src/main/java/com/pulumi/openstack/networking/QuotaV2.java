@@ -83,7 +83,7 @@ public class QuotaV2 extends com.pulumi.resources.CustomResource {
      * existing quota.
      * 
      */
-    @Export(name="floatingip", type=Integer.class, parameters={})
+    @Export(name="floatingip", refs={Integer.class}, tree="[0]")
     private Output<Integer> floatingip;
 
     /**
@@ -99,7 +99,7 @@ public class QuotaV2 extends com.pulumi.resources.CustomResource {
      * existing quota.
      * 
      */
-    @Export(name="network", type=Integer.class, parameters={})
+    @Export(name="network", refs={Integer.class}, tree="[0]")
     private Output<Integer> network;
 
     /**
@@ -115,7 +115,7 @@ public class QuotaV2 extends com.pulumi.resources.CustomResource {
      * existing quota.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
@@ -131,7 +131,7 @@ public class QuotaV2 extends com.pulumi.resources.CustomResource {
      * creates new quota.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -147,7 +147,7 @@ public class QuotaV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing quota.
      * 
      */
-    @Export(name="rbacPolicy", type=Integer.class, parameters={})
+    @Export(name="rbacPolicy", refs={Integer.class}, tree="[0]")
     private Output<Integer> rbacPolicy;
 
     /**
@@ -164,7 +164,7 @@ public class QuotaV2 extends com.pulumi.resources.CustomResource {
      * creates new quota.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -181,7 +181,7 @@ public class QuotaV2 extends com.pulumi.resources.CustomResource {
      * existing quota.
      * 
      */
-    @Export(name="router", type=Integer.class, parameters={})
+    @Export(name="router", refs={Integer.class}, tree="[0]")
     private Output<Integer> router;
 
     /**
@@ -197,7 +197,7 @@ public class QuotaV2 extends com.pulumi.resources.CustomResource {
      * this updates the existing quota.
      * 
      */
-    @Export(name="securityGroup", type=Integer.class, parameters={})
+    @Export(name="securityGroup", refs={Integer.class}, tree="[0]")
     private Output<Integer> securityGroup;
 
     /**
@@ -213,7 +213,7 @@ public class QuotaV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing quota.
      * 
      */
-    @Export(name="securityGroupRule", type=Integer.class, parameters={})
+    @Export(name="securityGroupRule", refs={Integer.class}, tree="[0]")
     private Output<Integer> securityGroupRule;
 
     /**
@@ -229,7 +229,7 @@ public class QuotaV2 extends com.pulumi.resources.CustomResource {
      * this updates the existing quota.
      * 
      */
-    @Export(name="subnet", type=Integer.class, parameters={})
+    @Export(name="subnet", refs={Integer.class}, tree="[0]")
     private Output<Integer> subnet;
 
     /**
@@ -245,7 +245,7 @@ public class QuotaV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing quota.
      * 
      */
-    @Export(name="subnetpool", type=Integer.class, parameters={})
+    @Export(name="subnetpool", refs={Integer.class}, tree="[0]")
     private Output<Integer> subnetpool;
 
     /**

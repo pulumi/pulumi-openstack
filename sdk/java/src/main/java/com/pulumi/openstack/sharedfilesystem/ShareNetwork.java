@@ -143,7 +143,7 @@ public class ShareNetwork extends com.pulumi.resources.CustomResource {
      * The share network CIDR.
      * 
      */
-    @Export(name="cidr", type=String.class, parameters={})
+    @Export(name="cidr", refs={String.class}, tree="[0]")
     private Output<String> cidr;
 
     /**
@@ -158,7 +158,7 @@ public class ShareNetwork extends com.pulumi.resources.CustomResource {
      * Changing this updates the description of the existing share network.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -173,7 +173,7 @@ public class ShareNetwork extends com.pulumi.resources.CustomResource {
      * The IP version of the share network. Can either be 4 or 6.
      * 
      */
-    @Export(name="ipVersion", type=Integer.class, parameters={})
+    @Export(name="ipVersion", refs={Integer.class}, tree="[0]")
     private Output<Integer> ipVersion;
 
     /**
@@ -188,7 +188,7 @@ public class ShareNetwork extends com.pulumi.resources.CustomResource {
      * of the existing share network.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -203,7 +203,7 @@ public class ShareNetwork extends com.pulumi.resources.CustomResource {
      * The share network type. Can either be VLAN, VXLAN, GRE, or flat.
      * 
      */
-    @Export(name="networkType", type=String.class, parameters={})
+    @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output<String> networkType;
 
     /**
@@ -219,7 +219,7 @@ public class ShareNetwork extends com.pulumi.resources.CustomResource {
      * shares.
      * 
      */
-    @Export(name="neutronNetId", type=String.class, parameters={})
+    @Export(name="neutronNetId", refs={String.class}, tree="[0]")
     private Output<String> neutronNetId;
 
     /**
@@ -237,7 +237,7 @@ public class ShareNetwork extends com.pulumi.resources.CustomResource {
      * not used by shares.
      * 
      */
-    @Export(name="neutronSubnetId", type=String.class, parameters={})
+    @Export(name="neutronSubnetId", refs={String.class}, tree="[0]")
     private Output<String> neutronSubnetId;
 
     /**
@@ -253,7 +253,7 @@ public class ShareNetwork extends com.pulumi.resources.CustomResource {
      * The owner of the Share Network.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -270,7 +270,7 @@ public class ShareNetwork extends com.pulumi.resources.CustomResource {
      * share network.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -288,7 +288,7 @@ public class ShareNetwork extends com.pulumi.resources.CustomResource {
      * the share network. The security service must be specified by ID and not name.
      * 
      */
-    @Export(name="securityServiceIds", type=List.class, parameters={String.class})
+    @Export(name="securityServiceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> securityServiceIds;
 
     /**
@@ -303,7 +303,7 @@ public class ShareNetwork extends com.pulumi.resources.CustomResource {
      * The share network segmentation ID.
      * 
      */
-    @Export(name="segmentationId", type=Integer.class, parameters={})
+    @Export(name="segmentationId", refs={Integer.class}, tree="[0]")
     private Output<Integer> segmentationId;
 
     /**

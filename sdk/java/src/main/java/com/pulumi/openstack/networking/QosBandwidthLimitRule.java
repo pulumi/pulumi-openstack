@@ -74,7 +74,7 @@ public class QosBandwidthLimitRule extends com.pulumi.resources.CustomResource {
      * existing QoS bandwidth limit rule.
      * 
      */
-    @Export(name="direction", type=String.class, parameters={})
+    @Export(name="direction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> direction;
 
     /**
@@ -90,7 +90,7 @@ public class QosBandwidthLimitRule extends com.pulumi.resources.CustomResource {
      * maximum burst size in kilobits of the existing QoS bandwidth limit rule.
      * 
      */
-    @Export(name="maxBurstKbps", type=Integer.class, parameters={})
+    @Export(name="maxBurstKbps", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxBurstKbps;
 
     /**
@@ -106,7 +106,7 @@ public class QosBandwidthLimitRule extends com.pulumi.resources.CustomResource {
      * maximum kilobits per second of the existing QoS bandwidth limit rule.
      * 
      */
-    @Export(name="maxKbps", type=Integer.class, parameters={})
+    @Export(name="maxKbps", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxKbps;
 
     /**
@@ -121,7 +121,7 @@ public class QosBandwidthLimitRule extends com.pulumi.resources.CustomResource {
      * The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
      * 
      */
-    @Export(name="qosPolicyId", type=String.class, parameters={})
+    @Export(name="qosPolicyId", refs={String.class}, tree="[0]")
     private Output<String> qosPolicyId;
 
     /**
@@ -137,7 +137,7 @@ public class QosBandwidthLimitRule extends com.pulumi.resources.CustomResource {
      * `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**

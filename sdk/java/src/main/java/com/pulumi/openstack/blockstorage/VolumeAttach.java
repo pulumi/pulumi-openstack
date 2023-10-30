@@ -91,7 +91,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * If left unspecified, the Block Storage API will apply a default of `rw`.
      * 
      */
-    @Export(name="attachMode", type=String.class, parameters={})
+    @Export(name="attachMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> attachMode;
 
     /**
@@ -109,7 +109,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * script to finalize the connection. See below for more information.
      * 
      */
-    @Export(name="data", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="data", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> data;
 
     /**
@@ -127,7 +127,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * You can specify `auto` or a device such as `/dev/vdc`.
      * 
      */
-    @Export(name="device", type=String.class, parameters={})
+    @Export(name="device", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> device;
 
     /**
@@ -143,7 +143,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * The storage driver that the volume is based on.
      * 
      */
-    @Export(name="driverVolumeType", type=String.class, parameters={})
+    @Export(name="driverVolumeType", refs={String.class}, tree="[0]")
     private Output<String> driverVolumeType;
 
     /**
@@ -157,7 +157,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * The host to attach the volume to.
      * 
      */
-    @Export(name="hostName", type=String.class, parameters={})
+    @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output<String> hostName;
 
     /**
@@ -171,7 +171,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * The iSCSI initiator string to make the connection.
      * 
      */
-    @Export(name="initiator", type=String.class, parameters={})
+    @Export(name="initiator", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> initiator;
 
     /**
@@ -185,7 +185,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * The IP address of the `host_name` above.
      * 
      */
-    @Export(name="ipAddress", type=String.class, parameters={})
+    @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipAddress;
 
     /**
@@ -199,7 +199,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * A mount point base name for shared storage.
      * 
      */
-    @Export(name="mountPointBase", type=String.class, parameters={})
+    @Export(name="mountPointBase", refs={String.class}, tree="[0]")
     private Output<String> mountPointBase;
 
     /**
@@ -213,7 +213,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * Whether to connect to this volume via multipath.
      * 
      */
-    @Export(name="multipath", type=Boolean.class, parameters={})
+    @Export(name="multipath", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> multipath;
 
     /**
@@ -227,7 +227,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * The iSCSI initiator OS type.
      * 
      */
-    @Export(name="osType", type=String.class, parameters={})
+    @Export(name="osType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> osType;
 
     /**
@@ -241,7 +241,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * The iSCSI initiator platform.
      * 
      */
-    @Export(name="platform", type=String.class, parameters={})
+    @Export(name="platform", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> platform;
 
     /**
@@ -258,7 +258,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * creates a new volume attachment.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -275,7 +275,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * The ID of the Volume to attach to an Instance.
      * 
      */
-    @Export(name="volumeId", type=String.class, parameters={})
+    @Export(name="volumeId", refs={String.class}, tree="[0]")
     private Output<String> volumeId;
 
     /**
@@ -289,7 +289,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * A wwnn name. Used for Fibre Channel connections.
      * 
      */
-    @Export(name="wwnn", type=String.class, parameters={})
+    @Export(name="wwnn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> wwnn;
 
     /**
@@ -304,7 +304,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * connections.
      * 
      */
-    @Export(name="wwpns", type=List.class, parameters={String.class})
+    @Export(name="wwpns", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> wwpns;
 
     /**

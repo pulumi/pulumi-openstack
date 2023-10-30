@@ -69,7 +69,7 @@ public class MonitorV1 extends com.pulumi.resources.CustomResource {
      * state of the existing monitor.
      * 
      */
-    @Export(name="adminStateUp", type=String.class, parameters={})
+    @Export(name="adminStateUp", refs={String.class}, tree="[0]")
     private Output<String> adminStateUp;
 
     /**
@@ -86,7 +86,7 @@ public class MonitorV1 extends com.pulumi.resources.CustomResource {
      * Changing this creates a new monitor.
      * 
      */
-    @Export(name="delay", type=Integer.class, parameters={})
+    @Export(name="delay", refs={Integer.class}, tree="[0]")
     private Output<Integer> delay;
 
     /**
@@ -104,7 +104,7 @@ public class MonitorV1 extends com.pulumi.resources.CustomResource {
      * of the existing monitor.
      * 
      */
-    @Export(name="expectedCodes", type=String.class, parameters={})
+    @Export(name="expectedCodes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expectedCodes;
 
     /**
@@ -123,7 +123,7 @@ public class MonitorV1 extends com.pulumi.resources.CustomResource {
      * to &#34;GET&#34;. Changing this updates the http_method of the existing monitor.
      * 
      */
-    @Export(name="httpMethod", type=String.class, parameters={})
+    @Export(name="httpMethod", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> httpMethod;
 
     /**
@@ -141,7 +141,7 @@ public class MonitorV1 extends com.pulumi.resources.CustomResource {
      * this updates the max_retries of the existing monitor.
      * 
      */
-    @Export(name="maxRetries", type=Integer.class, parameters={})
+    @Export(name="maxRetries", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxRetries;
 
     /**
@@ -160,7 +160,7 @@ public class MonitorV1 extends com.pulumi.resources.CustomResource {
      * LB monitor.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -178,7 +178,7 @@ public class MonitorV1 extends com.pulumi.resources.CustomResource {
      * create a monitor for another tenant. Changing this creates a new monitor.
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
@@ -195,7 +195,7 @@ public class MonitorV1 extends com.pulumi.resources.CustomResource {
      * Changing this updates the timeout of the existing monitor.
      * 
      */
-    @Export(name="timeout", type=Integer.class, parameters={})
+    @Export(name="timeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeout;
 
     /**
@@ -213,7 +213,7 @@ public class MonitorV1 extends com.pulumi.resources.CustomResource {
      * creates a new monitor.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -231,7 +231,7 @@ public class MonitorV1 extends com.pulumi.resources.CustomResource {
      * url_path of the existing monitor.
      * 
      */
-    @Export(name="urlPath", type=String.class, parameters={})
+    @Export(name="urlPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> urlPath;
 
     /**

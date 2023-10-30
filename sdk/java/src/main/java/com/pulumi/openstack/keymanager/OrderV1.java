@@ -105,7 +105,7 @@ public class OrderV1 extends com.pulumi.resources.CustomResource {
      * The container reference / where to find the container.
      * 
      */
-    @Export(name="containerRef", type=String.class, parameters={})
+    @Export(name="containerRef", refs={String.class}, tree="[0]")
     private Output<String> containerRef;
 
     /**
@@ -119,7 +119,7 @@ public class OrderV1 extends com.pulumi.resources.CustomResource {
      * The date the order was created.
      * 
      */
-    @Export(name="created", type=String.class, parameters={})
+    @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
@@ -133,7 +133,7 @@ public class OrderV1 extends com.pulumi.resources.CustomResource {
      * The creator of the order.
      * 
      */
-    @Export(name="creatorId", type=String.class, parameters={})
+    @Export(name="creatorId", refs={String.class}, tree="[0]")
     private Output<String> creatorId;
 
     /**
@@ -147,7 +147,7 @@ public class OrderV1 extends com.pulumi.resources.CustomResource {
      * Dictionary containing the order metadata used to generate the order. The structure is described below.
      * 
      */
-    @Export(name="meta", type=OrderV1Meta.class, parameters={})
+    @Export(name="meta", refs={OrderV1Meta.class}, tree="[0]")
     private Output<OrderV1Meta> meta;
 
     /**
@@ -161,7 +161,7 @@ public class OrderV1 extends com.pulumi.resources.CustomResource {
      * The order reference / where to find the order.
      * 
      */
-    @Export(name="orderRef", type=String.class, parameters={})
+    @Export(name="orderRef", refs={String.class}, tree="[0]")
     private Output<String> orderRef;
 
     /**
@@ -178,7 +178,7 @@ public class OrderV1 extends com.pulumi.resources.CustomResource {
      * V1 order.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -195,7 +195,7 @@ public class OrderV1 extends com.pulumi.resources.CustomResource {
      * The secret reference / where to find the secret.
      * 
      */
-    @Export(name="secretRef", type=String.class, parameters={})
+    @Export(name="secretRef", refs={String.class}, tree="[0]")
     private Output<String> secretRef;
 
     /**
@@ -209,7 +209,7 @@ public class OrderV1 extends com.pulumi.resources.CustomResource {
      * The status of the order.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -223,7 +223,7 @@ public class OrderV1 extends com.pulumi.resources.CustomResource {
      * The sub status of the order.
      * 
      */
-    @Export(name="subStatus", type=String.class, parameters={})
+    @Export(name="subStatus", refs={String.class}, tree="[0]")
     private Output<String> subStatus;
 
     /**
@@ -237,7 +237,7 @@ public class OrderV1 extends com.pulumi.resources.CustomResource {
      * The sub status message of the order.
      * 
      */
-    @Export(name="subStatusMessage", type=String.class, parameters={})
+    @Export(name="subStatusMessage", refs={String.class}, tree="[0]")
     private Output<String> subStatusMessage;
 
     /**
@@ -251,7 +251,7 @@ public class OrderV1 extends com.pulumi.resources.CustomResource {
      * The type of key to be generated. Must be one of `asymmetric`, `key`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -265,7 +265,7 @@ public class OrderV1 extends com.pulumi.resources.CustomResource {
      * The date the order was last updated.
      * 
      */
-    @Export(name="updated", type=String.class, parameters={})
+    @Export(name="updated", refs={String.class}, tree="[0]")
     private Output<String> updated;
 
     /**

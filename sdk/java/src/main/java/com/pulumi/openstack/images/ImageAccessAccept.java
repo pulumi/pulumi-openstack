@@ -73,7 +73,7 @@ public class ImageAccessAccept extends com.pulumi.resources.CustomResource {
      * The date the image membership was created.
      * 
      */
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
@@ -87,7 +87,7 @@ public class ImageAccessAccept extends com.pulumi.resources.CustomResource {
      * The proposed image ID.
      * 
      */
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output<String> imageId;
 
     /**
@@ -102,7 +102,7 @@ public class ImageAccessAccept extends com.pulumi.resources.CustomResource {
      * for admin accounts. Defaults to the current scope project ID.
      * 
      */
-    @Export(name="memberId", type=String.class, parameters={})
+    @Export(name="memberId", refs={String.class}, tree="[0]")
     private Output<String> memberId;
 
     /**
@@ -120,7 +120,7 @@ public class ImageAccessAccept extends com.pulumi.resources.CustomResource {
      * membership.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -137,7 +137,7 @@ public class ImageAccessAccept extends com.pulumi.resources.CustomResource {
      * The membership schema.
      * 
      */
-    @Export(name="schema", type=String.class, parameters={})
+    @Export(name="schema", refs={String.class}, tree="[0]")
     private Output<String> schema;
 
     /**
@@ -152,7 +152,7 @@ public class ImageAccessAccept extends com.pulumi.resources.CustomResource {
      * `accepted`, `rejected` or `pending`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -167,7 +167,7 @@ public class ImageAccessAccept extends com.pulumi.resources.CustomResource {
      * The date the image membership was last updated.
      * 
      */
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**

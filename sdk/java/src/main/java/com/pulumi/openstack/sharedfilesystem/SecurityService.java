@@ -82,7 +82,7 @@ public class SecurityService extends com.pulumi.resources.CustomResource {
      * Changing this updates the description of the existing security service.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -98,7 +98,7 @@ public class SecurityService extends com.pulumi.resources.CustomResource {
      * tenant network.
      * 
      */
-    @Export(name="dnsIp", type=String.class, parameters={})
+    @Export(name="dnsIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dnsIp;
 
     /**
@@ -113,7 +113,7 @@ public class SecurityService extends com.pulumi.resources.CustomResource {
      * The security service domain.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> domain;
 
     /**
@@ -128,7 +128,7 @@ public class SecurityService extends com.pulumi.resources.CustomResource {
      * of the existing security service.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -144,7 +144,7 @@ public class SecurityService extends com.pulumi.resources.CustomResource {
      * specify where the share ends up. New in Manila microversion 2.44.
      * 
      */
-    @Export(name="ou", type=String.class, parameters={})
+    @Export(name="ou", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ou;
 
     /**
@@ -159,7 +159,7 @@ public class SecurityService extends com.pulumi.resources.CustomResource {
      * The user password, if you specify a user.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -173,7 +173,7 @@ public class SecurityService extends com.pulumi.resources.CustomResource {
      * The owner of the Security Service.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -190,7 +190,7 @@ public class SecurityService extends com.pulumi.resources.CustomResource {
      * security service.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -207,7 +207,7 @@ public class SecurityService extends com.pulumi.resources.CustomResource {
      * The security service host name or IP address.
      * 
      */
-    @Export(name="server", type=String.class, parameters={})
+    @Export(name="server", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> server;
 
     /**
@@ -222,7 +222,7 @@ public class SecurityService extends com.pulumi.resources.CustomResource {
      * kerberos or ldap.  Changing this updates the existing security service.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -238,7 +238,7 @@ public class SecurityService extends com.pulumi.resources.CustomResource {
      * tenant.
      * 
      */
-    @Export(name="user", type=String.class, parameters={})
+    @Export(name="user", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> user;
 
     /**

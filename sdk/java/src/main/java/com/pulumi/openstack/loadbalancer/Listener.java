@@ -74,7 +74,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * A valid value is true (UP) or false (DOWN).
      * 
      */
-    @Export(name="adminStateUp", type=Boolean.class, parameters={})
+    @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> adminStateUp;
 
     /**
@@ -90,7 +90,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * all other source addresses. If not present, defaults to allow all.
      * 
      */
-    @Export(name="allowedCidrs", type=List.class, parameters={String.class})
+    @Export(name="allowedCidrs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedCidrs;
 
     /**
@@ -106,7 +106,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * for the Listener.
      * 
      */
-    @Export(name="connectionLimit", type=Integer.class, parameters={})
+    @Export(name="connectionLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> connectionLimit;
 
     /**
@@ -122,7 +122,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Listener is associated.
      * 
      */
-    @Export(name="defaultPoolId", type=String.class, parameters={})
+    @Export(name="defaultPoolId", refs={String.class}, tree="[0]")
     private Output<String> defaultPoolId;
 
     /**
@@ -141,7 +141,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * for more information.
      * 
      */
-    @Export(name="defaultTlsContainerRef", type=String.class, parameters={})
+    @Export(name="defaultTlsContainerRef", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultTlsContainerRef;
 
     /**
@@ -159,7 +159,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Human-readable description for the Listener.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -175,7 +175,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * existing listener.
      * 
      */
-    @Export(name="insertHeaders", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="insertHeaders", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> insertHeaders;
 
     /**
@@ -192,7 +192,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Listener. Changing this creates a new Listener.
      * 
      */
-    @Export(name="loadbalancerId", type=String.class, parameters={})
+    @Export(name="loadbalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadbalancerId;
 
     /**
@@ -208,7 +208,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * to be unique.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -226,7 +226,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * **Octavia minor version &gt;=2.25**). Changing this creates a new Listener.
      * 
      */
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
@@ -244,7 +244,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Changing this creates a new Listener.
      * 
      */
-    @Export(name="protocolPort", type=Integer.class, parameters={})
+    @Export(name="protocolPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> protocolPort;
 
     /**
@@ -262,7 +262,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Listener.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -282,7 +282,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * for more information.
      * 
      */
-    @Export(name="sniContainerRefs", type=List.class, parameters={String.class})
+    @Export(name="sniContainerRefs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> sniContainerRefs;
 
     /**
@@ -295,7 +295,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> sniContainerRefs() {
         return Codegen.optional(this.sniContainerRefs);
     }
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     public Output<Optional<List<String>>> tags() {
@@ -307,7 +307,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * other than their own. Changing this creates a new Listener.
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
@@ -323,7 +323,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The client inactivity timeout in milliseconds.
      * 
      */
-    @Export(name="timeoutClientData", type=Integer.class, parameters={})
+    @Export(name="timeoutClientData", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeoutClientData;
 
     /**
@@ -337,7 +337,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The member connection timeout in milliseconds.
      * 
      */
-    @Export(name="timeoutMemberConnect", type=Integer.class, parameters={})
+    @Export(name="timeoutMemberConnect", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeoutMemberConnect;
 
     /**
@@ -351,7 +351,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The member inactivity timeout in milliseconds.
      * 
      */
-    @Export(name="timeoutMemberData", type=Integer.class, parameters={})
+    @Export(name="timeoutMemberData", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeoutMemberData;
 
     /**
@@ -366,7 +366,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * TCP packets for content inspection.
      * 
      */
-    @Export(name="timeoutTcpInspect", type=Integer.class, parameters={})
+    @Export(name="timeoutTcpInspect", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeoutTcpInspect;
 
     /**

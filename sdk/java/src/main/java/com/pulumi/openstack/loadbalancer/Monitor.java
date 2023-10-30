@@ -74,7 +74,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * A valid value is true (UP) or false (DOWN).
      * 
      */
-    @Export(name="adminStateUp", type=Boolean.class, parameters={})
+    @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> adminStateUp;
 
     /**
@@ -89,7 +89,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * The time, in seconds, between sending probes to members.
      * 
      */
-    @Export(name="delay", type=Integer.class, parameters={})
+    @Export(name="delay", refs={Integer.class}, tree="[0]")
     private Output<Integer> delay;
 
     /**
@@ -105,7 +105,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * &#34;200&#34;, or a range like &#34;200-202&#34;.
      * 
      */
-    @Export(name="expectedCodes", type=String.class, parameters={})
+    @Export(name="expectedCodes", refs={String.class}, tree="[0]")
     private Output<String> expectedCodes;
 
     /**
@@ -123,7 +123,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * defaults to &#34;GET&#34;.
      * 
      */
-    @Export(name="httpMethod", type=String.class, parameters={})
+    @Export(name="httpMethod", refs={String.class}, tree="[0]")
     private Output<String> httpMethod;
 
     /**
@@ -141,7 +141,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * and 10.
      * 
      */
-    @Export(name="maxRetries", type=Integer.class, parameters={})
+    @Export(name="maxRetries", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxRetries;
 
     /**
@@ -159,7 +159,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * Changing this updates the max_retries_down of the existing monitor.
      * 
      */
-    @Export(name="maxRetriesDown", type=Integer.class, parameters={})
+    @Export(name="maxRetriesDown", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxRetriesDown;
 
     /**
@@ -175,7 +175,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * The Name of the Monitor.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -189,7 +189,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * The id of the pool that this monitor will be assigned to.
      * 
      */
-    @Export(name="poolId", type=String.class, parameters={})
+    @Export(name="poolId", refs={String.class}, tree="[0]")
     private Output<String> poolId;
 
     /**
@@ -206,7 +206,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * monitor.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -225,7 +225,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * other than their own. Changing this creates a new monitor.
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
@@ -243,7 +243,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * value.
      * 
      */
-    @Export(name="timeout", type=Integer.class, parameters={})
+    @Export(name="timeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeout;
 
     /**
@@ -261,7 +261,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * balancer to verify the member state. Changing this creates a new monitor.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -278,7 +278,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * accessed if monitor type is HTTP or HTTPS.
      * 
      */
-    @Export(name="urlPath", type=String.class, parameters={})
+    @Export(name="urlPath", refs={String.class}, tree="[0]")
     private Output<String> urlPath;
 
     /**

@@ -82,7 +82,7 @@ public class Members extends com.pulumi.resources.CustomResource {
      * structure is described below.
      * 
      */
-    @Export(name="members", type=List.class, parameters={MembersMember.class})
+    @Export(name="members", refs={List.class,MembersMember.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MembersMember>> members;
 
     /**
@@ -98,7 +98,7 @@ public class Members extends com.pulumi.resources.CustomResource {
      * Changing this creates a new members resource.
      * 
      */
-    @Export(name="poolId", type=String.class, parameters={})
+    @Export(name="poolId", refs={String.class}, tree="[0]")
     private Output<String> poolId;
 
     /**
@@ -116,7 +116,7 @@ public class Members extends com.pulumi.resources.CustomResource {
      * members resource.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**

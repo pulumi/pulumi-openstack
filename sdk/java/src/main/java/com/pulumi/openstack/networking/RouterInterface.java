@@ -86,7 +86,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * be destroyed without any errors. The default value is `false`.
      * 
      */
-    @Export(name="forceDestroy", type=Boolean.class, parameters={})
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
     /**
@@ -103,7 +103,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * this creates a new router interface.
      * 
      */
-    @Export(name="portId", type=String.class, parameters={})
+    @Export(name="portId", refs={String.class}, tree="[0]")
     private Output<String> portId;
 
     /**
@@ -121,7 +121,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * router interface.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -139,7 +139,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * this creates a new router interface.
      * 
      */
-    @Export(name="routerId", type=String.class, parameters={})
+    @Export(name="routerId", refs={String.class}, tree="[0]")
     private Output<String> routerId;
 
     /**
@@ -155,7 +155,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * this creates a new router interface.
      * 
      */
-    @Export(name="subnetId", type=String.class, parameters={})
+    @Export(name="subnetId", refs={String.class}, tree="[0]")
     private Output<String> subnetId;
 
     /**

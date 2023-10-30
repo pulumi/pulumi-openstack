@@ -102,7 +102,7 @@ public class AggregateV2 extends com.pulumi.resources.CustomResource {
      * aggregate.
      * 
      */
-    @Export(name="hosts", type=List.class, parameters={String.class})
+    @Export(name="hosts", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> hosts;
 
     /**
@@ -118,7 +118,7 @@ public class AggregateV2 extends com.pulumi.resources.CustomResource {
      * The metadata of the Host Aggregate. Can be useful to indicate scheduler hints.
      * 
      */
-    @Export(name="metadata", type=Map.class, parameters={String.class, String.class})
+    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
@@ -132,7 +132,7 @@ public class AggregateV2 extends com.pulumi.resources.CustomResource {
      * The name of the Host Aggregate
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -148,7 +148,7 @@ public class AggregateV2 extends com.pulumi.resources.CustomResource {
      * creates a new Host Aggregate.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -165,7 +165,7 @@ public class AggregateV2 extends com.pulumi.resources.CustomResource {
      * availability zone.
      * 
      */
-    @Export(name="zone", type=String.class, parameters={})
+    @Export(name="zone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zone;
 
     /**

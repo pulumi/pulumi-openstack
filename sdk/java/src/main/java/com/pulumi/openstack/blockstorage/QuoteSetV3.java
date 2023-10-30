@@ -89,7 +89,7 @@ public class QuoteSetV3 extends com.pulumi.resources.CustomResource {
      * this updates the existing quotaset.
      * 
      */
-    @Export(name="backupGigabytes", type=Integer.class, parameters={})
+    @Export(name="backupGigabytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> backupGigabytes;
 
     /**
@@ -105,7 +105,7 @@ public class QuoteSetV3 extends com.pulumi.resources.CustomResource {
      * existing quotaset.
      * 
      */
-    @Export(name="backups", type=Integer.class, parameters={})
+    @Export(name="backups", refs={Integer.class}, tree="[0]")
     private Output<Integer> backups;
 
     /**
@@ -121,7 +121,7 @@ public class QuoteSetV3 extends com.pulumi.resources.CustomResource {
      * existing quotaset.
      * 
      */
-    @Export(name="gigabytes", type=Integer.class, parameters={})
+    @Export(name="gigabytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> gigabytes;
 
     /**
@@ -137,7 +137,7 @@ public class QuoteSetV3 extends com.pulumi.resources.CustomResource {
      * existing quotaset.
      * 
      */
-    @Export(name="groups", type=Integer.class, parameters={})
+    @Export(name="groups", refs={Integer.class}, tree="[0]")
     private Output<Integer> groups;
 
     /**
@@ -153,7 +153,7 @@ public class QuoteSetV3 extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing quotaset.
      * 
      */
-    @Export(name="perVolumeGigabytes", type=Integer.class, parameters={})
+    @Export(name="perVolumeGigabytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> perVolumeGigabytes;
 
     /**
@@ -169,7 +169,7 @@ public class QuoteSetV3 extends com.pulumi.resources.CustomResource {
      * creates a new quotaset.
      * 
      */
-    @Export(name="projectId", type=String.class, parameters={})
+    @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
@@ -186,7 +186,7 @@ public class QuoteSetV3 extends com.pulumi.resources.CustomResource {
      * creates a new quotaset.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -203,7 +203,7 @@ public class QuoteSetV3 extends com.pulumi.resources.CustomResource {
      * existing quotaset.
      * 
      */
-    @Export(name="snapshots", type=Integer.class, parameters={})
+    @Export(name="snapshots", refs={Integer.class}, tree="[0]")
     private Output<Integer> snapshots;
 
     /**
@@ -220,7 +220,7 @@ public class QuoteSetV3 extends com.pulumi.resources.CustomResource {
      * `volumes_&lt;volume_type_name&gt;` and `gigabytes_&lt;volume_type_name&gt;`.
      * 
      */
-    @Export(name="volumeTypeQuota", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="volumeTypeQuota", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> volumeTypeQuota;
 
     /**
@@ -237,7 +237,7 @@ public class QuoteSetV3 extends com.pulumi.resources.CustomResource {
      * existing quotaset.
      * 
      */
-    @Export(name="volumes", type=Integer.class, parameters={})
+    @Export(name="volumes", refs={Integer.class}, tree="[0]")
     private Output<Integer> volumes;
 
     /**
