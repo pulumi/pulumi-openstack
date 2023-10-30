@@ -83,7 +83,7 @@ public class InheritRoleAssignment extends com.pulumi.resources.CustomResource {
      * The domain to assign the role in.
      * 
      */
-    @Export(name="domainId", refs={String.class}, tree="[0]")
+    @Export(name="domainId", type=String.class, parameters={})
     private Output</* @Nullable */ String> domainId;
 
     /**
@@ -97,7 +97,7 @@ public class InheritRoleAssignment extends com.pulumi.resources.CustomResource {
      * The group to assign the role to.
      * 
      */
-    @Export(name="groupId", refs={String.class}, tree="[0]")
+    @Export(name="groupId", type=String.class, parameters={})
     private Output</* @Nullable */ String> groupId;
 
     /**
@@ -112,7 +112,7 @@ public class InheritRoleAssignment extends com.pulumi.resources.CustomResource {
      * The project should be able to containt child projects.
      * 
      */
-    @Export(name="projectId", refs={String.class}, tree="[0]")
+    @Export(name="projectId", type=String.class, parameters={})
     private Output</* @Nullable */ String> projectId;
 
     /**
@@ -123,7 +123,7 @@ public class InheritRoleAssignment extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> projectId() {
         return Codegen.optional(this.projectId);
     }
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     public Output<String> region() {
@@ -133,7 +133,7 @@ public class InheritRoleAssignment extends com.pulumi.resources.CustomResource {
      * The role to assign.
      * 
      */
-    @Export(name="roleId", refs={String.class}, tree="[0]")
+    @Export(name="roleId", type=String.class, parameters={})
     private Output<String> roleId;
 
     /**
@@ -147,7 +147,7 @@ public class InheritRoleAssignment extends com.pulumi.resources.CustomResource {
      * The user to assign the role to.
      * 
      */
-    @Export(name="userId", refs={String.class}, tree="[0]")
+    @Export(name="userId", type=String.class, parameters={})
     private Output</* @Nullable */ String> userId;
 
     /**

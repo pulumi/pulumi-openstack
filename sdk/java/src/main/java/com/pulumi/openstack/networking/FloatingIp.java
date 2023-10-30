@@ -36,7 +36,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * user or project.
      * 
      */
-    @Export(name="address", refs={String.class}, tree="[0]")
+    @Export(name="address", type=String.class, parameters={})
     private Output<String> address;
 
     /**
@@ -54,7 +54,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * been explicitly and implicitly added.
      * 
      */
-    @Export(name="allTags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="allTags", type=List.class, parameters={String.class})
     private Output<List<String>> allTags;
 
     /**
@@ -69,7 +69,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * Human-readable description for the floating IP.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -86,7 +86,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * service. Changing this creates a new floating IP.
      * 
      */
-    @Export(name="dnsDomain", refs={String.class}, tree="[0]")
+    @Export(name="dnsDomain", type=String.class, parameters={})
     private Output<String> dnsDomain;
 
     /**
@@ -106,7 +106,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * service. Changing this creates a new floating IP.
      * 
      */
-    @Export(name="dnsName", refs={String.class}, tree="[0]")
+    @Export(name="dnsName", type=String.class, parameters={})
     private Output<String> dnsName;
 
     /**
@@ -124,7 +124,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * the port has multiple fixed IPs.
      * 
      */
-    @Export(name="fixedIp", refs={String.class}, tree="[0]")
+    @Export(name="fixedIp", type=String.class, parameters={})
     private Output<String> fixedIp;
 
     /**
@@ -140,7 +140,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * IP. Changing this creates a new floating IP.
      * 
      */
-    @Export(name="pool", refs={String.class}, tree="[0]")
+    @Export(name="pool", type=String.class, parameters={})
     private Output<String> pool;
 
     /**
@@ -156,7 +156,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * associate with this floating IP.
      * 
      */
-    @Export(name="portId", refs={String.class}, tree="[0]")
+    @Export(name="portId", type=String.class, parameters={})
     private Output<String> portId;
 
     /**
@@ -175,7 +175,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * floating IP (which may or may not have a different address).
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -194,7 +194,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * the floating IP network has multiple subnets.
      * 
      */
-    @Export(name="subnetId", refs={String.class}, tree="[0]")
+    @Export(name="subnetId", type=String.class, parameters={})
     private Output<String> subnetId;
 
     /**
@@ -212,7 +212,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * during the resource creation. Conflicts with a `subnet_id` argument.
      * 
      */
-    @Export(name="subnetIds", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="subnetIds", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> subnetIds;
 
     /**
@@ -229,7 +229,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * A set of string tags for the floating IP.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -246,7 +246,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * may or may not have a different address)
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
+    @Export(name="tenantId", type=String.class, parameters={})
     private Output<String> tenantId;
 
     /**
@@ -263,7 +263,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * Map of additional options.
      * 
      */
-    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**

@@ -88,7 +88,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * A list of stack outputs.
      * 
      */
-    @Export(name="StackOutputs", refs={List.class,StackV1StackOutput.class}, tree="[0,1]")
+    @Export(name="StackOutputs", type=List.class, parameters={StackV1StackOutput.class})
     private Output<List<StackV1StackOutput>> StackOutputs;
 
     /**
@@ -102,7 +102,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * List of stack capabilities for stack.
      * 
      */
-    @Export(name="capabilities", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="capabilities", type=List.class, parameters={String.class})
     private Output<List<String>> capabilities;
 
     /**
@@ -119,7 +119,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * is the time zone as an offset from UTC.
      * 
      */
-    @Export(name="creationTime", refs={String.class}, tree="[0]")
+    @Export(name="creationTime", type=String.class, parameters={})
     private Output<String> creationTime;
 
     /**
@@ -136,7 +136,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * The description of the stack resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -152,7 +152,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * resources are not deleted when stack creation fails.
      * 
      */
-    @Export(name="disableRollback", refs={Boolean.class}, tree="[0]")
+    @Export(name="disableRollback", type=Boolean.class, parameters={})
     private Output<Boolean> disableRollback;
 
     /**
@@ -171,7 +171,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * Environment Opts.
      * 
      */
-    @Export(name="environmentOpts", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="environmentOpts", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> environmentOpts;
 
     /**
@@ -189,7 +189,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * alphabetic character. Changing this updates the stack&#39;s name.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -204,7 +204,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * List of notification topics for stack.
      * 
      */
-    @Export(name="notificationTopics", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="notificationTopics", type=List.class, parameters={String.class})
     private Output<List<String>> notificationTopics;
 
     /**
@@ -219,7 +219,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * to the template. Changing this updates the existing stack parameters.
      * 
      */
-    @Export(name="parameters", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="parameters", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> parameters;
 
     /**
@@ -236,7 +236,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * creates a new stack.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -252,7 +252,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * The status of the stack.
      * 
      */
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
@@ -266,7 +266,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * The reason for the current status of the stack.
      * 
      */
-    @Export(name="statusReason", refs={String.class}, tree="[0]")
+    @Export(name="statusReason", type=String.class, parameters={})
     private Output<String> statusReason;
 
     /**
@@ -280,7 +280,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * A list of tags to assosciate with the Stack
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output<List<String>> tags;
 
     /**
@@ -294,7 +294,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * The description of the stack template.
      * 
      */
-    @Export(name="templateDescription", refs={String.class}, tree="[0]")
+    @Export(name="templateDescription", type=String.class, parameters={})
     private Output<String> templateDescription;
 
     /**
@@ -311,7 +311,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * Template Opts.
      * 
      */
-    @Export(name="templateOpts", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="templateOpts", type=Map.class, parameters={String.class, Object.class})
     private Output<Map<String,Object>> templateOpts;
 
     /**
@@ -328,7 +328,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * The timeout for stack action in minutes.
      * 
      */
-    @Export(name="timeout", refs={Integer.class}, tree="[0]")
+    @Export(name="timeout", type=Integer.class, parameters={})
     private Output<Integer> timeout;
 
     /**
@@ -345,7 +345,7 @@ public class StackV1 extends com.pulumi.resources.CustomResource {
      * is the time zone as an offset from UTC.
      * 
      */
-    @Export(name="updatedTime", refs={String.class}, tree="[0]")
+    @Export(name="updatedTime", type=String.class, parameters={})
     private Output<String> updatedTime;
 
     /**

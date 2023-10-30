@@ -76,7 +76,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A list of IP addresses assigned to the instance.
      * 
      */
-    @Export(name="addresses", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="addresses", type=List.class, parameters={String.class})
     private Output<List<String>> addresses;
 
     /**
@@ -91,7 +91,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * will be rebooted when configuration is detached.
      * 
      */
-    @Export(name="configurationId", refs={String.class}, tree="[0]")
+    @Export(name="configurationId", type=String.class, parameters={})
     private Output</* @Nullable */ String> configurationId;
 
     /**
@@ -107,7 +107,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * object structure is documented below.
      * 
      */
-    @Export(name="databases", refs={List.class,InstanceDatabase.class}, tree="[0,1]")
+    @Export(name="databases", type=List.class, parameters={InstanceDatabase.class})
     private Output</* @Nullable */ List<InstanceDatabase>> databases;
 
     /**
@@ -123,7 +123,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * object structure is documented below. Changing this creates a new instance.
      * 
      */
-    @Export(name="datastore", refs={InstanceDatastore.class}, tree="[0]")
+    @Export(name="datastore", type=InstanceDatastore.class, parameters={})
     private Output<InstanceDatastore> datastore;
 
     /**
@@ -139,7 +139,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Changing this creates new instance.
      * 
      */
-    @Export(name="flavorId", refs={String.class}, tree="[0]")
+    @Export(name="flavorId", type=String.class, parameters={})
     private Output<String> flavorId;
 
     /**
@@ -154,7 +154,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A unique name for the resource.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -170,7 +170,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * creates a new instance.
      * 
      */
-    @Export(name="networks", refs={List.class,InstanceNetwork.class}, tree="[0,1]")
+    @Export(name="networks", type=List.class, parameters={InstanceNetwork.class})
     private Output</* @Nullable */ List<InstanceNetwork>> networks;
 
     /**
@@ -187,7 +187,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * creates a new instance.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -202,7 +202,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Specifies the volume size in GB. Changing this creates new instance.
      * 
      */
-    @Export(name="size", refs={Integer.class}, tree="[0]")
+    @Export(name="size", type=Integer.class, parameters={})
     private Output<Integer> size;
 
     /**
@@ -217,7 +217,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * object structure is documented below.
      * 
      */
-    @Export(name="users", refs={List.class,InstanceUser.class}, tree="[0,1]")
+    @Export(name="users", type=List.class, parameters={InstanceUser.class})
     private Output</* @Nullable */ List<InstanceUser>> users;
 
     /**

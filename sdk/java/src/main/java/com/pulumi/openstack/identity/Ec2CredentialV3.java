@@ -98,7 +98,7 @@ public class Ec2CredentialV3 extends com.pulumi.resources.CustomResource {
      * contains an EC2 credential access UUID
      * 
      */
-    @Export(name="access", refs={String.class}, tree="[0]")
+    @Export(name="access", type=String.class, parameters={})
     private Output<String> access;
 
     /**
@@ -115,7 +115,7 @@ public class Ec2CredentialV3 extends com.pulumi.resources.CustomResource {
      * from the current auth scope.
      * 
      */
-    @Export(name="projectId", refs={String.class}, tree="[0]")
+    @Export(name="projectId", type=String.class, parameters={})
     private Output<String> projectId;
 
     /**
@@ -134,7 +134,7 @@ public class Ec2CredentialV3 extends com.pulumi.resources.CustomResource {
      * creates a new EC2 credential.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -150,7 +150,7 @@ public class Ec2CredentialV3 extends com.pulumi.resources.CustomResource {
      * contains an EC2 credential secret UUID
      * 
      */
-    @Export(name="secret", refs={String.class}, tree="[0]")
+    @Export(name="secret", type=String.class, parameters={})
     private Output<String> secret;
 
     /**
@@ -164,7 +164,7 @@ public class Ec2CredentialV3 extends com.pulumi.resources.CustomResource {
      * contains an EC2 credential trust ID scope
      * 
      */
-    @Export(name="trustId", refs={String.class}, tree="[0]")
+    @Export(name="trustId", type=String.class, parameters={})
     private Output<String> trustId;
 
     /**
@@ -180,7 +180,7 @@ public class Ec2CredentialV3 extends com.pulumi.resources.CustomResource {
      * auth scope.
      * 
      */
-    @Export(name="userId", refs={String.class}, tree="[0]")
+    @Export(name="userId", type=String.class, parameters={})
     private Output<String> userId;
 
     /**

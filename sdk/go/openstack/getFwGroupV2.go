@@ -63,8 +63,8 @@ type GetFwGroupV2Args struct {
 	IngressFirewallPolicyId *string `pulumi:"ingressFirewallPolicyId"`
 	// The name of the firewall group.
 	Name *string `pulumi:"name"`
-	// This argument conflict and interchangeable with
-	// `tenantId`. The owner of the firewall group.
+	// This argument conflicts and is interchangeable
+	// with `tenantId`. The owner of the firewall group.
 	ProjectId *string `pulumi:"projectId"`
 	// The region in which to obtain the V2 Neutron client.
 	// A Neutron client is needed to retrieve firewall group ids. If omitted, the
@@ -74,8 +74,8 @@ type GetFwGroupV2Args struct {
 	Shared *bool `pulumi:"shared"`
 	// Enabled status for the firewall group.
 	Status *string `pulumi:"status"`
-	// This argument conflict and interchangeable with
-	// `projectId`. The owner of the firewall group.
+	// This argument conflicts and is interchangeable
+	// with `projectId`. The owner of the firewall group.
 	TenantId *string `pulumi:"tenantId"`
 }
 
@@ -136,8 +136,8 @@ type GetFwGroupV2OutputArgs struct {
 	IngressFirewallPolicyId pulumi.StringPtrInput `pulumi:"ingressFirewallPolicyId"`
 	// The name of the firewall group.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// This argument conflict and interchangeable with
-	// `tenantId`. The owner of the firewall group.
+	// This argument conflicts and is interchangeable
+	// with `tenantId`. The owner of the firewall group.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// The region in which to obtain the V2 Neutron client.
 	// A Neutron client is needed to retrieve firewall group ids. If omitted, the
@@ -147,8 +147,8 @@ type GetFwGroupV2OutputArgs struct {
 	Shared pulumi.BoolPtrInput `pulumi:"shared"`
 	// Enabled status for the firewall group.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// This argument conflict and interchangeable with
-	// `projectId`. The owner of the firewall group.
+	// This argument conflicts and is interchangeable
+	// with `projectId`. The owner of the firewall group.
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 }
 

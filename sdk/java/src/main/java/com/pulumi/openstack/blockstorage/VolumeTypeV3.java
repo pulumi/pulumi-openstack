@@ -71,7 +71,7 @@ public class VolumeTypeV3 extends com.pulumi.resources.CustomResource {
      * this updates the `description` of an existing volume type.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -86,7 +86,7 @@ public class VolumeTypeV3 extends com.pulumi.resources.CustomResource {
      * Key/Value pairs of metadata for the volume type.
      * 
      */
-    @Export(name="extraSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="extraSpecs", type=Map.class, parameters={String.class, Object.class})
     private Output<Map<String,Object>> extraSpecs;
 
     /**
@@ -101,7 +101,7 @@ public class VolumeTypeV3 extends com.pulumi.resources.CustomResource {
      * this updates the `is_public` of an existing volume type.
      * 
      */
-    @Export(name="isPublic", refs={Boolean.class}, tree="[0]")
+    @Export(name="isPublic", type=Boolean.class, parameters={})
     private Output<Boolean> isPublic;
 
     /**
@@ -117,7 +117,7 @@ public class VolumeTypeV3 extends com.pulumi.resources.CustomResource {
      * updates the `name` of an existing volume type.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -134,7 +134,7 @@ public class VolumeTypeV3 extends com.pulumi.resources.CustomResource {
      * creates a new quotaset.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**

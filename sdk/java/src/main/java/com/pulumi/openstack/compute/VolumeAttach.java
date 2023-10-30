@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.openstack.blockstorage.VolumeV2;
- * import com.pulumi.openstack.blockstorage.VolumeV2Args;
+ * import com.pulumi.openstack.blockstorage.Volume;
+ * import com.pulumi.openstack.blockstorage.VolumeArgs;
  * import com.pulumi.openstack.compute.Instance;
  * import com.pulumi.openstack.compute.InstanceArgs;
  * import com.pulumi.openstack.compute.VolumeAttach;
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var volume1 = new VolumeV2(&#34;volume1&#34;, VolumeV2Args.builder()        
+ *         var volume1 = new Volume(&#34;volume1&#34;, VolumeArgs.builder()        
  *             .size(1)
  *             .build());
  * 
@@ -108,13 +108,13 @@ import javax.annotation.Nullable;
  * 
  *         var va1 = new VolumeAttach(&#34;va1&#34;, VolumeAttachArgs.builder()        
  *             .instanceId(instance1.id())
- *             .volumeId(openstack_blockstorage_volume_v2.volume_1().id())
+ *             .volumeId(volume1.id())
  *             .multiattach(true)
  *             .build());
  * 
  *         var va2 = new VolumeAttach(&#34;va2&#34;, VolumeAttachArgs.builder()        
  *             .instanceId(instance2.id())
- *             .volumeId(openstack_blockstorage_volume_v2.volume_1().id())
+ *             .volumeId(volume1.id())
  *             .multiattach(true)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(&#34;openstack_compute_volume_attach_v2.va_1&#34;)
@@ -138,7 +138,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="openstack:compute/volumeAttach:VolumeAttach")
 public class VolumeAttach extends com.pulumi.resources.CustomResource {
-    @Export(name="device", refs={String.class}, tree="[0]")
+    @Export(name="device", type=String.class, parameters={})
     private Output<String> device;
 
     public Output<String> device() {
@@ -148,7 +148,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * The ID of the Instance to attach the Volume to.
      * 
      */
-    @Export(name="instanceId", refs={String.class}, tree="[0]")
+    @Export(name="instanceId", type=String.class, parameters={})
     private Output<String> instanceId;
 
     /**
@@ -162,7 +162,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * Enable attachment of multiattach-capable volumes.
      * 
      */
-    @Export(name="multiattach", refs={Boolean.class}, tree="[0]")
+    @Export(name="multiattach", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> multiattach;
 
     /**
@@ -179,7 +179,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * new volume attachment.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -197,7 +197,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * Supported options are described below.
      * 
      */
-    @Export(name="vendorOptions", refs={VolumeAttachVendorOptions.class}, tree="[0]")
+    @Export(name="vendorOptions", type=VolumeAttachVendorOptions.class, parameters={})
     private Output</* @Nullable */ VolumeAttachVendorOptions> vendorOptions;
 
     /**
@@ -212,7 +212,7 @@ public class VolumeAttach extends com.pulumi.resources.CustomResource {
      * The ID of the Volume to attach to an Instance.
      * 
      */
-    @Export(name="volumeId", refs={String.class}, tree="[0]")
+    @Export(name="volumeId", type=String.class, parameters={})
     private Output<String> volumeId;
 
     /**

@@ -94,7 +94,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * Changing this updates the `admin_state_up` of an existing firewall.
      * 
      */
-    @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
+    @Export(name="adminStateUp", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> adminStateUp;
 
     /**
@@ -112,7 +112,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * of an existing firewall. Conflicts with `no_routers`.
      * 
      */
-    @Export(name="associatedRouters", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="associatedRouters", type=List.class, parameters={String.class})
     private Output<List<String>> associatedRouters;
 
     /**
@@ -129,7 +129,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * updates the `description` of an existing firewall.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -145,7 +145,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * updates the `name` of an existing firewall.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -162,7 +162,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * Conflicts with `associated_routers`.
      * 
      */
-    @Export(name="noRouters", refs={Boolean.class}, tree="[0]")
+    @Export(name="noRouters", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> noRouters;
 
     /**
@@ -179,7 +179,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * this updates the `policy_id` of an existing firewall.
      * 
      */
-    @Export(name="policyId", refs={String.class}, tree="[0]")
+    @Export(name="policyId", type=String.class, parameters={})
     private Output<String> policyId;
 
     /**
@@ -197,7 +197,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * firewall.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -216,7 +216,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * firewall.
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
+    @Export(name="tenantId", type=String.class, parameters={})
     private Output<String> tenantId;
 
     /**
@@ -232,7 +232,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * Map of additional options.
      * 
      */
-    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**

@@ -75,7 +75,7 @@ public class Pool extends com.pulumi.resources.CustomResource {
      * A valid value is true (UP) or false (DOWN).
      * 
      */
-    @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
+    @Export(name="adminStateUp", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> adminStateUp;
 
     /**
@@ -90,7 +90,7 @@ public class Pool extends com.pulumi.resources.CustomResource {
      * Human-readable description for the pool.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -107,7 +107,7 @@ public class Pool extends com.pulumi.resources.CustomResource {
      * in Octavia).
      * 
      */
-    @Export(name="lbMethod", refs={String.class}, tree="[0]")
+    @Export(name="lbMethod", type=String.class, parameters={})
     private Output<String> lbMethod;
 
     /**
@@ -126,7 +126,7 @@ public class Pool extends com.pulumi.resources.CustomResource {
      * Note:  One of LoadbalancerID or ListenerID must be provided.
      * 
      */
-    @Export(name="listenerId", refs={String.class}, tree="[0]")
+    @Export(name="listenerId", type=String.class, parameters={})
     private Output</* @Nullable */ String> listenerId;
 
     /**
@@ -144,7 +144,7 @@ public class Pool extends com.pulumi.resources.CustomResource {
      * Note:  One of LoadbalancerID or ListenerID must be provided.
      * 
      */
-    @Export(name="loadbalancerId", refs={String.class}, tree="[0]")
+    @Export(name="loadbalancerId", type=String.class, parameters={})
     private Output</* @Nullable */ String> loadbalancerId;
 
     /**
@@ -160,7 +160,7 @@ public class Pool extends com.pulumi.resources.CustomResource {
      * Human-readable name for the pool.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -176,7 +176,7 @@ public class Pool extends com.pulumi.resources.CustomResource {
      * member or not. Changing this creates a new pool.
      * 
      */
-    @Export(name="persistence", refs={PoolPersistence.class}, tree="[0]")
+    @Export(name="persistence", type=PoolPersistence.class, parameters={})
     private Output<PoolPersistence> persistence;
 
     /**
@@ -194,7 +194,7 @@ public class Pool extends com.pulumi.resources.CustomResource {
      * or SCTP (**Octavia minor version &gt;= 2.23**). Changing this creates a new pool.
      * 
      */
-    @Export(name="protocol", refs={String.class}, tree="[0]")
+    @Export(name="protocol", type=String.class, parameters={})
     private Output<String> protocol;
 
     /**
@@ -213,7 +213,7 @@ public class Pool extends com.pulumi.resources.CustomResource {
      * pool.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -232,7 +232,7 @@ public class Pool extends com.pulumi.resources.CustomResource {
      * other than their own. Changing this creates a new pool.
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
+    @Export(name="tenantId", type=String.class, parameters={})
     private Output<String> tenantId;
 
     /**

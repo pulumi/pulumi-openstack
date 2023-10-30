@@ -100,6 +100,13 @@ export class RuleV2 extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * This argument conflicts and is interchangeable
+     * with `tenantId`. The owner of the firewall rule. Required if admin wants
+     * to create a firewall rule for another project. Changing this creates a new
+     * firewall rule.
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
      * (Optional; Required if `sourcePort` or `destinationPort` is not
      * empty) The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -133,11 +140,12 @@ export class RuleV2 extends pulumi.CustomResource {
      */
     public readonly sourcePort!: pulumi.Output<string | undefined>;
     /**
-     * The owner of the firewall rule. Required if admin
-     * wants to create a firewall rule for another tenant. Changing this creates a
-     * new firewall rule.
+     * This argument conflicts and is interchangeable
+     * with `projectId`. The owner of the firewall rule. Required if admin wants
+     * to create a firewall rule for another tenant. Changing this creates a new
+     * firewall rule.
      */
-    public readonly tenantId!: pulumi.Output<string | undefined>;
+    public readonly tenantId!: pulumi.Output<string>;
 
     /**
      * Create a RuleV2 resource with the given unique name, arguments, and options.
@@ -159,6 +167,7 @@ export class RuleV2 extends pulumi.CustomResource {
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["shared"] = state ? state.shared : undefined;
@@ -174,6 +183,7 @@ export class RuleV2 extends pulumi.CustomResource {
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["shared"] = args ? args.shared : undefined;
@@ -230,6 +240,13 @@ export interface RuleV2State {
      */
     name?: pulumi.Input<string>;
     /**
+     * This argument conflicts and is interchangeable
+     * with `tenantId`. The owner of the firewall rule. Required if admin wants
+     * to create a firewall rule for another project. Changing this creates a new
+     * firewall rule.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
      * (Optional; Required if `sourcePort` or `destinationPort` is not
      * empty) The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -263,9 +280,10 @@ export interface RuleV2State {
      */
     sourcePort?: pulumi.Input<string>;
     /**
-     * The owner of the firewall rule. Required if admin
-     * wants to create a firewall rule for another tenant. Changing this creates a
-     * new firewall rule.
+     * This argument conflicts and is interchangeable
+     * with `projectId`. The owner of the firewall rule. Required if admin wants
+     * to create a firewall rule for another tenant. Changing this creates a new
+     * firewall rule.
      */
     tenantId?: pulumi.Input<string>;
 }
@@ -314,6 +332,13 @@ export interface RuleV2Args {
      */
     name?: pulumi.Input<string>;
     /**
+     * This argument conflicts and is interchangeable
+     * with `tenantId`. The owner of the firewall rule. Required if admin wants
+     * to create a firewall rule for another project. Changing this creates a new
+     * firewall rule.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
      * (Optional; Required if `sourcePort` or `destinationPort` is not
      * empty) The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -347,9 +372,10 @@ export interface RuleV2Args {
      */
     sourcePort?: pulumi.Input<string>;
     /**
-     * The owner of the firewall rule. Required if admin
-     * wants to create a firewall rule for another tenant. Changing this creates a
-     * new firewall rule.
+     * This argument conflicts and is interchangeable
+     * with `projectId`. The owner of the firewall rule. Required if admin wants
+     * to create a firewall rule for another tenant. Changing this creates a new
+     * firewall rule.
      */
     tenantId?: pulumi.Input<string>;
 }

@@ -113,7 +113,7 @@ public class L7RuleV2 extends com.pulumi.resources.CustomResource {
      * A valid value is true (UP) or false (DOWN).
      * 
      */
-    @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
+    @Export(name="adminStateUp", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> adminStateUp;
 
     /**
@@ -129,7 +129,7 @@ public class L7RuleV2 extends com.pulumi.resources.CustomResource {
      * CONTAINS, STARTS\_WITH, ENDS_WITH, EQUAL_TO or REGEX
      * 
      */
-    @Export(name="compareType", refs={String.class}, tree="[0]")
+    @Export(name="compareType", type=String.class, parameters={})
     private Output<String> compareType;
 
     /**
@@ -145,7 +145,7 @@ public class L7RuleV2 extends com.pulumi.resources.CustomResource {
      * true, equal to would become not equal to. Default is false.
      * 
      */
-    @Export(name="invert", refs={Boolean.class}, tree="[0]")
+    @Export(name="invert", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> invert;
 
     /**
@@ -161,7 +161,7 @@ public class L7RuleV2 extends com.pulumi.resources.CustomResource {
      * evaluate. Valid when `type` is set to COOKIE or HEADER.
      * 
      */
-    @Export(name="key", refs={String.class}, tree="[0]")
+    @Export(name="key", type=String.class, parameters={})
     private Output</* @Nullable */ String> key;
 
     /**
@@ -177,7 +177,7 @@ public class L7RuleV2 extends com.pulumi.resources.CustomResource {
      * L7 Rule.
      * 
      */
-    @Export(name="l7policyId", refs={String.class}, tree="[0]")
+    @Export(name="l7policyId", type=String.class, parameters={})
     private Output<String> l7policyId;
 
     /**
@@ -192,7 +192,7 @@ public class L7RuleV2 extends com.pulumi.resources.CustomResource {
      * The ID of the Listener owning this resource.
      * 
      */
-    @Export(name="listenerId", refs={String.class}, tree="[0]")
+    @Export(name="listenerId", type=String.class, parameters={})
     private Output<String> listenerId;
 
     /**
@@ -209,7 +209,7 @@ public class L7RuleV2 extends com.pulumi.resources.CustomResource {
      * L7 Rule.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -228,7 +228,7 @@ public class L7RuleV2 extends com.pulumi.resources.CustomResource {
      * other than their own. Changing this creates a new L7 Rule.
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
+    @Export(name="tenantId", type=String.class, parameters={})
     private Output<String> tenantId;
 
     /**
@@ -245,7 +245,7 @@ public class L7RuleV2 extends com.pulumi.resources.CustomResource {
      * HOST\_NAME or PATH.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
@@ -261,7 +261,7 @@ public class L7RuleV2 extends com.pulumi.resources.CustomResource {
      * compare.
      * 
      */
-    @Export(name="value", refs={String.class}, tree="[0]")
+    @Export(name="value", type=String.class, parameters={})
     private Output<String> value;
 
     /**

@@ -21,7 +21,7 @@ class GetFwPolicyV2Result:
     """
     A collection of values returned by getFwPolicyV2.
     """
-    def __init__(__self__, audited=None, description=None, id=None, name=None, policy_id=None, region=None, rules=None, shared=None, tenant_id=None):
+    def __init__(__self__, audited=None, description=None, id=None, name=None, policy_id=None, project_id=None, region=None, rules=None, shared=None, tenant_id=None):
         if audited and not isinstance(audited, bool):
             raise TypeError("Expected argument 'audited' to be a bool")
         pulumi.set(__self__, "audited", audited)
@@ -37,6 +37,9 @@ class GetFwPolicyV2Result:
         if policy_id and not isinstance(policy_id, str):
             raise TypeError("Expected argument 'policy_id' to be a str")
         pulumi.set(__self__, "policy_id", policy_id)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -88,6 +91,14 @@ class GetFwPolicyV2Result:
         return pulumi.get(self, "policy_id")
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
     @pulumi.getter
     def region(self) -> str:
         """
@@ -131,6 +142,7 @@ class AwaitableGetFwPolicyV2Result(GetFwPolicyV2Result):
             id=self.id,
             name=self.name,
             policy_id=self.policy_id,
+            project_id=self.project_id,
             region=self.region,
             rules=self.rules,
             shared=self.shared,
@@ -141,6 +153,7 @@ def get_fw_policy_v2(audited: Optional[bool] = None,
                      description: Optional[str] = None,
                      name: Optional[str] = None,
                      policy_id: Optional[str] = None,
+                     project_id: Optional[str] = None,
                      region: Optional[str] = None,
                      shared: Optional[bool] = None,
                      tenant_id: Optional[str] = None,
@@ -162,17 +175,21 @@ def get_fw_policy_v2(audited: Optional[bool] = None,
     :param str description: Human-readable description of the policy.
     :param str name: The name of the firewall policy.
     :param str policy_id: The ID of the firewall policy.
+    :param str project_id: This argument conflicts and is interchangeable
+           with `tenant_id`. The owner of the firewall policy.
     :param str region: The region in which to obtain the V2 Neutron client.
            A Neutron client is needed to retrieve firewall policy ids. If omitted, the
            `region` argument of the provider is used.
     :param bool shared: Whether this policy is shared across all projects.
-    :param str tenant_id: The owner of the firewall policy.
+    :param str tenant_id: This argument conflicts and is interchangeable
+           with `project_id`. The owner of the firewall policy.
     """
     __args__ = dict()
     __args__['audited'] = audited
     __args__['description'] = description
     __args__['name'] = name
     __args__['policyId'] = policy_id
+    __args__['projectId'] = project_id
     __args__['region'] = region
     __args__['shared'] = shared
     __args__['tenantId'] = tenant_id
@@ -185,6 +202,7 @@ def get_fw_policy_v2(audited: Optional[bool] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         policy_id=pulumi.get(__ret__, 'policy_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'),
         rules=pulumi.get(__ret__, 'rules'),
         shared=pulumi.get(__ret__, 'shared'),
@@ -196,6 +214,7 @@ def get_fw_policy_v2_output(audited: Optional[pulumi.Input[Optional[bool]]] = No
                             description: Optional[pulumi.Input[Optional[str]]] = None,
                             name: Optional[pulumi.Input[Optional[str]]] = None,
                             policy_id: Optional[pulumi.Input[Optional[str]]] = None,
+                            project_id: Optional[pulumi.Input[Optional[str]]] = None,
                             region: Optional[pulumi.Input[Optional[str]]] = None,
                             shared: Optional[pulumi.Input[Optional[bool]]] = None,
                             tenant_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -217,10 +236,13 @@ def get_fw_policy_v2_output(audited: Optional[pulumi.Input[Optional[bool]]] = No
     :param str description: Human-readable description of the policy.
     :param str name: The name of the firewall policy.
     :param str policy_id: The ID of the firewall policy.
+    :param str project_id: This argument conflicts and is interchangeable
+           with `tenant_id`. The owner of the firewall policy.
     :param str region: The region in which to obtain the V2 Neutron client.
            A Neutron client is needed to retrieve firewall policy ids. If omitted, the
            `region` argument of the provider is used.
     :param bool shared: Whether this policy is shared across all projects.
-    :param str tenant_id: The owner of the firewall policy.
+    :param str tenant_id: This argument conflicts and is interchangeable
+           with `project_id`. The owner of the firewall policy.
     """
     ...

@@ -66,8 +66,8 @@ export interface GetFwGroupV2Args {
      */
     name?: string;
     /**
-     * This argument conflict and interchangeable with
-     * `tenantId`. The owner of the firewall group.
+     * This argument conflicts and is interchangeable
+     * with `tenantId`. The owner of the firewall group.
      */
     projectId?: string;
     /**
@@ -85,8 +85,8 @@ export interface GetFwGroupV2Args {
      */
     status?: string;
     /**
-     * This argument conflict and interchangeable with
-     * `projectId`. The owner of the firewall group.
+     * This argument conflicts and is interchangeable
+     * with `projectId`. The owner of the firewall group.
      */
     tenantId?: string;
 }
@@ -195,8 +195,8 @@ export interface GetFwGroupV2OutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * This argument conflict and interchangeable with
-     * `tenantId`. The owner of the firewall group.
+     * This argument conflicts and is interchangeable
+     * with `tenantId`. The owner of the firewall group.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -214,8 +214,8 @@ export interface GetFwGroupV2OutputArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * This argument conflict and interchangeable with
-     * `projectId`. The owner of the firewall group.
+     * This argument conflicts and is interchangeable
+     * with `projectId`. The owner of the firewall group.
      */
     tenantId?: pulumi.Input<string>;
 }

@@ -219,15 +219,15 @@ def get_fw_group_v2(admin_state_up: Optional[bool] = None,
     :param str group_id: The ID of the firewall group.
     :param str ingress_firewall_policy_id: The ingress policy ID of the firewall group.
     :param str name: The name of the firewall group.
-    :param str project_id: This argument conflict and interchangeable with
-           `tenant_id`. The owner of the firewall group.
+    :param str project_id: This argument conflicts and is interchangeable
+           with `tenant_id`. The owner of the firewall group.
     :param str region: The region in which to obtain the V2 Neutron client.
            A Neutron client is needed to retrieve firewall group ids. If omitted, the
            `region` argument of the provider is used.
     :param bool shared: The sharing status of the firewall group.
     :param str status: Enabled status for the firewall group.
-    :param str tenant_id: This argument conflict and interchangeable with
-           `project_id`. The owner of the firewall group.
+    :param str tenant_id: This argument conflicts and is interchangeable
+           with `project_id`. The owner of the firewall group.
     """
     __args__ = dict()
     __args__['adminStateUp'] = admin_state_up
@@ -292,14 +292,14 @@ def get_fw_group_v2_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]
     :param str group_id: The ID of the firewall group.
     :param str ingress_firewall_policy_id: The ingress policy ID of the firewall group.
     :param str name: The name of the firewall group.
-    :param str project_id: This argument conflict and interchangeable with
-           `tenant_id`. The owner of the firewall group.
+    :param str project_id: This argument conflicts and is interchangeable
+           with `tenant_id`. The owner of the firewall group.
     :param str region: The region in which to obtain the V2 Neutron client.
            A Neutron client is needed to retrieve firewall group ids. If omitted, the
            `region` argument of the provider is used.
     :param bool shared: The sharing status of the firewall group.
     :param str status: Enabled status for the firewall group.
-    :param str tenant_id: This argument conflict and interchangeable with
-           `project_id`. The owner of the firewall group.
+    :param str tenant_id: This argument conflicts and is interchangeable
+           with `project_id`. The owner of the firewall group.
     """
     ...

@@ -72,7 +72,7 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      * sees it.
      * 
      */
-    @Export(name="attachments", refs={List.class,VolumeV2Attachment.class}, tree="[0,1]")
+    @Export(name="attachments", type=List.class, parameters={VolumeV2Attachment.class})
     private Output<List<VolumeV2Attachment>> attachments;
 
     /**
@@ -89,7 +89,7 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      * Changing this creates a new volume.
      * 
      */
-    @Export(name="availabilityZone", refs={String.class}, tree="[0]")
+    @Export(name="availabilityZone", type=String.class, parameters={})
     private Output<String> availabilityZone;
 
     /**
@@ -105,7 +105,7 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      * in.
      * 
      */
-    @Export(name="consistencyGroupId", refs={String.class}, tree="[0]")
+    @Export(name="consistencyGroupId", type=String.class, parameters={})
     private Output</* @Nullable */ String> consistencyGroupId;
 
     /**
@@ -121,7 +121,7 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      * the volume&#39;s description.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -137,7 +137,7 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      * Changing this creates a new volume.
      * 
      */
-    @Export(name="imageId", refs={String.class}, tree="[0]")
+    @Export(name="imageId", type=String.class, parameters={})
     private Output</* @Nullable */ String> imageId;
 
     /**
@@ -153,7 +153,7 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing volume metadata.
      * 
      */
-    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="metadata", type=Map.class, parameters={String.class, Object.class})
     private Output<Map<String,Object>> metadata;
 
     /**
@@ -169,7 +169,7 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      * volume&#39;s name.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -186,7 +186,7 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      * creates a new volume.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -203,7 +203,7 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      * to instantiate a volume in the OpenStack cloud. The available hints are described below.
      * 
      */
-    @Export(name="schedulerHints", refs={List.class,VolumeV2SchedulerHint.class}, tree="[0,1]")
+    @Export(name="schedulerHints", type=List.class, parameters={VolumeV2SchedulerHint.class})
     private Output</* @Nullable */ List<VolumeV2SchedulerHint>> schedulerHints;
 
     /**
@@ -219,7 +219,7 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      * this creates a new volume.
      * 
      */
-    @Export(name="size", refs={Integer.class}, tree="[0]")
+    @Export(name="size", type=Integer.class, parameters={})
     private Output<Integer> size;
 
     /**
@@ -235,7 +235,7 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      * Changing this creates a new volume.
      * 
      */
-    @Export(name="snapshotId", refs={String.class}, tree="[0]")
+    @Export(name="snapshotId", type=String.class, parameters={})
     private Output</* @Nullable */ String> snapshotId;
 
     /**
@@ -250,7 +250,7 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      * The volume ID to replicate with.
      * 
      */
-    @Export(name="sourceReplica", refs={String.class}, tree="[0]")
+    @Export(name="sourceReplica", type=String.class, parameters={})
     private Output</* @Nullable */ String> sourceReplica;
 
     /**
@@ -265,7 +265,7 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      * Changing this creates a new volume.
      * 
      */
-    @Export(name="sourceVolId", refs={String.class}, tree="[0]")
+    @Export(name="sourceVolId", type=String.class, parameters={})
     private Output</* @Nullable */ String> sourceVolId;
 
     /**
@@ -281,7 +281,7 @@ public class VolumeV2 extends com.pulumi.resources.CustomResource {
      * Changing this creates a new volume.
      * 
      */
-    @Export(name="volumeType", refs={String.class}, tree="[0]")
+    @Export(name="volumeType", type=String.class, parameters={})
     private Output<String> volumeType;
 
     /**

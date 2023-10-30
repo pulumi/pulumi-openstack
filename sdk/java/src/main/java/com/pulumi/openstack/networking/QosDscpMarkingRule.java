@@ -71,7 +71,7 @@ public class QosDscpMarkingRule extends com.pulumi.resources.CustomResource {
      * QoS DSCP marking rule.
      * 
      */
-    @Export(name="dscpMark", refs={Integer.class}, tree="[0]")
+    @Export(name="dscpMark", type=Integer.class, parameters={})
     private Output<Integer> dscpMark;
 
     /**
@@ -86,7 +86,7 @@ public class QosDscpMarkingRule extends com.pulumi.resources.CustomResource {
      * The QoS policy reference. Changing this creates a new QoS DSCP marking rule.
      * 
      */
-    @Export(name="qosPolicyId", refs={String.class}, tree="[0]")
+    @Export(name="qosPolicyId", type=String.class, parameters={})
     private Output<String> qosPolicyId;
 
     /**
@@ -102,7 +102,7 @@ public class QosDscpMarkingRule extends com.pulumi.resources.CustomResource {
      * `region` argument of the provider is used. Changing this creates a new QoS DSCP marking rule.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**

@@ -42,9 +42,9 @@ class GroupV2Args:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: Port(s) to associate this firewall group
                with. Must be a list of strings. Changing this updates the associated ports
                of an existing firewall group.
-        :param pulumi.Input[str] project_id: This argument conflict and interchangeable with
-               `tenant_id`. The owner of the firewall group. Required if admin wants to
-               create a firewall group for another project. Changing this creates a new
+        :param pulumi.Input[str] project_id: This argument conflicts and  is interchangeable
+               with `tenant_id`. The owner of the firewall group. Required if admin wants
+               to create a firewall group for another project. Changing this creates a new
                firewall group.
         :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
                A networking client is needed to create a firewall group. If omitted, the
@@ -55,7 +55,7 @@ class GroupV2Args:
                and can be used in, firewalls in other tenants. Changing this updates the
                `shared` status of an existing firewall group. Only administrative users
                can specify if the firewall group should be shared.
-        :param pulumi.Input[str] tenant_id: This argument conflict and interchangeable with
+        :param pulumi.Input[str] tenant_id: This argument conflicts and is interchangeable with
                `project_id`. The owner of the firewall group. Required if admin wants to
                create a firewall group for another tenant. Changing this creates a new
                firewall group.
@@ -167,9 +167,9 @@ class GroupV2Args:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        This argument conflict and interchangeable with
-        `tenant_id`. The owner of the firewall group. Required if admin wants to
-        create a firewall group for another project. Changing this creates a new
+        This argument conflicts and  is interchangeable
+        with `tenant_id`. The owner of the firewall group. Required if admin wants
+        to create a firewall group for another project. Changing this creates a new
         firewall group.
         """
         return pulumi.get(self, "project_id")
@@ -213,7 +213,7 @@ class GroupV2Args:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
-        This argument conflict and interchangeable with
+        This argument conflicts and is interchangeable with
         `project_id`. The owner of the firewall group. Required if admin wants to
         create a firewall group for another tenant. Changing this creates a new
         firewall group.
@@ -257,9 +257,9 @@ class _GroupV2State:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: Port(s) to associate this firewall group
                with. Must be a list of strings. Changing this updates the associated ports
                of an existing firewall group.
-        :param pulumi.Input[str] project_id: This argument conflict and interchangeable with
-               `tenant_id`. The owner of the firewall group. Required if admin wants to
-               create a firewall group for another project. Changing this creates a new
+        :param pulumi.Input[str] project_id: This argument conflicts and  is interchangeable
+               with `tenant_id`. The owner of the firewall group. Required if admin wants
+               to create a firewall group for another project. Changing this creates a new
                firewall group.
         :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
                A networking client is needed to create a firewall group. If omitted, the
@@ -271,7 +271,7 @@ class _GroupV2State:
                `shared` status of an existing firewall group. Only administrative users
                can specify if the firewall group should be shared.
         :param pulumi.Input[str] status: The status of the firewall group.
-        :param pulumi.Input[str] tenant_id: This argument conflict and interchangeable with
+        :param pulumi.Input[str] tenant_id: This argument conflicts and is interchangeable with
                `project_id`. The owner of the firewall group. Required if admin wants to
                create a firewall group for another tenant. Changing this creates a new
                firewall group.
@@ -385,9 +385,9 @@ class _GroupV2State:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        This argument conflict and interchangeable with
-        `tenant_id`. The owner of the firewall group. Required if admin wants to
-        create a firewall group for another project. Changing this creates a new
+        This argument conflicts and  is interchangeable
+        with `tenant_id`. The owner of the firewall group. Required if admin wants
+        to create a firewall group for another project. Changing this creates a new
         firewall group.
         """
         return pulumi.get(self, "project_id")
@@ -443,7 +443,7 @@ class _GroupV2State:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
-        This argument conflict and interchangeable with
+        This argument conflicts and is interchangeable with
         `project_id`. The owner of the firewall group. Required if admin wants to
         create a firewall group for another tenant. Changing this creates a new
         firewall group.
@@ -527,9 +527,9 @@ class GroupV2(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: Port(s) to associate this firewall group
                with. Must be a list of strings. Changing this updates the associated ports
                of an existing firewall group.
-        :param pulumi.Input[str] project_id: This argument conflict and interchangeable with
-               `tenant_id`. The owner of the firewall group. Required if admin wants to
-               create a firewall group for another project. Changing this creates a new
+        :param pulumi.Input[str] project_id: This argument conflicts and  is interchangeable
+               with `tenant_id`. The owner of the firewall group. Required if admin wants
+               to create a firewall group for another project. Changing this creates a new
                firewall group.
         :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
                A networking client is needed to create a firewall group. If omitted, the
@@ -540,7 +540,7 @@ class GroupV2(pulumi.CustomResource):
                and can be used in, firewalls in other tenants. Changing this updates the
                `shared` status of an existing firewall group. Only administrative users
                can specify if the firewall group should be shared.
-        :param pulumi.Input[str] tenant_id: This argument conflict and interchangeable with
+        :param pulumi.Input[str] tenant_id: This argument conflicts and is interchangeable with
                `project_id`. The owner of the firewall group. Required if admin wants to
                create a firewall group for another tenant. Changing this creates a new
                firewall group.
@@ -678,9 +678,9 @@ class GroupV2(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: Port(s) to associate this firewall group
                with. Must be a list of strings. Changing this updates the associated ports
                of an existing firewall group.
-        :param pulumi.Input[str] project_id: This argument conflict and interchangeable with
-               `tenant_id`. The owner of the firewall group. Required if admin wants to
-               create a firewall group for another project. Changing this creates a new
+        :param pulumi.Input[str] project_id: This argument conflicts and  is interchangeable
+               with `tenant_id`. The owner of the firewall group. Required if admin wants
+               to create a firewall group for another project. Changing this creates a new
                firewall group.
         :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
                A networking client is needed to create a firewall group. If omitted, the
@@ -692,7 +692,7 @@ class GroupV2(pulumi.CustomResource):
                `shared` status of an existing firewall group. Only administrative users
                can specify if the firewall group should be shared.
         :param pulumi.Input[str] status: The status of the firewall group.
-        :param pulumi.Input[str] tenant_id: This argument conflict and interchangeable with
+        :param pulumi.Input[str] tenant_id: This argument conflicts and is interchangeable with
                `project_id`. The owner of the firewall group. Required if admin wants to
                create a firewall group for another tenant. Changing this creates a new
                firewall group.
@@ -776,9 +776,9 @@ class GroupV2(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        This argument conflict and interchangeable with
-        `tenant_id`. The owner of the firewall group. Required if admin wants to
-        create a firewall group for another project. Changing this creates a new
+        This argument conflicts and  is interchangeable
+        with `tenant_id`. The owner of the firewall group. Required if admin wants
+        to create a firewall group for another project. Changing this creates a new
         firewall group.
         """
         return pulumi.get(self, "project_id")
@@ -818,7 +818,7 @@ class GroupV2(pulumi.CustomResource):
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
         """
-        This argument conflict and interchangeable with
+        This argument conflicts and is interchangeable with
         `project_id`. The owner of the firewall group. Required if admin wants to
         create a firewall group for another tenant. Changing this creates a new
         firewall group.

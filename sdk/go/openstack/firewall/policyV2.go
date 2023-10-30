@@ -89,6 +89,11 @@ type PolicyV2 struct {
 	// A name for the firewall policy. Changing this
 	// updates the `name` of an existing firewall policy.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// This argument conflicts and is interchangeable
+	// with `tenantId`. The owner of the firewall policy. Required if admin wants
+	// to create a firewall policy for another project. Changing this creates a new
+	// firewall policy.
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The region in which to obtain the v2 networking client.
 	// A networking client is needed to create a firewall policy. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -104,9 +109,10 @@ type PolicyV2 struct {
 	// `shared` status of an existing firewall policy. Only administrative users
 	// can specify if the policy should be shared.
 	Shared pulumi.BoolPtrOutput `pulumi:"shared"`
-	// The owner of the firewall policy. Required if admin
-	// wants to create a firewall policy for another tenant. Changing this
-	// creates a new firewall policy.
+	// This argument conflicts and is interchangeable
+	// with `projectId`. The owner of the firewall policy. Required if admin wants
+	// to create a firewall policy for another tenant. Changing this creates a new
+	// firewall policy.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 }
 
@@ -152,6 +158,11 @@ type policyV2State struct {
 	// A name for the firewall policy. Changing this
 	// updates the `name` of an existing firewall policy.
 	Name *string `pulumi:"name"`
+	// This argument conflicts and is interchangeable
+	// with `tenantId`. The owner of the firewall policy. Required if admin wants
+	// to create a firewall policy for another project. Changing this creates a new
+	// firewall policy.
+	ProjectId *string `pulumi:"projectId"`
 	// The region in which to obtain the v2 networking client.
 	// A networking client is needed to create a firewall policy. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -167,9 +178,10 @@ type policyV2State struct {
 	// `shared` status of an existing firewall policy. Only administrative users
 	// can specify if the policy should be shared.
 	Shared *bool `pulumi:"shared"`
-	// The owner of the firewall policy. Required if admin
-	// wants to create a firewall policy for another tenant. Changing this
-	// creates a new firewall policy.
+	// This argument conflicts and is interchangeable
+	// with `projectId`. The owner of the firewall policy. Required if admin wants
+	// to create a firewall policy for another tenant. Changing this creates a new
+	// firewall policy.
 	TenantId *string `pulumi:"tenantId"`
 }
 
@@ -186,6 +198,11 @@ type PolicyV2State struct {
 	// A name for the firewall policy. Changing this
 	// updates the `name` of an existing firewall policy.
 	Name pulumi.StringPtrInput
+	// This argument conflicts and is interchangeable
+	// with `tenantId`. The owner of the firewall policy. Required if admin wants
+	// to create a firewall policy for another project. Changing this creates a new
+	// firewall policy.
+	ProjectId pulumi.StringPtrInput
 	// The region in which to obtain the v2 networking client.
 	// A networking client is needed to create a firewall policy. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -201,9 +218,10 @@ type PolicyV2State struct {
 	// `shared` status of an existing firewall policy. Only administrative users
 	// can specify if the policy should be shared.
 	Shared pulumi.BoolPtrInput
-	// The owner of the firewall policy. Required if admin
-	// wants to create a firewall policy for another tenant. Changing this
-	// creates a new firewall policy.
+	// This argument conflicts and is interchangeable
+	// with `projectId`. The owner of the firewall policy. Required if admin wants
+	// to create a firewall policy for another tenant. Changing this creates a new
+	// firewall policy.
 	TenantId pulumi.StringPtrInput
 }
 
@@ -224,6 +242,11 @@ type policyV2Args struct {
 	// A name for the firewall policy. Changing this
 	// updates the `name` of an existing firewall policy.
 	Name *string `pulumi:"name"`
+	// This argument conflicts and is interchangeable
+	// with `tenantId`. The owner of the firewall policy. Required if admin wants
+	// to create a firewall policy for another project. Changing this creates a new
+	// firewall policy.
+	ProjectId *string `pulumi:"projectId"`
 	// The region in which to obtain the v2 networking client.
 	// A networking client is needed to create a firewall policy. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -239,9 +262,10 @@ type policyV2Args struct {
 	// `shared` status of an existing firewall policy. Only administrative users
 	// can specify if the policy should be shared.
 	Shared *bool `pulumi:"shared"`
-	// The owner of the firewall policy. Required if admin
-	// wants to create a firewall policy for another tenant. Changing this
-	// creates a new firewall policy.
+	// This argument conflicts and is interchangeable
+	// with `projectId`. The owner of the firewall policy. Required if admin wants
+	// to create a firewall policy for another tenant. Changing this creates a new
+	// firewall policy.
 	TenantId *string `pulumi:"tenantId"`
 }
 
@@ -259,6 +283,11 @@ type PolicyV2Args struct {
 	// A name for the firewall policy. Changing this
 	// updates the `name` of an existing firewall policy.
 	Name pulumi.StringPtrInput
+	// This argument conflicts and is interchangeable
+	// with `tenantId`. The owner of the firewall policy. Required if admin wants
+	// to create a firewall policy for another project. Changing this creates a new
+	// firewall policy.
+	ProjectId pulumi.StringPtrInput
 	// The region in which to obtain the v2 networking client.
 	// A networking client is needed to create a firewall policy. If omitted, the
 	// `region` argument of the provider is used. Changing this creates a new
@@ -274,9 +303,10 @@ type PolicyV2Args struct {
 	// `shared` status of an existing firewall policy. Only administrative users
 	// can specify if the policy should be shared.
 	Shared pulumi.BoolPtrInput
-	// The owner of the firewall policy. Required if admin
-	// wants to create a firewall policy for another tenant. Changing this
-	// creates a new firewall policy.
+	// This argument conflicts and is interchangeable
+	// with `projectId`. The owner of the firewall policy. Required if admin wants
+	// to create a firewall policy for another tenant. Changing this creates a new
+	// firewall policy.
 	TenantId pulumi.StringPtrInput
 }
 
@@ -412,6 +442,14 @@ func (o PolicyV2Output) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// This argument conflicts and is interchangeable
+// with `tenantId`. The owner of the firewall policy. Required if admin wants
+// to create a firewall policy for another project. Changing this creates a new
+// firewall policy.
+func (o PolicyV2Output) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyV2) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
 // The region in which to obtain the v2 networking client.
 // A networking client is needed to create a firewall policy. If omitted, the
 // `region` argument of the provider is used. Changing this creates a new
@@ -436,9 +474,10 @@ func (o PolicyV2Output) Shared() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PolicyV2) pulumi.BoolPtrOutput { return v.Shared }).(pulumi.BoolPtrOutput)
 }
 
-// The owner of the firewall policy. Required if admin
-// wants to create a firewall policy for another tenant. Changing this
-// creates a new firewall policy.
+// This argument conflicts and is interchangeable
+// with `projectId`. The owner of the firewall policy. Required if admin wants
+// to create a firewall policy for another tenant. Changing this creates a new
+// firewall policy.
 func (o PolicyV2Output) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyV2) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }

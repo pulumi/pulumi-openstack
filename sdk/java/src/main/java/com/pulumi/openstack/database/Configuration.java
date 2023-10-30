@@ -23,7 +23,7 @@ public class Configuration extends com.pulumi.resources.CustomResource {
      * An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
      * 
      */
-    @Export(name="configurations", refs={List.class,ConfigurationConfiguration.class}, tree="[0,1]")
+    @Export(name="configurations", type=List.class, parameters={ConfigurationConfiguration.class})
     private Output</* @Nullable */ List<ConfigurationConfiguration>> configurations;
 
     /**
@@ -38,7 +38,7 @@ public class Configuration extends com.pulumi.resources.CustomResource {
      * object structure is documented below. Changing this creates resource.
      * 
      */
-    @Export(name="datastore", refs={ConfigurationDatastore.class}, tree="[0]")
+    @Export(name="datastore", type=ConfigurationDatastore.class, parameters={})
     private Output<ConfigurationDatastore> datastore;
 
     /**
@@ -53,7 +53,7 @@ public class Configuration extends com.pulumi.resources.CustomResource {
      * Description of the resource.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -67,7 +67,7 @@ public class Configuration extends com.pulumi.resources.CustomResource {
      * A unique name for the resource.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -82,7 +82,7 @@ public class Configuration extends com.pulumi.resources.CustomResource {
      * creates a new instance.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**

@@ -75,6 +75,27 @@ public final class PolicyV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * This argument conflicts and is interchangeable
+     * with `tenant_id`. The owner of the firewall policy. Required if admin wants
+     * to create a firewall policy for another project. Changing this creates a new
+     * firewall policy.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return This argument conflicts and is interchangeable
+     * with `tenant_id`. The owner of the firewall policy. Required if admin wants
+     * to create a firewall policy for another project. Changing this creates a new
+     * firewall policy.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+
+    /**
      * The region in which to obtain the v2 networking client.
      * A networking client is needed to create a firewall policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
@@ -138,18 +159,20 @@ public final class PolicyV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The owner of the firewall policy. Required if admin
-     * wants to create a firewall policy for another tenant. Changing this
-     * creates a new firewall policy.
+     * This argument conflicts and is interchangeable
+     * with `project_id`. The owner of the firewall policy. Required if admin wants
+     * to create a firewall policy for another tenant. Changing this creates a new
+     * firewall policy.
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return The owner of the firewall policy. Required if admin
-     * wants to create a firewall policy for another tenant. Changing this
-     * creates a new firewall policy.
+     * @return This argument conflicts and is interchangeable
+     * with `project_id`. The owner of the firewall policy. Required if admin wants
+     * to create a firewall policy for another tenant. Changing this creates a new
+     * firewall policy.
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -162,6 +185,7 @@ public final class PolicyV2State extends com.pulumi.resources.ResourceArgs {
         this.audited = $.audited;
         this.description = $.description;
         this.name = $.name;
+        this.projectId = $.projectId;
         this.region = $.region;
         this.rules = $.rules;
         this.shared = $.shared;
@@ -262,6 +286,33 @@ public final class PolicyV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param projectId This argument conflicts and is interchangeable
+         * with `tenant_id`. The owner of the firewall policy. Required if admin wants
+         * to create a firewall policy for another project. Changing this creates a new
+         * firewall policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId This argument conflicts and is interchangeable
+         * with `tenant_id`. The owner of the firewall policy. Required if admin wants
+         * to create a firewall policy for another project. Changing this creates a new
+         * firewall policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
+        }
+
+        /**
          * @param region The region in which to obtain the v2 networking client.
          * A networking client is needed to create a firewall policy. If omitted, the
          * `region` argument of the provider is used. Changing this creates a new
@@ -355,9 +406,10 @@ public final class PolicyV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId The owner of the firewall policy. Required if admin
-         * wants to create a firewall policy for another tenant. Changing this
-         * creates a new firewall policy.
+         * @param tenantId This argument conflicts and is interchangeable
+         * with `project_id`. The owner of the firewall policy. Required if admin wants
+         * to create a firewall policy for another tenant. Changing this creates a new
+         * firewall policy.
          * 
          * @return builder
          * 
@@ -368,9 +420,10 @@ public final class PolicyV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId The owner of the firewall policy. Required if admin
-         * wants to create a firewall policy for another tenant. Changing this
-         * creates a new firewall policy.
+         * @param tenantId This argument conflicts and is interchangeable
+         * with `project_id`. The owner of the firewall policy. Required if admin wants
+         * to create a firewall policy for another tenant. Changing this creates a new
+         * firewall policy.
          * 
          * @return builder
          * 

@@ -105,7 +105,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * REDIRECT\_TO\_URL or REJECT.
      * 
      */
-    @Export(name="action", refs={String.class}, tree="[0]")
+    @Export(name="action", type=String.class, parameters={})
     private Output<String> action;
 
     /**
@@ -121,7 +121,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * A valid value is true (UP) or false (DOWN).
      * 
      */
-    @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
+    @Export(name="adminStateUp", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> adminStateUp;
 
     /**
@@ -136,7 +136,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * Human-readable description for the L7 Policy.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -151,7 +151,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * Changing this creates a new L7 Policy.
      * 
      */
-    @Export(name="listenerId", refs={String.class}, tree="[0]")
+    @Export(name="listenerId", type=String.class, parameters={})
     private Output<String> listenerId;
 
     /**
@@ -167,7 +167,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * to be unique.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -182,7 +182,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * The position of this policy on the listener. Positions start at 1.
      * 
      */
-    @Export(name="position", refs={Integer.class}, tree="[0]")
+    @Export(name="position", type=Integer.class, parameters={})
     private Output<Integer> position;
 
     /**
@@ -197,7 +197,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
      * 
      */
-    @Export(name="redirectPoolId", refs={String.class}, tree="[0]")
+    @Export(name="redirectPoolId", type=String.class, parameters={})
     private Output</* @Nullable */ String> redirectPoolId;
 
     /**
@@ -213,7 +213,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * Only valid if action is REDIRECT\_TO\_URL.
      * 
      */
-    @Export(name="redirectUrl", refs={String.class}, tree="[0]")
+    @Export(name="redirectUrl", type=String.class, parameters={})
     private Output</* @Nullable */ String> redirectUrl;
 
     /**
@@ -231,7 +231,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * L7 Policy.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -250,7 +250,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
      * other than their own. Changing this creates a new L7 Policy.
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
+    @Export(name="tenantId", type=String.class, parameters={})
     private Output<String> tenantId;
 
     /**

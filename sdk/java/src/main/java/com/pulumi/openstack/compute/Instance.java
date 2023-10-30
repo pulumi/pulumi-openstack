@@ -30,7 +30,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The first detected Fixed IPv4 address.
      * 
      */
-    @Export(name="accessIpV4", refs={String.class}, tree="[0]")
+    @Export(name="accessIpV4", type=String.class, parameters={})
     private Output<String> accessIpV4;
 
     /**
@@ -44,7 +44,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The first detected Fixed IPv6 address.
      * 
      */
-    @Export(name="accessIpV6", refs={String.class}, tree="[0]")
+    @Export(name="accessIpV6", type=String.class, parameters={})
     private Output<String> accessIpV6;
 
     /**
@@ -59,7 +59,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Changing this changes the root password on the existing server.
      * 
      */
-    @Export(name="adminPass", refs={String.class}, tree="[0]")
+    @Export(name="adminPass", type=String.class, parameters={})
     private Output</* @Nullable */ String> adminPass;
 
     /**
@@ -70,7 +70,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> adminPass() {
         return Codegen.optional(this.adminPass);
     }
-    @Export(name="allMetadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="allMetadata", type=Map.class, parameters={String.class, Object.class})
     private Output<Map<String,Object>> allMetadata;
 
     public Output<Map<String,Object>> allMetadata() {
@@ -81,7 +81,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * been explicitly and implicitly added.
      * 
      */
-    @Export(name="allTags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="allTags", type=List.class, parameters={String.class})
     private Output<List<String>> allTags;
 
     /**
@@ -98,7 +98,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * a new server.
      * 
      */
-    @Export(name="availabilityZone", refs={String.class}, tree="[0]")
+    @Export(name="availabilityZone", type=String.class, parameters={})
     private Output<String> availabilityZone;
 
     /**
@@ -119,7 +119,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * new server.
      * 
      */
-    @Export(name="availabilityZoneHints", refs={String.class}, tree="[0]")
+    @Export(name="availabilityZoneHints", type=String.class, parameters={})
     private Output</* @Nullable */ String> availabilityZoneHints;
 
     /**
@@ -143,7 +143,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * for more information.
      * 
      */
-    @Export(name="blockDevices", refs={List.class,InstanceBlockDevice.class}, tree="[0,1]")
+    @Export(name="blockDevices", type=List.class, parameters={InstanceBlockDevice.class})
     private Output</* @Nullable */ List<InstanceBlockDevice>> blockDevices;
 
     /**
@@ -163,7 +163,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * configure the instance. Changing this creates a new server.
      * 
      */
-    @Export(name="configDrive", refs={Boolean.class}, tree="[0]")
+    @Export(name="configDrive", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> configDrive;
 
     /**
@@ -178,7 +178,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The creation time of the instance.
      * 
      */
-    @Export(name="created", refs={String.class}, tree="[0]")
+    @Export(name="created", type=String.class, parameters={})
     private Output<String> created;
 
     /**
@@ -193,7 +193,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * the desired flavor for the server. Changing this resizes the existing server.
      * 
      */
-    @Export(name="flavorId", refs={String.class}, tree="[0]")
+    @Export(name="flavorId", type=String.class, parameters={})
     private Output<String> flavorId;
 
     /**
@@ -209,7 +209,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * desired flavor for the server. Changing this resizes the existing server.
      * 
      */
-    @Export(name="flavorName", refs={String.class}, tree="[0]")
+    @Export(name="flavorName", type=String.class, parameters={})
     private Output<String> flavorName;
 
     /**
@@ -226,7 +226,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use the openstack_compute_floatingip_associate_v2 resource instead */
-    @Export(name="floatingIp", refs={String.class}, tree="[0]")
+    @Export(name="floatingIp", type=String.class, parameters={})
     private Output</* @Nullable */ String> floatingIp;
 
     public Output<Optional<String>> floatingIp() {
@@ -238,7 +238,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * deletion enabled.
      * 
      */
-    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
+    @Export(name="forceDelete", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> forceDelete;
 
     /**
@@ -257,7 +257,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * server.
      * 
      */
-    @Export(name="imageId", refs={String.class}, tree="[0]")
+    @Export(name="imageId", type=String.class, parameters={})
     private Output<String> imageId;
 
     /**
@@ -276,7 +276,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * desired image for the server. Changing this rebuilds the existing server.
      * 
      */
-    @Export(name="imageName", refs={String.class}, tree="[0]")
+    @Export(name="imageName", type=String.class, parameters={})
     private Output<String> imageName;
 
     /**
@@ -294,7 +294,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Changing this creates a new server.
      * 
      */
-    @Export(name="keyPair", refs={String.class}, tree="[0]")
+    @Export(name="keyPair", type=String.class, parameters={})
     private Output</* @Nullable */ String> keyPair;
 
     /**
@@ -311,7 +311,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * within the instance. Changing this updates the existing server metadata.
      * 
      */
-    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="metadata", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> metadata;
 
     /**
@@ -326,7 +326,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A unique name for the resource.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -342,7 +342,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Please see the following [reference](https://docs.openstack.org/api-ref/compute/?expanded=create-server-detail#id11) for more information. Conflicts with `network`.
      * 
      */
-    @Export(name="networkMode", refs={String.class}, tree="[0]")
+    @Export(name="networkMode", type=String.class, parameters={})
     private Output</* @Nullable */ String> networkMode;
 
     /**
@@ -360,7 +360,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * creates a new server.
      * 
      */
-    @Export(name="networks", refs={List.class,InstanceNetwork.class}, tree="[0,1]")
+    @Export(name="networks", type=List.class, parameters={InstanceNetwork.class})
     private Output<List<InstanceNetwork>> networks;
 
     /**
@@ -378,7 +378,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * is described below. Changing this rebuilds the existing server.
      * 
      */
-    @Export(name="personalities", refs={List.class,InstancePersonality.class}, tree="[0,1]")
+    @Export(name="personalities", type=List.class, parameters={InstancePersonality.class})
     private Output</* @Nullable */ List<InstancePersonality>> personalities;
 
     /**
@@ -398,7 +398,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * remote-exec or files are not supported.
      * 
      */
-    @Export(name="powerState", refs={String.class}, tree="[0]")
+    @Export(name="powerState", type=String.class, parameters={})
     private Output</* @Nullable */ String> powerState;
 
     /**
@@ -418,7 +418,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * creates a new server.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -435,7 +435,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * the instance should be launched. The available hints are described below.
      * 
      */
-    @Export(name="schedulerHints", refs={List.class,InstanceSchedulerHint.class}, tree="[0,1]")
+    @Export(name="schedulerHints", type=List.class, parameters={InstanceSchedulerHint.class})
     private Output</* @Nullable */ List<InstanceSchedulerHint>> schedulerHints;
 
     /**
@@ -455,7 +455,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * trigger unnecessary updates.
      * 
      */
-    @Export(name="securityGroups", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="securityGroups", type=List.class, parameters={String.class})
     private Output<List<String>> securityGroups;
 
     /**
@@ -476,7 +476,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * If instance doesn&#39;t stop within timeout, it will be destroyed anyway.
      * 
      */
-    @Export(name="stopBeforeDestroy", refs={Boolean.class}, tree="[0]")
+    @Export(name="stopBeforeDestroy", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> stopBeforeDestroy;
 
     /**
@@ -493,7 +493,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * updates the existing instance tags.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -508,7 +508,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The time when the instance was last updated.
      * 
      */
-    @Export(name="updated", refs={String.class}, tree="[0]")
+    @Export(name="updated", type=String.class, parameters={})
     private Output<String> updated;
 
     /**
@@ -523,7 +523,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Changing this creates a new server.
      * 
      */
-    @Export(name="userData", refs={String.class}, tree="[0]")
+    @Export(name="userData", type=String.class, parameters={})
     private Output</* @Nullable */ String> userData;
 
     /**
@@ -539,7 +539,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Supported options are described below.
      * 
      */
-    @Export(name="vendorOptions", refs={InstanceVendorOptions.class}, tree="[0]")
+    @Export(name="vendorOptions", type=InstanceVendorOptions.class, parameters={})
     private Output</* @Nullable */ InstanceVendorOptions> vendorOptions;
 
     /**
@@ -556,7 +556,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use block_device or openstack_compute_volume_attach_v2 instead */
-    @Export(name="volumes", refs={List.class,InstanceVolume.class}, tree="[0,1]")
+    @Export(name="volumes", type=List.class, parameters={InstanceVolume.class})
     private Output</* @Nullable */ List<InstanceVolume>> volumes;
 
     public Output<Optional<List<InstanceVolume>>> volumes() {

@@ -77,6 +77,23 @@ public final class GetFwPolicyV2Args extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * This argument conflicts and is interchangeable
+     * with `tenant_id`. The owner of the firewall policy.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return This argument conflicts and is interchangeable
+     * with `tenant_id`. The owner of the firewall policy.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+
+    /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve firewall policy ids. If omitted, the
      * `region` argument of the provider is used.
@@ -111,14 +128,16 @@ public final class GetFwPolicyV2Args extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The owner of the firewall policy.
+     * This argument conflicts and is interchangeable
+     * with `project_id`. The owner of the firewall policy.
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return The owner of the firewall policy.
+     * @return This argument conflicts and is interchangeable
+     * with `project_id`. The owner of the firewall policy.
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -132,6 +151,7 @@ public final class GetFwPolicyV2Args extends com.pulumi.resources.InvokeArgs {
         this.description = $.description;
         this.name = $.name;
         this.policyId = $.policyId;
+        this.projectId = $.projectId;
         this.region = $.region;
         this.shared = $.shared;
         this.tenantId = $.tenantId;
@@ -240,6 +260,29 @@ public final class GetFwPolicyV2Args extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param projectId This argument conflicts and is interchangeable
+         * with `tenant_id`. The owner of the firewall policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId This argument conflicts and is interchangeable
+         * with `tenant_id`. The owner of the firewall policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
+        }
+
+        /**
          * @param region The region in which to obtain the V2 Neutron client.
          * A Neutron client is needed to retrieve firewall policy ids. If omitted, the
          * `region` argument of the provider is used.
@@ -286,7 +329,8 @@ public final class GetFwPolicyV2Args extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tenantId The owner of the firewall policy.
+         * @param tenantId This argument conflicts and is interchangeable
+         * with `project_id`. The owner of the firewall policy.
          * 
          * @return builder
          * 
@@ -297,7 +341,8 @@ public final class GetFwPolicyV2Args extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tenantId The owner of the firewall policy.
+         * @param tenantId This argument conflicts and is interchangeable
+         * with `project_id`. The owner of the firewall policy.
          * 
          * @return builder
          * 

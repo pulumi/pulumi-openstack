@@ -121,7 +121,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * /v1/account/www/pages specifies the www container, not the www/pages container.
      * 
      */
-    @Export(name="containerName", refs={String.class}, tree="[0]")
+    @Export(name="containerName", type=String.class, parameters={})
     private Output<String> containerName;
 
     /**
@@ -141,7 +141,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * `source` and `copy_from`.
      * 
      */
-    @Export(name="content", refs={String.class}, tree="[0]")
+    @Export(name="content", type=String.class, parameters={})
     private Output</* @Nullable */ String> content;
 
     /**
@@ -158,7 +158,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * program to save this file rather than show the file, which is the default.
      * 
      */
-    @Export(name="contentDisposition", refs={String.class}, tree="[0]")
+    @Export(name="contentDisposition", type=String.class, parameters={})
     private Output<String> contentDisposition;
 
     /**
@@ -175,7 +175,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * metadata.
      * 
      */
-    @Export(name="contentEncoding", refs={String.class}, tree="[0]")
+    @Export(name="contentEncoding", type=String.class, parameters={})
     private Output<String> contentEncoding;
 
     /**
@@ -191,7 +191,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * length of informational or error text in the response body.
      * 
      */
-    @Export(name="contentLength", refs={Integer.class}, tree="[0]")
+    @Export(name="contentLength", type=Integer.class, parameters={})
     private Output<Integer> contentLength;
 
     /**
@@ -206,7 +206,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * A string which sets the MIME type for the object.
      * 
      */
-    @Export(name="contentType", refs={String.class}, tree="[0]")
+    @Export(name="contentType", type=String.class, parameters={})
     private Output<String> contentType;
 
     /**
@@ -224,7 +224,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * `content`.
      * 
      */
-    @Export(name="copyFrom", refs={String.class}, tree="[0]")
+    @Export(name="copyFrom", type=String.class, parameters={})
     private Output</* @Nullable */ String> copyFrom;
 
     /**
@@ -244,7 +244,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * time is always in UTC.
      * 
      */
-    @Export(name="date", refs={String.class}, tree="[0]")
+    @Export(name="date", type=String.class, parameters={})
     private Output<String> date;
 
     /**
@@ -262,7 +262,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * the X-Delete-At metadata item.
      * 
      */
-    @Export(name="deleteAfter", refs={Integer.class}, tree="[0]")
+    @Export(name="deleteAfter", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> deleteAfter;
 
     /**
@@ -279,7 +279,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * For example, &#34;2015-08-26&#34; is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
      * 
      */
-    @Export(name="deleteAt", refs={String.class}, tree="[0]")
+    @Export(name="deleteAt", type=String.class, parameters={})
     private Output<String> deleteAt;
 
     /**
@@ -296,7 +296,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * header, if present.
      * 
      */
-    @Export(name="detectContentType", refs={Boolean.class}, tree="[0]")
+    @Export(name="detectContentType", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> detectContentType;
 
     /**
@@ -312,7 +312,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * Used to trigger updates. The only meaningful value is ${md5(file(&#34;path/to/file&#34;))}.
      * 
      */
-    @Export(name="etag", refs={String.class}, tree="[0]")
+    @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
@@ -331,7 +331,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * example, the offset value is -05:00.
      * 
      */
-    @Export(name="lastModified", refs={String.class}, tree="[0]")
+    @Export(name="lastModified", type=String.class, parameters={})
     private Output<String> lastModified;
 
     /**
@@ -346,7 +346,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
     public Output<String> lastModified() {
         return this.lastModified;
     }
-    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="metadata", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> metadata;
 
     public Output<Optional<Map<String,Object>>> metadata() {
@@ -356,7 +356,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * A unique name for the object.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -374,7 +374,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * header.
      * 
      */
-    @Export(name="objectManifest", refs={String.class}, tree="[0]")
+    @Export(name="objectManifest", type=String.class, parameters={})
     private Output<String> objectManifest;
 
     /**
@@ -394,7 +394,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * creates a new container.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -411,7 +411,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * as the object&#39;s content. Conflicts with `source` and `copy_from`.
      * 
      */
-    @Export(name="source", refs={String.class}, tree="[0]")
+    @Export(name="source", type=String.class, parameters={})
     private Output</* @Nullable */ String> source;
 
     /**
@@ -427,7 +427,7 @@ public class ContainerObject extends com.pulumi.resources.CustomResource {
      * need this value if you report a problem.
      * 
      */
-    @Export(name="transId", refs={String.class}, tree="[0]")
+    @Export(name="transId", type=String.class, parameters={})
     private Output<String> transId;
 
     /**

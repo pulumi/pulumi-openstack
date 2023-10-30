@@ -71,7 +71,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * `admin_state_up` of an existing router.
      * 
      */
-    @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
+    @Export(name="adminStateUp", type=Boolean.class, parameters={})
     private Output<Boolean> adminStateUp;
 
     /**
@@ -88,7 +88,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * explicitly and implicitly added.
      * 
      */
-    @Export(name="allTags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="allTags", type=List.class, parameters={String.class})
     private Output<List<String>> allTags;
 
     /**
@@ -106,7 +106,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * creates a new router.
      * 
      */
-    @Export(name="availabilityZoneHints", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="availabilityZoneHints", type=List.class, parameters={String.class})
     private Output<List<String>> availabilityZoneHints;
 
     /**
@@ -123,7 +123,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * Human-readable description for the router.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -139,7 +139,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * usage of this property to administrative users only.
      * 
      */
-    @Export(name="distributed", refs={Boolean.class}, tree="[0]")
+    @Export(name="distributed", type=Boolean.class, parameters={})
     private Output<Boolean> distributed;
 
     /**
@@ -159,7 +159,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * in OpenStack Neutron.
      * 
      */
-    @Export(name="enableSnat", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableSnat", type=Boolean.class, parameters={})
     private Output<Boolean> enableSnat;
 
     /**
@@ -180,7 +180,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * external fixed IPs of the router.
      * 
      */
-    @Export(name="externalFixedIps", refs={List.class,RouterExternalFixedIp.class}, tree="[0,1]")
+    @Export(name="externalFixedIps", type=List.class, parameters={RouterExternalFixedIp.class})
     private Output<List<RouterExternalFixedIp>> externalFixedIps;
 
     /**
@@ -205,7 +205,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* use external_network_id instead */
-    @Export(name="externalGateway", refs={String.class}, tree="[0]")
+    @Export(name="externalGateway", type=String.class, parameters={})
     private Output<String> externalGateway;
 
     /**
@@ -226,7 +226,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * this updates the external gateway of the router.
      * 
      */
-    @Export(name="externalNetworkId", refs={String.class}, tree="[0]")
+    @Export(name="externalNetworkId", type=String.class, parameters={})
     private Output<String> externalNetworkId;
 
     /**
@@ -247,7 +247,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * IP. Conflicts with an `external_fixed_ip` argument.
      * 
      */
-    @Export(name="externalSubnetIds", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="externalSubnetIds", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> externalSubnetIds;
 
     /**
@@ -266,7 +266,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * updates the `name` of an existing router.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -284,7 +284,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * router.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -301,7 +301,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * A set of string tags for the router.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -316,7 +316,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * to create a router for another tenant. Changing this creates a new router.
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
+    @Export(name="tenantId", type=String.class, parameters={})
     private Output<String> tenantId;
 
     /**
@@ -331,7 +331,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * Map of additional driver-specific options.
      * 
      */
-    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**
@@ -346,7 +346,7 @@ public class Router extends com.pulumi.resources.CustomResource {
      * Supported options are described below.
      * 
      */
-    @Export(name="vendorOptions", refs={RouterVendorOptions.class}, tree="[0]")
+    @Export(name="vendorOptions", type=RouterVendorOptions.class, parameters={})
     private Output</* @Nullable */ RouterVendorOptions> vendorOptions;
 
     /**

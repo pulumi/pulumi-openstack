@@ -27,6 +27,7 @@ export function getFwPolicyV2(args?: GetFwPolicyV2Args, opts?: pulumi.InvokeOpti
         "description": args.description,
         "name": args.name,
         "policyId": args.policyId,
+        "projectId": args.projectId,
         "region": args.region,
         "shared": args.shared,
         "tenantId": args.tenantId,
@@ -54,6 +55,11 @@ export interface GetFwPolicyV2Args {
      */
     policyId?: string;
     /**
+     * This argument conflicts and is interchangeable
+     * with `tenantId`. The owner of the firewall policy.
+     */
+    projectId?: string;
+    /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve firewall policy ids. If omitted, the
      * `region` argument of the provider is used.
@@ -64,7 +70,8 @@ export interface GetFwPolicyV2Args {
      */
     shared?: boolean;
     /**
-     * The owner of the firewall policy.
+     * This argument conflicts and is interchangeable
+     * with `projectId`. The owner of the firewall policy.
      */
     tenantId?: string;
 }
@@ -90,6 +97,10 @@ export interface GetFwPolicyV2Result {
      * See Argument Reference above.
      */
     readonly policyId?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly projectId: string;
     /**
      * See Argument Reference above.
      */
@@ -146,6 +157,11 @@ export interface GetFwPolicyV2OutputArgs {
      */
     policyId?: pulumi.Input<string>;
     /**
+     * This argument conflicts and is interchangeable
+     * with `tenantId`. The owner of the firewall policy.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
      * The region in which to obtain the V2 Neutron client.
      * A Neutron client is needed to retrieve firewall policy ids. If omitted, the
      * `region` argument of the provider is used.
@@ -156,7 +172,8 @@ export interface GetFwPolicyV2OutputArgs {
      */
     shared?: pulumi.Input<boolean>;
     /**
-     * The owner of the firewall policy.
+     * This argument conflicts and is interchangeable
+     * with `projectId`. The owner of the firewall policy.
      */
     tenantId?: pulumi.Input<string>;
 }

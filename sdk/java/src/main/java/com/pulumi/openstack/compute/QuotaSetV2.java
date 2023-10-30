@@ -80,7 +80,7 @@ public class QuotaSetV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing quotaset.
      * 
      */
-    @Export(name="cores", refs={Integer.class}, tree="[0]")
+    @Export(name="cores", type=Integer.class, parameters={})
     private Output<Integer> cores;
 
     /**
@@ -96,7 +96,7 @@ public class QuotaSetV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing quotaset.
      * 
      */
-    @Export(name="fixedIps", refs={Integer.class}, tree="[0]")
+    @Export(name="fixedIps", type=Integer.class, parameters={})
     private Output<Integer> fixedIps;
 
     /**
@@ -112,7 +112,7 @@ public class QuotaSetV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing quotaset.
      * 
      */
-    @Export(name="floatingIps", refs={Integer.class}, tree="[0]")
+    @Export(name="floatingIps", type=Integer.class, parameters={})
     private Output<Integer> floatingIps;
 
     /**
@@ -128,7 +128,7 @@ public class QuotaSetV2 extends com.pulumi.resources.CustomResource {
      * of injected files. Changing this updates the existing quotaset.
      * 
      */
-    @Export(name="injectedFileContentBytes", refs={Integer.class}, tree="[0]")
+    @Export(name="injectedFileContentBytes", type=Integer.class, parameters={})
     private Output<Integer> injectedFileContentBytes;
 
     /**
@@ -144,7 +144,7 @@ public class QuotaSetV2 extends com.pulumi.resources.CustomResource {
      * injected files. Changing this updates the existing quotaset.
      * 
      */
-    @Export(name="injectedFilePathBytes", refs={Integer.class}, tree="[0]")
+    @Export(name="injectedFilePathBytes", type=Integer.class, parameters={})
     private Output<Integer> injectedFilePathBytes;
 
     /**
@@ -160,7 +160,7 @@ public class QuotaSetV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing quotaset.
      * 
      */
-    @Export(name="injectedFiles", refs={Integer.class}, tree="[0]")
+    @Export(name="injectedFiles", type=Integer.class, parameters={})
     private Output<Integer> injectedFiles;
 
     /**
@@ -176,7 +176,7 @@ public class QuotaSetV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing quotaset.
      * 
      */
-    @Export(name="instances", refs={Integer.class}, tree="[0]")
+    @Export(name="instances", type=Integer.class, parameters={})
     private Output<Integer> instances;
 
     /**
@@ -192,7 +192,7 @@ public class QuotaSetV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing quotaset.
      * 
      */
-    @Export(name="keyPairs", refs={Integer.class}, tree="[0]")
+    @Export(name="keyPairs", type=Integer.class, parameters={})
     private Output<Integer> keyPairs;
 
     /**
@@ -208,7 +208,7 @@ public class QuotaSetV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing quotaset.
      * 
      */
-    @Export(name="metadataItems", refs={Integer.class}, tree="[0]")
+    @Export(name="metadataItems", type=Integer.class, parameters={})
     private Output<Integer> metadataItems;
 
     /**
@@ -224,7 +224,7 @@ public class QuotaSetV2 extends com.pulumi.resources.CustomResource {
      * Changing this creates a new quotaset.
      * 
      */
-    @Export(name="projectId", refs={String.class}, tree="[0]")
+    @Export(name="projectId", type=String.class, parameters={})
     private Output<String> projectId;
 
     /**
@@ -240,7 +240,7 @@ public class QuotaSetV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing quotaset.
      * 
      */
-    @Export(name="ram", refs={Integer.class}, tree="[0]")
+    @Export(name="ram", type=Integer.class, parameters={})
     private Output<Integer> ram;
 
     /**
@@ -257,7 +257,7 @@ public class QuotaSetV2 extends com.pulumi.resources.CustomResource {
      * creates a new quotaset.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -274,7 +274,7 @@ public class QuotaSetV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing quotaset.
      * 
      */
-    @Export(name="securityGroupRules", refs={Integer.class}, tree="[0]")
+    @Export(name="securityGroupRules", type=Integer.class, parameters={})
     private Output<Integer> securityGroupRules;
 
     /**
@@ -290,7 +290,7 @@ public class QuotaSetV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing quotaset.
      * 
      */
-    @Export(name="securityGroups", refs={Integer.class}, tree="[0]")
+    @Export(name="securityGroups", type=Integer.class, parameters={})
     private Output<Integer> securityGroups;
 
     /**
@@ -306,7 +306,7 @@ public class QuotaSetV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing quotaset.
      * 
      */
-    @Export(name="serverGroupMembers", refs={Integer.class}, tree="[0]")
+    @Export(name="serverGroupMembers", type=Integer.class, parameters={})
     private Output<Integer> serverGroupMembers;
 
     /**
@@ -322,7 +322,7 @@ public class QuotaSetV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing quotaset.
      * 
      */
-    @Export(name="serverGroups", refs={Integer.class}, tree="[0]")
+    @Export(name="serverGroups", type=Integer.class, parameters={})
     private Output<Integer> serverGroups;
 
     /**

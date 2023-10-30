@@ -72,7 +72,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * firewall rule.
      * 
      */
-    @Export(name="action", refs={String.class}, tree="[0]")
+    @Export(name="action", type=String.class, parameters={})
     private Output<String> action;
 
     /**
@@ -89,7 +89,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * updates the `description` of an existing firewall rule.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -106,7 +106,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * of an existing firewall rule.
      * 
      */
-    @Export(name="destinationIpAddress", refs={String.class}, tree="[0]")
+    @Export(name="destinationIpAddress", type=String.class, parameters={})
     private Output</* @Nullable */ String> destinationIpAddress;
 
     /**
@@ -124,7 +124,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * firewall rule.
      * 
      */
-    @Export(name="destinationPort", refs={String.class}, tree="[0]")
+    @Export(name="destinationPort", type=String.class, parameters={})
     private Output</* @Nullable */ String> destinationPort;
 
     /**
@@ -142,7 +142,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * `enabled` status of an existing firewall rule.
      * 
      */
-    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="enabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -159,7 +159,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * updates the `ip_version` of an existing firewall rule.
      * 
      */
-    @Export(name="ipVersion", refs={Integer.class}, tree="[0]")
+    @Export(name="ipVersion", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> ipVersion;
 
     /**
@@ -175,7 +175,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * updates the `name` of an existing firewall rule.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -192,7 +192,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * `protocol` of an existing firewall rule.
      * 
      */
-    @Export(name="protocol", refs={String.class}, tree="[0]")
+    @Export(name="protocol", type=String.class, parameters={})
     private Output<String> protocol;
 
     /**
@@ -211,7 +211,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * firewall rule.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -230,7 +230,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * firewall rule.
      * 
      */
-    @Export(name="sourceIpAddress", refs={String.class}, tree="[0]")
+    @Export(name="sourceIpAddress", type=String.class, parameters={})
     private Output</* @Nullable */ String> sourceIpAddress;
 
     /**
@@ -248,7 +248,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * firewall rule.
      * 
      */
-    @Export(name="sourcePort", refs={String.class}, tree="[0]")
+    @Export(name="sourcePort", type=String.class, parameters={})
     private Output</* @Nullable */ String> sourcePort;
 
     /**
@@ -266,7 +266,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * new firewall rule.
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
+    @Export(name="tenantId", type=String.class, parameters={})
     private Output</* @Nullable */ String> tenantId;
 
     /**
@@ -282,7 +282,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Map of additional options.
      * 
      */
-    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**

@@ -68,7 +68,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * A valid value is true (UP) or false (DOWN).
      * 
      */
-    @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
+    @Export(name="adminStateUp", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> adminStateUp;
 
     /**
@@ -85,7 +85,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * **minor version 2.14 or later**.
      * 
      */
-    @Export(name="availabilityZone", refs={String.class}, tree="[0]")
+    @Export(name="availabilityZone", type=String.class, parameters={})
     private Output</* @Nullable */ String> availabilityZone;
 
     /**
@@ -101,7 +101,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Human-readable description for the Loadbalancer.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -116,7 +116,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * loadbalancer.
      * 
      */
-    @Export(name="flavorId", refs={String.class}, tree="[0]")
+    @Export(name="flavorId", type=String.class, parameters={})
     private Output<String> flavorId;
 
     /**
@@ -132,7 +132,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * creates a new loadbalancer.
      * 
      */
-    @Export(name="loadbalancerProvider", refs={String.class}, tree="[0]")
+    @Export(name="loadbalancerProvider", type=String.class, parameters={})
     private Output<String> loadbalancerProvider;
 
     /**
@@ -148,7 +148,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * to be unique.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -166,7 +166,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * LB member.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -185,7 +185,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * opposed to how they are configured with the Compute Instance).
      * 
      */
-    @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="securityGroupIds", type=List.class, parameters={String.class})
     private Output<List<String>> securityGroupIds;
 
     /**
@@ -202,7 +202,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Available only for Octavia **minor version 2.5 or later**.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -219,7 +219,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * other than their own.  Changing this creates a new loadbalancer.
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
+    @Export(name="tenantId", type=String.class, parameters={})
     private Output<String> tenantId;
 
     /**
@@ -236,7 +236,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Changing this creates a new loadbalancer.
      * 
      */
-    @Export(name="vipAddress", refs={String.class}, tree="[0]")
+    @Export(name="vipAddress", type=String.class, parameters={})
     private Output<String> vipAddress;
 
     /**
@@ -255,7 +255,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * It is available only for Octavia.
      * 
      */
-    @Export(name="vipNetworkId", refs={String.class}, tree="[0]")
+    @Export(name="vipNetworkId", type=String.class, parameters={})
     private Output<String> vipNetworkId;
 
     /**
@@ -274,7 +274,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Changing this creates a new loadbalancer. It is available only for Octavia.
      * 
      */
-    @Export(name="vipPortId", refs={String.class}, tree="[0]")
+    @Export(name="vipPortId", type=String.class, parameters={})
     private Output<String> vipPortId;
 
     /**
@@ -293,7 +293,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * It is required to Neutron LBaaS but optional for Octavia.
      * 
      */
-    @Export(name="vipSubnetId", refs={String.class}, tree="[0]")
+    @Export(name="vipSubnetId", type=String.class, parameters={})
     private Output<String> vipSubnetId;
 
     /**

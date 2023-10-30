@@ -108,9 +108,9 @@ export class GroupV2 extends pulumi.CustomResource {
      */
     public readonly ports!: pulumi.Output<string[] | undefined>;
     /**
-     * This argument conflict and interchangeable with
-     * `tenantId`. The owner of the firewall group. Required if admin wants to
-     * create a firewall group for another project. Changing this creates a new
+     * This argument conflicts and  is interchangeable
+     * with `tenantId`. The owner of the firewall group. Required if admin wants
+     * to create a firewall group for another project. Changing this creates a new
      * firewall group.
      */
     public readonly projectId!: pulumi.Output<string>;
@@ -134,7 +134,7 @@ export class GroupV2 extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * This argument conflict and interchangeable with
+     * This argument conflicts and is interchangeable with
      * `projectId`. The owner of the firewall group. Required if admin wants to
      * create a firewall group for another tenant. Changing this creates a new
      * firewall group.
@@ -223,9 +223,9 @@ export interface GroupV2State {
      */
     ports?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * This argument conflict and interchangeable with
-     * `tenantId`. The owner of the firewall group. Required if admin wants to
-     * create a firewall group for another project. Changing this creates a new
+     * This argument conflicts and  is interchangeable
+     * with `tenantId`. The owner of the firewall group. Required if admin wants
+     * to create a firewall group for another project. Changing this creates a new
      * firewall group.
      */
     projectId?: pulumi.Input<string>;
@@ -249,7 +249,7 @@ export interface GroupV2State {
      */
     status?: pulumi.Input<string>;
     /**
-     * This argument conflict and interchangeable with
+     * This argument conflicts and is interchangeable with
      * `projectId`. The owner of the firewall group. Required if admin wants to
      * create a firewall group for another tenant. Changing this creates a new
      * firewall group.
@@ -296,9 +296,9 @@ export interface GroupV2Args {
      */
     ports?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * This argument conflict and interchangeable with
-     * `tenantId`. The owner of the firewall group. Required if admin wants to
-     * create a firewall group for another project. Changing this creates a new
+     * This argument conflicts and  is interchangeable
+     * with `tenantId`. The owner of the firewall group. Required if admin wants
+     * to create a firewall group for another project. Changing this creates a new
      * firewall group.
      */
     projectId?: pulumi.Input<string>;
@@ -318,7 +318,7 @@ export interface GroupV2Args {
      */
     shared?: pulumi.Input<boolean>;
     /**
-     * This argument conflict and interchangeable with
+     * This argument conflicts and is interchangeable with
      * `projectId`. The owner of the firewall group. Required if admin wants to
      * create a firewall group for another tenant. Changing this creates a new
      * firewall group.

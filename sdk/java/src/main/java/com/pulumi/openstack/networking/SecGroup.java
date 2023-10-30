@@ -33,7 +33,7 @@ public class SecGroup extends com.pulumi.resources.CustomResource {
      * been explicitly and implicitly added.
      * 
      */
-    @Export(name="allTags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="allTags", type=List.class, parameters={String.class})
     private Output<List<String>> allTags;
 
     /**
@@ -50,7 +50,7 @@ public class SecGroup extends com.pulumi.resources.CustomResource {
      * for more information.
      * 
      */
-    @Export(name="deleteDefaultRules", refs={Boolean.class}, tree="[0]")
+    @Export(name="deleteDefaultRules", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> deleteDefaultRules;
 
     /**
@@ -66,7 +66,7 @@ public class SecGroup extends com.pulumi.resources.CustomResource {
      * A unique name for the security group.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -80,7 +80,7 @@ public class SecGroup extends com.pulumi.resources.CustomResource {
      * A unique name for the security group.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -97,7 +97,7 @@ public class SecGroup extends com.pulumi.resources.CustomResource {
      * security group.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -114,7 +114,7 @@ public class SecGroup extends com.pulumi.resources.CustomResource {
      * A set of string tags for the security group.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -130,7 +130,7 @@ public class SecGroup extends com.pulumi.resources.CustomResource {
      * security group.
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
+    @Export(name="tenantId", type=String.class, parameters={})
     private Output<String> tenantId;
 
     /**

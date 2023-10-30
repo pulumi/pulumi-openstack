@@ -113,9 +113,9 @@ type GroupV2 struct {
 	// with. Must be a list of strings. Changing this updates the associated ports
 	// of an existing firewall group.
 	Ports pulumi.StringArrayOutput `pulumi:"ports"`
-	// This argument conflict and interchangeable with
-	// `tenantId`. The owner of the firewall group. Required if admin wants to
-	// create a firewall group for another project. Changing this creates a new
+	// This argument conflicts and  is interchangeable
+	// with `tenantId`. The owner of the firewall group. Required if admin wants
+	// to create a firewall group for another project. Changing this creates a new
 	// firewall group.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The region in which to obtain the v2 networking client.
@@ -131,7 +131,7 @@ type GroupV2 struct {
 	Shared pulumi.BoolPtrOutput `pulumi:"shared"`
 	// The status of the firewall group.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// This argument conflict and interchangeable with
+	// This argument conflicts and is interchangeable with
 	// `projectId`. The owner of the firewall group. Required if admin wants to
 	// create a firewall group for another tenant. Changing this creates a new
 	// firewall group.
@@ -190,9 +190,9 @@ type groupV2State struct {
 	// with. Must be a list of strings. Changing this updates the associated ports
 	// of an existing firewall group.
 	Ports []string `pulumi:"ports"`
-	// This argument conflict and interchangeable with
-	// `tenantId`. The owner of the firewall group. Required if admin wants to
-	// create a firewall group for another project. Changing this creates a new
+	// This argument conflicts and  is interchangeable
+	// with `tenantId`. The owner of the firewall group. Required if admin wants
+	// to create a firewall group for another project. Changing this creates a new
 	// firewall group.
 	ProjectId *string `pulumi:"projectId"`
 	// The region in which to obtain the v2 networking client.
@@ -208,7 +208,7 @@ type groupV2State struct {
 	Shared *bool `pulumi:"shared"`
 	// The status of the firewall group.
 	Status *string `pulumi:"status"`
-	// This argument conflict and interchangeable with
+	// This argument conflicts and is interchangeable with
 	// `projectId`. The owner of the firewall group. Required if admin wants to
 	// create a firewall group for another tenant. Changing this creates a new
 	// firewall group.
@@ -238,9 +238,9 @@ type GroupV2State struct {
 	// with. Must be a list of strings. Changing this updates the associated ports
 	// of an existing firewall group.
 	Ports pulumi.StringArrayInput
-	// This argument conflict and interchangeable with
-	// `tenantId`. The owner of the firewall group. Required if admin wants to
-	// create a firewall group for another project. Changing this creates a new
+	// This argument conflicts and  is interchangeable
+	// with `tenantId`. The owner of the firewall group. Required if admin wants
+	// to create a firewall group for another project. Changing this creates a new
 	// firewall group.
 	ProjectId pulumi.StringPtrInput
 	// The region in which to obtain the v2 networking client.
@@ -256,7 +256,7 @@ type GroupV2State struct {
 	Shared pulumi.BoolPtrInput
 	// The status of the firewall group.
 	Status pulumi.StringPtrInput
-	// This argument conflict and interchangeable with
+	// This argument conflicts and is interchangeable with
 	// `projectId`. The owner of the firewall group. Required if admin wants to
 	// create a firewall group for another tenant. Changing this creates a new
 	// firewall group.
@@ -290,9 +290,9 @@ type groupV2Args struct {
 	// with. Must be a list of strings. Changing this updates the associated ports
 	// of an existing firewall group.
 	Ports []string `pulumi:"ports"`
-	// This argument conflict and interchangeable with
-	// `tenantId`. The owner of the firewall group. Required if admin wants to
-	// create a firewall group for another project. Changing this creates a new
+	// This argument conflicts and  is interchangeable
+	// with `tenantId`. The owner of the firewall group. Required if admin wants
+	// to create a firewall group for another project. Changing this creates a new
 	// firewall group.
 	ProjectId *string `pulumi:"projectId"`
 	// The region in which to obtain the v2 networking client.
@@ -306,7 +306,7 @@ type groupV2Args struct {
 	// `shared` status of an existing firewall group. Only administrative users
 	// can specify if the firewall group should be shared.
 	Shared *bool `pulumi:"shared"`
-	// This argument conflict and interchangeable with
+	// This argument conflicts and is interchangeable with
 	// `projectId`. The owner of the firewall group. Required if admin wants to
 	// create a firewall group for another tenant. Changing this creates a new
 	// firewall group.
@@ -337,9 +337,9 @@ type GroupV2Args struct {
 	// with. Must be a list of strings. Changing this updates the associated ports
 	// of an existing firewall group.
 	Ports pulumi.StringArrayInput
-	// This argument conflict and interchangeable with
-	// `tenantId`. The owner of the firewall group. Required if admin wants to
-	// create a firewall group for another project. Changing this creates a new
+	// This argument conflicts and  is interchangeable
+	// with `tenantId`. The owner of the firewall group. Required if admin wants
+	// to create a firewall group for another project. Changing this creates a new
 	// firewall group.
 	ProjectId pulumi.StringPtrInput
 	// The region in which to obtain the v2 networking client.
@@ -353,7 +353,7 @@ type GroupV2Args struct {
 	// `shared` status of an existing firewall group. Only administrative users
 	// can specify if the firewall group should be shared.
 	Shared pulumi.BoolPtrInput
-	// This argument conflict and interchangeable with
+	// This argument conflicts and is interchangeable with
 	// `projectId`. The owner of the firewall group. Required if admin wants to
 	// create a firewall group for another tenant. Changing this creates a new
 	// firewall group.
@@ -511,9 +511,9 @@ func (o GroupV2Output) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GroupV2) pulumi.StringArrayOutput { return v.Ports }).(pulumi.StringArrayOutput)
 }
 
-// This argument conflict and interchangeable with
-// `tenantId`. The owner of the firewall group. Required if admin wants to
-// create a firewall group for another project. Changing this creates a new
+// This argument conflicts and  is interchangeable
+// with `tenantId`. The owner of the firewall group. Required if admin wants
+// to create a firewall group for another project. Changing this creates a new
 // firewall group.
 func (o GroupV2Output) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupV2) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
@@ -541,7 +541,7 @@ func (o GroupV2Output) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupV2) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// This argument conflict and interchangeable with
+// This argument conflicts and is interchangeable with
 // `projectId`. The owner of the firewall group. Required if admin wants to
 // create a firewall group for another tenant. Changing this creates a new
 // firewall group.

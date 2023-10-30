@@ -90,7 +90,7 @@ public class PolicyV2 extends com.pulumi.resources.CustomResource {
      * firewall policy.
      * 
      */
-    @Export(name="audited", refs={Boolean.class}, tree="[0]")
+    @Export(name="audited", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> audited;
 
     /**
@@ -109,7 +109,7 @@ public class PolicyV2 extends com.pulumi.resources.CustomResource {
      * this updates the `description` of an existing firewall policy.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -125,7 +125,7 @@ public class PolicyV2 extends com.pulumi.resources.CustomResource {
      * updates the `name` of an existing firewall policy.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -137,13 +137,33 @@ public class PolicyV2 extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * This argument conflicts and is interchangeable
+     * with `tenant_id`. The owner of the firewall policy. Required if admin wants
+     * to create a firewall policy for another project. Changing this creates a new
+     * firewall policy.
+     * 
+     */
+    @Export(name="projectId", type=String.class, parameters={})
+    private Output<String> projectId;
+
+    /**
+     * @return This argument conflicts and is interchangeable
+     * with `tenant_id`. The owner of the firewall policy. Required if admin wants
+     * to create a firewall policy for another project. Changing this creates a new
+     * firewall policy.
+     * 
+     */
+    public Output<String> projectId() {
+        return this.projectId;
+    }
+    /**
      * The region in which to obtain the v2 networking client.
      * A networking client is needed to create a firewall policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * firewall policy.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -162,7 +182,7 @@ public class PolicyV2 extends com.pulumi.resources.CustomResource {
      * existing firewall policy.
      * 
      */
-    @Export(name="rules", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="rules", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> rules;
 
     /**
@@ -182,7 +202,7 @@ public class PolicyV2 extends com.pulumi.resources.CustomResource {
      * can specify if the policy should be shared.
      * 
      */
-    @Export(name="shared", refs={Boolean.class}, tree="[0]")
+    @Export(name="shared", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> shared;
 
     /**
@@ -197,18 +217,20 @@ public class PolicyV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.shared);
     }
     /**
-     * The owner of the firewall policy. Required if admin
-     * wants to create a firewall policy for another tenant. Changing this
-     * creates a new firewall policy.
+     * This argument conflicts and is interchangeable
+     * with `project_id`. The owner of the firewall policy. Required if admin wants
+     * to create a firewall policy for another tenant. Changing this creates a new
+     * firewall policy.
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
+    @Export(name="tenantId", type=String.class, parameters={})
     private Output<String> tenantId;
 
     /**
-     * @return The owner of the firewall policy. Required if admin
-     * wants to create a firewall policy for another tenant. Changing this
-     * creates a new firewall policy.
+     * @return This argument conflicts and is interchangeable
+     * with `project_id`. The owner of the firewall policy. Required if admin wants
+     * to create a firewall policy for another tenant. Changing this creates a new
+     * firewall policy.
      * 
      */
     public Output<String> tenantId() {

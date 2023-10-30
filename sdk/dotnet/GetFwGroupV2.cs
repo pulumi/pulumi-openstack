@@ -108,8 +108,8 @@ namespace Pulumi.OpenStack
         public string? Name { get; set; }
 
         /// <summary>
-        /// This argument conflict and interchangeable with
-        /// `tenant_id`. The owner of the firewall group.
+        /// This argument conflicts and is interchangeable
+        /// with `tenant_id`. The owner of the firewall group.
         /// </summary>
         [Input("projectId")]
         public string? ProjectId { get; set; }
@@ -135,8 +135,8 @@ namespace Pulumi.OpenStack
         public string? Status { get; set; }
 
         /// <summary>
-        /// This argument conflict and interchangeable with
-        /// `project_id`. The owner of the firewall group.
+        /// This argument conflicts and is interchangeable
+        /// with `project_id`. The owner of the firewall group.
         /// </summary>
         [Input("tenantId")]
         public string? TenantId { get; set; }
@@ -186,8 +186,8 @@ namespace Pulumi.OpenStack
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// This argument conflict and interchangeable with
-        /// `tenant_id`. The owner of the firewall group.
+        /// This argument conflicts and is interchangeable
+        /// with `tenant_id`. The owner of the firewall group.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -213,8 +213,8 @@ namespace Pulumi.OpenStack
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// This argument conflict and interchangeable with
-        /// `project_id`. The owner of the firewall group.
+        /// This argument conflicts and is interchangeable
+        /// with `project_id`. The owner of the firewall group.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }

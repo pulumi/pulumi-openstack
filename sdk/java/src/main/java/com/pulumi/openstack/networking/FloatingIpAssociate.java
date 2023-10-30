@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="openstack:networking/floatingIpAssociate:FloatingIpAssociate")
 public class FloatingIpAssociate extends com.pulumi.resources.CustomResource {
-    @Export(name="fixedIp", refs={String.class}, tree="[0]")
+    @Export(name="fixedIp", type=String.class, parameters={})
     private Output<String> fixedIp;
 
     public Output<String> fixedIp() {
@@ -76,7 +76,7 @@ public class FloatingIpAssociate extends com.pulumi.resources.CustomResource {
      * IP Address of an existing floating IP.
      * 
      */
-    @Export(name="floatingIp", refs={String.class}, tree="[0]")
+    @Export(name="floatingIp", type=String.class, parameters={})
     private Output<String> floatingIp;
 
     /**
@@ -91,7 +91,7 @@ public class FloatingIpAssociate extends com.pulumi.resources.CustomResource {
      * associate with this floating IP.
      * 
      */
-    @Export(name="portId", refs={String.class}, tree="[0]")
+    @Export(name="portId", type=String.class, parameters={})
     private Output<String> portId;
 
     /**
@@ -110,7 +110,7 @@ public class FloatingIpAssociate extends com.pulumi.resources.CustomResource {
      * floating IP (which may or may not have a different address).
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**

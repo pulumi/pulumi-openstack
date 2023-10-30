@@ -72,7 +72,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * existing firewall rule. Default is `deny`.
      * 
      */
-    @Export(name="action", refs={String.class}, tree="[0]")
+    @Export(name="action", type=String.class, parameters={})
     private Output</* @Nullable */ String> action;
 
     /**
@@ -89,7 +89,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * updates the `description` of an existing firewall rule.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -106,7 +106,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * of an existing firewall rule.
      * 
      */
-    @Export(name="destinationIpAddress", refs={String.class}, tree="[0]")
+    @Export(name="destinationIpAddress", type=String.class, parameters={})
     private Output</* @Nullable */ String> destinationIpAddress;
 
     /**
@@ -124,7 +124,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * firewall rule. Require not `any` or empty protocol.
      * 
      */
-    @Export(name="destinationPort", refs={String.class}, tree="[0]")
+    @Export(name="destinationPort", type=String.class, parameters={})
     private Output</* @Nullable */ String> destinationPort;
 
     /**
@@ -142,7 +142,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * `enabled` status of an existing firewall rule.
      * 
      */
-    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="enabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -159,7 +159,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * updates the `ip_version` of an existing firewall rule. Default is `4`.
      * 
      */
-    @Export(name="ipVersion", refs={Integer.class}, tree="[0]")
+    @Export(name="ipVersion", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> ipVersion;
 
     /**
@@ -175,7 +175,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * updates the `name` of an existing firewall rule.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -187,13 +187,33 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * This argument conflicts and is interchangeable
+     * with `tenant_id`. The owner of the firewall rule. Required if admin wants
+     * to create a firewall rule for another project. Changing this creates a new
+     * firewall rule.
+     * 
+     */
+    @Export(name="projectId", type=String.class, parameters={})
+    private Output<String> projectId;
+
+    /**
+     * @return This argument conflicts and is interchangeable
+     * with `tenant_id`. The owner of the firewall rule. Required if admin wants
+     * to create a firewall rule for another project. Changing this creates a new
+     * firewall rule.
+     * 
+     */
+    public Output<String> projectId() {
+        return this.projectId;
+    }
+    /**
      * (Optional; Required if `source_port` or `destination_port` is not
      * empty) The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
      * `protocol` of an existing firewall rule. Default is `any`.
      * 
      */
-    @Export(name="protocol", refs={String.class}, tree="[0]")
+    @Export(name="protocol", type=String.class, parameters={})
     private Output</* @Nullable */ String> protocol;
 
     /**
@@ -213,7 +233,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * firewall rule.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -233,7 +253,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * `shared` status of an existing firewall policy. On
      * 
      */
-    @Export(name="shared", refs={Boolean.class}, tree="[0]")
+    @Export(name="shared", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> shared;
 
     /**
@@ -252,7 +272,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * firewall rule.
      * 
      */
-    @Export(name="sourceIpAddress", refs={String.class}, tree="[0]")
+    @Export(name="sourceIpAddress", type=String.class, parameters={})
     private Output</* @Nullable */ String> sourceIpAddress;
 
     /**
@@ -270,7 +290,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
      * firewall rule. Require not `any` or empty protocol.
      * 
      */
-    @Export(name="sourcePort", refs={String.class}, tree="[0]")
+    @Export(name="sourcePort", type=String.class, parameters={})
     private Output</* @Nullable */ String> sourcePort;
 
     /**
@@ -283,22 +303,24 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourcePort);
     }
     /**
-     * The owner of the firewall rule. Required if admin
-     * wants to create a firewall rule for another tenant. Changing this creates a
-     * new firewall rule.
+     * This argument conflicts and is interchangeable
+     * with `project_id`. The owner of the firewall rule. Required if admin wants
+     * to create a firewall rule for another tenant. Changing this creates a new
+     * firewall rule.
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> tenantId;
+    @Export(name="tenantId", type=String.class, parameters={})
+    private Output<String> tenantId;
 
     /**
-     * @return The owner of the firewall rule. Required if admin
-     * wants to create a firewall rule for another tenant. Changing this creates a
-     * new firewall rule.
+     * @return This argument conflicts and is interchangeable
+     * with `project_id`. The owner of the firewall rule. Required if admin wants
+     * to create a firewall rule for another tenant. Changing this creates a new
+     * firewall rule.
      * 
      */
-    public Output<Optional<String>> tenantId() {
-        return Codegen.optional(this.tenantId);
+    public Output<String> tenantId() {
+        return this.tenantId;
     }
 
     /**

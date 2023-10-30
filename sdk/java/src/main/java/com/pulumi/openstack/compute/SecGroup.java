@@ -148,7 +148,7 @@ public class SecGroup extends com.pulumi.resources.CustomResource {
      * updates the `description` of an existing security group.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -164,7 +164,7 @@ public class SecGroup extends com.pulumi.resources.CustomResource {
      * updates the `name` of an existing security group.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -182,7 +182,7 @@ public class SecGroup extends com.pulumi.resources.CustomResource {
      * security group.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -202,7 +202,7 @@ public class SecGroup extends com.pulumi.resources.CustomResource {
      * may be used.
      * 
      */
-    @Export(name="rules", refs={List.class,SecGroupRule.class}, tree="[0,1]")
+    @Export(name="rules", type=List.class, parameters={SecGroupRule.class})
     private Output<List<SecGroupRule>> rules;
 
     /**

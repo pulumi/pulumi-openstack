@@ -86,7 +86,7 @@ public class Quota extends com.pulumi.resources.CustomResource {
      * this updates the existing quota. Omitting it sets it to 0.
      * 
      */
-    @Export(name="healthMonitor", refs={Integer.class}, tree="[0]")
+    @Export(name="healthMonitor", type=Integer.class, parameters={})
     private Output<Integer> healthMonitor;
 
     /**
@@ -103,7 +103,7 @@ public class Quota extends com.pulumi.resources.CustomResource {
      * **Octavia minor version 2.19**.
      * 
      */
-    @Export(name="l7Policy", refs={Integer.class}, tree="[0]")
+    @Export(name="l7Policy", type=Integer.class, parameters={})
     private Output<Integer> l7Policy;
 
     /**
@@ -121,7 +121,7 @@ public class Quota extends com.pulumi.resources.CustomResource {
      * **Octavia minor version 2.19**.
      * 
      */
-    @Export(name="l7Rule", refs={Integer.class}, tree="[0]")
+    @Export(name="l7Rule", type=Integer.class, parameters={})
     private Output<Integer> l7Rule;
 
     /**
@@ -138,7 +138,7 @@ public class Quota extends com.pulumi.resources.CustomResource {
      * the existing quota. Omitting it sets it to 0.
      * 
      */
-    @Export(name="listener", refs={Integer.class}, tree="[0]")
+    @Export(name="listener", type=Integer.class, parameters={})
     private Output<Integer> listener;
 
     /**
@@ -154,7 +154,7 @@ public class Quota extends com.pulumi.resources.CustomResource {
      * updates the existing quota. Omitting it sets it to 0.
      * 
      */
-    @Export(name="loadbalancer", refs={Integer.class}, tree="[0]")
+    @Export(name="loadbalancer", type=Integer.class, parameters={})
     private Output<Integer> loadbalancer;
 
     /**
@@ -170,7 +170,7 @@ public class Quota extends com.pulumi.resources.CustomResource {
      * the existing quota. Omitting it sets it to 0.
      * 
      */
-    @Export(name="member", refs={Integer.class}, tree="[0]")
+    @Export(name="member", type=Integer.class, parameters={})
     private Output<Integer> member;
 
     /**
@@ -186,7 +186,7 @@ public class Quota extends com.pulumi.resources.CustomResource {
      * the existing quota. Omitting it sets it to 0.
      * 
      */
-    @Export(name="pool", refs={Integer.class}, tree="[0]")
+    @Export(name="pool", type=Integer.class, parameters={})
     private Output<Integer> pool;
 
     /**
@@ -202,7 +202,7 @@ public class Quota extends com.pulumi.resources.CustomResource {
      * creates a new quota.
      * 
      */
-    @Export(name="projectId", refs={String.class}, tree="[0]")
+    @Export(name="projectId", type=String.class, parameters={})
     private Output<String> projectId;
 
     /**
@@ -218,7 +218,7 @@ public class Quota extends com.pulumi.resources.CustomResource {
      * creates a new quota. If ommited, the region of the credentials is used.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**

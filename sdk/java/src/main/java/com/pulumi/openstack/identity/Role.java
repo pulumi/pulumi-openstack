@@ -61,7 +61,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The domain the role belongs to.
      * 
      */
-    @Export(name="domainId", refs={String.class}, tree="[0]")
+    @Export(name="domainId", type=String.class, parameters={})
     private Output<String> domainId;
 
     /**
@@ -75,7 +75,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The name of the role.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -91,7 +91,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * creates a new Role.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**

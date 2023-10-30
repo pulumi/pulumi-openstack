@@ -74,7 +74,7 @@ public class PoolV1 extends com.pulumi.resources.CustomResource {
      * &#39;LEAST_CONNECTIONS&#39; as valid values for this attribute.
      * 
      */
-    @Export(name="lbMethod", refs={String.class}, tree="[0]")
+    @Export(name="lbMethod", type=String.class, parameters={})
     private Output<String> lbMethod;
 
     /**
@@ -91,7 +91,7 @@ public class PoolV1 extends com.pulumi.resources.CustomResource {
      * `haproxy`, `F5`, etc.
      * 
      */
-    @Export(name="lbProvider", refs={String.class}, tree="[0]")
+    @Export(name="lbProvider", type=String.class, parameters={})
     private Output<String> lbProvider;
 
     /**
@@ -113,7 +113,7 @@ public class PoolV1 extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use openstack_lb_member_v1 instead */
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> members;
 
     /**
@@ -131,7 +131,7 @@ public class PoolV1 extends com.pulumi.resources.CustomResource {
      * pool.
      * 
      */
-    @Export(name="monitorIds", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="monitorIds", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> monitorIds;
 
     /**
@@ -147,7 +147,7 @@ public class PoolV1 extends com.pulumi.resources.CustomResource {
      * the existing pool.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -163,7 +163,7 @@ public class PoolV1 extends com.pulumi.resources.CustomResource {
      * either &#39;TCP, &#39;HTTP&#39;, or &#39;HTTPS&#39;. Changing this creates a new pool.
      * 
      */
-    @Export(name="protocol", refs={String.class}, tree="[0]")
+    @Export(name="protocol", type=String.class, parameters={})
     private Output<String> protocol;
 
     /**
@@ -181,7 +181,7 @@ public class PoolV1 extends com.pulumi.resources.CustomResource {
      * LB pool.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -200,7 +200,7 @@ public class PoolV1 extends com.pulumi.resources.CustomResource {
      * Changing this creates a new pool.
      * 
      */
-    @Export(name="subnetId", refs={String.class}, tree="[0]")
+    @Export(name="subnetId", type=String.class, parameters={})
     private Output<String> subnetId;
 
     /**
@@ -217,7 +217,7 @@ public class PoolV1 extends com.pulumi.resources.CustomResource {
      * create a pool member for another tenant. Changing this creates a new pool.
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
+    @Export(name="tenantId", type=String.class, parameters={})
     private Output<String> tenantId;
 
     /**

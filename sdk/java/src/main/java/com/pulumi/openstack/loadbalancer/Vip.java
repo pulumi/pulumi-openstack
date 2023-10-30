@@ -70,7 +70,7 @@ public class Vip extends com.pulumi.resources.CustomResource {
      * vip.
      * 
      */
-    @Export(name="address", refs={String.class}, tree="[0]")
+    @Export(name="address", type=String.class, parameters={})
     private Output<String> address;
 
     /**
@@ -87,7 +87,7 @@ public class Vip extends com.pulumi.resources.CustomResource {
      * state of the existing vip.
      * 
      */
-    @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
+    @Export(name="adminStateUp", type=Boolean.class, parameters={})
     private Output<Boolean> adminStateUp;
 
     /**
@@ -105,7 +105,7 @@ public class Vip extends com.pulumi.resources.CustomResource {
      * of the existing vip.
      * 
      */
-    @Export(name="connLimit", refs={Integer.class}, tree="[0]")
+    @Export(name="connLimit", type=Integer.class, parameters={})
     private Output<Integer> connLimit;
 
     /**
@@ -122,7 +122,7 @@ public class Vip extends com.pulumi.resources.CustomResource {
      * this updates the description of the existing vip.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output<String> description;
 
     /**
@@ -138,7 +138,7 @@ public class Vip extends com.pulumi.resources.CustomResource {
      * with the vip. The Floating IP must be provisioned already.
      * 
      */
-    @Export(name="floatingIp", refs={String.class}, tree="[0]")
+    @Export(name="floatingIp", type=String.class, parameters={})
     private Output</* @Nullable */ String> floatingIp;
 
     /**
@@ -154,7 +154,7 @@ public class Vip extends com.pulumi.resources.CustomResource {
      * the existing vip.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -171,7 +171,7 @@ public class Vip extends com.pulumi.resources.CustomResource {
      * the persistence of the existing vip.
      * 
      */
-    @Export(name="persistence", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="persistence", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> persistence;
 
     /**
@@ -188,7 +188,7 @@ public class Vip extends com.pulumi.resources.CustomResource {
      * Changing this updates the pool_id of the existing vip.
      * 
      */
-    @Export(name="poolId", refs={String.class}, tree="[0]")
+    @Export(name="poolId", type=String.class, parameters={})
     private Output<String> poolId;
 
     /**
@@ -204,7 +204,7 @@ public class Vip extends com.pulumi.resources.CustomResource {
      * this creates a new vip.
      * 
      */
-    @Export(name="port", refs={Integer.class}, tree="[0]")
+    @Export(name="port", type=Integer.class, parameters={})
     private Output<Integer> port;
 
     /**
@@ -219,7 +219,7 @@ public class Vip extends com.pulumi.resources.CustomResource {
      * Port UUID for this VIP at associated floating IP (if any).
      * 
      */
-    @Export(name="portId", refs={String.class}, tree="[0]")
+    @Export(name="portId", type=String.class, parameters={})
     private Output<String> portId;
 
     /**
@@ -234,7 +234,7 @@ public class Vip extends com.pulumi.resources.CustomResource {
      * HTTPS&#39;. Changing this creates a new vip.
      * 
      */
-    @Export(name="protocol", refs={String.class}, tree="[0]")
+    @Export(name="protocol", type=String.class, parameters={})
     private Output<String> protocol;
 
     /**
@@ -252,7 +252,7 @@ public class Vip extends com.pulumi.resources.CustomResource {
      * VIP.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -272,7 +272,7 @@ public class Vip extends com.pulumi.resources.CustomResource {
      * new vip.
      * 
      */
-    @Export(name="subnetId", refs={String.class}, tree="[0]")
+    @Export(name="subnetId", type=String.class, parameters={})
     private Output<String> subnetId;
 
     /**
@@ -290,7 +290,7 @@ public class Vip extends com.pulumi.resources.CustomResource {
      * create a vip member for another tenant. Changing this creates a new vip.
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
+    @Export(name="tenantId", type=String.class, parameters={})
     private Output<String> tenantId;
 
     /**

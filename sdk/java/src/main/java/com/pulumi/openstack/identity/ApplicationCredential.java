@@ -163,7 +163,7 @@ public class ApplicationCredential extends com.pulumi.resources.CustomResource {
      * below. Changing this creates a new application credential.
      * 
      */
-    @Export(name="accessRules", refs={List.class,ApplicationCredentialAccessRule.class}, tree="[0,1]")
+    @Export(name="accessRules", type=List.class, parameters={ApplicationCredentialAccessRule.class})
     private Output</* @Nullable */ List<ApplicationCredentialAccessRule>> accessRules;
 
     /**
@@ -180,7 +180,7 @@ public class ApplicationCredential extends com.pulumi.resources.CustomResource {
      * Changing this creates a new application credential.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -198,7 +198,7 @@ public class ApplicationCredential extends com.pulumi.resources.CustomResource {
      * application credential.
      * 
      */
-    @Export(name="expiresAt", refs={String.class}, tree="[0]")
+    @Export(name="expiresAt", type=String.class, parameters={})
     private Output</* @Nullable */ String> expiresAt;
 
     /**
@@ -216,7 +216,7 @@ public class ApplicationCredential extends com.pulumi.resources.CustomResource {
      * creates a new application credential.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -233,7 +233,7 @@ public class ApplicationCredential extends com.pulumi.resources.CustomResource {
      * be scoped to.
      * 
      */
-    @Export(name="projectId", refs={String.class}, tree="[0]")
+    @Export(name="projectId", type=String.class, parameters={})
     private Output<String> projectId;
 
     /**
@@ -251,7 +251,7 @@ public class ApplicationCredential extends com.pulumi.resources.CustomResource {
      * creates a new application credential.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -271,7 +271,7 @@ public class ApplicationCredential extends com.pulumi.resources.CustomResource {
      * credential.
      * 
      */
-    @Export(name="roles", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="roles", type=List.class, parameters={String.class})
     private Output<List<String>> roles;
 
     /**
@@ -291,7 +291,7 @@ public class ApplicationCredential extends com.pulumi.resources.CustomResource {
      * credential.
      * 
      */
-    @Export(name="secret", refs={String.class}, tree="[0]")
+    @Export(name="secret", type=String.class, parameters={})
     private Output<String> secret;
 
     /**
@@ -309,7 +309,7 @@ public class ApplicationCredential extends com.pulumi.resources.CustomResource {
      * credentials or trusts. Changing this creates a new application credential.
      * 
      */
-    @Export(name="unrestricted", refs={Boolean.class}, tree="[0]")
+    @Export(name="unrestricted", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> unrestricted;
 
     /**

@@ -69,7 +69,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * explicitly and implicitly added.
      * 
      */
-    @Export(name="allTags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="allTags", type=List.class, parameters={String.class})
     private Output<List<String>> allTags;
 
     /**
@@ -84,7 +84,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * The time at which QoS policy was created.
      * 
      */
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    @Export(name="createdAt", type=String.class, parameters={})
     private Output<String> createdAt;
 
     /**
@@ -99,7 +99,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * Changing this updates the description of the existing QoS policy.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -116,7 +116,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * QoS policy.
      * 
      */
-    @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
+    @Export(name="isDefault", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> isDefault;
 
     /**
@@ -133,7 +133,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * the existing QoS policy.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -149,7 +149,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * create a QoS policy for another project. Changing this creates a new QoS policy.
      * 
      */
-    @Export(name="projectId", refs={String.class}, tree="[0]")
+    @Export(name="projectId", type=String.class, parameters={})
     private Output<String> projectId;
 
     /**
@@ -167,7 +167,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * QoS policy.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -184,7 +184,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * The revision number of the QoS policy.
      * 
      */
-    @Export(name="revisionNumber", refs={Integer.class}, tree="[0]")
+    @Export(name="revisionNumber", type=Integer.class, parameters={})
     private Output<Integer> revisionNumber;
 
     /**
@@ -200,7 +200,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * QoS policy.
      * 
      */
-    @Export(name="shared", refs={Boolean.class}, tree="[0]")
+    @Export(name="shared", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> shared;
 
     /**
@@ -216,7 +216,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * A set of string tags for the QoS policy.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -230,7 +230,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * The time at which QoS policy was created.
      * 
      */
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    @Export(name="updatedAt", type=String.class, parameters={})
     private Output<String> updatedAt;
 
     /**
@@ -244,7 +244,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * Map of additional options.
      * 
      */
-    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**

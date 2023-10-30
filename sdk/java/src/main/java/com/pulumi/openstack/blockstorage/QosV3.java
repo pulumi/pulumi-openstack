@@ -72,7 +72,7 @@ public class QosV3 extends com.pulumi.resources.CustomResource {
      * existing qos.
      * 
      */
-    @Export(name="consumer", refs={String.class}, tree="[0]")
+    @Export(name="consumer", type=String.class, parameters={})
     private Output</* @Nullable */ String> consumer;
 
     /**
@@ -88,7 +88,7 @@ public class QosV3 extends com.pulumi.resources.CustomResource {
      * Name of the qos.  Changing this creates a new qos.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -104,7 +104,7 @@ public class QosV3 extends com.pulumi.resources.CustomResource {
      * a new qos.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -120,7 +120,7 @@ public class QosV3 extends com.pulumi.resources.CustomResource {
      * Key/Value pairs of specs for the qos.
      * 
      */
-    @Export(name="specs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="specs", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> specs;
 
     /**

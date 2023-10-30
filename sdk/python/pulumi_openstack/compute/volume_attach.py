@@ -250,7 +250,7 @@ class VolumeAttach(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        volume1 = openstack.blockstorage.VolumeV2("volume1", size=1)
+        volume1 = openstack.blockstorage.Volume("volume1", size=1)
         instance1 = openstack.compute.Instance("instance1", security_groups=["default"])
         va1 = openstack.compute.VolumeAttach("va1",
             instance_id=instance1.id,
@@ -272,11 +272,11 @@ class VolumeAttach(pulumi.CustomResource):
         instance2 = openstack.compute.Instance("instance2", security_groups=["default"])
         va1 = openstack.compute.VolumeAttach("va1",
             instance_id=instance1.id,
-            volume_id=openstack_blockstorage_volume_v2["volume_1"]["id"],
+            volume_id=volume1.id,
             multiattach=True)
         va2 = openstack.compute.VolumeAttach("va2",
             instance_id=instance2.id,
-            volume_id=openstack_blockstorage_volume_v2["volume_1"]["id"],
+            volume_id=volume1.id,
             multiattach=True,
             opts=pulumi.ResourceOptions(depends_on=["openstack_compute_volume_attach_v2.va_1"]))
         ```
@@ -321,7 +321,7 @@ class VolumeAttach(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        volume1 = openstack.blockstorage.VolumeV2("volume1", size=1)
+        volume1 = openstack.blockstorage.Volume("volume1", size=1)
         instance1 = openstack.compute.Instance("instance1", security_groups=["default"])
         va1 = openstack.compute.VolumeAttach("va1",
             instance_id=instance1.id,
@@ -343,11 +343,11 @@ class VolumeAttach(pulumi.CustomResource):
         instance2 = openstack.compute.Instance("instance2", security_groups=["default"])
         va1 = openstack.compute.VolumeAttach("va1",
             instance_id=instance1.id,
-            volume_id=openstack_blockstorage_volume_v2["volume_1"]["id"],
+            volume_id=volume1.id,
             multiattach=True)
         va2 = openstack.compute.VolumeAttach("va2",
             instance_id=instance2.id,
-            volume_id=openstack_blockstorage_volume_v2["volume_1"]["id"],
+            volume_id=volume1.id,
             multiattach=True,
             opts=pulumi.ResourceOptions(depends_on=["openstack_compute_volume_attach_v2.va_1"]))
         ```

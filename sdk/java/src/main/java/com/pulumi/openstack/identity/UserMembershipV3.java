@@ -94,7 +94,7 @@ public class UserMembershipV3 extends com.pulumi.resources.CustomResource {
      * Changing this creates a new user membership.
      * 
      */
-    @Export(name="groupId", refs={String.class}, tree="[0]")
+    @Export(name="groupId", type=String.class, parameters={})
     private Output<String> groupId;
 
     /**
@@ -111,7 +111,7 @@ public class UserMembershipV3 extends com.pulumi.resources.CustomResource {
      * Changing this creates a new user membership.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -127,7 +127,7 @@ public class UserMembershipV3 extends com.pulumi.resources.CustomResource {
      * The UUID of user to use. Changing this creates a new user membership.
      * 
      */
-    @Export(name="userId", refs={String.class}, tree="[0]")
+    @Export(name="userId", type=String.class, parameters={})
     private Output<String> userId;
 
     /**

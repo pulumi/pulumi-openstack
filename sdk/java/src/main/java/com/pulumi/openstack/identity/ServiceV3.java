@@ -65,7 +65,7 @@ public class ServiceV3 extends com.pulumi.resources.CustomResource {
      * The service description.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -79,7 +79,7 @@ public class ServiceV3 extends com.pulumi.resources.CustomResource {
      * The service status. Defaults to `true`.
      * 
      */
-    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="enabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -93,7 +93,7 @@ public class ServiceV3 extends com.pulumi.resources.CustomResource {
      * The service name.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -108,7 +108,7 @@ public class ServiceV3 extends com.pulumi.resources.CustomResource {
      * If omitted, the `region` argument of the provider is used.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -123,7 +123,7 @@ public class ServiceV3 extends com.pulumi.resources.CustomResource {
      * The service type.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**

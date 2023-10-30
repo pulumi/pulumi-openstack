@@ -142,6 +142,23 @@ public final class GetFwRuleV2PlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * This argument conflicts and is interchangeable
+     * with `tenant_id`. The owner of the firewall rule.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable String projectId;
+
+    /**
+     * @return This argument conflicts and is interchangeable
+     * with `tenant_id`. The owner of the firewall rule.
+     * 
+     */
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+
+    /**
      * The protocol type on which the firewall rule operates.
      * 
      */
@@ -240,14 +257,16 @@ public final class GetFwRuleV2PlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The owner of the firewall policy.
+     * This argument conflicts and is interchangeable
+     * with `project_id`. The owner of the firewall rule.
      * 
      */
     @Import(name="tenantId")
     private @Nullable String tenantId;
 
     /**
-     * @return The owner of the firewall policy.
+     * @return This argument conflicts and is interchangeable
+     * with `project_id`. The owner of the firewall rule.
      * 
      */
     public Optional<String> tenantId() {
@@ -265,6 +284,7 @@ public final class GetFwRuleV2PlainArgs extends com.pulumi.resources.InvokeArgs 
         this.firewallPolicyIds = $.firewallPolicyIds;
         this.ipVersion = $.ipVersion;
         this.name = $.name;
+        this.projectId = $.projectId;
         this.protocol = $.protocol;
         this.region = $.region;
         this.ruleId = $.ruleId;
@@ -393,6 +413,18 @@ public final class GetFwRuleV2PlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
+         * @param projectId This argument conflicts and is interchangeable
+         * with `tenant_id`. The owner of the firewall rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable String projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
          * @param protocol The protocol type on which the firewall rule operates.
          * 
          * @return builder
@@ -463,7 +495,8 @@ public final class GetFwRuleV2PlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param tenantId The owner of the firewall policy.
+         * @param tenantId This argument conflicts and is interchangeable
+         * with `project_id`. The owner of the firewall rule.
          * 
          * @return builder
          * 

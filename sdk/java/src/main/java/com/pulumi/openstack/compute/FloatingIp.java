@@ -67,7 +67,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * The actual floating IP address itself.
      * 
      */
-    @Export(name="address", refs={String.class}, tree="[0]")
+    @Export(name="address", type=String.class, parameters={})
     private Output<String> address;
 
     /**
@@ -81,7 +81,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * The fixed IP address corresponding to the floating IP.
      * 
      */
-    @Export(name="fixedIp", refs={String.class}, tree="[0]")
+    @Export(name="fixedIp", type=String.class, parameters={})
     private Output<String> fixedIp;
 
     /**
@@ -95,7 +95,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * UUID of the compute instance associated with the floating IP.
      * 
      */
-    @Export(name="instanceId", refs={String.class}, tree="[0]")
+    @Export(name="instanceId", type=String.class, parameters={})
     private Output<String> instanceId;
 
     /**
@@ -110,7 +110,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * IP. Changing this creates a new floating IP.
      * 
      */
-    @Export(name="pool", refs={String.class}, tree="[0]")
+    @Export(name="pool", type=String.class, parameters={})
     private Output<String> pool;
 
     /**
@@ -129,7 +129,7 @@ public class FloatingIp extends com.pulumi.resources.CustomResource {
      * have a different address).
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**

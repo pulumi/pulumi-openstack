@@ -92,7 +92,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The default project this user belongs to.
      * 
      */
-    @Export(name="defaultProjectId", refs={String.class}, tree="[0]")
+    @Export(name="defaultProjectId", type=String.class, parameters={})
     private Output<String> defaultProjectId;
 
     /**
@@ -106,7 +106,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * A description of the user.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -120,7 +120,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The domain this user belongs to.
      * 
      */
-    @Export(name="domainId", refs={String.class}, tree="[0]")
+    @Export(name="domainId", type=String.class, parameters={})
     private Output<String> domainId;
 
     /**
@@ -135,7 +135,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * values are `true` and `false`.
      * 
      */
-    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="enabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -150,7 +150,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Free-form key/value pairs of extra information.
      * 
      */
-    @Export(name="extra", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="extra", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> extra;
 
     /**
@@ -165,7 +165,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * change their password upon first use. Valid values are `true` and `false`.
      * 
      */
-    @Export(name="ignoreChangePasswordUponFirstUse", refs={Boolean.class}, tree="[0]")
+    @Export(name="ignoreChangePasswordUponFirstUse", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> ignoreChangePasswordUponFirstUse;
 
     /**
@@ -181,7 +181,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * lockout placed on their account. Valid values are `true` and `false`.
      * 
      */
-    @Export(name="ignoreLockoutFailureAttempts", refs={Boolean.class}, tree="[0]")
+    @Export(name="ignoreLockoutFailureAttempts", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> ignoreLockoutFailureAttempts;
 
     /**
@@ -197,7 +197,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Valid values are `true` and `false`.
      * 
      */
-    @Export(name="ignorePasswordExpiry", refs={Boolean.class}, tree="[0]")
+    @Export(name="ignorePasswordExpiry", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> ignorePasswordExpiry;
 
     /**
@@ -213,7 +213,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * authentication. Valid values are `true` and `false`.
      * 
      */
-    @Export(name="multiFactorAuthEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="multiFactorAuthEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> multiFactorAuthEnabled;
 
     /**
@@ -231,7 +231,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * for more information on how to use mulit-factor rules.
      * 
      */
-    @Export(name="multiFactorAuthRules", refs={List.class,UserMultiFactorAuthRule.class}, tree="[0,1]")
+    @Export(name="multiFactorAuthRules", type=List.class, parameters={UserMultiFactorAuthRule.class})
     private Output</* @Nullable */ List<UserMultiFactorAuthRule>> multiFactorAuthRules;
 
     /**
@@ -248,7 +248,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The name of the user.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -262,7 +262,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The password for the user.
      * 
      */
-    @Export(name="password", refs={String.class}, tree="[0]")
+    @Export(name="password", type=String.class, parameters={})
     private Output</* @Nullable */ String> password;
 
     /**
@@ -278,7 +278,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * creates a new User.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**

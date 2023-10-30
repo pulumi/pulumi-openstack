@@ -125,9 +125,9 @@ namespace Pulumi.OpenStack.Firewall
         public Output<ImmutableArray<string>> Ports { get; private set; } = null!;
 
         /// <summary>
-        /// This argument conflict and interchangeable with
-        /// `tenant_id`. The owner of the firewall group. Required if admin wants to
-        /// create a firewall group for another project. Changing this creates a new
+        /// This argument conflicts and  is interchangeable
+        /// with `tenant_id`. The owner of the firewall group. Required if admin wants
+        /// to create a firewall group for another project. Changing this creates a new
         /// firewall group.
         /// </summary>
         [Output("projectId")]
@@ -159,7 +159,7 @@ namespace Pulumi.OpenStack.Firewall
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// This argument conflict and interchangeable with
+        /// This argument conflicts and is interchangeable with
         /// `project_id`. The owner of the firewall group. Required if admin wants to
         /// create a firewall group for another tenant. Changing this creates a new
         /// firewall group.
@@ -266,9 +266,9 @@ namespace Pulumi.OpenStack.Firewall
         }
 
         /// <summary>
-        /// This argument conflict and interchangeable with
-        /// `tenant_id`. The owner of the firewall group. Required if admin wants to
-        /// create a firewall group for another project. Changing this creates a new
+        /// This argument conflicts and  is interchangeable
+        /// with `tenant_id`. The owner of the firewall group. Required if admin wants
+        /// to create a firewall group for another project. Changing this creates a new
         /// firewall group.
         /// </summary>
         [Input("projectId")]
@@ -294,7 +294,7 @@ namespace Pulumi.OpenStack.Firewall
         public Input<bool>? Shared { get; set; }
 
         /// <summary>
-        /// This argument conflict and interchangeable with
+        /// This argument conflicts and is interchangeable with
         /// `project_id`. The owner of the firewall group. Required if admin wants to
         /// create a firewall group for another tenant. Changing this creates a new
         /// firewall group.
@@ -363,9 +363,9 @@ namespace Pulumi.OpenStack.Firewall
         }
 
         /// <summary>
-        /// This argument conflict and interchangeable with
-        /// `tenant_id`. The owner of the firewall group. Required if admin wants to
-        /// create a firewall group for another project. Changing this creates a new
+        /// This argument conflicts and  is interchangeable
+        /// with `tenant_id`. The owner of the firewall group. Required if admin wants
+        /// to create a firewall group for another project. Changing this creates a new
         /// firewall group.
         /// </summary>
         [Input("projectId")]
@@ -397,7 +397,7 @@ namespace Pulumi.OpenStack.Firewall
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// This argument conflict and interchangeable with
+        /// This argument conflicts and is interchangeable with
         /// `project_id`. The owner of the firewall group. Required if admin wants to
         /// create a firewall group for another tenant. Changing this creates a new
         /// firewall group.

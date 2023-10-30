@@ -38,6 +38,11 @@ public final class GetFwPolicyV2Result {
      * @return See Argument Reference above.
      * 
      */
+    private String projectId;
+    /**
+     * @return See Argument Reference above.
+     * 
+     */
     private String region;
     /**
      * @return The array of one or more firewall rules that comprise the policy.
@@ -91,6 +96,13 @@ public final class GetFwPolicyV2Result {
      * @return See Argument Reference above.
      * 
      */
+    public String projectId() {
+        return this.projectId;
+    }
+    /**
+     * @return See Argument Reference above.
+     * 
+     */
     public String region() {
         return this.region;
     }
@@ -130,6 +142,7 @@ public final class GetFwPolicyV2Result {
         private String id;
         private @Nullable String name;
         private @Nullable String policyId;
+        private String projectId;
         private String region;
         private List<String> rules;
         private Boolean shared;
@@ -142,6 +155,7 @@ public final class GetFwPolicyV2Result {
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.policyId = defaults.policyId;
+    	      this.projectId = defaults.projectId;
     	      this.region = defaults.region;
     	      this.rules = defaults.rules;
     	      this.shared = defaults.shared;
@@ -174,6 +188,11 @@ public final class GetFwPolicyV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder projectId(String projectId) {
+            this.projectId = Objects.requireNonNull(projectId);
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             this.region = Objects.requireNonNull(region);
             return this;
@@ -203,6 +222,7 @@ public final class GetFwPolicyV2Result {
             o.id = id;
             o.name = name;
             o.policyId = policyId;
+            o.projectId = projectId;
             o.region = region;
             o.rules = rules;
             o.shared = shared;

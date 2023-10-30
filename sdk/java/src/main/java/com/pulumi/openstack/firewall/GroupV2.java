@@ -97,7 +97,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
      * Changing this updates the `admin_state_up` of an existing firewall group.
      * 
      */
-    @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
+    @Export(name="adminStateUp", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> adminStateUp;
 
     /**
@@ -114,7 +114,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
      * updates the `description` of an existing firewall group.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -131,7 +131,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
      * `egress_firewall_policy_id` of an existing firewall group.
      * 
      */
-    @Export(name="egressFirewallPolicyId", refs={String.class}, tree="[0]")
+    @Export(name="egressFirewallPolicyId", type=String.class, parameters={})
     private Output</* @Nullable */ String> egressFirewallPolicyId;
 
     /**
@@ -149,7 +149,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
      * `ingress_firewall_policy_id` of an existing firewall group.
      * 
      */
-    @Export(name="ingressFirewallPolicyId", refs={String.class}, tree="[0]")
+    @Export(name="ingressFirewallPolicyId", type=String.class, parameters={})
     private Output</* @Nullable */ String> ingressFirewallPolicyId;
 
     /**
@@ -166,7 +166,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
      * updates the `name` of an existing firewall.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -183,7 +183,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
      * of an existing firewall group.
      * 
      */
-    @Export(name="ports", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="ports", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> ports;
 
     /**
@@ -196,19 +196,19 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ports);
     }
     /**
-     * This argument conflict and interchangeable with
-     * `tenant_id`. The owner of the firewall group. Required if admin wants to
-     * create a firewall group for another project. Changing this creates a new
+     * This argument conflicts and  is interchangeable
+     * with `tenant_id`. The owner of the firewall group. Required if admin wants
+     * to create a firewall group for another project. Changing this creates a new
      * firewall group.
      * 
      */
-    @Export(name="projectId", refs={String.class}, tree="[0]")
+    @Export(name="projectId", type=String.class, parameters={})
     private Output<String> projectId;
 
     /**
-     * @return This argument conflict and interchangeable with
-     * `tenant_id`. The owner of the firewall group. Required if admin wants to
-     * create a firewall group for another project. Changing this creates a new
+     * @return This argument conflicts and  is interchangeable
+     * with `tenant_id`. The owner of the firewall group. Required if admin wants
+     * to create a firewall group for another project. Changing this creates a new
      * firewall group.
      * 
      */
@@ -222,7 +222,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
      * firewall group.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -243,7 +243,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
      * can specify if the firewall group should be shared.
      * 
      */
-    @Export(name="shared", refs={Boolean.class}, tree="[0]")
+    @Export(name="shared", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> shared;
 
     /**
@@ -261,7 +261,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
      * The status of the firewall group.
      * 
      */
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
@@ -272,17 +272,17 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * This argument conflict and interchangeable with
+     * This argument conflicts and is interchangeable with
      * `project_id`. The owner of the firewall group. Required if admin wants to
      * create a firewall group for another tenant. Changing this creates a new
      * firewall group.
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
+    @Export(name="tenantId", type=String.class, parameters={})
     private Output<String> tenantId;
 
     /**
-     * @return This argument conflict and interchangeable with
+     * @return This argument conflicts and is interchangeable with
      * `project_id`. The owner of the firewall group. Required if admin wants to
      * create a firewall group for another tenant. Changing this creates a new
      * firewall group.

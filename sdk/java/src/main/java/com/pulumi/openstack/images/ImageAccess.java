@@ -121,7 +121,7 @@ public class ImageAccess extends com.pulumi.resources.CustomResource {
      * The date the image access was created.
      * 
      */
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    @Export(name="createdAt", type=String.class, parameters={})
     private Output<String> createdAt;
 
     /**
@@ -135,7 +135,7 @@ public class ImageAccess extends com.pulumi.resources.CustomResource {
      * The image ID.
      * 
      */
-    @Export(name="imageId", refs={String.class}, tree="[0]")
+    @Export(name="imageId", type=String.class, parameters={})
     private Output<String> imageId;
 
     /**
@@ -149,7 +149,7 @@ public class ImageAccess extends com.pulumi.resources.CustomResource {
      * The member ID, e.g. the target project ID.
      * 
      */
-    @Export(name="memberId", refs={String.class}, tree="[0]")
+    @Export(name="memberId", type=String.class, parameters={})
     private Output<String> memberId;
 
     /**
@@ -165,7 +165,7 @@ public class ImageAccess extends com.pulumi.resources.CustomResource {
      * argument of the provider is used. Changing this creates a new resource.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -181,7 +181,7 @@ public class ImageAccess extends com.pulumi.resources.CustomResource {
      * The member schema.
      * 
      */
-    @Export(name="schema", refs={String.class}, tree="[0]")
+    @Export(name="schema", type=String.class, parameters={})
     private Output<String> schema;
 
     /**
@@ -197,7 +197,7 @@ public class ImageAccess extends com.pulumi.resources.CustomResource {
      * `pending`. Defaults to `pending`. Foridden for non-admin users.
      * 
      */
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
@@ -213,7 +213,7 @@ public class ImageAccess extends com.pulumi.resources.CustomResource {
      * The date the image access was last updated.
      * 
      */
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    @Export(name="updatedAt", type=String.class, parameters={})
     private Output<String> updatedAt;
 
     /**

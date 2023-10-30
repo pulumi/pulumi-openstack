@@ -89,7 +89,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The checksum of the data associated with the image.
      * 
      */
-    @Export(name="checksum", refs={String.class}, tree="[0]")
+    @Export(name="checksum", type=String.class, parameters={})
     private Output<String> checksum;
 
     /**
@@ -104,7 +104,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * &#34;ami&#34;, &#34;ari&#34;, &#34;aki&#34;, &#34;bare&#34;, &#34;ovf&#34;.
      * 
      */
-    @Export(name="containerFormat", refs={String.class}, tree="[0]")
+    @Export(name="containerFormat", type=String.class, parameters={})
     private Output<String> containerFormat;
 
     /**
@@ -119,7 +119,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The date the image was created.
      * 
      */
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    @Export(name="createdAt", type=String.class, parameters={})
     private Output<String> createdAt;
 
     /**
@@ -136,7 +136,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Defaults to false. Changing this creates a new Image.
      * 
      */
-    @Export(name="decompress", refs={Boolean.class}, tree="[0]")
+    @Export(name="decompress", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> decompress;
 
     /**
@@ -154,7 +154,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * &#34;ami&#34;, &#34;ari&#34;, &#34;aki&#34;, &#34;vhd&#34;, &#34;vmdk&#34;, &#34;raw&#34;, &#34;qcow2&#34;, &#34;vdi&#34;, &#34;iso&#34;.
      * 
      */
-    @Export(name="diskFormat", refs={String.class}, tree="[0]")
+    @Export(name="diskFormat", type=String.class, parameters={})
     private Output<String> diskFormat;
 
     /**
@@ -171,7 +171,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * or the path to retrieve it.
      * 
      */
-    @Export(name="file", refs={String.class}, tree="[0]")
+    @Export(name="file", type=String.class, parameters={})
     private Output<String> file;
 
     /**
@@ -188,7 +188,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Defaults to false.
      * 
      */
-    @Export(name="hidden", refs={Boolean.class}, tree="[0]")
+    @Export(name="hidden", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> hidden;
 
     /**
@@ -199,7 +199,7 @@ public class Image extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> hidden() {
         return Codegen.optional(this.hidden);
     }
-    @Export(name="imageCachePath", refs={String.class}, tree="[0]")
+    @Export(name="imageCachePath", type=String.class, parameters={})
     private Output</* @Nullable */ String> imageCachePath;
 
     public Output<Optional<String>> imageCachePath() {
@@ -210,7 +210,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * this creates a new image.
      * 
      */
-    @Export(name="imageId", refs={String.class}, tree="[0]")
+    @Export(name="imageId", type=String.class, parameters={})
     private Output<String> imageId;
 
     /**
@@ -225,7 +225,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The password of basic auth to download `image_source_url`.
      * 
      */
-    @Export(name="imageSourcePassword", refs={String.class}, tree="[0]")
+    @Export(name="imageSourcePassword", type=String.class, parameters={})
     private Output</* @Nullable */ String> imageSourcePassword;
 
     /**
@@ -242,7 +242,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Conflicts with `local_file_path`.
      * 
      */
-    @Export(name="imageSourceUrl", refs={String.class}, tree="[0]")
+    @Export(name="imageSourceUrl", type=String.class, parameters={})
     private Output</* @Nullable */ String> imageSourceUrl;
 
     /**
@@ -259,7 +259,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The username of basic auth to download `image_source_url`.
      * 
      */
-    @Export(name="imageSourceUsername", refs={String.class}, tree="[0]")
+    @Export(name="imageSourceUsername", type=String.class, parameters={})
     private Output</* @Nullable */ String> imageSourceUsername;
 
     /**
@@ -275,7 +275,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * `web_download`.
      * 
      */
-    @Export(name="localFilePath", refs={String.class}, tree="[0]")
+    @Export(name="localFilePath", type=String.class, parameters={})
     private Output</* @Nullable */ String> localFilePath;
 
     /**
@@ -293,7 +293,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * and tags. See https://docs.openstack.org/glance/latest/user/metadefs-concepts.html.
      * 
      */
-    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="metadata", type=Map.class, parameters={String.class, Object.class})
     private Output<Map<String,Object>> metadata;
 
     /**
@@ -310,7 +310,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Defaults to 0.
      * 
      */
-    @Export(name="minDiskGb", refs={Integer.class}, tree="[0]")
+    @Export(name="minDiskGb", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> minDiskGb;
 
     /**
@@ -326,7 +326,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Defauts to 0.
      * 
      */
-    @Export(name="minRamMb", refs={Integer.class}, tree="[0]")
+    @Export(name="minRamMb", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> minRamMb;
 
     /**
@@ -341,7 +341,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The name of the image.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -355,7 +355,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The id of the openstack user who owns the image.
      * 
      */
-    @Export(name="owner", refs={String.class}, tree="[0]")
+    @Export(name="owner", type=String.class, parameters={})
     private Output<String> owner;
 
     /**
@@ -371,7 +371,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * information about properties.
      * 
      */
-    @Export(name="properties", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="properties", type=Map.class, parameters={String.class, Object.class})
     private Output<Map<String,Object>> properties;
 
     /**
@@ -388,7 +388,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Defaults to false.
      * 
      */
-    @Export(name="protected", refs={Boolean.class}, tree="[0]")
+    @Export(name="protected", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> protected_;
 
     /**
@@ -406,7 +406,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * is used. Changing this creates a new Image.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -424,7 +424,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * the image or image
      * 
      */
-    @Export(name="schema", refs={String.class}, tree="[0]")
+    @Export(name="schema", type=String.class, parameters={})
     private Output<String> schema;
 
     /**
@@ -439,7 +439,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The size in bytes of the data associated with the image.
      * 
      */
-    @Export(name="sizeBytes", refs={Integer.class}, tree="[0]")
+    @Export(name="sizeBytes", type=Integer.class, parameters={})
     private Output<Integer> sizeBytes;
 
     /**
@@ -454,7 +454,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * or &#34;saving&#34;.
      * 
      */
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
@@ -470,7 +470,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * At this time, it is not possible to delete all tags of an image.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -489,7 +489,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use updated_at instead */
-    @Export(name="updateAt", refs={String.class}, tree="[0]")
+    @Export(name="updateAt", type=String.class, parameters={})
     private Output<String> updateAt;
 
     /**
@@ -503,7 +503,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The date the image was last updated.
      * 
      */
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    @Export(name="updatedAt", type=String.class, parameters={})
     private Output<String> updatedAt;
 
     /**
@@ -519,7 +519,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Defaults to true when not using `web_download`.
      * 
      */
-    @Export(name="verifyChecksum", refs={Boolean.class}, tree="[0]")
+    @Export(name="verifyChecksum", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> verifyChecksum;
 
     /**
@@ -537,7 +537,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * visibility depends upon the configuration of the OpenStack cloud.
      * 
      */
-    @Export(name="visibility", refs={String.class}, tree="[0]")
+    @Export(name="visibility", type=String.class, parameters={})
     private Output</* @Nullable */ String> visibility;
 
     /**
@@ -555,7 +555,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Conflicts with `local_file_path`. Defaults to false.
      * 
      */
-    @Export(name="webDownload", refs={Boolean.class}, tree="[0]")
+    @Export(name="webDownload", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> webDownload;
 
     /**

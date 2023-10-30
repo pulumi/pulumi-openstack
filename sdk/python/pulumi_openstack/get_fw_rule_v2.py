@@ -21,7 +21,7 @@ class GetFwRuleV2Result:
     """
     A collection of values returned by getFwRuleV2.
     """
-    def __init__(__self__, action=None, description=None, destination_ip_address=None, destination_port=None, enabled=None, firewall_policy_ids=None, id=None, ip_version=None, name=None, protocol=None, region=None, rule_id=None, shared=None, source_ip_address=None, source_port=None, tenant_id=None):
+    def __init__(__self__, action=None, description=None, destination_ip_address=None, destination_port=None, enabled=None, firewall_policy_ids=None, id=None, ip_version=None, name=None, project_id=None, protocol=None, region=None, rule_id=None, shared=None, source_ip_address=None, source_port=None, tenant_id=None):
         if action and not isinstance(action, str):
             raise TypeError("Expected argument 'action' to be a str")
         pulumi.set(__self__, "action", action)
@@ -49,6 +49,9 @@ class GetFwRuleV2Result:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
         if protocol and not isinstance(protocol, str):
             raise TypeError("Expected argument 'protocol' to be a str")
         pulumi.set(__self__, "protocol", protocol)
@@ -144,6 +147,14 @@ class GetFwRuleV2Result:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        See Argument Reference above.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
     @pulumi.getter
     def protocol(self) -> Optional[str]:
         """
@@ -215,6 +226,7 @@ class AwaitableGetFwRuleV2Result(GetFwRuleV2Result):
             id=self.id,
             ip_version=self.ip_version,
             name=self.name,
+            project_id=self.project_id,
             protocol=self.protocol,
             region=self.region,
             rule_id=self.rule_id,
@@ -232,6 +244,7 @@ def get_fw_rule_v2(action: Optional[str] = None,
                    firewall_policy_ids: Optional[Sequence[str]] = None,
                    ip_version: Optional[int] = None,
                    name: Optional[str] = None,
+                   project_id: Optional[str] = None,
                    protocol: Optional[str] = None,
                    region: Optional[str] = None,
                    rule_id: Optional[str] = None,
@@ -263,6 +276,8 @@ def get_fw_rule_v2(action: Optional[str] = None,
     :param Sequence[str] firewall_policy_ids: The ID of the firewall policy the rule belongs to.
     :param int ip_version: IP version, either 4 (default) or 6.
     :param str name: The name of the firewall rule.
+    :param str project_id: This argument conflicts and is interchangeable
+           with `tenant_id`. The owner of the firewall rule.
     :param str protocol: The protocol type on which the firewall rule operates.
     :param str region: The region in which to obtain the V2 Neutron client.
            A Neutron client is needed to retrieve firewall policy ids. If omitted, the
@@ -273,7 +288,8 @@ def get_fw_rule_v2(action: Optional[str] = None,
            rule operates.
     :param str source_port: The source port on which the firewall
            rule operates.
-    :param str tenant_id: The owner of the firewall policy.
+    :param str tenant_id: This argument conflicts and is interchangeable
+           with `project_id`. The owner of the firewall rule.
     """
     __args__ = dict()
     __args__['action'] = action
@@ -284,6 +300,7 @@ def get_fw_rule_v2(action: Optional[str] = None,
     __args__['firewallPolicyIds'] = firewall_policy_ids
     __args__['ipVersion'] = ip_version
     __args__['name'] = name
+    __args__['projectId'] = project_id
     __args__['protocol'] = protocol
     __args__['region'] = region
     __args__['ruleId'] = rule_id
@@ -304,6 +321,7 @@ def get_fw_rule_v2(action: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         ip_version=pulumi.get(__ret__, 'ip_version'),
         name=pulumi.get(__ret__, 'name'),
+        project_id=pulumi.get(__ret__, 'project_id'),
         protocol=pulumi.get(__ret__, 'protocol'),
         region=pulumi.get(__ret__, 'region'),
         rule_id=pulumi.get(__ret__, 'rule_id'),
@@ -322,6 +340,7 @@ def get_fw_rule_v2_output(action: Optional[pulumi.Input[Optional[str]]] = None,
                           firewall_policy_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                           ip_version: Optional[pulumi.Input[Optional[int]]] = None,
                           name: Optional[pulumi.Input[Optional[str]]] = None,
+                          project_id: Optional[pulumi.Input[Optional[str]]] = None,
                           protocol: Optional[pulumi.Input[Optional[str]]] = None,
                           region: Optional[pulumi.Input[Optional[str]]] = None,
                           rule_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -353,6 +372,8 @@ def get_fw_rule_v2_output(action: Optional[pulumi.Input[Optional[str]]] = None,
     :param Sequence[str] firewall_policy_ids: The ID of the firewall policy the rule belongs to.
     :param int ip_version: IP version, either 4 (default) or 6.
     :param str name: The name of the firewall rule.
+    :param str project_id: This argument conflicts and is interchangeable
+           with `tenant_id`. The owner of the firewall rule.
     :param str protocol: The protocol type on which the firewall rule operates.
     :param str region: The region in which to obtain the V2 Neutron client.
            A Neutron client is needed to retrieve firewall policy ids. If omitted, the
@@ -363,6 +384,7 @@ def get_fw_rule_v2_output(action: Optional[pulumi.Input[Optional[str]]] = None,
            rule operates.
     :param str source_port: The source port on which the firewall
            rule operates.
-    :param str tenant_id: The owner of the firewall policy.
+    :param str tenant_id: This argument conflicts and is interchangeable
+           with `project_id`. The owner of the firewall rule.
     """
     ...

@@ -27,7 +27,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Application Credential ID to login with.
      * 
      */
-    @Export(name="applicationCredentialId", refs={String.class}, tree="[0]")
+    @Export(name="applicationCredentialId", type=String.class, parameters={})
     private Output</* @Nullable */ String> applicationCredentialId;
 
     /**
@@ -41,7 +41,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Application Credential name to login with.
      * 
      */
-    @Export(name="applicationCredentialName", refs={String.class}, tree="[0]")
+    @Export(name="applicationCredentialName", type=String.class, parameters={})
     private Output</* @Nullable */ String> applicationCredentialName;
 
     /**
@@ -55,7 +55,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Application Credential secret to login with.
      * 
      */
-    @Export(name="applicationCredentialSecret", refs={String.class}, tree="[0]")
+    @Export(name="applicationCredentialSecret", type=String.class, parameters={})
     private Output</* @Nullable */ String> applicationCredentialSecret;
 
     /**
@@ -69,7 +69,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The Identity authentication URL.
      * 
      */
-    @Export(name="authUrl", refs={String.class}, tree="[0]")
+    @Export(name="authUrl", type=String.class, parameters={})
     private Output</* @Nullable */ String> authUrl;
 
     /**
@@ -83,7 +83,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * A Custom CA certificate.
      * 
      */
-    @Export(name="cacertFile", refs={String.class}, tree="[0]")
+    @Export(name="cacertFile", type=String.class, parameters={})
     private Output</* @Nullable */ String> cacertFile;
 
     /**
@@ -97,7 +97,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * A client certificate to authenticate with.
      * 
      */
-    @Export(name="cert", refs={String.class}, tree="[0]")
+    @Export(name="cert", type=String.class, parameters={})
     private Output</* @Nullable */ String> cert;
 
     /**
@@ -111,7 +111,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * An entry in a `clouds.yaml` file to use.
      * 
      */
-    @Export(name="cloud", refs={String.class}, tree="[0]")
+    @Export(name="cloud", type=String.class, parameters={})
     private Output</* @Nullable */ String> cloud;
 
     /**
@@ -125,7 +125,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).
      * 
      */
-    @Export(name="defaultDomain", refs={String.class}, tree="[0]")
+    @Export(name="defaultDomain", type=String.class, parameters={})
     private Output</* @Nullable */ String> defaultDomain;
 
     /**
@@ -139,7 +139,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The ID of the Domain to scope to (Identity v3).
      * 
      */
-    @Export(name="domainId", refs={String.class}, tree="[0]")
+    @Export(name="domainId", type=String.class, parameters={})
     private Output</* @Nullable */ String> domainId;
 
     /**
@@ -153,7 +153,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The name of the Domain to scope to (Identity v3).
      * 
      */
-    @Export(name="domainName", refs={String.class}, tree="[0]")
+    @Export(name="domainName", type=String.class, parameters={})
     private Output</* @Nullable */ String> domainName;
 
     /**
@@ -163,7 +163,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> domainName() {
         return Codegen.optional(this.domainName);
     }
-    @Export(name="endpointType", refs={String.class}, tree="[0]")
+    @Export(name="endpointType", type=String.class, parameters={})
     private Output</* @Nullable */ String> endpointType;
 
     public Output<Optional<String>> endpointType() {
@@ -173,7 +173,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * A client private key to authenticate with.
      * 
      */
-    @Export(name="key", refs={String.class}, tree="[0]")
+    @Export(name="key", type=String.class, parameters={})
     private Output</* @Nullable */ String> key;
 
     /**
@@ -187,7 +187,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Password to login with.
      * 
      */
-    @Export(name="password", refs={String.class}, tree="[0]")
+    @Export(name="password", type=String.class, parameters={})
     private Output</* @Nullable */ String> password;
 
     /**
@@ -201,7 +201,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The ID of the domain where the proejct resides (Identity v3).
      * 
      */
-    @Export(name="projectDomainId", refs={String.class}, tree="[0]")
+    @Export(name="projectDomainId", type=String.class, parameters={})
     private Output</* @Nullable */ String> projectDomainId;
 
     /**
@@ -215,7 +215,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The name of the domain where the project resides (Identity v3).
      * 
      */
-    @Export(name="projectDomainName", refs={String.class}, tree="[0]")
+    @Export(name="projectDomainName", type=String.class, parameters={})
     private Output</* @Nullable */ String> projectDomainName;
 
     /**
@@ -229,7 +229,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The OpenStack region to connect to.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output</* @Nullable */ String> region;
 
     /**
@@ -243,7 +243,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The ID of the Tenant (Identity v2) or Project (Identity v3) to login with.
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
+    @Export(name="tenantId", type=String.class, parameters={})
     private Output</* @Nullable */ String> tenantId;
 
     /**
@@ -257,7 +257,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The name of the Tenant (Identity v2) or Project (Identity v3) to login with.
      * 
      */
-    @Export(name="tenantName", refs={String.class}, tree="[0]")
+    @Export(name="tenantName", type=String.class, parameters={})
     private Output</* @Nullable */ String> tenantName;
 
     /**
@@ -271,7 +271,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Authentication token to use as an alternative to username/password.
      * 
      */
-    @Export(name="token", refs={String.class}, tree="[0]")
+    @Export(name="token", type=String.class, parameters={})
     private Output</* @Nullable */ String> token;
 
     /**
@@ -285,7 +285,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The ID of the domain where the user resides (Identity v3).
      * 
      */
-    @Export(name="userDomainId", refs={String.class}, tree="[0]")
+    @Export(name="userDomainId", type=String.class, parameters={})
     private Output</* @Nullable */ String> userDomainId;
 
     /**
@@ -299,7 +299,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The name of the domain where the user resides (Identity v3).
      * 
      */
-    @Export(name="userDomainName", refs={String.class}, tree="[0]")
+    @Export(name="userDomainName", type=String.class, parameters={})
     private Output</* @Nullable */ String> userDomainName;
 
     /**
@@ -313,7 +313,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * User ID to login with.
      * 
      */
-    @Export(name="userId", refs={String.class}, tree="[0]")
+    @Export(name="userId", type=String.class, parameters={})
     private Output</* @Nullable */ String> userId;
 
     /**
@@ -327,7 +327,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Username to login with.
      * 
      */
-    @Export(name="userName", refs={String.class}, tree="[0]")
+    @Export(name="userName", type=String.class, parameters={})
     private Output</* @Nullable */ String> userName;
 
     /**

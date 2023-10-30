@@ -101,6 +101,15 @@ namespace Pulumi.OpenStack.Firewall
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// This argument conflicts and is interchangeable
+        /// with `tenant_id`. The owner of the firewall rule. Required if admin wants
+        /// to create a firewall rule for another project. Changing this creates a new
+        /// firewall rule.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
         /// (Optional; Required if `source_port` or `destination_port` is not
         /// empty) The protocol type on which the firewall rule operates.
         /// Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -144,12 +153,13 @@ namespace Pulumi.OpenStack.Firewall
         public Output<string?> SourcePort { get; private set; } = null!;
 
         /// <summary>
-        /// The owner of the firewall rule. Required if admin
-        /// wants to create a firewall rule for another tenant. Changing this creates a
-        /// new firewall rule.
+        /// This argument conflicts and is interchangeable
+        /// with `project_id`. The owner of the firewall rule. Required if admin wants
+        /// to create a firewall rule for another tenant. Changing this creates a new
+        /// firewall rule.
         /// </summary>
         [Output("tenantId")]
-        public Output<string?> TenantId { get; private set; } = null!;
+        public Output<string> TenantId { get; private set; } = null!;
 
 
         /// <summary>
@@ -251,6 +261,15 @@ namespace Pulumi.OpenStack.Firewall
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// This argument conflicts and is interchangeable
+        /// with `tenant_id`. The owner of the firewall rule. Required if admin wants
+        /// to create a firewall rule for another project. Changing this creates a new
+        /// firewall rule.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
         /// (Optional; Required if `source_port` or `destination_port` is not
         /// empty) The protocol type on which the firewall rule operates.
         /// Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -294,9 +313,10 @@ namespace Pulumi.OpenStack.Firewall
         public Input<string>? SourcePort { get; set; }
 
         /// <summary>
-        /// The owner of the firewall rule. Required if admin
-        /// wants to create a firewall rule for another tenant. Changing this creates a
-        /// new firewall rule.
+        /// This argument conflicts and is interchangeable
+        /// with `project_id`. The owner of the firewall rule. Required if admin wants
+        /// to create a firewall rule for another tenant. Changing this creates a new
+        /// firewall rule.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
@@ -363,6 +383,15 @@ namespace Pulumi.OpenStack.Firewall
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// This argument conflicts and is interchangeable
+        /// with `tenant_id`. The owner of the firewall rule. Required if admin wants
+        /// to create a firewall rule for another project. Changing this creates a new
+        /// firewall rule.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
         /// (Optional; Required if `source_port` or `destination_port` is not
         /// empty) The protocol type on which the firewall rule operates.
         /// Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -406,9 +435,10 @@ namespace Pulumi.OpenStack.Firewall
         public Input<string>? SourcePort { get; set; }
 
         /// <summary>
-        /// The owner of the firewall rule. Required if admin
-        /// wants to create a firewall rule for another tenant. Changing this creates a
-        /// new firewall rule.
+        /// This argument conflicts and is interchangeable
+        /// with `project_id`. The owner of the firewall rule. Required if admin wants
+        /// to create a firewall rule for another tenant. Changing this creates a new
+        /// firewall rule.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }

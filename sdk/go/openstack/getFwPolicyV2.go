@@ -59,13 +59,17 @@ type GetFwPolicyV2Args struct {
 	Name *string `pulumi:"name"`
 	// The ID of the firewall policy.
 	PolicyId *string `pulumi:"policyId"`
+	// This argument conflicts and is interchangeable
+	// with `tenantId`. The owner of the firewall policy.
+	ProjectId *string `pulumi:"projectId"`
 	// The region in which to obtain the V2 Neutron client.
 	// A Neutron client is needed to retrieve firewall policy ids. If omitted, the
 	// `region` argument of the provider is used.
 	Region *string `pulumi:"region"`
 	// Whether this policy is shared across all projects.
 	Shared *bool `pulumi:"shared"`
-	// The owner of the firewall policy.
+	// This argument conflicts and is interchangeable
+	// with `projectId`. The owner of the firewall policy.
 	TenantId *string `pulumi:"tenantId"`
 }
 
@@ -80,6 +84,8 @@ type GetFwPolicyV2Result struct {
 	Name *string `pulumi:"name"`
 	// See Argument Reference above.
 	PolicyId *string `pulumi:"policyId"`
+	// See Argument Reference above.
+	ProjectId string `pulumi:"projectId"`
 	// See Argument Reference above.
 	Region string `pulumi:"region"`
 	// The array of one or more firewall rules that comprise the policy.
@@ -113,13 +119,17 @@ type GetFwPolicyV2OutputArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The ID of the firewall policy.
 	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
+	// This argument conflicts and is interchangeable
+	// with `tenantId`. The owner of the firewall policy.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// The region in which to obtain the V2 Neutron client.
 	// A Neutron client is needed to retrieve firewall policy ids. If omitted, the
 	// `region` argument of the provider is used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Whether this policy is shared across all projects.
 	Shared pulumi.BoolPtrInput `pulumi:"shared"`
-	// The owner of the firewall policy.
+	// This argument conflicts and is interchangeable
+	// with `projectId`. The owner of the firewall policy.
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 }
 
@@ -170,6 +180,11 @@ func (o GetFwPolicyV2ResultOutput) Name() pulumi.StringPtrOutput {
 // See Argument Reference above.
 func (o GetFwPolicyV2ResultOutput) PolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFwPolicyV2Result) *string { return v.PolicyId }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o GetFwPolicyV2ResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFwPolicyV2Result) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 // See Argument Reference above.

@@ -72,7 +72,7 @@ public class QosMinimumBandwidthRule extends com.pulumi.resources.CustomResource
      * existing QoS minimum bandwidth rule.
      * 
      */
-    @Export(name="direction", refs={String.class}, tree="[0]")
+    @Export(name="direction", type=String.class, parameters={})
     private Output</* @Nullable */ String> direction;
 
     /**
@@ -88,7 +88,7 @@ public class QosMinimumBandwidthRule extends com.pulumi.resources.CustomResource
      * QoS minimum bandwidth rule.
      * 
      */
-    @Export(name="minKbps", refs={Integer.class}, tree="[0]")
+    @Export(name="minKbps", type=Integer.class, parameters={})
     private Output<Integer> minKbps;
 
     /**
@@ -103,7 +103,7 @@ public class QosMinimumBandwidthRule extends com.pulumi.resources.CustomResource
      * The QoS policy reference. Changing this creates a new QoS minimum bandwidth rule.
      * 
      */
-    @Export(name="qosPolicyId", refs={String.class}, tree="[0]")
+    @Export(name="qosPolicyId", type=String.class, parameters={})
     private Output<String> qosPolicyId;
 
     /**
@@ -119,7 +119,7 @@ public class QosMinimumBandwidthRule extends com.pulumi.resources.CustomResource
      * `region` argument of the provider is used. Changing this creates a new QoS minimum bandwidth rule.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**

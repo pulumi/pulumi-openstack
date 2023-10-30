@@ -90,6 +90,13 @@ export class PolicyV2 extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * This argument conflicts and is interchangeable
+     * with `tenantId`. The owner of the firewall policy. Required if admin wants
+     * to create a firewall policy for another project. Changing this creates a new
+     * firewall policy.
+     */
+    public readonly projectId!: pulumi.Output<string>;
+    /**
      * The region in which to obtain the v2 networking client.
      * A networking client is needed to create a firewall policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
@@ -111,9 +118,10 @@ export class PolicyV2 extends pulumi.CustomResource {
      */
     public readonly shared!: pulumi.Output<boolean | undefined>;
     /**
-     * The owner of the firewall policy. Required if admin
-     * wants to create a firewall policy for another tenant. Changing this
-     * creates a new firewall policy.
+     * This argument conflicts and is interchangeable
+     * with `projectId`. The owner of the firewall policy. Required if admin wants
+     * to create a firewall policy for another tenant. Changing this creates a new
+     * firewall policy.
      */
     public readonly tenantId!: pulumi.Output<string>;
 
@@ -133,6 +141,7 @@ export class PolicyV2 extends pulumi.CustomResource {
             resourceInputs["audited"] = state ? state.audited : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["shared"] = state ? state.shared : undefined;
@@ -142,6 +151,7 @@ export class PolicyV2 extends pulumi.CustomResource {
             resourceInputs["audited"] = args ? args.audited : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["shared"] = args ? args.shared : undefined;
@@ -175,6 +185,13 @@ export interface PolicyV2State {
      */
     name?: pulumi.Input<string>;
     /**
+     * This argument conflicts and is interchangeable
+     * with `tenantId`. The owner of the firewall policy. Required if admin wants
+     * to create a firewall policy for another project. Changing this creates a new
+     * firewall policy.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
      * The region in which to obtain the v2 networking client.
      * A networking client is needed to create a firewall policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
@@ -196,9 +213,10 @@ export interface PolicyV2State {
      */
     shared?: pulumi.Input<boolean>;
     /**
-     * The owner of the firewall policy. Required if admin
-     * wants to create a firewall policy for another tenant. Changing this
-     * creates a new firewall policy.
+     * This argument conflicts and is interchangeable
+     * with `projectId`. The owner of the firewall policy. Required if admin wants
+     * to create a firewall policy for another tenant. Changing this creates a new
+     * firewall policy.
      */
     tenantId?: pulumi.Input<string>;
 }
@@ -226,6 +244,13 @@ export interface PolicyV2Args {
      */
     name?: pulumi.Input<string>;
     /**
+     * This argument conflicts and is interchangeable
+     * with `tenantId`. The owner of the firewall policy. Required if admin wants
+     * to create a firewall policy for another project. Changing this creates a new
+     * firewall policy.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
      * The region in which to obtain the v2 networking client.
      * A networking client is needed to create a firewall policy. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
@@ -247,9 +272,10 @@ export interface PolicyV2Args {
      */
     shared?: pulumi.Input<boolean>;
     /**
-     * The owner of the firewall policy. Required if admin
-     * wants to create a firewall policy for another tenant. Changing this
-     * creates a new firewall policy.
+     * This argument conflicts and is interchangeable
+     * with `projectId`. The owner of the firewall policy. Required if admin wants
+     * to create a firewall policy for another tenant. Changing this creates a new
+     * firewall policy.
      */
     tenantId?: pulumi.Input<string>;
 }

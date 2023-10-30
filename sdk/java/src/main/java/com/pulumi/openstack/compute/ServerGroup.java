@@ -117,7 +117,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * The instances that are part of this server group.
      * 
      */
-    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="members", type=List.class, parameters={String.class})
     private Output<List<String>> members;
 
     /**
@@ -132,7 +132,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * a new server group.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -149,7 +149,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * creates a new server group.
      * 
      */
-    @Export(name="policies", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="policies", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> policies;
 
     /**
@@ -167,7 +167,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * this creates a new server group.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -184,7 +184,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
      * 
      */
-    @Export(name="rules", refs={ServerGroupRules.class}, tree="[0]")
+    @Export(name="rules", type=ServerGroupRules.class, parameters={})
     private Output<ServerGroupRules> rules;
 
     /**
@@ -199,7 +199,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * Map of additional options.
      * 
      */
-    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**

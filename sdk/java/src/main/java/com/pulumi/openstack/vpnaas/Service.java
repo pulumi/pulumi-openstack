@@ -67,7 +67,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Changing this updates the administrative state of the existing service.
      * 
      */
-    @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
+    @Export(name="adminStateUp", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> adminStateUp;
 
     /**
@@ -83,7 +83,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Changing this updates the description of the existing service.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -98,7 +98,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The read-only external (public) IPv4 address that is used for the VPN service.
      * 
      */
-    @Export(name="externalV4Ip", refs={String.class}, tree="[0]")
+    @Export(name="externalV4Ip", type=String.class, parameters={})
     private Output<String> externalV4Ip;
 
     /**
@@ -112,7 +112,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The read-only external (public) IPv6 address that is used for the VPN service.
      * 
      */
-    @Export(name="externalV6Ip", refs={String.class}, tree="[0]")
+    @Export(name="externalV6Ip", type=String.class, parameters={})
     private Output<String> externalV6Ip;
 
     /**
@@ -127,7 +127,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * the existing service.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -145,7 +145,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * service.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -162,7 +162,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The ID of the router. Changing this creates a new service.
      * 
      */
-    @Export(name="routerId", refs={String.class}, tree="[0]")
+    @Export(name="routerId", type=String.class, parameters={})
     private Output<String> routerId;
 
     /**
@@ -176,7 +176,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Indicates whether IPsec VPN service is currently operational. Values are ACTIVE, DOWN, BUILD, ERROR, PENDING_CREATE, PENDING_UPDATE, or PENDING_DELETE.
      * 
      */
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
@@ -190,7 +190,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * SubnetID is the ID of the subnet. Default is null.
      * 
      */
-    @Export(name="subnetId", refs={String.class}, tree="[0]")
+    @Export(name="subnetId", type=String.class, parameters={})
     private Output</* @Nullable */ String> subnetId;
 
     /**
@@ -205,7 +205,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * create a service for another project. Changing this creates a new service.
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
+    @Export(name="tenantId", type=String.class, parameters={})
     private Output<String> tenantId;
 
     /**
@@ -220,7 +220,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Map of additional options.
      * 
      */
-    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**

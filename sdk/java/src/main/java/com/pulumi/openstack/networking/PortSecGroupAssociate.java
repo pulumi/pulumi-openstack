@@ -155,7 +155,7 @@ public class PortSecGroupAssociate extends com.pulumi.resources.CustomResource {
      * which have been explicitly and implicitly added.
      * 
      */
-    @Export(name="allSecurityGroupIds", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="allSecurityGroupIds", type=List.class, parameters={String.class})
     private Output<List<String>> allSecurityGroupIds;
 
     /**
@@ -171,7 +171,7 @@ public class PortSecGroupAssociate extends com.pulumi.resources.CustomResource {
      * groups, specified in the `security_group_ids`. Defaults to `false`.
      * 
      */
-    @Export(name="enforce", refs={Boolean.class}, tree="[0]")
+    @Export(name="enforce", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enforce;
 
     /**
@@ -186,7 +186,7 @@ public class PortSecGroupAssociate extends com.pulumi.resources.CustomResource {
      * An UUID of the port to apply security groups to.
      * 
      */
-    @Export(name="portId", refs={String.class}, tree="[0]")
+    @Export(name="portId", type=String.class, parameters={})
     private Output<String> portId;
 
     /**
@@ -203,7 +203,7 @@ public class PortSecGroupAssociate extends com.pulumi.resources.CustomResource {
      * resource.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -222,7 +222,7 @@ public class PortSecGroupAssociate extends com.pulumi.resources.CustomResource {
      * opposed to how they are configured with the Compute Instance).
      * 
      */
-    @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="securityGroupIds", type=List.class, parameters={String.class})
     private Output<List<String>> securityGroupIds;
 
     /**

@@ -78,7 +78,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * explicitly and implicitly added.
      * 
      */
-    @Export(name="allTags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="allTags", type=List.class, parameters={String.class})
     private Output<List<String>> allTags;
 
     /**
@@ -98,7 +98,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * The `allocation_pool` block is documented below.
      * 
      */
-    @Export(name="allocationPools", refs={List.class,SubnetAllocationPool.class}, tree="[0,1]")
+    @Export(name="allocationPools", type=List.class, parameters={SubnetAllocationPool.class})
     private Output<List<SubnetAllocationPool>> allocationPools;
 
     /**
@@ -123,7 +123,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* use allocation_pool instead */
-    @Export(name="allocationPoolsCollection", refs={List.class,SubnetAllocationPoolsCollection.class}, tree="[0,1]")
+    @Export(name="allocationPoolsCollection", type=List.class, parameters={SubnetAllocationPoolsCollection.class})
     private Output<List<SubnetAllocationPoolsCollection>> allocationPoolsCollection;
 
     /**
@@ -141,7 +141,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * subnet pool.
      * 
      */
-    @Export(name="cidr", refs={String.class}, tree="[0]")
+    @Export(name="cidr", type=String.class, parameters={})
     private Output<String> cidr;
 
     /**
@@ -158,7 +158,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * updates the name of the existing subnet.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -175,7 +175,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * subnet.
      * 
      */
-    @Export(name="dnsNameservers", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="dnsNameservers", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> dnsNameservers;
 
     /**
@@ -193,7 +193,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * disables the DHCP capabilities of the existing subnet. Defaults to true.
      * 
      */
-    @Export(name="enableDhcp", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableDhcp", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableDhcp;
 
     /**
@@ -212,7 +212,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * existing subnet.
      * 
      */
-    @Export(name="gatewayIp", refs={String.class}, tree="[0]")
+    @Export(name="gatewayIp", type=String.class, parameters={})
     private Output<String> gatewayIp;
 
     /**
@@ -237,7 +237,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use openstack_networking_subnet_route_v2 instead */
-    @Export(name="hostRoutes", refs={List.class,SubnetHostRoute.class}, tree="[0,1]")
+    @Export(name="hostRoutes", type=List.class, parameters={SubnetHostRoute.class})
     private Output</* @Nullable */ List<SubnetHostRoute>> hostRoutes;
 
     /**
@@ -256,7 +256,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * new subnet.
      * 
      */
-    @Export(name="ipVersion", refs={Integer.class}, tree="[0]")
+    @Export(name="ipVersion", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> ipVersion;
 
     /**
@@ -272,7 +272,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
      * 
      */
-    @Export(name="ipv6AddressMode", refs={String.class}, tree="[0]")
+    @Export(name="ipv6AddressMode", type=String.class, parameters={})
     private Output<String> ipv6AddressMode;
 
     /**
@@ -288,7 +288,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * are `dhcpv6-stateful`, `dhcpv6-stateless`, or `slaac`.
      * 
      */
-    @Export(name="ipv6RaMode", refs={String.class}, tree="[0]")
+    @Export(name="ipv6RaMode", type=String.class, parameters={})
     private Output<String> ipv6RaMode;
 
     /**
@@ -304,7 +304,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * the existing subnet.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -320,7 +320,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * creates a new subnet.
      * 
      */
-    @Export(name="networkId", refs={String.class}, tree="[0]")
+    @Export(name="networkId", type=String.class, parameters={})
     private Output<String> networkId;
 
     /**
@@ -336,7 +336,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * this removes or adds a default gateway IP of the existing subnet.
      * 
      */
-    @Export(name="noGateway", refs={Boolean.class}, tree="[0]")
+    @Export(name="noGateway", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> noGateway;
 
     /**
@@ -354,7 +354,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * creates a new subnet.
      * 
      */
-    @Export(name="prefixLength", refs={Integer.class}, tree="[0]")
+    @Export(name="prefixLength", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> prefixLength;
 
     /**
@@ -374,7 +374,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * subnet.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -392,7 +392,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * Changing this updates the service types for the existing subnet.
      * 
      */
-    @Export(name="serviceTypes", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="serviceTypes", type=List.class, parameters={String.class})
     private Output<List<String>> serviceTypes;
 
     /**
@@ -407,7 +407,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * The ID of the subnetpool associated with the subnet.
      * 
      */
-    @Export(name="subnetpoolId", refs={String.class}, tree="[0]")
+    @Export(name="subnetpoolId", type=String.class, parameters={})
     private Output</* @Nullable */ String> subnetpoolId;
 
     /**
@@ -421,7 +421,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * A set of string tags for the subnet.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -436,7 +436,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * create a subnet for another tenant. Changing this creates a new subnet.
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
+    @Export(name="tenantId", type=String.class, parameters={})
     private Output<String> tenantId;
 
     /**
@@ -451,7 +451,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * Map of additional options.
      * 
      */
-    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**

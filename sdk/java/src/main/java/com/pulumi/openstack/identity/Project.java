@@ -67,7 +67,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * A description of the project.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -81,7 +81,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The domain this project belongs to.
      * 
      */
-    @Export(name="domainId", refs={String.class}, tree="[0]")
+    @Export(name="domainId", type=String.class, parameters={})
     private Output<String> domainId;
 
     /**
@@ -96,7 +96,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * values are `true` and `false`. Default is `true`.
      * 
      */
-    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="enabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -113,7 +113,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * project/domain.
      * 
      */
-    @Export(name="isDomain", refs={Boolean.class}, tree="[0]")
+    @Export(name="isDomain", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> isDomain;
 
     /**
@@ -129,7 +129,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The name of the project.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -144,7 +144,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * a new project.
      * 
      */
-    @Export(name="parentId", refs={String.class}, tree="[0]")
+    @Export(name="parentId", type=String.class, parameters={})
     private Output<String> parentId;
 
     /**
@@ -161,7 +161,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * creates a new project.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -178,7 +178,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * project.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**

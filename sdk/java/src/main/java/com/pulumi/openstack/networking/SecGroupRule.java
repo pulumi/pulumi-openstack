@@ -77,7 +77,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * A description of the rule. Changing this creates a new security group rule.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -92,7 +92,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * or __egress__. Changing this creates a new security group rule.
      * 
      */
-    @Export(name="direction", refs={String.class}, tree="[0]")
+    @Export(name="direction", type=String.class, parameters={})
     private Output<String> direction;
 
     /**
@@ -108,7 +108,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * or __IPv6__. Changing this creates a new security group rule.
      * 
      */
-    @Export(name="ethertype", refs={String.class}, tree="[0]")
+    @Export(name="ethertype", type=String.class, parameters={})
     private Output<String> ethertype;
 
     /**
@@ -125,7 +125,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * security group rule.
      * 
      */
-    @Export(name="portRangeMax", refs={Integer.class}, tree="[0]")
+    @Export(name="portRangeMax", type=Integer.class, parameters={})
     private Output<Integer> portRangeMax;
 
     /**
@@ -143,7 +143,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * security group rule.
      * 
      */
-    @Export(name="portRangeMin", refs={Integer.class}, tree="[0]")
+    @Export(name="portRangeMin", type=Integer.class, parameters={})
     private Output<Integer> portRangeMin;
 
     /**
@@ -180,7 +180,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * * __vrrp__
      * 
      */
-    @Export(name="protocol", refs={String.class}, tree="[0]")
+    @Export(name="protocol", type=String.class, parameters={})
     private Output<String> protocol;
 
     /**
@@ -218,7 +218,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * security group rule.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -237,7 +237,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * a new security group rule.
      * 
      */
-    @Export(name="remoteGroupId", refs={String.class}, tree="[0]")
+    @Export(name="remoteGroupId", type=String.class, parameters={})
     private Output<String> remoteGroupId;
 
     /**
@@ -254,7 +254,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * CIDR (i.e. 192.168.0.0/16). Changing this creates a new security group rule.
      * 
      */
-    @Export(name="remoteIpPrefix", refs={String.class}, tree="[0]")
+    @Export(name="remoteIpPrefix", type=String.class, parameters={})
     private Output<String> remoteIpPrefix;
 
     /**
@@ -271,7 +271,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * tenant. Changing this creates a new security group rule.
      * 
      */
-    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
+    @Export(name="securityGroupId", type=String.class, parameters={})
     private Output<String> securityGroupId;
 
     /**
@@ -289,7 +289,7 @@ public class SecGroupRule extends com.pulumi.resources.CustomResource {
      * security group rule.
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
+    @Export(name="tenantId", type=String.class, parameters={})
     private Output<String> tenantId;
 
     /**

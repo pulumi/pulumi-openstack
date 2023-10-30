@@ -84,7 +84,7 @@ public class SubnetRoute extends com.pulumi.resources.CustomResource {
      * this creates a new routing entry.
      * 
      */
-    @Export(name="destinationCidr", refs={String.class}, tree="[0]")
+    @Export(name="destinationCidr", type=String.class, parameters={})
     private Output<String> destinationCidr;
 
     /**
@@ -100,7 +100,7 @@ public class SubnetRoute extends com.pulumi.resources.CustomResource {
      * this creates a new routing entry.
      * 
      */
-    @Export(name="nextHop", refs={String.class}, tree="[0]")
+    @Export(name="nextHop", type=String.class, parameters={})
     private Output<String> nextHop;
 
     /**
@@ -118,7 +118,7 @@ public class SubnetRoute extends com.pulumi.resources.CustomResource {
      * routing entry.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -136,7 +136,7 @@ public class SubnetRoute extends com.pulumi.resources.CustomResource {
      * this creates a new routing entry.
      * 
      */
-    @Export(name="subnetId", refs={String.class}, tree="[0]")
+    @Export(name="subnetId", type=String.class, parameters={})
     private Output<String> subnetId;
 
     /**

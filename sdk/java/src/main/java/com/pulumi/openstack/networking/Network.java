@@ -114,7 +114,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * state of the existing network.
      * 
      */
-    @Export(name="adminStateUp", refs={Boolean.class}, tree="[0]")
+    @Export(name="adminStateUp", type=Boolean.class, parameters={})
     private Output<Boolean> adminStateUp;
 
     /**
@@ -131,7 +131,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * explicitly and implicitly added.
      * 
      */
-    @Export(name="allTags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="allTags", type=List.class, parameters={String.class})
     private Output<List<String>> allTags;
 
     /**
@@ -149,7 +149,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * creates a new network.
      * 
      */
-    @Export(name="availabilityZoneHints", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="availabilityZoneHints", type=List.class, parameters={String.class})
     private Output<List<String>> availabilityZoneHints;
 
     /**
@@ -167,7 +167,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * updates the name of the existing network.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -185,7 +185,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * service when Neutron is configured to integrate with such a service.
      * 
      */
-    @Export(name="dnsDomain", refs={String.class}, tree="[0]")
+    @Export(name="dnsDomain", type=String.class, parameters={})
     private Output<String> dnsDomain;
 
     /**
@@ -204,7 +204,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * false. Changing this updates the external attribute of the existing network.
      * 
      */
-    @Export(name="external", refs={Boolean.class}, tree="[0]")
+    @Export(name="external", type=Boolean.class, parameters={})
     private Output<Boolean> external;
 
     /**
@@ -222,7 +222,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * Neutron `net-mtu-writable` extension is enabled.
      * 
      */
-    @Export(name="mtu", refs={Integer.class}, tree="[0]")
+    @Export(name="mtu", type=Integer.class, parameters={})
     private Output<Integer> mtu;
 
     /**
@@ -239,7 +239,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * the existing network.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -258,7 +258,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * `false`.
      * 
      */
-    @Export(name="portSecurityEnabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="portSecurityEnabled", type=Boolean.class, parameters={})
     private Output<Boolean> portSecurityEnabled;
 
     /**
@@ -276,7 +276,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * Reference to the associated QoS policy.
      * 
      */
-    @Export(name="qosPolicyId", refs={String.class}, tree="[0]")
+    @Export(name="qosPolicyId", type=String.class, parameters={})
     private Output<String> qosPolicyId;
 
     /**
@@ -293,7 +293,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * network.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -313,7 +313,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * it supports updating.
      * 
      */
-    @Export(name="segments", refs={List.class,NetworkSegment.class}, tree="[0,1]")
+    @Export(name="segments", type=List.class, parameters={NetworkSegment.class})
     private Output<List<NetworkSegment>> segments;
 
     /**
@@ -332,7 +332,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * existing network.
      * 
      */
-    @Export(name="shared", refs={Boolean.class}, tree="[0]")
+    @Export(name="shared", type=Boolean.class, parameters={})
     private Output<Boolean> shared;
 
     /**
@@ -348,7 +348,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * A set of string tags for the network.
      * 
      */
-    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="tags", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -363,7 +363,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * create a network for another tenant. Changing this creates a new network.
      * 
      */
-    @Export(name="tenantId", refs={String.class}, tree="[0]")
+    @Export(name="tenantId", type=String.class, parameters={})
     private Output<String> tenantId;
 
     /**
@@ -381,7 +381,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * network.
      * 
      */
-    @Export(name="transparentVlan", refs={Boolean.class}, tree="[0]")
+    @Export(name="transparentVlan", type=Boolean.class, parameters={})
     private Output<Boolean> transparentVlan;
 
     /**
@@ -398,7 +398,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * Map of additional options.
      * 
      */
-    @Export(name="valueSpecs", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="valueSpecs", type=Map.class, parameters={String.class, Object.class})
     private Output</* @Nullable */ Map<String,Object>> valueSpecs;
 
     /**

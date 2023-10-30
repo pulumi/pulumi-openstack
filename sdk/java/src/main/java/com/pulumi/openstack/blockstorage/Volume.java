@@ -73,7 +73,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * sees it.
      * 
      */
-    @Export(name="attachments", refs={List.class,VolumeAttachment.class}, tree="[0,1]")
+    @Export(name="attachments", type=List.class, parameters={VolumeAttachment.class})
     private Output<List<VolumeAttachment>> attachments;
 
     /**
@@ -90,7 +90,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Changing this creates a new volume.
      * 
      */
-    @Export(name="availabilityZone", refs={String.class}, tree="[0]")
+    @Export(name="availabilityZone", type=String.class, parameters={})
     private Output<String> availabilityZone;
 
     /**
@@ -106,7 +106,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * in.
      * 
      */
-    @Export(name="consistencyGroupId", refs={String.class}, tree="[0]")
+    @Export(name="consistencyGroupId", type=String.class, parameters={})
     private Output</* @Nullable */ String> consistencyGroupId;
 
     /**
@@ -122,7 +122,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * the volume&#39;s description.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -139,7 +139,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * support for version 3.42 and a compatible storage driver.
      * 
      */
-    @Export(name="enableOnlineResize", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableOnlineResize", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableOnlineResize;
 
     /**
@@ -156,7 +156,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Changing this creates a new volume.
      * 
      */
-    @Export(name="imageId", refs={String.class}, tree="[0]")
+    @Export(name="imageId", type=String.class, parameters={})
     private Output</* @Nullable */ String> imageId;
 
     /**
@@ -172,7 +172,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Changing this updates the existing volume metadata.
      * 
      */
-    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
+    @Export(name="metadata", type=Map.class, parameters={String.class, Object.class})
     private Output<Map<String,Object>> metadata;
 
     /**
@@ -187,7 +187,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Allow the volume to be attached to more than one Compute instance.
      * 
      */
-    @Export(name="multiattach", refs={Boolean.class}, tree="[0]")
+    @Export(name="multiattach", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> multiattach;
 
     /**
@@ -202,7 +202,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * volume&#39;s name.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -219,7 +219,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * creates a new volume.
      * 
      */
-    @Export(name="region", refs={String.class}, tree="[0]")
+    @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
@@ -236,7 +236,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * to instantiate a volume in the OpenStack cloud. The available hints are described below.
      * 
      */
-    @Export(name="schedulerHints", refs={List.class,VolumeSchedulerHint.class}, tree="[0,1]")
+    @Export(name="schedulerHints", type=List.class, parameters={VolumeSchedulerHint.class})
     private Output</* @Nullable */ List<VolumeSchedulerHint>> schedulerHints;
 
     /**
@@ -251,7 +251,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * The size of the volume to create (in gigabytes).
      * 
      */
-    @Export(name="size", refs={Integer.class}, tree="[0]")
+    @Export(name="size", type=Integer.class, parameters={})
     private Output<Integer> size;
 
     /**
@@ -266,7 +266,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Changing this creates a new volume.
      * 
      */
-    @Export(name="snapshotId", refs={String.class}, tree="[0]")
+    @Export(name="snapshotId", type=String.class, parameters={})
     private Output</* @Nullable */ String> snapshotId;
 
     /**
@@ -281,7 +281,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * The volume ID to replicate with.
      * 
      */
-    @Export(name="sourceReplica", refs={String.class}, tree="[0]")
+    @Export(name="sourceReplica", type=String.class, parameters={})
     private Output</* @Nullable */ String> sourceReplica;
 
     /**
@@ -296,7 +296,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Changing this creates a new volume.
      * 
      */
-    @Export(name="sourceVolId", refs={String.class}, tree="[0]")
+    @Export(name="sourceVolId", type=String.class, parameters={})
     private Output</* @Nullable */ String> sourceVolId;
 
     /**
@@ -312,7 +312,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Changing this creates a new volume.
      * 
      */
-    @Export(name="volumeType", refs={String.class}, tree="[0]")
+    @Export(name="volumeType", type=String.class, parameters={})
     private Output<String> volumeType;
 
     /**
