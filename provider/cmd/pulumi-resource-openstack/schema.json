@@ -1398,7 +1398,14 @@
                     "description": "An isolated segment on the physical network.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "segmentationId"
+                    ]
+                }
+            }
         },
         "openstack:networking/PortAllowedAddressPair:PortAllowedAddressPair": {
             "properties": {
@@ -5686,7 +5693,7 @@
             }
         },
         "openstack:compute/volumeAttach:VolumeAttach": {
-            "description": "Attaches a Block Storage Volume to an Instance using the OpenStack\nCompute (Nova) v2 API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Basic attachment of a single volume to a single instance\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst volume1 = new openstack.blockstorage.VolumeV2(\"volume1\", {size: 1});\nconst instance1 = new openstack.compute.Instance(\"instance1\", {securityGroups: [\"default\"]});\nconst va1 = new openstack.compute.VolumeAttach(\"va1\", {\n    instanceId: instance1.id,\n    volumeId: volume1.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nvolume1 = openstack.blockstorage.VolumeV2(\"volume1\", size=1)\ninstance1 = openstack.compute.Instance(\"instance1\", security_groups=[\"default\"])\nva1 = openstack.compute.VolumeAttach(\"va1\",\n    instance_id=instance1.id,\n    volume_id=volume1.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var volume1 = new OpenStack.BlockStorage.VolumeV2(\"volume1\", new()\n    {\n        Size = 1,\n    });\n\n    var instance1 = new OpenStack.Compute.Instance(\"instance1\", new()\n    {\n        SecurityGroups = new[]\n        {\n            \"default\",\n        },\n    });\n\n    var va1 = new OpenStack.Compute.VolumeAttach(\"va1\", new()\n    {\n        InstanceId = instance1.Id,\n        VolumeId = volume1.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tvolume1, err := blockstorage.NewVolumeV2(ctx, \"volume1\", \u0026blockstorage.VolumeV2Args{\n\t\t\tSize: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinstance1, err := compute.NewInstance(ctx, \"instance1\", \u0026compute.InstanceArgs{\n\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"default\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = compute.NewVolumeAttach(ctx, \"va1\", \u0026compute.VolumeAttachArgs{\n\t\t\tInstanceId: instance1.ID(),\n\t\t\tVolumeId:   volume1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.blockstorage.VolumeV2;\nimport com.pulumi.openstack.blockstorage.VolumeV2Args;\nimport com.pulumi.openstack.compute.Instance;\nimport com.pulumi.openstack.compute.InstanceArgs;\nimport com.pulumi.openstack.compute.VolumeAttach;\nimport com.pulumi.openstack.compute.VolumeAttachArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var volume1 = new VolumeV2(\"volume1\", VolumeV2Args.builder()        \n            .size(1)\n            .build());\n\n        var instance1 = new Instance(\"instance1\", InstanceArgs.builder()        \n            .securityGroups(\"default\")\n            .build());\n\n        var va1 = new VolumeAttach(\"va1\", VolumeAttachArgs.builder()        \n            .instanceId(instance1.id())\n            .volumeId(volume1.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  volume1:\n    type: openstack:blockstorage:VolumeV2\n    properties:\n      size: 1\n  instance1:\n    type: openstack:compute:Instance\n    properties:\n      securityGroups:\n        - default\n  va1:\n    type: openstack:compute:VolumeAttach\n    properties:\n      instanceId: ${instance1.id}\n      volumeId: ${volume1.id}\n```\n{{% /example %}}\n{{% example %}}\n### Using Multiattach-enabled volumes\n\nMultiattach Volumes are dependent upon your OpenStack cloud and not all\nclouds support multiattach.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst volume1 = new openstack.blockstorage.Volume(\"volume1\", {\n    size: 1,\n    multiattach: true,\n});\nconst instance1 = new openstack.compute.Instance(\"instance1\", {securityGroups: [\"default\"]});\nconst instance2 = new openstack.compute.Instance(\"instance2\", {securityGroups: [\"default\"]});\nconst va1 = new openstack.compute.VolumeAttach(\"va1\", {\n    instanceId: instance1.id,\n    volumeId: openstack_blockstorage_volume_v2.volume_1.id,\n    multiattach: true,\n});\nconst va2 = new openstack.compute.VolumeAttach(\"va2\", {\n    instanceId: instance2.id,\n    volumeId: openstack_blockstorage_volume_v2.volume_1.id,\n    multiattach: true,\n}, {\n    dependsOn: [\"openstack_compute_volume_attach_v2.va_1\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nvolume1 = openstack.blockstorage.Volume(\"volume1\",\n    size=1,\n    multiattach=True)\ninstance1 = openstack.compute.Instance(\"instance1\", security_groups=[\"default\"])\ninstance2 = openstack.compute.Instance(\"instance2\", security_groups=[\"default\"])\nva1 = openstack.compute.VolumeAttach(\"va1\",\n    instance_id=instance1.id,\n    volume_id=openstack_blockstorage_volume_v2[\"volume_1\"][\"id\"],\n    multiattach=True)\nva2 = openstack.compute.VolumeAttach(\"va2\",\n    instance_id=instance2.id,\n    volume_id=openstack_blockstorage_volume_v2[\"volume_1\"][\"id\"],\n    multiattach=True,\n    opts=pulumi.ResourceOptions(depends_on=[\"openstack_compute_volume_attach_v2.va_1\"]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var volume1 = new OpenStack.BlockStorage.Volume(\"volume1\", new()\n    {\n        Size = 1,\n        Multiattach = true,\n    });\n\n    var instance1 = new OpenStack.Compute.Instance(\"instance1\", new()\n    {\n        SecurityGroups = new[]\n        {\n            \"default\",\n        },\n    });\n\n    var instance2 = new OpenStack.Compute.Instance(\"instance2\", new()\n    {\n        SecurityGroups = new[]\n        {\n            \"default\",\n        },\n    });\n\n    var va1 = new OpenStack.Compute.VolumeAttach(\"va1\", new()\n    {\n        InstanceId = instance1.Id,\n        VolumeId = openstack_blockstorage_volume_v2.Volume_1.Id,\n        Multiattach = true,\n    });\n\n    var va2 = new OpenStack.Compute.VolumeAttach(\"va2\", new()\n    {\n        InstanceId = instance2.Id,\n        VolumeId = openstack_blockstorage_volume_v2.Volume_1.Id,\n        Multiattach = true,\n    }, new CustomResourceOptions\n    {\n        DependsOn = new[]\n        {\n            \"openstack_compute_volume_attach_v2.va_1\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := blockstorage.NewVolume(ctx, \"volume1\", \u0026blockstorage.VolumeArgs{\n\t\t\tSize:        pulumi.Int(1),\n\t\t\tMultiattach: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinstance1, err := compute.NewInstance(ctx, \"instance1\", \u0026compute.InstanceArgs{\n\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"default\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinstance2, err := compute.NewInstance(ctx, \"instance2\", \u0026compute.InstanceArgs{\n\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"default\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = compute.NewVolumeAttach(ctx, \"va1\", \u0026compute.VolumeAttachArgs{\n\t\t\tInstanceId:  instance1.ID(),\n\t\t\tVolumeId:    pulumi.Any(openstack_blockstorage_volume_v2.Volume_1.Id),\n\t\t\tMultiattach: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = compute.NewVolumeAttach(ctx, \"va2\", \u0026compute.VolumeAttachArgs{\n\t\t\tInstanceId:  instance2.ID(),\n\t\t\tVolumeId:    pulumi.Any(openstack_blockstorage_volume_v2.Volume_1.Id),\n\t\t\tMultiattach: pulumi.Bool(true),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tpulumi.Resource(\"openstack_compute_volume_attach_v2.va_1\"),\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.blockstorage.Volume;\nimport com.pulumi.openstack.blockstorage.VolumeArgs;\nimport com.pulumi.openstack.compute.Instance;\nimport com.pulumi.openstack.compute.InstanceArgs;\nimport com.pulumi.openstack.compute.VolumeAttach;\nimport com.pulumi.openstack.compute.VolumeAttachArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var volume1 = new Volume(\"volume1\", VolumeArgs.builder()        \n            .size(1)\n            .multiattach(true)\n            .build());\n\n        var instance1 = new Instance(\"instance1\", InstanceArgs.builder()        \n            .securityGroups(\"default\")\n            .build());\n\n        var instance2 = new Instance(\"instance2\", InstanceArgs.builder()        \n            .securityGroups(\"default\")\n            .build());\n\n        var va1 = new VolumeAttach(\"va1\", VolumeAttachArgs.builder()        \n            .instanceId(instance1.id())\n            .volumeId(openstack_blockstorage_volume_v2.volume_1().id())\n            .multiattach(true)\n            .build());\n\n        var va2 = new VolumeAttach(\"va2\", VolumeAttachArgs.builder()        \n            .instanceId(instance2.id())\n            .volumeId(openstack_blockstorage_volume_v2.volume_1().id())\n            .multiattach(true)\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(\"openstack_compute_volume_attach_v2.va_1\")\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  volume1:\n    type: openstack:blockstorage:Volume\n    properties:\n      size: 1\n      multiattach: true\n  instance1:\n    type: openstack:compute:Instance\n    properties:\n      securityGroups:\n        - default\n  instance2:\n    type: openstack:compute:Instance\n    properties:\n      securityGroups:\n        - default\n  va1:\n    type: openstack:compute:VolumeAttach\n    properties:\n      instanceId: ${instance1.id}\n      volumeId: ${openstack_blockstorage_volume_v2.volume_1.id}\n      multiattach: true\n  va2:\n    type: openstack:compute:VolumeAttach\n    properties:\n      instanceId: ${instance2.id}\n      volumeId: ${openstack_blockstorage_volume_v2.volume_1.id}\n      multiattach: true\n    options:\n      dependson:\n        - openstack_compute_volume_attach_v2.va_1\n```\n\nIt is recommended to use `depends_on` for the attach resources\nto enforce the volume attachments to happen one at a time.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nVolume Attachments can be imported using the Instance ID and Volume ID separated by a slash, e.g.\n\n```sh\n $ pulumi import openstack:compute/volumeAttach:VolumeAttach va_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666\n```\n ",
+            "description": "Attaches a Block Storage Volume to an Instance using the OpenStack\nCompute (Nova) v2 API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Basic attachment of a single volume to a single instance\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst volume1 = new openstack.blockstorage.Volume(\"volume1\", {size: 1});\nconst instance1 = new openstack.compute.Instance(\"instance1\", {securityGroups: [\"default\"]});\nconst va1 = new openstack.compute.VolumeAttach(\"va1\", {\n    instanceId: instance1.id,\n    volumeId: volume1.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nvolume1 = openstack.blockstorage.Volume(\"volume1\", size=1)\ninstance1 = openstack.compute.Instance(\"instance1\", security_groups=[\"default\"])\nva1 = openstack.compute.VolumeAttach(\"va1\",\n    instance_id=instance1.id,\n    volume_id=volume1.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var volume1 = new OpenStack.BlockStorage.Volume(\"volume1\", new()\n    {\n        Size = 1,\n    });\n\n    var instance1 = new OpenStack.Compute.Instance(\"instance1\", new()\n    {\n        SecurityGroups = new[]\n        {\n            \"default\",\n        },\n    });\n\n    var va1 = new OpenStack.Compute.VolumeAttach(\"va1\", new()\n    {\n        InstanceId = instance1.Id,\n        VolumeId = volume1.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tvolume1, err := blockstorage.NewVolume(ctx, \"volume1\", \u0026blockstorage.VolumeArgs{\n\t\t\tSize: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinstance1, err := compute.NewInstance(ctx, \"instance1\", \u0026compute.InstanceArgs{\n\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"default\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = compute.NewVolumeAttach(ctx, \"va1\", \u0026compute.VolumeAttachArgs{\n\t\t\tInstanceId: instance1.ID(),\n\t\t\tVolumeId:   volume1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.blockstorage.Volume;\nimport com.pulumi.openstack.blockstorage.VolumeArgs;\nimport com.pulumi.openstack.compute.Instance;\nimport com.pulumi.openstack.compute.InstanceArgs;\nimport com.pulumi.openstack.compute.VolumeAttach;\nimport com.pulumi.openstack.compute.VolumeAttachArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var volume1 = new Volume(\"volume1\", VolumeArgs.builder()        \n            .size(1)\n            .build());\n\n        var instance1 = new Instance(\"instance1\", InstanceArgs.builder()        \n            .securityGroups(\"default\")\n            .build());\n\n        var va1 = new VolumeAttach(\"va1\", VolumeAttachArgs.builder()        \n            .instanceId(instance1.id())\n            .volumeId(volume1.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  volume1:\n    type: openstack:blockstorage:Volume\n    properties:\n      size: 1\n  instance1:\n    type: openstack:compute:Instance\n    properties:\n      securityGroups:\n        - default\n  va1:\n    type: openstack:compute:VolumeAttach\n    properties:\n      instanceId: ${instance1.id}\n      volumeId: ${volume1.id}\n```\n{{% /example %}}\n{{% example %}}\n### Using Multiattach-enabled volumes\n\nMultiattach Volumes are dependent upon your OpenStack cloud and not all\nclouds support multiattach.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst volume1 = new openstack.blockstorage.Volume(\"volume1\", {\n    size: 1,\n    multiattach: true,\n});\nconst instance1 = new openstack.compute.Instance(\"instance1\", {securityGroups: [\"default\"]});\nconst instance2 = new openstack.compute.Instance(\"instance2\", {securityGroups: [\"default\"]});\nconst va1 = new openstack.compute.VolumeAttach(\"va1\", {\n    instanceId: instance1.id,\n    volumeId: volume1.id,\n    multiattach: true,\n});\nconst va2 = new openstack.compute.VolumeAttach(\"va2\", {\n    instanceId: instance2.id,\n    volumeId: volume1.id,\n    multiattach: true,\n}, {\n    dependsOn: [\"openstack_compute_volume_attach_v2.va_1\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nvolume1 = openstack.blockstorage.Volume(\"volume1\",\n    size=1,\n    multiattach=True)\ninstance1 = openstack.compute.Instance(\"instance1\", security_groups=[\"default\"])\ninstance2 = openstack.compute.Instance(\"instance2\", security_groups=[\"default\"])\nva1 = openstack.compute.VolumeAttach(\"va1\",\n    instance_id=instance1.id,\n    volume_id=volume1.id,\n    multiattach=True)\nva2 = openstack.compute.VolumeAttach(\"va2\",\n    instance_id=instance2.id,\n    volume_id=volume1.id,\n    multiattach=True,\n    opts=pulumi.ResourceOptions(depends_on=[\"openstack_compute_volume_attach_v2.va_1\"]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var volume1 = new OpenStack.BlockStorage.Volume(\"volume1\", new()\n    {\n        Size = 1,\n        Multiattach = true,\n    });\n\n    var instance1 = new OpenStack.Compute.Instance(\"instance1\", new()\n    {\n        SecurityGroups = new[]\n        {\n            \"default\",\n        },\n    });\n\n    var instance2 = new OpenStack.Compute.Instance(\"instance2\", new()\n    {\n        SecurityGroups = new[]\n        {\n            \"default\",\n        },\n    });\n\n    var va1 = new OpenStack.Compute.VolumeAttach(\"va1\", new()\n    {\n        InstanceId = instance1.Id,\n        VolumeId = volume1.Id,\n        Multiattach = true,\n    });\n\n    var va2 = new OpenStack.Compute.VolumeAttach(\"va2\", new()\n    {\n        InstanceId = instance2.Id,\n        VolumeId = volume1.Id,\n        Multiattach = true,\n    }, new CustomResourceOptions\n    {\n        DependsOn = new[]\n        {\n            \"openstack_compute_volume_attach_v2.va_1\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/blockstorage\"\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tvolume1, err := blockstorage.NewVolume(ctx, \"volume1\", \u0026blockstorage.VolumeArgs{\n\t\t\tSize:        pulumi.Int(1),\n\t\t\tMultiattach: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinstance1, err := compute.NewInstance(ctx, \"instance1\", \u0026compute.InstanceArgs{\n\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"default\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinstance2, err := compute.NewInstance(ctx, \"instance2\", \u0026compute.InstanceArgs{\n\t\t\tSecurityGroups: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"default\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = compute.NewVolumeAttach(ctx, \"va1\", \u0026compute.VolumeAttachArgs{\n\t\t\tInstanceId:  instance1.ID(),\n\t\t\tVolumeId:    volume1.ID(),\n\t\t\tMultiattach: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = compute.NewVolumeAttach(ctx, \"va2\", \u0026compute.VolumeAttachArgs{\n\t\t\tInstanceId:  instance2.ID(),\n\t\t\tVolumeId:    volume1.ID(),\n\t\t\tMultiattach: pulumi.Bool(true),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tpulumi.Resource(\"openstack_compute_volume_attach_v2.va_1\"),\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.blockstorage.Volume;\nimport com.pulumi.openstack.blockstorage.VolumeArgs;\nimport com.pulumi.openstack.compute.Instance;\nimport com.pulumi.openstack.compute.InstanceArgs;\nimport com.pulumi.openstack.compute.VolumeAttach;\nimport com.pulumi.openstack.compute.VolumeAttachArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var volume1 = new Volume(\"volume1\", VolumeArgs.builder()        \n            .size(1)\n            .multiattach(true)\n            .build());\n\n        var instance1 = new Instance(\"instance1\", InstanceArgs.builder()        \n            .securityGroups(\"default\")\n            .build());\n\n        var instance2 = new Instance(\"instance2\", InstanceArgs.builder()        \n            .securityGroups(\"default\")\n            .build());\n\n        var va1 = new VolumeAttach(\"va1\", VolumeAttachArgs.builder()        \n            .instanceId(instance1.id())\n            .volumeId(volume1.id())\n            .multiattach(true)\n            .build());\n\n        var va2 = new VolumeAttach(\"va2\", VolumeAttachArgs.builder()        \n            .instanceId(instance2.id())\n            .volumeId(volume1.id())\n            .multiattach(true)\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(\"openstack_compute_volume_attach_v2.va_1\")\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  volume1:\n    type: openstack:blockstorage:Volume\n    properties:\n      size: 1\n      multiattach: true\n  instance1:\n    type: openstack:compute:Instance\n    properties:\n      securityGroups:\n        - default\n  instance2:\n    type: openstack:compute:Instance\n    properties:\n      securityGroups:\n        - default\n  va1:\n    type: openstack:compute:VolumeAttach\n    properties:\n      instanceId: ${instance1.id}\n      volumeId: ${volume1.id}\n      multiattach: true\n  va2:\n    type: openstack:compute:VolumeAttach\n    properties:\n      instanceId: ${instance2.id}\n      volumeId: ${volume1.id}\n      multiattach: true\n    options:\n      dependson:\n        - openstack_compute_volume_attach_v2.va_1\n```\n\nIt is recommended to use `depends_on` for the attach resources\nto enforce the volume attachments to happen one at a time.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nVolume Attachments can be imported using the Instance ID and Volume ID separated by a slash, e.g.\n\n```sh\n $ pulumi import openstack:compute/volumeAttach:VolumeAttach va_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666\n```\n ",
             "properties": {
                 "device": {
                     "type": "string"
@@ -5933,8 +5940,7 @@
             "inputProperties": {
                 "clusterTemplateId": {
                     "type": "string",
-                    "description": "The UUID of the V1 Container Infra cluster\ntemplate. Changing this creates a new cluster.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The UUID of the V1 Container Infra cluster\ntemplate. Changing this creates a new cluster.\n"
                 },
                 "createTimeout": {
                     "type": "integer",
@@ -6025,8 +6031,7 @@
                     },
                     "clusterTemplateId": {
                         "type": "string",
-                        "description": "The UUID of the V1 Container Infra cluster\ntemplate. Changing this creates a new cluster.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The UUID of the V1 Container Infra cluster\ntemplate. Changing this creates a new cluster.\n"
                     },
                     "coeVersion": {
                         "type": "string"
@@ -8038,7 +8043,7 @@
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "This argument conflict and interchangeable with\n`tenant_id`. The owner of the firewall group. Required if admin wants to\ncreate a firewall group for another project. Changing this creates a new\nfirewall group.\n"
+                    "description": "This argument conflicts and  is interchangeable\nwith `tenant_id`. The owner of the firewall group. Required if admin wants\nto create a firewall group for another project. Changing this creates a new\nfirewall group.\n"
                 },
                 "region": {
                     "type": "string",
@@ -8054,7 +8059,7 @@
                 },
                 "tenantId": {
                     "type": "string",
-                    "description": "This argument conflict and interchangeable with\n`project_id`. The owner of the firewall group. Required if admin wants to\ncreate a firewall group for another tenant. Changing this creates a new\nfirewall group.\n"
+                    "description": "This argument conflicts and is interchangeable with\n`project_id`. The owner of the firewall group. Required if admin wants to\ncreate a firewall group for another tenant. Changing this creates a new\nfirewall group.\n"
                 }
             },
             "required": [
@@ -8094,7 +8099,7 @@
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "This argument conflict and interchangeable with\n`tenant_id`. The owner of the firewall group. Required if admin wants to\ncreate a firewall group for another project. Changing this creates a new\nfirewall group.\n",
+                    "description": "This argument conflicts and  is interchangeable\nwith `tenant_id`. The owner of the firewall group. Required if admin wants\nto create a firewall group for another project. Changing this creates a new\nfirewall group.\n",
                     "willReplaceOnChanges": true
                 },
                 "region": {
@@ -8108,7 +8113,7 @@
                 },
                 "tenantId": {
                     "type": "string",
-                    "description": "This argument conflict and interchangeable with\n`project_id`. The owner of the firewall group. Required if admin wants to\ncreate a firewall group for another tenant. Changing this creates a new\nfirewall group.\n",
+                    "description": "This argument conflicts and is interchangeable with\n`project_id`. The owner of the firewall group. Required if admin wants to\ncreate a firewall group for another tenant. Changing this creates a new\nfirewall group.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -8144,7 +8149,7 @@
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "This argument conflict and interchangeable with\n`tenant_id`. The owner of the firewall group. Required if admin wants to\ncreate a firewall group for another project. Changing this creates a new\nfirewall group.\n",
+                        "description": "This argument conflicts and  is interchangeable\nwith `tenant_id`. The owner of the firewall group. Required if admin wants\nto create a firewall group for another project. Changing this creates a new\nfirewall group.\n",
                         "willReplaceOnChanges": true
                     },
                     "region": {
@@ -8162,7 +8167,7 @@
                     },
                     "tenantId": {
                         "type": "string",
-                        "description": "This argument conflict and interchangeable with\n`project_id`. The owner of the firewall group. Required if admin wants to\ncreate a firewall group for another tenant. Changing this creates a new\nfirewall group.\n",
+                        "description": "This argument conflicts and is interchangeable with\n`project_id`. The owner of the firewall group. Required if admin wants to\ncreate a firewall group for another tenant. Changing this creates a new\nfirewall group.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -8319,6 +8324,10 @@
                     "type": "string",
                     "description": "A name for the firewall policy. Changing this\nupdates the `name` of an existing firewall policy.\n"
                 },
+                "projectId": {
+                    "type": "string",
+                    "description": "This argument conflicts and is interchangeable\nwith `tenant_id`. The owner of the firewall policy. Required if admin wants\nto create a firewall policy for another project. Changing this creates a new\nfirewall policy.\n"
+                },
                 "region": {
                     "type": "string",
                     "description": "The region in which to obtain the v2 networking client.\nA networking client is needed to create a firewall policy. If omitted, the\n`region` argument of the provider is used. Changing this creates a new\nfirewall policy.\n"
@@ -8336,11 +8345,12 @@
                 },
                 "tenantId": {
                     "type": "string",
-                    "description": "The owner of the firewall policy. Required if admin\nwants to create a firewall policy for another tenant. Changing this\ncreates a new firewall policy.\n"
+                    "description": "This argument conflicts and is interchangeable\nwith `project_id`. The owner of the firewall policy. Required if admin wants\nto create a firewall policy for another tenant. Changing this creates a new\nfirewall policy.\n"
                 }
             },
             "required": [
                 "name",
+                "projectId",
                 "region",
                 "tenantId"
             ],
@@ -8356,6 +8366,11 @@
                 "name": {
                     "type": "string",
                     "description": "A name for the firewall policy. Changing this\nupdates the `name` of an existing firewall policy.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "This argument conflicts and is interchangeable\nwith `tenant_id`. The owner of the firewall policy. Required if admin wants\nto create a firewall policy for another project. Changing this creates a new\nfirewall policy.\n",
+                    "willReplaceOnChanges": true
                 },
                 "region": {
                     "type": "string",
@@ -8375,7 +8390,7 @@
                 },
                 "tenantId": {
                     "type": "string",
-                    "description": "The owner of the firewall policy. Required if admin\nwants to create a firewall policy for another tenant. Changing this\ncreates a new firewall policy.\n",
+                    "description": "This argument conflicts and is interchangeable\nwith `project_id`. The owner of the firewall policy. Required if admin wants\nto create a firewall policy for another tenant. Changing this creates a new\nfirewall policy.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -8393,6 +8408,11 @@
                     "name": {
                         "type": "string",
                         "description": "A name for the firewall policy. Changing this\nupdates the `name` of an existing firewall policy.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "This argument conflicts and is interchangeable\nwith `tenant_id`. The owner of the firewall policy. Required if admin wants\nto create a firewall policy for another project. Changing this creates a new\nfirewall policy.\n",
+                        "willReplaceOnChanges": true
                     },
                     "region": {
                         "type": "string",
@@ -8412,7 +8432,7 @@
                     },
                     "tenantId": {
                         "type": "string",
-                        "description": "The owner of the firewall policy. Required if admin\nwants to create a firewall policy for another tenant. Changing this\ncreates a new firewall policy.\n",
+                        "description": "This argument conflicts and is interchangeable\nwith `project_id`. The owner of the firewall policy. Required if admin wants\nto create a firewall policy for another tenant. Changing this creates a new\nfirewall policy.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -8644,6 +8664,10 @@
                     "type": "string",
                     "description": "A unique name for the firewall rule. Changing this\nupdates the `name` of an existing firewall rule.\n"
                 },
+                "projectId": {
+                    "type": "string",
+                    "description": "This argument conflicts and is interchangeable\nwith `tenant_id`. The owner of the firewall rule. Required if admin wants\nto create a firewall rule for another project. Changing this creates a new\nfirewall rule.\n"
+                },
                 "protocol": {
                     "type": "string",
                     "description": "(Optional; Required if `source_port` or `destination_port` is not\nempty) The protocol type on which the firewall rule operates.\nValid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the\n`protocol` of an existing firewall rule. Default is `any`.\n"
@@ -8666,12 +8690,14 @@
                 },
                 "tenantId": {
                     "type": "string",
-                    "description": "The owner of the firewall rule. Required if admin\nwants to create a firewall rule for another tenant. Changing this creates a\nnew firewall rule.\n"
+                    "description": "This argument conflicts and is interchangeable\nwith `project_id`. The owner of the firewall rule. Required if admin wants\nto create a firewall rule for another tenant. Changing this creates a new\nfirewall rule.\n"
                 }
             },
             "required": [
                 "name",
-                "region"
+                "projectId",
+                "region",
+                "tenantId"
             ],
             "inputProperties": {
                 "action": {
@@ -8702,6 +8728,11 @@
                     "type": "string",
                     "description": "A unique name for the firewall rule. Changing this\nupdates the `name` of an existing firewall rule.\n"
                 },
+                "projectId": {
+                    "type": "string",
+                    "description": "This argument conflicts and is interchangeable\nwith `tenant_id`. The owner of the firewall rule. Required if admin wants\nto create a firewall rule for another project. Changing this creates a new\nfirewall rule.\n",
+                    "willReplaceOnChanges": true
+                },
                 "protocol": {
                     "type": "string",
                     "description": "(Optional; Required if `source_port` or `destination_port` is not\nempty) The protocol type on which the firewall rule operates.\nValid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the\n`protocol` of an existing firewall rule. Default is `any`.\n"
@@ -8725,7 +8756,7 @@
                 },
                 "tenantId": {
                     "type": "string",
-                    "description": "The owner of the firewall rule. Required if admin\nwants to create a firewall rule for another tenant. Changing this creates a\nnew firewall rule.\n",
+                    "description": "This argument conflicts and is interchangeable\nwith `project_id`. The owner of the firewall rule. Required if admin wants\nto create a firewall rule for another tenant. Changing this creates a new\nfirewall rule.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -8760,6 +8791,11 @@
                         "type": "string",
                         "description": "A unique name for the firewall rule. Changing this\nupdates the `name` of an existing firewall rule.\n"
                     },
+                    "projectId": {
+                        "type": "string",
+                        "description": "This argument conflicts and is interchangeable\nwith `tenant_id`. The owner of the firewall rule. Required if admin wants\nto create a firewall rule for another project. Changing this creates a new\nfirewall rule.\n",
+                        "willReplaceOnChanges": true
+                    },
                     "protocol": {
                         "type": "string",
                         "description": "(Optional; Required if `source_port` or `destination_port` is not\nempty) The protocol type on which the firewall rule operates.\nValid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the\n`protocol` of an existing firewall rule. Default is `any`.\n"
@@ -8783,7 +8819,7 @@
                     },
                     "tenantId": {
                         "type": "string",
-                        "description": "The owner of the firewall rule. Required if admin\nwants to create a firewall rule for another tenant. Changing this creates a\nnew firewall rule.\n",
+                        "description": "This argument conflicts and is interchangeable\nwith `project_id`. The owner of the firewall rule. Required if admin wants\nto create a firewall rule for another tenant. Changing this creates a new\nfirewall rule.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -22530,7 +22566,7 @@
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "This argument conflict and interchangeable with\n`tenant_id`. The owner of the firewall group.\n"
+                        "description": "This argument conflicts and is interchangeable\nwith `tenant_id`. The owner of the firewall group.\n"
                     },
                     "region": {
                         "type": "string",
@@ -22546,7 +22582,7 @@
                     },
                     "tenantId": {
                         "type": "string",
-                        "description": "This argument conflict and interchangeable with\n`project_id`. The owner of the firewall group.\n"
+                        "description": "This argument conflicts and is interchangeable\nwith `project_id`. The owner of the firewall group.\n"
                     }
                 },
                 "type": "object"
@@ -22644,6 +22680,10 @@
                         "type": "string",
                         "description": "The ID of the firewall policy.\n"
                     },
+                    "projectId": {
+                        "type": "string",
+                        "description": "This argument conflicts and is interchangeable\nwith `tenant_id`. The owner of the firewall policy.\n"
+                    },
                     "region": {
                         "type": "string",
                         "description": "The region in which to obtain the V2 Neutron client.\nA Neutron client is needed to retrieve firewall policy ids. If omitted, the\n`region` argument of the provider is used.\n",
@@ -22655,8 +22695,7 @@
                     },
                     "tenantId": {
                         "type": "string",
-                        "description": "The owner of the firewall policy.\n",
-                        "willReplaceOnChanges": true
+                        "description": "This argument conflicts and is interchangeable\nwith `project_id`. The owner of the firewall policy.\n"
                     }
                 },
                 "type": "object"
@@ -22683,6 +22722,10 @@
                         "type": "string",
                         "description": "See Argument Reference above.\n"
                     },
+                    "projectId": {
+                        "type": "string",
+                        "description": "See Argument Reference above.\n"
+                    },
                     "region": {
                         "type": "string",
                         "description": "See Argument Reference above.\n"
@@ -22706,6 +22749,7 @@
                 "type": "object",
                 "required": [
                     "audited",
+                    "projectId",
                     "region",
                     "rules",
                     "shared",
@@ -22754,6 +22798,10 @@
                         "type": "string",
                         "description": "The name of the firewall rule.\n"
                     },
+                    "projectId": {
+                        "type": "string",
+                        "description": "This argument conflicts and is interchangeable\nwith `tenant_id`. The owner of the firewall rule.\n"
+                    },
                     "protocol": {
                         "type": "string",
                         "description": "The protocol type on which the firewall rule operates.\n"
@@ -22781,7 +22829,7 @@
                     },
                     "tenantId": {
                         "type": "string",
-                        "description": "The owner of the firewall policy.\n"
+                        "description": "This argument conflicts and is interchangeable\nwith `project_id`. The owner of the firewall rule.\n"
                     }
                 },
                 "type": "object"
@@ -22828,6 +22876,10 @@
                         "type": "string",
                         "description": "See Argument Reference above.\n"
                     },
+                    "projectId": {
+                        "type": "string",
+                        "description": "See Argument Reference above.\n"
+                    },
                     "protocol": {
                         "type": "string",
                         "description": "See Argument Reference above.\n"
@@ -22861,6 +22913,7 @@
                 "required": [
                     "enabled",
                     "firewallPolicyIds",
+                    "projectId",
                     "region",
                     "shared",
                     "tenantId",
