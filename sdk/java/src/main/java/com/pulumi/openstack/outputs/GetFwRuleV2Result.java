@@ -63,6 +63,11 @@ public final class GetFwRuleV2Result {
      * @return See Argument Reference above.
      * 
      */
+    private String projectId;
+    /**
+     * @return See Argument Reference above.
+     * 
+     */
     private @Nullable String protocol;
     /**
      * @return See Argument Reference above.
@@ -163,6 +168,13 @@ public final class GetFwRuleV2Result {
      * @return See Argument Reference above.
      * 
      */
+    public String projectId() {
+        return this.projectId;
+    }
+    /**
+     * @return See Argument Reference above.
+     * 
+     */
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }
@@ -227,6 +239,7 @@ public final class GetFwRuleV2Result {
         private String id;
         private @Nullable Integer ipVersion;
         private @Nullable String name;
+        private String projectId;
         private @Nullable String protocol;
         private String region;
         private @Nullable String ruleId;
@@ -246,6 +259,7 @@ public final class GetFwRuleV2Result {
     	      this.id = defaults.id;
     	      this.ipVersion = defaults.ipVersion;
     	      this.name = defaults.name;
+    	      this.projectId = defaults.projectId;
     	      this.protocol = defaults.protocol;
     	      this.region = defaults.region;
     	      this.ruleId = defaults.ruleId;
@@ -304,6 +318,11 @@ public final class GetFwRuleV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder projectId(String projectId) {
+            this.projectId = Objects.requireNonNull(projectId);
+            return this;
+        }
+        @CustomType.Setter
         public Builder protocol(@Nullable String protocol) {
             this.protocol = protocol;
             return this;
@@ -349,6 +368,7 @@ public final class GetFwRuleV2Result {
             o.id = id;
             o.ipVersion = ipVersion;
             o.name = name;
+            o.projectId = projectId;
             o.protocol = protocol;
             o.region = region;
             o.ruleId = ruleId;

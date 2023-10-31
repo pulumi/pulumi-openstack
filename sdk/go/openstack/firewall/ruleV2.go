@@ -83,6 +83,11 @@ type RuleV2 struct {
 	// A unique name for the firewall rule. Changing this
 	// updates the `name` of an existing firewall rule.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// This argument conflicts and is interchangeable
+	// with `tenantId`. The owner of the firewall rule. Required if admin wants
+	// to create a firewall rule for another project. Changing this creates a new
+	// firewall rule.
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// (Optional; Required if `sourcePort` or `destinationPort` is not
 	// empty) The protocol type on which the firewall rule operates.
 	// Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -106,10 +111,11 @@ type RuleV2 struct {
 	// rule operates. Changing this updates the `sourcePort` of an existing
 	// firewall rule. Require not `any` or empty protocol.
 	SourcePort pulumi.StringPtrOutput `pulumi:"sourcePort"`
-	// The owner of the firewall rule. Required if admin
-	// wants to create a firewall rule for another tenant. Changing this creates a
-	// new firewall rule.
-	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
+	// This argument conflicts and is interchangeable
+	// with `projectId`. The owner of the firewall rule. Required if admin wants
+	// to create a firewall rule for another tenant. Changing this creates a new
+	// firewall rule.
+	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 }
 
 // NewRuleV2 registers a new resource with the given unique name, arguments, and options.
@@ -167,6 +173,11 @@ type ruleV2State struct {
 	// A unique name for the firewall rule. Changing this
 	// updates the `name` of an existing firewall rule.
 	Name *string `pulumi:"name"`
+	// This argument conflicts and is interchangeable
+	// with `tenantId`. The owner of the firewall rule. Required if admin wants
+	// to create a firewall rule for another project. Changing this creates a new
+	// firewall rule.
+	ProjectId *string `pulumi:"projectId"`
 	// (Optional; Required if `sourcePort` or `destinationPort` is not
 	// empty) The protocol type on which the firewall rule operates.
 	// Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -190,9 +201,10 @@ type ruleV2State struct {
 	// rule operates. Changing this updates the `sourcePort` of an existing
 	// firewall rule. Require not `any` or empty protocol.
 	SourcePort *string `pulumi:"sourcePort"`
-	// The owner of the firewall rule. Required if admin
-	// wants to create a firewall rule for another tenant. Changing this creates a
-	// new firewall rule.
+	// This argument conflicts and is interchangeable
+	// with `projectId`. The owner of the firewall rule. Required if admin wants
+	// to create a firewall rule for another tenant. Changing this creates a new
+	// firewall rule.
 	TenantId *string `pulumi:"tenantId"`
 }
 
@@ -222,6 +234,11 @@ type RuleV2State struct {
 	// A unique name for the firewall rule. Changing this
 	// updates the `name` of an existing firewall rule.
 	Name pulumi.StringPtrInput
+	// This argument conflicts and is interchangeable
+	// with `tenantId`. The owner of the firewall rule. Required if admin wants
+	// to create a firewall rule for another project. Changing this creates a new
+	// firewall rule.
+	ProjectId pulumi.StringPtrInput
 	// (Optional; Required if `sourcePort` or `destinationPort` is not
 	// empty) The protocol type on which the firewall rule operates.
 	// Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -245,9 +262,10 @@ type RuleV2State struct {
 	// rule operates. Changing this updates the `sourcePort` of an existing
 	// firewall rule. Require not `any` or empty protocol.
 	SourcePort pulumi.StringPtrInput
-	// The owner of the firewall rule. Required if admin
-	// wants to create a firewall rule for another tenant. Changing this creates a
-	// new firewall rule.
+	// This argument conflicts and is interchangeable
+	// with `projectId`. The owner of the firewall rule. Required if admin wants
+	// to create a firewall rule for another tenant. Changing this creates a new
+	// firewall rule.
 	TenantId pulumi.StringPtrInput
 }
 
@@ -281,6 +299,11 @@ type ruleV2Args struct {
 	// A unique name for the firewall rule. Changing this
 	// updates the `name` of an existing firewall rule.
 	Name *string `pulumi:"name"`
+	// This argument conflicts and is interchangeable
+	// with `tenantId`. The owner of the firewall rule. Required if admin wants
+	// to create a firewall rule for another project. Changing this creates a new
+	// firewall rule.
+	ProjectId *string `pulumi:"projectId"`
 	// (Optional; Required if `sourcePort` or `destinationPort` is not
 	// empty) The protocol type on which the firewall rule operates.
 	// Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -304,9 +327,10 @@ type ruleV2Args struct {
 	// rule operates. Changing this updates the `sourcePort` of an existing
 	// firewall rule. Require not `any` or empty protocol.
 	SourcePort *string `pulumi:"sourcePort"`
-	// The owner of the firewall rule. Required if admin
-	// wants to create a firewall rule for another tenant. Changing this creates a
-	// new firewall rule.
+	// This argument conflicts and is interchangeable
+	// with `projectId`. The owner of the firewall rule. Required if admin wants
+	// to create a firewall rule for another tenant. Changing this creates a new
+	// firewall rule.
 	TenantId *string `pulumi:"tenantId"`
 }
 
@@ -337,6 +361,11 @@ type RuleV2Args struct {
 	// A unique name for the firewall rule. Changing this
 	// updates the `name` of an existing firewall rule.
 	Name pulumi.StringPtrInput
+	// This argument conflicts and is interchangeable
+	// with `tenantId`. The owner of the firewall rule. Required if admin wants
+	// to create a firewall rule for another project. Changing this creates a new
+	// firewall rule.
+	ProjectId pulumi.StringPtrInput
 	// (Optional; Required if `sourcePort` or `destinationPort` is not
 	// empty) The protocol type on which the firewall rule operates.
 	// Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -360,9 +389,10 @@ type RuleV2Args struct {
 	// rule operates. Changing this updates the `sourcePort` of an existing
 	// firewall rule. Require not `any` or empty protocol.
 	SourcePort pulumi.StringPtrInput
-	// The owner of the firewall rule. Required if admin
-	// wants to create a firewall rule for another tenant. Changing this creates a
-	// new firewall rule.
+	// This argument conflicts and is interchangeable
+	// with `projectId`. The owner of the firewall rule. Required if admin wants
+	// to create a firewall rule for another tenant. Changing this creates a new
+	// firewall rule.
 	TenantId pulumi.StringPtrInput
 }
 
@@ -523,6 +553,14 @@ func (o RuleV2Output) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RuleV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// This argument conflicts and is interchangeable
+// with `tenantId`. The owner of the firewall rule. Required if admin wants
+// to create a firewall rule for another project. Changing this creates a new
+// firewall rule.
+func (o RuleV2Output) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RuleV2) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
 // (Optional; Required if `sourcePort` or `destinationPort` is not
 // empty) The protocol type on which the firewall rule operates.
 // Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -561,11 +599,12 @@ func (o RuleV2Output) SourcePort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleV2) pulumi.StringPtrOutput { return v.SourcePort }).(pulumi.StringPtrOutput)
 }
 
-// The owner of the firewall rule. Required if admin
-// wants to create a firewall rule for another tenant. Changing this creates a
-// new firewall rule.
-func (o RuleV2Output) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RuleV2) pulumi.StringPtrOutput { return v.TenantId }).(pulumi.StringPtrOutput)
+// This argument conflicts and is interchangeable
+// with `projectId`. The owner of the firewall rule. Required if admin wants
+// to create a firewall rule for another tenant. Changing this creates a new
+// firewall rule.
+func (o RuleV2Output) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RuleV2) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
 type RuleV2ArrayOutput struct{ *pulumi.OutputState }

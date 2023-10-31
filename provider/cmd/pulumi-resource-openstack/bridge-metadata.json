@@ -2125,6 +2125,7 @@
                 "valueSpecs": "value_specs"
             },
             "openstack:firewall/policyV2:PolicyV2": {
+                "projectId": "project_id",
                 "tenantId": "tenant_id"
             },
             "openstack:firewall/rule:Rule": {
@@ -2140,6 +2141,7 @@
                 "destinationIpAddress": "destination_ip_address",
                 "destinationPort": "destination_port",
                 "ipVersion": "ip_version",
+                "projectId": "project_id",
                 "sourceIpAddress": "source_ip_address",
                 "sourcePort": "source_port",
                 "tenantId": "tenant_id"
@@ -2313,6 +2315,7 @@
             },
             "openstack:index/getFwPolicyV2:getFwPolicyV2": {
                 "policyId": "policy_id",
+                "projectId": "project_id",
                 "tenantId": "tenant_id"
             },
             "openstack:index/getFwRuleV2:getFwRuleV2": {
@@ -2320,6 +2323,7 @@
                 "destinationPort": "destination_port",
                 "firewallPolicyIds": "firewall_policy_id",
                 "ipVersion": "ip_version",
+                "projectId": "project_id",
                 "ruleId": "rule_id",
                 "sourceIpAddress": "source_ip_address",
                 "sourcePort": "source_port",

@@ -145,6 +145,27 @@ public final class RuleV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * This argument conflicts and is interchangeable
+     * with `tenant_id`. The owner of the firewall rule. Required if admin wants
+     * to create a firewall rule for another project. Changing this creates a new
+     * firewall rule.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return This argument conflicts and is interchangeable
+     * with `tenant_id`. The owner of the firewall rule. Required if admin wants
+     * to create a firewall rule for another project. Changing this creates a new
+     * firewall rule.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+
+    /**
      * (Optional; Required if `source_port` or `destination_port` is not
      * empty) The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -246,18 +267,20 @@ public final class RuleV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The owner of the firewall rule. Required if admin
-     * wants to create a firewall rule for another tenant. Changing this creates a
-     * new firewall rule.
+     * This argument conflicts and is interchangeable
+     * with `project_id`. The owner of the firewall rule. Required if admin wants
+     * to create a firewall rule for another tenant. Changing this creates a new
+     * firewall rule.
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return The owner of the firewall rule. Required if admin
-     * wants to create a firewall rule for another tenant. Changing this creates a
-     * new firewall rule.
+     * @return This argument conflicts and is interchangeable
+     * with `project_id`. The owner of the firewall rule. Required if admin wants
+     * to create a firewall rule for another tenant. Changing this creates a new
+     * firewall rule.
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -274,6 +297,7 @@ public final class RuleV2Args extends com.pulumi.resources.ResourceArgs {
         this.enabled = $.enabled;
         this.ipVersion = $.ipVersion;
         this.name = $.name;
+        this.projectId = $.projectId;
         this.protocol = $.protocol;
         this.region = $.region;
         this.shared = $.shared;
@@ -470,6 +494,33 @@ public final class RuleV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param projectId This argument conflicts and is interchangeable
+         * with `tenant_id`. The owner of the firewall rule. Required if admin wants
+         * to create a firewall rule for another project. Changing this creates a new
+         * firewall rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId This argument conflicts and is interchangeable
+         * with `tenant_id`. The owner of the firewall rule. Required if admin wants
+         * to create a firewall rule for another project. Changing this creates a new
+         * firewall rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
+        }
+
+        /**
          * @param protocol (Optional; Required if `source_port` or `destination_port` is not
          * empty) The protocol type on which the firewall rule operates.
          * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -601,9 +652,10 @@ public final class RuleV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId The owner of the firewall rule. Required if admin
-         * wants to create a firewall rule for another tenant. Changing this creates a
-         * new firewall rule.
+         * @param tenantId This argument conflicts and is interchangeable
+         * with `project_id`. The owner of the firewall rule. Required if admin wants
+         * to create a firewall rule for another tenant. Changing this creates a new
+         * firewall rule.
          * 
          * @return builder
          * 
@@ -614,9 +666,10 @@ public final class RuleV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId The owner of the firewall rule. Required if admin
-         * wants to create a firewall rule for another tenant. Changing this creates a
-         * new firewall rule.
+         * @param tenantId This argument conflicts and is interchangeable
+         * with `project_id`. The owner of the firewall rule. Required if admin wants
+         * to create a firewall rule for another tenant. Changing this creates a new
+         * firewall rule.
          * 
          * @return builder
          * 

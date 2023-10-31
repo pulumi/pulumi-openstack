@@ -31,6 +31,7 @@ export function getFwRuleV2(args?: GetFwRuleV2Args, opts?: pulumi.InvokeOptions)
         "firewallPolicyIds": args.firewallPolicyIds,
         "ipVersion": args.ipVersion,
         "name": args.name,
+        "projectId": args.projectId,
         "protocol": args.protocol,
         "region": args.region,
         "ruleId": args.ruleId,
@@ -80,6 +81,11 @@ export interface GetFwRuleV2Args {
      */
     name?: string;
     /**
+     * This argument conflicts and is interchangeable
+     * with `tenantId`. The owner of the firewall rule.
+     */
+    projectId?: string;
+    /**
      * The protocol type on which the firewall rule operates.
      */
     protocol?: string;
@@ -108,7 +114,8 @@ export interface GetFwRuleV2Args {
      */
     sourcePort?: string;
     /**
-     * The owner of the firewall policy.
+     * This argument conflicts and is interchangeable
+     * with `projectId`. The owner of the firewall rule.
      */
     tenantId?: string;
 }
@@ -153,6 +160,10 @@ export interface GetFwRuleV2Result {
      * See Argument Reference above.
      */
     readonly name?: string;
+    /**
+     * See Argument Reference above.
+     */
+    readonly projectId: string;
     /**
      * See Argument Reference above.
      */
@@ -239,6 +250,11 @@ export interface GetFwRuleV2OutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * This argument conflicts and is interchangeable
+     * with `tenantId`. The owner of the firewall rule.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
      * The protocol type on which the firewall rule operates.
      */
     protocol?: pulumi.Input<string>;
@@ -267,7 +283,8 @@ export interface GetFwRuleV2OutputArgs {
      */
     sourcePort?: pulumi.Input<string>;
     /**
-     * The owner of the firewall policy.
+     * This argument conflicts and is interchangeable
+     * with `projectId`. The owner of the firewall rule.
      */
     tenantId?: pulumi.Input<string>;
 }

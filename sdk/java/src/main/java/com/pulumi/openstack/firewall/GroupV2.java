@@ -196,9 +196,9 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ports);
     }
     /**
-     * This argument conflict and interchangeable with
-     * `tenant_id`. The owner of the firewall group. Required if admin wants to
-     * create a firewall group for another project. Changing this creates a new
+     * This argument conflicts and  is interchangeable
+     * with `tenant_id`. The owner of the firewall group. Required if admin wants
+     * to create a firewall group for another project. Changing this creates a new
      * firewall group.
      * 
      */
@@ -206,9 +206,9 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
     private Output<String> projectId;
 
     /**
-     * @return This argument conflict and interchangeable with
-     * `tenant_id`. The owner of the firewall group. Required if admin wants to
-     * create a firewall group for another project. Changing this creates a new
+     * @return This argument conflicts and  is interchangeable
+     * with `tenant_id`. The owner of the firewall group. Required if admin wants
+     * to create a firewall group for another project. Changing this creates a new
      * firewall group.
      * 
      */
@@ -272,7 +272,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * This argument conflict and interchangeable with
+     * This argument conflicts and is interchangeable with
      * `project_id`. The owner of the firewall group. Required if admin wants to
      * create a firewall group for another tenant. Changing this creates a new
      * firewall group.
@@ -282,7 +282,7 @@ public class GroupV2 extends com.pulumi.resources.CustomResource {
     private Output<String> tenantId;
 
     /**
-     * @return This argument conflict and interchangeable with
+     * @return This argument conflicts and is interchangeable with
      * `project_id`. The owner of the firewall group. Required if admin wants to
      * create a firewall group for another tenant. Changing this creates a new
      * firewall group.

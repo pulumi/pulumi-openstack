@@ -21,6 +21,7 @@ class RuleV2Args:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  ip_version: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
@@ -47,6 +48,10 @@ class RuleV2Args:
                updates the `ip_version` of an existing firewall rule. Default is `4`.
         :param pulumi.Input[str] name: A unique name for the firewall rule. Changing this
                updates the `name` of an existing firewall rule.
+        :param pulumi.Input[str] project_id: This argument conflicts and is interchangeable
+               with `tenant_id`. The owner of the firewall rule. Required if admin wants
+               to create a firewall rule for another project. Changing this creates a new
+               firewall rule.
         :param pulumi.Input[str] protocol: (Optional; Required if `source_port` or `destination_port` is not
                empty) The protocol type on which the firewall rule operates.
                Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -65,9 +70,10 @@ class RuleV2Args:
         :param pulumi.Input[str] source_port: The source port on which the firewall
                rule operates. Changing this updates the `source_port` of an existing
                firewall rule. Require not `any` or empty protocol.
-        :param pulumi.Input[str] tenant_id: The owner of the firewall rule. Required if admin
-               wants to create a firewall rule for another tenant. Changing this creates a
-               new firewall rule.
+        :param pulumi.Input[str] tenant_id: This argument conflicts and is interchangeable
+               with `project_id`. The owner of the firewall rule. Required if admin wants
+               to create a firewall rule for another tenant. Changing this creates a new
+               firewall rule.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -83,6 +89,8 @@ class RuleV2Args:
             pulumi.set(__self__, "ip_version", ip_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if protocol is not None:
             pulumi.set(__self__, "protocol", protocol)
         if region is not None:
@@ -192,6 +200,21 @@ class RuleV2Args:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        This argument conflicts and is interchangeable
+        with `tenant_id`. The owner of the firewall rule. Required if admin wants
+        to create a firewall rule for another project. Changing this creates a new
+        firewall rule.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
@@ -268,9 +291,10 @@ class RuleV2Args:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The owner of the firewall rule. Required if admin
-        wants to create a firewall rule for another tenant. Changing this creates a
-        new firewall rule.
+        This argument conflicts and is interchangeable
+        with `project_id`. The owner of the firewall rule. Required if admin wants
+        to create a firewall rule for another tenant. Changing this creates a new
+        firewall rule.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -289,6 +313,7 @@ class _RuleV2State:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  ip_version: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
@@ -315,6 +340,10 @@ class _RuleV2State:
                updates the `ip_version` of an existing firewall rule. Default is `4`.
         :param pulumi.Input[str] name: A unique name for the firewall rule. Changing this
                updates the `name` of an existing firewall rule.
+        :param pulumi.Input[str] project_id: This argument conflicts and is interchangeable
+               with `tenant_id`. The owner of the firewall rule. Required if admin wants
+               to create a firewall rule for another project. Changing this creates a new
+               firewall rule.
         :param pulumi.Input[str] protocol: (Optional; Required if `source_port` or `destination_port` is not
                empty) The protocol type on which the firewall rule operates.
                Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -333,9 +362,10 @@ class _RuleV2State:
         :param pulumi.Input[str] source_port: The source port on which the firewall
                rule operates. Changing this updates the `source_port` of an existing
                firewall rule. Require not `any` or empty protocol.
-        :param pulumi.Input[str] tenant_id: The owner of the firewall rule. Required if admin
-               wants to create a firewall rule for another tenant. Changing this creates a
-               new firewall rule.
+        :param pulumi.Input[str] tenant_id: This argument conflicts and is interchangeable
+               with `project_id`. The owner of the firewall rule. Required if admin wants
+               to create a firewall rule for another tenant. Changing this creates a new
+               firewall rule.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -351,6 +381,8 @@ class _RuleV2State:
             pulumi.set(__self__, "ip_version", ip_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if protocol is not None:
             pulumi.set(__self__, "protocol", protocol)
         if region is not None:
@@ -460,6 +492,21 @@ class _RuleV2State:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        This argument conflicts and is interchangeable
+        with `tenant_id`. The owner of the firewall rule. Required if admin wants
+        to create a firewall rule for another project. Changing this creates a new
+        firewall rule.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
@@ -536,9 +583,10 @@ class _RuleV2State:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The owner of the firewall rule. Required if admin
-        wants to create a firewall rule for another tenant. Changing this creates a
-        new firewall rule.
+        This argument conflicts and is interchangeable
+        with `project_id`. The owner of the firewall rule. Required if admin wants
+        to create a firewall rule for another tenant. Changing this creates a new
+        firewall rule.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -559,6 +607,7 @@ class RuleV2(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[bool]] = None,
                  ip_version: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
@@ -613,6 +662,10 @@ class RuleV2(pulumi.CustomResource):
                updates the `ip_version` of an existing firewall rule. Default is `4`.
         :param pulumi.Input[str] name: A unique name for the firewall rule. Changing this
                updates the `name` of an existing firewall rule.
+        :param pulumi.Input[str] project_id: This argument conflicts and is interchangeable
+               with `tenant_id`. The owner of the firewall rule. Required if admin wants
+               to create a firewall rule for another project. Changing this creates a new
+               firewall rule.
         :param pulumi.Input[str] protocol: (Optional; Required if `source_port` or `destination_port` is not
                empty) The protocol type on which the firewall rule operates.
                Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -631,9 +684,10 @@ class RuleV2(pulumi.CustomResource):
         :param pulumi.Input[str] source_port: The source port on which the firewall
                rule operates. Changing this updates the `source_port` of an existing
                firewall rule. Require not `any` or empty protocol.
-        :param pulumi.Input[str] tenant_id: The owner of the firewall rule. Required if admin
-               wants to create a firewall rule for another tenant. Changing this creates a
-               new firewall rule.
+        :param pulumi.Input[str] tenant_id: This argument conflicts and is interchangeable
+               with `project_id`. The owner of the firewall rule. Required if admin wants
+               to create a firewall rule for another tenant. Changing this creates a new
+               firewall rule.
         """
         ...
     @overload
@@ -690,6 +744,7 @@ class RuleV2(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[bool]] = None,
                  ip_version: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
@@ -712,6 +767,7 @@ class RuleV2(pulumi.CustomResource):
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["ip_version"] = ip_version
             __props__.__dict__["name"] = name
+            __props__.__dict__["project_id"] = project_id
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["region"] = region
             __props__.__dict__["shared"] = shared
@@ -735,6 +791,7 @@ class RuleV2(pulumi.CustomResource):
             enabled: Optional[pulumi.Input[bool]] = None,
             ip_version: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             shared: Optional[pulumi.Input[bool]] = None,
@@ -766,6 +823,10 @@ class RuleV2(pulumi.CustomResource):
                updates the `ip_version` of an existing firewall rule. Default is `4`.
         :param pulumi.Input[str] name: A unique name for the firewall rule. Changing this
                updates the `name` of an existing firewall rule.
+        :param pulumi.Input[str] project_id: This argument conflicts and is interchangeable
+               with `tenant_id`. The owner of the firewall rule. Required if admin wants
+               to create a firewall rule for another project. Changing this creates a new
+               firewall rule.
         :param pulumi.Input[str] protocol: (Optional; Required if `source_port` or `destination_port` is not
                empty) The protocol type on which the firewall rule operates.
                Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -784,9 +845,10 @@ class RuleV2(pulumi.CustomResource):
         :param pulumi.Input[str] source_port: The source port on which the firewall
                rule operates. Changing this updates the `source_port` of an existing
                firewall rule. Require not `any` or empty protocol.
-        :param pulumi.Input[str] tenant_id: The owner of the firewall rule. Required if admin
-               wants to create a firewall rule for another tenant. Changing this creates a
-               new firewall rule.
+        :param pulumi.Input[str] tenant_id: This argument conflicts and is interchangeable
+               with `project_id`. The owner of the firewall rule. Required if admin wants
+               to create a firewall rule for another tenant. Changing this creates a new
+               firewall rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -799,6 +861,7 @@ class RuleV2(pulumi.CustomResource):
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["ip_version"] = ip_version
         __props__.__dict__["name"] = name
+        __props__.__dict__["project_id"] = project_id
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["region"] = region
         __props__.__dict__["shared"] = shared
@@ -875,6 +938,17 @@ class RuleV2(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        This argument conflicts and is interchangeable
+        with `tenant_id`. The owner of the firewall rule. Required if admin wants
+        to create a firewall rule for another project. Changing this creates a new
+        firewall rule.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
     @pulumi.getter
     def protocol(self) -> pulumi.Output[Optional[str]]:
         """
@@ -929,11 +1003,12 @@ class RuleV2(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> pulumi.Output[Optional[str]]:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
-        The owner of the firewall rule. Required if admin
-        wants to create a firewall rule for another tenant. Changing this creates a
-        new firewall rule.
+        This argument conflicts and is interchangeable
+        with `project_id`. The owner of the firewall rule. Required if admin wants
+        to create a firewall rule for another tenant. Changing this creates a new
+        firewall rule.
         """
         return pulumi.get(self, "tenant_id")
 

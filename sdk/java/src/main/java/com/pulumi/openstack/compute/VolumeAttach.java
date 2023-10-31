@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.openstack.blockstorage.VolumeV2;
- * import com.pulumi.openstack.blockstorage.VolumeV2Args;
+ * import com.pulumi.openstack.blockstorage.Volume;
+ * import com.pulumi.openstack.blockstorage.VolumeArgs;
  * import com.pulumi.openstack.compute.Instance;
  * import com.pulumi.openstack.compute.InstanceArgs;
  * import com.pulumi.openstack.compute.VolumeAttach;
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var volume1 = new VolumeV2(&#34;volume1&#34;, VolumeV2Args.builder()        
+ *         var volume1 = new Volume(&#34;volume1&#34;, VolumeArgs.builder()        
  *             .size(1)
  *             .build());
  * 
@@ -108,13 +108,13 @@ import javax.annotation.Nullable;
  * 
  *         var va1 = new VolumeAttach(&#34;va1&#34;, VolumeAttachArgs.builder()        
  *             .instanceId(instance1.id())
- *             .volumeId(openstack_blockstorage_volume_v2.volume_1().id())
+ *             .volumeId(volume1.id())
  *             .multiattach(true)
  *             .build());
  * 
  *         var va2 = new VolumeAttach(&#34;va2&#34;, VolumeAttachArgs.builder()        
  *             .instanceId(instance2.id())
- *             .volumeId(openstack_blockstorage_volume_v2.volume_1().id())
+ *             .volumeId(volume1.id())
  *             .multiattach(true)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(&#34;openstack_compute_volume_attach_v2.va_1&#34;)

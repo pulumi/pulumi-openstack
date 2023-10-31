@@ -107,16 +107,16 @@ public final class GetFwGroupV2Args extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * This argument conflict and interchangeable with
-     * `tenant_id`. The owner of the firewall group.
+     * This argument conflicts and is interchangeable
+     * with `tenant_id`. The owner of the firewall group.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return This argument conflict and interchangeable with
-     * `tenant_id`. The owner of the firewall group.
+     * @return This argument conflicts and is interchangeable
+     * with `tenant_id`. The owner of the firewall group.
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -173,16 +173,16 @@ public final class GetFwGroupV2Args extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * This argument conflict and interchangeable with
-     * `project_id`. The owner of the firewall group.
+     * This argument conflicts and is interchangeable
+     * with `project_id`. The owner of the firewall group.
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return This argument conflict and interchangeable with
-     * `project_id`. The owner of the firewall group.
+     * @return This argument conflicts and is interchangeable
+     * with `project_id`. The owner of the firewall group.
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -350,8 +350,8 @@ public final class GetFwGroupV2Args extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param projectId This argument conflict and interchangeable with
-         * `tenant_id`. The owner of the firewall group.
+         * @param projectId This argument conflicts and is interchangeable
+         * with `tenant_id`. The owner of the firewall group.
          * 
          * @return builder
          * 
@@ -362,8 +362,8 @@ public final class GetFwGroupV2Args extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param projectId This argument conflict and interchangeable with
-         * `tenant_id`. The owner of the firewall group.
+         * @param projectId This argument conflicts and is interchangeable
+         * with `tenant_id`. The owner of the firewall group.
          * 
          * @return builder
          * 
@@ -440,8 +440,8 @@ public final class GetFwGroupV2Args extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tenantId This argument conflict and interchangeable with
-         * `project_id`. The owner of the firewall group.
+         * @param tenantId This argument conflicts and is interchangeable
+         * with `project_id`. The owner of the firewall group.
          * 
          * @return builder
          * 
@@ -452,8 +452,8 @@ public final class GetFwGroupV2Args extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tenantId This argument conflict and interchangeable with
-         * `project_id`. The owner of the firewall group.
+         * @param tenantId This argument conflicts and is interchangeable
+         * with `project_id`. The owner of the firewall group.
          * 
          * @return builder
          * 

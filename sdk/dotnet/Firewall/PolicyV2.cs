@@ -90,6 +90,15 @@ namespace Pulumi.OpenStack.Firewall
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// This argument conflicts and is interchangeable
+        /// with `tenant_id`. The owner of the firewall policy. Required if admin wants
+        /// to create a firewall policy for another project. Changing this creates a new
+        /// firewall policy.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
         /// The region in which to obtain the v2 networking client.
         /// A networking client is needed to create a firewall policy. If omitted, the
         /// `region` argument of the provider is used. Changing this creates a new
@@ -117,9 +126,10 @@ namespace Pulumi.OpenStack.Firewall
         public Output<bool?> Shared { get; private set; } = null!;
 
         /// <summary>
-        /// The owner of the firewall policy. Required if admin
-        /// wants to create a firewall policy for another tenant. Changing this
-        /// creates a new firewall policy.
+        /// This argument conflicts and is interchangeable
+        /// with `project_id`. The owner of the firewall policy. Required if admin wants
+        /// to create a firewall policy for another tenant. Changing this creates a new
+        /// firewall policy.
         /// </summary>
         [Output("tenantId")]
         public Output<string> TenantId { get; private set; } = null!;
@@ -195,6 +205,15 @@ namespace Pulumi.OpenStack.Firewall
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// This argument conflicts and is interchangeable
+        /// with `tenant_id`. The owner of the firewall policy. Required if admin wants
+        /// to create a firewall policy for another project. Changing this creates a new
+        /// firewall policy.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
         /// The region in which to obtain the v2 networking client.
         /// A networking client is needed to create a firewall policy. If omitted, the
         /// `region` argument of the provider is used. Changing this creates a new
@@ -228,9 +247,10 @@ namespace Pulumi.OpenStack.Firewall
         public Input<bool>? Shared { get; set; }
 
         /// <summary>
-        /// The owner of the firewall policy. Required if admin
-        /// wants to create a firewall policy for another tenant. Changing this
-        /// creates a new firewall policy.
+        /// This argument conflicts and is interchangeable
+        /// with `project_id`. The owner of the firewall policy. Required if admin wants
+        /// to create a firewall policy for another tenant. Changing this creates a new
+        /// firewall policy.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
@@ -268,6 +288,15 @@ namespace Pulumi.OpenStack.Firewall
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// This argument conflicts and is interchangeable
+        /// with `tenant_id`. The owner of the firewall policy. Required if admin wants
+        /// to create a firewall policy for another project. Changing this creates a new
+        /// firewall policy.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
         /// The region in which to obtain the v2 networking client.
         /// A networking client is needed to create a firewall policy. If omitted, the
         /// `region` argument of the provider is used. Changing this creates a new
@@ -301,9 +330,10 @@ namespace Pulumi.OpenStack.Firewall
         public Input<bool>? Shared { get; set; }
 
         /// <summary>
-        /// The owner of the firewall policy. Required if admin
-        /// wants to create a firewall policy for another tenant. Changing this
-        /// creates a new firewall policy.
+        /// This argument conflicts and is interchangeable
+        /// with `project_id`. The owner of the firewall policy. Required if admin wants
+        /// to create a firewall policy for another tenant. Changing this creates a new
+        /// firewall policy.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }

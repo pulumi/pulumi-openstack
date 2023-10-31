@@ -897,7 +897,7 @@ export namespace networking {
         /**
          * An isolated segment on the physical network.
          */
-        segmentationId?: number;
+        segmentationId: number;
     }
 
     export interface PortAllowedAddressPair {

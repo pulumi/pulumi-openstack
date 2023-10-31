@@ -128,6 +128,13 @@ namespace Pulumi.OpenStack
         public string? Name { get; set; }
 
         /// <summary>
+        /// This argument conflicts and is interchangeable
+        /// with `tenant_id`. The owner of the firewall rule.
+        /// </summary>
+        [Input("projectId")]
+        public string? ProjectId { get; set; }
+
+        /// <summary>
         /// The protocol type on which the firewall rule operates.
         /// </summary>
         [Input("protocol")]
@@ -168,7 +175,8 @@ namespace Pulumi.OpenStack
         public string? SourcePort { get; set; }
 
         /// <summary>
-        /// The owner of the firewall policy.
+        /// This argument conflicts and is interchangeable
+        /// with `project_id`. The owner of the firewall rule.
         /// </summary>
         [Input("tenantId")]
         public string? TenantId { get; set; }
@@ -238,6 +246,13 @@ namespace Pulumi.OpenStack
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// This argument conflicts and is interchangeable
+        /// with `tenant_id`. The owner of the firewall rule.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
         /// The protocol type on which the firewall rule operates.
         /// </summary>
         [Input("protocol")]
@@ -278,7 +293,8 @@ namespace Pulumi.OpenStack
         public Input<string>? SourcePort { get; set; }
 
         /// <summary>
-        /// The owner of the firewall policy.
+        /// This argument conflicts and is interchangeable
+        /// with `project_id`. The owner of the firewall rule.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
@@ -332,6 +348,10 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// See Argument Reference above.
         /// </summary>
+        public readonly string ProjectId;
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         public readonly string? Protocol;
         /// <summary>
         /// See Argument Reference above.
@@ -378,6 +398,8 @@ namespace Pulumi.OpenStack
 
             string? name,
 
+            string projectId,
+
             string? protocol,
 
             string region,
@@ -401,6 +423,7 @@ namespace Pulumi.OpenStack
             Id = id;
             IpVersion = ipVersion;
             Name = name;
+            ProjectId = projectId;
             Protocol = protocol;
             Region = region;
             RuleId = ruleId;

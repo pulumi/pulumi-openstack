@@ -96,6 +96,13 @@ namespace Pulumi.OpenStack
         public string? PolicyId { get; set; }
 
         /// <summary>
+        /// This argument conflicts and is interchangeable
+        /// with `tenant_id`. The owner of the firewall policy.
+        /// </summary>
+        [Input("projectId")]
+        public string? ProjectId { get; set; }
+
+        /// <summary>
         /// The region in which to obtain the V2 Neutron client.
         /// A Neutron client is needed to retrieve firewall policy ids. If omitted, the
         /// `region` argument of the provider is used.
@@ -110,7 +117,8 @@ namespace Pulumi.OpenStack
         public bool? Shared { get; set; }
 
         /// <summary>
-        /// The owner of the firewall policy.
+        /// This argument conflicts and is interchangeable
+        /// with `project_id`. The owner of the firewall policy.
         /// </summary>
         [Input("tenantId")]
         public string? TenantId { get; set; }
@@ -148,6 +156,13 @@ namespace Pulumi.OpenStack
         public Input<string>? PolicyId { get; set; }
 
         /// <summary>
+        /// This argument conflicts and is interchangeable
+        /// with `tenant_id`. The owner of the firewall policy.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
         /// The region in which to obtain the V2 Neutron client.
         /// A Neutron client is needed to retrieve firewall policy ids. If omitted, the
         /// `region` argument of the provider is used.
@@ -162,7 +177,8 @@ namespace Pulumi.OpenStack
         public Input<bool>? Shared { get; set; }
 
         /// <summary>
-        /// The owner of the firewall policy.
+        /// This argument conflicts and is interchangeable
+        /// with `project_id`. The owner of the firewall policy.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
@@ -197,6 +213,10 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// See Argument Reference above.
         /// </summary>
+        public readonly string ProjectId;
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         public readonly string Region;
         /// <summary>
         /// The array of one or more firewall rules that comprise the policy.
@@ -223,6 +243,8 @@ namespace Pulumi.OpenStack
 
             string? policyId,
 
+            string projectId,
+
             string region,
 
             ImmutableArray<string> rules,
@@ -236,6 +258,7 @@ namespace Pulumi.OpenStack
             Id = id;
             Name = name;
             PolicyId = policyId;
+            ProjectId = projectId;
             Region = region;
             Rules = rules;
             Shared = shared;

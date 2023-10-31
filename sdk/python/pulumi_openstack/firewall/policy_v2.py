@@ -17,6 +17,7 @@ class PolicyV2Args:
                  audited: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
@@ -32,6 +33,10 @@ class PolicyV2Args:
                this updates the `description` of an existing firewall policy.
         :param pulumi.Input[str] name: A name for the firewall policy. Changing this
                updates the `name` of an existing firewall policy.
+        :param pulumi.Input[str] project_id: This argument conflicts and is interchangeable
+               with `tenant_id`. The owner of the firewall policy. Required if admin wants
+               to create a firewall policy for another project. Changing this creates a new
+               firewall policy.
         :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
                A networking client is needed to create a firewall policy. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -44,9 +49,10 @@ class PolicyV2Args:
                can be used in, firewalls in other tenants. Changing this updates the
                `shared` status of an existing firewall policy. Only administrative users
                can specify if the policy should be shared.
-        :param pulumi.Input[str] tenant_id: The owner of the firewall policy. Required if admin
-               wants to create a firewall policy for another tenant. Changing this
-               creates a new firewall policy.
+        :param pulumi.Input[str] tenant_id: This argument conflicts and is interchangeable
+               with `project_id`. The owner of the firewall policy. Required if admin wants
+               to create a firewall policy for another tenant. Changing this creates a new
+               firewall policy.
         """
         if audited is not None:
             pulumi.set(__self__, "audited", audited)
@@ -54,6 +60,8 @@ class PolicyV2Args:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if rules is not None:
@@ -106,6 +114,21 @@ class PolicyV2Args:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        This argument conflicts and is interchangeable
+        with `tenant_id`. The owner of the firewall policy. Required if admin wants
+        to create a firewall policy for another project. Changing this creates a new
+        firewall policy.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -154,9 +177,10 @@ class PolicyV2Args:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The owner of the firewall policy. Required if admin
-        wants to create a firewall policy for another tenant. Changing this
-        creates a new firewall policy.
+        This argument conflicts and is interchangeable
+        with `project_id`. The owner of the firewall policy. Required if admin wants
+        to create a firewall policy for another tenant. Changing this creates a new
+        firewall policy.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -171,6 +195,7 @@ class _PolicyV2State:
                  audited: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
@@ -186,6 +211,10 @@ class _PolicyV2State:
                this updates the `description` of an existing firewall policy.
         :param pulumi.Input[str] name: A name for the firewall policy. Changing this
                updates the `name` of an existing firewall policy.
+        :param pulumi.Input[str] project_id: This argument conflicts and is interchangeable
+               with `tenant_id`. The owner of the firewall policy. Required if admin wants
+               to create a firewall policy for another project. Changing this creates a new
+               firewall policy.
         :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
                A networking client is needed to create a firewall policy. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -198,9 +227,10 @@ class _PolicyV2State:
                can be used in, firewalls in other tenants. Changing this updates the
                `shared` status of an existing firewall policy. Only administrative users
                can specify if the policy should be shared.
-        :param pulumi.Input[str] tenant_id: The owner of the firewall policy. Required if admin
-               wants to create a firewall policy for another tenant. Changing this
-               creates a new firewall policy.
+        :param pulumi.Input[str] tenant_id: This argument conflicts and is interchangeable
+               with `project_id`. The owner of the firewall policy. Required if admin wants
+               to create a firewall policy for another tenant. Changing this creates a new
+               firewall policy.
         """
         if audited is not None:
             pulumi.set(__self__, "audited", audited)
@@ -208,6 +238,8 @@ class _PolicyV2State:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if rules is not None:
@@ -260,6 +292,21 @@ class _PolicyV2State:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        This argument conflicts and is interchangeable
+        with `tenant_id`. The owner of the firewall policy. Required if admin wants
+        to create a firewall policy for another project. Changing this creates a new
+        firewall policy.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -308,9 +355,10 @@ class _PolicyV2State:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The owner of the firewall policy. Required if admin
-        wants to create a firewall policy for another tenant. Changing this
-        creates a new firewall policy.
+        This argument conflicts and is interchangeable
+        with `project_id`. The owner of the firewall policy. Required if admin wants
+        to create a firewall policy for another tenant. Changing this creates a new
+        firewall policy.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -327,6 +375,7 @@ class PolicyV2(pulumi.CustomResource):
                  audited: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
@@ -380,6 +429,10 @@ class PolicyV2(pulumi.CustomResource):
                this updates the `description` of an existing firewall policy.
         :param pulumi.Input[str] name: A name for the firewall policy. Changing this
                updates the `name` of an existing firewall policy.
+        :param pulumi.Input[str] project_id: This argument conflicts and is interchangeable
+               with `tenant_id`. The owner of the firewall policy. Required if admin wants
+               to create a firewall policy for another project. Changing this creates a new
+               firewall policy.
         :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
                A networking client is needed to create a firewall policy. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -392,9 +445,10 @@ class PolicyV2(pulumi.CustomResource):
                can be used in, firewalls in other tenants. Changing this updates the
                `shared` status of an existing firewall policy. Only administrative users
                can specify if the policy should be shared.
-        :param pulumi.Input[str] tenant_id: The owner of the firewall policy. Required if admin
-               wants to create a firewall policy for another tenant. Changing this
-               creates a new firewall policy.
+        :param pulumi.Input[str] tenant_id: This argument conflicts and is interchangeable
+               with `project_id`. The owner of the firewall policy. Required if admin wants
+               to create a firewall policy for another tenant. Changing this creates a new
+               firewall policy.
         """
         ...
     @overload
@@ -457,6 +511,7 @@ class PolicyV2(pulumi.CustomResource):
                  audited: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  shared: Optional[pulumi.Input[bool]] = None,
@@ -473,6 +528,7 @@ class PolicyV2(pulumi.CustomResource):
             __props__.__dict__["audited"] = audited
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
+            __props__.__dict__["project_id"] = project_id
             __props__.__dict__["region"] = region
             __props__.__dict__["rules"] = rules
             __props__.__dict__["shared"] = shared
@@ -490,6 +546,7 @@ class PolicyV2(pulumi.CustomResource):
             audited: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            project_id: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             shared: Optional[pulumi.Input[bool]] = None,
@@ -510,6 +567,10 @@ class PolicyV2(pulumi.CustomResource):
                this updates the `description` of an existing firewall policy.
         :param pulumi.Input[str] name: A name for the firewall policy. Changing this
                updates the `name` of an existing firewall policy.
+        :param pulumi.Input[str] project_id: This argument conflicts and is interchangeable
+               with `tenant_id`. The owner of the firewall policy. Required if admin wants
+               to create a firewall policy for another project. Changing this creates a new
+               firewall policy.
         :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
                A networking client is needed to create a firewall policy. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -522,9 +583,10 @@ class PolicyV2(pulumi.CustomResource):
                can be used in, firewalls in other tenants. Changing this updates the
                `shared` status of an existing firewall policy. Only administrative users
                can specify if the policy should be shared.
-        :param pulumi.Input[str] tenant_id: The owner of the firewall policy. Required if admin
-               wants to create a firewall policy for another tenant. Changing this
-               creates a new firewall policy.
+        :param pulumi.Input[str] tenant_id: This argument conflicts and is interchangeable
+               with `project_id`. The owner of the firewall policy. Required if admin wants
+               to create a firewall policy for another tenant. Changing this creates a new
+               firewall policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -533,6 +595,7 @@ class PolicyV2(pulumi.CustomResource):
         __props__.__dict__["audited"] = audited
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
+        __props__.__dict__["project_id"] = project_id
         __props__.__dict__["region"] = region
         __props__.__dict__["rules"] = rules
         __props__.__dict__["shared"] = shared
@@ -568,6 +631,17 @@ class PolicyV2(pulumi.CustomResource):
         updates the `name` of an existing firewall policy.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Output[str]:
+        """
+        This argument conflicts and is interchangeable
+        with `tenant_id`. The owner of the firewall policy. Required if admin wants
+        to create a firewall policy for another project. Changing this creates a new
+        firewall policy.
+        """
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
@@ -606,9 +680,10 @@ class PolicyV2(pulumi.CustomResource):
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
         """
-        The owner of the firewall policy. Required if admin
-        wants to create a firewall policy for another tenant. Changing this
-        creates a new firewall policy.
+        This argument conflicts and is interchangeable
+        with `project_id`. The owner of the firewall policy. Required if admin wants
+        to create a firewall policy for another tenant. Changing this creates a new
+        firewall policy.
         """
         return pulumi.get(self, "tenant_id")
 

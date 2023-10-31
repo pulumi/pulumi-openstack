@@ -69,6 +69,9 @@ type GetFwRuleV2Args struct {
 	IpVersion *int `pulumi:"ipVersion"`
 	// The name of the firewall rule.
 	Name *string `pulumi:"name"`
+	// This argument conflicts and is interchangeable
+	// with `tenantId`. The owner of the firewall rule.
+	ProjectId *string `pulumi:"projectId"`
 	// The protocol type on which the firewall rule operates.
 	Protocol *string `pulumi:"protocol"`
 	// The region in which to obtain the V2 Neutron client.
@@ -85,7 +88,8 @@ type GetFwRuleV2Args struct {
 	// The source port on which the firewall
 	// rule operates.
 	SourcePort *string `pulumi:"sourcePort"`
-	// The owner of the firewall policy.
+	// This argument conflicts and is interchangeable
+	// with `projectId`. The owner of the firewall rule.
 	TenantId *string `pulumi:"tenantId"`
 }
 
@@ -109,6 +113,8 @@ type GetFwRuleV2Result struct {
 	IpVersion *int `pulumi:"ipVersion"`
 	// See Argument Reference above.
 	Name *string `pulumi:"name"`
+	// See Argument Reference above.
+	ProjectId string `pulumi:"projectId"`
 	// See Argument Reference above.
 	Protocol *string `pulumi:"protocol"`
 	// See Argument Reference above.
@@ -158,6 +164,9 @@ type GetFwRuleV2OutputArgs struct {
 	IpVersion pulumi.IntPtrInput `pulumi:"ipVersion"`
 	// The name of the firewall rule.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// This argument conflicts and is interchangeable
+	// with `tenantId`. The owner of the firewall rule.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// The protocol type on which the firewall rule operates.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 	// The region in which to obtain the V2 Neutron client.
@@ -174,7 +183,8 @@ type GetFwRuleV2OutputArgs struct {
 	// The source port on which the firewall
 	// rule operates.
 	SourcePort pulumi.StringPtrInput `pulumi:"sourcePort"`
-	// The owner of the firewall policy.
+	// This argument conflicts and is interchangeable
+	// with `projectId`. The owner of the firewall rule.
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 }
 
@@ -246,6 +256,11 @@ func (o GetFwRuleV2ResultOutput) IpVersion() pulumi.IntPtrOutput {
 // See Argument Reference above.
 func (o GetFwRuleV2ResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFwRuleV2Result) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// See Argument Reference above.
+func (o GetFwRuleV2ResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFwRuleV2Result) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 // See Argument Reference above.

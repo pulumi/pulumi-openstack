@@ -24,7 +24,7 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var volume1 = new OpenStack.BlockStorage.VolumeV2("volume1", new()
+    ///     var volume1 = new OpenStack.BlockStorage.Volume("volume1", new()
     ///     {
     ///         Size = 1,
     ///     });
@@ -83,14 +83,14 @@ namespace Pulumi.OpenStack.Compute
     ///     var va1 = new OpenStack.Compute.VolumeAttach("va1", new()
     ///     {
     ///         InstanceId = instance1.Id,
-    ///         VolumeId = openstack_blockstorage_volume_v2.Volume_1.Id,
+    ///         VolumeId = volume1.Id,
     ///         Multiattach = true,
     ///     });
     /// 
     ///     var va2 = new OpenStack.Compute.VolumeAttach("va2", new()
     ///     {
     ///         InstanceId = instance2.Id,
-    ///         VolumeId = openstack_blockstorage_volume_v2.Volume_1.Id,
+    ///         VolumeId = volume1.Id,
     ///         Multiattach = true,
     ///     }, new CustomResourceOptions
     ///     {

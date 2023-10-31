@@ -128,9 +128,9 @@ public final class GroupV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This argument conflict and interchangeable with
-     * `tenant_id`. The owner of the firewall group. Required if admin wants to
-     * create a firewall group for another project. Changing this creates a new
+     * This argument conflicts and  is interchangeable
+     * with `tenant_id`. The owner of the firewall group. Required if admin wants
+     * to create a firewall group for another project. Changing this creates a new
      * firewall group.
      * 
      */
@@ -138,9 +138,9 @@ public final class GroupV2Args extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> projectId;
 
     /**
-     * @return This argument conflict and interchangeable with
-     * `tenant_id`. The owner of the firewall group. Required if admin wants to
-     * create a firewall group for another project. Changing this creates a new
+     * @return This argument conflicts and  is interchangeable
+     * with `tenant_id`. The owner of the firewall group. Required if admin wants
+     * to create a firewall group for another project. Changing this creates a new
      * firewall group.
      * 
      */
@@ -193,7 +193,7 @@ public final class GroupV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This argument conflict and interchangeable with
+     * This argument conflicts and is interchangeable with
      * `project_id`. The owner of the firewall group. Required if admin wants to
      * create a firewall group for another tenant. Changing this creates a new
      * firewall group.
@@ -203,7 +203,7 @@ public final class GroupV2Args extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return This argument conflict and interchangeable with
+     * @return This argument conflicts and is interchangeable with
      * `project_id`. The owner of the firewall group. Required if admin wants to
      * create a firewall group for another tenant. Changing this creates a new
      * firewall group.
@@ -405,9 +405,9 @@ public final class GroupV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId This argument conflict and interchangeable with
-         * `tenant_id`. The owner of the firewall group. Required if admin wants to
-         * create a firewall group for another project. Changing this creates a new
+         * @param projectId This argument conflicts and  is interchangeable
+         * with `tenant_id`. The owner of the firewall group. Required if admin wants
+         * to create a firewall group for another project. Changing this creates a new
          * firewall group.
          * 
          * @return builder
@@ -419,9 +419,9 @@ public final class GroupV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectId This argument conflict and interchangeable with
-         * `tenant_id`. The owner of the firewall group. Required if admin wants to
-         * create a firewall group for another project. Changing this creates a new
+         * @param projectId This argument conflicts and  is interchangeable
+         * with `tenant_id`. The owner of the firewall group. Required if admin wants
+         * to create a firewall group for another project. Changing this creates a new
          * firewall group.
          * 
          * @return builder
@@ -488,7 +488,7 @@ public final class GroupV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId This argument conflict and interchangeable with
+         * @param tenantId This argument conflicts and is interchangeable with
          * `project_id`. The owner of the firewall group. Required if admin wants to
          * create a firewall group for another tenant. Changing this creates a new
          * firewall group.
@@ -502,7 +502,7 @@ public final class GroupV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId This argument conflict and interchangeable with
+         * @param tenantId This argument conflicts and is interchangeable with
          * `project_id`. The owner of the firewall group. Required if admin wants to
          * create a firewall group for another tenant. Changing this creates a new
          * firewall group.

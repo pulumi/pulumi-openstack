@@ -187,6 +187,26 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * This argument conflicts and is interchangeable
+     * with `tenant_id`. The owner of the firewall rule. Required if admin wants
+     * to create a firewall rule for another project. Changing this creates a new
+     * firewall rule.
+     * 
+     */
+    @Export(name="projectId", refs={String.class}, tree="[0]")
+    private Output<String> projectId;
+
+    /**
+     * @return This argument conflicts and is interchangeable
+     * with `tenant_id`. The owner of the firewall rule. Required if admin wants
+     * to create a firewall rule for another project. Changing this creates a new
+     * firewall rule.
+     * 
+     */
+    public Output<String> projectId() {
+        return this.projectId;
+    }
+    /**
      * (Optional; Required if `source_port` or `destination_port` is not
      * empty) The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
@@ -283,22 +303,24 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourcePort);
     }
     /**
-     * The owner of the firewall rule. Required if admin
-     * wants to create a firewall rule for another tenant. Changing this creates a
-     * new firewall rule.
+     * This argument conflicts and is interchangeable
+     * with `project_id`. The owner of the firewall rule. Required if admin wants
+     * to create a firewall rule for another tenant. Changing this creates a new
+     * firewall rule.
      * 
      */
     @Export(name="tenantId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> tenantId;
+    private Output<String> tenantId;
 
     /**
-     * @return The owner of the firewall rule. Required if admin
-     * wants to create a firewall rule for another tenant. Changing this creates a
-     * new firewall rule.
+     * @return This argument conflicts and is interchangeable
+     * with `project_id`. The owner of the firewall rule. Required if admin wants
+     * to create a firewall rule for another tenant. Changing this creates a new
+     * firewall rule.
      * 
      */
-    public Output<Optional<String>> tenantId() {
-        return Codegen.optional(this.tenantId);
+    public Output<String> tenantId() {
+        return this.tenantId;
     }
 
     /**
