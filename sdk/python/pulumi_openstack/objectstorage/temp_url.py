@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TempUrlArgs', 'TempUrl']
@@ -34,17 +34,46 @@ class TempUrlArgs:
                ID and new URL. Defaults to false.
         :param pulumi.Input[str] region: The region the tempurl is located in.
         """
-        pulumi.set(__self__, "container", container)
-        pulumi.set(__self__, "object", object)
-        pulumi.set(__self__, "ttl", ttl)
+        TempUrlArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            container=container,
+            object=object,
+            ttl=ttl,
+            method=method,
+            regenerate=regenerate,
+            region=region,
+            split=split,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             container: Optional[pulumi.Input[str]] = None,
+             object: Optional[pulumi.Input[str]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             method: Optional[pulumi.Input[str]] = None,
+             regenerate: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             split: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if container is None:
+            raise TypeError("Missing 'container' argument")
+        if object is None:
+            raise TypeError("Missing 'object' argument")
+        if ttl is None:
+            raise TypeError("Missing 'ttl' argument")
+
+        _setter("container", container)
+        _setter("object", object)
+        _setter("ttl", ttl)
         if method is not None:
-            pulumi.set(__self__, "method", method)
+            _setter("method", method)
         if regenerate is not None:
-            pulumi.set(__self__, "regenerate", regenerate)
+            _setter("regenerate", regenerate)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if split is not None:
-            pulumi.set(__self__, "split", split)
+            _setter("split", split)
 
     @property
     @pulumi.getter
@@ -157,22 +186,47 @@ class _TempUrlState:
                be valid.
         :param pulumi.Input[str] url: The URL
         """
+        _TempUrlState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            container=container,
+            method=method,
+            object=object,
+            regenerate=regenerate,
+            region=region,
+            split=split,
+            ttl=ttl,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             container: Optional[pulumi.Input[str]] = None,
+             method: Optional[pulumi.Input[str]] = None,
+             object: Optional[pulumi.Input[str]] = None,
+             regenerate: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             split: Optional[pulumi.Input[str]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if container is not None:
-            pulumi.set(__self__, "container", container)
+            _setter("container", container)
         if method is not None:
-            pulumi.set(__self__, "method", method)
+            _setter("method", method)
         if object is not None:
-            pulumi.set(__self__, "object", object)
+            _setter("object", object)
         if regenerate is not None:
-            pulumi.set(__self__, "regenerate", regenerate)
+            _setter("regenerate", regenerate)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if split is not None:
-            pulumi.set(__self__, "split", split)
+            _setter("split", split)
         if ttl is not None:
-            pulumi.set(__self__, "ttl", ttl)
+            _setter("ttl", ttl)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter
@@ -370,6 +424,10 @@ class TempUrl(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TempUrlArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

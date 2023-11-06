@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['L7RuleV2Args', 'L7RuleV2']
@@ -47,20 +47,63 @@ class L7RuleV2Args:
                the L7 Rule.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new L7 Rule.
         """
-        pulumi.set(__self__, "compare_type", compare_type)
-        pulumi.set(__self__, "l7policy_id", l7policy_id)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "value", value)
+        L7RuleV2Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compare_type=compare_type,
+            l7policy_id=l7policy_id,
+            type=type,
+            value=value,
+            admin_state_up=admin_state_up,
+            invert=invert,
+            key=key,
+            region=region,
+            tenant_id=tenant_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compare_type: Optional[pulumi.Input[str]] = None,
+             l7policy_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             invert: Optional[pulumi.Input[bool]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if compare_type is None and 'compareType' in kwargs:
+            compare_type = kwargs['compareType']
+        if compare_type is None:
+            raise TypeError("Missing 'compare_type' argument")
+        if l7policy_id is None and 'l7policyId' in kwargs:
+            l7policy_id = kwargs['l7policyId']
+        if l7policy_id is None:
+            raise TypeError("Missing 'l7policy_id' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
+        _setter("compare_type", compare_type)
+        _setter("l7policy_id", l7policy_id)
+        _setter("type", type)
+        _setter("value", value)
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if invert is not None:
-            pulumi.set(__self__, "invert", invert)
+            _setter("invert", invert)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
 
     @property
     @pulumi.getter(name="compareType")
@@ -221,26 +264,65 @@ class _L7RuleV2State:
         :param pulumi.Input[str] value: The value to use for the comparison. For example, the file type to
                compare.
         """
+        _L7RuleV2State._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_state_up=admin_state_up,
+            compare_type=compare_type,
+            invert=invert,
+            key=key,
+            l7policy_id=l7policy_id,
+            listener_id=listener_id,
+            region=region,
+            tenant_id=tenant_id,
+            type=type,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             compare_type: Optional[pulumi.Input[str]] = None,
+             invert: Optional[pulumi.Input[bool]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             l7policy_id: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if compare_type is None and 'compareType' in kwargs:
+            compare_type = kwargs['compareType']
+        if l7policy_id is None and 'l7policyId' in kwargs:
+            l7policy_id = kwargs['l7policyId']
+        if listener_id is None and 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if compare_type is not None:
-            pulumi.set(__self__, "compare_type", compare_type)
+            _setter("compare_type", compare_type)
         if invert is not None:
-            pulumi.set(__self__, "invert", invert)
+            _setter("invert", invert)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if l7policy_id is not None:
-            pulumi.set(__self__, "l7policy_id", l7policy_id)
+            _setter("l7policy_id", l7policy_id)
         if listener_id is not None:
-            pulumi.set(__self__, "listener_id", listener_id)
+            _setter("listener_id", listener_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter(name="adminStateUp")
@@ -518,6 +600,10 @@ class L7RuleV2(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            L7RuleV2Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

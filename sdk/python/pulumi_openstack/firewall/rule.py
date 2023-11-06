@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RuleArgs', 'Rule']
@@ -65,30 +65,83 @@ class RuleArgs:
                new firewall rule.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "protocol", protocol)
+        RuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            protocol=protocol,
+            description=description,
+            destination_ip_address=destination_ip_address,
+            destination_port=destination_port,
+            enabled=enabled,
+            ip_version=ip_version,
+            name=name,
+            region=region,
+            source_ip_address=source_ip_address,
+            source_port=source_port,
+            tenant_id=tenant_id,
+            value_specs=value_specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             destination_ip_address: Optional[pulumi.Input[str]] = None,
+             destination_port: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             ip_version: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             source_ip_address: Optional[pulumi.Input[str]] = None,
+             source_port: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if destination_ip_address is None and 'destinationIpAddress' in kwargs:
+            destination_ip_address = kwargs['destinationIpAddress']
+        if destination_port is None and 'destinationPort' in kwargs:
+            destination_port = kwargs['destinationPort']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if source_ip_address is None and 'sourceIpAddress' in kwargs:
+            source_ip_address = kwargs['sourceIpAddress']
+        if source_port is None and 'sourcePort' in kwargs:
+            source_port = kwargs['sourcePort']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
+        _setter("action", action)
+        _setter("protocol", protocol)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if destination_ip_address is not None:
-            pulumi.set(__self__, "destination_ip_address", destination_ip_address)
+            _setter("destination_ip_address", destination_ip_address)
         if destination_port is not None:
-            pulumi.set(__self__, "destination_port", destination_port)
+            _setter("destination_port", destination_port)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if source_ip_address is not None:
-            pulumi.set(__self__, "source_ip_address", source_ip_address)
+            _setter("source_ip_address", source_ip_address)
         if source_port is not None:
-            pulumi.set(__self__, "source_port", source_port)
+            _setter("source_port", source_port)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
 
     @property
     @pulumi.getter
@@ -323,32 +376,81 @@ class _RuleState:
                new firewall rule.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
+        _RuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            description=description,
+            destination_ip_address=destination_ip_address,
+            destination_port=destination_port,
+            enabled=enabled,
+            ip_version=ip_version,
+            name=name,
+            protocol=protocol,
+            region=region,
+            source_ip_address=source_ip_address,
+            source_port=source_port,
+            tenant_id=tenant_id,
+            value_specs=value_specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             destination_ip_address: Optional[pulumi.Input[str]] = None,
+             destination_port: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             ip_version: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             source_ip_address: Optional[pulumi.Input[str]] = None,
+             source_port: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if destination_ip_address is None and 'destinationIpAddress' in kwargs:
+            destination_ip_address = kwargs['destinationIpAddress']
+        if destination_port is None and 'destinationPort' in kwargs:
+            destination_port = kwargs['destinationPort']
+        if ip_version is None and 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if source_ip_address is None and 'sourceIpAddress' in kwargs:
+            source_ip_address = kwargs['sourceIpAddress']
+        if source_port is None and 'sourcePort' in kwargs:
+            source_port = kwargs['sourcePort']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if destination_ip_address is not None:
-            pulumi.set(__self__, "destination_ip_address", destination_ip_address)
+            _setter("destination_ip_address", destination_ip_address)
         if destination_port is not None:
-            pulumi.set(__self__, "destination_port", destination_port)
+            _setter("destination_port", destination_port)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if source_ip_address is not None:
-            pulumi.set(__self__, "source_ip_address", source_ip_address)
+            _setter("source_ip_address", source_ip_address)
         if source_port is not None:
-            pulumi.set(__self__, "source_port", source_port)
+            _setter("source_port", source_port)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
 
     @property
     @pulumi.getter
@@ -652,6 +754,10 @@ class Rule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

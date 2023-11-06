@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['QuotaV2Args', 'QuotaV2']
@@ -51,27 +51,68 @@ class QuotaV2Args:
         :param pulumi.Input[int] subnetpool: Quota value for subnetpools.
                Changing this updates the existing quota.
         """
-        pulumi.set(__self__, "project_id", project_id)
+        QuotaV2Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project_id=project_id,
+            floatingip=floatingip,
+            network=network,
+            port=port,
+            rbac_policy=rbac_policy,
+            region=region,
+            router=router,
+            security_group=security_group,
+            security_group_rule=security_group_rule,
+            subnet=subnet,
+            subnetpool=subnetpool,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project_id: Optional[pulumi.Input[str]] = None,
+             floatingip: Optional[pulumi.Input[int]] = None,
+             network: Optional[pulumi.Input[int]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             rbac_policy: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             router: Optional[pulumi.Input[int]] = None,
+             security_group: Optional[pulumi.Input[int]] = None,
+             security_group_rule: Optional[pulumi.Input[int]] = None,
+             subnet: Optional[pulumi.Input[int]] = None,
+             subnetpool: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if rbac_policy is None and 'rbacPolicy' in kwargs:
+            rbac_policy = kwargs['rbacPolicy']
+        if security_group is None and 'securityGroup' in kwargs:
+            security_group = kwargs['securityGroup']
+        if security_group_rule is None and 'securityGroupRule' in kwargs:
+            security_group_rule = kwargs['securityGroupRule']
+
+        _setter("project_id", project_id)
         if floatingip is not None:
-            pulumi.set(__self__, "floatingip", floatingip)
+            _setter("floatingip", floatingip)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if rbac_policy is not None:
-            pulumi.set(__self__, "rbac_policy", rbac_policy)
+            _setter("rbac_policy", rbac_policy)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if router is not None:
-            pulumi.set(__self__, "router", router)
+            _setter("router", router)
         if security_group is not None:
-            pulumi.set(__self__, "security_group", security_group)
+            _setter("security_group", security_group)
         if security_group_rule is not None:
-            pulumi.set(__self__, "security_group_rule", security_group_rule)
+            _setter("security_group_rule", security_group_rule)
         if subnet is not None:
-            pulumi.set(__self__, "subnet", subnet)
+            _setter("subnet", subnet)
         if subnetpool is not None:
-            pulumi.set(__self__, "subnetpool", subnetpool)
+            _setter("subnetpool", subnetpool)
 
     @property
     @pulumi.getter(name="projectId")
@@ -258,28 +299,67 @@ class _QuotaV2State:
         :param pulumi.Input[int] subnetpool: Quota value for subnetpools.
                Changing this updates the existing quota.
         """
+        _QuotaV2State._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            floatingip=floatingip,
+            network=network,
+            port=port,
+            project_id=project_id,
+            rbac_policy=rbac_policy,
+            region=region,
+            router=router,
+            security_group=security_group,
+            security_group_rule=security_group_rule,
+            subnet=subnet,
+            subnetpool=subnetpool,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             floatingip: Optional[pulumi.Input[int]] = None,
+             network: Optional[pulumi.Input[int]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             rbac_policy: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             router: Optional[pulumi.Input[int]] = None,
+             security_group: Optional[pulumi.Input[int]] = None,
+             security_group_rule: Optional[pulumi.Input[int]] = None,
+             subnet: Optional[pulumi.Input[int]] = None,
+             subnetpool: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if rbac_policy is None and 'rbacPolicy' in kwargs:
+            rbac_policy = kwargs['rbacPolicy']
+        if security_group is None and 'securityGroup' in kwargs:
+            security_group = kwargs['securityGroup']
+        if security_group_rule is None and 'securityGroupRule' in kwargs:
+            security_group_rule = kwargs['securityGroupRule']
+
         if floatingip is not None:
-            pulumi.set(__self__, "floatingip", floatingip)
+            _setter("floatingip", floatingip)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if rbac_policy is not None:
-            pulumi.set(__self__, "rbac_policy", rbac_policy)
+            _setter("rbac_policy", rbac_policy)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if router is not None:
-            pulumi.set(__self__, "router", router)
+            _setter("router", router)
         if security_group is not None:
-            pulumi.set(__self__, "security_group", security_group)
+            _setter("security_group", security_group)
         if security_group_rule is not None:
-            pulumi.set(__self__, "security_group_rule", security_group_rule)
+            _setter("security_group_rule", security_group_rule)
         if subnet is not None:
-            pulumi.set(__self__, "subnet", subnet)
+            _setter("subnet", subnet)
         if subnetpool is not None:
-            pulumi.set(__self__, "subnetpool", subnetpool)
+            _setter("subnetpool", subnetpool)
 
     @property
     @pulumi.getter
@@ -563,6 +643,10 @@ class QuotaV2(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            QuotaV2Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

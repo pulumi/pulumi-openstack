@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['QosAssociationV3Args', 'QosAssociationV3']
@@ -27,10 +27,33 @@ class QosAssociationV3Args:
                If omitted, the `region` argument of the provider is used. Changing
                this creates a new qos association.
         """
-        pulumi.set(__self__, "qos_id", qos_id)
-        pulumi.set(__self__, "volume_type_id", volume_type_id)
+        QosAssociationV3Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            qos_id=qos_id,
+            volume_type_id=volume_type_id,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             qos_id: Optional[pulumi.Input[str]] = None,
+             volume_type_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if qos_id is None and 'qosId' in kwargs:
+            qos_id = kwargs['qosId']
+        if qos_id is None:
+            raise TypeError("Missing 'qos_id' argument")
+        if volume_type_id is None and 'volumeTypeId' in kwargs:
+            volume_type_id = kwargs['volumeTypeId']
+        if volume_type_id is None:
+            raise TypeError("Missing 'volume_type_id' argument")
+
+        _setter("qos_id", qos_id)
+        _setter("volume_type_id", volume_type_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="qosId")
@@ -89,12 +112,31 @@ class _QosAssociationV3State:
         :param pulumi.Input[str] volume_type_id: ID of the volume_type to associate.
                Changing this creates a new qos association.
         """
+        _QosAssociationV3State._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            qos_id=qos_id,
+            region=region,
+            volume_type_id=volume_type_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             qos_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             volume_type_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if qos_id is None and 'qosId' in kwargs:
+            qos_id = kwargs['qosId']
+        if volume_type_id is None and 'volumeTypeId' in kwargs:
+            volume_type_id = kwargs['volumeTypeId']
+
         if qos_id is not None:
-            pulumi.set(__self__, "qos_id", qos_id)
+            _setter("qos_id", qos_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if volume_type_id is not None:
-            pulumi.set(__self__, "volume_type_id", volume_type_id)
+            _setter("volume_type_id", volume_type_id)
 
     @property
     @pulumi.getter(name="qosId")
@@ -232,6 +274,10 @@ class QosAssociationV3(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            QosAssociationV3Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

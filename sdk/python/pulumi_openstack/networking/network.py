@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -81,38 +81,95 @@ class NetworkArgs:
                network.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
+        NetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_state_up=admin_state_up,
+            availability_zone_hints=availability_zone_hints,
+            description=description,
+            dns_domain=dns_domain,
+            external=external,
+            mtu=mtu,
+            name=name,
+            port_security_enabled=port_security_enabled,
+            qos_policy_id=qos_policy_id,
+            region=region,
+            segments=segments,
+            shared=shared,
+            tags=tags,
+            tenant_id=tenant_id,
+            transparent_vlan=transparent_vlan,
+            value_specs=value_specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             availability_zone_hints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dns_domain: Optional[pulumi.Input[str]] = None,
+             external: Optional[pulumi.Input[bool]] = None,
+             mtu: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             port_security_enabled: Optional[pulumi.Input[bool]] = None,
+             qos_policy_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             segments: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkSegmentArgs']]]] = None,
+             shared: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             transparent_vlan: Optional[pulumi.Input[bool]] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if availability_zone_hints is None and 'availabilityZoneHints' in kwargs:
+            availability_zone_hints = kwargs['availabilityZoneHints']
+        if dns_domain is None and 'dnsDomain' in kwargs:
+            dns_domain = kwargs['dnsDomain']
+        if port_security_enabled is None and 'portSecurityEnabled' in kwargs:
+            port_security_enabled = kwargs['portSecurityEnabled']
+        if qos_policy_id is None and 'qosPolicyId' in kwargs:
+            qos_policy_id = kwargs['qosPolicyId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if transparent_vlan is None and 'transparentVlan' in kwargs:
+            transparent_vlan = kwargs['transparentVlan']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if availability_zone_hints is not None:
-            pulumi.set(__self__, "availability_zone_hints", availability_zone_hints)
+            _setter("availability_zone_hints", availability_zone_hints)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dns_domain is not None:
-            pulumi.set(__self__, "dns_domain", dns_domain)
+            _setter("dns_domain", dns_domain)
         if external is not None:
-            pulumi.set(__self__, "external", external)
+            _setter("external", external)
         if mtu is not None:
-            pulumi.set(__self__, "mtu", mtu)
+            _setter("mtu", mtu)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if port_security_enabled is not None:
-            pulumi.set(__self__, "port_security_enabled", port_security_enabled)
+            _setter("port_security_enabled", port_security_enabled)
         if qos_policy_id is not None:
-            pulumi.set(__self__, "qos_policy_id", qos_policy_id)
+            _setter("qos_policy_id", qos_policy_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if segments is not None:
-            pulumi.set(__self__, "segments", segments)
+            _setter("segments", segments)
         if shared is not None:
-            pulumi.set(__self__, "shared", shared)
+            _setter("shared", shared)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if transparent_vlan is not None:
-            pulumi.set(__self__, "transparent_vlan", transparent_vlan)
+            _setter("transparent_vlan", transparent_vlan)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
 
     @property
     @pulumi.getter(name="adminStateUp")
@@ -408,40 +465,101 @@ class _NetworkState:
                network.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
+        _NetworkState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_state_up=admin_state_up,
+            all_tags=all_tags,
+            availability_zone_hints=availability_zone_hints,
+            description=description,
+            dns_domain=dns_domain,
+            external=external,
+            mtu=mtu,
+            name=name,
+            port_security_enabled=port_security_enabled,
+            qos_policy_id=qos_policy_id,
+            region=region,
+            segments=segments,
+            shared=shared,
+            tags=tags,
+            tenant_id=tenant_id,
+            transparent_vlan=transparent_vlan,
+            value_specs=value_specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             availability_zone_hints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dns_domain: Optional[pulumi.Input[str]] = None,
+             external: Optional[pulumi.Input[bool]] = None,
+             mtu: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             port_security_enabled: Optional[pulumi.Input[bool]] = None,
+             qos_policy_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             segments: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkSegmentArgs']]]] = None,
+             shared: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             transparent_vlan: Optional[pulumi.Input[bool]] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if all_tags is None and 'allTags' in kwargs:
+            all_tags = kwargs['allTags']
+        if availability_zone_hints is None and 'availabilityZoneHints' in kwargs:
+            availability_zone_hints = kwargs['availabilityZoneHints']
+        if dns_domain is None and 'dnsDomain' in kwargs:
+            dns_domain = kwargs['dnsDomain']
+        if port_security_enabled is None and 'portSecurityEnabled' in kwargs:
+            port_security_enabled = kwargs['portSecurityEnabled']
+        if qos_policy_id is None and 'qosPolicyId' in kwargs:
+            qos_policy_id = kwargs['qosPolicyId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if transparent_vlan is None and 'transparentVlan' in kwargs:
+            transparent_vlan = kwargs['transparentVlan']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if all_tags is not None:
-            pulumi.set(__self__, "all_tags", all_tags)
+            _setter("all_tags", all_tags)
         if availability_zone_hints is not None:
-            pulumi.set(__self__, "availability_zone_hints", availability_zone_hints)
+            _setter("availability_zone_hints", availability_zone_hints)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dns_domain is not None:
-            pulumi.set(__self__, "dns_domain", dns_domain)
+            _setter("dns_domain", dns_domain)
         if external is not None:
-            pulumi.set(__self__, "external", external)
+            _setter("external", external)
         if mtu is not None:
-            pulumi.set(__self__, "mtu", mtu)
+            _setter("mtu", mtu)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if port_security_enabled is not None:
-            pulumi.set(__self__, "port_security_enabled", port_security_enabled)
+            _setter("port_security_enabled", port_security_enabled)
         if qos_policy_id is not None:
-            pulumi.set(__self__, "qos_policy_id", qos_policy_id)
+            _setter("qos_policy_id", qos_policy_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if segments is not None:
-            pulumi.set(__self__, "segments", segments)
+            _setter("segments", segments)
         if shared is not None:
-            pulumi.set(__self__, "shared", shared)
+            _setter("shared", shared)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if transparent_vlan is not None:
-            pulumi.set(__self__, "transparent_vlan", transparent_vlan)
+            _setter("transparent_vlan", transparent_vlan)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
 
     @property
     @pulumi.getter(name="adminStateUp")
@@ -856,6 +974,10 @@ class Network(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NetworkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

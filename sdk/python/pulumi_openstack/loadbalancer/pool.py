@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -56,24 +56,67 @@ class PoolArgs:
                the pool.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new pool.
         """
-        pulumi.set(__self__, "lb_method", lb_method)
-        pulumi.set(__self__, "protocol", protocol)
+        PoolArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lb_method=lb_method,
+            protocol=protocol,
+            admin_state_up=admin_state_up,
+            description=description,
+            listener_id=listener_id,
+            loadbalancer_id=loadbalancer_id,
+            name=name,
+            persistence=persistence,
+            region=region,
+            tenant_id=tenant_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lb_method: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             loadbalancer_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             persistence: Optional[pulumi.Input['PoolPersistenceArgs']] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if lb_method is None and 'lbMethod' in kwargs:
+            lb_method = kwargs['lbMethod']
+        if lb_method is None:
+            raise TypeError("Missing 'lb_method' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if listener_id is None and 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if loadbalancer_id is None and 'loadbalancerId' in kwargs:
+            loadbalancer_id = kwargs['loadbalancerId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
+        _setter("lb_method", lb_method)
+        _setter("protocol", protocol)
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if listener_id is not None:
-            pulumi.set(__self__, "listener_id", listener_id)
+            _setter("listener_id", listener_id)
         if loadbalancer_id is not None:
-            pulumi.set(__self__, "loadbalancer_id", loadbalancer_id)
+            _setter("loadbalancer_id", loadbalancer_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if persistence is not None:
-            pulumi.set(__self__, "persistence", persistence)
+            _setter("persistence", persistence)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
 
     @property
     @pulumi.getter(name="lbMethod")
@@ -256,26 +299,65 @@ class _PoolState:
                the pool.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new pool.
         """
+        _PoolState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_state_up=admin_state_up,
+            description=description,
+            lb_method=lb_method,
+            listener_id=listener_id,
+            loadbalancer_id=loadbalancer_id,
+            name=name,
+            persistence=persistence,
+            protocol=protocol,
+            region=region,
+            tenant_id=tenant_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             lb_method: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             loadbalancer_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             persistence: Optional[pulumi.Input['PoolPersistenceArgs']] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if lb_method is None and 'lbMethod' in kwargs:
+            lb_method = kwargs['lbMethod']
+        if listener_id is None and 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if loadbalancer_id is None and 'loadbalancerId' in kwargs:
+            loadbalancer_id = kwargs['loadbalancerId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if lb_method is not None:
-            pulumi.set(__self__, "lb_method", lb_method)
+            _setter("lb_method", lb_method)
         if listener_id is not None:
-            pulumi.set(__self__, "listener_id", listener_id)
+            _setter("listener_id", listener_id)
         if loadbalancer_id is not None:
-            pulumi.set(__self__, "loadbalancer_id", loadbalancer_id)
+            _setter("loadbalancer_id", loadbalancer_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if persistence is not None:
-            pulumi.set(__self__, "persistence", persistence)
+            _setter("persistence", persistence)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
 
     @property
     @pulumi.getter(name="adminStateUp")
@@ -537,6 +619,10 @@ class Pool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -569,6 +655,11 @@ class Pool(pulumi.CustomResource):
             __props__.__dict__["listener_id"] = listener_id
             __props__.__dict__["loadbalancer_id"] = loadbalancer_id
             __props__.__dict__["name"] = name
+            if persistence is not None and not isinstance(persistence, PoolPersistenceArgs):
+                persistence = persistence or {}
+                def _setter(key, value):
+                    persistence[key] = value
+                PoolPersistenceArgs._configure(_setter, **persistence)
             __props__.__dict__["persistence"] = persistence
             if protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol'")

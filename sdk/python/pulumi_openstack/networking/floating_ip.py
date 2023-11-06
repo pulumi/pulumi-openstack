@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FloatingIpArgs', 'FloatingIp']
@@ -66,31 +66,84 @@ class FloatingIpArgs:
                may or may not have a different address)
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
-        pulumi.set(__self__, "pool", pool)
+        FloatingIpArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pool=pool,
+            address=address,
+            description=description,
+            dns_domain=dns_domain,
+            dns_name=dns_name,
+            fixed_ip=fixed_ip,
+            port_id=port_id,
+            region=region,
+            subnet_id=subnet_id,
+            subnet_ids=subnet_ids,
+            tags=tags,
+            tenant_id=tenant_id,
+            value_specs=value_specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pool: Optional[pulumi.Input[str]] = None,
+             address: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dns_domain: Optional[pulumi.Input[str]] = None,
+             dns_name: Optional[pulumi.Input[str]] = None,
+             fixed_ip: Optional[pulumi.Input[str]] = None,
+             port_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             subnet_id: Optional[pulumi.Input[str]] = None,
+             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if pool is None:
+            raise TypeError("Missing 'pool' argument")
+        if dns_domain is None and 'dnsDomain' in kwargs:
+            dns_domain = kwargs['dnsDomain']
+        if dns_name is None and 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if fixed_ip is None and 'fixedIp' in kwargs:
+            fixed_ip = kwargs['fixedIp']
+        if port_id is None and 'portId' in kwargs:
+            port_id = kwargs['portId']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if subnet_ids is None and 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
+        _setter("pool", pool)
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dns_domain is not None:
-            pulumi.set(__self__, "dns_domain", dns_domain)
+            _setter("dns_domain", dns_domain)
         if dns_name is not None:
-            pulumi.set(__self__, "dns_name", dns_name)
+            _setter("dns_name", dns_name)
         if fixed_ip is not None:
-            pulumi.set(__self__, "fixed_ip", fixed_ip)
+            _setter("fixed_ip", fixed_ip)
         if port_id is not None:
-            pulumi.set(__self__, "port_id", port_id)
+            _setter("port_id", port_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if subnet_id is not None:
-            pulumi.set(__self__, "subnet_id", subnet_id)
+            _setter("subnet_id", subnet_id)
         if subnet_ids is not None:
-            pulumi.set(__self__, "subnet_ids", subnet_ids)
+            _setter("subnet_ids", subnet_ids)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
 
     @property
     @pulumi.getter
@@ -330,34 +383,89 @@ class _FloatingIpState:
                may or may not have a different address)
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
+        _FloatingIpState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            all_tags=all_tags,
+            description=description,
+            dns_domain=dns_domain,
+            dns_name=dns_name,
+            fixed_ip=fixed_ip,
+            pool=pool,
+            port_id=port_id,
+            region=region,
+            subnet_id=subnet_id,
+            subnet_ids=subnet_ids,
+            tags=tags,
+            tenant_id=tenant_id,
+            value_specs=value_specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             all_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dns_domain: Optional[pulumi.Input[str]] = None,
+             dns_name: Optional[pulumi.Input[str]] = None,
+             fixed_ip: Optional[pulumi.Input[str]] = None,
+             pool: Optional[pulumi.Input[str]] = None,
+             port_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             subnet_id: Optional[pulumi.Input[str]] = None,
+             subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all_tags is None and 'allTags' in kwargs:
+            all_tags = kwargs['allTags']
+        if dns_domain is None and 'dnsDomain' in kwargs:
+            dns_domain = kwargs['dnsDomain']
+        if dns_name is None and 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if fixed_ip is None and 'fixedIp' in kwargs:
+            fixed_ip = kwargs['fixedIp']
+        if port_id is None and 'portId' in kwargs:
+            port_id = kwargs['portId']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if subnet_ids is None and 'subnetIds' in kwargs:
+            subnet_ids = kwargs['subnetIds']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if all_tags is not None:
-            pulumi.set(__self__, "all_tags", all_tags)
+            _setter("all_tags", all_tags)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dns_domain is not None:
-            pulumi.set(__self__, "dns_domain", dns_domain)
+            _setter("dns_domain", dns_domain)
         if dns_name is not None:
-            pulumi.set(__self__, "dns_name", dns_name)
+            _setter("dns_name", dns_name)
         if fixed_ip is not None:
-            pulumi.set(__self__, "fixed_ip", fixed_ip)
+            _setter("fixed_ip", fixed_ip)
         if pool is not None:
-            pulumi.set(__self__, "pool", pool)
+            _setter("pool", pool)
         if port_id is not None:
-            pulumi.set(__self__, "port_id", port_id)
+            _setter("port_id", port_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if subnet_id is not None:
-            pulumi.set(__self__, "subnet_id", subnet_id)
+            _setter("subnet_id", subnet_id)
         if subnet_ids is not None:
-            pulumi.set(__self__, "subnet_ids", subnet_ids)
+            _setter("subnet_ids", subnet_ids)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
 
     @property
     @pulumi.getter
@@ -644,6 +752,10 @@ class FloatingIp(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FloatingIpArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

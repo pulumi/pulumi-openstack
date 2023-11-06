@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -52,28 +52,71 @@ class IkePolicyArgs:
                create a service for another policy. Changing this creates a new policy.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
+        IkePolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_algorithm=auth_algorithm,
+            description=description,
+            encryption_algorithm=encryption_algorithm,
+            ike_version=ike_version,
+            lifetimes=lifetimes,
+            name=name,
+            pfs=pfs,
+            phase1_negotiation_mode=phase1_negotiation_mode,
+            region=region,
+            tenant_id=tenant_id,
+            value_specs=value_specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_algorithm: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             encryption_algorithm: Optional[pulumi.Input[str]] = None,
+             ike_version: Optional[pulumi.Input[str]] = None,
+             lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input['IkePolicyLifetimeArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             pfs: Optional[pulumi.Input[str]] = None,
+             phase1_negotiation_mode: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auth_algorithm is None and 'authAlgorithm' in kwargs:
+            auth_algorithm = kwargs['authAlgorithm']
+        if encryption_algorithm is None and 'encryptionAlgorithm' in kwargs:
+            encryption_algorithm = kwargs['encryptionAlgorithm']
+        if ike_version is None and 'ikeVersion' in kwargs:
+            ike_version = kwargs['ikeVersion']
+        if phase1_negotiation_mode is None and 'phase1NegotiationMode' in kwargs:
+            phase1_negotiation_mode = kwargs['phase1NegotiationMode']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if auth_algorithm is not None:
-            pulumi.set(__self__, "auth_algorithm", auth_algorithm)
+            _setter("auth_algorithm", auth_algorithm)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encryption_algorithm is not None:
-            pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
+            _setter("encryption_algorithm", encryption_algorithm)
         if ike_version is not None:
-            pulumi.set(__self__, "ike_version", ike_version)
+            _setter("ike_version", ike_version)
         if lifetimes is not None:
-            pulumi.set(__self__, "lifetimes", lifetimes)
+            _setter("lifetimes", lifetimes)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if pfs is not None:
-            pulumi.set(__self__, "pfs", pfs)
+            _setter("pfs", pfs)
         if phase1_negotiation_mode is not None:
-            pulumi.set(__self__, "phase1_negotiation_mode", phase1_negotiation_mode)
+            _setter("phase1_negotiation_mode", phase1_negotiation_mode)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
 
     @property
     @pulumi.getter(name="authAlgorithm")
@@ -258,28 +301,71 @@ class _IkePolicyState:
                create a service for another policy. Changing this creates a new policy.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
+        _IkePolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_algorithm=auth_algorithm,
+            description=description,
+            encryption_algorithm=encryption_algorithm,
+            ike_version=ike_version,
+            lifetimes=lifetimes,
+            name=name,
+            pfs=pfs,
+            phase1_negotiation_mode=phase1_negotiation_mode,
+            region=region,
+            tenant_id=tenant_id,
+            value_specs=value_specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_algorithm: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             encryption_algorithm: Optional[pulumi.Input[str]] = None,
+             ike_version: Optional[pulumi.Input[str]] = None,
+             lifetimes: Optional[pulumi.Input[Sequence[pulumi.Input['IkePolicyLifetimeArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             pfs: Optional[pulumi.Input[str]] = None,
+             phase1_negotiation_mode: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auth_algorithm is None and 'authAlgorithm' in kwargs:
+            auth_algorithm = kwargs['authAlgorithm']
+        if encryption_algorithm is None and 'encryptionAlgorithm' in kwargs:
+            encryption_algorithm = kwargs['encryptionAlgorithm']
+        if ike_version is None and 'ikeVersion' in kwargs:
+            ike_version = kwargs['ikeVersion']
+        if phase1_negotiation_mode is None and 'phase1NegotiationMode' in kwargs:
+            phase1_negotiation_mode = kwargs['phase1NegotiationMode']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if auth_algorithm is not None:
-            pulumi.set(__self__, "auth_algorithm", auth_algorithm)
+            _setter("auth_algorithm", auth_algorithm)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encryption_algorithm is not None:
-            pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
+            _setter("encryption_algorithm", encryption_algorithm)
         if ike_version is not None:
-            pulumi.set(__self__, "ike_version", ike_version)
+            _setter("ike_version", ike_version)
         if lifetimes is not None:
-            pulumi.set(__self__, "lifetimes", lifetimes)
+            _setter("lifetimes", lifetimes)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if pfs is not None:
-            pulumi.set(__self__, "pfs", pfs)
+            _setter("pfs", pfs)
         if phase1_negotiation_mode is not None:
-            pulumi.set(__self__, "phase1_negotiation_mode", phase1_negotiation_mode)
+            _setter("phase1_negotiation_mode", phase1_negotiation_mode)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
 
     @property
     @pulumi.getter(name="authAlgorithm")
@@ -523,6 +609,10 @@ class IkePolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IkePolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

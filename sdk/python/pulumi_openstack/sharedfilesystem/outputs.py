@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -19,10 +19,23 @@ class ShareExportLocation(dict):
     def __init__(__self__, *,
                  path: Optional[str] = None,
                  preferred: Optional[str] = None):
+        ShareExportLocation._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+            preferred=preferred,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: Optional[str] = None,
+             preferred: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if preferred is not None:
-            pulumi.set(__self__, "preferred", preferred)
+            _setter("preferred", preferred)
 
     @property
     @pulumi.getter
@@ -40,8 +53,25 @@ class GetShareExportLocationResult(dict):
     def __init__(__self__, *,
                  path: str,
                  preferred: str):
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "preferred", preferred)
+        GetShareExportLocationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+            preferred=preferred,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: Optional[str] = None,
+             preferred: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if preferred is None:
+            raise TypeError("Missing 'preferred' argument")
+
+        _setter("path", path)
+        _setter("preferred", preferred)
 
     @property
     @pulumi.getter

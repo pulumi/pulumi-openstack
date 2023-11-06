@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -18,10 +18,23 @@ class ShareExportLocationArgs:
     def __init__(__self__, *,
                  path: Optional[pulumi.Input[str]] = None,
                  preferred: Optional[pulumi.Input[str]] = None):
+        ShareExportLocationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            path=path,
+            preferred=preferred,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             path: Optional[pulumi.Input[str]] = None,
+             preferred: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if preferred is not None:
-            pulumi.set(__self__, "preferred", preferred)
+            _setter("preferred", preferred)
 
     @property
     @pulumi.getter

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -84,88 +84,213 @@ class ProviderArgs:
         :param pulumi.Input[str] user_id: User ID to login with.
         :param pulumi.Input[str] user_name: Username to login with.
         """
+        ProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_reauth=allow_reauth,
+            application_credential_id=application_credential_id,
+            application_credential_name=application_credential_name,
+            application_credential_secret=application_credential_secret,
+            auth_url=auth_url,
+            cacert_file=cacert_file,
+            cert=cert,
+            cloud=cloud,
+            default_domain=default_domain,
+            delayed_auth=delayed_auth,
+            disable_no_cache_header=disable_no_cache_header,
+            domain_id=domain_id,
+            domain_name=domain_name,
+            enable_logging=enable_logging,
+            endpoint_overrides=endpoint_overrides,
+            endpoint_type=endpoint_type,
+            insecure=insecure,
+            key=key,
+            max_retries=max_retries,
+            password=password,
+            project_domain_id=project_domain_id,
+            project_domain_name=project_domain_name,
+            region=region,
+            swauth=swauth,
+            system_scope=system_scope,
+            tenant_id=tenant_id,
+            tenant_name=tenant_name,
+            token=token,
+            use_octavia=use_octavia,
+            user_domain_id=user_domain_id,
+            user_domain_name=user_domain_name,
+            user_id=user_id,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_reauth: Optional[pulumi.Input[bool]] = None,
+             application_credential_id: Optional[pulumi.Input[str]] = None,
+             application_credential_name: Optional[pulumi.Input[str]] = None,
+             application_credential_secret: Optional[pulumi.Input[str]] = None,
+             auth_url: Optional[pulumi.Input[str]] = None,
+             cacert_file: Optional[pulumi.Input[str]] = None,
+             cert: Optional[pulumi.Input[str]] = None,
+             cloud: Optional[pulumi.Input[str]] = None,
+             default_domain: Optional[pulumi.Input[str]] = None,
+             delayed_auth: Optional[pulumi.Input[bool]] = None,
+             disable_no_cache_header: Optional[pulumi.Input[bool]] = None,
+             domain_id: Optional[pulumi.Input[str]] = None,
+             domain_name: Optional[pulumi.Input[str]] = None,
+             enable_logging: Optional[pulumi.Input[bool]] = None,
+             endpoint_overrides: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             endpoint_type: Optional[pulumi.Input[str]] = None,
+             insecure: Optional[pulumi.Input[bool]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             max_retries: Optional[pulumi.Input[int]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             project_domain_id: Optional[pulumi.Input[str]] = None,
+             project_domain_name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             swauth: Optional[pulumi.Input[bool]] = None,
+             system_scope: Optional[pulumi.Input[bool]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             tenant_name: Optional[pulumi.Input[str]] = None,
+             token: Optional[pulumi.Input[str]] = None,
+             use_octavia: Optional[pulumi.Input[bool]] = None,
+             user_domain_id: Optional[pulumi.Input[str]] = None,
+             user_domain_name: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_reauth is None and 'allowReauth' in kwargs:
+            allow_reauth = kwargs['allowReauth']
+        if application_credential_id is None and 'applicationCredentialId' in kwargs:
+            application_credential_id = kwargs['applicationCredentialId']
+        if application_credential_name is None and 'applicationCredentialName' in kwargs:
+            application_credential_name = kwargs['applicationCredentialName']
+        if application_credential_secret is None and 'applicationCredentialSecret' in kwargs:
+            application_credential_secret = kwargs['applicationCredentialSecret']
+        if auth_url is None and 'authUrl' in kwargs:
+            auth_url = kwargs['authUrl']
+        if cacert_file is None and 'cacertFile' in kwargs:
+            cacert_file = kwargs['cacertFile']
+        if default_domain is None and 'defaultDomain' in kwargs:
+            default_domain = kwargs['defaultDomain']
+        if delayed_auth is None and 'delayedAuth' in kwargs:
+            delayed_auth = kwargs['delayedAuth']
+        if disable_no_cache_header is None and 'disableNoCacheHeader' in kwargs:
+            disable_no_cache_header = kwargs['disableNoCacheHeader']
+        if domain_id is None and 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if domain_name is None and 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if enable_logging is None and 'enableLogging' in kwargs:
+            enable_logging = kwargs['enableLogging']
+        if endpoint_overrides is None and 'endpointOverrides' in kwargs:
+            endpoint_overrides = kwargs['endpointOverrides']
+        if endpoint_type is None and 'endpointType' in kwargs:
+            endpoint_type = kwargs['endpointType']
+        if max_retries is None and 'maxRetries' in kwargs:
+            max_retries = kwargs['maxRetries']
+        if project_domain_id is None and 'projectDomainId' in kwargs:
+            project_domain_id = kwargs['projectDomainId']
+        if project_domain_name is None and 'projectDomainName' in kwargs:
+            project_domain_name = kwargs['projectDomainName']
+        if system_scope is None and 'systemScope' in kwargs:
+            system_scope = kwargs['systemScope']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if tenant_name is None and 'tenantName' in kwargs:
+            tenant_name = kwargs['tenantName']
+        if use_octavia is None and 'useOctavia' in kwargs:
+            use_octavia = kwargs['useOctavia']
+        if user_domain_id is None and 'userDomainId' in kwargs:
+            user_domain_id = kwargs['userDomainId']
+        if user_domain_name is None and 'userDomainName' in kwargs:
+            user_domain_name = kwargs['userDomainName']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if user_name is None and 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if allow_reauth is None:
             allow_reauth = _utilities.get_env_bool('OS_ALLOW_REAUTH')
         if allow_reauth is not None:
-            pulumi.set(__self__, "allow_reauth", allow_reauth)
+            _setter("allow_reauth", allow_reauth)
         if application_credential_id is not None:
-            pulumi.set(__self__, "application_credential_id", application_credential_id)
+            _setter("application_credential_id", application_credential_id)
         if application_credential_name is not None:
-            pulumi.set(__self__, "application_credential_name", application_credential_name)
+            _setter("application_credential_name", application_credential_name)
         if application_credential_secret is not None:
-            pulumi.set(__self__, "application_credential_secret", application_credential_secret)
+            _setter("application_credential_secret", application_credential_secret)
         if auth_url is not None:
-            pulumi.set(__self__, "auth_url", auth_url)
+            _setter("auth_url", auth_url)
         if cacert_file is not None:
-            pulumi.set(__self__, "cacert_file", cacert_file)
+            _setter("cacert_file", cacert_file)
         if cert is not None:
-            pulumi.set(__self__, "cert", cert)
+            _setter("cert", cert)
         if cloud is None:
             cloud = _utilities.get_env('OS_CLOUD')
         if cloud is not None:
-            pulumi.set(__self__, "cloud", cloud)
+            _setter("cloud", cloud)
         if default_domain is not None:
-            pulumi.set(__self__, "default_domain", default_domain)
+            _setter("default_domain", default_domain)
         if delayed_auth is None:
             delayed_auth = _utilities.get_env_bool('OS_DELAYED_AUTH')
         if delayed_auth is not None:
-            pulumi.set(__self__, "delayed_auth", delayed_auth)
+            _setter("delayed_auth", delayed_auth)
         if disable_no_cache_header is not None:
-            pulumi.set(__self__, "disable_no_cache_header", disable_no_cache_header)
+            _setter("disable_no_cache_header", disable_no_cache_header)
         if domain_id is not None:
-            pulumi.set(__self__, "domain_id", domain_id)
+            _setter("domain_id", domain_id)
         if domain_name is not None:
-            pulumi.set(__self__, "domain_name", domain_name)
+            _setter("domain_name", domain_name)
         if enable_logging is not None:
-            pulumi.set(__self__, "enable_logging", enable_logging)
+            _setter("enable_logging", enable_logging)
         if endpoint_overrides is not None:
-            pulumi.set(__self__, "endpoint_overrides", endpoint_overrides)
+            _setter("endpoint_overrides", endpoint_overrides)
         if endpoint_type is None:
             endpoint_type = _utilities.get_env('OS_ENDPOINT_TYPE')
         if endpoint_type is not None:
-            pulumi.set(__self__, "endpoint_type", endpoint_type)
+            _setter("endpoint_type", endpoint_type)
         if insecure is None:
             insecure = _utilities.get_env_bool('OS_INSECURE')
         if insecure is not None:
-            pulumi.set(__self__, "insecure", insecure)
+            _setter("insecure", insecure)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if max_retries is not None:
-            pulumi.set(__self__, "max_retries", max_retries)
+            _setter("max_retries", max_retries)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if project_domain_id is not None:
-            pulumi.set(__self__, "project_domain_id", project_domain_id)
+            _setter("project_domain_id", project_domain_id)
         if project_domain_name is not None:
-            pulumi.set(__self__, "project_domain_name", project_domain_name)
+            _setter("project_domain_name", project_domain_name)
         if region is None:
             region = _utilities.get_env('OS_REGION_NAME')
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if swauth is None:
             swauth = _utilities.get_env_bool('OS_SWAUTH')
         if swauth is not None:
-            pulumi.set(__self__, "swauth", swauth)
+            _setter("swauth", swauth)
         if system_scope is not None:
-            pulumi.set(__self__, "system_scope", system_scope)
+            _setter("system_scope", system_scope)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if tenant_name is not None:
-            pulumi.set(__self__, "tenant_name", tenant_name)
+            _setter("tenant_name", tenant_name)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if use_octavia is None:
             use_octavia = _utilities.get_env_bool('OS_USE_OCTAVIA')
         if use_octavia is not None:
-            pulumi.set(__self__, "use_octavia", use_octavia)
+            _setter("use_octavia", use_octavia)
         if user_domain_id is not None:
-            pulumi.set(__self__, "user_domain_id", user_domain_id)
+            _setter("user_domain_id", user_domain_id)
         if user_domain_name is not None:
-            pulumi.set(__self__, "user_domain_name", user_domain_name)
+            _setter("user_domain_name", user_domain_name)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
         if user_name is not None:
-            pulumi.set(__self__, "user_name", user_name)
+            _setter("user_name", user_name)
 
     @property
     @pulumi.getter(name="allowReauth")
@@ -667,6 +792,10 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

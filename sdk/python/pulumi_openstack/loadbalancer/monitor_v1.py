@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['MonitorV1Args', 'MonitorV1']
@@ -57,22 +57,71 @@ class MonitorV1Args:
                accessed if monitor type is HTTP or HTTPS. Changing this updates the
                url_path of the existing monitor.
         """
-        pulumi.set(__self__, "delay", delay)
-        pulumi.set(__self__, "max_retries", max_retries)
-        pulumi.set(__self__, "timeout", timeout)
-        pulumi.set(__self__, "type", type)
+        MonitorV1Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            delay=delay,
+            max_retries=max_retries,
+            timeout=timeout,
+            type=type,
+            admin_state_up=admin_state_up,
+            expected_codes=expected_codes,
+            http_method=http_method,
+            region=region,
+            tenant_id=tenant_id,
+            url_path=url_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             delay: Optional[pulumi.Input[int]] = None,
+             max_retries: Optional[pulumi.Input[int]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             admin_state_up: Optional[pulumi.Input[str]] = None,
+             expected_codes: Optional[pulumi.Input[str]] = None,
+             http_method: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             url_path: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if delay is None:
+            raise TypeError("Missing 'delay' argument")
+        if max_retries is None and 'maxRetries' in kwargs:
+            max_retries = kwargs['maxRetries']
+        if max_retries is None:
+            raise TypeError("Missing 'max_retries' argument")
+        if timeout is None:
+            raise TypeError("Missing 'timeout' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if expected_codes is None and 'expectedCodes' in kwargs:
+            expected_codes = kwargs['expectedCodes']
+        if http_method is None and 'httpMethod' in kwargs:
+            http_method = kwargs['httpMethod']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if url_path is None and 'urlPath' in kwargs:
+            url_path = kwargs['urlPath']
+
+        _setter("delay", delay)
+        _setter("max_retries", max_retries)
+        _setter("timeout", timeout)
+        _setter("type", type)
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if expected_codes is not None:
-            pulumi.set(__self__, "expected_codes", expected_codes)
+            _setter("expected_codes", expected_codes)
         if http_method is not None:
-            pulumi.set(__self__, "http_method", http_method)
+            _setter("http_method", http_method)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if url_path is not None:
-            pulumi.set(__self__, "url_path", url_path)
+            _setter("url_path", url_path)
 
     @property
     @pulumi.getter
@@ -261,26 +310,67 @@ class _MonitorV1State:
                accessed if monitor type is HTTP or HTTPS. Changing this updates the
                url_path of the existing monitor.
         """
+        _MonitorV1State._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_state_up=admin_state_up,
+            delay=delay,
+            expected_codes=expected_codes,
+            http_method=http_method,
+            max_retries=max_retries,
+            region=region,
+            tenant_id=tenant_id,
+            timeout=timeout,
+            type=type,
+            url_path=url_path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_state_up: Optional[pulumi.Input[str]] = None,
+             delay: Optional[pulumi.Input[int]] = None,
+             expected_codes: Optional[pulumi.Input[str]] = None,
+             http_method: Optional[pulumi.Input[str]] = None,
+             max_retries: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             url_path: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if expected_codes is None and 'expectedCodes' in kwargs:
+            expected_codes = kwargs['expectedCodes']
+        if http_method is None and 'httpMethod' in kwargs:
+            http_method = kwargs['httpMethod']
+        if max_retries is None and 'maxRetries' in kwargs:
+            max_retries = kwargs['maxRetries']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if url_path is None and 'urlPath' in kwargs:
+            url_path = kwargs['urlPath']
+
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if delay is not None:
-            pulumi.set(__self__, "delay", delay)
+            _setter("delay", delay)
         if expected_codes is not None:
-            pulumi.set(__self__, "expected_codes", expected_codes)
+            _setter("expected_codes", expected_codes)
         if http_method is not None:
-            pulumi.set(__self__, "http_method", http_method)
+            _setter("http_method", http_method)
         if max_retries is not None:
-            pulumi.set(__self__, "max_retries", max_retries)
+            _setter("max_retries", max_retries)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if url_path is not None:
-            pulumi.set(__self__, "url_path", url_path)
+            _setter("url_path", url_path)
 
     @property
     @pulumi.getter(name="adminStateUp")
@@ -538,6 +628,10 @@ class MonitorV1(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MonitorV1Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

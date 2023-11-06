@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -63,35 +63,94 @@ class VolumeArgs:
         :param pulumi.Input[str] volume_type: The type of volume to create.
                Changing this creates a new volume.
         """
-        pulumi.set(__self__, "size", size)
+        VolumeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            size=size,
+            availability_zone=availability_zone,
+            consistency_group_id=consistency_group_id,
+            description=description,
+            enable_online_resize=enable_online_resize,
+            image_id=image_id,
+            metadata=metadata,
+            multiattach=multiattach,
+            name=name,
+            region=region,
+            scheduler_hints=scheduler_hints,
+            snapshot_id=snapshot_id,
+            source_replica=source_replica,
+            source_vol_id=source_vol_id,
+            volume_type=volume_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             size: Optional[pulumi.Input[int]] = None,
+             availability_zone: Optional[pulumi.Input[str]] = None,
+             consistency_group_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enable_online_resize: Optional[pulumi.Input[bool]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             multiattach: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             source_replica: Optional[pulumi.Input[str]] = None,
+             source_vol_id: Optional[pulumi.Input[str]] = None,
+             volume_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if availability_zone is None and 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if consistency_group_id is None and 'consistencyGroupId' in kwargs:
+            consistency_group_id = kwargs['consistencyGroupId']
+        if enable_online_resize is None and 'enableOnlineResize' in kwargs:
+            enable_online_resize = kwargs['enableOnlineResize']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if scheduler_hints is None and 'schedulerHints' in kwargs:
+            scheduler_hints = kwargs['schedulerHints']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if source_replica is None and 'sourceReplica' in kwargs:
+            source_replica = kwargs['sourceReplica']
+        if source_vol_id is None and 'sourceVolId' in kwargs:
+            source_vol_id = kwargs['sourceVolId']
+        if volume_type is None and 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
+        _setter("size", size)
         if availability_zone is not None:
-            pulumi.set(__self__, "availability_zone", availability_zone)
+            _setter("availability_zone", availability_zone)
         if consistency_group_id is not None:
-            pulumi.set(__self__, "consistency_group_id", consistency_group_id)
+            _setter("consistency_group_id", consistency_group_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enable_online_resize is not None:
-            pulumi.set(__self__, "enable_online_resize", enable_online_resize)
+            _setter("enable_online_resize", enable_online_resize)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if multiattach is not None:
-            pulumi.set(__self__, "multiattach", multiattach)
+            _setter("multiattach", multiattach)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if scheduler_hints is not None:
-            pulumi.set(__self__, "scheduler_hints", scheduler_hints)
+            _setter("scheduler_hints", scheduler_hints)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
         if source_replica is not None:
-            pulumi.set(__self__, "source_replica", source_replica)
+            _setter("source_replica", source_replica)
         if source_vol_id is not None:
-            pulumi.set(__self__, "source_vol_id", source_vol_id)
+            _setter("source_vol_id", source_vol_id)
         if volume_type is not None:
-            pulumi.set(__self__, "volume_type", volume_type)
+            _setter("volume_type", volume_type)
 
     @property
     @pulumi.getter
@@ -342,38 +401,97 @@ class _VolumeState:
         :param pulumi.Input[str] volume_type: The type of volume to create.
                Changing this creates a new volume.
         """
+        _VolumeState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attachments=attachments,
+            availability_zone=availability_zone,
+            consistency_group_id=consistency_group_id,
+            description=description,
+            enable_online_resize=enable_online_resize,
+            image_id=image_id,
+            metadata=metadata,
+            multiattach=multiattach,
+            name=name,
+            region=region,
+            scheduler_hints=scheduler_hints,
+            size=size,
+            snapshot_id=snapshot_id,
+            source_replica=source_replica,
+            source_vol_id=source_vol_id,
+            volume_type=volume_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attachments: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeAttachmentArgs']]]] = None,
+             availability_zone: Optional[pulumi.Input[str]] = None,
+             consistency_group_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enable_online_resize: Optional[pulumi.Input[bool]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             multiattach: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             scheduler_hints: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             source_replica: Optional[pulumi.Input[str]] = None,
+             source_vol_id: Optional[pulumi.Input[str]] = None,
+             volume_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if availability_zone is None and 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if consistency_group_id is None and 'consistencyGroupId' in kwargs:
+            consistency_group_id = kwargs['consistencyGroupId']
+        if enable_online_resize is None and 'enableOnlineResize' in kwargs:
+            enable_online_resize = kwargs['enableOnlineResize']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if scheduler_hints is None and 'schedulerHints' in kwargs:
+            scheduler_hints = kwargs['schedulerHints']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if source_replica is None and 'sourceReplica' in kwargs:
+            source_replica = kwargs['sourceReplica']
+        if source_vol_id is None and 'sourceVolId' in kwargs:
+            source_vol_id = kwargs['sourceVolId']
+        if volume_type is None and 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         if attachments is not None:
-            pulumi.set(__self__, "attachments", attachments)
+            _setter("attachments", attachments)
         if availability_zone is not None:
-            pulumi.set(__self__, "availability_zone", availability_zone)
+            _setter("availability_zone", availability_zone)
         if consistency_group_id is not None:
-            pulumi.set(__self__, "consistency_group_id", consistency_group_id)
+            _setter("consistency_group_id", consistency_group_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enable_online_resize is not None:
-            pulumi.set(__self__, "enable_online_resize", enable_online_resize)
+            _setter("enable_online_resize", enable_online_resize)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if multiattach is not None:
-            pulumi.set(__self__, "multiattach", multiattach)
+            _setter("multiattach", multiattach)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if scheduler_hints is not None:
-            pulumi.set(__self__, "scheduler_hints", scheduler_hints)
+            _setter("scheduler_hints", scheduler_hints)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
         if source_replica is not None:
-            pulumi.set(__self__, "source_replica", source_replica)
+            _setter("source_replica", source_replica)
         if source_vol_id is not None:
-            pulumi.set(__self__, "source_vol_id", source_vol_id)
+            _setter("source_vol_id", source_vol_id)
         if volume_type is not None:
-            pulumi.set(__self__, "volume_type", volume_type)
+            _setter("volume_type", volume_type)
 
     @property
     @pulumi.getter
@@ -699,6 +817,10 @@ class Volume(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VolumeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

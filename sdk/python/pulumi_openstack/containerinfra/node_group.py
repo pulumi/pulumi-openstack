@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NodeGroupArgs', 'NodeGroup']
@@ -57,29 +57,80 @@ class NodeGroupArgs:
         :param pulumi.Input[str] role: The role of nodes in the node group. Changing this
                creates a new node group.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
+        NodeGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            docker_volume_size=docker_volume_size,
+            flavor_id=flavor_id,
+            image_id=image_id,
+            labels=labels,
+            max_node_count=max_node_count,
+            merge_labels=merge_labels,
+            min_node_count=min_node_count,
+            name=name,
+            node_count=node_count,
+            region=region,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             docker_volume_size: Optional[pulumi.Input[int]] = None,
+             flavor_id: Optional[pulumi.Input[str]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             max_node_count: Optional[pulumi.Input[int]] = None,
+             merge_labels: Optional[pulumi.Input[bool]] = None,
+             min_node_count: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_count: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if cluster_id is None:
+            raise TypeError("Missing 'cluster_id' argument")
+        if docker_volume_size is None and 'dockerVolumeSize' in kwargs:
+            docker_volume_size = kwargs['dockerVolumeSize']
+        if flavor_id is None and 'flavorId' in kwargs:
+            flavor_id = kwargs['flavorId']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if max_node_count is None and 'maxNodeCount' in kwargs:
+            max_node_count = kwargs['maxNodeCount']
+        if merge_labels is None and 'mergeLabels' in kwargs:
+            merge_labels = kwargs['mergeLabels']
+        if min_node_count is None and 'minNodeCount' in kwargs:
+            min_node_count = kwargs['minNodeCount']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+
+        _setter("cluster_id", cluster_id)
         if docker_volume_size is not None:
-            pulumi.set(__self__, "docker_volume_size", docker_volume_size)
+            _setter("docker_volume_size", docker_volume_size)
         if flavor_id is not None:
-            pulumi.set(__self__, "flavor_id", flavor_id)
+            _setter("flavor_id", flavor_id)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if max_node_count is not None:
-            pulumi.set(__self__, "max_node_count", max_node_count)
+            _setter("max_node_count", max_node_count)
         if merge_labels is not None:
-            pulumi.set(__self__, "merge_labels", merge_labels)
+            _setter("merge_labels", merge_labels)
         if min_node_count is not None:
-            pulumi.set(__self__, "min_node_count", min_node_count)
+            _setter("min_node_count", min_node_count)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_count is not None:
-            pulumi.set(__self__, "node_count", node_count)
+            _setter("node_count", node_count)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -294,36 +345,97 @@ class _NodeGroupState:
         :param pulumi.Input[str] role: The role of nodes in the node group. Changing this
                creates a new node group.
         """
+        _NodeGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            created_at=created_at,
+            docker_volume_size=docker_volume_size,
+            flavor_id=flavor_id,
+            image_id=image_id,
+            labels=labels,
+            max_node_count=max_node_count,
+            merge_labels=merge_labels,
+            min_node_count=min_node_count,
+            name=name,
+            node_count=node_count,
+            project_id=project_id,
+            region=region,
+            role=role,
+            updated_at=updated_at,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             docker_volume_size: Optional[pulumi.Input[int]] = None,
+             flavor_id: Optional[pulumi.Input[str]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             max_node_count: Optional[pulumi.Input[int]] = None,
+             merge_labels: Optional[pulumi.Input[bool]] = None,
+             min_node_count: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_count: Optional[pulumi.Input[int]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_id is None and 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if docker_volume_size is None and 'dockerVolumeSize' in kwargs:
+            docker_volume_size = kwargs['dockerVolumeSize']
+        if flavor_id is None and 'flavorId' in kwargs:
+            flavor_id = kwargs['flavorId']
+        if image_id is None and 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if max_node_count is None and 'maxNodeCount' in kwargs:
+            max_node_count = kwargs['maxNodeCount']
+        if merge_labels is None and 'mergeLabels' in kwargs:
+            merge_labels = kwargs['mergeLabels']
+        if min_node_count is None and 'minNodeCount' in kwargs:
+            min_node_count = kwargs['minNodeCount']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if docker_volume_size is not None:
-            pulumi.set(__self__, "docker_volume_size", docker_volume_size)
+            _setter("docker_volume_size", docker_volume_size)
         if flavor_id is not None:
-            pulumi.set(__self__, "flavor_id", flavor_id)
+            _setter("flavor_id", flavor_id)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if max_node_count is not None:
-            pulumi.set(__self__, "max_node_count", max_node_count)
+            _setter("max_node_count", max_node_count)
         if merge_labels is not None:
-            pulumi.set(__self__, "merge_labels", merge_labels)
+            _setter("merge_labels", merge_labels)
         if min_node_count is not None:
-            pulumi.set(__self__, "min_node_count", min_node_count)
+            _setter("min_node_count", min_node_count)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_count is not None:
-            pulumi.set(__self__, "node_count", node_count)
+            _setter("node_count", node_count)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -665,6 +777,10 @@ class NodeGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NodeGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

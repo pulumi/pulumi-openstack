@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['QosBandwidthLimitRuleArgs', 'QosBandwidthLimitRule']
@@ -32,14 +32,43 @@ class QosBandwidthLimitRuleArgs:
                A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
                `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
         """
-        pulumi.set(__self__, "max_kbps", max_kbps)
-        pulumi.set(__self__, "qos_policy_id", qos_policy_id)
+        QosBandwidthLimitRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_kbps=max_kbps,
+            qos_policy_id=qos_policy_id,
+            direction=direction,
+            max_burst_kbps=max_burst_kbps,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_kbps: Optional[pulumi.Input[int]] = None,
+             qos_policy_id: Optional[pulumi.Input[str]] = None,
+             direction: Optional[pulumi.Input[str]] = None,
+             max_burst_kbps: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_kbps is None and 'maxKbps' in kwargs:
+            max_kbps = kwargs['maxKbps']
+        if max_kbps is None:
+            raise TypeError("Missing 'max_kbps' argument")
+        if qos_policy_id is None and 'qosPolicyId' in kwargs:
+            qos_policy_id = kwargs['qosPolicyId']
+        if qos_policy_id is None:
+            raise TypeError("Missing 'qos_policy_id' argument")
+        if max_burst_kbps is None and 'maxBurstKbps' in kwargs:
+            max_burst_kbps = kwargs['maxBurstKbps']
+
+        _setter("max_kbps", max_kbps)
+        _setter("qos_policy_id", qos_policy_id)
         if direction is not None:
-            pulumi.set(__self__, "direction", direction)
+            _setter("direction", direction)
         if max_burst_kbps is not None:
-            pulumi.set(__self__, "max_burst_kbps", max_burst_kbps)
+            _setter("max_burst_kbps", max_burst_kbps)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="maxKbps")
@@ -128,16 +157,41 @@ class _QosBandwidthLimitRuleState:
                A Networking client is needed to create a Neutron QoS bandwidth limit rule. If omitted, the
                `region` argument of the provider is used. Changing this creates a new QoS bandwidth limit rule.
         """
+        _QosBandwidthLimitRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            direction=direction,
+            max_burst_kbps=max_burst_kbps,
+            max_kbps=max_kbps,
+            qos_policy_id=qos_policy_id,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             direction: Optional[pulumi.Input[str]] = None,
+             max_burst_kbps: Optional[pulumi.Input[int]] = None,
+             max_kbps: Optional[pulumi.Input[int]] = None,
+             qos_policy_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if max_burst_kbps is None and 'maxBurstKbps' in kwargs:
+            max_burst_kbps = kwargs['maxBurstKbps']
+        if max_kbps is None and 'maxKbps' in kwargs:
+            max_kbps = kwargs['maxKbps']
+        if qos_policy_id is None and 'qosPolicyId' in kwargs:
+            qos_policy_id = kwargs['qosPolicyId']
+
         if direction is not None:
-            pulumi.set(__self__, "direction", direction)
+            _setter("direction", direction)
         if max_burst_kbps is not None:
-            pulumi.set(__self__, "max_burst_kbps", max_burst_kbps)
+            _setter("max_burst_kbps", max_burst_kbps)
         if max_kbps is not None:
-            pulumi.set(__self__, "max_kbps", max_kbps)
+            _setter("max_kbps", max_kbps)
         if qos_policy_id is not None:
-            pulumi.set(__self__, "qos_policy_id", qos_policy_id)
+            _setter("qos_policy_id", qos_policy_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter
@@ -297,6 +351,10 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            QosBandwidthLimitRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

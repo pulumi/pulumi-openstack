@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ClusterArgs', 'Cluster']
@@ -68,37 +68,102 @@ class ClusterArgs:
                the `region` argument of the provider is used. Changing this creates a new
                cluster.
         """
-        pulumi.set(__self__, "cluster_template_id", cluster_template_id)
+        ClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_template_id=cluster_template_id,
+            create_timeout=create_timeout,
+            discovery_url=discovery_url,
+            docker_volume_size=docker_volume_size,
+            fixed_network=fixed_network,
+            fixed_subnet=fixed_subnet,
+            flavor=flavor,
+            floating_ip_enabled=floating_ip_enabled,
+            keypair=keypair,
+            labels=labels,
+            master_count=master_count,
+            master_flavor=master_flavor,
+            merge_labels=merge_labels,
+            name=name,
+            node_count=node_count,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_template_id: Optional[pulumi.Input[str]] = None,
+             create_timeout: Optional[pulumi.Input[int]] = None,
+             discovery_url: Optional[pulumi.Input[str]] = None,
+             docker_volume_size: Optional[pulumi.Input[int]] = None,
+             fixed_network: Optional[pulumi.Input[str]] = None,
+             fixed_subnet: Optional[pulumi.Input[str]] = None,
+             flavor: Optional[pulumi.Input[str]] = None,
+             floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
+             keypair: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             master_count: Optional[pulumi.Input[int]] = None,
+             master_flavor: Optional[pulumi.Input[str]] = None,
+             merge_labels: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_count: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cluster_template_id is None and 'clusterTemplateId' in kwargs:
+            cluster_template_id = kwargs['clusterTemplateId']
+        if cluster_template_id is None:
+            raise TypeError("Missing 'cluster_template_id' argument")
+        if create_timeout is None and 'createTimeout' in kwargs:
+            create_timeout = kwargs['createTimeout']
+        if discovery_url is None and 'discoveryUrl' in kwargs:
+            discovery_url = kwargs['discoveryUrl']
+        if docker_volume_size is None and 'dockerVolumeSize' in kwargs:
+            docker_volume_size = kwargs['dockerVolumeSize']
+        if fixed_network is None and 'fixedNetwork' in kwargs:
+            fixed_network = kwargs['fixedNetwork']
+        if fixed_subnet is None and 'fixedSubnet' in kwargs:
+            fixed_subnet = kwargs['fixedSubnet']
+        if floating_ip_enabled is None and 'floatingIpEnabled' in kwargs:
+            floating_ip_enabled = kwargs['floatingIpEnabled']
+        if master_count is None and 'masterCount' in kwargs:
+            master_count = kwargs['masterCount']
+        if master_flavor is None and 'masterFlavor' in kwargs:
+            master_flavor = kwargs['masterFlavor']
+        if merge_labels is None and 'mergeLabels' in kwargs:
+            merge_labels = kwargs['mergeLabels']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+
+        _setter("cluster_template_id", cluster_template_id)
         if create_timeout is not None:
-            pulumi.set(__self__, "create_timeout", create_timeout)
+            _setter("create_timeout", create_timeout)
         if discovery_url is not None:
-            pulumi.set(__self__, "discovery_url", discovery_url)
+            _setter("discovery_url", discovery_url)
         if docker_volume_size is not None:
-            pulumi.set(__self__, "docker_volume_size", docker_volume_size)
+            _setter("docker_volume_size", docker_volume_size)
         if fixed_network is not None:
-            pulumi.set(__self__, "fixed_network", fixed_network)
+            _setter("fixed_network", fixed_network)
         if fixed_subnet is not None:
-            pulumi.set(__self__, "fixed_subnet", fixed_subnet)
+            _setter("fixed_subnet", fixed_subnet)
         if flavor is not None:
-            pulumi.set(__self__, "flavor", flavor)
+            _setter("flavor", flavor)
         if floating_ip_enabled is not None:
-            pulumi.set(__self__, "floating_ip_enabled", floating_ip_enabled)
+            _setter("floating_ip_enabled", floating_ip_enabled)
         if keypair is not None:
-            pulumi.set(__self__, "keypair", keypair)
+            _setter("keypair", keypair)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if master_count is not None:
-            pulumi.set(__self__, "master_count", master_count)
+            _setter("master_count", master_count)
         if master_flavor is not None:
-            pulumi.set(__self__, "master_flavor", master_flavor)
+            _setter("master_flavor", master_flavor)
         if merge_labels is not None:
-            pulumi.set(__self__, "merge_labels", merge_labels)
+            _setter("merge_labels", merge_labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_count is not None:
-            pulumi.set(__self__, "node_count", node_count)
+            _setter("node_count", node_count)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="clusterTemplateId")
@@ -386,60 +451,165 @@ class _ClusterState:
                create a cluster template for another user. Changing this creates a new
                cluster.
         """
+        _ClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_address=api_address,
+            cluster_template_id=cluster_template_id,
+            coe_version=coe_version,
+            container_version=container_version,
+            create_timeout=create_timeout,
+            created_at=created_at,
+            discovery_url=discovery_url,
+            docker_volume_size=docker_volume_size,
+            fixed_network=fixed_network,
+            fixed_subnet=fixed_subnet,
+            flavor=flavor,
+            floating_ip_enabled=floating_ip_enabled,
+            keypair=keypair,
+            kubeconfig=kubeconfig,
+            labels=labels,
+            master_addresses=master_addresses,
+            master_count=master_count,
+            master_flavor=master_flavor,
+            merge_labels=merge_labels,
+            name=name,
+            node_addresses=node_addresses,
+            node_count=node_count,
+            project_id=project_id,
+            region=region,
+            stack_id=stack_id,
+            updated_at=updated_at,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_address: Optional[pulumi.Input[str]] = None,
+             cluster_template_id: Optional[pulumi.Input[str]] = None,
+             coe_version: Optional[pulumi.Input[str]] = None,
+             container_version: Optional[pulumi.Input[str]] = None,
+             create_timeout: Optional[pulumi.Input[int]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             discovery_url: Optional[pulumi.Input[str]] = None,
+             docker_volume_size: Optional[pulumi.Input[int]] = None,
+             fixed_network: Optional[pulumi.Input[str]] = None,
+             fixed_subnet: Optional[pulumi.Input[str]] = None,
+             flavor: Optional[pulumi.Input[str]] = None,
+             floating_ip_enabled: Optional[pulumi.Input[bool]] = None,
+             keypair: Optional[pulumi.Input[str]] = None,
+             kubeconfig: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             master_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             master_count: Optional[pulumi.Input[int]] = None,
+             master_flavor: Optional[pulumi.Input[str]] = None,
+             merge_labels: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             node_count: Optional[pulumi.Input[int]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             stack_id: Optional[pulumi.Input[str]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_address is None and 'apiAddress' in kwargs:
+            api_address = kwargs['apiAddress']
+        if cluster_template_id is None and 'clusterTemplateId' in kwargs:
+            cluster_template_id = kwargs['clusterTemplateId']
+        if coe_version is None and 'coeVersion' in kwargs:
+            coe_version = kwargs['coeVersion']
+        if container_version is None and 'containerVersion' in kwargs:
+            container_version = kwargs['containerVersion']
+        if create_timeout is None and 'createTimeout' in kwargs:
+            create_timeout = kwargs['createTimeout']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if discovery_url is None and 'discoveryUrl' in kwargs:
+            discovery_url = kwargs['discoveryUrl']
+        if docker_volume_size is None and 'dockerVolumeSize' in kwargs:
+            docker_volume_size = kwargs['dockerVolumeSize']
+        if fixed_network is None and 'fixedNetwork' in kwargs:
+            fixed_network = kwargs['fixedNetwork']
+        if fixed_subnet is None and 'fixedSubnet' in kwargs:
+            fixed_subnet = kwargs['fixedSubnet']
+        if floating_ip_enabled is None and 'floatingIpEnabled' in kwargs:
+            floating_ip_enabled = kwargs['floatingIpEnabled']
+        if master_addresses is None and 'masterAddresses' in kwargs:
+            master_addresses = kwargs['masterAddresses']
+        if master_count is None and 'masterCount' in kwargs:
+            master_count = kwargs['masterCount']
+        if master_flavor is None and 'masterFlavor' in kwargs:
+            master_flavor = kwargs['masterFlavor']
+        if merge_labels is None and 'mergeLabels' in kwargs:
+            merge_labels = kwargs['mergeLabels']
+        if node_addresses is None and 'nodeAddresses' in kwargs:
+            node_addresses = kwargs['nodeAddresses']
+        if node_count is None and 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if stack_id is None and 'stackId' in kwargs:
+            stack_id = kwargs['stackId']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if user_id is None and 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if api_address is not None:
-            pulumi.set(__self__, "api_address", api_address)
+            _setter("api_address", api_address)
         if cluster_template_id is not None:
-            pulumi.set(__self__, "cluster_template_id", cluster_template_id)
+            _setter("cluster_template_id", cluster_template_id)
         if coe_version is not None:
-            pulumi.set(__self__, "coe_version", coe_version)
+            _setter("coe_version", coe_version)
         if container_version is not None:
-            pulumi.set(__self__, "container_version", container_version)
+            _setter("container_version", container_version)
         if create_timeout is not None:
-            pulumi.set(__self__, "create_timeout", create_timeout)
+            _setter("create_timeout", create_timeout)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if discovery_url is not None:
-            pulumi.set(__self__, "discovery_url", discovery_url)
+            _setter("discovery_url", discovery_url)
         if docker_volume_size is not None:
-            pulumi.set(__self__, "docker_volume_size", docker_volume_size)
+            _setter("docker_volume_size", docker_volume_size)
         if fixed_network is not None:
-            pulumi.set(__self__, "fixed_network", fixed_network)
+            _setter("fixed_network", fixed_network)
         if fixed_subnet is not None:
-            pulumi.set(__self__, "fixed_subnet", fixed_subnet)
+            _setter("fixed_subnet", fixed_subnet)
         if flavor is not None:
-            pulumi.set(__self__, "flavor", flavor)
+            _setter("flavor", flavor)
         if floating_ip_enabled is not None:
-            pulumi.set(__self__, "floating_ip_enabled", floating_ip_enabled)
+            _setter("floating_ip_enabled", floating_ip_enabled)
         if keypair is not None:
-            pulumi.set(__self__, "keypair", keypair)
+            _setter("keypair", keypair)
         if kubeconfig is not None:
-            pulumi.set(__self__, "kubeconfig", kubeconfig)
+            _setter("kubeconfig", kubeconfig)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if master_addresses is not None:
-            pulumi.set(__self__, "master_addresses", master_addresses)
+            _setter("master_addresses", master_addresses)
         if master_count is not None:
-            pulumi.set(__self__, "master_count", master_count)
+            _setter("master_count", master_count)
         if master_flavor is not None:
-            pulumi.set(__self__, "master_flavor", master_flavor)
+            _setter("master_flavor", master_flavor)
         if merge_labels is not None:
-            pulumi.set(__self__, "merge_labels", merge_labels)
+            _setter("merge_labels", merge_labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_addresses is not None:
-            pulumi.set(__self__, "node_addresses", node_addresses)
+            _setter("node_addresses", node_addresses)
         if node_count is not None:
-            pulumi.set(__self__, "node_count", node_count)
+            _setter("node_count", node_count)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if stack_id is not None:
-            pulumi.set(__self__, "stack_id", stack_id)
+            _setter("stack_id", stack_id)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="apiAddress")
@@ -966,6 +1136,10 @@ class Cluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

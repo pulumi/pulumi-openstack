@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -60,33 +60,82 @@ class ContainerArgs:
                want to consider using `versioning_legacy` instead.
         :param pulumi.Input['ContainerVersioningLegacyArgs'] versioning_legacy: Enable legacy object versioning. The structure is described below.
         """
+        ContainerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            container_read=container_read,
+            container_sync_key=container_sync_key,
+            container_sync_to=container_sync_to,
+            container_write=container_write,
+            content_type=content_type,
+            force_destroy=force_destroy,
+            metadata=metadata,
+            name=name,
+            region=region,
+            storage_policy=storage_policy,
+            versioning=versioning,
+            versioning_legacy=versioning_legacy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             container_read: Optional[pulumi.Input[str]] = None,
+             container_sync_key: Optional[pulumi.Input[str]] = None,
+             container_sync_to: Optional[pulumi.Input[str]] = None,
+             container_write: Optional[pulumi.Input[str]] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             storage_policy: Optional[pulumi.Input[str]] = None,
+             versioning: Optional[pulumi.Input[bool]] = None,
+             versioning_legacy: Optional[pulumi.Input['ContainerVersioningLegacyArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if container_read is None and 'containerRead' in kwargs:
+            container_read = kwargs['containerRead']
+        if container_sync_key is None and 'containerSyncKey' in kwargs:
+            container_sync_key = kwargs['containerSyncKey']
+        if container_sync_to is None and 'containerSyncTo' in kwargs:
+            container_sync_to = kwargs['containerSyncTo']
+        if container_write is None and 'containerWrite' in kwargs:
+            container_write = kwargs['containerWrite']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if storage_policy is None and 'storagePolicy' in kwargs:
+            storage_policy = kwargs['storagePolicy']
+        if versioning_legacy is None and 'versioningLegacy' in kwargs:
+            versioning_legacy = kwargs['versioningLegacy']
+
         if container_read is not None:
-            pulumi.set(__self__, "container_read", container_read)
+            _setter("container_read", container_read)
         if container_sync_key is not None:
-            pulumi.set(__self__, "container_sync_key", container_sync_key)
+            _setter("container_sync_key", container_sync_key)
         if container_sync_to is not None:
-            pulumi.set(__self__, "container_sync_to", container_sync_to)
+            _setter("container_sync_to", container_sync_to)
         if container_write is not None:
-            pulumi.set(__self__, "container_write", container_write)
+            _setter("container_write", container_write)
         if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
+            _setter("content_type", content_type)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if storage_policy is not None:
-            pulumi.set(__self__, "storage_policy", storage_policy)
+            _setter("storage_policy", storage_policy)
         if versioning is not None:
-            pulumi.set(__self__, "versioning", versioning)
+            _setter("versioning", versioning)
         if versioning_legacy is not None:
             warnings.warn("""Use newer \"versioning\" implementation""", DeprecationWarning)
             pulumi.log.warn("""versioning_legacy is deprecated: Use newer \"versioning\" implementation""")
         if versioning_legacy is not None:
-            pulumi.set(__self__, "versioning_legacy", versioning_legacy)
+            _setter("versioning_legacy", versioning_legacy)
 
     @property
     @pulumi.getter(name="containerRead")
@@ -300,33 +349,82 @@ class _ContainerState:
                want to consider using `versioning_legacy` instead.
         :param pulumi.Input['ContainerVersioningLegacyArgs'] versioning_legacy: Enable legacy object versioning. The structure is described below.
         """
+        _ContainerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            container_read=container_read,
+            container_sync_key=container_sync_key,
+            container_sync_to=container_sync_to,
+            container_write=container_write,
+            content_type=content_type,
+            force_destroy=force_destroy,
+            metadata=metadata,
+            name=name,
+            region=region,
+            storage_policy=storage_policy,
+            versioning=versioning,
+            versioning_legacy=versioning_legacy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             container_read: Optional[pulumi.Input[str]] = None,
+             container_sync_key: Optional[pulumi.Input[str]] = None,
+             container_sync_to: Optional[pulumi.Input[str]] = None,
+             container_write: Optional[pulumi.Input[str]] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             storage_policy: Optional[pulumi.Input[str]] = None,
+             versioning: Optional[pulumi.Input[bool]] = None,
+             versioning_legacy: Optional[pulumi.Input['ContainerVersioningLegacyArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if container_read is None and 'containerRead' in kwargs:
+            container_read = kwargs['containerRead']
+        if container_sync_key is None and 'containerSyncKey' in kwargs:
+            container_sync_key = kwargs['containerSyncKey']
+        if container_sync_to is None and 'containerSyncTo' in kwargs:
+            container_sync_to = kwargs['containerSyncTo']
+        if container_write is None and 'containerWrite' in kwargs:
+            container_write = kwargs['containerWrite']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if force_destroy is None and 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if storage_policy is None and 'storagePolicy' in kwargs:
+            storage_policy = kwargs['storagePolicy']
+        if versioning_legacy is None and 'versioningLegacy' in kwargs:
+            versioning_legacy = kwargs['versioningLegacy']
+
         if container_read is not None:
-            pulumi.set(__self__, "container_read", container_read)
+            _setter("container_read", container_read)
         if container_sync_key is not None:
-            pulumi.set(__self__, "container_sync_key", container_sync_key)
+            _setter("container_sync_key", container_sync_key)
         if container_sync_to is not None:
-            pulumi.set(__self__, "container_sync_to", container_sync_to)
+            _setter("container_sync_to", container_sync_to)
         if container_write is not None:
-            pulumi.set(__self__, "container_write", container_write)
+            _setter("container_write", container_write)
         if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
+            _setter("content_type", content_type)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if storage_policy is not None:
-            pulumi.set(__self__, "storage_policy", storage_policy)
+            _setter("storage_policy", storage_policy)
         if versioning is not None:
-            pulumi.set(__self__, "versioning", versioning)
+            _setter("versioning", versioning)
         if versioning_legacy is not None:
             warnings.warn("""Use newer \"versioning\" implementation""", DeprecationWarning)
             pulumi.log.warn("""versioning_legacy is deprecated: Use newer \"versioning\" implementation""")
         if versioning_legacy is not None:
-            pulumi.set(__self__, "versioning_legacy", versioning_legacy)
+            _setter("versioning_legacy", versioning_legacy)
 
     @property
     @pulumi.getter(name="containerRead")
@@ -719,6 +817,10 @@ class Container(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ContainerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -756,6 +858,11 @@ class Container(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["storage_policy"] = storage_policy
             __props__.__dict__["versioning"] = versioning
+            if versioning_legacy is not None and not isinstance(versioning_legacy, ContainerVersioningLegacyArgs):
+                versioning_legacy = versioning_legacy or {}
+                def _setter(key, value):
+                    versioning_legacy[key] = value
+                ContainerVersioningLegacyArgs._configure(_setter, **versioning_legacy)
             __props__.__dict__["versioning_legacy"] = versioning_legacy
         super(Container, __self__).__init__(
             'openstack:objectstorage/container:Container',

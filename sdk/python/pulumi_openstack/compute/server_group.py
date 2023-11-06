@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,16 +35,37 @@ class ServerGroupArgs:
                only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
+        ServerGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            policies=policies,
+            region=region,
+            rules=rules,
+            value_specs=value_specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             rules: Optional[pulumi.Input['ServerGroupRulesArgs']] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if policies is not None:
-            pulumi.set(__self__, "policies", policies)
+            _setter("policies", policies)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+            _setter("rules", rules)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
 
     @property
     @pulumi.getter
@@ -137,18 +158,41 @@ class _ServerGroupState:
                only the `max_server_per_host` rule is supported for the `anti-affinity` policy.
         :param pulumi.Input[Mapping[str, Any]] value_specs: Map of additional options.
         """
+        _ServerGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            members=members,
+            name=name,
+            policies=policies,
+            region=region,
+            rules=rules,
+            value_specs=value_specs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             rules: Optional[pulumi.Input['ServerGroupRulesArgs']] = None,
+             value_specs: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if value_specs is None and 'valueSpecs' in kwargs:
+            value_specs = kwargs['valueSpecs']
+
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if policies is not None:
-            pulumi.set(__self__, "policies", policies)
+            _setter("policies", policies)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+            _setter("rules", rules)
         if value_specs is not None:
-            pulumi.set(__self__, "value_specs", value_specs)
+            _setter("value_specs", value_specs)
 
     @property
     @pulumi.getter
@@ -370,6 +414,10 @@ class ServerGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServerGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -392,6 +440,11 @@ class ServerGroup(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["policies"] = policies
             __props__.__dict__["region"] = region
+            if rules is not None and not isinstance(rules, ServerGroupRulesArgs):
+                rules = rules or {}
+                def _setter(key, value):
+                    rules[key] = value
+                ServerGroupRulesArgs._configure(_setter, **rules)
             __props__.__dict__["rules"] = rules
             __props__.__dict__["value_specs"] = value_specs
             __props__.__dict__["members"] = None

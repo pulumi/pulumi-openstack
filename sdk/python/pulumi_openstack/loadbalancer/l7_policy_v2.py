@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['L7PolicyV2Args', 'L7PolicyV2']
@@ -48,24 +48,67 @@ class L7PolicyV2Args:
                the L7 Policy.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new L7 Policy.
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "listener_id", listener_id)
+        L7PolicyV2Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            listener_id=listener_id,
+            admin_state_up=admin_state_up,
+            description=description,
+            name=name,
+            position=position,
+            redirect_pool_id=redirect_pool_id,
+            redirect_url=redirect_url,
+            region=region,
+            tenant_id=tenant_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             position: Optional[pulumi.Input[int]] = None,
+             redirect_pool_id: Optional[pulumi.Input[str]] = None,
+             redirect_url: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if listener_id is None and 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if listener_id is None:
+            raise TypeError("Missing 'listener_id' argument")
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if redirect_pool_id is None and 'redirectPoolId' in kwargs:
+            redirect_pool_id = kwargs['redirectPoolId']
+        if redirect_url is None and 'redirectUrl' in kwargs:
+            redirect_url = kwargs['redirectUrl']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
+        _setter("action", action)
+        _setter("listener_id", listener_id)
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if position is not None:
-            pulumi.set(__self__, "position", position)
+            _setter("position", position)
         if redirect_pool_id is not None:
-            pulumi.set(__self__, "redirect_pool_id", redirect_pool_id)
+            _setter("redirect_pool_id", redirect_pool_id)
         if redirect_url is not None:
-            pulumi.set(__self__, "redirect_url", redirect_url)
+            _setter("redirect_url", redirect_url)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
 
     @property
     @pulumi.getter
@@ -236,26 +279,65 @@ class _L7PolicyV2State:
                the L7 Policy.  Only administrative users can specify a tenant UUID
                other than their own. Changing this creates a new L7 Policy.
         """
+        _L7PolicyV2State._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            admin_state_up=admin_state_up,
+            description=description,
+            listener_id=listener_id,
+            name=name,
+            position=position,
+            redirect_pool_id=redirect_pool_id,
+            redirect_url=redirect_url,
+            region=region,
+            tenant_id=tenant_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             position: Optional[pulumi.Input[int]] = None,
+             redirect_pool_id: Optional[pulumi.Input[str]] = None,
+             redirect_url: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if listener_id is None and 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if redirect_pool_id is None and 'redirectPoolId' in kwargs:
+            redirect_pool_id = kwargs['redirectPoolId']
+        if redirect_url is None and 'redirectUrl' in kwargs:
+            redirect_url = kwargs['redirectUrl']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if listener_id is not None:
-            pulumi.set(__self__, "listener_id", listener_id)
+            _setter("listener_id", listener_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if position is not None:
-            pulumi.set(__self__, "position", position)
+            _setter("position", position)
         if redirect_pool_id is not None:
-            pulumi.set(__self__, "redirect_pool_id", redirect_pool_id)
+            _setter("redirect_pool_id", redirect_pool_id)
         if redirect_url is not None:
-            pulumi.set(__self__, "redirect_url", redirect_url)
+            _setter("redirect_url", redirect_url)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
 
     @property
     @pulumi.getter
@@ -523,6 +605,10 @@ class L7PolicyV2(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            L7PolicyV2Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

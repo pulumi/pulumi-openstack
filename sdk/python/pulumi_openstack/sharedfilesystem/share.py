@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -55,26 +55,73 @@ class ShareArgs:
         :param pulumi.Input[str] snapshot_id: The UUID of the share's base snapshot. Changing this creates
                a new share.
         """
-        pulumi.set(__self__, "share_proto", share_proto)
-        pulumi.set(__self__, "size", size)
+        ShareArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            share_proto=share_proto,
+            size=size,
+            availability_zone=availability_zone,
+            description=description,
+            is_public=is_public,
+            metadata=metadata,
+            name=name,
+            region=region,
+            share_network_id=share_network_id,
+            share_type=share_type,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             share_proto: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             availability_zone: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             is_public: Optional[pulumi.Input[bool]] = None,
+             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             share_network_id: Optional[pulumi.Input[str]] = None,
+             share_type: Optional[pulumi.Input[str]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if share_proto is None and 'shareProto' in kwargs:
+            share_proto = kwargs['shareProto']
+        if share_proto is None:
+            raise TypeError("Missing 'share_proto' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if availability_zone is None and 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if is_public is None and 'isPublic' in kwargs:
+            is_public = kwargs['isPublic']
+        if share_network_id is None and 'shareNetworkId' in kwargs:
+            share_network_id = kwargs['shareNetworkId']
+        if share_type is None and 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
+        _setter("share_proto", share_proto)
+        _setter("size", size)
         if availability_zone is not None:
-            pulumi.set(__self__, "availability_zone", availability_zone)
+            _setter("availability_zone", availability_zone)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if is_public is not None:
-            pulumi.set(__self__, "is_public", is_public)
+            _setter("is_public", is_public)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if share_network_id is not None:
-            pulumi.set(__self__, "share_network_id", share_network_id)
+            _setter("share_network_id", share_network_id)
         if share_type is not None:
-            pulumi.set(__self__, "share_type", share_type)
+            _setter("share_type", share_type)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter(name="shareProto")
@@ -281,42 +328,111 @@ class _ShareState:
         :param pulumi.Input[str] snapshot_id: The UUID of the share's base snapshot. Changing this creates
                a new share.
         """
+        _ShareState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            all_metadata=all_metadata,
+            availability_zone=availability_zone,
+            description=description,
+            export_locations=export_locations,
+            has_replicas=has_replicas,
+            host=host,
+            is_public=is_public,
+            metadata=metadata,
+            name=name,
+            project_id=project_id,
+            region=region,
+            replication_type=replication_type,
+            share_network_id=share_network_id,
+            share_proto=share_proto,
+            share_server_id=share_server_id,
+            share_type=share_type,
+            size=size,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             all_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             availability_zone: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             export_locations: Optional[pulumi.Input[Sequence[pulumi.Input['ShareExportLocationArgs']]]] = None,
+             has_replicas: Optional[pulumi.Input[bool]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             is_public: Optional[pulumi.Input[bool]] = None,
+             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             replication_type: Optional[pulumi.Input[str]] = None,
+             share_network_id: Optional[pulumi.Input[str]] = None,
+             share_proto: Optional[pulumi.Input[str]] = None,
+             share_server_id: Optional[pulumi.Input[str]] = None,
+             share_type: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all_metadata is None and 'allMetadata' in kwargs:
+            all_metadata = kwargs['allMetadata']
+        if availability_zone is None and 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if export_locations is None and 'exportLocations' in kwargs:
+            export_locations = kwargs['exportLocations']
+        if has_replicas is None and 'hasReplicas' in kwargs:
+            has_replicas = kwargs['hasReplicas']
+        if is_public is None and 'isPublic' in kwargs:
+            is_public = kwargs['isPublic']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if replication_type is None and 'replicationType' in kwargs:
+            replication_type = kwargs['replicationType']
+        if share_network_id is None and 'shareNetworkId' in kwargs:
+            share_network_id = kwargs['shareNetworkId']
+        if share_proto is None and 'shareProto' in kwargs:
+            share_proto = kwargs['shareProto']
+        if share_server_id is None and 'shareServerId' in kwargs:
+            share_server_id = kwargs['shareServerId']
+        if share_type is None and 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+        if snapshot_id is None and 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         if all_metadata is not None:
-            pulumi.set(__self__, "all_metadata", all_metadata)
+            _setter("all_metadata", all_metadata)
         if availability_zone is not None:
-            pulumi.set(__self__, "availability_zone", availability_zone)
+            _setter("availability_zone", availability_zone)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if export_locations is not None:
-            pulumi.set(__self__, "export_locations", export_locations)
+            _setter("export_locations", export_locations)
         if has_replicas is not None:
-            pulumi.set(__self__, "has_replicas", has_replicas)
+            _setter("has_replicas", has_replicas)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if is_public is not None:
-            pulumi.set(__self__, "is_public", is_public)
+            _setter("is_public", is_public)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if replication_type is not None:
-            pulumi.set(__self__, "replication_type", replication_type)
+            _setter("replication_type", replication_type)
         if share_network_id is not None:
-            pulumi.set(__self__, "share_network_id", share_network_id)
+            _setter("share_network_id", share_network_id)
         if share_proto is not None:
-            pulumi.set(__self__, "share_proto", share_proto)
+            _setter("share_proto", share_proto)
         if share_server_id is not None:
-            pulumi.set(__self__, "share_server_id", share_server_id)
+            _setter("share_server_id", share_server_id)
         if share_type is not None:
-            pulumi.set(__self__, "share_type", share_type)
+            _setter("share_type", share_type)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter(name="allMetadata")
@@ -678,6 +794,10 @@ class Share(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ShareArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

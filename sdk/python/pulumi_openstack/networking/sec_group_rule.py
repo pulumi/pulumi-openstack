@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SecGroupRuleArgs', 'SecGroupRule']
@@ -76,25 +76,74 @@ class SecGroupRuleArgs:
                wants to create a port for another tenant. Changing this creates a new
                security group rule.
         """
-        pulumi.set(__self__, "direction", direction)
-        pulumi.set(__self__, "ethertype", ethertype)
-        pulumi.set(__self__, "security_group_id", security_group_id)
+        SecGroupRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            direction=direction,
+            ethertype=ethertype,
+            security_group_id=security_group_id,
+            description=description,
+            port_range_max=port_range_max,
+            port_range_min=port_range_min,
+            protocol=protocol,
+            region=region,
+            remote_group_id=remote_group_id,
+            remote_ip_prefix=remote_ip_prefix,
+            tenant_id=tenant_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             direction: Optional[pulumi.Input[str]] = None,
+             ethertype: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             port_range_max: Optional[pulumi.Input[int]] = None,
+             port_range_min: Optional[pulumi.Input[int]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             remote_group_id: Optional[pulumi.Input[str]] = None,
+             remote_ip_prefix: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if direction is None:
+            raise TypeError("Missing 'direction' argument")
+        if ethertype is None:
+            raise TypeError("Missing 'ethertype' argument")
+        if security_group_id is None and 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if security_group_id is None:
+            raise TypeError("Missing 'security_group_id' argument")
+        if port_range_max is None and 'portRangeMax' in kwargs:
+            port_range_max = kwargs['portRangeMax']
+        if port_range_min is None and 'portRangeMin' in kwargs:
+            port_range_min = kwargs['portRangeMin']
+        if remote_group_id is None and 'remoteGroupId' in kwargs:
+            remote_group_id = kwargs['remoteGroupId']
+        if remote_ip_prefix is None and 'remoteIpPrefix' in kwargs:
+            remote_ip_prefix = kwargs['remoteIpPrefix']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
+        _setter("direction", direction)
+        _setter("ethertype", ethertype)
+        _setter("security_group_id", security_group_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if port_range_max is not None:
-            pulumi.set(__self__, "port_range_max", port_range_max)
+            _setter("port_range_max", port_range_max)
         if port_range_min is not None:
-            pulumi.set(__self__, "port_range_min", port_range_min)
+            _setter("port_range_min", port_range_min)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if remote_group_id is not None:
-            pulumi.set(__self__, "remote_group_id", remote_group_id)
+            _setter("remote_group_id", remote_group_id)
         if remote_ip_prefix is not None:
-            pulumi.set(__self__, "remote_ip_prefix", remote_ip_prefix)
+            _setter("remote_ip_prefix", remote_ip_prefix)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
 
     @property
     @pulumi.getter
@@ -331,28 +380,71 @@ class _SecGroupRuleState:
                wants to create a port for another tenant. Changing this creates a new
                security group rule.
         """
+        _SecGroupRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            direction=direction,
+            ethertype=ethertype,
+            port_range_max=port_range_max,
+            port_range_min=port_range_min,
+            protocol=protocol,
+            region=region,
+            remote_group_id=remote_group_id,
+            remote_ip_prefix=remote_ip_prefix,
+            security_group_id=security_group_id,
+            tenant_id=tenant_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             direction: Optional[pulumi.Input[str]] = None,
+             ethertype: Optional[pulumi.Input[str]] = None,
+             port_range_max: Optional[pulumi.Input[int]] = None,
+             port_range_min: Optional[pulumi.Input[int]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             remote_group_id: Optional[pulumi.Input[str]] = None,
+             remote_ip_prefix: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if port_range_max is None and 'portRangeMax' in kwargs:
+            port_range_max = kwargs['portRangeMax']
+        if port_range_min is None and 'portRangeMin' in kwargs:
+            port_range_min = kwargs['portRangeMin']
+        if remote_group_id is None and 'remoteGroupId' in kwargs:
+            remote_group_id = kwargs['remoteGroupId']
+        if remote_ip_prefix is None and 'remoteIpPrefix' in kwargs:
+            remote_ip_prefix = kwargs['remoteIpPrefix']
+        if security_group_id is None and 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if direction is not None:
-            pulumi.set(__self__, "direction", direction)
+            _setter("direction", direction)
         if ethertype is not None:
-            pulumi.set(__self__, "ethertype", ethertype)
+            _setter("ethertype", ethertype)
         if port_range_max is not None:
-            pulumi.set(__self__, "port_range_max", port_range_max)
+            _setter("port_range_max", port_range_max)
         if port_range_min is not None:
-            pulumi.set(__self__, "port_range_min", port_range_min)
+            _setter("port_range_min", port_range_min)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if remote_group_id is not None:
-            pulumi.set(__self__, "remote_group_id", remote_group_id)
+            _setter("remote_group_id", remote_group_id)
         if remote_ip_prefix is not None:
-            pulumi.set(__self__, "remote_ip_prefix", remote_ip_prefix)
+            _setter("remote_ip_prefix", remote_ip_prefix)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
 
     @property
     @pulumi.getter
@@ -668,6 +760,10 @@ class SecGroupRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SecGroupRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -55,32 +55,81 @@ class UserArgs:
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new User.
         """
+        UserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_project_id=default_project_id,
+            description=description,
+            domain_id=domain_id,
+            enabled=enabled,
+            extra=extra,
+            ignore_change_password_upon_first_use=ignore_change_password_upon_first_use,
+            ignore_lockout_failure_attempts=ignore_lockout_failure_attempts,
+            ignore_password_expiry=ignore_password_expiry,
+            multi_factor_auth_enabled=multi_factor_auth_enabled,
+            multi_factor_auth_rules=multi_factor_auth_rules,
+            name=name,
+            password=password,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_project_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             domain_id: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             extra: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             ignore_change_password_upon_first_use: Optional[pulumi.Input[bool]] = None,
+             ignore_lockout_failure_attempts: Optional[pulumi.Input[bool]] = None,
+             ignore_password_expiry: Optional[pulumi.Input[bool]] = None,
+             multi_factor_auth_enabled: Optional[pulumi.Input[bool]] = None,
+             multi_factor_auth_rules: Optional[pulumi.Input[Sequence[pulumi.Input['UserMultiFactorAuthRuleArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_project_id is None and 'defaultProjectId' in kwargs:
+            default_project_id = kwargs['defaultProjectId']
+        if domain_id is None and 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if ignore_change_password_upon_first_use is None and 'ignoreChangePasswordUponFirstUse' in kwargs:
+            ignore_change_password_upon_first_use = kwargs['ignoreChangePasswordUponFirstUse']
+        if ignore_lockout_failure_attempts is None and 'ignoreLockoutFailureAttempts' in kwargs:
+            ignore_lockout_failure_attempts = kwargs['ignoreLockoutFailureAttempts']
+        if ignore_password_expiry is None and 'ignorePasswordExpiry' in kwargs:
+            ignore_password_expiry = kwargs['ignorePasswordExpiry']
+        if multi_factor_auth_enabled is None and 'multiFactorAuthEnabled' in kwargs:
+            multi_factor_auth_enabled = kwargs['multiFactorAuthEnabled']
+        if multi_factor_auth_rules is None and 'multiFactorAuthRules' in kwargs:
+            multi_factor_auth_rules = kwargs['multiFactorAuthRules']
+
         if default_project_id is not None:
-            pulumi.set(__self__, "default_project_id", default_project_id)
+            _setter("default_project_id", default_project_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if domain_id is not None:
-            pulumi.set(__self__, "domain_id", domain_id)
+            _setter("domain_id", domain_id)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if extra is not None:
-            pulumi.set(__self__, "extra", extra)
+            _setter("extra", extra)
         if ignore_change_password_upon_first_use is not None:
-            pulumi.set(__self__, "ignore_change_password_upon_first_use", ignore_change_password_upon_first_use)
+            _setter("ignore_change_password_upon_first_use", ignore_change_password_upon_first_use)
         if ignore_lockout_failure_attempts is not None:
-            pulumi.set(__self__, "ignore_lockout_failure_attempts", ignore_lockout_failure_attempts)
+            _setter("ignore_lockout_failure_attempts", ignore_lockout_failure_attempts)
         if ignore_password_expiry is not None:
-            pulumi.set(__self__, "ignore_password_expiry", ignore_password_expiry)
+            _setter("ignore_password_expiry", ignore_password_expiry)
         if multi_factor_auth_enabled is not None:
-            pulumi.set(__self__, "multi_factor_auth_enabled", multi_factor_auth_enabled)
+            _setter("multi_factor_auth_enabled", multi_factor_auth_enabled)
         if multi_factor_auth_rules is not None:
-            pulumi.set(__self__, "multi_factor_auth_rules", multi_factor_auth_rules)
+            _setter("multi_factor_auth_rules", multi_factor_auth_rules)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="defaultProjectId")
@@ -291,32 +340,81 @@ class _UserState:
                If omitted, the `region` argument of the provider is used. Changing this
                creates a new User.
         """
+        _UserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_project_id=default_project_id,
+            description=description,
+            domain_id=domain_id,
+            enabled=enabled,
+            extra=extra,
+            ignore_change_password_upon_first_use=ignore_change_password_upon_first_use,
+            ignore_lockout_failure_attempts=ignore_lockout_failure_attempts,
+            ignore_password_expiry=ignore_password_expiry,
+            multi_factor_auth_enabled=multi_factor_auth_enabled,
+            multi_factor_auth_rules=multi_factor_auth_rules,
+            name=name,
+            password=password,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_project_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             domain_id: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             extra: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             ignore_change_password_upon_first_use: Optional[pulumi.Input[bool]] = None,
+             ignore_lockout_failure_attempts: Optional[pulumi.Input[bool]] = None,
+             ignore_password_expiry: Optional[pulumi.Input[bool]] = None,
+             multi_factor_auth_enabled: Optional[pulumi.Input[bool]] = None,
+             multi_factor_auth_rules: Optional[pulumi.Input[Sequence[pulumi.Input['UserMultiFactorAuthRuleArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_project_id is None and 'defaultProjectId' in kwargs:
+            default_project_id = kwargs['defaultProjectId']
+        if domain_id is None and 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if ignore_change_password_upon_first_use is None and 'ignoreChangePasswordUponFirstUse' in kwargs:
+            ignore_change_password_upon_first_use = kwargs['ignoreChangePasswordUponFirstUse']
+        if ignore_lockout_failure_attempts is None and 'ignoreLockoutFailureAttempts' in kwargs:
+            ignore_lockout_failure_attempts = kwargs['ignoreLockoutFailureAttempts']
+        if ignore_password_expiry is None and 'ignorePasswordExpiry' in kwargs:
+            ignore_password_expiry = kwargs['ignorePasswordExpiry']
+        if multi_factor_auth_enabled is None and 'multiFactorAuthEnabled' in kwargs:
+            multi_factor_auth_enabled = kwargs['multiFactorAuthEnabled']
+        if multi_factor_auth_rules is None and 'multiFactorAuthRules' in kwargs:
+            multi_factor_auth_rules = kwargs['multiFactorAuthRules']
+
         if default_project_id is not None:
-            pulumi.set(__self__, "default_project_id", default_project_id)
+            _setter("default_project_id", default_project_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if domain_id is not None:
-            pulumi.set(__self__, "domain_id", domain_id)
+            _setter("domain_id", domain_id)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if extra is not None:
-            pulumi.set(__self__, "extra", extra)
+            _setter("extra", extra)
         if ignore_change_password_upon_first_use is not None:
-            pulumi.set(__self__, "ignore_change_password_upon_first_use", ignore_change_password_upon_first_use)
+            _setter("ignore_change_password_upon_first_use", ignore_change_password_upon_first_use)
         if ignore_lockout_failure_attempts is not None:
-            pulumi.set(__self__, "ignore_lockout_failure_attempts", ignore_lockout_failure_attempts)
+            _setter("ignore_lockout_failure_attempts", ignore_lockout_failure_attempts)
         if ignore_password_expiry is not None:
-            pulumi.set(__self__, "ignore_password_expiry", ignore_password_expiry)
+            _setter("ignore_password_expiry", ignore_password_expiry)
         if multi_factor_auth_enabled is not None:
-            pulumi.set(__self__, "multi_factor_auth_enabled", multi_factor_auth_enabled)
+            _setter("multi_factor_auth_enabled", multi_factor_auth_enabled)
         if multi_factor_auth_rules is not None:
-            pulumi.set(__self__, "multi_factor_auth_rules", multi_factor_auth_rules)
+            _setter("multi_factor_auth_rules", multi_factor_auth_rules)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="defaultProjectId")
@@ -640,6 +738,10 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

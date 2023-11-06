@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -49,30 +49,71 @@ class SecretV1Args:
                V1 secret.
         :param pulumi.Input[str] secret_type: Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
         """
+        SecretV1Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl=acl,
+            algorithm=algorithm,
+            bit_length=bit_length,
+            expiration=expiration,
+            metadata=metadata,
+            mode=mode,
+            name=name,
+            payload=payload,
+            payload_content_encoding=payload_content_encoding,
+            payload_content_type=payload_content_type,
+            region=region,
+            secret_type=secret_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl: Optional[pulumi.Input['SecretV1AclArgs']] = None,
+             algorithm: Optional[pulumi.Input[str]] = None,
+             bit_length: Optional[pulumi.Input[int]] = None,
+             expiration: Optional[pulumi.Input[str]] = None,
+             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             payload: Optional[pulumi.Input[str]] = None,
+             payload_content_encoding: Optional[pulumi.Input[str]] = None,
+             payload_content_type: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             secret_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bit_length is None and 'bitLength' in kwargs:
+            bit_length = kwargs['bitLength']
+        if payload_content_encoding is None and 'payloadContentEncoding' in kwargs:
+            payload_content_encoding = kwargs['payloadContentEncoding']
+        if payload_content_type is None and 'payloadContentType' in kwargs:
+            payload_content_type = kwargs['payloadContentType']
+        if secret_type is None and 'secretType' in kwargs:
+            secret_type = kwargs['secretType']
+
         if acl is not None:
-            pulumi.set(__self__, "acl", acl)
+            _setter("acl", acl)
         if algorithm is not None:
-            pulumi.set(__self__, "algorithm", algorithm)
+            _setter("algorithm", algorithm)
         if bit_length is not None:
-            pulumi.set(__self__, "bit_length", bit_length)
+            _setter("bit_length", bit_length)
         if expiration is not None:
-            pulumi.set(__self__, "expiration", expiration)
+            _setter("expiration", expiration)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if payload is not None:
-            pulumi.set(__self__, "payload", payload)
+            _setter("payload", payload)
         if payload_content_encoding is not None:
-            pulumi.set(__self__, "payload_content_encoding", payload_content_encoding)
+            _setter("payload_content_encoding", payload_content_encoding)
         if payload_content_type is not None:
-            pulumi.set(__self__, "payload_content_type", payload_content_type)
+            _setter("payload_content_type", payload_content_type)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if secret_type is not None:
-            pulumi.set(__self__, "secret_type", secret_type)
+            _setter("secret_type", secret_type)
 
     @property
     @pulumi.getter
@@ -276,44 +317,111 @@ class _SecretV1State:
         :param pulumi.Input[str] status: The status of the secret.
         :param pulumi.Input[str] updated_at: The date the secret ACL was last updated.
         """
+        _SecretV1State._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl=acl,
+            algorithm=algorithm,
+            all_metadata=all_metadata,
+            bit_length=bit_length,
+            content_types=content_types,
+            created_at=created_at,
+            creator_id=creator_id,
+            expiration=expiration,
+            metadata=metadata,
+            mode=mode,
+            name=name,
+            payload=payload,
+            payload_content_encoding=payload_content_encoding,
+            payload_content_type=payload_content_type,
+            region=region,
+            secret_ref=secret_ref,
+            secret_type=secret_type,
+            status=status,
+            updated_at=updated_at,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl: Optional[pulumi.Input['SecretV1AclArgs']] = None,
+             algorithm: Optional[pulumi.Input[str]] = None,
+             all_metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             bit_length: Optional[pulumi.Input[int]] = None,
+             content_types: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             creator_id: Optional[pulumi.Input[str]] = None,
+             expiration: Optional[pulumi.Input[str]] = None,
+             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             payload: Optional[pulumi.Input[str]] = None,
+             payload_content_encoding: Optional[pulumi.Input[str]] = None,
+             payload_content_type: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             secret_ref: Optional[pulumi.Input[str]] = None,
+             secret_type: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if all_metadata is None and 'allMetadata' in kwargs:
+            all_metadata = kwargs['allMetadata']
+        if bit_length is None and 'bitLength' in kwargs:
+            bit_length = kwargs['bitLength']
+        if content_types is None and 'contentTypes' in kwargs:
+            content_types = kwargs['contentTypes']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if creator_id is None and 'creatorId' in kwargs:
+            creator_id = kwargs['creatorId']
+        if payload_content_encoding is None and 'payloadContentEncoding' in kwargs:
+            payload_content_encoding = kwargs['payloadContentEncoding']
+        if payload_content_type is None and 'payloadContentType' in kwargs:
+            payload_content_type = kwargs['payloadContentType']
+        if secret_ref is None and 'secretRef' in kwargs:
+            secret_ref = kwargs['secretRef']
+        if secret_type is None and 'secretType' in kwargs:
+            secret_type = kwargs['secretType']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if acl is not None:
-            pulumi.set(__self__, "acl", acl)
+            _setter("acl", acl)
         if algorithm is not None:
-            pulumi.set(__self__, "algorithm", algorithm)
+            _setter("algorithm", algorithm)
         if all_metadata is not None:
-            pulumi.set(__self__, "all_metadata", all_metadata)
+            _setter("all_metadata", all_metadata)
         if bit_length is not None:
-            pulumi.set(__self__, "bit_length", bit_length)
+            _setter("bit_length", bit_length)
         if content_types is not None:
-            pulumi.set(__self__, "content_types", content_types)
+            _setter("content_types", content_types)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if creator_id is not None:
-            pulumi.set(__self__, "creator_id", creator_id)
+            _setter("creator_id", creator_id)
         if expiration is not None:
-            pulumi.set(__self__, "expiration", expiration)
+            _setter("expiration", expiration)
         if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
+            _setter("metadata", metadata)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if payload is not None:
-            pulumi.set(__self__, "payload", payload)
+            _setter("payload", payload)
         if payload_content_encoding is not None:
-            pulumi.set(__self__, "payload_content_encoding", payload_content_encoding)
+            _setter("payload_content_encoding", payload_content_encoding)
         if payload_content_type is not None:
-            pulumi.set(__self__, "payload_content_type", payload_content_type)
+            _setter("payload_content_type", payload_content_type)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if secret_ref is not None:
-            pulumi.set(__self__, "secret_ref", secret_ref)
+            _setter("secret_ref", secret_ref)
         if secret_type is not None:
-            pulumi.set(__self__, "secret_type", secret_type)
+            _setter("secret_type", secret_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
 
     @property
     @pulumi.getter
@@ -706,6 +814,10 @@ class SecretV1(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SecretV1Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -732,6 +844,11 @@ class SecretV1(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecretV1Args.__new__(SecretV1Args)
 
+            if acl is not None and not isinstance(acl, SecretV1AclArgs):
+                acl = acl or {}
+                def _setter(key, value):
+                    acl[key] = value
+                SecretV1AclArgs._configure(_setter, **acl)
             __props__.__dict__["acl"] = acl
             __props__.__dict__["algorithm"] = algorithm
             __props__.__dict__["bit_length"] = bit_length

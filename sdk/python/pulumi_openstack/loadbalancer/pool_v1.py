@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PoolV1Args', 'PoolV1']
@@ -50,24 +50,67 @@ class PoolV1Args:
         :param pulumi.Input[str] tenant_id: The owner of the pool. Required if admin wants to
                create a pool member for another tenant. Changing this creates a new pool.
         """
-        pulumi.set(__self__, "lb_method", lb_method)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "subnet_id", subnet_id)
+        PoolV1Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lb_method=lb_method,
+            protocol=protocol,
+            subnet_id=subnet_id,
+            lb_provider=lb_provider,
+            members=members,
+            monitor_ids=monitor_ids,
+            name=name,
+            region=region,
+            tenant_id=tenant_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lb_method: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             subnet_id: Optional[pulumi.Input[str]] = None,
+             lb_provider: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             monitor_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if lb_method is None and 'lbMethod' in kwargs:
+            lb_method = kwargs['lbMethod']
+        if lb_method is None:
+            raise TypeError("Missing 'lb_method' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if subnet_id is None:
+            raise TypeError("Missing 'subnet_id' argument")
+        if lb_provider is None and 'lbProvider' in kwargs:
+            lb_provider = kwargs['lbProvider']
+        if monitor_ids is None and 'monitorIds' in kwargs:
+            monitor_ids = kwargs['monitorIds']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
+        _setter("lb_method", lb_method)
+        _setter("protocol", protocol)
+        _setter("subnet_id", subnet_id)
         if lb_provider is not None:
-            pulumi.set(__self__, "lb_provider", lb_provider)
+            _setter("lb_provider", lb_provider)
         if members is not None:
             warnings.warn("""Use openstack_lb_member_v1 instead""", DeprecationWarning)
             pulumi.log.warn("""members is deprecated: Use openstack_lb_member_v1 instead""")
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if monitor_ids is not None:
-            pulumi.set(__self__, "monitor_ids", monitor_ids)
+            _setter("monitor_ids", monitor_ids)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
 
     @property
     @pulumi.getter(name="lbMethod")
@@ -235,27 +278,64 @@ class _PoolV1State:
         :param pulumi.Input[str] tenant_id: The owner of the pool. Required if admin wants to
                create a pool member for another tenant. Changing this creates a new pool.
         """
+        _PoolV1State._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lb_method=lb_method,
+            lb_provider=lb_provider,
+            members=members,
+            monitor_ids=monitor_ids,
+            name=name,
+            protocol=protocol,
+            region=region,
+            subnet_id=subnet_id,
+            tenant_id=tenant_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lb_method: Optional[pulumi.Input[str]] = None,
+             lb_provider: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             monitor_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             subnet_id: Optional[pulumi.Input[str]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if lb_method is None and 'lbMethod' in kwargs:
+            lb_method = kwargs['lbMethod']
+        if lb_provider is None and 'lbProvider' in kwargs:
+            lb_provider = kwargs['lbProvider']
+        if monitor_ids is None and 'monitorIds' in kwargs:
+            monitor_ids = kwargs['monitorIds']
+        if subnet_id is None and 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if lb_method is not None:
-            pulumi.set(__self__, "lb_method", lb_method)
+            _setter("lb_method", lb_method)
         if lb_provider is not None:
-            pulumi.set(__self__, "lb_provider", lb_provider)
+            _setter("lb_provider", lb_provider)
         if members is not None:
             warnings.warn("""Use openstack_lb_member_v1 instead""", DeprecationWarning)
             pulumi.log.warn("""members is deprecated: Use openstack_lb_member_v1 instead""")
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if monitor_ids is not None:
-            pulumi.set(__self__, "monitor_ids", monitor_ids)
+            _setter("monitor_ids", monitor_ids)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if subnet_id is not None:
-            pulumi.set(__self__, "subnet_id", subnet_id)
+            _setter("subnet_id", subnet_id)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
 
     @property
     @pulumi.getter(name="lbMethod")
@@ -636,6 +716,10 @@ class PoolV1(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PoolV1Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

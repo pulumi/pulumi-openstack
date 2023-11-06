@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ListenerArgs', 'Listener']
@@ -79,41 +79,122 @@ class ListenerArgs:
         :param pulumi.Input[int] timeout_tcp_inspect: The time in milliseconds, to wait for additional
                TCP packets for content inspection.
         """
-        pulumi.set(__self__, "loadbalancer_id", loadbalancer_id)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "protocol_port", protocol_port)
+        ListenerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            loadbalancer_id=loadbalancer_id,
+            protocol=protocol,
+            protocol_port=protocol_port,
+            admin_state_up=admin_state_up,
+            allowed_cidrs=allowed_cidrs,
+            connection_limit=connection_limit,
+            default_pool_id=default_pool_id,
+            default_tls_container_ref=default_tls_container_ref,
+            description=description,
+            insert_headers=insert_headers,
+            name=name,
+            region=region,
+            sni_container_refs=sni_container_refs,
+            tags=tags,
+            tenant_id=tenant_id,
+            timeout_client_data=timeout_client_data,
+            timeout_member_connect=timeout_member_connect,
+            timeout_member_data=timeout_member_data,
+            timeout_tcp_inspect=timeout_tcp_inspect,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             loadbalancer_id: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             protocol_port: Optional[pulumi.Input[int]] = None,
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             allowed_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             connection_limit: Optional[pulumi.Input[int]] = None,
+             default_pool_id: Optional[pulumi.Input[str]] = None,
+             default_tls_container_ref: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             insert_headers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             sni_container_refs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             timeout_client_data: Optional[pulumi.Input[int]] = None,
+             timeout_member_connect: Optional[pulumi.Input[int]] = None,
+             timeout_member_data: Optional[pulumi.Input[int]] = None,
+             timeout_tcp_inspect: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if loadbalancer_id is None and 'loadbalancerId' in kwargs:
+            loadbalancer_id = kwargs['loadbalancerId']
+        if loadbalancer_id is None:
+            raise TypeError("Missing 'loadbalancer_id' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if protocol_port is None and 'protocolPort' in kwargs:
+            protocol_port = kwargs['protocolPort']
+        if protocol_port is None:
+            raise TypeError("Missing 'protocol_port' argument")
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if allowed_cidrs is None and 'allowedCidrs' in kwargs:
+            allowed_cidrs = kwargs['allowedCidrs']
+        if connection_limit is None and 'connectionLimit' in kwargs:
+            connection_limit = kwargs['connectionLimit']
+        if default_pool_id is None and 'defaultPoolId' in kwargs:
+            default_pool_id = kwargs['defaultPoolId']
+        if default_tls_container_ref is None and 'defaultTlsContainerRef' in kwargs:
+            default_tls_container_ref = kwargs['defaultTlsContainerRef']
+        if insert_headers is None and 'insertHeaders' in kwargs:
+            insert_headers = kwargs['insertHeaders']
+        if sni_container_refs is None and 'sniContainerRefs' in kwargs:
+            sni_container_refs = kwargs['sniContainerRefs']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if timeout_client_data is None and 'timeoutClientData' in kwargs:
+            timeout_client_data = kwargs['timeoutClientData']
+        if timeout_member_connect is None and 'timeoutMemberConnect' in kwargs:
+            timeout_member_connect = kwargs['timeoutMemberConnect']
+        if timeout_member_data is None and 'timeoutMemberData' in kwargs:
+            timeout_member_data = kwargs['timeoutMemberData']
+        if timeout_tcp_inspect is None and 'timeoutTcpInspect' in kwargs:
+            timeout_tcp_inspect = kwargs['timeoutTcpInspect']
+
+        _setter("loadbalancer_id", loadbalancer_id)
+        _setter("protocol", protocol)
+        _setter("protocol_port", protocol_port)
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if allowed_cidrs is not None:
-            pulumi.set(__self__, "allowed_cidrs", allowed_cidrs)
+            _setter("allowed_cidrs", allowed_cidrs)
         if connection_limit is not None:
-            pulumi.set(__self__, "connection_limit", connection_limit)
+            _setter("connection_limit", connection_limit)
         if default_pool_id is not None:
-            pulumi.set(__self__, "default_pool_id", default_pool_id)
+            _setter("default_pool_id", default_pool_id)
         if default_tls_container_ref is not None:
-            pulumi.set(__self__, "default_tls_container_ref", default_tls_container_ref)
+            _setter("default_tls_container_ref", default_tls_container_ref)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if insert_headers is not None:
-            pulumi.set(__self__, "insert_headers", insert_headers)
+            _setter("insert_headers", insert_headers)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if sni_container_refs is not None:
-            pulumi.set(__self__, "sni_container_refs", sni_container_refs)
+            _setter("sni_container_refs", sni_container_refs)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if timeout_client_data is not None:
-            pulumi.set(__self__, "timeout_client_data", timeout_client_data)
+            _setter("timeout_client_data", timeout_client_data)
         if timeout_member_connect is not None:
-            pulumi.set(__self__, "timeout_member_connect", timeout_member_connect)
+            _setter("timeout_member_connect", timeout_member_connect)
         if timeout_member_data is not None:
-            pulumi.set(__self__, "timeout_member_data", timeout_member_data)
+            _setter("timeout_member_data", timeout_member_data)
         if timeout_tcp_inspect is not None:
-            pulumi.set(__self__, "timeout_tcp_inspect", timeout_tcp_inspect)
+            _setter("timeout_tcp_inspect", timeout_tcp_inspect)
 
     @property
     @pulumi.getter(name="loadbalancerId")
@@ -434,44 +515,119 @@ class _ListenerState:
         :param pulumi.Input[int] timeout_tcp_inspect: The time in milliseconds, to wait for additional
                TCP packets for content inspection.
         """
+        _ListenerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            admin_state_up=admin_state_up,
+            allowed_cidrs=allowed_cidrs,
+            connection_limit=connection_limit,
+            default_pool_id=default_pool_id,
+            default_tls_container_ref=default_tls_container_ref,
+            description=description,
+            insert_headers=insert_headers,
+            loadbalancer_id=loadbalancer_id,
+            name=name,
+            protocol=protocol,
+            protocol_port=protocol_port,
+            region=region,
+            sni_container_refs=sni_container_refs,
+            tags=tags,
+            tenant_id=tenant_id,
+            timeout_client_data=timeout_client_data,
+            timeout_member_connect=timeout_member_connect,
+            timeout_member_data=timeout_member_data,
+            timeout_tcp_inspect=timeout_tcp_inspect,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             admin_state_up: Optional[pulumi.Input[bool]] = None,
+             allowed_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             connection_limit: Optional[pulumi.Input[int]] = None,
+             default_pool_id: Optional[pulumi.Input[str]] = None,
+             default_tls_container_ref: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             insert_headers: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             loadbalancer_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             protocol_port: Optional[pulumi.Input[int]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             sni_container_refs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             timeout_client_data: Optional[pulumi.Input[int]] = None,
+             timeout_member_connect: Optional[pulumi.Input[int]] = None,
+             timeout_member_data: Optional[pulumi.Input[int]] = None,
+             timeout_tcp_inspect: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if admin_state_up is None and 'adminStateUp' in kwargs:
+            admin_state_up = kwargs['adminStateUp']
+        if allowed_cidrs is None and 'allowedCidrs' in kwargs:
+            allowed_cidrs = kwargs['allowedCidrs']
+        if connection_limit is None and 'connectionLimit' in kwargs:
+            connection_limit = kwargs['connectionLimit']
+        if default_pool_id is None and 'defaultPoolId' in kwargs:
+            default_pool_id = kwargs['defaultPoolId']
+        if default_tls_container_ref is None and 'defaultTlsContainerRef' in kwargs:
+            default_tls_container_ref = kwargs['defaultTlsContainerRef']
+        if insert_headers is None and 'insertHeaders' in kwargs:
+            insert_headers = kwargs['insertHeaders']
+        if loadbalancer_id is None and 'loadbalancerId' in kwargs:
+            loadbalancer_id = kwargs['loadbalancerId']
+        if protocol_port is None and 'protocolPort' in kwargs:
+            protocol_port = kwargs['protocolPort']
+        if sni_container_refs is None and 'sniContainerRefs' in kwargs:
+            sni_container_refs = kwargs['sniContainerRefs']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if timeout_client_data is None and 'timeoutClientData' in kwargs:
+            timeout_client_data = kwargs['timeoutClientData']
+        if timeout_member_connect is None and 'timeoutMemberConnect' in kwargs:
+            timeout_member_connect = kwargs['timeoutMemberConnect']
+        if timeout_member_data is None and 'timeoutMemberData' in kwargs:
+            timeout_member_data = kwargs['timeoutMemberData']
+        if timeout_tcp_inspect is None and 'timeoutTcpInspect' in kwargs:
+            timeout_tcp_inspect = kwargs['timeoutTcpInspect']
+
         if admin_state_up is not None:
-            pulumi.set(__self__, "admin_state_up", admin_state_up)
+            _setter("admin_state_up", admin_state_up)
         if allowed_cidrs is not None:
-            pulumi.set(__self__, "allowed_cidrs", allowed_cidrs)
+            _setter("allowed_cidrs", allowed_cidrs)
         if connection_limit is not None:
-            pulumi.set(__self__, "connection_limit", connection_limit)
+            _setter("connection_limit", connection_limit)
         if default_pool_id is not None:
-            pulumi.set(__self__, "default_pool_id", default_pool_id)
+            _setter("default_pool_id", default_pool_id)
         if default_tls_container_ref is not None:
-            pulumi.set(__self__, "default_tls_container_ref", default_tls_container_ref)
+            _setter("default_tls_container_ref", default_tls_container_ref)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if insert_headers is not None:
-            pulumi.set(__self__, "insert_headers", insert_headers)
+            _setter("insert_headers", insert_headers)
         if loadbalancer_id is not None:
-            pulumi.set(__self__, "loadbalancer_id", loadbalancer_id)
+            _setter("loadbalancer_id", loadbalancer_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if protocol_port is not None:
-            pulumi.set(__self__, "protocol_port", protocol_port)
+            _setter("protocol_port", protocol_port)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if sni_container_refs is not None:
-            pulumi.set(__self__, "sni_container_refs", sni_container_refs)
+            _setter("sni_container_refs", sni_container_refs)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
         if timeout_client_data is not None:
-            pulumi.set(__self__, "timeout_client_data", timeout_client_data)
+            _setter("timeout_client_data", timeout_client_data)
         if timeout_member_connect is not None:
-            pulumi.set(__self__, "timeout_member_connect", timeout_member_connect)
+            _setter("timeout_member_connect", timeout_member_connect)
         if timeout_member_data is not None:
-            pulumi.set(__self__, "timeout_member_data", timeout_member_data)
+            _setter("timeout_member_data", timeout_member_data)
         if timeout_tcp_inspect is not None:
-            pulumi.set(__self__, "timeout_tcp_inspect", timeout_tcp_inspect)
+            _setter("timeout_tcp_inspect", timeout_tcp_inspect)
 
     @property
     @pulumi.getter(name="adminStateUp")
@@ -869,6 +1025,10 @@ class Listener(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ListenerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

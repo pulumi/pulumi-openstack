@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -41,11 +41,34 @@ class ApplicationCredentialAccessRule(dict):
         :param str id: The ID of the existing access rule. The access rule ID of
                another application credential can be provided.
         """
-        pulumi.set(__self__, "method", method)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "service", service)
+        ApplicationCredentialAccessRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            method=method,
+            path=path,
+            service=service,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             method: Optional[str] = None,
+             path: Optional[str] = None,
+             service: Optional[str] = None,
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
+        _setter("method", method)
+        _setter("path", path)
+        _setter("service", service)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
 
     @property
     @pulumi.getter
@@ -98,7 +121,20 @@ class UserMultiFactorAuthRule(dict):
         :param Sequence[str] rules: A list of authentication plugins that the user must
                authenticate with.
         """
-        pulumi.set(__self__, "rules", rules)
+        UserMultiFactorAuthRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            rules=rules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             rules: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if rules is None:
+            raise TypeError("Missing 'rules' argument")
+
+        _setter("rules", rules)
 
     @property
     @pulumi.getter
@@ -119,8 +155,29 @@ class GetAuthScopeRoleResult(dict):
         :param str role_id: The ID of the role.
         :param str role_name: The name of the role.
         """
-        pulumi.set(__self__, "role_id", role_id)
-        pulumi.set(__self__, "role_name", role_name)
+        GetAuthScopeRoleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            role_id=role_id,
+            role_name=role_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             role_id: Optional[str] = None,
+             role_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if role_id is None and 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+        if role_id is None:
+            raise TypeError("Missing 'role_id' argument")
+        if role_name is None and 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+        if role_name is None:
+            raise TypeError("Missing 'role_name' argument")
+
+        _setter("role_id", role_id)
+        _setter("role_name", role_name)
 
     @property
     @pulumi.getter(name="roleId")
@@ -153,10 +210,35 @@ class GetAuthScopeServiceCatalogResult(dict):
                only used as a unique identifier so an actual token isn't used as the ID.
         :param str type: The type of the service.
         """
-        pulumi.set(__self__, "endpoints", endpoints)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        GetAuthScopeServiceCatalogResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoints=endpoints,
+            id=id,
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoints: Optional[Sequence['outputs.GetAuthScopeServiceCatalogEndpointResult']] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if endpoints is None:
+            raise TypeError("Missing 'endpoints' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
+        _setter("endpoints", endpoints)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -209,11 +291,42 @@ class GetAuthScopeServiceCatalogEndpointResult(dict):
         :param str region_id: The region ID of the endpoint.
         :param str url: The URL of the endpoint.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "interface", interface)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "url", url)
+        GetAuthScopeServiceCatalogEndpointResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            interface=interface,
+            region=region,
+            region_id=region_id,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             interface: Optional[str] = None,
+             region: Optional[str] = None,
+             region_id: Optional[str] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if interface is None:
+            raise TypeError("Missing 'interface' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if region_id is None and 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if region_id is None:
+            raise TypeError("Missing 'region_id' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+
+        _setter("id", id)
+        _setter("interface", interface)
+        _setter("region", region)
+        _setter("region_id", region_id)
+        _setter("url", url)
 
     @property
     @pulumi.getter

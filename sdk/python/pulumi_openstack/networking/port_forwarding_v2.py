@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PortForwardingV2Args', 'PortForwardingV2']
@@ -42,16 +42,63 @@ class PortForwardingV2Args:
                `region` argument of the provider is used. Changing this creates a new
                port forwarding.
         """
-        pulumi.set(__self__, "external_port", external_port)
-        pulumi.set(__self__, "floatingip_id", floatingip_id)
-        pulumi.set(__self__, "internal_ip_address", internal_ip_address)
-        pulumi.set(__self__, "internal_port", internal_port)
-        pulumi.set(__self__, "internal_port_id", internal_port_id)
-        pulumi.set(__self__, "protocol", protocol)
+        PortForwardingV2Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            external_port=external_port,
+            floatingip_id=floatingip_id,
+            internal_ip_address=internal_ip_address,
+            internal_port=internal_port,
+            internal_port_id=internal_port_id,
+            protocol=protocol,
+            description=description,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             external_port: Optional[pulumi.Input[int]] = None,
+             floatingip_id: Optional[pulumi.Input[str]] = None,
+             internal_ip_address: Optional[pulumi.Input[str]] = None,
+             internal_port: Optional[pulumi.Input[int]] = None,
+             internal_port_id: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if external_port is None and 'externalPort' in kwargs:
+            external_port = kwargs['externalPort']
+        if external_port is None:
+            raise TypeError("Missing 'external_port' argument")
+        if floatingip_id is None and 'floatingipId' in kwargs:
+            floatingip_id = kwargs['floatingipId']
+        if floatingip_id is None:
+            raise TypeError("Missing 'floatingip_id' argument")
+        if internal_ip_address is None and 'internalIpAddress' in kwargs:
+            internal_ip_address = kwargs['internalIpAddress']
+        if internal_ip_address is None:
+            raise TypeError("Missing 'internal_ip_address' argument")
+        if internal_port is None and 'internalPort' in kwargs:
+            internal_port = kwargs['internalPort']
+        if internal_port is None:
+            raise TypeError("Missing 'internal_port' argument")
+        if internal_port_id is None and 'internalPortId' in kwargs:
+            internal_port_id = kwargs['internalPortId']
+        if internal_port_id is None:
+            raise TypeError("Missing 'internal_port_id' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+
+        _setter("external_port", external_port)
+        _setter("floatingip_id", floatingip_id)
+        _setter("internal_ip_address", internal_ip_address)
+        _setter("internal_port", internal_port)
+        _setter("internal_port_id", internal_port_id)
+        _setter("protocol", protocol)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="externalPort")
@@ -190,22 +237,57 @@ class _PortForwardingV2State:
                `region` argument of the provider is used. Changing this creates a new
                port forwarding.
         """
+        _PortForwardingV2State._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            external_port=external_port,
+            floatingip_id=floatingip_id,
+            internal_ip_address=internal_ip_address,
+            internal_port=internal_port,
+            internal_port_id=internal_port_id,
+            protocol=protocol,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             external_port: Optional[pulumi.Input[int]] = None,
+             floatingip_id: Optional[pulumi.Input[str]] = None,
+             internal_ip_address: Optional[pulumi.Input[str]] = None,
+             internal_port: Optional[pulumi.Input[int]] = None,
+             internal_port_id: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if external_port is None and 'externalPort' in kwargs:
+            external_port = kwargs['externalPort']
+        if floatingip_id is None and 'floatingipId' in kwargs:
+            floatingip_id = kwargs['floatingipId']
+        if internal_ip_address is None and 'internalIpAddress' in kwargs:
+            internal_ip_address = kwargs['internalIpAddress']
+        if internal_port is None and 'internalPort' in kwargs:
+            internal_port = kwargs['internalPort']
+        if internal_port_id is None and 'internalPortId' in kwargs:
+            internal_port_id = kwargs['internalPortId']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if external_port is not None:
-            pulumi.set(__self__, "external_port", external_port)
+            _setter("external_port", external_port)
         if floatingip_id is not None:
-            pulumi.set(__self__, "floatingip_id", floatingip_id)
+            _setter("floatingip_id", floatingip_id)
         if internal_ip_address is not None:
-            pulumi.set(__self__, "internal_ip_address", internal_ip_address)
+            _setter("internal_ip_address", internal_ip_address)
         if internal_port is not None:
-            pulumi.set(__self__, "internal_port", internal_port)
+            _setter("internal_port", internal_port)
         if internal_port_id is not None:
-            pulumi.set(__self__, "internal_port_id", internal_port_id)
+            _setter("internal_port_id", internal_port_id)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter
@@ -399,6 +481,10 @@ class PortForwardingV2(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PortForwardingV2Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
