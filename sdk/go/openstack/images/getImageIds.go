@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get a list of Openstack Image IDs matching the
@@ -221,12 +220,6 @@ func (o GetImageIdsResultOutput) ToGetImageIdsResultOutput() GetImageIdsResultOu
 
 func (o GetImageIdsResultOutput) ToGetImageIdsResultOutputWithContext(ctx context.Context) GetImageIdsResultOutput {
 	return o
-}
-
-func (o GetImageIdsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetImageIdsResult] {
-	return pulumix.Output[GetImageIdsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

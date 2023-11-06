@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a project access for flavor V2 resource within OpenStack.
@@ -195,12 +194,6 @@ func (i *FlavorAccess) ToFlavorAccessOutputWithContext(ctx context.Context) Flav
 	return pulumi.ToOutputWithContext(ctx, i).(FlavorAccessOutput)
 }
 
-func (i *FlavorAccess) ToOutput(ctx context.Context) pulumix.Output[*FlavorAccess] {
-	return pulumix.Output[*FlavorAccess]{
-		OutputState: i.ToFlavorAccessOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FlavorAccessArrayInput is an input type that accepts FlavorAccessArray and FlavorAccessArrayOutput values.
 // You can construct a concrete instance of `FlavorAccessArrayInput` via:
 //
@@ -224,12 +217,6 @@ func (i FlavorAccessArray) ToFlavorAccessArrayOutput() FlavorAccessArrayOutput {
 
 func (i FlavorAccessArray) ToFlavorAccessArrayOutputWithContext(ctx context.Context) FlavorAccessArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlavorAccessArrayOutput)
-}
-
-func (i FlavorAccessArray) ToOutput(ctx context.Context) pulumix.Output[[]*FlavorAccess] {
-	return pulumix.Output[[]*FlavorAccess]{
-		OutputState: i.ToFlavorAccessArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FlavorAccessMapInput is an input type that accepts FlavorAccessMap and FlavorAccessMapOutput values.
@@ -257,12 +244,6 @@ func (i FlavorAccessMap) ToFlavorAccessMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(FlavorAccessMapOutput)
 }
 
-func (i FlavorAccessMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FlavorAccess] {
-	return pulumix.Output[map[string]*FlavorAccess]{
-		OutputState: i.ToFlavorAccessMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FlavorAccessOutput struct{ *pulumi.OutputState }
 
 func (FlavorAccessOutput) ElementType() reflect.Type {
@@ -275,12 +256,6 @@ func (o FlavorAccessOutput) ToFlavorAccessOutput() FlavorAccessOutput {
 
 func (o FlavorAccessOutput) ToFlavorAccessOutputWithContext(ctx context.Context) FlavorAccessOutput {
 	return o
-}
-
-func (o FlavorAccessOutput) ToOutput(ctx context.Context) pulumix.Output[*FlavorAccess] {
-	return pulumix.Output[*FlavorAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The UUID of flavor to use. Changing this creates a new flavor access.
@@ -315,12 +290,6 @@ func (o FlavorAccessArrayOutput) ToFlavorAccessArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o FlavorAccessArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FlavorAccess] {
-	return pulumix.Output[[]*FlavorAccess]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FlavorAccessArrayOutput) Index(i pulumi.IntInput) FlavorAccessOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FlavorAccess {
 		return vs[0].([]*FlavorAccess)[vs[1].(int)]
@@ -339,12 +308,6 @@ func (o FlavorAccessMapOutput) ToFlavorAccessMapOutput() FlavorAccessMapOutput {
 
 func (o FlavorAccessMapOutput) ToFlavorAccessMapOutputWithContext(ctx context.Context) FlavorAccessMapOutput {
 	return o
-}
-
-func (o FlavorAccessMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FlavorAccess] {
-	return pulumix.Output[map[string]*FlavorAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlavorAccessMapOutput) MapIndex(k pulumi.StringInput) FlavorAccessOutput {

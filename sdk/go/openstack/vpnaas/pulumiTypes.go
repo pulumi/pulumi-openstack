@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -51,12 +50,6 @@ func (i IkePolicyLifetimeArgs) ToIkePolicyLifetimeOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(IkePolicyLifetimeOutput)
 }
 
-func (i IkePolicyLifetimeArgs) ToOutput(ctx context.Context) pulumix.Output[IkePolicyLifetime] {
-	return pulumix.Output[IkePolicyLifetime]{
-		OutputState: i.ToIkePolicyLifetimeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IkePolicyLifetimeArrayInput is an input type that accepts IkePolicyLifetimeArray and IkePolicyLifetimeArrayOutput values.
 // You can construct a concrete instance of `IkePolicyLifetimeArrayInput` via:
 //
@@ -82,12 +75,6 @@ func (i IkePolicyLifetimeArray) ToIkePolicyLifetimeArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(IkePolicyLifetimeArrayOutput)
 }
 
-func (i IkePolicyLifetimeArray) ToOutput(ctx context.Context) pulumix.Output[[]IkePolicyLifetime] {
-	return pulumix.Output[[]IkePolicyLifetime]{
-		OutputState: i.ToIkePolicyLifetimeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IkePolicyLifetimeOutput struct{ *pulumi.OutputState }
 
 func (IkePolicyLifetimeOutput) ElementType() reflect.Type {
@@ -100,12 +87,6 @@ func (o IkePolicyLifetimeOutput) ToIkePolicyLifetimeOutput() IkePolicyLifetimeOu
 
 func (o IkePolicyLifetimeOutput) ToIkePolicyLifetimeOutputWithContext(ctx context.Context) IkePolicyLifetimeOutput {
 	return o
-}
-
-func (o IkePolicyLifetimeOutput) ToOutput(ctx context.Context) pulumix.Output[IkePolicyLifetime] {
-	return pulumix.Output[IkePolicyLifetime]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IkePolicyLifetimeOutput) Units() pulumi.StringPtrOutput {
@@ -130,12 +111,6 @@ func (o IkePolicyLifetimeArrayOutput) ToIkePolicyLifetimeArrayOutput() IkePolicy
 
 func (o IkePolicyLifetimeArrayOutput) ToIkePolicyLifetimeArrayOutputWithContext(ctx context.Context) IkePolicyLifetimeArrayOutput {
 	return o
-}
-
-func (o IkePolicyLifetimeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IkePolicyLifetime] {
-	return pulumix.Output[[]IkePolicyLifetime]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IkePolicyLifetimeArrayOutput) Index(i pulumi.IntInput) IkePolicyLifetimeOutput {
@@ -181,12 +156,6 @@ func (i IpSecPolicyLifetimeArgs) ToIpSecPolicyLifetimeOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(IpSecPolicyLifetimeOutput)
 }
 
-func (i IpSecPolicyLifetimeArgs) ToOutput(ctx context.Context) pulumix.Output[IpSecPolicyLifetime] {
-	return pulumix.Output[IpSecPolicyLifetime]{
-		OutputState: i.ToIpSecPolicyLifetimeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IpSecPolicyLifetimeArrayInput is an input type that accepts IpSecPolicyLifetimeArray and IpSecPolicyLifetimeArrayOutput values.
 // You can construct a concrete instance of `IpSecPolicyLifetimeArrayInput` via:
 //
@@ -212,12 +181,6 @@ func (i IpSecPolicyLifetimeArray) ToIpSecPolicyLifetimeArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(IpSecPolicyLifetimeArrayOutput)
 }
 
-func (i IpSecPolicyLifetimeArray) ToOutput(ctx context.Context) pulumix.Output[[]IpSecPolicyLifetime] {
-	return pulumix.Output[[]IpSecPolicyLifetime]{
-		OutputState: i.ToIpSecPolicyLifetimeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IpSecPolicyLifetimeOutput struct{ *pulumi.OutputState }
 
 func (IpSecPolicyLifetimeOutput) ElementType() reflect.Type {
@@ -230,12 +193,6 @@ func (o IpSecPolicyLifetimeOutput) ToIpSecPolicyLifetimeOutput() IpSecPolicyLife
 
 func (o IpSecPolicyLifetimeOutput) ToIpSecPolicyLifetimeOutputWithContext(ctx context.Context) IpSecPolicyLifetimeOutput {
 	return o
-}
-
-func (o IpSecPolicyLifetimeOutput) ToOutput(ctx context.Context) pulumix.Output[IpSecPolicyLifetime] {
-	return pulumix.Output[IpSecPolicyLifetime]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IpSecPolicyLifetimeOutput) Units() pulumi.StringPtrOutput {
@@ -260,12 +217,6 @@ func (o IpSecPolicyLifetimeArrayOutput) ToIpSecPolicyLifetimeArrayOutput() IpSec
 
 func (o IpSecPolicyLifetimeArrayOutput) ToIpSecPolicyLifetimeArrayOutputWithContext(ctx context.Context) IpSecPolicyLifetimeArrayOutput {
 	return o
-}
-
-func (o IpSecPolicyLifetimeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IpSecPolicyLifetime] {
-	return pulumix.Output[[]IpSecPolicyLifetime]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IpSecPolicyLifetimeArrayOutput) Index(i pulumi.IntInput) IpSecPolicyLifetimeOutput {
@@ -327,12 +278,6 @@ func (i SiteConnectionDpdArgs) ToSiteConnectionDpdOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SiteConnectionDpdOutput)
 }
 
-func (i SiteConnectionDpdArgs) ToOutput(ctx context.Context) pulumix.Output[SiteConnectionDpd] {
-	return pulumix.Output[SiteConnectionDpd]{
-		OutputState: i.ToSiteConnectionDpdOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SiteConnectionDpdArrayInput is an input type that accepts SiteConnectionDpdArray and SiteConnectionDpdArrayOutput values.
 // You can construct a concrete instance of `SiteConnectionDpdArrayInput` via:
 //
@@ -358,12 +303,6 @@ func (i SiteConnectionDpdArray) ToSiteConnectionDpdArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(SiteConnectionDpdArrayOutput)
 }
 
-func (i SiteConnectionDpdArray) ToOutput(ctx context.Context) pulumix.Output[[]SiteConnectionDpd] {
-	return pulumix.Output[[]SiteConnectionDpd]{
-		OutputState: i.ToSiteConnectionDpdArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SiteConnectionDpdOutput struct{ *pulumi.OutputState }
 
 func (SiteConnectionDpdOutput) ElementType() reflect.Type {
@@ -376,12 +315,6 @@ func (o SiteConnectionDpdOutput) ToSiteConnectionDpdOutput() SiteConnectionDpdOu
 
 func (o SiteConnectionDpdOutput) ToSiteConnectionDpdOutputWithContext(ctx context.Context) SiteConnectionDpdOutput {
 	return o
-}
-
-func (o SiteConnectionDpdOutput) ToOutput(ctx context.Context) pulumix.Output[SiteConnectionDpd] {
-	return pulumix.Output[SiteConnectionDpd]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The dead peer detection (DPD) action.
@@ -417,12 +350,6 @@ func (o SiteConnectionDpdArrayOutput) ToSiteConnectionDpdArrayOutput() SiteConne
 
 func (o SiteConnectionDpdArrayOutput) ToSiteConnectionDpdArrayOutputWithContext(ctx context.Context) SiteConnectionDpdArrayOutput {
 	return o
-}
-
-func (o SiteConnectionDpdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SiteConnectionDpd] {
-	return pulumix.Output[[]SiteConnectionDpd]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SiteConnectionDpdArrayOutput) Index(i pulumi.IntInput) SiteConnectionDpdOutput {

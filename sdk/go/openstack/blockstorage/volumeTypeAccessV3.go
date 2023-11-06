@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V3 block storage volume type access resource within OpenStack.
@@ -194,12 +193,6 @@ func (i *VolumeTypeAccessV3) ToVolumeTypeAccessV3OutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeTypeAccessV3Output)
 }
 
-func (i *VolumeTypeAccessV3) ToOutput(ctx context.Context) pulumix.Output[*VolumeTypeAccessV3] {
-	return pulumix.Output[*VolumeTypeAccessV3]{
-		OutputState: i.ToVolumeTypeAccessV3OutputWithContext(ctx).OutputState,
-	}
-}
-
 // VolumeTypeAccessV3ArrayInput is an input type that accepts VolumeTypeAccessV3Array and VolumeTypeAccessV3ArrayOutput values.
 // You can construct a concrete instance of `VolumeTypeAccessV3ArrayInput` via:
 //
@@ -223,12 +216,6 @@ func (i VolumeTypeAccessV3Array) ToVolumeTypeAccessV3ArrayOutput() VolumeTypeAcc
 
 func (i VolumeTypeAccessV3Array) ToVolumeTypeAccessV3ArrayOutputWithContext(ctx context.Context) VolumeTypeAccessV3ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeTypeAccessV3ArrayOutput)
-}
-
-func (i VolumeTypeAccessV3Array) ToOutput(ctx context.Context) pulumix.Output[[]*VolumeTypeAccessV3] {
-	return pulumix.Output[[]*VolumeTypeAccessV3]{
-		OutputState: i.ToVolumeTypeAccessV3ArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VolumeTypeAccessV3MapInput is an input type that accepts VolumeTypeAccessV3Map and VolumeTypeAccessV3MapOutput values.
@@ -256,12 +243,6 @@ func (i VolumeTypeAccessV3Map) ToVolumeTypeAccessV3MapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeTypeAccessV3MapOutput)
 }
 
-func (i VolumeTypeAccessV3Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*VolumeTypeAccessV3] {
-	return pulumix.Output[map[string]*VolumeTypeAccessV3]{
-		OutputState: i.ToVolumeTypeAccessV3MapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VolumeTypeAccessV3Output struct{ *pulumi.OutputState }
 
 func (VolumeTypeAccessV3Output) ElementType() reflect.Type {
@@ -274,12 +255,6 @@ func (o VolumeTypeAccessV3Output) ToVolumeTypeAccessV3Output() VolumeTypeAccessV
 
 func (o VolumeTypeAccessV3Output) ToVolumeTypeAccessV3OutputWithContext(ctx context.Context) VolumeTypeAccessV3Output {
 	return o
-}
-
-func (o VolumeTypeAccessV3Output) ToOutput(ctx context.Context) pulumix.Output[*VolumeTypeAccessV3] {
-	return pulumix.Output[*VolumeTypeAccessV3]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ID of the project to give access to. Changing this
@@ -315,12 +290,6 @@ func (o VolumeTypeAccessV3ArrayOutput) ToVolumeTypeAccessV3ArrayOutputWithContex
 	return o
 }
 
-func (o VolumeTypeAccessV3ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VolumeTypeAccessV3] {
-	return pulumix.Output[[]*VolumeTypeAccessV3]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VolumeTypeAccessV3ArrayOutput) Index(i pulumi.IntInput) VolumeTypeAccessV3Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VolumeTypeAccessV3 {
 		return vs[0].([]*VolumeTypeAccessV3)[vs[1].(int)]
@@ -339,12 +308,6 @@ func (o VolumeTypeAccessV3MapOutput) ToVolumeTypeAccessV3MapOutput() VolumeTypeA
 
 func (o VolumeTypeAccessV3MapOutput) ToVolumeTypeAccessV3MapOutputWithContext(ctx context.Context) VolumeTypeAccessV3MapOutput {
 	return o
-}
-
-func (o VolumeTypeAccessV3MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VolumeTypeAccessV3] {
-	return pulumix.Output[map[string]*VolumeTypeAccessV3]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeTypeAccessV3MapOutput) MapIndex(k pulumi.StringInput) VolumeTypeAccessV3Output {

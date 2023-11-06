@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 Neutron QoS DSCP marking rule resource within OpenStack.
@@ -183,12 +182,6 @@ func (i *QosDscpMarkingRule) ToQosDscpMarkingRuleOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(QosDscpMarkingRuleOutput)
 }
 
-func (i *QosDscpMarkingRule) ToOutput(ctx context.Context) pulumix.Output[*QosDscpMarkingRule] {
-	return pulumix.Output[*QosDscpMarkingRule]{
-		OutputState: i.ToQosDscpMarkingRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // QosDscpMarkingRuleArrayInput is an input type that accepts QosDscpMarkingRuleArray and QosDscpMarkingRuleArrayOutput values.
 // You can construct a concrete instance of `QosDscpMarkingRuleArrayInput` via:
 //
@@ -212,12 +205,6 @@ func (i QosDscpMarkingRuleArray) ToQosDscpMarkingRuleArrayOutput() QosDscpMarkin
 
 func (i QosDscpMarkingRuleArray) ToQosDscpMarkingRuleArrayOutputWithContext(ctx context.Context) QosDscpMarkingRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosDscpMarkingRuleArrayOutput)
-}
-
-func (i QosDscpMarkingRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*QosDscpMarkingRule] {
-	return pulumix.Output[[]*QosDscpMarkingRule]{
-		OutputState: i.ToQosDscpMarkingRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // QosDscpMarkingRuleMapInput is an input type that accepts QosDscpMarkingRuleMap and QosDscpMarkingRuleMapOutput values.
@@ -245,12 +232,6 @@ func (i QosDscpMarkingRuleMap) ToQosDscpMarkingRuleMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(QosDscpMarkingRuleMapOutput)
 }
 
-func (i QosDscpMarkingRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*QosDscpMarkingRule] {
-	return pulumix.Output[map[string]*QosDscpMarkingRule]{
-		OutputState: i.ToQosDscpMarkingRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type QosDscpMarkingRuleOutput struct{ *pulumi.OutputState }
 
 func (QosDscpMarkingRuleOutput) ElementType() reflect.Type {
@@ -263,12 +244,6 @@ func (o QosDscpMarkingRuleOutput) ToQosDscpMarkingRuleOutput() QosDscpMarkingRul
 
 func (o QosDscpMarkingRuleOutput) ToQosDscpMarkingRuleOutputWithContext(ctx context.Context) QosDscpMarkingRuleOutput {
 	return o
-}
-
-func (o QosDscpMarkingRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*QosDscpMarkingRule] {
-	return pulumix.Output[*QosDscpMarkingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value of DSCP mark. Changing this updates the DSCP mark value existing
@@ -303,12 +278,6 @@ func (o QosDscpMarkingRuleArrayOutput) ToQosDscpMarkingRuleArrayOutputWithContex
 	return o
 }
 
-func (o QosDscpMarkingRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*QosDscpMarkingRule] {
-	return pulumix.Output[[]*QosDscpMarkingRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o QosDscpMarkingRuleArrayOutput) Index(i pulumi.IntInput) QosDscpMarkingRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QosDscpMarkingRule {
 		return vs[0].([]*QosDscpMarkingRule)[vs[1].(int)]
@@ -327,12 +296,6 @@ func (o QosDscpMarkingRuleMapOutput) ToQosDscpMarkingRuleMapOutput() QosDscpMark
 
 func (o QosDscpMarkingRuleMapOutput) ToQosDscpMarkingRuleMapOutputWithContext(ctx context.Context) QosDscpMarkingRuleMapOutput {
 	return o
-}
-
-func (o QosDscpMarkingRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*QosDscpMarkingRule] {
-	return pulumix.Output[map[string]*QosDscpMarkingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QosDscpMarkingRuleMapOutput) MapIndex(k pulumi.StringInput) QosDscpMarkingRuleOutput {

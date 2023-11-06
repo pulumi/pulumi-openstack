@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 Neutron Endpoint Group resource within OpenStack.
@@ -237,12 +236,6 @@ func (i *EndpointGroup) ToEndpointGroupOutputWithContext(ctx context.Context) En
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointGroupOutput)
 }
 
-func (i *EndpointGroup) ToOutput(ctx context.Context) pulumix.Output[*EndpointGroup] {
-	return pulumix.Output[*EndpointGroup]{
-		OutputState: i.ToEndpointGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EndpointGroupArrayInput is an input type that accepts EndpointGroupArray and EndpointGroupArrayOutput values.
 // You can construct a concrete instance of `EndpointGroupArrayInput` via:
 //
@@ -266,12 +259,6 @@ func (i EndpointGroupArray) ToEndpointGroupArrayOutput() EndpointGroupArrayOutpu
 
 func (i EndpointGroupArray) ToEndpointGroupArrayOutputWithContext(ctx context.Context) EndpointGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointGroupArrayOutput)
-}
-
-func (i EndpointGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*EndpointGroup] {
-	return pulumix.Output[[]*EndpointGroup]{
-		OutputState: i.ToEndpointGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EndpointGroupMapInput is an input type that accepts EndpointGroupMap and EndpointGroupMapOutput values.
@@ -299,12 +286,6 @@ func (i EndpointGroupMap) ToEndpointGroupMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointGroupMapOutput)
 }
 
-func (i EndpointGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EndpointGroup] {
-	return pulumix.Output[map[string]*EndpointGroup]{
-		OutputState: i.ToEndpointGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EndpointGroupOutput struct{ *pulumi.OutputState }
 
 func (EndpointGroupOutput) ElementType() reflect.Type {
@@ -317,12 +298,6 @@ func (o EndpointGroupOutput) ToEndpointGroupOutput() EndpointGroupOutput {
 
 func (o EndpointGroupOutput) ToEndpointGroupOutputWithContext(ctx context.Context) EndpointGroupOutput {
 	return o
-}
-
-func (o EndpointGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointGroup] {
-	return pulumix.Output[*EndpointGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The human-readable description for the group.
@@ -382,12 +357,6 @@ func (o EndpointGroupArrayOutput) ToEndpointGroupArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o EndpointGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EndpointGroup] {
-	return pulumix.Output[[]*EndpointGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EndpointGroupArrayOutput) Index(i pulumi.IntInput) EndpointGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EndpointGroup {
 		return vs[0].([]*EndpointGroup)[vs[1].(int)]
@@ -406,12 +375,6 @@ func (o EndpointGroupMapOutput) ToEndpointGroupMapOutput() EndpointGroupMapOutpu
 
 func (o EndpointGroupMapOutput) ToEndpointGroupMapOutputWithContext(ctx context.Context) EndpointGroupMapOutput {
 	return o
-}
-
-func (o EndpointGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EndpointGroup] {
-	return pulumix.Output[map[string]*EndpointGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EndpointGroupMapOutput) MapIndex(k pulumi.StringInput) EndpointGroupOutput {

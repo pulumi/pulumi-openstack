@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 Neutron QoS bandwidth limit rule resource within OpenStack.
@@ -215,12 +214,6 @@ func (i *QosBandwidthLimitRule) ToQosBandwidthLimitRuleOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(QosBandwidthLimitRuleOutput)
 }
 
-func (i *QosBandwidthLimitRule) ToOutput(ctx context.Context) pulumix.Output[*QosBandwidthLimitRule] {
-	return pulumix.Output[*QosBandwidthLimitRule]{
-		OutputState: i.ToQosBandwidthLimitRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // QosBandwidthLimitRuleArrayInput is an input type that accepts QosBandwidthLimitRuleArray and QosBandwidthLimitRuleArrayOutput values.
 // You can construct a concrete instance of `QosBandwidthLimitRuleArrayInput` via:
 //
@@ -244,12 +237,6 @@ func (i QosBandwidthLimitRuleArray) ToQosBandwidthLimitRuleArrayOutput() QosBand
 
 func (i QosBandwidthLimitRuleArray) ToQosBandwidthLimitRuleArrayOutputWithContext(ctx context.Context) QosBandwidthLimitRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QosBandwidthLimitRuleArrayOutput)
-}
-
-func (i QosBandwidthLimitRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*QosBandwidthLimitRule] {
-	return pulumix.Output[[]*QosBandwidthLimitRule]{
-		OutputState: i.ToQosBandwidthLimitRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // QosBandwidthLimitRuleMapInput is an input type that accepts QosBandwidthLimitRuleMap and QosBandwidthLimitRuleMapOutput values.
@@ -277,12 +264,6 @@ func (i QosBandwidthLimitRuleMap) ToQosBandwidthLimitRuleMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(QosBandwidthLimitRuleMapOutput)
 }
 
-func (i QosBandwidthLimitRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*QosBandwidthLimitRule] {
-	return pulumix.Output[map[string]*QosBandwidthLimitRule]{
-		OutputState: i.ToQosBandwidthLimitRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type QosBandwidthLimitRuleOutput struct{ *pulumi.OutputState }
 
 func (QosBandwidthLimitRuleOutput) ElementType() reflect.Type {
@@ -295,12 +276,6 @@ func (o QosBandwidthLimitRuleOutput) ToQosBandwidthLimitRuleOutput() QosBandwidt
 
 func (o QosBandwidthLimitRuleOutput) ToQosBandwidthLimitRuleOutputWithContext(ctx context.Context) QosBandwidthLimitRuleOutput {
 	return o
-}
-
-func (o QosBandwidthLimitRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*QosBandwidthLimitRule] {
-	return pulumix.Output[*QosBandwidthLimitRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The direction of traffic. Defaults to "egress". Changing this updates the direction of the
@@ -347,12 +322,6 @@ func (o QosBandwidthLimitRuleArrayOutput) ToQosBandwidthLimitRuleArrayOutputWith
 	return o
 }
 
-func (o QosBandwidthLimitRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*QosBandwidthLimitRule] {
-	return pulumix.Output[[]*QosBandwidthLimitRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o QosBandwidthLimitRuleArrayOutput) Index(i pulumi.IntInput) QosBandwidthLimitRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QosBandwidthLimitRule {
 		return vs[0].([]*QosBandwidthLimitRule)[vs[1].(int)]
@@ -371,12 +340,6 @@ func (o QosBandwidthLimitRuleMapOutput) ToQosBandwidthLimitRuleMapOutput() QosBa
 
 func (o QosBandwidthLimitRuleMapOutput) ToQosBandwidthLimitRuleMapOutputWithContext(ctx context.Context) QosBandwidthLimitRuleMapOutput {
 	return o
-}
-
-func (o QosBandwidthLimitRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*QosBandwidthLimitRule] {
-	return pulumix.Output[map[string]*QosBandwidthLimitRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QosBandwidthLimitRuleMapOutput) MapIndex(k pulumi.StringInput) QosBandwidthLimitRuleOutput {

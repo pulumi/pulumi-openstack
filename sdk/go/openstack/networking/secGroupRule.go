@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 neutron security group rule resource within OpenStack.
@@ -442,12 +441,6 @@ func (i *SecGroupRule) ToSecGroupRuleOutputWithContext(ctx context.Context) SecG
 	return pulumi.ToOutputWithContext(ctx, i).(SecGroupRuleOutput)
 }
 
-func (i *SecGroupRule) ToOutput(ctx context.Context) pulumix.Output[*SecGroupRule] {
-	return pulumix.Output[*SecGroupRule]{
-		OutputState: i.ToSecGroupRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SecGroupRuleArrayInput is an input type that accepts SecGroupRuleArray and SecGroupRuleArrayOutput values.
 // You can construct a concrete instance of `SecGroupRuleArrayInput` via:
 //
@@ -471,12 +464,6 @@ func (i SecGroupRuleArray) ToSecGroupRuleArrayOutput() SecGroupRuleArrayOutput {
 
 func (i SecGroupRuleArray) ToSecGroupRuleArrayOutputWithContext(ctx context.Context) SecGroupRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecGroupRuleArrayOutput)
-}
-
-func (i SecGroupRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*SecGroupRule] {
-	return pulumix.Output[[]*SecGroupRule]{
-		OutputState: i.ToSecGroupRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SecGroupRuleMapInput is an input type that accepts SecGroupRuleMap and SecGroupRuleMapOutput values.
@@ -504,12 +491,6 @@ func (i SecGroupRuleMap) ToSecGroupRuleMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SecGroupRuleMapOutput)
 }
 
-func (i SecGroupRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecGroupRule] {
-	return pulumix.Output[map[string]*SecGroupRule]{
-		OutputState: i.ToSecGroupRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecGroupRuleOutput struct{ *pulumi.OutputState }
 
 func (SecGroupRuleOutput) ElementType() reflect.Type {
@@ -522,12 +503,6 @@ func (o SecGroupRuleOutput) ToSecGroupRuleOutput() SecGroupRuleOutput {
 
 func (o SecGroupRuleOutput) ToSecGroupRuleOutputWithContext(ctx context.Context) SecGroupRuleOutput {
 	return o
-}
-
-func (o SecGroupRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*SecGroupRule] {
-	return pulumix.Output[*SecGroupRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A description of the rule. Changing this creates a new security group rule.
@@ -636,12 +611,6 @@ func (o SecGroupRuleArrayOutput) ToSecGroupRuleArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o SecGroupRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecGroupRule] {
-	return pulumix.Output[[]*SecGroupRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SecGroupRuleArrayOutput) Index(i pulumi.IntInput) SecGroupRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecGroupRule {
 		return vs[0].([]*SecGroupRule)[vs[1].(int)]
@@ -660,12 +629,6 @@ func (o SecGroupRuleMapOutput) ToSecGroupRuleMapOutput() SecGroupRuleMapOutput {
 
 func (o SecGroupRuleMapOutput) ToSecGroupRuleMapOutputWithContext(ctx context.Context) SecGroupRuleMapOutput {
 	return o
-}
-
-func (o SecGroupRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecGroupRule] {
-	return pulumix.Output[map[string]*SecGroupRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecGroupRuleMapOutput) MapIndex(k pulumi.StringInput) SecGroupRuleOutput {

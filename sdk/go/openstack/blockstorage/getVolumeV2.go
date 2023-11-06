@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about an existing volume.
@@ -135,12 +134,6 @@ func (o LookupVolumeV2ResultOutput) ToLookupVolumeV2ResultOutput() LookupVolumeV
 
 func (o LookupVolumeV2ResultOutput) ToLookupVolumeV2ResultOutputWithContext(ctx context.Context) LookupVolumeV2ResultOutput {
 	return o
-}
-
-func (o LookupVolumeV2ResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVolumeV2Result] {
-	return pulumix.Output[LookupVolumeV2Result]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates if the volume is bootable.

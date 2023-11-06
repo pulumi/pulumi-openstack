@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages members for the shared OpenStack Glance V2 Image within the source
@@ -268,12 +267,6 @@ func (i *ImageAccess) ToImageAccessOutputWithContext(ctx context.Context) ImageA
 	return pulumi.ToOutputWithContext(ctx, i).(ImageAccessOutput)
 }
 
-func (i *ImageAccess) ToOutput(ctx context.Context) pulumix.Output[*ImageAccess] {
-	return pulumix.Output[*ImageAccess]{
-		OutputState: i.ToImageAccessOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ImageAccessArrayInput is an input type that accepts ImageAccessArray and ImageAccessArrayOutput values.
 // You can construct a concrete instance of `ImageAccessArrayInput` via:
 //
@@ -297,12 +290,6 @@ func (i ImageAccessArray) ToImageAccessArrayOutput() ImageAccessArrayOutput {
 
 func (i ImageAccessArray) ToImageAccessArrayOutputWithContext(ctx context.Context) ImageAccessArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageAccessArrayOutput)
-}
-
-func (i ImageAccessArray) ToOutput(ctx context.Context) pulumix.Output[[]*ImageAccess] {
-	return pulumix.Output[[]*ImageAccess]{
-		OutputState: i.ToImageAccessArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ImageAccessMapInput is an input type that accepts ImageAccessMap and ImageAccessMapOutput values.
@@ -330,12 +317,6 @@ func (i ImageAccessMap) ToImageAccessMapOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(ImageAccessMapOutput)
 }
 
-func (i ImageAccessMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageAccess] {
-	return pulumix.Output[map[string]*ImageAccess]{
-		OutputState: i.ToImageAccessMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ImageAccessOutput struct{ *pulumi.OutputState }
 
 func (ImageAccessOutput) ElementType() reflect.Type {
@@ -348,12 +329,6 @@ func (o ImageAccessOutput) ToImageAccessOutput() ImageAccessOutput {
 
 func (o ImageAccessOutput) ToImageAccessOutputWithContext(ctx context.Context) ImageAccessOutput {
 	return o
-}
-
-func (o ImageAccessOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageAccess] {
-	return pulumix.Output[*ImageAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date the image access was created.
@@ -409,12 +384,6 @@ func (o ImageAccessArrayOutput) ToImageAccessArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ImageAccessArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ImageAccess] {
-	return pulumix.Output[[]*ImageAccess]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ImageAccessArrayOutput) Index(i pulumi.IntInput) ImageAccessOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ImageAccess {
 		return vs[0].([]*ImageAccess)[vs[1].(int)]
@@ -433,12 +402,6 @@ func (o ImageAccessMapOutput) ToImageAccessMapOutput() ImageAccessMapOutput {
 
 func (o ImageAccessMapOutput) ToImageAccessMapOutputWithContext(ctx context.Context) ImageAccessMapOutput {
 	return o
-}
-
-func (o ImageAccessMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageAccess] {
-	return pulumix.Output[map[string]*ImageAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageAccessMapOutput) MapIndex(k pulumi.StringInput) ImageAccessOutput {

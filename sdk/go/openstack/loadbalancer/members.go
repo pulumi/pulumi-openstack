@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 members resource within OpenStack (batch members update).
@@ -199,12 +198,6 @@ func (i *Members) ToMembersOutputWithContext(ctx context.Context) MembersOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(MembersOutput)
 }
 
-func (i *Members) ToOutput(ctx context.Context) pulumix.Output[*Members] {
-	return pulumix.Output[*Members]{
-		OutputState: i.ToMembersOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MembersArrayInput is an input type that accepts MembersArray and MembersArrayOutput values.
 // You can construct a concrete instance of `MembersArrayInput` via:
 //
@@ -228,12 +221,6 @@ func (i MembersArray) ToMembersArrayOutput() MembersArrayOutput {
 
 func (i MembersArray) ToMembersArrayOutputWithContext(ctx context.Context) MembersArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MembersArrayOutput)
-}
-
-func (i MembersArray) ToOutput(ctx context.Context) pulumix.Output[[]*Members] {
-	return pulumix.Output[[]*Members]{
-		OutputState: i.ToMembersArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MembersMapInput is an input type that accepts MembersMap and MembersMapOutput values.
@@ -261,12 +248,6 @@ func (i MembersMap) ToMembersMapOutputWithContext(ctx context.Context) MembersMa
 	return pulumi.ToOutputWithContext(ctx, i).(MembersMapOutput)
 }
 
-func (i MembersMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Members] {
-	return pulumix.Output[map[string]*Members]{
-		OutputState: i.ToMembersMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MembersOutput struct{ *pulumi.OutputState }
 
 func (MembersOutput) ElementType() reflect.Type {
@@ -279,12 +260,6 @@ func (o MembersOutput) ToMembersOutput() MembersOutput {
 
 func (o MembersOutput) ToMembersOutputWithContext(ctx context.Context) MembersOutput {
 	return o
-}
-
-func (o MembersOutput) ToOutput(ctx context.Context) pulumix.Output[*Members] {
-	return pulumix.Output[*Members]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A set of dictionaries containing member parameters. The
@@ -321,12 +296,6 @@ func (o MembersArrayOutput) ToMembersArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o MembersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Members] {
-	return pulumix.Output[[]*Members]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MembersArrayOutput) Index(i pulumi.IntInput) MembersOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Members {
 		return vs[0].([]*Members)[vs[1].(int)]
@@ -345,12 +314,6 @@ func (o MembersMapOutput) ToMembersMapOutput() MembersMapOutput {
 
 func (o MembersMapOutput) ToMembersMapOutputWithContext(ctx context.Context) MembersMapOutput {
 	return o
-}
-
-func (o MembersMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Members] {
-	return pulumix.Output[map[string]*Members]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MembersMapOutput) MapIndex(k pulumi.StringInput) MembersOutput {
