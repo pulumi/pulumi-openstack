@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -233,12 +232,6 @@ func (o GetSecretResultOutput) ToGetSecretResultOutput() GetSecretResultOutput {
 
 func (o GetSecretResultOutput) ToGetSecretResultOutputWithContext(ctx context.Context) GetSecretResultOutput {
 	return o
-}
-
-func (o GetSecretResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretResult] {
-	return pulumix.Output[GetSecretResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // See Argument Reference above.

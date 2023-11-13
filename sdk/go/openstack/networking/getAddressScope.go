@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the ID of an available OpenStack address-scope.
@@ -130,12 +129,6 @@ func (o LookupAddressScopeResultOutput) ToLookupAddressScopeResultOutput() Looku
 
 func (o LookupAddressScopeResultOutput) ToLookupAddressScopeResultOutputWithContext(ctx context.Context) LookupAddressScopeResultOutput {
 	return o
-}
-
-func (o LookupAddressScopeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAddressScopeResult] {
-	return pulumix.Output[LookupAddressScopeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

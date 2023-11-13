@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -199,12 +198,6 @@ func (i *SecGroup) ToSecGroupOutputWithContext(ctx context.Context) SecGroupOutp
 	return pulumi.ToOutputWithContext(ctx, i).(SecGroupOutput)
 }
 
-func (i *SecGroup) ToOutput(ctx context.Context) pulumix.Output[*SecGroup] {
-	return pulumix.Output[*SecGroup]{
-		OutputState: i.ToSecGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SecGroupArrayInput is an input type that accepts SecGroupArray and SecGroupArrayOutput values.
 // You can construct a concrete instance of `SecGroupArrayInput` via:
 //
@@ -228,12 +221,6 @@ func (i SecGroupArray) ToSecGroupArrayOutput() SecGroupArrayOutput {
 
 func (i SecGroupArray) ToSecGroupArrayOutputWithContext(ctx context.Context) SecGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecGroupArrayOutput)
-}
-
-func (i SecGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*SecGroup] {
-	return pulumix.Output[[]*SecGroup]{
-		OutputState: i.ToSecGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SecGroupMapInput is an input type that accepts SecGroupMap and SecGroupMapOutput values.
@@ -261,12 +248,6 @@ func (i SecGroupMap) ToSecGroupMapOutputWithContext(ctx context.Context) SecGrou
 	return pulumi.ToOutputWithContext(ctx, i).(SecGroupMapOutput)
 }
 
-func (i SecGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecGroup] {
-	return pulumix.Output[map[string]*SecGroup]{
-		OutputState: i.ToSecGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecGroupOutput struct{ *pulumi.OutputState }
 
 func (SecGroupOutput) ElementType() reflect.Type {
@@ -279,12 +260,6 @@ func (o SecGroupOutput) ToSecGroupOutput() SecGroupOutput {
 
 func (o SecGroupOutput) ToSecGroupOutputWithContext(ctx context.Context) SecGroupOutput {
 	return o
-}
-
-func (o SecGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*SecGroup] {
-	return pulumix.Output[*SecGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The collection of tags assigned on the security group, which have
@@ -344,12 +319,6 @@ func (o SecGroupArrayOutput) ToSecGroupArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o SecGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SecGroup] {
-	return pulumix.Output[[]*SecGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SecGroupArrayOutput) Index(i pulumi.IntInput) SecGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SecGroup {
 		return vs[0].([]*SecGroup)[vs[1].(int)]
@@ -368,12 +337,6 @@ func (o SecGroupMapOutput) ToSecGroupMapOutput() SecGroupMapOutput {
 
 func (o SecGroupMapOutput) ToSecGroupMapOutputWithContext(ctx context.Context) SecGroupMapOutput {
 	return o
-}
-
-func (o SecGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SecGroup] {
-	return pulumix.Output[map[string]*SecGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecGroupMapOutput) MapIndex(k pulumi.StringInput) SecGroupOutput {

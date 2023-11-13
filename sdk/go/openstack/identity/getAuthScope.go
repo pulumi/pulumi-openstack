@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -231,12 +230,6 @@ func (o GetAuthScopeResultOutput) ToGetAuthScopeResultOutput() GetAuthScopeResul
 
 func (o GetAuthScopeResultOutput) ToGetAuthScopeResultOutputWithContext(ctx context.Context) GetAuthScopeResultOutput {
 	return o
-}
-
-func (o GetAuthScopeResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAuthScopeResult] {
-	return pulumix.Output[GetAuthScopeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The domain ID of the scope.

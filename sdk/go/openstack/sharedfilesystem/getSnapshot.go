@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the ID of an available Shared File System snapshot.
@@ -134,12 +133,6 @@ func (o GetSnapshotResultOutput) ToGetSnapshotResultOutput() GetSnapshotResultOu
 
 func (o GetSnapshotResultOutput) ToGetSnapshotResultOutputWithContext(ctx context.Context) GetSnapshotResultOutput {
 	return o
-}
-
-func (o GetSnapshotResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSnapshotResult] {
-	return pulumix.Output[GetSnapshotResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // See Argument Reference above.

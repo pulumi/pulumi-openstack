@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 Neutron IKE policy resource within OpenStack.
@@ -286,12 +285,6 @@ func (i *IkePolicy) ToIkePolicyOutputWithContext(ctx context.Context) IkePolicyO
 	return pulumi.ToOutputWithContext(ctx, i).(IkePolicyOutput)
 }
 
-func (i *IkePolicy) ToOutput(ctx context.Context) pulumix.Output[*IkePolicy] {
-	return pulumix.Output[*IkePolicy]{
-		OutputState: i.ToIkePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IkePolicyArrayInput is an input type that accepts IkePolicyArray and IkePolicyArrayOutput values.
 // You can construct a concrete instance of `IkePolicyArrayInput` via:
 //
@@ -315,12 +308,6 @@ func (i IkePolicyArray) ToIkePolicyArrayOutput() IkePolicyArrayOutput {
 
 func (i IkePolicyArray) ToIkePolicyArrayOutputWithContext(ctx context.Context) IkePolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IkePolicyArrayOutput)
-}
-
-func (i IkePolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*IkePolicy] {
-	return pulumix.Output[[]*IkePolicy]{
-		OutputState: i.ToIkePolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IkePolicyMapInput is an input type that accepts IkePolicyMap and IkePolicyMapOutput values.
@@ -348,12 +335,6 @@ func (i IkePolicyMap) ToIkePolicyMapOutputWithContext(ctx context.Context) IkePo
 	return pulumi.ToOutputWithContext(ctx, i).(IkePolicyMapOutput)
 }
 
-func (i IkePolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IkePolicy] {
-	return pulumix.Output[map[string]*IkePolicy]{
-		OutputState: i.ToIkePolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IkePolicyOutput struct{ *pulumi.OutputState }
 
 func (IkePolicyOutput) ElementType() reflect.Type {
@@ -366,12 +347,6 @@ func (o IkePolicyOutput) ToIkePolicyOutput() IkePolicyOutput {
 
 func (o IkePolicyOutput) ToIkePolicyOutputWithContext(ctx context.Context) IkePolicyOutput {
 	return o
-}
-
-func (o IkePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*IkePolicy] {
-	return pulumix.Output[*IkePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512.
@@ -454,12 +429,6 @@ func (o IkePolicyArrayOutput) ToIkePolicyArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o IkePolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IkePolicy] {
-	return pulumix.Output[[]*IkePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IkePolicyArrayOutput) Index(i pulumi.IntInput) IkePolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IkePolicy {
 		return vs[0].([]*IkePolicy)[vs[1].(int)]
@@ -478,12 +447,6 @@ func (o IkePolicyMapOutput) ToIkePolicyMapOutput() IkePolicyMapOutput {
 
 func (o IkePolicyMapOutput) ToIkePolicyMapOutputWithContext(ctx context.Context) IkePolicyMapOutput {
 	return o
-}
-
-func (o IkePolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IkePolicy] {
-	return pulumix.Output[map[string]*IkePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IkePolicyMapOutput) MapIndex(k pulumi.StringInput) IkePolicyOutput {

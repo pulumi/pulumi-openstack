@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i VolumeAttachmentArgs) ToVolumeAttachmentOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachmentOutput)
 }
 
-func (i VolumeAttachmentArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeAttachment] {
-	return pulumix.Output[VolumeAttachment]{
-		OutputState: i.ToVolumeAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VolumeAttachmentArrayInput is an input type that accepts VolumeAttachmentArray and VolumeAttachmentArrayOutput values.
 // You can construct a concrete instance of `VolumeAttachmentArrayInput` via:
 //
@@ -80,12 +73,6 @@ func (i VolumeAttachmentArray) ToVolumeAttachmentArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeAttachmentArrayOutput)
 }
 
-func (i VolumeAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]VolumeAttachment] {
-	return pulumix.Output[[]VolumeAttachment]{
-		OutputState: i.ToVolumeAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VolumeAttachmentOutput struct{ *pulumi.OutputState }
 
 func (VolumeAttachmentOutput) ElementType() reflect.Type {
@@ -98,12 +85,6 @@ func (o VolumeAttachmentOutput) ToVolumeAttachmentOutput() VolumeAttachmentOutpu
 
 func (o VolumeAttachmentOutput) ToVolumeAttachmentOutputWithContext(ctx context.Context) VolumeAttachmentOutput {
 	return o
-}
-
-func (o VolumeAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeAttachment] {
-	return pulumix.Output[VolumeAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeAttachmentOutput) Device() pulumi.StringPtrOutput {
@@ -130,12 +111,6 @@ func (o VolumeAttachmentArrayOutput) ToVolumeAttachmentArrayOutput() VolumeAttac
 
 func (o VolumeAttachmentArrayOutput) ToVolumeAttachmentArrayOutputWithContext(ctx context.Context) VolumeAttachmentArrayOutput {
 	return o
-}
-
-func (o VolumeAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeAttachment] {
-	return pulumix.Output[[]VolumeAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeAttachmentArrayOutput) Index(i pulumi.IntInput) VolumeAttachmentOutput {
@@ -211,12 +186,6 @@ func (i VolumeSchedulerHintArgs) ToVolumeSchedulerHintOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeSchedulerHintOutput)
 }
 
-func (i VolumeSchedulerHintArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeSchedulerHint] {
-	return pulumix.Output[VolumeSchedulerHint]{
-		OutputState: i.ToVolumeSchedulerHintOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VolumeSchedulerHintArrayInput is an input type that accepts VolumeSchedulerHintArray and VolumeSchedulerHintArrayOutput values.
 // You can construct a concrete instance of `VolumeSchedulerHintArrayInput` via:
 //
@@ -242,12 +211,6 @@ func (i VolumeSchedulerHintArray) ToVolumeSchedulerHintArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeSchedulerHintArrayOutput)
 }
 
-func (i VolumeSchedulerHintArray) ToOutput(ctx context.Context) pulumix.Output[[]VolumeSchedulerHint] {
-	return pulumix.Output[[]VolumeSchedulerHint]{
-		OutputState: i.ToVolumeSchedulerHintArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VolumeSchedulerHintOutput struct{ *pulumi.OutputState }
 
 func (VolumeSchedulerHintOutput) ElementType() reflect.Type {
@@ -260,12 +223,6 @@ func (o VolumeSchedulerHintOutput) ToVolumeSchedulerHintOutput() VolumeScheduler
 
 func (o VolumeSchedulerHintOutput) ToVolumeSchedulerHintOutputWithContext(ctx context.Context) VolumeSchedulerHintOutput {
 	return o
-}
-
-func (o VolumeSchedulerHintOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeSchedulerHint] {
-	return pulumix.Output[VolumeSchedulerHint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Arbitrary key/value pairs of additional
@@ -316,12 +273,6 @@ func (o VolumeSchedulerHintArrayOutput) ToVolumeSchedulerHintArrayOutputWithCont
 	return o
 }
 
-func (o VolumeSchedulerHintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeSchedulerHint] {
-	return pulumix.Output[[]VolumeSchedulerHint]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VolumeSchedulerHintArrayOutput) Index(i pulumi.IntInput) VolumeSchedulerHintOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeSchedulerHint {
 		return vs[0].([]VolumeSchedulerHint)[vs[1].(int)]
@@ -363,12 +314,6 @@ func (i VolumeV1AttachmentArgs) ToVolumeV1AttachmentOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeV1AttachmentOutput)
 }
 
-func (i VolumeV1AttachmentArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeV1Attachment] {
-	return pulumix.Output[VolumeV1Attachment]{
-		OutputState: i.ToVolumeV1AttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VolumeV1AttachmentArrayInput is an input type that accepts VolumeV1AttachmentArray and VolumeV1AttachmentArrayOutput values.
 // You can construct a concrete instance of `VolumeV1AttachmentArrayInput` via:
 //
@@ -394,12 +339,6 @@ func (i VolumeV1AttachmentArray) ToVolumeV1AttachmentArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeV1AttachmentArrayOutput)
 }
 
-func (i VolumeV1AttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]VolumeV1Attachment] {
-	return pulumix.Output[[]VolumeV1Attachment]{
-		OutputState: i.ToVolumeV1AttachmentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VolumeV1AttachmentOutput struct{ *pulumi.OutputState }
 
 func (VolumeV1AttachmentOutput) ElementType() reflect.Type {
@@ -412,12 +351,6 @@ func (o VolumeV1AttachmentOutput) ToVolumeV1AttachmentOutput() VolumeV1Attachmen
 
 func (o VolumeV1AttachmentOutput) ToVolumeV1AttachmentOutputWithContext(ctx context.Context) VolumeV1AttachmentOutput {
 	return o
-}
-
-func (o VolumeV1AttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeV1Attachment] {
-	return pulumix.Output[VolumeV1Attachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeV1AttachmentOutput) Device() pulumi.StringPtrOutput {
@@ -444,12 +377,6 @@ func (o VolumeV1AttachmentArrayOutput) ToVolumeV1AttachmentArrayOutput() VolumeV
 
 func (o VolumeV1AttachmentArrayOutput) ToVolumeV1AttachmentArrayOutputWithContext(ctx context.Context) VolumeV1AttachmentArrayOutput {
 	return o
-}
-
-func (o VolumeV1AttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeV1Attachment] {
-	return pulumix.Output[[]VolumeV1Attachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeV1AttachmentArrayOutput) Index(i pulumi.IntInput) VolumeV1AttachmentOutput {
@@ -493,12 +420,6 @@ func (i VolumeV2AttachmentArgs) ToVolumeV2AttachmentOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeV2AttachmentOutput)
 }
 
-func (i VolumeV2AttachmentArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeV2Attachment] {
-	return pulumix.Output[VolumeV2Attachment]{
-		OutputState: i.ToVolumeV2AttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VolumeV2AttachmentArrayInput is an input type that accepts VolumeV2AttachmentArray and VolumeV2AttachmentArrayOutput values.
 // You can construct a concrete instance of `VolumeV2AttachmentArrayInput` via:
 //
@@ -524,12 +445,6 @@ func (i VolumeV2AttachmentArray) ToVolumeV2AttachmentArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeV2AttachmentArrayOutput)
 }
 
-func (i VolumeV2AttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]VolumeV2Attachment] {
-	return pulumix.Output[[]VolumeV2Attachment]{
-		OutputState: i.ToVolumeV2AttachmentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VolumeV2AttachmentOutput struct{ *pulumi.OutputState }
 
 func (VolumeV2AttachmentOutput) ElementType() reflect.Type {
@@ -542,12 +457,6 @@ func (o VolumeV2AttachmentOutput) ToVolumeV2AttachmentOutput() VolumeV2Attachmen
 
 func (o VolumeV2AttachmentOutput) ToVolumeV2AttachmentOutputWithContext(ctx context.Context) VolumeV2AttachmentOutput {
 	return o
-}
-
-func (o VolumeV2AttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeV2Attachment] {
-	return pulumix.Output[VolumeV2Attachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeV2AttachmentOutput) Device() pulumi.StringPtrOutput {
@@ -574,12 +483,6 @@ func (o VolumeV2AttachmentArrayOutput) ToVolumeV2AttachmentArrayOutput() VolumeV
 
 func (o VolumeV2AttachmentArrayOutput) ToVolumeV2AttachmentArrayOutputWithContext(ctx context.Context) VolumeV2AttachmentArrayOutput {
 	return o
-}
-
-func (o VolumeV2AttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeV2Attachment] {
-	return pulumix.Output[[]VolumeV2Attachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeV2AttachmentArrayOutput) Index(i pulumi.IntInput) VolumeV2AttachmentOutput {
@@ -655,12 +558,6 @@ func (i VolumeV2SchedulerHintArgs) ToVolumeV2SchedulerHintOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeV2SchedulerHintOutput)
 }
 
-func (i VolumeV2SchedulerHintArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeV2SchedulerHint] {
-	return pulumix.Output[VolumeV2SchedulerHint]{
-		OutputState: i.ToVolumeV2SchedulerHintOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VolumeV2SchedulerHintArrayInput is an input type that accepts VolumeV2SchedulerHintArray and VolumeV2SchedulerHintArrayOutput values.
 // You can construct a concrete instance of `VolumeV2SchedulerHintArrayInput` via:
 //
@@ -686,12 +583,6 @@ func (i VolumeV2SchedulerHintArray) ToVolumeV2SchedulerHintArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeV2SchedulerHintArrayOutput)
 }
 
-func (i VolumeV2SchedulerHintArray) ToOutput(ctx context.Context) pulumix.Output[[]VolumeV2SchedulerHint] {
-	return pulumix.Output[[]VolumeV2SchedulerHint]{
-		OutputState: i.ToVolumeV2SchedulerHintArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VolumeV2SchedulerHintOutput struct{ *pulumi.OutputState }
 
 func (VolumeV2SchedulerHintOutput) ElementType() reflect.Type {
@@ -704,12 +595,6 @@ func (o VolumeV2SchedulerHintOutput) ToVolumeV2SchedulerHintOutput() VolumeV2Sch
 
 func (o VolumeV2SchedulerHintOutput) ToVolumeV2SchedulerHintOutputWithContext(ctx context.Context) VolumeV2SchedulerHintOutput {
 	return o
-}
-
-func (o VolumeV2SchedulerHintOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeV2SchedulerHint] {
-	return pulumix.Output[VolumeV2SchedulerHint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Arbitrary key/value pairs of additional
@@ -758,12 +643,6 @@ func (o VolumeV2SchedulerHintArrayOutput) ToVolumeV2SchedulerHintArrayOutput() V
 
 func (o VolumeV2SchedulerHintArrayOutput) ToVolumeV2SchedulerHintArrayOutputWithContext(ctx context.Context) VolumeV2SchedulerHintArrayOutput {
 	return o
-}
-
-func (o VolumeV2SchedulerHintArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeV2SchedulerHint] {
-	return pulumix.Output[[]VolumeV2SchedulerHint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeV2SchedulerHintArrayOutput) Index(i pulumi.IntInput) VolumeV2SchedulerHintOutput {

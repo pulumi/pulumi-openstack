@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get a list of Openstack Subnet IDs matching the
@@ -186,12 +185,6 @@ func (o GetSubnetIdsV2ResultOutput) ToGetSubnetIdsV2ResultOutput() GetSubnetIdsV
 
 func (o GetSubnetIdsV2ResultOutput) ToGetSubnetIdsV2ResultOutputWithContext(ctx context.Context) GetSubnetIdsV2ResultOutput {
 	return o
-}
-
-func (o GetSubnetIdsV2ResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSubnetIdsV2Result] {
-	return pulumix.Output[GetSubnetIdsV2Result]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSubnetIdsV2ResultOutput) Cidr() pulumi.StringPtrOutput {

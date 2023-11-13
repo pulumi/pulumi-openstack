@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i ConfigurationConfigurationArgs) ToConfigurationConfigurationOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationConfigurationOutput)
 }
 
-func (i ConfigurationConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigurationConfiguration] {
-	return pulumix.Output[ConfigurationConfiguration]{
-		OutputState: i.ToConfigurationConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConfigurationConfigurationArrayInput is an input type that accepts ConfigurationConfigurationArray and ConfigurationConfigurationArrayOutput values.
 // You can construct a concrete instance of `ConfigurationConfigurationArrayInput` via:
 //
@@ -86,12 +79,6 @@ func (i ConfigurationConfigurationArray) ToConfigurationConfigurationArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationConfigurationArrayOutput)
 }
 
-func (i ConfigurationConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]ConfigurationConfiguration] {
-	return pulumix.Output[[]ConfigurationConfiguration]{
-		OutputState: i.ToConfigurationConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigurationConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationConfigurationOutput) ElementType() reflect.Type {
@@ -104,12 +91,6 @@ func (o ConfigurationConfigurationOutput) ToConfigurationConfigurationOutput() C
 
 func (o ConfigurationConfigurationOutput) ToConfigurationConfigurationOutputWithContext(ctx context.Context) ConfigurationConfigurationOutput {
 	return o
-}
-
-func (o ConfigurationConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationConfiguration] {
-	return pulumix.Output[ConfigurationConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration parameter name. Changing this creates a new resource.
@@ -139,12 +120,6 @@ func (o ConfigurationConfigurationArrayOutput) ToConfigurationConfigurationArray
 
 func (o ConfigurationConfigurationArrayOutput) ToConfigurationConfigurationArrayOutputWithContext(ctx context.Context) ConfigurationConfigurationArrayOutput {
 	return o
-}
-
-func (o ConfigurationConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigurationConfiguration] {
-	return pulumix.Output[[]ConfigurationConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigurationConfigurationArrayOutput) Index(i pulumi.IntInput) ConfigurationConfigurationOutput {
@@ -190,12 +165,6 @@ func (i ConfigurationDatastoreArgs) ToConfigurationDatastoreOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationDatastoreOutput)
 }
 
-func (i ConfigurationDatastoreArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigurationDatastore] {
-	return pulumix.Output[ConfigurationDatastore]{
-		OutputState: i.ToConfigurationDatastoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConfigurationDatastoreArgs) ToConfigurationDatastorePtrOutput() ConfigurationDatastorePtrOutput {
 	return i.ToConfigurationDatastorePtrOutputWithContext(context.Background())
 }
@@ -237,12 +206,6 @@ func (i *configurationDatastorePtrType) ToConfigurationDatastorePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationDatastorePtrOutput)
 }
 
-func (i *configurationDatastorePtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationDatastore] {
-	return pulumix.Output[*ConfigurationDatastore]{
-		OutputState: i.ToConfigurationDatastorePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigurationDatastoreOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationDatastoreOutput) ElementType() reflect.Type {
@@ -267,12 +230,6 @@ func (o ConfigurationDatastoreOutput) ToConfigurationDatastorePtrOutputWithConte
 	}).(ConfigurationDatastorePtrOutput)
 }
 
-func (o ConfigurationDatastoreOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationDatastore] {
-	return pulumix.Output[ConfigurationDatastore]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Database engine type to be used with this configuration. Changing this creates a new resource.
 func (o ConfigurationDatastoreOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigurationDatastore) string { return v.Type }).(pulumi.StringOutput)
@@ -295,12 +252,6 @@ func (o ConfigurationDatastorePtrOutput) ToConfigurationDatastorePtrOutput() Con
 
 func (o ConfigurationDatastorePtrOutput) ToConfigurationDatastorePtrOutputWithContext(ctx context.Context) ConfigurationDatastorePtrOutput {
 	return o
-}
-
-func (o ConfigurationDatastorePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationDatastore] {
-	return pulumix.Output[*ConfigurationDatastore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigurationDatastorePtrOutput) Elem() ConfigurationDatastoreOutput {
@@ -378,12 +329,6 @@ func (i InstanceDatabaseArgs) ToInstanceDatabaseOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDatabaseOutput)
 }
 
-func (i InstanceDatabaseArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceDatabase] {
-	return pulumix.Output[InstanceDatabase]{
-		OutputState: i.ToInstanceDatabaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceDatabaseArrayInput is an input type that accepts InstanceDatabaseArray and InstanceDatabaseArrayOutput values.
 // You can construct a concrete instance of `InstanceDatabaseArrayInput` via:
 //
@@ -409,12 +354,6 @@ func (i InstanceDatabaseArray) ToInstanceDatabaseArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDatabaseArrayOutput)
 }
 
-func (i InstanceDatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceDatabase] {
-	return pulumix.Output[[]InstanceDatabase]{
-		OutputState: i.ToInstanceDatabaseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceDatabaseOutput struct{ *pulumi.OutputState }
 
 func (InstanceDatabaseOutput) ElementType() reflect.Type {
@@ -427,12 +366,6 @@ func (o InstanceDatabaseOutput) ToInstanceDatabaseOutput() InstanceDatabaseOutpu
 
 func (o InstanceDatabaseOutput) ToInstanceDatabaseOutputWithContext(ctx context.Context) InstanceDatabaseOutput {
 	return o
-}
-
-func (o InstanceDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceDatabase] {
-	return pulumix.Output[InstanceDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Database character set. Changing this creates a
@@ -464,12 +397,6 @@ func (o InstanceDatabaseArrayOutput) ToInstanceDatabaseArrayOutput() InstanceDat
 
 func (o InstanceDatabaseArrayOutput) ToInstanceDatabaseArrayOutputWithContext(ctx context.Context) InstanceDatabaseArrayOutput {
 	return o
-}
-
-func (o InstanceDatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceDatabase] {
-	return pulumix.Output[[]InstanceDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceDatabaseArrayOutput) Index(i pulumi.IntInput) InstanceDatabaseOutput {
@@ -519,12 +446,6 @@ func (i InstanceDatastoreArgs) ToInstanceDatastoreOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDatastoreOutput)
 }
 
-func (i InstanceDatastoreArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceDatastore] {
-	return pulumix.Output[InstanceDatastore]{
-		OutputState: i.ToInstanceDatastoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i InstanceDatastoreArgs) ToInstanceDatastorePtrOutput() InstanceDatastorePtrOutput {
 	return i.ToInstanceDatastorePtrOutputWithContext(context.Background())
 }
@@ -566,12 +487,6 @@ func (i *instanceDatastorePtrType) ToInstanceDatastorePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDatastorePtrOutput)
 }
 
-func (i *instanceDatastorePtrType) ToOutput(ctx context.Context) pulumix.Output[*InstanceDatastore] {
-	return pulumix.Output[*InstanceDatastore]{
-		OutputState: i.ToInstanceDatastorePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceDatastoreOutput struct{ *pulumi.OutputState }
 
 func (InstanceDatastoreOutput) ElementType() reflect.Type {
@@ -594,12 +509,6 @@ func (o InstanceDatastoreOutput) ToInstanceDatastorePtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceDatastore) *InstanceDatastore {
 		return &v
 	}).(InstanceDatastorePtrOutput)
-}
-
-func (o InstanceDatastoreOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceDatastore] {
-	return pulumix.Output[InstanceDatastore]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Database engine type to be used in new instance. Changing this
@@ -626,12 +535,6 @@ func (o InstanceDatastorePtrOutput) ToInstanceDatastorePtrOutput() InstanceDatas
 
 func (o InstanceDatastorePtrOutput) ToInstanceDatastorePtrOutputWithContext(ctx context.Context) InstanceDatastorePtrOutput {
 	return o
-}
-
-func (o InstanceDatastorePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceDatastore] {
-	return pulumix.Output[*InstanceDatastore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceDatastorePtrOutput) Elem() InstanceDatastoreOutput {
@@ -719,12 +622,6 @@ func (i InstanceNetworkArgs) ToInstanceNetworkOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkOutput)
 }
 
-func (i InstanceNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceNetwork] {
-	return pulumix.Output[InstanceNetwork]{
-		OutputState: i.ToInstanceNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceNetworkArrayInput is an input type that accepts InstanceNetworkArray and InstanceNetworkArrayOutput values.
 // You can construct a concrete instance of `InstanceNetworkArrayInput` via:
 //
@@ -750,12 +647,6 @@ func (i InstanceNetworkArray) ToInstanceNetworkArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkArrayOutput)
 }
 
-func (i InstanceNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceNetwork] {
-	return pulumix.Output[[]InstanceNetwork]{
-		OutputState: i.ToInstanceNetworkArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceNetworkOutput struct{ *pulumi.OutputState }
 
 func (InstanceNetworkOutput) ElementType() reflect.Type {
@@ -768,12 +659,6 @@ func (o InstanceNetworkOutput) ToInstanceNetworkOutput() InstanceNetworkOutput {
 
 func (o InstanceNetworkOutput) ToInstanceNetworkOutputWithContext(ctx context.Context) InstanceNetworkOutput {
 	return o
-}
-
-func (o InstanceNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceNetwork] {
-	return pulumix.Output[InstanceNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies a fixed IPv4 address to be used on this
@@ -812,12 +697,6 @@ func (o InstanceNetworkArrayOutput) ToInstanceNetworkArrayOutput() InstanceNetwo
 
 func (o InstanceNetworkArrayOutput) ToInstanceNetworkArrayOutputWithContext(ctx context.Context) InstanceNetworkArrayOutput {
 	return o
-}
-
-func (o InstanceNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceNetwork] {
-	return pulumix.Output[[]InstanceNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceNetworkArrayOutput) Index(i pulumi.IntInput) InstanceNetworkOutput {
@@ -879,12 +758,6 @@ func (i InstanceUserArgs) ToInstanceUserOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceUserOutput)
 }
 
-func (i InstanceUserArgs) ToOutput(ctx context.Context) pulumix.Output[InstanceUser] {
-	return pulumix.Output[InstanceUser]{
-		OutputState: i.ToInstanceUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InstanceUserArrayInput is an input type that accepts InstanceUserArray and InstanceUserArrayOutput values.
 // You can construct a concrete instance of `InstanceUserArrayInput` via:
 //
@@ -910,12 +783,6 @@ func (i InstanceUserArray) ToInstanceUserArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceUserArrayOutput)
 }
 
-func (i InstanceUserArray) ToOutput(ctx context.Context) pulumix.Output[[]InstanceUser] {
-	return pulumix.Output[[]InstanceUser]{
-		OutputState: i.ToInstanceUserArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceUserOutput struct{ *pulumi.OutputState }
 
 func (InstanceUserOutput) ElementType() reflect.Type {
@@ -928,12 +795,6 @@ func (o InstanceUserOutput) ToInstanceUserOutput() InstanceUserOutput {
 
 func (o InstanceUserOutput) ToInstanceUserOutputWithContext(ctx context.Context) InstanceUserOutput {
 	return o
-}
-
-func (o InstanceUserOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceUser] {
-	return pulumix.Output[InstanceUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of databases that user will have access to. If not specified,
@@ -972,12 +833,6 @@ func (o InstanceUserArrayOutput) ToInstanceUserArrayOutput() InstanceUserArrayOu
 
 func (o InstanceUserArrayOutput) ToInstanceUserArrayOutputWithContext(ctx context.Context) InstanceUserArrayOutput {
 	return o
-}
-
-func (o InstanceUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceUser] {
-	return pulumix.Output[[]InstanceUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceUserArrayOutput) Index(i pulumi.IntInput) InstanceUserOutput {

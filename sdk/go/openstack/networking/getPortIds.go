@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get a list of Openstack Port IDs matching the
@@ -182,12 +181,6 @@ func (o GetPortIdsResultOutput) ToGetPortIdsResultOutput() GetPortIdsResultOutpu
 
 func (o GetPortIdsResultOutput) ToGetPortIdsResultOutputWithContext(ctx context.Context) GetPortIdsResultOutput {
 	return o
-}
-
-func (o GetPortIdsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPortIdsResult] {
-	return pulumix.Output[GetPortIdsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPortIdsResultOutput) AdminStateUp() pulumi.BoolPtrOutput {

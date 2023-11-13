@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V3 Service resource within OpenStack Keystone.
@@ -184,12 +183,6 @@ func (i *ServiceV3) ToServiceV3OutputWithContext(ctx context.Context) ServiceV3O
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceV3Output)
 }
 
-func (i *ServiceV3) ToOutput(ctx context.Context) pulumix.Output[*ServiceV3] {
-	return pulumix.Output[*ServiceV3]{
-		OutputState: i.ToServiceV3OutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceV3ArrayInput is an input type that accepts ServiceV3Array and ServiceV3ArrayOutput values.
 // You can construct a concrete instance of `ServiceV3ArrayInput` via:
 //
@@ -213,12 +206,6 @@ func (i ServiceV3Array) ToServiceV3ArrayOutput() ServiceV3ArrayOutput {
 
 func (i ServiceV3Array) ToServiceV3ArrayOutputWithContext(ctx context.Context) ServiceV3ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceV3ArrayOutput)
-}
-
-func (i ServiceV3Array) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceV3] {
-	return pulumix.Output[[]*ServiceV3]{
-		OutputState: i.ToServiceV3ArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ServiceV3MapInput is an input type that accepts ServiceV3Map and ServiceV3MapOutput values.
@@ -246,12 +233,6 @@ func (i ServiceV3Map) ToServiceV3MapOutputWithContext(ctx context.Context) Servi
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceV3MapOutput)
 }
 
-func (i ServiceV3Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceV3] {
-	return pulumix.Output[map[string]*ServiceV3]{
-		OutputState: i.ToServiceV3MapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceV3Output struct{ *pulumi.OutputState }
 
 func (ServiceV3Output) ElementType() reflect.Type {
@@ -264,12 +245,6 @@ func (o ServiceV3Output) ToServiceV3Output() ServiceV3Output {
 
 func (o ServiceV3Output) ToServiceV3OutputWithContext(ctx context.Context) ServiceV3Output {
 	return o
-}
-
-func (o ServiceV3Output) ToOutput(ctx context.Context) pulumix.Output[*ServiceV3] {
-	return pulumix.Output[*ServiceV3]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The service description.
@@ -312,12 +287,6 @@ func (o ServiceV3ArrayOutput) ToServiceV3ArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o ServiceV3ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServiceV3] {
-	return pulumix.Output[[]*ServiceV3]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceV3ArrayOutput) Index(i pulumi.IntInput) ServiceV3Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServiceV3 {
 		return vs[0].([]*ServiceV3)[vs[1].(int)]
@@ -336,12 +305,6 @@ func (o ServiceV3MapOutput) ToServiceV3MapOutput() ServiceV3MapOutput {
 
 func (o ServiceV3MapOutput) ToServiceV3MapOutputWithContext(ctx context.Context) ServiceV3MapOutput {
 	return o
-}
-
-func (o ServiceV3MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServiceV3] {
-	return pulumix.Output[map[string]*ServiceV3]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceV3MapOutput) MapIndex(k pulumi.StringInput) ServiceV3Output {
