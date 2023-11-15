@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 compute quotaset resource within OpenStack.
@@ -393,12 +392,6 @@ func (i *QuotaSetV2) ToQuotaSetV2OutputWithContext(ctx context.Context) QuotaSet
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaSetV2Output)
 }
 
-func (i *QuotaSetV2) ToOutput(ctx context.Context) pulumix.Output[*QuotaSetV2] {
-	return pulumix.Output[*QuotaSetV2]{
-		OutputState: i.ToQuotaSetV2OutputWithContext(ctx).OutputState,
-	}
-}
-
 // QuotaSetV2ArrayInput is an input type that accepts QuotaSetV2Array and QuotaSetV2ArrayOutput values.
 // You can construct a concrete instance of `QuotaSetV2ArrayInput` via:
 //
@@ -422,12 +415,6 @@ func (i QuotaSetV2Array) ToQuotaSetV2ArrayOutput() QuotaSetV2ArrayOutput {
 
 func (i QuotaSetV2Array) ToQuotaSetV2ArrayOutputWithContext(ctx context.Context) QuotaSetV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaSetV2ArrayOutput)
-}
-
-func (i QuotaSetV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*QuotaSetV2] {
-	return pulumix.Output[[]*QuotaSetV2]{
-		OutputState: i.ToQuotaSetV2ArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // QuotaSetV2MapInput is an input type that accepts QuotaSetV2Map and QuotaSetV2MapOutput values.
@@ -455,12 +442,6 @@ func (i QuotaSetV2Map) ToQuotaSetV2MapOutputWithContext(ctx context.Context) Quo
 	return pulumi.ToOutputWithContext(ctx, i).(QuotaSetV2MapOutput)
 }
 
-func (i QuotaSetV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*QuotaSetV2] {
-	return pulumix.Output[map[string]*QuotaSetV2]{
-		OutputState: i.ToQuotaSetV2MapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type QuotaSetV2Output struct{ *pulumi.OutputState }
 
 func (QuotaSetV2Output) ElementType() reflect.Type {
@@ -473,12 +454,6 @@ func (o QuotaSetV2Output) ToQuotaSetV2Output() QuotaSetV2Output {
 
 func (o QuotaSetV2Output) ToQuotaSetV2OutputWithContext(ctx context.Context) QuotaSetV2Output {
 	return o
-}
-
-func (o QuotaSetV2Output) ToOutput(ctx context.Context) pulumix.Output[*QuotaSetV2] {
-	return pulumix.Output[*QuotaSetV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Quota value for cores.
@@ -592,12 +567,6 @@ func (o QuotaSetV2ArrayOutput) ToQuotaSetV2ArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o QuotaSetV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*QuotaSetV2] {
-	return pulumix.Output[[]*QuotaSetV2]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o QuotaSetV2ArrayOutput) Index(i pulumi.IntInput) QuotaSetV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *QuotaSetV2 {
 		return vs[0].([]*QuotaSetV2)[vs[1].(int)]
@@ -616,12 +585,6 @@ func (o QuotaSetV2MapOutput) ToQuotaSetV2MapOutput() QuotaSetV2MapOutput {
 
 func (o QuotaSetV2MapOutput) ToQuotaSetV2MapOutputWithContext(ctx context.Context) QuotaSetV2MapOutput {
 	return o
-}
-
-func (o QuotaSetV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*QuotaSetV2] {
-	return pulumix.Output[map[string]*QuotaSetV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QuotaSetV2MapOutput) MapIndex(k pulumi.StringInput) QuotaSetV2Output {

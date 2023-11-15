@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a v2 firewall rule resource within OpenStack.
@@ -419,12 +418,6 @@ func (i *RuleV2) ToRuleV2OutputWithContext(ctx context.Context) RuleV2Output {
 	return pulumi.ToOutputWithContext(ctx, i).(RuleV2Output)
 }
 
-func (i *RuleV2) ToOutput(ctx context.Context) pulumix.Output[*RuleV2] {
-	return pulumix.Output[*RuleV2]{
-		OutputState: i.ToRuleV2OutputWithContext(ctx).OutputState,
-	}
-}
-
 // RuleV2ArrayInput is an input type that accepts RuleV2Array and RuleV2ArrayOutput values.
 // You can construct a concrete instance of `RuleV2ArrayInput` via:
 //
@@ -448,12 +441,6 @@ func (i RuleV2Array) ToRuleV2ArrayOutput() RuleV2ArrayOutput {
 
 func (i RuleV2Array) ToRuleV2ArrayOutputWithContext(ctx context.Context) RuleV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RuleV2ArrayOutput)
-}
-
-func (i RuleV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*RuleV2] {
-	return pulumix.Output[[]*RuleV2]{
-		OutputState: i.ToRuleV2ArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RuleV2MapInput is an input type that accepts RuleV2Map and RuleV2MapOutput values.
@@ -481,12 +468,6 @@ func (i RuleV2Map) ToRuleV2MapOutputWithContext(ctx context.Context) RuleV2MapOu
 	return pulumi.ToOutputWithContext(ctx, i).(RuleV2MapOutput)
 }
 
-func (i RuleV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*RuleV2] {
-	return pulumix.Output[map[string]*RuleV2]{
-		OutputState: i.ToRuleV2MapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RuleV2Output struct{ *pulumi.OutputState }
 
 func (RuleV2Output) ElementType() reflect.Type {
@@ -499,12 +480,6 @@ func (o RuleV2Output) ToRuleV2Output() RuleV2Output {
 
 func (o RuleV2Output) ToRuleV2OutputWithContext(ctx context.Context) RuleV2Output {
 	return o
-}
-
-func (o RuleV2Output) ToOutput(ctx context.Context) pulumix.Output[*RuleV2] {
-	return pulumix.Output[*RuleV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Action to be taken (must be "allow", "deny" or "reject")
@@ -621,12 +596,6 @@ func (o RuleV2ArrayOutput) ToRuleV2ArrayOutputWithContext(ctx context.Context) R
 	return o
 }
 
-func (o RuleV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RuleV2] {
-	return pulumix.Output[[]*RuleV2]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RuleV2ArrayOutput) Index(i pulumi.IntInput) RuleV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RuleV2 {
 		return vs[0].([]*RuleV2)[vs[1].(int)]
@@ -645,12 +614,6 @@ func (o RuleV2MapOutput) ToRuleV2MapOutput() RuleV2MapOutput {
 
 func (o RuleV2MapOutput) ToRuleV2MapOutputWithContext(ctx context.Context) RuleV2MapOutput {
 	return o
-}
-
-func (o RuleV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RuleV2] {
-	return pulumix.Output[map[string]*RuleV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RuleV2MapOutput) MapIndex(k pulumi.StringInput) RuleV2Output {

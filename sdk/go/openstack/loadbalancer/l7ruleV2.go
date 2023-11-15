@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 L7 Rule resource within OpenStack.
@@ -342,12 +341,6 @@ func (i *L7RuleV2) ToL7RuleV2OutputWithContext(ctx context.Context) L7RuleV2Outp
 	return pulumi.ToOutputWithContext(ctx, i).(L7RuleV2Output)
 }
 
-func (i *L7RuleV2) ToOutput(ctx context.Context) pulumix.Output[*L7RuleV2] {
-	return pulumix.Output[*L7RuleV2]{
-		OutputState: i.ToL7RuleV2OutputWithContext(ctx).OutputState,
-	}
-}
-
 // L7RuleV2ArrayInput is an input type that accepts L7RuleV2Array and L7RuleV2ArrayOutput values.
 // You can construct a concrete instance of `L7RuleV2ArrayInput` via:
 //
@@ -371,12 +364,6 @@ func (i L7RuleV2Array) ToL7RuleV2ArrayOutput() L7RuleV2ArrayOutput {
 
 func (i L7RuleV2Array) ToL7RuleV2ArrayOutputWithContext(ctx context.Context) L7RuleV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(L7RuleV2ArrayOutput)
-}
-
-func (i L7RuleV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*L7RuleV2] {
-	return pulumix.Output[[]*L7RuleV2]{
-		OutputState: i.ToL7RuleV2ArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // L7RuleV2MapInput is an input type that accepts L7RuleV2Map and L7RuleV2MapOutput values.
@@ -404,12 +391,6 @@ func (i L7RuleV2Map) ToL7RuleV2MapOutputWithContext(ctx context.Context) L7RuleV
 	return pulumi.ToOutputWithContext(ctx, i).(L7RuleV2MapOutput)
 }
 
-func (i L7RuleV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*L7RuleV2] {
-	return pulumix.Output[map[string]*L7RuleV2]{
-		OutputState: i.ToL7RuleV2MapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type L7RuleV2Output struct{ *pulumi.OutputState }
 
 func (L7RuleV2Output) ElementType() reflect.Type {
@@ -422,12 +403,6 @@ func (o L7RuleV2Output) ToL7RuleV2Output() L7RuleV2Output {
 
 func (o L7RuleV2Output) ToL7RuleV2OutputWithContext(ctx context.Context) L7RuleV2Output {
 	return o
-}
-
-func (o L7RuleV2Output) ToOutput(ctx context.Context) pulumix.Output[*L7RuleV2] {
-	return pulumix.Output[*L7RuleV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The administrative state of the L7 Rule.
@@ -506,12 +481,6 @@ func (o L7RuleV2ArrayOutput) ToL7RuleV2ArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o L7RuleV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*L7RuleV2] {
-	return pulumix.Output[[]*L7RuleV2]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o L7RuleV2ArrayOutput) Index(i pulumi.IntInput) L7RuleV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *L7RuleV2 {
 		return vs[0].([]*L7RuleV2)[vs[1].(int)]
@@ -530,12 +499,6 @@ func (o L7RuleV2MapOutput) ToL7RuleV2MapOutput() L7RuleV2MapOutput {
 
 func (o L7RuleV2MapOutput) ToL7RuleV2MapOutputWithContext(ctx context.Context) L7RuleV2MapOutput {
 	return o
-}
-
-func (o L7RuleV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*L7RuleV2] {
-	return pulumix.Output[map[string]*L7RuleV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o L7RuleV2MapOutput) MapIndex(k pulumi.StringInput) L7RuleV2Output {

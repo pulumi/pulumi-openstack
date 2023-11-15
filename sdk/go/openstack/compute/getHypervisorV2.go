@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information about hypervisors
@@ -114,12 +113,6 @@ func (o GetHypervisorV2ResultOutput) ToGetHypervisorV2ResultOutput() GetHypervis
 
 func (o GetHypervisorV2ResultOutput) ToGetHypervisorV2ResultOutputWithContext(ctx context.Context) GetHypervisorV2ResultOutput {
 	return o
-}
-
-func (o GetHypervisorV2ResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetHypervisorV2Result] {
-	return pulumix.Output[GetHypervisorV2Result]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The amount in GigaBytes of local storage the hypervisor can provide

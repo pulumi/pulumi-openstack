@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get a list of Block Storage availability zones from OpenStack
@@ -110,12 +109,6 @@ func (o GetAvailabilityZonesV3ResultOutput) ToGetAvailabilityZonesV3ResultOutput
 
 func (o GetAvailabilityZonesV3ResultOutput) ToGetAvailabilityZonesV3ResultOutputWithContext(ctx context.Context) GetAvailabilityZonesV3ResultOutput {
 	return o
-}
-
-func (o GetAvailabilityZonesV3ResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAvailabilityZonesV3Result] {
-	return pulumix.Output[GetAvailabilityZonesV3Result]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

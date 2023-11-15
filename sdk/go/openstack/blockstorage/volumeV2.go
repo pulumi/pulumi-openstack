@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 volume resource within OpenStack.
@@ -336,12 +335,6 @@ func (i *VolumeV2) ToVolumeV2OutputWithContext(ctx context.Context) VolumeV2Outp
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeV2Output)
 }
 
-func (i *VolumeV2) ToOutput(ctx context.Context) pulumix.Output[*VolumeV2] {
-	return pulumix.Output[*VolumeV2]{
-		OutputState: i.ToVolumeV2OutputWithContext(ctx).OutputState,
-	}
-}
-
 // VolumeV2ArrayInput is an input type that accepts VolumeV2Array and VolumeV2ArrayOutput values.
 // You can construct a concrete instance of `VolumeV2ArrayInput` via:
 //
@@ -365,12 +358,6 @@ func (i VolumeV2Array) ToVolumeV2ArrayOutput() VolumeV2ArrayOutput {
 
 func (i VolumeV2Array) ToVolumeV2ArrayOutputWithContext(ctx context.Context) VolumeV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeV2ArrayOutput)
-}
-
-func (i VolumeV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*VolumeV2] {
-	return pulumix.Output[[]*VolumeV2]{
-		OutputState: i.ToVolumeV2ArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // VolumeV2MapInput is an input type that accepts VolumeV2Map and VolumeV2MapOutput values.
@@ -398,12 +385,6 @@ func (i VolumeV2Map) ToVolumeV2MapOutputWithContext(ctx context.Context) VolumeV
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeV2MapOutput)
 }
 
-func (i VolumeV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*VolumeV2] {
-	return pulumix.Output[map[string]*VolumeV2]{
-		OutputState: i.ToVolumeV2MapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VolumeV2Output struct{ *pulumi.OutputState }
 
 func (VolumeV2Output) ElementType() reflect.Type {
@@ -416,12 +397,6 @@ func (o VolumeV2Output) ToVolumeV2Output() VolumeV2Output {
 
 func (o VolumeV2Output) ToVolumeV2OutputWithContext(ctx context.Context) VolumeV2Output {
 	return o
-}
-
-func (o VolumeV2Output) ToOutput(ctx context.Context) pulumix.Output[*VolumeV2] {
-	return pulumix.Output[*VolumeV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If a volume is attached to an instance, this attribute will
@@ -523,12 +498,6 @@ func (o VolumeV2ArrayOutput) ToVolumeV2ArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o VolumeV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*VolumeV2] {
-	return pulumix.Output[[]*VolumeV2]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VolumeV2ArrayOutput) Index(i pulumi.IntInput) VolumeV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *VolumeV2 {
 		return vs[0].([]*VolumeV2)[vs[1].(int)]
@@ -547,12 +516,6 @@ func (o VolumeV2MapOutput) ToVolumeV2MapOutput() VolumeV2MapOutput {
 
 func (o VolumeV2MapOutput) ToVolumeV2MapOutputWithContext(ctx context.Context) VolumeV2MapOutput {
 	return o
-}
-
-func (o VolumeV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*VolumeV2] {
-	return pulumix.Output[map[string]*VolumeV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeV2MapOutput) MapIndex(k pulumi.StringInput) VolumeV2Output {

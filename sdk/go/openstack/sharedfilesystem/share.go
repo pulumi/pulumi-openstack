@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this resource to configure a share.
@@ -384,12 +383,6 @@ func (i *Share) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShareOutput)
 }
 
-func (i *Share) ToOutput(ctx context.Context) pulumix.Output[*Share] {
-	return pulumix.Output[*Share]{
-		OutputState: i.ToShareOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ShareArrayInput is an input type that accepts ShareArray and ShareArrayOutput values.
 // You can construct a concrete instance of `ShareArrayInput` via:
 //
@@ -413,12 +406,6 @@ func (i ShareArray) ToShareArrayOutput() ShareArrayOutput {
 
 func (i ShareArray) ToShareArrayOutputWithContext(ctx context.Context) ShareArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShareArrayOutput)
-}
-
-func (i ShareArray) ToOutput(ctx context.Context) pulumix.Output[[]*Share] {
-	return pulumix.Output[[]*Share]{
-		OutputState: i.ToShareArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ShareMapInput is an input type that accepts ShareMap and ShareMapOutput values.
@@ -446,12 +433,6 @@ func (i ShareMap) ToShareMapOutputWithContext(ctx context.Context) ShareMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ShareMapOutput)
 }
 
-func (i ShareMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Share] {
-	return pulumix.Output[map[string]*Share]{
-		OutputState: i.ToShareMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ShareOutput struct{ *pulumi.OutputState }
 
 func (ShareOutput) ElementType() reflect.Type {
@@ -464,12 +445,6 @@ func (o ShareOutput) ToShareOutput() ShareOutput {
 
 func (o ShareOutput) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 	return o
-}
-
-func (o ShareOutput) ToOutput(ctx context.Context) pulumix.Output[*Share] {
-	return pulumix.Output[*Share]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The map of metadata, assigned on the share, which has been
@@ -592,12 +567,6 @@ func (o ShareArrayOutput) ToShareArrayOutputWithContext(ctx context.Context) Sha
 	return o
 }
 
-func (o ShareArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Share] {
-	return pulumix.Output[[]*Share]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ShareArrayOutput) Index(i pulumi.IntInput) ShareOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Share {
 		return vs[0].([]*Share)[vs[1].(int)]
@@ -616,12 +585,6 @@ func (o ShareMapOutput) ToShareMapOutput() ShareMapOutput {
 
 func (o ShareMapOutput) ToShareMapOutputWithContext(ctx context.Context) ShareMapOutput {
 	return o
-}
-
-func (o ShareMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Share] {
-	return pulumix.Output[map[string]*Share]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ShareMapOutput) MapIndex(k pulumi.StringInput) ShareOutput {

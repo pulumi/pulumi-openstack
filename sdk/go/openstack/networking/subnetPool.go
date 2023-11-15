@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 Neutron subnetpool resource within OpenStack.
@@ -480,12 +479,6 @@ func (i *SubnetPool) ToSubnetPoolOutputWithContext(ctx context.Context) SubnetPo
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetPoolOutput)
 }
 
-func (i *SubnetPool) ToOutput(ctx context.Context) pulumix.Output[*SubnetPool] {
-	return pulumix.Output[*SubnetPool]{
-		OutputState: i.ToSubnetPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SubnetPoolArrayInput is an input type that accepts SubnetPoolArray and SubnetPoolArrayOutput values.
 // You can construct a concrete instance of `SubnetPoolArrayInput` via:
 //
@@ -509,12 +502,6 @@ func (i SubnetPoolArray) ToSubnetPoolArrayOutput() SubnetPoolArrayOutput {
 
 func (i SubnetPoolArray) ToSubnetPoolArrayOutputWithContext(ctx context.Context) SubnetPoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetPoolArrayOutput)
-}
-
-func (i SubnetPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*SubnetPool] {
-	return pulumix.Output[[]*SubnetPool]{
-		OutputState: i.ToSubnetPoolArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SubnetPoolMapInput is an input type that accepts SubnetPoolMap and SubnetPoolMapOutput values.
@@ -542,12 +529,6 @@ func (i SubnetPoolMap) ToSubnetPoolMapOutputWithContext(ctx context.Context) Sub
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetPoolMapOutput)
 }
 
-func (i SubnetPoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SubnetPool] {
-	return pulumix.Output[map[string]*SubnetPool]{
-		OutputState: i.ToSubnetPoolMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubnetPoolOutput struct{ *pulumi.OutputState }
 
 func (SubnetPoolOutput) ElementType() reflect.Type {
@@ -560,12 +541,6 @@ func (o SubnetPoolOutput) ToSubnetPoolOutput() SubnetPoolOutput {
 
 func (o SubnetPoolOutput) ToSubnetPoolOutputWithContext(ctx context.Context) SubnetPoolOutput {
 	return o
-}
-
-func (o SubnetPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*SubnetPool] {
-	return pulumix.Output[*SubnetPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Neutron address scope to assign to the
@@ -704,12 +679,6 @@ func (o SubnetPoolArrayOutput) ToSubnetPoolArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o SubnetPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SubnetPool] {
-	return pulumix.Output[[]*SubnetPool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SubnetPoolArrayOutput) Index(i pulumi.IntInput) SubnetPoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SubnetPool {
 		return vs[0].([]*SubnetPool)[vs[1].(int)]
@@ -728,12 +697,6 @@ func (o SubnetPoolMapOutput) ToSubnetPoolMapOutput() SubnetPoolMapOutput {
 
 func (o SubnetPoolMapOutput) ToSubnetPoolMapOutputWithContext(ctx context.Context) SubnetPoolMapOutput {
 	return o
-}
-
-func (o SubnetPoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SubnetPool] {
-	return pulumix.Output[map[string]*SubnetPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubnetPoolMapOutput) MapIndex(k pulumi.StringInput) SubnetPoolOutput {

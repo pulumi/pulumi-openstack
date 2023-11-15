@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a user membership to group V3 resource within OpenStack.
@@ -209,12 +208,6 @@ func (i *UserMembershipV3) ToUserMembershipV3OutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(UserMembershipV3Output)
 }
 
-func (i *UserMembershipV3) ToOutput(ctx context.Context) pulumix.Output[*UserMembershipV3] {
-	return pulumix.Output[*UserMembershipV3]{
-		OutputState: i.ToUserMembershipV3OutputWithContext(ctx).OutputState,
-	}
-}
-
 // UserMembershipV3ArrayInput is an input type that accepts UserMembershipV3Array and UserMembershipV3ArrayOutput values.
 // You can construct a concrete instance of `UserMembershipV3ArrayInput` via:
 //
@@ -238,12 +231,6 @@ func (i UserMembershipV3Array) ToUserMembershipV3ArrayOutput() UserMembershipV3A
 
 func (i UserMembershipV3Array) ToUserMembershipV3ArrayOutputWithContext(ctx context.Context) UserMembershipV3ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserMembershipV3ArrayOutput)
-}
-
-func (i UserMembershipV3Array) ToOutput(ctx context.Context) pulumix.Output[[]*UserMembershipV3] {
-	return pulumix.Output[[]*UserMembershipV3]{
-		OutputState: i.ToUserMembershipV3ArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // UserMembershipV3MapInput is an input type that accepts UserMembershipV3Map and UserMembershipV3MapOutput values.
@@ -271,12 +258,6 @@ func (i UserMembershipV3Map) ToUserMembershipV3MapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(UserMembershipV3MapOutput)
 }
 
-func (i UserMembershipV3Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserMembershipV3] {
-	return pulumix.Output[map[string]*UserMembershipV3]{
-		OutputState: i.ToUserMembershipV3MapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserMembershipV3Output struct{ *pulumi.OutputState }
 
 func (UserMembershipV3Output) ElementType() reflect.Type {
@@ -289,12 +270,6 @@ func (o UserMembershipV3Output) ToUserMembershipV3Output() UserMembershipV3Outpu
 
 func (o UserMembershipV3Output) ToUserMembershipV3OutputWithContext(ctx context.Context) UserMembershipV3Output {
 	return o
-}
-
-func (o UserMembershipV3Output) ToOutput(ctx context.Context) pulumix.Output[*UserMembershipV3] {
-	return pulumix.Output[*UserMembershipV3]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The UUID of group to which the user will be added.
@@ -329,12 +304,6 @@ func (o UserMembershipV3ArrayOutput) ToUserMembershipV3ArrayOutputWithContext(ct
 	return o
 }
 
-func (o UserMembershipV3ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UserMembershipV3] {
-	return pulumix.Output[[]*UserMembershipV3]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UserMembershipV3ArrayOutput) Index(i pulumi.IntInput) UserMembershipV3Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UserMembershipV3 {
 		return vs[0].([]*UserMembershipV3)[vs[1].(int)]
@@ -353,12 +322,6 @@ func (o UserMembershipV3MapOutput) ToUserMembershipV3MapOutput() UserMembershipV
 
 func (o UserMembershipV3MapOutput) ToUserMembershipV3MapOutputWithContext(ctx context.Context) UserMembershipV3MapOutput {
 	return o
-}
-
-func (o UserMembershipV3MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserMembershipV3] {
-	return pulumix.Output[map[string]*UserMembershipV3]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserMembershipV3MapOutput) MapIndex(k pulumi.StringInput) UserMembershipV3Output {

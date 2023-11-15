@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a v2 firewall group resource within OpenStack.
@@ -383,12 +382,6 @@ func (i *GroupV2) ToGroupV2OutputWithContext(ctx context.Context) GroupV2Output 
 	return pulumi.ToOutputWithContext(ctx, i).(GroupV2Output)
 }
 
-func (i *GroupV2) ToOutput(ctx context.Context) pulumix.Output[*GroupV2] {
-	return pulumix.Output[*GroupV2]{
-		OutputState: i.ToGroupV2OutputWithContext(ctx).OutputState,
-	}
-}
-
 // GroupV2ArrayInput is an input type that accepts GroupV2Array and GroupV2ArrayOutput values.
 // You can construct a concrete instance of `GroupV2ArrayInput` via:
 //
@@ -412,12 +405,6 @@ func (i GroupV2Array) ToGroupV2ArrayOutput() GroupV2ArrayOutput {
 
 func (i GroupV2Array) ToGroupV2ArrayOutputWithContext(ctx context.Context) GroupV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupV2ArrayOutput)
-}
-
-func (i GroupV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*GroupV2] {
-	return pulumix.Output[[]*GroupV2]{
-		OutputState: i.ToGroupV2ArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GroupV2MapInput is an input type that accepts GroupV2Map and GroupV2MapOutput values.
@@ -445,12 +432,6 @@ func (i GroupV2Map) ToGroupV2MapOutputWithContext(ctx context.Context) GroupV2Ma
 	return pulumi.ToOutputWithContext(ctx, i).(GroupV2MapOutput)
 }
 
-func (i GroupV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupV2] {
-	return pulumix.Output[map[string]*GroupV2]{
-		OutputState: i.ToGroupV2MapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupV2Output struct{ *pulumi.OutputState }
 
 func (GroupV2Output) ElementType() reflect.Type {
@@ -463,12 +444,6 @@ func (o GroupV2Output) ToGroupV2Output() GroupV2Output {
 
 func (o GroupV2Output) ToGroupV2OutputWithContext(ctx context.Context) GroupV2Output {
 	return o
-}
-
-func (o GroupV2Output) ToOutput(ctx context.Context) pulumix.Output[*GroupV2] {
-	return pulumix.Output[*GroupV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Administrative up/down status for the firewall
@@ -563,12 +538,6 @@ func (o GroupV2ArrayOutput) ToGroupV2ArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o GroupV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GroupV2] {
-	return pulumix.Output[[]*GroupV2]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GroupV2ArrayOutput) Index(i pulumi.IntInput) GroupV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GroupV2 {
 		return vs[0].([]*GroupV2)[vs[1].(int)]
@@ -587,12 +556,6 @@ func (o GroupV2MapOutput) ToGroupV2MapOutput() GroupV2MapOutput {
 
 func (o GroupV2MapOutput) ToGroupV2MapOutputWithContext(ctx context.Context) GroupV2MapOutput {
 	return o
-}
-
-func (o GroupV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GroupV2] {
-	return pulumix.Output[map[string]*GroupV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupV2MapOutput) MapIndex(k pulumi.StringInput) GroupV2Output {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V2 router resource within OpenStack.
@@ -448,12 +447,6 @@ func (i *Router) ToRouterOutputWithContext(ctx context.Context) RouterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouterOutput)
 }
 
-func (i *Router) ToOutput(ctx context.Context) pulumix.Output[*Router] {
-	return pulumix.Output[*Router]{
-		OutputState: i.ToRouterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RouterArrayInput is an input type that accepts RouterArray and RouterArrayOutput values.
 // You can construct a concrete instance of `RouterArrayInput` via:
 //
@@ -477,12 +470,6 @@ func (i RouterArray) ToRouterArrayOutput() RouterArrayOutput {
 
 func (i RouterArray) ToRouterArrayOutputWithContext(ctx context.Context) RouterArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouterArrayOutput)
-}
-
-func (i RouterArray) ToOutput(ctx context.Context) pulumix.Output[[]*Router] {
-	return pulumix.Output[[]*Router]{
-		OutputState: i.ToRouterArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RouterMapInput is an input type that accepts RouterMap and RouterMapOutput values.
@@ -510,12 +497,6 @@ func (i RouterMap) ToRouterMapOutputWithContext(ctx context.Context) RouterMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(RouterMapOutput)
 }
 
-func (i RouterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Router] {
-	return pulumix.Output[map[string]*Router]{
-		OutputState: i.ToRouterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RouterOutput struct{ *pulumi.OutputState }
 
 func (RouterOutput) ElementType() reflect.Type {
@@ -528,12 +509,6 @@ func (o RouterOutput) ToRouterOutput() RouterOutput {
 
 func (o RouterOutput) ToRouterOutputWithContext(ctx context.Context) RouterOutput {
 	return o
-}
-
-func (o RouterOutput) ToOutput(ctx context.Context) pulumix.Output[*Router] {
-	return pulumix.Output[*Router]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Administrative up/down status for the router
@@ -664,12 +639,6 @@ func (o RouterArrayOutput) ToRouterArrayOutputWithContext(ctx context.Context) R
 	return o
 }
 
-func (o RouterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Router] {
-	return pulumix.Output[[]*Router]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RouterArrayOutput) Index(i pulumi.IntInput) RouterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Router {
 		return vs[0].([]*Router)[vs[1].(int)]
@@ -688,12 +657,6 @@ func (o RouterMapOutput) ToRouterMapOutput() RouterMapOutput {
 
 func (o RouterMapOutput) ToRouterMapOutputWithContext(ctx context.Context) RouterMapOutput {
 	return o
-}
-
-func (o RouterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Router] {
-	return pulumix.Output[map[string]*Router]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RouterMapOutput) MapIndex(k pulumi.StringInput) RouterOutput {

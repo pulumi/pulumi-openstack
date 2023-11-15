@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the ID of an available OpenStack trunk.
@@ -148,12 +147,6 @@ func (o LookupTrunkResultOutput) ToLookupTrunkResultOutput() LookupTrunkResultOu
 
 func (o LookupTrunkResultOutput) ToLookupTrunkResultOutputWithContext(ctx context.Context) LookupTrunkResultOutput {
 	return o
-}
-
-func (o LookupTrunkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTrunkResult] {
-	return pulumix.Output[LookupTrunkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupTrunkResultOutput) AdminStateUp() pulumi.BoolPtrOutput {

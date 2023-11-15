@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V1 Magnum cluster template resource within OpenStack.
@@ -775,12 +774,6 @@ func (i *ClusterTemplate) ToClusterTemplateOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateOutput)
 }
 
-func (i *ClusterTemplate) ToOutput(ctx context.Context) pulumix.Output[*ClusterTemplate] {
-	return pulumix.Output[*ClusterTemplate]{
-		OutputState: i.ToClusterTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClusterTemplateArrayInput is an input type that accepts ClusterTemplateArray and ClusterTemplateArrayOutput values.
 // You can construct a concrete instance of `ClusterTemplateArrayInput` via:
 //
@@ -804,12 +797,6 @@ func (i ClusterTemplateArray) ToClusterTemplateArrayOutput() ClusterTemplateArra
 
 func (i ClusterTemplateArray) ToClusterTemplateArrayOutputWithContext(ctx context.Context) ClusterTemplateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateArrayOutput)
-}
-
-func (i ClusterTemplateArray) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterTemplate] {
-	return pulumix.Output[[]*ClusterTemplate]{
-		OutputState: i.ToClusterTemplateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ClusterTemplateMapInput is an input type that accepts ClusterTemplateMap and ClusterTemplateMapOutput values.
@@ -837,12 +824,6 @@ func (i ClusterTemplateMap) ToClusterTemplateMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterTemplateMapOutput)
 }
 
-func (i ClusterTemplateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterTemplate] {
-	return pulumix.Output[map[string]*ClusterTemplate]{
-		OutputState: i.ToClusterTemplateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterTemplateOutput struct{ *pulumi.OutputState }
 
 func (ClusterTemplateOutput) ElementType() reflect.Type {
@@ -855,12 +836,6 @@ func (o ClusterTemplateOutput) ToClusterTemplateOutput() ClusterTemplateOutput {
 
 func (o ClusterTemplateOutput) ToClusterTemplateOutputWithContext(ctx context.Context) ClusterTemplateOutput {
 	return o
-}
-
-func (o ClusterTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterTemplate] {
-	return pulumix.Output[*ClusterTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The API server port for the Container
@@ -1098,12 +1073,6 @@ func (o ClusterTemplateArrayOutput) ToClusterTemplateArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ClusterTemplateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ClusterTemplate] {
-	return pulumix.Output[[]*ClusterTemplate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClusterTemplateArrayOutput) Index(i pulumi.IntInput) ClusterTemplateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterTemplate {
 		return vs[0].([]*ClusterTemplate)[vs[1].(int)]
@@ -1122,12 +1091,6 @@ func (o ClusterTemplateMapOutput) ToClusterTemplateMapOutput() ClusterTemplateMa
 
 func (o ClusterTemplateMapOutput) ToClusterTemplateMapOutputWithContext(ctx context.Context) ClusterTemplateMapOutput {
 	return o
-}
-
-func (o ClusterTemplateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ClusterTemplate] {
-	return pulumix.Output[map[string]*ClusterTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterTemplateMapOutput) MapIndex(k pulumi.StringInput) ClusterTemplateOutput {
