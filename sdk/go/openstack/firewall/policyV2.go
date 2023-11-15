@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a v2 firewall policy resource within OpenStack.
@@ -333,12 +332,6 @@ func (i *PolicyV2) ToPolicyV2OutputWithContext(ctx context.Context) PolicyV2Outp
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyV2Output)
 }
 
-func (i *PolicyV2) ToOutput(ctx context.Context) pulumix.Output[*PolicyV2] {
-	return pulumix.Output[*PolicyV2]{
-		OutputState: i.ToPolicyV2OutputWithContext(ctx).OutputState,
-	}
-}
-
 // PolicyV2ArrayInput is an input type that accepts PolicyV2Array and PolicyV2ArrayOutput values.
 // You can construct a concrete instance of `PolicyV2ArrayInput` via:
 //
@@ -362,12 +355,6 @@ func (i PolicyV2Array) ToPolicyV2ArrayOutput() PolicyV2ArrayOutput {
 
 func (i PolicyV2Array) ToPolicyV2ArrayOutputWithContext(ctx context.Context) PolicyV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyV2ArrayOutput)
-}
-
-func (i PolicyV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*PolicyV2] {
-	return pulumix.Output[[]*PolicyV2]{
-		OutputState: i.ToPolicyV2ArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PolicyV2MapInput is an input type that accepts PolicyV2Map and PolicyV2MapOutput values.
@@ -395,12 +382,6 @@ func (i PolicyV2Map) ToPolicyV2MapOutputWithContext(ctx context.Context) PolicyV
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyV2MapOutput)
 }
 
-func (i PolicyV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*PolicyV2] {
-	return pulumix.Output[map[string]*PolicyV2]{
-		OutputState: i.ToPolicyV2MapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyV2Output struct{ *pulumi.OutputState }
 
 func (PolicyV2Output) ElementType() reflect.Type {
@@ -413,12 +394,6 @@ func (o PolicyV2Output) ToPolicyV2Output() PolicyV2Output {
 
 func (o PolicyV2Output) ToPolicyV2OutputWithContext(ctx context.Context) PolicyV2Output {
 	return o
-}
-
-func (o PolicyV2Output) ToOutput(ctx context.Context) pulumix.Output[*PolicyV2] {
-	return pulumix.Output[*PolicyV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Audit status of the firewall policy
@@ -496,12 +471,6 @@ func (o PolicyV2ArrayOutput) ToPolicyV2ArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o PolicyV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PolicyV2] {
-	return pulumix.Output[[]*PolicyV2]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PolicyV2ArrayOutput) Index(i pulumi.IntInput) PolicyV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PolicyV2 {
 		return vs[0].([]*PolicyV2)[vs[1].(int)]
@@ -520,12 +489,6 @@ func (o PolicyV2MapOutput) ToPolicyV2MapOutput() PolicyV2MapOutput {
 
 func (o PolicyV2MapOutput) ToPolicyV2MapOutputWithContext(ctx context.Context) PolicyV2MapOutput {
 	return o
-}
-
-func (o PolicyV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PolicyV2] {
-	return pulumix.Output[map[string]*PolicyV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyV2MapOutput) MapIndex(k pulumi.StringInput) PolicyV2Output {

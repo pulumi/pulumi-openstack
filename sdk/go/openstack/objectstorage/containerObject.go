@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a V1 container object resource within OpenStack.
@@ -504,12 +503,6 @@ func (i *ContainerObject) ToContainerObjectOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerObjectOutput)
 }
 
-func (i *ContainerObject) ToOutput(ctx context.Context) pulumix.Output[*ContainerObject] {
-	return pulumix.Output[*ContainerObject]{
-		OutputState: i.ToContainerObjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ContainerObjectArrayInput is an input type that accepts ContainerObjectArray and ContainerObjectArrayOutput values.
 // You can construct a concrete instance of `ContainerObjectArrayInput` via:
 //
@@ -533,12 +526,6 @@ func (i ContainerObjectArray) ToContainerObjectArrayOutput() ContainerObjectArra
 
 func (i ContainerObjectArray) ToContainerObjectArrayOutputWithContext(ctx context.Context) ContainerObjectArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerObjectArrayOutput)
-}
-
-func (i ContainerObjectArray) ToOutput(ctx context.Context) pulumix.Output[[]*ContainerObject] {
-	return pulumix.Output[[]*ContainerObject]{
-		OutputState: i.ToContainerObjectArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ContainerObjectMapInput is an input type that accepts ContainerObjectMap and ContainerObjectMapOutput values.
@@ -566,12 +553,6 @@ func (i ContainerObjectMap) ToContainerObjectMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerObjectMapOutput)
 }
 
-func (i ContainerObjectMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContainerObject] {
-	return pulumix.Output[map[string]*ContainerObject]{
-		OutputState: i.ToContainerObjectMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContainerObjectOutput struct{ *pulumi.OutputState }
 
 func (ContainerObjectOutput) ElementType() reflect.Type {
@@ -584,12 +565,6 @@ func (o ContainerObjectOutput) ToContainerObjectOutput() ContainerObjectOutput {
 
 func (o ContainerObjectOutput) ToContainerObjectOutputWithContext(ctx context.Context) ContainerObjectOutput {
 	return o
-}
-
-func (o ContainerObjectOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerObject] {
-	return pulumix.Output[*ContainerObject]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A unique (within an account) name for the container.
@@ -734,12 +709,6 @@ func (o ContainerObjectArrayOutput) ToContainerObjectArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ContainerObjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ContainerObject] {
-	return pulumix.Output[[]*ContainerObject]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ContainerObjectArrayOutput) Index(i pulumi.IntInput) ContainerObjectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ContainerObject {
 		return vs[0].([]*ContainerObject)[vs[1].(int)]
@@ -758,12 +727,6 @@ func (o ContainerObjectMapOutput) ToContainerObjectMapOutput() ContainerObjectMa
 
 func (o ContainerObjectMapOutput) ToContainerObjectMapOutputWithContext(ctx context.Context) ContainerObjectMapOutput {
 	return o
-}
-
-func (o ContainerObjectMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContainerObject] {
-	return pulumix.Output[map[string]*ContainerObject]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerObjectMapOutput) MapIndex(k pulumi.StringInput) ContainerObjectOutput {

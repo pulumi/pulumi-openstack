@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the ID of an available OpenStack QoS policy.
@@ -145,12 +144,6 @@ func (o LookupQosPolicyResultOutput) ToLookupQosPolicyResultOutput() LookupQosPo
 
 func (o LookupQosPolicyResultOutput) ToLookupQosPolicyResultOutputWithContext(ctx context.Context) LookupQosPolicyResultOutput {
 	return o
-}
-
-func (o LookupQosPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupQosPolicyResult] {
-	return pulumix.Output[LookupQosPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The set of string tags applied on the QoS policy.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i ShareExportLocationArgs) ToShareExportLocationOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ShareExportLocationOutput)
 }
 
-func (i ShareExportLocationArgs) ToOutput(ctx context.Context) pulumix.Output[ShareExportLocation] {
-	return pulumix.Output[ShareExportLocation]{
-		OutputState: i.ToShareExportLocationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ShareExportLocationArrayInput is an input type that accepts ShareExportLocationArray and ShareExportLocationArrayOutput values.
 // You can construct a concrete instance of `ShareExportLocationArrayInput` via:
 //
@@ -78,12 +71,6 @@ func (i ShareExportLocationArray) ToShareExportLocationArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ShareExportLocationArrayOutput)
 }
 
-func (i ShareExportLocationArray) ToOutput(ctx context.Context) pulumix.Output[[]ShareExportLocation] {
-	return pulumix.Output[[]ShareExportLocation]{
-		OutputState: i.ToShareExportLocationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ShareExportLocationOutput struct{ *pulumi.OutputState }
 
 func (ShareExportLocationOutput) ElementType() reflect.Type {
@@ -96,12 +83,6 @@ func (o ShareExportLocationOutput) ToShareExportLocationOutput() ShareExportLoca
 
 func (o ShareExportLocationOutput) ToShareExportLocationOutputWithContext(ctx context.Context) ShareExportLocationOutput {
 	return o
-}
-
-func (o ShareExportLocationOutput) ToOutput(ctx context.Context) pulumix.Output[ShareExportLocation] {
-	return pulumix.Output[ShareExportLocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ShareExportLocationOutput) Path() pulumi.StringPtrOutput {
@@ -124,12 +105,6 @@ func (o ShareExportLocationArrayOutput) ToShareExportLocationArrayOutput() Share
 
 func (o ShareExportLocationArrayOutput) ToShareExportLocationArrayOutputWithContext(ctx context.Context) ShareExportLocationArrayOutput {
 	return o
-}
-
-func (o ShareExportLocationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ShareExportLocation] {
-	return pulumix.Output[[]ShareExportLocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ShareExportLocationArrayOutput) Index(i pulumi.IntInput) ShareExportLocationOutput {
@@ -171,12 +146,6 @@ func (i GetShareExportLocationArgs) ToGetShareExportLocationOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetShareExportLocationOutput)
 }
 
-func (i GetShareExportLocationArgs) ToOutput(ctx context.Context) pulumix.Output[GetShareExportLocation] {
-	return pulumix.Output[GetShareExportLocation]{
-		OutputState: i.ToGetShareExportLocationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetShareExportLocationArrayInput is an input type that accepts GetShareExportLocationArray and GetShareExportLocationArrayOutput values.
 // You can construct a concrete instance of `GetShareExportLocationArrayInput` via:
 //
@@ -202,12 +171,6 @@ func (i GetShareExportLocationArray) ToGetShareExportLocationArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetShareExportLocationArrayOutput)
 }
 
-func (i GetShareExportLocationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetShareExportLocation] {
-	return pulumix.Output[[]GetShareExportLocation]{
-		OutputState: i.ToGetShareExportLocationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetShareExportLocationOutput struct{ *pulumi.OutputState }
 
 func (GetShareExportLocationOutput) ElementType() reflect.Type {
@@ -220,12 +183,6 @@ func (o GetShareExportLocationOutput) ToGetShareExportLocationOutput() GetShareE
 
 func (o GetShareExportLocationOutput) ToGetShareExportLocationOutputWithContext(ctx context.Context) GetShareExportLocationOutput {
 	return o
-}
-
-func (o GetShareExportLocationOutput) ToOutput(ctx context.Context) pulumix.Output[GetShareExportLocation] {
-	return pulumix.Output[GetShareExportLocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetShareExportLocationOutput) Path() pulumi.StringOutput {
@@ -248,12 +205,6 @@ func (o GetShareExportLocationArrayOutput) ToGetShareExportLocationArrayOutput()
 
 func (o GetShareExportLocationArrayOutput) ToGetShareExportLocationArrayOutputWithContext(ctx context.Context) GetShareExportLocationArrayOutput {
 	return o
-}
-
-func (o GetShareExportLocationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetShareExportLocation] {
-	return pulumix.Output[[]GetShareExportLocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetShareExportLocationArrayOutput) Index(i pulumi.IntInput) GetShareExportLocationOutput {

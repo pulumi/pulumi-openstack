@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the ID of an OpenStack endpoint.
@@ -145,12 +144,6 @@ func (o GetEndpointResultOutput) ToGetEndpointResultOutput() GetEndpointResultOu
 
 func (o GetEndpointResultOutput) ToGetEndpointResultOutputWithContext(ctx context.Context) GetEndpointResultOutput {
 	return o
-}
-
-func (o GetEndpointResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEndpointResult] {
-	return pulumix.Output[GetEndpointResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // See Argument Reference above.

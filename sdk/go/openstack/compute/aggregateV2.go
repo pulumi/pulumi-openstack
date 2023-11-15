@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a Host Aggregate within Openstack Nova.
@@ -234,12 +233,6 @@ func (i *AggregateV2) ToAggregateV2OutputWithContext(ctx context.Context) Aggreg
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateV2Output)
 }
 
-func (i *AggregateV2) ToOutput(ctx context.Context) pulumix.Output[*AggregateV2] {
-	return pulumix.Output[*AggregateV2]{
-		OutputState: i.ToAggregateV2OutputWithContext(ctx).OutputState,
-	}
-}
-
 // AggregateV2ArrayInput is an input type that accepts AggregateV2Array and AggregateV2ArrayOutput values.
 // You can construct a concrete instance of `AggregateV2ArrayInput` via:
 //
@@ -263,12 +256,6 @@ func (i AggregateV2Array) ToAggregateV2ArrayOutput() AggregateV2ArrayOutput {
 
 func (i AggregateV2Array) ToAggregateV2ArrayOutputWithContext(ctx context.Context) AggregateV2ArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateV2ArrayOutput)
-}
-
-func (i AggregateV2Array) ToOutput(ctx context.Context) pulumix.Output[[]*AggregateV2] {
-	return pulumix.Output[[]*AggregateV2]{
-		OutputState: i.ToAggregateV2ArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AggregateV2MapInput is an input type that accepts AggregateV2Map and AggregateV2MapOutput values.
@@ -296,12 +283,6 @@ func (i AggregateV2Map) ToAggregateV2MapOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AggregateV2MapOutput)
 }
 
-func (i AggregateV2Map) ToOutput(ctx context.Context) pulumix.Output[map[string]*AggregateV2] {
-	return pulumix.Output[map[string]*AggregateV2]{
-		OutputState: i.ToAggregateV2MapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AggregateV2Output struct{ *pulumi.OutputState }
 
 func (AggregateV2Output) ElementType() reflect.Type {
@@ -314,12 +295,6 @@ func (o AggregateV2Output) ToAggregateV2Output() AggregateV2Output {
 
 func (o AggregateV2Output) ToAggregateV2OutputWithContext(ctx context.Context) AggregateV2Output {
 	return o
-}
-
-func (o AggregateV2Output) ToOutput(ctx context.Context) pulumix.Output[*AggregateV2] {
-	return pulumix.Output[*AggregateV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of hosts contained in the Host Aggregate. The hosts must be added
@@ -366,12 +341,6 @@ func (o AggregateV2ArrayOutput) ToAggregateV2ArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o AggregateV2ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AggregateV2] {
-	return pulumix.Output[[]*AggregateV2]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AggregateV2ArrayOutput) Index(i pulumi.IntInput) AggregateV2Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AggregateV2 {
 		return vs[0].([]*AggregateV2)[vs[1].(int)]
@@ -390,12 +359,6 @@ func (o AggregateV2MapOutput) ToAggregateV2MapOutput() AggregateV2MapOutput {
 
 func (o AggregateV2MapOutput) ToAggregateV2MapOutputWithContext(ctx context.Context) AggregateV2MapOutput {
 	return o
-}
-
-func (o AggregateV2MapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AggregateV2] {
-	return pulumix.Output[map[string]*AggregateV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AggregateV2MapOutput) MapIndex(k pulumi.StringInput) AggregateV2Output {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i NetworkSegmentArgs) ToNetworkSegmentOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkSegmentOutput)
 }
 
-func (i NetworkSegmentArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkSegment] {
-	return pulumix.Output[NetworkSegment]{
-		OutputState: i.ToNetworkSegmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkSegmentArrayInput is an input type that accepts NetworkSegmentArray and NetworkSegmentArrayOutput values.
 // You can construct a concrete instance of `NetworkSegmentArrayInput` via:
 //
@@ -86,12 +79,6 @@ func (i NetworkSegmentArray) ToNetworkSegmentArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkSegmentArrayOutput)
 }
 
-func (i NetworkSegmentArray) ToOutput(ctx context.Context) pulumix.Output[[]NetworkSegment] {
-	return pulumix.Output[[]NetworkSegment]{
-		OutputState: i.ToNetworkSegmentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkSegmentOutput struct{ *pulumi.OutputState }
 
 func (NetworkSegmentOutput) ElementType() reflect.Type {
@@ -104,12 +91,6 @@ func (o NetworkSegmentOutput) ToNetworkSegmentOutput() NetworkSegmentOutput {
 
 func (o NetworkSegmentOutput) ToNetworkSegmentOutputWithContext(ctx context.Context) NetworkSegmentOutput {
 	return o
-}
-
-func (o NetworkSegmentOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkSegment] {
-	return pulumix.Output[NetworkSegment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of physical network.
@@ -139,12 +120,6 @@ func (o NetworkSegmentArrayOutput) ToNetworkSegmentArrayOutput() NetworkSegmentA
 
 func (o NetworkSegmentArrayOutput) ToNetworkSegmentArrayOutputWithContext(ctx context.Context) NetworkSegmentArrayOutput {
 	return o
-}
-
-func (o NetworkSegmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkSegment] {
-	return pulumix.Output[[]NetworkSegment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkSegmentArrayOutput) Index(i pulumi.IntInput) NetworkSegmentOutput {
@@ -190,12 +165,6 @@ func (i PortAllowedAddressPairArgs) ToPortAllowedAddressPairOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(PortAllowedAddressPairOutput)
 }
 
-func (i PortAllowedAddressPairArgs) ToOutput(ctx context.Context) pulumix.Output[PortAllowedAddressPair] {
-	return pulumix.Output[PortAllowedAddressPair]{
-		OutputState: i.ToPortAllowedAddressPairOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PortAllowedAddressPairArrayInput is an input type that accepts PortAllowedAddressPairArray and PortAllowedAddressPairArrayOutput values.
 // You can construct a concrete instance of `PortAllowedAddressPairArrayInput` via:
 //
@@ -221,12 +190,6 @@ func (i PortAllowedAddressPairArray) ToPortAllowedAddressPairArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PortAllowedAddressPairArrayOutput)
 }
 
-func (i PortAllowedAddressPairArray) ToOutput(ctx context.Context) pulumix.Output[[]PortAllowedAddressPair] {
-	return pulumix.Output[[]PortAllowedAddressPair]{
-		OutputState: i.ToPortAllowedAddressPairArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PortAllowedAddressPairOutput struct{ *pulumi.OutputState }
 
 func (PortAllowedAddressPairOutput) ElementType() reflect.Type {
@@ -239,12 +202,6 @@ func (o PortAllowedAddressPairOutput) ToPortAllowedAddressPairOutput() PortAllow
 
 func (o PortAllowedAddressPairOutput) ToPortAllowedAddressPairOutputWithContext(ctx context.Context) PortAllowedAddressPairOutput {
 	return o
-}
-
-func (o PortAllowedAddressPairOutput) ToOutput(ctx context.Context) pulumix.Output[PortAllowedAddressPair] {
-	return pulumix.Output[PortAllowedAddressPair]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The additional IP address.
@@ -269,12 +226,6 @@ func (o PortAllowedAddressPairArrayOutput) ToPortAllowedAddressPairArrayOutput()
 
 func (o PortAllowedAddressPairArrayOutput) ToPortAllowedAddressPairArrayOutputWithContext(ctx context.Context) PortAllowedAddressPairArrayOutput {
 	return o
-}
-
-func (o PortAllowedAddressPairArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PortAllowedAddressPair] {
-	return pulumix.Output[[]PortAllowedAddressPair]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PortAllowedAddressPairArrayOutput) Index(i pulumi.IntInput) PortAllowedAddressPairOutput {
@@ -340,12 +291,6 @@ func (i PortBindingArgs) ToPortBindingOutputWithContext(ctx context.Context) Por
 	return pulumi.ToOutputWithContext(ctx, i).(PortBindingOutput)
 }
 
-func (i PortBindingArgs) ToOutput(ctx context.Context) pulumix.Output[PortBinding] {
-	return pulumix.Output[PortBinding]{
-		OutputState: i.ToPortBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PortBindingArgs) ToPortBindingPtrOutput() PortBindingPtrOutput {
 	return i.ToPortBindingPtrOutputWithContext(context.Background())
 }
@@ -387,12 +332,6 @@ func (i *portBindingPtrType) ToPortBindingPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PortBindingPtrOutput)
 }
 
-func (i *portBindingPtrType) ToOutput(ctx context.Context) pulumix.Output[*PortBinding] {
-	return pulumix.Output[*PortBinding]{
-		OutputState: i.ToPortBindingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PortBindingOutput struct{ *pulumi.OutputState }
 
 func (PortBindingOutput) ElementType() reflect.Type {
@@ -415,12 +354,6 @@ func (o PortBindingOutput) ToPortBindingPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PortBinding) *PortBinding {
 		return &v
 	}).(PortBindingPtrOutput)
-}
-
-func (o PortBindingOutput) ToOutput(ctx context.Context) pulumix.Output[PortBinding] {
-	return pulumix.Output[PortBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the host to allocate port on.
@@ -464,12 +397,6 @@ func (o PortBindingPtrOutput) ToPortBindingPtrOutput() PortBindingPtrOutput {
 
 func (o PortBindingPtrOutput) ToPortBindingPtrOutputWithContext(ctx context.Context) PortBindingPtrOutput {
 	return o
-}
-
-func (o PortBindingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PortBinding] {
-	return pulumix.Output[*PortBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PortBindingPtrOutput) Elem() PortBindingOutput {
@@ -577,12 +504,6 @@ func (i PortExtraDhcpOptionArgs) ToPortExtraDhcpOptionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PortExtraDhcpOptionOutput)
 }
 
-func (i PortExtraDhcpOptionArgs) ToOutput(ctx context.Context) pulumix.Output[PortExtraDhcpOption] {
-	return pulumix.Output[PortExtraDhcpOption]{
-		OutputState: i.ToPortExtraDhcpOptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PortExtraDhcpOptionArrayInput is an input type that accepts PortExtraDhcpOptionArray and PortExtraDhcpOptionArrayOutput values.
 // You can construct a concrete instance of `PortExtraDhcpOptionArrayInput` via:
 //
@@ -608,12 +529,6 @@ func (i PortExtraDhcpOptionArray) ToPortExtraDhcpOptionArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(PortExtraDhcpOptionArrayOutput)
 }
 
-func (i PortExtraDhcpOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]PortExtraDhcpOption] {
-	return pulumix.Output[[]PortExtraDhcpOption]{
-		OutputState: i.ToPortExtraDhcpOptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PortExtraDhcpOptionOutput struct{ *pulumi.OutputState }
 
 func (PortExtraDhcpOptionOutput) ElementType() reflect.Type {
@@ -626,12 +541,6 @@ func (o PortExtraDhcpOptionOutput) ToPortExtraDhcpOptionOutput() PortExtraDhcpOp
 
 func (o PortExtraDhcpOptionOutput) ToPortExtraDhcpOptionOutputWithContext(ctx context.Context) PortExtraDhcpOptionOutput {
 	return o
-}
-
-func (o PortExtraDhcpOptionOutput) ToOutput(ctx context.Context) pulumix.Output[PortExtraDhcpOption] {
-	return pulumix.Output[PortExtraDhcpOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 // IP protocol version. Defaults to 4.
@@ -661,12 +570,6 @@ func (o PortExtraDhcpOptionArrayOutput) ToPortExtraDhcpOptionArrayOutput() PortE
 
 func (o PortExtraDhcpOptionArrayOutput) ToPortExtraDhcpOptionArrayOutputWithContext(ctx context.Context) PortExtraDhcpOptionArrayOutput {
 	return o
-}
-
-func (o PortExtraDhcpOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PortExtraDhcpOption] {
-	return pulumix.Output[[]PortExtraDhcpOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PortExtraDhcpOptionArrayOutput) Index(i pulumi.IntInput) PortExtraDhcpOptionOutput {
@@ -722,12 +625,6 @@ func (i PortFixedIpArgs) ToPortFixedIpOutputWithContext(ctx context.Context) Por
 	return pulumi.ToOutputWithContext(ctx, i).(PortFixedIpOutput)
 }
 
-func (i PortFixedIpArgs) ToOutput(ctx context.Context) pulumix.Output[PortFixedIp] {
-	return pulumix.Output[PortFixedIp]{
-		OutputState: i.ToPortFixedIpOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PortFixedIpArrayInput is an input type that accepts PortFixedIpArray and PortFixedIpArrayOutput values.
 // You can construct a concrete instance of `PortFixedIpArrayInput` via:
 //
@@ -753,12 +650,6 @@ func (i PortFixedIpArray) ToPortFixedIpArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PortFixedIpArrayOutput)
 }
 
-func (i PortFixedIpArray) ToOutput(ctx context.Context) pulumix.Output[[]PortFixedIp] {
-	return pulumix.Output[[]PortFixedIp]{
-		OutputState: i.ToPortFixedIpArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PortFixedIpOutput struct{ *pulumi.OutputState }
 
 func (PortFixedIpOutput) ElementType() reflect.Type {
@@ -771,12 +662,6 @@ func (o PortFixedIpOutput) ToPortFixedIpOutput() PortFixedIpOutput {
 
 func (o PortFixedIpOutput) ToPortFixedIpOutputWithContext(ctx context.Context) PortFixedIpOutput {
 	return o
-}
-
-func (o PortFixedIpOutput) ToOutput(ctx context.Context) pulumix.Output[PortFixedIp] {
-	return pulumix.Output[PortFixedIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 // IP address desired in the subnet for this port. If
@@ -806,12 +691,6 @@ func (o PortFixedIpArrayOutput) ToPortFixedIpArrayOutput() PortFixedIpArrayOutpu
 
 func (o PortFixedIpArrayOutput) ToPortFixedIpArrayOutputWithContext(ctx context.Context) PortFixedIpArrayOutput {
 	return o
-}
-
-func (o PortFixedIpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PortFixedIp] {
-	return pulumix.Output[[]PortFixedIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PortFixedIpArrayOutput) Index(i pulumi.IntInput) PortFixedIpOutput {
@@ -857,12 +736,6 @@ func (i RouterExternalFixedIpArgs) ToRouterExternalFixedIpOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(RouterExternalFixedIpOutput)
 }
 
-func (i RouterExternalFixedIpArgs) ToOutput(ctx context.Context) pulumix.Output[RouterExternalFixedIp] {
-	return pulumix.Output[RouterExternalFixedIp]{
-		OutputState: i.ToRouterExternalFixedIpOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RouterExternalFixedIpArrayInput is an input type that accepts RouterExternalFixedIpArray and RouterExternalFixedIpArrayOutput values.
 // You can construct a concrete instance of `RouterExternalFixedIpArrayInput` via:
 //
@@ -888,12 +761,6 @@ func (i RouterExternalFixedIpArray) ToRouterExternalFixedIpArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(RouterExternalFixedIpArrayOutput)
 }
 
-func (i RouterExternalFixedIpArray) ToOutput(ctx context.Context) pulumix.Output[[]RouterExternalFixedIp] {
-	return pulumix.Output[[]RouterExternalFixedIp]{
-		OutputState: i.ToRouterExternalFixedIpArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RouterExternalFixedIpOutput struct{ *pulumi.OutputState }
 
 func (RouterExternalFixedIpOutput) ElementType() reflect.Type {
@@ -906,12 +773,6 @@ func (o RouterExternalFixedIpOutput) ToRouterExternalFixedIpOutput() RouterExter
 
 func (o RouterExternalFixedIpOutput) ToRouterExternalFixedIpOutputWithContext(ctx context.Context) RouterExternalFixedIpOutput {
 	return o
-}
-
-func (o RouterExternalFixedIpOutput) ToOutput(ctx context.Context) pulumix.Output[RouterExternalFixedIp] {
-	return pulumix.Output[RouterExternalFixedIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP address to set on the router.
@@ -936,12 +797,6 @@ func (o RouterExternalFixedIpArrayOutput) ToRouterExternalFixedIpArrayOutput() R
 
 func (o RouterExternalFixedIpArrayOutput) ToRouterExternalFixedIpArrayOutputWithContext(ctx context.Context) RouterExternalFixedIpArrayOutput {
 	return o
-}
-
-func (o RouterExternalFixedIpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RouterExternalFixedIp] {
-	return pulumix.Output[[]RouterExternalFixedIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RouterExternalFixedIpArrayOutput) Index(i pulumi.IntInput) RouterExternalFixedIpOutput {
@@ -985,12 +840,6 @@ func (i RouterVendorOptionsArgs) ToRouterVendorOptionsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(RouterVendorOptionsOutput)
 }
 
-func (i RouterVendorOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[RouterVendorOptions] {
-	return pulumix.Output[RouterVendorOptions]{
-		OutputState: i.ToRouterVendorOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RouterVendorOptionsArgs) ToRouterVendorOptionsPtrOutput() RouterVendorOptionsPtrOutput {
 	return i.ToRouterVendorOptionsPtrOutputWithContext(context.Background())
 }
@@ -1032,12 +881,6 @@ func (i *routerVendorOptionsPtrType) ToRouterVendorOptionsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(RouterVendorOptionsPtrOutput)
 }
 
-func (i *routerVendorOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*RouterVendorOptions] {
-	return pulumix.Output[*RouterVendorOptions]{
-		OutputState: i.ToRouterVendorOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RouterVendorOptionsOutput struct{ *pulumi.OutputState }
 
 func (RouterVendorOptionsOutput) ElementType() reflect.Type {
@@ -1062,12 +905,6 @@ func (o RouterVendorOptionsOutput) ToRouterVendorOptionsPtrOutputWithContext(ctx
 	}).(RouterVendorOptionsPtrOutput)
 }
 
-func (o RouterVendorOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[RouterVendorOptions] {
-	return pulumix.Output[RouterVendorOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Boolean to control whether
 // the Router gateway is assigned during creation or updated after creation.
 func (o RouterVendorOptionsOutput) SetRouterGatewayAfterCreate() pulumi.BoolPtrOutput {
@@ -1086,12 +923,6 @@ func (o RouterVendorOptionsPtrOutput) ToRouterVendorOptionsPtrOutput() RouterVen
 
 func (o RouterVendorOptionsPtrOutput) ToRouterVendorOptionsPtrOutputWithContext(ctx context.Context) RouterVendorOptionsPtrOutput {
 	return o
-}
-
-func (o RouterVendorOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouterVendorOptions] {
-	return pulumix.Output[*RouterVendorOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RouterVendorOptionsPtrOutput) Elem() RouterVendorOptionsOutput {
@@ -1152,12 +983,6 @@ func (i SubnetAllocationPoolArgs) ToSubnetAllocationPoolOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetAllocationPoolOutput)
 }
 
-func (i SubnetAllocationPoolArgs) ToOutput(ctx context.Context) pulumix.Output[SubnetAllocationPool] {
-	return pulumix.Output[SubnetAllocationPool]{
-		OutputState: i.ToSubnetAllocationPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SubnetAllocationPoolArrayInput is an input type that accepts SubnetAllocationPoolArray and SubnetAllocationPoolArrayOutput values.
 // You can construct a concrete instance of `SubnetAllocationPoolArrayInput` via:
 //
@@ -1183,12 +1008,6 @@ func (i SubnetAllocationPoolArray) ToSubnetAllocationPoolArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetAllocationPoolArrayOutput)
 }
 
-func (i SubnetAllocationPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]SubnetAllocationPool] {
-	return pulumix.Output[[]SubnetAllocationPool]{
-		OutputState: i.ToSubnetAllocationPoolArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubnetAllocationPoolOutput struct{ *pulumi.OutputState }
 
 func (SubnetAllocationPoolOutput) ElementType() reflect.Type {
@@ -1201,12 +1020,6 @@ func (o SubnetAllocationPoolOutput) ToSubnetAllocationPoolOutput() SubnetAllocat
 
 func (o SubnetAllocationPoolOutput) ToSubnetAllocationPoolOutputWithContext(ctx context.Context) SubnetAllocationPoolOutput {
 	return o
-}
-
-func (o SubnetAllocationPoolOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetAllocationPool] {
-	return pulumix.Output[SubnetAllocationPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ending address.
@@ -1231,12 +1044,6 @@ func (o SubnetAllocationPoolArrayOutput) ToSubnetAllocationPoolArrayOutput() Sub
 
 func (o SubnetAllocationPoolArrayOutput) ToSubnetAllocationPoolArrayOutputWithContext(ctx context.Context) SubnetAllocationPoolArrayOutput {
 	return o
-}
-
-func (o SubnetAllocationPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubnetAllocationPool] {
-	return pulumix.Output[[]SubnetAllocationPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubnetAllocationPoolArrayOutput) Index(i pulumi.IntInput) SubnetAllocationPoolOutput {
@@ -1282,12 +1089,6 @@ func (i SubnetAllocationPoolsCollectionArgs) ToSubnetAllocationPoolsCollectionOu
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetAllocationPoolsCollectionOutput)
 }
 
-func (i SubnetAllocationPoolsCollectionArgs) ToOutput(ctx context.Context) pulumix.Output[SubnetAllocationPoolsCollection] {
-	return pulumix.Output[SubnetAllocationPoolsCollection]{
-		OutputState: i.ToSubnetAllocationPoolsCollectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SubnetAllocationPoolsCollectionArrayInput is an input type that accepts SubnetAllocationPoolsCollectionArray and SubnetAllocationPoolsCollectionArrayOutput values.
 // You can construct a concrete instance of `SubnetAllocationPoolsCollectionArrayInput` via:
 //
@@ -1313,12 +1114,6 @@ func (i SubnetAllocationPoolsCollectionArray) ToSubnetAllocationPoolsCollectionA
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetAllocationPoolsCollectionArrayOutput)
 }
 
-func (i SubnetAllocationPoolsCollectionArray) ToOutput(ctx context.Context) pulumix.Output[[]SubnetAllocationPoolsCollection] {
-	return pulumix.Output[[]SubnetAllocationPoolsCollection]{
-		OutputState: i.ToSubnetAllocationPoolsCollectionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubnetAllocationPoolsCollectionOutput struct{ *pulumi.OutputState }
 
 func (SubnetAllocationPoolsCollectionOutput) ElementType() reflect.Type {
@@ -1331,12 +1126,6 @@ func (o SubnetAllocationPoolsCollectionOutput) ToSubnetAllocationPoolsCollection
 
 func (o SubnetAllocationPoolsCollectionOutput) ToSubnetAllocationPoolsCollectionOutputWithContext(ctx context.Context) SubnetAllocationPoolsCollectionOutput {
 	return o
-}
-
-func (o SubnetAllocationPoolsCollectionOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetAllocationPoolsCollection] {
-	return pulumix.Output[SubnetAllocationPoolsCollection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ending address.
@@ -1361,12 +1150,6 @@ func (o SubnetAllocationPoolsCollectionArrayOutput) ToSubnetAllocationPoolsColle
 
 func (o SubnetAllocationPoolsCollectionArrayOutput) ToSubnetAllocationPoolsCollectionArrayOutputWithContext(ctx context.Context) SubnetAllocationPoolsCollectionArrayOutput {
 	return o
-}
-
-func (o SubnetAllocationPoolsCollectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubnetAllocationPoolsCollection] {
-	return pulumix.Output[[]SubnetAllocationPoolsCollection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubnetAllocationPoolsCollectionArrayOutput) Index(i pulumi.IntInput) SubnetAllocationPoolsCollectionOutput {
@@ -1412,12 +1195,6 @@ func (i SubnetHostRouteArgs) ToSubnetHostRouteOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetHostRouteOutput)
 }
 
-func (i SubnetHostRouteArgs) ToOutput(ctx context.Context) pulumix.Output[SubnetHostRoute] {
-	return pulumix.Output[SubnetHostRoute]{
-		OutputState: i.ToSubnetHostRouteOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SubnetHostRouteArrayInput is an input type that accepts SubnetHostRouteArray and SubnetHostRouteArrayOutput values.
 // You can construct a concrete instance of `SubnetHostRouteArrayInput` via:
 //
@@ -1443,12 +1220,6 @@ func (i SubnetHostRouteArray) ToSubnetHostRouteArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetHostRouteArrayOutput)
 }
 
-func (i SubnetHostRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]SubnetHostRoute] {
-	return pulumix.Output[[]SubnetHostRoute]{
-		OutputState: i.ToSubnetHostRouteArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubnetHostRouteOutput struct{ *pulumi.OutputState }
 
 func (SubnetHostRouteOutput) ElementType() reflect.Type {
@@ -1461,12 +1232,6 @@ func (o SubnetHostRouteOutput) ToSubnetHostRouteOutput() SubnetHostRouteOutput {
 
 func (o SubnetHostRouteOutput) ToSubnetHostRouteOutputWithContext(ctx context.Context) SubnetHostRouteOutput {
 	return o
-}
-
-func (o SubnetHostRouteOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetHostRoute] {
-	return pulumix.Output[SubnetHostRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The destination CIDR.
@@ -1491,12 +1256,6 @@ func (o SubnetHostRouteArrayOutput) ToSubnetHostRouteArrayOutput() SubnetHostRou
 
 func (o SubnetHostRouteArrayOutput) ToSubnetHostRouteArrayOutputWithContext(ctx context.Context) SubnetHostRouteArrayOutput {
 	return o
-}
-
-func (o SubnetHostRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubnetHostRoute] {
-	return pulumix.Output[[]SubnetHostRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubnetHostRouteArrayOutput) Index(i pulumi.IntInput) SubnetHostRouteOutput {
@@ -1546,12 +1305,6 @@ func (i TrunkSubPortArgs) ToTrunkSubPortOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TrunkSubPortOutput)
 }
 
-func (i TrunkSubPortArgs) ToOutput(ctx context.Context) pulumix.Output[TrunkSubPort] {
-	return pulumix.Output[TrunkSubPort]{
-		OutputState: i.ToTrunkSubPortOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TrunkSubPortArrayInput is an input type that accepts TrunkSubPortArray and TrunkSubPortArrayOutput values.
 // You can construct a concrete instance of `TrunkSubPortArrayInput` via:
 //
@@ -1577,12 +1330,6 @@ func (i TrunkSubPortArray) ToTrunkSubPortArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(TrunkSubPortArrayOutput)
 }
 
-func (i TrunkSubPortArray) ToOutput(ctx context.Context) pulumix.Output[[]TrunkSubPort] {
-	return pulumix.Output[[]TrunkSubPort]{
-		OutputState: i.ToTrunkSubPortArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TrunkSubPortOutput struct{ *pulumi.OutputState }
 
 func (TrunkSubPortOutput) ElementType() reflect.Type {
@@ -1595,12 +1342,6 @@ func (o TrunkSubPortOutput) ToTrunkSubPortOutput() TrunkSubPortOutput {
 
 func (o TrunkSubPortOutput) ToTrunkSubPortOutputWithContext(ctx context.Context) TrunkSubPortOutput {
 	return o
-}
-
-func (o TrunkSubPortOutput) ToOutput(ctx context.Context) pulumix.Output[TrunkSubPort] {
-	return pulumix.Output[TrunkSubPort]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the port to be made a subport of the trunk.
@@ -1630,12 +1371,6 @@ func (o TrunkSubPortArrayOutput) ToTrunkSubPortArrayOutput() TrunkSubPortArrayOu
 
 func (o TrunkSubPortArrayOutput) ToTrunkSubPortArrayOutputWithContext(ctx context.Context) TrunkSubPortArrayOutput {
 	return o
-}
-
-func (o TrunkSubPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TrunkSubPort] {
-	return pulumix.Output[[]TrunkSubPort]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrunkSubPortArrayOutput) Index(i pulumi.IntInput) TrunkSubPortOutput {
@@ -1679,12 +1414,6 @@ func (i GetNetworkSegmentArgs) ToGetNetworkSegmentOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkSegmentOutput)
 }
 
-func (i GetNetworkSegmentArgs) ToOutput(ctx context.Context) pulumix.Output[GetNetworkSegment] {
-	return pulumix.Output[GetNetworkSegment]{
-		OutputState: i.ToGetNetworkSegmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetNetworkSegmentArrayInput is an input type that accepts GetNetworkSegmentArray and GetNetworkSegmentArrayOutput values.
 // You can construct a concrete instance of `GetNetworkSegmentArrayInput` via:
 //
@@ -1710,12 +1439,6 @@ func (i GetNetworkSegmentArray) ToGetNetworkSegmentArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkSegmentArrayOutput)
 }
 
-func (i GetNetworkSegmentArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNetworkSegment] {
-	return pulumix.Output[[]GetNetworkSegment]{
-		OutputState: i.ToGetNetworkSegmentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetNetworkSegmentOutput struct{ *pulumi.OutputState }
 
 func (GetNetworkSegmentOutput) ElementType() reflect.Type {
@@ -1728,12 +1451,6 @@ func (o GetNetworkSegmentOutput) ToGetNetworkSegmentOutput() GetNetworkSegmentOu
 
 func (o GetNetworkSegmentOutput) ToGetNetworkSegmentOutputWithContext(ctx context.Context) GetNetworkSegmentOutput {
 	return o
-}
-
-func (o GetNetworkSegmentOutput) ToOutput(ctx context.Context) pulumix.Output[GetNetworkSegment] {
-	return pulumix.Output[GetNetworkSegment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetNetworkSegmentOutput) NetworkType() pulumi.StringOutput {
@@ -1760,12 +1477,6 @@ func (o GetNetworkSegmentArrayOutput) ToGetNetworkSegmentArrayOutput() GetNetwor
 
 func (o GetNetworkSegmentArrayOutput) ToGetNetworkSegmentArrayOutputWithContext(ctx context.Context) GetNetworkSegmentArrayOutput {
 	return o
-}
-
-func (o GetNetworkSegmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNetworkSegment] {
-	return pulumix.Output[[]GetNetworkSegment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetNetworkSegmentArrayOutput) Index(i pulumi.IntInput) GetNetworkSegmentOutput {
@@ -1811,12 +1522,6 @@ func (i GetPortAllowedAddressPairArgs) ToGetPortAllowedAddressPairOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortAllowedAddressPairOutput)
 }
 
-func (i GetPortAllowedAddressPairArgs) ToOutput(ctx context.Context) pulumix.Output[GetPortAllowedAddressPair] {
-	return pulumix.Output[GetPortAllowedAddressPair]{
-		OutputState: i.ToGetPortAllowedAddressPairOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetPortAllowedAddressPairArrayInput is an input type that accepts GetPortAllowedAddressPairArray and GetPortAllowedAddressPairArrayOutput values.
 // You can construct a concrete instance of `GetPortAllowedAddressPairArrayInput` via:
 //
@@ -1842,12 +1547,6 @@ func (i GetPortAllowedAddressPairArray) ToGetPortAllowedAddressPairArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortAllowedAddressPairArrayOutput)
 }
 
-func (i GetPortAllowedAddressPairArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPortAllowedAddressPair] {
-	return pulumix.Output[[]GetPortAllowedAddressPair]{
-		OutputState: i.ToGetPortAllowedAddressPairArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetPortAllowedAddressPairOutput struct{ *pulumi.OutputState }
 
 func (GetPortAllowedAddressPairOutput) ElementType() reflect.Type {
@@ -1860,12 +1559,6 @@ func (o GetPortAllowedAddressPairOutput) ToGetPortAllowedAddressPairOutput() Get
 
 func (o GetPortAllowedAddressPairOutput) ToGetPortAllowedAddressPairOutputWithContext(ctx context.Context) GetPortAllowedAddressPairOutput {
 	return o
-}
-
-func (o GetPortAllowedAddressPairOutput) ToOutput(ctx context.Context) pulumix.Output[GetPortAllowedAddressPair] {
-	return pulumix.Output[GetPortAllowedAddressPair]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The additional IP address.
@@ -1890,12 +1583,6 @@ func (o GetPortAllowedAddressPairArrayOutput) ToGetPortAllowedAddressPairArrayOu
 
 func (o GetPortAllowedAddressPairArrayOutput) ToGetPortAllowedAddressPairArrayOutputWithContext(ctx context.Context) GetPortAllowedAddressPairArrayOutput {
 	return o
-}
-
-func (o GetPortAllowedAddressPairArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPortAllowedAddressPair] {
-	return pulumix.Output[[]GetPortAllowedAddressPair]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPortAllowedAddressPairArrayOutput) Index(i pulumi.IntInput) GetPortAllowedAddressPairOutput {
@@ -1955,12 +1642,6 @@ func (i GetPortBindingArgs) ToGetPortBindingOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortBindingOutput)
 }
 
-func (i GetPortBindingArgs) ToOutput(ctx context.Context) pulumix.Output[GetPortBinding] {
-	return pulumix.Output[GetPortBinding]{
-		OutputState: i.ToGetPortBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetPortBindingArrayInput is an input type that accepts GetPortBindingArray and GetPortBindingArrayOutput values.
 // You can construct a concrete instance of `GetPortBindingArrayInput` via:
 //
@@ -1986,12 +1667,6 @@ func (i GetPortBindingArray) ToGetPortBindingArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortBindingArrayOutput)
 }
 
-func (i GetPortBindingArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPortBinding] {
-	return pulumix.Output[[]GetPortBinding]{
-		OutputState: i.ToGetPortBindingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetPortBindingOutput struct{ *pulumi.OutputState }
 
 func (GetPortBindingOutput) ElementType() reflect.Type {
@@ -2004,12 +1679,6 @@ func (o GetPortBindingOutput) ToGetPortBindingOutput() GetPortBindingOutput {
 
 func (o GetPortBindingOutput) ToGetPortBindingOutputWithContext(ctx context.Context) GetPortBindingOutput {
 	return o
-}
-
-func (o GetPortBindingOutput) ToOutput(ctx context.Context) pulumix.Output[GetPortBinding] {
-	return pulumix.Output[GetPortBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the host, which has the allocatee port.
@@ -2050,12 +1719,6 @@ func (o GetPortBindingArrayOutput) ToGetPortBindingArrayOutput() GetPortBindingA
 
 func (o GetPortBindingArrayOutput) ToGetPortBindingArrayOutputWithContext(ctx context.Context) GetPortBindingArrayOutput {
 	return o
-}
-
-func (o GetPortBindingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPortBinding] {
-	return pulumix.Output[[]GetPortBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPortBindingArrayOutput) Index(i pulumi.IntInput) GetPortBindingOutput {
@@ -2105,12 +1768,6 @@ func (i GetPortExtraDhcpOptionArgs) ToGetPortExtraDhcpOptionOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortExtraDhcpOptionOutput)
 }
 
-func (i GetPortExtraDhcpOptionArgs) ToOutput(ctx context.Context) pulumix.Output[GetPortExtraDhcpOption] {
-	return pulumix.Output[GetPortExtraDhcpOption]{
-		OutputState: i.ToGetPortExtraDhcpOptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetPortExtraDhcpOptionArrayInput is an input type that accepts GetPortExtraDhcpOptionArray and GetPortExtraDhcpOptionArrayOutput values.
 // You can construct a concrete instance of `GetPortExtraDhcpOptionArrayInput` via:
 //
@@ -2136,12 +1793,6 @@ func (i GetPortExtraDhcpOptionArray) ToGetPortExtraDhcpOptionArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetPortExtraDhcpOptionArrayOutput)
 }
 
-func (i GetPortExtraDhcpOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPortExtraDhcpOption] {
-	return pulumix.Output[[]GetPortExtraDhcpOption]{
-		OutputState: i.ToGetPortExtraDhcpOptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetPortExtraDhcpOptionOutput struct{ *pulumi.OutputState }
 
 func (GetPortExtraDhcpOptionOutput) ElementType() reflect.Type {
@@ -2154,12 +1805,6 @@ func (o GetPortExtraDhcpOptionOutput) ToGetPortExtraDhcpOptionOutput() GetPortEx
 
 func (o GetPortExtraDhcpOptionOutput) ToGetPortExtraDhcpOptionOutputWithContext(ctx context.Context) GetPortExtraDhcpOptionOutput {
 	return o
-}
-
-func (o GetPortExtraDhcpOptionOutput) ToOutput(ctx context.Context) pulumix.Output[GetPortExtraDhcpOption] {
-	return pulumix.Output[GetPortExtraDhcpOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 // IP protocol version
@@ -2189,12 +1834,6 @@ func (o GetPortExtraDhcpOptionArrayOutput) ToGetPortExtraDhcpOptionArrayOutput()
 
 func (o GetPortExtraDhcpOptionArrayOutput) ToGetPortExtraDhcpOptionArrayOutputWithContext(ctx context.Context) GetPortExtraDhcpOptionArrayOutput {
 	return o
-}
-
-func (o GetPortExtraDhcpOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPortExtraDhcpOption] {
-	return pulumix.Output[[]GetPortExtraDhcpOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetPortExtraDhcpOptionArrayOutput) Index(i pulumi.IntInput) GetPortExtraDhcpOptionOutput {
@@ -2240,12 +1879,6 @@ func (i GetRouterExternalFixedIpArgs) ToGetRouterExternalFixedIpOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetRouterExternalFixedIpOutput)
 }
 
-func (i GetRouterExternalFixedIpArgs) ToOutput(ctx context.Context) pulumix.Output[GetRouterExternalFixedIp] {
-	return pulumix.Output[GetRouterExternalFixedIp]{
-		OutputState: i.ToGetRouterExternalFixedIpOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetRouterExternalFixedIpArrayInput is an input type that accepts GetRouterExternalFixedIpArray and GetRouterExternalFixedIpArrayOutput values.
 // You can construct a concrete instance of `GetRouterExternalFixedIpArrayInput` via:
 //
@@ -2271,12 +1904,6 @@ func (i GetRouterExternalFixedIpArray) ToGetRouterExternalFixedIpArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetRouterExternalFixedIpArrayOutput)
 }
 
-func (i GetRouterExternalFixedIpArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRouterExternalFixedIp] {
-	return pulumix.Output[[]GetRouterExternalFixedIp]{
-		OutputState: i.ToGetRouterExternalFixedIpArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetRouterExternalFixedIpOutput struct{ *pulumi.OutputState }
 
 func (GetRouterExternalFixedIpOutput) ElementType() reflect.Type {
@@ -2289,12 +1916,6 @@ func (o GetRouterExternalFixedIpOutput) ToGetRouterExternalFixedIpOutput() GetRo
 
 func (o GetRouterExternalFixedIpOutput) ToGetRouterExternalFixedIpOutputWithContext(ctx context.Context) GetRouterExternalFixedIpOutput {
 	return o
-}
-
-func (o GetRouterExternalFixedIpOutput) ToOutput(ctx context.Context) pulumix.Output[GetRouterExternalFixedIp] {
-	return pulumix.Output[GetRouterExternalFixedIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP address to set on the router.
@@ -2319,12 +1940,6 @@ func (o GetRouterExternalFixedIpArrayOutput) ToGetRouterExternalFixedIpArrayOutp
 
 func (o GetRouterExternalFixedIpArrayOutput) ToGetRouterExternalFixedIpArrayOutputWithContext(ctx context.Context) GetRouterExternalFixedIpArrayOutput {
 	return o
-}
-
-func (o GetRouterExternalFixedIpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRouterExternalFixedIp] {
-	return pulumix.Output[[]GetRouterExternalFixedIp]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetRouterExternalFixedIpArrayOutput) Index(i pulumi.IntInput) GetRouterExternalFixedIpOutput {
@@ -2366,12 +1981,6 @@ func (i GetSubnetAllocationPoolArgs) ToGetSubnetAllocationPoolOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetAllocationPoolOutput)
 }
 
-func (i GetSubnetAllocationPoolArgs) ToOutput(ctx context.Context) pulumix.Output[GetSubnetAllocationPool] {
-	return pulumix.Output[GetSubnetAllocationPool]{
-		OutputState: i.ToGetSubnetAllocationPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSubnetAllocationPoolArrayInput is an input type that accepts GetSubnetAllocationPoolArray and GetSubnetAllocationPoolArrayOutput values.
 // You can construct a concrete instance of `GetSubnetAllocationPoolArrayInput` via:
 //
@@ -2397,12 +2006,6 @@ func (i GetSubnetAllocationPoolArray) ToGetSubnetAllocationPoolArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetAllocationPoolArrayOutput)
 }
 
-func (i GetSubnetAllocationPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSubnetAllocationPool] {
-	return pulumix.Output[[]GetSubnetAllocationPool]{
-		OutputState: i.ToGetSubnetAllocationPoolArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSubnetAllocationPoolOutput struct{ *pulumi.OutputState }
 
 func (GetSubnetAllocationPoolOutput) ElementType() reflect.Type {
@@ -2415,12 +2018,6 @@ func (o GetSubnetAllocationPoolOutput) ToGetSubnetAllocationPoolOutput() GetSubn
 
 func (o GetSubnetAllocationPoolOutput) ToGetSubnetAllocationPoolOutputWithContext(ctx context.Context) GetSubnetAllocationPoolOutput {
 	return o
-}
-
-func (o GetSubnetAllocationPoolOutput) ToOutput(ctx context.Context) pulumix.Output[GetSubnetAllocationPool] {
-	return pulumix.Output[GetSubnetAllocationPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSubnetAllocationPoolOutput) End() pulumi.StringOutput {
@@ -2443,12 +2040,6 @@ func (o GetSubnetAllocationPoolArrayOutput) ToGetSubnetAllocationPoolArrayOutput
 
 func (o GetSubnetAllocationPoolArrayOutput) ToGetSubnetAllocationPoolArrayOutputWithContext(ctx context.Context) GetSubnetAllocationPoolArrayOutput {
 	return o
-}
-
-func (o GetSubnetAllocationPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSubnetAllocationPool] {
-	return pulumix.Output[[]GetSubnetAllocationPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSubnetAllocationPoolArrayOutput) Index(i pulumi.IntInput) GetSubnetAllocationPoolOutput {
@@ -2490,12 +2081,6 @@ func (i GetSubnetHostRouteArgs) ToGetSubnetHostRouteOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetHostRouteOutput)
 }
 
-func (i GetSubnetHostRouteArgs) ToOutput(ctx context.Context) pulumix.Output[GetSubnetHostRoute] {
-	return pulumix.Output[GetSubnetHostRoute]{
-		OutputState: i.ToGetSubnetHostRouteOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetSubnetHostRouteArrayInput is an input type that accepts GetSubnetHostRouteArray and GetSubnetHostRouteArrayOutput values.
 // You can construct a concrete instance of `GetSubnetHostRouteArrayInput` via:
 //
@@ -2521,12 +2106,6 @@ func (i GetSubnetHostRouteArray) ToGetSubnetHostRouteArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetHostRouteArrayOutput)
 }
 
-func (i GetSubnetHostRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSubnetHostRoute] {
-	return pulumix.Output[[]GetSubnetHostRoute]{
-		OutputState: i.ToGetSubnetHostRouteArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetSubnetHostRouteOutput struct{ *pulumi.OutputState }
 
 func (GetSubnetHostRouteOutput) ElementType() reflect.Type {
@@ -2539,12 +2118,6 @@ func (o GetSubnetHostRouteOutput) ToGetSubnetHostRouteOutput() GetSubnetHostRout
 
 func (o GetSubnetHostRouteOutput) ToGetSubnetHostRouteOutputWithContext(ctx context.Context) GetSubnetHostRouteOutput {
 	return o
-}
-
-func (o GetSubnetHostRouteOutput) ToOutput(ctx context.Context) pulumix.Output[GetSubnetHostRoute] {
-	return pulumix.Output[GetSubnetHostRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSubnetHostRouteOutput) DestinationCidr() pulumi.StringOutput {
@@ -2567,12 +2140,6 @@ func (o GetSubnetHostRouteArrayOutput) ToGetSubnetHostRouteArrayOutput() GetSubn
 
 func (o GetSubnetHostRouteArrayOutput) ToGetSubnetHostRouteArrayOutputWithContext(ctx context.Context) GetSubnetHostRouteArrayOutput {
 	return o
-}
-
-func (o GetSubnetHostRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSubnetHostRoute] {
-	return pulumix.Output[[]GetSubnetHostRoute]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetSubnetHostRouteArrayOutput) Index(i pulumi.IntInput) GetSubnetHostRouteOutput {
@@ -2622,12 +2189,6 @@ func (i GetTrunkSubPortArgs) ToGetTrunkSubPortOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetTrunkSubPortOutput)
 }
 
-func (i GetTrunkSubPortArgs) ToOutput(ctx context.Context) pulumix.Output[GetTrunkSubPort] {
-	return pulumix.Output[GetTrunkSubPort]{
-		OutputState: i.ToGetTrunkSubPortOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GetTrunkSubPortArrayInput is an input type that accepts GetTrunkSubPortArray and GetTrunkSubPortArrayOutput values.
 // You can construct a concrete instance of `GetTrunkSubPortArrayInput` via:
 //
@@ -2653,12 +2214,6 @@ func (i GetTrunkSubPortArray) ToGetTrunkSubPortArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetTrunkSubPortArrayOutput)
 }
 
-func (i GetTrunkSubPortArray) ToOutput(ctx context.Context) pulumix.Output[[]GetTrunkSubPort] {
-	return pulumix.Output[[]GetTrunkSubPort]{
-		OutputState: i.ToGetTrunkSubPortArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GetTrunkSubPortOutput struct{ *pulumi.OutputState }
 
 func (GetTrunkSubPortOutput) ElementType() reflect.Type {
@@ -2671,12 +2226,6 @@ func (o GetTrunkSubPortOutput) ToGetTrunkSubPortOutput() GetTrunkSubPortOutput {
 
 func (o GetTrunkSubPortOutput) ToGetTrunkSubPortOutputWithContext(ctx context.Context) GetTrunkSubPortOutput {
 	return o
-}
-
-func (o GetTrunkSubPortOutput) ToOutput(ctx context.Context) pulumix.Output[GetTrunkSubPort] {
-	return pulumix.Output[GetTrunkSubPort]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the trunk parent port.
@@ -2706,12 +2255,6 @@ func (o GetTrunkSubPortArrayOutput) ToGetTrunkSubPortArrayOutput() GetTrunkSubPo
 
 func (o GetTrunkSubPortArrayOutput) ToGetTrunkSubPortArrayOutputWithContext(ctx context.Context) GetTrunkSubPortArrayOutput {
 	return o
-}
-
-func (o GetTrunkSubPortArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetTrunkSubPort] {
-	return pulumix.Output[[]GetTrunkSubPort]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetTrunkSubPortArrayOutput) Index(i pulumi.IntInput) GetTrunkSubPortOutput {

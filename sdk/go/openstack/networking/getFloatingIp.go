@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the ID of an available OpenStack floating IP.
@@ -150,12 +149,6 @@ func (o LookupFloatingIpResultOutput) ToLookupFloatingIpResultOutput() LookupFlo
 
 func (o LookupFloatingIpResultOutput) ToLookupFloatingIpResultOutputWithContext(ctx context.Context) LookupFloatingIpResultOutput {
 	return o
-}
-
-func (o LookupFloatingIpResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFloatingIpResult] {
-	return pulumix.Output[LookupFloatingIpResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupFloatingIpResultOutput) Address() pulumi.StringPtrOutput {

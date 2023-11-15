@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a networking V2 trunk resource within OpenStack.
@@ -317,12 +316,6 @@ func (i *Trunk) ToTrunkOutputWithContext(ctx context.Context) TrunkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrunkOutput)
 }
 
-func (i *Trunk) ToOutput(ctx context.Context) pulumix.Output[*Trunk] {
-	return pulumix.Output[*Trunk]{
-		OutputState: i.ToTrunkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TrunkArrayInput is an input type that accepts TrunkArray and TrunkArrayOutput values.
 // You can construct a concrete instance of `TrunkArrayInput` via:
 //
@@ -346,12 +339,6 @@ func (i TrunkArray) ToTrunkArrayOutput() TrunkArrayOutput {
 
 func (i TrunkArray) ToTrunkArrayOutputWithContext(ctx context.Context) TrunkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrunkArrayOutput)
-}
-
-func (i TrunkArray) ToOutput(ctx context.Context) pulumix.Output[[]*Trunk] {
-	return pulumix.Output[[]*Trunk]{
-		OutputState: i.ToTrunkArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TrunkMapInput is an input type that accepts TrunkMap and TrunkMapOutput values.
@@ -379,12 +366,6 @@ func (i TrunkMap) ToTrunkMapOutputWithContext(ctx context.Context) TrunkMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(TrunkMapOutput)
 }
 
-func (i TrunkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Trunk] {
-	return pulumix.Output[map[string]*Trunk]{
-		OutputState: i.ToTrunkMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TrunkOutput struct{ *pulumi.OutputState }
 
 func (TrunkOutput) ElementType() reflect.Type {
@@ -397,12 +378,6 @@ func (o TrunkOutput) ToTrunkOutput() TrunkOutput {
 
 func (o TrunkOutput) ToTrunkOutputWithContext(ctx context.Context) TrunkOutput {
 	return o
-}
-
-func (o TrunkOutput) ToOutput(ctx context.Context) pulumix.Output[*Trunk] {
-	return pulumix.Output[*Trunk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Administrative up/down status for the trunk
@@ -476,12 +451,6 @@ func (o TrunkArrayOutput) ToTrunkArrayOutputWithContext(ctx context.Context) Tru
 	return o
 }
 
-func (o TrunkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Trunk] {
-	return pulumix.Output[[]*Trunk]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TrunkArrayOutput) Index(i pulumi.IntInput) TrunkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Trunk {
 		return vs[0].([]*Trunk)[vs[1].(int)]
@@ -500,12 +469,6 @@ func (o TrunkMapOutput) ToTrunkMapOutput() TrunkMapOutput {
 
 func (o TrunkMapOutput) ToTrunkMapOutputWithContext(ctx context.Context) TrunkMapOutput {
 	return o
-}
-
-func (o TrunkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Trunk] {
-	return pulumix.Output[map[string]*Trunk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrunkMapOutput) MapIndex(k pulumi.StringInput) TrunkOutput {

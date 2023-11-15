@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -346,12 +345,6 @@ func (i *ShareAccess) ToShareAccessOutputWithContext(ctx context.Context) ShareA
 	return pulumi.ToOutputWithContext(ctx, i).(ShareAccessOutput)
 }
 
-func (i *ShareAccess) ToOutput(ctx context.Context) pulumix.Output[*ShareAccess] {
-	return pulumix.Output[*ShareAccess]{
-		OutputState: i.ToShareAccessOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ShareAccessArrayInput is an input type that accepts ShareAccessArray and ShareAccessArrayOutput values.
 // You can construct a concrete instance of `ShareAccessArrayInput` via:
 //
@@ -375,12 +368,6 @@ func (i ShareAccessArray) ToShareAccessArrayOutput() ShareAccessArrayOutput {
 
 func (i ShareAccessArray) ToShareAccessArrayOutputWithContext(ctx context.Context) ShareAccessArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShareAccessArrayOutput)
-}
-
-func (i ShareAccessArray) ToOutput(ctx context.Context) pulumix.Output[[]*ShareAccess] {
-	return pulumix.Output[[]*ShareAccess]{
-		OutputState: i.ToShareAccessArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ShareAccessMapInput is an input type that accepts ShareAccessMap and ShareAccessMapOutput values.
@@ -408,12 +395,6 @@ func (i ShareAccessMap) ToShareAccessMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(ShareAccessMapOutput)
 }
 
-func (i ShareAccessMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ShareAccess] {
-	return pulumix.Output[map[string]*ShareAccess]{
-		OutputState: i.ToShareAccessMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ShareAccessOutput struct{ *pulumi.OutputState }
 
 func (ShareAccessOutput) ElementType() reflect.Type {
@@ -426,12 +407,6 @@ func (o ShareAccessOutput) ToShareAccessOutput() ShareAccessOutput {
 
 func (o ShareAccessOutput) ToShareAccessOutputWithContext(ctx context.Context) ShareAccessOutput {
 	return o
-}
-
-func (o ShareAccessOutput) ToOutput(ctx context.Context) pulumix.Output[*ShareAccess] {
-	return pulumix.Output[*ShareAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The access credential of the entity granted access.
@@ -488,12 +463,6 @@ func (o ShareAccessArrayOutput) ToShareAccessArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ShareAccessArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ShareAccess] {
-	return pulumix.Output[[]*ShareAccess]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ShareAccessArrayOutput) Index(i pulumi.IntInput) ShareAccessOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ShareAccess {
 		return vs[0].([]*ShareAccess)[vs[1].(int)]
@@ -512,12 +481,6 @@ func (o ShareAccessMapOutput) ToShareAccessMapOutput() ShareAccessMapOutput {
 
 func (o ShareAccessMapOutput) ToShareAccessMapOutputWithContext(ctx context.Context) ShareAccessMapOutput {
 	return o
-}
-
-func (o ShareAccessMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ShareAccess] {
-	return pulumix.Output[map[string]*ShareAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ShareAccessMapOutput) MapIndex(k pulumi.StringInput) ShareAccessOutput {

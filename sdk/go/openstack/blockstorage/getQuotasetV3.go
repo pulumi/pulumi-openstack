@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the blockstorage quotaset v3 of an OpenStack project.
@@ -123,12 +122,6 @@ func (o GetQuotasetV3ResultOutput) ToGetQuotasetV3ResultOutput() GetQuotasetV3Re
 
 func (o GetQuotasetV3ResultOutput) ToGetQuotasetV3ResultOutputWithContext(ctx context.Context) GetQuotasetV3ResultOutput {
 	return o
-}
-
-func (o GetQuotasetV3ResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetQuotasetV3Result] {
-	return pulumix.Output[GetQuotasetV3Result]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The size (GB) of backups that are allowed.
