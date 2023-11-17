@@ -47,7 +47,8 @@ class SubnetArgs:
                than one range of IP addresses to use with DHCP. However, each IP range
                must be from the same CIDR that the subnet is part of.
                The `allocation_pool` block is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolsCollectionArgs']]] allocation_pools_collection: A block declaring the start and end range of the IP addresses available for
+        :param pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolsCollectionArgs']]] allocation_pools_collection: (**Deprecated** - use `allocation_pool` instead)
+               A block declaring the start and end range of the IP addresses available for
                use with DHCP in this subnet.
                The `allocation_pools` block is documented below.
         :param pulumi.Input[str] cidr: CIDR representing IP range for this subnet, based on IP
@@ -178,6 +179,7 @@ class SubnetArgs:
     @pulumi.getter(name="allocationPoolsCollection")
     def allocation_pools_collection(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolsCollectionArgs']]]]:
         """
+        (**Deprecated** - use `allocation_pool` instead)
         A block declaring the start and end range of the IP addresses available for
         use with DHCP in this subnet.
         The `allocation_pools` block is documented below.
@@ -473,7 +475,8 @@ class _SubnetState:
                than one range of IP addresses to use with DHCP. However, each IP range
                must be from the same CIDR that the subnet is part of.
                The `allocation_pool` block is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolsCollectionArgs']]] allocation_pools_collection: A block declaring the start and end range of the IP addresses available for
+        :param pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolsCollectionArgs']]] allocation_pools_collection: (**Deprecated** - use `allocation_pool` instead)
+               A block declaring the start and end range of the IP addresses available for
                use with DHCP in this subnet.
                The `allocation_pools` block is documented below.
         :param pulumi.Input[str] cidr: CIDR representing IP range for this subnet, based on IP
@@ -609,6 +612,7 @@ class _SubnetState:
     @pulumi.getter(name="allocationPoolsCollection")
     def allocation_pools_collection(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SubnetAllocationPoolsCollectionArgs']]]]:
         """
+        (**Deprecated** - use `allocation_pool` instead)
         A block declaring the start and end range of the IP addresses available for
         use with DHCP in this subnet.
         The `allocation_pools` block is documented below.
@@ -940,7 +944,8 @@ class Subnet(pulumi.CustomResource):
                than one range of IP addresses to use with DHCP. However, each IP range
                must be from the same CIDR that the subnet is part of.
                The `allocation_pool` block is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetAllocationPoolsCollectionArgs']]]] allocation_pools_collection: A block declaring the start and end range of the IP addresses available for
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetAllocationPoolsCollectionArgs']]]] allocation_pools_collection: (**Deprecated** - use `allocation_pool` instead)
+               A block declaring the start and end range of the IP addresses available for
                use with DHCP in this subnet.
                The `allocation_pools` block is documented below.
         :param pulumi.Input[str] cidr: CIDR representing IP range for this subnet, based on IP
@@ -1136,7 +1141,8 @@ class Subnet(pulumi.CustomResource):
                than one range of IP addresses to use with DHCP. However, each IP range
                must be from the same CIDR that the subnet is part of.
                The `allocation_pool` block is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetAllocationPoolsCollectionArgs']]]] allocation_pools_collection: A block declaring the start and end range of the IP addresses available for
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetAllocationPoolsCollectionArgs']]]] allocation_pools_collection: (**Deprecated** - use `allocation_pool` instead)
+               A block declaring the start and end range of the IP addresses available for
                use with DHCP in this subnet.
                The `allocation_pools` block is documented below.
         :param pulumi.Input[str] cidr: CIDR representing IP range for this subnet, based on IP
@@ -1241,6 +1247,7 @@ class Subnet(pulumi.CustomResource):
     @pulumi.getter(name="allocationPoolsCollection")
     def allocation_pools_collection(self) -> pulumi.Output[Sequence['outputs.SubnetAllocationPoolsCollection']]:
         """
+        (**Deprecated** - use `allocation_pool` instead)
         A block declaring the start and end range of the IP addresses available for
         use with DHCP in this subnet.
         The `allocation_pools` block is documented below.

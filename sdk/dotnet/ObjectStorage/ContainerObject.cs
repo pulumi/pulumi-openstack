@@ -102,10 +102,10 @@ namespace Pulumi.OpenStack.ObjectStorage
     {
         /// <summary>
         /// A unique (within an account) name for the container. 
-        /// The container name must be from 1 to 256 characters long and can start
-        /// with any character and contain any pattern. Character set must be UTF-8.
-        /// The container name cannot contain a slash (/) character because this
-        /// character delimits the container and object name. For example, the path
+        /// The container name must be from 1 to 256 characters long and can start 
+        /// with any character and contain any pattern. Character set must be UTF-8. 
+        /// The container name cannot contain a slash (/) character because this 
+        /// character delimits the container and object name. For example, the path 
         /// /v1/account/www/pages specifies the www container, not the www/pages container.
         /// </summary>
         [Output("containerName")]
@@ -148,9 +148,9 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// A string representing the name of an object 
-        /// used to create the new object by copying the `copy_from` object. The value is in form
-        /// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
-        /// container and object before you include them in the header. Conflicts with `source` and
+        /// used to create the new object by copying the `copy_from` object. The value is in form 
+        /// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the 
+        /// container and object before you include them in the header. Conflicts with `source` and 
         /// `content`.
         /// </summary>
         [Output("copyFrom")]
@@ -166,7 +166,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// An integer representing the number of seconds after which the
-        /// system removes the object. Internally, the Object Storage system stores this value in
+        /// system removes the object. Internally, the Object Storage system stores this value in 
         /// the X-Delete-At metadata item.
         /// </summary>
         [Output("deleteAfter")]
@@ -181,7 +181,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// If set to true, Object Storage guesses the content 
-        /// type based on the file extension and ignores the value sent in the Content-Type
+        /// type based on the file extension and ignores the value sent in the Content-Type 
         /// header, if present.
         /// </summary>
         [Output("detectContentType")]
@@ -216,8 +216,8 @@ namespace Pulumi.OpenStack.ObjectStorage
         /// <summary>
         /// A string set to specify that this is a dynamic large 
         /// object manifest object. The value is the container and object name prefix of the
-        /// segment objects in the form container/prefix. You must UTF-8-encode and then
-        /// URL-encode the names of the container and prefix before you include them in this
+        /// segment objects in the form container/prefix. You must UTF-8-encode and then 
+        /// URL-encode the names of the container and prefix before you include them in this 
         /// header.
         /// </summary>
         [Output("objectManifest")]
@@ -293,10 +293,10 @@ namespace Pulumi.OpenStack.ObjectStorage
     {
         /// <summary>
         /// A unique (within an account) name for the container. 
-        /// The container name must be from 1 to 256 characters long and can start
-        /// with any character and contain any pattern. Character set must be UTF-8.
-        /// The container name cannot contain a slash (/) character because this
-        /// character delimits the container and object name. For example, the path
+        /// The container name must be from 1 to 256 characters long and can start 
+        /// with any character and contain any pattern. Character set must be UTF-8. 
+        /// The container name cannot contain a slash (/) character because this 
+        /// character delimits the container and object name. For example, the path 
         /// /v1/account/www/pages specifies the www container, not the www/pages container.
         /// </summary>
         [Input("containerName", required: true)]
@@ -332,9 +332,9 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// A string representing the name of an object 
-        /// used to create the new object by copying the `copy_from` object. The value is in form
-        /// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
-        /// container and object before you include them in the header. Conflicts with `source` and
+        /// used to create the new object by copying the `copy_from` object. The value is in form 
+        /// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the 
+        /// container and object before you include them in the header. Conflicts with `source` and 
         /// `content`.
         /// </summary>
         [Input("copyFrom")]
@@ -342,7 +342,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// An integer representing the number of seconds after which the
-        /// system removes the object. Internally, the Object Storage system stores this value in
+        /// system removes the object. Internally, the Object Storage system stores this value in 
         /// the X-Delete-At metadata item.
         /// </summary>
         [Input("deleteAfter")]
@@ -357,7 +357,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// If set to true, Object Storage guesses the content 
-        /// type based on the file extension and ignores the value sent in the Content-Type
+        /// type based on the file extension and ignores the value sent in the Content-Type 
         /// header, if present.
         /// </summary>
         [Input("detectContentType")]
@@ -386,8 +386,8 @@ namespace Pulumi.OpenStack.ObjectStorage
         /// <summary>
         /// A string set to specify that this is a dynamic large 
         /// object manifest object. The value is the container and object name prefix of the
-        /// segment objects in the form container/prefix. You must UTF-8-encode and then
-        /// URL-encode the names of the container and prefix before you include them in this
+        /// segment objects in the form container/prefix. You must UTF-8-encode and then 
+        /// URL-encode the names of the container and prefix before you include them in this 
         /// header.
         /// </summary>
         [Input("objectManifest")]
@@ -418,10 +418,10 @@ namespace Pulumi.OpenStack.ObjectStorage
     {
         /// <summary>
         /// A unique (within an account) name for the container. 
-        /// The container name must be from 1 to 256 characters long and can start
-        /// with any character and contain any pattern. Character set must be UTF-8.
-        /// The container name cannot contain a slash (/) character because this
-        /// character delimits the container and object name. For example, the path
+        /// The container name must be from 1 to 256 characters long and can start 
+        /// with any character and contain any pattern. Character set must be UTF-8. 
+        /// The container name cannot contain a slash (/) character because this 
+        /// character delimits the container and object name. For example, the path 
         /// /v1/account/www/pages specifies the www container, not the www/pages container.
         /// </summary>
         [Input("containerName")]
@@ -464,9 +464,9 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// A string representing the name of an object 
-        /// used to create the new object by copying the `copy_from` object. The value is in form
-        /// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
-        /// container and object before you include them in the header. Conflicts with `source` and
+        /// used to create the new object by copying the `copy_from` object. The value is in form 
+        /// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the 
+        /// container and object before you include them in the header. Conflicts with `source` and 
         /// `content`.
         /// </summary>
         [Input("copyFrom")]
@@ -482,7 +482,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// An integer representing the number of seconds after which the
-        /// system removes the object. Internally, the Object Storage system stores this value in
+        /// system removes the object. Internally, the Object Storage system stores this value in 
         /// the X-Delete-At metadata item.
         /// </summary>
         [Input("deleteAfter")]
@@ -497,7 +497,7 @@ namespace Pulumi.OpenStack.ObjectStorage
 
         /// <summary>
         /// If set to true, Object Storage guesses the content 
-        /// type based on the file extension and ignores the value sent in the Content-Type
+        /// type based on the file extension and ignores the value sent in the Content-Type 
         /// header, if present.
         /// </summary>
         [Input("detectContentType")]
@@ -537,8 +537,8 @@ namespace Pulumi.OpenStack.ObjectStorage
         /// <summary>
         /// A string set to specify that this is a dynamic large 
         /// object manifest object. The value is the container and object name prefix of the
-        /// segment objects in the form container/prefix. You must UTF-8-encode and then
-        /// URL-encode the names of the container and prefix before you include them in this
+        /// segment objects in the form container/prefix. You must UTF-8-encode and then 
+        /// URL-encode the names of the container and prefix before you include them in this 
         /// header.
         /// </summary>
         [Input("objectManifest")]

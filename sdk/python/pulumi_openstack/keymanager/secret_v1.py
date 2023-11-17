@@ -41,8 +41,8 @@ class SecretV1Args:
         :param pulumi.Input[str] name: Human-readable name for the Secret. Does not have
                to be unique.
         :param pulumi.Input[str] payload: The secret's data to be stored. **payload\\_content\\_type** must also be supplied if **payload** is included.
-        :param pulumi.Input[str] payload_content_encoding: (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
-        :param pulumi.Input[str] payload_content_type: (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+        :param pulumi.Input[str] payload_content_encoding: The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+        :param pulumi.Input[str] payload_content_type: The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
         :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
                A KeyManager client is needed to create a secret. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -177,7 +177,7 @@ class SecretV1Args:
     @pulumi.getter(name="payloadContentEncoding")
     def payload_content_encoding(self) -> Optional[pulumi.Input[str]]:
         """
-        (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+        The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
         """
         return pulumi.get(self, "payload_content_encoding")
 
@@ -189,7 +189,7 @@ class SecretV1Args:
     @pulumi.getter(name="payloadContentType")
     def payload_content_type(self) -> Optional[pulumi.Input[str]]:
         """
-        (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+        The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
         """
         return pulumi.get(self, "payload_content_type")
 
@@ -265,8 +265,8 @@ class _SecretV1State:
         :param pulumi.Input[str] name: Human-readable name for the Secret. Does not have
                to be unique.
         :param pulumi.Input[str] payload: The secret's data to be stored. **payload\\_content\\_type** must also be supplied if **payload** is included.
-        :param pulumi.Input[str] payload_content_encoding: (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
-        :param pulumi.Input[str] payload_content_type: (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+        :param pulumi.Input[str] payload_content_encoding: The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+        :param pulumi.Input[str] payload_content_type: The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
         :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
                A KeyManager client is needed to create a secret. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -467,7 +467,7 @@ class _SecretV1State:
     @pulumi.getter(name="payloadContentEncoding")
     def payload_content_encoding(self) -> Optional[pulumi.Input[str]]:
         """
-        (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+        The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
         """
         return pulumi.get(self, "payload_content_encoding")
 
@@ -479,7 +479,7 @@ class _SecretV1State:
     @pulumi.getter(name="payloadContentType")
     def payload_content_type(self) -> Optional[pulumi.Input[str]]:
         """
-        (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+        The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
         """
         return pulumi.get(self, "payload_content_type")
 
@@ -632,8 +632,8 @@ class SecretV1(pulumi.CustomResource):
         :param pulumi.Input[str] name: Human-readable name for the Secret. Does not have
                to be unique.
         :param pulumi.Input[str] payload: The secret's data to be stored. **payload\\_content\\_type** must also be supplied if **payload** is included.
-        :param pulumi.Input[str] payload_content_encoding: (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
-        :param pulumi.Input[str] payload_content_type: (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+        :param pulumi.Input[str] payload_content_encoding: The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+        :param pulumi.Input[str] payload_content_type: The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
         :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
                A KeyManager client is needed to create a secret. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -805,8 +805,8 @@ class SecretV1(pulumi.CustomResource):
         :param pulumi.Input[str] name: Human-readable name for the Secret. Does not have
                to be unique.
         :param pulumi.Input[str] payload: The secret's data to be stored. **payload\\_content\\_type** must also be supplied if **payload** is included.
-        :param pulumi.Input[str] payload_content_encoding: (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
-        :param pulumi.Input[str] payload_content_type: (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+        :param pulumi.Input[str] payload_content_encoding: The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+        :param pulumi.Input[str] payload_content_type: The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
         :param pulumi.Input[str] region: The region in which to obtain the V1 KeyManager client.
                A KeyManager client is needed to create a secret. If omitted, the
                `region` argument of the provider is used. Changing this creates a new
@@ -945,7 +945,7 @@ class SecretV1(pulumi.CustomResource):
     @pulumi.getter(name="payloadContentEncoding")
     def payload_content_encoding(self) -> pulumi.Output[Optional[str]]:
         """
-        (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+        The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
         """
         return pulumi.get(self, "payload_content_encoding")
 
@@ -953,7 +953,7 @@ class SecretV1(pulumi.CustomResource):
     @pulumi.getter(name="payloadContentType")
     def payload_content_type(self) -> pulumi.Output[Optional[str]]:
         """
-        (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+        The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
         """
         return pulumi.get(self, "payload_content_type")
 

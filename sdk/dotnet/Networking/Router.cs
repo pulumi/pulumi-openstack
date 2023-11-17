@@ -100,7 +100,7 @@ namespace Pulumi.OpenStack.Networking
         public Output<ImmutableArray<Outputs.RouterExternalFixedIp>> ExternalFixedIps { get; private set; } = null!;
 
         /// <summary>
-        /// The
+        /// (**Deprecated** - use `external_network_id` instead) The
         /// network UUID of an external gateway for the router. A router with an
         /// external gateway is required if any compute instances or load balancers
         /// will be using floating IPs. Changing this updates the external gateway
@@ -279,7 +279,7 @@ namespace Pulumi.OpenStack.Networking
         }
 
         /// <summary>
-        /// The
+        /// (**Deprecated** - use `external_network_id` instead) The
         /// network UUID of an external gateway for the router. A router with an
         /// external gateway is required if any compute instances or load balancers
         /// will be using floating IPs. Changing this updates the external gateway
@@ -451,7 +451,7 @@ namespace Pulumi.OpenStack.Networking
         }
 
         /// <summary>
-        /// The
+        /// (**Deprecated** - use `external_network_id` instead) The
         /// network UUID of an external gateway for the router. A router with an
         /// external gateway is required if any compute instances or load balancers
         /// will be using floating IPs. Changing this updates the external gateway

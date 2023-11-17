@@ -49,6 +49,7 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (**Deprecated** - use `allocation_pool` instead)
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
      * The `allocation_pools` block is documented below.
@@ -62,7 +63,8 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<SubnetAllocationPoolsCollectionArgs>> allocationPoolsCollection;
 
     /**
-     * @return A block declaring the start and end range of the IP addresses available for
+     * @return (**Deprecated** - use `allocation_pool` instead)
+     * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
      * The `allocation_pools` block is documented below.
      * 
@@ -515,7 +517,8 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allocationPoolsCollection A block declaring the start and end range of the IP addresses available for
+         * @param allocationPoolsCollection (**Deprecated** - use `allocation_pool` instead)
+         * A block declaring the start and end range of the IP addresses available for
          * use with DHCP in this subnet.
          * The `allocation_pools` block is documented below.
          * 
@@ -532,7 +535,8 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allocationPoolsCollection A block declaring the start and end range of the IP addresses available for
+         * @param allocationPoolsCollection (**Deprecated** - use `allocation_pool` instead)
+         * A block declaring the start and end range of the IP addresses available for
          * use with DHCP in this subnet.
          * The `allocation_pools` block is documented below.
          * 
@@ -548,7 +552,8 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allocationPoolsCollection A block declaring the start and end range of the IP addresses available for
+         * @param allocationPoolsCollection (**Deprecated** - use `allocation_pool` instead)
+         * A block declaring the start and end range of the IP addresses available for
          * use with DHCP in this subnet.
          * The `allocation_pools` block is documented below.
          * 

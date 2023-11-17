@@ -82,7 +82,7 @@ export class RecordSet extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project DNS zone is created
-     * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+     * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
      * user role in target project)
      */
     public readonly projectId!: pulumi.Output<string>;
@@ -184,7 +184,7 @@ export interface RecordSetState {
     name?: pulumi.Input<string>;
     /**
      * The ID of the project DNS zone is created
-     * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+     * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
      * user role in target project)
      */
     projectId?: pulumi.Input<string>;
@@ -240,7 +240,7 @@ export interface RecordSetArgs {
     name?: pulumi.Input<string>;
     /**
      * The ID of the project DNS zone is created
-     * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+     * for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
      * user role in target project)
      */
     projectId?: pulumi.Input<string>;

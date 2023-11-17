@@ -36,7 +36,7 @@ class RecordSetArgs:
         :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
                Changing this creates a new DNS  record set.
         :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
-               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
                user role in target project)
         :param pulumi.Input[str] region: The region in which to obtain the V2 DNS client.
                If omitted, the `region` argument of the provider is used.
@@ -135,7 +135,7 @@ class RecordSetArgs:
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project DNS zone is created
-        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
         user role in target project)
         """
         return pulumi.get(self, "project_id")
@@ -219,7 +219,7 @@ class _RecordSetState:
         :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
                Changing this creates a new DNS  record set.
         :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
-               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
                user role in target project)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records.
         :param pulumi.Input[str] region: The region in which to obtain the V2 DNS client.
@@ -298,7 +298,7 @@ class _RecordSetState:
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project DNS zone is created
-        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
         user role in target project)
         """
         return pulumi.get(self, "project_id")
@@ -441,7 +441,7 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
                Changing this creates a new DNS  record set.
         :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
-               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
                user role in target project)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records.
         :param pulumi.Input[str] region: The region in which to obtain the V2 DNS client.
@@ -574,7 +574,7 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the record set. Note the `.` at the end of the name.
                Changing this creates a new DNS  record set.
         :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
-               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
                user role in target project)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] records: An array of DNS records.
         :param pulumi.Input[str] region: The region in which to obtain the V2 DNS client.
@@ -636,7 +636,7 @@ class RecordSet(pulumi.CustomResource):
     def project_id(self) -> pulumi.Output[str]:
         """
         The ID of the project DNS zone is created
-        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
         user role in target project)
         """
         return pulumi.get(self, "project_id")

@@ -73,6 +73,7 @@ export class Subnet extends pulumi.CustomResource {
      */
     public readonly allocationPools!: pulumi.Output<outputs.networking.SubnetAllocationPool[]>;
     /**
+     * (**Deprecated** - use `allocationPool` instead)
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
      * The `allocationPools` block is documented below.
@@ -274,6 +275,7 @@ export interface SubnetState {
      */
     allocationPools?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPool>[]>;
     /**
+     * (**Deprecated** - use `allocationPool` instead)
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
      * The `allocationPools` block is documented below.
@@ -403,6 +405,7 @@ export interface SubnetArgs {
      */
     allocationPools?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPool>[]>;
     /**
+     * (**Deprecated** - use `allocationPool` instead)
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
      * The `allocationPools` block is documented below.

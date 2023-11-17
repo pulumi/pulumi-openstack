@@ -39,7 +39,7 @@ class ZoneArgs:
         :param pulumi.Input[str] name: The name of the zone. Note the `.` at the end of the name.
                Changing this creates a new DNS zone.
         :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
-               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
                user role in target project)
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
                Keypairs are associated with accounts, but a Compute client is needed to
@@ -156,7 +156,7 @@ class ZoneArgs:
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project DNS zone is created
-        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
         user role in target project)
         """
         return pulumi.get(self, "project_id")
@@ -247,7 +247,7 @@ class _ZoneState:
         :param pulumi.Input[str] name: The name of the zone. Note the `.` at the end of the name.
                Changing this creates a new DNS zone.
         :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
-               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
                user role in target project)
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
                Keypairs are associated with accounts, but a Compute client is needed to
@@ -364,7 +364,7 @@ class _ZoneState:
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project DNS zone is created
-        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
         user role in target project)
         """
         return pulumi.get(self, "project_id")
@@ -487,7 +487,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the zone. Note the `.` at the end of the name.
                Changing this creates a new DNS zone.
         :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
-               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
                user role in target project)
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
                Keypairs are associated with accounts, but a Compute client is needed to
@@ -620,7 +620,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the zone. Note the `.` at the end of the name.
                Changing this creates a new DNS zone.
         :param pulumi.Input[str] project_id: The ID of the project DNS zone is created
-               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+               for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
                user role in target project)
         :param pulumi.Input[str] region: The region in which to obtain the V2 Compute client.
                Keypairs are associated with accounts, but a Compute client is needed to
@@ -707,7 +707,7 @@ class Zone(pulumi.CustomResource):
     def project_id(self) -> pulumi.Output[str]:
         """
         The ID of the project DNS zone is created
-        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
         user role in target project)
         """
         return pulumi.get(self, "project_id")

@@ -62,14 +62,14 @@ type GetImageIdsArgs struct {
 	// with `nameRegex`.
 	Name *string `pulumi:"name"`
 	// The regular expressian of the name of the image.
-	// Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+	// Cannot be used simultaneously with `name`. Unlike filtering by `name` the\
 	// `nameRegex` filtering does by client on the result of OpenStack search
 	// query.
 	NameRegex *string `pulumi:"nameRegex"`
 	// The owner (UUID) of the image.
 	Owner *string `pulumi:"owner"`
 	// a map of key/value pairs to match an image with.
-	// All specified properties must be matched. Unlike other options filtering
+	// All specified properties must be matched. Unlike other options filtering\
 	// by `properties` does by client on the result of OpenStack search query.
 	Properties map[string]interface{} `pulumi:"properties"`
 	// The region in which to obtain the V2 Glance client.
@@ -155,14 +155,14 @@ type GetImageIdsOutputArgs struct {
 	// with `nameRegex`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The regular expressian of the name of the image.
-	// Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+	// Cannot be used simultaneously with `name`. Unlike filtering by `name` the\
 	// `nameRegex` filtering does by client on the result of OpenStack search
 	// query.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// The owner (UUID) of the image.
 	Owner pulumi.StringPtrInput `pulumi:"owner"`
 	// a map of key/value pairs to match an image with.
-	// All specified properties must be matched. Unlike other options filtering
+	// All specified properties must be matched. Unlike other options filtering\
 	// by `properties` does by client on the result of OpenStack search query.
 	Properties pulumi.MapInput `pulumi:"properties"`
 	// The region in which to obtain the V2 Glance client.

@@ -219,7 +219,7 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable legacy object versioning. The structure is described below.
+     * (Deprecated) Enable legacy object versioning. The structure is described below.
      * 
      * @deprecated
      * Use newer &#34;versioning&#34; implementation
@@ -230,7 +230,7 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ContainerVersioningLegacyArgs> versioningLegacy;
 
     /**
-     * @return Enable legacy object versioning. The structure is described below.
+     * @return (Deprecated) Enable legacy object versioning. The structure is described below.
      * 
      * @deprecated
      * Use newer &#34;versioning&#34; implementation
@@ -542,7 +542,7 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versioningLegacy Enable legacy object versioning. The structure is described below.
+         * @param versioningLegacy (Deprecated) Enable legacy object versioning. The structure is described below.
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param versioningLegacy Enable legacy object versioning. The structure is described below.
+         * @param versioningLegacy (Deprecated) Enable legacy object versioning. The structure is described below.
          * 
          * @return builder
          * 

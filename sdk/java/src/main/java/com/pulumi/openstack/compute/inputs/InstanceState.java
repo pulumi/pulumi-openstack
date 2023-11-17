@@ -270,8 +270,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional; Required if `image_name` is empty and not booting
-     * from a volume. Do not specify if booting from a volume.) The image ID of
+     * The image ID of
      * the desired image for the server. Changing this rebuilds the existing
      * server.
      * 
@@ -280,8 +279,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> imageId;
 
     /**
-     * @return (Optional; Required if `image_name` is empty and not booting
-     * from a volume. Do not specify if booting from a volume.) The image ID of
+     * @return The image ID of
      * the desired image for the server. Changing this rebuilds the existing
      * server.
      * 
@@ -291,8 +289,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional; Required if `image_id` is empty and not booting
-     * from a volume. Do not specify if booting from a volume.) The name of the
+     * The name of the
      * desired image for the server. Changing this rebuilds the existing server.
      * 
      */
@@ -300,8 +297,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> imageName;
 
     /**
-     * @return (Optional; Required if `image_id` is empty and not booting
-     * from a volume. Do not specify if booting from a volume.) The name of the
+     * @return The name of the
      * desired image for the server. Changing this rebuilds the existing server.
      * 
      */
@@ -1011,8 +1007,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId (Optional; Required if `image_name` is empty and not booting
-         * from a volume. Do not specify if booting from a volume.) The image ID of
+         * @param imageId The image ID of
          * the desired image for the server. Changing this rebuilds the existing
          * server.
          * 
@@ -1025,8 +1020,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId (Optional; Required if `image_name` is empty and not booting
-         * from a volume. Do not specify if booting from a volume.) The image ID of
+         * @param imageId The image ID of
          * the desired image for the server. Changing this rebuilds the existing
          * server.
          * 
@@ -1038,8 +1032,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageName (Optional; Required if `image_id` is empty and not booting
-         * from a volume. Do not specify if booting from a volume.) The name of the
+         * @param imageName The name of the
          * desired image for the server. Changing this rebuilds the existing server.
          * 
          * @return builder
@@ -1051,8 +1044,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageName (Optional; Required if `image_id` is empty and not booting
-         * from a volume. Do not specify if booting from a volume.) The name of the
+         * @param imageName The name of the
          * desired image for the server. Changing this rebuilds the existing server.
          * 
          * @return builder

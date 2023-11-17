@@ -140,7 +140,7 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The
+     * (**Deprecated** - use `external_network_id` instead) The
      * network UUID of an external gateway for the router. A router with an
      * external gateway is required if any compute instances or load balancers
      * will be using floating IPs. Changing this updates the external gateway
@@ -155,7 +155,7 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> externalGateway;
 
     /**
-     * @return The
+     * @return (**Deprecated** - use `external_network_id` instead) The
      * network UUID of an external gateway for the router. A router with an
      * external gateway is required if any compute instances or load balancers
      * will be using floating IPs. Changing this updates the external gateway
@@ -535,7 +535,7 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalGateway The
+         * @param externalGateway (**Deprecated** - use `external_network_id` instead) The
          * network UUID of an external gateway for the router. A router with an
          * external gateway is required if any compute instances or load balancers
          * will be using floating IPs. Changing this updates the external gateway
@@ -554,7 +554,7 @@ public final class RouterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalGateway The
+         * @param externalGateway (**Deprecated** - use `external_network_id` instead) The
          * network UUID of an external gateway for the router. A router with an
          * external gateway is required if any compute instances or load balancers
          * will be using floating IPs. Changing this updates the external gateway

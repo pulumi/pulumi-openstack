@@ -74,12 +74,10 @@ class InstanceArgs:
         :param pulumi.Input[bool] force_delete: Whether to force the OpenStack instance to be
                forcefully deleted. This is useful for environments that have reclaim / soft
                deletion enabled.
-        :param pulumi.Input[str] image_id: (Optional; Required if `image_name` is empty and not booting
-               from a volume. Do not specify if booting from a volume.) The image ID of
+        :param pulumi.Input[str] image_id: The image ID of
                the desired image for the server. Changing this rebuilds the existing
                server.
-        :param pulumi.Input[str] image_name: (Optional; Required if `image_id` is empty and not booting
-               from a volume. Do not specify if booting from a volume.) The name of the
+        :param pulumi.Input[str] image_name: The name of the
                desired image for the server. Changing this rebuilds the existing server.
         :param pulumi.Input[str] key_pair: The name of a key pair to put on the server. The key
                pair must already be created and associated with the tenant's account.
@@ -339,8 +337,7 @@ class InstanceArgs:
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional; Required if `image_name` is empty and not booting
-        from a volume. Do not specify if booting from a volume.) The image ID of
+        The image ID of
         the desired image for the server. Changing this rebuilds the existing
         server.
         """
@@ -354,8 +351,7 @@ class InstanceArgs:
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional; Required if `image_id` is empty and not booting
-        from a volume. Do not specify if booting from a volume.) The name of the
+        The name of the
         desired image for the server. Changing this rebuilds the existing server.
         """
         return pulumi.get(self, "image_name")
@@ -639,12 +635,10 @@ class _InstanceState:
         :param pulumi.Input[bool] force_delete: Whether to force the OpenStack instance to be
                forcefully deleted. This is useful for environments that have reclaim / soft
                deletion enabled.
-        :param pulumi.Input[str] image_id: (Optional; Required if `image_name` is empty and not booting
-               from a volume. Do not specify if booting from a volume.) The image ID of
+        :param pulumi.Input[str] image_id: The image ID of
                the desired image for the server. Changing this rebuilds the existing
                server.
-        :param pulumi.Input[str] image_name: (Optional; Required if `image_id` is empty and not booting
-               from a volume. Do not specify if booting from a volume.) The name of the
+        :param pulumi.Input[str] image_name: The name of the
                desired image for the server. Changing this rebuilds the existing server.
         :param pulumi.Input[str] key_pair: The name of a key pair to put on the server. The key
                pair must already be created and associated with the tenant's account.
@@ -947,8 +941,7 @@ class _InstanceState:
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional; Required if `image_name` is empty and not booting
-        from a volume. Do not specify if booting from a volume.) The image ID of
+        The image ID of
         the desired image for the server. Changing this rebuilds the existing
         server.
         """
@@ -962,8 +955,7 @@ class _InstanceState:
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional; Required if `image_id` is empty and not booting
-        from a volume. Do not specify if booting from a volume.) The name of the
+        The name of the
         desired image for the server. Changing this rebuilds the existing server.
         """
         return pulumi.get(self, "image_name")
@@ -1257,12 +1249,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] force_delete: Whether to force the OpenStack instance to be
                forcefully deleted. This is useful for environments that have reclaim / soft
                deletion enabled.
-        :param pulumi.Input[str] image_id: (Optional; Required if `image_name` is empty and not booting
-               from a volume. Do not specify if booting from a volume.) The image ID of
+        :param pulumi.Input[str] image_id: The image ID of
                the desired image for the server. Changing this rebuilds the existing
                server.
-        :param pulumi.Input[str] image_name: (Optional; Required if `image_id` is empty and not booting
-               from a volume. Do not specify if booting from a volume.) The name of the
+        :param pulumi.Input[str] image_name: The name of the
                desired image for the server. Changing this rebuilds the existing server.
         :param pulumi.Input[str] key_pair: The name of a key pair to put on the server. The key
                pair must already be created and associated with the tenant's account.
@@ -1479,12 +1469,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] force_delete: Whether to force the OpenStack instance to be
                forcefully deleted. This is useful for environments that have reclaim / soft
                deletion enabled.
-        :param pulumi.Input[str] image_id: (Optional; Required if `image_name` is empty and not booting
-               from a volume. Do not specify if booting from a volume.) The image ID of
+        :param pulumi.Input[str] image_id: The image ID of
                the desired image for the server. Changing this rebuilds the existing
                server.
-        :param pulumi.Input[str] image_name: (Optional; Required if `image_id` is empty and not booting
-               from a volume. Do not specify if booting from a volume.) The name of the
+        :param pulumi.Input[str] image_name: The name of the
                desired image for the server. Changing this rebuilds the existing server.
         :param pulumi.Input[str] key_pair: The name of a key pair to put on the server. The key
                pair must already be created and associated with the tenant's account.
@@ -1698,8 +1686,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[str]:
         """
-        (Optional; Required if `image_name` is empty and not booting
-        from a volume. Do not specify if booting from a volume.) The image ID of
+        The image ID of
         the desired image for the server. Changing this rebuilds the existing
         server.
         """
@@ -1709,8 +1696,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="imageName")
     def image_name(self) -> pulumi.Output[str]:
         """
-        (Optional; Required if `image_id` is empty and not booting
-        from a volume. Do not specify if booting from a volume.) The name of the
+        The name of the
         desired image for the server. Changing this rebuilds the existing server.
         """
         return pulumi.get(self, "image_name")

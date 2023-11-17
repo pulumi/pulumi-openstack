@@ -53,7 +53,7 @@ class RouterArgs:
                can be repeated. The structure is described below. An `external_network_id`
                has to be set in order to set this property. Changing this updates the
                external fixed IPs of the router.
-        :param pulumi.Input[str] external_gateway: The
+        :param pulumi.Input[str] external_gateway: (**Deprecated** - use `external_network_id` instead) The
                network UUID of an external gateway for the router. A router with an
                external gateway is required if any compute instances or load balancers
                will be using floating IPs. Changing this updates the external gateway
@@ -204,7 +204,7 @@ class RouterArgs:
     @pulumi.getter(name="externalGateway")
     def external_gateway(self) -> Optional[pulumi.Input[str]]:
         """
-        The
+        (**Deprecated** - use `external_network_id` instead) The
         network UUID of an external gateway for the router. A router with an
         external gateway is required if any compute instances or load balancers
         will be using floating IPs. Changing this updates the external gateway
@@ -372,7 +372,7 @@ class _RouterState:
                can be repeated. The structure is described below. An `external_network_id`
                has to be set in order to set this property. Changing this updates the
                external fixed IPs of the router.
-        :param pulumi.Input[str] external_gateway: The
+        :param pulumi.Input[str] external_gateway: (**Deprecated** - use `external_network_id` instead) The
                network UUID of an external gateway for the router. A router with an
                external gateway is required if any compute instances or load balancers
                will be using floating IPs. Changing this updates the external gateway
@@ -538,7 +538,7 @@ class _RouterState:
     @pulumi.getter(name="externalGateway")
     def external_gateway(self) -> Optional[pulumi.Input[str]]:
         """
-        The
+        (**Deprecated** - use `external_network_id` instead) The
         network UUID of an external gateway for the router. A router with an
         external gateway is required if any compute instances or load balancers
         will be using floating IPs. Changing this updates the external gateway
@@ -728,7 +728,7 @@ class Router(pulumi.CustomResource):
                can be repeated. The structure is described below. An `external_network_id`
                has to be set in order to set this property. Changing this updates the
                external fixed IPs of the router.
-        :param pulumi.Input[str] external_gateway: The
+        :param pulumi.Input[str] external_gateway: (**Deprecated** - use `external_network_id` instead) The
                network UUID of an external gateway for the router. A router with an
                external gateway is required if any compute instances or load balancers
                will be using floating IPs. Changing this updates the external gateway
@@ -893,7 +893,7 @@ class Router(pulumi.CustomResource):
                can be repeated. The structure is described below. An `external_network_id`
                has to be set in order to set this property. Changing this updates the
                external fixed IPs of the router.
-        :param pulumi.Input[str] external_gateway: The
+        :param pulumi.Input[str] external_gateway: (**Deprecated** - use `external_network_id` instead) The
                network UUID of an external gateway for the router. A router with an
                external gateway is required if any compute instances or load balancers
                will be using floating IPs. Changing this updates the external gateway
@@ -1017,7 +1017,7 @@ class Router(pulumi.CustomResource):
     @pulumi.getter(name="externalGateway")
     def external_gateway(self) -> pulumi.Output[str]:
         """
-        The
+        (**Deprecated** - use `external_network_id` instead) The
         network UUID of an external gateway for the router. A router with an
         external gateway is required if any compute instances or load balancers
         will be using floating IPs. Changing this updates the external gateway

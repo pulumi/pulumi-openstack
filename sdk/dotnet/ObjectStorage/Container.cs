@@ -223,7 +223,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Output<bool?> Versioning { get; private set; } = null!;
 
         /// <summary>
-        /// Enable legacy object versioning. The structure is described below.
+        /// (Deprecated) Enable legacy object versioning. The structure is described below.
         /// </summary>
         [Output("versioningLegacy")]
         public Output<Outputs.ContainerVersioningLegacy?> VersioningLegacy { get; private set; } = null!;
@@ -364,7 +364,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<bool>? Versioning { get; set; }
 
         /// <summary>
-        /// Enable legacy object versioning. The structure is described below.
+        /// (Deprecated) Enable legacy object versioning. The structure is described below.
         /// </summary>
         [Input("versioningLegacy")]
         public Input<Inputs.ContainerVersioningLegacyArgs>? VersioningLegacy { get; set; }
@@ -467,7 +467,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<bool>? Versioning { get; set; }
 
         /// <summary>
-        /// Enable legacy object versioning. The structure is described below.
+        /// (Deprecated) Enable legacy object versioning. The structure is described below.
         /// </summary>
         [Input("versioningLegacy")]
         public Input<Inputs.ContainerVersioningLegacyGetArgs>? VersioningLegacy { get; set; }

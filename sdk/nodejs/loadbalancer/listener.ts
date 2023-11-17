@@ -113,7 +113,7 @@ export class Listener extends pulumi.CustomResource {
     /**
      * The protocol - can either be TCP, HTTP, HTTPS,
      * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-     * in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+     * in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in 
      * **Octavia minor version >=2.25**). Changing this creates a new Listener.
      */
     public readonly protocol!: pulumi.Output<string>;
@@ -284,7 +284,7 @@ export interface ListenerState {
     /**
      * The protocol - can either be TCP, HTTP, HTTPS,
      * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-     * in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+     * in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in 
      * **Octavia minor version >=2.25**). Changing this creates a new Listener.
      */
     protocol?: pulumi.Input<string>;
@@ -388,7 +388,7 @@ export interface ListenerArgs {
     /**
      * The protocol - can either be TCP, HTTP, HTTPS,
      * TERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only
-     * in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in
+     * in **Octavia minor version >= 2.23**) or PROMETHEUS (supported only in 
      * **Octavia minor version >=2.25**). Changing this creates a new Listener.
      */
     protocol: pulumi.Input<string>;

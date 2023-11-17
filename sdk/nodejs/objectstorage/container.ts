@@ -183,7 +183,7 @@ export class Container extends pulumi.CustomResource {
      */
     public readonly versioning!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable legacy object versioning. The structure is described below.
+     * (Deprecated) Enable legacy object versioning. The structure is described below.
      *
      * @deprecated Use newer "versioning" implementation
      */
@@ -300,7 +300,7 @@ export interface ContainerState {
      */
     versioning?: pulumi.Input<boolean>;
     /**
-     * Enable legacy object versioning. The structure is described below.
+     * (Deprecated) Enable legacy object versioning. The structure is described below.
      *
      * @deprecated Use newer "versioning" implementation
      */
@@ -373,7 +373,7 @@ export interface ContainerArgs {
      */
     versioning?: pulumi.Input<boolean>;
     /**
-     * Enable legacy object versioning. The structure is described below.
+     * (Deprecated) Enable legacy object versioning. The structure is described below.
      *
      * @deprecated Use newer "versioning" implementation
      */

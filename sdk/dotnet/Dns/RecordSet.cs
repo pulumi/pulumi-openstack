@@ -80,7 +80,7 @@ namespace Pulumi.OpenStack.Dns
 
         /// <summary>
         /// The ID of the project DNS zone is created
-        /// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        /// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
         /// user role in target project)
         /// </summary>
         [Output("projectId")]
@@ -196,7 +196,7 @@ namespace Pulumi.OpenStack.Dns
 
         /// <summary>
         /// The ID of the project DNS zone is created
-        /// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        /// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
         /// user role in target project)
         /// </summary>
         [Input("projectId")]
@@ -286,7 +286,7 @@ namespace Pulumi.OpenStack.Dns
 
         /// <summary>
         /// The ID of the project DNS zone is created
-        /// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned
+        /// for, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned 
         /// user role in target project)
         /// </summary>
         [Input("projectId")]

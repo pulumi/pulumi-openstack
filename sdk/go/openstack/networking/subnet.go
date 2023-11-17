@@ -69,6 +69,7 @@ type Subnet struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools SubnetAllocationPoolArrayOutput `pulumi:"allocationPools"`
+	// (**Deprecated** - use `allocationPool` instead)
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
@@ -188,6 +189,7 @@ type subnetState struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools []SubnetAllocationPool `pulumi:"allocationPools"`
+	// (**Deprecated** - use `allocationPool` instead)
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
@@ -275,6 +277,7 @@ type SubnetState struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools SubnetAllocationPoolArrayInput
+	// (**Deprecated** - use `allocationPool` instead)
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
@@ -363,6 +366,7 @@ type subnetArgs struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools []SubnetAllocationPool `pulumi:"allocationPools"`
+	// (**Deprecated** - use `allocationPool` instead)
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
@@ -448,6 +452,7 @@ type SubnetArgs struct {
 	// must be from the same CIDR that the subnet is part of.
 	// The `allocationPool` block is documented below.
 	AllocationPools SubnetAllocationPoolArrayInput
+	// (**Deprecated** - use `allocationPool` instead)
 	// A block declaring the start and end range of the IP addresses available for
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
@@ -627,6 +632,7 @@ func (o SubnetOutput) AllocationPools() SubnetAllocationPoolArrayOutput {
 	return o.ApplyT(func(v *Subnet) SubnetAllocationPoolArrayOutput { return v.AllocationPools }).(SubnetAllocationPoolArrayOutput)
 }
 
+// (**Deprecated** - use `allocationPool` instead)
 // A block declaring the start and end range of the IP addresses available for
 // use with DHCP in this subnet.
 // The `allocationPools` block is documented below.

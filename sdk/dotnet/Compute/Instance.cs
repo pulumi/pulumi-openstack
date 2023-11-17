@@ -110,8 +110,7 @@ namespace Pulumi.OpenStack.Compute
         public Output<bool?> ForceDelete { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional; Required if `image_name` is empty and not booting
-        /// from a volume. Do not specify if booting from a volume.) The image ID of
+        /// The image ID of
         /// the desired image for the server. Changing this rebuilds the existing
         /// server.
         /// </summary>
@@ -119,8 +118,7 @@ namespace Pulumi.OpenStack.Compute
         public Output<string> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional; Required if `image_id` is empty and not booting
-        /// from a volume. Do not specify if booting from a volume.) The name of the
+        /// The name of the
         /// desired image for the server. Changing this rebuilds the existing server.
         /// </summary>
         [Output("imageName")]
@@ -393,8 +391,7 @@ namespace Pulumi.OpenStack.Compute
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
-        /// (Optional; Required if `image_name` is empty and not booting
-        /// from a volume. Do not specify if booting from a volume.) The image ID of
+        /// The image ID of
         /// the desired image for the server. Changing this rebuilds the existing
         /// server.
         /// </summary>
@@ -402,8 +399,7 @@ namespace Pulumi.OpenStack.Compute
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// (Optional; Required if `image_id` is empty and not booting
-        /// from a volume. Do not specify if booting from a volume.) The name of the
+        /// The name of the
         /// desired image for the server. Changing this rebuilds the existing server.
         /// </summary>
         [Input("imageName")]
@@ -697,8 +693,7 @@ namespace Pulumi.OpenStack.Compute
         public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
-        /// (Optional; Required if `image_name` is empty and not booting
-        /// from a volume. Do not specify if booting from a volume.) The image ID of
+        /// The image ID of
         /// the desired image for the server. Changing this rebuilds the existing
         /// server.
         /// </summary>
@@ -706,8 +701,7 @@ namespace Pulumi.OpenStack.Compute
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// (Optional; Required if `image_id` is empty and not booting
-        /// from a volume. Do not specify if booting from a volume.) The name of the
+        /// The name of the
         /// desired image for the server. Changing this rebuilds the existing server.
         /// </summary>
         [Input("imageName")]

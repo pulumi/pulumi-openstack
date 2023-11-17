@@ -107,15 +107,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly forceDelete!: pulumi.Output<boolean | undefined>;
     /**
-     * (Optional; Required if `imageName` is empty and not booting
-     * from a volume. Do not specify if booting from a volume.) The image ID of
+     * The image ID of
      * the desired image for the server. Changing this rebuilds the existing
      * server.
      */
     public readonly imageId!: pulumi.Output<string>;
     /**
-     * (Optional; Required if `imageId` is empty and not booting
-     * from a volume. Do not specify if booting from a volume.) The name of the
+     * The name of the
      * desired image for the server. Changing this rebuilds the existing server.
      */
     public readonly imageName!: pulumi.Output<string>;
@@ -374,15 +372,13 @@ export interface InstanceState {
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
-     * (Optional; Required if `imageName` is empty and not booting
-     * from a volume. Do not specify if booting from a volume.) The image ID of
+     * The image ID of
      * the desired image for the server. Changing this rebuilds the existing
      * server.
      */
     imageId?: pulumi.Input<string>;
     /**
-     * (Optional; Required if `imageId` is empty and not booting
-     * from a volume. Do not specify if booting from a volume.) The name of the
+     * The name of the
      * desired image for the server. Changing this rebuilds the existing server.
      */
     imageName?: pulumi.Input<string>;
@@ -545,15 +541,13 @@ export interface InstanceArgs {
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
-     * (Optional; Required if `imageName` is empty and not booting
-     * from a volume. Do not specify if booting from a volume.) The image ID of
+     * The image ID of
      * the desired image for the server. Changing this rebuilds the existing
      * server.
      */
     imageId?: pulumi.Input<string>;
     /**
-     * (Optional; Required if `imageId` is empty and not booting
-     * from a volume. Do not specify if booting from a volume.) The name of the
+     * The name of the
      * desired image for the server. Changing this rebuilds the existing server.
      */
     imageName?: pulumi.Input<string>;

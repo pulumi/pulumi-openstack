@@ -58,7 +58,7 @@ class ContainerArgs:
                and a cloud administrator must have set the `allow_object_versioning = true`
                configuration option in Swift. If you cannot set this versioning type, you may
                want to consider using `versioning_legacy` instead.
-        :param pulumi.Input['ContainerVersioningLegacyArgs'] versioning_legacy: Enable legacy object versioning. The structure is described below.
+        :param pulumi.Input['ContainerVersioningLegacyArgs'] versioning_legacy: (Deprecated) Enable legacy object versioning. The structure is described below.
         """
         if container_read is not None:
             pulumi.set(__self__, "container_read", container_read)
@@ -241,7 +241,7 @@ class ContainerArgs:
     @pulumi.getter(name="versioningLegacy")
     def versioning_legacy(self) -> Optional[pulumi.Input['ContainerVersioningLegacyArgs']]:
         """
-        Enable legacy object versioning. The structure is described below.
+        (Deprecated) Enable legacy object versioning. The structure is described below.
         """
         warnings.warn("""Use newer \"versioning\" implementation""", DeprecationWarning)
         pulumi.log.warn("""versioning_legacy is deprecated: Use newer \"versioning\" implementation""")
@@ -298,7 +298,7 @@ class _ContainerState:
                and a cloud administrator must have set the `allow_object_versioning = true`
                configuration option in Swift. If you cannot set this versioning type, you may
                want to consider using `versioning_legacy` instead.
-        :param pulumi.Input['ContainerVersioningLegacyArgs'] versioning_legacy: Enable legacy object versioning. The structure is described below.
+        :param pulumi.Input['ContainerVersioningLegacyArgs'] versioning_legacy: (Deprecated) Enable legacy object versioning. The structure is described below.
         """
         if container_read is not None:
             pulumi.set(__self__, "container_read", container_read)
@@ -481,7 +481,7 @@ class _ContainerState:
     @pulumi.getter(name="versioningLegacy")
     def versioning_legacy(self) -> Optional[pulumi.Input['ContainerVersioningLegacyArgs']]:
         """
-        Enable legacy object versioning. The structure is described below.
+        (Deprecated) Enable legacy object versioning. The structure is described below.
         """
         warnings.warn("""Use newer \"versioning\" implementation""", DeprecationWarning)
         pulumi.log.warn("""versioning_legacy is deprecated: Use newer \"versioning\" implementation""")
@@ -621,7 +621,7 @@ class Container(pulumi.CustomResource):
                and a cloud administrator must have set the `allow_object_versioning = true`
                configuration option in Swift. If you cannot set this versioning type, you may
                want to consider using `versioning_legacy` instead.
-        :param pulumi.Input[pulumi.InputType['ContainerVersioningLegacyArgs']] versioning_legacy: Enable legacy object versioning. The structure is described below.
+        :param pulumi.Input[pulumi.InputType['ContainerVersioningLegacyArgs']] versioning_legacy: (Deprecated) Enable legacy object versioning. The structure is described below.
         """
         ...
     @overload
@@ -814,7 +814,7 @@ class Container(pulumi.CustomResource):
                and a cloud administrator must have set the `allow_object_versioning = true`
                configuration option in Swift. If you cannot set this versioning type, you may
                want to consider using `versioning_legacy` instead.
-        :param pulumi.Input[pulumi.InputType['ContainerVersioningLegacyArgs']] versioning_legacy: Enable legacy object versioning. The structure is described below.
+        :param pulumi.Input[pulumi.InputType['ContainerVersioningLegacyArgs']] versioning_legacy: (Deprecated) Enable legacy object versioning. The structure is described below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -943,7 +943,7 @@ class Container(pulumi.CustomResource):
     @pulumi.getter(name="versioningLegacy")
     def versioning_legacy(self) -> pulumi.Output[Optional['outputs.ContainerVersioningLegacy']]:
         """
-        Enable legacy object versioning. The structure is described below.
+        (Deprecated) Enable legacy object versioning. The structure is described below.
         """
         warnings.warn("""Use newer \"versioning\" implementation""", DeprecationWarning)
         pulumi.log.warn("""versioning_legacy is deprecated: Use newer \"versioning\" implementation""")

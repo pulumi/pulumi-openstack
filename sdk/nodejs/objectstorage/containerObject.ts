@@ -88,10 +88,10 @@ export class ContainerObject extends pulumi.CustomResource {
 
     /**
      * A unique (within an account) name for the container. 
-     * The container name must be from 1 to 256 characters long and can start
-     * with any character and contain any pattern. Character set must be UTF-8.
-     * The container name cannot contain a slash (/) character because this
-     * character delimits the container and object name. For example, the path
+     * The container name must be from 1 to 256 characters long and can start 
+     * with any character and contain any pattern. Character set must be UTF-8. 
+     * The container name cannot contain a slash (/) character because this 
+     * character delimits the container and object name. For example, the path 
      * /v1/account/www/pages specifies the www container, not the www/pages container.
      */
     public readonly containerName!: pulumi.Output<string>;
@@ -122,9 +122,9 @@ export class ContainerObject extends pulumi.CustomResource {
     public readonly contentType!: pulumi.Output<string>;
     /**
      * A string representing the name of an object 
-     * used to create the new object by copying the `copyFrom` object. The value is in form
-     * {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
-     * container and object before you include them in the header. Conflicts with `source` and
+     * used to create the new object by copying the `copyFrom` object. The value is in form 
+     * {container}/{object}. You must UTF-8-encode and then URL-encode the names of the 
+     * container and object before you include them in the header. Conflicts with `source` and 
      * `content`.
      */
     public readonly copyFrom!: pulumi.Output<string | undefined>;
@@ -136,7 +136,7 @@ export class ContainerObject extends pulumi.CustomResource {
     public /*out*/ readonly date!: pulumi.Output<string>;
     /**
      * An integer representing the number of seconds after which the
-     * system removes the object. Internally, the Object Storage system stores this value in
+     * system removes the object. Internally, the Object Storage system stores this value in 
      * the X-Delete-At metadata item.
      */
     public readonly deleteAfter!: pulumi.Output<number | undefined>;
@@ -147,7 +147,7 @@ export class ContainerObject extends pulumi.CustomResource {
     public readonly deleteAt!: pulumi.Output<string>;
     /**
      * If set to true, Object Storage guesses the content 
-     * type based on the file extension and ignores the value sent in the Content-Type
+     * type based on the file extension and ignores the value sent in the Content-Type 
      * header, if present.
      */
     public readonly detectContentType!: pulumi.Output<boolean | undefined>;
@@ -172,8 +172,8 @@ export class ContainerObject extends pulumi.CustomResource {
     /**
      * A string set to specify that this is a dynamic large 
      * object manifest object. The value is the container and object name prefix of the
-     * segment objects in the form container/prefix. You must UTF-8-encode and then
-     * URL-encode the names of the container and prefix before you include them in this
+     * segment objects in the form container/prefix. You must UTF-8-encode and then 
+     * URL-encode the names of the container and prefix before you include them in this 
      * header.
      */
     public readonly objectManifest!: pulumi.Output<string>;
@@ -262,10 +262,10 @@ export class ContainerObject extends pulumi.CustomResource {
 export interface ContainerObjectState {
     /**
      * A unique (within an account) name for the container. 
-     * The container name must be from 1 to 256 characters long and can start
-     * with any character and contain any pattern. Character set must be UTF-8.
-     * The container name cannot contain a slash (/) character because this
-     * character delimits the container and object name. For example, the path
+     * The container name must be from 1 to 256 characters long and can start 
+     * with any character and contain any pattern. Character set must be UTF-8. 
+     * The container name cannot contain a slash (/) character because this 
+     * character delimits the container and object name. For example, the path 
      * /v1/account/www/pages specifies the www container, not the www/pages container.
      */
     containerName?: pulumi.Input<string>;
@@ -296,9 +296,9 @@ export interface ContainerObjectState {
     contentType?: pulumi.Input<string>;
     /**
      * A string representing the name of an object 
-     * used to create the new object by copying the `copyFrom` object. The value is in form
-     * {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
-     * container and object before you include them in the header. Conflicts with `source` and
+     * used to create the new object by copying the `copyFrom` object. The value is in form 
+     * {container}/{object}. You must UTF-8-encode and then URL-encode the names of the 
+     * container and object before you include them in the header. Conflicts with `source` and 
      * `content`.
      */
     copyFrom?: pulumi.Input<string>;
@@ -310,7 +310,7 @@ export interface ContainerObjectState {
     date?: pulumi.Input<string>;
     /**
      * An integer representing the number of seconds after which the
-     * system removes the object. Internally, the Object Storage system stores this value in
+     * system removes the object. Internally, the Object Storage system stores this value in 
      * the X-Delete-At metadata item.
      */
     deleteAfter?: pulumi.Input<number>;
@@ -321,7 +321,7 @@ export interface ContainerObjectState {
     deleteAt?: pulumi.Input<string>;
     /**
      * If set to true, Object Storage guesses the content 
-     * type based on the file extension and ignores the value sent in the Content-Type
+     * type based on the file extension and ignores the value sent in the Content-Type 
      * header, if present.
      */
     detectContentType?: pulumi.Input<boolean>;
@@ -346,8 +346,8 @@ export interface ContainerObjectState {
     /**
      * A string set to specify that this is a dynamic large 
      * object manifest object. The value is the container and object name prefix of the
-     * segment objects in the form container/prefix. You must UTF-8-encode and then
-     * URL-encode the names of the container and prefix before you include them in this
+     * segment objects in the form container/prefix. You must UTF-8-encode and then 
+     * URL-encode the names of the container and prefix before you include them in this 
      * header.
      */
     objectManifest?: pulumi.Input<string>;
@@ -375,10 +375,10 @@ export interface ContainerObjectState {
 export interface ContainerObjectArgs {
     /**
      * A unique (within an account) name for the container. 
-     * The container name must be from 1 to 256 characters long and can start
-     * with any character and contain any pattern. Character set must be UTF-8.
-     * The container name cannot contain a slash (/) character because this
-     * character delimits the container and object name. For example, the path
+     * The container name must be from 1 to 256 characters long and can start 
+     * with any character and contain any pattern. Character set must be UTF-8. 
+     * The container name cannot contain a slash (/) character because this 
+     * character delimits the container and object name. For example, the path 
      * /v1/account/www/pages specifies the www container, not the www/pages container.
      */
     containerName: pulumi.Input<string>;
@@ -404,15 +404,15 @@ export interface ContainerObjectArgs {
     contentType?: pulumi.Input<string>;
     /**
      * A string representing the name of an object 
-     * used to create the new object by copying the `copyFrom` object. The value is in form
-     * {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
-     * container and object before you include them in the header. Conflicts with `source` and
+     * used to create the new object by copying the `copyFrom` object. The value is in form 
+     * {container}/{object}. You must UTF-8-encode and then URL-encode the names of the 
+     * container and object before you include them in the header. Conflicts with `source` and 
      * `content`.
      */
     copyFrom?: pulumi.Input<string>;
     /**
      * An integer representing the number of seconds after which the
-     * system removes the object. Internally, the Object Storage system stores this value in
+     * system removes the object. Internally, the Object Storage system stores this value in 
      * the X-Delete-At metadata item.
      */
     deleteAfter?: pulumi.Input<number>;
@@ -423,7 +423,7 @@ export interface ContainerObjectArgs {
     deleteAt?: pulumi.Input<string>;
     /**
      * If set to true, Object Storage guesses the content 
-     * type based on the file extension and ignores the value sent in the Content-Type
+     * type based on the file extension and ignores the value sent in the Content-Type 
      * header, if present.
      */
     detectContentType?: pulumi.Input<boolean>;
@@ -439,8 +439,8 @@ export interface ContainerObjectArgs {
     /**
      * A string set to specify that this is a dynamic large 
      * object manifest object. The value is the container and object name prefix of the
-     * segment objects in the form container/prefix. You must UTF-8-encode and then
-     * URL-encode the names of the container and prefix before you include them in this
+     * segment objects in the form container/prefix. You must UTF-8-encode and then 
+     * URL-encode the names of the container and prefix before you include them in this 
      * header.
      */
     objectManifest?: pulumi.Input<string>;

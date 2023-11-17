@@ -208,14 +208,14 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+     * The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
      * 
      */
     @Import(name="payloadContentEncoding")
     private @Nullable Output<String> payloadContentEncoding;
 
     /**
-     * @return (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+     * @return The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
      * 
      */
     public Optional<Output<String>> payloadContentEncoding() {
@@ -223,14 +223,14 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+     * The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
      * 
      */
     @Import(name="payloadContentType")
     private @Nullable Output<String> payloadContentType;
 
     /**
-     * @return (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+     * @return The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
      * 
      */
     public Optional<Output<String>> payloadContentType() {
@@ -621,7 +621,7 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param payloadContentEncoding (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+         * @param payloadContentEncoding The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
          * 
          * @return builder
          * 
@@ -632,7 +632,7 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param payloadContentEncoding (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+         * @param payloadContentEncoding The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
          * 
          * @return builder
          * 
@@ -642,7 +642,7 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param payloadContentType (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+         * @param payloadContentType The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
          * 
          * @return builder
          * 
@@ -653,7 +653,7 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param payloadContentType (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+         * @param payloadContentType The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
          * 
          * @return builder
          * 

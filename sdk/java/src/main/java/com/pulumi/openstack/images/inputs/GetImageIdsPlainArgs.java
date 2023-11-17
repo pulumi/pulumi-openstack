@@ -54,7 +54,7 @@ public final class GetImageIdsPlainArgs extends com.pulumi.resources.InvokeArgs 
 
     /**
      * The regular expressian of the name of the image.
-     * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+     * Cannot be used simultaneously with `name`. Unlike filtering by `name` the\
      * `name_regex` filtering does by client on the result of OpenStack search
      * query.
      * 
@@ -64,7 +64,7 @@ public final class GetImageIdsPlainArgs extends com.pulumi.resources.InvokeArgs 
 
     /**
      * @return The regular expressian of the name of the image.
-     * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+     * Cannot be used simultaneously with `name`. Unlike filtering by `name` the\
      * `name_regex` filtering does by client on the result of OpenStack search
      * query.
      * 
@@ -90,7 +90,7 @@ public final class GetImageIdsPlainArgs extends com.pulumi.resources.InvokeArgs 
 
     /**
      * a map of key/value pairs to match an image with.
-     * All specified properties must be matched. Unlike other options filtering
+     * All specified properties must be matched. Unlike other options filtering\
      * by `properties` does by client on the result of OpenStack search query.
      * 
      */
@@ -99,7 +99,7 @@ public final class GetImageIdsPlainArgs extends com.pulumi.resources.InvokeArgs 
 
     /**
      * @return a map of key/value pairs to match an image with.
-     * All specified properties must be matched. Unlike other options filtering
+     * All specified properties must be matched. Unlike other options filtering\
      * by `properties` does by client on the result of OpenStack search query.
      * 
      */
@@ -349,7 +349,7 @@ public final class GetImageIdsPlainArgs extends com.pulumi.resources.InvokeArgs 
 
         /**
          * @param nameRegex The regular expressian of the name of the image.
-         * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+         * Cannot be used simultaneously with `name`. Unlike filtering by `name` the\
          * `name_regex` filtering does by client on the result of OpenStack search
          * query.
          * 
@@ -374,7 +374,7 @@ public final class GetImageIdsPlainArgs extends com.pulumi.resources.InvokeArgs 
 
         /**
          * @param properties a map of key/value pairs to match an image with.
-         * All specified properties must be matched. Unlike other options filtering
+         * All specified properties must be matched. Unlike other options filtering\
          * by `properties` does by client on the result of OpenStack search query.
          * 
          * @return builder

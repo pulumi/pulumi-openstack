@@ -81,7 +81,7 @@ type Router struct {
 	// has to be set in order to set this property. Changing this updates the
 	// external fixed IPs of the router.
 	ExternalFixedIps RouterExternalFixedIpArrayOutput `pulumi:"externalFixedIps"`
-	// The
+	// (**Deprecated** - use `externalNetworkId` instead) The
 	// network UUID of an external gateway for the router. A router with an
 	// external gateway is required if any compute instances or load balancers
 	// will be using floating IPs. Changing this updates the external gateway
@@ -179,7 +179,7 @@ type routerState struct {
 	// has to be set in order to set this property. Changing this updates the
 	// external fixed IPs of the router.
 	ExternalFixedIps []RouterExternalFixedIp `pulumi:"externalFixedIps"`
-	// The
+	// (**Deprecated** - use `externalNetworkId` instead) The
 	// network UUID of an external gateway for the router. A router with an
 	// external gateway is required if any compute instances or load balancers
 	// will be using floating IPs. Changing this updates the external gateway
@@ -248,7 +248,7 @@ type RouterState struct {
 	// has to be set in order to set this property. Changing this updates the
 	// external fixed IPs of the router.
 	ExternalFixedIps RouterExternalFixedIpArrayInput
-	// The
+	// (**Deprecated** - use `externalNetworkId` instead) The
 	// network UUID of an external gateway for the router. A router with an
 	// external gateway is required if any compute instances or load balancers
 	// will be using floating IPs. Changing this updates the external gateway
@@ -318,7 +318,7 @@ type routerArgs struct {
 	// has to be set in order to set this property. Changing this updates the
 	// external fixed IPs of the router.
 	ExternalFixedIps []RouterExternalFixedIp `pulumi:"externalFixedIps"`
-	// The
+	// (**Deprecated** - use `externalNetworkId` instead) The
 	// network UUID of an external gateway for the router. A router with an
 	// external gateway is required if any compute instances or load balancers
 	// will be using floating IPs. Changing this updates the external gateway
@@ -385,7 +385,7 @@ type RouterArgs struct {
 	// has to be set in order to set this property. Changing this updates the
 	// external fixed IPs of the router.
 	ExternalFixedIps RouterExternalFixedIpArrayInput
-	// The
+	// (**Deprecated** - use `externalNetworkId` instead) The
 	// network UUID of an external gateway for the router. A router with an
 	// external gateway is required if any compute instances or load balancers
 	// will be using floating IPs. Changing this updates the external gateway
@@ -561,7 +561,7 @@ func (o RouterOutput) ExternalFixedIps() RouterExternalFixedIpArrayOutput {
 	return o.ApplyT(func(v *Router) RouterExternalFixedIpArrayOutput { return v.ExternalFixedIps }).(RouterExternalFixedIpArrayOutput)
 }
 
-// The
+// (**Deprecated** - use `externalNetworkId` instead) The
 // network UUID of an external gateway for the router. A router with an
 // external gateway is required if any compute instances or load balancers
 // will be using floating IPs. Changing this updates the external gateway

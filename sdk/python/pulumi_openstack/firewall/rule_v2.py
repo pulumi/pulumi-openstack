@@ -52,8 +52,7 @@ class RuleV2Args:
                with `tenant_id`. The owner of the firewall rule. Required if admin wants
                to create a firewall rule for another project. Changing this creates a new
                firewall rule.
-        :param pulumi.Input[str] protocol: (Optional; Required if `source_port` or `destination_port` is not
-               empty) The protocol type on which the firewall rule operates.
+        :param pulumi.Input[str] protocol: The protocol type on which the firewall rule operates.
                Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
                `protocol` of an existing firewall rule. Default is `any`.
         :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
@@ -218,8 +217,7 @@ class RuleV2Args:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional; Required if `source_port` or `destination_port` is not
-        empty) The protocol type on which the firewall rule operates.
+        The protocol type on which the firewall rule operates.
         Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
         `protocol` of an existing firewall rule. Default is `any`.
         """
@@ -344,8 +342,7 @@ class _RuleV2State:
                with `tenant_id`. The owner of the firewall rule. Required if admin wants
                to create a firewall rule for another project. Changing this creates a new
                firewall rule.
-        :param pulumi.Input[str] protocol: (Optional; Required if `source_port` or `destination_port` is not
-               empty) The protocol type on which the firewall rule operates.
+        :param pulumi.Input[str] protocol: The protocol type on which the firewall rule operates.
                Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
                `protocol` of an existing firewall rule. Default is `any`.
         :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
@@ -510,8 +507,7 @@ class _RuleV2State:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional; Required if `source_port` or `destination_port` is not
-        empty) The protocol type on which the firewall rule operates.
+        The protocol type on which the firewall rule operates.
         Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
         `protocol` of an existing firewall rule. Default is `any`.
         """
@@ -666,8 +662,7 @@ class RuleV2(pulumi.CustomResource):
                with `tenant_id`. The owner of the firewall rule. Required if admin wants
                to create a firewall rule for another project. Changing this creates a new
                firewall rule.
-        :param pulumi.Input[str] protocol: (Optional; Required if `source_port` or `destination_port` is not
-               empty) The protocol type on which the firewall rule operates.
+        :param pulumi.Input[str] protocol: The protocol type on which the firewall rule operates.
                Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
                `protocol` of an existing firewall rule. Default is `any`.
         :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
@@ -827,8 +822,7 @@ class RuleV2(pulumi.CustomResource):
                with `tenant_id`. The owner of the firewall rule. Required if admin wants
                to create a firewall rule for another project. Changing this creates a new
                firewall rule.
-        :param pulumi.Input[str] protocol: (Optional; Required if `source_port` or `destination_port` is not
-               empty) The protocol type on which the firewall rule operates.
+        :param pulumi.Input[str] protocol: The protocol type on which the firewall rule operates.
                Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
                `protocol` of an existing firewall rule. Default is `any`.
         :param pulumi.Input[str] region: The region in which to obtain the v2 networking client.
@@ -952,8 +946,7 @@ class RuleV2(pulumi.CustomResource):
     @pulumi.getter
     def protocol(self) -> pulumi.Output[Optional[str]]:
         """
-        (Optional; Required if `source_port` or `destination_port` is not
-        empty) The protocol type on which the firewall rule operates.
+        The protocol type on which the firewall rule operates.
         Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
         `protocol` of an existing firewall rule. Default is `any`.
         """

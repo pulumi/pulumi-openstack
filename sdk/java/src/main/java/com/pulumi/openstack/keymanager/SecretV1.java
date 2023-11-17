@@ -288,28 +288,28 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.payload);
     }
     /**
-     * (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+     * The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
      * 
      */
     @Export(name="payloadContentEncoding", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> payloadContentEncoding;
 
     /**
-     * @return (required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
+     * @return The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.
      * 
      */
     public Output<Optional<String>> payloadContentEncoding() {
         return Codegen.optional(this.payloadContentEncoding);
     }
     /**
-     * (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+     * The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
      * 
      */
     @Export(name="payloadContentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> payloadContentType;
 
     /**
-     * @return (required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
+     * @return The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
      * 
      */
     public Output<Optional<String>> payloadContentType() {

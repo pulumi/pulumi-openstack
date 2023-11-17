@@ -86,7 +86,7 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The user id of the owner of the key pair.
-        /// This parameter can be specified only if the provider is configured to use
+        /// This parameter can be specified only if the provider is configured to use 
         /// the credentials of an OpenStack administrator.
         /// </summary>
         [Input("userId")]
@@ -115,7 +115,7 @@ namespace Pulumi.OpenStack.Compute
 
         /// <summary>
         /// The user id of the owner of the key pair.
-        /// This parameter can be specified only if the provider is configured to use
+        /// This parameter can be specified only if the provider is configured to use 
         /// the credentials of an OpenStack administrator.
         /// </summary>
         [Input("userId")]

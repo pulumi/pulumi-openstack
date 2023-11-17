@@ -392,7 +392,7 @@ public class Container extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.versioning);
     }
     /**
-     * Enable legacy object versioning. The structure is described below.
+     * (Deprecated) Enable legacy object versioning. The structure is described below.
      * 
      * @deprecated
      * Use newer &#34;versioning&#34; implementation
@@ -403,7 +403,7 @@ public class Container extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ ContainerVersioningLegacy> versioningLegacy;
 
     /**
-     * @return Enable legacy object versioning. The structure is described below.
+     * @return (Deprecated) Enable legacy object versioning. The structure is described below.
      * 
      */
     public Output<Optional<ContainerVersioningLegacy>> versioningLegacy() {

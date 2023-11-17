@@ -166,8 +166,7 @@ public final class RuleV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional; Required if `source_port` or `destination_port` is not
-     * empty) The protocol type on which the firewall rule operates.
+     * The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
      * `protocol` of an existing firewall rule. Default is `any`.
      * 
@@ -176,8 +175,7 @@ public final class RuleV2State extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> protocol;
 
     /**
-     * @return (Optional; Required if `source_port` or `destination_port` is not
-     * empty) The protocol type on which the firewall rule operates.
+     * @return The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
      * `protocol` of an existing firewall rule. Default is `any`.
      * 
@@ -521,8 +519,7 @@ public final class RuleV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol (Optional; Required if `source_port` or `destination_port` is not
-         * empty) The protocol type on which the firewall rule operates.
+         * @param protocol The protocol type on which the firewall rule operates.
          * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
          * `protocol` of an existing firewall rule. Default is `any`.
          * 
@@ -535,8 +532,7 @@ public final class RuleV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol (Optional; Required if `source_port` or `destination_port` is not
-         * empty) The protocol type on which the firewall rule operates.
+         * @param protocol The protocol type on which the firewall rule operates.
          * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
          * `protocol` of an existing firewall rule. Default is `any`.
          * 

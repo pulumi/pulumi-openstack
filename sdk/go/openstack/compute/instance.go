@@ -60,13 +60,11 @@ type Instance struct {
 	// forcefully deleted. This is useful for environments that have reclaim / soft
 	// deletion enabled.
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
-	// (Optional; Required if `imageName` is empty and not booting
-	// from a volume. Do not specify if booting from a volume.) The image ID of
+	// The image ID of
 	// the desired image for the server. Changing this rebuilds the existing
 	// server.
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
-	// (Optional; Required if `imageId` is empty and not booting
-	// from a volume. Do not specify if booting from a volume.) The name of the
+	// The name of the
 	// desired image for the server. Changing this rebuilds the existing server.
 	ImageName pulumi.StringOutput `pulumi:"imageName"`
 	// The name of a key pair to put on the server. The key
@@ -212,13 +210,11 @@ type instanceState struct {
 	// forcefully deleted. This is useful for environments that have reclaim / soft
 	// deletion enabled.
 	ForceDelete *bool `pulumi:"forceDelete"`
-	// (Optional; Required if `imageName` is empty and not booting
-	// from a volume. Do not specify if booting from a volume.) The image ID of
+	// The image ID of
 	// the desired image for the server. Changing this rebuilds the existing
 	// server.
 	ImageId *string `pulumi:"imageId"`
-	// (Optional; Required if `imageId` is empty and not booting
-	// from a volume. Do not specify if booting from a volume.) The name of the
+	// The name of the
 	// desired image for the server. Changing this rebuilds the existing server.
 	ImageName *string `pulumi:"imageName"`
 	// The name of a key pair to put on the server. The key
@@ -328,13 +324,11 @@ type InstanceState struct {
 	// forcefully deleted. This is useful for environments that have reclaim / soft
 	// deletion enabled.
 	ForceDelete pulumi.BoolPtrInput
-	// (Optional; Required if `imageName` is empty and not booting
-	// from a volume. Do not specify if booting from a volume.) The image ID of
+	// The image ID of
 	// the desired image for the server. Changing this rebuilds the existing
 	// server.
 	ImageId pulumi.StringPtrInput
-	// (Optional; Required if `imageId` is empty and not booting
-	// from a volume. Do not specify if booting from a volume.) The name of the
+	// The name of the
 	// desired image for the server. Changing this rebuilds the existing server.
 	ImageName pulumi.StringPtrInput
 	// The name of a key pair to put on the server. The key
@@ -442,13 +436,11 @@ type instanceArgs struct {
 	// forcefully deleted. This is useful for environments that have reclaim / soft
 	// deletion enabled.
 	ForceDelete *bool `pulumi:"forceDelete"`
-	// (Optional; Required if `imageName` is empty and not booting
-	// from a volume. Do not specify if booting from a volume.) The image ID of
+	// The image ID of
 	// the desired image for the server. Changing this rebuilds the existing
 	// server.
 	ImageId *string `pulumi:"imageId"`
-	// (Optional; Required if `imageId` is empty and not booting
-	// from a volume. Do not specify if booting from a volume.) The name of the
+	// The name of the
 	// desired image for the server. Changing this rebuilds the existing server.
 	ImageName *string `pulumi:"imageName"`
 	// The name of a key pair to put on the server. The key
@@ -551,13 +543,11 @@ type InstanceArgs struct {
 	// forcefully deleted. This is useful for environments that have reclaim / soft
 	// deletion enabled.
 	ForceDelete pulumi.BoolPtrInput
-	// (Optional; Required if `imageName` is empty and not booting
-	// from a volume. Do not specify if booting from a volume.) The image ID of
+	// The image ID of
 	// the desired image for the server. Changing this rebuilds the existing
 	// server.
 	ImageId pulumi.StringPtrInput
-	// (Optional; Required if `imageId` is empty and not booting
-	// from a volume. Do not specify if booting from a volume.) The name of the
+	// The name of the
 	// desired image for the server. Changing this rebuilds the existing server.
 	ImageName pulumi.StringPtrInput
 	// The name of a key pair to put on the server. The key
@@ -793,16 +783,14 @@ func (o InstanceOutput) ForceDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional; Required if `imageName` is empty and not booting
-// from a volume. Do not specify if booting from a volume.) The image ID of
+// The image ID of
 // the desired image for the server. Changing this rebuilds the existing
 // server.
 func (o InstanceOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ImageId }).(pulumi.StringOutput)
 }
 
-// (Optional; Required if `imageId` is empty and not booting
-// from a volume. Do not specify if booting from a volume.) The name of the
+// The name of the
 // desired image for the server. Changing this rebuilds the existing server.
 func (o InstanceOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ImageName }).(pulumi.StringOutput)

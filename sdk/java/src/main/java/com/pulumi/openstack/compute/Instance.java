@@ -251,8 +251,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.forceDelete);
     }
     /**
-     * (Optional; Required if `image_name` is empty and not booting
-     * from a volume. Do not specify if booting from a volume.) The image ID of
+     * The image ID of
      * the desired image for the server. Changing this rebuilds the existing
      * server.
      * 
@@ -261,8 +260,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> imageId;
 
     /**
-     * @return (Optional; Required if `image_name` is empty and not booting
-     * from a volume. Do not specify if booting from a volume.) The image ID of
+     * @return The image ID of
      * the desired image for the server. Changing this rebuilds the existing
      * server.
      * 
@@ -271,8 +269,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.imageId;
     }
     /**
-     * (Optional; Required if `image_id` is empty and not booting
-     * from a volume. Do not specify if booting from a volume.) The name of the
+     * The name of the
      * desired image for the server. Changing this rebuilds the existing server.
      * 
      */
@@ -280,8 +277,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> imageName;
 
     /**
-     * @return (Optional; Required if `image_id` is empty and not booting
-     * from a volume. Do not specify if booting from a volume.) The name of the
+     * @return The name of the
      * desired image for the server. Changing this rebuilds the existing server.
      * 
      */

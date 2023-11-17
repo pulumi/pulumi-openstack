@@ -32,10 +32,10 @@ class ContainerObjectArgs:
         """
         The set of arguments for constructing a ContainerObject resource.
         :param pulumi.Input[str] container_name: A unique (within an account) name for the container. 
-               The container name must be from 1 to 256 characters long and can start
-               with any character and contain any pattern. Character set must be UTF-8.
-               The container name cannot contain a slash (/) character because this
-               character delimits the container and object name. For example, the path
+               The container name must be from 1 to 256 characters long and can start 
+               with any character and contain any pattern. Character set must be UTF-8. 
+               The container name cannot contain a slash (/) character because this 
+               character delimits the container and object name. For example, the path 
                /v1/account/www/pages specifies the www container, not the www/pages container.
         :param pulumi.Input[str] content: A string representing the content of the object. Conflicts with
                `source` and `copy_from`.
@@ -46,24 +46,24 @@ class ContainerObjectArgs:
                metadata.
         :param pulumi.Input[str] content_type: A string which sets the MIME type for the object.
         :param pulumi.Input[str] copy_from: A string representing the name of an object 
-               used to create the new object by copying the `copy_from` object. The value is in form
-               {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
-               container and object before you include them in the header. Conflicts with `source` and
+               used to create the new object by copying the `copy_from` object. The value is in form 
+               {container}/{object}. You must UTF-8-encode and then URL-encode the names of the 
+               container and object before you include them in the header. Conflicts with `source` and 
                `content`.
         :param pulumi.Input[int] delete_after: An integer representing the number of seconds after which the
-               system removes the object. Internally, the Object Storage system stores this value in
+               system removes the object. Internally, the Object Storage system stores this value in 
                the X-Delete-At metadata item.
         :param pulumi.Input[str] delete_at: An string representing the date when the system removes the object. 
                For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
         :param pulumi.Input[bool] detect_content_type: If set to true, Object Storage guesses the content 
-               type based on the file extension and ignores the value sent in the Content-Type
+               type based on the file extension and ignores the value sent in the Content-Type 
                header, if present.
         :param pulumi.Input[str] etag: Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
         :param pulumi.Input[str] name: A unique name for the object.
         :param pulumi.Input[str] object_manifest: A string set to specify that this is a dynamic large 
                object manifest object. The value is the container and object name prefix of the
-               segment objects in the form container/prefix. You must UTF-8-encode and then
-               URL-encode the names of the container and prefix before you include them in this
+               segment objects in the form container/prefix. You must UTF-8-encode and then 
+               URL-encode the names of the container and prefix before you include them in this 
                header.
         :param pulumi.Input[str] region: The region in which to create the container. If
                omitted, the `region` argument of the provider is used. Changing this
@@ -106,10 +106,10 @@ class ContainerObjectArgs:
     def container_name(self) -> pulumi.Input[str]:
         """
         A unique (within an account) name for the container. 
-        The container name must be from 1 to 256 characters long and can start
-        with any character and contain any pattern. Character set must be UTF-8.
-        The container name cannot contain a slash (/) character because this
-        character delimits the container and object name. For example, the path
+        The container name must be from 1 to 256 characters long and can start 
+        with any character and contain any pattern. Character set must be UTF-8. 
+        The container name cannot contain a slash (/) character because this 
+        character delimits the container and object name. For example, the path 
         /v1/account/www/pages specifies the www container, not the www/pages container.
         """
         return pulumi.get(self, "container_name")
@@ -175,9 +175,9 @@ class ContainerObjectArgs:
     def copy_from(self) -> Optional[pulumi.Input[str]]:
         """
         A string representing the name of an object 
-        used to create the new object by copying the `copy_from` object. The value is in form
-        {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
-        container and object before you include them in the header. Conflicts with `source` and
+        used to create the new object by copying the `copy_from` object. The value is in form 
+        {container}/{object}. You must UTF-8-encode and then URL-encode the names of the 
+        container and object before you include them in the header. Conflicts with `source` and 
         `content`.
         """
         return pulumi.get(self, "copy_from")
@@ -191,7 +191,7 @@ class ContainerObjectArgs:
     def delete_after(self) -> Optional[pulumi.Input[int]]:
         """
         An integer representing the number of seconds after which the
-        system removes the object. Internally, the Object Storage system stores this value in
+        system removes the object. Internally, the Object Storage system stores this value in 
         the X-Delete-At metadata item.
         """
         return pulumi.get(self, "delete_after")
@@ -218,7 +218,7 @@ class ContainerObjectArgs:
     def detect_content_type(self) -> Optional[pulumi.Input[bool]]:
         """
         If set to true, Object Storage guesses the content 
-        type based on the file extension and ignores the value sent in the Content-Type
+        type based on the file extension and ignores the value sent in the Content-Type 
         header, if present.
         """
         return pulumi.get(self, "detect_content_type")
@@ -266,8 +266,8 @@ class ContainerObjectArgs:
         """
         A string set to specify that this is a dynamic large 
         object manifest object. The value is the container and object name prefix of the
-        segment objects in the form container/prefix. You must UTF-8-encode and then
-        URL-encode the names of the container and prefix before you include them in this
+        segment objects in the form container/prefix. You must UTF-8-encode and then 
+        URL-encode the names of the container and prefix before you include them in this 
         header.
         """
         return pulumi.get(self, "object_manifest")
@@ -329,10 +329,10 @@ class _ContainerObjectState:
         """
         Input properties used for looking up and filtering ContainerObject resources.
         :param pulumi.Input[str] container_name: A unique (within an account) name for the container. 
-               The container name must be from 1 to 256 characters long and can start
-               with any character and contain any pattern. Character set must be UTF-8.
-               The container name cannot contain a slash (/) character because this
-               character delimits the container and object name. For example, the path
+               The container name must be from 1 to 256 characters long and can start 
+               with any character and contain any pattern. Character set must be UTF-8. 
+               The container name cannot contain a slash (/) character because this 
+               character delimits the container and object name. For example, the path 
                /v1/account/www/pages specifies the www container, not the www/pages container.
         :param pulumi.Input[str] content: A string representing the content of the object. Conflicts with
                `source` and `copy_from`.
@@ -345,20 +345,20 @@ class _ContainerObjectState:
                length of informational or error text in the response body.
         :param pulumi.Input[str] content_type: A string which sets the MIME type for the object.
         :param pulumi.Input[str] copy_from: A string representing the name of an object 
-               used to create the new object by copying the `copy_from` object. The value is in form
-               {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
-               container and object before you include them in the header. Conflicts with `source` and
+               used to create the new object by copying the `copy_from` object. The value is in form 
+               {container}/{object}. You must UTF-8-encode and then URL-encode the names of the 
+               container and object before you include them in the header. Conflicts with `source` and 
                `content`.
         :param pulumi.Input[str] date: The date and time the system responded to the request, using the preferred 
                format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
                time is always in UTC.
         :param pulumi.Input[int] delete_after: An integer representing the number of seconds after which the
-               system removes the object. Internally, the Object Storage system stores this value in
+               system removes the object. Internally, the Object Storage system stores this value in 
                the X-Delete-At metadata item.
         :param pulumi.Input[str] delete_at: An string representing the date when the system removes the object. 
                For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
         :param pulumi.Input[bool] detect_content_type: If set to true, Object Storage guesses the content 
-               type based on the file extension and ignores the value sent in the Content-Type
+               type based on the file extension and ignores the value sent in the Content-Type 
                header, if present.
         :param pulumi.Input[str] etag: Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
         :param pulumi.Input[str] last_modified: The date and time when the object was last modified. The date and time 
@@ -370,8 +370,8 @@ class _ContainerObjectState:
         :param pulumi.Input[str] name: A unique name for the object.
         :param pulumi.Input[str] object_manifest: A string set to specify that this is a dynamic large 
                object manifest object. The value is the container and object name prefix of the
-               segment objects in the form container/prefix. You must UTF-8-encode and then
-               URL-encode the names of the container and prefix before you include them in this
+               segment objects in the form container/prefix. You must UTF-8-encode and then 
+               URL-encode the names of the container and prefix before you include them in this 
                header.
         :param pulumi.Input[str] region: The region in which to create the container. If
                omitted, the `region` argument of the provider is used. Changing this
@@ -425,10 +425,10 @@ class _ContainerObjectState:
     def container_name(self) -> Optional[pulumi.Input[str]]:
         """
         A unique (within an account) name for the container. 
-        The container name must be from 1 to 256 characters long and can start
-        with any character and contain any pattern. Character set must be UTF-8.
-        The container name cannot contain a slash (/) character because this
-        character delimits the container and object name. For example, the path
+        The container name must be from 1 to 256 characters long and can start 
+        with any character and contain any pattern. Character set must be UTF-8. 
+        The container name cannot contain a slash (/) character because this 
+        character delimits the container and object name. For example, the path 
         /v1/account/www/pages specifies the www container, not the www/pages container.
         """
         return pulumi.get(self, "container_name")
@@ -507,9 +507,9 @@ class _ContainerObjectState:
     def copy_from(self) -> Optional[pulumi.Input[str]]:
         """
         A string representing the name of an object 
-        used to create the new object by copying the `copy_from` object. The value is in form
-        {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
-        container and object before you include them in the header. Conflicts with `source` and
+        used to create the new object by copying the `copy_from` object. The value is in form 
+        {container}/{object}. You must UTF-8-encode and then URL-encode the names of the 
+        container and object before you include them in the header. Conflicts with `source` and 
         `content`.
         """
         return pulumi.get(self, "copy_from")
@@ -537,7 +537,7 @@ class _ContainerObjectState:
     def delete_after(self) -> Optional[pulumi.Input[int]]:
         """
         An integer representing the number of seconds after which the
-        system removes the object. Internally, the Object Storage system stores this value in
+        system removes the object. Internally, the Object Storage system stores this value in 
         the X-Delete-At metadata item.
         """
         return pulumi.get(self, "delete_after")
@@ -564,7 +564,7 @@ class _ContainerObjectState:
     def detect_content_type(self) -> Optional[pulumi.Input[bool]]:
         """
         If set to true, Object Storage guesses the content 
-        type based on the file extension and ignores the value sent in the Content-Type
+        type based on the file extension and ignores the value sent in the Content-Type 
         header, if present.
         """
         return pulumi.get(self, "detect_content_type")
@@ -629,8 +629,8 @@ class _ContainerObjectState:
         """
         A string set to specify that this is a dynamic large 
         object manifest object. The value is the container and object name prefix of the
-        segment objects in the form container/prefix. You must UTF-8-encode and then
-        URL-encode the names of the container and prefix before you include them in this
+        segment objects in the form container/prefix. You must UTF-8-encode and then 
+        URL-encode the names of the container and prefix before you include them in this 
         header.
         """
         return pulumi.get(self, "object_manifest")
@@ -754,10 +754,10 @@ class ContainerObject(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_name: A unique (within an account) name for the container. 
-               The container name must be from 1 to 256 characters long and can start
-               with any character and contain any pattern. Character set must be UTF-8.
-               The container name cannot contain a slash (/) character because this
-               character delimits the container and object name. For example, the path
+               The container name must be from 1 to 256 characters long and can start 
+               with any character and contain any pattern. Character set must be UTF-8. 
+               The container name cannot contain a slash (/) character because this 
+               character delimits the container and object name. For example, the path 
                /v1/account/www/pages specifies the www container, not the www/pages container.
         :param pulumi.Input[str] content: A string representing the content of the object. Conflicts with
                `source` and `copy_from`.
@@ -768,24 +768,24 @@ class ContainerObject(pulumi.CustomResource):
                metadata.
         :param pulumi.Input[str] content_type: A string which sets the MIME type for the object.
         :param pulumi.Input[str] copy_from: A string representing the name of an object 
-               used to create the new object by copying the `copy_from` object. The value is in form
-               {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
-               container and object before you include them in the header. Conflicts with `source` and
+               used to create the new object by copying the `copy_from` object. The value is in form 
+               {container}/{object}. You must UTF-8-encode and then URL-encode the names of the 
+               container and object before you include them in the header. Conflicts with `source` and 
                `content`.
         :param pulumi.Input[int] delete_after: An integer representing the number of seconds after which the
-               system removes the object. Internally, the Object Storage system stores this value in
+               system removes the object. Internally, the Object Storage system stores this value in 
                the X-Delete-At metadata item.
         :param pulumi.Input[str] delete_at: An string representing the date when the system removes the object. 
                For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
         :param pulumi.Input[bool] detect_content_type: If set to true, Object Storage guesses the content 
-               type based on the file extension and ignores the value sent in the Content-Type
+               type based on the file extension and ignores the value sent in the Content-Type 
                header, if present.
         :param pulumi.Input[str] etag: Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
         :param pulumi.Input[str] name: A unique name for the object.
         :param pulumi.Input[str] object_manifest: A string set to specify that this is a dynamic large 
                object manifest object. The value is the container and object name prefix of the
-               segment objects in the form container/prefix. You must UTF-8-encode and then
-               URL-encode the names of the container and prefix before you include them in this
+               segment objects in the form container/prefix. You must UTF-8-encode and then 
+               URL-encode the names of the container and prefix before you include them in this 
                header.
         :param pulumi.Input[str] region: The region in which to create the container. If
                omitted, the `region` argument of the provider is used. Changing this
@@ -946,10 +946,10 @@ class ContainerObject(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] container_name: A unique (within an account) name for the container. 
-               The container name must be from 1 to 256 characters long and can start
-               with any character and contain any pattern. Character set must be UTF-8.
-               The container name cannot contain a slash (/) character because this
-               character delimits the container and object name. For example, the path
+               The container name must be from 1 to 256 characters long and can start 
+               with any character and contain any pattern. Character set must be UTF-8. 
+               The container name cannot contain a slash (/) character because this 
+               character delimits the container and object name. For example, the path 
                /v1/account/www/pages specifies the www container, not the www/pages container.
         :param pulumi.Input[str] content: A string representing the content of the object. Conflicts with
                `source` and `copy_from`.
@@ -962,20 +962,20 @@ class ContainerObject(pulumi.CustomResource):
                length of informational or error text in the response body.
         :param pulumi.Input[str] content_type: A string which sets the MIME type for the object.
         :param pulumi.Input[str] copy_from: A string representing the name of an object 
-               used to create the new object by copying the `copy_from` object. The value is in form
-               {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
-               container and object before you include them in the header. Conflicts with `source` and
+               used to create the new object by copying the `copy_from` object. The value is in form 
+               {container}/{object}. You must UTF-8-encode and then URL-encode the names of the 
+               container and object before you include them in the header. Conflicts with `source` and 
                `content`.
         :param pulumi.Input[str] date: The date and time the system responded to the request, using the preferred 
                format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
                time is always in UTC.
         :param pulumi.Input[int] delete_after: An integer representing the number of seconds after which the
-               system removes the object. Internally, the Object Storage system stores this value in
+               system removes the object. Internally, the Object Storage system stores this value in 
                the X-Delete-At metadata item.
         :param pulumi.Input[str] delete_at: An string representing the date when the system removes the object. 
                For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
         :param pulumi.Input[bool] detect_content_type: If set to true, Object Storage guesses the content 
-               type based on the file extension and ignores the value sent in the Content-Type
+               type based on the file extension and ignores the value sent in the Content-Type 
                header, if present.
         :param pulumi.Input[str] etag: Used to trigger updates. The only meaningful value is ${md5(file("path/to/file"))}.
         :param pulumi.Input[str] last_modified: The date and time when the object was last modified. The date and time 
@@ -987,8 +987,8 @@ class ContainerObject(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique name for the object.
         :param pulumi.Input[str] object_manifest: A string set to specify that this is a dynamic large 
                object manifest object. The value is the container and object name prefix of the
-               segment objects in the form container/prefix. You must UTF-8-encode and then
-               URL-encode the names of the container and prefix before you include them in this
+               segment objects in the form container/prefix. You must UTF-8-encode and then 
+               URL-encode the names of the container and prefix before you include them in this 
                header.
         :param pulumi.Input[str] region: The region in which to create the container. If
                omitted, the `region` argument of the provider is used. Changing this
@@ -1028,10 +1028,10 @@ class ContainerObject(pulumi.CustomResource):
     def container_name(self) -> pulumi.Output[str]:
         """
         A unique (within an account) name for the container. 
-        The container name must be from 1 to 256 characters long and can start
-        with any character and contain any pattern. Character set must be UTF-8.
-        The container name cannot contain a slash (/) character because this
-        character delimits the container and object name. For example, the path
+        The container name must be from 1 to 256 characters long and can start 
+        with any character and contain any pattern. Character set must be UTF-8. 
+        The container name cannot contain a slash (/) character because this 
+        character delimits the container and object name. For example, the path 
         /v1/account/www/pages specifies the www container, not the www/pages container.
         """
         return pulumi.get(self, "container_name")
@@ -1086,9 +1086,9 @@ class ContainerObject(pulumi.CustomResource):
     def copy_from(self) -> pulumi.Output[Optional[str]]:
         """
         A string representing the name of an object 
-        used to create the new object by copying the `copy_from` object. The value is in form
-        {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
-        container and object before you include them in the header. Conflicts with `source` and
+        used to create the new object by copying the `copy_from` object. The value is in form 
+        {container}/{object}. You must UTF-8-encode and then URL-encode the names of the 
+        container and object before you include them in the header. Conflicts with `source` and 
         `content`.
         """
         return pulumi.get(self, "copy_from")
@@ -1108,7 +1108,7 @@ class ContainerObject(pulumi.CustomResource):
     def delete_after(self) -> pulumi.Output[Optional[int]]:
         """
         An integer representing the number of seconds after which the
-        system removes the object. Internally, the Object Storage system stores this value in
+        system removes the object. Internally, the Object Storage system stores this value in 
         the X-Delete-At metadata item.
         """
         return pulumi.get(self, "delete_after")
@@ -1127,7 +1127,7 @@ class ContainerObject(pulumi.CustomResource):
     def detect_content_type(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to true, Object Storage guesses the content 
-        type based on the file extension and ignores the value sent in the Content-Type
+        type based on the file extension and ignores the value sent in the Content-Type 
         header, if present.
         """
         return pulumi.get(self, "detect_content_type")
@@ -1172,8 +1172,8 @@ class ContainerObject(pulumi.CustomResource):
         """
         A string set to specify that this is a dynamic large 
         object manifest object. The value is the container and object name prefix of the
-        segment objects in the form container/prefix. You must UTF-8-encode and then
-        URL-encode the names of the container and prefix before you include them in this
+        segment objects in the form container/prefix. You must UTF-8-encode and then 
+        URL-encode the names of the container and prefix before you include them in this 
         header.
         """
         return pulumi.get(self, "object_manifest")

@@ -223,12 +223,12 @@ def get_image_ids(member_status: Optional[str] = None,
     :param str name: The name of the image. Cannot be used simultaneously
            with `name_regex`.
     :param str name_regex: The regular expressian of the name of the image.
-           Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+           Cannot be used simultaneously with `name`. Unlike filtering by `name` the    
            `name_regex` filtering does by client on the result of OpenStack search
            query.
     :param str owner: The owner (UUID) of the image.
     :param Mapping[str, Any] properties: a map of key/value pairs to match an image with.
-           All specified properties must be matched. Unlike other options filtering
+           All specified properties must be matched. Unlike other options filtering    
            by `properties` does by client on the result of OpenStack search query.
     :param str region: The region in which to obtain the V2 Glance client.
            A Glance client is needed to create an Image that can be used with
@@ -330,12 +330,12 @@ def get_image_ids_output(member_status: Optional[pulumi.Input[Optional[str]]] = 
     :param str name: The name of the image. Cannot be used simultaneously
            with `name_regex`.
     :param str name_regex: The regular expressian of the name of the image.
-           Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+           Cannot be used simultaneously with `name`. Unlike filtering by `name` the    
            `name_regex` filtering does by client on the result of OpenStack search
            query.
     :param str owner: The owner (UUID) of the image.
     :param Mapping[str, Any] properties: a map of key/value pairs to match an image with.
-           All specified properties must be matched. Unlike other options filtering
+           All specified properties must be matched. Unlike other options filtering    
            by `properties` does by client on the result of OpenStack search query.
     :param str region: The region in which to obtain the V2 Glance client.
            A Glance client is needed to create an Image that can be used with

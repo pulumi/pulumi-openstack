@@ -61,7 +61,7 @@ export interface GetImageIdsArgs {
     name?: string;
     /**
      * The regular expressian of the name of the image.
-     * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+     * Cannot be used simultaneously with `name`. Unlike filtering by `name` the    
      * `nameRegex` filtering does by client on the result of OpenStack search
      * query.
      */
@@ -72,7 +72,7 @@ export interface GetImageIdsArgs {
     owner?: string;
     /**
      * a map of key/value pairs to match an image with.
-     * All specified properties must be matched. Unlike other options filtering
+     * All specified properties must be matched. Unlike other options filtering    
      * by `properties` does by client on the result of OpenStack search query.
      */
     properties?: {[key: string]: any};
@@ -201,7 +201,7 @@ export interface GetImageIdsOutputArgs {
     name?: pulumi.Input<string>;
     /**
      * The regular expressian of the name of the image.
-     * Cannot be used simultaneously with `name`. Unlike filtering by `name` the
+     * Cannot be used simultaneously with `name`. Unlike filtering by `name` the    
      * `nameRegex` filtering does by client on the result of OpenStack search
      * query.
      */
@@ -212,7 +212,7 @@ export interface GetImageIdsOutputArgs {
     owner?: pulumi.Input<string>;
     /**
      * a map of key/value pairs to match an image with.
-     * All specified properties must be matched. Unlike other options filtering
+     * All specified properties must be matched. Unlike other options filtering    
      * by `properties` does by client on the result of OpenStack search query.
      */
     properties?: pulumi.Input<{[key: string]: any}>;

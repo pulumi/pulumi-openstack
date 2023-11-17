@@ -114,6 +114,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
         return this.allocationPools;
     }
     /**
+     * (**Deprecated** - use `allocation_pool` instead)
      * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
      * The `allocation_pools` block is documented below.
@@ -127,7 +128,8 @@ public class Subnet extends com.pulumi.resources.CustomResource {
     private Output<List<SubnetAllocationPoolsCollection>> allocationPoolsCollection;
 
     /**
-     * @return A block declaring the start and end range of the IP addresses available for
+     * @return (**Deprecated** - use `allocation_pool` instead)
+     * A block declaring the start and end range of the IP addresses available for
      * use with DHCP in this subnet.
      * The `allocation_pools` block is documented below.
      * 

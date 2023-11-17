@@ -125,7 +125,7 @@ def get_keypair(name: Optional[str] = None,
     :param str region: The region in which to obtain the V2 Compute client.
            If omitted, the `region` argument of the provider is used.
     :param str user_id: The user id of the owner of the key pair.
-           This parameter can be specified only if the provider is configured to use
+           This parameter can be specified only if the provider is configured to use 
            the credentials of an OpenStack administrator.
     """
     __args__ = dict()
@@ -166,7 +166,7 @@ def get_keypair_output(name: Optional[pulumi.Input[str]] = None,
     :param str region: The region in which to obtain the V2 Compute client.
            If omitted, the `region` argument of the provider is used.
     :param str user_id: The user id of the owner of the key pair.
-           This parameter can be specified only if the provider is configured to use
+           This parameter can be specified only if the provider is configured to use 
            the credentials of an OpenStack administrator.
     """
     ...

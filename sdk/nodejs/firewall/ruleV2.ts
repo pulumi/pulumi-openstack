@@ -107,8 +107,7 @@ export class RuleV2 extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * (Optional; Required if `sourcePort` or `destinationPort` is not
-     * empty) The protocol type on which the firewall rule operates.
+     * The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
      * `protocol` of an existing firewall rule. Default is `any`.
      */
@@ -247,8 +246,7 @@ export interface RuleV2State {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * (Optional; Required if `sourcePort` or `destinationPort` is not
-     * empty) The protocol type on which the firewall rule operates.
+     * The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
      * `protocol` of an existing firewall rule. Default is `any`.
      */
@@ -339,8 +337,7 @@ export interface RuleV2Args {
      */
     projectId?: pulumi.Input<string>;
     /**
-     * (Optional; Required if `sourcePort` or `destinationPort` is not
-     * empty) The protocol type on which the firewall rule operates.
+     * The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
      * `protocol` of an existing firewall rule. Default is `any`.
      */

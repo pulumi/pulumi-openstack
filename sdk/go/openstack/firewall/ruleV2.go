@@ -87,8 +87,7 @@ type RuleV2 struct {
 	// to create a firewall rule for another project. Changing this creates a new
 	// firewall rule.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// (Optional; Required if `sourcePort` or `destinationPort` is not
-	// empty) The protocol type on which the firewall rule operates.
+	// The protocol type on which the firewall rule operates.
 	// Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
 	// `protocol` of an existing firewall rule. Default is `any`.
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
@@ -177,8 +176,7 @@ type ruleV2State struct {
 	// to create a firewall rule for another project. Changing this creates a new
 	// firewall rule.
 	ProjectId *string `pulumi:"projectId"`
-	// (Optional; Required if `sourcePort` or `destinationPort` is not
-	// empty) The protocol type on which the firewall rule operates.
+	// The protocol type on which the firewall rule operates.
 	// Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
 	// `protocol` of an existing firewall rule. Default is `any`.
 	Protocol *string `pulumi:"protocol"`
@@ -238,8 +236,7 @@ type RuleV2State struct {
 	// to create a firewall rule for another project. Changing this creates a new
 	// firewall rule.
 	ProjectId pulumi.StringPtrInput
-	// (Optional; Required if `sourcePort` or `destinationPort` is not
-	// empty) The protocol type on which the firewall rule operates.
+	// The protocol type on which the firewall rule operates.
 	// Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
 	// `protocol` of an existing firewall rule. Default is `any`.
 	Protocol pulumi.StringPtrInput
@@ -303,8 +300,7 @@ type ruleV2Args struct {
 	// to create a firewall rule for another project. Changing this creates a new
 	// firewall rule.
 	ProjectId *string `pulumi:"projectId"`
-	// (Optional; Required if `sourcePort` or `destinationPort` is not
-	// empty) The protocol type on which the firewall rule operates.
+	// The protocol type on which the firewall rule operates.
 	// Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
 	// `protocol` of an existing firewall rule. Default is `any`.
 	Protocol *string `pulumi:"protocol"`
@@ -365,8 +361,7 @@ type RuleV2Args struct {
 	// to create a firewall rule for another project. Changing this creates a new
 	// firewall rule.
 	ProjectId pulumi.StringPtrInput
-	// (Optional; Required if `sourcePort` or `destinationPort` is not
-	// empty) The protocol type on which the firewall rule operates.
+	// The protocol type on which the firewall rule operates.
 	// Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
 	// `protocol` of an existing firewall rule. Default is `any`.
 	Protocol pulumi.StringPtrInput
@@ -536,8 +531,7 @@ func (o RuleV2Output) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RuleV2) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// (Optional; Required if `sourcePort` or `destinationPort` is not
-// empty) The protocol type on which the firewall rule operates.
+// The protocol type on which the firewall rule operates.
 // Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
 // `protocol` of an existing firewall rule. Default is `any`.
 func (o RuleV2Output) Protocol() pulumi.StringPtrOutput {

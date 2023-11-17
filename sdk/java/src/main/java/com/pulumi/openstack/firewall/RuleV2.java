@@ -207,8 +207,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
         return this.projectId;
     }
     /**
-     * (Optional; Required if `source_port` or `destination_port` is not
-     * empty) The protocol type on which the firewall rule operates.
+     * The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
      * `protocol` of an existing firewall rule. Default is `any`.
      * 
@@ -217,8 +216,7 @@ public class RuleV2 extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> protocol;
 
     /**
-     * @return (Optional; Required if `source_port` or `destination_port` is not
-     * empty) The protocol type on which the firewall rule operates.
+     * @return The protocol type on which the firewall rule operates.
      * Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
      * `protocol` of an existing firewall rule. Default is `any`.
      * 

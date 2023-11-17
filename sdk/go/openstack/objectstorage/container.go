@@ -221,7 +221,7 @@ type Container struct {
 	// configuration option in Swift. If you cannot set this versioning type, you may
 	// want to consider using `versioningLegacy` instead.
 	Versioning pulumi.BoolPtrOutput `pulumi:"versioning"`
-	// Enable legacy object versioning. The structure is described below.
+	// (Deprecated) Enable legacy object versioning. The structure is described below.
 	//
 	// Deprecated: Use newer "versioning" implementation
 	VersioningLegacy ContainerVersioningLegacyPtrOutput `pulumi:"versioningLegacy"`
@@ -296,7 +296,7 @@ type containerState struct {
 	// configuration option in Swift. If you cannot set this versioning type, you may
 	// want to consider using `versioningLegacy` instead.
 	Versioning *bool `pulumi:"versioning"`
-	// Enable legacy object versioning. The structure is described below.
+	// (Deprecated) Enable legacy object versioning. The structure is described below.
 	//
 	// Deprecated: Use newer "versioning" implementation
 	VersioningLegacy *ContainerVersioningLegacy `pulumi:"versioningLegacy"`
@@ -342,7 +342,7 @@ type ContainerState struct {
 	// configuration option in Swift. If you cannot set this versioning type, you may
 	// want to consider using `versioningLegacy` instead.
 	Versioning pulumi.BoolPtrInput
-	// Enable legacy object versioning. The structure is described below.
+	// (Deprecated) Enable legacy object versioning. The structure is described below.
 	//
 	// Deprecated: Use newer "versioning" implementation
 	VersioningLegacy ContainerVersioningLegacyPtrInput
@@ -392,7 +392,7 @@ type containerArgs struct {
 	// configuration option in Swift. If you cannot set this versioning type, you may
 	// want to consider using `versioningLegacy` instead.
 	Versioning *bool `pulumi:"versioning"`
-	// Enable legacy object versioning. The structure is described below.
+	// (Deprecated) Enable legacy object versioning. The structure is described below.
 	//
 	// Deprecated: Use newer "versioning" implementation
 	VersioningLegacy *ContainerVersioningLegacy `pulumi:"versioningLegacy"`
@@ -439,7 +439,7 @@ type ContainerArgs struct {
 	// configuration option in Swift. If you cannot set this versioning type, you may
 	// want to consider using `versioningLegacy` instead.
 	Versioning pulumi.BoolPtrInput
-	// Enable legacy object versioning. The structure is described below.
+	// (Deprecated) Enable legacy object versioning. The structure is described below.
 	//
 	// Deprecated: Use newer "versioning" implementation
 	VersioningLegacy ContainerVersioningLegacyPtrInput
@@ -604,7 +604,7 @@ func (o ContainerOutput) Versioning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.BoolPtrOutput { return v.Versioning }).(pulumi.BoolPtrOutput)
 }
 
-// Enable legacy object versioning. The structure is described below.
+// (Deprecated) Enable legacy object versioning. The structure is described below.
 //
 // Deprecated: Use newer "versioning" implementation
 func (o ContainerOutput) VersioningLegacy() ContainerVersioningLegacyPtrOutput {

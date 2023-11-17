@@ -110,8 +110,7 @@ namespace Pulumi.OpenStack.Firewall
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional; Required if `source_port` or `destination_port` is not
-        /// empty) The protocol type on which the firewall rule operates.
+        /// The protocol type on which the firewall rule operates.
         /// Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
         /// `protocol` of an existing firewall rule. Default is `any`.
         /// </summary>
@@ -270,8 +269,7 @@ namespace Pulumi.OpenStack.Firewall
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// (Optional; Required if `source_port` or `destination_port` is not
-        /// empty) The protocol type on which the firewall rule operates.
+        /// The protocol type on which the firewall rule operates.
         /// Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
         /// `protocol` of an existing firewall rule. Default is `any`.
         /// </summary>
@@ -392,8 +390,7 @@ namespace Pulumi.OpenStack.Firewall
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// (Optional; Required if `source_port` or `destination_port` is not
-        /// empty) The protocol type on which the firewall rule operates.
+        /// The protocol type on which the firewall rule operates.
         /// Valid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the
         /// `protocol` of an existing firewall rule. Default is `any`.
         /// </summary>

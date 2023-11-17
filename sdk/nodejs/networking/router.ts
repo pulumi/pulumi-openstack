@@ -101,7 +101,7 @@ export class Router extends pulumi.CustomResource {
      */
     public readonly externalFixedIps!: pulumi.Output<outputs.networking.RouterExternalFixedIp[]>;
     /**
-     * The
+     * (**Deprecated** - use `externalNetworkId` instead) The
      * network UUID of an external gateway for the router. A router with an
      * external gateway is required if any compute instances or load balancers
      * will be using floating IPs. Changing this updates the external gateway
@@ -257,7 +257,7 @@ export interface RouterState {
      */
     externalFixedIps?: pulumi.Input<pulumi.Input<inputs.networking.RouterExternalFixedIp>[]>;
     /**
-     * The
+     * (**Deprecated** - use `externalNetworkId` instead) The
      * network UUID of an external gateway for the router. A router with an
      * external gateway is required if any compute instances or load balancers
      * will be using floating IPs. Changing this updates the external gateway
@@ -356,7 +356,7 @@ export interface RouterArgs {
      */
     externalFixedIps?: pulumi.Input<pulumi.Input<inputs.networking.RouterExternalFixedIp>[]>;
     /**
-     * The
+     * (**Deprecated** - use `externalNetworkId` instead) The
      * network UUID of an external gateway for the router. A router with an
      * external gateway is required if any compute instances or load balancers
      * will be using floating IPs. Changing this updates the external gateway
