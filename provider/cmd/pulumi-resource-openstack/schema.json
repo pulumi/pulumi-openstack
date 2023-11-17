@@ -4620,11 +4620,11 @@
                 },
                 "imageId": {
                     "type": "string",
-                    "description": "(Optional; Required if `image_name` is empty and not booting\nfrom a volume. Do not specify if booting from a volume.) The image ID of\nthe desired image for the server. Changing this rebuilds the existing\nserver.\n"
+                    "description": "The image ID of\nthe desired image for the server. Changing this rebuilds the existing\nserver.\n"
                 },
                 "imageName": {
                     "type": "string",
-                    "description": "(Optional; Required if `image_id` is empty and not booting\nfrom a volume. Do not specify if booting from a volume.) The name of the\ndesired image for the server. Changing this rebuilds the existing server.\n"
+                    "description": "The name of the\ndesired image for the server. Changing this rebuilds the existing server.\n"
                 },
                 "keyPair": {
                     "type": "string",
@@ -4783,11 +4783,11 @@
                 },
                 "imageId": {
                     "type": "string",
-                    "description": "(Optional; Required if `image_name` is empty and not booting\nfrom a volume. Do not specify if booting from a volume.) The image ID of\nthe desired image for the server. Changing this rebuilds the existing\nserver.\n"
+                    "description": "The image ID of\nthe desired image for the server. Changing this rebuilds the existing\nserver.\n"
                 },
                 "imageName": {
                     "type": "string",
-                    "description": "(Optional; Required if `image_id` is empty and not booting\nfrom a volume. Do not specify if booting from a volume.) The name of the\ndesired image for the server. Changing this rebuilds the existing server.\n"
+                    "description": "The name of the\ndesired image for the server. Changing this rebuilds the existing server.\n"
                 },
                 "keyPair": {
                     "type": "string",
@@ -4949,11 +4949,11 @@
                     },
                     "imageId": {
                         "type": "string",
-                        "description": "(Optional; Required if `image_name` is empty and not booting\nfrom a volume. Do not specify if booting from a volume.) The image ID of\nthe desired image for the server. Changing this rebuilds the existing\nserver.\n"
+                        "description": "The image ID of\nthe desired image for the server. Changing this rebuilds the existing\nserver.\n"
                     },
                     "imageName": {
                         "type": "string",
-                        "description": "(Optional; Required if `image_id` is empty and not booting\nfrom a volume. Do not specify if booting from a volume.) The name of the\ndesired image for the server. Changing this rebuilds the existing server.\n"
+                        "description": "The name of the\ndesired image for the server. Changing this rebuilds the existing server.\n"
                     },
                     "keyPair": {
                         "type": "string",
@@ -7283,7 +7283,7 @@
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned\nuser role in target project)\n"
+                    "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned \nuser role in target project)\n"
                 },
                 "records": {
                     "type": "array",
@@ -7341,7 +7341,7 @@
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned\nuser role in target project)\n",
+                    "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned \nuser role in target project)\n",
                     "willReplaceOnChanges": true
                 },
                 "records": {
@@ -7401,7 +7401,7 @@
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned\nuser role in target project)\n",
+                        "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned \nuser role in target project)\n",
                         "willReplaceOnChanges": true
                     },
                     "records": {
@@ -7700,7 +7700,7 @@
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned\nuser role in target project)\n"
+                    "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned \nuser role in target project)\n"
                 },
                 "region": {
                     "type": "string",
@@ -7764,7 +7764,7 @@
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned\nuser role in target project)\n",
+                    "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned \nuser role in target project)\n",
                     "willReplaceOnChanges": true
                 },
                 "region": {
@@ -7827,7 +7827,7 @@
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned\nuser role in target project)\n",
+                        "description": "The ID of the project DNS zone is created\nfor, sets `X-Auth-Sudo-Tenant-ID` header (requires an assigned \nuser role in target project)\n",
                         "willReplaceOnChanges": true
                     },
                     "region": {
@@ -8670,7 +8670,7 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "(Optional; Required if `source_port` or `destination_port` is not\nempty) The protocol type on which the firewall rule operates.\nValid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the\n`protocol` of an existing firewall rule. Default is `any`.\n"
+                    "description": "The protocol type on which the firewall rule operates.\nValid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the\n`protocol` of an existing firewall rule. Default is `any`.\n"
                 },
                 "region": {
                     "type": "string",
@@ -8735,7 +8735,7 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "(Optional; Required if `source_port` or `destination_port` is not\nempty) The protocol type on which the firewall rule operates.\nValid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the\n`protocol` of an existing firewall rule. Default is `any`.\n"
+                    "description": "The protocol type on which the firewall rule operates.\nValid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the\n`protocol` of an existing firewall rule. Default is `any`.\n"
                 },
                 "region": {
                     "type": "string",
@@ -8798,7 +8798,7 @@
                     },
                     "protocol": {
                         "type": "string",
-                        "description": "(Optional; Required if `source_port` or `destination_port` is not\nempty) The protocol type on which the firewall rule operates.\nValid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the\n`protocol` of an existing firewall rule. Default is `any`.\n"
+                        "description": "The protocol type on which the firewall rule operates.\nValid values are: `tcp`, `udp`, `icmp`, and `any`. Changing this updates the\n`protocol` of an existing firewall rule. Default is `any`.\n"
                     },
                     "region": {
                         "type": "string",
@@ -10970,11 +10970,11 @@
                 },
                 "payloadContentEncoding": {
                     "type": "string",
-                    "description": "(required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.\n"
+                    "description": "The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.\n"
                 },
                 "payloadContentType": {
                     "type": "string",
-                    "description": "(required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.\n"
+                    "description": "The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.\n"
                 },
                 "region": {
                     "type": "string",
@@ -11058,12 +11058,12 @@
                 },
                 "payloadContentEncoding": {
                     "type": "string",
-                    "description": "(required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.\n",
+                    "description": "The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.\n",
                     "willReplaceOnChanges": true
                 },
                 "payloadContentType": {
                     "type": "string",
-                    "description": "(required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.\n",
+                    "description": "The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.\n",
                     "willReplaceOnChanges": true
                 },
                 "region": {
@@ -11146,12 +11146,12 @@
                     },
                     "payloadContentEncoding": {
                         "type": "string",
-                        "description": "(required if **payload** is encoded) The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.\n",
+                        "description": "The encoding used for the payload to be able to include it in the JSON request. Must be either `base64` or `binary`.\n",
                         "willReplaceOnChanges": true
                     },
                     "payloadContentType": {
                         "type": "string",
-                        "description": "(required if **payload** is included) The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.\n",
+                        "description": "The media type for the content of the payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.\n",
                         "willReplaceOnChanges": true
                     },
                     "region": {
@@ -11528,7 +11528,7 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "The protocol - can either be TCP, HTTP, HTTPS,\nTERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only\nin **Octavia minor version \u003e= 2.23**) or PROMETHEUS (supported only in\n**Octavia minor version \u003e=2.25**). Changing this creates a new Listener.\n"
+                    "description": "The protocol - can either be TCP, HTTP, HTTPS,\nTERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only\nin **Octavia minor version \u003e= 2.23**) or PROMETHEUS (supported only in \n**Octavia minor version \u003e=2.25**). Changing this creates a new Listener.\n"
                 },
                 "protocolPort": {
                     "type": "integer",
@@ -11632,7 +11632,7 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "The protocol - can either be TCP, HTTP, HTTPS,\nTERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only\nin **Octavia minor version \u003e= 2.23**) or PROMETHEUS (supported only in\n**Octavia minor version \u003e=2.25**). Changing this creates a new Listener.\n",
+                    "description": "The protocol - can either be TCP, HTTP, HTTPS,\nTERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only\nin **Octavia minor version \u003e= 2.23**) or PROMETHEUS (supported only in \n**Octavia minor version \u003e=2.25**). Changing this creates a new Listener.\n",
                     "willReplaceOnChanges": true
                 },
                 "protocolPort": {
@@ -11733,7 +11733,7 @@
                     },
                     "protocol": {
                         "type": "string",
-                        "description": "The protocol - can either be TCP, HTTP, HTTPS,\nTERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only\nin **Octavia minor version \u003e= 2.23**) or PROMETHEUS (supported only in\n**Octavia minor version \u003e=2.25**). Changing this creates a new Listener.\n",
+                        "description": "The protocol - can either be TCP, HTTP, HTTPS,\nTERMINATED_HTTPS, UDP (supported only in Octavia), SCTP (supported only\nin **Octavia minor version \u003e= 2.23**) or PROMETHEUS (supported only in \n**Octavia minor version \u003e=2.25**). Changing this creates a new Listener.\n",
                         "willReplaceOnChanges": true
                     },
                     "protocolPort": {
@@ -15460,7 +15460,7 @@
                 },
                 "externalGateway": {
                     "type": "string",
-                    "description": "The\nnetwork UUID of an external gateway for the router. A router with an\nexternal gateway is required if any compute instances or load balancers\nwill be using floating IPs. Changing this updates the external gateway\nof an existing router.\n",
+                    "description": "(**Deprecated** - use `external_network_id` instead) The\nnetwork UUID of an external gateway for the router. A router with an\nexternal gateway is required if any compute instances or load balancers\nwill be using floating IPs. Changing this updates the external gateway\nof an existing router.\n",
                     "deprecationMessage": "use external_network_id instead"
                 },
                 "externalNetworkId": {
@@ -15553,7 +15553,7 @@
                 },
                 "externalGateway": {
                     "type": "string",
-                    "description": "The\nnetwork UUID of an external gateway for the router. A router with an\nexternal gateway is required if any compute instances or load balancers\nwill be using floating IPs. Changing this updates the external gateway\nof an existing router.\n",
+                    "description": "(**Deprecated** - use `external_network_id` instead) The\nnetwork UUID of an external gateway for the router. A router with an\nexternal gateway is required if any compute instances or load balancers\nwill be using floating IPs. Changing this updates the external gateway\nof an existing router.\n",
                     "deprecationMessage": "use external_network_id instead"
                 },
                 "externalNetworkId": {
@@ -15645,7 +15645,7 @@
                     },
                     "externalGateway": {
                         "type": "string",
-                        "description": "The\nnetwork UUID of an external gateway for the router. A router with an\nexternal gateway is required if any compute instances or load balancers\nwill be using floating IPs. Changing this updates the external gateway\nof an existing router.\n",
+                        "description": "(**Deprecated** - use `external_network_id` instead) The\nnetwork UUID of an external gateway for the router. A router with an\nexternal gateway is required if any compute instances or load balancers\nwill be using floating IPs. Changing this updates the external gateway\nof an existing router.\n",
                         "deprecationMessage": "use external_network_id instead"
                     },
                     "externalNetworkId": {
@@ -16193,7 +16193,7 @@
                     "items": {
                         "$ref": "#/types/openstack:networking/SubnetAllocationPoolsCollection:SubnetAllocationPoolsCollection"
                     },
-                    "description": "A block declaring the start and end range of the IP addresses available for\nuse with DHCP in this subnet.\nThe `allocation_pools` block is documented below.\n",
+                    "description": "(**Deprecated** - use `allocation_pool` instead)\nA block declaring the start and end range of the IP addresses available for\nuse with DHCP in this subnet.\nThe `allocation_pools` block is documented below.\n",
                     "deprecationMessage": "use allocation_pool instead"
                 },
                 "cidr": {
@@ -16316,7 +16316,7 @@
                     "items": {
                         "$ref": "#/types/openstack:networking/SubnetAllocationPoolsCollection:SubnetAllocationPoolsCollection"
                     },
-                    "description": "A block declaring the start and end range of the IP addresses available for\nuse with DHCP in this subnet.\nThe `allocation_pools` block is documented below.\n",
+                    "description": "(**Deprecated** - use `allocation_pool` instead)\nA block declaring the start and end range of the IP addresses available for\nuse with DHCP in this subnet.\nThe `allocation_pools` block is documented below.\n",
                     "deprecationMessage": "use allocation_pool instead"
                 },
                 "cidr": {
@@ -16447,7 +16447,7 @@
                         "items": {
                             "$ref": "#/types/openstack:networking/SubnetAllocationPoolsCollection:SubnetAllocationPoolsCollection"
                         },
-                        "description": "A block declaring the start and end range of the IP addresses available for\nuse with DHCP in this subnet.\nThe `allocation_pools` block is documented below.\n",
+                        "description": "(**Deprecated** - use `allocation_pool` instead)\nA block declaring the start and end range of the IP addresses available for\nuse with DHCP in this subnet.\nThe `allocation_pools` block is documented below.\n",
                         "deprecationMessage": "use allocation_pool instead"
                     },
                     "cidr": {
@@ -17126,7 +17126,7 @@
                 },
                 "versioningLegacy": {
                     "$ref": "#/types/openstack:objectstorage/ContainerVersioningLegacy:ContainerVersioningLegacy",
-                    "description": "Enable legacy object versioning. The structure is described below.\n",
+                    "description": "(Deprecated) Enable legacy object versioning. The structure is described below.\n",
                     "deprecationMessage": "Use newer \"versioning\" implementation"
                 }
             },
@@ -17187,7 +17187,7 @@
                 },
                 "versioningLegacy": {
                     "$ref": "#/types/openstack:objectstorage/ContainerVersioningLegacy:ContainerVersioningLegacy",
-                    "description": "Enable legacy object versioning. The structure is described below.\n",
+                    "description": "(Deprecated) Enable legacy object versioning. The structure is described below.\n",
                     "deprecationMessage": "Use newer \"versioning\" implementation"
                 }
             },
@@ -17245,7 +17245,7 @@
                     },
                     "versioningLegacy": {
                         "$ref": "#/types/openstack:objectstorage/ContainerVersioningLegacy:ContainerVersioningLegacy",
-                        "description": "Enable legacy object versioning. The structure is described below.\n",
+                        "description": "(Deprecated) Enable legacy object versioning. The structure is described below.\n",
                         "deprecationMessage": "Use newer \"versioning\" implementation"
                     }
                 },
@@ -17257,7 +17257,7 @@
             "properties": {
                 "containerName": {
                     "type": "string",
-                    "description": "A unique (within an account) name for the container. \nThe container name must be from 1 to 256 characters long and can start\nwith any character and contain any pattern. Character set must be UTF-8.\nThe container name cannot contain a slash (/) character because this\ncharacter delimits the container and object name. For example, the path\n/v1/account/www/pages specifies the www container, not the www/pages container.\n"
+                    "description": "A unique (within an account) name for the container. \nThe container name must be from 1 to 256 characters long and can start \nwith any character and contain any pattern. Character set must be UTF-8. \nThe container name cannot contain a slash (/) character because this \ncharacter delimits the container and object name. For example, the path \n/v1/account/www/pages specifies the www container, not the www/pages container.\n"
                 },
                 "content": {
                     "type": "string",
@@ -17281,7 +17281,7 @@
                 },
                 "copyFrom": {
                     "type": "string",
-                    "description": "A string representing the name of an object \nused to create the new object by copying the `copy_from` object. The value is in form\n{container}/{object}. You must UTF-8-encode and then URL-encode the names of the\ncontainer and object before you include them in the header. Conflicts with `source` and\n`content`.\n"
+                    "description": "A string representing the name of an object \nused to create the new object by copying the `copy_from` object. The value is in form \n{container}/{object}. You must UTF-8-encode and then URL-encode the names of the \ncontainer and object before you include them in the header. Conflicts with `source` and \n`content`.\n"
                 },
                 "date": {
                     "type": "string",
@@ -17289,7 +17289,7 @@
                 },
                 "deleteAfter": {
                     "type": "integer",
-                    "description": "An integer representing the number of seconds after which the\nsystem removes the object. Internally, the Object Storage system stores this value in\nthe X-Delete-At metadata item.\n"
+                    "description": "An integer representing the number of seconds after which the\nsystem removes the object. Internally, the Object Storage system stores this value in \nthe X-Delete-At metadata item.\n"
                 },
                 "deleteAt": {
                     "type": "string",
@@ -17297,7 +17297,7 @@
                 },
                 "detectContentType": {
                     "type": "boolean",
-                    "description": "If set to true, Object Storage guesses the content \ntype based on the file extension and ignores the value sent in the Content-Type\nheader, if present.\n"
+                    "description": "If set to true, Object Storage guesses the content \ntype based on the file extension and ignores the value sent in the Content-Type \nheader, if present.\n"
                 },
                 "etag": {
                     "type": "string",
@@ -17319,7 +17319,7 @@
                 },
                 "objectManifest": {
                     "type": "string",
-                    "description": "A string set to specify that this is a dynamic large \nobject manifest object. The value is the container and object name prefix of the\nsegment objects in the form container/prefix. You must UTF-8-encode and then\nURL-encode the names of the container and prefix before you include them in this\nheader.\n"
+                    "description": "A string set to specify that this is a dynamic large \nobject manifest object. The value is the container and object name prefix of the\nsegment objects in the form container/prefix. You must UTF-8-encode and then \nURL-encode the names of the container and prefix before you include them in this \nheader.\n"
                 },
                 "region": {
                     "type": "string",
@@ -17352,7 +17352,7 @@
             "inputProperties": {
                 "containerName": {
                     "type": "string",
-                    "description": "A unique (within an account) name for the container. \nThe container name must be from 1 to 256 characters long and can start\nwith any character and contain any pattern. Character set must be UTF-8.\nThe container name cannot contain a slash (/) character because this\ncharacter delimits the container and object name. For example, the path\n/v1/account/www/pages specifies the www container, not the www/pages container.\n",
+                    "description": "A unique (within an account) name for the container. \nThe container name must be from 1 to 256 characters long and can start \nwith any character and contain any pattern. Character set must be UTF-8. \nThe container name cannot contain a slash (/) character because this \ncharacter delimits the container and object name. For example, the path \n/v1/account/www/pages specifies the www container, not the www/pages container.\n",
                     "willReplaceOnChanges": true
                 },
                 "content": {
@@ -17373,11 +17373,11 @@
                 },
                 "copyFrom": {
                     "type": "string",
-                    "description": "A string representing the name of an object \nused to create the new object by copying the `copy_from` object. The value is in form\n{container}/{object}. You must UTF-8-encode and then URL-encode the names of the\ncontainer and object before you include them in the header. Conflicts with `source` and\n`content`.\n"
+                    "description": "A string representing the name of an object \nused to create the new object by copying the `copy_from` object. The value is in form \n{container}/{object}. You must UTF-8-encode and then URL-encode the names of the \ncontainer and object before you include them in the header. Conflicts with `source` and \n`content`.\n"
                 },
                 "deleteAfter": {
                     "type": "integer",
-                    "description": "An integer representing the number of seconds after which the\nsystem removes the object. Internally, the Object Storage system stores this value in\nthe X-Delete-At metadata item.\n"
+                    "description": "An integer representing the number of seconds after which the\nsystem removes the object. Internally, the Object Storage system stores this value in \nthe X-Delete-At metadata item.\n"
                 },
                 "deleteAt": {
                     "type": "string",
@@ -17385,7 +17385,7 @@
                 },
                 "detectContentType": {
                     "type": "boolean",
-                    "description": "If set to true, Object Storage guesses the content \ntype based on the file extension and ignores the value sent in the Content-Type\nheader, if present.\n"
+                    "description": "If set to true, Object Storage guesses the content \ntype based on the file extension and ignores the value sent in the Content-Type \nheader, if present.\n"
                 },
                 "etag": {
                     "type": "string",
@@ -17404,7 +17404,7 @@
                 },
                 "objectManifest": {
                     "type": "string",
-                    "description": "A string set to specify that this is a dynamic large \nobject manifest object. The value is the container and object name prefix of the\nsegment objects in the form container/prefix. You must UTF-8-encode and then\nURL-encode the names of the container and prefix before you include them in this\nheader.\n"
+                    "description": "A string set to specify that this is a dynamic large \nobject manifest object. The value is the container and object name prefix of the\nsegment objects in the form container/prefix. You must UTF-8-encode and then \nURL-encode the names of the container and prefix before you include them in this \nheader.\n"
                 },
                 "region": {
                     "type": "string",
@@ -17424,7 +17424,7 @@
                 "properties": {
                     "containerName": {
                         "type": "string",
-                        "description": "A unique (within an account) name for the container. \nThe container name must be from 1 to 256 characters long and can start\nwith any character and contain any pattern. Character set must be UTF-8.\nThe container name cannot contain a slash (/) character because this\ncharacter delimits the container and object name. For example, the path\n/v1/account/www/pages specifies the www container, not the www/pages container.\n",
+                        "description": "A unique (within an account) name for the container. \nThe container name must be from 1 to 256 characters long and can start \nwith any character and contain any pattern. Character set must be UTF-8. \nThe container name cannot contain a slash (/) character because this \ncharacter delimits the container and object name. For example, the path \n/v1/account/www/pages specifies the www container, not the www/pages container.\n",
                         "willReplaceOnChanges": true
                     },
                     "content": {
@@ -17449,7 +17449,7 @@
                     },
                     "copyFrom": {
                         "type": "string",
-                        "description": "A string representing the name of an object \nused to create the new object by copying the `copy_from` object. The value is in form\n{container}/{object}. You must UTF-8-encode and then URL-encode the names of the\ncontainer and object before you include them in the header. Conflicts with `source` and\n`content`.\n"
+                        "description": "A string representing the name of an object \nused to create the new object by copying the `copy_from` object. The value is in form \n{container}/{object}. You must UTF-8-encode and then URL-encode the names of the \ncontainer and object before you include them in the header. Conflicts with `source` and \n`content`.\n"
                     },
                     "date": {
                         "type": "string",
@@ -17457,7 +17457,7 @@
                     },
                     "deleteAfter": {
                         "type": "integer",
-                        "description": "An integer representing the number of seconds after which the\nsystem removes the object. Internally, the Object Storage system stores this value in\nthe X-Delete-At metadata item.\n"
+                        "description": "An integer representing the number of seconds after which the\nsystem removes the object. Internally, the Object Storage system stores this value in \nthe X-Delete-At metadata item.\n"
                     },
                     "deleteAt": {
                         "type": "string",
@@ -17465,7 +17465,7 @@
                     },
                     "detectContentType": {
                         "type": "boolean",
-                        "description": "If set to true, Object Storage guesses the content \ntype based on the file extension and ignores the value sent in the Content-Type\nheader, if present.\n"
+                        "description": "If set to true, Object Storage guesses the content \ntype based on the file extension and ignores the value sent in the Content-Type \nheader, if present.\n"
                     },
                     "etag": {
                         "type": "string",
@@ -17488,7 +17488,7 @@
                     },
                     "objectManifest": {
                         "type": "string",
-                        "description": "A string set to specify that this is a dynamic large \nobject manifest object. The value is the container and object name prefix of the\nsegment objects in the form container/prefix. You must UTF-8-encode and then\nURL-encode the names of the container and prefix before you include them in this\nheader.\n"
+                        "description": "A string set to specify that this is a dynamic large \nobject manifest object. The value is the container and object name prefix of the\nsegment objects in the form container/prefix. You must UTF-8-encode and then \nURL-encode the names of the container and prefix before you include them in this \nheader.\n"
                     },
                     "region": {
                         "type": "string",
@@ -20537,7 +20537,7 @@
                     },
                     "userId": {
                         "type": "string",
-                        "description": "The user id of the owner of the key pair.\nThis parameter can be specified only if the provider is configured to use\nthe credentials of an OpenStack administrator.\n"
+                        "description": "The user id of the owner of the key pair.\nThis parameter can be specified only if the provider is configured to use \nthe credentials of an OpenStack administrator.\n"
                     }
                 },
                 "type": "object",
@@ -22395,7 +22395,7 @@
                     },
                     "nameRegex": {
                         "type": "string",
-                        "description": "The regular expressian of the name of the image.\nCannot be used simultaneously with `name`. Unlike filtering by `name` the\n`name_regex` filtering does by client on the result of OpenStack search\nquery.\n",
+                        "description": "The regular expressian of the name of the image.\nCannot be used simultaneously with `name`. Unlike filtering by `name` the    \n`name_regex` filtering does by client on the result of OpenStack search\nquery.\n",
                         "willReplaceOnChanges": true
                     },
                     "owner": {
@@ -22408,7 +22408,7 @@
                         "additionalProperties": {
                             "$ref": "pulumi.json#/Any"
                         },
-                        "description": "a map of key/value pairs to match an image with.\nAll specified properties must be matched. Unlike other options filtering\nby `properties` does by client on the result of OpenStack search query.\n",
+                        "description": "a map of key/value pairs to match an image with.\nAll specified properties must be matched. Unlike other options filtering    \nby `properties` does by client on the result of OpenStack search query.\n",
                         "willReplaceOnChanges": true
                     },
                     "region": {
