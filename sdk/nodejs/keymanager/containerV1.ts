@@ -20,17 +20,17 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const certificate1 = new openstack.keymanager.SecretV1("certificate1", {
- *     payload: fs.readFileSync("cert.pem"),
+ *     payload: fs.readFileSync("cert.pem", "utf8"),
  *     secretType: "certificate",
  *     payloadContentType: "text/plain",
  * });
  * const privateKey1 = new openstack.keymanager.SecretV1("privateKey1", {
- *     payload: fs.readFileSync("cert-key.pem"),
+ *     payload: fs.readFileSync("cert-key.pem", "utf8"),
  *     secretType: "private",
  *     payloadContentType: "text/plain",
  * });
  * const intermediate1 = new openstack.keymanager.SecretV1("intermediate1", {
- *     payload: fs.readFileSync("intermediate-ca.pem"),
+ *     payload: fs.readFileSync("intermediate-ca.pem", "utf8"),
  *     secretType: "certificate",
  *     payloadContentType: "text/plain",
  * });
