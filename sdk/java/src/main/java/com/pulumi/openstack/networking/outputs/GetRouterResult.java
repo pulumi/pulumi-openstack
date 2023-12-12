@@ -257,23 +257,23 @@ public final class GetRouterResult {
             return this;
         }
         public GetRouterResult build() {
-            final var o = new GetRouterResult();
-            o.adminStateUp = adminStateUp;
-            o.allTags = allTags;
-            o.availabilityZoneHints = availabilityZoneHints;
-            o.description = description;
-            o.distributed = distributed;
-            o.enableSnat = enableSnat;
-            o.externalFixedIps = externalFixedIps;
-            o.externalNetworkId = externalNetworkId;
-            o.id = id;
-            o.name = name;
-            o.region = region;
-            o.routerId = routerId;
-            o.status = status;
-            o.tags = tags;
-            o.tenantId = tenantId;
-            return o;
+            final var _resultValue = new GetRouterResult();
+            _resultValue.adminStateUp = adminStateUp;
+            _resultValue.allTags = allTags;
+            _resultValue.availabilityZoneHints = availabilityZoneHints;
+            _resultValue.description = description;
+            _resultValue.distributed = distributed;
+            _resultValue.enableSnat = enableSnat;
+            _resultValue.externalFixedIps = externalFixedIps;
+            _resultValue.externalNetworkId = externalNetworkId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.region = region;
+            _resultValue.routerId = routerId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.tenantId = tenantId;
+            return _resultValue;
         }
     }
 }

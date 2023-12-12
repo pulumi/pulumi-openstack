@@ -151,13 +151,13 @@ public final class VolumeV2SchedulerHint {
             return sameHosts(List.of(sameHosts));
         }
         public VolumeV2SchedulerHint build() {
-            final var o = new VolumeV2SchedulerHint();
-            o.additionalProperties = additionalProperties;
-            o.differentHosts = differentHosts;
-            o.localToInstance = localToInstance;
-            o.query = query;
-            o.sameHosts = sameHosts;
-            return o;
+            final var _resultValue = new VolumeV2SchedulerHint();
+            _resultValue.additionalProperties = additionalProperties;
+            _resultValue.differentHosts = differentHosts;
+            _resultValue.localToInstance = localToInstance;
+            _resultValue.query = query;
+            _resultValue.sameHosts = sameHosts;
+            return _resultValue;
         }
     }
 }

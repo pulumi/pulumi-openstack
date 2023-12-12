@@ -62,11 +62,11 @@ public final class InstanceVolume {
             return this;
         }
         public InstanceVolume build() {
-            final var o = new InstanceVolume();
-            o.device = device;
-            o.id = id;
-            o.volumeId = volumeId;
-            return o;
+            final var _resultValue = new InstanceVolume();
+            _resultValue.device = device;
+            _resultValue.id = id;
+            _resultValue.volumeId = volumeId;
+            return _resultValue;
         }
     }
 }

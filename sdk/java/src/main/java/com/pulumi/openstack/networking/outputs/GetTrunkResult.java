@@ -207,20 +207,20 @@ public final class GetTrunkResult {
             return this;
         }
         public GetTrunkResult build() {
-            final var o = new GetTrunkResult();
-            o.adminStateUp = adminStateUp;
-            o.allTags = allTags;
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.portId = portId;
-            o.projectId = projectId;
-            o.region = region;
-            o.status = status;
-            o.subPorts = subPorts;
-            o.tags = tags;
-            o.trunkId = trunkId;
-            return o;
+            final var _resultValue = new GetTrunkResult();
+            _resultValue.adminStateUp = adminStateUp;
+            _resultValue.allTags = allTags;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.portId = portId;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.status = status;
+            _resultValue.subPorts = subPorts;
+            _resultValue.tags = tags;
+            _resultValue.trunkId = trunkId;
+            return _resultValue;
         }
     }
 }

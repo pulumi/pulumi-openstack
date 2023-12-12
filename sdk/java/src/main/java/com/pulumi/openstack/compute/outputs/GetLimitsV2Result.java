@@ -446,30 +446,30 @@ public final class GetLimitsV2Result {
             return this;
         }
         public GetLimitsV2Result build() {
-            final var o = new GetLimitsV2Result();
-            o.id = id;
-            o.maxImageMeta = maxImageMeta;
-            o.maxPersonality = maxPersonality;
-            o.maxPersonalitySize = maxPersonalitySize;
-            o.maxSecurityGroupRules = maxSecurityGroupRules;
-            o.maxSecurityGroups = maxSecurityGroups;
-            o.maxServerGroupMembers = maxServerGroupMembers;
-            o.maxServerGroups = maxServerGroups;
-            o.maxServerMeta = maxServerMeta;
-            o.maxTotalCores = maxTotalCores;
-            o.maxTotalFloatingIps = maxTotalFloatingIps;
-            o.maxTotalInstances = maxTotalInstances;
-            o.maxTotalKeypairs = maxTotalKeypairs;
-            o.maxTotalRamSize = maxTotalRamSize;
-            o.projectId = projectId;
-            o.region = region;
-            o.totalCoresUsed = totalCoresUsed;
-            o.totalFloatingIpsUsed = totalFloatingIpsUsed;
-            o.totalInstancesUsed = totalInstancesUsed;
-            o.totalRamUsed = totalRamUsed;
-            o.totalSecurityGroupsUsed = totalSecurityGroupsUsed;
-            o.totalServerGroupsUsed = totalServerGroupsUsed;
-            return o;
+            final var _resultValue = new GetLimitsV2Result();
+            _resultValue.id = id;
+            _resultValue.maxImageMeta = maxImageMeta;
+            _resultValue.maxPersonality = maxPersonality;
+            _resultValue.maxPersonalitySize = maxPersonalitySize;
+            _resultValue.maxSecurityGroupRules = maxSecurityGroupRules;
+            _resultValue.maxSecurityGroups = maxSecurityGroups;
+            _resultValue.maxServerGroupMembers = maxServerGroupMembers;
+            _resultValue.maxServerGroups = maxServerGroups;
+            _resultValue.maxServerMeta = maxServerMeta;
+            _resultValue.maxTotalCores = maxTotalCores;
+            _resultValue.maxTotalFloatingIps = maxTotalFloatingIps;
+            _resultValue.maxTotalInstances = maxTotalInstances;
+            _resultValue.maxTotalKeypairs = maxTotalKeypairs;
+            _resultValue.maxTotalRamSize = maxTotalRamSize;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.totalCoresUsed = totalCoresUsed;
+            _resultValue.totalFloatingIpsUsed = totalFloatingIpsUsed;
+            _resultValue.totalInstancesUsed = totalInstancesUsed;
+            _resultValue.totalRamUsed = totalRamUsed;
+            _resultValue.totalSecurityGroupsUsed = totalSecurityGroupsUsed;
+            _resultValue.totalServerGroupsUsed = totalServerGroupsUsed;
+            return _resultValue;
         }
     }
 }

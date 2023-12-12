@@ -49,10 +49,10 @@ public final class GetSubnetHostRoute {
             return this;
         }
         public GetSubnetHostRoute build() {
-            final var o = new GetSubnetHostRoute();
-            o.destinationCidr = destinationCidr;
-            o.nextHop = nextHop;
-            return o;
+            final var _resultValue = new GetSubnetHostRoute();
+            _resultValue.destinationCidr = destinationCidr;
+            _resultValue.nextHop = nextHop;
+            return _resultValue;
         }
     }
 }

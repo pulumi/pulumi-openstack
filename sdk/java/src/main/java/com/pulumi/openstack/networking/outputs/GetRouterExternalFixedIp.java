@@ -67,10 +67,10 @@ public final class GetRouterExternalFixedIp {
             return this;
         }
         public GetRouterExternalFixedIp build() {
-            final var o = new GetRouterExternalFixedIp();
-            o.ipAddress = ipAddress;
-            o.subnetId = subnetId;
-            return o;
+            final var _resultValue = new GetRouterExternalFixedIp();
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.subnetId = subnetId;
+            return _resultValue;
         }
     }
 }

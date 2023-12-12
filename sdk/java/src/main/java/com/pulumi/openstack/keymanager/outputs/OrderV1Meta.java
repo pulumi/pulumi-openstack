@@ -144,14 +144,14 @@ public final class OrderV1Meta {
             return this;
         }
         public OrderV1Meta build() {
-            final var o = new OrderV1Meta();
-            o.algorithm = algorithm;
-            o.bitLength = bitLength;
-            o.expiration = expiration;
-            o.mode = mode;
-            o.name = name;
-            o.payloadContentType = payloadContentType;
-            return o;
+            final var _resultValue = new OrderV1Meta();
+            _resultValue.algorithm = algorithm;
+            _resultValue.bitLength = bitLength;
+            _resultValue.expiration = expiration;
+            _resultValue.mode = mode;
+            _resultValue.name = name;
+            _resultValue.payloadContentType = payloadContentType;
+            return _resultValue;
         }
     }
 }

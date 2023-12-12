@@ -276,20 +276,20 @@ public final class GetContainerResult {
             return this;
         }
         public GetContainerResult build() {
-            final var o = new GetContainerResult();
-            o.acls = acls;
-            o.consumers = consumers;
-            o.containerRef = containerRef;
-            o.createdAt = createdAt;
-            o.creatorId = creatorId;
-            o.id = id;
-            o.name = name;
-            o.region = region;
-            o.secretRefs = secretRefs;
-            o.status = status;
-            o.type = type;
-            o.updatedAt = updatedAt;
-            return o;
+            final var _resultValue = new GetContainerResult();
+            _resultValue.acls = acls;
+            _resultValue.consumers = consumers;
+            _resultValue.containerRef = containerRef;
+            _resultValue.createdAt = createdAt;
+            _resultValue.creatorId = creatorId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.region = region;
+            _resultValue.secretRefs = secretRefs;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            _resultValue.updatedAt = updatedAt;
+            return _resultValue;
         }
     }
 }

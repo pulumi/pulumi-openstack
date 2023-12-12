@@ -477,31 +477,31 @@ public final class GetSecretResult {
             return this;
         }
         public GetSecretResult build() {
-            final var o = new GetSecretResult();
-            o.aclOnly = aclOnly;
-            o.acls = acls;
-            o.algorithm = algorithm;
-            o.bitLength = bitLength;
-            o.contentTypes = contentTypes;
-            o.createdAt = createdAt;
-            o.createdAtFilter = createdAtFilter;
-            o.creatorId = creatorId;
-            o.expiration = expiration;
-            o.expirationFilter = expirationFilter;
-            o.id = id;
-            o.metadata = metadata;
-            o.mode = mode;
-            o.name = name;
-            o.payload = payload;
-            o.payloadContentEncoding = payloadContentEncoding;
-            o.payloadContentType = payloadContentType;
-            o.region = region;
-            o.secretRef = secretRef;
-            o.secretType = secretType;
-            o.status = status;
-            o.updatedAt = updatedAt;
-            o.updatedAtFilter = updatedAtFilter;
-            return o;
+            final var _resultValue = new GetSecretResult();
+            _resultValue.aclOnly = aclOnly;
+            _resultValue.acls = acls;
+            _resultValue.algorithm = algorithm;
+            _resultValue.bitLength = bitLength;
+            _resultValue.contentTypes = contentTypes;
+            _resultValue.createdAt = createdAt;
+            _resultValue.createdAtFilter = createdAtFilter;
+            _resultValue.creatorId = creatorId;
+            _resultValue.expiration = expiration;
+            _resultValue.expirationFilter = expirationFilter;
+            _resultValue.id = id;
+            _resultValue.metadata = metadata;
+            _resultValue.mode = mode;
+            _resultValue.name = name;
+            _resultValue.payload = payload;
+            _resultValue.payloadContentEncoding = payloadContentEncoding;
+            _resultValue.payloadContentType = payloadContentType;
+            _resultValue.region = region;
+            _resultValue.secretRef = secretRef;
+            _resultValue.secretType = secretType;
+            _resultValue.status = status;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.updatedAtFilter = updatedAtFilter;
+            return _resultValue;
         }
     }
 }

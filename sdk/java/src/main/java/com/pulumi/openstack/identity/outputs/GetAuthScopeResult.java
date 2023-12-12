@@ -354,25 +354,25 @@ public final class GetAuthScopeResult {
             return this;
         }
         public GetAuthScopeResult build() {
-            final var o = new GetAuthScopeResult();
-            o.domainId = domainId;
-            o.domainName = domainName;
-            o.id = id;
-            o.name = name;
-            o.projectDomainId = projectDomainId;
-            o.projectDomainName = projectDomainName;
-            o.projectId = projectId;
-            o.projectName = projectName;
-            o.region = region;
-            o.roles = roles;
-            o.serviceCatalogs = serviceCatalogs;
-            o.setTokenId = setTokenId;
-            o.tokenId = tokenId;
-            o.userDomainId = userDomainId;
-            o.userDomainName = userDomainName;
-            o.userId = userId;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new GetAuthScopeResult();
+            _resultValue.domainId = domainId;
+            _resultValue.domainName = domainName;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.projectDomainId = projectDomainId;
+            _resultValue.projectDomainName = projectDomainName;
+            _resultValue.projectId = projectId;
+            _resultValue.projectName = projectName;
+            _resultValue.region = region;
+            _resultValue.roles = roles;
+            _resultValue.serviceCatalogs = serviceCatalogs;
+            _resultValue.setTokenId = setTokenId;
+            _resultValue.tokenId = tokenId;
+            _resultValue.userDomainId = userDomainId;
+            _resultValue.userDomainName = userDomainName;
+            _resultValue.userId = userId;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

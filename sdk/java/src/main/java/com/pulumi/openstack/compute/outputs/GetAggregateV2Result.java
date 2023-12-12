@@ -127,13 +127,13 @@ public final class GetAggregateV2Result {
             return this;
         }
         public GetAggregateV2Result build() {
-            final var o = new GetAggregateV2Result();
-            o.hosts = hosts;
-            o.id = id;
-            o.metadata = metadata;
-            o.name = name;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetAggregateV2Result();
+            _resultValue.hosts = hosts;
+            _resultValue.id = id;
+            _resultValue.metadata = metadata;
+            _resultValue.name = name;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

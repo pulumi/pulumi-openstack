@@ -117,12 +117,12 @@ public final class InstanceUser {
             return this;
         }
         public InstanceUser build() {
-            final var o = new InstanceUser();
-            o.databases = databases;
-            o.host = host;
-            o.name = name;
-            o.password = password;
-            return o;
+            final var _resultValue = new InstanceUser();
+            _resultValue.databases = databases;
+            _resultValue.host = host;
+            _resultValue.name = name;
+            _resultValue.password = password;
+            return _resultValue;
         }
     }
 }

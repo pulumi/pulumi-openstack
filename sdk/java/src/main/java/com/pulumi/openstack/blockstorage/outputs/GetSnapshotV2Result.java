@@ -196,17 +196,17 @@ public final class GetSnapshotV2Result {
             return this;
         }
         public GetSnapshotV2Result build() {
-            final var o = new GetSnapshotV2Result();
-            o.description = description;
-            o.id = id;
-            o.metadata = metadata;
-            o.mostRecent = mostRecent;
-            o.name = name;
-            o.region = region;
-            o.size = size;
-            o.status = status;
-            o.volumeId = volumeId;
-            return o;
+            final var _resultValue = new GetSnapshotV2Result();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.metadata = metadata;
+            _resultValue.mostRecent = mostRecent;
+            _resultValue.name = name;
+            _resultValue.region = region;
+            _resultValue.size = size;
+            _resultValue.status = status;
+            _resultValue.volumeId = volumeId;
+            return _resultValue;
         }
     }
 }

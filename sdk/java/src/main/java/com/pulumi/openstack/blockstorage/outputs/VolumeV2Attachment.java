@@ -62,11 +62,11 @@ public final class VolumeV2Attachment {
             return this;
         }
         public VolumeV2Attachment build() {
-            final var o = new VolumeV2Attachment();
-            o.device = device;
-            o.id = id;
-            o.instanceId = instanceId;
-            return o;
+            final var _resultValue = new VolumeV2Attachment();
+            _resultValue.device = device;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            return _resultValue;
         }
     }
 }

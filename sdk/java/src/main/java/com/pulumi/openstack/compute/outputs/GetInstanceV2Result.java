@@ -377,27 +377,27 @@ public final class GetInstanceV2Result {
             return this;
         }
         public GetInstanceV2Result build() {
-            final var o = new GetInstanceV2Result();
-            o.accessIpV4 = accessIpV4;
-            o.accessIpV6 = accessIpV6;
-            o.availabilityZone = availabilityZone;
-            o.created = created;
-            o.flavorId = flavorId;
-            o.flavorName = flavorName;
-            o.id = id;
-            o.imageId = imageId;
-            o.imageName = imageName;
-            o.keyPair = keyPair;
-            o.metadata = metadata;
-            o.name = name;
-            o.networks = networks;
-            o.powerState = powerState;
-            o.region = region;
-            o.securityGroups = securityGroups;
-            o.tags = tags;
-            o.updated = updated;
-            o.userData = userData;
-            return o;
+            final var _resultValue = new GetInstanceV2Result();
+            _resultValue.accessIpV4 = accessIpV4;
+            _resultValue.accessIpV6 = accessIpV6;
+            _resultValue.availabilityZone = availabilityZone;
+            _resultValue.created = created;
+            _resultValue.flavorId = flavorId;
+            _resultValue.flavorName = flavorName;
+            _resultValue.id = id;
+            _resultValue.imageId = imageId;
+            _resultValue.imageName = imageName;
+            _resultValue.keyPair = keyPair;
+            _resultValue.metadata = metadata;
+            _resultValue.name = name;
+            _resultValue.networks = networks;
+            _resultValue.powerState = powerState;
+            _resultValue.region = region;
+            _resultValue.securityGroups = securityGroups;
+            _resultValue.tags = tags;
+            _resultValue.updated = updated;
+            _resultValue.userData = userData;
+            return _resultValue;
         }
     }
 }

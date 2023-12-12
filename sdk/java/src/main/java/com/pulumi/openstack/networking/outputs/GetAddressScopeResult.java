@@ -137,14 +137,14 @@ public final class GetAddressScopeResult {
             return this;
         }
         public GetAddressScopeResult build() {
-            final var o = new GetAddressScopeResult();
-            o.id = id;
-            o.ipVersion = ipVersion;
-            o.name = name;
-            o.projectId = projectId;
-            o.region = region;
-            o.shared = shared;
-            return o;
+            final var _resultValue = new GetAddressScopeResult();
+            _resultValue.id = id;
+            _resultValue.ipVersion = ipVersion;
+            _resultValue.name = name;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.shared = shared;
+            return _resultValue;
         }
     }
 }

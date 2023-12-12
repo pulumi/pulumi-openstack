@@ -351,25 +351,25 @@ public final class GetQuotaSetV2Result {
             return this;
         }
         public GetQuotaSetV2Result build() {
-            final var o = new GetQuotaSetV2Result();
-            o.cores = cores;
-            o.fixedIps = fixedIps;
-            o.floatingIps = floatingIps;
-            o.id = id;
-            o.injectedFileContentBytes = injectedFileContentBytes;
-            o.injectedFilePathBytes = injectedFilePathBytes;
-            o.injectedFiles = injectedFiles;
-            o.instances = instances;
-            o.keyPairs = keyPairs;
-            o.metadataItems = metadataItems;
-            o.projectId = projectId;
-            o.ram = ram;
-            o.region = region;
-            o.securityGroupRules = securityGroupRules;
-            o.securityGroups = securityGroups;
-            o.serverGroupMembers = serverGroupMembers;
-            o.serverGroups = serverGroups;
-            return o;
+            final var _resultValue = new GetQuotaSetV2Result();
+            _resultValue.cores = cores;
+            _resultValue.fixedIps = fixedIps;
+            _resultValue.floatingIps = floatingIps;
+            _resultValue.id = id;
+            _resultValue.injectedFileContentBytes = injectedFileContentBytes;
+            _resultValue.injectedFilePathBytes = injectedFilePathBytes;
+            _resultValue.injectedFiles = injectedFiles;
+            _resultValue.instances = instances;
+            _resultValue.keyPairs = keyPairs;
+            _resultValue.metadataItems = metadataItems;
+            _resultValue.projectId = projectId;
+            _resultValue.ram = ram;
+            _resultValue.region = region;
+            _resultValue.securityGroupRules = securityGroupRules;
+            _resultValue.securityGroups = securityGroups;
+            _resultValue.serverGroupMembers = serverGroupMembers;
+            _resultValue.serverGroups = serverGroups;
+            return _resultValue;
         }
     }
 }

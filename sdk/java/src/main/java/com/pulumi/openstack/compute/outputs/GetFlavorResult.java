@@ -204,22 +204,22 @@ public final class GetFlavorResult {
             return this;
         }
         public GetFlavorResult build() {
-            final var o = new GetFlavorResult();
-            o.description = description;
-            o.disk = disk;
-            o.extraSpecs = extraSpecs;
-            o.flavorId = flavorId;
-            o.id = id;
-            o.isPublic = isPublic;
-            o.minDisk = minDisk;
-            o.minRam = minRam;
-            o.name = name;
-            o.ram = ram;
-            o.region = region;
-            o.rxTxFactor = rxTxFactor;
-            o.swap = swap;
-            o.vcpus = vcpus;
-            return o;
+            final var _resultValue = new GetFlavorResult();
+            _resultValue.description = description;
+            _resultValue.disk = disk;
+            _resultValue.extraSpecs = extraSpecs;
+            _resultValue.flavorId = flavorId;
+            _resultValue.id = id;
+            _resultValue.isPublic = isPublic;
+            _resultValue.minDisk = minDisk;
+            _resultValue.minRam = minRam;
+            _resultValue.name = name;
+            _resultValue.ram = ram;
+            _resultValue.region = region;
+            _resultValue.rxTxFactor = rxTxFactor;
+            _resultValue.swap = swap;
+            _resultValue.vcpus = vcpus;
+            return _resultValue;
         }
     }
 }

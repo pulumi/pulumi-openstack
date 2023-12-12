@@ -239,19 +239,19 @@ public final class GetUserResult {
             return this;
         }
         public GetUserResult build() {
-            final var o = new GetUserResult();
-            o.defaultProjectId = defaultProjectId;
-            o.description = description;
-            o.domainId = domainId;
-            o.enabled = enabled;
-            o.id = id;
-            o.idpId = idpId;
-            o.name = name;
-            o.passwordExpiresAt = passwordExpiresAt;
-            o.protocolId = protocolId;
-            o.region = region;
-            o.uniqueId = uniqueId;
-            return o;
+            final var _resultValue = new GetUserResult();
+            _resultValue.defaultProjectId = defaultProjectId;
+            _resultValue.description = description;
+            _resultValue.domainId = domainId;
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.idpId = idpId;
+            _resultValue.name = name;
+            _resultValue.passwordExpiresAt = passwordExpiresAt;
+            _resultValue.protocolId = protocolId;
+            _resultValue.region = region;
+            _resultValue.uniqueId = uniqueId;
+            return _resultValue;
         }
     }
 }

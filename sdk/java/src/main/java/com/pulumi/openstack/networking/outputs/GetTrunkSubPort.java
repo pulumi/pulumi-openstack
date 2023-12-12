@@ -85,11 +85,11 @@ public final class GetTrunkSubPort {
             return this;
         }
         public GetTrunkSubPort build() {
-            final var o = new GetTrunkSubPort();
-            o.portId = portId;
-            o.segmentationId = segmentationId;
-            o.segmentationType = segmentationType;
-            return o;
+            final var _resultValue = new GetTrunkSubPort();
+            _resultValue.portId = portId;
+            _resultValue.segmentationId = segmentationId;
+            _resultValue.segmentationType = segmentationType;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class SubnetHostRoute {
             return this;
         }
         public SubnetHostRoute build() {
-            final var o = new SubnetHostRoute();
-            o.destinationCidr = destinationCidr;
-            o.nextHop = nextHop;
-            return o;
+            final var _resultValue = new SubnetHostRoute();
+            _resultValue.destinationCidr = destinationCidr;
+            _resultValue.nextHop = nextHop;
+            return _resultValue;
         }
     }
 }

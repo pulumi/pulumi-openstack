@@ -110,12 +110,12 @@ public final class GetAuthScopeServiceCatalog {
             return this;
         }
         public GetAuthScopeServiceCatalog build() {
-            final var o = new GetAuthScopeServiceCatalog();
-            o.endpoints = endpoints;
-            o.id = id;
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetAuthScopeServiceCatalog();
+            _resultValue.endpoints = endpoints;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class GetContainerSecretRef {
             return this;
         }
         public GetContainerSecretRef build() {
-            final var o = new GetContainerSecretRef();
-            o.name = name;
-            o.secretRef = secretRef;
-            return o;
+            final var _resultValue = new GetContainerSecretRef();
+            _resultValue.name = name;
+            _resultValue.secretRef = secretRef;
+            return _resultValue;
         }
     }
 }

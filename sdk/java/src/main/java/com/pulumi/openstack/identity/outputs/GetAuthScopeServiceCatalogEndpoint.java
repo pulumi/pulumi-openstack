@@ -126,13 +126,13 @@ public final class GetAuthScopeServiceCatalogEndpoint {
             return this;
         }
         public GetAuthScopeServiceCatalogEndpoint build() {
-            final var o = new GetAuthScopeServiceCatalogEndpoint();
-            o.id = id;
-            o.interface_ = interface_;
-            o.region = region;
-            o.regionId = regionId;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetAuthScopeServiceCatalogEndpoint();
+            _resultValue.id = id;
+            _resultValue.interface_ = interface_;
+            _resultValue.region = region;
+            _resultValue.regionId = regionId;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

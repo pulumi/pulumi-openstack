@@ -473,36 +473,36 @@ public final class GetImageResult {
             return this;
         }
         public GetImageResult build() {
-            final var o = new GetImageResult();
-            o.checksum = checksum;
-            o.containerFormat = containerFormat;
-            o.createdAt = createdAt;
-            o.diskFormat = diskFormat;
-            o.file = file;
-            o.hidden = hidden;
-            o.id = id;
-            o.memberStatus = memberStatus;
-            o.metadata = metadata;
-            o.minDiskGb = minDiskGb;
-            o.minRamMb = minRamMb;
-            o.mostRecent = mostRecent;
-            o.name = name;
-            o.nameRegex = nameRegex;
-            o.owner = owner;
-            o.properties = properties;
-            o.protected_ = protected_;
-            o.region = region;
-            o.schema = schema;
-            o.sizeBytes = sizeBytes;
-            o.sizeMax = sizeMax;
-            o.sizeMin = sizeMin;
-            o.sortDirection = sortDirection;
-            o.sortKey = sortKey;
-            o.tag = tag;
-            o.tags = tags;
-            o.updatedAt = updatedAt;
-            o.visibility = visibility;
-            return o;
+            final var _resultValue = new GetImageResult();
+            _resultValue.checksum = checksum;
+            _resultValue.containerFormat = containerFormat;
+            _resultValue.createdAt = createdAt;
+            _resultValue.diskFormat = diskFormat;
+            _resultValue.file = file;
+            _resultValue.hidden = hidden;
+            _resultValue.id = id;
+            _resultValue.memberStatus = memberStatus;
+            _resultValue.metadata = metadata;
+            _resultValue.minDiskGb = minDiskGb;
+            _resultValue.minRamMb = minRamMb;
+            _resultValue.mostRecent = mostRecent;
+            _resultValue.name = name;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.owner = owner;
+            _resultValue.properties = properties;
+            _resultValue.protected_ = protected_;
+            _resultValue.region = region;
+            _resultValue.schema = schema;
+            _resultValue.sizeBytes = sizeBytes;
+            _resultValue.sizeMax = sizeMax;
+            _resultValue.sizeMin = sizeMin;
+            _resultValue.sortDirection = sortDirection;
+            _resultValue.sortKey = sortKey;
+            _resultValue.tag = tag;
+            _resultValue.tags = tags;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.visibility = visibility;
+            return _resultValue;
         }
     }
 }

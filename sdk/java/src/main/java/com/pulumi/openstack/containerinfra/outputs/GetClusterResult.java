@@ -537,35 +537,35 @@ public final class GetClusterResult {
             return this;
         }
         public GetClusterResult build() {
-            final var o = new GetClusterResult();
-            o.apiAddress = apiAddress;
-            o.clusterTemplateId = clusterTemplateId;
-            o.coeVersion = coeVersion;
-            o.containerVersion = containerVersion;
-            o.createTimeout = createTimeout;
-            o.createdAt = createdAt;
-            o.discoveryUrl = discoveryUrl;
-            o.dockerVolumeSize = dockerVolumeSize;
-            o.fixedNetwork = fixedNetwork;
-            o.fixedSubnet = fixedSubnet;
-            o.flavor = flavor;
-            o.floatingIpEnabled = floatingIpEnabled;
-            o.id = id;
-            o.keypair = keypair;
-            o.kubeconfig = kubeconfig;
-            o.labels = labels;
-            o.masterAddresses = masterAddresses;
-            o.masterCount = masterCount;
-            o.masterFlavor = masterFlavor;
-            o.name = name;
-            o.nodeAddresses = nodeAddresses;
-            o.nodeCount = nodeCount;
-            o.projectId = projectId;
-            o.region = region;
-            o.stackId = stackId;
-            o.updatedAt = updatedAt;
-            o.userId = userId;
-            return o;
+            final var _resultValue = new GetClusterResult();
+            _resultValue.apiAddress = apiAddress;
+            _resultValue.clusterTemplateId = clusterTemplateId;
+            _resultValue.coeVersion = coeVersion;
+            _resultValue.containerVersion = containerVersion;
+            _resultValue.createTimeout = createTimeout;
+            _resultValue.createdAt = createdAt;
+            _resultValue.discoveryUrl = discoveryUrl;
+            _resultValue.dockerVolumeSize = dockerVolumeSize;
+            _resultValue.fixedNetwork = fixedNetwork;
+            _resultValue.fixedSubnet = fixedSubnet;
+            _resultValue.flavor = flavor;
+            _resultValue.floatingIpEnabled = floatingIpEnabled;
+            _resultValue.id = id;
+            _resultValue.keypair = keypair;
+            _resultValue.kubeconfig = kubeconfig;
+            _resultValue.labels = labels;
+            _resultValue.masterAddresses = masterAddresses;
+            _resultValue.masterCount = masterCount;
+            _resultValue.masterFlavor = masterFlavor;
+            _resultValue.name = name;
+            _resultValue.nodeAddresses = nodeAddresses;
+            _resultValue.nodeCount = nodeCount;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.stackId = stackId;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.userId = userId;
+            return _resultValue;
         }
     }
 }

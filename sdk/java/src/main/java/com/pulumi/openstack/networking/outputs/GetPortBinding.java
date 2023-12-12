@@ -126,13 +126,13 @@ public final class GetPortBinding {
             return this;
         }
         public GetPortBinding build() {
-            final var o = new GetPortBinding();
-            o.hostId = hostId;
-            o.profile = profile;
-            o.vifDetails = vifDetails;
-            o.vifType = vifType;
-            o.vnicType = vnicType;
-            return o;
+            final var _resultValue = new GetPortBinding();
+            _resultValue.hostId = hostId;
+            _resultValue.profile = profile;
+            _resultValue.vifDetails = vifDetails;
+            _resultValue.vifType = vifType;
+            _resultValue.vnicType = vnicType;
+            return _resultValue;
         }
     }
 }

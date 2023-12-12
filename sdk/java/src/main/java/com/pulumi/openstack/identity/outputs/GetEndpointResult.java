@@ -200,17 +200,17 @@ public final class GetEndpointResult {
             return this;
         }
         public GetEndpointResult build() {
-            final var o = new GetEndpointResult();
-            o.endpointRegion = endpointRegion;
-            o.id = id;
-            o.interface_ = interface_;
-            o.name = name;
-            o.region = region;
-            o.serviceId = serviceId;
-            o.serviceName = serviceName;
-            o.serviceType = serviceType;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetEndpointResult();
+            _resultValue.endpointRegion = endpointRegion;
+            _resultValue.id = id;
+            _resultValue.interface_ = interface_;
+            _resultValue.name = name;
+            _resultValue.region = region;
+            _resultValue.serviceId = serviceId;
+            _resultValue.serviceName = serviceName;
+            _resultValue.serviceType = serviceType;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

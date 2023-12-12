@@ -240,19 +240,19 @@ public final class GetVolumeV3Result {
             return this;
         }
         public GetVolumeV3Result build() {
-            final var o = new GetVolumeV3Result();
-            o.bootable = bootable;
-            o.host = host;
-            o.id = id;
-            o.metadata = metadata;
-            o.multiattach = multiattach;
-            o.name = name;
-            o.region = region;
-            o.size = size;
-            o.sourceVolumeId = sourceVolumeId;
-            o.status = status;
-            o.volumeType = volumeType;
-            return o;
+            final var _resultValue = new GetVolumeV3Result();
+            _resultValue.bootable = bootable;
+            _resultValue.host = host;
+            _resultValue.id = id;
+            _resultValue.metadata = metadata;
+            _resultValue.multiattach = multiattach;
+            _resultValue.name = name;
+            _resultValue.region = region;
+            _resultValue.size = size;
+            _resultValue.sourceVolumeId = sourceVolumeId;
+            _resultValue.status = status;
+            _resultValue.volumeType = volumeType;
+            return _resultValue;
         }
     }
 }

@@ -239,19 +239,19 @@ public final class GetQuotasetV3Result {
             return this;
         }
         public GetQuotasetV3Result build() {
-            final var o = new GetQuotasetV3Result();
-            o.backupGigabytes = backupGigabytes;
-            o.backups = backups;
-            o.gigabytes = gigabytes;
-            o.groups = groups;
-            o.id = id;
-            o.perVolumeGigabytes = perVolumeGigabytes;
-            o.projectId = projectId;
-            o.region = region;
-            o.snapshots = snapshots;
-            o.volumeTypeQuota = volumeTypeQuota;
-            o.volumes = volumes;
-            return o;
+            final var _resultValue = new GetQuotasetV3Result();
+            _resultValue.backupGigabytes = backupGigabytes;
+            _resultValue.backups = backups;
+            _resultValue.gigabytes = gigabytes;
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.perVolumeGigabytes = perVolumeGigabytes;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.snapshots = snapshots;
+            _resultValue.volumeTypeQuota = volumeTypeQuota;
+            _resultValue.volumes = volumes;
+            return _resultValue;
         }
     }
 }

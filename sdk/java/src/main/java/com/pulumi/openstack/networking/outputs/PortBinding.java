@@ -134,13 +134,13 @@ public final class PortBinding {
             return this;
         }
         public PortBinding build() {
-            final var o = new PortBinding();
-            o.hostId = hostId;
-            o.profile = profile;
-            o.vifDetails = vifDetails;
-            o.vifType = vifType;
-            o.vnicType = vnicType;
-            return o;
+            final var _resultValue = new PortBinding();
+            _resultValue.hostId = hostId;
+            _resultValue.profile = profile;
+            _resultValue.vifDetails = vifDetails;
+            _resultValue.vifType = vifType;
+            _resultValue.vnicType = vnicType;
+            return _resultValue;
         }
     }
 }

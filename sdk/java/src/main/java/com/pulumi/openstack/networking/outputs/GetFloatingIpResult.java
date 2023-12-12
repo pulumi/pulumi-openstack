@@ -215,21 +215,21 @@ public final class GetFloatingIpResult {
             return this;
         }
         public GetFloatingIpResult build() {
-            final var o = new GetFloatingIpResult();
-            o.address = address;
-            o.allTags = allTags;
-            o.description = description;
-            o.dnsDomain = dnsDomain;
-            o.dnsName = dnsName;
-            o.fixedIp = fixedIp;
-            o.id = id;
-            o.pool = pool;
-            o.portId = portId;
-            o.region = region;
-            o.status = status;
-            o.tags = tags;
-            o.tenantId = tenantId;
-            return o;
+            final var _resultValue = new GetFloatingIpResult();
+            _resultValue.address = address;
+            _resultValue.allTags = allTags;
+            _resultValue.description = description;
+            _resultValue.dnsDomain = dnsDomain;
+            _resultValue.dnsName = dnsName;
+            _resultValue.fixedIp = fixedIp;
+            _resultValue.id = id;
+            _resultValue.pool = pool;
+            _resultValue.portId = portId;
+            _resultValue.region = region;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.tenantId = tenantId;
+            return _resultValue;
         }
     }
 }

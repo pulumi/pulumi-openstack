@@ -70,11 +70,11 @@ public final class StackV1StackOutput {
             return this;
         }
         public StackV1StackOutput build() {
-            final var o = new StackV1StackOutput();
-            o.description = description;
-            o.outputKey = outputKey;
-            o.outputValue = outputValue;
-            return o;
+            final var _resultValue = new StackV1StackOutput();
+            _resultValue.description = description;
+            _resultValue.outputKey = outputKey;
+            _resultValue.outputValue = outputValue;
+            return _resultValue;
         }
     }
 }

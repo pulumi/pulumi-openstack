@@ -104,12 +104,12 @@ public final class GetQosDscpMarkingRuleResult {
             return this;
         }
         public GetQosDscpMarkingRuleResult build() {
-            final var o = new GetQosDscpMarkingRuleResult();
-            o.dscpMark = dscpMark;
-            o.id = id;
-            o.qosPolicyId = qosPolicyId;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetQosDscpMarkingRuleResult();
+            _resultValue.dscpMark = dscpMark;
+            _resultValue.id = id;
+            _resultValue.qosPolicyId = qosPolicyId;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

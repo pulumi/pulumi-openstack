@@ -114,12 +114,12 @@ public final class ContainerV1AclRead {
             return users(List.of(users));
         }
         public ContainerV1AclRead build() {
-            final var o = new ContainerV1AclRead();
-            o.createdAt = createdAt;
-            o.projectAccess = projectAccess;
-            o.updatedAt = updatedAt;
-            o.users = users;
-            return o;
+            final var _resultValue = new ContainerV1AclRead();
+            _resultValue.createdAt = createdAt;
+            _resultValue.projectAccess = projectAccess;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.users = users;
+            return _resultValue;
         }
     }
 }

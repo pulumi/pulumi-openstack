@@ -50,9 +50,9 @@ public final class RouterVendorOptions {
             return this;
         }
         public RouterVendorOptions build() {
-            final var o = new RouterVendorOptions();
-            o.setRouterGatewayAfterCreate = setRouterGatewayAfterCreate;
-            return o;
+            final var _resultValue = new RouterVendorOptions();
+            _resultValue.setRouterGatewayAfterCreate = setRouterGatewayAfterCreate;
+            return _resultValue;
         }
     }
 }

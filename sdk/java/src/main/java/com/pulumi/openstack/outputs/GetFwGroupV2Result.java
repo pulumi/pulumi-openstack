@@ -281,21 +281,21 @@ public final class GetFwGroupV2Result {
             return this;
         }
         public GetFwGroupV2Result build() {
-            final var o = new GetFwGroupV2Result();
-            o.adminStateUp = adminStateUp;
-            o.description = description;
-            o.egressFirewallPolicyId = egressFirewallPolicyId;
-            o.groupId = groupId;
-            o.id = id;
-            o.ingressFirewallPolicyId = ingressFirewallPolicyId;
-            o.name = name;
-            o.ports = ports;
-            o.projectId = projectId;
-            o.region = region;
-            o.shared = shared;
-            o.status = status;
-            o.tenantId = tenantId;
-            return o;
+            final var _resultValue = new GetFwGroupV2Result();
+            _resultValue.adminStateUp = adminStateUp;
+            _resultValue.description = description;
+            _resultValue.egressFirewallPolicyId = egressFirewallPolicyId;
+            _resultValue.groupId = groupId;
+            _resultValue.id = id;
+            _resultValue.ingressFirewallPolicyId = ingressFirewallPolicyId;
+            _resultValue.name = name;
+            _resultValue.ports = ports;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.shared = shared;
+            _resultValue.status = status;
+            _resultValue.tenantId = tenantId;
+            return _resultValue;
         }
     }
 }

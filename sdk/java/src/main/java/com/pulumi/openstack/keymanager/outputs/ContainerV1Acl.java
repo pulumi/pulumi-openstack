@@ -40,9 +40,9 @@ public final class ContainerV1Acl {
             return this;
         }
         public ContainerV1Acl build() {
-            final var o = new ContainerV1Acl();
-            o.read = read;
-            return o;
+            final var _resultValue = new ContainerV1Acl();
+            _resultValue.read = read;
+            return _resultValue;
         }
     }
 }

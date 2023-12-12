@@ -370,30 +370,30 @@ public final class GetSubnetResult {
             return this;
         }
         public GetSubnetResult build() {
-            final var o = new GetSubnetResult();
-            o.allTags = allTags;
-            o.allocationPools = allocationPools;
-            o.cidr = cidr;
-            o.description = description;
-            o.dhcpDisabled = dhcpDisabled;
-            o.dhcpEnabled = dhcpEnabled;
-            o.dnsNameservers = dnsNameservers;
-            o.enableDhcp = enableDhcp;
-            o.gatewayIp = gatewayIp;
-            o.hostRoutes = hostRoutes;
-            o.id = id;
-            o.ipVersion = ipVersion;
-            o.ipv6AddressMode = ipv6AddressMode;
-            o.ipv6RaMode = ipv6RaMode;
-            o.name = name;
-            o.networkId = networkId;
-            o.region = region;
-            o.serviceTypes = serviceTypes;
-            o.subnetId = subnetId;
-            o.subnetpoolId = subnetpoolId;
-            o.tags = tags;
-            o.tenantId = tenantId;
-            return o;
+            final var _resultValue = new GetSubnetResult();
+            _resultValue.allTags = allTags;
+            _resultValue.allocationPools = allocationPools;
+            _resultValue.cidr = cidr;
+            _resultValue.description = description;
+            _resultValue.dhcpDisabled = dhcpDisabled;
+            _resultValue.dhcpEnabled = dhcpEnabled;
+            _resultValue.dnsNameservers = dnsNameservers;
+            _resultValue.enableDhcp = enableDhcp;
+            _resultValue.gatewayIp = gatewayIp;
+            _resultValue.hostRoutes = hostRoutes;
+            _resultValue.id = id;
+            _resultValue.ipVersion = ipVersion;
+            _resultValue.ipv6AddressMode = ipv6AddressMode;
+            _resultValue.ipv6RaMode = ipv6RaMode;
+            _resultValue.name = name;
+            _resultValue.networkId = networkId;
+            _resultValue.region = region;
+            _resultValue.serviceTypes = serviceTypes;
+            _resultValue.subnetId = subnetId;
+            _resultValue.subnetpoolId = subnetpoolId;
+            _resultValue.tags = tags;
+            _resultValue.tenantId = tenantId;
+            return _resultValue;
         }
     }
 }

@@ -114,12 +114,12 @@ public final class SecretV1AclRead {
             return users(List.of(users));
         }
         public SecretV1AclRead build() {
-            final var o = new SecretV1AclRead();
-            o.createdAt = createdAt;
-            o.projectAccess = projectAccess;
-            o.updatedAt = updatedAt;
-            o.users = users;
-            return o;
+            final var _resultValue = new SecretV1AclRead();
+            _resultValue.createdAt = createdAt;
+            _resultValue.projectAccess = projectAccess;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.users = users;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class PortAllowedAddressPair {
             return this;
         }
         public PortAllowedAddressPair build() {
-            final var o = new PortAllowedAddressPair();
-            o.ipAddress = ipAddress;
-            o.macAddress = macAddress;
-            return o;
+            final var _resultValue = new PortAllowedAddressPair();
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.macAddress = macAddress;
+            return _resultValue;
         }
     }
 }

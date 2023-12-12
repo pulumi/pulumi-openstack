@@ -90,11 +90,11 @@ public final class InstanceDatabase {
             return this;
         }
         public InstanceDatabase build() {
-            final var o = new InstanceDatabase();
-            o.charset = charset;
-            o.collate = collate;
-            o.name = name;
-            return o;
+            final var _resultValue = new InstanceDatabase();
+            _resultValue.charset = charset;
+            _resultValue.collate = collate;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

@@ -49,10 +49,10 @@ public final class GetShareExportLocation {
             return this;
         }
         public GetShareExportLocation build() {
-            final var o = new GetShareExportLocation();
-            o.path = path;
-            o.preferred = preferred;
-            return o;
+            final var _resultValue = new GetShareExportLocation();
+            _resultValue.path = path;
+            _resultValue.preferred = preferred;
+            return _resultValue;
         }
     }
 }

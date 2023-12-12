@@ -52,9 +52,9 @@ public final class UserMultiFactorAuthRule {
             return rules(List.of(rules));
         }
         public UserMultiFactorAuthRule build() {
-            final var o = new UserMultiFactorAuthRule();
-            o.rules = rules;
-            return o;
+            final var _resultValue = new UserMultiFactorAuthRule();
+            _resultValue.rules = rules;
+            return _resultValue;
         }
     }
 }

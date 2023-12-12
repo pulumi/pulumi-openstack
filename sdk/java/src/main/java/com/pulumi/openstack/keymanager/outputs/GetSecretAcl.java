@@ -38,9 +38,9 @@ public final class GetSecretAcl {
             return this;
         }
         public GetSecretAcl build() {
-            final var o = new GetSecretAcl();
-            o.read = read;
-            return o;
+            final var _resultValue = new GetSecretAcl();
+            _resultValue.read = read;
+            return _resultValue;
         }
     }
 }

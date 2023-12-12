@@ -113,12 +113,12 @@ public final class InstanceNetwork {
             return this;
         }
         public InstanceNetwork build() {
-            final var o = new InstanceNetwork();
-            o.fixedIpV4 = fixedIpV4;
-            o.fixedIpV6 = fixedIpV6;
-            o.port = port;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new InstanceNetwork();
+            _resultValue.fixedIpV4 = fixedIpV4;
+            _resultValue.fixedIpV6 = fixedIpV6;
+            _resultValue.port = port;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

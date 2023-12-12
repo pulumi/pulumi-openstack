@@ -327,23 +327,23 @@ public final class GetShareResult {
             return this;
         }
         public GetShareResult build() {
-            final var o = new GetShareResult();
-            o.availabilityZone = availabilityZone;
-            o.description = description;
-            o.exportLocationPath = exportLocationPath;
-            o.exportLocations = exportLocations;
-            o.id = id;
-            o.isPublic = isPublic;
-            o.metadata = metadata;
-            o.name = name;
-            o.projectId = projectId;
-            o.region = region;
-            o.shareNetworkId = shareNetworkId;
-            o.shareProto = shareProto;
-            o.size = size;
-            o.snapshotId = snapshotId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetShareResult();
+            _resultValue.availabilityZone = availabilityZone;
+            _resultValue.description = description;
+            _resultValue.exportLocationPath = exportLocationPath;
+            _resultValue.exportLocations = exportLocations;
+            _resultValue.id = id;
+            _resultValue.isPublic = isPublic;
+            _resultValue.metadata = metadata;
+            _resultValue.name = name;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.shareNetworkId = shareNetworkId;
+            _resultValue.shareProto = shareProto;
+            _resultValue.size = size;
+            _resultValue.snapshotId = snapshotId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

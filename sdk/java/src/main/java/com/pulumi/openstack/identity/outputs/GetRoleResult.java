@@ -103,12 +103,12 @@ public final class GetRoleResult {
             return this;
         }
         public GetRoleResult build() {
-            final var o = new GetRoleResult();
-            o.domainId = domainId;
-            o.id = id;
-            o.name = name;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetRoleResult();
+            _resultValue.domainId = domainId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }
