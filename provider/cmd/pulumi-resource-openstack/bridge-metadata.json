@@ -1444,6 +1444,7 @@
             }
         }
     },
+    "auto-settings": {},
     "renames": {
         "resources": {
             "openstack:blockstorage/qosAssociationV3:QosAssociationV3": "openstack_blockstorage_qos_association_v3",
