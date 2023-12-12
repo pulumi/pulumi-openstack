@@ -87,11 +87,11 @@ public final class PortExtraDhcpOption {
             return this;
         }
         public PortExtraDhcpOption build() {
-            final var o = new PortExtraDhcpOption();
-            o.ipVersion = ipVersion;
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new PortExtraDhcpOption();
+            _resultValue.ipVersion = ipVersion;
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

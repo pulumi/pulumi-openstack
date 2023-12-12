@@ -69,10 +69,10 @@ public final class ContainerV1Consumer {
             return this;
         }
         public ContainerV1Consumer build() {
-            final var o = new ContainerV1Consumer();
-            o.name = name;
-            o.url = url;
-            return o;
+            final var _resultValue = new ContainerV1Consumer();
+            _resultValue.name = name;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

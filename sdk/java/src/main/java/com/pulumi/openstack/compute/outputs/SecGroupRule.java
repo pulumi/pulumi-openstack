@@ -176,15 +176,15 @@ public final class SecGroupRule {
             return this;
         }
         public SecGroupRule build() {
-            final var o = new SecGroupRule();
-            o.cidr = cidr;
-            o.fromGroupId = fromGroupId;
-            o.fromPort = fromPort;
-            o.id = id;
-            o.ipProtocol = ipProtocol;
-            o.self = self;
-            o.toPort = toPort;
-            return o;
+            final var _resultValue = new SecGroupRule();
+            _resultValue.cidr = cidr;
+            _resultValue.fromGroupId = fromGroupId;
+            _resultValue.fromPort = fromPort;
+            _resultValue.id = id;
+            _resultValue.ipProtocol = ipProtocol;
+            _resultValue.self = self;
+            _resultValue.toPort = toPort;
+            return _resultValue;
         }
     }
 }

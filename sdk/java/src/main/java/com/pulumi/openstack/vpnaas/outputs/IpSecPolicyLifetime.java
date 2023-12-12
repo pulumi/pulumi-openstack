@@ -62,10 +62,10 @@ public final class IpSecPolicyLifetime {
             return this;
         }
         public IpSecPolicyLifetime build() {
-            final var o = new IpSecPolicyLifetime();
-            o.units = units;
-            o.value = value;
-            return o;
+            final var _resultValue = new IpSecPolicyLifetime();
+            _resultValue.units = units;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

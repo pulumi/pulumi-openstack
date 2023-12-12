@@ -125,12 +125,12 @@ public final class ApplicationCredentialAccessRule {
             return this;
         }
         public ApplicationCredentialAccessRule build() {
-            final var o = new ApplicationCredentialAccessRule();
-            o.id = id;
-            o.method = method;
-            o.path = path;
-            o.service = service;
-            return o;
+            final var _resultValue = new ApplicationCredentialAccessRule();
+            _resultValue.id = id;
+            _resultValue.method = method;
+            _resultValue.path = path;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

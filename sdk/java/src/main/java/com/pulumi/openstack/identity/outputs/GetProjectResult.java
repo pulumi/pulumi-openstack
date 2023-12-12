@@ -224,18 +224,18 @@ public final class GetProjectResult {
             return tags(List.of(tags));
         }
         public GetProjectResult build() {
-            final var o = new GetProjectResult();
-            o.description = description;
-            o.domainId = domainId;
-            o.enabled = enabled;
-            o.id = id;
-            o.isDomain = isDomain;
-            o.name = name;
-            o.parentId = parentId;
-            o.projectId = projectId;
-            o.region = region;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetProjectResult();
+            _resultValue.description = description;
+            _resultValue.domainId = domainId;
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.isDomain = isDomain;
+            _resultValue.name = name;
+            _resultValue.parentId = parentId;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

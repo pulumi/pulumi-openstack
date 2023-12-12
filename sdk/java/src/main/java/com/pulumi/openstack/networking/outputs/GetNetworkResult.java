@@ -373,27 +373,27 @@ public final class GetNetworkResult {
             return this;
         }
         public GetNetworkResult build() {
-            final var o = new GetNetworkResult();
-            o.adminStateUp = adminStateUp;
-            o.allTags = allTags;
-            o.availabilityZoneHints = availabilityZoneHints;
-            o.description = description;
-            o.dnsDomain = dnsDomain;
-            o.external = external;
-            o.id = id;
-            o.matchingSubnetCidr = matchingSubnetCidr;
-            o.mtu = mtu;
-            o.name = name;
-            o.networkId = networkId;
-            o.region = region;
-            o.segments = segments;
-            o.shared = shared;
-            o.status = status;
-            o.subnets = subnets;
-            o.tags = tags;
-            o.tenantId = tenantId;
-            o.transparentVlan = transparentVlan;
-            return o;
+            final var _resultValue = new GetNetworkResult();
+            _resultValue.adminStateUp = adminStateUp;
+            _resultValue.allTags = allTags;
+            _resultValue.availabilityZoneHints = availabilityZoneHints;
+            _resultValue.description = description;
+            _resultValue.dnsDomain = dnsDomain;
+            _resultValue.external = external;
+            _resultValue.id = id;
+            _resultValue.matchingSubnetCidr = matchingSubnetCidr;
+            _resultValue.mtu = mtu;
+            _resultValue.name = name;
+            _resultValue.networkId = networkId;
+            _resultValue.region = region;
+            _resultValue.segments = segments;
+            _resultValue.shared = shared;
+            _resultValue.status = status;
+            _resultValue.subnets = subnets;
+            _resultValue.tags = tags;
+            _resultValue.tenantId = tenantId;
+            _resultValue.transparentVlan = transparentVlan;
+            return _resultValue;
         }
     }
 }

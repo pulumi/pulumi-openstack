@@ -199,17 +199,17 @@ public final class GetHypervisorV2Result {
             return this;
         }
         public GetHypervisorV2Result build() {
-            final var o = new GetHypervisorV2Result();
-            o.disk = disk;
-            o.hostIp = hostIp;
-            o.hostname = hostname;
-            o.id = id;
-            o.memory = memory;
-            o.state = state;
-            o.status = status;
-            o.type = type;
-            o.vcpus = vcpus;
-            return o;
+            final var _resultValue = new GetHypervisorV2Result();
+            _resultValue.disk = disk;
+            _resultValue.hostIp = hostIp;
+            _resultValue.hostname = hostname;
+            _resultValue.id = id;
+            _resultValue.memory = memory;
+            _resultValue.state = state;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            _resultValue.vcpus = vcpus;
+            return _resultValue;
         }
     }
 }

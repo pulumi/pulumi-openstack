@@ -40,9 +40,9 @@ public final class SecretV1Acl {
             return this;
         }
         public SecretV1Acl build() {
-            final var o = new SecretV1Acl();
-            o.read = read;
-            return o;
+            final var _resultValue = new SecretV1Acl();
+            _resultValue.read = read;
+            return _resultValue;
         }
     }
 }

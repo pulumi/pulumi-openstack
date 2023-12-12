@@ -52,9 +52,9 @@ public final class VolumeAttachVendorOptions {
             return this;
         }
         public VolumeAttachVendorOptions build() {
-            final var o = new VolumeAttachVendorOptions();
-            o.ignoreVolumeConfirmation = ignoreVolumeConfirmation;
-            return o;
+            final var _resultValue = new VolumeAttachVendorOptions();
+            _resultValue.ignoreVolumeConfirmation = ignoreVolumeConfirmation;
+            return _resultValue;
         }
     }
 }

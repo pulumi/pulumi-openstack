@@ -283,21 +283,21 @@ public final class GetShareNetworkResult {
             return this;
         }
         public GetShareNetworkResult build() {
-            final var o = new GetShareNetworkResult();
-            o.cidr = cidr;
-            o.description = description;
-            o.id = id;
-            o.ipVersion = ipVersion;
-            o.name = name;
-            o.networkType = networkType;
-            o.neutronNetId = neutronNetId;
-            o.neutronSubnetId = neutronSubnetId;
-            o.projectId = projectId;
-            o.region = region;
-            o.securityServiceId = securityServiceId;
-            o.securityServiceIds = securityServiceIds;
-            o.segmentationId = segmentationId;
-            return o;
+            final var _resultValue = new GetShareNetworkResult();
+            _resultValue.cidr = cidr;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.ipVersion = ipVersion;
+            _resultValue.name = name;
+            _resultValue.networkType = networkType;
+            _resultValue.neutronNetId = neutronNetId;
+            _resultValue.neutronSubnetId = neutronSubnetId;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.securityServiceId = securityServiceId;
+            _resultValue.securityServiceIds = securityServiceIds;
+            _resultValue.segmentationId = segmentationId;
+            return _resultValue;
         }
     }
 }

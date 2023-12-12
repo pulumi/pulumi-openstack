@@ -40,9 +40,9 @@ public final class ServerGroupRules {
             return this;
         }
         public ServerGroupRules build() {
-            final var o = new ServerGroupRules();
-            o.maxServerPerHost = maxServerPerHost;
-            return o;
+            final var _resultValue = new ServerGroupRules();
+            _resultValue.maxServerPerHost = maxServerPerHost;
+            return _resultValue;
         }
     }
 }

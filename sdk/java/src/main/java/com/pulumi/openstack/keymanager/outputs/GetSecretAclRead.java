@@ -112,12 +112,12 @@ public final class GetSecretAclRead {
             return users(List.of(users));
         }
         public GetSecretAclRead build() {
-            final var o = new GetSecretAclRead();
-            o.createdAt = createdAt;
-            o.projectAccess = projectAccess;
-            o.updatedAt = updatedAt;
-            o.users = users;
-            return o;
+            final var _resultValue = new GetSecretAclRead();
+            _resultValue.createdAt = createdAt;
+            _resultValue.projectAccess = projectAccess;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.users = users;
+            return _resultValue;
         }
     }
 }

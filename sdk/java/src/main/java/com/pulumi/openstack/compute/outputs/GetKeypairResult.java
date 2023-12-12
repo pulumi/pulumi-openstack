@@ -141,14 +141,14 @@ public final class GetKeypairResult {
             return this;
         }
         public GetKeypairResult build() {
-            final var o = new GetKeypairResult();
-            o.fingerprint = fingerprint;
-            o.id = id;
-            o.name = name;
-            o.publicKey = publicKey;
-            o.region = region;
-            o.userId = userId;
-            return o;
+            final var _resultValue = new GetKeypairResult();
+            _resultValue.fingerprint = fingerprint;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.publicKey = publicKey;
+            _resultValue.region = region;
+            _resultValue.userId = userId;
+            return _resultValue;
         }
     }
 }

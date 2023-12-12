@@ -247,24 +247,24 @@ public final class GetImageIdsResult {
             return this;
         }
         public GetImageIdsResult build() {
-            final var o = new GetImageIdsResult();
-            o.id = id;
-            o.ids = ids;
-            o.memberStatus = memberStatus;
-            o.name = name;
-            o.nameRegex = nameRegex;
-            o.owner = owner;
-            o.properties = properties;
-            o.region = region;
-            o.sizeMax = sizeMax;
-            o.sizeMin = sizeMin;
-            o.sort = sort;
-            o.sortDirection = sortDirection;
-            o.sortKey = sortKey;
-            o.tag = tag;
-            o.tags = tags;
-            o.visibility = visibility;
-            return o;
+            final var _resultValue = new GetImageIdsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.memberStatus = memberStatus;
+            _resultValue.name = name;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.owner = owner;
+            _resultValue.properties = properties;
+            _resultValue.region = region;
+            _resultValue.sizeMax = sizeMax;
+            _resultValue.sizeMin = sizeMin;
+            _resultValue.sort = sort;
+            _resultValue.sortDirection = sortDirection;
+            _resultValue.sortKey = sortKey;
+            _resultValue.tag = tag;
+            _resultValue.tags = tags;
+            _resultValue.visibility = visibility;
+            return _resultValue;
         }
     }
 }

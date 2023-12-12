@@ -51,10 +51,10 @@ public final class ShareExportLocation {
             return this;
         }
         public ShareExportLocation build() {
-            final var o = new ShareExportLocation();
-            o.path = path;
-            o.preferred = preferred;
-            return o;
+            final var _resultValue = new ShareExportLocation();
+            _resultValue.path = path;
+            _resultValue.preferred = preferred;
+            return _resultValue;
         }
     }
 }

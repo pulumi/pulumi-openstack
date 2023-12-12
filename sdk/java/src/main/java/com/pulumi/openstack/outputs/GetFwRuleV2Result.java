@@ -358,25 +358,25 @@ public final class GetFwRuleV2Result {
             return this;
         }
         public GetFwRuleV2Result build() {
-            final var o = new GetFwRuleV2Result();
-            o.action = action;
-            o.description = description;
-            o.destinationIpAddress = destinationIpAddress;
-            o.destinationPort = destinationPort;
-            o.enabled = enabled;
-            o.firewallPolicyIds = firewallPolicyIds;
-            o.id = id;
-            o.ipVersion = ipVersion;
-            o.name = name;
-            o.projectId = projectId;
-            o.protocol = protocol;
-            o.region = region;
-            o.ruleId = ruleId;
-            o.shared = shared;
-            o.sourceIpAddress = sourceIpAddress;
-            o.sourcePort = sourcePort;
-            o.tenantId = tenantId;
-            return o;
+            final var _resultValue = new GetFwRuleV2Result();
+            _resultValue.action = action;
+            _resultValue.description = description;
+            _resultValue.destinationIpAddress = destinationIpAddress;
+            _resultValue.destinationPort = destinationPort;
+            _resultValue.enabled = enabled;
+            _resultValue.firewallPolicyIds = firewallPolicyIds;
+            _resultValue.id = id;
+            _resultValue.ipVersion = ipVersion;
+            _resultValue.name = name;
+            _resultValue.projectId = projectId;
+            _resultValue.protocol = protocol;
+            _resultValue.region = region;
+            _resultValue.ruleId = ruleId;
+            _resultValue.shared = shared;
+            _resultValue.sourceIpAddress = sourceIpAddress;
+            _resultValue.sourcePort = sourcePort;
+            _resultValue.tenantId = tenantId;
+            return _resultValue;
         }
     }
 }

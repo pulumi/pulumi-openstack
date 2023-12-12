@@ -65,10 +65,10 @@ public final class ContainerVersioningLegacy {
             return this;
         }
         public ContainerVersioningLegacy build() {
-            final var o = new ContainerVersioningLegacy();
-            o.location = location;
-            o.type = type;
-            return o;
+            final var _resultValue = new ContainerVersioningLegacy();
+            _resultValue.location = location;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

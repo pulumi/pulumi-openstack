@@ -65,10 +65,10 @@ public final class ConfigurationDatastore {
             return this;
         }
         public ConfigurationDatastore build() {
-            final var o = new ConfigurationDatastore();
-            o.type = type;
-            o.version = version;
-            return o;
+            final var _resultValue = new ConfigurationDatastore();
+            _resultValue.type = type;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

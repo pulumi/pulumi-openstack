@@ -67,10 +67,10 @@ public final class ContainerV1SecretRef {
             return this;
         }
         public ContainerV1SecretRef build() {
-            final var o = new ContainerV1SecretRef();
-            o.name = name;
-            o.secretRef = secretRef;
-            return o;
+            final var _resultValue = new ContainerV1SecretRef();
+            _resultValue.name = name;
+            _resultValue.secretRef = secretRef;
+            return _resultValue;
         }
     }
 }

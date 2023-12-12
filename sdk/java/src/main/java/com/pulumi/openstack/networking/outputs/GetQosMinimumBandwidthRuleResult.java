@@ -115,13 +115,13 @@ public final class GetQosMinimumBandwidthRuleResult {
             return this;
         }
         public GetQosMinimumBandwidthRuleResult build() {
-            final var o = new GetQosMinimumBandwidthRuleResult();
-            o.direction = direction;
-            o.id = id;
-            o.minKbps = minKbps;
-            o.qosPolicyId = qosPolicyId;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetQosMinimumBandwidthRuleResult();
+            _resultValue.direction = direction;
+            _resultValue.id = id;
+            _resultValue.minKbps = minKbps;
+            _resultValue.qosPolicyId = qosPolicyId;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

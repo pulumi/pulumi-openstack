@@ -61,11 +61,11 @@ public final class GetNetworkSegment {
             return this;
         }
         public GetNetworkSegment build() {
-            final var o = new GetNetworkSegment();
-            o.networkType = networkType;
-            o.physicalNetwork = physicalNetwork;
-            o.segmentationId = segmentationId;
-            return o;
+            final var _resultValue = new GetNetworkSegment();
+            _resultValue.networkType = networkType;
+            _resultValue.physicalNetwork = physicalNetwork;
+            _resultValue.segmentationId = segmentationId;
+            return _resultValue;
         }
     }
 }

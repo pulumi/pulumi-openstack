@@ -216,16 +216,16 @@ public final class InstanceSchedulerHint {
             return this;
         }
         public InstanceSchedulerHint build() {
-            final var o = new InstanceSchedulerHint();
-            o.additionalProperties = additionalProperties;
-            o.buildNearHostIp = buildNearHostIp;
-            o.differentCells = differentCells;
-            o.differentHosts = differentHosts;
-            o.group = group;
-            o.queries = queries;
-            o.sameHosts = sameHosts;
-            o.targetCell = targetCell;
-            return o;
+            final var _resultValue = new InstanceSchedulerHint();
+            _resultValue.additionalProperties = additionalProperties;
+            _resultValue.buildNearHostIp = buildNearHostIp;
+            _resultValue.differentCells = differentCells;
+            _resultValue.differentHosts = differentHosts;
+            _resultValue.group = group;
+            _resultValue.queries = queries;
+            _resultValue.sameHosts = sameHosts;
+            _resultValue.targetCell = targetCell;
+            return _resultValue;
         }
     }
 }

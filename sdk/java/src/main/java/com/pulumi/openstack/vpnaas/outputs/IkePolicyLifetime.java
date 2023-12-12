@@ -62,10 +62,10 @@ public final class IkePolicyLifetime {
             return this;
         }
         public IkePolicyLifetime build() {
-            final var o = new IkePolicyLifetime();
-            o.units = units;
-            o.value = value;
-            return o;
+            final var _resultValue = new IkePolicyLifetime();
+            _resultValue.units = units;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

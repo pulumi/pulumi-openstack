@@ -249,20 +249,20 @@ public final class GetQosPolicyResult {
             return this;
         }
         public GetQosPolicyResult build() {
-            final var o = new GetQosPolicyResult();
-            o.allTags = allTags;
-            o.createdAt = createdAt;
-            o.description = description;
-            o.id = id;
-            o.isDefault = isDefault;
-            o.name = name;
-            o.projectId = projectId;
-            o.region = region;
-            o.revisionNumber = revisionNumber;
-            o.shared = shared;
-            o.tags = tags;
-            o.updatedAt = updatedAt;
-            return o;
+            final var _resultValue = new GetQosPolicyResult();
+            _resultValue.allTags = allTags;
+            _resultValue.createdAt = createdAt;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.isDefault = isDefault;
+            _resultValue.name = name;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.revisionNumber = revisionNumber;
+            _resultValue.shared = shared;
+            _resultValue.tags = tags;
+            _resultValue.updatedAt = updatedAt;
+            return _resultValue;
         }
     }
 }

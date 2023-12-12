@@ -87,11 +87,11 @@ public final class ConfigurationConfiguration {
             return this;
         }
         public ConfigurationConfiguration build() {
-            final var o = new ConfigurationConfiguration();
-            o.name = name;
-            o.stringType = stringType;
-            o.value = value;
-            return o;
+            final var _resultValue = new ConfigurationConfiguration();
+            _resultValue.name = name;
+            _resultValue.stringType = stringType;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

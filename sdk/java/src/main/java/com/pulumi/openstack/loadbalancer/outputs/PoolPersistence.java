@@ -71,10 +71,10 @@ public final class PoolPersistence {
             return this;
         }
         public PoolPersistence build() {
-            final var o = new PoolPersistence();
-            o.cookieName = cookieName;
-            o.type = type;
-            return o;
+            final var _resultValue = new PoolPersistence();
+            _resultValue.cookieName = cookieName;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -257,27 +257,27 @@ public final class GetPortIdsResult {
             return this;
         }
         public GetPortIdsResult build() {
-            final var o = new GetPortIdsResult();
-            o.adminStateUp = adminStateUp;
-            o.description = description;
-            o.deviceId = deviceId;
-            o.deviceOwner = deviceOwner;
-            o.dnsName = dnsName;
-            o.fixedIp = fixedIp;
-            o.id = id;
-            o.ids = ids;
-            o.macAddress = macAddress;
-            o.name = name;
-            o.networkId = networkId;
-            o.projectId = projectId;
-            o.region = region;
-            o.securityGroupIds = securityGroupIds;
-            o.sortDirection = sortDirection;
-            o.sortKey = sortKey;
-            o.status = status;
-            o.tags = tags;
-            o.tenantId = tenantId;
-            return o;
+            final var _resultValue = new GetPortIdsResult();
+            _resultValue.adminStateUp = adminStateUp;
+            _resultValue.description = description;
+            _resultValue.deviceId = deviceId;
+            _resultValue.deviceOwner = deviceOwner;
+            _resultValue.dnsName = dnsName;
+            _resultValue.fixedIp = fixedIp;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.macAddress = macAddress;
+            _resultValue.name = name;
+            _resultValue.networkId = networkId;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.securityGroupIds = securityGroupIds;
+            _resultValue.sortDirection = sortDirection;
+            _resultValue.sortKey = sortKey;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.tenantId = tenantId;
+            return _resultValue;
         }
     }
 }

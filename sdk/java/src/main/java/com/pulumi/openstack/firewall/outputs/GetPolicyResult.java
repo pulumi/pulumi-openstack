@@ -205,17 +205,17 @@ public final class GetPolicyResult {
             return this;
         }
         public GetPolicyResult build() {
-            final var o = new GetPolicyResult();
-            o.audited = audited;
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.policyId = policyId;
-            o.region = region;
-            o.rules = rules;
-            o.shared = shared;
-            o.tenantId = tenantId;
-            return o;
+            final var _resultValue = new GetPolicyResult();
+            _resultValue.audited = audited;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.policyId = policyId;
+            _resultValue.region = region;
+            _resultValue.rules = rules;
+            _resultValue.shared = shared;
+            _resultValue.tenantId = tenantId;
+            return _resultValue;
         }
     }
 }

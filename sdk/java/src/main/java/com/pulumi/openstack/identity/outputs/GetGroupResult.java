@@ -122,13 +122,13 @@ public final class GetGroupResult {
             return this;
         }
         public GetGroupResult build() {
-            final var o = new GetGroupResult();
-            o.description = description;
-            o.domainId = domainId;
-            o.id = id;
-            o.name = name;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetGroupResult();
+            _resultValue.description = description;
+            _resultValue.domainId = domainId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

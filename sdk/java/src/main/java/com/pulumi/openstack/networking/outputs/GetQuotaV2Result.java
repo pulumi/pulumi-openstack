@@ -250,20 +250,20 @@ public final class GetQuotaV2Result {
             return this;
         }
         public GetQuotaV2Result build() {
-            final var o = new GetQuotaV2Result();
-            o.floatingip = floatingip;
-            o.id = id;
-            o.network = network;
-            o.port = port;
-            o.projectId = projectId;
-            o.rbacPolicy = rbacPolicy;
-            o.region = region;
-            o.router = router;
-            o.securityGroup = securityGroup;
-            o.securityGroupRule = securityGroupRule;
-            o.subnet = subnet;
-            o.subnetpool = subnetpool;
-            return o;
+            final var _resultValue = new GetQuotaV2Result();
+            _resultValue.floatingip = floatingip;
+            _resultValue.id = id;
+            _resultValue.network = network;
+            _resultValue.port = port;
+            _resultValue.projectId = projectId;
+            _resultValue.rbacPolicy = rbacPolicy;
+            _resultValue.region = region;
+            _resultValue.router = router;
+            _resultValue.securityGroup = securityGroup;
+            _resultValue.securityGroupRule = securityGroupRule;
+            _resultValue.subnet = subnet;
+            _resultValue.subnetpool = subnetpool;
+            return _resultValue;
         }
     }
 }

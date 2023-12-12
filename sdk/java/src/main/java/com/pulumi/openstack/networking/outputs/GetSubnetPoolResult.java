@@ -393,27 +393,27 @@ public final class GetSubnetPoolResult {
             return this;
         }
         public GetSubnetPoolResult build() {
-            final var o = new GetSubnetPoolResult();
-            o.addressScopeId = addressScopeId;
-            o.allTags = allTags;
-            o.createdAt = createdAt;
-            o.defaultPrefixlen = defaultPrefixlen;
-            o.defaultQuota = defaultQuota;
-            o.description = description;
-            o.id = id;
-            o.ipVersion = ipVersion;
-            o.isDefault = isDefault;
-            o.maxPrefixlen = maxPrefixlen;
-            o.minPrefixlen = minPrefixlen;
-            o.name = name;
-            o.prefixes = prefixes;
-            o.projectId = projectId;
-            o.region = region;
-            o.revisionNumber = revisionNumber;
-            o.shared = shared;
-            o.tags = tags;
-            o.updatedAt = updatedAt;
-            return o;
+            final var _resultValue = new GetSubnetPoolResult();
+            _resultValue.addressScopeId = addressScopeId;
+            _resultValue.allTags = allTags;
+            _resultValue.createdAt = createdAt;
+            _resultValue.defaultPrefixlen = defaultPrefixlen;
+            _resultValue.defaultQuota = defaultQuota;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.ipVersion = ipVersion;
+            _resultValue.isDefault = isDefault;
+            _resultValue.maxPrefixlen = maxPrefixlen;
+            _resultValue.minPrefixlen = minPrefixlen;
+            _resultValue.name = name;
+            _resultValue.prefixes = prefixes;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.revisionNumber = revisionNumber;
+            _resultValue.shared = shared;
+            _resultValue.tags = tags;
+            _resultValue.updatedAt = updatedAt;
+            return _resultValue;
         }
     }
 }

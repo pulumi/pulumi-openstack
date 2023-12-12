@@ -244,26 +244,26 @@ public final class GetSubnetIdsV2Result {
             return this;
         }
         public GetSubnetIdsV2Result build() {
-            final var o = new GetSubnetIdsV2Result();
-            o.cidr = cidr;
-            o.description = description;
-            o.dhcpEnabled = dhcpEnabled;
-            o.gatewayIp = gatewayIp;
-            o.id = id;
-            o.ids = ids;
-            o.ipVersion = ipVersion;
-            o.ipv6AddressMode = ipv6AddressMode;
-            o.ipv6RaMode = ipv6RaMode;
-            o.name = name;
-            o.nameRegex = nameRegex;
-            o.networkId = networkId;
-            o.region = region;
-            o.sortDirection = sortDirection;
-            o.sortKey = sortKey;
-            o.subnetpoolId = subnetpoolId;
-            o.tags = tags;
-            o.tenantId = tenantId;
-            return o;
+            final var _resultValue = new GetSubnetIdsV2Result();
+            _resultValue.cidr = cidr;
+            _resultValue.description = description;
+            _resultValue.dhcpEnabled = dhcpEnabled;
+            _resultValue.gatewayIp = gatewayIp;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.ipVersion = ipVersion;
+            _resultValue.ipv6AddressMode = ipv6AddressMode;
+            _resultValue.ipv6RaMode = ipv6RaMode;
+            _resultValue.name = name;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.networkId = networkId;
+            _resultValue.region = region;
+            _resultValue.sortDirection = sortDirection;
+            _resultValue.sortKey = sortKey;
+            _resultValue.subnetpoolId = subnetpoolId;
+            _resultValue.tags = tags;
+            _resultValue.tenantId = tenantId;
+            return _resultValue;
         }
     }
 }

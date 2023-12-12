@@ -65,10 +65,10 @@ public final class InstancePersonality {
             return this;
         }
         public InstancePersonality build() {
-            final var o = new InstancePersonality();
-            o.content = content;
-            o.file = file;
-            return o;
+            final var _resultValue = new InstancePersonality();
+            _resultValue.content = content;
+            _resultValue.file = file;
+            return _resultValue;
         }
     }
 }

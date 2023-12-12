@@ -38,9 +38,9 @@ public final class GetContainerAcl {
             return this;
         }
         public GetContainerAcl build() {
-            final var o = new GetContainerAcl();
-            o.read = read;
-            return o;
+            final var _resultValue = new GetContainerAcl();
+            _resultValue.read = read;
+            return _resultValue;
         }
     }
 }

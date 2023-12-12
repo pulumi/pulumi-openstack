@@ -67,10 +67,10 @@ public final class GetContainerConsumer {
             return this;
         }
         public GetContainerConsumer build() {
-            final var o = new GetContainerConsumer();
-            o.name = name;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetContainerConsumer();
+            _resultValue.name = name;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

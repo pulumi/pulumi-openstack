@@ -111,12 +111,12 @@ public final class GetAvailabilityZonesV3Result {
             return this;
         }
         public GetAvailabilityZonesV3Result build() {
-            final var o = new GetAvailabilityZonesV3Result();
-            o.id = id;
-            o.names = names;
-            o.region = region;
-            o.state = state;
-            return o;
+            final var _resultValue = new GetAvailabilityZonesV3Result();
+            _resultValue.id = id;
+            _resultValue.names = names;
+            _resultValue.region = region;
+            _resultValue.state = state;
+            return _resultValue;
         }
     }
 }

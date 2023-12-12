@@ -201,17 +201,17 @@ public final class GetVolumeV2Result {
             return this;
         }
         public GetVolumeV2Result build() {
-            final var o = new GetVolumeV2Result();
-            o.bootable = bootable;
-            o.id = id;
-            o.metadata = metadata;
-            o.name = name;
-            o.region = region;
-            o.size = size;
-            o.sourceVolumeId = sourceVolumeId;
-            o.status = status;
-            o.volumeType = volumeType;
-            return o;
+            final var _resultValue = new GetVolumeV2Result();
+            _resultValue.bootable = bootable;
+            _resultValue.id = id;
+            _resultValue.metadata = metadata;
+            _resultValue.name = name;
+            _resultValue.region = region;
+            _resultValue.size = size;
+            _resultValue.sourceVolumeId = sourceVolumeId;
+            _resultValue.status = status;
+            _resultValue.volumeType = volumeType;
+            return _resultValue;
         }
     }
 }

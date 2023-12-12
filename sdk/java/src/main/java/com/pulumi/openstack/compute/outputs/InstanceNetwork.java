@@ -180,16 +180,16 @@ public final class InstanceNetwork {
             return this;
         }
         public InstanceNetwork build() {
-            final var o = new InstanceNetwork();
-            o.accessNetwork = accessNetwork;
-            o.fixedIpV4 = fixedIpV4;
-            o.fixedIpV6 = fixedIpV6;
-            o.floatingIp = floatingIp;
-            o.mac = mac;
-            o.name = name;
-            o.port = port;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new InstanceNetwork();
+            _resultValue.accessNetwork = accessNetwork;
+            _resultValue.fixedIpV4 = fixedIpV4;
+            _resultValue.fixedIpV6 = fixedIpV6;
+            _resultValue.floatingIp = floatingIp;
+            _resultValue.mac = mac;
+            _resultValue.name = name;
+            _resultValue.port = port;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

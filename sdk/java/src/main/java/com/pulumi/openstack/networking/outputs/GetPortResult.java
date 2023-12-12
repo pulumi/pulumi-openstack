@@ -484,32 +484,32 @@ public final class GetPortResult {
             return this;
         }
         public GetPortResult build() {
-            final var o = new GetPortResult();
-            o.adminStateUp = adminStateUp;
-            o.allFixedIps = allFixedIps;
-            o.allSecurityGroupIds = allSecurityGroupIds;
-            o.allTags = allTags;
-            o.allowedAddressPairs = allowedAddressPairs;
-            o.bindings = bindings;
-            o.description = description;
-            o.deviceId = deviceId;
-            o.deviceOwner = deviceOwner;
-            o.dnsAssignments = dnsAssignments;
-            o.dnsName = dnsName;
-            o.extraDhcpOptions = extraDhcpOptions;
-            o.fixedIp = fixedIp;
-            o.id = id;
-            o.macAddress = macAddress;
-            o.name = name;
-            o.networkId = networkId;
-            o.portId = portId;
-            o.projectId = projectId;
-            o.region = region;
-            o.securityGroupIds = securityGroupIds;
-            o.status = status;
-            o.tags = tags;
-            o.tenantId = tenantId;
-            return o;
+            final var _resultValue = new GetPortResult();
+            _resultValue.adminStateUp = adminStateUp;
+            _resultValue.allFixedIps = allFixedIps;
+            _resultValue.allSecurityGroupIds = allSecurityGroupIds;
+            _resultValue.allTags = allTags;
+            _resultValue.allowedAddressPairs = allowedAddressPairs;
+            _resultValue.bindings = bindings;
+            _resultValue.description = description;
+            _resultValue.deviceId = deviceId;
+            _resultValue.deviceOwner = deviceOwner;
+            _resultValue.dnsAssignments = dnsAssignments;
+            _resultValue.dnsName = dnsName;
+            _resultValue.extraDhcpOptions = extraDhcpOptions;
+            _resultValue.fixedIp = fixedIp;
+            _resultValue.id = id;
+            _resultValue.macAddress = macAddress;
+            _resultValue.name = name;
+            _resultValue.networkId = networkId;
+            _resultValue.portId = portId;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.securityGroupIds = securityGroupIds;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.tenantId = tenantId;
+            return _resultValue;
         }
     }
 }

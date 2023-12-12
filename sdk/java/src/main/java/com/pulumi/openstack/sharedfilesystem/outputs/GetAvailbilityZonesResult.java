@@ -88,11 +88,11 @@ public final class GetAvailbilityZonesResult {
             return this;
         }
         public GetAvailbilityZonesResult build() {
-            final var o = new GetAvailbilityZonesResult();
-            o.id = id;
-            o.names = names;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetAvailbilityZonesResult();
+            _resultValue.id = id;
+            _resultValue.names = names;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

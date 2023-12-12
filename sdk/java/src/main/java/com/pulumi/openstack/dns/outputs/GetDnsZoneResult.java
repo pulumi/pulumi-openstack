@@ -370,26 +370,26 @@ public final class GetDnsZoneResult {
             return this;
         }
         public GetDnsZoneResult build() {
-            final var o = new GetDnsZoneResult();
-            o.allProjects = allProjects;
-            o.attributes = attributes;
-            o.createdAt = createdAt;
-            o.description = description;
-            o.email = email;
-            o.id = id;
-            o.masters = masters;
-            o.name = name;
-            o.poolId = poolId;
-            o.projectId = projectId;
-            o.region = region;
-            o.serial = serial;
-            o.status = status;
-            o.transferredAt = transferredAt;
-            o.ttl = ttl;
-            o.type = type;
-            o.updatedAt = updatedAt;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetDnsZoneResult();
+            _resultValue.allProjects = allProjects;
+            _resultValue.attributes = attributes;
+            _resultValue.createdAt = createdAt;
+            _resultValue.description = description;
+            _resultValue.email = email;
+            _resultValue.id = id;
+            _resultValue.masters = masters;
+            _resultValue.name = name;
+            _resultValue.poolId = poolId;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.serial = serial;
+            _resultValue.status = status;
+            _resultValue.transferredAt = transferredAt;
+            _resultValue.ttl = ttl;
+            _resultValue.type = type;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

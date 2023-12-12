@@ -164,16 +164,16 @@ public final class GetSecGroupResult {
             return this;
         }
         public GetSecGroupResult build() {
-            final var o = new GetSecGroupResult();
-            o.allTags = allTags;
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.region = region;
-            o.secgroupId = secgroupId;
-            o.tags = tags;
-            o.tenantId = tenantId;
-            return o;
+            final var _resultValue = new GetSecGroupResult();
+            _resultValue.allTags = allTags;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.region = region;
+            _resultValue.secgroupId = secgroupId;
+            _resultValue.tags = tags;
+            _resultValue.tenantId = tenantId;
+            return _resultValue;
         }
     }
 }

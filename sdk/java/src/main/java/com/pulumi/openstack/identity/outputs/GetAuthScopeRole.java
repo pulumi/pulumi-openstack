@@ -65,10 +65,10 @@ public final class GetAuthScopeRole {
             return this;
         }
         public GetAuthScopeRole build() {
-            final var o = new GetAuthScopeRole();
-            o.roleId = roleId;
-            o.roleName = roleName;
-            return o;
+            final var _resultValue = new GetAuthScopeRole();
+            _resultValue.roleId = roleId;
+            _resultValue.roleName = roleName;
+            return _resultValue;
         }
     }
 }

@@ -237,18 +237,18 @@ public final class MembersMember {
             return this;
         }
         public MembersMember build() {
-            final var o = new MembersMember();
-            o.address = address;
-            o.adminStateUp = adminStateUp;
-            o.backup = backup;
-            o.id = id;
-            o.monitorAddress = monitorAddress;
-            o.monitorPort = monitorPort;
-            o.name = name;
-            o.protocolPort = protocolPort;
-            o.subnetId = subnetId;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new MembersMember();
+            _resultValue.address = address;
+            _resultValue.adminStateUp = adminStateUp;
+            _resultValue.backup = backup;
+            _resultValue.id = id;
+            _resultValue.monitorAddress = monitorAddress;
+            _resultValue.monitorPort = monitorPort;
+            _resultValue.name = name;
+            _resultValue.protocolPort = protocolPort;
+            _resultValue.subnetId = subnetId;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

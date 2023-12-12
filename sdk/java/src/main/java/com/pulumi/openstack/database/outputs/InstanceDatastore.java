@@ -69,10 +69,10 @@ public final class InstanceDatastore {
             return this;
         }
         public InstanceDatastore build() {
-            final var o = new InstanceDatastore();
-            o.type = type;
-            o.version = version;
-            return o;
+            final var _resultValue = new InstanceDatastore();
+            _resultValue.type = type;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

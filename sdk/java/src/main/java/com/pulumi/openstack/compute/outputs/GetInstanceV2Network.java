@@ -141,14 +141,14 @@ public final class GetInstanceV2Network {
             return this;
         }
         public GetInstanceV2Network build() {
-            final var o = new GetInstanceV2Network();
-            o.fixedIpV4 = fixedIpV4;
-            o.fixedIpV6 = fixedIpV6;
-            o.mac = mac;
-            o.name = name;
-            o.port = port;
-            o.uuid = uuid;
-            return o;
+            final var _resultValue = new GetInstanceV2Network();
+            _resultValue.fixedIpV4 = fixedIpV4;
+            _resultValue.fixedIpV6 = fixedIpV6;
+            _resultValue.mac = mac;
+            _resultValue.name = name;
+            _resultValue.port = port;
+            _resultValue.uuid = uuid;
+            return _resultValue;
         }
     }
 }

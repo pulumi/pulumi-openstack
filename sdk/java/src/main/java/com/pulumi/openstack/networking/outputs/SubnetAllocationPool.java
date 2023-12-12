@@ -65,10 +65,10 @@ public final class SubnetAllocationPool {
             return this;
         }
         public SubnetAllocationPool build() {
-            final var o = new SubnetAllocationPool();
-            o.end = end;
-            o.start = start;
-            return o;
+            final var _resultValue = new SubnetAllocationPool();
+            _resultValue.end = end;
+            _resultValue.start = start;
+            return _resultValue;
         }
     }
 }

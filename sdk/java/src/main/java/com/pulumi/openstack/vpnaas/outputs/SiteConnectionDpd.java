@@ -99,11 +99,11 @@ public final class SiteConnectionDpd {
             return this;
         }
         public SiteConnectionDpd build() {
-            final var o = new SiteConnectionDpd();
-            o.action = action;
-            o.interval = interval;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new SiteConnectionDpd();
+            _resultValue.action = action;
+            _resultValue.interval = interval;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

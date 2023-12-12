@@ -282,19 +282,19 @@ public final class InstanceBlockDevice {
             return this;
         }
         public InstanceBlockDevice build() {
-            final var o = new InstanceBlockDevice();
-            o.bootIndex = bootIndex;
-            o.deleteOnTermination = deleteOnTermination;
-            o.destinationType = destinationType;
-            o.deviceType = deviceType;
-            o.diskBus = diskBus;
-            o.guestFormat = guestFormat;
-            o.multiattach = multiattach;
-            o.sourceType = sourceType;
-            o.uuid = uuid;
-            o.volumeSize = volumeSize;
-            o.volumeType = volumeType;
-            return o;
+            final var _resultValue = new InstanceBlockDevice();
+            _resultValue.bootIndex = bootIndex;
+            _resultValue.deleteOnTermination = deleteOnTermination;
+            _resultValue.destinationType = destinationType;
+            _resultValue.deviceType = deviceType;
+            _resultValue.diskBus = diskBus;
+            _resultValue.guestFormat = guestFormat;
+            _resultValue.multiattach = multiattach;
+            _resultValue.sourceType = sourceType;
+            _resultValue.uuid = uuid;
+            _resultValue.volumeSize = volumeSize;
+            _resultValue.volumeType = volumeType;
+            return _resultValue;
         }
     }
 }

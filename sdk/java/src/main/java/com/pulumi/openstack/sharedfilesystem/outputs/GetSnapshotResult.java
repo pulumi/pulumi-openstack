@@ -210,18 +210,18 @@ public final class GetSnapshotResult {
             return this;
         }
         public GetSnapshotResult build() {
-            final var o = new GetSnapshotResult();
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.projectId = projectId;
-            o.region = region;
-            o.shareId = shareId;
-            o.shareProto = shareProto;
-            o.shareSize = shareSize;
-            o.size = size;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetSnapshotResult();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.shareId = shareId;
+            _resultValue.shareProto = shareProto;
+            _resultValue.shareSize = shareSize;
+            _resultValue.size = size;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

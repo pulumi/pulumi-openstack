@@ -77,10 +77,10 @@ public final class PortFixedIp {
             return this;
         }
         public PortFixedIp build() {
-            final var o = new PortFixedIp();
-            o.ipAddress = ipAddress;
-            o.subnetId = subnetId;
-            return o;
+            final var _resultValue = new PortFixedIp();
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.subnetId = subnetId;
+            return _resultValue;
         }
     }
 }

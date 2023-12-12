@@ -309,23 +309,23 @@ public final class GetNodeGroupResult {
             return this;
         }
         public GetNodeGroupResult build() {
-            final var o = new GetNodeGroupResult();
-            o.clusterId = clusterId;
-            o.createdAt = createdAt;
-            o.dockerVolumeSize = dockerVolumeSize;
-            o.flavor = flavor;
-            o.id = id;
-            o.image = image;
-            o.labels = labels;
-            o.maxNodeCount = maxNodeCount;
-            o.minNodeCount = minNodeCount;
-            o.name = name;
-            o.nodeCount = nodeCount;
-            o.projectId = projectId;
-            o.region = region;
-            o.role = role;
-            o.updatedAt = updatedAt;
-            return o;
+            final var _resultValue = new GetNodeGroupResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.createdAt = createdAt;
+            _resultValue.dockerVolumeSize = dockerVolumeSize;
+            _resultValue.flavor = flavor;
+            _resultValue.id = id;
+            _resultValue.image = image;
+            _resultValue.labels = labels;
+            _resultValue.maxNodeCount = maxNodeCount;
+            _resultValue.minNodeCount = minNodeCount;
+            _resultValue.name = name;
+            _resultValue.nodeCount = nodeCount;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.role = role;
+            _resultValue.updatedAt = updatedAt;
+            return _resultValue;
         }
     }
 }

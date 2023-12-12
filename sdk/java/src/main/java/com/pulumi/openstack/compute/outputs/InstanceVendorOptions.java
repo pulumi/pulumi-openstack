@@ -77,10 +77,10 @@ public final class InstanceVendorOptions {
             return this;
         }
         public InstanceVendorOptions build() {
-            final var o = new InstanceVendorOptions();
-            o.detachPortsBeforeDestroy = detachPortsBeforeDestroy;
-            o.ignoreResizeConfirmation = ignoreResizeConfirmation;
-            return o;
+            final var _resultValue = new InstanceVendorOptions();
+            _resultValue.detachPortsBeforeDestroy = detachPortsBeforeDestroy;
+            _resultValue.ignoreResizeConfirmation = ignoreResizeConfirmation;
+            return _resultValue;
         }
     }
 }

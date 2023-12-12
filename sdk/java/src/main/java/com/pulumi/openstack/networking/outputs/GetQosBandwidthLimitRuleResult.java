@@ -142,14 +142,14 @@ public final class GetQosBandwidthLimitRuleResult {
             return this;
         }
         public GetQosBandwidthLimitRuleResult build() {
-            final var o = new GetQosBandwidthLimitRuleResult();
-            o.direction = direction;
-            o.id = id;
-            o.maxBurstKbps = maxBurstKbps;
-            o.maxKbps = maxKbps;
-            o.qosPolicyId = qosPolicyId;
-            o.region = region;
-            return o;
+            final var _resultValue = new GetQosBandwidthLimitRuleResult();
+            _resultValue.direction = direction;
+            _resultValue.id = id;
+            _resultValue.maxBurstKbps = maxBurstKbps;
+            _resultValue.maxKbps = maxKbps;
+            _resultValue.qosPolicyId = qosPolicyId;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

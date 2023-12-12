@@ -144,14 +144,14 @@ public final class GetServiceResult {
             return this;
         }
         public GetServiceResult build() {
-            final var o = new GetServiceResult();
-            o.description = description;
-            o.enabled = enabled;
-            o.id = id;
-            o.name = name;
-            o.region = region;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetServiceResult();
+            _resultValue.description = description;
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.region = region;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }
