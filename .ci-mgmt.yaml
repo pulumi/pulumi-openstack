@@ -15,4 +15,3 @@ plugins:
   - name: http
     version: 0.0.1
 team: ecosystem
-javaGenVersion: "v0.9.5"
