@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,8 +188,12 @@ public final class FloatingIpAssociateArgs extends com.pulumi.resources.Resource
         }
 
         public FloatingIpAssociateArgs build() {
-            $.floatingIp = Objects.requireNonNull($.floatingIp, "expected parameter 'floatingIp' to be non-null");
-            $.portId = Objects.requireNonNull($.portId, "expected parameter 'portId' to be non-null");
+            if ($.floatingIp == null) {
+                throw new MissingRequiredPropertyException("FloatingIpAssociateArgs", "floatingIp");
+            }
+            if ($.portId == null) {
+                throw new MissingRequiredPropertyException("FloatingIpAssociateArgs", "portId");
+            }
             return $;
         }
     }

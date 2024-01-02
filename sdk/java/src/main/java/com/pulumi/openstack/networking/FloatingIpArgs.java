@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.List;
@@ -638,7 +639,9 @@ public final class FloatingIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FloatingIpArgs build() {
-            $.pool = Objects.requireNonNull($.pool, "expected parameter 'pool' to be non-null");
+            if ($.pool == null) {
+                throw new MissingRequiredPropertyException("FloatingIpArgs", "pool");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.openstack.loadbalancer;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -417,7 +418,9 @@ public final class QuotaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public QuotaArgs build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("QuotaArgs", "projectId");
+            }
             return $;
         }
     }

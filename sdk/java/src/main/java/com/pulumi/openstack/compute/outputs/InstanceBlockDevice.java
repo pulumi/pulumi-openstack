@@ -4,6 +4,7 @@
 package com.pulumi.openstack.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -228,56 +229,69 @@ public final class InstanceBlockDevice {
 
         @CustomType.Setter
         public Builder bootIndex(@Nullable Integer bootIndex) {
+
             this.bootIndex = bootIndex;
             return this;
         }
         @CustomType.Setter
         public Builder deleteOnTermination(@Nullable Boolean deleteOnTermination) {
+
             this.deleteOnTermination = deleteOnTermination;
             return this;
         }
         @CustomType.Setter
         public Builder destinationType(@Nullable String destinationType) {
+
             this.destinationType = destinationType;
             return this;
         }
         @CustomType.Setter
         public Builder deviceType(@Nullable String deviceType) {
+
             this.deviceType = deviceType;
             return this;
         }
         @CustomType.Setter
         public Builder diskBus(@Nullable String diskBus) {
+
             this.diskBus = diskBus;
             return this;
         }
         @CustomType.Setter
         public Builder guestFormat(@Nullable String guestFormat) {
+
             this.guestFormat = guestFormat;
             return this;
         }
         @CustomType.Setter
         public Builder multiattach(@Nullable Boolean multiattach) {
+
             this.multiattach = multiattach;
             return this;
         }
         @CustomType.Setter
         public Builder sourceType(String sourceType) {
-            this.sourceType = Objects.requireNonNull(sourceType);
+            if (sourceType == null) {
+              throw new MissingRequiredPropertyException("InstanceBlockDevice", "sourceType");
+            }
+            this.sourceType = sourceType;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(@Nullable String uuid) {
+
             this.uuid = uuid;
             return this;
         }
         @CustomType.Setter
         public Builder volumeSize(@Nullable Integer volumeSize) {
+
             this.volumeSize = volumeSize;
             return this;
         }
         @CustomType.Setter
         public Builder volumeType(@Nullable String volumeType) {
+
             this.volumeType = volumeType;
             return this;
         }

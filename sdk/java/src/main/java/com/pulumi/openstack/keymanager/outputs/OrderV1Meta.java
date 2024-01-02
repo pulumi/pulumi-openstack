@@ -4,6 +4,7 @@
 package com.pulumi.openstack.keymanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -115,31 +116,41 @@ public final class OrderV1Meta {
 
         @CustomType.Setter
         public Builder algorithm(String algorithm) {
-            this.algorithm = Objects.requireNonNull(algorithm);
+            if (algorithm == null) {
+              throw new MissingRequiredPropertyException("OrderV1Meta", "algorithm");
+            }
+            this.algorithm = algorithm;
             return this;
         }
         @CustomType.Setter
         public Builder bitLength(Integer bitLength) {
-            this.bitLength = Objects.requireNonNull(bitLength);
+            if (bitLength == null) {
+              throw new MissingRequiredPropertyException("OrderV1Meta", "bitLength");
+            }
+            this.bitLength = bitLength;
             return this;
         }
         @CustomType.Setter
         public Builder expiration(@Nullable String expiration) {
+
             this.expiration = expiration;
             return this;
         }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder payloadContentType(@Nullable String payloadContentType) {
+
             this.payloadContentType = payloadContentType;
             return this;
         }

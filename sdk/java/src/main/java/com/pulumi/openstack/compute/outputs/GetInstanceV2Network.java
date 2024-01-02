@@ -4,6 +4,7 @@
 package com.pulumi.openstack.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,32 +113,50 @@ public final class GetInstanceV2Network {
 
         @CustomType.Setter
         public Builder fixedIpV4(String fixedIpV4) {
-            this.fixedIpV4 = Objects.requireNonNull(fixedIpV4);
+            if (fixedIpV4 == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Network", "fixedIpV4");
+            }
+            this.fixedIpV4 = fixedIpV4;
             return this;
         }
         @CustomType.Setter
         public Builder fixedIpV6(String fixedIpV6) {
-            this.fixedIpV6 = Objects.requireNonNull(fixedIpV6);
+            if (fixedIpV6 == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Network", "fixedIpV6");
+            }
+            this.fixedIpV6 = fixedIpV6;
             return this;
         }
         @CustomType.Setter
         public Builder mac(String mac) {
-            this.mac = Objects.requireNonNull(mac);
+            if (mac == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Network", "mac");
+            }
+            this.mac = mac;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Network", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder port(String port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Network", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(String uuid) {
-            this.uuid = Objects.requireNonNull(uuid);
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Network", "uuid");
+            }
+            this.uuid = uuid;
             return this;
         }
         public GetInstanceV2Network build() {

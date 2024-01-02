@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.networking.outputs.GetPortAllowedAddressPair;
 import com.pulumi.openstack.networking.outputs.GetPortBinding;
 import com.pulumi.openstack.networking.outputs.GetPortExtraDhcpOption;
@@ -341,12 +342,16 @@ public final class GetPortResult {
 
         @CustomType.Setter
         public Builder adminStateUp(@Nullable Boolean adminStateUp) {
+
             this.adminStateUp = adminStateUp;
             return this;
         }
         @CustomType.Setter
         public Builder allFixedIps(List<String> allFixedIps) {
-            this.allFixedIps = Objects.requireNonNull(allFixedIps);
+            if (allFixedIps == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "allFixedIps");
+            }
+            this.allFixedIps = allFixedIps;
             return this;
         }
         public Builder allFixedIps(String... allFixedIps) {
@@ -354,7 +359,10 @@ public final class GetPortResult {
         }
         @CustomType.Setter
         public Builder allSecurityGroupIds(List<String> allSecurityGroupIds) {
-            this.allSecurityGroupIds = Objects.requireNonNull(allSecurityGroupIds);
+            if (allSecurityGroupIds == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "allSecurityGroupIds");
+            }
+            this.allSecurityGroupIds = allSecurityGroupIds;
             return this;
         }
         public Builder allSecurityGroupIds(String... allSecurityGroupIds) {
@@ -362,7 +370,10 @@ public final class GetPortResult {
         }
         @CustomType.Setter
         public Builder allTags(List<String> allTags) {
-            this.allTags = Objects.requireNonNull(allTags);
+            if (allTags == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "allTags");
+            }
+            this.allTags = allTags;
             return this;
         }
         public Builder allTags(String... allTags) {
@@ -370,7 +381,10 @@ public final class GetPortResult {
         }
         @CustomType.Setter
         public Builder allowedAddressPairs(List<GetPortAllowedAddressPair> allowedAddressPairs) {
-            this.allowedAddressPairs = Objects.requireNonNull(allowedAddressPairs);
+            if (allowedAddressPairs == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "allowedAddressPairs");
+            }
+            this.allowedAddressPairs = allowedAddressPairs;
             return this;
         }
         public Builder allowedAddressPairs(GetPortAllowedAddressPair... allowedAddressPairs) {
@@ -378,7 +392,10 @@ public final class GetPortResult {
         }
         @CustomType.Setter
         public Builder bindings(List<GetPortBinding> bindings) {
-            this.bindings = Objects.requireNonNull(bindings);
+            if (bindings == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "bindings");
+            }
+            this.bindings = bindings;
             return this;
         }
         public Builder bindings(GetPortBinding... bindings) {
@@ -386,32 +403,42 @@ public final class GetPortResult {
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder deviceId(@Nullable String deviceId) {
+
             this.deviceId = deviceId;
             return this;
         }
         @CustomType.Setter
         public Builder deviceOwner(@Nullable String deviceOwner) {
+
             this.deviceOwner = deviceOwner;
             return this;
         }
         @CustomType.Setter
         public Builder dnsAssignments(List<Map<String,Object>> dnsAssignments) {
-            this.dnsAssignments = Objects.requireNonNull(dnsAssignments);
+            if (dnsAssignments == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "dnsAssignments");
+            }
+            this.dnsAssignments = dnsAssignments;
             return this;
         }
         @CustomType.Setter
         public Builder dnsName(@Nullable String dnsName) {
+
             this.dnsName = dnsName;
             return this;
         }
         @CustomType.Setter
         public Builder extraDhcpOptions(List<GetPortExtraDhcpOption> extraDhcpOptions) {
-            this.extraDhcpOptions = Objects.requireNonNull(extraDhcpOptions);
+            if (extraDhcpOptions == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "extraDhcpOptions");
+            }
+            this.extraDhcpOptions = extraDhcpOptions;
             return this;
         }
         public Builder extraDhcpOptions(GetPortExtraDhcpOption... extraDhcpOptions) {
@@ -419,46 +446,57 @@ public final class GetPortResult {
         }
         @CustomType.Setter
         public Builder fixedIp(@Nullable String fixedIp) {
+
             this.fixedIp = fixedIp;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPortResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder macAddress(@Nullable String macAddress) {
+
             this.macAddress = macAddress;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networkId(@Nullable String networkId) {
+
             this.networkId = networkId;
             return this;
         }
         @CustomType.Setter
         public Builder portId(@Nullable String portId) {
+
             this.portId = portId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
+
             this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupIds(@Nullable List<String> securityGroupIds) {
+
             this.securityGroupIds = securityGroupIds;
             return this;
         }
@@ -467,11 +505,13 @@ public final class GetPortResult {
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -480,6 +520,7 @@ public final class GetPortResult {
         }
         @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
+
             this.tenantId = tenantId;
             return this;
         }

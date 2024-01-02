@@ -4,6 +4,7 @@
 package com.pulumi.openstack.sharedfilesystem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -161,52 +162,82 @@ public final class GetSnapshotResult {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder shareId(String shareId) {
-            this.shareId = Objects.requireNonNull(shareId);
+            if (shareId == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "shareId");
+            }
+            this.shareId = shareId;
             return this;
         }
         @CustomType.Setter
         public Builder shareProto(String shareProto) {
-            this.shareProto = Objects.requireNonNull(shareProto);
+            if (shareProto == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "shareProto");
+            }
+            this.shareProto = shareProto;
             return this;
         }
         @CustomType.Setter
         public Builder shareSize(Integer shareSize) {
-            this.shareSize = Objects.requireNonNull(shareSize);
+            if (shareSize == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "shareSize");
+            }
+            this.shareSize = shareSize;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetSnapshotResult build() {

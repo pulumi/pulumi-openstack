@@ -4,6 +4,7 @@
 package com.pulumi.openstack.sharedfilesystem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -216,62 +217,96 @@ public final class GetShareNetworkResult {
 
         @CustomType.Setter
         public Builder cidr(String cidr) {
-            this.cidr = Objects.requireNonNull(cidr);
+            if (cidr == null) {
+              throw new MissingRequiredPropertyException("GetShareNetworkResult", "cidr");
+            }
+            this.cidr = cidr;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetShareNetworkResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetShareNetworkResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipVersion(Integer ipVersion) {
-            this.ipVersion = Objects.requireNonNull(ipVersion);
+            if (ipVersion == null) {
+              throw new MissingRequiredPropertyException("GetShareNetworkResult", "ipVersion");
+            }
+            this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetShareNetworkResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetShareNetworkResult", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder neutronNetId(String neutronNetId) {
-            this.neutronNetId = Objects.requireNonNull(neutronNetId);
+            if (neutronNetId == null) {
+              throw new MissingRequiredPropertyException("GetShareNetworkResult", "neutronNetId");
+            }
+            this.neutronNetId = neutronNetId;
             return this;
         }
         @CustomType.Setter
         public Builder neutronSubnetId(String neutronSubnetId) {
-            this.neutronSubnetId = Objects.requireNonNull(neutronSubnetId);
+            if (neutronSubnetId == null) {
+              throw new MissingRequiredPropertyException("GetShareNetworkResult", "neutronSubnetId");
+            }
+            this.neutronSubnetId = neutronSubnetId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetShareNetworkResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetShareNetworkResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder securityServiceId(@Nullable String securityServiceId) {
+
             this.securityServiceId = securityServiceId;
             return this;
         }
         @CustomType.Setter
         public Builder securityServiceIds(List<String> securityServiceIds) {
-            this.securityServiceIds = Objects.requireNonNull(securityServiceIds);
+            if (securityServiceIds == null) {
+              throw new MissingRequiredPropertyException("GetShareNetworkResult", "securityServiceIds");
+            }
+            this.securityServiceIds = securityServiceIds;
             return this;
         }
         public Builder securityServiceIds(String... securityServiceIds) {
@@ -279,7 +314,10 @@ public final class GetShareNetworkResult {
         }
         @CustomType.Setter
         public Builder segmentationId(Integer segmentationId) {
-            this.segmentationId = Objects.requireNonNull(segmentationId);
+            if (segmentationId == null) {
+              throw new MissingRequiredPropertyException("GetShareNetworkResult", "segmentationId");
+            }
+            this.segmentationId = segmentationId;
             return this;
         }
         public GetShareNetworkResult build() {

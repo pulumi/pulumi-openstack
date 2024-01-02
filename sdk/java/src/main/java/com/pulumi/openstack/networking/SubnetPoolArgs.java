@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -727,7 +728,9 @@ public final class SubnetPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SubnetPoolArgs build() {
-            $.prefixes = Objects.requireNonNull($.prefixes, "expected parameter 'prefixes' to be non-null");
+            if ($.prefixes == null) {
+                throw new MissingRequiredPropertyException("SubnetPoolArgs", "prefixes");
+            }
             return $;
         }
     }

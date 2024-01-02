@@ -165,16 +165,19 @@ public final class InstanceSchedulerHint {
 
         @CustomType.Setter
         public Builder additionalProperties(@Nullable Map<String,Object> additionalProperties) {
+
             this.additionalProperties = additionalProperties;
             return this;
         }
         @CustomType.Setter
         public Builder buildNearHostIp(@Nullable String buildNearHostIp) {
+
             this.buildNearHostIp = buildNearHostIp;
             return this;
         }
         @CustomType.Setter
         public Builder differentCells(@Nullable List<String> differentCells) {
+
             this.differentCells = differentCells;
             return this;
         }
@@ -183,6 +186,7 @@ public final class InstanceSchedulerHint {
         }
         @CustomType.Setter
         public Builder differentHosts(@Nullable List<String> differentHosts) {
+
             this.differentHosts = differentHosts;
             return this;
         }
@@ -191,11 +195,13 @@ public final class InstanceSchedulerHint {
         }
         @CustomType.Setter
         public Builder group(@Nullable String group) {
+
             this.group = group;
             return this;
         }
         @CustomType.Setter
         public Builder queries(@Nullable List<String> queries) {
+
             this.queries = queries;
             return this;
         }
@@ -204,6 +210,7 @@ public final class InstanceSchedulerHint {
         }
         @CustomType.Setter
         public Builder sameHosts(@Nullable List<String> sameHosts) {
+
             this.sameHosts = sameHosts;
             return this;
         }
@@ -212,6 +219,7 @@ public final class InstanceSchedulerHint {
         }
         @CustomType.Setter
         public Builder targetCell(@Nullable String targetCell) {
+
             this.targetCell = targetCell;
             return this;
         }

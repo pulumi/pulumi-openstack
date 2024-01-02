@@ -5,6 +5,7 @@ package com.pulumi.openstack.loadbalancer;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.loadbalancer.inputs.MembersMemberArgs;
 import java.lang.String;
 import java.util.List;
@@ -183,7 +184,9 @@ public final class MembersArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MembersArgs build() {
-            $.poolId = Objects.requireNonNull($.poolId, "expected parameter 'poolId' to be non-null");
+            if ($.poolId == null) {
+                throw new MissingRequiredPropertyException("MembersArgs", "poolId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.openstack.sharedfilesystem;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -313,8 +314,12 @@ public final class ShareNetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ShareNetworkArgs build() {
-            $.neutronNetId = Objects.requireNonNull($.neutronNetId, "expected parameter 'neutronNetId' to be non-null");
-            $.neutronSubnetId = Objects.requireNonNull($.neutronSubnetId, "expected parameter 'neutronSubnetId' to be non-null");
+            if ($.neutronNetId == null) {
+                throw new MissingRequiredPropertyException("ShareNetworkArgs", "neutronNetId");
+            }
+            if ($.neutronSubnetId == null) {
+                throw new MissingRequiredPropertyException("ShareNetworkArgs", "neutronSubnetId");
+            }
             return $;
         }
     }

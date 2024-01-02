@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -184,7 +185,10 @@ public final class GetQosPolicyResult {
 
         @CustomType.Setter
         public Builder allTags(List<String> allTags) {
-            this.allTags = Objects.requireNonNull(allTags);
+            if (allTags == null) {
+              throw new MissingRequiredPropertyException("GetQosPolicyResult", "allTags");
+            }
+            this.allTags = allTags;
             return this;
         }
         public Builder allTags(String... allTags) {
@@ -192,51 +196,79 @@ public final class GetQosPolicyResult {
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetQosPolicyResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetQosPolicyResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetQosPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isDefault(Boolean isDefault) {
-            this.isDefault = Objects.requireNonNull(isDefault);
+            if (isDefault == null) {
+              throw new MissingRequiredPropertyException("GetQosPolicyResult", "isDefault");
+            }
+            this.isDefault = isDefault;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetQosPolicyResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetQosPolicyResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetQosPolicyResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder revisionNumber(Integer revisionNumber) {
-            this.revisionNumber = Objects.requireNonNull(revisionNumber);
+            if (revisionNumber == null) {
+              throw new MissingRequiredPropertyException("GetQosPolicyResult", "revisionNumber");
+            }
+            this.revisionNumber = revisionNumber;
             return this;
         }
         @CustomType.Setter
         public Builder shared(Boolean shared) {
-            this.shared = Objects.requireNonNull(shared);
+            if (shared == null) {
+              throw new MissingRequiredPropertyException("GetQosPolicyResult", "shared");
+            }
+            this.shared = shared;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -245,7 +277,10 @@ public final class GetQosPolicyResult {
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetQosPolicyResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         public GetQosPolicyResult build() {

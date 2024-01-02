@@ -5,6 +5,7 @@ package com.pulumi.openstack.vpnaas;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.vpnaas.inputs.SiteConnectionDpdArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -836,12 +837,24 @@ public final class SiteConnectionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public SiteConnectionArgs build() {
-            $.ikepolicyId = Objects.requireNonNull($.ikepolicyId, "expected parameter 'ikepolicyId' to be non-null");
-            $.ipsecpolicyId = Objects.requireNonNull($.ipsecpolicyId, "expected parameter 'ipsecpolicyId' to be non-null");
-            $.peerAddress = Objects.requireNonNull($.peerAddress, "expected parameter 'peerAddress' to be non-null");
-            $.peerId = Objects.requireNonNull($.peerId, "expected parameter 'peerId' to be non-null");
-            $.psk = Objects.requireNonNull($.psk, "expected parameter 'psk' to be non-null");
-            $.vpnserviceId = Objects.requireNonNull($.vpnserviceId, "expected parameter 'vpnserviceId' to be non-null");
+            if ($.ikepolicyId == null) {
+                throw new MissingRequiredPropertyException("SiteConnectionArgs", "ikepolicyId");
+            }
+            if ($.ipsecpolicyId == null) {
+                throw new MissingRequiredPropertyException("SiteConnectionArgs", "ipsecpolicyId");
+            }
+            if ($.peerAddress == null) {
+                throw new MissingRequiredPropertyException("SiteConnectionArgs", "peerAddress");
+            }
+            if ($.peerId == null) {
+                throw new MissingRequiredPropertyException("SiteConnectionArgs", "peerId");
+            }
+            if ($.psk == null) {
+                throw new MissingRequiredPropertyException("SiteConnectionArgs", "psk");
+            }
+            if ($.vpnserviceId == null) {
+                throw new MissingRequiredPropertyException("SiteConnectionArgs", "vpnserviceId");
+            }
             return $;
         }
     }

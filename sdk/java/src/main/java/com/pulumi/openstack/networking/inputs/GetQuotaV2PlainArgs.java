@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -95,7 +96,9 @@ public final class GetQuotaV2PlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetQuotaV2PlainArgs build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("GetQuotaV2PlainArgs", "projectId");
+            }
             return $;
         }
     }

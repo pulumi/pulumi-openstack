@@ -5,6 +5,7 @@ package com.pulumi.openstack.orchestration.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -110,8 +111,12 @@ public final class StackV1StackOutputArgs extends com.pulumi.resources.ResourceA
         }
 
         public StackV1StackOutputArgs build() {
-            $.outputKey = Objects.requireNonNull($.outputKey, "expected parameter 'outputKey' to be non-null");
-            $.outputValue = Objects.requireNonNull($.outputValue, "expected parameter 'outputValue' to be non-null");
+            if ($.outputKey == null) {
+                throw new MissingRequiredPropertyException("StackV1StackOutputArgs", "outputKey");
+            }
+            if ($.outputValue == null) {
+                throw new MissingRequiredPropertyException("StackV1StackOutputArgs", "outputValue");
+            }
             return $;
         }
     }

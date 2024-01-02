@@ -94,21 +94,25 @@ public final class InstanceNetwork {
 
         @CustomType.Setter
         public Builder fixedIpV4(@Nullable String fixedIpV4) {
+
             this.fixedIpV4 = fixedIpV4;
             return this;
         }
         @CustomType.Setter
         public Builder fixedIpV6(@Nullable String fixedIpV6) {
+
             this.fixedIpV6 = fixedIpV6;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable String port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder uuid(@Nullable String uuid) {
+
             this.uuid = uuid;
             return this;
         }

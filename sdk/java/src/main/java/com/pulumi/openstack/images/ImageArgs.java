@@ -5,6 +5,7 @@ package com.pulumi.openstack.images;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -883,8 +884,12 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ImageArgs build() {
-            $.containerFormat = Objects.requireNonNull($.containerFormat, "expected parameter 'containerFormat' to be non-null");
-            $.diskFormat = Objects.requireNonNull($.diskFormat, "expected parameter 'diskFormat' to be non-null");
+            if ($.containerFormat == null) {
+                throw new MissingRequiredPropertyException("ImageArgs", "containerFormat");
+            }
+            if ($.diskFormat == null) {
+                throw new MissingRequiredPropertyException("ImageArgs", "diskFormat");
+            }
             return $;
         }
     }

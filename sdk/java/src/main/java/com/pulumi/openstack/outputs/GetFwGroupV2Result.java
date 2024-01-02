@@ -4,6 +4,7 @@
 package com.pulumi.openstack.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -214,42 +215,56 @@ public final class GetFwGroupV2Result {
 
         @CustomType.Setter
         public Builder adminStateUp(Boolean adminStateUp) {
-            this.adminStateUp = Objects.requireNonNull(adminStateUp);
+            if (adminStateUp == null) {
+              throw new MissingRequiredPropertyException("GetFwGroupV2Result", "adminStateUp");
+            }
+            this.adminStateUp = adminStateUp;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder egressFirewallPolicyId(@Nullable String egressFirewallPolicyId) {
+
             this.egressFirewallPolicyId = egressFirewallPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(@Nullable String groupId) {
+
             this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFwGroupV2Result", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ingressFirewallPolicyId(@Nullable String ingressFirewallPolicyId) {
+
             this.ingressFirewallPolicyId = ingressFirewallPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder ports(List<String> ports) {
-            this.ports = Objects.requireNonNull(ports);
+            if (ports == null) {
+              throw new MissingRequiredPropertyException("GetFwGroupV2Result", "ports");
+            }
+            this.ports = ports;
             return this;
         }
         public Builder ports(String... ports) {
@@ -257,27 +272,42 @@ public final class GetFwGroupV2Result {
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetFwGroupV2Result", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetFwGroupV2Result", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder shared(Boolean shared) {
-            this.shared = Objects.requireNonNull(shared);
+            if (shared == null) {
+              throw new MissingRequiredPropertyException("GetFwGroupV2Result", "shared");
+            }
+            this.shared = shared;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetFwGroupV2Result", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tenantId(String tenantId) {
-            this.tenantId = Objects.requireNonNull(tenantId);
+            if (tenantId == null) {
+              throw new MissingRequiredPropertyException("GetFwGroupV2Result", "tenantId");
+            }
+            this.tenantId = tenantId;
             return this;
         }
         public GetFwGroupV2Result build() {

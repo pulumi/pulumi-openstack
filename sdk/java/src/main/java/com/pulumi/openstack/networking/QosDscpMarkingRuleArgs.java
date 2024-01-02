@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -163,8 +164,12 @@ public final class QosDscpMarkingRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         public QosDscpMarkingRuleArgs build() {
-            $.dscpMark = Objects.requireNonNull($.dscpMark, "expected parameter 'dscpMark' to be non-null");
-            $.qosPolicyId = Objects.requireNonNull($.qosPolicyId, "expected parameter 'qosPolicyId' to be non-null");
+            if ($.dscpMark == null) {
+                throw new MissingRequiredPropertyException("QosDscpMarkingRuleArgs", "dscpMark");
+            }
+            if ($.qosPolicyId == null) {
+                throw new MissingRequiredPropertyException("QosDscpMarkingRuleArgs", "qosPolicyId");
+            }
             return $;
         }
     }

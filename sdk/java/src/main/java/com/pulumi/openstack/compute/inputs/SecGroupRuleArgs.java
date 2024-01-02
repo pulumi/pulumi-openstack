@@ -5,6 +5,7 @@ package com.pulumi.openstack.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -320,9 +321,15 @@ public final class SecGroupRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SecGroupRuleArgs build() {
-            $.fromPort = Objects.requireNonNull($.fromPort, "expected parameter 'fromPort' to be non-null");
-            $.ipProtocol = Objects.requireNonNull($.ipProtocol, "expected parameter 'ipProtocol' to be non-null");
-            $.toPort = Objects.requireNonNull($.toPort, "expected parameter 'toPort' to be non-null");
+            if ($.fromPort == null) {
+                throw new MissingRequiredPropertyException("SecGroupRuleArgs", "fromPort");
+            }
+            if ($.ipProtocol == null) {
+                throw new MissingRequiredPropertyException("SecGroupRuleArgs", "ipProtocol");
+            }
+            if ($.toPort == null) {
+                throw new MissingRequiredPropertyException("SecGroupRuleArgs", "toPort");
+            }
             return $;
         }
     }

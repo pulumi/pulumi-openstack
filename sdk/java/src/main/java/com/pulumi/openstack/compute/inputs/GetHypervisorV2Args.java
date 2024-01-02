@@ -5,6 +5,7 @@ package com.pulumi.openstack.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class GetHypervisorV2Args extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetHypervisorV2Args build() {
-            $.hostname = Objects.requireNonNull($.hostname, "expected parameter 'hostname' to be non-null");
+            if ($.hostname == null) {
+                throw new MissingRequiredPropertyException("GetHypervisorV2Args", "hostname");
+            }
             return $;
         }
     }

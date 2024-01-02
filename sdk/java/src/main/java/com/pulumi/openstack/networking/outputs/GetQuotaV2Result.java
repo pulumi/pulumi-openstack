@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -191,62 +192,98 @@ public final class GetQuotaV2Result {
 
         @CustomType.Setter
         public Builder floatingip(Integer floatingip) {
-            this.floatingip = Objects.requireNonNull(floatingip);
+            if (floatingip == null) {
+              throw new MissingRequiredPropertyException("GetQuotaV2Result", "floatingip");
+            }
+            this.floatingip = floatingip;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetQuotaV2Result", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder network(Integer network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetQuotaV2Result", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetQuotaV2Result", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetQuotaV2Result", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder rbacPolicy(Integer rbacPolicy) {
-            this.rbacPolicy = Objects.requireNonNull(rbacPolicy);
+            if (rbacPolicy == null) {
+              throw new MissingRequiredPropertyException("GetQuotaV2Result", "rbacPolicy");
+            }
+            this.rbacPolicy = rbacPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetQuotaV2Result", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder router(Integer router) {
-            this.router = Objects.requireNonNull(router);
+            if (router == null) {
+              throw new MissingRequiredPropertyException("GetQuotaV2Result", "router");
+            }
+            this.router = router;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroup(Integer securityGroup) {
-            this.securityGroup = Objects.requireNonNull(securityGroup);
+            if (securityGroup == null) {
+              throw new MissingRequiredPropertyException("GetQuotaV2Result", "securityGroup");
+            }
+            this.securityGroup = securityGroup;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupRule(Integer securityGroupRule) {
-            this.securityGroupRule = Objects.requireNonNull(securityGroupRule);
+            if (securityGroupRule == null) {
+              throw new MissingRequiredPropertyException("GetQuotaV2Result", "securityGroupRule");
+            }
+            this.securityGroupRule = securityGroupRule;
             return this;
         }
         @CustomType.Setter
         public Builder subnet(Integer subnet) {
-            this.subnet = Objects.requireNonNull(subnet);
+            if (subnet == null) {
+              throw new MissingRequiredPropertyException("GetQuotaV2Result", "subnet");
+            }
+            this.subnet = subnet;
             return this;
         }
         @CustomType.Setter
         public Builder subnetpool(Integer subnetpool) {
-            this.subnetpool = Objects.requireNonNull(subnetpool);
+            if (subnetpool == null) {
+              throw new MissingRequiredPropertyException("GetQuotaV2Result", "subnetpool");
+            }
+            this.subnetpool = subnetpool;
             return this;
         }
         public GetQuotaV2Result build() {

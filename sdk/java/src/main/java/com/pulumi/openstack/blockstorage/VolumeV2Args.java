@@ -5,6 +5,7 @@ package com.pulumi.openstack.blockstorage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.blockstorage.inputs.VolumeV2SchedulerHintArgs;
 import java.lang.Integer;
 import java.lang.Object;
@@ -588,7 +589,9 @@ public final class VolumeV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         public VolumeV2Args build() {
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
+            if ($.size == null) {
+                throw new MissingRequiredPropertyException("VolumeV2Args", "size");
+            }
             return $;
         }
     }

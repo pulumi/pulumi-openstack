@@ -36,6 +36,7 @@ public final class ContainerV1Acl {
 
         @CustomType.Setter
         public Builder read(@Nullable ContainerV1AclRead read) {
+
             this.read = read;
             return this;
         }

@@ -92,21 +92,25 @@ public final class ContainerV1AclRead {
 
         @CustomType.Setter
         public Builder createdAt(@Nullable String createdAt) {
+
             this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder projectAccess(@Nullable Boolean projectAccess) {
+
             this.projectAccess = projectAccess;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(@Nullable String updatedAt) {
+
             this.updatedAt = updatedAt;
             return this;
         }
         @CustomType.Setter
         public Builder users(@Nullable List<String> users) {
+
             this.users = users;
             return this;
         }

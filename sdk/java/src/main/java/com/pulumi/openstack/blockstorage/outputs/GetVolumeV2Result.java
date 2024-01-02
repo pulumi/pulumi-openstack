@@ -4,6 +4,7 @@
 package com.pulumi.openstack.blockstorage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -157,47 +158,74 @@ public final class GetVolumeV2Result {
 
         @CustomType.Setter
         public Builder bootable(String bootable) {
-            this.bootable = Objects.requireNonNull(bootable);
+            if (bootable == null) {
+              throw new MissingRequiredPropertyException("GetVolumeV2Result", "bootable");
+            }
+            this.bootable = bootable;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVolumeV2Result", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(Map<String,Object> metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetVolumeV2Result", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetVolumeV2Result", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetVolumeV2Result", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetVolumeV2Result", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder sourceVolumeId(String sourceVolumeId) {
-            this.sourceVolumeId = Objects.requireNonNull(sourceVolumeId);
+            if (sourceVolumeId == null) {
+              throw new MissingRequiredPropertyException("GetVolumeV2Result", "sourceVolumeId");
+            }
+            this.sourceVolumeId = sourceVolumeId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetVolumeV2Result", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder volumeType(String volumeType) {
-            this.volumeType = Objects.requireNonNull(volumeType);
+            if (volumeType == null) {
+              throw new MissingRequiredPropertyException("GetVolumeV2Result", "volumeType");
+            }
+            this.volumeType = volumeType;
             return this;
         }
         public GetVolumeV2Result build() {

@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.networking.outputs.GetTrunkSubPort;
 import java.lang.Boolean;
 import java.lang.String;
@@ -139,12 +140,16 @@ public final class GetTrunkResult {
 
         @CustomType.Setter
         public Builder adminStateUp(@Nullable Boolean adminStateUp) {
+
             this.adminStateUp = adminStateUp;
             return this;
         }
         @CustomType.Setter
         public Builder allTags(List<String> allTags) {
-            this.allTags = Objects.requireNonNull(allTags);
+            if (allTags == null) {
+              throw new MissingRequiredPropertyException("GetTrunkResult", "allTags");
+            }
+            this.allTags = allTags;
             return this;
         }
         public Builder allTags(String... allTags) {
@@ -152,42 +157,58 @@ public final class GetTrunkResult {
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTrunkResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder portId(@Nullable String portId) {
+
             this.portId = portId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetTrunkResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetTrunkResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder subPorts(List<GetTrunkSubPort> subPorts) {
-            this.subPorts = Objects.requireNonNull(subPorts);
+            if (subPorts == null) {
+              throw new MissingRequiredPropertyException("GetTrunkResult", "subPorts");
+            }
+            this.subPorts = subPorts;
             return this;
         }
         public Builder subPorts(GetTrunkSubPort... subPorts) {
@@ -195,6 +216,7 @@ public final class GetTrunkResult {
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -203,6 +225,7 @@ public final class GetTrunkResult {
         }
         @CustomType.Setter
         public Builder trunkId(@Nullable String trunkId) {
+
             this.trunkId = trunkId;
             return this;
         }

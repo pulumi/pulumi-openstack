@@ -5,6 +5,7 @@ package com.pulumi.openstack.blockstorage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -460,7 +461,9 @@ public final class QuoteSetV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         public QuoteSetV2Args build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("QuoteSetV2Args", "projectId");
+            }
             return $;
         }
     }

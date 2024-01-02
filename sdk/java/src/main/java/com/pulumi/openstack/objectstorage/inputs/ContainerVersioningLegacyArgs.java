@@ -5,6 +5,7 @@ package com.pulumi.openstack.objectstorage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class ContainerVersioningLegacyArgs extends com.pulumi.resources.Re
         }
 
         public ContainerVersioningLegacyArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("ContainerVersioningLegacyArgs", "location");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ContainerVersioningLegacyArgs", "type");
+            }
             return $;
         }
     }

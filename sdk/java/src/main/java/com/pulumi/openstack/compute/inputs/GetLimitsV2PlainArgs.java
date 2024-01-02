@@ -4,6 +4,7 @@
 package com.pulumi.openstack.compute.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -95,7 +96,9 @@ public final class GetLimitsV2PlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetLimitsV2PlainArgs build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("GetLimitsV2PlainArgs", "projectId");
+            }
             return $;
         }
     }

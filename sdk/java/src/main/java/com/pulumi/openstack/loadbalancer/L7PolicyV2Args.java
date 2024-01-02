@@ -5,6 +5,7 @@ package com.pulumi.openstack.loadbalancer;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -455,8 +456,12 @@ public final class L7PolicyV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         public L7PolicyV2Args build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.listenerId = Objects.requireNonNull($.listenerId, "expected parameter 'listenerId' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("L7PolicyV2Args", "action");
+            }
+            if ($.listenerId == null) {
+                throw new MissingRequiredPropertyException("L7PolicyV2Args", "listenerId");
+            }
             return $;
         }
     }

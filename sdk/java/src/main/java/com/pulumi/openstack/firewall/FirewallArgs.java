@@ -5,6 +5,7 @@ package com.pulumi.openstack.firewall;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -444,7 +445,9 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FirewallArgs build() {
-            $.policyId = Objects.requireNonNull($.policyId, "expected parameter 'policyId' to be non-null");
+            if ($.policyId == null) {
+                throw new MissingRequiredPropertyException("FirewallArgs", "policyId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.openstack.loadbalancer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -188,51 +189,65 @@ public final class MembersMember {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("MembersMember", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder adminStateUp(@Nullable Boolean adminStateUp) {
+
             this.adminStateUp = adminStateUp;
             return this;
         }
         @CustomType.Setter
         public Builder backup(@Nullable Boolean backup) {
+
             this.backup = backup;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder monitorAddress(@Nullable String monitorAddress) {
+
             this.monitorAddress = monitorAddress;
             return this;
         }
         @CustomType.Setter
         public Builder monitorPort(@Nullable Integer monitorPort) {
+
             this.monitorPort = monitorPort;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder protocolPort(Integer protocolPort) {
-            this.protocolPort = Objects.requireNonNull(protocolPort);
+            if (protocolPort == null) {
+              throw new MissingRequiredPropertyException("MembersMember", "protocolPort");
+            }
+            this.protocolPort = protocolPort;
             return this;
         }
         @CustomType.Setter
         public Builder subnetId(@Nullable String subnetId) {
+
             this.subnetId = subnetId;
             return this;
         }
         @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
+
             this.weight = weight;
             return this;
         }

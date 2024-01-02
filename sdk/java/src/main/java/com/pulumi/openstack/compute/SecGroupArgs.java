@@ -5,6 +5,7 @@ package com.pulumi.openstack.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.compute.inputs.SecGroupRuleArgs;
 import java.lang.String;
 import java.util.List;
@@ -234,7 +235,9 @@ public final class SecGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SecGroupArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("SecGroupArgs", "description");
+            }
             return $;
         }
     }

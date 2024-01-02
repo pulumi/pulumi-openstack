@@ -48,16 +48,19 @@ public final class VolumeV1Attachment {
 
         @CustomType.Setter
         public Builder device(@Nullable String device) {
+
             this.device = device;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
+
             this.instanceId = instanceId;
             return this;
         }

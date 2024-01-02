@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -47,17 +48,26 @@ public final class GetNetworkSegment {
 
         @CustomType.Setter
         public Builder networkType(String networkType) {
-            this.networkType = Objects.requireNonNull(networkType);
+            if (networkType == null) {
+              throw new MissingRequiredPropertyException("GetNetworkSegment", "networkType");
+            }
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder physicalNetwork(String physicalNetwork) {
-            this.physicalNetwork = Objects.requireNonNull(physicalNetwork);
+            if (physicalNetwork == null) {
+              throw new MissingRequiredPropertyException("GetNetworkSegment", "physicalNetwork");
+            }
+            this.physicalNetwork = physicalNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder segmentationId(Integer segmentationId) {
-            this.segmentationId = Objects.requireNonNull(segmentationId);
+            if (segmentationId == null) {
+              throw new MissingRequiredPropertyException("GetNetworkSegment", "segmentationId");
+            }
+            this.segmentationId = segmentationId;
             return this;
         }
         public GetNetworkSegment build() {

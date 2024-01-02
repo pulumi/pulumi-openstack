@@ -5,6 +5,7 @@ package com.pulumi.openstack.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class InstancePersonalityArgs extends com.pulumi.resources.Resource
         }
 
         public InstancePersonalityArgs build() {
-            $.content = Objects.requireNonNull($.content, "expected parameter 'content' to be non-null");
-            $.file = Objects.requireNonNull($.file, "expected parameter 'file' to be non-null");
+            if ($.content == null) {
+                throw new MissingRequiredPropertyException("InstancePersonalityArgs", "content");
+            }
+            if ($.file == null) {
+                throw new MissingRequiredPropertyException("InstancePersonalityArgs", "file");
+            }
             return $;
         }
     }

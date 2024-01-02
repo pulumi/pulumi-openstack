@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class SubnetHostRoute {
 
         @CustomType.Setter
         public Builder destinationCidr(String destinationCidr) {
-            this.destinationCidr = Objects.requireNonNull(destinationCidr);
+            if (destinationCidr == null) {
+              throw new MissingRequiredPropertyException("SubnetHostRoute", "destinationCidr");
+            }
+            this.destinationCidr = destinationCidr;
             return this;
         }
         @CustomType.Setter
         public Builder nextHop(String nextHop) {
-            this.nextHop = Objects.requireNonNull(nextHop);
+            if (nextHop == null) {
+              throw new MissingRequiredPropertyException("SubnetHostRoute", "nextHop");
+            }
+            this.nextHop = nextHop;
             return this;
         }
         public SubnetHostRoute build() {

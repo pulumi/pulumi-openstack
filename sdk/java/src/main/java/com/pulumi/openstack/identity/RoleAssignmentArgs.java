@@ -5,6 +5,7 @@ package com.pulumi.openstack.identity;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -241,7 +242,9 @@ public final class RoleAssignmentArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public RoleAssignmentArgs build() {
-            $.roleId = Objects.requireNonNull($.roleId, "expected parameter 'roleId' to be non-null");
+            if ($.roleId == null) {
+                throw new MissingRequiredPropertyException("RoleAssignmentArgs", "roleId");
+            }
             return $;
         }
     }

@@ -110,26 +110,31 @@ public final class PortBinding {
 
         @CustomType.Setter
         public Builder hostId(@Nullable String hostId) {
+
             this.hostId = hostId;
             return this;
         }
         @CustomType.Setter
         public Builder profile(@Nullable String profile) {
+
             this.profile = profile;
             return this;
         }
         @CustomType.Setter
         public Builder vifDetails(@Nullable Map<String,Object> vifDetails) {
+
             this.vifDetails = vifDetails;
             return this;
         }
         @CustomType.Setter
         public Builder vifType(@Nullable String vifType) {
+
             this.vifType = vifType;
             return this;
         }
         @CustomType.Setter
         public Builder vnicType(@Nullable String vnicType) {
+
             this.vnicType = vnicType;
             return this;
         }

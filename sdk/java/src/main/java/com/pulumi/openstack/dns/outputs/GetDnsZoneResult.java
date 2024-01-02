@@ -4,6 +4,7 @@
 package com.pulumi.openstack.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -278,37 +279,52 @@ public final class GetDnsZoneResult {
 
         @CustomType.Setter
         public Builder allProjects(@Nullable String allProjects) {
+
             this.allProjects = allProjects;
             return this;
         }
         @CustomType.Setter
         public Builder attributes(Map<String,Object> attributes) {
-            this.attributes = Objects.requireNonNull(attributes);
+            if (attributes == null) {
+              throw new MissingRequiredPropertyException("GetDnsZoneResult", "attributes");
+            }
+            this.attributes = attributes;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetDnsZoneResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder email(@Nullable String email) {
+
             this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDnsZoneResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder masters(List<String> masters) {
-            this.masters = Objects.requireNonNull(masters);
+            if (masters == null) {
+              throw new MissingRequiredPropertyException("GetDnsZoneResult", "masters");
+            }
+            this.masters = masters;
             return this;
         }
         public Builder masters(String... masters) {
@@ -316,57 +332,82 @@ public final class GetDnsZoneResult {
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder poolId(String poolId) {
-            this.poolId = Objects.requireNonNull(poolId);
+            if (poolId == null) {
+              throw new MissingRequiredPropertyException("GetDnsZoneResult", "poolId");
+            }
+            this.poolId = poolId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetDnsZoneResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetDnsZoneResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder serial(Integer serial) {
-            this.serial = Objects.requireNonNull(serial);
+            if (serial == null) {
+              throw new MissingRequiredPropertyException("GetDnsZoneResult", "serial");
+            }
+            this.serial = serial;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder transferredAt(String transferredAt) {
-            this.transferredAt = Objects.requireNonNull(transferredAt);
+            if (transferredAt == null) {
+              throw new MissingRequiredPropertyException("GetDnsZoneResult", "transferredAt");
+            }
+            this.transferredAt = transferredAt;
             return this;
         }
         @CustomType.Setter
         public Builder ttl(@Nullable Integer ttl) {
+
             this.ttl = ttl;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetDnsZoneResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         @CustomType.Setter
         public Builder version(Integer version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetDnsZoneResult", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetDnsZoneResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class PortAllowedAddressPairArgs extends com.pulumi.resources.Resou
         }
 
         public PortAllowedAddressPairArgs build() {
-            $.ipAddress = Objects.requireNonNull($.ipAddress, "expected parameter 'ipAddress' to be non-null");
+            if ($.ipAddress == null) {
+                throw new MissingRequiredPropertyException("PortAllowedAddressPairArgs", "ipAddress");
+            }
             return $;
         }
     }
