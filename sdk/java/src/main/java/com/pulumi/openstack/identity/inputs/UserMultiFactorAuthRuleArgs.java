@@ -5,6 +5,7 @@ package com.pulumi.openstack.identity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -90,7 +91,9 @@ public final class UserMultiFactorAuthRuleArgs extends com.pulumi.resources.Reso
         }
 
         public UserMultiFactorAuthRuleArgs build() {
-            $.rules = Objects.requireNonNull($.rules, "expected parameter 'rules' to be non-null");
+            if ($.rules == null) {
+                throw new MissingRequiredPropertyException("UserMultiFactorAuthRuleArgs", "rules");
+            }
             return $;
         }
     }

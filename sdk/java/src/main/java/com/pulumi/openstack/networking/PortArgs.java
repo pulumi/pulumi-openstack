@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.networking.inputs.PortAllowedAddressPairArgs;
 import com.pulumi.openstack.networking.inputs.PortBindingArgs;
 import com.pulumi.openstack.networking.inputs.PortExtraDhcpOptionArgs;
@@ -1014,7 +1015,9 @@ public final class PortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PortArgs build() {
-            $.networkId = Objects.requireNonNull($.networkId, "expected parameter 'networkId' to be non-null");
+            if ($.networkId == null) {
+                throw new MissingRequiredPropertyException("PortArgs", "networkId");
+            }
             return $;
         }
     }

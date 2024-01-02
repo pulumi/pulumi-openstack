@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -154,42 +155,54 @@ public final class GetPortIdsResult {
 
         @CustomType.Setter
         public Builder adminStateUp(@Nullable Boolean adminStateUp) {
+
             this.adminStateUp = adminStateUp;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder deviceId(@Nullable String deviceId) {
+
             this.deviceId = deviceId;
             return this;
         }
         @CustomType.Setter
         public Builder deviceOwner(@Nullable String deviceOwner) {
+
             this.deviceOwner = deviceOwner;
             return this;
         }
         @CustomType.Setter
         public Builder dnsName(@Nullable String dnsName) {
+
             this.dnsName = dnsName;
             return this;
         }
         @CustomType.Setter
         public Builder fixedIp(@Nullable String fixedIp) {
+
             this.fixedIp = fixedIp;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPortIdsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetPortIdsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -197,31 +210,37 @@ public final class GetPortIdsResult {
         }
         @CustomType.Setter
         public Builder macAddress(@Nullable String macAddress) {
+
             this.macAddress = macAddress;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networkId(@Nullable String networkId) {
+
             this.networkId = networkId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
+
             this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupIds(@Nullable List<String> securityGroupIds) {
+
             this.securityGroupIds = securityGroupIds;
             return this;
         }
@@ -230,21 +249,25 @@ public final class GetPortIdsResult {
         }
         @CustomType.Setter
         public Builder sortDirection(@Nullable String sortDirection) {
+
             this.sortDirection = sortDirection;
             return this;
         }
         @CustomType.Setter
         public Builder sortKey(@Nullable String sortKey) {
+
             this.sortKey = sortKey;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -253,6 +276,7 @@ public final class GetPortIdsResult {
         }
         @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
+
             this.tenantId = tenantId;
             return this;
         }

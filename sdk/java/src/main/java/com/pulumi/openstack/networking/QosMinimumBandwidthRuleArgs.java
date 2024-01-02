@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -204,8 +205,12 @@ public final class QosMinimumBandwidthRuleArgs extends com.pulumi.resources.Reso
         }
 
         public QosMinimumBandwidthRuleArgs build() {
-            $.minKbps = Objects.requireNonNull($.minKbps, "expected parameter 'minKbps' to be non-null");
-            $.qosPolicyId = Objects.requireNonNull($.qosPolicyId, "expected parameter 'qosPolicyId' to be non-null");
+            if ($.minKbps == null) {
+                throw new MissingRequiredPropertyException("QosMinimumBandwidthRuleArgs", "minKbps");
+            }
+            if ($.qosPolicyId == null) {
+                throw new MissingRequiredPropertyException("QosMinimumBandwidthRuleArgs", "qosPolicyId");
+            }
             return $;
         }
     }

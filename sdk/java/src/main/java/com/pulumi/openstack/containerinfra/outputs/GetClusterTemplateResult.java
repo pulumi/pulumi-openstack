@@ -4,6 +4,7 @@
 package com.pulumi.openstack.containerinfra.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -532,172 +533,274 @@ public final class GetClusterTemplateResult {
 
         @CustomType.Setter
         public Builder apiserverPort(Integer apiserverPort) {
-            this.apiserverPort = Objects.requireNonNull(apiserverPort);
+            if (apiserverPort == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "apiserverPort");
+            }
+            this.apiserverPort = apiserverPort;
             return this;
         }
         @CustomType.Setter
         public Builder clusterDistro(String clusterDistro) {
-            this.clusterDistro = Objects.requireNonNull(clusterDistro);
+            if (clusterDistro == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "clusterDistro");
+            }
+            this.clusterDistro = clusterDistro;
             return this;
         }
         @CustomType.Setter
         public Builder coe(String coe) {
-            this.coe = Objects.requireNonNull(coe);
+            if (coe == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "coe");
+            }
+            this.coe = coe;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder dnsNameserver(String dnsNameserver) {
-            this.dnsNameserver = Objects.requireNonNull(dnsNameserver);
+            if (dnsNameserver == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "dnsNameserver");
+            }
+            this.dnsNameserver = dnsNameserver;
             return this;
         }
         @CustomType.Setter
         public Builder dockerStorageDriver(String dockerStorageDriver) {
-            this.dockerStorageDriver = Objects.requireNonNull(dockerStorageDriver);
+            if (dockerStorageDriver == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "dockerStorageDriver");
+            }
+            this.dockerStorageDriver = dockerStorageDriver;
             return this;
         }
         @CustomType.Setter
         public Builder dockerVolumeSize(Integer dockerVolumeSize) {
-            this.dockerVolumeSize = Objects.requireNonNull(dockerVolumeSize);
+            if (dockerVolumeSize == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "dockerVolumeSize");
+            }
+            this.dockerVolumeSize = dockerVolumeSize;
             return this;
         }
         @CustomType.Setter
         public Builder externalNetworkId(String externalNetworkId) {
-            this.externalNetworkId = Objects.requireNonNull(externalNetworkId);
+            if (externalNetworkId == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "externalNetworkId");
+            }
+            this.externalNetworkId = externalNetworkId;
             return this;
         }
         @CustomType.Setter
         public Builder fixedNetwork(String fixedNetwork) {
-            this.fixedNetwork = Objects.requireNonNull(fixedNetwork);
+            if (fixedNetwork == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "fixedNetwork");
+            }
+            this.fixedNetwork = fixedNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder fixedSubnet(String fixedSubnet) {
-            this.fixedSubnet = Objects.requireNonNull(fixedSubnet);
+            if (fixedSubnet == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "fixedSubnet");
+            }
+            this.fixedSubnet = fixedSubnet;
             return this;
         }
         @CustomType.Setter
         public Builder flavor(String flavor) {
-            this.flavor = Objects.requireNonNull(flavor);
+            if (flavor == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "flavor");
+            }
+            this.flavor = flavor;
             return this;
         }
         @CustomType.Setter
         public Builder floatingIpEnabled(Boolean floatingIpEnabled) {
-            this.floatingIpEnabled = Objects.requireNonNull(floatingIpEnabled);
+            if (floatingIpEnabled == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "floatingIpEnabled");
+            }
+            this.floatingIpEnabled = floatingIpEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder hidden(Boolean hidden) {
-            this.hidden = Objects.requireNonNull(hidden);
+            if (hidden == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "hidden");
+            }
+            this.hidden = hidden;
             return this;
         }
         @CustomType.Setter
         public Builder httpProxy(String httpProxy) {
-            this.httpProxy = Objects.requireNonNull(httpProxy);
+            if (httpProxy == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "httpProxy");
+            }
+            this.httpProxy = httpProxy;
             return this;
         }
         @CustomType.Setter
         public Builder httpsProxy(String httpsProxy) {
-            this.httpsProxy = Objects.requireNonNull(httpsProxy);
+            if (httpsProxy == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "httpsProxy");
+            }
+            this.httpsProxy = httpsProxy;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "image");
+            }
+            this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder insecureRegistry(String insecureRegistry) {
-            this.insecureRegistry = Objects.requireNonNull(insecureRegistry);
+            if (insecureRegistry == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "insecureRegistry");
+            }
+            this.insecureRegistry = insecureRegistry;
             return this;
         }
         @CustomType.Setter
         public Builder keypairId(String keypairId) {
-            this.keypairId = Objects.requireNonNull(keypairId);
+            if (keypairId == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "keypairId");
+            }
+            this.keypairId = keypairId;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder masterFlavor(String masterFlavor) {
-            this.masterFlavor = Objects.requireNonNull(masterFlavor);
+            if (masterFlavor == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "masterFlavor");
+            }
+            this.masterFlavor = masterFlavor;
             return this;
         }
         @CustomType.Setter
         public Builder masterLbEnabled(Boolean masterLbEnabled) {
-            this.masterLbEnabled = Objects.requireNonNull(masterLbEnabled);
+            if (masterLbEnabled == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "masterLbEnabled");
+            }
+            this.masterLbEnabled = masterLbEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networkDriver(String networkDriver) {
-            this.networkDriver = Objects.requireNonNull(networkDriver);
+            if (networkDriver == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "networkDriver");
+            }
+            this.networkDriver = networkDriver;
             return this;
         }
         @CustomType.Setter
         public Builder noProxy(String noProxy) {
-            this.noProxy = Objects.requireNonNull(noProxy);
+            if (noProxy == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "noProxy");
+            }
+            this.noProxy = noProxy;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter("public")
         public Builder public_(Boolean public_) {
-            this.public_ = Objects.requireNonNull(public_);
+            if (public_ == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "public_");
+            }
+            this.public_ = public_;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder registryEnabled(Boolean registryEnabled) {
-            this.registryEnabled = Objects.requireNonNull(registryEnabled);
+            if (registryEnabled == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "registryEnabled");
+            }
+            this.registryEnabled = registryEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder serverType(String serverType) {
-            this.serverType = Objects.requireNonNull(serverType);
+            if (serverType == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "serverType");
+            }
+            this.serverType = serverType;
             return this;
         }
         @CustomType.Setter
         public Builder tlsDisabled(Boolean tlsDisabled) {
-            this.tlsDisabled = Objects.requireNonNull(tlsDisabled);
+            if (tlsDisabled == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "tlsDisabled");
+            }
+            this.tlsDisabled = tlsDisabled;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         @CustomType.Setter
         public Builder userId(String userId) {
-            this.userId = Objects.requireNonNull(userId);
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "userId");
+            }
+            this.userId = userId;
             return this;
         }
         @CustomType.Setter
         public Builder volumeDriver(String volumeDriver) {
-            this.volumeDriver = Objects.requireNonNull(volumeDriver);
+            if (volumeDriver == null) {
+              throw new MissingRequiredPropertyException("GetClusterTemplateResult", "volumeDriver");
+            }
+            this.volumeDriver = volumeDriver;
             return this;
         }
         public GetClusterTemplateResult build() {

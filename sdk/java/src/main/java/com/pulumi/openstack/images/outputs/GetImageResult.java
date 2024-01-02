@@ -4,6 +4,7 @@
 package com.pulumi.openstack.images.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -331,132 +332,186 @@ public final class GetImageResult {
 
         @CustomType.Setter
         public Builder checksum(String checksum) {
-            this.checksum = Objects.requireNonNull(checksum);
+            if (checksum == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "checksum");
+            }
+            this.checksum = checksum;
             return this;
         }
         @CustomType.Setter
         public Builder containerFormat(String containerFormat) {
-            this.containerFormat = Objects.requireNonNull(containerFormat);
+            if (containerFormat == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "containerFormat");
+            }
+            this.containerFormat = containerFormat;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder diskFormat(String diskFormat) {
-            this.diskFormat = Objects.requireNonNull(diskFormat);
+            if (diskFormat == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "diskFormat");
+            }
+            this.diskFormat = diskFormat;
             return this;
         }
         @CustomType.Setter
         public Builder file(String file) {
-            this.file = Objects.requireNonNull(file);
+            if (file == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "file");
+            }
+            this.file = file;
             return this;
         }
         @CustomType.Setter
         public Builder hidden(@Nullable Boolean hidden) {
+
             this.hidden = hidden;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder memberStatus(@Nullable String memberStatus) {
+
             this.memberStatus = memberStatus;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(Map<String,Object> metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder minDiskGb(Integer minDiskGb) {
-            this.minDiskGb = Objects.requireNonNull(minDiskGb);
+            if (minDiskGb == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "minDiskGb");
+            }
+            this.minDiskGb = minDiskGb;
             return this;
         }
         @CustomType.Setter
         public Builder minRamMb(Integer minRamMb) {
-            this.minRamMb = Objects.requireNonNull(minRamMb);
+            if (minRamMb == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "minRamMb");
+            }
+            this.minRamMb = minRamMb;
             return this;
         }
         @CustomType.Setter
         public Builder mostRecent(@Nullable Boolean mostRecent) {
+
             this.mostRecent = mostRecent;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder owner(@Nullable String owner) {
+
             this.owner = owner;
             return this;
         }
         @CustomType.Setter
         public Builder properties(@Nullable Map<String,Object> properties) {
+
             this.properties = properties;
             return this;
         }
         @CustomType.Setter("protected")
         public Builder protected_(Boolean protected_) {
-            this.protected_ = Objects.requireNonNull(protected_);
+            if (protected_ == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "protected_");
+            }
+            this.protected_ = protected_;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder schema(String schema) {
-            this.schema = Objects.requireNonNull(schema);
+            if (schema == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "schema");
+            }
+            this.schema = schema;
             return this;
         }
         @CustomType.Setter
         public Builder sizeBytes(Integer sizeBytes) {
-            this.sizeBytes = Objects.requireNonNull(sizeBytes);
+            if (sizeBytes == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "sizeBytes");
+            }
+            this.sizeBytes = sizeBytes;
             return this;
         }
         @CustomType.Setter
         public Builder sizeMax(@Nullable Integer sizeMax) {
+
             this.sizeMax = sizeMax;
             return this;
         }
         @CustomType.Setter
         public Builder sizeMin(@Nullable Integer sizeMin) {
+
             this.sizeMin = sizeMin;
             return this;
         }
         @CustomType.Setter
         public Builder sortDirection(@Nullable String sortDirection) {
+
             this.sortDirection = sortDirection;
             return this;
         }
         @CustomType.Setter
         public Builder sortKey(@Nullable String sortKey) {
+
             this.sortKey = sortKey;
             return this;
         }
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -464,11 +519,15 @@ public final class GetImageResult {
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetImageResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         @CustomType.Setter
         public Builder visibility(@Nullable String visibility) {
+
             this.visibility = visibility;
             return this;
         }

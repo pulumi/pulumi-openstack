@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.networking.outputs.GetSubnetAllocationPool;
 import com.pulumi.openstack.networking.outputs.GetSubnetHostRoute;
 import java.lang.Boolean;
@@ -243,7 +244,10 @@ public final class GetSubnetResult {
 
         @CustomType.Setter
         public Builder allTags(List<String> allTags) {
-            this.allTags = Objects.requireNonNull(allTags);
+            if (allTags == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "allTags");
+            }
+            this.allTags = allTags;
             return this;
         }
         public Builder allTags(String... allTags) {
@@ -251,7 +255,10 @@ public final class GetSubnetResult {
         }
         @CustomType.Setter
         public Builder allocationPools(List<GetSubnetAllocationPool> allocationPools) {
-            this.allocationPools = Objects.requireNonNull(allocationPools);
+            if (allocationPools == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "allocationPools");
+            }
+            this.allocationPools = allocationPools;
             return this;
         }
         public Builder allocationPools(GetSubnetAllocationPool... allocationPools) {
@@ -259,27 +266,38 @@ public final class GetSubnetResult {
         }
         @CustomType.Setter
         public Builder cidr(String cidr) {
-            this.cidr = Objects.requireNonNull(cidr);
+            if (cidr == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "cidr");
+            }
+            this.cidr = cidr;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder dhcpDisabled(@Nullable Boolean dhcpDisabled) {
+
             this.dhcpDisabled = dhcpDisabled;
             return this;
         }
         @CustomType.Setter
         public Builder dhcpEnabled(@Nullable Boolean dhcpEnabled) {
+
             this.dhcpEnabled = dhcpEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder dnsNameservers(List<String> dnsNameservers) {
-            this.dnsNameservers = Objects.requireNonNull(dnsNameservers);
+            if (dnsNameservers == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "dnsNameservers");
+            }
+            this.dnsNameservers = dnsNameservers;
             return this;
         }
         public Builder dnsNameservers(String... dnsNameservers) {
@@ -287,17 +305,26 @@ public final class GetSubnetResult {
         }
         @CustomType.Setter
         public Builder enableDhcp(Boolean enableDhcp) {
-            this.enableDhcp = Objects.requireNonNull(enableDhcp);
+            if (enableDhcp == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "enableDhcp");
+            }
+            this.enableDhcp = enableDhcp;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayIp(String gatewayIp) {
-            this.gatewayIp = Objects.requireNonNull(gatewayIp);
+            if (gatewayIp == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "gatewayIp");
+            }
+            this.gatewayIp = gatewayIp;
             return this;
         }
         @CustomType.Setter
         public Builder hostRoutes(List<GetSubnetHostRoute> hostRoutes) {
-            this.hostRoutes = Objects.requireNonNull(hostRoutes);
+            if (hostRoutes == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "hostRoutes");
+            }
+            this.hostRoutes = hostRoutes;
             return this;
         }
         public Builder hostRoutes(GetSubnetHostRoute... hostRoutes) {
@@ -305,42 +332,66 @@ public final class GetSubnetResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipVersion(Integer ipVersion) {
-            this.ipVersion = Objects.requireNonNull(ipVersion);
+            if (ipVersion == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "ipVersion");
+            }
+            this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6AddressMode(String ipv6AddressMode) {
-            this.ipv6AddressMode = Objects.requireNonNull(ipv6AddressMode);
+            if (ipv6AddressMode == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "ipv6AddressMode");
+            }
+            this.ipv6AddressMode = ipv6AddressMode;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6RaMode(String ipv6RaMode) {
-            this.ipv6RaMode = Objects.requireNonNull(ipv6RaMode);
+            if (ipv6RaMode == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "ipv6RaMode");
+            }
+            this.ipv6RaMode = ipv6RaMode;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networkId(String networkId) {
-            this.networkId = Objects.requireNonNull(networkId);
+            if (networkId == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "networkId");
+            }
+            this.networkId = networkId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder serviceTypes(List<String> serviceTypes) {
-            this.serviceTypes = Objects.requireNonNull(serviceTypes);
+            if (serviceTypes == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "serviceTypes");
+            }
+            this.serviceTypes = serviceTypes;
             return this;
         }
         public Builder serviceTypes(String... serviceTypes) {
@@ -348,16 +399,23 @@ public final class GetSubnetResult {
         }
         @CustomType.Setter
         public Builder subnetId(String subnetId) {
-            this.subnetId = Objects.requireNonNull(subnetId);
+            if (subnetId == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "subnetId");
+            }
+            this.subnetId = subnetId;
             return this;
         }
         @CustomType.Setter
         public Builder subnetpoolId(String subnetpoolId) {
-            this.subnetpoolId = Objects.requireNonNull(subnetpoolId);
+            if (subnetpoolId == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "subnetpoolId");
+            }
+            this.subnetpoolId = subnetpoolId;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -366,7 +424,10 @@ public final class GetSubnetResult {
         }
         @CustomType.Setter
         public Builder tenantId(String tenantId) {
-            this.tenantId = Objects.requireNonNull(tenantId);
+            if (tenantId == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "tenantId");
+            }
+            this.tenantId = tenantId;
             return this;
         }
         public GetSubnetResult build() {

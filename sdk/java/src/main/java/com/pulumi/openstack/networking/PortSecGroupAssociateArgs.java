@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -225,8 +226,12 @@ public final class PortSecGroupAssociateArgs extends com.pulumi.resources.Resour
         }
 
         public PortSecGroupAssociateArgs build() {
-            $.portId = Objects.requireNonNull($.portId, "expected parameter 'portId' to be non-null");
-            $.securityGroupIds = Objects.requireNonNull($.securityGroupIds, "expected parameter 'securityGroupIds' to be non-null");
+            if ($.portId == null) {
+                throw new MissingRequiredPropertyException("PortSecGroupAssociateArgs", "portId");
+            }
+            if ($.securityGroupIds == null) {
+                throw new MissingRequiredPropertyException("PortSecGroupAssociateArgs", "securityGroupIds");
+            }
             return $;
         }
     }

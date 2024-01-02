@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class SubnetAllocationPoolArgs extends com.pulumi.resources.Resourc
         }
 
         public SubnetAllocationPoolArgs build() {
-            $.end = Objects.requireNonNull($.end, "expected parameter 'end' to be non-null");
-            $.start = Objects.requireNonNull($.start, "expected parameter 'start' to be non-null");
+            if ($.end == null) {
+                throw new MissingRequiredPropertyException("SubnetAllocationPoolArgs", "end");
+            }
+            if ($.start == null) {
+                throw new MissingRequiredPropertyException("SubnetAllocationPoolArgs", "start");
+            }
             return $;
         }
     }

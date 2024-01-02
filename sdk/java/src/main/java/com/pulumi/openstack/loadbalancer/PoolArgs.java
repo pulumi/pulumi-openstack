@@ -5,6 +5,7 @@ package com.pulumi.openstack.loadbalancer;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.loadbalancer.inputs.PoolPersistenceArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -479,8 +480,12 @@ public final class PoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PoolArgs build() {
-            $.lbMethod = Objects.requireNonNull($.lbMethod, "expected parameter 'lbMethod' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
+            if ($.lbMethod == null) {
+                throw new MissingRequiredPropertyException("PoolArgs", "lbMethod");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("PoolArgs", "protocol");
+            }
             return $;
         }
     }

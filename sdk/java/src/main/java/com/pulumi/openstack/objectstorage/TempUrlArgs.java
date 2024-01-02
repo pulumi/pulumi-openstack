@@ -5,6 +5,7 @@ package com.pulumi.openstack.objectstorage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -296,9 +297,15 @@ public final class TempUrlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TempUrlArgs build() {
-            $.container = Objects.requireNonNull($.container, "expected parameter 'container' to be non-null");
-            $.object = Objects.requireNonNull($.object, "expected parameter 'object' to be non-null");
-            $.ttl = Objects.requireNonNull($.ttl, "expected parameter 'ttl' to be non-null");
+            if ($.container == null) {
+                throw new MissingRequiredPropertyException("TempUrlArgs", "container");
+            }
+            if ($.object == null) {
+                throw new MissingRequiredPropertyException("TempUrlArgs", "object");
+            }
+            if ($.ttl == null) {
+                throw new MissingRequiredPropertyException("TempUrlArgs", "ttl");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.openstack.loadbalancer;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -477,9 +478,15 @@ public final class PoolV1Args extends com.pulumi.resources.ResourceArgs {
         }
 
         public PoolV1Args build() {
-            $.lbMethod = Objects.requireNonNull($.lbMethod, "expected parameter 'lbMethod' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
-            $.subnetId = Objects.requireNonNull($.subnetId, "expected parameter 'subnetId' to be non-null");
+            if ($.lbMethod == null) {
+                throw new MissingRequiredPropertyException("PoolV1Args", "lbMethod");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("PoolV1Args", "protocol");
+            }
+            if ($.subnetId == null) {
+                throw new MissingRequiredPropertyException("PoolV1Args", "subnetId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.openstack.blockstorage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -166,8 +167,12 @@ public final class QosAssociationV3Args extends com.pulumi.resources.ResourceArg
         }
 
         public QosAssociationV3Args build() {
-            $.qosId = Objects.requireNonNull($.qosId, "expected parameter 'qosId' to be non-null");
-            $.volumeTypeId = Objects.requireNonNull($.volumeTypeId, "expected parameter 'volumeTypeId' to be non-null");
+            if ($.qosId == null) {
+                throw new MissingRequiredPropertyException("QosAssociationV3Args", "qosId");
+            }
+            if ($.volumeTypeId == null) {
+                throw new MissingRequiredPropertyException("QosAssociationV3Args", "volumeTypeId");
+            }
             return $;
         }
     }

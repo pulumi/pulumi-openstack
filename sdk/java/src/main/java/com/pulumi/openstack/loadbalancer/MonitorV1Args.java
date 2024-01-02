@@ -5,6 +5,7 @@ package com.pulumi.openstack.loadbalancer;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -490,10 +491,18 @@ public final class MonitorV1Args extends com.pulumi.resources.ResourceArgs {
         }
 
         public MonitorV1Args build() {
-            $.delay = Objects.requireNonNull($.delay, "expected parameter 'delay' to be non-null");
-            $.maxRetries = Objects.requireNonNull($.maxRetries, "expected parameter 'maxRetries' to be non-null");
-            $.timeout = Objects.requireNonNull($.timeout, "expected parameter 'timeout' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.delay == null) {
+                throw new MissingRequiredPropertyException("MonitorV1Args", "delay");
+            }
+            if ($.maxRetries == null) {
+                throw new MissingRequiredPropertyException("MonitorV1Args", "maxRetries");
+            }
+            if ($.timeout == null) {
+                throw new MissingRequiredPropertyException("MonitorV1Args", "timeout");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("MonitorV1Args", "type");
+            }
             return $;
         }
     }

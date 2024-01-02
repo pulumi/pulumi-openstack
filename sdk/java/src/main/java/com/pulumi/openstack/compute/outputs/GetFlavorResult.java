@@ -4,6 +4,7 @@
 package com.pulumi.openstack.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -135,71 +136,91 @@ public final class GetFlavorResult {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder disk(@Nullable Integer disk) {
+
             this.disk = disk;
             return this;
         }
         @CustomType.Setter
         public Builder extraSpecs(Map<String,Object> extraSpecs) {
-            this.extraSpecs = Objects.requireNonNull(extraSpecs);
+            if (extraSpecs == null) {
+              throw new MissingRequiredPropertyException("GetFlavorResult", "extraSpecs");
+            }
+            this.extraSpecs = extraSpecs;
             return this;
         }
         @CustomType.Setter
         public Builder flavorId(@Nullable String flavorId) {
+
             this.flavorId = flavorId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFlavorResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isPublic(@Nullable Boolean isPublic) {
+
             this.isPublic = isPublic;
             return this;
         }
         @CustomType.Setter
         public Builder minDisk(@Nullable Integer minDisk) {
+
             this.minDisk = minDisk;
             return this;
         }
         @CustomType.Setter
         public Builder minRam(@Nullable Integer minRam) {
+
             this.minRam = minRam;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder ram(@Nullable Integer ram) {
+
             this.ram = ram;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetFlavorResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder rxTxFactor(@Nullable Double rxTxFactor) {
+
             this.rxTxFactor = rxTxFactor;
             return this;
         }
         @CustomType.Setter
         public Builder swap(@Nullable Integer swap) {
+
             this.swap = swap;
             return this;
         }
         @CustomType.Setter
         public Builder vcpus(@Nullable Integer vcpus) {
+
             this.vcpus = vcpus;
             return this;
         }

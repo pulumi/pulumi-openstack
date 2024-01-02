@@ -4,6 +4,7 @@
 package com.pulumi.openstack.keymanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.keymanager.outputs.GetContainerAclRead;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetContainerAcl {
 
         @CustomType.Setter
         public Builder read(GetContainerAclRead read) {
-            this.read = Objects.requireNonNull(read);
+            if (read == null) {
+              throw new MissingRequiredPropertyException("GetContainerAcl", "read");
+            }
+            this.read = read;
             return this;
         }
         public GetContainerAcl build() {

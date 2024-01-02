@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.networking.outputs.GetRouterExternalFixedIp;
 import java.lang.Boolean;
 import java.lang.String;
@@ -171,12 +172,16 @@ public final class GetRouterResult {
 
         @CustomType.Setter
         public Builder adminStateUp(@Nullable Boolean adminStateUp) {
+
             this.adminStateUp = adminStateUp;
             return this;
         }
         @CustomType.Setter
         public Builder allTags(List<String> allTags) {
-            this.allTags = Objects.requireNonNull(allTags);
+            if (allTags == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "allTags");
+            }
+            this.allTags = allTags;
             return this;
         }
         public Builder allTags(String... allTags) {
@@ -184,7 +189,10 @@ public final class GetRouterResult {
         }
         @CustomType.Setter
         public Builder availabilityZoneHints(List<String> availabilityZoneHints) {
-            this.availabilityZoneHints = Objects.requireNonNull(availabilityZoneHints);
+            if (availabilityZoneHints == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "availabilityZoneHints");
+            }
+            this.availabilityZoneHints = availabilityZoneHints;
             return this;
         }
         public Builder availabilityZoneHints(String... availabilityZoneHints) {
@@ -192,22 +200,30 @@ public final class GetRouterResult {
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder distributed(@Nullable Boolean distributed) {
+
             this.distributed = distributed;
             return this;
         }
         @CustomType.Setter
         public Builder enableSnat(Boolean enableSnat) {
-            this.enableSnat = Objects.requireNonNull(enableSnat);
+            if (enableSnat == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "enableSnat");
+            }
+            this.enableSnat = enableSnat;
             return this;
         }
         @CustomType.Setter
         public Builder externalFixedIps(List<GetRouterExternalFixedIp> externalFixedIps) {
-            this.externalFixedIps = Objects.requireNonNull(externalFixedIps);
+            if (externalFixedIps == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "externalFixedIps");
+            }
+            this.externalFixedIps = externalFixedIps;
             return this;
         }
         public Builder externalFixedIps(GetRouterExternalFixedIp... externalFixedIps) {
@@ -215,36 +231,47 @@ public final class GetRouterResult {
         }
         @CustomType.Setter
         public Builder externalNetworkId(String externalNetworkId) {
-            this.externalNetworkId = Objects.requireNonNull(externalNetworkId);
+            if (externalNetworkId == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "externalNetworkId");
+            }
+            this.externalNetworkId = externalNetworkId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder routerId(@Nullable String routerId) {
+
             this.routerId = routerId;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -253,6 +280,7 @@ public final class GetRouterResult {
         }
         @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
+
             this.tenantId = tenantId;
             return this;
         }

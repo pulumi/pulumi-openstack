@@ -4,6 +4,7 @@
 package com.pulumi.openstack.containerinfra.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -235,77 +236,122 @@ public final class GetNodeGroupResult {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetNodeGroupResult", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetNodeGroupResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder dockerVolumeSize(Integer dockerVolumeSize) {
-            this.dockerVolumeSize = Objects.requireNonNull(dockerVolumeSize);
+            if (dockerVolumeSize == null) {
+              throw new MissingRequiredPropertyException("GetNodeGroupResult", "dockerVolumeSize");
+            }
+            this.dockerVolumeSize = dockerVolumeSize;
             return this;
         }
         @CustomType.Setter
         public Builder flavor(String flavor) {
-            this.flavor = Objects.requireNonNull(flavor);
+            if (flavor == null) {
+              throw new MissingRequiredPropertyException("GetNodeGroupResult", "flavor");
+            }
+            this.flavor = flavor;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNodeGroupResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("GetNodeGroupResult", "image");
+            }
+            this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetNodeGroupResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder maxNodeCount(Integer maxNodeCount) {
-            this.maxNodeCount = Objects.requireNonNull(maxNodeCount);
+            if (maxNodeCount == null) {
+              throw new MissingRequiredPropertyException("GetNodeGroupResult", "maxNodeCount");
+            }
+            this.maxNodeCount = maxNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder minNodeCount(Integer minNodeCount) {
-            this.minNodeCount = Objects.requireNonNull(minNodeCount);
+            if (minNodeCount == null) {
+              throw new MissingRequiredPropertyException("GetNodeGroupResult", "minNodeCount");
+            }
+            this.minNodeCount = minNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetNodeGroupResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodeCount(Integer nodeCount) {
-            this.nodeCount = Objects.requireNonNull(nodeCount);
+            if (nodeCount == null) {
+              throw new MissingRequiredPropertyException("GetNodeGroupResult", "nodeCount");
+            }
+            this.nodeCount = nodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetNodeGroupResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetNodeGroupResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder role(String role) {
-            this.role = Objects.requireNonNull(role);
+            if (role == null) {
+              throw new MissingRequiredPropertyException("GetNodeGroupResult", "role");
+            }
+            this.role = role;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetNodeGroupResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         public GetNodeGroupResult build() {

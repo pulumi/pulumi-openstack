@@ -5,6 +5,7 @@ package com.pulumi.openstack.loadbalancer;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -421,10 +422,18 @@ public final class L7RuleV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         public L7RuleV2Args build() {
-            $.compareType = Objects.requireNonNull($.compareType, "expected parameter 'compareType' to be non-null");
-            $.l7policyId = Objects.requireNonNull($.l7policyId, "expected parameter 'l7policyId' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.compareType == null) {
+                throw new MissingRequiredPropertyException("L7RuleV2Args", "compareType");
+            }
+            if ($.l7policyId == null) {
+                throw new MissingRequiredPropertyException("L7RuleV2Args", "l7policyId");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("L7RuleV2Args", "type");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("L7RuleV2Args", "value");
+            }
             return $;
         }
     }

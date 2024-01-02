@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -91,27 +92,42 @@ public final class GetQosMinimumBandwidthRuleResult {
 
         @CustomType.Setter
         public Builder direction(String direction) {
-            this.direction = Objects.requireNonNull(direction);
+            if (direction == null) {
+              throw new MissingRequiredPropertyException("GetQosMinimumBandwidthRuleResult", "direction");
+            }
+            this.direction = direction;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetQosMinimumBandwidthRuleResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder minKbps(Integer minKbps) {
-            this.minKbps = Objects.requireNonNull(minKbps);
+            if (minKbps == null) {
+              throw new MissingRequiredPropertyException("GetQosMinimumBandwidthRuleResult", "minKbps");
+            }
+            this.minKbps = minKbps;
             return this;
         }
         @CustomType.Setter
         public Builder qosPolicyId(String qosPolicyId) {
-            this.qosPolicyId = Objects.requireNonNull(qosPolicyId);
+            if (qosPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetQosMinimumBandwidthRuleResult", "qosPolicyId");
+            }
+            this.qosPolicyId = qosPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetQosMinimumBandwidthRuleResult", "region");
+            }
+            this.region = region;
             return this;
         }
         public GetQosMinimumBandwidthRuleResult build() {

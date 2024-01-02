@@ -5,6 +5,7 @@ package com.pulumi.openstack.keymanager.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class ContainerV1SecretRefArgs extends com.pulumi.resources.Resourc
         }
 
         public ContainerV1SecretRefArgs build() {
-            $.secretRef = Objects.requireNonNull($.secretRef, "expected parameter 'secretRef' to be non-null");
+            if ($.secretRef == null) {
+                throw new MissingRequiredPropertyException("ContainerV1SecretRefArgs", "secretRef");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.openstack.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -244,7 +245,9 @@ public final class InterfaceAttachArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public InterfaceAttachArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("InterfaceAttachArgs", "instanceId");
+            }
             return $;
         }
     }

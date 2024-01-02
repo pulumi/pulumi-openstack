@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -149,9 +150,15 @@ public final class TrunkSubPortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TrunkSubPortArgs build() {
-            $.portId = Objects.requireNonNull($.portId, "expected parameter 'portId' to be non-null");
-            $.segmentationId = Objects.requireNonNull($.segmentationId, "expected parameter 'segmentationId' to be non-null");
-            $.segmentationType = Objects.requireNonNull($.segmentationType, "expected parameter 'segmentationType' to be non-null");
+            if ($.portId == null) {
+                throw new MissingRequiredPropertyException("TrunkSubPortArgs", "portId");
+            }
+            if ($.segmentationId == null) {
+                throw new MissingRequiredPropertyException("TrunkSubPortArgs", "segmentationId");
+            }
+            if ($.segmentationType == null) {
+                throw new MissingRequiredPropertyException("TrunkSubPortArgs", "segmentationType");
+            }
             return $;
         }
     }

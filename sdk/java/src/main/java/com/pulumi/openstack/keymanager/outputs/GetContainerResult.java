@@ -4,6 +4,7 @@
 package com.pulumi.openstack.keymanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.keymanager.outputs.GetContainerAcl;
 import com.pulumi.openstack.keymanager.outputs.GetContainerConsumer;
 import com.pulumi.openstack.keymanager.outputs.GetContainerSecretRef;
@@ -208,7 +209,10 @@ public final class GetContainerResult {
 
         @CustomType.Setter
         public Builder acls(List<GetContainerAcl> acls) {
-            this.acls = Objects.requireNonNull(acls);
+            if (acls == null) {
+              throw new MissingRequiredPropertyException("GetContainerResult", "acls");
+            }
+            this.acls = acls;
             return this;
         }
         public Builder acls(GetContainerAcl... acls) {
@@ -216,7 +220,10 @@ public final class GetContainerResult {
         }
         @CustomType.Setter
         public Builder consumers(List<GetContainerConsumer> consumers) {
-            this.consumers = Objects.requireNonNull(consumers);
+            if (consumers == null) {
+              throw new MissingRequiredPropertyException("GetContainerResult", "consumers");
+            }
+            this.consumers = consumers;
             return this;
         }
         public Builder consumers(GetContainerConsumer... consumers) {
@@ -224,37 +231,54 @@ public final class GetContainerResult {
         }
         @CustomType.Setter
         public Builder containerRef(String containerRef) {
-            this.containerRef = Objects.requireNonNull(containerRef);
+            if (containerRef == null) {
+              throw new MissingRequiredPropertyException("GetContainerResult", "containerRef");
+            }
+            this.containerRef = containerRef;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetContainerResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder creatorId(String creatorId) {
-            this.creatorId = Objects.requireNonNull(creatorId);
+            if (creatorId == null) {
+              throw new MissingRequiredPropertyException("GetContainerResult", "creatorId");
+            }
+            this.creatorId = creatorId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetContainerResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder secretRefs(List<GetContainerSecretRef> secretRefs) {
-            this.secretRefs = Objects.requireNonNull(secretRefs);
+            if (secretRefs == null) {
+              throw new MissingRequiredPropertyException("GetContainerResult", "secretRefs");
+            }
+            this.secretRefs = secretRefs;
             return this;
         }
         public Builder secretRefs(GetContainerSecretRef... secretRefs) {
@@ -262,17 +286,26 @@ public final class GetContainerResult {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetContainerResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetContainerResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetContainerResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         public GetContainerResult build() {

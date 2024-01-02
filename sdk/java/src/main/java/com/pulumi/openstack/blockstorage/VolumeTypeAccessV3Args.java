@@ -5,6 +5,7 @@ package com.pulumi.openstack.blockstorage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -166,8 +167,12 @@ public final class VolumeTypeAccessV3Args extends com.pulumi.resources.ResourceA
         }
 
         public VolumeTypeAccessV3Args build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.volumeTypeId = Objects.requireNonNull($.volumeTypeId, "expected parameter 'volumeTypeId' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("VolumeTypeAccessV3Args", "projectId");
+            }
+            if ($.volumeTypeId == null) {
+                throw new MissingRequiredPropertyException("VolumeTypeAccessV3Args", "volumeTypeId");
+            }
             return $;
         }
     }

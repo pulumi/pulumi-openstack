@@ -4,6 +4,7 @@
 package com.pulumi.openstack.compute.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -198,12 +199,24 @@ public final class GetInstanceV2Network extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetInstanceV2Network build() {
-            $.fixedIpV4 = Objects.requireNonNull($.fixedIpV4, "expected parameter 'fixedIpV4' to be non-null");
-            $.fixedIpV6 = Objects.requireNonNull($.fixedIpV6, "expected parameter 'fixedIpV6' to be non-null");
-            $.mac = Objects.requireNonNull($.mac, "expected parameter 'mac' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.uuid = Objects.requireNonNull($.uuid, "expected parameter 'uuid' to be non-null");
+            if ($.fixedIpV4 == null) {
+                throw new MissingRequiredPropertyException("GetInstanceV2Network", "fixedIpV4");
+            }
+            if ($.fixedIpV6 == null) {
+                throw new MissingRequiredPropertyException("GetInstanceV2Network", "fixedIpV6");
+            }
+            if ($.mac == null) {
+                throw new MissingRequiredPropertyException("GetInstanceV2Network", "mac");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetInstanceV2Network", "name");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("GetInstanceV2Network", "port");
+            }
+            if ($.uuid == null) {
+                throw new MissingRequiredPropertyException("GetInstanceV2Network", "uuid");
+            }
             return $;
         }
     }

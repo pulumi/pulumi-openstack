@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -149,32 +150,42 @@ public final class GetSubnetIdsV2Result {
 
         @CustomType.Setter
         public Builder cidr(@Nullable String cidr) {
+
             this.cidr = cidr;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder dhcpEnabled(@Nullable Boolean dhcpEnabled) {
+
             this.dhcpEnabled = dhcpEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayIp(@Nullable String gatewayIp) {
+
             this.gatewayIp = gatewayIp;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSubnetIdsV2Result", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetSubnetIdsV2Result", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -182,56 +193,71 @@ public final class GetSubnetIdsV2Result {
         }
         @CustomType.Setter
         public Builder ipVersion(@Nullable Integer ipVersion) {
+
             this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6AddressMode(@Nullable String ipv6AddressMode) {
+
             this.ipv6AddressMode = ipv6AddressMode;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6RaMode(String ipv6RaMode) {
-            this.ipv6RaMode = Objects.requireNonNull(ipv6RaMode);
+            if (ipv6RaMode == null) {
+              throw new MissingRequiredPropertyException("GetSubnetIdsV2Result", "ipv6RaMode");
+            }
+            this.ipv6RaMode = ipv6RaMode;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder networkId(@Nullable String networkId) {
+
             this.networkId = networkId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetSubnetIdsV2Result", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder sortDirection(@Nullable String sortDirection) {
+
             this.sortDirection = sortDirection;
             return this;
         }
         @CustomType.Setter
         public Builder sortKey(@Nullable String sortKey) {
+
             this.sortKey = sortKey;
             return this;
         }
         @CustomType.Setter
         public Builder subnetpoolId(@Nullable String subnetpoolId) {
+
             this.subnetpoolId = subnetpoolId;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -240,6 +266,7 @@ public final class GetSubnetIdsV2Result {
         }
         @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
+
             this.tenantId = tenantId;
             return this;
         }

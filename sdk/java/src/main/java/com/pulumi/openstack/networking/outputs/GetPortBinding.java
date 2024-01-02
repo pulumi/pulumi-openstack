@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -102,27 +103,42 @@ public final class GetPortBinding {
 
         @CustomType.Setter
         public Builder hostId(String hostId) {
-            this.hostId = Objects.requireNonNull(hostId);
+            if (hostId == null) {
+              throw new MissingRequiredPropertyException("GetPortBinding", "hostId");
+            }
+            this.hostId = hostId;
             return this;
         }
         @CustomType.Setter
         public Builder profile(String profile) {
-            this.profile = Objects.requireNonNull(profile);
+            if (profile == null) {
+              throw new MissingRequiredPropertyException("GetPortBinding", "profile");
+            }
+            this.profile = profile;
             return this;
         }
         @CustomType.Setter
         public Builder vifDetails(Map<String,Object> vifDetails) {
-            this.vifDetails = Objects.requireNonNull(vifDetails);
+            if (vifDetails == null) {
+              throw new MissingRequiredPropertyException("GetPortBinding", "vifDetails");
+            }
+            this.vifDetails = vifDetails;
             return this;
         }
         @CustomType.Setter
         public Builder vifType(String vifType) {
-            this.vifType = Objects.requireNonNull(vifType);
+            if (vifType == null) {
+              throw new MissingRequiredPropertyException("GetPortBinding", "vifType");
+            }
+            this.vifType = vifType;
             return this;
         }
         @CustomType.Setter
         public Builder vnicType(String vnicType) {
-            this.vnicType = Objects.requireNonNull(vnicType);
+            if (vnicType == null) {
+              throw new MissingRequiredPropertyException("GetPortBinding", "vnicType");
+            }
+            this.vnicType = vnicType;
             return this;
         }
         public GetPortBinding build() {

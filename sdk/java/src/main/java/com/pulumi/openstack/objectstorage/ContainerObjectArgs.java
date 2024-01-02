@@ -5,6 +5,7 @@ package com.pulumi.openstack.objectstorage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -678,7 +679,9 @@ public final class ContainerObjectArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public ContainerObjectArgs build() {
-            $.containerName = Objects.requireNonNull($.containerName, "expected parameter 'containerName' to be non-null");
+            if ($.containerName == null) {
+                throw new MissingRequiredPropertyException("ContainerObjectArgs", "containerName");
+            }
             return $;
         }
     }

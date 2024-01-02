@@ -36,6 +36,7 @@ public final class ServerGroupRules {
 
         @CustomType.Setter
         public Builder maxServerPerHost(@Nullable Integer maxServerPerHost) {
+
             this.maxServerPerHost = maxServerPerHost;
             return this;
         }

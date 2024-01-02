@@ -5,6 +5,7 @@ package com.pulumi.openstack.dns;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -251,8 +252,12 @@ public final class TransferAcceptArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public TransferAcceptArgs build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.zoneTransferRequestId = Objects.requireNonNull($.zoneTransferRequestId, "expected parameter 'zoneTransferRequestId' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("TransferAcceptArgs", "key");
+            }
+            if ($.zoneTransferRequestId == null) {
+                throw new MissingRequiredPropertyException("TransferAcceptArgs", "zoneTransferRequestId");
+            }
             return $;
         }
     }

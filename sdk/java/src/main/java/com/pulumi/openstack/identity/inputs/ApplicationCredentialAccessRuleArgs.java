@@ -5,6 +5,7 @@ package com.pulumi.openstack.identity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -227,9 +228,15 @@ public final class ApplicationCredentialAccessRuleArgs extends com.pulumi.resour
         }
 
         public ApplicationCredentialAccessRuleArgs build() {
-            $.method = Objects.requireNonNull($.method, "expected parameter 'method' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.method == null) {
+                throw new MissingRequiredPropertyException("ApplicationCredentialAccessRuleArgs", "method");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("ApplicationCredentialAccessRuleArgs", "path");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("ApplicationCredentialAccessRuleArgs", "service");
+            }
             return $;
         }
     }

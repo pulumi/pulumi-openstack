@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -595,9 +596,15 @@ public final class SecGroupRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SecGroupRuleArgs build() {
-            $.direction = Objects.requireNonNull($.direction, "expected parameter 'direction' to be non-null");
-            $.ethertype = Objects.requireNonNull($.ethertype, "expected parameter 'ethertype' to be non-null");
-            $.securityGroupId = Objects.requireNonNull($.securityGroupId, "expected parameter 'securityGroupId' to be non-null");
+            if ($.direction == null) {
+                throw new MissingRequiredPropertyException("SecGroupRuleArgs", "direction");
+            }
+            if ($.ethertype == null) {
+                throw new MissingRequiredPropertyException("SecGroupRuleArgs", "ethertype");
+            }
+            if ($.securityGroupId == null) {
+                throw new MissingRequiredPropertyException("SecGroupRuleArgs", "securityGroupId");
+            }
             return $;
         }
     }

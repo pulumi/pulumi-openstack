@@ -4,6 +4,7 @@
 package com.pulumi.openstack.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -271,32 +272,42 @@ public final class GetFwRuleV2Result {
 
         @CustomType.Setter
         public Builder action(@Nullable String action) {
+
             this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder destinationIpAddress(@Nullable String destinationIpAddress) {
+
             this.destinationIpAddress = destinationIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder destinationPort(@Nullable String destinationPort) {
+
             this.destinationPort = destinationPort;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetFwRuleV2Result", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder firewallPolicyIds(List<String> firewallPolicyIds) {
-            this.firewallPolicyIds = Objects.requireNonNull(firewallPolicyIds);
+            if (firewallPolicyIds == null) {
+              throw new MissingRequiredPropertyException("GetFwRuleV2Result", "firewallPolicyIds");
+            }
+            this.firewallPolicyIds = firewallPolicyIds;
             return this;
         }
         public Builder firewallPolicyIds(String... firewallPolicyIds) {
@@ -304,57 +315,78 @@ public final class GetFwRuleV2Result {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFwRuleV2Result", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipVersion(@Nullable Integer ipVersion) {
+
             this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetFwRuleV2Result", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(@Nullable String protocol) {
+
             this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetFwRuleV2Result", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder ruleId(@Nullable String ruleId) {
+
             this.ruleId = ruleId;
             return this;
         }
         @CustomType.Setter
         public Builder shared(Boolean shared) {
-            this.shared = Objects.requireNonNull(shared);
+            if (shared == null) {
+              throw new MissingRequiredPropertyException("GetFwRuleV2Result", "shared");
+            }
+            this.shared = shared;
             return this;
         }
         @CustomType.Setter
         public Builder sourceIpAddress(@Nullable String sourceIpAddress) {
+
             this.sourceIpAddress = sourceIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder sourcePort(@Nullable String sourcePort) {
+
             this.sourcePort = sourcePort;
             return this;
         }
         @CustomType.Setter
         public Builder tenantId(String tenantId) {
-            this.tenantId = Objects.requireNonNull(tenantId);
+            if (tenantId == null) {
+              throw new MissingRequiredPropertyException("GetFwRuleV2Result", "tenantId");
+            }
+            this.tenantId = tenantId;
             return this;
         }
         public GetFwRuleV2Result build() {

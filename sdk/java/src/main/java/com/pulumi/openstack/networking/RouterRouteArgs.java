@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -211,9 +212,15 @@ public final class RouterRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RouterRouteArgs build() {
-            $.destinationCidr = Objects.requireNonNull($.destinationCidr, "expected parameter 'destinationCidr' to be non-null");
-            $.nextHop = Objects.requireNonNull($.nextHop, "expected parameter 'nextHop' to be non-null");
-            $.routerId = Objects.requireNonNull($.routerId, "expected parameter 'routerId' to be non-null");
+            if ($.destinationCidr == null) {
+                throw new MissingRequiredPropertyException("RouterRouteArgs", "destinationCidr");
+            }
+            if ($.nextHop == null) {
+                throw new MissingRequiredPropertyException("RouterRouteArgs", "nextHop");
+            }
+            if ($.routerId == null) {
+                throw new MissingRequiredPropertyException("RouterRouteArgs", "routerId");
+            }
             return $;
         }
     }

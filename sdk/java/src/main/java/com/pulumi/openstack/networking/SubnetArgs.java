@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.networking.inputs.SubnetAllocationPoolArgs;
 import com.pulumi.openstack.networking.inputs.SubnetAllocationPoolsCollectionArgs;
 import com.pulumi.openstack.networking.inputs.SubnetHostRouteArgs;
@@ -1078,7 +1079,9 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SubnetArgs build() {
-            $.networkId = Objects.requireNonNull($.networkId, "expected parameter 'networkId' to be non-null");
+            if ($.networkId == null) {
+                throw new MissingRequiredPropertyException("SubnetArgs", "networkId");
+            }
             return $;
         }
     }

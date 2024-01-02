@@ -4,6 +4,7 @@
 package com.pulumi.openstack.compute.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.compute.inputs.GetInstanceV2Network;
 import java.lang.String;
 import java.util.List;
@@ -144,7 +145,9 @@ public final class GetInstanceV2PlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetInstanceV2PlainArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetInstanceV2PlainArgs", "id");
+            }
             return $;
         }
     }

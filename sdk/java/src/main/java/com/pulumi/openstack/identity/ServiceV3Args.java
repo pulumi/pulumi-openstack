@@ -5,6 +5,7 @@ package com.pulumi.openstack.identity;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -229,7 +230,9 @@ public final class ServiceV3Args extends com.pulumi.resources.ResourceArgs {
         }
 
         public ServiceV3Args build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ServiceV3Args", "type");
+            }
             return $;
         }
     }

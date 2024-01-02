@@ -5,6 +5,7 @@ package com.pulumi.openstack.dns;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -309,7 +310,9 @@ public final class TransferRequestArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public TransferRequestArgs build() {
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("TransferRequestArgs", "zoneId");
+            }
             return $;
         }
     }

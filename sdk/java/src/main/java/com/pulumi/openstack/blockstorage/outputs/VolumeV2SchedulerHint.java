@@ -121,11 +121,13 @@ public final class VolumeV2SchedulerHint {
 
         @CustomType.Setter
         public Builder additionalProperties(@Nullable Map<String,Object> additionalProperties) {
+
             this.additionalProperties = additionalProperties;
             return this;
         }
         @CustomType.Setter
         public Builder differentHosts(@Nullable List<String> differentHosts) {
+
             this.differentHosts = differentHosts;
             return this;
         }
@@ -134,16 +136,19 @@ public final class VolumeV2SchedulerHint {
         }
         @CustomType.Setter
         public Builder localToInstance(@Nullable String localToInstance) {
+
             this.localToInstance = localToInstance;
             return this;
         }
         @CustomType.Setter
         public Builder query(@Nullable String query) {
+
             this.query = query;
             return this;
         }
         @CustomType.Setter
         public Builder sameHosts(@Nullable List<String> sameHosts) {
+
             this.sameHosts = sameHosts;
             return this;
         }

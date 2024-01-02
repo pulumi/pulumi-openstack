@@ -4,6 +4,7 @@
 package com.pulumi.openstack.compute.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -131,7 +132,9 @@ public final class GetAggregateV2PlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetAggregateV2PlainArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetAggregateV2PlainArgs", "name");
+            }
             return $;
         }
     }

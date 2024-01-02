@@ -4,6 +4,7 @@
 package com.pulumi.openstack.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -267,87 +268,138 @@ public final class GetQuotaSetV2Result {
 
         @CustomType.Setter
         public Builder cores(Integer cores) {
-            this.cores = Objects.requireNonNull(cores);
+            if (cores == null) {
+              throw new MissingRequiredPropertyException("GetQuotaSetV2Result", "cores");
+            }
+            this.cores = cores;
             return this;
         }
         @CustomType.Setter
         public Builder fixedIps(Integer fixedIps) {
-            this.fixedIps = Objects.requireNonNull(fixedIps);
+            if (fixedIps == null) {
+              throw new MissingRequiredPropertyException("GetQuotaSetV2Result", "fixedIps");
+            }
+            this.fixedIps = fixedIps;
             return this;
         }
         @CustomType.Setter
         public Builder floatingIps(Integer floatingIps) {
-            this.floatingIps = Objects.requireNonNull(floatingIps);
+            if (floatingIps == null) {
+              throw new MissingRequiredPropertyException("GetQuotaSetV2Result", "floatingIps");
+            }
+            this.floatingIps = floatingIps;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetQuotaSetV2Result", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder injectedFileContentBytes(Integer injectedFileContentBytes) {
-            this.injectedFileContentBytes = Objects.requireNonNull(injectedFileContentBytes);
+            if (injectedFileContentBytes == null) {
+              throw new MissingRequiredPropertyException("GetQuotaSetV2Result", "injectedFileContentBytes");
+            }
+            this.injectedFileContentBytes = injectedFileContentBytes;
             return this;
         }
         @CustomType.Setter
         public Builder injectedFilePathBytes(Integer injectedFilePathBytes) {
-            this.injectedFilePathBytes = Objects.requireNonNull(injectedFilePathBytes);
+            if (injectedFilePathBytes == null) {
+              throw new MissingRequiredPropertyException("GetQuotaSetV2Result", "injectedFilePathBytes");
+            }
+            this.injectedFilePathBytes = injectedFilePathBytes;
             return this;
         }
         @CustomType.Setter
         public Builder injectedFiles(Integer injectedFiles) {
-            this.injectedFiles = Objects.requireNonNull(injectedFiles);
+            if (injectedFiles == null) {
+              throw new MissingRequiredPropertyException("GetQuotaSetV2Result", "injectedFiles");
+            }
+            this.injectedFiles = injectedFiles;
             return this;
         }
         @CustomType.Setter
         public Builder instances(Integer instances) {
-            this.instances = Objects.requireNonNull(instances);
+            if (instances == null) {
+              throw new MissingRequiredPropertyException("GetQuotaSetV2Result", "instances");
+            }
+            this.instances = instances;
             return this;
         }
         @CustomType.Setter
         public Builder keyPairs(Integer keyPairs) {
-            this.keyPairs = Objects.requireNonNull(keyPairs);
+            if (keyPairs == null) {
+              throw new MissingRequiredPropertyException("GetQuotaSetV2Result", "keyPairs");
+            }
+            this.keyPairs = keyPairs;
             return this;
         }
         @CustomType.Setter
         public Builder metadataItems(Integer metadataItems) {
-            this.metadataItems = Objects.requireNonNull(metadataItems);
+            if (metadataItems == null) {
+              throw new MissingRequiredPropertyException("GetQuotaSetV2Result", "metadataItems");
+            }
+            this.metadataItems = metadataItems;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetQuotaSetV2Result", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder ram(Integer ram) {
-            this.ram = Objects.requireNonNull(ram);
+            if (ram == null) {
+              throw new MissingRequiredPropertyException("GetQuotaSetV2Result", "ram");
+            }
+            this.ram = ram;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetQuotaSetV2Result", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupRules(Integer securityGroupRules) {
-            this.securityGroupRules = Objects.requireNonNull(securityGroupRules);
+            if (securityGroupRules == null) {
+              throw new MissingRequiredPropertyException("GetQuotaSetV2Result", "securityGroupRules");
+            }
+            this.securityGroupRules = securityGroupRules;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroups(Integer securityGroups) {
-            this.securityGroups = Objects.requireNonNull(securityGroups);
+            if (securityGroups == null) {
+              throw new MissingRequiredPropertyException("GetQuotaSetV2Result", "securityGroups");
+            }
+            this.securityGroups = securityGroups;
             return this;
         }
         @CustomType.Setter
         public Builder serverGroupMembers(Integer serverGroupMembers) {
-            this.serverGroupMembers = Objects.requireNonNull(serverGroupMembers);
+            if (serverGroupMembers == null) {
+              throw new MissingRequiredPropertyException("GetQuotaSetV2Result", "serverGroupMembers");
+            }
+            this.serverGroupMembers = serverGroupMembers;
             return this;
         }
         @CustomType.Setter
         public Builder serverGroups(Integer serverGroups) {
-            this.serverGroups = Objects.requireNonNull(serverGroups);
+            if (serverGroups == null) {
+              throw new MissingRequiredPropertyException("GetQuotaSetV2Result", "serverGroups");
+            }
+            this.serverGroups = serverGroups;
             return this;
         }
         public GetQuotaSetV2Result build() {
