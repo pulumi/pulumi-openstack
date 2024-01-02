@@ -68,11 +68,13 @@ public final class InstanceVendorOptions {
 
         @CustomType.Setter
         public Builder detachPortsBeforeDestroy(@Nullable Boolean detachPortsBeforeDestroy) {
+
             this.detachPortsBeforeDestroy = detachPortsBeforeDestroy;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreResizeConfirmation(@Nullable Boolean ignoreResizeConfirmation) {
+
             this.ignoreResizeConfirmation = ignoreResizeConfirmation;
             return this;
         }

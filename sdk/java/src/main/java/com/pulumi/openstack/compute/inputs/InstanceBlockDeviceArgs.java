@@ -5,6 +5,7 @@ package com.pulumi.openstack.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -532,7 +533,9 @@ public final class InstanceBlockDeviceArgs extends com.pulumi.resources.Resource
         }
 
         public InstanceBlockDeviceArgs build() {
-            $.sourceType = Objects.requireNonNull($.sourceType, "expected parameter 'sourceType' to be non-null");
+            if ($.sourceType == null) {
+                throw new MissingRequiredPropertyException("InstanceBlockDeviceArgs", "sourceType");
+            }
             return $;
         }
     }

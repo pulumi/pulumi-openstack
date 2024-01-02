@@ -5,6 +5,7 @@ package com.pulumi.openstack.sharedfilesystem;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -244,10 +245,18 @@ public final class ShareAccessArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ShareAccessArgs build() {
-            $.accessLevel = Objects.requireNonNull($.accessLevel, "expected parameter 'accessLevel' to be non-null");
-            $.accessTo = Objects.requireNonNull($.accessTo, "expected parameter 'accessTo' to be non-null");
-            $.accessType = Objects.requireNonNull($.accessType, "expected parameter 'accessType' to be non-null");
-            $.shareId = Objects.requireNonNull($.shareId, "expected parameter 'shareId' to be non-null");
+            if ($.accessLevel == null) {
+                throw new MissingRequiredPropertyException("ShareAccessArgs", "accessLevel");
+            }
+            if ($.accessTo == null) {
+                throw new MissingRequiredPropertyException("ShareAccessArgs", "accessTo");
+            }
+            if ($.accessType == null) {
+                throw new MissingRequiredPropertyException("ShareAccessArgs", "accessType");
+            }
+            if ($.shareId == null) {
+                throw new MissingRequiredPropertyException("ShareAccessArgs", "shareId");
+            }
             return $;
         }
     }

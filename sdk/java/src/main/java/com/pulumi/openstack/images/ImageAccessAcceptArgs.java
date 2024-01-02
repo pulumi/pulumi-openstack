@@ -5,6 +5,7 @@ package com.pulumi.openstack.images;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -207,8 +208,12 @@ public final class ImageAccessAcceptArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ImageAccessAcceptArgs build() {
-            $.imageId = Objects.requireNonNull($.imageId, "expected parameter 'imageId' to be non-null");
-            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
+            if ($.imageId == null) {
+                throw new MissingRequiredPropertyException("ImageAccessAcceptArgs", "imageId");
+            }
+            if ($.status == null) {
+                throw new MissingRequiredPropertyException("ImageAccessAcceptArgs", "status");
+            }
             return $;
         }
     }

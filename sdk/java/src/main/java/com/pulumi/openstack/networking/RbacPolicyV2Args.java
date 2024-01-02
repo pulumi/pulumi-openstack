@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -260,10 +261,18 @@ public final class RbacPolicyV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         public RbacPolicyV2Args build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.objectId = Objects.requireNonNull($.objectId, "expected parameter 'objectId' to be non-null");
-            $.objectType = Objects.requireNonNull($.objectType, "expected parameter 'objectType' to be non-null");
-            $.targetTenant = Objects.requireNonNull($.targetTenant, "expected parameter 'targetTenant' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("RbacPolicyV2Args", "action");
+            }
+            if ($.objectId == null) {
+                throw new MissingRequiredPropertyException("RbacPolicyV2Args", "objectId");
+            }
+            if ($.objectType == null) {
+                throw new MissingRequiredPropertyException("RbacPolicyV2Args", "objectType");
+            }
+            if ($.targetTenant == null) {
+                throw new MissingRequiredPropertyException("RbacPolicyV2Args", "targetTenant");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.openstack.database.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -76,17 +77,22 @@ public final class InstanceDatabase {
 
         @CustomType.Setter
         public Builder charset(@Nullable String charset) {
+
             this.charset = charset;
             return this;
         }
         @CustomType.Setter
         public Builder collate(@Nullable String collate) {
+
             this.collate = collate;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("InstanceDatabase", "name");
+            }
+            this.name = name;
             return this;
         }
         public InstanceDatabase build() {

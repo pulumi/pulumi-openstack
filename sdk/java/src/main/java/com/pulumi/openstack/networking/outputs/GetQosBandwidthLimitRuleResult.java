@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -113,32 +114,50 @@ public final class GetQosBandwidthLimitRuleResult {
 
         @CustomType.Setter
         public Builder direction(String direction) {
-            this.direction = Objects.requireNonNull(direction);
+            if (direction == null) {
+              throw new MissingRequiredPropertyException("GetQosBandwidthLimitRuleResult", "direction");
+            }
+            this.direction = direction;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetQosBandwidthLimitRuleResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder maxBurstKbps(Integer maxBurstKbps) {
-            this.maxBurstKbps = Objects.requireNonNull(maxBurstKbps);
+            if (maxBurstKbps == null) {
+              throw new MissingRequiredPropertyException("GetQosBandwidthLimitRuleResult", "maxBurstKbps");
+            }
+            this.maxBurstKbps = maxBurstKbps;
             return this;
         }
         @CustomType.Setter
         public Builder maxKbps(Integer maxKbps) {
-            this.maxKbps = Objects.requireNonNull(maxKbps);
+            if (maxKbps == null) {
+              throw new MissingRequiredPropertyException("GetQosBandwidthLimitRuleResult", "maxKbps");
+            }
+            this.maxKbps = maxKbps;
             return this;
         }
         @CustomType.Setter
         public Builder qosPolicyId(String qosPolicyId) {
-            this.qosPolicyId = Objects.requireNonNull(qosPolicyId);
+            if (qosPolicyId == null) {
+              throw new MissingRequiredPropertyException("GetQosBandwidthLimitRuleResult", "qosPolicyId");
+            }
+            this.qosPolicyId = qosPolicyId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetQosBandwidthLimitRuleResult", "region");
+            }
+            this.region = region;
             return this;
         }
         public GetQosBandwidthLimitRuleResult build() {

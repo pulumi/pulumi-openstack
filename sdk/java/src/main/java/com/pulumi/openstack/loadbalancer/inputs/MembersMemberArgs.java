@@ -5,6 +5,7 @@ package com.pulumi.openstack.loadbalancer.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -443,8 +444,12 @@ public final class MembersMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MembersMemberArgs build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
-            $.protocolPort = Objects.requireNonNull($.protocolPort, "expected parameter 'protocolPort' to be non-null");
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("MembersMemberArgs", "address");
+            }
+            if ($.protocolPort == null) {
+                throw new MissingRequiredPropertyException("MembersMemberArgs", "protocolPort");
+            }
             return $;
         }
     }

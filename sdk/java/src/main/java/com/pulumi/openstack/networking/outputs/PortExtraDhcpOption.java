@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -73,17 +74,24 @@ public final class PortExtraDhcpOption {
 
         @CustomType.Setter
         public Builder ipVersion(@Nullable Integer ipVersion) {
+
             this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("PortExtraDhcpOption", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("PortExtraDhcpOption", "value");
+            }
+            this.value = value;
             return this;
         }
         public PortExtraDhcpOption build() {

@@ -4,6 +4,7 @@
 package com.pulumi.openstack.blockstorage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -185,57 +186,90 @@ public final class GetQuotasetV3Result {
 
         @CustomType.Setter
         public Builder backupGigabytes(Integer backupGigabytes) {
-            this.backupGigabytes = Objects.requireNonNull(backupGigabytes);
+            if (backupGigabytes == null) {
+              throw new MissingRequiredPropertyException("GetQuotasetV3Result", "backupGigabytes");
+            }
+            this.backupGigabytes = backupGigabytes;
             return this;
         }
         @CustomType.Setter
         public Builder backups(Integer backups) {
-            this.backups = Objects.requireNonNull(backups);
+            if (backups == null) {
+              throw new MissingRequiredPropertyException("GetQuotasetV3Result", "backups");
+            }
+            this.backups = backups;
             return this;
         }
         @CustomType.Setter
         public Builder gigabytes(Integer gigabytes) {
-            this.gigabytes = Objects.requireNonNull(gigabytes);
+            if (gigabytes == null) {
+              throw new MissingRequiredPropertyException("GetQuotasetV3Result", "gigabytes");
+            }
+            this.gigabytes = gigabytes;
             return this;
         }
         @CustomType.Setter
         public Builder groups(Integer groups) {
-            this.groups = Objects.requireNonNull(groups);
+            if (groups == null) {
+              throw new MissingRequiredPropertyException("GetQuotasetV3Result", "groups");
+            }
+            this.groups = groups;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetQuotasetV3Result", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder perVolumeGigabytes(Integer perVolumeGigabytes) {
-            this.perVolumeGigabytes = Objects.requireNonNull(perVolumeGigabytes);
+            if (perVolumeGigabytes == null) {
+              throw new MissingRequiredPropertyException("GetQuotasetV3Result", "perVolumeGigabytes");
+            }
+            this.perVolumeGigabytes = perVolumeGigabytes;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetQuotasetV3Result", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetQuotasetV3Result", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder snapshots(Integer snapshots) {
-            this.snapshots = Objects.requireNonNull(snapshots);
+            if (snapshots == null) {
+              throw new MissingRequiredPropertyException("GetQuotasetV3Result", "snapshots");
+            }
+            this.snapshots = snapshots;
             return this;
         }
         @CustomType.Setter
         public Builder volumeTypeQuota(Map<String,Object> volumeTypeQuota) {
-            this.volumeTypeQuota = Objects.requireNonNull(volumeTypeQuota);
+            if (volumeTypeQuota == null) {
+              throw new MissingRequiredPropertyException("GetQuotasetV3Result", "volumeTypeQuota");
+            }
+            this.volumeTypeQuota = volumeTypeQuota;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(Integer volumes) {
-            this.volumes = Objects.requireNonNull(volumes);
+            if (volumes == null) {
+              throw new MissingRequiredPropertyException("GetQuotasetV3Result", "volumes");
+            }
+            this.volumes = volumes;
             return this;
         }
         public GetQuotasetV3Result build() {

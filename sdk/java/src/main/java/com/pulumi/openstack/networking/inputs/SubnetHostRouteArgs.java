@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class SubnetHostRouteArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public SubnetHostRouteArgs build() {
-            $.destinationCidr = Objects.requireNonNull($.destinationCidr, "expected parameter 'destinationCidr' to be non-null");
-            $.nextHop = Objects.requireNonNull($.nextHop, "expected parameter 'nextHop' to be non-null");
+            if ($.destinationCidr == null) {
+                throw new MissingRequiredPropertyException("SubnetHostRouteArgs", "destinationCidr");
+            }
+            if ($.nextHop == null) {
+                throw new MissingRequiredPropertyException("SubnetHostRouteArgs", "nextHop");
+            }
             return $;
         }
     }

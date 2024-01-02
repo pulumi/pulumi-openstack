@@ -4,6 +4,7 @@
 package com.pulumi.openstack.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -155,47 +156,74 @@ public final class GetHypervisorV2Result {
 
         @CustomType.Setter
         public Builder disk(Integer disk) {
-            this.disk = Objects.requireNonNull(disk);
+            if (disk == null) {
+              throw new MissingRequiredPropertyException("GetHypervisorV2Result", "disk");
+            }
+            this.disk = disk;
             return this;
         }
         @CustomType.Setter
         public Builder hostIp(String hostIp) {
-            this.hostIp = Objects.requireNonNull(hostIp);
+            if (hostIp == null) {
+              throw new MissingRequiredPropertyException("GetHypervisorV2Result", "hostIp");
+            }
+            this.hostIp = hostIp;
             return this;
         }
         @CustomType.Setter
         public Builder hostname(String hostname) {
-            this.hostname = Objects.requireNonNull(hostname);
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("GetHypervisorV2Result", "hostname");
+            }
+            this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHypervisorV2Result", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder memory(Integer memory) {
-            this.memory = Objects.requireNonNull(memory);
+            if (memory == null) {
+              throw new MissingRequiredPropertyException("GetHypervisorV2Result", "memory");
+            }
+            this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetHypervisorV2Result", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetHypervisorV2Result", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetHypervisorV2Result", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder vcpus(Integer vcpus) {
-            this.vcpus = Objects.requireNonNull(vcpus);
+            if (vcpus == null) {
+              throw new MissingRequiredPropertyException("GetHypervisorV2Result", "vcpus");
+            }
+            this.vcpus = vcpus;
             return this;
         }
         public GetHypervisorV2Result build() {

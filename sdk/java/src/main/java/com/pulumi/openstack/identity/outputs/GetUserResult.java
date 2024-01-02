@@ -4,6 +4,7 @@
 package com.pulumi.openstack.identity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -185,56 +186,77 @@ public final class GetUserResult {
 
         @CustomType.Setter
         public Builder defaultProjectId(String defaultProjectId) {
-            this.defaultProjectId = Objects.requireNonNull(defaultProjectId);
+            if (defaultProjectId == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "defaultProjectId");
+            }
+            this.defaultProjectId = defaultProjectId;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder domainId(String domainId) {
-            this.domainId = Objects.requireNonNull(domainId);
+            if (domainId == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "domainId");
+            }
+            this.domainId = domainId;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder idpId(@Nullable String idpId) {
+
             this.idpId = idpId;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder passwordExpiresAt(@Nullable String passwordExpiresAt) {
+
             this.passwordExpiresAt = passwordExpiresAt;
             return this;
         }
         @CustomType.Setter
         public Builder protocolId(@Nullable String protocolId) {
+
             this.protocolId = protocolId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder uniqueId(@Nullable String uniqueId) {
+
             this.uniqueId = uniqueId;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.openstack.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -540,9 +541,15 @@ public final class FlavorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FlavorArgs build() {
-            $.disk = Objects.requireNonNull($.disk, "expected parameter 'disk' to be non-null");
-            $.ram = Objects.requireNonNull($.ram, "expected parameter 'ram' to be non-null");
-            $.vcpus = Objects.requireNonNull($.vcpus, "expected parameter 'vcpus' to be non-null");
+            if ($.disk == null) {
+                throw new MissingRequiredPropertyException("FlavorArgs", "disk");
+            }
+            if ($.ram == null) {
+                throw new MissingRequiredPropertyException("FlavorArgs", "ram");
+            }
+            if ($.vcpus == null) {
+                throw new MissingRequiredPropertyException("FlavorArgs", "vcpus");
+            }
             return $;
         }
     }

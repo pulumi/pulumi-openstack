@@ -5,6 +5,7 @@ package com.pulumi.openstack.firewall;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -612,8 +613,12 @@ public final class RuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RuleArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "action");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("RuleArgs", "protocol");
+            }
             return $;
         }
     }

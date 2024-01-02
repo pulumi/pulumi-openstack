@@ -4,6 +4,7 @@
 package com.pulumi.openstack.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.compute.outputs.GetInstanceV2Network;
 import java.lang.Object;
 import java.lang.String;
@@ -274,67 +275,106 @@ public final class GetInstanceV2Result {
 
         @CustomType.Setter
         public Builder accessIpV4(String accessIpV4) {
-            this.accessIpV4 = Objects.requireNonNull(accessIpV4);
+            if (accessIpV4 == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "accessIpV4");
+            }
+            this.accessIpV4 = accessIpV4;
             return this;
         }
         @CustomType.Setter
         public Builder accessIpV6(String accessIpV6) {
-            this.accessIpV6 = Objects.requireNonNull(accessIpV6);
+            if (accessIpV6 == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "accessIpV6");
+            }
+            this.accessIpV6 = accessIpV6;
             return this;
         }
         @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
-            this.availabilityZone = Objects.requireNonNull(availabilityZone);
+            if (availabilityZone == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "availabilityZone");
+            }
+            this.availabilityZone = availabilityZone;
             return this;
         }
         @CustomType.Setter
         public Builder created(String created) {
-            this.created = Objects.requireNonNull(created);
+            if (created == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "created");
+            }
+            this.created = created;
             return this;
         }
         @CustomType.Setter
         public Builder flavorId(String flavorId) {
-            this.flavorId = Objects.requireNonNull(flavorId);
+            if (flavorId == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "flavorId");
+            }
+            this.flavorId = flavorId;
             return this;
         }
         @CustomType.Setter
         public Builder flavorName(String flavorName) {
-            this.flavorName = Objects.requireNonNull(flavorName);
+            if (flavorName == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "flavorName");
+            }
+            this.flavorName = flavorName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imageId(String imageId) {
-            this.imageId = Objects.requireNonNull(imageId);
+            if (imageId == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "imageId");
+            }
+            this.imageId = imageId;
             return this;
         }
         @CustomType.Setter
         public Builder imageName(String imageName) {
-            this.imageName = Objects.requireNonNull(imageName);
+            if (imageName == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "imageName");
+            }
+            this.imageName = imageName;
             return this;
         }
         @CustomType.Setter
         public Builder keyPair(String keyPair) {
-            this.keyPair = Objects.requireNonNull(keyPair);
+            if (keyPair == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "keyPair");
+            }
+            this.keyPair = keyPair;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(Map<String,Object> metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networks(List<GetInstanceV2Network> networks) {
-            this.networks = Objects.requireNonNull(networks);
+            if (networks == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "networks");
+            }
+            this.networks = networks;
             return this;
         }
         public Builder networks(GetInstanceV2Network... networks) {
@@ -342,17 +382,26 @@ public final class GetInstanceV2Result {
         }
         @CustomType.Setter
         public Builder powerState(String powerState) {
-            this.powerState = Objects.requireNonNull(powerState);
+            if (powerState == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "powerState");
+            }
+            this.powerState = powerState;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroups(List<String> securityGroups) {
-            this.securityGroups = Objects.requireNonNull(securityGroups);
+            if (securityGroups == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "securityGroups");
+            }
+            this.securityGroups = securityGroups;
             return this;
         }
         public Builder securityGroups(String... securityGroups) {
@@ -360,7 +409,10 @@ public final class GetInstanceV2Result {
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -368,12 +420,18 @@ public final class GetInstanceV2Result {
         }
         @CustomType.Setter
         public Builder updated(String updated) {
-            this.updated = Objects.requireNonNull(updated);
+            if (updated == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "updated");
+            }
+            this.updated = updated;
             return this;
         }
         @CustomType.Setter
         public Builder userData(String userData) {
-            this.userData = Objects.requireNonNull(userData);
+            if (userData == null) {
+              throw new MissingRequiredPropertyException("GetInstanceV2Result", "userData");
+            }
+            this.userData = userData;
             return this;
         }
         public GetInstanceV2Result build() {

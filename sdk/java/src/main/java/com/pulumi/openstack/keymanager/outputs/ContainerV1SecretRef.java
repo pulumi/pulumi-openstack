@@ -4,6 +4,7 @@
 package com.pulumi.openstack.keymanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,12 +59,16 @@ public final class ContainerV1SecretRef {
 
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder secretRef(String secretRef) {
-            this.secretRef = Objects.requireNonNull(secretRef);
+            if (secretRef == null) {
+              throw new MissingRequiredPropertyException("ContainerV1SecretRef", "secretRef");
+            }
+            this.secretRef = secretRef;
             return this;
         }
         public ContainerV1SecretRef build() {

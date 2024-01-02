@@ -5,6 +5,7 @@ package com.pulumi.openstack.keymanager.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -262,8 +263,12 @@ public final class OrderV1MetaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OrderV1MetaArgs build() {
-            $.algorithm = Objects.requireNonNull($.algorithm, "expected parameter 'algorithm' to be non-null");
-            $.bitLength = Objects.requireNonNull($.bitLength, "expected parameter 'bitLength' to be non-null");
+            if ($.algorithm == null) {
+                throw new MissingRequiredPropertyException("OrderV1MetaArgs", "algorithm");
+            }
+            if ($.bitLength == null) {
+                throw new MissingRequiredPropertyException("OrderV1MetaArgs", "bitLength");
+            }
             return $;
         }
     }

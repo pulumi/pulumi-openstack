@@ -4,6 +4,7 @@
 package com.pulumi.openstack.database.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -95,6 +96,7 @@ public final class InstanceUser {
 
         @CustomType.Setter
         public Builder databases(@Nullable List<String> databases) {
+
             this.databases = databases;
             return this;
         }
@@ -103,16 +105,21 @@ public final class InstanceUser {
         }
         @CustomType.Setter
         public Builder host(@Nullable String host) {
+
             this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("InstanceUser", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.openstack.sharedfilesystem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.sharedfilesystem.outputs.GetShareExportLocation;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -250,22 +251,32 @@ public final class GetShareResult {
 
         @CustomType.Setter
         public Builder availabilityZone(String availabilityZone) {
-            this.availabilityZone = Objects.requireNonNull(availabilityZone);
+            if (availabilityZone == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "availabilityZone");
+            }
+            this.availabilityZone = availabilityZone;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder exportLocationPath(@Nullable String exportLocationPath) {
+
             this.exportLocationPath = exportLocationPath;
             return this;
         }
         @CustomType.Setter
         public Builder exportLocations(List<GetShareExportLocation> exportLocations) {
-            this.exportLocations = Objects.requireNonNull(exportLocations);
+            if (exportLocations == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "exportLocations");
+            }
+            this.exportLocations = exportLocations;
             return this;
         }
         public Builder exportLocations(GetShareExportLocation... exportLocations) {
@@ -273,57 +284,90 @@ public final class GetShareResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isPublic(Boolean isPublic) {
-            this.isPublic = Objects.requireNonNull(isPublic);
+            if (isPublic == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "isPublic");
+            }
+            this.isPublic = isPublic;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(Map<String,Object> metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder shareNetworkId(String shareNetworkId) {
-            this.shareNetworkId = Objects.requireNonNull(shareNetworkId);
+            if (shareNetworkId == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "shareNetworkId");
+            }
+            this.shareNetworkId = shareNetworkId;
             return this;
         }
         @CustomType.Setter
         public Builder shareProto(String shareProto) {
-            this.shareProto = Objects.requireNonNull(shareProto);
+            if (shareProto == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "shareProto");
+            }
+            this.shareProto = shareProto;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotId(String snapshotId) {
-            this.snapshotId = Objects.requireNonNull(snapshotId);
+            if (snapshotId == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "snapshotId");
+            }
+            this.snapshotId = snapshotId;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetShareResult", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetShareResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.openstack.loadbalancer;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -604,10 +605,18 @@ public final class VipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VipArgs build() {
-            $.poolId = Objects.requireNonNull($.poolId, "expected parameter 'poolId' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
-            $.subnetId = Objects.requireNonNull($.subnetId, "expected parameter 'subnetId' to be non-null");
+            if ($.poolId == null) {
+                throw new MissingRequiredPropertyException("VipArgs", "poolId");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("VipArgs", "port");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("VipArgs", "protocol");
+            }
+            if ($.subnetId == null) {
+                throw new MissingRequiredPropertyException("VipArgs", "subnetId");
+            }
             return $;
         }
     }

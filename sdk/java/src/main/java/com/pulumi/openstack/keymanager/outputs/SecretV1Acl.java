@@ -36,6 +36,7 @@ public final class SecretV1Acl {
 
         @CustomType.Setter
         public Builder read(@Nullable SecretV1AclRead read) {
+
             this.read = read;
             return this;
         }

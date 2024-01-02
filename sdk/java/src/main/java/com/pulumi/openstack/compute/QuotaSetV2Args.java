@@ -5,6 +5,7 @@ package com.pulumi.openstack.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -700,7 +701,9 @@ public final class QuotaSetV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         public QuotaSetV2Args build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("QuotaSetV2Args", "projectId");
+            }
             return $;
         }
     }

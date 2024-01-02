@@ -4,6 +4,7 @@
 package com.pulumi.openstack.blockstorage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -152,47 +153,72 @@ public final class GetSnapshotV2Result {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotV2Result", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotV2Result", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(Map<String,Object> metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotV2Result", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder mostRecent(@Nullable Boolean mostRecent) {
+
             this.mostRecent = mostRecent;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotV2Result", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotV2Result", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotV2Result", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotV2Result", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder volumeId(String volumeId) {
-            this.volumeId = Objects.requireNonNull(volumeId);
+            if (volumeId == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotV2Result", "volumeId");
+            }
+            this.volumeId = volumeId;
             return this;
         }
         public GetSnapshotV2Result build() {

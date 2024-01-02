@@ -5,6 +5,7 @@ package com.pulumi.openstack.orchestration;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.orchestration.inputs.StackV1StackOutputArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -786,7 +787,9 @@ public final class StackV1Args extends com.pulumi.resources.ResourceArgs {
         }
 
         public StackV1Args build() {
-            $.templateOpts = Objects.requireNonNull($.templateOpts, "expected parameter 'templateOpts' to be non-null");
+            if ($.templateOpts == null) {
+                throw new MissingRequiredPropertyException("StackV1Args", "templateOpts");
+            }
             return $;
         }
     }

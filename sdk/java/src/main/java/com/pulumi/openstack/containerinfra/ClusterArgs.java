@@ -5,6 +5,7 @@ package com.pulumi.openstack.containerinfra;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -711,7 +712,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterArgs build() {
-            $.clusterTemplateId = Objects.requireNonNull($.clusterTemplateId, "expected parameter 'clusterTemplateId' to be non-null");
+            if ($.clusterTemplateId == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "clusterTemplateId");
+            }
             return $;
         }
     }

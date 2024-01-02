@@ -4,6 +4,7 @@
 package com.pulumi.openstack.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class InstancePersonality {
 
         @CustomType.Setter
         public Builder content(String content) {
-            this.content = Objects.requireNonNull(content);
+            if (content == null) {
+              throw new MissingRequiredPropertyException("InstancePersonality", "content");
+            }
+            this.content = content;
             return this;
         }
         @CustomType.Setter
         public Builder file(String file) {
-            this.file = Objects.requireNonNull(file);
+            if (file == null) {
+              throw new MissingRequiredPropertyException("InstancePersonality", "file");
+            }
+            this.file = file;
             return this;
         }
         public InstancePersonality build() {

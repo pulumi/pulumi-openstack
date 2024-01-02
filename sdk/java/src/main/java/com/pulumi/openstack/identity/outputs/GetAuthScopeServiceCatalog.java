@@ -4,6 +4,7 @@
 package com.pulumi.openstack.identity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.identity.outputs.GetAuthScopeServiceCatalogEndpoint;
 import java.lang.String;
 import java.util.List;
@@ -88,7 +89,10 @@ public final class GetAuthScopeServiceCatalog {
 
         @CustomType.Setter
         public Builder endpoints(List<GetAuthScopeServiceCatalogEndpoint> endpoints) {
-            this.endpoints = Objects.requireNonNull(endpoints);
+            if (endpoints == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeServiceCatalog", "endpoints");
+            }
+            this.endpoints = endpoints;
             return this;
         }
         public Builder endpoints(GetAuthScopeServiceCatalogEndpoint... endpoints) {
@@ -96,17 +100,26 @@ public final class GetAuthScopeServiceCatalog {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeServiceCatalog", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeServiceCatalog", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeServiceCatalog", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetAuthScopeServiceCatalog build() {

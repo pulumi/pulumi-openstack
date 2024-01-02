@@ -4,6 +4,7 @@
 package com.pulumi.openstack.blockstorage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -89,12 +90,18 @@ public final class GetAvailabilityZonesV3Result {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAvailabilityZonesV3Result", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetAvailabilityZonesV3Result", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -102,11 +109,15 @@ public final class GetAvailabilityZonesV3Result {
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetAvailabilityZonesV3Result", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }

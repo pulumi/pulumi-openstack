@@ -5,6 +5,7 @@ package com.pulumi.openstack.sharedfilesystem;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -506,8 +507,12 @@ public final class ShareArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ShareArgs build() {
-            $.shareProto = Objects.requireNonNull($.shareProto, "expected parameter 'shareProto' to be non-null");
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
+            if ($.shareProto == null) {
+                throw new MissingRequiredPropertyException("ShareArgs", "shareProto");
+            }
+            if ($.size == null) {
+                throw new MissingRequiredPropertyException("ShareArgs", "size");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.openstack.loadbalancer;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -855,9 +856,15 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ListenerArgs build() {
-            $.loadbalancerId = Objects.requireNonNull($.loadbalancerId, "expected parameter 'loadbalancerId' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
-            $.protocolPort = Objects.requireNonNull($.protocolPort, "expected parameter 'protocolPort' to be non-null");
+            if ($.loadbalancerId == null) {
+                throw new MissingRequiredPropertyException("ListenerArgs", "loadbalancerId");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("ListenerArgs", "protocol");
+            }
+            if ($.protocolPort == null) {
+                throw new MissingRequiredPropertyException("ListenerArgs", "protocolPort");
+            }
             return $;
         }
     }

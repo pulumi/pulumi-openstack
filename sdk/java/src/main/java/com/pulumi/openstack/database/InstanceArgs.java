@@ -5,6 +5,7 @@ package com.pulumi.openstack.database;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.database.inputs.InstanceDatabaseArgs;
 import com.pulumi.openstack.database.inputs.InstanceDatastoreArgs;
 import com.pulumi.openstack.database.inputs.InstanceNetworkArgs;
@@ -444,8 +445,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.datastore = Objects.requireNonNull($.datastore, "expected parameter 'datastore' to be non-null");
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
+            if ($.datastore == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "datastore");
+            }
+            if ($.size == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "size");
+            }
             return $;
         }
     }

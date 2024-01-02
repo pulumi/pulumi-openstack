@@ -46,6 +46,7 @@ public final class RouterVendorOptions {
 
         @CustomType.Setter
         public Builder setRouterGatewayAfterCreate(@Nullable Boolean setRouterGatewayAfterCreate) {
+
             this.setRouterGatewayAfterCreate = setRouterGatewayAfterCreate;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.openstack.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -48,17 +49,22 @@ public final class InstanceVolume {
 
         @CustomType.Setter
         public Builder device(@Nullable String device) {
+
             this.device = device;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder volumeId(String volumeId) {
-            this.volumeId = Objects.requireNonNull(volumeId);
+            if (volumeId == null) {
+              throw new MissingRequiredPropertyException("InstanceVolume", "volumeId");
+            }
+            this.volumeId = volumeId;
             return this;
         }
         public InstanceVolume build() {

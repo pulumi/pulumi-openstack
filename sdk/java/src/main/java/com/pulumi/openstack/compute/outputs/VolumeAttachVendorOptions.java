@@ -48,6 +48,7 @@ public final class VolumeAttachVendorOptions {
 
         @CustomType.Setter
         public Builder ignoreVolumeConfirmation(@Nullable Boolean ignoreVolumeConfirmation) {
+
             this.ignoreVolumeConfirmation = ignoreVolumeConfirmation;
             return this;
         }

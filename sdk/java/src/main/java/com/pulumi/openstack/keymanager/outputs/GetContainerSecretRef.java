@@ -58,11 +58,13 @@ public final class GetContainerSecretRef {
 
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder secretRef(@Nullable String secretRef) {
+
             this.secretRef = secretRef;
             return this;
         }

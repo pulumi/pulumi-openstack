@@ -5,6 +5,7 @@ package com.pulumi.openstack.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -162,8 +163,12 @@ public final class FlavorAccessArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FlavorAccessArgs build() {
-            $.flavorId = Objects.requireNonNull($.flavorId, "expected parameter 'flavorId' to be non-null");
-            $.tenantId = Objects.requireNonNull($.tenantId, "expected parameter 'tenantId' to be non-null");
+            if ($.flavorId == null) {
+                throw new MissingRequiredPropertyException("FlavorAccessArgs", "flavorId");
+            }
+            if ($.tenantId == null) {
+                throw new MissingRequiredPropertyException("FlavorAccessArgs", "tenantId");
+            }
             return $;
         }
     }

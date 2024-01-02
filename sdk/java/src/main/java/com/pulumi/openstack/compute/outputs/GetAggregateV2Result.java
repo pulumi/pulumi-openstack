@@ -4,6 +4,7 @@
 package com.pulumi.openstack.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -100,7 +101,10 @@ public final class GetAggregateV2Result {
 
         @CustomType.Setter
         public Builder hosts(List<String> hosts) {
-            this.hosts = Objects.requireNonNull(hosts);
+            if (hosts == null) {
+              throw new MissingRequiredPropertyException("GetAggregateV2Result", "hosts");
+            }
+            this.hosts = hosts;
             return this;
         }
         public Builder hosts(String... hosts) {
@@ -108,22 +112,34 @@ public final class GetAggregateV2Result {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAggregateV2Result", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(Map<String,String> metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetAggregateV2Result", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAggregateV2Result", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder zone(String zone) {
-            this.zone = Objects.requireNonNull(zone);
+            if (zone == null) {
+              throw new MissingRequiredPropertyException("GetAggregateV2Result", "zone");
+            }
+            this.zone = zone;
             return this;
         }
         public GetAggregateV2Result build() {

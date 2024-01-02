@@ -73,16 +73,19 @@ public final class NetworkSegment {
 
         @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
+
             this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder physicalNetwork(@Nullable String physicalNetwork) {
+
             this.physicalNetwork = physicalNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder segmentationId(@Nullable Integer segmentationId) {
+
             this.segmentationId = segmentationId;
             return this;
         }

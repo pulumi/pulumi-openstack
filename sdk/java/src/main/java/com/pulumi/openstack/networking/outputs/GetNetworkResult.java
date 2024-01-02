@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.networking.outputs.GetNetworkSegment;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -264,12 +265,18 @@ public final class GetNetworkResult {
 
         @CustomType.Setter
         public Builder adminStateUp(String adminStateUp) {
-            this.adminStateUp = Objects.requireNonNull(adminStateUp);
+            if (adminStateUp == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "adminStateUp");
+            }
+            this.adminStateUp = adminStateUp;
             return this;
         }
         @CustomType.Setter
         public Builder allTags(List<String> allTags) {
-            this.allTags = Objects.requireNonNull(allTags);
+            if (allTags == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "allTags");
+            }
+            this.allTags = allTags;
             return this;
         }
         public Builder allTags(String... allTags) {
@@ -277,7 +284,10 @@ public final class GetNetworkResult {
         }
         @CustomType.Setter
         public Builder availabilityZoneHints(List<String> availabilityZoneHints) {
-            this.availabilityZoneHints = Objects.requireNonNull(availabilityZoneHints);
+            if (availabilityZoneHints == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "availabilityZoneHints");
+            }
+            this.availabilityZoneHints = availabilityZoneHints;
             return this;
         }
         public Builder availabilityZoneHints(String... availabilityZoneHints) {
@@ -285,52 +295,70 @@ public final class GetNetworkResult {
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder dnsDomain(String dnsDomain) {
-            this.dnsDomain = Objects.requireNonNull(dnsDomain);
+            if (dnsDomain == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "dnsDomain");
+            }
+            this.dnsDomain = dnsDomain;
             return this;
         }
         @CustomType.Setter
         public Builder external(@Nullable Boolean external) {
+
             this.external = external;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder matchingSubnetCidr(@Nullable String matchingSubnetCidr) {
+
             this.matchingSubnetCidr = matchingSubnetCidr;
             return this;
         }
         @CustomType.Setter
         public Builder mtu(@Nullable Integer mtu) {
+
             this.mtu = mtu;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networkId(@Nullable String networkId) {
+
             this.networkId = networkId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder segments(List<GetNetworkSegment> segments) {
-            this.segments = Objects.requireNonNull(segments);
+            if (segments == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "segments");
+            }
+            this.segments = segments;
             return this;
         }
         public Builder segments(GetNetworkSegment... segments) {
@@ -338,17 +366,24 @@ public final class GetNetworkResult {
         }
         @CustomType.Setter
         public Builder shared(String shared) {
-            this.shared = Objects.requireNonNull(shared);
+            if (shared == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "shared");
+            }
+            this.shared = shared;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder subnets(List<String> subnets) {
-            this.subnets = Objects.requireNonNull(subnets);
+            if (subnets == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "subnets");
+            }
+            this.subnets = subnets;
             return this;
         }
         public Builder subnets(String... subnets) {
@@ -356,6 +391,7 @@ public final class GetNetworkResult {
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -364,11 +400,13 @@ public final class GetNetworkResult {
         }
         @CustomType.Setter
         public Builder tenantId(@Nullable String tenantId) {
+
             this.tenantId = tenantId;
             return this;
         }
         @CustomType.Setter
         public Builder transparentVlan(@Nullable Boolean transparentVlan) {
+
             this.transparentVlan = transparentVlan;
             return this;
         }

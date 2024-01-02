@@ -5,6 +5,7 @@ package com.pulumi.openstack.database;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.database.inputs.ConfigurationConfigurationArgs;
 import com.pulumi.openstack.database.inputs.ConfigurationDatastoreArgs;
 import java.lang.String;
@@ -245,8 +246,12 @@ public final class ConfigurationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ConfigurationArgs build() {
-            $.datastore = Objects.requireNonNull($.datastore, "expected parameter 'datastore' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
+            if ($.datastore == null) {
+                throw new MissingRequiredPropertyException("ConfigurationArgs", "datastore");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("ConfigurationArgs", "description");
+            }
             return $;
         }
     }

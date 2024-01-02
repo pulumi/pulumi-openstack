@@ -4,6 +4,7 @@
 package com.pulumi.openstack.identity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class GetAuthScopeRole {
 
         @CustomType.Setter
         public Builder roleId(String roleId) {
-            this.roleId = Objects.requireNonNull(roleId);
+            if (roleId == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeRole", "roleId");
+            }
+            this.roleId = roleId;
             return this;
         }
         @CustomType.Setter
         public Builder roleName(String roleName) {
-            this.roleName = Objects.requireNonNull(roleName);
+            if (roleName == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeRole", "roleName");
+            }
+            this.roleName = roleName;
             return this;
         }
         public GetAuthScopeRole build() {

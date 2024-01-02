@@ -4,6 +4,7 @@
 package com.pulumi.openstack.keymanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -90,21 +91,29 @@ public final class GetSecretAclRead {
 
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetSecretAclRead", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder projectAccess(@Nullable Boolean projectAccess) {
+
             this.projectAccess = projectAccess;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetSecretAclRead", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         @CustomType.Setter
         public Builder users(@Nullable List<String> users) {
+
             this.users = users;
             return this;
         }

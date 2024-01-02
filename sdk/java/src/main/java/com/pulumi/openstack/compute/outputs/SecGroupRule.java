@@ -4,6 +4,7 @@
 package com.pulumi.openstack.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -142,37 +143,50 @@ public final class SecGroupRule {
 
         @CustomType.Setter
         public Builder cidr(@Nullable String cidr) {
+
             this.cidr = cidr;
             return this;
         }
         @CustomType.Setter
         public Builder fromGroupId(@Nullable String fromGroupId) {
+
             this.fromGroupId = fromGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder fromPort(Integer fromPort) {
-            this.fromPort = Objects.requireNonNull(fromPort);
+            if (fromPort == null) {
+              throw new MissingRequiredPropertyException("SecGroupRule", "fromPort");
+            }
+            this.fromPort = fromPort;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipProtocol(String ipProtocol) {
-            this.ipProtocol = Objects.requireNonNull(ipProtocol);
+            if (ipProtocol == null) {
+              throw new MissingRequiredPropertyException("SecGroupRule", "ipProtocol");
+            }
+            this.ipProtocol = ipProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder self(@Nullable Boolean self) {
+
             this.self = self;
             return this;
         }
         @CustomType.Setter
         public Builder toPort(Integer toPort) {
-            this.toPort = Objects.requireNonNull(toPort);
+            if (toPort == null) {
+              throw new MissingRequiredPropertyException("SecGroupRule", "toPort");
+            }
+            this.toPort = toPort;
             return this;
         }
         public SecGroupRule build() {

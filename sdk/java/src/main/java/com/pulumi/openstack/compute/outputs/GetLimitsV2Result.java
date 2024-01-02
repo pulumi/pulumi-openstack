@@ -4,6 +4,7 @@
 package com.pulumi.openstack.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -337,112 +338,178 @@ public final class GetLimitsV2Result {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder maxImageMeta(Integer maxImageMeta) {
-            this.maxImageMeta = Objects.requireNonNull(maxImageMeta);
+            if (maxImageMeta == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "maxImageMeta");
+            }
+            this.maxImageMeta = maxImageMeta;
             return this;
         }
         @CustomType.Setter
         public Builder maxPersonality(Integer maxPersonality) {
-            this.maxPersonality = Objects.requireNonNull(maxPersonality);
+            if (maxPersonality == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "maxPersonality");
+            }
+            this.maxPersonality = maxPersonality;
             return this;
         }
         @CustomType.Setter
         public Builder maxPersonalitySize(Integer maxPersonalitySize) {
-            this.maxPersonalitySize = Objects.requireNonNull(maxPersonalitySize);
+            if (maxPersonalitySize == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "maxPersonalitySize");
+            }
+            this.maxPersonalitySize = maxPersonalitySize;
             return this;
         }
         @CustomType.Setter
         public Builder maxSecurityGroupRules(Integer maxSecurityGroupRules) {
-            this.maxSecurityGroupRules = Objects.requireNonNull(maxSecurityGroupRules);
+            if (maxSecurityGroupRules == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "maxSecurityGroupRules");
+            }
+            this.maxSecurityGroupRules = maxSecurityGroupRules;
             return this;
         }
         @CustomType.Setter
         public Builder maxSecurityGroups(Integer maxSecurityGroups) {
-            this.maxSecurityGroups = Objects.requireNonNull(maxSecurityGroups);
+            if (maxSecurityGroups == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "maxSecurityGroups");
+            }
+            this.maxSecurityGroups = maxSecurityGroups;
             return this;
         }
         @CustomType.Setter
         public Builder maxServerGroupMembers(Integer maxServerGroupMembers) {
-            this.maxServerGroupMembers = Objects.requireNonNull(maxServerGroupMembers);
+            if (maxServerGroupMembers == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "maxServerGroupMembers");
+            }
+            this.maxServerGroupMembers = maxServerGroupMembers;
             return this;
         }
         @CustomType.Setter
         public Builder maxServerGroups(Integer maxServerGroups) {
-            this.maxServerGroups = Objects.requireNonNull(maxServerGroups);
+            if (maxServerGroups == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "maxServerGroups");
+            }
+            this.maxServerGroups = maxServerGroups;
             return this;
         }
         @CustomType.Setter
         public Builder maxServerMeta(Integer maxServerMeta) {
-            this.maxServerMeta = Objects.requireNonNull(maxServerMeta);
+            if (maxServerMeta == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "maxServerMeta");
+            }
+            this.maxServerMeta = maxServerMeta;
             return this;
         }
         @CustomType.Setter
         public Builder maxTotalCores(Integer maxTotalCores) {
-            this.maxTotalCores = Objects.requireNonNull(maxTotalCores);
+            if (maxTotalCores == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "maxTotalCores");
+            }
+            this.maxTotalCores = maxTotalCores;
             return this;
         }
         @CustomType.Setter
         public Builder maxTotalFloatingIps(Integer maxTotalFloatingIps) {
-            this.maxTotalFloatingIps = Objects.requireNonNull(maxTotalFloatingIps);
+            if (maxTotalFloatingIps == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "maxTotalFloatingIps");
+            }
+            this.maxTotalFloatingIps = maxTotalFloatingIps;
             return this;
         }
         @CustomType.Setter
         public Builder maxTotalInstances(Integer maxTotalInstances) {
-            this.maxTotalInstances = Objects.requireNonNull(maxTotalInstances);
+            if (maxTotalInstances == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "maxTotalInstances");
+            }
+            this.maxTotalInstances = maxTotalInstances;
             return this;
         }
         @CustomType.Setter
         public Builder maxTotalKeypairs(Integer maxTotalKeypairs) {
-            this.maxTotalKeypairs = Objects.requireNonNull(maxTotalKeypairs);
+            if (maxTotalKeypairs == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "maxTotalKeypairs");
+            }
+            this.maxTotalKeypairs = maxTotalKeypairs;
             return this;
         }
         @CustomType.Setter
         public Builder maxTotalRamSize(Integer maxTotalRamSize) {
-            this.maxTotalRamSize = Objects.requireNonNull(maxTotalRamSize);
+            if (maxTotalRamSize == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "maxTotalRamSize");
+            }
+            this.maxTotalRamSize = maxTotalRamSize;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder totalCoresUsed(Integer totalCoresUsed) {
-            this.totalCoresUsed = Objects.requireNonNull(totalCoresUsed);
+            if (totalCoresUsed == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "totalCoresUsed");
+            }
+            this.totalCoresUsed = totalCoresUsed;
             return this;
         }
         @CustomType.Setter
         public Builder totalFloatingIpsUsed(Integer totalFloatingIpsUsed) {
-            this.totalFloatingIpsUsed = Objects.requireNonNull(totalFloatingIpsUsed);
+            if (totalFloatingIpsUsed == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "totalFloatingIpsUsed");
+            }
+            this.totalFloatingIpsUsed = totalFloatingIpsUsed;
             return this;
         }
         @CustomType.Setter
         public Builder totalInstancesUsed(Integer totalInstancesUsed) {
-            this.totalInstancesUsed = Objects.requireNonNull(totalInstancesUsed);
+            if (totalInstancesUsed == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "totalInstancesUsed");
+            }
+            this.totalInstancesUsed = totalInstancesUsed;
             return this;
         }
         @CustomType.Setter
         public Builder totalRamUsed(Integer totalRamUsed) {
-            this.totalRamUsed = Objects.requireNonNull(totalRamUsed);
+            if (totalRamUsed == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "totalRamUsed");
+            }
+            this.totalRamUsed = totalRamUsed;
             return this;
         }
         @CustomType.Setter
         public Builder totalSecurityGroupsUsed(Integer totalSecurityGroupsUsed) {
-            this.totalSecurityGroupsUsed = Objects.requireNonNull(totalSecurityGroupsUsed);
+            if (totalSecurityGroupsUsed == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "totalSecurityGroupsUsed");
+            }
+            this.totalSecurityGroupsUsed = totalSecurityGroupsUsed;
             return this;
         }
         @CustomType.Setter
         public Builder totalServerGroupsUsed(Integer totalServerGroupsUsed) {
-            this.totalServerGroupsUsed = Objects.requireNonNull(totalServerGroupsUsed);
+            if (totalServerGroupsUsed == null) {
+              throw new MissingRequiredPropertyException("GetLimitsV2Result", "totalServerGroupsUsed");
+            }
+            this.totalServerGroupsUsed = totalServerGroupsUsed;
             return this;
         }
         public GetLimitsV2Result build() {

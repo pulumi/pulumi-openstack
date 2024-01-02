@@ -4,6 +4,7 @@
 package com.pulumi.openstack.identity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.identity.outputs.GetAuthScopeRole;
 import com.pulumi.openstack.identity.outputs.GetAuthScopeServiceCatalog;
 import java.lang.Boolean;
@@ -264,52 +265,82 @@ public final class GetAuthScopeResult {
 
         @CustomType.Setter
         public Builder domainId(String domainId) {
-            this.domainId = Objects.requireNonNull(domainId);
+            if (domainId == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeResult", "domainId");
+            }
+            this.domainId = domainId;
             return this;
         }
         @CustomType.Setter
         public Builder domainName(String domainName) {
-            this.domainName = Objects.requireNonNull(domainName);
+            if (domainName == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeResult", "domainName");
+            }
+            this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder projectDomainId(String projectDomainId) {
-            this.projectDomainId = Objects.requireNonNull(projectDomainId);
+            if (projectDomainId == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeResult", "projectDomainId");
+            }
+            this.projectDomainId = projectDomainId;
             return this;
         }
         @CustomType.Setter
         public Builder projectDomainName(String projectDomainName) {
-            this.projectDomainName = Objects.requireNonNull(projectDomainName);
+            if (projectDomainName == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeResult", "projectDomainName");
+            }
+            this.projectDomainName = projectDomainName;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder projectName(String projectName) {
-            this.projectName = Objects.requireNonNull(projectName);
+            if (projectName == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeResult", "projectName");
+            }
+            this.projectName = projectName;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder roles(List<GetAuthScopeRole> roles) {
-            this.roles = Objects.requireNonNull(roles);
+            if (roles == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeResult", "roles");
+            }
+            this.roles = roles;
             return this;
         }
         public Builder roles(GetAuthScopeRole... roles) {
@@ -317,7 +348,10 @@ public final class GetAuthScopeResult {
         }
         @CustomType.Setter
         public Builder serviceCatalogs(List<GetAuthScopeServiceCatalog> serviceCatalogs) {
-            this.serviceCatalogs = Objects.requireNonNull(serviceCatalogs);
+            if (serviceCatalogs == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeResult", "serviceCatalogs");
+            }
+            this.serviceCatalogs = serviceCatalogs;
             return this;
         }
         public Builder serviceCatalogs(GetAuthScopeServiceCatalog... serviceCatalogs) {
@@ -325,32 +359,48 @@ public final class GetAuthScopeResult {
         }
         @CustomType.Setter
         public Builder setTokenId(@Nullable Boolean setTokenId) {
+
             this.setTokenId = setTokenId;
             return this;
         }
         @CustomType.Setter
         public Builder tokenId(String tokenId) {
-            this.tokenId = Objects.requireNonNull(tokenId);
+            if (tokenId == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeResult", "tokenId");
+            }
+            this.tokenId = tokenId;
             return this;
         }
         @CustomType.Setter
         public Builder userDomainId(String userDomainId) {
-            this.userDomainId = Objects.requireNonNull(userDomainId);
+            if (userDomainId == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeResult", "userDomainId");
+            }
+            this.userDomainId = userDomainId;
             return this;
         }
         @CustomType.Setter
         public Builder userDomainName(String userDomainName) {
-            this.userDomainName = Objects.requireNonNull(userDomainName);
+            if (userDomainName == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeResult", "userDomainName");
+            }
+            this.userDomainName = userDomainName;
             return this;
         }
         @CustomType.Setter
         public Builder userId(String userId) {
-            this.userId = Objects.requireNonNull(userId);
+            if (userId == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeResult", "userId");
+            }
+            this.userId = userId;
             return this;
         }
         @CustomType.Setter
         public Builder userName(String userName) {
-            this.userName = Objects.requireNonNull(userName);
+            if (userName == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeResult", "userName");
+            }
+            this.userName = userName;
             return this;
         }
         public GetAuthScopeResult build() {

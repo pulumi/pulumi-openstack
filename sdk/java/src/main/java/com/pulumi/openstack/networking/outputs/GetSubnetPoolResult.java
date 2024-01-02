@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -290,12 +291,18 @@ public final class GetSubnetPoolResult {
 
         @CustomType.Setter
         public Builder addressScopeId(String addressScopeId) {
-            this.addressScopeId = Objects.requireNonNull(addressScopeId);
+            if (addressScopeId == null) {
+              throw new MissingRequiredPropertyException("GetSubnetPoolResult", "addressScopeId");
+            }
+            this.addressScopeId = addressScopeId;
             return this;
         }
         @CustomType.Setter
         public Builder allTags(List<String> allTags) {
-            this.allTags = Objects.requireNonNull(allTags);
+            if (allTags == null) {
+              throw new MissingRequiredPropertyException("GetSubnetPoolResult", "allTags");
+            }
+            this.allTags = allTags;
             return this;
         }
         public Builder allTags(String... allTags) {
@@ -303,57 +310,90 @@ public final class GetSubnetPoolResult {
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetSubnetPoolResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder defaultPrefixlen(Integer defaultPrefixlen) {
-            this.defaultPrefixlen = Objects.requireNonNull(defaultPrefixlen);
+            if (defaultPrefixlen == null) {
+              throw new MissingRequiredPropertyException("GetSubnetPoolResult", "defaultPrefixlen");
+            }
+            this.defaultPrefixlen = defaultPrefixlen;
             return this;
         }
         @CustomType.Setter
         public Builder defaultQuota(Integer defaultQuota) {
-            this.defaultQuota = Objects.requireNonNull(defaultQuota);
+            if (defaultQuota == null) {
+              throw new MissingRequiredPropertyException("GetSubnetPoolResult", "defaultQuota");
+            }
+            this.defaultQuota = defaultQuota;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetSubnetPoolResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSubnetPoolResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipVersion(Integer ipVersion) {
-            this.ipVersion = Objects.requireNonNull(ipVersion);
+            if (ipVersion == null) {
+              throw new MissingRequiredPropertyException("GetSubnetPoolResult", "ipVersion");
+            }
+            this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
         public Builder isDefault(Boolean isDefault) {
-            this.isDefault = Objects.requireNonNull(isDefault);
+            if (isDefault == null) {
+              throw new MissingRequiredPropertyException("GetSubnetPoolResult", "isDefault");
+            }
+            this.isDefault = isDefault;
             return this;
         }
         @CustomType.Setter
         public Builder maxPrefixlen(Integer maxPrefixlen) {
-            this.maxPrefixlen = Objects.requireNonNull(maxPrefixlen);
+            if (maxPrefixlen == null) {
+              throw new MissingRequiredPropertyException("GetSubnetPoolResult", "maxPrefixlen");
+            }
+            this.maxPrefixlen = maxPrefixlen;
             return this;
         }
         @CustomType.Setter
         public Builder minPrefixlen(Integer minPrefixlen) {
-            this.minPrefixlen = Objects.requireNonNull(minPrefixlen);
+            if (minPrefixlen == null) {
+              throw new MissingRequiredPropertyException("GetSubnetPoolResult", "minPrefixlen");
+            }
+            this.minPrefixlen = minPrefixlen;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetSubnetPoolResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder prefixes(List<String> prefixes) {
-            this.prefixes = Objects.requireNonNull(prefixes);
+            if (prefixes == null) {
+              throw new MissingRequiredPropertyException("GetSubnetPoolResult", "prefixes");
+            }
+            this.prefixes = prefixes;
             return this;
         }
         public Builder prefixes(String... prefixes) {
@@ -361,26 +401,39 @@ public final class GetSubnetPoolResult {
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetSubnetPoolResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetSubnetPoolResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder revisionNumber(Integer revisionNumber) {
-            this.revisionNumber = Objects.requireNonNull(revisionNumber);
+            if (revisionNumber == null) {
+              throw new MissingRequiredPropertyException("GetSubnetPoolResult", "revisionNumber");
+            }
+            this.revisionNumber = revisionNumber;
             return this;
         }
         @CustomType.Setter
         public Builder shared(Boolean shared) {
-            this.shared = Objects.requireNonNull(shared);
+            if (shared == null) {
+              throw new MissingRequiredPropertyException("GetSubnetPoolResult", "shared");
+            }
+            this.shared = shared;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -389,7 +442,10 @@ public final class GetSubnetPoolResult {
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetSubnetPoolResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         public GetSubnetPoolResult build() {

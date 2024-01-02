@@ -4,6 +4,7 @@
 package com.pulumi.openstack.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -164,42 +165,60 @@ public final class GetFwPolicyV2Result {
 
         @CustomType.Setter
         public Builder audited(Boolean audited) {
-            this.audited = Objects.requireNonNull(audited);
+            if (audited == null) {
+              throw new MissingRequiredPropertyException("GetFwPolicyV2Result", "audited");
+            }
+            this.audited = audited;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFwPolicyV2Result", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder policyId(@Nullable String policyId) {
+
             this.policyId = policyId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetFwPolicyV2Result", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetFwPolicyV2Result", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder rules(List<String> rules) {
-            this.rules = Objects.requireNonNull(rules);
+            if (rules == null) {
+              throw new MissingRequiredPropertyException("GetFwPolicyV2Result", "rules");
+            }
+            this.rules = rules;
             return this;
         }
         public Builder rules(String... rules) {
@@ -207,12 +226,18 @@ public final class GetFwPolicyV2Result {
         }
         @CustomType.Setter
         public Builder shared(Boolean shared) {
-            this.shared = Objects.requireNonNull(shared);
+            if (shared == null) {
+              throw new MissingRequiredPropertyException("GetFwPolicyV2Result", "shared");
+            }
+            this.shared = shared;
             return this;
         }
         @CustomType.Setter
         public Builder tenantId(String tenantId) {
-            this.tenantId = Objects.requireNonNull(tenantId);
+            if (tenantId == null) {
+              throw new MissingRequiredPropertyException("GetFwPolicyV2Result", "tenantId");
+            }
+            this.tenantId = tenantId;
             return this;
         }
         public GetFwPolicyV2Result build() {

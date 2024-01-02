@@ -4,6 +4,7 @@
 package com.pulumi.openstack.networking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class TrunkSubPort {
 
         @CustomType.Setter
         public Builder portId(String portId) {
-            this.portId = Objects.requireNonNull(portId);
+            if (portId == null) {
+              throw new MissingRequiredPropertyException("TrunkSubPort", "portId");
+            }
+            this.portId = portId;
             return this;
         }
         @CustomType.Setter
         public Builder segmentationId(Integer segmentationId) {
-            this.segmentationId = Objects.requireNonNull(segmentationId);
+            if (segmentationId == null) {
+              throw new MissingRequiredPropertyException("TrunkSubPort", "segmentationId");
+            }
+            this.segmentationId = segmentationId;
             return this;
         }
         @CustomType.Setter
         public Builder segmentationType(String segmentationType) {
-            this.segmentationType = Objects.requireNonNull(segmentationType);
+            if (segmentationType == null) {
+              throw new MissingRequiredPropertyException("TrunkSubPort", "segmentationType");
+            }
+            this.segmentationType = segmentationType;
             return this;
         }
         public TrunkSubPort build() {

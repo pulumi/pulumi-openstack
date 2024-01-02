@@ -4,6 +4,7 @@
 package com.pulumi.openstack.images.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
@@ -162,12 +163,18 @@ public final class GetImageIdsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetImageIdsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ids(List<String> ids) {
-            this.ids = Objects.requireNonNull(ids);
+            if (ids == null) {
+              throw new MissingRequiredPropertyException("GetImageIdsResult", "ids");
+            }
+            this.ids = ids;
             return this;
         }
         public Builder ids(String... ids) {
@@ -175,66 +182,81 @@ public final class GetImageIdsResult {
         }
         @CustomType.Setter
         public Builder memberStatus(@Nullable String memberStatus) {
+
             this.memberStatus = memberStatus;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nameRegex(@Nullable String nameRegex) {
+
             this.nameRegex = nameRegex;
             return this;
         }
         @CustomType.Setter
         public Builder owner(@Nullable String owner) {
+
             this.owner = owner;
             return this;
         }
         @CustomType.Setter
         public Builder properties(@Nullable Map<String,Object> properties) {
+
             this.properties = properties;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetImageIdsResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder sizeMax(@Nullable Integer sizeMax) {
+
             this.sizeMax = sizeMax;
             return this;
         }
         @CustomType.Setter
         public Builder sizeMin(@Nullable Integer sizeMin) {
+
             this.sizeMin = sizeMin;
             return this;
         }
         @CustomType.Setter
         public Builder sort(@Nullable String sort) {
+
             this.sort = sort;
             return this;
         }
         @CustomType.Setter
         public Builder sortDirection(@Nullable String sortDirection) {
+
             this.sortDirection = sortDirection;
             return this;
         }
         @CustomType.Setter
         public Builder sortKey(@Nullable String sortKey) {
+
             this.sortKey = sortKey;
             return this;
         }
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -243,6 +265,7 @@ public final class GetImageIdsResult {
         }
         @CustomType.Setter
         public Builder visibility(@Nullable String visibility) {
+
             this.visibility = visibility;
             return this;
         }

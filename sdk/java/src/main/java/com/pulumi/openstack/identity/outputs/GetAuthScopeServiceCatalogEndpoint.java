@@ -4,6 +4,7 @@
 package com.pulumi.openstack.identity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -102,27 +103,42 @@ public final class GetAuthScopeServiceCatalogEndpoint {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeServiceCatalogEndpoint", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter("interface")
         public Builder interface_(String interface_) {
-            this.interface_ = Objects.requireNonNull(interface_);
+            if (interface_ == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeServiceCatalogEndpoint", "interface_");
+            }
+            this.interface_ = interface_;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeServiceCatalogEndpoint", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder regionId(String regionId) {
-            this.regionId = Objects.requireNonNull(regionId);
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeServiceCatalogEndpoint", "regionId");
+            }
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetAuthScopeServiceCatalogEndpoint", "url");
+            }
+            this.url = url;
             return this;
         }
         public GetAuthScopeServiceCatalogEndpoint build() {

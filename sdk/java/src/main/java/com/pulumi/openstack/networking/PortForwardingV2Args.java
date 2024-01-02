@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -372,12 +373,24 @@ public final class PortForwardingV2Args extends com.pulumi.resources.ResourceArg
         }
 
         public PortForwardingV2Args build() {
-            $.externalPort = Objects.requireNonNull($.externalPort, "expected parameter 'externalPort' to be non-null");
-            $.floatingipId = Objects.requireNonNull($.floatingipId, "expected parameter 'floatingipId' to be non-null");
-            $.internalIpAddress = Objects.requireNonNull($.internalIpAddress, "expected parameter 'internalIpAddress' to be non-null");
-            $.internalPort = Objects.requireNonNull($.internalPort, "expected parameter 'internalPort' to be non-null");
-            $.internalPortId = Objects.requireNonNull($.internalPortId, "expected parameter 'internalPortId' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
+            if ($.externalPort == null) {
+                throw new MissingRequiredPropertyException("PortForwardingV2Args", "externalPort");
+            }
+            if ($.floatingipId == null) {
+                throw new MissingRequiredPropertyException("PortForwardingV2Args", "floatingipId");
+            }
+            if ($.internalIpAddress == null) {
+                throw new MissingRequiredPropertyException("PortForwardingV2Args", "internalIpAddress");
+            }
+            if ($.internalPort == null) {
+                throw new MissingRequiredPropertyException("PortForwardingV2Args", "internalPort");
+            }
+            if ($.internalPortId == null) {
+                throw new MissingRequiredPropertyException("PortForwardingV2Args", "internalPortId");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("PortForwardingV2Args", "protocol");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.openstack.keymanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.openstack.keymanager.outputs.GetSecretAcl;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -360,12 +361,16 @@ public final class GetSecretResult {
 
         @CustomType.Setter
         public Builder aclOnly(@Nullable Boolean aclOnly) {
+
             this.aclOnly = aclOnly;
             return this;
         }
         @CustomType.Setter
         public Builder acls(List<GetSecretAcl> acls) {
-            this.acls = Objects.requireNonNull(acls);
+            if (acls == null) {
+              throw new MissingRequiredPropertyException("GetSecretResult", "acls");
+            }
+            this.acls = acls;
             return this;
         }
         public Builder acls(GetSecretAcl... acls) {
@@ -373,106 +378,151 @@ public final class GetSecretResult {
         }
         @CustomType.Setter
         public Builder algorithm(@Nullable String algorithm) {
+
             this.algorithm = algorithm;
             return this;
         }
         @CustomType.Setter
         public Builder bitLength(@Nullable Integer bitLength) {
+
             this.bitLength = bitLength;
             return this;
         }
         @CustomType.Setter
         public Builder contentTypes(Map<String,Object> contentTypes) {
-            this.contentTypes = Objects.requireNonNull(contentTypes);
+            if (contentTypes == null) {
+              throw new MissingRequiredPropertyException("GetSecretResult", "contentTypes");
+            }
+            this.contentTypes = contentTypes;
             return this;
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
-            this.createdAt = Objects.requireNonNull(createdAt);
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetSecretResult", "createdAt");
+            }
+            this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder createdAtFilter(@Nullable String createdAtFilter) {
+
             this.createdAtFilter = createdAtFilter;
             return this;
         }
         @CustomType.Setter
         public Builder creatorId(String creatorId) {
-            this.creatorId = Objects.requireNonNull(creatorId);
+            if (creatorId == null) {
+              throw new MissingRequiredPropertyException("GetSecretResult", "creatorId");
+            }
+            this.creatorId = creatorId;
             return this;
         }
         @CustomType.Setter
         public Builder expiration(String expiration) {
-            this.expiration = Objects.requireNonNull(expiration);
+            if (expiration == null) {
+              throw new MissingRequiredPropertyException("GetSecretResult", "expiration");
+            }
+            this.expiration = expiration;
             return this;
         }
         @CustomType.Setter
         public Builder expirationFilter(@Nullable String expirationFilter) {
+
             this.expirationFilter = expirationFilter;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSecretResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(Map<String,Object> metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetSecretResult", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder payload(String payload) {
-            this.payload = Objects.requireNonNull(payload);
+            if (payload == null) {
+              throw new MissingRequiredPropertyException("GetSecretResult", "payload");
+            }
+            this.payload = payload;
             return this;
         }
         @CustomType.Setter
         public Builder payloadContentEncoding(String payloadContentEncoding) {
-            this.payloadContentEncoding = Objects.requireNonNull(payloadContentEncoding);
+            if (payloadContentEncoding == null) {
+              throw new MissingRequiredPropertyException("GetSecretResult", "payloadContentEncoding");
+            }
+            this.payloadContentEncoding = payloadContentEncoding;
             return this;
         }
         @CustomType.Setter
         public Builder payloadContentType(String payloadContentType) {
-            this.payloadContentType = Objects.requireNonNull(payloadContentType);
+            if (payloadContentType == null) {
+              throw new MissingRequiredPropertyException("GetSecretResult", "payloadContentType");
+            }
+            this.payloadContentType = payloadContentType;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder secretRef(String secretRef) {
-            this.secretRef = Objects.requireNonNull(secretRef);
+            if (secretRef == null) {
+              throw new MissingRequiredPropertyException("GetSecretResult", "secretRef");
+            }
+            this.secretRef = secretRef;
             return this;
         }
         @CustomType.Setter
         public Builder secretType(@Nullable String secretType) {
+
             this.secretType = secretType;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetSecretResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
-            this.updatedAt = Objects.requireNonNull(updatedAt);
+            if (updatedAt == null) {
+              throw new MissingRequiredPropertyException("GetSecretResult", "updatedAt");
+            }
+            this.updatedAt = updatedAt;
             return this;
         }
         @CustomType.Setter
         public Builder updatedAtFilter(@Nullable String updatedAtFilter) {
+
             this.updatedAtFilter = updatedAtFilter;
             return this;
         }

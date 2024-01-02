@@ -5,6 +5,7 @@ package com.pulumi.openstack.networking;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -257,7 +258,9 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public RouterInterfaceArgs build() {
-            $.routerId = Objects.requireNonNull($.routerId, "expected parameter 'routerId' to be non-null");
+            if ($.routerId == null) {
+                throw new MissingRequiredPropertyException("RouterInterfaceArgs", "routerId");
+            }
             return $;
         }
     }
