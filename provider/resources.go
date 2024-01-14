@@ -23,12 +23,14 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
-	"github.com/pulumi/pulumi-openstack/provider/v3/pkg/version"
+	"github.com/terraform-provider-openstack/terraform-provider-openstack/openstack"
+
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/terraform-provider-openstack/terraform-provider-openstack/openstack"
+
+	"github.com/pulumi/pulumi-openstack/provider/v3/pkg/version"
 )
 
 // all of the OpenStack token components used below.
