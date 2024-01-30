@@ -47,7 +47,7 @@ namespace Pulumi.OpenStack.Networking.Inputs
         /// <summary>
         /// VNIC type for the port. Can either be `direct`,
         /// `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
-        /// Default value is `normal`.
+        /// Default value is `normal`. It can be updated on unbound ports only.
         /// </summary>
         [Input("vnicType")]
         public Input<string>? VnicType { get; set; }

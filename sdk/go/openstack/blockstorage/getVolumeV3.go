@@ -69,6 +69,10 @@ type GetVolumeV3Args struct {
 
 // A collection of values returned by getVolumeV3.
 type GetVolumeV3Result struct {
+	// If a volume is attached to an instance, this attribute will
+	// display the Attachment ID, Instance ID, and the Device as the Instance
+	// sees it.
+	Attachments []GetVolumeV3Attachment `pulumi:"attachments"`
 	// Indicates if the volume is bootable.
 	Bootable string `pulumi:"bootable"`
 	// The OpenStack host on which the volume is located.
@@ -142,6 +146,13 @@ func (o GetVolumeV3ResultOutput) ToGetVolumeV3ResultOutput() GetVolumeV3ResultOu
 
 func (o GetVolumeV3ResultOutput) ToGetVolumeV3ResultOutputWithContext(ctx context.Context) GetVolumeV3ResultOutput {
 	return o
+}
+
+// If a volume is attached to an instance, this attribute will
+// display the Attachment ID, Instance ID, and the Device as the Instance
+// sees it.
+func (o GetVolumeV3ResultOutput) Attachments() GetVolumeV3AttachmentArrayOutput {
+	return o.ApplyT(func(v GetVolumeV3Result) []GetVolumeV3Attachment { return v.Attachments }).(GetVolumeV3AttachmentArrayOutput)
 }
 
 // Indicates if the volume is bootable.

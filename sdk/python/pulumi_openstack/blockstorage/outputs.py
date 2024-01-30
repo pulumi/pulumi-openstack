@@ -15,6 +15,7 @@ __all__ = [
     'VolumeV1Attachment',
     'VolumeV2Attachment',
     'VolumeV2SchedulerHint',
+    'GetVolumeV3AttachmentResult',
 ]
 
 @pulumi.output_type
@@ -369,5 +370,31 @@ class VolumeV2SchedulerHint(dict):
         scheduled on the same host as another volume specified in the list provided.
         """
         return pulumi.get(self, "same_hosts")
+
+
+@pulumi.output_type
+class GetVolumeV3AttachmentResult(dict):
+    def __init__(__self__, *,
+                 device: str,
+                 id: str,
+                 instance_id: str):
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+
+    @property
+    @pulumi.getter
+    def device(self) -> str:
+        return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        return pulumi.get(self, "instance_id")
 
 

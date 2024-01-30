@@ -102,6 +102,24 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.availabilityZone;
     }
     /**
+     * The backup ID from which to create the volume.
+     * Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+     * creates a new volume. Requires microversion &gt;= 3.47.
+     * 
+     */
+    @Export(name="backupId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> backupId;
+
+    /**
+     * @return The backup ID from which to create the volume.
+     * Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+     * creates a new volume. Requires microversion &gt;= 3.47.
+     * 
+     */
+    public Output<Optional<String>> backupId() {
+        return Codegen.optional(this.backupId);
+    }
+    /**
      * The consistency group to place the volume
      * in.
      * 
@@ -153,7 +171,8 @@ public class Volume extends com.pulumi.resources.CustomResource {
     }
     /**
      * The image ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+     * creates a new volume.
      * 
      */
     @Export(name="imageId", refs={String.class}, tree="[0]")
@@ -161,7 +180,8 @@ public class Volume extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The image ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+     * creates a new volume.
      * 
      */
     public Output<Optional<String>> imageId() {
@@ -184,14 +204,18 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.metadata;
     }
     /**
-     * Allow the volume to be attached to more than one Compute instance.
+     * (Optional) Allow the volume to be attached to more than one Compute instance.
+     * 
+     * @deprecated
+     * multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
      * 
      */
+    @Deprecated /* multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types */
     @Export(name="multiattach", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> multiattach;
 
     /**
-     * @return Allow the volume to be attached to more than one Compute instance.
+     * @return (Optional) Allow the volume to be attached to more than one Compute instance.
      * 
      */
     public Output<Optional<Boolean>> multiattach() {
@@ -263,7 +287,8 @@ public class Volume extends com.pulumi.resources.CustomResource {
     }
     /**
      * The snapshot ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+     * creates a new volume.
      * 
      */
     @Export(name="snapshotId", refs={String.class}, tree="[0]")
@@ -271,7 +296,8 @@ public class Volume extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The snapshot ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+     * creates a new volume.
      * 
      */
     public Output<Optional<String>> snapshotId() {
@@ -293,7 +319,8 @@ public class Volume extends com.pulumi.resources.CustomResource {
     }
     /**
      * The volume ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+     * creates a new volume.
      * 
      */
     @Export(name="sourceVolId", refs={String.class}, tree="[0]")
@@ -301,7 +328,8 @@ public class Volume extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The volume ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+     * creates a new volume.
      * 
      */
     public Output<Optional<String>> sourceVolId() {

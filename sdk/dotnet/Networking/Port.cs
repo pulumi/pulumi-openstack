@@ -12,6 +12,12 @@ namespace Pulumi.OpenStack.Networking
     /// <summary>
     /// Manages a V2 port resource within OpenStack.
     /// 
+    /// &gt; **Note:** Ports do not get an IP if the network they are attached
+    /// to does not have a subnet. If you create the subnet resource in the
+    /// same run as the port, make sure to use `fixed_ip.subnet_id` or
+    /// `depends_on` to enforce the subnet resource creation before the port
+    /// creation is triggered. More info here
+    /// 
     /// ## Example Usage
     /// ### Simple port
     /// 
@@ -32,6 +38,42 @@ namespace Pulumi.OpenStack.Networking
     ///     {
     ///         NetworkId = network1.Id,
     ///         AdminStateUp = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Port defining fixed_ip.subnet_id
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     {
+    ///         AdminStateUp = true,
+    ///     });
+    /// 
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     {
+    ///         NetworkId = network1.Id,
+    ///         Cidr = "192.168.199.0/24",
+    ///     });
+    /// 
+    ///     var port1 = new OpenStack.Networking.Port("port1", new()
+    ///     {
+    ///         NetworkId = network1.Id,
+    ///         AdminStateUp = true,
+    ///         FixedIps = new[]
+    ///         {
+    ///             new OpenStack.Networking.Inputs.PortFixedIpArgs
+    ///             {
+    ///                 SubnetId = subnet1.Id,
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });

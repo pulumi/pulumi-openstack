@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -72,6 +74,12 @@ export interface GetVolumeV3Args {
  * A collection of values returned by getVolumeV3.
  */
 export interface GetVolumeV3Result {
+    /**
+     * If a volume is attached to an instance, this attribute will
+     * display the Attachment ID, Instance ID, and the Device as the Instance
+     * sees it.
+     */
+    readonly attachments: outputs.blockstorage.GetVolumeV3Attachment[];
     /**
      * Indicates if the volume is bootable.
      */

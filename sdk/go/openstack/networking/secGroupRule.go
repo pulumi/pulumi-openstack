@@ -54,6 +54,9 @@ import (
 //
 // ```
 //
+// > **Note:** To expose the full port-range 1:65535, use `0` for `portRangeMin`
+// and `portRangeMax`.
+//
 // ## Import
 //
 // Security Group Rules can be imported using the `id`, e.g.

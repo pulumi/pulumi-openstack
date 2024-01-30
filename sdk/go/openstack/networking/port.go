@@ -14,6 +14,12 @@ import (
 
 // Manages a V2 port resource within OpenStack.
 //
+// > **Note:** Ports do not get an IP if the network they are attached
+// to does not have a subnet. If you create the subnet resource in the
+// same run as the port, make sure to use `fixed_ip.subnet_id` or
+// `dependsOn` to enforce the subnet resource creation before the port
+// creation is triggered. More info here
+//
 // ## Example Usage
 // ### Simple port
 //
@@ -38,6 +44,50 @@ import (
 //			_, err = networking.NewPort(ctx, "port1", &networking.PortArgs{
 //				NetworkId:    network1.ID(),
 //				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Port defining fixed_ip.subnet_id
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//				AdminStateUp: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//				NetworkId: network1.ID(),
+//				Cidr:      pulumi.String("192.168.199.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networking.NewPort(ctx, "port1", &networking.PortArgs{
+//				NetworkId:    network1.ID(),
+//				AdminStateUp: pulumi.Bool(true),
+//				FixedIps: networking.PortFixedIpArray{
+//					&networking.PortFixedIpArgs{
+//						SubnetId: subnet1.ID(),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

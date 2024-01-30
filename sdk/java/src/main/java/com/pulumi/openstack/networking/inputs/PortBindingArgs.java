@@ -84,7 +84,7 @@ public final class PortBindingArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * VNIC type for the port. Can either be `direct`,
      * `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
-     * Default value is `normal`.
+     * Default value is `normal`. It can be updated on unbound ports only.
      * 
      */
     @Import(name="vnicType")
@@ -93,7 +93,7 @@ public final class PortBindingArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return VNIC type for the port. Can either be `direct`,
      * `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
-     * Default value is `normal`.
+     * Default value is `normal`. It can be updated on unbound ports only.
      * 
      */
     public Optional<Output<String>> vnicType() {
@@ -219,7 +219,7 @@ public final class PortBindingArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param vnicType VNIC type for the port. Can either be `direct`,
          * `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
-         * Default value is `normal`.
+         * Default value is `normal`. It can be updated on unbound ports only.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class PortBindingArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param vnicType VNIC type for the port. Can either be `direct`,
          * `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
-         * Default value is `normal`.
+         * Default value is `normal`. It can be updated on unbound ports only.
          * 
          * @return builder
          * 

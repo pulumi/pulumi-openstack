@@ -18,6 +18,7 @@ class VolumeArgs:
     def __init__(__self__, *,
                  size: pulumi.Input[int],
                  availability_zone: Optional[pulumi.Input[str]] = None,
+                 backup_id: Optional[pulumi.Input[str]] = None,
                  consistency_group_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_online_resize: Optional[pulumi.Input[bool]] = None,
@@ -36,6 +37,9 @@ class VolumeArgs:
         :param pulumi.Input[int] size: The size of the volume to create (in gigabytes).
         :param pulumi.Input[str] availability_zone: The availability zone for the volume.
                Changing this creates a new volume.
+        :param pulumi.Input[str] backup_id: The backup ID from which to create the volume.
+               Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+               creates a new volume. Requires microversion >= 3.47.
         :param pulumi.Input[str] consistency_group_id: The consistency group to place the volume
                in.
         :param pulumi.Input[str] description: A description of the volume. Changing this updates
@@ -44,10 +48,11 @@ class VolumeArgs:
                attached volumes. Note: updating size of an attached volume requires Cinder
                support for version 3.42 and a compatible storage driver.
         :param pulumi.Input[str] image_id: The image ID from which to create the volume.
-               Changing this creates a new volume.
+               Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+               creates a new volume.
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to associate with the volume.
                Changing this updates the existing volume metadata.
-        :param pulumi.Input[bool] multiattach: Allow the volume to be attached to more than one Compute instance.
+        :param pulumi.Input[bool] multiattach: (Optional) Allow the volume to be attached to more than one Compute instance.
         :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
                volume's name.
         :param pulumi.Input[str] region: The region in which to create the volume. If
@@ -56,16 +61,20 @@ class VolumeArgs:
         :param pulumi.Input[Sequence[pulumi.Input['VolumeSchedulerHintArgs']]] scheduler_hints: Provide the Cinder scheduler with hints on where
                to instantiate a volume in the OpenStack cloud. The available hints are described below.
         :param pulumi.Input[str] snapshot_id: The snapshot ID from which to create the volume.
-               Changing this creates a new volume.
+               Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+               creates a new volume.
         :param pulumi.Input[str] source_replica: The volume ID to replicate with.
         :param pulumi.Input[str] source_vol_id: The volume ID from which to create the volume.
-               Changing this creates a new volume.
+               Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+               creates a new volume.
         :param pulumi.Input[str] volume_type: The type of volume to create.
                Changing this creates a new volume.
         """
         pulumi.set(__self__, "size", size)
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
+        if backup_id is not None:
+            pulumi.set(__self__, "backup_id", backup_id)
         if consistency_group_id is not None:
             pulumi.set(__self__, "consistency_group_id", consistency_group_id)
         if description is not None:
@@ -76,6 +85,9 @@ class VolumeArgs:
             pulumi.set(__self__, "image_id", image_id)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if multiattach is not None:
+            warnings.warn("""multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types""", DeprecationWarning)
+            pulumi.log.warn("""multiattach is deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types""")
         if multiattach is not None:
             pulumi.set(__self__, "multiattach", multiattach)
         if name is not None:
@@ -117,6 +129,20 @@ class VolumeArgs:
     @availability_zone.setter
     def availability_zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "availability_zone", value)
+
+    @property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The backup ID from which to create the volume.
+        Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+        creates a new volume. Requires microversion >= 3.47.
+        """
+        return pulumi.get(self, "backup_id")
+
+    @backup_id.setter
+    def backup_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_id", value)
 
     @property
     @pulumi.getter(name="consistencyGroupId")
@@ -163,7 +189,8 @@ class VolumeArgs:
     def image_id(self) -> Optional[pulumi.Input[str]]:
         """
         The image ID from which to create the volume.
-        Changing this creates a new volume.
+        Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+        creates a new volume.
         """
         return pulumi.get(self, "image_id")
 
@@ -188,8 +215,11 @@ class VolumeArgs:
     @pulumi.getter
     def multiattach(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allow the volume to be attached to more than one Compute instance.
+        (Optional) Allow the volume to be attached to more than one Compute instance.
         """
+        warnings.warn("""multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types""", DeprecationWarning)
+        pulumi.log.warn("""multiattach is deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types""")
+
         return pulumi.get(self, "multiattach")
 
     @multiattach.setter
@@ -241,7 +271,8 @@ class VolumeArgs:
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
         """
         The snapshot ID from which to create the volume.
-        Changing this creates a new volume.
+        Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+        creates a new volume.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -266,7 +297,8 @@ class VolumeArgs:
     def source_vol_id(self) -> Optional[pulumi.Input[str]]:
         """
         The volume ID from which to create the volume.
-        Changing this creates a new volume.
+        Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+        creates a new volume.
         """
         return pulumi.get(self, "source_vol_id")
 
@@ -293,6 +325,7 @@ class _VolumeState:
     def __init__(__self__, *,
                  attachments: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeAttachmentArgs']]]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
+                 backup_id: Optional[pulumi.Input[str]] = None,
                  consistency_group_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_online_resize: Optional[pulumi.Input[bool]] = None,
@@ -314,6 +347,9 @@ class _VolumeState:
                sees it.
         :param pulumi.Input[str] availability_zone: The availability zone for the volume.
                Changing this creates a new volume.
+        :param pulumi.Input[str] backup_id: The backup ID from which to create the volume.
+               Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+               creates a new volume. Requires microversion >= 3.47.
         :param pulumi.Input[str] consistency_group_id: The consistency group to place the volume
                in.
         :param pulumi.Input[str] description: A description of the volume. Changing this updates
@@ -322,10 +358,11 @@ class _VolumeState:
                attached volumes. Note: updating size of an attached volume requires Cinder
                support for version 3.42 and a compatible storage driver.
         :param pulumi.Input[str] image_id: The image ID from which to create the volume.
-               Changing this creates a new volume.
+               Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+               creates a new volume.
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to associate with the volume.
                Changing this updates the existing volume metadata.
-        :param pulumi.Input[bool] multiattach: Allow the volume to be attached to more than one Compute instance.
+        :param pulumi.Input[bool] multiattach: (Optional) Allow the volume to be attached to more than one Compute instance.
         :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
                volume's name.
         :param pulumi.Input[str] region: The region in which to create the volume. If
@@ -335,10 +372,12 @@ class _VolumeState:
                to instantiate a volume in the OpenStack cloud. The available hints are described below.
         :param pulumi.Input[int] size: The size of the volume to create (in gigabytes).
         :param pulumi.Input[str] snapshot_id: The snapshot ID from which to create the volume.
-               Changing this creates a new volume.
+               Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+               creates a new volume.
         :param pulumi.Input[str] source_replica: The volume ID to replicate with.
         :param pulumi.Input[str] source_vol_id: The volume ID from which to create the volume.
-               Changing this creates a new volume.
+               Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+               creates a new volume.
         :param pulumi.Input[str] volume_type: The type of volume to create.
                Changing this creates a new volume.
         """
@@ -346,6 +385,8 @@ class _VolumeState:
             pulumi.set(__self__, "attachments", attachments)
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
+        if backup_id is not None:
+            pulumi.set(__self__, "backup_id", backup_id)
         if consistency_group_id is not None:
             pulumi.set(__self__, "consistency_group_id", consistency_group_id)
         if description is not None:
@@ -356,6 +397,9 @@ class _VolumeState:
             pulumi.set(__self__, "image_id", image_id)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if multiattach is not None:
+            warnings.warn("""multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types""", DeprecationWarning)
+            pulumi.log.warn("""multiattach is deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types""")
         if multiattach is not None:
             pulumi.set(__self__, "multiattach", multiattach)
         if name is not None:
@@ -403,6 +447,20 @@ class _VolumeState:
         pulumi.set(self, "availability_zone", value)
 
     @property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The backup ID from which to create the volume.
+        Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+        creates a new volume. Requires microversion >= 3.47.
+        """
+        return pulumi.get(self, "backup_id")
+
+    @backup_id.setter
+    def backup_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_id", value)
+
+    @property
     @pulumi.getter(name="consistencyGroupId")
     def consistency_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -447,7 +505,8 @@ class _VolumeState:
     def image_id(self) -> Optional[pulumi.Input[str]]:
         """
         The image ID from which to create the volume.
-        Changing this creates a new volume.
+        Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+        creates a new volume.
         """
         return pulumi.get(self, "image_id")
 
@@ -472,8 +531,11 @@ class _VolumeState:
     @pulumi.getter
     def multiattach(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allow the volume to be attached to more than one Compute instance.
+        (Optional) Allow the volume to be attached to more than one Compute instance.
         """
+        warnings.warn("""multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types""", DeprecationWarning)
+        pulumi.log.warn("""multiattach is deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types""")
+
         return pulumi.get(self, "multiattach")
 
     @multiattach.setter
@@ -537,7 +599,8 @@ class _VolumeState:
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
         """
         The snapshot ID from which to create the volume.
-        Changing this creates a new volume.
+        Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+        creates a new volume.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -562,7 +625,8 @@ class _VolumeState:
     def source_vol_id(self) -> Optional[pulumi.Input[str]]:
         """
         The volume ID from which to create the volume.
-        Changing this creates a new volume.
+        Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+        creates a new volume.
         """
         return pulumi.get(self, "source_vol_id")
 
@@ -590,6 +654,7 @@ class Volume(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
+                 backup_id: Optional[pulumi.Input[str]] = None,
                  consistency_group_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_online_resize: Optional[pulumi.Input[bool]] = None,
@@ -632,6 +697,9 @@ class Volume(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: The availability zone for the volume.
                Changing this creates a new volume.
+        :param pulumi.Input[str] backup_id: The backup ID from which to create the volume.
+               Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+               creates a new volume. Requires microversion >= 3.47.
         :param pulumi.Input[str] consistency_group_id: The consistency group to place the volume
                in.
         :param pulumi.Input[str] description: A description of the volume. Changing this updates
@@ -640,10 +708,11 @@ class Volume(pulumi.CustomResource):
                attached volumes. Note: updating size of an attached volume requires Cinder
                support for version 3.42 and a compatible storage driver.
         :param pulumi.Input[str] image_id: The image ID from which to create the volume.
-               Changing this creates a new volume.
+               Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+               creates a new volume.
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to associate with the volume.
                Changing this updates the existing volume metadata.
-        :param pulumi.Input[bool] multiattach: Allow the volume to be attached to more than one Compute instance.
+        :param pulumi.Input[bool] multiattach: (Optional) Allow the volume to be attached to more than one Compute instance.
         :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
                volume's name.
         :param pulumi.Input[str] region: The region in which to create the volume. If
@@ -653,10 +722,12 @@ class Volume(pulumi.CustomResource):
                to instantiate a volume in the OpenStack cloud. The available hints are described below.
         :param pulumi.Input[int] size: The size of the volume to create (in gigabytes).
         :param pulumi.Input[str] snapshot_id: The snapshot ID from which to create the volume.
-               Changing this creates a new volume.
+               Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+               creates a new volume.
         :param pulumi.Input[str] source_replica: The volume ID to replicate with.
         :param pulumi.Input[str] source_vol_id: The volume ID from which to create the volume.
-               Changing this creates a new volume.
+               Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+               creates a new volume.
         :param pulumi.Input[str] volume_type: The type of volume to create.
                Changing this creates a new volume.
         """
@@ -705,6 +776,7 @@ class Volume(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
+                 backup_id: Optional[pulumi.Input[str]] = None,
                  consistency_group_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_online_resize: Optional[pulumi.Input[bool]] = None,
@@ -729,6 +801,7 @@ class Volume(pulumi.CustomResource):
             __props__ = VolumeArgs.__new__(VolumeArgs)
 
             __props__.__dict__["availability_zone"] = availability_zone
+            __props__.__dict__["backup_id"] = backup_id
             __props__.__dict__["consistency_group_id"] = consistency_group_id
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_online_resize"] = enable_online_resize
@@ -758,6 +831,7 @@ class Volume(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             attachments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeAttachmentArgs']]]]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
+            backup_id: Optional[pulumi.Input[str]] = None,
             consistency_group_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_online_resize: Optional[pulumi.Input[bool]] = None,
@@ -784,6 +858,9 @@ class Volume(pulumi.CustomResource):
                sees it.
         :param pulumi.Input[str] availability_zone: The availability zone for the volume.
                Changing this creates a new volume.
+        :param pulumi.Input[str] backup_id: The backup ID from which to create the volume.
+               Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+               creates a new volume. Requires microversion >= 3.47.
         :param pulumi.Input[str] consistency_group_id: The consistency group to place the volume
                in.
         :param pulumi.Input[str] description: A description of the volume. Changing this updates
@@ -792,10 +869,11 @@ class Volume(pulumi.CustomResource):
                attached volumes. Note: updating size of an attached volume requires Cinder
                support for version 3.42 and a compatible storage driver.
         :param pulumi.Input[str] image_id: The image ID from which to create the volume.
-               Changing this creates a new volume.
+               Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+               creates a new volume.
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to associate with the volume.
                Changing this updates the existing volume metadata.
-        :param pulumi.Input[bool] multiattach: Allow the volume to be attached to more than one Compute instance.
+        :param pulumi.Input[bool] multiattach: (Optional) Allow the volume to be attached to more than one Compute instance.
         :param pulumi.Input[str] name: A unique name for the volume. Changing this updates the
                volume's name.
         :param pulumi.Input[str] region: The region in which to create the volume. If
@@ -805,10 +883,12 @@ class Volume(pulumi.CustomResource):
                to instantiate a volume in the OpenStack cloud. The available hints are described below.
         :param pulumi.Input[int] size: The size of the volume to create (in gigabytes).
         :param pulumi.Input[str] snapshot_id: The snapshot ID from which to create the volume.
-               Changing this creates a new volume.
+               Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+               creates a new volume.
         :param pulumi.Input[str] source_replica: The volume ID to replicate with.
         :param pulumi.Input[str] source_vol_id: The volume ID from which to create the volume.
-               Changing this creates a new volume.
+               Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+               creates a new volume.
         :param pulumi.Input[str] volume_type: The type of volume to create.
                Changing this creates a new volume.
         """
@@ -818,6 +898,7 @@ class Volume(pulumi.CustomResource):
 
         __props__.__dict__["attachments"] = attachments
         __props__.__dict__["availability_zone"] = availability_zone
+        __props__.__dict__["backup_id"] = backup_id
         __props__.__dict__["consistency_group_id"] = consistency_group_id
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_online_resize"] = enable_online_resize
@@ -854,6 +935,16 @@ class Volume(pulumi.CustomResource):
         return pulumi.get(self, "availability_zone")
 
     @property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The backup ID from which to create the volume.
+        Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+        creates a new volume. Requires microversion >= 3.47.
+        """
+        return pulumi.get(self, "backup_id")
+
+    @property
     @pulumi.getter(name="consistencyGroupId")
     def consistency_group_id(self) -> pulumi.Output[Optional[str]]:
         """
@@ -886,7 +977,8 @@ class Volume(pulumi.CustomResource):
     def image_id(self) -> pulumi.Output[Optional[str]]:
         """
         The image ID from which to create the volume.
-        Changing this creates a new volume.
+        Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+        creates a new volume.
         """
         return pulumi.get(self, "image_id")
 
@@ -903,8 +995,11 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter
     def multiattach(self) -> pulumi.Output[Optional[bool]]:
         """
-        Allow the volume to be attached to more than one Compute instance.
+        (Optional) Allow the volume to be attached to more than one Compute instance.
         """
+        warnings.warn("""multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types""", DeprecationWarning)
+        pulumi.log.warn("""multiattach is deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types""")
+
         return pulumi.get(self, "multiattach")
 
     @property
@@ -948,7 +1043,8 @@ class Volume(pulumi.CustomResource):
     def snapshot_id(self) -> pulumi.Output[Optional[str]]:
         """
         The snapshot ID from which to create the volume.
-        Changing this creates a new volume.
+        Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+        creates a new volume.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -965,7 +1061,8 @@ class Volume(pulumi.CustomResource):
     def source_vol_id(self) -> pulumi.Output[Optional[str]]:
         """
         The volume ID from which to create the volume.
-        Changing this creates a new volume.
+        Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+        creates a new volume.
         """
         return pulumi.get(self, "source_vol_id")
 

@@ -247,7 +247,7 @@ type PortBinding struct {
 	VifType *string `pulumi:"vifType"`
 	// VNIC type for the port. Can either be `direct`,
 	// `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
-	// Default value is `normal`.
+	// Default value is `normal`. It can be updated on unbound ports only.
 	VnicType *string `pulumi:"vnicType"`
 }
 
@@ -275,7 +275,7 @@ type PortBindingArgs struct {
 	VifType pulumi.StringPtrInput `pulumi:"vifType"`
 	// VNIC type for the port. Can either be `direct`,
 	// `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
-	// Default value is `normal`.
+	// Default value is `normal`. It can be updated on unbound ports only.
 	VnicType pulumi.StringPtrInput `pulumi:"vnicType"`
 }
 
@@ -380,7 +380,7 @@ func (o PortBindingOutput) VifType() pulumi.StringPtrOutput {
 
 // VNIC type for the port. Can either be `direct`,
 // `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
-// Default value is `normal`.
+// Default value is `normal`. It can be updated on unbound ports only.
 func (o PortBindingOutput) VnicType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PortBinding) *string { return v.VnicType }).(pulumi.StringPtrOutput)
 }
@@ -453,7 +453,7 @@ func (o PortBindingPtrOutput) VifType() pulumi.StringPtrOutput {
 
 // VNIC type for the port. Can either be `direct`,
 // `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
-// Default value is `normal`.
+// Default value is `normal`. It can be updated on unbound ports only.
 func (o PortBindingPtrOutput) VnicType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PortBinding) *string {
 		if v == nil {

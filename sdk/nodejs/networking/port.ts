@@ -9,6 +9,12 @@ import * as utilities from "../utilities";
 /**
  * Manages a V2 port resource within OpenStack.
  *
+ * > **Note:** Ports do not get an IP if the network they are attached
+ * to does not have a subnet. If you create the subnet resource in the
+ * same run as the port, make sure to use `fixed_ip.subnet_id` or
+ * `dependsOn` to enforce the subnet resource creation before the port
+ * creation is triggered. More info here
+ *
  * ## Example Usage
  * ### Simple port
  *
@@ -20,6 +26,25 @@ import * as utilities from "../utilities";
  * const port1 = new openstack.networking.Port("port1", {
  *     networkId: network1.id,
  *     adminStateUp: true,
+ * });
+ * ```
+ * ### Port defining fixed_ip.subnet_id
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ *
+ * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
+ * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ *     networkId: network1.id,
+ *     cidr: "192.168.199.0/24",
+ * });
+ * const port1 = new openstack.networking.Port("port1", {
+ *     networkId: network1.id,
+ *     adminStateUp: true,
+ *     fixedIps: [{
+ *         subnetId: subnet1.id,
+ *     }],
  * });
  * ```
  * ### Port with physical binding information

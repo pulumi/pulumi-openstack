@@ -70,6 +70,12 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
+     * The backup ID from which to create the volume.
+     * Conflicts with `snapshotId`, `sourceVolId`, `imageId`. Changing this
+     * creates a new volume. Requires microversion >= 3.47.
+     */
+    public readonly backupId!: pulumi.Output<string | undefined>;
+    /**
      * The consistency group to place the volume
      * in.
      */
@@ -87,7 +93,8 @@ export class Volume extends pulumi.CustomResource {
     public readonly enableOnlineResize!: pulumi.Output<boolean | undefined>;
     /**
      * The image ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `snapshotId`, `sourceVolId`, `backupId`. Changing this
+     * creates a new volume.
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
     /**
@@ -96,7 +103,9 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<{[key: string]: any}>;
     /**
-     * Allow the volume to be attached to more than one Compute instance.
+     * (Optional) Allow the volume to be attached to more than one Compute instance.
+     *
+     * @deprecated multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
      */
     public readonly multiattach!: pulumi.Output<boolean | undefined>;
     /**
@@ -121,7 +130,8 @@ export class Volume extends pulumi.CustomResource {
     public readonly size!: pulumi.Output<number>;
     /**
      * The snapshot ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `sourceVolId`, `imageId`, `backupId`. Changing this
+     * creates a new volume.
      */
     public readonly snapshotId!: pulumi.Output<string | undefined>;
     /**
@@ -130,7 +140,8 @@ export class Volume extends pulumi.CustomResource {
     public readonly sourceReplica!: pulumi.Output<string | undefined>;
     /**
      * The volume ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
+     * creates a new volume.
      */
     public readonly sourceVolId!: pulumi.Output<string | undefined>;
     /**
@@ -154,6 +165,7 @@ export class Volume extends pulumi.CustomResource {
             const state = argsOrState as VolumeState | undefined;
             resourceInputs["attachments"] = state ? state.attachments : undefined;
             resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            resourceInputs["backupId"] = state ? state.backupId : undefined;
             resourceInputs["consistencyGroupId"] = state ? state.consistencyGroupId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enableOnlineResize"] = state ? state.enableOnlineResize : undefined;
@@ -174,6 +186,7 @@ export class Volume extends pulumi.CustomResource {
                 throw new Error("Missing required property 'size'");
             }
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["backupId"] = args ? args.backupId : undefined;
             resourceInputs["consistencyGroupId"] = args ? args.consistencyGroupId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableOnlineResize"] = args ? args.enableOnlineResize : undefined;
@@ -211,6 +224,12 @@ export interface VolumeState {
      */
     availabilityZone?: pulumi.Input<string>;
     /**
+     * The backup ID from which to create the volume.
+     * Conflicts with `snapshotId`, `sourceVolId`, `imageId`. Changing this
+     * creates a new volume. Requires microversion >= 3.47.
+     */
+    backupId?: pulumi.Input<string>;
+    /**
      * The consistency group to place the volume
      * in.
      */
@@ -228,7 +247,8 @@ export interface VolumeState {
     enableOnlineResize?: pulumi.Input<boolean>;
     /**
      * The image ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `snapshotId`, `sourceVolId`, `backupId`. Changing this
+     * creates a new volume.
      */
     imageId?: pulumi.Input<string>;
     /**
@@ -237,7 +257,9 @@ export interface VolumeState {
      */
     metadata?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Allow the volume to be attached to more than one Compute instance.
+     * (Optional) Allow the volume to be attached to more than one Compute instance.
+     *
+     * @deprecated multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
      */
     multiattach?: pulumi.Input<boolean>;
     /**
@@ -262,7 +284,8 @@ export interface VolumeState {
     size?: pulumi.Input<number>;
     /**
      * The snapshot ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `sourceVolId`, `imageId`, `backupId`. Changing this
+     * creates a new volume.
      */
     snapshotId?: pulumi.Input<string>;
     /**
@@ -271,7 +294,8 @@ export interface VolumeState {
     sourceReplica?: pulumi.Input<string>;
     /**
      * The volume ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
+     * creates a new volume.
      */
     sourceVolId?: pulumi.Input<string>;
     /**
@@ -291,6 +315,12 @@ export interface VolumeArgs {
      */
     availabilityZone?: pulumi.Input<string>;
     /**
+     * The backup ID from which to create the volume.
+     * Conflicts with `snapshotId`, `sourceVolId`, `imageId`. Changing this
+     * creates a new volume. Requires microversion >= 3.47.
+     */
+    backupId?: pulumi.Input<string>;
+    /**
      * The consistency group to place the volume
      * in.
      */
@@ -308,7 +338,8 @@ export interface VolumeArgs {
     enableOnlineResize?: pulumi.Input<boolean>;
     /**
      * The image ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `snapshotId`, `sourceVolId`, `backupId`. Changing this
+     * creates a new volume.
      */
     imageId?: pulumi.Input<string>;
     /**
@@ -317,7 +348,9 @@ export interface VolumeArgs {
      */
     metadata?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Allow the volume to be attached to more than one Compute instance.
+     * (Optional) Allow the volume to be attached to more than one Compute instance.
+     *
+     * @deprecated multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
      */
     multiattach?: pulumi.Input<boolean>;
     /**
@@ -342,7 +375,8 @@ export interface VolumeArgs {
     size: pulumi.Input<number>;
     /**
      * The snapshot ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `sourceVolId`, `imageId`, `backupId`. Changing this
+     * creates a new volume.
      */
     snapshotId?: pulumi.Input<string>;
     /**
@@ -351,7 +385,8 @@ export interface VolumeArgs {
     sourceReplica?: pulumi.Input<string>;
     /**
      * The volume ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
+     * creates a new volume.
      */
     sourceVolId?: pulumi.Input<string>;
     /**

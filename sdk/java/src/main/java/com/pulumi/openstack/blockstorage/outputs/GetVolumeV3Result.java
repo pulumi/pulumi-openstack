@@ -5,15 +5,24 @@ package com.pulumi.openstack.blockstorage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.openstack.blockstorage.outputs.GetVolumeV3Attachment;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 @CustomType
 public final class GetVolumeV3Result {
+    /**
+     * @return If a volume is attached to an instance, this attribute will
+     * display the Attachment ID, Instance ID, and the Device as the Instance
+     * sees it.
+     * 
+     */
+    private List<GetVolumeV3Attachment> attachments;
     /**
      * @return Indicates if the volume is bootable.
      * 
@@ -71,6 +80,15 @@ public final class GetVolumeV3Result {
     private String volumeType;
 
     private GetVolumeV3Result() {}
+    /**
+     * @return If a volume is attached to an instance, this attribute will
+     * display the Attachment ID, Instance ID, and the Device as the Instance
+     * sees it.
+     * 
+     */
+    public List<GetVolumeV3Attachment> attachments() {
+        return this.attachments;
+    }
     /**
      * @return Indicates if the volume is bootable.
      * 
@@ -158,6 +176,7 @@ public final class GetVolumeV3Result {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetVolumeV3Attachment> attachments;
         private String bootable;
         private String host;
         private String id;
@@ -172,6 +191,7 @@ public final class GetVolumeV3Result {
         public Builder() {}
         public Builder(GetVolumeV3Result defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.attachments = defaults.attachments;
     	      this.bootable = defaults.bootable;
     	      this.host = defaults.host;
     	      this.id = defaults.id;
@@ -185,6 +205,17 @@ public final class GetVolumeV3Result {
     	      this.volumeType = defaults.volumeType;
         }
 
+        @CustomType.Setter
+        public Builder attachments(List<GetVolumeV3Attachment> attachments) {
+            if (attachments == null) {
+              throw new MissingRequiredPropertyException("GetVolumeV3Result", "attachments");
+            }
+            this.attachments = attachments;
+            return this;
+        }
+        public Builder attachments(GetVolumeV3Attachment... attachments) {
+            return attachments(List.of(attachments));
+        }
         @CustomType.Setter
         public Builder bootable(String bootable) {
             if (bootable == null) {
@@ -275,6 +306,7 @@ public final class GetVolumeV3Result {
         }
         public GetVolumeV3Result build() {
             final var _resultValue = new GetVolumeV3Result();
+            _resultValue.attachments = attachments;
             _resultValue.bootable = bootable;
             _resultValue.host = host;
             _resultValue.id = id;

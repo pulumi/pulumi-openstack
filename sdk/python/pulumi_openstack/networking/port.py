@@ -932,6 +932,12 @@ class Port(pulumi.CustomResource):
         """
         Manages a V2 port resource within OpenStack.
 
+        > **Note:** Ports do not get an IP if the network they are attached
+        to does not have a subnet. If you create the subnet resource in the
+        same run as the port, make sure to use `fixed_ip.subnet_id` or
+        `depends_on` to enforce the subnet resource creation before the port
+        creation is triggered. More info here
+
         ## Example Usage
         ### Simple port
 
@@ -943,6 +949,23 @@ class Port(pulumi.CustomResource):
         port1 = openstack.networking.Port("port1",
             network_id=network1.id,
             admin_state_up=True)
+        ```
+        ### Port defining fixed_ip.subnet_id
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            network_id=network1.id,
+            cidr="192.168.199.0/24")
+        port1 = openstack.networking.Port("port1",
+            network_id=network1.id,
+            admin_state_up=True,
+            fixed_ips=[openstack.networking.PortFixedIpArgs(
+                subnet_id=subnet1.id,
+            )])
         ```
         ### Port with physical binding information
 
@@ -1059,6 +1082,12 @@ class Port(pulumi.CustomResource):
         """
         Manages a V2 port resource within OpenStack.
 
+        > **Note:** Ports do not get an IP if the network they are attached
+        to does not have a subnet. If you create the subnet resource in the
+        same run as the port, make sure to use `fixed_ip.subnet_id` or
+        `depends_on` to enforce the subnet resource creation before the port
+        creation is triggered. More info here
+
         ## Example Usage
         ### Simple port
 
@@ -1070,6 +1099,23 @@ class Port(pulumi.CustomResource):
         port1 = openstack.networking.Port("port1",
             network_id=network1.id,
             admin_state_up=True)
+        ```
+        ### Port defining fixed_ip.subnet_id
+
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+
+        network1 = openstack.networking.Network("network1", admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet1",
+            network_id=network1.id,
+            cidr="192.168.199.0/24")
+        port1 = openstack.networking.Port("port1",
+            network_id=network1.id,
+            admin_state_up=True,
+            fixed_ips=[openstack.networking.PortFixedIpArgs(
+                subnet_id=subnet1.id,
+            )])
         ```
         ### Port with physical binding information
 

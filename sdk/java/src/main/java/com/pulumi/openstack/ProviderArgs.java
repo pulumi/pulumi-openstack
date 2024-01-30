@@ -439,14 +439,22 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
      * 
+     * @deprecated
+     * This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported.
+     * 
      */
+    @Deprecated /* This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported. */
     @Import(name="useOctavia", json=true)
     private @Nullable Output<Boolean> useOctavia;
 
     /**
      * @return If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
      * 
+     * @deprecated
+     * This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported.
+     * 
      */
+    @Deprecated /* This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported. */
     public Optional<Output<Boolean>> useOctavia() {
         return Optional.ofNullable(this.useOctavia);
     }
@@ -1152,7 +1160,11 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported.
+         * 
          */
+        @Deprecated /* This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported. */
         public Builder useOctavia(@Nullable Output<Boolean> useOctavia) {
             $.useOctavia = useOctavia;
             return this;
@@ -1163,7 +1175,11 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported.
+         * 
          */
+        @Deprecated /* This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported. */
         public Builder useOctavia(Boolean useOctavia) {
             return useOctavia(Output.of(useOctavia));
         }
