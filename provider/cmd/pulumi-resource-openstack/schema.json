@@ -224,7 +224,8 @@
                     "environment": [
                         "OS_USE_OCTAVIA"
                     ]
-                }
+                },
+                "deprecationMessage": "This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported."
             },
             "userDomainId": {
                 "type": "string",
@@ -391,6 +392,30 @@
                 }
             },
             "type": "object"
+        },
+        "openstack:blockstorage/getVolumeV3Attachment:getVolumeV3Attachment": {
+            "properties": {
+                "device": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "instanceId": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "device",
+                "id",
+                "instanceId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "openstack:compute/InstanceBlockDevice:InstanceBlockDevice": {
             "properties": {
@@ -1446,7 +1471,7 @@
                 },
                 "vnicType": {
                     "type": "string",
-                    "description": "VNIC type for the port. Can either be `direct`,\n`direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.\nDefault value is `normal`.\n"
+                    "description": "VNIC type for the port. Can either be `direct`,\n`direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.\nDefault value is `normal`. It can be updated on unbound ports only.\n"
                 }
             },
             "type": "object",
@@ -2063,7 +2088,8 @@
             },
             "useOctavia": {
                 "type": "boolean",
-                "description": "If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).\n"
+                "description": "If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).\n",
+                "deprecationMessage": "This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported."
             },
             "userDomainId": {
                 "type": "string",
@@ -2240,7 +2266,8 @@
                     "environment": [
                         "OS_USE_OCTAVIA"
                     ]
-                }
+                },
+                "deprecationMessage": "This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported."
             },
             "userDomainId": {
                 "type": "string",
@@ -2737,6 +2764,10 @@
                     "type": "string",
                     "description": "The availability zone for the volume.\nChanging this creates a new volume.\n"
                 },
+                "backupId": {
+                    "type": "string",
+                    "description": "The backup ID from which to create the volume.\nConflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this\ncreates a new volume. Requires microversion \u003e= 3.47.\n"
+                },
                 "consistencyGroupId": {
                     "type": "string",
                     "description": "The consistency group to place the volume\nin.\n"
@@ -2751,7 +2782,7 @@
                 },
                 "imageId": {
                     "type": "string",
-                    "description": "The image ID from which to create the volume.\nChanging this creates a new volume.\n"
+                    "description": "The image ID from which to create the volume.\nConflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this\ncreates a new volume.\n"
                 },
                 "metadata": {
                     "type": "object",
@@ -2762,7 +2793,8 @@
                 },
                 "multiattach": {
                     "type": "boolean",
-                    "description": "Allow the volume to be attached to more than one Compute instance.\n"
+                    "description": "(Optional) Allow the volume to be attached to more than one Compute instance.\n",
+                    "deprecationMessage": "multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types"
                 },
                 "name": {
                     "type": "string",
@@ -2785,7 +2817,7 @@
                 },
                 "snapshotId": {
                     "type": "string",
-                    "description": "The snapshot ID from which to create the volume.\nChanging this creates a new volume.\n"
+                    "description": "The snapshot ID from which to create the volume.\nConflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this\ncreates a new volume.\n"
                 },
                 "sourceReplica": {
                     "type": "string",
@@ -2793,7 +2825,7 @@
                 },
                 "sourceVolId": {
                     "type": "string",
-                    "description": "The volume ID from which to create the volume.\nChanging this creates a new volume.\n"
+                    "description": "The volume ID from which to create the volume.\nConflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this\ncreates a new volume.\n"
                 },
                 "volumeType": {
                     "type": "string",
@@ -2815,6 +2847,11 @@
                     "description": "The availability zone for the volume.\nChanging this creates a new volume.\n",
                     "willReplaceOnChanges": true
                 },
+                "backupId": {
+                    "type": "string",
+                    "description": "The backup ID from which to create the volume.\nConflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this\ncreates a new volume. Requires microversion \u003e= 3.47.\n",
+                    "willReplaceOnChanges": true
+                },
                 "consistencyGroupId": {
                     "type": "string",
                     "description": "The consistency group to place the volume\nin.\n",
@@ -2830,7 +2867,7 @@
                 },
                 "imageId": {
                     "type": "string",
-                    "description": "The image ID from which to create the volume.\nChanging this creates a new volume.\n",
+                    "description": "The image ID from which to create the volume.\nConflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this\ncreates a new volume.\n",
                     "willReplaceOnChanges": true
                 },
                 "metadata": {
@@ -2842,7 +2879,8 @@
                 },
                 "multiattach": {
                     "type": "boolean",
-                    "description": "Allow the volume to be attached to more than one Compute instance.\n"
+                    "description": "(Optional) Allow the volume to be attached to more than one Compute instance.\n",
+                    "deprecationMessage": "multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types"
                 },
                 "name": {
                     "type": "string",
@@ -2866,7 +2904,7 @@
                 },
                 "snapshotId": {
                     "type": "string",
-                    "description": "The snapshot ID from which to create the volume.\nChanging this creates a new volume.\n",
+                    "description": "The snapshot ID from which to create the volume.\nConflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this\ncreates a new volume.\n",
                     "willReplaceOnChanges": true
                 },
                 "sourceReplica": {
@@ -2876,7 +2914,7 @@
                 },
                 "sourceVolId": {
                     "type": "string",
-                    "description": "The volume ID from which to create the volume.\nChanging this creates a new volume.\n",
+                    "description": "The volume ID from which to create the volume.\nConflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this\ncreates a new volume.\n",
                     "willReplaceOnChanges": true
                 },
                 "volumeType": {
@@ -2903,6 +2941,11 @@
                         "description": "The availability zone for the volume.\nChanging this creates a new volume.\n",
                         "willReplaceOnChanges": true
                     },
+                    "backupId": {
+                        "type": "string",
+                        "description": "The backup ID from which to create the volume.\nConflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this\ncreates a new volume. Requires microversion \u003e= 3.47.\n",
+                        "willReplaceOnChanges": true
+                    },
                     "consistencyGroupId": {
                         "type": "string",
                         "description": "The consistency group to place the volume\nin.\n",
@@ -2918,7 +2961,7 @@
                     },
                     "imageId": {
                         "type": "string",
-                        "description": "The image ID from which to create the volume.\nChanging this creates a new volume.\n",
+                        "description": "The image ID from which to create the volume.\nConflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this\ncreates a new volume.\n",
                         "willReplaceOnChanges": true
                     },
                     "metadata": {
@@ -2930,7 +2973,8 @@
                     },
                     "multiattach": {
                         "type": "boolean",
-                        "description": "Allow the volume to be attached to more than one Compute instance.\n"
+                        "description": "(Optional) Allow the volume to be attached to more than one Compute instance.\n",
+                        "deprecationMessage": "multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types"
                     },
                     "name": {
                         "type": "string",
@@ -2954,7 +2998,7 @@
                     },
                     "snapshotId": {
                         "type": "string",
-                        "description": "The snapshot ID from which to create the volume.\nChanging this creates a new volume.\n",
+                        "description": "The snapshot ID from which to create the volume.\nConflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this\ncreates a new volume.\n",
                         "willReplaceOnChanges": true
                     },
                     "sourceReplica": {
@@ -2964,7 +3008,7 @@
                     },
                     "sourceVolId": {
                         "type": "string",
-                        "description": "The volume ID from which to create the volume.\nChanging this creates a new volume.\n",
+                        "description": "The volume ID from which to create the volume.\nConflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this\ncreates a new volume.\n",
                         "willReplaceOnChanges": true
                     },
                     "volumeType": {
@@ -14107,7 +14151,7 @@
             }
         },
         "openstack:networking/port:Port": {
-            "description": "Manages a V2 port resource within OpenStack.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Simple port\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst network1 = new openstack.networking.Network(\"network1\", {adminStateUp: true});\nconst port1 = new openstack.networking.Port(\"port1\", {\n    networkId: network1.id,\n    adminStateUp: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nnetwork1 = openstack.networking.Network(\"network1\", admin_state_up=True)\nport1 = openstack.networking.Port(\"port1\",\n    network_id=network1.id,\n    admin_state_up=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var network1 = new OpenStack.Networking.Network(\"network1\", new()\n    {\n        AdminStateUp = true,\n    });\n\n    var port1 = new OpenStack.Networking.Port(\"port1\", new()\n    {\n        NetworkId = network1.Id,\n        AdminStateUp = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tnetwork1, err := networking.NewNetwork(ctx, \"network1\", \u0026networking.NetworkArgs{\n\t\t\tAdminStateUp: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = networking.NewPort(ctx, \"port1\", \u0026networking.PortArgs{\n\t\t\tNetworkId:    network1.ID(),\n\t\t\tAdminStateUp: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.networking.Network;\nimport com.pulumi.openstack.networking.NetworkArgs;\nimport com.pulumi.openstack.networking.Port;\nimport com.pulumi.openstack.networking.PortArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var network1 = new Network(\"network1\", NetworkArgs.builder()        \n            .adminStateUp(\"true\")\n            .build());\n\n        var port1 = new Port(\"port1\", PortArgs.builder()        \n            .networkId(network1.id())\n            .adminStateUp(\"true\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  network1:\n    type: openstack:networking:Network\n    properties:\n      adminStateUp: 'true'\n  port1:\n    type: openstack:networking:Port\n    properties:\n      networkId: ${network1.id}\n      adminStateUp: 'true'\n```\n{{% /example %}}\n{{% example %}}\n### Port with physical binding information\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst network1 = new openstack.networking.Network(\"network1\", {adminStateUp: true});\nconst port1 = new openstack.networking.Port(\"port1\", {\n    networkId: network1.id,\n    deviceId: \"cdf70fcf-c161-4f24-9c70-96b3f5a54b71\",\n    deviceOwner: \"baremetal:none\",\n    adminStateUp: true,\n    binding: {\n        hostId: \"b080b9cf-46e0-4ce8-ad47-0fd4accc872b\",\n        vnicType: \"baremetal\",\n        profile: `{\n  \"local_link_information\": [\n    {\n      \"switch_info\": \"info1\",\n      \"port_id\": \"Ethernet3/4\",\n      \"switch_id\": \"12:34:56:78:9A:BC\"\n    },\n    {\n      \"switch_info\": \"info2\",\n      \"port_id\": \"Ethernet3/4\",\n      \"switch_id\": \"12:34:56:78:9A:BD\"\n    }\n  ],\n  \"vlan_type\": \"allowed\"\n}\n`,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nnetwork1 = openstack.networking.Network(\"network1\", admin_state_up=True)\nport1 = openstack.networking.Port(\"port1\",\n    network_id=network1.id,\n    device_id=\"cdf70fcf-c161-4f24-9c70-96b3f5a54b71\",\n    device_owner=\"baremetal:none\",\n    admin_state_up=True,\n    binding=openstack.networking.PortBindingArgs(\n        host_id=\"b080b9cf-46e0-4ce8-ad47-0fd4accc872b\",\n        vnic_type=\"baremetal\",\n        profile=\"\"\"{\n  \"local_link_information\": [\n    {\n      \"switch_info\": \"info1\",\n      \"port_id\": \"Ethernet3/4\",\n      \"switch_id\": \"12:34:56:78:9A:BC\"\n    },\n    {\n      \"switch_info\": \"info2\",\n      \"port_id\": \"Ethernet3/4\",\n      \"switch_id\": \"12:34:56:78:9A:BD\"\n    }\n  ],\n  \"vlan_type\": \"allowed\"\n}\n\"\"\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var network1 = new OpenStack.Networking.Network(\"network1\", new()\n    {\n        AdminStateUp = true,\n    });\n\n    var port1 = new OpenStack.Networking.Port(\"port1\", new()\n    {\n        NetworkId = network1.Id,\n        DeviceId = \"cdf70fcf-c161-4f24-9c70-96b3f5a54b71\",\n        DeviceOwner = \"baremetal:none\",\n        AdminStateUp = true,\n        Binding = new OpenStack.Networking.Inputs.PortBindingArgs\n        {\n            HostId = \"b080b9cf-46e0-4ce8-ad47-0fd4accc872b\",\n            VnicType = \"baremetal\",\n            Profile = @\"{\n  \"\"local_link_information\"\": [\n    {\n      \"\"switch_info\"\": \"\"info1\"\",\n      \"\"port_id\"\": \"\"Ethernet3/4\"\",\n      \"\"switch_id\"\": \"\"12:34:56:78:9A:BC\"\"\n    },\n    {\n      \"\"switch_info\"\": \"\"info2\"\",\n      \"\"port_id\"\": \"\"Ethernet3/4\"\",\n      \"\"switch_id\"\": \"\"12:34:56:78:9A:BD\"\"\n    }\n  ],\n  \"\"vlan_type\"\": \"\"allowed\"\"\n}\n\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tnetwork1, err := networking.NewNetwork(ctx, \"network1\", \u0026networking.NetworkArgs{\n\t\t\tAdminStateUp: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = networking.NewPort(ctx, \"port1\", \u0026networking.PortArgs{\n\t\t\tNetworkId:    network1.ID(),\n\t\t\tDeviceId:     pulumi.String(\"cdf70fcf-c161-4f24-9c70-96b3f5a54b71\"),\n\t\t\tDeviceOwner:  pulumi.String(\"baremetal:none\"),\n\t\t\tAdminStateUp: pulumi.Bool(true),\n\t\t\tBinding: \u0026networking.PortBindingArgs{\n\t\t\t\tHostId:   pulumi.String(\"b080b9cf-46e0-4ce8-ad47-0fd4accc872b\"),\n\t\t\t\tVnicType: pulumi.String(\"baremetal\"),\n\t\t\t\tProfile: pulumi.String(`{\n  \"local_link_information\": [\n    {\n      \"switch_info\": \"info1\",\n      \"port_id\": \"Ethernet3/4\",\n      \"switch_id\": \"12:34:56:78:9A:BC\"\n    },\n    {\n      \"switch_info\": \"info2\",\n      \"port_id\": \"Ethernet3/4\",\n      \"switch_id\": \"12:34:56:78:9A:BD\"\n    }\n  ],\n  \"vlan_type\": \"allowed\"\n}\n`),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.networking.Network;\nimport com.pulumi.openstack.networking.NetworkArgs;\nimport com.pulumi.openstack.networking.Port;\nimport com.pulumi.openstack.networking.PortArgs;\nimport com.pulumi.openstack.networking.inputs.PortBindingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var network1 = new Network(\"network1\", NetworkArgs.builder()        \n            .adminStateUp(\"true\")\n            .build());\n\n        var port1 = new Port(\"port1\", PortArgs.builder()        \n            .networkId(network1.id())\n            .deviceId(\"cdf70fcf-c161-4f24-9c70-96b3f5a54b71\")\n            .deviceOwner(\"baremetal:none\")\n            .adminStateUp(\"true\")\n            .binding(PortBindingArgs.builder()\n                .hostId(\"b080b9cf-46e0-4ce8-ad47-0fd4accc872b\")\n                .vnicType(\"baremetal\")\n                .profile(\"\"\"\n{\n  \"local_link_information\": [\n    {\n      \"switch_info\": \"info1\",\n      \"port_id\": \"Ethernet3/4\",\n      \"switch_id\": \"12:34:56:78:9A:BC\"\n    },\n    {\n      \"switch_info\": \"info2\",\n      \"port_id\": \"Ethernet3/4\",\n      \"switch_id\": \"12:34:56:78:9A:BD\"\n    }\n  ],\n  \"vlan_type\": \"allowed\"\n}\n                \"\"\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  network1:\n    type: openstack:networking:Network\n    properties:\n      adminStateUp: 'true'\n  port1:\n    type: openstack:networking:Port\n    properties:\n      networkId: ${network1.id}\n      deviceId: cdf70fcf-c161-4f24-9c70-96b3f5a54b71\n      deviceOwner: baremetal:none\n      adminStateUp: 'true'\n      binding:\n        hostId: b080b9cf-46e0-4ce8-ad47-0fd4accc872b\n        vnicType: baremetal\n        profile: |\n          {\n            \"local_link_information\": [\n              {\n                \"switch_info\": \"info1\",\n                \"port_id\": \"Ethernet3/4\",\n                \"switch_id\": \"12:34:56:78:9A:BC\"\n              },\n              {\n                \"switch_info\": \"info2\",\n                \"port_id\": \"Ethernet3/4\",\n                \"switch_id\": \"12:34:56:78:9A:BD\"\n              }\n            ],\n            \"vlan_type\": \"allowed\"\n          }\n```\n{{% /example %}}\n{{% /examples %}}\n## Notes\n\n### Ports and Instances\n\nThere are some notes to consider when connecting Instances to networks using\nPorts. Please see the `openstack.compute.Instance` documentation for further\ndocumentation.\n\n\n## Import\n\nPorts can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1\n```\n ",
+            "description": "Manages a V2 port resource within OpenStack.\n\n\u003e **Note:** Ports do not get an IP if the network they are attached\nto does not have a subnet. If you create the subnet resource in the\nsame run as the port, make sure to use `fixed_ip.subnet_id` or \n`depends_on` to enforce the subnet resource creation before the port\ncreation is triggered. More info here\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Simple port\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst network1 = new openstack.networking.Network(\"network1\", {adminStateUp: true});\nconst port1 = new openstack.networking.Port(\"port1\", {\n    networkId: network1.id,\n    adminStateUp: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nnetwork1 = openstack.networking.Network(\"network1\", admin_state_up=True)\nport1 = openstack.networking.Port(\"port1\",\n    network_id=network1.id,\n    admin_state_up=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var network1 = new OpenStack.Networking.Network(\"network1\", new()\n    {\n        AdminStateUp = true,\n    });\n\n    var port1 = new OpenStack.Networking.Port(\"port1\", new()\n    {\n        NetworkId = network1.Id,\n        AdminStateUp = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tnetwork1, err := networking.NewNetwork(ctx, \"network1\", \u0026networking.NetworkArgs{\n\t\t\tAdminStateUp: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = networking.NewPort(ctx, \"port1\", \u0026networking.PortArgs{\n\t\t\tNetworkId:    network1.ID(),\n\t\t\tAdminStateUp: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.networking.Network;\nimport com.pulumi.openstack.networking.NetworkArgs;\nimport com.pulumi.openstack.networking.Port;\nimport com.pulumi.openstack.networking.PortArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var network1 = new Network(\"network1\", NetworkArgs.builder()        \n            .adminStateUp(\"true\")\n            .build());\n\n        var port1 = new Port(\"port1\", PortArgs.builder()        \n            .networkId(network1.id())\n            .adminStateUp(\"true\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  network1:\n    type: openstack:networking:Network\n    properties:\n      adminStateUp: 'true'\n  port1:\n    type: openstack:networking:Port\n    properties:\n      networkId: ${network1.id}\n      adminStateUp: 'true'\n```\n{{% /example %}}\n{{% example %}}\n### Port defining fixed_ip.subnet_id\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst network1 = new openstack.networking.Network(\"network1\", {adminStateUp: true});\nconst subnet1 = new openstack.networking.Subnet(\"subnet1\", {\n    networkId: network1.id,\n    cidr: \"192.168.199.0/24\",\n});\nconst port1 = new openstack.networking.Port(\"port1\", {\n    networkId: network1.id,\n    adminStateUp: true,\n    fixedIps: [{\n        subnetId: subnet1.id,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nnetwork1 = openstack.networking.Network(\"network1\", admin_state_up=True)\nsubnet1 = openstack.networking.Subnet(\"subnet1\",\n    network_id=network1.id,\n    cidr=\"192.168.199.0/24\")\nport1 = openstack.networking.Port(\"port1\",\n    network_id=network1.id,\n    admin_state_up=True,\n    fixed_ips=[openstack.networking.PortFixedIpArgs(\n        subnet_id=subnet1.id,\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var network1 = new OpenStack.Networking.Network(\"network1\", new()\n    {\n        AdminStateUp = true,\n    });\n\n    var subnet1 = new OpenStack.Networking.Subnet(\"subnet1\", new()\n    {\n        NetworkId = network1.Id,\n        Cidr = \"192.168.199.0/24\",\n    });\n\n    var port1 = new OpenStack.Networking.Port(\"port1\", new()\n    {\n        NetworkId = network1.Id,\n        AdminStateUp = true,\n        FixedIps = new[]\n        {\n            new OpenStack.Networking.Inputs.PortFixedIpArgs\n            {\n                SubnetId = subnet1.Id,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tnetwork1, err := networking.NewNetwork(ctx, \"network1\", \u0026networking.NetworkArgs{\n\t\t\tAdminStateUp: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tsubnet1, err := networking.NewSubnet(ctx, \"subnet1\", \u0026networking.SubnetArgs{\n\t\t\tNetworkId: network1.ID(),\n\t\t\tCidr:      pulumi.String(\"192.168.199.0/24\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = networking.NewPort(ctx, \"port1\", \u0026networking.PortArgs{\n\t\t\tNetworkId:    network1.ID(),\n\t\t\tAdminStateUp: pulumi.Bool(true),\n\t\t\tFixedIps: networking.PortFixedIpArray{\n\t\t\t\t\u0026networking.PortFixedIpArgs{\n\t\t\t\t\tSubnetId: subnet1.ID(),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.networking.Network;\nimport com.pulumi.openstack.networking.NetworkArgs;\nimport com.pulumi.openstack.networking.Subnet;\nimport com.pulumi.openstack.networking.SubnetArgs;\nimport com.pulumi.openstack.networking.Port;\nimport com.pulumi.openstack.networking.PortArgs;\nimport com.pulumi.openstack.networking.inputs.PortFixedIpArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var network1 = new Network(\"network1\", NetworkArgs.builder()        \n            .adminStateUp(\"true\")\n            .build());\n\n        var subnet1 = new Subnet(\"subnet1\", SubnetArgs.builder()        \n            .networkId(network1.id())\n            .cidr(\"192.168.199.0/24\")\n            .build());\n\n        var port1 = new Port(\"port1\", PortArgs.builder()        \n            .networkId(network1.id())\n            .adminStateUp(\"true\")\n            .fixedIps(PortFixedIpArgs.builder()\n                .subnetId(subnet1.id())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  network1:\n    type: openstack:networking:Network\n    properties:\n      adminStateUp: 'true'\n  subnet1:\n    type: openstack:networking:Subnet\n    properties:\n      networkId: ${network1.id}\n      cidr: 192.168.199.0/24\n  port1:\n    type: openstack:networking:Port\n    properties:\n      networkId: ${network1.id}\n      adminStateUp: 'true'\n      fixedIps:\n        - subnetId: ${subnet1.id}\n```\n{{% /example %}}\n{{% example %}}\n### Port with physical binding information\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst network1 = new openstack.networking.Network(\"network1\", {adminStateUp: true});\nconst port1 = new openstack.networking.Port(\"port1\", {\n    networkId: network1.id,\n    deviceId: \"cdf70fcf-c161-4f24-9c70-96b3f5a54b71\",\n    deviceOwner: \"baremetal:none\",\n    adminStateUp: true,\n    binding: {\n        hostId: \"b080b9cf-46e0-4ce8-ad47-0fd4accc872b\",\n        vnicType: \"baremetal\",\n        profile: `{\n  \"local_link_information\": [\n    {\n      \"switch_info\": \"info1\",\n      \"port_id\": \"Ethernet3/4\",\n      \"switch_id\": \"12:34:56:78:9A:BC\"\n    },\n    {\n      \"switch_info\": \"info2\",\n      \"port_id\": \"Ethernet3/4\",\n      \"switch_id\": \"12:34:56:78:9A:BD\"\n    }\n  ],\n  \"vlan_type\": \"allowed\"\n}\n`,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nnetwork1 = openstack.networking.Network(\"network1\", admin_state_up=True)\nport1 = openstack.networking.Port(\"port1\",\n    network_id=network1.id,\n    device_id=\"cdf70fcf-c161-4f24-9c70-96b3f5a54b71\",\n    device_owner=\"baremetal:none\",\n    admin_state_up=True,\n    binding=openstack.networking.PortBindingArgs(\n        host_id=\"b080b9cf-46e0-4ce8-ad47-0fd4accc872b\",\n        vnic_type=\"baremetal\",\n        profile=\"\"\"{\n  \"local_link_information\": [\n    {\n      \"switch_info\": \"info1\",\n      \"port_id\": \"Ethernet3/4\",\n      \"switch_id\": \"12:34:56:78:9A:BC\"\n    },\n    {\n      \"switch_info\": \"info2\",\n      \"port_id\": \"Ethernet3/4\",\n      \"switch_id\": \"12:34:56:78:9A:BD\"\n    }\n  ],\n  \"vlan_type\": \"allowed\"\n}\n\"\"\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var network1 = new OpenStack.Networking.Network(\"network1\", new()\n    {\n        AdminStateUp = true,\n    });\n\n    var port1 = new OpenStack.Networking.Port(\"port1\", new()\n    {\n        NetworkId = network1.Id,\n        DeviceId = \"cdf70fcf-c161-4f24-9c70-96b3f5a54b71\",\n        DeviceOwner = \"baremetal:none\",\n        AdminStateUp = true,\n        Binding = new OpenStack.Networking.Inputs.PortBindingArgs\n        {\n            HostId = \"b080b9cf-46e0-4ce8-ad47-0fd4accc872b\",\n            VnicType = \"baremetal\",\n            Profile = @\"{\n  \"\"local_link_information\"\": [\n    {\n      \"\"switch_info\"\": \"\"info1\"\",\n      \"\"port_id\"\": \"\"Ethernet3/4\"\",\n      \"\"switch_id\"\": \"\"12:34:56:78:9A:BC\"\"\n    },\n    {\n      \"\"switch_info\"\": \"\"info2\"\",\n      \"\"port_id\"\": \"\"Ethernet3/4\"\",\n      \"\"switch_id\"\": \"\"12:34:56:78:9A:BD\"\"\n    }\n  ],\n  \"\"vlan_type\"\": \"\"allowed\"\"\n}\n\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tnetwork1, err := networking.NewNetwork(ctx, \"network1\", \u0026networking.NetworkArgs{\n\t\t\tAdminStateUp: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = networking.NewPort(ctx, \"port1\", \u0026networking.PortArgs{\n\t\t\tNetworkId:    network1.ID(),\n\t\t\tDeviceId:     pulumi.String(\"cdf70fcf-c161-4f24-9c70-96b3f5a54b71\"),\n\t\t\tDeviceOwner:  pulumi.String(\"baremetal:none\"),\n\t\t\tAdminStateUp: pulumi.Bool(true),\n\t\t\tBinding: \u0026networking.PortBindingArgs{\n\t\t\t\tHostId:   pulumi.String(\"b080b9cf-46e0-4ce8-ad47-0fd4accc872b\"),\n\t\t\t\tVnicType: pulumi.String(\"baremetal\"),\n\t\t\t\tProfile: pulumi.String(`{\n  \"local_link_information\": [\n    {\n      \"switch_info\": \"info1\",\n      \"port_id\": \"Ethernet3/4\",\n      \"switch_id\": \"12:34:56:78:9A:BC\"\n    },\n    {\n      \"switch_info\": \"info2\",\n      \"port_id\": \"Ethernet3/4\",\n      \"switch_id\": \"12:34:56:78:9A:BD\"\n    }\n  ],\n  \"vlan_type\": \"allowed\"\n}\n`),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.networking.Network;\nimport com.pulumi.openstack.networking.NetworkArgs;\nimport com.pulumi.openstack.networking.Port;\nimport com.pulumi.openstack.networking.PortArgs;\nimport com.pulumi.openstack.networking.inputs.PortBindingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var network1 = new Network(\"network1\", NetworkArgs.builder()        \n            .adminStateUp(\"true\")\n            .build());\n\n        var port1 = new Port(\"port1\", PortArgs.builder()        \n            .networkId(network1.id())\n            .deviceId(\"cdf70fcf-c161-4f24-9c70-96b3f5a54b71\")\n            .deviceOwner(\"baremetal:none\")\n            .adminStateUp(\"true\")\n            .binding(PortBindingArgs.builder()\n                .hostId(\"b080b9cf-46e0-4ce8-ad47-0fd4accc872b\")\n                .vnicType(\"baremetal\")\n                .profile(\"\"\"\n{\n  \"local_link_information\": [\n    {\n      \"switch_info\": \"info1\",\n      \"port_id\": \"Ethernet3/4\",\n      \"switch_id\": \"12:34:56:78:9A:BC\"\n    },\n    {\n      \"switch_info\": \"info2\",\n      \"port_id\": \"Ethernet3/4\",\n      \"switch_id\": \"12:34:56:78:9A:BD\"\n    }\n  ],\n  \"vlan_type\": \"allowed\"\n}\n                \"\"\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  network1:\n    type: openstack:networking:Network\n    properties:\n      adminStateUp: 'true'\n  port1:\n    type: openstack:networking:Port\n    properties:\n      networkId: ${network1.id}\n      deviceId: cdf70fcf-c161-4f24-9c70-96b3f5a54b71\n      deviceOwner: baremetal:none\n      adminStateUp: 'true'\n      binding:\n        hostId: b080b9cf-46e0-4ce8-ad47-0fd4accc872b\n        vnicType: baremetal\n        profile: |\n          {\n            \"local_link_information\": [\n              {\n                \"switch_info\": \"info1\",\n                \"port_id\": \"Ethernet3/4\",\n                \"switch_id\": \"12:34:56:78:9A:BC\"\n              },\n              {\n                \"switch_info\": \"info2\",\n                \"port_id\": \"Ethernet3/4\",\n                \"switch_id\": \"12:34:56:78:9A:BD\"\n              }\n            ],\n            \"vlan_type\": \"allowed\"\n          }\n```\n{{% /example %}}\n{{% /examples %}}\n## Notes\n\n### Ports and Instances\n\nThere are some notes to consider when connecting Instances to networks using\nPorts. Please see the `openstack.compute.Instance` documentation for further\ndocumentation.\n\n\n## Import\n\nPorts can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1\n```\n ",
             "properties": {
                 "adminStateUp": {
                     "type": "boolean",
@@ -15988,7 +16032,7 @@
             }
         },
         "openstack:networking/secGroupRule:SecGroupRule": {
-            "description": "Manages a V2 neutron security group rule resource within OpenStack.\nUnlike Nova security groups, neutron separates the group from the rules\nand also allows an admin to target a specific tenant_id.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst secgroup1 = new openstack.networking.SecGroup(\"secgroup1\", {description: \"My neutron security group\"});\nconst secgroupRule1 = new openstack.networking.SecGroupRule(\"secgroupRule1\", {\n    direction: \"ingress\",\n    ethertype: \"IPv4\",\n    protocol: \"tcp\",\n    portRangeMin: 22,\n    portRangeMax: 22,\n    remoteIpPrefix: \"0.0.0.0/0\",\n    securityGroupId: secgroup1.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nsecgroup1 = openstack.networking.SecGroup(\"secgroup1\", description=\"My neutron security group\")\nsecgroup_rule1 = openstack.networking.SecGroupRule(\"secgroupRule1\",\n    direction=\"ingress\",\n    ethertype=\"IPv4\",\n    protocol=\"tcp\",\n    port_range_min=22,\n    port_range_max=22,\n    remote_ip_prefix=\"0.0.0.0/0\",\n    security_group_id=secgroup1.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var secgroup1 = new OpenStack.Networking.SecGroup(\"secgroup1\", new()\n    {\n        Description = \"My neutron security group\",\n    });\n\n    var secgroupRule1 = new OpenStack.Networking.SecGroupRule(\"secgroupRule1\", new()\n    {\n        Direction = \"ingress\",\n        Ethertype = \"IPv4\",\n        Protocol = \"tcp\",\n        PortRangeMin = 22,\n        PortRangeMax = 22,\n        RemoteIpPrefix = \"0.0.0.0/0\",\n        SecurityGroupId = secgroup1.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsecgroup1, err := networking.NewSecGroup(ctx, \"secgroup1\", \u0026networking.SecGroupArgs{\n\t\t\tDescription: pulumi.String(\"My neutron security group\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = networking.NewSecGroupRule(ctx, \"secgroupRule1\", \u0026networking.SecGroupRuleArgs{\n\t\t\tDirection:       pulumi.String(\"ingress\"),\n\t\t\tEthertype:       pulumi.String(\"IPv4\"),\n\t\t\tProtocol:        pulumi.String(\"tcp\"),\n\t\t\tPortRangeMin:    pulumi.Int(22),\n\t\t\tPortRangeMax:    pulumi.Int(22),\n\t\t\tRemoteIpPrefix:  pulumi.String(\"0.0.0.0/0\"),\n\t\t\tSecurityGroupId: secgroup1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.networking.SecGroup;\nimport com.pulumi.openstack.networking.SecGroupArgs;\nimport com.pulumi.openstack.networking.SecGroupRule;\nimport com.pulumi.openstack.networking.SecGroupRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var secgroup1 = new SecGroup(\"secgroup1\", SecGroupArgs.builder()        \n            .description(\"My neutron security group\")\n            .build());\n\n        var secgroupRule1 = new SecGroupRule(\"secgroupRule1\", SecGroupRuleArgs.builder()        \n            .direction(\"ingress\")\n            .ethertype(\"IPv4\")\n            .protocol(\"tcp\")\n            .portRangeMin(22)\n            .portRangeMax(22)\n            .remoteIpPrefix(\"0.0.0.0/0\")\n            .securityGroupId(secgroup1.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  secgroup1:\n    type: openstack:networking:SecGroup\n    properties:\n      description: My neutron security group\n  secgroupRule1:\n    type: openstack:networking:SecGroupRule\n    properties:\n      direction: ingress\n      ethertype: IPv4\n      protocol: tcp\n      portRangeMin: 22\n      portRangeMax: 22\n      remoteIpPrefix: 0.0.0.0/0\n      securityGroupId: ${secgroup1.id}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nSecurity Group Rules can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745\n```\n ",
+            "description": "Manages a V2 neutron security group rule resource within OpenStack.\nUnlike Nova security groups, neutron separates the group from the rules\nand also allows an admin to target a specific tenant_id.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as openstack from \"@pulumi/openstack\";\n\nconst secgroup1 = new openstack.networking.SecGroup(\"secgroup1\", {description: \"My neutron security group\"});\nconst secgroupRule1 = new openstack.networking.SecGroupRule(\"secgroupRule1\", {\n    direction: \"ingress\",\n    ethertype: \"IPv4\",\n    protocol: \"tcp\",\n    portRangeMin: 22,\n    portRangeMax: 22,\n    remoteIpPrefix: \"0.0.0.0/0\",\n    securityGroupId: secgroup1.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_openstack as openstack\n\nsecgroup1 = openstack.networking.SecGroup(\"secgroup1\", description=\"My neutron security group\")\nsecgroup_rule1 = openstack.networking.SecGroupRule(\"secgroupRule1\",\n    direction=\"ingress\",\n    ethertype=\"IPv4\",\n    protocol=\"tcp\",\n    port_range_min=22,\n    port_range_max=22,\n    remote_ip_prefix=\"0.0.0.0/0\",\n    security_group_id=secgroup1.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing OpenStack = Pulumi.OpenStack;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var secgroup1 = new OpenStack.Networking.SecGroup(\"secgroup1\", new()\n    {\n        Description = \"My neutron security group\",\n    });\n\n    var secgroupRule1 = new OpenStack.Networking.SecGroupRule(\"secgroupRule1\", new()\n    {\n        Direction = \"ingress\",\n        Ethertype = \"IPv4\",\n        Protocol = \"tcp\",\n        PortRangeMin = 22,\n        PortRangeMax = 22,\n        RemoteIpPrefix = \"0.0.0.0/0\",\n        SecurityGroupId = secgroup1.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsecgroup1, err := networking.NewSecGroup(ctx, \"secgroup1\", \u0026networking.SecGroupArgs{\n\t\t\tDescription: pulumi.String(\"My neutron security group\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = networking.NewSecGroupRule(ctx, \"secgroupRule1\", \u0026networking.SecGroupRuleArgs{\n\t\t\tDirection:       pulumi.String(\"ingress\"),\n\t\t\tEthertype:       pulumi.String(\"IPv4\"),\n\t\t\tProtocol:        pulumi.String(\"tcp\"),\n\t\t\tPortRangeMin:    pulumi.Int(22),\n\t\t\tPortRangeMax:    pulumi.Int(22),\n\t\t\tRemoteIpPrefix:  pulumi.String(\"0.0.0.0/0\"),\n\t\t\tSecurityGroupId: secgroup1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.openstack.networking.SecGroup;\nimport com.pulumi.openstack.networking.SecGroupArgs;\nimport com.pulumi.openstack.networking.SecGroupRule;\nimport com.pulumi.openstack.networking.SecGroupRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var secgroup1 = new SecGroup(\"secgroup1\", SecGroupArgs.builder()        \n            .description(\"My neutron security group\")\n            .build());\n\n        var secgroupRule1 = new SecGroupRule(\"secgroupRule1\", SecGroupRuleArgs.builder()        \n            .direction(\"ingress\")\n            .ethertype(\"IPv4\")\n            .protocol(\"tcp\")\n            .portRangeMin(22)\n            .portRangeMax(22)\n            .remoteIpPrefix(\"0.0.0.0/0\")\n            .securityGroupId(secgroup1.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  secgroup1:\n    type: openstack:networking:SecGroup\n    properties:\n      description: My neutron security group\n  secgroupRule1:\n    type: openstack:networking:SecGroupRule\n    properties:\n      direction: ingress\n      ethertype: IPv4\n      protocol: tcp\n      portRangeMin: 22\n      portRangeMax: 22\n      remoteIpPrefix: 0.0.0.0/0\n      securityGroupId: ${secgroup1.id}\n```\n\n\u003e **Note:** To expose the full port-range 1:65535, use `0` for `port_range_min`\nand `port_range_max`.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nSecurity Group Rules can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745\n```\n ",
             "properties": {
                 "description": {
                     "type": "string",
@@ -20006,6 +20050,13 @@
             "outputs": {
                 "description": "A collection of values returned by getVolumeV3.\n",
                 "properties": {
+                    "attachments": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/openstack:blockstorage/getVolumeV3Attachment:getVolumeV3Attachment"
+                        },
+                        "description": "If a volume is attached to an instance, this attribute will\ndisplay the Attachment ID, Instance ID, and the Device as the Instance\nsees it.\n"
+                    },
                     "bootable": {
                         "type": "string",
                         "description": "Indicates if the volume is bootable.\n"
@@ -20056,6 +20107,7 @@
                 },
                 "type": "object",
                 "required": [
+                    "attachments",
                     "bootable",
                     "host",
                     "metadata",
