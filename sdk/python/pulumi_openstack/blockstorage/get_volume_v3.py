@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'GetVolumeV3Result',
@@ -21,7 +22,10 @@ class GetVolumeV3Result:
     """
     A collection of values returned by getVolumeV3.
     """
-    def __init__(__self__, bootable=None, host=None, id=None, metadata=None, multiattach=None, name=None, region=None, size=None, source_volume_id=None, status=None, volume_type=None):
+    def __init__(__self__, attachments=None, bootable=None, host=None, id=None, metadata=None, multiattach=None, name=None, region=None, size=None, source_volume_id=None, status=None, volume_type=None):
+        if attachments and not isinstance(attachments, list):
+            raise TypeError("Expected argument 'attachments' to be a list")
+        pulumi.set(__self__, "attachments", attachments)
         if bootable and not isinstance(bootable, str):
             raise TypeError("Expected argument 'bootable' to be a str")
         pulumi.set(__self__, "bootable", bootable)
@@ -55,6 +59,16 @@ class GetVolumeV3Result:
         if volume_type and not isinstance(volume_type, str):
             raise TypeError("Expected argument 'volume_type' to be a str")
         pulumi.set(__self__, "volume_type", volume_type)
+
+    @property
+    @pulumi.getter
+    def attachments(self) -> Sequence['outputs.GetVolumeV3AttachmentResult']:
+        """
+        If a volume is attached to an instance, this attribute will
+        display the Attachment ID, Instance ID, and the Device as the Instance
+        sees it.
+        """
+        return pulumi.get(self, "attachments")
 
     @property
     @pulumi.getter
@@ -151,6 +165,7 @@ class AwaitableGetVolumeV3Result(GetVolumeV3Result):
         if False:
             yield self
         return GetVolumeV3Result(
+            attachments=self.attachments,
             bootable=self.bootable,
             host=self.host,
             id=self.id,
@@ -206,6 +221,7 @@ def get_volume_v3(bootable: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('openstack:blockstorage/getVolumeV3:getVolumeV3', __args__, opts=opts, typ=GetVolumeV3Result).value
 
     return AwaitableGetVolumeV3Result(
+        attachments=pulumi.get(__ret__, 'attachments'),
         bootable=pulumi.get(__ret__, 'bootable'),
         host=pulumi.get(__ret__, 'host'),
         id=pulumi.get(__ret__, 'id'),

@@ -25,6 +25,12 @@ import javax.annotation.Nullable;
 /**
  * Manages a V2 port resource within OpenStack.
  * 
+ * &gt; **Note:** Ports do not get an IP if the network they are attached
+ * to does not have a subnet. If you create the subnet resource in the
+ * same run as the port, make sure to use `fixed_ip.subnet_id` or
+ * `depends_on` to enforce the subnet resource creation before the port
+ * creation is triggered. More info here
+ * 
  * ## Example Usage
  * ### Simple port
  * ```java
@@ -57,6 +63,53 @@ import javax.annotation.Nullable;
  *         var port1 = new Port(&#34;port1&#34;, PortArgs.builder()        
  *             .networkId(network1.id())
  *             .adminStateUp(&#34;true&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Port defining fixed_ip.subnet_id
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.networking.Network;
+ * import com.pulumi.openstack.networking.NetworkArgs;
+ * import com.pulumi.openstack.networking.Subnet;
+ * import com.pulumi.openstack.networking.SubnetArgs;
+ * import com.pulumi.openstack.networking.Port;
+ * import com.pulumi.openstack.networking.PortArgs;
+ * import com.pulumi.openstack.networking.inputs.PortFixedIpArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
+ *             .adminStateUp(&#34;true&#34;)
+ *             .build());
+ * 
+ *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
+ *             .networkId(network1.id())
+ *             .cidr(&#34;192.168.199.0/24&#34;)
+ *             .build());
+ * 
+ *         var port1 = new Port(&#34;port1&#34;, PortArgs.builder()        
+ *             .networkId(network1.id())
+ *             .adminStateUp(&#34;true&#34;)
+ *             .fixedIps(PortFixedIpArgs.builder()
+ *                 .subnetId(subnet1.id())
+ *                 .build())
  *             .build());
  * 
  *     }

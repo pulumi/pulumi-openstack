@@ -651,6 +651,112 @@ func (o VolumeV2SchedulerHintArrayOutput) Index(i pulumi.IntInput) VolumeV2Sched
 	}).(VolumeV2SchedulerHintOutput)
 }
 
+type GetVolumeV3Attachment struct {
+	Device     string `pulumi:"device"`
+	Id         string `pulumi:"id"`
+	InstanceId string `pulumi:"instanceId"`
+}
+
+// GetVolumeV3AttachmentInput is an input type that accepts GetVolumeV3AttachmentArgs and GetVolumeV3AttachmentOutput values.
+// You can construct a concrete instance of `GetVolumeV3AttachmentInput` via:
+//
+//	GetVolumeV3AttachmentArgs{...}
+type GetVolumeV3AttachmentInput interface {
+	pulumi.Input
+
+	ToGetVolumeV3AttachmentOutput() GetVolumeV3AttachmentOutput
+	ToGetVolumeV3AttachmentOutputWithContext(context.Context) GetVolumeV3AttachmentOutput
+}
+
+type GetVolumeV3AttachmentArgs struct {
+	Device     pulumi.StringInput `pulumi:"device"`
+	Id         pulumi.StringInput `pulumi:"id"`
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+}
+
+func (GetVolumeV3AttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeV3Attachment)(nil)).Elem()
+}
+
+func (i GetVolumeV3AttachmentArgs) ToGetVolumeV3AttachmentOutput() GetVolumeV3AttachmentOutput {
+	return i.ToGetVolumeV3AttachmentOutputWithContext(context.Background())
+}
+
+func (i GetVolumeV3AttachmentArgs) ToGetVolumeV3AttachmentOutputWithContext(ctx context.Context) GetVolumeV3AttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeV3AttachmentOutput)
+}
+
+// GetVolumeV3AttachmentArrayInput is an input type that accepts GetVolumeV3AttachmentArray and GetVolumeV3AttachmentArrayOutput values.
+// You can construct a concrete instance of `GetVolumeV3AttachmentArrayInput` via:
+//
+//	GetVolumeV3AttachmentArray{ GetVolumeV3AttachmentArgs{...} }
+type GetVolumeV3AttachmentArrayInput interface {
+	pulumi.Input
+
+	ToGetVolumeV3AttachmentArrayOutput() GetVolumeV3AttachmentArrayOutput
+	ToGetVolumeV3AttachmentArrayOutputWithContext(context.Context) GetVolumeV3AttachmentArrayOutput
+}
+
+type GetVolumeV3AttachmentArray []GetVolumeV3AttachmentInput
+
+func (GetVolumeV3AttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVolumeV3Attachment)(nil)).Elem()
+}
+
+func (i GetVolumeV3AttachmentArray) ToGetVolumeV3AttachmentArrayOutput() GetVolumeV3AttachmentArrayOutput {
+	return i.ToGetVolumeV3AttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i GetVolumeV3AttachmentArray) ToGetVolumeV3AttachmentArrayOutputWithContext(ctx context.Context) GetVolumeV3AttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeV3AttachmentArrayOutput)
+}
+
+type GetVolumeV3AttachmentOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeV3AttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeV3Attachment)(nil)).Elem()
+}
+
+func (o GetVolumeV3AttachmentOutput) ToGetVolumeV3AttachmentOutput() GetVolumeV3AttachmentOutput {
+	return o
+}
+
+func (o GetVolumeV3AttachmentOutput) ToGetVolumeV3AttachmentOutputWithContext(ctx context.Context) GetVolumeV3AttachmentOutput {
+	return o
+}
+
+func (o GetVolumeV3AttachmentOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumeV3Attachment) string { return v.Device }).(pulumi.StringOutput)
+}
+
+func (o GetVolumeV3AttachmentOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumeV3Attachment) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetVolumeV3AttachmentOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumeV3Attachment) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+type GetVolumeV3AttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeV3AttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVolumeV3Attachment)(nil)).Elem()
+}
+
+func (o GetVolumeV3AttachmentArrayOutput) ToGetVolumeV3AttachmentArrayOutput() GetVolumeV3AttachmentArrayOutput {
+	return o
+}
+
+func (o GetVolumeV3AttachmentArrayOutput) ToGetVolumeV3AttachmentArrayOutputWithContext(ctx context.Context) GetVolumeV3AttachmentArrayOutput {
+	return o
+}
+
+func (o GetVolumeV3AttachmentArrayOutput) Index(i pulumi.IntInput) GetVolumeV3AttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVolumeV3Attachment {
+		return vs[0].([]GetVolumeV3Attachment)[vs[1].(int)]
+	}).(GetVolumeV3AttachmentOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachmentInput)(nil)).Elem(), VolumeAttachmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAttachmentArrayInput)(nil)).Elem(), VolumeAttachmentArray{})
@@ -662,6 +768,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeV2AttachmentArrayInput)(nil)).Elem(), VolumeV2AttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeV2SchedulerHintInput)(nil)).Elem(), VolumeV2SchedulerHintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeV2SchedulerHintArrayInput)(nil)).Elem(), VolumeV2SchedulerHintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeV3AttachmentInput)(nil)).Elem(), GetVolumeV3AttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeV3AttachmentArrayInput)(nil)).Elem(), GetVolumeV3AttachmentArray{})
 	pulumi.RegisterOutputType(VolumeAttachmentOutput{})
 	pulumi.RegisterOutputType(VolumeAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(VolumeSchedulerHintOutput{})
@@ -672,4 +780,6 @@ func init() {
 	pulumi.RegisterOutputType(VolumeV2AttachmentArrayOutput{})
 	pulumi.RegisterOutputType(VolumeV2SchedulerHintOutput{})
 	pulumi.RegisterOutputType(VolumeV2SchedulerHintArrayOutput{})
+	pulumi.RegisterOutputType(GetVolumeV3AttachmentOutput{})
+	pulumi.RegisterOutputType(GetVolumeV3AttachmentArrayOutput{})
 }

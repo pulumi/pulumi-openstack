@@ -61,6 +61,10 @@ type Volume struct {
 	// The availability zone for the volume.
 	// Changing this creates a new volume.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
+	// The backup ID from which to create the volume.
+	// Conflicts with `snapshotId`, `sourceVolId`, `imageId`. Changing this
+	// creates a new volume. Requires microversion >= 3.47.
+	BackupId pulumi.StringPtrOutput `pulumi:"backupId"`
 	// The consistency group to place the volume
 	// in.
 	ConsistencyGroupId pulumi.StringPtrOutput `pulumi:"consistencyGroupId"`
@@ -72,12 +76,15 @@ type Volume struct {
 	// support for version 3.42 and a compatible storage driver.
 	EnableOnlineResize pulumi.BoolPtrOutput `pulumi:"enableOnlineResize"`
 	// The image ID from which to create the volume.
-	// Changing this creates a new volume.
+	// Conflicts with `snapshotId`, `sourceVolId`, `backupId`. Changing this
+	// creates a new volume.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
 	// Metadata key/value pairs to associate with the volume.
 	// Changing this updates the existing volume metadata.
 	Metadata pulumi.MapOutput `pulumi:"metadata"`
-	// Allow the volume to be attached to more than one Compute instance.
+	// (Optional) Allow the volume to be attached to more than one Compute instance.
+	//
+	// Deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
 	Multiattach pulumi.BoolPtrOutput `pulumi:"multiattach"`
 	// A unique name for the volume. Changing this updates the
 	// volume's name.
@@ -92,12 +99,14 @@ type Volume struct {
 	// The size of the volume to create (in gigabytes).
 	Size pulumi.IntOutput `pulumi:"size"`
 	// The snapshot ID from which to create the volume.
-	// Changing this creates a new volume.
+	// Conflicts with `sourceVolId`, `imageId`, `backupId`. Changing this
+	// creates a new volume.
 	SnapshotId pulumi.StringPtrOutput `pulumi:"snapshotId"`
 	// The volume ID to replicate with.
 	SourceReplica pulumi.StringPtrOutput `pulumi:"sourceReplica"`
 	// The volume ID from which to create the volume.
-	// Changing this creates a new volume.
+	// Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
+	// creates a new volume.
 	SourceVolId pulumi.StringPtrOutput `pulumi:"sourceVolId"`
 	// The type of volume to create.
 	// Changing this creates a new volume.
@@ -144,6 +153,10 @@ type volumeState struct {
 	// The availability zone for the volume.
 	// Changing this creates a new volume.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// The backup ID from which to create the volume.
+	// Conflicts with `snapshotId`, `sourceVolId`, `imageId`. Changing this
+	// creates a new volume. Requires microversion >= 3.47.
+	BackupId *string `pulumi:"backupId"`
 	// The consistency group to place the volume
 	// in.
 	ConsistencyGroupId *string `pulumi:"consistencyGroupId"`
@@ -155,12 +168,15 @@ type volumeState struct {
 	// support for version 3.42 and a compatible storage driver.
 	EnableOnlineResize *bool `pulumi:"enableOnlineResize"`
 	// The image ID from which to create the volume.
-	// Changing this creates a new volume.
+	// Conflicts with `snapshotId`, `sourceVolId`, `backupId`. Changing this
+	// creates a new volume.
 	ImageId *string `pulumi:"imageId"`
 	// Metadata key/value pairs to associate with the volume.
 	// Changing this updates the existing volume metadata.
 	Metadata map[string]interface{} `pulumi:"metadata"`
-	// Allow the volume to be attached to more than one Compute instance.
+	// (Optional) Allow the volume to be attached to more than one Compute instance.
+	//
+	// Deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
 	Multiattach *bool `pulumi:"multiattach"`
 	// A unique name for the volume. Changing this updates the
 	// volume's name.
@@ -175,12 +191,14 @@ type volumeState struct {
 	// The size of the volume to create (in gigabytes).
 	Size *int `pulumi:"size"`
 	// The snapshot ID from which to create the volume.
-	// Changing this creates a new volume.
+	// Conflicts with `sourceVolId`, `imageId`, `backupId`. Changing this
+	// creates a new volume.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// The volume ID to replicate with.
 	SourceReplica *string `pulumi:"sourceReplica"`
 	// The volume ID from which to create the volume.
-	// Changing this creates a new volume.
+	// Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
+	// creates a new volume.
 	SourceVolId *string `pulumi:"sourceVolId"`
 	// The type of volume to create.
 	// Changing this creates a new volume.
@@ -195,6 +213,10 @@ type VolumeState struct {
 	// The availability zone for the volume.
 	// Changing this creates a new volume.
 	AvailabilityZone pulumi.StringPtrInput
+	// The backup ID from which to create the volume.
+	// Conflicts with `snapshotId`, `sourceVolId`, `imageId`. Changing this
+	// creates a new volume. Requires microversion >= 3.47.
+	BackupId pulumi.StringPtrInput
 	// The consistency group to place the volume
 	// in.
 	ConsistencyGroupId pulumi.StringPtrInput
@@ -206,12 +228,15 @@ type VolumeState struct {
 	// support for version 3.42 and a compatible storage driver.
 	EnableOnlineResize pulumi.BoolPtrInput
 	// The image ID from which to create the volume.
-	// Changing this creates a new volume.
+	// Conflicts with `snapshotId`, `sourceVolId`, `backupId`. Changing this
+	// creates a new volume.
 	ImageId pulumi.StringPtrInput
 	// Metadata key/value pairs to associate with the volume.
 	// Changing this updates the existing volume metadata.
 	Metadata pulumi.MapInput
-	// Allow the volume to be attached to more than one Compute instance.
+	// (Optional) Allow the volume to be attached to more than one Compute instance.
+	//
+	// Deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
 	Multiattach pulumi.BoolPtrInput
 	// A unique name for the volume. Changing this updates the
 	// volume's name.
@@ -226,12 +251,14 @@ type VolumeState struct {
 	// The size of the volume to create (in gigabytes).
 	Size pulumi.IntPtrInput
 	// The snapshot ID from which to create the volume.
-	// Changing this creates a new volume.
+	// Conflicts with `sourceVolId`, `imageId`, `backupId`. Changing this
+	// creates a new volume.
 	SnapshotId pulumi.StringPtrInput
 	// The volume ID to replicate with.
 	SourceReplica pulumi.StringPtrInput
 	// The volume ID from which to create the volume.
-	// Changing this creates a new volume.
+	// Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
+	// creates a new volume.
 	SourceVolId pulumi.StringPtrInput
 	// The type of volume to create.
 	// Changing this creates a new volume.
@@ -246,6 +273,10 @@ type volumeArgs struct {
 	// The availability zone for the volume.
 	// Changing this creates a new volume.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// The backup ID from which to create the volume.
+	// Conflicts with `snapshotId`, `sourceVolId`, `imageId`. Changing this
+	// creates a new volume. Requires microversion >= 3.47.
+	BackupId *string `pulumi:"backupId"`
 	// The consistency group to place the volume
 	// in.
 	ConsistencyGroupId *string `pulumi:"consistencyGroupId"`
@@ -257,12 +288,15 @@ type volumeArgs struct {
 	// support for version 3.42 and a compatible storage driver.
 	EnableOnlineResize *bool `pulumi:"enableOnlineResize"`
 	// The image ID from which to create the volume.
-	// Changing this creates a new volume.
+	// Conflicts with `snapshotId`, `sourceVolId`, `backupId`. Changing this
+	// creates a new volume.
 	ImageId *string `pulumi:"imageId"`
 	// Metadata key/value pairs to associate with the volume.
 	// Changing this updates the existing volume metadata.
 	Metadata map[string]interface{} `pulumi:"metadata"`
-	// Allow the volume to be attached to more than one Compute instance.
+	// (Optional) Allow the volume to be attached to more than one Compute instance.
+	//
+	// Deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
 	Multiattach *bool `pulumi:"multiattach"`
 	// A unique name for the volume. Changing this updates the
 	// volume's name.
@@ -277,12 +311,14 @@ type volumeArgs struct {
 	// The size of the volume to create (in gigabytes).
 	Size int `pulumi:"size"`
 	// The snapshot ID from which to create the volume.
-	// Changing this creates a new volume.
+	// Conflicts with `sourceVolId`, `imageId`, `backupId`. Changing this
+	// creates a new volume.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// The volume ID to replicate with.
 	SourceReplica *string `pulumi:"sourceReplica"`
 	// The volume ID from which to create the volume.
-	// Changing this creates a new volume.
+	// Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
+	// creates a new volume.
 	SourceVolId *string `pulumi:"sourceVolId"`
 	// The type of volume to create.
 	// Changing this creates a new volume.
@@ -294,6 +330,10 @@ type VolumeArgs struct {
 	// The availability zone for the volume.
 	// Changing this creates a new volume.
 	AvailabilityZone pulumi.StringPtrInput
+	// The backup ID from which to create the volume.
+	// Conflicts with `snapshotId`, `sourceVolId`, `imageId`. Changing this
+	// creates a new volume. Requires microversion >= 3.47.
+	BackupId pulumi.StringPtrInput
 	// The consistency group to place the volume
 	// in.
 	ConsistencyGroupId pulumi.StringPtrInput
@@ -305,12 +345,15 @@ type VolumeArgs struct {
 	// support for version 3.42 and a compatible storage driver.
 	EnableOnlineResize pulumi.BoolPtrInput
 	// The image ID from which to create the volume.
-	// Changing this creates a new volume.
+	// Conflicts with `snapshotId`, `sourceVolId`, `backupId`. Changing this
+	// creates a new volume.
 	ImageId pulumi.StringPtrInput
 	// Metadata key/value pairs to associate with the volume.
 	// Changing this updates the existing volume metadata.
 	Metadata pulumi.MapInput
-	// Allow the volume to be attached to more than one Compute instance.
+	// (Optional) Allow the volume to be attached to more than one Compute instance.
+	//
+	// Deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
 	Multiattach pulumi.BoolPtrInput
 	// A unique name for the volume. Changing this updates the
 	// volume's name.
@@ -325,12 +368,14 @@ type VolumeArgs struct {
 	// The size of the volume to create (in gigabytes).
 	Size pulumi.IntInput
 	// The snapshot ID from which to create the volume.
-	// Changing this creates a new volume.
+	// Conflicts with `sourceVolId`, `imageId`, `backupId`. Changing this
+	// creates a new volume.
 	SnapshotId pulumi.StringPtrInput
 	// The volume ID to replicate with.
 	SourceReplica pulumi.StringPtrInput
 	// The volume ID from which to create the volume.
-	// Changing this creates a new volume.
+	// Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
+	// creates a new volume.
 	SourceVolId pulumi.StringPtrInput
 	// The type of volume to create.
 	// Changing this creates a new volume.
@@ -437,6 +482,13 @@ func (o VolumeOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
+// The backup ID from which to create the volume.
+// Conflicts with `snapshotId`, `sourceVolId`, `imageId`. Changing this
+// creates a new volume. Requires microversion >= 3.47.
+func (o VolumeOutput) BackupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.BackupId }).(pulumi.StringPtrOutput)
+}
+
 // The consistency group to place the volume
 // in.
 func (o VolumeOutput) ConsistencyGroupId() pulumi.StringPtrOutput {
@@ -457,7 +509,8 @@ func (o VolumeOutput) EnableOnlineResize() pulumi.BoolPtrOutput {
 }
 
 // The image ID from which to create the volume.
-// Changing this creates a new volume.
+// Conflicts with `snapshotId`, `sourceVolId`, `backupId`. Changing this
+// creates a new volume.
 func (o VolumeOutput) ImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.ImageId }).(pulumi.StringPtrOutput)
 }
@@ -468,7 +521,9 @@ func (o VolumeOutput) Metadata() pulumi.MapOutput {
 	return o.ApplyT(func(v *Volume) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
 }
 
-// Allow the volume to be attached to more than one Compute instance.
+// (Optional) Allow the volume to be attached to more than one Compute instance.
+//
+// Deprecated: multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
 func (o VolumeOutput) Multiattach() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Volume) pulumi.BoolPtrOutput { return v.Multiattach }).(pulumi.BoolPtrOutput)
 }
@@ -498,7 +553,8 @@ func (o VolumeOutput) Size() pulumi.IntOutput {
 }
 
 // The snapshot ID from which to create the volume.
-// Changing this creates a new volume.
+// Conflicts with `sourceVolId`, `imageId`, `backupId`. Changing this
+// creates a new volume.
 func (o VolumeOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
@@ -509,7 +565,8 @@ func (o VolumeOutput) SourceReplica() pulumi.StringPtrOutput {
 }
 
 // The volume ID from which to create the volume.
-// Changing this creates a new volume.
+// Conflicts with `snapshotId`, `imageId`, `backupId`. Changing this
+// creates a new volume.
 func (o VolumeOutput) SourceVolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.SourceVolId }).(pulumi.StringPtrOutput)
 }

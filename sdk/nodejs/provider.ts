@@ -284,6 +284,8 @@ export interface ProviderArgs {
     token?: pulumi.Input<string>;
     /**
      * If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
+     *
+     * @deprecated This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported.
      */
     useOctavia?: pulumi.Input<boolean>;
     /**

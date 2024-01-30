@@ -40,6 +40,25 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The backup ID from which to create the volume.
+     * Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+     * creates a new volume. Requires microversion &gt;= 3.47.
+     * 
+     */
+    @Import(name="backupId")
+    private @Nullable Output<String> backupId;
+
+    /**
+     * @return The backup ID from which to create the volume.
+     * Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+     * creates a new volume. Requires microversion &gt;= 3.47.
+     * 
+     */
+    public Optional<Output<String>> backupId() {
+        return Optional.ofNullable(this.backupId);
+    }
+
+    /**
      * The consistency group to place the volume
      * in.
      * 
@@ -94,7 +113,8 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The image ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+     * creates a new volume.
      * 
      */
     @Import(name="imageId")
@@ -102,7 +122,8 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The image ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+     * creates a new volume.
      * 
      */
     public Optional<Output<String>> imageId() {
@@ -127,16 +148,24 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Allow the volume to be attached to more than one Compute instance.
+     * (Optional) Allow the volume to be attached to more than one Compute instance.
+     * 
+     * @deprecated
+     * multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
      * 
      */
+    @Deprecated /* multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types */
     @Import(name="multiattach")
     private @Nullable Output<Boolean> multiattach;
 
     /**
-     * @return Allow the volume to be attached to more than one Compute instance.
+     * @return (Optional) Allow the volume to be attached to more than one Compute instance.
+     * 
+     * @deprecated
+     * multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
      * 
      */
+    @Deprecated /* multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types */
     public Optional<Output<Boolean>> multiattach() {
         return Optional.ofNullable(this.multiattach);
     }
@@ -211,7 +240,8 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The snapshot ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+     * creates a new volume.
      * 
      */
     @Import(name="snapshotId")
@@ -219,7 +249,8 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The snapshot ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+     * creates a new volume.
      * 
      */
     public Optional<Output<String>> snapshotId() {
@@ -243,7 +274,8 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The volume ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+     * creates a new volume.
      * 
      */
     @Import(name="sourceVolId")
@@ -251,7 +283,8 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The volume ID from which to create the volume.
-     * Changing this creates a new volume.
+     * Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+     * creates a new volume.
      * 
      */
     public Optional<Output<String>> sourceVolId() {
@@ -279,6 +312,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
     private VolumeArgs(VolumeArgs $) {
         this.availabilityZone = $.availabilityZone;
+        this.backupId = $.backupId;
         this.consistencyGroupId = $.consistencyGroupId;
         this.description = $.description;
         this.enableOnlineResize = $.enableOnlineResize;
@@ -334,6 +368,31 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder availabilityZone(String availabilityZone) {
             return availabilityZone(Output.of(availabilityZone));
+        }
+
+        /**
+         * @param backupId The backup ID from which to create the volume.
+         * Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+         * creates a new volume. Requires microversion &gt;= 3.47.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupId(@Nullable Output<String> backupId) {
+            $.backupId = backupId;
+            return this;
+        }
+
+        /**
+         * @param backupId The backup ID from which to create the volume.
+         * Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+         * creates a new volume. Requires microversion &gt;= 3.47.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupId(String backupId) {
+            return backupId(Output.of(backupId));
         }
 
         /**
@@ -409,7 +468,8 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param imageId The image ID from which to create the volume.
-         * Changing this creates a new volume.
+         * Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+         * creates a new volume.
          * 
          * @return builder
          * 
@@ -421,7 +481,8 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param imageId The image ID from which to create the volume.
-         * Changing this creates a new volume.
+         * Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+         * creates a new volume.
          * 
          * @return builder
          * 
@@ -454,22 +515,30 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param multiattach Allow the volume to be attached to more than one Compute instance.
+         * @param multiattach (Optional) Allow the volume to be attached to more than one Compute instance.
          * 
          * @return builder
          * 
+         * @deprecated
+         * multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
+         * 
          */
+        @Deprecated /* multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types */
         public Builder multiattach(@Nullable Output<Boolean> multiattach) {
             $.multiattach = multiattach;
             return this;
         }
 
         /**
-         * @param multiattach Allow the volume to be attached to more than one Compute instance.
+         * @param multiattach (Optional) Allow the volume to be attached to more than one Compute instance.
          * 
          * @return builder
          * 
+         * @deprecated
+         * multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types
+         * 
          */
+        @Deprecated /* multiattach parameter has been deprecated and removed on Openstack Bobcat. The default behavior is to use multiattach enabled volume types */
         public Builder multiattach(Boolean multiattach) {
             return multiattach(Output.of(multiattach));
         }
@@ -579,7 +648,8 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param snapshotId The snapshot ID from which to create the volume.
-         * Changing this creates a new volume.
+         * Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+         * creates a new volume.
          * 
          * @return builder
          * 
@@ -591,7 +661,8 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param snapshotId The snapshot ID from which to create the volume.
-         * Changing this creates a new volume.
+         * Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+         * creates a new volume.
          * 
          * @return builder
          * 
@@ -623,7 +694,8 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sourceVolId The volume ID from which to create the volume.
-         * Changing this creates a new volume.
+         * Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+         * creates a new volume.
          * 
          * @return builder
          * 
@@ -635,7 +707,8 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sourceVolId The volume ID from which to create the volume.
-         * Changing this creates a new volume.
+         * Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+         * creates a new volume.
          * 
          * @return builder
          * 

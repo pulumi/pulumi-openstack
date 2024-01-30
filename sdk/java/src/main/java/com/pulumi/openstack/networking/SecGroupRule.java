@@ -62,6 +62,9 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * &gt; **Note:** To expose the full port-range 1:65535, use `0` for `port_range_min`
+ * and `port_range_max`.
+ * 
  * ## Import
  * 
  * Security Group Rules can be imported using the `id`, e.g.

@@ -6,6 +6,12 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export namespace blockstorage {
+    export interface GetVolumeV3Attachment {
+        device: string;
+        id: string;
+        instanceId: string;
+    }
+
     export interface VolumeAttachment {
         device: string;
         id: string;
@@ -933,7 +939,7 @@ export namespace networking {
         /**
          * VNIC type for the port. Can either be `direct`,
          * `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
-         * Default value is `normal`.
+         * Default value is `normal`. It can be updated on unbound ports only.
          */
         vnicType?: string;
     }

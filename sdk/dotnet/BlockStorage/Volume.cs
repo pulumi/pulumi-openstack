@@ -59,6 +59,14 @@ namespace Pulumi.OpenStack.BlockStorage
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
+        /// The backup ID from which to create the volume.
+        /// Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+        /// creates a new volume. Requires microversion &gt;= 3.47.
+        /// </summary>
+        [Output("backupId")]
+        public Output<string?> BackupId { get; private set; } = null!;
+
+        /// <summary>
         /// The consistency group to place the volume
         /// in.
         /// </summary>
@@ -82,7 +90,8 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The image ID from which to create the volume.
-        /// Changing this creates a new volume.
+        /// Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+        /// creates a new volume.
         /// </summary>
         [Output("imageId")]
         public Output<string?> ImageId { get; private set; } = null!;
@@ -95,7 +104,7 @@ namespace Pulumi.OpenStack.BlockStorage
         public Output<ImmutableDictionary<string, object>> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// Allow the volume to be attached to more than one Compute instance.
+        /// (Optional) Allow the volume to be attached to more than one Compute instance.
         /// </summary>
         [Output("multiattach")]
         public Output<bool?> Multiattach { get; private set; } = null!;
@@ -130,7 +139,8 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The snapshot ID from which to create the volume.
-        /// Changing this creates a new volume.
+        /// Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+        /// creates a new volume.
         /// </summary>
         [Output("snapshotId")]
         public Output<string?> SnapshotId { get; private set; } = null!;
@@ -143,7 +153,8 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The volume ID from which to create the volume.
-        /// Changing this creates a new volume.
+        /// Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+        /// creates a new volume.
         /// </summary>
         [Output("sourceVolId")]
         public Output<string?> SourceVolId { get; private set; } = null!;
@@ -209,6 +220,14 @@ namespace Pulumi.OpenStack.BlockStorage
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
+        /// The backup ID from which to create the volume.
+        /// Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+        /// creates a new volume. Requires microversion &gt;= 3.47.
+        /// </summary>
+        [Input("backupId")]
+        public Input<string>? BackupId { get; set; }
+
+        /// <summary>
         /// The consistency group to place the volume
         /// in.
         /// </summary>
@@ -232,7 +251,8 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The image ID from which to create the volume.
-        /// Changing this creates a new volume.
+        /// Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+        /// creates a new volume.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
@@ -251,7 +271,7 @@ namespace Pulumi.OpenStack.BlockStorage
         }
 
         /// <summary>
-        /// Allow the volume to be attached to more than one Compute instance.
+        /// (Optional) Allow the volume to be attached to more than one Compute instance.
         /// </summary>
         [Input("multiattach")]
         public Input<bool>? Multiattach { get; set; }
@@ -292,7 +312,8 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The snapshot ID from which to create the volume.
-        /// Changing this creates a new volume.
+        /// Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+        /// creates a new volume.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
@@ -305,7 +326,8 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The volume ID from which to create the volume.
-        /// Changing this creates a new volume.
+        /// Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+        /// creates a new volume.
         /// </summary>
         [Input("sourceVolId")]
         public Input<string>? SourceVolId { get; set; }
@@ -347,6 +369,14 @@ namespace Pulumi.OpenStack.BlockStorage
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
+        /// The backup ID from which to create the volume.
+        /// Conflicts with `snapshot_id`, `source_vol_id`, `image_id`. Changing this
+        /// creates a new volume. Requires microversion &gt;= 3.47.
+        /// </summary>
+        [Input("backupId")]
+        public Input<string>? BackupId { get; set; }
+
+        /// <summary>
         /// The consistency group to place the volume
         /// in.
         /// </summary>
@@ -370,7 +400,8 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The image ID from which to create the volume.
-        /// Changing this creates a new volume.
+        /// Conflicts with `snapshot_id`, `source_vol_id`, `backup_id`. Changing this
+        /// creates a new volume.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
@@ -389,7 +420,7 @@ namespace Pulumi.OpenStack.BlockStorage
         }
 
         /// <summary>
-        /// Allow the volume to be attached to more than one Compute instance.
+        /// (Optional) Allow the volume to be attached to more than one Compute instance.
         /// </summary>
         [Input("multiattach")]
         public Input<bool>? Multiattach { get; set; }
@@ -430,7 +461,8 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The snapshot ID from which to create the volume.
-        /// Changing this creates a new volume.
+        /// Conflicts with `source_vol_id`, `image_id`, `backup_id`. Changing this
+        /// creates a new volume.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
@@ -443,7 +475,8 @@ namespace Pulumi.OpenStack.BlockStorage
 
         /// <summary>
         /// The volume ID from which to create the volume.
-        /// Changing this creates a new volume.
+        /// Conflicts with `snapshot_id`, `image_id`, `backup_id`. Changing this
+        /// creates a new volume.
         /// </summary>
         [Input("sourceVolId")]
         public Input<string>? SourceVolId { get; set; }

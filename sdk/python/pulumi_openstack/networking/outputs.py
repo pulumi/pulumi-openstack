@@ -184,7 +184,7 @@ class PortBinding(dict):
         :param str vif_type: The VNIC type of the port binding.
         :param str vnic_type: VNIC type for the port. Can either be `direct`,
                `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
-               Default value is `normal`.
+               Default value is `normal`. It can be updated on unbound ports only.
         """
         if host_id is not None:
             pulumi.set(__self__, "host_id", host_id)
@@ -237,7 +237,7 @@ class PortBinding(dict):
         """
         VNIC type for the port. Can either be `direct`,
         `direct-physical`, `macvtap`, `normal`, `baremetal` or `virtio-forwarder`.
-        Default value is `normal`.
+        Default value is `normal`. It can be updated on unbound ports only.
         """
         return pulumi.get(self, "vnic_type")
 

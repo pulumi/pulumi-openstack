@@ -563,6 +563,9 @@ class SecGroupRule(pulumi.CustomResource):
             security_group_id=secgroup1.id)
         ```
 
+        > **Note:** To expose the full port-range 1:65535, use `0` for `port_range_min`
+        and `port_range_max`.
+
         ## Import
 
         Security Group Rules can be imported using the `id`, e.g.
@@ -649,6 +652,9 @@ class SecGroupRule(pulumi.CustomResource):
             remote_ip_prefix="0.0.0.0/0",
             security_group_id=secgroup1.id)
         ```
+
+        > **Note:** To expose the full port-range 1:65535, use `0` for `port_range_min`
+        and `port_range_max`.
 
         ## Import
 

@@ -188,6 +188,12 @@ namespace Pulumi.OpenStack.BlockStorage
     public sealed class GetVolumeV3Result
     {
         /// <summary>
+        /// If a volume is attached to an instance, this attribute will
+        /// display the Attachment ID, Instance ID, and the Device as the Instance
+        /// sees it.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetVolumeV3AttachmentResult> Attachments;
+        /// <summary>
         /// Indicates if the volume is bootable.
         /// </summary>
         public readonly string Bootable;
@@ -234,6 +240,8 @@ namespace Pulumi.OpenStack.BlockStorage
 
         [OutputConstructor]
         private GetVolumeV3Result(
+            ImmutableArray<Outputs.GetVolumeV3AttachmentResult> attachments,
+
             string bootable,
 
             string host,
@@ -256,6 +264,7 @@ namespace Pulumi.OpenStack.BlockStorage
 
             string volumeType)
         {
+            Attachments = attachments;
             Bootable = bootable;
             Host = host;
             Id = id;

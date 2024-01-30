@@ -961,7 +961,12 @@
             },
             "openstack_blockstorage_volume_v3": {
                 "current": "openstack:blockstorage/getVolumeV3:getVolumeV3",
-                "majorVersion": 3
+                "majorVersion": 3,
+                "fields": {
+                    "attachment": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "openstack_compute_aggregate_v2": {
                 "current": "openstack:compute/getAggregateV2:getAggregateV2",
@@ -1649,8 +1654,12 @@
                 "volumeType": "volume_type"
             },
             "openstack:blockstorage/getVolumeV3:getVolumeV3": {
+                "attachments": "attachment",
                 "sourceVolumeId": "source_volume_id",
                 "volumeType": "volume_type"
+            },
+            "openstack:blockstorage/getVolumeV3Attachment:getVolumeV3Attachment": {
+                "instanceId": "instance_id"
             },
             "openstack:blockstorage/qosAssociationV3:QosAssociationV3": {
                 "qosId": "qos_id",
@@ -1671,6 +1680,7 @@
             "openstack:blockstorage/volume:Volume": {
                 "attachments": "attachment",
                 "availabilityZone": "availability_zone",
+                "backupId": "backup_id",
                 "consistencyGroupId": "consistency_group_id",
                 "enableOnlineResize": "enable_online_resize",
                 "imageId": "image_id",

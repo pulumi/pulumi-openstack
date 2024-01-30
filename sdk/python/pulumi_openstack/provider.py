@@ -154,6 +154,9 @@ class ProviderArgs:
             pulumi.set(__self__, "tenant_name", tenant_name)
         if token is not None:
             pulumi.set(__self__, "token", token)
+        if use_octavia is not None:
+            warnings.warn("""This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported.""", DeprecationWarning)
+            pulumi.log.warn("""use_octavia is deprecated: This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported.""")
         if use_octavia is None:
             use_octavia = _utilities.get_env_bool('OS_USE_OCTAVIA')
         if use_octavia is not None:
@@ -508,6 +511,9 @@ class ProviderArgs:
         """
         If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
         """
+        warnings.warn("""This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported.""", DeprecationWarning)
+        pulumi.log.warn("""use_octavia is deprecated: This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported.""")
+
         return pulumi.get(self, "use_octavia")
 
     @use_octavia.setter
