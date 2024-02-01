@@ -285,7 +285,7 @@ export interface ProviderArgs {
     /**
      * If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
      *
-     * @deprecated This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported.
+     * @deprecated Users not using loadbalancer resources can ignore this message. Support for neutron-lbaas will be removed on next major release. Octavia will be the only supported method for loadbalancer resources. Users using octavia will have to remove 'use_octavia' option from the provider configuration block. Users using neutron-lbaas will have to migrate/upgrade to octavia.
      */
     useOctavia?: pulumi.Input<boolean>;
     /**
