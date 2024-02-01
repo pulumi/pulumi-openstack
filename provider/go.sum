@@ -2354,8 +2354,8 @@ github.com/syndtr/gocapability v0.0.0-20180916011248-d98352740cb2/go.mod h1:hkRG
 github.com/syndtr/gocapability v0.0.0-20200815063812-42c35b437635/go.mod h1:hkRG7XYTFWNJGYcbNJQlaLq0fg1yr4J4t/NcTQtrfww=
 github.com/tchap/go-patricia v2.2.6+incompatible/go.mod h1:bmLyhP68RS6kStMGxByiQ23RP/odRBOTVjwp2cDyi6I=
 github.com/tedsuo/ifrit v0.0.0-20180802180643-bea94bb476cc/go.mod h1:eyZnKCc955uh98WQvzOm0dgAeLnf2O0Rz0LPoC5ze+0=
-github.com/terraform-provider-openstack/terraform-provider-openstack v1.54.0 h1:7UD2hXZ9y4ktRGXAEiQi6NRKhcJSnrumoMVb7hHem5Y=
-github.com/terraform-provider-openstack/terraform-provider-openstack v1.54.0/go.mod h1:F142rYNEJIEEQ4WNGvFcRpl5qKPMwrF5xvZF5zhe3b4=
+github.com/terraform-provider-openstack/terraform-provider-openstack v1.54.1 h1:M5KvCjQf2eBkd8N24FTGCu7cGoPoBi/N0FG90WjMpPo=
+github.com/terraform-provider-openstack/terraform-provider-openstack v1.54.1/go.mod h1:F142rYNEJIEEQ4WNGvFcRpl5qKPMwrF5xvZF5zhe3b4=
 github.com/texttheater/golang-levenshtein v1.0.1 h1:+cRNoVrfiwufQPhoMzB6N0Yf/Mqajr6t1lOv8GyGE2U=
 github.com/texttheater/golang-levenshtein v1.0.1/go.mod h1:PYAKrbF5sAiq9wd+H82hs7gNaen0CplQ9uvm6+enD/8=
 github.com/tidwall/pretty v1.0.0/go.mod h1:XNkn88O1ChpSDQmQeStsy+sBenx6DDtFZJxhVysOjyk=
