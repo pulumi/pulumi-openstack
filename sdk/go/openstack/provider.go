@@ -188,7 +188,7 @@ type providerArgs struct {
 	Token *string `pulumi:"token"`
 	// If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
 	//
-	// Deprecated: This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported.
+	// Deprecated: Users not using loadbalancer resources can ignore this message. Support for neutron-lbaas will be removed on next major release. Octavia will be the only supported method for loadbalancer resources. Users using octavia will have to remove 'use_octavia' option from the provider configuration block. Users using neutron-lbaas will have to migrate/upgrade to octavia.
 	UseOctavia *bool `pulumi:"useOctavia"`
 	// The ID of the domain where the user resides (Identity v3).
 	UserDomainId *string `pulumi:"userDomainId"`
@@ -261,7 +261,7 @@ type ProviderArgs struct {
 	Token pulumi.StringPtrInput
 	// If set to `true`, API requests will go the Load Balancer service (Octavia) instead of the Networking service (Neutron).
 	//
-	// Deprecated: This option will be removed in the next major release. Support for neutron-lbaas will be removed in next major release. Octavia will be the only option supported.
+	// Deprecated: Users not using loadbalancer resources can ignore this message. Support for neutron-lbaas will be removed on next major release. Octavia will be the only supported method for loadbalancer resources. Users using octavia will have to remove 'use_octavia' option from the provider configuration block. Users using neutron-lbaas will have to migrate/upgrade to octavia.
 	UseOctavia pulumi.BoolPtrInput
 	// The ID of the domain where the user resides (Identity v3).
 	UserDomainId pulumi.StringPtrInput
