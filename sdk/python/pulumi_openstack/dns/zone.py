@@ -463,14 +463,14 @@ class Zone(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the zone ID with optional project ID
+        This resource can be imported by specifying the zone ID with optional project ID:
 
         ```sh
-         $ pulumi import openstack:dns/zone:Zone zone_1 zone_id
+        $ pulumi import openstack:dns/zone:Zone zone_1 zone_id
         ```
 
         ```sh
-         $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
+        $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -524,14 +524,14 @@ class Zone(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported by specifying the zone ID with optional project ID
+        This resource can be imported by specifying the zone ID with optional project ID:
 
         ```sh
-         $ pulumi import openstack:dns/zone:Zone zone_1 zone_id
+        $ pulumi import openstack:dns/zone:Zone zone_1 zone_id
         ```
 
         ```sh
-         $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
+        $ pulumi import openstack:dns/zone:Zone zone_1 zone_id/project_id
         ```
 
         :param str resource_name: The name of the resource.

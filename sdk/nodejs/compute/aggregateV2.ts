@@ -40,12 +40,24 @@ import * as utilities from "../utilities";
  * You can import an existing Host Aggregate by their ID.
  *
  * ```sh
- *  $ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24
+ * $ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24
  * ```
  *
- *  The ID can be obtained with an openstack command$ openstack aggregate list +----+------+-------------------+ | ID | Name | Availability Zone | +----+------+-------------------+ | 59 | test | None
+ *  The ID can be obtained with an openstack command:
  *
- * | +----+------+-------------------+
+ *  $ openstack aggregate list
+ *
+ *  +----+------+-------------------+
+ *
+ *  | ID | Name | Availability Zone |
+ *
+ *  +----+------+-------------------+
+ *
+ *  | 59 | test | None
+ *
+ * |
+ *
+ *  +----+------+-------------------+
  */
 export class AggregateV2 extends pulumi.CustomResource {
     /**
