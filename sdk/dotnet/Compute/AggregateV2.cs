@@ -60,12 +60,24 @@ namespace Pulumi.OpenStack.Compute
     /// You can import an existing Host Aggregate by their ID.
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24
+    /// $ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24
     /// ```
     /// 
-    ///  The ID can be obtained with an openstack command$ openstack aggregate list +----+------+-------------------+ | ID | Name | Availability Zone | +----+------+-------------------+ | 59 | test | None
+    ///  The ID can be obtained with an openstack command:
     /// 
-    /// | +----+------+-------------------+
+    ///  $ openstack aggregate list
+    /// 
+    ///  +----+------+-------------------+
+    /// 
+    ///  | ID | Name | Availability Zone |
+    /// 
+    ///  +----+------+-------------------+
+    /// 
+    ///  | 59 | test | None
+    /// 
+    /// |
+    /// 
+    ///  +----+------+-------------------+
     /// </summary>
     [OpenStackResourceType("openstack:compute/aggregateV2:AggregateV2")]
     public partial class AggregateV2 : global::Pulumi.CustomResource

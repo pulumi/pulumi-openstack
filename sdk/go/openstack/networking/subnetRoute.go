@@ -64,7 +64,7 @@ import (
 //
 // ## Import
 //
-// Routing entries can be imported using a combined ID using the following format`<subnet_id>-route-<destination_cidr>-<next_hop>`
+// Routing entries can be imported using a combined ID using the following format: `<subnet_id>-route-<destination_cidr>-<next_hop>`
 //
 // ```sh
 //

@@ -71,10 +71,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Router Interfaces can be imported using the port `id`, e.g. $ openstack port list --router &lt;router name or id&gt;
+ * Router Interfaces can be imported using the port `id`, e.g.
+ * 
+ *  $ openstack port list --router &lt;router name or id&gt;
  * 
  * ```sh
- *  $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 port_id
+ * $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 port_id
  * ```
  * 
  */
