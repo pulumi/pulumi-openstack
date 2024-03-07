@@ -531,6 +531,7 @@ class VolumeAttach(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -545,10 +546,7 @@ class VolumeAttach(pulumi.CustomResource):
             os_type="linux2",
             platform="x86_64")
         ```
-
-        ## Import
-
-        It is not possible to import this resource.
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -599,6 +597,7 @@ class VolumeAttach(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -613,10 +612,7 @@ class VolumeAttach(pulumi.CustomResource):
             os_type="linux2",
             platform="x86_64")
         ```
-
-        ## Import
-
-        It is not possible to import this resource.
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param VolumeAttachArgs args: The arguments to use to populate this resource's properties.

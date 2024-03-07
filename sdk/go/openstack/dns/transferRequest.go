@@ -15,8 +15,10 @@ import (
 // Manages a DNS zone transfer request in the OpenStack DNS Service.
 //
 // ## Example Usage
+//
 // ### Automatically detect the correct network
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,15 +52,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // This resource can be imported by specifying the transferRequest ID:
 //
 // ```sh
-//
-//	$ pulumi import openstack:dns/transferRequest:TransferRequest request_1 request_id
-//
+// $ pulumi import openstack:dns/transferRequest:TransferRequest request_1 request_id
 // ```
 type TransferRequest struct {
 	pulumi.CustomResourceState

@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  *     name: "tf_test_network",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getNetwork(args?: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
     args = args || {};
@@ -166,6 +168,7 @@ export interface GetNetworkResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -174,6 +177,7 @@ export interface GetNetworkResult {
  *     name: "tf_test_network",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getNetworkOutput(args?: GetNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkResult> {
     return pulumi.output(args).apply((a: any) => getNetwork(a, opts))

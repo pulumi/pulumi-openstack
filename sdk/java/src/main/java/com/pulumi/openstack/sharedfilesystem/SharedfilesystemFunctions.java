@@ -28,6 +28,8 @@ public final class SharedfilesystemFunctions {
      * from OpenStack
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -54,6 +56,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAvailbilityZonesResult> getAvailbilityZones() {
@@ -64,6 +67,8 @@ public final class SharedfilesystemFunctions {
      * from OpenStack
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -90,6 +95,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAvailbilityZonesResult> getAvailbilityZonesPlain() {
@@ -100,6 +106,8 @@ public final class SharedfilesystemFunctions {
      * from OpenStack
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -126,6 +134,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAvailbilityZonesResult> getAvailbilityZones(GetAvailbilityZonesArgs args) {
@@ -136,6 +145,8 @@ public final class SharedfilesystemFunctions {
      * from OpenStack
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -162,6 +173,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAvailbilityZonesResult> getAvailbilityZonesPlain(GetAvailbilityZonesPlainArgs args) {
@@ -172,6 +184,8 @@ public final class SharedfilesystemFunctions {
      * from OpenStack
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -198,6 +212,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAvailbilityZonesResult> getAvailbilityZones(GetAvailbilityZonesArgs args, InvokeOptions options) {
@@ -208,6 +223,8 @@ public final class SharedfilesystemFunctions {
      * from OpenStack
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -234,6 +251,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAvailbilityZonesResult> getAvailbilityZonesPlain(GetAvailbilityZonesPlainArgs args, InvokeOptions options) {
@@ -243,6 +261,8 @@ public final class SharedfilesystemFunctions {
      * Use this data source to get the ID of an available Shared File System share.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -271,6 +291,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetShareResult> getShare() {
@@ -280,6 +301,8 @@ public final class SharedfilesystemFunctions {
      * Use this data source to get the ID of an available Shared File System share.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -308,6 +331,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetShareResult> getSharePlain() {
@@ -317,6 +341,8 @@ public final class SharedfilesystemFunctions {
      * Use this data source to get the ID of an available Shared File System share.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -345,6 +371,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetShareResult> getShare(GetShareArgs args) {
@@ -354,6 +381,8 @@ public final class SharedfilesystemFunctions {
      * Use this data source to get the ID of an available Shared File System share.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -382,6 +411,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetShareResult> getSharePlain(GetSharePlainArgs args) {
@@ -391,6 +421,8 @@ public final class SharedfilesystemFunctions {
      * Use this data source to get the ID of an available Shared File System share.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -419,6 +451,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetShareResult> getShare(GetShareArgs args, InvokeOptions options) {
@@ -428,6 +461,8 @@ public final class SharedfilesystemFunctions {
      * Use this data source to get the ID of an available Shared File System share.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -456,6 +491,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetShareResult> getSharePlain(GetSharePlainArgs args, InvokeOptions options) {
@@ -465,6 +501,8 @@ public final class SharedfilesystemFunctions {
      * Use this data source to get the ID of an available Shared File System share network.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -493,6 +531,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetShareNetworkResult> getShareNetwork() {
@@ -502,6 +541,8 @@ public final class SharedfilesystemFunctions {
      * Use this data source to get the ID of an available Shared File System share network.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -530,6 +571,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetShareNetworkResult> getShareNetworkPlain() {
@@ -539,6 +581,8 @@ public final class SharedfilesystemFunctions {
      * Use this data source to get the ID of an available Shared File System share network.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -567,6 +611,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetShareNetworkResult> getShareNetwork(GetShareNetworkArgs args) {
@@ -576,6 +621,8 @@ public final class SharedfilesystemFunctions {
      * Use this data source to get the ID of an available Shared File System share network.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -604,6 +651,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetShareNetworkResult> getShareNetworkPlain(GetShareNetworkPlainArgs args) {
@@ -613,6 +661,8 @@ public final class SharedfilesystemFunctions {
      * Use this data source to get the ID of an available Shared File System share network.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -641,6 +691,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetShareNetworkResult> getShareNetwork(GetShareNetworkArgs args, InvokeOptions options) {
@@ -650,6 +701,8 @@ public final class SharedfilesystemFunctions {
      * Use this data source to get the ID of an available Shared File System share network.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -678,6 +731,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetShareNetworkResult> getShareNetworkPlain(GetShareNetworkPlainArgs args, InvokeOptions options) {
@@ -687,6 +741,8 @@ public final class SharedfilesystemFunctions {
      * Use this data source to get the ID of an available Shared File System snapshot.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -715,6 +771,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSnapshotResult> getSnapshot() {
@@ -724,6 +781,8 @@ public final class SharedfilesystemFunctions {
      * Use this data source to get the ID of an available Shared File System snapshot.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -752,6 +811,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSnapshotResult> getSnapshotPlain() {
@@ -761,6 +821,8 @@ public final class SharedfilesystemFunctions {
      * Use this data source to get the ID of an available Shared File System snapshot.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -789,6 +851,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSnapshotResult> getSnapshot(GetSnapshotArgs args) {
@@ -798,6 +861,8 @@ public final class SharedfilesystemFunctions {
      * Use this data source to get the ID of an available Shared File System snapshot.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -826,6 +891,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSnapshotResult> getSnapshotPlain(GetSnapshotPlainArgs args) {
@@ -835,6 +901,8 @@ public final class SharedfilesystemFunctions {
      * Use this data source to get the ID of an available Shared File System snapshot.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -863,6 +931,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSnapshotResult> getSnapshot(GetSnapshotArgs args, InvokeOptions options) {
@@ -872,6 +941,8 @@ public final class SharedfilesystemFunctions {
      * Use this data source to get the ID of an available Shared File System snapshot.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -900,6 +971,7 @@ public final class SharedfilesystemFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSnapshotResult> getSnapshotPlain(GetSnapshotPlainArgs args, InvokeOptions options) {

@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -65,15 +66,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // This resource can be imported by specifying the ID of the share:
 //
 // ```sh
-//
-//	$ pulumi import openstack:sharedfilesystem/share:Share share_1 id
-//
+// $ pulumi import openstack:sharedfilesystem/share:Share share_1 id
 // ```
 type Share struct {
 	pulumi.CustomResourceState

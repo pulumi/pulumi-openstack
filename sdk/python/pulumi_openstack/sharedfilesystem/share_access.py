@@ -248,8 +248,10 @@ class ShareAccess(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### NFS
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -274,8 +276,11 @@ class ShareAccess(pulumi.CustomResource):
             access_to="192.168.199.10",
             access_level="rw")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### CIFS
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -315,13 +320,15 @@ class ShareAccess(pulumi.CustomResource):
             access_level="rw")
         pulumi.export("exportLocations", share1.export_locations)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.:
+        This resource can be imported by specifying the ID of the share and the ID of the
+        share access, separated by a slash, e.g.:
 
         ```sh
-         $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 share_id/share_access_id
+        $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 share_id/share_access_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -345,8 +352,10 @@ class ShareAccess(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### NFS
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -371,8 +380,11 @@ class ShareAccess(pulumi.CustomResource):
             access_to="192.168.199.10",
             access_level="rw")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### CIFS
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -412,13 +424,15 @@ class ShareAccess(pulumi.CustomResource):
             access_level="rw")
         pulumi.export("exportLocations", share1.export_locations)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.:
+        This resource can be imported by specifying the ID of the share and the ID of the
+        share access, separated by a slash, e.g.:
 
         ```sh
-         $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 share_id/share_access_id
+        $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 share_id/share_access_id
         ```
 
         :param str resource_name: The name of the resource.

@@ -15,10 +15,9 @@ namespace Pulumi.OpenStack.Images
         /// Use this data source to get a list of Openstack Image IDs matching the
         /// specified criteria.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,8 +38,7 @@ namespace Pulumi.OpenStack.Images
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetImageIdsResult> InvokeAsync(GetImageIdsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageIdsResult>("openstack:images/getImageIds:getImageIds", args ?? new GetImageIdsArgs(), options.WithDefaults());
@@ -49,10 +47,9 @@ namespace Pulumi.OpenStack.Images
         /// Use this data source to get a list of Openstack Image IDs matching the
         /// specified criteria.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,8 +70,7 @@ namespace Pulumi.OpenStack.Images
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetImageIdsResult> Invoke(GetImageIdsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImageIdsResult>("openstack:images/getImageIds:getImageIds", args ?? new GetImageIdsInvokeArgs(), options.WithDefaults());

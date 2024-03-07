@@ -11,8 +11,10 @@ import * as utilities from "../utilities";
  * Compute (Nova) v2 API.
  *
  * ## Example Usage
+ *
  * ### Basic attachment of a single volume to a single instance
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -24,11 +26,14 @@ import * as utilities from "../utilities";
  *     volumeId: volume1.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Using Multiattach-enabled volumes
  *
  * Multiattach Volumes are dependent upon your OpenStack cloud and not all
  * clouds support multiattach.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -52,16 +57,18 @@ import * as utilities from "../utilities";
  *     dependsOn: ["openstack_compute_volume_attach_v2.va_1"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * It is recommended to use `dependsOn` for the attach resources
  * to enforce the volume attachments to happen one at a time.
  *
  * ## Import
  *
- * Volume Attachments can be imported using the Instance ID and Volume ID separated by a slash, e.g.
+ * Volume Attachments can be imported using the Instance ID and Volume ID
+ * separated by a slash, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:compute/volumeAttach:VolumeAttach va_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
+ * $ pulumi import openstack:compute/volumeAttach:VolumeAttach va_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
  * ```
  */
 export class VolumeAttach extends pulumi.CustomResource {

@@ -153,6 +153,7 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -163,13 +164,14 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
             project_id=project1.id,
             volume_type_id=volume_type1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Volume types access can be imported using the `volume_type_id/project_id`, e.g.
 
         ```sh
-         $ pulumi import openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3 volume_type_access 941793f0-0a34-4bc4-b72e-a6326ae58283/ed498e81f0cc448bae0ad4f8f21bf67f
+        $ pulumi import openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3 volume_type_access 941793f0-0a34-4bc4-b72e-a6326ae58283/ed498e81f0cc448bae0ad4f8f21bf67f
         ```
 
         :param str resource_name: The name of the resource.
@@ -195,6 +197,7 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -205,13 +208,14 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
             project_id=project1.id,
             volume_type_id=volume_type1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Volume types access can be imported using the `volume_type_id/project_id`, e.g.
 
         ```sh
-         $ pulumi import openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3 volume_type_access 941793f0-0a34-4bc4-b72e-a6326ae58283/ed498e81f0cc448bae0ad4f8f21bf67f
+        $ pulumi import openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3 volume_type_access 941793f0-0a34-4bc4-b72e-a6326ae58283/ed498e81f0cc448bae0ad4f8f21bf67f
         ```
 
         :param str resource_name: The name of the resource.

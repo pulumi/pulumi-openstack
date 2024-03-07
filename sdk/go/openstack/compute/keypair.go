@@ -12,8 +12,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Import an Existing Public Key
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37,8 +39,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Generate a Public/Private Key Pair
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,15 +65,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Keypairs can be imported using the `name`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import openstack:compute/keypair:Keypair my-keypair test-keypair
-//
+// $ pulumi import openstack:compute/keypair:Keypair my-keypair test-keypair
 // ```
 type Keypair struct {
 	pulumi.CustomResourceState

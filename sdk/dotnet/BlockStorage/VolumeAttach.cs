@@ -29,6 +29,7 @@ namespace Pulumi.OpenStack.BlockStorage
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -55,10 +56,7 @@ namespace Pulumi.OpenStack.BlockStorage
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// It is not possible to import this resource.
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OpenStackResourceType("openstack:blockstorage/volumeAttach:VolumeAttach")]
     public partial class VolumeAttach : global::Pulumi.CustomResource

@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
  * Associate a floating IP to an instance.
  *
  * ## Example Usage
+ *
  * ### Automatically detect the correct network
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -26,8 +28,11 @@ import * as utilities from "../utilities";
  *     instanceId: instance1.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Explicitly set the network to attach to
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -53,13 +58,15 @@ import * as utilities from "../utilities";
  *     fixedIp: instance1.networks.apply(networks => networks[1].fixedIpV4),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * This resource can be imported by specifying all three arguments, separated by a forward slash:
+ * This resource can be imported by specifying all three arguments, separated
+ * by a forward slash:
  *
  * ```sh
- *  $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 floating_ip/instance_id/fixed_ip
+ * $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 floating_ip/instance_id/fixed_ip
  * ```
  */
 export class FloatingIpAssociate extends pulumi.CustomResource {

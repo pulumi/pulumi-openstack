@@ -31,6 +31,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,10 +67,7 @@ import (
 //	}
 //
 // ```
-//
-// ## Import
-//
-// It is not possible to import this resource.
+// <!--End PulumiCodeChooser -->
 type VolumeAttachV2 struct {
 	pulumi.CustomResourceState
 

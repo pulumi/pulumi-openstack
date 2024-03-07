@@ -24,6 +24,8 @@ public final class OpenstackFunctions {
      * Use this data source to get information of an available OpenStack firewall group v2.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -52,6 +54,7 @@ public final class OpenstackFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFwGroupV2Result> getFwGroupV2() {
@@ -61,6 +64,8 @@ public final class OpenstackFunctions {
      * Use this data source to get information of an available OpenStack firewall group v2.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -89,6 +94,7 @@ public final class OpenstackFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFwGroupV2Result> getFwGroupV2Plain() {
@@ -98,6 +104,8 @@ public final class OpenstackFunctions {
      * Use this data source to get information of an available OpenStack firewall group v2.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -126,6 +134,7 @@ public final class OpenstackFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFwGroupV2Result> getFwGroupV2(GetFwGroupV2Args args) {
@@ -135,6 +144,8 @@ public final class OpenstackFunctions {
      * Use this data source to get information of an available OpenStack firewall group v2.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -163,6 +174,7 @@ public final class OpenstackFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFwGroupV2Result> getFwGroupV2Plain(GetFwGroupV2PlainArgs args) {
@@ -172,6 +184,8 @@ public final class OpenstackFunctions {
      * Use this data source to get information of an available OpenStack firewall group v2.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -200,6 +214,7 @@ public final class OpenstackFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFwGroupV2Result> getFwGroupV2(GetFwGroupV2Args args, InvokeOptions options) {
@@ -209,6 +224,8 @@ public final class OpenstackFunctions {
      * Use this data source to get information of an available OpenStack firewall group v2.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -237,6 +254,7 @@ public final class OpenstackFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFwGroupV2Result> getFwGroupV2Plain(GetFwGroupV2PlainArgs args, InvokeOptions options) {
@@ -246,6 +264,8 @@ public final class OpenstackFunctions {
      * Use this data source to get information of an available OpenStack firewall policy v2.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -274,6 +294,7 @@ public final class OpenstackFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFwPolicyV2Result> getFwPolicyV2() {
@@ -283,6 +304,8 @@ public final class OpenstackFunctions {
      * Use this data source to get information of an available OpenStack firewall policy v2.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -311,6 +334,7 @@ public final class OpenstackFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFwPolicyV2Result> getFwPolicyV2Plain() {
@@ -320,6 +344,8 @@ public final class OpenstackFunctions {
      * Use this data source to get information of an available OpenStack firewall policy v2.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -348,6 +374,7 @@ public final class OpenstackFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFwPolicyV2Result> getFwPolicyV2(GetFwPolicyV2Args args) {
@@ -357,6 +384,8 @@ public final class OpenstackFunctions {
      * Use this data source to get information of an available OpenStack firewall policy v2.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -385,6 +414,7 @@ public final class OpenstackFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFwPolicyV2Result> getFwPolicyV2Plain(GetFwPolicyV2PlainArgs args) {
@@ -394,6 +424,8 @@ public final class OpenstackFunctions {
      * Use this data source to get information of an available OpenStack firewall policy v2.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -422,6 +454,7 @@ public final class OpenstackFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFwPolicyV2Result> getFwPolicyV2(GetFwPolicyV2Args args, InvokeOptions options) {
@@ -431,6 +464,8 @@ public final class OpenstackFunctions {
      * Use this data source to get information of an available OpenStack firewall policy v2.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -459,6 +494,7 @@ public final class OpenstackFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFwPolicyV2Result> getFwPolicyV2Plain(GetFwPolicyV2PlainArgs args, InvokeOptions options) {
@@ -468,6 +504,8 @@ public final class OpenstackFunctions {
      * Use this data source to get information of an available OpenStack firewall rule v2.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -496,6 +534,7 @@ public final class OpenstackFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFwRuleV2Result> getFwRuleV2() {
@@ -505,6 +544,8 @@ public final class OpenstackFunctions {
      * Use this data source to get information of an available OpenStack firewall rule v2.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -533,6 +574,7 @@ public final class OpenstackFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFwRuleV2Result> getFwRuleV2Plain() {
@@ -542,6 +584,8 @@ public final class OpenstackFunctions {
      * Use this data source to get information of an available OpenStack firewall rule v2.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -570,6 +614,7 @@ public final class OpenstackFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFwRuleV2Result> getFwRuleV2(GetFwRuleV2Args args) {
@@ -579,6 +624,8 @@ public final class OpenstackFunctions {
      * Use this data source to get information of an available OpenStack firewall rule v2.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -607,6 +654,7 @@ public final class OpenstackFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFwRuleV2Result> getFwRuleV2Plain(GetFwRuleV2PlainArgs args) {
@@ -616,6 +664,8 @@ public final class OpenstackFunctions {
      * Use this data source to get information of an available OpenStack firewall rule v2.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -644,6 +694,7 @@ public final class OpenstackFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFwRuleV2Result> getFwRuleV2(GetFwRuleV2Args args, InvokeOptions options) {
@@ -653,6 +704,8 @@ public final class OpenstackFunctions {
      * Use this data source to get information of an available OpenStack firewall rule v2.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -681,6 +734,7 @@ public final class OpenstackFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFwRuleV2Result> getFwRuleV2Plain(GetFwRuleV2PlainArgs args, InvokeOptions options) {

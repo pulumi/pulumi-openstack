@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -44,13 +45,15 @@ import * as utilities from "../utilities";
  *     value: "/api",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * Load Balancer L7 Rule can be imported using the L7 Policy ID and L7 Rule ID separated by a slash, e.g.:
+ * Load Balancer L7 Rule can be imported using the L7 Policy ID and L7 Rule ID
+ * separated by a slash, e.g.:
  *
  * ```sh
- *  $ pulumi import openstack:loadbalancer/l7RuleV2:L7RuleV2 l7rule_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
+ * $ pulumi import openstack:loadbalancer/l7RuleV2:L7RuleV2 l7rule_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
  * ```
  */
 export class L7RuleV2 extends pulumi.CustomResource {

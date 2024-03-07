@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -17,6 +18,7 @@ import * as utilities from "./utilities";
  *     name: "tf_test_policy",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFwPolicyV2(args?: GetFwPolicyV2Args, opts?: pulumi.InvokeOptions): Promise<GetFwPolicyV2Result> {
     args = args || {};
@@ -123,6 +125,7 @@ export interface GetFwPolicyV2Result {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -131,6 +134,7 @@ export interface GetFwPolicyV2Result {
  *     name: "tf_test_policy",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFwPolicyV2Output(args?: GetFwPolicyV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFwPolicyV2Result> {
     return pulumi.output(args).apply((a: any) => getFwPolicyV2(a, opts))

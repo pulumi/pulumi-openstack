@@ -13,8 +13,10 @@ namespace Pulumi.OpenStack.Compute
     /// Manages a V2 Server Group resource within OpenStack.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Compute service API version 2.63 or below:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,8 +35,11 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Compute service API version 2.64 or above:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -57,6 +62,8 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Policies
     /// 
     /// * `affinity` - All instances/servers launched in this group will be hosted on
@@ -80,7 +87,7 @@ namespace Pulumi.OpenStack.Compute
     /// Server Groups can be imported using the `id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
+    /// $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:compute/serverGroup:ServerGroup")]

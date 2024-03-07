@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetInstanceV2(ctx *pulumi.Context, args *GetInstanceV2Args, opts ...pulumi.InvokeOption) (*GetInstanceV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceV2Result

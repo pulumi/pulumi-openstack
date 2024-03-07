@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -17,6 +18,7 @@ import * as utilities from "../utilities";
  *     address: "192.168.0.4",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFloatingIp(args?: GetFloatingIpArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIpResult> {
     args = args || {};
@@ -116,6 +118,7 @@ export interface GetFloatingIpResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -124,6 +127,7 @@ export interface GetFloatingIpResult {
  *     address: "192.168.0.4",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFloatingIpOutput(args?: GetFloatingIpOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFloatingIpResult> {
     return pulumi.output(args).apply((a: any) => getFloatingIp(a, opts))

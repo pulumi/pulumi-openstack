@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * Manages a V1 load balancer vip resource within OpenStack.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -53,13 +55,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Load Balancer VIPs can be imported using the `id`, e.g.
  * 
  * ```sh
- *  $ pulumi import openstack:loadbalancer/vip:Vip vip_1 50e16b26-89c1-475e-a492-76167182511e
+ * $ pulumi import openstack:loadbalancer/vip:Vip vip_1 50e16b26-89c1-475e-a492-76167182511e
  * ```
  * 
  */

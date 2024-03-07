@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetGroup(ctx *pulumi.Context, args *GetGroupArgs, opts ...pulumi.InvokeOption) (*GetGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupResult

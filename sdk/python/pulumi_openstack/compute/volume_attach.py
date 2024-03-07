@@ -244,8 +244,10 @@ class VolumeAttach(pulumi.CustomResource):
         Compute (Nova) v2 API.
 
         ## Example Usage
+
         ### Basic attachment of a single volume to a single instance
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -256,11 +258,14 @@ class VolumeAttach(pulumi.CustomResource):
             instance_id=instance1.id,
             volume_id=volume1.id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Using Multiattach-enabled volumes
 
         Multiattach Volumes are dependent upon your OpenStack cloud and not all
         clouds support multiattach.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -280,16 +285,18 @@ class VolumeAttach(pulumi.CustomResource):
             multiattach=True,
             opts=pulumi.ResourceOptions(depends_on=["openstack_compute_volume_attach_v2.va_1"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         It is recommended to use `depends_on` for the attach resources
         to enforce the volume attachments to happen one at a time.
 
         ## Import
 
-        Volume Attachments can be imported using the Instance ID and Volume ID separated by a slash, e.g.
+        Volume Attachments can be imported using the Instance ID and Volume ID
+        separated by a slash, e.g.
 
         ```sh
-         $ pulumi import openstack:compute/volumeAttach:VolumeAttach va_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
+        $ pulumi import openstack:compute/volumeAttach:VolumeAttach va_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
         ```
 
         :param str resource_name: The name of the resource.
@@ -315,8 +322,10 @@ class VolumeAttach(pulumi.CustomResource):
         Compute (Nova) v2 API.
 
         ## Example Usage
+
         ### Basic attachment of a single volume to a single instance
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -327,11 +336,14 @@ class VolumeAttach(pulumi.CustomResource):
             instance_id=instance1.id,
             volume_id=volume1.id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Using Multiattach-enabled volumes
 
         Multiattach Volumes are dependent upon your OpenStack cloud and not all
         clouds support multiattach.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -351,16 +363,18 @@ class VolumeAttach(pulumi.CustomResource):
             multiattach=True,
             opts=pulumi.ResourceOptions(depends_on=["openstack_compute_volume_attach_v2.va_1"]))
         ```
+        <!--End PulumiCodeChooser -->
 
         It is recommended to use `depends_on` for the attach resources
         to enforce the volume attachments to happen one at a time.
 
         ## Import
 
-        Volume Attachments can be imported using the Instance ID and Volume ID separated by a slash, e.g.
+        Volume Attachments can be imported using the Instance ID and Volume ID
+        separated by a slash, e.g.
 
         ```sh
-         $ pulumi import openstack:compute/volumeAttach:VolumeAttach va_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
+        $ pulumi import openstack:compute/volumeAttach:VolumeAttach va_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
         ```
 
         :param str resource_name: The name of the resource.

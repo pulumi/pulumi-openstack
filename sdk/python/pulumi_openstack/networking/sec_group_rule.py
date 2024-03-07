@@ -548,6 +548,7 @@ class SecGroupRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -562,6 +563,7 @@ class SecGroupRule(pulumi.CustomResource):
             remote_ip_prefix="0.0.0.0/0",
             security_group_id=secgroup1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         > **Note:** To expose the full port-range 1:65535, use `0` for `port_range_min`
         and `port_range_max`.
@@ -571,7 +573,7 @@ class SecGroupRule(pulumi.CustomResource):
         Security Group Rules can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
+        $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
         ```
 
         :param str resource_name: The name of the resource.
@@ -638,6 +640,7 @@ class SecGroupRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -652,6 +655,7 @@ class SecGroupRule(pulumi.CustomResource):
             remote_ip_prefix="0.0.0.0/0",
             security_group_id=secgroup1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         > **Note:** To expose the full port-range 1:65535, use `0` for `port_range_min`
         and `port_range_max`.
@@ -661,7 +665,7 @@ class SecGroupRule(pulumi.CustomResource):
         Security Group Rules can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
+        $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
         ```
 
         :param str resource_name: The name of the resource.

@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -17,6 +18,7 @@ import * as utilities from "../utilities";
  *     projectId: "2e367a3d29f94fd988e6ec54e305ec9d",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getQuotasetV3(args: GetQuotasetV3Args, opts?: pulumi.InvokeOptions): Promise<GetQuotasetV3Result> {
 
@@ -96,6 +98,7 @@ export interface GetQuotasetV3Result {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -104,6 +107,7 @@ export interface GetQuotasetV3Result {
  *     projectId: "2e367a3d29f94fd988e6ec54e305ec9d",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getQuotasetV3Output(args: GetQuotasetV3OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotasetV3Result> {
     return pulumi.output(args).apply((a: any) => getQuotasetV3(a, opts))

@@ -21,6 +21,8 @@ public final class ImagesFunctions {
      * Use this data source to get the ID of an available OpenStack image.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -51,6 +53,7 @@ public final class ImagesFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImageResult> getImage() {
@@ -60,6 +63,8 @@ public final class ImagesFunctions {
      * Use this data source to get the ID of an available OpenStack image.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -90,6 +95,7 @@ public final class ImagesFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImageResult> getImagePlain() {
@@ -99,6 +105,8 @@ public final class ImagesFunctions {
      * Use this data source to get the ID of an available OpenStack image.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -129,6 +137,7 @@ public final class ImagesFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImageResult> getImage(GetImageArgs args) {
@@ -138,6 +147,8 @@ public final class ImagesFunctions {
      * Use this data source to get the ID of an available OpenStack image.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -168,6 +179,7 @@ public final class ImagesFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImageResult> getImagePlain(GetImagePlainArgs args) {
@@ -177,6 +189,8 @@ public final class ImagesFunctions {
      * Use this data source to get the ID of an available OpenStack image.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -207,6 +221,7 @@ public final class ImagesFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImageResult> getImage(GetImageArgs args, InvokeOptions options) {
@@ -216,6 +231,8 @@ public final class ImagesFunctions {
      * Use this data source to get the ID of an available OpenStack image.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -246,6 +263,7 @@ public final class ImagesFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImageResult> getImagePlain(GetImagePlainArgs args, InvokeOptions options) {
@@ -256,6 +274,8 @@ public final class ImagesFunctions {
      * specified criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -286,6 +306,7 @@ public final class ImagesFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImageIdsResult> getImageIds() {
@@ -296,6 +317,8 @@ public final class ImagesFunctions {
      * specified criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -326,6 +349,7 @@ public final class ImagesFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImageIdsResult> getImageIdsPlain() {
@@ -336,6 +360,8 @@ public final class ImagesFunctions {
      * specified criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -366,6 +392,7 @@ public final class ImagesFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImageIdsResult> getImageIds(GetImageIdsArgs args) {
@@ -376,6 +403,8 @@ public final class ImagesFunctions {
      * specified criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -406,6 +435,7 @@ public final class ImagesFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImageIdsResult> getImageIdsPlain(GetImageIdsPlainArgs args) {
@@ -416,6 +446,8 @@ public final class ImagesFunctions {
      * specified criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -446,6 +478,7 @@ public final class ImagesFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetImageIdsResult> getImageIds(GetImageIdsArgs args, InvokeOptions options) {
@@ -456,6 +489,8 @@ public final class ImagesFunctions {
      * specified criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -486,6 +521,7 @@ public final class ImagesFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetImageIdsResult> getImageIdsPlain(GetImageIdsPlainArgs args, InvokeOptions options) {

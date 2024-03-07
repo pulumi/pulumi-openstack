@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -38,13 +39,15 @@ import * as utilities from "../utilities";
  *     l7Rule: 12,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * Quotas can be imported using the `project_id/region_name`, where region_name is the one defined is the Openstack credentials that are in use. E.g.
+ * Quotas can be imported using the `project_id/region_name`, where region_name is the
+ * one defined is the Openstack credentials that are in use. E.g.
  *
  * ```sh
- *  $ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
+ * $ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
  * ```
  */
 export class Quota extends pulumi.CustomResource {

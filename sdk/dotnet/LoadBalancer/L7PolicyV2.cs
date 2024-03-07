@@ -14,6 +14,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -64,13 +65,14 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.:
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+    /// $ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:loadbalancer/l7PolicyV2:L7PolicyV2")]

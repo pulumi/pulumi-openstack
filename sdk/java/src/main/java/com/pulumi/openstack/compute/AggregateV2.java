@@ -20,7 +20,10 @@ import javax.annotation.Nullable;
  * Manages a Host Aggregate within Openstack Nova.
  * 
  * ## Example Usage
+ * 
  * ### Full example
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -54,7 +57,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Minimum required example
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -80,6 +87,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -89,21 +97,19 @@ import javax.annotation.Nullable;
  * $ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24
  * ```
  * 
- *  The ID can be obtained with an openstack command:
+ * The ID can be obtained with an openstack command:
  * 
- *  $ openstack aggregate list
+ * $ openstack aggregate list
  * 
- *  +----+------+-------------------+
+ * +----+------+-------------------+
  * 
- *  | ID | Name | Availability Zone |
+ * | ID | Name | Availability Zone |
  * 
- *  +----+------+-------------------+
+ * +----+------+-------------------+
  * 
- *  | 59 | test | None
+ * | 59 | test | None              |
  * 
- * |
- * 
- *  +----+------+-------------------+
+ * +----+------+-------------------+
  * 
  */
 @ResourceType(type="openstack:compute/aggregateV2:AggregateV2")

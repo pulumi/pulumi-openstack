@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupQuotaSetV2(ctx *pulumi.Context, args *LookupQuotaSetV2Args, opts ...pulumi.InvokeOption) (*LookupQuotaSetV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupQuotaSetV2Result

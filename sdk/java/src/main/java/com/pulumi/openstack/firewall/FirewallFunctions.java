@@ -18,6 +18,8 @@ public final class FirewallFunctions {
      * Use this data source to get firewall policy information of an available OpenStack firewall policy.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -46,6 +48,7 @@ public final class FirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPolicyResult> getPolicy() {
@@ -55,6 +58,8 @@ public final class FirewallFunctions {
      * Use this data source to get firewall policy information of an available OpenStack firewall policy.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -83,6 +88,7 @@ public final class FirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPolicyResult> getPolicyPlain() {
@@ -92,6 +98,8 @@ public final class FirewallFunctions {
      * Use this data source to get firewall policy information of an available OpenStack firewall policy.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -120,6 +128,7 @@ public final class FirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPolicyResult> getPolicy(GetPolicyArgs args) {
@@ -129,6 +138,8 @@ public final class FirewallFunctions {
      * Use this data source to get firewall policy information of an available OpenStack firewall policy.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -157,6 +168,7 @@ public final class FirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPolicyResult> getPolicyPlain(GetPolicyPlainArgs args) {
@@ -166,6 +178,8 @@ public final class FirewallFunctions {
      * Use this data source to get firewall policy information of an available OpenStack firewall policy.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -194,6 +208,7 @@ public final class FirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPolicyResult> getPolicy(GetPolicyArgs args, InvokeOptions options) {
@@ -203,6 +218,8 @@ public final class FirewallFunctions {
      * Use this data source to get firewall policy information of an available OpenStack firewall policy.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -231,6 +248,7 @@ public final class FirewallFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPolicyResult> getPolicyPlain(GetPolicyPlainArgs args, InvokeOptions options) {

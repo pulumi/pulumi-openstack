@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -32,13 +33,15 @@ import * as utilities from "../utilities";
  *     roleId: role1.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * This resource can be imported by specifying all two arguments, separated by a forward slash:
+ * This resource can be imported by specifying all two arguments, separated
+ * by a forward slash:
  *
  * ```sh
- *  $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
+ * $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
  * ```
  */
 export class UserMembershipV3 extends pulumi.CustomResource {

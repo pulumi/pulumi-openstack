@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * Please ensure your Openstack cloud supports the required minor version.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -69,13 +71,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * Quotas can be imported using the `project_id/region_name`, where region_name is the one defined is the Openstack credentials that are in use. E.g.
+ * Quotas can be imported using the `project_id/region_name`, where region_name is the
+ * one defined is the Openstack credentials that are in use. E.g.
  * 
  * ```sh
- *  $ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
+ * $ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
  * ```
  * 
  */

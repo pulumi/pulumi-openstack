@@ -641,6 +641,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -655,13 +656,14 @@ class QuotaSetV2(pulumi.CustomResource):
             server_groups=4,
             server_group_members=8)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Quotasets can be imported using the `project_id/region_name`, e.g.
 
         ```sh
-         $ pulumi import openstack:compute/quotaSetV2:QuotaSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
+        $ pulumi import openstack:compute/quotaSetV2:QuotaSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
         ```
 
         :param str resource_name: The name of the resource.
@@ -719,6 +721,7 @@ class QuotaSetV2(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -733,13 +736,14 @@ class QuotaSetV2(pulumi.CustomResource):
             server_groups=4,
             server_group_members=8)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Quotasets can be imported using the `project_id/region_name`, e.g.
 
         ```sh
-         $ pulumi import openstack:compute/quotaSetV2:QuotaSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
+        $ pulumi import openstack:compute/quotaSetV2:QuotaSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
         ```
 
         :param str resource_name: The name of the resource.

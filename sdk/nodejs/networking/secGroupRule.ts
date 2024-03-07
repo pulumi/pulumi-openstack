@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  *     securityGroupId: secgroup1.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * > **Note:** To expose the full port-range 1:65535, use `0` for `portRangeMin`
  * and `portRangeMax`.
@@ -35,7 +37,7 @@ import * as utilities from "../utilities";
  * Security Group Rules can be imported using the `id`, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
+ * $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
  * ```
  */
 export class SecGroupRule extends pulumi.CustomResource {

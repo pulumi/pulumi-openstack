@@ -14,8 +14,10 @@ import * as utilities from "../utilities";
  * state.
  *
  * ## Example Usage
+ *
  * ### Instance
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -33,6 +35,7 @@ import * as utilities from "../utilities";
  *     size: 8,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class Instance extends pulumi.CustomResource {
     /**

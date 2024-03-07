@@ -21,7 +21,10 @@ import javax.annotation.Nullable;
  * Manages a DNS zone transfer accept in the OpenStack DNS Service.
  * 
  * ## Example Usage
+ * 
  * ### Automatically detect the correct network
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -67,13 +70,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * This resource can be imported by specifying the transferAccept ID:
  * 
  * ```sh
- *  $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 accept_id
+ * $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 accept_id
  * ```
  * 
  */

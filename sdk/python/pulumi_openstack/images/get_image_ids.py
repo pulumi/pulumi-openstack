@@ -206,6 +206,7 @@ def get_image_ids(member_status: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
@@ -216,6 +217,7 @@ def get_image_ids(member_status: Optional[str] = None,
         },
         sort="updated_at")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str member_status: The status of the image. Must be one of
@@ -313,6 +315,7 @@ def get_image_ids_output(member_status: Optional[pulumi.Input[Optional[str]]] = 
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
@@ -323,6 +326,7 @@ def get_image_ids_output(member_status: Optional[pulumi.Input[Optional[str]]] = 
         },
         sort="updated_at")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str member_status: The status of the image. Must be one of

@@ -225,6 +225,7 @@ class VolumeTypeV3(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -236,13 +237,14 @@ class VolumeTypeV3(pulumi.CustomResource):
                 "volume_backend_name": "ssd",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Volume types can be imported using the `volume_type_id`, e.g.
 
         ```sh
-         $ pulumi import openstack:blockstorage/volumeTypeV3:VolumeTypeV3 volume_type_1 941793f0-0a34-4bc4-b72e-a6326ae58283
+        $ pulumi import openstack:blockstorage/volumeTypeV3:VolumeTypeV3 volume_type_1 941793f0-0a34-4bc4-b72e-a6326ae58283
         ```
 
         :param str resource_name: The name of the resource.
@@ -271,6 +273,7 @@ class VolumeTypeV3(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -282,13 +285,14 @@ class VolumeTypeV3(pulumi.CustomResource):
                 "volume_backend_name": "ssd",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Volume types can be imported using the `volume_type_id`, e.g.
 
         ```sh
-         $ pulumi import openstack:blockstorage/volumeTypeV3:VolumeTypeV3 volume_type_1 941793f0-0a34-4bc4-b72e-a6326ae58283
+        $ pulumi import openstack:blockstorage/volumeTypeV3:VolumeTypeV3 volume_type_1 941793f0-0a34-4bc4-b72e-a6326ae58283
         ```
 
         :param str resource_name: The name of the resource.

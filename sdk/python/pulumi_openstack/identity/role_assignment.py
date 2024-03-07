@@ -230,6 +230,7 @@ class RoleAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -242,15 +243,21 @@ class RoleAssignment(pulumi.CustomResource):
             project_id=project1.id,
             role_id=role1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        Role assignments can be imported using a constructed id. The id should have the form of `domainID/projectID/groupID/userID/roleID`. When something is not used then leave blank.
+        Role assignments can be imported using a constructed id. The id should have the form of
+        `domainID/projectID/groupID/userID/roleID`. When something is not used then leave blank.
 
-        For example this will import the role assignment for: projectID: 014395cd-89fc-4c9b-96b7-13d1ee79dad2, userID: 4142e64b-1b35-44a0-9b1e-5affc7af1106, roleID: ea257959-eeb1-4c10-8d33-26f0409a755d ( domainID and groupID are left blank)
+        For example this will import the role assignment for:
+        projectID: 014395cd-89fc-4c9b-96b7-13d1ee79dad2,
+        userID: 4142e64b-1b35-44a0-9b1e-5affc7af1106,
+        roleID: ea257959-eeb1-4c10-8d33-26f0409a755d
+        ( domainID and groupID are left blank)
 
         ```sh
-         $ pulumi import openstack:identity/roleAssignment:RoleAssignment role_assignment_1 /014395cd-89fc-4c9b-96b7-13d1ee79dad2//4142e64b-1b35-44a0-9b1e-5affc7af1106/ea257959-eeb1-4c10-8d33-26f0409a755d
+        $ pulumi import openstack:identity/roleAssignment:RoleAssignment role_assignment_1 /014395cd-89fc-4c9b-96b7-13d1ee79dad2//4142e64b-1b35-44a0-9b1e-5affc7af1106/ea257959-eeb1-4c10-8d33-26f0409a755d
         ```
 
         :param str resource_name: The name of the resource.
@@ -275,6 +282,7 @@ class RoleAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -287,15 +295,21 @@ class RoleAssignment(pulumi.CustomResource):
             project_id=project1.id,
             role_id=role1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        Role assignments can be imported using a constructed id. The id should have the form of `domainID/projectID/groupID/userID/roleID`. When something is not used then leave blank.
+        Role assignments can be imported using a constructed id. The id should have the form of
+        `domainID/projectID/groupID/userID/roleID`. When something is not used then leave blank.
 
-        For example this will import the role assignment for: projectID: 014395cd-89fc-4c9b-96b7-13d1ee79dad2, userID: 4142e64b-1b35-44a0-9b1e-5affc7af1106, roleID: ea257959-eeb1-4c10-8d33-26f0409a755d ( domainID and groupID are left blank)
+        For example this will import the role assignment for:
+        projectID: 014395cd-89fc-4c9b-96b7-13d1ee79dad2,
+        userID: 4142e64b-1b35-44a0-9b1e-5affc7af1106,
+        roleID: ea257959-eeb1-4c10-8d33-26f0409a755d
+        ( domainID and groupID are left blank)
 
         ```sh
-         $ pulumi import openstack:identity/roleAssignment:RoleAssignment role_assignment_1 /014395cd-89fc-4c9b-96b7-13d1ee79dad2//4142e64b-1b35-44a0-9b1e-5affc7af1106/ea257959-eeb1-4c10-8d33-26f0409a755d
+        $ pulumi import openstack:identity/roleAssignment:RoleAssignment role_assignment_1 /014395cd-89fc-4c9b-96b7-13d1ee79dad2//4142e64b-1b35-44a0-9b1e-5affc7af1106/ea257959-eeb1-4c10-8d33-26f0409a755d
         ```
 
         :param str resource_name: The name of the resource.

@@ -14,10 +14,9 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// <summary>
         /// Use this data source to get the ID of an available Shared File System share network.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetShareNetworkResult> InvokeAsync(GetShareNetworkArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetShareNetworkResult>("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", args ?? new GetShareNetworkArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// <summary>
         /// Use this data source to get the ID of an available Shared File System share network.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetShareNetworkResult> Invoke(GetShareNetworkInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetShareNetworkResult>("openstack:sharedfilesystem/getShareNetwork:getShareNetwork", args ?? new GetShareNetworkInvokeArgs(), options.WithDefaults());

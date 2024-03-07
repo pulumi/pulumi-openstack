@@ -14,8 +14,10 @@ import (
 // Manages a Host Aggregate within Openstack Nova.
 //
 // ## Example Usage
+//
 // ### Full example
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,8 +49,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Minimum required example
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -70,6 +75,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -79,21 +85,19 @@ import (
 // $ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24
 // ```
 //
-//	The ID can be obtained with an openstack command:
+// The ID can be obtained with an openstack command:
 //
-//	$ openstack aggregate list
+// $ openstack aggregate list
 //
-//	+----+------+-------------------+
+// +----+------+-------------------+
 //
-//	| ID | Name | Availability Zone |
+// | ID | Name | Availability Zone |
 //
-//	+----+------+-------------------+
+// +----+------+-------------------+
 //
-//	| 59 | test | None
+// | 59 | test | None              |
 //
-// |
-//
-//	+----+------+-------------------+
+// +----+------+-------------------+
 type AggregateV2 struct {
 	pulumi.CustomResourceState
 

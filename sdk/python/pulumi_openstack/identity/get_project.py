@@ -165,12 +165,14 @@ def get_project(domain_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     project1 = openstack.identity.get_project(name="demo")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str domain_id: The domain this project belongs to.
@@ -222,12 +224,14 @@ def get_project_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     project1 = openstack.identity.get_project(name="demo")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str domain_id: The domain this project belongs to.

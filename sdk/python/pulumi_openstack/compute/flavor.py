@@ -483,6 +483,7 @@ class Flavor(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -496,13 +497,14 @@ class Flavor(pulumi.CustomResource):
             ram=8096,
             vcpus=2)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Flavors can be imported using the `ID`, e.g.
 
         ```sh
-         $ pulumi import openstack:compute/flavor:Flavor my-flavor 4142e64b-1b35-44a0-9b1e-5affc7af1106
+        $ pulumi import openstack:compute/flavor:Flavor my-flavor 4142e64b-1b35-44a0-9b1e-5affc7af1106
         ```
 
         :param str resource_name: The name of the resource.
@@ -544,6 +546,7 @@ class Flavor(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -557,13 +560,14 @@ class Flavor(pulumi.CustomResource):
             ram=8096,
             vcpus=2)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Flavors can be imported using the `ID`, e.g.
 
         ```sh
-         $ pulumi import openstack:compute/flavor:Flavor my-flavor 4142e64b-1b35-44a0-9b1e-5affc7af1106
+        $ pulumi import openstack:compute/flavor:Flavor my-flavor 4142e64b-1b35-44a0-9b1e-5affc7af1106
         ```
 
         :param str resource_name: The name of the resource.

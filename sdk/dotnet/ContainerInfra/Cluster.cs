@@ -17,8 +17,10 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// state.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Create a Cluster
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,6 +39,8 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Attributes reference
     /// 
     /// The following attributes are exported:
@@ -78,7 +82,7 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// Clusters can be imported using the `id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
+    /// $ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:containerinfra/cluster:Cluster")]

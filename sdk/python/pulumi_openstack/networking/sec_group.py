@@ -283,7 +283,7 @@ class SecGroup(pulumi.CustomResource):
         Security Groups can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/secGroup:SecGroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc
+        $ pulumi import openstack:networking/secGroup:SecGroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc
         ```
 
         :param str resource_name: The name of the resource.
@@ -314,7 +314,7 @@ class SecGroup(pulumi.CustomResource):
         Security Groups can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/secGroup:SecGroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc
+        $ pulumi import openstack:networking/secGroup:SecGroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc
         ```
 
         :param str resource_name: The name of the resource.

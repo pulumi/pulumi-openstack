@@ -939,8 +939,10 @@ class Port(pulumi.CustomResource):
         creation is triggered. More info here
 
         ## Example Usage
+
         ### Simple port
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -950,8 +952,11 @@ class Port(pulumi.CustomResource):
             network_id=network1.id,
             admin_state_up=True)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Port defining fixed_ip.subnet_id
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -967,8 +972,11 @@ class Port(pulumi.CustomResource):
                 subnet_id=subnet1.id,
             )])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Port with physical binding information
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -1000,6 +1008,8 @@ class Port(pulumi.CustomResource):
         \"\"\",
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Notes
 
         ### Ports and Instances
@@ -1013,7 +1023,7 @@ class Port(pulumi.CustomResource):
         Ports can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+        $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
         ```
 
         :param str resource_name: The name of the resource.
@@ -1089,8 +1099,10 @@ class Port(pulumi.CustomResource):
         creation is triggered. More info here
 
         ## Example Usage
+
         ### Simple port
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -1100,8 +1112,11 @@ class Port(pulumi.CustomResource):
             network_id=network1.id,
             admin_state_up=True)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Port defining fixed_ip.subnet_id
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -1117,8 +1132,11 @@ class Port(pulumi.CustomResource):
                 subnet_id=subnet1.id,
             )])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Port with physical binding information
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -1150,6 +1168,8 @@ class Port(pulumi.CustomResource):
         \"\"\",
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Notes
 
         ### Ports and Instances
@@ -1163,7 +1183,7 @@ class Port(pulumi.CustomResource):
         Ports can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+        $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
         ```
 
         :param str resource_name: The name of the resource.

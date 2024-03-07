@@ -276,12 +276,14 @@ def get_subnet_pool(address_scope_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     subnetpool1 = openstack.networking.get_subnet_pool(name="subnetpool_1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str address_scope_id: The Neutron address scope that subnetpools
@@ -362,12 +364,14 @@ def get_subnet_pool_output(address_scope_id: Optional[pulumi.Input[Optional[str]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     subnetpool1 = openstack.networking.get_subnet_pool(name="subnetpool_1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str address_scope_id: The Neutron address scope that subnetpools

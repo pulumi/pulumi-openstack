@@ -709,7 +709,7 @@ type InstanceUser struct {
 	// A list of databases that user will have access to. If not specified,
 	// user has access to all databases on th einstance. Changing this creates a new instance.
 	Databases []string `pulumi:"databases"`
-	// An ip address or % sign indicating what ip addresses can connect with
+	// An ip address or %!s(MISSING)ign indicating what ip addresses can connect with
 	// this user credentials. Changing this creates a new instance.
 	Host *string `pulumi:"host"`
 	// Username to be created on new instance. Changing this creates a
@@ -735,7 +735,7 @@ type InstanceUserArgs struct {
 	// A list of databases that user will have access to. If not specified,
 	// user has access to all databases on th einstance. Changing this creates a new instance.
 	Databases pulumi.StringArrayInput `pulumi:"databases"`
-	// An ip address or % sign indicating what ip addresses can connect with
+	// An ip address or %!s(MISSING)ign indicating what ip addresses can connect with
 	// this user credentials. Changing this creates a new instance.
 	Host pulumi.StringPtrInput `pulumi:"host"`
 	// Username to be created on new instance. Changing this creates a
@@ -803,7 +803,7 @@ func (o InstanceUserOutput) Databases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceUser) []string { return v.Databases }).(pulumi.StringArrayOutput)
 }
 
-// An ip address or % sign indicating what ip addresses can connect with
+// An ip address or %!s(MISSING)ign indicating what ip addresses can connect with
 // this user credentials. Changing this creates a new instance.
 func (o InstanceUserOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceUser) *string { return v.Host }).(pulumi.StringPtrOutput)

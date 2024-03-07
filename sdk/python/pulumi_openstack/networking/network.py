@@ -706,6 +706,7 @@ class Network(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -737,13 +738,14 @@ class Network(pulumi.CustomResource):
                 port=port1.id,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Networks can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/network:Network network_1 d90ce693-5ccf-4136-a0ed-152ce412b6b9
+        $ pulumi import openstack:networking/network:Network network_1 d90ce693-5ccf-4136-a0ed-152ce412b6b9
         ```
 
         :param str resource_name: The name of the resource.
@@ -806,6 +808,7 @@ class Network(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -837,13 +840,14 @@ class Network(pulumi.CustomResource):
                 port=port1.id,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Networks can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/network:Network network_1 d90ce693-5ccf-4136-a0ed-152ce412b6b9
+        $ pulumi import openstack:networking/network:Network network_1 d90ce693-5ccf-4136-a0ed-152ce412b6b9
         ```
 
         :param str resource_name: The name of the resource.

@@ -14,10 +14,9 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack Magnum cluster.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetClusterResult> InvokeAsync(GetClusterArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("openstack:containerinfra/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// <summary>
         /// Use this data source to get the ID of an available OpenStack Magnum cluster.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterResult>("openstack:containerinfra/getCluster:getCluster", args ?? new GetClusterInvokeArgs(), options.WithDefaults());

@@ -40,6 +40,8 @@ public final class ComputeFunctions {
      * by name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -68,6 +70,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAggregateV2Result> getAggregateV2(GetAggregateV2Args args) {
@@ -78,6 +81,8 @@ public final class ComputeFunctions {
      * by name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -106,6 +111,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAggregateV2Result> getAggregateV2Plain(GetAggregateV2PlainArgs args) {
@@ -116,6 +122,8 @@ public final class ComputeFunctions {
      * by name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -144,6 +152,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAggregateV2Result> getAggregateV2(GetAggregateV2Args args, InvokeOptions options) {
@@ -154,6 +163,8 @@ public final class ComputeFunctions {
      * by name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -182,6 +193,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAggregateV2Result> getAggregateV2Plain(GetAggregateV2PlainArgs args, InvokeOptions options) {
@@ -191,6 +203,8 @@ public final class ComputeFunctions {
      * Use this data source to get a list of availability zones from OpenStack
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -217,6 +231,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAvailabilityZonesResult> getAvailabilityZones() {
@@ -226,6 +241,8 @@ public final class ComputeFunctions {
      * Use this data source to get a list of availability zones from OpenStack
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -252,6 +269,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAvailabilityZonesResult> getAvailabilityZonesPlain() {
@@ -261,6 +279,8 @@ public final class ComputeFunctions {
      * Use this data source to get a list of availability zones from OpenStack
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -287,6 +307,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAvailabilityZonesResult> getAvailabilityZones(GetAvailabilityZonesArgs args) {
@@ -296,6 +317,8 @@ public final class ComputeFunctions {
      * Use this data source to get a list of availability zones from OpenStack
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -322,6 +345,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAvailabilityZonesResult> getAvailabilityZonesPlain(GetAvailabilityZonesPlainArgs args) {
@@ -331,6 +355,8 @@ public final class ComputeFunctions {
      * Use this data source to get a list of availability zones from OpenStack
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -357,6 +383,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAvailabilityZonesResult> getAvailabilityZones(GetAvailabilityZonesArgs args, InvokeOptions options) {
@@ -366,6 +393,8 @@ public final class ComputeFunctions {
      * Use this data source to get a list of availability zones from OpenStack
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -392,6 +421,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAvailabilityZonesResult> getAvailabilityZonesPlain(GetAvailabilityZonesPlainArgs args, InvokeOptions options) {
@@ -401,6 +431,8 @@ public final class ComputeFunctions {
      * Use this data source to get the ID of an available OpenStack flavor.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -430,6 +462,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFlavorResult> getFlavor() {
@@ -439,6 +472,8 @@ public final class ComputeFunctions {
      * Use this data source to get the ID of an available OpenStack flavor.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -468,6 +503,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFlavorResult> getFlavorPlain() {
@@ -477,6 +513,8 @@ public final class ComputeFunctions {
      * Use this data source to get the ID of an available OpenStack flavor.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -506,6 +544,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFlavorResult> getFlavor(GetFlavorArgs args) {
@@ -515,6 +554,8 @@ public final class ComputeFunctions {
      * Use this data source to get the ID of an available OpenStack flavor.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -544,6 +585,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFlavorResult> getFlavorPlain(GetFlavorPlainArgs args) {
@@ -553,6 +595,8 @@ public final class ComputeFunctions {
      * Use this data source to get the ID of an available OpenStack flavor.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -582,6 +626,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFlavorResult> getFlavor(GetFlavorArgs args, InvokeOptions options) {
@@ -591,6 +636,8 @@ public final class ComputeFunctions {
      * Use this data source to get the ID of an available OpenStack flavor.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -620,6 +667,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFlavorResult> getFlavorPlain(GetFlavorPlainArgs args, InvokeOptions options) {
@@ -630,6 +678,8 @@ public final class ComputeFunctions {
      * by hostname.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -658,6 +708,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHypervisorV2Result> getHypervisorV2(GetHypervisorV2Args args) {
@@ -668,6 +719,8 @@ public final class ComputeFunctions {
      * by hostname.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -696,6 +749,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHypervisorV2Result> getHypervisorV2Plain(GetHypervisorV2PlainArgs args) {
@@ -706,6 +760,8 @@ public final class ComputeFunctions {
      * by hostname.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -734,6 +790,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetHypervisorV2Result> getHypervisorV2(GetHypervisorV2Args args, InvokeOptions options) {
@@ -744,6 +801,8 @@ public final class ComputeFunctions {
      * by hostname.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -772,6 +831,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHypervisorV2Result> getHypervisorV2Plain(GetHypervisorV2PlainArgs args, InvokeOptions options) {
@@ -781,6 +841,8 @@ public final class ComputeFunctions {
      * Use this data source to get the details of a running server
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -809,6 +871,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceV2Result> getInstanceV2(GetInstanceV2Args args) {
@@ -818,6 +881,8 @@ public final class ComputeFunctions {
      * Use this data source to get the details of a running server
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -846,6 +911,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceV2Result> getInstanceV2Plain(GetInstanceV2PlainArgs args) {
@@ -855,6 +921,8 @@ public final class ComputeFunctions {
      * Use this data source to get the details of a running server
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -883,6 +951,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetInstanceV2Result> getInstanceV2(GetInstanceV2Args args, InvokeOptions options) {
@@ -892,6 +961,8 @@ public final class ComputeFunctions {
      * Use this data source to get the details of a running server
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -920,6 +991,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetInstanceV2Result> getInstanceV2Plain(GetInstanceV2PlainArgs args, InvokeOptions options) {
@@ -929,6 +1001,8 @@ public final class ComputeFunctions {
      * Use this data source to get the ID and public key of an OpenStack keypair.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -957,6 +1031,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKeypairResult> getKeypair(GetKeypairArgs args) {
@@ -966,6 +1041,8 @@ public final class ComputeFunctions {
      * Use this data source to get the ID and public key of an OpenStack keypair.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -994,6 +1071,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKeypairResult> getKeypairPlain(GetKeypairPlainArgs args) {
@@ -1003,6 +1081,8 @@ public final class ComputeFunctions {
      * Use this data source to get the ID and public key of an OpenStack keypair.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1031,6 +1111,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKeypairResult> getKeypair(GetKeypairArgs args, InvokeOptions options) {
@@ -1040,6 +1121,8 @@ public final class ComputeFunctions {
      * Use this data source to get the ID and public key of an OpenStack keypair.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1068,6 +1151,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKeypairResult> getKeypairPlain(GetKeypairPlainArgs args, InvokeOptions options) {
@@ -1077,6 +1161,8 @@ public final class ComputeFunctions {
      * Use this data source to get the compute limits of an OpenStack project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1105,6 +1191,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLimitsV2Result> getLimitsV2(GetLimitsV2Args args) {
@@ -1114,6 +1201,8 @@ public final class ComputeFunctions {
      * Use this data source to get the compute limits of an OpenStack project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1142,6 +1231,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLimitsV2Result> getLimitsV2Plain(GetLimitsV2PlainArgs args) {
@@ -1151,6 +1241,8 @@ public final class ComputeFunctions {
      * Use this data source to get the compute limits of an OpenStack project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1179,6 +1271,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLimitsV2Result> getLimitsV2(GetLimitsV2Args args, InvokeOptions options) {
@@ -1188,6 +1281,8 @@ public final class ComputeFunctions {
      * Use this data source to get the compute limits of an OpenStack project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1216,6 +1311,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLimitsV2Result> getLimitsV2Plain(GetLimitsV2PlainArgs args, InvokeOptions options) {
@@ -1225,6 +1321,8 @@ public final class ComputeFunctions {
      * Use this data source to get the compute quotaset of an OpenStack project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1253,6 +1351,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQuotaSetV2Result> getQuotaSetV2(GetQuotaSetV2Args args) {
@@ -1262,6 +1361,8 @@ public final class ComputeFunctions {
      * Use this data source to get the compute quotaset of an OpenStack project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1290,6 +1391,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQuotaSetV2Result> getQuotaSetV2Plain(GetQuotaSetV2PlainArgs args) {
@@ -1299,6 +1401,8 @@ public final class ComputeFunctions {
      * Use this data source to get the compute quotaset of an OpenStack project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1327,6 +1431,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQuotaSetV2Result> getQuotaSetV2(GetQuotaSetV2Args args, InvokeOptions options) {
@@ -1336,6 +1441,8 @@ public final class ComputeFunctions {
      * Use this data source to get the compute quotaset of an OpenStack project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1364,6 +1471,7 @@ public final class ComputeFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQuotaSetV2Result> getQuotaSetV2Plain(GetQuotaSetV2PlainArgs args, InvokeOptions options) {

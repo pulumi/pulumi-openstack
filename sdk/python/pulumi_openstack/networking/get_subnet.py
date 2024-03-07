@@ -279,12 +279,14 @@ def get_subnet(cidr: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     subnet1 = openstack.networking.get_subnet(name="subnet_1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cidr: The CIDR of the subnet.
@@ -372,12 +374,14 @@ def get_subnet_output(cidr: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     subnet1 = openstack.networking.get_subnet(name="subnet_1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cidr: The CIDR of the subnet.

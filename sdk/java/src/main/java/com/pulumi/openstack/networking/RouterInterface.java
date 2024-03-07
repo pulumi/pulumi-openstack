@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Manages a V2 router interface resource within OpenStack.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -68,12 +70,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Router Interfaces can be imported using the port `id`, e.g.
  * 
- *  $ openstack port list --router &lt;router name or id&gt;
+ * $ openstack port list --router &lt;router name or id&gt;
  * 
  * ```sh
  * $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 port_id

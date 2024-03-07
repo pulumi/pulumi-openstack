@@ -279,6 +279,7 @@ class EndpointV3(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -289,13 +290,14 @@ class EndpointV3(pulumi.CustomResource):
             endpoint_region=service1.region,
             url="http://my-endpoint")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Endpoints can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:identity/endpointV3:EndpointV3 endpoint_1 5392472b-106a-4845-90c6-7c8445f18770
+        $ pulumi import openstack:identity/endpointV3:EndpointV3 endpoint_1 5392472b-106a-4845-90c6-7c8445f18770
         ```
 
         :param str resource_name: The name of the resource.
@@ -323,6 +325,7 @@ class EndpointV3(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -333,13 +336,14 @@ class EndpointV3(pulumi.CustomResource):
             endpoint_region=service1.region,
             url="http://my-endpoint")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Endpoints can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:identity/endpointV3:EndpointV3 endpoint_1 5392472b-106a-4845-90c6-7c8445f18770
+        $ pulumi import openstack:identity/endpointV3:EndpointV3 endpoint_1 5392472b-106a-4845-90c6-7c8445f18770
         ```
 
         :param str resource_name: The name of the resource.

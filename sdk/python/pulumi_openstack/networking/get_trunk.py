@@ -169,12 +169,14 @@ def get_trunk(admin_state_up: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     trunk1 = openstack.networking.get_trunk(name="trunk_1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool admin_state_up: The administrative state of the trunk.
@@ -233,12 +235,14 @@ def get_trunk_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = No
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     trunk1 = openstack.networking.get_trunk(name="trunk_1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool admin_state_up: The administrative state of the trunk.

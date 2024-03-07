@@ -14,32 +14,38 @@ import * as utilities from "../utilities";
  * in state.
  *
  * ## Example Usage
+ *
  * ### EC2 credential in current project scope
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const ec2Key1 = new openstack.identity.Ec2CredentialV3("ec2Key1", {});
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### EC2 credential in pre-defined project scope
  *
  * This allows administrative users to create EC2 credentials for a scope different
  * from the current auth scope.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const ec2Key1 = new openstack.identity.Ec2CredentialV3("ec2Key1", {projectId: "f7ac731cc11f40efbc03a9f9e1d1d21f"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * EC2 Credentials can be imported using the `access`, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:identity/ec2CredentialV3:Ec2CredentialV3 ec2_cred_1 2d0ac4a2f81b4b0f9513ee49e780647d
+ * $ pulumi import openstack:identity/ec2CredentialV3:Ec2CredentialV3 ec2_cred_1 2d0ac4a2f81b4b0f9513ee49e780647d
  * ```
  */
 export class Ec2CredentialV3 extends pulumi.CustomResource {

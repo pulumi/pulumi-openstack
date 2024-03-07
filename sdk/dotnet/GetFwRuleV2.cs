@@ -14,10 +14,9 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// Use this data source to get information of an available OpenStack firewall rule v2.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.OpenStack
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetFwRuleV2Result> InvokeAsync(GetFwRuleV2Args? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFwRuleV2Result>("openstack:index/getFwRuleV2:getFwRuleV2", args ?? new GetFwRuleV2Args(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.OpenStack
         /// <summary>
         /// Use this data source to get information of an available OpenStack firewall rule v2.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.OpenStack
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetFwRuleV2Result> Invoke(GetFwRuleV2InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFwRuleV2Result>("openstack:index/getFwRuleV2:getFwRuleV2", args ?? new GetFwRuleV2InvokeArgs(), options.WithDefaults());

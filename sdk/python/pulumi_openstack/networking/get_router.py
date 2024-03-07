@@ -202,12 +202,14 @@ def get_router(admin_state_up: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     router = openstack.networking.get_router(name="router_1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool admin_state_up: Administrative up/down status for the router (must be "true" or "false" if provided).
@@ -272,12 +274,14 @@ def get_router_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] = N
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     router = openstack.networking.get_router(name="router_1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool admin_state_up: Administrative up/down status for the router (must be "true" or "false" if provided).

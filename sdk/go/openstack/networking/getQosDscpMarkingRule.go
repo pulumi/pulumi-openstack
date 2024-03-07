@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupQosDscpMarkingRule(ctx *pulumi.Context, args *LookupQosDscpMarkingRuleArgs, opts ...pulumi.InvokeOption) (*LookupQosDscpMarkingRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupQosDscpMarkingRuleResult

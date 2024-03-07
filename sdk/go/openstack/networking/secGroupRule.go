@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,6 +54,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // > **Note:** To expose the full port-range 1:65535, use `0` for `portRangeMin`
 // and `portRangeMax`.
@@ -62,9 +64,7 @@ import (
 // Security Group Rules can be imported using the `id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
-//
+// $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
 // ```
 type SecGroupRule struct {
 	pulumi.CustomResourceState

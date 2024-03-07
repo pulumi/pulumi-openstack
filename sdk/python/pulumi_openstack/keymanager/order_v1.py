@@ -292,8 +292,10 @@ class OrderV1(pulumi.CustomResource):
         Manages a V1 Barbican order resource within OpenStack.
 
         ## Example Usage
+
         ### Symmetric key order
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -307,8 +309,11 @@ class OrderV1(pulumi.CustomResource):
             ),
             type="key")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Asymmetric key pair order
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -321,13 +326,14 @@ class OrderV1(pulumi.CustomResource):
             ),
             type="asymmetric")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Orders can be imported using the order id (the last part of the order reference), e.g.:
 
         ```sh
-         $ pulumi import openstack:keymanager/orderV1:OrderV1 order_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
+        $ pulumi import openstack:keymanager/orderV1:OrderV1 order_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
         ```
 
         :param str resource_name: The name of the resource.
@@ -349,8 +355,10 @@ class OrderV1(pulumi.CustomResource):
         Manages a V1 Barbican order resource within OpenStack.
 
         ## Example Usage
+
         ### Symmetric key order
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -364,8 +372,11 @@ class OrderV1(pulumi.CustomResource):
             ),
             type="key")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Asymmetric key pair order
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -378,13 +389,14 @@ class OrderV1(pulumi.CustomResource):
             ),
             type="asymmetric")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Orders can be imported using the order id (the last part of the order reference), e.g.:
 
         ```sh
-         $ pulumi import openstack:keymanager/orderV1:OrderV1 order_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
+        $ pulumi import openstack:keymanager/orderV1:OrderV1 order_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
         ```
 
         :param str resource_name: The name of the resource.

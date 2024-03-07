@@ -14,6 +14,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,13 +34,14 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Load Balancer Members can be imported using the `id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:loadbalancer/monitorV1:MonitorV1 monitor_1 119d7530-72e9-449a-aa97-124a5ef1992c
+    /// $ pulumi import openstack:loadbalancer/monitorV1:MonitorV1 monitor_1 119d7530-72e9-449a-aa97-124a5ef1992c
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:loadbalancer/monitorV1:MonitorV1")]

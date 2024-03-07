@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -20,13 +21,14 @@ import * as utilities from "../utilities";
  *     subnetId: "12345",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Load Balancer VIPs can be imported using the `id`, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:loadbalancer/vip:Vip vip_1 50e16b26-89c1-475e-a492-76167182511e
+ * $ pulumi import openstack:loadbalancer/vip:Vip vip_1 50e16b26-89c1-475e-a492-76167182511e
  * ```
  */
 export class Vip extends pulumi.CustomResource {

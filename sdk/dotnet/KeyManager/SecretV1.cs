@@ -11,8 +11,10 @@ namespace Pulumi.OpenStack.KeyManager
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### Simple secret
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,10 +39,13 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Secret with the ACL
     /// 
     /// &gt; **Note** Only read ACLs are supported
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.IO;
@@ -71,13 +76,14 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Secrets can be imported using the secret id (the last part of the secret reference), e.g.:
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+    /// $ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:keymanager/secretV1:SecretV1")]

@@ -191,6 +191,7 @@ class SubnetRoute(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -206,13 +207,14 @@ class SubnetRoute(pulumi.CustomResource):
             destination_cidr="10.0.1.0/24",
             next_hop="192.168.199.254")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Routing entries can be imported using a combined ID using the following format: `<subnet_id>-route-<destination_cidr>-<next_hop>`
 
         ```sh
-         $ pulumi import openstack:networking/subnetRoute:SubnetRoute subnet_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
+        $ pulumi import openstack:networking/subnetRoute:SubnetRoute subnet_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
         ```
 
         :param str resource_name: The name of the resource.
@@ -239,6 +241,7 @@ class SubnetRoute(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -254,13 +257,14 @@ class SubnetRoute(pulumi.CustomResource):
             destination_cidr="10.0.1.0/24",
             next_hop="192.168.199.254")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Routing entries can be imported using a combined ID using the following format: `<subnet_id>-route-<destination_cidr>-<next_hop>`
 
         ```sh
-         $ pulumi import openstack:networking/subnetRoute:SubnetRoute subnet_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
+        $ pulumi import openstack:networking/subnetRoute:SubnetRoute subnet_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
         ```
 
         :param str resource_name: The name of the resource.

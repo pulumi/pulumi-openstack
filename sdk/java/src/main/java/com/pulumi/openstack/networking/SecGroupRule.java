@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * and also allows an admin to target a specific tenant_id.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -61,6 +63,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &gt; **Note:** To expose the full port-range 1:65535, use `0` for `port_range_min`
  * and `port_range_max`.
@@ -70,7 +73,7 @@ import javax.annotation.Nullable;
  * Security Group Rules can be imported using the `id`, e.g.
  * 
  * ```sh
- *  $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
+ * $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
  * ```
  * 
  */

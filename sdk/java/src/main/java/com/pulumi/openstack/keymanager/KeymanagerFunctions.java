@@ -21,6 +21,8 @@ public final class KeymanagerFunctions {
      * Use this data source to get the ID of an available Barbican container.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -49,6 +51,7 @@ public final class KeymanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerResult> getContainer() {
@@ -58,6 +61,8 @@ public final class KeymanagerFunctions {
      * Use this data source to get the ID of an available Barbican container.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -86,6 +91,7 @@ public final class KeymanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContainerResult> getContainerPlain() {
@@ -95,6 +101,8 @@ public final class KeymanagerFunctions {
      * Use this data source to get the ID of an available Barbican container.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -123,6 +131,7 @@ public final class KeymanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerResult> getContainer(GetContainerArgs args) {
@@ -132,6 +141,8 @@ public final class KeymanagerFunctions {
      * Use this data source to get the ID of an available Barbican container.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -160,6 +171,7 @@ public final class KeymanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContainerResult> getContainerPlain(GetContainerPlainArgs args) {
@@ -169,6 +181,8 @@ public final class KeymanagerFunctions {
      * Use this data source to get the ID of an available Barbican container.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -197,6 +211,7 @@ public final class KeymanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerResult> getContainer(GetContainerArgs args, InvokeOptions options) {
@@ -206,6 +221,8 @@ public final class KeymanagerFunctions {
      * Use this data source to get the ID of an available Barbican container.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -234,6 +251,7 @@ public final class KeymanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContainerResult> getContainerPlain(GetContainerPlainArgs args, InvokeOptions options) {
@@ -241,6 +259,8 @@ public final class KeymanagerFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -270,6 +290,8 @@ public final class KeymanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Date Filters
      * 
      * The values for the `expiration_filter`, `created_at_filter`, and
@@ -280,6 +302,8 @@ public final class KeymanagerFunctions {
      * 
      * For example, to get a passphrase a Secret with CBC moda, that will expire in
      * January of 2020:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -310,6 +334,7 @@ public final class KeymanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecretResult> getSecret() {
@@ -317,6 +342,8 @@ public final class KeymanagerFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -346,6 +373,8 @@ public final class KeymanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Date Filters
      * 
      * The values for the `expiration_filter`, `created_at_filter`, and
@@ -356,6 +385,8 @@ public final class KeymanagerFunctions {
      * 
      * For example, to get a passphrase a Secret with CBC moda, that will expire in
      * January of 2020:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -386,6 +417,7 @@ public final class KeymanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecretResult> getSecretPlain() {
@@ -393,6 +425,8 @@ public final class KeymanagerFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -422,6 +456,8 @@ public final class KeymanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Date Filters
      * 
      * The values for the `expiration_filter`, `created_at_filter`, and
@@ -432,6 +468,8 @@ public final class KeymanagerFunctions {
      * 
      * For example, to get a passphrase a Secret with CBC moda, that will expire in
      * January of 2020:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -462,6 +500,7 @@ public final class KeymanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecretResult> getSecret(GetSecretArgs args) {
@@ -469,6 +508,8 @@ public final class KeymanagerFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -498,6 +539,8 @@ public final class KeymanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Date Filters
      * 
      * The values for the `expiration_filter`, `created_at_filter`, and
@@ -508,6 +551,8 @@ public final class KeymanagerFunctions {
      * 
      * For example, to get a passphrase a Secret with CBC moda, that will expire in
      * January of 2020:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -538,6 +583,7 @@ public final class KeymanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecretResult> getSecretPlain(GetSecretPlainArgs args) {
@@ -545,6 +591,8 @@ public final class KeymanagerFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -574,6 +622,8 @@ public final class KeymanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Date Filters
      * 
      * The values for the `expiration_filter`, `created_at_filter`, and
@@ -584,6 +634,8 @@ public final class KeymanagerFunctions {
      * 
      * For example, to get a passphrase a Secret with CBC moda, that will expire in
      * January of 2020:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -614,6 +666,7 @@ public final class KeymanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecretResult> getSecret(GetSecretArgs args, InvokeOptions options) {
@@ -621,6 +674,8 @@ public final class KeymanagerFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -650,6 +705,8 @@ public final class KeymanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Date Filters
      * 
      * The values for the `expiration_filter`, `created_at_filter`, and
@@ -660,6 +717,8 @@ public final class KeymanagerFunctions {
      * 
      * For example, to get a passphrase a Secret with CBC moda, that will expire in
      * January of 2020:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -690,6 +749,7 @@ public final class KeymanagerFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecretResult> getSecretPlain(GetSecretPlainArgs args, InvokeOptions options) {

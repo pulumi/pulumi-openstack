@@ -204,8 +204,10 @@ class FloatingIpAssociate(pulumi.CustomResource):
         Associate a floating IP to an instance.
 
         ## Example Usage
+
         ### Automatically detect the correct network
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -220,8 +222,11 @@ class FloatingIpAssociate(pulumi.CustomResource):
             floating_ip=fip1_floating_ip.address,
             instance_id=instance1.id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Explicitly set the network to attach to
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -245,13 +250,15 @@ class FloatingIpAssociate(pulumi.CustomResource):
             instance_id=instance1.id,
             fixed_ip=instance1.networks[1].fixed_ip_v4)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        This resource can be imported by specifying all three arguments, separated by a forward slash:
+        This resource can be imported by specifying all three arguments, separated
+        by a forward slash:
 
         ```sh
-         $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 floating_ip/instance_id/fixed_ip
+        $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 floating_ip/instance_id/fixed_ip
         ```
 
         :param str resource_name: The name of the resource.
@@ -274,8 +281,10 @@ class FloatingIpAssociate(pulumi.CustomResource):
         Associate a floating IP to an instance.
 
         ## Example Usage
+
         ### Automatically detect the correct network
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -290,8 +299,11 @@ class FloatingIpAssociate(pulumi.CustomResource):
             floating_ip=fip1_floating_ip.address,
             instance_id=instance1.id)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Explicitly set the network to attach to
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -315,13 +327,15 @@ class FloatingIpAssociate(pulumi.CustomResource):
             instance_id=instance1.id,
             fixed_ip=instance1.networks[1].fixed_ip_v4)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        This resource can be imported by specifying all three arguments, separated by a forward slash:
+        This resource can be imported by specifying all three arguments, separated
+        by a forward slash:
 
         ```sh
-         $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 floating_ip/instance_id/fixed_ip
+        $ pulumi import openstack:compute/floatingIpAssociate:FloatingIpAssociate fip_1 floating_ip/instance_id/fixed_ip
         ```
 
         :param str resource_name: The name of the resource.

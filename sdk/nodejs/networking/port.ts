@@ -16,8 +16,10 @@ import * as utilities from "../utilities";
  * creation is triggered. More info here
  *
  * ## Example Usage
+ *
  * ### Simple port
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -28,8 +30,11 @@ import * as utilities from "../utilities";
  *     adminStateUp: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Port defining fixed_ip.subnet_id
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -47,8 +52,11 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Port with physical binding information
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -81,6 +89,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Notes
  *
  * ### Ports and Instances
@@ -94,7 +104,7 @@ import * as utilities from "../utilities";
  * Ports can be imported using the `id`, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+ * $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
  * ```
  */
 export class Port extends pulumi.CustomResource {

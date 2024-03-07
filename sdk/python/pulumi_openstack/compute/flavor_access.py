@@ -152,6 +152,7 @@ class FlavorAccess(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -166,13 +167,15 @@ class FlavorAccess(pulumi.CustomResource):
             tenant_id=project1.id,
             flavor_id=flavor1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        This resource can be imported by specifying all two arguments, separated by a forward slash:
+        This resource can be imported by specifying all two arguments, separated
+        by a forward slash:
 
         ```sh
-         $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 flavor_id/tenant_id
+        $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 flavor_id/tenant_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -200,6 +203,7 @@ class FlavorAccess(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -214,13 +218,15 @@ class FlavorAccess(pulumi.CustomResource):
             tenant_id=project1.id,
             flavor_id=flavor1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        This resource can be imported by specifying all two arguments, separated by a forward slash:
+        This resource can be imported by specifying all two arguments, separated
+        by a forward slash:
 
         ```sh
-         $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 flavor_id/tenant_id
+        $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 flavor_id/tenant_id
         ```
 
         :param str resource_name: The name of the resource.

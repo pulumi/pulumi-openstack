@@ -515,8 +515,10 @@ class Container(pulumi.CustomResource):
         Manages a V1 container resource within OpenStack.
 
         ## Example Usage
+
         ### Basic Container
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -529,8 +531,11 @@ class Container(pulumi.CustomResource):
             region="RegionOne",
             versioning=True)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Basic Container with legacy versioning
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -546,8 +551,11 @@ class Container(pulumi.CustomResource):
                 type="versions",
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Global Read Access
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -556,8 +564,11 @@ class Container(pulumi.CustomResource):
             container_read=".r:*",
             region="RegionOne")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Global Read and List Access
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -566,8 +577,11 @@ class Container(pulumi.CustomResource):
             container_read=".r:*,.rlistings",
             region="RegionOne")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Write-Only Access for a User
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -578,17 +592,23 @@ class Container(pulumi.CustomResource):
             container_write=f"{current.project_id}:{var['username']}",
             region="RegionOne")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by specifying the name of the container:
 
-        Some attributes can't be imported : * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key`
+        Some attributes can't be imported :
+        * `force_destroy`
+        * `content_type`
+        * `metadata`
+        * `container_sync_to`
+        * `container_sync_key`
 
         So you'll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.
 
         ```sh
-         $ pulumi import openstack:objectstorage/container:Container container_1 container_name
+        $ pulumi import openstack:objectstorage/container:Container container_1 container_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -633,8 +653,10 @@ class Container(pulumi.CustomResource):
         Manages a V1 container resource within OpenStack.
 
         ## Example Usage
+
         ### Basic Container
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -647,8 +669,11 @@ class Container(pulumi.CustomResource):
             region="RegionOne",
             versioning=True)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Basic Container with legacy versioning
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -664,8 +689,11 @@ class Container(pulumi.CustomResource):
                 type="versions",
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Global Read Access
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -674,8 +702,11 @@ class Container(pulumi.CustomResource):
             container_read=".r:*",
             region="RegionOne")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Global Read and List Access
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -684,8 +715,11 @@ class Container(pulumi.CustomResource):
             container_read=".r:*,.rlistings",
             region="RegionOne")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Write-Only Access for a User
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -696,17 +730,23 @@ class Container(pulumi.CustomResource):
             container_write=f"{current.project_id}:{var['username']}",
             region="RegionOne")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         This resource can be imported by specifying the name of the container:
 
-        Some attributes can't be imported : * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key`
+        Some attributes can't be imported :
+        * `force_destroy`
+        * `content_type`
+        * `metadata`
+        * `container_sync_to`
+        * `container_sync_key`
 
         So you'll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.
 
         ```sh
-         $ pulumi import openstack:objectstorage/container:Container container_1 container_name
+        $ pulumi import openstack:objectstorage/container:Container container_1 container_name
         ```
 
         :param str resource_name: The name of the resource.

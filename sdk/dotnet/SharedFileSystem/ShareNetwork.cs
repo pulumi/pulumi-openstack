@@ -16,8 +16,10 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// shares are created.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Basic share network
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -47,8 +49,11 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Share network with associated security services
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -94,13 +99,14 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the ID of the share network:
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 id
+    /// $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 id
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:sharedfilesystem/shareNetwork:ShareNetwork")]

@@ -15,10 +15,9 @@ namespace Pulumi.OpenStack.Networking
         /// Use this data source to get a list of Openstack Port IDs matching the
         /// specified criteria.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPortIdsResult> InvokeAsync(GetPortIdsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPortIdsResult>("openstack:networking/getPortIds:getPortIds", args ?? new GetPortIdsArgs(), options.WithDefaults());
@@ -44,10 +42,9 @@ namespace Pulumi.OpenStack.Networking
         /// Use this data source to get a list of Openstack Port IDs matching the
         /// specified criteria.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,8 +60,7 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPortIdsResult> Invoke(GetPortIdsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPortIdsResult>("openstack:networking/getPortIds:getPortIds", args ?? new GetPortIdsInvokeArgs(), options.WithDefaults());

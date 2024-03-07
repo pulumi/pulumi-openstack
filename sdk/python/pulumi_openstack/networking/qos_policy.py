@@ -407,21 +407,24 @@ class QosPolicy(pulumi.CustomResource):
         Manages a V2 Neutron QoS policy resource within OpenStack.
 
         ## Example Usage
+
         ### Create a QoS Policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="bw_limit")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         QoS Policies can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/qosPolicy:QosPolicy qos_policy_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae
+        $ pulumi import openstack:networking/qosPolicy:QosPolicy qos_policy_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae
         ```
 
         :param str resource_name: The name of the resource.
@@ -455,21 +458,24 @@ class QosPolicy(pulumi.CustomResource):
         Manages a V2 Neutron QoS policy resource within OpenStack.
 
         ## Example Usage
+
         ### Create a QoS Policy
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="bw_limit")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         QoS Policies can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/qosPolicy:QosPolicy qos_policy_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae
+        $ pulumi import openstack:networking/qosPolicy:QosPolicy qos_policy_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae
         ```
 
         :param str resource_name: The name of the resource.

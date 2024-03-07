@@ -23,7 +23,10 @@ import javax.annotation.Nullable;
  * Manages a DNS zone in the OpenStack DNS Service.
  * 
  * ## Example Usage
+ * 
  * ### Automatically detect the correct network
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -55,6 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

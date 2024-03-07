@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * Manages a networking V2 trunk resource within OpenStack.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -99,6 +101,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="openstack:networking/trunk:Trunk")

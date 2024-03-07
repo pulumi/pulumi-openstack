@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
  * Manages a V1 Magnum node group resource within OpenStack.
  *
  * ## Example Usage
+ *
  * ### Create a Nodegroup
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -19,6 +21,8 @@ import * as utilities from "../utilities";
  *     nodeCount: 5,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Attributes reference
  *
  * The following attributes are exported:
@@ -43,7 +47,7 @@ import * as utilities from "../utilities";
  * Node groups can be imported using the `id` (cluster_id/nodegroup_id), e.g.
  *
  * ```sh
- *  $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922/ce0f9463-dd25-474b-9fe8-94de63e5e42b
+ * $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922/ce0f9463-dd25-474b-9fe8-94de63e5e42b
  * ```
  */
 export class NodeGroup extends pulumi.CustomResource {

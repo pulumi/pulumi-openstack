@@ -17,6 +17,7 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -29,13 +30,14 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Roles can be imported using the `id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:identity/role:Role role_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+    /// $ pulumi import openstack:identity/role:Role role_1 89c60255-9bd6-460c-822a-e2b959ede9d2
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:identity/role:Role")]

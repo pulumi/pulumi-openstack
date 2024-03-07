@@ -20,6 +20,7 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -52,6 +53,7 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OpenStackResourceType("openstack:objectstorage/tempUrl:TempUrl")]
     public partial class TempUrl : global::Pulumi.CustomResource

@@ -599,19 +599,21 @@ class LoadBalancer(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         lb1 = openstack.loadbalancer.LoadBalancer("lb1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Load Balancer can be imported using the Load Balancer ID, e.g.:
 
         ```sh
-         $ pulumi import openstack:loadbalancer/loadBalancer:LoadBalancer loadbalancer_1 19bcfdc7-c521-4a7e-9459-6750bd16df76
+        $ pulumi import openstack:loadbalancer/loadBalancer:LoadBalancer loadbalancer_1 19bcfdc7-c521-4a7e-9459-6750bd16df76
         ```
 
         :param str resource_name: The name of the resource.
@@ -669,19 +671,21 @@ class LoadBalancer(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         lb1 = openstack.loadbalancer.LoadBalancer("lb1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Load Balancer can be imported using the Load Balancer ID, e.g.:
 
         ```sh
-         $ pulumi import openstack:loadbalancer/loadBalancer:LoadBalancer loadbalancer_1 19bcfdc7-c521-4a7e-9459-6750bd16df76
+        $ pulumi import openstack:loadbalancer/loadBalancer:LoadBalancer loadbalancer_1 19bcfdc7-c521-4a7e-9459-6750bd16df76
         ```
 
         :param str resource_name: The name of the resource.
