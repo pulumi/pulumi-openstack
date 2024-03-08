@@ -207,8 +207,10 @@ class PortSecGroupAssociate(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Append a security group to an existing port
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -219,8 +221,11 @@ class PortSecGroupAssociate(pulumi.CustomResource):
             port_id=system_port.id,
             security_group_ids=[secgroup.id])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Enforce a security group to an existing port
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -232,8 +237,11 @@ class PortSecGroupAssociate(pulumi.CustomResource):
             enforce=True,
             security_group_ids=[secgroup.id])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Remove all security groups from an existing port
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -244,13 +252,14 @@ class PortSecGroupAssociate(pulumi.CustomResource):
             enforce=True,
             security_group_ids=[])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Port security group association can be imported using the `id` of the port, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/portSecGroupAssociate:PortSecGroupAssociate port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+        $ pulumi import openstack:networking/portSecGroupAssociate:PortSecGroupAssociate port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
         ```
 
         :param str resource_name: The name of the resource.
@@ -274,8 +283,10 @@ class PortSecGroupAssociate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Append a security group to an existing port
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -286,8 +297,11 @@ class PortSecGroupAssociate(pulumi.CustomResource):
             port_id=system_port.id,
             security_group_ids=[secgroup.id])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Enforce a security group to an existing port
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -299,8 +313,11 @@ class PortSecGroupAssociate(pulumi.CustomResource):
             enforce=True,
             security_group_ids=[secgroup.id])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Remove all security groups from an existing port
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -311,13 +328,14 @@ class PortSecGroupAssociate(pulumi.CustomResource):
             enforce=True,
             security_group_ids=[])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Port security group association can be imported using the `id` of the port, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/portSecGroupAssociate:PortSecGroupAssociate port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+        $ pulumi import openstack:networking/portSecGroupAssociate:PortSecGroupAssociate port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
         ```
 
         :param str resource_name: The name of the resource.

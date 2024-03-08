@@ -12,8 +12,10 @@ import (
 )
 
 // ## Example Usage
+//
 // ### Simple secret
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,10 +47,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Secret with the ACL
 //
 // > **Note** Only read ACLs are supported
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -93,15 +98,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Secrets can be imported using the secret id (the last part of the secret reference), e.g.:
 //
 // ```sh
-//
-//	$ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
-//
+// $ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
 // ```
 type SecretV1 struct {
 	pulumi.CustomResourceState

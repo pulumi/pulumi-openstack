@@ -9,8 +9,10 @@ import * as utilities from "../utilities";
  * Compute (Nova) v2 API.
  *
  * ## Example Usage
+ *
  * ### Basic Attachment
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -22,8 +24,11 @@ import * as utilities from "../utilities";
  *     networkId: openstack_networking_port_v2.network_1.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Attachment Specifying a Fixed IP
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -36,8 +41,11 @@ import * as utilities from "../utilities";
  *     fixedIp: "10.0.10.10",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Attachment Using an Existing Port
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -53,13 +61,15 @@ import * as utilities from "../utilities";
  *     portId: port1.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * Interface Attachments can be imported using the Instance ID and Port ID separated by a slash, e.g.
+ * Interface Attachments can be imported using the Instance ID and Port ID
+ * separated by a slash, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:compute/interfaceAttach:InterfaceAttach ai_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
+ * $ pulumi import openstack:compute/interfaceAttach:InterfaceAttach ai_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
  * ```
  */
 export class InterfaceAttach extends pulumi.CustomResource {

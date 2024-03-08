@@ -10,6 +10,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -22,6 +23,7 @@ import * as utilities from "../utilities";
  *     sort: "updated_at",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getImageIds(args?: GetImageIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetImageIdsResult> {
     args = args || {};
@@ -168,6 +170,7 @@ export interface GetImageIdsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -180,6 +183,7 @@ export interface GetImageIdsResult {
  *     sort: "updated_at",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getImageIdsOutput(args?: GetImageIdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageIdsResult> {
     return pulumi.output(args).apply((a: any) => getImageIds(a, opts))

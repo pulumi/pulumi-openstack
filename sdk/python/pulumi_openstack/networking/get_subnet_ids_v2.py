@@ -220,6 +220,7 @@ def get_subnet_ids_v2(cidr: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
@@ -227,6 +228,7 @@ def get_subnet_ids_v2(cidr: Optional[str] = None,
     subnets = openstack.networking.get_subnet_ids_v2(name_regex="public",
         tags=["public"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cidr: The CIDR of the subnet.
@@ -315,6 +317,7 @@ def get_subnet_ids_v2_output(cidr: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
@@ -322,6 +325,7 @@ def get_subnet_ids_v2_output(cidr: Optional[pulumi.Input[Optional[str]]] = None,
     subnets = openstack.networking.get_subnet_ids_v2(name_regex="public",
         tags=["public"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cidr: The CIDR of the subnet.

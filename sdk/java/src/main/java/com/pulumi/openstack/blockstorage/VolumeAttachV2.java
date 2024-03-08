@@ -37,6 +37,8 @@ import javax.annotation.Nullable;
  * different cloud provider.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -77,10 +79,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * 
- * ## Import
- * 
- * It is not possible to import this resource.
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="openstack:blockstorage/volumeAttachV2:VolumeAttachV2")

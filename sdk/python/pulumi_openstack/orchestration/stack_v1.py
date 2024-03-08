@@ -672,6 +672,7 @@ class StackV1(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -703,13 +704,14 @@ class StackV1(pulumi.CustomResource):
             },
             timeout=30)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         stacks can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:orchestration/stackV1:StackV1 stack_1 ea257959-eeb1-4c10-8d33-26f0409a755d
+        $ pulumi import openstack:orchestration/stackV1:StackV1 stack_1 ea257959-eeb1-4c10-8d33-26f0409a755d
         ```
 
         :param str resource_name: The name of the resource.
@@ -761,6 +763,7 @@ class StackV1(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -792,13 +795,14 @@ class StackV1(pulumi.CustomResource):
             },
             timeout=30)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         stacks can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:orchestration/stackV1:StackV1 stack_1 ea257959-eeb1-4c10-8d33-26f0409a755d
+        $ pulumi import openstack:orchestration/stackV1:StackV1 stack_1 ea257959-eeb1-4c10-8d33-26f0409a755d
         ```
 
         :param str resource_name: The name of the resource.

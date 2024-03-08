@@ -516,6 +516,7 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -542,13 +543,14 @@ class User(pulumi.CustomResource):
                 "email": "user_1@foobar.com",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Users can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:identity/user:User user_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+        $ pulumi import openstack:identity/user:User user_1 89c60255-9bd6-460c-822a-e2b959ede9d2
         ```
 
         :param str resource_name: The name of the resource.
@@ -595,6 +597,7 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -621,13 +624,14 @@ class User(pulumi.CustomResource):
                 "email": "user_1@foobar.com",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Users can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:identity/user:User user_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+        $ pulumi import openstack:identity/user:User user_1 89c60255-9bd6-460c-822a-e2b959ede9d2
         ```
 
         :param str resource_name: The name of the resource.

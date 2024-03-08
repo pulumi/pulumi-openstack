@@ -14,6 +14,7 @@ namespace Pulumi.OpenStack.VPNaaS
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -44,13 +45,14 @@ namespace Pulumi.OpenStack.VPNaaS
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Site Connections can be imported using the `id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:vpnaas/siteConnection:SiteConnection conn_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+    /// $ pulumi import openstack:vpnaas/siteConnection:SiteConnection conn_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:vpnaas/siteConnection:SiteConnection")]

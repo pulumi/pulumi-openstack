@@ -238,16 +238,21 @@ class AddressScope(pulumi.CustomResource):
         Manages a V2 Neutron addressscope resource within OpenStack.
 
         ## Example Usage
+
         ### Create an Address-scope
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         addressscope1 = openstack.networking.AddressScope("addressscope1", ip_version=6)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a Subnet Pool from an Address-scope
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -260,13 +265,14 @@ class AddressScope(pulumi.CustomResource):
             ],
             address_scope_id=addressscope1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Address-scopes can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/addressScope:AddressScope addressscope_1 9cc35860-522a-4d35-974d-51d4b011801e
+        $ pulumi import openstack:networking/addressScope:AddressScope addressscope_1 9cc35860-522a-4d35-974d-51d4b011801e
         ```
 
         :param str resource_name: The name of the resource.
@@ -296,16 +302,21 @@ class AddressScope(pulumi.CustomResource):
         Manages a V2 Neutron addressscope resource within OpenStack.
 
         ## Example Usage
+
         ### Create an Address-scope
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         addressscope1 = openstack.networking.AddressScope("addressscope1", ip_version=6)
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a Subnet Pool from an Address-scope
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -318,13 +329,14 @@ class AddressScope(pulumi.CustomResource):
             ],
             address_scope_id=addressscope1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Address-scopes can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/addressScope:AddressScope addressscope_1 9cc35860-522a-4d35-974d-51d4b011801e
+        $ pulumi import openstack:networking/addressScope:AddressScope addressscope_1 9cc35860-522a-4d35-974d-51d4b011801e
         ```
 
         :param str resource_name: The name of the resource.

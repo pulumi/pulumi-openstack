@@ -11,8 +11,10 @@ namespace Pulumi.OpenStack.SharedFileSystem
 {
     /// <summary>
     /// ## Example Usage
+    /// 
     /// ### NFS
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -58,8 +60,11 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### CIFS
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -132,13 +137,15 @@ namespace Pulumi.OpenStack.SharedFileSystem
     ///     };
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.:
+    /// This resource can be imported by specifying the ID of the share and the ID of the
+    /// share access, separated by a slash, e.g.:
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 share_id/share_access_id
+    /// $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 share_id/share_access_id
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:sharedfilesystem/shareAccess:ShareAccess")]

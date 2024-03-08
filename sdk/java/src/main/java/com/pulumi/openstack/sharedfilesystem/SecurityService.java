@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * Minimum supported Manila microversion is 2.7.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -65,13 +67,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * This resource can be imported by specifying the ID of the security service:
  * 
  * ```sh
- *  $ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 id
+ * $ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 id
  * ```
  * 
  */

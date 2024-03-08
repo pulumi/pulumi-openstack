@@ -24,6 +24,8 @@ public final class ContainerinfraFunctions {
      * Use this data source to get the ID of an available OpenStack Magnum cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -52,6 +54,7 @@ public final class ContainerinfraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args) {
@@ -61,6 +64,8 @@ public final class ContainerinfraFunctions {
      * Use this data source to get the ID of an available OpenStack Magnum cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -89,6 +94,7 @@ public final class ContainerinfraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args) {
@@ -98,6 +104,8 @@ public final class ContainerinfraFunctions {
      * Use this data source to get the ID of an available OpenStack Magnum cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -126,6 +134,7 @@ public final class ContainerinfraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterResult> getCluster(GetClusterArgs args, InvokeOptions options) {
@@ -135,6 +144,8 @@ public final class ContainerinfraFunctions {
      * Use this data source to get the ID of an available OpenStack Magnum cluster.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -163,6 +174,7 @@ public final class ContainerinfraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args, InvokeOptions options) {
@@ -173,6 +185,8 @@ public final class ContainerinfraFunctions {
      * template.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -201,6 +215,7 @@ public final class ContainerinfraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterTemplateResult> getClusterTemplate(GetClusterTemplateArgs args) {
@@ -211,6 +226,8 @@ public final class ContainerinfraFunctions {
      * template.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -239,6 +256,7 @@ public final class ContainerinfraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterTemplateResult> getClusterTemplatePlain(GetClusterTemplatePlainArgs args) {
@@ -249,6 +267,8 @@ public final class ContainerinfraFunctions {
      * template.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -277,6 +297,7 @@ public final class ContainerinfraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClusterTemplateResult> getClusterTemplate(GetClusterTemplateArgs args, InvokeOptions options) {
@@ -287,6 +308,8 @@ public final class ContainerinfraFunctions {
      * template.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -315,6 +338,7 @@ public final class ContainerinfraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClusterTemplateResult> getClusterTemplatePlain(GetClusterTemplatePlainArgs args, InvokeOptions options) {
@@ -324,6 +348,8 @@ public final class ContainerinfraFunctions {
      * Use this data source to get information of an available OpenStack Magnum node group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -353,6 +379,7 @@ public final class ContainerinfraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodeGroupResult> getNodeGroup(GetNodeGroupArgs args) {
@@ -362,6 +389,8 @@ public final class ContainerinfraFunctions {
      * Use this data source to get information of an available OpenStack Magnum node group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -391,6 +420,7 @@ public final class ContainerinfraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodeGroupResult> getNodeGroupPlain(GetNodeGroupPlainArgs args) {
@@ -400,6 +430,8 @@ public final class ContainerinfraFunctions {
      * Use this data source to get information of an available OpenStack Magnum node group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -429,6 +461,7 @@ public final class ContainerinfraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNodeGroupResult> getNodeGroup(GetNodeGroupArgs args, InvokeOptions options) {
@@ -438,6 +471,8 @@ public final class ContainerinfraFunctions {
      * Use this data source to get information of an available OpenStack Magnum node group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -467,6 +502,7 @@ public final class ContainerinfraFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNodeGroupResult> getNodeGroupPlain(GetNodeGroupPlainArgs args, InvokeOptions options) {

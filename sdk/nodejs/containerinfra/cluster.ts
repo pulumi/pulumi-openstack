@@ -12,8 +12,10 @@ import * as utilities from "../utilities";
  * state.
  *
  * ## Example Usage
+ *
  * ### Create a Cluster
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -25,6 +27,8 @@ import * as utilities from "../utilities";
  *     nodeCount: 5,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Attributes reference
  *
  * The following attributes are exported:
@@ -66,7 +70,7 @@ import * as utilities from "../utilities";
  * Clusters can be imported using the `id`, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
+ * $ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
  * ```
  */
 export class Cluster extends pulumi.CustomResource {

@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -30,13 +31,15 @@ import * as utilities from "../utilities";
  *     flavorId: flavor1.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * This resource can be imported by specifying all two arguments, separated by a forward slash:
+ * This resource can be imported by specifying all two arguments, separated
+ * by a forward slash:
  *
  * ```sh
- *  $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 flavor_id/tenant_id
+ * $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 flavor_id/tenant_id
  * ```
  */
 export class FlavorAccess extends pulumi.CustomResource {

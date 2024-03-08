@@ -178,12 +178,14 @@ def get_user(domain_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     user1 = openstack.identity.get_user(name="user_1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str domain_id: The domain this user belongs to.
@@ -237,12 +239,14 @@ def get_user_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     user1 = openstack.identity.get_user(name="user_1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str domain_id: The domain this user belongs to.

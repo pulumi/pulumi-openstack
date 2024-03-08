@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
  * Manages a DNS zone in the OpenStack DNS Service.
  *
  * ## Example Usage
+ *
  * ### Automatically detect the correct network
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -21,6 +23,7 @@ import * as utilities from "../utilities";
  *     type: "PRIMARY",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

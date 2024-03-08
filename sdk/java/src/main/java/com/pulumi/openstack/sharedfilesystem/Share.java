@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * Use this resource to configure a share.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -77,13 +79,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * This resource can be imported by specifying the ID of the share:
  * 
  * ```sh
- *  $ pulumi import openstack:sharedfilesystem/share:Share share_1 id
+ * $ pulumi import openstack:sharedfilesystem/share:Share share_1 id
  * ```
  * 
  */

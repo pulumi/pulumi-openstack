@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -33,13 +34,14 @@ import * as utilities from "../utilities";
  *     shareNetworkId: sharenetwork1.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * This resource can be imported by specifying the ID of the share:
  *
  * ```sh
- *  $ pulumi import openstack:sharedfilesystem/share:Share share_1 id
+ * $ pulumi import openstack:sharedfilesystem/share:Share share_1 id
  * ```
  */
 export class Share extends pulumi.CustomResource {

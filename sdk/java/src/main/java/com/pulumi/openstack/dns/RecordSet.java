@@ -23,7 +23,10 @@ import javax.annotation.Nullable;
  * Manages a DNS record set in the OpenStack DNS Service.
  * 
  * ## Example Usage
+ * 
  * ### Automatically detect the correct network
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -65,13 +68,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying the zone ID and recordset ID, separated by a forward slash.
+ * This resource can be imported by specifying the zone ID and recordset ID,
+ * separated by a forward slash.
  * 
  * ```sh
- *  $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 zone_id/recordset_id
+ * $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 zone_id/recordset_id
  * ```
  * 
  */

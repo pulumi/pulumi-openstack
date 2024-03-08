@@ -18,6 +18,8 @@ public final class DnsFunctions {
      * Use this data source to get the ID of an available OpenStack DNS zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -46,6 +48,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDnsZoneResult> getDnsZone() {
@@ -55,6 +58,8 @@ public final class DnsFunctions {
      * Use this data source to get the ID of an available OpenStack DNS zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -83,6 +88,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDnsZoneResult> getDnsZonePlain() {
@@ -92,6 +98,8 @@ public final class DnsFunctions {
      * Use this data source to get the ID of an available OpenStack DNS zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -120,6 +128,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDnsZoneResult> getDnsZone(GetDnsZoneArgs args) {
@@ -129,6 +138,8 @@ public final class DnsFunctions {
      * Use this data source to get the ID of an available OpenStack DNS zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -157,6 +168,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDnsZoneResult> getDnsZonePlain(GetDnsZonePlainArgs args) {
@@ -166,6 +178,8 @@ public final class DnsFunctions {
      * Use this data source to get the ID of an available OpenStack DNS zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -194,6 +208,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDnsZoneResult> getDnsZone(GetDnsZoneArgs args, InvokeOptions options) {
@@ -203,6 +218,8 @@ public final class DnsFunctions {
      * Use this data source to get the ID of an available OpenStack DNS zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -231,6 +248,7 @@ public final class DnsFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDnsZoneResult> getDnsZonePlain(GetDnsZonePlainArgs args, InvokeOptions options) {

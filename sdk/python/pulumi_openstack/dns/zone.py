@@ -448,8 +448,10 @@ class Zone(pulumi.CustomResource):
         Manages a DNS zone in the OpenStack DNS Service.
 
         ## Example Usage
+
         ### Automatically detect the correct network
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -460,6 +462,7 @@ class Zone(pulumi.CustomResource):
             ttl=3000,
             type="PRIMARY")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -509,8 +512,10 @@ class Zone(pulumi.CustomResource):
         Manages a DNS zone in the OpenStack DNS Service.
 
         ## Example Usage
+
         ### Automatically detect the correct network
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -521,6 +526,7 @@ class Zone(pulumi.CustomResource):
             ttl=3000,
             type="PRIMARY")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

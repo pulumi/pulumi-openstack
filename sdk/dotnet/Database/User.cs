@@ -17,8 +17,10 @@ namespace Pulumi.OpenStack.Database
     /// state.
     /// 
     /// ## Example Usage
+    /// 
     /// ### User
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,6 +41,7 @@ namespace Pulumi.OpenStack.Database
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OpenStackResourceType("openstack:database/user:User")]
     public partial class User : global::Pulumi.CustomResource

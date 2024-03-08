@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -32,6 +33,8 @@ import * as utilities from "../utilities";
  *     dependsOn: ["openstack_networking_router_interface_v2.int_1"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Notes
  *
  * The `nextHop` IP address must be directly reachable from the router at the ``openstack.networking.RouterRoute``
@@ -43,7 +46,7 @@ import * as utilities from "../utilities";
  * Routing entries can be imported using a combined ID using the following format: `<router_id>-route-<destination_cidr>-<next_hop>`
  *
  * ```sh
- *  $ pulumi import openstack:networking/routerRoute:RouterRoute router_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
+ * $ pulumi import openstack:networking/routerRoute:RouterRoute router_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
  * ```
  */
 export class RouterRoute extends pulumi.CustomResource {

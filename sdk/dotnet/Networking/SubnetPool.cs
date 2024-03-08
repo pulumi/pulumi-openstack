@@ -13,8 +13,10 @@ namespace Pulumi.OpenStack.Networking
     /// Manages a V2 Neutron subnetpool resource within OpenStack.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Create a Subnet Pool
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,8 +37,11 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Create a Subnet from a Subnet Pool
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -67,13 +72,14 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Subnetpools can be imported using the `id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:networking/subnetPool:SubnetPool subnetpool_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+    /// $ pulumi import openstack:networking/subnetPool:SubnetPool subnetpool_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/subnetPool:SubnetPool")]

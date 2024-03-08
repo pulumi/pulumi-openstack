@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,8 +46,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Complete Load Balancing Stack Example
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -174,6 +178,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Notes
 //
@@ -184,9 +189,7 @@ import (
 // Load Balancer Pools can be imported using the `id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import openstack:loadbalancer/poolV1:PoolV1 pool_1 b255e6ba-02ad-43e6-8951-3428ca26b713
-//
+// $ pulumi import openstack:loadbalancer/poolV1:PoolV1 pool_1 b255e6ba-02ad-43e6-8951-3428ca26b713
 // ```
 type PoolV1 struct {
 	pulumi.CustomResourceState

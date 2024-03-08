@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
  * Manages a Host Aggregate within Openstack Nova.
  *
  * ## Example Usage
+ *
  * ### Full example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -26,14 +28,18 @@ import * as utilities from "../utilities";
  *     zone: "nova",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Minimum required example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const test = new openstack.compute.AggregateV2("test", {});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -43,21 +49,19 @@ import * as utilities from "../utilities";
  * $ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24
  * ```
  *
- *  The ID can be obtained with an openstack command:
+ * The ID can be obtained with an openstack command:
  *
- *  $ openstack aggregate list
+ * $ openstack aggregate list
  *
- *  +----+------+-------------------+
+ * +----+------+-------------------+
  *
- *  | ID | Name | Availability Zone |
+ * | ID | Name | Availability Zone |
  *
- *  +----+------+-------------------+
+ * +----+------+-------------------+
  *
- *  | 59 | test | None
+ * | 59 | test | None              |
  *
- * |
- *
- *  +----+------+-------------------+
+ * +----+------+-------------------+
  */
 export class AggregateV2 extends pulumi.CustomResource {
     /**

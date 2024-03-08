@@ -82,12 +82,14 @@ def get_availability_zones(region: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     zones = openstack.compute.get_availability_zones()
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str region: The `region` to fetch availability zones from, defaults to the provider's `region`
@@ -115,12 +117,14 @@ def get_availability_zones_output(region: Optional[pulumi.Input[Optional[str]]] 
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     zones = openstack.compute.get_availability_zones()
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str region: The `region` to fetch availability zones from, defaults to the provider's `region`

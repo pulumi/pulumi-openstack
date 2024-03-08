@@ -701,8 +701,10 @@ class SubnetPool(pulumi.CustomResource):
         Manages a V2 Neutron subnetpool resource within OpenStack.
 
         ## Example Usage
+
         ### Create a Subnet Pool
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -714,8 +716,11 @@ class SubnetPool(pulumi.CustomResource):
                 "fd65:86cc:a334:39b7::/64",
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a Subnet from a Subnet Pool
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -727,13 +732,14 @@ class SubnetPool(pulumi.CustomResource):
             network_id=network1.id,
             subnetpool_id=subnetpool1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Subnetpools can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/subnetPool:SubnetPool subnetpool_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+        $ pulumi import openstack:networking/subnetPool:SubnetPool subnetpool_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
         ```
 
         :param str resource_name: The name of the resource.
@@ -790,8 +796,10 @@ class SubnetPool(pulumi.CustomResource):
         Manages a V2 Neutron subnetpool resource within OpenStack.
 
         ## Example Usage
+
         ### Create a Subnet Pool
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -803,8 +811,11 @@ class SubnetPool(pulumi.CustomResource):
                 "fd65:86cc:a334:39b7::/64",
             ])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Create a Subnet from a Subnet Pool
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -816,13 +827,14 @@ class SubnetPool(pulumi.CustomResource):
             network_id=network1.id,
             subnetpool_id=subnetpool1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Subnetpools can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/subnetPool:SubnetPool subnetpool_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+        $ pulumi import openstack:networking/subnetPool:SubnetPool subnetpool_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
         ```
 
         :param str resource_name: The name of the resource.

@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -17,6 +18,7 @@ import * as utilities from "../utilities";
  *     name: "sharenetwork_1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getShareNetwork(args?: GetShareNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetShareNetworkResult> {
     args = args || {};
@@ -144,6 +146,7 @@ export interface GetShareNetworkResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -152,6 +155,7 @@ export interface GetShareNetworkResult {
  *     name: "sharenetwork_1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getShareNetworkOutput(args?: GetShareNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShareNetworkResult> {
     return pulumi.output(args).apply((a: any) => getShareNetwork(a, opts))

@@ -491,6 +491,7 @@ class Member(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -500,13 +501,15 @@ class Member(pulumi.CustomResource):
             pool_id="935685fb-a896-40f9-9ff4-ae531a3a00fe",
             protocol_port=8080)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        Load Balancer Pool Member can be imported using the Pool ID and Member ID separated by a slash, e.g.:
+        Load Balancer Pool Member can be imported using the Pool ID and Member ID
+        separated by a slash, e.g.:
 
         ```sh
-         $ pulumi import openstack:loadbalancer/member:Member member_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5/9563b79c-8460-47da-8a95-2711b746510f
+        $ pulumi import openstack:loadbalancer/member:Member member_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5/9563b79c-8460-47da-8a95-2711b746510f
         ```
 
         :param str resource_name: The name of the resource.
@@ -550,6 +553,7 @@ class Member(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -559,13 +563,15 @@ class Member(pulumi.CustomResource):
             pool_id="935685fb-a896-40f9-9ff4-ae531a3a00fe",
             protocol_port=8080)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        Load Balancer Pool Member can be imported using the Pool ID and Member ID separated by a slash, e.g.:
+        Load Balancer Pool Member can be imported using the Pool ID and Member ID
+        separated by a slash, e.g.:
 
         ```sh
-         $ pulumi import openstack:loadbalancer/member:Member member_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5/9563b79c-8460-47da-8a95-2711b746510f
+        $ pulumi import openstack:loadbalancer/member:Member member_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5/9563b79c-8460-47da-8a95-2711b746510f
         ```
 
         :param str resource_name: The name of the resource.

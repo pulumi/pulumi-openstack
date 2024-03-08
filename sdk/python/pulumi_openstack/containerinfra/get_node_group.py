@@ -219,6 +219,7 @@ def get_node_group(cluster_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
@@ -226,6 +227,7 @@ def get_node_group(cluster_id: Optional[str] = None,
     nodegroup1 = openstack.containerinfra.get_node_group(cluster_id="cluster_1",
         name="nodegroup_1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The name of the OpenStack Magnum cluster.
@@ -269,6 +271,7 @@ def get_node_group_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
@@ -276,6 +279,7 @@ def get_node_group_output(cluster_id: Optional[pulumi.Input[str]] = None,
     nodegroup1 = openstack.containerinfra.get_node_group(cluster_id="cluster_1",
         name="nodegroup_1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The name of the OpenStack Magnum cluster.

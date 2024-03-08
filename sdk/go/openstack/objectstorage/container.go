@@ -14,8 +14,10 @@ import (
 // Manages a V1 container resource within OpenStack.
 //
 // ## Example Usage
+//
 // ### Basic Container
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,8 +46,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Basic Container with legacy versioning
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -77,8 +82,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Global Read Access
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -103,8 +111,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Global Read and List Access
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -129,8 +140,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Write-Only Access for a User
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -165,19 +179,23 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // This resource can be imported by specifying the name of the container:
 //
-// Some attributes can't be imported : * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key`
+// Some attributes can't be imported :
+// * `force_destroy`
+// * `content_type`
+// * `metadata`
+// * `container_sync_to`
+// * `container_sync_key`
 //
 // So you'll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.
 //
 // ```sh
-//
-//	$ pulumi import openstack:objectstorage/container:Container container_1 container_name
-//
+// $ pulumi import openstack:objectstorage/container:Container container_1 container_name
 // ```
 type Container struct {
 	pulumi.CustomResourceState

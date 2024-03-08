@@ -259,6 +259,7 @@ class RbacPolicyV2(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -270,13 +271,14 @@ class RbacPolicyV2(pulumi.CustomResource):
             object_type="network",
             target_tenant="20415a973c9e45d3917f078950644697")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RBAC policies can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/rbacPolicyV2:RbacPolicyV2 rbac_policy_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+        $ pulumi import openstack:networking/rbacPolicyV2:RbacPolicyV2 rbac_policy_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
         ```
 
         :param str resource_name: The name of the resource.
@@ -319,6 +321,7 @@ class RbacPolicyV2(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -330,13 +333,14 @@ class RbacPolicyV2(pulumi.CustomResource):
             object_type="network",
             target_tenant="20415a973c9e45d3917f078950644697")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         RBAC policies can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/rbacPolicyV2:RbacPolicyV2 rbac_policy_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+        $ pulumi import openstack:networking/rbacPolicyV2:RbacPolicyV2 rbac_policy_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
         ```
 
         :param str resource_name: The name of the resource.

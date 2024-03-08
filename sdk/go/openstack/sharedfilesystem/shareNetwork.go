@@ -18,8 +18,10 @@ import (
 // shares are created.
 //
 // ## Example Usage
+//
 // ### Basic share network
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,8 +62,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Share network with associated security services
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -118,15 +123,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // This resource can be imported by specifying the ID of the share network:
 //
 // ```sh
-//
-//	$ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 id
-//
+// $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 id
 // ```
 type ShareNetwork struct {
 	pulumi.CustomResourceState

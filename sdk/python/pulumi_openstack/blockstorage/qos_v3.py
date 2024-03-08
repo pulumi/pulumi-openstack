@@ -188,6 +188,7 @@ class QosV3(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -199,13 +200,14 @@ class QosV3(pulumi.CustomResource):
                 "write_iops_sec": "40000",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Qos can be imported using the `qos_id`, e.g.
 
         ```sh
-         $ pulumi import openstack:blockstorage/qosV3:QosV3 qos 941793f0-0a34-4bc4-b72e-a6326ae58283
+        $ pulumi import openstack:blockstorage/qosV3:QosV3 qos 941793f0-0a34-4bc4-b72e-a6326ae58283
         ```
 
         :param str resource_name: The name of the resource.
@@ -232,6 +234,7 @@ class QosV3(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -243,13 +246,14 @@ class QosV3(pulumi.CustomResource):
                 "write_iops_sec": "40000",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Qos can be imported using the `qos_id`, e.g.
 
         ```sh
-         $ pulumi import openstack:blockstorage/qosV3:QosV3 qos 941793f0-0a34-4bc4-b72e-a6326ae58283
+        $ pulumi import openstack:blockstorage/qosV3:QosV3 qos 941793f0-0a34-4bc4-b72e-a6326ae58283
         ```
 
         :param str resource_name: The name of the resource.

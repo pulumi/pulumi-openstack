@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
  * Manages a V2 portforwarding resource within OpenStack.
  *
  * ## Example Usage
+ *
  * ### Simple portforwarding
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -22,6 +24,7 @@ import * as utilities from "../utilities";
  *     protocol: "tcp",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class PortForwardingV2 extends pulumi.CustomResource {
     /**

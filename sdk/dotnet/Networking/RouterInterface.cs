@@ -14,6 +14,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -47,12 +48,13 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Router Interfaces can be imported using the port `id`, e.g.
     /// 
-    ///  $ openstack port list --router &lt;router name or id&gt;
+    /// $ openstack port list --router &lt;router name or id&gt;
     /// 
     /// ```sh
     /// $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 port_id

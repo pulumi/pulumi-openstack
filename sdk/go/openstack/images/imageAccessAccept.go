@@ -19,6 +19,7 @@ import (
 //
 // Accept a shared image membershipship proposal within the current project.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,6 +52,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

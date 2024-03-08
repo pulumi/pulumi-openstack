@@ -15,8 +15,10 @@ import (
 // Manages a V1 DB database resource within OpenStack.
 //
 // ## Example Usage
+//
 // ### Database
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,15 +42,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Databases can be imported by using `instance-id/db-name`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import openstack:database/database:Database mydb 7b9e3cd3-00d9-449c-b074-8439f8e274fa/mydb
-//
+// $ pulumi import openstack:database/database:Database mydb 7b9e3cd3-00d9-449c-b074-8439f8e274fa/mydb
 // ```
 type Database struct {
 	pulumi.CustomResourceState

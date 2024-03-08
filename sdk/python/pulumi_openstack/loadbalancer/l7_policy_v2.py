@@ -410,6 +410,7 @@ class L7PolicyV2(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -435,13 +436,14 @@ class L7PolicyV2(pulumi.CustomResource):
             listener_id=listener1.id,
             redirect_pool_id=pool1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.:
 
         ```sh
-         $ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+        $ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
         ```
 
         :param str resource_name: The name of the resource.
@@ -479,6 +481,7 @@ class L7PolicyV2(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -504,13 +507,14 @@ class L7PolicyV2(pulumi.CustomResource):
             listener_id=listener1.id,
             redirect_pool_id=pool1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Load Balancer L7 Policy can be imported using the L7 Policy ID, e.g.:
 
         ```sh
-         $ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+        $ pulumi import openstack:loadbalancer/l7PolicyV2:L7PolicyV2 l7policy_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
         ```
 
         :param str resource_name: The name of the resource.

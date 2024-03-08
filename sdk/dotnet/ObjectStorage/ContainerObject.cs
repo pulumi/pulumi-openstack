@@ -13,8 +13,10 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// Manages a V1 container object resource within OpenStack.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Example with simple content
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -56,8 +58,11 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Example with content from file
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -96,6 +101,7 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OpenStackResourceType("openstack:objectstorage/containerObject:ContainerObject")]
     public partial class ContainerObject : global::Pulumi.CustomResource

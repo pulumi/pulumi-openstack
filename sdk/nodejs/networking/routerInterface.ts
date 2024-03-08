@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -25,12 +26,13 @@ import * as utilities from "../utilities";
  *     subnetId: subnet1.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Router Interfaces can be imported using the port `id`, e.g.
  *
- *  $ openstack port list --router <router name or id>
+ * $ openstack port list --router <router name or id>
  *
  * ```sh
  * $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 port_id

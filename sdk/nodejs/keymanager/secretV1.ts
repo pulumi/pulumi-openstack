@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
  * ### Simple secret
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -26,10 +28,13 @@ import * as utilities from "../utilities";
  *     secretType: "passphrase",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Secret with the ACL
  *
  * > **Note** Only read ACLs are supported
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
@@ -50,13 +55,14 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Secrets can be imported using the secret id (the last part of the secret reference), e.g.:
  *
  * ```sh
- *  $ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+ * $ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
  * ```
  */
 export class SecretV1 extends pulumi.CustomResource {

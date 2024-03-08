@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * Creates a routing entry on a OpenStack V2 router.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -77,6 +79,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Notes
  * 
  * The `next_hop` IP address must be directly reachable from the router at the ``openstack.networking.RouterRoute``
@@ -88,7 +92,7 @@ import javax.annotation.Nullable;
  * Routing entries can be imported using a combined ID using the following format: `&lt;router_id&gt;-route-&lt;destination_cidr&gt;-&lt;next_hop&gt;`
  * 
  * ```sh
- *  $ pulumi import openstack:networking/routerRoute:RouterRoute router_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
+ * $ pulumi import openstack:networking/routerRoute:RouterRoute router_route_1 686fe248-386c-4f70-9f6c-281607dad079-route-10.0.1.0/24-192.168.199.25
  * ```
  * 
  */

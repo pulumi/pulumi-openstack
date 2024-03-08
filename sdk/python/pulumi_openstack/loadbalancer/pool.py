@@ -439,6 +439,7 @@ class Pool(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -452,13 +453,14 @@ class Pool(pulumi.CustomResource):
             ),
             protocol="HTTP")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Load Balancer Pool can be imported using the Pool ID, e.g.:
 
         ```sh
-         $ pulumi import openstack:loadbalancer/pool:Pool pool_1 60ad9ee4-249a-4d60-a45b-aa60e046c513
+        $ pulumi import openstack:loadbalancer/pool:Pool pool_1 60ad9ee4-249a-4d60-a45b-aa60e046c513
         ```
 
         :param str resource_name: The name of the resource.
@@ -505,6 +507,7 @@ class Pool(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -518,13 +521,14 @@ class Pool(pulumi.CustomResource):
             ),
             protocol="HTTP")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Load Balancer Pool can be imported using the Pool ID, e.g.:
 
         ```sh
-         $ pulumi import openstack:loadbalancer/pool:Pool pool_1 60ad9ee4-249a-4d60-a45b-aa60e046c513
+        $ pulumi import openstack:loadbalancer/pool:Pool pool_1 60ad9ee4-249a-4d60-a45b-aa60e046c513
         ```
 
         :param str resource_name: The name of the resource.

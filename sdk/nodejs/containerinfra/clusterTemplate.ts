@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
  * Manages a V1 Magnum cluster template resource within OpenStack.
  *
  * ## Example Usage
+ *
  * ### Create a Cluster template
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -35,6 +37,8 @@ import * as utilities from "../utilities";
  *     volumeDriver: "cinder",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Attributes reference
  *
  * The following attributes are exported:
@@ -78,7 +82,7 @@ import * as utilities from "../utilities";
  * Cluster templates can be imported using the `id`, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
+ * $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
  * ```
  */
 export class ClusterTemplate extends pulumi.CustomResource {

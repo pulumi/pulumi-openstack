@@ -13,8 +13,10 @@ namespace Pulumi.OpenStack.Networking
     /// Manages a V2 portforwarding resource within OpenStack.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Simple portforwarding
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -34,6 +36,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OpenStackResourceType("openstack:networking/portForwardingV2:PortForwardingV2")]
     public partial class PortForwardingV2 : global::Pulumi.CustomResource
