@@ -10,12 +10,14 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const zones = openstack.sharedfilesystem.getAvailbilityZones({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAvailbilityZones(args?: GetAvailbilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailbilityZonesResult> {
     args = args || {};
@@ -60,12 +62,14 @@ export interface GetAvailbilityZonesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const zones = openstack.sharedfilesystem.getAvailbilityZones({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAvailbilityZonesOutput(args?: GetAvailbilityZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvailbilityZonesResult> {
     return pulumi.output(args).apply((a: any) => getAvailbilityZones(a, opts))

@@ -10,8 +10,10 @@ import * as utilities from "../utilities";
  * Manages a V1 container resource within OpenStack.
  *
  * ## Example Usage
+ *
  * ### Basic Container
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -25,8 +27,11 @@ import * as utilities from "../utilities";
  *     versioning: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Basic Container with legacy versioning
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -43,8 +48,11 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Global Read Access
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -54,8 +62,11 @@ import * as utilities from "../utilities";
  *     region: "RegionOne",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Global Read and List Access
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -65,8 +76,11 @@ import * as utilities from "../utilities";
  *     region: "RegionOne",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Write-Only Access for a User
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -80,17 +94,23 @@ import * as utilities from "../utilities";
  *     region: "RegionOne",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * This resource can be imported by specifying the name of the container:
  *
- * Some attributes can't be imported : * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key`
+ * Some attributes can't be imported :
+ * * `force_destroy`
+ * * `content_type`
+ * * `metadata`
+ * * `container_sync_to`
+ * * `container_sync_key`
  *
  * So you'll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.
  *
  * ```sh
- *  $ pulumi import openstack:objectstorage/container:Container container_1 container_name
+ * $ pulumi import openstack:objectstorage/container:Container container_1 container_name
  * ```
  */
 export class Container extends pulumi.CustomResource {

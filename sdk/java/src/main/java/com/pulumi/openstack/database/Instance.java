@@ -28,7 +28,10 @@ import javax.annotation.Nullable;
  * state.
  * 
  * ## Example Usage
+ * 
  * ### Instance
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -68,6 +71,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="openstack:database/instance:Instance")

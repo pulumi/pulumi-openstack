@@ -10,6 +10,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  *     tags: ["public"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSubnetIdsV2(args?: GetSubnetIdsV2Args, opts?: pulumi.InvokeOptions): Promise<GetSubnetIdsV2Result> {
     args = args || {};
@@ -148,6 +150,7 @@ export interface GetSubnetIdsV2Result {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -157,6 +160,7 @@ export interface GetSubnetIdsV2Result {
  *     tags: ["public"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSubnetIdsV2Output(args?: GetSubnetIdsV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetIdsV2Result> {
     return pulumi.output(args).apply((a: any) => getSubnetIdsV2(a, opts))

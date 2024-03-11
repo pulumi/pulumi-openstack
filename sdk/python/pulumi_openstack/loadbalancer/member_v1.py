@@ -294,6 +294,7 @@ class MemberV1(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -303,13 +304,14 @@ class MemberV1(pulumi.CustomResource):
             pool_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
             port=80)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Load Balancer Members can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:loadbalancer/memberV1:MemberV1 member_1 a7498676-4fe4-4243-a864-2eaaf18c73df
+        $ pulumi import openstack:loadbalancer/memberV1:MemberV1 member_1 a7498676-4fe4-4243-a864-2eaaf18c73df
         ```
 
         :param str resource_name: The name of the resource.
@@ -341,6 +343,7 @@ class MemberV1(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -350,13 +353,14 @@ class MemberV1(pulumi.CustomResource):
             pool_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
             port=80)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Load Balancer Members can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:loadbalancer/memberV1:MemberV1 member_1 a7498676-4fe4-4243-a864-2eaaf18c73df
+        $ pulumi import openstack:loadbalancer/memberV1:MemberV1 member_1 a7498676-4fe4-4243-a864-2eaaf18c73df
         ```
 
         :param str resource_name: The name of the resource.

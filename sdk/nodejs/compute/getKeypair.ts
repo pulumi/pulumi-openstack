@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -17,6 +18,7 @@ import * as utilities from "../utilities";
  *     name: "sand",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKeypair(args: GetKeypairArgs, opts?: pulumi.InvokeOptions): Promise<GetKeypairResult> {
 
@@ -83,6 +85,7 @@ export interface GetKeypairResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -91,6 +94,7 @@ export interface GetKeypairResult {
  *     name: "sand",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKeypairOutput(args: GetKeypairOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeypairResult> {
     return pulumi.output(args).apply((a: any) => getKeypair(a, opts))

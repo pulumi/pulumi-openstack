@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  *     name: "router_1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRouter(args?: GetRouterArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterResult> {
     args = args || {};
@@ -129,6 +131,7 @@ export interface GetRouterResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -137,6 +140,7 @@ export interface GetRouterResult {
  *     name: "router_1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRouterOutput(args?: GetRouterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterResult> {
     return pulumi.output(args).apply((a: any) => getRouter(a, opts))

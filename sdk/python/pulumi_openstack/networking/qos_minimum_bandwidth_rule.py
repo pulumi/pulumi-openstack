@@ -183,8 +183,10 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
         Manages a V2 Neutron QoS minimum bandwidth rule resource within OpenStack.
 
         ## Example Usage
+
         ### Create a QoS Policy with some minimum bandwidth rule
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -194,13 +196,14 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
             qos_policy_id=qos_policy1.id,
             min_kbps=200)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         QoS minimum bandwidth rules can be imported using the `qos_policy_id/minimum_bandwidth_rule_id` format, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule minimum_bandwidth_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
+        $ pulumi import openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule minimum_bandwidth_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
         ```
 
         :param str resource_name: The name of the resource.
@@ -224,8 +227,10 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
         Manages a V2 Neutron QoS minimum bandwidth rule resource within OpenStack.
 
         ## Example Usage
+
         ### Create a QoS Policy with some minimum bandwidth rule
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -235,13 +240,14 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
             qos_policy_id=qos_policy1.id,
             min_kbps=200)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         QoS minimum bandwidth rules can be imported using the `qos_policy_id/minimum_bandwidth_rule_id` format, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule minimum_bandwidth_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
+        $ pulumi import openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule minimum_bandwidth_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
         ```
 
         :param str resource_name: The name of the resource.

@@ -12,10 +12,9 @@ namespace Pulumi.OpenStack.KeyManager
     public static class GetSecret
     {
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,8 +31,8 @@ namespace Pulumi.OpenStack.KeyManager
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Date Filters
         /// 
         /// The values for the `expiration_filter`, `created_at_filter`, and
@@ -45,6 +44,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// For example, to get a passphrase a Secret with CBC moda, that will expire in
         /// January of 2020:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,15 +62,15 @@ namespace Pulumi.OpenStack.KeyManager
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSecretResult> InvokeAsync(GetSecretArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("openstack:keymanager/getSecret:getSecret", args ?? new GetSecretArgs(), options.WithDefaults());
 
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,8 +87,8 @@ namespace Pulumi.OpenStack.KeyManager
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
+        /// 
         /// ## Date Filters
         /// 
         /// The values for the `expiration_filter`, `created_at_filter`, and
@@ -100,6 +100,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// For example, to get a passphrase a Secret with CBC moda, that will expire in
         /// January of 2020:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -117,6 +118,7 @@ namespace Pulumi.OpenStack.KeyManager
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSecretResult> Invoke(GetSecretInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretResult>("openstack:keymanager/getSecret:getSecret", args ?? new GetSecretInvokeArgs(), options.WithDefaults());

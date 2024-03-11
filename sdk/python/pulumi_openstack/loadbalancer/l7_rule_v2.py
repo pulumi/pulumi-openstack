@@ -395,6 +395,7 @@ class L7RuleV2(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -425,13 +426,15 @@ class L7RuleV2(pulumi.CustomResource):
             compare_type="EQUAL_TO",
             value="/api")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        Load Balancer L7 Rule can be imported using the L7 Policy ID and L7 Rule ID separated by a slash, e.g.:
+        Load Balancer L7 Rule can be imported using the L7 Policy ID and L7 Rule ID
+        separated by a slash, e.g.:
 
         ```sh
-         $ pulumi import openstack:loadbalancer/l7RuleV2:L7RuleV2 l7rule_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
+        $ pulumi import openstack:loadbalancer/l7RuleV2:L7RuleV2 l7rule_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
         ```
 
         :param str resource_name: The name of the resource.
@@ -469,6 +472,7 @@ class L7RuleV2(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -499,13 +503,15 @@ class L7RuleV2(pulumi.CustomResource):
             compare_type="EQUAL_TO",
             value="/api")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        Load Balancer L7 Rule can be imported using the L7 Policy ID and L7 Rule ID separated by a slash, e.g.:
+        Load Balancer L7 Rule can be imported using the L7 Policy ID and L7 Rule ID
+        separated by a slash, e.g.:
 
         ```sh
-         $ pulumi import openstack:loadbalancer/l7RuleV2:L7RuleV2 l7rule_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
+        $ pulumi import openstack:loadbalancer/l7RuleV2:L7RuleV2 l7rule_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
         ```
 
         :param str resource_name: The name of the resource.

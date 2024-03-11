@@ -757,6 +757,7 @@ class Listener(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -769,13 +770,14 @@ class Listener(pulumi.CustomResource):
             protocol="HTTP",
             protocol_port=8080)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Load Balancer Listener can be imported using the Listener ID, e.g.:
 
         ```sh
-         $ pulumi import openstack:loadbalancer/listener:Listener listener_1 b67ce64e-8b26-405d-afeb-4a078901f15a
+        $ pulumi import openstack:loadbalancer/listener:Listener listener_1 b67ce64e-8b26-405d-afeb-4a078901f15a
         ```
 
         :param str resource_name: The name of the resource.
@@ -838,6 +840,7 @@ class Listener(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -850,13 +853,14 @@ class Listener(pulumi.CustomResource):
             protocol="HTTP",
             protocol_port=8080)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Load Balancer Listener can be imported using the Listener ID, e.g.:
 
         ```sh
-         $ pulumi import openstack:loadbalancer/listener:Listener listener_1 b67ce64e-8b26-405d-afeb-4a078901f15a
+        $ pulumi import openstack:loadbalancer/listener:Listener listener_1 b67ce64e-8b26-405d-afeb-4a078901f15a
         ```
 
         :param str resource_name: The name of the resource.

@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupQosMinimumBandwidthRule(ctx *pulumi.Context, args *LookupQosMinimumBandwidthRuleArgs, opts ...pulumi.InvokeOption) (*LookupQosMinimumBandwidthRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupQosMinimumBandwidthRuleResult

@@ -571,8 +571,10 @@ class SecretV1(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Simple secret
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -588,10 +590,13 @@ class SecretV1(pulumi.CustomResource):
             payload_content_type="text/plain",
             secret_type="passphrase")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Secret with the ACL
 
         > **Note** Only read ACLs are supported
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -610,13 +615,14 @@ class SecretV1(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Secrets can be imported using the secret id (the last part of the secret reference), e.g.:
 
         ```sh
-         $ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+        $ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
         ```
 
         :param str resource_name: The name of the resource.
@@ -648,8 +654,10 @@ class SecretV1(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Simple secret
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -665,10 +673,13 @@ class SecretV1(pulumi.CustomResource):
             payload_content_type="text/plain",
             secret_type="passphrase")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Secret with the ACL
 
         > **Note** Only read ACLs are supported
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -687,13 +698,14 @@ class SecretV1(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Secrets can be imported using the secret id (the last part of the secret reference), e.g.:
 
         ```sh
-         $ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
+        $ pulumi import openstack:keymanager/secretV1:SecretV1 secret_1 8a7a79c2-cf17-4e65-b2ae-ddc8bfcf6c74
         ```
 
         :param str resource_name: The name of the resource.

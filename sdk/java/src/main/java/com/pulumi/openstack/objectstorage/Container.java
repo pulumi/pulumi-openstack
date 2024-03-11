@@ -22,7 +22,10 @@ import javax.annotation.Nullable;
  * Manages a V1 container resource within OpenStack.
  * 
  * ## Example Usage
+ * 
  * ### Basic Container
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -54,7 +57,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Basic Container with legacy versioning
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -90,7 +97,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Global Read Access
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -120,7 +131,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Global Read and List Access
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -150,7 +165,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Write-Only Access for a User
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -187,17 +206,23 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * This resource can be imported by specifying the name of the container:
  * 
- * Some attributes can&#39;t be imported : * `force_destroy` * `content_type` * `metadata` * `container_sync_to` * `container_sync_key`
+ * Some attributes can&#39;t be imported :
+ * * `force_destroy`
+ * * `content_type`
+ * * `metadata`
+ * * `container_sync_to`
+ * * `container_sync_key`
  * 
  * So you&#39;ll have to `pulumi preview` and `pulumi up` after the import to fix those missing attributes.
  * 
  * ```sh
- *  $ pulumi import openstack:objectstorage/container:Container container_1 container_name
+ * $ pulumi import openstack:objectstorage/container:Container container_1 container_name
  * ```
  * 
  */

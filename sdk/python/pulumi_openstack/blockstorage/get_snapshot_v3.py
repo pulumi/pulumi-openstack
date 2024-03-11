@@ -148,6 +148,7 @@ def get_snapshot_v3(most_recent: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
@@ -155,6 +156,7 @@ def get_snapshot_v3(most_recent: Optional[bool] = None,
     snapshot1 = openstack.blockstorage.get_snapshot_v3(most_recent=True,
         name="snapshot_1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool most_recent: Pick the most recently created snapshot if there
@@ -198,6 +200,7 @@ def get_snapshot_v3_output(most_recent: Optional[pulumi.Input[Optional[bool]]] =
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
@@ -205,6 +208,7 @@ def get_snapshot_v3_output(most_recent: Optional[pulumi.Input[Optional[bool]]] =
     snapshot1 = openstack.blockstorage.get_snapshot_v3(most_recent=True,
         name="snapshot_1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool most_recent: Pick the most recently created snapshot if there

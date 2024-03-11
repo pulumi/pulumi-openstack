@@ -63,6 +63,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack address-scope.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -93,6 +95,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAddressScopeResult> getAddressScope() {
@@ -102,6 +105,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack address-scope.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -132,6 +137,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAddressScopeResult> getAddressScopePlain() {
@@ -141,6 +147,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack address-scope.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -171,6 +179,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAddressScopeResult> getAddressScope(GetAddressScopeArgs args) {
@@ -180,6 +189,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack address-scope.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -210,6 +221,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAddressScopeResult> getAddressScopePlain(GetAddressScopePlainArgs args) {
@@ -219,6 +231,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack address-scope.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -249,6 +263,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAddressScopeResult> getAddressScope(GetAddressScopeArgs args, InvokeOptions options) {
@@ -258,6 +273,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack address-scope.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -288,6 +305,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAddressScopeResult> getAddressScopePlain(GetAddressScopePlainArgs args, InvokeOptions options) {
@@ -297,6 +315,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack floating IP.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -325,6 +345,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFloatingIpResult> getFloatingIp() {
@@ -334,6 +355,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack floating IP.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -362,6 +385,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFloatingIpResult> getFloatingIpPlain() {
@@ -371,6 +395,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack floating IP.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -399,6 +425,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFloatingIpResult> getFloatingIp(GetFloatingIpArgs args) {
@@ -408,6 +435,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack floating IP.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -436,6 +465,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFloatingIpResult> getFloatingIpPlain(GetFloatingIpPlainArgs args) {
@@ -445,6 +475,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack floating IP.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -473,6 +505,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFloatingIpResult> getFloatingIp(GetFloatingIpArgs args, InvokeOptions options) {
@@ -482,6 +515,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack floating IP.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -510,6 +545,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFloatingIpResult> getFloatingIpPlain(GetFloatingIpPlainArgs args, InvokeOptions options) {
@@ -519,6 +555,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack network.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -547,6 +585,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkResult> getNetwork() {
@@ -556,6 +595,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack network.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -584,6 +625,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkResult> getNetworkPlain() {
@@ -593,6 +635,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack network.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -621,6 +665,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkResult> getNetwork(GetNetworkArgs args) {
@@ -630,6 +675,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack network.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -658,6 +705,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkResult> getNetworkPlain(GetNetworkPlainArgs args) {
@@ -667,6 +715,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack network.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -695,6 +745,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetNetworkResult> getNetwork(GetNetworkArgs args, InvokeOptions options) {
@@ -704,6 +755,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack network.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -732,6 +785,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetNetworkResult> getNetworkPlain(GetNetworkPlainArgs args, InvokeOptions options) {
@@ -741,6 +795,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack port.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -769,6 +825,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPortResult> getPort() {
@@ -778,6 +835,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack port.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -806,6 +865,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPortResult> getPortPlain() {
@@ -815,6 +875,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack port.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -843,6 +905,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPortResult> getPort(GetPortArgs args) {
@@ -852,6 +915,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack port.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -880,6 +945,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPortResult> getPortPlain(GetPortPlainArgs args) {
@@ -889,6 +955,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack port.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -917,6 +985,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPortResult> getPort(GetPortArgs args, InvokeOptions options) {
@@ -926,6 +995,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack port.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -954,6 +1025,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPortResult> getPortPlain(GetPortPlainArgs args, InvokeOptions options) {
@@ -964,6 +1036,8 @@ public final class NetworkingFunctions {
      * specified criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -992,6 +1066,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPortIdsResult> getPortIds() {
@@ -1002,6 +1077,8 @@ public final class NetworkingFunctions {
      * specified criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1030,6 +1107,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPortIdsResult> getPortIdsPlain() {
@@ -1040,6 +1118,8 @@ public final class NetworkingFunctions {
      * specified criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1068,6 +1148,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPortIdsResult> getPortIds(GetPortIdsArgs args) {
@@ -1078,6 +1159,8 @@ public final class NetworkingFunctions {
      * specified criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1106,6 +1189,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPortIdsResult> getPortIdsPlain(GetPortIdsPlainArgs args) {
@@ -1116,6 +1200,8 @@ public final class NetworkingFunctions {
      * specified criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1144,6 +1230,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPortIdsResult> getPortIds(GetPortIdsArgs args, InvokeOptions options) {
@@ -1154,6 +1241,8 @@ public final class NetworkingFunctions {
      * specified criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1182,6 +1271,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPortIdsResult> getPortIdsPlain(GetPortIdsPlainArgs args, InvokeOptions options) {
@@ -1191,6 +1281,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1219,6 +1311,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQosBandwidthLimitRuleResult> getQosBandwidthLimitRule(GetQosBandwidthLimitRuleArgs args) {
@@ -1228,6 +1321,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1256,6 +1351,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQosBandwidthLimitRuleResult> getQosBandwidthLimitRulePlain(GetQosBandwidthLimitRulePlainArgs args) {
@@ -1265,6 +1361,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1293,6 +1391,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQosBandwidthLimitRuleResult> getQosBandwidthLimitRule(GetQosBandwidthLimitRuleArgs args, InvokeOptions options) {
@@ -1302,6 +1401,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack QoS bandwidth limit rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1330,6 +1431,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQosBandwidthLimitRuleResult> getQosBandwidthLimitRulePlain(GetQosBandwidthLimitRulePlainArgs args, InvokeOptions options) {
@@ -1339,6 +1441,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1367,6 +1471,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQosDscpMarkingRuleResult> getQosDscpMarkingRule(GetQosDscpMarkingRuleArgs args) {
@@ -1376,6 +1481,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1404,6 +1511,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQosDscpMarkingRuleResult> getQosDscpMarkingRulePlain(GetQosDscpMarkingRulePlainArgs args) {
@@ -1413,6 +1521,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1441,6 +1551,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQosDscpMarkingRuleResult> getQosDscpMarkingRule(GetQosDscpMarkingRuleArgs args, InvokeOptions options) {
@@ -1450,6 +1561,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack QoS DSCP marking rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1478,6 +1591,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQosDscpMarkingRuleResult> getQosDscpMarkingRulePlain(GetQosDscpMarkingRulePlainArgs args, InvokeOptions options) {
@@ -1487,6 +1601,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1515,6 +1631,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQosMinimumBandwidthRuleResult> getQosMinimumBandwidthRule(GetQosMinimumBandwidthRuleArgs args) {
@@ -1524,6 +1641,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1552,6 +1671,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQosMinimumBandwidthRuleResult> getQosMinimumBandwidthRulePlain(GetQosMinimumBandwidthRulePlainArgs args) {
@@ -1561,6 +1681,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1589,6 +1711,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQosMinimumBandwidthRuleResult> getQosMinimumBandwidthRule(GetQosMinimumBandwidthRuleArgs args, InvokeOptions options) {
@@ -1598,6 +1721,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack QoS minimum bandwidth rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1626,6 +1751,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQosMinimumBandwidthRuleResult> getQosMinimumBandwidthRulePlain(GetQosMinimumBandwidthRulePlainArgs args, InvokeOptions options) {
@@ -1635,6 +1761,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack QoS policy.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1663,6 +1791,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQosPolicyResult> getQosPolicy() {
@@ -1672,6 +1801,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack QoS policy.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1700,6 +1831,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQosPolicyResult> getQosPolicyPlain() {
@@ -1709,6 +1841,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack QoS policy.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1737,6 +1871,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQosPolicyResult> getQosPolicy(GetQosPolicyArgs args) {
@@ -1746,6 +1881,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack QoS policy.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1774,6 +1911,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQosPolicyResult> getQosPolicyPlain(GetQosPolicyPlainArgs args) {
@@ -1783,6 +1921,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack QoS policy.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1811,6 +1951,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQosPolicyResult> getQosPolicy(GetQosPolicyArgs args, InvokeOptions options) {
@@ -1820,6 +1961,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack QoS policy.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1848,6 +1991,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQosPolicyResult> getQosPolicyPlain(GetQosPolicyPlainArgs args, InvokeOptions options) {
@@ -1857,6 +2001,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the networking quota of an OpenStack project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1885,6 +2031,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQuotaV2Result> getQuotaV2(GetQuotaV2Args args) {
@@ -1894,6 +2041,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the networking quota of an OpenStack project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1922,6 +2071,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQuotaV2Result> getQuotaV2Plain(GetQuotaV2PlainArgs args) {
@@ -1931,6 +2081,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the networking quota of an OpenStack project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1959,6 +2111,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQuotaV2Result> getQuotaV2(GetQuotaV2Args args, InvokeOptions options) {
@@ -1968,6 +2121,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the networking quota of an OpenStack project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1996,6 +2151,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQuotaV2Result> getQuotaV2Plain(GetQuotaV2PlainArgs args, InvokeOptions options) {
@@ -2005,6 +2161,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack router.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2033,6 +2191,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouterResult> getRouter() {
@@ -2042,6 +2201,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack router.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2070,6 +2231,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouterResult> getRouterPlain() {
@@ -2079,6 +2241,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack router.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2107,6 +2271,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouterResult> getRouter(GetRouterArgs args) {
@@ -2116,6 +2281,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack router.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2144,6 +2311,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouterResult> getRouterPlain(GetRouterPlainArgs args) {
@@ -2153,6 +2321,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack router.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2181,6 +2351,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRouterResult> getRouter(GetRouterArgs args, InvokeOptions options) {
@@ -2190,6 +2361,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack router.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2218,6 +2391,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRouterResult> getRouterPlain(GetRouterPlainArgs args, InvokeOptions options) {
@@ -2227,6 +2401,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack security group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2255,6 +2431,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecGroupResult> getSecGroup() {
@@ -2264,6 +2441,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack security group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2292,6 +2471,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecGroupResult> getSecGroupPlain() {
@@ -2301,6 +2481,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack security group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2329,6 +2511,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecGroupResult> getSecGroup(GetSecGroupArgs args) {
@@ -2338,6 +2521,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack security group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2366,6 +2551,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecGroupResult> getSecGroupPlain(GetSecGroupPlainArgs args) {
@@ -2375,6 +2561,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack security group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2403,6 +2591,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecGroupResult> getSecGroup(GetSecGroupArgs args, InvokeOptions options) {
@@ -2412,6 +2601,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack security group.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2440,6 +2631,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecGroupResult> getSecGroupPlain(GetSecGroupPlainArgs args, InvokeOptions options) {
@@ -2449,6 +2641,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack subnet.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2477,6 +2671,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubnetResult> getSubnet() {
@@ -2486,6 +2681,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack subnet.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2514,6 +2711,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubnetResult> getSubnetPlain() {
@@ -2523,6 +2721,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack subnet.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2551,6 +2751,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubnetResult> getSubnet(GetSubnetArgs args) {
@@ -2560,6 +2761,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack subnet.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2588,6 +2791,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubnetResult> getSubnetPlain(GetSubnetPlainArgs args) {
@@ -2597,6 +2801,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack subnet.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2625,6 +2831,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubnetResult> getSubnet(GetSubnetArgs args, InvokeOptions options) {
@@ -2634,6 +2841,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack subnet.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2662,6 +2871,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubnetResult> getSubnetPlain(GetSubnetPlainArgs args, InvokeOptions options) {
@@ -2672,6 +2882,8 @@ public final class NetworkingFunctions {
      * specified criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2701,6 +2913,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubnetIdsV2Result> getSubnetIdsV2() {
@@ -2711,6 +2924,8 @@ public final class NetworkingFunctions {
      * specified criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2740,6 +2955,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubnetIdsV2Result> getSubnetIdsV2Plain() {
@@ -2750,6 +2966,8 @@ public final class NetworkingFunctions {
      * specified criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2779,6 +2997,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubnetIdsV2Result> getSubnetIdsV2(GetSubnetIdsV2Args args) {
@@ -2789,6 +3008,8 @@ public final class NetworkingFunctions {
      * specified criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2818,6 +3039,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubnetIdsV2Result> getSubnetIdsV2Plain(GetSubnetIdsV2PlainArgs args) {
@@ -2828,6 +3050,8 @@ public final class NetworkingFunctions {
      * specified criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2857,6 +3081,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubnetIdsV2Result> getSubnetIdsV2(GetSubnetIdsV2Args args, InvokeOptions options) {
@@ -2867,6 +3092,8 @@ public final class NetworkingFunctions {
      * specified criteria.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2896,6 +3123,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubnetIdsV2Result> getSubnetIdsV2Plain(GetSubnetIdsV2PlainArgs args, InvokeOptions options) {
@@ -2905,6 +3133,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack subnetpool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2933,6 +3163,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubnetPoolResult> getSubnetPool() {
@@ -2942,6 +3173,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack subnetpool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2970,6 +3203,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubnetPoolResult> getSubnetPoolPlain() {
@@ -2979,6 +3213,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack subnetpool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3007,6 +3243,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubnetPoolResult> getSubnetPool(GetSubnetPoolArgs args) {
@@ -3016,6 +3253,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack subnetpool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3044,6 +3283,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubnetPoolResult> getSubnetPoolPlain(GetSubnetPoolPlainArgs args) {
@@ -3053,6 +3293,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack subnetpool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3081,6 +3323,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSubnetPoolResult> getSubnetPool(GetSubnetPoolArgs args, InvokeOptions options) {
@@ -3090,6 +3333,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack subnetpool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3118,6 +3363,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSubnetPoolResult> getSubnetPoolPlain(GetSubnetPoolPlainArgs args, InvokeOptions options) {
@@ -3127,6 +3373,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack trunk.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3155,6 +3403,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrunkResult> getTrunk() {
@@ -3164,6 +3413,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack trunk.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3192,6 +3443,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrunkResult> getTrunkPlain() {
@@ -3201,6 +3453,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack trunk.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3229,6 +3483,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrunkResult> getTrunk(GetTrunkArgs args) {
@@ -3238,6 +3493,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack trunk.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3266,6 +3523,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrunkResult> getTrunkPlain(GetTrunkPlainArgs args) {
@@ -3275,6 +3533,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack trunk.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3303,6 +3563,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTrunkResult> getTrunk(GetTrunkArgs args, InvokeOptions options) {
@@ -3312,6 +3573,8 @@ public final class NetworkingFunctions {
      * Use this data source to get the ID of an available OpenStack trunk.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3340,6 +3603,7 @@ public final class NetworkingFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTrunkResult> getTrunkPlain(GetTrunkPlainArgs args, InvokeOptions options) {

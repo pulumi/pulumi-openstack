@@ -14,10 +14,9 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// Use this data source to get the compute quotaset of an OpenStack project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetQuotaSetV2Result> InvokeAsync(GetQuotaSetV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQuotaSetV2Result>("openstack:compute/getQuotaSetV2:getQuotaSetV2", args ?? new GetQuotaSetV2Args(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// Use this data source to get the compute quotaset of an OpenStack project.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetQuotaSetV2Result> Invoke(GetQuotaSetV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQuotaSetV2Result>("openstack:compute/getQuotaSetV2:getQuotaSetV2", args ?? new GetQuotaSetV2InvokeArgs(), options.WithDefaults());

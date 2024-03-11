@@ -220,8 +220,10 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
         Manages a V2 Neutron QoS bandwidth limit rule resource within OpenStack.
 
         ## Example Usage
+
         ### Create a QoS Policy with some bandwidth limit rule
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -233,13 +235,14 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
             max_burst_kbps=300,
             direction="egress")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         QoS bandwidth limit rules can be imported using the `qos_policy_id/bandwidth_limit_rule` format, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule bw_limit_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
+        $ pulumi import openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule bw_limit_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
         ```
 
         :param str resource_name: The name of the resource.
@@ -265,8 +268,10 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
         Manages a V2 Neutron QoS bandwidth limit rule resource within OpenStack.
 
         ## Example Usage
+
         ### Create a QoS Policy with some bandwidth limit rule
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -278,13 +283,14 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
             max_burst_kbps=300,
             direction="egress")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         QoS bandwidth limit rules can be imported using the `qos_policy_id/bandwidth_limit_rule` format, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule bw_limit_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
+        $ pulumi import openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule bw_limit_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
         ```
 
         :param str resource_name: The name of the resource.

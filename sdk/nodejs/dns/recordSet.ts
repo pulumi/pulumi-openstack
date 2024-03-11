@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
  * Manages a DNS record set in the OpenStack DNS Service.
  *
  * ## Example Usage
+ *
  * ### Automatically detect the correct network
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -28,13 +30,15 @@ import * as utilities from "../utilities";
  *     records: ["10.0.0.1"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * This resource can be imported by specifying the zone ID and recordset ID, separated by a forward slash.
+ * This resource can be imported by specifying the zone ID and recordset ID,
+ * separated by a forward slash.
  *
  * ```sh
- *  $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 zone_id/recordset_id
+ * $ pulumi import openstack:dns/recordSet:RecordSet recordset_1 zone_id/recordset_id
  * ```
  */
 export class RecordSet extends pulumi.CustomResource {

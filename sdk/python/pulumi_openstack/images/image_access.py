@@ -232,11 +232,13 @@ class ImageAccess(pulumi.CustomResource):
         project, which owns the Image.
 
         ## Example Usage
+
         ### Unprivileged user
 
         Create a shared image and propose a membership to the
         `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -253,11 +255,14 @@ class ImageAccess(pulumi.CustomResource):
             image_id=rancheros.id,
             member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Privileged user
 
         Create a shared image and set a membership to the
         `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -275,12 +280,13 @@ class ImageAccess(pulumi.CustomResource):
             member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4",
             status="accepted")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Image access can be imported using the `image_id` and the `member_id`,
 
-         separated by a slash, e.g.
+        separated by a slash, e.g.
 
         ```sh
         $ pulumi import openstack:images/imageAccess:ImageAccess openstack_images_image_access_v2 89c60255-9bd6-460c-822a-e2b959ede9d2/bed6b6cbb86a4e2d8dc2735c2f1000e4
@@ -308,11 +314,13 @@ class ImageAccess(pulumi.CustomResource):
         project, which owns the Image.
 
         ## Example Usage
+
         ### Unprivileged user
 
         Create a shared image and propose a membership to the
         `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -329,11 +337,14 @@ class ImageAccess(pulumi.CustomResource):
             image_id=rancheros.id,
             member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Privileged user
 
         Create a shared image and set a membership to the
         `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -351,12 +362,13 @@ class ImageAccess(pulumi.CustomResource):
             member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4",
             status="accepted")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Image access can be imported using the `image_id` and the `member_id`,
 
-         separated by a slash, e.g.
+        separated by a slash, e.g.
 
         ```sh
         $ pulumi import openstack:images/imageAccess:ImageAccess openstack_images_image_access_v2 89c60255-9bd6-460c-822a-e2b959ede9d2/bed6b6cbb86a4e2d8dc2735c2f1000e4

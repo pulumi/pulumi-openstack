@@ -6,8 +6,10 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
+ *
  * ### NFS
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -36,8 +38,11 @@ import * as utilities from "../utilities";
  *     accessLevel: "rw",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### CIFS
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -83,13 +88,15 @@ import * as utilities from "../utilities";
  * });
  * export const exportLocations = share1.exportLocations;
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * This resource can be imported by specifying the ID of the share and the ID of the share access, separated by a slash, e.g.:
+ * This resource can be imported by specifying the ID of the share and the ID of the
+ * share access, separated by a slash, e.g.:
  *
  * ```sh
- *  $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 share_id/share_access_id
+ * $ pulumi import openstack:sharedfilesystem/shareAccess:ShareAccess share_access_1 share_id/share_access_id
  * ```
  */
 export class ShareAccess extends pulumi.CustomResource {

@@ -13,10 +13,12 @@ namespace Pulumi.OpenStack.KeyManager
     /// Manages a V1 Barbican container resource within OpenStack.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Simple secret
     /// 
     /// The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.IO;
@@ -90,10 +92,13 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Container with the ACL
     /// 
     /// &gt; **Note** Only read ACLs are supported
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -139,13 +144,14 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Containers can be imported using the container id (the last part of the container reference), e.g.:
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:keymanager/containerV1:ContainerV1 container_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
+    /// $ pulumi import openstack:keymanager/containerV1:ContainerV1 container_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:keymanager/containerV1:ContainerV1")]

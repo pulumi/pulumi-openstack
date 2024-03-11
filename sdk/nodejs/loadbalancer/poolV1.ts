@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -21,8 +22,11 @@ import * as utilities from "../utilities";
  *     subnetId: "12345",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Complete Load Balancing Stack Example
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -98,6 +102,7 @@ import * as utilities from "../utilities";
  *     poolId: pool1.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Notes
  *
@@ -108,7 +113,7 @@ import * as utilities from "../utilities";
  * Load Balancer Pools can be imported using the `id`, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:loadbalancer/poolV1:PoolV1 pool_1 b255e6ba-02ad-43e6-8951-3428ca26b713
+ * $ pulumi import openstack:loadbalancer/poolV1:PoolV1 pool_1 b255e6ba-02ad-43e6-8951-3428ca26b713
  * ```
  */
 export class PoolV1 extends pulumi.CustomResource {

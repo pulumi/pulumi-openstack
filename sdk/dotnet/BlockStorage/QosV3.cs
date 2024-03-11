@@ -16,6 +16,7 @@ namespace Pulumi.OpenStack.BlockStorage
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -36,13 +37,14 @@ namespace Pulumi.OpenStack.BlockStorage
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Qos can be imported using the `qos_id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:blockstorage/qosV3:QosV3 qos 941793f0-0a34-4bc4-b72e-a6326ae58283
+    /// $ pulumi import openstack:blockstorage/qosV3:QosV3 qos 941793f0-0a34-4bc4-b72e-a6326ae58283
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:blockstorage/qosV3:QosV3")]

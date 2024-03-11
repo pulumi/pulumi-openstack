@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetVolumeV3(ctx *pulumi.Context, args *GetVolumeV3Args, opts ...pulumi.InvokeOption) (*GetVolumeV3Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVolumeV3Result

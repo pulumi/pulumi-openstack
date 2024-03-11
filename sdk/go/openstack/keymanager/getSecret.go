@@ -13,6 +13,7 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37,6 +38,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Date Filters
 //
 // The values for the `expirationFilter`, `createdAtFilter`, and
@@ -48,6 +51,7 @@ import (
 // For example, to get a passphrase a Secret with CBC moda, that will expire in
 // January of 2020:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -73,6 +77,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetSecret(ctx *pulumi.Context, args *GetSecretArgs, opts ...pulumi.InvokeOption) (*GetSecretResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSecretResult

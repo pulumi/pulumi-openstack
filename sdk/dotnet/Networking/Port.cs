@@ -19,8 +19,10 @@ namespace Pulumi.OpenStack.Networking
     /// creation is triggered. More info here
     /// 
     /// ## Example Usage
+    /// 
     /// ### Simple port
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -42,8 +44,11 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Port defining fixed_ip.subnet_id
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -78,8 +83,11 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Port with physical binding information
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -124,6 +132,8 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Notes
     /// 
     /// ### Ports and Instances
@@ -137,7 +147,7 @@ namespace Pulumi.OpenStack.Networking
     /// Ports can be imported using the `id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
+    /// $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/port:Port")]

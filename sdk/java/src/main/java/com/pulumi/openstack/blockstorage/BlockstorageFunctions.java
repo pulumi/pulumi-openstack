@@ -33,6 +33,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get a list of Block Storage availability zones from OpenStack
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -59,6 +61,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAvailabilityZonesV3Result> getAvailabilityZonesV3() {
@@ -68,6 +71,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get a list of Block Storage availability zones from OpenStack
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -94,6 +99,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAvailabilityZonesV3Result> getAvailabilityZonesV3Plain() {
@@ -103,6 +109,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get a list of Block Storage availability zones from OpenStack
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -129,6 +137,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAvailabilityZonesV3Result> getAvailabilityZonesV3(GetAvailabilityZonesV3Args args) {
@@ -138,6 +147,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get a list of Block Storage availability zones from OpenStack
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -164,6 +175,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAvailabilityZonesV3Result> getAvailabilityZonesV3Plain(GetAvailabilityZonesV3PlainArgs args) {
@@ -173,6 +185,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get a list of Block Storage availability zones from OpenStack
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -199,6 +213,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAvailabilityZonesV3Result> getAvailabilityZonesV3(GetAvailabilityZonesV3Args args, InvokeOptions options) {
@@ -208,6 +223,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get a list of Block Storage availability zones from OpenStack
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -234,6 +251,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAvailabilityZonesV3Result> getAvailabilityZonesV3Plain(GetAvailabilityZonesV3PlainArgs args, InvokeOptions options) {
@@ -243,6 +261,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get the blockstorage quotaset v3 of an OpenStack project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -271,6 +291,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQuotasetV3Result> getQuotasetV3(GetQuotasetV3Args args) {
@@ -280,6 +301,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get the blockstorage quotaset v3 of an OpenStack project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -308,6 +331,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQuotasetV3Result> getQuotasetV3Plain(GetQuotasetV3PlainArgs args) {
@@ -317,6 +341,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get the blockstorage quotaset v3 of an OpenStack project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -345,6 +371,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetQuotasetV3Result> getQuotasetV3(GetQuotasetV3Args args, InvokeOptions options) {
@@ -354,6 +381,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get the blockstorage quotaset v3 of an OpenStack project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -382,6 +411,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQuotasetV3Result> getQuotasetV3Plain(GetQuotasetV3PlainArgs args, InvokeOptions options) {
@@ -391,6 +421,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing snapshot.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -420,6 +452,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSnapshotV2Result> getSnapshotV2() {
@@ -429,6 +462,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing snapshot.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -458,6 +493,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSnapshotV2Result> getSnapshotV2Plain() {
@@ -467,6 +503,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing snapshot.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -496,6 +534,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSnapshotV2Result> getSnapshotV2(GetSnapshotV2Args args) {
@@ -505,6 +544,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing snapshot.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -534,6 +575,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSnapshotV2Result> getSnapshotV2Plain(GetSnapshotV2PlainArgs args) {
@@ -543,6 +585,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing snapshot.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -572,6 +616,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSnapshotV2Result> getSnapshotV2(GetSnapshotV2Args args, InvokeOptions options) {
@@ -581,6 +626,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing snapshot.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -610,6 +657,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSnapshotV2Result> getSnapshotV2Plain(GetSnapshotV2PlainArgs args, InvokeOptions options) {
@@ -619,6 +667,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing snapshot.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -648,6 +698,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSnapshotV3Result> getSnapshotV3() {
@@ -657,6 +708,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing snapshot.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -686,6 +739,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSnapshotV3Result> getSnapshotV3Plain() {
@@ -695,6 +749,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing snapshot.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -724,6 +780,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSnapshotV3Result> getSnapshotV3(GetSnapshotV3Args args) {
@@ -733,6 +790,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing snapshot.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -762,6 +821,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSnapshotV3Result> getSnapshotV3Plain(GetSnapshotV3PlainArgs args) {
@@ -771,6 +831,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing snapshot.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -800,6 +862,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSnapshotV3Result> getSnapshotV3(GetSnapshotV3Args args, InvokeOptions options) {
@@ -809,6 +872,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing snapshot.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -838,6 +903,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSnapshotV3Result> getSnapshotV3Plain(GetSnapshotV3PlainArgs args, InvokeOptions options) {
@@ -847,6 +913,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing volume.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -875,6 +943,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVolumeV2Result> getVolumeV2() {
@@ -884,6 +953,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing volume.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -912,6 +983,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVolumeV2Result> getVolumeV2Plain() {
@@ -921,6 +993,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing volume.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -949,6 +1023,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVolumeV2Result> getVolumeV2(GetVolumeV2Args args) {
@@ -958,6 +1033,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing volume.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -986,6 +1063,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVolumeV2Result> getVolumeV2Plain(GetVolumeV2PlainArgs args) {
@@ -995,6 +1073,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing volume.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1023,6 +1103,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVolumeV2Result> getVolumeV2(GetVolumeV2Args args, InvokeOptions options) {
@@ -1032,6 +1113,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing volume.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1060,6 +1143,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVolumeV2Result> getVolumeV2Plain(GetVolumeV2PlainArgs args, InvokeOptions options) {
@@ -1069,6 +1153,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing volume.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1097,6 +1183,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVolumeV3Result> getVolumeV3() {
@@ -1106,6 +1193,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing volume.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1134,6 +1223,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVolumeV3Result> getVolumeV3Plain() {
@@ -1143,6 +1233,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing volume.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1171,6 +1263,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVolumeV3Result> getVolumeV3(GetVolumeV3Args args) {
@@ -1180,6 +1273,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing volume.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1208,6 +1303,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVolumeV3Result> getVolumeV3Plain(GetVolumeV3PlainArgs args) {
@@ -1217,6 +1313,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing volume.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1245,6 +1343,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVolumeV3Result> getVolumeV3(GetVolumeV3Args args, InvokeOptions options) {
@@ -1254,6 +1353,8 @@ public final class BlockstorageFunctions {
      * Use this data source to get information about an existing volume.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1282,6 +1383,7 @@ public final class BlockstorageFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVolumeV3Result> getVolumeV3Plain(GetVolumeV3PlainArgs args, InvokeOptions options) {

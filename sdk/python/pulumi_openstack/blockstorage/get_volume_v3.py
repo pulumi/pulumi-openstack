@@ -192,12 +192,14 @@ def get_volume_v3(bootable: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     volume1 = openstack.blockstorage.get_volume_v3(name="volume_1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bootable: Indicates if the volume is bootable.
@@ -249,12 +251,14 @@ def get_volume_v3_output(bootable: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     volume1 = openstack.blockstorage.get_volume_v3(name="volume_1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bootable: Indicates if the volume is bootable.

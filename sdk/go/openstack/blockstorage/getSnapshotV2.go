@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,6 +40,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetSnapshotV2(ctx *pulumi.Context, args *GetSnapshotV2Args, opts ...pulumi.InvokeOption) (*GetSnapshotV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSnapshotV2Result

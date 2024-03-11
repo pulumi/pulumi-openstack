@@ -14,8 +14,10 @@ import (
 // Manages a DNS zone in the OpenStack DNS Service.
 //
 // ## Example Usage
+//
 // ### Automatically detect the correct network
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,6 +44,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

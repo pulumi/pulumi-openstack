@@ -8,16 +8,21 @@ import * as utilities from "../utilities";
  * Manages a V2 Neutron addressscope resource within OpenStack.
  *
  * ## Example Usage
+ *
  * ### Create an Address-scope
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const addressscope1 = new openstack.networking.AddressScope("addressscope1", {ipVersion: 6});
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Create a Subnet Pool from an Address-scope
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -31,13 +36,14 @@ import * as utilities from "../utilities";
  *     addressScopeId: addressscope1.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Address-scopes can be imported using the `id`, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:networking/addressScope:AddressScope addressscope_1 9cc35860-522a-4d35-974d-51d4b011801e
+ * $ pulumi import openstack:networking/addressScope:AddressScope addressscope_1 9cc35860-522a-4d35-974d-51d4b011801e
  * ```
  */
 export class AddressScope extends pulumi.CustomResource {

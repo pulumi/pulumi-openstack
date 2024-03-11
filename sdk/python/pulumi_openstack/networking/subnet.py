@@ -914,6 +914,7 @@ class Subnet(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -923,13 +924,14 @@ class Subnet(pulumi.CustomResource):
             network_id=network1.id,
             cidr="192.168.199.0/24")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Subnets can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/subnet:Subnet subnet_1 da4faf16-5546-41e4-8330-4d0002b74048
+        $ pulumi import openstack:networking/subnet:Subnet subnet_1 da4faf16-5546-41e4-8330-4d0002b74048
         ```
 
         :param str resource_name: The name of the resource.
@@ -1002,6 +1004,7 @@ class Subnet(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -1011,13 +1014,14 @@ class Subnet(pulumi.CustomResource):
             network_id=network1.id,
             cidr="192.168.199.0/24")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Subnets can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/subnet:Subnet subnet_1 da4faf16-5546-41e4-8330-4d0002b74048
+        $ pulumi import openstack:networking/subnet:Subnet subnet_1 da4faf16-5546-41e4-8330-4d0002b74048
         ```
 
         :param str resource_name: The name of the resource.

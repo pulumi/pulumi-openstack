@@ -14,6 +14,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -31,13 +32,15 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
-    /// Load Balancer Pool Member can be imported using the Pool ID and Member ID separated by a slash, e.g.:
+    /// Load Balancer Pool Member can be imported using the Pool ID and Member ID
+    /// separated by a slash, e.g.:
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:loadbalancer/member:Member member_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5/9563b79c-8460-47da-8a95-2711b746510f
+    /// $ pulumi import openstack:loadbalancer/member:Member member_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5/9563b79c-8460-47da-8a95-2711b746510f
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:loadbalancer/member:Member")]

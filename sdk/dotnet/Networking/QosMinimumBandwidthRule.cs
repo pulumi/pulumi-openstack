@@ -13,8 +13,10 @@ namespace Pulumi.OpenStack.Networking
     /// Manages a V2 Neutron QoS minimum bandwidth rule resource within OpenStack.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Create a QoS Policy with some minimum bandwidth rule
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -36,13 +38,14 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// QoS minimum bandwidth rules can be imported using the `qos_policy_id/minimum_bandwidth_rule_id` format, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule minimum_bandwidth_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
+    /// $ pulumi import openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule minimum_bandwidth_rule_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae/46dfb556-b92f-48ce-94c5-9a9e2140de94
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule")]

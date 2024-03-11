@@ -11,19 +11,21 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const service1 = new openstack.identity.ServiceV3("service1", {type: "custom"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Services can be imported using the `id`, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:identity/serviceV3:ServiceV3 service_1 6688e967-158a-496f-a224-cae3414e6b61
+ * $ pulumi import openstack:identity/serviceV3:ServiceV3 service_1 6688e967-158a-496f-a224-cae3414e6b61
  * ```
  */
 export class ServiceV3 extends pulumi.CustomResource {

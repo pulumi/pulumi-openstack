@@ -1272,8 +1272,10 @@ class ClusterTemplate(pulumi.CustomResource):
         Manages a V1 Magnum cluster template resource within OpenStack.
 
         ## Example Usage
+
         ### Create a Cluster template
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -1298,6 +1300,8 @@ class ClusterTemplate(pulumi.CustomResource):
             server_type="vm",
             volume_driver="cinder")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         The following attributes are exported:
@@ -1341,7 +1345,7 @@ class ClusterTemplate(pulumi.CustomResource):
         Cluster templates can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
+        $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
         ```
 
         :param str resource_name: The name of the resource.
@@ -1440,8 +1444,10 @@ class ClusterTemplate(pulumi.CustomResource):
         Manages a V1 Magnum cluster template resource within OpenStack.
 
         ## Example Usage
+
         ### Create a Cluster template
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -1466,6 +1472,8 @@ class ClusterTemplate(pulumi.CustomResource):
             server_type="vm",
             volume_driver="cinder")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         The following attributes are exported:
@@ -1509,7 +1517,7 @@ class ClusterTemplate(pulumi.CustomResource):
         Cluster templates can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
+        $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
         ```
 
         :param str resource_name: The name of the resource.

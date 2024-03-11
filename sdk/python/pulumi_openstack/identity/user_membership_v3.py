@@ -152,6 +152,7 @@ class UserMembershipV3(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -168,13 +169,15 @@ class UserMembershipV3(pulumi.CustomResource):
             project_id=project1.id,
             role_id=role1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        This resource can be imported by specifying all two arguments, separated by a forward slash:
+        This resource can be imported by specifying all two arguments, separated
+        by a forward slash:
 
         ```sh
-         $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
+        $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -202,6 +205,7 @@ class UserMembershipV3(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -218,13 +222,15 @@ class UserMembershipV3(pulumi.CustomResource):
             project_id=project1.id,
             role_id=role1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        This resource can be imported by specifying all two arguments, separated by a forward slash:
+        This resource can be imported by specifying all two arguments, separated
+        by a forward slash:
 
         ```sh
-         $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
+        $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
         ```
 
         :param str resource_name: The name of the resource.

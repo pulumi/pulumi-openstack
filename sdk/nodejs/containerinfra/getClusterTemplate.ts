@@ -10,6 +10,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -18,6 +19,7 @@ import * as utilities from "../utilities";
  *     name: "clustertemplate_1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getClusterTemplate(args: GetClusterTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterTemplateResult> {
 
@@ -203,6 +205,7 @@ export interface GetClusterTemplateResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -211,6 +214,7 @@ export interface GetClusterTemplateResult {
  *     name: "clustertemplate_1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getClusterTemplateOutput(args: GetClusterTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterTemplateResult> {
     return pulumi.output(args).apply((a: any) => getClusterTemplate(a, opts))

@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -19,13 +20,15 @@ import * as utilities from "../utilities";
  *     protocolPort: 8080,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
- * Load Balancer Pool Member can be imported using the Pool ID and Member ID separated by a slash, e.g.:
+ * Load Balancer Pool Member can be imported using the Pool ID and Member ID
+ * separated by a slash, e.g.:
  *
  * ```sh
- *  $ pulumi import openstack:loadbalancer/member:Member member_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5/9563b79c-8460-47da-8a95-2711b746510f
+ * $ pulumi import openstack:loadbalancer/member:Member member_1 c22974d2-4c95-4bcb-9819-0afc5ed303d5/9563b79c-8460-47da-8a95-2711b746510f
  * ```
  */
 export class Member extends pulumi.CustomResource {

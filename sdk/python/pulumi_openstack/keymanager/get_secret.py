@@ -324,6 +324,7 @@ def get_secret(acl_only: Optional[bool] = None,
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
@@ -331,6 +332,8 @@ def get_secret(acl_only: Optional[bool] = None,
     example = openstack.keymanager.get_secret(mode="cbc",
         secret_type="passphrase")
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Date Filters
 
     The values for the `expiration_filter`, `created_at_filter`, and
@@ -342,6 +345,7 @@ def get_secret(acl_only: Optional[bool] = None,
     For example, to get a passphrase a Secret with CBC moda, that will expire in
     January of 2020:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
@@ -350,6 +354,7 @@ def get_secret(acl_only: Optional[bool] = None,
         mode="cbc",
         secret_type="passphrase")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool acl_only: Select the Secret with an ACL that contains the user.
@@ -428,6 +433,7 @@ def get_secret_output(acl_only: Optional[pulumi.Input[Optional[bool]]] = None,
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
@@ -435,6 +441,8 @@ def get_secret_output(acl_only: Optional[pulumi.Input[Optional[bool]]] = None,
     example = openstack.keymanager.get_secret(mode="cbc",
         secret_type="passphrase")
     ```
+    <!--End PulumiCodeChooser -->
+
     ## Date Filters
 
     The values for the `expiration_filter`, `created_at_filter`, and
@@ -446,6 +454,7 @@ def get_secret_output(acl_only: Optional[pulumi.Input[Optional[bool]]] = None,
     For example, to get a passphrase a Secret with CBC moda, that will expire in
     January of 2020:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
@@ -454,6 +463,7 @@ def get_secret_output(acl_only: Optional[pulumi.Input[Optional[bool]]] = None,
         mode="cbc",
         secret_type="passphrase")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool acl_only: Select the Secret with an ACL that contains the user.

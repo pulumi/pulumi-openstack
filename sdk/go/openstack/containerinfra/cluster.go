@@ -19,8 +19,10 @@ import (
 // state.
 //
 // ## Example Usage
+//
 // ### Create a Cluster
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,6 +49,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Attributes reference
 //
 // The following attributes are exported:
@@ -88,9 +92,7 @@ import (
 // Clusters can be imported using the `id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
-//
+// $ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
 // ```
 type Cluster struct {
 	pulumi.CustomResourceState

@@ -17,6 +17,7 @@ namespace Pulumi.OpenStack.Images
     /// 
     /// Accept a shared image membershipship proposal within the current project.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -40,6 +41,7 @@ namespace Pulumi.OpenStack.Images
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

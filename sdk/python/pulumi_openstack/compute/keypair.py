@@ -272,29 +272,35 @@ class Keypair(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+
         ### Import an Existing Public Key
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         test_keypair = openstack.compute.Keypair("test-keypair", public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAjpC1hwiOCCmKEWxJ4qzTTsJbKzndLotBCz5PcwtUnflmU+gHJtWMZKpuEGVi29h0A/+ydKek1O18k10Ff+4tyFjiHDQAnOfgWf7+b1yK+qDip3X1C0UPMbwHlTfSGWLGZqd9LvEFx9k3h/M+VtMvwR1lJ9LUyTAImnNjWG7TaIPmui30HvM2UiFEmqkr4ijq45MyX2+fLIePLRIF61p4whjHAQYufqyno3BS48icQb4p6iVEZPo4AE2o9oIyQvj2mx4dk5Y8CgSETOZTYDOR3rU2fZTRDRgPJDH9FWvQjF5tA0p3d9CoWWd2s6GKKbfoUIi8R/Db1BSPJwkqB")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Generate a Public/Private Key Pair
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         test_keypair = openstack.compute.Keypair("test-keypair")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Keypairs can be imported using the `name`, e.g.
 
         ```sh
-         $ pulumi import openstack:compute/keypair:Keypair my-keypair test-keypair
+        $ pulumi import openstack:compute/keypair:Keypair my-keypair test-keypair
         ```
 
         :param str resource_name: The name of the resource.
@@ -323,29 +329,35 @@ class Keypair(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+
         ### Import an Existing Public Key
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         test_keypair = openstack.compute.Keypair("test-keypair", public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAjpC1hwiOCCmKEWxJ4qzTTsJbKzndLotBCz5PcwtUnflmU+gHJtWMZKpuEGVi29h0A/+ydKek1O18k10Ff+4tyFjiHDQAnOfgWf7+b1yK+qDip3X1C0UPMbwHlTfSGWLGZqd9LvEFx9k3h/M+VtMvwR1lJ9LUyTAImnNjWG7TaIPmui30HvM2UiFEmqkr4ijq45MyX2+fLIePLRIF61p4whjHAQYufqyno3BS48icQb4p6iVEZPo4AE2o9oIyQvj2mx4dk5Y8CgSETOZTYDOR3rU2fZTRDRgPJDH9FWvQjF5tA0p3d9CoWWd2s6GKKbfoUIi8R/Db1BSPJwkqB")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Generate a Public/Private Key Pair
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         test_keypair = openstack.compute.Keypair("test-keypair")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Keypairs can be imported using the `name`, e.g.
 
         ```sh
-         $ pulumi import openstack:compute/keypair:Keypair my-keypair test-keypair
+        $ pulumi import openstack:compute/keypair:Keypair my-keypair test-keypair
         ```
 
         :param str resource_name: The name of the resource.

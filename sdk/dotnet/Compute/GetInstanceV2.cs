@@ -14,10 +14,9 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// Use this data source to get the details of a running server
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstanceV2Result> InvokeAsync(GetInstanceV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceV2Result>("openstack:compute/getInstanceV2:getInstanceV2", args ?? new GetInstanceV2Args(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.OpenStack.Compute
         /// <summary>
         /// Use this data source to get the details of a running server
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstanceV2Result> Invoke(GetInstanceV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceV2Result>("openstack:compute/getInstanceV2:getInstanceV2", args ?? new GetInstanceV2InvokeArgs(), options.WithDefaults());

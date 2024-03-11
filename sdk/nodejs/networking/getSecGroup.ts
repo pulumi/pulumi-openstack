@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -17,6 +18,7 @@ import * as utilities from "../utilities";
  *     name: "tf_test_secgroup",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSecGroup(args?: GetSecGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSecGroupResult> {
     args = args || {};
@@ -97,6 +99,7 @@ export interface GetSecGroupResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -105,6 +108,7 @@ export interface GetSecGroupResult {
  *     name: "tf_test_secgroup",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSecGroupOutput(args?: GetSecGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecGroupResult> {
     return pulumi.output(args).apply((a: any) => getSecGroup(a, opts))

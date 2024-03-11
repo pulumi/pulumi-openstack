@@ -112,6 +112,7 @@ def get_address_scope(ip_version: Optional[int] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
@@ -120,6 +121,7 @@ def get_address_scope(ip_version: Optional[int] = None,
         name="public_addressscope",
         shared=True)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int ip_version: IP version.
@@ -161,6 +163,7 @@ def get_address_scope_output(ip_version: Optional[pulumi.Input[Optional[int]]] =
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
@@ -169,6 +172,7 @@ def get_address_scope_output(ip_version: Optional[pulumi.Input[Optional[int]]] =
         name="public_addressscope",
         shared=True)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int ip_version: IP version.

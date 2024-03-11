@@ -230,12 +230,14 @@ def get_port_ids(admin_state_up: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     ports = openstack.networking.get_port_ids(name="port")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool admin_state_up: The administrative state of the port.
@@ -325,12 +327,14 @@ def get_port_ids_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]] =
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     ports = openstack.networking.get_port_ids(name="port")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool admin_state_up: The administrative state of the port.

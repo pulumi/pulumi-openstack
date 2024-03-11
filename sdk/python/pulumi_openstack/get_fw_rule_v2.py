@@ -258,12 +258,14 @@ def get_fw_rule_v2(action: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     rule = openstack.get_fw_rule_v2(name="tf_test_rule")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str action: Action to be taken when the firewall rule matches.
@@ -354,12 +356,14 @@ def get_fw_rule_v2_output(action: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     rule = openstack.get_fw_rule_v2(name="tf_test_rule")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str action: Action to be taken when the firewall rule matches.

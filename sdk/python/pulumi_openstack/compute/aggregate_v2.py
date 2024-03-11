@@ -222,8 +222,10 @@ class AggregateV2(pulumi.CustomResource):
         Manages a Host Aggregate within Openstack Nova.
 
         ## Example Usage
+
         ### Full example
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -239,14 +241,18 @@ class AggregateV2(pulumi.CustomResource):
             region="RegionOne",
             zone="nova")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Minimum required example
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         test = openstack.compute.AggregateV2("test")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -256,21 +262,19 @@ class AggregateV2(pulumi.CustomResource):
         $ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24
         ```
 
-         The ID can be obtained with an openstack command:
+        The ID can be obtained with an openstack command:
 
-         $ openstack aggregate list
+        $ openstack aggregate list
 
-         +----+------+-------------------+
+        +----+------+-------------------+
 
-         | ID | Name | Availability Zone |
+        | ID | Name | Availability Zone |
 
-         +----+------+-------------------+
+        +----+------+-------------------+
 
-         | 59 | test | None
+        | 59 | test | None              |
 
-        |
-
-         +----+------+-------------------+
+        +----+------+-------------------+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -295,8 +299,10 @@ class AggregateV2(pulumi.CustomResource):
         Manages a Host Aggregate within Openstack Nova.
 
         ## Example Usage
+
         ### Full example
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -312,14 +318,18 @@ class AggregateV2(pulumi.CustomResource):
             region="RegionOne",
             zone="nova")
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Minimum required example
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         test = openstack.compute.AggregateV2("test")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -329,21 +339,19 @@ class AggregateV2(pulumi.CustomResource):
         $ pulumi import openstack:compute/aggregateV2:AggregateV2 myaggregate 24
         ```
 
-         The ID can be obtained with an openstack command:
+        The ID can be obtained with an openstack command:
 
-         $ openstack aggregate list
+        $ openstack aggregate list
 
-         +----+------+-------------------+
+        +----+------+-------------------+
 
-         | ID | Name | Availability Zone |
+        | ID | Name | Availability Zone |
 
-         +----+------+-------------------+
+        +----+------+-------------------+
 
-         | 59 | test | None
+        | 59 | test | None              |
 
-        |
-
-         +----+------+-------------------+
+        +----+------+-------------------+
 
         :param str resource_name: The name of the resource.
         :param AggregateV2Args args: The arguments to use to populate this resource's properties.

@@ -21,8 +21,10 @@ import (
 // creation is triggered. More info here
 //
 // ## Example Usage
+//
 // ### Simple port
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,8 +55,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Port defining fixed_ip.subnet_id
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -97,8 +102,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Port with physical binding information
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -153,6 +161,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Notes
 //
 // ### Ports and Instances
@@ -166,9 +176,7 @@ import (
 // Ports can be imported using the `id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
-//
+// $ pulumi import openstack:networking/port:Port port_1 eae26a3e-1c33-4cc1-9c31-0cd729c438a1
 // ```
 type Port struct {
 	pulumi.CustomResourceState

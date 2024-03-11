@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * ***
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -63,13 +65,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
- * This resource can be imported by specifying all two arguments, separated by a forward slash:
+ * This resource can be imported by specifying all two arguments, separated
+ * by a forward slash:
  * 
  * ```sh
- *  $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 flavor_id/tenant_id
+ * $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 flavor_id/tenant_id
  * ```
  * 
  */

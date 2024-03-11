@@ -244,16 +244,21 @@ class ServerGroup(pulumi.CustomResource):
         Manages a V2 Server Group resource within OpenStack.
 
         ## Example Usage
+
         ### Compute service API version 2.63 or below:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         test_sg = openstack.compute.ServerGroup("test-sg", policies=["anti-affinity"])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Compute service API version 2.64 or above:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -264,6 +269,8 @@ class ServerGroup(pulumi.CustomResource):
                 max_server_per_host=3,
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Policies
 
         * `affinity` - All instances/servers launched in this group will be hosted on
@@ -287,7 +294,7 @@ class ServerGroup(pulumi.CustomResource):
         Server Groups can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
+        $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
         ```
 
         :param str resource_name: The name of the resource.
@@ -314,16 +321,21 @@ class ServerGroup(pulumi.CustomResource):
         Manages a V2 Server Group resource within OpenStack.
 
         ## Example Usage
+
         ### Compute service API version 2.63 or below:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         test_sg = openstack.compute.ServerGroup("test-sg", policies=["anti-affinity"])
         ```
+        <!--End PulumiCodeChooser -->
+
         ### Compute service API version 2.64 or above:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -334,6 +346,8 @@ class ServerGroup(pulumi.CustomResource):
                 max_server_per_host=3,
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Policies
 
         * `affinity` - All instances/servers launched in this group will be hosted on
@@ -357,7 +371,7 @@ class ServerGroup(pulumi.CustomResource):
         Server Groups can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
+        $ pulumi import openstack:compute/serverGroup:ServerGroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
         ```
 
         :param str resource_name: The name of the resource.

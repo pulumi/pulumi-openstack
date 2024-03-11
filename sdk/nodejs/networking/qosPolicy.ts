@@ -8,21 +8,24 @@ import * as utilities from "../utilities";
  * Manages a V2 Neutron QoS policy resource within OpenStack.
  *
  * ## Example Usage
+ *
  * ### Create a QoS Policy
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const qosPolicy1 = new openstack.networking.QosPolicy("qosPolicy1", {description: "bw_limit"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * QoS Policies can be imported using the `id`, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:networking/qosPolicy:QosPolicy qos_policy_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae
+ * $ pulumi import openstack:networking/qosPolicy:QosPolicy qos_policy_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae
  * ```
  */
 export class QosPolicy extends pulumi.CustomResource {

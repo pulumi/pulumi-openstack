@@ -8,8 +8,10 @@ import * as utilities from "../utilities";
  * Manages a DNS zone transfer request in the OpenStack DNS Service.
  *
  * ## Example Usage
+ *
  * ### Automatically detect the correct network
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -25,13 +27,14 @@ import * as utilities from "../utilities";
  *     description: "a transfer request",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * This resource can be imported by specifying the transferRequest ID:
  *
  * ```sh
- *  $ pulumi import openstack:dns/transferRequest:TransferRequest request_1 request_id
+ * $ pulumi import openstack:dns/transferRequest:TransferRequest request_1 request_id
  * ```
  */
 export class TransferRequest extends pulumi.CustomResource {

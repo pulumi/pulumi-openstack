@@ -113,12 +113,14 @@ def get_keypair(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     kp = openstack.compute.get_keypair(name="sand")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The unique name of the keypair.
@@ -154,12 +156,14 @@ def get_keypair_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     kp = openstack.compute.get_keypair(name="sand")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The unique name of the keypair.

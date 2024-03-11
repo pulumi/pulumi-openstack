@@ -23,7 +23,10 @@ import javax.annotation.Nullable;
  * Manages a V2 Neutron QoS policy resource within OpenStack.
  * 
  * ## Example Usage
+ * 
  * ### Create a QoS Policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -52,13 +55,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * QoS Policies can be imported using the `id`, e.g.
  * 
  * ```sh
- *  $ pulumi import openstack:networking/qosPolicy:QosPolicy qos_policy_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae
+ * $ pulumi import openstack:networking/qosPolicy:QosPolicy qos_policy_1 d6ae28ce-fcb5-4180-aa62-d260a27e09ae
  * ```
  * 
  */

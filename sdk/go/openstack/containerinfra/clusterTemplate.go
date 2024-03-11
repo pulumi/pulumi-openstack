@@ -15,8 +15,10 @@ import (
 // Manages a V1 Magnum cluster template resource within OpenStack.
 //
 // ## Example Usage
+//
 // ### Create a Cluster template
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,6 +59,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Attributes reference
 //
 // The following attributes are exported:
@@ -100,9 +104,7 @@ import (
 // Cluster templates can be imported using the `id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
-//
+// $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
 // ```
 type ClusterTemplate struct {
 	pulumi.CustomResourceState

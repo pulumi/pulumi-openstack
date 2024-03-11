@@ -792,8 +792,10 @@ class Cluster(pulumi.CustomResource):
         state.
 
         ## Example Usage
+
         ### Create a Cluster
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -804,6 +806,8 @@ class Cluster(pulumi.CustomResource):
             master_count=3,
             node_count=5)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         The following attributes are exported:
@@ -845,7 +849,7 @@ class Cluster(pulumi.CustomResource):
         Clusters can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
+        $ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
         ```
 
         :param str resource_name: The name of the resource.
@@ -900,8 +904,10 @@ class Cluster(pulumi.CustomResource):
         state.
 
         ## Example Usage
+
         ### Create a Cluster
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -912,6 +918,8 @@ class Cluster(pulumi.CustomResource):
             master_count=3,
             node_count=5)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         The following attributes are exported:
@@ -953,7 +961,7 @@ class Cluster(pulumi.CustomResource):
         Clusters can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
+        $ pulumi import openstack:containerinfra/cluster:Cluster cluster_1 ce0f9463-dd25-474b-9fe8-94de63e5e42b
         ```
 
         :param str resource_name: The name of the resource.

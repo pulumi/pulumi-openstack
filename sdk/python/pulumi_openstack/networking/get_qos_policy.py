@@ -183,12 +183,14 @@ def get_qos_policy(description: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     qos_policy1 = openstack.networking.get_qos_policy(name="qos_policy_1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str description: The human-readable description for the QoS policy.
@@ -241,12 +243,14 @@ def get_qos_policy_output(description: Optional[pulumi.Input[Optional[str]]] = N
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     qos_policy1 = openstack.networking.get_qos_policy(name="qos_policy_1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str description: The human-readable description for the QoS policy.
