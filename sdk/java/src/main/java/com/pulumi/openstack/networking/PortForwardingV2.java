@@ -19,7 +19,10 @@ import javax.annotation.Nullable;
  * Manages a V2 portforwarding resource within OpenStack.
  * 
  * ## Example Usage
+ * 
  * ### Simple portforwarding
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -52,6 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="openstack:networking/portForwardingV2:PortForwardingV2")

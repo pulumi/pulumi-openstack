@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -34,13 +35,14 @@ import * as utilities from "../utilities";
  *     rule2.id,
  * ]});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Firewall Policies can be imported using the `id`, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:firewall/policyV2:PolicyV2 policy_1 07f422e6-c596-474b-8b94-fe2c12506ce0
+ * $ pulumi import openstack:firewall/policyV2:PolicyV2 policy_1 07f422e6-c596-474b-8b94-fe2c12506ce0
  * ```
  */
 export class PolicyV2 extends pulumi.CustomResource {

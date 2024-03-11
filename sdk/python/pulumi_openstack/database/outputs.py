@@ -278,7 +278,7 @@ class InstanceUser(dict):
                new instance.
         :param Sequence[str] databases: A list of databases that user will have access to. If not specified,
                user has access to all databases on th einstance. Changing this creates a new instance.
-        :param str host: An ip address or % sign indicating what ip addresses can connect with
+        :param str host: An ip address or %!s(MISSING)ign indicating what ip addresses can connect with
                this user credentials. Changing this creates a new instance.
         :param str password: User's password. Changing this creates a
                new instance.
@@ -313,7 +313,7 @@ class InstanceUser(dict):
     @pulumi.getter
     def host(self) -> Optional[str]:
         """
-        An ip address or % sign indicating what ip addresses can connect with
+        An ip address or %!s(MISSING)ign indicating what ip addresses can connect with
         this user credentials. Changing this creates a new instance.
         """
         return pulumi.get(self, "host")

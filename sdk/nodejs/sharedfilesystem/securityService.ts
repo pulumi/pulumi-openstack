@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -35,13 +36,14 @@ import * as utilities from "../utilities";
  *     user: "joinDomainUser",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * This resource can be imported by specifying the ID of the security service:
  *
  * ```sh
- *  $ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 id
+ * $ pulumi import openstack:sharedfilesystem/securityService:SecurityService securityservice_1 id
  * ```
  */
 export class SecurityService extends pulumi.CustomResource {

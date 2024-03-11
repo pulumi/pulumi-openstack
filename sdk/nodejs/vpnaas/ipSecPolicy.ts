@@ -11,19 +11,21 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const policy1 = new openstack.vpnaas.IpSecPolicy("policy1", {});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Policies can be imported using the `id`, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:vpnaas/ipSecPolicy:IpSecPolicy policy_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+ * $ pulumi import openstack:vpnaas/ipSecPolicy:IpSecPolicy policy_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
  * ```
  */
 export class IpSecPolicy extends pulumi.CustomResource {

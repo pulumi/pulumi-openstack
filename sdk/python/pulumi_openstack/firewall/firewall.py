@@ -390,6 +390,7 @@ class Firewall(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -412,13 +413,14 @@ class Firewall(pulumi.CustomResource):
         ])
         firewall1 = openstack.firewall.Firewall("firewall1", policy_id=policy1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Firewalls can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:firewall/firewall:Firewall firewall_1 c9e39fb2-ce20-46c8-a964-25f3898c7a97
+        $ pulumi import openstack:firewall/firewall:Firewall firewall_1 c9e39fb2-ce20-46c8-a964-25f3898c7a97
         ```
 
         :param str resource_name: The name of the resource.
@@ -458,6 +460,7 @@ class Firewall(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -480,13 +483,14 @@ class Firewall(pulumi.CustomResource):
         ])
         firewall1 = openstack.firewall.Firewall("firewall1", policy_id=policy1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Firewalls can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:firewall/firewall:Firewall firewall_1 c9e39fb2-ce20-46c8-a964-25f3898c7a97
+        $ pulumi import openstack:firewall/firewall:Firewall firewall_1 c9e39fb2-ce20-46c8-a964-25f3898c7a97
         ```
 
         :param str resource_name: The name of the resource.

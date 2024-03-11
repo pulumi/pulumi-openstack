@@ -19,6 +19,7 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -56,13 +57,15 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying all two arguments, separated by a forward slash:
+    /// This resource can be imported by specifying all two arguments, separated
+    /// by a forward slash:
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
+    /// $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:identity/userMembershipV3:UserMembershipV3")]

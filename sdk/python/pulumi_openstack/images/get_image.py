@@ -354,6 +354,7 @@ def get_image(hidden: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
@@ -364,6 +365,7 @@ def get_image(hidden: Optional[bool] = None,
             "key": "value",
         })
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool hidden: Whether or not the image is hidden from public list.
@@ -469,6 +471,7 @@ def get_image_output(hidden: Optional[pulumi.Input[Optional[bool]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
@@ -479,6 +482,7 @@ def get_image_output(hidden: Optional[pulumi.Input[Optional[bool]]] = None,
             "key": "value",
         })
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool hidden: Whether or not the image is hidden from public list.

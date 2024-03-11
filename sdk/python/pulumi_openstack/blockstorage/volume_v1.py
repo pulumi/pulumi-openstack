@@ -433,6 +433,7 @@ class VolumeV1(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -442,13 +443,14 @@ class VolumeV1(pulumi.CustomResource):
             region="RegionOne",
             size=3)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Volumes can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:blockstorage/volumeV1:VolumeV1 volume_1 ea257959-eeb1-4c10-8d33-26f0409a755d
+        $ pulumi import openstack:blockstorage/volumeV1:VolumeV1 volume_1 ea257959-eeb1-4c10-8d33-26f0409a755d
         ```
 
         :param str resource_name: The name of the resource.
@@ -486,6 +488,7 @@ class VolumeV1(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -495,13 +498,14 @@ class VolumeV1(pulumi.CustomResource):
             region="RegionOne",
             size=3)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Volumes can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:blockstorage/volumeV1:VolumeV1 volume_1 ea257959-eeb1-4c10-8d33-26f0409a755d
+        $ pulumi import openstack:blockstorage/volumeV1:VolumeV1 volume_1 ea257959-eeb1-4c10-8d33-26f0409a755d
         ```
 
         :param str resource_name: The name of the resource.

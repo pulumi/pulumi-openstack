@@ -540,8 +540,10 @@ class NodeGroup(pulumi.CustomResource):
         Manages a V1 Magnum node group resource within OpenStack.
 
         ## Example Usage
+
         ### Create a Nodegroup
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -550,6 +552,8 @@ class NodeGroup(pulumi.CustomResource):
             cluster_id="b9a45c5c-cd03-4958-82aa-b80bf93cb922",
             node_count=5)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         The following attributes are exported:
@@ -574,7 +578,7 @@ class NodeGroup(pulumi.CustomResource):
         Node groups can be imported using the `id` (cluster_id/nodegroup_id), e.g.
 
         ```sh
-         $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922/ce0f9463-dd25-474b-9fe8-94de63e5e42b
+        $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922/ce0f9463-dd25-474b-9fe8-94de63e5e42b
         ```
 
         :param str resource_name: The name of the resource.
@@ -618,8 +622,10 @@ class NodeGroup(pulumi.CustomResource):
         Manages a V1 Magnum node group resource within OpenStack.
 
         ## Example Usage
+
         ### Create a Nodegroup
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -628,6 +634,8 @@ class NodeGroup(pulumi.CustomResource):
             cluster_id="b9a45c5c-cd03-4958-82aa-b80bf93cb922",
             node_count=5)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         The following attributes are exported:
@@ -652,7 +660,7 @@ class NodeGroup(pulumi.CustomResource):
         Node groups can be imported using the `id` (cluster_id/nodegroup_id), e.g.
 
         ```sh
-         $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922/ce0f9463-dd25-474b-9fe8-94de63e5e42b
+        $ pulumi import openstack:containerinfra/nodeGroup:NodeGroup nodegroup_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922/ce0f9463-dd25-474b-9fe8-94de63e5e42b
         ```
 
         :param str resource_name: The name of the resource.

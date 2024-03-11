@@ -205,12 +205,14 @@ def get_fw_group_v2(admin_state_up: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     group = openstack.get_fw_group_v2(name="tf_test_group")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool admin_state_up: Administrative up/down status for the firewall group.
@@ -278,12 +280,14 @@ def get_fw_group_v2_output(admin_state_up: Optional[pulumi.Input[Optional[bool]]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     group = openstack.get_fw_group_v2(name="tf_test_group")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool admin_state_up: Administrative up/down status for the firewall group.

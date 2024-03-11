@@ -689,6 +689,7 @@ class Router(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -697,13 +698,14 @@ class Router(pulumi.CustomResource):
             admin_state_up=True,
             external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Routers can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/router:Router router_1 014395cd-89fc-4c9b-96b7-13d1ee79dad2
+        $ pulumi import openstack:networking/router:Router router_1 014395cd-89fc-4c9b-96b7-13d1ee79dad2
         ```
 
         :param str resource_name: The name of the resource.
@@ -766,6 +768,7 @@ class Router(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -774,13 +777,14 @@ class Router(pulumi.CustomResource):
             admin_state_up=True,
             external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Routers can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:networking/router:Router router_1 014395cd-89fc-4c9b-96b7-13d1ee79dad2
+        $ pulumi import openstack:networking/router:Router router_1 014395cd-89fc-4c9b-96b7-13d1ee79dad2
         ```
 
         :param str resource_name: The name of the resource.

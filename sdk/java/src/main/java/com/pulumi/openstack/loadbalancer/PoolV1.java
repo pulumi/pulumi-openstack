@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Manages a V1 load balancer pool resource within OpenStack.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -51,7 +53,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Complete Load Balancing Stack Example
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Notes
  * 
@@ -62,7 +69,7 @@ import javax.annotation.Nullable;
  * Load Balancer Pools can be imported using the `id`, e.g.
  * 
  * ```sh
- *  $ pulumi import openstack:loadbalancer/poolV1:PoolV1 pool_1 b255e6ba-02ad-43e6-8951-3428ca26b713
+ * $ pulumi import openstack:loadbalancer/poolV1:PoolV1 pool_1 b255e6ba-02ad-43e6-8951-3428ca26b713
  * ```
  * 
  */

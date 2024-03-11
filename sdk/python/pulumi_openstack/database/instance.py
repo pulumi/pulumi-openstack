@@ -386,8 +386,10 @@ class Instance(pulumi.CustomResource):
         state.
 
         ## Example Usage
+
         ### Instance
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -404,6 +406,7 @@ class Instance(pulumi.CustomResource):
             region="region-test",
             size=8)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -439,8 +442,10 @@ class Instance(pulumi.CustomResource):
         state.
 
         ## Example Usage
+
         ### Instance
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -457,6 +462,7 @@ class Instance(pulumi.CustomResource):
             region="region-test",
             size=8)
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

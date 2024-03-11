@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  *     name: "share_1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getShare(args?: GetShareArgs, opts?: pulumi.InvokeOptions): Promise<GetShareResult> {
     args = args || {};
@@ -158,6 +160,7 @@ export interface GetShareResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -166,6 +169,7 @@ export interface GetShareResult {
  *     name: "share_1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getShareOutput(args?: GetShareOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShareResult> {
     return pulumi.output(args).apply((a: any) => getShare(a, opts))

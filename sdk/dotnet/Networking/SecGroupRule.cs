@@ -16,6 +16,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -42,6 +43,7 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// &gt; **Note:** To expose the full port-range 1:65535, use `0` for `port_range_min`
     /// and `port_range_max`.
@@ -51,7 +53,7 @@ namespace Pulumi.OpenStack.Networking
     /// Security Group Rules can be imported using the `id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
+    /// $ pulumi import openstack:networking/secGroupRule:SecGroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:networking/secGroupRule:SecGroupRule")]

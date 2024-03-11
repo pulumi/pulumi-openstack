@@ -265,12 +265,14 @@ def get_network(description: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     network = openstack.networking.get_network(name="tf_test_network")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str description: Human-readable description of the network.
@@ -344,12 +346,14 @@ def get_network_output(description: Optional[pulumi.Input[Optional[str]]] = None
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     network = openstack.networking.get_network(name="tf_test_network")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str description: Human-readable description of the network.

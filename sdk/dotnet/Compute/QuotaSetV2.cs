@@ -22,6 +22,7 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -45,13 +46,14 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Quotasets can be imported using the `project_id/region_name`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:compute/quotaSetV2:QuotaSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
+    /// $ pulumi import openstack:compute/quotaSetV2:QuotaSetV2 quotaset_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:compute/quotaSetV2:QuotaSetV2")]

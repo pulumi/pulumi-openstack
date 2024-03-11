@@ -11,8 +11,10 @@ import * as utilities from "../utilities";
  * shares are created.
  *
  * ## Example Usage
+ *
  * ### Basic share network
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -29,8 +31,11 @@ import * as utilities from "../utilities";
  *     neutronSubnetId: subnet1.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Share network with associated security services
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -58,13 +63,14 @@ import * as utilities from "../utilities";
  *     securityServiceIds: [securityservice1.id],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * This resource can be imported by specifying the ID of the share network:
  *
  * ```sh
- *  $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 id
+ * $ pulumi import openstack:sharedfilesystem/shareNetwork:ShareNetwork sharenetwork_1 id
  * ```
  */
 export class ShareNetwork extends pulumi.CustomResource {

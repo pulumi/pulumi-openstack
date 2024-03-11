@@ -8,21 +8,24 @@ import * as utilities from "../utilities";
  * Manages a V1 DB database resource within OpenStack.
  *
  * ## Example Usage
+ *
  * ### Database
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const mydb = new openstack.database.Database("mydb", {instanceId: openstack_db_instance_v1.basic.id});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Databases can be imported by using `instance-id/db-name`, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:database/database:Database mydb 7b9e3cd3-00d9-449c-b074-8439f8e274fa/mydb
+ * $ pulumi import openstack:database/database:Database mydb 7b9e3cd3-00d9-449c-b074-8439f8e274fa/mydb
  * ```
  */
 export class Database extends pulumi.CustomResource {

@@ -729,6 +729,7 @@ class SiteConnection(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -747,13 +748,14 @@ class SiteConnection(pulumi.CustomResource):
                 interval=21,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Site Connections can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:vpnaas/siteConnection:SiteConnection conn_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+        $ pulumi import openstack:vpnaas/siteConnection:SiteConnection conn_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
         ```
 
         :param str resource_name: The name of the resource.
@@ -806,6 +808,7 @@ class SiteConnection(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -824,13 +827,14 @@ class SiteConnection(pulumi.CustomResource):
                 interval=21,
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Site Connections can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:vpnaas/siteConnection:SiteConnection conn_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+        $ pulumi import openstack:vpnaas/siteConnection:SiteConnection conn_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
         ```
 
         :param str resource_name: The name of the resource.

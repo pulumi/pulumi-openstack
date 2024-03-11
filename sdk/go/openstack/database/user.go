@@ -19,8 +19,10 @@ import (
 // state.
 //
 // ## Example Usage
+//
 // ### User
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,6 +50,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 type User struct {
 	pulumi.CustomResourceState
 

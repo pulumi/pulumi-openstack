@@ -89,12 +89,14 @@ def get_availability_zones_v3(region: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     zones = openstack.blockstorage.get_availability_zones_v3()
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str region: The region in which to obtain the Block Storage client.
@@ -124,12 +126,14 @@ def get_availability_zones_v3_output(region: Optional[pulumi.Input[Optional[str]
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     zones = openstack.blockstorage.get_availability_zones_v3()
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str region: The region in which to obtain the Block Storage client.

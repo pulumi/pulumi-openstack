@@ -10,10 +10,12 @@ import * as utilities from "../utilities";
  * Manages a V1 Barbican container resource within OpenStack.
  *
  * ## Example Usage
+ *
  * ### Simple secret
  *
  * The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
@@ -62,10 +64,13 @@ import * as utilities from "../utilities";
  *     defaultTlsContainerRef: tls1.containerRef,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Container with the ACL
  *
  * > **Note** Only read ACLs are supported
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -97,13 +102,14 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Containers can be imported using the container id (the last part of the container reference), e.g.:
  *
  * ```sh
- *  $ pulumi import openstack:keymanager/containerV1:ContainerV1 container_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
+ * $ pulumi import openstack:keymanager/containerV1:ContainerV1 container_1 0c6cd26a-c012-4d7b-8034-057c0f1c2953
  * ```
  */
 export class ContainerV1 extends pulumi.CustomResource {

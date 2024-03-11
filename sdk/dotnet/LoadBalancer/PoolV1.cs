@@ -14,6 +14,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -36,8 +37,11 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Complete Load Balancing Stack Example
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -156,6 +160,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Notes
     /// 
@@ -166,7 +171,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// Load Balancer Pools can be imported using the `id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:loadbalancer/poolV1:PoolV1 pool_1 b255e6ba-02ad-43e6-8951-3428ca26b713
+    /// $ pulumi import openstack:loadbalancer/poolV1:PoolV1 pool_1 b255e6ba-02ad-43e6-8951-3428ca26b713
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:loadbalancer/poolV1:PoolV1")]

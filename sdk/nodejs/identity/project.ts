@@ -12,19 +12,21 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const project1 = new openstack.identity.Project("project1", {description: "A project"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Projects can be imported using the `id`, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:identity/project:Project project_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+ * $ pulumi import openstack:identity/project:Project project_1 89c60255-9bd6-460c-822a-e2b959ede9d2
  * ```
  */
 export class Project extends pulumi.CustomResource {

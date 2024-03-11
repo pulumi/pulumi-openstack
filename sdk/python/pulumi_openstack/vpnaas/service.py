@@ -377,6 +377,7 @@ class Service(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -385,13 +386,14 @@ class Service(pulumi.CustomResource):
             admin_state_up=True,
             router_id="14a75700-fc03-4602-9294-26ee44f366b3")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Services can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:vpnaas/service:Service service_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+        $ pulumi import openstack:vpnaas/service:Service service_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
         ```
 
         :param str resource_name: The name of the resource.
@@ -423,6 +425,7 @@ class Service(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -431,13 +434,14 @@ class Service(pulumi.CustomResource):
             admin_state_up=True,
             router_id="14a75700-fc03-4602-9294-26ee44f366b3")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Services can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:vpnaas/service:Service service_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
+        $ pulumi import openstack:vpnaas/service:Service service_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
         ```
 
         :param str resource_name: The name of the resource.

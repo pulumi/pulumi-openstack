@@ -163,12 +163,14 @@ def get_fw_policy_v2(audited: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     policy = openstack.get_fw_policy_v2(name="tf_test_policy")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool audited: Whether this policy has been audited.
@@ -224,12 +226,14 @@ def get_fw_policy_v2_output(audited: Optional[pulumi.Input[Optional[bool]]] = No
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     policy = openstack.get_fw_policy_v2(name="tf_test_policy")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool audited: Whether this policy has been audited.

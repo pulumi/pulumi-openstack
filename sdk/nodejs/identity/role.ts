@@ -12,19 +12,21 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const role1 = new openstack.identity.Role("role1", {});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Roles can be imported using the `id`, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:identity/role:Role role_1 89c60255-9bd6-460c-822a-e2b959ede9d2
+ * $ pulumi import openstack:identity/role:Role role_1 89c60255-9bd6-460c-822a-e2b959ede9d2
  * ```
  */
 export class Role extends pulumi.CustomResource {

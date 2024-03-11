@@ -404,6 +404,7 @@ class PoolV1(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -415,8 +416,11 @@ class PoolV1(pulumi.CustomResource):
             protocol="HTTP",
             subnet_id="12345")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Complete Load Balancing Stack Example
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -483,6 +487,7 @@ class PoolV1(pulumi.CustomResource):
             port=80,
             pool_id=pool1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Notes
 
@@ -493,7 +498,7 @@ class PoolV1(pulumi.CustomResource):
         Load Balancer Pools can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:loadbalancer/poolV1:PoolV1 pool_1 b255e6ba-02ad-43e6-8951-3428ca26b713
+        $ pulumi import openstack:loadbalancer/poolV1:PoolV1 pool_1 b255e6ba-02ad-43e6-8951-3428ca26b713
         ```
 
         :param str resource_name: The name of the resource.
@@ -534,6 +539,7 @@ class PoolV1(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -545,8 +551,11 @@ class PoolV1(pulumi.CustomResource):
             protocol="HTTP",
             subnet_id="12345")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Complete Load Balancing Stack Example
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -613,6 +622,7 @@ class PoolV1(pulumi.CustomResource):
             port=80,
             pool_id=pool1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Notes
 
@@ -623,7 +633,7 @@ class PoolV1(pulumi.CustomResource):
         Load Balancer Pools can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:loadbalancer/poolV1:PoolV1 pool_1 b255e6ba-02ad-43e6-8951-3428ca26b713
+        $ pulumi import openstack:loadbalancer/poolV1:PoolV1 pool_1 b255e6ba-02ad-43e6-8951-3428ca26b713
         ```
 
         :param str resource_name: The name of the resource.

@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -17,6 +18,7 @@ import * as utilities from "../utilities";
  *     maxKbps: 300,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getQosBandwidthLimitRule(args: GetQosBandwidthLimitRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetQosBandwidthLimitRuleResult> {
 
@@ -87,6 +89,7 @@ export interface GetQosBandwidthLimitRuleResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -95,6 +98,7 @@ export interface GetQosBandwidthLimitRuleResult {
  *     maxKbps: 300,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getQosBandwidthLimitRuleOutput(args: GetQosBandwidthLimitRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQosBandwidthLimitRuleResult> {
     return pulumi.output(args).apply((a: any) => getQosBandwidthLimitRule(a, opts))

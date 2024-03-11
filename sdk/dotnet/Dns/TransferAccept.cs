@@ -13,8 +13,10 @@ namespace Pulumi.OpenStack.Dns
     /// Manages a DNS zone transfer accept in the OpenStack DNS Service.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Automatically detect the correct network
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -45,13 +47,14 @@ namespace Pulumi.OpenStack.Dns
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the transferAccept ID:
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 accept_id
+    /// $ pulumi import openstack:dns/transferAccept:TransferAccept accept_1 accept_id
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:dns/transferAccept:TransferAccept")]

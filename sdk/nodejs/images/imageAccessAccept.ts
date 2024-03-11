@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  *
  * Accept a shared image membershipship proposal within the current project.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -26,6 +27,7 @@ import * as utilities from "../utilities";
  *     status: "accepted",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

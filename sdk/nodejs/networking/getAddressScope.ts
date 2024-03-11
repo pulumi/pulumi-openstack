@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  *     shared: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAddressScope(args?: GetAddressScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressScopeResult> {
     args = args || {};
@@ -93,6 +95,7 @@ export interface GetAddressScopeResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -103,6 +106,7 @@ export interface GetAddressScopeResult {
  *     shared: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAddressScopeOutput(args?: GetAddressScopeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressScopeResult> {
     return pulumi.output(args).apply((a: any) => getAddressScope(a, opts))

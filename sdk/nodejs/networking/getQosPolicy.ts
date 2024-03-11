@@ -9,6 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -17,6 +18,7 @@ import * as utilities from "../utilities";
  *     name: "qos_policy_1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getQosPolicy(args?: GetQosPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetQosPolicyResult> {
     args = args || {};
@@ -121,6 +123,7 @@ export interface GetQosPolicyResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -129,6 +132,7 @@ export interface GetQosPolicyResult {
  *     name: "qos_policy_1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getQosPolicyOutput(args?: GetQosPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQosPolicyResult> {
     return pulumi.output(args).apply((a: any) => getQosPolicy(a, opts))

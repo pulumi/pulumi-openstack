@@ -13,8 +13,10 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// Manages a V1 Magnum cluster template resource within OpenStack.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Create a Cluster template
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -48,6 +50,8 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Attributes reference
     /// 
     /// The following attributes are exported:
@@ -91,7 +95,7 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// Cluster templates can be imported using the `id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
+    /// $ pulumi import openstack:containerinfra/clusterTemplate:ClusterTemplate clustertemplate_1 b9a45c5c-cd03-4958-82aa-b80bf93cb922
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:containerinfra/clusterTemplate:ClusterTemplate")]

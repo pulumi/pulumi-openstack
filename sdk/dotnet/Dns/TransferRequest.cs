@@ -13,8 +13,10 @@ namespace Pulumi.OpenStack.Dns
     /// Manages a DNS zone transfer request in the OpenStack DNS Service.
     /// 
     /// ## Example Usage
+    /// 
     /// ### Automatically detect the correct network
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,13 +41,14 @@ namespace Pulumi.OpenStack.Dns
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// This resource can be imported by specifying the transferRequest ID:
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:dns/transferRequest:TransferRequest request_1 request_id
+    /// $ pulumi import openstack:dns/transferRequest:TransferRequest request_1 request_id
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:dns/transferRequest:TransferRequest")]

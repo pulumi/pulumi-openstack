@@ -19,6 +19,7 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -45,13 +46,15 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported by specifying all two arguments, separated by a forward slash:
+    /// This resource can be imported by specifying all two arguments, separated
+    /// by a forward slash:
     /// 
     /// ```sh
-    ///  $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 flavor_id/tenant_id
+    /// $ pulumi import openstack:compute/flavorAccess:FlavorAccess access_1 flavor_id/tenant_id
     /// ```
     /// </summary>
     [OpenStackResourceType("openstack:compute/flavorAccess:FlavorAccess")]

@@ -116,12 +116,14 @@ def get_service(enabled: Optional[bool] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     service1 = openstack.identity.get_service(name="keystone")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enabled: The service status.
@@ -160,12 +162,14 @@ def get_service_output(enabled: Optional[pulumi.Input[Optional[bool]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     service1 = openstack.identity.get_service(name="keystone")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param bool enabled: The service status.

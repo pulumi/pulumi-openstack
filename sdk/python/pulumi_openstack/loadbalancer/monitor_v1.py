@@ -444,6 +444,7 @@ class MonitorV1(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -455,13 +456,14 @@ class MonitorV1(pulumi.CustomResource):
             timeout=5,
             type="PING")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Load Balancer Members can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:loadbalancer/monitorV1:MonitorV1 monitor_1 119d7530-72e9-449a-aa97-124a5ef1992c
+        $ pulumi import openstack:loadbalancer/monitorV1:MonitorV1 monitor_1 119d7530-72e9-449a-aa97-124a5ef1992c
         ```
 
         :param str resource_name: The name of the resource.
@@ -508,6 +510,7 @@ class MonitorV1(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -519,13 +522,14 @@ class MonitorV1(pulumi.CustomResource):
             timeout=5,
             type="PING")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Load Balancer Members can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:loadbalancer/monitorV1:MonitorV1 monitor_1 119d7530-72e9-449a-aa97-124a5ef1992c
+        $ pulumi import openstack:loadbalancer/monitorV1:MonitorV1 monitor_1 119d7530-72e9-449a-aa97-124a5ef1992c
         ```
 
         :param str resource_name: The name of the resource.

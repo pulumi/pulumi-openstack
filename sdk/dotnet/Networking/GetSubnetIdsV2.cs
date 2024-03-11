@@ -15,10 +15,9 @@ namespace Pulumi.OpenStack.Networking
         /// Use this data source to get a list of Openstack Subnet IDs matching the
         /// specified criteria.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,8 +37,7 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSubnetIdsV2Result> InvokeAsync(GetSubnetIdsV2Args? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSubnetIdsV2Result>("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", args ?? new GetSubnetIdsV2Args(), options.WithDefaults());
@@ -48,10 +46,9 @@ namespace Pulumi.OpenStack.Networking
         /// Use this data source to get a list of Openstack Subnet IDs matching the
         /// specified criteria.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,8 +68,7 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSubnetIdsV2Result> Invoke(GetSubnetIdsV2InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSubnetIdsV2Result>("openstack:networking/getSubnetIdsV2:getSubnetIdsV2", args ?? new GetSubnetIdsV2InvokeArgs(), options.WithDefaults());

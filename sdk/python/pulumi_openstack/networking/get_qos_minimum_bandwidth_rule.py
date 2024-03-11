@@ -99,12 +99,14 @@ def get_qos_minimum_bandwidth_rule(direction: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     qos_min_bw_rule1 = openstack.networking.get_qos_minimum_bandwidth_rule(min_kbps=2000)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int min_kbps: The value of a minimum kbps bandwidth.
@@ -140,12 +142,14 @@ def get_qos_minimum_bandwidth_rule_output(direction: Optional[pulumi.Input[Optio
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     qos_min_bw_rule1 = openstack.networking.get_qos_minimum_bandwidth_rule(min_kbps=2000)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param int min_kbps: The value of a minimum kbps bandwidth.

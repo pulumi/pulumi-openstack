@@ -391,6 +391,7 @@ class Quota(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -406,13 +407,15 @@ class Quota(pulumi.CustomResource):
             l7_policy=11,
             l7_rule=12)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        Quotas can be imported using the `project_id/region_name`, where region_name is the one defined is the Openstack credentials that are in use. E.g.
+        Quotas can be imported using the `project_id/region_name`, where region_name is the
+        one defined is the Openstack credentials that are in use. E.g.
 
         ```sh
-         $ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
+        $ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
         ```
 
         :param str resource_name: The name of the resource.
@@ -462,6 +465,7 @@ class Quota(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -477,13 +481,15 @@ class Quota(pulumi.CustomResource):
             l7_policy=11,
             l7_rule=12)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
-        Quotas can be imported using the `project_id/region_name`, where region_name is the one defined is the Openstack credentials that are in use. E.g.
+        Quotas can be imported using the `project_id/region_name`, where region_name is the
+        one defined is the Openstack credentials that are in use. E.g.
 
         ```sh
-         $ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
+        $ pulumi import openstack:loadbalancer/quota:Quota quota_1 2a0f2240-c5e6-41de-896d-e80d97428d6b/region_1
         ```
 
         :param str resource_name: The name of the resource.

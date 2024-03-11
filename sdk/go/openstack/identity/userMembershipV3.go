@@ -21,6 +21,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -73,15 +74,15 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
-// This resource can be imported by specifying all two arguments, separated by a forward slash:
+// This resource can be imported by specifying all two arguments, separated
+// by a forward slash:
 //
 // ```sh
-//
-//	$ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
-//
+// $ pulumi import openstack:identity/userMembershipV3:UserMembershipV3 user_membership_1 user_id/group_id
 // ```
 type UserMembershipV3 struct {
 	pulumi.CustomResourceState

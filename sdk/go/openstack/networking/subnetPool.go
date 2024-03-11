@@ -15,8 +15,10 @@ import (
 // Manages a V2 Neutron subnetpool resource within OpenStack.
 //
 // ## Example Usage
+//
 // ### Create a Subnet Pool
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,8 +46,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Create a Subnet from a Subnet Pool
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -85,15 +90,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Subnetpools can be imported using the `id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import openstack:networking/subnetPool:SubnetPool subnetpool_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
-//
+// $ pulumi import openstack:networking/subnetPool:SubnetPool subnetpool_1 832cb7f3-59fe-40cf-8f64-8350ffc03272
 // ```
 type SubnetPool struct {
 	pulumi.CustomResourceState

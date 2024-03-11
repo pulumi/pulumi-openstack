@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -19,6 +20,7 @@ import * as utilities from "../utilities";
  *     name: "volume_1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVolumeV3(args?: GetVolumeV3Args, opts?: pulumi.InvokeOptions): Promise<GetVolumeV3Result> {
     args = args || {};
@@ -130,6 +132,7 @@ export interface GetVolumeV3Result {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -138,6 +141,7 @@ export interface GetVolumeV3Result {
  *     name: "volume_1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getVolumeV3Output(args?: GetVolumeV3OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeV3Result> {
     return pulumi.output(args).apply((a: any) => getVolumeV3(a, opts))

@@ -234,6 +234,7 @@ class RouterInterface(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -248,12 +249,13 @@ class RouterInterface(pulumi.CustomResource):
             router_id=router1.id,
             subnet_id=subnet1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Router Interfaces can be imported using the port `id`, e.g.
 
-         $ openstack port list --router <router name or id>
+        $ openstack port list --router <router name or id>
 
         ```sh
         $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 port_id
@@ -286,6 +288,7 @@ class RouterInterface(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -300,12 +303,13 @@ class RouterInterface(pulumi.CustomResource):
             router_id=router1.id,
             subnet_id=subnet1.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Router Interfaces can be imported using the port `id`, e.g.
 
-         $ openstack port list --router <router name or id>
+        $ openstack port list --router <router name or id>
 
         ```sh
         $ pulumi import openstack:networking/routerInterface:RouterInterface int_1 port_id

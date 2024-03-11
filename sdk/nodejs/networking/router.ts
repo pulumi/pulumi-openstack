@@ -11,6 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -20,13 +21,14 @@ import * as utilities from "../utilities";
  *     externalNetworkId: "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Routers can be imported using the `id`, e.g.
  *
  * ```sh
- *  $ pulumi import openstack:networking/router:Router router_1 014395cd-89fc-4c9b-96b7-13d1ee79dad2
+ * $ pulumi import openstack:networking/router:Router router_1 014395cd-89fc-4c9b-96b7-13d1ee79dad2
  * ```
  */
 export class Router extends pulumi.CustomResource {

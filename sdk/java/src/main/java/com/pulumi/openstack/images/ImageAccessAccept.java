@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * Accept a shared image membershipship proposal within the current project.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -57,6 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

@@ -559,6 +559,7 @@ class Vip(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -569,13 +570,14 @@ class Vip(pulumi.CustomResource):
             protocol="HTTP",
             subnet_id="12345")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Load Balancer VIPs can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:loadbalancer/vip:Vip vip_1 50e16b26-89c1-475e-a492-76167182511e
+        $ pulumi import openstack:loadbalancer/vip:Vip vip_1 50e16b26-89c1-475e-a492-76167182511e
         ```
 
         :param str resource_name: The name of the resource.
@@ -625,6 +627,7 @@ class Vip(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -635,13 +638,14 @@ class Vip(pulumi.CustomResource):
             protocol="HTTP",
             subnet_id="12345")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Load Balancer VIPs can be imported using the `id`, e.g.
 
         ```sh
-         $ pulumi import openstack:loadbalancer/vip:Vip vip_1 50e16b26-89c1-475e-a492-76167182511e
+        $ pulumi import openstack:loadbalancer/vip:Vip vip_1 50e16b26-89c1-475e-a492-76167182511e
         ```
 
         :param str resource_name: The name of the resource.
