@@ -351,7 +351,7 @@ namespace Pulumi.OpenStack.Networking
         /// object structure is documented below. Changing this updates the host routes
         /// for the existing subnet.
         /// </summary>
-        [Obsolete(@"Use openstack_networking_subnet_route_v2 instead")]
+        [Obsolete(@"Use openstack.networking.SubnetRoute instead")]
         public InputList<Inputs.SubnetHostRouteArgs> HostRoutes
         {
             get => _hostRoutes ?? (_hostRoutes = new InputList<Inputs.SubnetHostRouteArgs>());
@@ -577,7 +577,7 @@ namespace Pulumi.OpenStack.Networking
         /// object structure is documented below. Changing this updates the host routes
         /// for the existing subnet.
         /// </summary>
-        [Obsolete(@"Use openstack_networking_subnet_route_v2 instead")]
+        [Obsolete(@"Use openstack.networking.SubnetRoute instead")]
         public InputList<Inputs.SubnetHostRouteGetArgs> HostRoutes
         {
             get => _hostRoutes ?? (_hostRoutes = new InputList<Inputs.SubnetHostRouteGetArgs>());

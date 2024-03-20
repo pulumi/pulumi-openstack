@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = images.NewImageAccessAccept(ctx, "rancherosMember", &images.ImageAccessAcceptArgs{
-//				ImageId: *pulumi.String(rancheros.Id),
+//				ImageId: pulumi.String(rancheros.Id),
 //				Status:  pulumi.String("accepted"),
 //			})
 //			if err != nil {

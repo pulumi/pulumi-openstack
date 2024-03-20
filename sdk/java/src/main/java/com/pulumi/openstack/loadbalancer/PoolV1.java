@@ -116,10 +116,10 @@ public class PoolV1 extends com.pulumi.resources.CustomResource {
      * `openstack.loadbalancer.MemberV1` resource.
      * 
      * @deprecated
-     * Use openstack_lb_member_v1 instead
+     * Use openstack.loadbalancer.MemberV1 instead
      * 
      */
-    @Deprecated /* Use openstack_lb_member_v1 instead */
+    @Deprecated /* Use openstack.loadbalancer.MemberV1 instead */
     @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> members;
 
