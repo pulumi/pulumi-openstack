@@ -56,8 +56,8 @@ class PoolV1Args:
         if lb_provider is not None:
             pulumi.set(__self__, "lb_provider", lb_provider)
         if members is not None:
-            warnings.warn("""Use openstack_lb_member_v1 instead""", DeprecationWarning)
-            pulumi.log.warn("""members is deprecated: Use openstack_lb_member_v1 instead""")
+            warnings.warn("""Use loadbalancer.MemberV1 instead""", DeprecationWarning)
+            pulumi.log.warn("""members is deprecated: Use loadbalancer.MemberV1 instead""")
         if members is not None:
             pulumi.set(__self__, "members", members)
         if monitor_ids is not None:
@@ -132,8 +132,8 @@ class PoolV1Args:
         below. Please note that the `member` block is deprecated in favor of the
         `loadbalancer.MemberV1` resource.
         """
-        warnings.warn("""Use openstack_lb_member_v1 instead""", DeprecationWarning)
-        pulumi.log.warn("""members is deprecated: Use openstack_lb_member_v1 instead""")
+        warnings.warn("""Use loadbalancer.MemberV1 instead""", DeprecationWarning)
+        pulumi.log.warn("""members is deprecated: Use loadbalancer.MemberV1 instead""")
 
         return pulumi.get(self, "members")
 
@@ -240,8 +240,8 @@ class _PoolV1State:
         if lb_provider is not None:
             pulumi.set(__self__, "lb_provider", lb_provider)
         if members is not None:
-            warnings.warn("""Use openstack_lb_member_v1 instead""", DeprecationWarning)
-            pulumi.log.warn("""members is deprecated: Use openstack_lb_member_v1 instead""")
+            warnings.warn("""Use loadbalancer.MemberV1 instead""", DeprecationWarning)
+            pulumi.log.warn("""members is deprecated: Use loadbalancer.MemberV1 instead""")
         if members is not None:
             pulumi.set(__self__, "members", members)
         if monitor_ids is not None:
@@ -293,8 +293,8 @@ class _PoolV1State:
         below. Please note that the `member` block is deprecated in favor of the
         `loadbalancer.MemberV1` resource.
         """
-        warnings.warn("""Use openstack_lb_member_v1 instead""", DeprecationWarning)
-        pulumi.log.warn("""members is deprecated: Use openstack_lb_member_v1 instead""")
+        warnings.warn("""Use loadbalancer.MemberV1 instead""", DeprecationWarning)
+        pulumi.log.warn("""members is deprecated: Use loadbalancer.MemberV1 instead""")
 
         return pulumi.get(self, "members")
 
@@ -778,8 +778,8 @@ class PoolV1(pulumi.CustomResource):
         below. Please note that the `member` block is deprecated in favor of the
         `loadbalancer.MemberV1` resource.
         """
-        warnings.warn("""Use openstack_lb_member_v1 instead""", DeprecationWarning)
-        pulumi.log.warn("""members is deprecated: Use openstack_lb_member_v1 instead""")
+        warnings.warn("""Use loadbalancer.MemberV1 instead""", DeprecationWarning)
+        pulumi.log.warn("""members is deprecated: Use loadbalancer.MemberV1 instead""")
 
         return pulumi.get(self, "members")
 

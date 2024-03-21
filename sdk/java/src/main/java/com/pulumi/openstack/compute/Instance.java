@@ -222,10 +222,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Use the openstack_compute_floatingip_associate_v2 resource instead
+     * Use the openstack.compute.FloatingIpAssociate resource instead
      * 
      */
-    @Deprecated /* Use the openstack_compute_floatingip_associate_v2 resource instead */
+    @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
     @Export(name="floatingIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> floatingIp;
 
@@ -552,10 +552,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * Use block_device or openstack_compute_volume_attach_v2 instead
+     * Use block_device or openstack.compute.VolumeAttach instead
      * 
      */
-    @Deprecated /* Use block_device or openstack_compute_volume_attach_v2 instead */
+    @Deprecated /* Use block_device or openstack.compute.VolumeAttach instead */
     @Export(name="volumes", refs={List.class,InstanceVolume.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceVolume>> volumes;
 

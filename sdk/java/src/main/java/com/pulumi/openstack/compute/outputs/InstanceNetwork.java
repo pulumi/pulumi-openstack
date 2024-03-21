@@ -27,10 +27,10 @@ public final class InstanceNetwork {
     private @Nullable String fixedIpV6;
     /**
      * @deprecated
-     * Use the openstack_compute_floatingip_associate_v2 resource instead
+     * Use the openstack.compute.FloatingIpAssociate resource instead
      * 
      */
-    @Deprecated /* Use the openstack_compute_floatingip_associate_v2 resource instead */
+    @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
     private @Nullable String floatingIp;
     private @Nullable String mac;
     /**
@@ -74,10 +74,10 @@ public final class InstanceNetwork {
     }
     /**
      * @deprecated
-     * Use the openstack_compute_floatingip_associate_v2 resource instead
+     * Use the openstack.compute.FloatingIpAssociate resource instead
      * 
      */
-    @Deprecated /* Use the openstack_compute_floatingip_associate_v2 resource instead */
+    @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
     public Optional<String> floatingIp() {
         return Optional.ofNullable(this.floatingIp);
     }

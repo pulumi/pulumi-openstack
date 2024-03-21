@@ -276,8 +276,8 @@ class InstanceNetworkArgs:
         if fixed_ip_v6 is not None:
             pulumi.set(__self__, "fixed_ip_v6", fixed_ip_v6)
         if floating_ip is not None:
-            warnings.warn("""Use the openstack_compute_floatingip_associate_v2 resource instead""", DeprecationWarning)
-            pulumi.log.warn("""floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead""")
+            warnings.warn("""Use the compute.FloatingIpAssociate resource instead""", DeprecationWarning)
+            pulumi.log.warn("""floating_ip is deprecated: Use the compute.FloatingIpAssociate resource instead""")
         if floating_ip is not None:
             pulumi.set(__self__, "floating_ip", floating_ip)
         if mac is not None:
@@ -327,8 +327,8 @@ class InstanceNetworkArgs:
     @property
     @pulumi.getter(name="floatingIp")
     def floating_ip(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Use the openstack_compute_floatingip_associate_v2 resource instead""", DeprecationWarning)
-        pulumi.log.warn("""floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead""")
+        warnings.warn("""Use the compute.FloatingIpAssociate resource instead""", DeprecationWarning)
+        pulumi.log.warn("""floating_ip is deprecated: Use the compute.FloatingIpAssociate resource instead""")
 
         return pulumi.get(self, "floating_ip")
 

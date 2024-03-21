@@ -179,10 +179,10 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
      * for the existing subnet.
      * 
      * @deprecated
-     * Use openstack_networking_subnet_route_v2 instead
+     * Use openstack.networking.SubnetRoute instead
      * 
      */
-    @Deprecated /* Use openstack_networking_subnet_route_v2 instead */
+    @Deprecated /* Use openstack.networking.SubnetRoute instead */
     @Import(name="hostRoutes")
     private @Nullable Output<List<SubnetHostRouteArgs>> hostRoutes;
 
@@ -194,10 +194,10 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
      * for the existing subnet.
      * 
      * @deprecated
-     * Use openstack_networking_subnet_route_v2 instead
+     * Use openstack.networking.SubnetRoute instead
      * 
      */
-    @Deprecated /* Use openstack_networking_subnet_route_v2 instead */
+    @Deprecated /* Use openstack.networking.SubnetRoute instead */
     public Optional<Output<List<SubnetHostRouteArgs>>> hostRoutes() {
         return Optional.ofNullable(this.hostRoutes);
     }
@@ -711,10 +711,10 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Use openstack_networking_subnet_route_v2 instead
+         * Use openstack.networking.SubnetRoute instead
          * 
          */
-        @Deprecated /* Use openstack_networking_subnet_route_v2 instead */
+        @Deprecated /* Use openstack.networking.SubnetRoute instead */
         public Builder hostRoutes(@Nullable Output<List<SubnetHostRouteArgs>> hostRoutes) {
             $.hostRoutes = hostRoutes;
             return this;
@@ -730,10 +730,10 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Use openstack_networking_subnet_route_v2 instead
+         * Use openstack.networking.SubnetRoute instead
          * 
          */
-        @Deprecated /* Use openstack_networking_subnet_route_v2 instead */
+        @Deprecated /* Use openstack.networking.SubnetRoute instead */
         public Builder hostRoutes(List<SubnetHostRouteArgs> hostRoutes) {
             return hostRoutes(Output.of(hostRoutes));
         }
@@ -748,10 +748,10 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Use openstack_networking_subnet_route_v2 instead
+         * Use openstack.networking.SubnetRoute instead
          * 
          */
-        @Deprecated /* Use openstack_networking_subnet_route_v2 instead */
+        @Deprecated /* Use openstack.networking.SubnetRoute instead */
         public Builder hostRoutes(SubnetHostRouteArgs... hostRoutes) {
             return hostRoutes(List.of(hostRoutes));
         }

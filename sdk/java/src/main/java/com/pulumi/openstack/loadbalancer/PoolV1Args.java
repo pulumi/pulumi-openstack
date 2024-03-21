@@ -60,10 +60,10 @@ public final class PoolV1Args extends com.pulumi.resources.ResourceArgs {
      * `openstack.loadbalancer.MemberV1` resource.
      * 
      * @deprecated
-     * Use openstack_lb_member_v1 instead
+     * Use openstack.loadbalancer.MemberV1 instead
      * 
      */
-    @Deprecated /* Use openstack_lb_member_v1 instead */
+    @Deprecated /* Use openstack.loadbalancer.MemberV1 instead */
     @Import(name="members")
     private @Nullable Output<List<String>> members;
 
@@ -74,10 +74,10 @@ public final class PoolV1Args extends com.pulumi.resources.ResourceArgs {
      * `openstack.loadbalancer.MemberV1` resource.
      * 
      * @deprecated
-     * Use openstack_lb_member_v1 instead
+     * Use openstack.loadbalancer.MemberV1 instead
      * 
      */
-    @Deprecated /* Use openstack_lb_member_v1 instead */
+    @Deprecated /* Use openstack.loadbalancer.MemberV1 instead */
     public Optional<Output<List<String>>> members() {
         return Optional.ofNullable(this.members);
     }
@@ -279,10 +279,10 @@ public final class PoolV1Args extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Use openstack_lb_member_v1 instead
+         * Use openstack.loadbalancer.MemberV1 instead
          * 
          */
-        @Deprecated /* Use openstack_lb_member_v1 instead */
+        @Deprecated /* Use openstack.loadbalancer.MemberV1 instead */
         public Builder members(@Nullable Output<List<String>> members) {
             $.members = members;
             return this;
@@ -297,10 +297,10 @@ public final class PoolV1Args extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Use openstack_lb_member_v1 instead
+         * Use openstack.loadbalancer.MemberV1 instead
          * 
          */
-        @Deprecated /* Use openstack_lb_member_v1 instead */
+        @Deprecated /* Use openstack.loadbalancer.MemberV1 instead */
         public Builder members(List<String> members) {
             return members(Output.of(members));
         }
@@ -314,10 +314,10 @@ public final class PoolV1Args extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Use openstack_lb_member_v1 instead
+         * Use openstack.loadbalancer.MemberV1 instead
          * 
          */
-        @Deprecated /* Use openstack_lb_member_v1 instead */
+        @Deprecated /* Use openstack.loadbalancer.MemberV1 instead */
         public Builder members(String... members) {
             return members(List.of(members));
         }

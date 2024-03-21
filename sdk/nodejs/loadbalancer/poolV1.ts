@@ -161,7 +161,7 @@ export class PoolV1 extends pulumi.CustomResource {
      * below. Please note that the `member` block is deprecated in favor of the
      * `openstack.loadbalancer.MemberV1` resource.
      *
-     * @deprecated Use openstack_lb_member_v1 instead
+     * @deprecated Use openstack.loadbalancer.MemberV1 instead
      */
     public readonly members!: pulumi.Output<string[] | undefined>;
     /**
@@ -267,7 +267,7 @@ export interface PoolV1State {
      * below. Please note that the `member` block is deprecated in favor of the
      * `openstack.loadbalancer.MemberV1` resource.
      *
-     * @deprecated Use openstack_lb_member_v1 instead
+     * @deprecated Use openstack.loadbalancer.MemberV1 instead
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -326,7 +326,7 @@ export interface PoolV1Args {
      * below. Please note that the `member` block is deprecated in favor of the
      * `openstack.loadbalancer.MemberV1` resource.
      *
-     * @deprecated Use openstack_lb_member_v1 instead
+     * @deprecated Use openstack.loadbalancer.MemberV1 instead
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
