@@ -79,7 +79,7 @@ export class Subnet extends pulumi.CustomResource {
      * use with DHCP in this subnet.
      * The `allocationPools` block is documented below.
      *
-     * @deprecated use allocation_pool instead
+     * @deprecated use allocationPool instead
      */
     public readonly allocationPoolsCollection!: pulumi.Output<outputs.networking.SubnetAllocationPoolsCollection[]>;
     /**
@@ -119,7 +119,7 @@ export class Subnet extends pulumi.CustomResource {
      * object structure is documented below. Changing this updates the host routes
      * for the existing subnet.
      *
-     * @deprecated Use openstack_networking_subnet_route_v2 instead
+     * @deprecated Use openstack.networking.SubnetRoute instead
      */
     public readonly hostRoutes!: pulumi.Output<outputs.networking.SubnetHostRoute[] | undefined>;
     /**
@@ -280,7 +280,7 @@ export interface SubnetState {
      * use with DHCP in this subnet.
      * The `allocationPools` block is documented below.
      *
-     * @deprecated use allocation_pool instead
+     * @deprecated use allocationPool instead
      */
     allocationPoolsCollection?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPoolsCollection>[]>;
     /**
@@ -320,7 +320,7 @@ export interface SubnetState {
      * object structure is documented below. Changing this updates the host routes
      * for the existing subnet.
      *
-     * @deprecated Use openstack_networking_subnet_route_v2 instead
+     * @deprecated Use openstack.networking.SubnetRoute instead
      */
     hostRoutes?: pulumi.Input<pulumi.Input<inputs.networking.SubnetHostRoute>[]>;
     /**
@@ -409,7 +409,7 @@ export interface SubnetArgs {
      * use with DHCP in this subnet.
      * The `allocationPools` block is documented below.
      *
-     * @deprecated use allocation_pool instead
+     * @deprecated use allocationPool instead
      */
     allocationPoolsCollection?: pulumi.Input<pulumi.Input<inputs.networking.SubnetAllocationPoolsCollection>[]>;
     /**
@@ -449,7 +449,7 @@ export interface SubnetArgs {
      * object structure is documented below. Changing this updates the host routes
      * for the existing subnet.
      *
-     * @deprecated Use openstack_networking_subnet_route_v2 instead
+     * @deprecated Use openstack.networking.SubnetRoute instead
      */
     hostRoutes?: pulumi.Input<pulumi.Input<inputs.networking.SubnetHostRoute>[]>;
     /**

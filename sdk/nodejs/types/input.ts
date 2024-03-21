@@ -225,7 +225,7 @@ export namespace compute {
         fixedIpV4?: pulumi.Input<string>;
         fixedIpV6?: pulumi.Input<string>;
         /**
-         * @deprecated Use the openstack_compute_floatingip_associate_v2 resource instead
+         * @deprecated Use the openstack.compute.FloatingIpAssociate resource instead
          */
         floatingIp?: pulumi.Input<string>;
         mac?: pulumi.Input<string>;

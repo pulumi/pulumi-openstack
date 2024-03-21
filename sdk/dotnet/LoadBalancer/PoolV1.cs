@@ -316,7 +316,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// below. Please note that the `member` block is deprecated in favor of the
         /// `openstack.loadbalancer.MemberV1` resource.
         /// </summary>
-        [Obsolete(@"Use openstack_lb_member_v1 instead")]
+        [Obsolete(@"Use openstack.loadbalancer.MemberV1 instead")]
         public InputList<string> Members
         {
             get => _members ?? (_members = new InputList<string>());
@@ -406,7 +406,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         /// below. Please note that the `member` block is deprecated in favor of the
         /// `openstack.loadbalancer.MemberV1` resource.
         /// </summary>
-        [Obsolete(@"Use openstack_lb_member_v1 instead")]
+        [Obsolete(@"Use openstack.loadbalancer.MemberV1 instead")]
         public InputList<string> Members
         {
             get => _members ?? (_members = new InputList<string>());
