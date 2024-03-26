@@ -109,7 +109,7 @@ export class Router extends pulumi.CustomResource {
      * will be using floating IPs. Changing this updates the external gateway
      * of an existing router.
      *
-     * @deprecated use externalNetworkId instead
+     * @deprecated use external_network_id instead
      */
     public readonly externalGateway!: pulumi.Output<string>;
     /**
@@ -265,7 +265,7 @@ export interface RouterState {
      * will be using floating IPs. Changing this updates the external gateway
      * of an existing router.
      *
-     * @deprecated use externalNetworkId instead
+     * @deprecated use external_network_id instead
      */
     externalGateway?: pulumi.Input<string>;
     /**
@@ -364,7 +364,7 @@ export interface RouterArgs {
      * will be using floating IPs. Changing this updates the external gateway
      * of an existing router.
      *
-     * @deprecated use externalNetworkId instead
+     * @deprecated use external_network_id instead
      */
     externalGateway?: pulumi.Input<string>;
     /**

@@ -233,19 +233,19 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @deprecated
-     * Use the openstack.compute.FloatingIpAssociate resource instead
+     * Use the openstack_compute_floatingip_associate_v2 resource instead
      * 
      */
-    @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
+    @Deprecated /* Use the openstack_compute_floatingip_associate_v2 resource instead */
     @Import(name="floatingIp")
     private @Nullable Output<String> floatingIp;
 
     /**
      * @deprecated
-     * Use the openstack.compute.FloatingIpAssociate resource instead
+     * Use the openstack_compute_floatingip_associate_v2 resource instead
      * 
      */
-    @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
+    @Deprecated /* Use the openstack_compute_floatingip_associate_v2 resource instead */
     public Optional<Output<String>> floatingIp() {
         return Optional.ofNullable(this.floatingIp);
     }
@@ -588,19 +588,19 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @deprecated
-     * Use block_device or openstack.compute.VolumeAttach instead
+     * Use block_device or openstack_compute_volume_attach_v2 instead
      * 
      */
-    @Deprecated /* Use block_device or openstack.compute.VolumeAttach instead */
+    @Deprecated /* Use block_device or openstack_compute_volume_attach_v2 instead */
     @Import(name="volumes")
     private @Nullable Output<List<InstanceVolumeArgs>> volumes;
 
     /**
      * @deprecated
-     * Use block_device or openstack.compute.VolumeAttach instead
+     * Use block_device or openstack_compute_volume_attach_v2 instead
      * 
      */
-    @Deprecated /* Use block_device or openstack.compute.VolumeAttach instead */
+    @Deprecated /* Use block_device or openstack_compute_volume_attach_v2 instead */
     public Optional<Output<List<InstanceVolumeArgs>>> volumes() {
         return Optional.ofNullable(this.volumes);
     }
@@ -964,10 +964,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Use the openstack.compute.FloatingIpAssociate resource instead
+         * Use the openstack_compute_floatingip_associate_v2 resource instead
          * 
          */
-        @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
+        @Deprecated /* Use the openstack_compute_floatingip_associate_v2 resource instead */
         public Builder floatingIp(@Nullable Output<String> floatingIp) {
             $.floatingIp = floatingIp;
             return this;
@@ -977,10 +977,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Use the openstack.compute.FloatingIpAssociate resource instead
+         * Use the openstack_compute_floatingip_associate_v2 resource instead
          * 
          */
-        @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
+        @Deprecated /* Use the openstack_compute_floatingip_associate_v2 resource instead */
         public Builder floatingIp(String floatingIp) {
             return floatingIp(Output.of(floatingIp));
         }
@@ -1494,10 +1494,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Use block_device or openstack.compute.VolumeAttach instead
+         * Use block_device or openstack_compute_volume_attach_v2 instead
          * 
          */
-        @Deprecated /* Use block_device or openstack.compute.VolumeAttach instead */
+        @Deprecated /* Use block_device or openstack_compute_volume_attach_v2 instead */
         public Builder volumes(@Nullable Output<List<InstanceVolumeArgs>> volumes) {
             $.volumes = volumes;
             return this;
@@ -1507,10 +1507,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Use block_device or openstack.compute.VolumeAttach instead
+         * Use block_device or openstack_compute_volume_attach_v2 instead
          * 
          */
-        @Deprecated /* Use block_device or openstack.compute.VolumeAttach instead */
+        @Deprecated /* Use block_device or openstack_compute_volume_attach_v2 instead */
         public Builder volumes(List<InstanceVolumeArgs> volumes) {
             return volumes(Output.of(volumes));
         }
@@ -1519,10 +1519,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Use block_device or openstack.compute.VolumeAttach instead
+         * Use block_device or openstack_compute_volume_attach_v2 instead
          * 
          */
-        @Deprecated /* Use block_device or openstack.compute.VolumeAttach instead */
+        @Deprecated /* Use block_device or openstack_compute_volume_attach_v2 instead */
         public Builder volumes(InstanceVolumeArgs... volumes) {
             return volumes(List.of(volumes));
         }

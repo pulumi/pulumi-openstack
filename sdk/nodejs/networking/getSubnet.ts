@@ -58,7 +58,7 @@ export interface GetSubnetArgs {
      */
     description?: string;
     /**
-     * @deprecated use dhcpEnabled instead
+     * @deprecated use dhcp_enabled instead
      */
     dhcpDisabled?: boolean;
     /**
@@ -130,7 +130,7 @@ export interface GetSubnetResult {
     readonly cidr: string;
     readonly description: string;
     /**
-     * @deprecated use dhcpEnabled instead
+     * @deprecated use dhcp_enabled instead
      */
     readonly dhcpDisabled?: boolean;
     readonly dhcpEnabled?: boolean;
@@ -202,7 +202,7 @@ export interface GetSubnetOutputArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * @deprecated use dhcpEnabled instead
+     * @deprecated use dhcp_enabled instead
      */
     dhcpDisabled?: pulumi.Input<boolean>;
     /**

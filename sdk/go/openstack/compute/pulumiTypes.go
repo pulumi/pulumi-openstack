@@ -271,7 +271,7 @@ type InstanceNetwork struct {
 	// network. Changing this creates a new server.
 	FixedIpV4 *string `pulumi:"fixedIpV4"`
 	FixedIpV6 *string `pulumi:"fixedIpV6"`
-	// Deprecated: Use the compute.FloatingIpAssociate resource instead
+	// Deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead
 	FloatingIp *string `pulumi:"floatingIp"`
 	Mac        *string `pulumi:"mac"`
 	// The human-readable
@@ -304,7 +304,7 @@ type InstanceNetworkArgs struct {
 	// network. Changing this creates a new server.
 	FixedIpV4 pulumi.StringPtrInput `pulumi:"fixedIpV4"`
 	FixedIpV6 pulumi.StringPtrInput `pulumi:"fixedIpV6"`
-	// Deprecated: Use the compute.FloatingIpAssociate resource instead
+	// Deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead
 	FloatingIp pulumi.StringPtrInput `pulumi:"floatingIp"`
 	Mac        pulumi.StringPtrInput `pulumi:"mac"`
 	// The human-readable
@@ -385,7 +385,7 @@ func (o InstanceNetworkOutput) FixedIpV6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.FixedIpV6 }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: Use the compute.FloatingIpAssociate resource instead
+// Deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead
 func (o InstanceNetworkOutput) FloatingIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.FloatingIp }).(pulumi.StringPtrOutput)
 }

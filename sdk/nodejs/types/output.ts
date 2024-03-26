@@ -205,7 +205,7 @@ export namespace compute {
         fixedIpV4: string;
         fixedIpV6: string;
         /**
-         * @deprecated Use the openstack.compute.FloatingIpAssociate resource instead
+         * @deprecated Use the openstack_compute_floatingip_associate_v2 resource instead
          */
         floatingIp: string;
         mac: string;

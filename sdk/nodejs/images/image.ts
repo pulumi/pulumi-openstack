@@ -208,7 +208,7 @@ export class Image extends pulumi.CustomResource {
     /**
      * (**Deprecated** - use `updatedAt` instead)
      *
-     * @deprecated Use updatedAt instead
+     * @deprecated Use updated_at instead
      */
     public /*out*/ readonly updateAt!: pulumi.Output<string>;
     /**
@@ -454,7 +454,7 @@ export interface ImageState {
     /**
      * (**Deprecated** - use `updatedAt` instead)
      *
-     * @deprecated Use updatedAt instead
+     * @deprecated Use updated_at instead
      */
     updateAt?: pulumi.Input<string>;
     /**
