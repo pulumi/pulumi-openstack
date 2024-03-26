@@ -73,7 +73,7 @@ type Subnet struct {
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
 	//
-	// Deprecated: use allocationPool instead
+	// Deprecated: use allocation_pool instead
 	AllocationPoolsCollection SubnetAllocationPoolsCollectionArrayOutput `pulumi:"allocationPoolsCollection"`
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
@@ -101,7 +101,7 @@ type Subnet struct {
 	// object structure is documented below. Changing this updates the host routes
 	// for the existing subnet.
 	//
-	// Deprecated: Use networking.SubnetRoute instead
+	// Deprecated: Use openstack_networking_subnet_route_v2 instead
 	HostRoutes SubnetHostRouteArrayOutput `pulumi:"hostRoutes"`
 	// IP version, either 4 (default) or 6. Changing this creates a
 	// new subnet.
@@ -192,7 +192,7 @@ type subnetState struct {
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
 	//
-	// Deprecated: use allocationPool instead
+	// Deprecated: use allocation_pool instead
 	AllocationPoolsCollection []SubnetAllocationPoolsCollection `pulumi:"allocationPoolsCollection"`
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
@@ -220,7 +220,7 @@ type subnetState struct {
 	// object structure is documented below. Changing this updates the host routes
 	// for the existing subnet.
 	//
-	// Deprecated: Use networking.SubnetRoute instead
+	// Deprecated: Use openstack_networking_subnet_route_v2 instead
 	HostRoutes []SubnetHostRoute `pulumi:"hostRoutes"`
 	// IP version, either 4 (default) or 6. Changing this creates a
 	// new subnet.
@@ -279,7 +279,7 @@ type SubnetState struct {
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
 	//
-	// Deprecated: use allocationPool instead
+	// Deprecated: use allocation_pool instead
 	AllocationPoolsCollection SubnetAllocationPoolsCollectionArrayInput
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
@@ -307,7 +307,7 @@ type SubnetState struct {
 	// object structure is documented below. Changing this updates the host routes
 	// for the existing subnet.
 	//
-	// Deprecated: Use networking.SubnetRoute instead
+	// Deprecated: Use openstack_networking_subnet_route_v2 instead
 	HostRoutes SubnetHostRouteArrayInput
 	// IP version, either 4 (default) or 6. Changing this creates a
 	// new subnet.
@@ -367,7 +367,7 @@ type subnetArgs struct {
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
 	//
-	// Deprecated: use allocationPool instead
+	// Deprecated: use allocation_pool instead
 	AllocationPoolsCollection []SubnetAllocationPoolsCollection `pulumi:"allocationPoolsCollection"`
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
@@ -395,7 +395,7 @@ type subnetArgs struct {
 	// object structure is documented below. Changing this updates the host routes
 	// for the existing subnet.
 	//
-	// Deprecated: Use networking.SubnetRoute instead
+	// Deprecated: Use openstack_networking_subnet_route_v2 instead
 	HostRoutes []SubnetHostRoute `pulumi:"hostRoutes"`
 	// IP version, either 4 (default) or 6. Changing this creates a
 	// new subnet.
@@ -452,7 +452,7 @@ type SubnetArgs struct {
 	// use with DHCP in this subnet.
 	// The `allocationPools` block is documented below.
 	//
-	// Deprecated: use allocationPool instead
+	// Deprecated: use allocation_pool instead
 	AllocationPoolsCollection SubnetAllocationPoolsCollectionArrayInput
 	// CIDR representing IP range for this subnet, based on IP
 	// version. You can omit this option if you are creating a subnet from a
@@ -480,7 +480,7 @@ type SubnetArgs struct {
 	// object structure is documented below. Changing this updates the host routes
 	// for the existing subnet.
 	//
-	// Deprecated: Use networking.SubnetRoute instead
+	// Deprecated: Use openstack_networking_subnet_route_v2 instead
 	HostRoutes SubnetHostRouteArrayInput
 	// IP version, either 4 (default) or 6. Changing this creates a
 	// new subnet.
@@ -631,7 +631,7 @@ func (o SubnetOutput) AllocationPools() SubnetAllocationPoolArrayOutput {
 // use with DHCP in this subnet.
 // The `allocationPools` block is documented below.
 //
-// Deprecated: use allocationPool instead
+// Deprecated: use allocation_pool instead
 func (o SubnetOutput) AllocationPoolsCollection() SubnetAllocationPoolsCollectionArrayOutput {
 	return o.ApplyT(func(v *Subnet) SubnetAllocationPoolsCollectionArrayOutput { return v.AllocationPoolsCollection }).(SubnetAllocationPoolsCollectionArrayOutput)
 }
@@ -677,7 +677,7 @@ func (o SubnetOutput) GatewayIp() pulumi.StringOutput {
 // object structure is documented below. Changing this updates the host routes
 // for the existing subnet.
 //
-// Deprecated: Use networking.SubnetRoute instead
+// Deprecated: Use openstack_networking_subnet_route_v2 instead
 func (o SubnetOutput) HostRoutes() SubnetHostRouteArrayOutput {
 	return o.ApplyT(func(v *Subnet) SubnetHostRouteArrayOutput { return v.HostRoutes }).(SubnetHostRouteArrayOutput)
 }

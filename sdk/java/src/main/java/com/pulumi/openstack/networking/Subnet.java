@@ -236,10 +236,10 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * for the existing subnet.
      * 
      * @deprecated
-     * Use openstack.networking.SubnetRoute instead
+     * Use openstack_networking_subnet_route_v2 instead
      * 
      */
-    @Deprecated /* Use openstack.networking.SubnetRoute instead */
+    @Deprecated /* Use openstack_networking_subnet_route_v2 instead */
     @Export(name="hostRoutes", refs={List.class,SubnetHostRoute.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SubnetHostRoute>> hostRoutes;
 

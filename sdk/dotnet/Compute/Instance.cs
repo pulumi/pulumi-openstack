@@ -557,7 +557,7 @@ namespace Pulumi.OpenStack.Compute
 
         [Input("volumes")]
         private InputList<Inputs.InstanceVolumeArgs>? _volumes;
-        [Obsolete(@"Use block_device or openstack.compute.VolumeAttach instead")]
+        [Obsolete(@"Use block_device or openstack_compute_volume_attach_v2 instead")]
         public InputList<Inputs.InstanceVolumeArgs> Volumes
         {
             get => _volumes ?? (_volumes = new InputList<Inputs.InstanceVolumeArgs>());
@@ -867,7 +867,7 @@ namespace Pulumi.OpenStack.Compute
 
         [Input("volumes")]
         private InputList<Inputs.InstanceVolumeGetArgs>? _volumes;
-        [Obsolete(@"Use block_device or openstack.compute.VolumeAttach instead")]
+        [Obsolete(@"Use block_device or openstack_compute_volume_attach_v2 instead")]
         public InputList<Inputs.InstanceVolumeGetArgs> Volumes
         {
             get => _volumes ?? (_volumes = new InputList<Inputs.InstanceVolumeGetArgs>());

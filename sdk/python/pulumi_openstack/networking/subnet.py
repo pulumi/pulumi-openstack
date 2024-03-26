@@ -115,8 +115,8 @@ class SubnetArgs:
         if gateway_ip is not None:
             pulumi.set(__self__, "gateway_ip", gateway_ip)
         if host_routes is not None:
-            warnings.warn("""Use networking.SubnetRoute instead""", DeprecationWarning)
-            pulumi.log.warn("""host_routes is deprecated: Use networking.SubnetRoute instead""")
+            warnings.warn("""Use openstack_networking_subnet_route_v2 instead""", DeprecationWarning)
+            pulumi.log.warn("""host_routes is deprecated: Use openstack_networking_subnet_route_v2 instead""")
         if host_routes is not None:
             pulumi.set(__self__, "host_routes", host_routes)
         if ip_version is not None:
@@ -271,8 +271,8 @@ class SubnetArgs:
         object structure is documented below. Changing this updates the host routes
         for the existing subnet.
         """
-        warnings.warn("""Use networking.SubnetRoute instead""", DeprecationWarning)
-        pulumi.log.warn("""host_routes is deprecated: Use networking.SubnetRoute instead""")
+        warnings.warn("""Use openstack_networking_subnet_route_v2 instead""", DeprecationWarning)
+        pulumi.log.warn("""host_routes is deprecated: Use openstack_networking_subnet_route_v2 instead""")
 
         return pulumi.get(self, "host_routes")
 
@@ -544,8 +544,8 @@ class _SubnetState:
         if gateway_ip is not None:
             pulumi.set(__self__, "gateway_ip", gateway_ip)
         if host_routes is not None:
-            warnings.warn("""Use networking.SubnetRoute instead""", DeprecationWarning)
-            pulumi.log.warn("""host_routes is deprecated: Use networking.SubnetRoute instead""")
+            warnings.warn("""Use openstack_networking_subnet_route_v2 instead""", DeprecationWarning)
+            pulumi.log.warn("""host_routes is deprecated: Use openstack_networking_subnet_route_v2 instead""")
         if host_routes is not None:
             pulumi.set(__self__, "host_routes", host_routes)
         if ip_version is not None:
@@ -702,8 +702,8 @@ class _SubnetState:
         object structure is documented below. Changing this updates the host routes
         for the existing subnet.
         """
-        warnings.warn("""Use networking.SubnetRoute instead""", DeprecationWarning)
-        pulumi.log.warn("""host_routes is deprecated: Use networking.SubnetRoute instead""")
+        warnings.warn("""Use openstack_networking_subnet_route_v2 instead""", DeprecationWarning)
+        pulumi.log.warn("""host_routes is deprecated: Use openstack_networking_subnet_route_v2 instead""")
 
         return pulumi.get(self, "host_routes")
 
@@ -1314,8 +1314,8 @@ class Subnet(pulumi.CustomResource):
         object structure is documented below. Changing this updates the host routes
         for the existing subnet.
         """
-        warnings.warn("""Use networking.SubnetRoute instead""", DeprecationWarning)
-        pulumi.log.warn("""host_routes is deprecated: Use networking.SubnetRoute instead""")
+        warnings.warn("""Use openstack_networking_subnet_route_v2 instead""", DeprecationWarning)
+        pulumi.log.warn("""host_routes is deprecated: Use openstack_networking_subnet_route_v2 instead""")
 
         return pulumi.get(self, "host_routes")
 

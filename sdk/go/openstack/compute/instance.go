@@ -54,7 +54,7 @@ type Instance struct {
 	// The name of the
 	// desired flavor for the server. Changing this resizes the existing server.
 	FlavorName pulumi.StringOutput `pulumi:"flavorName"`
-	// Deprecated: Use the compute.FloatingIpAssociate resource instead
+	// Deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead
 	FloatingIp pulumi.StringPtrOutput `pulumi:"floatingIp"`
 	// Whether to force the OpenStack instance to be
 	// forcefully deleted. This is useful for environments that have reclaim / soft
@@ -125,7 +125,7 @@ type Instance struct {
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions InstanceVendorOptionsPtrOutput `pulumi:"vendorOptions"`
-	// Deprecated: Use blockDevice or compute.VolumeAttach instead
+	// Deprecated: Use block_device or openstack_compute_volume_attach_v2 instead
 	Volumes InstanceVolumeArrayOutput `pulumi:"volumes"`
 }
 
@@ -206,7 +206,7 @@ type instanceState struct {
 	// The name of the
 	// desired flavor for the server. Changing this resizes the existing server.
 	FlavorName *string `pulumi:"flavorName"`
-	// Deprecated: Use the compute.FloatingIpAssociate resource instead
+	// Deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead
 	FloatingIp *string `pulumi:"floatingIp"`
 	// Whether to force the OpenStack instance to be
 	// forcefully deleted. This is useful for environments that have reclaim / soft
@@ -277,7 +277,7 @@ type instanceState struct {
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions *InstanceVendorOptions `pulumi:"vendorOptions"`
-	// Deprecated: Use blockDevice or compute.VolumeAttach instead
+	// Deprecated: Use block_device or openstack_compute_volume_attach_v2 instead
 	Volumes []InstanceVolume `pulumi:"volumes"`
 }
 
@@ -322,7 +322,7 @@ type InstanceState struct {
 	// The name of the
 	// desired flavor for the server. Changing this resizes the existing server.
 	FlavorName pulumi.StringPtrInput
-	// Deprecated: Use the compute.FloatingIpAssociate resource instead
+	// Deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead
 	FloatingIp pulumi.StringPtrInput
 	// Whether to force the OpenStack instance to be
 	// forcefully deleted. This is useful for environments that have reclaim / soft
@@ -393,7 +393,7 @@ type InstanceState struct {
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions InstanceVendorOptionsPtrInput
-	// Deprecated: Use blockDevice or compute.VolumeAttach instead
+	// Deprecated: Use block_device or openstack_compute_volume_attach_v2 instead
 	Volumes InstanceVolumeArrayInput
 }
 
@@ -436,7 +436,7 @@ type instanceArgs struct {
 	// The name of the
 	// desired flavor for the server. Changing this resizes the existing server.
 	FlavorName *string `pulumi:"flavorName"`
-	// Deprecated: Use the compute.FloatingIpAssociate resource instead
+	// Deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead
 	FloatingIp *string `pulumi:"floatingIp"`
 	// Whether to force the OpenStack instance to be
 	// forcefully deleted. This is useful for environments that have reclaim / soft
@@ -505,7 +505,7 @@ type instanceArgs struct {
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions *InstanceVendorOptions `pulumi:"vendorOptions"`
-	// Deprecated: Use blockDevice or compute.VolumeAttach instead
+	// Deprecated: Use block_device or openstack_compute_volume_attach_v2 instead
 	Volumes []InstanceVolume `pulumi:"volumes"`
 }
 
@@ -545,7 +545,7 @@ type InstanceArgs struct {
 	// The name of the
 	// desired flavor for the server. Changing this resizes the existing server.
 	FlavorName pulumi.StringPtrInput
-	// Deprecated: Use the compute.FloatingIpAssociate resource instead
+	// Deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead
 	FloatingIp pulumi.StringPtrInput
 	// Whether to force the OpenStack instance to be
 	// forcefully deleted. This is useful for environments that have reclaim / soft
@@ -614,7 +614,7 @@ type InstanceArgs struct {
 	// Map of additional vendor-specific options.
 	// Supported options are described below.
 	VendorOptions InstanceVendorOptionsPtrInput
-	// Deprecated: Use blockDevice or compute.VolumeAttach instead
+	// Deprecated: Use block_device or openstack_compute_volume_attach_v2 instead
 	Volumes InstanceVolumeArrayInput
 }
 
@@ -781,7 +781,7 @@ func (o InstanceOutput) FlavorName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.FlavorName }).(pulumi.StringOutput)
 }
 
-// Deprecated: Use the compute.FloatingIpAssociate resource instead
+// Deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead
 func (o InstanceOutput) FloatingIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.FloatingIp }).(pulumi.StringPtrOutput)
 }
@@ -909,7 +909,7 @@ func (o InstanceOutput) VendorOptions() InstanceVendorOptionsPtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceVendorOptionsPtrOutput { return v.VendorOptions }).(InstanceVendorOptionsPtrOutput)
 }
 
-// Deprecated: Use blockDevice or compute.VolumeAttach instead
+// Deprecated: Use block_device or openstack_compute_volume_attach_v2 instead
 func (o InstanceOutput) Volumes() InstanceVolumeArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceVolumeArrayOutput { return v.Volumes }).(InstanceVolumeArrayOutput)
 }

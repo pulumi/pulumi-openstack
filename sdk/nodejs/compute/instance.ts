@@ -97,7 +97,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly flavorName!: pulumi.Output<string>;
     /**
-     * @deprecated Use the openstack.compute.FloatingIpAssociate resource instead
+     * @deprecated Use the openstack_compute_floatingip_associate_v2 resource instead
      */
     public readonly floatingIp!: pulumi.Output<string | undefined>;
     /**
@@ -206,7 +206,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly vendorOptions!: pulumi.Output<outputs.compute.InstanceVendorOptions | undefined>;
     /**
-     * @deprecated Use blockDevice or openstack.compute.VolumeAttach instead
+     * @deprecated Use block_device or openstack_compute_volume_attach_v2 instead
      */
     public readonly volumes!: pulumi.Output<outputs.compute.InstanceVolume[] | undefined>;
 
@@ -364,7 +364,7 @@ export interface InstanceState {
      */
     flavorName?: pulumi.Input<string>;
     /**
-     * @deprecated Use the openstack.compute.FloatingIpAssociate resource instead
+     * @deprecated Use the openstack_compute_floatingip_associate_v2 resource instead
      */
     floatingIp?: pulumi.Input<string>;
     /**
@@ -473,7 +473,7 @@ export interface InstanceState {
      */
     vendorOptions?: pulumi.Input<inputs.compute.InstanceVendorOptions>;
     /**
-     * @deprecated Use blockDevice or openstack.compute.VolumeAttach instead
+     * @deprecated Use block_device or openstack_compute_volume_attach_v2 instead
      */
     volumes?: pulumi.Input<pulumi.Input<inputs.compute.InstanceVolume>[]>;
 }
@@ -535,7 +535,7 @@ export interface InstanceArgs {
      */
     flavorName?: pulumi.Input<string>;
     /**
-     * @deprecated Use the openstack.compute.FloatingIpAssociate resource instead
+     * @deprecated Use the openstack_compute_floatingip_associate_v2 resource instead
      */
     floatingIp?: pulumi.Input<string>;
     /**
@@ -640,7 +640,7 @@ export interface InstanceArgs {
      */
     vendorOptions?: pulumi.Input<inputs.compute.InstanceVendorOptions>;
     /**
-     * @deprecated Use blockDevice or openstack.compute.VolumeAttach instead
+     * @deprecated Use block_device or openstack_compute_volume_attach_v2 instead
      */
     volumes?: pulumi.Input<pulumi.Input<inputs.compute.InstanceVolume>[]>;
 }

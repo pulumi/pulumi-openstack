@@ -141,8 +141,8 @@ class InstanceArgs:
         if flavor_name is not None:
             pulumi.set(__self__, "flavor_name", flavor_name)
         if floating_ip is not None:
-            warnings.warn("""Use the compute.FloatingIpAssociate resource instead""", DeprecationWarning)
-            pulumi.log.warn("""floating_ip is deprecated: Use the compute.FloatingIpAssociate resource instead""")
+            warnings.warn("""Use the openstack_compute_floatingip_associate_v2 resource instead""", DeprecationWarning)
+            pulumi.log.warn("""floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead""")
         if floating_ip is not None:
             pulumi.set(__self__, "floating_ip", floating_ip)
         if force_delete is not None:
@@ -180,8 +180,8 @@ class InstanceArgs:
         if vendor_options is not None:
             pulumi.set(__self__, "vendor_options", vendor_options)
         if volumes is not None:
-            warnings.warn("""Use block_device or compute.VolumeAttach instead""", DeprecationWarning)
-            pulumi.log.warn("""volumes is deprecated: Use block_device or compute.VolumeAttach instead""")
+            warnings.warn("""Use block_device or openstack_compute_volume_attach_v2 instead""", DeprecationWarning)
+            pulumi.log.warn("""volumes is deprecated: Use block_device or openstack_compute_volume_attach_v2 instead""")
         if volumes is not None:
             pulumi.set(__self__, "volumes", volumes)
 
@@ -312,8 +312,8 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="floatingIp")
     def floating_ip(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Use the compute.FloatingIpAssociate resource instead""", DeprecationWarning)
-        pulumi.log.warn("""floating_ip is deprecated: Use the compute.FloatingIpAssociate resource instead""")
+        warnings.warn("""Use the openstack_compute_floatingip_associate_v2 resource instead""", DeprecationWarning)
+        pulumi.log.warn("""floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead""")
 
         return pulumi.get(self, "floating_ip")
 
@@ -561,8 +561,8 @@ class InstanceArgs:
     @property
     @pulumi.getter
     def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVolumeArgs']]]]:
-        warnings.warn("""Use block_device or compute.VolumeAttach instead""", DeprecationWarning)
-        pulumi.log.warn("""volumes is deprecated: Use block_device or compute.VolumeAttach instead""")
+        warnings.warn("""Use block_device or openstack_compute_volume_attach_v2 instead""", DeprecationWarning)
+        pulumi.log.warn("""volumes is deprecated: Use block_device or openstack_compute_volume_attach_v2 instead""")
 
         return pulumi.get(self, "volumes")
 
@@ -713,8 +713,8 @@ class _InstanceState:
         if flavor_name is not None:
             pulumi.set(__self__, "flavor_name", flavor_name)
         if floating_ip is not None:
-            warnings.warn("""Use the compute.FloatingIpAssociate resource instead""", DeprecationWarning)
-            pulumi.log.warn("""floating_ip is deprecated: Use the compute.FloatingIpAssociate resource instead""")
+            warnings.warn("""Use the openstack_compute_floatingip_associate_v2 resource instead""", DeprecationWarning)
+            pulumi.log.warn("""floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead""")
         if floating_ip is not None:
             pulumi.set(__self__, "floating_ip", floating_ip)
         if force_delete is not None:
@@ -754,8 +754,8 @@ class _InstanceState:
         if vendor_options is not None:
             pulumi.set(__self__, "vendor_options", vendor_options)
         if volumes is not None:
-            warnings.warn("""Use block_device or compute.VolumeAttach instead""", DeprecationWarning)
-            pulumi.log.warn("""volumes is deprecated: Use block_device or compute.VolumeAttach instead""")
+            warnings.warn("""Use block_device or openstack_compute_volume_attach_v2 instead""", DeprecationWarning)
+            pulumi.log.warn("""volumes is deprecated: Use block_device or openstack_compute_volume_attach_v2 instead""")
         if volumes is not None:
             pulumi.set(__self__, "volumes", volumes)
 
@@ -920,8 +920,8 @@ class _InstanceState:
     @property
     @pulumi.getter(name="floatingIp")
     def floating_ip(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""Use the compute.FloatingIpAssociate resource instead""", DeprecationWarning)
-        pulumi.log.warn("""floating_ip is deprecated: Use the compute.FloatingIpAssociate resource instead""")
+        warnings.warn("""Use the openstack_compute_floatingip_associate_v2 resource instead""", DeprecationWarning)
+        pulumi.log.warn("""floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead""")
 
         return pulumi.get(self, "floating_ip")
 
@@ -1181,8 +1181,8 @@ class _InstanceState:
     @property
     @pulumi.getter
     def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVolumeArgs']]]]:
-        warnings.warn("""Use block_device or compute.VolumeAttach instead""", DeprecationWarning)
-        pulumi.log.warn("""volumes is deprecated: Use block_device or compute.VolumeAttach instead""")
+        warnings.warn("""Use block_device or openstack_compute_volume_attach_v2 instead""", DeprecationWarning)
+        pulumi.log.warn("""volumes is deprecated: Use block_device or openstack_compute_volume_attach_v2 instead""")
 
         return pulumi.get(self, "volumes")
 
@@ -1679,8 +1679,8 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="floatingIp")
     def floating_ip(self) -> pulumi.Output[Optional[str]]:
-        warnings.warn("""Use the compute.FloatingIpAssociate resource instead""", DeprecationWarning)
-        pulumi.log.warn("""floating_ip is deprecated: Use the compute.FloatingIpAssociate resource instead""")
+        warnings.warn("""Use the openstack_compute_floatingip_associate_v2 resource instead""", DeprecationWarning)
+        pulumi.log.warn("""floating_ip is deprecated: Use the openstack_compute_floatingip_associate_v2 resource instead""")
 
         return pulumi.get(self, "floating_ip")
 
@@ -1864,8 +1864,8 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter
     def volumes(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceVolume']]]:
-        warnings.warn("""Use block_device or compute.VolumeAttach instead""", DeprecationWarning)
-        pulumi.log.warn("""volumes is deprecated: Use block_device or compute.VolumeAttach instead""")
+        warnings.warn("""Use block_device or openstack_compute_volume_attach_v2 instead""", DeprecationWarning)
+        pulumi.log.warn("""volumes is deprecated: Use block_device or openstack_compute_volume_attach_v2 instead""")
 
         return pulumi.get(self, "volumes")
 

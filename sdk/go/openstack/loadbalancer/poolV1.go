@@ -206,7 +206,7 @@ type PoolV1 struct {
 	// below. Please note that the `member` block is deprecated in favor of the
 	// `loadbalancer.MemberV1` resource.
 	//
-	// Deprecated: Use loadbalancer.MemberV1 instead
+	// Deprecated: Use openstack_lb_member_v1 instead
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// A list of IDs of monitors to associate with the
 	// pool.
@@ -282,7 +282,7 @@ type poolV1State struct {
 	// below. Please note that the `member` block is deprecated in favor of the
 	// `loadbalancer.MemberV1` resource.
 	//
-	// Deprecated: Use loadbalancer.MemberV1 instead
+	// Deprecated: Use openstack_lb_member_v1 instead
 	Members []string `pulumi:"members"`
 	// A list of IDs of monitors to associate with the
 	// pool.
@@ -320,7 +320,7 @@ type PoolV1State struct {
 	// below. Please note that the `member` block is deprecated in favor of the
 	// `loadbalancer.MemberV1` resource.
 	//
-	// Deprecated: Use loadbalancer.MemberV1 instead
+	// Deprecated: Use openstack_lb_member_v1 instead
 	Members pulumi.StringArrayInput
 	// A list of IDs of monitors to associate with the
 	// pool.
@@ -362,7 +362,7 @@ type poolV1Args struct {
 	// below. Please note that the `member` block is deprecated in favor of the
 	// `loadbalancer.MemberV1` resource.
 	//
-	// Deprecated: Use loadbalancer.MemberV1 instead
+	// Deprecated: Use openstack_lb_member_v1 instead
 	Members []string `pulumi:"members"`
 	// A list of IDs of monitors to associate with the
 	// pool.
@@ -401,7 +401,7 @@ type PoolV1Args struct {
 	// below. Please note that the `member` block is deprecated in favor of the
 	// `loadbalancer.MemberV1` resource.
 	//
-	// Deprecated: Use loadbalancer.MemberV1 instead
+	// Deprecated: Use openstack_lb_member_v1 instead
 	Members pulumi.StringArrayInput
 	// A list of IDs of monitors to associate with the
 	// pool.
@@ -531,7 +531,7 @@ func (o PoolV1Output) LbProvider() pulumi.StringOutput {
 // below. Please note that the `member` block is deprecated in favor of the
 // `loadbalancer.MemberV1` resource.
 //
-// Deprecated: Use loadbalancer.MemberV1 instead
+// Deprecated: Use openstack_lb_member_v1 instead
 func (o PoolV1Output) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PoolV1) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }

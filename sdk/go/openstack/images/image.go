@@ -155,7 +155,7 @@ type Image struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// (**Deprecated** - use `updatedAt` instead)
 	//
-	// Deprecated: Use updatedAt instead
+	// Deprecated: Use updated_at instead
 	UpdateAt pulumi.StringOutput `pulumi:"updateAt"`
 	// The date the image was last updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -294,7 +294,7 @@ type imageState struct {
 	Tags []string `pulumi:"tags"`
 	// (**Deprecated** - use `updatedAt` instead)
 	//
-	// Deprecated: Use updatedAt instead
+	// Deprecated: Use updated_at instead
 	UpdateAt *string `pulumi:"updateAt"`
 	// The date the image was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -391,7 +391,7 @@ type ImageState struct {
 	Tags pulumi.StringArrayInput
 	// (**Deprecated** - use `updatedAt` instead)
 	//
-	// Deprecated: Use updatedAt instead
+	// Deprecated: Use updated_at instead
 	UpdateAt pulumi.StringPtrInput
 	// The date the image was last updated.
 	UpdatedAt pulumi.StringPtrInput
@@ -792,7 +792,7 @@ func (o ImageOutput) Tags() pulumi.StringArrayOutput {
 
 // (**Deprecated** - use `updatedAt` instead)
 //
-// Deprecated: Use updatedAt instead
+// Deprecated: Use updated_at instead
 func (o ImageOutput) UpdateAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.UpdateAt }).(pulumi.StringOutput)
 }

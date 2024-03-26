@@ -59,19 +59,19 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @deprecated
-     * Use the openstack.compute.FloatingIpAssociate resource instead
+     * Use the openstack_compute_floatingip_associate_v2 resource instead
      * 
      */
-    @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
+    @Deprecated /* Use the openstack_compute_floatingip_associate_v2 resource instead */
     @Import(name="floatingIp")
     private @Nullable Output<String> floatingIp;
 
     /**
      * @deprecated
-     * Use the openstack.compute.FloatingIpAssociate resource instead
+     * Use the openstack_compute_floatingip_associate_v2 resource instead
      * 
      */
-    @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
+    @Deprecated /* Use the openstack_compute_floatingip_associate_v2 resource instead */
     public Optional<Output<String>> floatingIp() {
         return Optional.ofNullable(this.floatingIp);
     }
@@ -224,10 +224,10 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          * @deprecated
-         * Use the openstack.compute.FloatingIpAssociate resource instead
+         * Use the openstack_compute_floatingip_associate_v2 resource instead
          * 
          */
-        @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
+        @Deprecated /* Use the openstack_compute_floatingip_associate_v2 resource instead */
         public Builder floatingIp(@Nullable Output<String> floatingIp) {
             $.floatingIp = floatingIp;
             return this;
@@ -237,10 +237,10 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          * @deprecated
-         * Use the openstack.compute.FloatingIpAssociate resource instead
+         * Use the openstack_compute_floatingip_associate_v2 resource instead
          * 
          */
-        @Deprecated /* Use the openstack.compute.FloatingIpAssociate resource instead */
+        @Deprecated /* Use the openstack_compute_floatingip_associate_v2 resource instead */
         public Builder floatingIp(String floatingIp) {
             return floatingIp(Output.of(floatingIp));
         }
