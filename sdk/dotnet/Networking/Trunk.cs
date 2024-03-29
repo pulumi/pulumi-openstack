@@ -43,9 +43,9 @@ namespace Pulumi.OpenStack.Networking
     ///         AdminStateUp = true,
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             "openstack_networking_subnet_v2.subnet_1",
+    ///             "openstack_networking_subnet_v2.subnet_1", 
     ///         },
     ///     });
     /// 
@@ -55,9 +55,9 @@ namespace Pulumi.OpenStack.Networking
     ///         AdminStateUp = true,
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             "openstack_networking_subnet_v2.subnet_1",
+    ///             "openstack_networking_subnet_v2.subnet_1", 
     ///         },
     ///     });
     /// 
