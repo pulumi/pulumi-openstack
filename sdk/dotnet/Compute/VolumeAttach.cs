@@ -99,9 +99,9 @@ namespace Pulumi.OpenStack.Compute
     ///         Multiattach = true,
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             "openstack_compute_volume_attach_v2.va_1",
+    ///             "openstack_compute_volume_attach_v2.va_1", 
     ///         },
     ///     });
     /// 
