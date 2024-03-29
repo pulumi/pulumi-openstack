@@ -30,9 +30,9 @@ namespace Pulumi.OpenStack.ObjectStorage
     ///         Region = "RegionOne",
     ///         Metadata = new[]
     ///         {
-    ///             
+    ///             new Dictionary&lt;string, object?&gt;
     ///             {
-    ///                 { "test", "true" },
+    ///                 ["test"] = "true",
     ///             },
     ///         },
     ///         ContentType = "application/json",
@@ -44,9 +44,9 @@ namespace Pulumi.OpenStack.ObjectStorage
     ///         ContainerName = container1.Name,
     ///         Metadata = new[]
     ///         {
-    ///             
+    ///             new Dictionary&lt;string, object?&gt;
     ///             {
-    ///                 { "test", "true" },
+    ///                 ["test"] = "true",
     ///             },
     ///         },
     ///         ContentType = "application/json",
@@ -76,9 +76,9 @@ namespace Pulumi.OpenStack.ObjectStorage
     ///         Region = "RegionOne",
     ///         Metadata = new[]
     ///         {
-    ///             
+    ///             new Dictionary&lt;string, object?&gt;
     ///             {
-    ///                 { "test", "true" },
+    ///                 ["test"] = "true",
     ///             },
     ///         },
     ///         ContentType = "application/json",
@@ -90,9 +90,9 @@ namespace Pulumi.OpenStack.ObjectStorage
     ///         ContainerName = container1.Name,
     ///         Metadata = new[]
     ///         {
-    ///             
+    ///             new Dictionary&lt;string, object?&gt;
     ///             {
-    ///                 { "test", "true" },
+    ///                 ["test"] = "true",
     ///             },
     ///         },
     ///         ContentType = "application/json",

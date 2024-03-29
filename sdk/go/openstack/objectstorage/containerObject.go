@@ -34,9 +34,9 @@ import (
 //			container1, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
 //				Region: pulumi.String("RegionOne"),
 //				Metadata: pulumi.Map{
-//					pulumi.Any{
-//						Test: "true",
-//					},
+//					pulumi.Any(map[string]interface{}{
+//						"test": "true",
+//					}),
 //				},
 //				ContentType: pulumi.String("application/json"),
 //			})
@@ -47,9 +47,9 @@ import (
 //				Region:        pulumi.String("RegionOne"),
 //				ContainerName: container1.Name,
 //				Metadata: pulumi.Map{
-//					pulumi.Any{
-//						Test: "true",
-//					},
+//					pulumi.Any(map[string]interface{}{
+//						"test": "true",
+//					}),
 //				},
 //				ContentType: pulumi.String("application/json"),
 //				Content:     pulumi.String("               {\n                 \"foo\" : \"bar\"\n               }\n"),
@@ -82,9 +82,9 @@ import (
 //			container1, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
 //				Region: pulumi.String("RegionOne"),
 //				Metadata: pulumi.Map{
-//					pulumi.Any{
-//						Test: "true",
-//					},
+//					pulumi.Any(map[string]interface{}{
+//						"test": "true",
+//					}),
 //				},
 //				ContentType: pulumi.String("application/json"),
 //			})
@@ -95,9 +95,9 @@ import (
 //				Region:        pulumi.String("RegionOne"),
 //				ContainerName: container1.Name,
 //				Metadata: pulumi.Map{
-//					pulumi.Any{
-//						Test: "true",
-//					},
+//					pulumi.Any(map[string]interface{}{
+//						"test": "true",
+//					}),
 //				},
 //				ContentType: pulumi.String("application/json"),
 //				Source:      pulumi.String("./default.json"),

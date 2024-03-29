@@ -53,9 +53,9 @@ namespace Pulumi.OpenStack.Networking
     ///         NextHop = "192.168.199.254",
     ///     }, new CustomResourceOptions
     ///     {
-    ///         DependsOn = new[]
+    ///         DependsOn =
     ///         {
-    ///             "openstack_networking_router_interface_v2.int_1",
+    ///             "openstack_networking_router_interface_v2.int_1", 
     ///         },
     ///     });
     /// 
