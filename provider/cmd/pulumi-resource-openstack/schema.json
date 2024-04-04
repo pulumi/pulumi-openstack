@@ -878,7 +878,7 @@
                 },
                 "host": {
                     "type": "string",
-                    "description": "An ip address or %!s(MISSING)ign indicating what ip addresses can connect with\nthis user credentials. Changing this creates a new instance.\n",
+                    "description": "An ip address or % sign indicating what ip addresses can connect with\nthis user credentials. Changing this creates a new instance.\n",
                     "willReplaceOnChanges": true
                 },
                 "name": {
