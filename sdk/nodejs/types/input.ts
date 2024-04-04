@@ -463,7 +463,7 @@ export namespace database {
          */
         databases?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * An ip address or %!s(MISSING)ign indicating what ip addresses can connect with
+         * An ip address or % sign indicating what ip addresses can connect with
          * this user credentials. Changing this creates a new instance.
          */
         host?: pulumi.Input<string>;
