@@ -79,6 +79,10 @@ class VolumeSchedulerHintArgs:
                [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
                At this time, only simple queries are supported. Compound queries using
                `and`, `or`, or `not` are not supported. An example of a simple query is:
+               
+               ```
+               [“=”, “$backend_id”, “rbd:vol@ceph#cloud”]
+               ```
         :param pulumi.Input[Sequence[pulumi.Input[str]]] same_hosts: A list of volume UUIDs. The volume should be
                scheduled on the same host as another volume specified in the list provided.
         """
@@ -142,6 +146,10 @@ class VolumeSchedulerHintArgs:
         [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
         At this time, only simple queries are supported. Compound queries using
         `and`, `or`, or `not` are not supported. An example of a simple query is:
+
+        ```
+        [“=”, “$backend_id”, “rbd:vol@ceph#cloud”]
+        ```
         """
         return pulumi.get(self, "query")
 
@@ -266,6 +274,10 @@ class VolumeV2SchedulerHintArgs:
                [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
                At this time, only simple queries are supported. Compound queries using
                `and`, `or`, or `not` are not supported. An example of a simple query is:
+               
+               ```
+               [“=”, “$backend_id”, “rbd:vol@ceph#cloud”]
+               ```
         :param pulumi.Input[Sequence[pulumi.Input[str]]] same_hosts: A list of volume UUIDs. The volume should be
                scheduled on the same host as another volume specified in the list provided.
         """
@@ -329,6 +341,10 @@ class VolumeV2SchedulerHintArgs:
         [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
         At this time, only simple queries are supported. Compound queries using
         `and`, `or`, or `not` are not supported. An example of a simple query is:
+
+        ```
+        [“=”, “$backend_id”, “rbd:vol@ceph#cloud”]
+        ```
         """
         return pulumi.get(self, "query")
 

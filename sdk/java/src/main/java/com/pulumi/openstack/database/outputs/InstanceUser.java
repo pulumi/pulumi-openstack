@@ -20,7 +20,7 @@ public final class InstanceUser {
      */
     private @Nullable List<String> databases;
     /**
-     * @return An ip address or %!s(MISSING)ign indicating what ip addresses can connect with
+     * @return An ip address or % sign indicating what ip addresses can connect with
      * this user credentials. Changing this creates a new instance.
      * 
      */
@@ -48,7 +48,7 @@ public final class InstanceUser {
         return this.databases == null ? List.of() : this.databases;
     }
     /**
-     * @return An ip address or %!s(MISSING)ign indicating what ip addresses can connect with
+     * @return An ip address or % sign indicating what ip addresses can connect with
      * this user credentials. Changing this creates a new instance.
      * 
      */

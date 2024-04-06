@@ -445,6 +445,10 @@ class InstanceSchedulerHint(dict):
                [here](https://docs.openstack.org/nova/latest/admin/configuration/schedulers.html#jsonfilter).
                At this time, only simple queries are supported. Compound queries using
                `and`, `or`, or `not` are not supported. An example of a simple query is:
+               
+               ```
+               [">=", "$free_ram_mb", "1024"]
+               ```
         :param Sequence[str] same_hosts: A list of instance UUIDs. The instance will be
                scheduled on the same host of those specified.
         :param str target_cell: The name of a cell to host the instance.
@@ -520,6 +524,10 @@ class InstanceSchedulerHint(dict):
         [here](https://docs.openstack.org/nova/latest/admin/configuration/schedulers.html#jsonfilter).
         At this time, only simple queries are supported. Compound queries using
         `and`, `or`, or `not` are not supported. An example of a simple query is:
+
+        ```
+        [">=", "$free_ram_mb", "1024"]
+        ```
         """
         return pulumi.get(self, "queries")
 

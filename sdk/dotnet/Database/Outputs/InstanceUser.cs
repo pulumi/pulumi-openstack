@@ -19,7 +19,7 @@ namespace Pulumi.OpenStack.Database.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Databases;
         /// <summary>
-        /// An ip address or %!s(MISSING)ign indicating what ip addresses can connect with
+        /// An ip address or % sign indicating what ip addresses can connect with
         /// this user credentials. Changing this creates a new instance.
         /// </summary>
         public readonly string? Host;
