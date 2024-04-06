@@ -35,6 +35,10 @@ export namespace blockstorage {
          * [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
          * At this time, only simple queries are supported. Compound queries using
          * `and`, `or`, or `not` are not supported. An example of a simple query is:
+         *
+         * ```
+         * [“=”, “$backend_id”, “rbd:vol@ceph#cloud”]
+         * ```
          */
         query?: pulumi.Input<string>;
         /**
@@ -79,6 +83,10 @@ export namespace blockstorage {
          * [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
          * At this time, only simple queries are supported. Compound queries using
          * `and`, `or`, or `not` are not supported. An example of a simple query is:
+         *
+         * ```
+         * [“=”, “$backend_id”, “rbd:vol@ceph#cloud”]
+         * ```
          */
         query?: pulumi.Input<string>;
         /**
@@ -289,6 +297,10 @@ export namespace compute {
          * [here](https://docs.openstack.org/nova/latest/admin/configuration/schedulers.html#jsonfilter).
          * At this time, only simple queries are supported. Compound queries using
          * `and`, `or`, or `not` are not supported. An example of a simple query is:
+         *
+         * ```
+         * [">=", "$free_ram_mb", "1024"]
+         * ```
          */
         queries?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -463,7 +475,7 @@ export namespace database {
          */
         databases?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * An ip address or %!s(MISSING)ign indicating what ip addresses can connect with
+         * An ip address or % sign indicating what ip addresses can connect with
          * this user credentials. Changing this creates a new instance.
          */
         host?: pulumi.Input<string>;

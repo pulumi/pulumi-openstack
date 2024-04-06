@@ -41,6 +41,27 @@ import * as utilities from "../utilities";
  * });
  * ```
  * <!--End PulumiCodeChooser -->
+ *
+ * ## Volume Connection Data
+ *
+ * Upon creation of this resource, a `data` exported attribute will be available.
+ * This attribute is a set of key/value pairs that contains the information
+ * required to complete the block storage connection.
+ *
+ * As an example, creating an iSCSI-based volume will return the following:
+ *
+ * This information can then be fed into a provisioner or a template shell script,
+ * where the final result would look something like:
+ *
+ * The contents of `data` will vary from each Block Storage service. You must have
+ * a good understanding of how the service is configured and how to make the
+ * appropriate final connection. However, if used correctly, this has the
+ * flexibility to be able to attach OpenStack Block Storage volumes to
+ * non-OpenStack resources.
+ *
+ * ## Import
+ *
+ * It is not possible to import this resource.
  */
 export class VolumeAttach extends pulumi.CustomResource {
     /**

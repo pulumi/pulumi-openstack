@@ -52,6 +52,10 @@ namespace Pulumi.OpenStack.BlockStorage.Inputs
         /// [here](https://docs.openstack.org/cinder/latest/configuration/block-storage/scheduler-filters.html#jsonfilter).
         /// At this time, only simple queries are supported. Compound queries using
         /// `and`, `or`, or `not` are not supported. An example of a simple query is:
+        /// 
+        /// ```
+        /// [“=”, “$backend_id”, “rbd:vol@ceph#cloud”]
+        /// ```
         /// </summary>
         [Input("query")]
         public Input<string>? Query { get; set; }

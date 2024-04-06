@@ -44,6 +44,10 @@ namespace Pulumi.OpenStack.Compute.Outputs
         /// [here](https://docs.openstack.org/nova/latest/admin/configuration/schedulers.html#jsonfilter).
         /// At this time, only simple queries are supported. Compound queries using
         /// `and`, `or`, or `not` are not supported. An example of a simple query is:
+        /// 
+        /// ```
+        /// ["&gt;=", "$free_ram_mb", "1024"]
+        /// ```
         /// </summary>
         public readonly ImmutableArray<string> Queries;
         /// <summary>

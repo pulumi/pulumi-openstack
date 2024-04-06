@@ -35,7 +35,7 @@ public final class InstanceUserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An ip address or %!s(MISSING)ign indicating what ip addresses can connect with
+     * An ip address or % sign indicating what ip addresses can connect with
      * this user credentials. Changing this creates a new instance.
      * 
      */
@@ -43,7 +43,7 @@ public final class InstanceUserArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> host;
 
     /**
-     * @return An ip address or %!s(MISSING)ign indicating what ip addresses can connect with
+     * @return An ip address or % sign indicating what ip addresses can connect with
      * this user credentials. Changing this creates a new instance.
      * 
      */
@@ -147,7 +147,7 @@ public final class InstanceUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param host An ip address or %!s(MISSING)ign indicating what ip addresses can connect with
+         * @param host An ip address or % sign indicating what ip addresses can connect with
          * this user credentials. Changing this creates a new instance.
          * 
          * @return builder
@@ -159,7 +159,7 @@ public final class InstanceUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param host An ip address or %!s(MISSING)ign indicating what ip addresses can connect with
+         * @param host An ip address or % sign indicating what ip addresses can connect with
          * this user credentials. Changing this creates a new instance.
          * 
          * @return builder
