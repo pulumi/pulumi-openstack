@@ -12,6 +12,11 @@ env:
   OS_PROJECT_DOMAIN_NAME: Default
 makeTemplate: bridged
 plugins:
+  - name: terraform
+    version: "1.0.16"
+    kind: converter
+
   - name: http
     version: 0.0.1
 team: ecosystem
+pulumiConvert: 1
