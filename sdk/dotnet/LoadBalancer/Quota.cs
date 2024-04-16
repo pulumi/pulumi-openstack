@@ -36,9 +36,12 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project1 = new OpenStack.Identity.Project("project1");
+    ///     var project1 = new OpenStack.Identity.Project("project_1", new()
+    ///     {
+    ///         Name = "project_1",
+    ///     });
     /// 
-    ///     var quota1 = new OpenStack.LoadBalancer.Quota("quota1", new()
+    ///     var quota1 = new OpenStack.LoadBalancer.Quota("quota_1", new()
     ///     {
     ///         ProjectId = project1.Id,
     ///         Loadbalancer = 6,

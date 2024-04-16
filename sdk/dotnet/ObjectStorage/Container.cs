@@ -25,14 +25,15 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container_1", new()
     ///     {
-    ///         ContentType = "application/json",
+    ///         Region = "RegionOne",
+    ///         Name = "tf-test-container-1",
     ///         Metadata = 
     ///         {
     ///             { "test", "true" },
     ///         },
-    ///         Region = "RegionOne",
+    ///         ContentType = "application/json",
     ///         Versioning = true,
     ///     });
     /// 
@@ -51,18 +52,19 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container_1", new()
     ///     {
-    ///         ContentType = "application/json",
+    ///         Region = "RegionOne",
+    ///         Name = "tf-test-container-1",
     ///         Metadata = 
     ///         {
     ///             { "test", "true" },
     ///         },
-    ///         Region = "RegionOne",
+    ///         ContentType = "application/json",
     ///         VersioningLegacy = new OpenStack.ObjectStorage.Inputs.ContainerVersioningLegacyArgs
     ///         {
-    ///             Location = "tf-test-container-versions",
     ///             Type = "versions",
+    ///             Location = "tf-test-container-versions",
     ///         },
     ///     });
     /// 
@@ -81,10 +83,12 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
+    ///     // Requires that a user know the object name they are attempting to download
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container_1", new()
     ///     {
-    ///         ContainerRead = ".r:*",
     ///         Region = "RegionOne",
+    ///         Name = "tf-test-container-1",
+    ///         ContainerRead = ".r:*",
     ///     });
     /// 
     /// });
@@ -102,10 +106,12 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
+    ///     // Any user can read any object, and list all objects in the container
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container_1", new()
     ///     {
-    ///         ContainerRead = ".r:*,.rlistings",
     ///         Region = "RegionOne",
+    ///         Name = "tf-test-container-1",
+    ///         ContainerRead = ".r:*,.rlistings",
     ///     });
     /// 
     /// });
@@ -128,11 +134,13 @@ namespace Pulumi.OpenStack.ObjectStorage
     ///         Name = "current",
     ///     });
     /// 
-    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
+    ///     // The named user can only upload objects, not read objects or list the container
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container_1", new()
     ///     {
-    ///         ContainerRead = $".r:-{@var.Username}",
-    ///         ContainerWrite = $"{current.Apply(getAuthScopeResult =&gt; getAuthScopeResult.ProjectId)}:{@var.Username}",
     ///         Region = "RegionOne",
+    ///         Name = "tf-test-container-1",
+    ///         ContainerRead = $".r:-{username}",
+    ///         ContainerWrite = $"{current.Apply(getAuthScopeResult =&gt; getAuthScopeResult.ProjectId)}:{username}",
     ///     });
     /// 
     /// });

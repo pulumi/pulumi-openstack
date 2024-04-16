@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
+ *             .name(&#34;tf_test_network&#34;)
  *             .adminStateUp(&#34;true&#34;)
  *             .build());
  * 

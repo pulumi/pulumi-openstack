@@ -55,32 +55,38 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network_1&#34;)
  *             .adminStateUp(&#34;true&#34;)
  *             .build());
  * 
  *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
+ *             .name(&#34;subnet_1&#34;)
  *             .cidr(&#34;192.168.199.0/24&#34;)
  *             .ipVersion(4)
  *             .networkId(network1.id())
  *             .build());
  * 
  *         var loadbalancer1 = new LoadBalancer(&#34;loadbalancer1&#34;, LoadBalancerArgs.builder()        
+ *             .name(&#34;loadbalancer_1&#34;)
  *             .vipSubnetId(subnet1.id())
  *             .build());
  * 
  *         var listener1 = new Listener(&#34;listener1&#34;, ListenerArgs.builder()        
+ *             .name(&#34;listener_1&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .protocolPort(8080)
  *             .loadbalancerId(loadbalancer1.id())
  *             .build());
  * 
  *         var pool1 = new Pool(&#34;pool1&#34;, PoolArgs.builder()        
+ *             .name(&#34;pool_1&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .lbMethod(&#34;ROUND_ROBIN&#34;)
  *             .loadbalancerId(loadbalancer1.id())
  *             .build());
  * 
  *         var l7policy1 = new L7PolicyV2(&#34;l7policy1&#34;, L7PolicyV2Args.builder()        
+ *             .name(&#34;test&#34;)
  *             .action(&#34;REDIRECT_TO_URL&#34;)
  *             .description(&#34;test description&#34;)
  *             .position(1)

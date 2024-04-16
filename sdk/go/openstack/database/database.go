@@ -32,7 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := database.NewDatabase(ctx, "mydb", &database.DatabaseArgs{
-//				InstanceId: pulumi.Any(openstack_db_instance_v1.Basic.Id),
+//				Name:       pulumi.String("mydb"),
+//				InstanceId: pulumi.Any(basic.Id),
 //			})
 //			if err != nil {
 //				return err

@@ -25,9 +25,10 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container_1", new()
     ///     {
     ///         Region = "RegionOne",
+    ///         Name = "tf-test-container-1",
     ///         Metadata = new[]
     ///         {
     ///             new Dictionary&lt;string, object?&gt;
@@ -38,10 +39,11 @@ namespace Pulumi.OpenStack.ObjectStorage
     ///         ContentType = "application/json",
     ///     });
     /// 
-    ///     var doc1 = new OpenStack.ObjectStorage.ContainerObject("doc1", new()
+    ///     var doc1 = new OpenStack.ObjectStorage.ContainerObject("doc_1", new()
     ///     {
     ///         Region = "RegionOne",
     ///         ContainerName = container1.Name,
+    ///         Name = "test/default.json",
     ///         Metadata = new[]
     ///         {
     ///             new Dictionary&lt;string, object?&gt;
@@ -71,9 +73,10 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container_1", new()
     ///     {
     ///         Region = "RegionOne",
+    ///         Name = "tf-test-container-1",
     ///         Metadata = new[]
     ///         {
     ///             new Dictionary&lt;string, object?&gt;
@@ -84,10 +87,11 @@ namespace Pulumi.OpenStack.ObjectStorage
     ///         ContentType = "application/json",
     ///     });
     /// 
-    ///     var doc1 = new OpenStack.ObjectStorage.ContainerObject("doc1", new()
+    ///     var doc1 = new OpenStack.ObjectStorage.ContainerObject("doc_1", new()
     ///     {
     ///         Region = "RegionOne",
     ///         ContainerName = container1.Name,
+    ///         Name = "test/default.json",
     ///         Metadata = new[]
     ///         {
     ///             new Dictionary&lt;string, object?&gt;

@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var service1 = new ServiceV3(&#34;service1&#34;, ServiceV3Args.builder()        
+ *             .name(&#34;custom&#34;)
  *             .type(&#34;custom&#34;)
  *             .build());
  * 

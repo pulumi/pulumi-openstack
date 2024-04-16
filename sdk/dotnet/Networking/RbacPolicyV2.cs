@@ -35,12 +35,13 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
     ///     {
+    ///         Name = "network_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var rbacPolicy1 = new OpenStack.Networking.RbacPolicyV2("rbacPolicy1", new()
+    ///     var rbacPolicy1 = new OpenStack.Networking.RbacPolicyV2("rbac_policy_1", new()
     ///     {
     ///         Action = "access_as_shared",
     ///         ObjectId = network1.Id,

@@ -27,8 +27,8 @@ namespace Pulumi.OpenStack.Compute
         /// {
         ///     var small = OpenStack.Compute.GetFlavor.Invoke(new()
         ///     {
-        ///         Ram = 512,
         ///         Vcpus = 1,
+        ///         Ram = 512,
         ///     });
         /// 
         /// });
@@ -54,8 +54,8 @@ namespace Pulumi.OpenStack.Compute
         /// {
         ///     var small = OpenStack.Compute.GetFlavor.Invoke(new()
         ///     {
-        ///         Ram = 512,
         ///         Vcpus = 1,
+        ///         Ram = 512,
         ///     });
         /// 
         /// });

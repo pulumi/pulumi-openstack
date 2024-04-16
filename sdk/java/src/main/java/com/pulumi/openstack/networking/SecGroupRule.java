@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var secgroup1 = new SecGroup(&#34;secgroup1&#34;, SecGroupArgs.builder()        
+ *             .name(&#34;secgroup_1&#34;)
  *             .description(&#34;My neutron security group&#34;)
  *             .build());
  * 

@@ -30,11 +30,15 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project1 = new OpenStack.Identity.Project("project1");
+    ///     var project1 = new OpenStack.Identity.Project("project_1", new()
+    ///     {
+    ///         Name = "project_1",
+    ///     });
     /// 
-    ///     var user1 = new OpenStack.Identity.User("user1", new()
+    ///     var user1 = new OpenStack.Identity.User("user_1", new()
     ///     {
     ///         DefaultProjectId = project1.Id,
+    ///         Name = "user_1",
     ///         Description = "A user",
     ///         Password = "password123",
     ///         IgnoreChangePasswordUponFirstUse = true,

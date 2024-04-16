@@ -25,8 +25,9 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var nodegroup1 = new OpenStack.ContainerInfra.NodeGroup("nodegroup1", new()
+    ///     var nodegroup1 = new OpenStack.ContainerInfra.NodeGroup("nodegroup_1", new()
     ///     {
+    ///         Name = "nodegroup_1",
     ///         ClusterId = "b9a45c5c-cd03-4958-82aa-b80bf93cb922",
     ///         NodeCount = 5,
     ///     });

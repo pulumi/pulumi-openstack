@@ -28,66 +28,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := keymanager.NewSecretV1(ctx, "secret1", &keymanager.SecretV1Args{
-//				Algorithm: pulumi.String("aes"),
-//				BitLength: pulumi.Int(256),
-//				Metadata: pulumi.Map{
-//					"key": pulumi.Any("foo"),
-//				},
+//			_, err := keymanager.NewSecretV1(ctx, "secret_1", &keymanager.SecretV1Args{
+//				Algorithm:          pulumi.String("aes"),
+//				BitLength:          pulumi.Int(256),
 //				Mode:               pulumi.String("cbc"),
+//				Name:               pulumi.String("mysecret"),
 //				Payload:            pulumi.String("foobar"),
 //				PayloadContentType: pulumi.String("text/plain"),
 //				SecretType:         pulumi.String("passphrase"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
-// ### Secret with the ACL
-//
-// > **Note** Only read ACLs are supported
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"os"
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := keymanager.NewSecretV1(ctx, "secret1", &keymanager.SecretV1Args{
-//				Payload:            readFileOrPanic("certificate.pem"),
-//				SecretType:         pulumi.String("certificate"),
-//				PayloadContentType: pulumi.String("text/plain"),
-//				Acl: &keymanager.SecretV1AclArgs{
-//					Read: &keymanager.SecretV1AclReadArgs{
-//						ProjectAccess: pulumi.Bool(false),
-//						Users: pulumi.StringArray{
-//							pulumi.String("userid1"),
-//							pulumi.String("userid2"),
-//						},
-//					},
+//				Metadata: pulumi.Map{
+//					"key": pulumi.Any("foo"),
 //				},
 //			})
 //			if err != nil {

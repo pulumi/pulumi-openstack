@@ -239,13 +239,17 @@ class RouterInterface(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="tf_test_network",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
             network_id=network1.id,
             cidr="192.168.199.0/24",
             ip_version=4)
-        router1 = openstack.networking.Router("router1", external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
-        router_interface1 = openstack.networking.RouterInterface("routerInterface1",
+        router1 = openstack.networking.Router("router_1",
+            name="my_router",
+            external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
+        router_interface1 = openstack.networking.RouterInterface("router_interface_1",
             router_id=router1.id,
             subnet_id=subnet1.id)
         ```
@@ -293,13 +297,17 @@ class RouterInterface(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="tf_test_network",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
             network_id=network1.id,
             cidr="192.168.199.0/24",
             ip_version=4)
-        router1 = openstack.networking.Router("router1", external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
-        router_interface1 = openstack.networking.RouterInterface("routerInterface1",
+        router1 = openstack.networking.Router("router_1",
+            name="my_router",
+            external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
+        router_interface1 = openstack.networking.RouterInterface("router_interface_1",
             router_id=router1.id,
             subnet_id=subnet1.id)
         ```

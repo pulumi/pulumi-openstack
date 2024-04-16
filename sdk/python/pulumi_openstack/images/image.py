@@ -984,9 +984,10 @@ class Image(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         rancheros = openstack.images.Image("rancheros",
+            name="RancherOS",
+            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
             container_format="bare",
             disk_format="qcow2",
-            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
             properties={
                 "key": "value",
             })
@@ -1087,9 +1088,10 @@ class Image(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         rancheros = openstack.images.Image("rancheros",
+            name="RancherOS",
+            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
             container_format="bare",
             disk_format="qcow2",
-            image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
             properties={
                 "key": "value",
             })

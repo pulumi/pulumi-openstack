@@ -50,10 +50,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var listener1 = new Listener(&#34;listener1&#34;, ListenerArgs.builder()        
- *             .insertHeaders(Map.of(&#34;X-Forwarded-For&#34;, &#34;true&#34;))
- *             .loadbalancerId(&#34;d9415786-5f1a-428b-b35f-2f1523e146d2&#34;)
  *             .protocol(&#34;HTTP&#34;)
  *             .protocolPort(8080)
+ *             .loadbalancerId(&#34;d9415786-5f1a-428b-b35f-2f1523e146d2&#34;)
+ *             .insertHeaders(Map.of(&#34;X-Forwarded-For&#34;, &#34;true&#34;))
  *             .build());
  * 
  *     }

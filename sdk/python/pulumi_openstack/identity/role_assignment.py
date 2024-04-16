@@ -235,10 +235,12 @@ class RoleAssignment(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        project1 = openstack.identity.Project("project1")
-        user1 = openstack.identity.User("user1", default_project_id=project1.id)
-        role1 = openstack.identity.Role("role1")
-        role_assignment1 = openstack.identity.RoleAssignment("roleAssignment1",
+        project1 = openstack.identity.Project("project_1", name="project_1")
+        user1 = openstack.identity.User("user_1",
+            name="user_1",
+            default_project_id=project1.id)
+        role1 = openstack.identity.Role("role_1", name="role_1")
+        role_assignment1 = openstack.identity.RoleAssignment("role_assignment_1",
             user_id=user1.id,
             project_id=project1.id,
             role_id=role1.id)
@@ -287,10 +289,12 @@ class RoleAssignment(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        project1 = openstack.identity.Project("project1")
-        user1 = openstack.identity.User("user1", default_project_id=project1.id)
-        role1 = openstack.identity.Role("role1")
-        role_assignment1 = openstack.identity.RoleAssignment("roleAssignment1",
+        project1 = openstack.identity.Project("project_1", name="project_1")
+        user1 = openstack.identity.User("user_1",
+            name="user_1",
+            default_project_id=project1.id)
+        role1 = openstack.identity.Role("role_1", name="role_1")
+        role_assignment1 = openstack.identity.RoleAssignment("role_assignment_1",
             user_id=user1.id,
             project_id=project1.id,
             role_id=role1.id)

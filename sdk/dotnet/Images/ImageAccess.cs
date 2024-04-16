@@ -31,6 +31,7 @@ namespace Pulumi.OpenStack.Images
     /// {
     ///     var rancheros = new OpenStack.Images.Image("rancheros", new()
     ///     {
+    ///         Name = "RancherOS",
     ///         ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
     ///         ContainerFormat = "bare",
     ///         DiskFormat = "qcow2",
@@ -41,7 +42,7 @@ namespace Pulumi.OpenStack.Images
     ///         },
     ///     });
     /// 
-    ///     var rancherosMember = new OpenStack.Images.ImageAccess("rancherosMember", new()
+    ///     var rancherosMember = new OpenStack.Images.ImageAccess("rancheros_member", new()
     ///     {
     ///         ImageId = rancheros.Id,
     ///         MemberId = "bed6b6cbb86a4e2d8dc2735c2f1000e4",
@@ -67,6 +68,7 @@ namespace Pulumi.OpenStack.Images
     /// {
     ///     var rancheros = new OpenStack.Images.Image("rancheros", new()
     ///     {
+    ///         Name = "RancherOS",
     ///         ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
     ///         ContainerFormat = "bare",
     ///         DiskFormat = "qcow2",
@@ -77,7 +79,7 @@ namespace Pulumi.OpenStack.Images
     ///         },
     ///     });
     /// 
-    ///     var rancherosMember = new OpenStack.Images.ImageAccess("rancherosMember", new()
+    ///     var rancherosMember = new OpenStack.Images.ImageAccess("rancheros_member", new()
     ///     {
     ///         ImageId = rancheros.Id,
     ///         MemberId = "bed6b6cbb86a4e2d8dc2735c2f1000e4",

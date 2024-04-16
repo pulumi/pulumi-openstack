@@ -370,22 +370,28 @@ class Trunk(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
+            name="subnet_1",
             network_id=network1.id,
             cidr="192.168.1.0/24",
             ip_version=4,
             enable_dhcp=True,
             no_gateway=True)
-        parent_port1 = openstack.networking.Port("parentPort1",
+        parent_port1 = openstack.networking.Port("parent_port_1",
+            name="parent_port_1",
             network_id=network1.id,
             admin_state_up=True,
-            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
-        subport1 = openstack.networking.Port("subport1",
+            opts=pulumi.ResourceOptions(depends_on=[subnet1]))
+        subport1 = openstack.networking.Port("subport_1",
+            name="subport_1",
             network_id=network1.id,
             admin_state_up=True,
-            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
-        trunk1 = openstack.networking.Trunk("trunk1",
+            opts=pulumi.ResourceOptions(depends_on=[subnet1]))
+        trunk1 = openstack.networking.Trunk("trunk_1",
+            name="trunk_1",
             admin_state_up=True,
             port_id=parent_port1.id,
             sub_ports=[openstack.networking.TrunkSubPortArgs(
@@ -393,7 +399,8 @@ class Trunk(pulumi.CustomResource):
                 segmentation_id=1,
                 segmentation_type="vlan",
             )])
-        instance1 = openstack.compute.Instance("instance1",
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
             security_groups=["default"],
             networks=[openstack.compute.InstanceNetworkArgs(
                 port=trunk1.port_id,
@@ -439,22 +446,28 @@ class Trunk(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
+            name="subnet_1",
             network_id=network1.id,
             cidr="192.168.1.0/24",
             ip_version=4,
             enable_dhcp=True,
             no_gateway=True)
-        parent_port1 = openstack.networking.Port("parentPort1",
+        parent_port1 = openstack.networking.Port("parent_port_1",
+            name="parent_port_1",
             network_id=network1.id,
             admin_state_up=True,
-            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
-        subport1 = openstack.networking.Port("subport1",
+            opts=pulumi.ResourceOptions(depends_on=[subnet1]))
+        subport1 = openstack.networking.Port("subport_1",
+            name="subport_1",
             network_id=network1.id,
             admin_state_up=True,
-            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_subnet_v2.subnet_1"]))
-        trunk1 = openstack.networking.Trunk("trunk1",
+            opts=pulumi.ResourceOptions(depends_on=[subnet1]))
+        trunk1 = openstack.networking.Trunk("trunk_1",
+            name="trunk_1",
             admin_state_up=True,
             port_id=parent_port1.id,
             sub_ports=[openstack.networking.TrunkSubPortArgs(
@@ -462,7 +475,8 @@ class Trunk(pulumi.CustomResource):
                 segmentation_id=1,
                 segmentation_type="vlan",
             )])
-        instance1 = openstack.compute.Instance("instance1",
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
             security_groups=["default"],
             networks=[openstack.compute.InstanceNetworkArgs(
                 port=trunk1.port_id,

@@ -16,16 +16,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const dellServers = new openstack.compute.AggregateV2("dellServers", {
+ * const dellServers = new openstack.compute.AggregateV2("dell_servers", {
+ *     region: "RegionOne",
+ *     name: "dell_servers",
+ *     zone: "nova",
+ *     metadata: {
+ *         cpus: "56",
+ *     },
  *     hosts: [
  *         "myhost01.example.com",
  *         "myhost02.example.com",
  *     ],
- *     metadata: {
- *         cpus: "56",
- *     },
- *     region: "RegionOne",
- *     zone: "nova",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -37,7 +38,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const test = new openstack.compute.AggregateV2("test", {});
+ * const test = new openstack.compute.AggregateV2("test", {name: "test"});
  * ```
  * <!--End PulumiCodeChooser -->
  *

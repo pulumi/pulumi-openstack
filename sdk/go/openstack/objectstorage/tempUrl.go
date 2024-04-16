@@ -35,7 +35,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			container1, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
+//			container1, err := objectstorage.NewContainer(ctx, "container_1", &objectstorage.ContainerArgs{
+//				Name: pulumi.String("test"),
 //				Metadata: pulumi.Map{
 //					"Temp-URL-Key": pulumi.Any("testkey"),
 //				},
@@ -43,14 +44,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			object1, err := objectstorage.NewContainerObject(ctx, "object1", &objectstorage.ContainerObjectArgs{
+//			object1, err := objectstorage.NewContainerObject(ctx, "object_1", &objectstorage.ContainerObjectArgs{
 //				ContainerName: container1.Name,
+//				Name:          pulumi.String("test"),
 //				Content:       pulumi.String("Hello, world!"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = objectstorage.NewTempUrl(ctx, "objTempurl", &objectstorage.TempUrlArgs{
+//			_, err = objectstorage.NewTempUrl(ctx, "obj_tempurl", &objectstorage.TempUrlArgs{
 //				Container: container1.Name,
 //				Object:    object1.Name,
 //				Method:    pulumi.String("post"),

@@ -186,7 +186,9 @@ class GroupV3(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        group1 = openstack.identity.GroupV3("group1", description="group 1")
+        group1 = openstack.identity.GroupV3("group_1",
+            name="group_1",
+            description="group 1")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -226,7 +228,9 @@ class GroupV3(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        group1 = openstack.identity.GroupV3("group1", description="group 1")
+        group1 = openstack.identity.GroupV3("group_1",
+            name="group_1",
+            description="group 1")
         ```
         <!--End PulumiCodeChooser -->
 

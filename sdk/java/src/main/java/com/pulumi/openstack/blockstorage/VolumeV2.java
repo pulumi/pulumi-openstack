@@ -48,8 +48,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var volume1 = new VolumeV2(&#34;volume1&#34;, VolumeV2Args.builder()        
- *             .description(&#34;first test volume&#34;)
  *             .region(&#34;RegionOne&#34;)
+ *             .name(&#34;volume_1&#34;)
+ *             .description(&#34;first test volume&#34;)
  *             .size(3)
  *             .build());
  * 

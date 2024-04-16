@@ -48,11 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var stack1 = new StackV1(&#34;stack1&#34;, StackV1Args.builder()        
- *             .disableRollback(true)
- *             .environmentOpts(Map.of(&#34;Bin&#34;, &#34;&#34;&#34;
- * 
- * 
- *             &#34;&#34;&#34;))
+ *             .name(&#34;stack_1&#34;)
  *             .parameters(Map.of(&#34;length&#34;, 4))
  *             .templateOpts(Map.of(&#34;Bin&#34;, &#34;&#34;&#34;
  * heat_template_version: 2013-05-23
@@ -66,8 +62,11 @@ import javax.annotation.Nullable;
  *     type: OS::Heat::RandomString
  *     properties:
  *       length: {get_param: length}
+ *             &#34;&#34;&#34;))
+ *             .environmentOpts(Map.of(&#34;Bin&#34;, &#34;&#34;&#34;
  * 
  *             &#34;&#34;&#34;))
+ *             .disableRollback(true)
  *             .timeout(30)
  *             .build());
  * 

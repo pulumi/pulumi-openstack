@@ -31,7 +31,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZone, err := dns.NewZone(ctx, "exampleZone", &dns.ZoneArgs{
+//			exampleZone, err := dns.NewZone(ctx, "example_zone", &dns.ZoneArgs{
+//				Name:        pulumi.String("example.com."),
 //				Email:       pulumi.String("jdoe@example.com"),
 //				Description: pulumi.String("An example zone"),
 //				Ttl:         pulumi.Int(3000),
@@ -40,14 +41,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			request1, err := dns.NewTransferRequest(ctx, "request1", &dns.TransferRequestArgs{
+//			request1, err := dns.NewTransferRequest(ctx, "request_1", &dns.TransferRequestArgs{
 //				ZoneId:      exampleZone.ID(),
 //				Description: pulumi.String("a transfer accept"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dns.NewTransferAccept(ctx, "accept1", &dns.TransferAcceptArgs{
+//			_, err = dns.NewTransferAccept(ctx, "accept_1", &dns.TransferAcceptArgs{
 //				ZoneTransferRequestId: request1.ID(),
 //				Key:                   request1.Key,
 //			})

@@ -23,13 +23,15 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
     ///     {
+    ///         Name = "network_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet_1", new()
     ///     {
+    ///         Name = "subnet_1",
     ///         NetworkId = network1.Id,
     ///         Cidr = "192.168.1.0/24",
     ///         IpVersion = 4,
@@ -37,32 +39,35 @@ namespace Pulumi.OpenStack.Networking
     ///         NoGateway = true,
     ///     });
     /// 
-    ///     var parentPort1 = new OpenStack.Networking.Port("parentPort1", new()
+    ///     var parentPort1 = new OpenStack.Networking.Port("parent_port_1", new()
     ///     {
+    ///         Name = "parent_port_1",
     ///         NetworkId = network1.Id,
     ///         AdminStateUp = true,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
     ///         {
-    ///             "openstack_networking_subnet_v2.subnet_1", 
+    ///             subnet1, 
     ///         },
     ///     });
     /// 
-    ///     var subport1 = new OpenStack.Networking.Port("subport1", new()
+    ///     var subport1 = new OpenStack.Networking.Port("subport_1", new()
     ///     {
+    ///         Name = "subport_1",
     ///         NetworkId = network1.Id,
     ///         AdminStateUp = true,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
     ///         {
-    ///             "openstack_networking_subnet_v2.subnet_1", 
+    ///             subnet1, 
     ///         },
     ///     });
     /// 
-    ///     var trunk1 = new OpenStack.Networking.Trunk("trunk1", new()
+    ///     var trunk1 = new OpenStack.Networking.Trunk("trunk_1", new()
     ///     {
+    ///         Name = "trunk_1",
     ///         AdminStateUp = true,
     ///         PortId = parentPort1.Id,
     ///         SubPorts = new[]
@@ -76,8 +81,9 @@ namespace Pulumi.OpenStack.Networking
     ///         },
     ///     });
     /// 
-    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
     ///     {
+    ///         Name = "instance_1",
     ///         SecurityGroups = new[]
     ///         {
     ///             "default",

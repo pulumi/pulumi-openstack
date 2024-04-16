@@ -40,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = images.NewImageAccessAccept(ctx, "rancherosMember", &images.ImageAccessAcceptArgs{
+//			_, err = images.NewImageAccessAccept(ctx, "rancheros_member", &images.ImageAccessAcceptArgs{
 //				ImageId: pulumi.String(rancheros.Id),
 //				Status:  pulumi.String("accepted"),
 //			})

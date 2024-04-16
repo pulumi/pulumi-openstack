@@ -19,14 +19,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const project1 = new openstack.identity.Project("project1", {});
- * const flavor1 = new openstack.compute.Flavor("flavor1", {
+ * const project1 = new openstack.identity.Project("project_1", {name: "my-project"});
+ * const flavor1 = new openstack.compute.Flavor("flavor_1", {
+ *     name: "my-flavor",
  *     ram: 8096,
  *     vcpus: 2,
  *     disk: 20,
  *     isPublic: false,
  * });
- * const access1 = new openstack.compute.FlavorAccess("access1", {
+ * const access1 = new openstack.compute.FlavorAccess("access_1", {
  *     tenantId: project1.id,
  *     flavorId: flavor1.id,
  * });

@@ -45,11 +45,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			project1, err := identity.NewProject(ctx, "project_1", &identity.ProjectArgs{
+//				Name: pulumi.String("project_1"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = loadbalancer.NewQuota(ctx, "quota1", &loadbalancer.QuotaArgs{
+//			_, err = loadbalancer.NewQuota(ctx, "quota_1", &loadbalancer.QuotaArgs{
 //				ProjectId:     project1.ID(),
 //				Loadbalancer:  pulumi.Int(6),
 //				Listener:      pulumi.Int(7),

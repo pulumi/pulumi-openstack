@@ -35,11 +35,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			project1, err := identity.NewProject(ctx, "project_1", &identity.ProjectArgs{
+//				Name: pulumi.String("my-project"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			flavor1, err := compute.NewFlavor(ctx, "flavor1", &compute.FlavorArgs{
+//			flavor1, err := compute.NewFlavor(ctx, "flavor_1", &compute.FlavorArgs{
+//				Name:     pulumi.String("my-flavor"),
 //				Ram:      pulumi.Int(8096),
 //				Vcpus:    pulumi.Int(2),
 //				Disk:     pulumi.Int(20),
@@ -48,7 +51,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewFlavorAccess(ctx, "access1", &compute.FlavorAccessArgs{
+//			_, err = compute.NewFlavorAccess(ctx, "access_1", &compute.FlavorAccessArgs{
 //				TenantId: project1.ID(),
 //				FlavorId: flavor1.ID(),
 //			})

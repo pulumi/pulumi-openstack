@@ -709,7 +709,8 @@ class SubnetPool(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        subnetpool1 = openstack.networking.SubnetPool("subnetpool1",
+        subnetpool1 = openstack.networking.SubnetPool("subnetpool_1",
+            name="subnetpool_1",
             ip_version=6,
             prefixes=[
                 "fdf7:b13d:dead:beef::/64",
@@ -725,9 +726,14 @@ class SubnetPool(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnetpool1 = openstack.networking.SubnetPool("subnetpool1", prefixes=["10.11.12.0/24"])
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnetpool1 = openstack.networking.SubnetPool("subnetpool_1",
+            name="subnetpool_1",
+            prefixes=["10.11.12.0/24"])
+        subnet1 = openstack.networking.Subnet("subnet_1",
+            name="subnet_1",
             cidr="10.11.12.0/25",
             network_id=network1.id,
             subnetpool_id=subnetpool1.id)
@@ -804,7 +810,8 @@ class SubnetPool(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        subnetpool1 = openstack.networking.SubnetPool("subnetpool1",
+        subnetpool1 = openstack.networking.SubnetPool("subnetpool_1",
+            name="subnetpool_1",
             ip_version=6,
             prefixes=[
                 "fdf7:b13d:dead:beef::/64",
@@ -820,9 +827,14 @@ class SubnetPool(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnetpool1 = openstack.networking.SubnetPool("subnetpool1", prefixes=["10.11.12.0/24"])
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnetpool1 = openstack.networking.SubnetPool("subnetpool_1",
+            name="subnetpool_1",
+            prefixes=["10.11.12.0/24"])
+        subnet1 = openstack.networking.Subnet("subnet_1",
+            name="subnet_1",
             cidr="10.11.12.0/25",
             network_id=network1.id,
             subnetpool_id=subnetpool1.id)

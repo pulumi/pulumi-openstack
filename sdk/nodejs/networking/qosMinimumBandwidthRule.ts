@@ -16,8 +16,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const qosPolicy1 = new openstack.networking.QosPolicy("qosPolicy1", {description: "min_kbps"});
- * const minimumBandwidthRule1 = new openstack.networking.QosMinimumBandwidthRule("minimumBandwidthRule1", {
+ * const qosPolicy1 = new openstack.networking.QosPolicy("qos_policy_1", {
+ *     name: "qos_policy_1",
+ *     description: "min_kbps",
+ * });
+ * const minimumBandwidthRule1 = new openstack.networking.QosMinimumBandwidthRule("minimum_bandwidth_rule_1", {
  *     qosPolicyId: qosPolicy1.id,
  *     minKbps: 200,
  * });

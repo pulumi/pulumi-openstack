@@ -26,20 +26,22 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var volume1 = new OpenStack.BlockStorage.Volume("volume1", new()
+    ///     var volume1 = new OpenStack.BlockStorage.Volume("volume_1", new()
     ///     {
+    ///         Name = "volume_1",
     ///         Size = 1,
     ///     });
     /// 
-    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
     ///     {
+    ///         Name = "instance_1",
     ///         SecurityGroups = new[]
     ///         {
     ///             "default",
     ///         },
     ///     });
     /// 
-    ///     var va1 = new OpenStack.Compute.VolumeAttach("va1", new()
+    ///     var va1 = new OpenStack.Compute.VolumeAttach("va_1", new()
     ///     {
     ///         InstanceId = instance1.Id,
     ///         VolumeId = volume1.Id,
@@ -63,36 +65,39 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var volume1 = new OpenStack.BlockStorage.Volume("volume1", new()
+    ///     var volume1 = new OpenStack.BlockStorage.Volume("volume_1", new()
     ///     {
+    ///         Name = "volume_1",
     ///         Size = 1,
     ///         Multiattach = true,
     ///     });
     /// 
-    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
     ///     {
+    ///         Name = "instance_1",
     ///         SecurityGroups = new[]
     ///         {
     ///             "default",
     ///         },
     ///     });
     /// 
-    ///     var instance2 = new OpenStack.Compute.Instance("instance2", new()
+    ///     var instance2 = new OpenStack.Compute.Instance("instance_2", new()
     ///     {
+    ///         Name = "instance_2",
     ///         SecurityGroups = new[]
     ///         {
     ///             "default",
     ///         },
     ///     });
     /// 
-    ///     var va1 = new OpenStack.Compute.VolumeAttach("va1", new()
+    ///     var va1 = new OpenStack.Compute.VolumeAttach("va_1", new()
     ///     {
     ///         InstanceId = instance1.Id,
     ///         VolumeId = volume1.Id,
     ///         Multiattach = true,
     ///     });
     /// 
-    ///     var va2 = new OpenStack.Compute.VolumeAttach("va2", new()
+    ///     var va2 = new OpenStack.Compute.VolumeAttach("va_2", new()
     ///     {
     ///         InstanceId = instance2.Id,
     ///         VolumeId = volume1.Id,
@@ -101,7 +106,7 @@ namespace Pulumi.OpenStack.Compute
     ///     {
     ///         DependsOn =
     ///         {
-    ///             "openstack_compute_volume_attach_v2.va_1", 
+    ///             va1, 
     ///         },
     ///     });
     /// 

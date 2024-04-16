@@ -16,9 +16,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const pf1 = new openstack.networking.PortForwardingV2("pf1", {
- *     externalPort: 7233,
+ * const pf1 = new openstack.networking.PortForwardingV2("pf_1", {
  *     floatingipId: "7a52eb59-7d47-415d-a884-046666a6fbae",
+ *     externalPort: 7233,
  *     internalPort: 25,
  *     internalPortId: "b930d7f6-ceb7-40a0-8b81-a425dd994ccf",
  *     protocol: "tcp",

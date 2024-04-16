@@ -28,17 +28,19 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var user1 = new OpenStack.Identity.User("user1", new()
+    ///     var user1 = new OpenStack.Identity.User("user_1", new()
     ///     {
+    ///         Name = "user_1",
     ///         DomainId = "default",
     ///     });
     /// 
-    ///     var role1 = new OpenStack.Identity.Role("role1", new()
+    ///     var role1 = new OpenStack.Identity.Role("role_1", new()
     ///     {
+    ///         Name = "role_1",
     ///         DomainId = "default",
     ///     });
     /// 
-    ///     var roleAssignment1 = new OpenStack.Identity.InheritRoleAssignment("roleAssignment1", new()
+    ///     var roleAssignment1 = new OpenStack.Identity.InheritRoleAssignment("role_assignment_1", new()
     ///     {
     ///         UserId = user1.Id,
     ///         DomainId = "default",

@@ -25,8 +25,9 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var qosPolicy1 = new OpenStack.Networking.QosPolicy("qosPolicy1", new()
+    ///     var qosPolicy1 = new OpenStack.Networking.QosPolicy("qos_policy_1", new()
     ///     {
+    ///         Name = "qos_policy_1",
     ///         Description = "bw_limit",
     ///     });
     /// 

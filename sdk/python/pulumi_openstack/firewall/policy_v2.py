@@ -393,22 +393,26 @@ class PolicyV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        rule1 = openstack.firewall.RuleV2("rule1",
+        rule1 = openstack.firewall.RuleV2("rule_1",
+            name="firewall_rule_1",
             description="drop TELNET traffic",
             action="deny",
             protocol="tcp",
             destination_port="23",
             enabled=True)
-        rule2 = openstack.firewall.RuleV2("rule2",
+        rule2 = openstack.firewall.RuleV2("rule_2",
+            name="firewall_rule_2",
             description="drop NTP traffic",
             action="deny",
             protocol="udp",
             destination_port="123",
             enabled=False)
-        policy1 = openstack.firewall.PolicyV2("policy1", rules=[
-            rule1.id,
-            rule2.id,
-        ])
+        policy1 = openstack.firewall.PolicyV2("policy_1",
+            name="firewall_policy",
+            rules=[
+                rule1.id,
+                rule2.id,
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -470,22 +474,26 @@ class PolicyV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        rule1 = openstack.firewall.RuleV2("rule1",
+        rule1 = openstack.firewall.RuleV2("rule_1",
+            name="firewall_rule_1",
             description="drop TELNET traffic",
             action="deny",
             protocol="tcp",
             destination_port="23",
             enabled=True)
-        rule2 = openstack.firewall.RuleV2("rule2",
+        rule2 = openstack.firewall.RuleV2("rule_2",
+            name="firewall_rule_2",
             description="drop NTP traffic",
             action="deny",
             protocol="udp",
             destination_port="123",
             enabled=False)
-        policy1 = openstack.firewall.PolicyV2("policy1", rules=[
-            rule1.id,
-            rule2.id,
-        ])
+        policy1 = openstack.firewall.PolicyV2("policy_1",
+            name="firewall_policy",
+            rules=[
+                rule1.id,
+                rule2.id,
+            ])
         ```
         <!--End PulumiCodeChooser -->
 

@@ -25,8 +25,9 @@ namespace Pulumi.OpenStack.Firewall
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var rule1 = new OpenStack.Firewall.RuleV2("rule1", new()
+    ///     var rule1 = new OpenStack.Firewall.RuleV2("rule_1", new()
     ///     {
+    ///         Name = "firewall_rule_2",
     ///         Description = "drop TELNET traffic",
     ///         Action = "deny",
     ///         Protocol = "tcp",
@@ -34,8 +35,9 @@ namespace Pulumi.OpenStack.Firewall
     ///         Enabled = true,
     ///     });
     /// 
-    ///     var rule2 = new OpenStack.Firewall.RuleV2("rule2", new()
+    ///     var rule2 = new OpenStack.Firewall.RuleV2("rule_2", new()
     ///     {
+    ///         Name = "firewall_rule_1",
     ///         Description = "drop NTP traffic",
     ///         Action = "deny",
     ///         Protocol = "udp",
@@ -43,24 +45,27 @@ namespace Pulumi.OpenStack.Firewall
     ///         Enabled = false,
     ///     });
     /// 
-    ///     var policy1 = new OpenStack.Firewall.PolicyV2("policy1", new()
+    ///     var policy1 = new OpenStack.Firewall.PolicyV2("policy_1", new()
     ///     {
+    ///         Name = "firewall_ingress_policy",
     ///         Rules = new[]
     ///         {
     ///             rule1.Id,
     ///         },
     ///     });
     /// 
-    ///     var policy2 = new OpenStack.Firewall.PolicyV2("policy2", new()
+    ///     var policy2 = new OpenStack.Firewall.PolicyV2("policy_2", new()
     ///     {
+    ///         Name = "firewall_egress_policy",
     ///         Rules = new[]
     ///         {
     ///             rule2.Id,
     ///         },
     ///     });
     /// 
-    ///     var group1 = new OpenStack.Firewall.GroupV2("group1", new()
+    ///     var group1 = new OpenStack.Firewall.GroupV2("group_1", new()
     ///     {
+    ///         Name = "firewall_group",
     ///         IngressFirewallPolicyId = policy1.Id,
     ///         EgressFirewallPolicyId = policy2.Id,
     ///     });

@@ -364,12 +364,16 @@ class ShareNetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
+            name="subnet_1",
             cidr="192.168.199.0/24",
             ip_version=4,
             network_id=network1.id)
-        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork_1",
+            name="test_sharenetwork",
             description="test share network",
             neutron_net_id=network1.id,
             neutron_subnet_id=subnet1.id)
@@ -383,12 +387,16 @@ class ShareNetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
+            name="subnet_1",
             cidr="192.168.199.0/24",
             ip_version=4,
             network_id=network1.id)
-        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
+        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice_1",
+            name="security",
             description="created by terraform",
             type="active_directory",
             server="192.168.199.10",
@@ -397,7 +405,8 @@ class ShareNetwork(pulumi.CustomResource):
             ou="CN=Computers,DC=example,DC=com",
             user="joinDomainUser",
             password="s8cret")
-        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork_1",
+            name="test_sharenetwork",
             description="test share network with security services",
             neutron_net_id=network1.id,
             neutron_subnet_id=subnet1.id,
@@ -453,12 +462,16 @@ class ShareNetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
+            name="subnet_1",
             cidr="192.168.199.0/24",
             ip_version=4,
             network_id=network1.id)
-        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork_1",
+            name="test_sharenetwork",
             description="test share network",
             neutron_net_id=network1.id,
             neutron_subnet_id=subnet1.id)
@@ -472,12 +485,16 @@ class ShareNetwork(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
+            name="subnet_1",
             cidr="192.168.199.0/24",
             ip_version=4,
             network_id=network1.id)
-        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
+        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice_1",
+            name="security",
             description="created by terraform",
             type="active_directory",
             server="192.168.199.10",
@@ -486,7 +503,8 @@ class ShareNetwork(pulumi.CustomResource):
             ou="CN=Computers,DC=example,DC=com",
             user="joinDomainUser",
             password="s8cret")
-        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork_1",
+            name="test_sharenetwork",
             description="test share network with security services",
             neutron_net_id=network1.id,
             neutron_subnet_id=subnet1.id,

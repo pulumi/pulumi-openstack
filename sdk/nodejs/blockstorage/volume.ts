@@ -16,9 +16,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const volume1 = new openstack.blockstorage.Volume("volume1", {
- *     description: "first test volume",
+ * const volume1 = new openstack.blockstorage.Volume("volume_1", {
  *     region: "RegionOne",
+ *     name: "volume_1",
+ *     description: "first test volume",
  *     size: 3,
  * });
  * ```

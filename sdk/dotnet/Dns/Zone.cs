@@ -25,10 +25,11 @@ namespace Pulumi.OpenStack.Dns
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCom = new OpenStack.Dns.Zone("exampleCom", new()
+    ///     var exampleCom = new OpenStack.Dns.Zone("example_com", new()
     ///     {
-    ///         Description = "An example zone",
+    ///         Name = "example.com.",
     ///         Email = "jdoe@example.com",
+    ///         Description = "An example zone",
     ///         Ttl = 3000,
     ///         Type = "PRIMARY",
     ///     });

@@ -30,7 +30,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networking.NewQosPolicy(ctx, "qosPolicy1", &networking.QosPolicyArgs{
+//			_, err := networking.NewQosPolicy(ctx, "qos_policy_1", &networking.QosPolicyArgs{
+//				Name:        pulumi.String("qos_policy_1"),
 //				Description: pulumi.String("bw_limit"),
 //			})
 //			if err != nil {

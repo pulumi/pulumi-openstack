@@ -29,9 +29,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networking.LookupAddressScope(ctx, &networking.LookupAddressScopeArgs{
-//				IpVersion: pulumi.IntRef(4),
 //				Name:      pulumi.StringRef("public_addressscope"),
 //				Shared:    pulumi.BoolRef(true),
+//				IpVersion: pulumi.IntRef(4),
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const floatip1 = new openstack.compute.FloatingIp("floatip1", {pool: "public"});
+ * const floatip1 = new openstack.compute.FloatingIp("floatip_1", {pool: "public"});
  * ```
  * <!--End PulumiCodeChooser -->
  *

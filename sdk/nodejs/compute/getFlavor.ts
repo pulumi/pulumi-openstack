@@ -15,8 +15,8 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const small = openstack.compute.getFlavor({
- *     ram: 512,
  *     vcpus: 1,
+ *     ram: 512,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -135,8 +135,8 @@ export interface GetFlavorResult {
  * import * as openstack from "@pulumi/openstack";
  *
  * const small = openstack.compute.getFlavor({
- *     ram: 512,
  *     vcpus: 1,
+ *     ram: 512,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

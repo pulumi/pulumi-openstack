@@ -409,12 +409,13 @@ class PoolV1(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        pool1 = openstack.loadbalancer.PoolV1("pool1",
+        pool1 = openstack.loadbalancer.PoolV1("pool_1",
+            name="tf_test_lb_pool",
+            protocol="HTTP",
+            subnet_id="12345",
             lb_method="ROUND_ROBIN",
             lb_provider="haproxy",
-            monitor_ids=["67890"],
-            protocol="HTTP",
-            subnet_id="12345")
+            monitor_ids=["67890"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -425,12 +426,15 @@ class PoolV1(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
             network_id=network1.id,
             cidr="192.168.199.0/24",
             ip_version=4)
-        secgroup1 = openstack.compute.SecGroup("secgroup1",
+        secgroup1 = openstack.compute.SecGroup("secgroup_1",
+            name="secgroup_1",
             description="Rules for secgroup_1",
             rules=[
                 openstack.compute.SecGroupRuleArgs(
@@ -446,7 +450,8 @@ class PoolV1(pulumi.CustomResource):
                     cidr="0.0.0.0/0",
                 ),
             ])
-        instance1 = openstack.compute.Instance("instance1",
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
             security_groups=[
                 "default",
                 secgroup1.name,
@@ -454,7 +459,8 @@ class PoolV1(pulumi.CustomResource):
             networks=[openstack.compute.InstanceNetworkArgs(
                 uuid=network1.id,
             )])
-        instance2 = openstack.compute.Instance("instance2",
+        instance2 = openstack.compute.Instance("instance_2",
+            name="instance_2",
             security_groups=[
                 "default",
                 secgroup1.name,
@@ -462,26 +468,28 @@ class PoolV1(pulumi.CustomResource):
             networks=[openstack.compute.InstanceNetworkArgs(
                 uuid=network1.id,
             )])
-        monitor1 = openstack.loadbalancer.MonitorV1("monitor1",
+        monitor1 = openstack.loadbalancer.MonitorV1("monitor_1",
             type="TCP",
             delay=30,
             timeout=5,
             max_retries=3,
             admin_state_up="true")
-        pool1 = openstack.loadbalancer.PoolV1("pool1",
+        pool1 = openstack.loadbalancer.PoolV1("pool_1",
+            name="pool_1",
             protocol="TCP",
             subnet_id=subnet1.id,
             lb_method="ROUND_ROBIN",
             monitor_ids=[monitor1.id])
-        member1 = openstack.loadbalancer.MemberV1("member1",
+        member1 = openstack.loadbalancer.MemberV1("member_1",
             pool_id=pool1.id,
             address=instance1.access_ip_v4,
             port=80)
-        member2 = openstack.loadbalancer.MemberV1("member2",
+        member2 = openstack.loadbalancer.MemberV1("member_2",
             pool_id=pool1.id,
             address=instance2.access_ip_v4,
             port=80)
-        vip1 = openstack.loadbalancer.Vip("vip1",
+        vip1 = openstack.loadbalancer.Vip("vip_1",
+            name="vip_1",
             subnet_id=subnet1.id,
             protocol="TCP",
             port=80,
@@ -544,12 +552,13 @@ class PoolV1(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        pool1 = openstack.loadbalancer.PoolV1("pool1",
+        pool1 = openstack.loadbalancer.PoolV1("pool_1",
+            name="tf_test_lb_pool",
+            protocol="HTTP",
+            subnet_id="12345",
             lb_method="ROUND_ROBIN",
             lb_provider="haproxy",
-            monitor_ids=["67890"],
-            protocol="HTTP",
-            subnet_id="12345")
+            monitor_ids=["67890"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -560,12 +569,15 @@ class PoolV1(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
             network_id=network1.id,
             cidr="192.168.199.0/24",
             ip_version=4)
-        secgroup1 = openstack.compute.SecGroup("secgroup1",
+        secgroup1 = openstack.compute.SecGroup("secgroup_1",
+            name="secgroup_1",
             description="Rules for secgroup_1",
             rules=[
                 openstack.compute.SecGroupRuleArgs(
@@ -581,7 +593,8 @@ class PoolV1(pulumi.CustomResource):
                     cidr="0.0.0.0/0",
                 ),
             ])
-        instance1 = openstack.compute.Instance("instance1",
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
             security_groups=[
                 "default",
                 secgroup1.name,
@@ -589,7 +602,8 @@ class PoolV1(pulumi.CustomResource):
             networks=[openstack.compute.InstanceNetworkArgs(
                 uuid=network1.id,
             )])
-        instance2 = openstack.compute.Instance("instance2",
+        instance2 = openstack.compute.Instance("instance_2",
+            name="instance_2",
             security_groups=[
                 "default",
                 secgroup1.name,
@@ -597,26 +611,28 @@ class PoolV1(pulumi.CustomResource):
             networks=[openstack.compute.InstanceNetworkArgs(
                 uuid=network1.id,
             )])
-        monitor1 = openstack.loadbalancer.MonitorV1("monitor1",
+        monitor1 = openstack.loadbalancer.MonitorV1("monitor_1",
             type="TCP",
             delay=30,
             timeout=5,
             max_retries=3,
             admin_state_up="true")
-        pool1 = openstack.loadbalancer.PoolV1("pool1",
+        pool1 = openstack.loadbalancer.PoolV1("pool_1",
+            name="pool_1",
             protocol="TCP",
             subnet_id=subnet1.id,
             lb_method="ROUND_ROBIN",
             monitor_ids=[monitor1.id])
-        member1 = openstack.loadbalancer.MemberV1("member1",
+        member1 = openstack.loadbalancer.MemberV1("member_1",
             pool_id=pool1.id,
             address=instance1.access_ip_v4,
             port=80)
-        member2 = openstack.loadbalancer.MemberV1("member2",
+        member2 = openstack.loadbalancer.MemberV1("member_2",
             pool_id=pool1.id,
             address=instance2.access_ip_v4,
             port=80)
-        vip1 = openstack.loadbalancer.Vip("vip1",
+        vip1 = openstack.loadbalancer.Vip("vip_1",
+            name="vip_1",
             subnet_id=subnet1.id,
             protocol="TCP",
             port=80,

@@ -16,42 +16,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const secret1 = new openstack.keymanager.SecretV1("secret1", {
+ * const secret1 = new openstack.keymanager.SecretV1("secret_1", {
  *     algorithm: "aes",
  *     bitLength: 256,
- *     metadata: {
- *         key: "foo",
- *     },
  *     mode: "cbc",
+ *     name: "mysecret",
  *     payload: "foobar",
  *     payloadContentType: "text/plain",
  *     secretType: "passphrase",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
- * ### Secret with the ACL
- *
- * > **Note** Only read ACLs are supported
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
- * import * as openstack from "@pulumi/openstack";
- *
- * const secret1 = new openstack.keymanager.SecretV1("secret1", {
- *     payload: fs.readFileSync("certificate.pem", "utf8"),
- *     secretType: "certificate",
- *     payloadContentType: "text/plain",
- *     acl: {
- *         read: {
- *             projectAccess: false,
- *             users: [
- *                 "userid1",
- *                 "userid2",
- *             ],
- *         },
+ *     metadata: {
+ *         key: "foo",
  *     },
  * });
  * ```

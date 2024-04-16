@@ -30,16 +30,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewAggregateV2(ctx, "dellServers", &compute.AggregateV2Args{
+//			_, err := compute.NewAggregateV2(ctx, "dell_servers", &compute.AggregateV2Args{
+//				Region: pulumi.String("RegionOne"),
+//				Name:   pulumi.String("dell_servers"),
+//				Zone:   pulumi.String("nova"),
+//				Metadata: pulumi.StringMap{
+//					"cpus": pulumi.String("56"),
+//				},
 //				Hosts: pulumi.StringArray{
 //					pulumi.String("myhost01.example.com"),
 //					pulumi.String("myhost02.example.com"),
 //				},
-//				Metadata: pulumi.StringMap{
-//					"cpus": pulumi.String("56"),
-//				},
-//				Region: pulumi.String("RegionOne"),
-//				Zone:   pulumi.String("nova"),
 //			})
 //			if err != nil {
 //				return err
@@ -66,7 +67,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewAggregateV2(ctx, "test", nil)
+//			_, err := compute.NewAggregateV2(ctx, "test", &compute.AggregateV2Args{
+//				Name: pulumi.String("test"),
+//			})
 //			if err != nil {
 //				return err
 //			}

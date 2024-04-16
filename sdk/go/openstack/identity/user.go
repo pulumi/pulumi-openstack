@@ -35,12 +35,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			project1, err := identity.NewProject(ctx, "project_1", &identity.ProjectArgs{
+//				Name: pulumi.String("project_1"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = identity.NewUser(ctx, "user1", &identity.UserArgs{
+//			_, err = identity.NewUser(ctx, "user_1", &identity.UserArgs{
 //				DefaultProjectId:                 project1.ID(),
+//				Name:                             pulumi.String("user_1"),
 //				Description:                      pulumi.String("A user"),
 //				Password:                         pulumi.String("password123"),
 //				IgnoreChangePasswordUponFirstUse: pulumi.Bool(true),

@@ -23,15 +23,16 @@ namespace Pulumi.OpenStack.VPNaaS
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var conn1 = new OpenStack.VPNaaS.SiteConnection("conn1", new()
+    ///     var conn1 = new OpenStack.VPNaaS.SiteConnection("conn_1", new()
     ///     {
-    ///         IkepolicyId = openstack_vpnaas_ike_policy_v2.Policy_2.Id,
-    ///         IpsecpolicyId = openstack_vpnaas_ipsec_policy_v2.Policy_1.Id,
-    ///         VpnserviceId = openstack_vpnaas_service_v2.Service_1.Id,
+    ///         Name = "connection_1",
+    ///         IkepolicyId = policy2.Id,
+    ///         IpsecpolicyId = policy1.Id,
+    ///         VpnserviceId = service1.Id,
     ///         Psk = "secret",
     ///         PeerAddress = "192.168.10.1",
-    ///         LocalEpGroupId = openstack_vpnaas_endpoint_group_v2.Group_2.Id,
-    ///         PeerEpGroupId = openstack_vpnaas_endpoint_group_v2.Group_1.Id,
+    ///         LocalEpGroupId = group2.Id,
+    ///         PeerEpGroupId = group1.Id,
     ///         Dpds = new[]
     ///         {
     ///             new OpenStack.VPNaaS.Inputs.SiteConnectionDpdArgs

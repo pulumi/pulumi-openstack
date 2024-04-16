@@ -187,8 +187,8 @@ def get_flavor(description: Optional[str] = None,
     import pulumi
     import pulumi_openstack as openstack
 
-    small = openstack.compute.get_flavor(ram=512,
-        vcpus=1)
+    small = openstack.compute.get_flavor(vcpus=1,
+        ram=512)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -267,8 +267,8 @@ def get_flavor_output(description: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_openstack as openstack
 
-    small = openstack.compute.get_flavor(ram=512,
-        vcpus=1)
+    small = openstack.compute.get_flavor(vcpus=1,
+        ram=512)
     ```
     <!--End PulumiCodeChooser -->
 

@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var volumeType1 = new VolumeTypeV3(&#34;volumeType1&#34;, VolumeTypeV3Args.builder()        
+ *             .name(&#34;volume_type_1&#34;)
  *             .description(&#34;Volume type 1&#34;)
  *             .extraSpecs(Map.ofEntries(
  *                 Map.entry(&#34;capabilities&#34;, &#34;gpu&#34;),

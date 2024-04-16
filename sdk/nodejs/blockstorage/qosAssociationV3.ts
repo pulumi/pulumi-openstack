@@ -17,13 +17,14 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const qos = new openstack.blockstorage.QosV3("qos", {
+ *     name: "%s",
  *     consumer: "front-end",
  *     specs: {
  *         read_iops_sec: "20000",
  *     },
  * });
- * const volumeType = new openstack.blockstorage.VolumeTypeV3("volumeType", {});
- * const qosAssociation = new openstack.blockstorage.QosAssociationV3("qosAssociation", {
+ * const volumeType = new openstack.blockstorage.VolumeTypeV3("volume_type", {name: "%s"});
+ * const qosAssociation = new openstack.blockstorage.QosAssociationV3("qos_association", {
  *     qosId: qos.id,
  *     volumeTypeId: volumeType.id,
  * });

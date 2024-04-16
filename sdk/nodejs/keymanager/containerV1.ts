@@ -11,32 +11,17 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Simple secret
+ * ### Container with the ACL
  *
- * The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
+ * > **Note** Only read ACLs are supported
  *
  * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as openstack from "@pulumi/openstack";
  *
- * const certificate1 = new openstack.keymanager.SecretV1("certificate1", {
- *     payload: fs.readFileSync("cert.pem", "utf8"),
- *     secretType: "certificate",
- *     payloadContentType: "text/plain",
- * });
- * const privateKey1 = new openstack.keymanager.SecretV1("privateKey1", {
- *     payload: fs.readFileSync("cert-key.pem", "utf8"),
- *     secretType: "private",
- *     payloadContentType: "text/plain",
- * });
- * const intermediate1 = new openstack.keymanager.SecretV1("intermediate1", {
- *     payload: fs.readFileSync("intermediate-ca.pem", "utf8"),
- *     secretType: "certificate",
- *     payloadContentType: "text/plain",
- * });
- * const tls1 = new openstack.keymanager.ContainerV1("tls1", {
+ * const tls1 = new openstack.keymanager.ContainerV1("tls_1", {
+ *     name: "tls",
  *     type: "certificate",
  *     secretRefs: [
  *         {
@@ -50,45 +35,6 @@ import * as utilities from "../utilities";
  *         {
  *             name: "intermediates",
  *             secretRef: intermediate1.secretRef,
- *         },
- *     ],
- * });
- * const subnet1 = openstack.networking.getSubnet({
- *     name: "my-subnet",
- * });
- * const lb1 = new openstack.loadbalancer.LoadBalancer("lb1", {vipSubnetId: subnet1.then(subnet1 => subnet1.id)});
- * const listener1 = new openstack.loadbalancer.Listener("listener1", {
- *     protocol: "TERMINATED_HTTPS",
- *     protocolPort: 443,
- *     loadbalancerId: lb1.id,
- *     defaultTlsContainerRef: tls1.containerRef,
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
- * ### Container with the ACL
- *
- * > **Note** Only read ACLs are supported
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const tls1 = new openstack.keymanager.ContainerV1("tls1", {
- *     type: "certificate",
- *     secretRefs: [
- *         {
- *             name: "certificate",
- *             secretRef: openstack_keymanager_secret_v1.certificate_1.secret_ref,
- *         },
- *         {
- *             name: "private_key",
- *             secretRef: openstack_keymanager_secret_v1.private_key_1.secret_ref,
- *         },
- *         {
- *             name: "intermediates",
- *             secretRef: openstack_keymanager_secret_v1.intermediate_1.secret_ref,
  *         },
  *     ],
  *     acl: {

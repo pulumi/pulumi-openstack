@@ -19,13 +19,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     name: "network_1",
+ *     adminStateUp: true,
+ * });
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
+ *     name: "subnet_1",
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
  *     networkId: network1.id,
  * });
- * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork1", {
+ * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
+ *     name: "test_sharenetwork",
  *     description: "test share network",
  *     neutronNetId: network1.id,
  *     neutronSubnetId: subnet1.id,
@@ -40,13 +45,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     name: "network_1",
+ *     adminStateUp: true,
+ * });
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
+ *     name: "subnet_1",
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
  *     networkId: network1.id,
  * });
- * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice1", {
+ * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice_1", {
+ *     name: "security",
  *     description: "created by terraform",
  *     type: "active_directory",
  *     server: "192.168.199.10",
@@ -56,7 +66,8 @@ import * as utilities from "../utilities";
  *     user: "joinDomainUser",
  *     password: "s8cret",
  * });
- * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork1", {
+ * const sharenetwork1 = new openstack.sharedfilesystem.ShareNetwork("sharenetwork_1", {
+ *     name: "test_sharenetwork",
  *     description: "test share network with security services",
  *     neutronNetId: network1.id,
  *     neutronSubnetId: subnet1.id,

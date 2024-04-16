@@ -31,6 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.openstack.identity.Project;
+ * import com.pulumi.openstack.identity.ProjectArgs;
  * import com.pulumi.openstack.compute.Flavor;
  * import com.pulumi.openstack.compute.FlavorArgs;
  * import com.pulumi.openstack.compute.FlavorAccess;
@@ -48,9 +49,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project1 = new Project(&#34;project1&#34;);
+ *         var project1 = new Project(&#34;project1&#34;, ProjectArgs.builder()        
+ *             .name(&#34;my-project&#34;)
+ *             .build());
  * 
  *         var flavor1 = new Flavor(&#34;flavor1&#34;, FlavorArgs.builder()        
+ *             .name(&#34;my-flavor&#34;)
  *             .ram(&#34;8096&#34;)
  *             .vcpus(&#34;2&#34;)
  *             .disk(&#34;20&#34;)

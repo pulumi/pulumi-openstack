@@ -25,13 +25,15 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var service1 = new OpenStack.Identity.ServiceV3("service1", new()
+    ///     var service1 = new OpenStack.Identity.ServiceV3("service_1", new()
     ///     {
+    ///         Name = "my-service",
     ///         Type = "my-service-type",
     ///     });
     /// 
-    ///     var endpoint1 = new OpenStack.Identity.EndpointV3("endpoint1", new()
+    ///     var endpoint1 = new OpenStack.Identity.EndpointV3("endpoint_1", new()
     ///     {
+    ///         Name = "my-endpoint",
     ///         ServiceId = service1.Id,
     ///         EndpointRegion = service1.Region,
     ///         Url = "http://my-endpoint",

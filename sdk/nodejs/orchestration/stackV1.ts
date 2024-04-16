@@ -16,13 +16,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const stack1 = new openstack.orchestration.StackV1("stack1", {
- *     disableRollback: true,
- *     environmentOpts: {
- *         Bin: `
- *
- * `,
- *     },
+ * const stack1 = new openstack.orchestration.StackV1("stack_1", {
+ *     name: "stack_1",
  *     parameters: {
  *         length: 4,
  *     },
@@ -38,9 +33,12 @@ import * as utilities from "../utilities";
  *     type: OS::Heat::RandomString
  *     properties:
  *       length: {get_param: length}
- *
  * `,
  *     },
+ *     environmentOpts: {
+ *         Bin: "\n",
+ *     },
+ *     disableRollback: true,
  *     timeout: 30,
  * });
  * ```

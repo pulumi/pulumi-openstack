@@ -23,20 +23,23 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
     ///     {
+    ///         Name = "network_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet_1", new()
     ///     {
+    ///         Name = "subnet_1",
     ///         NetworkId = network1.Id,
     ///         Cidr = "192.168.199.0/24",
     ///         IpVersion = 4,
     ///     });
     /// 
-    ///     var secgroup1 = new OpenStack.Compute.SecGroup("secgroup1", new()
+    ///     var secgroup1 = new OpenStack.Compute.SecGroup("secgroup_1", new()
     ///     {
+    ///         Name = "secgroup_1",
     ///         Description = "a security group",
     ///         Rules = new[]
     ///         {
@@ -50,8 +53,9 @@ namespace Pulumi.OpenStack.Networking
     ///         },
     ///     });
     /// 
-    ///     var port1 = new OpenStack.Networking.Port("port1", new()
+    ///     var port1 = new OpenStack.Networking.Port("port_1", new()
     ///     {
+    ///         Name = "port_1",
     ///         NetworkId = network1.Id,
     ///         AdminStateUp = true,
     ///         SecurityGroupIds = new[]
@@ -68,8 +72,9 @@ namespace Pulumi.OpenStack.Networking
     ///         },
     ///     });
     /// 
-    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
     ///     {
+    ///         Name = "instance_1",
     ///         SecurityGroups = new[]
     ///         {
     ///             secgroup1.Name,

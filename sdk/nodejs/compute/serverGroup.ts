@@ -18,7 +18,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const test_sg = new openstack.compute.ServerGroup("test-sg", {policies: ["anti-affinity"]});
+ * const test_sg = new openstack.compute.ServerGroup("test-sg", {
+ *     name: "my-sg",
+ *     policies: ["anti-affinity"],
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -30,6 +33,7 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const test_sg = new openstack.compute.ServerGroup("test-sg", {
+ *     name: "my-sg",
  *     policies: ["anti-affinity"],
  *     rules: {
  *         maxServerPerHost: 3,

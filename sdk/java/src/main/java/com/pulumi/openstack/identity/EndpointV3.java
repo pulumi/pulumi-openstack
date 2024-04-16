@@ -46,10 +46,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var service1 = new ServiceV3(&#34;service1&#34;, ServiceV3Args.builder()        
+ *             .name(&#34;my-service&#34;)
  *             .type(&#34;my-service-type&#34;)
  *             .build());
  * 
  *         var endpoint1 = new EndpointV3(&#34;endpoint1&#34;, EndpointV3Args.builder()        
+ *             .name(&#34;my-endpoint&#34;)
  *             .serviceId(service1.id())
  *             .endpointRegion(service1.region())
  *             .url(&#34;http://my-endpoint&#34;)

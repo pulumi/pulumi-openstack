@@ -25,16 +25,16 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var order1 = new OpenStack.KeyManager.OrderV1("order1", new()
+    ///     var order1 = new OpenStack.KeyManager.OrderV1("order_1", new()
     ///     {
+    ///         Type = "key",
     ///         Meta = new OpenStack.KeyManager.Inputs.OrderV1MetaArgs
     ///         {
     ///             Algorithm = "aes",
     ///             BitLength = 256,
-    ///             Mode = "cbc",
     ///             Name = "mysecret",
+    ///             Mode = "cbc",
     ///         },
-    ///         Type = "key",
     ///     });
     /// 
     /// });
@@ -52,15 +52,15 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var order1 = new OpenStack.KeyManager.OrderV1("order1", new()
+    ///     var order1 = new OpenStack.KeyManager.OrderV1("order_1", new()
     ///     {
+    ///         Type = "asymmetric",
     ///         Meta = new OpenStack.KeyManager.Inputs.OrderV1MetaArgs
     ///         {
     ///             Algorithm = "rsa",
     ///             BitLength = 4096,
     ///             Name = "mysecret",
     ///         },
-    ///         Type = "asymmetric",
     ///     });
     /// 
     /// });

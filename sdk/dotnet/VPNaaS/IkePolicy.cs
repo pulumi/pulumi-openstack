@@ -23,7 +23,10 @@ namespace Pulumi.OpenStack.VPNaaS
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var policy1 = new OpenStack.VPNaaS.IkePolicy("policy1");
+    ///     var policy1 = new OpenStack.VPNaaS.IkePolicy("policy_1", new()
+    ///     {
+    ///         Name = "my_policy",
+    ///     });
     /// 
     /// });
     /// ```

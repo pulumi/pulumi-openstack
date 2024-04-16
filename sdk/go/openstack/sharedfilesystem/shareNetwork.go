@@ -35,13 +35,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//			network1, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
+//				Name:         pulumi.String("network_1"),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//			subnet1, err := networking.NewSubnet(ctx, "subnet_1", &networking.SubnetArgs{
+//				Name:      pulumi.String("subnet_1"),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //				IpVersion: pulumi.Int(4),
 //				NetworkId: network1.ID(),
@@ -49,7 +51,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sharedfilesystem.NewShareNetwork(ctx, "sharenetwork1", &sharedfilesystem.ShareNetworkArgs{
+//			_, err = sharedfilesystem.NewShareNetwork(ctx, "sharenetwork_1", &sharedfilesystem.ShareNetworkArgs{
+//				Name:            pulumi.String("test_sharenetwork"),
 //				Description:     pulumi.String("test share network"),
 //				NeutronNetId:    network1.ID(),
 //				NeutronSubnetId: subnet1.ID(),
@@ -80,13 +83,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//			network1, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
+//				Name:         pulumi.String("network_1"),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//			subnet1, err := networking.NewSubnet(ctx, "subnet_1", &networking.SubnetArgs{
+//				Name:      pulumi.String("subnet_1"),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //				IpVersion: pulumi.Int(4),
 //				NetworkId: network1.ID(),
@@ -94,7 +99,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			securityservice1, err := sharedfilesystem.NewSecurityService(ctx, "securityservice1", &sharedfilesystem.SecurityServiceArgs{
+//			securityservice1, err := sharedfilesystem.NewSecurityService(ctx, "securityservice_1", &sharedfilesystem.SecurityServiceArgs{
+//				Name:        pulumi.String("security"),
 //				Description: pulumi.String("created by terraform"),
 //				Type:        pulumi.String("active_directory"),
 //				Server:      pulumi.String("192.168.199.10"),
@@ -107,7 +113,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sharedfilesystem.NewShareNetwork(ctx, "sharenetwork1", &sharedfilesystem.ShareNetworkArgs{
+//			_, err = sharedfilesystem.NewShareNetwork(ctx, "sharenetwork_1", &sharedfilesystem.ShareNetworkArgs{
+//				Name:            pulumi.String("test_sharenetwork"),
 //				Description:     pulumi.String("test share network with security services"),
 //				NeutronNetId:    network1.ID(),
 //				NeutronSubnetId: subnet1.ID(),

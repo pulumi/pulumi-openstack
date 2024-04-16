@@ -30,13 +30,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//			network1, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
+//				Name:         pulumi.String("network_1"),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//			subnet1, err := networking.NewSubnet(ctx, "subnet_1", &networking.SubnetArgs{
+//				Name:       pulumi.String("subnet_1"),
 //				NetworkId:  network1.ID(),
 //				Cidr:       pulumi.String("192.168.1.0/24"),
 //				IpVersion:  pulumi.Int(4),
@@ -46,25 +48,28 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			parentPort1, err := networking.NewPort(ctx, "parentPort1", &networking.PortArgs{
+//			parentPort1, err := networking.NewPort(ctx, "parent_port_1", &networking.PortArgs{
+//				Name:         pulumi.String("parent_port_1"),
 //				NetworkId:    network1.ID(),
 //				AdminStateUp: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				pulumi.Resource("openstack_networking_subnet_v2.subnet_1"),
+//				subnet1,
 //			}))
 //			if err != nil {
 //				return err
 //			}
-//			subport1, err := networking.NewPort(ctx, "subport1", &networking.PortArgs{
+//			subport1, err := networking.NewPort(ctx, "subport_1", &networking.PortArgs{
+//				Name:         pulumi.String("subport_1"),
 //				NetworkId:    network1.ID(),
 //				AdminStateUp: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				pulumi.Resource("openstack_networking_subnet_v2.subnet_1"),
+//				subnet1,
 //			}))
 //			if err != nil {
 //				return err
 //			}
-//			trunk1, err := networking.NewTrunk(ctx, "trunk1", &networking.TrunkArgs{
+//			trunk1, err := networking.NewTrunk(ctx, "trunk_1", &networking.TrunkArgs{
+//				Name:         pulumi.String("trunk_1"),
 //				AdminStateUp: pulumi.Bool(true),
 //				PortId:       parentPort1.ID(),
 //				SubPorts: networking.TrunkSubPortArray{
@@ -78,7 +83,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//			_, err = compute.NewInstance(ctx, "instance_1", &compute.InstanceArgs{
+//				Name: pulumi.String("instance_1"),
 //				SecurityGroups: pulumi.StringArray{
 //					pulumi.String("default"),
 //				},

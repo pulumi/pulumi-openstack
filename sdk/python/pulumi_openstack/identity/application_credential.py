@@ -411,10 +411,11 @@ class ApplicationCredential(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         swift = openstack.identity.ApplicationCredential("swift",
+            name="swift",
             description="Swift technical application credential",
-            expires_at="2019-02-13T12:12:12Z",
+            secret="supersecret",
             roles=["swiftoperator"],
-            secret="supersecret")
+            expires_at="2019-02-13T12:12:12Z")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -432,6 +433,7 @@ class ApplicationCredential(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         unrestricted = openstack.identity.ApplicationCredential("unrestricted",
+            name="unrestricted",
             description="Unrestricted application credential",
             unrestricted=True)
         pulumi.export("applicationCredentialSecret", unrestricted.secret)
@@ -449,19 +451,20 @@ class ApplicationCredential(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         monitoring = openstack.identity.ApplicationCredential("monitoring",
+            name="monitoring",
+            expires_at="2019-02-13T12:12:12Z",
             access_rules=[
                 openstack.identity.ApplicationCredentialAccessRuleArgs(
-                    method="GET",
                     path="/v2.0/metrics",
                     service="monitoring",
+                    method="GET",
                 ),
                 openstack.identity.ApplicationCredentialAccessRuleArgs(
-                    method="PUT",
                     path="/v2.0/metrics",
                     service="monitoring",
+                    method="PUT",
                 ),
-            ],
-            expires_at="2019-02-13T12:12:12Z")
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -531,10 +534,11 @@ class ApplicationCredential(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         swift = openstack.identity.ApplicationCredential("swift",
+            name="swift",
             description="Swift technical application credential",
-            expires_at="2019-02-13T12:12:12Z",
+            secret="supersecret",
             roles=["swiftoperator"],
-            secret="supersecret")
+            expires_at="2019-02-13T12:12:12Z")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -552,6 +556,7 @@ class ApplicationCredential(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         unrestricted = openstack.identity.ApplicationCredential("unrestricted",
+            name="unrestricted",
             description="Unrestricted application credential",
             unrestricted=True)
         pulumi.export("applicationCredentialSecret", unrestricted.secret)
@@ -569,19 +574,20 @@ class ApplicationCredential(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         monitoring = openstack.identity.ApplicationCredential("monitoring",
+            name="monitoring",
+            expires_at="2019-02-13T12:12:12Z",
             access_rules=[
                 openstack.identity.ApplicationCredentialAccessRuleArgs(
-                    method="GET",
                     path="/v2.0/metrics",
                     service="monitoring",
+                    method="GET",
                 ),
                 openstack.identity.ApplicationCredentialAccessRuleArgs(
-                    method="PUT",
                     path="/v2.0/metrics",
                     service="monitoring",
+                    method="PUT",
                 ),
-            ],
-            expires_at="2019-02-13T12:12:12Z")
+            ])
         ```
         <!--End PulumiCodeChooser -->
 

@@ -31,7 +31,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := identity.NewGroupV3(ctx, "group1", &identity.GroupV3Args{
+//			_, err := identity.NewGroupV3(ctx, "group_1", &identity.GroupV3Args{
+//				Name:        pulumi.String("group_1"),
 //				Description: pulumi.String("group 1"),
 //			})
 //			if err != nil {

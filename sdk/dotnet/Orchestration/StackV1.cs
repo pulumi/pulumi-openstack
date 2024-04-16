@@ -23,15 +23,9 @@ namespace Pulumi.OpenStack.Orchestration
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var stack1 = new OpenStack.Orchestration.StackV1("stack1", new()
+    ///     var stack1 = new OpenStack.Orchestration.StackV1("stack_1", new()
     ///     {
-    ///         DisableRollback = true,
-    ///         EnvironmentOpts = 
-    ///         {
-    ///             { "Bin", @"
-    /// 
-    /// " },
-    ///         },
+    ///         Name = "stack_1",
     ///         Parameters = 
     ///         {
     ///             { "length", 4 },
@@ -49,9 +43,14 @@ namespace Pulumi.OpenStack.Orchestration
     ///     type: OS::Heat::RandomString
     ///     properties:
     ///       length: {get_param: length}
-    /// 
     /// " },
     ///         },
+    ///         EnvironmentOpts = 
+    ///         {
+    ///             { "Bin", @"
+    /// " },
+    ///         },
+    ///         DisableRollback = true,
     ///         Timeout = 30,
     ///     });
     /// 

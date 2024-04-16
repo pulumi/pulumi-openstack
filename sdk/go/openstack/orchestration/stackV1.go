@@ -29,11 +29,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := orchestration.NewStackV1(ctx, "stack1", &orchestration.StackV1Args{
-//				DisableRollback: pulumi.Bool(true),
-//				EnvironmentOpts: pulumi.Map{
-//					"Bin": pulumi.Any("\n\n"),
-//				},
+//			_, err := orchestration.NewStackV1(ctx, "stack_1", &orchestration.StackV1Args{
+//				Name: pulumi.String("stack_1"),
 //				Parameters: pulumi.Map{
 //					"length": pulumi.Any(4),
 //				},
@@ -57,7 +54,11 @@ import (
 // `),
 //
 //				},
-//				Timeout: pulumi.Int(30),
+//				EnvironmentOpts: pulumi.Map{
+//					"Bin": pulumi.Any("\n"),
+//				},
+//				DisableRollback: pulumi.Bool(true),
+//				Timeout:         pulumi.Int(30),
 //			})
 //			if err != nil {
 //				return err

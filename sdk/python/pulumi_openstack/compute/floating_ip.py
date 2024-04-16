@@ -182,7 +182,7 @@ class FloatingIp(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        floatip1 = openstack.compute.FloatingIp("floatip1", pool="public")
+        floatip1 = openstack.compute.FloatingIp("floatip_1", pool="public")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -226,7 +226,7 @@ class FloatingIp(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        floatip1 = openstack.compute.FloatingIp("floatip1", pool="public")
+        floatip1 = openstack.compute.FloatingIp("floatip_1", pool="public")
         ```
         <!--End PulumiCodeChooser -->
 

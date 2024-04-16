@@ -23,8 +23,9 @@ namespace Pulumi.OpenStack.Firewall
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var rule1 = new OpenStack.Firewall.Rule("rule1", new()
+    ///     var rule1 = new OpenStack.Firewall.Rule("rule_1", new()
     ///     {
+    ///         Name = "my-rule-1",
     ///         Description = "drop TELNET traffic",
     ///         Action = "deny",
     ///         Protocol = "tcp",
@@ -32,8 +33,9 @@ namespace Pulumi.OpenStack.Firewall
     ///         Enabled = true,
     ///     });
     /// 
-    ///     var rule2 = new OpenStack.Firewall.Rule("rule2", new()
+    ///     var rule2 = new OpenStack.Firewall.Rule("rule_2", new()
     ///     {
+    ///         Name = "my-rule-2",
     ///         Description = "drop NTP traffic",
     ///         Action = "deny",
     ///         Protocol = "udp",
@@ -41,8 +43,9 @@ namespace Pulumi.OpenStack.Firewall
     ///         Enabled = false,
     ///     });
     /// 
-    ///     var policy1 = new OpenStack.Firewall.Policy("policy1", new()
+    ///     var policy1 = new OpenStack.Firewall.Policy("policy_1", new()
     ///     {
+    ///         Name = "my-policy",
     ///         Rules = new[]
     ///         {
     ///             rule1.Id,

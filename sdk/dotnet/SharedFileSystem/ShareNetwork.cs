@@ -28,20 +28,23 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
     ///     {
+    ///         Name = "network_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet_1", new()
     ///     {
+    ///         Name = "subnet_1",
     ///         Cidr = "192.168.199.0/24",
     ///         IpVersion = 4,
     ///         NetworkId = network1.Id,
     ///     });
     /// 
-    ///     var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new()
+    ///     var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork_1", new()
     ///     {
+    ///         Name = "test_sharenetwork",
     ///         Description = "test share network",
     ///         NeutronNetId = network1.Id,
     ///         NeutronSubnetId = subnet1.Id,
@@ -62,20 +65,23 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
     ///     {
+    ///         Name = "network_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet_1", new()
     ///     {
+    ///         Name = "subnet_1",
     ///         Cidr = "192.168.199.0/24",
     ///         IpVersion = 4,
     ///         NetworkId = network1.Id,
     ///     });
     /// 
-    ///     var securityservice1 = new OpenStack.SharedFileSystem.SecurityService("securityservice1", new()
+    ///     var securityservice1 = new OpenStack.SharedFileSystem.SecurityService("securityservice_1", new()
     ///     {
+    ///         Name = "security",
     ///         Description = "created by terraform",
     ///         Type = "active_directory",
     ///         Server = "192.168.199.10",
@@ -86,8 +92,9 @@ namespace Pulumi.OpenStack.SharedFileSystem
     ///         Password = "s8cret",
     ///     });
     /// 
-    ///     var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new()
+    ///     var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork_1", new()
     ///     {
+    ///         Name = "test_sharenetwork",
     ///         Description = "test share network with security services",
     ///         NeutronNetId = network1.Id,
     ///         NeutronSubnetId = subnet1.Id,

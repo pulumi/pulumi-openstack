@@ -25,10 +25,10 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var pf1 = new OpenStack.Networking.PortForwardingV2("pf1", new()
+    ///     var pf1 = new OpenStack.Networking.PortForwardingV2("pf_1", new()
     ///     {
-    ///         ExternalPort = 7233,
     ///         FloatingipId = "7a52eb59-7d47-415d-a884-046666a6fbae",
+    ///         ExternalPort = 7233,
     ///         InternalPort = 25,
     ///         InternalPortId = "b930d7f6-ceb7-40a0-8b81-a425dd994ccf",
     ///         Protocol = "tcp",

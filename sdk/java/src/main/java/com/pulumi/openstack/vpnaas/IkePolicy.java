@@ -31,6 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.openstack.vpnaas.IkePolicy;
+ * import com.pulumi.openstack.vpnaas.IkePolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -44,7 +45,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var policy1 = new IkePolicy(&#34;policy1&#34;);
+ *         var policy1 = new IkePolicy(&#34;policy1&#34;, IkePolicyArgs.builder()        
+ *             .name(&#34;my_policy&#34;)
+ *             .build());
  * 
  *     }
  * }

@@ -50,10 +50,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var router1 = new Router(&#34;router1&#34;, RouterArgs.builder()        
+ *             .name(&#34;router_1&#34;)
  *             .adminStateUp(&#34;true&#34;)
  *             .build());
  * 
  *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network_1&#34;)
  *             .adminStateUp(&#34;true&#34;)
  *             .build());
  * 
@@ -73,7 +75,7 @@ import javax.annotation.Nullable;
  *             .destinationCidr(&#34;10.0.1.0/24&#34;)
  *             .nextHop(&#34;192.168.199.254&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(&#34;openstack_networking_router_interface_v2.int_1&#34;)
+ *                 .dependsOn(int1)
  *                 .build());
  * 
  *     }

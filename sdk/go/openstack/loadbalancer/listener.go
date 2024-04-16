@@ -32,13 +32,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := loadbalancer.NewListener(ctx, "listener1", &loadbalancer.ListenerArgs{
+//			_, err := loadbalancer.NewListener(ctx, "listener_1", &loadbalancer.ListenerArgs{
+//				Protocol:       pulumi.String("HTTP"),
+//				ProtocolPort:   pulumi.Int(8080),
+//				LoadbalancerId: pulumi.String("d9415786-5f1a-428b-b35f-2f1523e146d2"),
 //				InsertHeaders: pulumi.Map{
 //					"X-Forwarded-For": pulumi.Any("true"),
 //				},
-//				LoadbalancerId: pulumi.String("d9415786-5f1a-428b-b35f-2f1523e146d2"),
-//				Protocol:       pulumi.String("HTTP"),
-//				ProtocolPort:   pulumi.Int(8080),
 //			})
 //			if err != nil {
 //				return err

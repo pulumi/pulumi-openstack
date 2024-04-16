@@ -579,41 +579,17 @@ class SecretV1(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        secret1 = openstack.keymanager.SecretV1("secret1",
+        secret1 = openstack.keymanager.SecretV1("secret_1",
             algorithm="aes",
             bit_length=256,
-            metadata={
-                "key": "foo",
-            },
             mode="cbc",
+            name="mysecret",
             payload="foobar",
             payload_content_type="text/plain",
-            secret_type="passphrase")
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ### Secret with the ACL
-
-        > **Note** Only read ACLs are supported
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        secret1 = openstack.keymanager.SecretV1("secret1",
-            payload=(lambda path: open(path).read())("certificate.pem"),
-            secret_type="certificate",
-            payload_content_type="text/plain",
-            acl=openstack.keymanager.SecretV1AclArgs(
-                read=openstack.keymanager.SecretV1AclReadArgs(
-                    project_access=False,
-                    users=[
-                        "userid1",
-                        "userid2",
-                    ],
-                ),
-            ))
+            secret_type="passphrase",
+            metadata={
+                "key": "foo",
+            })
         ```
         <!--End PulumiCodeChooser -->
 
@@ -662,41 +638,17 @@ class SecretV1(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        secret1 = openstack.keymanager.SecretV1("secret1",
+        secret1 = openstack.keymanager.SecretV1("secret_1",
             algorithm="aes",
             bit_length=256,
-            metadata={
-                "key": "foo",
-            },
             mode="cbc",
+            name="mysecret",
             payload="foobar",
             payload_content_type="text/plain",
-            secret_type="passphrase")
-        ```
-        <!--End PulumiCodeChooser -->
-
-        ### Secret with the ACL
-
-        > **Note** Only read ACLs are supported
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        secret1 = openstack.keymanager.SecretV1("secret1",
-            payload=(lambda path: open(path).read())("certificate.pem"),
-            secret_type="certificate",
-            payload_content_type="text/plain",
-            acl=openstack.keymanager.SecretV1AclArgs(
-                read=openstack.keymanager.SecretV1AclReadArgs(
-                    project_access=False,
-                    users=[
-                        "userid1",
-                        "userid2",
-                    ],
-                ),
-            ))
+            secret_type="passphrase",
+            metadata={
+                "key": "foo",
+            })
         ```
         <!--End PulumiCodeChooser -->
 

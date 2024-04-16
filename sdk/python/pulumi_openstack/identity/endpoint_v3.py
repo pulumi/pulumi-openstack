@@ -284,8 +284,11 @@ class EndpointV3(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        service1 = openstack.identity.ServiceV3("service1", type="my-service-type")
-        endpoint1 = openstack.identity.EndpointV3("endpoint1",
+        service1 = openstack.identity.ServiceV3("service_1",
+            name="my-service",
+            type="my-service-type")
+        endpoint1 = openstack.identity.EndpointV3("endpoint_1",
+            name="my-endpoint",
             service_id=service1.id,
             endpoint_region=service1.region,
             url="http://my-endpoint")
@@ -330,8 +333,11 @@ class EndpointV3(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        service1 = openstack.identity.ServiceV3("service1", type="my-service-type")
-        endpoint1 = openstack.identity.EndpointV3("endpoint1",
+        service1 = openstack.identity.ServiceV3("service_1",
+            name="my-service",
+            type="my-service-type")
+        endpoint1 = openstack.identity.EndpointV3("endpoint_1",
+            name="my-endpoint",
             service_id=service1.id,
             endpoint_region=service1.region,
             url="http://my-endpoint")

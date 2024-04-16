@@ -49,18 +49,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        
+ *             .name(&#34;instance_1&#34;)
  *             .imageId(&#34;ad091b52-742f-469e-8f3c-fd81cadf0743&#34;)
  *             .flavorId(3)
  *             .keyPair(&#34;my_key_pair_name&#34;)
  *             .securityGroups(&#34;default&#34;)
  *             .build());
  * 
- *         var fip1FloatingIp = new FloatingIp(&#34;fip1FloatingIp&#34;, FloatingIpArgs.builder()        
+ *         var fip1 = new FloatingIp(&#34;fip1&#34;, FloatingIpArgs.builder()        
  *             .pool(&#34;my_pool&#34;)
  *             .build());
  * 
  *         var fip1FloatingIpAssociate = new FloatingIpAssociate(&#34;fip1FloatingIpAssociate&#34;, FloatingIpAssociateArgs.builder()        
- *             .floatingIp(fip1FloatingIp.address())
+ *             .floatingIp(fip1.address())
  *             .instanceId(instance1.id())
  *             .build());
  * 
@@ -99,6 +100,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        
+ *             .name(&#34;instance_1&#34;)
  *             .imageId(&#34;ad091b52-742f-469e-8f3c-fd81cadf0743&#34;)
  *             .flavorId(3)
  *             .keyPair(&#34;my_key_pair_name&#34;)
@@ -112,12 +114,12 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var fip1FloatingIp = new FloatingIp(&#34;fip1FloatingIp&#34;, FloatingIpArgs.builder()        
+ *         var fip1 = new FloatingIp(&#34;fip1&#34;, FloatingIpArgs.builder()        
  *             .pool(&#34;my_pool&#34;)
  *             .build());
  * 
  *         var fip1FloatingIpAssociate = new FloatingIpAssociate(&#34;fip1FloatingIpAssociate&#34;, FloatingIpAssociateArgs.builder()        
- *             .floatingIp(fip1FloatingIp.address())
+ *             .floatingIp(fip1.address())
  *             .instanceId(instance1.id())
  *             .fixedIp(instance1.networks().applyValue(networks -&gt; networks[1].fixedIpV4()))
  *             .build());

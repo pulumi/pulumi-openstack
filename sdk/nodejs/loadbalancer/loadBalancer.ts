@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const lb1 = new openstack.loadbalancer.LoadBalancer("lb1", {vipSubnetId: "d9415786-5f1a-428b-b35f-2f1523e146d2"});
+ * const lb1 = new openstack.loadbalancer.LoadBalancer("lb_1", {vipSubnetId: "d9415786-5f1a-428b-b35f-2f1523e146d2"});
  * ```
  * <!--End PulumiCodeChooser -->
  *

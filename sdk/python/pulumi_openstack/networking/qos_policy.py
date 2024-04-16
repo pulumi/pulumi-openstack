@@ -415,7 +415,9 @@ class QosPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="bw_limit")
+        qos_policy1 = openstack.networking.QosPolicy("qos_policy_1",
+            name="qos_policy_1",
+            description="bw_limit")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -466,7 +468,9 @@ class QosPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="bw_limit")
+        qos_policy1 = openstack.networking.QosPolicy("qos_policy_1",
+            name="qos_policy_1",
+            description="bw_limit")
         ```
         <!--End PulumiCodeChooser -->
 

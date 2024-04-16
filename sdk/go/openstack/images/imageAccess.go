@@ -36,6 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			rancheros, err := images.NewImage(ctx, "rancheros", &images.ImageArgs{
+//				Name:            pulumi.String("RancherOS"),
 //				ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
 //				ContainerFormat: pulumi.String("bare"),
 //				DiskFormat:      pulumi.String("qcow2"),
@@ -47,7 +48,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = images.NewImageAccess(ctx, "rancherosMember", &images.ImageAccessArgs{
+//			_, err = images.NewImageAccess(ctx, "rancheros_member", &images.ImageAccessArgs{
 //				ImageId:  rancheros.ID(),
 //				MemberId: pulumi.String("bed6b6cbb86a4e2d8dc2735c2f1000e4"),
 //			})
@@ -80,6 +81,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			rancheros, err := images.NewImage(ctx, "rancheros", &images.ImageArgs{
+//				Name:            pulumi.String("RancherOS"),
 //				ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
 //				ContainerFormat: pulumi.String("bare"),
 //				DiskFormat:      pulumi.String("qcow2"),
@@ -91,7 +93,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = images.NewImageAccess(ctx, "rancherosMember", &images.ImageAccessArgs{
+//			_, err = images.NewImageAccess(ctx, "rancheros_member", &images.ImageAccessArgs{
 //				ImageId:  rancheros.ID(),
 //				MemberId: pulumi.String("bed6b6cbb86a4e2d8dc2735c2f1000e4"),
 //				Status:   pulumi.String("accepted"),

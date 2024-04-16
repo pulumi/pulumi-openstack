@@ -241,9 +241,13 @@ class InheritRoleAssignment(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        user1 = openstack.identity.User("user1", domain_id="default")
-        role1 = openstack.identity.Role("role1", domain_id="default")
-        role_assignment1 = openstack.identity.InheritRoleAssignment("roleAssignment1",
+        user1 = openstack.identity.User("user_1",
+            name="user_1",
+            domain_id="default")
+        role1 = openstack.identity.Role("role_1",
+            name="role_1",
+            domain_id="default")
+        role_assignment1 = openstack.identity.InheritRoleAssignment("role_assignment_1",
             user_id=user1.id,
             domain_id="default",
             role_id=role1.id)
@@ -296,9 +300,13 @@ class InheritRoleAssignment(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        user1 = openstack.identity.User("user1", domain_id="default")
-        role1 = openstack.identity.Role("role1", domain_id="default")
-        role_assignment1 = openstack.identity.InheritRoleAssignment("roleAssignment1",
+        user1 = openstack.identity.User("user_1",
+            name="user_1",
+            domain_id="default")
+        role1 = openstack.identity.Role("role_1",
+            name="role_1",
+            domain_id="default")
+        role_assignment1 = openstack.identity.InheritRoleAssignment("role_assignment_1",
             user_id=user1.id,
             domain_id="default",
             role_id=role1.id)

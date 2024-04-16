@@ -306,12 +306,13 @@ class EndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        group1 = openstack.vpnaas.EndpointGroup("group1",
+        group1 = openstack.vpnaas.EndpointGroup("group_1",
+            name="Group 1",
+            type="cidr",
             endpoints=[
                 "10.2.0.0/24",
                 "10.3.0.0/24",
-            ],
-            type="cidr")
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -357,12 +358,13 @@ class EndpointGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        group1 = openstack.vpnaas.EndpointGroup("group1",
+        group1 = openstack.vpnaas.EndpointGroup("group_1",
+            name="Group 1",
+            type="cidr",
             endpoints=[
                 "10.2.0.0/24",
                 "10.3.0.0/24",
-            ],
-            type="cidr")
+            ])
         ```
         <!--End PulumiCodeChooser -->
 

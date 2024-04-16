@@ -159,12 +159,13 @@ class QosAssociationV3(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         qos = openstack.blockstorage.QosV3("qos",
+            name="%s",
             consumer="front-end",
             specs={
                 "read_iops_sec": "20000",
             })
-        volume_type = openstack.blockstorage.VolumeTypeV3("volumeType")
-        qos_association = openstack.blockstorage.QosAssociationV3("qosAssociation",
+        volume_type = openstack.blockstorage.VolumeTypeV3("volume_type", name="%s")
+        qos_association = openstack.blockstorage.QosAssociationV3("qos_association",
             qos_id=qos.id,
             volume_type_id=volume_type.id)
         ```
@@ -207,12 +208,13 @@ class QosAssociationV3(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         qos = openstack.blockstorage.QosV3("qos",
+            name="%s",
             consumer="front-end",
             specs={
                 "read_iops_sec": "20000",
             })
-        volume_type = openstack.blockstorage.VolumeTypeV3("volumeType")
-        qos_association = openstack.blockstorage.QosAssociationV3("qosAssociation",
+        volume_type = openstack.blockstorage.VolumeTypeV3("volume_type", name="%s")
+        qos_association = openstack.blockstorage.QosAssociationV3("qos_association",
             qos_id=qos.id,
             volume_type_id=volume_type.id)
         ```

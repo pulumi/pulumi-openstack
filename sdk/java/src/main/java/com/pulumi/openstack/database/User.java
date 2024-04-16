@@ -49,7 +49,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basic = new User(&#34;basic&#34;, UserArgs.builder()        
- *             .instanceId(openstack_db_instance_v1.basic().id())
+ *             .name(&#34;basic&#34;)
+ *             .instanceId(basicOpenstackDbInstanceV1.id())
  *             .password(&#34;password&#34;)
  *             .databases(&#34;testdb&#34;)
  *             .build());

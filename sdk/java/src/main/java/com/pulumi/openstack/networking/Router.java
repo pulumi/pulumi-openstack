@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var router1 = new Router(&#34;router1&#34;, RouterArgs.builder()        
+ *             .name(&#34;my_router&#34;)
  *             .adminStateUp(true)
  *             .externalNetworkId(&#34;f67f0d72-0ddf-11e4-9d95-e1f29f417e2f&#34;)
  *             .build());

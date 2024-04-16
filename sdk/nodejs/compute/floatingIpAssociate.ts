@@ -16,15 +16,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const instance1 = new openstack.compute.Instance("instance1", {
+ * const instance1 = new openstack.compute.Instance("instance_1", {
+ *     name: "instance_1",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
  *     flavorId: "3",
  *     keyPair: "my_key_pair_name",
  *     securityGroups: ["default"],
  * });
- * const fip1FloatingIp = new openstack.networking.FloatingIp("fip1FloatingIp", {pool: "my_pool"});
- * const fip1FloatingIpAssociate = new openstack.compute.FloatingIpAssociate("fip1FloatingIpAssociate", {
- *     floatingIp: fip1FloatingIp.address,
+ * const fip1 = new openstack.networking.FloatingIp("fip_1", {pool: "my_pool"});
+ * const fip1FloatingIpAssociate = new openstack.compute.FloatingIpAssociate("fip_1", {
+ *     floatingIp: fip1.address,
  *     instanceId: instance1.id,
  * });
  * ```
@@ -37,7 +38,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const instance1 = new openstack.compute.Instance("instance1", {
+ * const instance1 = new openstack.compute.Instance("instance_1", {
+ *     name: "instance_1",
  *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
  *     flavorId: "3",
  *     keyPair: "my_key_pair_name",
@@ -51,9 +53,9 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * });
- * const fip1FloatingIp = new openstack.networking.FloatingIp("fip1FloatingIp", {pool: "my_pool"});
- * const fip1FloatingIpAssociate = new openstack.compute.FloatingIpAssociate("fip1FloatingIpAssociate", {
- *     floatingIp: fip1FloatingIp.address,
+ * const fip1 = new openstack.networking.FloatingIp("fip_1", {pool: "my_pool"});
+ * const fip1FloatingIpAssociate = new openstack.compute.FloatingIpAssociate("fip_1", {
+ *     floatingIp: fip1.address,
  *     instanceId: instance1.id,
  *     fixedIp: instance1.networks.apply(networks => networks[1].fixedIpV4),
  * });

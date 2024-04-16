@@ -23,39 +23,45 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
     ///     {
+    ///         Name = "network_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet_1", new()
     ///     {
+    ///         Name = "subnet_1",
     ///         Cidr = "192.168.199.0/24",
     ///         IpVersion = 4,
     ///         NetworkId = network1.Id,
     ///     });
     /// 
-    ///     var loadbalancer1 = new OpenStack.LoadBalancer.LoadBalancer("loadbalancer1", new()
+    ///     var loadbalancer1 = new OpenStack.LoadBalancer.LoadBalancer("loadbalancer_1", new()
     ///     {
+    ///         Name = "loadbalancer_1",
     ///         VipSubnetId = subnet1.Id,
     ///     });
     /// 
-    ///     var listener1 = new OpenStack.LoadBalancer.Listener("listener1", new()
+    ///     var listener1 = new OpenStack.LoadBalancer.Listener("listener_1", new()
     ///     {
+    ///         Name = "listener_1",
     ///         Protocol = "HTTP",
     ///         ProtocolPort = 8080,
     ///         LoadbalancerId = loadbalancer1.Id,
     ///     });
     /// 
-    ///     var pool1 = new OpenStack.LoadBalancer.Pool("pool1", new()
+    ///     var pool1 = new OpenStack.LoadBalancer.Pool("pool_1", new()
     ///     {
+    ///         Name = "pool_1",
     ///         Protocol = "HTTP",
     ///         LbMethod = "ROUND_ROBIN",
     ///         LoadbalancerId = loadbalancer1.Id,
     ///     });
     /// 
-    ///     var l7policy1 = new OpenStack.LoadBalancer.L7PolicyV2("l7policy1", new()
+    ///     var l7policy1 = new OpenStack.LoadBalancer.L7PolicyV2("l7policy_1", new()
     ///     {
+    ///         Name = "test",
     ///         Action = "REDIRECT_TO_POOL",
     ///         Description = "test l7 policy",
     ///         Position = 1,

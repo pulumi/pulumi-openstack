@@ -23,9 +23,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const project1 = new openstack.identity.Project("project1", {});
- * const user1 = new openstack.identity.User("user1", {
+ * const project1 = new openstack.identity.Project("project_1", {name: "project_1"});
+ * const user1 = new openstack.identity.User("user_1", {
  *     defaultProjectId: project1.id,
+ *     name: "user_1",
  *     description: "A user",
  *     password: "password123",
  *     ignoreChangePasswordUponFirstUse: true,

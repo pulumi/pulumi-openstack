@@ -48,24 +48,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var clustertemplate1 = new ClusterTemplate(&#34;clustertemplate1&#34;, ClusterTemplateArgs.builder()        
+ *             .name(&#34;clustertemplate_1&#34;)
+ *             .image(&#34;Fedora-Atomic-27&#34;)
  *             .coe(&#34;kubernetes&#34;)
+ *             .flavor(&#34;m1.small&#34;)
+ *             .masterFlavor(&#34;m1.medium&#34;)
  *             .dnsNameserver(&#34;1.1.1.1&#34;)
  *             .dockerStorageDriver(&#34;devicemapper&#34;)
  *             .dockerVolumeSize(10)
- *             .flavor(&#34;m1.small&#34;)
- *             .floatingIpEnabled(false)
- *             .image(&#34;Fedora-Atomic-27&#34;)
- *             .labels(Map.ofEntries(
- *                 Map.entry(&#34;influx_grafana_dashboard_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;kube_dashboard_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;kube_tag&#34;, &#34;1.11.1&#34;),
- *                 Map.entry(&#34;prometheus_monitoring&#34;, &#34;true&#34;)
- *             ))
- *             .masterFlavor(&#34;m1.medium&#34;)
- *             .masterLbEnabled(true)
+ *             .volumeDriver(&#34;cinder&#34;)
  *             .networkDriver(&#34;flannel&#34;)
  *             .serverType(&#34;vm&#34;)
- *             .volumeDriver(&#34;cinder&#34;)
+ *             .masterLbEnabled(true)
+ *             .floatingIpEnabled(false)
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;kube_tag&#34;, &#34;1.11.1&#34;),
+ *                 Map.entry(&#34;kube_dashboard_enabled&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;prometheus_monitoring&#34;, &#34;true&#34;),
+ *                 Map.entry(&#34;influx_grafana_dashboard_enabled&#34;, &#34;true&#34;)
+ *             ))
  *             .build());
  * 
  *     }

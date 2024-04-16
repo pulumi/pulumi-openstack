@@ -31,13 +31,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			service1, err := identity.NewServiceV3(ctx, "service1", &identity.ServiceV3Args{
+//			service1, err := identity.NewServiceV3(ctx, "service_1", &identity.ServiceV3Args{
+//				Name: pulumi.String("my-service"),
 //				Type: pulumi.String("my-service-type"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = identity.NewEndpointV3(ctx, "endpoint1", &identity.EndpointV3Args{
+//			_, err = identity.NewEndpointV3(ctx, "endpoint_1", &identity.EndpointV3Args{
+//				Name:           pulumi.String("my-endpoint"),
 //				ServiceId:      service1.ID(),
 //				EndpointRegion: service1.Region,
 //				Url:            pulumi.String("http://my-endpoint"),

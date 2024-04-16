@@ -38,9 +38,9 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const dateFilterExample = openstack.keymanager.getSecret({
- *     expirationFilter: "gt:2020-01-01T00:00:00Z",
  *     mode: "cbc",
  *     secretType: "passphrase",
+ *     expirationFilter: "gt:2020-01-01T00:00:00Z",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -249,9 +249,9 @@ export interface GetSecretResult {
  * import * as openstack from "@pulumi/openstack";
  *
  * const dateFilterExample = openstack.keymanager.getSecret({
- *     expirationFilter: "gt:2020-01-01T00:00:00Z",
  *     mode: "cbc",
  *     secretType: "passphrase",
+ *     expirationFilter: "gt:2020-01-01T00:00:00Z",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

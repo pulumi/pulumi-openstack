@@ -31,13 +31,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			qosPolicy1, err := networking.NewQosPolicy(ctx, "qosPolicy1", &networking.QosPolicyArgs{
+//			qosPolicy1, err := networking.NewQosPolicy(ctx, "qos_policy_1", &networking.QosPolicyArgs{
+//				Name:        pulumi.String("qos_policy_1"),
 //				Description: pulumi.String("dscp_mark"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networking.NewQosDscpMarkingRule(ctx, "dscpMarkingRule1", &networking.QosDscpMarkingRuleArgs{
+//			_, err = networking.NewQosDscpMarkingRule(ctx, "dscp_marking_rule_1", &networking.QosDscpMarkingRuleArgs{
 //				QosPolicyId: qosPolicy1.ID(),
 //				DscpMark:    pulumi.Int(26),
 //			})

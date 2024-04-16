@@ -29,12 +29,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firewall.NewRule(ctx, "rule1", &firewall.RuleArgs{
-//				Action:          pulumi.String("deny"),
+//			_, err := firewall.NewRule(ctx, "rule_1", &firewall.RuleArgs{
+//				Name:            pulumi.String("my_rule"),
 //				Description:     pulumi.String("drop TELNET traffic"),
+//				Action:          pulumi.String("deny"),
+//				Protocol:        pulumi.String("tcp"),
 //				DestinationPort: pulumi.String("23"),
 //				Enabled:         pulumi.Bool(true),
-//				Protocol:        pulumi.String("tcp"),
 //			})
 //			if err != nil {
 //				return err

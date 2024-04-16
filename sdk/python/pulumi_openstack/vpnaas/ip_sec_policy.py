@@ -452,7 +452,7 @@ class IpSecPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        policy1 = openstack.vpnaas.IpSecPolicy("policy1")
+        policy1 = openstack.vpnaas.IpSecPolicy("policy_1", name="my_policy")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -505,7 +505,7 @@ class IpSecPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        policy1 = openstack.vpnaas.IpSecPolicy("policy1")
+        policy1 = openstack.vpnaas.IpSecPolicy("policy_1", name="my_policy")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -246,7 +246,9 @@ class AddressScope(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        addressscope1 = openstack.networking.AddressScope("addressscope1", ip_version=6)
+        addressscope1 = openstack.networking.AddressScope("addressscope_1",
+            name="addressscope_1",
+            ip_version=6)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -257,8 +259,11 @@ class AddressScope(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        addressscope1 = openstack.networking.AddressScope("addressscope1", ip_version=6)
-        subnetpool1 = openstack.networking.SubnetPool("subnetpool1",
+        addressscope1 = openstack.networking.AddressScope("addressscope_1",
+            name="addressscope_1",
+            ip_version=6)
+        subnetpool1 = openstack.networking.SubnetPool("subnetpool_1",
+            name="subnetpool_1",
             prefixes=[
                 "fdf7:b13d:dead:beef::/64",
                 "fd65:86cc:a334:39b7::/64",
@@ -310,7 +315,9 @@ class AddressScope(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        addressscope1 = openstack.networking.AddressScope("addressscope1", ip_version=6)
+        addressscope1 = openstack.networking.AddressScope("addressscope_1",
+            name="addressscope_1",
+            ip_version=6)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -321,8 +328,11 @@ class AddressScope(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        addressscope1 = openstack.networking.AddressScope("addressscope1", ip_version=6)
-        subnetpool1 = openstack.networking.SubnetPool("subnetpool1",
+        addressscope1 = openstack.networking.AddressScope("addressscope_1",
+            name="addressscope_1",
+            ip_version=6)
+        subnetpool1 = openstack.networking.SubnetPool("subnetpool_1",
+            name="subnetpool_1",
             prefixes=[
                 "fdf7:b13d:dead:beef::/64",
                 "fd65:86cc:a334:39b7::/64",

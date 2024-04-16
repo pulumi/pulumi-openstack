@@ -28,7 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networking.NewRouter(ctx, "router1", &networking.RouterArgs{
+//			_, err := networking.NewRouter(ctx, "router_1", &networking.RouterArgs{
+//				Name:              pulumi.String("my_router"),
 //				AdminStateUp:      pulumi.Bool(true),
 //				ExternalNetworkId: pulumi.String("f67f0d72-0ddf-11e4-9d95-e1f29f417e2f"),
 //			})

@@ -31,9 +31,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networking.NewPortForwardingV2(ctx, "pf1", &networking.PortForwardingV2Args{
-//				ExternalPort:   pulumi.Int(7233),
+//			_, err := networking.NewPortForwardingV2(ctx, "pf_1", &networking.PortForwardingV2Args{
 //				FloatingipId:   pulumi.String("7a52eb59-7d47-415d-a884-046666a6fbae"),
+//				ExternalPort:   pulumi.Int(7233),
 //				InternalPort:   pulumi.Int(25),
 //				InternalPortId: pulumi.String("b930d7f6-ceb7-40a0-8b81-a425dd994ccf"),
 //				Protocol:       pulumi.String("tcp"),

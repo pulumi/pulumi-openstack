@@ -29,12 +29,13 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cluster1 = new OpenStack.ContainerInfra.Cluster("cluster1", new()
+    ///     var cluster1 = new OpenStack.ContainerInfra.Cluster("cluster_1", new()
     ///     {
+    ///         Name = "cluster_1",
     ///         ClusterTemplateId = "b9a45c5c-cd03-4958-82aa-b80bf93cb922",
-    ///         Keypair = "ssh_keypair",
     ///         MasterCount = 3,
     ///         NodeCount = 5,
+    ///         Keypair = "ssh_keypair",
     ///     });
     /// 
     /// });

@@ -31,7 +31,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networking.NewSubnetPool(ctx, "subnetpool1", &networking.SubnetPoolArgs{
+//			_, err := networking.NewSubnetPool(ctx, "subnetpool_1", &networking.SubnetPoolArgs{
+//				Name:      pulumi.String("subnetpool_1"),
 //				IpVersion: pulumi.Int(6),
 //				Prefixes: pulumi.StringArray{
 //					pulumi.String("fdf7:b13d:dead:beef::/64"),
@@ -63,13 +64,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//			network1, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
+//				Name:         pulumi.String("network_1"),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			subnetpool1, err := networking.NewSubnetPool(ctx, "subnetpool1", &networking.SubnetPoolArgs{
+//			subnetpool1, err := networking.NewSubnetPool(ctx, "subnetpool_1", &networking.SubnetPoolArgs{
+//				Name: pulumi.String("subnetpool_1"),
 //				Prefixes: pulumi.StringArray{
 //					pulumi.String("10.11.12.0/24"),
 //				},
@@ -77,7 +80,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//			_, err = networking.NewSubnet(ctx, "subnet_1", &networking.SubnetArgs{
+//				Name:         pulumi.String("subnet_1"),
 //				Cidr:         pulumi.String("10.11.12.0/25"),
 //				NetworkId:    network1.ID(),
 //				SubnetpoolId: subnetpool1.ID(),

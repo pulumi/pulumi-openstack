@@ -31,7 +31,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := identity.NewServiceV3(ctx, "service1", &identity.ServiceV3Args{
+//			_, err := identity.NewServiceV3(ctx, "service_1", &identity.ServiceV3Args{
+//				Name: pulumi.String("custom"),
 //				Type: pulumi.String("custom"),
 //			})
 //			if err != nil {

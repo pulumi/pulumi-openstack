@@ -301,13 +301,16 @@ class TempUrl(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        container1 = openstack.objectstorage.Container("container1", metadata={
-            "Temp-URL-Key": "testkey",
-        })
-        object1 = openstack.objectstorage.ContainerObject("object1",
+        container1 = openstack.objectstorage.Container("container_1",
+            name="test",
+            metadata={
+                "Temp-URL-Key": "testkey",
+            })
+        object1 = openstack.objectstorage.ContainerObject("object_1",
             container_name=container1.name,
+            name="test",
             content="Hello, world!")
-        obj_tempurl = openstack.objectstorage.TempUrl("objTempurl",
+        obj_tempurl = openstack.objectstorage.TempUrl("obj_tempurl",
             container=container1.name,
             object=object1.name,
             method="post",
@@ -350,13 +353,16 @@ class TempUrl(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        container1 = openstack.objectstorage.Container("container1", metadata={
-            "Temp-URL-Key": "testkey",
-        })
-        object1 = openstack.objectstorage.ContainerObject("object1",
+        container1 = openstack.objectstorage.Container("container_1",
+            name="test",
+            metadata={
+                "Temp-URL-Key": "testkey",
+            })
+        object1 = openstack.objectstorage.ContainerObject("object_1",
             container_name=container1.name,
+            name="test",
             content="Hello, world!")
-        obj_tempurl = openstack.objectstorage.TempUrl("objTempurl",
+        obj_tempurl = openstack.objectstorage.TempUrl("obj_tempurl",
             container=container1.name,
             object=object1.name,
             method="post",

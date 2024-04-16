@@ -49,58 +49,12 @@ import javax.annotation.Nullable;
  *         var secret1 = new SecretV1(&#34;secret1&#34;, SecretV1Args.builder()        
  *             .algorithm(&#34;aes&#34;)
  *             .bitLength(256)
- *             .metadata(Map.of(&#34;key&#34;, &#34;foo&#34;))
  *             .mode(&#34;cbc&#34;)
+ *             .name(&#34;mysecret&#34;)
  *             .payload(&#34;foobar&#34;)
  *             .payloadContentType(&#34;text/plain&#34;)
  *             .secretType(&#34;passphrase&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Secret with the ACL
- * 
- * &gt; **Note** Only read ACLs are supported
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.openstack.keymanager.SecretV1;
- * import com.pulumi.openstack.keymanager.SecretV1Args;
- * import com.pulumi.openstack.keymanager.inputs.SecretV1AclArgs;
- * import com.pulumi.openstack.keymanager.inputs.SecretV1AclReadArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var secret1 = new SecretV1(&#34;secret1&#34;, SecretV1Args.builder()        
- *             .payload(Files.readString(Paths.get(&#34;certificate.pem&#34;)))
- *             .secretType(&#34;certificate&#34;)
- *             .payloadContentType(&#34;text/plain&#34;)
- *             .acl(SecretV1AclArgs.builder()
- *                 .read(SecretV1AclReadArgs.builder()
- *                     .projectAccess(false)
- *                     .users(                    
- *                         &#34;userid1&#34;,
- *                         &#34;userid2&#34;)
- *                     .build())
- *                 .build())
+ *             .metadata(Map.of(&#34;key&#34;, &#34;foo&#34;))
  *             .build());
  * 
  *     }

@@ -19,9 +19,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const user1 = new openstack.identity.User("user1", {domainId: "default"});
- * const role1 = new openstack.identity.Role("role1", {domainId: "default"});
- * const roleAssignment1 = new openstack.identity.InheritRoleAssignment("roleAssignment1", {
+ * const user1 = new openstack.identity.User("user_1", {
+ *     name: "user_1",
+ *     domainId: "default",
+ * });
+ * const role1 = new openstack.identity.Role("role_1", {
+ *     name: "role_1",
+ *     domainId: "default",
+ * });
+ * const roleAssignment1 = new openstack.identity.InheritRoleAssignment("role_assignment_1", {
  *     userId: user1.id,
  *     domainId: "default",
  *     roleId: role1.id,

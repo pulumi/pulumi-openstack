@@ -15,8 +15,8 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const ubuntu = openstack.images.getImage({
- *     mostRecent: true,
  *     name: "Ubuntu 16.04",
+ *     mostRecent: true,
  *     properties: {
  *         key: "value",
  *     },
@@ -221,8 +221,8 @@ export interface GetImageResult {
  * import * as openstack from "@pulumi/openstack";
  *
  * const ubuntu = openstack.images.getImage({
- *     mostRecent: true,
  *     name: "Ubuntu 16.04",
+ *     mostRecent: true,
  *     properties: {
  *         key: "value",
  *     },

@@ -212,14 +212,15 @@ class FloatingIpAssociate(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        instance1 = openstack.compute.Instance("instance1",
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
             image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
             flavor_id="3",
             key_pair="my_key_pair_name",
             security_groups=["default"])
-        fip1_floating_ip = openstack.networking.FloatingIp("fip1FloatingIp", pool="my_pool")
-        fip1_floating_ip_associate = openstack.compute.FloatingIpAssociate("fip1FloatingIpAssociate",
-            floating_ip=fip1_floating_ip.address,
+        fip1 = openstack.networking.FloatingIp("fip_1", pool="my_pool")
+        fip1_floating_ip_associate = openstack.compute.FloatingIpAssociate("fip_1",
+            floating_ip=fip1.address,
             instance_id=instance1.id)
         ```
         <!--End PulumiCodeChooser -->
@@ -231,7 +232,8 @@ class FloatingIpAssociate(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        instance1 = openstack.compute.Instance("instance1",
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
             image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
             flavor_id="3",
             key_pair="my_key_pair_name",
@@ -244,9 +246,9 @@ class FloatingIpAssociate(pulumi.CustomResource):
                     name="default",
                 ),
             ])
-        fip1_floating_ip = openstack.networking.FloatingIp("fip1FloatingIp", pool="my_pool")
-        fip1_floating_ip_associate = openstack.compute.FloatingIpAssociate("fip1FloatingIpAssociate",
-            floating_ip=fip1_floating_ip.address,
+        fip1 = openstack.networking.FloatingIp("fip_1", pool="my_pool")
+        fip1_floating_ip_associate = openstack.compute.FloatingIpAssociate("fip_1",
+            floating_ip=fip1.address,
             instance_id=instance1.id,
             fixed_ip=instance1.networks[1].fixed_ip_v4)
         ```
@@ -289,14 +291,15 @@ class FloatingIpAssociate(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        instance1 = openstack.compute.Instance("instance1",
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
             image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
             flavor_id="3",
             key_pair="my_key_pair_name",
             security_groups=["default"])
-        fip1_floating_ip = openstack.networking.FloatingIp("fip1FloatingIp", pool="my_pool")
-        fip1_floating_ip_associate = openstack.compute.FloatingIpAssociate("fip1FloatingIpAssociate",
-            floating_ip=fip1_floating_ip.address,
+        fip1 = openstack.networking.FloatingIp("fip_1", pool="my_pool")
+        fip1_floating_ip_associate = openstack.compute.FloatingIpAssociate("fip_1",
+            floating_ip=fip1.address,
             instance_id=instance1.id)
         ```
         <!--End PulumiCodeChooser -->
@@ -308,7 +311,8 @@ class FloatingIpAssociate(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        instance1 = openstack.compute.Instance("instance1",
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
             image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
             flavor_id="3",
             key_pair="my_key_pair_name",
@@ -321,9 +325,9 @@ class FloatingIpAssociate(pulumi.CustomResource):
                     name="default",
                 ),
             ])
-        fip1_floating_ip = openstack.networking.FloatingIp("fip1FloatingIp", pool="my_pool")
-        fip1_floating_ip_associate = openstack.compute.FloatingIpAssociate("fip1FloatingIpAssociate",
-            floating_ip=fip1_floating_ip.address,
+        fip1 = openstack.networking.FloatingIp("fip_1", pool="my_pool")
+        fip1_floating_ip_associate = openstack.compute.FloatingIpAssociate("fip_1",
+            floating_ip=fip1.address,
             instance_id=instance1.id,
             fixed_ip=instance1.networks[1].fixed_ip_v4)
         ```

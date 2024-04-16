@@ -25,12 +25,13 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var qosPolicy1 = new OpenStack.Networking.QosPolicy("qosPolicy1", new()
+    ///     var qosPolicy1 = new OpenStack.Networking.QosPolicy("qos_policy_1", new()
     ///     {
+    ///         Name = "qos_policy_1",
     ///         Description = "bw_limit",
     ///     });
     /// 
-    ///     var bwLimitRule1 = new OpenStack.Networking.QosBandwidthLimitRule("bwLimitRule1", new()
+    ///     var bwLimitRule1 = new OpenStack.Networking.QosBandwidthLimitRule("bw_limit_rule_1", new()
     ///     {
     ///         QosPolicyId = qosPolicy1.Id,
     ///         MaxKbps = 3000,

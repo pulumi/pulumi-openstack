@@ -694,7 +694,8 @@ class Router(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        router1 = openstack.networking.Router("router1",
+        router1 = openstack.networking.Router("router_1",
+            name="my_router",
             admin_state_up=True,
             external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
         ```
@@ -773,7 +774,8 @@ class Router(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        router1 = openstack.networking.Router("router1",
+        router1 = openstack.networking.Router("router_1",
+            name="my_router",
             admin_state_up=True,
             external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
         ```

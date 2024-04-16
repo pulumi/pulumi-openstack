@@ -26,15 +26,15 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var listener1 = new OpenStack.LoadBalancer.Listener("listener1", new()
+    ///     var listener1 = new OpenStack.LoadBalancer.Listener("listener_1", new()
     ///     {
+    ///         Protocol = "HTTP",
+    ///         ProtocolPort = 8080,
+    ///         LoadbalancerId = "d9415786-5f1a-428b-b35f-2f1523e146d2",
     ///         InsertHeaders = 
     ///         {
     ///             { "X-Forwarded-For", "true" },
     ///         },
-    ///         LoadbalancerId = "d9415786-5f1a-428b-b35f-2f1523e146d2",
-    ///         Protocol = "HTTP",
-    ///         ProtocolPort = 8080,
     ///     });
     /// 
     /// });

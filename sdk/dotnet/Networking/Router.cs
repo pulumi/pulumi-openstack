@@ -23,8 +23,9 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var router1 = new OpenStack.Networking.Router("router1", new()
+    ///     var router1 = new OpenStack.Networking.Router("router_1", new()
     ///     {
+    ///         Name = "my_router",
     ///         AdminStateUp = true,
     ///         ExternalNetworkId = "f67f0d72-0ddf-11e4-9d95-e1f29f417e2f",
     ///     });

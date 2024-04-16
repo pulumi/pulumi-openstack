@@ -23,10 +23,10 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var member1 = new OpenStack.LoadBalancer.Member("member1", new()
+    ///     var member1 = new OpenStack.LoadBalancer.Member("member_1", new()
     ///     {
-    ///         Address = "192.168.199.23",
     ///         PoolId = "935685fb-a896-40f9-9ff4-ae531a3a00fe",
+    ///         Address = "192.168.199.23",
     ///         ProtocolPort = 8080,
     ///     });
     /// 

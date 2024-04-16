@@ -604,7 +604,7 @@ class LoadBalancer(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        lb1 = openstack.loadbalancer.LoadBalancer("lb1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
+        lb1 = openstack.loadbalancer.LoadBalancer("lb_1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -676,7 +676,7 @@ class LoadBalancer(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        lb1 = openstack.loadbalancer.LoadBalancer("lb1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
+        lb1 = openstack.loadbalancer.LoadBalancer("lb_1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
         ```
         <!--End PulumiCodeChooser -->
 

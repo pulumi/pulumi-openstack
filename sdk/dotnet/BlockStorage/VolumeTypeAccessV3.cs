@@ -25,14 +25,18 @@ namespace Pulumi.OpenStack.BlockStorage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project1 = new OpenStack.Identity.Project("project1");
-    /// 
-    ///     var volumeType1 = new OpenStack.BlockStorage.VolumeTypeV3("volumeType1", new()
+    ///     var project1 = new OpenStack.Identity.Project("project_1", new()
     ///     {
+    ///         Name = "project_1",
+    ///     });
+    /// 
+    ///     var volumeType1 = new OpenStack.BlockStorage.VolumeTypeV3("volume_type_1", new()
+    ///     {
+    ///         Name = "volume_type_1",
     ///         IsPublic = false,
     ///     });
     /// 
-    ///     var volumeTypeAccess = new OpenStack.BlockStorage.VolumeTypeAccessV3("volumeTypeAccess", new()
+    ///     var volumeTypeAccess = new OpenStack.BlockStorage.VolumeTypeAccessV3("volume_type_access", new()
     ///     {
     ///         ProjectId = project1.Id,
     ///         VolumeTypeId = volumeType1.Id,

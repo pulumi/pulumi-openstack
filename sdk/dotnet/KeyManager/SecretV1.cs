@@ -23,54 +23,18 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var secret1 = new OpenStack.KeyManager.SecretV1("secret1", new()
+    ///     var secret1 = new OpenStack.KeyManager.SecretV1("secret_1", new()
     ///     {
     ///         Algorithm = "aes",
     ///         BitLength = 256,
-    ///         Metadata = 
-    ///         {
-    ///             { "key", "foo" },
-    ///         },
     ///         Mode = "cbc",
+    ///         Name = "mysecret",
     ///         Payload = "foobar",
     ///         PayloadContentType = "text/plain",
     ///         SecretType = "passphrase",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
-    /// ### Secret with the ACL
-    /// 
-    /// &gt; **Note** Only read ACLs are supported
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.IO;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using OpenStack = Pulumi.OpenStack;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var secret1 = new OpenStack.KeyManager.SecretV1("secret1", new()
-    ///     {
-    ///         Payload = File.ReadAllText("certificate.pem"),
-    ///         SecretType = "certificate",
-    ///         PayloadContentType = "text/plain",
-    ///         Acl = new OpenStack.KeyManager.Inputs.SecretV1AclArgs
+    ///         Metadata = 
     ///         {
-    ///             Read = new OpenStack.KeyManager.Inputs.SecretV1AclReadArgs
-    ///             {
-    ///                 ProjectAccess = false,
-    ///                 Users = new[]
-    ///                 {
-    ///                     "userid1",
-    ///                     "userid2",
-    ///                 },
-    ///             },
+    ///             { "key", "foo" },
     ///         },
     ///     });
     /// 

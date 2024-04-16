@@ -16,7 +16,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const service1 = new openstack.identity.ServiceV3("service1", {type: "custom"});
+ * const service1 = new openstack.identity.ServiceV3("service_1", {
+ *     name: "custom",
+ *     type: "custom",
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

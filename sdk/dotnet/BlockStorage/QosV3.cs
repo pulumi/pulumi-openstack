@@ -27,6 +27,7 @@ namespace Pulumi.OpenStack.BlockStorage
     /// {
     ///     var qos = new OpenStack.BlockStorage.QosV3("qos", new()
     ///     {
+    ///         Name = "foo",
     ///         Consumer = "back-end",
     ///         Specs = 
     ///         {

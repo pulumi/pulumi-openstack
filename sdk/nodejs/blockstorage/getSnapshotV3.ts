@@ -15,8 +15,8 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const snapshot1 = openstack.blockstorage.getSnapshotV3({
- *     mostRecent: true,
  *     name: "snapshot_1",
+ *     mostRecent: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -111,8 +111,8 @@ export interface GetSnapshotV3Result {
  * import * as openstack from "@pulumi/openstack";
  *
  * const snapshot1 = openstack.blockstorage.getSnapshotV3({
- *     mostRecent: true,
  *     name: "snapshot_1",
+ *     mostRecent: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

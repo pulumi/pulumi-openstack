@@ -34,34 +34,40 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			project1, err := identity.NewProject(ctx, "project_1", &identity.ProjectArgs{
+//				Name: pulumi.String("project_1"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			user1, err := identity.NewUser(ctx, "user1", &identity.UserArgs{
+//			user1, err := identity.NewUser(ctx, "user_1", &identity.UserArgs{
+//				Name:             pulumi.String("user_1"),
 //				DefaultProjectId: project1.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			group1, err := identity.NewGroupV3(ctx, "group1", &identity.GroupV3Args{
+//			group1, err := identity.NewGroupV3(ctx, "group_1", &identity.GroupV3Args{
+//				Name:        pulumi.String("group_1"),
 //				Description: pulumi.String("group 1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			role1, err := identity.NewRole(ctx, "role1", nil)
+//			role1, err := identity.NewRole(ctx, "role_1", &identity.RoleArgs{
+//				Name: pulumi.String("role_1"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = identity.NewUserMembershipV3(ctx, "userMembership1", &identity.UserMembershipV3Args{
+//			_, err = identity.NewUserMembershipV3(ctx, "user_membership_1", &identity.UserMembershipV3Args{
 //				UserId:  user1.ID(),
 //				GroupId: group1.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = identity.NewRoleAssignment(ctx, "roleAssignment1", &identity.RoleAssignmentArgs{
+//			_, err = identity.NewRoleAssignment(ctx, "role_assignment_1", &identity.RoleAssignmentArgs{
 //				GroupId:   group1.ID(),
 //				ProjectId: project1.ID(),
 //				RoleId:    role1.ID(),

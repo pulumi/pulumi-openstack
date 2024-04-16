@@ -31,12 +31,10 @@ namespace Pulumi.OpenStack.Database
     /// {
     ///     var test = new OpenStack.Database.Instance("test", new()
     ///     {
-    ///         Datastore = new OpenStack.Database.Inputs.InstanceDatastoreArgs
-    ///         {
-    ///             Type = "mysql",
-    ///             Version = "mysql-5.7",
-    ///         },
+    ///         Region = "region-test",
+    ///         Name = "test",
     ///         FlavorId = "31792d21-c355-4587-9290-56c1ed0ca376",
+    ///         Size = 8,
     ///         Networks = new[]
     ///         {
     ///             new OpenStack.Database.Inputs.InstanceNetworkArgs
@@ -44,8 +42,11 @@ namespace Pulumi.OpenStack.Database
     ///                 Uuid = "c0612505-caf2-4fb0-b7cb-56a0240a2b12",
     ///             },
     ///         },
-    ///         Region = "region-test",
-    ///         Size = 8,
+    ///         Datastore = new OpenStack.Database.Inputs.InstanceDatastoreArgs
+    ///         {
+    ///             Version = "mysql-5.7",
+    ///             Type = "mysql",
+    ///         },
     ///     });
     /// 
     /// });

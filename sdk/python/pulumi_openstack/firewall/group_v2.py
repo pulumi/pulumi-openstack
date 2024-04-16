@@ -483,21 +483,28 @@ class GroupV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        rule1 = openstack.firewall.RuleV2("rule1",
+        rule1 = openstack.firewall.RuleV2("rule_1",
+            name="firewall_rule_2",
             description="drop TELNET traffic",
             action="deny",
             protocol="tcp",
             destination_port="23",
             enabled=True)
-        rule2 = openstack.firewall.RuleV2("rule2",
+        rule2 = openstack.firewall.RuleV2("rule_2",
+            name="firewall_rule_1",
             description="drop NTP traffic",
             action="deny",
             protocol="udp",
             destination_port="123",
             enabled=False)
-        policy1 = openstack.firewall.PolicyV2("policy1", rules=[rule1.id])
-        policy2 = openstack.firewall.PolicyV2("policy2", rules=[rule2.id])
-        group1 = openstack.firewall.GroupV2("group1",
+        policy1 = openstack.firewall.PolicyV2("policy_1",
+            name="firewall_ingress_policy",
+            rules=[rule1.id])
+        policy2 = openstack.firewall.PolicyV2("policy_2",
+            name="firewall_egress_policy",
+            rules=[rule2.id])
+        group1 = openstack.firewall.GroupV2("group_1",
+            name="firewall_group",
             ingress_firewall_policy_id=policy1.id,
             egress_firewall_policy_id=policy2.id)
         ```
@@ -565,21 +572,28 @@ class GroupV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        rule1 = openstack.firewall.RuleV2("rule1",
+        rule1 = openstack.firewall.RuleV2("rule_1",
+            name="firewall_rule_2",
             description="drop TELNET traffic",
             action="deny",
             protocol="tcp",
             destination_port="23",
             enabled=True)
-        rule2 = openstack.firewall.RuleV2("rule2",
+        rule2 = openstack.firewall.RuleV2("rule_2",
+            name="firewall_rule_1",
             description="drop NTP traffic",
             action="deny",
             protocol="udp",
             destination_port="123",
             enabled=False)
-        policy1 = openstack.firewall.PolicyV2("policy1", rules=[rule1.id])
-        policy2 = openstack.firewall.PolicyV2("policy2", rules=[rule2.id])
-        group1 = openstack.firewall.GroupV2("group1",
+        policy1 = openstack.firewall.PolicyV2("policy_1",
+            name="firewall_ingress_policy",
+            rules=[rule1.id])
+        policy2 = openstack.firewall.PolicyV2("policy_2",
+            name="firewall_egress_policy",
+            rules=[rule2.id])
+        group1 = openstack.firewall.GroupV2("group_1",
+            name="firewall_group",
             ingress_firewall_policy_id=policy1.id,
             egress_firewall_policy_id=policy2.id)
         ```

@@ -46,11 +46,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var rule2 = new RuleV2(&#34;rule2&#34;, RuleV2Args.builder()        
- *             .action(&#34;deny&#34;)
+ *             .name(&#34;firewall_rule&#34;)
  *             .description(&#34;drop TELNET traffic&#34;)
+ *             .action(&#34;deny&#34;)
+ *             .protocol(&#34;tcp&#34;)
  *             .destinationPort(&#34;23&#34;)
  *             .enabled(&#34;true&#34;)
- *             .protocol(&#34;tcp&#34;)
  *             .build());
  * 
  *     }

@@ -31,6 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := blockstorage.NewQosV3(ctx, "qos", &blockstorage.QosV3Args{
+//				Name:     pulumi.String("foo"),
 //				Consumer: pulumi.String("back-end"),
 //				Specs: pulumi.Map{
 //					"read_iops_sec":  pulumi.Any("40000"),

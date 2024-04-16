@@ -244,6 +244,7 @@ class ImageAccess(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         rancheros = openstack.images.Image("rancheros",
+            name="RancherOS",
             image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
             container_format="bare",
             disk_format="qcow2",
@@ -251,7 +252,7 @@ class ImageAccess(pulumi.CustomResource):
             properties={
                 "key": "value",
             })
-        rancheros_member = openstack.images.ImageAccess("rancherosMember",
+        rancheros_member = openstack.images.ImageAccess("rancheros_member",
             image_id=rancheros.id,
             member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4")
         ```
@@ -268,6 +269,7 @@ class ImageAccess(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         rancheros = openstack.images.Image("rancheros",
+            name="RancherOS",
             image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
             container_format="bare",
             disk_format="qcow2",
@@ -275,7 +277,7 @@ class ImageAccess(pulumi.CustomResource):
             properties={
                 "key": "value",
             })
-        rancheros_member = openstack.images.ImageAccess("rancherosMember",
+        rancheros_member = openstack.images.ImageAccess("rancheros_member",
             image_id=rancheros.id,
             member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4",
             status="accepted")
@@ -326,6 +328,7 @@ class ImageAccess(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         rancheros = openstack.images.Image("rancheros",
+            name="RancherOS",
             image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
             container_format="bare",
             disk_format="qcow2",
@@ -333,7 +336,7 @@ class ImageAccess(pulumi.CustomResource):
             properties={
                 "key": "value",
             })
-        rancheros_member = openstack.images.ImageAccess("rancherosMember",
+        rancheros_member = openstack.images.ImageAccess("rancheros_member",
             image_id=rancheros.id,
             member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4")
         ```
@@ -350,6 +353,7 @@ class ImageAccess(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         rancheros = openstack.images.Image("rancheros",
+            name="RancherOS",
             image_source_url="https://releases.rancher.com/os/latest/rancheros-openstack.img",
             container_format="bare",
             disk_format="qcow2",
@@ -357,7 +361,7 @@ class ImageAccess(pulumi.CustomResource):
             properties={
                 "key": "value",
             })
-        rancheros_member = openstack.images.ImageAccess("rancherosMember",
+        rancheros_member = openstack.images.ImageAccess("rancheros_member",
             image_id=rancheros.id,
             member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4",
             status="accepted")

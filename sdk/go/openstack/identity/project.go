@@ -31,7 +31,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := identity.NewProject(ctx, "project1", &identity.ProjectArgs{
+//			_, err := identity.NewProject(ctx, "project_1", &identity.ProjectArgs{
+//				Name:        pulumi.String("project_1"),
 //				Description: pulumi.String("A project"),
 //			})
 //			if err != nil {

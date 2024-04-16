@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const monitor1 = new openstack.loadbalancer.Monitor("monitor1", {
- *     poolId: openstack_lb_pool_v2.pool_1.id,
+ * const monitor1 = new openstack.loadbalancer.Monitor("monitor_1", {
+ *     poolId: pool1.id,
  *     type: "PING",
  *     delay: 20,
  *     timeout: 10,

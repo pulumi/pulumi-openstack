@@ -27,8 +27,8 @@ namespace Pulumi.OpenStack.Images
         /// {
         ///     var ubuntu = OpenStack.Images.GetImage.Invoke(new()
         ///     {
-        ///         MostRecent = true,
         ///         Name = "Ubuntu 16.04",
+        ///         MostRecent = true,
         ///         Properties = 
         ///         {
         ///             { "key", "value" },
@@ -58,8 +58,8 @@ namespace Pulumi.OpenStack.Images
         /// {
         ///     var ubuntu = OpenStack.Images.GetImage.Invoke(new()
         ///     {
-        ///         MostRecent = true,
         ///         Name = "Ubuntu 16.04",
+        ///         MostRecent = true,
         ///         Properties = 
         ///         {
         ///             { "key", "value" },

@@ -455,8 +455,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var small = ComputeFunctions.getFlavor(GetFlavorArgs.builder()
-     *             .ram(512)
      *             .vcpus(1)
+     *             .ram(512)
      *             .build());
      * 
      *     }
@@ -496,8 +496,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var small = ComputeFunctions.getFlavor(GetFlavorArgs.builder()
-     *             .ram(512)
      *             .vcpus(1)
+     *             .ram(512)
      *             .build());
      * 
      *     }
@@ -537,8 +537,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var small = ComputeFunctions.getFlavor(GetFlavorArgs.builder()
-     *             .ram(512)
      *             .vcpus(1)
+     *             .ram(512)
      *             .build());
      * 
      *     }
@@ -578,8 +578,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var small = ComputeFunctions.getFlavor(GetFlavorArgs.builder()
-     *             .ram(512)
      *             .vcpus(1)
+     *             .ram(512)
      *             .build());
      * 
      *     }
@@ -619,8 +619,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var small = ComputeFunctions.getFlavor(GetFlavorArgs.builder()
-     *             .ram(512)
      *             .vcpus(1)
+     *             .ram(512)
      *             .build());
      * 
      *     }
@@ -660,8 +660,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var small = ComputeFunctions.getFlavor(GetFlavorArgs.builder()
-     *             .ram(512)
      *             .vcpus(1)
+     *             .ram(512)
      *             .build());
      * 
      *     }

@@ -28,7 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			rule1, err := firewall.NewRule(ctx, "rule1", &firewall.RuleArgs{
+//			rule1, err := firewall.NewRule(ctx, "rule_1", &firewall.RuleArgs{
+//				Name:            pulumi.String("my-rule-1"),
 //				Description:     pulumi.String("drop TELNET traffic"),
 //				Action:          pulumi.String("deny"),
 //				Protocol:        pulumi.String("tcp"),
@@ -38,7 +39,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			rule2, err := firewall.NewRule(ctx, "rule2", &firewall.RuleArgs{
+//			rule2, err := firewall.NewRule(ctx, "rule_2", &firewall.RuleArgs{
+//				Name:            pulumi.String("my-rule-2"),
 //				Description:     pulumi.String("drop NTP traffic"),
 //				Action:          pulumi.String("deny"),
 //				Protocol:        pulumi.String("udp"),
@@ -48,7 +50,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = firewall.NewPolicy(ctx, "policy1", &firewall.PolicyArgs{
+//			_, err = firewall.NewPolicy(ctx, "policy_1", &firewall.PolicyArgs{
+//				Name: pulumi.String("my-policy"),
 //				Rules: pulumi.StringArray{
 //					rule1.ID(),
 //					rule2.ID(),

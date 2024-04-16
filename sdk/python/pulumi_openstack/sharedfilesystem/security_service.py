@@ -435,15 +435,16 @@ class SecurityService(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
+        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice_1",
+            name="security",
             description="created by terraform",
+            type="active_directory",
+            server="192.168.199.10",
             dns_ip="192.168.199.10",
             domain="example.com",
             ou="CN=Computers,DC=example,DC=com",
-            password="s8cret",
-            server="192.168.199.10",
-            type="active_directory",
-            user="joinDomainUser")
+            user="joinDomainUser",
+            password="s8cret")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -504,15 +505,16 @@ class SecurityService(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice1",
+        securityservice1 = openstack.sharedfilesystem.SecurityService("securityservice_1",
+            name="security",
             description="created by terraform",
+            type="active_directory",
+            server="192.168.199.10",
             dns_ip="192.168.199.10",
             domain="example.com",
             ou="CN=Computers,DC=example,DC=com",
-            password="s8cret",
-            server="192.168.199.10",
-            type="active_directory",
-            user="joinDomainUser")
+            user="joinDomainUser",
+            password="s8cret")
         ```
         <!--End PulumiCodeChooser -->
 

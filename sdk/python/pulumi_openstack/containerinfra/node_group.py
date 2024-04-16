@@ -548,7 +548,8 @@ class NodeGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        nodegroup1 = openstack.containerinfra.NodeGroup("nodegroup1",
+        nodegroup1 = openstack.containerinfra.NodeGroup("nodegroup_1",
+            name="nodegroup_1",
             cluster_id="b9a45c5c-cd03-4958-82aa-b80bf93cb922",
             node_count=5)
         ```
@@ -630,7 +631,8 @@ class NodeGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        nodegroup1 = openstack.containerinfra.NodeGroup("nodegroup1",
+        nodegroup1 = openstack.containerinfra.NodeGroup("nodegroup_1",
+            name="nodegroup_1",
             cluster_id="b9a45c5c-cd03-4958-82aa-b80bf93cb922",
             node_count=5)
         ```

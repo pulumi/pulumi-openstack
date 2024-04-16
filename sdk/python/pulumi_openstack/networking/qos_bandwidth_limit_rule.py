@@ -228,8 +228,10 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="bw_limit")
-        bw_limit_rule1 = openstack.networking.QosBandwidthLimitRule("bwLimitRule1",
+        qos_policy1 = openstack.networking.QosPolicy("qos_policy_1",
+            name="qos_policy_1",
+            description="bw_limit")
+        bw_limit_rule1 = openstack.networking.QosBandwidthLimitRule("bw_limit_rule_1",
             qos_policy_id=qos_policy1.id,
             max_kbps=3000,
             max_burst_kbps=300,
@@ -276,8 +278,10 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="bw_limit")
-        bw_limit_rule1 = openstack.networking.QosBandwidthLimitRule("bwLimitRule1",
+        qos_policy1 = openstack.networking.QosPolicy("qos_policy_1",
+            name="qos_policy_1",
+            description="bw_limit")
+        bw_limit_rule1 = openstack.networking.QosBandwidthLimitRule("bw_limit_rule_1",
             qos_policy_id=qos_policy1.id,
             max_kbps=3000,
             max_burst_kbps=300,

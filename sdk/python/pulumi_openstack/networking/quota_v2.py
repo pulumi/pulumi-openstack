@@ -454,28 +454,6 @@ class QuotaV2(pulumi.CustomResource):
         > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
             created with zero value.
 
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        project1 = openstack.identity.Project("project1")
-        quota1 = openstack.networking.QuotaV2("quota1",
-            project_id=project1.id,
-            floatingip=10,
-            network=4,
-            port=100,
-            rbac_policy=10,
-            router=4,
-            security_group=10,
-            security_group_rule=100,
-            subnet=8,
-            subnetpool=2)
-        ```
-        <!--End PulumiCodeChooser -->
-
         ## Import
 
         Quotas can be imported using the `project_id/region_name`, e.g.
@@ -526,28 +504,6 @@ class QuotaV2(pulumi.CustomResource):
 
         > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
             created with zero value.
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_openstack as openstack
-
-        project1 = openstack.identity.Project("project1")
-        quota1 = openstack.networking.QuotaV2("quota1",
-            project_id=project1.id,
-            floatingip=10,
-            network=4,
-            port=100,
-            rbac_policy=10,
-            router=4,
-            security_group=10,
-            security_group_rule=100,
-            subnet=8,
-            subnetpool=2)
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -196,20 +196,24 @@ class RouterRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        router1 = openstack.networking.Router("router1", admin_state_up=True)
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        router1 = openstack.networking.Router("router_1",
+            name="router_1",
+            admin_state_up=True)
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
             network_id=network1.id,
             cidr="192.168.199.0/24",
             ip_version=4)
-        int1 = openstack.networking.RouterInterface("int1",
+        int1 = openstack.networking.RouterInterface("int_1",
             router_id=router1.id,
             subnet_id=subnet1.id)
-        router_route1 = openstack.networking.RouterRoute("routerRoute1",
+        router_route1 = openstack.networking.RouterRoute("router_route_1",
             router_id=router1.id,
             destination_cidr="10.0.1.0/24",
             next_hop="192.168.199.254",
-            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_router_interface_v2.int_1"]))
+            opts=pulumi.ResourceOptions(depends_on=[int1]))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -256,20 +260,24 @@ class RouterRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        router1 = openstack.networking.Router("router1", admin_state_up=True)
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        router1 = openstack.networking.Router("router_1",
+            name="router_1",
+            admin_state_up=True)
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
             network_id=network1.id,
             cidr="192.168.199.0/24",
             ip_version=4)
-        int1 = openstack.networking.RouterInterface("int1",
+        int1 = openstack.networking.RouterInterface("int_1",
             router_id=router1.id,
             subnet_id=subnet1.id)
-        router_route1 = openstack.networking.RouterRoute("routerRoute1",
+        router_route1 = openstack.networking.RouterRoute("router_route_1",
             router_id=router1.id,
             destination_cidr="10.0.1.0/24",
             next_hop="192.168.199.254",
-            opts=pulumi.ResourceOptions(depends_on=["openstack_networking_router_interface_v2.int_1"]))
+            opts=pulumi.ResourceOptions(depends_on=[int1]))
         ```
         <!--End PulumiCodeChooser -->
 

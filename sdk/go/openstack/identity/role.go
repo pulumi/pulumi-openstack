@@ -31,7 +31,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := identity.NewRole(ctx, "role1", nil)
+//			_, err := identity.NewRole(ctx, "role_1", &identity.RoleArgs{
+//				Name: pulumi.String("role_1"),
+//			})
 //			if err != nil {
 //				return err
 //			}

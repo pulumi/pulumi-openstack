@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var qosPolicy1 = new QosPolicy(&#34;qosPolicy1&#34;, QosPolicyArgs.builder()        
+ *             .name(&#34;qos_policy_1&#34;)
  *             .description(&#34;dscp_mark&#34;)
  *             .build());
  * 

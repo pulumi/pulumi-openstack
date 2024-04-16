@@ -19,15 +19,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const project1 = new openstack.identity.Project("project1", {});
- * const user1 = new openstack.identity.User("user1", {defaultProjectId: project1.id});
- * const group1 = new openstack.identity.GroupV3("group1", {description: "group 1"});
- * const role1 = new openstack.identity.Role("role1", {});
- * const userMembership1 = new openstack.identity.UserMembershipV3("userMembership1", {
+ * const project1 = new openstack.identity.Project("project_1", {name: "project_1"});
+ * const user1 = new openstack.identity.User("user_1", {
+ *     name: "user_1",
+ *     defaultProjectId: project1.id,
+ * });
+ * const group1 = new openstack.identity.GroupV3("group_1", {
+ *     name: "group_1",
+ *     description: "group 1",
+ * });
+ * const role1 = new openstack.identity.Role("role_1", {name: "role_1"});
+ * const userMembership1 = new openstack.identity.UserMembershipV3("user_membership_1", {
  *     userId: user1.id,
  *     groupId: group1.id,
  * });
- * const roleAssignment1 = new openstack.identity.RoleAssignment("roleAssignment1", {
+ * const roleAssignment1 = new openstack.identity.RoleAssignment("role_assignment_1", {
  *     groupId: group1.id,
  *     projectId: project1.id,
  *     roleId: role1.id,

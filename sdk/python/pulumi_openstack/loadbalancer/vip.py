@@ -564,11 +564,12 @@ class Vip(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        vip1 = openstack.loadbalancer.Vip("vip1",
-            pool_id="67890",
-            port=80,
+        vip1 = openstack.loadbalancer.Vip("vip_1",
+            name="tf_test_lb_vip",
+            subnet_id="12345",
             protocol="HTTP",
-            subnet_id="12345")
+            port=80,
+            pool_id="67890")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -632,11 +633,12 @@ class Vip(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        vip1 = openstack.loadbalancer.Vip("vip1",
-            pool_id="67890",
-            port=80,
+        vip1 = openstack.loadbalancer.Vip("vip_1",
+            name="tf_test_lb_vip",
+            subnet_id="12345",
             protocol="HTTP",
-            subnet_id="12345")
+            port=80,
+            pool_id="67890")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -25,51 +25,6 @@ import javax.annotation.Nullable;
  * &gt; **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
  *     created with zero value.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.openstack.identity.Project;
- * import com.pulumi.openstack.networking.QuotaV2;
- * import com.pulumi.openstack.networking.QuotaV2Args;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var project1 = new Project(&#34;project1&#34;);
- * 
- *         var quota1 = new QuotaV2(&#34;quota1&#34;, QuotaV2Args.builder()        
- *             .projectId(project1.id())
- *             .floatingip(10)
- *             .network(4)
- *             .port(100)
- *             .rbacPolicy(10)
- *             .router(4)
- *             .securityGroup(10)
- *             .securityGroupRule(100)
- *             .subnet(8)
- *             .subnetpool(2)
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * Quotas can be imported using the `project_id/region_name`, e.g.

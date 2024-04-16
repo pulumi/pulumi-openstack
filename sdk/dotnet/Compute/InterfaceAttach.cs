@@ -26,23 +26,25 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
     ///     {
+    ///         Name = "network_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
     ///     {
+    ///         Name = "instance_1",
     ///         SecurityGroups = new[]
     ///         {
     ///             "default",
     ///         },
     ///     });
     /// 
-    ///     var ai1 = new OpenStack.Compute.InterfaceAttach("ai1", new()
+    ///     var ai1 = new OpenStack.Compute.InterfaceAttach("ai_1", new()
     ///     {
     ///         InstanceId = instance1.Id,
-    ///         NetworkId = openstack_networking_port_v2.Network_1.Id,
+    ///         NetworkId = network1OpenstackNetworkingPortV2.Id,
     ///     });
     /// 
     /// });
@@ -60,23 +62,25 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
     ///     {
+    ///         Name = "network_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
     ///     {
+    ///         Name = "instance_1",
     ///         SecurityGroups = new[]
     ///         {
     ///             "default",
     ///         },
     ///     });
     /// 
-    ///     var ai1 = new OpenStack.Compute.InterfaceAttach("ai1", new()
+    ///     var ai1 = new OpenStack.Compute.InterfaceAttach("ai_1", new()
     ///     {
     ///         InstanceId = instance1.Id,
-    ///         NetworkId = openstack_networking_port_v2.Network_1.Id,
+    ///         NetworkId = network1OpenstackNetworkingPortV2.Id,
     ///         FixedIp = "10.0.10.10",
     ///     });
     /// 
@@ -95,26 +99,29 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
     ///     {
+    ///         Name = "network_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var port1 = new OpenStack.Networking.Port("port1", new()
+    ///     var port1 = new OpenStack.Networking.Port("port_1", new()
     ///     {
+    ///         Name = "port_1",
     ///         NetworkId = network1.Id,
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
     ///     {
+    ///         Name = "instance_1",
     ///         SecurityGroups = new[]
     ///         {
     ///             "default",
     ///         },
     ///     });
     /// 
-    ///     var ai1 = new OpenStack.Compute.InterfaceAttach("ai1", new()
+    ///     var ai1 = new OpenStack.Compute.InterfaceAttach("ai_1", new()
     ///     {
     ///         InstanceId = instance1.Id,
     ///         PortId = port1.Id,

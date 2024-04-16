@@ -30,9 +30,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dns.NewZone(ctx, "exampleCom", &dns.ZoneArgs{
-//				Description: pulumi.String("An example zone"),
+//			_, err := dns.NewZone(ctx, "example_com", &dns.ZoneArgs{
+//				Name:        pulumi.String("example.com."),
 //				Email:       pulumi.String("jdoe@example.com"),
+//				Description: pulumi.String("An example zone"),
 //				Ttl:         pulumi.Int(3000),
 //				Type:        pulumi.String("PRIMARY"),
 //			})

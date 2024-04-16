@@ -158,9 +158,11 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        project1 = openstack.identity.Project("project1")
-        volume_type1 = openstack.blockstorage.VolumeTypeV3("volumeType1", is_public=False)
-        volume_type_access = openstack.blockstorage.VolumeTypeAccessV3("volumeTypeAccess",
+        project1 = openstack.identity.Project("project_1", name="project_1")
+        volume_type1 = openstack.blockstorage.VolumeTypeV3("volume_type_1",
+            name="volume_type_1",
+            is_public=False)
+        volume_type_access = openstack.blockstorage.VolumeTypeAccessV3("volume_type_access",
             project_id=project1.id,
             volume_type_id=volume_type1.id)
         ```
@@ -202,9 +204,11 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        project1 = openstack.identity.Project("project1")
-        volume_type1 = openstack.blockstorage.VolumeTypeV3("volumeType1", is_public=False)
-        volume_type_access = openstack.blockstorage.VolumeTypeAccessV3("volumeTypeAccess",
+        project1 = openstack.identity.Project("project_1", name="project_1")
+        volume_type1 = openstack.blockstorage.VolumeTypeV3("volume_type_1",
+            name="volume_type_1",
+            is_public=False)
+        volume_type_access = openstack.blockstorage.VolumeTypeAccessV3("volume_type_access",
             project_id=project1.id,
             volume_type_id=volume_type1.id)
         ```

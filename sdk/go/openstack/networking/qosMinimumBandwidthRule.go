@@ -31,13 +31,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			qosPolicy1, err := networking.NewQosPolicy(ctx, "qosPolicy1", &networking.QosPolicyArgs{
+//			qosPolicy1, err := networking.NewQosPolicy(ctx, "qos_policy_1", &networking.QosPolicyArgs{
+//				Name:        pulumi.String("qos_policy_1"),
 //				Description: pulumi.String("min_kbps"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networking.NewQosMinimumBandwidthRule(ctx, "minimumBandwidthRule1", &networking.QosMinimumBandwidthRuleArgs{
+//			_, err = networking.NewQosMinimumBandwidthRule(ctx, "minimum_bandwidth_rule_1", &networking.QosMinimumBandwidthRuleArgs{
 //				QosPolicyId: qosPolicy1.ID(),
 //				MinKbps:     pulumi.Int(200),
 //			})

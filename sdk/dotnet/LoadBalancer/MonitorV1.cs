@@ -23,13 +23,13 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var monitor1 = new OpenStack.LoadBalancer.MonitorV1("monitor1", new()
+    ///     var monitor1 = new OpenStack.LoadBalancer.MonitorV1("monitor_1", new()
     ///     {
-    ///         AdminStateUp = "true",
-    ///         Delay = 30,
-    ///         MaxRetries = 3,
-    ///         Timeout = 5,
     ///         Type = "PING",
+    ///         Delay = 30,
+    ///         Timeout = 5,
+    ///         MaxRetries = 3,
+    ///         AdminStateUp = "true",
     ///     });
     /// 
     /// });

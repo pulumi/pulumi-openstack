@@ -23,12 +23,13 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vip1 = new OpenStack.LoadBalancer.Vip("vip1", new()
+    ///     var vip1 = new OpenStack.LoadBalancer.Vip("vip_1", new()
     ///     {
-    ///         PoolId = "67890",
-    ///         Port = 80,
-    ///         Protocol = "HTTP",
+    ///         Name = "tf_test_lb_vip",
     ///         SubnetId = "12345",
+    ///         Protocol = "HTTP",
+    ///         Port = 80,
+    ///         PoolId = "67890",
     ///     });
     /// 
     /// });

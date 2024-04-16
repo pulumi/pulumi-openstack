@@ -521,9 +521,10 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        project1 = openstack.identity.Project("project1")
-        user1 = openstack.identity.User("user1",
+        project1 = openstack.identity.Project("project_1", name="project_1")
+        user1 = openstack.identity.User("user_1",
             default_project_id=project1.id,
+            name="user_1",
             description="A user",
             password="password123",
             ignore_change_password_upon_first_use=True,
@@ -602,9 +603,10 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        project1 = openstack.identity.Project("project1")
-        user1 = openstack.identity.User("user1",
+        project1 = openstack.identity.Project("project_1", name="project_1")
+        user1 = openstack.identity.User("user_1",
             default_project_id=project1.id,
+            name="user_1",
             description="A user",
             password="password123",
             ignore_change_password_upon_first_use=True,

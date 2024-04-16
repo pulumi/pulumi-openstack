@@ -24,48 +24,6 @@ import (
 //
 //	created with zero value.
 //
-// ## Example Usage
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/identity"
-//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project1, err := identity.NewProject(ctx, "project1", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networking.NewQuotaV2(ctx, "quota1", &networking.QuotaV2Args{
-//				ProjectId:         project1.ID(),
-//				Floatingip:        pulumi.Int(10),
-//				Network:           pulumi.Int(4),
-//				Port:              pulumi.Int(100),
-//				RbacPolicy:        pulumi.Int(10),
-//				Router:            pulumi.Int(4),
-//				SecurityGroup:     pulumi.Int(10),
-//				SecurityGroupRule: pulumi.Int(100),
-//				Subnet:            pulumi.Int(8),
-//				Subnetpool:        pulumi.Int(2),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
 // ## Import
 //
 // Quotas can be imported using the `project_id/region_name`, e.g.

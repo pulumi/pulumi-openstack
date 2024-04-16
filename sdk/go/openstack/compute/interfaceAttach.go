@@ -33,13 +33,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//			_, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
+//				Name:         pulumi.String("network_1"),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//			instance1, err := compute.NewInstance(ctx, "instance_1", &compute.InstanceArgs{
+//				Name: pulumi.String("instance_1"),
 //				SecurityGroups: pulumi.StringArray{
 //					pulumi.String("default"),
 //				},
@@ -47,9 +49,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInterfaceAttach(ctx, "ai1", &compute.InterfaceAttachArgs{
+//			_, err = compute.NewInterfaceAttach(ctx, "ai_1", &compute.InterfaceAttachArgs{
 //				InstanceId: instance1.ID(),
-//				NetworkId:  pulumi.Any(openstack_networking_port_v2.Network_1.Id),
+//				NetworkId:  pulumi.Any(network1OpenstackNetworkingPortV2.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -77,13 +79,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//			_, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
+//				Name:         pulumi.String("network_1"),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//			instance1, err := compute.NewInstance(ctx, "instance_1", &compute.InstanceArgs{
+//				Name: pulumi.String("instance_1"),
 //				SecurityGroups: pulumi.StringArray{
 //					pulumi.String("default"),
 //				},
@@ -91,9 +95,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInterfaceAttach(ctx, "ai1", &compute.InterfaceAttachArgs{
+//			_, err = compute.NewInterfaceAttach(ctx, "ai_1", &compute.InterfaceAttachArgs{
 //				InstanceId: instance1.ID(),
-//				NetworkId:  pulumi.Any(openstack_networking_port_v2.Network_1.Id),
+//				NetworkId:  pulumi.Any(network1OpenstackNetworkingPortV2.Id),
 //				FixedIp:    pulumi.String("10.0.10.10"),
 //			})
 //			if err != nil {
@@ -122,20 +126,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//			network1, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
+//				Name:         pulumi.String("network_1"),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			port1, err := networking.NewPort(ctx, "port1", &networking.PortArgs{
+//			port1, err := networking.NewPort(ctx, "port_1", &networking.PortArgs{
+//				Name:         pulumi.String("port_1"),
 //				NetworkId:    network1.ID(),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//			instance1, err := compute.NewInstance(ctx, "instance_1", &compute.InstanceArgs{
+//				Name: pulumi.String("instance_1"),
 //				SecurityGroups: pulumi.StringArray{
 //					pulumi.String("default"),
 //				},
@@ -143,7 +150,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInterfaceAttach(ctx, "ai1", &compute.InterfaceAttachArgs{
+//			_, err = compute.NewInterfaceAttach(ctx, "ai_1", &compute.InterfaceAttachArgs{
 //				InstanceId: instance1.ID(),
 //				PortId:     port1.ID(),
 //			})

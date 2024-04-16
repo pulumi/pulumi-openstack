@@ -38,13 +38,14 @@ namespace Pulumi.OpenStack.Identity
     /// {
     ///     var swift = new OpenStack.Identity.ApplicationCredential("swift", new()
     ///     {
+    ///         Name = "swift",
     ///         Description = "Swift technical application credential",
-    ///         ExpiresAt = "2019-02-13T12:12:12Z",
+    ///         Secret = "supersecret",
     ///         Roles = new[]
     ///         {
     ///             "swiftoperator",
     ///         },
-    ///         Secret = "supersecret",
+    ///         ExpiresAt = "2019-02-13T12:12:12Z",
     ///     });
     /// 
     /// });
@@ -70,6 +71,7 @@ namespace Pulumi.OpenStack.Identity
     /// {
     ///     var unrestricted = new OpenStack.Identity.ApplicationCredential("unrestricted", new()
     ///     {
+    ///         Name = "unrestricted",
     ///         Description = "Unrestricted application credential",
     ///         Unrestricted = true,
     ///     });
@@ -98,22 +100,23 @@ namespace Pulumi.OpenStack.Identity
     /// {
     ///     var monitoring = new OpenStack.Identity.ApplicationCredential("monitoring", new()
     ///     {
+    ///         Name = "monitoring",
+    ///         ExpiresAt = "2019-02-13T12:12:12Z",
     ///         AccessRules = new[]
     ///         {
     ///             new OpenStack.Identity.Inputs.ApplicationCredentialAccessRuleArgs
     ///             {
-    ///                 Method = "GET",
     ///                 Path = "/v2.0/metrics",
     ///                 Service = "monitoring",
+    ///                 Method = "GET",
     ///             },
     ///             new OpenStack.Identity.Inputs.ApplicationCredentialAccessRuleArgs
     ///             {
-    ///                 Method = "PUT",
     ///                 Path = "/v2.0/metrics",
     ///                 Service = "monitoring",
+    ///                 Method = "PUT",
     ///             },
     ///         },
-    ///         ExpiresAt = "2019-02-13T12:12:12Z",
     ///     });
     /// 
     /// });

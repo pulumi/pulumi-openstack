@@ -87,9 +87,9 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var publicAddressscope = NetworkingFunctions.getAddressScope(GetAddressScopeArgs.builder()
-     *             .ipVersion(4)
      *             .name(&#34;public_addressscope&#34;)
      *             .shared(true)
+     *             .ipVersion(4)
      *             .build());
      * 
      *     }
@@ -129,9 +129,9 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var publicAddressscope = NetworkingFunctions.getAddressScope(GetAddressScopeArgs.builder()
-     *             .ipVersion(4)
      *             .name(&#34;public_addressscope&#34;)
      *             .shared(true)
+     *             .ipVersion(4)
      *             .build());
      * 
      *     }
@@ -171,9 +171,9 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var publicAddressscope = NetworkingFunctions.getAddressScope(GetAddressScopeArgs.builder()
-     *             .ipVersion(4)
      *             .name(&#34;public_addressscope&#34;)
      *             .shared(true)
+     *             .ipVersion(4)
      *             .build());
      * 
      *     }
@@ -213,9 +213,9 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var publicAddressscope = NetworkingFunctions.getAddressScope(GetAddressScopeArgs.builder()
-     *             .ipVersion(4)
      *             .name(&#34;public_addressscope&#34;)
      *             .shared(true)
+     *             .ipVersion(4)
      *             .build());
      * 
      *     }
@@ -255,9 +255,9 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var publicAddressscope = NetworkingFunctions.getAddressScope(GetAddressScopeArgs.builder()
-     *             .ipVersion(4)
      *             .name(&#34;public_addressscope&#34;)
      *             .shared(true)
+     *             .ipVersion(4)
      *             .build());
      * 
      *     }
@@ -297,9 +297,9 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var publicAddressscope = NetworkingFunctions.getAddressScope(GetAddressScopeArgs.builder()
-     *             .ipVersion(4)
      *             .name(&#34;public_addressscope&#34;)
      *             .shared(true)
+     *             .ipVersion(4)
      *             .build());
      * 
      *     }

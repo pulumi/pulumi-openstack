@@ -29,7 +29,7 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var floatip1 = new OpenStack.Compute.FloatingIp("floatip1", new()
+    ///     var floatip1 = new OpenStack.Compute.FloatingIp("floatip_1", new()
     ///     {
     ///         Pool = "public",
     ///     });

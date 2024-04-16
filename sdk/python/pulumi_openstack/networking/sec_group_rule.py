@@ -553,8 +553,10 @@ class SecGroupRule(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        secgroup1 = openstack.networking.SecGroup("secgroup1", description="My neutron security group")
-        secgroup_rule1 = openstack.networking.SecGroupRule("secgroupRule1",
+        secgroup1 = openstack.networking.SecGroup("secgroup_1",
+            name="secgroup_1",
+            description="My neutron security group")
+        secgroup_rule1 = openstack.networking.SecGroupRule("secgroup_rule_1",
             direction="ingress",
             ethertype="IPv4",
             protocol="tcp",
@@ -645,8 +647,10 @@ class SecGroupRule(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        secgroup1 = openstack.networking.SecGroup("secgroup1", description="My neutron security group")
-        secgroup_rule1 = openstack.networking.SecGroupRule("secgroupRule1",
+        secgroup1 = openstack.networking.SecGroup("secgroup_1",
+            name="secgroup_1",
+            description="My neutron security group")
+        secgroup_rule1 = openstack.networking.SecGroupRule("secgroup_rule_1",
             direction="ingress",
             ethertype="IPv4",
             protocol="tcp",

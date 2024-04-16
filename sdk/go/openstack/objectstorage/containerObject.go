@@ -31,8 +31,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			container1, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
+//			container1, err := objectstorage.NewContainer(ctx, "container_1", &objectstorage.ContainerArgs{
 //				Region: pulumi.String("RegionOne"),
+//				Name:   pulumi.String("tf-test-container-1"),
 //				Metadata: pulumi.Map{
 //					pulumi.Any(map[string]interface{}{
 //						"test": "true",
@@ -43,9 +44,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = objectstorage.NewContainerObject(ctx, "doc1", &objectstorage.ContainerObjectArgs{
+//			_, err = objectstorage.NewContainerObject(ctx, "doc_1", &objectstorage.ContainerObjectArgs{
 //				Region:        pulumi.String("RegionOne"),
 //				ContainerName: container1.Name,
+//				Name:          pulumi.String("test/default.json"),
 //				Metadata: pulumi.Map{
 //					pulumi.Any(map[string]interface{}{
 //						"test": "true",
@@ -79,8 +81,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			container1, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
+//			container1, err := objectstorage.NewContainer(ctx, "container_1", &objectstorage.ContainerArgs{
 //				Region: pulumi.String("RegionOne"),
+//				Name:   pulumi.String("tf-test-container-1"),
 //				Metadata: pulumi.Map{
 //					pulumi.Any(map[string]interface{}{
 //						"test": "true",
@@ -91,9 +94,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = objectstorage.NewContainerObject(ctx, "doc1", &objectstorage.ContainerObjectArgs{
+//			_, err = objectstorage.NewContainerObject(ctx, "doc_1", &objectstorage.ContainerObjectArgs{
 //				Region:        pulumi.String("RegionOne"),
 //				ContainerName: container1.Name,
+//				Name:          pulumi.String("test/default.json"),
 //				Metadata: pulumi.Map{
 //					pulumi.Any(map[string]interface{}{
 //						"test": "true",

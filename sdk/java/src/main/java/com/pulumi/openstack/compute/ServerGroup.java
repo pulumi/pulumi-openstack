@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test_sg = new ServerGroup(&#34;test-sg&#34;, ServerGroupArgs.builder()        
+ *             .name(&#34;my-sg&#34;)
  *             .policies(&#34;anti-affinity&#34;)
  *             .build());
  * 
@@ -82,6 +83,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test_sg = new ServerGroup(&#34;test-sg&#34;, ServerGroupArgs.builder()        
+ *             .name(&#34;my-sg&#34;)
  *             .policies(&#34;anti-affinity&#34;)
  *             .rules(ServerGroupRulesArgs.builder()
  *                 .maxServerPerHost(3)

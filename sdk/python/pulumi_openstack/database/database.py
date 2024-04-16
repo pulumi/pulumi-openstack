@@ -143,7 +143,9 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        mydb = openstack.database.Database("mydb", instance_id=openstack_db_instance_v1["basic"]["id"])
+        mydb = openstack.database.Database("mydb",
+            name="mydb",
+            instance_id=basic["id"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -179,7 +181,9 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        mydb = openstack.database.Database("mydb", instance_id=openstack_db_instance_v1["basic"]["id"])
+        mydb = openstack.database.Database("mydb",
+            name="mydb",
+            instance_id=basic["id"])
         ```
         <!--End PulumiCodeChooser -->
 

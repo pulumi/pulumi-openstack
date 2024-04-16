@@ -230,16 +230,17 @@ class AggregateV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        dell_servers = openstack.compute.AggregateV2("dellServers",
-            hosts=[
-                "myhost01.example.com",
-                "myhost02.example.com",
-            ],
+        dell_servers = openstack.compute.AggregateV2("dell_servers",
+            region="RegionOne",
+            name="dell_servers",
+            zone="nova",
             metadata={
                 "cpus": "56",
             },
-            region="RegionOne",
-            zone="nova")
+            hosts=[
+                "myhost01.example.com",
+                "myhost02.example.com",
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -250,7 +251,7 @@ class AggregateV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        test = openstack.compute.AggregateV2("test")
+        test = openstack.compute.AggregateV2("test", name="test")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -307,16 +308,17 @@ class AggregateV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        dell_servers = openstack.compute.AggregateV2("dellServers",
-            hosts=[
-                "myhost01.example.com",
-                "myhost02.example.com",
-            ],
+        dell_servers = openstack.compute.AggregateV2("dell_servers",
+            region="RegionOne",
+            name="dell_servers",
+            zone="nova",
             metadata={
                 "cpus": "56",
             },
-            region="RegionOne",
-            zone="nova")
+            hosts=[
+                "myhost01.example.com",
+                "myhost02.example.com",
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -327,7 +329,7 @@ class AggregateV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        test = openstack.compute.AggregateV2("test")
+        test = openstack.compute.AggregateV2("test", name="test")
         ```
         <!--End PulumiCodeChooser -->
 

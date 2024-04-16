@@ -157,13 +157,14 @@ class FlavorAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        project1 = openstack.identity.Project("project1")
-        flavor1 = openstack.compute.Flavor("flavor1",
+        project1 = openstack.identity.Project("project_1", name="my-project")
+        flavor1 = openstack.compute.Flavor("flavor_1",
+            name="my-flavor",
             ram=8096,
             vcpus=2,
             disk=20,
             is_public=False)
-        access1 = openstack.compute.FlavorAccess("access1",
+        access1 = openstack.compute.FlavorAccess("access_1",
             tenant_id=project1.id,
             flavor_id=flavor1.id)
         ```
@@ -208,13 +209,14 @@ class FlavorAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        project1 = openstack.identity.Project("project1")
-        flavor1 = openstack.compute.Flavor("flavor1",
+        project1 = openstack.identity.Project("project_1", name="my-project")
+        flavor1 = openstack.compute.Flavor("flavor_1",
+            name="my-flavor",
             ram=8096,
             vcpus=2,
             disk=20,
             is_public=False)
-        access1 = openstack.compute.FlavorAccess("access1",
+        access1 = openstack.compute.FlavorAccess("access_1",
             tenant_id=project1.id,
             flavor_id=flavor1.id)
         ```

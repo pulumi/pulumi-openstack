@@ -15,9 +15,9 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const publicAddressscope = openstack.networking.getAddressScope({
- *     ipVersion: 4,
  *     name: "public_addressscope",
  *     shared: true,
+ *     ipVersion: 4,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -101,9 +101,9 @@ export interface GetAddressScopeResult {
  * import * as openstack from "@pulumi/openstack";
  *
  * const publicAddressscope = openstack.networking.getAddressScope({
- *     ipVersion: 4,
  *     name: "public_addressscope",
  *     shared: true,
+ *     ipVersion: 4,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

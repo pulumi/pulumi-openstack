@@ -36,7 +36,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := database.NewUser(ctx, "basic", &database.UserArgs{
-//				InstanceId: pulumi.Any(openstack_db_instance_v1.Basic.Id),
+//				Name:       pulumi.String("basic"),
+//				InstanceId: pulumi.Any(basicOpenstackDbInstanceV1.Id),
 //				Password:   pulumi.String("password"),
 //				Databases: pulumi.StringArray{
 //					pulumi.String("testdb"),

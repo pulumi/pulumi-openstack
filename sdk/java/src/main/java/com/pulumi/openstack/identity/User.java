@@ -39,6 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.openstack.identity.Project;
+ * import com.pulumi.openstack.identity.ProjectArgs;
  * import com.pulumi.openstack.identity.User;
  * import com.pulumi.openstack.identity.UserArgs;
  * import com.pulumi.openstack.identity.inputs.UserMultiFactorAuthRuleArgs;
@@ -55,10 +56,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project1 = new Project(&#34;project1&#34;);
+ *         var project1 = new Project(&#34;project1&#34;, ProjectArgs.builder()        
+ *             .name(&#34;project_1&#34;)
+ *             .build());
  * 
  *         var user1 = new User(&#34;user1&#34;, UserArgs.builder()        
  *             .defaultProjectId(project1.id())
+ *             .name(&#34;user_1&#34;)
  *             .description(&#34;A user&#34;)
  *             .password(&#34;password123&#34;)
  *             .ignoreChangePasswordUponFirstUse(true)

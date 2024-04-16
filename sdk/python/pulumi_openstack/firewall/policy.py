@@ -359,22 +359,26 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        rule1 = openstack.firewall.Rule("rule1",
+        rule1 = openstack.firewall.Rule("rule_1",
+            name="my-rule-1",
             description="drop TELNET traffic",
             action="deny",
             protocol="tcp",
             destination_port="23",
             enabled=True)
-        rule2 = openstack.firewall.Rule("rule2",
+        rule2 = openstack.firewall.Rule("rule_2",
+            name="my-rule-2",
             description="drop NTP traffic",
             action="deny",
             protocol="udp",
             destination_port="123",
             enabled=False)
-        policy1 = openstack.firewall.Policy("policy1", rules=[
-            rule1.id,
-            rule2.id,
-        ])
+        policy1 = openstack.firewall.Policy("policy_1",
+            name="my-policy",
+            rules=[
+                rule1.id,
+                rule2.id,
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -427,22 +431,26 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        rule1 = openstack.firewall.Rule("rule1",
+        rule1 = openstack.firewall.Rule("rule_1",
+            name="my-rule-1",
             description="drop TELNET traffic",
             action="deny",
             protocol="tcp",
             destination_port="23",
             enabled=True)
-        rule2 = openstack.firewall.Rule("rule2",
+        rule2 = openstack.firewall.Rule("rule_2",
+            name="my-rule-2",
             description="drop NTP traffic",
             action="deny",
             protocol="udp",
             destination_port="123",
             enabled=False)
-        policy1 = openstack.firewall.Policy("policy1", rules=[
-            rule1.id,
-            rule2.id,
-        ])
+        policy1 = openstack.firewall.Policy("policy_1",
+            name="my-policy",
+            rules=[
+                rule1.id,
+                rule2.id,
+            ])
         ```
         <!--End PulumiCodeChooser -->
 

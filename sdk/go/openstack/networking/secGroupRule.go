@@ -31,13 +31,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			secgroup1, err := networking.NewSecGroup(ctx, "secgroup1", &networking.SecGroupArgs{
+//			secgroup1, err := networking.NewSecGroup(ctx, "secgroup_1", &networking.SecGroupArgs{
+//				Name:        pulumi.String("secgroup_1"),
 //				Description: pulumi.String("My neutron security group"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networking.NewSecGroupRule(ctx, "secgroupRule1", &networking.SecGroupRuleArgs{
+//			_, err = networking.NewSecGroupRule(ctx, "secgroup_rule_1", &networking.SecGroupRuleArgs{
 //				Direction:       pulumi.String("ingress"),
 //				Ethertype:       pulumi.String("IPv4"),
 //				Protocol:        pulumi.String("tcp"),

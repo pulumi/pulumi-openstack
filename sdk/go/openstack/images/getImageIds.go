@@ -31,10 +31,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := images.GetImageIds(ctx, &images.GetImageIdsArgs{
 //				NameRegex: pulumi.StringRef("^Ubuntu 16\\.04.*-amd64"),
+//				Sort:      pulumi.StringRef("updated_at"),
 //				Properties: map[string]interface{}{
 //					"key": "value",
 //				},
-//				Sort: pulumi.StringRef("updated_at"),
 //			}, nil)
 //			if err != nil {
 //				return err

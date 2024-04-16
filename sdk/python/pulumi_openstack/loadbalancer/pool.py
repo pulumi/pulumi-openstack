@@ -444,14 +444,14 @@ class Pool(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        pool1 = openstack.loadbalancer.Pool("pool1",
+        pool1 = openstack.loadbalancer.Pool("pool_1",
+            protocol="HTTP",
             lb_method="ROUND_ROBIN",
             listener_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
             persistence=openstack.loadbalancer.PoolPersistenceArgs(
-                cookie_name="testCookie",
                 type="APP_COOKIE",
-            ),
-            protocol="HTTP")
+                cookie_name="testCookie",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -512,14 +512,14 @@ class Pool(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        pool1 = openstack.loadbalancer.Pool("pool1",
+        pool1 = openstack.loadbalancer.Pool("pool_1",
+            protocol="HTTP",
             lb_method="ROUND_ROBIN",
             listener_id="d9415786-5f1a-428b-b35f-2f1523e146d2",
             persistence=openstack.loadbalancer.PoolPersistenceArgs(
-                cookie_name="testCookie",
                 type="APP_COOKIE",
-            ),
-            protocol="HTTP")
+                cookie_name="testCookie",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

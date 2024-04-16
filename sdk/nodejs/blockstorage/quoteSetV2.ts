@@ -15,32 +15,6 @@ import * as utilities from "../utilities";
  * > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
  *     created with zero value. This excludes volume type quota.
  *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const project1 = new openstack.identity.Project("project1", {});
- * const quotaset1 = new openstack.blockstorage.QuoteSetV2("quotaset1", {
- *     projectId: project1.id,
- *     volumes: 10,
- *     snapshots: 4,
- *     gigabytes: 100,
- *     perVolumeGigabytes: 10,
- *     backups: 4,
- *     backupGigabytes: 10,
- *     groups: 100,
- *     volumeTypeQuota: {
- *         volumes_ssd: 30,
- *         gigabytes_ssd: 500,
- *         snapshots_ssd: 10,
- *     },
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
  * ## Import
  *
  * Quotasets can be imported using the `project_id/region`, e.g.

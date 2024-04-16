@@ -34,19 +34,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			user1, err := identity.NewUser(ctx, "user1", &identity.UserArgs{
+//			user1, err := identity.NewUser(ctx, "user_1", &identity.UserArgs{
+//				Name:     pulumi.String("user_1"),
 //				DomainId: pulumi.String("default"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			role1, err := identity.NewRole(ctx, "role1", &identity.RoleArgs{
+//			role1, err := identity.NewRole(ctx, "role_1", &identity.RoleArgs{
+//				Name:     pulumi.String("role_1"),
 //				DomainId: pulumi.String("default"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = identity.NewInheritRoleAssignment(ctx, "roleAssignment1", &identity.InheritRoleAssignmentArgs{
+//			_, err = identity.NewInheritRoleAssignment(ctx, "role_assignment_1", &identity.InheritRoleAssignmentArgs{
 //				UserId:   user1.ID(),
 //				DomainId: pulumi.String("default"),
 //				RoleId:   role1.ID(),

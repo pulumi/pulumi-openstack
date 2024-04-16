@@ -29,14 +29,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := loadbalancer.NewPoolV1(ctx, "pool1", &loadbalancer.PoolV1Args{
+//			_, err := loadbalancer.NewPoolV1(ctx, "pool_1", &loadbalancer.PoolV1Args{
+//				Name:       pulumi.String("tf_test_lb_pool"),
+//				Protocol:   pulumi.String("HTTP"),
+//				SubnetId:   pulumi.String("12345"),
 //				LbMethod:   pulumi.String("ROUND_ROBIN"),
 //				LbProvider: pulumi.String("haproxy"),
 //				MonitorIds: pulumi.StringArray{
 //					pulumi.String("67890"),
 //				},
-//				Protocol: pulumi.String("HTTP"),
-//				SubnetId: pulumi.String("12345"),
 //			})
 //			if err != nil {
 //				return err
@@ -65,13 +66,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//			network1, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
+//				Name:         pulumi.String("network_1"),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//			subnet1, err := networking.NewSubnet(ctx, "subnet_1", &networking.SubnetArgs{
 //				NetworkId: network1.ID(),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //				IpVersion: pulumi.Int(4),
@@ -79,7 +81,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			secgroup1, err := compute.NewSecGroup(ctx, "secgroup1", &compute.SecGroupArgs{
+//			secgroup1, err := compute.NewSecGroup(ctx, "secgroup_1", &compute.SecGroupArgs{
+//				Name:        pulumi.String("secgroup_1"),
 //				Description: pulumi.String("Rules for secgroup_1"),
 //				Rules: compute.SecGroupRuleArray{
 //					&compute.SecGroupRuleArgs{
@@ -99,7 +102,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//			instance1, err := compute.NewInstance(ctx, "instance_1", &compute.InstanceArgs{
+//				Name: pulumi.String("instance_1"),
 //				SecurityGroups: pulumi.StringArray{
 //					pulumi.String("default"),
 //					secgroup1.Name,
@@ -113,7 +117,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			instance2, err := compute.NewInstance(ctx, "instance2", &compute.InstanceArgs{
+//			instance2, err := compute.NewInstance(ctx, "instance_2", &compute.InstanceArgs{
+//				Name: pulumi.String("instance_2"),
 //				SecurityGroups: pulumi.StringArray{
 //					pulumi.String("default"),
 //					secgroup1.Name,
@@ -127,7 +132,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			monitor1, err := loadbalancer.NewMonitorV1(ctx, "monitor1", &loadbalancer.MonitorV1Args{
+//			monitor1, err := loadbalancer.NewMonitorV1(ctx, "monitor_1", &loadbalancer.MonitorV1Args{
 //				Type:         pulumi.String("TCP"),
 //				Delay:        pulumi.Int(30),
 //				Timeout:      pulumi.Int(5),
@@ -137,7 +142,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			pool1, err := loadbalancer.NewPoolV1(ctx, "pool1", &loadbalancer.PoolV1Args{
+//			pool1, err := loadbalancer.NewPoolV1(ctx, "pool_1", &loadbalancer.PoolV1Args{
+//				Name:     pulumi.String("pool_1"),
 //				Protocol: pulumi.String("TCP"),
 //				SubnetId: subnet1.ID(),
 //				LbMethod: pulumi.String("ROUND_ROBIN"),
@@ -148,7 +154,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = loadbalancer.NewMemberV1(ctx, "member1", &loadbalancer.MemberV1Args{
+//			_, err = loadbalancer.NewMemberV1(ctx, "member_1", &loadbalancer.MemberV1Args{
 //				PoolId:  pool1.ID(),
 //				Address: instance1.AccessIpV4,
 //				Port:    pulumi.Int(80),
@@ -156,7 +162,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = loadbalancer.NewMemberV1(ctx, "member2", &loadbalancer.MemberV1Args{
+//			_, err = loadbalancer.NewMemberV1(ctx, "member_2", &loadbalancer.MemberV1Args{
 //				PoolId:  pool1.ID(),
 //				Address: instance2.AccessIpV4,
 //				Port:    pulumi.Int(80),
@@ -164,7 +170,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = loadbalancer.NewVip(ctx, "vip1", &loadbalancer.VipArgs{
+//			_, err = loadbalancer.NewVip(ctx, "vip_1", &loadbalancer.VipArgs{
+//				Name:     pulumi.String("vip_1"),
 //				SubnetId: subnet1.ID(),
 //				Protocol: pulumi.String("TCP"),
 //				Port:     pulumi.Int(80),

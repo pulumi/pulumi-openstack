@@ -264,8 +264,10 @@ class RbacPolicyV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        rbac_policy1 = openstack.networking.RbacPolicyV2("rbacPolicy1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        rbac_policy1 = openstack.networking.RbacPolicyV2("rbac_policy_1",
             action="access_as_shared",
             object_id=network1.id,
             object_type="network",
@@ -326,8 +328,10 @@ class RbacPolicyV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        rbac_policy1 = openstack.networking.RbacPolicyV2("rbacPolicy1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        rbac_policy1 = openstack.networking.RbacPolicyV2("rbac_policy_1",
             action="access_as_shared",
             object_id=network1.id,
             object_type="network",

@@ -23,96 +23,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Simple secret
- * 
- * The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.openstack.keymanager.SecretV1;
- * import com.pulumi.openstack.keymanager.SecretV1Args;
- * import com.pulumi.openstack.keymanager.ContainerV1;
- * import com.pulumi.openstack.keymanager.ContainerV1Args;
- * import com.pulumi.openstack.keymanager.inputs.ContainerV1SecretRefArgs;
- * import com.pulumi.openstack.networking.NetworkingFunctions;
- * import com.pulumi.openstack.networking.inputs.GetSubnetArgs;
- * import com.pulumi.openstack.loadbalancer.LoadBalancer;
- * import com.pulumi.openstack.loadbalancer.LoadBalancerArgs;
- * import com.pulumi.openstack.loadbalancer.Listener;
- * import com.pulumi.openstack.loadbalancer.ListenerArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var certificate1 = new SecretV1(&#34;certificate1&#34;, SecretV1Args.builder()        
- *             .payload(Files.readString(Paths.get(&#34;cert.pem&#34;)))
- *             .secretType(&#34;certificate&#34;)
- *             .payloadContentType(&#34;text/plain&#34;)
- *             .build());
- * 
- *         var privateKey1 = new SecretV1(&#34;privateKey1&#34;, SecretV1Args.builder()        
- *             .payload(Files.readString(Paths.get(&#34;cert-key.pem&#34;)))
- *             .secretType(&#34;private&#34;)
- *             .payloadContentType(&#34;text/plain&#34;)
- *             .build());
- * 
- *         var intermediate1 = new SecretV1(&#34;intermediate1&#34;, SecretV1Args.builder()        
- *             .payload(Files.readString(Paths.get(&#34;intermediate-ca.pem&#34;)))
- *             .secretType(&#34;certificate&#34;)
- *             .payloadContentType(&#34;text/plain&#34;)
- *             .build());
- * 
- *         var tls1 = new ContainerV1(&#34;tls1&#34;, ContainerV1Args.builder()        
- *             .type(&#34;certificate&#34;)
- *             .secretRefs(            
- *                 ContainerV1SecretRefArgs.builder()
- *                     .name(&#34;certificate&#34;)
- *                     .secretRef(certificate1.secretRef())
- *                     .build(),
- *                 ContainerV1SecretRefArgs.builder()
- *                     .name(&#34;private_key&#34;)
- *                     .secretRef(privateKey1.secretRef())
- *                     .build(),
- *                 ContainerV1SecretRefArgs.builder()
- *                     .name(&#34;intermediates&#34;)
- *                     .secretRef(intermediate1.secretRef())
- *                     .build())
- *             .build());
- * 
- *         final var subnet1 = NetworkingFunctions.getSubnet(GetSubnetArgs.builder()
- *             .name(&#34;my-subnet&#34;)
- *             .build());
- * 
- *         var lb1 = new LoadBalancer(&#34;lb1&#34;, LoadBalancerArgs.builder()        
- *             .vipSubnetId(subnet1.applyValue(getSubnetResult -&gt; getSubnetResult.id()))
- *             .build());
- * 
- *         var listener1 = new Listener(&#34;listener1&#34;, ListenerArgs.builder()        
- *             .protocol(&#34;TERMINATED_HTTPS&#34;)
- *             .protocolPort(443)
- *             .loadbalancerId(lb1.id())
- *             .defaultTlsContainerRef(tls1.containerRef())
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ### Container with the ACL
  * 
  * &gt; **Note** Only read ACLs are supported
@@ -143,19 +53,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tls1 = new ContainerV1(&#34;tls1&#34;, ContainerV1Args.builder()        
+ *             .name(&#34;tls&#34;)
  *             .type(&#34;certificate&#34;)
  *             .secretRefs(            
  *                 ContainerV1SecretRefArgs.builder()
  *                     .name(&#34;certificate&#34;)
- *                     .secretRef(openstack_keymanager_secret_v1.certificate_1().secret_ref())
+ *                     .secretRef(certificate1.secretRef())
  *                     .build(),
  *                 ContainerV1SecretRefArgs.builder()
  *                     .name(&#34;private_key&#34;)
- *                     .secretRef(openstack_keymanager_secret_v1.private_key_1().secret_ref())
+ *                     .secretRef(privateKey1.secretRef())
  *                     .build(),
  *                 ContainerV1SecretRefArgs.builder()
  *                     .name(&#34;intermediates&#34;)
- *                     .secretRef(openstack_keymanager_secret_v1.intermediate_1().secret_ref())
+ *                     .secretRef(intermediate1.secretRef())
  *                     .build())
  *             .acl(ContainerV1AclArgs.builder()
  *                 .read(ContainerV1AclReadArgs.builder()

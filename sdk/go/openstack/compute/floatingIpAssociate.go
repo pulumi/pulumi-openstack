@@ -32,7 +32,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//			instance1, err := compute.NewInstance(ctx, "instance_1", &compute.InstanceArgs{
+//				Name:     pulumi.String("instance_1"),
 //				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
 //				FlavorId: pulumi.String("3"),
 //				KeyPair:  pulumi.String("my_key_pair_name"),
@@ -43,14 +44,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			fip1FloatingIp, err := networking.NewFloatingIp(ctx, "fip1FloatingIp", &networking.FloatingIpArgs{
+//			fip1, err := networking.NewFloatingIp(ctx, "fip_1", &networking.FloatingIpArgs{
 //				Pool: pulumi.String("my_pool"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewFloatingIpAssociate(ctx, "fip1FloatingIpAssociate", &compute.FloatingIpAssociateArgs{
-//				FloatingIp: fip1FloatingIp.Address,
+//			_, err = compute.NewFloatingIpAssociate(ctx, "fip_1", &compute.FloatingIpAssociateArgs{
+//				FloatingIp: fip1.Address,
 //				InstanceId: instance1.ID(),
 //			})
 //			if err != nil {
@@ -79,7 +80,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//			instance1, err := compute.NewInstance(ctx, "instance_1", &compute.InstanceArgs{
+//				Name:     pulumi.String("instance_1"),
 //				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
 //				FlavorId: pulumi.String("3"),
 //				KeyPair:  pulumi.String("my_key_pair_name"),
@@ -98,14 +100,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			fip1FloatingIp, err := networking.NewFloatingIp(ctx, "fip1FloatingIp", &networking.FloatingIpArgs{
+//			fip1, err := networking.NewFloatingIp(ctx, "fip_1", &networking.FloatingIpArgs{
 //				Pool: pulumi.String("my_pool"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewFloatingIpAssociate(ctx, "fip1FloatingIpAssociate", &compute.FloatingIpAssociateArgs{
-//				FloatingIp: fip1FloatingIp.Address,
+//			_, err = compute.NewFloatingIpAssociate(ctx, "fip_1", &compute.FloatingIpAssociateArgs{
+//				FloatingIp: fip1.Address,
 //				InstanceId: instance1.ID(),
 //				FixedIp: instance1.Networks.ApplyT(func(networks []compute.InstanceNetwork) (*string, error) {
 //					return &networks[1].FixedIpV4, nil

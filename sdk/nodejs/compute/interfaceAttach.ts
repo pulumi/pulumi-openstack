@@ -17,11 +17,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const instance1 = new openstack.compute.Instance("instance1", {securityGroups: ["default"]});
- * const ai1 = new openstack.compute.InterfaceAttach("ai1", {
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     name: "network_1",
+ *     adminStateUp: true,
+ * });
+ * const instance1 = new openstack.compute.Instance("instance_1", {
+ *     name: "instance_1",
+ *     securityGroups: ["default"],
+ * });
+ * const ai1 = new openstack.compute.InterfaceAttach("ai_1", {
  *     instanceId: instance1.id,
- *     networkId: openstack_networking_port_v2.network_1.id,
+ *     networkId: network1OpenstackNetworkingPortV2.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -33,11 +39,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const instance1 = new openstack.compute.Instance("instance1", {securityGroups: ["default"]});
- * const ai1 = new openstack.compute.InterfaceAttach("ai1", {
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     name: "network_1",
+ *     adminStateUp: true,
+ * });
+ * const instance1 = new openstack.compute.Instance("instance_1", {
+ *     name: "instance_1",
+ *     securityGroups: ["default"],
+ * });
+ * const ai1 = new openstack.compute.InterfaceAttach("ai_1", {
  *     instanceId: instance1.id,
- *     networkId: openstack_networking_port_v2.network_1.id,
+ *     networkId: network1OpenstackNetworkingPortV2.id,
  *     fixedIp: "10.0.10.10",
  * });
  * ```
@@ -50,13 +62,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const port1 = new openstack.networking.Port("port1", {
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     name: "network_1",
+ *     adminStateUp: true,
+ * });
+ * const port1 = new openstack.networking.Port("port_1", {
+ *     name: "port_1",
  *     networkId: network1.id,
  *     adminStateUp: true,
  * });
- * const instance1 = new openstack.compute.Instance("instance1", {securityGroups: ["default"]});
- * const ai1 = new openstack.compute.InterfaceAttach("ai1", {
+ * const instance1 = new openstack.compute.Instance("instance_1", {
+ *     name: "instance_1",
+ *     securityGroups: ["default"],
+ * });
+ * const ai1 = new openstack.compute.InterfaceAttach("ai_1", {
  *     instanceId: instance1.id,
  *     portId: port1.id,
  * });

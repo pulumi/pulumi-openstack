@@ -27,6 +27,7 @@ namespace Pulumi.OpenStack.Compute
     /// {
     ///     var test_sg = new OpenStack.Compute.ServerGroup("test-sg", new()
     ///     {
+    ///         Name = "my-sg",
     ///         Policies = new[]
     ///         {
     ///             "anti-affinity",
@@ -50,6 +51,7 @@ namespace Pulumi.OpenStack.Compute
     /// {
     ///     var test_sg = new OpenStack.Compute.ServerGroup("test-sg", new()
     ///     {
+    ///         Name = "my-sg",
     ///         Policies = new[]
     ///         {
     ///             "anti-affinity",

@@ -48,13 +48,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var pool1 = new Pool(&#34;pool1&#34;, PoolArgs.builder()        
+ *             .protocol(&#34;HTTP&#34;)
  *             .lbMethod(&#34;ROUND_ROBIN&#34;)
  *             .listenerId(&#34;d9415786-5f1a-428b-b35f-2f1523e146d2&#34;)
  *             .persistence(PoolPersistenceArgs.builder()
- *                 .cookieName(&#34;testCookie&#34;)
  *                 .type(&#34;APP_COOKIE&#34;)
+ *                 .cookieName(&#34;testCookie&#34;)
  *                 .build())
- *             .protocol(&#34;HTTP&#34;)
  *             .build());
  * 
  *     }

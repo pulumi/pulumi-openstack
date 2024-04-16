@@ -29,9 +29,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := blockstorage.NewVolumeV1(ctx, "volume1", &blockstorage.VolumeV1Args{
-//				Description: pulumi.String("first test volume"),
+//			_, err := blockstorage.NewVolumeV1(ctx, "volume_1", &blockstorage.VolumeV1Args{
 //				Region:      pulumi.String("RegionOne"),
+//				Name:        pulumi.String("tf-test-volume"),
+//				Description: pulumi.String("first test volume"),
 //				Size:        pulumi.Int(3),
 //			})
 //			if err != nil {

@@ -53,16 +53,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network_1&#34;)
  *             .adminStateUp(&#34;true&#34;)
  *             .build());
  * 
  *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
+ *             .name(&#34;subnet_1&#34;)
  *             .cidr(&#34;192.168.199.0/24&#34;)
  *             .ipVersion(4)
  *             .networkId(network1.id())
  *             .build());
  * 
  *         var sharenetwork1 = new ShareNetwork(&#34;sharenetwork1&#34;, ShareNetworkArgs.builder()        
+ *             .name(&#34;test_sharenetwork&#34;)
  *             .description(&#34;test share network&#34;)
  *             .neutronNetId(network1.id())
  *             .neutronSubnetId(subnet1.id())
@@ -104,16 +107,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network_1&#34;)
  *             .adminStateUp(&#34;true&#34;)
  *             .build());
  * 
  *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
+ *             .name(&#34;subnet_1&#34;)
  *             .cidr(&#34;192.168.199.0/24&#34;)
  *             .ipVersion(4)
  *             .networkId(network1.id())
  *             .build());
  * 
  *         var securityservice1 = new SecurityService(&#34;securityservice1&#34;, SecurityServiceArgs.builder()        
+ *             .name(&#34;security&#34;)
  *             .description(&#34;created by terraform&#34;)
  *             .type(&#34;active_directory&#34;)
  *             .server(&#34;192.168.199.10&#34;)
@@ -125,6 +131,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sharenetwork1 = new ShareNetwork(&#34;sharenetwork1&#34;, ShareNetworkArgs.builder()        
+ *             .name(&#34;test_sharenetwork&#34;)
  *             .description(&#34;test share network with security services&#34;)
  *             .neutronNetId(network1.id())
  *             .neutronSubnetId(subnet1.id())

@@ -25,27 +25,28 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var clustertemplate1 = new OpenStack.ContainerInfra.ClusterTemplate("clustertemplate1", new()
+    ///     var clustertemplate1 = new OpenStack.ContainerInfra.ClusterTemplate("clustertemplate_1", new()
     ///     {
+    ///         Name = "clustertemplate_1",
+    ///         Image = "Fedora-Atomic-27",
     ///         Coe = "kubernetes",
+    ///         Flavor = "m1.small",
+    ///         MasterFlavor = "m1.medium",
     ///         DnsNameserver = "1.1.1.1",
     ///         DockerStorageDriver = "devicemapper",
     ///         DockerVolumeSize = 10,
-    ///         Flavor = "m1.small",
-    ///         FloatingIpEnabled = false,
-    ///         Image = "Fedora-Atomic-27",
-    ///         Labels = 
-    ///         {
-    ///             { "influx_grafana_dashboard_enabled", "true" },
-    ///             { "kube_dashboard_enabled", "true" },
-    ///             { "kube_tag", "1.11.1" },
-    ///             { "prometheus_monitoring", "true" },
-    ///         },
-    ///         MasterFlavor = "m1.medium",
-    ///         MasterLbEnabled = true,
+    ///         VolumeDriver = "cinder",
     ///         NetworkDriver = "flannel",
     ///         ServerType = "vm",
-    ///         VolumeDriver = "cinder",
+    ///         MasterLbEnabled = true,
+    ///         FloatingIpEnabled = false,
+    ///         Labels = 
+    ///         {
+    ///             { "kube_tag", "1.11.1" },
+    ///             { "kube_dashboard_enabled", "true" },
+    ///             { "prometheus_monitoring", "true" },
+    ///             { "influx_grafana_dashboard_enabled", "true" },
+    ///         },
     ///     });
     /// 
     /// });

@@ -30,13 +30,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
-//				ContentType: pulumi.String("application/json"),
+//			_, err := objectstorage.NewContainer(ctx, "container_1", &objectstorage.ContainerArgs{
+//				Region: pulumi.String("RegionOne"),
+//				Name:   pulumi.String("tf-test-container-1"),
 //				Metadata: pulumi.Map{
 //					"test": pulumi.Any("true"),
 //				},
-//				Region:     pulumi.String("RegionOne"),
-//				Versioning: pulumi.Bool(true),
+//				ContentType: pulumi.String("application/json"),
+//				Versioning:  pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -63,15 +64,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
-//				ContentType: pulumi.String("application/json"),
+//			_, err := objectstorage.NewContainer(ctx, "container_1", &objectstorage.ContainerArgs{
+//				Region: pulumi.String("RegionOne"),
+//				Name:   pulumi.String("tf-test-container-1"),
 //				Metadata: pulumi.Map{
 //					"test": pulumi.Any("true"),
 //				},
-//				Region: pulumi.String("RegionOne"),
+//				ContentType: pulumi.String("application/json"),
 //				VersioningLegacy: &objectstorage.ContainerVersioningLegacyArgs{
-//					Location: pulumi.String("tf-test-container-versions"),
 //					Type:     pulumi.String("versions"),
+//					Location: pulumi.String("tf-test-container-versions"),
 //				},
 //			})
 //			if err != nil {
@@ -99,9 +101,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
-//				ContainerRead: pulumi.String(".r:*"),
+//			// Requires that a user know the object name they are attempting to download
+//			_, err := objectstorage.NewContainer(ctx, "container_1", &objectstorage.ContainerArgs{
 //				Region:        pulumi.String("RegionOne"),
+//				Name:          pulumi.String("tf-test-container-1"),
+//				ContainerRead: pulumi.String(".r:*"),
 //			})
 //			if err != nil {
 //				return err
@@ -128,9 +132,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
-//				ContainerRead: pulumi.String(".r:*,.rlistings"),
+//			// Any user can read any object, and list all objects in the container
+//			_, err := objectstorage.NewContainer(ctx, "container_1", &objectstorage.ContainerArgs{
 //				Region:        pulumi.String("RegionOne"),
+//				Name:          pulumi.String("tf-test-container-1"),
+//				ContainerRead: pulumi.String(".r:*,.rlistings"),
 //			})
 //			if err != nil {
 //				return err
@@ -166,10 +172,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = objectstorage.NewContainer(ctx, "container1", &objectstorage.ContainerArgs{
-//				ContainerRead:  pulumi.String(fmt.Sprintf(".r:-%v", _var.Username)),
-//				ContainerWrite: pulumi.String(fmt.Sprintf("%v:%v", current.ProjectId, _var.Username)),
+//			// The named user can only upload objects, not read objects or list the container
+//			_, err = objectstorage.NewContainer(ctx, "container_1", &objectstorage.ContainerArgs{
 //				Region:         pulumi.String("RegionOne"),
+//				Name:           pulumi.String("tf-test-container-1"),
+//				ContainerRead:  pulumi.String(fmt.Sprintf(".r:-%v", username)),
+//				ContainerWrite: pulumi.String(fmt.Sprintf("%v:%v", current.ProjectId, username)),
 //			})
 //			if err != nil {
 //				return err

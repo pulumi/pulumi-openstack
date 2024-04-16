@@ -1280,25 +1280,26 @@ class ClusterTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        clustertemplate1 = openstack.containerinfra.ClusterTemplate("clustertemplate1",
+        clustertemplate1 = openstack.containerinfra.ClusterTemplate("clustertemplate_1",
+            name="clustertemplate_1",
+            image="Fedora-Atomic-27",
             coe="kubernetes",
+            flavor="m1.small",
+            master_flavor="m1.medium",
             dns_nameserver="1.1.1.1",
             docker_storage_driver="devicemapper",
             docker_volume_size=10,
-            flavor="m1.small",
-            floating_ip_enabled=False,
-            image="Fedora-Atomic-27",
-            labels={
-                "influx_grafana_dashboard_enabled": "true",
-                "kube_dashboard_enabled": "true",
-                "kube_tag": "1.11.1",
-                "prometheus_monitoring": "true",
-            },
-            master_flavor="m1.medium",
-            master_lb_enabled=True,
+            volume_driver="cinder",
             network_driver="flannel",
             server_type="vm",
-            volume_driver="cinder")
+            master_lb_enabled=True,
+            floating_ip_enabled=False,
+            labels={
+                "kube_tag": "1.11.1",
+                "kube_dashboard_enabled": "true",
+                "prometheus_monitoring": "true",
+                "influx_grafana_dashboard_enabled": "true",
+            })
         ```
         <!--End PulumiCodeChooser -->
 
@@ -1452,25 +1453,26 @@ class ClusterTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        clustertemplate1 = openstack.containerinfra.ClusterTemplate("clustertemplate1",
+        clustertemplate1 = openstack.containerinfra.ClusterTemplate("clustertemplate_1",
+            name="clustertemplate_1",
+            image="Fedora-Atomic-27",
             coe="kubernetes",
+            flavor="m1.small",
+            master_flavor="m1.medium",
             dns_nameserver="1.1.1.1",
             docker_storage_driver="devicemapper",
             docker_volume_size=10,
-            flavor="m1.small",
-            floating_ip_enabled=False,
-            image="Fedora-Atomic-27",
-            labels={
-                "influx_grafana_dashboard_enabled": "true",
-                "kube_dashboard_enabled": "true",
-                "kube_tag": "1.11.1",
-                "prometheus_monitoring": "true",
-            },
-            master_flavor="m1.medium",
-            master_lb_enabled=True,
+            volume_driver="cinder",
             network_driver="flannel",
             server_type="vm",
-            volume_driver="cinder")
+            master_lb_enabled=True,
+            floating_ip_enabled=False,
+            labels={
+                "kube_tag": "1.11.1",
+                "kube_dashboard_enabled": "true",
+                "prometheus_monitoring": "true",
+                "influx_grafana_dashboard_enabled": "true",
+            })
         ```
         <!--End PulumiCodeChooser -->
 

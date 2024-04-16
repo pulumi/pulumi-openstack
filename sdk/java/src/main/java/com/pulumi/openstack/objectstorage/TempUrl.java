@@ -55,11 +55,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var container1 = new Container(&#34;container1&#34;, ContainerArgs.builder()        
+ *             .name(&#34;test&#34;)
  *             .metadata(Map.of(&#34;Temp-URL-Key&#34;, &#34;testkey&#34;))
  *             .build());
  * 
  *         var object1 = new ContainerObject(&#34;object1&#34;, ContainerObjectArgs.builder()        
  *             .containerName(container1.name())
+ *             .name(&#34;test&#34;)
  *             .content(&#34;Hello, world!&#34;)
  *             .build());
  * 

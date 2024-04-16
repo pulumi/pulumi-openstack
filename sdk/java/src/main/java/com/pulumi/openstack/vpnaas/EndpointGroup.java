@@ -45,10 +45,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var group1 = new EndpointGroup(&#34;group1&#34;, EndpointGroupArgs.builder()        
+ *             .name(&#34;Group 1&#34;)
+ *             .type(&#34;cidr&#34;)
  *             .endpoints(            
  *                 &#34;10.2.0.0/24&#34;,
  *                 &#34;10.3.0.0/24&#34;)
- *             .type(&#34;cidr&#34;)
  *             .build());
  * 
  *     }

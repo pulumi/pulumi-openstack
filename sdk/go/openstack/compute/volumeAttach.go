@@ -33,13 +33,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			volume1, err := blockstorage.NewVolume(ctx, "volume1", &blockstorage.VolumeArgs{
+//			volume1, err := blockstorage.NewVolume(ctx, "volume_1", &blockstorage.VolumeArgs{
+//				Name: pulumi.String("volume_1"),
 //				Size: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//			instance1, err := compute.NewInstance(ctx, "instance_1", &compute.InstanceArgs{
+//				Name: pulumi.String("instance_1"),
 //				SecurityGroups: pulumi.StringArray{
 //					pulumi.String("default"),
 //				},
@@ -47,7 +49,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewVolumeAttach(ctx, "va1", &compute.VolumeAttachArgs{
+//			_, err = compute.NewVolumeAttach(ctx, "va_1", &compute.VolumeAttachArgs{
 //				InstanceId: instance1.ID(),
 //				VolumeId:   volume1.ID(),
 //			})
@@ -80,14 +82,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			volume1, err := blockstorage.NewVolume(ctx, "volume1", &blockstorage.VolumeArgs{
+//			volume1, err := blockstorage.NewVolume(ctx, "volume_1", &blockstorage.VolumeArgs{
+//				Name:        pulumi.String("volume_1"),
 //				Size:        pulumi.Int(1),
 //				Multiattach: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			instance1, err := compute.NewInstance(ctx, "instance1", &compute.InstanceArgs{
+//			instance1, err := compute.NewInstance(ctx, "instance_1", &compute.InstanceArgs{
+//				Name: pulumi.String("instance_1"),
 //				SecurityGroups: pulumi.StringArray{
 //					pulumi.String("default"),
 //				},
@@ -95,7 +99,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			instance2, err := compute.NewInstance(ctx, "instance2", &compute.InstanceArgs{
+//			instance2, err := compute.NewInstance(ctx, "instance_2", &compute.InstanceArgs{
+//				Name: pulumi.String("instance_2"),
 //				SecurityGroups: pulumi.StringArray{
 //					pulumi.String("default"),
 //				},
@@ -103,7 +108,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewVolumeAttach(ctx, "va1", &compute.VolumeAttachArgs{
+//			va1, err := compute.NewVolumeAttach(ctx, "va_1", &compute.VolumeAttachArgs{
 //				InstanceId:  instance1.ID(),
 //				VolumeId:    volume1.ID(),
 //				Multiattach: pulumi.Bool(true),
@@ -111,12 +116,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewVolumeAttach(ctx, "va2", &compute.VolumeAttachArgs{
+//			_, err = compute.NewVolumeAttach(ctx, "va_2", &compute.VolumeAttachArgs{
 //				InstanceId:  instance2.ID(),
 //				VolumeId:    volume1.ID(),
 //				Multiattach: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				pulumi.Resource("openstack_compute_volume_attach_v2.va_1"),
+//				va1,
 //			}))
 //			if err != nil {
 //				return err

@@ -28,6 +28,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.openstack.identity.Project;
+ * import com.pulumi.openstack.identity.ProjectArgs;
  * import com.pulumi.openstack.blockstorage.VolumeTypeV3;
  * import com.pulumi.openstack.blockstorage.VolumeTypeV3Args;
  * import com.pulumi.openstack.blockstorage.VolumeTypeAccessV3;
@@ -45,9 +46,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project1 = new Project(&#34;project1&#34;);
+ *         var project1 = new Project(&#34;project1&#34;, ProjectArgs.builder()        
+ *             .name(&#34;project_1&#34;)
+ *             .build());
  * 
  *         var volumeType1 = new VolumeTypeV3(&#34;volumeType1&#34;, VolumeTypeV3Args.builder()        
+ *             .name(&#34;volume_type_1&#34;)
  *             .isPublic(false)
  *             .build());
  * 
