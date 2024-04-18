@@ -14,6 +14,101 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// ## Example Usage
     /// 
+    /// ### Simple secret
+    /// 
+    /// The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var certificate1 = new OpenStack.KeyManager.SecretV1("certificate_1", new()
+    ///     {
+    ///         Name = "certificate",
+    ///         Payload = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "cert.pem",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         SecretType = "certificate",
+    ///         PayloadContentType = "text/plain",
+    ///     });
+    /// 
+    ///     var privateKey1 = new OpenStack.KeyManager.SecretV1("private_key_1", new()
+    ///     {
+    ///         Name = "private_key",
+    ///         Payload = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "cert-key.pem",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         SecretType = "private",
+    ///         PayloadContentType = "text/plain",
+    ///     });
+    /// 
+    ///     var intermediate1 = new OpenStack.KeyManager.SecretV1("intermediate_1", new()
+    ///     {
+    ///         Name = "intermediate",
+    ///         Payload = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "intermediate-ca.pem",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         SecretType = "certificate",
+    ///         PayloadContentType = "text/plain",
+    ///     });
+    /// 
+    ///     var tls1 = new OpenStack.KeyManager.ContainerV1("tls_1", new()
+    ///     {
+    ///         Name = "tls",
+    ///         Type = "certificate",
+    ///         SecretRefs = new[]
+    ///         {
+    ///             new OpenStack.KeyManager.Inputs.ContainerV1SecretRefArgs
+    ///             {
+    ///                 Name = "certificate",
+    ///                 SecretRef = certificate1.SecretRef,
+    ///             },
+    ///             new OpenStack.KeyManager.Inputs.ContainerV1SecretRefArgs
+    ///             {
+    ///                 Name = "private_key",
+    ///                 SecretRef = privateKey1.SecretRef,
+    ///             },
+    ///             new OpenStack.KeyManager.Inputs.ContainerV1SecretRefArgs
+    ///             {
+    ///                 Name = "intermediates",
+    ///                 SecretRef = intermediate1.SecretRef,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var subnet1 = OpenStack.Networking.GetSubnet.Invoke(new()
+    ///     {
+    ///         Name = "my-subnet",
+    ///     });
+    /// 
+    ///     var lb1 = new OpenStack.LoadBalancer.LoadBalancer("lb_1", new()
+    ///     {
+    ///         Name = "loadbalancer",
+    ///         VipSubnetId = subnet1.Apply(getSubnetResult =&gt; getSubnetResult.Id),
+    ///     });
+    /// 
+    ///     var listener1 = new OpenStack.LoadBalancer.Listener("listener_1", new()
+    ///     {
+    ///         Name = "https",
+    ///         Protocol = "TERMINATED_HTTPS",
+    ///         ProtocolPort = 443,
+    ///         LoadbalancerId = lb1.Id,
+    ///         DefaultTlsContainerRef = tls1.ContainerRef,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ### Container with the ACL
     /// 
     /// &gt; **Note** Only read ACLs are supported

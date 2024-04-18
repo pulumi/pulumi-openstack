@@ -328,6 +328,61 @@ class ContainerV1(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Simple secret
+
+        The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+        import pulumi_std as std
+
+        certificate1 = openstack.keymanager.SecretV1("certificate_1",
+            name="certificate",
+            payload=std.file(input="cert.pem").result,
+            secret_type="certificate",
+            payload_content_type="text/plain")
+        private_key1 = openstack.keymanager.SecretV1("private_key_1",
+            name="private_key",
+            payload=std.file(input="cert-key.pem").result,
+            secret_type="private",
+            payload_content_type="text/plain")
+        intermediate1 = openstack.keymanager.SecretV1("intermediate_1",
+            name="intermediate",
+            payload=std.file(input="intermediate-ca.pem").result,
+            secret_type="certificate",
+            payload_content_type="text/plain")
+        tls1 = openstack.keymanager.ContainerV1("tls_1",
+            name="tls",
+            type="certificate",
+            secret_refs=[
+                openstack.keymanager.ContainerV1SecretRefArgs(
+                    name="certificate",
+                    secret_ref=certificate1.secret_ref,
+                ),
+                openstack.keymanager.ContainerV1SecretRefArgs(
+                    name="private_key",
+                    secret_ref=private_key1.secret_ref,
+                ),
+                openstack.keymanager.ContainerV1SecretRefArgs(
+                    name="intermediates",
+                    secret_ref=intermediate1.secret_ref,
+                ),
+            ])
+        subnet1 = openstack.networking.get_subnet(name="my-subnet")
+        lb1 = openstack.loadbalancer.LoadBalancer("lb_1",
+            name="loadbalancer",
+            vip_subnet_id=subnet1.id)
+        listener1 = openstack.loadbalancer.Listener("listener_1",
+            name="https",
+            protocol="TERMINATED_HTTPS",
+            protocol_port=443,
+            loadbalancer_id=lb1.id,
+            default_tls_container_ref=tls1.container_ref)
+        ```
+        <!--End PulumiCodeChooser -->
+
         ### Container with the ACL
 
         > **Note** Only read ACLs are supported
@@ -399,6 +454,61 @@ class ContainerV1(pulumi.CustomResource):
         Manages a V1 Barbican container resource within OpenStack.
 
         ## Example Usage
+
+        ### Simple secret
+
+        The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+        import pulumi_std as std
+
+        certificate1 = openstack.keymanager.SecretV1("certificate_1",
+            name="certificate",
+            payload=std.file(input="cert.pem").result,
+            secret_type="certificate",
+            payload_content_type="text/plain")
+        private_key1 = openstack.keymanager.SecretV1("private_key_1",
+            name="private_key",
+            payload=std.file(input="cert-key.pem").result,
+            secret_type="private",
+            payload_content_type="text/plain")
+        intermediate1 = openstack.keymanager.SecretV1("intermediate_1",
+            name="intermediate",
+            payload=std.file(input="intermediate-ca.pem").result,
+            secret_type="certificate",
+            payload_content_type="text/plain")
+        tls1 = openstack.keymanager.ContainerV1("tls_1",
+            name="tls",
+            type="certificate",
+            secret_refs=[
+                openstack.keymanager.ContainerV1SecretRefArgs(
+                    name="certificate",
+                    secret_ref=certificate1.secret_ref,
+                ),
+                openstack.keymanager.ContainerV1SecretRefArgs(
+                    name="private_key",
+                    secret_ref=private_key1.secret_ref,
+                ),
+                openstack.keymanager.ContainerV1SecretRefArgs(
+                    name="intermediates",
+                    secret_ref=intermediate1.secret_ref,
+                ),
+            ])
+        subnet1 = openstack.networking.get_subnet(name="my-subnet")
+        lb1 = openstack.loadbalancer.LoadBalancer("lb_1",
+            name="loadbalancer",
+            vip_subnet_id=subnet1.id)
+        listener1 = openstack.loadbalancer.Listener("listener_1",
+            name="https",
+            protocol="TERMINATED_HTTPS",
+            protocol_port=443,
+            loadbalancer_id=lb1.id,
+            default_tls_container_ref=tls1.container_ref)
+        ```
+        <!--End PulumiCodeChooser -->
 
         ### Container with the ACL
 

@@ -16,6 +16,122 @@ import (
 //
 // ## Example Usage
 //
+// ### Simple secret
+//
+// The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/loadbalancer"
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/networking"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "cert.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			certificate1, err := keymanager.NewSecretV1(ctx, "certificate_1", &keymanager.SecretV1Args{
+//				Name:               pulumi.String("certificate"),
+//				Payload:            invokeFile.Result,
+//				SecretType:         pulumi.String("certificate"),
+//				PayloadContentType: pulumi.String("text/plain"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "cert-key.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			privateKey1, err := keymanager.NewSecretV1(ctx, "private_key_1", &keymanager.SecretV1Args{
+//				Name:               pulumi.String("private_key"),
+//				Payload:            invokeFile1.Result,
+//				SecretType:         pulumi.String("private"),
+//				PayloadContentType: pulumi.String("text/plain"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile2, err := std.File(ctx, &std.FileArgs{
+//				Input: "intermediate-ca.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			intermediate1, err := keymanager.NewSecretV1(ctx, "intermediate_1", &keymanager.SecretV1Args{
+//				Name:               pulumi.String("intermediate"),
+//				Payload:            invokeFile2.Result,
+//				SecretType:         pulumi.String("certificate"),
+//				PayloadContentType: pulumi.String("text/plain"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tls1, err := keymanager.NewContainerV1(ctx, "tls_1", &keymanager.ContainerV1Args{
+//				Name: pulumi.String("tls"),
+//				Type: pulumi.String("certificate"),
+//				SecretRefs: keymanager.ContainerV1SecretRefArray{
+//					&keymanager.ContainerV1SecretRefArgs{
+//						Name:      pulumi.String("certificate"),
+//						SecretRef: certificate1.SecretRef,
+//					},
+//					&keymanager.ContainerV1SecretRefArgs{
+//						Name:      pulumi.String("private_key"),
+//						SecretRef: privateKey1.SecretRef,
+//					},
+//					&keymanager.ContainerV1SecretRefArgs{
+//						Name:      pulumi.String("intermediates"),
+//						SecretRef: intermediate1.SecretRef,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			subnet1, err := networking.LookupSubnet(ctx, &networking.LookupSubnetArgs{
+//				Name: pulumi.StringRef("my-subnet"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			lb1, err := loadbalancer.NewLoadBalancer(ctx, "lb_1", &loadbalancer.LoadBalancerArgs{
+//				Name:        pulumi.String("loadbalancer"),
+//				VipSubnetId: pulumi.String(subnet1.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = loadbalancer.NewListener(ctx, "listener_1", &loadbalancer.ListenerArgs{
+//				Name:                   pulumi.String("https"),
+//				Protocol:               pulumi.String("TERMINATED_HTTPS"),
+//				ProtocolPort:           pulumi.Int(443),
+//				LoadbalancerId:         lb1.ID(),
+//				DefaultTlsContainerRef: tls1.ContainerRef,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ### Container with the ACL
 //
 // > **Note** Only read ACLs are supported

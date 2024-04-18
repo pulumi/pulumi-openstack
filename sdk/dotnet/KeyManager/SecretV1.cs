@@ -42,6 +42,81 @@ namespace Pulumi.OpenStack.KeyManager
     /// ```
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// ### Secret with whitespaces
+    /// 
+    /// &gt; **Note** If you want to store payload with leading or trailing whitespaces,
+    /// it's recommended to store it in a base64 encoding. Plain text payload can also
+    /// work, but further addind or removing of the leading or trailing whitespaces
+    /// won't be detected as a state change, e.g. changing plain text payload from
+    /// ` password  ` to `password` won't recreate the secret.
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secret1 = new OpenStack.KeyManager.SecretV1("secret_1", new()
+    ///     {
+    ///         Name = "password",
+    ///         Payload = Std.Base64encode.Invoke(new()
+    ///         {
+    ///             Input = "password with the whitespace at the end ",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         SecretType = "passphrase",
+    ///         PayloadContentType = "application/octet-stream",
+    ///         PayloadContentEncoding = "base64",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ### Secret with the ACL
+    /// 
+    /// &gt; **Note** Only read ACLs are supported
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secret1 = new OpenStack.KeyManager.SecretV1("secret_1", new()
+    ///     {
+    ///         Name = "certificate",
+    ///         Payload = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "certificate.pem",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         SecretType = "certificate",
+    ///         PayloadContentType = "text/plain",
+    ///         Acl = new OpenStack.KeyManager.Inputs.SecretV1AclArgs
+    ///         {
+    ///             Read = new OpenStack.KeyManager.Inputs.SecretV1AclReadArgs
+    ///             {
+    ///                 ProjectAccess = false,
+    ///                 Users = new[]
+    ///                 {
+    ///                     "userid1",
+    ///                     "userid2",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// Secrets can be imported using the secret id (the last part of the secret reference), e.g.:

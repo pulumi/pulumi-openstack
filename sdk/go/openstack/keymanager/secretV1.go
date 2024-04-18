@@ -50,6 +50,100 @@ import (
 // ```
 // <!--End PulumiCodeChooser -->
 //
+// ### Secret with whitespaces
+//
+// > **Note** If you want to store payload with leading or trailing whitespaces,
+// it's recommended to store it in a base64 encoding. Plain text payload can also
+// work, but further addind or removing of the leading or trailing whitespaces
+// won't be detected as a state change, e.g. changing plain text payload from
+// ` password  ` to `password` won't recreate the secret.
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: "password with the whitespace at the end ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = keymanager.NewSecretV1(ctx, "secret_1", &keymanager.SecretV1Args{
+//				Name:                   pulumi.String("password"),
+//				Payload:                invokeBase64encode.Result,
+//				SecretType:             pulumi.String("passphrase"),
+//				PayloadContentType:     pulumi.String("application/octet-stream"),
+//				PayloadContentEncoding: pulumi.String("base64"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ### Secret with the ACL
+//
+// > **Note** Only read ACLs are supported
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "certificate.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = keymanager.NewSecretV1(ctx, "secret_1", &keymanager.SecretV1Args{
+//				Name:               pulumi.String("certificate"),
+//				Payload:            invokeFile.Result,
+//				SecretType:         pulumi.String("certificate"),
+//				PayloadContentType: pulumi.String("text/plain"),
+//				Acl: &keymanager.SecretV1AclArgs{
+//					Read: &keymanager.SecretV1AclReadArgs{
+//						ProjectAccess: pulumi.Bool(false),
+//						Users: pulumi.StringArray{
+//							pulumi.String("userid1"),
+//							pulumi.String("userid2"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // Secrets can be imported using the secret id (the last part of the secret reference), e.g.:

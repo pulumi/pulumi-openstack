@@ -11,6 +11,75 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### Simple secret
+ *
+ * The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * import * as std from "@pulumi/std";
+ *
+ * const certificate1 = new openstack.keymanager.SecretV1("certificate_1", {
+ *     name: "certificate",
+ *     payload: std.file({
+ *         input: "cert.pem",
+ *     }).then(invoke => invoke.result),
+ *     secretType: "certificate",
+ *     payloadContentType: "text/plain",
+ * });
+ * const privateKey1 = new openstack.keymanager.SecretV1("private_key_1", {
+ *     name: "private_key",
+ *     payload: std.file({
+ *         input: "cert-key.pem",
+ *     }).then(invoke => invoke.result),
+ *     secretType: "private",
+ *     payloadContentType: "text/plain",
+ * });
+ * const intermediate1 = new openstack.keymanager.SecretV1("intermediate_1", {
+ *     name: "intermediate",
+ *     payload: std.file({
+ *         input: "intermediate-ca.pem",
+ *     }).then(invoke => invoke.result),
+ *     secretType: "certificate",
+ *     payloadContentType: "text/plain",
+ * });
+ * const tls1 = new openstack.keymanager.ContainerV1("tls_1", {
+ *     name: "tls",
+ *     type: "certificate",
+ *     secretRefs: [
+ *         {
+ *             name: "certificate",
+ *             secretRef: certificate1.secretRef,
+ *         },
+ *         {
+ *             name: "private_key",
+ *             secretRef: privateKey1.secretRef,
+ *         },
+ *         {
+ *             name: "intermediates",
+ *             secretRef: intermediate1.secretRef,
+ *         },
+ *     ],
+ * });
+ * const subnet1 = openstack.networking.getSubnet({
+ *     name: "my-subnet",
+ * });
+ * const lb1 = new openstack.loadbalancer.LoadBalancer("lb_1", {
+ *     name: "loadbalancer",
+ *     vipSubnetId: subnet1.then(subnet1 => subnet1.id),
+ * });
+ * const listener1 = new openstack.loadbalancer.Listener("listener_1", {
+ *     name: "https",
+ *     protocol: "TERMINATED_HTTPS",
+ *     protocolPort: 443,
+ *     loadbalancerId: lb1.id,
+ *     defaultTlsContainerRef: tls1.containerRef,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ### Container with the ACL
  *
  * > **Note** Only read ACLs are supported

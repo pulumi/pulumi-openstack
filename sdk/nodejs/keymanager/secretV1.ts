@@ -31,6 +31,62 @@ import * as utilities from "../utilities";
  * ```
  * <!--End PulumiCodeChooser -->
  *
+ * ### Secret with whitespaces
+ *
+ * > **Note** If you want to store payload with leading or trailing whitespaces,
+ * it's recommended to store it in a base64 encoding. Plain text payload can also
+ * work, but further addind or removing of the leading or trailing whitespaces
+ * won't be detected as a state change, e.g. changing plain text payload from
+ * ` password  ` to `password` won't recreate the secret.
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * import * as std from "@pulumi/std";
+ *
+ * const secret1 = new openstack.keymanager.SecretV1("secret_1", {
+ *     name: "password",
+ *     payload: std.base64encode({
+ *         input: "password with the whitespace at the end ",
+ *     }).then(invoke => invoke.result),
+ *     secretType: "passphrase",
+ *     payloadContentType: "application/octet-stream",
+ *     payloadContentEncoding: "base64",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ### Secret with the ACL
+ *
+ * > **Note** Only read ACLs are supported
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * import * as std from "@pulumi/std";
+ *
+ * const secret1 = new openstack.keymanager.SecretV1("secret_1", {
+ *     name: "certificate",
+ *     payload: std.file({
+ *         input: "certificate.pem",
+ *     }).then(invoke => invoke.result),
+ *     secretType: "certificate",
+ *     payloadContentType: "text/plain",
+ *     acl: {
+ *         read: {
+ *             projectAccess: false,
+ *             users: [
+ *                 "userid1",
+ *                 "userid2",
+ *             ],
+ *         },
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * Secrets can be imported using the secret id (the last part of the secret reference), e.g.:

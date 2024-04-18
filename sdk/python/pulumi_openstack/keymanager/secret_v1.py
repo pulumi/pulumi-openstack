@@ -593,6 +593,56 @@ class SecretV1(pulumi.CustomResource):
         ```
         <!--End PulumiCodeChooser -->
 
+        ### Secret with whitespaces
+
+        > **Note** If you want to store payload with leading or trailing whitespaces,
+        it's recommended to store it in a base64 encoding. Plain text payload can also
+        work, but further addind or removing of the leading or trailing whitespaces
+        won't be detected as a state change, e.g. changing plain text payload from
+        ` password  ` to `password` won't recreate the secret.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+        import pulumi_std as std
+
+        secret1 = openstack.keymanager.SecretV1("secret_1",
+            name="password",
+            payload=std.base64encode(input="password with the whitespace at the end ").result,
+            secret_type="passphrase",
+            payload_content_type="application/octet-stream",
+            payload_content_encoding="base64")
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ### Secret with the ACL
+
+        > **Note** Only read ACLs are supported
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+        import pulumi_std as std
+
+        secret1 = openstack.keymanager.SecretV1("secret_1",
+            name="certificate",
+            payload=std.file(input="certificate.pem").result,
+            secret_type="certificate",
+            payload_content_type="text/plain",
+            acl=openstack.keymanager.SecretV1AclArgs(
+                read=openstack.keymanager.SecretV1AclReadArgs(
+                    project_access=False,
+                    users=[
+                        "userid1",
+                        "userid2",
+                    ],
+                ),
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         Secrets can be imported using the secret id (the last part of the secret reference), e.g.:
@@ -649,6 +699,56 @@ class SecretV1(pulumi.CustomResource):
             metadata={
                 "key": "foo",
             })
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ### Secret with whitespaces
+
+        > **Note** If you want to store payload with leading or trailing whitespaces,
+        it's recommended to store it in a base64 encoding. Plain text payload can also
+        work, but further addind or removing of the leading or trailing whitespaces
+        won't be detected as a state change, e.g. changing plain text payload from
+        ` password  ` to `password` won't recreate the secret.
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+        import pulumi_std as std
+
+        secret1 = openstack.keymanager.SecretV1("secret_1",
+            name="password",
+            payload=std.base64encode(input="password with the whitespace at the end ").result,
+            secret_type="passphrase",
+            payload_content_type="application/octet-stream",
+            payload_content_encoding="base64")
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ### Secret with the ACL
+
+        > **Note** Only read ACLs are supported
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_openstack as openstack
+        import pulumi_std as std
+
+        secret1 = openstack.keymanager.SecretV1("secret_1",
+            name="certificate",
+            payload=std.file(input="certificate.pem").result,
+            secret_type="certificate",
+            payload_content_type="text/plain",
+            acl=openstack.keymanager.SecretV1AclArgs(
+                read=openstack.keymanager.SecretV1AclReadArgs(
+                    project_access=False,
+                    users=[
+                        "userid1",
+                        "userid2",
+                    ],
+                ),
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

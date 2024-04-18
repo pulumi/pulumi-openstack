@@ -62,6 +62,101 @@ import javax.annotation.Nullable;
  * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Secret with whitespaces
+ * 
+ * &gt; **Note** If you want to store payload with leading or trailing whitespaces,
+ * it&#39;s recommended to store it in a base64 encoding. Plain text payload can also
+ * work, but further addind or removing of the leading or trailing whitespaces
+ * won&#39;t be detected as a state change, e.g. changing plain text payload from
+ * ` password  ` to `password` won&#39;t recreate the secret.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.keymanager.SecretV1;
+ * import com.pulumi.openstack.keymanager.SecretV1Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secret1 = new SecretV1(&#34;secret1&#34;, SecretV1Args.builder()        
+ *             .name(&#34;password&#34;)
+ *             .payload(StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                 .input(&#34;password with the whitespace at the end &#34;)
+ *                 .build()).result())
+ *             .secretType(&#34;passphrase&#34;)
+ *             .payloadContentType(&#34;application/octet-stream&#34;)
+ *             .payloadContentEncoding(&#34;base64&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Secret with the ACL
+ * 
+ * &gt; **Note** Only read ACLs are supported
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.openstack.keymanager.SecretV1;
+ * import com.pulumi.openstack.keymanager.SecretV1Args;
+ * import com.pulumi.openstack.keymanager.inputs.SecretV1AclArgs;
+ * import com.pulumi.openstack.keymanager.inputs.SecretV1AclReadArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secret1 = new SecretV1(&#34;secret1&#34;, SecretV1Args.builder()        
+ *             .name(&#34;certificate&#34;)
+ *             .payload(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;certificate.pem&#34;)
+ *                 .build()).result())
+ *             .secretType(&#34;certificate&#34;)
+ *             .payloadContentType(&#34;text/plain&#34;)
+ *             .acl(SecretV1AclArgs.builder()
+ *                 .read(SecretV1AclReadArgs.builder()
+ *                     .projectAccess(false)
+ *                     .users(                    
+ *                         &#34;userid1&#34;,
+ *                         &#34;userid2&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Secrets can be imported using the secret id (the last part of the secret reference), e.g.:
