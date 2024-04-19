@@ -548,7 +548,6 @@ class SecGroupRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -563,7 +562,6 @@ class SecGroupRule(pulumi.CustomResource):
             remote_ip_prefix="0.0.0.0/0",
             security_group_id=secgroup1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         > **Note:** To expose the full port-range 1:65535, use `0` for `port_range_min`
         and `port_range_max`.
@@ -640,7 +638,6 @@ class SecGroupRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -655,7 +652,6 @@ class SecGroupRule(pulumi.CustomResource):
             remote_ip_prefix="0.0.0.0/0",
             security_group_id=secgroup1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         > **Note:** To expose the full port-range 1:65535, use `0` for `port_range_min`
         and `port_range_max`.

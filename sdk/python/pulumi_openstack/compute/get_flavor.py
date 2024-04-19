@@ -182,7 +182,6 @@ def get_flavor(description: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
@@ -190,7 +189,6 @@ def get_flavor(description: Optional[str] = None,
     small = openstack.compute.get_flavor(ram=512,
         vcpus=1)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: The description of the flavor.
@@ -262,7 +260,6 @@ def get_flavor_output(description: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
@@ -270,7 +267,6 @@ def get_flavor_output(description: Optional[pulumi.Input[Optional[str]]] = None,
     small = openstack.compute.get_flavor(ram=512,
         vcpus=1)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: The description of the flavor.

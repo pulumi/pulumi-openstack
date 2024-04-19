@@ -491,7 +491,6 @@ class Member(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -501,7 +500,6 @@ class Member(pulumi.CustomResource):
             pool_id="935685fb-a896-40f9-9ff4-ae531a3a00fe",
             protocol_port=8080)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -553,7 +551,6 @@ class Member(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -563,7 +560,6 @@ class Member(pulumi.CustomResource):
             pool_id="935685fb-a896-40f9-9ff4-ae531a3a00fe",
             protocol_port=8080)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

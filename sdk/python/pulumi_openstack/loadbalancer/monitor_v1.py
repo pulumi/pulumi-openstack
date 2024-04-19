@@ -444,7 +444,6 @@ class MonitorV1(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -456,7 +455,6 @@ class MonitorV1(pulumi.CustomResource):
             timeout=5,
             type="PING")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -510,7 +508,6 @@ class MonitorV1(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -522,7 +519,6 @@ class MonitorV1(pulumi.CustomResource):
             timeout=5,
             type="PING")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

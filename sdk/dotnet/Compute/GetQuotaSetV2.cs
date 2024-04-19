@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetQuotaSetV2Result> InvokeAsync(GetQuotaSetV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQuotaSetV2Result>("openstack:compute/getQuotaSetV2:getQuotaSetV2", args ?? new GetQuotaSetV2Args(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetQuotaSetV2Result> Invoke(GetQuotaSetV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQuotaSetV2Result>("openstack:compute/getQuotaSetV2:getQuotaSetV2", args ?? new GetQuotaSetV2InvokeArgs(), options.WithDefaults());

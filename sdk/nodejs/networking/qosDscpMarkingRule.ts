@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Create a QoS Policy with some DSCP marking rule
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -22,7 +21,6 @@ import * as utilities from "../utilities";
  *     dscpMark: 26,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -447,14 +447,12 @@ class IkePolicy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         policy1 = openstack.vpnaas.IkePolicy("policy1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -500,14 +498,12 @@ class IkePolicy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         policy1 = openstack.vpnaas.IkePolicy("policy1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

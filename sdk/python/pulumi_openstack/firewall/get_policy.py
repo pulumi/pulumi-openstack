@@ -150,14 +150,12 @@ def get_policy(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     policy = openstack.firewall.get_policy(name="tf_test_policy")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the firewall policy.
@@ -198,14 +196,12 @@ def get_policy_output(name: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     policy = openstack.firewall.get_policy(name="tf_test_policy")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the firewall policy.

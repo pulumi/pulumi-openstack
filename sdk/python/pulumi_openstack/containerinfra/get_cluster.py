@@ -359,14 +359,12 @@ def get_cluster(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     cluster1 = openstack.containerinfra.get_cluster(name="cluster_1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the cluster.
@@ -419,14 +417,12 @@ def get_cluster_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     cluster1 = openstack.containerinfra.get_cluster(name="cluster_1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the cluster.

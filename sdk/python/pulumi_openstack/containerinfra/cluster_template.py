@@ -1275,7 +1275,6 @@ class ClusterTemplate(pulumi.CustomResource):
 
         ### Create a Cluster template
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -1300,7 +1299,6 @@ class ClusterTemplate(pulumi.CustomResource):
             server_type="vm",
             volume_driver="cinder")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 
@@ -1447,7 +1445,6 @@ class ClusterTemplate(pulumi.CustomResource):
 
         ### Create a Cluster template
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -1472,7 +1469,6 @@ class ClusterTemplate(pulumi.CustomResource):
             server_type="vm",
             volume_driver="cinder")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 

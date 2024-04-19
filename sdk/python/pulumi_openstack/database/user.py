@@ -232,7 +232,6 @@ class User(pulumi.CustomResource):
 
         ### User
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -242,7 +241,6 @@ class User(pulumi.CustomResource):
             password="password",
             databases=["testdb"])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -269,7 +267,6 @@ class User(pulumi.CustomResource):
 
         ### User
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -279,7 +276,6 @@ class User(pulumi.CustomResource):
             password="password",
             databases=["testdb"])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

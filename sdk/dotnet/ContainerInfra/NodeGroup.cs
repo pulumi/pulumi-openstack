@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// 
     /// ### Create a Nodegroup
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.OpenStack.ContainerInfra
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Attributes reference
     /// 

@@ -14,7 +14,6 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// ### Simple secret
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,13 +38,11 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Secret with the ACL
     /// 
     /// &gt; **Note** Only read ACLs are supported
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.IO;
@@ -76,7 +73,6 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

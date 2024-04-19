@@ -14,7 +14,6 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -45,7 +44,7 @@ namespace Pulumi.OpenStack.Networking
     ///     {
     ///         DependsOn =
     ///         {
-    ///             "openstack_networking_subnet_v2.subnet_1", 
+    ///             "openstack_networking_subnet_v2.subnet_1",
     ///         },
     ///     });
     /// 
@@ -57,7 +56,7 @@ namespace Pulumi.OpenStack.Networking
     ///     {
     ///         DependsOn =
     ///         {
-    ///             "openstack_networking_subnet_v2.subnet_1", 
+    ///             "openstack_networking_subnet_v2.subnet_1",
     ///         },
     ///     });
     /// 
@@ -93,7 +92,6 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OpenStackResourceType("openstack:networking/trunk:Trunk")]
     public partial class Trunk : global::Pulumi.CustomResource

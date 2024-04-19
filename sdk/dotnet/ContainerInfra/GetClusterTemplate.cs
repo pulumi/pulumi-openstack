@@ -17,7 +17,6 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetClusterTemplateResult> InvokeAsync(GetClusterTemplateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterTemplateResult>("openstack:containerinfra/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateArgs(), options.WithDefaults());
@@ -44,7 +42,6 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetClusterTemplateResult> Invoke(GetClusterTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterTemplateResult>("openstack:containerinfra/getClusterTemplate:getClusterTemplate", args ?? new GetClusterTemplateInvokeArgs(), options.WithDefaults());

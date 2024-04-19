@@ -388,7 +388,6 @@ class PolicyV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -410,7 +409,6 @@ class PolicyV2(pulumi.CustomResource):
             rule2.id,
         ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -465,7 +463,6 @@ class PolicyV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -487,7 +484,6 @@ class PolicyV2(pulumi.CustomResource):
             rule2.id,
         ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -15,7 +15,6 @@ import (
 //
 // ### Simple secret
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,13 +46,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Secret with the ACL
 //
 // > **Note** Only read ACLs are supported
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -98,7 +95,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

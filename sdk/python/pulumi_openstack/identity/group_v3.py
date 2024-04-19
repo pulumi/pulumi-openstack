@@ -181,14 +181,12 @@ class GroupV3(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         group1 = openstack.identity.GroupV3("group1", description="group 1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -221,14 +219,12 @@ class GroupV3(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         group1 = openstack.identity.GroupV3("group1", description="group 1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

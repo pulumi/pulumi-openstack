@@ -404,7 +404,6 @@ class PoolV1(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -416,11 +415,9 @@ class PoolV1(pulumi.CustomResource):
             protocol="HTTP",
             subnet_id="12345")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Complete Load Balancing Stack Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -487,7 +484,6 @@ class PoolV1(pulumi.CustomResource):
             port=80,
             pool_id=pool1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Notes
 
@@ -539,7 +535,6 @@ class PoolV1(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -551,11 +546,9 @@ class PoolV1(pulumi.CustomResource):
             protocol="HTTP",
             subnet_id="12345")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Complete Load Balancing Stack Example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -622,7 +615,6 @@ class PoolV1(pulumi.CustomResource):
             port=80,
             pool_id=pool1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Notes
 

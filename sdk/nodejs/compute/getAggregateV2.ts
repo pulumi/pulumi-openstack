@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     name: "test",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAggregateV2(args: GetAggregateV2Args, opts?: pulumi.InvokeOptions): Promise<GetAggregateV2Result> {
 
@@ -80,7 +78,6 @@ export interface GetAggregateV2Result {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -89,7 +86,6 @@ export interface GetAggregateV2Result {
  *     name: "test",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAggregateV2Output(args: GetAggregateV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregateV2Result> {
     return pulumi.output(args).apply((a: any) => getAggregateV2(a, opts))

@@ -23,7 +23,6 @@ import (
 //
 // ### EC2 credential in current project scope
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,14 +44,12 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### EC2 credential in pre-defined project scope
 //
 // This allows administrative users to create EC2 credentials for a scope different
 // from the current auth scope.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -76,7 +73,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -188,7 +188,6 @@ class QosV3(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -200,7 +199,6 @@ class QosV3(pulumi.CustomResource):
                 "write_iops_sec": "40000",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -234,7 +232,6 @@ class QosV3(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -246,7 +243,6 @@ class QosV3(pulumi.CustomResource):
                 "write_iops_sec": "40000",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -942,7 +942,6 @@ class Port(pulumi.CustomResource):
 
         ### Simple port
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -952,11 +951,9 @@ class Port(pulumi.CustomResource):
             network_id=network1.id,
             admin_state_up=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Port defining fixed_ip.subnet_id
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -972,11 +969,9 @@ class Port(pulumi.CustomResource):
                 subnet_id=subnet1.id,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Port with physical binding information
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -1008,7 +1003,6 @@ class Port(pulumi.CustomResource):
         \"\"\",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Notes
 
@@ -1102,7 +1096,6 @@ class Port(pulumi.CustomResource):
 
         ### Simple port
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -1112,11 +1105,9 @@ class Port(pulumi.CustomResource):
             network_id=network1.id,
             admin_state_up=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Port defining fixed_ip.subnet_id
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -1132,11 +1123,9 @@ class Port(pulumi.CustomResource):
                 subnet_id=subnet1.id,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Port with physical binding information
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -1168,7 +1157,6 @@ class Port(pulumi.CustomResource):
         \"\"\",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Notes
 

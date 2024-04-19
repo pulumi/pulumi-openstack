@@ -11,18 +11,15 @@ import * as utilities from "../utilities";
  *
  * ### Create an Address-scope
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const addressscope1 = new openstack.networking.AddressScope("addressscope1", {ipVersion: 6});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Create a Subnet Pool from an Address-scope
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -36,7 +33,6 @@ import * as utilities from "../utilities";
  *     addressScopeId: addressscope1.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

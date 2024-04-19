@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -34,7 +33,6 @@ import * as utilities from "../utilities";
  *     targetTenant: "20415a973c9e45d3917f078950644697",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

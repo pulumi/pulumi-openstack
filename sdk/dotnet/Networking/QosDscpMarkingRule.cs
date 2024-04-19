@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ### Create a QoS Policy with some DSCP marking rule
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

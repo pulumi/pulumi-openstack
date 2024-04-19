@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Automatically detect the correct network
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -28,11 +27,9 @@ import * as utilities from "../utilities";
  *     instanceId: instance1.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Explicitly set the network to attach to
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -58,7 +55,6 @@ import * as utilities from "../utilities";
  *     fixedIp: instance1.networks.apply(networks => networks[1].fixedIpV4),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

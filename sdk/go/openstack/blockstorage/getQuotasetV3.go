@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetQuotasetV3(ctx *pulumi.Context, args *GetQuotasetV3Args, opts ...pulumi.InvokeOption) (*GetQuotasetV3Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetQuotasetV3Result

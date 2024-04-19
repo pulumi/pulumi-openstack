@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     secretType: "passphrase",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Date Filters
  *
@@ -32,7 +30,6 @@ import * as utilities from "../utilities";
  * For example, to get a passphrase a Secret with CBC moda, that will expire in
  * January of 2020:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -43,7 +40,6 @@ import * as utilities from "../utilities";
  *     secretType: "passphrase",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSecret(args?: GetSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretResult> {
     args = args || {};
@@ -220,7 +216,6 @@ export interface GetSecretResult {
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -230,7 +225,6 @@ export interface GetSecretResult {
  *     secretType: "passphrase",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Date Filters
  *
@@ -243,7 +237,6 @@ export interface GetSecretResult {
  * For example, to get a passphrase a Secret with CBC moda, that will expire in
  * January of 2020:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -254,7 +247,6 @@ export interface GetSecretResult {
  *     secretType: "passphrase",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSecretOutput(args?: GetSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretResult> {
     return pulumi.output(args).apply((a: any) => getSecret(a, opts))

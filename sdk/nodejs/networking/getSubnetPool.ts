@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     name: "subnetpool_1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSubnetPool(args?: GetSubnetPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetPoolResult> {
     args = args || {};
@@ -187,7 +185,6 @@ export interface GetSubnetPoolResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -196,7 +193,6 @@ export interface GetSubnetPoolResult {
  *     name: "subnetpool_1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSubnetPoolOutput(args?: GetSubnetPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetPoolResult> {
     return pulumi.output(args).apply((a: any) => getSubnetPool(a, opts))

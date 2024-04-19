@@ -17,7 +17,6 @@ import (
 //
 // ### Basic Container
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,11 +45,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Basic Container with legacy versioning
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -82,11 +79,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Global Read Access
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -111,11 +106,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Global Read and List Access
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -140,11 +133,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Write-Only Access for a User
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -179,7 +170,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

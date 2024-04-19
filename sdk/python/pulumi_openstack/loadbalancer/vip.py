@@ -559,7 +559,6 @@ class Vip(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -570,7 +569,6 @@ class Vip(pulumi.CustomResource):
             protocol="HTTP",
             subnet_id="12345")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -627,7 +625,6 @@ class Vip(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -638,7 +635,6 @@ class Vip(pulumi.CustomResource):
             protocol="HTTP",
             subnet_id="12345")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

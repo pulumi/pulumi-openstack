@@ -177,14 +177,12 @@ class FloatingIp(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         floatip1 = openstack.compute.FloatingIp("floatip1", pool="public")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -221,14 +219,12 @@ class FloatingIp(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         floatip1 = openstack.compute.FloatingIp("floatip1", pool="public")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

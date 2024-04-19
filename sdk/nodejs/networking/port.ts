@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ### Simple port
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -30,11 +29,9 @@ import * as utilities from "../utilities";
  *     adminStateUp: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Port defining fixed_ip.subnet_id
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -52,11 +49,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Port with physical binding information
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -89,7 +84,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Notes
  *

@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  *     securityGroupId: secgroup1.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * > **Note:** To expose the full port-range 1:65535, use `0` for `portRangeMin`
  * and `portRangeMax`.

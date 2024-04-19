@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Simple secret
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -28,13 +27,11 @@ import * as utilities from "../utilities";
  *     secretType: "passphrase",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Secret with the ACL
  *
  * > **Note** Only read ACLs are supported
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
@@ -55,7 +52,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

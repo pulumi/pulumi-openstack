@@ -236,7 +236,6 @@ class InheritRoleAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -248,7 +247,6 @@ class InheritRoleAssignment(pulumi.CustomResource):
             domain_id="default",
             role_id=role1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -291,7 +289,6 @@ class InheritRoleAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -303,7 +300,6 @@ class InheritRoleAssignment(pulumi.CustomResource):
             domain_id="default",
             role_id=role1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

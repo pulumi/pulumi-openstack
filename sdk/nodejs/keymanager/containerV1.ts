@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
@@ -64,13 +63,11 @@ import * as utilities from "../utilities";
  *     defaultTlsContainerRef: tls1.containerRef,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Container with the ACL
  *
  * > **Note** Only read ACLs are supported
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -102,7 +99,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

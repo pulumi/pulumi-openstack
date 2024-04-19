@@ -433,7 +433,6 @@ class VolumeV1(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -443,7 +442,6 @@ class VolumeV1(pulumi.CustomResource):
             region="RegionOne",
             size=3)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -488,7 +486,6 @@ class VolumeV1(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -498,7 +495,6 @@ class VolumeV1(pulumi.CustomResource):
             region="RegionOne",
             size=3)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

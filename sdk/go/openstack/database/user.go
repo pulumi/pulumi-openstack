@@ -22,7 +22,6 @@ import (
 //
 // ### User
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,7 +49,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type User struct {
 	pulumi.CustomResourceState
 

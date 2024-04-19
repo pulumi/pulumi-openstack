@@ -408,7 +408,6 @@ class RecordSet(pulumi.CustomResource):
 
         ### Automatically detect the correct network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -425,7 +424,6 @@ class RecordSet(pulumi.CustomResource):
             type="A",
             records=["10.0.0.1"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -472,7 +470,6 @@ class RecordSet(pulumi.CustomResource):
 
         ### Automatically detect the correct network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -489,7 +486,6 @@ class RecordSet(pulumi.CustomResource):
             type="A",
             records=["10.0.0.1"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

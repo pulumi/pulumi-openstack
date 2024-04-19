@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *
  * ### Basic attachment of a single volume to a single instance
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -26,14 +25,12 @@ import * as utilities from "../utilities";
  *     volumeId: volume1.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Using Multiattach-enabled volumes
  *
  * Multiattach Volumes are dependent upon your OpenStack cloud and not all
  * clouds support multiattach.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -57,7 +54,6 @@ import * as utilities from "../utilities";
  *     dependsOn: ["openstack_compute_volume_attach_v2.va_1"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * It is recommended to use `dependsOn` for the attach resources
  * to enforce the volume attachments to happen one at a time.

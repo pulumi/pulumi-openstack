@@ -268,14 +268,12 @@ def get_dns_zone(all_projects: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     zone1 = openstack.dns.get_dns_zone(name="example.com")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str all_projects: Try to obtain zone ID by listing all projects
@@ -366,14 +364,12 @@ def get_dns_zone_output(all_projects: Optional[pulumi.Input[Optional[str]]] = No
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     zone1 = openstack.dns.get_dns_zone(name="example.com")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str all_projects: Try to obtain zone ID by listing all projects

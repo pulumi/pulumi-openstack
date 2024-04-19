@@ -208,14 +208,12 @@ class ServiceV3(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         service1 = openstack.identity.ServiceV3("service1", type="custom")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -247,14 +245,12 @@ class ServiceV3(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         service1 = openstack.identity.ServiceV3("service1", type="custom")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

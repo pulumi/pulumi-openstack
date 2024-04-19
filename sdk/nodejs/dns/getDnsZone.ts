@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     name: "example.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDnsZone(args?: GetDnsZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsZoneResult> {
     args = args || {};
@@ -202,7 +200,6 @@ export interface GetDnsZoneResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -211,7 +208,6 @@ export interface GetDnsZoneResult {
  *     name: "example.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDnsZoneOutput(args?: GetDnsZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDnsZoneResult> {
     return pulumi.output(args).apply((a: any) => getDnsZone(a, opts))

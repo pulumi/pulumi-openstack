@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Create a Nodegroup
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  *     nodeCount: 5,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Attributes reference
  *

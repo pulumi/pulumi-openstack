@@ -20,7 +20,6 @@ import (
 //
 // The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -115,13 +114,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Container with the ACL
 //
 // > **Note** Only read ACLs are supported
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -168,7 +165,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

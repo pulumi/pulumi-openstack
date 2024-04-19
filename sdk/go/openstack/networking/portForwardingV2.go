@@ -18,7 +18,6 @@ import (
 //
 // ### Simple portforwarding
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,7 +45,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type PortForwardingV2 struct {
 	pulumi.CustomResourceState
 

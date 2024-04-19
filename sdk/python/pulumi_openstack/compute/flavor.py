@@ -483,7 +483,6 @@ class Flavor(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -497,7 +496,6 @@ class Flavor(pulumi.CustomResource):
             ram=8096,
             vcpus=2)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -546,7 +544,6 @@ class Flavor(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -560,7 +557,6 @@ class Flavor(pulumi.CustomResource):
             ram=8096,
             vcpus=2)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

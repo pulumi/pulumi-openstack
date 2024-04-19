@@ -238,7 +238,6 @@ class ImageAccess(pulumi.CustomResource):
         Create a shared image and propose a membership to the
         `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -255,14 +254,12 @@ class ImageAccess(pulumi.CustomResource):
             image_id=rancheros.id,
             member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Privileged user
 
         Create a shared image and set a membership to the
         `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -280,7 +277,6 @@ class ImageAccess(pulumi.CustomResource):
             member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4",
             status="accepted")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -320,7 +316,6 @@ class ImageAccess(pulumi.CustomResource):
         Create a shared image and propose a membership to the
         `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -337,14 +332,12 @@ class ImageAccess(pulumi.CustomResource):
             image_id=rancheros.id,
             member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Privileged user
 
         Create a shared image and set a membership to the
         `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -362,7 +355,6 @@ class ImageAccess(pulumi.CustomResource):
             member_id="bed6b6cbb86a4e2d8dc2735c2f1000e4",
             status="accepted")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

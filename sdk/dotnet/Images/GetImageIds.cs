@@ -17,7 +17,6 @@ namespace Pulumi.OpenStack.Images
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.OpenStack.Images
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetImageIdsResult> InvokeAsync(GetImageIdsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageIdsResult>("openstack:images/getImageIds:getImageIds", args ?? new GetImageIdsArgs(), options.WithDefaults());
@@ -49,7 +47,6 @@ namespace Pulumi.OpenStack.Images
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +67,6 @@ namespace Pulumi.OpenStack.Images
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetImageIdsResult> Invoke(GetImageIdsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImageIdsResult>("openstack:images/getImageIds:getImageIds", args ?? new GetImageIdsInvokeArgs(), options.WithDefaults());

@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *
  * ### Basic share network
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -31,11 +30,9 @@ import * as utilities from "../utilities";
  *     neutronSubnetId: subnet1.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Share network with associated security services
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -63,7 +60,6 @@ import * as utilities from "../utilities";
  *     securityServiceIds: [securityservice1.id],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

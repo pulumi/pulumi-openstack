@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     vcpus: 1,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFlavor(args?: GetFlavorArgs, opts?: pulumi.InvokeOptions): Promise<GetFlavorResult> {
     args = args || {};
@@ -129,7 +127,6 @@ export interface GetFlavorResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -139,7 +136,6 @@ export interface GetFlavorResult {
  *     vcpus: 1,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFlavorOutput(args?: GetFlavorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlavorResult> {
     return pulumi.output(args).apply((a: any) => getFlavor(a, opts))

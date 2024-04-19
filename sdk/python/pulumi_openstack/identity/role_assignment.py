@@ -230,7 +230,6 @@ class RoleAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -243,7 +242,6 @@ class RoleAssignment(pulumi.CustomResource):
             project_id=project1.id,
             role_id=role1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -282,7 +280,6 @@ class RoleAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -295,7 +292,6 @@ class RoleAssignment(pulumi.CustomResource):
             project_id=project1.id,
             role_id=role1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

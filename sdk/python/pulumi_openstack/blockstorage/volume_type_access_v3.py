@@ -153,7 +153,6 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -164,7 +163,6 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
             project_id=project1.id,
             volume_type_id=volume_type1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -197,7 +195,6 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -208,7 +205,6 @@ class VolumeTypeAccessV3(pulumi.CustomResource):
             project_id=project1.id,
             volume_type_id=volume_type1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

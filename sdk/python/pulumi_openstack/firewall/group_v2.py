@@ -478,7 +478,6 @@ class GroupV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -501,7 +500,6 @@ class GroupV2(pulumi.CustomResource):
             ingress_firewall_policy_id=policy1.id,
             egress_firewall_policy_id=policy2.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -560,7 +558,6 @@ class GroupV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -583,7 +580,6 @@ class GroupV2(pulumi.CustomResource):
             ingress_firewall_policy_id=policy1.id,
             egress_firewall_policy_id=policy2.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

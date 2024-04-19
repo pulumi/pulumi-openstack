@@ -574,7 +574,6 @@ class SecretV1(pulumi.CustomResource):
 
         ### Simple secret
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -590,13 +589,11 @@ class SecretV1(pulumi.CustomResource):
             payload_content_type="text/plain",
             secret_type="passphrase")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Secret with the ACL
 
         > **Note** Only read ACLs are supported
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -615,7 +612,6 @@ class SecretV1(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -657,7 +653,6 @@ class SecretV1(pulumi.CustomResource):
 
         ### Simple secret
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -673,13 +668,11 @@ class SecretV1(pulumi.CustomResource):
             payload_content_type="text/plain",
             secret_type="passphrase")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Secret with the ACL
 
         > **Note** Only read ACLs are supported
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -698,7 +691,6 @@ class SecretV1(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

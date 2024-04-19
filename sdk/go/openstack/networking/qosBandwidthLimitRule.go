@@ -18,7 +18,6 @@ import (
 //
 // ### Create a QoS Policy with some bandwidth limit rule
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,7 +50,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     hostname: "host01",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHypervisorV2(args: GetHypervisorV2Args, opts?: pulumi.InvokeOptions): Promise<GetHypervisorV2Result> {
 
@@ -86,7 +84,6 @@ export interface GetHypervisorV2Result {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -95,7 +92,6 @@ export interface GetHypervisorV2Result {
  *     hostname: "host01",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHypervisorV2Output(args: GetHypervisorV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHypervisorV2Result> {
     return pulumi.output(args).apply((a: any) => getHypervisorV2(a, opts))

@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     name: "port",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPortIds(args?: GetPortIdsArgs, opts?: pulumi.InvokeOptions): Promise<GetPortIdsResult> {
     args = args || {};
@@ -150,7 +148,6 @@ export interface GetPortIdsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -159,7 +156,6 @@ export interface GetPortIdsResult {
  *     name: "port",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPortIdsOutput(args?: GetPortIdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPortIdsResult> {
     return pulumi.output(args).apply((a: any) => getPortIds(a, opts))

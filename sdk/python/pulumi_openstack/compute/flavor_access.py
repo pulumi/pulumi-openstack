@@ -152,7 +152,6 @@ class FlavorAccess(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -167,7 +166,6 @@ class FlavorAccess(pulumi.CustomResource):
             tenant_id=project1.id,
             flavor_id=flavor1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -203,7 +201,6 @@ class FlavorAccess(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -218,7 +215,6 @@ class FlavorAccess(pulumi.CustomResource):
             tenant_id=project1.id,
             flavor_id=flavor1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

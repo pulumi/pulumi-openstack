@@ -689,7 +689,6 @@ class Router(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -698,7 +697,6 @@ class Router(pulumi.CustomResource):
             admin_state_up=True,
             external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -768,7 +766,6 @@ class Router(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -777,7 +774,6 @@ class Router(pulumi.CustomResource):
             admin_state_up=True,
             external_network_id="f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

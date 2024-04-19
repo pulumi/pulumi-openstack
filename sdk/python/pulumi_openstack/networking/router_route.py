@@ -191,7 +191,6 @@ class RouterRoute(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -211,7 +210,6 @@ class RouterRoute(pulumi.CustomResource):
             next_hop="192.168.199.254",
             opts=pulumi.ResourceOptions(depends_on=["openstack_networking_router_interface_v2.int_1"]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Notes
 
@@ -251,7 +249,6 @@ class RouterRoute(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -271,7 +268,6 @@ class RouterRoute(pulumi.CustomResource):
             next_hop="192.168.199.254",
             opts=pulumi.ResourceOptions(depends_on=["openstack_networking_router_interface_v2.int_1"]))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Notes
 

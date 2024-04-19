@@ -148,14 +148,12 @@ class Role(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         role1 = openstack.identity.Role("role1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -187,14 +185,12 @@ class Role(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         role1 = openstack.identity.Role("role1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

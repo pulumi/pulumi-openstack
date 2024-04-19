@@ -13,18 +13,15 @@ import * as utilities from "../utilities";
  *
  * ### Compute service API version 2.63 or below:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const test_sg = new openstack.compute.ServerGroup("test-sg", {policies: ["anti-affinity"]});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Compute service API version 2.64 or above:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -36,7 +33,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Policies
  *

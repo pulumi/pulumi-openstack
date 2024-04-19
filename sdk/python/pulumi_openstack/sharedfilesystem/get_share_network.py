@@ -204,14 +204,12 @@ def get_share_network(description: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     sharenetwork1 = openstack.sharedfilesystem.get_share_network(name="sharenetwork_1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: The human-readable description of the share network.
@@ -273,14 +271,12 @@ def get_share_network_output(description: Optional[pulumi.Input[Optional[str]]] 
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     sharenetwork1 = openstack.sharedfilesystem.get_share_network(name="sharenetwork_1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: The human-readable description of the share network.

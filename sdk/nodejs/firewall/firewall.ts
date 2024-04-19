@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -34,7 +33,6 @@ import * as utilities from "../utilities";
  * ]});
  * const firewall1 = new openstack.firewall.Firewall("firewall1", {policyId: policy1.id});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

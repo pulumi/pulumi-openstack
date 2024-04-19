@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ### Basic Container
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -27,11 +26,9 @@ import * as utilities from "../utilities";
  *     versioning: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Basic Container with legacy versioning
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -48,11 +45,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Global Read Access
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -62,11 +57,9 @@ import * as utilities from "../utilities";
  *     region: "RegionOne",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Global Read and List Access
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -76,11 +69,9 @@ import * as utilities from "../utilities";
  *     region: "RegionOne",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Write-Only Access for a User
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -94,7 +85,6 @@ import * as utilities from "../utilities";
  *     region: "RegionOne",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -795,7 +795,6 @@ class Cluster(pulumi.CustomResource):
 
         ### Create a Cluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -806,7 +805,6 @@ class Cluster(pulumi.CustomResource):
             master_count=3,
             node_count=5)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 
@@ -907,7 +905,6 @@ class Cluster(pulumi.CustomResource):
 
         ### Create a Cluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -918,7 +915,6 @@ class Cluster(pulumi.CustomResource):
             master_count=3,
             node_count=5)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 

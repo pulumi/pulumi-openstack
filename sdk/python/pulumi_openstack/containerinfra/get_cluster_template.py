@@ -461,14 +461,12 @@ def get_cluster_template(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     clustertemplate1 = openstack.containerinfra.get_cluster_template(name="clustertemplate_1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the cluster template.
@@ -529,14 +527,12 @@ def get_cluster_template_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     clustertemplate1 = openstack.containerinfra.get_cluster_template(name="clustertemplate_1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the cluster template.

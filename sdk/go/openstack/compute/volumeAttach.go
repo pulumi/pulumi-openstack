@@ -19,7 +19,6 @@ import (
 //
 // ### Basic attachment of a single volume to a single instance
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,14 +58,12 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Using Multiattach-enabled volumes
 //
 // Multiattach Volumes are dependent upon your OpenStack cloud and not all
 // clouds support multiattach.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -126,7 +123,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // It is recommended to use `dependsOn` for the attach resources
 // to enforce the volume attachments to happen one at a time.

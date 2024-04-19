@@ -239,7 +239,6 @@ class ImageAccessAccept(pulumi.CustomResource):
 
         Accept a shared image membershipship proposal within the current project.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -251,7 +250,6 @@ class ImageAccessAccept(pulumi.CustomResource):
             image_id=rancheros.id,
             status="accepted")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -287,7 +285,6 @@ class ImageAccessAccept(pulumi.CustomResource):
 
         Accept a shared image membershipship proposal within the current project.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -299,7 +296,6 @@ class ImageAccessAccept(pulumi.CustomResource):
             image_id=rancheros.id,
             status="accepted")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

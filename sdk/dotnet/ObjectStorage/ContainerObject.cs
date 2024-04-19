@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// ### Example with simple content
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -58,11 +57,9 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Example with content from file
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -101,7 +98,6 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [OpenStackResourceType("openstack:objectstorage/containerObject:ContainerObject")]
     public partial class ContainerObject : global::Pulumi.CustomResource

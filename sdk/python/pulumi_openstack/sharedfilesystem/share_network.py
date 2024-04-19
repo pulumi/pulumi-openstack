@@ -359,7 +359,6 @@ class ShareNetwork(pulumi.CustomResource):
 
         ### Basic share network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -374,11 +373,9 @@ class ShareNetwork(pulumi.CustomResource):
             neutron_net_id=network1.id,
             neutron_subnet_id=subnet1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Share network with associated security services
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -403,7 +400,6 @@ class ShareNetwork(pulumi.CustomResource):
             neutron_subnet_id=subnet1.id,
             security_service_ids=[securityservice1.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -448,7 +444,6 @@ class ShareNetwork(pulumi.CustomResource):
 
         ### Basic share network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -463,11 +458,9 @@ class ShareNetwork(pulumi.CustomResource):
             neutron_net_id=network1.id,
             neutron_subnet_id=subnet1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Share network with associated security services
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -492,7 +485,6 @@ class ShareNetwork(pulumi.CustomResource):
             neutron_subnet_id=subnet1.id,
             security_service_ids=[securityservice1.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

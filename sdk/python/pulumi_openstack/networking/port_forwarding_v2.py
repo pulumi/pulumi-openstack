@@ -334,7 +334,6 @@ class PortForwardingV2(pulumi.CustomResource):
 
         ### Simple portforwarding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -346,7 +345,6 @@ class PortForwardingV2(pulumi.CustomResource):
             internal_port_id="b930d7f6-ceb7-40a0-8b81-a425dd994ccf",
             protocol="tcp")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -381,7 +379,6 @@ class PortForwardingV2(pulumi.CustomResource):
 
         ### Simple portforwarding
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -393,7 +390,6 @@ class PortForwardingV2(pulumi.CustomResource):
             internal_port_id="b930d7f6-ceb7-40a0-8b81-a425dd994ccf",
             protocol="tcp")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param PortForwardingV2Args args: The arguments to use to populate this resource's properties.

@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  *     protocol: "tcp",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -568,7 +568,6 @@ class VolumeAttachV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -583,7 +582,6 @@ class VolumeAttachV2(pulumi.CustomResource):
             os_type="linux2",
             platform="x86_64")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Volume Connection Data
 
@@ -655,7 +653,6 @@ class VolumeAttachV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -670,7 +667,6 @@ class VolumeAttachV2(pulumi.CustomResource):
             os_type="linux2",
             platform="x86_64")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Volume Connection Data
 

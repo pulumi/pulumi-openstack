@@ -538,7 +538,6 @@ class Monitor(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -550,7 +549,6 @@ class Monitor(pulumi.CustomResource):
             timeout=10,
             max_retries=5)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -611,7 +609,6 @@ class Monitor(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -623,7 +620,6 @@ class Monitor(pulumi.CustomResource):
             timeout=10,
             max_retries=5)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     name: "trunk_1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTrunk(args?: GetTrunkArgs, opts?: pulumi.InvokeOptions): Promise<GetTrunkResult> {
     args = args || {};
@@ -118,7 +116,6 @@ export interface GetTrunkResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -127,7 +124,6 @@ export interface GetTrunkResult {
  *     name: "trunk_1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTrunkOutput(args?: GetTrunkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrunkResult> {
     return pulumi.output(args).apply((a: any) => getTrunk(a, opts))

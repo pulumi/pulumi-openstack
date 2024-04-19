@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ### Append a security group to an existing port
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -25,11 +24,9 @@ import * as utilities from "../utilities";
  *     securityGroupIds: [secgroup.then(secgroup => secgroup.id)],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Enforce a security group to an existing port
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -46,11 +43,9 @@ import * as utilities from "../utilities";
  *     securityGroupIds: [secgroup.then(secgroup => secgroup.id)],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Remove all security groups from an existing port
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -64,7 +59,6 @@ import * as utilities from "../utilities";
  *     securityGroupIds: [],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

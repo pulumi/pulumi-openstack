@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ### Symmetric key order
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -28,11 +27,9 @@ import * as utilities from "../utilities";
  *     type: "key",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Asymmetric key pair order
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -46,7 +43,6 @@ import * as utilities from "../utilities";
  *     type: "asymmetric",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

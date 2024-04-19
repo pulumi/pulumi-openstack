@@ -210,7 +210,6 @@ class PortSecGroupAssociate(pulumi.CustomResource):
 
         ### Append a security group to an existing port
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -221,11 +220,9 @@ class PortSecGroupAssociate(pulumi.CustomResource):
             port_id=system_port.id,
             security_group_ids=[secgroup.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Enforce a security group to an existing port
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -237,11 +234,9 @@ class PortSecGroupAssociate(pulumi.CustomResource):
             enforce=True,
             security_group_ids=[secgroup.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Remove all security groups from an existing port
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -252,7 +247,6 @@ class PortSecGroupAssociate(pulumi.CustomResource):
             enforce=True,
             security_group_ids=[])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -286,7 +280,6 @@ class PortSecGroupAssociate(pulumi.CustomResource):
 
         ### Append a security group to an existing port
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -297,11 +290,9 @@ class PortSecGroupAssociate(pulumi.CustomResource):
             port_id=system_port.id,
             security_group_ids=[secgroup.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Enforce a security group to an existing port
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -313,11 +304,9 @@ class PortSecGroupAssociate(pulumi.CustomResource):
             enforce=True,
             security_group_ids=[secgroup.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Remove all security groups from an existing port
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -328,7 +317,6 @@ class PortSecGroupAssociate(pulumi.CustomResource):
             enforce=True,
             security_group_ids=[])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

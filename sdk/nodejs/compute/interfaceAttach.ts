@@ -12,7 +12,6 @@ import * as utilities from "../utilities";
  *
  * ### Basic Attachment
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -24,11 +23,9 @@ import * as utilities from "../utilities";
  *     networkId: openstack_networking_port_v2.network_1.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Attachment Specifying a Fixed IP
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -41,11 +38,9 @@ import * as utilities from "../utilities";
  *     fixedIp: "10.0.10.10",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Attachment Using an Existing Port
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -61,7 +56,6 @@ import * as utilities from "../utilities";
  *     portId: port1.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

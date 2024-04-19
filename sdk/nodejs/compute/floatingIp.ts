@@ -15,14 +15,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const floatip1 = new openstack.compute.FloatingIp("floatip1", {pool: "public"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

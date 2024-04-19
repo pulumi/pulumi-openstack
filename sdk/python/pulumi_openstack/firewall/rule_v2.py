@@ -622,7 +622,6 @@ class RuleV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -634,7 +633,6 @@ class RuleV2(pulumi.CustomResource):
             enabled=True,
             protocol="tcp")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -704,7 +702,6 @@ class RuleV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -716,7 +713,6 @@ class RuleV2(pulumi.CustomResource):
             enabled=True,
             protocol="tcp")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -186,7 +186,6 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
 
         ### Create a QoS Policy with some minimum bandwidth rule
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -196,7 +195,6 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
             qos_policy_id=qos_policy1.id,
             min_kbps=200)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -230,7 +228,6 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
 
         ### Create a QoS Policy with some minimum bandwidth rule
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -240,7 +237,6 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
             qos_policy_id=qos_policy1.id,
             min_kbps=200)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

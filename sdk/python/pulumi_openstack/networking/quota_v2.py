@@ -456,7 +456,6 @@ class QuotaV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -474,7 +473,6 @@ class QuotaV2(pulumi.CustomResource):
             subnet=8,
             subnetpool=2)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -529,7 +527,6 @@ class QuotaV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -547,7 +544,6 @@ class QuotaV2(pulumi.CustomResource):
             subnet=8,
             subnetpool=2)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

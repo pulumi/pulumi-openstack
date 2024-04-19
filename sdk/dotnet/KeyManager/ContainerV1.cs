@@ -18,7 +18,6 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.IO;
@@ -92,13 +91,11 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Container with the ACL
     /// 
     /// &gt; **Note** Only read ACLs are supported
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -144,7 +141,6 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

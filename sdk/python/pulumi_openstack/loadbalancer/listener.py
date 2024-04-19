@@ -757,7 +757,6 @@ class Listener(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -770,7 +769,6 @@ class Listener(pulumi.CustomResource):
             protocol="HTTP",
             protocol_port=8080)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -840,7 +838,6 @@ class Listener(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -853,7 +850,6 @@ class Listener(pulumi.CustomResource):
             protocol="HTTP",
             protocol_port=8080)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

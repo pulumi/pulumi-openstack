@@ -153,7 +153,6 @@ class QosAssociationV3(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -168,7 +167,6 @@ class QosAssociationV3(pulumi.CustomResource):
             qos_id=qos.id,
             volume_type_id=volume_type.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -201,7 +199,6 @@ class QosAssociationV3(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -216,7 +213,6 @@ class QosAssociationV3(pulumi.CustomResource):
             qos_id=qos.id,
             volume_type_id=volume_type.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

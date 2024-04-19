@@ -423,7 +423,6 @@ class QuoteSetV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -444,7 +443,6 @@ class QuoteSetV2(pulumi.CustomResource):
                 "snapshots_ssd": 10,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -498,7 +496,6 @@ class QuoteSetV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -519,7 +516,6 @@ class QuoteSetV2(pulumi.CustomResource):
                 "snapshots_ssd": 10,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

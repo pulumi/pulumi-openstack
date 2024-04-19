@@ -16,7 +16,6 @@ import (
 //
 // ### Append a security group to an existing port
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,11 +54,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Enforce a security group to an existing port
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -99,11 +96,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Remove all security groups from an existing port
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -135,7 +130,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

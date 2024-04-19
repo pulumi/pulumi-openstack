@@ -332,7 +332,6 @@ class ContainerV1(pulumi.CustomResource):
 
         The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -373,13 +372,11 @@ class ContainerV1(pulumi.CustomResource):
             loadbalancer_id=lb1.id,
             default_tls_container_ref=tls1.container_ref)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Container with the ACL
 
         > **Note** Only read ACLs are supported
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -410,7 +407,6 @@ class ContainerV1(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -450,7 +446,6 @@ class ContainerV1(pulumi.CustomResource):
 
         The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -491,13 +486,11 @@ class ContainerV1(pulumi.CustomResource):
             loadbalancer_id=lb1.id,
             default_tls_container_ref=tls1.container_ref)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Container with the ACL
 
         > **Note** Only read ACLs are supported
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -528,7 +521,6 @@ class ContainerV1(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

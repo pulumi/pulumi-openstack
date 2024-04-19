@@ -247,7 +247,6 @@ class VolumeAttach(pulumi.CustomResource):
 
         ### Basic attachment of a single volume to a single instance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -258,14 +257,12 @@ class VolumeAttach(pulumi.CustomResource):
             instance_id=instance1.id,
             volume_id=volume1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Using Multiattach-enabled volumes
 
         Multiattach Volumes are dependent upon your OpenStack cloud and not all
         clouds support multiattach.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -285,7 +282,6 @@ class VolumeAttach(pulumi.CustomResource):
             multiattach=True,
             opts=pulumi.ResourceOptions(depends_on=["openstack_compute_volume_attach_v2.va_1"]))
         ```
-        <!--End PulumiCodeChooser -->
 
         It is recommended to use `depends_on` for the attach resources
         to enforce the volume attachments to happen one at a time.
@@ -325,7 +321,6 @@ class VolumeAttach(pulumi.CustomResource):
 
         ### Basic attachment of a single volume to a single instance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -336,14 +331,12 @@ class VolumeAttach(pulumi.CustomResource):
             instance_id=instance1.id,
             volume_id=volume1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Using Multiattach-enabled volumes
 
         Multiattach Volumes are dependent upon your OpenStack cloud and not all
         clouds support multiattach.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -363,7 +356,6 @@ class VolumeAttach(pulumi.CustomResource):
             multiattach=True,
             opts=pulumi.ResourceOptions(depends_on=["openstack_compute_volume_attach_v2.va_1"]))
         ```
-        <!--End PulumiCodeChooser -->
 
         It is recommended to use `depends_on` for the attach resources
         to enforce the volume attachments to happen one at a time.

@@ -391,7 +391,6 @@ class Quota(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -407,7 +406,6 @@ class Quota(pulumi.CustomResource):
             l7_policy=11,
             l7_rule=12)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -465,7 +463,6 @@ class Quota(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -481,7 +478,6 @@ class Quota(pulumi.CustomResource):
             l7_policy=11,
             l7_rule=12)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

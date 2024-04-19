@@ -333,14 +333,12 @@ class Project(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         project1 = openstack.identity.Project("project1", description="A project")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -382,14 +380,12 @@ class Project(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         project1 = openstack.identity.Project("project1", description="A project")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

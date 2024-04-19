@@ -11,14 +11,12 @@ import * as utilities from "../utilities";
  *
  * ### Create a QoS Policy
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const qosPolicy1 = new openstack.networking.QosPolicy("qosPolicy1", {description: "bw_limit"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

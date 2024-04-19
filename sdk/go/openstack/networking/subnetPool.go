@@ -18,7 +18,6 @@ import (
 //
 // ### Create a Subnet Pool
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,11 +45,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a Subnet from a Subnet Pool
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -90,7 +87,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

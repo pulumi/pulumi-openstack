@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -19,7 +18,6 @@ import * as utilities from "../utilities";
  *     name: "snapshot_1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSnapshotV3(args?: GetSnapshotV3Args, opts?: pulumi.InvokeOptions): Promise<GetSnapshotV3Result> {
     args = args || {};
@@ -105,7 +103,6 @@ export interface GetSnapshotV3Result {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -115,7 +112,6 @@ export interface GetSnapshotV3Result {
  *     name: "snapshot_1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSnapshotV3Output(args?: GetSnapshotV3OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotV3Result> {
     return pulumi.output(args).apply((a: any) => getSnapshotV3(a, opts))

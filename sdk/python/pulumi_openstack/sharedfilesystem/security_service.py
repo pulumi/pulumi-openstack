@@ -430,7 +430,6 @@ class SecurityService(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -445,7 +444,6 @@ class SecurityService(pulumi.CustomResource):
             type="active_directory",
             user="joinDomainUser")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -499,7 +497,6 @@ class SecurityService(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -514,7 +511,6 @@ class SecurityService(pulumi.CustomResource):
             type="active_directory",
             user="joinDomainUser")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
