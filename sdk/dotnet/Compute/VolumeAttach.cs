@@ -101,7 +101,7 @@ namespace Pulumi.OpenStack.Compute
     ///     {
     ///         DependsOn =
     ///         {
-    ///             "openstack_compute_volume_attach_v2.va_1", 
+    ///             "openstack_compute_volume_attach_v2.va_1",
     ///         },
     ///     });
     /// 
