@@ -23,10 +23,11 @@ namespace Pulumi.OpenStack.BlockStorage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var volume1 = new OpenStack.BlockStorage.VolumeV1("volume1", new()
+    ///     var volume1 = new OpenStack.BlockStorage.VolumeV1("volume_1", new()
     ///     {
-    ///         Description = "first test volume",
     ///         Region = "RegionOne",
+    ///         Name = "tf-test-volume",
+    ///         Description = "first test volume",
     ///         Size = 3,
     ///     });
     /// 

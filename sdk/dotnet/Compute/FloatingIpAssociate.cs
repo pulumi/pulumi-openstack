@@ -25,8 +25,9 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
     ///     {
+    ///         Name = "instance_1",
     ///         ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
     ///         FlavorId = "3",
     ///         KeyPair = "my_key_pair_name",
@@ -36,14 +37,14 @@ namespace Pulumi.OpenStack.Compute
     ///         },
     ///     });
     /// 
-    ///     var fip1FloatingIp = new OpenStack.Networking.FloatingIp("fip1FloatingIp", new()
+    ///     var fip1 = new OpenStack.Networking.FloatingIp("fip_1", new()
     ///     {
     ///         Pool = "my_pool",
     ///     });
     /// 
-    ///     var fip1FloatingIpAssociate = new OpenStack.Compute.FloatingIpAssociate("fip1FloatingIpAssociate", new()
+    ///     var fip1FloatingIpAssociate = new OpenStack.Compute.FloatingIpAssociate("fip_1", new()
     ///     {
-    ///         FloatingIp = fip1FloatingIp.Address,
+    ///         FloatingIp = fip1.Address,
     ///         InstanceId = instance1.Id,
     ///     });
     /// 
@@ -62,8 +63,9 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
     ///     {
+    ///         Name = "instance_1",
     ///         ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
     ///         FlavorId = "3",
     ///         KeyPair = "my_key_pair_name",
@@ -84,14 +86,14 @@ namespace Pulumi.OpenStack.Compute
     ///         },
     ///     });
     /// 
-    ///     var fip1FloatingIp = new OpenStack.Networking.FloatingIp("fip1FloatingIp", new()
+    ///     var fip1 = new OpenStack.Networking.FloatingIp("fip_1", new()
     ///     {
     ///         Pool = "my_pool",
     ///     });
     /// 
-    ///     var fip1FloatingIpAssociate = new OpenStack.Compute.FloatingIpAssociate("fip1FloatingIpAssociate", new()
+    ///     var fip1FloatingIpAssociate = new OpenStack.Compute.FloatingIpAssociate("fip_1", new()
     ///     {
-    ///         FloatingIp = fip1FloatingIp.Address,
+    ///         FloatingIp = fip1.Address,
     ///         InstanceId = instance1.Id,
     ///         FixedIp = instance1.Networks.Apply(networks =&gt; networks[1].FixedIpV4),
     ///     });

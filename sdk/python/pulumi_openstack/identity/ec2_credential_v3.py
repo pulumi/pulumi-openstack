@@ -226,7 +226,7 @@ class Ec2CredentialV3(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        ec2_key1 = openstack.identity.Ec2CredentialV3("ec2Key1")
+        ec2_key1 = openstack.identity.Ec2CredentialV3("ec2_key1")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -240,7 +240,7 @@ class Ec2CredentialV3(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        ec2_key1 = openstack.identity.Ec2CredentialV3("ec2Key1", project_id="f7ac731cc11f40efbc03a9f9e1d1d21f")
+        ec2_key1 = openstack.identity.Ec2CredentialV3("ec2_key1", project_id="f7ac731cc11f40efbc03a9f9e1d1d21f")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -289,7 +289,7 @@ class Ec2CredentialV3(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        ec2_key1 = openstack.identity.Ec2CredentialV3("ec2Key1")
+        ec2_key1 = openstack.identity.Ec2CredentialV3("ec2_key1")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -303,7 +303,7 @@ class Ec2CredentialV3(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        ec2_key1 = openstack.identity.Ec2CredentialV3("ec2Key1", project_id="f7ac731cc11f40efbc03a9f9e1d1d21f")
+        ec2_key1 = openstack.identity.Ec2CredentialV3("ec2_key1", project_id="f7ac731cc11f40efbc03a9f9e1d1d21f")
         ```
         <!--End PulumiCodeChooser -->
 

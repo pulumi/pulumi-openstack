@@ -36,7 +36,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := loadbalancer.NewMembers(ctx, "members1", &loadbalancer.MembersArgs{
+//			_, err := loadbalancer.NewMembers(ctx, "members_1", &loadbalancer.MembersArgs{
+//				PoolId: pulumi.String("935685fb-a896-40f9-9ff4-ae531a3a00fe"),
 //				Members: loadbalancer.MembersMemberArray{
 //					&loadbalancer.MembersMemberArgs{
 //						Address:      pulumi.String("192.168.199.23"),
@@ -47,7 +48,6 @@ import (
 //						ProtocolPort: pulumi.Int(8080),
 //					},
 //				},
-//				PoolId: pulumi.String("935685fb-a896-40f9-9ff4-ae531a3a00fe"),
 //			})
 //			if err != nil {
 //				return err

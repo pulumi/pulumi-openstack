@@ -32,21 +32,26 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			project1, err := identity.NewProject(ctx, "project_1", &identity.ProjectArgs{
+//				Name: pulumi.String("project_1"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			user1, err := identity.NewUser(ctx, "user1", &identity.UserArgs{
+//			user1, err := identity.NewUser(ctx, "user_1", &identity.UserArgs{
+//				Name:             pulumi.String("user_1"),
 //				DefaultProjectId: project1.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			role1, err := identity.NewRole(ctx, "role1", nil)
+//			role1, err := identity.NewRole(ctx, "role_1", &identity.RoleArgs{
+//				Name: pulumi.String("role_1"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = identity.NewRoleAssignment(ctx, "roleAssignment1", &identity.RoleAssignmentArgs{
+//			_, err = identity.NewRoleAssignment(ctx, "role_assignment_1", &identity.RoleAssignmentArgs{
 //				UserId:    user1.ID(),
 //				ProjectId: project1.ID(),
 //				RoleId:    role1.ID(),

@@ -29,11 +29,11 @@ namespace Pulumi.OpenStack.Images
         ///     var images = OpenStack.Images.GetImageIds.Invoke(new()
         ///     {
         ///         NameRegex = "^Ubuntu 16\\.04.*-amd64",
+        ///         Sort = "updated_at",
         ///         Properties = 
         ///         {
         ///             { "key", "value" },
         ///         },
-        ///         Sort = "updated_at",
         ///     });
         /// 
         /// });
@@ -61,11 +61,11 @@ namespace Pulumi.OpenStack.Images
         ///     var images = OpenStack.Images.GetImageIds.Invoke(new()
         ///     {
         ///         NameRegex = "^Ubuntu 16\\.04.*-amd64",
+        ///         Sort = "updated_at",
         ///         Properties = 
         ///         {
         ///             { "key", "value" },
         ///         },
-        ///         Sort = "updated_at",
         ///     });
         /// 
         /// });

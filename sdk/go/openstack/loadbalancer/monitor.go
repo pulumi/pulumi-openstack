@@ -29,8 +29,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := loadbalancer.NewMonitor(ctx, "monitor1", &loadbalancer.MonitorArgs{
-//				PoolId:     pulumi.Any(openstack_lb_pool_v2.Pool_1.Id),
+//			_, err := loadbalancer.NewMonitor(ctx, "monitor_1", &loadbalancer.MonitorArgs{
+//				PoolId:     pulumi.Any(pool1.Id),
 //				Type:       pulumi.String("PING"),
 //				Delay:      pulumi.Int(20),
 //				Timeout:    pulumi.Int(10),

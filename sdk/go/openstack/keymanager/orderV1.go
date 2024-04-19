@@ -31,14 +31,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := keymanager.NewOrderV1(ctx, "order1", &keymanager.OrderV1Args{
+//			_, err := keymanager.NewOrderV1(ctx, "order_1", &keymanager.OrderV1Args{
+//				Type: pulumi.String("key"),
 //				Meta: &keymanager.OrderV1MetaArgs{
 //					Algorithm: pulumi.String("aes"),
 //					BitLength: pulumi.Int(256),
-//					Mode:      pulumi.String("cbc"),
 //					Name:      pulumi.String("mysecret"),
+//					Mode:      pulumi.String("cbc"),
 //				},
-//				Type: pulumi.String("key"),
 //			})
 //			if err != nil {
 //				return err
@@ -65,13 +65,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := keymanager.NewOrderV1(ctx, "order1", &keymanager.OrderV1Args{
+//			_, err := keymanager.NewOrderV1(ctx, "order_1", &keymanager.OrderV1Args{
+//				Type: pulumi.String("asymmetric"),
 //				Meta: &keymanager.OrderV1MetaArgs{
 //					Algorithm: pulumi.String("rsa"),
 //					BitLength: pulumi.Int(4096),
 //					Name:      pulumi.String("mysecret"),
 //				},
-//				Type: pulumi.String("asymmetric"),
 //			})
 //			if err != nil {
 //				return err

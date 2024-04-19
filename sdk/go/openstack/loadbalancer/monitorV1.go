@@ -29,12 +29,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := loadbalancer.NewMonitorV1(ctx, "monitor1", &loadbalancer.MonitorV1Args{
-//				AdminStateUp: pulumi.String("true"),
-//				Delay:        pulumi.Int(30),
-//				MaxRetries:   pulumi.Int(3),
-//				Timeout:      pulumi.Int(5),
+//			_, err := loadbalancer.NewMonitorV1(ctx, "monitor_1", &loadbalancer.MonitorV1Args{
 //				Type:         pulumi.String("PING"),
+//				Delay:        pulumi.Int(30),
+//				Timeout:      pulumi.Int(5),
+//				MaxRetries:   pulumi.Int(3),
+//				AdminStateUp: pulumi.String("true"),
 //			})
 //			if err != nil {
 //				return err

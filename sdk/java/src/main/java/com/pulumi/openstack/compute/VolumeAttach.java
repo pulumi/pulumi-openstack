@@ -51,10 +51,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var volume1 = new Volume(&#34;volume1&#34;, VolumeArgs.builder()        
+ *             .name(&#34;volume_1&#34;)
  *             .size(1)
  *             .build());
  * 
  *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        
+ *             .name(&#34;instance_1&#34;)
  *             .securityGroups(&#34;default&#34;)
  *             .build());
  * 
@@ -101,15 +103,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var volume1 = new Volume(&#34;volume1&#34;, VolumeArgs.builder()        
+ *             .name(&#34;volume_1&#34;)
  *             .size(1)
  *             .multiattach(true)
  *             .build());
  * 
  *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        
+ *             .name(&#34;instance_1&#34;)
  *             .securityGroups(&#34;default&#34;)
  *             .build());
  * 
  *         var instance2 = new Instance(&#34;instance2&#34;, InstanceArgs.builder()        
+ *             .name(&#34;instance_2&#34;)
  *             .securityGroups(&#34;default&#34;)
  *             .build());
  * 
@@ -124,7 +129,7 @@ import javax.annotation.Nullable;
  *             .volumeId(volume1.id())
  *             .multiattach(true)
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(&#34;openstack_compute_volume_attach_v2.va_1&#34;)
+ *                 .dependsOn(va1)
  *                 .build());
  * 
  *     }

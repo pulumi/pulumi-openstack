@@ -157,14 +157,18 @@ class UserMembershipV3(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        project1 = openstack.identity.Project("project1")
-        user1 = openstack.identity.User("user1", default_project_id=project1.id)
-        group1 = openstack.identity.GroupV3("group1", description="group 1")
-        role1 = openstack.identity.Role("role1")
-        user_membership1 = openstack.identity.UserMembershipV3("userMembership1",
+        project1 = openstack.identity.Project("project_1", name="project_1")
+        user1 = openstack.identity.User("user_1",
+            name="user_1",
+            default_project_id=project1.id)
+        group1 = openstack.identity.GroupV3("group_1",
+            name="group_1",
+            description="group 1")
+        role1 = openstack.identity.Role("role_1", name="role_1")
+        user_membership1 = openstack.identity.UserMembershipV3("user_membership_1",
             user_id=user1.id,
             group_id=group1.id)
-        role_assignment1 = openstack.identity.RoleAssignment("roleAssignment1",
+        role_assignment1 = openstack.identity.RoleAssignment("role_assignment_1",
             group_id=group1.id,
             project_id=project1.id,
             role_id=role1.id)
@@ -210,14 +214,18 @@ class UserMembershipV3(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        project1 = openstack.identity.Project("project1")
-        user1 = openstack.identity.User("user1", default_project_id=project1.id)
-        group1 = openstack.identity.GroupV3("group1", description="group 1")
-        role1 = openstack.identity.Role("role1")
-        user_membership1 = openstack.identity.UserMembershipV3("userMembership1",
+        project1 = openstack.identity.Project("project_1", name="project_1")
+        user1 = openstack.identity.User("user_1",
+            name="user_1",
+            default_project_id=project1.id)
+        group1 = openstack.identity.GroupV3("group_1",
+            name="group_1",
+            description="group 1")
+        role1 = openstack.identity.Role("role_1", name="role_1")
+        user_membership1 = openstack.identity.UserMembershipV3("user_membership_1",
             user_id=user1.id,
             group_id=group1.id)
-        role_assignment1 = openstack.identity.RoleAssignment("roleAssignment1",
+        role_assignment1 = openstack.identity.RoleAssignment("role_assignment_1",
             group_id=group1.id,
             project_id=project1.id,
             role_id=role1.id)

@@ -23,27 +23,31 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
     ///     {
+    ///         Name = "network_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet_1", new()
     ///     {
+    ///         Name = "subnet_1",
     ///         Cidr = "192.168.199.0/24",
     ///         IpVersion = 4,
     ///         NetworkId = network1.Id,
     ///     });
     /// 
-    ///     var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork1", new()
+    ///     var sharenetwork1 = new OpenStack.SharedFileSystem.ShareNetwork("sharenetwork_1", new()
     ///     {
+    ///         Name = "test_sharenetwork",
     ///         Description = "test share network with security services",
     ///         NeutronNetId = network1.Id,
     ///         NeutronSubnetId = subnet1.Id,
     ///     });
     /// 
-    ///     var share1 = new OpenStack.SharedFileSystem.Share("share1", new()
+    ///     var share1 = new OpenStack.SharedFileSystem.Share("share_1", new()
     ///     {
+    ///         Name = "nfs_share",
     ///         Description = "test share description",
     ///         ShareProto = "NFS",
     ///         Size = 1,

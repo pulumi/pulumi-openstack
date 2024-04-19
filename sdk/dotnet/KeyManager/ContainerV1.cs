@@ -21,36 +21,49 @@ namespace Pulumi.OpenStack.KeyManager
     /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var certificate1 = new OpenStack.KeyManager.SecretV1("certificate1", new()
+    ///     var certificate1 = new OpenStack.KeyManager.SecretV1("certificate_1", new()
     ///     {
-    ///         Payload = File.ReadAllText("cert.pem"),
+    ///         Name = "certificate",
+    ///         Payload = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "cert.pem",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         SecretType = "certificate",
     ///         PayloadContentType = "text/plain",
     ///     });
     /// 
-    ///     var privateKey1 = new OpenStack.KeyManager.SecretV1("privateKey1", new()
+    ///     var privateKey1 = new OpenStack.KeyManager.SecretV1("private_key_1", new()
     ///     {
-    ///         Payload = File.ReadAllText("cert-key.pem"),
+    ///         Name = "private_key",
+    ///         Payload = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "cert-key.pem",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         SecretType = "private",
     ///         PayloadContentType = "text/plain",
     ///     });
     /// 
-    ///     var intermediate1 = new OpenStack.KeyManager.SecretV1("intermediate1", new()
+    ///     var intermediate1 = new OpenStack.KeyManager.SecretV1("intermediate_1", new()
     ///     {
-    ///         Payload = File.ReadAllText("intermediate-ca.pem"),
+    ///         Name = "intermediate",
+    ///         Payload = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "intermediate-ca.pem",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         SecretType = "certificate",
     ///         PayloadContentType = "text/plain",
     ///     });
     /// 
-    ///     var tls1 = new OpenStack.KeyManager.ContainerV1("tls1", new()
+    ///     var tls1 = new OpenStack.KeyManager.ContainerV1("tls_1", new()
     ///     {
+    ///         Name = "tls",
     ///         Type = "certificate",
     ///         SecretRefs = new[]
     ///         {
@@ -77,13 +90,15 @@ namespace Pulumi.OpenStack.KeyManager
     ///         Name = "my-subnet",
     ///     });
     /// 
-    ///     var lb1 = new OpenStack.LoadBalancer.LoadBalancer("lb1", new()
+    ///     var lb1 = new OpenStack.LoadBalancer.LoadBalancer("lb_1", new()
     ///     {
+    ///         Name = "loadbalancer",
     ///         VipSubnetId = subnet1.Apply(getSubnetResult =&gt; getSubnetResult.Id),
     ///     });
     /// 
-    ///     var listener1 = new OpenStack.LoadBalancer.Listener("listener1", new()
+    ///     var listener1 = new OpenStack.LoadBalancer.Listener("listener_1", new()
     ///     {
+    ///         Name = "https",
     ///         Protocol = "TERMINATED_HTTPS",
     ///         ProtocolPort = 443,
     ///         LoadbalancerId = lb1.Id,
@@ -107,25 +122,26 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tls1 = new OpenStack.KeyManager.ContainerV1("tls1", new()
+    ///     var tls1 = new OpenStack.KeyManager.ContainerV1("tls_1", new()
     ///     {
+    ///         Name = "tls",
     ///         Type = "certificate",
     ///         SecretRefs = new[]
     ///         {
     ///             new OpenStack.KeyManager.Inputs.ContainerV1SecretRefArgs
     ///             {
     ///                 Name = "certificate",
-    ///                 SecretRef = openstack_keymanager_secret_v1.Certificate_1.Secret_ref,
+    ///                 SecretRef = certificate1.SecretRef,
     ///             },
     ///             new OpenStack.KeyManager.Inputs.ContainerV1SecretRefArgs
     ///             {
     ///                 Name = "private_key",
-    ///                 SecretRef = openstack_keymanager_secret_v1.Private_key_1.Secret_ref,
+    ///                 SecretRef = privateKey1.SecretRef,
     ///             },
     ///             new OpenStack.KeyManager.Inputs.ContainerV1SecretRefArgs
     ///             {
     ///                 Name = "intermediates",
-    ///                 SecretRef = openstack_keymanager_secret_v1.Intermediate_1.Secret_ref,
+    ///                 SecretRef = intermediate1.SecretRef,
     ///             },
     ///         },
     ///         Acl = new OpenStack.KeyManager.Inputs.ContainerV1AclArgs

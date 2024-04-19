@@ -25,12 +25,12 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var port1 = new OpenStack.Networking.Port("port1", new()
+    ///     var port1 = new OpenStack.Networking.Port("port_1", new()
     ///     {
     ///         NetworkId = "a5bbd213-e1d3-49b6-aed1-9df60ea94b9a",
     ///     });
     /// 
-    ///     var fip1 = new OpenStack.Networking.FloatingIpAssociate("fip1", new()
+    ///     var fip1 = new OpenStack.Networking.FloatingIpAssociate("fip_1", new()
     ///     {
     ///         FloatingIp = "1.2.3.4",
     ///         PortId = port1.Id,

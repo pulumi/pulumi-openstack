@@ -194,6 +194,7 @@ class QosV3(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         qos = openstack.blockstorage.QosV3("qos",
+            name="foo",
             consumer="back-end",
             specs={
                 "read_iops_sec": "40000",
@@ -240,6 +241,7 @@ class QosV3(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         qos = openstack.blockstorage.QosV3("qos",
+            name="foo",
             consumer="back-end",
             specs={
                 "read_iops_sec": "40000",

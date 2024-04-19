@@ -25,8 +25,9 @@ namespace Pulumi.OpenStack.BlockStorage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var volumeType1 = new OpenStack.BlockStorage.VolumeTypeV3("volumeType1", new()
+    ///     var volumeType1 = new OpenStack.BlockStorage.VolumeTypeV3("volume_type_1", new()
     ///     {
+    ///         Name = "volume_type_1",
     ///         Description = "Volume type 1",
     ///         ExtraSpecs = 
     ///         {

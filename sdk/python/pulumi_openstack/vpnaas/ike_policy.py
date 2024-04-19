@@ -452,7 +452,7 @@ class IkePolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        policy1 = openstack.vpnaas.IkePolicy("policy1")
+        policy1 = openstack.vpnaas.IkePolicy("policy_1", name="my_policy")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -505,7 +505,7 @@ class IkePolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        policy1 = openstack.vpnaas.IkePolicy("policy1")
+        policy1 = openstack.vpnaas.IkePolicy("policy_1", name="my_policy")
         ```
         <!--End PulumiCodeChooser -->
 

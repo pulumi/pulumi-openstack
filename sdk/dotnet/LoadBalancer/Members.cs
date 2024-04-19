@@ -30,8 +30,9 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var members1 = new OpenStack.LoadBalancer.Members("members1", new()
+    ///     var members1 = new OpenStack.LoadBalancer.Members("members_1", new()
     ///     {
+    ///         PoolId = "935685fb-a896-40f9-9ff4-ae531a3a00fe",
     ///         MemberList = new[]
     ///         {
     ///             new OpenStack.LoadBalancer.Inputs.MembersMemberArgs
@@ -45,7 +46,6 @@ namespace Pulumi.OpenStack.LoadBalancer
     ///                 ProtocolPort = 8080,
     ///             },
     ///         },
-    ///         PoolId = "935685fb-a896-40f9-9ff4-ae531a3a00fe",
     ///     });
     /// 
     /// });

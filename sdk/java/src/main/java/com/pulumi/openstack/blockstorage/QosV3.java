@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var qos = new QosV3(&#34;qos&#34;, QosV3Args.builder()        
+ *             .name(&#34;foo&#34;)
  *             .consumer(&#34;back-end&#34;)
  *             .specs(Map.ofEntries(
  *                 Map.entry(&#34;read_iops_sec&#34;, &#34;40000&#34;),

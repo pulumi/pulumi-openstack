@@ -25,8 +25,9 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var addressscope1 = new OpenStack.Networking.AddressScope("addressscope1", new()
+    ///     var addressscope1 = new OpenStack.Networking.AddressScope("addressscope_1", new()
     ///     {
+    ///         Name = "addressscope_1",
     ///         IpVersion = 6,
     ///     });
     /// 
@@ -45,13 +46,15 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var addressscope1 = new OpenStack.Networking.AddressScope("addressscope1", new()
+    ///     var addressscope1 = new OpenStack.Networking.AddressScope("addressscope_1", new()
     ///     {
+    ///         Name = "addressscope_1",
     ///         IpVersion = 6,
     ///     });
     /// 
-    ///     var subnetpool1 = new OpenStack.Networking.SubnetPool("subnetpool1", new()
+    ///     var subnetpool1 = new OpenStack.Networking.SubnetPool("subnetpool_1", new()
     ///     {
+    ///         Name = "subnetpool_1",
     ///         Prefixes = new[]
     ///         {
     ///             "fdf7:b13d:dead:beef::/64",

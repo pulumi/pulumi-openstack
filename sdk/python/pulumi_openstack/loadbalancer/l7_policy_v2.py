@@ -415,21 +415,29 @@ class L7PolicyV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
+            name="subnet_1",
             cidr="192.168.199.0/24",
             ip_version=4,
             network_id=network1.id)
-        loadbalancer1 = openstack.loadbalancer.LoadBalancer("loadbalancer1", vip_subnet_id=subnet1.id)
-        listener1 = openstack.loadbalancer.Listener("listener1",
+        loadbalancer1 = openstack.loadbalancer.LoadBalancer("loadbalancer_1",
+            name="loadbalancer_1",
+            vip_subnet_id=subnet1.id)
+        listener1 = openstack.loadbalancer.Listener("listener_1",
+            name="listener_1",
             protocol="HTTP",
             protocol_port=8080,
             loadbalancer_id=loadbalancer1.id)
-        pool1 = openstack.loadbalancer.Pool("pool1",
+        pool1 = openstack.loadbalancer.Pool("pool_1",
+            name="pool_1",
             protocol="HTTP",
             lb_method="ROUND_ROBIN",
             loadbalancer_id=loadbalancer1.id)
-        l7policy1 = openstack.loadbalancer.L7PolicyV2("l7policy1",
+        l7policy1 = openstack.loadbalancer.L7PolicyV2("l7policy_1",
+            name="test",
             action="REDIRECT_TO_POOL",
             description="test l7 policy",
             position=1,
@@ -486,21 +494,29 @@ class L7PolicyV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
+            name="subnet_1",
             cidr="192.168.199.0/24",
             ip_version=4,
             network_id=network1.id)
-        loadbalancer1 = openstack.loadbalancer.LoadBalancer("loadbalancer1", vip_subnet_id=subnet1.id)
-        listener1 = openstack.loadbalancer.Listener("listener1",
+        loadbalancer1 = openstack.loadbalancer.LoadBalancer("loadbalancer_1",
+            name="loadbalancer_1",
+            vip_subnet_id=subnet1.id)
+        listener1 = openstack.loadbalancer.Listener("listener_1",
+            name="listener_1",
             protocol="HTTP",
             protocol_port=8080,
             loadbalancer_id=loadbalancer1.id)
-        pool1 = openstack.loadbalancer.Pool("pool1",
+        pool1 = openstack.loadbalancer.Pool("pool_1",
+            name="pool_1",
             protocol="HTTP",
             lb_method="ROUND_ROBIN",
             loadbalancer_id=loadbalancer1.id)
-        l7policy1 = openstack.loadbalancer.L7PolicyV2("l7policy1",
+        l7policy1 = openstack.loadbalancer.L7PolicyV2("l7policy_1",
+            name="test",
             action="REDIRECT_TO_POOL",
             description="test l7 policy",
             position=1,

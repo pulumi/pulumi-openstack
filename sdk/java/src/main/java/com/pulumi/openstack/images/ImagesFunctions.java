@@ -45,8 +45,8 @@ public final class ImagesFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ubuntu = ImagesFunctions.getImage(GetImageArgs.builder()
-     *             .mostRecent(true)
      *             .name(&#34;Ubuntu 16.04&#34;)
+     *             .mostRecent(true)
      *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
      *             .build());
      * 
@@ -87,8 +87,8 @@ public final class ImagesFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ubuntu = ImagesFunctions.getImage(GetImageArgs.builder()
-     *             .mostRecent(true)
      *             .name(&#34;Ubuntu 16.04&#34;)
+     *             .mostRecent(true)
      *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
      *             .build());
      * 
@@ -129,8 +129,8 @@ public final class ImagesFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ubuntu = ImagesFunctions.getImage(GetImageArgs.builder()
-     *             .mostRecent(true)
      *             .name(&#34;Ubuntu 16.04&#34;)
+     *             .mostRecent(true)
      *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
      *             .build());
      * 
@@ -171,8 +171,8 @@ public final class ImagesFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ubuntu = ImagesFunctions.getImage(GetImageArgs.builder()
-     *             .mostRecent(true)
      *             .name(&#34;Ubuntu 16.04&#34;)
+     *             .mostRecent(true)
      *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
      *             .build());
      * 
@@ -213,8 +213,8 @@ public final class ImagesFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ubuntu = ImagesFunctions.getImage(GetImageArgs.builder()
-     *             .mostRecent(true)
      *             .name(&#34;Ubuntu 16.04&#34;)
+     *             .mostRecent(true)
      *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
      *             .build());
      * 
@@ -255,8 +255,8 @@ public final class ImagesFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ubuntu = ImagesFunctions.getImage(GetImageArgs.builder()
-     *             .mostRecent(true)
      *             .name(&#34;Ubuntu 16.04&#34;)
+     *             .mostRecent(true)
      *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
      *             .build());
      * 
@@ -299,8 +299,8 @@ public final class ImagesFunctions {
      *     public static void stack(Context ctx) {
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
      *             .nameRegex(&#34;^Ubuntu 16\\.04.*-amd64&#34;)
-     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
      *             .sort(&#34;updated_at&#34;)
+     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
      *             .build());
      * 
      *     }
@@ -342,8 +342,8 @@ public final class ImagesFunctions {
      *     public static void stack(Context ctx) {
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
      *             .nameRegex(&#34;^Ubuntu 16\\.04.*-amd64&#34;)
-     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
      *             .sort(&#34;updated_at&#34;)
+     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
      *             .build());
      * 
      *     }
@@ -385,8 +385,8 @@ public final class ImagesFunctions {
      *     public static void stack(Context ctx) {
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
      *             .nameRegex(&#34;^Ubuntu 16\\.04.*-amd64&#34;)
-     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
      *             .sort(&#34;updated_at&#34;)
+     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
      *             .build());
      * 
      *     }
@@ -428,8 +428,8 @@ public final class ImagesFunctions {
      *     public static void stack(Context ctx) {
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
      *             .nameRegex(&#34;^Ubuntu 16\\.04.*-amd64&#34;)
-     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
      *             .sort(&#34;updated_at&#34;)
+     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
      *             .build());
      * 
      *     }
@@ -471,8 +471,8 @@ public final class ImagesFunctions {
      *     public static void stack(Context ctx) {
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
      *             .nameRegex(&#34;^Ubuntu 16\\.04.*-amd64&#34;)
-     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
      *             .sort(&#34;updated_at&#34;)
+     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
      *             .build());
      * 
      *     }
@@ -514,8 +514,8 @@ public final class ImagesFunctions {
      *     public static void stack(Context ctx) {
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
      *             .nameRegex(&#34;^Ubuntu 16\\.04.*-amd64&#34;)
-     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
      *             .sort(&#34;updated_at&#34;)
+     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
      *             .build());
      * 
      *     }

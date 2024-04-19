@@ -26,8 +26,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const rbacPolicy1 = new openstack.networking.RbacPolicyV2("rbacPolicy1", {
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     name: "network_1",
+ *     adminStateUp: true,
+ * });
+ * const rbacPolicy1 = new openstack.networking.RbacPolicyV2("rbac_policy_1", {
  *     action: "access_as_shared",
  *     objectId: network1.id,
  *     objectType: "network",

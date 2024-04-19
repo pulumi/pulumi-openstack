@@ -18,14 +18,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const order1 = new openstack.keymanager.OrderV1("order1", {
+ * const order1 = new openstack.keymanager.OrderV1("order_1", {
+ *     type: "key",
  *     meta: {
  *         algorithm: "aes",
  *         bitLength: 256,
- *         mode: "cbc",
  *         name: "mysecret",
+ *         mode: "cbc",
  *     },
- *     type: "key",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -37,13 +37,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const order1 = new openstack.keymanager.OrderV1("order1", {
+ * const order1 = new openstack.keymanager.OrderV1("order_1", {
+ *     type: "asymmetric",
  *     meta: {
  *         algorithm: "rsa",
  *         bitLength: 4096,
  *         name: "mysecret",
  *     },
- *     type: "asymmetric",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

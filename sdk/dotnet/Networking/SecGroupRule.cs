@@ -25,12 +25,13 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var secgroup1 = new OpenStack.Networking.SecGroup("secgroup1", new()
+    ///     var secgroup1 = new OpenStack.Networking.SecGroup("secgroup_1", new()
     ///     {
+    ///         Name = "secgroup_1",
     ///         Description = "My neutron security group",
     ///     });
     /// 
-    ///     var secgroupRule1 = new OpenStack.Networking.SecGroupRule("secgroupRule1", new()
+    ///     var secgroupRule1 = new OpenStack.Networking.SecGroupRule("secgroup_rule_1", new()
     ///     {
     ///         Direction = "ingress",
     ///         Ethertype = "IPv4",

@@ -26,8 +26,9 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var group1 = new OpenStack.Identity.GroupV3("group1", new()
+    ///     var group1 = new OpenStack.Identity.GroupV3("group_1", new()
     ///     {
+    ///         Name = "group_1",
     ///         Description = "group 1",
     ///     });
     /// 

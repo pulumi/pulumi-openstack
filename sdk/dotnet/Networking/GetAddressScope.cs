@@ -27,9 +27,9 @@ namespace Pulumi.OpenStack.Networking
         /// {
         ///     var publicAddressscope = OpenStack.Networking.GetAddressScope.Invoke(new()
         ///     {
-        ///         IpVersion = 4,
         ///         Name = "public_addressscope",
         ///         Shared = true,
+        ///         IpVersion = 4,
         ///     });
         /// 
         /// });
@@ -55,9 +55,9 @@ namespace Pulumi.OpenStack.Networking
         /// {
         ///     var publicAddressscope = OpenStack.Networking.GetAddressScope.Invoke(new()
         ///     {
-        ///         IpVersion = 4,
         ///         Name = "public_addressscope",
         ///         Shared = true,
+        ///         IpVersion = 4,
         ///     });
         /// 
         /// });

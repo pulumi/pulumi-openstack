@@ -26,16 +26,16 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var pool1 = new OpenStack.LoadBalancer.Pool("pool1", new()
+    ///     var pool1 = new OpenStack.LoadBalancer.Pool("pool_1", new()
     ///     {
+    ///         Protocol = "HTTP",
     ///         LbMethod = "ROUND_ROBIN",
     ///         ListenerId = "d9415786-5f1a-428b-b35f-2f1523e146d2",
     ///         Persistence = new OpenStack.LoadBalancer.Inputs.PoolPersistenceArgs
     ///         {
-    ///             CookieName = "testCookie",
     ///             Type = "APP_COOKIE",
+    ///             CookieName = "testCookie",
     ///         },
-    ///         Protocol = "HTTP",
     ///     });
     /// 
     /// });

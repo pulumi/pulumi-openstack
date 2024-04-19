@@ -27,6 +27,7 @@ namespace Pulumi.OpenStack.BlockStorage
     /// {
     ///     var qos = new OpenStack.BlockStorage.QosV3("qos", new()
     ///     {
+    ///         Name = "%s",
     ///         Consumer = "front-end",
     ///         Specs = 
     ///         {
@@ -34,9 +35,12 @@ namespace Pulumi.OpenStack.BlockStorage
     ///         },
     ///     });
     /// 
-    ///     var volumeType = new OpenStack.BlockStorage.VolumeTypeV3("volumeType");
+    ///     var volumeType = new OpenStack.BlockStorage.VolumeTypeV3("volume_type", new()
+    ///     {
+    ///         Name = "%s",
+    ///     });
     /// 
-    ///     var qosAssociation = new OpenStack.BlockStorage.QosAssociationV3("qosAssociation", new()
+    ///     var qosAssociation = new OpenStack.BlockStorage.QosAssociationV3("qos_association", new()
     ///     {
     ///         QosId = qos.Id,
     ///         VolumeTypeId = volumeType.Id,

@@ -23,10 +23,11 @@ namespace Pulumi.OpenStack.VPNaaS
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var service1 = new OpenStack.VPNaaS.Service("service1", new()
+    ///     var service1 = new OpenStack.VPNaaS.Service("service_1", new()
     ///     {
-    ///         AdminStateUp = true,
+    ///         Name = "my_service",
     ///         RouterId = "14a75700-fc03-4602-9294-26ee44f366b3",
+    ///         AdminStateUp = true,
     ///     });
     /// 
     /// });

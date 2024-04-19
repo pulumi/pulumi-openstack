@@ -29,11 +29,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := loadbalancer.NewVip(ctx, "vip1", &loadbalancer.VipArgs{
-//				PoolId:   pulumi.String("67890"),
-//				Port:     pulumi.Int(80),
-//				Protocol: pulumi.String("HTTP"),
+//			_, err := loadbalancer.NewVip(ctx, "vip_1", &loadbalancer.VipArgs{
+//				Name:     pulumi.String("tf_test_lb_vip"),
 //				SubnetId: pulumi.String("12345"),
+//				Protocol: pulumi.String("HTTP"),
+//				Port:     pulumi.Int(80),
+//				PoolId:   pulumi.String("67890"),
 //			})
 //			if err != nil {
 //				return err

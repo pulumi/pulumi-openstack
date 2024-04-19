@@ -711,12 +711,16 @@ class Network(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
+            name="subnet_1",
             network_id=network1.id,
             cidr="192.168.199.0/24",
             ip_version=4)
-        secgroup1 = openstack.compute.SecGroup("secgroup1",
+        secgroup1 = openstack.compute.SecGroup("secgroup_1",
+            name="secgroup_1",
             description="a security group",
             rules=[openstack.compute.SecGroupRuleArgs(
                 from_port=22,
@@ -724,7 +728,8 @@ class Network(pulumi.CustomResource):
                 ip_protocol="tcp",
                 cidr="0.0.0.0/0",
             )])
-        port1 = openstack.networking.Port("port1",
+        port1 = openstack.networking.Port("port_1",
+            name="port_1",
             network_id=network1.id,
             admin_state_up=True,
             security_group_ids=[secgroup1.id],
@@ -732,7 +737,8 @@ class Network(pulumi.CustomResource):
                 subnet_id=subnet1.id,
                 ip_address="192.168.199.10",
             )])
-        instance1 = openstack.compute.Instance("instance1",
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
             security_groups=[secgroup1.name],
             networks=[openstack.compute.InstanceNetworkArgs(
                 port=port1.id,
@@ -813,12 +819,16 @@ class Network(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
+            name="subnet_1",
             network_id=network1.id,
             cidr="192.168.199.0/24",
             ip_version=4)
-        secgroup1 = openstack.compute.SecGroup("secgroup1",
+        secgroup1 = openstack.compute.SecGroup("secgroup_1",
+            name="secgroup_1",
             description="a security group",
             rules=[openstack.compute.SecGroupRuleArgs(
                 from_port=22,
@@ -826,7 +836,8 @@ class Network(pulumi.CustomResource):
                 ip_protocol="tcp",
                 cidr="0.0.0.0/0",
             )])
-        port1 = openstack.networking.Port("port1",
+        port1 = openstack.networking.Port("port_1",
+            name="port_1",
             network_id=network1.id,
             admin_state_up=True,
             security_group_ids=[secgroup1.id],
@@ -834,7 +845,8 @@ class Network(pulumi.CustomResource):
                 subnet_id=subnet1.id,
                 ip_address="192.168.199.10",
             )])
-        instance1 = openstack.compute.Instance("instance1",
+        instance1 = openstack.compute.Instance("instance_1",
+            name="instance_1",
             security_groups=[secgroup1.name],
             networks=[openstack.compute.InstanceNetworkArgs(
                 port=port1.id,

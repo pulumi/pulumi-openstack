@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewFloatingIp(ctx, "floatip1", &compute.FloatingIpArgs{
+//			_, err := compute.NewFloatingIp(ctx, "floatip_1", &compute.FloatingIpArgs{
 //				Pool: pulumi.String("public"),
 //			})
 //			if err != nil {

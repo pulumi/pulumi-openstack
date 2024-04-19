@@ -25,15 +25,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice1", {
+ * const securityservice1 = new openstack.sharedfilesystem.SecurityService("securityservice_1", {
+ *     name: "security",
  *     description: "created by terraform",
+ *     type: "active_directory",
+ *     server: "192.168.199.10",
  *     dnsIp: "192.168.199.10",
  *     domain: "example.com",
  *     ou: "CN=Computers,DC=example,DC=com",
- *     password: "s8cret",
- *     server: "192.168.199.10",
- *     type: "active_directory",
  *     user: "joinDomainUser",
+ *     password: "s8cret",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

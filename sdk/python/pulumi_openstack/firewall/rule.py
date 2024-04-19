@@ -558,12 +558,13 @@ class Rule(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        rule1 = openstack.firewall.Rule("rule1",
-            action="deny",
+        rule1 = openstack.firewall.Rule("rule_1",
+            name="my_rule",
             description="drop TELNET traffic",
+            action="deny",
+            protocol="tcp",
             destination_port="23",
-            enabled=True,
-            protocol="tcp")
+            enabled=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -629,12 +630,13 @@ class Rule(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        rule1 = openstack.firewall.Rule("rule1",
-            action="deny",
+        rule1 = openstack.firewall.Rule("rule_1",
+            name="my_rule",
             description="drop TELNET traffic",
+            action="deny",
+            protocol="tcp",
             destination_port="23",
-            enabled=True,
-            protocol="tcp")
+            enabled=True)
         ```
         <!--End PulumiCodeChooser -->
 

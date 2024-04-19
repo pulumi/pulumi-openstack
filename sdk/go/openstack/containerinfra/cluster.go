@@ -35,11 +35,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := containerinfra.NewCluster(ctx, "cluster1", &containerinfra.ClusterArgs{
+//			_, err := containerinfra.NewCluster(ctx, "cluster_1", &containerinfra.ClusterArgs{
+//				Name:              pulumi.String("cluster_1"),
 //				ClusterTemplateId: pulumi.String("b9a45c5c-cd03-4958-82aa-b80bf93cb922"),
-//				Keypair:           pulumi.String("ssh_keypair"),
 //				MasterCount:       pulumi.Int(3),
 //				NodeCount:         pulumi.Int(5),
+//				Keypair:           pulumi.String("ssh_keypair"),
 //			})
 //			if err != nil {
 //				return err

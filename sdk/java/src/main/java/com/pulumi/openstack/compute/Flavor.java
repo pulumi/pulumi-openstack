@@ -47,13 +47,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test_flavor = new Flavor(&#34;test-flavor&#34;, FlavorArgs.builder()        
+ *             .name(&#34;my-flavor&#34;)
+ *             .ram(&#34;8096&#34;)
+ *             .vcpus(&#34;2&#34;)
  *             .disk(&#34;20&#34;)
  *             .extraSpecs(Map.ofEntries(
  *                 Map.entry(&#34;hw:cpu_policy&#34;, &#34;CPU-POLICY&#34;),
  *                 Map.entry(&#34;hw:cpu_thread_policy&#34;, &#34;CPU-THREAD-POLICY&#34;)
  *             ))
- *             .ram(&#34;8096&#34;)
- *             .vcpus(&#34;2&#34;)
  *             .build());
  * 
  *     }

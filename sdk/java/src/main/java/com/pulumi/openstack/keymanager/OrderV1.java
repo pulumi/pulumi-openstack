@@ -45,13 +45,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var order1 = new OrderV1(&#34;order1&#34;, OrderV1Args.builder()        
+ *             .type(&#34;key&#34;)
  *             .meta(OrderV1MetaArgs.builder()
  *                 .algorithm(&#34;aes&#34;)
  *                 .bitLength(256)
- *                 .mode(&#34;cbc&#34;)
  *                 .name(&#34;mysecret&#34;)
+ *                 .mode(&#34;cbc&#34;)
  *                 .build())
- *             .type(&#34;key&#34;)
  *             .build());
  * 
  *     }
@@ -85,12 +85,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var order1 = new OrderV1(&#34;order1&#34;, OrderV1Args.builder()        
+ *             .type(&#34;asymmetric&#34;)
  *             .meta(OrderV1MetaArgs.builder()
  *                 .algorithm(&#34;rsa&#34;)
  *                 .bitLength(4096)
  *                 .name(&#34;mysecret&#34;)
  *                 .build())
- *             .type(&#34;asymmetric&#34;)
  *             .build());
  * 
  *     }

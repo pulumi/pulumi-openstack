@@ -18,25 +18,35 @@ import * as utilities from "../utilities";
  * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as openstack from "@pulumi/openstack";
+ * import * as std from "@pulumi/std";
  *
- * const certificate1 = new openstack.keymanager.SecretV1("certificate1", {
- *     payload: fs.readFileSync("cert.pem", "utf8"),
+ * const certificate1 = new openstack.keymanager.SecretV1("certificate_1", {
+ *     name: "certificate",
+ *     payload: std.file({
+ *         input: "cert.pem",
+ *     }).then(invoke => invoke.result),
  *     secretType: "certificate",
  *     payloadContentType: "text/plain",
  * });
- * const privateKey1 = new openstack.keymanager.SecretV1("privateKey1", {
- *     payload: fs.readFileSync("cert-key.pem", "utf8"),
+ * const privateKey1 = new openstack.keymanager.SecretV1("private_key_1", {
+ *     name: "private_key",
+ *     payload: std.file({
+ *         input: "cert-key.pem",
+ *     }).then(invoke => invoke.result),
  *     secretType: "private",
  *     payloadContentType: "text/plain",
  * });
- * const intermediate1 = new openstack.keymanager.SecretV1("intermediate1", {
- *     payload: fs.readFileSync("intermediate-ca.pem", "utf8"),
+ * const intermediate1 = new openstack.keymanager.SecretV1("intermediate_1", {
+ *     name: "intermediate",
+ *     payload: std.file({
+ *         input: "intermediate-ca.pem",
+ *     }).then(invoke => invoke.result),
  *     secretType: "certificate",
  *     payloadContentType: "text/plain",
  * });
- * const tls1 = new openstack.keymanager.ContainerV1("tls1", {
+ * const tls1 = new openstack.keymanager.ContainerV1("tls_1", {
+ *     name: "tls",
  *     type: "certificate",
  *     secretRefs: [
  *         {
@@ -56,8 +66,12 @@ import * as utilities from "../utilities";
  * const subnet1 = openstack.networking.getSubnet({
  *     name: "my-subnet",
  * });
- * const lb1 = new openstack.loadbalancer.LoadBalancer("lb1", {vipSubnetId: subnet1.then(subnet1 => subnet1.id)});
- * const listener1 = new openstack.loadbalancer.Listener("listener1", {
+ * const lb1 = new openstack.loadbalancer.LoadBalancer("lb_1", {
+ *     name: "loadbalancer",
+ *     vipSubnetId: subnet1.then(subnet1 => subnet1.id),
+ * });
+ * const listener1 = new openstack.loadbalancer.Listener("listener_1", {
+ *     name: "https",
  *     protocol: "TERMINATED_HTTPS",
  *     protocolPort: 443,
  *     loadbalancerId: lb1.id,
@@ -75,20 +89,21 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const tls1 = new openstack.keymanager.ContainerV1("tls1", {
+ * const tls1 = new openstack.keymanager.ContainerV1("tls_1", {
+ *     name: "tls",
  *     type: "certificate",
  *     secretRefs: [
  *         {
  *             name: "certificate",
- *             secretRef: openstack_keymanager_secret_v1.certificate_1.secret_ref,
+ *             secretRef: certificate1.secretRef,
  *         },
  *         {
  *             name: "private_key",
- *             secretRef: openstack_keymanager_secret_v1.private_key_1.secret_ref,
+ *             secretRef: privateKey1.secretRef,
  *         },
  *         {
  *             name: "intermediates",
- *             secretRef: openstack_keymanager_secret_v1.intermediate_1.secret_ref,
+ *             secretRef: intermediate1.secretRef,
  *         },
  *     ],
  *     acl: {

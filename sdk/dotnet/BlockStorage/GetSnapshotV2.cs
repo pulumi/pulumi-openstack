@@ -27,8 +27,8 @@ namespace Pulumi.OpenStack.BlockStorage
         /// {
         ///     var snapshot1 = OpenStack.BlockStorage.GetSnapshotV2.Invoke(new()
         ///     {
-        ///         MostRecent = true,
         ///         Name = "snapshot_1",
+        ///         MostRecent = true,
         ///     });
         /// 
         /// });
@@ -54,8 +54,8 @@ namespace Pulumi.OpenStack.BlockStorage
         /// {
         ///     var snapshot1 = OpenStack.BlockStorage.GetSnapshotV2.Invoke(new()
         ///     {
-        ///         MostRecent = true,
         ///         Name = "snapshot_1",
+        ///         MostRecent = true,
         ///     });
         /// 
         /// });

@@ -19,9 +19,10 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const rancheros = new openstack.images.Image("rancheros", {
+ *     name: "RancherOS",
+ *     imageSourceUrl: "https://releases.rancher.com/os/latest/rancheros-openstack.img",
  *     containerFormat: "bare",
  *     diskFormat: "qcow2",
- *     imageSourceUrl: "https://releases.rancher.com/os/latest/rancheros-openstack.img",
  *     properties: {
  *         key: "value",
  *     },

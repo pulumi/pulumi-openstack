@@ -31,13 +31,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			qosPolicy1, err := networking.NewQosPolicy(ctx, "qosPolicy1", &networking.QosPolicyArgs{
+//			qosPolicy1, err := networking.NewQosPolicy(ctx, "qos_policy_1", &networking.QosPolicyArgs{
+//				Name:        pulumi.String("qos_policy_1"),
 //				Description: pulumi.String("bw_limit"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networking.NewQosBandwidthLimitRule(ctx, "bwLimitRule1", &networking.QosBandwidthLimitRuleArgs{
+//			_, err = networking.NewQosBandwidthLimitRule(ctx, "bw_limit_rule_1", &networking.QosBandwidthLimitRuleArgs{
 //				QosPolicyId:  qosPolicy1.ID(),
 //				MaxKbps:      pulumi.Int(3000),
 //				MaxBurstKbps: pulumi.Int(300),

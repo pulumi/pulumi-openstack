@@ -21,7 +21,8 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const basic = new openstack.database.User("basic", {
- *     instanceId: openstack_db_instance_v1.basic.id,
+ *     name: "basic",
+ *     instanceId: basicOpenstackDbInstanceV1.id,
  *     password: "password",
  *     databases: ["testdb"],
  * });

@@ -14,12 +14,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const pool1 = new openstack.loadbalancer.PoolV1("pool1", {
+ * const pool1 = new openstack.loadbalancer.PoolV1("pool_1", {
+ *     name: "tf_test_lb_pool",
+ *     protocol: "HTTP",
+ *     subnetId: "12345",
  *     lbMethod: "ROUND_ROBIN",
  *     lbProvider: "haproxy",
  *     monitorIds: ["67890"],
- *     protocol: "HTTP",
- *     subnetId: "12345",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -31,13 +32,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     name: "network_1",
+ *     adminStateUp: true,
+ * });
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     networkId: network1.id,
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
  * });
- * const secgroup1 = new openstack.compute.SecGroup("secgroup1", {
+ * const secgroup1 = new openstack.compute.SecGroup("secgroup_1", {
+ *     name: "secgroup_1",
  *     description: "Rules for secgroup_1",
  *     rules: [
  *         {
@@ -54,7 +59,8 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * });
- * const instance1 = new openstack.compute.Instance("instance1", {
+ * const instance1 = new openstack.compute.Instance("instance_1", {
+ *     name: "instance_1",
  *     securityGroups: [
  *         "default",
  *         secgroup1.name,
@@ -63,7 +69,8 @@ import * as utilities from "../utilities";
  *         uuid: network1.id,
  *     }],
  * });
- * const instance2 = new openstack.compute.Instance("instance2", {
+ * const instance2 = new openstack.compute.Instance("instance_2", {
+ *     name: "instance_2",
  *     securityGroups: [
  *         "default",
  *         secgroup1.name,
@@ -72,30 +79,32 @@ import * as utilities from "../utilities";
  *         uuid: network1.id,
  *     }],
  * });
- * const monitor1 = new openstack.loadbalancer.MonitorV1("monitor1", {
+ * const monitor1 = new openstack.loadbalancer.MonitorV1("monitor_1", {
  *     type: "TCP",
  *     delay: 30,
  *     timeout: 5,
  *     maxRetries: 3,
  *     adminStateUp: "true",
  * });
- * const pool1 = new openstack.loadbalancer.PoolV1("pool1", {
+ * const pool1 = new openstack.loadbalancer.PoolV1("pool_1", {
+ *     name: "pool_1",
  *     protocol: "TCP",
  *     subnetId: subnet1.id,
  *     lbMethod: "ROUND_ROBIN",
  *     monitorIds: [monitor1.id],
  * });
- * const member1 = new openstack.loadbalancer.MemberV1("member1", {
+ * const member1 = new openstack.loadbalancer.MemberV1("member_1", {
  *     poolId: pool1.id,
  *     address: instance1.accessIpV4,
  *     port: 80,
  * });
- * const member2 = new openstack.loadbalancer.MemberV1("member2", {
+ * const member2 = new openstack.loadbalancer.MemberV1("member_2", {
  *     poolId: pool1.id,
  *     address: instance2.accessIpV4,
  *     port: 80,
  * });
- * const vip1 = new openstack.loadbalancer.Vip("vip1", {
+ * const vip1 = new openstack.loadbalancer.Vip("vip_1", {
+ *     name: "vip_1",
  *     subnetId: subnet1.id,
  *     protocol: "TCP",
  *     port: 80,

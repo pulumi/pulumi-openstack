@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test_keypair = new Keypair(&#34;test-keypair&#34;, KeypairArgs.builder()        
+ *             .name(&#34;my-keypair&#34;)
  *             .publicKey(&#34;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAjpC1hwiOCCmKEWxJ4qzTTsJbKzndLotBCz5PcwtUnflmU+gHJtWMZKpuEGVi29h0A/+ydKek1O18k10Ff+4tyFjiHDQAnOfgWf7+b1yK+qDip3X1C0UPMbwHlTfSGWLGZqd9LvEFx9k3h/M+VtMvwR1lJ9LUyTAImnNjWG7TaIPmui30HvM2UiFEmqkr4ijq45MyX2+fLIePLRIF61p4whjHAQYufqyno3BS48icQb4p6iVEZPo4AE2o9oIyQvj2mx4dk5Y8CgSETOZTYDOR3rU2fZTRDRgPJDH9FWvQjF5tA0p3d9CoWWd2s6GKKbfoUIi8R/Db1BSPJwkqB&#34;)
  *             .build());
  * 
@@ -63,6 +64,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.openstack.compute.Keypair;
+ * import com.pulumi.openstack.compute.KeypairArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -76,7 +78,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test_keypair = new Keypair(&#34;test-keypair&#34;);
+ *         var test_keypair = new Keypair(&#34;test-keypair&#34;, KeypairArgs.builder()        
+ *             .name(&#34;my-keypair&#34;)
+ *             .build());
  * 
  *     }
  * }

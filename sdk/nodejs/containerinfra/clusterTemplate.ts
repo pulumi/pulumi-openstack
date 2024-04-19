@@ -16,25 +16,26 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const clustertemplate1 = new openstack.containerinfra.ClusterTemplate("clustertemplate1", {
+ * const clustertemplate1 = new openstack.containerinfra.ClusterTemplate("clustertemplate_1", {
+ *     name: "clustertemplate_1",
+ *     image: "Fedora-Atomic-27",
  *     coe: "kubernetes",
+ *     flavor: "m1.small",
+ *     masterFlavor: "m1.medium",
  *     dnsNameserver: "1.1.1.1",
  *     dockerStorageDriver: "devicemapper",
  *     dockerVolumeSize: 10,
- *     flavor: "m1.small",
- *     floatingIpEnabled: false,
- *     image: "Fedora-Atomic-27",
- *     labels: {
- *         influx_grafana_dashboard_enabled: "true",
- *         kube_dashboard_enabled: "true",
- *         kube_tag: "1.11.1",
- *         prometheus_monitoring: "true",
- *     },
- *     masterFlavor: "m1.medium",
- *     masterLbEnabled: true,
+ *     volumeDriver: "cinder",
  *     networkDriver: "flannel",
  *     serverType: "vm",
- *     volumeDriver: "cinder",
+ *     masterLbEnabled: true,
+ *     floatingIpEnabled: false,
+ *     labels: {
+ *         kube_tag: "1.11.1",
+ *         kube_dashboard_enabled: "true",
+ *         prometheus_monitoring: "true",
+ *         influx_grafana_dashboard_enabled: "true",
+ *     },
  * });
  * ```
  * <!--End PulumiCodeChooser -->

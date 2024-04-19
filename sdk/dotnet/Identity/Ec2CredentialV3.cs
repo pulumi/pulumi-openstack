@@ -31,7 +31,7 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ec2Key1 = new OpenStack.Identity.Ec2CredentialV3("ec2Key1");
+    ///     var ec2Key1 = new OpenStack.Identity.Ec2CredentialV3("ec2_key1");
     /// 
     /// });
     /// ```
@@ -51,7 +51,7 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ec2Key1 = new OpenStack.Identity.Ec2CredentialV3("ec2Key1", new()
+    ///     var ec2Key1 = new OpenStack.Identity.Ec2CredentialV3("ec2_key1", new()
     ///     {
     ///         ProjectId = "f7ac731cc11f40efbc03a9f9e1d1d21f",
     ///     });

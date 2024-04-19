@@ -191,8 +191,10 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="min_kbps")
-        minimum_bandwidth_rule1 = openstack.networking.QosMinimumBandwidthRule("minimumBandwidthRule1",
+        qos_policy1 = openstack.networking.QosPolicy("qos_policy_1",
+            name="qos_policy_1",
+            description="min_kbps")
+        minimum_bandwidth_rule1 = openstack.networking.QosMinimumBandwidthRule("minimum_bandwidth_rule_1",
             qos_policy_id=qos_policy1.id,
             min_kbps=200)
         ```
@@ -235,8 +237,10 @@ class QosMinimumBandwidthRule(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        qos_policy1 = openstack.networking.QosPolicy("qosPolicy1", description="min_kbps")
-        minimum_bandwidth_rule1 = openstack.networking.QosMinimumBandwidthRule("minimumBandwidthRule1",
+        qos_policy1 = openstack.networking.QosPolicy("qos_policy_1",
+            name="qos_policy_1",
+            description="min_kbps")
+        minimum_bandwidth_rule1 = openstack.networking.QosMinimumBandwidthRule("minimum_bandwidth_rule_1",
             qos_policy_id=qos_policy1.id,
             min_kbps=200)
         ```

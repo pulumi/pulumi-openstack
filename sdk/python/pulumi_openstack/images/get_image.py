@@ -359,8 +359,8 @@ def get_image(hidden: Optional[bool] = None,
     import pulumi
     import pulumi_openstack as openstack
 
-    ubuntu = openstack.images.get_image(most_recent=True,
-        name="Ubuntu 16.04",
+    ubuntu = openstack.images.get_image(name="Ubuntu 16.04",
+        most_recent=True,
         properties={
             "key": "value",
         })
@@ -476,8 +476,8 @@ def get_image_output(hidden: Optional[pulumi.Input[Optional[bool]]] = None,
     import pulumi
     import pulumi_openstack as openstack
 
-    ubuntu = openstack.images.get_image(most_recent=True,
-        name="Ubuntu 16.04",
+    ubuntu = openstack.images.get_image(name="Ubuntu 16.04",
+        most_recent=True,
         properties={
             "key": "value",
         })

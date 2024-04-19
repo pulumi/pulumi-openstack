@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var subnetpool1 = new SubnetPool(&#34;subnetpool1&#34;, SubnetPoolArgs.builder()        
+ *             .name(&#34;subnetpool_1&#34;)
  *             .ipVersion(6)
  *             .prefixes(            
  *                 &#34;fdf7:b13d:dead:beef::/64&#34;,
@@ -89,14 +90,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network_1&#34;)
  *             .adminStateUp(&#34;true&#34;)
  *             .build());
  * 
  *         var subnetpool1 = new SubnetPool(&#34;subnetpool1&#34;, SubnetPoolArgs.builder()        
+ *             .name(&#34;subnetpool_1&#34;)
  *             .prefixes(&#34;10.11.12.0/24&#34;)
  *             .build());
  * 
  *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
+ *             .name(&#34;subnet_1&#34;)
  *             .cidr(&#34;10.11.12.0/25&#34;)
  *             .networkId(network1.id())
  *             .subnetpoolId(subnetpool1.id())

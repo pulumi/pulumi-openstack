@@ -25,21 +25,22 @@ namespace Pulumi.OpenStack.Dns
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZone = new OpenStack.Dns.Zone("exampleZone", new()
+    ///     var exampleZone = new OpenStack.Dns.Zone("example_zone", new()
     ///     {
+    ///         Name = "example.com.",
     ///         Email = "jdoe@example.com",
     ///         Description = "An example zone",
     ///         Ttl = 3000,
     ///         Type = "PRIMARY",
     ///     });
     /// 
-    ///     var request1 = new OpenStack.Dns.TransferRequest("request1", new()
+    ///     var request1 = new OpenStack.Dns.TransferRequest("request_1", new()
     ///     {
     ///         ZoneId = exampleZone.Id,
     ///         Description = "a transfer accept",
     ///     });
     /// 
-    ///     var accept1 = new OpenStack.Dns.TransferAccept("accept1", new()
+    ///     var accept1 = new OpenStack.Dns.TransferAccept("accept_1", new()
     ///     {
     ///         ZoneTransferRequestId = request1.Id,
     ///         Key = request1.Key,

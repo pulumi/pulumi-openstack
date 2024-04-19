@@ -28,27 +28,35 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project1 = new OpenStack.Identity.Project("project1");
-    /// 
-    ///     var user1 = new OpenStack.Identity.User("user1", new()
+    ///     var project1 = new OpenStack.Identity.Project("project_1", new()
     ///     {
+    ///         Name = "project_1",
+    ///     });
+    /// 
+    ///     var user1 = new OpenStack.Identity.User("user_1", new()
+    ///     {
+    ///         Name = "user_1",
     ///         DefaultProjectId = project1.Id,
     ///     });
     /// 
-    ///     var group1 = new OpenStack.Identity.GroupV3("group1", new()
+    ///     var group1 = new OpenStack.Identity.GroupV3("group_1", new()
     ///     {
+    ///         Name = "group_1",
     ///         Description = "group 1",
     ///     });
     /// 
-    ///     var role1 = new OpenStack.Identity.Role("role1");
+    ///     var role1 = new OpenStack.Identity.Role("role_1", new()
+    ///     {
+    ///         Name = "role_1",
+    ///     });
     /// 
-    ///     var userMembership1 = new OpenStack.Identity.UserMembershipV3("userMembership1", new()
+    ///     var userMembership1 = new OpenStack.Identity.UserMembershipV3("user_membership_1", new()
     ///     {
     ///         UserId = user1.Id,
     ///         GroupId = group1.Id,
     ///     });
     /// 
-    ///     var roleAssignment1 = new OpenStack.Identity.RoleAssignment("roleAssignment1", new()
+    ///     var roleAssignment1 = new OpenStack.Identity.RoleAssignment("role_assignment_1", new()
     ///     {
     ///         GroupId = group1.Id,
     ///         ProjectId = project1.Id,

@@ -23,7 +23,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const members1 = new openstack.loadbalancer.Members("members1", {
+ * const members1 = new openstack.loadbalancer.Members("members_1", {
+ *     poolId: "935685fb-a896-40f9-9ff4-ae531a3a00fe",
  *     members: [
  *         {
  *             address: "192.168.199.23",
@@ -34,7 +35,6 @@ import * as utilities from "../utilities";
  *             protocolPort: 8080,
  *         },
  *     ],
- *     poolId: "935685fb-a896-40f9-9ff4-ae531a3a00fe",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

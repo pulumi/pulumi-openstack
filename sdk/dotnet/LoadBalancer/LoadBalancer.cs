@@ -26,7 +26,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var lb1 = new OpenStack.LoadBalancer.LoadBalancer("lb1", new()
+    ///     var lb1 = new OpenStack.LoadBalancer.LoadBalancer("lb_1", new()
     ///     {
     ///         VipSubnetId = "d9415786-5f1a-428b-b35f-2f1523e146d2",
     ///     });

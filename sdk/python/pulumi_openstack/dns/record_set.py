@@ -413,13 +413,15 @@ class RecordSet(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        example_zone = openstack.dns.Zone("exampleZone",
+        example_zone = openstack.dns.Zone("example_zone",
+            name="example.com.",
             email="email2@example.com",
             description="a zone",
             ttl=6000,
             type="PRIMARY")
-        rs_example_com = openstack.dns.RecordSet("rsExampleCom",
+        rs_example_com = openstack.dns.RecordSet("rs_example_com",
             zone_id=example_zone.id,
+            name="rs.example.com.",
             description="An example record set",
             ttl=3000,
             type="A",
@@ -477,13 +479,15 @@ class RecordSet(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        example_zone = openstack.dns.Zone("exampleZone",
+        example_zone = openstack.dns.Zone("example_zone",
+            name="example.com.",
             email="email2@example.com",
             description="a zone",
             ttl=6000,
             type="PRIMARY")
-        rs_example_com = openstack.dns.RecordSet("rsExampleCom",
+        rs_example_com = openstack.dns.RecordSet("rs_example_com",
             zone_id=example_zone.id,
+            name="rs.example.com.",
             description="An example record set",
             ttl=3000,
             type="A",

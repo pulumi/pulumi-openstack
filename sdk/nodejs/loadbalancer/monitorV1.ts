@@ -14,12 +14,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const monitor1 = new openstack.loadbalancer.MonitorV1("monitor1", {
- *     adminStateUp: "true",
- *     delay: 30,
- *     maxRetries: 3,
- *     timeout: 5,
+ * const monitor1 = new openstack.loadbalancer.MonitorV1("monitor_1", {
  *     type: "PING",
+ *     delay: 30,
+ *     timeout: 5,
+ *     maxRetries: 3,
+ *     adminStateUp: "true",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

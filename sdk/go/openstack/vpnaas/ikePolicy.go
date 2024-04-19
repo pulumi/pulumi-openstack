@@ -28,7 +28,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpnaas.NewIkePolicy(ctx, "policy1", nil)
+//			_, err := vpnaas.NewIkePolicy(ctx, "policy_1", &vpnaas.IkePolicyArgs{
+//				Name: pulumi.String("my_policy"),
+//			})
 //			if err != nil {
 //				return err
 //			}

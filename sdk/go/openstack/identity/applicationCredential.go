@@ -42,12 +42,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := identity.NewApplicationCredential(ctx, "swift", &identity.ApplicationCredentialArgs{
+//				Name:        pulumi.String("swift"),
 //				Description: pulumi.String("Swift technical application credential"),
-//				ExpiresAt:   pulumi.String("2019-02-13T12:12:12Z"),
+//				Secret:      pulumi.String("supersecret"),
 //				Roles: pulumi.StringArray{
 //					pulumi.String("swiftoperator"),
 //				},
-//				Secret: pulumi.String("supersecret"),
+//				ExpiresAt: pulumi.String("2019-02-13T12:12:12Z"),
 //			})
 //			if err != nil {
 //				return err
@@ -81,6 +82,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			unrestricted, err := identity.NewApplicationCredential(ctx, "unrestricted", &identity.ApplicationCredentialArgs{
+//				Name:         pulumi.String("unrestricted"),
 //				Description:  pulumi.String("Unrestricted application credential"),
 //				Unrestricted: pulumi.Bool(true),
 //			})
@@ -114,19 +116,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := identity.NewApplicationCredential(ctx, "monitoring", &identity.ApplicationCredentialArgs{
+//				Name:      pulumi.String("monitoring"),
+//				ExpiresAt: pulumi.String("2019-02-13T12:12:12Z"),
 //				AccessRules: identity.ApplicationCredentialAccessRuleArray{
 //					&identity.ApplicationCredentialAccessRuleArgs{
-//						Method:  pulumi.String("GET"),
 //						Path:    pulumi.String("/v2.0/metrics"),
 //						Service: pulumi.String("monitoring"),
+//						Method:  pulumi.String("GET"),
 //					},
 //					&identity.ApplicationCredentialAccessRuleArgs{
-//						Method:  pulumi.String("PUT"),
 //						Path:    pulumi.String("/v2.0/metrics"),
 //						Service: pulumi.String("monitoring"),
+//						Method:  pulumi.String("PUT"),
 //					},
 //				},
-//				ExpiresAt: pulumi.String("2019-02-13T12:12:12Z"),
 //			})
 //			if err != nil {
 //				return err

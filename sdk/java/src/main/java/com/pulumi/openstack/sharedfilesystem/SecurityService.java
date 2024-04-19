@@ -54,14 +54,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var securityservice1 = new SecurityService(&#34;securityservice1&#34;, SecurityServiceArgs.builder()        
+ *             .name(&#34;security&#34;)
  *             .description(&#34;created by terraform&#34;)
+ *             .type(&#34;active_directory&#34;)
+ *             .server(&#34;192.168.199.10&#34;)
  *             .dnsIp(&#34;192.168.199.10&#34;)
  *             .domain(&#34;example.com&#34;)
  *             .ou(&#34;CN=Computers,DC=example,DC=com&#34;)
- *             .password(&#34;s8cret&#34;)
- *             .server(&#34;192.168.199.10&#34;)
- *             .type(&#34;active_directory&#34;)
  *             .user(&#34;joinDomainUser&#34;)
+ *             .password(&#34;s8cret&#34;)
  *             .build());
  * 
  *     }

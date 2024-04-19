@@ -46,10 +46,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var vip1 = new Vip(&#34;vip1&#34;, VipArgs.builder()        
- *             .poolId(&#34;67890&#34;)
- *             .port(80)
- *             .protocol(&#34;HTTP&#34;)
+ *             .name(&#34;tf_test_lb_vip&#34;)
  *             .subnetId(&#34;12345&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .port(80)
+ *             .poolId(&#34;67890&#34;)
  *             .build());
  * 
  *     }

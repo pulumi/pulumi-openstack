@@ -713,15 +713,17 @@ class ContainerObject(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        container1 = openstack.objectstorage.Container("container1",
+        container1 = openstack.objectstorage.Container("container_1",
             region="RegionOne",
+            name="tf-test-container-1",
             metadata=[{
                 "test": "true",
             }],
             content_type="application/json")
-        doc1 = openstack.objectstorage.ContainerObject("doc1",
+        doc1 = openstack.objectstorage.ContainerObject("doc_1",
             region="RegionOne",
             container_name=container1.name,
+            name="test/default.json",
             metadata=[{
                 "test": "true",
             }],
@@ -740,15 +742,17 @@ class ContainerObject(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        container1 = openstack.objectstorage.Container("container1",
+        container1 = openstack.objectstorage.Container("container_1",
             region="RegionOne",
+            name="tf-test-container-1",
             metadata=[{
                 "test": "true",
             }],
             content_type="application/json")
-        doc1 = openstack.objectstorage.ContainerObject("doc1",
+        doc1 = openstack.objectstorage.ContainerObject("doc_1",
             region="RegionOne",
             container_name=container1.name,
+            name="test/default.json",
             metadata=[{
                 "test": "true",
             }],
@@ -817,15 +821,17 @@ class ContainerObject(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        container1 = openstack.objectstorage.Container("container1",
+        container1 = openstack.objectstorage.Container("container_1",
             region="RegionOne",
+            name="tf-test-container-1",
             metadata=[{
                 "test": "true",
             }],
             content_type="application/json")
-        doc1 = openstack.objectstorage.ContainerObject("doc1",
+        doc1 = openstack.objectstorage.ContainerObject("doc_1",
             region="RegionOne",
             container_name=container1.name,
+            name="test/default.json",
             metadata=[{
                 "test": "true",
             }],
@@ -844,15 +850,17 @@ class ContainerObject(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        container1 = openstack.objectstorage.Container("container1",
+        container1 = openstack.objectstorage.Container("container_1",
             region="RegionOne",
+            name="tf-test-container-1",
             metadata=[{
                 "test": "true",
             }],
             content_type="application/json")
-        doc1 = openstack.objectstorage.ContainerObject("doc1",
+        doc1 = openstack.objectstorage.ContainerObject("doc_1",
             region="RegionOne",
             container_name=container1.name,
+            name="test/default.json",
             metadata=[{
                 "test": "true",
             }],

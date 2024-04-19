@@ -31,7 +31,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := containerinfra.NewNodeGroup(ctx, "nodegroup1", &containerinfra.NodeGroupArgs{
+//			_, err := containerinfra.NewNodeGroup(ctx, "nodegroup_1", &containerinfra.NodeGroupArgs{
+//				Name:      pulumi.String("nodegroup_1"),
 //				ClusterId: pulumi.String("b9a45c5c-cd03-4958-82aa-b80bf93cb922"),
 //				NodeCount: pulumi.Int(5),
 //			})

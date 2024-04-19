@@ -25,48 +25,6 @@ import javax.annotation.Nullable;
  * &gt; **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
  *     created with zero value.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.openstack.identity.Project;
- * import com.pulumi.openstack.compute.QuotaSetV2;
- * import com.pulumi.openstack.compute.QuotaSetV2Args;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var project1 = new Project(&#34;project1&#34;);
- * 
- *         var quotaset1 = new QuotaSetV2(&#34;quotaset1&#34;, QuotaSetV2Args.builder()        
- *             .projectId(project1.id())
- *             .keyPairs(10)
- *             .ram(40960)
- *             .cores(32)
- *             .instances(20)
- *             .serverGroups(4)
- *             .serverGroupMembers(8)
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * Quotasets can be imported using the `project_id/region_name`, e.g.

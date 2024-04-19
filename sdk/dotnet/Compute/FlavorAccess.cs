@@ -28,17 +28,21 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project1 = new OpenStack.Identity.Project("project1");
-    /// 
-    ///     var flavor1 = new OpenStack.Compute.Flavor("flavor1", new()
+    ///     var project1 = new OpenStack.Identity.Project("project_1", new()
     ///     {
+    ///         Name = "my-project",
+    ///     });
+    /// 
+    ///     var flavor1 = new OpenStack.Compute.Flavor("flavor_1", new()
+    ///     {
+    ///         Name = "my-flavor",
     ///         Ram = 8096,
     ///         Vcpus = 2,
     ///         Disk = 20,
     ///         IsPublic = false,
     ///     });
     /// 
-    ///     var access1 = new OpenStack.Compute.FlavorAccess("access1", new()
+    ///     var access1 = new OpenStack.Compute.FlavorAccess("access_1", new()
     ///     {
     ///         TenantId = project1.Id,
     ///         FlavorId = flavor1.Id,

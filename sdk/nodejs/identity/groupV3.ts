@@ -17,7 +17,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const group1 = new openstack.identity.GroupV3("group1", {description: "group 1"});
+ * const group1 = new openstack.identity.GroupV3("group_1", {
+ *     name: "group_1",
+ *     description: "group 1",
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

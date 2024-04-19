@@ -23,30 +23,32 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var router1 = new OpenStack.Networking.Router("router1", new()
+    ///     var router1 = new OpenStack.Networking.Router("router_1", new()
     ///     {
+    ///         Name = "router_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
     ///     {
+    ///         Name = "network_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet_1", new()
     ///     {
     ///         NetworkId = network1.Id,
     ///         Cidr = "192.168.199.0/24",
     ///         IpVersion = 4,
     ///     });
     /// 
-    ///     var int1 = new OpenStack.Networking.RouterInterface("int1", new()
+    ///     var int1 = new OpenStack.Networking.RouterInterface("int_1", new()
     ///     {
     ///         RouterId = router1.Id,
     ///         SubnetId = subnet1.Id,
     ///     });
     /// 
-    ///     var routerRoute1 = new OpenStack.Networking.RouterRoute("routerRoute1", new()
+    ///     var routerRoute1 = new OpenStack.Networking.RouterRoute("router_route_1", new()
     ///     {
     ///         RouterId = router1.Id,
     ///         DestinationCidr = "10.0.1.0/24",
@@ -55,7 +57,7 @@ namespace Pulumi.OpenStack.Networking
     ///     {
     ///         DependsOn =
     ///         {
-    ///             "openstack_networking_router_interface_v2.int_1", 
+    ///             int1, 
     ///         },
     ///     });
     /// 

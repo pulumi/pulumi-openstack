@@ -26,8 +26,9 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project1 = new OpenStack.Identity.Project("project1", new()
+    ///     var project1 = new OpenStack.Identity.Project("project_1", new()
     ///     {
+    ///         Name = "project_1",
     ///         Description = "A project",
     ///     });
     /// 

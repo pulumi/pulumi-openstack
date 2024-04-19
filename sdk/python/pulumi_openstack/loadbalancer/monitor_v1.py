@@ -449,12 +449,12 @@ class MonitorV1(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        monitor1 = openstack.loadbalancer.MonitorV1("monitor1",
-            admin_state_up="true",
+        monitor1 = openstack.loadbalancer.MonitorV1("monitor_1",
+            type="PING",
             delay=30,
-            max_retries=3,
             timeout=5,
-            type="PING")
+            max_retries=3,
+            admin_state_up="true")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -515,12 +515,12 @@ class MonitorV1(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        monitor1 = openstack.loadbalancer.MonitorV1("monitor1",
-            admin_state_up="true",
+        monitor1 = openstack.loadbalancer.MonitorV1("monitor_1",
+            type="PING",
             delay=30,
-            max_retries=3,
             timeout=5,
-            type="PING")
+            max_retries=3,
+            admin_state_up="true")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *     visibility: "shared",
  *     memberStatus: "all",
  * });
- * const rancherosMember = new openstack.images.ImageAccessAccept("rancherosMember", {
+ * const rancherosMember = new openstack.images.ImageAccessAccept("rancheros_member", {
  *     imageId: rancheros.then(rancheros => rancheros.id),
  *     status: "accepted",
  * });

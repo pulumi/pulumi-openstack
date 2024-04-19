@@ -41,13 +41,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//			network1, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
+//				Name:         pulumi.String("network_1"),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networking.NewRbacPolicyV2(ctx, "rbacPolicy1", &networking.RbacPolicyV2Args{
+//			_, err = networking.NewRbacPolicyV2(ctx, "rbac_policy_1", &networking.RbacPolicyV2Args{
 //				Action:       pulumi.String("access_as_shared"),
 //				ObjectId:     network1.ID(),
 //				ObjectType:   pulumi.String("network"),

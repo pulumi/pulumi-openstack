@@ -31,7 +31,8 @@ namespace Pulumi.OpenStack.Database
     /// {
     ///     var basic = new OpenStack.Database.User("basic", new()
     ///     {
-    ///         InstanceId = openstack_db_instance_v1.Basic.Id,
+    ///         Name = "basic",
+    ///         InstanceId = basicOpenstackDbInstanceV1.Id,
     ///         Password = "password",
     ///         Databases = new[]
     ///         {

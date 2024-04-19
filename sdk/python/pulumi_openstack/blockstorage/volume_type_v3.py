@@ -230,7 +230,8 @@ class VolumeTypeV3(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        volume_type1 = openstack.blockstorage.VolumeTypeV3("volumeType1",
+        volume_type1 = openstack.blockstorage.VolumeTypeV3("volume_type_1",
+            name="volume_type_1",
             description="Volume type 1",
             extra_specs={
                 "capabilities": "gpu",
@@ -278,7 +279,8 @@ class VolumeTypeV3(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        volume_type1 = openstack.blockstorage.VolumeTypeV3("volumeType1",
+        volume_type1 = openstack.blockstorage.VolumeTypeV3("volume_type_1",
+            name="volume_type_1",
             description="Volume type 1",
             extra_specs={
                 "capabilities": "gpu",

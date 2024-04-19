@@ -238,7 +238,8 @@ class User(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         basic = openstack.database.User("basic",
-            instance_id=openstack_db_instance_v1["basic"]["id"],
+            name="basic",
+            instance_id=basic_openstack_db_instance_v1["id"],
             password="password",
             databases=["testdb"])
         ```
@@ -275,7 +276,8 @@ class User(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         basic = openstack.database.User("basic",
-            instance_id=openstack_db_instance_v1["basic"]["id"],
+            name="basic",
+            instance_id=basic_openstack_db_instance_v1["id"],
             password="password",
             databases=["testdb"])
         ```

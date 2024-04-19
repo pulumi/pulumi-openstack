@@ -32,6 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			qos, err := blockstorage.NewQosV3(ctx, "qos", &blockstorage.QosV3Args{
+//				Name:     pulumi.String("%s"),
 //				Consumer: pulumi.String("front-end"),
 //				Specs: pulumi.Map{
 //					"read_iops_sec": pulumi.Any("20000"),
@@ -40,11 +41,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			volumeType, err := blockstorage.NewVolumeTypeV3(ctx, "volumeType", nil)
+//			volumeType, err := blockstorage.NewVolumeTypeV3(ctx, "volume_type", &blockstorage.VolumeTypeV3Args{
+//				Name: pulumi.String("%s"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = blockstorage.NewQosAssociationV3(ctx, "qosAssociation", &blockstorage.QosAssociationV3Args{
+//			_, err = blockstorage.NewQosAssociationV3(ctx, "qos_association", &blockstorage.QosAssociationV3Args{
 //				QosId:        qos.ID(),
 //				VolumeTypeId: volumeType.ID(),
 //			})

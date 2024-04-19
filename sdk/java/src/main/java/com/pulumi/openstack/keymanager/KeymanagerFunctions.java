@@ -326,9 +326,9 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dateFilterExample = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .expirationFilter(&#34;gt:2020-01-01T00:00:00Z&#34;)
      *             .mode(&#34;cbc&#34;)
      *             .secretType(&#34;passphrase&#34;)
+     *             .expirationFilter(&#34;gt:2020-01-01T00:00:00Z&#34;)
      *             .build());
      * 
      *     }
@@ -409,9 +409,9 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dateFilterExample = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .expirationFilter(&#34;gt:2020-01-01T00:00:00Z&#34;)
      *             .mode(&#34;cbc&#34;)
      *             .secretType(&#34;passphrase&#34;)
+     *             .expirationFilter(&#34;gt:2020-01-01T00:00:00Z&#34;)
      *             .build());
      * 
      *     }
@@ -492,9 +492,9 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dateFilterExample = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .expirationFilter(&#34;gt:2020-01-01T00:00:00Z&#34;)
      *             .mode(&#34;cbc&#34;)
      *             .secretType(&#34;passphrase&#34;)
+     *             .expirationFilter(&#34;gt:2020-01-01T00:00:00Z&#34;)
      *             .build());
      * 
      *     }
@@ -575,9 +575,9 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dateFilterExample = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .expirationFilter(&#34;gt:2020-01-01T00:00:00Z&#34;)
      *             .mode(&#34;cbc&#34;)
      *             .secretType(&#34;passphrase&#34;)
+     *             .expirationFilter(&#34;gt:2020-01-01T00:00:00Z&#34;)
      *             .build());
      * 
      *     }
@@ -658,9 +658,9 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dateFilterExample = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .expirationFilter(&#34;gt:2020-01-01T00:00:00Z&#34;)
      *             .mode(&#34;cbc&#34;)
      *             .secretType(&#34;passphrase&#34;)
+     *             .expirationFilter(&#34;gt:2020-01-01T00:00:00Z&#34;)
      *             .build());
      * 
      *     }
@@ -741,9 +741,9 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dateFilterExample = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .expirationFilter(&#34;gt:2020-01-01T00:00:00Z&#34;)
      *             .mode(&#34;cbc&#34;)
      *             .secretType(&#34;passphrase&#34;)
+     *             .expirationFilter(&#34;gt:2020-01-01T00:00:00Z&#34;)
      *             .build());
      * 
      *     }

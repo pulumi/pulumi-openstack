@@ -32,14 +32,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := loadbalancer.NewPool(ctx, "pool1", &loadbalancer.PoolArgs{
+//			_, err := loadbalancer.NewPool(ctx, "pool_1", &loadbalancer.PoolArgs{
+//				Protocol:   pulumi.String("HTTP"),
 //				LbMethod:   pulumi.String("ROUND_ROBIN"),
 //				ListenerId: pulumi.String("d9415786-5f1a-428b-b35f-2f1523e146d2"),
 //				Persistence: &loadbalancer.PoolPersistenceArgs{
-//					CookieName: pulumi.String("testCookie"),
 //					Type:       pulumi.String("APP_COOKIE"),
+//					CookieName: pulumi.String("testCookie"),
 //				},
-//				Protocol: pulumi.String("HTTP"),
 //			})
 //			if err != nil {
 //				return err

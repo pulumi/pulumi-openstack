@@ -40,8 +40,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.openstack.database.Instance;
  * import com.pulumi.openstack.database.InstanceArgs;
- * import com.pulumi.openstack.database.inputs.InstanceDatastoreArgs;
  * import com.pulumi.openstack.database.inputs.InstanceNetworkArgs;
+ * import com.pulumi.openstack.database.inputs.InstanceDatastoreArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -56,16 +56,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new Instance(&#34;test&#34;, InstanceArgs.builder()        
- *             .datastore(InstanceDatastoreArgs.builder()
- *                 .type(&#34;mysql&#34;)
- *                 .version(&#34;mysql-5.7&#34;)
- *                 .build())
+ *             .region(&#34;region-test&#34;)
+ *             .name(&#34;test&#34;)
  *             .flavorId(&#34;31792d21-c355-4587-9290-56c1ed0ca376&#34;)
+ *             .size(8)
  *             .networks(InstanceNetworkArgs.builder()
  *                 .uuid(&#34;c0612505-caf2-4fb0-b7cb-56a0240a2b12&#34;)
  *                 .build())
- *             .region(&#34;region-test&#34;)
- *             .size(8)
+ *             .datastore(InstanceDatastoreArgs.builder()
+ *                 .version(&#34;mysql-5.7&#34;)
+ *                 .type(&#34;mysql&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }

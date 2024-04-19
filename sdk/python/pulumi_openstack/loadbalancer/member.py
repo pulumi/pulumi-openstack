@@ -496,9 +496,9 @@ class Member(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        member1 = openstack.loadbalancer.Member("member1",
-            address="192.168.199.23",
+        member1 = openstack.loadbalancer.Member("member_1",
             pool_id="935685fb-a896-40f9-9ff4-ae531a3a00fe",
+            address="192.168.199.23",
             protocol_port=8080)
         ```
         <!--End PulumiCodeChooser -->
@@ -558,9 +558,9 @@ class Member(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        member1 = openstack.loadbalancer.Member("member1",
-            address="192.168.199.23",
+        member1 = openstack.loadbalancer.Member("member_1",
             pool_id="935685fb-a896-40f9-9ff4-ae531a3a00fe",
+            address="192.168.199.23",
             protocol_port=8080)
         ```
         <!--End PulumiCodeChooser -->

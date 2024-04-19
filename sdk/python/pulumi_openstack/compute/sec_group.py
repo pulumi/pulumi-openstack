@@ -214,38 +214,27 @@ class SecGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        secgroup1 = openstack.compute.SecGroup("secgroup1",
+        secgroup1 = openstack.compute.SecGroup("secgroup_1",
+            name="my_secgroup",
             description="my security group",
             rules=[
                 openstack.compute.SecGroupRuleArgs(
-                    cidr="0.0.0.0/0",
                     from_port=22,
-                    ip_protocol="tcp",
                     to_port=22,
+                    ip_protocol="tcp",
+                    cidr="0.0.0.0/0",
                 ),
                 openstack.compute.SecGroupRuleArgs(
-                    cidr="0.0.0.0/0",
                     from_port=80,
-                    ip_protocol="tcp",
                     to_port=80,
+                    ip_protocol="tcp",
+                    cidr="0.0.0.0/0",
                 ),
             ])
         ```
         <!--End PulumiCodeChooser -->
 
         ## Notes
-
-        ### ICMP Rules
-
-        When using ICMP as the `ip_protocol`, the `from_port` sets the ICMP _type_ and the `to_port` sets the ICMP _code_. To allow all ICMP types, set each value to `-1`, like so:
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
-
-        A list of ICMP types and codes can be found [here](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages).
 
         ### Referencing Security Groups
 
@@ -257,10 +246,11 @@ class SecGroup(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         test_server = openstack.compute.Instance("test-server",
+            name="tf-test",
             image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
             flavor_id="3",
             key_pair="my_key_pair_name",
-            security_groups=[openstack_compute_secgroup_v2["secgroup_1"]["name"]])
+            security_groups=[secgroup1["name"]])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -309,38 +299,27 @@ class SecGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        secgroup1 = openstack.compute.SecGroup("secgroup1",
+        secgroup1 = openstack.compute.SecGroup("secgroup_1",
+            name="my_secgroup",
             description="my security group",
             rules=[
                 openstack.compute.SecGroupRuleArgs(
-                    cidr="0.0.0.0/0",
                     from_port=22,
-                    ip_protocol="tcp",
                     to_port=22,
+                    ip_protocol="tcp",
+                    cidr="0.0.0.0/0",
                 ),
                 openstack.compute.SecGroupRuleArgs(
-                    cidr="0.0.0.0/0",
                     from_port=80,
-                    ip_protocol="tcp",
                     to_port=80,
+                    ip_protocol="tcp",
+                    cidr="0.0.0.0/0",
                 ),
             ])
         ```
         <!--End PulumiCodeChooser -->
 
         ## Notes
-
-        ### ICMP Rules
-
-        When using ICMP as the `ip_protocol`, the `from_port` sets the ICMP _type_ and the `to_port` sets the ICMP _code_. To allow all ICMP types, set each value to `-1`, like so:
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        ```
-        <!--End PulumiCodeChooser -->
-
-        A list of ICMP types and codes can be found [here](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages).
 
         ### Referencing Security Groups
 
@@ -352,10 +331,11 @@ class SecGroup(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         test_server = openstack.compute.Instance("test-server",
+            name="tf-test",
             image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
             flavor_id="3",
             key_pair="my_key_pair_name",
-            security_groups=[openstack_compute_secgroup_v2["secgroup_1"]["name"]])
+            security_groups=[secgroup1["name"]])
         ```
         <!--End PulumiCodeChooser -->
 

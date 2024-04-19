@@ -23,14 +23,15 @@ namespace Pulumi.OpenStack.VPNaaS
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var group1 = new OpenStack.VPNaaS.EndpointGroup("group1", new()
+    ///     var group1 = new OpenStack.VPNaaS.EndpointGroup("group_1", new()
     ///     {
+    ///         Name = "Group 1",
+    ///         Type = "cidr",
     ///         Endpoints = new[]
     ///         {
     ///             "10.2.0.0/24",
     ///             "10.3.0.0/24",
     ///         },
-    ///         Type = "cidr",
     ///     });
     /// 
     /// });

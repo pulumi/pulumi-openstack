@@ -26,7 +26,10 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var role1 = new OpenStack.Identity.Role("role1");
+    ///     var role1 = new OpenStack.Identity.Role("role_1", new()
+    ///     {
+    ///         Name = "role_1",
+    ///     });
     /// 
     /// });
     /// ```

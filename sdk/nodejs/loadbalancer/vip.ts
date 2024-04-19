@@ -14,11 +14,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const vip1 = new openstack.loadbalancer.Vip("vip1", {
- *     poolId: "67890",
- *     port: 80,
- *     protocol: "HTTP",
+ * const vip1 = new openstack.loadbalancer.Vip("vip_1", {
+ *     name: "tf_test_lb_vip",
  *     subnetId: "12345",
+ *     protocol: "HTTP",
+ *     port: 80,
+ *     poolId: "67890",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

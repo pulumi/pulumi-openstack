@@ -29,9 +29,10 @@ namespace Pulumi.OpenStack.Images
     /// {
     ///     var rancheros = new OpenStack.Images.Image("rancheros", new()
     ///     {
+    ///         Name = "RancherOS",
+    ///         ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
     ///         ContainerFormat = "bare",
     ///         DiskFormat = "qcow2",
-    ///         ImageSourceUrl = "https://releases.rancher.com/os/latest/rancheros-openstack.img",
     ///         Properties = 
     ///         {
     ///             { "key", "value" },

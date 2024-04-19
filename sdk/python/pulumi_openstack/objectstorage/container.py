@@ -523,12 +523,13 @@ class Container(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        container1 = openstack.objectstorage.Container("container1",
-            content_type="application/json",
+        container1 = openstack.objectstorage.Container("container_1",
+            region="RegionOne",
+            name="tf-test-container-1",
             metadata={
                 "test": "true",
             },
-            region="RegionOne",
+            content_type="application/json",
             versioning=True)
         ```
         <!--End PulumiCodeChooser -->
@@ -540,15 +541,16 @@ class Container(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        container1 = openstack.objectstorage.Container("container1",
-            content_type="application/json",
+        container1 = openstack.objectstorage.Container("container_1",
+            region="RegionOne",
+            name="tf-test-container-1",
             metadata={
                 "test": "true",
             },
-            region="RegionOne",
+            content_type="application/json",
             versioning_legacy=openstack.objectstorage.ContainerVersioningLegacyArgs(
-                location="tf-test-container-versions",
                 type="versions",
+                location="tf-test-container-versions",
             ))
         ```
         <!--End PulumiCodeChooser -->
@@ -560,9 +562,11 @@ class Container(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        container1 = openstack.objectstorage.Container("container1",
-            container_read=".r:*",
-            region="RegionOne")
+        # Requires that a user know the object name they are attempting to download
+        container1 = openstack.objectstorage.Container("container_1",
+            region="RegionOne",
+            name="tf-test-container-1",
+            container_read=".r:*")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -573,9 +577,11 @@ class Container(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        container1 = openstack.objectstorage.Container("container1",
-            container_read=".r:*,.rlistings",
-            region="RegionOne")
+        # Any user can read any object, and list all objects in the container
+        container1 = openstack.objectstorage.Container("container_1",
+            region="RegionOne",
+            name="tf-test-container-1",
+            container_read=".r:*,.rlistings")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -587,10 +593,12 @@ class Container(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         current = openstack.identity.get_auth_scope(name="current")
-        container1 = openstack.objectstorage.Container("container1",
-            container_read=f".r:-{var['username']}",
-            container_write=f"{current.project_id}:{var['username']}",
-            region="RegionOne")
+        # The named user can only upload objects, not read objects or list the container
+        container1 = openstack.objectstorage.Container("container_1",
+            region="RegionOne",
+            name="tf-test-container-1",
+            container_read=f".r:-{username}",
+            container_write=f"{current.project_id}:{username}")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -661,12 +669,13 @@ class Container(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        container1 = openstack.objectstorage.Container("container1",
-            content_type="application/json",
+        container1 = openstack.objectstorage.Container("container_1",
+            region="RegionOne",
+            name="tf-test-container-1",
             metadata={
                 "test": "true",
             },
-            region="RegionOne",
+            content_type="application/json",
             versioning=True)
         ```
         <!--End PulumiCodeChooser -->
@@ -678,15 +687,16 @@ class Container(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        container1 = openstack.objectstorage.Container("container1",
-            content_type="application/json",
+        container1 = openstack.objectstorage.Container("container_1",
+            region="RegionOne",
+            name="tf-test-container-1",
             metadata={
                 "test": "true",
             },
-            region="RegionOne",
+            content_type="application/json",
             versioning_legacy=openstack.objectstorage.ContainerVersioningLegacyArgs(
-                location="tf-test-container-versions",
                 type="versions",
+                location="tf-test-container-versions",
             ))
         ```
         <!--End PulumiCodeChooser -->
@@ -698,9 +708,11 @@ class Container(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        container1 = openstack.objectstorage.Container("container1",
-            container_read=".r:*",
-            region="RegionOne")
+        # Requires that a user know the object name they are attempting to download
+        container1 = openstack.objectstorage.Container("container_1",
+            region="RegionOne",
+            name="tf-test-container-1",
+            container_read=".r:*")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -711,9 +723,11 @@ class Container(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        container1 = openstack.objectstorage.Container("container1",
-            container_read=".r:*,.rlistings",
-            region="RegionOne")
+        # Any user can read any object, and list all objects in the container
+        container1 = openstack.objectstorage.Container("container_1",
+            region="RegionOne",
+            name="tf-test-container-1",
+            container_read=".r:*,.rlistings")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -725,10 +739,12 @@ class Container(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         current = openstack.identity.get_auth_scope(name="current")
-        container1 = openstack.objectstorage.Container("container1",
-            container_read=f".r:-{var['username']}",
-            container_write=f"{current.project_id}:{var['username']}",
-            region="RegionOne")
+        # The named user can only upload objects, not read objects or list the container
+        container1 = openstack.objectstorage.Container("container_1",
+            region="RegionOne",
+            name="tf-test-container-1",
+            container_read=f".r:-{username}",
+            container_write=f"{current.project_id}:{username}")
         ```
         <!--End PulumiCodeChooser -->
 

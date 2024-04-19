@@ -45,8 +45,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var pf1 = new PortForwardingV2(&#34;pf1&#34;, PortForwardingV2Args.builder()        
- *             .externalPort(7233)
  *             .floatingipId(&#34;7a52eb59-7d47-415d-a884-046666a6fbae&#34;)
+ *             .externalPort(7233)
  *             .internalPort(25)
  *             .internalPortId(&#34;b930d7f6-ceb7-40a0-8b81-a425dd994ccf&#34;)
  *             .protocol(&#34;tcp&#34;)

@@ -25,19 +25,20 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dellServers = new OpenStack.Compute.AggregateV2("dellServers", new()
+    ///     var dellServers = new OpenStack.Compute.AggregateV2("dell_servers", new()
     ///     {
+    ///         Region = "RegionOne",
+    ///         Name = "dell_servers",
+    ///         Zone = "nova",
+    ///         Metadata = 
+    ///         {
+    ///             { "cpus", "56" },
+    ///         },
     ///         Hosts = new[]
     ///         {
     ///             "myhost01.example.com",
     ///             "myhost02.example.com",
     ///         },
-    ///         Metadata = 
-    ///         {
-    ///             { "cpus", "56" },
-    ///         },
-    ///         Region = "RegionOne",
-    ///         Zone = "nova",
     ///     });
     /// 
     /// });
@@ -55,7 +56,10 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var test = new OpenStack.Compute.AggregateV2("test");
+    ///     var test = new OpenStack.Compute.AggregateV2("test", new()
+    ///     {
+    ///         Name = "test",
+    ///     });
     /// 
     /// });
     /// ```

@@ -25,8 +25,9 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var subnetpool1 = new OpenStack.Networking.SubnetPool("subnetpool1", new()
+    ///     var subnetpool1 = new OpenStack.Networking.SubnetPool("subnetpool_1", new()
     ///     {
+    ///         Name = "subnetpool_1",
     ///         IpVersion = 6,
     ///         Prefixes = new[]
     ///         {
@@ -50,21 +51,24 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
     ///     {
+    ///         Name = "network_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var subnetpool1 = new OpenStack.Networking.SubnetPool("subnetpool1", new()
+    ///     var subnetpool1 = new OpenStack.Networking.SubnetPool("subnetpool_1", new()
     ///     {
+    ///         Name = "subnetpool_1",
     ///         Prefixes = new[]
     ///         {
     ///             "10.11.12.0/24",
     ///         },
     ///     });
     /// 
-    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet_1", new()
     ///     {
+    ///         Name = "subnet_1",
     ///         Cidr = "10.11.12.0/25",
     ///         NetworkId = network1.Id,
     ///         SubnetpoolId = subnetpool1.Id,

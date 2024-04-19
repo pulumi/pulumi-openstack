@@ -34,9 +34,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := images.NewImage(ctx, "rancheros", &images.ImageArgs{
+//				Name:            pulumi.String("RancherOS"),
+//				ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
 //				ContainerFormat: pulumi.String("bare"),
 //				DiskFormat:      pulumi.String("qcow2"),
-//				ImageSourceUrl:  pulumi.String("https://releases.rancher.com/os/latest/rancheros-openstack.img"),
 //				Properties: pulumi.Map{
 //					"key": pulumi.Any("value"),
 //				},

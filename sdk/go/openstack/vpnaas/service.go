@@ -29,9 +29,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpnaas.NewService(ctx, "service1", &vpnaas.ServiceArgs{
-//				AdminStateUp: pulumi.Bool(true),
+//			_, err := vpnaas.NewService(ctx, "service_1", &vpnaas.ServiceArgs{
+//				Name:         pulumi.String("my_service"),
 //				RouterId:     pulumi.String("14a75700-fc03-4602-9294-26ee44f366b3"),
+//				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

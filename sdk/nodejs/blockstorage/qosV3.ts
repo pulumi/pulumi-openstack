@@ -17,6 +17,7 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const qos = new openstack.blockstorage.QosV3("qos", {
+ *     name: "foo",
  *     consumer: "back-end",
  *     specs: {
  *         read_iops_sec: "40000",

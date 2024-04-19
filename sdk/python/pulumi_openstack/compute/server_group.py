@@ -252,7 +252,9 @@ class ServerGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        test_sg = openstack.compute.ServerGroup("test-sg", policies=["anti-affinity"])
+        test_sg = openstack.compute.ServerGroup("test-sg",
+            name="my-sg",
+            policies=["anti-affinity"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -264,6 +266,7 @@ class ServerGroup(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         test_sg = openstack.compute.ServerGroup("test-sg",
+            name="my-sg",
             policies=["anti-affinity"],
             rules=openstack.compute.ServerGroupRulesArgs(
                 max_server_per_host=3,
@@ -329,7 +332,9 @@ class ServerGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        test_sg = openstack.compute.ServerGroup("test-sg", policies=["anti-affinity"])
+        test_sg = openstack.compute.ServerGroup("test-sg",
+            name="my-sg",
+            policies=["anti-affinity"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -341,6 +346,7 @@ class ServerGroup(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         test_sg = openstack.compute.ServerGroup("test-sg",
+            name="my-sg",
             policies=["anti-affinity"],
             rules=openstack.compute.ServerGroupRulesArgs(
                 max_server_per_host=3,

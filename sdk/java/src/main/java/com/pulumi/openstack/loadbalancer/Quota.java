@@ -40,6 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.openstack.identity.Project;
+ * import com.pulumi.openstack.identity.ProjectArgs;
  * import com.pulumi.openstack.loadbalancer.Quota;
  * import com.pulumi.openstack.loadbalancer.QuotaArgs;
  * import java.util.List;
@@ -55,7 +56,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project1 = new Project(&#34;project1&#34;);
+ *         var project1 = new Project(&#34;project1&#34;, ProjectArgs.builder()        
+ *             .name(&#34;project_1&#34;)
+ *             .build());
  * 
  *         var quota1 = new Quota(&#34;quota1&#34;, QuotaArgs.builder()        
  *             .projectId(project1.id())

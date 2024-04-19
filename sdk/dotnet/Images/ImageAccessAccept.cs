@@ -33,7 +33,7 @@ namespace Pulumi.OpenStack.Images
     ///         MemberStatus = "all",
     ///     });
     /// 
-    ///     var rancherosMember = new OpenStack.Images.ImageAccessAccept("rancherosMember", new()
+    ///     var rancherosMember = new OpenStack.Images.ImageAccessAccept("rancheros_member", new()
     ///     {
     ///         ImageId = rancheros.Apply(getImageResult =&gt; getImageResult.Id),
     ///         Status = "accepted",

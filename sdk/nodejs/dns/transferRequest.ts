@@ -16,13 +16,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const exampleZone = new openstack.dns.Zone("exampleZone", {
+ * const exampleZone = new openstack.dns.Zone("example_zone", {
+ *     name: "example.com.",
  *     email: "jdoe@example.com",
  *     description: "An example zone",
  *     ttl: 3000,
  *     type: "PRIMARY",
  * });
- * const request1 = new openstack.dns.TransferRequest("request1", {
+ * const request1 = new openstack.dns.TransferRequest("request_1", {
  *     zoneId: exampleZone.id,
  *     description: "a transfer request",
  * });

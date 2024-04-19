@@ -43,7 +43,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mydb = new Database(&#34;mydb&#34;, DatabaseArgs.builder()        
- *             .instanceId(openstack_db_instance_v1.basic().id())
+ *             .name(&#34;mydb&#34;)
+ *             .instanceId(basic.id())
  *             .build());
  * 
  *     }

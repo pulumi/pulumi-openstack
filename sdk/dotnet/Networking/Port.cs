@@ -31,13 +31,15 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
     ///     {
+    ///         Name = "network_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var port1 = new OpenStack.Networking.Port("port1", new()
+    ///     var port1 = new OpenStack.Networking.Port("port_1", new()
     ///     {
+    ///         Name = "port_1",
     ///         NetworkId = network1.Id,
     ///         AdminStateUp = true,
     ///     });
@@ -57,19 +59,22 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
     ///     {
+    ///         Name = "network_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet_1", new()
     ///     {
+    ///         Name = "subnet_1",
     ///         NetworkId = network1.Id,
     ///         Cidr = "192.168.199.0/24",
     ///     });
     /// 
-    ///     var port1 = new OpenStack.Networking.Port("port1", new()
+    ///     var port1 = new OpenStack.Networking.Port("port_1", new()
     ///     {
+    ///         Name = "port_1",
     ///         NetworkId = network1.Id,
     ///         AdminStateUp = true,
     ///         FixedIps = new[]
@@ -96,13 +101,15 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
     ///     {
+    ///         Name = "network_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var port1 = new OpenStack.Networking.Port("port1", new()
+    ///     var port1 = new OpenStack.Networking.Port("port_1", new()
     ///     {
+    ///         Name = "port_1",
     ///         NetworkId = network1.Id,
     ///         DeviceId = "cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
     ///         DeviceOwner = "baremetal:none",

@@ -50,19 +50,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var secgroup1 = new SecGroup(&#34;secgroup1&#34;, SecGroupArgs.builder()        
+ *             .name(&#34;my_secgroup&#34;)
  *             .description(&#34;my security group&#34;)
  *             .rules(            
  *                 SecGroupRuleArgs.builder()
- *                     .cidr(&#34;0.0.0.0/0&#34;)
  *                     .fromPort(22)
- *                     .ipProtocol(&#34;tcp&#34;)
  *                     .toPort(22)
+ *                     .ipProtocol(&#34;tcp&#34;)
+ *                     .cidr(&#34;0.0.0.0/0&#34;)
  *                     .build(),
  *                 SecGroupRuleArgs.builder()
- *                     .cidr(&#34;0.0.0.0/0&#34;)
  *                     .fromPort(80)
- *                     .ipProtocol(&#34;tcp&#34;)
  *                     .toPort(80)
+ *                     .ipProtocol(&#34;tcp&#34;)
+ *                     .cidr(&#34;0.0.0.0/0&#34;)
  *                     .build())
  *             .build());
  * 
@@ -72,37 +73,6 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Notes
- * 
- * ### ICMP Rules
- * 
- * When using ICMP as the `ip_protocol`, the `from_port` sets the ICMP _type_ and the `to_port` sets the ICMP _code_. To allow all ICMP types, set each value to `-1`, like so:
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * A list of ICMP types and codes can be found [here](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages).
  * 
  * ### Referencing Security Groups
  * 
@@ -131,10 +101,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test_server = new Instance(&#34;test-server&#34;, InstanceArgs.builder()        
+ *             .name(&#34;tf-test&#34;)
  *             .imageId(&#34;ad091b52-742f-469e-8f3c-fd81cadf0743&#34;)
  *             .flavorId(&#34;3&#34;)
  *             .keyPair(&#34;my_key_pair_name&#34;)
- *             .securityGroups(openstack_compute_secgroup_v2.secgroup_1().name())
+ *             .securityGroups(secgroup1.name())
  *             .build());
  * 
  *     }

@@ -395,16 +395,17 @@ class Instance(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         test = openstack.database.Instance("test",
-            datastore=openstack.database.InstanceDatastoreArgs(
-                type="mysql",
-                version="mysql-5.7",
-            ),
+            region="region-test",
+            name="test",
             flavor_id="31792d21-c355-4587-9290-56c1ed0ca376",
+            size=8,
             networks=[openstack.database.InstanceNetworkArgs(
                 uuid="c0612505-caf2-4fb0-b7cb-56a0240a2b12",
             )],
-            region="region-test",
-            size=8)
+            datastore=openstack.database.InstanceDatastoreArgs(
+                version="mysql-5.7",
+                type="mysql",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -451,16 +452,17 @@ class Instance(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         test = openstack.database.Instance("test",
-            datastore=openstack.database.InstanceDatastoreArgs(
-                type="mysql",
-                version="mysql-5.7",
-            ),
+            region="region-test",
+            name="test",
             flavor_id="31792d21-c355-4587-9290-56c1ed0ca376",
+            size=8,
             networks=[openstack.database.InstanceNetworkArgs(
                 uuid="c0612505-caf2-4fb0-b7cb-56a0240a2b12",
             )],
-            region="region-test",
-            size=8)
+            datastore=openstack.database.InstanceDatastoreArgs(
+                version="mysql-5.7",
+                type="mysql",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

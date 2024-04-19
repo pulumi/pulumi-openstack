@@ -578,16 +578,21 @@ class Share(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
+            name="subnet_1",
             cidr="192.168.199.0/24",
             ip_version=4,
             network_id=network1.id)
-        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork_1",
+            name="test_sharenetwork",
             description="test share network with security services",
             neutron_net_id=network1.id,
             neutron_subnet_id=subnet1.id)
-        share1 = openstack.sharedfilesystem.Share("share1",
+        share1 = openstack.sharedfilesystem.Share("share_1",
+            name="nfs_share",
             description="test share description",
             share_proto="NFS",
             size=1,
@@ -647,16 +652,21 @@ class Share(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
+            name="subnet_1",
             cidr="192.168.199.0/24",
             ip_version=4,
             network_id=network1.id)
-        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork1",
+        sharenetwork1 = openstack.sharedfilesystem.ShareNetwork("sharenetwork_1",
+            name="test_sharenetwork",
             description="test share network with security services",
             neutron_net_id=network1.id,
             neutron_subnet_id=subnet1.id)
-        share1 = openstack.sharedfilesystem.Share("share1",
+        share1 = openstack.sharedfilesystem.Share("share_1",
+            name="nfs_share",
             description="test share description",
             share_proto="NFS",
             size=1,

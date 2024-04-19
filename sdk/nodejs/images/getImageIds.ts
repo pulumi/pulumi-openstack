@@ -17,10 +17,10 @@ import * as utilities from "../utilities";
  *
  * const images = openstack.images.getImageIds({
  *     nameRegex: "^Ubuntu 16\\.04.*-amd64",
+ *     sort: "updated_at",
  *     properties: {
  *         key: "value",
  *     },
- *     sort: "updated_at",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -177,10 +177,10 @@ export interface GetImageIdsResult {
  *
  * const images = openstack.images.getImageIds({
  *     nameRegex: "^Ubuntu 16\\.04.*-amd64",
+ *     sort: "updated_at",
  *     properties: {
  *         key: "value",
  *     },
- *     sort: "updated_at",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

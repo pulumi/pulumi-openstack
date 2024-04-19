@@ -58,10 +58,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var swift = new ApplicationCredential(&#34;swift&#34;, ApplicationCredentialArgs.builder()        
+ *             .name(&#34;swift&#34;)
  *             .description(&#34;Swift technical application credential&#34;)
- *             .expiresAt(&#34;2019-02-13T12:12:12Z&#34;)
- *             .roles(&#34;swiftoperator&#34;)
  *             .secret(&#34;supersecret&#34;)
+ *             .roles(&#34;swiftoperator&#34;)
+ *             .expiresAt(&#34;2019-02-13T12:12:12Z&#34;)
  *             .build());
  * 
  *     }
@@ -100,6 +101,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var unrestricted = new ApplicationCredential(&#34;unrestricted&#34;, ApplicationCredentialArgs.builder()        
+ *             .name(&#34;unrestricted&#34;)
  *             .description(&#34;Unrestricted application credential&#34;)
  *             .unrestricted(true)
  *             .build());
@@ -139,18 +141,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var monitoring = new ApplicationCredential(&#34;monitoring&#34;, ApplicationCredentialArgs.builder()        
+ *             .name(&#34;monitoring&#34;)
+ *             .expiresAt(&#34;2019-02-13T12:12:12Z&#34;)
  *             .accessRules(            
  *                 ApplicationCredentialAccessRuleArgs.builder()
- *                     .method(&#34;GET&#34;)
  *                     .path(&#34;/v2.0/metrics&#34;)
  *                     .service(&#34;monitoring&#34;)
+ *                     .method(&#34;GET&#34;)
  *                     .build(),
  *                 ApplicationCredentialAccessRuleArgs.builder()
- *                     .method(&#34;PUT&#34;)
  *                     .path(&#34;/v2.0/metrics&#34;)
  *                     .service(&#34;monitoring&#34;)
+ *                     .method(&#34;PUT&#34;)
  *                     .build())
- *             .expiresAt(&#34;2019-02-13T12:12:12Z&#34;)
  *             .build());
  * 
  *     }

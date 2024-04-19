@@ -947,8 +947,11 @@ class Port(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        port1 = openstack.networking.Port("port1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        port1 = openstack.networking.Port("port_1",
+            name="port_1",
             network_id=network1.id,
             admin_state_up=True)
         ```
@@ -961,11 +964,15 @@ class Port(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
+            name="subnet_1",
             network_id=network1.id,
             cidr="192.168.199.0/24")
-        port1 = openstack.networking.Port("port1",
+        port1 = openstack.networking.Port("port_1",
+            name="port_1",
             network_id=network1.id,
             admin_state_up=True,
             fixed_ips=[openstack.networking.PortFixedIpArgs(
@@ -981,8 +988,11 @@ class Port(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        port1 = openstack.networking.Port("port1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        port1 = openstack.networking.Port("port_1",
+            name="port_1",
             network_id=network1.id,
             device_id="cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
             device_owner="baremetal:none",
@@ -1107,8 +1117,11 @@ class Port(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        port1 = openstack.networking.Port("port1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        port1 = openstack.networking.Port("port_1",
+            name="port_1",
             network_id=network1.id,
             admin_state_up=True)
         ```
@@ -1121,11 +1134,15 @@ class Port(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
+            name="subnet_1",
             network_id=network1.id,
             cidr="192.168.199.0/24")
-        port1 = openstack.networking.Port("port1",
+        port1 = openstack.networking.Port("port_1",
+            name="port_1",
             network_id=network1.id,
             admin_state_up=True,
             fixed_ips=[openstack.networking.PortFixedIpArgs(
@@ -1141,8 +1158,11 @@ class Port(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        port1 = openstack.networking.Port("port1",
+        network1 = openstack.networking.Network("network_1",
+            name="network_1",
+            admin_state_up=True)
+        port1 = openstack.networking.Port("port_1",
+            name="port_1",
             network_id=network1.id,
             device_id="cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
             device_owner="baremetal:none",

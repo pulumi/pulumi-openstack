@@ -28,54 +28,6 @@ import javax.annotation.Nullable;
  * &gt; **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
  *     created with zero value. This excludes volume type quota.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.openstack.identity.Project;
- * import com.pulumi.openstack.blockstorage.QuoteSetV3;
- * import com.pulumi.openstack.blockstorage.QuoteSetV3Args;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var project1 = new Project(&#34;project1&#34;);
- * 
- *         var quotaset1 = new QuoteSetV3(&#34;quotaset1&#34;, QuoteSetV3Args.builder()        
- *             .projectId(project1.id())
- *             .volumes(10)
- *             .snapshots(4)
- *             .gigabytes(100)
- *             .perVolumeGigabytes(10)
- *             .backups(4)
- *             .backupGigabytes(10)
- *             .groups(100)
- *             .volumeTypeQuota(Map.ofEntries(
- *                 Map.entry(&#34;volumes_ssd&#34;, 30),
- *                 Map.entry(&#34;gigabytes_ssd&#34;, 500),
- *                 Map.entry(&#34;snapshots_ssd&#34;, 10)
- *             ))
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * Quotasets can be imported using the `project_id/region`, e.g.

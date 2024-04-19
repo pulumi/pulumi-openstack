@@ -29,6 +29,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.openstack.identity.Role;
+ * import com.pulumi.openstack.identity.RoleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -42,7 +43,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var role1 = new Role(&#34;role1&#34;);
+ *         var role1 = new Role(&#34;role1&#34;, RoleArgs.builder()        
+ *             .name(&#34;role_1&#34;)
+ *             .build());
  * 
  *     }
  * }

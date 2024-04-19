@@ -45,8 +45,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var service1 = new Service(&#34;service1&#34;, ServiceArgs.builder()        
- *             .adminStateUp(&#34;true&#34;)
+ *             .name(&#34;my_service&#34;)
  *             .routerId(&#34;14a75700-fc03-4602-9294-26ee44f366b3&#34;)
+ *             .adminStateUp(&#34;true&#34;)
  *             .build());
  * 
  *     }

@@ -232,15 +232,16 @@ class TransferAccept(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        example_zone = openstack.dns.Zone("exampleZone",
+        example_zone = openstack.dns.Zone("example_zone",
+            name="example.com.",
             email="jdoe@example.com",
             description="An example zone",
             ttl=3000,
             type="PRIMARY")
-        request1 = openstack.dns.TransferRequest("request1",
+        request1 = openstack.dns.TransferRequest("request_1",
             zone_id=example_zone.id,
             description="a transfer accept")
-        accept1 = openstack.dns.TransferAccept("accept1",
+        accept1 = openstack.dns.TransferAccept("accept_1",
             zone_transfer_request_id=request1.id,
             key=request1.key)
         ```
@@ -286,15 +287,16 @@ class TransferAccept(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        example_zone = openstack.dns.Zone("exampleZone",
+        example_zone = openstack.dns.Zone("example_zone",
+            name="example.com.",
             email="jdoe@example.com",
             description="An example zone",
             ttl=3000,
             type="PRIMARY")
-        request1 = openstack.dns.TransferRequest("request1",
+        request1 = openstack.dns.TransferRequest("request_1",
             zone_id=example_zone.id,
             description="a transfer accept")
-        accept1 = openstack.dns.TransferAccept("accept1",
+        accept1 = openstack.dns.TransferAccept("accept_1",
             zone_transfer_request_id=request1.id,
             key=request1.key)
         ```

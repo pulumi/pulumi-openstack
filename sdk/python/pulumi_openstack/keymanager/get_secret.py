@@ -350,9 +350,9 @@ def get_secret(acl_only: Optional[bool] = None,
     import pulumi
     import pulumi_openstack as openstack
 
-    date_filter_example = openstack.keymanager.get_secret(expiration_filter="gt:2020-01-01T00:00:00Z",
-        mode="cbc",
-        secret_type="passphrase")
+    date_filter_example = openstack.keymanager.get_secret(mode="cbc",
+        secret_type="passphrase",
+        expiration_filter="gt:2020-01-01T00:00:00Z")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -459,9 +459,9 @@ def get_secret_output(acl_only: Optional[pulumi.Input[Optional[bool]]] = None,
     import pulumi
     import pulumi_openstack as openstack
 
-    date_filter_example = openstack.keymanager.get_secret(expiration_filter="gt:2020-01-01T00:00:00Z",
-        mode="cbc",
-        secret_type="passphrase")
+    date_filter_example = openstack.keymanager.get_secret(mode="cbc",
+        secret_type="passphrase",
+        expiration_filter="gt:2020-01-01T00:00:00Z")
     ```
     <!--End PulumiCodeChooser -->
 

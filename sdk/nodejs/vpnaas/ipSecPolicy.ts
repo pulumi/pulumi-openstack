@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const policy1 = new openstack.vpnaas.IpSecPolicy("policy1", {});
+ * const policy1 = new openstack.vpnaas.IpSecPolicy("policy_1", {name: "my_policy"});
  * ```
  * <!--End PulumiCodeChooser -->
  *

@@ -16,16 +16,43 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const secret1 = new openstack.keymanager.SecretV1("secret1", {
+ * const secret1 = new openstack.keymanager.SecretV1("secret_1", {
  *     algorithm: "aes",
  *     bitLength: 256,
- *     metadata: {
- *         key: "foo",
- *     },
  *     mode: "cbc",
+ *     name: "mysecret",
  *     payload: "foobar",
  *     payloadContentType: "text/plain",
  *     secretType: "passphrase",
+ *     metadata: {
+ *         key: "foo",
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ### Secret with whitespaces
+ *
+ * > **Note** If you want to store payload with leading or trailing whitespaces,
+ * it's recommended to store it in a base64 encoding. Plain text payload can also
+ * work, but further addind or removing of the leading or trailing whitespaces
+ * won't be detected as a state change, e.g. changing plain text payload from
+ * ` password  ` to `password` won't recreate the secret.
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as openstack from "@pulumi/openstack";
+ * import * as std from "@pulumi/std";
+ *
+ * const secret1 = new openstack.keymanager.SecretV1("secret_1", {
+ *     name: "password",
+ *     payload: std.base64encode({
+ *         input: "password with the whitespace at the end ",
+ *     }).then(invoke => invoke.result),
+ *     secretType: "passphrase",
+ *     payloadContentType: "application/octet-stream",
+ *     payloadContentEncoding: "base64",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -37,11 +64,14 @@ import * as utilities from "../utilities";
  * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
  * import * as openstack from "@pulumi/openstack";
+ * import * as std from "@pulumi/std";
  *
- * const secret1 = new openstack.keymanager.SecretV1("secret1", {
- *     payload: fs.readFileSync("certificate.pem", "utf8"),
+ * const secret1 = new openstack.keymanager.SecretV1("secret_1", {
+ *     name: "certificate",
+ *     payload: std.file({
+ *         input: "certificate.pem",
+ *     }).then(invoke => invoke.result),
  *     secretType: "certificate",
  *     payloadContentType: "text/plain",
  *     acl: {

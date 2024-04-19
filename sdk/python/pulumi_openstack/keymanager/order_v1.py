@@ -300,14 +300,14 @@ class OrderV1(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        order1 = openstack.keymanager.OrderV1("order1",
+        order1 = openstack.keymanager.OrderV1("order_1",
+            type="key",
             meta=openstack.keymanager.OrderV1MetaArgs(
                 algorithm="aes",
                 bit_length=256,
-                mode="cbc",
                 name="mysecret",
-            ),
-            type="key")
+                mode="cbc",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -318,13 +318,13 @@ class OrderV1(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        order1 = openstack.keymanager.OrderV1("order1",
+        order1 = openstack.keymanager.OrderV1("order_1",
+            type="asymmetric",
             meta=openstack.keymanager.OrderV1MetaArgs(
                 algorithm="rsa",
                 bit_length=4096,
                 name="mysecret",
-            ),
-            type="asymmetric")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -363,14 +363,14 @@ class OrderV1(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        order1 = openstack.keymanager.OrderV1("order1",
+        order1 = openstack.keymanager.OrderV1("order_1",
+            type="key",
             meta=openstack.keymanager.OrderV1MetaArgs(
                 algorithm="aes",
                 bit_length=256,
-                mode="cbc",
                 name="mysecret",
-            ),
-            type="key")
+                mode="cbc",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -381,13 +381,13 @@ class OrderV1(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        order1 = openstack.keymanager.OrderV1("order1",
+        order1 = openstack.keymanager.OrderV1("order_1",
+            type="asymmetric",
             meta=openstack.keymanager.OrderV1MetaArgs(
                 algorithm="rsa",
                 bit_length=4096,
                 name="mysecret",
-            ),
-            type="asymmetric")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

@@ -28,16 +28,62 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := keymanager.NewSecretV1(ctx, "secret1", &keymanager.SecretV1Args{
-//				Algorithm: pulumi.String("aes"),
-//				BitLength: pulumi.Int(256),
-//				Metadata: pulumi.Map{
-//					"key": pulumi.Any("foo"),
-//				},
+//			_, err := keymanager.NewSecretV1(ctx, "secret_1", &keymanager.SecretV1Args{
+//				Algorithm:          pulumi.String("aes"),
+//				BitLength:          pulumi.Int(256),
 //				Mode:               pulumi.String("cbc"),
+//				Name:               pulumi.String("mysecret"),
 //				Payload:            pulumi.String("foobar"),
 //				PayloadContentType: pulumi.String("text/plain"),
 //				SecretType:         pulumi.String("passphrase"),
+//				Metadata: pulumi.Map{
+//					"key": pulumi.Any("foo"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ### Secret with whitespaces
+//
+// > **Note** If you want to store payload with leading or trailing whitespaces,
+// it's recommended to store it in a base64 encoding. Plain text payload can also
+// work, but further addind or removing of the leading or trailing whitespaces
+// won't be detected as a state change, e.g. changing plain text payload from
+// ` password  ` to `password` won't recreate the secret.
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: "password with the whitespace at the end ",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = keymanager.NewSecretV1(ctx, "secret_1", &keymanager.SecretV1Args{
+//				Name:                   pulumi.String("password"),
+//				Payload:                invokeBase64encode.Result,
+//				SecretType:             pulumi.String("passphrase"),
+//				PayloadContentType:     pulumi.String("application/octet-stream"),
+//				PayloadContentEncoding: pulumi.String("base64"),
 //			})
 //			if err != nil {
 //				return err
@@ -59,25 +105,23 @@ import (
 //
 // import (
 //
-//	"os"
-//
 //	"github.com/pulumi/pulumi-openstack/sdk/v3/go/openstack/keymanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := keymanager.NewSecretV1(ctx, "secret1", &keymanager.SecretV1Args{
-//				Payload:            readFileOrPanic("certificate.pem"),
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "certificate.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = keymanager.NewSecretV1(ctx, "secret_1", &keymanager.SecretV1Args{
+//				Name:               pulumi.String("certificate"),
+//				Payload:            invokeFile.Result,
 //				SecretType:         pulumi.String("certificate"),
 //				PayloadContentType: pulumi.String("text/plain"),
 //				Acl: &keymanager.SecretV1AclArgs{

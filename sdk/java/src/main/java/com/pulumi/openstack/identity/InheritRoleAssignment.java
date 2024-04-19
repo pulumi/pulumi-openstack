@@ -51,10 +51,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var user1 = new User(&#34;user1&#34;, UserArgs.builder()        
+ *             .name(&#34;user_1&#34;)
  *             .domainId(&#34;default&#34;)
  *             .build());
  * 
  *         var role1 = new Role(&#34;role1&#34;, RoleArgs.builder()        
+ *             .name(&#34;role_1&#34;)
  *             .domainId(&#34;default&#34;)
  *             .build());
  * 

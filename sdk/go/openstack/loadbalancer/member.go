@@ -29,9 +29,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := loadbalancer.NewMember(ctx, "member1", &loadbalancer.MemberArgs{
-//				Address:      pulumi.String("192.168.199.23"),
+//			_, err := loadbalancer.NewMember(ctx, "member_1", &loadbalancer.MemberArgs{
 //				PoolId:       pulumi.String("935685fb-a896-40f9-9ff4-ae531a3a00fe"),
+//				Address:      pulumi.String("192.168.199.23"),
 //				ProtocolPort: pulumi.Int(8080),
 //			})
 //			if err != nil {

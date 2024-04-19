@@ -46,12 +46,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var dellServers = new AggregateV2(&#34;dellServers&#34;, AggregateV2Args.builder()        
+ *             .region(&#34;RegionOne&#34;)
+ *             .name(&#34;dell_servers&#34;)
+ *             .zone(&#34;nova&#34;)
+ *             .metadata(Map.of(&#34;cpus&#34;, &#34;56&#34;))
  *             .hosts(            
  *                 &#34;myhost01.example.com&#34;,
  *                 &#34;myhost02.example.com&#34;)
- *             .metadata(Map.of(&#34;cpus&#34;, &#34;56&#34;))
- *             .region(&#34;RegionOne&#34;)
- *             .zone(&#34;nova&#34;)
  *             .build());
  * 
  *     }
@@ -69,6 +70,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.openstack.compute.AggregateV2;
+ * import com.pulumi.openstack.compute.AggregateV2Args;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -82,7 +84,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new AggregateV2(&#34;test&#34;);
+ *         var test = new AggregateV2(&#34;test&#34;, AggregateV2Args.builder()        
+ *             .name(&#34;test&#34;)
+ *             .build());
  * 
  *     }
  * }

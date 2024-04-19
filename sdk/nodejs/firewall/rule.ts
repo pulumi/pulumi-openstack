@@ -14,12 +14,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const rule1 = new openstack.firewall.Rule("rule1", {
- *     action: "deny",
+ * const rule1 = new openstack.firewall.Rule("rule_1", {
+ *     name: "my_rule",
  *     description: "drop TELNET traffic",
+ *     action: "deny",
+ *     protocol: "tcp",
  *     destinationPort: "23",
  *     enabled: true,
- *     protocol: "tcp",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -25,17 +25,19 @@ namespace Pulumi.OpenStack.Dns
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZone = new OpenStack.Dns.Zone("exampleZone", new()
+    ///     var exampleZone = new OpenStack.Dns.Zone("example_zone", new()
     ///     {
+    ///         Name = "example.com.",
     ///         Email = "email2@example.com",
     ///         Description = "a zone",
     ///         Ttl = 6000,
     ///         Type = "PRIMARY",
     ///     });
     /// 
-    ///     var rsExampleCom = new OpenStack.Dns.RecordSet("rsExampleCom", new()
+    ///     var rsExampleCom = new OpenStack.Dns.RecordSet("rs_example_com", new()
     ///     {
     ///         ZoneId = exampleZone.Id,
+    ///         Name = "rs.example.com.",
     ///         Description = "An example record set",
     ///         Ttl = 3000,
     ///         Type = "A",

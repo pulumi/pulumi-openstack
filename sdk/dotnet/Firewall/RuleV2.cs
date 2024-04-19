@@ -25,13 +25,14 @@ namespace Pulumi.OpenStack.Firewall
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var rule2 = new OpenStack.Firewall.RuleV2("rule2", new()
+    ///     var rule2 = new OpenStack.Firewall.RuleV2("rule_2", new()
     ///     {
-    ///         Action = "deny",
+    ///         Name = "firewall_rule",
     ///         Description = "drop TELNET traffic",
+    ///         Action = "deny",
+    ///         Protocol = "tcp",
     ///         DestinationPort = "23",
     ///         Enabled = true,
-    ///         Protocol = "tcp",
     ///     });
     /// 
     /// });

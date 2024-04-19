@@ -31,25 +31,26 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := containerinfra.NewClusterTemplate(ctx, "clustertemplate1", &containerinfra.ClusterTemplateArgs{
+//			_, err := containerinfra.NewClusterTemplate(ctx, "clustertemplate_1", &containerinfra.ClusterTemplateArgs{
+//				Name:                pulumi.String("clustertemplate_1"),
+//				Image:               pulumi.String("Fedora-Atomic-27"),
 //				Coe:                 pulumi.String("kubernetes"),
+//				Flavor:              pulumi.String("m1.small"),
+//				MasterFlavor:        pulumi.String("m1.medium"),
 //				DnsNameserver:       pulumi.String("1.1.1.1"),
 //				DockerStorageDriver: pulumi.String("devicemapper"),
 //				DockerVolumeSize:    pulumi.Int(10),
-//				Flavor:              pulumi.String("m1.small"),
+//				VolumeDriver:        pulumi.String("cinder"),
+//				NetworkDriver:       pulumi.String("flannel"),
+//				ServerType:          pulumi.String("vm"),
+//				MasterLbEnabled:     pulumi.Bool(true),
 //				FloatingIpEnabled:   pulumi.Bool(false),
-//				Image:               pulumi.String("Fedora-Atomic-27"),
 //				Labels: pulumi.Map{
-//					"influx_grafana_dashboard_enabled": pulumi.Any("true"),
-//					"kube_dashboard_enabled":           pulumi.Any("true"),
 //					"kube_tag":                         pulumi.Any("1.11.1"),
+//					"kube_dashboard_enabled":           pulumi.Any("true"),
 //					"prometheus_monitoring":            pulumi.Any("true"),
+//					"influx_grafana_dashboard_enabled": pulumi.Any("true"),
 //				},
-//				MasterFlavor:    pulumi.String("m1.medium"),
-//				MasterLbEnabled: pulumi.Bool(true),
-//				NetworkDriver:   pulumi.String("flannel"),
-//				ServerType:      pulumi.String("vm"),
-//				VolumeDriver:    pulumi.String("cinder"),
 //			})
 //			if err != nil {
 //				return err

@@ -31,13 +31,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			port1, err := networking.NewPort(ctx, "port1", &networking.PortArgs{
+//			port1, err := networking.NewPort(ctx, "port_1", &networking.PortArgs{
 //				NetworkId: pulumi.String("a5bbd213-e1d3-49b6-aed1-9df60ea94b9a"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networking.NewFloatingIpAssociate(ctx, "fip1", &networking.FloatingIpAssociateArgs{
+//			_, err = networking.NewFloatingIpAssociate(ctx, "fip_1", &networking.FloatingIpAssociateArgs{
 //				FloatingIp: pulumi.String("1.2.3.4"),
 //				PortId:     port1.ID(),
 //			})

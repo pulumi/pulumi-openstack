@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := identity.NewEc2CredentialV3(ctx, "ec2Key1", nil)
+//			_, err := identity.NewEc2CredentialV3(ctx, "ec2_key1", nil)
 //			if err != nil {
 //				return err
 //			}
@@ -65,7 +65,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := identity.NewEc2CredentialV3(ctx, "ec2Key1", &identity.Ec2CredentialV3Args{
+//			_, err := identity.NewEc2CredentialV3(ctx, "ec2_key1", &identity.Ec2CredentialV3Args{
 //				ProjectId: pulumi.String("f7ac731cc11f40efbc03a9f9e1d1d21f"),
 //			})
 //			if err != nil {

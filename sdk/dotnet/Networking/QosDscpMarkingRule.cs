@@ -25,12 +25,13 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var qosPolicy1 = new OpenStack.Networking.QosPolicy("qosPolicy1", new()
+    ///     var qosPolicy1 = new OpenStack.Networking.QosPolicy("qos_policy_1", new()
     ///     {
+    ///         Name = "qos_policy_1",
     ///         Description = "dscp_mark",
     ///     });
     /// 
-    ///     var dscpMarkingRule1 = new OpenStack.Networking.QosDscpMarkingRule("dscpMarkingRule1", new()
+    ///     var dscpMarkingRule1 = new OpenStack.Networking.QosDscpMarkingRule("dscp_marking_rule_1", new()
     ///     {
     ///         QosPolicyId = qosPolicy1.Id,
     ///         DscpMark = 26,

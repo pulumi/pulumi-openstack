@@ -30,10 +30,11 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const swift = new openstack.identity.ApplicationCredential("swift", {
+ *     name: "swift",
  *     description: "Swift technical application credential",
- *     expiresAt: "2019-02-13T12:12:12Z",
- *     roles: ["swiftoperator"],
  *     secret: "supersecret",
+ *     roles: ["swiftoperator"],
+ *     expiresAt: "2019-02-13T12:12:12Z",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -52,6 +53,7 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const unrestricted = new openstack.identity.ApplicationCredential("unrestricted", {
+ *     name: "unrestricted",
  *     description: "Unrestricted application credential",
  *     unrestricted: true,
  * });
@@ -70,19 +72,20 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const monitoring = new openstack.identity.ApplicationCredential("monitoring", {
+ *     name: "monitoring",
+ *     expiresAt: "2019-02-13T12:12:12Z",
  *     accessRules: [
  *         {
- *             method: "GET",
  *             path: "/v2.0/metrics",
  *             service: "monitoring",
+ *             method: "GET",
  *         },
  *         {
- *             method: "PUT",
  *             path: "/v2.0/metrics",
  *             service: "monitoring",
+ *             method: "PUT",
  *         },
  *     ],
- *     expiresAt: "2019-02-13T12:12:12Z",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

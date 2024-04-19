@@ -16,13 +16,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     name: "network_1",
+ *     adminStateUp: true,
+ * });
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
+ *     name: "subnet_1",
  *     networkId: network1.id,
  *     cidr: "192.168.199.0/24",
  *     ipVersion: 4,
  * });
- * const secgroup1 = new openstack.compute.SecGroup("secgroup1", {
+ * const secgroup1 = new openstack.compute.SecGroup("secgroup_1", {
+ *     name: "secgroup_1",
  *     description: "a security group",
  *     rules: [{
  *         fromPort: 22,
@@ -31,7 +36,8 @@ import * as utilities from "../utilities";
  *         cidr: "0.0.0.0/0",
  *     }],
  * });
- * const port1 = new openstack.networking.Port("port1", {
+ * const port1 = new openstack.networking.Port("port_1", {
+ *     name: "port_1",
  *     networkId: network1.id,
  *     adminStateUp: true,
  *     securityGroupIds: [secgroup1.id],
@@ -40,7 +46,8 @@ import * as utilities from "../utilities";
  *         ipAddress: "192.168.199.10",
  *     }],
  * });
- * const instance1 = new openstack.compute.Instance("instance1", {
+ * const instance1 = new openstack.compute.Instance("instance_1", {
+ *     name: "instance_1",
  *     securityGroups: [secgroup1.name],
  *     networks: [{
  *         port: port1.id,

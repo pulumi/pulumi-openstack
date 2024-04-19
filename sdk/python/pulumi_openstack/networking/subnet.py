@@ -919,8 +919,10 @@ class Subnet(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="tf_test_network",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
             network_id=network1.id,
             cidr="192.168.199.0/24")
         ```
@@ -1009,8 +1011,10 @@ class Subnet(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        network1 = openstack.networking.Network("network1", admin_state_up=True)
-        subnet1 = openstack.networking.Subnet("subnet1",
+        network1 = openstack.networking.Network("network_1",
+            name="tf_test_network",
+            admin_state_up=True)
+        subnet1 = openstack.networking.Subnet("subnet_1",
             network_id=network1.id,
             cidr="192.168.199.0/24")
         ```

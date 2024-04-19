@@ -23,9 +23,9 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var monitor1 = new OpenStack.LoadBalancer.Monitor("monitor1", new()
+    ///     var monitor1 = new OpenStack.LoadBalancer.Monitor("monitor_1", new()
     ///     {
-    ///         PoolId = openstack_lb_pool_v2.Pool_1.Id,
+    ///         PoolId = pool1.Id,
     ///         Type = "PING",
     ///         Delay = 20,
     ///         Timeout = 10,

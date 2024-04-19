@@ -153,8 +153,8 @@ def get_snapshot_v3(most_recent: Optional[bool] = None,
     import pulumi
     import pulumi_openstack as openstack
 
-    snapshot1 = openstack.blockstorage.get_snapshot_v3(most_recent=True,
-        name="snapshot_1")
+    snapshot1 = openstack.blockstorage.get_snapshot_v3(name="snapshot_1",
+        most_recent=True)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -205,8 +205,8 @@ def get_snapshot_v3_output(most_recent: Optional[pulumi.Input[Optional[bool]]] =
     import pulumi
     import pulumi_openstack as openstack
 
-    snapshot1 = openstack.blockstorage.get_snapshot_v3(most_recent=True,
-        name="snapshot_1")
+    snapshot1 = openstack.blockstorage.get_snapshot_v3(name="snapshot_1",
+        most_recent=True)
     ```
     <!--End PulumiCodeChooser -->
 

@@ -30,7 +30,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			rule1, err := firewall.NewRuleV2(ctx, "rule1", &firewall.RuleV2Args{
+//			rule1, err := firewall.NewRuleV2(ctx, "rule_1", &firewall.RuleV2Args{
+//				Name:            pulumi.String("firewall_rule_2"),
 //				Description:     pulumi.String("drop TELNET traffic"),
 //				Action:          pulumi.String("deny"),
 //				Protocol:        pulumi.String("tcp"),
@@ -40,7 +41,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			rule2, err := firewall.NewRuleV2(ctx, "rule2", &firewall.RuleV2Args{
+//			rule2, err := firewall.NewRuleV2(ctx, "rule_2", &firewall.RuleV2Args{
+//				Name:            pulumi.String("firewall_rule_1"),
 //				Description:     pulumi.String("drop NTP traffic"),
 //				Action:          pulumi.String("deny"),
 //				Protocol:        pulumi.String("udp"),
@@ -50,7 +52,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			policy1, err := firewall.NewPolicyV2(ctx, "policy1", &firewall.PolicyV2Args{
+//			policy1, err := firewall.NewPolicyV2(ctx, "policy_1", &firewall.PolicyV2Args{
+//				Name: pulumi.String("firewall_ingress_policy"),
 //				Rules: pulumi.StringArray{
 //					rule1.ID(),
 //				},
@@ -58,7 +61,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			policy2, err := firewall.NewPolicyV2(ctx, "policy2", &firewall.PolicyV2Args{
+//			policy2, err := firewall.NewPolicyV2(ctx, "policy_2", &firewall.PolicyV2Args{
+//				Name: pulumi.String("firewall_egress_policy"),
 //				Rules: pulumi.StringArray{
 //					rule2.ID(),
 //				},
@@ -66,7 +70,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = firewall.NewGroupV2(ctx, "group1", &firewall.GroupV2Args{
+//			_, err = firewall.NewGroupV2(ctx, "group_1", &firewall.GroupV2Args{
+//				Name:                    pulumi.String("firewall_group"),
 //				IngressFirewallPolicyId: policy1.ID(),
 //				EgressFirewallPolicyId:  policy2.ID(),
 //			})

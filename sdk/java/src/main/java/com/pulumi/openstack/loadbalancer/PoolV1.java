@@ -43,11 +43,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var pool1 = new PoolV1(&#34;pool1&#34;, PoolV1Args.builder()        
+ *             .name(&#34;tf_test_lb_pool&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .subnetId(&#34;12345&#34;)
  *             .lbMethod(&#34;ROUND_ROBIN&#34;)
  *             .lbProvider(&#34;haproxy&#34;)
  *             .monitorIds(&#34;67890&#34;)
- *             .protocol(&#34;HTTP&#34;)
- *             .subnetId(&#34;12345&#34;)
  *             .build());
  * 
  *     }
@@ -58,125 +59,6 @@ import javax.annotation.Nullable;
  * ## Complete Load Balancing Stack Example
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.openstack.networking.Network;
- * import com.pulumi.openstack.networking.NetworkArgs;
- * import com.pulumi.openstack.networking.Subnet;
- * import com.pulumi.openstack.networking.SubnetArgs;
- * import com.pulumi.openstack.compute.SecGroup;
- * import com.pulumi.openstack.compute.SecGroupArgs;
- * import com.pulumi.openstack.compute.inputs.SecGroupRuleArgs;
- * import com.pulumi.openstack.compute.Instance;
- * import com.pulumi.openstack.compute.InstanceArgs;
- * import com.pulumi.openstack.compute.inputs.InstanceNetworkArgs;
- * import com.pulumi.openstack.loadbalancer.MonitorV1;
- * import com.pulumi.openstack.loadbalancer.MonitorV1Args;
- * import com.pulumi.openstack.loadbalancer.PoolV1;
- * import com.pulumi.openstack.loadbalancer.PoolV1Args;
- * import com.pulumi.openstack.loadbalancer.MemberV1;
- * import com.pulumi.openstack.loadbalancer.MemberV1Args;
- * import com.pulumi.openstack.loadbalancer.Vip;
- * import com.pulumi.openstack.loadbalancer.VipArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
- *             .adminStateUp(&#34;true&#34;)
- *             .build());
- * 
- *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
- *             .networkId(network1.id())
- *             .cidr(&#34;192.168.199.0/24&#34;)
- *             .ipVersion(4)
- *             .build());
- * 
- *         var secgroup1 = new SecGroup(&#34;secgroup1&#34;, SecGroupArgs.builder()        
- *             .description(&#34;Rules for secgroup_1&#34;)
- *             .rules(            
- *                 SecGroupRuleArgs.builder()
- *                     .fromPort(&#34;TODO: GenUnaryOpExpression&#34;)
- *                     .toPort(&#34;TODO: GenUnaryOpExpression&#34;)
- *                     .ipProtocol(&#34;icmp&#34;)
- *                     .cidr(&#34;0.0.0.0/0&#34;)
- *                     .build(),
- *                 SecGroupRuleArgs.builder()
- *                     .fromPort(80)
- *                     .toPort(80)
- *                     .ipProtocol(&#34;tcp&#34;)
- *                     .cidr(&#34;0.0.0.0/0&#34;)
- *                     .build())
- *             .build());
- * 
- *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        
- *             .securityGroups(            
- *                 &#34;default&#34;,
- *                 secgroup1.name())
- *             .networks(InstanceNetworkArgs.builder()
- *                 .uuid(network1.id())
- *                 .build())
- *             .build());
- * 
- *         var instance2 = new Instance(&#34;instance2&#34;, InstanceArgs.builder()        
- *             .securityGroups(            
- *                 &#34;default&#34;,
- *                 secgroup1.name())
- *             .networks(InstanceNetworkArgs.builder()
- *                 .uuid(network1.id())
- *                 .build())
- *             .build());
- * 
- *         var monitor1 = new MonitorV1(&#34;monitor1&#34;, MonitorV1Args.builder()        
- *             .type(&#34;TCP&#34;)
- *             .delay(30)
- *             .timeout(5)
- *             .maxRetries(3)
- *             .adminStateUp(&#34;true&#34;)
- *             .build());
- * 
- *         var pool1 = new PoolV1(&#34;pool1&#34;, PoolV1Args.builder()        
- *             .protocol(&#34;TCP&#34;)
- *             .subnetId(subnet1.id())
- *             .lbMethod(&#34;ROUND_ROBIN&#34;)
- *             .monitorIds(monitor1.id())
- *             .build());
- * 
- *         var member1 = new MemberV1(&#34;member1&#34;, MemberV1Args.builder()        
- *             .poolId(pool1.id())
- *             .address(instance1.accessIpV4())
- *             .port(80)
- *             .build());
- * 
- *         var member2 = new MemberV1(&#34;member2&#34;, MemberV1Args.builder()        
- *             .poolId(pool1.id())
- *             .address(instance2.accessIpV4())
- *             .port(80)
- *             .build());
- * 
- *         var vip1 = new Vip(&#34;vip1&#34;, VipArgs.builder()        
- *             .subnetId(subnet1.id())
- *             .protocol(&#34;TCP&#34;)
- *             .port(80)
- *             .poolId(pool1.id())
- *             .build());
- * 
- *     }
- * }
- * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Notes

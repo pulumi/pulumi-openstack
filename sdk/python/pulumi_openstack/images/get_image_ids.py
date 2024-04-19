@@ -212,10 +212,10 @@ def get_image_ids(member_status: Optional[str] = None,
     import pulumi_openstack as openstack
 
     images = openstack.images.get_image_ids(name_regex="^Ubuntu 16\\\\.04.*-amd64",
+        sort="updated_at",
         properties={
             "key": "value",
-        },
-        sort="updated_at")
+        })
     ```
     <!--End PulumiCodeChooser -->
 
@@ -321,10 +321,10 @@ def get_image_ids_output(member_status: Optional[pulumi.Input[Optional[str]]] = 
     import pulumi_openstack as openstack
 
     images = openstack.images.get_image_ids(name_regex="^Ubuntu 16\\\\.04.*-amd64",
+        sort="updated_at",
         properties={
             "key": "value",
-        },
-        sort="updated_at")
+        })
     ```
     <!--End PulumiCodeChooser -->
 

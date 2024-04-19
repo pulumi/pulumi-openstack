@@ -15,26 +15,6 @@ import * as utilities from "../utilities";
  * > **Note:** This resource has all-in creation so all optional quota arguments that were not specified are
  *     created with zero value.
  *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as openstack from "@pulumi/openstack";
- *
- * const project1 = new openstack.identity.Project("project1", {});
- * const quotaset1 = new openstack.compute.QuotaSetV2("quotaset1", {
- *     projectId: project1.id,
- *     keyPairs: 10,
- *     ram: 40960,
- *     cores: 32,
- *     instances: 20,
- *     serverGroups: 4,
- *     serverGroupMembers: 8,
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
  * ## Import
  *
  * Quotasets can be imported using the `project_id/region_name`, e.g.

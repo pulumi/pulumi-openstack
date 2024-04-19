@@ -338,7 +338,9 @@ class Project(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        project1 = openstack.identity.Project("project1", description="A project")
+        project1 = openstack.identity.Project("project_1",
+            name="project_1",
+            description="A project")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -387,7 +389,9 @@ class Project(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        project1 = openstack.identity.Project("project1", description="A project")
+        project1 = openstack.identity.Project("project_1",
+            name="project_1",
+            description="A project")
         ```
         <!--End PulumiCodeChooser -->
 

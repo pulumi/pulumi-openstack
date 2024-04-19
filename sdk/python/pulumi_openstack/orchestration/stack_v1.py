@@ -677,13 +677,8 @@ class StackV1(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        stack1 = openstack.orchestration.StackV1("stack1",
-            disable_rollback=True,
-            environment_opts={
-                "Bin": \"\"\"
-
-        \"\"\",
-            },
+        stack1 = openstack.orchestration.StackV1("stack_1",
+            name="stack_1",
             parameters={
                 "length": 4,
             },
@@ -699,9 +694,12 @@ class StackV1(pulumi.CustomResource):
             type: OS::Heat::RandomString
             properties:
               length: {get_param: length}
-
         \"\"\",
             },
+            environment_opts={
+                "Bin": "\\n",
+            },
+            disable_rollback=True,
             timeout=30)
         ```
         <!--End PulumiCodeChooser -->
@@ -768,13 +766,8 @@ class StackV1(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        stack1 = openstack.orchestration.StackV1("stack1",
-            disable_rollback=True,
-            environment_opts={
-                "Bin": \"\"\"
-
-        \"\"\",
-            },
+        stack1 = openstack.orchestration.StackV1("stack_1",
+            name="stack_1",
             parameters={
                 "length": 4,
             },
@@ -790,9 +783,12 @@ class StackV1(pulumi.CustomResource):
             type: OS::Heat::RandomString
             properties:
               length: {get_param: length}
-
         \"\"\",
             },
+            environment_opts={
+                "Bin": "\\n",
+            },
+            disable_rollback=True,
             timeout=30)
         ```
         <!--End PulumiCodeChooser -->

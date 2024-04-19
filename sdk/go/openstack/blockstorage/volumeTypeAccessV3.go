@@ -32,17 +32,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project1, err := identity.NewProject(ctx, "project1", nil)
+//			project1, err := identity.NewProject(ctx, "project_1", &identity.ProjectArgs{
+//				Name: pulumi.String("project_1"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			volumeType1, err := blockstorage.NewVolumeTypeV3(ctx, "volumeType1", &blockstorage.VolumeTypeV3Args{
+//			volumeType1, err := blockstorage.NewVolumeTypeV3(ctx, "volume_type_1", &blockstorage.VolumeTypeV3Args{
+//				Name:     pulumi.String("volume_type_1"),
 //				IsPublic: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = blockstorage.NewVolumeTypeAccessV3(ctx, "volumeTypeAccess", &blockstorage.VolumeTypeAccessV3Args{
+//			_, err = blockstorage.NewVolumeTypeAccessV3(ctx, "volume_type_access", &blockstorage.VolumeTypeAccessV3Args{
 //				ProjectId:    project1.ID(),
 //				VolumeTypeId: volumeType1.ID(),
 //			})

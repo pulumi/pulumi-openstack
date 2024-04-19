@@ -30,6 +30,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.openstack.blockstorage.QosV3;
  * import com.pulumi.openstack.blockstorage.QosV3Args;
  * import com.pulumi.openstack.blockstorage.VolumeTypeV3;
+ * import com.pulumi.openstack.blockstorage.VolumeTypeV3Args;
  * import com.pulumi.openstack.blockstorage.QosAssociationV3;
  * import com.pulumi.openstack.blockstorage.QosAssociationV3Args;
  * import java.util.List;
@@ -46,11 +47,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var qos = new QosV3(&#34;qos&#34;, QosV3Args.builder()        
+ *             .name(&#34;%s&#34;)
  *             .consumer(&#34;front-end&#34;)
  *             .specs(Map.of(&#34;read_iops_sec&#34;, &#34;20000&#34;))
  *             .build());
  * 
- *         var volumeType = new VolumeTypeV3(&#34;volumeType&#34;);
+ *         var volumeType = new VolumeTypeV3(&#34;volumeType&#34;, VolumeTypeV3Args.builder()        
+ *             .name(&#34;%s&#34;)
+ *             .build());
  * 
  *         var qosAssociation = new QosAssociationV3(&#34;qosAssociation&#34;, QosAssociationV3Args.builder()        
  *             .qosId(qos.id())

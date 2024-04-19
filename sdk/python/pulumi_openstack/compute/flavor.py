@@ -489,13 +489,14 @@ class Flavor(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         test_flavor = openstack.compute.Flavor("test-flavor",
+            name="my-flavor",
+            ram=8096,
+            vcpus=2,
             disk=20,
             extra_specs={
                 "hw:cpu_policy": "CPU-POLICY",
                 "hw:cpu_thread_policy": "CPU-THREAD-POLICY",
-            },
-            ram=8096,
-            vcpus=2)
+            })
         ```
         <!--End PulumiCodeChooser -->
 
@@ -552,13 +553,14 @@ class Flavor(pulumi.CustomResource):
         import pulumi_openstack as openstack
 
         test_flavor = openstack.compute.Flavor("test-flavor",
+            name="my-flavor",
+            ram=8096,
+            vcpus=2,
             disk=20,
             extra_specs={
                 "hw:cpu_policy": "CPU-POLICY",
                 "hw:cpu_thread_policy": "CPU-THREAD-POLICY",
-            },
-            ram=8096,
-            vcpus=2)
+            })
         ```
         <!--End PulumiCodeChooser -->
 

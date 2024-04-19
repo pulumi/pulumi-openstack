@@ -536,8 +536,10 @@ class VolumeAttach(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        volume1 = openstack.blockstorage.Volume("volume1", size=1)
-        va1 = openstack.blockstorage.VolumeAttach("va1",
+        volume1 = openstack.blockstorage.Volume("volume_1",
+            name="volume_1",
+            size=1)
+        va1 = openstack.blockstorage.VolumeAttach("va_1",
             volume_id=volume1.id,
             device="auto",
             host_name="devstack",
@@ -623,8 +625,10 @@ class VolumeAttach(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        volume1 = openstack.blockstorage.Volume("volume1", size=1)
-        va1 = openstack.blockstorage.VolumeAttach("va1",
+        volume1 = openstack.blockstorage.Volume("volume_1",
+            name="volume_1",
+            size=1)
+        va1 = openstack.blockstorage.VolumeAttach("va_1",
             volume_id=volume1.id,
             device="auto",
             host_name="devstack",

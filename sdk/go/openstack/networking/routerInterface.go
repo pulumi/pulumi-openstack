@@ -29,13 +29,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//			network1, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
+//				Name:         pulumi.String("tf_test_network"),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//			subnet1, err := networking.NewSubnet(ctx, "subnet_1", &networking.SubnetArgs{
 //				NetworkId: network1.ID(),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //				IpVersion: pulumi.Int(4),
@@ -43,13 +44,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			router1, err := networking.NewRouter(ctx, "router1", &networking.RouterArgs{
+//			router1, err := networking.NewRouter(ctx, "router_1", &networking.RouterArgs{
+//				Name:              pulumi.String("my_router"),
 //				ExternalNetworkId: pulumi.String("f67f0d72-0ddf-11e4-9d95-e1f29f417e2f"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networking.NewRouterInterface(ctx, "routerInterface1", &networking.RouterInterfaceArgs{
+//			_, err = networking.NewRouterInterface(ctx, "router_interface_1", &networking.RouterInterfaceArgs{
 //				RouterId: router1.ID(),
 //				SubnetId: subnet1.ID(),
 //			})

@@ -16,27 +16,34 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     name: "network_1",
+ *     adminStateUp: true,
+ * });
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
+ *     name: "subnet_1",
  *     networkId: network1.id,
  *     cidr: "192.168.1.0/24",
  *     ipVersion: 4,
  *     enableDhcp: true,
  *     noGateway: true,
  * });
- * const parentPort1 = new openstack.networking.Port("parentPort1", {
+ * const parentPort1 = new openstack.networking.Port("parent_port_1", {
+ *     name: "parent_port_1",
  *     networkId: network1.id,
  *     adminStateUp: true,
  * }, {
- *     dependsOn: ["openstack_networking_subnet_v2.subnet_1"],
+ *     dependsOn: [subnet1],
  * });
- * const subport1 = new openstack.networking.Port("subport1", {
+ * const subport1 = new openstack.networking.Port("subport_1", {
+ *     name: "subport_1",
  *     networkId: network1.id,
  *     adminStateUp: true,
  * }, {
- *     dependsOn: ["openstack_networking_subnet_v2.subnet_1"],
+ *     dependsOn: [subnet1],
  * });
- * const trunk1 = new openstack.networking.Trunk("trunk1", {
+ * const trunk1 = new openstack.networking.Trunk("trunk_1", {
+ *     name: "trunk_1",
  *     adminStateUp: true,
  *     portId: parentPort1.id,
  *     subPorts: [{
@@ -45,7 +52,8 @@ import * as utilities from "../utilities";
  *         segmentationType: "vlan",
  *     }],
  * });
- * const instance1 = new openstack.compute.Instance("instance1", {
+ * const instance1 = new openstack.compute.Instance("instance_1", {
+ *     name: "instance_1",
  *     securityGroups: ["default"],
  *     networks: [{
  *         port: trunk1.portId,

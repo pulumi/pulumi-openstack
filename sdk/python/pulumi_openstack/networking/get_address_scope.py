@@ -117,9 +117,9 @@ def get_address_scope(ip_version: Optional[int] = None,
     import pulumi
     import pulumi_openstack as openstack
 
-    public_addressscope = openstack.networking.get_address_scope(ip_version=4,
-        name="public_addressscope",
-        shared=True)
+    public_addressscope = openstack.networking.get_address_scope(name="public_addressscope",
+        shared=True,
+        ip_version=4)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -168,9 +168,9 @@ def get_address_scope_output(ip_version: Optional[pulumi.Input[Optional[int]]] =
     import pulumi
     import pulumi_openstack as openstack
 
-    public_addressscope = openstack.networking.get_address_scope(ip_version=4,
-        name="public_addressscope",
-        shared=True)
+    public_addressscope = openstack.networking.get_address_scope(name="public_addressscope",
+        shared=True,
+        ip_version=4)
     ```
     <!--End PulumiCodeChooser -->
 

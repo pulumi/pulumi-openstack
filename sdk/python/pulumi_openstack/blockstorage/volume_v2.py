@@ -545,9 +545,10 @@ class VolumeV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        volume1 = openstack.blockstorage.VolumeV2("volume1",
-            description="first test volume",
+        volume1 = openstack.blockstorage.VolumeV2("volume_1",
             region="RegionOne",
+            name="volume_1",
+            description="first test volume",
             size=3)
         ```
         <!--End PulumiCodeChooser -->
@@ -605,9 +606,10 @@ class VolumeV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        volume1 = openstack.blockstorage.VolumeV2("volume1",
-            description="first test volume",
+        volume1 = openstack.blockstorage.VolumeV2("volume_1",
             region="RegionOne",
+            name="volume_1",
+            description="first test volume",
             size=3)
         ```
         <!--End PulumiCodeChooser -->

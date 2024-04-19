@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var addressscope1 = new AddressScope(&#34;addressscope1&#34;, AddressScopeArgs.builder()        
+ *             .name(&#34;addressscope_1&#34;)
  *             .ipVersion(6)
  *             .build());
  * 
@@ -81,10 +82,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var addressscope1 = new AddressScope(&#34;addressscope1&#34;, AddressScopeArgs.builder()        
+ *             .name(&#34;addressscope_1&#34;)
  *             .ipVersion(6)
  *             .build());
  * 
  *         var subnetpool1 = new SubnetPool(&#34;subnetpool1&#34;, SubnetPoolArgs.builder()        
+ *             .name(&#34;subnetpool_1&#34;)
  *             .prefixes(            
  *                 &#34;fdf7:b13d:dead:beef::/64&#34;,
  *                 &#34;fd65:86cc:a334:39b7::/64&#34;)

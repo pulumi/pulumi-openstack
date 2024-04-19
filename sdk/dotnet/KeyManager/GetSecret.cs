@@ -55,9 +55,9 @@ namespace Pulumi.OpenStack.KeyManager
         /// {
         ///     var dateFilterExample = OpenStack.KeyManager.GetSecret.Invoke(new()
         ///     {
-        ///         ExpirationFilter = "gt:2020-01-01T00:00:00Z",
         ///         Mode = "cbc",
         ///         SecretType = "passphrase",
+        ///         ExpirationFilter = "gt:2020-01-01T00:00:00Z",
         ///     });
         /// 
         /// });
@@ -111,9 +111,9 @@ namespace Pulumi.OpenStack.KeyManager
         /// {
         ///     var dateFilterExample = OpenStack.KeyManager.GetSecret.Invoke(new()
         ///     {
-        ///         ExpirationFilter = "gt:2020-01-01T00:00:00Z",
         ///         Mode = "cbc",
         ///         SecretType = "passphrase",
+        ///         ExpirationFilter = "gt:2020-01-01T00:00:00Z",
         ///     });
         /// 
         /// });

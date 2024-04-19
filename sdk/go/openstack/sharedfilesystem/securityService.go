@@ -40,15 +40,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sharedfilesystem.NewSecurityService(ctx, "securityservice1", &sharedfilesystem.SecurityServiceArgs{
+//			_, err := sharedfilesystem.NewSecurityService(ctx, "securityservice_1", &sharedfilesystem.SecurityServiceArgs{
+//				Name:        pulumi.String("security"),
 //				Description: pulumi.String("created by terraform"),
+//				Type:        pulumi.String("active_directory"),
+//				Server:      pulumi.String("192.168.199.10"),
 //				DnsIp:       pulumi.String("192.168.199.10"),
 //				Domain:      pulumi.String("example.com"),
 //				Ou:          pulumi.String("CN=Computers,DC=example,DC=com"),
-//				Password:    pulumi.String("s8cret"),
-//				Server:      pulumi.String("192.168.199.10"),
-//				Type:        pulumi.String("active_directory"),
 //				User:        pulumi.String("joinDomainUser"),
+//				Password:    pulumi.String("s8cret"),
 //			})
 //			if err != nil {
 //				return err

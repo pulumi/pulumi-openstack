@@ -29,21 +29,23 @@ namespace Pulumi.OpenStack.ObjectStorage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var container1 = new OpenStack.ObjectStorage.Container("container1", new()
+    ///     var container1 = new OpenStack.ObjectStorage.Container("container_1", new()
     ///     {
+    ///         Name = "test",
     ///         Metadata = 
     ///         {
     ///             { "Temp-URL-Key", "testkey" },
     ///         },
     ///     });
     /// 
-    ///     var object1 = new OpenStack.ObjectStorage.ContainerObject("object1", new()
+    ///     var object1 = new OpenStack.ObjectStorage.ContainerObject("object_1", new()
     ///     {
     ///         ContainerName = container1.Name,
+    ///         Name = "test",
     ///         Content = "Hello, world!",
     ///     });
     /// 
-    ///     var objTempurl = new OpenStack.ObjectStorage.TempUrl("objTempurl", new()
+    ///     var objTempurl = new OpenStack.ObjectStorage.TempUrl("obj_tempurl", new()
     ///     {
     ///         Container = container1.Name,
     ///         Object = object1.Name,

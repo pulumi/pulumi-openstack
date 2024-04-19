@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const ec2Key1 = new openstack.identity.Ec2CredentialV3("ec2Key1", {});
+ * const ec2Key1 = new openstack.identity.Ec2CredentialV3("ec2_key1", {});
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const ec2Key1 = new openstack.identity.Ec2CredentialV3("ec2Key1", {projectId: "f7ac731cc11f40efbc03a9f9e1d1d21f"});
+ * const ec2Key1 = new openstack.identity.Ec2CredentialV3("ec2_key1", {projectId: "f7ac731cc11f40efbc03a9f9e1d1d21f"});
  * ```
  * <!--End PulumiCodeChooser -->
  *

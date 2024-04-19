@@ -47,10 +47,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var router1 = new Router(&#34;router1&#34;, RouterArgs.builder()        
+ *             .name(&#34;router_1&#34;)
  *             .adminStateUp(&#34;true&#34;)
  *             .build());
  * 
  *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network_1&#34;)
  *             .adminStateUp(&#34;true&#34;)
  *             .build());
  * 

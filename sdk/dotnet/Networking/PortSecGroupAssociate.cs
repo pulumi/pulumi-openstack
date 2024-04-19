@@ -33,7 +33,7 @@ namespace Pulumi.OpenStack.Networking
     ///         Name = "secgroup",
     ///     });
     /// 
-    ///     var port1 = new OpenStack.Networking.PortSecGroupAssociate("port1", new()
+    ///     var port1 = new OpenStack.Networking.PortSecGroupAssociate("port_1", new()
     ///     {
     ///         PortId = systemPort.Apply(getPortResult =&gt; getPortResult.Id),
     ///         SecurityGroupIds = new[]
@@ -67,7 +67,7 @@ namespace Pulumi.OpenStack.Networking
     ///         Name = "secgroup",
     ///     });
     /// 
-    ///     var port1 = new OpenStack.Networking.PortSecGroupAssociate("port1", new()
+    ///     var port1 = new OpenStack.Networking.PortSecGroupAssociate("port_1", new()
     ///     {
     ///         PortId = systemPort.Apply(getPortResult =&gt; getPortResult.Id),
     ///         Enforce = true,
@@ -97,7 +97,7 @@ namespace Pulumi.OpenStack.Networking
     ///         FixedIp = "10.0.0.10",
     ///     });
     /// 
-    ///     var port1 = new OpenStack.Networking.PortSecGroupAssociate("port1", new()
+    ///     var port1 = new OpenStack.Networking.PortSecGroupAssociate("port_1", new()
     ///     {
     ///         PortId = systemPort.Apply(getPortResult =&gt; getPortResult.Id),
     ///         Enforce = true,

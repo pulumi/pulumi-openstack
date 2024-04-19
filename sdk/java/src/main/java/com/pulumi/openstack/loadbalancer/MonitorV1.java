@@ -43,11 +43,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var monitor1 = new MonitorV1(&#34;monitor1&#34;, MonitorV1Args.builder()        
- *             .adminStateUp(&#34;true&#34;)
- *             .delay(30)
- *             .maxRetries(3)
- *             .timeout(5)
  *             .type(&#34;PING&#34;)
+ *             .delay(30)
+ *             .timeout(5)
+ *             .maxRetries(3)
+ *             .adminStateUp(&#34;true&#34;)
  *             .build());
  * 
  *     }

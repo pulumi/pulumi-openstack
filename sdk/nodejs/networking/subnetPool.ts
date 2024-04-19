@@ -16,7 +16,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const subnetpool1 = new openstack.networking.SubnetPool("subnetpool1", {
+ * const subnetpool1 = new openstack.networking.SubnetPool("subnetpool_1", {
+ *     name: "subnetpool_1",
  *     ipVersion: 6,
  *     prefixes: [
  *         "fdf7:b13d:dead:beef::/64",
@@ -33,9 +34,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const subnetpool1 = new openstack.networking.SubnetPool("subnetpool1", {prefixes: ["10.11.12.0/24"]});
- * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     name: "network_1",
+ *     adminStateUp: true,
+ * });
+ * const subnetpool1 = new openstack.networking.SubnetPool("subnetpool_1", {
+ *     name: "subnetpool_1",
+ *     prefixes: ["10.11.12.0/24"],
+ * });
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
+ *     name: "subnet_1",
  *     cidr: "10.11.12.0/25",
  *     networkId: network1.id,
  *     subnetpoolId: subnetpool1.id,

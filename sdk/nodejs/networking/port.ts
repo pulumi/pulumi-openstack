@@ -24,8 +24,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const port1 = new openstack.networking.Port("port1", {
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     name: "network_1",
+ *     adminStateUp: true,
+ * });
+ * const port1 = new openstack.networking.Port("port_1", {
+ *     name: "port_1",
  *     networkId: network1.id,
  *     adminStateUp: true,
  * });
@@ -39,12 +43,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     name: "network_1",
+ *     adminStateUp: true,
+ * });
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
+ *     name: "subnet_1",
  *     networkId: network1.id,
  *     cidr: "192.168.199.0/24",
  * });
- * const port1 = new openstack.networking.Port("port1", {
+ * const port1 = new openstack.networking.Port("port_1", {
+ *     name: "port_1",
  *     networkId: network1.id,
  *     adminStateUp: true,
  *     fixedIps: [{
@@ -61,8 +70,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const port1 = new openstack.networking.Port("port1", {
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     name: "network_1",
+ *     adminStateUp: true,
+ * });
+ * const port1 = new openstack.networking.Port("port_1", {
+ *     name: "port_1",
  *     networkId: network1.id,
  *     deviceId: "cdf70fcf-c161-4f24-9c70-96b3f5a54b71",
  *     deviceOwner: "baremetal:none",

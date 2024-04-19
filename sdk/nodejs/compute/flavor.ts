@@ -15,13 +15,14 @@ import * as utilities from "../utilities";
  * import * as openstack from "@pulumi/openstack";
  *
  * const test_flavor = new openstack.compute.Flavor("test-flavor", {
+ *     name: "my-flavor",
+ *     ram: 8096,
+ *     vcpus: 2,
  *     disk: 20,
  *     extraSpecs: {
  *         "hw:cpu_policy": "CPU-POLICY",
  *         "hw:cpu_thread_policy": "CPU-THREAD-POLICY",
  *     },
- *     ram: 8096,
- *     vcpus: 2,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

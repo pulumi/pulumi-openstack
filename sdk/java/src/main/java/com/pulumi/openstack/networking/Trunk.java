@@ -56,10 +56,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network_1&#34;)
  *             .adminStateUp(&#34;true&#34;)
  *             .build());
  * 
  *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
+ *             .name(&#34;subnet_1&#34;)
  *             .networkId(network1.id())
  *             .cidr(&#34;192.168.1.0/24&#34;)
  *             .ipVersion(4)
@@ -68,20 +70,23 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var parentPort1 = new Port(&#34;parentPort1&#34;, PortArgs.builder()        
+ *             .name(&#34;parent_port_1&#34;)
  *             .networkId(network1.id())
  *             .adminStateUp(&#34;true&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(&#34;openstack_networking_subnet_v2.subnet_1&#34;)
+ *                 .dependsOn(subnet1)
  *                 .build());
  * 
  *         var subport1 = new Port(&#34;subport1&#34;, PortArgs.builder()        
+ *             .name(&#34;subport_1&#34;)
  *             .networkId(network1.id())
  *             .adminStateUp(&#34;true&#34;)
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(&#34;openstack_networking_subnet_v2.subnet_1&#34;)
+ *                 .dependsOn(subnet1)
  *                 .build());
  * 
  *         var trunk1 = new Trunk(&#34;trunk1&#34;, TrunkArgs.builder()        
+ *             .name(&#34;trunk_1&#34;)
  *             .adminStateUp(&#34;true&#34;)
  *             .portId(parentPort1.id())
  *             .subPorts(TrunkSubPortArgs.builder()
@@ -92,6 +97,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        
+ *             .name(&#34;instance_1&#34;)
  *             .securityGroups(&#34;default&#34;)
  *             .networks(InstanceNetworkArgs.builder()
  *                 .port(trunk1.portId())

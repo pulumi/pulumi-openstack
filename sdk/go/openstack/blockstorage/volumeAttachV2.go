@@ -44,13 +44,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			volume1, err := blockstorage.NewVolumeV2(ctx, "volume1", &blockstorage.VolumeV2Args{
+//			volume1, err := blockstorage.NewVolumeV2(ctx, "volume_1", &blockstorage.VolumeV2Args{
+//				Name: pulumi.String("volume_1"),
 //				Size: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = blockstorage.NewVolumeAttachV2(ctx, "va1", &blockstorage.VolumeAttachV2Args{
+//			_, err = blockstorage.NewVolumeAttachV2(ctx, "va_1", &blockstorage.VolumeAttachV2Args{
 //				VolumeId:  volume1.ID(),
 //				Device:    pulumi.String("auto"),
 //				HostName:  pulumi.String("devstack"),

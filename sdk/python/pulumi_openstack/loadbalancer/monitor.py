@@ -543,8 +543,8 @@ class Monitor(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        monitor1 = openstack.loadbalancer.Monitor("monitor1",
-            pool_id=openstack_lb_pool_v2["pool_1"]["id"],
+        monitor1 = openstack.loadbalancer.Monitor("monitor_1",
+            pool_id=pool1["id"],
             type="PING",
             delay=20,
             timeout=10,
@@ -616,8 +616,8 @@ class Monitor(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        monitor1 = openstack.loadbalancer.Monitor("monitor1",
-            pool_id=openstack_lb_pool_v2["pool_1"]["id"],
+        monitor1 = openstack.loadbalancer.Monitor("monitor_1",
+            pool_id=pool1["id"],
             type="PING",
             delay=20,
             timeout=10,

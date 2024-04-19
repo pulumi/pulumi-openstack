@@ -30,13 +30,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//			network1, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
+//				Name:         pulumi.String("network_1"),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//			subnet1, err := networking.NewSubnet(ctx, "subnet_1", &networking.SubnetArgs{
+//				Name:      pulumi.String("subnet_1"),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //				IpVersion: pulumi.Int(4),
 //				NetworkId: network1.ID(),
@@ -44,13 +46,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			loadbalancer1, err := loadbalancer.NewLoadBalancer(ctx, "loadbalancer1", &loadbalancer.LoadBalancerArgs{
+//			loadbalancer1, err := loadbalancer.NewLoadBalancer(ctx, "loadbalancer_1", &loadbalancer.LoadBalancerArgs{
+//				Name:        pulumi.String("loadbalancer_1"),
 //				VipSubnetId: subnet1.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			listener1, err := loadbalancer.NewListener(ctx, "listener1", &loadbalancer.ListenerArgs{
+//			listener1, err := loadbalancer.NewListener(ctx, "listener_1", &loadbalancer.ListenerArgs{
+//				Name:           pulumi.String("listener_1"),
 //				Protocol:       pulumi.String("HTTP"),
 //				ProtocolPort:   pulumi.Int(8080),
 //				LoadbalancerId: loadbalancer1.ID(),
@@ -58,7 +62,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = loadbalancer.NewPool(ctx, "pool1", &loadbalancer.PoolArgs{
+//			_, err = loadbalancer.NewPool(ctx, "pool_1", &loadbalancer.PoolArgs{
+//				Name:           pulumi.String("pool_1"),
 //				Protocol:       pulumi.String("HTTP"),
 //				LbMethod:       pulumi.String("ROUND_ROBIN"),
 //				LoadbalancerId: loadbalancer1.ID(),
@@ -66,7 +71,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			l7policy1, err := loadbalancer.NewL7PolicyV2(ctx, "l7policy1", &loadbalancer.L7PolicyV2Args{
+//			l7policy1, err := loadbalancer.NewL7PolicyV2(ctx, "l7policy_1", &loadbalancer.L7PolicyV2Args{
+//				Name:        pulumi.String("test"),
 //				Action:      pulumi.String("REDIRECT_TO_URL"),
 //				Description: pulumi.String("test description"),
 //				Position:    pulumi.Int(1),
@@ -76,7 +82,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = loadbalancer.NewL7RuleV2(ctx, "l7rule1", &loadbalancer.L7RuleV2Args{
+//			_, err = loadbalancer.NewL7RuleV2(ctx, "l7rule_1", &loadbalancer.L7RuleV2Args{
 //				L7policyId:  l7policy1.ID(),
 //				Type:        pulumi.String("PATH"),
 //				CompareType: pulumi.String("EQUAL_TO"),

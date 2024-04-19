@@ -16,14 +16,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const exampleZone = new openstack.dns.Zone("exampleZone", {
+ * const exampleZone = new openstack.dns.Zone("example_zone", {
+ *     name: "example.com.",
  *     email: "email2@example.com",
  *     description: "a zone",
  *     ttl: 6000,
  *     type: "PRIMARY",
  * });
- * const rsExampleCom = new openstack.dns.RecordSet("rsExampleCom", {
+ * const rsExampleCom = new openstack.dns.RecordSet("rs_example_com", {
  *     zoneId: exampleZone.id,
+ *     name: "rs.example.com.",
  *     description: "An example record set",
  *     ttl: 3000,
  *     type: "A",

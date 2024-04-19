@@ -23,18 +23,53 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var secret1 = new OpenStack.KeyManager.SecretV1("secret1", new()
+    ///     var secret1 = new OpenStack.KeyManager.SecretV1("secret_1", new()
     ///     {
     ///         Algorithm = "aes",
     ///         BitLength = 256,
+    ///         Mode = "cbc",
+    ///         Name = "mysecret",
+    ///         Payload = "foobar",
+    ///         PayloadContentType = "text/plain",
+    ///         SecretType = "passphrase",
     ///         Metadata = 
     ///         {
     ///             { "key", "foo" },
     ///         },
-    ///         Mode = "cbc",
-    ///         Payload = "foobar",
-    ///         PayloadContentType = "text/plain",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ### Secret with whitespaces
+    /// 
+    /// &gt; **Note** If you want to store payload with leading or trailing whitespaces,
+    /// it's recommended to store it in a base64 encoding. Plain text payload can also
+    /// work, but further addind or removing of the leading or trailing whitespaces
+    /// won't be detected as a state change, e.g. changing plain text payload from
+    /// ` password  ` to `password` won't recreate the secret.
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using OpenStack = Pulumi.OpenStack;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secret1 = new OpenStack.KeyManager.SecretV1("secret_1", new()
+    ///     {
+    ///         Name = "password",
+    ///         Payload = Std.Base64encode.Invoke(new()
+    ///         {
+    ///             Input = "password with the whitespace at the end ",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         SecretType = "passphrase",
+    ///         PayloadContentType = "application/octet-stream",
+    ///         PayloadContentEncoding = "base64",
     ///     });
     /// 
     /// });
@@ -48,16 +83,20 @@ namespace Pulumi.OpenStack.KeyManager
     /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using OpenStack = Pulumi.OpenStack;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var secret1 = new OpenStack.KeyManager.SecretV1("secret1", new()
+    ///     var secret1 = new OpenStack.KeyManager.SecretV1("secret_1", new()
     ///     {
-    ///         Payload = File.ReadAllText("certificate.pem"),
+    ///         Name = "certificate",
+    ///         Payload = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "certificate.pem",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         SecretType = "certificate",
     ///         PayloadContentType = "text/plain",
     ///         Acl = new OpenStack.KeyManager.Inputs.SecretV1AclArgs

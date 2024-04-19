@@ -30,7 +30,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networking.NewAddressScope(ctx, "addressscope1", &networking.AddressScopeArgs{
+//			_, err := networking.NewAddressScope(ctx, "addressscope_1", &networking.AddressScopeArgs{
+//				Name:      pulumi.String("addressscope_1"),
 //				IpVersion: pulumi.Int(6),
 //			})
 //			if err != nil {
@@ -58,13 +59,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			addressscope1, err := networking.NewAddressScope(ctx, "addressscope1", &networking.AddressScopeArgs{
+//			addressscope1, err := networking.NewAddressScope(ctx, "addressscope_1", &networking.AddressScopeArgs{
+//				Name:      pulumi.String("addressscope_1"),
 //				IpVersion: pulumi.Int(6),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networking.NewSubnetPool(ctx, "subnetpool1", &networking.SubnetPoolArgs{
+//			_, err = networking.NewSubnetPool(ctx, "subnetpool_1", &networking.SubnetPoolArgs{
+//				Name: pulumi.String("subnetpool_1"),
 //				Prefixes: pulumi.StringArray{
 //					pulumi.String("fdf7:b13d:dead:beef::/64"),
 //					pulumi.String("fd65:86cc:a334:39b7::/64"),

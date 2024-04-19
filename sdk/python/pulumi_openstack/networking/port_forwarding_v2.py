@@ -339,9 +339,9 @@ class PortForwardingV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        pf1 = openstack.networking.PortForwardingV2("pf1",
-            external_port=7233,
+        pf1 = openstack.networking.PortForwardingV2("pf_1",
             floatingip_id="7a52eb59-7d47-415d-a884-046666a6fbae",
+            external_port=7233,
             internal_port=25,
             internal_port_id="b930d7f6-ceb7-40a0-8b81-a425dd994ccf",
             protocol="tcp")
@@ -386,9 +386,9 @@ class PortForwardingV2(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        pf1 = openstack.networking.PortForwardingV2("pf1",
-            external_port=7233,
+        pf1 = openstack.networking.PortForwardingV2("pf_1",
             floatingip_id="7a52eb59-7d47-415d-a884-046666a6fbae",
+            external_port=7233,
             internal_port=25,
             internal_port_id="b930d7f6-ceb7-40a0-8b81-a425dd994ccf",
             protocol="tcp")

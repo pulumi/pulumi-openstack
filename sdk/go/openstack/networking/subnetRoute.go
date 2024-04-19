@@ -29,19 +29,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networking.NewRouter(ctx, "router1", &networking.RouterArgs{
+//			_, err := networking.NewRouter(ctx, "router_1", &networking.RouterArgs{
+//				Name:         pulumi.String("router_1"),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//			network1, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
+//				Name:         pulumi.String("network_1"),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//			subnet1, err := networking.NewSubnet(ctx, "subnet_1", &networking.SubnetArgs{
 //				NetworkId: network1.ID(),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //				IpVersion: pulumi.Int(4),
@@ -49,7 +51,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networking.NewSubnetRoute(ctx, "subnetRoute1", &networking.SubnetRouteArgs{
+//			_, err = networking.NewSubnetRoute(ctx, "subnet_route_1", &networking.SubnetRouteArgs{
 //				SubnetId:        subnet1.ID(),
 //				DestinationCidr: pulumi.String("10.0.1.0/24"),
 //				NextHop:         pulumi.String("192.168.199.254"),

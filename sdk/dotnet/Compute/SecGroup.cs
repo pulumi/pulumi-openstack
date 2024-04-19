@@ -29,24 +29,25 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var secgroup1 = new OpenStack.Compute.SecGroup("secgroup1", new()
+    ///     var secgroup1 = new OpenStack.Compute.SecGroup("secgroup_1", new()
     ///     {
+    ///         Name = "my_secgroup",
     ///         Description = "my security group",
     ///         Rules = new[]
     ///         {
     ///             new OpenStack.Compute.Inputs.SecGroupRuleArgs
     ///             {
-    ///                 Cidr = "0.0.0.0/0",
     ///                 FromPort = 22,
-    ///                 IpProtocol = "tcp",
     ///                 ToPort = 22,
+    ///                 IpProtocol = "tcp",
+    ///                 Cidr = "0.0.0.0/0",
     ///             },
     ///             new OpenStack.Compute.Inputs.SecGroupRuleArgs
     ///             {
-    ///                 Cidr = "0.0.0.0/0",
     ///                 FromPort = 80,
-    ///                 IpProtocol = "tcp",
     ///                 ToPort = 80,
+    ///                 IpProtocol = "tcp",
+    ///                 Cidr = "0.0.0.0/0",
     ///             },
     ///         },
     ///     });
@@ -56,24 +57,6 @@ namespace Pulumi.OpenStack.Compute
     /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Notes
-    /// 
-    /// ### ICMP Rules
-    /// 
-    /// When using ICMP as the `ip_protocol`, the `from_port` sets the ICMP _type_ and the `to_port` sets the ICMP _code_. To allow all ICMP types, set each value to `-1`, like so:
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
-    /// A list of ICMP types and codes can be found [here](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages).
     /// 
     /// ### Referencing Security Groups
     /// 
@@ -90,12 +73,13 @@ namespace Pulumi.OpenStack.Compute
     /// {
     ///     var test_server = new OpenStack.Compute.Instance("test-server", new()
     ///     {
+    ///         Name = "tf-test",
     ///         ImageId = "ad091b52-742f-469e-8f3c-fd81cadf0743",
     ///         FlavorId = "3",
     ///         KeyPair = "my_key_pair_name",
     ///         SecurityGroups = new[]
     ///         {
-    ///             openstack_compute_secgroup_v2.Secgroup_1.Name,
+    ///             secgroup1.Name,
     ///         },
     ///     });
     /// 

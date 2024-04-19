@@ -16,7 +16,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const nodegroup1 = new openstack.containerinfra.NodeGroup("nodegroup1", {
+ * const nodegroup1 = new openstack.containerinfra.NodeGroup("nodegroup_1", {
+ *     name: "nodegroup_1",
  *     clusterId: "b9a45c5c-cd03-4958-82aa-b80bf93cb922",
  *     nodeCount: 5,
  * });

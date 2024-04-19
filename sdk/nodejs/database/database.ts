@@ -16,7 +16,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const mydb = new openstack.database.Database("mydb", {instanceId: openstack_db_instance_v1.basic.id});
+ * const mydb = new openstack.database.Database("mydb", {
+ *     name: "mydb",
+ *     instanceId: basic.id,
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

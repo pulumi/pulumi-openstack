@@ -35,20 +35,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewSecGroup(ctx, "secgroup1", &compute.SecGroupArgs{
+//			_, err := compute.NewSecGroup(ctx, "secgroup_1", &compute.SecGroupArgs{
+//				Name:        pulumi.String("my_secgroup"),
 //				Description: pulumi.String("my security group"),
 //				Rules: compute.SecGroupRuleArray{
 //					&compute.SecGroupRuleArgs{
-//						Cidr:       pulumi.String("0.0.0.0/0"),
 //						FromPort:   pulumi.Int(22),
-//						IpProtocol: pulumi.String("tcp"),
 //						ToPort:     pulumi.Int(22),
+//						IpProtocol: pulumi.String("tcp"),
+//						Cidr:       pulumi.String("0.0.0.0/0"),
 //					},
 //					&compute.SecGroupRuleArgs{
-//						Cidr:       pulumi.String("0.0.0.0/0"),
 //						FromPort:   pulumi.Int(80),
-//						IpProtocol: pulumi.String("tcp"),
 //						ToPort:     pulumi.Int(80),
+//						IpProtocol: pulumi.String("tcp"),
+//						Cidr:       pulumi.String("0.0.0.0/0"),
 //					},
 //				},
 //			})
@@ -63,31 +64,6 @@ import (
 // <!--End PulumiCodeChooser -->
 //
 // ## Notes
-//
-// ### ICMP Rules
-//
-// When using ICMP as the `ipProtocol`, the `fromPort` sets the ICMP _type_ and the `toPort` sets the ICMP _code_. To allow all ICMP types, set each value to `-1`, like so:
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
-// A list of ICMP types and codes can be found [here](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages).
 //
 // ### Referencing Security Groups
 //
@@ -107,11 +83,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewInstance(ctx, "test-server", &compute.InstanceArgs{
+//				Name:     pulumi.String("tf-test"),
 //				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
 //				FlavorId: pulumi.String("3"),
 //				KeyPair:  pulumi.String("my_key_pair_name"),
 //				SecurityGroups: pulumi.StringArray{
-//					openstack_compute_secgroup_v2.Secgroup_1.Name,
+//					secgroup1.Name,
 //				},
 //			})
 //			if err != nil {

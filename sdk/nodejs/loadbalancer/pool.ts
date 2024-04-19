@@ -19,14 +19,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const pool1 = new openstack.loadbalancer.Pool("pool1", {
+ * const pool1 = new openstack.loadbalancer.Pool("pool_1", {
+ *     protocol: "HTTP",
  *     lbMethod: "ROUND_ROBIN",
  *     listenerId: "d9415786-5f1a-428b-b35f-2f1523e146d2",
  *     persistence: {
- *         cookieName: "testCookie",
  *         type: "APP_COOKIE",
+ *         cookieName: "testCookie",
  *     },
- *     protocol: "HTTP",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

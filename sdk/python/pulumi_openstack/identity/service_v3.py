@@ -213,7 +213,9 @@ class ServiceV3(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        service1 = openstack.identity.ServiceV3("service1", type="custom")
+        service1 = openstack.identity.ServiceV3("service_1",
+            name="custom",
+            type="custom")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -252,7 +254,9 @@ class ServiceV3(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        service1 = openstack.identity.ServiceV3("service1", type="custom")
+        service1 = openstack.identity.ServiceV3("service_1",
+            name="custom",
+            type="custom")
         ```
         <!--End PulumiCodeChooser -->
 

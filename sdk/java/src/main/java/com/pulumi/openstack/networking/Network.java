@@ -59,16 +59,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
+ *             .name(&#34;network_1&#34;)
  *             .adminStateUp(&#34;true&#34;)
  *             .build());
  * 
  *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
+ *             .name(&#34;subnet_1&#34;)
  *             .networkId(network1.id())
  *             .cidr(&#34;192.168.199.0/24&#34;)
  *             .ipVersion(4)
  *             .build());
  * 
  *         var secgroup1 = new SecGroup(&#34;secgroup1&#34;, SecGroupArgs.builder()        
+ *             .name(&#34;secgroup_1&#34;)
  *             .description(&#34;a security group&#34;)
  *             .rules(SecGroupRuleArgs.builder()
  *                 .fromPort(22)
@@ -79,6 +82,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var port1 = new Port(&#34;port1&#34;, PortArgs.builder()        
+ *             .name(&#34;port_1&#34;)
  *             .networkId(network1.id())
  *             .adminStateUp(&#34;true&#34;)
  *             .securityGroupIds(secgroup1.id())
@@ -89,6 +93,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        
+ *             .name(&#34;instance_1&#34;)
  *             .securityGroups(secgroup1.name())
  *             .networks(InstanceNetworkArgs.builder()
  *                 .port(port1.id())

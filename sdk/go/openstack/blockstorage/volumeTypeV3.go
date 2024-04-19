@@ -30,7 +30,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := blockstorage.NewVolumeTypeV3(ctx, "volumeType1", &blockstorage.VolumeTypeV3Args{
+//			_, err := blockstorage.NewVolumeTypeV3(ctx, "volume_type_1", &blockstorage.VolumeTypeV3Args{
+//				Name:        pulumi.String("volume_type_1"),
 //				Description: pulumi.String("Volume type 1"),
 //				ExtraSpecs: pulumi.Map{
 //					"capabilities":        pulumi.Any("gpu"),

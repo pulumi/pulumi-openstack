@@ -23,16 +23,17 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var pool1 = new OpenStack.LoadBalancer.PoolV1("pool1", new()
+    ///     var pool1 = new OpenStack.LoadBalancer.PoolV1("pool_1", new()
     ///     {
+    ///         Name = "tf_test_lb_pool",
+    ///         Protocol = "HTTP",
+    ///         SubnetId = "12345",
     ///         LbMethod = "ROUND_ROBIN",
     ///         LbProvider = "haproxy",
     ///         MonitorIds = new[]
     ///         {
     ///             "67890",
     ///         },
-    ///         Protocol = "HTTP",
-    ///         SubnetId = "12345",
     ///     });
     /// 
     /// });
@@ -50,20 +51,22 @@ namespace Pulumi.OpenStack.LoadBalancer
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
     ///     {
+    ///         Name = "network_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet_1", new()
     ///     {
     ///         NetworkId = network1.Id,
     ///         Cidr = "192.168.199.0/24",
     ///         IpVersion = 4,
     ///     });
     /// 
-    ///     var secgroup1 = new OpenStack.Compute.SecGroup("secgroup1", new()
+    ///     var secgroup1 = new OpenStack.Compute.SecGroup("secgroup_1", new()
     ///     {
+    ///         Name = "secgroup_1",
     ///         Description = "Rules for secgroup_1",
     ///         Rules = new[]
     ///         {
@@ -84,8 +87,9 @@ namespace Pulumi.OpenStack.LoadBalancer
     ///         },
     ///     });
     /// 
-    ///     var instance1 = new OpenStack.Compute.Instance("instance1", new()
+    ///     var instance1 = new OpenStack.Compute.Instance("instance_1", new()
     ///     {
+    ///         Name = "instance_1",
     ///         SecurityGroups = new[]
     ///         {
     ///             "default",
@@ -100,8 +104,9 @@ namespace Pulumi.OpenStack.LoadBalancer
     ///         },
     ///     });
     /// 
-    ///     var instance2 = new OpenStack.Compute.Instance("instance2", new()
+    ///     var instance2 = new OpenStack.Compute.Instance("instance_2", new()
     ///     {
+    ///         Name = "instance_2",
     ///         SecurityGroups = new[]
     ///         {
     ///             "default",
@@ -116,7 +121,7 @@ namespace Pulumi.OpenStack.LoadBalancer
     ///         },
     ///     });
     /// 
-    ///     var monitor1 = new OpenStack.LoadBalancer.MonitorV1("monitor1", new()
+    ///     var monitor1 = new OpenStack.LoadBalancer.MonitorV1("monitor_1", new()
     ///     {
     ///         Type = "TCP",
     ///         Delay = 30,
@@ -125,8 +130,9 @@ namespace Pulumi.OpenStack.LoadBalancer
     ///         AdminStateUp = "true",
     ///     });
     /// 
-    ///     var pool1 = new OpenStack.LoadBalancer.PoolV1("pool1", new()
+    ///     var pool1 = new OpenStack.LoadBalancer.PoolV1("pool_1", new()
     ///     {
+    ///         Name = "pool_1",
     ///         Protocol = "TCP",
     ///         SubnetId = subnet1.Id,
     ///         LbMethod = "ROUND_ROBIN",
@@ -136,22 +142,23 @@ namespace Pulumi.OpenStack.LoadBalancer
     ///         },
     ///     });
     /// 
-    ///     var member1 = new OpenStack.LoadBalancer.MemberV1("member1", new()
+    ///     var member1 = new OpenStack.LoadBalancer.MemberV1("member_1", new()
     ///     {
     ///         PoolId = pool1.Id,
     ///         Address = instance1.AccessIpV4,
     ///         Port = 80,
     ///     });
     /// 
-    ///     var member2 = new OpenStack.LoadBalancer.MemberV1("member2", new()
+    ///     var member2 = new OpenStack.LoadBalancer.MemberV1("member_2", new()
     ///     {
     ///         PoolId = pool1.Id,
     ///         Address = instance2.AccessIpV4,
     ///         Port = 80,
     ///     });
     /// 
-    ///     var vip1 = new OpenStack.LoadBalancer.Vip("vip1", new()
+    ///     var vip1 = new OpenStack.LoadBalancer.Vip("vip_1", new()
     ///     {
+    ///         Name = "vip_1",
     ///         SubnetId = subnet1.Id,
     ///         Protocol = "TCP",
     ///         Port = 80,

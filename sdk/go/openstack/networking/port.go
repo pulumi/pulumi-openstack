@@ -37,13 +37,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//			network1, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
+//				Name:         pulumi.String("network_1"),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networking.NewPort(ctx, "port1", &networking.PortArgs{
+//			_, err = networking.NewPort(ctx, "port_1", &networking.PortArgs{
+//				Name:         pulumi.String("port_1"),
 //				NetworkId:    network1.ID(),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
@@ -72,20 +74,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//			network1, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
+//				Name:         pulumi.String("network_1"),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			subnet1, err := networking.NewSubnet(ctx, "subnet1", &networking.SubnetArgs{
+//			subnet1, err := networking.NewSubnet(ctx, "subnet_1", &networking.SubnetArgs{
+//				Name:      pulumi.String("subnet_1"),
 //				NetworkId: network1.ID(),
 //				Cidr:      pulumi.String("192.168.199.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networking.NewPort(ctx, "port1", &networking.PortArgs{
+//			_, err = networking.NewPort(ctx, "port_1", &networking.PortArgs{
+//				Name:         pulumi.String("port_1"),
 //				NetworkId:    network1.ID(),
 //				AdminStateUp: pulumi.Bool(true),
 //				FixedIps: networking.PortFixedIpArray{
@@ -119,13 +124,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			network1, err := networking.NewNetwork(ctx, "network1", &networking.NetworkArgs{
+//			network1, err := networking.NewNetwork(ctx, "network_1", &networking.NetworkArgs{
+//				Name:         pulumi.String("network_1"),
 //				AdminStateUp: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networking.NewPort(ctx, "port1", &networking.PortArgs{
+//			_, err = networking.NewPort(ctx, "port_1", &networking.PortArgs{
+//				Name:         pulumi.String("port_1"),
 //				NetworkId:    network1.ID(),
 //				DeviceId:     pulumi.String("cdf70fcf-c161-4f24-9c70-96b3f5a54b71"),
 //				DeviceOwner:  pulumi.String("baremetal:none"),

@@ -456,9 +456,10 @@ class Zone(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        example_com = openstack.dns.Zone("exampleCom",
-            description="An example zone",
+        example_com = openstack.dns.Zone("example_com",
+            name="example.com.",
             email="jdoe@example.com",
+            description="An example zone",
             ttl=3000,
             type="PRIMARY")
         ```
@@ -520,9 +521,10 @@ class Zone(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        example_com = openstack.dns.Zone("exampleCom",
-            description="An example zone",
+        example_com = openstack.dns.Zone("example_com",
+            name="example.com.",
             email="jdoe@example.com",
+            description="An example zone",
             ttl=3000,
             type="PRIMARY")
         ```

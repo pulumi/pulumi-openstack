@@ -31,7 +31,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZone, err := dns.NewZone(ctx, "exampleZone", &dns.ZoneArgs{
+//			exampleZone, err := dns.NewZone(ctx, "example_zone", &dns.ZoneArgs{
+//				Name:        pulumi.String("example.com."),
 //				Email:       pulumi.String("email2@example.com"),
 //				Description: pulumi.String("a zone"),
 //				Ttl:         pulumi.Int(6000),
@@ -40,8 +41,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dns.NewRecordSet(ctx, "rsExampleCom", &dns.RecordSetArgs{
+//			_, err = dns.NewRecordSet(ctx, "rs_example_com", &dns.RecordSetArgs{
 //				ZoneId:      exampleZone.ID(),
+//				Name:        pulumi.String("rs.example.com."),
 //				Description: pulumi.String("An example record set"),
 //				Ttl:         pulumi.Int(3000),
 //				Type:        pulumi.String("A"),

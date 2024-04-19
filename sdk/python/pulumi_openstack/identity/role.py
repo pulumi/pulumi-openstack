@@ -153,7 +153,7 @@ class Role(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        role1 = openstack.identity.Role("role1")
+        role1 = openstack.identity.Role("role_1", name="role_1")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -192,7 +192,7 @@ class Role(pulumi.CustomResource):
         import pulumi
         import pulumi_openstack as openstack
 
-        role1 = openstack.identity.Role("role1")
+        role1 = openstack.identity.Role("role_1", name="role_1")
         ```
         <!--End PulumiCodeChooser -->
 

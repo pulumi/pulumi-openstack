@@ -18,12 +18,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const container1 = new openstack.objectstorage.Container("container1", {
- *     contentType: "application/json",
+ * const container1 = new openstack.objectstorage.Container("container_1", {
+ *     region: "RegionOne",
+ *     name: "tf-test-container-1",
  *     metadata: {
  *         test: "true",
  *     },
- *     region: "RegionOne",
+ *     contentType: "application/json",
  *     versioning: true,
  * });
  * ```
@@ -36,15 +37,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const container1 = new openstack.objectstorage.Container("container1", {
- *     contentType: "application/json",
+ * const container1 = new openstack.objectstorage.Container("container_1", {
+ *     region: "RegionOne",
+ *     name: "tf-test-container-1",
  *     metadata: {
  *         test: "true",
  *     },
- *     region: "RegionOne",
+ *     contentType: "application/json",
  *     versioningLegacy: {
- *         location: "tf-test-container-versions",
  *         type: "versions",
+ *         location: "tf-test-container-versions",
  *     },
  * });
  * ```
@@ -57,9 +59,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const container1 = new openstack.objectstorage.Container("container1", {
- *     containerRead: ".r:*",
+ * // Requires that a user know the object name they are attempting to download
+ * const container1 = new openstack.objectstorage.Container("container_1", {
  *     region: "RegionOne",
+ *     name: "tf-test-container-1",
+ *     containerRead: ".r:*",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -71,9 +75,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const container1 = new openstack.objectstorage.Container("container1", {
- *     containerRead: ".r:*,.rlistings",
+ * // Any user can read any object, and list all objects in the container
+ * const container1 = new openstack.objectstorage.Container("container_1", {
  *     region: "RegionOne",
+ *     name: "tf-test-container-1",
+ *     containerRead: ".r:*,.rlistings",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -88,10 +94,12 @@ import * as utilities from "../utilities";
  * const current = openstack.identity.getAuthScope({
  *     name: "current",
  * });
- * const container1 = new openstack.objectstorage.Container("container1", {
- *     containerRead: `.r:-${_var.username}`,
- *     containerWrite: current.then(current => `${current.projectId}:${_var.username}`),
+ * // The named user can only upload objects, not read objects or list the container
+ * const container1 = new openstack.objectstorage.Container("container_1", {
  *     region: "RegionOne",
+ *     name: "tf-test-container-1",
+ *     containerRead: `.r:-${username}`,
+ *     containerWrite: current.then(current => `${current.projectId}:${username}`),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

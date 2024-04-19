@@ -16,8 +16,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const network1 = new openstack.networking.Network("network1", {adminStateUp: true});
- * const subnet1 = new openstack.networking.Subnet("subnet1", {
+ * const network1 = new openstack.networking.Network("network_1", {
+ *     name: "tf_test_network",
+ *     adminStateUp: true,
+ * });
+ * const subnet1 = new openstack.networking.Subnet("subnet_1", {
  *     networkId: network1.id,
  *     cidr: "192.168.199.0/24",
  * });

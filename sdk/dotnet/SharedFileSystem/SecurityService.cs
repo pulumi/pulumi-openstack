@@ -34,16 +34,17 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var securityservice1 = new OpenStack.SharedFileSystem.SecurityService("securityservice1", new()
+    ///     var securityservice1 = new OpenStack.SharedFileSystem.SecurityService("securityservice_1", new()
     ///     {
+    ///         Name = "security",
     ///         Description = "created by terraform",
+    ///         Type = "active_directory",
+    ///         Server = "192.168.199.10",
     ///         DnsIp = "192.168.199.10",
     ///         Domain = "example.com",
     ///         Ou = "CN=Computers,DC=example,DC=com",
-    ///         Password = "s8cret",
-    ///         Server = "192.168.199.10",
-    ///         Type = "active_directory",
     ///         User = "joinDomainUser",
+    ///         Password = "s8cret",
     ///     });
     /// 
     /// });

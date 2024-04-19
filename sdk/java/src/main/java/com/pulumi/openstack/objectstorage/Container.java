@@ -48,9 +48,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var container1 = new Container(&#34;container1&#34;, ContainerArgs.builder()        
- *             .contentType(&#34;application/json&#34;)
- *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
  *             .region(&#34;RegionOne&#34;)
+ *             .name(&#34;tf-test-container-1&#34;)
+ *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
+ *             .contentType(&#34;application/json&#34;)
  *             .versioning(true)
  *             .build());
  * 
@@ -85,12 +86,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var container1 = new Container(&#34;container1&#34;, ContainerArgs.builder()        
- *             .contentType(&#34;application/json&#34;)
- *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
  *             .region(&#34;RegionOne&#34;)
+ *             .name(&#34;tf-test-container-1&#34;)
+ *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
+ *             .contentType(&#34;application/json&#34;)
  *             .versioningLegacy(ContainerVersioningLegacyArgs.builder()
- *                 .location(&#34;tf-test-container-versions&#34;)
  *                 .type(&#34;versions&#34;)
+ *                 .location(&#34;tf-test-container-versions&#34;)
  *                 .build())
  *             .build());
  * 
@@ -123,9 +125,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Requires that a user know the object name they are attempting to download
  *         var container1 = new Container(&#34;container1&#34;, ContainerArgs.builder()        
- *             .containerRead(&#34;.r:*&#34;)
  *             .region(&#34;RegionOne&#34;)
+ *             .name(&#34;tf-test-container-1&#34;)
+ *             .containerRead(&#34;.r:*&#34;)
  *             .build());
  * 
  *     }
@@ -157,9 +161,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Any user can read any object, and list all objects in the container
  *         var container1 = new Container(&#34;container1&#34;, ContainerArgs.builder()        
- *             .containerRead(&#34;.r:*,.rlistings&#34;)
  *             .region(&#34;RegionOne&#34;)
+ *             .name(&#34;tf-test-container-1&#34;)
+ *             .containerRead(&#34;.r:*,.rlistings&#34;)
  *             .build());
  * 
  *     }
@@ -197,10 +203,12 @@ import javax.annotation.Nullable;
  *             .name(&#34;current&#34;)
  *             .build());
  * 
+ *         // The named user can only upload objects, not read objects or list the container
  *         var container1 = new Container(&#34;container1&#34;, ContainerArgs.builder()        
- *             .containerRead(String.format(&#34;.r:-%s&#34;, var_.username()))
- *             .containerWrite(String.format(&#34;%s:%s&#34;, current.applyValue(getAuthScopeResult -&gt; getAuthScopeResult.projectId()),var_.username()))
  *             .region(&#34;RegionOne&#34;)
+ *             .name(&#34;tf-test-container-1&#34;)
+ *             .containerRead(String.format(&#34;.r:-%s&#34;, username))
+ *             .containerWrite(String.format(&#34;%s:%s&#34;, current.applyValue(getAuthScopeResult -&gt; getAuthScopeResult.projectId()),username))
  *             .build());
  * 
  *     }

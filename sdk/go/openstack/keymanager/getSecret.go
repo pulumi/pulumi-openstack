@@ -65,9 +65,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := keymanager.GetSecret(ctx, &keymanager.GetSecretArgs{
-//				ExpirationFilter: pulumi.StringRef("gt:2020-01-01T00:00:00Z"),
 //				Mode:             pulumi.StringRef("cbc"),
 //				SecretType:       pulumi.StringRef("passphrase"),
+//				ExpirationFilter: pulumi.StringRef("gt:2020-01-01T00:00:00Z"),
 //			}, nil)
 //			if err != nil {
 //				return err

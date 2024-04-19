@@ -16,8 +16,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
- * const secgroup1 = new openstack.networking.SecGroup("secgroup1", {description: "My neutron security group"});
- * const secgroupRule1 = new openstack.networking.SecGroupRule("secgroupRule1", {
+ * const secgroup1 = new openstack.networking.SecGroup("secgroup_1", {
+ *     name: "secgroup_1",
+ *     description: "My neutron security group",
+ * });
+ * const secgroupRule1 = new openstack.networking.SecGroupRule("secgroup_rule_1", {
  *     direction: "ingress",
  *     ethertype: "IPv4",
  *     protocol: "tcp",

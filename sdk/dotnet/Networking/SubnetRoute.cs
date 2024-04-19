@@ -23,24 +23,26 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var router1 = new OpenStack.Networking.Router("router1", new()
+    ///     var router1 = new OpenStack.Networking.Router("router_1", new()
     ///     {
+    ///         Name = "router_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var network1 = new OpenStack.Networking.Network("network1", new()
+    ///     var network1 = new OpenStack.Networking.Network("network_1", new()
     ///     {
+    ///         Name = "network_1",
     ///         AdminStateUp = true,
     ///     });
     /// 
-    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet1", new()
+    ///     var subnet1 = new OpenStack.Networking.Subnet("subnet_1", new()
     ///     {
     ///         NetworkId = network1.Id,
     ///         Cidr = "192.168.199.0/24",
     ///         IpVersion = 4,
     ///     });
     /// 
-    ///     var subnetRoute1 = new OpenStack.Networking.SubnetRoute("subnetRoute1", new()
+    ///     var subnetRoute1 = new OpenStack.Networking.SubnetRoute("subnet_route_1", new()
     ///     {
     ///         SubnetId = subnet1.Id,
     ///         DestinationCidr = "10.0.1.0/24",
