@@ -57,7 +57,7 @@ namespace Pulumi.OpenStack.Networking
     ///     {
     ///         DependsOn =
     ///         {
-    ///             int1, 
+    ///             int1,
     ///         },
     ///     });
     /// 

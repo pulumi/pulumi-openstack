@@ -48,7 +48,7 @@ namespace Pulumi.OpenStack.Networking
     ///     {
     ///         DependsOn =
     ///         {
-    ///             subnet1, 
+    ///             subnet1,
     ///         },
     ///     });
     /// 
@@ -61,7 +61,7 @@ namespace Pulumi.OpenStack.Networking
     ///     {
     ///         DependsOn =
     ///         {
-    ///             subnet1, 
+    ///             subnet1,
     ///         },
     ///     });
     /// 

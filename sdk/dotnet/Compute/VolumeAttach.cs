@@ -106,7 +106,7 @@ namespace Pulumi.OpenStack.Compute
     ///     {
     ///         DependsOn =
     ///         {
-    ///             va1, 
+    ///             va1,
     ///         },
     ///     });
     /// 
