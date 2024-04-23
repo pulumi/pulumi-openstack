@@ -14,7 +14,6 @@ namespace Pulumi.OpenStack.Orchestration
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -56,7 +55,6 @@ namespace Pulumi.OpenStack.Orchestration
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

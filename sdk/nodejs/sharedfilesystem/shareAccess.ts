@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ### NFS
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -44,11 +43,9 @@ import * as utilities from "../utilities";
  *     accessLevel: "rw",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### CIFS
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -101,7 +98,6 @@ import * as utilities from "../utilities";
  * });
  * export const exportLocations = share1.exportLocations;
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

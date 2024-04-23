@@ -18,7 +18,6 @@ namespace Pulumi.OpenStack.Images
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Pulumi.OpenStack.Images
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Notes
     /// 

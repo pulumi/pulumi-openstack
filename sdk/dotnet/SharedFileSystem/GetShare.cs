@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetShareResult> InvokeAsync(GetShareArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetShareResult>("openstack:sharedfilesystem/getShare:getShare", args ?? new GetShareArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.OpenStack.SharedFileSystem
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetShareResult> Invoke(GetShareInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetShareResult>("openstack:sharedfilesystem/getShare:getShare", args ?? new GetShareInvokeArgs(), options.WithDefaults());

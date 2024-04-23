@@ -257,7 +257,7 @@ class _SecretV1State:
                explicitly and implicitly added.
         :param pulumi.Input[int] bit_length: Metadata provided by a user or system for informational purposes.
         :param pulumi.Input[Mapping[str, Any]] content_types: The map of the content types, assigned on the secret.
-        :param pulumi.Input[str] created_at: The date the secret ACL was created.
+        :param pulumi.Input[str] created_at: The date the secret was created.
         :param pulumi.Input[str] creator_id: The creator of the secret.
         :param pulumi.Input[str] expiration: The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
         :param pulumi.Input[Mapping[str, Any]] metadata: Additional Metadata for the secret.
@@ -274,7 +274,7 @@ class _SecretV1State:
         :param pulumi.Input[str] secret_ref: The secret reference / where to find the secret.
         :param pulumi.Input[str] secret_type: Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
         :param pulumi.Input[str] status: The status of the secret.
-        :param pulumi.Input[str] updated_at: The date the secret ACL was last updated.
+        :param pulumi.Input[str] updated_at: The date the secret was last updated.
         """
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
@@ -382,7 +382,7 @@ class _SecretV1State:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
         """
-        The date the secret ACL was created.
+        The date the secret was created.
         """
         return pulumi.get(self, "created_at")
 
@@ -542,7 +542,7 @@ class _SecretV1State:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
         """
-        The date the secret ACL was last updated.
+        The date the secret was last updated.
         """
         return pulumi.get(self, "updated_at")
 
@@ -574,7 +574,6 @@ class SecretV1(pulumi.CustomResource):
 
         ### Simple secret
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -591,7 +590,6 @@ class SecretV1(pulumi.CustomResource):
                 "key": "foo",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Secret with whitespaces
 
@@ -601,7 +599,6 @@ class SecretV1(pulumi.CustomResource):
         won't be detected as a state change, e.g. changing plain text payload from
         ` password  ` to `password` won't recreate the secret.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -614,13 +611,11 @@ class SecretV1(pulumi.CustomResource):
             payload_content_type="application/octet-stream",
             payload_content_encoding="base64")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Secret with the ACL
 
         > **Note** Only read ACLs are supported
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -641,7 +636,6 @@ class SecretV1(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -683,7 +677,6 @@ class SecretV1(pulumi.CustomResource):
 
         ### Simple secret
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -700,7 +693,6 @@ class SecretV1(pulumi.CustomResource):
                 "key": "foo",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Secret with whitespaces
 
@@ -710,7 +702,6 @@ class SecretV1(pulumi.CustomResource):
         won't be detected as a state change, e.g. changing plain text payload from
         ` password  ` to `password` won't recreate the secret.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -723,13 +714,11 @@ class SecretV1(pulumi.CustomResource):
             payload_content_type="application/octet-stream",
             payload_content_encoding="base64")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Secret with the ACL
 
         > **Note** Only read ACLs are supported
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -750,7 +739,6 @@ class SecretV1(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -861,7 +849,7 @@ class SecretV1(pulumi.CustomResource):
                explicitly and implicitly added.
         :param pulumi.Input[int] bit_length: Metadata provided by a user or system for informational purposes.
         :param pulumi.Input[Mapping[str, Any]] content_types: The map of the content types, assigned on the secret.
-        :param pulumi.Input[str] created_at: The date the secret ACL was created.
+        :param pulumi.Input[str] created_at: The date the secret was created.
         :param pulumi.Input[str] creator_id: The creator of the secret.
         :param pulumi.Input[str] expiration: The expiration time of the secret in the RFC3339 timestamp format (e.g. `2019-03-09T12:58:49Z`). If omitted, a secret will never expire. Changing this creates a new secret.
         :param pulumi.Input[Mapping[str, Any]] metadata: Additional Metadata for the secret.
@@ -878,7 +866,7 @@ class SecretV1(pulumi.CustomResource):
         :param pulumi.Input[str] secret_ref: The secret reference / where to find the secret.
         :param pulumi.Input[str] secret_type: Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
         :param pulumi.Input[str] status: The status of the secret.
-        :param pulumi.Input[str] updated_at: The date the secret ACL was last updated.
+        :param pulumi.Input[str] updated_at: The date the secret was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -952,7 +940,7 @@ class SecretV1(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
         """
-        The date the secret ACL was created.
+        The date the secret was created.
         """
         return pulumi.get(self, "created_at")
 
@@ -1060,7 +1048,7 @@ class SecretV1(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
         """
-        The date the secret ACL was last updated.
+        The date the secret was last updated.
         """
         return pulumi.get(self, "updated_at")
 

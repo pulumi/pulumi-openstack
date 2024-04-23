@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -37,7 +36,6 @@ import * as utilities from "../utilities";
  *     password: "s8cret",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

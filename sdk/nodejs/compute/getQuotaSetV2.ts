@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     projectId: "2e367a3d29f94fd988e6ec54e305ec9d",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getQuotaSetV2(args: GetQuotaSetV2Args, opts?: pulumi.InvokeOptions): Promise<GetQuotaSetV2Result> {
 
@@ -122,7 +120,6 @@ export interface GetQuotaSetV2Result {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -131,7 +128,6 @@ export interface GetQuotaSetV2Result {
  *     projectId: "2e367a3d29f94fd988e6ec54e305ec9d",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getQuotaSetV2Output(args: GetQuotaSetV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaSetV2Result> {
     return pulumi.output(args).apply((a: any) => getQuotaSetV2(a, opts))

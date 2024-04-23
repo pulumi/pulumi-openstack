@@ -225,7 +225,6 @@ class AggregateV2(pulumi.CustomResource):
 
         ### Full example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -242,18 +241,15 @@ class AggregateV2(pulumi.CustomResource):
                 "myhost02.example.com",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Minimum required example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         test = openstack.compute.AggregateV2("test", name="test")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -303,7 +299,6 @@ class AggregateV2(pulumi.CustomResource):
 
         ### Full example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -320,18 +315,15 @@ class AggregateV2(pulumi.CustomResource):
                 "myhost02.example.com",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Minimum required example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
 
         test = openstack.compute.AggregateV2("test", name="test")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

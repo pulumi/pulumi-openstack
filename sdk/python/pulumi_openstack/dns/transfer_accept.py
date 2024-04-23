@@ -227,7 +227,6 @@ class TransferAccept(pulumi.CustomResource):
 
         ### Automatically detect the correct network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -245,7 +244,6 @@ class TransferAccept(pulumi.CustomResource):
             zone_transfer_request_id=request1.id,
             key=request1.key)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -282,7 +280,6 @@ class TransferAccept(pulumi.CustomResource):
 
         ### Automatically detect the correct network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -300,7 +297,6 @@ class TransferAccept(pulumi.CustomResource):
             zone_transfer_request_id=request1.id,
             key=request1.key)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

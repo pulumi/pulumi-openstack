@@ -135,7 +135,7 @@ class _ContainerV1State:
                accessible project wide. The `read` structure is described below.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerV1ConsumerArgs']]] consumers: The list of the container consumers. The structure is described below.
         :param pulumi.Input[str] container_ref: The container reference / where to find the container.
-        :param pulumi.Input[str] created_at: The date the container ACL was created.
+        :param pulumi.Input[str] created_at: The date the container was created.
         :param pulumi.Input[str] creator_id: The creator of the container.
         :param pulumi.Input[str] name: Human-readable name for the Container. Does not have
                to be unique.
@@ -147,7 +147,7 @@ class _ContainerV1State:
                below.
         :param pulumi.Input[str] status: The status of the container.
         :param pulumi.Input[str] type: Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
-        :param pulumi.Input[str] updated_at: The date the container ACL was last updated.
+        :param pulumi.Input[str] updated_at: The date the container was last updated.
         """
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
@@ -214,7 +214,7 @@ class _ContainerV1State:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
         """
-        The date the container ACL was created.
+        The date the container was created.
         """
         return pulumi.get(self, "created_at")
 
@@ -303,7 +303,7 @@ class _ContainerV1State:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
         """
-        The date the container ACL was last updated.
+        The date the container was last updated.
         """
         return pulumi.get(self, "updated_at")
 
@@ -332,7 +332,6 @@ class ContainerV1(pulumi.CustomResource):
 
         The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -381,13 +380,11 @@ class ContainerV1(pulumi.CustomResource):
             loadbalancer_id=lb1.id,
             default_tls_container_ref=tls1.container_ref)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Container with the ACL
 
         > **Note** Only read ACLs are supported
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -419,7 +416,6 @@ class ContainerV1(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -459,7 +455,6 @@ class ContainerV1(pulumi.CustomResource):
 
         The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -508,13 +503,11 @@ class ContainerV1(pulumi.CustomResource):
             loadbalancer_id=lb1.id,
             default_tls_container_ref=tls1.container_ref)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Container with the ACL
 
         > **Note** Only read ACLs are supported
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -546,7 +539,6 @@ class ContainerV1(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -631,7 +623,7 @@ class ContainerV1(pulumi.CustomResource):
                accessible project wide. The `read` structure is described below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerV1ConsumerArgs']]]] consumers: The list of the container consumers. The structure is described below.
         :param pulumi.Input[str] container_ref: The container reference / where to find the container.
-        :param pulumi.Input[str] created_at: The date the container ACL was created.
+        :param pulumi.Input[str] created_at: The date the container was created.
         :param pulumi.Input[str] creator_id: The creator of the container.
         :param pulumi.Input[str] name: Human-readable name for the Container. Does not have
                to be unique.
@@ -643,7 +635,7 @@ class ContainerV1(pulumi.CustomResource):
                below.
         :param pulumi.Input[str] status: The status of the container.
         :param pulumi.Input[str] type: Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
-        :param pulumi.Input[str] updated_at: The date the container ACL was last updated.
+        :param pulumi.Input[str] updated_at: The date the container was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -692,7 +684,7 @@ class ContainerV1(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
         """
-        The date the container ACL was created.
+        The date the container was created.
         """
         return pulumi.get(self, "created_at")
 
@@ -753,7 +745,7 @@ class ContainerV1(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
         """
-        The date the container ACL was last updated.
+        The date the container was last updated.
         """
         return pulumi.get(self, "updated_at")
 

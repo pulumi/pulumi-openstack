@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ### Create an Address-scope
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,11 +32,9 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Create a Subnet Pool from an Address-scope
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -65,7 +62,6 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Database
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  *     instanceId: basic.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// &gt; **Note:** To expose the full port-range 1:65535, use `0` for `port_range_min`
     /// and `port_range_max`.

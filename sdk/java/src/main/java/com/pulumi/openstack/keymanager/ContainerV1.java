@@ -243,14 +243,14 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
         return this.containerRef;
     }
     /**
-     * The date the container ACL was created.
+     * The date the container was created.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return The date the container ACL was created.
+     * @return The date the container was created.
      * 
      */
     public Output<String> createdAt() {
@@ -351,14 +351,14 @@ public class ContainerV1 extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * The date the container ACL was last updated.
+     * The date the container was last updated.
      * 
      */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
-     * @return The date the container ACL was last updated.
+     * @return The date the container was last updated.
      * 
      */
     public Output<String> updatedAt() {

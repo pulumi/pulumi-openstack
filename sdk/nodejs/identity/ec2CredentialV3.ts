@@ -17,28 +17,24 @@ import * as utilities from "../utilities";
  *
  * ### EC2 credential in current project scope
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const ec2Key1 = new openstack.identity.Ec2CredentialV3("ec2_key1", {});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### EC2 credential in pre-defined project scope
  *
  * This allows administrative users to create EC2 credentials for a scope different
  * from the current auth scope.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const ec2Key1 = new openstack.identity.Ec2CredentialV3("ec2_key1", {projectId: "f7ac731cc11f40efbc03a9f9e1d1d21f"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

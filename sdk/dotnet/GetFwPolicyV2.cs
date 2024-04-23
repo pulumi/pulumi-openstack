@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.OpenStack
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetFwPolicyV2Result> InvokeAsync(GetFwPolicyV2Args? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFwPolicyV2Result>("openstack:index/getFwPolicyV2:getFwPolicyV2", args ?? new GetFwPolicyV2Args(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.OpenStack
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.OpenStack
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetFwPolicyV2Result> Invoke(GetFwPolicyV2InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFwPolicyV2Result>("openstack:index/getFwPolicyV2:getFwPolicyV2", args ?? new GetFwPolicyV2InvokeArgs(), options.WithDefaults());

@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.OpenStack
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetFwGroupV2Result> InvokeAsync(GetFwGroupV2Args? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFwGroupV2Result>("openstack:index/getFwGroupV2:getFwGroupV2", args ?? new GetFwGroupV2Args(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.OpenStack
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.OpenStack
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetFwGroupV2Result> Invoke(GetFwGroupV2InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFwGroupV2Result>("openstack:index/getFwGroupV2:getFwGroupV2", args ?? new GetFwGroupV2InvokeArgs(), options.WithDefaults());

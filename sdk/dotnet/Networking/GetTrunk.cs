@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTrunkResult> InvokeAsync(GetTrunkArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTrunkResult>("openstack:networking/getTrunk:getTrunk", args ?? new GetTrunkArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTrunkResult> Invoke(GetTrunkInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTrunkResult>("openstack:networking/getTrunk:getTrunk", args ?? new GetTrunkInvokeArgs(), options.WithDefaults());

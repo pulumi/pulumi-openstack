@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -41,7 +40,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Notes
  *
@@ -49,7 +47,6 @@ import * as utilities from "../utilities";
  *
  * When referencing a security group in a configuration (for example, a configuration creates a new security group and then needs to apply it to an instance being created in the same configuration), it is currently recommended to reference the security group by name and not by ID, like this:
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -62,7 +59,6 @@ import * as utilities from "../utilities";
  *     securityGroups: [secgroup1.name],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

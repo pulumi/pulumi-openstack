@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSecGroupResult> InvokeAsync(GetSecGroupArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecGroupResult>("openstack:networking/getSecGroup:getSecGroup", args ?? new GetSecGroupArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSecGroupResult> Invoke(GetSecGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecGroupResult>("openstack:networking/getSecGroup:getSecGroup", args ?? new GetSecGroupInvokeArgs(), options.WithDefaults());

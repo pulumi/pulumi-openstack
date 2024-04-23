@@ -18,7 +18,6 @@ import (
 //
 // ### Symmetric key order
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,11 +47,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Asymmetric key pair order
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -81,7 +78,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

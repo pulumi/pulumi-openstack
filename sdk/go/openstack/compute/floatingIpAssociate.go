@@ -18,7 +18,6 @@ import (
 //
 // ### Automatically detect the correct network
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,11 +61,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Explicitly set the network to attach to
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -121,7 +118,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

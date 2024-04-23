@@ -559,7 +559,6 @@ class Vip(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -571,7 +570,6 @@ class Vip(pulumi.CustomResource):
             port=80,
             pool_id="67890")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -628,7 +626,6 @@ class Vip(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -640,7 +637,6 @@ class Vip(pulumi.CustomResource):
             port=80,
             pool_id="67890")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

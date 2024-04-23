@@ -14,22 +14,14 @@ namespace Pulumi.OpenStack.KeyManager.Outputs
     public sealed class ContainerV1AclRead
     {
         /// <summary>
-        /// The date the container ACL was created.
+        /// The date the container was created.
         /// </summary>
         public readonly string? CreatedAt;
-        /// <summary>
-        /// Whether the container is accessible project wide.
-        /// Defaults to `true`.
-        /// </summary>
         public readonly bool? ProjectAccess;
         /// <summary>
-        /// The date the container ACL was last updated.
+        /// The date the container was last updated.
         /// </summary>
         public readonly string? UpdatedAt;
-        /// <summary>
-        /// The list of user IDs, which are allowed to access the
-        /// container, when `project_access` is set to `false`.
-        /// </summary>
         public readonly ImmutableArray<string> Users;
 
         [OutputConstructor]

@@ -102,14 +102,12 @@ def get_aggregate_v2(hosts: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     test = openstack.compute.get_aggregate_v2(name="test")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] hosts: List of Hypervisors contained in the Host Aggregate
@@ -142,14 +140,12 @@ def get_aggregate_v2_output(hosts: Optional[pulumi.Input[Optional[Sequence[str]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     test = openstack.compute.get_aggregate_v2(name="test")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] hosts: List of Hypervisors contained in the Host Aggregate

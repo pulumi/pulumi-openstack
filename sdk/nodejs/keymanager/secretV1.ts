@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Simple secret
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Secret with whitespaces
  *
@@ -39,7 +37,6 @@ import * as utilities from "../utilities";
  * won't be detected as a state change, e.g. changing plain text payload from
  * ` password  ` to `password` won't recreate the secret.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -55,13 +52,11 @@ import * as utilities from "../utilities";
  *     payloadContentEncoding: "base64",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Secret with the ACL
  *
  * > **Note** Only read ACLs are supported
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -85,7 +80,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -147,7 +141,7 @@ export class SecretV1 extends pulumi.CustomResource {
      */
     public /*out*/ readonly contentTypes!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The date the secret ACL was created.
+     * The date the secret was created.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
@@ -203,7 +197,7 @@ export class SecretV1 extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The date the secret ACL was last updated.
+     * The date the secret was last updated.
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
@@ -296,7 +290,7 @@ export interface SecretV1State {
      */
     contentTypes?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The date the secret ACL was created.
+     * The date the secret was created.
      */
     createdAt?: pulumi.Input<string>;
     /**
@@ -352,7 +346,7 @@ export interface SecretV1State {
      */
     status?: pulumi.Input<string>;
     /**
-     * The date the secret ACL was last updated.
+     * The date the secret was last updated.
      */
     updatedAt?: pulumi.Input<string>;
 }

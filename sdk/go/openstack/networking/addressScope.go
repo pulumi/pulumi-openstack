@@ -17,7 +17,6 @@ import (
 //
 // ### Create an Address-scope
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,11 +41,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Create a Subnet Pool from an Address-scope
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -82,7 +79,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

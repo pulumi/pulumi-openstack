@@ -89,14 +89,12 @@ def get_qos_dscp_marking_rule(dscp_mark: Optional[int] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     qos_dscp_marking_rule1 = openstack.networking.get_qos_dscp_marking_rule(dscp_mark=26)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int dscp_mark: The value of a DSCP mark.
@@ -129,14 +127,12 @@ def get_qos_dscp_marking_rule_output(dscp_mark: Optional[pulumi.Input[Optional[i
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     qos_dscp_marking_rule1 = openstack.networking.get_qos_dscp_marking_rule(dscp_mark=26)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int dscp_mark: The value of a DSCP mark.

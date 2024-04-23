@@ -245,14 +245,14 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
         return this.contentTypes;
     }
     /**
-     * The date the secret ACL was created.
+     * The date the secret was created.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return The date the secret ACL was created.
+     * @return The date the secret was created.
      * 
      */
     public Output<String> createdAt() {
@@ -435,14 +435,14 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The date the secret ACL was last updated.
+     * The date the secret was last updated.
      * 
      */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
-     * @return The date the secret ACL was last updated.
+     * @return The date the secret was last updated.
      * 
      */
     public Output<String> updatedAt() {

@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.KeyManager
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.OpenStack.KeyManager
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetContainerResult> InvokeAsync(GetContainerArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetContainerResult>("openstack:keymanager/getContainer:getContainer", args ?? new GetContainerArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.OpenStack.KeyManager
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.OpenStack.KeyManager
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetContainerResult> Invoke(GetContainerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerResult>("openstack:keymanager/getContainer:getContainer", args ?? new GetContainerInvokeArgs(), options.WithDefaults());

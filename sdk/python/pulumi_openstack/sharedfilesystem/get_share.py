@@ -230,14 +230,12 @@ def get_share(description: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     share1 = openstack.sharedfilesystem.get_share(name="share_1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: The human-readable description for the share.
@@ -304,14 +302,12 @@ def get_share_output(description: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     share1 = openstack.sharedfilesystem.get_share(name="share_1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: The human-readable description for the share.

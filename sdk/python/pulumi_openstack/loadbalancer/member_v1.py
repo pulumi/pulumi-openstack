@@ -294,7 +294,6 @@ class MemberV1(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -304,7 +303,6 @@ class MemberV1(pulumi.CustomResource):
             address="192.168.0.10",
             port=80)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -343,7 +341,6 @@ class MemberV1(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -353,7 +350,6 @@ class MemberV1(pulumi.CustomResource):
             address="192.168.0.10",
             port=80)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

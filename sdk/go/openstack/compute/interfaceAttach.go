@@ -19,7 +19,6 @@ import (
 //
 // ### Basic Attachment
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,11 +60,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Attachment Specifying a Fixed IP
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -108,11 +105,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Attachment Using an Existing Port
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -162,7 +157,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -155,14 +155,12 @@ def get_endpoint(endpoint_region: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     endpoint1 = openstack.identity.get_endpoint(service_name="demo")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str endpoint_region: The region the endpoint is assigned to. The
@@ -215,14 +213,12 @@ def get_endpoint_output(endpoint_region: Optional[pulumi.Input[Optional[str]]] =
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     endpoint1 = openstack.identity.get_endpoint(service_name="demo")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str endpoint_region: The region the endpoint is assigned to. The

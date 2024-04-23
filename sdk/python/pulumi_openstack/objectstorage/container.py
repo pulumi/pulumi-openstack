@@ -518,7 +518,6 @@ class Container(pulumi.CustomResource):
 
         ### Basic Container
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -532,11 +531,9 @@ class Container(pulumi.CustomResource):
             content_type="application/json",
             versioning=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Basic Container with legacy versioning
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -553,11 +550,9 @@ class Container(pulumi.CustomResource):
                 location="tf-test-container-versions",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Global Read Access
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -568,11 +563,9 @@ class Container(pulumi.CustomResource):
             name="tf-test-container-1",
             container_read=".r:*")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Global Read and List Access
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -583,11 +576,9 @@ class Container(pulumi.CustomResource):
             name="tf-test-container-1",
             container_read=".r:*,.rlistings")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Write-Only Access for a User
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -600,7 +591,6 @@ class Container(pulumi.CustomResource):
             container_read=f".r:-{username}",
             container_write=f"{current.project_id}:{username}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -664,7 +654,6 @@ class Container(pulumi.CustomResource):
 
         ### Basic Container
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -678,11 +667,9 @@ class Container(pulumi.CustomResource):
             content_type="application/json",
             versioning=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Basic Container with legacy versioning
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -699,11 +686,9 @@ class Container(pulumi.CustomResource):
                 location="tf-test-container-versions",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Global Read Access
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -714,11 +699,9 @@ class Container(pulumi.CustomResource):
             name="tf-test-container-1",
             container_read=".r:*")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Global Read and List Access
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -729,11 +712,9 @@ class Container(pulumi.CustomResource):
             name="tf-test-container-1",
             container_read=".r:*,.rlistings")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Write-Only Access for a User
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -746,7 +727,6 @@ class Container(pulumi.CustomResource):
             container_read=f".r:-{username}",
             container_write=f"{current.project_id}:{username}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

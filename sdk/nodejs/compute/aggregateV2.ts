@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Full example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -29,18 +28,15 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Minimum required example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const test = new openstack.compute.AggregateV2("test", {name: "test"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     name: "admin",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
 
@@ -75,7 +73,6 @@ export interface GetRoleResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -84,7 +81,6 @@ export interface GetRoleResult {
  *     name: "admin",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRoleOutput(args: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
     return pulumi.output(args).apply((a: any) => getRole(a, opts))

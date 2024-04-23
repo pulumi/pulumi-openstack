@@ -18,7 +18,6 @@ import (
 //
 // ### Create a QoS Policy with some DSCP marking rule
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,7 +49,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

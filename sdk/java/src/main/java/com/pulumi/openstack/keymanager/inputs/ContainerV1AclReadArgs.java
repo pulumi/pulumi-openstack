@@ -18,65 +18,45 @@ public final class ContainerV1AclReadArgs extends com.pulumi.resources.ResourceA
     public static final ContainerV1AclReadArgs Empty = new ContainerV1AclReadArgs();
 
     /**
-     * The date the container ACL was created.
+     * The date the container was created.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return The date the container ACL was created.
+     * @return The date the container was created.
      * 
      */
     public Optional<Output<String>> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
 
-    /**
-     * Whether the container is accessible project wide.
-     * Defaults to `true`.
-     * 
-     */
     @Import(name="projectAccess")
     private @Nullable Output<Boolean> projectAccess;
 
-    /**
-     * @return Whether the container is accessible project wide.
-     * Defaults to `true`.
-     * 
-     */
     public Optional<Output<Boolean>> projectAccess() {
         return Optional.ofNullable(this.projectAccess);
     }
 
     /**
-     * The date the container ACL was last updated.
+     * The date the container was last updated.
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return The date the container ACL was last updated.
+     * @return The date the container was last updated.
      * 
      */
     public Optional<Output<String>> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
 
-    /**
-     * The list of user IDs, which are allowed to access the
-     * container, when `project_access` is set to `false`.
-     * 
-     */
     @Import(name="users")
     private @Nullable Output<List<String>> users;
 
-    /**
-     * @return The list of user IDs, which are allowed to access the
-     * container, when `project_access` is set to `false`.
-     * 
-     */
     public Optional<Output<List<String>>> users() {
         return Optional.ofNullable(this.users);
     }
@@ -109,7 +89,7 @@ public final class ContainerV1AclReadArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param createdAt The date the container ACL was created.
+         * @param createdAt The date the container was created.
          * 
          * @return builder
          * 
@@ -120,7 +100,7 @@ public final class ContainerV1AclReadArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param createdAt The date the container ACL was created.
+         * @param createdAt The date the container was created.
          * 
          * @return builder
          * 
@@ -129,31 +109,17 @@ public final class ContainerV1AclReadArgs extends com.pulumi.resources.ResourceA
             return createdAt(Output.of(createdAt));
         }
 
-        /**
-         * @param projectAccess Whether the container is accessible project wide.
-         * Defaults to `true`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder projectAccess(@Nullable Output<Boolean> projectAccess) {
             $.projectAccess = projectAccess;
             return this;
         }
 
-        /**
-         * @param projectAccess Whether the container is accessible project wide.
-         * Defaults to `true`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder projectAccess(Boolean projectAccess) {
             return projectAccess(Output.of(projectAccess));
         }
 
         /**
-         * @param updatedAt The date the container ACL was last updated.
+         * @param updatedAt The date the container was last updated.
          * 
          * @return builder
          * 
@@ -164,7 +130,7 @@ public final class ContainerV1AclReadArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param updatedAt The date the container ACL was last updated.
+         * @param updatedAt The date the container was last updated.
          * 
          * @return builder
          * 
@@ -173,36 +139,15 @@ public final class ContainerV1AclReadArgs extends com.pulumi.resources.ResourceA
             return updatedAt(Output.of(updatedAt));
         }
 
-        /**
-         * @param users The list of user IDs, which are allowed to access the
-         * container, when `project_access` is set to `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder users(@Nullable Output<List<String>> users) {
             $.users = users;
             return this;
         }
 
-        /**
-         * @param users The list of user IDs, which are allowed to access the
-         * container, when `project_access` is set to `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder users(List<String> users) {
             return users(Output.of(users));
         }
 
-        /**
-         * @param users The list of user IDs, which are allowed to access the
-         * container, when `project_access` is set to `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder users(String... users) {
             return users(List.of(users));
         }

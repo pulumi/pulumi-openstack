@@ -540,7 +540,6 @@ class VolumeV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -551,7 +550,6 @@ class VolumeV2(pulumi.CustomResource):
             description="first test volume",
             size=3)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -601,7 +599,6 @@ class VolumeV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -612,7 +609,6 @@ class VolumeV2(pulumi.CustomResource):
             description="first test volume",
             size=3)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

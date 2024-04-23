@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupSubnetPool(ctx *pulumi.Context, args *LookupSubnetPoolArgs, opts ...pulumi.InvokeOption) (*LookupSubnetPoolResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSubnetPoolResult

@@ -182,7 +182,6 @@ class FloatingIpAssociate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -192,7 +191,6 @@ class FloatingIpAssociate(pulumi.CustomResource):
             floating_ip="1.2.3.4",
             port_id=port1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -226,7 +224,6 @@ class FloatingIpAssociate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -236,7 +233,6 @@ class FloatingIpAssociate(pulumi.CustomResource):
             floating_ip="1.2.3.4",
             port_id=port1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

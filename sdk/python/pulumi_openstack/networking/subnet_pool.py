@@ -704,7 +704,6 @@ class SubnetPool(pulumi.CustomResource):
 
         ### Create a Subnet Pool
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -717,11 +716,9 @@ class SubnetPool(pulumi.CustomResource):
                 "fd65:86cc:a334:39b7::/64",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a Subnet from a Subnet Pool
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -738,7 +735,6 @@ class SubnetPool(pulumi.CustomResource):
             network_id=network1.id,
             subnetpool_id=subnetpool1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -805,7 +801,6 @@ class SubnetPool(pulumi.CustomResource):
 
         ### Create a Subnet Pool
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -818,11 +813,9 @@ class SubnetPool(pulumi.CustomResource):
                 "fd65:86cc:a334:39b7::/64",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a Subnet from a Subnet Pool
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -839,7 +832,6 @@ class SubnetPool(pulumi.CustomResource):
             network_id=network1.id,
             subnetpool_id=subnetpool1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

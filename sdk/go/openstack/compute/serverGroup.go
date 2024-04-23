@@ -17,7 +17,6 @@ import (
 //
 // ### Compute service API version 2.63 or below:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,11 +43,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Compute service API version 2.64 or above:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -78,7 +75,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Policies
 //

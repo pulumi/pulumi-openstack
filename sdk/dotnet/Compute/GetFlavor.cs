@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetFlavorResult> InvokeAsync(GetFlavorArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFlavorResult>("openstack:compute/getFlavor:getFlavor", args ?? new GetFlavorArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetFlavorResult> Invoke(GetFlavorInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlavorResult>("openstack:compute/getFlavor:getFlavor", args ?? new GetFlavorInvokeArgs(), options.WithDefaults());

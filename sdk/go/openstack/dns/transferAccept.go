@@ -18,7 +18,6 @@ import (
 //
 // ### Automatically detect the correct network
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,7 +59,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

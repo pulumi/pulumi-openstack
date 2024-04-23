@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,7 +42,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetSubnetIdsV2(ctx *pulumi.Context, args *GetSubnetIdsV2Args, opts ...pulumi.InvokeOption) (*GetSubnetIdsV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSubnetIdsV2Result

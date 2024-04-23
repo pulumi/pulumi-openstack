@@ -225,7 +225,6 @@ class InterfaceAttach(pulumi.CustomResource):
 
         ### Basic Attachment
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -240,11 +239,9 @@ class InterfaceAttach(pulumi.CustomResource):
             instance_id=instance1.id,
             network_id=network1_openstack_networking_port_v2["id"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Attachment Specifying a Fixed IP
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -260,11 +257,9 @@ class InterfaceAttach(pulumi.CustomResource):
             network_id=network1_openstack_networking_port_v2["id"],
             fixed_ip="10.0.10.10")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Attachment Using an Existing Port
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -283,7 +278,6 @@ class InterfaceAttach(pulumi.CustomResource):
             instance_id=instance1.id,
             port_id=port1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -321,7 +315,6 @@ class InterfaceAttach(pulumi.CustomResource):
 
         ### Basic Attachment
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -336,11 +329,9 @@ class InterfaceAttach(pulumi.CustomResource):
             instance_id=instance1.id,
             network_id=network1_openstack_networking_port_v2["id"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Attachment Specifying a Fixed IP
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -356,11 +347,9 @@ class InterfaceAttach(pulumi.CustomResource):
             network_id=network1_openstack_networking_port_v2["id"],
             fixed_ip="10.0.10.10")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Attachment Using an Existing Port
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -379,7 +368,6 @@ class InterfaceAttach(pulumi.CustomResource):
             instance_id=instance1.id,
             port_id=port1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

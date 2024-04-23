@@ -333,7 +333,6 @@ class Project(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -342,7 +341,6 @@ class Project(pulumi.CustomResource):
             name="project_1",
             description="A project")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -384,7 +382,6 @@ class Project(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -393,7 +390,6 @@ class Project(pulumi.CustomResource):
             name="project_1",
             description="A project")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

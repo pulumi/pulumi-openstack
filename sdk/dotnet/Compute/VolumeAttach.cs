@@ -17,7 +17,6 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// ### Basic attachment of a single volume to a single instance
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -49,14 +48,12 @@ namespace Pulumi.OpenStack.Compute
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Using Multiattach-enabled volumes
     /// 
     /// Multiattach Volumes are dependent upon your OpenStack cloud and not all
     /// clouds support multiattach.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -106,13 +103,12 @@ namespace Pulumi.OpenStack.Compute
     ///     {
     ///         DependsOn =
     ///         {
-    ///             va1, 
+    ///             va1,
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// It is recommended to use `depends_on` for the attach resources
     /// to enforce the volume attachments to happen one at a time.
