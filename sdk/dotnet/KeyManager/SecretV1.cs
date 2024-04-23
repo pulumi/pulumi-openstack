@@ -14,7 +14,6 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// ### Simple secret
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Secret with whitespaces
     /// 
@@ -50,7 +48,6 @@ namespace Pulumi.OpenStack.KeyManager
     /// won't be detected as a state change, e.g. changing plain text payload from
     /// ` password  ` to `password` won't recreate the secret.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -74,13 +71,11 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Secret with the ACL
     /// 
     /// &gt; **Note** Only read ACLs are supported
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -115,7 +110,6 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -162,7 +156,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Output<ImmutableDictionary<string, object>> ContentTypes { get; private set; } = null!;
 
         /// <summary>
-        /// The date the secret ACL was created.
+        /// The date the secret was created.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -244,7 +238,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The date the secret ACL was last updated.
+        /// The date the secret was last updated.
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
@@ -447,7 +441,7 @@ namespace Pulumi.OpenStack.KeyManager
         }
 
         /// <summary>
-        /// The date the secret ACL was created.
+        /// The date the secret was created.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -545,7 +539,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The date the secret ACL was last updated.
+        /// The date the secret was last updated.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }

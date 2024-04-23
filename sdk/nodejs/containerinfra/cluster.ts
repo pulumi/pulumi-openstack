@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ### Create a Cluster
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -28,7 +27,6 @@ import * as utilities from "../utilities";
  *     keypair: "ssh_keypair",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Attributes reference
  *

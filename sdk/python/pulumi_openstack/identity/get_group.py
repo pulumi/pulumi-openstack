@@ -104,14 +104,12 @@ def get_group(domain_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     admins = openstack.identity.get_group(name="admins")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str domain_id: The domain the group belongs to.
@@ -147,14 +145,12 @@ def get_group_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     admins = openstack.identity.get_group(name="admins")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str domain_id: The domain the group belongs to.

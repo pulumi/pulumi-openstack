@@ -149,7 +149,6 @@ class QosDscpMarkingRule(pulumi.CustomResource):
 
         ### Create a QoS Policy with some DSCP marking rule
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -161,7 +160,6 @@ class QosDscpMarkingRule(pulumi.CustomResource):
             qos_policy_id=qos_policy1.id,
             dscp_mark=26)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -193,7 +191,6 @@ class QosDscpMarkingRule(pulumi.CustomResource):
 
         ### Create a QoS Policy with some DSCP marking rule
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -205,7 +202,6 @@ class QosDscpMarkingRule(pulumi.CustomResource):
             qos_policy_id=qos_policy1.id,
             dscp_mark=26)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

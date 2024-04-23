@@ -708,7 +708,6 @@ class ContainerObject(pulumi.CustomResource):
 
         ### Example with simple content
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -733,11 +732,9 @@ class ContainerObject(pulumi.CustomResource):
                        }
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Example with content from file
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -759,7 +756,6 @@ class ContainerObject(pulumi.CustomResource):
             content_type="application/json",
             source="./default.json")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -816,7 +812,6 @@ class ContainerObject(pulumi.CustomResource):
 
         ### Example with simple content
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -841,11 +836,9 @@ class ContainerObject(pulumi.CustomResource):
                        }
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Example with content from file
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -867,7 +860,6 @@ class ContainerObject(pulumi.CustomResource):
             content_type="application/json",
             source="./default.json")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ContainerObjectArgs args: The arguments to use to populate this resource's properties.

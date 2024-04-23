@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetLimitsV2(ctx *pulumi.Context, args *GetLimitsV2Args, opts ...pulumi.InvokeOption) (*GetLimitsV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLimitsV2Result

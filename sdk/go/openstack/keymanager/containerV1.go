@@ -20,7 +20,6 @@ import (
 //
 // The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -130,13 +129,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Container with the ACL
 //
 // > **Note** Only read ACLs are supported
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -184,7 +181,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -204,7 +200,7 @@ type ContainerV1 struct {
 	Consumers ContainerV1ConsumerArrayOutput `pulumi:"consumers"`
 	// The container reference / where to find the container.
 	ContainerRef pulumi.StringOutput `pulumi:"containerRef"`
-	// The date the container ACL was created.
+	// The date the container was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The creator of the container.
 	CreatorId pulumi.StringOutput `pulumi:"creatorId"`
@@ -223,7 +219,7 @@ type ContainerV1 struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The date the container ACL was last updated.
+	// The date the container was last updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
@@ -268,7 +264,7 @@ type containerV1State struct {
 	Consumers []ContainerV1Consumer `pulumi:"consumers"`
 	// The container reference / where to find the container.
 	ContainerRef *string `pulumi:"containerRef"`
-	// The date the container ACL was created.
+	// The date the container was created.
 	CreatedAt *string `pulumi:"createdAt"`
 	// The creator of the container.
 	CreatorId *string `pulumi:"creatorId"`
@@ -287,7 +283,7 @@ type containerV1State struct {
 	Status *string `pulumi:"status"`
 	// Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
 	Type *string `pulumi:"type"`
-	// The date the container ACL was last updated.
+	// The date the container was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
@@ -300,7 +296,7 @@ type ContainerV1State struct {
 	Consumers ContainerV1ConsumerArrayInput
 	// The container reference / where to find the container.
 	ContainerRef pulumi.StringPtrInput
-	// The date the container ACL was created.
+	// The date the container was created.
 	CreatedAt pulumi.StringPtrInput
 	// The creator of the container.
 	CreatorId pulumi.StringPtrInput
@@ -319,7 +315,7 @@ type ContainerV1State struct {
 	Status pulumi.StringPtrInput
 	// Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
 	Type pulumi.StringPtrInput
-	// The date the container ACL was last updated.
+	// The date the container was last updated.
 	UpdatedAt pulumi.StringPtrInput
 }
 
@@ -472,7 +468,7 @@ func (o ContainerV1Output) ContainerRef() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerV1) pulumi.StringOutput { return v.ContainerRef }).(pulumi.StringOutput)
 }
 
-// The date the container ACL was created.
+// The date the container was created.
 func (o ContainerV1Output) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerV1) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -512,7 +508,7 @@ func (o ContainerV1Output) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerV1) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The date the container ACL was last updated.
+// The date the container was last updated.
 func (o ContainerV1Output) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerV1) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

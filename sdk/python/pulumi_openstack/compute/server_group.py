@@ -247,7 +247,6 @@ class ServerGroup(pulumi.CustomResource):
 
         ### Compute service API version 2.63 or below:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -256,11 +255,9 @@ class ServerGroup(pulumi.CustomResource):
             name="my-sg",
             policies=["anti-affinity"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Compute service API version 2.64 or above:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -272,7 +269,6 @@ class ServerGroup(pulumi.CustomResource):
                 max_server_per_host=3,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Policies
 
@@ -327,7 +323,6 @@ class ServerGroup(pulumi.CustomResource):
 
         ### Compute service API version 2.63 or below:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -336,11 +331,9 @@ class ServerGroup(pulumi.CustomResource):
             name="my-sg",
             policies=["anti-affinity"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Compute service API version 2.64 or above:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -352,7 +345,6 @@ class ServerGroup(pulumi.CustomResource):
                 max_server_per_host=3,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Policies
 

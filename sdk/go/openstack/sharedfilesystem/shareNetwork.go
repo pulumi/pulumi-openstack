@@ -21,7 +21,6 @@ import (
 //
 // ### Basic share network
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -65,11 +64,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Share network with associated security services
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -130,7 +127,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

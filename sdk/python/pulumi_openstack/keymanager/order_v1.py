@@ -295,7 +295,6 @@ class OrderV1(pulumi.CustomResource):
 
         ### Symmetric key order
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -309,11 +308,9 @@ class OrderV1(pulumi.CustomResource):
                 mode="cbc",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Asymmetric key pair order
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -326,7 +323,6 @@ class OrderV1(pulumi.CustomResource):
                 name="mysecret",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -358,7 +354,6 @@ class OrderV1(pulumi.CustomResource):
 
         ### Symmetric key order
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -372,11 +367,9 @@ class OrderV1(pulumi.CustomResource):
                 mode="cbc",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Asymmetric key pair order
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -389,7 +382,6 @@ class OrderV1(pulumi.CustomResource):
                 name="mysecret",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

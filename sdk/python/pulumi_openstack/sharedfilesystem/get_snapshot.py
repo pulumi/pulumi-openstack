@@ -160,14 +160,12 @@ def get_snapshot(description: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     snapshot1 = openstack.sharedfilesystem.get_snapshot(name="snapshot_1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: The human-readable description of the snapshot.
@@ -212,14 +210,12 @@ def get_snapshot_output(description: Optional[pulumi.Input[Optional[str]]] = Non
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     snapshot1 = openstack.sharedfilesystem.get_snapshot(name="snapshot_1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: The human-readable description of the snapshot.

@@ -20,7 +20,6 @@ namespace Pulumi.OpenStack.Images
     /// Create a shared image and propose a membership to the
     /// `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -50,14 +49,12 @@ namespace Pulumi.OpenStack.Images
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Privileged user
     /// 
     /// Create a shared image and set a membership to the
     /// `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -88,7 +85,6 @@ namespace Pulumi.OpenStack.Images
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class ContainerVersioningLegacy {
-    /**
-     * @return Container in which versions will be stored.
-     * 
-     */
     private String location;
-    /**
-     * @return Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
-     * 
-     */
     private String type;
 
     private ContainerVersioningLegacy() {}
-    /**
-     * @return Container in which versions will be stored.
-     * 
-     */
     public String location() {
         return this.location;
     }
-    /**
-     * @return Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
-     * 
-     */
     public String type() {
         return this.type;
     }

@@ -483,7 +483,6 @@ class Flavor(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -498,7 +497,6 @@ class Flavor(pulumi.CustomResource):
                 "hw:cpu_thread_policy": "CPU-THREAD-POLICY",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -547,7 +545,6 @@ class Flavor(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -562,7 +559,6 @@ class Flavor(pulumi.CustomResource):
                 "hw:cpu_thread_policy": "CPU-THREAD-POLICY",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

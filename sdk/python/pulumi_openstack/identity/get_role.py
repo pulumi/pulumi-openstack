@@ -89,14 +89,12 @@ def get_role(domain_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     admin = openstack.identity.get_role(name="admin")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str domain_id: The domain the role belongs to.
@@ -128,14 +126,12 @@ def get_role_output(domain_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     admin = openstack.identity.get_role(name="admin")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str domain_id: The domain the role belongs to.

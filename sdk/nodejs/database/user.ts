@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ### User
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  *     databases: ["testdb"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class User extends pulumi.CustomResource {
     /**

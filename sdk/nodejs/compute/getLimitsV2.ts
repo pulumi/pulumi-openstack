@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     projectId: "2e367a3d29f94fd988e6ec54e305ec9d",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLimitsV2(args: GetLimitsV2Args, opts?: pulumi.InvokeOptions): Promise<GetLimitsV2Result> {
 
@@ -142,7 +140,6 @@ export interface GetLimitsV2Result {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -151,7 +148,6 @@ export interface GetLimitsV2Result {
  *     projectId: "2e367a3d29f94fd988e6ec54e305ec9d",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLimitsV2Output(args: GetLimitsV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLimitsV2Result> {
     return pulumi.output(args).apply((a: any) => getLimitsV2(a, opts))

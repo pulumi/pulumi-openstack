@@ -377,7 +377,6 @@ class Service(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -387,7 +386,6 @@ class Service(pulumi.CustomResource):
             router_id="14a75700-fc03-4602-9294-26ee44f366b3",
             admin_state_up=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -426,7 +424,6 @@ class Service(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -436,7 +433,6 @@ class Service(pulumi.CustomResource):
             router_id="14a75700-fc03-4602-9294-26ee44f366b3",
             admin_state_up=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

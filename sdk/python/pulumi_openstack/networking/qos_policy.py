@@ -410,7 +410,6 @@ class QosPolicy(pulumi.CustomResource):
 
         ### Create a QoS Policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -419,7 +418,6 @@ class QosPolicy(pulumi.CustomResource):
             name="qos_policy_1",
             description="bw_limit")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -463,7 +461,6 @@ class QosPolicy(pulumi.CustomResource):
 
         ### Create a QoS Policy
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -472,7 +469,6 @@ class QosPolicy(pulumi.CustomResource):
             name="qos_policy_1",
             description="bw_limit")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -390,7 +390,6 @@ class Firewall(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -419,7 +418,6 @@ class Firewall(pulumi.CustomResource):
             name="my-firewall",
             policy_id=policy1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -466,7 +464,6 @@ class Firewall(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -495,7 +492,6 @@ class Firewall(pulumi.CustomResource):
             name="my-firewall",
             policy_id=policy1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

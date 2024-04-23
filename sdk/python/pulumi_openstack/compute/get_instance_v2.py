@@ -263,14 +263,12 @@ def get_instance_v2(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     instance = openstack.compute.get_instance_v2(id="2ba26dc6-a12d-4889-8f25-794ea5bf4453")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The UUID of the instance
@@ -318,14 +316,12 @@ def get_instance_v2_output(id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     instance = openstack.compute.get_instance_v2(id="2ba26dc6-a12d-4889-8f25-794ea5bf4453")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The UUID of the instance

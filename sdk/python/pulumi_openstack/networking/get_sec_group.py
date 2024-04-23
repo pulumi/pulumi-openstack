@@ -131,14 +131,12 @@ def get_sec_group(description: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     secgroup = openstack.networking.get_sec_group(name="tf_test_secgroup")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: Human-readable description the the subnet.
@@ -184,14 +182,12 @@ def get_sec_group_output(description: Optional[pulumi.Input[Optional[str]]] = No
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     secgroup = openstack.networking.get_sec_group(name="tf_test_secgroup")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: Human-readable description the the subnet.

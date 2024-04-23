@@ -191,7 +191,6 @@ class SubnetRoute(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -211,7 +210,6 @@ class SubnetRoute(pulumi.CustomResource):
             destination_cidr="10.0.1.0/24",
             next_hop="192.168.199.254")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -245,7 +243,6 @@ class SubnetRoute(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -265,7 +262,6 @@ class SubnetRoute(pulumi.CustomResource):
             destination_cidr="10.0.1.0/24",
             next_hop="192.168.199.254")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

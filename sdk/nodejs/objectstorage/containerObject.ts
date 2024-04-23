@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Example with simple content
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -38,11 +37,9 @@ import * as utilities from "../utilities";
  * `,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Example with content from file
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -66,7 +63,6 @@ import * as utilities from "../utilities";
  *     source: "./default.json",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class ContainerObject extends pulumi.CustomResource {
     /**

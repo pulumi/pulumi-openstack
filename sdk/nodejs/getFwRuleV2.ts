@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -18,7 +17,6 @@ import * as utilities from "./utilities";
  *     name: "tf_test_rule",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFwRuleV2(args?: GetFwRuleV2Args, opts?: pulumi.InvokeOptions): Promise<GetFwRuleV2Result> {
     args = args || {};
@@ -200,7 +198,6 @@ export interface GetFwRuleV2Result {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -209,7 +206,6 @@ export interface GetFwRuleV2Result {
  *     name: "tf_test_rule",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFwRuleV2Output(args?: GetFwRuleV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFwRuleV2Result> {
     return pulumi.output(args).apply((a: any) => getFwRuleV2(a, opts))

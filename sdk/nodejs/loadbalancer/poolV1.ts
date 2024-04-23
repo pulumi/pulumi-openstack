@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -23,11 +22,9 @@ import * as utilities from "../utilities";
  *     monitorIds: ["67890"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Complete Load Balancing Stack Example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -111,7 +108,6 @@ import * as utilities from "../utilities";
  *     poolId: pool1.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Notes
  *

@@ -188,14 +188,12 @@ def get_container(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     example = openstack.keymanager.get_container(name="my_container")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The Container name.
@@ -233,14 +231,12 @@ def get_container_output(name: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     example = openstack.keymanager.get_container(name="my_container")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The Container name.

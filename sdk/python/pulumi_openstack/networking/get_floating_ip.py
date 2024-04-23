@@ -178,14 +178,12 @@ def get_floating_ip(address: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     floatingip1 = openstack.networking.get_floating_ip(address="192.168.0.4")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str address: The IP address of the floating IP.
@@ -245,14 +243,12 @@ def get_floating_ip_output(address: Optional[pulumi.Input[Optional[str]]] = None
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     floatingip1 = openstack.networking.get_floating_ip(address="192.168.0.4")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str address: The IP address of the floating IP.

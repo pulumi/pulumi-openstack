@@ -14,22 +14,14 @@ namespace Pulumi.OpenStack.KeyManager.Outputs
     public sealed class SecretV1AclRead
     {
         /// <summary>
-        /// The date the secret ACL was created.
+        /// The date the secret was created.
         /// </summary>
         public readonly string? CreatedAt;
-        /// <summary>
-        /// Whether the secret is accessible project wide.
-        /// Defaults to `true`.
-        /// </summary>
         public readonly bool? ProjectAccess;
         /// <summary>
-        /// The date the secret ACL was last updated.
+        /// The date the secret was last updated.
         /// </summary>
         public readonly string? UpdatedAt;
-        /// <summary>
-        /// The list of user IDs, which are allowed to access the
-        /// secret, when `project_access` is set to `false`.
-        /// </summary>
         public readonly ImmutableArray<string> Users;
 
         [OutputConstructor]

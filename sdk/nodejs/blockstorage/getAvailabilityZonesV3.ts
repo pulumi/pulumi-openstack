@@ -9,14 +9,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const zones = openstack.blockstorage.getAvailabilityZonesV3({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAvailabilityZonesV3(args?: GetAvailabilityZonesV3Args, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZonesV3Result> {
     args = args || {};
@@ -71,14 +69,12 @@ export interface GetAvailabilityZonesV3Result {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const zones = openstack.blockstorage.getAvailabilityZonesV3({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAvailabilityZonesV3Output(args?: GetAvailabilityZonesV3OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvailabilityZonesV3Result> {
     return pulumi.output(args).apply((a: any) => getAvailabilityZonesV3(a, opts))

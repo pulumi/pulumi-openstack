@@ -69,14 +69,14 @@ public final class ContainerV1State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The date the container ACL was created.
+     * The date the container was created.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return The date the container ACL was created.
+     * @return The date the container was created.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -184,14 +184,14 @@ public final class ContainerV1State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The date the container ACL was last updated.
+     * The date the container was last updated.
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return The date the container ACL was last updated.
+     * @return The date the container was last updated.
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -310,7 +310,7 @@ public final class ContainerV1State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdAt The date the container ACL was created.
+         * @param createdAt The date the container was created.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class ContainerV1State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdAt The date the container ACL was created.
+         * @param createdAt The date the container was created.
          * 
          * @return builder
          * 
@@ -478,7 +478,7 @@ public final class ContainerV1State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updatedAt The date the container ACL was last updated.
+         * @param updatedAt The date the container was last updated.
          * 
          * @return builder
          * 
@@ -489,7 +489,7 @@ public final class ContainerV1State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updatedAt The date the container ACL was last updated.
+         * @param updatedAt The date the container was last updated.
          * 
          * @return builder
          * 
