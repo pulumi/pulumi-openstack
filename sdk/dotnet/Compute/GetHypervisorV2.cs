@@ -17,7 +17,6 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetHypervisorV2Result> InvokeAsync(GetHypervisorV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHypervisorV2Result>("openstack:compute/getHypervisorV2:getHypervisorV2", args ?? new GetHypervisorV2Args(), options.WithDefaults());
@@ -44,7 +42,6 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetHypervisorV2Result> Invoke(GetHypervisorV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHypervisorV2Result>("openstack:compute/getHypervisorV2:getHypervisorV2", args ?? new GetHypervisorV2InvokeArgs(), options.WithDefaults());

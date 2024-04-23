@@ -138,7 +138,6 @@ class Database(pulumi.CustomResource):
 
         ### Database
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -147,7 +146,6 @@ class Database(pulumi.CustomResource):
             name="mydb",
             instance_id=basic["id"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -176,7 +174,6 @@ class Database(pulumi.CustomResource):
 
         ### Database
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -185,7 +182,6 @@ class Database(pulumi.CustomResource):
             name="mydb",
             instance_id=basic["id"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

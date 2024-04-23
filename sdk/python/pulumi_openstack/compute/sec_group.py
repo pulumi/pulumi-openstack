@@ -209,7 +209,6 @@ class SecGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -232,7 +231,6 @@ class SecGroup(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Notes
 
@@ -240,7 +238,6 @@ class SecGroup(pulumi.CustomResource):
 
         When referencing a security group in a configuration (for example, a configuration creates a new security group and then needs to apply it to an instance being created in the same configuration), it is currently recommended to reference the security group by name and not by ID, like this:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -252,7 +249,6 @@ class SecGroup(pulumi.CustomResource):
             key_pair="my_key_pair_name",
             security_groups=[secgroup1["name"]])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -294,7 +290,6 @@ class SecGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -317,7 +312,6 @@ class SecGroup(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Notes
 
@@ -325,7 +319,6 @@ class SecGroup(pulumi.CustomResource):
 
         When referencing a security group in a configuration (for example, a configuration creates a new security group and then needs to apply it to an instance being created in the same configuration), it is currently recommended to reference the security group by name and not by ID, like this:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -337,7 +330,6 @@ class SecGroup(pulumi.CustomResource):
             key_pair="my_key_pair_name",
             security_groups=[secgroup1["name"]])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

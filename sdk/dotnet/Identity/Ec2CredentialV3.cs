@@ -22,7 +22,6 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// ### EC2 credential in current project scope
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,14 +34,12 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### EC2 credential in pre-defined project scope
     /// 
     /// This allows administrative users to create EC2 credentials for a scope different
     /// from the current auth scope.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.OpenStack.Identity
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

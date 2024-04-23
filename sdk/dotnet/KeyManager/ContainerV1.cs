@@ -18,7 +18,6 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -107,13 +106,11 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Container with the ACL
     /// 
     /// &gt; **Note** Only read ACLs are supported
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -160,7 +157,6 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -194,7 +190,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Output<string> ContainerRef { get; private set; } = null!;
 
         /// <summary>
-        /// The date the container ACL was created.
+        /// The date the container was created.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -241,7 +237,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The date the container ACL was last updated.
+        /// The date the container was last updated.
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
@@ -370,7 +366,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Input<string>? ContainerRef { get; set; }
 
         /// <summary>
-        /// The date the container ACL was created.
+        /// The date the container was created.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -423,7 +419,7 @@ namespace Pulumi.OpenStack.KeyManager
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The date the container ACL was last updated.
+        /// The date the container was last updated.
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }

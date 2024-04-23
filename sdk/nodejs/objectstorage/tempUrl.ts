@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -38,7 +37,6 @@ import * as utilities from "../utilities";
  *     ttl: 20,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class TempUrl extends pulumi.CustomResource {
     /**

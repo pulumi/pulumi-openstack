@@ -15,7 +15,6 @@ import (
 //
 // ### Simple secret
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,7 +47,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Secret with whitespaces
 //
@@ -58,7 +56,6 @@ import (
 // won't be detected as a state change, e.g. changing plain text payload from
 // ` password  ` to `password` won't recreate the secret.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -93,13 +90,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Secret with the ACL
 //
 // > **Note** Only read ACLs are supported
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -142,7 +137,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -167,7 +161,7 @@ type SecretV1 struct {
 	BitLength pulumi.IntOutput `pulumi:"bitLength"`
 	// The map of the content types, assigned on the secret.
 	ContentTypes pulumi.MapOutput `pulumi:"contentTypes"`
-	// The date the secret ACL was created.
+	// The date the secret was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The creator of the secret.
 	CreatorId pulumi.StringOutput `pulumi:"creatorId"`
@@ -197,7 +191,7 @@ type SecretV1 struct {
 	SecretType pulumi.StringOutput `pulumi:"secretType"`
 	// The status of the secret.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The date the secret ACL was last updated.
+	// The date the secret was last updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
@@ -251,7 +245,7 @@ type secretV1State struct {
 	BitLength *int `pulumi:"bitLength"`
 	// The map of the content types, assigned on the secret.
 	ContentTypes map[string]interface{} `pulumi:"contentTypes"`
-	// The date the secret ACL was created.
+	// The date the secret was created.
 	CreatedAt *string `pulumi:"createdAt"`
 	// The creator of the secret.
 	CreatorId *string `pulumi:"creatorId"`
@@ -281,7 +275,7 @@ type secretV1State struct {
 	SecretType *string `pulumi:"secretType"`
 	// The status of the secret.
 	Status *string `pulumi:"status"`
-	// The date the secret ACL was last updated.
+	// The date the secret was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
@@ -299,7 +293,7 @@ type SecretV1State struct {
 	BitLength pulumi.IntPtrInput
 	// The map of the content types, assigned on the secret.
 	ContentTypes pulumi.MapInput
-	// The date the secret ACL was created.
+	// The date the secret was created.
 	CreatedAt pulumi.StringPtrInput
 	// The creator of the secret.
 	CreatorId pulumi.StringPtrInput
@@ -329,7 +323,7 @@ type SecretV1State struct {
 	SecretType pulumi.StringPtrInput
 	// The status of the secret.
 	Status pulumi.StringPtrInput
-	// The date the secret ACL was last updated.
+	// The date the secret was last updated.
 	UpdatedAt pulumi.StringPtrInput
 }
 
@@ -519,7 +513,7 @@ func (o SecretV1Output) ContentTypes() pulumi.MapOutput {
 	return o.ApplyT(func(v *SecretV1) pulumi.MapOutput { return v.ContentTypes }).(pulumi.MapOutput)
 }
 
-// The date the secret ACL was created.
+// The date the secret was created.
 func (o SecretV1Output) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretV1) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -588,7 +582,7 @@ func (o SecretV1Output) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretV1) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The date the secret ACL was last updated.
+// The date the secret was last updated.
 func (o SecretV1Output) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretV1) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

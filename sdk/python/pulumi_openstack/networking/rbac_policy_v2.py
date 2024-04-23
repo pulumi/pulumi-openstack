@@ -259,7 +259,6 @@ class RbacPolicyV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -273,7 +272,6 @@ class RbacPolicyV2(pulumi.CustomResource):
             object_type="network",
             target_tenant="20415a973c9e45d3917f078950644697")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -323,7 +321,6 @@ class RbacPolicyV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -337,7 +334,6 @@ class RbacPolicyV2(pulumi.CustomResource):
             object_type="network",
             target_tenant="20415a973c9e45d3917f078950644697")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -101,14 +101,14 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The date the secret ACL was created.
+     * The date the secret was created.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return The date the secret ACL was created.
+     * @return The date the secret was created.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -304,14 +304,14 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The date the secret ACL was last updated.
+     * The date the secret was last updated.
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return The date the secret ACL was last updated.
+     * @return The date the secret was last updated.
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -472,7 +472,7 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdAt The date the secret ACL was created.
+         * @param createdAt The date the secret was created.
          * 
          * @return builder
          * 
@@ -483,7 +483,7 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdAt The date the secret ACL was created.
+         * @param createdAt The date the secret was created.
          * 
          * @return builder
          * 
@@ -753,7 +753,7 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updatedAt The date the secret ACL was last updated.
+         * @param updatedAt The date the secret was last updated.
          * 
          * @return builder
          * 
@@ -764,7 +764,7 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updatedAt The date the secret ACL was last updated.
+         * @param updatedAt The date the secret was last updated.
          * 
          * @return builder
          * 

@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// ### Symmetric key order
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,11 +38,9 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Asymmetric key pair order
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -65,7 +62,6 @@ namespace Pulumi.OpenStack.KeyManager
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

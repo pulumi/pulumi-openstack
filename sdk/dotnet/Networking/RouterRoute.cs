@@ -14,7 +14,6 @@ namespace Pulumi.OpenStack.Networking
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -57,13 +56,12 @@ namespace Pulumi.OpenStack.Networking
     ///     {
     ///         DependsOn =
     ///         {
-    ///             int1, 
+    ///             int1,
     ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Notes
     /// 

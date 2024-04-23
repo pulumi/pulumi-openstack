@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAddressScopeResult> InvokeAsync(GetAddressScopeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAddressScopeResult>("openstack:networking/getAddressScope:getAddressScope", args ?? new GetAddressScopeArgs(), options.WithDefaults());
@@ -44,7 +42,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAddressScopeResult> Invoke(GetAddressScopeInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAddressScopeResult>("openstack:networking/getAddressScope:getAddressScope", args ?? new GetAddressScopeInvokeArgs(), options.WithDefaults());

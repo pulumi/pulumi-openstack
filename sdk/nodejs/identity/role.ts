@@ -12,14 +12,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
  *
  * const role1 = new openstack.identity.Role("role_1", {name: "role_1"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

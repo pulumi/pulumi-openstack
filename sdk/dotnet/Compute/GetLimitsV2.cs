@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetLimitsV2Result> InvokeAsync(GetLimitsV2Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLimitsV2Result>("openstack:compute/getLimitsV2:getLimitsV2", args ?? new GetLimitsV2Args(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.OpenStack.Compute
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetLimitsV2Result> Invoke(GetLimitsV2InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLimitsV2Result>("openstack:compute/getLimitsV2:getLimitsV2", args ?? new GetLimitsV2InvokeArgs(), options.WithDefaults());

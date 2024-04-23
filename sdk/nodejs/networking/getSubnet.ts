@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     name: "subnet_1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSubnet(args?: GetSubnetArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetResult> {
     args = args || {};
@@ -174,7 +172,6 @@ export interface GetSubnetResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -183,7 +180,6 @@ export interface GetSubnetResult {
  *     name: "subnet_1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSubnetOutput(args?: GetSubnetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetResult> {
     return pulumi.output(args).apply((a: any) => getSubnet(a, opts))

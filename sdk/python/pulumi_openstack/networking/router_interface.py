@@ -234,7 +234,6 @@ class RouterInterface(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -253,7 +252,6 @@ class RouterInterface(pulumi.CustomResource):
             router_id=router1.id,
             subnet_id=subnet1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -292,7 +290,6 @@ class RouterInterface(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -311,7 +308,6 @@ class RouterInterface(pulumi.CustomResource):
             router_id=router1.id,
             subnet_id=subnet1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

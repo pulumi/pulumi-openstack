@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNodeGroupResult> InvokeAsync(GetNodeGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeGroupResult>("openstack:containerinfra/getNodeGroup:getNodeGroup", args ?? new GetNodeGroupArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.OpenStack.ContainerInfra
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNodeGroupResult> Invoke(GetNodeGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodeGroupResult>("openstack:containerinfra/getNodeGroup:getNodeGroup", args ?? new GetNodeGroupInvokeArgs(), options.WithDefaults());

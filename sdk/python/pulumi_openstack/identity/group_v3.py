@@ -181,7 +181,6 @@ class GroupV3(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -190,7 +189,6 @@ class GroupV3(pulumi.CustomResource):
             name="group_1",
             description="group 1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -223,7 +221,6 @@ class GroupV3(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -232,7 +229,6 @@ class GroupV3(pulumi.CustomResource):
             name="group_1",
             description="group 1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

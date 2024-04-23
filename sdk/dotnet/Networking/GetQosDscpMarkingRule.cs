@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetQosDscpMarkingRuleResult> InvokeAsync(GetQosDscpMarkingRuleArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQosDscpMarkingRuleResult>("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args ?? new GetQosDscpMarkingRuleArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetQosDscpMarkingRuleResult> Invoke(GetQosDscpMarkingRuleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQosDscpMarkingRuleResult>("openstack:networking/getQosDscpMarkingRule:getQosDscpMarkingRule", args ?? new GetQosDscpMarkingRuleInvokeArgs(), options.WithDefaults());

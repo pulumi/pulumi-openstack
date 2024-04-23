@@ -19,7 +19,6 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// ### Basic share network
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -52,11 +51,9 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Share network with associated security services
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -106,7 +103,6 @@ namespace Pulumi.OpenStack.SharedFileSystem
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

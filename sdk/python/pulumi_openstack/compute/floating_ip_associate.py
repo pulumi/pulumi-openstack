@@ -207,7 +207,6 @@ class FloatingIpAssociate(pulumi.CustomResource):
 
         ### Automatically detect the correct network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -223,11 +222,9 @@ class FloatingIpAssociate(pulumi.CustomResource):
             floating_ip=fip1.address,
             instance_id=instance1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Explicitly set the network to attach to
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -252,7 +249,6 @@ class FloatingIpAssociate(pulumi.CustomResource):
             instance_id=instance1.id,
             fixed_ip=instance1.networks[1].fixed_ip_v4)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -286,7 +282,6 @@ class FloatingIpAssociate(pulumi.CustomResource):
 
         ### Automatically detect the correct network
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -302,11 +297,9 @@ class FloatingIpAssociate(pulumi.CustomResource):
             floating_ip=fip1.address,
             instance_id=instance1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Explicitly set the network to attach to
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -331,7 +324,6 @@ class FloatingIpAssociate(pulumi.CustomResource):
             instance_id=instance1.id,
             fixed_ip=instance1.networks[1].fixed_ip_v4)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

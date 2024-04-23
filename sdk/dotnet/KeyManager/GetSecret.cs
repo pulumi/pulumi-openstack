@@ -14,7 +14,6 @@ namespace Pulumi.OpenStack.KeyManager
         /// <summary>
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,7 +30,6 @@ namespace Pulumi.OpenStack.KeyManager
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Date Filters
         /// 
@@ -44,7 +42,6 @@ namespace Pulumi.OpenStack.KeyManager
         /// For example, to get a passphrase a Secret with CBC moda, that will expire in
         /// January of 2020:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.OpenStack.KeyManager
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSecretResult> InvokeAsync(GetSecretArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretResult>("openstack:keymanager/getSecret:getSecret", args ?? new GetSecretArgs(), options.WithDefaults());
@@ -70,7 +66,6 @@ namespace Pulumi.OpenStack.KeyManager
         /// <summary>
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,7 +82,6 @@ namespace Pulumi.OpenStack.KeyManager
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Date Filters
         /// 
@@ -100,7 +94,6 @@ namespace Pulumi.OpenStack.KeyManager
         /// For example, to get a passphrase a Secret with CBC moda, that will expire in
         /// January of 2020:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -118,7 +111,6 @@ namespace Pulumi.OpenStack.KeyManager
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSecretResult> Invoke(GetSecretInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretResult>("openstack:keymanager/getSecret:getSecret", args ?? new GetSecretInvokeArgs(), options.WithDefaults());

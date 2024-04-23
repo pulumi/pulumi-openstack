@@ -672,7 +672,6 @@ class StackV1(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -702,7 +701,6 @@ class StackV1(pulumi.CustomResource):
             disable_rollback=True,
             timeout=30)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -761,7 +759,6 @@ class StackV1(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -791,7 +788,6 @@ class StackV1(pulumi.CustomResource):
             disable_rollback=True,
             timeout=30)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

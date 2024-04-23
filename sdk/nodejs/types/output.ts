@@ -577,22 +577,14 @@ export namespace keymanager {
 
     export interface ContainerV1AclRead {
         /**
-         * The date the container ACL was created.
+         * The date the container was created.
          */
         createdAt: string;
-        /**
-         * Whether the container is accessible project wide.
-         * Defaults to `true`.
-         */
         projectAccess?: boolean;
         /**
-         * The date the container ACL was last updated.
+         * The date the container was last updated.
          */
         updatedAt: string;
-        /**
-         * The list of user IDs, which are allowed to access the
-         * container, when `projectAccess` is set to `false`.
-         */
         users?: string[];
     }
 
@@ -722,22 +714,14 @@ export namespace keymanager {
 
     export interface SecretV1AclRead {
         /**
-         * The date the secret ACL was created.
+         * The date the secret was created.
          */
         createdAt: string;
-        /**
-         * Whether the secret is accessible project wide.
-         * Defaults to `true`.
-         */
         projectAccess?: boolean;
         /**
-         * The date the secret ACL was last updated.
+         * The date the secret was last updated.
          */
         updatedAt: string;
-        /**
-         * The list of user IDs, which are allowed to access the
-         * secret, when `projectAccess` is set to `false`.
-         */
         users?: string[];
     }
 
@@ -1058,13 +1042,7 @@ export namespace networking {
 
 export namespace objectstorage {
     export interface ContainerVersioningLegacy {
-        /**
-         * Container in which versions will be stored.
-         */
         location: string;
-        /**
-         * Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
-         */
         type: string;
     }
 

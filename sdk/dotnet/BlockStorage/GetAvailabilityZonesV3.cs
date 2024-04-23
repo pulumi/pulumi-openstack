@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.BlockStorage
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -29,7 +28,6 @@ namespace Pulumi.OpenStack.BlockStorage
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAvailabilityZonesV3Result> InvokeAsync(GetAvailabilityZonesV3Args? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAvailabilityZonesV3Result>("openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3", args ?? new GetAvailabilityZonesV3Args(), options.WithDefaults());
@@ -39,7 +37,6 @@ namespace Pulumi.OpenStack.BlockStorage
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -52,7 +49,6 @@ namespace Pulumi.OpenStack.BlockStorage
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAvailabilityZonesV3Result> Invoke(GetAvailabilityZonesV3InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAvailabilityZonesV3Result>("openstack:blockstorage/getAvailabilityZonesV3:getAvailabilityZonesV3", args ?? new GetAvailabilityZonesV3InvokeArgs(), options.WithDefaults());

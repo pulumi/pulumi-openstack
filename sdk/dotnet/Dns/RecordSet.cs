@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.Dns
     /// 
     /// ### Automatically detect the correct network
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -49,7 +48,6 @@ namespace Pulumi.OpenStack.Dns
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

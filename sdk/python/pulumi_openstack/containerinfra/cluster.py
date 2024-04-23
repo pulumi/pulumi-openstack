@@ -795,7 +795,6 @@ class Cluster(pulumi.CustomResource):
 
         ### Create a Cluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -807,7 +806,6 @@ class Cluster(pulumi.CustomResource):
             node_count=5,
             keypair="ssh_keypair")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 
@@ -908,7 +906,6 @@ class Cluster(pulumi.CustomResource):
 
         ### Create a Cluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -920,7 +917,6 @@ class Cluster(pulumi.CustomResource):
             node_count=5,
             keypair="ssh_keypair")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 

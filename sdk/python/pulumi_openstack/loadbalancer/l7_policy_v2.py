@@ -410,7 +410,6 @@ class L7PolicyV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -444,7 +443,6 @@ class L7PolicyV2(pulumi.CustomResource):
             listener_id=listener1.id,
             redirect_pool_id=pool1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -489,7 +487,6 @@ class L7PolicyV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -523,7 +520,6 @@ class L7PolicyV2(pulumi.CustomResource):
             listener_id=listener1.id,
             redirect_pool_id=pool1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

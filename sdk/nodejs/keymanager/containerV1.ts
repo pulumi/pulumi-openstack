@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * The container with the TLS certificates, which can be used by the loadbalancer HTTPS listener.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -78,13 +77,11 @@ import * as utilities from "../utilities";
  *     defaultTlsContainerRef: tls1.containerRef,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Container with the ACL
  *
  * > **Note** Only read ACLs are supported
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -117,7 +114,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -170,7 +166,7 @@ export class ContainerV1 extends pulumi.CustomResource {
      */
     public /*out*/ readonly containerRef!: pulumi.Output<string>;
     /**
-     * The date the container ACL was created.
+     * The date the container was created.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
@@ -203,7 +199,7 @@ export class ContainerV1 extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * The date the container ACL was last updated.
+     * The date the container was last updated.
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
@@ -272,7 +268,7 @@ export interface ContainerV1State {
      */
     containerRef?: pulumi.Input<string>;
     /**
-     * The date the container ACL was created.
+     * The date the container was created.
      */
     createdAt?: pulumi.Input<string>;
     /**
@@ -305,7 +301,7 @@ export interface ContainerV1State {
      */
     type?: pulumi.Input<string>;
     /**
-     * The date the container ACL was last updated.
+     * The date the container was last updated.
      */
     updatedAt?: pulumi.Input<string>;
 }

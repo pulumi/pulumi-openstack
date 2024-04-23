@@ -18,7 +18,6 @@ import (
 //
 // ### Example with simple content
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -64,11 +63,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Example with content from file
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -114,7 +111,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type ContainerObject struct {
 	pulumi.CustomResourceState
 

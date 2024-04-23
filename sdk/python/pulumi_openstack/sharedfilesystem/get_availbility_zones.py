@@ -76,14 +76,12 @@ def get_availbility_zones(region: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     zones = openstack.sharedfilesystem.get_availbility_zones()
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str region: The region in which to obtain the V2 Shared File System
@@ -109,14 +107,12 @@ def get_availbility_zones_output(region: Optional[pulumi.Input[Optional[str]]] =
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     zones = openstack.sharedfilesystem.get_availbility_zones()
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str region: The region in which to obtain the V2 Shared File System

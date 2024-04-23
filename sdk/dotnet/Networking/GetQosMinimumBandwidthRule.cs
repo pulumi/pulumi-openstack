@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetQosMinimumBandwidthRuleResult> InvokeAsync(GetQosMinimumBandwidthRuleArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQosMinimumBandwidthRuleResult>("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", args ?? new GetQosMinimumBandwidthRuleArgs(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.OpenStack.Networking
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetQosMinimumBandwidthRuleResult> Invoke(GetQosMinimumBandwidthRuleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQosMinimumBandwidthRuleResult>("openstack:networking/getQosMinimumBandwidthRule:getQosMinimumBandwidthRule", args ?? new GetQosMinimumBandwidthRuleInvokeArgs(), options.WithDefaults());

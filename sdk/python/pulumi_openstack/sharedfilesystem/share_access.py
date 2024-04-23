@@ -251,7 +251,6 @@ class ShareAccess(pulumi.CustomResource):
 
         ### NFS
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -281,11 +280,9 @@ class ShareAccess(pulumi.CustomResource):
             access_to="192.168.199.10",
             access_level="rw")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### CIFS
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -331,7 +328,6 @@ class ShareAccess(pulumi.CustomResource):
             access_level="rw")
         pulumi.export("exportLocations", share1.export_locations)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -366,7 +362,6 @@ class ShareAccess(pulumi.CustomResource):
 
         ### NFS
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -396,11 +391,9 @@ class ShareAccess(pulumi.CustomResource):
             access_to="192.168.199.10",
             access_level="rw")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### CIFS
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -446,7 +439,6 @@ class ShareAccess(pulumi.CustomResource):
             access_level="rw")
         pulumi.export("exportLocations", share1.export_locations)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

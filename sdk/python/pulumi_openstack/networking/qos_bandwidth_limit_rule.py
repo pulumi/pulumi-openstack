@@ -223,7 +223,6 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
 
         ### Create a QoS Policy with some bandwidth limit rule
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -237,7 +236,6 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
             max_burst_kbps=300,
             direction="egress")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -273,7 +271,6 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
 
         ### Create a QoS Policy with some bandwidth limit rule
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -287,7 +284,6 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
             max_burst_kbps=300,
             direction="egress")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

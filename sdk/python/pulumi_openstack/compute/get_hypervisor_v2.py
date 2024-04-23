@@ -148,14 +148,12 @@ def get_hypervisor_v2(hostname: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     host01 = openstack.compute.get_hypervisor_v2(hostname="host01")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str hostname: The hostname of the hypervisor
@@ -186,14 +184,12 @@ def get_hypervisor_v2_output(hostname: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_openstack as openstack
 
     host01 = openstack.compute.get_hypervisor_v2(hostname="host01")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str hostname: The hostname of the hypervisor

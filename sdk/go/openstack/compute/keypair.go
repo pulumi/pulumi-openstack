@@ -15,7 +15,6 @@ import (
 //
 // ### Import an Existing Public Key
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,11 +39,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### Generate a Public/Private Key Pair
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,7 +65,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -301,7 +301,6 @@ class EndpointGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -314,7 +313,6 @@ class EndpointGroup(pulumi.CustomResource):
                 "10.3.0.0/24",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -353,7 +351,6 @@ class EndpointGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -366,7 +363,6 @@ class EndpointGroup(pulumi.CustomResource):
                 "10.3.0.0/24",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

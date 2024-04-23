@@ -241,7 +241,6 @@ class AddressScope(pulumi.CustomResource):
 
         ### Create an Address-scope
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -250,11 +249,9 @@ class AddressScope(pulumi.CustomResource):
             name="addressscope_1",
             ip_version=6)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a Subnet Pool from an Address-scope
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -270,7 +267,6 @@ class AddressScope(pulumi.CustomResource):
             ],
             address_scope_id=addressscope1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -310,7 +306,6 @@ class AddressScope(pulumi.CustomResource):
 
         ### Create an Address-scope
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -319,11 +314,9 @@ class AddressScope(pulumi.CustomResource):
             name="addressscope_1",
             ip_version=6)
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Create a Subnet Pool from an Address-scope
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -339,7 +332,6 @@ class AddressScope(pulumi.CustomResource):
             ],
             address_scope_id=addressscope1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -12,15 +12,9 @@ namespace Pulumi.OpenStack.ObjectStorage.Inputs
 
     public sealed class ContainerVersioningLegacyGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Container in which versions will be stored.
-        /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
-        /// <summary>
-        /// Versioning type which can be `versions` or `history` according to [Openstack documentation](https://docs.openstack.org/swift/latest/api/object_versioning.html).
-        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

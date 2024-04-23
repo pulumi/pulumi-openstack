@@ -16,7 +16,6 @@ namespace Pulumi.OpenStack.BlockStorage
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.OpenStack.BlockStorage
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetQuotasetV3Result> InvokeAsync(GetQuotasetV3Args args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQuotasetV3Result>("openstack:blockstorage/getQuotasetV3:getQuotasetV3", args ?? new GetQuotasetV3Args(), options.WithDefaults());
@@ -42,7 +40,6 @@ namespace Pulumi.OpenStack.BlockStorage
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.OpenStack.BlockStorage
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetQuotasetV3Result> Invoke(GetQuotasetV3InvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQuotasetV3Result>("openstack:blockstorage/getQuotasetV3:getQuotasetV3", args ?? new GetQuotasetV3InvokeArgs(), options.WithDefaults());

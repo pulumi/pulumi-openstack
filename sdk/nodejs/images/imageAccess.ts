@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  * Create a shared image and propose a membership to the
  * `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -35,14 +34,12 @@ import * as utilities from "../utilities";
  *     memberId: "bed6b6cbb86a4e2d8dc2735c2f1000e4",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Privileged user
  *
  * Create a shared image and set a membership to the
  * `bed6b6cbb86a4e2d8dc2735c2f1000e4` project ID.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -63,7 +60,6 @@ import * as utilities from "../utilities";
  *     status: "accepted",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

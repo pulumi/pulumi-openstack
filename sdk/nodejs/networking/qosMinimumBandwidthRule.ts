@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Create a QoS Policy with some minimum bandwidth rule
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  *     minKbps: 200,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

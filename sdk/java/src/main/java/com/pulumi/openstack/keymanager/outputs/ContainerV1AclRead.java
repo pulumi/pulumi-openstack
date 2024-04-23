@@ -14,56 +14,36 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerV1AclRead {
     /**
-     * @return The date the container ACL was created.
+     * @return The date the container was created.
      * 
      */
     private @Nullable String createdAt;
-    /**
-     * @return Whether the container is accessible project wide.
-     * Defaults to `true`.
-     * 
-     */
     private @Nullable Boolean projectAccess;
     /**
-     * @return The date the container ACL was last updated.
+     * @return The date the container was last updated.
      * 
      */
     private @Nullable String updatedAt;
-    /**
-     * @return The list of user IDs, which are allowed to access the
-     * container, when `project_access` is set to `false`.
-     * 
-     */
     private @Nullable List<String> users;
 
     private ContainerV1AclRead() {}
     /**
-     * @return The date the container ACL was created.
+     * @return The date the container was created.
      * 
      */
     public Optional<String> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
-    /**
-     * @return Whether the container is accessible project wide.
-     * Defaults to `true`.
-     * 
-     */
     public Optional<Boolean> projectAccess() {
         return Optional.ofNullable(this.projectAccess);
     }
     /**
-     * @return The date the container ACL was last updated.
+     * @return The date the container was last updated.
      * 
      */
     public Optional<String> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
-    /**
-     * @return The list of user IDs, which are allowed to access the
-     * container, when `project_access` is set to `false`.
-     * 
-     */
     public List<String> users() {
         return this.users == null ? List.of() : this.users;
     }

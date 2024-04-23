@@ -543,7 +543,6 @@ class NodeGroup(pulumi.CustomResource):
 
         ### Create a Nodegroup
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -553,7 +552,6 @@ class NodeGroup(pulumi.CustomResource):
             cluster_id="b9a45c5c-cd03-4958-82aa-b80bf93cb922",
             node_count=5)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 
@@ -626,7 +624,6 @@ class NodeGroup(pulumi.CustomResource):
 
         ### Create a Nodegroup
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_openstack as openstack
@@ -636,7 +633,6 @@ class NodeGroup(pulumi.CustomResource):
             cluster_id="b9a45c5c-cd03-4958-82aa-b80bf93cb922",
             node_count=5)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 

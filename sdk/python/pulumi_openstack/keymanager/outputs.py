@@ -68,12 +68,8 @@ class ContainerV1AclRead(dict):
                  updated_at: Optional[str] = None,
                  users: Optional[Sequence[str]] = None):
         """
-        :param str created_at: The date the container ACL was created.
-        :param bool project_access: Whether the container is accessible project wide.
-               Defaults to `true`.
-        :param str updated_at: The date the container ACL was last updated.
-        :param Sequence[str] users: The list of user IDs, which are allowed to access the
-               container, when `project_access` is set to `false`.
+        :param str created_at: The date the container was created.
+        :param str updated_at: The date the container was last updated.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -88,34 +84,26 @@ class ContainerV1AclRead(dict):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[str]:
         """
-        The date the container ACL was created.
+        The date the container was created.
         """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="projectAccess")
     def project_access(self) -> Optional[bool]:
-        """
-        Whether the container is accessible project wide.
-        Defaults to `true`.
-        """
         return pulumi.get(self, "project_access")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[str]:
         """
-        The date the container ACL was last updated.
+        The date the container was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter
     def users(self) -> Optional[Sequence[str]]:
-        """
-        The list of user IDs, which are allowed to access the
-        container, when `project_access` is set to `false`.
-        """
         return pulumi.get(self, "users")
 
 
@@ -337,12 +325,8 @@ class SecretV1AclRead(dict):
                  updated_at: Optional[str] = None,
                  users: Optional[Sequence[str]] = None):
         """
-        :param str created_at: The date the secret ACL was created.
-        :param bool project_access: Whether the secret is accessible project wide.
-               Defaults to `true`.
-        :param str updated_at: The date the secret ACL was last updated.
-        :param Sequence[str] users: The list of user IDs, which are allowed to access the
-               secret, when `project_access` is set to `false`.
+        :param str created_at: The date the secret was created.
+        :param str updated_at: The date the secret was last updated.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -357,34 +341,26 @@ class SecretV1AclRead(dict):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[str]:
         """
-        The date the secret ACL was created.
+        The date the secret was created.
         """
         return pulumi.get(self, "created_at")
 
     @property
     @pulumi.getter(name="projectAccess")
     def project_access(self) -> Optional[bool]:
-        """
-        Whether the secret is accessible project wide.
-        Defaults to `true`.
-        """
         return pulumi.get(self, "project_access")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[str]:
         """
-        The date the secret ACL was last updated.
+        The date the secret was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @property
     @pulumi.getter
     def users(self) -> Optional[Sequence[str]]:
-        """
-        The list of user IDs, which are allowed to access the
-        secret, when `project_access` is set to `false`.
-        """
         return pulumi.get(self, "users")
 
 

@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     minKbps: 2000,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getQosMinimumBandwidthRule(args: GetQosMinimumBandwidthRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetQosMinimumBandwidthRuleResult> {
 
@@ -79,7 +77,6 @@ export interface GetQosMinimumBandwidthRuleResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as openstack from "@pulumi/openstack";
@@ -88,7 +85,6 @@ export interface GetQosMinimumBandwidthRuleResult {
  *     minKbps: 2000,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getQosMinimumBandwidthRuleOutput(args: GetQosMinimumBandwidthRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQosMinimumBandwidthRuleResult> {
     return pulumi.output(args).apply((a: any) => getQosMinimumBandwidthRule(a, opts))

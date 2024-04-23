@@ -16,7 +16,6 @@ import (
 //
 // ### NFS
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -79,11 +78,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### CIFS
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -172,7 +169,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
