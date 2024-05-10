@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,15 +45,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var service1 = new Service(&#34;service1&#34;, ServiceArgs.builder()        
- *             .name(&#34;my_service&#34;)
- *             .routerId(&#34;14a75700-fc03-4602-9294-26ee44f366b3&#34;)
- *             .adminStateUp(&#34;true&#34;)
+ *         var service1 = new Service("service1", ServiceArgs.builder()        
+ *             .name("my_service")
+ *             .routerId("14a75700-fc03-4602-9294-26ee44f366b3")
+ *             .adminStateUp("true")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

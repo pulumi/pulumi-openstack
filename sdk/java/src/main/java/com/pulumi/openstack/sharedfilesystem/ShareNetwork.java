@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Basic share network
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,34 +53,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network_1&#34;)
- *             .adminStateUp(&#34;true&#34;)
+ *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *             .name("network_1")
+ *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
- *             .name(&#34;subnet_1&#34;)
- *             .cidr(&#34;192.168.199.0/24&#34;)
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *             .name("subnet_1")
+ *             .cidr("192.168.199.0/24")
  *             .ipVersion(4)
  *             .networkId(network1.id())
  *             .build());
  * 
- *         var sharenetwork1 = new ShareNetwork(&#34;sharenetwork1&#34;, ShareNetworkArgs.builder()        
- *             .name(&#34;test_sharenetwork&#34;)
- *             .description(&#34;test share network&#34;)
+ *         var sharenetwork1 = new ShareNetwork("sharenetwork1", ShareNetworkArgs.builder()        
+ *             .name("test_sharenetwork")
+ *             .description("test share network")
  *             .neutronNetId(network1.id())
  *             .neutronSubnetId(subnet1.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Share network with associated security services
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -106,33 +109,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network_1&#34;)
- *             .adminStateUp(&#34;true&#34;)
+ *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *             .name("network_1")
+ *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
- *             .name(&#34;subnet_1&#34;)
- *             .cidr(&#34;192.168.199.0/24&#34;)
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *             .name("subnet_1")
+ *             .cidr("192.168.199.0/24")
  *             .ipVersion(4)
  *             .networkId(network1.id())
  *             .build());
  * 
- *         var securityservice1 = new SecurityService(&#34;securityservice1&#34;, SecurityServiceArgs.builder()        
- *             .name(&#34;security&#34;)
- *             .description(&#34;created by terraform&#34;)
- *             .type(&#34;active_directory&#34;)
- *             .server(&#34;192.168.199.10&#34;)
- *             .dnsIp(&#34;192.168.199.10&#34;)
- *             .domain(&#34;example.com&#34;)
- *             .ou(&#34;CN=Computers,DC=example,DC=com&#34;)
- *             .user(&#34;joinDomainUser&#34;)
- *             .password(&#34;s8cret&#34;)
+ *         var securityservice1 = new SecurityService("securityservice1", SecurityServiceArgs.builder()        
+ *             .name("security")
+ *             .description("created by terraform")
+ *             .type("active_directory")
+ *             .server("192.168.199.10")
+ *             .dnsIp("192.168.199.10")
+ *             .domain("example.com")
+ *             .ou("CN=Computers,DC=example,DC=com")
+ *             .user("joinDomainUser")
+ *             .password("s8cret")
  *             .build());
  * 
- *         var sharenetwork1 = new ShareNetwork(&#34;sharenetwork1&#34;, ShareNetworkArgs.builder()        
- *             .name(&#34;test_sharenetwork&#34;)
- *             .description(&#34;test share network with security services&#34;)
+ *         var sharenetwork1 = new ShareNetwork("sharenetwork1", ShareNetworkArgs.builder()        
+ *             .name("test_sharenetwork")
+ *             .description("test share network with security services")
  *             .neutronNetId(network1.id())
  *             .neutronSubnetId(subnet1.id())
  *             .securityServiceIds(securityservice1.id())
@@ -140,7 +143,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

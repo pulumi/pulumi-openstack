@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,18 +43,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool1 = new PoolV1(&#34;pool1&#34;, PoolV1Args.builder()        
- *             .name(&#34;tf_test_lb_pool&#34;)
- *             .protocol(&#34;HTTP&#34;)
- *             .subnetId(&#34;12345&#34;)
- *             .lbMethod(&#34;ROUND_ROBIN&#34;)
- *             .lbProvider(&#34;haproxy&#34;)
- *             .monitorIds(&#34;67890&#34;)
+ *         var pool1 = new PoolV1("pool1", PoolV1Args.builder()        
+ *             .name("tf_test_lb_pool")
+ *             .protocol("HTTP")
+ *             .subnetId("12345")
+ *             .lbMethod("ROUND_ROBIN")
+ *             .lbProvider("haproxy")
+ *             .monitorIds("67890")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Complete Load Balancing Stack Example

@@ -52,7 +52,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -74,12 +75,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var endpoint1 = IdentityFunctions.getEndpoint(GetEndpointArgs.builder()
-     *             .serviceName(&#34;demo&#34;)
+     *             .serviceName("demo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -94,7 +96,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -116,12 +119,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var endpoint1 = IdentityFunctions.getEndpoint(GetEndpointArgs.builder()
-     *             .serviceName(&#34;demo&#34;)
+     *             .serviceName("demo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -136,7 +140,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -158,12 +163,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var endpoint1 = IdentityFunctions.getEndpoint(GetEndpointArgs.builder()
-     *             .serviceName(&#34;demo&#34;)
+     *             .serviceName("demo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -178,7 +184,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -200,12 +207,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var endpoint1 = IdentityFunctions.getEndpoint(GetEndpointArgs.builder()
-     *             .serviceName(&#34;demo&#34;)
+     *             .serviceName("demo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -220,7 +228,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -242,12 +251,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var endpoint1 = IdentityFunctions.getEndpoint(GetEndpointArgs.builder()
-     *             .serviceName(&#34;demo&#34;)
+     *             .serviceName("demo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -262,7 +272,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -284,12 +295,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var endpoint1 = IdentityFunctions.getEndpoint(GetEndpointArgs.builder()
-     *             .serviceName(&#34;demo&#34;)
+     *             .serviceName("demo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -305,7 +317,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -327,12 +340,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = IdentityFunctions.getGroup(GetGroupArgs.builder()
-     *             .name(&#34;admins&#34;)
+     *             .name("admins")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -348,7 +362,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -370,12 +385,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = IdentityFunctions.getGroup(GetGroupArgs.builder()
-     *             .name(&#34;admins&#34;)
+     *             .name("admins")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -391,7 +407,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -413,12 +430,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = IdentityFunctions.getGroup(GetGroupArgs.builder()
-     *             .name(&#34;admins&#34;)
+     *             .name("admins")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -434,7 +452,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -456,12 +475,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admins = IdentityFunctions.getGroup(GetGroupArgs.builder()
-     *             .name(&#34;admins&#34;)
+     *             .name("admins")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -474,7 +494,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -496,12 +517,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var project1 = IdentityFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;demo&#34;)
+     *             .name("demo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -514,7 +536,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -536,12 +559,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var project1 = IdentityFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;demo&#34;)
+     *             .name("demo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -554,7 +578,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -576,12 +601,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var project1 = IdentityFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;demo&#34;)
+     *             .name("demo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -594,7 +620,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -616,12 +643,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var project1 = IdentityFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;demo&#34;)
+     *             .name("demo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -634,7 +662,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -656,12 +685,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var project1 = IdentityFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;demo&#34;)
+     *             .name("demo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -674,7 +704,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -696,12 +727,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var project1 = IdentityFunctions.getProject(GetProjectArgs.builder()
-     *             .name(&#34;demo&#34;)
+     *             .name("demo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -714,7 +746,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -736,12 +769,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admin = IdentityFunctions.getRole(GetRoleArgs.builder()
-     *             .name(&#34;admin&#34;)
+     *             .name("admin")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -754,7 +788,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -776,12 +811,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admin = IdentityFunctions.getRole(GetRoleArgs.builder()
-     *             .name(&#34;admin&#34;)
+     *             .name("admin")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -794,7 +830,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -816,12 +853,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admin = IdentityFunctions.getRole(GetRoleArgs.builder()
-     *             .name(&#34;admin&#34;)
+     *             .name("admin")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -834,7 +872,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -856,12 +895,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var admin = IdentityFunctions.getRole(GetRoleArgs.builder()
-     *             .name(&#34;admin&#34;)
+     *             .name("admin")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -876,7 +916,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -898,12 +939,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var service1 = IdentityFunctions.getService(GetServiceArgs.builder()
-     *             .name(&#34;keystone&#34;)
+     *             .name("keystone")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -918,7 +960,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -940,12 +983,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var service1 = IdentityFunctions.getService(GetServiceArgs.builder()
-     *             .name(&#34;keystone&#34;)
+     *             .name("keystone")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -960,7 +1004,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -982,12 +1027,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var service1 = IdentityFunctions.getService(GetServiceArgs.builder()
-     *             .name(&#34;keystone&#34;)
+     *             .name("keystone")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1002,7 +1048,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1024,12 +1071,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var service1 = IdentityFunctions.getService(GetServiceArgs.builder()
-     *             .name(&#34;keystone&#34;)
+     *             .name("keystone")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1044,7 +1092,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1066,12 +1115,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var service1 = IdentityFunctions.getService(GetServiceArgs.builder()
-     *             .name(&#34;keystone&#34;)
+     *             .name("keystone")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1086,7 +1136,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1108,12 +1159,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var service1 = IdentityFunctions.getService(GetServiceArgs.builder()
-     *             .name(&#34;keystone&#34;)
+     *             .name("keystone")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1126,7 +1178,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1148,12 +1201,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user1 = IdentityFunctions.getUser(GetUserArgs.builder()
-     *             .name(&#34;user_1&#34;)
+     *             .name("user_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1166,7 +1220,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1188,12 +1243,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user1 = IdentityFunctions.getUser(GetUserArgs.builder()
-     *             .name(&#34;user_1&#34;)
+     *             .name("user_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1206,7 +1262,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1228,12 +1285,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user1 = IdentityFunctions.getUser(GetUserArgs.builder()
-     *             .name(&#34;user_1&#34;)
+     *             .name("user_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1246,7 +1304,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1268,12 +1327,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user1 = IdentityFunctions.getUser(GetUserArgs.builder()
-     *             .name(&#34;user_1&#34;)
+     *             .name("user_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1286,7 +1346,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1308,12 +1369,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user1 = IdentityFunctions.getUser(GetUserArgs.builder()
-     *             .name(&#34;user_1&#34;)
+     *             .name("user_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1326,7 +1388,8 @@ public final class IdentityFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1348,12 +1411,13 @@ public final class IdentityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user1 = IdentityFunctions.getUser(GetUserArgs.builder()
-     *             .name(&#34;user_1&#34;)
+     *             .name("user_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

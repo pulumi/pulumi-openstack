@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Create a Subnet Pool
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,23 +49,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var subnetpool1 = new SubnetPool(&#34;subnetpool1&#34;, SubnetPoolArgs.builder()        
- *             .name(&#34;subnetpool_1&#34;)
+ *         var subnetpool1 = new SubnetPool("subnetpool1", SubnetPoolArgs.builder()        
+ *             .name("subnetpool_1")
  *             .ipVersion(6)
  *             .prefixes(            
- *                 &#34;fdf7:b13d:dead:beef::/64&#34;,
- *                 &#34;fd65:86cc:a334:39b7::/64&#34;)
+ *                 "fdf7:b13d:dead:beef::/64",
+ *                 "fd65:86cc:a334:39b7::/64")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Create a Subnet from a Subnet Pool
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -89,26 +92,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network_1&#34;)
- *             .adminStateUp(&#34;true&#34;)
+ *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *             .name("network_1")
+ *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnetpool1 = new SubnetPool(&#34;subnetpool1&#34;, SubnetPoolArgs.builder()        
- *             .name(&#34;subnetpool_1&#34;)
- *             .prefixes(&#34;10.11.12.0/24&#34;)
+ *         var subnetpool1 = new SubnetPool("subnetpool1", SubnetPoolArgs.builder()        
+ *             .name("subnetpool_1")
+ *             .prefixes("10.11.12.0/24")
  *             .build());
  * 
- *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
- *             .name(&#34;subnet_1&#34;)
- *             .cidr(&#34;10.11.12.0/25&#34;)
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *             .name("subnet_1")
+ *             .cidr("10.11.12.0/25")
  *             .networkId(network1.id())
  *             .subnetpoolId(subnetpool1.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

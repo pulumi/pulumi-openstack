@@ -23,7 +23,8 @@ public final class ImagesFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -45,14 +46,15 @@ public final class ImagesFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ubuntu = ImagesFunctions.getImage(GetImageArgs.builder()
-     *             .name(&#34;Ubuntu 16.04&#34;)
+     *             .name("Ubuntu 16.04")
      *             .mostRecent(true)
-     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
+     *             .properties(Map.of("key", "value"))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -65,7 +67,8 @@ public final class ImagesFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -87,14 +90,15 @@ public final class ImagesFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ubuntu = ImagesFunctions.getImage(GetImageArgs.builder()
-     *             .name(&#34;Ubuntu 16.04&#34;)
+     *             .name("Ubuntu 16.04")
      *             .mostRecent(true)
-     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
+     *             .properties(Map.of("key", "value"))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -107,7 +111,8 @@ public final class ImagesFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -129,14 +134,15 @@ public final class ImagesFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ubuntu = ImagesFunctions.getImage(GetImageArgs.builder()
-     *             .name(&#34;Ubuntu 16.04&#34;)
+     *             .name("Ubuntu 16.04")
      *             .mostRecent(true)
-     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
+     *             .properties(Map.of("key", "value"))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -149,7 +155,8 @@ public final class ImagesFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -171,14 +178,15 @@ public final class ImagesFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ubuntu = ImagesFunctions.getImage(GetImageArgs.builder()
-     *             .name(&#34;Ubuntu 16.04&#34;)
+     *             .name("Ubuntu 16.04")
      *             .mostRecent(true)
-     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
+     *             .properties(Map.of("key", "value"))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -191,7 +199,8 @@ public final class ImagesFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -213,14 +222,15 @@ public final class ImagesFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ubuntu = ImagesFunctions.getImage(GetImageArgs.builder()
-     *             .name(&#34;Ubuntu 16.04&#34;)
+     *             .name("Ubuntu 16.04")
      *             .mostRecent(true)
-     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
+     *             .properties(Map.of("key", "value"))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -233,7 +243,8 @@ public final class ImagesFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -255,14 +266,15 @@ public final class ImagesFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ubuntu = ImagesFunctions.getImage(GetImageArgs.builder()
-     *             .name(&#34;Ubuntu 16.04&#34;)
+     *             .name("Ubuntu 16.04")
      *             .mostRecent(true)
-     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
+     *             .properties(Map.of("key", "value"))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -276,7 +288,8 @@ public final class ImagesFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -298,14 +311,15 @@ public final class ImagesFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
-     *             .nameRegex(&#34;^Ubuntu 16\\.04.*-amd64&#34;)
-     *             .sort(&#34;updated_at&#34;)
-     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
+     *             .nameRegex("^Ubuntu 16\\.04.*-amd64")
+     *             .sort("updated_at")
+     *             .properties(Map.of("key", "value"))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -319,7 +333,8 @@ public final class ImagesFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -341,14 +356,15 @@ public final class ImagesFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
-     *             .nameRegex(&#34;^Ubuntu 16\\.04.*-amd64&#34;)
-     *             .sort(&#34;updated_at&#34;)
-     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
+     *             .nameRegex("^Ubuntu 16\\.04.*-amd64")
+     *             .sort("updated_at")
+     *             .properties(Map.of("key", "value"))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -362,7 +378,8 @@ public final class ImagesFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -384,14 +401,15 @@ public final class ImagesFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
-     *             .nameRegex(&#34;^Ubuntu 16\\.04.*-amd64&#34;)
-     *             .sort(&#34;updated_at&#34;)
-     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
+     *             .nameRegex("^Ubuntu 16\\.04.*-amd64")
+     *             .sort("updated_at")
+     *             .properties(Map.of("key", "value"))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -405,7 +423,8 @@ public final class ImagesFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -427,14 +446,15 @@ public final class ImagesFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
-     *             .nameRegex(&#34;^Ubuntu 16\\.04.*-amd64&#34;)
-     *             .sort(&#34;updated_at&#34;)
-     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
+     *             .nameRegex("^Ubuntu 16\\.04.*-amd64")
+     *             .sort("updated_at")
+     *             .properties(Map.of("key", "value"))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -448,7 +468,8 @@ public final class ImagesFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -470,14 +491,15 @@ public final class ImagesFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
-     *             .nameRegex(&#34;^Ubuntu 16\\.04.*-amd64&#34;)
-     *             .sort(&#34;updated_at&#34;)
-     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
+     *             .nameRegex("^Ubuntu 16\\.04.*-amd64")
+     *             .sort("updated_at")
+     *             .properties(Map.of("key", "value"))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -491,7 +513,8 @@ public final class ImagesFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -513,14 +536,15 @@ public final class ImagesFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
-     *             .nameRegex(&#34;^Ubuntu 16\\.04.*-amd64&#34;)
-     *             .sort(&#34;updated_at&#34;)
-     *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
+     *             .nameRegex("^Ubuntu 16\\.04.*-amd64")
+     *             .sort("updated_at")
+     *             .properties(Map.of("key", "value"))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

@@ -42,7 +42,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -64,12 +65,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ComputeFunctions.getAggregateV2(GetAggregateV2Args.builder()
-     *             .name(&#34;test&#34;)
+     *             .name("test")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -83,7 +85,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -105,12 +108,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ComputeFunctions.getAggregateV2(GetAggregateV2Args.builder()
-     *             .name(&#34;test&#34;)
+     *             .name("test")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -124,7 +128,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -146,12 +151,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ComputeFunctions.getAggregateV2(GetAggregateV2Args.builder()
-     *             .name(&#34;test&#34;)
+     *             .name("test")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -165,7 +171,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -187,12 +194,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = ComputeFunctions.getAggregateV2(GetAggregateV2Args.builder()
-     *             .name(&#34;test&#34;)
+     *             .name("test")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -205,7 +213,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -230,7 +239,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -243,7 +253,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -268,7 +279,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -281,7 +293,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -306,7 +319,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -319,7 +333,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -344,7 +359,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -357,7 +373,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -382,7 +399,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -395,7 +413,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -420,7 +439,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -433,7 +453,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -461,7 +482,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -474,7 +496,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -502,7 +525,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -515,7 +539,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -543,7 +568,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -556,7 +582,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -584,7 +611,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -597,7 +625,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -625,7 +654,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -638,7 +668,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -666,7 +697,8 @@ public final class ComputeFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -680,7 +712,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -702,12 +735,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var host01 = ComputeFunctions.getHypervisorV2(GetHypervisorV2Args.builder()
-     *             .hostname(&#34;host01&#34;)
+     *             .hostname("host01")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -721,7 +755,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -743,12 +778,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var host01 = ComputeFunctions.getHypervisorV2(GetHypervisorV2Args.builder()
-     *             .hostname(&#34;host01&#34;)
+     *             .hostname("host01")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -762,7 +798,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -784,12 +821,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var host01 = ComputeFunctions.getHypervisorV2(GetHypervisorV2Args.builder()
-     *             .hostname(&#34;host01&#34;)
+     *             .hostname("host01")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -803,7 +841,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -825,12 +864,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var host01 = ComputeFunctions.getHypervisorV2(GetHypervisorV2Args.builder()
-     *             .hostname(&#34;host01&#34;)
+     *             .hostname("host01")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -843,7 +883,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -865,12 +906,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = ComputeFunctions.getInstanceV2(GetInstanceV2Args.builder()
-     *             .id(&#34;2ba26dc6-a12d-4889-8f25-794ea5bf4453&#34;)
+     *             .id("2ba26dc6-a12d-4889-8f25-794ea5bf4453")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -883,7 +925,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -905,12 +948,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = ComputeFunctions.getInstanceV2(GetInstanceV2Args.builder()
-     *             .id(&#34;2ba26dc6-a12d-4889-8f25-794ea5bf4453&#34;)
+     *             .id("2ba26dc6-a12d-4889-8f25-794ea5bf4453")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -923,7 +967,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -945,12 +990,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = ComputeFunctions.getInstanceV2(GetInstanceV2Args.builder()
-     *             .id(&#34;2ba26dc6-a12d-4889-8f25-794ea5bf4453&#34;)
+     *             .id("2ba26dc6-a12d-4889-8f25-794ea5bf4453")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -963,7 +1009,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -985,12 +1032,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = ComputeFunctions.getInstanceV2(GetInstanceV2Args.builder()
-     *             .id(&#34;2ba26dc6-a12d-4889-8f25-794ea5bf4453&#34;)
+     *             .id("2ba26dc6-a12d-4889-8f25-794ea5bf4453")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1003,7 +1051,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1025,12 +1074,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var kp = ComputeFunctions.getKeypair(GetKeypairArgs.builder()
-     *             .name(&#34;sand&#34;)
+     *             .name("sand")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1043,7 +1093,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1065,12 +1116,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var kp = ComputeFunctions.getKeypair(GetKeypairArgs.builder()
-     *             .name(&#34;sand&#34;)
+     *             .name("sand")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1083,7 +1135,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1105,12 +1158,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var kp = ComputeFunctions.getKeypair(GetKeypairArgs.builder()
-     *             .name(&#34;sand&#34;)
+     *             .name("sand")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1123,7 +1177,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1145,12 +1200,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var kp = ComputeFunctions.getKeypair(GetKeypairArgs.builder()
-     *             .name(&#34;sand&#34;)
+     *             .name("sand")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1163,7 +1219,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1185,12 +1242,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var limits = ComputeFunctions.getLimitsV2(GetLimitsV2Args.builder()
-     *             .projectId(&#34;2e367a3d29f94fd988e6ec54e305ec9d&#34;)
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1203,7 +1261,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1225,12 +1284,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var limits = ComputeFunctions.getLimitsV2(GetLimitsV2Args.builder()
-     *             .projectId(&#34;2e367a3d29f94fd988e6ec54e305ec9d&#34;)
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1243,7 +1303,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1265,12 +1326,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var limits = ComputeFunctions.getLimitsV2(GetLimitsV2Args.builder()
-     *             .projectId(&#34;2e367a3d29f94fd988e6ec54e305ec9d&#34;)
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1283,7 +1345,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1305,12 +1368,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var limits = ComputeFunctions.getLimitsV2(GetLimitsV2Args.builder()
-     *             .projectId(&#34;2e367a3d29f94fd988e6ec54e305ec9d&#34;)
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1323,7 +1387,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1345,12 +1410,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var quota = ComputeFunctions.getQuotaSetV2(GetQuotaSetV2Args.builder()
-     *             .projectId(&#34;2e367a3d29f94fd988e6ec54e305ec9d&#34;)
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1363,7 +1429,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1385,12 +1452,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var quota = ComputeFunctions.getQuotaSetV2(GetQuotaSetV2Args.builder()
-     *             .projectId(&#34;2e367a3d29f94fd988e6ec54e305ec9d&#34;)
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1403,7 +1471,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1425,12 +1494,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var quota = ComputeFunctions.getQuotaSetV2(GetQuotaSetV2Args.builder()
-     *             .projectId(&#34;2e367a3d29f94fd988e6ec54e305ec9d&#34;)
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1443,7 +1513,8 @@ public final class ComputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1465,12 +1536,13 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var quota = ComputeFunctions.getQuotaSetV2(GetQuotaSetV2Args.builder()
-     *             .projectId(&#34;2e367a3d29f94fd988e6ec54e305ec9d&#34;)
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

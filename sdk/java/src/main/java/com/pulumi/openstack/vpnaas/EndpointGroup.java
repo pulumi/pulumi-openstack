@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,17 +45,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var group1 = new EndpointGroup(&#34;group1&#34;, EndpointGroupArgs.builder()        
- *             .name(&#34;Group 1&#34;)
- *             .type(&#34;cidr&#34;)
+ *         var group1 = new EndpointGroup("group1", EndpointGroupArgs.builder()        
+ *             .name("Group 1")
+ *             .type("cidr")
  *             .endpoints(            
- *                 &#34;10.2.0.0/24&#34;,
- *                 &#34;10.3.0.0/24&#34;)
+ *                 "10.2.0.0/24",
+ *                 "10.3.0.0/24")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

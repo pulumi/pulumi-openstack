@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ### Basic attachment of a single volume to a single instance
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,24 +51,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var volume1 = new Volume(&#34;volume1&#34;, VolumeArgs.builder()        
- *             .name(&#34;volume_1&#34;)
+ *         var volume1 = new Volume("volume1", VolumeArgs.builder()        
+ *             .name("volume_1")
  *             .size(1)
  *             .build());
  * 
- *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        
- *             .name(&#34;instance_1&#34;)
- *             .securityGroups(&#34;default&#34;)
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()        
+ *             .name("instance_1")
+ *             .securityGroups("default")
  *             .build());
  * 
- *         var va1 = new VolumeAttach(&#34;va1&#34;, VolumeAttachArgs.builder()        
+ *         var va1 = new VolumeAttach("va1", VolumeAttachArgs.builder()        
  *             .instanceId(instance1.id())
  *             .volumeId(volume1.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Using Multiattach-enabled volumes
@@ -76,7 +78,8 @@ import javax.annotation.Nullable;
  * clouds support multiattach.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -102,29 +105,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var volume1 = new Volume(&#34;volume1&#34;, VolumeArgs.builder()        
- *             .name(&#34;volume_1&#34;)
+ *         var volume1 = new Volume("volume1", VolumeArgs.builder()        
+ *             .name("volume_1")
  *             .size(1)
  *             .multiattach(true)
  *             .build());
  * 
- *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        
- *             .name(&#34;instance_1&#34;)
- *             .securityGroups(&#34;default&#34;)
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()        
+ *             .name("instance_1")
+ *             .securityGroups("default")
  *             .build());
  * 
- *         var instance2 = new Instance(&#34;instance2&#34;, InstanceArgs.builder()        
- *             .name(&#34;instance_2&#34;)
- *             .securityGroups(&#34;default&#34;)
+ *         var instance2 = new Instance("instance2", InstanceArgs.builder()        
+ *             .name("instance_2")
+ *             .securityGroups("default")
  *             .build());
  * 
- *         var va1 = new VolumeAttach(&#34;va1&#34;, VolumeAttachArgs.builder()        
+ *         var va1 = new VolumeAttach("va1", VolumeAttachArgs.builder()        
  *             .instanceId(instance1.id())
  *             .volumeId(volume1.id())
  *             .multiattach(true)
  *             .build());
  * 
- *         var va2 = new VolumeAttach(&#34;va2&#34;, VolumeAttachArgs.builder()        
+ *         var va2 = new VolumeAttach("va2", VolumeAttachArgs.builder()        
  *             .instanceId(instance2.id())
  *             .volumeId(volume1.id())
  *             .multiattach(true)
@@ -134,7 +137,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * It is recommended to use `depends_on` for the attach resources

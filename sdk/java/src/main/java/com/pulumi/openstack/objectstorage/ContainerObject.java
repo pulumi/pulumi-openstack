@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ### Example with simple content
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,35 +50,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var container1 = new Container(&#34;container1&#34;, ContainerArgs.builder()        
- *             .region(&#34;RegionOne&#34;)
- *             .name(&#34;tf-test-container-1&#34;)
- *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
- *             .contentType(&#34;application/json&#34;)
+ *         var container1 = new Container("container1", ContainerArgs.builder()        
+ *             .region("RegionOne")
+ *             .name("tf-test-container-1")
+ *             .metadata(Map.of("test", "true"))
+ *             .contentType("application/json")
  *             .build());
  * 
- *         var doc1 = new ContainerObject(&#34;doc1&#34;, ContainerObjectArgs.builder()        
- *             .region(&#34;RegionOne&#34;)
+ *         var doc1 = new ContainerObject("doc1", ContainerObjectArgs.builder()        
+ *             .region("RegionOne")
  *             .containerName(container1.name())
- *             .name(&#34;test/default.json&#34;)
- *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
- *             .contentType(&#34;application/json&#34;)
- *             .content(&#34;&#34;&#34;
+ *             .name("test/default.json")
+ *             .metadata(Map.of("test", "true"))
+ *             .contentType("application/json")
+ *             .content("""
  *                {
- *                  &#34;foo&#34; : &#34;bar&#34;
+ *                  "foo" : "bar"
  *                }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Example with content from file
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -100,25 +103,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var container1 = new Container(&#34;container1&#34;, ContainerArgs.builder()        
- *             .region(&#34;RegionOne&#34;)
- *             .name(&#34;tf-test-container-1&#34;)
- *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
- *             .contentType(&#34;application/json&#34;)
+ *         var container1 = new Container("container1", ContainerArgs.builder()        
+ *             .region("RegionOne")
+ *             .name("tf-test-container-1")
+ *             .metadata(Map.of("test", "true"))
+ *             .contentType("application/json")
  *             .build());
  * 
- *         var doc1 = new ContainerObject(&#34;doc1&#34;, ContainerObjectArgs.builder()        
- *             .region(&#34;RegionOne&#34;)
+ *         var doc1 = new ContainerObject("doc1", ContainerObjectArgs.builder()        
+ *             .region("RegionOne")
  *             .containerName(container1.name())
- *             .name(&#34;test/default.json&#34;)
- *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
- *             .contentType(&#34;application/json&#34;)
- *             .source(&#34;./default.json&#34;)
+ *             .name("test/default.json")
+ *             .metadata(Map.of("test", "true"))
+ *             .contentType("application/json")
+ *             .source("./default.json")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

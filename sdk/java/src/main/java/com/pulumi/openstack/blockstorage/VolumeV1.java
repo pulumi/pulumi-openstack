@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,16 +47,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var volume1 = new VolumeV1(&#34;volume1&#34;, VolumeV1Args.builder()        
- *             .region(&#34;RegionOne&#34;)
- *             .name(&#34;tf-test-volume&#34;)
- *             .description(&#34;first test volume&#34;)
+ *         var volume1 = new VolumeV1("volume1", VolumeV1Args.builder()        
+ *             .region("RegionOne")
+ *             .name("tf-test-volume")
+ *             .description("first test volume")
  *             .size(3)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Create a QoS Policy with some bandwidth limit rule
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,21 +47,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var qosPolicy1 = new QosPolicy(&#34;qosPolicy1&#34;, QosPolicyArgs.builder()        
- *             .name(&#34;qos_policy_1&#34;)
- *             .description(&#34;bw_limit&#34;)
+ *         var qosPolicy1 = new QosPolicy("qosPolicy1", QosPolicyArgs.builder()        
+ *             .name("qos_policy_1")
+ *             .description("bw_limit")
  *             .build());
  * 
- *         var bwLimitRule1 = new QosBandwidthLimitRule(&#34;bwLimitRule1&#34;, QosBandwidthLimitRuleArgs.builder()        
+ *         var bwLimitRule1 = new QosBandwidthLimitRule("bwLimitRule1", QosBandwidthLimitRuleArgs.builder()        
  *             .qosPolicyId(qosPolicy1.id())
  *             .maxKbps(3000)
  *             .maxBurstKbps(300)
- *             .direction(&#34;egress&#34;)
+ *             .direction("egress")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

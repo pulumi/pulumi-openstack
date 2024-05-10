@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,18 +45,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var port1 = new Port(&#34;port1&#34;, PortArgs.builder()        
- *             .networkId(&#34;a5bbd213-e1d3-49b6-aed1-9df60ea94b9a&#34;)
+ *         var port1 = new Port("port1", PortArgs.builder()        
+ *             .networkId("a5bbd213-e1d3-49b6-aed1-9df60ea94b9a")
  *             .build());
  * 
- *         var fip1 = new FloatingIpAssociate(&#34;fip1&#34;, FloatingIpAssociateArgs.builder()        
- *             .floatingIp(&#34;1.2.3.4&#34;)
+ *         var fip1 = new FloatingIpAssociate("fip1", FloatingIpAssociateArgs.builder()        
+ *             .floatingIp("1.2.3.4")
  *             .portId(port1.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

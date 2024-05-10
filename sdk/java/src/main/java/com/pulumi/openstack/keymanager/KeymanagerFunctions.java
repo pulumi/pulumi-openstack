@@ -23,7 +23,8 @@ public final class KeymanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -45,12 +46,13 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = KeymanagerFunctions.getContainer(GetContainerArgs.builder()
-     *             .name(&#34;my_container&#34;)
+     *             .name("my_container")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -63,7 +65,8 @@ public final class KeymanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -85,12 +88,13 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = KeymanagerFunctions.getContainer(GetContainerArgs.builder()
-     *             .name(&#34;my_container&#34;)
+     *             .name("my_container")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -103,7 +107,8 @@ public final class KeymanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -125,12 +130,13 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = KeymanagerFunctions.getContainer(GetContainerArgs.builder()
-     *             .name(&#34;my_container&#34;)
+     *             .name("my_container")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -143,7 +149,8 @@ public final class KeymanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -165,12 +172,13 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = KeymanagerFunctions.getContainer(GetContainerArgs.builder()
-     *             .name(&#34;my_container&#34;)
+     *             .name("my_container")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -183,7 +191,8 @@ public final class KeymanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -205,12 +214,13 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = KeymanagerFunctions.getContainer(GetContainerArgs.builder()
-     *             .name(&#34;my_container&#34;)
+     *             .name("my_container")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -223,7 +233,8 @@ public final class KeymanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -245,12 +256,13 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = KeymanagerFunctions.getContainer(GetContainerArgs.builder()
-     *             .name(&#34;my_container&#34;)
+     *             .name("my_container")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -261,7 +273,8 @@ public final class KeymanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -283,13 +296,14 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .mode(&#34;cbc&#34;)
-     *             .secretType(&#34;passphrase&#34;)
+     *             .mode("cbc")
+     *             .secretType("passphrase")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Date Filters
@@ -304,7 +318,8 @@ public final class KeymanagerFunctions {
      * January of 2020:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -326,14 +341,15 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dateFilterExample = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .mode(&#34;cbc&#34;)
-     *             .secretType(&#34;passphrase&#34;)
-     *             .expirationFilter(&#34;gt:2020-01-01T00:00:00Z&#34;)
+     *             .mode("cbc")
+     *             .secretType("passphrase")
+     *             .expirationFilter("gt:2020-01-01T00:00:00Z")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -344,7 +360,8 @@ public final class KeymanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -366,13 +383,14 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .mode(&#34;cbc&#34;)
-     *             .secretType(&#34;passphrase&#34;)
+     *             .mode("cbc")
+     *             .secretType("passphrase")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Date Filters
@@ -387,7 +405,8 @@ public final class KeymanagerFunctions {
      * January of 2020:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -409,14 +428,15 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dateFilterExample = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .mode(&#34;cbc&#34;)
-     *             .secretType(&#34;passphrase&#34;)
-     *             .expirationFilter(&#34;gt:2020-01-01T00:00:00Z&#34;)
+     *             .mode("cbc")
+     *             .secretType("passphrase")
+     *             .expirationFilter("gt:2020-01-01T00:00:00Z")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -427,7 +447,8 @@ public final class KeymanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -449,13 +470,14 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .mode(&#34;cbc&#34;)
-     *             .secretType(&#34;passphrase&#34;)
+     *             .mode("cbc")
+     *             .secretType("passphrase")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Date Filters
@@ -470,7 +492,8 @@ public final class KeymanagerFunctions {
      * January of 2020:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -492,14 +515,15 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dateFilterExample = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .mode(&#34;cbc&#34;)
-     *             .secretType(&#34;passphrase&#34;)
-     *             .expirationFilter(&#34;gt:2020-01-01T00:00:00Z&#34;)
+     *             .mode("cbc")
+     *             .secretType("passphrase")
+     *             .expirationFilter("gt:2020-01-01T00:00:00Z")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -510,7 +534,8 @@ public final class KeymanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -532,13 +557,14 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .mode(&#34;cbc&#34;)
-     *             .secretType(&#34;passphrase&#34;)
+     *             .mode("cbc")
+     *             .secretType("passphrase")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Date Filters
@@ -553,7 +579,8 @@ public final class KeymanagerFunctions {
      * January of 2020:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -575,14 +602,15 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dateFilterExample = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .mode(&#34;cbc&#34;)
-     *             .secretType(&#34;passphrase&#34;)
-     *             .expirationFilter(&#34;gt:2020-01-01T00:00:00Z&#34;)
+     *             .mode("cbc")
+     *             .secretType("passphrase")
+     *             .expirationFilter("gt:2020-01-01T00:00:00Z")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -593,7 +621,8 @@ public final class KeymanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -615,13 +644,14 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .mode(&#34;cbc&#34;)
-     *             .secretType(&#34;passphrase&#34;)
+     *             .mode("cbc")
+     *             .secretType("passphrase")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Date Filters
@@ -636,7 +666,8 @@ public final class KeymanagerFunctions {
      * January of 2020:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -658,14 +689,15 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dateFilterExample = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .mode(&#34;cbc&#34;)
-     *             .secretType(&#34;passphrase&#34;)
-     *             .expirationFilter(&#34;gt:2020-01-01T00:00:00Z&#34;)
+     *             .mode("cbc")
+     *             .secretType("passphrase")
+     *             .expirationFilter("gt:2020-01-01T00:00:00Z")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -676,7 +708,8 @@ public final class KeymanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -698,13 +731,14 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .mode(&#34;cbc&#34;)
-     *             .secretType(&#34;passphrase&#34;)
+     *             .mode("cbc")
+     *             .secretType("passphrase")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Date Filters
@@ -719,7 +753,8 @@ public final class KeymanagerFunctions {
      * January of 2020:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -741,14 +776,15 @@ public final class KeymanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dateFilterExample = KeymanagerFunctions.getSecret(GetSecretArgs.builder()
-     *             .mode(&#34;cbc&#34;)
-     *             .secretType(&#34;passphrase&#34;)
-     *             .expirationFilter(&#34;gt:2020-01-01T00:00:00Z&#34;)
+     *             .mode("cbc")
+     *             .secretType("passphrase")
+     *             .expirationFilter("gt:2020-01-01T00:00:00Z")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

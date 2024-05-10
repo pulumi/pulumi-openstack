@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,25 +51,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var user1 = new User(&#34;user1&#34;, UserArgs.builder()        
- *             .name(&#34;user_1&#34;)
- *             .domainId(&#34;default&#34;)
+ *         var user1 = new User("user1", UserArgs.builder()        
+ *             .name("user_1")
+ *             .domainId("default")
  *             .build());
  * 
- *         var role1 = new Role(&#34;role1&#34;, RoleArgs.builder()        
- *             .name(&#34;role_1&#34;)
- *             .domainId(&#34;default&#34;)
+ *         var role1 = new Role("role1", RoleArgs.builder()        
+ *             .name("role_1")
+ *             .domainId("default")
  *             .build());
  * 
- *         var roleAssignment1 = new InheritRoleAssignment(&#34;roleAssignment1&#34;, InheritRoleAssignmentArgs.builder()        
+ *         var roleAssignment1 = new InheritRoleAssignment("roleAssignment1", InheritRoleAssignmentArgs.builder()        
  *             .userId(user1.id())
- *             .domainId(&#34;default&#34;)
+ *             .domainId("default")
  *             .roleId(role1.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

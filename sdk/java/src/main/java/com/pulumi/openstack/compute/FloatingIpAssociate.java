@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ### Automatically detect the correct network
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,32 +49,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        
- *             .name(&#34;instance_1&#34;)
- *             .imageId(&#34;ad091b52-742f-469e-8f3c-fd81cadf0743&#34;)
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()        
+ *             .name("instance_1")
+ *             .imageId("ad091b52-742f-469e-8f3c-fd81cadf0743")
  *             .flavorId(3)
- *             .keyPair(&#34;my_key_pair_name&#34;)
- *             .securityGroups(&#34;default&#34;)
+ *             .keyPair("my_key_pair_name")
+ *             .securityGroups("default")
  *             .build());
  * 
- *         var fip1 = new FloatingIp(&#34;fip1&#34;, FloatingIpArgs.builder()        
- *             .pool(&#34;my_pool&#34;)
+ *         var fip1 = new FloatingIp("fip1", FloatingIpArgs.builder()        
+ *             .pool("my_pool")
  *             .build());
  * 
- *         var fip1FloatingIpAssociate = new FloatingIpAssociate(&#34;fip1FloatingIpAssociate&#34;, FloatingIpAssociateArgs.builder()        
+ *         var fip1FloatingIpAssociate = new FloatingIpAssociate("fip1FloatingIpAssociate", FloatingIpAssociateArgs.builder()        
  *             .floatingIp(fip1.address())
  *             .instanceId(instance1.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Explicitly set the network to attach to
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -99,34 +102,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        
- *             .name(&#34;instance_1&#34;)
- *             .imageId(&#34;ad091b52-742f-469e-8f3c-fd81cadf0743&#34;)
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()        
+ *             .name("instance_1")
+ *             .imageId("ad091b52-742f-469e-8f3c-fd81cadf0743")
  *             .flavorId(3)
- *             .keyPair(&#34;my_key_pair_name&#34;)
- *             .securityGroups(&#34;default&#34;)
+ *             .keyPair("my_key_pair_name")
+ *             .securityGroups("default")
  *             .networks(            
  *                 InstanceNetworkArgs.builder()
- *                     .name(&#34;my_network&#34;)
+ *                     .name("my_network")
  *                     .build(),
  *                 InstanceNetworkArgs.builder()
- *                     .name(&#34;default&#34;)
+ *                     .name("default")
  *                     .build())
  *             .build());
  * 
- *         var fip1 = new FloatingIp(&#34;fip1&#34;, FloatingIpArgs.builder()        
- *             .pool(&#34;my_pool&#34;)
+ *         var fip1 = new FloatingIp("fip1", FloatingIpArgs.builder()        
+ *             .pool("my_pool")
  *             .build());
  * 
- *         var fip1FloatingIpAssociate = new FloatingIpAssociate(&#34;fip1FloatingIpAssociate&#34;, FloatingIpAssociateArgs.builder()        
+ *         var fip1FloatingIpAssociate = new FloatingIpAssociate("fip1FloatingIpAssociate", FloatingIpAssociateArgs.builder()        
  *             .floatingIp(fip1.address())
  *             .instanceId(instance1.id())
- *             .fixedIp(instance1.networks().applyValue(networks -&gt; networks[1].fixedIpV4()))
+ *             .fixedIp(instance1.networks().applyValue(networks -> networks[1].fixedIpV4()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,17 +51,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var rancheros = new Image(&#34;rancheros&#34;, ImageArgs.builder()        
- *             .name(&#34;RancherOS&#34;)
- *             .imageSourceUrl(&#34;https://releases.rancher.com/os/latest/rancheros-openstack.img&#34;)
- *             .containerFormat(&#34;bare&#34;)
- *             .diskFormat(&#34;qcow2&#34;)
- *             .properties(Map.of(&#34;key&#34;, &#34;value&#34;))
+ *         var rancheros = new Image("rancheros", ImageArgs.builder()        
+ *             .name("RancherOS")
+ *             .imageSourceUrl("https://releases.rancher.com/os/latest/rancheros-openstack.img")
+ *             .containerFormat("bare")
+ *             .diskFormat("qcow2")
+ *             .properties(Map.of("key", "value"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Notes

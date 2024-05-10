@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,26 +48,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var rule1 = new Rule(&#34;rule1&#34;, RuleArgs.builder()        
- *             .name(&#34;my-rule-1&#34;)
- *             .description(&#34;drop TELNET traffic&#34;)
- *             .action(&#34;deny&#34;)
- *             .protocol(&#34;tcp&#34;)
- *             .destinationPort(&#34;23&#34;)
- *             .enabled(&#34;true&#34;)
+ *         var rule1 = new Rule("rule1", RuleArgs.builder()        
+ *             .name("my-rule-1")
+ *             .description("drop TELNET traffic")
+ *             .action("deny")
+ *             .protocol("tcp")
+ *             .destinationPort("23")
+ *             .enabled("true")
  *             .build());
  * 
- *         var rule2 = new Rule(&#34;rule2&#34;, RuleArgs.builder()        
- *             .name(&#34;my-rule-2&#34;)
- *             .description(&#34;drop NTP traffic&#34;)
- *             .action(&#34;deny&#34;)
- *             .protocol(&#34;udp&#34;)
- *             .destinationPort(&#34;123&#34;)
- *             .enabled(&#34;false&#34;)
+ *         var rule2 = new Rule("rule2", RuleArgs.builder()        
+ *             .name("my-rule-2")
+ *             .description("drop NTP traffic")
+ *             .action("deny")
+ *             .protocol("udp")
+ *             .destinationPort("123")
+ *             .enabled("false")
  *             .build());
  * 
- *         var policy1 = new Policy(&#34;policy1&#34;, PolicyArgs.builder()        
- *             .name(&#34;my-policy&#34;)
+ *         var policy1 = new Policy("policy1", PolicyArgs.builder()        
+ *             .name("my-policy")
  *             .rules(            
  *                 rule1.id(),
  *                 rule2.id())
@@ -74,7 +75,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

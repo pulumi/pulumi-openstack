@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,19 +48,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var pool1 = new Pool(&#34;pool1&#34;, PoolArgs.builder()        
- *             .protocol(&#34;HTTP&#34;)
- *             .lbMethod(&#34;ROUND_ROBIN&#34;)
- *             .listenerId(&#34;d9415786-5f1a-428b-b35f-2f1523e146d2&#34;)
+ *         var pool1 = new Pool("pool1", PoolArgs.builder()        
+ *             .protocol("HTTP")
+ *             .lbMethod("ROUND_ROBIN")
+ *             .listenerId("d9415786-5f1a-428b-b35f-2f1523e146d2")
  *             .persistence(PoolPersistenceArgs.builder()
- *                 .type(&#34;APP_COOKIE&#34;)
- *                 .cookieName(&#34;testCookie&#34;)
+ *                 .type("APP_COOKIE")
+ *                 .cookieName("testCookie")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ### Simple secret
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,20 +47,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret1 = new SecretV1(&#34;secret1&#34;, SecretV1Args.builder()        
- *             .algorithm(&#34;aes&#34;)
+ *         var secret1 = new SecretV1("secret1", SecretV1Args.builder()        
+ *             .algorithm("aes")
  *             .bitLength(256)
- *             .mode(&#34;cbc&#34;)
- *             .name(&#34;mysecret&#34;)
- *             .payload(&#34;foobar&#34;)
- *             .payloadContentType(&#34;text/plain&#34;)
- *             .secretType(&#34;passphrase&#34;)
- *             .metadata(Map.of(&#34;key&#34;, &#34;foo&#34;))
+ *             .mode("cbc")
+ *             .name("mysecret")
+ *             .payload("foobar")
+ *             .payloadContentType("text/plain")
+ *             .secretType("passphrase")
+ *             .metadata(Map.of("key", "foo"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Secret with whitespaces
@@ -71,7 +73,8 @@ import javax.annotation.Nullable;
  * ` password  ` to `password` won&#39;t recreate the secret.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -92,19 +95,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret1 = new SecretV1(&#34;secret1&#34;, SecretV1Args.builder()        
- *             .name(&#34;password&#34;)
+ *         var secret1 = new SecretV1("secret1", SecretV1Args.builder()        
+ *             .name("password")
  *             .payload(StdFunctions.base64encode(Base64encodeArgs.builder()
- *                 .input(&#34;password with the whitespace at the end &#34;)
+ *                 .input("password with the whitespace at the end ")
  *                 .build()).result())
- *             .secretType(&#34;passphrase&#34;)
- *             .payloadContentType(&#34;application/octet-stream&#34;)
- *             .payloadContentEncoding(&#34;base64&#34;)
+ *             .secretType("passphrase")
+ *             .payloadContentType("application/octet-stream")
+ *             .payloadContentEncoding("base64")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Secret with the ACL
@@ -112,7 +116,8 @@ import javax.annotation.Nullable;
  * &gt; **Note** Only read ACLs are supported
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -135,26 +140,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var secret1 = new SecretV1(&#34;secret1&#34;, SecretV1Args.builder()        
- *             .name(&#34;certificate&#34;)
+ *         var secret1 = new SecretV1("secret1", SecretV1Args.builder()        
+ *             .name("certificate")
  *             .payload(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;certificate.pem&#34;)
+ *                 .input("certificate.pem")
  *                 .build()).result())
- *             .secretType(&#34;certificate&#34;)
- *             .payloadContentType(&#34;text/plain&#34;)
+ *             .secretType("certificate")
+ *             .payloadContentType("text/plain")
  *             .acl(SecretV1AclArgs.builder()
  *                 .read(SecretV1AclReadArgs.builder()
  *                     .projectAccess(false)
  *                     .users(                    
- *                         &#34;userid1&#34;,
- *                         &#34;userid2&#34;)
+ *                         "userid1",
+ *                         "userid2")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

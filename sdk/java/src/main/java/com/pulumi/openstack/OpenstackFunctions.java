@@ -26,7 +26,8 @@ public final class OpenstackFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -48,12 +49,13 @@ public final class OpenstackFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var group = OpenstackFunctions.getFwGroupV2(GetFwGroupV2Args.builder()
-     *             .name(&#34;tf_test_group&#34;)
+     *             .name("tf_test_group")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -66,7 +68,8 @@ public final class OpenstackFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -88,12 +91,13 @@ public final class OpenstackFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var group = OpenstackFunctions.getFwGroupV2(GetFwGroupV2Args.builder()
-     *             .name(&#34;tf_test_group&#34;)
+     *             .name("tf_test_group")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -106,7 +110,8 @@ public final class OpenstackFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -128,12 +133,13 @@ public final class OpenstackFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var group = OpenstackFunctions.getFwGroupV2(GetFwGroupV2Args.builder()
-     *             .name(&#34;tf_test_group&#34;)
+     *             .name("tf_test_group")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -146,7 +152,8 @@ public final class OpenstackFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -168,12 +175,13 @@ public final class OpenstackFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var group = OpenstackFunctions.getFwGroupV2(GetFwGroupV2Args.builder()
-     *             .name(&#34;tf_test_group&#34;)
+     *             .name("tf_test_group")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -186,7 +194,8 @@ public final class OpenstackFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -208,12 +217,13 @@ public final class OpenstackFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var group = OpenstackFunctions.getFwGroupV2(GetFwGroupV2Args.builder()
-     *             .name(&#34;tf_test_group&#34;)
+     *             .name("tf_test_group")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -226,7 +236,8 @@ public final class OpenstackFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -248,12 +259,13 @@ public final class OpenstackFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var group = OpenstackFunctions.getFwGroupV2(GetFwGroupV2Args.builder()
-     *             .name(&#34;tf_test_group&#34;)
+     *             .name("tf_test_group")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -266,7 +278,8 @@ public final class OpenstackFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -288,12 +301,13 @@ public final class OpenstackFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = OpenstackFunctions.getFwPolicyV2(GetFwPolicyV2Args.builder()
-     *             .name(&#34;tf_test_policy&#34;)
+     *             .name("tf_test_policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -306,7 +320,8 @@ public final class OpenstackFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -328,12 +343,13 @@ public final class OpenstackFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = OpenstackFunctions.getFwPolicyV2(GetFwPolicyV2Args.builder()
-     *             .name(&#34;tf_test_policy&#34;)
+     *             .name("tf_test_policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -346,7 +362,8 @@ public final class OpenstackFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -368,12 +385,13 @@ public final class OpenstackFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = OpenstackFunctions.getFwPolicyV2(GetFwPolicyV2Args.builder()
-     *             .name(&#34;tf_test_policy&#34;)
+     *             .name("tf_test_policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -386,7 +404,8 @@ public final class OpenstackFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -408,12 +427,13 @@ public final class OpenstackFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = OpenstackFunctions.getFwPolicyV2(GetFwPolicyV2Args.builder()
-     *             .name(&#34;tf_test_policy&#34;)
+     *             .name("tf_test_policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -426,7 +446,8 @@ public final class OpenstackFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -448,12 +469,13 @@ public final class OpenstackFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = OpenstackFunctions.getFwPolicyV2(GetFwPolicyV2Args.builder()
-     *             .name(&#34;tf_test_policy&#34;)
+     *             .name("tf_test_policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -466,7 +488,8 @@ public final class OpenstackFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -488,12 +511,13 @@ public final class OpenstackFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = OpenstackFunctions.getFwPolicyV2(GetFwPolicyV2Args.builder()
-     *             .name(&#34;tf_test_policy&#34;)
+     *             .name("tf_test_policy")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -506,7 +530,8 @@ public final class OpenstackFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -528,12 +553,13 @@ public final class OpenstackFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rule = OpenstackFunctions.getFwRuleV2(GetFwRuleV2Args.builder()
-     *             .name(&#34;tf_test_rule&#34;)
+     *             .name("tf_test_rule")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -546,7 +572,8 @@ public final class OpenstackFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -568,12 +595,13 @@ public final class OpenstackFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rule = OpenstackFunctions.getFwRuleV2(GetFwRuleV2Args.builder()
-     *             .name(&#34;tf_test_rule&#34;)
+     *             .name("tf_test_rule")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -586,7 +614,8 @@ public final class OpenstackFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -608,12 +637,13 @@ public final class OpenstackFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rule = OpenstackFunctions.getFwRuleV2(GetFwRuleV2Args.builder()
-     *             .name(&#34;tf_test_rule&#34;)
+     *             .name("tf_test_rule")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -626,7 +656,8 @@ public final class OpenstackFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -648,12 +679,13 @@ public final class OpenstackFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rule = OpenstackFunctions.getFwRuleV2(GetFwRuleV2Args.builder()
-     *             .name(&#34;tf_test_rule&#34;)
+     *             .name("tf_test_rule")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -666,7 +698,8 @@ public final class OpenstackFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -688,12 +721,13 @@ public final class OpenstackFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rule = OpenstackFunctions.getFwRuleV2(GetFwRuleV2Args.builder()
-     *             .name(&#34;tf_test_rule&#34;)
+     *             .name("tf_test_rule")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -706,7 +740,8 @@ public final class OpenstackFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -728,12 +763,13 @@ public final class OpenstackFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rule = OpenstackFunctions.getFwRuleV2(GetFwRuleV2Args.builder()
-     *             .name(&#34;tf_test_rule&#34;)
+     *             .name("tf_test_rule")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

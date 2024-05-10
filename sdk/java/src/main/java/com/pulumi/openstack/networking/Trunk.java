@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,50 +56,50 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
- *             .name(&#34;network_1&#34;)
- *             .adminStateUp(&#34;true&#34;)
+ *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *             .name("network_1")
+ *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
- *             .name(&#34;subnet_1&#34;)
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
+ *             .name("subnet_1")
  *             .networkId(network1.id())
- *             .cidr(&#34;192.168.1.0/24&#34;)
+ *             .cidr("192.168.1.0/24")
  *             .ipVersion(4)
  *             .enableDhcp(true)
  *             .noGateway(true)
  *             .build());
  * 
- *         var parentPort1 = new Port(&#34;parentPort1&#34;, PortArgs.builder()        
- *             .name(&#34;parent_port_1&#34;)
+ *         var parentPort1 = new Port("parentPort1", PortArgs.builder()        
+ *             .name("parent_port_1")
  *             .networkId(network1.id())
- *             .adminStateUp(&#34;true&#34;)
+ *             .adminStateUp("true")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(subnet1)
  *                 .build());
  * 
- *         var subport1 = new Port(&#34;subport1&#34;, PortArgs.builder()        
- *             .name(&#34;subport_1&#34;)
+ *         var subport1 = new Port("subport1", PortArgs.builder()        
+ *             .name("subport_1")
  *             .networkId(network1.id())
- *             .adminStateUp(&#34;true&#34;)
+ *             .adminStateUp("true")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(subnet1)
  *                 .build());
  * 
- *         var trunk1 = new Trunk(&#34;trunk1&#34;, TrunkArgs.builder()        
- *             .name(&#34;trunk_1&#34;)
- *             .adminStateUp(&#34;true&#34;)
+ *         var trunk1 = new Trunk("trunk1", TrunkArgs.builder()        
+ *             .name("trunk_1")
+ *             .adminStateUp("true")
  *             .portId(parentPort1.id())
  *             .subPorts(TrunkSubPortArgs.builder()
  *                 .portId(subport1.id())
  *                 .segmentationId(1)
- *                 .segmentationType(&#34;vlan&#34;)
+ *                 .segmentationType("vlan")
  *                 .build())
  *             .build());
  * 
- *         var instance1 = new Instance(&#34;instance1&#34;, InstanceArgs.builder()        
- *             .name(&#34;instance_1&#34;)
- *             .securityGroups(&#34;default&#34;)
+ *         var instance1 = new Instance("instance1", InstanceArgs.builder()        
+ *             .name("instance_1")
+ *             .securityGroups("default")
  *             .networks(InstanceNetworkArgs.builder()
  *                 .port(trunk1.portId())
  *                 .build())
@@ -106,7 +107,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

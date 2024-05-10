@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ### Basic Container
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,23 +48,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var container1 = new Container(&#34;container1&#34;, ContainerArgs.builder()        
- *             .region(&#34;RegionOne&#34;)
- *             .name(&#34;tf-test-container-1&#34;)
- *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
- *             .contentType(&#34;application/json&#34;)
+ *         var container1 = new Container("container1", ContainerArgs.builder()        
+ *             .region("RegionOne")
+ *             .name("tf-test-container-1")
+ *             .metadata(Map.of("test", "true"))
+ *             .contentType("application/json")
  *             .versioning(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Basic Container with legacy versioning
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -85,26 +88,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var container1 = new Container(&#34;container1&#34;, ContainerArgs.builder()        
- *             .region(&#34;RegionOne&#34;)
- *             .name(&#34;tf-test-container-1&#34;)
- *             .metadata(Map.of(&#34;test&#34;, &#34;true&#34;))
- *             .contentType(&#34;application/json&#34;)
+ *         var container1 = new Container("container1", ContainerArgs.builder()        
+ *             .region("RegionOne")
+ *             .name("tf-test-container-1")
+ *             .metadata(Map.of("test", "true"))
+ *             .contentType("application/json")
  *             .versioningLegacy(ContainerVersioningLegacyArgs.builder()
- *                 .type(&#34;versions&#34;)
- *                 .location(&#34;tf-test-container-versions&#34;)
+ *                 .type("versions")
+ *                 .location("tf-test-container-versions")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Global Read Access
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -126,21 +131,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Requires that a user know the object name they are attempting to download
- *         var container1 = new Container(&#34;container1&#34;, ContainerArgs.builder()        
- *             .region(&#34;RegionOne&#34;)
- *             .name(&#34;tf-test-container-1&#34;)
- *             .containerRead(&#34;.r:*&#34;)
+ *         var container1 = new Container("container1", ContainerArgs.builder()        
+ *             .region("RegionOne")
+ *             .name("tf-test-container-1")
+ *             .containerRead(".r:*")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Global Read and List Access
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -162,21 +169,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Any user can read any object, and list all objects in the container
- *         var container1 = new Container(&#34;container1&#34;, ContainerArgs.builder()        
- *             .region(&#34;RegionOne&#34;)
- *             .name(&#34;tf-test-container-1&#34;)
- *             .containerRead(&#34;.r:*,.rlistings&#34;)
+ *         var container1 = new Container("container1", ContainerArgs.builder()        
+ *             .region("RegionOne")
+ *             .name("tf-test-container-1")
+ *             .containerRead(".r:*,.rlistings")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Write-Only Access for a User
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -200,20 +209,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var current = IdentityFunctions.getAuthScope(GetAuthScopeArgs.builder()
- *             .name(&#34;current&#34;)
+ *             .name("current")
  *             .build());
  * 
  *         // The named user can only upload objects, not read objects or list the container
- *         var container1 = new Container(&#34;container1&#34;, ContainerArgs.builder()        
- *             .region(&#34;RegionOne&#34;)
- *             .name(&#34;tf-test-container-1&#34;)
- *             .containerRead(String.format(&#34;.r:-%s&#34;, username))
- *             .containerWrite(String.format(&#34;%s:%s&#34;, current.applyValue(getAuthScopeResult -&gt; getAuthScopeResult.projectId()),username))
+ *         var container1 = new Container("container1", ContainerArgs.builder()        
+ *             .region("RegionOne")
+ *             .name("tf-test-container-1")
+ *             .containerRead(String.format(".r:-%s", username))
+ *             .containerWrite(String.format("%s:%s", current.applyValue(getAuthScopeResult -> getAuthScopeResult.projectId()),username))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

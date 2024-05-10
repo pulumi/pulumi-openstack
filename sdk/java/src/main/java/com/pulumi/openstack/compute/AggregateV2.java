@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ### Full example
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,25 +46,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dellServers = new AggregateV2(&#34;dellServers&#34;, AggregateV2Args.builder()        
- *             .region(&#34;RegionOne&#34;)
- *             .name(&#34;dell_servers&#34;)
- *             .zone(&#34;nova&#34;)
- *             .metadata(Map.of(&#34;cpus&#34;, &#34;56&#34;))
+ *         var dellServers = new AggregateV2("dellServers", AggregateV2Args.builder()        
+ *             .region("RegionOne")
+ *             .name("dell_servers")
+ *             .zone("nova")
+ *             .metadata(Map.of("cpus", "56"))
  *             .hosts(            
- *                 &#34;myhost01.example.com&#34;,
- *                 &#34;myhost02.example.com&#34;)
+ *                 "myhost01.example.com",
+ *                 "myhost02.example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Minimum required example
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -84,13 +87,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new AggregateV2(&#34;test&#34;, AggregateV2Args.builder()        
- *             .name(&#34;test&#34;)
+ *         var test = new AggregateV2("test", AggregateV2Args.builder()        
+ *             .name("test")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

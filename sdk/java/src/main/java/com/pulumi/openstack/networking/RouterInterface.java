@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,30 +49,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
- *             .name(&#34;tf_test_network&#34;)
- *             .adminStateUp(&#34;true&#34;)
+ *         var network1 = new Network("network1", NetworkArgs.builder()        
+ *             .name("tf_test_network")
+ *             .adminStateUp("true")
  *             .build());
  * 
- *         var subnet1 = new Subnet(&#34;subnet1&#34;, SubnetArgs.builder()        
+ *         var subnet1 = new Subnet("subnet1", SubnetArgs.builder()        
  *             .networkId(network1.id())
- *             .cidr(&#34;192.168.199.0/24&#34;)
+ *             .cidr("192.168.199.0/24")
  *             .ipVersion(4)
  *             .build());
  * 
- *         var router1 = new Router(&#34;router1&#34;, RouterArgs.builder()        
- *             .name(&#34;my_router&#34;)
- *             .externalNetworkId(&#34;f67f0d72-0ddf-11e4-9d95-e1f29f417e2f&#34;)
+ *         var router1 = new Router("router1", RouterArgs.builder()        
+ *             .name("my_router")
+ *             .externalNetworkId("f67f0d72-0ddf-11e4-9d95-e1f29f417e2f")
  *             .build());
  * 
- *         var routerInterface1 = new RouterInterface(&#34;routerInterface1&#34;, RouterInterfaceArgs.builder()        
+ *         var routerInterface1 = new RouterInterface("routerInterface1", RouterInterfaceArgs.builder()        
  *             .routerId(router1.id())
  *             .subnetId(subnet1.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ### Automatically detect the correct network
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,17 +49,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleCom = new Zone(&#34;exampleCom&#34;, ZoneArgs.builder()        
- *             .name(&#34;example.com.&#34;)
- *             .email(&#34;jdoe@example.com&#34;)
- *             .description(&#34;An example zone&#34;)
+ *         var exampleCom = new Zone("exampleCom", ZoneArgs.builder()        
+ *             .name("example.com.")
+ *             .email("jdoe{@literal @}example.com")
+ *             .description("An example zone")
  *             .ttl(3000)
- *             .type(&#34;PRIMARY&#34;)
+ *             .type("PRIMARY")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

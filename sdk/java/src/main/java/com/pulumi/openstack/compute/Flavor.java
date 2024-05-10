@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,20 +47,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test_flavor = new Flavor(&#34;test-flavor&#34;, FlavorArgs.builder()        
- *             .name(&#34;my-flavor&#34;)
- *             .ram(&#34;8096&#34;)
- *             .vcpus(&#34;2&#34;)
- *             .disk(&#34;20&#34;)
+ *         var test_flavor = new Flavor("test-flavor", FlavorArgs.builder()        
+ *             .name("my-flavor")
+ *             .ram("8096")
+ *             .vcpus("2")
+ *             .disk("20")
  *             .extraSpecs(Map.ofEntries(
- *                 Map.entry(&#34;hw:cpu_policy&#34;, &#34;CPU-POLICY&#34;),
- *                 Map.entry(&#34;hw:cpu_thread_policy&#34;, &#34;CPU-THREAD-POLICY&#34;)
+ *                 Map.entry("hw:cpu_policy", "CPU-POLICY"),
+ *                 Map.entry("hw:cpu_thread_policy", "CPU-THREAD-POLICY")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

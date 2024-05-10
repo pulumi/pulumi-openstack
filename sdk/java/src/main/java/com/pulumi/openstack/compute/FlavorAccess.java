@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,26 +50,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var project1 = new Project(&#34;project1&#34;, ProjectArgs.builder()        
- *             .name(&#34;my-project&#34;)
+ *         var project1 = new Project("project1", ProjectArgs.builder()        
+ *             .name("my-project")
  *             .build());
  * 
- *         var flavor1 = new Flavor(&#34;flavor1&#34;, FlavorArgs.builder()        
- *             .name(&#34;my-flavor&#34;)
- *             .ram(&#34;8096&#34;)
- *             .vcpus(&#34;2&#34;)
- *             .disk(&#34;20&#34;)
+ *         var flavor1 = new Flavor("flavor1", FlavorArgs.builder()        
+ *             .name("my-flavor")
+ *             .ram("8096")
+ *             .vcpus("2")
+ *             .disk("20")
  *             .isPublic(false)
  *             .build());
  * 
- *         var access1 = new FlavorAccess(&#34;access1&#34;, FlavorAccessArgs.builder()        
+ *         var access1 = new FlavorAccess("access1", FlavorAccessArgs.builder()        
  *             .tenantId(project1.id())
  *             .flavorId(flavor1.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

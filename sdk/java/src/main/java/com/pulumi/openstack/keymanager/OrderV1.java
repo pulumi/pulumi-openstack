@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ### Symmetric key order
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,25 +45,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var order1 = new OrderV1(&#34;order1&#34;, OrderV1Args.builder()        
- *             .type(&#34;key&#34;)
+ *         var order1 = new OrderV1("order1", OrderV1Args.builder()        
+ *             .type("key")
  *             .meta(OrderV1MetaArgs.builder()
- *                 .algorithm(&#34;aes&#34;)
+ *                 .algorithm("aes")
  *                 .bitLength(256)
- *                 .name(&#34;mysecret&#34;)
- *                 .mode(&#34;cbc&#34;)
+ *                 .name("mysecret")
+ *                 .mode("cbc")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Asymmetric key pair order
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -84,18 +87,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var order1 = new OrderV1(&#34;order1&#34;, OrderV1Args.builder()        
- *             .type(&#34;asymmetric&#34;)
+ *         var order1 = new OrderV1("order1", OrderV1Args.builder()        
+ *             .type("asymmetric")
  *             .meta(OrderV1MetaArgs.builder()
- *                 .algorithm(&#34;rsa&#34;)
+ *                 .algorithm("rsa")
  *                 .bitLength(4096)
- *                 .name(&#34;mysecret&#34;)
+ *                 .name("mysecret")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

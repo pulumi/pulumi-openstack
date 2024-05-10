@@ -65,7 +65,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -87,14 +88,15 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var publicAddressscope = NetworkingFunctions.getAddressScope(GetAddressScopeArgs.builder()
-     *             .name(&#34;public_addressscope&#34;)
+     *             .name("public_addressscope")
      *             .shared(true)
      *             .ipVersion(4)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -107,7 +109,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -129,14 +132,15 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var publicAddressscope = NetworkingFunctions.getAddressScope(GetAddressScopeArgs.builder()
-     *             .name(&#34;public_addressscope&#34;)
+     *             .name("public_addressscope")
      *             .shared(true)
      *             .ipVersion(4)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -149,7 +153,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -171,14 +176,15 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var publicAddressscope = NetworkingFunctions.getAddressScope(GetAddressScopeArgs.builder()
-     *             .name(&#34;public_addressscope&#34;)
+     *             .name("public_addressscope")
      *             .shared(true)
      *             .ipVersion(4)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -191,7 +197,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -213,14 +220,15 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var publicAddressscope = NetworkingFunctions.getAddressScope(GetAddressScopeArgs.builder()
-     *             .name(&#34;public_addressscope&#34;)
+     *             .name("public_addressscope")
      *             .shared(true)
      *             .ipVersion(4)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -233,7 +241,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -255,14 +264,15 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var publicAddressscope = NetworkingFunctions.getAddressScope(GetAddressScopeArgs.builder()
-     *             .name(&#34;public_addressscope&#34;)
+     *             .name("public_addressscope")
      *             .shared(true)
      *             .ipVersion(4)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -275,7 +285,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -297,14 +308,15 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var publicAddressscope = NetworkingFunctions.getAddressScope(GetAddressScopeArgs.builder()
-     *             .name(&#34;public_addressscope&#34;)
+     *             .name("public_addressscope")
      *             .shared(true)
      *             .ipVersion(4)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -317,7 +329,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -339,12 +352,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var floatingip1 = NetworkingFunctions.getFloatingIp(GetFloatingIpArgs.builder()
-     *             .address(&#34;192.168.0.4&#34;)
+     *             .address("192.168.0.4")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -357,7 +371,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -379,12 +394,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var floatingip1 = NetworkingFunctions.getFloatingIp(GetFloatingIpArgs.builder()
-     *             .address(&#34;192.168.0.4&#34;)
+     *             .address("192.168.0.4")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -397,7 +413,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -419,12 +436,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var floatingip1 = NetworkingFunctions.getFloatingIp(GetFloatingIpArgs.builder()
-     *             .address(&#34;192.168.0.4&#34;)
+     *             .address("192.168.0.4")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -437,7 +455,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -459,12 +478,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var floatingip1 = NetworkingFunctions.getFloatingIp(GetFloatingIpArgs.builder()
-     *             .address(&#34;192.168.0.4&#34;)
+     *             .address("192.168.0.4")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -477,7 +497,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -499,12 +520,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var floatingip1 = NetworkingFunctions.getFloatingIp(GetFloatingIpArgs.builder()
-     *             .address(&#34;192.168.0.4&#34;)
+     *             .address("192.168.0.4")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -517,7 +539,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -539,12 +562,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var floatingip1 = NetworkingFunctions.getFloatingIp(GetFloatingIpArgs.builder()
-     *             .address(&#34;192.168.0.4&#34;)
+     *             .address("192.168.0.4")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -557,7 +581,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -579,12 +604,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var network = NetworkingFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .name(&#34;tf_test_network&#34;)
+     *             .name("tf_test_network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -597,7 +623,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -619,12 +646,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var network = NetworkingFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .name(&#34;tf_test_network&#34;)
+     *             .name("tf_test_network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -637,7 +665,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -659,12 +688,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var network = NetworkingFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .name(&#34;tf_test_network&#34;)
+     *             .name("tf_test_network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -677,7 +707,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -699,12 +730,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var network = NetworkingFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .name(&#34;tf_test_network&#34;)
+     *             .name("tf_test_network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -717,7 +749,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -739,12 +772,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var network = NetworkingFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .name(&#34;tf_test_network&#34;)
+     *             .name("tf_test_network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -757,7 +791,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -779,12 +814,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var network = NetworkingFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .name(&#34;tf_test_network&#34;)
+     *             .name("tf_test_network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -797,7 +833,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -819,12 +856,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var port1 = NetworkingFunctions.getPort(GetPortArgs.builder()
-     *             .name(&#34;port_1&#34;)
+     *             .name("port_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -837,7 +875,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -859,12 +898,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var port1 = NetworkingFunctions.getPort(GetPortArgs.builder()
-     *             .name(&#34;port_1&#34;)
+     *             .name("port_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -877,7 +917,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -899,12 +940,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var port1 = NetworkingFunctions.getPort(GetPortArgs.builder()
-     *             .name(&#34;port_1&#34;)
+     *             .name("port_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -917,7 +959,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -939,12 +982,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var port1 = NetworkingFunctions.getPort(GetPortArgs.builder()
-     *             .name(&#34;port_1&#34;)
+     *             .name("port_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -957,7 +1001,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -979,12 +1024,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var port1 = NetworkingFunctions.getPort(GetPortArgs.builder()
-     *             .name(&#34;port_1&#34;)
+     *             .name("port_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -997,7 +1043,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1019,12 +1066,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var port1 = NetworkingFunctions.getPort(GetPortArgs.builder()
-     *             .name(&#34;port_1&#34;)
+     *             .name("port_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1038,7 +1086,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1060,12 +1109,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ports = NetworkingFunctions.getPortIds(GetPortIdsArgs.builder()
-     *             .name(&#34;port&#34;)
+     *             .name("port")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1079,7 +1129,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1101,12 +1152,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ports = NetworkingFunctions.getPortIds(GetPortIdsArgs.builder()
-     *             .name(&#34;port&#34;)
+     *             .name("port")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1120,7 +1172,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1142,12 +1195,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ports = NetworkingFunctions.getPortIds(GetPortIdsArgs.builder()
-     *             .name(&#34;port&#34;)
+     *             .name("port")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1161,7 +1215,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1183,12 +1238,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ports = NetworkingFunctions.getPortIds(GetPortIdsArgs.builder()
-     *             .name(&#34;port&#34;)
+     *             .name("port")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1202,7 +1258,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1224,12 +1281,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ports = NetworkingFunctions.getPortIds(GetPortIdsArgs.builder()
-     *             .name(&#34;port&#34;)
+     *             .name("port")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1243,7 +1301,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1265,12 +1324,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ports = NetworkingFunctions.getPortIds(GetPortIdsArgs.builder()
-     *             .name(&#34;port&#34;)
+     *             .name("port")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1283,7 +1343,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1310,7 +1371,8 @@ public final class NetworkingFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1323,7 +1385,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1350,7 +1413,8 @@ public final class NetworkingFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1363,7 +1427,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1390,7 +1455,8 @@ public final class NetworkingFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1403,7 +1469,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1430,7 +1497,8 @@ public final class NetworkingFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1443,7 +1511,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1470,7 +1539,8 @@ public final class NetworkingFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1483,7 +1553,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1510,7 +1581,8 @@ public final class NetworkingFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1523,7 +1595,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1550,7 +1623,8 @@ public final class NetworkingFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1563,7 +1637,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1590,7 +1665,8 @@ public final class NetworkingFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1603,7 +1679,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1630,7 +1707,8 @@ public final class NetworkingFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1643,7 +1721,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1670,7 +1749,8 @@ public final class NetworkingFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1683,7 +1763,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1710,7 +1791,8 @@ public final class NetworkingFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1723,7 +1805,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1750,7 +1833,8 @@ public final class NetworkingFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1763,7 +1847,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1785,12 +1870,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qosPolicy1 = NetworkingFunctions.getQosPolicy(GetQosPolicyArgs.builder()
-     *             .name(&#34;qos_policy_1&#34;)
+     *             .name("qos_policy_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1803,7 +1889,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1825,12 +1912,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qosPolicy1 = NetworkingFunctions.getQosPolicy(GetQosPolicyArgs.builder()
-     *             .name(&#34;qos_policy_1&#34;)
+     *             .name("qos_policy_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1843,7 +1931,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1865,12 +1954,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qosPolicy1 = NetworkingFunctions.getQosPolicy(GetQosPolicyArgs.builder()
-     *             .name(&#34;qos_policy_1&#34;)
+     *             .name("qos_policy_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1883,7 +1973,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1905,12 +1996,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qosPolicy1 = NetworkingFunctions.getQosPolicy(GetQosPolicyArgs.builder()
-     *             .name(&#34;qos_policy_1&#34;)
+     *             .name("qos_policy_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1923,7 +2015,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1945,12 +2038,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qosPolicy1 = NetworkingFunctions.getQosPolicy(GetQosPolicyArgs.builder()
-     *             .name(&#34;qos_policy_1&#34;)
+     *             .name("qos_policy_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1963,7 +2057,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1985,12 +2080,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qosPolicy1 = NetworkingFunctions.getQosPolicy(GetQosPolicyArgs.builder()
-     *             .name(&#34;qos_policy_1&#34;)
+     *             .name("qos_policy_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2003,7 +2099,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2025,12 +2122,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var quota = NetworkingFunctions.getQuotaV2(GetQuotaV2Args.builder()
-     *             .projectId(&#34;2e367a3d29f94fd988e6ec54e305ec9d&#34;)
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2043,7 +2141,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2065,12 +2164,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var quota = NetworkingFunctions.getQuotaV2(GetQuotaV2Args.builder()
-     *             .projectId(&#34;2e367a3d29f94fd988e6ec54e305ec9d&#34;)
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2083,7 +2183,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2105,12 +2206,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var quota = NetworkingFunctions.getQuotaV2(GetQuotaV2Args.builder()
-     *             .projectId(&#34;2e367a3d29f94fd988e6ec54e305ec9d&#34;)
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2123,7 +2225,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2145,12 +2248,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var quota = NetworkingFunctions.getQuotaV2(GetQuotaV2Args.builder()
-     *             .projectId(&#34;2e367a3d29f94fd988e6ec54e305ec9d&#34;)
+     *             .projectId("2e367a3d29f94fd988e6ec54e305ec9d")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2163,7 +2267,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2185,12 +2290,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var router = NetworkingFunctions.getRouter(GetRouterArgs.builder()
-     *             .name(&#34;router_1&#34;)
+     *             .name("router_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2203,7 +2309,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2225,12 +2332,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var router = NetworkingFunctions.getRouter(GetRouterArgs.builder()
-     *             .name(&#34;router_1&#34;)
+     *             .name("router_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2243,7 +2351,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2265,12 +2374,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var router = NetworkingFunctions.getRouter(GetRouterArgs.builder()
-     *             .name(&#34;router_1&#34;)
+     *             .name("router_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2283,7 +2393,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2305,12 +2416,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var router = NetworkingFunctions.getRouter(GetRouterArgs.builder()
-     *             .name(&#34;router_1&#34;)
+     *             .name("router_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2323,7 +2435,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2345,12 +2458,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var router = NetworkingFunctions.getRouter(GetRouterArgs.builder()
-     *             .name(&#34;router_1&#34;)
+     *             .name("router_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2363,7 +2477,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2385,12 +2500,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var router = NetworkingFunctions.getRouter(GetRouterArgs.builder()
-     *             .name(&#34;router_1&#34;)
+     *             .name("router_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2403,7 +2519,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2425,12 +2542,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var secgroup = NetworkingFunctions.getSecGroup(GetSecGroupArgs.builder()
-     *             .name(&#34;tf_test_secgroup&#34;)
+     *             .name("tf_test_secgroup")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2443,7 +2561,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2465,12 +2584,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var secgroup = NetworkingFunctions.getSecGroup(GetSecGroupArgs.builder()
-     *             .name(&#34;tf_test_secgroup&#34;)
+     *             .name("tf_test_secgroup")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2483,7 +2603,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2505,12 +2626,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var secgroup = NetworkingFunctions.getSecGroup(GetSecGroupArgs.builder()
-     *             .name(&#34;tf_test_secgroup&#34;)
+     *             .name("tf_test_secgroup")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2523,7 +2645,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2545,12 +2668,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var secgroup = NetworkingFunctions.getSecGroup(GetSecGroupArgs.builder()
-     *             .name(&#34;tf_test_secgroup&#34;)
+     *             .name("tf_test_secgroup")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2563,7 +2687,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2585,12 +2710,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var secgroup = NetworkingFunctions.getSecGroup(GetSecGroupArgs.builder()
-     *             .name(&#34;tf_test_secgroup&#34;)
+     *             .name("tf_test_secgroup")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2603,7 +2729,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2625,12 +2752,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var secgroup = NetworkingFunctions.getSecGroup(GetSecGroupArgs.builder()
-     *             .name(&#34;tf_test_secgroup&#34;)
+     *             .name("tf_test_secgroup")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2643,7 +2771,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2665,12 +2794,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subnet1 = NetworkingFunctions.getSubnet(GetSubnetArgs.builder()
-     *             .name(&#34;subnet_1&#34;)
+     *             .name("subnet_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2683,7 +2813,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2705,12 +2836,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subnet1 = NetworkingFunctions.getSubnet(GetSubnetArgs.builder()
-     *             .name(&#34;subnet_1&#34;)
+     *             .name("subnet_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2723,7 +2855,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2745,12 +2878,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subnet1 = NetworkingFunctions.getSubnet(GetSubnetArgs.builder()
-     *             .name(&#34;subnet_1&#34;)
+     *             .name("subnet_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2763,7 +2897,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2785,12 +2920,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subnet1 = NetworkingFunctions.getSubnet(GetSubnetArgs.builder()
-     *             .name(&#34;subnet_1&#34;)
+     *             .name("subnet_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2803,7 +2939,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2825,12 +2962,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subnet1 = NetworkingFunctions.getSubnet(GetSubnetArgs.builder()
-     *             .name(&#34;subnet_1&#34;)
+     *             .name("subnet_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2843,7 +2981,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2865,12 +3004,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subnet1 = NetworkingFunctions.getSubnet(GetSubnetArgs.builder()
-     *             .name(&#34;subnet_1&#34;)
+     *             .name("subnet_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2884,7 +3024,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2906,13 +3047,14 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subnets = NetworkingFunctions.getSubnetIdsV2(GetSubnetIdsV2Args.builder()
-     *             .nameRegex(&#34;public&#34;)
-     *             .tags(&#34;public&#34;)
+     *             .nameRegex("public")
+     *             .tags("public")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2926,7 +3068,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2948,13 +3091,14 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subnets = NetworkingFunctions.getSubnetIdsV2(GetSubnetIdsV2Args.builder()
-     *             .nameRegex(&#34;public&#34;)
-     *             .tags(&#34;public&#34;)
+     *             .nameRegex("public")
+     *             .tags("public")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2968,7 +3112,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2990,13 +3135,14 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subnets = NetworkingFunctions.getSubnetIdsV2(GetSubnetIdsV2Args.builder()
-     *             .nameRegex(&#34;public&#34;)
-     *             .tags(&#34;public&#34;)
+     *             .nameRegex("public")
+     *             .tags("public")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3010,7 +3156,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3032,13 +3179,14 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subnets = NetworkingFunctions.getSubnetIdsV2(GetSubnetIdsV2Args.builder()
-     *             .nameRegex(&#34;public&#34;)
-     *             .tags(&#34;public&#34;)
+     *             .nameRegex("public")
+     *             .tags("public")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3052,7 +3200,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3074,13 +3223,14 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subnets = NetworkingFunctions.getSubnetIdsV2(GetSubnetIdsV2Args.builder()
-     *             .nameRegex(&#34;public&#34;)
-     *             .tags(&#34;public&#34;)
+     *             .nameRegex("public")
+     *             .tags("public")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3094,7 +3244,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3116,13 +3267,14 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subnets = NetworkingFunctions.getSubnetIdsV2(GetSubnetIdsV2Args.builder()
-     *             .nameRegex(&#34;public&#34;)
-     *             .tags(&#34;public&#34;)
+     *             .nameRegex("public")
+     *             .tags("public")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3135,7 +3287,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3157,12 +3310,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subnetpool1 = NetworkingFunctions.getSubnetPool(GetSubnetPoolArgs.builder()
-     *             .name(&#34;subnetpool_1&#34;)
+     *             .name("subnetpool_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3175,7 +3329,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3197,12 +3352,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subnetpool1 = NetworkingFunctions.getSubnetPool(GetSubnetPoolArgs.builder()
-     *             .name(&#34;subnetpool_1&#34;)
+     *             .name("subnetpool_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3215,7 +3371,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3237,12 +3394,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subnetpool1 = NetworkingFunctions.getSubnetPool(GetSubnetPoolArgs.builder()
-     *             .name(&#34;subnetpool_1&#34;)
+     *             .name("subnetpool_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3255,7 +3413,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3277,12 +3436,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subnetpool1 = NetworkingFunctions.getSubnetPool(GetSubnetPoolArgs.builder()
-     *             .name(&#34;subnetpool_1&#34;)
+     *             .name("subnetpool_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3295,7 +3455,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3317,12 +3478,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subnetpool1 = NetworkingFunctions.getSubnetPool(GetSubnetPoolArgs.builder()
-     *             .name(&#34;subnetpool_1&#34;)
+     *             .name("subnetpool_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3335,7 +3497,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3357,12 +3520,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subnetpool1 = NetworkingFunctions.getSubnetPool(GetSubnetPoolArgs.builder()
-     *             .name(&#34;subnetpool_1&#34;)
+     *             .name("subnetpool_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3375,7 +3539,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3397,12 +3562,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var trunk1 = NetworkingFunctions.getTrunk(GetTrunkArgs.builder()
-     *             .name(&#34;trunk_1&#34;)
+     *             .name("trunk_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3415,7 +3581,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3437,12 +3604,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var trunk1 = NetworkingFunctions.getTrunk(GetTrunkArgs.builder()
-     *             .name(&#34;trunk_1&#34;)
+     *             .name("trunk_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3455,7 +3623,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3477,12 +3646,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var trunk1 = NetworkingFunctions.getTrunk(GetTrunkArgs.builder()
-     *             .name(&#34;trunk_1&#34;)
+     *             .name("trunk_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3495,7 +3665,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3517,12 +3688,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var trunk1 = NetworkingFunctions.getTrunk(GetTrunkArgs.builder()
-     *             .name(&#34;trunk_1&#34;)
+     *             .name("trunk_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3535,7 +3707,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3557,12 +3730,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var trunk1 = NetworkingFunctions.getTrunk(GetTrunkArgs.builder()
-     *             .name(&#34;trunk_1&#34;)
+     *             .name("trunk_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3575,7 +3749,8 @@ public final class NetworkingFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3597,12 +3772,13 @@ public final class NetworkingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var trunk1 = NetworkingFunctions.getTrunk(GetTrunkArgs.builder()
-     *             .name(&#34;trunk_1&#34;)
+     *             .name("trunk_1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

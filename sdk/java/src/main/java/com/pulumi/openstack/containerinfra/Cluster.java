@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Create a Cluster
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,17 +53,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cluster1 = new Cluster(&#34;cluster1&#34;, ClusterArgs.builder()        
- *             .name(&#34;cluster_1&#34;)
- *             .clusterTemplateId(&#34;b9a45c5c-cd03-4958-82aa-b80bf93cb922&#34;)
+ *         var cluster1 = new Cluster("cluster1", ClusterArgs.builder()        
+ *             .name("cluster_1")
+ *             .clusterTemplateId("b9a45c5c-cd03-4958-82aa-b80bf93cb922")
  *             .masterCount(3)
  *             .nodeCount(5)
- *             .keypair(&#34;ssh_keypair&#34;)
+ *             .keypair("ssh_keypair")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Attributes reference

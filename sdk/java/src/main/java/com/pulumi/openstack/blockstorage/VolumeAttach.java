@@ -39,7 +39,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,24 +63,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var volume1 = new Volume(&#34;volume1&#34;, VolumeArgs.builder()        
- *             .name(&#34;volume_1&#34;)
+ *         var volume1 = new Volume("volume1", VolumeArgs.builder()        
+ *             .name("volume_1")
  *             .size(1)
  *             .build());
  * 
- *         var va1 = new VolumeAttach(&#34;va1&#34;, VolumeAttachArgs.builder()        
+ *         var va1 = new VolumeAttach("va1", VolumeAttachArgs.builder()        
  *             .volumeId(volume1.id())
- *             .device(&#34;auto&#34;)
- *             .hostName(&#34;devstack&#34;)
- *             .ipAddress(&#34;192.168.255.10&#34;)
- *             .initiator(&#34;iqn.1993-08.org.debian:01:e9861fb1859&#34;)
- *             .osType(&#34;linux2&#34;)
- *             .platform(&#34;x86_64&#34;)
+ *             .device("auto")
+ *             .hostName("devstack")
+ *             .ipAddress("192.168.255.10")
+ *             .initiator("iqn.1993-08.org.debian:01:e9861fb1859")
+ *             .osType("linux2")
+ *             .platform("x86_64")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Volume Connection Data
